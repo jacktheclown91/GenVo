@@ -10,3 +10,7 @@ export function bodyMassFraction(animal){
   const adult=SPECIES[animal?.species]?.mass;
   return adult?bodyMass(animal)/adult:1;
 }
+
+// Draft structural assessment shares the mass module boundary; live bodyMass is
+// unchanged until coefficients and legacy migration receive creator approval.
+export {tissueInventory,evaluateTissueStructure,TISSUE_PARTS,TISSUE_SCHEMA} from './tissue-structure.js';

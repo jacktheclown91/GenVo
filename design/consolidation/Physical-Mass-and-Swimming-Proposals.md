@@ -1,3 +1,11 @@
+## Creator direction accepted - 2026-10-14
+
+The creator selected **B: explicit per-part tissue volume and material density**, overriding the earlier temporary relative-weight recommendation. Structural implementation and tests are authorized; numerical coefficients require review before gameplay adoption. One authoritative mass gateway, sprite-independent volumes, net tissue ownership, inherited anatomy and developmental scaling must be preserved. No arbitrary heavier-body speed penalties.
+
+The creator selected **two functional mounted webbed propulsors for current legged bodies**, with explicit bodyless legacy fallback. This is not a permanent universal swimming rule: future implemented fin, tail and legless propulsion can qualify through their own functional anatomy. Gills alone provide respiration, not propulsion. Existing affected swimmers must be identified before access changes; migration remains a separate review decision.
+
+Current implementation and evidence: `docs/GenVo-Tissue-Foundation-Review.md`. The historical comparison below remains a proposal receipt; its numerical examples are not approved coefficients.
+
 # Physical mass and swimming: creator review proposals
 
 Status: proposals only. No numeric balance, mass, swimming, reproductive-organ, or mutation-cost changes were applied. The accepted consolidation review authorizes preparing these comparisons, not implementing their numbers.

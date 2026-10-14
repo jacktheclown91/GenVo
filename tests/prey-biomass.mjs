@@ -1,3 +1,5 @@
+import {makePlan} from '../src/lineage/body-plan.js';
+import {applyLineageTarget} from '../src/lineage/reproduction-bridge.js';
 import {preyPreference} from '../src/ecology/functional-diet.js';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
@@ -46,6 +48,8 @@ for(const species of ['mosskip','rootling','genvo']){
 {
   const sim=new Simulation('BODY-BUDGET-PLAYER',{player:true}),player=sim.player();
   const target=sim.animals.find(a=>a.species==='needlejaw');
+  applyLineageTarget(player,makePlan(player.bodyPlan.nodes.map(n=>({...n,partId:n.socket==='mouth'?'tearing-jaw':n.partId}))));
+  assert.ok(preyPreference(player,target)>0,'Combat-meal fixture has actual flesh-feeding anatomy');
   target.x=player.x+.5;target.y=player.y;target.health=1;player.energy=50;
   const mass=remainingPreyBiomass(target),i=sim.world.idx(target.x,target.y);sim.world.carrion[i]=0;
   sim.rng.chance=()=>true;
@@ -53,6 +57,14 @@ for(const species of ['mosskip','rootling','genvo']){
   assert.equal(result.killed,true);
   assert.ok(Math.abs(sim.world.carrion[i]-(mass-target.predationConsumedMass))<1e-7,'combat meal and corpse share the same body');
   assert.ok(target.predationConsumedMass>0&&target.predationConsumedMass<mass,'combat leaves an actual partly eaten carcass');
+}
+{
+  const sim=new Simulation('BODY-BUDGET-HERBIVORE',{player:true}),player=sim.player(),target=sim.animals.find(a=>a.species==='needlejaw');
+  target.x=player.x+.5;target.y=player.y;target.health=1;player.energy=50;
+  const mass=remainingPreyBiomass(target),i=sim.world.idx(target.x,target.y);sim.world.carrion[i]=0;sim.rng.chance=()=>true;
+  assert.equal(sim.playerStrike(target).killed,true);
+  assert.equal(target.predationConsumedMass||0,0,'A grazing attacker does not consume flesh');
+  assert.ok(Math.abs(sim.world.carrion[i]-mass)<1e-7,'A grazing kill deposits the full remaining body');
 }
 {
   const wounded=new Simulation('BODY-BUDGET-HEALING',{player:false});

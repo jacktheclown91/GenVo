@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "test": "tissue-structure",
+      "exit": 0,
+      "output": "Tissue structure: 79-part coverage, net ownership, head modes, cubic development, invalid calibration rejection and unchanged gameplay mass PASS\n"
+    },
+    {
+      "test": "swimming-review",
+      "exit": 0,
+      "output": "Read-only swimming review: mounted/partial/legacy/invalid/dead cases and three natural founding populations PASS\n"
+    },
+    {
+      "test": "aquatic",
+      "exit": 0,
+      "output": "aquatic ok\n"
+    },
+    {
+      "test": "prey-biomass",
+      "exit": 0,
+      "output": "finite developmental prey biomass, healing, combat meals, carcasses and persistence: PASS\n"
+    },
+    {
+      "test": "save-persistence",
+      "exit": 0,
+      "output": "save persistence roundtrip: PASS\n"
+    },
+    {
+      "test": "save-storage",
+      "exit": 0,
+      "output": "IndexedDB save manager contract: PASS\n"
+    }
+  ]
+}
