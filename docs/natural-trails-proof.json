@@ -1,0 +1,1340 @@
+{
+  "scope": "120 wall-clock seconds at normal speed in a fresh generated world; ordinary generation/editor pauses remain in force. Only ordinary UI automation toggle used; no actor, anatomy, readiness, stock, RNG or clock edits. Unscripted simulation, not a human playtest.",
+  "samples": [
+    {
+      "tick": 49,
+      "day": 2,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 437,
+      "feedingMarks": 23,
+      "visibleMarks": 3,
+      "traceHint": false,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 113.53015606629305,
+        "hydration": 102.19097599999996,
+        "intent": "explore",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 89,
+      "day": 2,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 704,
+      "feedingMarks": 29,
+      "visibleMarks": 5,
+      "traceHint": false,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 113.1000038853535,
+        "hydration": 101.88196788571715,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 129,
+      "day": 3,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1005,
+      "feedingMarks": 46,
+      "visibleMarks": 6,
+      "traceHint": false,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 112.5984344536649,
+        "hydration": 101.52068518095624,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 169,
+      "day": 4,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1298,
+      "feedingMarks": 65,
+      "visibleMarks": 7,
+      "traceHint": false,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 112.09708191311117,
+        "hydration": 101.15971177143437,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 209,
+      "day": 5,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1380,
+      "feedingMarks": 78,
+      "visibleMarks": 11,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 111.66843265188923,
+        "hydration": 100.85145036191248,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 114,
+          "sequence": [
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 249,
+      "day": 6,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1359,
+      "feedingMarks": 91,
+      "visibleMarks": 10,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 110.55900824568451,
+        "hydration": 100.49392771429292,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 109,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 114,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 290,
+      "day": 7,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1347,
+      "feedingMarks": 108,
+      "visibleMarks": 7,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 110.15200001492126,
+        "hydration": 100.13864518095623,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 114,
+          "sequence": [
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 330,
+      "day": 7,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1304,
+      "feedingMarks": 96,
+      "visibleMarks": 6,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 109.65201610807321,
+        "hydration": 99.78444518095621,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 21,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 114,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 370,
+      "day": 8,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1258,
+      "feedingMarks": 98,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 109.22296591214344,
+        "hydration": 99.48007194285857,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 21,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 114,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 410,
+      "day": 9,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1259,
+      "feedingMarks": 95,
+      "visibleMarks": 11,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 108.72278623554344,
+        "hydration": 99.11062400000002,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 21,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 27,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 114,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 451,
+      "day": 10,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1251,
+      "feedingMarks": 85,
+      "visibleMarks": 13,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 108.22324743274591,
+        "hydration": 98.72943194285862,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 4,
+          "sequence": [
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 491,
+      "day": 11,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1255,
+      "feedingMarks": 77,
+      "visibleMarks": 12,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 107.79614617314772,
+        "hydration": 98.40126118095627,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 4,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 50,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 52,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 531,
+      "day": 12,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1265,
+      "feedingMarks": 73,
+      "visibleMarks": 10,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 107.29847758388838,
+        "hydration": 98.0174931809563,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 4,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 21,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 31,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 43,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 50,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 52,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 114,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 572,
+      "day": 12,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1304,
+      "feedingMarks": 66,
+      "visibleMarks": 5,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 97.86343884315663,
+        "hydration": 95.17019306147817,
+        "intent": "group-alarm",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 7,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 8,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 21,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 31,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 43,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 50,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 52,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 114,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 612,
+      "day": 13,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1304,
+      "feedingMarks": 65,
+      "visibleMarks": 10,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 95.68225203758567,
+        "hydration": 91.96250464104192,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 7,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 8,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 43,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 50,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 114,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 652,
+      "day": 14,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1313,
+      "feedingMarks": 67,
+      "visibleMarks": 14,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 93.80610472203901,
+        "hydration": 89.23029111177,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 7,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 8,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 43,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 50,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 54,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 57,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 114,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 132,
+          "sequence": [
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 692,
+      "day": 15,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1285,
+      "feedingMarks": 74,
+      "visibleMarks": 16,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 91.03991030779909,
+        "hydration": 86.10991099426279,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 8,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 43,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 50,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 54,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 109,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 114,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 132,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 732,
+      "day": 16,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1283,
+      "feedingMarks": 71,
+      "visibleMarks": 12,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 88.56022278179113,
+        "hydration": 83.00509928845035,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 4,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 8,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 43,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 50,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 52,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 109,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 114,
+          "sequence": [
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 773,
+      "day": 17,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1310,
+      "feedingMarks": 76,
+      "visibleMarks": 12,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 90.63865068211078,
+        "hydration": 80.31047122983661,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 8,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 43,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 51,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 109,
+          "sequence": [
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 813,
+      "day": 17,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "traces": 1316,
+      "feedingMarks": 74,
+      "visibleMarks": 10,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 88.17656519354215,
+        "hydration": 77.41773522983664,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 20,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 23,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 40,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 43,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 46,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 47,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 51,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 109,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 114,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 121,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 816,
+      "day": 18,
+      "paused": true,
+      "generationEditor": true,
+      "playerId": 109,
+      "traces": 1317,
+      "feedingMarks": 74,
+      "visibleMarks": 10,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 75.98607486805265,
+        "hydration": 77.00448722983664,
+        "intent": "mate",
+        "lastMate": 121,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 20,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 23,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 35,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 40,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 43,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 46,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 47,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 51,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 114,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 121,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 816,
+      "day": 18,
+      "paused": true,
+      "generationEditor": true,
+      "playerId": 109,
+      "traces": 1317,
+      "feedingMarks": 74,
+      "visibleMarks": 10,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 75.98607486805265,
+        "hydration": 77.00448722983664,
+        "intent": "mate",
+        "lastMate": 121,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 20,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 23,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 35,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 40,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 43,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 46,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 47,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 51,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 114,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 121,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 816,
+      "day": 18,
+      "paused": true,
+      "generationEditor": true,
+      "playerId": 109,
+      "traces": 1317,
+      "feedingMarks": 74,
+      "visibleMarks": 10,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 75.98607486805265,
+        "hydration": 77.00448722983664,
+        "intent": "mate",
+        "lastMate": 121,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 20,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 23,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 35,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 40,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 43,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 46,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 47,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 51,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 114,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 121,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 816,
+      "day": 18,
+      "paused": true,
+      "generationEditor": true,
+      "playerId": 109,
+      "traces": 1317,
+      "feedingMarks": 74,
+      "visibleMarks": 10,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 75.98607486805265,
+        "hydration": 77.00448722983664,
+        "intent": "mate",
+        "lastMate": 121,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 20,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 23,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 35,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 40,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 43,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 46,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 47,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 51,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 114,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 121,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    }
+  ],
+  "seen": [
+    {
+      "actorId": 114,
+      "tick": 204,
+      "kind": "call"
+    },
+    {
+      "actorId": 109,
+      "tick": 210,
+      "kind": "call"
+    },
+    {
+      "actorId": 114,
+      "tick": 222,
+      "kind": "declined"
+    },
+    {
+      "actorId": 109,
+      "tick": 228,
+      "kind": "declined"
+    },
+    {
+      "actorId": 114,
+      "tick": 234,
+      "kind": "dance"
+    },
+    {
+      "actorId": 109,
+      "tick": 252,
+      "kind": "dance"
+    },
+    {
+      "actorId": 132,
+      "tick": 510,
+      "kind": "declined"
+    },
+    {
+      "actorId": 132,
+      "tick": 618,
+      "kind": "dance"
+    },
+    {
+      "actorId": 132,
+      "tick": 666,
+      "kind": "call"
+    },
+    {
+      "actorId": 121,
+      "tick": 672,
+      "kind": "declined"
+    },
+    {
+      "actorId": 121,
+      "tick": 786,
+      "kind": "dance"
+    },
+    {
+      "actorId": 121,
+      "tick": 804,
+      "kind": "call"
+    },
+    {
+      "actorId": 109,
+      "tick": 816,
+      "kind": "paired"
+    }
+  ],
+  "errors": [],
+  "video": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\natural-trail-video\\page@c9d60e8a79b347619bd38321596092d2.webm"
+}

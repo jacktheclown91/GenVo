@@ -1,0 +1,5 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {TutorialController} from '../src/ui/tutorial.js';
+import {makePlan} from '../src/lineage/body-plan.js';
+const s=new Simulation('TUTORIAL-DIET-GUIDE'),a=s.player(),w=s.world;let spot;for(let y=8;y<w.n-8&&!spot;y++)for(let x=8;x<w.n-8&&!spot;x++)if(s.canOccupy(a,x+.5,y+.5)&&!w.isDrinkable(x+.5,y+.5))spot={x:x+.5,y:y+.5};assert.ok(spot);Object.assign(a,spot);a.bodyPlan=makePlan(a.bodyPlan.nodes.map(n=>n.socket==='mouth'?{...n,partId:'tearing-jaw'}:n));for(let dy=-3;dy<=3;dy++)for(let dx=-3;dx<=3;dx++){const i=w.idx(a.x+dx,a.y+dy);for(const field of Object.values(w.plants))field[i]=0;w.carrion[i]=0}w.carrion[w.idx(a.x,a.y)]=.9;const view=Object.create(TutorialController.prototype);view.sim=s;const rng=s.rng.state;assert.equal(view.findFood(a,3).kind,'carrion');assert.equal(s.rng.state,rng);console.log('Carnivore tutorial guidance uses actual carrion without crashing or consuming RNG PASS');

@@ -1,0 +1,80 @@
+{
+  "scope": "Fresh finite carrying stocks and individual handling eligibility; existing density weighting unchanged",
+  "receipts": [
+    {
+      "test": "carrying-live-stock",
+      "status": "PASS",
+      "output": "Actual aquatic harvest, same-day finite regrowth, individual handling energy and terrain changes affect carrying immediately; RNG unchanged PASS\n"
+    },
+    {
+      "test": "carrying",
+      "status": "PASS",
+      "output": "carrying pressure / background cadence: PASS\n"
+    },
+    {
+      "test": "carrying-anatomy-cache",
+      "status": "PASS",
+      "output": "shared-region cache distinguishes inherited mouth diet PASS\ncache distinguishes actual swimming access PASS\n"
+    },
+    {
+      "test": "carrying-land-access",
+      "status": "PASS",
+      "output": "land survey candidate barrier rejection and connected food positive control PASS\n"
+    },
+    {
+      "test": "carrying-connected-demand",
+      "status": "PASS",
+      "output": "production connected/disconnected and swimming demand controls passed\n"
+    },
+    {
+      "test": "freshwater-bank-capacity",
+      "status": "PASS",
+      "output": "freshwater capacity preserves surface bank and submerged anatomy access: PASS\n"
+    },
+    {
+      "test": "freshwater-hunter-capacity",
+      "status": "PASS",
+      "output": "hunter capacity counts finite accessible aquatic nutrition conservatively: PASS\n"
+    },
+    {
+      "test": "inherited-wild-nutrition",
+      "status": "PASS",
+      "output": "Actual ambient feeding and authoritative quotes both respond to inherited nutrition under identical anatomy/resource labels PASS\n"
+    },
+    {
+      "test": "lineage-pressure-dispersal",
+      "status": "PASS",
+      "output": "crowded lineage selects demand-supported reachable dispersal; no teleport, persistence and stale destination PASS\n"
+    },
+    {
+      "test": "wild-pressure-movement",
+      "status": "PASS",
+      "output": "wild crowding response uses perceived connected habitat: PASS\n"
+    },
+    {
+      "test": "conception-availability",
+      "status": "PASS",
+      "output": "Explained ecological blocking, survival release, unrelated-partner preservation, no false preference learning/RNG/funding and saved outcomes PASS\n"
+    },
+    {
+      "test": "evolving-courtship-rituals",
+      "status": "PASS",
+      "output": "evolving-courtship-rituals: anatomical repertoire, taste, optional attempts, social learning, save/load and ecology RNG PASS\n"
+    },
+    {
+      "test": "local-receptive-courtship",
+      "status": "PASS",
+      "output": "EQ non-forced local courtship, physiological refusal and recovery, long-range search, RNG/resources, save/load: PASS\n"
+    },
+    {
+      "test": "mating-arrival-pressure",
+      "status": "PASS",
+      "output": "mating arrival respects changed carrying pressure: PASS\n"
+    },
+    {
+      "test": "save-persistence",
+      "status": "PASS",
+      "output": "save persistence roundtrip: PASS\n"
+    }
+  ]
+}

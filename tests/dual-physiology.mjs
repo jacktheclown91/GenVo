@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {makePlan} from '../src/lineage/body-plan.js';
+import {founderPlan} from '../src/lineage/body-inheritance.js';
+import {DUAL_ENERGY_UPKEEP,DUAL_WATER_UPKEEP} from '../src/reproduction/reproductive-anatomy.js';
+const sim=new Simulation('DUAL-PHYSIOLOGY',{bootstrap:false,player:false});
+const a=sim.spawnAnimal('genvo',30,30),b=sim.spawnAnimal('genvo',30,30);
+a.age=b.age=65;a.sex=b.sex='F';a.player=b.player=false;a.pregnant=b.pregnant=null;
+a.energy=b.energy=100;a.hydration=b.hydration=95;a.health=b.health=100;
+b.genes=structuredClone(a.genes);b.adaptations=structuredClone(a.adaptations);
+b.bodyPlan=founderPlan();a.bodyPlan=makePlan([...b.bodyPlan.nodes.map(n=>({partId:n.partId,parent:n.parent,socket:n.socket})),{partId:'egg-chamber',parent:'root',socket:'flank.left'},{partId:'live-womb',parent:'root',socket:'flank.right'}]);
+sim.phaseClimate();
+const energyBefore=a.energy-b.energy,waterBefore=a.hydration-b.hydration;
+sim.phaseMetabolism();
+assert.ok((b.energy-a.energy+energyBefore)>=DUAL_ENERGY_UPKEEP-1e-5,'ongoing additional energy upkeep is real');
+assert.ok(Math.abs((b.hydration-a.hydration+waterBefore)-DUAL_WATER_UPKEEP)<1e-5,'ongoing additional hydration upkeep is real');
+console.log('dual reproductive physiology: same physiology with extra ongoing real resource costs PASS');

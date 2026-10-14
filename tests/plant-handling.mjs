@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {makePlan} from '../src/lineage/body-plan.js';
+import {plantHandling} from '../src/ecology/plant-handling.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+assert.equal(plantHandling({energy:-1},null).enabled,true,'soft food remains available to starving creatures');
+const s=new Simulation('PLANT-HANDLING'),a=s.player(),w=s.world;let cell;for(let i=0;i<w.len&&!cell;i++){const x=i%w.n+.5,y=(i/w.n|0)+.5;if(w.thistlepod[i]>.2&&s.canOccupy(a,x,y))cell={i,x,y}}assert.ok(cell);a.x=cell.x;a.y=cell.y;a.energy=10;a.hydration=20;const t={kind:'plant',food:'thistlepod',...cell,tissue:'crop'},stock=w.thistlepod[cell.i],rng=s.rng.state;
+const slow=s.dispersal.previewMeal(a,'thistlepod',cell.i,.15,'crop'),cost=plantHandling(a,slow).energyCost;assert.ok(cost>0);const plain=makePlan(a.bodyPlan.nodes.map(n=>n.socket==='mouth'?{...n,partId:'kernel-beak'}:n));const specialized={...a,bodyPlan:plain};assert.ok(plantHandling(specialized,slow).energyCost<cost);for(let n=0;n<3;n++)s.interactionOptions(t);assert.equal(w.thistlepod[cell.i],stock);assert.equal(s.rng.state,rng);
+a.energy=0;const no=s.resourceAction('eat',t);assert.equal(no.state,'unavailable');assert.match(no.reason,/energy/);assert.equal(s.playerInteract(t).ok,false);assert.equal(w.thistlepod[cell.i],stock);assert.equal(s.dispersal.harvestMeal(a,'thistlepod',cell.i,.15,'crop'),null,'wild/direct harvest cannot bypass funding');
+a.energy=10;const energy=a.energy,receipt=s.dispersal.harvestMeal(a,'thistlepod',cell.i,.04,'crop');assert.ok(receipt);assert.ok(Math.abs(a.energy-(energy-receipt.processingCost))<1e-8);assert.ok(Math.abs(receipt.removed-(receipt.edible+receipt.viableSeeds+receipt.discarded))<1e-7);a.energy=10;a.bodyPlan=plain;const cracked=s.playerInteract({...t,tissue:'kernel'},'eat:thistlepod:'+cell.i+':kernel');assert.ok(cracked.ok,JSON.stringify(cracked));assert.ok(cracked.processingCost<cost);assert.ok(cracked.plantReceipt.destroyedSeeds>0);assert.equal(cracked.plantReceipt.viableSeeds,0);
+const restored=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(s)));assert.deepEqual(restored.player().lastPlantMeal,a.lastPlantMeal);assert.deepEqual(restored.dispersal.coatReserve,s.dispersal.coatReserve);assert.equal(restored.player().energy,a.energy);
+console.log('Resistant coat cost, specialization, authoritative failure, no unpaid harvest, finite transfers and save parity PASS');

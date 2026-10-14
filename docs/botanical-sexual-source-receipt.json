@@ -1,0 +1,70 @@
+{
+  "baseline": "GenVo-lab-lineage-windows-2026-10-13-01",
+  "changedRuntimeFiles": [
+    {
+      "file": "src/ecology/dispersal.js",
+      "sha256": "04dc3bb16af73c7c207efcc7ea741c7d12bf550f78ae6548bedf6d22a8928ce2",
+      "previousSha256": "1a3c3f0d06e2f97f765b3f3c749038149be15cc87d5846e21a2623edeebd2bc3"
+    },
+    {
+      "file": "src/ecology/flora-genotype.js",
+      "sha256": "08f329f56f7f5bfec458536c81f5d962f897896991118d765cf46fc9503c22b2",
+      "previousSha256": "98d868f5cd475670726a0eecef3c384a749f7f8f61fba9a619657b6ae2a33d14"
+    },
+    {
+      "file": "src/ecology/flora-inheritance.js",
+      "sha256": "637b30ae462156a0a6219072e917d01a53535e202a768ab86c2b2d3db8690eba",
+      "previousSha256": "4b3f81eaaa0643e57076944a67ccc2739c6effc7831a050b1f08419bf0e71b0e"
+    },
+    {
+      "file": "src/ecology/plant-resources.js",
+      "sha256": "740dd8ddbc5ea90589f79488199354c91fc37a795672484d915ce158a44b8c91",
+      "previousSha256": "280fbaa1d8e6a8288c3d4b0d1373be8dfa6d7ef88097b59650eae229bc03c00e"
+    },
+    {
+      "file": "src/gameplay/foraging.js",
+      "sha256": "beeac11867e77058db721f8c093b128064282a95f335e0caf93c4fd95089e337",
+      "previousSha256": "ff5ea0f36f30d8b45d9df0d2824e3333eccab86dba76b4b4f361c8bf434403f8"
+    },
+    {
+      "file": "src/render/flora.js",
+      "sha256": "4d897714e7fe88a69756343c3717050a5e7cf1fab223d8cd6c20711fc4415dee",
+      "previousSha256": "abad08b76f51a6787344133e4d7287d20adec48297e885fceb0915231e3bb067"
+    },
+    {
+      "file": "src/render/renderer.js",
+      "sha256": "532e09ca63774b0528727f73ac3b5ce5ca055e9869ca0e36e46032d56f3a5d9a",
+      "previousSha256": "bd4f2c1c69a61a8a83a1938ef8d38fa04e22538fcdc689b47947169b9db63057"
+    },
+    {
+      "file": "src/sim/simulation.js",
+      "sha256": "6d098bd894934e061b5322a3c7c6d7f16df223577826472c6ef7cd5d377aaad8",
+      "previousSha256": "5a658fd03cf511d20a1f99bccfa80d85c2773009dd7d4dd21a64c840a2211f11"
+    },
+    {
+      "file": "src/ui/resource-inspector.js",
+      "sha256": "7cb5e31ca4810e035eb437ba6123eae9f5d7263e27ce9855f37bd080289f8b4d",
+      "previousSha256": "a2d5dc1b29fcf45cf2f4615bea3903eb12874d029dfcfc5de634a14fe7b0d3a9"
+    },
+    {
+      "file": "src/ui/world-resource-target.js",
+      "sha256": "027d9365ea5d9411f7a337e4563724bca532c305d3384be6a1801a4b051041bf",
+      "previousSha256": "c399320ce945316a3902261f03f4cc046a79a714bd0e121e914d3bc02d262f31"
+    },
+    {
+      "file": "src/ecology/botanical-genetics.js",
+      "sha256": "b6cd2d1dd8e94eb1d1d63bf7cdf440448d75421be5556b6037c874f521b5f662",
+      "new": true
+    },
+    {
+      "file": "src/ecology/botanical-reproduction.js",
+      "sha256": "8b11ace243ceda25cb35f81a7f02a259c6d7a12b86dba7bc642ab623e67812d5",
+      "new": true
+    },
+    {
+      "file": "src/ecology/flora-genome-lifetime.js",
+      "sha256": "283ce870507095d3259317e99f5f196f64f0119bc542ebcd849f742f1190bc69",
+      "new": true
+    }
+  ]
+}

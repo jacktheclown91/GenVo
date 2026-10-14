@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+// Read-only audit of birth genomes and recorded conception locations. No outcome thresholds.
+const input=process.argv[2];if(!input)throw Error('Expected family observer JSON');
+const r=JSON.parse(fs.readFileSync(input)),byId=new Map(r.records.map(a=>[a.id,a]));
+const founder=byId.get(r.fixture.founderId);if(!founder)throw Error('Missing founder');
+const direct=founder.children||[],memo=new Map();
+function roots(id,visiting=new Set()){if(memo.has(id))return memo.get(id);if(visiting.has(id))throw Error('Genealogy cycle');const a=byId.get(id);if(!a)return [];const next=new Set(visiting);next.add(id);const result=direct.includes(id)?[id]:[...new Set(a.parentIds.flatMap(p=>roots(p,next)))];memo.set(id,result);return result}
+const keys=Object.keys(founder.genes).filter(k=>Number.isFinite(founder.genes[k]));
+const mean=members=>Object.fromEntries(keys.map(k=>[k,members.reduce((n,a)=>n+a.genes[k],0)/members.length]));
+const branches=direct.map(id=>{const members=r.records.filter(a=>a.lineage&&roots(a.id).includes(id)),living=members.filter(a=>a.alive),breeders=members.filter(a=>a.children.length);return {rootId:id,members:members.map(a=>a.id),livingIds:living.map(a=>a.id),breeders:breeders.map(a=>({id:a.id,children:a.children,alive:a.alive})),livingBirthGenomeMean:living.length?mean(living):null,ecologicalRegions:[...new Set(living.map(a=>a.ecologicalRegionKey))],conceptions:r.conceptions.filter(c=>c.ids.some(id=>breeders.some(a=>a.id===id)))};});
+for(const branch of branches){
+ branch.exclusiveMemberIds=branch.members.filter(id=>roots(id).length===1);
+ branch.exclusiveLivingIds=branch.livingIds.filter(id=>roots(id).length===1);
+ branch.exclusiveBreeders=branch.breeders.filter(a=>roots(a.id).length===1).map(a=>({...a,exclusiveChildren:a.children.filter(id=>roots(id).length===1&&roots(id)[0]===branch.rootId)}));
+ branch.confirmedDescendantBirths=r.records.filter(child=>child.parentIds?.some(id=>id!==founder.id&&roots(id).includes(branch.rootId))).map(child=>({childId:child.id,parentIds:child.parentIds,bornDay:child.bornDay,branchRoots:roots(child.id),alive:child.alive}));
+ branch.sampledResidences=(r.timeline||[]).map(sample=>({day:sample.day,members:(sample.lineageState||[]).filter(a=>roots(a.id).includes(branch.rootId)).map(a=>({id:a.id,ecologicalRegionKey:a.ecologicalRegionKey,residenceAnchor:a.residenceAnchor||null}))})).filter(sample=>sample.members.length);
+ branch.matingConnections=branch.conceptions.map(c=>({day:c.day,parents:c.ids.map((id,index)=>({id,branchRoots:roots(id),position:c.positions?.[index]||null,ecologicalRegionKey:c.ecologicalRegionKeys?.[index]||null})),sharedAncestryBranchRoots:roots(c.ids[0]).filter(root=>roots(c.ids[1]).includes(root))}));
+}
+const differences=[];for(let i=0;i<branches.length;i++)for(let j=i+1;j<branches.length;j++){const a=branches[i],b=branches[j];if(!a.livingBirthGenomeMean||!b.livingBirthGenomeMean)continue;differences.push({roots:[a.rootId,b.rootId],sharedLivingIds:a.livingIds.filter(id=>b.livingIds.includes(id)),meanAbsoluteBirthGeneDifference:keys.reduce((n,k)=>n+Math.abs(a.livingBirthGenomeMean[k]-b.livingBirthGenomeMean[k]),0)/keys.length});}
+const audit={seed:r.seed,day:r.day,complete:r.complete,sourceFingerprint:r.sourceFingerprint,scope:'Exclusive memberships and observed descendant births separate branch contributions from shared descendants; these alone do not prove independent colonies. Descriptive overlapping genealogical branches and birth-genome differences with sampled residence and mating connections. Missing ancestry is reported as an empty branch-root list and is not proof of unrelatedness. Regions are current census locations; these do not prove isolation, colonies, adaptation or causal selection.',branches,differences};const output=input.replace(/\.json$/,'-genealogy.json');fs.writeFileSync(output,JSON.stringify(audit,null,2));console.log(JSON.stringify({output,day:r.day,complete:r.complete,branches:branches.length,livingBranches:branches.filter(b=>b.livingIds.length).length,reproducingBranches:branches.filter(b=>b.breeders.length).length}));

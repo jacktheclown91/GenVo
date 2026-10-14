@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "receipts": [
+    {
+      "size": 1,
+      "ancestralAlleles": [
+        "si:6",
+        "si:1"
+      ],
+      "accepts": 0,
+      "rejects": 0,
+      "selfAccepts": 1,
+      "selfRejects": 0,
+      "scope": "Recognition matrix; not forced fertilization or population survival"
+    },
+    {
+      "size": 2,
+      "ancestralAlleles": [
+        "si:6",
+        "si:1",
+        "si:5"
+      ],
+      "accepts": 2,
+      "rejects": 0,
+      "selfAccepts": 2,
+      "selfRejects": 0,
+      "scope": "Recognition matrix; not forced fertilization or population survival"
+    },
+    {
+      "size": 8,
+      "ancestralAlleles": [
+        "si:6",
+        "si:1",
+        "si:5",
+        "si:2",
+        "si:7",
+        "si:4"
+      ],
+      "accepts": 56,
+      "rejects": 0,
+      "selfAccepts": 8,
+      "selfRejects": 0,
+      "scope": "Recognition matrix; not forced fertilization or population survival"
+    },
+    {
+      "size": 32,
+      "ancestralAlleles": [
+        "si:6",
+        "si:1",
+        "si:5",
+        "si:2",
+        "si:7",
+        "si:4",
+        "si:0",
+        "si:3"
+      ],
+      "accepts": 954,
+      "rejects": 38,
+      "selfAccepts": 26,
+      "selfRejects": 6,
+      "scope": "Recognition matrix; not forced fertilization or population survival"
+    },
+    {
+      "size": 128,
+      "ancestralAlleles": [
+        "si:6",
+        "si:1",
+        "si:5",
+        "si:2",
+        "si:7",
+        "si:4",
+        "si:0",
+        "si:3"
+      ],
+      "accepts": 15295,
+      "rejects": 961,
+      "selfAccepts": 95,
+      "selfRejects": 33,
+      "scope": "Recognition matrix; not forced fertilization or population survival"
+    }
+  ],
+  "limits": "Controlled inherited recognition and segregation. Drift, bottlenecks and adaptive population outcomes are not established by these matrices."
+}

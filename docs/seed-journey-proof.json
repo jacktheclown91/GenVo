@@ -1,0 +1,275 @@
+{
+  "scope": "Controlled initial player/camera and mounted-mouth fixtures. Native food commands and walking; actual finite carried seeds, accelerated canonical transit/vegetation, journal revisit and saved observations. No plant genotype, tissue or biomass writes. Separate normal fresh-world observation follows.",
+  "errors": [],
+  "checks": [],
+  "handling": [
+    {
+      "mouth": "grazing-mouth",
+      "meal": {
+        "kind": "thistlepod",
+        "i": 1298,
+        "tissue": "crop",
+        "removed": 0.15,
+        "coat": 0.0375,
+        "edible": 0.0825,
+        "viableSeeds": 0.03,
+        "destroyedSeeds": 0,
+        "discarded": 0.0375,
+        "genome": {
+          "schema": 1,
+          "id": "flora1-thistlepod",
+          "resourceAlias": "thistlepod",
+          "traits": {
+            "growth": 0.026,
+            "waterNeed": 0.25,
+            "nutrition": 11,
+            "seedAllocation": 0.2,
+            "coatAllocation": 0.25
+          },
+          "reproduction": "propagule",
+          "mutationEnabled": false
+        },
+        "producerId": "thistlepod:1298:founder",
+        "originCell": 1298,
+        "processingCost": 0.6,
+        "specializedHandling": false,
+        "actorId": 109,
+        "tick": 1,
+        "parentGenomeId": "flora1-thistlepod",
+        "mutation": 0,
+        "coatMutation": 0,
+        "mutationAxis": null,
+        "seedTransferComplete": true
+      },
+      "pose": {
+        "mode": "pull",
+        "strength": 1,
+        "seedFate": "carried",
+        "mouthPulse": 1.1035533905932737,
+        "headDrop": 0.5025126265847085,
+        "bodyDrop": 0.35,
+        "bodyLean": -0.7255203820042827,
+        "stanceSpread": 0.5,
+        "compress": -0.10242640687119284,
+        "forelegLift": 0.21338834764831843
+      }
+    },
+    {
+      "mouth": "beak-mouth",
+      "meal": {
+        "kind": "thistlepod",
+        "i": 1302,
+        "tissue": "crop",
+        "removed": 0.15,
+        "coat": 0.0375,
+        "edible": 0.08250000095667548,
+        "viableSeeds": 0.029999999043324514,
+        "destroyedSeeds": 0,
+        "discarded": 0.0375,
+        "genome": {
+          "schema": 1,
+          "id": "flora1-thistlepod",
+          "resourceAlias": "thistlepod",
+          "traits": {
+            "growth": 0.026,
+            "waterNeed": 0.25,
+            "nutrition": 11,
+            "seedAllocation": 0.2,
+            "coatAllocation": 0.25
+          },
+          "reproduction": "propagule",
+          "mutationEnabled": false
+        },
+        "producerId": "thistlepod:1302:founder",
+        "originCell": 1302,
+        "processingCost": 0.3,
+        "specializedHandling": true,
+        "actorId": 109,
+        "tick": 9,
+        "parentGenomeId": "flora1-thistlepod",
+        "mutation": 0,
+        "coatMutation": 0,
+        "mutationAxis": null,
+        "seedTransferComplete": true
+      },
+      "pose": {
+        "mode": "peck",
+        "strength": 1,
+        "seedFate": "carried",
+        "mouthPulse": 0.3840990257669732,
+        "headDrop": 1.6802761985689632,
+        "bodyDrop": 0.35,
+        "bodyLean": 0.3414213562373095,
+        "stanceSpread": 0.3
+      }
+    },
+    {
+      "mouth": "kernel-beak",
+      "meal": {
+        "kind": "thistlepod",
+        "i": 1318,
+        "tissue": "crop",
+        "removed": 0.15,
+        "coat": 0.0375,
+        "edible": 0.0824999994927475,
+        "viableSeeds": 0.03000000050725249,
+        "destroyedSeeds": 0,
+        "discarded": 0.0375,
+        "genome": {
+          "schema": 1,
+          "id": "flora1-thistlepod",
+          "resourceAlias": "thistlepod",
+          "traits": {
+            "growth": 0.026,
+            "waterNeed": 0.25,
+            "nutrition": 11,
+            "seedAllocation": 0.2,
+            "coatAllocation": 0.25
+          },
+          "reproduction": "propagule",
+          "mutationEnabled": false
+        },
+        "producerId": "thistlepod:1318:founder",
+        "originCell": 1318,
+        "processingCost": 0.15,
+        "specializedHandling": true,
+        "actorId": 109,
+        "tick": 18,
+        "parentGenomeId": "flora1-thistlepod",
+        "mutation": 0,
+        "coatMutation": 0,
+        "mutationAxis": null,
+        "seedTransferComplete": true
+      },
+      "pose": {
+        "mode": "crush",
+        "strength": 1,
+        "seedFate": "carried",
+        "mouthPulse": 1.165685424949238,
+        "headDrop": 1.1121320343559642,
+        "bodyDrop": 0.35,
+        "compress": 0.21338834764831843,
+        "stanceSpread": 0.65,
+        "bodyLean": -0.2560660171779821
+      }
+    }
+  ],
+  "source": {
+    "i": 1979,
+    "j": 1982,
+    "startX": 59.5,
+    "startY": 15.5,
+    "endX": 62.5,
+    "point": {
+      "x": 384,
+      "y": 287
+    }
+  },
+  "walk": {
+    "x": 62.56983848125738,
+    "y": 15.5
+  },
+  "deposit": {
+    "id": 11,
+    "ownerId": 109,
+    "type": "seed",
+    "x": 62.56983848125738,
+    "y": 15.5,
+    "food": "bramble",
+    "dir": 2,
+    "tick": 42,
+    "medium": "land",
+    "limbs": 4,
+    "mass": 1.45,
+    "depositId": 2,
+    "genomeId": "flora2-bramble-0.18000",
+    "genomeIds": [
+      "flora2-bramble-0.18000"
+    ],
+    "amount": 0.032,
+    "originCell": 1979,
+    "producerId": "bramble:1979:founder"
+  },
+  "remembered": {
+    "id": 11,
+    "actorId": 109,
+    "carrierId": 109,
+    "food": "bramble",
+    "x": 62.56983848125738,
+    "y": 15.5,
+    "depositId": 2,
+    "depositedTick": 42,
+    "status": "waiting",
+    "observedTick": 43,
+    "observedDay": 1
+  },
+  "growth": {
+    "biomass": 0.04779818654060364,
+    "origin": {
+      "depositIds": [
+        2
+      ],
+      "amount": 0.03142400149255991,
+      "originCell": 1979,
+      "producerId": "bramble:1982:1",
+      "parentGenomeId": "flora1-bramble",
+      "mutation": -0.020000000000000018,
+      "coatMutation": 0,
+      "mutationAxis": "seedAllocation",
+      "mode": "clonal",
+      "route": "gut-passage",
+      "genomeId": "flora2-bramble-0.18000",
+      "parentProducerId": "bramble:1979:founder",
+      "establishedDay": 1,
+      "establishedTick": 48
+    }
+  },
+  "beforeRevisit": {
+    "x": 59.53132488246181,
+    "energy": 25.75702760805997
+  },
+  "afterRevisit": {
+    "x": 61.22286853539955,
+    "energy": 25.611797877226397
+  },
+  "revisit": {
+    "observation": {
+      "id": 11,
+      "actorId": 109,
+      "carrierId": 109,
+      "food": "bramble",
+      "x": 62.56983848125738,
+      "y": 15.5,
+      "depositId": 2,
+      "depositedTick": 42,
+      "status": "established",
+      "observedTick": 80,
+      "observedDay": 2,
+      "producerId": "bramble:1982:1",
+      "genomeId": "flora2-bramble-0.18000",
+      "mixed": false,
+      "biomass": 0.04779818654060364,
+      "establishedDay": 1
+    },
+    "notice": "✓ Berries · A new plant grew from seeds left here. Recorded in your journal.",
+    "target": {
+      "kind": "seed-patch",
+      "id": 11,
+      "x": 62.56983848125738,
+      "y": 15.5,
+      "food": "bramble",
+      "label": "Remembered seed patch"
+    }
+  },
+  "save": {
+    "observations": true,
+    "depositCounter": true
+  },
+  "natural": {
+    "scope": "30 seconds normal fresh-world simulation, no fixtures or player commands.",
+    "tick": 240,
+    "gutDeposits": 0,
+    "carriers": 0,
+    "observations": 0
+  }
+}

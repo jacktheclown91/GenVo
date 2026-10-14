@@ -1,0 +1,20 @@
+{
+  "baseline": "GenVo-botanical-sexual-2026-10-13-01",
+  "changedRuntimeFiles": [
+    {
+      "file": "src/persistence/flora-seed-codec.js",
+      "sha256": "888a8fc4b97c4418021d01159e47e2cafc14af09300815d4aab37afc89713419",
+      "previousSha256": null
+    },
+    {
+      "file": "src/persistence/save-manager.js",
+      "sha256": "491e379f2e199e5214bb01812a1af1d5cda209f17f431dea2fcd9c3aa60b5870",
+      "previousSha256": "5cea7637c73cc886aa7d4cb45b7949d166f390be06a39314d501b6779a75b5f7"
+    },
+    {
+      "file": "src/sim/simulation.js",
+      "sha256": "43b54f02ee2d12734840baf4a3370182035caead42a8249984f4a2fd555a1d8b",
+      "previousSha256": "6d098bd894934e061b5322a3c7c6d7f16df223577826472c6ef7cd5d377aaad8"
+    }
+  ]
+}

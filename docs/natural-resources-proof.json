@@ -1,0 +1,2499 @@
+{
+  "scope": "120 wall-clock seconds at normal speed in a fresh generated world; ordinary generation/editor pauses remain in force. Ordinary Auto and Keep the old body UI choices only; no actor, anatomy, readiness, stock, RNG or clock edits. Unscripted simulation, not a human playtest.",
+  "samples": [
+    {
+      "tick": 50,
+      "day": 2,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 547.8507023905229,
+          "shoreInflow": 11.309600168466513,
+          "evaporation": 683.0401000000904,
+          "runoff": 0,
+          "photosynthesis": 412.5082294694208,
+          "respiration": 46.8206482932752,
+          "growth": 230.16297026002684,
+          "waterUsed": 115.08148513001342,
+          "mineralsUsed": 23.016297026002714,
+          "mineralized": 0.470292102581296,
+          "plantLitter": 4.637536268544242,
+          "seedLitter": 0,
+          "reserveExport": 0.7210709823181627,
+          "biomassExported": 0.8400000786781311
+        },
+        "water": 17522.709955165974,
+        "minerals": 4042.4080359496215,
+        "limited": {
+          "sunmoss": [
+            3709,
+            12675,
+            0,
+            0,
+            0
+          ],
+          "bramble": [
+            9759,
+            6625,
+            0,
+            0,
+            0
+          ],
+          "marshroot": [
+            11422,
+            3400,
+            0,
+            0,
+            1562
+          ],
+          "thistlepod": [
+            10199,
+            6182,
+            0,
+            0,
+            3
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 0.7925830042801361,
+          "germinated": 0,
+          "destroyed": 0.0960000006116285,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 108,
+        "established": 0,
+        "litter": 0.0546152638271451
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 446,
+      "feedingMarks": 14,
+      "visibleMarks": 3,
+      "traceHint": false,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 113.48273762197925,
+        "hydration": 102.19097599999996,
+        "intent": "explore",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 90,
+      "day": 2,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 547.8507023905229,
+          "shoreInflow": 11.309600168466513,
+          "evaporation": 683.0401000000904,
+          "runoff": 0,
+          "photosynthesis": 412.5082294694208,
+          "respiration": 46.8206482932752,
+          "growth": 230.16297026002684,
+          "waterUsed": 115.08148513001342,
+          "mineralsUsed": 23.016297026002714,
+          "mineralized": 0.470292102581296,
+          "plantLitter": 4.637536268544242,
+          "seedLitter": 0,
+          "reserveExport": 0.940955886524266,
+          "biomassExported": 2.880000274181366
+        },
+        "water": 17522.709955165974,
+        "minerals": 4042.4080359496215,
+        "limited": {
+          "sunmoss": [
+            3709,
+            12675,
+            0,
+            0,
+            0
+          ],
+          "bramble": [
+            9759,
+            6625,
+            0,
+            0,
+            0
+          ],
+          "marshroot": [
+            11422,
+            3400,
+            0,
+            0,
+            1562
+          ],
+          "thistlepod": [
+            10199,
+            6182,
+            0,
+            0,
+            3
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 0.7925830042801361,
+          "germinated": 0,
+          "destroyed": 0.12800000115980514,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 108,
+        "established": 0,
+        "litter": 0.09461526293307543
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 734,
+      "feedingMarks": 27,
+      "visibleMarks": 5,
+      "traceHint": false,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 112.93743095806967,
+        "hydration": 101.83046653333668,
+        "intent": "explore",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 130,
+      "day": 3,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 974.11623318322,
+          "shoreInflow": 22.619200336933016,
+          "evaporation": 1381.4828241711464,
+          "runoff": 0,
+          "photosynthesis": 860.2098333143217,
+          "respiration": 94.30877513529464,
+          "growth": 441.40113473228104,
+          "waterUsed": 220.70056736614052,
+          "mineralsUsed": 44.14011347322808,
+          "mineralized": 0.8649693243462738,
+          "plantLitter": 8.498868652781088,
+          "seedLitter": 0.012703010346740484,
+          "reserveExport": 1.7251926685823533,
+          "biomassExported": 4.480000447034836
+        },
+        "water": 17156.223279718623,
+        "minerals": 4021.6788967241882,
+        "limited": {
+          "sunmoss": [
+            3286,
+            13098,
+            0,
+            0,
+            0
+          ],
+          "bramble": [
+            9759,
+            6625,
+            0,
+            0,
+            0
+          ],
+          "marshroot": [
+            11421,
+            1935,
+            0,
+            0,
+            3028
+          ],
+          "thistlepod": [
+            10199,
+            6181,
+            0,
+            0,
+            4
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 1.7636071272477265,
+          "germinated": 0.016450060531497,
+          "destroyed": 0.12800000115980514,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 237,
+        "established": 1,
+        "litter": 0.021878442028537393
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 991,
+      "feedingMarks": 36,
+      "visibleMarks": 8,
+      "traceHint": false,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 112.47006831366272,
+        "hydration": 101.52068518095624,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 170,
+      "day": 4,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 1511.0995092809098,
+          "shoreInflow": 33.92880050539923,
+          "evaporation": 2086.305524171299,
+          "runoff": 0,
+          "photosynthesis": 1279.8722888185573,
+          "respiration": 142.4099287462526,
+          "growth": 643.0747904842369,
+          "waterUsed": 321.53739524211846,
+          "mineralsUsed": 64.30747904842279,
+          "mineralized": 1.2128519436173368,
+          "plantLitter": 11.928646423215916,
+          "seedLitter": 0.041169992880895734,
+          "reserveExport": 2.5579247855038734,
+          "biomassExported": 6.158634648227597
+        },
+        "water": 16898.856628108664,
+        "minerals": 4001.859413768238,
+        "limited": {
+          "sunmoss": [
+            3095,
+            13289,
+            0,
+            0,
+            0
+          ],
+          "bramble": [
+            9759,
+            6412,
+            0,
+            0,
+            213
+          ],
+          "marshroot": [
+            11416,
+            1322,
+            0,
+            0,
+            3646
+          ],
+          "thistlepod": [
+            10199,
+            6180,
+            0,
+            0,
+            5
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 3.144444394415101,
+          "germinated": 0.09124547056853771,
+          "destroyed": 0.1876288808695793,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 418,
+        "established": 6,
+        "litter": 0.08266297564841807
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1263,
+      "feedingMarks": 47,
+      "visibleMarks": 11,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 103.65528595558348,
+        "hydration": 100.0781833714446,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 210,
+      "day": 5,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 2059.2693517854386,
+          "shoreInflow": 45.23840067386406,
+          "evaporation": 2784.748248342355,
+          "runoff": 0,
+          "photosynthesis": 1698.316385240796,
+          "respiration": 191.0936458736841,
+          "growth": 831.668201571682,
+          "waterUsed": 415.834100785841,
+          "mineralsUsed": 83.16682015716573,
+          "mineralized": 1.5433028880185784,
+          "plantLitter": 15.140642226274961,
+          "seedLitter": 0.09239235473796725,
+          "reserveExport": 3.46840350562637,
+          "biomassExported": 7.758634880685712
+        },
+        "water": 16665.5966410671,
+        "minerals": 3983.330523603889,
+        "limited": {
+          "sunmoss": [
+            3020,
+            13364,
+            0,
+            0,
+            0
+          ],
+          "bramble": [
+            9759,
+            5918,
+            0,
+            0,
+            707
+          ],
+          "marshroot": [
+            11411,
+            1020,
+            0,
+            0,
+            3953
+          ],
+          "thistlepod": [
+            10199,
+            6065,
+            0,
+            0,
+            120
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 5.0504193435863955,
+          "germinated": 0.16867098212242126,
+          "destroyed": 0.1876288808695793,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 675,
+        "established": 11,
+        "litter": 0.04137169569730759
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1374,
+      "feedingMarks": 56,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 101.31347422980527,
+        "hydration": 97.20306809526967,
+        "intent": "group-alarm",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 251,
+      "day": 6,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 2720.136812780635,
+          "shoreInflow": 56.54800084232888,
+          "evaporation": 3467.7883483442456,
+          "runoff": 0,
+          "photosynthesis": 2087.4310710552654,
+          "respiration": 240.32178159369187,
+          "growth": 999.7925326807093,
+          "waterUsed": 499.89626634035466,
+          "mineralsUsed": 99.97925326806899,
+          "mineralized": 1.8827762383501525,
+          "plantLitter": 18.411336529574974,
+          "seedLitter": 0.1771924642380327,
+          "reserveExport": 4.334706839973632,
+          "biomassExported": 8.718635008239652
+        },
+        "water": 16570.671436672776,
+        "minerals": 3966.857563843326,
+        "limited": {
+          "sunmoss": [
+            3132,
+            13252,
+            0,
+            0,
+            0
+          ],
+          "bramble": [
+            9759,
+            5303,
+            0,
+            0,
+            1322
+          ],
+          "marshroot": [
+            11407,
+            851,
+            0,
+            0,
+            4126
+          ],
+          "thistlepod": [
+            10197,
+            5771,
+            0,
+            0,
+            416
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 7.216220677100544,
+          "germinated": 0.26252055633813143,
+          "destroyed": 0.1876288808695793,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 971,
+        "established": 17,
+        "litter": 0.0021326050627976656
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1299,
+      "feedingMarks": 62,
+      "visibleMarks": 8,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 99.30769815418418,
+        "hydration": 94.7519109143134,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 291,
+      "day": 7,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 3224.442877224838,
+          "shoreInflow": 67.85760101079487,
+          "evaporation": 4135.425824169895,
+          "runoff": 0,
+          "photosynthesis": 2521.1437450377807,
+          "respiration": 290.16648175524296,
+          "growth": 1158.3746406400783,
+          "waterUsed": 579.1873203200391,
+          "mineralsUsed": 115.83746406400562,
+          "mineralized": 2.2127813137322745,
+          "plantLitter": 21.58632001070663,
+          "seedLitter": 0.3001271332614124,
+          "reserveExport": 5.469941243270594,
+          "biomassExported": 10.478635296726132
+        },
+        "water": 16339.358571475574,
+        "minerals": 3951.32935812279,
+        "limited": {
+          "sunmoss": [
+            3145,
+            13239,
+            0,
+            0,
+            0
+          ],
+          "bramble": [
+            9759,
+            4933,
+            0,
+            0,
+            1692
+          ],
+          "marshroot": [
+            11399,
+            773,
+            0,
+            0,
+            4212
+          ],
+          "thistlepod": [
+            10193,
+            5505,
+            0,
+            0,
+            686
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 10.050225407288092,
+          "germinated": 0.4550517722964287,
+          "destroyed": 0.1876288808695793,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 1358,
+        "established": 29,
+        "litter": 0
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1269,
+      "feedingMarks": 73,
+      "visibleMarks": 7,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 96.9686752018378,
+        "hydration": 91.90965064761957,
+        "intent": "group-alarm",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 331,
+      "day": 7,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 3224.442877224838,
+          "shoreInflow": 67.85760101079487,
+          "evaporation": 4135.425824169895,
+          "runoff": 0,
+          "photosynthesis": 2521.1437450377807,
+          "respiration": 290.16648175524296,
+          "growth": 1158.3746406400783,
+          "waterUsed": 579.1873203200391,
+          "mineralsUsed": 115.83746406400562,
+          "mineralized": 2.2127813137322745,
+          "plantLitter": 21.58632001070663,
+          "seedLitter": 0.3001271332614124,
+          "reserveExport": 5.786475662366541,
+          "biomassExported": 12.038635532760525
+        },
+        "water": 16339.358571475574,
+        "minerals": 3951.32935812279,
+        "limited": {
+          "sunmoss": [
+            3145,
+            13239,
+            0,
+            0,
+            0
+          ],
+          "bramble": [
+            9759,
+            4933,
+            0,
+            0,
+            1692
+          ],
+          "marshroot": [
+            11399,
+            773,
+            0,
+            0,
+            4212
+          ],
+          "thistlepod": [
+            10193,
+            5505,
+            0,
+            0,
+            686
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 10.050225407288092,
+          "germinated": 0.4550517722964287,
+          "destroyed": 0.21962888409685277,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 1358,
+        "established": 29,
+        "litter": 0.03999999910593033
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1226,
+      "feedingMarks": 71,
+      "visibleMarks": 4,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 94.63011913173094,
+        "hydration": 89.07605064761961,
+        "intent": "group-alarm",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 371,
+      "day": 8,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 3841.9056703259116,
+          "shoreInflow": 79.16720117926303,
+          "evaporation": 4796.683324163103,
+          "runoff": 0,
+          "photosynthesis": 2924.846155482285,
+          "respiration": 344.024377213097,
+          "growth": 1306.6173028976445,
+          "waterUsed": 653.3086514488223,
+          "mineralsUsed": 130.66173028976135,
+          "mineralized": 2.542876867804087,
+          "plantLitter": 24.68822642656228,
+          "seedLitter": 0.47154195280745625,
+          "reserveExport": 7.001521286442806,
+          "biomassExported": 13.918635821247005
+        },
+        "water": 16232.752133617021,
+        "minerals": 3936.835187451084,
+        "limited": {
+          "sunmoss": [
+            3164,
+            13220,
+            0,
+            0,
+            0
+          ],
+          "bramble": [
+            9759,
+            4603,
+            0,
+            0,
+            2022
+          ],
+          "marshroot": [
+            11394,
+            692,
+            0,
+            0,
+            4298
+          ],
+          "thistlepod": [
+            10184,
+            5224,
+            0,
+            0,
+            976
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 13.095300582993191,
+          "germinated": 0.6871351022273302,
+          "destroyed": 0.2516288845366975,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 1759,
+        "established": 43,
+        "litter": 0.05236569046974182
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1218,
+      "feedingMarks": 71,
+      "visibleMarks": 2,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 92.62511567463383,
+        "hydration": 86.64106474283831,
+        "intent": "group-alarm",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 411,
+      "day": 9,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 4408.817732366316,
+          "shoreInflow": 90.4768013477312,
+          "evaporation": 5464.320799988753,
+          "runoff": 0,
+          "photosynthesis": 3343.719417957551,
+          "respiration": 407.50360677293844,
+          "growth": 1456.411061258831,
+          "waterUsed": 728.2055306294155,
+          "mineralsUsed": 145.64110612587967,
+          "mineralized": 2.845588590213407,
+          "plantLitter": 27.46098922465271,
+          "seedLitter": 0.6938540560659021,
+          "reserveExport": 8.131907862920887,
+          "biomassExported": 15.478636057281397
+        },
+        "water": 16068.439440820497,
+        "minerals": 3922.1585233373776,
+        "limited": {
+          "sunmoss": [
+            3013,
+            13371,
+            0,
+            0,
+            0
+          ],
+          "bramble": [
+            9759,
+            4377,
+            0,
+            0,
+            2248
+          ],
+          "marshroot": [
+            11387,
+            640,
+            0,
+            0,
+            4357
+          ],
+          "thistlepod": [
+            10176,
+            4994,
+            0,
+            0,
+            1214
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 16.676654634115312,
+          "germinated": 0.9410510137677193,
+          "destroyed": 0.28362888453669755,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 2241,
+        "established": 58,
+        "litter": 0.06032336875796318
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1226,
+      "feedingMarks": 71,
+      "visibleMarks": 4,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 90.28640642369645,
+        "hydration": 83.60719411420251,
+        "intent": "group-alarm",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 452,
+      "day": 10,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 4732.407741234418,
+          "shoreInflow": 101.78640151619936,
+          "evaporation": 6278.056499993213,
+          "runoff": 0,
+          "photosynthesis": 3831.494512194773,
+          "respiration": 499.9003228057678,
+          "growth": 1588.2730906923823,
+          "waterUsed": 794.1365453461912,
+          "mineralsUsed": 158.82730906923308,
+          "mineralized": 3.218208684695055,
+          "plantLitter": 30.866135424840362,
+          "seedLitter": 0.9767329329624772,
+          "reserveExport": 9.556492862832448,
+          "biomassExported": 17.078636319541836
+        },
+        "water": 15523.672335136376,
+        "minerals": 3909.344940488509,
+        "limited": {
+          "sunmoss": [
+            3669,
+            12715,
+            0,
+            0,
+            0
+          ],
+          "bramble": [
+            9759,
+            5414,
+            0,
+            0,
+            1211
+          ],
+          "marshroot": [
+            11378,
+            1092,
+            0,
+            0,
+            3914
+          ],
+          "thistlepod": [
+            10161,
+            4864,
+            0,
+            0,
+            1359
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 20.746187203756726,
+          "germinated": 1.3455272791907191,
+          "destroyed": 0.28362888453669755,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 2769,
+        "established": 82,
+        "litter": 0.022147499141283333
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1229,
+      "feedingMarks": 68,
+      "visibleMarks": 10,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 87.9440800652418,
+        "hydration": 80.3174069468312,
+        "intent": "group-alarm",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 492,
+      "day": 11,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 4990.059244256377,
+          "shoreInflow": 113.09600168466753,
+          "evaporation": 7107.194824166839,
+          "runoff": 0,
+          "photosynthesis": 4338.676144610085,
+          "respiration": 634.7515850873099,
+          "growth": 1714.0474135911466,
+          "waterUsed": 857.0237067955733,
+          "mineralsUsed": 171.40474135910725,
+          "mineralized": 3.5564616021823166,
+          "plantLitter": 33.88088297321787,
+          "seedLitter": 1.32487099384889,
+          "reserveExport": 10.884262120931618,
+          "biomassExported": 18.63863655557623
+        },
+        "water": 14900.6079527067,
+        "minerals": 3897.1057611161,
+        "limited": {
+          "sunmoss": [
+            3479,
+            12905,
+            0,
+            0,
+            0
+          ],
+          "bramble": [
+            9759,
+            5889,
+            0,
+            0,
+            736
+          ],
+          "marshroot": [
+            11370,
+            1589,
+            0,
+            0,
+            3425
+          ],
+          "thistlepod": [
+            10150,
+            4874,
+            0,
+            0,
+            1360
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 25.483509435641555,
+          "germinated": 1.6535288784652948,
+          "destroyed": 0.31562888205504935,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 3374,
+        "established": 101,
+        "litter": 0.042503932025283575
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1222,
+      "feedingMarks": 69,
+      "visibleMarks": 10,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 85.59444977184717,
+        "hydration": 76.89500750547992,
+        "intent": "group-alarm",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 27,
+          "sequence": [
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 533,
+      "day": 12,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 5389.91345914011,
+          "shoreInflow": 124.40560185313569,
+          "evaporation": 7942.713124172907,
+          "runoff": 0,
+          "photosynthesis": 4807.010019810265,
+          "respiration": 799.6556005258877,
+          "growth": 1832.4347664299223,
+          "waterUsed": 916.2173832149612,
+          "mineralsUsed": 183.24347664298352,
+          "mineralized": 3.8681458166856215,
+          "plantLitter": 36.54835277160125,
+          "seedLitter": 1.753615274792537,
+          "reserveExport": 12.308115402016028,
+          "biomassExported": 20.558636870288755
+        },
+        "water": 14417.059791334483,
+        "minerals": 3885.5787100467564,
+        "limited": {
+          "sunmoss": [
+            3332,
+            13052,
+            0,
+            0,
+            0
+          ],
+          "bramble": [
+            9759,
+            5868,
+            0,
+            0,
+            757
+          ],
+          "marshroot": [
+            11355,
+            1719,
+            0,
+            0,
+            3310
+          ],
+          "thistlepod": [
+            10134,
+            4747,
+            0,
+            0,
+            1503
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 30.54192381595985,
+          "germinated": 2.1542031560093164,
+          "destroyed": 0.31562888205504935,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 3993,
+        "established": 132,
+        "litter": 0.021875867620110512
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1230,
+      "feedingMarks": 76,
+      "visibleMarks": 10,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 83.57752636094598,
+        "hydration": 73.92816138783283,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 27,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 573,
+      "day": 12,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 5389.91345914011,
+          "shoreInflow": 124.40560185313569,
+          "evaporation": 7942.713124172907,
+          "runoff": 0,
+          "photosynthesis": 4807.010019810265,
+          "respiration": 799.6556005258877,
+          "growth": 1832.4347664299223,
+          "waterUsed": 916.2173832149612,
+          "mineralsUsed": 183.24347664298352,
+          "mineralized": 3.8681458166856215,
+          "plantLitter": 36.54835277160125,
+          "seedLitter": 1.753615274792537,
+          "reserveExport": 12.713418162137417,
+          "biomassExported": 22.117326556684393
+        },
+        "water": 14417.059791334483,
+        "minerals": 3885.5787100467564,
+        "limited": {
+          "sunmoss": [
+            3332,
+            13052,
+            0,
+            0,
+            0
+          ],
+          "bramble": [
+            9759,
+            5868,
+            0,
+            0,
+            757
+          ],
+          "marshroot": [
+            11355,
+            1719,
+            0,
+            0,
+            3310
+          ],
+          "thistlepod": [
+            10134,
+            4747,
+            0,
+            0,
+            1503
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 30.54192381595985,
+          "germinated": 2.1542031560093164,
+          "destroyed": 0.34343512249058683,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 3993,
+        "established": 132,
+        "litter": 0.06318641640245914
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1212,
+      "feedingMarks": 75,
+      "visibleMarks": 10,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 81.21687061301013,
+        "hydration": 70.52133035817636,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 27,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 37,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 613,
+      "day": 13,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 5680.439451715966,
+          "shoreInflow": 135.71520202160394,
+          "evaporation": 8771.851448346531,
+          "runoff": 0,
+          "photosynthesis": 5306.740559951385,
+          "respiration": 1013.979092095477,
+          "growth": 1953.4138078580272,
+          "waterUsed": 976.7069039290136,
+          "mineralsUsed": 195.3413807857928,
+          "mineralized": 4.131769718800388,
+          "plantLitter": 38.64052878397932,
+          "seedLitter": 2.2647768517490476,
+          "reserveExport": 13.900779905662521,
+          "biomassExported": 23.557326792718786
+        },
+        "water": 13829.267539199198,
+        "minerals": 3873.744429806045,
+        "limited": {
+          "sunmoss": [
+            2952,
+            13431,
+            0,
+            0,
+            1
+          ],
+          "bramble": [
+            9759,
+            6071,
+            0,
+            0,
+            554
+          ],
+          "marshroot": [
+            11339,
+            2190,
+            0,
+            0,
+            2855
+          ],
+          "thistlepod": [
+            10116,
+            4808,
+            0,
+            0,
+            1460
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 35.97656724552411,
+          "germinated": 2.711238262243569,
+          "destroyed": 0.34343512249058683,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 4641,
+        "established": 166,
+        "litter": 0.030284985434263945
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1222,
+      "feedingMarks": 79,
+      "visibleMarks": 7,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 78.85175571637652,
+        "hydration": 67.22725574049431,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 31,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 37,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 62,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 131,
+          "sequence": [
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 653,
+      "day": 14,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 6023.76048005636,
+          "shoreInflow": 147.02480219007214,
+          "evaporation": 9585.587148336841,
+          "runoff": 0,
+          "photosynthesis": 5792.464630789489,
+          "respiration": 1256.3558248330855,
+          "growth": 2078.0721756389353,
+          "waterUsed": 1039.0360878194676,
+          "mineralsUsed": 207.80721756388218,
+          "mineralized": 4.348059870176181,
+          "plantLitter": 40.18412839093037,
+          "seedLitter": 2.864338228944689,
+          "reserveExport": 14.925279991809171,
+          "biomassExported": 24.837327002527136
+        },
+        "water": 13307.833283822138,
+        "minerals": 3861.494883179346,
+        "limited": {
+          "sunmoss": [
+            2547,
+            13836,
+            0,
+            0,
+            1
+          ],
+          "bramble": [
+            9759,
+            6046,
+            0,
+            0,
+            579
+          ],
+          "marshroot": [
+            11323,
+            2272,
+            0,
+            0,
+            2789
+          ],
+          "thistlepod": [
+            10094,
+            4685,
+            0,
+            0,
+            1605
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 41.7234206470301,
+          "germinated": 3.3507352648302913,
+          "destroyed": 0.34343512249058683,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 5314,
+        "established": 204,
+        "litter": 0.01054445467889309
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1222,
+      "feedingMarks": 74,
+      "visibleMarks": 7,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 76.82142559349379,
+        "hydration": 64.4950422112224,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 31,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 37,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 38,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 62,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 66,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 82,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 131,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 693,
+      "day": 15,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 6414.196936479237,
+          "shoreInflow": 158.33440235854033,
+          "evaporation": 10383.920224172136,
+          "runoff": 0,
+          "photosynthesis": 6265.715241843343,
+          "respiration": 1515.9899445042715,
+          "growth": 2205.1201229035896,
+          "waterUsed": 1102.5600614517948,
+          "mineralsUsed": 220.5120122903444,
+          "mineralized": 4.534308770512335,
+          "plantLitter": 41.34635782675455,
+          "seedLitter": 3.554053343599662,
+          "reserveExport": 16.007734643796038,
+          "biomassExported": 26.437327264787573
+        },
+        "water": 12847.722290950587,
+        "minerals": 3848.9763373532046,
+        "limited": {
+          "sunmoss": [
+            2276,
+            14107,
+            0,
+            0,
+            1
+          ],
+          "bramble": [
+            9759,
+            6013,
+            0,
+            0,
+            612
+          ],
+          "marshroot": [
+            11299,
+            2357,
+            0,
+            0,
+            2728
+          ],
+          "thistlepod": [
+            10063,
+            4532,
+            0,
+            0,
+            1789
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 47.93605907334608,
+          "germinated": 4.246746198274195,
+          "destroyed": 0.34343512249058683,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 5990,
+        "established": 259,
+        "litter": 0
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1221,
+      "feedingMarks": 72,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 74.45086220020025,
+        "hydration": 61.37466209371521,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 66,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 82,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 733,
+      "day": 16,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 6817.20829311293,
+          "shoreInflow": 169.64400252700852,
+          "evaporation": 11175.829142307715,
+          "runoff": 0,
+          "photosynthesis": 6736.180464631032,
+          "respiration": 1790.4308232157123,
+          "growth": 2329.2870070739145,
+          "waterUsed": 1164.6435035369573,
+          "mineralsUsed": 232.92870070737575,
+          "mineralized": 4.714789758180347,
+          "plantLitter": 42.35221874202534,
+          "seedLitter": 4.3374624534044415,
+          "reserveExport": 17.673739919121438,
+          "biomassExported": 30.07621327787887
+        },
+        "water": 12408.050887537283,
+        "minerals": 3836.740129923844,
+        "limited": {
+          "sunmoss": [
+            2228,
+            14146,
+            9,
+            0,
+            1
+          ],
+          "bramble": [
+            9759,
+            6036,
+            9,
+            0,
+            580
+          ],
+          "marshroot": [
+            11281,
+            2642,
+            0,
+            0,
+            2461
+          ],
+          "thistlepod": [
+            10027,
+            4442,
+            9,
+            0,
+            1906
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 54.7364993056178,
+          "germinated": 5.138073684647679,
+          "destroyed": 0.3718685176822066,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 6676,
+        "established": 313,
+        "litter": 0.025574712082743645
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1248,
+      "feedingMarks": 91,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 72.0788841900366,
+        "hydration": 58.26985038790281,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 4,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 40,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 116,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 774,
+      "day": 17,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 7066.311120204088,
+          "shoreInflow": 180.95360269547672,
+          "evaporation": 11973.435410989006,
+          "runoff": 0,
+          "photosynthesis": 7250.699961663564,
+          "respiration": 2107.1901839609945,
+          "growth": 2442.8054647323897,
+          "waterUsed": 1221.4027323661949,
+          "mineralsUsed": 244.28054647322034,
+          "mineralized": 4.919043419569152,
+          "plantLitter": 43.49262288027346,
+          "seedLitter": 5.2240150212310255,
+          "reserveExport": 18.903748307263772,
+          "biomassExported": 31.79377951365128
+        },
+        "water": 11814.097817296155,
+        "minerals": 3825.5925378193783,
+        "limited": {
+          "sunmoss": [
+            2548,
+            13783,
+            52,
+            0,
+            1
+          ],
+          "bramble": [
+            9759,
+            6282,
+            35,
+            0,
+            308
+          ],
+          "marshroot": [
+            11267,
+            3545,
+            0,
+            0,
+            1572
+          ],
+          "thistlepod": [
+            9983,
+            4695,
+            48,
+            0,
+            1658
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 61.75765157812847,
+          "germinated": 6.105272602289915,
+          "destroyed": 0.3960796255468594,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 7407,
+        "established": 371,
+        "litter": 0.05242882948368788
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1259,
+      "feedingMarks": 89,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 69.70382533556612,
+        "hydration": 55.16197432928906,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 11,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 40,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 57,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 58,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 116,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 815,
+      "day": 17,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 7066.311120204088,
+          "shoreInflow": 180.95360269547672,
+          "evaporation": 11973.435410989006,
+          "runoff": 0,
+          "photosynthesis": 7250.699961663564,
+          "respiration": 2107.1901839609945,
+          "growth": 2442.8054647323897,
+          "waterUsed": 1221.4027323661949,
+          "mineralsUsed": 244.28054647322034,
+          "mineralized": 4.919043419569152,
+          "plantLitter": 43.49262288027346,
+          "seedLitter": 5.2240150212310255,
+          "reserveExport": 19.432931816679318,
+          "biomassExported": 33.713779828363805
+        },
+        "water": 11814.097817296155,
+        "minerals": 3825.5925378193783,
+        "limited": {
+          "sunmoss": [
+            2548,
+            13783,
+            52,
+            0,
+            1
+          ],
+          "bramble": [
+            9759,
+            6282,
+            35,
+            0,
+            308
+          ],
+          "marshroot": [
+            11267,
+            3545,
+            0,
+            0,
+            1572
+          ],
+          "thistlepod": [
+            9983,
+            4695,
+            48,
+            0,
+            1658
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 61.75765157812847,
+          "germinated": 6.105272602289915,
+          "destroyed": 0.3960796255468594,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 7407,
+        "established": 371,
+        "litter": 0.05242882948368788
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1269,
+      "feedingMarks": 88,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 67.66699338369659,
+        "hydration": 52.68248632928904,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 11,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 40,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 49,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 57,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 58,
+          "sequence": [
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 855,
+      "day": 18,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 7497.06895521403,
+          "shoreInflow": 192.2632028639449,
+          "evaporation": 12676.795305512194,
+          "runoff": 0,
+          "photosynthesis": 7714.58771059877,
+          "respiration": 2405.7466021859777,
+          "growth": 2611.263956638605,
+          "waterUsed": 1305.6319783193026,
+          "mineralsUsed": 261.12639566384644,
+          "mineralized": 5.047400405128664,
+          "plantLitter": 43.76120929313357,
+          "seedLitter": 6.21330686705187,
+          "reserveExport": 20.501480649551116,
+          "biomassExported": 35.63378014307633
+        },
+        "water": 11468.576111998367,
+        "minerals": 3808.875045614299,
+        "limited": {
+          "sunmoss": [
+            1347,
+            14909,
+            127,
+            0,
+            1
+          ],
+          "bramble": [
+            9759,
+            5614,
+            80,
+            0,
+            931
+          ],
+          "marshroot": [
+            11250,
+            3087,
+            0,
+            0,
+            2047
+          ],
+          "thistlepod": [
+            9939,
+            4590,
+            112,
+            0,
+            1743
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 68.91196838508864,
+          "germinated": 7.156465662643313,
+          "destroyed": 0.3960796255468594,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 8096,
+        "established": 433,
+        "litter": 0.026737231761217117
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1312,
+      "feedingMarks": 90,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 65.29373462869867,
+        "hydration": 49.77182941502666,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 11,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 40,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 49,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 57,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 58,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 116,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 895,
+      "day": 19,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 7996.277077787402,
+          "shoreInflow": 203.5728030324131,
+          "evaporation": 13394.803099332397,
+          "runoff": 0,
+          "photosynthesis": 8159.885460538731,
+          "respiration": 2677.8682755421187,
+          "growth": 2761.3035369075405,
+          "waterUsed": 1380.6517684537703,
+          "mineralsUsed": 276.13035369074726,
+          "mineralized": 5.1930360415655,
+          "plantLitter": 44.1090952987116,
+          "seedLitter": 7.306022530421615,
+          "reserveExport": 21.684249208059054,
+          "biomassExported": 37.553780457788854
+        },
+        "water": 11186.066250790487,
+        "minerals": 3794.0167232238687,
+        "limited": {
+          "sunmoss": [
+            1521,
+            14642,
+            220,
+            0,
+            1
+          ],
+          "bramble": [
+            9753,
+            5233,
+            129,
+            0,
+            1269
+          ],
+          "marshroot": [
+            11233,
+            3025,
+            0,
+            0,
+            2126
+          ],
+          "thistlepod": [
+            9895,
+            4543,
+            180,
+            0,
+            1766
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 76.75601399566338,
+          "germinated": 8.255485128611326,
+          "destroyed": 0.3960796255468594,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 8828,
+        "established": 500,
+        "litter": 0.01098253671079874
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1348,
+      "feedingMarks": 92,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 62.92273999943076,
+        "hydration": 46.851999776939216,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 11,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 21,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 40,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 935,
+      "day": 20,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 8427.11302962766,
+          "shoreInflow": 214.8824032008813,
+          "evaporation": 14116.41468705462,
+          "runoff": 0,
+          "photosynthesis": 8625.13621418668,
+          "respiration": 2973.6956287344574,
+          "growth": 2900.04617969615,
+          "waterUsed": 1450.023089848075,
+          "mineralsUsed": 290.00461796960656,
+          "mineralized": 5.355654144972085,
+          "plantLitter": 44.51786939365712,
+          "seedLitter": 8.512446932960302,
+          "reserveExport": 22.7651102106821,
+          "biomassExported": 38.8337806675972
+        },
+        "water": 10837.228893688203,
+        "minerals": 3780.3050770484283,
+        "limited": {
+          "sunmoss": [
+            1681,
+            14377,
+            325,
+            0,
+            1
+          ],
+          "bramble": [
+            9750,
+            4952,
+            181,
+            0,
+            1501
+          ],
+          "marshroot": [
+            11202,
+            3489,
+            0,
+            0,
+            1693
+          ],
+          "thistlepod": [
+            9842,
+            4666,
+            258,
+            0,
+            1618
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 84.85208660982289,
+          "germinated": 9.705278655514121,
+          "destroyed": 0.3960796255468594,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 9520,
+        "established": 587,
+        "litter": 0
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1356,
+      "feedingMarks": 92,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 60.890996915242056,
+        "hydration": 44.35087931980804,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 11,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 21,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 40,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 57,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 60,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 116,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 975,
+      "day": 21,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "resources": {
+        "totals": {
+          "rain": 8756.91117240327,
+          "shoreInflow": 226.1920033693495,
+          "evaporation": 14827.052880010007,
+          "runoff": 0,
+          "photosynthesis": 9119.58161936794,
+          "respiration": 3296.539043790038,
+          "growth": 3032.3669574445153,
+          "waterUsed": 1516.1834787222576,
+          "mineralsUsed": 303.2366957444435,
+          "mineralized": 5.529486132784812,
+          "plantLitter": 44.93879585998653,
+          "seedLitter": 9.829840344376862,
+          "reserveExport": 24.140927738984452,
+          "biomassExported": 40.91378100853577
+        },
+        "water": 10401.538054808441,
+        "minerals": 3767.24683126138,
+        "limited": {
+          "sunmoss": [
+            1761,
+            14161,
+            461,
+            0,
+            1
+          ],
+          "bramble": [
+            9747,
+            4728,
+            258,
+            0,
+            1651
+          ],
+          "marshroot": [
+            11174,
+            4066,
+            0,
+            0,
+            1144
+          ],
+          "thistlepod": [
+            9794,
+            4794,
+            353,
+            0,
+            1443
+          ]
+        }
+      },
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 93.13418103548325,
+          "germinated": 11.019981532357633,
+          "destroyed": 0.3960796255468594,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 10244,
+        "established": 666,
+        "litter": 0
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1386,
+      "feedingMarks": 95,
+      "visibleMarks": 11,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 58.52215938926842,
+        "hydration": 41.44320922458938,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 11,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 21,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 24,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 40,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 49,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 88,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 116,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    }
+  ],
+  "seen": [
+    {
+      "actorId": 37,
+      "tick": 570,
+      "kind": "call"
+    },
+    {
+      "actorId": 37,
+      "tick": 588,
+      "kind": "dance"
+    },
+    {
+      "actorId": 131,
+      "tick": 588,
+      "kind": "call"
+    },
+    {
+      "actorId": 131,
+      "tick": 606,
+      "kind": "declined"
+    },
+    {
+      "actorId": 37,
+      "tick": 606,
+      "kind": "declined"
+    },
+    {
+      "actorId": 131,
+      "tick": 642,
+      "kind": "dance"
+    },
+    {
+      "actorId": 131,
+      "tick": 654,
+      "kind": "paired"
+    },
+    {
+      "actorId": 37,
+      "tick": 654,
+      "kind": "paired"
+    }
+  ],
+  "errors": [],
+  "video": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\natural-resources-video\\page@0db89962a79f81fa1704afb8f5dc0222.webm"
+}

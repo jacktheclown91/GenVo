@@ -1,0 +1,85 @@
+{
+  "status": "PASS",
+  "suites": [
+    {
+      "suite": "plant-resource-contract",
+      "exitCode": 0,
+      "output": "Funded growth limits, finite input flux reconciliation, land nutrient inventory, bounded receipts and stock-preserving migration PASS\n"
+    },
+    {
+      "suite": "flora-tissue-propagules",
+      "exitCode": 0,
+      "output": "Finite tissues, anatomy-specific kernel destruction, real genotype cargo/deposition/establishment, read-only commands and stock-preserving save migration PASS\n"
+    },
+    {
+      "suite": "dispersal",
+      "exitCode": 0,
+      "output": "dispersal checks: PASS\n"
+    },
+    {
+      "suite": "seed-shore-niches",
+      "exitCode": 0,
+      "output": "seed-shore niche vertical slice: PASS; seed cargo, armor, freshwater predation, body loss, heredity, persistence, gameplay tick\n"
+    },
+    {
+      "suite": "dispersal-feeding-priority",
+      "exitCode": 0,
+      "output": "dispersal yields to feeding and resumes without destination loss: PASS\n"
+    },
+    {
+      "suite": "foraging-choice",
+      "exitCode": 0,
+      "output": "player forage choice + physiology checks: PASS\n"
+    },
+    {
+      "suite": "mouse-resources",
+      "exitCode": 0,
+      "output": "Explicit resource/key parity, natural food consumption, drink physiology, read-only availability and pause safety PASS\n"
+    },
+    {
+      "suite": "contextual-interactions",
+      "exitCode": 0,
+      "output": "Four dietary anatomies, read-only queries, exact-target/no-fallback, ambiguity, stale feeding descriptors, keyed collection and attack fallback PASS\n"
+    },
+    {
+      "suite": "world-resource-selection",
+      "exitCode": 0,
+      "output": "Visible plant selection, bare ground, depletion, stale-world and read-only checks PASS\n"
+    },
+    {
+      "suite": "target-resource-states",
+      "exitCode": 0,
+      "output": "Target drink states, canonical parity, pause and depletion PASS\n"
+    },
+    {
+      "suite": "world-trail-discovery",
+      "exitCode": 0,
+      "output": "Real movement/meal evidence, anatomy-gated tracking, non-omniscient endpoints, funded patch memory, read-only availability, save and expiry PASS\n"
+    },
+    {
+      "suite": "manual-resource-pose",
+      "exitCode": 0,
+      "output": "Actual manual meal receipt, read-only pose, actor ownership, expiry and movement/combat precedence PASS\n"
+    },
+    {
+      "suite": "reproductive-compatibility",
+      "exitCode": 0,
+      "output": "Cross-founding-ID conception, genuine hybrid bodies/loci, frozen parental inheritance, read-only shared validity, gradual compatibility/fertility, matching builds and legacy save migration PASS\n"
+    },
+    {
+      "suite": "live-courtship-encounters",
+      "exitCode": 0,
+      "output": "Live anatomy-valid future beats, bounded cost, protected current beat, save, interruption, physical choreography and read-only reactions PASS\n"
+    },
+    {
+      "suite": "held-brace-input",
+      "exitCode": 0,
+      "output": "Actor/world-owned brace input, canonical activation, wrong-pointer guard, pause/modal/world release and fatigue gating PASS\n"
+    },
+    {
+      "suite": "canonical-source",
+      "exitCode": 0,
+      "output": "canonical-source: source authorities, art coverage, reference exports, and imports PASS\n"
+    }
+  ]
+}

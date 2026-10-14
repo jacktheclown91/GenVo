@@ -1,0 +1,4 @@
+import {place,replaceRoot,draftCost,draftProblems} from '../lineage/evolution-draft.js';
+// Projections run the existing draft authorities on disposable history. No live organism is edited.
+export function projectMount(draft,partId,targets){const trial={...draft,history:[],future:[]};for(const t of targets){const r=t.parent===null?replaceRoot(trial,partId):place(trial,partId,t.parent,t.socket);if(!r.ok)return r}return{ok:true,plan:trial.plan,cost:draftCost(trial)-draftCost(draft),total:draftCost(trial),problems:draftProblems(trial)}}
+export function mountedChanges(base,plan){const key=n=>`${n.parent}|${n.socket}`,before=new Map(base.nodes.map(n=>[key(n),n])),after=new Map(plan.nodes.map(n=>[key(n),n]));return [...new Set([...before.keys(),...after.keys()])].flatMap(k=>{const a=before.get(k),b=after.get(k);return a?.partId===b?.partId?[]:[{location:b?.socket||a?.socket||'body',before:a?.partId||null,after:b?.partId||null}]})}

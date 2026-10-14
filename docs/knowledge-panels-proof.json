@@ -1,0 +1,28 @@
+{
+  "scope": "Actual Chromium at 800x600. Normal live journal/memory/field-guide views; evolution-editor pending litter is a controlled offer fixture, not natural courtship. Lab assembly and exact native-art editing use their existing controllers.",
+  "errors": [],
+  "checks": [
+    "Journal summary, optional inheritance, fold persistence and mouse navigation",
+    "Editor part selection, before/after art, draft placement, undo/redo, walking and cancel preserve live anatomy and RNG",
+    "Lab canonical head attachment, assembly undo/redo, walk preview, native RGBA paint/undo, frame duplication/deletion and authored playback"
+  ],
+  "journalWindow": {
+    "headerVisible": true,
+    "footerVisible": true,
+    "rootScroll": 0,
+    "bodyScroll": 402
+  },
+  "editorBefore": {
+    "rng": 1331089912,
+    "body": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"id\":\"bp0-4134709b\"}"
+  },
+  "editorAfter": {
+    "rng": 1331089912,
+    "body": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"id\":\"bp0-4134709b\"}",
+    "draft": "bp0-c2ef0f08"
+  },
+  "layout": {
+    "horizontalOverflow": false,
+    "duplicateIds": []
+  }
+}

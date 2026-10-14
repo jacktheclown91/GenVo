@@ -1,0 +1,58 @@
+{
+  "viewport": {
+    "width": 800,
+    "height": 600
+  },
+  "modeLabels": [
+    "Combat",
+    "Social"
+  ],
+  "target": {
+    "x": 79.5,
+    "y": 75.5,
+    "i": 9679,
+    "kinds": [
+      "sunmoss",
+      "bramble",
+      "thistlepod"
+    ]
+  },
+  "start": {
+    "x": 82.5,
+    "y": 78.5
+  },
+  "reached": {
+    "x": 80.62364964266077,
+    "y": 76.62364964266077,
+    "target": {
+      "kind": "plant",
+      "food": "sunmoss",
+      "i": 9679,
+      "x": 79.5,
+      "y": 75.5,
+      "label": "Moss"
+    }
+  },
+  "meal": {
+    "type": "eat",
+    "kind": "sunmoss",
+    "energyGain": 6.08935237868652,
+    "waterGain": 1,
+    "tick": 26
+  },
+  "water": {
+    "x": 77.5,
+    "y": 71.5
+  },
+  "breath": 45.3125,
+  "mateId": 110,
+  "bounds": {
+    "x": 8,
+    "y": 286,
+    "width": 784,
+    "height": 306
+  },
+  "overflow": [],
+  "errors": [],
+  "fixture": "Existing natural resources; real actors positioned/readied for reproducible courtship, without modifying mate preferences or acceptance."
+}

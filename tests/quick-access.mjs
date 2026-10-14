@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const html=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
+const main=fs.readFileSync(new URL('../src/main.js',import.meta.url),'utf8');
+const hud=fs.readFileSync(new URL('../src/ui/inspector.js',import.meta.url),'utf8');
+const tutorial=fs.readFileSync(new URL('../src/ui/tutorial.js',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../styles.css',import.meta.url),'utf8');
+
+for(const id of ['guide','journal','territory','population','help'])assert.match(html,new RegExp(`data-panel="${id}"`),`quick menu exposes ${id} icon`);
+assert.match(html,/data-command="leadership"/,'quick menu exposes icon-first family guidance entry');
+assert.match(html,/id="guide" class="detail-panel task-guide"/,'task guide panel exists');
+assert.match(tutorial,/dataset\.guideTitle=title/,'objective stores its title for on-demand guidance');
+assert.match(tutorial,/dataset\.guideBody=body/,'objective stores its how-to body for on-demand guidance');
+assert.match(main,/toggleQuickPanel\(name\)/,'clickable icon menu is wired through one panel authority');
+assert.match(main,/quickMenu\?\.addEventListener\('click'/,'quick menu has pointer controls');
+assert.match(hud,/function updateTaskGuide/,'guide content follows live objective state');
+assert.match(hud,/task-guide-how/,'guide exposes current how-to instructions');
+assert.match(css,/\.quick-menu\{[^}]*pointer-events:auto/s,'quick access icons are actually clickable');
+assert.match(css,/\.objective\.compact span[^}]*display:none/s,'glance objective remains concise when guide is closed');
+console.log('quick access + task guide checks: PASS');

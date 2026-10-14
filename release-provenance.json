@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "project": "GenVo8",
+  "version": "1.60.2",
+  "generated_at_utc": "2026-10-10T06:21:19.138Z",
+  "canonical_source_tree": {
+    "algorithm": "sha256(sorted path\\0file_sha256\\n)",
+    "sha256": "6e982863e6b08435e3950f5ea4b83ccc07c9660a62c78abac0e6897519546c37",
+    "file_count": 436,
+    "exclusions": [
+      "provenance/ledger.jsonl",
+      "provenance/tree-state.json",
+      "release-provenance.json",
+      "reports/",
+      ".git",
+      "node_modules",
+      "__pycache__",
+      "*.pyc"
+    ]
+  },
+  "distribution_payload": {
+    "algorithm": "sha256(sorted path\\0file_sha256\\n)",
+    "sha256": "8c426b0cccce62ef40457b520b744f30c75d9b7906393363e6a7493741c2dea4",
+    "file_count": 188,
+    "exclusions": [
+      "release-provenance.json"
+    ],
+    "note": "This hashes the exact unzipped distribution payload except this manifest, avoiding a circular self-hash."
+  },
+  "ledger": {
+    "entry_count": 86,
+    "head_sha256": "4536d90e65cf726b3a145d989dace65e4f53e79c7ef90e0e8654eb4a57edbdbd"
+  },
+  "archive_sha256": {
+    "value": null,
+    "note": "The final ZIP byte hash is written as a sidecar after packaging because an archive cannot contain its own final SHA-256 without circularity."
+  },
+  "provenance_tracking": {
+    "baseline_version": "1.05.0",
+    "baseline_record_sha256": "f79ad41452d52a19e7292604ce10f6d7b64cd903a8901d524a090cae100844fb"
+  }
+}

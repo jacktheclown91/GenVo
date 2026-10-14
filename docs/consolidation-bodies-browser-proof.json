@@ -1,0 +1,725 @@
+{
+  "status": "PASS",
+  "scope": "Controlled complete legal adult bodies/neutral genes/location/reserves; native 800x600 game. Real natural terrain and pod stocks, canonical control movement and funded feeding. No new balance rules, spontaneous evolution or human approval claimed.",
+  "profiles": [
+    {
+      "spec": {
+        "leg": "walking-leg"
+      },
+      "start": {
+        "x": 25.5,
+        "y": 25.5,
+        "energy": 80
+      },
+      "plan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-4134709b"
+      },
+      "canSwim": false,
+      "swimsByBody": false,
+      "aquaticScore": 0,
+      "movement": {
+        "distance": 4.0312500000001705,
+        "energySpent": 0.0701437499998292,
+        "controlSteps": 120,
+        "seconds": 1.875,
+        "mass": 1.45
+      },
+      "sprint": {
+        "distance": 6.248437499999966,
+        "energySpent": 0.10872281249930893
+      },
+      "swimming": null,
+      "feeding": {
+        "energyGain": 1.3601999702296226,
+        "stockBefore": 0.1783912181854248,
+        "stockAfter": 0.028391217812895775,
+        "removed": 0.15,
+        "edible": 0.08249999874703799,
+        "tissue": "crop",
+        "viableSeeds": 0.030000001252962004,
+        "destroyedSeeds": 0,
+        "processingCost": 0.6
+      },
+      "saveBodyExact": true,
+      "saveEnergyExact": true
+    },
+    {
+      "spec": {
+        "leg": "runner-leg"
+      },
+      "start": {
+        "x": 25.5,
+        "y": 25.5,
+        "energy": 80
+      },
+      "plan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "runner-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "runner-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "runner-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "runner-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-4ec324fb"
+      },
+      "canSwim": false,
+      "swimsByBody": false,
+      "aquaticScore": 0,
+      "movement": {
+        "distance": 4.434375000000017,
+        "energySpent": 0.07715812500066477,
+        "controlSteps": 120,
+        "seconds": 1.875,
+        "mass": 1.45
+      },
+      "sprint": {
+        "distance": 6.873281249999813,
+        "energySpent": 0.11959509375060406
+      },
+      "swimming": null,
+      "feeding": {
+        "energyGain": 1.3602000000000007,
+        "stockBefore": 0.20644396543502808,
+        "stockAfter": 0.056443966925144196,
+        "removed": 0.15,
+        "edible": 0.0825,
+        "tissue": "crop",
+        "viableSeeds": 0.030000000000000002,
+        "destroyedSeeds": 0,
+        "processingCost": 0.6
+      },
+      "saveBodyExact": true,
+      "saveEnergyExact": true
+    },
+    {
+      "spec": {
+        "leg": "sturdy-leg"
+      },
+      "start": {
+        "x": 25.5,
+        "y": 25.5,
+        "energy": 80
+      },
+      "plan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "sturdy-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "sturdy-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "sturdy-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "sturdy-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-12183d83"
+      },
+      "canSwim": false,
+      "swimsByBody": false,
+      "aquaticScore": 0,
+      "movement": {
+        "distance": 3.7893749999999216,
+        "energySpent": 0.06593512499932785,
+        "controlSteps": 120,
+        "seconds": 1.875,
+        "mass": 1.45
+      },
+      "sprint": {
+        "distance": 5.87353125000007,
+        "energySpent": 0.10219944375023715
+      },
+      "swimming": null,
+      "feeding": {
+        "energyGain": 1.360199970695783,
+        "stockBefore": 0.18122899532318115,
+        "stockAfter": 0.031228994950652122,
+        "removed": 0.15,
+        "edible": 0.08249999876665752,
+        "tissue": "crop",
+        "viableSeeds": 0.030000001233342476,
+        "destroyedSeeds": 0,
+        "processingCost": 0.6
+      },
+      "saveBodyExact": true,
+      "saveEnergyExact": true
+    },
+    {
+      "spec": {
+        "leg": "spring-leg"
+      },
+      "start": {
+        "x": 25.5,
+        "y": 25.5,
+        "energy": 80
+      },
+      "plan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "spring-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "spring-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "spring-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "spring-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-5bc1a59b"
+      },
+      "canSwim": false,
+      "swimsByBody": false,
+      "aquaticScore": 0,
+      "movement": {
+        "distance": 4.0312500000001705,
+        "energySpent": 0.0701437499998292,
+        "controlSteps": 120,
+        "seconds": 1.875,
+        "mass": 1.45
+      },
+      "sprint": {
+        "distance": 7.123218750000149,
+        "energySpent": 0.1462539273757102
+      },
+      "swimming": null,
+      "feeding": {
+        "energyGain": 1.3601999865184418,
+        "stockBefore": 0.19696438312530518,
+        "stockAfter": 0.046964384615421295,
+        "removed": 0.15,
+        "edible": 0.08249999943259433,
+        "tissue": "crop",
+        "viableSeeds": 0.030000000567405673,
+        "destroyedSeeds": 0,
+        "processingCost": 0.6
+      },
+      "saveBodyExact": true,
+      "saveEnergyExact": true
+    },
+    {
+      "spec": {
+        "leg": "webbed-leg",
+        "count": 1
+      },
+      "start": {
+        "x": 25.5,
+        "y": 25.5,
+        "energy": 80
+      },
+      "plan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "webbed-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-881a44e1"
+      },
+      "canSwim": true,
+      "swimsByBody": false,
+      "aquaticScore": 0.1,
+      "movement": {
+        "distance": 4.011093749999901,
+        "energySpent": 0.06979303124978742,
+        "controlSteps": 120,
+        "seconds": 1.875,
+        "mass": 1.45
+      },
+      "sprint": {
+        "distance": 6.030679453125032,
+        "energySpent": 0.10493382248455418
+      },
+      "swimming": {
+        "distance": 2.660624999999982,
+        "energySpent": 0.06851641499963534,
+        "realWater": true
+      },
+      "feeding": {
+        "energyGain": 1.3602000141536088,
+        "stockBefore": 0.18761201202869415,
+        "stockAfter": 0.03761201351881027,
+        "removed": 0.15,
+        "edible": 0.08250000059569058,
+        "tissue": "crop",
+        "viableSeeds": 0.029999999404309415,
+        "destroyedSeeds": 0,
+        "processingCost": 0.6
+      },
+      "saveBodyExact": true,
+      "saveEnergyExact": true
+    },
+    {
+      "spec": {
+        "leg": "webbed-leg",
+        "count": 2
+      },
+      "start": {
+        "x": 25.5,
+        "y": 25.5,
+        "energy": 80
+      },
+      "plan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "webbed-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "webbed-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-d4cf7877"
+      },
+      "canSwim": true,
+      "swimsByBody": true,
+      "aquaticScore": 0.2,
+      "movement": {
+        "distance": 3.911118749999929,
+        "energySpent": 0.0680534662495802,
+        "controlSteps": 120,
+        "seconds": 1.875,
+        "mass": 1.45
+      },
+      "sprint": {
+        "distance": 5.880367040625032,
+        "energySpent": 0.10231838650668124
+      },
+      "swimming": {
+        "distance": 2.8468687500000094,
+        "energySpent": 0.06891381020693643,
+        "realWater": true
+      },
+      "feeding": {
+        "energyGain": 1.2675542165338989,
+        "stockBefore": 0.13978321850299835,
+        "stockAfter": 0,
+        "removed": 0.13978321850299835,
+        "edible": 0.07688076980412006,
+        "tissue": "crop",
+        "viableSeeds": 0.0279566440731287,
+        "destroyedSeeds": 0,
+        "processingCost": 0.5591328740119934
+      },
+      "saveBodyExact": true,
+      "saveEnergyExact": true
+    },
+    {
+      "spec": {
+        "leg": "walking-leg",
+        "mouth": "kernel-beak"
+      },
+      "start": {
+        "x": 25.5,
+        "y": 25.5,
+        "energy": 80
+      },
+      "plan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "kernel-beak",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-0bc8b246"
+      },
+      "canSwim": false,
+      "swimsByBody": false,
+      "aquaticScore": 0,
+      "movement": {
+        "distance": 4.0312500000001705,
+        "energySpent": 0.0701437499998292,
+        "controlSteps": 120,
+        "seconds": 1.875,
+        "mass": 1.45
+      },
+      "sprint": {
+        "distance": 6.248437499999966,
+        "energySpent": 0.10872281249930893
+      },
+      "swimming": null,
+      "feeding": {
+        "energyGain": 9.686639999999997,
+        "stockBefore": 0.15885190665721893,
+        "stockAfter": 0.008851906284689903,
+        "removed": 0.15,
+        "edible": 0.11249999999999999,
+        "tissue": "kernel",
+        "viableSeeds": 0,
+        "destroyedSeeds": 0.030000000703540242,
+        "processingCost": 0.15
+      },
+      "saveBodyExact": true,
+      "saveEnergyExact": true
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {SPECIES} from '../src/organisms/species.js';
+
+const sim=new Simulation('DISPERSAL-FEEDING',{player:true});sim.setPlayerAutonomy(true);
+const a=sim.player(),s=SPECIES[a.species],w=sim.world;
+sim.animals=[a];a.x=48.5;a.y=48.5;a.age=s.maturity+10;a.infected=null;a.reproCooldown=20;
+w.water.fill(0);w.moisture.fill(.8);w.buildLandRegions();w.buildHydrology();
+for(const field of Object.values(w.plants))field.fill(1);
+sim.rebuildSpatial();
+const state=sim.migration.ensure(a);
+Object.assign(state,{status:'outbound',purpose:'dispersal',target:{x:58.5,y:48.5},reason:'scarcity'});
+const destination=structuredClone(state.target);
+a.energy=s.maxEnergy*.2;a.hydration=s.maxHydration*.9;
+sim.phaseDecision(null);
+assert.equal(a.intent,'feed','Hungry disperser must be allowed to seek a finite meal');
+assert.ok(a.target?.kind,'Feeding selects an actual resource');
+assert.equal(state.status,'outbound');assert.deepEqual(state.target,destination,'Feeding interruption preserves destination');
+a.energy=s.maxEnergy*.8;a.hydration=s.maxHydration*.9;
+sim.phaseDecision(null);
+assert.equal(a.intent,'migrate','Well-fed disperser resumes its committed route');
+assert.equal(a.target.x,destination.x);assert.equal(a.target.y,destination.y);
+console.log('dispersal yields to feeding and resumes without destination loss: PASS');

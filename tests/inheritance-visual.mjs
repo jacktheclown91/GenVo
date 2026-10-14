@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {phenotypeFor} from '../src/organisms/species.js';
+import {visualChangeText} from '../src/lineage/adaptation.js';
+import {genvoVisualPose} from '../src/render/genvo.js';
+
+const base={body:1,motion:1,metabolism:1,digestion:1,senses:1,climate:1,immunity:1,temperament:1};
+const shifted={body:1.10,motion:1.11,metabolism:1.07,digestion:1.09,senses:1.10,climate:1.08,immunity:1.08,temperament:1.08};
+const a=phenotypeFor({genes:base}),b=phenotypeFor({genes:shifted});
+assert.ok(b.bodyScale-a.bodyScale>.12,'body inheritance is visible at play scale');
+assert.ok(b.limbScale-a.limbScale>.16,'motion inheritance visibly changes leg reach');
+assert.ok(b.sensoryScale-a.sensoryScale>.18,'sense inheritance visibly changes face/feelers');
+assert.ok(b.patternBands>=1&&b.patternSpots>=1,'digestion/immunity inheritance can create family markings');
+assert.ok(Math.abs(b.hueShift-a.hueShift)>=8,'climate inheritance visibly shifts mantle color');
+const poseA=genvoVisualPose({bodyScale:a.bodyScale,limbScale:a.limbScale,sensoryScale:a.sensoryScale,eyeScale:a.eyeScale,feelerScale:a.feelerScale,temperamentScale:a.temperamentScale,dir:2,frame:1,moving:false});
+const poseB=genvoVisualPose({bodyScale:b.bodyScale,limbScale:b.limbScale,sensoryScale:b.sensoryScale,eyeScale:b.eyeScale,feelerScale:b.feelerScale,temperamentScale:b.temperamentScale,dir:2,frame:1,moving:false});
+assert.ok(poseB.bodyW>poseA.bodyW,'larger inherited body changes rendered mantle geometry');
+assert.ok(poseB.face.feelerReach>poseA.face.feelerReach,'sense inheritance changes rendered feeler reach');
+const text=visualChangeText(shifted,base,{limit:4});
+assert.match(text,/larger frame|longer legs|larger eyes and feelers|warmer coloring/,'generation transition names visible inherited change');
+console.log('visible inheritance checks: PASS');

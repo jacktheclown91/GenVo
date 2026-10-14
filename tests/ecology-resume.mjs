@@ -1,0 +1,27 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {spawnSync} from 'node:child_process';
+
+const dir=fs.mkdtempSync(path.join(os.tmpdir(),'genvo8-ecology-resume-'));
+const resumed=path.join(dir,'resumed.json'),control=path.join(dir,'control.json'),checkpoint=path.join(dir,'state.bin');
+const run=args=>spawnSync(process.execPath,['tools/ecology-validation.mjs',...args],{encoding:'utf8'});
+let result=run(['130','1',resumed,'0',`--checkpoint=${checkpoint}`,'--stop-at=101']);
+assert.notEqual(result.status,0,'deliberately stopped experiment cannot be reported as passed');
+assert.equal(JSON.parse(fs.readFileSync(resumed)).complete,false);
+assert.ok(fs.existsSync(checkpoint));
+result=run(['130','1',resumed,'0',`--checkpoint=${checkpoint}`,'--resume']);
+assert.equal(result.status,0,result.stderr);
+result=run(['130','1',control,'0']);assert.equal(result.status,0,result.stderr);
+assert.deepEqual(JSON.parse(fs.readFileSync(resumed)),JSON.parse(fs.readFileSync(control)),'births, deaths, RNG-driven ecology, populations and timeline match uninterrupted simulation');
+result=run(['131','1',resumed,'0',`--checkpoint=${checkpoint}`,'--resume']);
+assert.notEqual(result.status,0,'different horizon cannot silently reuse an old experiment');
+const frozen=path.join(dir,'frozen-src');fs.cpSync('src',frozen,{recursive:true});
+result=run(['130','1',resumed,'0',`--checkpoint=${checkpoint}`,'--resume',`--source-root=${frozen}`]);
+assert.equal(result.status,0,result.stderr);
+assert.deepEqual(JSON.parse(fs.readFileSync(resumed)),JSON.parse(fs.readFileSync(control)),'identical archived source can resume the same checkpoint contract');
+fs.appendFileSync(path.join(frozen,'core/rng.js'),'\n// deliberate fingerprint mismatch\n');
+result=run(['130','1',resumed,'0',`--checkpoint=${checkpoint}`,'--resume',`--source-root=${frozen}`]);
+assert.notEqual(result.status,0,'archived source bytes must match; source-root cannot bypass source verification');
+console.log('natural ecology checkpoint/resume equivalence: PASS');

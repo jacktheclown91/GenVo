@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {HeldBraceInput} from '../src/ui/held-brace-input.js';
+let sim=new Simulation('HELD-BRACE',{player:true}),blocked=false;const p=sim.player(),hold=new HeldBraceInput({getSim:()=>sim,blocked:()=>blocked});sim.exertion.ensure(p);const before=sim.rng.state;
+assert.ok(hold.begin(7));assert.equal(sim.rng.state,before);assert.equal(p.bracing,undefined,'pointerdown cannot bypass combat authority');sim.playerCombat.step(p,{brace:hold.read()},1/64);assert.equal(p.bracing,true);
+assert.equal(hold.release(8),false);assert.equal(p.bracing,true);assert.equal(hold.release(7),true);assert.equal(p.bracing,false);
+assert.ok(hold.begin(9));sim.playerCombat.step(p,{brace:true},1/64);sim.paused=true;assert.equal(hold.read(),false);assert.equal(p.bracing,false);sim.paused=false;
+assert.ok(hold.begin(10));blocked=true;assert.equal(hold.read(),false);blocked=false;
+assert.ok(hold.begin(11));sim=new Simulation('OTHER-WORLD',{player:true});assert.equal(hold.read(),false);assert.equal(p.bracing,false);
+const a=sim.player();sim.exertion.ensure(a);a.exertionWinded=true;assert.equal(hold.begin(12),false);a.exertionWinded=false;a.braceLockUntil=sim.playerCombat.clock+1;assert.equal(hold.begin(12),false);
+console.log('Actor/world-owned brace input, canonical activation, wrong-pointer guard, pause/modal/world release and fatigue gating PASS');

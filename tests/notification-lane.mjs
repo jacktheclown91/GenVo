@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const css=fs.readFileSync(new URL('../styles.css',import.meta.url),'utf8');
+const html=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
+const inspector=fs.readFileSync(new URL('../src/ui/inspector.js',import.meta.url),'utf8');
+assert.match(css,/\.toast\{[^}]*top:auto[^}]*bottom:14px[^}]*z-index:18/s,'action feedback uses the dedicated bottom lane');
+assert.doesNotMatch(css,/\.toast\{[^}]*top:74px/s,'action feedback no longer occupies the objective lane');
+assert.match(css,/#app:has\(#help:not\(\[hidden\]\)\)>#toast[^\n]*visibility:hidden/s,'detail panels suppress ephemeral action feedback instead of being covered');
+assert.match(inspector,/context\.style\.bottom='50px'/,'world interaction prompts use a dedicated lane above action feedback');
+assert.match(html,/id="toast" class="toast" hidden role="status" aria-live="polite"/,'feedback lane exposes status semantics');
+console.log('notification lane checks: PASS');

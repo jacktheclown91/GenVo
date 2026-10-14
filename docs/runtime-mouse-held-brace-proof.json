@@ -1,0 +1,56 @@
+{
+  "state": {
+    "target": 97,
+    "buttons": [
+      {
+        "label": "Observe",
+        "disabled": false
+      },
+      {
+        "label": "Court",
+        "disabled": true
+      },
+      {
+        "label": "Attack",
+        "disabled": false
+      },
+      {
+        "label": "Pounce",
+        "disabled": true
+      },
+      {
+        "label": "Hold Brace",
+        "disabled": false
+      },
+      {
+        "label": "Back",
+        "disabled": false
+      }
+    ],
+    "brace": {
+      "held": {
+        "input": true,
+        "bracing": true,
+        "exertion": 98.3125
+      },
+      "released": {
+        "input": false,
+        "bracing": false
+      }
+    },
+    "attack": {
+      "phase": "windup",
+      "targetId": 97,
+      "startedAt": 2.765625,
+      "until": 2.985625,
+      "slow": false
+    },
+    "familyWheelVisible": false,
+    "familyGate": {
+      "calls": 1,
+      "available": false,
+      "message": "Family guidance unlocks when a grown relative can respond."
+    }
+  },
+  "errors": []
+}

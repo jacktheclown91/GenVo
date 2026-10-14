@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+const sim=new Simulation('FOUNDER-MIGRATION-CONNECTIVITY',{player:true}),a=sim.player();
+sim.world.water.fill(0);for(let y=0;y<sim.world.n;y++)sim.world.water[sim.world.idx(64,y)]=1;sim.world.buildLandRegions();sim.world.buildHydrology();
+a.x=48;a.y=48;const home=sim.territory.ensure(a);home.established=true;home.home={x:48,y:48};
+assert.equal(sim.canOccupy(a,72,48),true);assert.equal(sim.canReach(a,72,48),false,'real water barrier separates unswimming founder from island');
+const before=structuredClone(sim.migration.ensure(a));assert.equal(sim.migration.begin(a,{x:72,y:48},'test'),false,'founder must reject unreachable destination');assert.deepEqual(sim.migration.state(a),before);
+assert.equal(sim.migration.begin(a,{x:56,y:48},'test'),true,'connected founder route remains available');
+sim.world.water[sim.world.idx(56,48)]=1;sim.world.buildLandRegions();sim.world.buildHydrology();sim.migration.progress(a);assert.equal(sim.migration.targetFor(a),null,'route revalidates changed terrain');
+a.x=72;a.y=48;assert.equal(sim.migration.beginReturn(a),false,'return home cannot bypass the water barrier');
+console.log('founder migration actual barrier and stale terrain: PASS');

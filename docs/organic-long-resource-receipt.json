@@ -1,0 +1,74 @@
+{
+  "status": "PASS",
+  "receipts": [
+    {
+      "seed": "ORGANIC-A",
+      "scope": "100 resource-only days, no animal lifecycle or field fixtures; not ecological balance proof",
+      "before": 5693.61556354013,
+      "after": 5693.615559597912,
+      "drift": -0.000003942218427255284,
+      "organic": {
+        "fungalGrowth": 176.00658457819372,
+        "organicMineralized": 80.68128137964916,
+        "aquaticGrowth": 972.2050879746675,
+        "aquaticMineralsUsed": 97.22050879746517,
+        "aquaticPhotosynthesis": 2594.9898483993,
+        "aquaticRespiration": 1252.1516981259585,
+        "aquaticReserveExport": 21.78467383549783,
+        "aquaticWaste": 102.74570619738233,
+        "lakeWaterInput": 486.1025439873338,
+        "lakeWaterUsed": 486.1025439873338,
+        "returnedMaterial": 0,
+        "returnOverflow": 0,
+        "carcassImported": 0,
+        "foodExported": 0
+      }
+    },
+    {
+      "seed": "ORGANIC-B",
+      "scope": "100 resource-only days, no animal lifecycle or field fixtures; not ecological balance proof",
+      "before": 5762.228564304998,
+      "after": 5762.228569088011,
+      "drift": 0.000004783012627740391,
+      "organic": {
+        "fungalGrowth": 183.36128306295723,
+        "organicMineralized": 83.53282082579061,
+        "aquaticGrowth": 987.3444665968418,
+        "aquaticMineralsUsed": 98.73444665968509,
+        "aquaticPhotosynthesis": 2582.075016072972,
+        "aquaticRespiration": 1224.2796673869198,
+        "aquaticReserveExport": 21.216762841533093,
+        "aquaticWaste": 101.84116928372904,
+        "lakeWaterInput": 493.6722332984209,
+        "lakeWaterUsed": 493.6722332984209,
+        "returnedMaterial": 0,
+        "returnOverflow": 0,
+        "carcassImported": 0,
+        "foodExported": 0
+      }
+    },
+    {
+      "seed": "ORGANIC-C",
+      "scope": "100 resource-only days, no animal lifecycle or field fixtures; not ecological balance proof",
+      "before": 5663.465686277837,
+      "after": 5663.465689339109,
+      "drift": 0.0000030612718546763062,
+      "organic": {
+        "fungalGrowth": 168.06399889476597,
+        "organicMineralized": 77.0271903675723,
+        "aquaticGrowth": 989.6358072608709,
+        "aquaticMineralsUsed": 98.9635807260873,
+        "aquaticPhotosynthesis": 2575.355355553289,
+        "aquaticRespiration": 1218.5974127419634,
+        "aquaticReserveExport": 20.361827455788838,
+        "aquaticWaste": 97.9749704607191,
+        "lakeWaterInput": 494.81790363043547,
+        "lakeWaterUsed": 494.81790363043547,
+        "returnedMaterial": 0,
+        "returnOverflow": 0,
+        "carcassImported": 0,
+        "foodExported": 0
+      }
+    }
+  ]
+}

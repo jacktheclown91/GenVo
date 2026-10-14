@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>GenVo</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="app">
+    <canvas id="game" width="960" height="540" aria-label="GenVo ecosystem"></canvas>
+
+    <section id="hud" aria-live="polite">
+      <div id="clock"></div>
+      <div id="playerStats"></div>
+    </section>
+
+    <section id="tutorial" class="objective" aria-live="polite"></section>
+    <div id="context" class="context" aria-live="polite"></div>
+    <div id="toast" class="toast" hidden role="status" aria-live="polite"></div>
+    <div id="pauseNotice" class="pause-notice" hidden aria-live="polite"><strong>PAUSED</strong><span>P · resume</span></div>
+    <div id="saveStatus" class="save-status" hidden role="status" aria-live="polite">Saved</div>
+
+    <nav id="quickMenu" class="quick-menu" aria-label="Quick access">
+      <button type="button" data-panel="guide" aria-label="Current task guide" title="Current task guide">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+      </button>
+      <button type="button" data-command="leadership" aria-label="Family guidance" aria-pressed="false" title="Family guidance: unlocks with a grown relative">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><path d="m8 8 2 2M16 8l-2 2M8 16l2-2M16 16l-2-2"/></svg>
+      </button>
+      <button type="button" data-action="autonomy" aria-label="Selected creature automation" aria-pressed="false" title="Automation: off">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5v14l11-7Z"/><path d="M4 6v12"/></svg><span class="quick-auto-label" aria-hidden="true">AUTO</span>
+      </button>
+      <button type="button" data-action="speed" aria-label="Simulation speed" aria-pressed="false" title="Speed: 1x">
+        <span class="quick-speed-label" aria-hidden="true">1x</span>
+      </button>
+      <button type="button" data-panel="journal" aria-label="Family journal" title="Family journal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3Z"/><path d="M8 4v13a3 3 0 0 0 3 3M10 8h5M10 12h5"/></svg>
+      </button>
+      <button type="button" data-panel="territory" aria-label="Home range" title="Home range">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 7 5-3 6 3 5-3v13l-5 3-6-3-5 3Z"/><path d="M9 4v13M15 7v13"/></svg>
+      </button>
+      <button type="button" data-panel="population" aria-label="Population" title="Population">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="8" r="2.5"/><path d="M3 19c.5-4 2.4-6 5-6s4.5 2 5 6M13 18c.4-3.2 1.8-4.8 4-4.8 2 0 3.4 1.4 4 4.2"/></svg>
+      </button>
+      <button type="button" data-panel="help" aria-label="Help and controls" title="Help and controls">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M9.5 9a2.7 2.7 0 0 1 5.2 1c0 2-2.7 2.2-2.7 4M12 18h.01"/></svg>
+      </button>
+    </nav>
+    <section id="commandWheel" class="command-wheel" hidden role="menu" aria-label="Local family guidance">
+      <button class="radial-action gather" data-action="gather" data-label="Gather here" aria-label="Gather here" title="Gather here">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="2.4"/><circle cx="7" cy="15" r="2.4"/><circle cx="17" cy="15" r="2.4"/><path d="M12 10v3M9 13l2-2M15 13l-2-2"/></svg>
+      </button>
+      <button class="radial-action forage" data-action="forage" data-label="Forage here" aria-label="Forage here" title="Forage here">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17C5 9 10 5 19 5c0 9-4 14-12 14"/><path d="M7 17c3-4 6-7 10-9"/></svg>
+      </button>
+      <button class="radial-action scout" data-action="scout" data-label="Scout here" aria-label="Scout here" title="Scout here">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12c3-5 6-7 9-7s6 2 9 7c-3 5-6 7-9 7s-6-2-9-7Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+      </button>
+      <button class="radial-action avoid" data-action="avoid" data-label="Avoid area" aria-label="Avoid area" title="Avoid area">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 21 20H3Z"/><path d="M12 8v6M12 17v1"/></svg>
+      </button>
+      <button class="radial-action nest" data-action="nest" data-label="Nest here" aria-label="Nest here" title="Nest here">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13 12 6l8 7"/><path d="M6 12v7h12v-7M9 19v-5h6v5"/><path d="M8 8 5 6M16 8l3-2"/></svg>
+      </button>
+      <button class="radial-clear" data-action="clear" data-label="Clear local guidance" aria-label="Clear local guidance" title="Clear local guidance">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 7 10 10M17 7 7 17"/></svg>
+      </button>
+      <button class="command-scope" data-scope="toggle" aria-label="Guidance scope" title="Toggle species or whole-lineage guidance">SPECIES</button>
+      <div class="command-wheel-label" aria-hidden="true"></div>
+    </section>
+
+    <section id="transition" class="transition" hidden aria-modal="true" role="dialog">
+      <div class="transition-stage">
+        <header class="transition-heading">
+          <div id="transitionKicker" class="transition-kicker">NEXT GENERATION</div>
+          <h2 id="transitionTitle">Next generation</h2>
+          <p id="transitionLead" class="transition-lead"></p>
+        </header>
+
+        <div id="transitionReveal" class="lineage-reveal" hidden>
+          <figure class="lineage-portrait previous">
+            <canvas id="transitionParent" width="224" height="140" aria-label="Previous generation appearance"></canvas>
+            <figcaption id="transitionParentLabel">Previous</figcaption>
+          </figure>
+          <img class="handoff-arrow" src="assets/ui/handoff.png" alt="" aria-hidden="true" />
+          <figure class="lineage-portrait descendant">
+            <canvas id="transitionChild" width="224" height="140" aria-label="New generation appearance"></canvas>
+            <figcaption id="transitionChildLabel">Descendant</figcaption>
+          </figure>
+        </div>
+
+        <div id="transitionChanges" class="transition-changes" hidden></div>
+
+        <section id="transitionEvolution" class="transition-evolution" hidden aria-live="polite">
+          <div class="evolution-heading"><b>Choose one adaptation</b><span>Your last life shapes what can emerge.</span></div>
+          <div id="transitionEvolutionChoices" class="evolution-choices"></div>
+        </section>
+
+        <details id="transitionDetails" class="transition-details" hidden>
+          <summary>inheritance details</summary>
+          <div id="transitionDetailsBody"></div>
+        </details>
+
+        <p id="transitionBody" class="transition-body"></p>
+        <footer class="transition-footer">
+          <div class="eight-mark" aria-label="Eight-generation milestone">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <button id="transitionContinue">Continue</button>
+        </footer>
+      </div>
+    </section>
+
+    <section id="guide" class="detail-panel task-guide" hidden aria-live="polite"></section>
+    <section id="populations" class="detail-panel ecology readable-panel" hidden aria-live="polite" tabindex="0"></section>
+    <section id="help" class="detail-panel help readable-panel" hidden tabindex="0">
+      <header class="panel-head"><div><span>REFERENCE</span><strong>How the lineage works</strong></div><small>? · close</small></header>
+      <div class="panel-summary help-quick">
+        <div><b>MOVE</b><strong>WASD / arrows</strong><span>Shift to sprint</span></div>
+        <div><b>USE</b><strong>E</strong><span>interact with your target · Shift+E drinks reachable water</span></div>
+        <div><b>FIGHT</b><strong>Space / J</strong><span>attack, hold to brace</span></div>
+        <div><b>DISCOVER</b><strong>Y</strong><span>field guide: trials, places, species and parts you have seen</span></div>
+        <div><b>BODY</b><strong>Parts</strong><span>your parts decide what you can do: claws strike sooner, venom poisons, wide eyes see farther</span></div>
+        <div><b>FAMILY</b><strong>Tab / 1-5 / R</strong><span>switch, direct, or guide</span></div>
+        <div><b>VIEWS</b><strong>T / O / L</strong><span>range, population, journal</span></div>
+      </div>
+      <details open><summary>Basics and lineage</summary>
+        <p><b>You control one GenVo at a time.</b> Once another lineage member is living, <b>Tab</b> switches between family members. The automation button in the top menu lets the selected creature use its own survival AI. Move or interact to take manual control back immediately.</p>
+        <p><b>The loop:</b> survive → pair → raise young → prepare a grown descendant → hand control forward. L opens the family journal. H transfers control when a mature descendant is eligible.</p>
+        <p><b>Generation 8 is a milestone, not an ending.</b> The ecosystem keeps running after G8, and the lineage can continue.</p>
+        <p><b>Saving:</b> GenVo autosaves in the browser and after major lineage events. A saved lineage can be continued after a refresh or later visit on this browser/device.</p>
+        <div class="save-controls"><button id="saveNow" type="button">Save now</button><button id="loadSave" type="button" class="secondary">Load last save</button><span id="saveDetails">Autosave is on.</span></div>
+      </details>
+      <details><summary>Survival and Stalkers</summary>
+        <p><b>Move</b> WASD / arrows · <b>Sprint</b> Shift · <b>Interact</b> E · <b>Drink</b> Shift+E · <b>Attack</b> Space · <b>Brace</b> hold J · <b>Cycle nearby compatible food</b> Q · <b>Pause</b> P.</p>
+        <p><b>Mouse:</b> Click an object to select it and see its actions. Right-click ground to choose Move here. Interact uses your selected target; click food directly to choose it. With nothing selected, Q cycles compatible nearby food.</p>
+        <p><b>Breath:</b> sprinting, bracing and attacking use breath. Walking and standing refill it quickly. When you are winded you cannot sprint or brace and attacks wind up slower, but you can still walk.</p>
+        <p><b>Stalker response:</b> a Stalker chases faster than you walk but slower than you sprint, and it tires. Sidestep the marked charge lane, hold J facing a charge to blunt it, or bite during its recovery. Two clean wounds drive it off. Dense plants break its sight if you move quietly. When teaching young, escaping with them safely is a valid danger lesson.</p>
+        <p><b>Family signal</b> X if evolved · <b>Hide</b> V if evolved · <b>Carry</b> Z if evolved.</p>
+      </details>
+      <details><summary>Family and shelter</summary>
+        <p><b>Speed</b> the speed button or <b>[</b> and <b>]</b> · 2x and 4x hand your creature to AUTO. Moving or acting takes it back at 1x. Danger to your creature or family slows time back to 1x and a short summary says what happened.</p>
+        <p><b>Switch family member</b> Tab · <b>Mates</b> M · <b>Court</b> C · <b>Journal</b> L · <b>Hand off lineage</b> H · <b>Shelter</b> B · <b>Build / repair</b> N · <b>Store food</b> F.</p>
+        <p><b>Family direction:</b> 1 Auto · 2 Follow · 3 Forage · 4 Home · 5 Scout after the family sustains enough adults and familiar ground. Use the <b>target icon</b> or press <b>R</b>, then click or tap ground for local guidance.</p>
+        <p>New nests become available as the family grows. Relatives move to viable marked ground and build from local plant material.</p>
+      </details>
+      <details><summary>Range, population, and species</summary>
+        <p><b>Home range</b> T · <b>Population</b> O · <b>Migration</b> K · <b>Take route</b> G.</p>
+        <p>Food is shared ecology. Family members, wildlife, and other living taxa can thin the same ground. Population centers have local carrying limits.</p>
+        <p>When multiple species coexist, guidance follows the active taxon by default. The command wheel can explicitly switch to the whole lineage.</p>
+      </details>
+      <details><summary>Evolution and lifestyles</summary>
+        <p>Repeated behavior and habitat use shape descendants. Forager and Colony forms, population pressure, proto-traits, species branches, and lifestyles emerge from play rather than a conventional skill tree.</p>
+        <p>Aquatic branches can make open water normal travel space. Nomadic, Guardian, and Burrower branches change movement, defense, shelter use, and settlement behavior in different ways.</p>
+      </details>
+      <details><summary>Other controls and disclosure</summary>
+        <p><b>Memory</b> I · <b>Audio</b> U · <b>Help</b> ?</p>
+        <p class="ai-disclosure"><b>AI-assisted development.</b> AI tools were used as part of the development workflow for programming support and portions of the visual, audio, and writing process. Game design, direction, selection, integration, testing, and final decisions are developer-led.</p>
+      </details>
+      <footer class="panel-foot">Scroll for more · click a section to expand or collapse</footer>
+    </section>
+
+    <section id="journal" class="journal" hidden aria-live="polite"></section>
+    <section id="mate" class="detail-panel" hidden aria-live="polite"></section>
+    <section id="mind" class="detail-panel" hidden aria-live="polite"></section>
+    <section id="territory" class="detail-panel readable-panel" hidden aria-live="polite" tabindex="0"></section>
+    <section id="shelter" class="detail-panel" hidden aria-live="polite"></section>
+    <section id="migration" class="detail-panel" hidden aria-live="polite"></section>
+
+
+
+    <section id="briefing" class="briefing" hidden aria-modal="true" role="dialog" aria-live="polite">
+      <div class="briefing-stage">
+        <div class="briefing-kicker" id="briefingKicker">LINEAGE BRIEFING</div>
+        <h2 id="briefingTitle">One creature. One living lineage.</h2>
+        <p id="briefingLead" class="briefing-lead"></p>
+        <div id="briefingPoints" class="briefing-points"></div>
+        <footer class="briefing-footer">
+          <div id="briefingProgress" class="briefing-progress" aria-label="Briefing progress"></div>
+          <button id="briefingNext">Next</button>
+        </footer>
+      </div>
+    </section>
+
+    <!-- First lessons now occur in the world. The old opening and briefing logic is retained for saved-state compatibility only. -->
+    <section id="welcome" hidden></section>
+    <section id="frontEnd" class="front-end" role="dialog" aria-modal="true" aria-label="GenVo menu">
+      <div class="menu-atmosphere" aria-hidden="true"><span class="mote mote-one"></span><span class="mote mote-two"></span><span class="mote mote-three"></span></div>
+      <div class="front-frame">
+        <header class="front-brand">
+          <span class="brand-mark" aria-hidden="true"><img src="assets/ui/lineage.png" alt="" /></span>
+          <div class="brand-word">Gen<span>Vo</span></div>
+          <div class="brand-divider" aria-hidden="true"></div>
+          <p class="brand-caption">Every life leaves a trace.</p>
+        </header>
+        <section class="menu-view" data-screen="home" aria-label="Main menu">
+          <nav class="menu-navigation" aria-label="Game navigation">
+            <button data-action="continue" class="menu-primary">Continue <span aria-hidden="true">↗</span></button>
+            <button data-screen-target="new">New World <span aria-hidden="true">↗</span></button>
+            <button data-screen-target="worlds">Load World <span aria-hidden="true">↗</span></button>
+            <button data-screen-target="settings">Options <span aria-hidden="true">↗</span></button>
+            <button data-screen-target="credits">Credits <span aria-hidden="true">↗</span></button>
+          </nav>
+          <p id="menuResumeMeta" class="front-footnote" aria-live="polite"></p>
+        </section>
+        <section class="menu-view" data-screen="new" hidden aria-label="Create world">
+          <h2>New World</h2><p class="menu-subline">A new place, a new beginning.</p>
+          <label class="menu-field">World name<input id="newWorldName" maxlength="40" value="Untamed World" autocomplete="off" /></label>
+          <label class="menu-field">World seed <small>Optional</small><input id="newWorldSeed" maxlength="64" placeholder="Leave blank for a new world" autocomplete="off" /></label>
+          <div class="menu-toolbar"><button data-action="create">Begin World</button><button class="menu-secondary" data-action="back">Back</button></div>
+        </section>
+        <section class="menu-view" data-screen="worlds" hidden aria-label="Saved worlds">
+          <h2>Worlds</h2><p class="menu-subline">Continue a history already in motion.</p>
+          <div id="worldsList" class="worlds-list" aria-live="polite"></div>
+          <div class="menu-toolbar"><button data-screen-target="new">New World</button><button class="menu-secondary" data-action="back">Back</button></div>
+        </section>
+        <section class="menu-view" data-screen="settings" hidden aria-label="Game options">
+          <h2>Options</h2>
+          <label class="menu-slider">Sound volume <output id="menuVolumeValue">72%</output><input id="menuVolume" type="range" min="0" max="100" step="5" value="72" /></label>
+          <label class="menu-switch"><input id="menuMute" type="checkbox" /> Mute audio</label>
+          <label class="menu-switch"><input id="menuReduceMotion" type="checkbox" /> Reduce menu motion</label>
+          <div class="menu-toolbar"><button data-action="fullscreen">Fullscreen</button><button class="menu-secondary" data-action="back">Back</button></div>
+        </section>
+        <section class="menu-view" data-screen="credits" hidden aria-label="Game credits">
+          <h2>Credits</h2>
+          <div class="menu-credits"><span>CREATED & DIRECTED BY</span><strong>SevenFoldStories [QUIλ]</strong><span>PLAYTESTING, BRAINSTORMING & DESIGN FEEDBACK</span><strong>Pentagram Star</strong><span>DEVELOPMENT</span><p>Original creative direction with AI-assisted implementation and production workflows.</p></div>
+          <div class="menu-toolbar"><button class="menu-secondary" data-action="back">Back</button></div>
+        </section>
+        <section class="menu-view" data-screen="pause" hidden aria-label="Pause menu">
+          <h2>Paused</h2><p id="pausedWorldInfo" class="menu-subline"></p>
+          <nav class="menu-navigation" aria-label="Pause actions">
+            <button data-action="resume" class="menu-primary">Resume <span aria-hidden="true">↗</span></button>
+            <button data-action="save">Save World</button>
+            <button data-screen-target="worlds">Load World</button>
+            <button data-screen-target="settings">Options</button>
+            <button data-screen-target="credits">Credits</button>
+            <button data-action="return">Return to Main Menu</button>
+          </nav>
+        </section>
+        <section class="menu-view" data-screen="return" hidden aria-label="Return to main menu">
+          <h2>Leave this world?</h2><p class="menu-subline">Choose whether to save before returning.</p>
+          <div class="menu-toolbar menu-stacked"><button data-action="save-return">Save & Return</button><button data-action="discard-return" class="menu-secondary">Return Without Saving</button><button data-screen-target="pause" class="menu-secondary">Cancel</button></div>
+        </section>
+        <p id="menuMessage" class="menu-message" role="status" aria-live="polite"></p>
+        <footer class="front-footer"><span class="leaf-emblem" aria-hidden="true">✦</span><span>GENVO</span><span class="footer-separator">/</span><span>LIVING WORLDS</span></footer>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,634 @@
+{
+  "scope": "Controlled existing actor readiness/placement; real mouse courtship, unmodified preferences and conception rolls. Canonical funded birth invoked to inspect offspring without claiming natural gestation.",
+  "events": [
+    {
+      "name": "cross-label-available",
+      "tick": 11,
+      "foundingIds": [
+        "genvo",
+        "mosskip"
+      ],
+      "pregnancy": null,
+      "editorOffer": null
+    },
+    {
+      "name": "cross-label-conceived",
+      "tick": 61,
+      "foundingIds": [
+        "genvo",
+        "mosskip"
+      ],
+      "pregnancy": {
+        "fatherId": 1,
+        "paternalInheritance": {
+          "alive": false,
+          "player": false,
+          "id": 1,
+          "species": "mosskip",
+          "sex": "M",
+          "generation": 1,
+          "parentIds": [],
+          "grandparentIds": [],
+          "genes": {
+            "body": 1.0574740778654814,
+            "motion": 0.9189224301837385,
+            "metabolism": 0.9314103704877198,
+            "digestion": 1.047266753949225,
+            "senses": 0.9351355744991452,
+            "climate": 0.9963045868091286,
+            "immunity": 0.9600141095928848,
+            "temperament": 0.9355376224499197
+          },
+          "reproductiveGenome": {
+            "schema": 1,
+            "loci": {
+              "gamete": [
+                1,
+                1
+              ],
+              "development": [
+                1,
+                1
+              ]
+            },
+            "origin": "shared-ancestral-baseline"
+          },
+          "matePreferences": {
+            "weights": {
+              "size": 0.40521,
+              "strength": -0.32634,
+              "ornament": -0.47254,
+              "display": -0.45436,
+              "behavior": 0.38129
+            },
+            "selectivity": 0.56022,
+            "ritualTastes": {
+              "dance": 0.51737,
+              "call": 0.75355,
+              "flare": 0.53281,
+              "scent": -0.09601,
+              "gesture": 0.34843
+            },
+            "tempo": -0.59437
+          },
+          "adaptations": [],
+          "bodyPlan": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "light-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "wide-field-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "wide-field-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "spring-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "spring-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              },
+              {
+                "id": "root/tail",
+                "partId": "balance-tail",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "tail"
+              }
+            ],
+            "id": "bp0-225474e8"
+          },
+          "lineage": false,
+          "x": 87.2,
+          "y": 37.960133072267055
+        },
+        "maternalInheritance": {
+          "alive": false,
+          "player": false,
+          "id": 109,
+          "species": "genvo",
+          "sex": "F",
+          "generation": 1,
+          "parentIds": [],
+          "grandparentIds": [],
+          "genes": {
+            "body": 0.9140908780973405,
+            "motion": 1.046797262923792,
+            "metabolism": 0.9812413914129139,
+            "digestion": 0.940671553881839,
+            "senses": 0.95185139416717,
+            "climate": 1.073165831109509,
+            "immunity": 1.0361203495413065,
+            "temperament": 1.0004271000158043
+          },
+          "reproductiveGenome": {
+            "schema": 1,
+            "loci": {
+              "gamete": [
+                1,
+                1
+              ],
+              "development": [
+                1,
+                1
+              ]
+            },
+            "origin": "shared-ancestral-baseline"
+          },
+          "matePreferences": {
+            "weights": {
+              "size": -0.04753,
+              "strength": -0.02554,
+              "ornament": -0.2802,
+              "display": -0.25482,
+              "behavior": -0.21747
+            },
+            "selectivity": 0.70882,
+            "ritualTastes": {
+              "dance": 0.39711,
+              "call": 0.84732,
+              "flare": -0.61493,
+              "scent": -0.50301,
+              "gesture": 0.10114
+            },
+            "tempo": 0.72121
+          },
+          "adaptations": [],
+          "anatomy": {
+            "armor": 0,
+            "barbs": 0,
+            "glands": 0,
+            "spring": 0,
+            "waterBody": 0,
+            "gut": 0,
+            "repair": 0,
+            "signal": 0,
+            "rally": 0,
+            "skin": 0,
+            "jaw": 0,
+            "forelimb": 0
+          },
+          "bodyPlan": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "small-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-4134709b"
+          },
+          "lineage": true,
+          "x": 86.5,
+          "y": 38.5
+        },
+        "days": 16,
+        "totalDays": 16,
+        "startedDay": 2,
+        "startedYear": 1,
+        "mode": "live",
+        "dualAtConception": false,
+        "compatibilityAtConception": {
+          "enabled": true,
+          "reason": "",
+          "gameteMatch": 1,
+          "fertilityA": 1,
+          "fertilityB": 1,
+          "conceptionChance": 1,
+          "model": "provisional-diploid-loci/1"
+        },
+        "plannedLitterSize": 4,
+        "birthCost": 68,
+        "reserveInvestment": 31.959999999999997,
+        "dualCostPaid": null
+      },
+      "attempt": {
+        "tick": 60,
+        "day": 2,
+        "parentIds": [
+          109,
+          1
+        ],
+        "accepted": true,
+        "conceived": true,
+        "compatibility": {
+          "enabled": true,
+          "reason": "",
+          "gameteMatch": 1,
+          "fertilityA": 1,
+          "fertilityB": 1,
+          "conceptionChance": 1,
+          "model": "provisional-diploid-loci/1"
+        }
+      },
+      "refusal": {
+        "tick": 30,
+        "otherId": 1,
+        "reason": "second-declines",
+        "day": 1
+      },
+      "editorOffer": null
+    },
+    {
+      "name": "hybrid-offspring",
+      "tick": 63,
+      "foundingIds": [
+        "genvo",
+        "mosskip"
+      ],
+      "pregnancy": null,
+      "attempt": {
+        "tick": 60,
+        "day": 2,
+        "parentIds": [
+          109,
+          1
+        ],
+        "accepted": true,
+        "conceived": true,
+        "compatibility": {
+          "enabled": true,
+          "reason": "",
+          "gameteMatch": 1,
+          "fertilityA": 1,
+          "fertilityB": 1,
+          "conceptionChance": 1,
+          "model": "provisional-diploid-loci/1"
+        }
+      },
+      "refusal": {
+        "tick": 30,
+        "otherId": 1,
+        "reason": "second-declines",
+        "day": 1
+      },
+      "editorOffer": null
+    }
+  ],
+  "errors": [],
+  "partnerId": 1,
+  "children": {
+    "funding": 31.959999999999997,
+    "newborns": [
+      {
+        "id": 197,
+        "parentIds": [
+          109,
+          1
+        ],
+        "bodyId": "bp0-f4fd5f3d",
+        "parts": [
+          "small-torso",
+          "simple-eye",
+          "simple-eye",
+          "spring-leg",
+          "spring-leg",
+          "spring-leg",
+          "spring-leg",
+          "grazing-mouth",
+          "balance-tail"
+        ],
+        "genome": {
+          "schema": 1,
+          "loci": {
+            "gamete": [
+              1.04481,
+              1.02845
+            ],
+            "development": [
+              0.96814,
+              0.95792
+            ]
+          },
+          "inheritance": {
+            "gamete": [
+              {
+                "parentId": 109,
+                "alleleIndex": 0,
+                "baseline": 1,
+                "mutation": 0.04481
+              },
+              {
+                "parentId": 1,
+                "alleleIndex": 0,
+                "baseline": 1,
+                "mutation": 0.02845
+              }
+            ],
+            "development": [
+              {
+                "parentId": 109,
+                "alleleIndex": 0,
+                "baseline": 1,
+                "mutation": -0.03186
+              },
+              {
+                "parentId": 1,
+                "alleleIndex": 0,
+                "baseline": 1,
+                "mutation": -0.04208
+              }
+            ]
+          },
+          "origin": "parental-gametes"
+        },
+        "energy": 14.853960000000004
+      },
+      {
+        "id": 198,
+        "parentIds": [
+          109,
+          1
+        ],
+        "bodyId": "bp0-f9f02061",
+        "parts": [
+          "light-torso",
+          "wide-field-eye",
+          "wide-field-eye",
+          "scent-gland",
+          "scent-gland",
+          "walking-leg",
+          "spring-leg",
+          "spring-leg",
+          "walking-leg",
+          "grazing-mouth",
+          "balance-tail"
+        ],
+        "genome": {
+          "schema": 1,
+          "loci": {
+            "gamete": [
+              1.03487,
+              0.96973
+            ],
+            "development": [
+              1.02295,
+              0.993
+            ]
+          },
+          "inheritance": {
+            "gamete": [
+              {
+                "parentId": 109,
+                "alleleIndex": 1,
+                "baseline": 1,
+                "mutation": 0.03487
+              },
+              {
+                "parentId": 1,
+                "alleleIndex": 1,
+                "baseline": 1,
+                "mutation": -0.03027
+              }
+            ],
+            "development": [
+              {
+                "parentId": 109,
+                "alleleIndex": 1,
+                "baseline": 1,
+                "mutation": 0.02295
+              },
+              {
+                "parentId": 1,
+                "alleleIndex": 0,
+                "baseline": 1,
+                "mutation": -0.007
+              }
+            ]
+          },
+          "origin": "parental-gametes"
+        },
+        "energy": 14.853960000000004
+      },
+      {
+        "id": 199,
+        "parentIds": [
+          109,
+          1
+        ],
+        "bodyId": "bp0-cafc8137",
+        "parts": [
+          "small-torso",
+          "wide-field-eye",
+          "wide-field-eye",
+          "walking-leg",
+          "spring-leg",
+          "spring-leg",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "genome": {
+          "schema": 1,
+          "loci": {
+            "gamete": [
+              1.03082,
+              1.03817
+            ],
+            "development": [
+              1.00381,
+              0.99453
+            ]
+          },
+          "inheritance": {
+            "gamete": [
+              {
+                "parentId": 109,
+                "alleleIndex": 0,
+                "baseline": 1,
+                "mutation": 0.03082
+              },
+              {
+                "parentId": 1,
+                "alleleIndex": 0,
+                "baseline": 1,
+                "mutation": 0.03817
+              }
+            ],
+            "development": [
+              {
+                "parentId": 109,
+                "alleleIndex": 1,
+                "baseline": 1,
+                "mutation": 0.00381
+              },
+              {
+                "parentId": 1,
+                "alleleIndex": 1,
+                "baseline": 1,
+                "mutation": -0.00547
+              }
+            ]
+          },
+          "origin": "parental-gametes"
+        },
+        "energy": 14.853960000000004
+      },
+      {
+        "id": 200,
+        "parentIds": [
+          109,
+          1
+        ],
+        "bodyId": "bp0-336358a0",
+        "parts": [
+          "light-torso",
+          "wide-field-eye",
+          "wide-field-eye",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "grazing-mouth",
+          "balance-tail"
+        ],
+        "genome": {
+          "schema": 1,
+          "loci": {
+            "gamete": [
+              1.00579,
+              1.03059
+            ],
+            "development": [
+              1.0012,
+              1.03315
+            ]
+          },
+          "inheritance": {
+            "gamete": [
+              {
+                "parentId": 109,
+                "alleleIndex": 1,
+                "baseline": 1,
+                "mutation": 0.00579
+              },
+              {
+                "parentId": 1,
+                "alleleIndex": 1,
+                "baseline": 1,
+                "mutation": 0.03059
+              }
+            ],
+            "development": [
+              {
+                "parentId": 109,
+                "alleleIndex": 0,
+                "baseline": 1,
+                "mutation": 0.0012
+              },
+              {
+                "parentId": 1,
+                "alleleIndex": 1,
+                "baseline": 1,
+                "mutation": 0.03315
+              }
+            ]
+          },
+          "origin": "parental-gametes"
+        },
+        "energy": 14.853960000000004
+      }
+    ]
+  },
+  "save": {
+    "animals": 200,
+    "genomesPreserved": true
+  },
+  "video": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\hybrid-lineages-video\\page@3146fda38366aafe92c4117bddde173e.webm"
+}

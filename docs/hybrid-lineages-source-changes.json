@@ -1,0 +1,22 @@
+{
+  "baseline": "GenVo-world-trails-2026-10-13-a87cbd12-source.zip",
+  "sha256": "56b218125b6b18442d185f1a13e5d60ffd8580695a143219657789ee90d367da",
+  "changedGameplayModules": [
+    "src/ecology/gestation.js",
+    "src/lineage/body-inheritance.js",
+    "src/lineage/evolution-editor.js",
+    "src/lineage/heredity.js",
+    "src/lineage/lineage.js",
+    "src/lineage/speciation.js",
+    "src/organisms/species.js",
+    "src/persistence/save-manager.js",
+    "src/reproduction/courtship-performance.js",
+    "src/reproduction/partner-encounters.js",
+    "src/reproduction/reproduction.js",
+    "src/reproduction/reproductive-compatibility.js",
+    "src/sim/simulation.js",
+    "src/ui/courtship-observation.js",
+    "src/ui/inspector.js",
+    "src/ui/journal.js"
+  ]
+}

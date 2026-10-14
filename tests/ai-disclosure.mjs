@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const html=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
+const disclosure=fs.readFileSync(new URL('../submission/AI_DISCLOSURE.txt',import.meta.url),'utf8');
+const notes=fs.readFileSync(new URL('../submission/ITCH_PAGE_NOTES.md',import.meta.url),'utf8');
+for(const text of [html,disclosure,notes])assert.match(text,/AI|generative-AI/i,'AI use is explicitly disclosed');
+for(const category of ['code','art','music','text'])assert.match(disclosure,new RegExp(category,'i'),`disclosure names ${category}`);
+assert.match(html,/AI-assisted development/i,'in-game Help exposes a concise AI-use disclosure');
+assert.match(disclosure,/developer-directed original game/i,'detailed disclosure makes developer authorship clear');
+console.log('AI disclosure coverage: PASS');

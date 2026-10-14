@@ -1,0 +1,165 @@
+{
+  "scope": "Controlled player/victim placement and reserves, actual canonical death creates a carcass; observed real-clock decomposition and mouse inspection. A separate staged aquatic nutrient shortage verifies actual world growth constraints. A valid mounted grasper variant also exercises keyboard carrying and dropping. Aquatic fixture clears non-algal stocks/carrion/litter at one cell and sets its minerals to zero; no biomass/RNG/time edits in the land scene.",
+  "events": [
+    {
+      "name": "carcass-inspect",
+      "tick": 10,
+      "position": {
+        "x": 37.5,
+        "y": 65.5
+      },
+      "notice": "✓ Carrion · Organic remains feed decomposers and return soil nutrients."
+    },
+    {
+      "name": "decomposers",
+      "tick": 63,
+      "position": {
+        "x": 37.5,
+        "y": 65.5
+      },
+      "notice": "✓ Carrion · Organic remains feed decomposers and return soil nutrients."
+    },
+    {
+      "name": "material-carried",
+      "tick": 65,
+      "position": {
+        "x": 37.5,
+        "y": 65.5
+      },
+      "notice": "✓ Carrying Moss · bring it to shelter."
+    },
+    {
+      "name": "material-dropped",
+      "tick": 73,
+      "position": {
+        "x": 38.95586600582571,
+        "y": 65.5
+      },
+      "notice": "✓ Dropped Moss."
+    },
+    {
+      "name": "aquatic-limited",
+      "tick": 99,
+      "position": {
+        "x": 103.5,
+        "y": 38.5
+      },
+      "notice": "✓ Water · Approach a drinkable shore. algae: Nutrient limited"
+    }
+  ],
+  "errors": [],
+  "source": {
+    "x": 37.5,
+    "y": 65.5,
+    "i": 8357
+  },
+  "carcass": {
+    "i": 8358,
+    "x": 38.25,
+    "y": 65.5,
+    "biomass": 0.718176007270813,
+    "fungus": 0.06651096791028976,
+    "minerals": 0.3683825254440308
+  },
+  "decomposition": {
+    "drawnDecomposer": true,
+    "carcass": 0.6876733899116516,
+    "fungus": 0.07319865375757217,
+    "minerals": 0.3690395238949539,
+    "totals": {
+      "fungalGrowth": 1.8069218453019857,
+      "organicMineralized": 0.7675295549102892,
+      "aquaticGrowth": 24.39599047601223,
+      "aquaticMineralsUsed": 2.43959904760122,
+      "aquaticPhotosynthesis": 18.797683457437238,
+      "aquaticRespiration": 1.702319199621669,
+      "aquaticReserveExport": 0.03332555658622577,
+      "aquaticWaste": 0.4470805693557054,
+      "lakeWaterInput": 12.197995238006115,
+      "lakeWaterUsed": 12.197995238006115,
+      "returnedMaterial": 0,
+      "returnOverflow": 0,
+      "carcassImported": 0.7181759980540636,
+      "foodExported": 0
+    }
+  },
+  "carryBody": {
+    "actions": [
+      "bite",
+      "call",
+      "carry",
+      "dance",
+      "gesture",
+      "graze",
+      "see",
+      "sprint",
+      "walk"
+    ],
+    "adaptations": [
+      "grasping-limbs"
+    ]
+  },
+  "carried": {
+    "biomass": 0.18,
+    "reserve": 0.02131395050445293,
+    "tissues": null,
+    "kind": "sunmoss",
+    "label": "Moss",
+    "stored": 3.2659199999999995,
+    "origin": {
+      "x": 38.5,
+      "y": 65.5
+    }
+  },
+  "returned": {
+    "load": null,
+    "totals": {
+      "fungalGrowth": 1.8069218453019857,
+      "organicMineralized": 0.7675295549102892,
+      "aquaticGrowth": 24.39599047601223,
+      "aquaticMineralsUsed": 2.43959904760122,
+      "aquaticPhotosynthesis": 18.797683457437238,
+      "aquaticRespiration": 1.702319199621669,
+      "aquaticReserveExport": 0.03332555658622577,
+      "aquaticWaste": 0.4470805693557054,
+      "lakeWaterInput": 12.197995238006115,
+      "lakeWaterUsed": 12.197995238006115,
+      "returnedMaterial": 0.18000000715255737,
+      "returnOverflow": 0,
+      "carcassImported": 0.7181759980540636,
+      "foodExported": 0
+    }
+  },
+  "water": {
+    "i": 4968,
+    "x": 104.5,
+    "y": 38.5,
+    "px": 103.5,
+    "py": 38.5
+  },
+  "aquatic": {
+    "state": 3,
+    "minerals": 0,
+    "totals": {
+      "fungalGrowth": 3.433749008923769,
+      "organicMineralized": 1.4642982106976012,
+      "aquaticGrowth": 49.641061156988144,
+      "aquaticMineralsUsed": 4.964106115698793,
+      "aquaticPhotosynthesis": 38.23777236526943,
+      "aquaticRespiration": 3.4763610894530905,
+      "aquaticReserveExport": 0.053038300373325895,
+      "aquaticWaste": 0.9069323407969705,
+      "lakeWaterInput": 24.820530578494072,
+      "lakeWaterUsed": 24.820530578494072,
+      "returnedMaterial": 0.18000000715255737,
+      "returnOverflow": 0,
+      "carcassImported": 0.7181759980540636,
+      "foodExported": 0
+    }
+  },
+  "save": {
+    "organicParity": true,
+    "resourceParity": true
+  },
+  "video": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\organic-resources-video\\page@9d24df8efe52d25926895e465d77ec68.webm"
+}

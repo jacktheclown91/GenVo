@@ -1,0 +1,5 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {foodChoiceView} from '../src/ui/food-choice-view.js';
+const sim=new Simulation('READ-FOOD-CHOICE'),a=sim.player();let found=false;for(let y=3;y<sim.world.n-3&&!found;y+=3)for(let x=3;x<sim.world.n-3&&!found;x+=3){if(!sim.canOccupy(a,x,y))continue;a.x=x;a.y=y;if(sim.foraging.options(a).length>1)found=true}assert.ok(found,'real multi-food habitat');
+const rng=sim.rng.state,before=JSON.stringify([...sim.foraging.states]);const view=foodChoiceView(sim);assert.equal(JSON.stringify([...sim.foraging.states]),before);assert.equal(sim.rng.state,rng);assert.equal(view.kind,sim.playerFoodTarget(a).kind,'pure view matches canonical need-aware selection');const cycled=sim.cyclePlayerFood();assert.equal(foodChoiceView(sim).kind,cycled.kind,'pure view matches manual choice');sim.paused=true;assert.equal(foodChoiceView(sim).canCycle,false);sim.playerId=null;sim._player=null;assert.equal(foodChoiceView(sim).kind,null);console.log('Read-only need/manual food choice, actual habitat, pause and missing actor PASS');

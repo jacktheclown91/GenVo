@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {worldResourceAt} from '../src/ui/world-resource-target.js';
+const s=new Simulation('VISIBLE-RESOURCE-SELECTION'),w=s.world;
+let cell;for(let y=2;y<w.n-2&&!cell;y++)for(let x=2;x<w.n-2&&!cell;x++){const i=w.idx(x,y);if(w.water[i])continue;const food=Object.keys(w.plants).find(k=>w.plants[k][i]>.08);if(food)cell={i,food,x:x+.5,y:y+.5,hitX:x+.5,hitY:y+.5}}
+assert.ok(cell);s.nests=[];s.eggs=[];s.shelter.activeShelters=()=>[];
+const r={screenToWorld:()=>({x:cell.hitX,y:cell.hitY}),plantTargetWorld:w,visiblePlantTargets:new Map()};
+const rng=s.rng.state,amount=w.plants[cell.food][cell.i];
+assert.equal(worldResourceAt(s,r,0,0).kind,'ground','invisible biomass is not a clicked plant');
+r.visiblePlantTargets.set(cell.i+'|'+cell.food,cell);
+assert.equal(worldResourceAt(s,r,0,0).food,cell.food,'visible anchor selects exact patch');
+assert.equal(s.rng.state,rng);assert.equal(w.plants[cell.food][cell.i],amount,'picking is read-only');
+r.plantTargetWorld={};assert.equal(worldResourceAt(s,r,0,0).kind,'ground','stale world artwork cannot select food');r.plantTargetWorld=w;
+w.plants[cell.food][cell.i]=0;assert.equal(worldResourceAt(s,r,0,0).kind,'ground','depleted plant cannot remain selectable');
+console.log('Visible plant selection, bare ground, depletion, stale-world and read-only checks PASS');

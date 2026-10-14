@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+const sim=new Simulation('FRESHWATER-CARRYING',{player:true}),a=sim.player(),w=sim.world;
+a.bodyPlan=structuredClone(a.bodyPlan);a.bodyPlan.nodes.find(n=>n.socket==='mouth').partId='filter-mouth';
+a.x=50.5;a.y=50.5;a.energy=60;
+w.water.fill(0);for(const f of Object.values(w.freshwaterFood))f.fill(0);
+const i=w.idx(51.5,50.5);w.water[i]=1;w.freshwaterFood.algae[i]=1;w.buildLandRegions();w.buildHydrology();
+const before=w.freshwaterFood.algae[i];
+assert.equal(sim.specialization.collectProvision(a,{kind:'algae',x:a.x,y:a.y,foodX:51.5,foodY:50.5}),true,'compatible bank food can become a real carried load');
+assert.ok(a.carryingFood.biomass>0);assert.ok(w.freshwaterFood.algae[i]<before);
+assert.ok(Math.abs(a.carryingFood.biomass-(before-w.freshwaterFood.algae[i]))<1e-7,'carried biomass is debited from the exact source cell');
+assert.ok(a.carryingFood.stored<=a.carryingFood.biomass*8,'storing food cannot create nutritional value');
+console.log('finite freshwater carrying from actual bank source: PASS');

@@ -1,0 +1,78 @@
+[
+  {
+    "test": "lineage-comparison",
+    "exitCode": 0,
+    "output": "Actual descendant body, both conception phenotype records, wild-parent identity, immutable observations, save parity and honest older-record fallback PASS\n"
+  },
+  {
+    "test": "creature-lab-assembly",
+    "exitCode": 0,
+    "output": "lab assembly uses canonical socket rules, immutable transactions and native body-plan round trip PASS\n"
+  },
+  {
+    "test": "creature-assembly",
+    "exitCode": 0,
+    "output": "creature assembly ok\n"
+  },
+  {
+    "test": "native-lab-hidden-pixels",
+    "exitCode": 0,
+    "output": "native-lab-hidden-pixels: edit, erased pixel, and transparent-source RGB recovery PASS\n"
+  },
+  {
+    "test": "knowledge",
+    "exitCode": 1,
+    "output": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: drinking teaches a water place\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/knowledge.mjs:18:40\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: null,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n",
+    "baseline": {
+      "archive": "GenVo-seed-journeys-2026-10-13-01-source.zip",
+      "exitCode": 1,
+      "output": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: drinking teaches a water place\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/reports/lab-windows-prior-source/tests/knowledge.mjs:18:40\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: null,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n"
+    },
+    "status": "PREEXISTING_FAILURE"
+  },
+  {
+    "test": "journal",
+    "exitCode": 0,
+    "output": "field journal checks: PASS\n"
+  },
+  {
+    "test": "editor-pass",
+    "exitCode": 0,
+    "output": "editor pass ok (70 parts with standalone art)\n"
+  },
+  {
+    "test": "workshop-projection",
+    "exitCode": 0,
+    "output": "Canonical projection cost, overspend warning, anatomical restrictions and no draft mutations PASS\n"
+  },
+  {
+    "test": "evolution-draft",
+    "exitCode": 0,
+    "output": "evolution draft ok\n"
+  },
+  {
+    "test": "physical-breeding",
+    "exitCode": 0,
+    "output": "physical parental inheritance, stabilization editor gate and save continuity ok\n"
+  },
+  {
+    "test": "reproductive-compatibility",
+    "exitCode": 0,
+    "output": "Cross-founding-ID conception, genuine hybrid bodies/loci, frozen parental inheritance, read-only shared validity, gradual compatibility/fertility, matching builds and legacy save migration PASS\n"
+  },
+  {
+    "test": "contextual-interactions",
+    "exitCode": 0,
+    "output": "Four dietary anatomies, read-only queries, exact-target/no-fallback, ambiguity, stale feeding descriptors, keyed collection and attack fallback PASS\n"
+  },
+  {
+    "test": "seed-observations",
+    "exitCode": 0,
+    "output": "Funded seed deposit causality, sensory-gated observations, no remote growth reveal, journal persistence, faded-trail revisit and anatomy-driven read-only handling PASS\n"
+  },
+  {
+    "test": "canonical-source",
+    "exitCode": 0,
+    "output": "canonical-source: source authorities, art coverage, reference exports, and imports PASS\n"
+  }
+]

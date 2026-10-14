@@ -1,0 +1,6 @@
+{
+  "status": "REPRODUCED BEFORE CHANGE",
+  "test": "targeted-feeding",
+  "output": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: a nearby actual meal supplies energy\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/[eval1]:16:10\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:268:26)\n    at async ModuleLoader.executeModuleJob (node:internal/modules/esm/loader:265:20)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n",
+  "reason": "Old carrion fixture gives a grazing-mouth animal meat; direct simulation extraction lacked an anatomy guard."
+}

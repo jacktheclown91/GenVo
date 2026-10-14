@@ -1,0 +1,479 @@
+{
+  "fixture": "Valid mounted anatomy variants on existing actors, physical readiness and local positioning staged; native controller execution, costs and outcomes unchanged. No acceptance forced.",
+  "events": [
+    {
+      "name": "dance",
+      "tick": 19,
+      "energy": 120.98768929616045,
+      "performance": {
+        "partnerId": 110,
+        "startedAt": 18,
+        "endsAt": 36,
+        "intensity": 0.8389999999999999,
+        "energySpent": 0.47492,
+        "sequence": [
+          "dance"
+        ],
+        "attempt": 0,
+        "quality": 0.6271404,
+        "qualityBase": 0.6271404,
+        "tempo": 0.0012813000474127811
+      },
+      "pose": {
+        "move": "dance",
+        "displayPhase": 7.039244338694601,
+        "bodySway": -0.9195166480344175,
+        "displayStride": 1.5101999999999998,
+        "displayLift": 1.1,
+        "forelegLift": 0,
+        "crestSpread": 0,
+        "tailSweep": 0,
+        "bodyRise": 0.5023816220119296,
+        "stanceSpread": 0.4,
+        "feelerSweep": 0.8
+      },
+      "bounds": {
+        "height": 190
+      }
+    },
+    {
+      "name": "live-sequence",
+      "tick": 23,
+      "energy": 120.82768929616046,
+      "performance": {
+        "partnerId": 110,
+        "startedAt": 18,
+        "endsAt": 72,
+        "intensity": 0.8389999999999999,
+        "energySpent": 0.63492,
+        "sequence": [
+          "dance",
+          "flare",
+          "call"
+        ],
+        "attempt": 0,
+        "quality": 0.6269855612903226,
+        "qualityBase": 0.6269855612903226,
+        "tempo": 0.0012813000474127811
+      },
+      "pose": {
+        "move": "dance",
+        "displayPhase": 2.567106010893923,
+        "bodySway": 1.2114309970783603,
+        "displayStride": 1.5101999999999998,
+        "displayLift": 1.1,
+        "forelegLift": 0,
+        "crestSpread": 0,
+        "tailSweep": 0,
+        "bodyRise": 1.018291920478596,
+        "stanceSpread": 0.4,
+        "feelerSweep": 0.8
+      },
+      "bounds": {
+        "height": 196
+      }
+    },
+    {
+      "name": "flare",
+      "tick": 37,
+      "energy": 120.65551718464182,
+      "performance": {
+        "partnerId": 110,
+        "startedAt": 18,
+        "endsAt": 72,
+        "intensity": 0.8389999999999999,
+        "energySpent": 0.63492,
+        "sequence": [
+          "dance",
+          "flare",
+          "call"
+        ],
+        "attempt": 0,
+        "quality": 0.6269855612903226,
+        "qualityBase": 0.6269855612903226,
+        "tempo": 0.0012813000474127811
+      },
+      "pose": {
+        "move": "flare",
+        "displayPhase": 2.6933419628107558,
+        "bodySway": 0,
+        "displayStride": 0,
+        "displayLift": 0,
+        "forelegLift": 0,
+        "crestSpread": 0.6710721498347161,
+        "tailSweep": 0,
+        "bodyRise": 0.7,
+        "stanceSpread": 1.2,
+        "eyeWide": true,
+        "compress": -0.2
+      },
+      "bounds": {
+        "height": 196
+      }
+    },
+    {
+      "name": "call",
+      "tick": 56,
+      "energy": 120.45340071741364,
+      "performance": {
+        "partnerId": 110,
+        "startedAt": 18,
+        "endsAt": 72,
+        "intensity": 0.8389999999999999,
+        "energySpent": 0.63492,
+        "sequence": [
+          "dance",
+          "flare",
+          "call"
+        ],
+        "attempt": 0,
+        "quality": 0.6269855612903226,
+        "qualityBase": 0.6269855612903226,
+        "tempo": 0.0012813000474127811
+      },
+      "pose": {
+        "move": "call",
+        "displayPhase": 6.487392182465641,
+        "bodySway": 0,
+        "displayStride": 0,
+        "displayLift": 0,
+        "forelegLift": 0,
+        "crestSpread": 0,
+        "tailSweep": 0,
+        "bodyRise": 0.45,
+        "headDrop": -0.047044680905616705,
+        "mouthPulse": 0.2771411620609327,
+        "compress": -0.009047054020310905,
+        "feelerForward": 1.5
+      },
+      "bounds": {
+        "height": 190
+      }
+    },
+    {
+      "name": "scent",
+      "tick": 62,
+      "energy": 119.81115183731083,
+      "performance": {
+        "partnerId": 110,
+        "startedAt": 60,
+        "endsAt": 96,
+        "intensity": 0.8389999999999999,
+        "energySpent": 0.55492,
+        "sequence": [
+          "scent",
+          "gesture"
+        ],
+        "attempt": 1,
+        "quality": 0.6260018213425129,
+        "qualityBase": 0.6260018213425129,
+        "tempo": 0.0012813000474127811
+      },
+      "pose": {
+        "move": "scent",
+        "displayPhase": 5.67954730310548,
+        "bodySway": -0.2905484036667069,
+        "displayStride": 0,
+        "displayLift": 0,
+        "forelegLift": 0,
+        "crestSpread": 0,
+        "tailSweep": -1.3558925504446322,
+        "bodyLean": -0.4,
+        "feelerSweep": 0.35
+      },
+      "bounds": {
+        "height": 196
+      }
+    },
+    {
+      "name": "gesture",
+      "tick": 79,
+      "energy": 119.57881147212704,
+      "performance": {
+        "partnerId": 110,
+        "startedAt": 60,
+        "endsAt": 96,
+        "intensity": 0.8389999999999999,
+        "energySpent": 0.55492,
+        "sequence": [
+          "scent",
+          "gesture"
+        ],
+        "attempt": 1,
+        "quality": 0.6260018213425129,
+        "qualityBase": 0.6260018213425129,
+        "tempo": 0.0012813000474127811
+      },
+      "pose": {
+        "move": "gesture",
+        "displayPhase": 0.1541702159669427,
+        "bodySway": 0.04831573536866565,
+        "displayStride": 0,
+        "displayLift": 0,
+        "forelegLift": 0.8966314707373313,
+        "crestSpread": 0,
+        "tailSweep": 0,
+        "feelerSweep": 1.4,
+        "headDrop": -0.4
+      },
+      "bounds": {
+        "height": 190
+      }
+    },
+    {
+      "name": "outcome",
+      "tick": 98,
+      "energy": 119.31683022714375,
+      "performance": null,
+      "pose": {
+        "move": null,
+        "bodySway": 0,
+        "displayStride": 0,
+        "displayLift": 0,
+        "forelegLift": 0,
+        "crestSpread": 0,
+        "tailSweep": 0,
+        "outcome": "declined",
+        "outcomeStrength": 0.8620625000074502,
+        "headDrop": 0.6896500000059602,
+        "feelerForward": 0.72,
+        "bodyLean": -0.4310312500037251
+      },
+      "bounds": {
+        "height": 65
+      }
+    },
+    {
+      "name": "attack-windup",
+      "tick": 101,
+      "energy": 117.11683022714375,
+      "performance": null,
+      "pose": {
+        "move": null,
+        "bodySway": 0,
+        "displayStride": 0,
+        "displayLift": 0,
+        "forelegLift": 0,
+        "crestSpread": 0,
+        "tailSweep": 0,
+        "outcome": "declined",
+        "outcomeStrength": 0.6428124999999987,
+        "headDrop": 0.514249999999999,
+        "feelerForward": 0.72,
+        "bodyLean": -0.32140624999999934
+      },
+      "bounds": {
+        "height": 96
+      }
+    },
+    {
+      "name": "impact",
+      "tick": 103,
+      "energy": 116.77199708497842,
+      "performance": null,
+      "pose": {
+        "move": null,
+        "bodySway": 0,
+        "displayStride": 0,
+        "displayLift": 0,
+        "forelegLift": 0,
+        "crestSpread": 0,
+        "tailSweep": 0,
+        "outcome": "declined",
+        "outcomeStrength": 0.4990000000223507,
+        "headDrop": 0.3992000000178806,
+        "feelerForward": 0.72,
+        "bodyLean": -0.24950000001117534
+      },
+      "bounds": {
+        "height": 96
+      }
+    },
+    {
+      "name": "guard",
+      "tick": 106,
+      "energy": 116.77199708497842,
+      "performance": null,
+      "pose": {
+        "move": null,
+        "bodySway": 0,
+        "displayStride": 0,
+        "displayLift": 0,
+        "forelegLift": 0,
+        "crestSpread": 0,
+        "tailSweep": 0,
+        "impact": 0.9906601756600478,
+        "compress": 0.34673106148101673,
+        "headDrop": 0.20720000001788128,
+        "bodyLean": -0.1295000000111758,
+        "feelerPin": 0.6934621229620335,
+        "eyeNarrow": true,
+        "outcome": "declined",
+        "outcomeStrength": 0.2590000000223516,
+        "feelerForward": 0.72
+      },
+      "bounds": {
+        "height": 96
+      }
+    },
+    {
+      "name": "injured",
+      "tick": 108,
+      "energy": 116.4271639428131,
+      "performance": null,
+      "pose": {
+        "move": null,
+        "bodySway": 0,
+        "displayStride": 0,
+        "displayLift": 0,
+        "forelegLift": 0,
+        "crestSpread": 0,
+        "tailSweep": 0,
+        "impact": 0.6696093716988503,
+        "compress": 0.2343632800945976,
+        "headDrop": 0.10645000001788248,
+        "bodyLean": -0.06653125001117655,
+        "feelerPin": 0.4687265601891952,
+        "eyeNarrow": true,
+        "outcome": "declined",
+        "outcomeStrength": 0.1330625000223531,
+        "feelerForward": 0.72
+      },
+      "bounds": {
+        "height": 96
+      }
+    },
+    {
+      "name": "retreat",
+      "tick": 112,
+      "energy": 116.41195100543099,
+      "performance": null,
+      "pose": {
+        "move": null,
+        "bodySway": 0,
+        "displayStride": 0,
+        "displayLift": 0,
+        "forelegLift": 0,
+        "crestSpread": 0,
+        "tailSweep": 0
+      },
+      "bounds": {
+        "height": 96
+      }
+    }
+  ],
+  "errors": [],
+  "interruption": true,
+  "outcome": {
+    "lastMate": null,
+    "refusal": {
+      "tick": 96,
+      "otherId": 110,
+      "reason": "first-declines",
+      "day": 2
+    },
+    "pose": {
+      "move": null,
+      "bodySway": 0,
+      "displayStride": 0,
+      "displayLift": 0,
+      "forelegLift": 0,
+      "crestSpread": 0,
+      "tailSweep": 0,
+      "outcome": "declined",
+      "outcomeStrength": 0.993500000014901,
+      "headDrop": 0.7948000000119209,
+      "feelerForward": 0.72,
+      "bodyLean": -0.4967500000074505
+    }
+  },
+  "contactFixture": {
+    "attempts": 0,
+    "actualDamage": {
+      "tick": 104,
+      "amount": 14.830344827586208,
+      "rawAmount": 46.3448275862069,
+      "mantleReduction": 0,
+      "coordinatedReduction": 0,
+      "braceReduction": 31.514482758620687,
+      "brace": "frontal",
+      "attackerId": 97,
+      "species": "needlejaw"
+    },
+    "scope": "Controlled canonical contact attempts; no damage, chance, RNG or injury overrides."
+  },
+  "actualInjury": {
+    "health": 85.25254480037711,
+    "injury": {
+      "active": true,
+      "level": "sore",
+      "label": "Sore",
+      "remaining": 1.6,
+      "initial": 1.6,
+      "restToday": 0.085,
+      "strainToday": 0.12,
+      "lastMode": "cover-rest",
+      "lastHitTick": 104,
+      "recoveredDay": 0,
+      "attackerSpecies": "needlejaw"
+    }
+  },
+  "audio": {
+    "seconds": 12.608,
+    "peak": 0.46568024158477783,
+    "rms": 0.01840129479637356,
+    "clipped": 0,
+    "authoredBuffers": 32,
+    "voices": [
+      {
+        "id": 109,
+        "tick": 54,
+        "when": 7.53,
+        "performance": [
+          "dance",
+          "flare",
+          "call"
+        ]
+      },
+      {
+        "id": 97,
+        "tick": 101,
+        "when": 13.38
+      }
+    ],
+    "samples": [
+      {
+        "id": "genvo-call",
+        "rate": 1.0773703058426956,
+        "when": 7.53
+      },
+      {
+        "id": "stalker-stalk",
+        "rate": 0.9950719002611004,
+        "when": 13.38
+      },
+      {
+        "id": "stalker",
+        "rate": 1.0330837851698758,
+        "when": 13.38
+      },
+      {
+        "id": "stalker-lunge",
+        "rate": 1.0104132236167789,
+        "when": 13.82
+      },
+      {
+        "id": "genvo-hurt",
+        "rate": 0.9348892349656671,
+        "when": 13.82
+      },
+      {
+        "id": "stalker-charge",
+        "rate": 0.9733393287146463,
+        "when": 13.95
+      }
+    ]
+  },
+  "overflow": [],
+  "video": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\phenotype-audio-video\\page@142c471f784ec3b03e15cef074ef6c4c.webm"
+}

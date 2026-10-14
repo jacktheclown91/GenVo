@@ -1,0 +1,20 @@
+{
+  "passed": [
+    "editor-pass",
+    "journal",
+    "canonical-source",
+    "contextual-interactions",
+    "world-resource-selection",
+    "target-resource-states",
+    "clonal-flora"
+  ],
+  "existing_failure": {
+    "test": "evolution-editor",
+    "message": "No existing habitat supports this conception fixture",
+    "prior": "Exact GenVo-botanical-presentation-2026-10-13-01-source.zip fails at the same test/helper line"
+  },
+  "runtime": [
+    "knowledge-panels-proof.json",
+    "clonal-flora-proof.json"
+  ]
+}

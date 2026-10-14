@@ -1,0 +1,26 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {SPECIES} from '../src/organisms/species.js';
+
+const sim=new Simulation('GENVO8-SCAVENGE-PRIORITY',{player:false});
+const hunter=sim.animals.find(a=>a.species==='needlejaw');
+const prey=sim.animals.find(a=>a.species==='mosskip');
+hunter.energy=SPECIES.needlejaw.maxEnergy*.4;hunter.hydration=SPECIES.needlejaw.maxHydration;
+sim.animals=[hunter];sim.rebuildSpatial();
+sim.bestPrey=()=>prey;
+const i=sim.world.idx(hunter.x,hunter.y);sim.world.carrion[i]=.5;
+const energy=hunter.energy,food=sim.world.carrion[i];
+const target=sim.bestFood(hunter);
+assert.equal(target.kind,'carrion');
+assert.equal(sim.world.carrion[i],food,'querying food does not consume it');
+assert.equal(hunter.energy,energy,'querying food does not silently feed the animal');
+sim.phaseDecision(null);
+assert.equal(hunter.intent,'feed','hungry scavenger uses available food before a new pursuit');
+assert.equal(sim.world.carrion[i],food,'decision alone does not consume the resource');
+sim.resolveInteraction(hunter);
+assert.ok(sim.world.carrion[i]<food);
+assert.ok(hunter.energy>energy);
+sim.world.carrion[i]=0;
+sim.phaseDecision(null);
+assert.equal(hunter.intent,'hunt','exhausting the carcass restores normal hunting');
+console.log('finite scavenging query, priority and shared interaction: PASS');

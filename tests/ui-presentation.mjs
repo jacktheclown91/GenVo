@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {HUD_SEGMENTS,segmentedLevel,needTone,vitalModel,compactFamilyLabel,contextTone} from '../src/ui/presentation.js';
+
+assert.equal(HUD_SEGMENTS,8,'HUD keeps the Rule-of-8 visual grammar');
+assert.deepEqual(segmentedLevel(1),{value:1,filled:8,count:8});
+assert.equal(segmentedLevel(.5).filled,4);
+assert.equal(segmentedLevel(-2).filled,0);
+assert.equal(segmentedLevel(4).filled,8);
+assert.equal(needTone(.8),'stable');
+assert.equal(needTone(.3),'low');
+assert.equal(needTone(.1),'critical');
+const water=vitalModel('water','Water',.51,51);
+assert.equal(water.filled,4);assert.equal(water.kind,'water');
+assert.equal(compactFamilyLabel({pregnancyProgress:.42,children:2}),'pregnancy 42%');
+assert.equal(compactFamilyLabel({children:1}),'1 child');
+assert.equal(compactFamilyLabel({children:3}),'3 children');
+assert.equal(contextTone('E · Drink water'),'action');
+assert.equal(contextTone('DANGER · Stalker east'),'danger');
+assert.equal(contextTone('WATER LOW · follow the cyan cue'),'need');
+console.log('UI presentation checks: PASS');

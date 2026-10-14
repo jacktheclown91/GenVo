@@ -1,0 +1,527 @@
+{
+  "scope": "Controlled matched-parent pending-pregnancy fixture with reserves and inherited body copied for the gate. Real editor mouse commands, canonical commit, save and funded birth; not unscripted mating or natural reproductive acceptance.",
+  "errors": [],
+  "checks": [
+    "Fitted native assembly",
+    "22px CSS magnetic socket hit radius and select/click",
+    "Precise mount buttons",
+    "Undo/redo/removal/reset",
+    "Actual jaw drag placement",
+    "Inherited pigmentation and walking preview",
+    "Parent comparison and fullscreen",
+    "Explicit review/confirmation",
+    "Unchanged living parent and RNG while editing",
+    "Committed target save restoration and funded offspring with exact selected anatomy"
+  ],
+  "parents": {
+    "motherId": 110,
+    "fatherId": 109,
+    "parentBody": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"id\":\"bp0-4134709b\"}",
+    "rng": 884744266
+  },
+  "draft": {
+    "cost": 2,
+    "budget": 8,
+    "plan": {
+      "schema": "genvo8.bodyplan/0",
+      "registryVersion": 0,
+      "nodes": [
+        {
+          "id": "root",
+          "partId": "small-torso",
+          "partVersion": 1,
+          "parent": null,
+          "socket": null
+        },
+        {
+          "id": "root/eye.left",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.left"
+        },
+        {
+          "id": "root/eye.right",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.right"
+        },
+        {
+          "id": "root/limb.1",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.1"
+        },
+        {
+          "id": "root/limb.3",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.3"
+        },
+        {
+          "id": "root/limb.5",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.5"
+        },
+        {
+          "id": "root/limb.7",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.7"
+        },
+        {
+          "id": "root/mouth",
+          "partId": "tearing-jaw",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "mouth"
+        }
+      ],
+      "id": "bp0-c2ef0f08"
+    },
+    "body": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"id\":\"bp0-4134709b\"}",
+    "rng": 884744266
+  },
+  "birth": {
+    "childId": 197,
+    "plan": {
+      "schema": "genvo8.bodyplan/0",
+      "registryVersion": 0,
+      "nodes": [
+        {
+          "id": "root",
+          "partId": "small-torso",
+          "partVersion": 1,
+          "parent": null,
+          "socket": null
+        },
+        {
+          "id": "root/eye.left",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.left"
+        },
+        {
+          "id": "root/eye.right",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.right"
+        },
+        {
+          "id": "root/limb.1",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.1"
+        },
+        {
+          "id": "root/limb.3",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.3"
+        },
+        {
+          "id": "root/limb.5",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.5"
+        },
+        {
+          "id": "root/limb.7",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.7"
+        },
+        {
+          "id": "root/mouth",
+          "partId": "tearing-jaw",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "mouth"
+        }
+      ],
+      "id": "bp0-c2ef0f08"
+    },
+    "record": {
+      "id": 197,
+      "generation": 2,
+      "sex": "M",
+      "parentIds": [
+        110,
+        109
+      ],
+      "children": [],
+      "bornDay": 1,
+      "bornYear": 1,
+      "diedDay": null,
+      "diedYear": null,
+      "cause": null,
+      "alive": true,
+      "genes": {
+        "body": 0.9780261031951016,
+        "motion": 0.9834719094432078,
+        "metabolism": 0.9601260769805562,
+        "digestion": 1.0231326332578952,
+        "senses": 1.0564863003501155,
+        "climate": 1.025829165283111,
+        "immunity": 0.9844441488220008,
+        "temperament": 0.9553878466518269
+      },
+      "reproductiveGenome": {
+        "schema": 1,
+        "loci": {
+          "gamete": [
+            0.97649,
+            1.00544
+          ],
+          "development": [
+            0.99154,
+            0.98417
+          ]
+        },
+        "inheritance": {
+          "gamete": [
+            {
+              "parentId": 110,
+              "alleleIndex": 1,
+              "baseline": 1,
+              "mutation": -0.02351
+            },
+            {
+              "parentId": 109,
+              "alleleIndex": 0,
+              "baseline": 1,
+              "mutation": 0.00544
+            }
+          ],
+          "development": [
+            {
+              "parentId": 110,
+              "alleleIndex": 0,
+              "baseline": 1,
+              "mutation": -0.00846
+            },
+            {
+              "parentId": 109,
+              "alleleIndex": 0,
+              "baseline": 1,
+              "mutation": -0.01583
+            }
+          ]
+        },
+        "origin": "parental-gametes"
+      },
+      "matePreferences": {
+        "weights": {
+          "size": -0.2593,
+          "strength": -0.25099,
+          "ornament": -0.38834,
+          "display": 0.13317,
+          "behavior": 0.0991
+        },
+        "selectivity": 0.2544,
+        "ritualTastes": {
+          "dance": 0.22367,
+          "call": -0.25296,
+          "flare": 0.24799,
+          "scent": 0.14944,
+          "gesture": -0.01042
+        },
+        "tempo": -0.96226
+      },
+      "adaptations": [
+        "heavy-jaw"
+      ],
+      "divergence": null,
+      "protoTrait": null,
+      "speciesBranch": null,
+      "bodyPlanParts": [
+        "small-torso",
+        "simple-eye",
+        "walking-leg",
+        "tearing-jaw"
+      ],
+      "bodyPlan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"id\":\"bp0-c2ef0f08\",\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"tearing-jaw\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"legacyAnatomy\":null}",
+      "speciesBranchHistory": [],
+      "strategy": null,
+      "parentBodyPlans": [
+        "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"id\":\"bp0-4134709b\",\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"legacyAnatomy\":null}",
+        "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"id\":\"bp0-4134709b\",\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"legacyAnatomy\":null}"
+      ],
+      "parentPhenotypes": [
+        {
+          "id": 110,
+          "genes": {
+            "body": 0.9324056874495,
+            "motion": 0.9872512804344297,
+            "metabolism": 0.9355262510944158,
+            "digestion": 1.011028434196487,
+            "senses": 1.0463925142306836,
+            "climate": 1.0130069960840047,
+            "immunity": 1.048241393873468,
+            "temperament": 0.9250926127657294
+          },
+          "adaptations": [],
+          "anatomy": {
+            "armor": 0,
+            "barbs": 0,
+            "glands": 0,
+            "spring": 0,
+            "waterBody": 0,
+            "gut": 0,
+            "repair": 0,
+            "signal": 0,
+            "rally": 0,
+            "skin": 0,
+            "jaw": 0,
+            "forelimb": 0
+          },
+          "ecoLifestyle": null
+        },
+        {
+          "id": 109,
+          "genes": {
+            "body": 0.9499516509473325,
+            "motion": 0.932461617467925,
+            "metabolism": 0.9222396337427199,
+            "digestion": 1.0841726132668557,
+            "senses": 0.9866264760959894,
+            "climate": 1.0306733852252365,
+            "immunity": 0.9178815101273358,
+            "temperament": 1.047188214119524
+          },
+          "adaptations": [],
+          "anatomy": {
+            "armor": 0,
+            "barbs": 0,
+            "glands": 0,
+            "spring": 0,
+            "waterBody": 0,
+            "gut": 0,
+            "repair": 0,
+            "signal": 0,
+            "rally": 0,
+            "skin": 0,
+            "jaw": 0,
+            "forelimb": 0
+          },
+          "ecoLifestyle": null
+        }
+      ]
+    },
+    "parentBody": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"id\":\"bp0-4134709b\"}",
+    "restoredTarget": true
+  },
+  "comparison": {
+    "models": [
+      {
+        "id": 110,
+        "label": "Parent 1 · conception anatomy",
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ]
+      },
+      {
+        "id": 109,
+        "label": "Parent 2 · conception anatomy",
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ]
+      },
+      {
+        "id": 197,
+        "label": "Offspring · inherited anatomy",
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "tearing-jaw",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ]
+      }
+    ],
+    "canvases": [
+      {
+        "opaque": 9024
+      },
+      {
+        "opaque": 8584
+      },
+      {
+        "opaque": 9144
+      }
+    ]
+  }
+}

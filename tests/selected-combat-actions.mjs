@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {combatActions} from '../src/ui/gameplay-actions.js';
+const sim=new Simulation('SELECTED-COMBAT',{player:true}),p=sim.player(),targets=sim.animals.filter(a=>a.species==='needlejaw').slice(0,2);assert.equal(targets.length,2);
+for(const [i,t] of targets.entries()){t.x=p.x+1+i*.2;t.y=p.y;t.alive=true}sim.rebuildSpatial();
+const chosen=targets[1],other=targets[0],hits=[];sim.playerStrike=target=>{hits.push(target.id);return{ok:true,type:'fight'}};
+assert.equal(combatActions(sim,chosen.id)[0].invoke().ok,true);assert.equal(p.attackAction.targetId,chosen.id);sim.playerCombat.resolveAttack(p,p.attackAction);assert.deepEqual(hits,[chosen.id]);
+p.attackAction=null;assert.equal(combatActions(sim,chosen.id)[0].invoke().ok,true);chosen.x=p.x+10;sim.playerCombat.resolveAttack(p,p.attackAction);assert.deepEqual(hits,[chosen.id],'escaping selected target cannot redirect impact to nearer creature');
+p.attackAction=null;assert.equal(combatActions(sim,chosen.id)[0].enabled,false);assert.equal(combatActions(sim,other.id)[0].enabled,true);
+console.log('Selected-target attack binding, escape revalidation and no implicit target substitution PASS');

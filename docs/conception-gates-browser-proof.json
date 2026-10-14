@@ -1,0 +1,114 @@
+{
+  "scope": "Native 800x600 controlled funded display -> ecological conception gate -> visible reason and released survival state. Not natural mating success or a human playtest.",
+  "errors": [],
+  "checks": [],
+  "setup": {
+    "actor": 109,
+    "partner": 110,
+    "cost": 0.34595199999999693,
+    "availability": {
+      "enabled": false,
+      "reasonCode": "food-support",
+      "reason": "Nearby food cannot sustain offspring for this body’s feeding anatomy."
+    },
+    "scope": "Controlled valid mouthless anatomy/readiness, local positioning and phase completion; canonical funding and final gate. No acceptance or resource support override."
+  },
+  "outcome": {
+    "result": false,
+    "failure": {
+      "tick": 19,
+      "day": 1,
+      "partnerId": 110,
+      "reason": "Nearby food cannot sustain offspring for this body’s feeding anatomy.",
+      "reasonCode": "food-support",
+      "stage": "conception"
+    },
+    "intent": "idle",
+    "target": null,
+    "energyUnchanged": true,
+    "rngUnchanged": true,
+    "pregnancy": false,
+    "visibleReason": true
+  },
+  "aquatic": {
+    "scope": "Controlled valid aquatic anatomy and removal of terrestrial actors; existing natural water/food stocks unmodified before canonical feeding.",
+    "i": 8536,
+    "pressure": {
+      "allowed": true,
+      "local": 2,
+      "competitors": 0,
+      "ratio": 0.3333333333333333,
+      "crowd": 0.9844961240310078,
+      "resource": 1.000418600260705,
+      "resourceValue": 1.000418600260705,
+      "driveRate": 0.27922148444253153,
+      "preyReference": {
+        "mass": 5.7,
+        "source": "mounted-adult-anatomy"
+      }
+    },
+    "before": 0.00023859467182774097,
+    "after": 0,
+    "result": {
+      "ok": true,
+      "type": "eat",
+      "kind": "fry",
+      "processingCost": 0,
+      "energyGain": 0.008277024476724293,
+      "waterGain": 0,
+      "breadth": 1,
+      "role": "edible",
+      "patch": {
+        "id": "fry:177:133",
+        "kind": "fry",
+        "x": 88.5,
+        "y": 66.5,
+        "firstSeenTick": 19,
+        "lastSeenTick": 19,
+        "bestSeen": 0.01,
+        "lastAmount": 0.004102157661691308,
+        "lastRatio": 0.4102157661691308,
+        "status": "thin",
+        "visits": 1,
+        "meals": 1,
+        "depletedTick": null,
+        "lastEvent": null,
+        "seasonSamples": {
+          "SPRING": {
+            "visits": 1,
+            "meanRatio": 0.4340752333519049,
+            "lastTick": 19
+          }
+        },
+        "competition": {
+          "family": 0,
+          "wildlife": 0,
+          "pressure": 0,
+          "tick": 19
+        },
+        "lastVisitTick": 19,
+        "distance": 0,
+        "ageDays": 0,
+        "estimatedRatio": 0.4102157661691308,
+        "estimatedStatus": "thin",
+        "readyInDays": 2,
+        "confidence": 0.9186000000000001,
+        "label": "Small aquatic prey",
+        "season": "SPRING",
+        "seasonFactor": 1,
+        "seasonLabel": "steady this spring",
+        "seasonObserved": true,
+        "seasonMeanRatio": 0.4340752333519049,
+        "competitionPressure": 0,
+        "competitionLabel": "quiet",
+        "competitionAgeDays": 0,
+        "familyUse": 0,
+        "wildlifeUse": 0
+      },
+      "tissue": null,
+      "plantReceipt": null,
+      "message": "Small aquatic prey · topped up"
+    },
+    "rngUnchanged": true
+  }
+}

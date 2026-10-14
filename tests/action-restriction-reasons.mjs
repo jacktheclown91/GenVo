@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {SPECIES} from '../src/organisms/species.js';
+const s=new Simulation('ACTION-RESTRICTION-REASONS'),a=s.player(),b=s.animals.find(v=>v.alive&&v.species===a.species&&v.id!==a.id);
+for(const v of [a,b]){v.age=SPECIES[v.species].maturity+2;v.reproCooldown=0;v.pregnant=null;v.health=100;v.energy=SPECIES[v.species].maxEnergy;v.parentIds=[]}b.sex=a.sex==='M'?'F':'M';
+assert.ok(s.canMatePair(a,b,{ready:true}));b.age=0;assert.match(s.matePairAvailability(a,b,{ready:true}).reason,/adulthood/);assert.equal(s.canMatePair(a,b,{ready:true}),false);b.age=SPECIES[b.species].maturity+2;
+b.health=54;assert.match(s.reproduction.courtshipAvailability({targetId:b.id}).reason,/healthier/);b.health=NaN;assert.equal(s.canMatePair(a,b,{ready:true}),false);b.health=100;
+b.energy=0;assert.match(s.reproduction.courtshipAvailability({targetId:b.id}).reason,/food/);b.energy=NaN;assert.equal(s.canMatePair(a,b,{ready:true}),false);b.energy=SPECIES[b.species].maxEnergy;b.reproCooldown=1;assert.match(s.matePairAvailability(a,b).reason,/recovering/);b.reproCooldown=0;
+const hunter=s.animals.find(v=>v.alive&&v.species==='needlejaw');assert.ok(hunter);hunter.x=a.x+10;hunter.y=a.y;assert.equal(s.playerCombat.attackAvailability({targetId:hunter.id}).state,'approachable');assert.match(s.playerCombat.attackAvailability({targetId:hunter.id}).reason,/out of reach/);hunter.x=NaN;assert.equal(s.playerCombat.targetForAttack(a,hunter.id),null);
+console.log('Authoritative range, maturity, health, energy and recovery reasons; fail-closed numeric checks PASS');

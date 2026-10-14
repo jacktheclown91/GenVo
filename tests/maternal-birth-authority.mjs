@@ -1,0 +1,30 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {SPECIES} from '../src/organisms/species.js';
+import {placeSupportedBreedingPair} from './helpers/breeding-pair.js';
+for(const species of Object.keys(SPECIES)){
+  const sim=new Simulation('MATERNAL-AUTHORITY-'+species,{player:false});
+  const [mother,father]=sim.animals.filter(a=>a.species===species);
+  Object.assign(mother,{sex:'F',age:SPECIES[species].maturity,reproCooldown:0,energy:SPECIES[species].maxEnergy});
+  Object.assign(father,{sex:'M',age:SPECIES[species].maturity,reproCooldown:0,energy:SPECIES[species].maxEnergy});
+  placeSupportedBreedingPair(sim,mother,father);
+  assert.ok(sim.tryMate(mother,father));
+  sim.kill(mother,'age');
+  const births=sim.stats.births,rng=sim.rng.state;
+  assert.deepEqual(sim.giveBirth(mother),[],`${species}: dead mother cannot deliver`);
+  assert.equal(sim.stats.births,births);
+  assert.equal(sim.rng.state,rng,'rejected birth consumes no inheritance RNG');
+}
+const sim=new Simulation('MATERNAL-LIFECYCLE',{player:false});
+const [mother,father]=sim.animals.filter(a=>a.species==='rootling');
+Object.assign(mother,{sex:'F',age:SPECIES.rootling.maturity,reproCooldown:0,energy:SPECIES.rootling.maxEnergy});
+Object.assign(father,{sex:'M',age:SPECIES.rootling.maturity,reproCooldown:0,energy:SPECIES.rootling.maxEnergy});
+placeSupportedBreedingPair(sim,mother,father);
+assert.ok(sim.tryMate(mother,father));
+mother.age=SPECIES.rootling.lifespan+1;mother.pregnant.days=1;
+sim.animals=[mother,father];sim.rng.chance=()=>true;
+const births=sim.stats.births;
+sim.phaseLifecycle();
+assert.equal(mother.alive,false);
+assert.equal(sim.stats.births,births,'death on the delivery tick cannot create offspring');
+console.log('living maternal birth authority: PASS');

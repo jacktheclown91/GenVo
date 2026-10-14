@@ -1,0 +1,266 @@
+{
+  "scope": "Controlled existing actors/readiness/placement and valid tracking-eye variant; traces produced by canonical movement and feeding, never injected. Player tracking uses ordinary mouse navigation. No ecology outcome claimed.",
+  "events": [
+    {
+      "name": "basic-read",
+      "tick": 9,
+      "player": {
+        "x": 89.5,
+        "y": 41.5
+      },
+      "following": null,
+      "target": {
+        "kind": "trace",
+        "id": 1,
+        "x": 90.2,
+        "y": 41.5,
+        "label": "Animal tracks"
+      },
+      "lastAction": null
+    },
+    {
+      "name": "studied",
+      "tick": 12,
+      "player": {
+        "x": 89.5,
+        "y": 41.5
+      },
+      "following": null,
+      "target": {
+        "kind": "trace",
+        "id": 1,
+        "x": 90.2,
+        "y": 41.5,
+        "label": "Animal tracks"
+      },
+      "lastAction": {
+        "type": "trace-study",
+        "actorId": 109,
+        "tick": 10,
+        "x": 90.2,
+        "y": 41.5,
+        "traceId": 1
+      }
+    },
+    {
+      "name": "following",
+      "tick": 18,
+      "player": {
+        "x": 90.87146797650254,
+        "y": 41.5
+      },
+      "following": {
+        "id": 1,
+        "actorId": 109,
+        "ownerId": 110,
+        "lastTraceId": 4,
+        "legs": 3
+      },
+      "target": {
+        "kind": "trace",
+        "id": 4,
+        "x": 92.83755317698665,
+        "y": 41.5,
+        "label": "Animal tracks"
+      },
+      "lastAction": {
+        "type": "trace-study",
+        "actorId": 109,
+        "tick": 10,
+        "x": 90.2,
+        "y": 41.5,
+        "traceId": 1
+      }
+    },
+    {
+      "name": "resumed",
+      "tick": 23,
+      "player": {
+        "x": 91.11762889536197,
+        "y": 41.5
+      },
+      "following": {
+        "id": 2,
+        "actorId": 109,
+        "ownerId": 110,
+        "lastTraceId": 4,
+        "legs": 1
+      },
+      "target": {
+        "kind": "trace",
+        "id": 4,
+        "x": 92.83755317698665,
+        "y": 41.5,
+        "label": "Animal tracks"
+      },
+      "lastAction": {
+        "type": "trace-study",
+        "actorId": 109,
+        "tick": 10,
+        "x": 90.2,
+        "y": 41.5,
+        "traceId": 1
+      }
+    },
+    {
+      "name": "trail-end",
+      "tick": 32,
+      "player": {
+        "x": 93.15724793734012,
+        "y": 41.5
+      },
+      "following": null,
+      "target": {
+        "kind": "trace",
+        "id": 11,
+        "x": 94.33841481504466,
+        "y": 40.87832275427087,
+        "label": "Animal tracks"
+      },
+      "lastAction": {
+        "type": "trace-study",
+        "actorId": 109,
+        "tick": 10,
+        "x": 90.2,
+        "y": 41.5,
+        "traceId": 1
+      }
+    },
+    {
+      "name": "food-knowledge",
+      "tick": 37,
+      "player": {
+        "x": 95.23203282486949,
+        "y": 41.5
+      },
+      "following": null,
+      "target": {
+        "kind": "trace",
+        "id": 30,
+        "x": 93.9239633178919,
+        "y": 41.29277425142362,
+        "label": "Feeding marks · Moss"
+      },
+      "lastAction": {
+        "type": "trace-study",
+        "actorId": 109,
+        "tick": 35,
+        "x": 93.9239633178919,
+        "y": 41.29277425142362,
+        "traceId": 30
+      }
+    }
+  ],
+  "errors": [],
+  "sourceId": 110,
+  "first": {
+    "id": 1,
+    "ownerId": 110,
+    "type": "step",
+    "x": 90.2,
+    "y": 41.5,
+    "food": null,
+    "dir": 1,
+    "tick": 5,
+    "medium": "land",
+    "limbs": 4,
+    "mass": 0.7284739779478498
+  },
+  "traces": 4,
+  "playerStart": {
+    "x": 89.5,
+    "y": 41.5
+  },
+  "manualCancel": {
+    "following": null,
+    "path": null
+  },
+  "followed": {
+    "x": 93.15724793734012,
+    "y": 41.5,
+    "path": false
+  },
+  "feed": {
+    "trace": {
+      "id": 30,
+      "ownerId": 110,
+      "type": "feed",
+      "x": 93.9239633178919,
+      "y": 41.29277425142362,
+      "food": "sunmoss",
+      "dir": 5,
+      "tick": 32,
+      "medium": "land",
+      "limbs": 4,
+      "mass": 0.7284739779478498
+    },
+    "meal": "sunmoss",
+    "before": 0.7516430616378784,
+    "after": 0.5316430330276489
+  },
+  "knowledge": {
+    "patches": [
+      {
+        "id": "sunmoss:188:83",
+        "kind": "sunmoss",
+        "x": 93.9239633178919,
+        "y": 41.29277425142362,
+        "firstSeenTick": 35,
+        "lastSeenTick": 35,
+        "bestSeen": 17.12472093105316,
+        "lastAmount": 17.12472093105316,
+        "lastRatio": 1,
+        "status": "abundant",
+        "visits": 1,
+        "meals": 0,
+        "depletedTick": null,
+        "lastEvent": null,
+        "seasonSamples": {
+          "SPRING": {
+            "visits": 1,
+            "meanRatio": 1,
+            "lastTick": 35
+          }
+        },
+        "competition": {
+          "family": 0,
+          "wildlife": 1,
+          "pressure": 0.28,
+          "tick": 35
+        },
+        "lastVisitTick": 35,
+        "distance": 1.3243822506956333,
+        "ageDays": 0,
+        "estimatedRatio": 1,
+        "estimatedStatus": "abundant",
+        "readyInDays": 0,
+        "confidence": 0.9186000000000001,
+        "label": "Moss",
+        "season": "SPRING",
+        "seasonFactor": 1.1,
+        "seasonLabel": "strong this spring",
+        "seasonObserved": true,
+        "seasonMeanRatio": 1,
+        "competitionPressure": 0.28,
+        "competitionLabel": "grazed",
+        "competitionAgeDays": 0,
+        "familyUse": 0,
+        "wildlifeUse": 1
+      }
+    ],
+    "study": {
+      "key": "110:feed:sunmoss:93:41",
+      "tick": 35,
+      "food": "sunmoss",
+      "x": 93.9239633178919,
+      "y": 41.29277425142362
+    },
+    "notice": "✓ Fresh feeding marks · Moss. Study them to investigate this patch. Compatible food patch remembered."
+  },
+  "save": {
+    "traces": 52,
+    "studies": 2,
+    "following": null
+  },
+  "video": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\trail-discovery-video\\page@bd4162baf8ecb362890137dc1c79d5a5.webm"
+}

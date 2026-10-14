@@ -1,0 +1,9 @@
+# Native flexed limb surface review
+
+The native two-bone renderer used each bone's projected length to cap its transverse paint scale independently. A short projected shin therefore narrowed abruptly beside a thicker thigh. Both bones now share a transverse scale based on the larger normalized projected length, capped by the existing native display scale. Their independent lengths, joint/contact positions, anatomical source paint, state/facing selection and inherited pigmentation remain unchanged. The helper is module-level, with no per-draw canvas or helper-function allocation.
+
+Checks passed: native-joint-surface (eight facings, four sharply different shin lengths, immutable input positions, equal joint tissue scaling and no drawing canvas allocation), indexed-part-renderer, native-contact-expression-v174, native-inherited-pigment and canonical-source-audit. Chromium loaded all 79 native parts, recorded actual movement at normal/close zoom and an enlarged anatomy motion review, with no page errors. Species-label-only render check remained exact: 0 mismatched channels, 3218 opaque pixels.
+
+Inspected runtime-v180-gameplay-close.png. Joint tissue has more consistent thickness, but the overall visual improvement is modest and several torso/appendage joins still appear assembled. The closer frame contains visible terrain-boundary darkness and UI overlays; these are existing separate presentation issues, not evidence of complete world-art acceptance. Full natural art/animation acceptance and the biological roadmap remain open. No whole-creature presets or biological species rules were added or removed.
+
+Evidence: runtime-v180-gameplay.png, runtime-v180-gameplay-close.png, runtime-v180-moving-creatures.png, runtime-v180-moving-creatures-next.png, runtime-v180-motion-review.webm, runtime-v180-proof.json and runtime-v180-errors.json.

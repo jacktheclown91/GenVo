@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {SPECIES} from '../src/organisms/species.js';
+const s=new Simulation('CARE-COMMAND-PROVISION',{player:true}),p=s.player(),m=s.animals.find(a=>a.id!==p.id&&a.species===p.species),c=s.spawnAnimal(p.species,p.x+.5,p.y,[p,m]);
+s.lineage.registerBirth(c,[p,m]);s.family.registerBirth(c,p,m);s.shelter.shelters.length=0;
+c.energy=20;c.hydration=20;c.careStress=.8;p.energy=SPECIES[p.species].maxEnergy*.46;p.hydration=SPECIES[p.species].maxHydration*.48;
+const target={kind:'creature',id:c.id,x:c.x,y:c.y},rng=s.rng.state,before={energy:p.energy,water:p.hydration};
+let status=s.interactionOptions(target).find(o=>o.id==='care');assert.equal(status.label,'Tend');assert.match(status.reason,/No surplus/);assert.equal(p.energy,before.energy);assert.equal(p.hydration,before.water);assert.equal(s.rng.state,rng);
+let result=s.playerInteract(target,'care');assert.equal(result.ok,true);assert.equal(result.fed,0);assert.equal(result.shared,0);assert.ok(c.careStress<.8);assert.equal(s.interactionOptions(target).find(o=>o.id==='care').enabled,false);
+c.careCooldownUntil=0;p.energy=SPECIES[p.species].maxEnergy*.9;p.hydration=SPECIES[p.species].maxHydration*.9;
+status=s.interactionOptions(target).find(o=>o.id==='care');assert.equal(status.label,'Feed');result=s.playerInteract(target,'care');assert.ok(result.fed>0);assert.ok(result.shared>0);
+console.log('Care labels reflect funded food/water, read-only queries and actual cooldowns PASS');

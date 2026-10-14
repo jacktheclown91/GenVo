@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+const s=new Simulation('TARGET-RESOURCE-STATES'),a=s.player(),w=s.world;
+let target;for(let y=2;y<w.n-2&&!target;y++)for(let x=2;x<w.n-2&&!target;x++)if(w.water[w.idx(x,y)])target={kind:'water',i:w.idx(x,y),x:x+.5,y:y+.5};
+assert.ok(target);a.x=target.x+8;a.y=target.y+8;
+assert.equal(s.resourceAction('drink',target).state,'approachable');
+const before=a.hydration;assert.equal(s.playerDrink(target).ok,false);assert.equal(a.hydration,before);
+a.x=target.x;a.y=target.y;assert.equal(s.resourceAction('drink',target).enabled,s.resourceAvailability('drink').enabled);
+s.paused=true;assert.equal(s.resourceAction('drink',target).state,'unavailable');s.paused=false;
+w.water[target.i]=0;assert.equal(s.resourceAction('drink',target).state,'unavailable');
+console.log('Target drink states, canonical parity, pause and depletion PASS');

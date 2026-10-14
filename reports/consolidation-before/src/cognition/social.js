@@ -1,0 +1,97 @@
+import {CFG} from '../sim/config.js';
+import {SPECIES,canPreyOn} from '../organisms/species.js';
+
+export class SocialController{
+  constructor(sim){this.sim=sim;this.states=new Map();this.lastObserveTick=-Infinity;this.stats={alarms:0,cohesionMoves:0,spacingMoves:0}}
+  profile(animal){return SPECIES[animal?.species]?.social||null}
+  enabled(animal){const p=this.profile(animal);return !!(animal?.alive&&p&&p.mode!=='solitary')}
+  behaviorEnabled(animal){
+    if(!this.sim.playerEnabled)return false;
+    if(animal?.player||animal?.lineage)return true;
+    const player=this.sim.player?.();if(!player)return false;
+    return Math.hypot(animal.x-player.x,animal.y-player.y)<=42;
+  }
+  observe({force=false}={}){
+    if(!force&&!this.sim.playerEnabled){this.states.clear();return}
+    const interval=CFG.lifeStride*2;
+    if(!force&&this.states.size&&this.sim.tickCount-this.lastObserveTick<interval)return;
+    this.lastObserveTick=this.sim.tickCount;this.states.clear();
+    const directAlarms=new Map(),socialAnimals=[];
+    // Compute each animal's own alarm once; group members can then relay it without repeating predator searches.
+    for(const animal of this.sim.animals){
+      if(!this.enabled(animal)||(!force&&!this.behaviorEnabled(animal)))continue;socialAnimals.push(animal);const profile=this.profile(animal);
+      const threat=this.sim.findNearest(animal,b=>this.sim.isPredatorTo?.(b,animal)??(b.alive&&SPECIES[b.species]?.hunter&&canPreyOn(b.species,animal.species)),profile.alarmRadius||6);
+      if(threat)directAlarms.set(animal.id,{threat,distance:Math.hypot(threat.x-animal.x,threat.y-animal.y),sourceId:animal.id});
+    }
+    for(const animal of socialAnimals){
+      const profile=this.profile(animal),members=[animal],candidates=[];
+      this.sim.forEachNearby(animal,profile.joinRadius,b=>{
+        if(!b.alive||b.id===animal.id||!this.associates(animal,b)||!this.sim.canReach(animal,b.x,b.y))return;
+        const d=Math.hypot(b.x-animal.x,b.y-animal.y);if(d>profile.joinRadius)return;const affinity=this.affinity(animal,b,profile);
+        candidates.push({animal:b,distance:d,affinity});
+      });
+      candidates.sort((a,b)=>b.affinity-a.affinity||a.distance-b.distance||a.animal.id-b.animal.id);
+      for(const c of candidates.slice(0,Math.max(0,(profile.maxGroup||8)-1)))members.push(c.animal);
+      const center={x:members.reduce((n,m)=>n+m.x,0)/members.length,y:members.reduce((n,m)=>n+m.y,0)/members.length};
+      let nearest=null,nearestD=Infinity,alarm=null;
+      for(const m of members){
+        if(m.id!==animal.id){const d=Math.hypot(m.x-animal.x,m.y-animal.y);if(d<nearestD){nearestD=d;nearest=m}}
+        const signal=directAlarms.get(m.id);if(signal&&(!alarm||signal.distance<alarm.distance))alarm=signal;
+      }
+      this.states.set(animal.id,{mode:profile.mode,label:profile.label||profile.mode,members:members.map(m=>m.id),size:members.length,center,nearestId:nearest?.id??null,nearestDistance:nearestD,alarm});
+    }
+  }
+  associates(a,b){
+    // Temporary local social membership is neither genealogy nor food demand.
+    // Real relatives/caregivers/partners may associate across inherited builds
+    // and founding labels. Existing founding social profiles remain defaults.
+    return a.species===b.species||a.caregiverId===b.id||b.caregiverId===a.id||
+      (this.sim.cognition?.relation(a,b)||'unrelated')!=='unrelated'||(this.sim.recovery?.kinship(a,b)||'none')!=='none';
+  }
+  affinity(a,b,profile){
+    let score=1;
+    if(profile.kinBias){
+      const rel=this.sim.cognition?.relation(a,b)||'unrelated';
+      if(rel!=='unrelated')score*=profile.kinBias;
+
+    }
+    return score;
+  }
+  state(animal){return this.states.get(animal?.id)||null}
+  snapshot(animal){
+    const s=this.state(animal),p=this.profile(animal);if(!s||!p)return null;
+    return{...s,preferredSpacing:p.separation||1,cohesionRadius:this.cohesionRadius(animal,p),alarmSpecies:s.alarm?.threat?.species||null};
+  }
+  visualState(animal){
+    const s=this.state(animal);if(!s)return null;
+    const ids=[...s.members].sort((a,b)=>a-b),memberIndex=Math.max(0,ids.indexOf(animal.id)),threat=s.alarm?.threat||null;
+    const caregiver=animal?.caregiverId?this.sim.animals.find(a=>a.id===animal.caregiverId&&a.alive)||null:null;
+    return{mode:s.mode,size:s.size,groupKey:ids[0]??animal.id,memberIndex,center:s.center,alarm:!!threat,sharedAlarm:!!threat&&s.alarm.sourceId!==animal.id,threatX:threat?.x??null,threatY:threat?.y??null,caregiverX:caregiver?.x??null,caregiverY:caregiver?.y??null};
+  }
+  cohesionRadius(animal,profile=this.profile(animal)){
+    let r=profile?.cohesionRadius||4;
+    if(animal?.species==='genvo'&&(animal.lineage||animal.player))r*=this.sim.cognition?.familyDistanceScale(animal)??1;
+    return r;
+  }
+  alarmResponse(animal){
+    if(this.sim.isManualPlayer?.(animal)||!this.behaviorEnabled(animal))return null;const s=this.state(animal);if(!s?.alarm?.threat)return null;
+    const threat=s.alarm.threat,profile=this.profile(animal),dx=animal.x-threat.x,dy=animal.y-threat.y,len=Math.hypot(dx,dy)||1;
+    if(len>(profile.alarmRadius||6)*1.15)return null;
+    const spec=SPECIES[animal.species],energy=animal.energy/Math.max(1,spec.maxEnergy);if(energy<.28)return null;
+    const cx=s.center.x-animal.x,cy=s.center.y-animal.y;
+    return{x:animal.x+dx/len*2.6+cx*.12,y:animal.y+dy/len*2.6+cy*.12,threat,shared:s.alarm.sourceId!==animal.id};
+  }
+  spacingTarget(animal){
+    if(this.sim.isManualPlayer?.(animal)||!this.behaviorEnabled(animal))return null;const s=this.state(animal),p=this.profile(animal);if(!s||s.size<2||!Number.isFinite(s.nearestDistance)||s.nearestDistance>=(p.separation||1))return null;
+    const other=this.sim.animals.find(a=>a.id===s.nearestId&&a.alive);if(!other)return null;
+    const dx=animal.x-other.x,dy=animal.y-other.y,len=Math.hypot(dx,dy)||1;this.stats.spacingMoves++;
+    return{x:animal.x+dx/len*1.8,y:animal.y+dy/len*1.8};
+  }
+  cohesionTarget(animal){
+    if(this.sim.isManualPlayer?.(animal)||!this.behaviorEnabled(animal))return null;const s=this.state(animal),p=this.profile(animal);if(!s||s.size<3)return null;
+    const spec=SPECIES[animal.species];if(animal.energy/spec.maxEnergy<.58||animal.hydration/spec.maxHydration<.58)return null;
+    const d=Math.hypot(s.center.x-animal.x,s.center.y-animal.y),limit=this.cohesionRadius(animal,p);
+    if(d<=limit)return null;this.stats.cohesionMoves++;return{x:s.center.x,y:s.center.y};
+  }
+  noteAlarm(animal){const s=this.state(animal);if(s?.alarm)this.stats.alarms++}
+}

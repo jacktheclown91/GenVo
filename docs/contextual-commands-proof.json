@@ -1,0 +1,145 @@
+{
+  "viewport": {
+    "width": 800,
+    "height": 600
+  },
+  "diets": [
+    {
+      "diet": "herbivore",
+      "mouth": "grazing-mouth",
+      "meal": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "sunmoss",
+        "energyGain": 5.215083094720917,
+        "waterGain": 1,
+        "tick": 9
+      },
+      "invalidCarrion": "Click an object to select it; Interact / E uses that target. A compatible feeding mouth is required."
+    },
+    {
+      "diet": "carnivore",
+      "mouth": "tearing-jaw",
+      "meal": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "carrion",
+        "energyGain": 6.372899270100838,
+        "waterGain": 0,
+        "tick": 17
+      },
+      "invalidPlant": "Click an object to select it; Interact / E uses that target. A compatible feeding mouth is required."
+    },
+    {
+      "diet": "omnivore",
+      "mouth": "sucker-mouth",
+      "plant": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "sunmoss",
+        "energyGain": 0.8039572098821779,
+        "waterGain": 1,
+        "tick": 22
+      },
+      "carrion": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "carrion",
+        "energyGain": 9.913398864601305,
+        "waterGain": 0,
+        "tick": 23
+      },
+      "choiceCount": 6
+    },
+    {
+      "diet": "specialized",
+      "mouth": "reed-sieve-mouth",
+      "food": "algae",
+      "directDrink": true,
+      "attackUnavailable": true
+    }
+  ],
+  "fixtures": "Existing actor with valid mounted-mouth variants; natural plant/freshwater stocks; corpse produced by killing an existing actor; staged funded egg pregnancy and territory readiness, using canonical laying/construction. No mating acceptance is asserted.",
+  "fixture": {
+    "plant": {
+      "i": 4044,
+      "food": "sunmoss",
+      "x": 76.5,
+      "y": 31.5,
+      "hitX": 76.53125,
+      "hitY": 31.19375
+    },
+    "corpse": {
+      "kind": "corpse",
+      "food": "carrion",
+      "i": 4046,
+      "x": 78.5,
+      "y": 31.5,
+      "label": "Carrion"
+    },
+    "donorId": 98,
+    "initialCarrion": 2.0999999046325684
+  },
+  "hoverPriority": true,
+  "eggs": {
+    "kind": "egg",
+    "id": 1,
+    "x": 76.62327981737909,
+    "y": 31.67723227054812,
+    "label": "Egg",
+    "nestId": 1
+  },
+  "nest": {
+    "kind": "nest",
+    "id": 1,
+    "x": 76.5,
+    "y": 31.5,
+    "label": "Nest"
+  },
+  "collect": {
+    "kind": "site",
+    "id": 36,
+    "x": 73.5,
+    "y": 54.5,
+    "label": "Nest material",
+    "stock": 3
+  },
+  "shelter": {
+    "kind": "shelter",
+    "id": 1,
+    "x": 73.5,
+    "y": 54.5,
+    "label": "Shelter",
+    "seal": 0.78
+  },
+  "care": {
+    "childId": 197,
+    "unfundedTend": true,
+    "fundedRadialFeed": true
+  },
+  "liveCareRefresh": {
+    "focus": "care|creature:197:",
+    "radial": "Share available food and settle your young.",
+    "dock": "Share available food and settle your young.",
+    "canonical": "Share available food and settle your young."
+  },
+  "creature": {
+    "hunterId": 97,
+    "inspect": true,
+    "attackInSocial": true,
+    "pointerDefend": true
+  },
+  "save": {
+    "validBody": true,
+    "eggs": 2,
+    "nests": 1
+  },
+  "bounds": {
+    "x": 8,
+    "y": 496,
+    "width": 784,
+    "height": 96
+  },
+  "overflow": [],
+  "errors": []
+}

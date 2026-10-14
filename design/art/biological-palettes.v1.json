@@ -1,0 +1,70 @@
+{
+  "schema": "genvo8.proposed-biological-palettes/1",
+  "status": "DESIGN_PROPOSAL_NOT_SHIPPED",
+  "note": "Palette colors are authored proposed examples, not sampled from current runtime. Hue guides ecological communication, never direct damage or speed modifiers.",
+  "families": {
+    "forest_cover": {
+      "outline": "#26382D",
+      "shadow": "#426142",
+      "base": "#65834F",
+      "light": "#A3BB75",
+      "accent": "#B4945C",
+      "underside": "#C4B68B",
+      "display": "#DAD47A"
+    },
+    "grassland_runner": {
+      "outline": "#373D2E",
+      "shadow": "#6A773C",
+      "base": "#A7B64C",
+      "light": "#DFD96B",
+      "accent": "#8E8E49",
+      "underside": "#E9DAB3",
+      "display": "#EDD65D"
+    },
+    "desert_dust": {
+      "outline": "#4E372B",
+      "shadow": "#916044",
+      "base": "#C88F57",
+      "light": "#E7BB77",
+      "accent": "#A87849",
+      "underside": "#F2DDB5",
+      "display": "#D96B44"
+    },
+    "freshwater_marsh": {
+      "outline": "#173B47",
+      "shadow": "#276E74",
+      "base": "#40A1A3",
+      "light": "#90CDD0",
+      "accent": "#417D54",
+      "underside": "#C4DBCF",
+      "display": "#9EEDE5"
+    },
+    "threat_display": {
+      "outline": "#401F2D",
+      "shadow": "#8D3434",
+      "base": "#CF5135",
+      "light": "#F18B44",
+      "accent": "#682E34",
+      "underside": "#E5B592",
+      "display": "#F6C54C"
+    },
+    "night_understory": {
+      "outline": "#171E32",
+      "shadow": "#313852",
+      "base": "#59627B",
+      "light": "#929BBA",
+      "accent": "#373147",
+      "underside": "#B6BBCB",
+      "display": "#9C72CA"
+    },
+    "alpine_tundra": {
+      "outline": "#353E4D",
+      "shadow": "#68778B",
+      "base": "#ADBCC9",
+      "light": "#EDF0E7",
+      "accent": "#869CA8",
+      "underside": "#F6F3E7",
+      "display": "#AADDE6"
+    }
+  }
+}

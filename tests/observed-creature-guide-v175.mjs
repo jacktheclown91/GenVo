@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {Simulation} from '../src/sim/simulation.js';
+import {FieldGuide} from '../src/ui/field-guide.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+const sim=new Simulation('ORGANIC-OBSERVED-BODIES',{player:true}),animal=sim.animals.find(a=>a.bodyPlan&&!a.player),d=sim.discovery;
+d.noteCreatureAppearance(animal);const record=structuredClone(d.observedBodies[0]);animal.genes.body+=.01;assert.deepEqual(d.observedBodies[0],record,'observed specimen must not change with a living animal');
+d.noteCreatureAppearance(animal);assert.equal(d.observedBodies.length,1,'repeat observation of the same body plan is not a preset duplicate');
+const restored=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim)));assert.deepEqual(restored.discovery.observedBodies,d.observedBodies);
+const guide=Object.create(FieldGuide.prototype);guide.getSim=()=>restored;const cards=guide.creatures(restored.discovery);assert.equal(cards.length,2);assert.ok(cards.every(c=>c.animal?.bodyPlan));
+assert.ok(!/wildStartPlan|SPECIAL_KINDS|WILD_SCALE/.test(fs.readFileSync(new URL('../src/ui/field-guide.js',import.meta.url),'utf8')));
+console.log('Observed real-body Field Guide, immutable appearance records and save round-trip PASS');

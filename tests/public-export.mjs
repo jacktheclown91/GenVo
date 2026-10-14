@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';import os from 'node:os';import path from 'node:path';
+import {spawnSync} from 'node:child_process';import {fileURLToPath} from 'node:url';
+import {sourceGraph} from '../tools/source-graph.mjs';
+const root=fileURLToPath(new URL('../',import.meta.url)),temp=fs.mkdtempSync(path.join(os.tmpdir(),'genvo8-public-'));
+try{
+ const result=spawnSync(process.execPath,[fileURLToPath(new URL('../tools/export-public.mjs',import.meta.url)),temp],{encoding:'utf8',timeout:30000});
+ assert.equal(result.status,0,result.stdout+result.stderr);
+ const {reachable}=sourceGraph(root);
+ for(const p of reachable)assert.equal(fs.readFileSync(path.join(temp,p)).compare(fs.readFileSync(path.join(root,p))),0,p);
+ for(const p of ['src/lineage/phenotype-resolver.js','src/render/authored-draft-compiler.js'])assert.equal(fs.existsSync(path.join(temp,p)),false,`${p} is tool-only`);
+ assert.equal(fs.existsSync(path.join(temp,'references/generated-sprite-sheets/genvo8-walk.png')),false,'derived sprites not shipped');
+ assert.equal(fs.existsSync(path.join(temp,'assets/audio-source')),false,'lossless audio sources are not browser assets');
+ assert.equal(fs.existsSync(path.join(temp,'assets/art/catalog.json')),true,'installed native part artwork must be in public build');
+ console.log('public-export: exact reachable modules and runtime assets only PASS');
+} finally {fs.rmSync(temp,{recursive:true,force:true})}

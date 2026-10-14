@@ -1,0 +1,80 @@
+{
+  "receipts": [
+    {
+      "test": "living-rest",
+      "status": "PASS",
+      "output": "Continuous individual breathing, planted rest contacts, one-foot resettling, unchanged skeleton/biology/RNG and pause clock PASS\n"
+    },
+    {
+      "test": "life-render",
+      "status": "PASS",
+      "output": "life-render presentation checks: PASS\n"
+    },
+    {
+      "test": "genvo-visual",
+      "status": "PASS",
+      "output": "genvo visual geometry checks: PASS\n"
+    },
+    {
+      "test": "limb-articulation",
+      "status": "PASS",
+      "output": "Mirrored and facing-relative knees, immutable contacts, and finite/supporting 1024 walking poses PASS\n"
+    },
+    {
+      "test": "native-anatomy-rig",
+      "status": "PASS",
+      "output": "native-anatomy-rig: 9 body silhouettes + 8 two-bone limbs / 16 joint transforms, negative rig validation PASS\n"
+    },
+    {
+      "test": "native-limb-detail-v173",
+      "status": "PASS",
+      "output": "walking-leg: 270+217 detailed pixels; 16 exact frames\nspring-leg: 286+211 detailed pixels; 16 exact frames\ngrasper: 265+227 detailed pixels; 16 exact frames\nrunner-leg: 260+198 detailed pixels; 16 exact frames\nsturdy-leg: 343+270 detailed pixels; 16 exact frames\nwebbed-leg: 267+232 detailed pixels; 16 exact frames\npadded-leg: 323+267 detailed pixels; 16 exact frames\ndigging-forelimb: 343+289 detailed pixels; 16 exact frames\nnative-limb-detail-v173: eight full-length dual-section native sheets, 128 exact frames, rig transforms PASS\n"
+    },
+    {
+      "test": "indexed-part-renderer",
+      "status": "PASS",
+      "output": "indexed renderer timed boundaries, missing facing, pivot, joint clamp and allocation-free drawing PASS\n"
+    },
+    {
+      "test": "motion-render",
+      "status": "PASS",
+      "output": "render motion bridge checks: PASS\n"
+    },
+    {
+      "test": "player-motion-presentation",
+      "status": "PASS",
+      "output": "player presentation prediction checks: PASS\n"
+    },
+    {
+      "test": "workshop-projection",
+      "status": "PASS",
+      "output": "Canonical projection cost, overspend warning, anatomical restrictions and no draft mutations PASS\n"
+    },
+    {
+      "test": "creature-lab-assembly",
+      "status": "PASS",
+      "output": "lab assembly uses canonical socket rules, immutable transactions and native body-plan round trip PASS\n"
+    },
+    {
+      "test": "lineage-comparison",
+      "status": "PASS",
+      "output": "Actual descendant body, both conception phenotype records, wild-parent identity, immutable observations, save parity and honest older-record fallback PASS\n"
+    },
+    {
+      "test": "audio-phenotype",
+      "status": "PASS",
+      "output": "Label-independent mounted voices, canonical predation threats, funded courtship beat deduplication, pause and RNG neutrality PASS\n"
+    },
+    {
+      "test": "conception-availability",
+      "status": "PASS",
+      "output": "Explained ecological blocking, survival release, unrelated-partner preservation, no false preference learning/RNG/funding and saved outcomes PASS\n"
+    },
+    {
+      "test": "save-persistence",
+      "status": "PASS",
+      "output": "save persistence roundtrip: PASS\n"
+    }
+  ],
+  "scope": "Focused actual rig, physiology presentation, motion, Lab, inheritance and controller checks"
+}

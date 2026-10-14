@@ -1,0 +1,41 @@
+{
+  "state": {
+    "target": 97,
+    "buttons": [
+      {
+        "label": "Observe",
+        "disabled": false
+      },
+      {
+        "label": "Court",
+        "disabled": true
+      },
+      {
+        "label": "Attack",
+        "disabled": false
+      },
+      {
+        "label": "Pounce",
+        "disabled": true
+      },
+      {
+        "label": "Back",
+        "disabled": false
+      }
+    ],
+    "attack": {
+      "phase": "windup",
+      "targetId": 97,
+      "startedAt": 1.09375,
+      "until": 1.31375,
+      "slow": false
+    },
+    "familyWheelVisible": false,
+    "familyGate": {
+      "calls": 1,
+      "available": false,
+      "message": "✓ You picked a fight. Safe start ended. Bit Stalker · 7 damage."
+    }
+  },
+  "errors": []
+}

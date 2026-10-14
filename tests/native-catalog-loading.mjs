@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {loadNativePartCatalog,nativeArtStatus,artForPart} from '../src/render/runtime-part-art.js';
+const catalog=JSON.parse(fs.readFileSync(new URL('../assets/art/catalog.json',import.meta.url)));catalog.parts=catalog.parts.slice(0,10);const assets=new Map(catalog.parts.map(e=>[e.partId,JSON.parse(fs.readFileSync(new URL('../assets/art/'+e.indexed.replace('./',''),import.meta.url)))]));
+globalThis.document={createElement(){return{getContext(){return{createImageData(){return{data:new Uint8ClampedArray(4096)}},putImageData(){}}}}}};
+const pending=[];let active=0,peak=0;
+globalThis.fetch=async url=>{const name=new URL(url).pathname;if(name.endsWith('catalog.json'))return{ok:true,json:async()=>catalog};active++;peak=Math.max(peak,active);return new Promise(resolve=>pending.push(()=>{active--;const id=name.split('/').at(-1).replace('.indexed.json','');resolve({ok:true,json:async()=>assets.get(id)})}))};
+const flush=async()=>{for(let i=0;i<12;i++)await Promise.resolve()};
+const loading=loadNativePartCatalog(new URL('https://native.test/catalog.json'));await flush();assert.equal(active,8,'bounded fetch concurrency');assert.equal(artForPart(catalog.parts[0].partId),null,'uninstalled partial catalog stays invisible');while(pending.length){pending.splice(0).forEach(release=>release());await flush()}const ready=await loading;assert.equal(ready.status,'ready');assert.equal(ready.installed,10);assert.equal(peak,8);assert.ok(artForPart(catalog.parts[0].partId));
+// Newer catalog supersedes in-flight work without clearing live art.
+const original=artForPart(catalog.parts[0].partId),older=loadNativePartCatalog(new URL('https://native.test/catalog.json'));await flush();assert.equal(artForPart(catalog.parts[0].partId),original);
+const stale=pending.splice(0);catalog.parts=catalog.parts.slice(0,1);const newer=loadNativePartCatalog(new URL('https://native.test/catalog.json'));await flush();pending.splice(0).forEach(release=>release());await newer;const revision=nativeArtStatus().revision;stale.forEach(release=>release());await older;assert.equal(nativeArtStatus().revision,revision);assert.equal(nativeArtStatus().installed,1,'obsolete requests cannot overwrite newer catalog');
+console.log('Bounded native loading, atomic install, preserved live art and stale-load supersession PASS');
+
+catalog.parts=[catalog.parts[0],catalog.parts[0]];const duplicate=loadNativePartCatalog(new URL('https://native.test/catalog.json'));await flush();pending.splice(0).forEach(release=>release());const partial=await duplicate;assert.equal(partial.status,'partial');assert.equal(partial.installed,1);assert.equal(partial.errors.length,1);assert.match(partial.errors[0],/duplicate art ID/);
+const retained=artForPart(catalog.parts[0].partId);globalThis.fetch=async()=>{throw Error('offline')};const failed=await loadNativePartCatalog(new URL('https://native.test/catalog.json'));assert.equal(failed.status,'partial');assert.equal(artForPart(catalog.parts[0].partId),retained);assert.equal(failed.installed,1);assert.match(failed.errors[0],/offline/);console.log('Duplicate error reporting and failed-reload live-art retention PASS');

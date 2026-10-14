@@ -1,0 +1,22 @@
+{
+  "baseline": "GenVo-embodied-encounters-2026-10-13-4925f64f-source.zip",
+  "changedGameplayModules": [
+    "src/main.js",
+    "src/cognition/cognition.js",
+    "src/ecology/freshwater-food.js",
+    "src/ecology/history.js",
+    "src/gameplay/discovery.js",
+    "src/gameplay/foraging.js",
+    "src/gameplay/interaction-command.js",
+    "src/persistence/save-manager.js",
+    "src/render/behavior.js",
+    "src/render/renderer.js",
+    "src/render/world-traces.js",
+    "src/sim/simulation.js",
+    "src/ui/action-icons.js",
+    "src/ui/context-radial.js",
+    "src/ui/creature-context-tray.js",
+    "src/ui/pointer-approach.js",
+    "src/ui/world-resource-target.js"
+  ]
+}

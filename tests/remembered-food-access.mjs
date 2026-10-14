@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+const sim=new Simulation('LINEAGE-DISPERSAL',{player:true}),a=sim.player();
+Object.assign(a,{x:53.19190774485957,y:60.916195349556524});
+const memory={x:53,y:62,kind:'bramble',lastSeenTick:sim.tickCount};
+sim.cognition.state(a).food=memory;
+sim.world.plants.bramble[sim.world.idx(53,62)]=1;
+assert.equal(sim.canReach(a,53,62),false,'recorded starvation target is submerged and inaccessible');
+const rng=sim.rng.state,energy=a.energy;
+assert.equal(sim.cognition.foodTarget(a),null,'fresh but inaccessible memory cannot block another food search');
+assert.equal(sim.cognition.state(a).food,memory,'knowledge is retained rather than fabricated or erased');
+assert.equal(sim.rng.state,rng);assert.equal(a.energy,energy);
+memory.x=a.x;memory.y=a.y;const i=sim.world.idx(a.x,a.y);
+sim.world.plants.bramble[i]=.5;
+assert.ok(sim.cognition.foodTarget(a)?.memory,'reachable finite meal is retained');
+sim.world.plants.bramble[i]=0;
+assert.equal(sim.cognition.foodTarget(a),null,'depleted memory releases the food choice');
+console.log('remembered food respects actual access and finite stock PASS');

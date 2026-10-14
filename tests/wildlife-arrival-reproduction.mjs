@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import {auditArrivalReproduction} from '../tools/wildlife-arrival-reproduction.mjs';
+const arrival={id:1,day:10,x:20,y:20,region:'1:1'};
+const conception=(day,x,prior=arrival)=>({day,species:'mosskip',ids:[1,2],positions:[{x,y:20},{x:40,y:20}],priorArrivals:[prior,null]});
+const r=auditArrivalReproduction({conceptions:[conception(12,21),conception(15,22),conception(15,23),conception(9,20),conception(12,20,{...arrival,id:99})]});
+assert.equal(r.uniqueParents,1,'Repeated reproduction is not additional independent breeders');
+assert.equal(r.observations.length,2,'Exclude distant reproduction, impossible chronology and mismatched identity');
+assert.equal(r.observations[0].daysAfterArrival,2);
+assert.throws(()=>auditArrivalReproduction({},NaN));
+assert.equal(auditArrivalReproduction({}).uniqueParents,0,'No arrivals must remain no evidence');
+console.log('arrival reproduction distance, chronology, identity and repeated-parent distinctions: PASS');

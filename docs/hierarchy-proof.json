@@ -1,0 +1,97 @@
+{
+  "viewport": {
+    "width": 800,
+    "height": 600
+  },
+  "modeLabels": [
+    "Combat",
+    "Social"
+  ],
+  "quickCommands": [
+    "interact",
+    "drink",
+    "attack",
+    "brace",
+    "rest"
+  ],
+  "target": {
+    "x": 90.5,
+    "y": 41.5,
+    "i": 5338,
+    "kinds": [
+      "sunmoss"
+    ],
+    "hitX": 90.40625,
+    "hitY": 41.13125
+  },
+  "start": {
+    "x": 92.5,
+    "y": 44.5
+  },
+  "reached": {
+    "x": 91.61658761116571,
+    "y": 42.63194393572799,
+    "target": {
+      "kind": "plant",
+      "i": 5338,
+      "food": "sunmoss",
+      "x": 90.5,
+      "y": 41.5,
+      "hitX": 90.40625,
+      "hitY": 41.13125,
+      "label": "Moss"
+    }
+  },
+  "meal": {
+    "type": "eat",
+    "actorId": 109,
+    "kind": "sunmoss",
+    "energyGain": 5.215083094720917,
+    "waterGain": 1,
+    "tick": 21
+  },
+  "water": {
+    "x": 95.5,
+    "y": 42.5
+  },
+  "breath": 45.3125,
+  "mateId": 110,
+  "bounds": {
+    "x": 8,
+    "y": 506.609375,
+    "width": 784,
+    "height": 85.390625
+  },
+  "overflow": [],
+  "errors": [],
+  "afterCourt": {
+    "x": 8,
+    "y": 527,
+    "width": 784,
+    "height": 65
+  },
+  "automaticEnd": {
+    "x": 8,
+    "y": 527,
+    "width": 784,
+    "height": 65
+  },
+  "courtBounds": {
+    "x": 8,
+    "y": 422,
+    "width": 784,
+    "height": 170
+  },
+  "hunterId": 97,
+  "combat": true,
+  "radialGuard": true,
+  "combinedDrink": true,
+  "emptyGroundDismiss": true,
+  "graphicalSequence": true,
+  "activeBeatHighlight": true,
+  "identity": "Genvo Leafwalker · adult · grazing mouth",
+  "needTitle": "Water 97% · Drink beside water to restore hydration.",
+  "notificationOverlap": false,
+  "sharedReasons": true,
+  "fixture": "Existing natural resources; real actors positioned/readied for reproducible courtship, without modifying mate preferences or acceptance."
+}

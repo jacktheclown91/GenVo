@@ -1,0 +1,391 @@
+{
+  "scope": "Controlled player/camera placement and selection of a naturally unoccupied release site; actual funded flowers, mouse/E feeding, real pollen cargo, cross founding-resource reception, seed viability/release and canonical hybrid germination. No plant genotype or biomass writes. Accelerated vegetation phases are controlled proof, not natural ecological acceptance.",
+  "errors": [],
+  "checks": [],
+  "preparation": {
+    "stats": {
+      "pollenProduced": 0.1699998378753662,
+      "ovulesInvested": 2.8190492540597916,
+      "delivered": 0,
+      "recognized": 0,
+      "rejected": 0,
+      "fertilized": 0,
+      "viable": 0,
+      "nonviable": 0,
+      "released": 0,
+      "selfed": 0,
+      "crossed": 0
+    }
+  },
+  "donor": {
+    "i": 14371,
+    "kind": "bramble",
+    "x": 389,
+    "y": 297,
+    "producerId": "bramble:14371:founder",
+    "mass": 0.009999990463256836
+  },
+  "pickup": {
+    "kind": "bramble",
+    "i": 14371,
+    "mass": 0.009999990463256836,
+    "genome": {
+      "schema": 4,
+      "id": "flora4-b920a590-1c87f3c9",
+      "resourceAlias": "bramble",
+      "traits": {
+        "growth": 0.032,
+        "waterNeed": 0.42,
+        "nutrition": 16,
+        "seedAllocation": 0.2,
+        "coatAllocation": 0
+      },
+      "traitAlleles": {
+        "growth": [
+          0.032,
+          0.032
+        ],
+        "waterNeed": [
+          0.42,
+          0.42
+        ],
+        "nutrition": [
+          16,
+          16
+        ],
+        "seedAllocation": [
+          0.2,
+          0.2
+        ],
+        "coatAllocation": [
+          0,
+          0
+        ]
+      },
+      "botanical": {
+        "schema": 1,
+        "cue": [
+          0,
+          0
+        ],
+        "receptor": [
+          0,
+          0
+        ],
+        "selfMarker": [
+          "si:3",
+          "si:0"
+        ],
+        "selfCompatible": [
+          true,
+          false
+        ],
+        "anther": [
+          true,
+          true
+        ],
+        "stigma": [
+          true,
+          true
+        ],
+        "ovule": [
+          true,
+          true
+        ],
+        "embryo": [
+          true,
+          true
+        ]
+      },
+      "reproduction": "sexual-and-clonal",
+      "mutationEnabled": true
+    },
+    "gamete": {
+      "botanical": {
+        "cue": 0,
+        "receptor": 0,
+        "selfMarker": "si:3",
+        "selfCompatible": true,
+        "anther": true,
+        "stigma": true,
+        "ovule": true,
+        "embryo": true
+      },
+      "traits": {
+        "growth": 0.032,
+        "waterNeed": 0.42,
+        "nutrition": 16,
+        "seedAllocation": 0.2,
+        "coatAllocation": 0
+      },
+      "mutation": null
+    },
+    "producerId": "bramble:14371:founder",
+    "createdEpoch": 1,
+    "serial": 15
+  },
+  "recipient": {
+    "i": 2064,
+    "kind": "thistlepod",
+    "x": 398,
+    "y": 294,
+    "producerId": "thistlepod:2064:founder",
+    "mass": 0.01979316771030426
+  },
+  "cross": {
+    "contact": {
+      "tick": 10,
+      "kind": "thistlepod",
+      "i": 2064,
+      "carrying": false,
+      "result": "fertilization",
+      "accepted": true,
+      "reason": null
+    },
+    "embryo": {
+      "kind": "thistlepod",
+      "i": 2064,
+      "mass": 0.01979316771030426,
+      "genome": {
+        "schema": 4,
+        "id": "flora4-a64c0a25-2c636656",
+        "resourceAlias": "thistlepod",
+        "traits": {
+          "growth": 0.029,
+          "waterNeed": 0.335,
+          "nutrition": 13.5,
+          "seedAllocation": 0.2,
+          "coatAllocation": 0.125
+        },
+        "traitAlleles": {
+          "growth": [
+            0.026,
+            0.032
+          ],
+          "waterNeed": [
+            0.25,
+            0.42
+          ],
+          "nutrition": [
+            11,
+            16
+          ],
+          "seedAllocation": [
+            0.2,
+            0.2
+          ],
+          "coatAllocation": [
+            0.25,
+            0
+          ]
+        },
+        "botanical": {
+          "schema": 1,
+          "cue": [
+            0,
+            0
+          ],
+          "receptor": [
+            0,
+            0
+          ],
+          "selfMarker": [
+            "si:7",
+            "si:3"
+          ],
+          "selfCompatible": [
+            true,
+            true
+          ],
+          "anther": [
+            true,
+            true
+          ],
+          "stigma": [
+            true,
+            true
+          ],
+          "ovule": [
+            true,
+            true
+          ],
+          "embryo": [
+            true,
+            true
+          ]
+        },
+        "reproduction": "sexual-and-clonal",
+        "mutationEnabled": true
+      },
+      "createdEpoch": 1,
+      "producerId": "thistlepod:2064:founder",
+      "parentGenomeId": "flora4-9737ca3f-159068b0",
+      "parentGenomeIds": [
+        "flora4-9737ca3f-159068b0",
+        "flora4-b920a590-1c87f3c9"
+      ],
+      "parentProducerIds": [
+        "thistlepod:2064:founder",
+        "bramble:14371:founder"
+      ],
+      "selfing": false,
+      "homozygosity": 0.6153846153846154,
+      "mode": "sexual"
+    },
+    "stats": {
+      "pollenProduced": 0.1699998378753662,
+      "ovulesInvested": 2.8190492540597916,
+      "delivered": 1,
+      "recognized": 1,
+      "rejected": 0,
+      "fertilized": 1,
+      "viable": 0,
+      "nonviable": 0,
+      "released": 0,
+      "selfed": 0,
+      "crossed": 1
+    }
+  },
+  "establishment": {
+    "i": 1935,
+    "genome": {
+      "schema": 4,
+      "id": "flora4-a64c0a25-2c636656",
+      "resourceAlias": "thistlepod",
+      "traits": {
+        "growth": 0.029,
+        "waterNeed": 0.335,
+        "nutrition": 13.5,
+        "seedAllocation": 0.2,
+        "coatAllocation": 0.125
+      },
+      "traitAlleles": {
+        "growth": [
+          0.026,
+          0.032
+        ],
+        "waterNeed": [
+          0.25,
+          0.42
+        ],
+        "nutrition": [
+          11,
+          16
+        ],
+        "seedAllocation": [
+          0.2,
+          0.2
+        ],
+        "coatAllocation": [
+          0.25,
+          0
+        ]
+      },
+      "botanical": {
+        "schema": 1,
+        "cue": [
+          0,
+          0
+        ],
+        "receptor": [
+          0,
+          0
+        ],
+        "selfMarker": [
+          "si:7",
+          "si:3"
+        ],
+        "selfCompatible": [
+          true,
+          true
+        ],
+        "anther": [
+          true,
+          true
+        ],
+        "stigma": [
+          true,
+          true
+        ],
+        "ovule": [
+          true,
+          true
+        ],
+        "embryo": [
+          true,
+          true
+        ]
+      },
+      "reproduction": "sexual-and-clonal",
+      "mutationEnabled": true
+    },
+    "origin": {
+      "depositIds": [
+        242
+      ],
+      "amount": 0.019318131685256958,
+      "originCell": 2064,
+      "producerId": "thistlepod:1935:3",
+      "parentGenomeId": "flora4-9737ca3f-159068b0",
+      "parentGenomeIds": [
+        "flora4-9737ca3f-159068b0",
+        "flora4-b920a590-1c87f3c9"
+      ],
+      "parentProducerIds": [
+        "thistlepod:2064:founder",
+        "bramble:14371:founder"
+      ],
+      "selfing": false,
+      "homozygosity": 0.6153846153846154,
+      "mutation": 0,
+      "coatMutation": 0,
+      "mutationAxis": null,
+      "mode": "sexual",
+      "route": "sexual-release",
+      "genomeId": "flora4-a64c0a25-2c636656",
+      "parentProducerId": "thistlepod:2064:founder",
+      "establishedDay": 3,
+      "establishedTick": 16
+    },
+    "phases": 2,
+    "stock": 0.01931813172996044,
+    "stats": {
+      "pollenProduced": 3.929448187351227,
+      "ovulesInvested": 12.9958855509758,
+      "delivered": 220,
+      "recognized": 151,
+      "rejected": 69,
+      "fertilized": 151,
+      "viable": 14,
+      "nonviable": 0,
+      "released": 0.1397930532693863,
+      "selfed": 150,
+      "crossed": 1
+    }
+  },
+  "save": {
+    "botanical": true,
+    "flora": true,
+    "pollen": true
+  },
+  "natural": {
+    "scope": "30 seconds normal fresh-world simulation, no biological/position/reserve/terrain fixtures or player commands.",
+    "tick": 240,
+    "stats": {
+      "pollenProduced": 7.578646093606949,
+      "ovulesInvested": 26.949537068605423,
+      "delivered": 790,
+      "recognized": 551,
+      "rejected": 239,
+      "fertilized": 551,
+      "viable": 363,
+      "nonviable": 1,
+      "released": 2.652403473854065,
+      "selfed": 551,
+      "crossed": 0
+    },
+    "carriers": 0,
+    "sexualAdults": 3,
+    "mixedSeedAdults": 0
+  }
+}

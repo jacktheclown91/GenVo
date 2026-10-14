@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "receipts": [
+    {
+      "seed": "ORGANIC-A",
+      "beforeBytes": 147599129,
+      "afterBytes": 54565716,
+      "reductionPercent": 63.031139567226035,
+      "cohorts": 289804,
+      "simulationResultsIdentical": true,
+      "vegetationMeanMs": 261.4537139999999
+    },
+    {
+      "seed": "ORGANIC-B",
+      "beforeBytes": 155107907,
+      "afterBytes": 57263155,
+      "reductionPercent": 63.081730578699634,
+      "cohorts": 304509,
+      "simulationResultsIdentical": true,
+      "vegetationMeanMs": 273.85923999999983
+    },
+    {
+      "seed": "ORGANIC-C",
+      "beforeBytes": 158883002,
+      "afterBytes": 58464707,
+      "reductionPercent": 63.20266720539431,
+      "cohorts": 312143,
+      "simulationResultsIdentical": true,
+      "vegetationMeanMs": 285.59531099999936
+    }
+  ]
+}

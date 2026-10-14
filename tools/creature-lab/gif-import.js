@@ -1,0 +1,7 @@
+export async function decodeGifFrames(file){
+ if(file.size>8*1024*1024)throw Error('GIF exceeds 8 MB import limit');
+ if(typeof ImageDecoder==='undefined'||!await ImageDecoder.isTypeSupported('image/gif'))throw Error('GIF frame decoding unavailable in this browser');
+ const data=await file.arrayBuffer(),header=new DataView(data);if(data.byteLength<13||header.getUint16(6,true)!==32||header.getUint16(8,true)!==32)throw Error('GIF requires exactly 32×32 pixels; no resizing');
+ const decoder=new ImageDecoder({data,type:'image/gif',preferAnimation:true});
+ try{await decoder.tracks.ready;await decoder.completed;const count=decoder.tracks.selectedTrack.frameCount;if(count<1||count>64)throw Error('GIF requires 1–64 frames');const frames=[],durations=[];for(let index=0;index<count;index++){const {image}=await decoder.decode({frameIndex:index});try{if(image.displayWidth!==32||image.displayHeight!==32)throw Error('GIF requires exactly 32×32 pixels; no resizing');const c=document.createElement('canvas');c.width=c.height=32;c.getContext('2d').drawImage(image,0,0);frames.push([...c.getContext('2d').getImageData(0,0,32,32).data]);durations.push(image.duration===null?125:image.duration/1000);if(!Number.isInteger(durations[index])||durations[index]<1||durations[index]>655350)throw Error('Unsupported GIF frame duration')}finally{image.close()}}return {frames,durations}}finally{decoder.close()}
+}

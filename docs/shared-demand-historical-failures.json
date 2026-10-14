@@ -1,0 +1,18 @@
+{
+  "baseline": "Exact prior delivered conception-gates source, before this goal turn",
+  "scope": "Two independently reproduced broad historical family failures; current failures retained in shared-demand-family-tests.json",
+  "receipts": [
+    {
+      "test": "family-learning",
+      "baselineStatus": "FAIL",
+      "code": "ERR_ASSERTION",
+      "reason": "a practiced juvenile is allowed a wider independent range"
+    },
+    {
+      "test": "family-practice",
+      "baselineStatus": "FAIL",
+      "code": "ERR_ASSERTION",
+      "reason": "Expected values to be strictly equal:"
+    }
+  ]
+}

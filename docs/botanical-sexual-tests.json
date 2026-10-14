@@ -1,0 +1,113 @@
+{
+  "scope": "Focused current-source integration and regression checks, not full historical suite acceptance",
+  "receipts": [
+    {
+      "test": "botanical-genetics",
+      "status": "PASS",
+      "seconds": 0.06412749999435619,
+      "output": "Dedicated botanical signal/recognition, resource-independent cross compatibility, selfing/SI, diploid hybrids, gradual overlap loss, real recessive embryo failure and no universal selfing penalty PASS\n"
+    },
+    {
+      "test": "botanical-populations",
+      "status": "PASS",
+      "seconds": 0.15824630000861362,
+      "output": "Eight shared founder identities, population-size recognition matrices, isolated SI clones, permissive selfing, divergent/hybrid recognition and heritable mutation PASS\n"
+    },
+    {
+      "test": "botanical-reproduction",
+      "status": "PASS",
+      "seconds": 0.47169599996414036,
+      "output": "Autonomous funded anatomy, actual diet-valid flower contacts, nonduplicated pollen cargo, cross-alias fertilization, separate seed development/release, real seed-bank genotype and save continuity PASS\n"
+    },
+    {
+      "test": "botanical-safety",
+      "status": "PASS",
+      "seconds": 0.27727319998666644,
+      "output": "Malformed delivery/restore fail before stock mutation, finite pollen death transfer and exact rare-cohort genotype retention PASS\n"
+    },
+    {
+      "test": "plant-resource-contract",
+      "status": "PASS",
+      "seconds": 1.1323562000179663,
+      "output": "Funded growth limits, finite input flux reconciliation, land nutrient inventory, bounded receipts and stock-preserving migration PASS\n"
+    },
+    {
+      "test": "clonal-flora",
+      "status": "PASS",
+      "seconds": 0.5068554000463337,
+      "output": "Clonal mutation, frozen adults, persistent rare seed cohorts, inherited tissue allocation, funded birth, independent RNG and save validation PASS\n"
+    },
+    {
+      "test": "inherited-coats",
+      "status": "PASS",
+      "seconds": 0.3255030000000261,
+      "output": "Inherited coat/seed axes, immutable adults, legacy schemas, finite tissue and handling tradeoffs, real germination, specialization and save parity PASS\n"
+    },
+    {
+      "test": "flora-tissue-propagules",
+      "status": "PASS",
+      "seconds": 0.31604669999796897,
+      "output": "Finite tissues, anatomy-specific kernel destruction, real genotype cargo/deposition/establishment, read-only commands and stock-preserving save migration PASS\n"
+    },
+    {
+      "test": "contextual-interactions",
+      "status": "PASS",
+      "seconds": 0.1997127999784425,
+      "output": "Four dietary anatomies, read-only queries, exact-target/no-fallback, ambiguity, stale feeding descriptors, keyed collection and attack fallback PASS\n"
+    },
+    {
+      "test": "foraging-choice",
+      "status": "PASS",
+      "seconds": 0.31811509997351095,
+      "output": "player forage choice + physiology checks: PASS\n"
+    },
+    {
+      "test": "organic-resource-cycle",
+      "status": "PASS",
+      "seconds": 0.3626536999945529,
+      "output": "Funded fungi, retained aquatic waste, finite nutrient growth, tissue-preserving returns/overflow and compatible saves PASS\n"
+    },
+    {
+      "test": "seed-observations",
+      "status": "PASS",
+      "seconds": 0.3928563999943435,
+      "output": "Funded seed deposit causality, sensory-gated observations, no remote growth reveal, journal persistence, faded-trail revisit and anatomy-driven read-only handling PASS\n"
+    },
+    {
+      "test": "lineage-comparison",
+      "status": "PASS",
+      "seconds": 0.2719331000116654,
+      "output": "Actual descendant body, both conception phenotype records, wild-parent identity, immutable observations, save parity and honest older-record fallback PASS\n"
+    },
+    {
+      "test": "save-persistence",
+      "status": "PASS",
+      "seconds": 1.1636072000255808,
+      "output": "save persistence roundtrip: PASS\n"
+    },
+    {
+      "test": "save-storage",
+      "status": "PASS",
+      "seconds": 0.27153930003987625,
+      "output": "IndexedDB save manager contract: PASS\n"
+    },
+    {
+      "test": "creature-lab-assembly",
+      "status": "PASS",
+      "seconds": 0.05808039999101311,
+      "output": "lab assembly uses canonical socket rules, immutable transactions and native body-plan round trip PASS\n"
+    },
+    {
+      "test": "workshop-projection",
+      "status": "PASS",
+      "seconds": 0.058715300052426755,
+      "output": "Canonical projection cost, overspend warning, anatomical restrictions and no draft mutations PASS\n"
+    },
+    {
+      "test": "pointer-route-availability",
+      "status": "PASS",
+      "seconds": 0.04311430000234395,
+      "output": "Read-only route availability, execution parity, authoritative early reach, pause and manual-cancel safety PASS\n"
+    }
+  ]
+}

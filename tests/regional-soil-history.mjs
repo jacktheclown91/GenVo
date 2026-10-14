@@ -1,0 +1,40 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {CFG} from '../src/sim/config.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+
+const sim=new Simulation('EK-REGIONAL-OBSERVATION',{player:false});
+const a=sim.animals.find(a=>a.alive&&a.species==='rootling');
+assert.ok(a);
+const i=sim.world.idx(a.x,a.y),key=sim.regionalEcology.keyAt(a.x,a.y);
+sim.world.water[i]=0;
+const rng=sim.rng.state;
+const p=sim.partAbilities;
+assert.equal(p.dig(a).ok,true);
+const record=sim.regionalEcology.records.get(key).engineering;
+assert.equal(record.digs,1,'Only real completed work is recorded');
+assert.equal(record.bySpecies[a.species],1);
+assert.equal(record.byGeneration[a.generation],1);
+assert.equal(p.dig(a).ok,false,'Cooldown cannot create a phantom work receipt');
+assert.equal(record.digs,1);
+assert.equal(sim.rng.state,rng,'Regional observation consumes no RNG');
+const originalPlants=structuredClone(sim.world.plants);
+for(let day=2;day<=110;day++){
+ sim.day=day;sim.tickCount=day*CFG.dayTicks;
+ sim.partAbilities.advanceSoilDay();sim.regionalEcology.observe();
+}
+const history=sim.regionalEcology.engineeringTrend(key);
+assert.ok(history.length>1&&history.length<=sim.regionalEcology.engineeringHistoryLimit);
+assert.ok(history.some(v=>v.soilStrength>0));
+assert.ok(history.some(v=>v.soilStrength===0));
+assert.ok(history.every(v=>v.digs===1));
+assert.ok(history.every(v=>v.thistlepodSeedBank>=0&&v.thistlepodBiomass>=0));
+assert.ok(history.at(-1).day<=96,'Inactive regions stop collecting after soil recovery');
+assert.deepEqual(sim.world.plants,originalPlants,'Passive observations never mutate plants');
+assert.equal(sim.rng.state,rng,'History sampling leaves RNG unchanged');
+const restored=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim)));
+assert.deepEqual(restored.regionalEcology.records,sim.regionalEcology.records);
+assert.deepEqual(restored.regionalEcology.engineeringTrend(key),history);
+const copy=sim.regionalEcology.engineeringTrend(key);copy[0].soilStrength=1234;
+assert.notEqual(sim.regionalEcology.engineeringTrend(key)[0].soilStrength,1234,'Read API does not expose history records for mutation');
+console.log('regional work receipts, expiry trajectory, bounded passive history, save compatibility, no RNG or inventory mutation: PASS');

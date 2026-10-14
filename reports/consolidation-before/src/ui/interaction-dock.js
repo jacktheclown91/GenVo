@@ -1,0 +1,25 @@
+import {creatureIdentity} from './creature-identity.js';
+import {drawGenvoSprite} from '../render/genvo-draw.js';
+import {phenotypeFor} from '../organisms/species.js';
+import {creaturePalette} from '../render/creature-palette.js';
+import {nativeArtStatus} from '../render/runtime-part-art.js';
+let dock;
+// One visual owner for target interactions, survival actions and encounters.
+// Controllers supply every action; this component owns presentation only.
+export function interactionDock(){
+ if(dock)return dock;
+ const el=document.createElement('section');el.id='interactionDock';el.hidden=true;el.setAttribute('aria-label','Creature interaction dock');
+ const player=document.createElement('aside');player.className='dock-player';
+ const portrait=document.createElement('canvas');portrait.width=80;portrait.height=64;portrait.setAttribute('aria-label','Your creature');
+ const caption=document.createElement('strong');caption.textContent='Your creature';player.append(portrait,caption,document.querySelector('#hud'));
+ const main=document.createElement('div');main.className='dock-main';const header=document.createElement('div');header.className='dock-header';
+ const heading=document.createElement('strong');heading.textContent='Choose an interaction';const modes=document.createElement('div');modes.className='dock-mode-slot';header.append(heading,modes);
+ const body=document.createElement('div');body.className='dock-context';const empty=document.createElement('p');empty.className='dock-empty';empty.textContent='Click a creature, plant or water to see what you can do.';body.append(empty);
+ const advanced=document.querySelector('#quickMenu');advanced.hidden=true;
+ const utilities=document.createElement('section');utilities.id='stageUtilities';utilities.setAttribute('aria-label','Game utilities');
+ for(const b of advanced.querySelectorAll('button')){const label=document.createElement('span');label.className='dock-tool-label';label.textContent=({guide:'Tasks',leadership:'Family',autonomy:'Auto',speed:'Speed',journal:'Journal',territory:'Home',population:'World',help:'Help'})[b.dataset.panel||b.dataset.command||b.dataset.action]||b.getAttribute('aria-label');b.append(label)}
+ const more=document.createElement('button');more.type='button';more.textContent='Menu';more.setAttribute('aria-label','Game utilities');more.setAttribute('aria-expanded','false');more.onclick=()=>{advanced.hidden=!advanced.hidden;more.setAttribute('aria-expanded',String(!advanced.hidden))};addEventListener('keydown',e=>{if(e.code==='Escape'&&!advanced.hidden&&!utilities.hidden){e.preventDefault();e.stopImmediatePropagation();advanced.hidden=true;more.setAttribute('aria-expanded','false')}},{capture:true});utilities.append(more,advanced);document.querySelector('#app').append(utilities);
+ const survival=document.createElement('div');survival.className='dock-survival-slot';main.append(header,body,survival);el.append(player,main);document.querySelector('#app').append(el);
+ dock={el,header,body,modes,survival,heading,empty,portrait,signature:null,update(sim,blocked){el.hidden=blocked||!sim.player()?.alive;utilities.hidden=el.hidden;if(el.hidden)return;const a=sim.player(),identity=creatureIdentity(sim,a);caption.textContent=identity.name;caption.title='Your creature · '+identity.stage+' · '+identity.description;const key=a.id+'|'+a.bodyPlan?.id+'|'+nativeArtStatus().revision;if(key!==this.signature){this.signature=key;const c=portrait.getContext('2d');c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,80,64);c.imageSmoothingEnabled=false;c.translate(40,32);const ph=phenotypeFor(a);drawGenvoSprite(c,{animal:a,phenotype:ph,scale:3,frame:0,palette:creaturePalette(ph),pose:{dir:3,life:{blink:false}}})}empty.hidden=[...body.children].some(child=>child!==empty&&!child.hidden);const encounter=[...body.children].some(child=>child.classList.contains('courtship-tray')&&!child.hidden);el.classList.toggle('is-compact',!encounter);el.classList.toggle('has-target',!empty.hidden);header.hidden=!empty.hidden&&!encounter}};
+ return dock;
+}

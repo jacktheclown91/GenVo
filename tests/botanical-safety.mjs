@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {initializeBotanicalReproduction,deliverBotanicalPollen,botanicalResourceMass,dropBotanicalPollen,botanicalSeedDestination} from '../src/ecology/botanical-reproduction.js';
+import {validBotanicalGamete,botanicalFloraGenome} from '../src/ecology/botanical-genetics.js';
+import {pruneUnusedFloraGenomes} from '../src/ecology/flora-genome-lifetime.js';
+import {registerFloraGenome} from '../src/ecology/flora-inheritance.js';
+const s=new Simulation('BOTANICAL-SAFETY'),d=s.dispersal;s.phaseClimate();s.phaseVegetation();
+const packet=[...d.botanical.pollen.values()][0],target=[...d.botanical.flowers.values()][0];assert.ok(packet&&target&&validBotanicalGamete(packet.gamete));
+const state=()=>JSON.stringify({pollen:[...d.botanical.pollen],flowers:[...d.botanical.flowers],embryos:d.botanical.embryos,stats:d.botanical.stats,serial:d.botanical.serial,litter:[...d.litter]});
+for(const corrupt of [p=>p.gamete.botanical.cue=999,p=>p.gamete.botanical.cue=250,p=>p.gamete.traits.nutrition=.2,p=>p.gamete.traits.nutrition=NaN,p=>p.createdEpoch=d.botanical.epoch+1,p=>p.mass=Infinity,p=>p.serial=-1,p=>p.i=-1]){const bad=structuredClone(packet);corrupt(bad);const before=state();assert.equal(deliverBotanicalPollen(d,target.kind,target.i,bad).delivered,false);assert.equal(state(),before,'Invalid delivery cannot debit stocks or record fertilization');}
+for(const i of [0,s.world.n-1,s.world.len-1])for(let epoch=0;epoch<16;epoch++){const spot=botanicalSeedDestination(d,{i,genome:packet.genome},epoch);if(spot)assert.ok(spot.x>=1&&spot.y>=1&&spot.x<s.world.n-1&&spot.y<s.world.n-1&&!s.world.water[spot.i]);}
+const saveState=structuredClone(d.botanical);d.botanical.pollen.values().next().value.gamete=structuredClone(packet.gamete);d.botanical.pollen.values().next().value.gamete.botanical.cue=999;assert.throws(()=>initializeBotanicalReproduction(d),/pollen/);d.botanical=saveState;
+const cargo=structuredClone(packet),p=s.player(),mass=botanicalResourceMass(d)+d.litter.reduce((a,b)=>a+b,0);p.pollenCargo=cargo;const carried=botanicalResourceMass(d)+d.litter.reduce((a,b)=>a+b,0);assert.equal(carried,mass+cargo.mass);dropBotanicalPollen(d,p);assert.ok(Math.abs(botanicalResourceMass(d)+d.litter.reduce((a,b)=>a+b,0)-carried)<1e-7);assert.equal(p.pollenCargo,undefined);
+// Positive rare cohorts are kept exactly; only an unreferenced definition is collected.
+const alleles=structuredClone(packet.genome.traitAlleles),r=structuredClone(packet.genome.botanical);r.cue=[253,253];const rare=registerFloraGenome(d,botanicalFloraGenome(packet.kind,alleles,r));r.cue=[252,252];const unused=registerFloraGenome(d,botanicalFloraGenome(packet.kind,alleles,r));const rows=new Map([[rare.id,{amount:1e-30,genomeId:rare.id,parentGenomeIds:[packet.genome.id]}]]);d.floraState.seeds[packet.kind].set(1,rows);pruneUnusedFloraGenomes(d);assert.equal(rows.get(rare.id).amount,1e-30);assert.ok(d.floraState.genomes.has(rare.id)&&d.floraState.genomes.has(packet.genome.id));assert.equal(d.floraState.genomes.has(unused.id),false);
+console.log('Malformed delivery/restore fail before stock mutation, finite pollen death transfer and exact rare-cohort genotype retention PASS');

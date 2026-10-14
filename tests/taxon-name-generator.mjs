@@ -1,0 +1,37 @@
+import assert from 'node:assert/strict';
+import {generateTaxonName,taxonNameExplanation,TAXON_VOCABULARY} from '../src/lineage/taxon-name-generator.js';
+import {EvolutionaryTreeController,ROOT_TAXON_ID} from '../src/lineage/evolution-tree.js';
+import {Simulation} from '../src/sim/simulation.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot,SAVE_DB} from '../src/persistence/save-manager.js';
+
+const sim=new Simulation('GENVO-TAXON-NAMES',{player:true});
+assert.equal(sim.evolutionTree.root().label,'GenVo');
+assert.equal(SAVE_DB,'genvo8-saves','keep previously saved-world database identifier');
+assert.equal(ROOT_TAXON_ID,'genvo8-root','keep persistent taxon IDs intact');
+const parent=sim.evolutionTree.root();
+const cohort=[{bodyPlan:{nodes:[{partId:'reed-sieve-mouth'},{partId:'silt-fin'}]},habits:{range:.6,hunting:.06}},{bodyPlan:{nodes:[{partId:'reed-sieve-mouth'},{partId:'silt-fin'}]},habits:{range:.55,hunting:.03}}];
+const props={branchId:'riverside:range-sense',parentNode:parent,cohort,pressure:'wetness'};
+const a=generateTaxonName(props),again=generateTaxonName(props);
+assert.deepEqual(a,again,'no RNG, deterministic from founding evidence');
+assert.match(a.label,/^Genvo [A-Za-z]+$/,'label is a readable binomial name');
+assert.equal(a.nameOrigin.anatomy.id,'sieve','sieving anatomy should dominate the founding trait evidence');
+assert.ok(a.nameOrigin.anatomy.parts.includes('reed-sieve-mouth'));
+assert.equal(a.nameOrigin.behavior.habit,'range');
+assert.match(taxonNameExplanation(a.nameOrigin),/filter-feeding|lineage|ancestr/i);
+const against=generateTaxonName({...props,branchId:'riverside:other',usedNames:[a.label]});
+assert.notEqual(against.label,a.label,'colliding labels gain stable suffixes');
+assert.deepEqual(against,generateTaxonName({...props,branchId:'riverside:other',usedNames:[a.label]}));
+const changed=generateTaxonName({...props,cohort:[{bodyPlan:{nodes:[{partId:'heavy-jaw'}]},habits:{hunting:.9}}]});
+assert.notEqual(changed.label,a.label,'different actual anatomy and behavioral evidence changes the generated name');
+assert.ok(TAXON_VOCABULARY.anatomy.length>=10,'new parts can extend the declarative naming dictionary');
+const node={...parent,id:'riverside:range-sense',label:a.label,parentId:ROOT_TAXON_ID,parentLabel:'GenVo',depth:1,nameOrigin:a.nameOrigin,memberIds:new Set(),status:'living'};
+sim.evolutionTree.nodes.set(node.id,node);
+const snap=structuredClone(createSimulationSnapshot(sim));
+// Simulate a v1.63 save with its old public-facing root label.
+snap.controllers.evolutionTree.nodes.get(ROOT_TAXON_ID).label='GenVo8';
+const after=restoreSimulationSnapshot(snap);
+assert.equal(after.evolutionTree.root().label,'GenVo','older snapshots show the new ancestral name');
+assert.equal(after.evolutionTree.node(node.id).label,a.label,'existing descendant names survive saves and reloads');
+assert.deepEqual(after.evolutionTree.node(node.id).nameOrigin,a.nameOrigin,'name explanations persist');
+assert.equal(after.seed,sim.seed,'existing world seed is unchanged');
+console.log('taxon-name-generator checks: PASS');

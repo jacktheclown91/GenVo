@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {spawnSync} from 'node:child_process';
+import {fileURLToPath} from 'node:url';
+const target=fileURLToPath(new URL('../tools/canonical-source-audit.mjs',import.meta.url));
+const result=spawnSync(process.execPath,[target],{encoding:'utf8',timeout:30000});
+assert.equal(result.status,0,result.stderr||result.stdout);
+const report=JSON.parse(result.stdout);
+assert.equal(report.status,'PASS');
+assert.equal(report.totalSourceModules,report.runtimeReachableModules+report.toolOrTestModules.length);
+assert.equal(report.registeredParts,report.proceduralSpriteIds);
+assert.equal(report.identicalSourceCopies.length,0);
+console.log('canonical-source: source authorities, art coverage, reference exports, and imports PASS');

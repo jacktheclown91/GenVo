@@ -1,0 +1,9 @@
+// Controlled neutral inheritance experiment; not an ecology/consent/funding simulation.
+import fs from 'node:fs';import assert from 'node:assert/strict';
+import {RNG} from '../src/core/rng.js';
+import {ancestralReproductiveGenome,inheritReproductiveGenome,reproductiveCompatibility,validReproductiveGenome} from '../src/reproduction/reproductive-compatibility.js';
+const runs=[];for(let seed=0;seed<4;seed++){const rng=new RNG('LOCI-PROBE-'+seed);let id=1;let demes=[0,1].map(()=>Array.from({length:16},()=>({id:id++,reproductiveGenome:ancestralReproductiveGenome()})));const samples=[];
+ for(let round=0;round<=32;round++){const mean=(a,b)=>a.reduce((sum,x)=>sum+b.reduce((total,y)=>total+reproductiveCompatibility(x,y).conceptionChance,0),0)/(a.length*b.length);samples.push({round,crossPotential:mean(...demes),withinPotential:demes.map(d=>mean(d,d)),alleles:demes.map(d=>d[0].reproductiveGenome.loci)});if(round===32)break;
+ demes=demes.map(d=>Array.from({length:16},()=>{const a=d[rng.int(0,d.length-1)],options=d.filter(b=>b!==a),b=options[rng.int(0,options.length-1)],childId=id++,g=inheritReproductiveGenome('LOCI-PROBE-'+seed,childId,[a,b]);assert.ok(validReproductiveGenome(g));return{id:childId,reproductiveGenome:g}}));}
+ assert.equal(samples[0].crossPotential,1);assert.ok(samples.slice(1).some(s=>s.crossPotential<1));runs.push({seed,samples});}
+const receipt={scope:'Four bounded 16-member, two-deme, 32-round neutral inheritance experiments. Calls canonical locus inheritance and conditional compatibility only; bypasses consent, kinship, survival and parental funding. Not naturally evolved populations or settled balance.',runs};fs.writeFileSync('docs/reproductive-divergence-probe.json',JSON.stringify(receipt,null,2));console.log(JSON.stringify(runs.map(r=>({seed:r.seed,initial:r.samples[0].crossPotential,final:r.samples.at(-1).crossPotential,within:r.samples.at(-1).withinPotential})),null,2));

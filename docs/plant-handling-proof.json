@@ -1,0 +1,94 @@
+{
+  "scope": "Controlled player placement, energy and mounted mouth; 180 actual resource-funded vegetation phases. No genotype or biomass writes. Native blocked/paid feeding and specialized seed cracking. Separate unstaged observation follows.",
+  "errors": [],
+  "checks": [],
+  "source": {
+    "i": 1031,
+    "x": 7.5,
+    "y": 8.5
+  },
+  "blocked": "Not enough energy to open this coat (0.60 needed). Find softer food.",
+  "grazing": {
+    "kind": "thistlepod",
+    "i": 1031,
+    "tissue": "crop",
+    "removed": 0.15,
+    "coat": 0.037500000000000006,
+    "edible": 0.0825000054144236,
+    "viableSeeds": 0.029999994585576412,
+    "destroyedSeeds": 0,
+    "discarded": 0.037500000000000006,
+    "genome": {
+      "schema": 1,
+      "id": "flora1-thistlepod",
+      "resourceAlias": "thistlepod",
+      "traits": {
+        "growth": 0.026,
+        "waterNeed": 0.25,
+        "nutrition": 11,
+        "seedAllocation": 0.2,
+        "coatAllocation": 0.25
+      },
+      "reproduction": "propagule",
+      "mutationEnabled": false
+    },
+    "producerId": "thistlepod:1031:founder",
+    "originCell": 1031,
+    "processingCost": 0.6000000000000001,
+    "specializedHandling": false,
+    "actorId": 109,
+    "tick": 9,
+    "parentGenomeId": "flora1-thistlepod",
+    "mutation": 0,
+    "seedTransferComplete": true
+  },
+  "specialized": {
+    "kind": "thistlepod",
+    "i": 1120,
+    "tissue": "kernel",
+    "removed": 0.15,
+    "coat": 0.0375,
+    "edible": 0.1125,
+    "viableSeeds": 0,
+    "destroyedSeeds": 0.029999998363275927,
+    "discarded": 0.0375,
+    "genome": {
+      "schema": 1,
+      "id": "flora1-thistlepod",
+      "resourceAlias": "thistlepod",
+      "traits": {
+        "growth": 0.026,
+        "waterNeed": 0.25,
+        "nutrition": 11,
+        "seedAllocation": 0.2,
+        "coatAllocation": 0.25
+      },
+      "reproduction": "propagule",
+      "mutationEnabled": false
+    },
+    "producerId": "thistlepod:1120:founder",
+    "originCell": 1120,
+    "processingCost": 0.15,
+    "specializedHandling": true,
+    "actorId": 109,
+    "tick": 15,
+    "parentGenomeId": "flora1-thistlepod",
+    "seedTransferComplete": true
+  },
+  "save": {
+    "energy": true,
+    "receipt": true,
+    "coat": true
+  },
+  "natural": {
+    "scope": "30 seconds normal fresh-world simulation, no biological/terrain/reserve/position fixtures.",
+    "tick": 242,
+    "chargedActors": [
+      188,
+      177,
+      172,
+      175,
+      179
+    ]
+  }
+}

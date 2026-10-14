@@ -1,0 +1,22 @@
+{
+  "baseline": "GenVo-hybrid-lineages-2026-10-13-2f06308d-source.zip",
+  "changedGameplayModules": [
+    "src/ecology/carrying.js",
+    "src/ecology/dispersal.js",
+    "src/ecology/flora-genotype.js",
+    "src/ecology/functional-diet.js",
+    "src/gameplay/discovery.js",
+    "src/gameplay/foraging.js",
+    "src/gameplay/interaction-command.js",
+    "src/lineage/part-registry.js",
+    "src/persistence/save-manager.js",
+    "src/render/behavior.js",
+    "src/render/flora.js",
+    "src/render/renderer.js",
+    "src/render/world-traces.js",
+    "src/sim/simulation.js",
+    "src/ui/action-icons.js",
+    "src/ui/world-resource-target.js",
+    "src/world/world.js"
+  ]
+}

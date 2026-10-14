@@ -1,0 +1,172 @@
+{
+  "scope": "Final integrated shared finite demand, actual care/lineage separation and existing compatibility/kinship; two independently reproduced historical broad family failures remain open",
+  "receipts": [
+    {
+      "test": "shared-dietary-demand",
+      "status": "PASS",
+      "output": "Same-label divergent diets, cross-label identical diets, finite depleted stocks, aquatic-only overlap and inaccessible consumers PASS\n"
+    },
+    {
+      "test": "active-family-separation",
+      "status": "PASS",
+      "output": "Natural unrelated founders, separate care families, cross-label divergent children, maturation/dispersal, retained genealogy and compatibility save roundtrip PASS\n"
+    },
+    {
+      "test": "small-population-opportunities",
+      "status": "PASS",
+      "output": "Small compatible second-cousin branches across labels remain searchable, first-cousin restriction retained, isolated incompatible pair has no rescue, saves preserve opportunities PASS\n"
+    },
+    {
+      "test": "carrying-live-stock",
+      "status": "PASS",
+      "output": "Actual aquatic harvest, same-day finite regrowth, individual handling energy and terrain changes affect carrying immediately; RNG unchanged PASS\n"
+    },
+    {
+      "test": "carrying",
+      "status": "PASS",
+      "output": "carrying pressure / background cadence: PASS\n"
+    },
+    {
+      "test": "carrying-anatomy-cache",
+      "status": "PASS",
+      "output": "shared-region cache distinguishes inherited mouth diet PASS\ncache distinguishes actual swimming access PASS\n"
+    },
+    {
+      "test": "carrying-land-access",
+      "status": "PASS",
+      "output": "land survey candidate barrier rejection and connected food positive control PASS\n"
+    },
+    {
+      "test": "carrying-connected-demand",
+      "status": "PASS",
+      "output": "production connected/disconnected and swimming demand controls passed\n"
+    },
+    {
+      "test": "freshwater-bank-capacity",
+      "status": "PASS",
+      "output": "freshwater capacity preserves surface bank and submerged anatomy access: PASS\n"
+    },
+    {
+      "test": "freshwater-hunter-capacity",
+      "status": "PASS",
+      "output": "hunter capacity counts finite accessible aquatic nutrition conservatively: PASS\n"
+    },
+    {
+      "test": "inherited-wild-nutrition",
+      "status": "PASS",
+      "output": "Actual ambient feeding and authoritative quotes both respond to inherited nutrition under identical anatomy/resource labels PASS\n"
+    },
+    {
+      "test": "lineage-pressure-dispersal",
+      "status": "PASS",
+      "output": "crowded lineage selects demand-supported reachable dispersal; no teleport, persistence and stale destination PASS\n"
+    },
+    {
+      "test": "wild-pressure-movement",
+      "status": "PASS",
+      "output": "wild crowding response uses perceived connected habitat: PASS\n"
+    },
+    {
+      "test": "conception-availability",
+      "status": "PASS",
+      "output": "Explained ecological blocking, survival release, unrelated-partner preservation, no false preference learning/RNG/funding and saved outcomes PASS\n"
+    },
+    {
+      "test": "evolving-courtship-rituals",
+      "status": "PASS",
+      "output": "evolving-courtship-rituals: anatomical repertoire, taste, optional attempts, social learning, save/load and ecology RNG PASS\n"
+    },
+    {
+      "test": "local-receptive-courtship",
+      "status": "PASS",
+      "output": "EQ non-forced local courtship, physiological refusal and recovery, long-range search, RNG/resources, save/load: PASS\n"
+    },
+    {
+      "test": "mating-arrival-pressure",
+      "status": "PASS",
+      "output": "mating arrival respects changed carrying pressure: PASS\n"
+    },
+    {
+      "test": "family",
+      "status": "PASS",
+      "output": "family + development checks: PASS\n"
+    },
+    {
+      "test": "family-care",
+      "status": "PASS",
+      "output": "active family care checks: PASS\n"
+    },
+    {
+      "test": "family-learning",
+      "status": "FAIL",
+      "output": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: a practiced juvenile is allowed a wider independent range\n+ actual - expected\n\n+ {\n+   adaptations: [],\n+   age: 33,\n+   alive: true,\n+   anatomy: {\n+     armor: 0,\n+     barbs: 0,\n+     forelimb: 0,\n+     glands: 0,\n+     gut: 0,\n+     jaw: 0,\n+     rally: 0,\n+     repair: 0,\n+     signal: 0,\n+     skin: 0,\n+     spring: 0,\n+     waterBody: 0\n+   },\n+   anim: 0,\n+   birthDay: 1,\n+   birthTick: 0,\n+   birthYear: 1,\n+   bodyPlan: {\n+     id: 'bp0-4134709b',\n+     nodes: [\n+       {\n+         id: 'root',\n+         parent: null,\n+         partId: 'small-torso',\n+         partVersion: 1,\n+         socket: null\n+       },\n+       {\n+         id: 'root/eye.left',\n+         parent: 'root',\n+         partId: 'simple-eye',\n+         partVersion: 1,\n+         socket: 'eye.left'\n+       },\n+       {\n+         id: 'root/eye.right',\n+         parent: 'root',\n+         partId: 'simple-eye',\n+         partVersion: 1,\n+         socket: 'eye.right'\n+       },\n+       {\n+         id: 'root/limb.1',\n+         parent: 'root',\n+         partId: 'walking-leg',\n+         partVersion: 1,\n+         socket: 'limb.1'\n+       },\n+       {\n+         id: 'root/limb.3',\n+         parent: 'root',\n+         partId: 'walking-leg',\n+         partVersion: 1,\n+         socket: 'limb.3'\n+       },\n+       {\n+         id: 'root/limb.5',\n+         parent: 'root',\n+         partId: 'walking-leg',\n+         partVersion: 1,\n+         socket: 'limb.5'\n+       },\n+       {\n+         id: 'root/limb.7',\n+         parent: 'root',\n+         partId: 'walking-leg',\n+         partVersion: 1,\n+         socket: 'limb.7'\n+       },\n+       {\n+         id: 'root/mouth',\n+         parent: 'root',\n+         partId: 'grazing-mouth',\n+         partVersion: 1,\n+         socket: 'mouth'\n+       }\n+     ],\n+     registryVersion: 0,\n+     schema: 'genvo8.bodyplan/0'\n+   },\n+   caregiverId: null,\n+   dir: 3,\n+   energy: 110,\n+   generation: 1,\n+   genes: {\n+     body: 0.9999210512731225,\n+     climate: 0.9805101566947997,\n+     digestion: 0.971726618334651,\n+     immunity: 0.9045203857123852,\n+     metabolism: 1.080844303732738,\n+     motion: 1.0942904632072896,\n+     senses: 0.9351576671935619,\n+     temperament: 1.0373255691956729\n+   },\n+   grandparentIds: [],\n+   health: 100,\n+   hydration: 104,\n+   id: 109,\n+   immune: false,\n+   immuneUntilDay: 0,\n+   inbreeding: 0,\n+   infected: false,\n+   infection: null,\n+   intent: 'idle',\n+   lastMate: null,\n+   lineage: true,\n+   matePreferences: {\n+     ritualTastes: {\n+       call: 0.11269,\n+       dance: 0.43598,\n+       flare: 0.57325,\n+       gesture: 0.26671,\n+       scent: -0.21487\n+     },\n+     selectivity: 0.71371,\n+     tempo: 0.6997,\n+     weights: {\n+       behavior: 0.04653,\n+       display: 0.3791,\n+       ornament: 0.24762,\n+       size: -0.31091,\n+       strength: 0.05996\n+     }\n+   },\n+   parentIds: [],\n+   player: true,\n+   pregnant: null,\n+   reproCooldown: 0,\n+   reproDrive: 0,\n+   reproductiveGenome: {\n+     loci: {\n+       development: [\n+         1,\n+         1\n+       ],\n+       gamete: [\n+         1,\n+         1\n+       ]\n+     },\n+     origin: 'shared-ancestral-baseline',\n+     schema: 1\n+   },\n+   sex: 'F',\n+   species: 'genvo',\n+   target: null,\n+   vx: 0,\n+   vy: 0,\n+   x: 34.5,\n+   y: 62.5\n+ }\n- null\n\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/family-learning.mjs:47:10\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: {\n    id: 109,\n    species: 'genvo',\n    x: 34.5,\n    y: 62.5,\n    vx: 0,\n    vy: 0,\n    dir: 3,\n    age: 33,\n    energy: 110,\n    hydration: 104,\n    health: 100,\n    genes: {\n      body: 0.9999210512731225,\n      motion: 1.0942904632072896,\n      metabolism: 1.080844303732738,\n      digestion: 0.971726618334651,\n      senses: 0.9351576671935619,\n      climate: 0.9805101566947997,\n      immunity: 0.9045203857123852,\n      temperament: 1.0373255691956729\n    },\n    reproductiveGenome: {\n      schema: 1,\n      loci: { gamete: [ 1, 1 ], development: [ 1, 1 ] },\n      origin: 'shared-ancestral-baseline'\n    },\n    matePreferences: {\n      weights: {\n        size: -0.31091,\n        strength: 0.05996,\n        ornament: 0.24762,\n        display: 0.3791,\n        behavior: 0.04653\n      },\n      selectivity: 0.71371,\n      ritualTastes: {\n        dance: 0.43598,\n        call: 0.11269,\n        flare: 0.57325,\n        scent: -0.21487,\n        gesture: 0.26671\n      },\n      tempo: 0.6997\n    },\n    inbreeding: 0,\n    sex: 'F',\n    pregnant: null,\n    reproCooldown: 0,\n    intent: 'idle',\n    target: null,\n    alive: true,\n    infected: false,\n    infection: null,\n    immune: false,\n    immuneUntilDay: 0,\n    player: true,\n    lineage: true,\n    parentIds: [],\n    grandparentIds: [],\n    generation: 1,\n    lastMate: null,\n    reproDrive: 0,\n    caregiverId: null,\n    birthTick: 0,\n    birthDay: 1,\n    birthYear: 1,\n    anim: 0,\n    adaptations: [],\n    bodyPlan: {\n      schema: 'genvo8.bodyplan/0',\n      registryVersion: 0,\n      nodes: [\n        {\n          id: 'root',\n          partId: 'small-torso',\n          partVersion: 1,\n          parent: null,\n          socket: null\n        },\n        {\n          id: 'root/eye.left',\n          partId: 'simple-eye',\n          partVersion: 1,\n          parent: 'root',\n          socket: 'eye.left'\n        },\n        {\n          id: 'root/eye.right',\n          partId: 'simple-eye',\n          partVersion: 1,\n          parent: 'root',\n          socket: 'eye.right'\n        },\n        {\n          id: 'root/limb.1',\n          partId: 'walking-leg',\n          partVersion: 1,\n          parent: 'root',\n          socket: 'limb.1'\n        },\n        {\n          id: 'root/limb.3',\n          partId: 'walking-leg',\n          partVersion: 1,\n          parent: 'root',\n          socket: 'limb.3'\n        },\n        {\n          id: 'root/limb.5',\n          partId: 'walking-leg',\n          partVersion: 1,\n          parent: 'root',\n          socket: 'limb.5'\n        },\n        {\n          id: 'root/limb.7',\n          partId: 'walking-leg',\n          partVersion: 1,\n          parent: 'root',\n          socket: 'limb.7'\n        },\n        {\n          id: 'root/mouth',\n          partId: 'grazing-mouth',\n          partVersion: 1,\n          parent: 'root',\n          socket: 'mouth'\n        }\n      ],\n      id: 'bp0-4134709b'\n    },\n    anatomy: {\n      armor: 0,\n      barbs: 0,\n      glands: 0,\n      spring: 0,\n      waterBody: 0,\n      gut: 0,\n      repair: 0,\n      signal: 0,\n      rally: 0,\n      skin: 0,\n      jaw: 0,\n      forelimb: 0\n    }\n  },\n  expected: null,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n",
+      "baselineStatus": "FAIL in exact prior delivered source"
+    },
+    {
+      "test": "family-practice",
+      "status": "FAIL",
+      "output": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 2\n\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/family-practice.mjs:35:52\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 1,\n  expected: 2,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n",
+      "baselineStatus": "FAIL in exact prior delivered source"
+    },
+    {
+      "test": "family-illness",
+      "status": "PASS",
+      "output": "family illness checks: PASS\n"
+    },
+    {
+      "test": "family-weather-refuge",
+      "status": "PASS",
+      "output": "family storm-refuge + outing interruption checks: PASS\n"
+    },
+    {
+      "test": "family-directives",
+      "status": "PASS",
+      "output": "family directive leadership checks: PASS\n"
+    },
+    {
+      "test": "family-expansion",
+      "status": "PASS",
+      "output": "family reach + Scout unlock checks: PASS\n"
+    },
+    {
+      "test": "social",
+      "status": "PASS",
+      "output": "social checks: PASS\n"
+    },
+    {
+      "test": "recovery",
+      "status": "PASS",
+      "output": "low-density recovery + rare-prey refuge checks: PASS\n"
+    },
+    {
+      "test": "extended-kinship",
+      "status": "PASS",
+      "output": "extended close ancestry, arrival rejection and persistent genealogy: PASS\n"
+    },
+    {
+      "test": "reproductive-compatibility",
+      "status": "PASS",
+      "output": "Cross-founding-ID conception, genuine hybrid bodies/loci, frozen parental inheritance, read-only shared validity, gradual compatibility/fertility, matching builds and legacy save migration PASS\n"
+    },
+    {
+      "test": "plant-handling",
+      "status": "PASS",
+      "output": "Resistant coat cost, specialization, authoritative failure, no unpaid harvest, finite transfers and save parity PASS\n"
+    },
+    {
+      "test": "inherited-coats",
+      "status": "PASS",
+      "output": "Inherited coat/seed axes, immutable adults, legacy schemas, finite tissue and handling tradeoffs, real germination, specialization and save parity PASS\n"
+    },
+    {
+      "test": "flora-tissue-propagules",
+      "status": "PASS",
+      "output": "Finite tissues, anatomy-specific kernel destruction, real genotype cargo/deposition/establishment, read-only commands and stock-preserving save migration PASS\n"
+    },
+    {
+      "test": "save-persistence",
+      "status": "PASS",
+      "output": "save persistence roundtrip: PASS\n"
+    }
+  ]
+}

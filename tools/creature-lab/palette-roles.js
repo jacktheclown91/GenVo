@@ -1,0 +1,1 @@
+export const PALETTE_ROLES=Object.freeze([{role:'Outline',color:'#172a2c'},{role:'Shadow',color:'#34554e'},{role:'Base',color:'#699a81'},{role:'Light',color:'#a4c7a5'},{role:'Highlight',color:'#dde5c3'}].map(Object.freeze));

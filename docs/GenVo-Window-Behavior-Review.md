@@ -1,0 +1,9 @@
+# Persistent inspector window behavior
+
+Every shared knowledge inspector now separates its fixed subject/header and Close button from one keyboard-focusable, scrollable information body. Existing panel footers remain outside the scroll; plant Inspect has a fixed live-observation footer. The family journal uses the same separation for identity, record content and mouse navigation. Technical sections, authoritative action restrictions and all existing data are preserved.
+
+Source changes: src/ui/knowledge-panel.js owns the shared header/body/footer wrapper and restores inner scroll/fold/focus state during live refresh. resource-inspector.js provides its fixed observation footer. journal.js separates the family record scroll from identity/navigation. inspector.js keeps creature identity in legacy panel headers. styles.css gives only the middle region scrolling, contained wheel behavior and a visible scrollbar.
+
+Verified in actual Chromium at 800x600: expanded plant biology scrolled to its bottom; title, Close and footer stayed within window bounds, with no overlap and zero outer scroll. Journal title and navigation stayed visible at the end of an expanded family record. Memory scroll and mouse Close worked. Keyboard scroll-body focus and expanded biological-detail focus survived live updates. Plant mouse feeding, source identity, inherited cargo and save round-trip remained valid. See clonal-flora-proof.json (window geometry checks) and knowledge-panels-proof.json (journal geometry and full mouse workflows).
+
+Four focused regression suites passed: journal, editor-pass, canonical-source and contextual-interactions. The earlier evolution-editor conception-habitat fixture failure is unchanged and was previously reproduced in the exact prior build. No human comprehension or creator visual acceptance is claimed.

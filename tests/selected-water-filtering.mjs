@@ -1,0 +1,9 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {SPECIES} from '../src/organisms/species.js';
+import {makePlan} from '../src/lineage/body-plan.js';
+import {freshwaterHarvestCandidate} from '../src/ecology/freshwater-food.js';
+const s=new Simulation('SELECTED-WATER-FILTERING'),a=s.player(),w=s.world;a.bodyPlan=makePlan(a.bodyPlan.nodes.map(n=>n.socket==='mouth'?{...n,partId:'filter-mouth'}:n));let sources;
+for(let y=3;y<w.n-3&&!sources;y++)for(let x=3;x<w.n-3&&!sources;x++){if(w.water[w.idx(x,y)]||!s.canOccupy(a,x+.5,y+.5))continue;const nearby=[];for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const i=w.idx(x+dx,y+dy);if(w.water[i])nearby.push(i)}if(nearby.length>=2){a.x=x+.5;a.y=y+.5;sources=nearby}}
+assert.ok(sources);for(const i of sources)w.freshwaterFood.algae[i]=0;const [selected,other]=sources;w.freshwaterFood.algae[selected]=.2;w.freshwaterFood.algae[other]=.8;const target={kind:'water',i:selected,x:selected%w.n+.5,y:Math.floor(selected/w.n)+.5};a.energy=SPECIES[a.species].maxEnergy*.4;a.hydration=SPECIES[a.species].maxHydration*.4;const rng=s.rng.state;assert.equal(freshwaterHarvestCandidate(s,a,6,target).i,selected);assert.equal(s.rng.state,rng);const otherBefore=w.freshwaterFood.algae[other];assert.ok(s.playerDrink(target).ok);assert.ok(w.freshwaterFood.algae[selected]<.2);assert.equal(w.freshwaterFood.algae[other],otherBefore,'selected drinking never harvests an unrelated richer water cell');a.energy=SPECIES[a.species].maxEnergy;a.hydration=SPECIES[a.species].maxHydration;assert.equal(s.resourceAvailability('drink').enabled,false);assert.equal(s.playerDrink(target).ok,false,'fully hydrated/full creature receives an honest unavailable result');
+console.log('Read-only water harvest preview, selected-source filtering and full physiology gating PASS');

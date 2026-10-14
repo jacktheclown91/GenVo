@@ -1,0 +1,69 @@
+{
+  "status": "PASS",
+  "scope": "Six alternated fresh Chromium runs, normal full lifecycle, 480 updates/60 simulated seconds each, no fixtures. Rendering excluded from timed updates. Not a frame-rate or human playtest claim.",
+  "runs": [
+    {
+      "label": "before",
+      "updates": 480,
+      "totalMs": 3367.800000011921,
+      "p95Ms": 24.80000001192093,
+      "living": 196,
+      "births": 0,
+      "day": 11,
+      "rng": 312598923
+    },
+    {
+      "label": "after",
+      "updates": 480,
+      "totalMs": 3118.599999964237,
+      "p95Ms": 25.799999952316284,
+      "living": 196,
+      "births": 0,
+      "day": 11,
+      "rng": 312598923
+    },
+    {
+      "label": "after",
+      "updates": 480,
+      "totalMs": 2886.900000035763,
+      "p95Ms": 18.399999976158142,
+      "living": 196,
+      "births": 0,
+      "day": 11,
+      "rng": 312598923
+    },
+    {
+      "label": "before",
+      "updates": 480,
+      "totalMs": 3389.7000000476837,
+      "p95Ms": 23.69999998807907,
+      "living": 196,
+      "births": 0,
+      "day": 11,
+      "rng": 312598923
+    },
+    {
+      "label": "before",
+      "updates": 480,
+      "totalMs": 3367.600000023842,
+      "p95Ms": 24.80000001192093,
+      "living": 196,
+      "births": 0,
+      "day": 11,
+      "rng": 312598923
+    },
+    {
+      "label": "after",
+      "updates": 480,
+      "totalMs": 2836.099999964237,
+      "p95Ms": 18.899999976158142,
+      "living": 196,
+      "births": 0,
+      "day": 11,
+      "rng": 312598923
+    }
+  ],
+  "beforeMeanMs": 3375.033333361149,
+  "afterMeanMs": 2947.199999988079,
+  "reductionPercent": 12.676418011759205
+}

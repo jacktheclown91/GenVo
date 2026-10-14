@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {SPECIES} from '../src/organisms/species.js';
+import {courtshipView} from '../src/ui/courtship-view.js';
+import {availableCourtshipMoves,performCourtship,courtshipCost} from '../src/reproduction/courtship-performance.js';
+const sim=new Simulation('MOUSE-COURTSHIP-CONTRACT'),a=sim.player(),b=sim.animals.find(x=>x.id!==a.id&&x.species===a.species);
+for(const x of [a,b]){const s=SPECIES[x.species];x.age=s.maturity+20;x.health=100;x.energy=s.maxEnergy*.99;x.hydration=s.maxHydration*.99;x.pregnant=null;x.reproCooldown=0;x.infected=false;x.parentIds=[]}b.sex=a.sex==='M'?'F':'M';b.x=a.x+.2;b.y=a.y;sim.rebuildSpatial();
+const r=sim.reproduction;r.selectedMateId=b.id;
+const rng=sim.rng.state,learning=JSON.stringify(a.courtshipLearning),v=courtshipView(sim,b.id);
+assert.equal(sim.rng.state,rng);assert.equal(JSON.stringify(a.courtshipLearning),learning);assert.ok(v.availability.enabled);assert.deepEqual(v.moves.map(x=>x.id).filter(x=>x!=='approach').sort(),availableCourtshipMoves(a));
+assert.ok(r.queueRitualMove('approach').ok);assert.ok(r.queueRitualMove('approach').ok);assert.ok(r.queueRitualMove('approach').ok);assert.equal(r.queueRitualMove('approach').ok,false);assert.equal(r.undoRitualMove(),'approach');
+const queue=[...r.ritualQueue];r.selectedMateId=null;assert.ok(r.courtSelected({targetId:b.id}));assert.deepEqual(a.queuedCourtshipSequence,queue);assert.equal(a.target,b);assert.equal(r.courtTargetId,b.id);assert.equal(r.courtSelected({targetId:b.id}),false);
+const energy=a.energy;assert.equal(performCourtship(sim,a,b),false);assert.deepEqual(a.courtshipPerformance.sequence,queue);assert.ok(Math.abs(a.energy-(energy-courtshipCost(a,queue)))<1e-8);performCourtship(sim,a,b);assert.ok(Math.abs(a.energy-(energy-courtshipCost(a,queue)))<1e-8);
+r.cancelCourtship();assert.equal(a.courtshipPerformance,null);assert.equal(a.target,null);assert.equal(a.energy,energy-courtshipCost(a,queue));
+sim.paused=true;assert.equal(r.queueRitualMove('approach').ok,false);assert.equal(r.courtSelected({targetId:b.id}),false);sim.paused=false;
+a.queuedCourtshipSequence=['imaginary-display'];assert.equal(performCourtship(sim,a,b),false);assert.equal(a.courtshipPerformance,null);assert.ok(a.lastCourtshipFailure);assert.equal(a.energy,energy-courtshipCost(a,queue));
+b.alive=false;assert.equal(r.courtSelected({targetId:b.id}),false);assert.equal(courtshipView(sim,b.id).target,undefined);
+console.log('mouse-courtship: read-only repertoire, queue bounds, explicit target, finite cost, cancellation, pause and invalid sequence passed');

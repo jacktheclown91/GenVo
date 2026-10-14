@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {starterPlan,attachPart,removePart} from '../tools/creature-lab/assembly-model.js';
+import {serializePlan,deserializePlan,validatePlan} from '../src/lineage/body-plan.js';
+const original=starterPlan(),bytes=serializePlan(original);
+assert.throws(()=>attachPart(original,'root','limb.1','stalk-eye'),/cannot mount/);
+assert.equal(serializePlan(original),bytes,'failed transactions preserve the prior plan');
+const attached=attachPart(original,'root','eye.left','stalk-eye');
+assert.ok(validatePlan(attached).ok);
+assert.equal(attached.nodes.filter(n=>n.socket==='eye.left').length,1,'single socket replacement respects capacity');
+assert.deepEqual(deserializePlan(serializePlan(attached)),attached,'lab design is a native reusable body plan');
+assert.throws(()=>attachPart(original,'root','invented-socket','simple-eye'),/does not provide/);
+assert.throws(()=>removePart(original,'root'),/requires its root/);
+assert.ok(validatePlan(removePart(attached,'root/eye.left')).ok);
+assert.equal(serializePlan(original),bytes,'valid edits are immutable too');
+console.log('lab assembly uses canonical socket rules, immutable transactions and native body-plan round trip PASS');

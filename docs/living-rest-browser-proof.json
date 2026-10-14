@@ -1,0 +1,1261 @@
+{
+  "scope": "Paired exact prior web build/current native 800x600 runtime. Player placement on an existing dry lane and fixed-pose NPC ages are controlled; real keyboard movement, release and paused presentation. No anatomy, genetics, reserves, ecology or terrain fixtures.",
+  "runs": [
+    {
+      "label": "before",
+      "setup": {
+        "body": "bp0-4134709b",
+        "genes": {
+          "body": 0.9761895870324224,
+          "motion": 1.0802820895798506,
+          "metabolism": 0.9491904324851931,
+          "digestion": 0.9174805444665254,
+          "senses": 0.9713490216061473,
+          "climate": 0.9674173120874912,
+          "immunity": 1.0202513147611172,
+          "temperament": 0.976978269033134
+        },
+        "position": {
+          "x": 35.5,
+          "y": 35.5
+        },
+        "art": {
+          "status": "ready",
+          "installed": 79,
+          "revision": 1,
+          "errors": []
+        }
+      },
+      "growth": {
+        "scope": "Controlled age/placement on an existing NPC; actual native cached renderer at one paused pose, unchanged anatomy/genes.",
+        "samples": [
+          {
+            "ratio": 0.2,
+            "area": 587
+          },
+          {
+            "ratio": 0.5,
+            "area": 587
+          }
+        ]
+      },
+      "errors": [],
+      "frames": [
+        {
+          "mode": "rest",
+          "tick": 0,
+          "clock": 0.08889999997615815,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 2,
+          "clock": 0.22239999997615814,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 3,
+          "clock": 0.33869999998807915,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 4,
+          "clock": 0.4393999999761583,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 5,
+          "clock": 0.5720000000000003,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 6,
+          "clock": 0.6828999999761585,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 7,
+          "clock": 0.7958000000119211,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 8,
+          "clock": 0.8963000000119209,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 9,
+          "clock": 1.0121999999880789,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 10,
+          "clock": 1.1128000000119205,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 11,
+          "clock": 1.2135999999642366,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 12,
+          "clock": 1.3358000000119201,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 13,
+          "clock": 1.4468999999761567,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 13,
+          "clock": 1.5623999999761566,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 14,
+          "clock": 1.6791999999880771,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 15,
+          "clock": 1.7959999999999978,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 16,
+          "clock": 1.9128999999761558,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 17,
+          "clock": 2.028599999964235,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 18,
+          "clock": 2.128999999999998,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 19,
+          "clock": 2.246300000011919,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 20,
+          "clock": 2.346800000011919,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 21,
+          "clock": 2.4635999999642353,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 22,
+          "clock": 2.5785999999642355,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 22,
+          "clock": 2.678999999999998,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 23,
+          "clock": 2.7793000000119186,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 24,
+          "clock": 2.8968000000119187,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 25,
+          "clock": 3.0133999999761563,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 26,
+          "clock": 3.1291999999880766,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 27,
+          "clock": 3.2493000000119188,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 28,
+          "clock": 3.3623999999761556,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 29,
+          "clock": 3.4788999999761554,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 30,
+          "clock": 3.586300000011918,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 31,
+          "clock": 3.6951999999880756,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 31,
+          "clock": 3.7965999999642337,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 32,
+          "clock": 3.9120999999642336,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 33,
+          "clock": 4.012199999988075,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 34,
+          "clock": 4.113300000011917,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 35,
+          "clock": 4.229399999976155,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 36,
+          "clock": 4.335199999988077,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 37,
+          "clock": 4.446499999999998,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 37,
+          "clock": 4.563599999964235,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 38,
+          "clock": 4.679300000011919,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 39,
+          "clock": 4.779699999988077,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 40,
+          "clock": 4.8953999999761555,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 41,
+          "clock": 4.995899999976156,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 42,
+          "clock": 5.113199999988076,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 43,
+          "clock": 5.228399999976156,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 44,
+          "clock": 5.329099999964235,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 44,
+          "clock": 5.429399999976156,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 45,
+          "clock": 5.529800000011919,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 46,
+          "clock": 5.62980000001192,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "walk",
+          "tick": 47,
+          "clock": 5.746199999988078,
+          "intent": "player",
+          "x": 35.46370927355318,
+          "y": 35.5
+        },
+        {
+          "mode": "walk",
+          "tick": 48,
+          "clock": 5.863499999999998,
+          "intent": "player",
+          "x": 35.245964914872246,
+          "y": 35.5
+        },
+        {
+          "mode": "walk",
+          "tick": 49,
+          "clock": 5.983199999988077,
+          "intent": "player",
+          "x": 34.846766923957205,
+          "y": 35.5
+        },
+        {
+          "mode": "walk",
+          "tick": 50,
+          "clock": 6.100099999964236,
+          "intent": "player",
+          "x": 34.55644111238263,
+          "y": 35.5
+        },
+        {
+          "mode": "walk",
+          "tick": 51,
+          "clock": 6.2159999999999975,
+          "intent": "player",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "release",
+          "tick": 52,
+          "clock": 6.332800000011918,
+          "intent": "player",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "release",
+          "tick": 53,
+          "clock": 6.432800000011918,
+          "intent": "player",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "release",
+          "tick": 54,
+          "clock": 6.5823000000119185,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "release",
+          "tick": 55,
+          "clock": 6.697999999999997,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "release",
+          "tick": 56,
+          "clock": 6.8145999999642335,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "release",
+          "tick": 57,
+          "clock": 6.914399999976155,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "release",
+          "tick": 58,
+          "clock": 7.031599999964233,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "paused",
+          "tick": 58,
+          "clock": 7.097199999988075,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "paused",
+          "tick": 58,
+          "clock": 7.097199999988075,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "paused",
+          "tick": 58,
+          "clock": 7.097199999988075,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "paused",
+          "tick": 58,
+          "clock": 7.097199999988075,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "paused",
+          "tick": 58,
+          "clock": 7.097199999988075,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "paused",
+          "tick": 58,
+          "clock": 7.097199999988075,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "paused",
+          "tick": 58,
+          "clock": 7.097199999988075,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "growth",
+          "tick": 58,
+          "clock": 7.097199999988075,
+          "intent": "idle",
+          "x": 35.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "growth",
+          "tick": 58,
+          "clock": 7.097199999988075,
+          "intent": "idle",
+          "x": 35.302406027254875,
+          "y": 35.5
+        }
+      ],
+      "restUnique": 49,
+      "pausedUnique": 7,
+      "pausedClock": [
+        7.097199999988075,
+        7.097199999988075
+      ]
+    },
+    {
+      "label": "after",
+      "setup": {
+        "body": "bp0-4134709b",
+        "genes": {
+          "body": 0.9761895870324224,
+          "motion": 1.0802820895798506,
+          "metabolism": 0.9491904324851931,
+          "digestion": 0.9174805444665254,
+          "senses": 0.9713490216061473,
+          "climate": 0.9674173120874912,
+          "immunity": 1.0202513147611172,
+          "temperament": 0.976978269033134
+        },
+        "position": {
+          "x": 35.5,
+          "y": 35.5
+        },
+        "art": {
+          "status": "ready",
+          "installed": 79,
+          "revision": 1,
+          "errors": []
+        }
+      },
+      "growth": {
+        "scope": "Controlled age/placement on an existing NPC; actual native cached renderer at one paused pose, unchanged anatomy/genes.",
+        "samples": [
+          {
+            "ratio": 0.2,
+            "area": 536
+          },
+          {
+            "ratio": 0.5,
+            "area": 570
+          }
+        ]
+      },
+      "errors": [],
+      "frames": [
+        {
+          "mode": "rest",
+          "tick": 0,
+          "clock": 0.0834000000357628,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 2,
+          "clock": 0.21140000003576284,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 3,
+          "clock": 0.3289000000357629,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 4,
+          "clock": 0.445900000035763,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 5,
+          "clock": 0.5625000000000002,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 6,
+          "clock": 0.6955000000000002,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 7,
+          "clock": 0.7991999999880791,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 8,
+          "clock": 0.8999999999999999,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 9,
+          "clock": 0.9820999999642371,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 10,
+          "clock": 1.091599999964237,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 10,
+          "clock": 1.1918000000119204,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 11,
+          "clock": 1.3079999999999996,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 12,
+          "clock": 1.4088999999761573,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 13,
+          "clock": 1.5248999999761572,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 14,
+          "clock": 1.6256999999880781,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 15,
+          "clock": 1.741399999976157,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 16,
+          "clock": 1.857899999976157,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 17,
+          "clock": 1.9583000000119195,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 18,
+          "clock": 2.0808000000119193,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 18,
+          "clock": 2.1916999999880775,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 19,
+          "clock": 2.3091999999880777,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 20,
+          "clock": 2.4251999999880773,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 21,
+          "clock": 2.5428000000119186,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 22,
+          "clock": 2.658300000011918,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 23,
+          "clock": 2.7588000000119184,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 24,
+          "clock": 2.8748000000119176,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 25,
+          "clock": 2.9760999999642337,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 26,
+          "clock": 3.0913000000119175,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 26,
+          "clock": 3.1915999999642337,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 27,
+          "clock": 3.3081999999880756,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 28,
+          "clock": 3.4079999999999964,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 29,
+          "clock": 3.5251999999880756,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 30,
+          "clock": 3.625999999999997,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 31,
+          "clock": 3.741899999976155,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 32,
+          "clock": 3.858300000011918,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 33,
+          "clock": 3.9748999999761554,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 34,
+          "clock": 4.075199999988077,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 34,
+          "clock": 4.191399999976154,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 35,
+          "clock": 4.308999999999996,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 36,
+          "clock": 4.4244999999999965,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 37,
+          "clock": 4.5414999999999965,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 38,
+          "clock": 4.641499999999996,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 39,
+          "clock": 4.757999999999997,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 40,
+          "clock": 4.858599999964234,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 41,
+          "clock": 4.974199999988076,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 42,
+          "clock": 5.080499999999997,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 42,
+          "clock": 5.191399999976155,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 43,
+          "clock": 5.308300000011917,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 44,
+          "clock": 5.425300000011916,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 45,
+          "clock": 5.541899999976153,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "rest",
+          "tick": 46,
+          "clock": 5.658599999964232,
+          "intent": "idle",
+          "x": 35.5,
+          "y": 35.5
+        },
+        {
+          "mode": "walk",
+          "tick": 47,
+          "clock": 5.774999999999995,
+          "intent": "player",
+          "x": 35.391127820659534,
+          "y": 35.5
+        },
+        {
+          "mode": "walk",
+          "tick": 48,
+          "clock": 5.857599999964232,
+          "intent": "player",
+          "x": 35.245964914872246,
+          "y": 35.5
+        },
+        {
+          "mode": "walk",
+          "tick": 49,
+          "clock": 5.963199999988075,
+          "intent": "player",
+          "x": 34.88305765040403,
+          "y": 35.5
+        },
+        {
+          "mode": "walk",
+          "tick": 50,
+          "clock": 6.079799999952313,
+          "intent": "player",
+          "x": 34.59273183882945,
+          "y": 35.5
+        },
+        {
+          "mode": "walk",
+          "tick": 51,
+          "clock": 6.196299999952313,
+          "intent": "player",
+          "x": 34.3386967537017,
+          "y": 35.5
+        },
+        {
+          "mode": "release",
+          "tick": 52,
+          "clock": 6.296899999976155,
+          "intent": "player",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "release",
+          "tick": 52,
+          "clock": 6.412699999988075,
+          "intent": "player",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "release",
+          "tick": 53,
+          "clock": 6.513499999999996,
+          "intent": "player",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "release",
+          "tick": 54,
+          "clock": 6.590699999988074,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "release",
+          "tick": 55,
+          "clock": 6.698599999964233,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "release",
+          "tick": 56,
+          "clock": 6.815299999952312,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "release",
+          "tick": 57,
+          "clock": 6.931299999952311,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "release",
+          "tick": 58,
+          "clock": 7.031899999976153,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "paused",
+          "tick": 58,
+          "clock": 7.0978999999761525,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "paused",
+          "tick": 58,
+          "clock": 7.0978999999761525,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "paused",
+          "tick": 58,
+          "clock": 7.0978999999761525,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "paused",
+          "tick": 58,
+          "clock": 7.0978999999761525,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "paused",
+          "tick": 58,
+          "clock": 7.0978999999761525,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "paused",
+          "tick": 58,
+          "clock": 7.0978999999761525,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "paused",
+          "tick": 58,
+          "clock": 7.0978999999761525,
+          "intent": "idle",
+          "x": 34.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "growth",
+          "tick": 58,
+          "clock": 7.0978999999761525,
+          "intent": "idle",
+          "x": 35.302406027254875,
+          "y": 35.5
+        },
+        {
+          "mode": "growth",
+          "tick": 58,
+          "clock": 7.0978999999761525,
+          "intent": "idle",
+          "x": 35.302406027254875,
+          "y": 35.5
+        }
+      ],
+      "restUnique": 14,
+      "pausedUnique": 1,
+      "pausedClock": [
+        7.0978999999761525,
+        7.0978999999761525
+      ]
+    }
+  ]
+}

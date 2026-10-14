@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "receipts": [
+    {
+      "seed": "ORGANIC-A",
+      "scope": "100 resource-only days, no animal lifecycle or field fixtures; not ecological balance proof",
+      "before": 5693.61556354013,
+      "after": 5693.615559580967,
+      "drift": -0.0000039591632230440155,
+      "flora": {
+        "produced": 120862,
+        "mutated": 11085,
+        "establishedVariants": 952
+      },
+      "registeredGenotypes": 9,
+      "coatGenotypes": 2,
+      "coatAdults": 301,
+      "variantParentReceipts": 0,
+      "seedCohorts": 38577,
+      "snapshotBytes": 21958870,
+      "phaseMs": {
+        "mean": 32.341486,
+        "max": 47.1255000000001
+      }
+    },
+    {
+      "seed": "ORGANIC-B",
+      "scope": "100 resource-only days, no animal lifecycle or field fixtures; not ecological balance proof",
+      "before": 5762.228564304998,
+      "after": 5762.22856896679,
+      "drift": 0.000004661791535909288,
+      "flora": {
+        "produced": 119204,
+        "mutated": 10926,
+        "establishedVariants": 937
+      },
+      "registeredGenotypes": 9,
+      "coatGenotypes": 2,
+      "coatAdults": 287,
+      "variantParentReceipts": 0,
+      "seedCohorts": 38106,
+      "snapshotBytes": 21844591,
+      "phaseMs": {
+        "mean": 32.77305100000001,
+        "max": 45.94120000000021
+      }
+    },
+    {
+      "seed": "ORGANIC-C",
+      "scope": "100 resource-only days, no animal lifecycle or field fixtures; not ecological balance proof",
+      "before": 5663.465686277837,
+      "after": 5663.465689461482,
+      "drift": 0.0000031836443667998537,
+      "flora": {
+        "produced": 119995,
+        "mutated": 11321,
+        "establishedVariants": 935
+      },
+      "registeredGenotypes": 9,
+      "coatGenotypes": 2,
+      "coatAdults": 280,
+      "variantParentReceipts": 0,
+      "seedCohorts": 38532,
+      "snapshotBytes": 21981668,
+      "phaseMs": {
+        "mean": 33.4673490000001,
+        "max": 45.362700000001496
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import v8 from 'node:v8';
+import {spawnSync} from 'node:child_process';
+const directory=fs.mkdtempSync(path.join(os.tmpdir(),'genvo-wildlife-audit-'));
+const record=(id,parentIds=[],lineage=false)=>({id,species:'mosskip',lineage,parentIds,children:[],alive:true,bornDay:parentIds.length?12:1,birthObservation:{x:0,y:0,initialPopulation:!parentIds.length,ecologicalRegionKey:'0:0'}});
+const rows=[record(1),record(2),record(3,[1,2]),record(4,[1,9]),record(5,[],true),record(6)];
+rows[1].birthObservation.x=19;rows[0].children=[3,4];
+const input=path.join(directory,'checkpoint.bin'),output=path.join(directory,'audit.json');
+fs.writeFileSync(input,v8.serialize({sourceFingerprint:'fixture',snapshot:{animals:rows.map(row=>({...row,x:20,y:0}))},result:{seed:'fixture',day:20,complete:false,records:rows,
+ conceptions:[{ids:[1,2],positions:[{x:20,y:0},{x:20,y:0}],day:10,ecologicalRegionKeys:['1:0','1:0']},{ids:[5,6],positions:[{x:20,y:0},{x:15,y:0}],day:10}]}}));
+const run=spawnSync(process.execPath,['tools/wildlife-spread-audit.mjs',input,output],{encoding:'utf8',windowsHide:true});
+assert.equal(run.status,0,run.stderr);
+const result=JSON.parse(fs.readFileSync(output,'utf8'));
+assert.equal(result.displacedConceptions.length,1,'Exclude lineage actors and movements below threshold');
+assert.deepEqual(result.displacedConceptions[0].subsequentObservedChildren,[3],'Both parents must match, not just the displaced parent');
+assert.equal(result.displacedConceptions[0].distanceFromBirthObservation,20);
+assert.equal(result.species.mosskip.observedBirths,2);
+console.log('wildlife spread audit distinguishes displacement, lineage and reciprocal-parent offspring evidence: PASS');

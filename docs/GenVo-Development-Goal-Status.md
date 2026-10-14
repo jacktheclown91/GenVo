@@ -1,0 +1,33 @@
+# Active GenVo development goal: evidence audit
+
+The full seven-priority objective remains active. Recent goal turns are progress: Lab and inspector source, botanical inheritance, lossless saves, anatomy-driven audio, and explainable conception/partner support changed; native evidence and longer simulation runs determined corrections. This is not a completion claim.
+
+| Priority | Current evidence | Work not yet proven or implemented |
+| --- | --- | --- |
+| 1 Creature Lab and information panels | Shared scroll chrome plus expanded windows; fitted native Lab gait, compatible placement, paired reference, actual parent/offspring comparison and controlled exact descendant birth (Lab-Lineage-Windows review) | Unfamiliar-player usability, creator approval and naturally evolved morphology coverage |
+| 2 Visible biological consequences | Existing embodied encounters, manual feeding, new peck/crush/pull reactions and persistent seed journeys; controlled runtime loops | Mounted-anatomy voices, funded courtship beat sounds and native mix capture implemented (Encounter Audio review); subjective listening/approval, chaotic encounter readability and spontaneous discovery frequency remain open |
+| 3 Plant evolution vertical slice | Finite resources/tissues, clonal seed and coat inheritance, genotype cargo and provenance; now actual staged sexual inheritance and controlled native hybrid establishment | Funded reproductive structures, diet-valid flower contact, dedicated diploid recognition/self-compatibility, staged selfing and cross-resource hybrids, canonical seed establishment and save continuity now implemented (Botanical Sexual review). Eight shared ancestral recognition alleles approved. Longer unstaged full-lifecycle simulation runs observed natural animal-mediated cross-fertilizations (3, 0, 1); crossed-adult survival, adaptive selection/divergence and balance remain unproven |
+| 4 Phenotype-driven authority | Dedicated animal reproductive loci and anatomy-driven shared feeding/actions | Specific founding-label audio voice/threat gates replaced with actual mounted/canonical predation authority; final conception assessment/released blocked encounters, supported-partner search, inherited food-support nutrition and approved anatomy-based aquatic capacity normalization are implemented (Conception Gates review); shared finite dietary demand and active care/genealogy separation now implemented (Shared Demand Families review); physiological/density catalog defaults, resource-scaled founding and broader wild care still require review; founding metadata must remain |
+| 5 Visual/audio cohesion | Native procedural/body assets preserved; paired whole-body fit and current runtime screenshots | Grounded rest, continuous individual breathing, paused poses and within-stage juvenile growth implemented with paired native 800x600 evidence (Living Rest review); broader encounter audit, vegetation repetition and actual soundtrack/action-sound listening remain open |
+| 6 Natural gameplay/performance | Short separately labeled normal runs and resource-only conservation probes; current ZIP HTTP smoke tests | New unstaged ten-minute full-lifecycle run observed 91 births, six deaths and endpoint save parity; no extinction or cross-fertilization in that run. Full natural generations, adaptive populations and unfamiliar human players; 100 resource-only days conserve inventory, but lossless seed tables shrink raw snapshots by about 63% to 55-58 MB; cohort scalability remains unfinished |
+| 7 Vertical ecology and Living Planet | Shared resource/terrain foundation; proposed staged design | Actual height/support surface design before climbing/flight/aerial interaction; erosion/geology/expanded biomes follow that foundation |
+
+No row is promoted to full completion using narrow fixtures or source intent alone. Historical implicit-action, birth/courtship and habitat fixture failures remain documented. Continue with historical learning/practice defects, live-demand performance, resource-based founding and expressive presentation; preserve approved botanical recognition and aquatic normalization.
+
+## October 14 consolidation direction
+
+The user prioritizes current-content balance, creature art, smooth layered UX and progression over raw expansion. The [source-grounded consolidation plan](../design/consolidation/Consolidation-Implementation-Plan.md) covers all 79 parts and 106 named/context trait records with separate current facts and proposals. This design pass does not install numerical rarity/cost changes or close the full seven-priority goal. Next implementation combines locomotion/feeding clarity with the known learning/practice and shared-demand performance defects; swimming/mass authority requires concrete creator review before biological rule changes. Existing completed botanical and family work remains preserved.
+
+## Learned outings implementation
+
+Anatomy-aware remembered-source routing, exact positive resource receipts, real outward/return practice and learned danger spacing are implemented (GenVo-Learned-Outings-Review). Both historical learning/practice suites now pass with valid inherited bodies and physically valid fixtures; all 16 focused integration checks pass. Native 800x600 controlled adolescent outings verify normal movement/execution and saved progress; natural teaching/handoff frequency and human comprehension remain unproven. Shared-demand performance and creator-reviewed locomotion/mass consistency remain next. The full goal stays active.
+
+
+## 2026-10-14 consolidation foundation source checkpoint
+
+Learning/practice remain green. Context-dependent phenotype caching is corrected; authoritative finite-food demand has an exact-parity optimization (12.68% lower short browser update time). 18 focused checks, native complete-body movement/meals/save proof and a normal ten-minute lifecycle run are recorded. See `docs/GenVo-Consolidation-Foundation-Review.md`. Mass/swimming proposals are ready for creator review, not implemented numeric balance. Overall development goal remains active.
+
+
+## 2026-10-14 funded feeding performance
+
+Actual meals now drive source-facing reach, anatomy-specific processing and settling for players/wildlife; non-player sprite caching no longer conceals active meal responses. An anatomical guard prevents forced grazing-mouth carrion extraction. 16 focused checks plus paired native E/Shift+E, NPC and exact save proof pass. See `docs/GenVo-Feeding-Performance-Review.md`. This is progress on priorities 2/4/5; whole-body readability, natural encounters, audio listening and broader goal acceptance remain open.

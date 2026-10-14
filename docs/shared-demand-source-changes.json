@@ -1,0 +1,56 @@
+{
+  "baseline": "GenVo-living-rest-2026-10-13-01",
+  "comparison": "Exact prior source-package file hashes including modules outside public export",
+  "changedSourceFiles": [
+    {
+      "path": "src/cognition/social.js",
+      "previousSha256": "0dc82621dbd1e864ade3316eb7f05b8b27de60dc66ab412e65eec2c3cf713dc4",
+      "currentSha256": "1fa8b1311008180ce74c2cf78188c3c356fc1d2217df522c48f8fa61961a170e"
+    },
+    {
+      "path": "src/ecology/carrying.js",
+      "previousSha256": "bbe8ebcc138f456024e67c1b4d2bc06c6704f03bb0ce01ef4798ff723bf800f1",
+      "currentSha256": "e4150992f19c5ab582bbd42c5cdf3bfa5ca95c2b403463c237851d49b79de827"
+    },
+    {
+      "path": "src/ecology/dietary-demand.js",
+      "previousSha256": null,
+      "currentSha256": "fafb35b37dfeffe2e5a0d8f5fc86fe470be048268e2a32be8a368e1a908bdf01"
+    },
+    {
+      "path": "src/ecology/dispersal.js",
+      "previousSha256": "04dc3bb16af73c7c207efcc7ea741c7d12bf550f78ae6548bedf6d22a8928ce2",
+      "currentSha256": "27389bf0396f5f33a80d61cd0e8fd77231683d254088ba59937b2b2a8f26f88c"
+    },
+    {
+      "path": "src/family/family.js",
+      "previousSha256": "43a05a83d04d7b59d0baf71f8a44b51fbcc3e3329b96dd89bd5b6f93d6ed9529",
+      "currentSha256": "0c570a3b9eb07e37c5b9fd9d5ccf6927dedf3ee59b1f3486195c41674458330a"
+    },
+    {
+      "path": "src/gameplay/family-illness.js",
+      "previousSha256": "b34a737616a95d2151d2d6c8f89fc550249afe12eefec21664e1552527246b69",
+      "currentSha256": "551ece1ec4a50db3cf2100f349a769e551b9dfa050b064f74e36b5c43e70ed31"
+    },
+    {
+      "path": "src/persistence/save-manager.js",
+      "previousSha256": "491e379f2e199e5214bb01812a1af1d5cda209f17f431dea2fcd9c3aa60b5870",
+      "currentSha256": "901d6bc9203392a43e7902273160626033c2b53fc9fb97bf1bf98c9c9286bde9"
+    },
+    {
+      "path": "src/sim/simulation.js",
+      "previousSha256": "8e3c6ce60d2bc3e9ae63b3a14e26ea113cc9f58aecc975010bbeb035b634e511",
+      "currentSha256": "b32925d691980349467d35ad6e9bf52c61c2077f6ce8094b7f24248bcd4085b3"
+    },
+    {
+      "path": "src/ui/inspector.js",
+      "previousSha256": "a8419dd06ccc60f716f33bd8f089641c3925b9d5bae4945cf00dfa9f89f01fe6",
+      "currentSha256": "19d22f1ad4624687f8c77deefaf39f1ef1948dc83d4ccf5f0fa33d3eb18a47dd"
+    },
+    {
+      "path": "styles.css",
+      "previousSha256": "70e17edf85f9ebfb7db31605a164faffc7f1cce6fb68be0815e6d7f0a32964ea",
+      "currentSha256": "3e4fcbec827a67ecf13d9fedfee3abc78725af9e133074ba75888370b677f71e"
+    }
+  ]
+}

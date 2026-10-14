@@ -1,0 +1,126 @@
+{
+  "scope": "Controlled native keyboard workflow: existing source placement, energy/hydration and anatomy fixtures. Real E/Q, canonical resource/action validation and execution. No claim of human learnability.",
+  "errors": [],
+  "checks": [
+    "E eats directly despite multiple tissue actions",
+    "Q cycles to seed crushing then E executes",
+    "Depleted Q/E target never substitutes unrelated food",
+    "E directly drinks real source",
+    "E collects existing nest material through discovery",
+    "Nearby Q choice has a visible label and E never opens a radial"
+  ],
+  "food": {
+    "i": 1938,
+    "x": 18.5,
+    "y": 15.5
+  },
+  "firstMeal": {
+    "kind": "bramble",
+    "i": 1938,
+    "tissue": "crop",
+    "removed": 0.16,
+    "coat": 0,
+    "edible": 0.12800000077125837,
+    "viableSeeds": 0.03199999922874164,
+    "destroyedSeeds": 0,
+    "discarded": 0,
+    "genome": {
+      "schema": 1,
+      "id": "flora1-bramble",
+      "resourceAlias": "bramble",
+      "traits": {
+        "growth": 0.032,
+        "waterNeed": 0.42,
+        "nutrition": 16,
+        "seedAllocation": 0.2,
+        "coatAllocation": 0
+      },
+      "reproduction": "propagule",
+      "mutationEnabled": false
+    },
+    "producerId": "bramble:1938:founder",
+    "originCell": 1938,
+    "processingCost": 0,
+    "specializedHandling": true,
+    "actorId": 109,
+    "tick": 1,
+    "parentGenomeId": "flora1-bramble",
+    "mutation": 0,
+    "coatMutation": 0,
+    "mutationAxis": null,
+    "seedTransferComplete": true
+  },
+  "secondMeal": {
+    "kind": "bramble",
+    "i": 1938,
+    "tissue": "kernel",
+    "removed": 0.14912933111190796,
+    "coat": 0,
+    "edible": 0.029825864359736443,
+    "viableSeeds": 0,
+    "destroyedSeeds": 0.029825864359736443,
+    "discarded": 0.11930346675217152,
+    "genome": {
+      "schema": 1,
+      "id": "flora1-bramble",
+      "resourceAlias": "bramble",
+      "traits": {
+        "growth": 0.032,
+        "waterNeed": 0.42,
+        "nutrition": 16,
+        "seedAllocation": 0.2,
+        "coatAllocation": 0
+      },
+      "reproduction": "propagule",
+      "mutationEnabled": false
+    },
+    "producerId": "bramble:1938:founder",
+    "originCell": 1938,
+    "processingCost": 0,
+    "specializedHandling": true,
+    "actorId": 109,
+    "tick": 6,
+    "parentGenomeId": "flora1-bramble",
+    "seedTransferComplete": true
+  },
+  "unavailable": "× That food patch is depleted.",
+  "water": {
+    "i": 4901,
+    "x": 37.5,
+    "y": 38.5,
+    "px": 36.5,
+    "py": 38.5
+  },
+  "pickup": {
+    "id": 36,
+    "before": {
+      "id": 36,
+      "kind": "nest-ruin",
+      "x": 66.5,
+      "y": 68.5,
+      "stock": 3,
+      "restockDay": 0
+    },
+    "after": {
+      "id": 36,
+      "kind": "nest-ruin",
+      "x": 66.5,
+      "y": 68.5,
+      "stock": 2,
+      "restockDay": 0
+    }
+  },
+  "nearby": {
+    "key": "eat:sunmoss:8770|food:8770:sunmoss:",
+    "target": {
+      "kind": "food",
+      "food": "sunmoss",
+      "i": 8770,
+      "x": 66.5,
+      "y": 68.5,
+      "label": "Moss",
+      "tissue": null
+    },
+    "label": "Eat Moss"
+  }
+}

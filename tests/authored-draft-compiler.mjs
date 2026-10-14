@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import {compileAuthoredDraft} from '../src/render/authored-draft-compiler.js';
+import {recolorIndexedFrame} from '../src/render/indexed-part-art.js';
+const rgba=Array.from({length:1024},(_,i)=>i%2?[80,120,160,128]:[20,40,60,0]).flat();
+const draft={schema:'genvo8.lab.authored-draft/2',width:32,height:32,frames:2,framePixels:[rgba,[...rgba].reverse().reverse()],frameDurations:[80,330],rootAnchorPx:[10.5,12.5],paletteRegions:[{source:'#14283c',target:'#14283c'},{source:'#5078a0',target:'#5078a0'}]};
+const before=structuredClone(draft),asset=await compileAuthoredDraft(draft,{partId:'stalk-eye'});
+for(const f of asset.frames)assert.deepEqual([...recolorIndexedFrame(asset,f.key)],rgba);
+assert.deepEqual(asset.frames.map(f=>f.durationMs),[80,330]);assert.deepEqual(asset.rootAnchorPx,[10.5,12.5]);assert.deepEqual(draft,before);
+await assert.rejects(()=>compileAuthoredDraft(draft,{partId:'invented'}),/registered/);
+await assert.rejects(()=>compileAuthoredDraft({...draft,frameDurations:[80]},{partId:'stalk-eye'}),/timing/);
+const protectedAsset=await compileAuthoredDraft({...draft,paletteRegions:[]},{partId:'stalk-eye'});assert.deepEqual([...recolorIndexedFrame(protectedAsset,'idle:0:0')],rgba);
+console.log('authored draft to registered indexed asset: exact pixels, alpha, timing, pivot, immutability and invalid binding PASS');
+const moving={...draft,displayScale:.25,rootJoint:{minDegrees:-45,maxDegrees:90},frameJointAngles:[-30,120]},compiled=await compileAuthoredDraft(moving,{partId:'stalk-eye'});assert.equal(compiled.displayScale,.25);assert.deepEqual(compiled.rootJoint,moving.rootJoint);assert.deepEqual(compiled.frames.map(f=>f.jointDegrees),[-30,120]);assert.notEqual(compiled.checksum,asset.checksum);assert.ok(Object.isFrozen(compiled.rootJoint));
+for(const bad of [{displayScale:0},{displayScale:NaN},{frameJointAngles:[0]},{frameJointAngles:[0,181]},{rootJoint:{minDegrees:1,maxDegrees:90}}])await assert.rejects(()=>compileAuthoredDraft({...draft,...bad},{partId:'stalk-eye'}));
+console.log('authored motion/scale metadata retained, checksummed and invalid fields rejected PASS');

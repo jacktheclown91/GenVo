@@ -1,0 +1,107 @@
+{
+  "status": "PASS_WITH_EXISTING_FAILURE",
+  "focused": [
+    {
+      "suite": "organic-resource-cycle",
+      "exitCode": 0,
+      "output": "Funded fungi, retained aquatic waste, finite nutrient growth, tissue-preserving returns/overflow and compatible saves PASS\n"
+    },
+    {
+      "suite": "plant-resource-contract",
+      "exitCode": 0,
+      "output": "Funded growth limits, finite input flux reconciliation, land nutrient inventory, bounded receipts and stock-preserving migration PASS\n"
+    },
+    {
+      "suite": "freshwater-food",
+      "exitCode": 0,
+      "output": "freshwater stocks, trophic transfer and competing harvests: PASS\n"
+    },
+    {
+      "suite": "freshwater-turnover",
+      "exitCode": 0,
+      "output": "aquatic consumer starvation and nutrient recycling: PASS\n"
+    },
+    {
+      "suite": "freshwater-foraging",
+      "exitCode": 0,
+      "output": "shared freshwater search, interaction and patch learning: PASS\n"
+    },
+    {
+      "suite": "freshwater-carrying",
+      "exitCode": 0,
+      "output": "finite freshwater carrying from actual bank source: PASS\n"
+    },
+    {
+      "suite": "freshwater-encounters",
+      "exitCode": 0,
+      "output": "density-dependent aquatic encounters without prey rescue: PASS\n"
+    },
+    {
+      "suite": "shelter",
+      "exitCode": 0,
+      "output": "shelter + habitat modification checks: PASS\n"
+    },
+    {
+      "suite": "seed-shore-niches",
+      "exitCode": 0,
+      "output": "seed-shore niche vertical slice: PASS; seed cargo, armor, freshwater predation, body loss, heredity, persistence, gameplay tick\n"
+    },
+    {
+      "suite": "flora-tissue-propagules",
+      "exitCode": 0,
+      "output": "Finite tissues, anatomy-specific kernel destruction, real genotype cargo/deposition/establishment, read-only commands and stock-preserving save migration PASS\n"
+    },
+    {
+      "suite": "contextual-interactions",
+      "exitCode": 0,
+      "output": "Four dietary anatomies, read-only queries, exact-target/no-fallback, ambiguity, stale feeding descriptors, keyed collection and attack fallback PASS\n"
+    },
+    {
+      "suite": "mouse-resources",
+      "exitCode": 0,
+      "output": "Explicit resource/key parity, natural food consumption, drink physiology, read-only availability and pause safety PASS\n"
+    },
+    {
+      "suite": "world-resource-selection",
+      "exitCode": 0,
+      "output": "Visible plant selection, bare ground, depletion, stale-world and read-only checks PASS\n"
+    },
+    {
+      "suite": "target-resource-states",
+      "exitCode": 0,
+      "output": "Target drink states, canonical parity, pause and depletion PASS\n"
+    },
+    {
+      "suite": "world-trail-discovery",
+      "exitCode": 0,
+      "output": "Real movement/meal evidence, anatomy-gated tracking, non-omniscient endpoints, funded patch memory, read-only availability, save and expiry PASS\n"
+    },
+    {
+      "suite": "reproductive-compatibility",
+      "exitCode": 0,
+      "output": "Cross-founding-ID conception, genuine hybrid bodies/loci, frozen parental inheritance, read-only shared validity, gradual compatibility/fertility, matching builds and legacy save migration PASS\n"
+    },
+    {
+      "suite": "live-courtship-encounters",
+      "exitCode": 0,
+      "output": "Live anatomy-valid future beats, bounded cost, protected current beat, save, interruption, physical choreography and read-only reactions PASS\n"
+    },
+    {
+      "suite": "held-brace-input",
+      "exitCode": 0,
+      "output": "Actor/world-owned brace input, canonical activation, wrong-pointer guard, pause/modal/world release and fatigue gating PASS\n"
+    },
+    {
+      "suite": "canonical-source",
+      "exitCode": 0,
+      "output": "canonical-source: source authorities, art coverage, reference exports, and imports PASS\n"
+    }
+  ],
+  "existingFailure": {
+    "suite": "freshwater-access",
+    "currentExit": 1,
+    "priorDeliveredExit": 1,
+    "currentOutput": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'interaction-choice'\n- 'drink'\n\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/freshwater-access.mjs:14:33\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 'interaction-choice',\n  expected: 'drink',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n",
+    "priorOutput": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'interaction-choice'\n- 'drink'\n\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/reports/organic-prior-source-check/tests/freshwater-access.mjs:14:33\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 'interaction-choice',\n  expected: 'drink',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n"
+  }
+}

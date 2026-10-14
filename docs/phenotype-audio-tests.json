@@ -1,0 +1,56 @@
+{
+  "receipts": [
+    {
+      "test": "audio",
+      "status": "PASS",
+      "output": "audio checks: PASS\n"
+    },
+    {
+      "test": "audio-runtime",
+      "status": "PASS",
+      "output": "audio runtime checks: PASS\n"
+    },
+    {
+      "test": "audio-assets",
+      "status": "PASS",
+      "output": "audio asset checks: PASS (32 assets, masters 4145040 bytes, shipped 1383031 bytes)\n"
+    },
+    {
+      "test": "audio-phenotype",
+      "status": "PASS",
+      "output": "Label-independent mounted voices, canonical predation threats, funded courtship beat deduplication, pause and RNG neutrality PASS\n"
+    },
+    {
+      "test": "courtship-performance",
+      "status": "PASS",
+      "output": "courtship-performance: anatomy-costed action, nonbinding competition, soft consent, persistence and interruption PASS\n"
+    },
+    {
+      "test": "evolving-courtship-rituals",
+      "status": "FAIL",
+      "output": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: real, limited, finite-cost repeated dance sometimes conceives with mismatch\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/evolving-courtship-rituals.mjs:113:8\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n"
+    },
+    {
+      "test": "live-courtship-encounters",
+      "status": "PASS",
+      "output": "Live anatomy-valid future beats, bounded cost, protected current beat, save, interruption, physical choreography and read-only reactions PASS\n"
+    },
+    {
+      "test": "mouse-courtship",
+      "status": "PASS",
+      "output": "mouse-courtship: read-only repertoire, queue bounds, explicit target, finite cost, cancellation, pause and invalid sequence passed\n"
+    },
+    {
+      "test": "contextual-interactions",
+      "status": "PASS",
+      "output": "Four dietary anatomies, read-only queries, exact-target/no-fallback, ambiguity, stale feeding descriptors, keyed collection and attack fallback PASS\n"
+    },
+    {
+      "test": "save-persistence",
+      "status": "PASS",
+      "output": "save persistence roundtrip: PASS\n"
+    }
+  ],
+  "scope": "Focused current-source audio and encounter regression tests; not full suite or perceptual acceptance",
+  "baselineReproductionFailure": "evolving-courtship-rituals.mjs fails at the same conception assertion in prior delivered source"
+}

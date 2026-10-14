@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {genvoVisualPose,roundedMantleRows} from '../src/render/genvo.js';
+
+const input={id:17,dir:2,frame:0,moving:true,action:'move',bodyScale:1,limbScale:1,sensoryScale:1,dependent:false,alert:false,life:{breath:0,lean:0}};
+const a=genvoVisualPose(input),b=genvoVisualPose(input);
+assert.deepEqual(a,b,'GenVo8 presentation geometry must be deterministic');
+assert.equal(a.legs.length,8,'GenVo8 keeps eight independently posed legs');
+assert.ok(a.bodyW>=7&&a.bodyH>=6,'mantle keeps a substantial readable silhouette');
+assert.ok(a.legs.every(l=>Number.isFinite(l.knee.x)&&Number.isFinite(l.foot.y)),'all articulated limb points are finite');
+const next=genvoVisualPose({...input,frame:2});
+assert.notDeepEqual(a.legs.map(l=>[l.knee.x,l.knee.y,l.foot.x,l.foot.y]),next.legs.map(l=>[l.knee.x,l.knee.y,l.foot.x,l.foot.y]),'locomotion frames change articulated leg placement');
+const idle=genvoVisualPose({...input,moving:false,action:'idle',frame:4,life:{breath:1,lean:0}});
+assert.ok(idle.face.feelerReach>1,'idle creature retains tactile feeler motion');
+const alert=genvoVisualPose({...input,moving:false,action:'flee',alert:true,life:{breath:0,lean:2}});
+assert.equal(alert.face.wide,true,'alarm state widens the eyes');
+assert.ok(alert.legs.some(l=>l.front<0&&Math.hypot(l.foot.x,l.foot.y)>7),'flight stance trails/reaches rear limbs');
+const rows=roundedMantleRows(9,7);
+assert.equal(rows.length,7,'mantle row count follows requested height');
+assert.ok(rows[Math.floor(rows.length/2)].w>rows[0].w,'mantle is broad in the middle and clipped at the edges');
+console.log('genvo visual geometry checks: PASS');

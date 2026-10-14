@@ -1,0 +1,20 @@
+{
+  "scope": "Controlled 12 canonical vegetation days, real mouse Save World, browser IndexedDB write/read and actual application load; exact cohort and reproductive parity. No browser storage mocks.",
+  "errors": [],
+  "checks": [],
+  "preparation": {
+    "days": 13,
+    "rows": 6288
+  },
+  "storage": {
+    "codec": "genvo.flora-seed-columns/1",
+    "typedQuantities": true,
+    "rows": 6288
+  },
+  "restored": {
+    "ok": true,
+    "flora": true,
+    "botanical": true,
+    "rng": true
+  }
+}

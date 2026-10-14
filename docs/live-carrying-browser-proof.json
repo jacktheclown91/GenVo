@@ -1,0 +1,81 @@
+{
+  "scope": "Paired exact prior delivered source/current native 800x600. Fresh natural full-lifecycle worlds, no biological fixtures, synchronous update timing. Live-stock harvest check uses valid anatomy/placement/finite water fixture separately.",
+  "runs": [
+    {
+      "label": "before",
+      "initial": {
+        "living": 196,
+        "lineage": 1,
+        "actualChildren": 0,
+        "activeFamily": null,
+        "playerId": 109,
+        "foundersWithoutParents": 196
+      },
+      "natural": {
+        "updates": 480,
+        "simulationTicks": 480,
+        "day": 11,
+        "living": 196,
+        "totalAnimals": 196,
+        "medianUpdateMs": 0,
+        "p95UpdateMs": 10.5,
+        "totalUpdateMs": 1782.0999999642372,
+        "seed": "LIVE-CARRYING-NATURAL",
+        "scope": "Fresh normal full-lifecycle simulation inside native browser, no player or authored outcomes; 60 simulation seconds."
+      },
+      "harvest": {
+        "first": 4,
+        "second": 4,
+        "actualHarvest": {
+          "kind": "algae",
+          "amount": 0.5,
+          "energyGain": 4
+        },
+        "remainingStock": 0,
+        "dayUnchanged": true,
+        "rngUnchanged": true,
+        "scope": "Controlled anatomy, location, habitat and finite stock; actual canonical harvest and carrying paths, no manual cache clearing between them."
+      },
+      "errors": []
+    },
+    {
+      "label": "after",
+      "initial": {
+        "living": 196,
+        "lineage": 1,
+        "actualChildren": 0,
+        "activeFamily": [
+          109
+        ],
+        "playerId": 109,
+        "foundersWithoutParents": 196
+      },
+      "natural": {
+        "updates": 480,
+        "simulationTicks": 480,
+        "day": 11,
+        "living": 196,
+        "totalAnimals": 196,
+        "medianUpdateMs": 0,
+        "p95UpdateMs": 24.899999976158142,
+        "totalUpdateMs": 3574.5000000596046,
+        "seed": "LIVE-CARRYING-NATURAL",
+        "scope": "Fresh normal full-lifecycle simulation inside native browser, no player or authored outcomes; 60 simulation seconds."
+      },
+      "harvest": {
+        "first": 4,
+        "second": 0,
+        "actualHarvest": {
+          "kind": "algae",
+          "amount": 0.5,
+          "energyGain": 4
+        },
+        "remainingStock": 0,
+        "dayUnchanged": true,
+        "rngUnchanged": true,
+        "scope": "Controlled anatomy, location, habitat and finite stock; actual canonical harvest and carrying paths, no manual cache clearing between them."
+      },
+      "errors": []
+    }
+  ]
+}

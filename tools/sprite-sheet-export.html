@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>GenVo canonical sprite-sheet exporter</title>
+<body>
+<script type="module">
+import {drawGenvoSprite} from '../src/render/genvo-draw.js';
+import {Simulation} from '../src/sim/simulation.js';
+import {loadNativePartCatalog} from '../src/render/runtime-part-art.js';
+import {creaturePalette} from '../src/render/creature-palette.js';
+import {drawFloraPlant} from '../src/render/flora.js';
+import {behaviorVisualState} from '../src/render/behavior.js';
+import {phenotypeFor} from '../src/organisms/species.js';
+import {PLANTS} from '../src/sim/config.js';
+
+const CREATURE_CELL=96;
+const CREATURE_SCALE=2;
+const DIRECTIONS=['north','north-east','east','south-east','south','south-west','west','north-west'];
+const FRAMES=[0,1,2,3,4,5,6,7];
+const SEASONS=['SPRING','SUMMER','AUTUMN','WINTER'];
+const native=await loadNativePartCatalog();if(native.status!=='ready')throw Error('Native art unavailable for canonical export');
+const simulation=new Simulation('GENVO-ORGANIC-EXPORT',{player:false});
+const SAMPLES=[...new Map(simulation.animals.filter(a=>a.alive&&a.bodyPlan).map(a=>[a.bodyPlan.id,a])).values()].slice(0,4);
+
+function canvas(width,height){
+  const out=document.createElement('canvas');out.width=width;out.height=height;
+  const ctx=out.getContext('2d',{alpha:true});ctx.imageSmoothingEnabled=false;
+  return {canvas:out,ctx};
+}
+
+function creatureSheet(animal){
+  const {canvas:out,ctx}=canvas(CREATURE_CELL*8,CREATURE_CELL*8),phenotype=phenotypeFor(animal),palette=creaturePalette(phenotype);
+  for(let dir=0;dir<8;dir++)for(let frame=0;frame<8;frame++){
+    const action='move',life={blink:false,hurt:false,exhausted:false,thirsty:false,strained:false};
+    const behavior=behaviorVisualState({bodyPlan:animal.bodyPlan,id:animal.id,action,phase:frame,moving:true,life});
+    const pose={dir,action,life,behavior,stage:'adult',alert:false,dependent:false};
+    ctx.save();ctx.translate(frame*CREATURE_CELL+CREATURE_CELL/2,dir*CREATURE_CELL+CREATURE_CELL/2);
+    drawGenvoSprite(ctx,{animal,phenotype,scale:CREATURE_SCALE,frame,moving:true,palette,pose});
+    ctx.restore();
+  }
+  return out;
+}
+
+function floraSheet(){
+  const entries=Object.entries(PLANTS),cell=64,{canvas:out,ctx}=canvas(cell*entries.length,cell*SEASONS.length);
+  entries.forEach(([kind,plant],column)=>SEASONS.forEach((season,row)=>{
+    drawFloraPlant(ctx,{shape:plant.render,color:plant.color,amount:plant.carry,px:column*cell+8,py:row*cell+8,u:3,x:13+column*7,y:19+row*5,kind,season,isWater:(x,y)=>kind==='marshroot'&&(x<12||y<18)});
+  }));
+  return out;
+}
+
+function payload(name,canvas){return{name,dataUrl:canvas.toDataURL('image/png'),width:canvas.width,height:canvas.height}}
+
+window.__SPRITE_EXPORT__={
+  ready:true,
+  exportAll(){
+    const creatures=SAMPLES.map((animal,index)=>payload(`creature-${index+1}-walk.png`,creatureSheet(animal)));
+    const flora=payload('flora-seasons.png',floraSheet());
+    return {
+      files:[...creatures,flora],
+      manifest:{
+        schema:'genvo8.sprite-sheets/1',generatedFrom:'canonical runtime drawing modules',transparentBackground:true,
+        creatureSheets:{cell:{width:CREATURE_CELL,height:CREATURE_CELL},columns:{kind:'animation-frame',values:FRAMES},rows:{kind:'direction',values:DIRECTIONS},drawScale:CREATURE_SCALE,files:creatures.map(x=>x.name)},
+        floraSheet:{file:flora.name,cell:{width:64,height:64},columns:{kind:'plant',values:Object.keys(PLANTS)},rows:{kind:'season',values:SEASONS},drawScale:3},
+        observedBodies:SAMPLES.map(a=>({animalId:a.id,bodyPlanId:a.bodyPlan.id,genes:a.genes})),
+        sourceModules:['src/render/runtime-part-art.js','src/render/creature-palette.js','src/sim/simulation.js','src/render/genvo-draw.js','src/render/flora.js','src/render/behavior.js','src/organisms/species.js','src/sim/config.js']
+      }
+    };
+  }
+};
+</script>
+</body>
+</html>

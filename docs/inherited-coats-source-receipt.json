@@ -1,0 +1,36 @@
+{
+  "modules": [
+    {
+      "path": "src/ecology/flora-genotype.js",
+      "sha256": "98d868f5cd475670726a0eecef3c384a749f7f8f61fba9a619657b6ae2a33d14"
+    },
+    {
+      "path": "src/ecology/flora-inheritance.js",
+      "sha256": "4590e321d58d252a7e8ffdc032b686b1d71a7ced11516bf96a84ce158457097d"
+    },
+    {
+      "path": "src/ecology/dispersal.js",
+      "sha256": "dc148e6d10b224cd44a124743a1640a22306ac698d361f7c197b9d98a3600e23"
+    },
+    {
+      "path": "src/render/flora.js",
+      "sha256": "abad08b76f51a6787344133e4d7287d20adec48297e885fceb0915231e3bb067"
+    },
+    {
+      "path": "src/render/renderer.js",
+      "sha256": "4cf9493f3f50ab4ab7c885701bfdaa14c14f55c96e457e481aaf19e8b426006d"
+    },
+    {
+      "path": "src/ui/resource-inspector.js",
+      "sha256": "d97f7b5b0dacdc774e48ade92afc8574bc18bee18670a5b27aae10258dc3926b"
+    },
+    {
+      "path": "src/ui/world-resource-target.js",
+      "sha256": "6ad1f38ab6e2bf43b3a55231f15a505c4d90c8fd92f7be0f9a3b3009cab71867"
+    },
+    {
+      "path": "src/ui/creature-context-tray.js",
+      "sha256": "15242c82aaf5e622f44afcd34d079d7eecc764949aeb193abfb3167bcf47dda5"
+    }
+  ]
+}

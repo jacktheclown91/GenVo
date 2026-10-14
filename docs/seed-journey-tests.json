@@ -1,0 +1,109 @@
+[
+  {
+    "test": "seed-observations",
+    "exitCode": 0,
+    "output": "Funded seed deposit causality, sensory-gated observations, no remote growth reveal, journal persistence, faded-trail revisit and anatomy-driven read-only handling PASS\n",
+    "status": "PASS"
+  },
+  {
+    "test": "world-trail-discovery",
+    "exitCode": 0,
+    "output": "Real movement/meal evidence, anatomy-gated tracking, non-omniscient endpoints, funded patch memory, read-only availability, save and expiry PASS\n",
+    "status": "PASS"
+  },
+  {
+    "test": "journal",
+    "exitCode": 0,
+    "output": "field journal checks: PASS\n",
+    "status": "PASS"
+  },
+  {
+    "test": "discovery",
+    "exitCode": 1,
+    "output": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Choose how to interact.\n+ actual - expected\n\n+ 'interaction-choice'\n- 'nest'\n\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/discovery.mjs:45:81\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 'interaction-choice',\n  expected: 'nest',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n",
+    "baseline": {
+      "archive": "GenVo-inherited-coats-2026-10-13-01-source.zip",
+      "exitCode": 1,
+      "output": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Choose how to interact.\n+ actual - expected\n\n+ 'interaction-choice'\n- 'nest'\n\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/reports/seed-journey-prior-source/tests/discovery.mjs:45:81\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 'interaction-choice',\n  expected: 'nest',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n"
+    },
+    "status": "PREEXISTING_FAILURE"
+  },
+  {
+    "test": "inherited-coats",
+    "exitCode": 0,
+    "output": "Inherited coat/seed axes, immutable adults, legacy schemas, finite tissue and handling tradeoffs, real germination, specialization and save parity PASS\n",
+    "status": "PASS"
+  },
+  {
+    "test": "clonal-flora",
+    "exitCode": 0,
+    "output": "Clonal mutation, frozen adults, persistent rare seed cohorts, inherited tissue allocation, funded birth, independent RNG and save validation PASS\n",
+    "status": "PASS"
+  },
+  {
+    "test": "flora-tissue-propagules",
+    "exitCode": 0,
+    "output": "Finite tissues, anatomy-specific kernel destruction, real genotype cargo/deposition/establishment, read-only commands and stock-preserving save migration PASS\n",
+    "status": "PASS"
+  },
+  {
+    "test": "plant-handling",
+    "exitCode": 0,
+    "output": "Resistant coat cost, specialization, authoritative failure, no unpaid harvest, finite transfers and save parity PASS\n",
+    "status": "PASS"
+  },
+  {
+    "test": "quick-interaction",
+    "exitCode": 0,
+    "output": "Deterministic quick-action cycling, exact selection, unavailable reasons and actor/world reset PASS\n",
+    "status": "PASS"
+  },
+  {
+    "test": "contextual-interactions",
+    "exitCode": 0,
+    "output": "Four dietary anatomies, read-only queries, exact-target/no-fallback, ambiguity, stale feeding descriptors, keyed collection and attack fallback PASS\n",
+    "status": "PASS"
+  },
+  {
+    "test": "foraging-choice",
+    "exitCode": 0,
+    "output": "player forage choice + physiology checks: PASS\n",
+    "status": "PASS"
+  },
+  {
+    "test": "target-resource-states",
+    "exitCode": 0,
+    "output": "Target drink states, canonical parity, pause and depletion PASS\n",
+    "status": "PASS"
+  },
+  {
+    "test": "manual-resource-pose",
+    "exitCode": 0,
+    "output": "Actual manual meal receipt, read-only pose, actor ownership, expiry and movement/combat precedence PASS\n",
+    "status": "PASS"
+  },
+  {
+    "test": "plant-resource-contract",
+    "exitCode": 0,
+    "output": "Funded growth limits, finite input flux reconciliation, land nutrient inventory, bounded receipts and stock-preserving migration PASS\n",
+    "status": "PASS"
+  },
+  {
+    "test": "organic-resource-cycle",
+    "exitCode": 0,
+    "output": "Funded fungi, retained aquatic waste, finite nutrient growth, tissue-preserving returns/overflow and compatible saves PASS\n",
+    "status": "PASS"
+  },
+  {
+    "test": "world-resource-selection",
+    "exitCode": 0,
+    "output": "Visible plant selection, bare ground, depletion, stale-world and read-only checks PASS\n",
+    "status": "PASS"
+  },
+  {
+    "test": "canonical-source",
+    "exitCode": 0,
+    "output": "canonical-source: source authorities, art coverage, reference exports, and imports PASS\n",
+    "status": "PASS"
+  }
+]

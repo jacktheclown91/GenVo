@@ -1,0 +1,116 @@
+{
+  "status": "PASS",
+  "receipts": [
+    {
+      "seed": "ORGANIC-A",
+      "scope": "100 resource-only days, no animal lifecycle or field fixtures; not ecological balance proof",
+      "before": 5693.61556354013,
+      "after": 5693.615566141318,
+      "drift": 0.0000026011875888798386,
+      "flora": {
+        "produced": 92182,
+        "mutated": 7722,
+        "establishedVariants": 11060,
+        "sexualProduced": 348909
+      },
+      "botanical": {
+        "pollenProduced": 1826.8798844963312,
+        "ovulesInvested": 902.955497905612,
+        "delivered": 552877,
+        "recognized": 351777,
+        "rejected": 201100,
+        "fertilized": 351777,
+        "viable": 348909,
+        "nonviable": 81,
+        "released": 792.8806785345078,
+        "selfed": 351777,
+        "crossed": 0
+      },
+      "reproductiveMass": 80.93509164452553,
+      "registeredGenotypes": 109298,
+      "coatGenotypes": 0,
+      "coatAdults": 0,
+      "variantParentReceipts": 0,
+      "seedCohorts": 262668,
+      "snapshotBytes": 205093865,
+      "phaseMs": {
+        "mean": 380.20979499999993,
+        "max": 693.1455999999998
+      }
+    },
+    {
+      "seed": "ORGANIC-B",
+      "scope": "100 resource-only days, no animal lifecycle or field fixtures; not ecological balance proof",
+      "before": 5762.228564304998,
+      "after": 5762.228567301058,
+      "drift": 0.0000029960601750644855,
+      "flora": {
+        "produced": 96373,
+        "mutated": 8238,
+        "establishedVariants": 11347,
+        "sexualProduced": 362689
+      },
+      "botanical": {
+        "pollenProduced": 1875.2984197884798,
+        "ovulesInvested": 908.0253621339798,
+        "delivered": 576953,
+        "recognized": 366401,
+        "rejected": 210552,
+        "fertilized": 366401,
+        "viable": 362689,
+        "nonviable": 94,
+        "released": 802.7510308623314,
+        "selfed": 366401,
+        "crossed": 0
+      },
+      "reproductiveMass": 91.59959071874619,
+      "registeredGenotypes": 113147,
+      "coatGenotypes": 0,
+      "coatAdults": 0,
+      "variantParentReceipts": 0,
+      "seedCohorts": 274973,
+      "snapshotBytes": 214316682,
+      "phaseMs": {
+        "mean": 414.92289500000015,
+        "max": 750.7885999999999
+      }
+    },
+    {
+      "seed": "ORGANIC-C",
+      "scope": "100 resource-only days, no animal lifecycle or field fixtures; not ecological balance proof",
+      "before": 5663.465686277837,
+      "after": 5663.465689780034,
+      "drift": 0.0000035021967050852254,
+      "flora": {
+        "produced": 95816,
+        "mutated": 8376,
+        "establishedVariants": 11522,
+        "sexualProduced": 378320
+      },
+      "botanical": {
+        "pollenProduced": 1970.3304156810045,
+        "ovulesInvested": 902.8756210058928,
+        "delivered": 601451,
+        "recognized": 381731,
+        "rejected": 219720,
+        "fertilized": 381731,
+        "viable": 378320,
+        "nonviable": 93,
+        "released": 801.669651940465,
+        "selfed": 381731,
+        "crossed": 0
+      },
+      "reproductiveMass": 90.92849493026733,
+      "registeredGenotypes": 115603,
+      "coatGenotypes": 0,
+      "coatAdults": 0,
+      "variantParentReceipts": 0,
+      "seedCohorts": 279496,
+      "snapshotBytes": 218520268,
+      "phaseMs": {
+        "mean": 420.18706300000036,
+        "max": 782.3122000000003
+      }
+    }
+  ]
+}

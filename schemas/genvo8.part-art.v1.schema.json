@@ -1,0 +1,210 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/genvo8.part-art.v1.schema.json",
+  "title": "GenVo8 part art reference metadata v1 (design only; not runtime-compatible yet)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "status",
+    "partId",
+    "family",
+    "canvasPx",
+    "sourceArt",
+    "rootAnchorPx",
+    "compatibleSocketTypes",
+    "rig",
+    "jointSpecs",
+    "motionProfiles",
+    "paletteMasks",
+    "materialMasks",
+    "mirrorPolicy",
+    "directionSupport"
+  ],
+  "properties": {
+    "schema": {
+      "const": "genvo8.part-art/1"
+    },
+    "status": {
+      "enum": [
+        "illustration-not-implemented",
+        "in-progress",
+        "runtime-verified"
+      ]
+    },
+    "partId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "family": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canvasPx": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "integer",
+          "minimum": 1
+        },
+        {
+          "type": "integer",
+          "minimum": 1
+        }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "sourceArt": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "rootAnchorPx": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "number"
+        }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "compatibleSocketTypes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "limb",
+          "mouth",
+          "eye",
+          "dorsal",
+          "flank",
+          "tail",
+          "spur"
+        ]
+      }
+    },
+    "childAnchors": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "number"
+        },
+        "minItems": 2,
+        "maxItems": 2
+      }
+    },
+    "rig": {
+      "type": "string",
+      "enum": [
+        "static",
+        "articulated",
+        "state-swap",
+        "hybrid"
+      ]
+    },
+    "jointSpecs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "parent",
+          "type",
+          "pivotPx",
+          "restDeg",
+          "minDeg",
+          "maxDeg"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "parent": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "type": {
+            "enum": [
+              "hinge",
+              "pivot",
+              "swivel",
+              "flex",
+              "scale",
+              "static"
+            ]
+          },
+          "pivotPx": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 2,
+            "maxItems": 2
+          },
+          "restDeg": {
+            "type": "number"
+          },
+          "minDeg": {
+            "type": "number"
+          },
+          "maxDeg": {
+            "type": "number"
+          },
+          "maxSpeedDegPerS": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "motionProfiles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "paletteMasks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "materialMasks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mirrorPolicy": {
+      "enum": [
+        "allow",
+        "forbid",
+        "direction-specific"
+      ]
+    },
+    "directionSupport": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 7
+      },
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

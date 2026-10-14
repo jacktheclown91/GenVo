@@ -1,0 +1,206 @@
+{
+  "scope": "Controlled player/camera placement and 180 resource-funded vegetation phases; no genotype or biomass writes. Actual inherited pod variants selected and eaten using native mouse and E. Separate normal-speed observation follows.",
+  "errors": [],
+  "checks": [],
+  "maturation": {
+    "animalRngPreserved": true,
+    "stats": {
+      "produced": 89629,
+      "mutated": 7587,
+      "establishedVariants": 62
+    },
+    "coatGenotypes": [
+      {
+        "schema": 3,
+        "id": "flora3-thistlepod-0.20000-0.22500",
+        "resourceAlias": "thistlepod",
+        "traits": {
+          "growth": 0.026,
+          "waterNeed": 0.25,
+          "nutrition": 11,
+          "seedAllocation": 0.2,
+          "coatAllocation": 0.225
+        },
+        "reproduction": "clonal-propagule",
+        "mutationEnabled": true
+      },
+      {
+        "schema": 3,
+        "id": "flora3-thistlepod-0.20000-0.27500",
+        "resourceAlias": "thistlepod",
+        "traits": {
+          "growth": 0.026,
+          "waterNeed": 0.25,
+          "nutrition": 11,
+          "seedAllocation": 0.2,
+          "coatAllocation": 0.275
+        },
+        "reproduction": "clonal-propagule",
+        "mutationEnabled": true
+      }
+    ]
+  },
+  "variants": [
+    {
+      "spot": {
+        "i": 14176,
+        "genome": {
+          "schema": 3,
+          "id": "flora3-thistlepod-0.20000-0.22500",
+          "resourceAlias": "thistlepod",
+          "traits": {
+            "growth": 0.026,
+            "waterNeed": 0.25,
+            "nutrition": 11,
+            "seedAllocation": 0.2,
+            "coatAllocation": 0.225
+          },
+          "reproduction": "clonal-propagule",
+          "mutationEnabled": true
+        },
+        "origin": {
+          "amount": 0.008478754812622048,
+          "originCell": 14048,
+          "producerId": "thistlepod:14176:175",
+          "parentGenomeId": "flora1-thistlepod",
+          "mutation": 0,
+          "coatMutation": -0.024999999999999994,
+          "mutationAxis": "coatAllocation",
+          "mode": "clonal",
+          "route": "local-release",
+          "genomeId": "flora3-thistlepod-0.20000-0.22500",
+          "parentProducerId": "thistlepod:14048:founder",
+          "establishedDay": 1,
+          "establishedTick": 0
+        },
+        "x": 402,
+        "y": 296
+      },
+      "summary": "Thin-coated pod plant\nEdible pods · Viable seeds · Tough seed coat\nEating the pods may disperse seeds. Crushing prevents those seeds from growing.",
+      "meal": {
+        "kind": "thistlepod",
+        "i": 14176,
+        "tissue": "crop",
+        "removed": 0.09203870594501495,
+        "coat": 0.020708709955215454,
+        "edible": 0.05292225815355778,
+        "viableSeeds": 0.018407737836241722,
+        "destroyedSeeds": 0,
+        "discarded": 0.020708709955215454,
+        "genome": {
+          "schema": 3,
+          "id": "flora3-thistlepod-0.20000-0.22500",
+          "resourceAlias": "thistlepod",
+          "traits": {
+            "growth": 0.026,
+            "waterNeed": 0.25,
+            "nutrition": 11,
+            "seedAllocation": 0.2,
+            "coatAllocation": 0.225
+          },
+          "reproduction": "clonal-propagule",
+          "mutationEnabled": true
+        },
+        "producerId": "thistlepod:14176:175",
+        "originCell": 14176,
+        "processingCost": 0.33133935928344727,
+        "specializedHandling": false,
+        "actorId": 109,
+        "tick": 10,
+        "parentGenomeId": "flora3-thistlepod-0.20000-0.22500",
+        "mutation": 0,
+        "coatMutation": 0,
+        "mutationAxis": null,
+        "seedTransferComplete": true
+      }
+    },
+    {
+      "spot": {
+        "i": 5451,
+        "genome": {
+          "schema": 3,
+          "id": "flora3-thistlepod-0.20000-0.27500",
+          "resourceAlias": "thistlepod",
+          "traits": {
+            "growth": 0.026,
+            "waterNeed": 0.25,
+            "nutrition": 11,
+            "seedAllocation": 0.2,
+            "coatAllocation": 0.275
+          },
+          "reproduction": "clonal-propagule",
+          "mutationEnabled": true
+        },
+        "origin": {
+          "amount": 0.008443576319220441,
+          "originCell": 5324,
+          "producerId": "thistlepod:5451:581",
+          "parentGenomeId": "flora1-thistlepod",
+          "mutation": 0,
+          "coatMutation": 0.025000000000000022,
+          "mutationAxis": "coatAllocation",
+          "mode": "clonal",
+          "route": "local-release",
+          "genomeId": "flora3-thistlepod-0.20000-0.27500",
+          "parentProducerId": "thistlepod:5324:founder",
+          "establishedDay": 1,
+          "establishedTick": 0
+        },
+        "x": 390,
+        "y": 299
+      },
+      "summary": "Thick-coated pod plant\nEdible pods · Viable seeds · Tough seed coat\nEating the pods may disperse seeds. Crushing prevents those seeds from growing.",
+      "meal": {
+        "kind": "thistlepod",
+        "i": 5451,
+        "tissue": "crop",
+        "removed": 0.15,
+        "coat": 0.04125001091909913,
+        "edible": 0.078749984632379,
+        "viableSeeds": 0.030000004448521866,
+        "destroyedSeeds": 0,
+        "discarded": 0.04125001091909913,
+        "genome": {
+          "schema": 3,
+          "id": "flora3-thistlepod-0.20000-0.27500",
+          "resourceAlias": "thistlepod",
+          "traits": {
+            "growth": 0.026,
+            "waterNeed": 0.25,
+            "nutrition": 11,
+            "seedAllocation": 0.2,
+            "coatAllocation": 0.275
+          },
+          "reproduction": "clonal-propagule",
+          "mutationEnabled": true
+        },
+        "producerId": "thistlepod:5451:581",
+        "originCell": 5451,
+        "processingCost": 0.660000174705586,
+        "specializedHandling": false,
+        "actorId": 109,
+        "tick": 22,
+        "parentGenomeId": "flora3-thistlepod-0.20000-0.27500",
+        "mutation": 0,
+        "coatMutation": 0,
+        "mutationAxis": null,
+        "seedTransferComplete": true
+      }
+    }
+  ],
+  "save": {
+    "flora": true,
+    "cargo": true
+  },
+  "natural": {
+    "scope": "30 seconds normal fresh-world simulation; no biological, terrain, reserve or position fixtures.",
+    "tick": 239,
+    "coatGenotypes": 2,
+    "coatAdults": 0,
+    "chargedActors": [
+      174,
+      187,
+      188
+    ]
+  }
+}

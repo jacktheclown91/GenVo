@@ -1,0 +1,758 @@
+{
+  "status": "PASS",
+  "receipts": [
+    {
+      "seed": "NATURAL-CONCEPTION-GATES",
+      "scope": "600 simulation seconds through normal full update/lifecycle, accelerated wall clock; no actor/terrain/reserve/anatomy/genotype fixtures or player. Not a human playtest.",
+      "elapsedMs": 68921.6433,
+      "samples": [
+        {
+          "tick": 480,
+          "day": 11,
+          "living": 196,
+          "births": 0,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 25.476787850260735,
+            "ovulesInvested": 53.60629542171955,
+            "delivered": 3988,
+            "recognized": 2797,
+            "rejected": 1191,
+            "fertilized": 2797,
+            "viable": 1464,
+            "nonviable": 0,
+            "released": 10.135017231106758,
+            "selfed": 2797,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 960,
+          "day": 21,
+          "living": 196,
+          "births": 0,
+          "carriers": 2,
+          "botanical": {
+            "pollenProduced": 138.81521782279015,
+            "ovulesInvested": 144.72422420978546,
+            "delivered": 35574,
+            "recognized": 24413,
+            "rejected": 11161,
+            "fertilized": 24413,
+            "viable": 22235,
+            "nonviable": 2,
+            "released": 67.62103646993637,
+            "selfed": 24413,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 1440,
+          "day": 31,
+          "living": 215,
+          "births": 19,
+          "carriers": 2,
+          "botanical": {
+            "pollenProduced": 428.5368916988373,
+            "ovulesInvested": 252.6336237937212,
+            "delivered": 90298,
+            "recognized": 60427,
+            "rejected": 29871,
+            "fertilized": 60427,
+            "viable": 56959,
+            "nonviable": 7,
+            "released": 166.95516169071198,
+            "selfed": 60427,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 1920,
+          "day": 41,
+          "living": 240,
+          "births": 44,
+          "carriers": 2,
+          "botanical": {
+            "pollenProduced": 631.8054428696632,
+            "ovulesInvested": 343.71103243529797,
+            "delivered": 144061,
+            "recognized": 93437,
+            "rejected": 50624,
+            "fertilized": 93437,
+            "viable": 89932,
+            "nonviable": 20,
+            "released": 274.7216355204582,
+            "selfed": 93437,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 2400,
+          "day": 51,
+          "living": 241,
+          "births": 45,
+          "carriers": 1,
+          "botanical": {
+            "pollenProduced": 864.9948607236147,
+            "ovulesInvested": 443.40168572962284,
+            "delivered": 192318,
+            "recognized": 123767,
+            "rejected": 68551,
+            "fertilized": 123767,
+            "viable": 121304,
+            "nonviable": 21,
+            "released": 367.66204062104225,
+            "selfed": 123764,
+            "crossed": 3
+          }
+        },
+        {
+          "tick": 2880,
+          "day": 61,
+          "living": 242,
+          "births": 46,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 1006.7801016122103,
+            "ovulesInvested": 499.11473239958286,
+            "delivered": 218017,
+            "recognized": 139958,
+            "rejected": 78059,
+            "fertilized": 139958,
+            "viable": 137668,
+            "nonviable": 27,
+            "released": 424.76441974937916,
+            "selfed": 139955,
+            "crossed": 3
+          }
+        },
+        {
+          "tick": 3360,
+          "day": 71,
+          "living": 244,
+          "births": 50,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 1080.7349629104137,
+            "ovulesInvested": 532.2548913806677,
+            "delivered": 233681,
+            "recognized": 149657,
+            "rejected": 84024,
+            "fertilized": 149657,
+            "viable": 148640,
+            "nonviable": 30,
+            "released": 464.57109531760216,
+            "selfed": 149654,
+            "crossed": 3
+          }
+        },
+        {
+          "tick": 3840,
+          "day": 81,
+          "living": 247,
+          "births": 53,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 1133.277789697051,
+            "ovulesInvested": 549.7898757308722,
+            "delivered": 242505,
+            "recognized": 155026,
+            "rejected": 87479,
+            "fertilized": 155026,
+            "viable": 154673,
+            "nonviable": 34,
+            "released": 483.82413187623024,
+            "selfed": 155023,
+            "crossed": 3
+          }
+        },
+        {
+          "tick": 4320,
+          "day": 91,
+          "living": 248,
+          "births": 56,
+          "carriers": 1,
+          "botanical": {
+            "pollenProduced": 1148.0439580976963,
+            "ovulesInvested": 556.0667760521173,
+            "delivered": 245536,
+            "recognized": 156878,
+            "rejected": 88658,
+            "fertilized": 156878,
+            "viable": 156578,
+            "nonviable": 34,
+            "released": 489.91595739126205,
+            "selfed": 156875,
+            "crossed": 3
+          }
+        },
+        {
+          "tick": 4800,
+          "day": 101,
+          "living": 257,
+          "births": 66,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 1165.7991117984056,
+            "ovulesInvested": 562.7389202415943,
+            "delivered": 248699,
+            "recognized": 158746,
+            "rejected": 89953,
+            "fertilized": 158746,
+            "viable": 158512,
+            "nonviable": 34,
+            "released": 497.0956803262234,
+            "selfed": 158743,
+            "crossed": 3
+          }
+        }
+      ],
+      "botanical": {
+        "pollenProduced": 1165.7991117984056,
+        "ovulesInvested": 562.7389202415943,
+        "delivered": 248699,
+        "recognized": 158746,
+        "rejected": 89953,
+        "fertilized": 158746,
+        "viable": 158512,
+        "nonviable": 34,
+        "released": 497.0956803262234,
+        "selfed": 158743,
+        "crossed": 3
+      },
+      "saveParity": true,
+      "births": 66,
+      "explainedBlocks": [
+        {
+          "id": 1,
+          "failure": {
+            "tick": 4482,
+            "day": 94,
+            "partnerId": 223,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "mate"
+        },
+        {
+          "id": 8,
+          "failure": {
+            "tick": 3036,
+            "day": 64,
+            "partnerId": 60,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "drink"
+        },
+        {
+          "id": 10,
+          "failure": {
+            "tick": 3282,
+            "day": 69,
+            "partnerId": 56,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "drink"
+        },
+        {
+          "id": 12,
+          "failure": {
+            "tick": 4386,
+            "day": 92,
+            "partnerId": 223,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "escape"
+        },
+        {
+          "id": 17,
+          "failure": {
+            "tick": 3036,
+            "day": 64,
+            "partnerId": 182,
+            "reason": "Nearby food cannot sustain offspring for this body’s feeding anatomy.",
+            "reasonCode": "food-support",
+            "stage": "conception"
+          },
+          "intent": "mate"
+        },
+        {
+          "id": 21,
+          "failure": {
+            "tick": 4116,
+            "day": 86,
+            "partnerId": 56,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "escape"
+        },
+        {
+          "id": 26,
+          "failure": {
+            "tick": 3072,
+            "day": 64,
+            "partnerId": 60,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "escape"
+        },
+        {
+          "id": 31,
+          "failure": {
+            "tick": 4368,
+            "day": 91,
+            "partnerId": 223,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "explore"
+        },
+        {
+          "id": 36,
+          "failure": {
+            "tick": 738,
+            "day": 16,
+            "partnerId": 55,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "migrate"
+        },
+        {
+          "id": 38,
+          "failure": {
+            "tick": 3066,
+            "day": 64,
+            "partnerId": 60,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "drink"
+        },
+        {
+          "id": 39,
+          "failure": {
+            "tick": 2934,
+            "day": 62,
+            "partnerId": 43,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "migrate"
+        },
+        {
+          "id": 44,
+          "failure": {
+            "tick": 2358,
+            "day": 50,
+            "partnerId": 208,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "feed"
+        },
+        {
+          "id": 46,
+          "failure": {
+            "tick": 732,
+            "day": 16,
+            "partnerId": 36,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "escape"
+        },
+        {
+          "id": 48,
+          "failure": {
+            "tick": 1884,
+            "day": 40,
+            "partnerId": 39,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "feed"
+        },
+        {
+          "id": 56,
+          "failure": {
+            "tick": 3282,
+            "day": 69,
+            "partnerId": 10,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "escape"
+        },
+        {
+          "id": 58,
+          "failure": {
+            "tick": 660,
+            "day": 14,
+            "partnerId": 36,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "escape"
+        },
+        {
+          "id": 60,
+          "failure": {
+            "tick": 564,
+            "day": 12,
+            "partnerId": 23,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "migrate"
+        },
+        {
+          "id": 70,
+          "failure": {
+            "tick": 792,
+            "day": 17,
+            "partnerId": 86,
+            "reason": "The partner cannot receive courtship now: needs food or water.",
+            "reasonCode": "survival-priority",
+            "stage": "conception"
+          },
+          "intent": "explore"
+        },
+        {
+          "id": 73,
+          "failure": {
+            "tick": 2388,
+            "day": 50,
+            "partnerId": 93,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "escape"
+        },
+        {
+          "id": 81,
+          "failure": {
+            "tick": 2232,
+            "day": 47,
+            "partnerId": 114,
+            "reason": "The partner cannot receive courtship now: needs food or water.",
+            "reasonCode": "survival-priority",
+            "stage": "conception"
+          },
+          "intent": "migrate"
+        },
+        {
+          "id": 86,
+          "failure": {
+            "tick": 792,
+            "day": 17,
+            "partnerId": 70,
+            "reason": "The partner cannot receive courtship now: needs food or water.",
+            "reasonCode": "survival-priority",
+            "stage": "conception"
+          },
+          "intent": "escape"
+        },
+        {
+          "id": 93,
+          "failure": {
+            "tick": 3066,
+            "day": 64,
+            "partnerId": 119,
+            "reason": "The partner cannot receive courtship now: needs food or water.",
+            "reasonCode": "survival-priority",
+            "stage": "conception"
+          },
+          "intent": "escape"
+        },
+        {
+          "id": 99,
+          "failure": {
+            "tick": 2910,
+            "day": 61,
+            "partnerId": 95,
+            "reason": "The partner cannot receive courtship now: needs food or water.",
+            "reasonCode": "survival-priority",
+            "stage": "conception"
+          },
+          "intent": "hunt"
+        },
+        {
+          "id": 103,
+          "failure": {
+            "tick": 3096,
+            "day": 65,
+            "partnerId": 85,
+            "reason": "The partner cannot receive courtship now: needs food or water.",
+            "reasonCode": "survival-priority",
+            "stage": "conception"
+          },
+          "intent": "hunt"
+        },
+        {
+          "id": 107,
+          "failure": {
+            "tick": 1938,
+            "day": 41,
+            "partnerId": 88,
+            "reason": "The partner cannot receive courtship now: needs food or water.",
+            "reasonCode": "survival-priority",
+            "stage": "conception"
+          },
+          "intent": "escape"
+        },
+        {
+          "id": 110,
+          "failure": {
+            "tick": 2394,
+            "day": 50,
+            "partnerId": 119,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "migrate"
+        },
+        {
+          "id": 111,
+          "failure": {
+            "tick": 2718,
+            "day": 57,
+            "partnerId": 79,
+            "reason": "The partner cannot receive courtship now: unwell.",
+            "reasonCode": "unwell",
+            "stage": "conception"
+          },
+          "intent": "feed"
+        },
+        {
+          "id": 112,
+          "failure": {
+            "tick": 3180,
+            "day": 67,
+            "partnerId": 117,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "escape"
+        },
+        {
+          "id": 113,
+          "failure": {
+            "tick": 2922,
+            "day": 61,
+            "partnerId": 90,
+            "reason": "The partner cannot receive courtship now: needs food or water.",
+            "reasonCode": "survival-priority",
+            "stage": "conception"
+          },
+          "intent": "feed"
+        },
+        {
+          "id": 114,
+          "failure": {
+            "tick": 4338,
+            "day": 91,
+            "partnerId": 81,
+            "reason": "The partner cannot receive courtship now: needs food or water.",
+            "reasonCode": "survival-priority",
+            "stage": "conception"
+          },
+          "intent": "migrate"
+        },
+        {
+          "id": 116,
+          "failure": {
+            "tick": 816,
+            "day": 17,
+            "partnerId": 131,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "feed"
+        },
+        {
+          "id": 118,
+          "failure": {
+            "tick": 4002,
+            "day": 84,
+            "partnerId": 69,
+            "reason": "The partner cannot receive courtship now: needs food or water.",
+            "reasonCode": "survival-priority",
+            "stage": "conception"
+          },
+          "intent": "escape"
+        },
+        {
+          "id": 119,
+          "failure": {
+            "tick": 4032,
+            "day": 84,
+            "partnerId": 65,
+            "reason": "The partner cannot receive courtship now: unwell.",
+            "reasonCode": "unwell",
+            "stage": "conception"
+          },
+          "intent": "drink"
+        },
+        {
+          "id": 121,
+          "failure": {
+            "tick": 3354,
+            "day": 70,
+            "partnerId": 82,
+            "reason": "The partner cannot receive courtship now: needs food or water.",
+            "reasonCode": "survival-priority",
+            "stage": "conception"
+          },
+          "intent": "drink"
+        },
+        {
+          "id": 124,
+          "failure": {
+            "tick": 4134,
+            "day": 87,
+            "partnerId": 93,
+            "reason": "The partner cannot receive courtship now: needs food or water.",
+            "reasonCode": "survival-priority",
+            "stage": "conception"
+          },
+          "intent": "mate"
+        },
+        {
+          "id": 126,
+          "failure": {
+            "tick": 2922,
+            "day": 61,
+            "partnerId": 90,
+            "reason": "The partner cannot receive courtship now: needs food or water.",
+            "reasonCode": "survival-priority",
+            "stage": "conception"
+          },
+          "intent": "drink"
+        },
+        {
+          "id": 127,
+          "failure": {
+            "tick": 3930,
+            "day": 82,
+            "partnerId": 81,
+            "reason": "The partner cannot receive courtship now: needs food or water.",
+            "reasonCode": "survival-priority",
+            "stage": "conception"
+          },
+          "intent": "migrate"
+        },
+        {
+          "id": 194,
+          "failure": {
+            "tick": 1698,
+            "day": 36,
+            "partnerId": 92,
+            "reason": "The partner cannot receive courtship now: needs food or water.",
+            "reasonCode": "survival-priority",
+            "stage": "conception"
+          },
+          "intent": "escape"
+        },
+        {
+          "id": 203,
+          "failure": {
+            "tick": 3024,
+            "day": 63,
+            "partnerId": 182,
+            "reason": "Nearby food cannot sustain offspring for this body’s feeding anatomy.",
+            "reasonCode": "food-support",
+            "stage": "conception"
+          },
+          "intent": "migrate"
+        },
+        {
+          "id": 207,
+          "failure": {
+            "tick": 4374,
+            "day": 92,
+            "partnerId": 223,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "feed"
+        },
+        {
+          "id": 217,
+          "failure": {
+            "tick": 4800,
+            "day": 100,
+            "partnerId": 87,
+            "reason": "The partner cannot receive courtship now: needs food or water.",
+            "reasonCode": "survival-priority",
+            "stage": "conception"
+          },
+          "intent": "idle"
+        },
+        {
+          "id": 223,
+          "failure": {
+            "tick": 4482,
+            "day": 94,
+            "partnerId": 1,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "explore"
+        },
+        {
+          "id": 225,
+          "failure": {
+            "tick": 3930,
+            "day": 82,
+            "partnerId": 47,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "drink"
+        },
+        {
+          "id": 232,
+          "failure": {
+            "tick": 4464,
+            "day": 93,
+            "partnerId": 125,
+            "reason": "This habitat is too crowded to support offspring.",
+            "reasonCode": "crowding",
+            "stage": "conception"
+          },
+          "intent": "escape"
+        }
+      ]
+    }
+  ],
+  "limits": "Outcomes are observations, not guaranteed reproductive success or stable ecological balance."
+}

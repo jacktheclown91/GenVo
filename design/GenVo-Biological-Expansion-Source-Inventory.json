@@ -1,0 +1,1606 @@
+{
+  "scope": "Read-only current source inventory, October 13 2026. Registry declarations are not proof of implemented distinct abilities.",
+  "anatomy": {
+    "parts": 79,
+    "capabilityTags": 39,
+    "socketTypes": [
+      "limb",
+      "head",
+      "mouth",
+      "eye",
+      "dorsal",
+      "flank",
+      "tail",
+      "spur"
+    ],
+    "byFamily": {
+      "core": 10,
+      "limbs": 9,
+      "feeding": 11,
+      "senses": 12,
+      "defense": 11,
+      "offense": 4,
+      "metabolism": 7,
+      "locomotion": 11,
+      "social": 4
+    },
+    "declaredCapabilities": [
+      {
+        "id": "walk",
+        "parts": [
+          "walking-leg",
+          "spring-leg",
+          "grasper",
+          "runner-leg",
+          "sturdy-leg",
+          "webbed-leg",
+          "padded-leg",
+          "digging-forelimb"
+        ]
+      },
+      {
+        "id": "sprint",
+        "parts": [
+          "walking-leg",
+          "spring-leg",
+          "runner-leg",
+          "gliding-membrane"
+        ]
+      },
+      {
+        "id": "pounce",
+        "parts": [
+          "spring-leg"
+        ]
+      },
+      {
+        "id": "carry",
+        "parts": [
+          "grasper",
+          "prehensile-tail",
+          "brood-pouch"
+        ]
+      },
+      {
+        "id": "dig",
+        "parts": [
+          "digging-forelimb"
+        ]
+      },
+      {
+        "id": "graze",
+        "parts": [
+          "grazing-mouth",
+          "tearing-jaw",
+          "crushing-jaw",
+          "beak-mouth",
+          "kernel-beak",
+          "filter-mouth",
+          "reed-sieve-mouth",
+          "nibbler-mouth"
+        ]
+      },
+      {
+        "id": "bite",
+        "parts": [
+          "grazing-mouth",
+          "tearing-jaw",
+          "crushing-jaw",
+          "beak-mouth",
+          "kernel-beak",
+          "sucker-mouth",
+          "gape-mouth",
+          "tusk-jaw"
+        ]
+      },
+      {
+        "id": "tear",
+        "parts": [
+          "tearing-jaw",
+          "crushing-jaw",
+          "tusk-jaw"
+        ]
+      },
+      {
+        "id": "crush",
+        "parts": [
+          "crushing-jaw",
+          "tusk-jaw"
+        ]
+      },
+      {
+        "id": "see",
+        "parts": [
+          "simple-eye",
+          "wide-field-eye",
+          "hunter-eye",
+          "stalk-eye",
+          "compound-eye",
+          "tracker-eye",
+          "display-eye",
+          "eyespot",
+          "glow-eye"
+        ]
+      },
+      {
+        "id": "see-wide",
+        "parts": [
+          "wide-field-eye",
+          "echo-crest"
+        ]
+      },
+      {
+        "id": "armor",
+        "parts": [
+          "dome-torso",
+          "armor-plate",
+          "shell-back",
+          "armored-hide",
+          "spined-tail",
+          "thorn-carapace",
+          "heel-spike"
+        ]
+      },
+      {
+        "id": "retaliate",
+        "parts": [
+          "barb",
+          "horn-crest",
+          "armored-hide",
+          "club-tail",
+          "thorn-carapace",
+          "spine-cluster"
+        ]
+      },
+      {
+        "id": "strike",
+        "parts": [
+          "claw",
+          "whip-tail",
+          "hook-spur",
+          "kick-spur"
+        ]
+      },
+      {
+        "id": "venom",
+        "parts": [
+          "venom-gland"
+        ]
+      },
+      {
+        "id": "store",
+        "parts": [
+          "stout-torso",
+          "barrel-torso",
+          "storage-sac",
+          "fat-tail",
+          "sail-fin",
+          "water-hump",
+          "fat-pad"
+        ]
+      },
+      {
+        "id": "signal",
+        "parts": [
+          "signal-crest",
+          "luminous-tail"
+        ]
+      },
+      {
+        "id": "swim-propel",
+        "parts": [
+          "silt-fin",
+          "paddle-tail"
+        ]
+      },
+      {
+        "id": "run",
+        "parts": [
+          "sleek-torso",
+          "runner-leg",
+          "balance-tail",
+          "grip-pad"
+        ]
+      },
+      {
+        "id": "brace",
+        "parts": [
+          "sturdy-leg",
+          "spine-ridge",
+          "dew-claw"
+        ]
+      },
+      {
+        "id": "swim",
+        "parts": [
+          "webbed-leg",
+          "gill-slits"
+        ]
+      },
+      {
+        "id": "quiet",
+        "parts": [
+          "padded-leg",
+          "moss-back"
+        ]
+      },
+      {
+        "id": "peck",
+        "parts": [
+          "beak-mouth",
+          "kernel-beak"
+        ]
+      },
+      {
+        "id": "filter",
+        "parts": [
+          "filter-mouth",
+          "reed-sieve-mouth"
+        ]
+      },
+      {
+        "id": "suck",
+        "parts": [
+          "sucker-mouth"
+        ]
+      },
+      {
+        "id": "swallow",
+        "parts": [
+          "gape-mouth"
+        ]
+      },
+      {
+        "id": "nibble",
+        "parts": [
+          "nibbler-mouth"
+        ]
+      },
+      {
+        "id": "aim",
+        "parts": [
+          "hunter-eye"
+        ]
+      },
+      {
+        "id": "spot",
+        "parts": [
+          "stalk-eye",
+          "echo-crest"
+        ]
+      },
+      {
+        "id": "glance",
+        "parts": [
+          "compound-eye",
+          "sensory-quills",
+          "sensory-bristle"
+        ]
+      },
+      {
+        "id": "track",
+        "parts": [
+          "tracker-eye",
+          "glow-eye"
+        ]
+      },
+      {
+        "id": "display",
+        "parts": [
+          "display-eye",
+          "horn-crest",
+          "luminous-tail",
+          "flag-tail",
+          "display-frill",
+          "scent-gland"
+        ]
+      },
+      {
+        "id": "call",
+        "parts": [
+          "grazing-mouth",
+          "tearing-jaw",
+          "crushing-jaw",
+          "beak-mouth",
+          "kernel-beak",
+          "filter-mouth",
+          "reed-sieve-mouth",
+          "nibbler-mouth",
+          "sucker-mouth",
+          "gape-mouth",
+          "tusk-jaw",
+          "echo-crest"
+        ]
+      },
+      {
+        "id": "dance",
+        "parts": [
+          "walking-leg",
+          "spring-leg",
+          "grasper",
+          "runner-leg",
+          "sturdy-leg",
+          "webbed-leg",
+          "padded-leg",
+          "digging-forelimb"
+        ]
+      },
+      {
+        "id": "flare",
+        "parts": [
+          "display-eye",
+          "silt-fin",
+          "signal-crest",
+          "horn-crest",
+          "luminous-tail",
+          "flag-tail",
+          "display-frill"
+        ]
+      },
+      {
+        "id": "scent",
+        "parts": [
+          "scent-gland"
+        ]
+      },
+      {
+        "id": "gesture",
+        "parts": [
+          "grasper"
+        ]
+      },
+      {
+        "id": "lay-eggs",
+        "parts": [
+          "egg-chamber"
+        ]
+      },
+      {
+        "id": "live-birth",
+        "parts": [
+          "live-womb"
+        ]
+      }
+    ],
+    "catalog": [
+      {
+        "id": "head-base",
+        "family": "core",
+        "precursors": [],
+        "sockets": [
+          "head"
+        ],
+        "capabilities": [],
+        "mass": 0,
+        "upkeep": 0
+      },
+      {
+        "id": "small-torso",
+        "family": "core",
+        "precursors": [],
+        "sockets": [],
+        "capabilities": [],
+        "mass": 3,
+        "upkeep": 0.85
+      },
+      {
+        "id": "soft-torso",
+        "family": "core",
+        "precursors": [
+          "small-torso"
+        ],
+        "sockets": [],
+        "capabilities": [],
+        "mass": 4,
+        "upkeep": 1
+      },
+      {
+        "id": "reinforced-torso",
+        "family": "core",
+        "precursors": [
+          "soft-torso"
+        ],
+        "sockets": [],
+        "capabilities": [],
+        "mass": 5,
+        "upkeep": 1.3
+      },
+      {
+        "id": "sleek-torso",
+        "family": "core",
+        "precursors": [
+          "soft-torso"
+        ],
+        "sockets": [],
+        "capabilities": [
+          "run"
+        ],
+        "mass": 3.5,
+        "upkeep": 1.05
+      },
+      {
+        "id": "light-torso",
+        "family": "core",
+        "precursors": [
+          "small-torso"
+        ],
+        "sockets": [],
+        "capabilities": [],
+        "mass": 2.6,
+        "upkeep": 0.8
+      },
+      {
+        "id": "stout-torso",
+        "family": "core",
+        "precursors": [
+          "soft-torso"
+        ],
+        "sockets": [],
+        "capabilities": [
+          "store"
+        ],
+        "mass": 5,
+        "upkeep": 1.1
+      },
+      {
+        "id": "barrel-torso",
+        "family": "core",
+        "precursors": [
+          "stout-torso"
+        ],
+        "sockets": [],
+        "capabilities": [
+          "store"
+        ],
+        "mass": 6,
+        "upkeep": 1.25
+      },
+      {
+        "id": "dome-torso",
+        "family": "core",
+        "precursors": [
+          "reinforced-torso"
+        ],
+        "sockets": [],
+        "capabilities": [
+          "armor"
+        ],
+        "mass": 6,
+        "upkeep": 1.3
+      },
+      {
+        "id": "long-torso",
+        "family": "core",
+        "precursors": [
+          "sleek-torso"
+        ],
+        "sockets": [],
+        "capabilities": [],
+        "mass": 6,
+        "upkeep": 1.35
+      },
+      {
+        "id": "walking-leg",
+        "family": "limbs",
+        "precursors": [],
+        "sockets": [
+          "limb"
+        ],
+        "capabilities": [
+          "walk",
+          "sprint",
+          "dance"
+        ],
+        "mass": 0.4,
+        "upkeep": 0.1
+      },
+      {
+        "id": "spring-leg",
+        "family": "limbs",
+        "precursors": [
+          "walking-leg"
+        ],
+        "sockets": [
+          "limb"
+        ],
+        "capabilities": [
+          "walk",
+          "sprint",
+          "pounce",
+          "dance"
+        ],
+        "mass": 0.5,
+        "upkeep": 0.18
+      },
+      {
+        "id": "grasper",
+        "family": "limbs",
+        "precursors": [
+          "walking-leg"
+        ],
+        "sockets": [
+          "limb"
+        ],
+        "capabilities": [
+          "walk",
+          "carry",
+          "dance",
+          "gesture"
+        ],
+        "mass": 0.45,
+        "upkeep": 0.14
+      },
+      {
+        "id": "runner-leg",
+        "family": "limbs",
+        "precursors": [
+          "walking-leg"
+        ],
+        "sockets": [
+          "limb"
+        ],
+        "capabilities": [
+          "walk",
+          "sprint",
+          "run",
+          "dance"
+        ],
+        "mass": 0.35,
+        "upkeep": 0.12
+      },
+      {
+        "id": "sturdy-leg",
+        "family": "limbs",
+        "precursors": [
+          "walking-leg"
+        ],
+        "sockets": [
+          "limb"
+        ],
+        "capabilities": [
+          "walk",
+          "brace",
+          "dance"
+        ],
+        "mass": 0.6,
+        "upkeep": 0.14
+      },
+      {
+        "id": "webbed-leg",
+        "family": "limbs",
+        "precursors": [
+          "walking-leg"
+        ],
+        "sockets": [
+          "limb"
+        ],
+        "capabilities": [
+          "walk",
+          "swim",
+          "dance"
+        ],
+        "mass": 0.45,
+        "upkeep": 0.14
+      },
+      {
+        "id": "padded-leg",
+        "family": "limbs",
+        "precursors": [
+          "walking-leg"
+        ],
+        "sockets": [
+          "limb"
+        ],
+        "capabilities": [
+          "walk",
+          "quiet",
+          "dance"
+        ],
+        "mass": 0.4,
+        "upkeep": 0.12
+      },
+      {
+        "id": "digging-forelimb",
+        "family": "limbs",
+        "precursors": [
+          "walking-leg"
+        ],
+        "sockets": [
+          "limb"
+        ],
+        "capabilities": [
+          "walk",
+          "dig",
+          "dance"
+        ],
+        "mass": 0.5,
+        "upkeep": 0.15
+      },
+      {
+        "id": "grazing-mouth",
+        "family": "feeding",
+        "precursors": [],
+        "sockets": [
+          "mouth"
+        ],
+        "capabilities": [
+          "graze",
+          "bite",
+          "call"
+        ],
+        "mass": 0.3,
+        "upkeep": 0.05
+      },
+      {
+        "id": "tearing-jaw",
+        "family": "feeding",
+        "precursors": [
+          "grazing-mouth"
+        ],
+        "sockets": [
+          "mouth"
+        ],
+        "capabilities": [
+          "graze",
+          "bite",
+          "tear",
+          "call"
+        ],
+        "mass": 0.5,
+        "upkeep": 0.2
+      },
+      {
+        "id": "crushing-jaw",
+        "family": "feeding",
+        "precursors": [
+          "tearing-jaw"
+        ],
+        "sockets": [
+          "mouth"
+        ],
+        "capabilities": [
+          "graze",
+          "bite",
+          "tear",
+          "crush",
+          "call"
+        ],
+        "mass": 0.7,
+        "upkeep": 0.3
+      },
+      {
+        "id": "beak-mouth",
+        "family": "feeding",
+        "precursors": [
+          "grazing-mouth"
+        ],
+        "sockets": [
+          "mouth"
+        ],
+        "capabilities": [
+          "graze",
+          "bite",
+          "peck",
+          "call"
+        ],
+        "mass": 0.3,
+        "upkeep": 0.06
+      },
+      {
+        "id": "kernel-beak",
+        "family": "feeding",
+        "precursors": [
+          "beak-mouth"
+        ],
+        "sockets": [
+          "mouth"
+        ],
+        "capabilities": [
+          "graze",
+          "peck",
+          "bite",
+          "call"
+        ],
+        "mass": 0.46,
+        "upkeep": 0.12
+      },
+      {
+        "id": "filter-mouth",
+        "family": "feeding",
+        "precursors": [
+          "grazing-mouth"
+        ],
+        "sockets": [
+          "mouth"
+        ],
+        "capabilities": [
+          "graze",
+          "filter",
+          "call"
+        ],
+        "mass": 0.3,
+        "upkeep": 0.06
+      },
+      {
+        "id": "reed-sieve-mouth",
+        "family": "feeding",
+        "precursors": [
+          "filter-mouth"
+        ],
+        "sockets": [
+          "mouth"
+        ],
+        "capabilities": [
+          "filter",
+          "graze",
+          "call"
+        ],
+        "mass": 0.35,
+        "upkeep": 0.09
+      },
+      {
+        "id": "nibbler-mouth",
+        "family": "feeding",
+        "precursors": [
+          "grazing-mouth"
+        ],
+        "sockets": [
+          "mouth"
+        ],
+        "capabilities": [
+          "graze",
+          "nibble",
+          "call"
+        ],
+        "mass": 0.2,
+        "upkeep": 0.03
+      },
+      {
+        "id": "sucker-mouth",
+        "family": "feeding",
+        "precursors": [
+          "tearing-jaw"
+        ],
+        "sockets": [
+          "mouth"
+        ],
+        "capabilities": [
+          "bite",
+          "suck",
+          "call"
+        ],
+        "mass": 0.35,
+        "upkeep": 0.1
+      },
+      {
+        "id": "gape-mouth",
+        "family": "feeding",
+        "precursors": [
+          "tearing-jaw"
+        ],
+        "sockets": [
+          "mouth"
+        ],
+        "capabilities": [
+          "bite",
+          "swallow",
+          "call"
+        ],
+        "mass": 0.55,
+        "upkeep": 0.2
+      },
+      {
+        "id": "simple-eye",
+        "family": "senses",
+        "precursors": [],
+        "sockets": [
+          "eye"
+        ],
+        "capabilities": [
+          "see"
+        ],
+        "mass": 0.05,
+        "upkeep": 0.03
+      },
+      {
+        "id": "wide-field-eye",
+        "family": "senses",
+        "precursors": [
+          "simple-eye"
+        ],
+        "sockets": [
+          "eye"
+        ],
+        "capabilities": [
+          "see",
+          "see-wide"
+        ],
+        "mass": 0.08,
+        "upkeep": 0.07
+      },
+      {
+        "id": "hunter-eye",
+        "family": "senses",
+        "precursors": [
+          "simple-eye"
+        ],
+        "sockets": [
+          "eye"
+        ],
+        "capabilities": [
+          "see",
+          "aim"
+        ],
+        "mass": 0.06,
+        "upkeep": 0.05
+      },
+      {
+        "id": "stalk-eye",
+        "family": "senses",
+        "precursors": [
+          "simple-eye"
+        ],
+        "sockets": [
+          "eye"
+        ],
+        "capabilities": [
+          "see",
+          "spot"
+        ],
+        "mass": 0.07,
+        "upkeep": 0.05
+      },
+      {
+        "id": "compound-eye",
+        "family": "senses",
+        "precursors": [
+          "wide-field-eye"
+        ],
+        "sockets": [
+          "eye"
+        ],
+        "capabilities": [
+          "see",
+          "glance"
+        ],
+        "mass": 0.09,
+        "upkeep": 0.08
+      },
+      {
+        "id": "tracker-eye",
+        "family": "senses",
+        "precursors": [
+          "simple-eye"
+        ],
+        "sockets": [
+          "eye"
+        ],
+        "capabilities": [
+          "see",
+          "track"
+        ],
+        "mass": 0.06,
+        "upkeep": 0.05
+      },
+      {
+        "id": "display-eye",
+        "family": "senses",
+        "precursors": [
+          "simple-eye"
+        ],
+        "sockets": [
+          "eye"
+        ],
+        "capabilities": [
+          "see",
+          "display",
+          "flare"
+        ],
+        "mass": 0.06,
+        "upkeep": 0.05
+      },
+      {
+        "id": "eyespot",
+        "family": "senses",
+        "precursors": [],
+        "sockets": [
+          "eye"
+        ],
+        "capabilities": [
+          "see"
+        ],
+        "mass": 0.02,
+        "upkeep": 0.01
+      },
+      {
+        "id": "armor-plate",
+        "family": "defense",
+        "precursors": [],
+        "sockets": [
+          "flank",
+          "dorsal"
+        ],
+        "capabilities": [
+          "armor"
+        ],
+        "mass": 0.6,
+        "upkeep": 0.12
+      },
+      {
+        "id": "barb",
+        "family": "defense",
+        "precursors": [],
+        "sockets": [
+          "spur"
+        ],
+        "capabilities": [
+          "retaliate"
+        ],
+        "mass": 0.1,
+        "upkeep": 0.04
+      },
+      {
+        "id": "claw",
+        "family": "offense",
+        "precursors": [],
+        "sockets": [
+          "spur"
+        ],
+        "capabilities": [
+          "strike"
+        ],
+        "mass": 0.12,
+        "upkeep": 0.04
+      },
+      {
+        "id": "venom-gland",
+        "family": "offense",
+        "precursors": [
+          "tearing-jaw"
+        ],
+        "sockets": [
+          "flank"
+        ],
+        "capabilities": [
+          "venom"
+        ],
+        "mass": 0.2,
+        "upkeep": 0.15
+      },
+      {
+        "id": "storage-sac",
+        "family": "metabolism",
+        "precursors": [],
+        "sockets": [
+          "flank"
+        ],
+        "capabilities": [
+          "store"
+        ],
+        "mass": 0.5,
+        "upkeep": 0.05
+      },
+      {
+        "id": "silt-fin",
+        "family": "locomotion",
+        "precursors": [
+          "paddle-tail"
+        ],
+        "sockets": [
+          "dorsal"
+        ],
+        "capabilities": [
+          "swim-propel",
+          "flare"
+        ],
+        "mass": 0.28,
+        "upkeep": 0.09
+      },
+      {
+        "id": "signal-crest",
+        "family": "social",
+        "precursors": [],
+        "sockets": [
+          "dorsal"
+        ],
+        "capabilities": [
+          "signal",
+          "flare"
+        ],
+        "mass": 0.1,
+        "upkeep": 0.05
+      },
+      {
+        "id": "paddle-tail",
+        "family": "locomotion",
+        "precursors": [],
+        "sockets": [
+          "tail"
+        ],
+        "capabilities": [
+          "swim-propel"
+        ],
+        "mass": 0.4,
+        "upkeep": 0.1
+      },
+      {
+        "id": "horn-crest",
+        "family": "defense",
+        "precursors": [],
+        "sockets": [
+          "dorsal"
+        ],
+        "capabilities": [
+          "retaliate",
+          "display",
+          "flare"
+        ],
+        "mass": 0.3,
+        "upkeep": 0.08
+      },
+      {
+        "id": "tusk-jaw",
+        "family": "feeding",
+        "precursors": [],
+        "sockets": [
+          "mouth"
+        ],
+        "capabilities": [
+          "bite",
+          "tear",
+          "crush",
+          "call"
+        ],
+        "mass": 0.6,
+        "upkeep": 0.2
+      },
+      {
+        "id": "gliding-membrane",
+        "family": "locomotion",
+        "precursors": [],
+        "sockets": [
+          "flank"
+        ],
+        "capabilities": [
+          "sprint"
+        ],
+        "mass": 0.25,
+        "upkeep": 0.08
+      },
+      {
+        "id": "luminous-tail",
+        "family": "social",
+        "precursors": [],
+        "sockets": [
+          "tail"
+        ],
+        "capabilities": [
+          "display",
+          "signal",
+          "flare"
+        ],
+        "mass": 0.3,
+        "upkeep": 0.06
+      },
+      {
+        "id": "shell-back",
+        "family": "defense",
+        "precursors": [],
+        "sockets": [
+          "dorsal"
+        ],
+        "capabilities": [
+          "armor"
+        ],
+        "mass": 0.7,
+        "upkeep": 0.08
+      },
+      {
+        "id": "armored-hide",
+        "family": "defense",
+        "precursors": [],
+        "sockets": [
+          "flank"
+        ],
+        "capabilities": [
+          "armor",
+          "retaliate"
+        ],
+        "mass": 0.6,
+        "upkeep": 0.1
+      },
+      {
+        "id": "glow-eye",
+        "family": "senses",
+        "precursors": [],
+        "sockets": [
+          "eye"
+        ],
+        "capabilities": [
+          "see",
+          "track"
+        ],
+        "mass": 0.06,
+        "upkeep": 0.05
+      },
+      {
+        "id": "echo-crest",
+        "family": "senses",
+        "precursors": [],
+        "sockets": [
+          "dorsal"
+        ],
+        "capabilities": [
+          "see-wide",
+          "spot",
+          "call"
+        ],
+        "mass": 0.2,
+        "upkeep": 0.06
+      },
+      {
+        "id": "balance-tail",
+        "family": "locomotion",
+        "precursors": [],
+        "sockets": [
+          "tail"
+        ],
+        "capabilities": [
+          "run"
+        ],
+        "mass": 0.35,
+        "upkeep": 0.05
+      },
+      {
+        "id": "club-tail",
+        "family": "locomotion",
+        "precursors": [
+          "balance-tail"
+        ],
+        "sockets": [
+          "tail"
+        ],
+        "capabilities": [
+          "retaliate"
+        ],
+        "mass": 0.35,
+        "upkeep": 0.1
+      },
+      {
+        "id": "spined-tail",
+        "family": "locomotion",
+        "precursors": [
+          "club-tail"
+        ],
+        "sockets": [
+          "tail"
+        ],
+        "capabilities": [
+          "armor"
+        ],
+        "mass": 0.35,
+        "upkeep": 0.12
+      },
+      {
+        "id": "whip-tail",
+        "family": "locomotion",
+        "precursors": [
+          "balance-tail"
+        ],
+        "sockets": [
+          "tail"
+        ],
+        "capabilities": [
+          "strike"
+        ],
+        "mass": 0.35,
+        "upkeep": 0.08
+      },
+      {
+        "id": "prehensile-tail",
+        "family": "locomotion",
+        "precursors": [
+          "balance-tail"
+        ],
+        "sockets": [
+          "tail"
+        ],
+        "capabilities": [
+          "carry"
+        ],
+        "mass": 0.35,
+        "upkeep": 0.08
+      },
+      {
+        "id": "fat-tail",
+        "family": "locomotion",
+        "precursors": [],
+        "sockets": [
+          "tail"
+        ],
+        "capabilities": [
+          "store"
+        ],
+        "mass": 0.35,
+        "upkeep": 0.04
+      },
+      {
+        "id": "flag-tail",
+        "family": "locomotion",
+        "precursors": [
+          "balance-tail"
+        ],
+        "sockets": [
+          "tail"
+        ],
+        "capabilities": [
+          "display",
+          "flare"
+        ],
+        "mass": 0.35,
+        "upkeep": 0.04
+      },
+      {
+        "id": "sail-fin",
+        "family": "metabolism",
+        "precursors": [],
+        "sockets": [
+          "dorsal"
+        ],
+        "capabilities": [
+          "store"
+        ],
+        "mass": 0.3,
+        "upkeep": 0.06
+      },
+      {
+        "id": "spine-ridge",
+        "family": "defense",
+        "precursors": [],
+        "sockets": [
+          "dorsal"
+        ],
+        "capabilities": [
+          "brace"
+        ],
+        "mass": 0.3,
+        "upkeep": 0.08
+      },
+      {
+        "id": "water-hump",
+        "family": "metabolism",
+        "precursors": [
+          "sail-fin"
+        ],
+        "sockets": [
+          "dorsal"
+        ],
+        "capabilities": [
+          "store"
+        ],
+        "mass": 0.3,
+        "upkeep": 0.06
+      },
+      {
+        "id": "display-frill",
+        "family": "social",
+        "precursors": [
+          "signal-crest"
+        ],
+        "sockets": [
+          "dorsal"
+        ],
+        "capabilities": [
+          "display",
+          "flare"
+        ],
+        "mass": 0.3,
+        "upkeep": 0.06
+      },
+      {
+        "id": "moss-back",
+        "family": "defense",
+        "precursors": [],
+        "sockets": [
+          "dorsal"
+        ],
+        "capabilities": [
+          "quiet"
+        ],
+        "mass": 0.3,
+        "upkeep": 0.06
+      },
+      {
+        "id": "thorn-carapace",
+        "family": "defense",
+        "precursors": [
+          "armor-plate"
+        ],
+        "sockets": [
+          "dorsal"
+        ],
+        "capabilities": [
+          "armor",
+          "retaliate"
+        ],
+        "mass": 0.84,
+        "upkeep": 0.17
+      },
+      {
+        "id": "sensory-quills",
+        "family": "senses",
+        "precursors": [
+          "spine-ridge"
+        ],
+        "sockets": [
+          "dorsal"
+        ],
+        "capabilities": [
+          "glance"
+        ],
+        "mass": 0.3,
+        "upkeep": 0.07
+      },
+      {
+        "id": "fat-pad",
+        "family": "metabolism",
+        "precursors": [],
+        "sockets": [
+          "flank"
+        ],
+        "capabilities": [
+          "store"
+        ],
+        "mass": 0.3,
+        "upkeep": 0.03
+      },
+      {
+        "id": "gill-slits",
+        "family": "locomotion",
+        "precursors": [
+          "storage-sac"
+        ],
+        "sockets": [
+          "flank"
+        ],
+        "capabilities": [
+          "swim"
+        ],
+        "mass": 0.3,
+        "upkeep": 0.08
+      },
+      {
+        "id": "scent-gland",
+        "family": "social",
+        "precursors": [],
+        "sockets": [
+          "flank"
+        ],
+        "capabilities": [
+          "display",
+          "scent"
+        ],
+        "mass": 0.3,
+        "upkeep": 0.05
+      },
+      {
+        "id": "spine-cluster",
+        "family": "defense",
+        "precursors": [
+          "armor-plate"
+        ],
+        "sockets": [
+          "flank"
+        ],
+        "capabilities": [
+          "retaliate"
+        ],
+        "mass": 0.3,
+        "upkeep": 0.08
+      },
+      {
+        "id": "brood-pouch",
+        "family": "metabolism",
+        "precursors": [
+          "storage-sac"
+        ],
+        "sockets": [
+          "flank"
+        ],
+        "capabilities": [
+          "carry"
+        ],
+        "mass": 0.3,
+        "upkeep": 0.05
+      },
+      {
+        "id": "egg-chamber",
+        "family": "metabolism",
+        "precursors": [],
+        "sockets": [
+          "flank"
+        ],
+        "capabilities": [
+          "lay-eggs"
+        ],
+        "mass": 0.8,
+        "upkeep": 0.22
+      },
+      {
+        "id": "live-womb",
+        "family": "metabolism",
+        "precursors": [],
+        "sockets": [
+          "flank"
+        ],
+        "capabilities": [
+          "live-birth"
+        ],
+        "mass": 1.1,
+        "upkeep": 0.36
+      },
+      {
+        "id": "hook-spur",
+        "family": "offense",
+        "precursors": [
+          "claw"
+        ],
+        "sockets": [
+          "spur"
+        ],
+        "capabilities": [
+          "strike"
+        ],
+        "mass": 0.08,
+        "upkeep": 0.03
+      },
+      {
+        "id": "dew-claw",
+        "family": "defense",
+        "precursors": [],
+        "sockets": [
+          "spur"
+        ],
+        "capabilities": [
+          "brace"
+        ],
+        "mass": 0.08,
+        "upkeep": 0.02
+      },
+      {
+        "id": "heel-spike",
+        "family": "defense",
+        "precursors": [
+          "barb"
+        ],
+        "sockets": [
+          "spur"
+        ],
+        "capabilities": [
+          "armor"
+        ],
+        "mass": 0.08,
+        "upkeep": 0.03
+      },
+      {
+        "id": "sensory-bristle",
+        "family": "senses",
+        "precursors": [],
+        "sockets": [
+          "spur"
+        ],
+        "capabilities": [
+          "glance"
+        ],
+        "mass": 0.08,
+        "upkeep": 0.02
+      },
+      {
+        "id": "grip-pad",
+        "family": "limbs",
+        "precursors": [],
+        "sockets": [
+          "spur"
+        ],
+        "capabilities": [
+          "run"
+        ],
+        "mass": 0.08,
+        "upkeep": 0.02
+      },
+      {
+        "id": "kick-spur",
+        "family": "offense",
+        "precursors": [
+          "claw"
+        ],
+        "sockets": [
+          "spur"
+        ],
+        "capabilities": [
+          "strike"
+        ],
+        "mass": 0.08,
+        "upkeep": 0.03
+      }
+    ]
+  },
+  "flora": {
+    "landResourceKinds": [
+      {
+        "id": "sunmoss",
+        "label": "Moss",
+        "guild": "ground_producer",
+        "seedBank": false,
+        "animalDispersal": false
+      },
+      {
+        "id": "bramble",
+        "label": "Berries",
+        "guild": "fruiting_shrub",
+        "seedBank": true,
+        "animalDispersal": true
+      },
+      {
+        "id": "marshroot",
+        "label": "Reeds",
+        "guild": "wetland_producer",
+        "seedBank": true,
+        "animalDispersal": false
+      },
+      {
+        "id": "rotcap",
+        "label": "Mushrooms",
+        "guild": "decomposer",
+        "seedBank": false,
+        "animalDispersal": false
+      },
+      {
+        "id": "thistlepod",
+        "label": "Seed Pods",
+        "guild": "seed_producer",
+        "seedBank": true,
+        "animalDispersal": true
+      }
+    ],
+    "freshwaterResourceKinds": [
+      {
+        "id": "algae",
+        "label": "Algae / biofilm",
+        "foodChainSource": null
+      },
+      {
+        "id": "duckweed",
+        "label": "Duckweed",
+        "foodChainSource": null
+      },
+      {
+        "id": "waterweed",
+        "label": "Waterweed",
+        "foodChainSource": null
+      },
+      {
+        "id": "larvae",
+        "label": "Aquatic larvae",
+        "foodChainSource": "algae"
+      },
+      {
+        "id": "fry",
+        "label": "Small aquatic prey",
+        "foodChainSource": "larvae"
+      },
+      {
+        "id": "detritus",
+        "label": "Aquatic carrion / detritus",
+        "foodChainSource": null
+      }
+    ],
+    "currentHeritablePlantGenotypes": false
+  },
+  "targetArithmetic": {
+    "current": 79,
+    "optionalTriple": 237,
+    "additionalIfTripled": 158,
+    "minimumDirectionalFrames": 2528
+  }
+}

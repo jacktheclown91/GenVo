@@ -1,0 +1,21 @@
+# Local/private tools and caches
+.claude/
+.codex/
+.agents/
+.env
+.env.*
+!.env.example
+node_modules/
+__pycache__/
+*.pyc
+# Derived builds and unselected capture output
+builds/
+reports/*
+!reports/README.md
+!reports/consolidation-before/
+!reports/consolidation-before/**
+!reports/feeding-performance-before/
+!reports/feeding-performance-before/**
+!reports/consolidation-demand-*.cpuprofile
+# Raw browser video folders; curated final recordings remain in docs
+/docs/*-video/

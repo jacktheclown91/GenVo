@@ -1,0 +1,60 @@
+{
+  "modules": [
+    {
+      "path": "src/ecology/flora-inheritance.js",
+      "sha256": "4b3f81eaaa0643e57076944a67ccc2739c6effc7831a050b1f08419bf0e71b0e"
+    },
+    {
+      "path": "src/ecology/dispersal.js",
+      "sha256": "1a3c3f0d06e2f97f765b3f3c749038149be15cc87d5846e21a2623edeebd2bc3"
+    },
+    {
+      "path": "src/gameplay/seed-observations.js",
+      "sha256": "c9ac0b93e3bdebff60e69bf5f0bfd916ea979b9691ef5bfc55944e57995b57b3"
+    },
+    {
+      "path": "src/gameplay/discovery.js",
+      "sha256": "81df7d09ab95cb165e21d0ee296194fa16263b4d2b97fcf52efb855e1b81f1f8"
+    },
+    {
+      "path": "src/gameplay/interaction-command.js",
+      "sha256": "12581aa7278c37de580368ba5b9cc76364bb6ae02aba39449eaef58b21babb5c"
+    },
+    {
+      "path": "src/render/feeding-expression.js",
+      "sha256": "ca5105491a1e12337c5fcef687239e7521ebc22a3f95313bde0a79eda28462b4"
+    },
+    {
+      "path": "src/render/renderer.js",
+      "sha256": "bd4f2c1c69a61a8a83a1938ef8d38fa04e22538fcdc689b47947169b9db63057"
+    },
+    {
+      "path": "src/render/world-traces.js",
+      "sha256": "e71f0e77c45ca68db6848f4d26778b65f9885defcec2f0061d727b81084d016d"
+    },
+    {
+      "path": "src/ui/journal.js",
+      "sha256": "3bd9d23bf7ba49c1f704a497b7e7b049853781c924babac221741688464ad74a"
+    },
+    {
+      "path": "src/ui/creature-context-tray.js",
+      "sha256": "7cd9a7aea0dac5df85595e1f2ee276f89f803f3a32c4c1dbfab456bdf5ad4d11"
+    },
+    {
+      "path": "src/ui/world-resource-target.js",
+      "sha256": "c399320ce945316a3902261f03f4cc046a79a714bd0e121e914d3bc02d262f31"
+    },
+    {
+      "path": "src/ui/resource-inspector.js",
+      "sha256": "a2d5dc1b29fcf45cf2f4615bea3903eb12874d029dfcfc5de634a14fe7b0d3a9"
+    },
+    {
+      "path": "src/main.js",
+      "sha256": "ac22e610c6f444296e81337fb25197236d908c9b8601bbaccc6d5675a439eadf"
+    },
+    {
+      "path": "styles.css",
+      "sha256": "097af636a18bf6c3963d3c217330f317cc50b709d4f855440a4ad2f6204bcd7f"
+    }
+  ]
+}

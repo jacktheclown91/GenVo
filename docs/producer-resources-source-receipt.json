@@ -1,0 +1,12 @@
+{
+  "baseline": "GenVo-flora-tissue-bridge-2026-10-13-35be9a90",
+  "changedGameplayModules": [
+    "src/ecology/dispersal.js",
+    "src/ecology/plant-resources.js",
+    "src/persistence/save-manager.js",
+    "src/sim/simulation.js",
+    "src/ui/creature-context-tray.js",
+    "src/ui/world-resource-target.js",
+    "src/world/world.js"
+  ]
+}

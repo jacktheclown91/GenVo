@@ -1,0 +1,1381 @@
+{
+  "scope": "120 wall-clock seconds at normal speed in a fresh generated world; ordinary generation/editor pauses remain in force. Ordinary Auto and Keep the old body UI choices only; no actor, anatomy, readiness, stock, RNG or clock edits. Unscripted simulation, not a human playtest.",
+  "samples": [
+    {
+      "tick": 50,
+      "day": 2,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 0.7925830042801361,
+          "germinated": 0,
+          "destroyed": 0.0960000006116285,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 108,
+        "established": 0,
+        "litter": 0.0546152638271451
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 446,
+      "feedingMarks": 14,
+      "visibleMarks": 3,
+      "traceHint": false,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 113.48273762197925,
+        "hydration": 102.19097599999996,
+        "intent": "explore",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 91,
+      "day": 2,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 0.7925830042801361,
+          "germinated": 0,
+          "destroyed": 0.12800000115980514,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 108,
+        "established": 0,
+        "litter": 0.09461526293307543
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 734,
+      "feedingMarks": 27,
+      "visibleMarks": 5,
+      "traceHint": false,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 112.93743095806967,
+        "hydration": 101.83046653333668,
+        "intent": "explore",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 131,
+      "day": 3,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 1.7829041130550982,
+          "germinated": 0.016450054943561554,
+          "destroyed": 0.12800000115980514,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 240,
+        "established": 1,
+        "litter": 0.021874336758628488
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 991,
+      "feedingMarks": 36,
+      "visibleMarks": 8,
+      "traceHint": false,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 112.47006831366272,
+        "hydration": 101.52068518095624,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 171,
+      "day": 4,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 3.284217768530188,
+          "germinated": 0.09136093501001596,
+          "destroyed": 0.1876288808695793,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 439,
+        "established": 6,
+        "litter": 0.08265888888854533
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1263,
+      "feedingMarks": 47,
+      "visibleMarks": 11,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 103.65528595558348,
+        "hydration": 100.0781833714446,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 211,
+      "day": 5,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 5.376660531071263,
+          "germinated": 0.1688603898510337,
+          "destroyed": 0.1876288808695793,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 723,
+        "established": 11,
+        "litter": 0.04137169569730759
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1374,
+      "feedingMarks": 56,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 101.31347422980527,
+        "hydration": 97.20306809526967,
+        "intent": "group-alarm",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 251,
+      "day": 6,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 7.921831904828779,
+          "germinated": 0.26348063070327044,
+          "destroyed": 0.1876288808695793,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 1073,
+        "established": 17,
+        "litter": 0.0021284963004291058
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1299,
+      "feedingMarks": 62,
+      "visibleMarks": 8,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 99.30769815418418,
+        "hydration": 94.7519109143134,
+        "intent": "mate",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 292,
+      "day": 7,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 11.227232522029158,
+          "germinated": 0.47132301796227694,
+          "destroyed": 0.1876288808695793,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 1527,
+        "established": 30,
+        "litter": 0
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1269,
+      "feedingMarks": 73,
+      "visibleMarks": 7,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 96.9686752018378,
+        "hydration": 91.90965064761957,
+        "intent": "group-alarm",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 332,
+      "day": 7,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 11.227232522029158,
+          "germinated": 0.47132301796227694,
+          "destroyed": 0.21962888409685277,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 1527,
+        "established": 30,
+        "litter": 0.03999999910593033
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1225,
+      "feedingMarks": 71,
+      "visibleMarks": 4,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 94.63011913173094,
+        "hydration": 89.07605064761961,
+        "intent": "group-alarm",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 372,
+      "day": 8,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 14.95080617266617,
+          "germinated": 0.7064704177901149,
+          "destroyed": 0.2516288840968528,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 2022,
+        "established": 44,
+        "litter": 0.05236569046974182
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1217,
+      "feedingMarks": 70,
+      "visibleMarks": 3,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 92.29107572444465,
+        "hydration": 86.23502756188205,
+        "intent": "group-alarm",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 412,
+      "day": 9,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 19.343828626595904,
+          "germinated": 0.9921333976089954,
+          "destroyed": 0.28362888409685283,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 2609,
+        "established": 61,
+        "litter": 0.06011192128062248
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1224,
+      "feedingMarks": 71,
+      "visibleMarks": 4,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 90.28640642369645,
+        "hydration": 83.60719411420251,
+        "intent": "group-alarm",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 452,
+      "day": 10,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 24.315981466619363,
+          "germinated": 1.4548207055777311,
+          "destroyed": 0.28362888409685283,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 3248,
+        "established": 89,
+        "litter": 0.021725473983678967
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1228,
+      "feedingMarks": 68,
+      "visibleMarks": 10,
+      "traceHint": true,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 87.9440800652418,
+        "hydration": 80.3174069468312,
+        "intent": "group-alarm",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 492,
+      "day": 11,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 30.040788622557688,
+          "germinated": 1.8871157560497522,
+          "destroyed": 0.31562888161520464,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 3957,
+        "established": 116,
+        "litter": 0.04249985795468092
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1223,
+      "feedingMarks": 69,
+      "visibleMarks": 10,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 85.59444977184717,
+        "hydration": 76.89500750547992,
+        "intent": "group-alarm",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 27,
+          "sequence": [
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 533,
+      "day": 12,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 36.13876692350619,
+          "germinated": 2.5560394320636988,
+          "destroyed": 0.31562888161520464,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 4680,
+        "established": 158,
+        "litter": 0.021902136504650116
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1234,
+      "feedingMarks": 75,
+      "visibleMarks": 10,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 83.57752636094598,
+        "hydration": 73.92816138783283,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 27,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 573,
+      "day": 12,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 36.13876692350619,
+          "germinated": 2.5560394320636988,
+          "destroyed": 0.37544382715942576,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 4680,
+        "established": 158,
+        "litter": 0.1032099686563015
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1208,
+      "feedingMarks": 74,
+      "visibleMarks": 10,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 81.21687061301013,
+        "hydration": 70.52133035817636,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 27,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 37,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 62,
+          "sequence": [
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 613,
+      "day": 13,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 42.49209375136495,
+          "germinated": 3.24734004214406,
+          "destroyed": 0.37544382715942576,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 5408,
+        "established": 200,
+        "litter": 0.05192447081208229
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1215,
+      "feedingMarks": 73,
+      "visibleMarks": 7,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 78.85175571637652,
+        "hydration": 67.22725574049431,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 11,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 62,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 66,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 82,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 131,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 653,
+      "day": 14,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 49.23990999341006,
+          "germinated": 3.9390195896849036,
+          "destroyed": 0.37544382715942576,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 6168,
+        "established": 241,
+        "litter": 0.014055125880986452
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1221,
+      "feedingMarks": 65,
+      "visibleMarks": 7,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 76.82142559349379,
+        "hydration": 64.4950422112224,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 11,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 37,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 38,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 62,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 82,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 131,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 693,
+      "day": 15,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 56.36000294045169,
+          "germinated": 4.958096864633262,
+          "destroyed": 0.37544382715942576,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 6907,
+        "established": 303,
+        "litter": 0
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1218,
+      "feedingMarks": 62,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 74.45086220020025,
+        "hydration": 61.37466209371521,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 11,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 62,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 82,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 734,
+      "day": 16,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 64.21813127799308,
+          "germinated": 6.053219682537019,
+          "destroyed": 0.4039003480211185,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 7667,
+        "established": 369,
+        "litter": 0.04110734164714813
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1250,
+      "feedingMarks": 75,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 72.0788841900366,
+        "hydration": 58.26985038790281,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 55,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 58,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 62,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 774,
+      "day": 17,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 72.14825440157801,
+          "germinated": 7.184056168422103,
+          "destroyed": 0.4039003480211185,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 8446,
+        "established": 437,
+        "litter": 0.025624627247452736
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1268,
+      "feedingMarks": 75,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 69.70382533556612,
+        "hydration": 55.16197432928906,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 34,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 55,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 58,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 62,
+          "sequence": [
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 814,
+      "day": 17,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 72.14825440157801,
+          "germinated": 7.184056168422103,
+          "destroyed": 0.4039003480211185,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 8446,
+        "established": 437,
+        "litter": 0.025624627247452736
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1276,
+      "feedingMarks": 73,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 67.66699338369659,
+        "hydration": 52.68248632928904,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 16,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 18,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 34,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 55,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 62,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 116,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 855,
+      "day": 18,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 80.2876323567921,
+          "germinated": 8.357606772333384,
+          "destroyed": 0.4039003480211185,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 9194,
+        "established": 506,
+        "litter": 0.010100126266479492
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1328,
+      "feedingMarks": 80,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 65.29373462869867,
+        "hydration": 49.77182941502666,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 16,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 18,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 34,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 46,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 53,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 55,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 62,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 83,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 116,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 895,
+      "day": 19,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 89.06330326935458,
+          "germinated": 9.687362156808376,
+          "destroyed": 0.4039003480211185,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 9958,
+        "established": 587,
+        "litter": 0
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1357,
+      "feedingMarks": 89,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 62.92273999943076,
+        "hydration": 46.851999776939216,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 5,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 16,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 34,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 53,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 55,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 58,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 62,
+          "sequence": [
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 935,
+      "day": 20,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 98.02271442592303,
+          "germinated": 11.323377183638513,
+          "destroyed": 0.4039003480211185,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 10685,
+        "established": 684,
+        "litter": 0
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1369,
+      "feedingMarks": 90,
+      "visibleMarks": 9,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 60.890996915242056,
+        "hydration": 44.35087931980804,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 5,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 53,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 55,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 58,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 62,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 81,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 92,
+          "sequence": [
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 975,
+      "day": 21,
+      "paused": false,
+      "generationEditor": false,
+      "playerId": 109,
+      "births": 0,
+      "plantTransport": {
+        "stats": {
+          "ingested": 0,
+          "deposited": 107.25870654124097,
+          "germinated": 12.711597235873342,
+          "destroyed": 0.43217140181107616,
+          "lost": 0
+        },
+        "carrierCount": 0,
+        "genotypeBanks": 11458,
+        "established": 765,
+        "litter": 0.021245384588837624
+      },
+      "hybrids": [],
+      "acceptedNoConception": 0,
+      "traces": 1380,
+      "feedingMarks": 102,
+      "visibleMarks": 11,
+      "traceHint": true,
+      "population": 195,
+      "player": {
+        "alive": true,
+        "energy": 58.52215938926842,
+        "hydration": 41.44320922458938,
+        "intent": "escape",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 5,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 49,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 55,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 62,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 81,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 101,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 111,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    }
+  ],
+  "seen": [
+    {
+      "actorId": 37,
+      "tick": 564,
+      "kind": "call"
+    },
+    {
+      "actorId": 37,
+      "tick": 582,
+      "kind": "dance"
+    },
+    {
+      "actorId": 131,
+      "tick": 588,
+      "kind": "call"
+    },
+    {
+      "actorId": 37,
+      "tick": 600,
+      "kind": "declined"
+    },
+    {
+      "actorId": 131,
+      "tick": 606,
+      "kind": "declined"
+    },
+    {
+      "actorId": 131,
+      "tick": 636,
+      "kind": "dance"
+    },
+    {
+      "actorId": 37,
+      "tick": 660,
+      "kind": "paired"
+    },
+    {
+      "actorId": 131,
+      "tick": 666,
+      "kind": "paired"
+    },
+    {
+      "actorId": 58,
+      "tick": 708,
+      "kind": "dance"
+    },
+    {
+      "actorId": 58,
+      "tick": 726,
+      "kind": "call"
+    },
+    {
+      "actorId": 58,
+      "tick": 744,
+      "kind": "declined"
+    },
+    {
+      "actorId": 16,
+      "tick": 744,
+      "kind": "declined"
+    }
+  ],
+  "errors": [],
+  "video": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\natural-flora-video\\page@17d2e077b72decea396780f5ec6e90c4.webm"
+}

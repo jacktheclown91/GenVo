@@ -1,0 +1,206 @@
+{
+  "scope": "Controlled player/reserve placement and 180 canonical vegetation phases for crop maturation. Actual resource inputs are charged; no genotype or biomass writes, no animal RNG edits. Native mouse inspection and feeding of an actually established clonal variant. This is a controlled fixture, not natural elapsed gameplay.",
+  "events": [
+    {
+      "name": "selected-summary",
+      "tick": 13,
+      "position": {
+        "x": 62.5,
+        "y": 109.5
+      },
+      "notice": "The gold ring marks you. WASD moves; right-click ground to move, or click an object for actions."
+    },
+    {
+      "name": "inspect-summary",
+      "tick": 16,
+      "position": {
+        "x": 62.5,
+        "y": 109.5
+      },
+      "notice": "The gold ring marks you. WASD moves; right-click ground to move, or click an object for actions."
+    },
+    {
+      "name": "inherited-inspect",
+      "tick": 30,
+      "position": {
+        "x": 62.5,
+        "y": 109.5
+      },
+      "notice": "The gold ring marks you. WASD moves; right-click ground to move, or click an object for actions."
+    },
+    {
+      "name": "inherited-fed",
+      "tick": 33,
+      "position": {
+        "x": 62.5,
+        "y": 109.5
+      },
+      "meal": {
+        "kind": "bramble",
+        "i": 14014,
+        "tissue": "crop",
+        "removed": 0.16,
+        "coat": 0,
+        "edible": 0.12479999337657877,
+        "viableSeeds": 0.03520000662342125,
+        "destroyedSeeds": 0,
+        "discarded": 0,
+        "genome": {
+          "schema": 2,
+          "id": "flora2-bramble-0.22000",
+          "resourceAlias": "bramble",
+          "traits": {
+            "growth": 0.032,
+            "waterNeed": 0.42,
+            "nutrition": 16,
+            "seedAllocation": 0.22,
+            "coatAllocation": 0
+          },
+          "reproduction": "clonal-propagule",
+          "mutationEnabled": true
+        },
+        "producerId": "bramble:14014:132",
+        "originCell": 14014,
+        "actorId": 109,
+        "tick": 31,
+        "parentGenomeId": "flora2-bramble-0.22000",
+        "mutation": 0,
+        "seedTransferComplete": true
+      },
+      "cargo": {
+        "bramble": {
+          "load": 0.03520000662342125,
+          "days": 1,
+          "genome": {
+            "schema": 2,
+            "id": "flora2-bramble-0.22000",
+            "resourceAlias": "bramble",
+            "traits": {
+              "growth": 0.032,
+              "waterNeed": 0.42,
+              "nutrition": 16,
+              "seedAllocation": 0.22,
+              "coatAllocation": 0
+            },
+            "reproduction": "clonal-propagule",
+            "mutationEnabled": true
+          },
+          "originCell": 14014,
+          "producerId": "bramble:14014:132",
+          "cohorts": {},
+          "sourceCells": [
+            14014
+          ]
+        }
+      },
+      "notice": "✓ Eat fruit · +5 energy · +4 water · carrying intact propagules"
+    }
+  ],
+  "errors": [],
+  "source": {
+    "x": 37.5,
+    "y": 65.5,
+    "i": 8357
+  },
+  "maturation": {
+    "animalRngPreserved": true,
+    "stats": {
+      "produced": 193864,
+      "mutated": 16885,
+      "establishedVariants": 57
+    },
+    "registry": 7,
+    "adults": 696,
+    "seedCohorts": 3461
+  },
+  "crop": {
+    "i": 14014,
+    "id": "flora2-bramble-0.22000",
+    "x": 62.5,
+    "y": 109.5,
+    "origin": {
+      "amount": 0.007218257439276909,
+      "originCell": 13887,
+      "producerId": "bramble:14014:132",
+      "parentGenomeId": "flora1-bramble",
+      "mutation": 0.01999999999999999,
+      "mode": "clonal",
+      "route": "local-release",
+      "genomeId": "flora2-bramble-0.22000",
+      "parentProducerId": "bramble:13887:founder",
+      "establishedDay": 1,
+      "establishedTick": 5
+    },
+    "genome": {
+      "schema": 2,
+      "id": "flora2-bramble-0.22000",
+      "resourceAlias": "bramble",
+      "traits": {
+        "growth": 0.032,
+        "waterNeed": 0.42,
+        "nutrition": 16,
+        "seedAllocation": 0.22,
+        "coatAllocation": 0
+      },
+      "reproduction": "clonal-propagule",
+      "mutationEnabled": true
+    },
+    "stock": 0.41035768389701843
+  },
+  "presentation": {
+    "summary": "Seed-rich fruiting plant\nEdible fruit · Viable seeds\nEating the fruit may disperse seeds. Crushing prevents those seeds from growing.",
+    "radial": "Berries\nApproach\nEat fruit\nCrush seeds\nInspect",
+    "toast": "The gold ring marks you. WASD moves; right-click ground to move, or click an object for actions."
+  },
+  "window": {
+    "bodyScroll": 439,
+    "windowScroll": 0,
+    "headerVisible": true,
+    "closeVisible": true,
+    "regionsDoNotOverlap": true,
+    "footerVisible": true
+  },
+  "inspector": {
+    "text": "FIELD OBSERVATION\nBerries\nSeed-rich fruiting plant\nClose\nEdible fruit · Viable seeds\nLikely outcomes\n\nEating the fruit may disperse seeds. Crushing prevents those seeds from growing.\n\nBiological details\nTissues and seed viability\n\nEdible tissue 0.320 · intact viable propagules 0.090 · coat 0.000\nThese are current standing tissue amounts; dispersal also requires survival and a suitable place to grow.\n\nGrowth resources\n\nStored energy limited\nStored energy 0.000 · soil water 0.378 · minerals 0.277\n\nInherited genetics\n\nflora2-bramble-0.22000\nclonal-propagule\ngrowth: 0.032\nwaterNeed: 0.42\nnutrition: 16\nseedAllocation: 0.22\ncoatAllocation: 0\n\nInteractions for your creature\nEat fruit\nAvailable now · Eat from this patch.\nCrush seeds\nUnavailable · A seed-cracking mouth is required, with edible kernels still present.\n\nChoose actions in the world radial menu.\n\nField observation · live",
+    "summaryHidden": true,
+    "radialHidden": true
+  },
+  "meal": {
+    "kind": "bramble",
+    "i": 14014,
+    "tissue": "crop",
+    "removed": 0.16,
+    "coat": 0,
+    "edible": 0.12479999337657877,
+    "viableSeeds": 0.03520000662342125,
+    "destroyedSeeds": 0,
+    "discarded": 0,
+    "genome": {
+      "schema": 2,
+      "id": "flora2-bramble-0.22000",
+      "resourceAlias": "bramble",
+      "traits": {
+        "growth": 0.032,
+        "waterNeed": 0.42,
+        "nutrition": 16,
+        "seedAllocation": 0.22,
+        "coatAllocation": 0
+      },
+      "reproduction": "clonal-propagule",
+      "mutationEnabled": true
+    },
+    "producerId": "bramble:14014:132",
+    "originCell": 14014,
+    "actorId": 109,
+    "tick": 31,
+    "parentGenomeId": "flora2-bramble-0.22000",
+    "mutation": 0,
+    "seedTransferComplete": true
+  },
+  "save": {
+    "floraParity": true,
+    "cohorts": 7,
+    "cargoParity": true
+  },
+  "video": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\clonal-flora-video\\page@8e538f943be08ba0c31102a2bee4e4f3.webm"
+}

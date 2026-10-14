@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "receipts": [
+    {
+      "seed": "ORGANIC-A",
+      "scope": "100 resource-only days, no animal lifecycle or field fixtures; not ecological balance proof",
+      "before": 5693.61556354013,
+      "after": 5693.615559597912,
+      "drift": -0.000003942218427255284,
+      "flora": {
+        "produced": 120862,
+        "mutated": 11085,
+        "establishedVariants": 952
+      },
+      "registeredGenotypes": 7,
+      "variantParentReceipts": 0,
+      "seedCohorts": 38290,
+      "snapshotBytes": 18490834,
+      "phaseMs": {
+        "mean": 30.875099999999996,
+        "max": 46.908800000000156
+      }
+    },
+    {
+      "seed": "ORGANIC-B",
+      "scope": "100 resource-only days, no animal lifecycle or field fixtures; not ecological balance proof",
+      "before": 5762.228564304998,
+      "after": 5762.228569088011,
+      "drift": 0.000004783012627740391,
+      "flora": {
+        "produced": 119204,
+        "mutated": 10926,
+        "establishedVariants": 937
+      },
+      "registeredGenotypes": 7,
+      "variantParentReceipts": 0,
+      "seedCohorts": 37868,
+      "snapshotBytes": 18412206,
+      "phaseMs": {
+        "mean": 27.341568999999986,
+        "max": 40.28939999999966
+      }
+    },
+    {
+      "seed": "ORGANIC-C",
+      "scope": "100 resource-only days, no animal lifecycle or field fixtures; not ecological balance proof",
+      "before": 5663.465686277837,
+      "after": 5663.465689339109,
+      "drift": 0.0000030612718546763062,
+      "flora": {
+        "produced": 119995,
+        "mutated": 11321,
+        "establishedVariants": 935
+      },
+      "registeredGenotypes": 7,
+      "variantParentReceipts": 0,
+      "seedCohorts": 38284,
+      "snapshotBytes": 18513372,
+      "phaseMs": {
+        "mean": 28.177070000000093,
+        "max": 38.34470000000147
+      }
+    }
+  ]
+}

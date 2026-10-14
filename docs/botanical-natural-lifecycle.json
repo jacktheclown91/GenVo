@@ -1,0 +1,669 @@
+{
+  "status": "PASS",
+  "receipts": [
+    {
+      "seed": "NATURAL-POLLEN-A",
+      "scope": "600 simulation seconds through normal full update/lifecycle, accelerated wall clock; no actor/terrain/reserve/anatomy/genotype fixtures or player. Not a human playtest.",
+      "elapsedMs": 50542.995299999995,
+      "samples": [
+        {
+          "tick": 480,
+          "day": 11,
+          "living": 196,
+          "births": 0,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 25.770319432020187,
+            "ovulesInvested": 54.60976494848728,
+            "delivered": 4225,
+            "recognized": 2881,
+            "rejected": 1344,
+            "fertilized": 2881,
+            "viable": 1651,
+            "nonviable": 1,
+            "released": 9.797058165073395,
+            "selfed": 2881,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 960,
+          "day": 21,
+          "living": 196,
+          "births": 0,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 139.01565626263618,
+            "ovulesInvested": 143.12421260774136,
+            "delivered": 37225,
+            "recognized": 25314,
+            "rejected": 11911,
+            "fertilized": 25314,
+            "viable": 23146,
+            "nonviable": 4,
+            "released": 66.69291257858276,
+            "selfed": 25314,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 1440,
+          "day": 31,
+          "living": 203,
+          "births": 7,
+          "carriers": 1,
+          "botanical": {
+            "pollenProduced": 413.00338853895664,
+            "ovulesInvested": 274.84085597097874,
+            "delivered": 93731,
+            "recognized": 62190,
+            "rejected": 31541,
+            "fertilized": 62190,
+            "viable": 56192,
+            "nonviable": 15,
+            "released": 169.63070195913315,
+            "selfed": 62190,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 1920,
+          "day": 41,
+          "living": 221,
+          "births": 26,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 648.699534073472,
+            "ovulesInvested": 347.495892688632,
+            "delivered": 149650,
+            "recognized": 97778,
+            "rejected": 51872,
+            "fertilized": 97778,
+            "viable": 92985,
+            "nonviable": 20,
+            "released": 275.66563978791237,
+            "selfed": 97778,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 2400,
+          "day": 51,
+          "living": 249,
+          "births": 55,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 854.6016802489758,
+            "ovulesInvested": 437.1489825248718,
+            "delivered": 194120,
+            "recognized": 126473,
+            "rejected": 67647,
+            "fertilized": 126473,
+            "viable": 125726,
+            "nonviable": 22,
+            "released": 365.41435062885284,
+            "selfed": 126473,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 2880,
+          "day": 61,
+          "living": 256,
+          "births": 63,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 982.4859093129635,
+            "ovulesInvested": 496.68903172016144,
+            "delivered": 218842,
+            "recognized": 142351,
+            "rejected": 76491,
+            "fertilized": 142351,
+            "viable": 140139,
+            "nonviable": 26,
+            "released": 415.28415067493916,
+            "selfed": 142351,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 3360,
+          "day": 71,
+          "living": 265,
+          "births": 72,
+          "carriers": 1,
+          "botanical": {
+            "pollenProduced": 1053.0782484859228,
+            "ovulesInvested": 522.2529776394367,
+            "delivered": 231995,
+            "recognized": 150509,
+            "rejected": 81486,
+            "fertilized": 150509,
+            "viable": 149725,
+            "nonviable": 27,
+            "released": 454.48904716968536,
+            "selfed": 150509,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 3840,
+          "day": 81,
+          "living": 268,
+          "births": 77,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 1081.238578647375,
+            "ovulesInvested": 532.2278981357813,
+            "delivered": 237277,
+            "recognized": 153807,
+            "rejected": 83470,
+            "fertilized": 153807,
+            "viable": 153421,
+            "nonviable": 29,
+            "released": 465.31560365855694,
+            "selfed": 153804,
+            "crossed": 3
+          }
+        },
+        {
+          "tick": 4320,
+          "day": 91,
+          "living": 280,
+          "births": 89,
+          "carriers": 2,
+          "botanical": {
+            "pollenProduced": 1093.1428406834602,
+            "ovulesInvested": 537.4849936813116,
+            "delivered": 239530,
+            "recognized": 155248,
+            "rejected": 84282,
+            "fertilized": 155248,
+            "viable": 155034,
+            "nonviable": 29,
+            "released": 469.98555321991444,
+            "selfed": 155245,
+            "crossed": 3
+          }
+        },
+        {
+          "tick": 4800,
+          "day": 101,
+          "living": 286,
+          "births": 98,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 1109.074642509222,
+            "ovulesInvested": 544.5463011711836,
+            "delivered": 242189,
+            "recognized": 157084,
+            "rejected": 85105,
+            "fertilized": 157084,
+            "viable": 156789,
+            "nonviable": 29,
+            "released": 476.48441894352436,
+            "selfed": 157081,
+            "crossed": 3
+          }
+        }
+      ],
+      "botanical": {
+        "pollenProduced": 1109.074642509222,
+        "ovulesInvested": 544.5463011711836,
+        "delivered": 242189,
+        "recognized": 157084,
+        "rejected": 85105,
+        "fertilized": 157084,
+        "viable": 156789,
+        "nonviable": 29,
+        "released": 476.48441894352436,
+        "selfed": 157081,
+        "crossed": 3
+      },
+      "saveParity": true
+    },
+    {
+      "seed": "NATURAL-POLLEN-B",
+      "scope": "600 simulation seconds through normal full update/lifecycle, accelerated wall clock; no actor/terrain/reserve/anatomy/genotype fixtures or player. Not a human playtest.",
+      "elapsedMs": 48757.729699999996,
+      "samples": [
+        {
+          "tick": 480,
+          "day": 11,
+          "living": 196,
+          "births": 0,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 26.218591660261154,
+            "ovulesInvested": 57.77293121814728,
+            "delivered": 4212,
+            "recognized": 2981,
+            "rejected": 1231,
+            "fertilized": 2981,
+            "viable": 1583,
+            "nonviable": 1,
+            "released": 9.259588465094566,
+            "selfed": 2981,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 960,
+          "day": 21,
+          "living": 196,
+          "births": 0,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 151.00511313974857,
+            "ovulesInvested": 153.61461643874645,
+            "delivered": 40727,
+            "recognized": 27853,
+            "rejected": 12874,
+            "fertilized": 27853,
+            "viable": 25076,
+            "nonviable": 2,
+            "released": 72.54779326915741,
+            "selfed": 27853,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 1440,
+          "day": 31,
+          "living": 215,
+          "births": 19,
+          "carriers": 2,
+          "botanical": {
+            "pollenProduced": 447.08458618819714,
+            "ovulesInvested": 257.8266582638025,
+            "delivered": 96787,
+            "recognized": 64284,
+            "rejected": 32503,
+            "fertilized": 64284,
+            "viable": 61718,
+            "nonviable": 14,
+            "released": 174.49556308984756,
+            "selfed": 64284,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 1920,
+          "day": 41,
+          "living": 230,
+          "births": 34,
+          "carriers": 1,
+          "botanical": {
+            "pollenProduced": 650.3280485421419,
+            "ovulesInvested": 348.2324564754963,
+            "delivered": 152072,
+            "recognized": 99106,
+            "rejected": 52966,
+            "fertilized": 99106,
+            "viable": 97812,
+            "nonviable": 18,
+            "released": 276.4189498871565,
+            "selfed": 99106,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 2400,
+          "day": 51,
+          "living": 244,
+          "births": 49,
+          "carriers": 2,
+          "botanical": {
+            "pollenProduced": 855.3126469552517,
+            "ovulesInvested": 434.7886721640825,
+            "delivered": 195435,
+            "recognized": 126482,
+            "rejected": 68953,
+            "fertilized": 126482,
+            "viable": 125943,
+            "nonviable": 25,
+            "released": 361.2781959474087,
+            "selfed": 126482,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 2880,
+          "day": 61,
+          "living": 254,
+          "births": 60,
+          "carriers": 1,
+          "botanical": {
+            "pollenProduced": 970.8072902858257,
+            "ovulesInvested": 488.6597826182842,
+            "delivered": 216621,
+            "recognized": 139420,
+            "rejected": 77201,
+            "fertilized": 139420,
+            "viable": 138199,
+            "nonviable": 26,
+            "released": 413.0928687900305,
+            "selfed": 139420,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 3360,
+          "day": 71,
+          "living": 261,
+          "births": 68,
+          "carriers": 1,
+          "botanical": {
+            "pollenProduced": 1029.3711297363043,
+            "ovulesInvested": 518.7766869366169,
+            "delivered": 229100,
+            "recognized": 147013,
+            "rejected": 82087,
+            "fertilized": 147013,
+            "viable": 146205,
+            "nonviable": 27,
+            "released": 447.61450181901455,
+            "selfed": 147013,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 3840,
+          "day": 81,
+          "living": 262,
+          "births": 69,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 1058.362312361598,
+            "ovulesInvested": 528.0128649324179,
+            "delivered": 234799,
+            "recognized": 150370,
+            "rejected": 84429,
+            "fertilized": 150370,
+            "viable": 150224,
+            "nonviable": 29,
+            "released": 458.7377506047487,
+            "selfed": 150370,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 4320,
+          "day": 91,
+          "living": 261,
+          "births": 70,
+          "carriers": 1,
+          "botanical": {
+            "pollenProduced": 1069.9450221806765,
+            "ovulesInvested": 533.1541424840689,
+            "delivered": 237174,
+            "recognized": 151837,
+            "rejected": 85337,
+            "fertilized": 151837,
+            "viable": 151644,
+            "nonviable": 29,
+            "released": 462.8161650002003,
+            "selfed": 151837,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 4800,
+          "day": 101,
+          "living": 263,
+          "births": 76,
+          "carriers": 1,
+          "botanical": {
+            "pollenProduced": 1087.897819250822,
+            "ovulesInvested": 538.8968280404806,
+            "delivered": 239958,
+            "recognized": 153425,
+            "rejected": 86533,
+            "fertilized": 153425,
+            "viable": 153307,
+            "nonviable": 29,
+            "released": 468.2134536206722,
+            "selfed": 153425,
+            "crossed": 0
+          }
+        }
+      ],
+      "botanical": {
+        "pollenProduced": 1087.897819250822,
+        "ovulesInvested": 538.8968280404806,
+        "delivered": 239958,
+        "recognized": 153425,
+        "rejected": 86533,
+        "fertilized": 153425,
+        "viable": 153307,
+        "nonviable": 29,
+        "released": 468.2134536206722,
+        "selfed": 153425,
+        "crossed": 0
+      },
+      "saveParity": true
+    },
+    {
+      "seed": "NATURAL-POLLEN-C",
+      "scope": "600 simulation seconds through normal full update/lifecycle, accelerated wall clock; no actor/terrain/reserve/anatomy/genotype fixtures or player. Not a human playtest.",
+      "elapsedMs": 52548.9828,
+      "samples": [
+        {
+          "tick": 480,
+          "day": 11,
+          "living": 196,
+          "births": 0,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 25.691999286413193,
+            "ovulesInvested": 57.59131683409214,
+            "delivered": 4252,
+            "recognized": 3064,
+            "rejected": 1188,
+            "fertilized": 3064,
+            "viable": 1725,
+            "nonviable": 1,
+            "released": 9.39126667380333,
+            "selfed": 3064,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 960,
+          "day": 21,
+          "living": 197,
+          "births": 1,
+          "carriers": 1,
+          "botanical": {
+            "pollenProduced": 137.61722876131535,
+            "ovulesInvested": 147.7356240004301,
+            "delivered": 37511,
+            "recognized": 25640,
+            "rejected": 11871,
+            "fertilized": 25640,
+            "viable": 23123,
+            "nonviable": 6,
+            "released": 66.1223434060812,
+            "selfed": 25640,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 1440,
+          "day": 31,
+          "living": 214,
+          "births": 20,
+          "carriers": 1,
+          "botanical": {
+            "pollenProduced": 425.90305753052235,
+            "ovulesInvested": 285.79589779675007,
+            "delivered": 96632,
+            "recognized": 64206,
+            "rejected": 32426,
+            "fertilized": 64206,
+            "viable": 57436,
+            "nonviable": 11,
+            "released": 167.04457700252533,
+            "selfed": 64206,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 1920,
+          "day": 41,
+          "living": 236,
+          "births": 44,
+          "carriers": 1,
+          "botanical": {
+            "pollenProduced": 679.8259189128876,
+            "ovulesInvested": 376.47867903113365,
+            "delivered": 158400,
+            "recognized": 103006,
+            "rejected": 55394,
+            "fertilized": 103006,
+            "viable": 98581,
+            "nonviable": 21,
+            "released": 301.65736308693886,
+            "selfed": 103006,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 2400,
+          "day": 51,
+          "living": 249,
+          "births": 58,
+          "carriers": 2,
+          "botanical": {
+            "pollenProduced": 902.6131083369255,
+            "ovulesInvested": 470.1053546369076,
+            "delivered": 205951,
+            "recognized": 133255,
+            "rejected": 72696,
+            "fertilized": 133255,
+            "viable": 130880,
+            "nonviable": 29,
+            "released": 391.5849726200104,
+            "selfed": 133255,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 2880,
+          "day": 61,
+          "living": 265,
+          "births": 75,
+          "carriers": 2,
+          "botanical": {
+            "pollenProduced": 1034.258293390274,
+            "ovulesInvested": 520.8772554844618,
+            "delivered": 229833,
+            "recognized": 148061,
+            "rejected": 81772,
+            "fertilized": 148061,
+            "viable": 146855,
+            "nonviable": 31,
+            "released": 446.3944807201624,
+            "selfed": 148061,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 3360,
+          "day": 71,
+          "living": 273,
+          "births": 84,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 1097.1424274593592,
+            "ovulesInvested": 544.9882506579161,
+            "delivered": 242232,
+            "recognized": 155884,
+            "rejected": 86348,
+            "fertilized": 155884,
+            "viable": 155572,
+            "nonviable": 32,
+            "released": 478.1450287848711,
+            "selfed": 155884,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 3840,
+          "day": 81,
+          "living": 273,
+          "births": 85,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 1119.199536189437,
+            "ovulesInvested": 554.5913132280111,
+            "delivered": 246887,
+            "recognized": 158927,
+            "rejected": 87960,
+            "fertilized": 158927,
+            "viable": 158761,
+            "nonviable": 33,
+            "released": 487.1505891531706,
+            "selfed": 158927,
+            "crossed": 0
+          }
+        },
+        {
+          "tick": 4320,
+          "day": 91,
+          "living": 277,
+          "births": 91,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 1129.5035594701767,
+            "ovulesInvested": 559.5211713016033,
+            "delivered": 248912,
+            "recognized": 160282,
+            "rejected": 88630,
+            "fertilized": 160282,
+            "viable": 160042,
+            "nonviable": 33,
+            "released": 491.04274612665176,
+            "selfed": 160281,
+            "crossed": 1
+          }
+        },
+        {
+          "tick": 4800,
+          "day": 101,
+          "living": 276,
+          "births": 92,
+          "carriers": 0,
+          "botanical": {
+            "pollenProduced": 1142.9019156694412,
+            "ovulesInvested": 564.4348644018173,
+            "delivered": 251025,
+            "recognized": 161650,
+            "rejected": 89375,
+            "fertilized": 161650,
+            "viable": 161453,
+            "nonviable": 33,
+            "released": 495.7253452986479,
+            "selfed": 161649,
+            "crossed": 1
+          }
+        }
+      ],
+      "botanical": {
+        "pollenProduced": 1142.9019156694412,
+        "ovulesInvested": 564.4348644018173,
+        "delivered": 251025,
+        "recognized": 161650,
+        "rejected": 89375,
+        "fertilized": 161650,
+        "viable": 161453,
+        "nonviable": 33,
+        "released": 495.7253452986479,
+        "selfed": 161649,
+        "crossed": 1
+      },
+      "saveParity": true
+    }
+  ],
+  "limits": "Outcomes are observations, not guaranteed reproductive success or stable ecological balance."
+}

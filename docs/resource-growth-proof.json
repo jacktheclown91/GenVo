@@ -1,0 +1,414 @@
+{
+  "scope": "Controlled depleted-mineral crop plus separate fresh kernel world: controlled player placement/reserves and a valid kernel-beak variant; actual natural crop stock, mouse feeding, keyboard movement, real-clock gut passage and canonical germination. Only the selected crop soil-mineral store is staged to zero; water/energy are staged sufficient. Crop biomass, seeds, clock and RNG are not edited.",
+  "events": [
+    {
+      "name": "fruit-options",
+      "tick": 11,
+      "position": {
+        "x": 37.5,
+        "y": 65.5
+      },
+      "notice": "The gold ring marks you. WASD moves; right-click ground to move, or click an object for actions."
+    },
+    {
+      "name": "fruit-carried",
+      "tick": 12,
+      "position": {
+        "x": 37.5,
+        "y": 65.5
+      },
+      "meal": {
+        "kind": "bramble",
+        "i": 8357,
+        "tissue": "crop",
+        "removed": 0.16,
+        "coat": 0,
+        "edible": 0.1279999992848418,
+        "viableSeeds": 0.03200000071515821,
+        "destroyedSeeds": 0,
+        "discarded": 0,
+        "genome": {
+          "schema": 1,
+          "id": "flora1-bramble",
+          "resourceAlias": "bramble",
+          "traits": {
+            "growth": 0.032,
+            "waterNeed": 0.42,
+            "nutrition": 16,
+            "seedAllocation": 0.2,
+            "coatAllocation": 0
+          },
+          "reproduction": "propagule",
+          "mutationEnabled": false
+        },
+        "producerId": "bramble:8357:founder",
+        "originCell": 8357,
+        "actorId": 109,
+        "tick": 11,
+        "seedTransferComplete": true
+      },
+      "cargo": {
+        "bramble": {
+          "load": 0.03200000071515821,
+          "days": 1,
+          "genome": {
+            "schema": 1,
+            "id": "flora1-bramble",
+            "resourceAlias": "bramble",
+            "traits": {
+              "growth": 0.032,
+              "waterNeed": 0.42,
+              "nutrition": 16,
+              "seedAllocation": 0.2,
+              "coatAllocation": 0
+            },
+            "reproduction": "propagule",
+            "mutationEnabled": false
+          },
+          "originCell": 8357,
+          "producerId": "bramble:8357:founder",
+          "sourceCells": [
+            8357
+          ]
+        }
+      },
+      "notice": "✓ Eat fruit · +5 energy · +4 water · carrying intact propagules"
+    },
+    {
+      "name": "nutrient-limited",
+      "tick": 50,
+      "position": {
+        "x": 37.5,
+        "y": 65.5
+      },
+      "meal": {
+        "kind": "bramble",
+        "i": 8357,
+        "tissue": "crop",
+        "removed": 0.16,
+        "coat": 0,
+        "edible": 0.1279999992848418,
+        "viableSeeds": 0.03200000071515821,
+        "destroyedSeeds": 0,
+        "discarded": 0,
+        "genome": {
+          "schema": 1,
+          "id": "flora1-bramble",
+          "resourceAlias": "bramble",
+          "traits": {
+            "growth": 0.032,
+            "waterNeed": 0.42,
+            "nutrition": 16,
+            "seedAllocation": 0.2,
+            "coatAllocation": 0
+          },
+          "reproduction": "propagule",
+          "mutationEnabled": false
+        },
+        "producerId": "bramble:8357:founder",
+        "originCell": 8357,
+        "actorId": 109,
+        "tick": 11,
+        "seedTransferComplete": true
+      },
+      "cargo": {},
+      "notice": "✓ Berries · Nutrient limited. Edible tissue 0.14 · intact propagules 0.03 · coat 0.00. Fruit/pod feeding can disperse seeds; cracking destroys them."
+    },
+    {
+      "name": "seed-deposit",
+      "tick": 62,
+      "position": {
+        "x": 40.278101798556435,
+        "y": 65.5
+      },
+      "meal": {
+        "kind": "bramble",
+        "i": 8357,
+        "tissue": "crop",
+        "removed": 0.16,
+        "coat": 0,
+        "edible": 0.1279999992848418,
+        "viableSeeds": 0.03200000071515821,
+        "destroyedSeeds": 0,
+        "discarded": 0,
+        "genome": {
+          "schema": 1,
+          "id": "flora1-bramble",
+          "resourceAlias": "bramble",
+          "traits": {
+            "growth": 0.032,
+            "waterNeed": 0.42,
+            "nutrition": 16,
+            "seedAllocation": 0.2,
+            "coatAllocation": 0
+          },
+          "reproduction": "propagule",
+          "mutationEnabled": false
+        },
+        "producerId": "bramble:8357:founder",
+        "originCell": 8357,
+        "actorId": 109,
+        "tick": 11,
+        "seedTransferComplete": true
+      },
+      "cargo": {},
+      "notice": "✓ Berries · Nutrient limited. Edible tissue 0.14 · intact propagules 0.03 · coat 0.00. Fruit/pod feeding can disperse seeds; cracking destroys them."
+    },
+    {
+      "name": "seed-read",
+      "tick": 64,
+      "position": {
+        "x": 40.278101798556435,
+        "y": 65.5
+      },
+      "meal": {
+        "kind": "bramble",
+        "i": 8357,
+        "tissue": "crop",
+        "removed": 0.16,
+        "coat": 0,
+        "edible": 0.1279999992848418,
+        "viableSeeds": 0.03200000071515821,
+        "destroyedSeeds": 0,
+        "discarded": 0,
+        "genome": {
+          "schema": 1,
+          "id": "flora1-bramble",
+          "resourceAlias": "bramble",
+          "traits": {
+            "growth": 0.032,
+            "waterNeed": 0.42,
+            "nutrition": 16,
+            "seedAllocation": 0.2,
+            "coatAllocation": 0
+          },
+          "reproduction": "propagule",
+          "mutationEnabled": false
+        },
+        "producerId": "bramble:8357:founder",
+        "originCell": 8357,
+        "actorId": 109,
+        "tick": 11,
+        "seedTransferComplete": true
+      },
+      "cargo": {},
+      "notice": "✓ Berries · Nutrient limited. Edible tissue 0.14 · intact propagules 0.03 · coat 0.00. Fruit/pod feeding can disperse seeds; cracking destroys them."
+    },
+    {
+      "name": "kernel-options",
+      "tick": 7,
+      "position": {
+        "x": 37.5,
+        "y": 65.5
+      },
+      "notice": "The gold ring marks you. WASD moves; right-click ground to move, or click an object for actions."
+    },
+    {
+      "name": "kernel-cracked",
+      "tick": 10,
+      "position": {
+        "x": 37.5,
+        "y": 65.5
+      },
+      "meal": {
+        "kind": "bramble",
+        "i": 8357,
+        "tissue": "kernel",
+        "removed": 0.16,
+        "coat": 0,
+        "edible": 0.03200000071515821,
+        "viableSeeds": 0,
+        "destroyedSeeds": 0.03200000071515821,
+        "discarded": 0.1279999992848418,
+        "genome": {
+          "schema": 1,
+          "id": "flora1-bramble",
+          "resourceAlias": "bramble",
+          "traits": {
+            "growth": 0.032,
+            "waterNeed": 0.42,
+            "nutrition": 16,
+            "seedAllocation": 0.2,
+            "coatAllocation": 0
+          },
+          "reproduction": "propagule",
+          "mutationEnabled": false
+        },
+        "producerId": "bramble:8357:founder",
+        "originCell": 8357,
+        "actorId": 109,
+        "tick": 8,
+        "seedTransferComplete": true
+      },
+      "notice": "✓ Crush seeds · +2 energy · kernels consumed; propagules destroyed"
+    }
+  ],
+  "errors": [],
+  "source": {
+    "x": 37.5,
+    "y": 65.5,
+    "i": 8357
+  },
+  "resource": {
+    "state": 3,
+    "water": 1.99712535438044,
+    "minerals": 0.00037312051281332973,
+    "energy": 0.13369631713355015,
+    "totals": {
+      "rain": 638.8057930577928,
+      "shoreInflow": 11.069600164890241,
+      "evaporation": 683.5669000000905,
+      "runoff": 0,
+      "photosynthesis": 392.4055091584631,
+      "respiration": 47.65728778738517,
+      "growth": 223.50550499536607,
+      "waterUsed": 111.75275249768303,
+      "mineralsUsed": 22.35055049953654,
+      "mineralized": 0.5567211528188497,
+      "plantLitter": 5.566635504513583,
+      "seedLitter": 0.0005760006606578827,
+      "reserveExport": 0.8649180384735758,
+      "biomassExported": 0.16,
+      "biomassImported": 0.03200000071515821
+    },
+    "receipts": [
+      {
+        "type": "transfer",
+        "kind": "bramble",
+        "i": 8357,
+        "amount": 0.16,
+        "direction": "out",
+        "reason": "meal-and-carried-seeds",
+        "tick": 11,
+        "day": 1
+      },
+      {
+        "type": "transfer",
+        "kind": "bramble",
+        "i": 8357,
+        "amount": 0.03200000071515821,
+        "direction": "in",
+        "reason": "gut-seeds",
+        "tick": 48,
+        "day": 1
+      },
+      {
+        "type": "growth",
+        "kind": "bramble",
+        "i": 8357,
+        "before": 0.17337879538536072,
+        "after": 0.17337879538536072,
+        "requested": 0.011090022277111533,
+        "waterBefore": 1.99712535438044,
+        "waterAfter": 1.99712535438044,
+        "mineralsBefore": 0,
+        "mineralsAfter": 0,
+        "energyBefore": 0.13369631713355015,
+        "energyAfter": 0.13369631713355015,
+        "limit": 3,
+        "tick": 48,
+        "day": 1
+      }
+    ]
+  },
+  "fruit": {
+    "kind": "bramble",
+    "i": 8357,
+    "tissue": "crop",
+    "removed": 0.16,
+    "coat": 0,
+    "edible": 0.1279999992848418,
+    "viableSeeds": 0.03200000071515821,
+    "destroyedSeeds": 0,
+    "discarded": 0,
+    "genome": {
+      "schema": 1,
+      "id": "flora1-bramble",
+      "resourceAlias": "bramble",
+      "traits": {
+        "growth": 0.032,
+        "waterNeed": 0.42,
+        "nutrition": 16,
+        "seedAllocation": 0.2,
+        "coatAllocation": 0
+      },
+      "reproduction": "propagule",
+      "mutationEnabled": false
+    },
+    "producerId": "bramble:8357:founder",
+    "originCell": 8357,
+    "actorId": 109,
+    "tick": 11,
+    "seedTransferComplete": true
+  },
+  "deposit": {
+    "trace": {
+      "id": 38,
+      "ownerId": 109,
+      "type": "seed",
+      "x": 37.5,
+      "y": 65.5,
+      "food": "bramble",
+      "dir": 0,
+      "tick": 48,
+      "medium": "land",
+      "limbs": 4,
+      "mass": 1.45,
+      "genomeId": "flora1-bramble",
+      "amount": 0.03200000071515821,
+      "originCell": 8357,
+      "producerId": "bramble:8357:founder"
+    },
+    "i": 8357,
+    "biomass": 0.17337879538536072,
+    "bank": 0.03142400085926056
+  },
+  "transportSave": {
+    "bankParity": true,
+    "origins": 0,
+    "originParity": true
+  },
+  "kernelSource": {
+    "x": 37.5,
+    "y": 65.5,
+    "i": 8357
+  },
+  "kernel": {
+    "kind": "bramble",
+    "i": 8357,
+    "tissue": "kernel",
+    "removed": 0.16,
+    "coat": 0,
+    "edible": 0.03200000071515821,
+    "viableSeeds": 0,
+    "destroyedSeeds": 0.03200000071515821,
+    "discarded": 0.1279999992848418,
+    "genome": {
+      "schema": 1,
+      "id": "flora1-bramble",
+      "resourceAlias": "bramble",
+      "traits": {
+        "growth": 0.032,
+        "waterNeed": 0.42,
+        "nutrition": 16,
+        "seedAllocation": 0.2,
+        "coatAllocation": 0
+      },
+      "reproduction": "propagule",
+      "mutationEnabled": false
+    },
+    "producerId": "bramble:8357:founder",
+    "originCell": 8357,
+    "actorId": 109,
+    "tick": 8,
+    "seedTransferComplete": true
+  },
+  "kernelPose": "crack",
+  "save": {
+    "resourceParity": true,
+    "origins": 0,
+    "bankGenotypes": 0,
+    "events": 0
+  },
+  "video": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\resource-growth-video\\page@7340863bb50732fca77a6d9c9061e0b4.webm"
+}

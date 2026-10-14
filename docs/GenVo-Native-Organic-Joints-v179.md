@@ -1,0 +1,9 @@
+# Native organic joint tissue review
+
+Reauthored hip and knee tissue in eight native limb assets (128 frames): walking, runner, spring, sturdy, padded, webbed, grasper and digging forelimb. Asymmetric muscle insertions, underside folds and support/flex shading replace abrupt terminal scraps. Foot material and claws/webbing remain intact. The first circular-highlight candidate was visually rejected as mechanical; the final candidate uses uneven tissue planes. Source authoring is repeatable from retained originals in reports/native-joints-before-v179. No whole-creature template or biological species rule was added.
+
+Rebuilt all 79 runtime indexed assets with exact RGBA round-trip validation (1264 frames). native-part-catalog, native-contact-expression-v174, native-inherited-pigment and limb-articulation passed. Real Chromium loaded all assets without errors and captured normal/close world movement plus actual seeded-anatomy motion. Species-label-only render invariance remains exact (0 mismatched channels, 3402 opaque pixels). No discovery coverage is claimed for this run (observedBodies 0).
+
+Inspected final native contact sheet, enlarged moving creatures and close gameplay frame. Joint surfaces now have fuller tissue and fewer fitting-like circles. The change is modest at normal zoom; limb/body seams and oversized upper appendages remain visible. Natural creature artwork and animation acceptance remain incomplete. Legacy fixed biological species rules remain open.
+
+Evidence: native-organic-joints-v179.png; runtime-v179-gameplay.png; runtime-v179-gameplay-close.png; runtime-v179-moving-creatures.png; runtime-v179-moving-creatures-next.png; runtime-v179-motion-review.webm; runtime-v179-proof.json; runtime-v179-errors.json. The enlarged anatomy overlay supplements actual world proof.

@@ -1,0 +1,217 @@
+{
+  "scope": "Reviewer-driven fresh-world browser walkthrough; no actor, anatomy, stock, readiness or clock staging. Not a first-time human comprehension test.",
+  "viewport": {
+    "width": 800,
+    "height": 600
+  },
+  "events": [
+    {
+      "name": "start",
+      "day": 1,
+      "tick": 6,
+      "alive": true,
+      "position": {
+        "x": 112.5,
+        "y": 86.5
+      },
+      "energy": 114.02708418129698,
+      "hydration": 102.548872,
+      "action": null,
+      "renderedPose": {
+        "action": "idle",
+        "tick": 6
+      },
+      "guide": "0/3Your first goals○ Fed and watered · ○ Mate · ○ Home · next: the gold ring marks your creature · WASD / arrows move",
+      "controls": "InteractEDrinkShift+EAttackSpaceBraceJRest"
+    },
+    {
+      "name": "move",
+      "day": 1,
+      "tick": 13,
+      "alive": true,
+      "position": {
+        "x": 114.22015638836152,
+        "y": 86.5
+      },
+      "energy": 113.94401044770133,
+      "hydration": 102.497744,
+      "action": null,
+      "renderedPose": {
+        "action": "move",
+        "tick": 13
+      },
+      "guide": "0/3Your first goals○ Fed and watered · ○ Mate · ○ Home · next: click water for Approach & Drink · Shift+E drinks nearby",
+      "controls": "InteractEDrinkShift+EAttackSpaceBraceJRest"
+    },
+    {
+      "name": "food-options",
+      "day": 1,
+      "tick": 15,
+      "alive": true,
+      "position": {
+        "x": 114.22015638836152,
+        "y": 86.5
+      },
+      "energy": 113.94401044770133,
+      "hydration": 102.497744,
+      "action": null,
+      "renderedPose": {
+        "action": "move",
+        "tick": 15
+      },
+      "guide": "0/3Your first goals○ Fed and watered · ○ Mate · ○ Home · next: click water for Approach & Drink · Shift+E drinks nearby",
+      "controls": "InteractEDrinkShift+EAttackSpaceBraceJRest"
+    },
+    {
+      "name": "food-result",
+      "day": 1,
+      "tick": 17,
+      "alive": true,
+      "position": {
+        "x": 113.70776937906234,
+        "y": 86.5
+      },
+      "energy": 119.21940583361825,
+      "hydration": 103.497744,
+      "action": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "sunmoss",
+        "energyGain": 5.284358367389061,
+        "waterGain": 1,
+        "tick": 17
+      },
+      "renderedPose": {
+        "action": "eat",
+        "tick": 17
+      },
+      "guide": "0/3Your first goals◐ Fed · now drink · ○ Mate · ○ Home · next: click water for Approach & Drink · Shift+E drinks nearby",
+      "controls": "InteractEDrinkShift+EAttackSpaceBraceJRest"
+    },
+    {
+      "name": "water-options",
+      "day": 1,
+      "tick": 19,
+      "alive": true,
+      "position": {
+        "x": 113.70776937906234,
+        "y": 86.5
+      },
+      "energy": 119.16642210925049,
+      "hydration": 103.44661599999999,
+      "action": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "sunmoss",
+        "energyGain": 5.284358367389061,
+        "waterGain": 1,
+        "tick": 17
+      },
+      "renderedPose": {
+        "action": "eat",
+        "tick": 19
+      },
+      "guide": "0/3Your first goals◐ Fed · now drink · ○ Mate · ○ Home · next: click water for Approach & Drink · Shift+E drinks nearby",
+      "controls": "InteractEDrinkShift+EAttackSpaceBraceJRest"
+    },
+    {
+      "name": "water-result",
+      "day": 1,
+      "tick": 27,
+      "alive": true,
+      "position": {
+        "x": 113.63013110864858,
+        "y": 84.66560626913193
+      },
+      "energy": 119.08072763239169,
+      "hydration": 114,
+      "action": {
+        "type": "drink",
+        "actorId": 109,
+        "tick": 26
+      },
+      "renderedPose": {
+        "action": "drink",
+        "tick": 27
+      },
+      "guide": "1/3Your first goals✓ Fed and watered · ○ Mate · ○ Home · next: click a creature, then Court · C also courts; M shows details",
+      "controls": "InteractEDrinkShift+EAttackSpaceBraceJRest"
+    },
+    {
+      "name": "creature",
+      "day": 1,
+      "tick": 28,
+      "alive": true,
+      "position": {
+        "x": 113.63013110864858,
+        "y": 84.66560626913193
+      },
+      "energy": 119.08072763239169,
+      "hydration": 114,
+      "action": {
+        "type": "drink",
+        "actorId": 109,
+        "tick": 26
+      },
+      "renderedPose": {
+        "action": "drink",
+        "tick": 28
+      },
+      "guide": "1/3Your first goals✓ Fed and watered · ○ Mate · ○ Home · next: click a creature, then Court · C also courts; M shows details",
+      "controls": "InteractEDrinkShift+EAttackSpaceBraceJRest"
+    },
+    {
+      "name": "inspect",
+      "day": 1,
+      "tick": 29,
+      "alive": true,
+      "position": {
+        "x": 113.63013110864858,
+        "y": 84.66560626913193
+      },
+      "energy": 119.08072763239169,
+      "hydration": 114,
+      "action": {
+        "type": "drink",
+        "actorId": 109,
+        "tick": 26
+      },
+      "renderedPose": {
+        "action": "drink",
+        "tick": 29
+      },
+      "guide": "1/3Your first goals✓ Fed and watered · ○ Mate · ○ Home · next: click a creature, then Court · C also courts; M shows details",
+      "controls": "InteractEDrinkShift+EAttackSpaceBraceJRest"
+    },
+    {
+      "name": "interact-help",
+      "day": 1,
+      "tick": 31,
+      "alive": true,
+      "position": {
+        "x": 113.63013110864858,
+        "y": 84.66560626913193
+      },
+      "energy": 119.02769103999296,
+      "hydration": 113.948872,
+      "action": {
+        "type": "drink",
+        "actorId": 109,
+        "tick": 26
+      },
+      "renderedPose": {
+        "action": "drink",
+        "tick": 31
+      },
+      "guide": "1/3Your first goals✓ Fed and watered · ○ Mate · ○ Home · next: click a creature, then Court · C also courts; M shows details",
+      "controls": "InteractEDrinkShift+EAttackSpaceBraceJRest"
+    }
+  ],
+  "gaps": [],
+  "interactHint": "Click an object to select it; Interact / E uses that target. Choose a contextual interaction. Q cycles compatible nearby food; click a food source to choose it directly.",
+  "end": {
+    "alive": true,
+    "stage": "goals"
+  },
+  "errors": []
+}

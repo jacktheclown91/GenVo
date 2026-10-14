@@ -1,0 +1,143 @@
+{
+  "focused": [
+    {
+      "suite": "reproductive-compatibility",
+      "exitCode": 0,
+      "output": "Cross-founding-ID conception, genuine hybrid bodies/loci, frozen parental inheritance, read-only shared validity, gradual compatibility/fertility, matching builds and legacy save migration PASS\n"
+    },
+    {
+      "suite": "physical-breeding",
+      "exitCode": 0,
+      "output": "physical parental inheritance, stabilization editor gate and save continuity ok\n"
+    },
+    {
+      "suite": "selective-breeding-guidance",
+      "exitCode": 0,
+      "output": "selective breeding: exact socket comparison, real parent-origin history, journal and save continuity ok\n"
+    },
+    {
+      "suite": "reproductive-anatomy-eggs",
+      "exitCode": 0,
+      "output": "reproductive anatomy: part gate, real eggs, delayed birth, parent death, persistence, environmental loss, legacy mode passed\n"
+    },
+    {
+      "suite": "save-persistence",
+      "exitCode": 0,
+      "output": "save persistence roundtrip: PASS\n"
+    },
+    {
+      "suite": "courtship-performance",
+      "exitCode": 0,
+      "output": "courtship-performance: anatomy-costed action, nonbinding competition, soft consent, persistence and interruption PASS\n"
+    },
+    {
+      "suite": "mouse-courtship",
+      "exitCode": 0,
+      "output": "mouse-courtship: read-only repertoire, queue bounds, explicit target, finite cost, cancellation, pause and invalid sequence passed\n"
+    },
+    {
+      "suite": "live-courtship-encounters",
+      "exitCode": 0,
+      "output": "Live anatomy-valid future beats, bounded cost, protected current beat, save, interruption, physical choreography and read-only reactions PASS\n"
+    },
+    {
+      "suite": "multi-partner-sexual-selection",
+      "exitCode": 0,
+      "output": "Multi-partner sexual selection: opposing tastes, proximity costs, consent, world persistence, player alternatives, ecological neutrality PASS\n"
+    },
+    {
+      "suite": "reciprocal-partner-encounters",
+      "exitCode": 0,
+      "output": "EP real partner encounter, reciprocal response, refusal reasons, safety, no forced birth or resources, persistence: PASS\n"
+    },
+    {
+      "suite": "local-receptive-courtship",
+      "exitCode": 0,
+      "output": "EQ non-forced local courtship, physiological refusal and recovery, long-range search, RNG/resources, save/load: PASS\n"
+    },
+    {
+      "suite": "speciation-threshold",
+      "exitCode": 0,
+      "output": "speciation-threshold checks: PASS\n"
+    },
+    {
+      "suite": "lineage",
+      "exitCode": 0,
+      "output": "lineage checks: PASS\n"
+    },
+    {
+      "suite": "player-facing-feedback",
+      "exitCode": 0,
+      "output": "Read-only identities, observable courtship without hidden preference reads, independent notification channels PASS\n"
+    },
+    {
+      "suite": "world-trail-discovery",
+      "exitCode": 0,
+      "output": "Real movement/meal evidence, anatomy-gated tracking, non-omniscient endpoints, funded patch memory, read-only availability, save and expiry PASS\n"
+    }
+  ],
+  "priorFailures": [
+    {
+      "suite": "maternal-birth-authority",
+      "comparison": [
+        {
+          "source": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit",
+          "exitCode": 1,
+          "output": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/helpers/breeding-pair.js:12\n  throw Error('No existing habitat supports this conception fixture');\n        ^\n\nError: No existing habitat supports this conception fixture\n    at placeSupportedBreedingPair (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/helpers/breeding-pair.js:12:9)\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/maternal-birth-authority.mjs:10:3\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.14.0\n"
+        },
+        {
+          "source": "C:\\Users\\jackt\\.codex\\visualizations\\2026\\10\\13\\01a13317-3f3e-7242-b4e2-1dad3ca607d8\\pre-compatibility-baseline",
+          "exitCode": 1,
+          "output": "file:///C:/Users/jackt/.codex/visualizations/2026/10/13/01a13317-3f3e-7242-b4e2-1dad3ca607d8/pre-compatibility-baseline/tests/helpers/breeding-pair.js:12\n  throw Error('No existing habitat supports this conception fixture');\n        ^\n\nError: No existing habitat supports this conception fixture\n    at placeSupportedBreedingPair (file:///C:/Users/jackt/.codex/visualizations/2026/10/13/01a13317-3f3e-7242-b4e2-1dad3ca607d8/pre-compatibility-baseline/tests/helpers/breeding-pair.js:12:9)\n    at file:///C:/Users/jackt/.codex/visualizations/2026/10/13/01a13317-3f3e-7242-b4e2-1dad3ca607d8/pre-compatibility-baseline/tests/maternal-birth-authority.mjs:10:3\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.14.0\n"
+        }
+      ]
+    },
+    {
+      "suite": "birth-reserves",
+      "comparison": [
+        {
+          "source": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit",
+          "exitCode": 1,
+          "output": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/helpers/breeding-pair.js:12\n  throw Error('No existing habitat supports this conception fixture');\n        ^\n\nError: No existing habitat supports this conception fixture\n    at placeSupportedBreedingPair (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/helpers/breeding-pair.js:12:9)\n    at conceived (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/birth-reserves.mjs:12:3)\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/birth-reserves.mjs:17:35\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.14.0\n"
+        },
+        {
+          "source": "C:\\Users\\jackt\\.codex\\visualizations\\2026\\10\\13\\01a13317-3f3e-7242-b4e2-1dad3ca607d8\\pre-compatibility-baseline",
+          "exitCode": 1,
+          "output": "file:///C:/Users/jackt/.codex/visualizations/2026/10/13/01a13317-3f3e-7242-b4e2-1dad3ca607d8/pre-compatibility-baseline/tests/helpers/breeding-pair.js:12\n  throw Error('No existing habitat supports this conception fixture');\n        ^\n\nError: No existing habitat supports this conception fixture\n    at placeSupportedBreedingPair (file:///C:/Users/jackt/.codex/visualizations/2026/10/13/01a13317-3f3e-7242-b4e2-1dad3ca607d8/pre-compatibility-baseline/tests/helpers/breeding-pair.js:12:9)\n    at conceived (file:///C:/Users/jackt/.codex/visualizations/2026/10/13/01a13317-3f3e-7242-b4e2-1dad3ca607d8/pre-compatibility-baseline/tests/birth-reserves.mjs:12:3)\n    at file:///C:/Users/jackt/.codex/visualizations/2026/10/13/01a13317-3f3e-7242-b4e2-1dad3ca607d8/pre-compatibility-baseline/tests/birth-reserves.mjs:17:35\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.14.0\n"
+        }
+      ]
+    },
+    {
+      "suite": "birth-hydration",
+      "comparison": [
+        {
+          "source": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit",
+          "exitCode": 1,
+          "output": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/helpers/breeding-pair.js:12\n  throw Error('No existing habitat supports this conception fixture');\n        ^\n\nError: No existing habitat supports this conception fixture\n    at placeSupportedBreedingPair (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/helpers/breeding-pair.js:12:9)\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/birth-hydration.mjs:3:286\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.14.0\n"
+        },
+        {
+          "source": "C:\\Users\\jackt\\.codex\\visualizations\\2026\\10\\13\\01a13317-3f3e-7242-b4e2-1dad3ca607d8\\pre-compatibility-baseline",
+          "exitCode": 1,
+          "output": "file:///C:/Users/jackt/.codex/visualizations/2026/10/13/01a13317-3f3e-7242-b4e2-1dad3ca607d8/pre-compatibility-baseline/tests/helpers/breeding-pair.js:12\n  throw Error('No existing habitat supports this conception fixture');\n        ^\n\nError: No existing habitat supports this conception fixture\n    at placeSupportedBreedingPair (file:///C:/Users/jackt/.codex/visualizations/2026/10/13/01a13317-3f3e-7242-b4e2-1dad3ca607d8/pre-compatibility-baseline/tests/helpers/breeding-pair.js:12:9)\n    at file:///C:/Users/jackt/.codex/visualizations/2026/10/13/01a13317-3f3e-7242-b4e2-1dad3ca607d8/pre-compatibility-baseline/tests/birth-hydration.mjs:3:286\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v24.14.0\n"
+        }
+      ]
+    },
+    {
+      "suite": "evolving-courtship-rituals",
+      "comparison": [
+        {
+          "source": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit",
+          "exitCode": 1,
+          "output": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: real, limited, finite-cost repeated dance sometimes conceives with mismatch\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/evolving-courtship-rituals.mjs:113:8\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n"
+        },
+        {
+          "source": "C:\\Users\\jackt\\.codex\\visualizations\\2026\\10\\13\\01a13317-3f3e-7242-b4e2-1dad3ca607d8\\pre-compatibility-baseline",
+          "exitCode": 1,
+          "output": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: real, limited, finite-cost repeated dance sometimes conceives with mismatch\n    at file:///C:/Users/jackt/.codex/visualizations/2026/10/13/01a13317-3f3e-7242-b4e2-1dad3ca607d8/pre-compatibility-baseline/tests/evolving-courtship-rituals.mjs:113:8\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n"
+        }
+      ]
+    }
+  ],
+  "focusedStatus": "PASS",
+  "fullSuiteStatus": "NOT CERTIFIED; four failures reproduced against prior delivered source"
+}

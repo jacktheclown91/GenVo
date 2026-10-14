@@ -1,0 +1,9 @@
+# Botanical presentation correction
+
+Ordinary selection now shows the resource name, plain observed crop identity, edible-tissue availability for the current mouth, viable-seed presence and the consequence of fruit feeding versus seed crushing. Numerical tissue, growth resources and inherited traits are available in a separate, live, dismissible Inspect panel. Inspection no longer emits a botanical notification. Radial action explanations remain beside the action rather than being copied into the dock. The dock summary hides while Inspect is open.
+
+Gameplay source changed: world-resource-target.js adds read-only summary and inspection views; resource-inspector.js owns the optional detail panel; creature-context-tray.js integrates both; context-radial.js removes copied hints; styles.css provides the responsive presentation. No action validators or biological rules changed.
+
+Verification: actual Chromium 800x600 mouse selection, Inspect, close, feeding from a real resource-funded inherited crop, and save round-trip. Controlled player placement and vegetation-phase maturation are fixtures, not natural elapsed play. Receipt: clonal-flora-proof.json; screenshots: clonal-selected-summary-800.png and clonal-inherited-inspect-800.png. Assertions check no technical tissue description outside Inspect, hidden radial/dock summary during inspection, inherited genetics present, feeding source identity and cargo/genotype save parity. Five existing focused suites passed: contextual-interactions, world-resource-selection, target-resource-states, clonal-flora, canonical-source.
+
+Limitations: no new human comprehension test or ecological balance claim. Large inspections scroll in the embedded viewport. Other advanced panels and existing simulation remain intact. Next substantial biology milestone remains anatomy-driven protective plant tissues, per the approved staged design.

@@ -1,0 +1,871 @@
+{
+  "scope": "120 seconds at normal runtime speed in a fresh generated world. Only ordinary UI automation toggle used; no actor, anatomy, readiness, stock, RNG or clock edits. Unscripted simulation, not a human playtest.",
+  "samples": [
+    {
+      "tick": 50,
+      "day": 2,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 113.42793002235746,
+        "hydration": 102.19097599999996,
+        "intent": "explore",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 90,
+      "day": 2,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 112.82860301332046,
+        "hydration": 101.83046653333668,
+        "intent": "explore",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 130,
+      "day": 3,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 112.3151774818056,
+        "hydration": 101.52068518095624,
+        "intent": "explore",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 170,
+      "day": 4,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 102.36701225243861,
+        "hydration": 100.0781833714446,
+        "intent": "ward",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 210,
+      "day": 5,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 98.03472000131595,
+        "hydration": 97.20306809526967,
+        "intent": "ward",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 250,
+      "day": 6,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 94.56968080567425,
+        "hydration": 94.7519109143134,
+        "intent": "ward",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 291,
+      "day": 7,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 90.98751088899235,
+        "hydration": 91.90965064761957,
+        "intent": "ward",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 331,
+      "day": 7,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 91.61647133142502,
+        "hydration": 89.07605064761961,
+        "intent": "ward",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 371,
+      "day": 8,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 89.3969920862493,
+        "hydration": 86.64106474283831,
+        "intent": "ward",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 411,
+      "day": 9,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 90.77175161430898,
+        "hydration": 83.55136355291069,
+        "intent": "ward",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 127,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 451,
+      "day": 10,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 88.18990087328488,
+        "hydration": 80.2197034645705,
+        "intent": "feed",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 127,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 492,
+      "day": 11,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 85.61259586736817,
+        "hydration": 76.79730402321923,
+        "intent": "feed",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 3,
+          "sequence": [
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 532,
+      "day": 12,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 87.36716898979955,
+        "hydration": 73.96981213541184,
+        "intent": "feed",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": []
+    },
+    {
+      "tick": 572,
+      "day": 12,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 88.75124856737825,
+        "hydration": 70.70604147669796,
+        "intent": "feed",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 61,
+          "sequence": [
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 612,
+      "day": 13,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 90.12180473219863,
+        "hydration": 67.41196685901592,
+        "intent": "ward",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 3,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 52,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 61,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 653,
+      "day": 14,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 91.61018306134282,
+        "hydration": 64.679753329744,
+        "intent": "drink",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 3,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 12,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 52,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 61,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 78,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 693,
+      "day": 15,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 89.0115844340431,
+        "hydration": 66.7593732122368,
+        "intent": "ward",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 3,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 12,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 52,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 61,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 67,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 78,
+          "sequence": [
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 733,
+      "day": 16,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 90.37319839740434,
+        "hydration": 68.85456150642436,
+        "intent": "ward",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 3,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 4,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 12,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 20,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 40,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 52,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 61,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 67,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 78,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 773,
+      "day": 17,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 92.11155311161599,
+        "hydration": 66.19613741109185,
+        "intent": "ward",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 3,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 12,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 52,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 56,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 61,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 813,
+      "day": 17,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 89.52309114914564,
+        "hydration": 68.50340141109189,
+        "intent": "ward",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 3,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 6,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 20,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 52,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 56,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 61,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 79,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 126,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 854,
+      "day": 18,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 86.92896287892505,
+        "hydration": 65.59274449682947,
+        "intent": "drink",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 6,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 8,
+          "sequence": [
+            "call"
+          ]
+        },
+        {
+          "id": 20,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 52,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 56,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 894,
+      "day": 19,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 88.29497576868744,
+        "hydration": 67.87291485874198,
+        "intent": "feed",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 6,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 8,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 52,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 56,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 70,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 79,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 126,
+          "sequence": [
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 934,
+      "day": 20,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 90.03124238631342,
+        "hydration": 65.37179440161076,
+        "intent": "drink",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 10,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 52,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 79,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 126,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        }
+      ]
+    },
+    {
+      "tick": 974,
+      "day": 21,
+      "population": 196,
+      "player": {
+        "alive": true,
+        "energy": 87.43877898267284,
+        "hydration": 67.66412430639208,
+        "intent": "drink",
+        "lastMate": null,
+        "offspring": 0
+      },
+      "performers": [
+        {
+          "id": 6,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 8,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 10,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 52,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 71,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 72,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 79,
+          "sequence": [
+            "dance"
+          ]
+        },
+        {
+          "id": 119,
+          "sequence": [
+            "call",
+            "dance"
+          ]
+        },
+        {
+          "id": 122,
+          "sequence": [
+            "dance",
+            "call"
+          ]
+        },
+        {
+          "id": 126,
+          "sequence": [
+            "call"
+          ]
+        }
+      ]
+    }
+  ],
+  "seen": [
+    {
+      "actorId": 127,
+      "tick": 384,
+      "kind": "dance"
+    },
+    {
+      "actorId": 127,
+      "tick": 402,
+      "kind": "call"
+    },
+    {
+      "actorId": 127,
+      "tick": 420,
+      "kind": "declined"
+    },
+    {
+      "actorId": 114,
+      "tick": 420,
+      "kind": "declined"
+    },
+    {
+      "actorId": 127,
+      "tick": 462,
+      "kind": "paired"
+    },
+    {
+      "actorId": 114,
+      "tick": 462,
+      "kind": "paired"
+    },
+    {
+      "actorId": 126,
+      "tick": 780,
+      "kind": "call"
+    },
+    {
+      "actorId": 126,
+      "tick": 798,
+      "kind": "dance"
+    },
+    {
+      "actorId": 126,
+      "tick": 816,
+      "kind": "declined"
+    },
+    {
+      "actorId": 118,
+      "tick": 816,
+      "kind": "declined"
+    },
+    {
+      "actorId": 122,
+      "tick": 942,
+      "kind": "call"
+    },
+    {
+      "actorId": 122,
+      "tick": 960,
+      "kind": "declined"
+    },
+    {
+      "actorId": 109,
+      "tick": 960,
+      "kind": "declined"
+    },
+    {
+      "actorId": 122,
+      "tick": 966,
+      "kind": "dance"
+    },
+    {
+      "actorId": 119,
+      "tick": 966,
+      "kind": "call"
+    }
+  ],
+  "errors": [],
+  "video": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\natural-encounter-video\\page@266bae6d2d93a88a2c136d89581b1970.webm"
+}

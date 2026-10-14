@@ -1,0 +1,468 @@
+{
+  "status": "PASS",
+  "setup": {
+    "childId": 197,
+    "parentId": 109,
+    "body": "bp0-4134709b",
+    "spot": {
+      "bank": {
+        "x": 80.5,
+        "y": 37.5
+      },
+      "food": {
+        "x": 77.5,
+        "y": 37.5,
+        "kind": "bramble"
+      },
+      "foodTarget": {
+        "x": 77.5,
+        "y": 37.5,
+        "kind": "bramble",
+        "i": 4813,
+        "tissue": "crop",
+        "learned": true
+      }
+    },
+    "scope": "Controlled inherited child, adolescent age/readiness, lesson memories, actors and empty shelter. Food/water/terrain are existing natural resources. Ordinary simulation movement, validated resource execution and returns; no outcome or positional warps after setup."
+  },
+  "proof": {
+    "childId": 197,
+    "positions": [
+      {
+        "tick": 4,
+        "x": 80.8,
+        "y": 37.5,
+        "intent": "explore",
+        "run": null
+      },
+      {
+        "tick": 8,
+        "x": 80.52625955392662,
+        "y": 37.5,
+        "intent": "drink",
+        "run": {
+          "type": "water",
+          "phase": "return"
+        }
+      },
+      {
+        "tick": 12,
+        "x": 80.79999999999998,
+        "y": 37.5,
+        "intent": "group-space",
+        "run": null
+      },
+      {
+        "tick": 16,
+        "x": 80.79999999999998,
+        "y": 37.5,
+        "intent": "group-space",
+        "run": null
+      },
+      {
+        "tick": 20,
+        "x": 81.07374044607334,
+        "y": 37.5,
+        "intent": "explore",
+        "run": null
+      },
+      {
+        "tick": 24,
+        "x": 81.3474808921467,
+        "y": 37.5,
+        "intent": "explore",
+        "run": null
+      },
+      {
+        "tick": 28,
+        "x": 81.3474808921467,
+        "y": 37.5,
+        "intent": "explore",
+        "run": null
+      },
+      {
+        "tick": 32,
+        "x": 81.62122133822007,
+        "y": 37.5,
+        "intent": "explore",
+        "run": null
+      },
+      {
+        "tick": 36,
+        "x": 81.89496178429343,
+        "y": 37.5,
+        "intent": "explore",
+        "run": null
+      },
+      {
+        "tick": 40,
+        "x": 81.89496178429343,
+        "y": 37.5,
+        "intent": "explore",
+        "run": null
+      },
+      {
+        "tick": 44,
+        "x": 82.16870223036679,
+        "y": 37.5,
+        "intent": "explore",
+        "run": null
+      },
+      {
+        "tick": 48,
+        "x": 82.44244267644015,
+        "y": 37.5,
+        "intent": "explore",
+        "run": null
+      },
+      {
+        "tick": 52,
+        "x": 82.44244267644015,
+        "y": 37.5,
+        "intent": "explore",
+        "run": null
+      },
+      {
+        "tick": 56,
+        "x": 82.16870223036679,
+        "y": 37.5,
+        "intent": "social",
+        "run": null
+      },
+      {
+        "tick": 60,
+        "x": 81.89496178429343,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 64,
+        "x": 81.89496178429343,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 68,
+        "x": 81.62122133822007,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 72,
+        "x": 81.3474808921467,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 76,
+        "x": 81.3474808921467,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 80,
+        "x": 81.07374044607334,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 84,
+        "x": 80.79999999999998,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 88,
+        "x": 80.79999999999998,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 92,
+        "x": 80.52625955392662,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 96,
+        "x": 80.25251910785326,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 100,
+        "x": 80.25251910785326,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 104,
+        "x": 79.9787786617799,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 108,
+        "x": 79.70503821570654,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 112,
+        "x": 79.70503821570654,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 116,
+        "x": 79.43129776963318,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 120,
+        "x": 79.15755732355981,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 124,
+        "x": 79.15755732355981,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 128,
+        "x": 78.88381687748645,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 132,
+        "x": 78.61007643141309,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 136,
+        "x": 78.61007643141309,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "outbound"
+        }
+      },
+      {
+        "tick": 140,
+        "x": 78.33633598533973,
+        "y": 37.5,
+        "intent": "feed",
+        "run": {
+          "type": "food",
+          "phase": "return"
+        }
+      },
+      {
+        "tick": 144,
+        "x": 78.61007643141309,
+        "y": 37.5,
+        "intent": "practice-return",
+        "run": {
+          "type": "food",
+          "phase": "return"
+        }
+      },
+      {
+        "tick": 148,
+        "x": 78.61007643141309,
+        "y": 37.5,
+        "intent": "practice-return",
+        "run": {
+          "type": "food",
+          "phase": "return"
+        }
+      },
+      {
+        "tick": 152,
+        "x": 78.88381687748645,
+        "y": 37.5,
+        "intent": "practice-return",
+        "run": {
+          "type": "food",
+          "phase": "return"
+        }
+      },
+      {
+        "tick": 156,
+        "x": 78.61007643141309,
+        "y": 37.5,
+        "intent": "social",
+        "run": null
+      }
+    ],
+    "receipts": [
+      {
+        "tick": 6,
+        "type": "water",
+        "receipt": {
+          "x": 80.52625955392662,
+          "y": 37.5,
+          "amount": 5.200000000000003
+        }
+      },
+      {
+        "tick": 138,
+        "type": "food",
+        "receipt": {
+          "x": 77.5,
+          "y": 37.5,
+          "kind": "bramble",
+          "amount": 0.16
+        }
+      }
+    ],
+    "scope": "Controlled inherited child, adolescent age/readiness, lesson memories, actors and empty shelter. Food/water/terrain are existing natural resources. Ordinary simulation movement, validated resource execution and returns; no outcome or positional warps after setup.",
+    "stats": {
+      "water": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "food": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "completed": 2,
+      "returns": 2,
+      "recoveries": 0,
+      "aborts": 0
+    },
+    "profile": {
+      "learning": {
+        "ratio": 0.8666666666666667,
+        "lessons": {
+          "water": 2,
+          "food": 2,
+          "shelter": 3,
+          "danger": 2
+        },
+        "mastered": 4,
+        "practiced": 4,
+        "repetition": 0.75,
+        "independence": 0.8601984126984128,
+        "label": "independent",
+        "next": "water",
+        "complete": true
+      },
+      "water": 1,
+      "food": 1,
+      "completed": 2,
+      "returns": 2,
+      "recoveries": 0,
+      "aborts": 0,
+      "readiness": 0.9133230158730159,
+      "ready": true,
+      "run": null,
+      "label": "field-ready"
+    },
+    "savedStats": {
+      "water": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "food": {
+        "attempts": 1,
+        "successes": 1
+      },
+      "completed": 2,
+      "returns": 2,
+      "recoveries": 0,
+      "aborts": 0
+    },
+    "body": "bp0-4134709b",
+    "savedBody": "bp0-4134709b"
+  },
+  "errors": [],
+  "verification": {
+    "realMovementObserved": true,
+    "positiveFoodAndWaterReceipts": true,
+    "fieldReady": true,
+    "savedProgressExact": true
+  }
+}

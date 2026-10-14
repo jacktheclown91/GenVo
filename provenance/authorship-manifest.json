@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "project": "GenVo",
+  "policy": "Describe contribution categories honestly. Do not assign unsupported percentages and do not infer human authorship merely because a human prompted an AI system.",
+  "formal_tracking_begins_with": {
+    "canonical_version": "1.05.0",
+    "status": "pre-provenance baseline",
+    "note": "Earlier development history is not retrospectively reconstructed into the formal ledger. Existing source, tests, releases, conversations, and public timestamps may independently document earlier work."
+  },
+  "contribution_categories": {
+    "creator_originated_or_creator_directed": [
+      "Game concept, goals, system direction, feature selection, balance direction, and acceptance or rejection of revisions when supported by contemporaneous project records.",
+      "Playtest interpretation and decisions about which problems to solve, what behavior is intended, and what constitutes an acceptable stable pass.",
+      "Creative selection, arrangement, integration, and revision decisions where specifically documented.",
+      "Creator-authored text or direct code edits only where separately identifiable or recorded."
+    ],
+    "ai_assisted": [
+      "Implementation, refactoring, debugging, test generation, documentation drafting, and other development work may be AI-assisted unless a more specific record says otherwise.",
+      "Visual, audio, music, or text assets may include generated or AI-assisted material where identified by project records or submission disclosures."
+    ],
+    "third_party_or_external": [
+      "Playtester feedback can influence design decisions but is not treated by this manifest as creator authorship.",
+      "Third-party libraries, tools, assets, and licenses retain their own authorship and license status where applicable."
+    ]
+  },
+  "important_limits": [
+    "This manifest is a project record, not a legal certificate or a guarantee of copyrightability.",
+    "The provenance ledger records stated decisions and hashes. It does not independently prove that every narrative statement is true.",
+    "No entry should claim AI-generated implementation was handwritten by the creator unless there is a separate factual basis for that claim."
+  ],
+  "recorded_direction_documents": [
+    {
+      "recorded_at_utc": "2026-10-09T00:11:30Z",
+      "document": "GenVo8_Evolution_Expansion_GDD_v1.md",
+      "provided_by": "creator (James), 2026-10-08",
+      "status": "section 0 decisions locked by the creator",
+      "creator_role": "Provided the design document and locked its creative decisions; chose to salvage the paused v1.34.0 work and start Phase A.",
+      "ai_assisted_role": "Phase A implementation (registry, body plan, resolver, adapter, tests, baseline capture) and these records.",
+      "limits": "This record does not assert who drafted the text of the design document itself; it records that the creator supplied it and locked its decisions."
+    }
+  ]
+}

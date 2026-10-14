@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const html=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
+const main=fs.readFileSync(new URL('../src/main.js',import.meta.url),'utf8');
+const wheel=fs.readFileSync(new URL('../src/ui/leadership-wheel.js',import.meta.url),'utf8');
+const hud=fs.readFileSync(new URL('../src/ui/inspector.js',import.meta.url),'utf8');
+const css=fs.readFileSync(new URL('../styles.css',import.meta.url),'utf8');
+
+assert.match(html,/data-command="leadership"[^>]*aria-label="Family guidance"/,'family guidance has a normal clickable quick-access icon');
+assert.match(html,/target icon[\s\S]*press <b>R<\/b>[\s\S]*click or tap ground/,'Help explains mouse-free discovery without requiring right-click');
+assert.match(main,/data-command=\\?"leadership\\?"/,'main routes the command icon separately from inspector panels');
+assert.match(main,/e\.code==='KeyR'[\s\S]*leadershipWheel\.toggleCommandMode\(\)/,'R toggles family command placement during a living run');
+assert.match(main,/if\(!sim\.player\(\)\)resetRun\(\)/,'R keeps new-run behavior after the lineage ends');
+assert.match(wheel,/commandMode=false/,'leadership wheel owns explicit command placement mode');
+assert.match(wheel,/this\.canvas\.addEventListener\('click'[\s\S]*this\.commandMode/,'ordinary click or trackpad tap places an armed command');
+assert.match(wheel,/contextmenu/,'right-click remains an optional shortcut');
+assert.match(wheel,/pointerType!==\'touch\'/,'touch-hold shortcut remains available');
+assert.match(hud,/CHOOSE GROUND[\s\S]*click or tap · R cancel/,'armed placement uses the existing context lane instead of permanent text UI');
+assert.match(html,/data-scope="toggle"/,'command wheel exposes explicit species versus whole-lineage scope when branches coexist');
+assert.match(css,/#game\.command-targeting\{cursor:crosshair\}/,'armed command placement has a visual cursor state');
+assert.doesNotMatch(html,/Right-click ground<\/b>/,'Help no longer frames right-click as the primary route');
+console.log('accessible family guidance checks: PASS');

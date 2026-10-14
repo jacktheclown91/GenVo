@@ -1,0 +1,68 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {SPECIES} from '../src/organisms/species.js';
+import {hasPart} from '../src/lineage/part-abilities.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {ENGINEER_BREEDING_HABITAT} from '../src/ecology/engineer-breeding-habitat.js';
+
+const sim=new Simulation('EU-SITE-REAL-PAIR',{player:false});
+const duo=sim.animals.filter(a=>a.species==='rootling'&&hasPart(a,'digging-forelimb')).slice(0,2);
+assert.equal(duo.length,2);const [mother,father]=duo,s=SPECIES.rootling;
+sim.animals=duo;sim.rebuildSpatial();
+for(const a of duo)Object.assign(a,{age:100,energy:s.maxEnergy*.95,hydration:s.maxHydration*.95,health:100,reproCooldown:0,pregnant:null,parentIds:[],infected:false});
+mother.sex='F';father.sex='M';
+let site=null;
+for(let y=10;y<108&&!site;y+=2)for(let x=10;x<108&&!site;x+=2){
+  const p={x:x+.5,y:y+.5};if(!sim.canOccupy(mother,p.x,p.y)||!sim.canReach(mother,p.x,p.y))continue;
+  if(sim.world.waterDistance[sim.world.idx(p.x,p.y)]>3)continue;
+  const q=sim.migration.habitatQuality(mother,p.x,p.y);if(q.food>.1&&q.water>.16&&q.danger<.48)site=p;
+}
+assert.ok(site,'must find a genuinely drinkable nearby bank and existing food');
+for(const a of duo)Object.assign(a,site);sim.rebuildSpatial();
+const plants=structuredClone(sim.world.plants),water=sim.world.drinkable.slice(),rng=sim.rng.state;
+assert.equal(sim.tryMate(mother,father),true,'real eligible mating is the only source of episodes');
+let evidence=sim.regionalEcology.engineerBreedingHabitatEvidence();
+assert.equal(evidence.total.conceptions,1);assert.equal(evidence.total.nearBankConceptions,1);
+assert.equal(evidence.episodes[0].siteRegion,sim.regionalEcology.keyAt(site.x,site.y));
+assert.equal(evidence.episodes[0].birthDay,null);
+assert.ok(evidence.episodes[0].siteFoodScore>.1);
+const matingRng=sim.rng.state;
+sim.regionalEcology.observe();
+let current=sim.regionalEcology.engineerBreedingHabitatEvidence();
+assert.equal(current.total.gestationObservationDays,1);
+assert.equal(current.total.daysNearSite,1);
+assert.equal(current.total.daysInSiteRegion,1);
+sim.regionalEcology.lastDay=-1;sim.regionalEcology.observe();
+assert.equal(sim.regionalEcology.engineerBreedingHabitatEvidence().total.gestationObservationDays,1,'same-day idempotence');
+let elsewhere=null;
+for(let y=15;y<105&&!elsewhere;y+=3)for(let x=15;x<105&&!elsewhere;x+=3){
+  const p={x:x+.5,y:y+.5};
+  if(sim.regionalEcology.keyAt(p.x,p.y)!==sim.regionalEcology.keyAt(site.x,site.y)&&sim.canOccupy(mother,p.x,p.y)&&sim.canReach(mother,p.x,p.y))elsewhere=p;
+}
+assert.ok(elsewhere);
+mother.x=elsewhere.x;mother.y=elsewhere.y;mother.hydration=s.maxHydration*.40;
+sim.day+=1;sim.regionalEcology.observe();
+current=sim.regionalEcology.engineerBreedingHabitatEvidence();
+assert.equal(current.total.gestationObservationDays,2);
+assert.equal(current.total.daysInSiteRegion,1);
+assert.equal(current.total.daysBelowCourtshipHydration,1);
+assert.equal(current.total.daysNearSite,1);
+assert.equal(sim.rng.state,matingRng,'passive observation consumes no RNG');
+sim.day+=s.gestation;
+const children=sim.giveBirth(mother);assert.ok(children.length);
+current=sim.regionalEcology.engineerBreedingHabitatEvidence();
+assert.equal(current.total.delivered,1);
+assert.equal(current.total.offspring,children.length);
+assert.equal(current.total.offspringOutsideSite,children.length,'real cross-region births only');
+assert.deepEqual(sim.world.plants,plants,'habitat observation does not grow food');
+assert.deepEqual(sim.world.drinkable,water,'habitat observation does not create water');
+const restored=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim)));
+assert.deepEqual(restored.regionalEcology.engineerBreedingHabitatEvidence(),current,'episodes survive save/load');
+current.episodes[0].site.x=-500;current.episodes[0].offspringIds.push('fake');
+assert.notEqual(sim.regionalEcology.engineerBreedingHabitatEvidence().episodes[0].site.x,-500,'accessor defensive');
+assert.equal(sim.regionalEcology.engineerBreedingHabitatEvidence().total.offspring,children.length);
+const nonengineer=sim.animals.find(a=>a.species!=='rootling');
+assert.equal(ENGINEER_BREEDING_HABITAT.bankNearSteps,3);
+assert.equal(nonengineer?.breedingHabitat,undefined);
+assert.notEqual(sim.rng.state,rng,'real mating and birth remain stochastic');
+console.log('EU real pairing, actual water bank, food, gestation, region departure, births, save/load, no RNG observation: PASS');

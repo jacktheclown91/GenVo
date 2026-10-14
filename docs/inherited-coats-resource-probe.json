@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "receipts": [
+    {
+      "seed": "ORGANIC-A",
+      "scope": "100 resource-only days, no animal lifecycle or field fixtures; not ecological balance proof",
+      "before": 5693.61556354013,
+      "after": 5693.615559580967,
+      "drift": -0.0000039591632230440155,
+      "flora": {
+        "produced": 120862,
+        "mutated": 11085,
+        "establishedVariants": 952
+      },
+      "registeredGenotypes": 9,
+      "coatGenotypes": 2,
+      "coatAdults": 301,
+      "variantParentReceipts": 0,
+      "seedCohorts": 38577,
+      "snapshotBytes": 20604216,
+      "phaseMs": {
+        "mean": 30.303581000000005,
+        "max": 45.90149999999994
+      }
+    },
+    {
+      "seed": "ORGANIC-B",
+      "scope": "100 resource-only days, no animal lifecycle or field fixtures; not ecological balance proof",
+      "before": 5762.228564304998,
+      "after": 5762.22856896679,
+      "drift": 0.000004661791535909288,
+      "flora": {
+        "produced": 119204,
+        "mutated": 10926,
+        "establishedVariants": 937
+      },
+      "registeredGenotypes": 9,
+      "coatGenotypes": 2,
+      "coatAdults": 287,
+      "variantParentReceipts": 0,
+      "seedCohorts": 38106,
+      "snapshotBytes": 20500970,
+      "phaseMs": {
+        "mean": 28.376444999999947,
+        "max": 47.00920000000042
+      }
+    },
+    {
+      "seed": "ORGANIC-C",
+      "scope": "100 resource-only days, no animal lifecycle or field fixtures; not ecological balance proof",
+      "before": 5663.465686277837,
+      "after": 5663.465689461482,
+      "drift": 0.0000031836443667998537,
+      "flora": {
+        "produced": 119995,
+        "mutated": 11321,
+        "establishedVariants": 935
+      },
+      "registeredGenotypes": 9,
+      "coatGenotypes": 2,
+      "coatAdults": 280,
+      "variantParentReceipts": 0,
+      "seedCohorts": 38532,
+      "snapshotBytes": 20627342,
+      "phaseMs": {
+        "mean": 29.414169999999967,
+        "max": 39.204900000000634
+      }
+    }
+  ]
+}
