@@ -1,3 +1,4 @@
+import {attentionTarget,HeadAttentionPresentation} from './head-attention.js';
 import {gaitTravelFor} from './genvo.js';
 import {botanicalPlantView} from '../ecology/botanical-reproduction.js';
 import {FeedingPresentation,applyFeedingExpression} from './feeding-expression.js';
@@ -55,7 +56,7 @@ export class Renderer{
   // v1.32.5: a new or loaded world replaces the title-screen world. Every cache keyed only by
   // tile position belongs to the old world: without this, tiles that were land there drew as
   // flat land with a stepped bank in the new world's water, and the reverse showed phantom water.
-  resetWorldCaches(){this.visiblePlantTargets=new Map();this.plantTargetWorld=this.sim.world;this.partExpressions.reset();this.feeding?.reset();this.turnState?.clear();this.vegLayerCache?.clear?.();this.staticGroundTileCache?.clear?.();this.waterToneCache?.clear?.();this.habitatField=null;this.habitatFieldDay=-1;this.pendingHabitatDay=null;this.pendingHabitatFrames=0;this.macroHabitatSeed=null;this.habitatScenesKey='';this.terrainChunkCache.clear();this.terrainRefreshQueue.length=0;this.terrainRefreshQueued.clear();this.terrainRefreshFrame=0;this.landformMaskCache.clear();this.habitatMaskCache.clear();this.landBaseTileCache.clear();this.waterBaseTileCache.clear();this.staticLandTileCache.clear()}
+  resetWorldCaches(){this.visiblePlantTargets=new Map();this.plantTargetWorld=this.sim.world;this.partExpressions.reset();this.feeding?.reset();this.headAttention?.reset();this.turnState?.clear();this.vegLayerCache?.clear?.();this.staticGroundTileCache?.clear?.();this.waterToneCache?.clear?.();this.habitatField=null;this.habitatFieldDay=-1;this.pendingHabitatDay=null;this.pendingHabitatFrames=0;this.macroHabitatSeed=null;this.habitatScenesKey='';this.terrainChunkCache.clear();this.terrainRefreshQueue.length=0;this.terrainRefreshQueued.clear();this.terrainRefreshFrame=0;this.landformMaskCache.clear();this.habitatMaskCache.clear();this.landBaseTileCache.clear();this.waterBaseTileCache.clear();this.staticLandTileCache.clear()}
   resize(){const dpr=1,w=innerWidth,h=innerHeight; // Pixel-art canvas renders at CSS-pixel resolution; DOM UI stays device-sharp and high-DPI screens avoid 2-4x canvas fill cost.
 this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.canvas.style.width=w+'px';this.canvas.style.height=h+'px';this.ctx.setTransform(dpr,0,0,dpr,0,0);this.w=w;this.h=h;this.ctx.imageSmoothingEnabled=false}
   setPlayerPresentation(input,aheadSeconds=0){this.playerPresentation={input:input?{...input}:null,aheadSeconds:Math.max(0,Number(aheadSeconds)||0)}}
@@ -852,6 +853,8 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     if(action!=='swim')behavior.bodyRise-=bob;
     if(!social?.alarm)applyFeedingExpression(behavior,feeding);
     applyEncounterPose(behavior,encounter);
+    const looking=attentionTarget(a,{social,encounter,feeding,committedAim,action});
+    behavior.headTurn=(this.headAttention||=new HeadAttentionPresentation()).sample(this.sim,a,looking,drawDir,this.encounters?.time||0);
     const combatStatus=a.player?this.sim.playerCombat?.status?.(a):null,winded=a.player?!!this.sim.exertion?.isWinded?.(a):false;if(combatStatus)applyPlayerCombatPose(behavior,combatStatus,winded);
     const impact=this.sim.lastPlayerCombatImpact?.targetId===a.id&&this.sim.tickCount-this.sim.lastPlayerCombatImpact.tick<=2?this.sim.lastPlayerCombatImpact:null;
     const pose={growth:visualGrowth,encounter,social,alert,sharedAlert:!!social?.sharedAlarm,dependent:dev.stage==='newborn'||dev.stage==='juvenile',stage:dev.stage,dir:drawDir,action,life,behavior,hidden:!!a.hidden,carry:a.carryingFood||null,combatImpact:impact,partExpression:this.partExpressions.sample(this.sim,a,action)};

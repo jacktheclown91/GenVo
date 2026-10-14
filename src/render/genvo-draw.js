@@ -60,7 +60,7 @@ function keepSprite(ck,src,n){
 export function drawGenvoSprite(c,opts={}){
   const s=opts.scale||1,n=Math.ceil(44*s/2)*2;
   const S=typeof c?.drawImage==='function'?scratchFor(n):null;if(!S)return drawGenvoBody(c,opts);
-  const artRevision=nativeArtStatus().revision;const ck=opts.cacheKey&&!opts.authoredParts?opts.cacheKey+'|art'+artRevision+'|'+s+'|'+JSON.stringify(opts.pose?.partExpression||null):null;if(ck){const hit=spriteCache.get(ck);if(hit){c.drawImage(hit.img,-n/2,-n/2);return}}
+  const artRevision=nativeArtStatus().revision;const ck=opts.cacheKey&&!opts.authoredParts?opts.cacheKey+'|art'+artRevision+'|'+s+'|look'+(opts.pose?.behavior?.headTurn||0)+'|'+'|'+JSON.stringify(opts.pose?.partExpression||null):null;if(ck){const hit=spriteCache.get(ck);if(hit){c.drawImage(hit.img,-n/2,-n/2);return}}
   const {a,b}=S,size=S.n,h=size/2,o=Math.max(1,Math.round(s/ART_DETAIL));
   for(const x of [a,b]){x.setTransform(1,0,0,1,0,0);x.globalCompositeOperation='source-over';x.globalAlpha=1;x.clearRect(0,0,size,size)}
   a.translate(h,h);drawGenvoBody(a,opts);a.setTransform(1,0,0,1,0,0);
@@ -203,7 +203,7 @@ function drawGenvoBody(c,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pal
   const mouthX=faceMounts.mouth?.x??bx+fx*face.mouthForward,mouthY=faceMounts.mouth?.y??by+fy*face.mouthForward+(fy>=.5?.6:0);
   const nativeMouthArt=mouthPart&&(authoredParts?.[mouthPart]||artForPart(mouthPart));
   const useNativeMouth=!!nativeMouthArt&&!nativeMouthArt.rig&&typeof c.drawImage==='function';
-  if(mouthPart&&(mouthPart!=='grazing-mouth'||useNativeMouth))drawPart(c,mouthPart,{...K,
+  if(mouthPart&&(mouthPart!=='grazing-mouth'||useNativeMouth))drawPart(c,mouthPart,{...K,faceTurn:head?.turn||0,
     mouth:{x:mouthX,y:mouthY},authoredState:'idle',
     authoredFrameIndex:face.mouthOpen>0?1:0});
 
@@ -237,7 +237,7 @@ function drawGenvoBody(c,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pal
     const at=faceMounts[sign===-1?'eye.left.2':'eye.right.2'];
     const ex=snap(at?.x??bx+fx*(face.eyeForward-1.9)+perp.x*sign*(face.eyeSpread+1.3));
     const ey=snap(at?.y??by+fy*(face.eyeForward-1.9)+perp.y*sign*(face.eyeSpread+1.3));
-    const opts={...K,sign,eye:{x:ex,y:ey},second:true,own:true,
+    const opts={...K,faceTurn:head?.turn||0,sign,eye:{x:ex,y:ey},second:true,own:true,
       authoredState:'idle',authoredFrameIndex:life.blink||face.squint?1:0,
       expressionNodeId:expressionNode(sign===-1?'eye.left.2':'eye.right.2')};
     if(!drawPart(c,e2,opts)){
@@ -251,7 +251,7 @@ function drawGenvoBody(c,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pal
     const eyePart=asm.explicit?asm.eyes[sign]:null;
     if(!eyePart&&asm.explicit)continue;
     const blinking=!!(life.blink||face.squint);
-    const opts={...K,sign,eye:{x:ex,y:ey},own:true,authoredState:'idle',
+    const opts={...K,faceTurn:head?.turn||0,sign,eye:{x:ex,y:ey},own:true,authoredState:'idle',
       authoredFrameIndex:blinking?1:0,
       expressionNodeId:expressionNode(sign===-1?'eye.left':'eye.right')};
     const effective=eyePart||'simple-eye';

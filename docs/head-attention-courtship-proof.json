@@ -1,0 +1,82 @@
+{
+  "status": "PASS",
+  "scope": "Controlled reciprocal courtship start through real mouse Dance/Play controls. Actual energy-funded performance; not natural mate choice, guaranteed conception or human readability evidence.",
+  "runs": [
+    {
+      "label": "before",
+      "setup": {
+        "actor": 109,
+        "partner": 110,
+        "body": "bp0-b076d13f",
+        "energy": 90,
+        "availability": {
+          "enabled": true,
+          "reason": "",
+          "cost": 0.34595200000000004
+        },
+        "scope": "Controlled valid mature pair, health/reserves, sex and placement; existing terrain/resources/preferences/compatibility. Real mouse sequence and normal controller clock follow; no forced mating."
+      },
+      "live": {
+        "tick": 11,
+        "sequence": [
+          "dance"
+        ],
+        "energySpent": 0.34595200000000004,
+        "actorLook": 0,
+        "partnerLook": 0,
+        "actorDir": 2,
+        "partnerDir": 3,
+        "energy": 89.59850792941297,
+        "positions": [
+          {
+            "x": 73.5,
+            "y": 84.5
+          },
+          {
+            "x": 74.39695184402537,
+            "y": 84.93695184402536
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "label": "after",
+      "setup": {
+        "actor": 109,
+        "partner": 110,
+        "body": "bp0-b076d13f",
+        "energy": 90,
+        "availability": {
+          "enabled": true,
+          "reason": "",
+          "cost": 0.34595200000000004
+        },
+        "scope": "Controlled valid mature pair, health/reserves, sex and placement; existing terrain/resources/preferences/compatibility. Real mouse sequence and normal controller clock follow; no forced mating."
+      },
+      "live": {
+        "tick": 11,
+        "sequence": [
+          "dance"
+        ],
+        "energySpent": 0.34595200000000004,
+        "actorLook": -0.3320817191171242,
+        "partnerLook": 0,
+        "actorDir": 2,
+        "partnerDir": 3,
+        "energy": 89.59850792941297,
+        "positions": [
+          {
+            "x": 73.5,
+            "y": 84.5
+          },
+          {
+            "x": 74.39695184402537,
+            "y": 84.93695184402536
+          }
+        ]
+      },
+      "errors": []
+    }
+  ]
+}

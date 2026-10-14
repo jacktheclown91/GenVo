@@ -46,11 +46,11 @@ export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
  }
 
  function select({state='idle',facing=0,timeMs=0,frameIndex=null}={}){if(!Number.isFinite(timeMs)||timeMs<0)throw Error('Invalid animation time');const frames=sequences.get(state+':'+facing);if(!frames)return null;if(frameIndex!==null){if(!Number.isInteger(frameIndex)||frameIndex<0)throw Error('Invalid animation frame index');return frames.find(e=>e.frame.index===frameIndex)||null}const total=frames.reduce((sum,e)=>sum+e.frame.durationMs,0);let elapsed=timeMs%total;for(const entry of frames){if(elapsed<entry.frame.durationMs)return entry;elapsed-=entry.frame.durationMs}return frames[frames.length-1]}
- function drawSurface(ctx,kind,{x=0,y=0,width=8,height=7,state='idle',facing=0,timeMs=0,pigment=null}={}){
+ function drawSurface(ctx,kind,{x=0,y=0,width=8,height=7,state='idle',facing=0,timeMs=0,pigment=null,rotationRadians=0}={}){
   if(rig?.kind!==kind)return false;
   const chosen=select({state,facing,timeMs})||select({state:'idle',facing,timeMs});if(!chosen)return false;
   const entry=tinted(chosen,pigment),[bw,bh]=rig.bodyBoundsPx;
-  ctx.save();try{ctx.imageSmoothingEnabled=false;ctx.translate(x,y);ctx.scale(width/bw,height/bh);ctx.drawImage(entry.canvas,-pivot[0],-pivot[1]);}finally{ctx.restore()}return true;
+  ctx.save();try{ctx.imageSmoothingEnabled=false;ctx.translate(x,y);if(rotationRadians)ctx.rotate(rotationRadians);ctx.scale(width/bw,height/bh);ctx.drawImage(entry.canvas,-pivot[0],-pivot[1]);}finally{ctx.restore()}return true;
  }
  return Object.freeze({partId:asset.partId,checksum:asset.checksum,rig,frameAt(options){return select(options)?.frame||null},
  drawTorso(ctx,options){return drawSurface(ctx,'torso',options)},

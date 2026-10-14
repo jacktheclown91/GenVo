@@ -56,3 +56,11 @@ reports/*
 !reports/joint-surface-before/**
 !/docs/joint-surface-before-runtime.webm
 !/docs/joint-surface-after-runtime.webm
+
+# Target-aware native head comparison fixtures and curated recordings
+!reports/head-attention-before/
+!reports/head-attention-before/**
+!/docs/head-attention-before-runtime.webm
+!/docs/head-attention-after-runtime.webm
+!/docs/head-court-before-runtime.webm
+!/docs/head-court-after-runtime.webm

@@ -2,7 +2,7 @@
 
 Canonical source for the evolutionary survival game. Development happens on **main**; this repository has one branch.
 
-Current checkpoint: **Continuous Native Joints (2026-10-14)**. Eight mounted limb types use their own current-frame shaded knee tissue to bridge flexed thigh/shin projections. Distance-driven support, source-facing funded meals and established biological authorities remain integrated. The 79-part tissue-volume/density foundation is uncalibrated; gameplay mass and swimming migration remain pending review. See [the current implementation report](docs/GenVo-Continuous-Native-Joints-Review.md) and [the full development goal status](docs/GenVo-Development-Goal-Status.md).
+Current checkpoint: **Target-Aware Native Faces (2026-10-14)**. Heads and their attached eyes/mouths turn toward actual meals, partners, perceived threats and known caregivers while the torso retains its own facing. Bounded easing, pause behavior and cache identity are integrated with existing gameplay. Continuous native knees, funded feeding and established biological authorities are preserved. Mass calibration and swimming migration remain pending review. See [the current implementation report](docs/GenVo-Target-Aware-Native-Faces-Review.md) and [the full development goal status](docs/GenVo-Development-Goal-Status.md).
 
 Run the game from the repository root:
 
