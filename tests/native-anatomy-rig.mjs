@@ -25,7 +25,7 @@ for(const id of [...T,...L]){
   assert.equal(renderer.drawLimb(ctx,{root:{x:0,y:0},knee:{x:2,y:2},foot:{x:4,y:3}}),false);
  }else{
   assert.equal(renderer.drawLimb(ctx,{root:{x:0,y:0},knee:{x:7,y:-3},foot:{x:11,y:6},facing:5}),true);
-  assert.equal(calls.filter(c=>c==='drawImage').length,3,'Two bones plus one native knee surface');
+  assert.equal(calls.filter(c=>c==='drawImage').length,3+Number(!!indexed.rig.hipSurface),'Two bones, native knee and optional native hip surface');
   assert.equal(renderer.drawTorso(ctx,{width:8,height:8}),false);
   segments+=2;
  }

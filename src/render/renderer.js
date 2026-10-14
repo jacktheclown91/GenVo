@@ -135,7 +135,8 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const p=this.sim.player();if(!p)return;const c=this.ctx,visual=this.playerVisual||this.motion.sample(p,this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear'}),x=Math.round((visual.x-this.camera.x)*tile+this.w/2),y=Math.round((visual.y-this.camera.y)*tile+this.h/2),pulse=(Math.sin(this.renderNow/180)+1)*.5;
     c.save();
     // Dark backing keeps the same gold identity readable on land and water.
-    c.beginPath();c.ellipse(x,y+13,15+pulse,5.5+pulse*.5,0,0,Math.PI*2);
+    const radius=Math.max(12,10*this.zoom)+pulse;
+    c.beginPath();for(let quadrant=0;quadrant<4;quadrant++){const start=quadrant*Math.PI/2+Math.PI/8;c.moveTo(x+Math.cos(start)*radius,y+Math.sin(start)*radius);c.arc(x,y,radius,start,start+Math.PI/4)}
     c.strokeStyle='rgba(9,19,13,.92)';c.lineWidth=4.5;c.stroke();
     c.strokeStyle='rgba(255,224,139,.96)';c.lineWidth=2;c.stroke();
     const lift=Math.max(25,25*this.zoom);c.beginPath();c.moveTo(x-4,y-lift-6);c.lineTo(x+4,y-lift-6);c.lineTo(x,y-lift);c.closePath();c.fillStyle='#ffe08b';c.fill();c.strokeStyle='#19251b';c.lineWidth=1.5;c.stroke();
@@ -865,7 +866,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     c.save();c.translate(px+recoilX*scale,py+((life.hurt&&!moving?1:0)+recoilY)*scale);
     drawGroundContact(c,{contact,scale,bodyScale:ph.bodyScale,dir:drawDir});
     drawActivityGround(c,{bodyPlan:a.bodyPlan,id:a.id,frame:phase,moving,action,scale,dir:drawDir});
-    const depthShadow=creatureShadowFor(this.sim.world,a,this.habitatField,{bodyScale:ph.bodyScale+(life.exhausted?.08:0),moving});drawCreatureDepthShadow(c,{shadow:depthShadow,scale,hurt:life.hurt});
+    const depthShadow=creatureShadowFor(this.sim.world,a,this.habitatField,{bodyScale:ph.bodyScale+(life.exhausted?.08:0),moving,dir:drawDir});drawCreatureDepthShadow(c,{shadow:depthShadow,scale,hurt:life.hurt});
     const palette=creaturePalette(ph);
     if(a.hidden)c.globalAlpha*=.58;
     drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:a.player?phase:cachePhase,moving,palette,pose,cacheKey:a.player||feeding||action==='crack'||encounter.move||encounter.impact||encounter.outcome?null:spriteKey(a,palette,drawDir,cachePhase,moving,pose,life)});
@@ -894,7 +895,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const c=this.ctx,v=DIR8[pose.dir??a.dir]||DIR8[0],perp={x:-v.y,y:v.x},action=pose.action||'idle',life=pose.life||{};
     if((action==='eat'||action==='crack')&&frame%2===0){for(const sign of [-1,1])pixel(c,Math.round(v.x*7+perp.x*sign*2),Math.round(v.y*7+perp.y*sign*2+2),1,1,s,sign>0?'#99a75c':'#6f7c48')}
     if(life.sick&&!pose.dependent&&(frame===1||frame===5)){pixel(c,-5,-7,1,1,s,'rgba(203,129,169,.62)');pixel(c,5,-6,1,1,s,'rgba(203,129,169,.42)')}
-    if(action==='drink'&&frame%2===0){c.save();c.strokeStyle='rgba(137,215,226,.50)';c.lineWidth=Math.max(1,s*.45);c.beginPath();c.ellipse(Math.round(v.x*5*s),Math.round((v.y*5+5)*s),3*s,1*s,0,0,Math.PI*2);c.stroke();c.restore()}
+    if(action==='drink'&&frame%2===0){c.save();c.strokeStyle='rgba(137,215,226,.50)';c.lineWidth=Math.max(1,s*.45);c.beginPath();c.arc(Math.round(v.x*5*s),Math.round(v.y*5*s),1.8*s,0,Math.PI*2);c.stroke();c.restore()}
     // A real, energy-funded performance, not merely standing near a mate. Its
     // intensity is inherited anatomy expressed through the existing court pose.
     if(action==='court'&&a.courtshipPerformance&&this.sim.tickCount<=a.courtshipPerformance.endsAt){

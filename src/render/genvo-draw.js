@@ -129,6 +129,11 @@ function drawGenvoBody(c,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pal
     if(!nativeLimb&&legPart&&legPart!=='walking-leg')drawPart(c,legPart,LK);
   };
   for(const leg of farLegs)drawLeg(leg);
+  // Flank parts (armor plates, storage sacs, venom glands), beneath the dorsal torso in near-vertical overhead.
+  if(!asm.explicit){for(const part of ['armor-plate','storage-sac','venom-gland'])for(const sign of [-1,1])if(asm.flanks[sign].includes(part))drawPart(c,part,{...K,sign})}
+  // Every organ shares the flank region, including unlike part types.
+  else for(const sign of [-1,1]){const parts=asm.flanks[sign];for(let index=0;index<parts.length;index++){const offset=flankInstanceOffset(index,parts.length,bodyW,bodyH);drawPart(c,parts[index],{...K,sign,bx:bx-fx*offset,by:by-fy*offset})}}
+
 
   // Native torso art (nine distinct 32px anatomical silhouettes). Preserve the original
   // procedural mantle for unsupplied parts, contexts without canvas, and tool/test fallbacks.
@@ -181,10 +186,6 @@ function drawGenvoBody(c,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pal
   if(pose.stage==='elder'){const ageEdge='rgba(218,226,222,.46)';pixel(c,snap(bx-perp.x*(bodyW*.36)-fx),snap(by-perp.y*(bodyH*.34)-fy),2,1,s,ageEdge);pixel(c,snap(bx+perp.x*(bodyW*.36)-fx),snap(by+perp.y*(bodyH*.34)-fy),2,1,s,ageEdge)}
 
   const ad=ph.adaptations||{};
-  // Flank parts (armor plates, storage sacs, venom glands), then the torso ridge.
-  if(!asm.explicit){for(const part of ['armor-plate','storage-sac','venom-gland'])for(const sign of [-1,1])if(asm.flanks[sign].includes(part))drawPart(c,part,{...K,sign})}
-  // Every organ shares the flank region, including unlike part types.
-  else for(const sign of [-1,1]){const parts=asm.flanks[sign];for(let index=0;index<parts.length;index++){const offset=flankInstanceOffset(index,parts.length,bodyW,bodyH);drawPart(c,parts[index],{...K,sign,bx:bx-fx*offset,by:by-fy*offset})}}
   if(!hasNativeTorso&&asm.torso!=='soft-torso')drawPart(c,asm.torso,K);
   if(ad.efficientGut){const gx=bx-fx*(bodyW*.18),gy=by-fy*(bodyH*.18)+2;pixelLine(c,gx-perp.x*2,gy-perp.y*2,gx+perp.x*2,gy+perp.y*2,s,p.shade)}
   if(ad.fastHealing){pixel(c,snap(bx-perp.x*2-fx),snap(by-perp.y*2-fy),1,1,s,'rgba(245,239,211,.88)');pixel(c,snap(bx+perp.x*2),snap(by+perp.y*2),1,1,s,'rgba(245,239,211,.68)')}
@@ -200,7 +201,7 @@ function drawGenvoBody(c,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pal
   // The native mouth owns its complete outline and articulation; never stack a generic
   // mouth line on top. When native artwork is absent, preserve the procedural fallback.
   const mouthPart=asm.mouth||(!asm.explicit?'grazing-mouth':null);
-  const mouthX=faceMounts.mouth?.x??bx+fx*face.mouthForward,mouthY=faceMounts.mouth?.y??by+fy*face.mouthForward+(fy>=.5?.6:0);
+  const mouthX=faceMounts.mouth?.x??bx+fx*face.mouthForward,mouthY=faceMounts.mouth?.y??by+fy*face.mouthForward;
   let mouthFrame=face.mouthOpen>0?1:0;
   if(pose.encounter?.move==='call'&&partDef(mouthPart)?.actionCapabilities.includes('call')){mouthFrame=(profile.behavior.mouthPulse||0)>.45?1:0;face.mouthOpen=mouthFrame;}
   if(Number.isFinite(profile.behavior.attackMouthOpen)){mouthFrame=profile.behavior.attackMouthOpen>0?1:0;face.mouthOpen=mouthFrame;}

@@ -13,7 +13,9 @@ export function bodyFrame({fx,fy,perp,bx,by,bodyW,bodyH}){
   const vn=Math.hypot(fx,fy)||1,ux=fx/vn,uy=fy/vn,rx=bodyW/2,ry=bodyH/2,edgeAt=(dx,dy)=>1/Math.hypot(dx/rx,dy/ry);
   return{fx:ux,fy:uy,perp,bx,by,rF:edgeAt(ux,uy),rS:edgeAt(perp.x,perp.y),up:bodyH*.5};
 }
-export function socketPoint(at,F){return{x:F.bx+F.fx*at.f*F.rF+F.perp.x*at.s*F.rS,y:F.by+F.fy*at.f*F.rF+F.perp.y*at.s*F.rS-(at.u||0)*F.up}}
+// Near-vertical overhead: height is depth, not a translation toward screen north.
+// Retain authored u in anatomical records; only f/s project into the world plane.
+export function socketPoint(at,F){return{x:F.bx+F.fx*at.f*F.rF+F.perp.x*at.s*F.rS,y:F.by+F.fy*at.f*F.rF+F.perp.y*at.s*F.rS}}
 const cache=new Map();
 // Authored places of a torso's sockets ({socketId: at}), or null when it has none.
 export function authoredSockets(torsoId){

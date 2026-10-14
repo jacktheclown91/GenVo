@@ -28,17 +28,19 @@ assert.ok(artMount('barb',leg).x<artMount('dew-claw',leg).x&&artMount('dew-claw'
 assert.equal(artMount('claw',base),null,'no disembodied spur when foot absent');
 const trace=[];
 const stub={draw(_ctx,opts){trace.push(opts);return true}};
-const fake={drawImage(){},save(){},restore(){}};
+const fake={drawImage(){},save(){},restore(){},translate(){},rotate(){},scale(){}};
 assert.equal(drawPart(fake,'claw',{...leg,authoredParts:{claw:stub},authoredFacing:3,authoredTimeMs:300}),true);
 assert.equal(trace.length,1);
-assert.ok(Math.abs(trace[0].x-c.x*base.s)<1e-8);
-assert.ok(Math.abs(trace[0].y-c.y*base.s)<1e-8);
+assert.equal(trace[0].x,0,'paired part reflection occurs around its exact translated mount');
+assert.equal(trace[0].y,0);
+assert.equal(trace[0].mirrorX,false,'paired anatomy is reflected in body space, never fixed screen X');
 assert.equal(trace[0].facing,3);
 for(let dir=0;dir<8;dir++)for(let f=0;f<8;f++){
  const pose=genvoVisualPose({id:12,dir,frame:f,moving:true,legSlots:null});
  const {front,back}=anatomicalLimbLayers(pose.legs,pose.bodyOffset.y);
  assert.equal(front.length+back.length,8,'each physical limb is rendered exactly once');
- assert.ok(front.length>0&&back.length>0,'torso occludes some limbs, foreground limbs cover torso');
+ assert.equal(front.length,0,'ordinary gait sits beneath the dorsal body from near-vertical overhead');
+ assert.equal(back.length,8);
  assert.equal(new Set([...front,...back]).size,8);
  const inOrder=arr=>arr.every((v,i)=>i===0||limbScreenDepth(arr[i-1],pose.bodyOffset.y)<=limbScreenDepth(v,pose.bodyOffset.y));
  assert.ok(inOrder(front)&&inOrder(back));

@@ -1,6 +1,10 @@
 # Active GenVo development goal: evidence audit
 
-## Latest visual steering — October 14 artwork production pilot
+## Latest visual steering — October 14 near-vertical overhead correction
+
+The creator approved near-vertical overhead, with eight world-plane facings and one stationary camera. Planar mounts, reflection, occlusion, contact shadows and native walking-leg/mouth/eye/fin art are integrated. Actual rendered heading and player identity are now asserted in the 800×600 harness, correcting an earlier JSON-transport evidence defect. Twenty-seven focused checks pass; the historical fixed-bound fallback assembly test still fails identically on the baseline. See [the current overhead review](GenVo-Overhead-Perspective-Review.md). Older profile mouths, raised structures and vegetation remain unfinished. Full art, human usability, ecology and biological calibration goals remain open.
+
+## Previous artwork production pilot
 
 Dedicated image generation was verified and used, rather than another polygon-authoring expansion. Two creator-guided facial parts and two finite ecological plant classes are integrated. Real paired800×600 world state is exact; controlled feeding and mixed-body movement are separate evidence. Head, torso and limb candidates that failed native readability/direction/rig quality were rejected. Existing originals, anatomy and simulation are preserved. See [the art production checkpoint](GenVo-Art-Production-Checkpoint.md). The broad goal remains active; native limb painting, coherent directional body art, environmental variety, creator review and unfamiliar-player testing remain open. No biological rule expansion or numeric calibration is authorized by this artwork pass.
 

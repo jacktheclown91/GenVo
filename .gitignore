@@ -84,3 +84,16 @@ reports/visual-production/*
 !/docs/strike-call-after-runtime.webm
 !/docs/strike-performance-before-runtime.webm
 !/docs/strike-performance-after-runtime.webm
+
+# Overhead-camera source baselines and curated final recordings
+!reports/limb-production-before/
+!reports/limb-production-before/**
+!reports/overhead-before/
+!reports/overhead-before/**
+!reports/limb-production/
+reports/limb-production/*
+!reports/limb-production/world-checkpoint.json
+!/docs/overhead-before-runtime.webm
+!/docs/overhead-after-runtime.webm
+!/docs/overhead-feeding-before-runtime.webm
+!/docs/overhead-feeding-after-runtime.webm

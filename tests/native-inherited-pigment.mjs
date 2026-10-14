@@ -25,7 +25,7 @@ for(let i=0;i<1024;i++){
 assert.equal(mark.length,18,'only 16 base frames plus 2 requested pigment frames are rasterized');
 const K={bx:2,by:4,bodyW:10,bodyH:8,fx:1,fy:0,perp:{x:0,y:1},sign:-1};
 assert.equal(artMount('balance-tail',K).x,2-5*.96,'tail mounts at facing-correct mantle edge, not face');
-assert.equal(artMount('sail-fin',K).y,4-8*.33,'dorsal silhouette attaches to mantle');
+assert.equal(artMount('sail-fin',K).y,4,'dorsal silhouette attaches to the horizontal mantle plane, not screen north');
 assert.equal(artMount('armor-plate',K).mirrorX,true);
 assert.equal(artMount('simple-eye',K),null,'face uses face anchor');
 console.log('native inherited-pigment and anatomical socket mounting PASS');

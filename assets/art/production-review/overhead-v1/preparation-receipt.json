@@ -1,0 +1,71 @@
+{
+  "schema": "genvo.imagegen-native-preparation/1",
+  "grid": [
+    32,
+    32
+  ],
+  "alphaThreshold": 128,
+  "sample": "nearest",
+  "orientation": "Eight rotations in one horizontal world plane",
+  "sourceMethod": "Built-in imagegen; eye preserves previous creator-guided east-facing pixels",
+  "preparationTool": "tools/prepare-overhead-art.py",
+  "biologicalChanges": false,
+  "creatorVisualApproval": false,
+  "items": [
+    {
+      "part": "grazing-mouth",
+      "files": [
+        {
+          "path": "assets/art/production-review/overhead-v1/grazing-mouth.candidate.json",
+          "sha256": "655e7f002e0d0353840ac098ef18dd2666f3016029947aa9c628d8583cc7bd01",
+          "bytes": 89269
+        },
+        {
+          "path": "assets/art/production-review/overhead-v1/grazing-mouth.native.png",
+          "sha256": "35370f7d360baaf487d53244244b6b27fae4df98e4da1ba8e7cd4c8a4776ad03",
+          "bytes": 367
+        },
+        {
+          "path": "assets/art/production-review/overhead-v1/grazing-mouth-master.png",
+          "sha256": "91ae9fe0e3a6c5b3da4bae69b2ed70a9a73ca7f3b3cc906c58a4c72c06059a81",
+          "bytes": 578482
+        }
+      ]
+    },
+    {
+      "part": "sail-fin",
+      "files": [
+        {
+          "path": "assets/art/production-review/overhead-v1/sail-fin.candidate.json",
+          "sha256": "6a2d83abef8629015e267b9cbcb70fd7bed0ca66bed7800cc38eafdb1786f78f",
+          "bytes": 89271
+        },
+        {
+          "path": "assets/art/production-review/overhead-v1/sail-fin.native.png",
+          "sha256": "0dde042b37c2cac391981c278c079450d57a010da2d50b36900de4263a367725",
+          "bytes": 270
+        },
+        {
+          "path": "assets/art/production-review/overhead-v1/sail-fin-master.png",
+          "sha256": "1ab73dccb374d59cdac13ce2740bacbce19d788499e4b36a1523330ad55c75b5",
+          "bytes": 229874
+        }
+      ]
+    },
+    {
+      "part": "simple-eye",
+      "files": [
+        {
+          "path": "assets/art/production-review/overhead-v1/simple-eye.candidate.json",
+          "sha256": "b6bb090c6a1e6d6776a36cbdefa77b5d7a8ad58a8b50370f85652fb83a98d4ff",
+          "bytes": 89239
+        },
+        {
+          "path": "assets/art/production-review/overhead-v1/simple-eye.native.png",
+          "sha256": "5be508443e499a0f0dce4eea0fa25e9d3be69113084e68fca1f74296561da77b",
+          "bytes": 467
+        }
+      ]
+    }
+  ]
+}

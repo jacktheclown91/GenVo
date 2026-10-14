@@ -136,7 +136,7 @@ Object.assign(DRAW,{
 const tailRoot=k=>k.L?.tail?{x:k.L.tail.x,y:k.L.tail.y+1}:({x:k.bx-k.fx*(k.bodyW*.46),y:k.by-k.fy*(k.bodyH*.46)+1});
 const tailSweep=k=>((k.frameInt%4)-1.5)*.4+(Number(k.behavior?.tailSweep)||0);
 const tailEnd=(k,len)=>{const r=tailRoot(k),w=tailSweep(k);return{r,x:r.x-k.fx*len+k.perp.x*w,y:r.y-k.fy*len+k.perp.y*w}};
-const backTop=k=>k.L?.dorsal?{x:k.L.dorsal.x,y:k.L.dorsal.y}:({x:k.bx-k.fx*1,y:k.by-Math.max(2,k.bodyH*.46)});
+const backTop=k=>k.L?.dorsal?{x:k.L.dorsal.x,y:k.L.dorsal.y}:({x:k.bx-k.fx*1,y:k.by-k.fy*1});
 const flankAt=k=>{const a=k.L?.[k.sign<0?'flank.left':'flank.right'];return a?{x:a.x,y:a.y}:{x:k.bx+k.perp.x*k.sign*(k.bodyW*.44),y:k.by+k.perp.y*k.sign*(k.bodyH*.40)}};
 Object.assign(DRAW,{
   'balance-tail'(c,k){const t=tailEnd(k,6.5);pixelLine(c,t.r.x,t.r.y,t.x,t.y,k.s,k.p.shade,.5);pixel(c,t.x,t.y,.5,.5,k.s,k.p.light)},
@@ -266,7 +266,7 @@ export function artMount(partId,k){
  if(sockets.includes('dorsal')){
    const at=authored('dorsal');
    return {x:at?.x??x0-k.fx*Math.min(k.bodyW,k.bodyH)*.10,
-     y:at?.y??y0-k.fy*Math.min(k.bodyW,k.bodyH)*.10-k.bodyH*.33,
+     y:at?.y??y0-k.fy*Math.min(k.bodyW,k.bodyH)*.10,
      scale:.31*(1+(Number(k.behavior?.crestSpread)||0)),mirrorX:false};
  }
  return null;
@@ -274,13 +274,13 @@ export function artMount(partId,k){
 export function drawPart(c,partId,k){
  const authored=k.authoredParts?.[partId]||artForPart(partId);
  if(authored&&!authored.rig&&typeof c.drawImage==='function'){
-  const mount=artMount(partId,k),anchor=mount?{x:mount.x,y:mount.y}:(k.eye||k.mouth||(PART_SPRITES[partId]?.layer==='face'&&k.face?{x:k.bx+k.fx*k.face.mouthForward,y:k.by+k.fy*k.face.mouthForward+(k.fy>=.5?.6:0)}:null));
+  const mount=artMount(partId,k),anchor=mount?{x:mount.x,y:mount.y}:(k.eye||k.mouth||(PART_SPRITES[partId]?.layer==='face'&&k.face?{x:k.bx+k.fx*k.face.mouthForward,y:k.by+k.fy*k.face.mouthForward}:null));
   if(anchor){
    const faceFactor=k.eye?.x!==undefined?.55:k.mouth?.x!==undefined?.72:PART_SPRITES[partId]?.layer==='face'?.7:1;
    const scale=k.s*(mount?.scale??(faceFactor/2));
    const args={x:anchor.x*k.s,y:anchor.y*k.s,scale,pigment:k.nativePigment,
-    rotation:mount?.rotation||0,mirrorX:mount?.mirrorX||false,state:k.authoredState||'idle',facing:k.authoredFacing??0,timeMs:k.authoredTimeMs??0,frameIndex:k.authoredFrameIndex??null};
-   const rotation=(mount?.rotation||0)+(Number(k.faceTurn)||0);let painted=false;c.save();try{if(rotation){c.translate(args.x,args.y);c.rotate(rotation);args.x=0;args.y=0}if(k.mouth&&k.behavior?.mouthPulse)args.scale*=1+Math.max(0,k.behavior.mouthPulse)*.12;painted=authored.draw(c,args)||(args.state!=='idle'&&authored.draw(c,{...args,state:'idle'}));}finally{c.restore()}if(painted)return true;
+    rotation:mount?.rotation||0,mirrorX:false,state:k.authoredState||'idle',facing:k.authoredFacing??0,timeMs:k.authoredTimeMs??0,frameIndex:k.authoredFrameIndex??null};
+   const rotation=(mount?.rotation||0)+(Number(k.faceTurn)||0),paired=!!mount?.mirrorX;let painted=false;c.save();try{if(rotation||paired){c.translate(args.x,args.y);if(rotation)c.rotate(rotation);if(paired){const axis=Math.atan2(k.fy||0,k.fx||0);c.rotate(axis);c.scale(1,-1);c.rotate(-axis)}args.x=0;args.y=0}if(k.mouth&&k.behavior?.mouthPulse)args.scale*=1+Math.max(0,k.behavior.mouthPulse)*.12;painted=authored.draw(c,args)||(args.state!=='idle'&&authored.draw(c,{...args,state:'idle'}));}finally{c.restore()}if(painted)return true;
   }
  }
  const fn=DRAW[partId];if(fn)fn(c,k);return !!fn;

@@ -46,6 +46,13 @@ export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
  }
 
  function select({state='idle',facing=0,timeMs=0,frameIndex=null}={}){if(!Number.isFinite(timeMs)||timeMs<0)throw Error('Invalid animation time');const frames=sequences.get(state+':'+facing);if(!frames)return null;if(frameIndex!==null){if(!Number.isInteger(frameIndex)||frameIndex<0)throw Error('Invalid animation frame index');return frames.find(e=>e.frame.index===frameIndex)||null}const total=frames.reduce((sum,e)=>sum+e.frame.durationMs,0);let elapsed=timeMs%total;for(const entry of frames){if(elapsed<entry.frame.durationMs)return entry;elapsed-=entry.frame.durationMs}return frames[frames.length-1]}
+ function drawInsertion(ctx,entry,surface,position,angle,width){
+  if(!surface||!(width>0))return;
+  const {rect:[sx,sy,sw,sh],anchor:[ax,ay]}=surface;
+  ctx.save();try{ctx.imageSmoothingEnabled=false;ctx.translate(position.x,position.y);ctx.rotate(angle);ctx.scale(width,width);
+   ctx.drawImage(entry.canvas,sx,sy,sw,sh,sx-ax,sy-ay,sw,sh);
+  }finally{ctx.restore()}
+ }
  function drawSurface(ctx,kind,{x=0,y=0,width=8,height=7,state='idle',facing=0,timeMs=0,pigment=null,rotationRadians=0}={}){
   if(rig?.kind!==kind)return false;
   const chosen=select({state,facing,timeMs})||select({state:'idle',facing,timeMs});if(!chosen)return false;
@@ -65,13 +72,11 @@ export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
   // One native shaded insertion bridges the two projections at the actual knee.
   // It is sampled from this limb's current frame/pigment, never a generic circle.
   // Isotropic tissue width prevents a folded/foreshortened bone from opening a seam.
-  if(rig.jointSurface&&sharedWidth>0){
-   const {rect:[sx,sy,sw,sh],anchor:[ax,ay]}=rig.jointSurface;
-   ctx.save();try{ctx.imageSmoothingEnabled=false;ctx.translate(knee.x,knee.y);
-    ctx.rotate(Math.atan2(knee.y-root.y,knee.x-root.x));ctx.scale(sharedWidth,sharedWidth);
-    ctx.drawImage(entry.canvas,sx,sy,sw,sh,sx-ax,sy-ay,sw,sh);
-   }finally{ctx.restore()}
-  }
+  const upperAngle=Math.atan2(knee.y-root.y,knee.x-root.x);
+  // An optional native hip insertion keeps its painted volume when the thigh is
+  // foreshortened. It belongs to this actual mounted limb and shares its pigment.
+  drawInsertion(ctx,entry,rig.hipSurface,root,upperAngle,sharedWidth);
+  drawInsertion(ctx,entry,rig.jointSurface,knee,upperAngle,sharedWidth);
   return true;
  },
  draw(ctx,{x=0,y=0,scale=1,pigment=null,mirrorX=false,...options}={}){if(![x,y,scale].every(Number.isFinite)||scale<=0)throw Error('Invalid part transform');const chosen=select(options);if(!chosen)return false;const entry=tinted(chosen,pigment);let angle=entry.frame.jointDegrees??0;if(limits)angle=Math.max(limits.minDegrees,Math.min(limits.maxDegrees,angle));ctx.save();try{ctx.imageSmoothingEnabled=false;ctx.translate(x,y);ctx.scale(scale*displayScale*(mirrorX?-1:1),scale*displayScale);ctx.rotate(angle*Math.PI/180);ctx.drawImage(entry.canvas,-pivot[0],-pivot[1]);}finally{ctx.restore()}return true}});

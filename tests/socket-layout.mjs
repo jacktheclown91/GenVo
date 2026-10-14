@@ -23,7 +23,7 @@ const frame=dir=>{const v=[[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]
 const up=socketPoints('small-torso',frame(0)),down=socketPoints('small-torso',frame(4)),right=socketPoints('small-torso',frame(2));
 assert.ok(up.mouth.y<0&&down.mouth.y>0&&right.mouth.x>0,'the mouth turns with the body');
 assert.ok(Math.abs(up['eye.left'].x+down['eye.left'].x)<1e-9,'left and right turn with the body');
-assert.ok(up.dorsal.y<0&&down.dorsal.y<0,'the back stays on top whichever way the body faces');
+assert.ok(up.dorsal.y>0&&down.dorsal.y<0,'the dorsal location rotates in the horizontal plane; anatomical height does not shift it toward screen north');
 
 // The editor's sockets are the body's own places.
 const plan=founderPlan(),a={id:-1,species:'genvo',dir:3,bodyPlan:plan,adaptations:[],anatomy:{},genes:{}};

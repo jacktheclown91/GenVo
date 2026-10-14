@@ -70,6 +70,11 @@ export async function compileIndexedPart(spec){
         if(!Array.isArray(rect)||rect.length!==4||!rect.every(Number.isInteger)||rect[2]<1||rect[3]<1||rect[0]<host[0]||rect[1]<host[1]||rect[0]+rect[2]>host[0]+host[2]||rect[1]+rect[3]>host[1]+host[3])fail('joint surface must sample upper native section');
         if(!Array.isArray(anchor)||anchor.length!==2||!anchor.every(Number.isFinite)||anchor[0]<rect[0]||anchor[1]<rect[1]||anchor[0]>=rect[0]+rect[2]||anchor[1]>=rect[1]+rect[3])fail('joint surface anchor outside native section');
       }
+      if(rig.hipSurface!==undefined){
+        const {rect,anchor}=rig.hipSurface||{},host=rig.upper.rect;
+        if(!Array.isArray(rect)||rect.length!==4||!rect.every(Number.isInteger)||rect[2]<1||rect[3]<1||rect[0]<host[0]||rect[1]<host[1]||rect[0]+rect[2]>host[0]+host[2]||rect[1]+rect[3]>host[1]+host[3])fail('hip surface must sample upper native section');
+        if(!Array.isArray(anchor)||anchor.length!==2||!anchor.every(Number.isFinite)||anchor[0]!==rig.upper.start[0]||anchor[1]!==rig.upper.start[1]||anchor[0]<rect[0]||anchor[1]<rect[1]||anchor[0]>=rect[0]+rect[2]||anchor[1]>=rect[1]+rect[3])fail('hip surface anchor must match anatomical root');
+      }
       const a=rig.upper.rect,b=rig.lower.rect;
       if(!(a[0]+a[2]<=b[0]||b[0]+b[2]<=a[0]||a[1]+a[3]<=b[1]||b[1]+b[3]<=a[1]))fail('limb atlas sections overlap');
     }else fail('unknown art rig kind');

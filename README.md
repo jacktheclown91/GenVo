@@ -2,7 +2,7 @@
 
 Canonical source for the evolutionary survival game. Development happens on **main**; this repository has one branch.
 
-Current checkpoint: **Imagegen Artwork Production Pilot (2026-10-14)**. Dedicated image generation is verified; two creator-guided facial parts and two actual plant classes now use prepared generated paintings. Real paired worlds, feeding and mixed-body movement are captured. Rejected head/torso/limb candidates remain outside runtime. Mounted bite/peck/strike and defensive presentation are integrated with the existing controllers. This limited checkpoint is not whole-game visual approval; mass calibration and swimming migration remain pending review. See [the current implementation report](docs/GenVo-Art-Production-Checkpoint.md) and [the full development goal status](docs/GenVo-Development-Goal-Status.md).
+Current checkpoint: **Near-Vertical Overhead Correction (2026-10-14)**. Planar mounts, body-relative handedness, dorsal occlusion, body-oriented contact shadows and four modular art packs now follow the approved overhead direction. Real 800×600 before/after captures independently verify all eight rendered headings and actual player movement. See [the implementation and evidence review](docs/GenVo-Overhead-Perspective-Review.md). Several older mouths, display structures and plants still need source-art correction. This is not whole-game visual approval; physical calibration and swimming migration remain open.
 
 Run the game from the repository root:
 

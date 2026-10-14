@@ -1,5 +1,6 @@
 import {smoothedWaterScore} from './landform.js';
 import {visualCompositionAt} from './composition.js';
+import {assemblyFor} from './creature-assembler.js';
 
 // Presentation-only depth/lighting interpretation. It derives local shade, bank depth
 // and contact shadows from existing habitat structure without changing world state.
@@ -44,9 +45,11 @@ export function drawHabitatDepth(ctx,{world,habitatField,isWater,px,py,u,i,x,y,s
   ctx.restore();return p;
 }
 
-export function creatureShadowFor(world,animal,habitatField=null,{bodyScale=1,moving=false}={}){
+export function creatureShadowFor(world,animal,habitatField=null,{bodyScale=1,moving=false,dir=animal.dir||0}={}){
   const x=Math.floor(animal.x),y=Math.floor(animal.y),p=depthProfileAt(world,x,y,habitatField),moisture=world.moisture[world.idx(x,y)]||0;
-  const width=6+5*bodyScale,height=1.5+bodyScale*.65,offsetX=1.0+Math.max(0,p.light-.48)*1.5,offsetY=4.8+bodyScale*.7;
+  const shape=assemblyFor(animal).shape||{length:1,width:.9,size:1},angle=(dir-2)*Math.PI/4,base=(6+5*bodyScale)*shape.size;
+  const along=base*shape.length,across=base*shape.width,c=Math.cos(angle),s=Math.sin(angle);
+  const width=Math.hypot(along*c,across*s),height=Math.hypot(along*s,across*c),offsetX=.65+Math.max(0,p.light-.48)*.7,offsetY=.65+bodyScale*.25;
   const alpha=clamp(.18+.07*p.shade+.025*(moving?1:0)+(moisture>.68?.025:0),.16,.31);
   return{width,height,offsetX,offsetY,alpha,profile:p};
 }
@@ -54,10 +57,12 @@ export function creatureShadowFor(world,animal,habitatField=null,{bodyScale=1,mo
 export function drawCreatureDepthShadow(ctx,{shadow,scale=1,hurt=false}){
   if(!shadow)return;const s=Math.max(1,scale),a=Math.min(.34,shadow.alpha+(hurt?.04:0));ctx.save();
   ctx.fillStyle=`rgba(4,13,9,${a})`;
-  const x=Math.round((-shadow.width*.5+shadow.offsetX)*s),y=Math.round(shadow.offsetY*s),w=Math.max(2,Math.round(shadow.width*s)),h=Math.max(1,Math.round(shadow.height*s));
-  ctx.fillRect(x,y,w,h);
+  const x=Math.round((-shadow.width*.5+shadow.offsetX)*s),y=Math.round((-shadow.height*.5+shadow.offsetY)*s),w=Math.max(2,Math.round(shadow.width*s)),h=Math.max(2,Math.round(shadow.height*s));
+  // An overhead contact footprint surrounds the support center. A horizontal bar
+  // below the animal implied a side camera; this follows its anatomical plan shape.
+  for(let row=0;row<h;row++){const t=(row+.5)/h*2-1,span=Math.max(1,Math.round(w*Math.sqrt(Math.max(0,1-t*t))));ctx.fillRect(x+Math.round((w-span)/2),y+row,span,1)}
   // A shorter core shadow prevents wide animals from appearing to hover above the soft edge.
-  ctx.fillStyle=`rgba(3,10,7,${Math.min(.22,a*.72)})`;ctx.fillRect(Math.round(x+w*.22),y,Math.max(1,Math.round(w*.56)),Math.max(1,Math.round(h*.55)));
+  ctx.fillStyle=`rgba(3,10,7,${Math.min(.22,a*.72)})`;ctx.fillRect(Math.round(x+w*.28),Math.round(y+h*.30),Math.max(1,Math.round(w*.44)),Math.max(1,Math.round(h*.40)));
   ctx.restore();
 }
 

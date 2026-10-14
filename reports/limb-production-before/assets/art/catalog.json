@@ -1,0 +1,716 @@
+{
+  "schema": "genvo.part-art-catalog/1",
+  "parts": [
+    {
+      "partId": "simple-eye",
+      "path": "./parts/simple-eye.json",
+      "png": "./parts/simple-eye.png",
+      "checksumSha256": "1e0a9f930cebf5f52e42d04b223b904b808c01e81c70277a57d4a7999da2dd36",
+      "status": "imagegen-production-pilot-review",
+      "indexed": "./parts/simple-eye.indexed.json",
+      "compiledChecksum": "f49bead46e607f47c4f140c55951836bd27af53997be383de31c9014c35260bc"
+    },
+    {
+      "partId": "stalk-eye",
+      "path": "./parts/stalk-eye.json",
+      "png": "./parts/stalk-eye.png",
+      "checksumSha256": "6abc01f62cae6d10f6855085266adbe979940a5b7152ff5082109f45f6c92114",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/stalk-eye.indexed.json",
+      "compiledChecksum": "4cef5a27ba1d4518a5bc679ef1c5d1848e480808eac6fcadba3757934417d37c"
+    },
+    {
+      "partId": "compound-eye",
+      "path": "./parts/compound-eye.json",
+      "png": "./parts/compound-eye.png",
+      "checksumSha256": "fce373aa05ef1b245b04b52039cf74bf74a5338f7c0ae326bad1c291982a5386",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/compound-eye.indexed.json",
+      "compiledChecksum": "5e6cbc955c0f1de820093da7ab517afc3b28ebead92c244e1dae05e706c95cfa"
+    },
+    {
+      "partId": "hunter-eye",
+      "path": "./parts/hunter-eye.json",
+      "png": "./parts/hunter-eye.png",
+      "checksumSha256": "ef035a247caf605c9a0701f35238a408e76ab79abf951808106e865ea3d80069",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/hunter-eye.indexed.json",
+      "compiledChecksum": "772c9f1f571310aacecab71fbd4b46960ee8b94cd7789a2d46dd2848bcf0c6a3"
+    },
+    {
+      "partId": "tracker-eye",
+      "path": "./parts/tracker-eye.json",
+      "png": "./parts/tracker-eye.png",
+      "checksumSha256": "d237e48e39c82e067c8053a6eae7416d3a765fe47aa55a1b8092f45ba02955db",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/tracker-eye.indexed.json",
+      "compiledChecksum": "0cad28f6f3abfbf2aadb5589c4248a8aa0fa9e1281042331149d676ed5794e3d"
+    },
+    {
+      "partId": "glow-eye",
+      "path": "./parts/glow-eye.json",
+      "png": "./parts/glow-eye.png",
+      "checksumSha256": "1862517fd5ffa46912b3f2e0d7adcdb8b45fee8136314bb345ca2809d2fd9a8c",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/glow-eye.indexed.json",
+      "compiledChecksum": "10ab201f1800bccdea48c584d5cb33d7fd503f5dd7690a35c4277d195effca01"
+    },
+    {
+      "partId": "wide-field-eye",
+      "path": "./parts/wide-field-eye.json",
+      "png": "./parts/wide-field-eye.png",
+      "checksumSha256": "625cfc9a469da040c84a01a3cf46074b0ea9bf3198885d16460f98c249a772d6",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/wide-field-eye.indexed.json",
+      "compiledChecksum": "66aae8495f526f8bdf1967dd63f2a5941450ae7d20cc296f625711d13d4d4bb2"
+    },
+    {
+      "partId": "grazing-mouth",
+      "path": "./parts/grazing-mouth.json",
+      "png": "./parts/grazing-mouth.png",
+      "checksumSha256": "2b5a049eccbf811a7fd50882979a77e76a6a7ba02b6120c16b064855b5e6c487",
+      "status": "imagegen-production-pilot-review",
+      "indexed": "./parts/grazing-mouth.indexed.json",
+      "compiledChecksum": "b14b712d93118993813d3e166041863fc7800b3d0d7dacc56f25725cb6f7a762"
+    },
+    {
+      "partId": "tearing-jaw",
+      "path": "./parts/tearing-jaw.json",
+      "png": "./parts/tearing-jaw.png",
+      "checksumSha256": "fa73aa6296803be5e6fd07e9905dc3023fc4960fde6fb161919112551973c15a",
+      "status": "development-review-v172",
+      "indexed": "./parts/tearing-jaw.indexed.json",
+      "compiledChecksum": "8277e809097bdb8810c03786295b557b67574f7cd6cee0d62224c147ec03cf74"
+    },
+    {
+      "partId": "crushing-jaw",
+      "path": "./parts/crushing-jaw.json",
+      "png": "./parts/crushing-jaw.png",
+      "checksumSha256": "2be8ea5a7f57e8dc4aefe96edfc20543fa5862927fa588f1bdf99f14f22814ce",
+      "status": "development-review-v172",
+      "indexed": "./parts/crushing-jaw.indexed.json",
+      "compiledChecksum": "44b7d5e8c89b3c450defc6353eddadfeee7007a418a9f0d7c747f314fbaf1bb0"
+    },
+    {
+      "partId": "kernel-beak",
+      "path": "./parts/kernel-beak.json",
+      "png": "./parts/kernel-beak.png",
+      "checksumSha256": "3facaf7e6116cced0471bf50e94e0d88f7789931d3d7746b9bbf65dbf0c07081",
+      "status": "development-review-v172",
+      "indexed": "./parts/kernel-beak.indexed.json",
+      "compiledChecksum": "4c9e972d8e0ecf44084d50bb0e205c7e0e5bffc67c3628ae165c4ff4603fcf16"
+    },
+    {
+      "partId": "reed-sieve-mouth",
+      "path": "./parts/reed-sieve-mouth.json",
+      "png": "./parts/reed-sieve-mouth.png",
+      "checksumSha256": "caa2122b80cffc8042eb9492a3eb3a0fb897b1e60d182b2efa9404c2d1dc34bf",
+      "status": "development-review-v172",
+      "indexed": "./parts/reed-sieve-mouth.indexed.json",
+      "compiledChecksum": "37e6b9e06add4e130ead0a213506ef4ad0ec8de09a9c08087d7468629d0562e9"
+    },
+    {
+      "partId": "filter-mouth",
+      "path": "./parts/filter-mouth.json",
+      "png": "./parts/filter-mouth.png",
+      "checksumSha256": "831ba7cff0413a0e6a4fae12c42fef6f6efb5349bc72c435f70866ff33c5c0b5",
+      "status": "development-review-v172",
+      "indexed": "./parts/filter-mouth.indexed.json",
+      "compiledChecksum": "64a8c3f2fd02cba15ff1efc1e46acf5100179d4d555e27cc07adea53b760d06f"
+    },
+    {
+      "partId": "nibbler-mouth",
+      "path": "./parts/nibbler-mouth.json",
+      "png": "./parts/nibbler-mouth.png",
+      "checksumSha256": "5ac9b590f191cf814cd8dce340d22643bdc446a122b8a36f667ed02c73189132",
+      "status": "development-review",
+      "indexed": "./parts/nibbler-mouth.indexed.json",
+      "compiledChecksum": "8908e855924c6845941fe4299acea58590b0b6197dd519c53713db045c6b2d40"
+    },
+    {
+      "partId": "small-torso",
+      "path": "./parts/small-torso.json",
+      "png": "./parts/small-torso.png",
+      "checksumSha256": "1a7fd888615a4f552bf8590082436eef1dea1476161005b7b688aa2f7f914603",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/small-torso.indexed.json",
+      "compiledChecksum": "e12f5dcf3310a7d249d06796e44e216afebebdabba2d9081ff03a0b953deba15"
+    },
+    {
+      "partId": "soft-torso",
+      "path": "./parts/soft-torso.json",
+      "png": "./parts/soft-torso.png",
+      "checksumSha256": "cd191dee1ee4bd48bfcdad0e3be82eb87690e64ea54db78bd8cdd205c8d4c6f1",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/soft-torso.indexed.json",
+      "compiledChecksum": "e046130912c651ca85fdecad3846f0167da4ab1e98b10dd0523578918f177ea6"
+    },
+    {
+      "partId": "reinforced-torso",
+      "path": "./parts/reinforced-torso.json",
+      "png": "./parts/reinforced-torso.png",
+      "checksumSha256": "57053945afb867a8bedb3ec1cb24a4877185affe91dbfffaaedc45ca464ed325",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/reinforced-torso.indexed.json",
+      "compiledChecksum": "2feead7db7b1b4a79870e02de728961a813f6bff6f0700e6558ce324ec30dc8f"
+    },
+    {
+      "partId": "sleek-torso",
+      "path": "./parts/sleek-torso.json",
+      "png": "./parts/sleek-torso.png",
+      "checksumSha256": "fcca91937ce55cd1f1cc5e1f56496a900b21a64cd138d9765a798aa1a840d2be",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/sleek-torso.indexed.json",
+      "compiledChecksum": "1fbc2e00052992704ffa82dcb830a71a5d04448c006c7b5ab0f74ee282f5bab4"
+    },
+    {
+      "partId": "light-torso",
+      "path": "./parts/light-torso.json",
+      "png": "./parts/light-torso.png",
+      "checksumSha256": "70a3ea98b16cc7ccf0ac1ac319cadd3367e7a32b54f4027000b9fb7a5514ee07",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/light-torso.indexed.json",
+      "compiledChecksum": "42ad9b6f1f1f2402b62a0d0292cae9541f422ad11c1f7de294e62268d4234e1e"
+    },
+    {
+      "partId": "stout-torso",
+      "path": "./parts/stout-torso.json",
+      "png": "./parts/stout-torso.png",
+      "checksumSha256": "81b5e739dcb8344493f6bd15624297db7313c0923ea870befc69c6a1019e9a68",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/stout-torso.indexed.json",
+      "compiledChecksum": "68b99abe8294446705d378c6a4201c8ad9f6833056a9edd9e124a41c173afa9a"
+    },
+    {
+      "partId": "barrel-torso",
+      "path": "./parts/barrel-torso.json",
+      "png": "./parts/barrel-torso.png",
+      "checksumSha256": "393bfdfeeb7d0b9ea2cd71793f518b9d8f5f13db284c6a882275170e723474c2",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/barrel-torso.indexed.json",
+      "compiledChecksum": "128a87e527081d60a5b793f3b2a99d77fd7568a11eaa320701268eb3092cf7e4"
+    },
+    {
+      "partId": "dome-torso",
+      "path": "./parts/dome-torso.json",
+      "png": "./parts/dome-torso.png",
+      "checksumSha256": "fb482b671fb09a4b93b1334fc4da6cd68296c32d1ef3b9cb107aeb5ccb18cc11",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/dome-torso.indexed.json",
+      "compiledChecksum": "0ae565cd528d88dd123776f4262f76ff79dcfc73907720c3403aea12c0b319f3"
+    },
+    {
+      "partId": "long-torso",
+      "path": "./parts/long-torso.json",
+      "png": "./parts/long-torso.png",
+      "checksumSha256": "71d14771a69f3cb7d57e0b828bd43e6b3544532a5558613c42dfa42d927baa04",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/long-torso.indexed.json",
+      "compiledChecksum": "ff779e532cdf992c0e844c65720ff75d47bd711977f710e9080cab1d648c1db3"
+    },
+    {
+      "partId": "walking-leg",
+      "path": "./parts/walking-leg.json",
+      "png": "./parts/walking-leg.png",
+      "checksumSha256": "0c0f68ceaede1757b865499f4dec0c6456daa6ddb74755a5a08722c1a3f927e5",
+      "status": "development-review-continuous-joints",
+      "indexed": "./parts/walking-leg.indexed.json",
+      "compiledChecksum": "d01392e5a35ec2e489470f9ad81d4fa886105616aa94622724964897a1efbb23"
+    },
+    {
+      "partId": "spring-leg",
+      "path": "./parts/spring-leg.json",
+      "png": "./parts/spring-leg.png",
+      "checksumSha256": "276cd0b2f47ddb16bd280cefc478935211a94278b2cdaedcf9b9b148ad0a3c75",
+      "status": "development-review-continuous-joints",
+      "indexed": "./parts/spring-leg.indexed.json",
+      "compiledChecksum": "9964395e1ca2e6317459c2f0578f3f09bc5fcc74dd4d7c32d9d7df26759fee54"
+    },
+    {
+      "partId": "grasper",
+      "path": "./parts/grasper.json",
+      "png": "./parts/grasper.png",
+      "checksumSha256": "e648eb52429f2889885ffeb224afc081975db8e6633cfd25e27b949202031344",
+      "status": "development-review-continuous-joints",
+      "indexed": "./parts/grasper.indexed.json",
+      "compiledChecksum": "a9d50f5213b55f31c4c3efd3a4ef8566e6f1f3f90991673ee8bd6328e1bbdd23"
+    },
+    {
+      "partId": "runner-leg",
+      "path": "./parts/runner-leg.json",
+      "png": "./parts/runner-leg.png",
+      "checksumSha256": "124c5c13176fbbe39d1adb6fcfc6b1d3019ae988d1ce7cd072e79ab7eb7478e7",
+      "status": "development-review-continuous-joints",
+      "indexed": "./parts/runner-leg.indexed.json",
+      "compiledChecksum": "4b6634358054bab82fdb58215f4c53a952588b6be734d019b10674a3dc4bdb4a"
+    },
+    {
+      "partId": "sturdy-leg",
+      "path": "./parts/sturdy-leg.json",
+      "png": "./parts/sturdy-leg.png",
+      "checksumSha256": "5bf1e4abefc703967c62c3bb71aa052aa7b6efe0a389350ce054ea1c25a572f7",
+      "status": "development-review-continuous-joints",
+      "indexed": "./parts/sturdy-leg.indexed.json",
+      "compiledChecksum": "22e362fe8d9ae72c945e08ab4479945e845fd299b941c86839f247773a18ab56"
+    },
+    {
+      "partId": "webbed-leg",
+      "path": "./parts/webbed-leg.json",
+      "png": "./parts/webbed-leg.png",
+      "checksumSha256": "ad5711f1ec4ac71d3bedd8e16ada4339a695138c3bf07224d4cf55ec363bd042",
+      "status": "development-review-continuous-joints",
+      "indexed": "./parts/webbed-leg.indexed.json",
+      "compiledChecksum": "e9af029ecd97f047fba6e02eb13f0fc455048e73a8b6cd752ad1a03290161dba"
+    },
+    {
+      "partId": "padded-leg",
+      "path": "./parts/padded-leg.json",
+      "png": "./parts/padded-leg.png",
+      "checksumSha256": "f6441e47b2e705c4f1083a0868e63cd0780f83d34f337eccbd9cd12a2bbdde3b",
+      "status": "development-review-continuous-joints",
+      "indexed": "./parts/padded-leg.indexed.json",
+      "compiledChecksum": "06b2882d887fd64be51117dd01d136a5e7bd759abc1c023fa5694a60bebda1f0"
+    },
+    {
+      "partId": "digging-forelimb",
+      "path": "./parts/digging-forelimb.json",
+      "png": "./parts/digging-forelimb.png",
+      "checksumSha256": "be31ee1b8ba97765ce5295cb36c5b2f35109c9d08f3c7239b5bc3bd2c20d7072",
+      "status": "development-review-continuous-joints",
+      "indexed": "./parts/digging-forelimb.indexed.json",
+      "compiledChecksum": "02e632b6332b74647d96c8b46a1ab71797fb527dff1b9535484ae30bd856d0bd"
+    },
+    {
+      "partId": "paddle-tail",
+      "path": "./parts/paddle-tail.json",
+      "png": "./parts/paddle-tail.png",
+      "checksumSha256": "82bcbde4fac70ba957af7d4855ee2510b2486affeaac251929e296121311245a",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/paddle-tail.indexed.json",
+      "compiledChecksum": "bcf9bd01b8c970ad5b9b26ec80e678b5a322f38fede05a7304a6f82c5d3421cf"
+    },
+    {
+      "partId": "balance-tail",
+      "path": "./parts/balance-tail.json",
+      "png": "./parts/balance-tail.png",
+      "checksumSha256": "23a3dedbd8cd2308d950c8610558a18d0785dc6cf4494e3fac49e8ca1a615098",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/balance-tail.indexed.json",
+      "compiledChecksum": "8a4d4b0256bdb2f90b76067bd1a450d035656b78e1ae87bfb1bbd732f066c0ab"
+    },
+    {
+      "partId": "club-tail",
+      "path": "./parts/club-tail.json",
+      "png": "./parts/club-tail.png",
+      "checksumSha256": "1fe16dda1d397b62399469fd40a0768d6f219ea5b9f71ee094e62001812da19c",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/club-tail.indexed.json",
+      "compiledChecksum": "0d77a763c4efec2846c0814415a4d5d2c4afe5b85bc5cbd2bd01367b35d70a1d"
+    },
+    {
+      "partId": "spined-tail",
+      "path": "./parts/spined-tail.json",
+      "png": "./parts/spined-tail.png",
+      "checksumSha256": "363296e2b4d65acafc4d4f240f9e2f05fe7e52c5d73457505e8e1466cb9144ec",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/spined-tail.indexed.json",
+      "compiledChecksum": "bc4d374413c52bb5bbfb91868c0fbde336e17705953b8ca39f86cd82a8da755f"
+    },
+    {
+      "partId": "whip-tail",
+      "path": "./parts/whip-tail.json",
+      "png": "./parts/whip-tail.png",
+      "checksumSha256": "4c56c223e1631a4c77f50d809522a0627f1b14ee041bc8d30690d4ffabcd88bb",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/whip-tail.indexed.json",
+      "compiledChecksum": "82c77a92260f1520cd51b9460e521579c5cf8ca4bde9a8a79eca025629b0a393"
+    },
+    {
+      "partId": "prehensile-tail",
+      "path": "./parts/prehensile-tail.json",
+      "png": "./parts/prehensile-tail.png",
+      "checksumSha256": "0a0d80ddf5a1f54e2896736f774592c606db2d9ad4aaac37e47f1f701889a0d4",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/prehensile-tail.indexed.json",
+      "compiledChecksum": "0e44af2689be9188a98f9808018d61e95216b8464ddd26baed45597d481c16f2"
+    },
+    {
+      "partId": "fat-tail",
+      "path": "./parts/fat-tail.json",
+      "png": "./parts/fat-tail.png",
+      "checksumSha256": "b7373d4067615b64427ec047168ffa3cf3dbd0832c664d5c767cd61830b2be4a",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/fat-tail.indexed.json",
+      "compiledChecksum": "7b8bbfc08722cf72b7baf9556bbb22253bf19c21965bbb2fc4cf180a13bbdde7"
+    },
+    {
+      "partId": "flag-tail",
+      "path": "./parts/flag-tail.json",
+      "png": "./parts/flag-tail.png",
+      "checksumSha256": "75ba34c85a9c542e0b79ce677e2265141f8ebc8ac95dde18f5545256bf22ca2a",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/flag-tail.indexed.json",
+      "compiledChecksum": "50c9f04aebf9fd3e36e8151c535b905179211a9abf95fcb5a1101c9c99df390a"
+    },
+    {
+      "partId": "luminous-tail",
+      "path": "./parts/luminous-tail.json",
+      "png": "./parts/luminous-tail.png",
+      "checksumSha256": "4356775e855ecb75c2203fe23367df497f44dba2f7b3926514a18f347be97cc4",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/luminous-tail.indexed.json",
+      "compiledChecksum": "62964582c1c180d88cf0a4335170da93e1c8dadb59c1ccf1dae870a5541c89b9"
+    },
+    {
+      "partId": "silt-fin",
+      "path": "./parts/silt-fin.json",
+      "png": "./parts/silt-fin.png",
+      "checksumSha256": "ec8127193fbfb5668037c63a40173184ed9474a0350417baf3222e15dd5e44cd",
+      "status": "development-review",
+      "indexed": "./parts/silt-fin.indexed.json",
+      "compiledChecksum": "9667cdb94c60f6f2911bcf8a0eecf6b7280dba4ec2912ef137aff032a644bda9"
+    },
+    {
+      "partId": "signal-crest",
+      "path": "./parts/signal-crest.json",
+      "png": "./parts/signal-crest.png",
+      "checksumSha256": "17d5afe8229937f4a46f741d91fa0c9f05c17b307fe173b0b8bc47f324939f72",
+      "status": "development-review",
+      "indexed": "./parts/signal-crest.indexed.json",
+      "compiledChecksum": "e3c23e9d99ac34559f5ad3bc5423017e07351d9a1e0e5e013d7dc1d60fc367f7"
+    },
+    {
+      "partId": "shell-back",
+      "path": "./parts/shell-back.json",
+      "png": "./parts/shell-back.png",
+      "checksumSha256": "eb79981784756c1950ff7b7c49b4aab8a3a667dff4cfbf2a93fce927ee0a20a9",
+      "status": "development-review",
+      "indexed": "./parts/shell-back.indexed.json",
+      "compiledChecksum": "4b1df90bd0656a69dd3cf067a86fb6868bc5c73788a708912a9f21eef6a5e159"
+    },
+    {
+      "partId": "thorn-carapace",
+      "path": "./parts/thorn-carapace.json",
+      "png": "./parts/thorn-carapace.png",
+      "checksumSha256": "8a9ce99e0f0824a62174b2abc90b987b4feecce5530ec0113a24ad7e5a474f79",
+      "status": "development-review",
+      "indexed": "./parts/thorn-carapace.indexed.json",
+      "compiledChecksum": "8ae475e05407c8124588dd1854e2bda2506e5b1cb5d122d56a4b60c7b2e576f9"
+    },
+    {
+      "partId": "sail-fin",
+      "path": "./parts/sail-fin.json",
+      "png": "./parts/sail-fin.png",
+      "checksumSha256": "5e7838127124f9783b426d1893a6761d3ba1d727885430e1ac66536995780055",
+      "status": "development-review",
+      "indexed": "./parts/sail-fin.indexed.json",
+      "compiledChecksum": "7acb71c7433fe088686cd69846c41d4af1389f73c16f763ffa32a96a64f66e11"
+    },
+    {
+      "partId": "spine-ridge",
+      "path": "./parts/spine-ridge.json",
+      "png": "./parts/spine-ridge.png",
+      "checksumSha256": "7c7a5d1791777e08e828e3757eb28d7faa089a310d4cd9341e3bb30f0bc2bdf4",
+      "status": "development-review",
+      "indexed": "./parts/spine-ridge.indexed.json",
+      "compiledChecksum": "439228682304f69924ab5d3b1e4256e55f7e7575333e3c6888a4ba15ffbe96fe"
+    },
+    {
+      "partId": "display-frill",
+      "path": "./parts/display-frill.json",
+      "png": "./parts/display-frill.png",
+      "checksumSha256": "56d7308f5c8e100b6ae5e935f11007f5186383e094ee2c6b573e8fdff220bfe0",
+      "status": "development-review",
+      "indexed": "./parts/display-frill.indexed.json",
+      "compiledChecksum": "ca01b8ae8d923d0c2d53fbef72e327ab7467a7f81e8f2f68f2d83590f5b868b2"
+    },
+    {
+      "partId": "moss-back",
+      "path": "./parts/moss-back.json",
+      "png": "./parts/moss-back.png",
+      "checksumSha256": "796a71cffebbc8fe85cade893522519c1cba73d9f18a5d91a7550d39dfd1c00d",
+      "status": "development-review",
+      "indexed": "./parts/moss-back.indexed.json",
+      "compiledChecksum": "661b1086374679d0112b7ca9a4187cf486eefe5dc5e7df8a6ffe765422d2fc9c"
+    },
+    {
+      "partId": "armor-plate",
+      "path": "./parts/armor-plate.json",
+      "png": "./parts/armor-plate.png",
+      "checksumSha256": "5efa3a7812506b1fe12739e6022a533bc1cbb33f1741081aa7b56c662585d0b5",
+      "status": "development-review",
+      "indexed": "./parts/armor-plate.indexed.json",
+      "compiledChecksum": "3be3cc7030568d2e67cd961589a6a26adf3b2b07303e9108246f77b7c1e55a04"
+    },
+    {
+      "partId": "venom-gland",
+      "path": "./parts/venom-gland.json",
+      "png": "./parts/venom-gland.png",
+      "checksumSha256": "7d6b6ea7cea0e1e66859fd8ff30539c887e385535d72ba95a4391b905f305cee",
+      "status": "development-review",
+      "indexed": "./parts/venom-gland.indexed.json",
+      "compiledChecksum": "a49f1874f311fe0b2e4fa99c459dd2146ad10886d2bc12a80ecbb0410cbffb1c"
+    },
+    {
+      "partId": "storage-sac",
+      "path": "./parts/storage-sac.json",
+      "png": "./parts/storage-sac.png",
+      "checksumSha256": "ad4faa30eeb70f370b946de97b93566acbe4f709099e4df9365a09bfd5e04760",
+      "status": "development-review",
+      "indexed": "./parts/storage-sac.indexed.json",
+      "compiledChecksum": "194e04c97afb1416bf556bf1686b91da3d965807cbe8994347a2e00376bcc21a"
+    },
+    {
+      "partId": "gliding-membrane",
+      "path": "./parts/gliding-membrane.json",
+      "png": "./parts/gliding-membrane.png",
+      "checksumSha256": "8db080d2f282263b2bb38f15739d04fe5beee6686d49a09c64e8bff0c4b1d3ab",
+      "status": "development-review",
+      "indexed": "./parts/gliding-membrane.indexed.json",
+      "compiledChecksum": "074977462189437bb9de34a81a3f1a609c75372aca86b1633aae21df9c82402a"
+    },
+    {
+      "partId": "gill-slits",
+      "path": "./parts/gill-slits.json",
+      "png": "./parts/gill-slits.png",
+      "checksumSha256": "6bf25110ea104fbf5ae1b70ffb0af94169d301dda7e02592de0961955f5e5f63",
+      "status": "development-review",
+      "indexed": "./parts/gill-slits.indexed.json",
+      "compiledChecksum": "92cfe555c3970d0a00dce1cd1316324b257ee00e74c7830d490b751f66793cf1"
+    },
+    {
+      "partId": "spine-cluster",
+      "path": "./parts/spine-cluster.json",
+      "png": "./parts/spine-cluster.png",
+      "checksumSha256": "d1f7d6151efc55b88244d5f6852975b62633d7dd11c446fafefce09f93d6c63c",
+      "status": "development-review",
+      "indexed": "./parts/spine-cluster.indexed.json",
+      "compiledChecksum": "ae3a9b7e1d13ac6914774987086b074250903872189fae1469ec166dd8f155a8"
+    },
+    {
+      "partId": "brood-pouch",
+      "path": "./parts/brood-pouch.json",
+      "png": "./parts/brood-pouch.png",
+      "checksumSha256": "d7cc78f2ba690dfa24d27a1760b48badb36ea2ba640ee98e76817fca393fbdd3",
+      "status": "development-review",
+      "indexed": "./parts/brood-pouch.indexed.json",
+      "compiledChecksum": "568e688c8c6f57c240a1e0617ead18464a8e33f71932ee9464b11eb17633a65b"
+    },
+    {
+      "partId": "claw",
+      "path": "./parts/claw.json",
+      "png": "./parts/claw.png",
+      "checksumSha256": "d65875176ad9e62d267af5cbee3c988551f193d077660e279f1b5585dc66dbfb",
+      "status": "development-review",
+      "indexed": "./parts/claw.indexed.json",
+      "compiledChecksum": "ad7358afc28ae546d95b2ada57d53981f72b86fa2a74babbd47dce11c50911a6"
+    },
+    {
+      "partId": "barb",
+      "path": "./parts/barb.json",
+      "png": "./parts/barb.png",
+      "checksumSha256": "5f6d2b22bd6525b6068c36b66806c0b45582c22785cd3130bf06dbb2978aa9c7",
+      "status": "development-review",
+      "indexed": "./parts/barb.indexed.json",
+      "compiledChecksum": "0313cf14aceb703e2ecd36f9d4ad2e5fa175f725c15958ee8703f44e4890df80"
+    },
+    {
+      "partId": "hook-spur",
+      "path": "./parts/hook-spur.json",
+      "png": "./parts/hook-spur.png",
+      "checksumSha256": "2e37096999aa1e99af0562ea13b5045edb34280031aaf173750074584e4443ae",
+      "status": "development-review",
+      "indexed": "./parts/hook-spur.indexed.json",
+      "compiledChecksum": "19276abbd00669cd9cf42cc0bf1100d03df581a27bb3e330f123a9e25a82bac8"
+    },
+    {
+      "partId": "dew-claw",
+      "path": "./parts/dew-claw.json",
+      "png": "./parts/dew-claw.png",
+      "checksumSha256": "486bf531d47610fad2d32b769dba6a19238ffa9ae32354bffd5a388b11a4a74e",
+      "status": "development-review",
+      "indexed": "./parts/dew-claw.indexed.json",
+      "compiledChecksum": "929da583e4489a7640379931b89255d786edde79fe3fe79646713f546fda8784"
+    },
+    {
+      "partId": "heel-spike",
+      "path": "./parts/heel-spike.json",
+      "png": "./parts/heel-spike.png",
+      "checksumSha256": "dc07db0d484c1d2f94b84c3f739d47574b46fe5ef91bcad137aa5eae79e983d3",
+      "status": "development-review",
+      "indexed": "./parts/heel-spike.indexed.json",
+      "compiledChecksum": "b805626ee1418016245d4c856bab5d2e183db444f9bb52f9d4d92668e8c0d0d0"
+    },
+    {
+      "partId": "sensory-bristle",
+      "path": "./parts/sensory-bristle.json",
+      "png": "./parts/sensory-bristle.png",
+      "checksumSha256": "383512789e0d62b060d4f02936cdfe4cddc8f14c7c3e5653904ed80461563652",
+      "status": "development-review",
+      "indexed": "./parts/sensory-bristle.indexed.json",
+      "compiledChecksum": "9c683d59f8362b5f0ec5b7554c810d81e096aba2ac52af720ff511d3a5293183"
+    },
+    {
+      "partId": "beak-mouth",
+      "path": "./parts/beak-mouth.json",
+      "png": "./parts/beak-mouth.png",
+      "checksumSha256": "21c8c6578f0de51df2dddd9ff9eef9df0d26ef693b1ce6443ab34626648967fb",
+      "status": "development-review",
+      "indexed": "./parts/beak-mouth.indexed.json",
+      "compiledChecksum": "090775434b967cb32ff90fada938c78bcb2997962cd613982eedb447bc7e1af7"
+    },
+    {
+      "partId": "sucker-mouth",
+      "path": "./parts/sucker-mouth.json",
+      "png": "./parts/sucker-mouth.png",
+      "checksumSha256": "6e2f1c32b12f9ecda4eedd0366821d01bdf98a6dedeac6a20600ebfe8a5dc3f8",
+      "status": "development-review-v172",
+      "indexed": "./parts/sucker-mouth.indexed.json",
+      "compiledChecksum": "5186c35d6ae08d399e5b0b74c5eaa377a1623ee466bf13babad4edeaee278dbe"
+    },
+    {
+      "partId": "gape-mouth",
+      "path": "./parts/gape-mouth.json",
+      "png": "./parts/gape-mouth.png",
+      "checksumSha256": "92169653741e4da85180181b92075e6bc85d767cb763049d5fe6c88541cabcd0",
+      "status": "development-review-v172",
+      "indexed": "./parts/gape-mouth.indexed.json",
+      "compiledChecksum": "0f449ef24599f0c030cb841924d4f576cd8af20341cb92cf070fd3d887592aa3"
+    },
+    {
+      "partId": "tusk-jaw",
+      "path": "./parts/tusk-jaw.json",
+      "png": "./parts/tusk-jaw.png",
+      "checksumSha256": "477ecf339beda1297d6788c6154b0b959d3bf6429d2fa8bf579d1b26efe52a5f",
+      "status": "development-review",
+      "indexed": "./parts/tusk-jaw.indexed.json",
+      "compiledChecksum": "cfe695bd6e0bae15ec89ebbe4480d97fbd6563997fc8a2b2cddd421df7095571"
+    },
+    {
+      "partId": "display-eye",
+      "path": "./parts/display-eye.json",
+      "png": "./parts/display-eye.png",
+      "checksumSha256": "e732d21f6079ca8f9a4708ac28f9014127d5ff7ce48e836364122396d97b1658",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/display-eye.indexed.json",
+      "compiledChecksum": "29583e8f2e90abb6f012e4100685313206a5dcb524cb149565ae89cceaab9373"
+    },
+    {
+      "partId": "eyespot",
+      "path": "./parts/eyespot.json",
+      "png": "./parts/eyespot.png",
+      "checksumSha256": "dbc1797398a6110afc7d60790be3fa7b7bdfecc2c27a610a06159c4ee6124930",
+      "status": "development-review-v175-organic",
+      "indexed": "./parts/eyespot.indexed.json",
+      "compiledChecksum": "134a9cb9d3081b5c4428b241b3f2ac94ad7dc1ef19d63b384b9406ce73d60ca3"
+    },
+    {
+      "partId": "horn-crest",
+      "path": "./parts/horn-crest.json",
+      "png": "./parts/horn-crest.png",
+      "checksumSha256": "3edc3b923780d25318534cd893813bcc3a0dc793368fc3e1dea12d3b20c37553",
+      "status": "development-review",
+      "indexed": "./parts/horn-crest.indexed.json",
+      "compiledChecksum": "186ab0ef3d2c739821a2fc0a9cd6610ec89e8028f5c3a169d535c7f37c0c0c62"
+    },
+    {
+      "partId": "echo-crest",
+      "path": "./parts/echo-crest.json",
+      "png": "./parts/echo-crest.png",
+      "checksumSha256": "6116574f673d93f9c94dc649862d9073fee509201c1e04b4b4c0866974e61040",
+      "status": "development-review",
+      "indexed": "./parts/echo-crest.indexed.json",
+      "compiledChecksum": "9febca5e9ab3c1e125defbadbd800b9f180b02ae5e60b56fc069b2980b850b3b"
+    },
+    {
+      "partId": "water-hump",
+      "path": "./parts/water-hump.json",
+      "png": "./parts/water-hump.png",
+      "checksumSha256": "59c0cad49ad2943ef837a8552e5dd20c5041b05af01ff09a072e172d94721043",
+      "status": "development-review",
+      "indexed": "./parts/water-hump.indexed.json",
+      "compiledChecksum": "83a8cb43c8db14d460893743a9cce527632e4eb2cd0a7e3202ba855be899a53a"
+    },
+    {
+      "partId": "sensory-quills",
+      "path": "./parts/sensory-quills.json",
+      "png": "./parts/sensory-quills.png",
+      "checksumSha256": "35e6e3fb8376ad5f504f7d461d4b1817441a499c41c6d35e10727d1e885a08a3",
+      "status": "development-review",
+      "indexed": "./parts/sensory-quills.indexed.json",
+      "compiledChecksum": "871120757be55b672c5ce85ec7f29a4382da7ed93b6cdf1af0af5d82694050ff"
+    },
+    {
+      "partId": "armored-hide",
+      "path": "./parts/armored-hide.json",
+      "png": "./parts/armored-hide.png",
+      "checksumSha256": "ff475fe25e182f58e693a7e40d0aded109a43a45aa48d3c239d7d5a5628aa2bc",
+      "status": "development-review",
+      "indexed": "./parts/armored-hide.indexed.json",
+      "compiledChecksum": "ce5bf594a016c9bda09cfd8962ad17596219197e59039f7c2972b04c5ae80234"
+    },
+    {
+      "partId": "fat-pad",
+      "path": "./parts/fat-pad.json",
+      "png": "./parts/fat-pad.png",
+      "checksumSha256": "fcc9f1ab7917568f6c95d74a17f03c16d29927ee3aa74dc4c7dd923a1122626c",
+      "status": "development-review",
+      "indexed": "./parts/fat-pad.indexed.json",
+      "compiledChecksum": "c670f43248736a6947463050753832c852f9af076eb0b1463791e3b7dce556a7"
+    },
+    {
+      "partId": "scent-gland",
+      "path": "./parts/scent-gland.json",
+      "png": "./parts/scent-gland.png",
+      "checksumSha256": "464e2bfb7ee25a4d46a22048775f3395bf6cee90f33a3f33d8cf759059e103cd",
+      "status": "development-review",
+      "indexed": "./parts/scent-gland.indexed.json",
+      "compiledChecksum": "dbbfce102ac1e8e0f565f08f0b80e398683a3ff36b5a5581be226f3c5f62ff76"
+    },
+    {
+      "partId": "egg-chamber",
+      "path": "./parts/egg-chamber.json",
+      "png": "./parts/egg-chamber.png",
+      "checksumSha256": "4813e91cc211e7f8893eac063fd9927f21b91e3923998cfc7a3fa1451ea883ba",
+      "status": "development-review",
+      "indexed": "./parts/egg-chamber.indexed.json",
+      "compiledChecksum": "cbab67e754c903514ef9ea03e46b70b964678d6b53a8481f44953b7e36a3897e"
+    },
+    {
+      "partId": "live-womb",
+      "path": "./parts/live-womb.json",
+      "png": "./parts/live-womb.png",
+      "checksumSha256": "20336c183481c809accd5bc193996b71b84c6fbe0df5989051b1940e5c9c66ec",
+      "status": "development-review",
+      "indexed": "./parts/live-womb.indexed.json",
+      "compiledChecksum": "b217ec5c1547b4bd4df89dbc29a222cf72d07dc98666925366fea6a2e986b477"
+    },
+    {
+      "partId": "grip-pad",
+      "path": "./parts/grip-pad.json",
+      "png": "./parts/grip-pad.png",
+      "checksumSha256": "3bb14433a75dcc1c723a19468ff9d60eca71fd351bea1075401e27abb037bab2",
+      "status": "development-review",
+      "indexed": "./parts/grip-pad.indexed.json",
+      "compiledChecksum": "1beb4ad805680d7b392c2f15ab1ceec442c0e4df9318b90290f76d528d51386f"
+    },
+    {
+      "partId": "kick-spur",
+      "path": "./parts/kick-spur.json",
+      "png": "./parts/kick-spur.png",
+      "checksumSha256": "35c1d5896afca68b302c2578229a4f4c660ccfbdf3cf2fa595f0ca92d6a2ba3f",
+      "status": "development-review",
+      "indexed": "./parts/kick-spur.indexed.json",
+      "compiledChecksum": "38a383c8a417ed72c950c496e24d335f9743930b3e41f6e5e1189f95a8a02ba2"
+    },
+    {
+      "partId": "head-base",
+      "path": "./parts/head-base.json",
+      "png": "./parts/head-base.png",
+      "checksumSha256": "e0c240376f2c2934efdf7a5bdaee73f5be375edefb22a606372d360872d6377b",
+      "status": "development-review-v176-head",
+      "indexed": "./parts/head-base.indexed.json",
+      "compiledChecksum": "3775fdfcb6a582d7abb1c833f82e45f1e0c09385a539e4aacf642bb6c6aa5b18"
+    }
+  ]
+}

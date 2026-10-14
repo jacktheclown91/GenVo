@@ -8,7 +8,7 @@ export function headPose(assembly,profile,torsoSockets,{frame=0,behavior={},life
  const {v,perp,bodyW,bodyH,bodyOffset:b}=profile,size=Math.max(3.4,Math.min(bodyW,bodyH)*.60);
  const edge=1/Math.hypot(v.x/(bodyW/2),v.y/(bodyH/2)),forward=edge*.72+size*.28;
  const mount=assembly.head?torsoSockets?.head:null,drop=Number(behavior.headDrop)||0,reach=Number(behavior.headReach)||0;
- const x=(mount?.x??b.x+v.x*forward)+v.x*(drop*.1+reach),y=(mount?.y??b.y+v.y*forward)+drop*.18+v.y*reach;
+ const x=(mount?.x??b.x+v.x*forward)+v.x*(drop*.1+reach),y=(mount?.y??b.y+v.y*forward)+v.y*(drop*.1+reach);
  const breath=Number.isFinite(life?.breath)?(life.breath-.5)*(life.strained?.035:.018):Math.sin(frame*Math.PI/4)*.012,width=size*(1+breath),height=size*.9*(1-breath);
  const turn=Math.max(-.5,Math.min(.5,Number(behavior.headTurn)||0)),cos=turn?Math.cos(turn):1,sin=turn?Math.sin(turn):0,look=turn?{x:v.x*cos-v.y*sin,y:v.x*sin+v.y*cos}:v,side=turn?{x:-look.y,y:look.x}:perp;
  const partId=assembly.head||'head-base',restSockets=socketPoints(partId,bodyFrame({fx:v.x,fy:v.y,perp,bx:x,by:y,bodyW:width,bodyH:height}));

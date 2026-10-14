@@ -1,0 +1,40 @@
+{
+  "schema": "genvo.imagegen-native-preparation/1",
+  "grid": [
+    32,
+    32
+  ],
+  "alphaThreshold": 128,
+  "sample": "nearest",
+  "targetSections": [
+    [
+      2,
+      1,
+      29,
+      14
+    ],
+    [
+      2,
+      17,
+      29,
+      14
+    ]
+  ],
+  "masterRowCropBounds": [
+    [
+      54,
+      114,
+      1193,
+      636
+    ],
+    [
+      63,
+      0,
+      1194,
+      537
+    ]
+  ],
+  "masterSha256": "6126bc0d5f2c6e4a91d78c90ee7efede66081d70a541e8ca0a429f17665caeb3",
+  "nativeSha256": "6d6450f6c059fa76d736743c9c9bd08ef777289e0bf491605a4dc6ec7d84fc82",
+  "limits": "Larger generated painting mechanically reduced; not claimed to be exact native grid output."
+}
