@@ -19,3 +19,28 @@ reports/*
 !reports/consolidation-demand-*.cpuprofile
 # Raw browser video folders; curated final recordings remain in docs
 /docs/*-video/
+
+# Historical/generated media excluded by the verified source-package inventory
+/docs/*.webm
+/docs/*.gif
+!/docs/botanical-sexual-runtime.webm
+!/docs/clonal-flora-runtime.webm
+!/docs/conception-gates-runtime.webm
+!/docs/consolidation-bodies-runtime.webm
+!/docs/feeding-performance-after-runtime.webm
+!/docs/feeding-performance-before-runtime.webm
+!/docs/inherited-coats-runtime.webm
+!/docs/knowledge-panels-runtime.webm
+!/docs/lab-windows-runtime.webm
+!/docs/learned-outings-runtime.webm
+!/docs/living-rest-after-runtime.webm
+!/docs/living-rest-before-runtime.webm
+!/docs/natural-clonal-runtime.webm
+!/docs/phenotype-audio-runtime.webm
+!/docs/plant-handling-runtime.webm
+!/docs/quick-interaction-runtime.webm
+!/docs/seed-journey-runtime.webm
+!/docs/seed-save-runtime.webm
+!/docs/workshop-runtime.webm
+
+**/archived-source-packages/
