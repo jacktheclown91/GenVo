@@ -64,3 +64,23 @@ reports/*
 !/docs/head-attention-after-runtime.webm
 !/docs/head-court-before-runtime.webm
 !/docs/head-court-after-runtime.webm
+
+# Current artwork/combat comparison fixtures and selected runtime recordings
+!reports/strike-performance-before/
+!reports/strike-performance-before/**
+!reports/visual-production/
+reports/visual-production/*
+!reports/visual-production/before-art/
+!reports/visual-production/before-art/**
+!/docs/art-production-before-runtime.webm
+!/docs/art-production-after-runtime.webm
+!/docs/art-feeding-before-runtime.webm
+!/docs/art-feeding-after-runtime.webm
+!/docs/art-assemblies-before-runtime.webm
+!/docs/art-assemblies-after-runtime.webm
+!/docs/strikes-before-runtime.webm
+!/docs/strikes-after-runtime.webm
+!/docs/strike-call-before-runtime.webm
+!/docs/strike-call-after-runtime.webm
+!/docs/strike-performance-before-runtime.webm
+!/docs/strike-performance-after-runtime.webm

@@ -1,4 +1,4 @@
-import {PARTS} from '../lineage/part-registry.js';
+import {physicalAttackProfile} from '../lineage/physical-attack.js';
 import {preyPreference,canHunt} from '../ecology/functional-diet.js';
 import {wildTraits} from '../organisms/wild-bodies.js';
 import {partEffectFactors} from '../lineage/part-abilities.js';
@@ -82,7 +82,7 @@ export class PlayerCombatController{
     if(!a?.alive)return{enabled:false,reason:'No active creature.'};
     if(this.sim.paused)return{enabled:false,reason:'Resume the world first.'};
     if(this.attackActive(a))return{enabled:false,reason:'Finish the current attack and recovery.'};
-    if(!pounce&&a.bodyPlan?.nodes?.length&&!a.bodyPlan.nodes.some(n=>PARTS[n.partId]?.actionCapabilities.some(c=>['bite','strike','peck'].includes(c))))return{enabled:false,state:'unavailable',reason:'A biting or striking part is required for this attack.'};
+    if(!pounce&&a.bodyPlan?.nodes?.length&&!physicalAttackProfile(a).mode)return{enabled:false,state:'unavailable',reason:'A biting or striking part is required for this attack.'};
     if(targetId!==null&&!pounce){const status=this.attackTargetStatus(a,targetId);if(!status.enabled)return{enabled:status.enabled,state:status.state,reason:status.reason}}
     if(pounce){
       if(!(this.pounceReach(a)>0))return{enabled:false,reason:'Need developed spring tendons.'};
@@ -114,7 +114,7 @@ export class PlayerCombatController{
       if(prey){const label=SPECIES[prey.species].label,hit=this.sim.tryKill(a,prey);this.sim.lastPlayerAction={type:'hunt',species:prey.species,tick:this.sim.tickCount};result={ok:hit,type:'hunt',species:prey.species,message:hit?`Bit ${label}.`:`Missed ${label}.`}}
       else result={ok:false,type:'attack',quiet:true,message:'Your attack hit nothing.'};
     }
-    a.attackAction={phase:'recover',startedAt:this.clock,until:this.clock+A.recovery,slow:!!act.slow,outcome:result?.ok?'hit':'miss'};
+    a.attackAction={phase:'recover',...(act.targetId!==undefined?{targetId:act.targetId}:{}),startedAt:this.clock,until:this.clock+A.recovery,slow:!!act.slow,outcome:result?.ok?'hit':'miss'};
     this.queue(result);return result;
   }
 
@@ -140,7 +140,7 @@ export class PlayerCombatController{
   }
   beginLeap(a,act){
     const P=CFG.pounce,target=this.sim.animals.find(o=>o.id===act.targetId&&o.alive);
-    if(!target){a.attackAction={phase:'recover',startedAt:this.clock,until:this.clock+P.missRecovery,slow:false,outcome:'miss',pounce:true};this.queue({ok:false,type:'pounce',message:'Your pounce lost its target.'});return}
+    if(!target){a.attackAction={phase:'recover',...(act.targetId!==undefined?{targetId:act.targetId}:{}),startedAt:this.clock,until:this.clock+P.missRecovery,slow:false,outcome:'miss',pounce:true};this.queue({ok:false,type:'pounce',message:'Your pounce lost its target.'});return}
     const dx=target.x-a.x,dy=target.y-a.y,d=Math.hypot(dx,dy)||1,travel=Math.max(0,Math.min(this.pounceReach(a)||P.reach[0],d-P.landGap));
     a.dir=dirFor(dx,dy);
     a.attackAction={phase:'leap',pounce:true,targetId:target.id,startedAt:this.clock,until:this.clock+P.leap,from:{x:a.x,y:a.y},to:{x:a.x+dx/d*travel,y:a.y+dy/d*travel},slow:false};
@@ -159,7 +159,7 @@ export class PlayerCombatController{
       if(prey){const label=SPECIES[prey.species].label,hit=this.sim.tryKill(a,prey,{chanceBonus:P.preyBonus});this.sim.lastPlayerAction={type:'hunt',species:prey.species,tick:this.sim.tickCount};result={ok:hit,type:'pounce',species:prey.species,message:hit?`Pounced on a ${label}.`:`Pounce missed the ${label}.`}}
       else result={ok:false,type:'pounce',message:'Your pounce landed short.'};
     }
-    a.attackAction={phase:'recover',startedAt:this.clock,until:this.clock+(result.ok?P.recovery:P.missRecovery),slow:false,outcome:result.ok?'hit':'miss',pounce:true};
+    a.attackAction={phase:'recover',...(act.targetId!==undefined?{targetId:act.targetId}:{}),startedAt:this.clock,until:this.clock+(result.ok?P.recovery:P.missRecovery),slow:false,outcome:result.ok?'hit':'miss',pounce:true};
     this.queue(result);return result;
   }
   nearestPrey(a,radius){

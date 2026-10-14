@@ -1,5 +1,9 @@
 # Active GenVo development goal: evidence audit
 
+## Latest visual steering — October 14 artwork production pilot
+
+Dedicated image generation was verified and used, rather than another polygon-authoring expansion. Two creator-guided facial parts and two finite ecological plant classes are integrated. Real paired800×600 world state is exact; controlled feeding and mixed-body movement are separate evidence. Head, torso and limb candidates that failed native readability/direction/rig quality were rejected. Existing originals, anatomy and simulation are preserved. See [the art production checkpoint](GenVo-Art-Production-Checkpoint.md). The broad goal remains active; native limb painting, coherent directional body art, environmental variety, creator review and unfamiliar-player testing remain open. No biological rule expansion or numeric calibration is authorized by this artwork pass.
+
 The full seven-priority objective remains active. Recent goal turns are progress: Lab and inspector source, botanical inheritance, lossless saves, anatomy-driven audio, and explainable conception/partner support changed; native evidence and longer simulation runs determined corrections. This is not a completion claim.
 
 | Priority | Current evidence | Work not yet proven or implemented |

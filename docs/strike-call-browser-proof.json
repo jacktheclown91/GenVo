@@ -1,0 +1,82 @@
+{
+  "status": "PASS",
+  "scope": "Controlled reciprocal courtship start through real mouse Call/Play controls. Actual energy-funded performance; not natural mate choice, guaranteed conception or human readability evidence.",
+  "runs": [
+    {
+      "label": "before",
+      "setup": {
+        "actor": 109,
+        "partner": 110,
+        "body": "bp0-b076d13f",
+        "energy": 90,
+        "availability": {
+          "enabled": true,
+          "reason": "",
+          "cost": 0.34595200000000004
+        },
+        "scope": "Controlled valid mature pair, health/reserves, sex and placement; existing terrain/resources/preferences/compatibility. Real mouse sequence and normal controller clock follow; no forced mating."
+      },
+      "live": {
+        "tick": 12,
+        "sequence": [
+          "call"
+        ],
+        "energySpent": 0.34595200000000004,
+        "actorLook": -0.26761646596466043,
+        "partnerLook": 0,
+        "actorDir": 3,
+        "partnerDir": 3,
+        "energy": 89.5127261686907,
+        "positions": [
+          {
+            "x": 73.7469387306531,
+            "y": 84.62029668531135
+          },
+          {
+            "x": 74.59390368805073,
+            "y": 85.13390368805072
+          }
+        ]
+      },
+      "errors": []
+    },
+    {
+      "label": "after",
+      "setup": {
+        "actor": 109,
+        "partner": 110,
+        "body": "bp0-b076d13f",
+        "energy": 90,
+        "availability": {
+          "enabled": true,
+          "reason": "",
+          "cost": 0.34595200000000004
+        },
+        "scope": "Controlled valid mature pair, health/reserves, sex and placement; existing terrain/resources/preferences/compatibility. Real mouse sequence and normal controller clock follow; no forced mating."
+      },
+      "live": {
+        "tick": 12,
+        "sequence": [
+          "call"
+        ],
+        "energySpent": 0.34595200000000004,
+        "actorLook": -0.27780566953798835,
+        "partnerLook": 0,
+        "actorDir": 3,
+        "partnerDir": 3,
+        "energy": 89.5127261686907,
+        "positions": [
+          {
+            "x": 73.7469387306531,
+            "y": 84.62029668531135
+          },
+          {
+            "x": 74.59390368805073,
+            "y": 85.13390368805072
+          }
+        ]
+      },
+      "errors": []
+    }
+  ]
+}

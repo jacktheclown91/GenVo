@@ -43,8 +43,9 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
     // v1.59.0: each leg type moves its own way: stride scales the swing, lift how high the foot rises.
     const step=organicFootfall(phase,travel,moving?(gait?.stride??1):1);
     const stride=(moving?step.stride:(Number(b.displayStride)||0)?step.stride*b.displayStride:0);
-    const settling=!moving&&count>1&&n===((life.settleIndex||0)%count)?(life.settle||0)*.8:0;
-    const lift=moving?step.lift*(gait?gait.lift:1):(Number(b.displayLift)||0)*step.lift+(front>.25?(Number(b.forelegLift)||0):0)+settling,liftAmount=Math.max(0,Math.min(1,lift/2));
+    const settling=!moving&&!b.guardPlanted&&count>1&&n===((life.settleIndex||0)%count)?(life.settle||0)*.8:0;
+    const striking=slotList&&b.attackLimbSlots?.includes(slot),attackLift=striking?(Number(b.attackLimbLift)||0):0;
+    const lift=(moving?step.lift*(gait?gait.lift:1):(Number(b.displayLift)||0)*step.lift+(front>.25?(Number(b.forelegLift)||0):0)+settling)+attackLift,liftAmount=Math.max(0,Math.min(1,lift/2));
     let reach=(6.7+(Math.abs(side)>.45?.75:.35))*limbScale*(dependent?.9:1)*(elder?.91:1);
     if(alert)reach+=.65;if(flee)reach+=front<-.2?1.35:.35;if(court&&front>.4)reach+=.95;if((eat||drink)&&front>.35)reach-=.8;if(depleted)reach-=.3;
     const limpSide=Math.sign(side||1)===(b.limpSide||1)&&Math.abs(side)>.22;
@@ -57,14 +58,15 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
     const kneeDist=reach*(.62-liftAmount*.10);
     let knee={x:dx*kneeDist+(-dy)*curl+fx*sweep*.42,y:dy*kneeDist+(dx)*curl+fy*sweep*.42};
     const spread=(Number(b.stanceSpread)||0)*side,footReach=reach*(1-liftAmount*.16);
-    const foot={x:dx*footReach+fx*sweep+perp.x*spread,y:dy*footReach+fy*sweep+perp.y*spread+(depleted?.35:0)+(b.limp&&limpSide?.45:0)};
+    const attackReach=striking?(Number(b.attackLimbReach)||0):0;
+    const foot={x:fx*attackReach+dx*footReach+fx*sweep+perp.x*spread,y:fy*attackReach+dy*footReach+fy*sweep+perp.y*spread+(depleted?.35:0)+(b.limp&&limpSide?.45:0)};
     // Body-edge offsets and clearance share one radial calculation. Clearance
     // during support uses the neutral footprint, so a toe cannot slide when
     // fore/aft sweep would otherwise push it back outside a wide torso.
     if(slotList){const rx=bodyW/2,ry=bodyH/2,edge=1/Math.sqrt((dx/rx)**2+(dy/ry)**2),extra=Math.max(0,edge-Math.min(rx,ry));if(extra)for(const pt of [root,knee,foot]){pt.x+=dx*extra;pt.y+=dy*extra}const need=edge+3*Math.max(.8,limbScale),along=moving?footReach+extra:foot.x*dx+foot.y*dy;if(along<need){const shift=need-along;foot.x+=dx*shift;foot.y+=dy*shift;knee.x+=dx*shift*.6;knee.y+=dy*shift*.6}}
     if(slotList)knee=articulatedKnee({root,foot,forward:{x:fx,y:fy},perp,side,liftAmount});
     knee.y-=.9+liftAmount*.6;if(liftAmount>0){foot.x+=(knee.x-foot.x)*liftAmount*.4;foot.y+=(knee.y-foot.y)*liftAmount*.4}else foot.y+=.35;
-    legs.push(slotList?{index:k,slot,root,knee,foot,lift,liftAmount,planted:moving?step.planted:liftAmount<.34,front,side}:{index:k,root,knee,foot,lift,liftAmount,planted:liftAmount<.34,front,side});
+    legs.push(slotList?{index:k,slot,root,knee,foot,lift,liftAmount,planted:moving?step.planted&&(!striking||attackLift===0):(!striking||attackLift===0)&&liftAmount<.34,front,side}:{index:k,root,knee,foot,lift,liftAmount,planted:liftAmount<.34,front,side});
   }
   const sensory=Math.max(.8,Number(sensoryScale)||1);
   const eyes=Math.max(.78,Number(eyeScale)||1),feelers=Math.max(.78,Number(feelerScale)||1);

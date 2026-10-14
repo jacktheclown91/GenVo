@@ -1,4 +1,5 @@
 import {pixel,pixelLine,snap} from './pixel-art.js';
+import {drawAuthoredShrub,drawAuthoredMoss} from './authored-flora.js';
 // Authored pixel silhouettes for the five canonical plant families. This module is
 // presentation-only: callers pass canonical biomass/season/shore information and it
 // draws from deterministic coordinates without touching simulation RNG or world state.
@@ -10,6 +11,7 @@ export function floraAnchor(shape,x,y){
 }
 
 export function drawFloraPlant(ctx,{shape,color,amount,px,py,u,x,y,kind,seedAllocation=.2,coatAllocation=.25,reproduction=null,season='SPRING',isWater=()=>false}){
+  if(!(amount>0))return;
   const seed=hash2(x,y,kind.length*17),cluster=hash2(x>>1,y>>1,kind.length*31),density=Math.max(1,Math.min(5,Math.ceil(amount*5)));
   // v1.41.0: each tile's plant sits a little off-centre (fixed per tile), so plants no longer line up in a grid.
   // v1.50.0: plants also lean towards a shared clump centre (one per 2x2 tiles), so they gather in clumps with gaps between instead of a grid.
@@ -48,6 +50,7 @@ export function drawFloraSeedling(ctx,{p,amount,bank,px,py,u,x,y,kind}){
 }
 
 function drawMoss(c,{x,y,u,density,body,light,shade,seed,amount,season}){
+  if(drawAuthoredMoss(c,{u,density,body,light,shade,amount,season}))return;
   const patches=2+Math.min(3,density);
   for(let k=0;k<patches;k++){
     const q=hash2(x+k*7,y-k*5,107),cx=3+Math.floor(hash2(x+k,y-k,109)*10),base=11+Math.floor(hash2(y+k,x-k,113)*3),reach=1+(q>.55?1:0);
@@ -61,6 +64,7 @@ function drawMoss(c,{x,y,u,density,body,light,shade,seed,amount,season}){
 }
 
 function drawBerryShrub(c,{x,y,u,density,body,light,shade,deep,seed,cluster,amount,season,seedAllocation=.2}){
+  if(drawAuthoredShrub(c,{u,density,body,light,shade,deep,amount,season,seedAllocation}))return;
   const v=Math.floor(seed*4),cx=6+Math.floor(cluster*3),base=13;
   // Visible branching skeleton makes the resource feel like a shrub rather than stacked rectangles.
   pixelLine(c,cx,base,cx,6,u,'#5c472d');pixelLine(c,cx,9,cx-4,5+(v&1),u,'#684e2d');pixelLine(c,cx,8,cx+4,4+((v>>1)&1),u,'#684e2d');

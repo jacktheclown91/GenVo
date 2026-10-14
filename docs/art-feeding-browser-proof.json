@@ -1,0 +1,1888 @@
+{
+  "status": "PASS",
+  "scope": "Paired exact prior/current native 800x600, actual keyboard E and funded natural pod harvests. Controlled body/position/reserve fixtures separated from normal running clock after input. Not creator visual approval or a human playtest.",
+  "runs": [
+    {
+      "label": "before",
+      "trials": [
+        {
+          "mouth": "grazing-mouth",
+          "setup": {
+            "startTick": 0,
+            "cell": {
+              "x": 31.5,
+              "y": 30.5,
+              "i": 3871
+            },
+            "stock": 0.1815723478794098,
+            "body": "bp0-4134709b",
+            "energy": 20,
+            "scope": "Valid whole-body/location/reserves/other-actor placement fixture. Natural pod stock, real E and canonical receipt. Normal running game clock after E; no staged biological outcomes."
+          },
+          "samples": [
+            {
+              "tick": 2,
+              "pose": {
+                "mode": "pull",
+                "stage": "reach",
+                "progress": 0.1545454545431968,
+                "headReach": 0.8260417010300506,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.721978804305465
+            },
+            {
+              "tick": 3,
+              "pose": {
+                "mode": "pull",
+                "stage": "process",
+                "progress": 0.23060606060380284,
+                "headReach": 0.6898110047485799,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.721978804305465
+            },
+            {
+              "tick": 4,
+              "pose": {
+                "mode": "pull",
+                "stage": "process",
+                "progress": 0.29103030302985144,
+                "headReach": -0.08408862097700748,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.721978804305465
+            },
+            {
+              "tick": 5,
+              "pose": {
+                "mode": "pull",
+                "stage": "process",
+                "progress": 0.3615151515128938,
+                "headReach": -0.4862841134826301,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.721978804305465
+            },
+            {
+              "tick": 7,
+              "pose": {
+                "mode": "pull",
+                "stage": "process",
+                "progress": 0.43466666666621523,
+                "headReach": -0.021639661573994832,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.666055045288232
+            },
+            {
+              "tick": 8,
+              "pose": {
+                "mode": "pull",
+                "stage": "process",
+                "progress": 0.5599393939384909,
+                "headReach": -0.5498375968915091,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.666055045288232
+            },
+            {
+              "tick": 9,
+              "pose": {
+                "mode": "pull",
+                "stage": "process",
+                "progress": 0.6273333333319789,
+                "headReach": -0.19865915755629776,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.666055045288232
+            },
+            {
+              "tick": 10,
+              "pose": {
+                "mode": "pull",
+                "stage": "process",
+                "progress": 0.697818181817279,
+                "headReach": -0.055656656607346415,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.666055045288232
+            },
+            {
+              "tick": 11,
+              "pose": {
+                "mode": "pull",
+                "stage": "process",
+                "progress": 0.767818181817279,
+                "headReach": -0.2645141224537298,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.666055045288232
+            },
+            {
+              "tick": 12,
+              "pose": {
+                "mode": "pull",
+                "stage": "settle",
+                "progress": 0.8389696969678911,
+                "headReach": -0.034628352769790975,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.610131286271
+            },
+            {
+              "tick": 13,
+              "pose": {
+                "mode": "pull",
+                "stage": "settle",
+                "progress": 0.9092121212116699,
+                "headReach": 1.1021821192326179e-16,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.610131286271
+            },
+            {
+              "tick": 14,
+              "pose": null,
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.610131286271
+            }
+          ]
+        },
+        {
+          "mouth": "beak-mouth",
+          "setup": {
+            "startTick": 14,
+            "cell": {
+              "x": 33.5,
+              "y": 30.5,
+              "i": 3873
+            },
+            "stock": 0.2176555097103119,
+            "body": "bp0-9442d1dc",
+            "energy": 20,
+            "scope": "Valid whole-body/location/reserves/other-actor placement fixture. Natural pod stock, real E and canonical receipt. Normal running game clock after E; no staged biological outcomes."
+          },
+          "samples": [
+            {
+              "tick": 15,
+              "pose": {
+                "mode": "peck",
+                "stage": "reach",
+                "progress": 0.08407407407407386,
+                "headReach": 0.8450383460090414,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 14,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.9693427638706
+            },
+            {
+              "tick": 16,
+              "pose": {
+                "mode": "peck",
+                "stage": "reach",
+                "progress": 0.183999999998896,
+                "headReach": 1.118418084190288,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 14,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.9693427638706
+            },
+            {
+              "tick": 17,
+              "pose": {
+                "mode": "peck",
+                "stage": "process",
+                "progress": 0.2834074074085109,
+                "headReach": 0.663020286033247,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 14,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.9693427638706
+            },
+            {
+              "tick": 18,
+              "pose": {
+                "mode": "peck",
+                "stage": "process",
+                "progress": 0.3800740740751773,
+                "headReach": 0.004371438413859113,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 14,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.913309771563874
+            },
+            {
+              "tick": 19,
+              "pose": {
+                "mode": "peck",
+                "stage": "process",
+                "progress": 0.4802222222227733,
+                "headReach": 0.19097429488468978,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 14,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.913309771563874
+            },
+            {
+              "tick": 21,
+              "pose": {
+                "mode": "peck",
+                "stage": "process",
+                "progress": 0.6017777777766731,
+                "headReach": 0.00007491502156041216,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 14,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.913309771563874
+            },
+            {
+              "tick": 22,
+              "pose": {
+                "mode": "peck",
+                "stage": "process",
+                "progress": 0.6881481481481472,
+                "headReach": 0.20347464529227755,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 14,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.913309771563874
+            },
+            {
+              "tick": 23,
+              "pose": {
+                "mode": "peck",
+                "stage": "process",
+                "progress": 0.7747407407396363,
+                "headReach": 0.019708772844045215,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 14,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.913309771563874
+            },
+            {
+              "tick": 23,
+              "pose": {
+                "mode": "peck",
+                "stage": "settle",
+                "progress": 0.8605185185179665,
+                "headReach": 1.408343819019456e-16,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 14,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.913309771563874
+            },
+            {
+              "tick": 24,
+              "pose": {
+                "mode": "peck",
+                "stage": "settle",
+                "progress": 0.9478518518529555,
+                "headReach": 1.408343819019456e-16,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 14,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.85727677925715
+            },
+            {
+              "tick": 25,
+              "pose": null,
+              "receipt": {
+                "tick": 14,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.85727677925715
+            },
+            {
+              "tick": 26,
+              "pose": null,
+              "receipt": {
+                "tick": 14,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.85727677925715
+            }
+          ]
+        },
+        {
+          "mouth": "kernel-beak",
+          "setup": {
+            "startTick": 26,
+            "cell": {
+              "x": 35.5,
+              "y": 30.5,
+              "i": 3875
+            },
+            "stock": 0.22024928033351898,
+            "body": "bp0-0bc8b246",
+            "energy": 20,
+            "scope": "Valid whole-body/location/reserves/other-actor placement fixture. Natural pod stock, real E and canonical receipt. Normal running game clock after E; no staged biological outcomes."
+          },
+          "samples": [
+            {
+              "tick": 28,
+              "pose": {
+                "mode": "crush",
+                "stage": "reach",
+                "progress": 0.181500000000621,
+                "headReach": 0.931843084314562,
+                "attention": {
+                  "x": 35.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 26,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.39488198864919
+            },
+            {
+              "tick": 29,
+              "pose": {
+                "mode": "crush",
+                "stage": "process",
+                "progress": 0.270083333334575,
+                "headReach": 0.45761570805048746,
+                "attention": {
+                  "x": 35.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 26,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.39488198864919
+            },
+            {
+              "tick": 30,
+              "pose": {
+                "mode": "crush",
+                "stage": "process",
+                "progress": 0.36308333333271214,
+                "headReach": -0.08307126520653396,
+                "attention": {
+                  "x": 35.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 26,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.33566762815431
+            },
+            {
+              "tick": 31,
+              "pose": {
+                "mode": "crush",
+                "stage": "process",
+                "progress": 0.47849999999937887,
+                "headReach": -0.2925591298317209,
+                "attention": {
+                  "x": 35.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 26,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.33566762815431
+            },
+            {
+              "tick": 32,
+              "pose": {
+                "mode": "crush",
+                "stage": "process",
+                "progress": 0.5884999999993786,
+                "headReach": -0.025023579480295897,
+                "attention": {
+                  "x": 35.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 26,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.33566762815431
+            },
+            {
+              "tick": 33,
+              "pose": {
+                "mode": "crush",
+                "stage": "process",
+                "progress": 0.7234166666679076,
+                "headReach": -0.1771254766620938,
+                "attention": {
+                  "x": 35.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 26,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.33566762815431
+            },
+            {
+              "tick": 34,
+              "pose": {
+                "mode": "crush",
+                "stage": "settle",
+                "progress": 0.8205833333327122,
+                "headReach": -0.050675321626078546,
+                "attention": {
+                  "x": 35.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 26,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.33566762815431
+            },
+            {
+              "tick": 35,
+              "pose": {
+                "mode": "crush",
+                "stage": "settle",
+                "progress": 0.9184166666679083,
+                "headReach": 1.285879139104721e-16,
+                "attention": {
+                  "x": 35.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 26,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.33566762815431
+            },
+            {
+              "tick": 36,
+              "pose": null,
+              "receipt": {
+                "tick": 26,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.276453267659434
+            },
+            {
+              "tick": 37,
+              "pose": null,
+              "receipt": {
+                "tick": 26,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.276453267659434
+            },
+            {
+              "tick": 38,
+              "pose": null,
+              "receipt": {
+                "tick": 26,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.276453267659434
+            },
+            {
+              "tick": 39,
+              "pose": null,
+              "receipt": {
+                "tick": 26,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.276453267659434
+            }
+          ]
+        }
+      ],
+      "npc": null,
+      "water": null,
+      "errors": []
+    },
+    {
+      "label": "after",
+      "trials": [
+        {
+          "mouth": "grazing-mouth",
+          "setup": {
+            "startTick": 0,
+            "cell": {
+              "x": 31.5,
+              "y": 30.5,
+              "i": 3871
+            },
+            "stock": 0.1815723478794098,
+            "body": "bp0-4134709b",
+            "energy": 20,
+            "scope": "Valid whole-body/location/reserves/other-actor placement fixture. Natural pod stock, real E and canonical receipt. Normal running game clock after E; no staged biological outcomes."
+          },
+          "samples": [
+            {
+              "tick": 2,
+              "pose": {
+                "mode": "pull",
+                "stage": "reach",
+                "progress": 0.14630303030438496,
+                "headReach": 0.8284349352807724,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.721978804305465
+            },
+            {
+              "tick": 4,
+              "pose": {
+                "mode": "pull",
+                "stage": "process",
+                "progress": 0.22539393939529406,
+                "headReach": 0.7207536914747245,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.721978804305465
+            },
+            {
+              "tick": 4,
+              "pose": {
+                "mode": "pull",
+                "stage": "process",
+                "progress": 0.294909090909994,
+                "headReach": -0.15206653230125317,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.721978804305465
+            },
+            {
+              "tick": 5,
+              "pose": {
+                "mode": "pull",
+                "stage": "process",
+                "progress": 0.3662424242428758,
+                "headReach": -0.4612129533129209,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.721978804305465
+            },
+            {
+              "tick": 7,
+              "pose": {
+                "mode": "pull",
+                "stage": "process",
+                "progress": 0.47430303030393345,
+                "headReach": -0.06647300070318554,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.666055045288232
+            },
+            {
+              "tick": 10,
+              "pose": {
+                "mode": "pull",
+                "stage": "process",
+                "progress": 0.6744848484862032,
+                "headReach": -0.0001266261392005427,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.666055045288232
+            },
+            {
+              "tick": 11,
+              "pose": {
+                "mode": "pull",
+                "stage": "process",
+                "progress": 0.7404848484853,
+                "headReach": -0.2377715022115346,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.666055045288232
+            },
+            {
+              "tick": 12,
+              "pose": {
+                "mode": "pull",
+                "stage": "settle",
+                "progress": 0.8441212121216637,
+                "headReach": -0.022650827570080165,
+                "attention": {
+                  "x": 31.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.610131286271
+            },
+            {
+              "tick": 14,
+              "pose": null,
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.610131286271
+            },
+            {
+              "tick": 15,
+              "pose": null,
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.610131286271
+            },
+            {
+              "tick": 16,
+              "pose": null,
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.610131286271
+            },
+            {
+              "tick": 17,
+              "pose": null,
+              "receipt": {
+                "tick": 0,
+                "removed": 0.15,
+                "edible": 0.08250000061550512,
+                "processingCost": 0.6,
+                "viableSeeds": 0.029999999384494887,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 30.8,
+              "y": 30.5,
+              "energy": 21.610131286271
+            }
+          ]
+        },
+        {
+          "mouth": "beak-mouth",
+          "setup": {
+            "startTick": 18,
+            "cell": {
+              "x": 33.5,
+              "y": 30.5,
+              "i": 3873
+            },
+            "stock": 0.2176555097103119,
+            "body": "bp0-9442d1dc",
+            "energy": 20,
+            "scope": "Valid whole-body/location/reserves/other-actor placement fixture. Natural pod stock, real E and canonical receipt. Normal running game clock after E; no staged biological outcomes."
+          },
+          "samples": [
+            {
+              "tick": 20,
+              "pose": {
+                "mode": "peck",
+                "stage": "reach",
+                "progress": 0.11681481481426262,
+                "headReach": 1.0481825872299653,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 18,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.9693427638706
+            },
+            {
+              "tick": 21,
+              "pose": {
+                "mode": "peck",
+                "stage": "process",
+                "progress": 0.28037037037036955,
+                "headReach": 0.6613155872243243,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 18,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.9693427638706
+            },
+            {
+              "tick": 22,
+              "pose": {
+                "mode": "peck",
+                "stage": "process",
+                "progress": 0.38607407407352196,
+                "headReach": 0.0013304813729433697,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 18,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.9693427638706
+            },
+            {
+              "tick": 23,
+              "pose": {
+                "mode": "peck",
+                "stage": "process",
+                "progress": 0.47170370370149606,
+                "headReach": 0.11352929146894432,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 18,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.9693427638706
+            },
+            {
+              "tick": 24,
+              "pose": {
+                "mode": "peck",
+                "stage": "process",
+                "progress": 0.5710370370359334,
+                "headReach": 0.033587438365844595,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 18,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.913309771563874
+            },
+            {
+              "tick": 26,
+              "pose": {
+                "mode": "peck",
+                "stage": "process",
+                "progress": 0.695481481480378,
+                "headReach": 0.2658004877561958,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 18,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.913309771563874
+            },
+            {
+              "tick": 27,
+              "pose": {
+                "mode": "peck",
+                "stage": "process",
+                "progress": 0.7679259259253743,
+                "headReach": 0.039575583309681264,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 18,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.913309771563874
+            },
+            {
+              "tick": 28,
+              "pose": {
+                "mode": "peck",
+                "stage": "settle",
+                "progress": 0.8547407407396375,
+                "headReach": 0.00013336806718959674,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 18,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.913309771563874
+            },
+            {
+              "tick": 28,
+              "pose": {
+                "mode": "peck",
+                "stage": "settle",
+                "progress": 0.941481481481482,
+                "headReach": 1.408343819019456e-16,
+                "attention": {
+                  "x": 33.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 18,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.913309771563874
+            },
+            {
+              "tick": 29,
+              "pose": null,
+              "receipt": {
+                "tick": 18,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.913309771563874
+            },
+            {
+              "tick": 30,
+              "pose": null,
+              "receipt": {
+                "tick": 18,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.85727677925715
+            },
+            {
+              "tick": 31,
+              "pose": null,
+              "receipt": {
+                "tick": 18,
+                "removed": 0.15,
+                "edible": 0.08250000051346601,
+                "processingCost": 0.3,
+                "viableSeeds": 0.029999999486533976,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 32.8,
+              "y": 30.5,
+              "energy": 25.85727677925715
+            }
+          ]
+        },
+        {
+          "mouth": "kernel-beak",
+          "setup": {
+            "startTick": 31,
+            "cell": {
+              "x": 35.5,
+              "y": 30.5,
+              "i": 3875
+            },
+            "stock": 0.22024928033351898,
+            "body": "bp0-0bc8b246",
+            "energy": 20,
+            "scope": "Valid whole-body/location/reserves/other-actor placement fixture. Natural pod stock, real E and canonical receipt. Normal running game clock after E; no staged biological outcomes."
+          },
+          "samples": [
+            {
+              "tick": 33,
+              "pose": {
+                "mode": "crush",
+                "stage": "reach",
+                "progress": 0.2194999999987583,
+                "headReach": 0.7729548713430501,
+                "attention": {
+                  "x": 35.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 31,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.39488198864919
+            },
+            {
+              "tick": 34,
+              "pose": {
+                "mode": "crush",
+                "stage": "process",
+                "progress": 0.3060833333308503,
+                "headReach": 0.14280854480972405,
+                "attention": {
+                  "x": 35.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 31,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.39488198864919
+            },
+            {
+              "tick": 34,
+              "pose": {
+                "mode": "crush",
+                "stage": "process",
+                "progress": 0.4003333333320917,
+                "headReach": -0.19372755389181223,
+                "attention": {
+                  "x": 35.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 31,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.39488198864919
+            },
+            {
+              "tick": 35,
+              "pose": {
+                "mode": "crush",
+                "stage": "process",
+                "progress": 0.4970833333333332,
+                "headReach": -0.2652458800753673,
+                "attention": {
+                  "x": 35.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 31,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.39488198864919
+            },
+            {
+              "tick": 37,
+              "pose": {
+                "mode": "crush",
+                "stage": "process",
+                "progress": 0.6230833333327117,
+                "headReach": -0.0010441672165557182,
+                "attention": {
+                  "x": 35.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 31,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.33566762815431
+            },
+            {
+              "tick": 38,
+              "pose": {
+                "mode": "crush",
+                "stage": "process",
+                "progress": 0.7624166666654235,
+                "headReach": -0.1612204351040437,
+                "attention": {
+                  "x": 35.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 31,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.33566762815431
+            },
+            {
+              "tick": 39,
+              "pose": {
+                "mode": "crush",
+                "stage": "settle",
+                "progress": 0.8586666666654241,
+                "headReach": -0.0008886639073737899,
+                "attention": {
+                  "x": 35.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 31,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.33566762815431
+            },
+            {
+              "tick": 40,
+              "pose": {
+                "mode": "crush",
+                "stage": "settle",
+                "progress": 0.9554999999981366,
+                "headReach": 1.285879139104721e-16,
+                "attention": {
+                  "x": 35.5,
+                  "y": 30.5
+                }
+              },
+              "receipt": {
+                "tick": 31,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.33566762815431
+            },
+            {
+              "tick": 41,
+              "pose": null,
+              "receipt": {
+                "tick": 31,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.33566762815431
+            },
+            {
+              "tick": 42,
+              "pose": null,
+              "receipt": {
+                "tick": 31,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.276453267659434
+            },
+            {
+              "tick": 42,
+              "pose": null,
+              "receipt": {
+                "tick": 31,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.276453267659434
+            },
+            {
+              "tick": 43,
+              "pose": null,
+              "receipt": {
+                "tick": 31,
+                "removed": 0.15,
+                "edible": 0.08250000050741918,
+                "processingCost": 0.15,
+                "viableSeeds": 0.02999999949258082,
+                "destroyedSeeds": 0
+              },
+              "dir": 6,
+              "x": 34.8,
+              "y": 30.5,
+              "energy": 28.276453267659434
+            }
+          ]
+        }
+      ],
+      "npc": {
+        "id": 197,
+        "stock": 0.21979084610939026,
+        "stockAfter": 0.06979084759950638,
+        "receipt": {
+          "kind": "thistlepod",
+          "i": 3878,
+          "tissue": "crop",
+          "removed": 0.15,
+          "coat": 0.0375,
+          "edible": 0.08250000050847754,
+          "viableSeeds": 0.029999999491522458,
+          "destroyedSeeds": 0,
+          "discarded": 0.0375,
+          "genome": {
+            "schema": 4,
+            "id": "flora4-55359801-d801bc26",
+            "resourceAlias": "thistlepod",
+            "traits": {
+              "growth": 0.026,
+              "waterNeed": 0.25,
+              "nutrition": 11,
+              "seedAllocation": 0.2,
+              "coatAllocation": 0.25
+            },
+            "traitAlleles": {
+              "growth": [
+                0.026,
+                0.026
+              ],
+              "waterNeed": [
+                0.25,
+                0.25
+              ],
+              "nutrition": [
+                11,
+                11
+              ],
+              "seedAllocation": [
+                0.2,
+                0.2
+              ],
+              "coatAllocation": [
+                0.25,
+                0.25
+              ]
+            },
+            "botanical": {
+              "schema": 1,
+              "cue": [
+                0,
+                0
+              ],
+              "receptor": [
+                0,
+                0
+              ],
+              "selfMarker": [
+                "si:7",
+                "si:2"
+              ],
+              "selfCompatible": [
+                false,
+                true
+              ],
+              "anther": [
+                true,
+                true
+              ],
+              "stigma": [
+                true,
+                true
+              ],
+              "ovule": [
+                true,
+                true
+              ],
+              "embryo": [
+                true,
+                true
+              ]
+            },
+            "reproduction": "sexual-and-clonal",
+            "mutationEnabled": true
+          },
+          "producerId": "thistlepod:3878:founder",
+          "originCell": 3878,
+          "processingCost": 0.3,
+          "specializedHandling": true,
+          "actorId": 197,
+          "tick": 43,
+          "parentGenomeId": "flora1-thistlepod",
+          "mutation": 0,
+          "coatMutation": 0,
+          "mutationAxis": null,
+          "seedTransferComplete": true
+        },
+        "presentationObserved": true,
+        "pose": {
+          "mode": "peck",
+          "stage": "process",
+          "attention": {
+            "x": 38.5,
+            "y": 30.5
+          }
+        },
+        "anatomySaveExact": true,
+        "receiptSaveExact": true
+      },
+      "water": {
+        "receipt": {
+          "type": "drink",
+          "actorId": 109,
+          "kind": "algae",
+          "energyGain": 3.544116497039795,
+          "tick": 50
+        },
+        "harvest": {
+          "kind": "algae",
+          "amount": 0.44301456212997437,
+          "i": 4929,
+          "tick": 50
+        },
+        "pose": {
+          "mode": "filter",
+          "stage": "process"
+        }
+      },
+      "errors": []
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "test": "anatomical-strike-performance",
+      "exit": 0,
+      "output": "Capability-selected bite/peck/mounted strike, 16 directional/moving limb ownership cases, guard contacts, truthful hit/miss marks and immutable bodies PASS\n"
+    },
+    {
+      "test": "strike-controller-parity",
+      "exit": 0,
+      "output": "24 paired real-controller seeded anatomy trials: exact result, timing, damage, breath, energy, RNG/genetics parity; recovery target saves PASS\n"
+    },
+    {
+      "test": "selected-combat-actions",
+      "exit": 0,
+      "output": "Selected-target attack binding, escape revalidation and no implicit target substitution PASS\n"
+    },
+    {
+      "test": "combat-pressure",
+      "exit": 0,
+      "output": "multi-Stalker pressure, attack arbitration and tactical adaptations: PASS\n"
+    },
+    {
+      "test": "combat-footwork",
+      "exit": 0,
+      "output": "combat footwork, committed charges, punish windows and breakaway: PASS\n"
+    },
+    {
+      "test": "head-attention",
+      "exit": 0,
+      "output": "48 mounted/implicit head-facing-turn cases; authoritative target selection, bounded easing, pause/neutral return, NPC quantization and immutable body records PASS\n"
+    },
+    {
+      "test": "modular-head-v176",
+      "exit": 0,
+      "output": "Head graph ownership, neutral capabilities, attach/remove/undo, lab parity, 192 inheritance crosses, eight directions and save compatibility PASS\n"
+    },
+    {
+      "test": "native-part-catalog",
+      "exit": 0,
+      "output": "native-part-catalog: 79 indexed assets, 1264 exact RGBA frames, eight facings, 0 missing native art packs PASS\n"
+    },
+    {
+      "test": "native-knee-continuity",
+      "exit": 0,
+      "output": "384 native part/facing/phase/flex cases: current-frame knee surface, immutable contacts, legacy fallback, exact source pixels and invalid surface rejection PASS\n"
+    },
+    {
+      "test": "grounded-locomotion",
+      "exit": 0,
+      "output": "256 whole valid body/facing/size cases: supported toes stationary in world coordinates; continuous recovery/stance connection PASS\n"
+    },
+    {
+      "test": "player-motion-presentation",
+      "exit": 0,
+      "output": "player presentation prediction checks: PASS\n"
+    },
+    {
+      "test": "feeding-performance",
+      "exit": 0,
+      "output": "Funded receipt stages, real source attention, anatomy modes, movement/stance interruption, pause, edible tissue requirement and read-only actor/RNG PASS\n"
+    },
+    {
+      "test": "prey-biomass",
+      "exit": 0,
+      "output": "finite developmental prey biomass, healing, combat meals, carcasses and persistence: PASS\n"
+    },
+    {
+      "test": "save-persistence",
+      "exit": 0,
+      "output": "save persistence roundtrip: PASS\n"
+    },
+    {
+      "test": "tissue-structure",
+      "exit": 0,
+      "output": "Tissue structure: 79-part coverage, net ownership, head modes, cubic development, invalid calibration rejection and unchanged gameplay mass PASS\n"
+    },
+    {
+      "test": "swimming-review",
+      "exit": 0,
+      "output": "Read-only swimming review: mounted/partial/legacy/invalid/dead cases and three natural founding populations PASS\n"
+    },
+    {
+      "test": "consolidation-demand-parity",
+      "exit": 0,
+      "output": "480 natural updates exact actor, RNG and carrying parity; affordability boundaries PASS\n"
+    }
+  ]
+}

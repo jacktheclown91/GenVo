@@ -1,0 +1,1388 @@
+{
+  "status": "PASS",
+  "scope": "Paired exact prior/current native 800x600 worlds. Controlled legal whole-body fixtures and actual keyboard motion on existing terrain. Readability/visual approval is not established by these receipts.",
+  "runs": [
+    {
+      "label": "before",
+      "natural": {
+        "scope": "Initial full world, no anatomy/actor/terrain/target/resource fixtures and no player input; normal wall clock. Renderer CPU command timing excludes GPU completion and is not a human playtest or large-world acceptance.",
+        "ticks": 74,
+        "living": 196,
+        "births": 0,
+        "deaths": 0,
+        "renderSamples": 466,
+        "meanRenderMs": 4.765450643847172,
+        "p95RenderMs": 7.200000002980232,
+        "actorAnatomyGeneticsSaveExact": true,
+        "freshwaterSaveExact": true
+      },
+      "trials": [
+        {
+          "setup": {
+            "name": "walking",
+            "leg": "walking-leg",
+            "body": "bp0-4134709b",
+            "valid": true,
+            "start": {
+              "x": 40.5,
+              "y": 40.5,
+              "energy": 90
+            },
+            "development": {
+              "stage": "adult",
+              "growth": 1,
+              "maturity": 1.1666666666666667
+            },
+            "scope": "Controlled complete valid body, age/genes/reserves, one actor and placement; natural terrain unchanged. Real keyboard motion and ordinary game clocks after setup."
+          },
+          "frames": [
+            {
+              "tick": 75,
+              "x": 40.76875000000001,
+              "y": 40.5,
+              "energy": 89.99532375000001,
+              "gaitPhase": 0.3233043477372597
+            },
+            {
+              "tick": 77,
+              "x": 41.23906250000003,
+              "y": 40.5,
+              "energy": 89.98714031250003,
+              "gaitPhase": 5.2816347825203245
+            },
+            {
+              "tick": 78,
+              "x": 41.50781250000004,
+              "y": 40.5,
+              "energy": 89.93040588332943,
+              "gaitPhase": 4.263339130346891
+            },
+            {
+              "tick": 79,
+              "x": 41.70937500000005,
+              "y": 40.5,
+              "energy": 89.92689869582944,
+              "gaitPhase": 2.24594782599916
+            },
+            {
+              "tick": 80,
+              "x": 41.97812500000006,
+              "y": 40.5,
+              "energy": 89.92222244582945,
+              "gaitPhase": 1.227652173825728
+            },
+            {
+              "tick": 81,
+              "x": 42.34765625000008,
+              "y": 40.5,
+              "energy": 89.91579260207946,
+              "gaitPhase": 4.187791304260788
+            },
+            {
+              "tick": 82,
+              "x": 42.58281250000009,
+              "y": 40.5,
+              "energy": 89.91170088332947,
+              "gaitPhase": 2.1763826086090265
+            },
+            {
+              "tick": 83,
+              "x": 42.7843750000001,
+              "y": 40.5,
+              "energy": 89.90819369582948,
+              "gaitPhase": 0.15300869556572216
+            },
+            {
+              "tick": 84,
+              "x": 43.01953125000011,
+              "y": 40.5,
+              "energy": 89.85202567309389,
+              "gaitPhase": 6.14159999991376
+            },
+            {
+              "tick": 85,
+              "x": 43.25468750000012,
+              "y": 40.5,
+              "energy": 89.8479339543439,
+              "gaitPhase": 5.117321739044556
+            }
+          ],
+          "stopped": {
+            "x": 43.28828125000012,
+            "y": 40.5,
+            "energy": 89.8473494230939
+          }
+        },
+        {
+          "setup": {
+            "name": "runner",
+            "leg": "runner-leg",
+            "body": "bp0-4ec324fb",
+            "valid": true,
+            "start": {
+              "x": 40.5,
+              "y": 40.5,
+              "energy": 90
+            },
+            "development": {
+              "stage": "adult",
+              "growth": 1,
+              "maturity": 1.1666666666666667
+            },
+            "scope": "Controlled complete valid body, age/genes/reserves, one actor and placement; natural terrain unchanged. Real keyboard motion and ordinary game clocks after setup."
+          },
+          "frames": [
+            {
+              "tick": 88,
+              "x": 41.01734374999995,
+              "y": 40.5,
+              "energy": 89.99099821874992,
+              "gaitPhase": 6.560173912944109
+            },
+            {
+              "tick": 89,
+              "x": 41.27601562499993,
+              "y": 40.5,
+              "energy": 89.98649732812488,
+              "gaitPhase": 6.2400486955520265
+            },
+            {
+              "tick": 90,
+              "x": 41.534687499999905,
+              "y": 40.5,
+              "energy": 89.9294384998092,
+              "gaitPhase": 4.827499130334019
+            },
+            {
+              "tick": 91,
+              "x": 41.756406249999884,
+              "y": 40.5,
+              "energy": 89.92558059355916,
+              "gaitPhase": 3.4017878259855934
+            },
+            {
+              "tick": 92,
+              "x": 42.23679687499984,
+              "y": 40.5,
+              "energy": 89.91722179668409,
+              "gaitPhase": 0.5635269564191638
+            },
+            {
+              "tick": 94,
+              "x": 42.6432812499998,
+              "y": 40.5,
+              "energy": 89.91014896855903,
+              "gaitPhase": 4.626260869461795
+            },
+            {
+              "tick": 95,
+              "x": 42.938906249999775,
+              "y": 40.5,
+              "energy": 89.90500509355898,
+              "gaitPhase": 4.306135652069514
+            },
+            {
+              "tick": 95,
+              "x": 43.160624999999754,
+              "y": 40.5,
+              "energy": 89.90114718730895,
+              "gaitPhase": 2.8870052172865
+            },
+            {
+              "tick": 96,
+              "x": 43.41929687499973,
+              "y": 40.5,
+              "energy": 89.84398052263765,
+              "gaitPhase": 1.4678747825030882
+            },
+            {
+              "tick": 97,
+              "x": 43.67796874999971,
+              "y": 40.5,
+              "energy": 89.83947963201261,
+              "gaitPhase": 1.1411686955459945
+            }
+          ],
+          "stopped": {
+            "x": 43.67796874999971,
+            "y": 40.5,
+            "energy": 89.83947963201261
+          }
+        },
+        {
+          "setup": {
+            "name": "sturdy",
+            "leg": "sturdy-leg",
+            "body": "bp0-12183d83",
+            "valid": true,
+            "start": {
+              "x": 40.5,
+              "y": 40.5,
+              "energy": 90
+            },
+            "development": {
+              "stage": "adult",
+              "growth": 1,
+              "maturity": 1.1666666666666667
+            },
+            "scope": "Controlled complete valid body, age/genes/reserves, one actor and placement; natural terrain unchanged. Real keyboard motion and ordinary game clocks after setup."
+          },
+          "frames": [
+            {
+              "tick": 100,
+              "x": 40.91051562500004,
+              "y": 40.5,
+              "energy": 89.99285702812507,
+              "gaitPhase": 3.629712695569495
+            },
+            {
+              "tick": 101,
+              "x": 41.099984375000055,
+              "y": 40.5,
+              "energy": 89.9895602718751,
+              "gaitPhase": 1.2477412173089828
+            },
+            {
+              "tick": 102,
+              "x": 41.35260937500008,
+              "y": 40.5,
+              "energy": 89.93212797036091,
+              "gaitPhase": 7.810543304266304
+            },
+            {
+              "tick": 103,
+              "x": 41.542078125000096,
+              "y": 40.5,
+              "energy": 89.92883121411094,
+              "gaitPhase": 5.434195478179788
+            },
+            {
+              "tick": 104,
+              "x": 41.857859375000125,
+              "y": 40.5,
+              "energy": 89.923336620361,
+              "gaitPhase": 5.869673739050208
+            },
+            {
+              "tick": 105,
+              "x": 42.173640625000154,
+              "y": 40.5,
+              "energy": 89.91784202661105,
+              "gaitPhase": 7.244301912964072
+            },
+            {
+              "tick": 106,
+              "x": 42.394687500000174,
+              "y": 40.5,
+              "energy": 89.9139958109861,
+              "gaitPhase": 4.867954086877553
+            },
+            {
+              "tick": 106,
+              "x": 42.42626562500018,
+              "y": 40.5,
+              "energy": 89.9134463516111,
+              "gaitPhase": 5.801480347747205
+            },
+            {
+              "tick": 108,
+              "x": 42.836781250000215,
+              "y": 40.5,
+              "energy": 89.85322258904267,
+              "gaitPhase": 1.0487846955741666
+            },
+            {
+              "tick": 109,
+              "x": 43.02625000000023,
+              "y": 40.5,
+              "energy": 89.8499258327927,
+              "gaitPhase": 6.678060521661838
+            }
+          ],
+          "stopped": {
+            "x": 43.02625000000023,
+            "y": 40.5,
+            "energy": 89.8499258327927
+          }
+        },
+        {
+          "setup": {
+            "name": "spring",
+            "leg": "spring-leg",
+            "body": "bp0-5bc1a59b",
+            "valid": true,
+            "start": {
+              "x": 40.5,
+              "y": 40.5,
+              "energy": 90
+            },
+            "development": {
+              "stage": "adult",
+              "growth": 1,
+              "maturity": 1.1666666666666667
+            },
+            "scope": "Controlled complete valid body, age/genes/reserves, one actor and placement; natural terrain unchanged. Real keyboard motion and ordinary game clocks after setup."
+          },
+          "frames": [
+            {
+              "tick": 112,
+              "x": 40.97031250000002,
+              "y": 40.5,
+              "energy": 89.99181656250002,
+              "gaitPhase": 4.202028985425187
+            },
+            {
+              "tick": 113,
+              "x": 41.17187500000003,
+              "y": 40.5,
+              "energy": 89.98830937500003,
+              "gaitPhase": 1.7359420289037892
+            },
+            {
+              "tick": 114,
+              "x": 41.40703125000004,
+              "y": 40.5,
+              "energy": 89.93018190961308,
+              "gaitPhase": 0.2004830917057987
+            },
+            {
+              "tick": 115,
+              "x": 41.67578125000005,
+              "y": 40.5,
+              "energy": 89.9255056596131,
+              "gaitPhase": 6.665024154507993
+            },
+            {
+              "tick": 115,
+              "x": 41.87734375000006,
+              "y": 40.5,
+              "energy": 89.9219984721131,
+              "gaitPhase": 4.204476650482498
+            },
+            {
+              "tick": 117,
+              "x": 42.280468750000075,
+              "y": 40.5,
+              "energy": 89.91498409711312,
+              "gaitPhase": 6.358293075603637
+            },
+            {
+              "tick": 118,
+              "x": 42.54921875000009,
+              "y": 40.5,
+              "energy": 89.91030784711313,
+              "gaitPhase": 4.822834138405831
+            },
+            {
+              "tick": 119,
+              "x": 42.7843750000001,
+              "y": 40.5,
+              "energy": 89.90621612836314,
+              "gaitPhase": 3.2818357487123055
+            },
+            {
+              "tick": 119,
+              "x": 42.985937500000105,
+              "y": 40.5,
+              "energy": 89.90270894086315,
+              "gaitPhase": 0.8212882446866256
+            },
+            {
+              "tick": 120,
+              "x": 43.221093750000115,
+              "y": 40.5,
+              "energy": 89.84444909635083,
+              "gaitPhase": 6.3607407406611305
+            }
+          ],
+          "stopped": {
+            "x": 43.221093750000115,
+            "y": 40.5,
+            "energy": 89.84444909635083
+          }
+        },
+        {
+          "setup": {
+            "name": "webbed",
+            "leg": "webbed-leg",
+            "body": "bp0-0b614293",
+            "valid": true,
+            "start": {
+              "x": 40.5,
+              "y": 40.5,
+              "energy": 90
+            },
+            "development": {
+              "stage": "adult",
+              "growth": 1,
+              "maturity": 1.1666666666666667
+            },
+            "scope": "Controlled complete valid body, age/genes/reserves, one actor and placement; natural terrain unchanged. Real keyboard motion and ordinary game clocks after setup."
+          },
+          "frames": [
+            {
+              "tick": 123,
+              "x": 40.772593124999986,
+              "y": 40.5,
+              "energy": 89.99525687962495,
+              "gaitPhase": 0.1097587199191512
+            },
+            {
+              "tick": 125,
+              "x": 41.166338749999966,
+              "y": 40.5,
+              "energy": 89.98840570574987,
+              "gaitPhase": 2.90299263991853
+            },
+            {
+              "tick": 125,
+              "x": 41.378355624999955,
+              "y": 40.5,
+              "energy": 89.98471661212483,
+              "gaitPhase": 1.1923033599183839
+            },
+            {
+              "tick": 126,
+              "x": 41.52979624999995,
+              "y": 40.5,
+              "energy": 89.92904491873556,
+              "gaitPhase": 4.784654079918063
+            },
+            {
+              "tick": 127,
+              "x": 41.80238937499993,
+              "y": 40.5,
+              "energy": 89.9243017983605,
+              "gaitPhase": 4.875534079917806
+            },
+            {
+              "tick": 129,
+              "x": 42.135558749999916,
+              "y": 40.5,
+              "energy": 89.91850465123544,
+              "gaitPhase": 5.8671987199172975
+            },
+            {
+              "tick": 129,
+              "x": 42.31728749999991,
+              "y": 40.5,
+              "energy": 89.9153425709854,
+              "gaitPhase": 3.2611187199170626
+            },
+            {
+              "tick": 130,
+              "x": 42.559592499999894,
+              "y": 40.5,
+              "energy": 89.91112646398535,
+              "gaitPhase": 1.5504294399165222
+            },
+            {
+              "tick": 131,
+              "x": 42.77160937499988,
+              "y": 40.5,
+              "energy": 89.90743737036031,
+              "gaitPhase": 7.845134079916429
+            },
+            {
+              "tick": 132,
+              "x": 42.98362624999987,
+              "y": 40.5,
+              "energy": 89.85066748604177,
+              "gaitPhase": 5.244447999916241
+            }
+          ],
+          "stopped": {
+            "x": 42.98362624999987,
+            "y": 40.5,
+            "energy": 89.85066748604177
+          }
+        },
+        {
+          "setup": {
+            "name": "recombined-mixed",
+            "mixed": true,
+            "body": "bp0-4134709b",
+            "valid": true,
+            "start": {
+              "x": 40.5,
+              "y": 40.5,
+              "energy": 90
+            },
+            "development": {
+              "stage": "adult",
+              "growth": 1,
+              "maturity": 1.1666666666666667
+            },
+            "scope": "Controlled complete valid body, age/genes/reserves, one actor and placement; natural terrain unchanged. Real keyboard motion and ordinary game clocks after setup."
+          },
+          "frames": [
+            {
+              "tick": 135,
+              "x": 40.93671875000002,
+              "y": 40.5,
+              "energy": 89.99240109375002,
+              "gaitPhase": 4.792313043389543
+            },
+            {
+              "tick": 136,
+              "x": 41.20546875000003,
+              "y": 40.5,
+              "energy": 89.98772484375003,
+              "gaitPhase": 3.7680347825203384
+            },
+            {
+              "tick": 137,
+              "x": 41.44062500000004,
+              "y": 40.5,
+              "energy": 89.98363312500004,
+              "gaitPhase": 2.7497391303465086
+            },
+            {
+              "tick": 138,
+              "x": 41.67578125000005,
+              "y": 40.5,
+              "energy": 89.92750389985852,
+              "gaitPhase": 0.7383304346947472
+            },
+            {
+              "tick": 138,
+              "x": 41.776562500000054,
+              "y": 40.5,
+              "energy": 89.92575030610853,
+              "gaitPhase": 3.723652173825309
+            },
+            {
+              "tick": 140,
+              "x": 42.34765625000008,
+              "y": 40.5,
+              "energy": 89.91581327485855,
+              "gaitPhase": 3.6852521738258535
+            },
+            {
+              "tick": 141,
+              "x": 42.58281250000009,
+              "y": 40.5,
+              "energy": 89.91172155610856,
+              "gaitPhase": 2.660973912956454
+            },
+            {
+              "tick": 142,
+              "x": 42.8179687500001,
+              "y": 40.5,
+              "energy": 89.90762983735857,
+              "gaitPhase": 0.64358260860892
+            },
+            {
+              "tick": 143,
+              "x": 43.05312500000011,
+              "y": 40.5,
+              "energy": 89.90353811860858,
+              "gaitPhase": 7.619304347739714
+            },
+            {
+              "tick": 144,
+              "x": 43.221093750000115,
+              "y": 40.5,
+              "energy": 89.84849273496258,
+              "gaitPhase": 4.6087999999138525
+            }
+          ],
+          "stopped": {
+            "x": 43.422656250000124,
+            "y": 40.5,
+            "energy": 89.84498554746258
+          }
+        },
+        {
+          "setup": {
+            "name": "juvenile",
+            "leg": "walking-leg",
+            "age": 8,
+            "body": "bp0-4134709b",
+            "valid": true,
+            "start": {
+              "x": 40.5,
+              "y": 40.5,
+              "energy": 90
+            },
+            "development": {
+              "stage": "juvenile",
+              "growth": 0.7021621621621622,
+              "maturity": 0.26666666666666666
+            },
+            "scope": "Controlled complete valid body, age/genes/reserves, one actor and placement; natural terrain unchanged. Real keyboard motion and ordinary game clocks after setup."
+          },
+          "frames": [
+            {
+              "tick": 147,
+              "x": 40.93671875000002,
+              "y": 40.5,
+              "energy": 89.99736934827865,
+              "gaitPhase": 6.16014949135937
+            },
+            {
+              "tick": 148,
+              "x": 41.20546875000003,
+              "y": 40.5,
+              "energy": 89.9957504856809,
+              "gaitPhase": 5.777063276346954
+            },
+            {
+              "tick": 149,
+              "x": 41.40703125000004,
+              "y": 40.5,
+              "energy": 89.99453633873259,
+              "gaitPhase": 4.303981686790127
+            },
+            {
+              "tick": 150,
+              "x": 41.50781250000004,
+              "y": 40.5,
+              "energy": 89.97592382916785,
+              "gaitPhase": 7.560913973601355
+            },
+            {
+              "tick": 151,
+              "x": 41.87734375000006,
+              "y": 40.5,
+              "energy": 89.97369789309595,
+              "gaitPhase": 2.4478138822206716
+            },
+            {
+              "tick": 152,
+              "x": 42.246875000000074,
+              "y": 40.5,
+              "energy": 89.97147195702404,
+              "gaitPhase": 5.321659954019486
+            },
+            {
+              "tick": 153,
+              "x": 42.44843750000008,
+              "y": 40.5,
+              "energy": 89.97025781007572,
+              "gaitPhase": 3.848578364462874
+            },
+            {
+              "tick": 154,
+              "x": 42.717187500000094,
+              "y": 40.5,
+              "energy": 89.96863894747797,
+              "gaitPhase": 3.4654921494502435
+            },
+            {
+              "tick": 155,
+              "x": 42.9187500000001,
+              "y": 40.5,
+              "energy": 89.96742480052966,
+              "gaitPhase": 1.985883641483058
+            },
+            {
+              "tick": 156,
+              "x": 43.35546875000012,
+              "y": 40.5,
+              "energy": 89.94674987532596,
+              "gaitPhase": 7.039720462369836
+            }
+          ],
+          "stopped": {
+            "x": 43.35546875000012,
+            "y": 40.5,
+            "energy": 89.94674987532596
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "label": "after",
+      "natural": {
+        "scope": "Initial full world, no anatomy/actor/terrain/target/resource fixtures and no player input; normal wall clock. Renderer CPU command timing excludes GPU completion and is not a human playtest or large-world acceptance.",
+        "ticks": 74,
+        "living": 196,
+        "births": 0,
+        "deaths": 0,
+        "renderSamples": 466,
+        "meanRenderMs": 4.73197424899419,
+        "p95RenderMs": 7.5,
+        "actorAnatomyGeneticsSaveExact": true,
+        "freshwaterSaveExact": true
+      },
+      "trials": [
+        {
+          "setup": {
+            "name": "walking",
+            "leg": "walking-leg",
+            "body": "bp0-4134709b",
+            "valid": true,
+            "start": {
+              "x": 40.5,
+              "y": 40.5,
+              "energy": 90
+            },
+            "development": {
+              "stage": "adult",
+              "growth": 1,
+              "maturity": 1.1666666666666667
+            },
+            "scope": "Controlled complete valid body, age/genes/reserves, one actor and placement; natural terrain unchanged. Real keyboard motion and ordinary game clocks after setup."
+          },
+          "frames": [
+            {
+              "tick": 76,
+              "x": 40.835937500000014,
+              "y": 40.5,
+              "energy": 89.99415468750001,
+              "gaitPhase": 1.4315826086959422
+            },
+            {
+              "tick": 77,
+              "x": 41.23906250000003,
+              "y": 40.5,
+              "energy": 89.98714031250003,
+              "gaitPhase": 5.396800000000878
+            },
+            {
+              "tick": 78,
+              "x": 41.47421875000004,
+              "y": 40.5,
+              "energy": 89.93099041457943,
+              "gaitPhase": 3.3794086956533462
+            },
+            {
+              "tick": 79,
+              "x": 41.67578125000005,
+              "y": 40.5,
+              "energy": 89.92748322707943,
+              "gaitPhase": 1.3620173913056135
+            },
+            {
+              "tick": 80,
+              "x": 41.97812500000006,
+              "y": 40.5,
+              "energy": 89.92222244582945,
+              "gaitPhase": 1.3368347826105094
+            },
+            {
+              "tick": 81,
+              "x": 42.34765625000008,
+              "y": 40.5,
+              "energy": 89.91579260207946,
+              "gaitPhase": 4.3029565217413435
+            },
+            {
+              "tick": 82,
+              "x": 42.58281250000009,
+              "y": 40.5,
+              "energy": 89.91170088332947,
+              "gaitPhase": 2.2855652173938097
+            },
+            {
+              "tick": 83,
+              "x": 42.8179687500001,
+              "y": 40.5,
+              "energy": 89.90760916457948,
+              "gaitPhase": 1.2672695652201806
+            },
+            {
+              "tick": 84,
+              "x": 43.08671875000011,
+              "y": 40.5,
+              "energy": 89.8508566105939,
+              "gaitPhase": 0.2489739130465498
+            },
+            {
+              "tick": 85,
+              "x": 43.28828125000012,
+              "y": 40.5,
+              "energy": 89.8473494230939,
+              "gaitPhase": 6.225600000003244
+            }
+          ],
+          "stopped": {
+            "x": 43.28828125000012,
+            "y": 40.5,
+            "energy": 89.8473494230939
+          }
+        },
+        {
+          "setup": {
+            "name": "runner",
+            "leg": "runner-leg",
+            "body": "bp0-4ec324fb",
+            "valid": true,
+            "start": {
+              "x": 40.5,
+              "y": 40.5,
+              "energy": 90
+            },
+            "development": {
+              "stage": "adult",
+              "growth": 1,
+              "maturity": 1.1666666666666667
+            },
+            "scope": "Controlled complete valid body, age/genes/reserves, one actor and placement; natural terrain unchanged. Real keyboard motion and ordinary game clocks after setup."
+          },
+          "frames": [
+            {
+              "tick": 88,
+              "x": 41.01734374999995,
+              "y": 40.5,
+              "energy": 89.99099821874992,
+              "gaitPhase": 6.680274782607267
+            },
+            {
+              "tick": 89,
+              "x": 41.23906249999993,
+              "y": 40.5,
+              "energy": 89.98714031249989,
+              "gaitPhase": 5.267725217389259
+            },
+            {
+              "tick": 90,
+              "x": 41.49773437499991,
+              "y": 40.5,
+              "energy": 89.9300814841842,
+              "gaitPhase": 3.8485947826060443
+            },
+            {
+              "tick": 90,
+              "x": 41.756406249999884,
+              "y": 40.5,
+              "energy": 89.92558059355916,
+              "gaitPhase": 3.515307826083742
+            },
+            {
+              "tick": 92,
+              "x": 42.273749999999836,
+              "y": 40.5,
+              "energy": 89.91657881230908,
+              "gaitPhase": 1.7694713043430337
+            },
+            {
+              "tick": 94,
+              "x": 42.6802343749998,
+              "y": 40.5,
+              "energy": 89.90950598418402,
+              "gaitPhase": 4.739780869559542
+            },
+            {
+              "tick": 94,
+              "x": 42.90195312499978,
+              "y": 40.5,
+              "energy": 89.90564807793399,
+              "gaitPhase": 3.314069565211117
+            },
+            {
+              "tick": 95,
+              "x": 43.160624999999754,
+              "y": 40.5,
+              "energy": 89.90114718730895,
+              "gaitPhase": 2.9939443478192302
+            },
+            {
+              "tick": 96,
+              "x": 43.271484374999744,
+              "y": 40.5,
+              "energy": 89.84655246013767,
+              "gaitPhase": 5.191954782601499
+            },
+            {
+              "tick": 97,
+              "x": 43.7149218749997,
+              "y": 40.5,
+              "energy": 89.8388366476376,
+              "gaitPhase": 2.347113043469861
+            }
+          ],
+          "stopped": {
+            "x": 43.7518749999997,
+            "y": 40.5,
+            "energy": 89.8381936632626
+          }
+        },
+        {
+          "setup": {
+            "name": "sturdy",
+            "leg": "sturdy-leg",
+            "body": "bp0-12183d83",
+            "valid": true,
+            "start": {
+              "x": 40.5,
+              "y": 40.5,
+              "energy": 90
+            },
+            "development": {
+              "stage": "adult",
+              "growth": 1,
+              "maturity": 1.1666666666666667
+            },
+            "scope": "Controlled complete valid body, age/genes/reserves, one actor and placement; natural terrain unchanged. Real keyboard motion and ordinary game clocks after setup."
+          },
+          "frames": [
+            {
+              "tick": 100,
+              "x": 40.91051562500004,
+              "y": 40.5,
+              "energy": 89.99285702812507,
+              "gaitPhase": 3.885588869566206
+            },
+            {
+              "tick": 101,
+              "x": 41.13156250000006,
+              "y": 40.5,
+              "energy": 89.98901081250011,
+              "gaitPhase": 2.4427673043495375
+            },
+            {
+              "tick": 102,
+              "x": 41.35260937500008,
+              "y": 40.5,
+              "energy": 89.93212797036091,
+              "gaitPhase": 0.06641947826301653
+            },
+            {
+              "tick": 103,
+              "x": 41.542078125000096,
+              "y": 40.5,
+              "energy": 89.92883121411094,
+              "gaitPhase": 5.690071652176698
+            },
+            {
+              "tick": 104,
+              "x": 41.857859375000125,
+              "y": 40.5,
+              "energy": 89.923336620361,
+              "gaitPhase": 6.125549913046921
+            },
+            {
+              "tick": 106,
+              "x": 42.20521875000016,
+              "y": 40.5,
+              "energy": 89.91729256723606,
+              "gaitPhase": 7.5001780869607835
+            },
+            {
+              "tick": 106,
+              "x": 42.394687500000174,
+              "y": 40.5,
+              "energy": 89.9139958109861,
+              "gaitPhase": 5.123830260874463
+            },
+            {
+              "tick": 108,
+              "x": 42.80520312500021,
+              "y": 40.5,
+              "energy": 89.85377204841767,
+              "gaitPhase": 0.37113460870162385
+            },
+            {
+              "tick": 109,
+              "x": 42.99467187500023,
+              "y": 40.5,
+              "energy": 89.8504752921677,
+              "gaitPhase": 5.994786782615105
+            },
+            {
+              "tick": 110,
+              "x": 43.24729687500025,
+              "y": 40.5,
+              "energy": 89.84607961716775,
+              "gaitPhase": 4.551965217398241
+            }
+          ],
+          "stopped": {
+            "x": 43.24729687500025,
+            "y": 40.5,
+            "energy": 89.84607961716775
+          }
+        },
+        {
+          "setup": {
+            "name": "spring",
+            "leg": "spring-leg",
+            "body": "bp0-5bc1a59b",
+            "valid": true,
+            "start": {
+              "x": 40.5,
+              "y": 40.5,
+              "energy": 90
+            },
+            "development": {
+              "stage": "adult",
+              "growth": 1,
+              "maturity": 1.1666666666666667
+            },
+            "scope": "Controlled complete valid body, age/genes/reserves, one actor and placement; natural terrain unchanged. Real keyboard motion and ordinary game clocks after setup."
+          },
+          "frames": [
+            {
+              "tick": 113,
+              "x": 40.93671875000002,
+              "y": 40.5,
+              "energy": 89.99240109375002,
+              "gaitPhase": 3.875201288245151
+            },
+            {
+              "tick": 114,
+              "x": 41.20546875000003,
+              "y": 40.5,
+              "energy": 89.93368909711307,
+              "gaitPhase": 2.3342028985512577
+            },
+            {
+              "tick": 115,
+              "x": 41.44062500000004,
+              "y": 40.5,
+              "energy": 89.92959737836308,
+              "gaitPhase": 0.7987439613536349
+            },
+            {
+              "tick": 116,
+              "x": 41.67578125000005,
+              "y": 40.5,
+              "energy": 89.9255056596131,
+              "gaitPhase": 6.338196457327957
+            },
+            {
+              "tick": 116,
+              "x": 41.91093750000006,
+              "y": 40.5,
+              "energy": 89.9214139408631,
+              "gaitPhase": 4.802737520130332
+            },
+            {
+              "tick": 118,
+              "x": 42.280468750000075,
+              "y": 40.5,
+              "energy": 89.91498409711312,
+              "gaitPhase": 6.031465378423601
+            },
+            {
+              "tick": 119,
+              "x": 42.482031250000084,
+              "y": 40.5,
+              "energy": 89.91147690961313,
+              "gaitPhase": 3.576457326894193
+            },
+            {
+              "tick": 120,
+              "x": 42.750781250000095,
+              "y": 40.5,
+              "energy": 89.85271991681866,
+              "gaitPhase": 2.0354589372003034
+            },
+            {
+              "tick": 120,
+              "x": 42.985937500000105,
+              "y": 40.5,
+              "energy": 89.84862819806867,
+              "gaitPhase": 0.4944605475067796
+            },
+            {
+              "tick": 121,
+              "x": 43.187500000000114,
+              "y": 40.5,
+              "energy": 89.84512101056868,
+              "gaitPhase": 6.039452495977004
+            }
+          ],
+          "stopped": {
+            "x": 43.187500000000114,
+            "y": 40.5,
+            "energy": 89.84512101056868
+          }
+        },
+        {
+          "setup": {
+            "name": "webbed",
+            "leg": "webbed-leg",
+            "body": "bp0-0b614293",
+            "valid": true,
+            "start": {
+              "x": 40.5,
+              "y": 40.5,
+              "energy": 90
+            },
+            "development": {
+              "stage": "adult",
+              "growth": 1,
+              "maturity": 1.1666666666666667
+            },
+            "scope": "Controlled complete valid body, age/genes/reserves, one actor and placement; natural terrain unchanged. Real keyboard motion and ordinary game clocks after setup."
+          },
+          "frames": [
+            {
+              "tick": 124,
+              "x": 40.89374562499998,
+              "y": 40.5,
+              "energy": 89.99314882612492,
+              "gaitPhase": 3.557822079999708
+            },
+            {
+              "tick": 125,
+              "x": 41.13605062499997,
+              "y": 40.5,
+              "energy": 89.98893271912488,
+              "gaitPhase": 1.8525267199992204
+            },
+            {
+              "tick": 126,
+              "x": 41.31777937499996,
+              "y": 40.5,
+              "energy": 89.9327340123606,
+              "gaitPhase": 7.241052799998933
+            },
+            {
+              "tick": 127,
+              "x": 41.560084374999946,
+              "y": 40.5,
+              "energy": 89.92851790536055,
+              "gaitPhase": 5.535757439998642
+            },
+            {
+              "tick": 128,
+              "x": 41.83267749999993,
+              "y": 40.5,
+              "energy": 89.9237747849855,
+              "gaitPhase": 5.626637439998188
+            },
+            {
+              "tick": 129,
+              "x": 42.165846874999914,
+              "y": 40.5,
+              "energy": 89.91797763786043,
+              "gaitPhase": 6.618302079997873
+            },
+            {
+              "tick": 130,
+              "x": 42.347575624999905,
+              "y": 40.5,
+              "energy": 89.9148155576104,
+              "gaitPhase": 4.012222079997635
+            },
+            {
+              "tick": 131,
+              "x": 42.559592499999894,
+              "y": 40.5,
+              "energy": 89.91112646398535,
+              "gaitPhase": 1.4061420799972009
+            },
+            {
+              "tick": 132,
+              "x": 42.77160937499988,
+              "y": 40.5,
+              "energy": 89.85435657966681,
+              "gaitPhase": 7.700846719996711
+            },
+            {
+              "tick": 133,
+              "x": 43.01391437499987,
+              "y": 40.5,
+              "energy": 89.85014047266677,
+              "gaitPhase": 5.990157439996565
+            }
+          ],
+          "stopped": {
+            "x": 43.01391437499987,
+            "y": 40.5,
+            "energy": 89.85014047266677
+          }
+        },
+        {
+          "setup": {
+            "name": "recombined-mixed",
+            "mixed": true,
+            "body": "bp0-4134709b",
+            "valid": true,
+            "start": {
+              "x": 40.5,
+              "y": 40.5,
+              "energy": 90
+            },
+            "development": {
+              "stage": "adult",
+              "growth": 1,
+              "maturity": 1.1666666666666667
+            },
+            "scope": "Controlled complete valid body, age/genes/reserves, one actor and placement; natural terrain unchanged. Real keyboard motion and ordinary game clocks after setup."
+          },
+          "frames": [
+            {
+              "tick": 135,
+              "x": 40.869531250000016,
+              "y": 40.5,
+              "energy": 89.99357015625002,
+              "gaitPhase": 2.698400000000536
+            },
+            {
+              "tick": 137,
+              "x": 41.306250000000034,
+              "y": 40.5,
+              "energy": 89.98597125000003,
+              "gaitPhase": 6.657634782609694
+            },
+            {
+              "tick": 138,
+              "x": 41.541406250000044,
+              "y": 40.5,
+              "energy": 89.92984202485852,
+              "gaitPhase": 5.645321739131836
+            },
+            {
+              "tick": 139,
+              "x": 41.91093750000006,
+              "y": 40.5,
+              "energy": 89.92341218110853,
+              "gaitPhase": 7.612347826088763
+            },
+            {
+              "tick": 140,
+              "x": 42.11250000000007,
+              "y": 40.5,
+              "energy": 89.91990499360854,
+              "gaitPhase": 5.59495652174123
+            },
+            {
+              "tick": 141,
+              "x": 42.44843750000008,
+              "y": 40.5,
+              "energy": 89.91405968110855,
+              "gaitPhase": 6.568869565219831
+            },
+            {
+              "tick": 142,
+              "x": 42.68359375000009,
+              "y": 40.5,
+              "energy": 89.90996796235856,
+              "gaitPhase": 5.54459130435043
+            },
+            {
+              "tick": 143,
+              "x": 42.9187500000001,
+              "y": 40.5,
+              "energy": 89.90587624360857,
+              "gaitPhase": 3.5272000000028996
+            },
+            {
+              "tick": 144,
+              "x": 43.08671875000011,
+              "y": 40.5,
+              "energy": 89.85083085996257,
+              "gaitPhase": 0.5166956521770363
+            },
+            {
+              "tick": 145,
+              "x": 43.456250000000125,
+              "y": 40.5,
+              "energy": 89.84440101621259,
+              "gaitPhase": 2.4897043478297363
+            }
+          ],
+          "stopped": {
+            "x": 43.456250000000125,
+            "y": 40.5,
+            "energy": 89.84440101621259
+          }
+        },
+        {
+          "setup": {
+            "name": "juvenile",
+            "leg": "walking-leg",
+            "age": 8,
+            "body": "bp0-4134709b",
+            "valid": true,
+            "start": {
+              "x": 40.5,
+              "y": 40.5,
+              "energy": 90
+            },
+            "development": {
+              "stage": "juvenile",
+              "growth": 0.7021621621621622,
+              "maturity": 0.26666666666666666
+            },
+            "scope": "Controlled complete valid body, age/genes/reserves, one actor and placement; natural terrain unchanged. Real keyboard motion and ordinary game clocks after setup."
+          },
+          "frames": [
+            {
+              "tick": 148,
+              "x": 40.93671875000002,
+              "y": 40.5,
+              "energy": 89.99736934827865,
+              "gaitPhase": 6.049191878479061
+            },
+            {
+              "tick": 149,
+              "x": 41.20546875000003,
+              "y": 40.5,
+              "energy": 89.9957504856809,
+              "gaitPhase": 5.659578745056288
+            },
+            {
+              "tick": 150,
+              "x": 41.40703125000004,
+              "y": 40.5,
+              "energy": 89.97653090264201,
+              "gaitPhase": 4.18649715549968
+            },
+            {
+              "tick": 151,
+              "x": 41.64218750000005,
+              "y": 40.5,
+              "energy": 89.97511439786898,
+              "gaitPhase": 2.7199424843534263
+            },
+            {
+              "tick": 151,
+              "x": 41.74296875000005,
+              "y": 40.5,
+              "energy": 89.97450732439482,
+              "gaitPhase": 5.976874771164656
+            },
+            {
+              "tick": 153,
+              "x": 42.38125000000008,
+              "y": 40.5,
+              "energy": 89.97066252572516,
+              "gaitPhase": 1.5576300024946068
+            },
+            {
+              "tick": 154,
+              "x": 42.61640625000009,
+              "y": 40.5,
+              "energy": 89.96924602095213,
+              "gaitPhase": 1.1745437874817632
+            },
+            {
+              "tick": 155,
+              "x": 42.8515625000001,
+              "y": 40.5,
+              "energy": 89.9678295161791,
+              "gaitPhase": 7.6949352795147945
+            },
+            {
+              "tick": 156,
+              "x": 43.08671875000011,
+              "y": 40.5,
+              "energy": 89.94837882084605,
+              "gaitPhase": 7.311849064502379
+            },
+            {
+              "tick": 157,
+              "x": 43.32187500000012,
+              "y": 40.5,
+              "energy": 89.94696231607301,
+              "gaitPhase": 5.838767474945554
+            }
+          ],
+          "stopped": {
+            "x": 43.32187500000012,
+            "y": 40.5,
+            "energy": 89.94696231607301
+          }
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

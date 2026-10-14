@@ -25,7 +25,7 @@ for p in (root/'docs').rglob('*'):
  if not p.is_file() or p.is_symlink():continue
  rel=p.relative_to(root/'docs')
  if any(part.endswith('-video') for part in rel.parts[:-1]):continue
- if p.suffix in ['.webm','.gif'] and p.name not in ['clonal-flora-runtime.webm','natural-clonal-runtime.webm','knowledge-panels-runtime.webm','workshop-runtime.webm','plant-handling-runtime.webm','quick-interaction-runtime.webm','inherited-coats-runtime.webm','seed-journey-runtime.webm','lab-windows-runtime.webm','botanical-sexual-runtime.webm','seed-save-runtime.webm','phenotype-audio-runtime.webm','conception-gates-runtime.webm','learned-outings-runtime.webm','consolidation-bodies-runtime.webm','feeding-performance-before-runtime.webm','feeding-performance-after-runtime.webm','locomotion-before-runtime.webm','locomotion-after-runtime.webm','living-rest-before-runtime.webm','living-rest-after-runtime.webm','joint-surface-before-runtime.webm','joint-surface-after-runtime.webm','head-attention-before-runtime.webm','head-attention-after-runtime.webm','head-court-before-runtime.webm','head-court-after-runtime.webm']:continue
+ if p.suffix in ['.webm','.gif'] and not (p.name.endswith('-runtime.webm') and p.name.startswith(('art-production-','art-feeding-','art-assemblies-','strikes-','strike-call-','strike-performance-'))) and p.name not in ['clonal-flora-runtime.webm','natural-clonal-runtime.webm','knowledge-panels-runtime.webm','workshop-runtime.webm','plant-handling-runtime.webm','quick-interaction-runtime.webm','inherited-coats-runtime.webm','seed-journey-runtime.webm','lab-windows-runtime.webm','botanical-sexual-runtime.webm','seed-save-runtime.webm','phenotype-audio-runtime.webm','conception-gates-runtime.webm','learned-outings-runtime.webm','consolidation-bodies-runtime.webm','feeding-performance-before-runtime.webm','feeding-performance-after-runtime.webm','locomotion-before-runtime.webm','locomotion-after-runtime.webm','living-rest-before-runtime.webm','living-rest-after-runtime.webm','joint-surface-before-runtime.webm','joint-surface-after-runtime.webm','head-attention-before-runtime.webm','head-attention-after-runtime.webm','head-court-before-runtime.webm','head-court-after-runtime.webm']:continue
  selected.append(p)
 # Exact pre-change source retained to reproduce consolidation parity/performance checks.
 reference=root/'reports/consolidation-before'
@@ -39,6 +39,8 @@ selected.extend(p for p in joint_reference.rglob('*') if p.is_file())
 head_reference=root/'reports/head-attention-before'
 selected.extend(p for p in head_reference.rglob('*') if p.is_file())
 selected.extend(p for p in (root/'reports').glob('consolidation-demand-*.cpuprofile'))
+for dirname in ['strike-performance-before','visual-production/before-art']:
+ selected.extend(p for p in (root/'reports'/dirname).rglob('*') if p.is_file())
 if (root/'reports/README.md').exists():selected.append(root/'reports/README.md')
 source=records(root,selected);manifest['sourceFileCount']=len(source);manifest['sourcePayloadSha256']=digest(''.join(r['path']+'\0'+r['sha256']+'\n' for r in source).encode());manifest['sourceFiles']=source
 (web/'build-manifest.json').write_text(json.dumps({k:v for k,v in manifest.items() if k!='sourceFiles'},indent=2),encoding='utf-8');(out/'build-manifest.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')

@@ -16,7 +16,7 @@ if(!reachable.has('src/main.js'))throw Error('Game entry module missing');
 if(fs.existsSync(out)&&fs.readdirSync(out).length)throw Error('Destination must be empty (no destructive overwrite)');
 const files=['index.html','styles.css',...reachable];
 for(const dirname of ['assets/audio','assets/ui','assets/art','tools/creature-lab']){
- function walk(rel){for(const e of fs.readdirSync(path.join(root,rel),{withFileTypes:true})){const p=path.posix.join(rel,e.name);if(e.isDirectory())walk(p);else if(e.isFile())files.push(p)}}
+ function walk(rel){for(const e of fs.readdirSync(path.join(root,rel),{withFileTypes:true})){const p=path.posix.join(rel,e.name);if(p==='assets/art/production-review')continue;if(e.isDirectory())walk(p);else if(e.isFile())files.push(p)}}
  walk(dirname);
 }
 for(const rel of files){const src=path.join(root,rel),dst=path.join(out,rel);fs.mkdirSync(path.dirname(dst),{recursive:true});fs.copyFileSync(src,dst)}

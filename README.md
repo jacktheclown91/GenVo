@@ -2,7 +2,7 @@
 
 Canonical source for the evolutionary survival game. Development happens on **main**; this repository has one branch.
 
-Current checkpoint: **Target-Aware Native Faces (2026-10-14)**. Heads and their attached eyes/mouths turn toward actual meals, partners, perceived threats and known caregivers while the torso retains its own facing. Bounded easing, pause behavior and cache identity are integrated with existing gameplay. Continuous native knees, funded feeding and established biological authorities are preserved. Mass calibration and swimming migration remain pending review. See [the current implementation report](docs/GenVo-Target-Aware-Native-Faces-Review.md) and [the full development goal status](docs/GenVo-Development-Goal-Status.md).
+Current checkpoint: **Imagegen Artwork Production Pilot (2026-10-14)**. Dedicated image generation is verified; two creator-guided facial parts and two actual plant classes now use prepared generated paintings. Real paired worlds, feeding and mixed-body movement are captured. Rejected head/torso/limb candidates remain outside runtime. Mounted bite/peck/strike and defensive presentation are integrated with the existing controllers. This limited checkpoint is not whole-game visual approval; mass calibration and swimming migration remain pending review. See [the current implementation report](docs/GenVo-Art-Production-Checkpoint.md) and [the full development goal status](docs/GenVo-Development-Goal-Status.md).
 
 Run the game from the repository root:
 

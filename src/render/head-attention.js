@@ -1,9 +1,10 @@
 // Read-only presentation of already selected/perceived targets. No sensing scans,
 // hidden mating preferences, simulation writes or random calls.
 const valid=p=>p&&p.alive!==false&&Number.isFinite(p.x)&&Number.isFinite(p.y);
-export function attentionTarget(animal,{social,encounter,feeding,committedAim,action}={}){
+export function attentionTarget(animal,{social,encounter,feeding,committedAim,attackTarget,action}={}){
  if(social?.alarm&&Number.isFinite(social.threatX)&&Number.isFinite(social.threatY))return{x:social.threatX,y:social.threatY,source:'threat'};
  if(committedAim)return{x:committedAim.aimX,y:committedAim.aimY,source:'committed-attack'};
+ if(valid(attackTarget))return{x:attackTarget.x,y:attackTarget.y,source:'attack-target'};
  if(valid(encounter?.attention))return{...encounter.attention,source:'partner'};
  if(valid(feeding?.attention))return{...feeding.attention,source:'meal'};
  if(valid(animal?.target)&&['eat','drink','court','hunt','stalk','flee','forage'].includes(action))return{x:animal.target.x,y:animal.target.y,source:action};

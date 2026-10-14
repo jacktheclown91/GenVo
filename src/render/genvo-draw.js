@@ -201,11 +201,14 @@ function drawGenvoBody(c,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pal
   // mouth line on top. When native artwork is absent, preserve the procedural fallback.
   const mouthPart=asm.mouth||(!asm.explicit?'grazing-mouth':null);
   const mouthX=faceMounts.mouth?.x??bx+fx*face.mouthForward,mouthY=faceMounts.mouth?.y??by+fy*face.mouthForward+(fy>=.5?.6:0);
+  let mouthFrame=face.mouthOpen>0?1:0;
+  if(pose.encounter?.move==='call'&&partDef(mouthPart)?.actionCapabilities.includes('call')){mouthFrame=(profile.behavior.mouthPulse||0)>.45?1:0;face.mouthOpen=mouthFrame;}
+  if(Number.isFinite(profile.behavior.attackMouthOpen)){mouthFrame=profile.behavior.attackMouthOpen>0?1:0;face.mouthOpen=mouthFrame;}
   const nativeMouthArt=mouthPart&&(authoredParts?.[mouthPart]||artForPart(mouthPart));
   const useNativeMouth=!!nativeMouthArt&&!nativeMouthArt.rig&&typeof c.drawImage==='function';
   if(mouthPart&&(mouthPart!=='grazing-mouth'||useNativeMouth))drawPart(c,mouthPart,{...K,faceTurn:head?.turn||0,
     mouth:{x:mouthX,y:mouthY},authoredState:'idle',
-    authoredFrameIndex:face.mouthOpen>0?1:0});
+    authoredFrameIndex:mouthFrame});
 
   if(ph.stripe){
     const bandCount=Math.max(1,ph.patternBands||1),dark=ph.patternPolarity>=0?'rgba(38,57,79,.46)':'rgba(232,221,174,.38)';

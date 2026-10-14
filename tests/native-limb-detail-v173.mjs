@@ -36,7 +36,7 @@ for(const id of ids){
  const renderer=prepareIndexedPartRenderer(compiled,{createCanvas:()=>({getContext:()=>context})});
  const tx=[];const canvas={imageSmoothingEnabled:false,save(){},restore(){},translate(x,y){tx.push(['translate',x,y])},rotate(a){assert.ok(Number.isFinite(a))},scale(x,y){assert.ok(x>0&&y>0);tx.push(['scale',x,y])},drawImage(...args){assert.equal(args.length,9)}};
  assert.equal(renderer.drawLimb(canvas,{root:{x:10,y:10},knee:{x:25,y:8},foot:{x:36,y:18},facing:4}),true);
- assert.deepEqual(tx.filter(x=>x[0]==='translate').map(x=>x.slice(1)),[[10,10],[25,8]]);
+ assert.deepEqual(tx.filter(x=>x[0]==='translate').map(x=>x.slice(1)),[[10,10],[25,8],[25,8]],'Native joint insertion shares the actual anatomical knee');
  console.log(`${id}: ${segments.join('+')} detailed pixels; 16 exact frames`);
 }
 console.log(`native-limb-detail-v173: eight full-length dual-section native sheets, ${count} exact frames, rig transforms PASS`);
