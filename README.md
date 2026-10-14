@@ -2,7 +2,7 @@
 
 Canonical source for the evolutionary survival game. Development happens on **main**; this repository has one branch.
 
-Current checkpoint: **Near-Vertical Overhead Correction (2026-10-14)**. Planar mounts, body-relative handedness, dorsal occlusion, body-oriented contact shadows and four modular art packs now follow the approved overhead direction. Real 800×600 before/after captures independently verify all eight rendered headings and actual player movement. See [the implementation and evidence review](docs/GenVo-Overhead-Perspective-Review.md). Several older mouths, display structures and plants still need source-art correction. This is not whole-game visual approval; physical calibration and swimming migration remain open.
+Current checkpoint: **Dorsal Jaws and Funded Feeding Articulation (2026-10-14)**. Four existing mouth packs follow the approved overhead direction. Native grinding now visibly opens/closes from actual funded meals; painted attachments and rigid tusks remain stable. Complete legal bodies were verified in eight rendered headings, actual mouse attacks, E feeding, expected dietary rejection, Lab and saves. See [the current review](docs/GenVo-Overhead-Jaws-Review.md). Natural encounter readability, raised display artwork, vegetation, human usability and biological calibration remain open.
 
 Run the game from the repository root:
 

@@ -1,0 +1,810 @@
+{
+  "status": "PASS",
+  "scope": "Actual mouse attacks/held keyboard guard with canonical controller windup/recovery, charged breath and unforced outcomes. Controlled anatomical fixtures, not natural encounters or human visual acceptance.",
+  "runs": [
+    {
+      "label": "before",
+      "trials": [
+        {
+          "setup": {
+            "kind": "tearing-jaw",
+            "actor": 109,
+            "target": 97,
+            "body": "bp0-14fc97f4",
+            "availability": {
+              "enabled": true,
+              "reason": ""
+            },
+            "exertion": 100,
+            "health": 100,
+            "scope": "Controlled complete legal bodies, adult conditions, reserves and initial placement. Real mouse Attack and canonical controller clock/RNG after setup; actual phases paused only for screenshot sampling, then resumed. Damage/response not forced."
+          },
+          "recovery": {
+            "action": {
+              "phase": "recover",
+              "targetId": 97,
+              "startedAt": 0.421875,
+              "until": 0.781875,
+              "slow": false,
+              "outcome": "hit"
+            },
+            "exertion": 84,
+            "targetHealth": 91.09,
+            "body": {
+              "schema": "genvo8.bodyplan/0",
+              "registryVersion": 0,
+              "nodes": [
+                {
+                  "id": "root",
+                  "partId": "small-torso",
+                  "partVersion": 1,
+                  "parent": null,
+                  "socket": null
+                },
+                {
+                  "id": "root/head",
+                  "partId": "head-base",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "head"
+                },
+                {
+                  "id": "root/head/eye.left",
+                  "partId": "simple-eye",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "eye.left"
+                },
+                {
+                  "id": "root/head/eye.right",
+                  "partId": "simple-eye",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "eye.right"
+                },
+                {
+                  "id": "root/head/mouth",
+                  "partId": "tearing-jaw",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "mouth"
+                },
+                {
+                  "id": "root/limb.1",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.1"
+                },
+                {
+                  "id": "root/limb.3",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.3"
+                },
+                {
+                  "id": "root/limb.5",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.5"
+                },
+                {
+                  "id": "root/limb.7",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.7"
+                }
+              ],
+              "id": "bp0-14fc97f4"
+            },
+            "tick": 5
+          },
+          "bracing": true
+        },
+        {
+          "setup": {
+            "kind": "crushing-jaw",
+            "actor": 109,
+            "target": 97,
+            "body": "bp0-efcad379",
+            "availability": {
+              "enabled": true,
+              "reason": ""
+            },
+            "exertion": 100,
+            "health": 100,
+            "scope": "Controlled complete legal bodies, adult conditions, reserves and initial placement. Real mouse Attack and canonical controller clock/RNG after setup; actual phases paused only for screenshot sampling, then resumed. Damage/response not forced."
+          },
+          "recovery": {
+            "action": {
+              "phase": "recover",
+              "targetId": 97,
+              "startedAt": 0.40625,
+              "until": 0.76625,
+              "slow": false,
+              "outcome": "hit"
+            },
+            "exertion": 84,
+            "targetHealth": 84.853,
+            "body": {
+              "schema": "genvo8.bodyplan/0",
+              "registryVersion": 0,
+              "nodes": [
+                {
+                  "id": "root",
+                  "partId": "small-torso",
+                  "partVersion": 1,
+                  "parent": null,
+                  "socket": null
+                },
+                {
+                  "id": "root/head",
+                  "partId": "head-base",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "head"
+                },
+                {
+                  "id": "root/head/eye.left",
+                  "partId": "simple-eye",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "eye.left"
+                },
+                {
+                  "id": "root/head/eye.right",
+                  "partId": "simple-eye",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "eye.right"
+                },
+                {
+                  "id": "root/head/mouth",
+                  "partId": "crushing-jaw",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "mouth"
+                },
+                {
+                  "id": "root/limb.1",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.1"
+                },
+                {
+                  "id": "root/limb.3",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.3"
+                },
+                {
+                  "id": "root/limb.5",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.5"
+                },
+                {
+                  "id": "root/limb.7",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.7"
+                }
+              ],
+              "id": "bp0-efcad379"
+            },
+            "tick": 15
+          },
+          "bracing": true
+        },
+        {
+          "setup": {
+            "kind": "gape-mouth",
+            "actor": 109,
+            "target": 97,
+            "body": "bp0-09a83ede",
+            "availability": {
+              "enabled": true,
+              "reason": ""
+            },
+            "exertion": 100,
+            "health": 100,
+            "scope": "Controlled complete legal bodies, adult conditions, reserves and initial placement. Real mouse Attack and canonical controller clock/RNG after setup; actual phases paused only for screenshot sampling, then resumed. Damage/response not forced."
+          },
+          "recovery": {
+            "action": {
+              "phase": "recover",
+              "targetId": 97,
+              "startedAt": 0.375,
+              "until": 0.735,
+              "slow": false,
+              "outcome": "hit"
+            },
+            "exertion": 84,
+            "targetHealth": 94.58784785617144,
+            "body": {
+              "schema": "genvo8.bodyplan/0",
+              "registryVersion": 0,
+              "nodes": [
+                {
+                  "id": "root",
+                  "partId": "small-torso",
+                  "partVersion": 1,
+                  "parent": null,
+                  "socket": null
+                },
+                {
+                  "id": "root/head",
+                  "partId": "head-base",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "head"
+                },
+                {
+                  "id": "root/head/eye.left",
+                  "partId": "simple-eye",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "eye.left"
+                },
+                {
+                  "id": "root/head/eye.right",
+                  "partId": "simple-eye",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "eye.right"
+                },
+                {
+                  "id": "root/head/mouth",
+                  "partId": "gape-mouth",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "mouth"
+                },
+                {
+                  "id": "root/limb.1",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.1"
+                },
+                {
+                  "id": "root/limb.3",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.3"
+                },
+                {
+                  "id": "root/limb.5",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.5"
+                },
+                {
+                  "id": "root/limb.7",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.7"
+                }
+              ],
+              "id": "bp0-09a83ede"
+            },
+            "tick": 24
+          },
+          "bracing": true
+        },
+        {
+          "setup": {
+            "kind": "tusk-jaw",
+            "actor": 109,
+            "target": 97,
+            "body": "bp0-29154911",
+            "availability": {
+              "enabled": true,
+              "reason": ""
+            },
+            "exertion": 100,
+            "health": 100,
+            "scope": "Controlled complete legal bodies, adult conditions, reserves and initial placement. Real mouse Attack and canonical controller clock/RNG after setup; actual phases paused only for screenshot sampling, then resumed. Damage/response not forced."
+          },
+          "recovery": {
+            "action": {
+              "phase": "recover",
+              "targetId": 97,
+              "startedAt": 0.359375,
+              "until": 0.719375,
+              "slow": false,
+              "outcome": "hit"
+            },
+            "exertion": 84,
+            "targetHealth": 92.575,
+            "body": {
+              "schema": "genvo8.bodyplan/0",
+              "registryVersion": 0,
+              "nodes": [
+                {
+                  "id": "root",
+                  "partId": "small-torso",
+                  "partVersion": 1,
+                  "parent": null,
+                  "socket": null
+                },
+                {
+                  "id": "root/head",
+                  "partId": "head-base",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "head"
+                },
+                {
+                  "id": "root/head/eye.left",
+                  "partId": "simple-eye",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "eye.left"
+                },
+                {
+                  "id": "root/head/eye.right",
+                  "partId": "simple-eye",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "eye.right"
+                },
+                {
+                  "id": "root/head/mouth",
+                  "partId": "tusk-jaw",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "mouth"
+                },
+                {
+                  "id": "root/limb.1",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.1"
+                },
+                {
+                  "id": "root/limb.3",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.3"
+                },
+                {
+                  "id": "root/limb.5",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.5"
+                },
+                {
+                  "id": "root/limb.7",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.7"
+                }
+              ],
+              "id": "bp0-29154911"
+            },
+            "tick": 34
+          },
+          "bracing": true
+        }
+      ],
+      "errors": []
+    },
+    {
+      "label": "after",
+      "trials": [
+        {
+          "setup": {
+            "kind": "tearing-jaw",
+            "actor": 109,
+            "target": 97,
+            "body": "bp0-14fc97f4",
+            "availability": {
+              "enabled": true,
+              "reason": ""
+            },
+            "exertion": 100,
+            "health": 100,
+            "scope": "Controlled complete legal bodies, adult conditions, reserves and initial placement. Real mouse Attack and canonical controller clock/RNG after setup; actual phases paused only for screenshot sampling, then resumed. Damage/response not forced."
+          },
+          "recovery": {
+            "action": {
+              "phase": "recover",
+              "targetId": 97,
+              "startedAt": 0.546875,
+              "until": 0.906875,
+              "slow": false,
+              "outcome": "hit"
+            },
+            "exertion": 84,
+            "targetHealth": 91.09,
+            "body": {
+              "schema": "genvo8.bodyplan/0",
+              "registryVersion": 0,
+              "nodes": [
+                {
+                  "id": "root",
+                  "partId": "small-torso",
+                  "partVersion": 1,
+                  "parent": null,
+                  "socket": null
+                },
+                {
+                  "id": "root/head",
+                  "partId": "head-base",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "head"
+                },
+                {
+                  "id": "root/head/eye.left",
+                  "partId": "simple-eye",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "eye.left"
+                },
+                {
+                  "id": "root/head/eye.right",
+                  "partId": "simple-eye",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "eye.right"
+                },
+                {
+                  "id": "root/head/mouth",
+                  "partId": "tearing-jaw",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "mouth"
+                },
+                {
+                  "id": "root/limb.1",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.1"
+                },
+                {
+                  "id": "root/limb.3",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.3"
+                },
+                {
+                  "id": "root/limb.5",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.5"
+                },
+                {
+                  "id": "root/limb.7",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.7"
+                }
+              ],
+              "id": "bp0-14fc97f4"
+            },
+            "tick": 8
+          },
+          "bracing": true
+        },
+        {
+          "setup": {
+            "kind": "crushing-jaw",
+            "actor": 109,
+            "target": 97,
+            "body": "bp0-efcad379",
+            "availability": {
+              "enabled": true,
+              "reason": ""
+            },
+            "exertion": 100,
+            "health": 100,
+            "scope": "Controlled complete legal bodies, adult conditions, reserves and initial placement. Real mouse Attack and canonical controller clock/RNG after setup; actual phases paused only for screenshot sampling, then resumed. Damage/response not forced."
+          },
+          "recovery": {
+            "action": {
+              "phase": "recover",
+              "targetId": 97,
+              "startedAt": 0.375,
+              "until": 0.735,
+              "slow": false,
+              "outcome": "miss"
+            },
+            "exertion": 84,
+            "targetHealth": 100,
+            "body": {
+              "schema": "genvo8.bodyplan/0",
+              "registryVersion": 0,
+              "nodes": [
+                {
+                  "id": "root",
+                  "partId": "small-torso",
+                  "partVersion": 1,
+                  "parent": null,
+                  "socket": null
+                },
+                {
+                  "id": "root/head",
+                  "partId": "head-base",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "head"
+                },
+                {
+                  "id": "root/head/eye.left",
+                  "partId": "simple-eye",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "eye.left"
+                },
+                {
+                  "id": "root/head/eye.right",
+                  "partId": "simple-eye",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "eye.right"
+                },
+                {
+                  "id": "root/head/mouth",
+                  "partId": "crushing-jaw",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "mouth"
+                },
+                {
+                  "id": "root/limb.1",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.1"
+                },
+                {
+                  "id": "root/limb.3",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.3"
+                },
+                {
+                  "id": "root/limb.5",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.5"
+                },
+                {
+                  "id": "root/limb.7",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.7"
+                }
+              ],
+              "id": "bp0-efcad379"
+            },
+            "tick": 19
+          },
+          "bracing": true
+        },
+        {
+          "setup": {
+            "kind": "gape-mouth",
+            "actor": 109,
+            "target": 97,
+            "body": "bp0-09a83ede",
+            "availability": {
+              "enabled": true,
+              "reason": ""
+            },
+            "exertion": 100,
+            "health": 100,
+            "scope": "Controlled complete legal bodies, adult conditions, reserves and initial placement. Real mouse Attack and canonical controller clock/RNG after setup; actual phases paused only for screenshot sampling, then resumed. Damage/response not forced."
+          },
+          "recovery": {
+            "action": {
+              "phase": "recover",
+              "targetId": 97,
+              "startedAt": 0.375,
+              "until": 0.735,
+              "slow": false,
+              "outcome": "hit"
+            },
+            "exertion": 84,
+            "targetHealth": 94.5,
+            "body": {
+              "schema": "genvo8.bodyplan/0",
+              "registryVersion": 0,
+              "nodes": [
+                {
+                  "id": "root",
+                  "partId": "small-torso",
+                  "partVersion": 1,
+                  "parent": null,
+                  "socket": null
+                },
+                {
+                  "id": "root/head",
+                  "partId": "head-base",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "head"
+                },
+                {
+                  "id": "root/head/eye.left",
+                  "partId": "simple-eye",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "eye.left"
+                },
+                {
+                  "id": "root/head/eye.right",
+                  "partId": "simple-eye",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "eye.right"
+                },
+                {
+                  "id": "root/head/mouth",
+                  "partId": "gape-mouth",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "mouth"
+                },
+                {
+                  "id": "root/limb.1",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.1"
+                },
+                {
+                  "id": "root/limb.3",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.3"
+                },
+                {
+                  "id": "root/limb.5",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.5"
+                },
+                {
+                  "id": "root/limb.7",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.7"
+                }
+              ],
+              "id": "bp0-09a83ede"
+            },
+            "tick": 29
+          },
+          "bracing": true
+        },
+        {
+          "setup": {
+            "kind": "tusk-jaw",
+            "actor": 109,
+            "target": 97,
+            "body": "bp0-29154911",
+            "availability": {
+              "enabled": true,
+              "reason": ""
+            },
+            "exertion": 100,
+            "health": 100,
+            "scope": "Controlled complete legal bodies, adult conditions, reserves and initial placement. Real mouse Attack and canonical controller clock/RNG after setup; actual phases paused only for screenshot sampling, then resumed. Damage/response not forced."
+          },
+          "recovery": {
+            "action": {
+              "phase": "recover",
+              "targetId": 97,
+              "startedAt": 0.359375,
+              "until": 0.719375,
+              "slow": false,
+              "outcome": "hit"
+            },
+            "exertion": 84,
+            "targetHealth": 92.575,
+            "body": {
+              "schema": "genvo8.bodyplan/0",
+              "registryVersion": 0,
+              "nodes": [
+                {
+                  "id": "root",
+                  "partId": "small-torso",
+                  "partVersion": 1,
+                  "parent": null,
+                  "socket": null
+                },
+                {
+                  "id": "root/head",
+                  "partId": "head-base",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "head"
+                },
+                {
+                  "id": "root/head/eye.left",
+                  "partId": "simple-eye",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "eye.left"
+                },
+                {
+                  "id": "root/head/eye.right",
+                  "partId": "simple-eye",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "eye.right"
+                },
+                {
+                  "id": "root/head/mouth",
+                  "partId": "tusk-jaw",
+                  "partVersion": 1,
+                  "parent": "root/head",
+                  "socket": "mouth"
+                },
+                {
+                  "id": "root/limb.1",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.1"
+                },
+                {
+                  "id": "root/limb.3",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.3"
+                },
+                {
+                  "id": "root/limb.5",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.5"
+                },
+                {
+                  "id": "root/limb.7",
+                  "partId": "walking-leg",
+                  "partVersion": 1,
+                  "parent": "root",
+                  "socket": "limb.7"
+                }
+              ],
+              "id": "bp0-29154911"
+            },
+            "tick": 38
+          },
+          "bracing": true
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

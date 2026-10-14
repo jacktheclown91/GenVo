@@ -1,0 +1,146 @@
+{
+  "schema": "genvo.imagegen-native-preparation/1",
+  "grid": [
+    32,
+    32
+  ],
+  "alphaThreshold": 128,
+  "sample": "nearest",
+  "registeredAttachment": true,
+  "rigidTuskPixelsPreserved": true,
+  "biologicalChanges": false,
+  "items": [
+    {
+      "part": "tearing-jaw",
+      "masterDimensions": [
+        1774,
+        887
+      ],
+      "sourceCropBounds": [
+        [
+          98,
+          225,
+          805,
+          684
+        ],
+        [
+          91,
+          225,
+          796,
+          684
+        ]
+      ],
+      "nativeBounds": [
+        20,
+        14
+      ],
+      "activeRegion": [
+        14,
+        0,
+        32,
+        32
+      ],
+      "masterSha256": "87e0e3c740acd010c3805d511774813216a0cab8e162a8f658e1edc1847d357f",
+      "candidateSha256": "3977e6217c58de36a2b0c7951597764cb5269beb7105633e71fabc99b1d7ce46"
+    },
+    {
+      "part": "crushing-jaw",
+      "masterDimensions": [
+        1855,
+        848
+      ],
+      "sourceCropBounds": [
+        [
+          54,
+          124,
+          883,
+          741
+        ],
+        [
+          54,
+          124,
+          875,
+          741
+        ]
+      ],
+      "nativeBounds": [
+        18,
+        16
+      ],
+      "activeRegion": [
+        14,
+        0,
+        32,
+        32
+      ],
+      "masterSha256": "5652ac53c76308c481a4c327f01a5c873d7231d01098a30b972674be6e30ee40",
+      "candidateSha256": "a10f8006bb4962a39528b22ec7efd5e7ac944ad35a5fc640987ed11a11c01cad"
+    },
+    {
+      "part": "gape-mouth",
+      "masterDimensions": [
+        1774,
+        887
+      ],
+      "sourceCropBounds": [
+        [
+          84,
+          226,
+          806,
+          661
+        ],
+        [
+          81,
+          226,
+          804,
+          661
+        ]
+      ],
+      "nativeBounds": [
+        20,
+        14
+      ],
+      "activeRegion": [
+        14,
+        0,
+        32,
+        32
+      ],
+      "masterSha256": "32d7374a7d7c45b9aacf3442ada760f260630bd7f8667d5ea645bbf24a7ab1ec",
+      "candidateSha256": "7d03f6ff5ebeb27fc71972c95c06e32af485bdd55c73a9db6bfb00eb14a6bbeb"
+    },
+    {
+      "part": "tusk-jaw",
+      "masterDimensions": [
+        1774,
+        887
+      ],
+      "sourceCropBounds": [
+        [
+          81,
+          259,
+          868,
+          710
+        ],
+        [
+          21,
+          259,
+          809,
+          710
+        ]
+      ],
+      "nativeBounds": [
+        22,
+        16
+      ],
+      "activeRegion": [
+        16,
+        14,
+        24,
+        19
+      ],
+      "masterSha256": "2bb810799c452894fdae601214303da185cd375847abc77e5724b9aabcb2c332",
+      "candidateSha256": "fabf986f44d7b7859baae52d0e533f8f39f64a3cc19f0c098d28a4872adcca59"
+    }
+  ]
+}

@@ -114,9 +114,8 @@ function drawGenvoBody(c,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pal
   const K={s,p,behavior:profile.behavior,originX:bx,originY:by,nativePigment:inheritedSkinRamp(p),fx,fy,perp,bx,by,bodyW,bodyH,face,frameInt,authoredParts,authoredState:pose.action||'idle',authoredFacing:pose.dir??a.dir??0,authoredTimeMs:authoredTimeMs||frameInt*125,explicit:asm.explicit,L,partExpression:pose.partExpression};
   if(asm.tail)drawPart(c,asm.tail,K);
 
-  // v1.59.0: legs on the far side of the body (higher on screen) are drawn before the torso, so it
-  // hides their hips; legs on the near side are drawn after it, so they overlap the body as they
-  // should. Each leg part draws itself: thigh, knee, shin and foot, with its own lift and stride.
+  // Ordinary legs join beneath the dorsal body; genuinely raised strikes can cross it.
+  // Each mounted part supplies its tissue, while canonical locomotion owns its contacts.
   const {back:farLegs,front:nearLegs}=anatomicalLimbLayers(legs,by);
   const drawLeg=leg=>{
     let root={x:leg.root.x+bx,y:leg.root.y+by},knee={x:leg.knee.x+bx*.48,y:leg.knee.y+by*.48},foot=leg.foot;
@@ -203,6 +202,8 @@ function drawGenvoBody(c,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pal
   const mouthPart=asm.mouth||(!asm.explicit?'grazing-mouth':null);
   const mouthX=faceMounts.mouth?.x??bx+fx*face.mouthForward,mouthY=faceMounts.mouth?.y??by+fy*face.mouthForward;
   let mouthFrame=face.mouthOpen>0?1:0;
+  // A funded meal owns opening/closure even when its action is 'crack', not 'eat'.
+  if(Number.isFinite(profile.behavior.feedingMouthOpen)){mouthFrame=profile.behavior.feedingMouthOpen>0?1:0;face.mouthOpen=mouthFrame;}
   if(pose.encounter?.move==='call'&&partDef(mouthPart)?.actionCapabilities.includes('call')){mouthFrame=(profile.behavior.mouthPulse||0)>.45?1:0;face.mouthOpen=mouthFrame;}
   if(Number.isFinite(profile.behavior.attackMouthOpen)){mouthFrame=profile.behavior.attackMouthOpen>0?1:0;face.mouthOpen=mouthFrame;}
   const nativeMouthArt=mouthPart&&(authoredParts?.[mouthPart]||artForPart(mouthPart));

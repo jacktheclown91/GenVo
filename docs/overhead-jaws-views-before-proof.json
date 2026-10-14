@@ -1,0 +1,1277 @@
+{
+  "status": "PASS",
+  "label": "before",
+  "cases": [
+    {
+      "setup": {
+        "body": "tearing-jaw",
+        "plan": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "small-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/head",
+              "partId": "head-base",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "head"
+            },
+            {
+              "id": "root/head/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root/head",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/head/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root/head",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/head/mouth",
+              "partId": "tearing-jaw",
+              "partVersion": 1,
+              "parent": "root/head",
+              "socket": "mouth"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            }
+          ],
+          "id": "bp0-14fc97f4"
+        },
+        "genes": {
+          "body": 0.999513484351337,
+          "motion": 1.095105071272701,
+          "metabolism": 1.0874706097412856,
+          "digestion": 0.9939464185852558,
+          "senses": 0.9996397694107145,
+          "climate": 0.9310915993060918,
+          "immunity": 0.9994819140993059,
+          "temperament": 0.9071707479190082
+        },
+        "x": 5.5,
+        "y": 54.5,
+        "tick": 65,
+        "scope": "Controlled legal headed body with the selected jaw on the same actual player; no ecological outcome forced"
+      },
+      "facings": [
+        {
+          "dir": 0,
+          "rendered": {
+            "target": 0,
+            "actual": 0
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-14fc97f4",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 1,
+          "rendered": {
+            "target": 1,
+            "actual": 1
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-14fc97f4",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 2,
+          "rendered": {
+            "target": 2,
+            "actual": 2
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-14fc97f4",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 3,
+          "rendered": {
+            "target": 3,
+            "actual": 3
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-14fc97f4",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 4,
+          "rendered": {
+            "target": 4,
+            "actual": 4
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-14fc97f4",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 5,
+          "rendered": {
+            "target": 5,
+            "actual": 5
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-14fc97f4",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 6,
+          "rendered": {
+            "target": 6,
+            "actual": 6
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-14fc97f4",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 7,
+          "rendered": {
+            "target": 7,
+            "actual": 7
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-14fc97f4",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        }
+      ]
+    },
+    {
+      "setup": {
+        "body": "crushing-jaw",
+        "plan": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "small-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/head",
+              "partId": "head-base",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "head"
+            },
+            {
+              "id": "root/head/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root/head",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/head/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root/head",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/head/mouth",
+              "partId": "crushing-jaw",
+              "partVersion": 1,
+              "parent": "root/head",
+              "socket": "mouth"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            }
+          ],
+          "id": "bp0-efcad379"
+        },
+        "genes": {
+          "body": 0.999513484351337,
+          "motion": 1.095105071272701,
+          "metabolism": 1.0874706097412856,
+          "digestion": 0.9939464185852558,
+          "senses": 0.9996397694107145,
+          "climate": 0.9310915993060918,
+          "immunity": 0.9994819140993059,
+          "temperament": 0.9071707479190082
+        },
+        "x": 5.5,
+        "y": 54.5,
+        "tick": 65,
+        "scope": "Controlled legal headed body with the selected jaw on the same actual player; no ecological outcome forced"
+      },
+      "facings": [
+        {
+          "dir": 0,
+          "rendered": {
+            "target": 0,
+            "actual": 0
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-efcad379",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 1,
+          "rendered": {
+            "target": 1,
+            "actual": 1
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-efcad379",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 2,
+          "rendered": {
+            "target": 2,
+            "actual": 2
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-efcad379",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 3,
+          "rendered": {
+            "target": 3,
+            "actual": 3
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-efcad379",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 4,
+          "rendered": {
+            "target": 4,
+            "actual": 4
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-efcad379",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 5,
+          "rendered": {
+            "target": 5,
+            "actual": 5
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-efcad379",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 6,
+          "rendered": {
+            "target": 6,
+            "actual": 6
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-efcad379",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 7,
+          "rendered": {
+            "target": 7,
+            "actual": 7
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-efcad379",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        }
+      ]
+    },
+    {
+      "setup": {
+        "body": "gape-mouth",
+        "plan": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "small-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/head",
+              "partId": "head-base",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "head"
+            },
+            {
+              "id": "root/head/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root/head",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/head/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root/head",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/head/mouth",
+              "partId": "gape-mouth",
+              "partVersion": 1,
+              "parent": "root/head",
+              "socket": "mouth"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            }
+          ],
+          "id": "bp0-09a83ede"
+        },
+        "genes": {
+          "body": 0.999513484351337,
+          "motion": 1.095105071272701,
+          "metabolism": 1.0874706097412856,
+          "digestion": 0.9939464185852558,
+          "senses": 0.9996397694107145,
+          "climate": 0.9310915993060918,
+          "immunity": 0.9994819140993059,
+          "temperament": 0.9071707479190082
+        },
+        "x": 5.5,
+        "y": 54.5,
+        "tick": 65,
+        "scope": "Controlled legal headed body with the selected jaw on the same actual player; no ecological outcome forced"
+      },
+      "facings": [
+        {
+          "dir": 0,
+          "rendered": {
+            "target": 0,
+            "actual": 0
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-09a83ede",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 1,
+          "rendered": {
+            "target": 1,
+            "actual": 1
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-09a83ede",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 2,
+          "rendered": {
+            "target": 2,
+            "actual": 2
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-09a83ede",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 3,
+          "rendered": {
+            "target": 3,
+            "actual": 3
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-09a83ede",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 4,
+          "rendered": {
+            "target": 4,
+            "actual": 4
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-09a83ede",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 5,
+          "rendered": {
+            "target": 5,
+            "actual": 5
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-09a83ede",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 6,
+          "rendered": {
+            "target": 6,
+            "actual": 6
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-09a83ede",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 7,
+          "rendered": {
+            "target": 7,
+            "actual": 7
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-09a83ede",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        }
+      ]
+    },
+    {
+      "setup": {
+        "body": "tusk-jaw",
+        "plan": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "small-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/head",
+              "partId": "head-base",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "head"
+            },
+            {
+              "id": "root/head/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root/head",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/head/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root/head",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/head/mouth",
+              "partId": "tusk-jaw",
+              "partVersion": 1,
+              "parent": "root/head",
+              "socket": "mouth"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            }
+          ],
+          "id": "bp0-29154911"
+        },
+        "genes": {
+          "body": 0.999513484351337,
+          "motion": 1.095105071272701,
+          "metabolism": 1.0874706097412856,
+          "digestion": 0.9939464185852558,
+          "senses": 0.9996397694107145,
+          "climate": 0.9310915993060918,
+          "immunity": 0.9994819140993059,
+          "temperament": 0.9071707479190082
+        },
+        "x": 5.5,
+        "y": 54.5,
+        "tick": 65,
+        "scope": "Controlled legal headed body with the selected jaw on the same actual player; no ecological outcome forced"
+      },
+      "facings": [
+        {
+          "dir": 0,
+          "rendered": {
+            "target": 0,
+            "actual": 0
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-29154911",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 1,
+          "rendered": {
+            "target": 1,
+            "actual": 1
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-29154911",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 2,
+          "rendered": {
+            "target": 2,
+            "actual": 2
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-29154911",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 3,
+          "rendered": {
+            "target": 3,
+            "actual": 3
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-29154911",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 4,
+          "rendered": {
+            "target": 4,
+            "actual": 4
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-29154911",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 5,
+          "rendered": {
+            "target": 5,
+            "actual": 5
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-29154911",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 6,
+          "rendered": {
+            "target": 6,
+            "actual": 6
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-29154911",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        },
+        {
+          "dir": 7,
+          "rendered": {
+            "target": 7,
+            "actual": 7
+          },
+          "sameSim": true,
+          "sameActor": true,
+          "body": "bp0-29154911",
+          "genes": {
+            "body": 0.999513484351337,
+            "motion": 1.095105071272701,
+            "metabolism": 1.0874706097412856,
+            "digestion": 0.9939464185852558,
+            "senses": 0.9996397694107145,
+            "climate": 0.9310915993060918,
+            "immunity": 0.9994819140993059,
+            "temperament": 0.9071707479190082
+          },
+          "x": 5.5,
+          "y": 54.5,
+          "tick": 65,
+          "camera": {
+            "x": 5.5,
+            "y": 54.5
+          },
+          "zoom": 4
+        }
+      ]
+    }
+  ],
+  "walkStart": {
+    "x": 5.5,
+    "y": 54.5
+  },
+  "walkEnd": {
+    "x": 8.332728821081215,
+    "y": 54.5,
+    "sameActor": true
+  },
+  "errors": [],
+  "limits": "Heading/body poses are controlled fixture evidence. Camera position/zoom and biological identity remain fixed across eight views. Rendered heading and actual animal identity are independently checked. The final walk uses ordinary gameplay; not human usability or creator visual approval."
+}

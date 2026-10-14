@@ -52,6 +52,7 @@ export async function compileIndexedPart(spec){
   });
   if(spec.rootJoint!==undefined&&(!Number.isFinite(spec.rootJoint.minDegrees)||!Number.isFinite(spec.rootJoint.maxDegrees)||spec.rootJoint.minDegrees< -180||spec.rootJoint.maxDegrees>180||spec.rootJoint.minDegrees>0||spec.rootJoint.maxDegrees<0))fail('invalid root joint');
   if(spec.displayScale!==undefined&&(!Number.isFinite(spec.displayScale)||spec.displayScale<.0625||spec.displayScale>4))fail('invalid display scale');
+  if(spec.expressionScale!==undefined&&!['fixed','pulse'].includes(spec.expressionScale))fail('invalid expression scale');
   // Artwork owns only presentation geometry: torso raster bounds or separate upper/lower limb
   // sections. Biology and limb pose continue to belong to the canonical assembly/animation.
   const rig=spec.rig;
@@ -87,7 +88,7 @@ export async function compileIndexedPart(spec){
     return Object.freeze({key,state:frame.state,facing:frame.facing,index:frame.index,durationMs:frame.durationMs,...(frame.jointDegrees===undefined?{}:{jointDegrees:frame.jointDegrees}),indices:Object.freeze(indices),alpha:Object.freeze(alpha)});
   });
   // Hash identity includes all source pixels and the metadata controlling frames/pivot.
-  const canonical={partId:spec.partId,version,width,height,...(spec.displayScale===undefined?{}:{displayScale:spec.displayScale}),...(spec.rootJoint===undefined?{}:{rootJoint:Object.freeze({...spec.rootJoint})}),...(rig===undefined?{}:{rig}),rootAnchorPx:[...rootAnchorPx],regions:compiledRegions,frames:compiledFrames};
+  const canonical={partId:spec.partId,version,width,height,...(spec.displayScale===undefined?{}:{displayScale:spec.displayScale}),...(spec.expressionScale===undefined?{}:{expressionScale:spec.expressionScale}),...(spec.rootJoint===undefined?{}:{rootJoint:Object.freeze({...spec.rootJoint})}),...(rig===undefined?{}:{rig}),rootAnchorPx:[...rootAnchorPx],regions:compiledRegions,frames:compiledFrames};
   const bytes=new TextEncoder().encode(JSON.stringify(canonical));
   const digest=globalThis.crypto?.subtle?await globalThis.crypto.subtle.digest('SHA-256',bytes):sha256Bytes(bytes);
   const checksum=Array.from(new Uint8Array(digest),b=>b.toString(16).padStart(2,'0')).join('');

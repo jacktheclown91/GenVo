@@ -1,0 +1,92 @@
+[
+  {
+    "test": "indexed-part-art",
+    "exitCode": 0,
+    "output": "indexed native art identity, all-frame alpha/detail, protected pigment, timing/anchor invariance and cache keys: PASS"
+  },
+  {
+    "test": "indexed-part-renderer",
+    "exitCode": 0,
+    "output": "indexed renderer timed boundaries, missing facing, pivot, joint clamp and allocation-free drawing PASS"
+  },
+  {
+    "test": "source-rgba-part-art",
+    "exitCode": 0,
+    "output": "source RGBA ingestion: sixteen-frame exact round trip, transparent detail, explicit shared pigments, protected substitution and fail-closed mapping PASS"
+  },
+  {
+    "test": "native-sha256-fallback",
+    "exitCode": 0,
+    "output": "native-sha256-fallback: WebCrypto-compatible SHA256 digest for 14 vectors PASS"
+  },
+  {
+    "test": "native-lab-hidden-pixels",
+    "exitCode": 0,
+    "output": "native-lab-hidden-pixels: edit, erased pixel, and transparent-source RGB recovery PASS"
+  },
+  {
+    "test": "native-jaw-attachment",
+    "exitCode": 0,
+    "output": "96 mounted jaw facing/pulse cases: fixed root/scale, distinct working tissue, rigid tusks, validated checksum and legacy defaults PASS"
+  },
+  {
+    "test": "funded-jaw-expression",
+    "exitCode": 0,
+    "output": "Funded crack processing cycles native opening/closure, stable reach/settle, interruption and attack priority PASS"
+  },
+  {
+    "test": "native-face-expression-v172",
+    "exitCode": 0,
+    "output": "native-face-expression-v172: 16 anatomy-specific faces, 128 visible expression transitions, fixed-index action selection, protected detail and distinct silhouettes PASS"
+  },
+  {
+    "test": "native-contact-expression-v174",
+    "exitCode": 0,
+    "output": "Native open/blink states and independent planted/lifted limb paint PASS"
+  },
+  {
+    "test": "native-specialty-wave",
+    "exitCode": 0,
+    "output": "native-specialty-wave: 17 complete parts, 272 animation/directional frames, editable pigmentation/protected accents PASS"
+  },
+  {
+    "test": "native-part-catalog",
+    "exitCode": 0,
+    "output": "native-part-catalog: 79 indexed assets, 1264 exact RGBA frames, eight facings, 0 missing native art packs PASS"
+  },
+  {
+    "test": "anatomical-strike-performance",
+    "exitCode": 0,
+    "output": "Capability-selected bite/peck/mounted strike, 16 directional/moving limb ownership cases, guard contacts, truthful hit/miss marks and immutable bodies PASS\nWhole native jaw dispatch: anticipation opens, bite contact closes, actual call opens and unfunded pulse stays closed PASS"
+  },
+  {
+    "test": "strike-controller-parity",
+    "exitCode": 0,
+    "output": "24 paired real-controller seeded anatomy trials: exact result, timing, damage, breath, energy, RNG/genetics parity; recovery target saves PASS"
+  },
+  {
+    "test": "feeding-performance",
+    "exitCode": 0,
+    "output": "Funded receipt stages, real source attention, anatomy modes, movement/stance interruption, pause, edible tissue requirement and read-only actor/RNG PASS"
+  },
+  {
+    "test": "head-attention",
+    "exitCode": 0,
+    "output": "48 mounted/implicit head-facing-turn cases; authoritative target selection, bounded easing, pause/neutral return, NPC quantization and immutable body records PASS"
+  },
+  {
+    "test": "overhead-projection",
+    "exitCode": 0,
+    "output": "8 world-plane facing/reflection/head/socket cases; height-independent planar mounts and action-owned occlusion PASS"
+  },
+  {
+    "test": "creature-lab-assembly",
+    "exitCode": 0,
+    "output": "lab assembly uses canonical socket rules, immutable transactions and native body-plan round trip PASS"
+  },
+  {
+    "test": "save-persistence",
+    "exitCode": 0,
+    "output": "save persistence roundtrip: PASS"
+  }
+]

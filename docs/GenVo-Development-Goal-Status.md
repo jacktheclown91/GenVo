@@ -1,6 +1,10 @@
 # Active GenVo development goal: evidence audit
 
-## Latest visual steering — October 14 near-vertical overhead correction
+## Latest implementation — October 14 dorsal jaws and funded feeding
+
+Four existing mouths now have native overhead paintings with registered attachments and fixed tusks. Funded cracking now actually cycles native open/closed frames, closing through reach and settlement while preserving combat priority. Actual 800×600 mouse attacks, feeding, expected carnivore rejection, eight rendered facings and 18 focused checks pass. The separate 30-second natural run saw no revised-jaw animal near the player; it is not natural encounter acceptance. See [the jaw review](GenVo-Overhead-Jaws-Review.md). The whole goal remains active.
+
+## Previous near-vertical overhead correction
 
 The creator approved near-vertical overhead, with eight world-plane facings and one stationary camera. Planar mounts, reflection, occlusion, contact shadows and native walking-leg/mouth/eye/fin art are integrated. Actual rendered heading and player identity are now asserted in the 800×600 harness, correcting an earlier JSON-transport evidence defect. Twenty-seven focused checks pass; the historical fixed-bound fallback assembly test still fails identically on the baseline. See [the current overhead review](GenVo-Overhead-Perspective-Review.md). Older profile mouths, raised structures and vegetation remain unfinished. Full art, human usability, ecology and biological calibration goals remain open.
 
