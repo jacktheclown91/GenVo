@@ -1,0 +1,2055 @@
+{
+  "status": "PASS",
+  "scope": "Exact rig contact-coordinate measurements, all eight mounted limb types, eight facings and four limb scales; no physical movement rules changed. Rasterized world video remains separate evidence.",
+  "cases": 256,
+  "rows": [
+    {
+      "leg": "walking-leg",
+      "limbScale": 0.45,
+      "dir": 0,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.0066613455255496905,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 0.45,
+      "dir": 1,
+      "maxSupportStepDrift": 1.9860273225978185e-15,
+      "priorMaxSupportStepDrift": 0.006661345525550229,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 0.45,
+      "dir": 2,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006661345525550156,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 0.45,
+      "dir": 3,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.006661345525550229,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 0.45,
+      "dir": 4,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.0066613455255496905,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 0.45,
+      "dir": 5,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.006661345525550019,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 0.45,
+      "dir": 6,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006661345525550156,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 0.45,
+      "dir": 7,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.0066613455255502005,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 0.8,
+      "dir": 0,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.00654034088216541,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 0.8,
+      "dir": 1,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.006540340882166426,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 0.8,
+      "dir": 2,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.0065403408821657835,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 0.8,
+      "dir": 3,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.006540340882166663,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 0.8,
+      "dir": 4,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006540340882165509,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 0.8,
+      "dir": 5,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.006540340882166426,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 0.8,
+      "dir": 6,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.0065403408821657835,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 0.8,
+      "dir": 7,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.006540340882166663,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 1,
+      "dir": 0,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.0077061018052770125,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 1,
+      "dir": 1,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.007706101805278045,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 1,
+      "dir": 2,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.0002786225401134601,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 1,
+      "dir": 3,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.007706101805278045,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 1,
+      "dir": 4,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.0077061018052770125,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 1,
+      "dir": 5,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.007706101805278045,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 1,
+      "dir": 6,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.0002786225401134601,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 1,
+      "dir": 7,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.007706101805278045,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 1.4,
+      "dir": 0,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00602862254011427,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 1.4,
+      "dir": 1,
+      "maxSupportStepDrift": 7.32410687763558e-15,
+      "priorMaxSupportStepDrift": 0.006028622540114685,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 1.4,
+      "dir": 2,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00602862254011427,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 1.4,
+      "dir": 3,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.006028622540115312,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 1.4,
+      "dir": 4,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00602862254011427,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 1.4,
+      "dir": 5,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.006028622540114685,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 1.4,
+      "dir": 6,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00602862254011427,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "walking-leg",
+      "limbScale": 1.4,
+      "dir": 7,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.006028622540115312,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 0.45,
+      "dir": 0,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.011609928443847117,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 0.45,
+      "dir": 1,
+      "maxSupportStepDrift": 1.9860273225978185e-15,
+      "priorMaxSupportStepDrift": 0.011609928443847584,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 0.45,
+      "dir": 2,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.011609928443848005,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 0.45,
+      "dir": 3,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.011609928443847584,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 0.45,
+      "dir": 4,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.011609928443847117,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 0.45,
+      "dir": 5,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.011609928443847584,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 0.45,
+      "dir": 6,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.011609928443848005,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 0.45,
+      "dir": 7,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.011609928443847584,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 0.8,
+      "dir": 0,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.009290547665025814,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 0.8,
+      "dir": 1,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.009290547665026598,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 0.8,
+      "dir": 2,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.009290547665025567,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 0.8,
+      "dir": 3,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.009290547665026084,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 0.8,
+      "dir": 4,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.009290547665025814,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 0.8,
+      "dir": 5,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.009290547665026514,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 0.8,
+      "dir": 6,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.009290547665025567,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 0.8,
+      "dir": 7,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.009290547665026084,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 1,
+      "dir": 0,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.005359928443848361,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 1,
+      "dir": 1,
+      "maxSupportStepDrift": 4.440892098500626e-15,
+      "priorMaxSupportStepDrift": 0.005359928443849167,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 1,
+      "dir": 2,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.005359928443848361,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 1,
+      "dir": 3,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.005359928443849167,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 1,
+      "dir": 4,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.005359928443848361,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 1,
+      "dir": 5,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.005359928443849167,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 1,
+      "dir": 6,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.005359928443848361,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 1,
+      "dir": 7,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.005359928443849167,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 1.4,
+      "dir": 0,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00039007155615777833,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 1.4,
+      "dir": 1,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.0003900715561591241,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 1.4,
+      "dir": 2,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00039007155615777833,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 1.4,
+      "dir": 3,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.0003900715561591241,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 1.4,
+      "dir": 4,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00039007155615777833,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 1.4,
+      "dir": 5,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.0003900715561591241,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 1.4,
+      "dir": 6,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00039007155615777833,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "runner-leg",
+      "limbScale": 1.4,
+      "dir": 7,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.0003900715561591241,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 0.45,
+      "dir": 0,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.004440871915493205,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 0.45,
+      "dir": 1,
+      "maxSupportStepDrift": 1.9860273225978185e-15,
+      "priorMaxSupportStepDrift": 0.004440871915494279,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 0.45,
+      "dir": 2,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.004440871915493842,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 0.45,
+      "dir": 3,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.004440871915494279,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 0.45,
+      "dir": 4,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.004440871915493205,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 0.45,
+      "dir": 5,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.004440871915494279,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 0.45,
+      "dir": 6,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.004440871915493842,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 0.45,
+      "dir": 7,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.004440871915494279,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 0.8,
+      "dir": 0,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006470318550004624,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 0.8,
+      "dir": 1,
+      "maxSupportStepDrift": 3.794299872214038e-15,
+      "priorMaxSupportStepDrift": 0.00647031855000489,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 0.8,
+      "dir": 2,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006470318550004624,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 0.8,
+      "dir": 3,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.006470318550006461,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 0.8,
+      "dir": 4,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006470318550004624,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 0.8,
+      "dir": 5,
+      "maxSupportStepDrift": 3.794299872214038e-15,
+      "priorMaxSupportStepDrift": 0.006470318550004812,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 0.8,
+      "dir": 6,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006470318550004624,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 0.8,
+      "dir": 7,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.006470318550006461,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 1,
+      "dir": 0,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00887112765687083,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 1,
+      "dir": 1,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.008871127656870436,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 1,
+      "dir": 2,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.008871127656870415,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 1,
+      "dir": 3,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.008871127656871022,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 1,
+      "dir": 4,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.008871127656870415,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 1,
+      "dir": 5,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.008871127656870436,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 1,
+      "dir": 6,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.008871127656870415,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 1,
+      "dir": 7,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.008871127656871022,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 1.4,
+      "dir": 0,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.010962354651074868,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 1.4,
+      "dir": 1,
+      "maxSupportStepDrift": 7.32410687763558e-15,
+      "priorMaxSupportStepDrift": 0.010962354651076584,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 1.4,
+      "dir": 2,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.010962354651077533,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 1.4,
+      "dir": 3,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.010962354651077212,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 1.4,
+      "dir": 4,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.010962354651077533,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 1.4,
+      "dir": 5,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.010962354651077212,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 1.4,
+      "dir": 6,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.010962354651077533,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "sturdy-leg",
+      "limbScale": 1.4,
+      "dir": 7,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.010962354651076584,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 0.45,
+      "dir": 0,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.007602075985374566,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 0.45,
+      "dir": 1,
+      "maxSupportStepDrift": 1.9860273225978185e-15,
+      "priorMaxSupportStepDrift": 0.007602075985374661,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 0.45,
+      "dir": 2,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.0076020759853746515,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 0.45,
+      "dir": 3,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.007602075985374345,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 0.45,
+      "dir": 4,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.007602075985374566,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 0.45,
+      "dir": 5,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.007602075985374661,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 0.45,
+      "dir": 6,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.0076020759853746515,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 0.45,
+      "dir": 7,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.007602075985374345,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 0.8,
+      "dir": 0,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.007029289430374588,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 0.8,
+      "dir": 1,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.007029289430375654,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 0.8,
+      "dir": 2,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.00702928943037539,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 0.8,
+      "dir": 3,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.0070292894303754265,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 0.8,
+      "dir": 4,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.007029289430374588,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 0.8,
+      "dir": 5,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.007029289430375654,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 0.8,
+      "dir": 6,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.00702928943037539,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 0.8,
+      "dir": 7,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.007029289430375507,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 1,
+      "dir": 0,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.007761481056614535,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 1,
+      "dir": 1,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.0077614810566151325,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 1,
+      "dir": 2,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.00113101520588188,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 1,
+      "dir": 3,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.0077614810566151325,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 1,
+      "dir": 4,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.007761481056614535,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 1,
+      "dir": 5,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.0077614810566151325,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 1,
+      "dir": 6,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.00113101520588188,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 1,
+      "dir": 7,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.007761481056615431,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 1.4,
+      "dir": 0,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.004618984794125147,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 1.4,
+      "dir": 1,
+      "maxSupportStepDrift": 7.32410687763558e-15,
+      "priorMaxSupportStepDrift": 0.004618984794126108,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 1.4,
+      "dir": 2,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.004618984794125147,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 1.4,
+      "dir": 3,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.004618984794126736,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 1.4,
+      "dir": 4,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.004618984794124259,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 1.4,
+      "dir": 5,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.004618984794126736,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 1.4,
+      "dir": 6,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.004618984794125147,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "spring-leg",
+      "limbScale": 1.4,
+      "dir": 7,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.004618984794126108,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 0.45,
+      "dir": 0,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.0066613455255496905,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 0.45,
+      "dir": 1,
+      "maxSupportStepDrift": 1.9860273225978185e-15,
+      "priorMaxSupportStepDrift": 0.006661345525550229,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 0.45,
+      "dir": 2,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006661345525550156,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 0.45,
+      "dir": 3,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.006661345525550229,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 0.45,
+      "dir": 4,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.0066613455255496905,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 0.45,
+      "dir": 5,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.006661345525550019,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 0.45,
+      "dir": 6,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006661345525550156,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 0.45,
+      "dir": 7,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.0066613455255502005,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 0.8,
+      "dir": 0,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.00654034088216541,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 0.8,
+      "dir": 1,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.006540340882166426,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 0.8,
+      "dir": 2,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.0065403408821657835,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 0.8,
+      "dir": 3,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.006540340882166663,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 0.8,
+      "dir": 4,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006540340882165509,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 0.8,
+      "dir": 5,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.006540340882166426,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 0.8,
+      "dir": 6,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.0065403408821657835,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 0.8,
+      "dir": 7,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.006540340882166663,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 1,
+      "dir": 0,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.0077061018052770125,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 1,
+      "dir": 1,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.007706101805278045,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 1,
+      "dir": 2,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.0002786225401134601,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 1,
+      "dir": 3,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.007706101805278045,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 1,
+      "dir": 4,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.0077061018052770125,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 1,
+      "dir": 5,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.007706101805278045,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 1,
+      "dir": 6,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.0002786225401134601,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 1,
+      "dir": 7,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.007706101805278045,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 1.4,
+      "dir": 0,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00602862254011427,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 1.4,
+      "dir": 1,
+      "maxSupportStepDrift": 7.32410687763558e-15,
+      "priorMaxSupportStepDrift": 0.006028622540114685,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 1.4,
+      "dir": 2,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00602862254011427,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 1.4,
+      "dir": 3,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.006028622540115312,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 1.4,
+      "dir": 4,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00602862254011427,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 1.4,
+      "dir": 5,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.006028622540114685,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 1.4,
+      "dir": 6,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00602862254011427,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "webbed-leg",
+      "limbScale": 1.4,
+      "dir": 7,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.006028622540115312,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 0.45,
+      "dir": 0,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006223096695255881,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 0.45,
+      "dir": 1,
+      "maxSupportStepDrift": 1.9860273225978185e-15,
+      "priorMaxSupportStepDrift": 0.006223096695256374,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 0.45,
+      "dir": 2,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006223096695255778,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 0.45,
+      "dir": 3,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.006223096695256283,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 0.45,
+      "dir": 4,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006223096695255881,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 0.45,
+      "dir": 5,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.006223096695256374,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 0.45,
+      "dir": 6,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006223096695255778,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 0.45,
+      "dir": 7,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.006223096695256185,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 0.8,
+      "dir": 0,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.00636561537798715,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 0.8,
+      "dir": 1,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.006365615377988065,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 0.8,
+      "dir": 2,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006365615377986877,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 0.8,
+      "dir": 3,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.006365615377987285,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 0.8,
+      "dir": 4,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.00636561537798715,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 0.8,
+      "dir": 5,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.006365615377988065,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 0.8,
+      "dir": 6,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006365615377986877,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 0.8,
+      "dir": 7,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.006365615377987294,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 1,
+      "dir": 0,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.007747137488126068,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 1,
+      "dir": 1,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.007747137488126726,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 1,
+      "dir": 2,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.007747137488124962,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 1,
+      "dir": 3,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.007747137488126877,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 1,
+      "dir": 4,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.007747137488125375,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 1,
+      "dir": 5,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.007747137488126726,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 1,
+      "dir": 6,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.007747137488124962,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 1,
+      "dir": 7,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.007747137488126877,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 1.4,
+      "dir": 0,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.0067334414131083875,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 1.4,
+      "dir": 1,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.006733441413108972,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 1.4,
+      "dir": 2,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.0067334414131083875,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 1.4,
+      "dir": 3,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.006733441413108972,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 1.4,
+      "dir": 4,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.006733441413109276,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 1.4,
+      "dir": 5,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.006733441413108972,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 1.4,
+      "dir": 6,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.0067334414131083875,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "padded-leg",
+      "limbScale": 1.4,
+      "dir": 7,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.006733441413108972,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 0.45,
+      "dir": 0,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.00510263270341632,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 0.45,
+      "dir": 1,
+      "maxSupportStepDrift": 1.9860273225978185e-15,
+      "priorMaxSupportStepDrift": 0.005102632703417254,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 0.45,
+      "dir": 2,
+      "maxSupportStepDrift": 1.3322676295501878e-15,
+      "priorMaxSupportStepDrift": 0.00510263270341632,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 0.45,
+      "dir": 3,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.005102632703417286,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 0.45,
+      "dir": 4,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.00510263270341632,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 0.45,
+      "dir": 5,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.005102632703416936,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 0.45,
+      "dir": 6,
+      "maxSupportStepDrift": 1.3322676295501878e-15,
+      "priorMaxSupportStepDrift": 0.00510263270341632,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 0.45,
+      "dir": 7,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.005102632703417286,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 0.8,
+      "dir": 0,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006164881444222502,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 0.8,
+      "dir": 1,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.00616488144422315,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 0.8,
+      "dir": 2,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006164881444222241,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 0.8,
+      "dir": 3,
+      "maxSupportStepDrift": 3.202372833989377e-15,
+      "priorMaxSupportStepDrift": 0.00616488144422315,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 0.8,
+      "dir": 4,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006164881444222004,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 0.8,
+      "dir": 5,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.00616488144422315,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 0.8,
+      "dir": 6,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006164881444222241,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 0.8,
+      "dir": 7,
+      "maxSupportStepDrift": 3.202372833989377e-15,
+      "priorMaxSupportStepDrift": 0.006164881444223233,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 1,
+      "dir": 0,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.008134509522031525,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 1,
+      "dir": 1,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.008134509522032046,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 1,
+      "dir": 2,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.008134509522030969,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 1,
+      "dir": 3,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.008134509522033814,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 1,
+      "dir": 4,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.008134509522031525,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 1,
+      "dir": 5,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.008134509522032141,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 1,
+      "dir": 6,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.008134509522030969,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 1,
+      "dir": 7,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.008134509522033814,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 1.4,
+      "dir": 0,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00884789803209074,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 1.4,
+      "dir": 1,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.008847898032093094,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 1.4,
+      "dir": 2,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00884789803209074,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 1.4,
+      "dir": 3,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.008847898032093094,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 1.4,
+      "dir": 4,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00884789803209074,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 1.4,
+      "dir": 5,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.008847898032093094,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 1.4,
+      "dir": 6,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00884789803209074,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "digging-forelimb",
+      "limbScale": 1.4,
+      "dir": 7,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.008847898032093094,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 0.45,
+      "dir": 0,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.005812798346489943,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 0.45,
+      "dir": 1,
+      "maxSupportStepDrift": 1.9860273225978185e-15,
+      "priorMaxSupportStepDrift": 0.005812798346490134,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 0.45,
+      "dir": 2,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.005812798346489943,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 0.45,
+      "dir": 3,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.005812798346490171,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 0.45,
+      "dir": 4,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.005812798346489943,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 0.45,
+      "dir": 5,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.005812798346490134,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 0.45,
+      "dir": 6,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.005812798346489943,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 0.45,
+      "dir": 7,
+      "maxSupportStepDrift": 2.220446049250313e-15,
+      "priorMaxSupportStepDrift": 0.005812798346489992,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 0.8,
+      "dir": 0,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006242943480179043,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 0.8,
+      "dir": 1,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.006242943480179729,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 0.8,
+      "dir": 2,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006242943480179043,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 0.8,
+      "dir": 3,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.006242943480179729,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 0.8,
+      "dir": 4,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006242943480178868,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 0.8,
+      "dir": 5,
+      "maxSupportStepDrift": 3.66205343881779e-15,
+      "priorMaxSupportStepDrift": 0.006242943480179729,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 0.8,
+      "dir": 6,
+      "maxSupportStepDrift": 1.7763568394002505e-15,
+      "priorMaxSupportStepDrift": 0.006242943480179043,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 0.8,
+      "dir": 7,
+      "maxSupportStepDrift": 2.5121479338940403e-15,
+      "priorMaxSupportStepDrift": 0.006242943480179729,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 1,
+      "dir": 0,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.00783329798726174,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 1,
+      "dir": 1,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.007833297987262683,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 1,
+      "dir": 2,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.0016882602861016949,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 1,
+      "dir": 3,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.007833297987262698,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 1,
+      "dir": 4,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.007833297987262346,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 1,
+      "dir": 5,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.007833297987262683,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 1,
+      "dir": 6,
+      "maxSupportStepDrift": 2.6645352591003757e-15,
+      "priorMaxSupportStepDrift": 0.0016882602861016949,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 1,
+      "dir": 7,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.007833297987262698,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 1.4,
+      "dir": 0,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.007438260286102505,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 1.4,
+      "dir": 1,
+      "maxSupportStepDrift": 7.32410687763558e-15,
+      "priorMaxSupportStepDrift": 0.007438260286104516,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 1.4,
+      "dir": 2,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.007438260286102505,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 1.4,
+      "dir": 3,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.0074382602861038875,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 1.4,
+      "dir": 4,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.007438260286102505,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 1.4,
+      "dir": 5,
+      "maxSupportStepDrift": 3.972054645195637e-15,
+      "priorMaxSupportStepDrift": 0.0074382602861038875,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 1.4,
+      "dir": 6,
+      "maxSupportStepDrift": 3.552713678800501e-15,
+      "priorMaxSupportStepDrift": 0.007438260286102505,
+      "supportSamples": 1589
+    },
+    {
+      "leg": "grasper",
+      "limbScale": 1.4,
+      "dir": 7,
+      "maxSupportStepDrift": 5.0242958677880805e-15,
+      "priorMaxSupportStepDrift": 0.007438260286104516,
+      "supportSamples": 1589
+    }
+  ]
+}

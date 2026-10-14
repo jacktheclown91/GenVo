@@ -44,3 +44,9 @@ reports/*
 !/docs/workshop-runtime.webm
 
 **/archived-source-packages/
+
+# Grounded locomotion comparison fixtures and final native recordings
+!reports/locomotion-before/
+!reports/locomotion-before/**
+!/docs/locomotion-before-runtime.webm
+!/docs/locomotion-after-runtime.webm

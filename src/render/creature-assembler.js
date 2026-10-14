@@ -16,7 +16,8 @@ import {limbSlot,BODY_SHAPES} from '../lineage/part-registry.js';
 const cache=new Map();
 const SIDE={'flank.left':-1,'flank.right':1,'eye.left':-1,'eye.right':1};
 // How far each leg type reaches, relative to a walking leg.
-// v1.59.0: how each leg type moves. stride scales how far a foot swings, lift how high it rises.
+// Limb type shapes free recovery and lift. Supported toes share the travel contract
+// in genvo.js rather than skating through type-specific stance multipliers.
 export const LEG_GAIT=Object.freeze({'runner-leg':{stride:1.4,lift:.75},'sturdy-leg':{stride:.65,lift:.55},'spring-leg':{stride:1.1,lift:1.5},'walking-leg':{stride:1,lift:1},'grasper':{stride:.9,lift:.9},'digging-forelimb':{stride:.8,lift:.8},'webbed-leg':{stride:1,lift:.85},'padded-leg':{stride:.95,lift:.7}});
 export const LEG_REACH=Object.freeze({'runner-leg':1.16,'sturdy-leg':.84,'spring-leg':1,'walking-leg':1,'grasper':1,'digging-forelimb':.94,'webbed-leg':1,'padded-leg':.96});
 

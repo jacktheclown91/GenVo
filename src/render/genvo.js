@@ -33,7 +33,7 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
   const legs=[];
   // Designed bodies (wave 1) pass their own leg slots: angles in sixteenths of a turn relative to
   // the facing, with a reach factor per leg type. Without them the eight radial legs are unchanged.
-  const slotList=Array.isArray(legSlots)?legSlots:null,count=slotList?slotList.length:8;
+  const slotList=Array.isArray(legSlots)?legSlots:null,count=slotList?slotList.length:8,travel=slotList&&moving?gaitTravelFor(limbScale):null;
   for(let n=0;n<count;n++){
     let k=n,dx,dy,reachScale=1,slot=null,gait=null;
     if(slotList){const L=slotList[n],raw=L.slot*Math.PI/8,ang=splayAngle(raw);slot=L.slot;reachScale=L.reach||1;gait=L.gait||null;k=(L.slot>>1)+(L.slot&1);dx=fx*Math.cos(ang)+perp.x*Math.sin(ang);dy=fy*Math.cos(ang)+perp.y*Math.sin(ang)}
@@ -41,8 +41,8 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
     const front=dx*fx+dy*fy,side=dx*perp.x+dy*perp.y;
     const phase=(Number.isFinite(b.displayPhase)?b.displayPhase:frame)+(slotList?((Math.round(Math.abs(side)*3)+Math.round(front*2)+(side<0?4:0))%8):((k&1)?4:0)+((k>>1)&1));
     // v1.59.0: each leg type moves its own way: stride scales the swing, lift how high the foot rises.
-    const step=organicFootfall(phase);
-    const stride=(moving?step.stride:(Number(b.displayStride)||0)?step.stride*b.displayStride:0)*(moving&&gait?gait.stride:1);
+    const step=organicFootfall(phase,travel,moving?(gait?.stride??1):1);
+    const stride=(moving?step.stride:(Number(b.displayStride)||0)?step.stride*b.displayStride:0);
     const settling=!moving&&count>1&&n===((life.settleIndex||0)%count)?(life.settle||0)*.8:0;
     const lift=moving?step.lift*(gait?gait.lift:1):(Number(b.displayLift)||0)*step.lift+(front>.25?(Number(b.forelegLift)||0):0)+settling,liftAmount=Math.max(0,Math.min(1,lift/2));
     let reach=(6.7+(Math.abs(side)>.45?.75:.35))*limbScale*(dependent?.9:1)*(elder?.91:1);
@@ -51,20 +51,20 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
     if(b.limp&&limpSide)reach-=.75*(Number(b.limp)||0);
     reach=Math.max(5.0,reach)*reachScale;
     const attach=(Math.min(bodyW,bodyH)*.36)+.25;
-    const sweep=(moving?stride:.45*stride)*(0.55+Math.abs(side)*.5);
+    const sweep=(moving?stride:.45*stride)*(slotList&&moving?1:(0.55+Math.abs(side)*.5));
     const curl=((k&1)?1:-1)*(moving?.75:1.15)+(court&&front>.2?side*.9:0);
     const root={x:dx*attach+perp.x*side*.18,y:dy*attach+perp.y*side*.18};
     const kneeDist=reach*(.62-liftAmount*.10);
     let knee={x:dx*kneeDist+(-dy)*curl+fx*sweep*.42,y:dy*kneeDist+(dx)*curl+fy*sweep*.42};
     const spread=(Number(b.stanceSpread)||0)*side,footReach=reach*(1-liftAmount*.16);
     const foot={x:dx*footReach+fx*sweep+perp.x*spread,y:dy*footReach+fy*sweep+perp.y*spread+(depleted?.35:0)+(b.limp&&limpSide?.45:0)};
-    // Designed bodies: legs start from the body's edge, so long or wide bodies keep their legs visible.
-    if(slotList){const rx=bodyW/2,ry=bodyH/2,edge=1/Math.sqrt((dx/rx)**2+(dy/ry)**2),extra=Math.max(0,edge-Math.min(rx,ry));if(extra){for(const pt of [root,knee,foot]){pt.x+=dx*extra;pt.y+=dy*extra}}}
-    // Art redo (v1.49.0): on wide bodies (and diagonal views) the foot always reaches clear of the body, so legs never hide under it.
-    if(slotList){const rx=bodyW/2,ry=bodyH/2,edge=1/Math.sqrt((dx/rx)**2+(dy/ry)**2),need=edge+3*Math.max(.8,limbScale),along=foot.x*dx+foot.y*dy;if(along<need){const k=need-along;foot.x+=dx*k;foot.y+=dy*k;knee.x+=dx*k*.6;knee.y+=dy*k*.6}}
+    // Body-edge offsets and clearance share one radial calculation. Clearance
+    // during support uses the neutral footprint, so a toe cannot slide when
+    // fore/aft sweep would otherwise push it back outside a wide torso.
+    if(slotList){const rx=bodyW/2,ry=bodyH/2,edge=1/Math.sqrt((dx/rx)**2+(dy/ry)**2),extra=Math.max(0,edge-Math.min(rx,ry));if(extra)for(const pt of [root,knee,foot]){pt.x+=dx*extra;pt.y+=dy*extra}const need=edge+3*Math.max(.8,limbScale),along=moving?footReach+extra:foot.x*dx+foot.y*dy;if(along<need){const shift=need-along;foot.x+=dx*shift;foot.y+=dy*shift;knee.x+=dx*shift*.6;knee.y+=dy*shift*.6}}
     if(slotList)knee=articulatedKnee({root,foot,forward:{x:fx,y:fy},perp,side,liftAmount});
     knee.y-=.9+liftAmount*.6;if(liftAmount>0){foot.x+=(knee.x-foot.x)*liftAmount*.4;foot.y+=(knee.y-foot.y)*liftAmount*.4}else foot.y+=.35;
-    legs.push(slotList?{index:k,slot,root,knee,foot,lift,liftAmount,planted:liftAmount<.34,front,side}:{index:k,root,knee,foot,lift,liftAmount,planted:liftAmount<.34,front,side});
+    legs.push(slotList?{index:k,slot,root,knee,foot,lift,liftAmount,planted:moving?step.planted:liftAmount<.34,front,side}:{index:k,root,knee,foot,lift,liftAmount,planted:liftAmount<.34,front,side});
   }
   const sensory=Math.max(.8,Number(sensoryScale)||1);
   const eyes=Math.max(.78,Number(eyeScale)||1),feelers=Math.max(.78,Number(feelerScale)||1);
@@ -96,10 +96,13 @@ export function roundedMantleRows(width,height,{squash=0}={}){
 
 // One recovery swing (3/8 cycle), five support beats. The body moves over the
 // planted foot; the toe returns along the travel axis, not around a radial spoke.
-export function organicFootfall(phase){
- const p=((Number(phase)+7)%8+8)%8;
- if(p<3){const t=p/3,e=t*t*(3-2*t);return{stride:-1.45+2.9*e,lift:2*Math.sin(Math.PI*t),planted:false}}
- return{stride:1.45-2.9*(p-3)/5,lift:0,planted:true};
+// One renderer-only travel contract: over five support beats the body advances
+// 5/8 of a cycle, and the planted toe retracts by exactly that same distance.
+export function gaitTravelFor(limbScale=1){return Math.max(2.6,4.6*limbScale)}
+export function organicFootfall(phase,travel=null,recovery=1){
+ const p=((Number(phase)+7)%8+8)%8,span=Number.isFinite(travel)?travel*5/8:2.9;
+ if(p<3){const t=p/3,e=t*t*(3-2*t),style=recovery===1?0:(recovery-1)*span*.3*Math.sin(Math.PI*t)*Math.sin(Math.PI*2*t);return{stride:-span/2+span*e+style,lift:2*Math.sin(Math.PI*t),planted:false}}
+ return{stride:span/2-span*(p-3)/5,lift:0,planted:true};
 }
 function cycle(values,phase){phase=((Number(phase)%8)+8)%8;const a=Math.floor(phase),b=(a+1)&7,t=phase-a;return values[a]+(values[b]-values[a])*t}
 

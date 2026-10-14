@@ -136,7 +136,7 @@ Coverage: **79 parts and 106 trait records**. Current definitions and numerical 
 **Ecological niche:** derive from actual feeding/access/physiology; no named-species gate.
 **Art direction:** Pliable broad trunk, soft flank contour and distinct belly. Current native asset: 32x32, 16 frames, rig torso, states idle.
 **Visible behavior:** breathing; show actual structural attachment/breathing only when the canonical controller permits it.
-**Sources:** [src/lineage/body-plan.js](../../src/lineage/body-plan.js#L79), [src/lineage/part-abilities.js](../../src/lineage/part-abilities.js#L92), [src/lineage/part-registry.js](../../src/lineage/part-registry.js#L52), [src/render/creature-assembler.js](../../src/render/creature-assembler.js#L24), [src/render/genvo-draw.js](../../src/render/genvo-draw.js#L188), [src/render/part-sprites.js](../../src/render/part-sprites.js#L17).
+**Sources:** [src/lineage/body-plan.js](../../src/lineage/body-plan.js#L79), [src/lineage/part-abilities.js](../../src/lineage/part-abilities.js#L92), [src/lineage/part-registry.js](../../src/lineage/part-registry.js#L52), [src/render/creature-assembler.js](../../src/render/creature-assembler.js#L25), [src/render/genvo-draw.js](../../src/render/genvo-draw.js#L188), [src/render/part-sprites.js](../../src/render/part-sprites.js#L17).
 
 ### reinforced-torso
 
@@ -240,7 +240,7 @@ Coverage: **79 parts and 106 trait records**. Current definitions and numerical 
 **Ecological niche:** ground.
 **Art direction:** Moderately bent upper/lower segments, ankle and planted toe contact. Current native asset: 32x32, 16 frames, rig two-bone, states idle.
 **Visible behavior:** gait; show actual walk, sprint, dance only when the canonical controller permits it.
-**Sources:** [src/lineage/body-inheritance.js](../../src/lineage/body-inheritance.js#L16), [src/lineage/body-plan.js](../../src/lineage/body-plan.js#L83), [src/lineage/part-registry.js](../../src/lineage/part-registry.js#L98), [src/organisms/wild-bodies.js](../../src/organisms/wild-bodies.js#L18), [src/render/creature-assembler.js](../../src/render/creature-assembler.js#L20), [src/render/genvo-draw.js](../../src/render/genvo-draw.js#L126), [src/render/part-sprites.js](../../src/render/part-sprites.js#L19).
+**Sources:** [src/lineage/body-inheritance.js](../../src/lineage/body-inheritance.js#L16), [src/lineage/body-plan.js](../../src/lineage/body-plan.js#L83), [src/lineage/part-registry.js](../../src/lineage/part-registry.js#L98), [src/organisms/wild-bodies.js](../../src/organisms/wild-bodies.js#L18), [src/render/creature-assembler.js](../../src/render/creature-assembler.js#L21), [src/render/genvo-draw.js](../../src/render/genvo-draw.js#L126), [src/render/part-sprites.js](../../src/render/part-sprites.js#L19).
 
 ### spring-leg
 
@@ -253,7 +253,7 @@ Coverage: **79 parts and 106 trait records**. Current definitions and numerical 
 **Ecological niche:** ambush, escape.
 **Art direction:** Folded elastic rear joint, compressed stance and clear recoil. Current native asset: 32x32, 16 frames, rig two-bone, states idle.
 **Visible behavior:** gait; show actual walk, sprint, pounce, dance only when the canonical controller permits it.
-**Sources:** [src/lineage/body-inheritance.js](../../src/lineage/body-inheritance.js#L70), [src/lineage/body-plan.js](../../src/lineage/body-plan.js#L83), [src/lineage/part-abilities.js](../../src/lineage/part-abilities.js#L221), [src/lineage/part-registry.js](../../src/lineage/part-registry.js#L99), [src/organisms/wild-bodies.js](../../src/organisms/wild-bodies.js#L18), [src/render/activity-detail.js](../../src/render/activity-detail.js#L7), [src/render/behavior.js](../../src/render/behavior.js#L68), [src/render/creature-assembler.js](../../src/render/creature-assembler.js#L20).
+**Sources:** [src/lineage/body-inheritance.js](../../src/lineage/body-inheritance.js#L70), [src/lineage/body-plan.js](../../src/lineage/body-plan.js#L83), [src/lineage/part-abilities.js](../../src/lineage/part-abilities.js#L221), [src/lineage/part-registry.js](../../src/lineage/part-registry.js#L99), [src/organisms/wild-bodies.js](../../src/organisms/wild-bodies.js#L18), [src/render/activity-detail.js](../../src/render/activity-detail.js#L7), [src/render/behavior.js](../../src/render/behavior.js#L68), [src/render/creature-assembler.js](../../src/render/creature-assembler.js#L21).
 
 ### grasper
 
@@ -266,7 +266,7 @@ Coverage: **79 parts and 106 trait records**. Current definitions and numerical 
 **Ecological niche:** provisioning.
 **Art direction:** Opposing hooked fingers separated from the locomotor joint. Current native asset: 32x32, 16 frames, rig two-bone, states idle.
 **Visible behavior:** gait; show actual walk, carry, dance, gesture only when the canonical controller permits it.
-**Sources:** [src/gameplay/discovery.js](../../src/gameplay/discovery.js#L25), [src/lineage/body-inheritance.js](../../src/lineage/body-inheritance.js#L71), [src/lineage/body-plan.js](../../src/lineage/body-plan.js#L83), [src/lineage/part-abilities.js](../../src/lineage/part-abilities.js#L222), [src/lineage/part-registry.js](../../src/lineage/part-registry.js#L100), [src/render/creature-assembler.js](../../src/render/creature-assembler.js#L20), [src/render/part-sprites.js](../../src/render/part-sprites.js#L21).
+**Sources:** [src/gameplay/discovery.js](../../src/gameplay/discovery.js#L25), [src/lineage/body-inheritance.js](../../src/lineage/body-inheritance.js#L71), [src/lineage/body-plan.js](../../src/lineage/body-plan.js#L83), [src/lineage/part-abilities.js](../../src/lineage/part-abilities.js#L222), [src/lineage/part-registry.js](../../src/lineage/part-registry.js#L100), [src/render/creature-assembler.js](../../src/render/creature-assembler.js#L21), [src/render/part-sprites.js](../../src/render/part-sprites.js#L21).
 
 ### runner-leg
 
@@ -279,7 +279,7 @@ Coverage: **79 parts and 106 trait records**. Current definitions and numerical 
 **Ecological niche:** open-ground.
 **Art direction:** Slender elongated lever, narrow foot and extended forward reach. Current native asset: 32x32, 16 frames, rig two-bone, states idle.
 **Visible behavior:** gait; show actual walk, sprint, run, dance only when the canonical controller permits it.
-**Sources:** [src/lineage/body-inheritance.js](../../src/lineage/body-inheritance.js#L28), [src/lineage/part-abilities.js](../../src/lineage/part-abilities.js#L65), [src/lineage/part-registry.js](../../src/lineage/part-registry.js#L101), [src/organisms/wild-bodies.js](../../src/organisms/wild-bodies.js#L16), [src/render/creature-assembler.js](../../src/render/creature-assembler.js#L20), [src/render/part-sprites.js](../../src/render/part-sprites.js#L37).
+**Sources:** [src/lineage/body-inheritance.js](../../src/lineage/body-inheritance.js#L28), [src/lineage/part-abilities.js](../../src/lineage/part-abilities.js#L65), [src/lineage/part-registry.js](../../src/lineage/part-registry.js#L101), [src/organisms/wild-bodies.js](../../src/organisms/wild-bodies.js#L16), [src/render/creature-assembler.js](../../src/render/creature-assembler.js#L21), [src/render/part-sprites.js](../../src/render/part-sprites.js#L37).
 
 ### sturdy-leg
 
@@ -292,7 +292,7 @@ Coverage: **79 parts and 106 trait records**. Current definitions and numerical 
 **Ecological niche:** predator-pressure.
 **Art direction:** Short thick load-bearing segments and broad planted foot. Current native asset: 32x32, 16 frames, rig two-bone, states idle.
 **Visible behavior:** gait; show actual walk, brace, dance only when the canonical controller permits it.
-**Sources:** [src/lineage/part-abilities.js](../../src/lineage/part-abilities.js#L65), [src/lineage/part-registry.js](../../src/lineage/part-registry.js#L102), [src/organisms/wild-bodies.js](../../src/organisms/wild-bodies.js#L26), [src/render/creature-assembler.js](../../src/render/creature-assembler.js#L20), [src/render/part-sprites.js](../../src/render/part-sprites.js#L37), [src/reproduction/mate-preferences.js](../../src/reproduction/mate-preferences.js#L17).
+**Sources:** [src/lineage/part-abilities.js](../../src/lineage/part-abilities.js#L65), [src/lineage/part-registry.js](../../src/lineage/part-registry.js#L102), [src/organisms/wild-bodies.js](../../src/organisms/wild-bodies.js#L26), [src/render/creature-assembler.js](../../src/render/creature-assembler.js#L21), [src/render/part-sprites.js](../../src/render/part-sprites.js#L37), [src/reproduction/mate-preferences.js](../../src/reproduction/mate-preferences.js#L17).
 
 ### webbed-leg
 
@@ -305,7 +305,7 @@ Coverage: **79 parts and 106 trait records**. Current definitions and numerical 
 **Ecological niche:** wet-margin.
 **Art direction:** Splayed digits with a visible membrane between toes. Current native asset: 32x32, 16 frames, rig two-bone, states idle.
 **Visible behavior:** gait; show actual walk, swim, dance only when the canonical controller permits it.
-**Sources:** [src/lineage/aquatic.js](../../src/lineage/aquatic.js#L26), [src/lineage/body-inheritance.js](../../src/lineage/body-inheritance.js#L72), [src/lineage/body-plan.js](../../src/lineage/body-plan.js#L85), [src/lineage/part-abilities.js](../../src/lineage/part-abilities.js#L65), [src/lineage/part-registry.js](../../src/lineage/part-registry.js#L103), [src/organisms/wild-bodies.js](../../src/organisms/wild-bodies.js#L22), [src/render/behavior.js](../../src/render/behavior.js#L70), [src/render/creature-assembler.js](../../src/render/creature-assembler.js#L20).
+**Sources:** [src/lineage/aquatic.js](../../src/lineage/aquatic.js#L26), [src/lineage/body-inheritance.js](../../src/lineage/body-inheritance.js#L72), [src/lineage/body-plan.js](../../src/lineage/body-plan.js#L85), [src/lineage/part-abilities.js](../../src/lineage/part-abilities.js#L65), [src/lineage/part-registry.js](../../src/lineage/part-registry.js#L103), [src/organisms/wild-bodies.js](../../src/organisms/wild-bodies.js#L22), [src/render/behavior.js](../../src/render/behavior.js#L70), [src/render/creature-assembler.js](../../src/render/creature-assembler.js#L21).
 
 ### padded-leg
 
@@ -318,7 +318,7 @@ Coverage: **79 parts and 106 trait records**. Current definitions and numerical 
 **Ecological niche:** stealth.
 **Art direction:** Soft rounded pad and quiet low contact posture. Current native asset: 32x32, 16 frames, rig two-bone, states idle.
 **Visible behavior:** gait; show actual walk, quiet, dance only when the canonical controller permits it.
-**Sources:** [src/lineage/part-abilities.js](../../src/lineage/part-abilities.js#L101), [src/lineage/part-registry.js](../../src/lineage/part-registry.js#L104), [src/organisms/wild-bodies.js](../../src/organisms/wild-bodies.js#L24), [src/render/creature-assembler.js](../../src/render/creature-assembler.js#L20), [src/render/part-sprites.js](../../src/render/part-sprites.js#L37).
+**Sources:** [src/lineage/part-abilities.js](../../src/lineage/part-abilities.js#L101), [src/lineage/part-registry.js](../../src/lineage/part-registry.js#L104), [src/organisms/wild-bodies.js](../../src/organisms/wild-bodies.js#L24), [src/render/creature-assembler.js](../../src/render/creature-assembler.js#L21), [src/render/part-sprites.js](../../src/render/part-sprites.js#L37).
 
 ### digging-forelimb
 

@@ -1,0 +1,77 @@
+[
+  {
+    "test": "grounded-locomotion",
+    "status": "PASS",
+    "output": "256 whole valid body/facing/size cases: supported toes stationary in world coordinates; continuous recovery/stance connection PASS\n"
+  },
+  {
+    "test": "motion-render",
+    "status": "PASS",
+    "output": "render motion bridge checks: PASS\n"
+  },
+  {
+    "test": "living-rest",
+    "status": "PASS",
+    "output": "Continuous individual breathing, planted rest contacts, one-foot resettling, unchanged skeleton/biology/RNG and pause clock PASS\n"
+  },
+  {
+    "test": "player-motion-presentation",
+    "status": "PASS",
+    "output": "player presentation prediction checks: PASS\n"
+  },
+  {
+    "test": "feeding-performance",
+    "status": "PASS",
+    "output": "Funded receipt stages, real source attention, anatomy modes, movement/stance interruption, pause, edible tissue requirement and read-only actor/RNG PASS\n"
+  },
+  {
+    "test": "seed-observations",
+    "status": "PASS",
+    "output": "Funded seed deposit causality, sensory-gated observations, no remote growth reveal, journal persistence, faded-trail revisit and anatomy-driven read-only handling PASS\n"
+  },
+  {
+    "test": "part-animation-catalog",
+    "status": "PASS",
+    "output": "registered immutable part-owned responses compile into independent bounded node rigs PASS\n"
+  },
+  {
+    "test": "native-part-catalog",
+    "status": "PASS",
+    "output": "native-part-catalog: 79 indexed assets, 1264 exact RGBA frames, eight facings, 0 missing native art packs PASS\n"
+  },
+  {
+    "test": "indexed-part-renderer",
+    "status": "PASS",
+    "output": "indexed renderer timed boundaries, missing facing, pivot, joint clamp and allocation-free drawing PASS\n"
+  },
+  {
+    "test": "source-rgba-part-art",
+    "status": "PASS",
+    "output": "source RGBA ingestion: sixteen-frame exact round trip, transparent detail, explicit shared pigments, protected substitution and fail-closed mapping PASS\n"
+  },
+  {
+    "test": "save-persistence",
+    "status": "PASS",
+    "output": "save persistence roundtrip: PASS\n"
+  },
+  {
+    "test": "family-learning",
+    "status": "PASS",
+    "output": "juvenile learning + independence checks: PASS\n"
+  },
+  {
+    "test": "family-practice",
+    "status": "PASS",
+    "output": "juvenile solo practice + recovery checks: PASS\n"
+  },
+  {
+    "test": "targeted-feeding",
+    "status": "PASS",
+    "output": "autonomous feeding consumes the selected resource cell: PASS\n"
+  },
+  {
+    "test": "consolidation-demand-parity",
+    "status": "PASS",
+    "output": "480 natural updates exact actor, RNG and carrying parity; affordability boundaries PASS\n"
+  }
+]

@@ -225,7 +225,7 @@ export function drawLimb(c,partId,k){
     foot:{x:k.foot.x*k.s,y:k.foot.y*k.s},scale:k.s,
     facing:k.authoredFacing??0,state:k.authoredState||'idle',timeMs:k.authoredTimeMs??0,pigment:k.nativePigment,
     // Contact paint follows each individual foot, rather than blinking in unison.
-    frameIndex:k.leg?.liftAmount>=.34?1:0
+    frameIndex:k.leg?.planted==null?(k.leg?.liftAmount>=.34?1:0):(k.leg.planted?0:1)
   }))return true;
   (LIMB_ART[partId]||standardLimb)(c,k);return false
 }

@@ -2,7 +2,7 @@
 
 Canonical source for the evolutionary survival game. Development happens on **main**; this repository has one branch.
 
-Current checkpoint: **Funded Feeding Performance (2026-10-14)**. Anatomy-driven meals now produce source-facing reach, processing and settling for players and wildlife. The mouse-first interactions, Creature Lab, inherited animal/botanical genetics and save continuity remain integrated. See [the current implementation report](docs/GenVo-Feeding-Performance-Review.md) and [the full development goal status](docs/GenVo-Development-Goal-Status.md).
+Current checkpoint: **Grounded Locomotion (2026-10-14)**. Mounted legs use distance-driven support and anatomy-specific recovery; the body moves above planted contacts. Anatomy-driven meals retain source-facing reach, processing and settling for players and wildlife. The mouse-first interactions, Creature Lab, inherited animal/botanical genetics and save continuity remain integrated. See [the current implementation report](docs/GenVo-Grounded-Locomotion-Review.md) and [the full development goal status](docs/GenVo-Development-Goal-Status.md).
 
 Run the game from the repository root:
 
@@ -12,11 +12,12 @@ python -m http.server 8000
 
 Open http://localhost:8000/ . The optional Creature Lab is at http://localhost:8000/tools/creature-lab/index.html . E performs the displayed contextual interaction, Q cycles choices, Shift+E drinks, Space attacks, and J braces.
 
-The `src/` tree is canonical runtime source. `assets/` contains runtime artwork/audio; `Original (human) arts/` preserves original artwork. `tools/`, `tests/`, `design/` and `docs/` retain authoring tools, checks, plans and real runtime evidence. Exact older source under the two named `reports/*-before/` directories is only a comparison fixture for paired tests; it is not another development branch. Local exported builds and private tool settings are ignored.
+The `src/` tree is canonical runtime source. `assets/` contains runtime artwork/audio; `Original (human) arts/` preserves original artwork. `tools/`, `tests/`, `design/` and `docs/` retain authoring tools, checks, plans and real runtime evidence. Exact older source under the named `reports/*-before/` directories is only a comparison fixture for paired tests; it is not another development branch. Local exported builds and private tool settings are ignored.
 
 Focused verification (Node.js required):
 
 ```sh
+node tests/grounded-locomotion.mjs
 node tests/feeding-performance.mjs
 node tests/targeted-feeding.mjs
 node tests/seed-observations.mjs

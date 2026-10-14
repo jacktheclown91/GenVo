@@ -1,3 +1,4 @@
+import {gaitTravelFor} from './genvo.js';
 import {botanicalPlantView} from '../ecology/botanical-reproduction.js';
 import {FeedingPresentation,applyFeedingExpression} from './feeding-expression.js';
 import {drawWorldTraces} from './world-traces.js';
@@ -804,7 +805,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   drawCarrion(px,py,u,amount){const c=this.ctx;c.save();c.translate(px,py);pixel(c,4,11,8,2,u,'rgba(48,29,26,.42)');pixel(c,5,8,6,3,u,'#8b554d');pixel(c,4,9,2,2,u,'#6f443f');if(amount>.7){pixel(c,10,7,1,4,u,'#d2c7a9');pixel(c,9,8,3,1,u,'#d2c7a9')}c.restore()}
   drawAnimal(a,tile){
     const c=this.ctx;
-    const scale=this.zoom,ph=phenotypeFor(a),dev=developmentFor(a),social=this.sim.social?.visualState?.(a)||null,gaitPerTile=8*CFG.tileSize/Math.max(2.6,4.6*ph.limbScale),visual=a.player&&this.playerVisual?{...this.playerVisual,gaitPhase:this.motion.sample({...a,x:this.playerVisual.x,y:this.playerVisual.y},this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear',snap:true,gaitPerTile}).gaitPhase}:this.motion.sample(a,this.sim.tickCount,this.renderNow,{hz:(a.player||a.pursuitEngaged)?CFG.controlHz:CFG.simHz,response:'linear',gaitPerTile}),px=Math.round((visual.x-this.camera.x)*tile+this.w/2),py=Math.round((visual.y-this.camera.y)*tile+this.h/2);(this.screenPos||=new Map()).set(a.id,{x:px,y:py});let action=this.actionPose(a,!!visual.moving);
+    const scale=this.zoom,ph=phenotypeFor(a),dev=developmentFor(a),social=this.sim.social?.visualState?.(a)||null,gaitPerTile=8*CFG.tileSize/gaitTravelFor(ph.limbScale*(.72+.28*(a.player?dev.growth:Math.round(dev.growth*32)/32))),visual=a.player&&this.playerVisual?{...this.playerVisual,gaitPhase:this.motion.sample({...a,x:this.playerVisual.x,y:this.playerVisual.y},this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear',snap:true,gaitPerTile}).gaitPhase}:this.motion.sample(a,this.sim.tickCount,this.renderNow,{hz:(a.player||a.pursuitEngaged)?CFG.controlHz:CFG.simHz,response:'linear',gaitPerTile}),px=Math.round((visual.x-this.camera.x)*tile+this.w/2),py=Math.round((visual.y-this.camera.y)*tile+this.h/2);(this.screenPos||=new Map()).set(a.id,{x:px,y:py});let action=this.actionPose(a,!!visual.moving);
     const targetTravel=!!(a.target&&!['eat','drink','court'].includes(action)),moving=!!visual.moving||(!a.player&&!!visual.recentlyMoving&&targetTravel);
     let phase=moving?(visual.gaitPhase??visual.phase):(((this.encounters?.time||0)/.22)+a.id)%8;
     // Autonomous gait phases are ID-offset in presentation so unrelated wildlife does not
@@ -847,6 +848,8 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const inWater=!!this.sim.world.water[this.sim.world.idx(a.x,a.y)];if(inWater&&this.sim.canSwim?.(a)&&!['eat','drink','crack'].includes(action))action='swim';
     const life=visualLifeState(this.sim,a,{frame,moving,action,development:dev,social,timeSeconds:this.encounters?.time});life.growth=visualGrowth;if(!a.player){life.breath=Math.round(life.breath*8)/8;life.settle=Math.round(life.settle*8)/8;}
     const behavior=behaviorVisualState({bodyPlan:a.bodyPlan,id:a.id,action,phase,moving,life,social});
+    // Body and joints yield above support; contact shadows/toes stay on the ground.
+    if(action!=='swim')behavior.bodyRise-=bob;
     if(!social?.alarm)applyFeedingExpression(behavior,feeding);
     applyEncounterPose(behavior,encounter);
     const combatStatus=a.player?this.sim.playerCombat?.status?.(a):null,winded=a.player?!!this.sim.exertion?.isWinded?.(a):false;if(combatStatus)applyPlayerCombatPose(behavior,combatStatus,winded);
@@ -855,7 +858,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const contact=environmentContactFor(this.sim.world,a,{action,phase,moving});
     this.drawPredatorChargeTell(a,tile,px,py);
     let recoilX=0,recoilY=0;if(impact&&impact.kind!=='miss'){const p=this.sim.player(),dx=a.x-(p?.x??a.x),dy=a.y-(p?.y??a.y),len=Math.hypot(dx,dy)||1,k=(3-Math.max(0,this.sim.tickCount-impact.tick))*.32;recoilX=dx/len*k;recoilY=dy/len*k}
-    c.save();c.translate(px+recoilX*scale,py+(bob+(life.hurt&&!moving?1:0)+recoilY)*scale);
+    c.save();c.translate(px+recoilX*scale,py+((life.hurt&&!moving?1:0)+recoilY)*scale);
     drawGroundContact(c,{contact,scale,bodyScale:ph.bodyScale,dir:drawDir});
     drawActivityGround(c,{bodyPlan:a.bodyPlan,id:a.id,frame:phase,moving,action,scale,dir:drawDir});
     const depthShadow=creatureShadowFor(this.sim.world,a,this.habitatField,{bodyScale:ph.bodyScale+(life.exhausted?.08:0),moving});drawCreatureDepthShadow(c,{shadow:depthShadow,scale,hurt:life.hurt});

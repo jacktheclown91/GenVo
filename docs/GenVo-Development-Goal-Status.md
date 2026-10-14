@@ -31,3 +31,8 @@ Learning/practice remain green. Context-dependent phenotype caching is corrected
 ## 2026-10-14 funded feeding performance
 
 Actual meals now drive source-facing reach, anatomy-specific processing and settling for players/wildlife; non-player sprite caching no longer conceals active meal responses. An anatomical guard prevents forced grazing-mouth carrion extraction. 16 focused checks plus paired native E/Shift+E, NPC and exact save proof pass. See `docs/GenVo-Feeding-Performance-Review.md`. This is progress on priorities 2/4/5; whole-body readability, natural encounters, audio listening and broader goal acceptance remain open.
+
+
+## 2026-10-14 grounded locomotion
+
+Distance-driven support, part-specific recovery, body motion above planted contacts, juvenile cadence and true support paint are integrated. 15 focused checks, 256 rig cases, six native keyboard bodies, a separate normal initial-world/save observation and alternating render measurements are documented in `docs/GenVo-Grounded-Locomotion-Review.md`. Static/courtship geometry and biology remain unchanged. Full goal active; small-anatomy readability, natural encounters, vegetation repetition, real-game audio listening, human usability and dense/generational validation remain open.
