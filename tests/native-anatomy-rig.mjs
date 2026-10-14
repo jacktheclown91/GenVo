@@ -25,7 +25,7 @@ for(const id of [...T,...L]){
   assert.equal(renderer.drawLimb(ctx,{root:{x:0,y:0},knee:{x:2,y:2},foot:{x:4,y:3}}),false);
  }else{
   assert.equal(renderer.drawLimb(ctx,{root:{x:0,y:0},knee:{x:7,y:-3},foot:{x:11,y:6},facing:5}),true);
-  assert.equal(calls.filter(c=>c==='drawImage').length,2);
+  assert.equal(calls.filter(c=>c==='drawImage').length,3,'Two bones plus one native knee surface');
   assert.equal(renderer.drawTorso(ctx,{width:8,height:8}),false);
   segments+=2;
  }
@@ -34,4 +34,4 @@ for(const id of [...T,...L]){
  await assert.rejects(()=>compileIndexedPart(broken),/invalid torso native bounds|invalid limb section rectangle/);
 }
 assert.equal(segments,16);
-console.log('native-anatomy-rig: 9 body silhouettes + 8 two-bone limbs / 16 joint transforms, negative rig validation PASS');
+console.log('native-anatomy-rig: 9 body silhouettes + 8 two-bone limbs / 16 bone transforms + 8 native knee surfaces, negative rig validation PASS');

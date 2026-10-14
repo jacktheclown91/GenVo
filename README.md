@@ -2,7 +2,7 @@
 
 Canonical source for the evolutionary survival game. Development happens on **main**; this repository has one branch.
 
-Current checkpoint: **Grounded Locomotion (2026-10-14)**. Mounted legs use distance-driven support and anatomy-specific recovery; the body moves above planted contacts. Anatomy-driven meals retain source-facing reach, processing and settling for players and wildlife. The mouse-first interactions, Creature Lab, inherited animal/botanical genetics and save continuity remain integrated. See [the current implementation report](docs/GenVo-Grounded-Locomotion-Review.md) and [the full development goal status](docs/GenVo-Development-Goal-Status.md).
+Current checkpoint: **Continuous Native Joints (2026-10-14)**. Eight mounted limb types use their own current-frame shaded knee tissue to bridge flexed thigh/shin projections. Distance-driven support, source-facing funded meals and established biological authorities remain integrated. The 79-part tissue-volume/density foundation is uncalibrated; gameplay mass and swimming migration remain pending review. See [the current implementation report](docs/GenVo-Continuous-Native-Joints-Review.md) and [the full development goal status](docs/GenVo-Development-Goal-Status.md).
 
 Run the game from the repository root:
 
@@ -17,6 +17,7 @@ The `src/` tree is canonical runtime source. `assets/` contains runtime artwork/
 Focused verification (Node.js required):
 
 ```sh
+node tests/native-knee-continuity.mjs
 node tests/grounded-locomotion.mjs
 node tests/feeding-performance.mjs
 node tests/targeted-feeding.mjs
@@ -25,7 +26,7 @@ node tests/save-persistence.mjs
 node tests/consolidation-demand-parity.mjs
 ```
 
-Browser capture tools expect the configured Playwright dependency runtime. Development checkpoints do not establish creator visual approval, unfamiliar-player comprehension or full ecological balance. Physical mass/swimming changes remain proposals awaiting creator review.
+Browser capture tools expect the configured Playwright dependency runtime. Development checkpoints do not establish creator visual approval, unfamiliar-player comprehension or full ecological balance. Physical mass structure is implemented; coefficient adoption and swimming migration await creator review.
 
 ## Historical development checkpoints
 

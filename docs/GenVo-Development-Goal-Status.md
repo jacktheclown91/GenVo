@@ -36,3 +36,8 @@ Actual meals now drive source-facing reach, anatomy-specific processing and sett
 ## 2026-10-14 grounded locomotion
 
 Distance-driven support, part-specific recovery, body motion above planted contacts, juvenile cadence and true support paint are integrated. 15 focused checks, 256 rig cases, six native keyboard bodies, a separate normal initial-world/save observation and alternating render measurements are documented in `docs/GenVo-Grounded-Locomotion-Review.md`. Static/courtship geometry and biology remain unchanged. Full goal active; small-anatomy readability, natural encounters, vegetation repetition, real-game audio listening, human usability and dense/generational validation remain open.
+
+
+## 2026-10-14 structural tissue foundation and continuous native joints
+
+All 79 parts have draft tissue-volume/material-density ownership and tested developmental scaling without unapproved gameplay coefficients. Read-only swimming audits identify affected bodies and stranding risk; sampled founders have no proposed changes, but controlled one-webbed-leg legacy-flag bodies do. Current mass/access remain unchanged pending calibration/migration review. Continuous native knee surfaces connect eight limb types using current-frame native paint and canonical contacts. Paired actual 800x600 movement/save evidence and whole-body pose boards are retained. Small-scale visual improvement is modest; observed normal-world CPU rendering overhead is approximately 0.374 ms (4.9 percent). See GenVo-Tissue-Foundation-Review and GenVo-Continuous-Native-Joints-Review. The full active goal, natural encounters, mass/swimming adoption, dense-world performance and human/creator acceptance remain open.

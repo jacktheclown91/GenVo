@@ -61,7 +61,18 @@ export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
   // A flexed shin may be much shorter on screen than the thigh. Its tissue
   // keeps the same transverse scale at the joint instead of collapsing to a wire.
   const sharedWidth=Math.min(scale*displayScale*.20,Math.max(segmentDensity(rig.upper,root,knee),segmentDensity(rig.lower,knee,foot))*1.8);
-  drawBone(ctx,entry,rig.upper,root,knee,scale,sharedWidth);drawBone(ctx,entry,rig.lower,knee,foot,scale,sharedWidth);return true;
+  drawBone(ctx,entry,rig.upper,root,knee,scale,sharedWidth);drawBone(ctx,entry,rig.lower,knee,foot,scale,sharedWidth);
+  // One native shaded insertion bridges the two projections at the actual knee.
+  // It is sampled from this limb's current frame/pigment, never a generic circle.
+  // Isotropic tissue width prevents a folded/foreshortened bone from opening a seam.
+  if(rig.jointSurface&&sharedWidth>0){
+   const {rect:[sx,sy,sw,sh],anchor:[ax,ay]}=rig.jointSurface;
+   ctx.save();try{ctx.imageSmoothingEnabled=false;ctx.translate(knee.x,knee.y);
+    ctx.rotate(Math.atan2(knee.y-root.y,knee.x-root.x));ctx.scale(sharedWidth,sharedWidth);
+    ctx.drawImage(entry.canvas,sx,sy,sw,sh,sx-ax,sy-ay,sw,sh);
+   }finally{ctx.restore()}
+  }
+  return true;
  },
  draw(ctx,{x=0,y=0,scale=1,pigment=null,mirrorX=false,...options}={}){if(![x,y,scale].every(Number.isFinite)||scale<=0)throw Error('Invalid part transform');const chosen=select(options);if(!chosen)return false;const entry=tinted(chosen,pigment);let angle=entry.frame.jointDegrees??0;if(limits)angle=Math.max(limits.minDegrees,Math.min(limits.maxDegrees,angle));ctx.save();try{ctx.imageSmoothingEnabled=false;ctx.translate(x,y);ctx.scale(scale*displayScale*(mirrorX?-1:1),scale*displayScale);ctx.rotate(angle*Math.PI/180);ctx.drawImage(entry.canvas,-pivot[0],-pivot[1]);}finally{ctx.restore()}return true}});
 }

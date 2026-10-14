@@ -1,0 +1,90 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "test": "native-knee-continuity",
+      "exit": 0,
+      "output": "384 native part/facing/phase/flex cases: current-frame knee surface, immutable contacts, legacy fallback, exact source pixels and invalid surface rejection PASS\n"
+    },
+    {
+      "test": "native-joint-surface",
+      "exit": 0,
+      "output": "Native flexed-limb shared tissue width across eight facings, immutable contacts and allocation-free drawing PASS\n"
+    },
+    {
+      "test": "native-part-catalog",
+      "exit": 0,
+      "output": "native-part-catalog: 79 indexed assets, 1264 exact RGBA frames, eight facings, 0 missing native art packs PASS\n"
+    },
+    {
+      "test": "indexed-part-art",
+      "exit": 0,
+      "output": "indexed native art identity, all-frame alpha/detail, protected pigment, timing/anchor invariance and cache keys: PASS\n"
+    },
+    {
+      "test": "indexed-part-renderer",
+      "exit": 0,
+      "output": "indexed renderer timed boundaries, missing facing, pivot, joint clamp and allocation-free drawing PASS\n"
+    },
+    {
+      "test": "native-contact-expression-v174",
+      "exit": 0,
+      "output": "Native open/blink states and independent planted/lifted limb paint PASS\n"
+    },
+    {
+      "test": "native-inherited-pigment",
+      "exit": 0,
+      "output": "native inherited-pigment and anatomical socket mounting PASS\n"
+    },
+    {
+      "test": "native-anatomy-rig",
+      "exit": 0,
+      "output": "native-anatomy-rig: 9 body silhouettes + 8 two-bone limbs / 16 bone transforms + 8 native knee surfaces, negative rig validation PASS\n"
+    },
+    {
+      "test": "native-face-expression-v172",
+      "exit": 0,
+      "output": "native-face-expression-v172: 16 anatomy-specific faces, 128 visible expression transitions, fixed-index action selection, protected detail and distinct silhouettes PASS\n"
+    },
+    {
+      "test": "limb-articulation",
+      "exit": 0,
+      "output": "Mirrored and facing-relative knees, immutable contacts, and finite/supporting 1024 walking poses PASS\n"
+    },
+    {
+      "test": "grounded-locomotion",
+      "exit": 0,
+      "output": "256 whole valid body/facing/size cases: supported toes stationary in world coordinates; continuous recovery/stance connection PASS\n"
+    },
+    {
+      "test": "player-motion-presentation",
+      "exit": 0,
+      "output": "player presentation prediction checks: PASS\n"
+    },
+    {
+      "test": "feeding-performance",
+      "exit": 0,
+      "output": "Funded receipt stages, real source attention, anatomy modes, movement/stance interruption, pause, edible tissue requirement and read-only actor/RNG PASS\n"
+    },
+    {
+      "test": "tissue-structure",
+      "exit": 0,
+      "output": "Tissue structure: 79-part coverage, net ownership, head modes, cubic development, invalid calibration rejection and unchanged gameplay mass PASS\n"
+    },
+    {
+      "test": "swimming-review",
+      "exit": 0,
+      "output": "Read-only swimming review: mounted/partial/legacy/invalid/dead cases and three natural founding populations PASS\n"
+    },
+    {
+      "test": "save-persistence",
+      "exit": 0,
+      "output": "save persistence roundtrip: PASS\n"
+    },
+    {
+      "test": "consolidation-demand-parity",
+      "exit": 0,
+      "output": "480 natural updates exact actor, RNG and carrying parity; affordability boundaries PASS\n"
+    }
+  ]
+}

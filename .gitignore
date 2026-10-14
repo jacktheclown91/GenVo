@@ -50,3 +50,9 @@ reports/*
 !reports/locomotion-before/**
 !/docs/locomotion-before-runtime.webm
 !/docs/locomotion-after-runtime.webm
+
+# Continuous joint comparison fixtures and final recordings
+!reports/joint-surface-before/
+!reports/joint-surface-before/**
+!/docs/joint-surface-before-runtime.webm
+!/docs/joint-surface-after-runtime.webm
