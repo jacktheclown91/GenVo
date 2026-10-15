@@ -20,6 +20,11 @@ export class EncounterPresentation{
   if(pose.move==='dance')Object.assign(pose,{bodySway:wave*1.6*intensity,bodyRise:.4+beat*.65,displayStride:1.8*intensity,displayLift:1.1,stanceSpread:.4,feelerSweep:.8});
   if(pose.move==='call')Object.assign(pose,{bodyRise:.45,headDrop:-1.3*beat,mouthPulse:.25+.75*beat,compress:-.25*beat,feelerForward:1.5});
   if(pose.move==='flare')Object.assign(pose,{bodyRise:.7,stanceSpread:1.2,crestSpread:.3+.4*beat,eyeWide:true,compress:-.2});
+  // Presentation-only settling uses the existing paused encounter clock.
+  // It changes no paid move, preference, energy, physiology or simulation state.
+  const displayDt=Math.max(0,this.time-(e.displayAt??this.time));e.displayAt=this.time;
+  const targetSpread=pose.crestSpread,spread=targetSpread===0&&!e.crestSpread?0:targetSpread+((e.crestSpread||0)-targetSpread)*Math.exp(-displayDt/.12);
+  pose.crestSpread=e.crestSpread=Math.abs(spread)<.0001?0:spread;
   if(pose.move==='scent')Object.assign(pose,{bodyLean:-.4,tailSweep:wave*1.4,feelerSweep:.35,bodySway:wave*.3});
   if(pose.move==='gesture')Object.assign(pose,{forelegLift:1.6*beat,feelerSweep:1.4,bodySway:wave*.4,headDrop:-.4});
   const incoming=this.incoming?.get(a.id);if(incoming&&!pose.move&&['idle','social','group','rest','wander'].includes(a.intent))Object.assign(pose,{attention:{x:incoming.x,y:incoming.y},headDrop:-.3,feelerForward:1.22,eyeWide:beat>.65});

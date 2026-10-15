@@ -1,0 +1,62 @@
+{
+  "status": "OBSERVED",
+  "scope": "Four alternating native initial full-world runs, no fixtures/input, no video encoding. Equal renderer-only counters instrument loaded draw code; no production source changes. CPU command timing is not GPU latency or human acceptance.",
+  "runs": [
+    {
+      "label": "before",
+      "frames": 256,
+      "meanMs": 10.475390624429565,
+      "p95Ms": 19.5,
+      "meanVisibleCreatures": 32.34375,
+      "sprites": {
+        "hit": 4589,
+        "miss": 3357,
+        "direct": 334
+      },
+      "ticks": 47,
+      "living": 196
+    },
+    {
+      "label": "after",
+      "frames": 261,
+      "meanMs": 9.253256704758181,
+      "p95Ms": 17.19999999552965,
+      "meanVisibleCreatures": 32.3448275862069,
+      "sprites": {
+        "hit": 4802,
+        "miss": 3299,
+        "direct": 341
+      },
+      "ticks": 47,
+      "living": 196
+    },
+    {
+      "label": "after",
+      "frames": 263,
+      "meanMs": 9.256653992140475,
+      "p95Ms": 15.799999997019768,
+      "meanVisibleCreatures": 32.368821292775664,
+      "sprites": {
+        "hit": 4724,
+        "miss": 3444,
+        "direct": 345
+      },
+      "ticks": 46,
+      "living": 196
+    },
+    {
+      "label": "before",
+      "frames": 265,
+      "meanMs": 9.110566037584025,
+      "p95Ms": 16.400000005960464,
+      "meanVisibleCreatures": 32.35471698113208,
+      "sprites": {
+        "hit": 4834,
+        "miss": 3385,
+        "direct": 355
+      },
+      "ticks": 47,
+      "living": 196
+    }
+  ]
+}

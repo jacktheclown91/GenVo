@@ -1,0 +1,95 @@
+{
+  "schema": "genvo.imagegen-native-preparation/1",
+  "alphaThreshold": 128,
+  "sample": "nearest",
+  "oneDeployedPaintingPerPart": true,
+  "biologicalChanges": false,
+  "items": [
+    {
+      "part": "signal-crest",
+      "masterDimensions": [
+        1254,
+        1254
+      ],
+      "cropBounds": [
+        287,
+        137,
+        1071,
+        1088
+      ],
+      "nativeBounds": [
+        20,
+        20
+      ],
+      "rig": {
+        "kind": "dorsal-display",
+        "rootRect": [
+          0,
+          14,
+          32,
+          4
+        ],
+        "panels": [
+          [
+            0,
+            0,
+            32,
+            14
+          ],
+          [
+            0,
+            18,
+            32,
+            14
+          ]
+        ],
+        "foldedExtent": 0.28
+      },
+      "masterSha256": "6126616a4884fa018bdf4ae92914622961c26b214b7d35674237e2d37424f5f4",
+      "candidateSha256": "177bdf0c76bad8fdb3652d86abe1495f274f4565c34f7b101033b6a82231bce9"
+    },
+    {
+      "part": "display-frill",
+      "masterDimensions": [
+        1448,
+        1086
+      ],
+      "cropBounds": [
+        36,
+        64,
+        1409,
+        1015
+      ],
+      "nativeBounds": [
+        24,
+        24
+      ],
+      "rig": {
+        "kind": "dorsal-display",
+        "rootRect": [
+          0,
+          14,
+          32,
+          4
+        ],
+        "panels": [
+          [
+            0,
+            0,
+            32,
+            14
+          ],
+          [
+            0,
+            18,
+            32,
+            14
+          ]
+        ],
+        "foldedExtent": 0.3
+      },
+      "masterSha256": "8189ad3bcbc223374b65f7d0c792514295a88b86968fa0b667b70303c68b9261",
+      "candidateSha256": "054696eeea4d7c6928db4bcbf33324e9f3f7cbf810ba8543a6ac958ab81732e6"
+    }
+  ]
+}

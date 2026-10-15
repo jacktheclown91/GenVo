@@ -869,7 +869,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const depthShadow=creatureShadowFor(this.sim.world,a,this.habitatField,{bodyScale:ph.bodyScale+(life.exhausted?.08:0),moving,dir:drawDir});drawCreatureDepthShadow(c,{shadow:depthShadow,scale,hurt:life.hurt});
     const palette=creaturePalette(ph);
     if(a.hidden)c.globalAlpha*=.58;
-    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:a.player?phase:cachePhase,moving,palette,pose,cacheKey:a.player||feeding||action==='crack'||encounter.move||encounter.impact||encounter.outcome?null:spriteKey(a,palette,drawDir,cachePhase,moving,pose,life)});
+    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:a.player?phase:cachePhase,moving,palette,pose,cacheKey:a.player||feeding||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome?null:spriteKey(a,palette,drawDir,cachePhase,moving,pose,life)});
     if(a.pollenCargo?.mass>0){pixel(c,-3,-3,1,1,scale,'#dfba5b');pixel(c,2,-4,1,1,scale,'#e9d37d');pixel(c,4,-1,1,1,scale,'#cda64e')}
     this.drawLifeEffects(a,scale,frame,pose,palette);
     if(combatStatus)drawPlayerCombatFeedback(c,{animal:a,status:combatStatus,winded,scale,now:this.renderNow,dir:drawDir});else if(a.playerHunt)drawStalkerPursuitFeedback(c,{animal:a,scale,now:this.renderNow});

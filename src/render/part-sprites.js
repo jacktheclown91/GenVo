@@ -267,12 +267,15 @@ export function artMount(partId,k){
    const at=authored('dorsal');
    return {x:at?.x??x0-k.fx*Math.min(k.bodyW,k.bodyH)*.10,
      y:at?.y??y0-k.fy*Math.min(k.bodyW,k.bodyH)*.10,
-     scale:.31*(1+(Number(k.behavior?.crestSpread)||0)),mirrorX:false};
+     scale:.31*(1+(partDef(partId)?.actionCapabilities.includes('flare')?(Number(k.behavior?.crestSpread)||0):0)),mirrorX:false};
  }
  return null;
 }
 export function drawPart(c,partId,k){
  const authored=k.authoredParts?.[partId]||artForPart(partId);
+ if(authored?.rig?.kind==='dorsal-display'&&typeof c.drawImage==='function'){
+  const at=artMount(partId,k);if(at&&authored.drawDorsal(c,{x:at.x*k.s,y:at.y*k.s,scale:k.s*.31*(k.nativeBodyScale??1),headingRadians:Math.atan2(k.fy,k.fx),deployment:partDef(partId)?.actionCapabilities.includes('flare')?(Number(k.behavior?.crestSpread)||0):0,extent:expressionExtent(k,partId),pigment:k.nativePigment,state:k.authoredState||'idle',facing:k.authoredFacing??2,timeMs:k.authoredTimeMs??0,frameIndex:k.authoredFrameIndex??null}))return true;
+ }
  if(authored&&!authored.rig&&typeof c.drawImage==='function'){
   const mount=artMount(partId,k),anchor=mount?{x:mount.x,y:mount.y}:(k.eye||k.mouth||(PART_SPRITES[partId]?.layer==='face'&&k.face?{x:k.bx+k.fx*k.face.mouthForward,y:k.by+k.fy*k.face.mouthForward}:null));
   if(anchor){

@@ -1,6 +1,10 @@
 # Active GenVo development goal: evidence audit
 
-## Latest implementation — October 14 dorsal jaws and funded feeding
+## Latest implementation — October 14 overhead displays and funded folding
+
+Two existing dorsal display organs now use native painted membranes with fixed roots, selected-frame pixel preservation, physical fatigue/pain folding, existing developmental scaling and pause-aware opening/settlement. Non-display dorsal anatomy no longer enlarges during another organ’s flare. Actual 800×600 paid Flare/Play/Back Off, all eight headings, real north-frame Lab edit/export/assembly and 26 focused checks pass. See [the display review](GenVo-Overhead-Displays-Review.md). The full goal, natural courtship, human readability and broader art/biological work remain open.
+
+## Previous dorsal jaws and funded feeding
 
 Four existing mouths now have native overhead paintings with registered attachments and fixed tusks. Funded cracking now actually cycles native open/closed frames, closing through reach and settlement while preserving combat priority. Actual 800×600 mouse attacks, feeding, expected carnivore rejection, eight rendered facings and 18 focused checks pass. The separate 30-second natural run saw no revised-jaw animal near the player; it is not natural encounter acceptance. See [the jaw review](GenVo-Overhead-Jaws-Review.md). The whole goal remains active.
 

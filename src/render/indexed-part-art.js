@@ -59,6 +59,14 @@ export async function compileIndexedPart(spec){
   if(rig!==undefined){
     if(rig.kind==='torso'||rig.kind==='head'){
       if(!Array.isArray(rig.bodyBoundsPx)||rig.bodyBoundsPx.length!==2||!rig.bodyBoundsPx.every(v=>Number.isFinite(v)&&v>=8&&v<=32))fail('invalid torso native bounds');
+    }else if(rig.kind==='dorsal-display'){
+      if(!Array.isArray(rig.panels)||rig.panels.length!==2)fail('dorsal rig requires two panels');
+      const rects=[rig.rootRect,...(rig.panels||[])];
+      if(rects.length!==3||!rects.every(r=>Array.isArray(r)&&r.length===4&&r.every(Number.isInteger)&&r[0]>=0&&r[1]>=0&&r[2]>0&&r[3]>0&&r[0]+r[2]<=32&&r[1]+r[3]<=32))fail('invalid dorsal panel rectangles');
+      const [root,upper,lower]=rects;
+      if(root[0]!==upper[0]||root[0]!==lower[0]||root[2]!==upper[2]||root[2]!==lower[2]||upper[1]+upper[3]!==root[1]||root[1]+root[3]!==lower[1])fail('dorsal panels must meet fixed root');
+      if(rootAnchorPx[0]<root[0]||rootAnchorPx[0]>=root[0]+root[2]||rootAnchorPx[1]<root[1]||rootAnchorPx[1]>=root[1]+root[3])fail('dorsal anchor outside fixed root');
+      if(!Number.isFinite(rig.foldedExtent)||rig.foldedExtent<.1||rig.foldedExtent>1)fail('invalid dorsal folded extent');
     }else if(rig.kind==='two-bone'){
       for(const segment of ['upper','lower']){
         const item=rig[segment],rect=item?.rect,start=item?.start,end=item?.end;

@@ -11,6 +11,7 @@ function definition(partId,motion){
 }
 export const PART_ANIMATIONS=Object.freeze({
  'stalk-eye':definition('stalk-eye','stalk-retraction'),
+ 'signal-crest':definition('signal-crest','crest-fold'),
  'display-frill':definition('display-frill','frill-fold')
 });
 export function animationForPart(partId){return PART_ANIMATIONS[partId]??null;}

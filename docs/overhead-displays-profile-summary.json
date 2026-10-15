@@ -1,0 +1,17 @@
+{
+  "before": {
+    "meanRendererCommandMs": 9.792978331006795,
+    "individualRunMeans": [
+      10.475390624429565,
+      9.110566037584025
+    ]
+  },
+  "after": {
+    "meanRendererCommandMs": 9.254955348449329,
+    "individualRunMeans": [
+      9.253256704758181,
+      9.256653992140475
+    ]
+  },
+  "scope": "Two alternating runs per source, ordinary initial world, about32 visible creatures. Before-run variation is large; no stable speedup, dense-world, all-displays-active or GPU-latency claim."
+}

@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "scope": "Actual 800x600 Lab mouse edit of north-facing second frame, compile preview and JSON export; temporary drafts only, canonical source untouched.",
+  "trials": [
+    {
+      "part": "signal-crest",
+      "facing": 0,
+      "frameIndex": 1,
+      "rootGuide": "rotate(-90 16 16)",
+      "editedPixel": [
+        105,
+        154,
+        129,
+        255
+      ],
+      "rig": {
+        "kind": "dorsal-display",
+        "rootRect": [
+          0,
+          14,
+          32,
+          4
+        ],
+        "panels": [
+          [
+            0,
+            0,
+            32,
+            14
+          ],
+          [
+            0,
+            18,
+            32,
+            14
+          ]
+        ],
+        "foldedExtent": 0.28
+      },
+      "unchangedOtherFrames": 15,
+      "temporaryPreview": true,
+      "assemblyMounted": true,
+      "assemblyFacing": 0,
+      "exported": true
+    },
+    {
+      "part": "display-frill",
+      "facing": 0,
+      "frameIndex": 1,
+      "rootGuide": "rotate(-90 16 16)",
+      "editedPixel": [
+        105,
+        154,
+        129,
+        255
+      ],
+      "rig": {
+        "kind": "dorsal-display",
+        "rootRect": [
+          0,
+          14,
+          32,
+          4
+        ],
+        "panels": [
+          [
+            0,
+            0,
+            32,
+            14
+          ],
+          [
+            0,
+            18,
+            32,
+            14
+          ]
+        ],
+        "foldedExtent": 0.3
+      },
+      "unchangedOtherFrames": 15,
+      "temporaryPreview": true,
+      "assemblyMounted": true,
+      "assemblyFacing": 0,
+      "exported": true
+    }
+  ],
+  "errors": []
+}

@@ -4,8 +4,23 @@ const segmentDensity=(section,a,b)=>Math.hypot(b.x-a.x,b.y-a.y)/Math.hypot(secti
 // Prepare once per asset/palette. Drawing performs no decoding or pixel allocation.
 export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
  const factory=createCanvas||(()=>{if(typeof document!=='undefined')return document.createElement('canvas');if(typeof OffscreenCanvas!=='undefined')return new OffscreenCanvas(32,32);throw Error('Canvas backend unavailable')});
+ function prepared(frame,canvas,rgba){
+  const entry={frame,canvas};if(asset.rig?.kind!=='dorsal-display')return entry;
+  const r=asset.rig,[px,py]=asset.rootAnchorPx,angle=(frame.facing-2)*Math.PI/4,co=Math.cos(angle),si=Math.sin(angle);
+  // Partition actual selected-facing pixels once. No readback, resampling, or
+  // destructive source rotation: individual directional/frame edits remain visible.
+  const images=[0,1,2].map(()=>{const c=factory();c.width=asset.width;c.height=asset.height;const ctx=c.getContext('2d');return{canvas:c,ctx,data:ctx.createImageData(asset.width,asset.height)}});
+  for(let y=0;y<asset.height;y++)for(let x=0;x<asset.width;x++){
+   const dx=x+.5-px,dy=y+.5-py,ex=co*dx+si*dy+px,ey=-si*dx+co*dy+py;
+   const section=ey<r.rootRect[1]?0:ey>=r.rootRect[1]+r.rootRect[3]?1:2,rect=section===2?r.rootRect:r.panels[section];
+   if(ex<rect[0]||ex>=rect[0]+rect[2]||ey<rect[1]||ey>=rect[1]+rect[3])continue;
+   const i=(y*asset.width+x)*4;images[section].data.data.set(rgba.subarray(i,i+4),i);
+  }
+  for(const image of images)image.ctx.putImageData(image.data,0,0);
+  entry.dorsalPaint=images.map(i=>i.canvas);return entry;
+ }
  const sequences=new Map();
- for(const frame of asset.frames){const canvas=factory();canvas.width=asset.width;canvas.height=asset.height;const ctx=canvas.getContext('2d');const image=ctx.createImageData(asset.width,asset.height);image.data.set(recolorIndexedFrame(asset,frame.key,palette));ctx.putImageData(image,0,0);const key=frame.state+':'+frame.facing;if(!sequences.has(key))sequences.set(key,[]);sequences.get(key).push({frame,canvas})}
+ for(const frame of asset.frames){const canvas=factory();canvas.width=asset.width;canvas.height=asset.height;const ctx=canvas.getContext('2d');const image=ctx.createImageData(asset.width,asset.height);image.data.set(recolorIndexedFrame(asset,frame.key,palette));ctx.putImageData(image,0,0);const key=frame.state+':'+frame.facing;if(!sequences.has(key))sequences.set(key,[]);sequences.get(key).push(prepared(frame,canvas,image.data))}
  for(const entries of sequences.values())entries.sort((a,b)=>a.frame.index-b.frame.index);
  // Inherited skin coloration is derived from the creature's phenotype at draw time.
  // The compiled/source RGB sheets remain untouched. Cache only displayed frames, never
@@ -18,7 +33,7 @@ export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
   const canvas=factory();canvas.width=asset.width;canvas.height=asset.height;
   const ctx=canvas.getContext('2d'),data=ctx.createImageData(asset.width,asset.height);
   data.data.set(recolorIndexedFrame(asset,entry.frame.key,{skin:pigment}));ctx.putImageData(data,0,0);
-  hit={frame:entry.frame,canvas};tintCache.set(key,hit);
+  hit=prepared(entry.frame,canvas,data.data);tintCache.set(key,hit);
   if(tintCache.size>MAX_TINTED_FRAMES)tintCache.delete(tintCache.keys().next().value);
   return hit;
  }
@@ -62,6 +77,22 @@ export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
  return Object.freeze({partId:asset.partId,checksum:asset.checksum,rig,expressionScale:asset.expressionScale||'pulse',frameAt(options){return select(options)?.frame||null},
  drawTorso(ctx,options){return drawSurface(ctx,'torso',options)},
  drawHead(ctx,options){return drawSurface(ctx,'head',options)},
+ drawDorsal(ctx,{x=0,y=0,scale=1,headingRadians=0,deployment=0,extent=1,pigment=null,state='idle',facing=2,timeMs=0,frameIndex=null}={}){
+  if(rig?.kind!=='dorsal-display')return false;
+  if(![x,y,scale,headingRadians,deployment,extent].every(Number.isFinite)||scale<=0)throw Error('Invalid dorsal surface transform');
+  // Each selected native frame supplies its own tissue. Only transverse panels
+  // fold; the root and world-forward length never grow with an encounter pulse.
+  const chosen=select({state,facing,timeMs,frameIndex})||select({state:'idle',facing,timeMs,frameIndex});if(!chosen)return false;
+  const entry=tinted(chosen,pigment),fold=(rig.foldedExtent+(1-rig.foldedExtent)*Math.max(0,Math.min(1,deployment)))*Math.max(.25,Math.min(1,extent));
+  ctx.save();try{
+   ctx.imageSmoothingEnabled=false;ctx.translate(x,y);ctx.rotate(headingRadians);ctx.scale(scale*displayScale,scale*displayScale);
+   for(let i=0;i<2;i++){
+    const hingeY=i===0?rig.rootRect[1]:rig.rootRect[1]+rig.rootRect[3];
+    ctx.save();try{ctx.translate(0,hingeY-pivot[1]);ctx.scale(1,fold);ctx.translate(0,pivot[1]-hingeY);ctx.rotate(-(chosen.frame.facing-2)*Math.PI/4);ctx.drawImage(entry.dorsalPaint[i],-pivot[0],-pivot[1]);}finally{ctx.restore()}
+   }
+   ctx.rotate(-(chosen.frame.facing-2)*Math.PI/4);ctx.drawImage(entry.dorsalPaint[2],-pivot[0],-pivot[1]);
+  }finally{ctx.restore()}return true;
+ },
  drawLimb(ctx,{root,knee,foot,scale=1,state='idle',facing=0,timeMs=0,pigment=null,frameIndex=null}={}){
   if(rig?.kind!=='two-bone'||!root||!knee||!foot)return false;
   const chosen=select({state,facing,timeMs,frameIndex})||select({state:'idle',facing,timeMs,frameIndex});if(!chosen)return false;const entry=tinted(chosen,pigment);

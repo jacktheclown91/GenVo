@@ -2,7 +2,7 @@
 
 Canonical source for the evolutionary survival game. Development happens on **main**; this repository has one branch.
 
-Current checkpoint: **Dorsal Jaws and Funded Feeding Articulation (2026-10-14)**. Four existing mouth packs follow the approved overhead direction. Native grinding now visibly opens/closes from actual funded meals; painted attachments and rigid tusks remain stable. Complete legal bodies were verified in eight rendered headings, actual mouse attacks, E feeding, expected dietary rejection, Lab and saves. See [the current review](docs/GenVo-Overhead-Jaws-Review.md). Natural encounter readability, raised display artwork, vegetation, human usability and biological calibration remain open.
+Current checkpoint: **Native Overhead Displays and Funded Folding (2026-10-14)**. Signal crest and display frill now unfold around fixed native roots through actual paid courtship. Native physical folding, developmental scale, pause/settlement and non-display isolation are integrated. Every facing/frame remains editable; actual 800×600 Flare/Play/Back Off, eight headings, Lab edit/export/assembly and 26 focused checks pass. See [the current review](docs/GenVo-Overhead-Displays-Review.md). Natural courtship, ordinary-scale/human acceptance, dense-world performance and biological calibration remain open.
 
 Run the game from the repository root:
 
