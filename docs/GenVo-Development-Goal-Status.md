@@ -1,6 +1,10 @@
 # Active GenVo development goal: evidence audit
 
-## Latest implementation — October 14 overhead displays and funded folding
+## Latest implementation - October 14 overhead flora and reliable selection
+
+Existing finite plant resources now use native overhead canopies/crowns/caps, inherited coat states and fruit-free seedlings. Painted and clickable positions share one anchor, including shoreline reeds. Paired natural-world snapshots match the entire serialized simulation. Real 800x600 selected-resource feeding, inspection, season/coat fixtures and saves pass, with natural resources and controlled fungal stock explicitly distinguished. Seventeen focused suites pass. See [the flora review](GenVo-Overhead-Flora-Review.md). Larger background landmarks, natural adaptation and human usability remain open; the complete development goal remains active.
+
+## Previous implementation — October 14 overhead displays and funded folding
 
 Two existing dorsal display organs now use native painted membranes with fixed roots, selected-frame pixel preservation, physical fatigue/pain folding, existing developmental scaling and pause-aware opening/settlement. Non-display dorsal anatomy no longer enlarges during another organ’s flare. Actual 800×600 paid Flare/Play/Back Off, all eight headings, real north-frame Lab edit/export/assembly and 26 focused checks pass. See [the display review](GenVo-Overhead-Displays-Review.md). The full goal, natural courtship, human readability and broader art/biological work remain open.
 

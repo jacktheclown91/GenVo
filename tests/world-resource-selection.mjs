@@ -12,4 +12,9 @@ assert.equal(worldResourceAt(s,r,0,0).food,cell.food,'visible anchor selects exa
 assert.equal(s.rng.state,rng);assert.equal(w.plants[cell.food][cell.i],amount,'picking is read-only');
 r.plantTargetWorld={};assert.equal(worldResourceAt(s,r,0,0).kind,'ground','stale world artwork cannot select food');r.plantTargetWorld=w;
 w.plants[cell.food][cell.i]=0;assert.equal(worldResourceAt(s,r,0,0).kind,'ground','depleted plant cannot remain selectable');
+// Foreground flora remains selectable over water; depletion reveals the source below.
+w.plants[cell.food][cell.i]=amount;w.water[cell.i]=1;
+assert.equal(worldResourceAt(s,r,0,0).food,cell.food,'Visible shoreline flora takes precedence over background water');
+assert.equal(w.plants[cell.food][cell.i],amount);assert.equal(s.rng.state,rng);
+w.plants[cell.food][cell.i]=0;assert.equal(worldResourceAt(s,r,0,0).kind,'water','Depleted flora exposes actual background water');
 console.log('Visible plant selection, bare ground, depletion, stale-world and read-only checks PASS');

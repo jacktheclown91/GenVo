@@ -2,7 +2,7 @@
 
 Canonical source for the evolutionary survival game. Development happens on **main**; this repository has one branch.
 
-Current checkpoint: **Native Overhead Displays and Funded Folding (2026-10-14)**. Signal crest and display frill now unfold around fixed native roots through actual paid courtship. Native physical folding, developmental scale, pause/settlement and non-display isolation are integrated. Every facing/frame remains editable; actual 800×600 Flare/Play/Back Off, eight headings, Lab edit/export/assembly and 26 focused checks pass. See [the current review](docs/GenVo-Overhead-Displays-Review.md). Natural courtship, ordinary-scale/human acceptance, dense-world performance and biological calibration remain open.
+Current checkpoint: **Native Overhead Flora and Reliable Selection (2026-10-14)**. Existing plants now use overhead canopies, crowns, caps and inherited pod states, with fruit-free seedlings and shared painted/clicked anchors. Actual 800x600 selection, Inspect/E feeding, coat/season fixtures and save/load pass; paired natural-world rendering preserves the entire serialized simulation. See [the current review](docs/GenVo-Overhead-Flora-Review.md). Larger background landmarks, natural adaptation, dense-world performance and human playtesting remain open.
 
 Run the game from the repository root:
 

@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "scope": "Exact natural saved world under before/current presentation, timestamp-normalized full model parity, actual rendered-player identity and ordinary keyboard movement. No natural evolutionary outcome or human approval claimed.",
+  "runs": [
+    {
+      "label": "before",
+      "state": {
+        "tick": 65,
+        "living": 196,
+        "camera": {
+          "x": 5.5,
+          "y": 54.5
+        },
+        "player": {
+          "id": 109,
+          "x": 5.5,
+          "y": 54.5
+        },
+        "sameActor": true
+      },
+      "modelSha256": "021cad1dc6c186cd1eb249ecf5ee05a06a832bdb54708fe00ba2272ac2975687",
+      "moved": {
+        "x": 8.295940135093147,
+        "y": 54.5,
+        "sameActor": true,
+        "tick": 81
+      },
+      "errors": []
+    },
+    {
+      "label": "after",
+      "state": {
+        "tick": 65,
+        "living": 196,
+        "camera": {
+          "x": 5.5,
+          "y": 54.5
+        },
+        "player": {
+          "id": 109,
+          "x": 5.5,
+          "y": 54.5
+        },
+        "sameActor": true
+      },
+      "modelSha256": "021cad1dc6c186cd1eb249ecf5ee05a06a832bdb54708fe00ba2272ac2975687",
+      "moved": {
+        "x": 8.369517507069283,
+        "y": 54.5,
+        "sameActor": true,
+        "tick": 81
+      },
+      "errors": []
+    }
+  ]
+}

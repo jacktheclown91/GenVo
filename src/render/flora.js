@@ -1,36 +1,46 @@
 import {pixel,pixelLine,snap} from './pixel-art.js';
-import {drawAuthoredShrub,drawAuthoredMoss} from './authored-flora.js';
+import {drawAuthoredFlora} from './authored-flora.js';
 // Authored pixel silhouettes for the five canonical plant families. This module is
 // presentation-only: callers pass canonical biomass/season/shore information and it
 // draws from deterministic coordinates without touching simulation RNG or world state.
 
 export function floraAnchor(shape,x,y){
   const jit=(shape==='tuft'?3:shape==='reed'?1.5:2.5),pull=shape==='reed'?.2:.4,ccx=(x>>1)*2+1+(hash2(x>>1,y>>1,9011)-.5)*.9,ccy=(y>>1)*2+1+(hash2(x>>1,y>>1,9013)-.5)*.9;
-  const jx=snap((hash2(x,y,9001)-.5)*2*jit+(ccx-(x+.5))*16*pull),jy=snap((hash2(x,y,9007)-.5)*2*jit+(ccy-(y+.5))*16*pull);
+  const salt=Array.from(shape).reduce((n,c)=>n+c.charCodeAt(0),0);
+  const jx=snap((hash2(x,y,9001+salt)-.5)*2*jit+(ccx-(x+.5))*16*pull),jy=snap((hash2(x,y,9007+salt)-.5)*2*jit+(ccy-(y+.5))*16*pull);
   return{jx,jy};
 }
 
-export function drawFloraPlant(ctx,{shape,color,amount,px,py,u,x,y,kind,seedAllocation=.2,coatAllocation=.25,reproduction=null,season='SPRING',isWater=()=>false}){
+export function floraVisualAnchor(shape,x,y,isWater=()=>false){
+ const {jx,jy}=floraAnchor(shape,x,y),cx=shape==='reed'?(isWater(x-1,y)?4:isWater(x+1,y)?10:8):8,cy=shape==='reed'?(isWater(x,y-1)?4:isWater(x,y+1)?12:8):8;
+ return{jx,jy,cx,cy,x:cx+jx,y:cy+jy};
+}
+export function drawFloraPlant(ctx,{shape,color,amount,px,py,u,x,y,kind,seedAllocation=.2,coatAllocation=.25,reproduction=null,season='SPRING',isWater=()=>false,visualAnchor=null}){
   if(!(amount>0))return;
   const seed=hash2(x,y,kind.length*17),cluster=hash2(x>>1,y>>1,kind.length*31),density=Math.max(1,Math.min(5,Math.ceil(amount*5)));
   // v1.41.0: each tile's plant sits a little off-centre (fixed per tile), so plants no longer line up in a grid.
   // v1.50.0: plants also lean towards a shared clump centre (one per 2x2 tiles), so they gather in clumps with gaps between instead of a grid.
-  const {jx,jy}=floraAnchor(shape,x,y);
+  const at=visualAnchor||floraVisualAnchor(shape,x,y,isWater),{jx,jy}=at;
   ctx.save();ctx.translate(px+jx*u,py+jy*u);
   const seasonal=seasonalBase(color,season,kind),body=tintHex(seasonal,(seed-.5)*10,(cluster-.5)*8),light=tintHex(seasonal,(cluster-.5)*8,10),shade=tintHex(seasonal,0,-14),deep=tintHex(seasonal,0,-22);
+  const authored=drawAuthoredFlora(ctx,{shape,u,density,amount,season,seedAllocation,coatAllocation,body,light,shade,deep,center:{x:at.cx,y:at.cy},turn:shape==='tuft'?0:Math.floor(seed*4)*Math.PI/2});
+  if(!authored){
   if(shape==='tuft')drawMoss(ctx,{x,y,u,density,body,light,shade,seed,amount,season});
   else if(shape==='shrub')drawBerryShrub(ctx,{x,y,u,density,body,light,shade,deep,seed,cluster,amount,season,seedAllocation});
   else if(shape==='reed')drawReedFan(ctx,{x,y,u,density,body,light,shade,seed,isWater,season});
   else if(shape==='fungus')drawMushrooms(ctx,{x,y,u,density,body,light,shade,seed,amount,season});
   else if(shape==='pod')drawSeedPods(ctx,{x,y,u,density,body,light,shade,seed,amount,season,coatAllocation});
   else pixel(ctx,7,7,2,2,u,body);
-  if(reproduction?.receptive){pixel(ctx,6,4,3,1,u,'#e4d1b0');pixel(ctx,7,3,1,3,u,'#e4d1b0');pixel(ctx,7,4,1,1,u,'#e6bd63')}if(reproduction?.pollen){pixel(ctx,10,4,1,1,u,'#dfba5b');pixel(ctx,11,6,1,1,u,'#e9d37d')}if(reproduction?.developing){pixel(ctx,6,6,3,2,u,'#bd9c58');pixel(ctx,7,6,1,1,u,'#dfc47d')}
+  }
+  if(reproduction?.receptive){pixel(ctx,at.cx-2,at.cy-4,3,1,u,'#e4d1b0');pixel(ctx,at.cx-1,at.cy-5,1,3,u,'#e4d1b0');pixel(ctx,at.cx-1,at.cy-4,1,1,u,'#e6bd63')}if(reproduction?.pollen){pixel(ctx,at.cx+2,at.cy-4,1,1,u,'#dfba5b');pixel(ctx,at.cx+3,at.cy-2,1,1,u,'#e9d37d')}if(reproduction?.developing){pixel(ctx,at.cx-2,at.cy-2,3,2,u,'#bd9c58');pixel(ctx,at.cx-1,at.cy-2,1,1,u,'#dfc47d')}
   ctx.restore();
 }
 
 export function floraTraceAnchor(kind,x,y){return{ox:3+Math.floor(hash2(x,y,kind.length*337)*10),oy:11+Math.floor(hash2(y,x,341)*3)}}
-export function drawFloraTrace(ctx,{shape,color,px,py,u,x,y,kind}){
-  const h=hash2(x,y,kind.length*337),{ox,oy}=floraTraceAnchor(kind,x,y),body=tintHex(color,0,-2),light=tintHex(color,0,9);ctx.save();ctx.translate(px,py);
+export function drawFloraTrace(ctx,{shape,color,px,py,u,x,y,kind,amount,season='SPRING',seedAllocation=.2,coatAllocation=.25}){
+  if(amount!==undefined&&!(amount>0))return;
+  const h=hash2(x,y,kind.length*337),{ox,oy}=floraTraceAnchor(kind,x,y),seasonal=seasonalBase(color,season,kind),body=tintHex(seasonal,0,-2),light=tintHex(seasonal,0,9);ctx.save();ctx.translate(px,py);
+  if(drawAuthoredFlora(ctx,{shape,u,amount,season,seedAllocation,coatAllocation,body,light,shade:tintHex(seasonal,0,-14),deep:tintHex(seasonal,0,-22),center:{x:ox+.5,y:oy-2},turn:shape==='tuft'?0:Math.floor(h*4)*Math.PI/2,mini:true})){ctx.restore();return}
   if(shape==='tuft'){pixel(ctx,ox,oy-1,1,2,u,body);if(h>.55)pixel(ctx,ox+1,oy-2,1,2,u,light)}
   else if(shape==='shrub'){pixel(ctx,ox,oy-2,1,3,u,'#5b452c');pixel(ctx,ox-1,oy-3,3,2,u,body)}
   else if(shape==='reed'){pixel(ctx,ox,oy-3,1,4,u,body);if(h>.6)pixel(ctx,ox+2,oy-4,1,5,u,light)}
@@ -41,8 +51,11 @@ export function drawFloraTrace(ctx,{shape,color,px,py,u,x,y,kind}){
 
 export function floraSeedlingAnchor(kind,x,y){return{ox:3+snap(hash2(x,y,kind.length*251)*10),base:7+snap(hash2(y,x,257)*7)}}
 export function drawFloraSeedling(ctx,{p,amount,bank,px,py,u,x,y,kind}){
+  if(!(amount>0)&&!(bank>0))return;
   const {ox,base}=floraSeedlingAnchor(kind,x,y),stem=tintHex(p.color,0,-15),leaf=tintHex(p.color,0,13),leaf2=tintHex(p.color,0,4);
-  ctx.save();ctx.translate(px,py);if(amount<=.002){for(const [dx,dy] of [[-1,0],[1,1],[2,-1]])pixel(ctx,ox+dx,base+dy,1,1,u,'#b9a264');ctx.restore();return}pixel(ctx,ox,base-3,.5,4,u,stem);
+  ctx.save();ctx.translate(px,py);if(amount<=.002){for(const [dx,dy] of [[-1,0],[1,1],[2,-1]])pixel(ctx,ox+dx,base+dy,1,1,u,'#b9a264');ctx.restore();return}
+  if(drawAuthoredFlora(ctx,{shape:'seedling',u,amount,body:leaf2,light:leaf,shade:stem,deep:tintHex(p.color,0,-22),center:{x:ox+.5,y:base-3},turn:Math.floor(hash2(x,y,259)*4)*Math.PI/2,sizeFactor:.45+Math.min(.5,amount*3)})){ctx.restore();return}
+  pixel(ctx,ox,base-3,.5,4,u,stem);
   // Two offset leaves make seedlings read as actual plants rather than a generic T shape.
   pixel(ctx,ox-2,base-4,2,1,u,leaf);pixel(ctx,ox-1,base-5,1,1,u,leaf);
   if(amount>.02||bank>.12){pixel(ctx,ox+1,base-5,2,1,u,leaf2);pixel(ctx,ox+2,base-6,1,1,u,leaf2)}
@@ -50,7 +63,6 @@ export function drawFloraSeedling(ctx,{p,amount,bank,px,py,u,x,y,kind}){
 }
 
 function drawMoss(c,{x,y,u,density,body,light,shade,seed,amount,season}){
-  if(drawAuthoredMoss(c,{u,density,body,light,shade,amount,season}))return;
   const patches=2+Math.min(3,density);
   for(let k=0;k<patches;k++){
     const q=hash2(x+k*7,y-k*5,107),cx=3+Math.floor(hash2(x+k,y-k,109)*10),base=11+Math.floor(hash2(y+k,x-k,113)*3),reach=1+(q>.55?1:0);
@@ -64,7 +76,6 @@ function drawMoss(c,{x,y,u,density,body,light,shade,seed,amount,season}){
 }
 
 function drawBerryShrub(c,{x,y,u,density,body,light,shade,deep,seed,cluster,amount,season,seedAllocation=.2}){
-  if(drawAuthoredShrub(c,{u,density,body,light,shade,deep,amount,season,seedAllocation}))return;
   const v=Math.floor(seed*4),cx=6+Math.floor(cluster*3),base=13;
   // Visible branching skeleton makes the resource feel like a shrub rather than stacked rectangles.
   pixelLine(c,cx,base,cx,6,u,'#5c472d');pixelLine(c,cx,9,cx-4,5+(v&1),u,'#684e2d');pixelLine(c,cx,8,cx+4,4+((v>>1)&1),u,'#684e2d');

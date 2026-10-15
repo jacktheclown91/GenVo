@@ -1,0 +1,228 @@
+{
+  "schema": "genvo.overhead-flora-preparation/1",
+  "alphaThreshold": 128,
+  "sample": "nearest",
+  "palette": [
+    [
+      0,
+      0,
+      0
+    ],
+    [
+      23,
+      44,
+      34
+    ],
+    [
+      49,
+      76,
+      48
+    ],
+    [
+      84,
+      116,
+      68
+    ],
+    [
+      129,
+      164,
+      94
+    ],
+    [
+      190,
+      211,
+      140
+    ],
+    [
+      101,
+      36,
+      62
+    ],
+    [
+      166,
+      53,
+      89
+    ],
+    [
+      220,
+      100,
+      127
+    ],
+    [
+      117,
+      99,
+      61
+    ],
+    [
+      169,
+      144,
+      82
+    ],
+    [
+      200,
+      175,
+      98
+    ],
+    [
+      223,
+      196,
+      125
+    ]
+  ],
+  "materials": {
+    "foliage": [
+      1,
+      5
+    ],
+    "fruit": [
+      6,
+      8
+    ],
+    "shellOrWood": [
+      9,
+      12
+    ]
+  },
+  "registeredShrubFoliage": true,
+  "registeredPodFoliageOutsideCapsuleRegion": true,
+  "preservedMossShape": true,
+  "runtimeDataSha256": "97774b3e43705883fab65f8e551e4ca65b00c52d167821d3acb9f8232aa8a4b3",
+  "items": [
+    {
+      "family": "shrub",
+      "masterDimensions": [
+        1983,
+        793
+      ],
+      "cropBounds": [
+        [
+          174,
+          42,
+          900,
+          746
+        ],
+        [
+          105,
+          42,
+          829,
+          746
+        ]
+      ],
+      "nativeBounds": [
+        26,
+        26
+      ],
+      "visiblePixels": [
+        406,
+        406
+      ],
+      "masterSha256": "91059bf740f4de912db2d5c5b763a044256389e607db08f50f82e48c3986ec5e"
+    },
+    {
+      "family": "reed",
+      "masterDimensions": [
+        1254,
+        1254
+      ],
+      "cropBounds": [
+        [
+          66,
+          102,
+          1198,
+          1182
+        ]
+      ],
+      "nativeBounds": [
+        26,
+        26
+      ],
+      "visiblePixels": [
+        341
+      ],
+      "masterSha256": "0c8f31008dbf65b9462ef537741c9c779112879dd409793540acd85edb3b7f5f"
+    },
+    {
+      "family": "pod",
+      "masterDimensions": [
+        2172,
+        724
+      ],
+      "cropBounds": [
+        [
+          47,
+          38,
+          686,
+          680
+        ],
+        [
+          46,
+          38,
+          687,
+          680
+        ],
+        [
+          47,
+          38,
+          687,
+          680
+        ]
+      ],
+      "nativeBounds": [
+        26,
+        26
+      ],
+      "visiblePixels": [
+        443,
+        443,
+        443
+      ],
+      "masterSha256": "1b4c35e0a04b85695cd2070bf3b1e8b7358eef8e94ab833dc6cb83e14766e591"
+    },
+    {
+      "family": "fungus",
+      "masterDimensions": [
+        1254,
+        1254
+      ],
+      "cropBounds": [
+        [
+          105,
+          181,
+          1163,
+          1110
+        ]
+      ],
+      "nativeBounds": [
+        24,
+        24
+      ],
+      "visiblePixels": [
+        377
+      ],
+      "masterSha256": "7afdb5e555d903ec941c0a00d9eeb254ae3c2c1628a93c472446d047a2fdf061"
+    },
+    {
+      "family": "seedling",
+      "masterDimensions": [
+        1254,
+        1254
+      ],
+      "cropBounds": [
+        [
+          314,
+          536,
+          942,
+          789
+        ]
+      ],
+      "nativeBounds": [
+        14,
+        10
+      ],
+      "visiblePixels": [
+        92
+      ],
+      "masterSha256": "32221865d908fa3a34765499c75bc4312595baabe1e85e2c02454f91bcf0289d"
+    }
+  ]
+}

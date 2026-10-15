@@ -11,10 +11,10 @@ export function worldResourceAt(sim,renderer,cx,cy){const p=renderer.screenToWor
  if(w.carrion[i]>.06&&Math.hypot(p.x-x,p.y-y)<.5)return{kind:'corpse',i,food:'carrion',x,y,label:'Carrion'};
  const patch=sim.discovery?.pickSeedPatchAt(sim.player(),p.x,p.y);if(patch)return sim.discovery.seedPatchTarget(patch);
  const trace=sim.discovery?.pickTraceAt(sim.player(),p.x,p.y);if(trace)return sim.discovery.traceTarget(trace);
- if(w.water[i])return{kind:'water',i,x,y,label:'Water'};
  let plant=null,best=.38;
  if(renderer.plantTargetWorld===w)for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const j=w.idx(p.x+dx,p.y+dy);for(const food of Object.keys(PLANTS)){const candidate=renderer.visiblePlantTargets?.get(j+'|'+food);if(!candidate||!(w.plants[food]?.[j]>.01))continue;const d=Math.hypot(candidate.hitX-p.x,candidate.hitY-p.y);if(d<best){plant=candidate;best=d}}}
  if(plant)return{kind:'plant',...plant,label:PLANTS[plant.food].label||plant.food};
+ if(w.water[i])return{kind:'water',i,x,y,label:'Water'};
  return{kind:'ground',i,x,y,label:'Open ground'};
 }
 export function approachGoal(sim,target){const a=sim.player();if(!a)return null;if(target.kind==='ground'||target.kind==='trace'||target.kind==='seed-patch')return sim.canOccupy(a,target.x,target.y)?{x:target.x,y:target.y}:null;const choices=[];for(let y=-1;y<=1;y++)for(let x=-1;x<=1;x++){const p={x:target.x+x,y:target.y+y};if(sim.canOccupy(a,p.x,p.y)&&(target.kind!=='water'||sim.world.isDrinkable(p.x,p.y)))choices.push(p)}return choices.sort((p,q)=>Math.hypot(p.x-a.x,p.y-a.y)-Math.hypot(q.x-a.x,q.y-a.y))[0]||null}

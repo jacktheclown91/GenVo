@@ -37,7 +37,7 @@ import {environmentContactFor,drawGroundContact,drawForegroundContact,displaceme
 import {collectHabitatScenes} from './scene.js';
 import {drawHabitatSceneBackdrop,drawHabitatSceneForeground} from './scene-detail.js';
 import {drawHabitatDepth,creatureShadowFor,drawCreatureDepthShadow,drawSceneDepthForeground} from './depth.js';
-import {drawFloraPlant,drawFloraSeedling,floraSeedlingAnchor,floraTraceAnchor,drawFloraTrace,floraAnchor} from './flora.js';
+import {drawFloraPlant,drawFloraSeedling,floraSeedlingAnchor,floraTraceAnchor,drawFloraTrace,floraVisualAnchor} from './flora.js';
 import {drawSceneLandmarkBackdrop,drawSceneLandmarkForeground} from './landmarks.js';
 import {drawTerrainMotifBackdrop,drawTerrainMotifForeground} from './terrain-motifs.js';
 import {habitatIdentityAt,riverIdentityAt,drawSeasonalGround,terrainPaletteAt} from './identity.js';
@@ -798,11 +798,11 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     if(best&&best.amount<renderThreshold(best.p.render)*.9&&!(smoothNoise2(x,y,4.5,709)>.52&&hash2(x,y,711)>.25))return;
     if(best){drawFloraSeedling(this.ctx,{...best,px,py,u,x,y});if(best.amount>.002){this.visiblePlantTargets??=new Map();const {ox,base}=floraSeedlingAnchor(best.kind,x,y);this.visiblePlantTargets.set(i+'|'+best.kind,{i,food:best.kind,x:x+.5,y:y+.5,hitX:x+(ox+.5)/16,hitY:y+(base-3)/16})}}
   }
-  drawPlantTrace(shape,color,px,py,u,x,y,kind){const i=this.sim.world.idx(x,y),{ox,oy}=floraTraceAnchor(kind,x,y);this.visiblePlantTargets??=new Map();this.visiblePlantTargets.set(i+'|'+kind,{i,food:kind,x:x+.5,y:y+.5,hitX:x+(ox+.5)/16,hitY:y+(oy-2)/16});drawFloraTrace(this.ctx,{shape,color,px,py,u,x,y,kind})}
+  drawPlantTrace(shape,color,px,py,u,x,y,kind){const i=this.sim.world.idx(x,y),{ox,oy}=floraTraceAnchor(kind,x,y);this.visiblePlantTargets??=new Map();this.visiblePlantTargets.set(i+'|'+kind,{i,food:kind,x:x+.5,y:y+.5,hitX:x+(ox+.5)/16,hitY:y+(oy-2)/16});drawFloraTrace(this.ctx,{shape,color,px,py,u,x,y,kind,amount:this.sim.world.plants[kind]?.[i]||0,season:this.sim.season,seedAllocation:this.sim.dispersal.genomeAt(kind,i)?.traits.seedAllocation??.2,coatAllocation:this.sim.dispersal.genomeAt(kind,i)?.traits.coatAllocation??.25})}
   drawPlant(shape,color,amount,px,py,u,x,y,kind){
     if(this.vegOnly==='minor')return;
-    this.visiblePlantTargets??=new Map();this.plantTargetWorld=this.sim.world;const {jx,jy}=floraAnchor(shape,x,y),i=this.sim.world.idx(x,y);this.visiblePlantTargets.set(i+'|'+kind,{i,food:kind,x:x+.5,y:y+.5,hitX:x+.5+jx/16,hitY:y+(shape==='tuft'?11:shape==='shrub'||shape==='pod'||shape==='reed'?6:8)/16+jy/16});
-    drawFloraPlant(this.ctx,{shape,color,amount,px,py,u,x,y,kind,seedAllocation:this.sim.dispersal.genomeAt(kind,i)?.traits.seedAllocation??.2,coatAllocation:this.sim.dispersal.genomeAt(kind,i)?.traits.coatAllocation??.25,reproduction:botanicalPlantView(this.sim.dispersal,kind,i),season:this.sim.season,isWater:(tx,ty)=>this.isWater(tx,ty)});
+    this.visiblePlantTargets??=new Map();this.plantTargetWorld=this.sim.world;const visualAnchor=floraVisualAnchor(shape,x,y,(tx,ty)=>this.isWater(tx,ty)),i=this.sim.world.idx(x,y);this.visiblePlantTargets.set(i+'|'+kind,{i,food:kind,x:x+.5,y:y+.5,hitX:x+visualAnchor.x/16,hitY:y+visualAnchor.y/16});
+    drawFloraPlant(this.ctx,{shape,color,amount,px,py,u,x,y,kind,visualAnchor,seedAllocation:this.sim.dispersal.genomeAt(kind,i)?.traits.seedAllocation??.2,coatAllocation:this.sim.dispersal.genomeAt(kind,i)?.traits.coatAllocation??.25,reproduction:botanicalPlantView(this.sim.dispersal,kind,i),season:this.sim.season,isWater:(tx,ty)=>this.isWater(tx,ty)});
   }
   drawCarrion(px,py,u,amount){const c=this.ctx;c.save();c.translate(px,py);pixel(c,4,11,8,2,u,'rgba(48,29,26,.42)');pixel(c,5,8,6,3,u,'#8b554d');pixel(c,4,9,2,2,u,'#6f443f');if(amount>.7){pixel(c,10,7,1,4,u,'#d2c7a9');pixel(c,9,8,3,1,u,'#d2c7a9')}c.restore()}
   drawAnimal(a,tile){
