@@ -68,10 +68,15 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
       else if(this.sim.seasonIndex===this.terrainSeason&&this.renderNow-(this.terrainRefreshAt||0)<20000)this.pendingHabitatFrames=30;
       else{this.terrainSeason=this.sim.seasonIndex;this.terrainRefreshAt=this.renderNow;this.habitatField=buildSmoothedHabitatField(this.sim.world);this.habitatMaskCache.clear();this.landBaseTileCache.clear();this.staticLandTileCache.clear();this.habitatScenesKey='';this.habitatFieldDay=this.sim.day;this.pendingHabitatDay=null}}const macroSeed=this.sim.world?.seedHash;if(this.macroHabitatSeed!==macroSeed){this.regionalFocals=collectRegionalFocals(this.sim,this.habitatField);this.habitatTransitions=collectHabitatTransitions(this.sim.world,this.habitatField);this.focalApproaches=new Map(this.regionalFocals.map(f=>[`${f.regionX},${f.regionY}`,focalApproachFor(this.sim.world,f,this.habitatField)]));this.macroHabitatSeed=macroSeed;this.macroHabitatSeason=this.sim.seasonIndex;this.waterBaseTileCache.clear()}else if(this.macroHabitatSeason!==this.sim.seasonIndex){this.macroHabitatSeason=this.sim.seasonIndex;this.waterBaseTileCache.clear()}const p=this.sim.player();if(p){const predicted=predictPlayerPose(this.sim,this.playerPresentation.input,this.playerPresentation.aheadSeconds),vp=predicted||this.motion.sample(p,this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear'});this.playerVisual=vp;if(!this.cameraReady){this.camera.x=vp.x;this.camera.y=vp.y;this.cameraReady=true}else{const follow=1-Math.exp(-CFG.cameraFollowHz*renderDt);this.camera.x+=(vp.x-this.camera.x)*follow;this.camera.y+=(vp.y-this.camera.y)*follow;const maxLag=.055,dx=vp.x-this.camera.x,dy=vp.y-this.camera.y,d=Math.hypot(dx,dy);if(d>maxLag){this.camera.x=vp.x-dx/d*maxLag;this.camera.y=vp.y-dy/d*maxLag}}}else this.playerVisual=null;const c=this.ctx,tile=CFG.tileSize*this.zoom,cols=Math.ceil(this.w/tile)+2,rows=Math.ceil(this.h/tile)+2,startX=Math.floor(this.camera.x-cols/2),startY=Math.floor(this.camera.y-rows/2);c.fillStyle='#09140e';c.fillRect(0,0,this.w,this.h);
     this.drawTerrainChunks(tile,startX,startY,cols,rows);this.queueTerrainWarmRing(startX,startY,cols,rows);
+    this.groundPassOnly=true;try{
     const focus=this.sim.player();for(let sy=0;sy<rows;sy++)for(let sx=0;sx<cols;sx++){const wx=startX+sx,wy=startY+sy;if(wx<0||wy<0||wx>=CFG.worldSize||wy>=CFG.worldSize)continue;const i=this.sim.world.idx(wx,wy),px=Math.round((wx-this.camera.x)*tile+this.w/2),py=Math.round((wy-this.camera.y)*tile+this.h/2),nearFocus=!!focus&&Math.hypot((wx+.5)-focus.x,(wy+.5)-focus.y)<3.55;if(nearFocus)this.drawTile(px,py,tile,i,wx,wy);else this.drawTileDynamic(px,py,tile,i,wx,wy)}
+    }finally{this.groundPassOnly=false}
     // Multi-tile habitat scenes summarize real ecology (water, biomass, use history) without creating game state.
     const sceneEpoch=Math.floor(this.sim.tickCount/Math.max(1,CFG.simHz)),sceneKey=`${startX},${startY},${cols},${rows},${sceneEpoch}`;if(sceneKey!==this.habitatScenesKey){this.habitatScenes=collectHabitatScenes(this.sim,this.habitatField,{startX,startY,cols,rows,block:8});this.habitatScenesKey=sceneKey}
     this.drawHabitatTransitions(tile,startX,startY,cols,rows);this.drawHabitatScenes(tile);this.drawRegionalFocalApproaches(tile);this.drawRegionalFocals(tile);
+    this.drawTerrainChunks(tile,startX,startY,cols,rows,true);this.drawLiveVegetationWindow(tile);
+    // Organic remains are an actual selectable resource, above floor and vegetation.
+    for(let sy=0;sy<rows;sy++)for(let sx=0;sx<cols;sx++){const x=startX+sx,y=startY+sy;if(x<0||y<0||x>=this.sim.world.n||y>=this.sim.world.n)continue;const i=this.sim.world.idx(x,y);if(!this.sim.world.water[i]&&this.sim.world.carrion[i]>.08)this.drawCarrion(Math.round((x-this.camera.x)*tile+this.w/2),Math.round((y-this.camera.y)*tile+this.h/2),this.zoom,this.sim.world.carrion[i])}
     if(this.sim.cognition?.showOverlay)this.drawMemoryOverlay(tile);
     if(this.sim.territory?.showOverlay)this.drawTerritoryOverlay(tile);
     if(this.sim.migration?.showOverlay)this.drawMigrationOverlay(tile);
@@ -82,14 +87,10 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // Phase G: places in the world, under the creatures.
     this.drawSites(tile,cols,rows);
     this.drawEggs(tile);drawWorldTraces(this,tile);
-    const visible=this.sim.animals.filter(a=>a.alive&&Math.abs(a.x-this.camera.x)<cols/2+2&&Math.abs(a.y-this.camera.y)<rows/2+2).sort((a,b)=>a.y-b.y);this.visibleAnimals=visible;for(const a of visible)this.drawAnimal(a,tile);
-    // A restrained foreground fringe gives dense habitats depth without hiding whole creatures.
-    // v1.57.2 performance mode (set automatically when frames stay slow): the decorative foreground
-    // and weather layers are skipped. Everything that carries game information is still drawn.
-    if(!this.lowDetail){
-    this.drawForegroundHabitat(tile,startX,startY,cols,rows);
-    this.drawHabitatSceneForeground(tile);this.drawRegionalFocalForeground(tile);
-    this.drawSceneDepthForeground(tile);}
+    const visible=this.sim.animals.filter(a=>a.alive&&Math.abs(a.x-this.camera.x)<cols/2+2&&Math.abs(a.y-this.camera.y)<rows/2+2).sort((a,b)=>a.y-b.y);this.visibleAnimals=visible;
+    if(!this.lowDetail){this.drawForegroundHabitat(tile,startX,startY,cols,rows);this.drawHabitatSceneForeground(tile);this.drawRegionalFocalForeground(tile);this.drawSceneDepthForeground(tile)}
+    for(const a of visible)this.drawAnimal(a,tile);
+    // Weather and interaction cues remain above creatures; ground decoration does not.
     if(!this.lowDetail)this.drawWeatherOverlay();
     this.drawPlayerAnchor(tile);this.drawRelativeMarks(tile);this.drawReadabilityCues(tile);this.motion.prune(this.sim.tickCount);this.processTerrainRefreshQueue();}
 
@@ -321,13 +322,18 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // A lookout reveals every Stalker in sight for a while.
     if(D.revealUntil>this.sim.tickCount){c.save();c.strokeStyle='rgba(239,105,94,.95)';c.lineWidth=2;for(const h of this.sim.animals){if(!h.alive||!canHunt(h))continue;const x=Math.round((h.x-this.camera.x)*tile+this.w/2),y=Math.round((h.y-this.camera.y)*tile+this.h/2);if(x<-20||y<-20||x>this.w+20||y>this.h+20)continue;c.beginPath();c.arc(x,y,9,0,Math.PI*2);c.stroke()}c.restore()}
   }
-  drawTerrainChunks(tile,startX,startY,cols,rows){
+  drawTerrainChunks(tile,startX,startY,cols,rows,vegetation=false){
     const size=TERRAIN_CHUNK,minCx=Math.floor((startX-1)/size),maxCx=Math.floor((startX+cols+1)/size),minCy=Math.floor((startY-1)/size),maxCy=Math.floor((startY+rows+1)/size),c=this.ctx;
+    if(vegetation){const b=this.liveVegetationBounds(),left=(b.x0-this.camera.x)*tile+this.w/2,top=(b.y0-this.camera.y)*tile+this.h/2;c.save();if(b.active){c.beginPath();c.rect(0,0,this.w,this.h);c.rect(left,top,(b.x1-b.x0)*tile,(b.y1-b.y0)*tile);c.clip('evenodd')}}
     for(let cy=minCy;cy<=maxCy;cy++)for(let cx=minCx;cx<=maxCx;cx++){
       if(cx<0||cy<0||cx*size>=CFG.worldSize||cy*size>=CFG.worldSize)continue;
-      const chunk=this.terrainChunk(cx,cy,size);if(!chunk)continue;const wx=cx*size,wy=cy*size,px=Math.round((wx-this.camera.x)*tile+this.w/2),py=Math.round((wy-this.camera.y)*tile+this.h/2);c.drawImage(chunk,px,py,size*tile,size*tile)
+      const chunk=this.terrainChunk(cx,cy,size);if(!chunk)continue;const wx=cx*size,wy=cy*size,px=Math.round((wx-this.camera.x)*tile+this.w/2),py=Math.round((wy-this.camera.y)*tile+this.h/2);c.drawImage(vegetation?this.terrainChunkCache.get(`${cx},${cy},${size}`).vegetation:chunk,px,py,size*tile,size*tile)
     }
+    if(vegetation)c.restore();
   }
+
+  liveVegetationBounds(){const p=this.sim.player();return p?{active:true,x0:Math.max(0,Math.floor(p.x-4)),y0:Math.max(0,Math.floor(p.y-4)),x1:Math.min(this.sim.world.n,Math.ceil(p.x+4)),y1:Math.min(this.sim.world.n,Math.ceil(p.y+4))}:{active:false,x0:0,y0:0,x1:0,y1:0}}
+  drawLiveVegetationWindow(tile){const b=this.liveVegetationBounds(),w=this.sim.world,c=this.ctx;for(let y=b.y0;y<b.y1;y++)for(let x=b.x0;x<b.x1;x++){const i=w.idx(x,y);if(w.water[i])continue;const px=Math.round((x-this.camera.x)*tile+this.w/2),py=Math.round((y-this.camera.y)*tile+this.h/2),h=visualHierarchyAt(w,x,y,{focusX:this.sim.player()?.x,focusY:this.sim.player()?.y,habitatField:this.habitatField}),v=this.vegetationLayer(i,x,y,h);if(v)c.drawImage(v,px-VEG_PAD*this.zoom,py-VEG_PAD*this.zoom,(16+2*VEG_PAD)*this.zoom,(16+2*VEG_PAD)*this.zoom);else this.drawVegetation(i,px,py,this.zoom,x,y,h)}}
 
   queueTerrainRefresh(cx,cy,size=TERRAIN_CHUNK,sig=null){
     if(cx<0||cy<0||cx*size>=CFG.worldSize||cy*size>=CFG.worldSize)return;const key=`${cx},${cy},${size}`;if(this.terrainRefreshQueued.has(key))return;this.terrainRefreshQueued.add(key);this.terrainRefreshQueue.push({cx,cy,size,sig});
@@ -350,6 +356,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
 
   buildTerrainChunk(cx,cy,size=TERRAIN_CHUNK,sig=this.terrainChunkSignature(cx,cy,size)){
     if(typeof document==='undefined')return null;const key=`${cx},${cy},${size}`,chunk=document.createElement('canvas'),logical=size*16*TILE_ART;chunk.width=logical;chunk.height=logical;const cc=chunk.getContext('2d');if(!cc)return null;cc.imageSmoothingEnabled=false;cc.scale(TILE_ART,TILE_ART);
+    const vegetation=document.createElement('canvas');vegetation.width=vegetation.height=logical;const vc=vegetation.getContext('2d');vc.imageSmoothingEnabled=false;vc.scale(TILE_ART,TILE_ART);
     const old=this.ctx;this.ctx=cc;
     try{
       for(let ly=0;ly<size;ly++)for(let lx=0;lx<size;lx++){
@@ -362,16 +369,16 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
       }
       // World art pass: plants are drawn after all ground, from this chunk and the ring around it, so a
       // plant can spread past its own tile without being cut off or covered by the next tile.
-      const P=VEG_PAD;for(let ly=-1;ly<=size;ly++)for(let lx=-1;lx<=size;lx++){const x=cx*size+lx,y=cy*size+ly;if(x<0||y<0||x>=CFG.worldSize||y>=CFG.worldSize)continue;const i=this.sim.world.idx(x,y);if(this.sim.world.water[i])continue;const v=this.vegetationLayer(i,x,y,visualHierarchyAt(this.sim.world,x,y,{habitatField:this.habitatField}));if(v)cc.drawImage(v,lx*16-P,ly*16-P,16+2*P,16+2*P)}
+      const P=VEG_PAD;for(let ly=-1;ly<=size;ly++)for(let lx=-1;lx<=size;lx++){const x=cx*size+lx,y=cy*size+ly;if(x<0||y<0||x>=CFG.worldSize||y>=CFG.worldSize)continue;const i=this.sim.world.idx(x,y);if(this.sim.world.water[i])continue;const v=this.vegetationLayer(i,x,y,visualHierarchyAt(this.sim.world,x,y,{habitatField:this.habitatField}));if(v)vc.drawImage(v,lx*16-P,ly*16-P,16+2*P,16+2*P)}
     }finally{this.ctx=old}
-    this.terrainChunkCache.set(key,{sig,canvas:chunk});return chunk;
+    this.terrainChunkCache.set(key,{sig,canvas:chunk,vegetation});return chunk;
   }
 
   terrainChunkSignature(cx,cy,size=TERRAIN_CHUNK){return Math.imul((this.habitatFieldDay+1)^Math.imul(cx+257,73856093)^Math.imul(cy+263,19349663)^Math.imul(size,83492791),16777619)>>>0}
 
   drawTileDynamic(px,py,s,i,x,y){
     const w=this.sim.world,u=this.zoom,hash=hash2(x,y,11),mask=this.visualWaterMask(x,y),simWater=!!w.water[i];
-    if(!simWater){this.drawEnvironmentalHistory(px,py,u,i,x,y);if(w.carrion[i]>.08)this.drawCarrion(px,py,u,w.carrion[i])}
+    if(!simWater){this.drawEnvironmentalHistory(px,py,u,i,x,y);if(!this.groundPassOnly&&w.carrion[i]>.08)this.drawCarrion(px,py,u,w.carrion[i])}
     if(!mask.empty)this.drawOrganicWaterMotion(px,py,u,x,y,mask,hash)
   }
 
@@ -385,10 +392,10 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // we keep the live hierarchy path so local ground clutter still yields correctly.
     const useStaticLand=!simWater&&hierarchy.focus<.015;
     if(useStaticLand){
-      const cached=this.staticLandTile(i,x,y,identity);
+      const cached=this.staticLandTile(i,x,y,identity,!this.groundPassOnly);
       if(cached)c.drawImage(cached,px,py,16*u,16*u);else this.drawLandDetailLive(px,py,u,i,x,y,hierarchy,identity,hash);
       this.drawEnvironmentalHistory(px,py,u,i,x,y);
-      if(w.carrion[i]>.08)this.drawCarrion(px,py,u,w.carrion[i]);
+      if(!this.groundPassOnly&&w.carrion[i]>.08)this.drawCarrion(px,py,u,w.carrion[i]);
     }else{
       this.drawOrganicLandBase(px,py,u,x,y,season,hash,identity);
       if(!simWater)this.drawLandDetailLive(px,py,u,i,x,y,hierarchy,identity,hash,{baseAlready:true});
@@ -419,10 +426,10 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     this.drawHabitatRelief(px,py,u,i,x,y);
     drawHabitatClusterAccents(c,{world:w,habitatField:this.habitatField,px,py,u,i,x,y});c.restore();
     drawRiparianDepth(c,{world:w,isWater:(tx,ty)=>this.isWater(tx,ty),px,py,u,i,x,y,depth:this.visualWaterMask(x,y).depth});
-    {const v=this.vegetationLayer(i,x,y,hierarchy);if(v)c.drawImage(v,px-VEG_PAD*u,py-VEG_PAD*u,(16+2*VEG_PAD)*u,(16+2*VEG_PAD)*u);else this.drawVegetation(i,px,py,u,x,y,hierarchy)}
+    if(!this.groundPassOnly){const v=this.vegetationLayer(i,x,y,hierarchy);if(v)c.drawImage(v,px-VEG_PAD*u,py-VEG_PAD*u,(16+2*VEG_PAD)*u,(16+2*VEG_PAD)*u);else this.drawVegetation(i,px,py,u,x,y,hierarchy)}
     drawHabitatDepth(c,{world:w,habitatField:this.habitatField,isWater:(tx,ty)=>this.isWater(tx,ty),depth:this.visualWaterMask(x,y).depth,px,py,u,i,x,y,season});
     this.drawEnvironmentalHistory(px,py,u,i,x,y);
-    if(w.carrion[i]>.08)this.drawCarrion(px,py,u,w.carrion[i]);
+    if(!this.groundPassOnly&&w.carrion[i]>.08)this.drawCarrion(px,py,u,w.carrion[i]);
   }
 
   staticLandTile(i,x,y,identity,veg=true){
@@ -689,15 +696,17 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   }
 
   drawRegionalFocals(tile){
-    const c=this.ctx,u=this.zoom;for(const focal of this.regionalFocals||[]){const px=Math.round((focal.x+.5-this.camera.x)*tile+this.w/2),py=Math.round((focal.y+.5-this.camera.y)*tile+this.h/2);if(px<-3*tile||py<-3*tile||px>this.w+3*tile||py>this.h+3*tile)continue;drawRegionalFocalBackdrop(c,{focal,px,py,u,season:this.sim.season})}
+    const c=this.ctx,u=this.zoom;for(const focal of this.regionalFocals||[]){const px=Math.round((focal.x+.5-this.camera.x)*tile+this.w/2),py=Math.round((focal.y+.5-this.camera.y)*tile+this.h/2);if(px<-3*tile||py<-3*tile||px>this.w+3*tile||py>this.h+3*tile)continue;this.drawOnHabitatLand(focal,tile,()=>{drawRegionalFocalBackdrop(c,{focal,px,py,u,season:this.sim.season})})}
   }
 
   drawRegionalFocalForeground(tile){
     const c=this.ctx,u=this.zoom;for(const focal of this.regionalFocals||[]){const px=Math.round((focal.x+.5-this.camera.x)*tile+this.w/2),py=Math.round((focal.y+.5-this.camera.y)*tile+this.h/2);if(px<-3*tile||py<-3*tile||px>this.w+3*tile||py>this.h+3*tile)continue;drawRegionalFocalForeground(c,{focal,px,py,u,season:this.sim.season})}
   }
 
+  drawOnHabitatLand(anchor,tile,paint){const c=this.ctx,w=this.sim.world;c.save();try{c.beginPath();for(let y=anchor.y-4;y<=anchor.y+4;y++)for(let x=anchor.x-4;x<=anchor.x+4;x++){if(x<0||y<0||x>=w.n||y>=w.n||w.water[w.idx(x,y)])continue;c.rect(Math.round((x-this.camera.x)*tile+this.w/2),Math.round((y-this.camera.y)*tile+this.h/2),tile,tile)}c.clip();paint()}finally{c.restore()}}
+
   drawHabitatScenes(tile){
-    const c=this.ctx,u=this.zoom;for(const scene of this.habitatScenes||[]){const px=Math.round((scene.x+.5-this.camera.x)*tile+this.w/2),py=Math.round((scene.y+.5-this.camera.y)*tile+this.h/2);if(px<-2*tile||py<-2*tile||px>this.w+2*tile||py>this.h+2*tile)continue;drawTerrainMotifBackdrop(c,{sim:this.sim,scene,px,py,u});drawHabitatSceneBackdrop(c,{scene,px,py,u,season:this.sim.season});drawSceneLandmarkBackdrop(c,{scene,px,py,u,season:this.sim.season})}
+    const c=this.ctx,u=this.zoom;for(const scene of this.habitatScenes||[]){const px=Math.round((scene.x+.5-this.camera.x)*tile+this.w/2),py=Math.round((scene.y+.5-this.camera.y)*tile+this.h/2);if(px<-2*tile||py<-2*tile||px>this.w+2*tile||py>this.h+2*tile)continue;this.drawOnHabitatLand(scene,tile,()=>{drawTerrainMotifBackdrop(c,{sim:this.sim,scene,px,py,u});drawHabitatSceneBackdrop(c,{scene,px,py,u,season:this.sim.season});drawSceneLandmarkBackdrop(c,{scene,px,py,u,season:this.sim.season})})}
   }
 
   drawHabitatSceneForeground(tile){

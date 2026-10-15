@@ -1,0 +1,140 @@
+[
+  {
+    "test": "habitat-ground-art",
+    "status": "PASS",
+    "seconds": 0.05,
+    "output": "Four distinct bounded native substrates, habitat mapping, seasonal cache reuse and zero GPU readback PASS\n"
+  },
+  {
+    "test": "flora-landmarks",
+    "status": "PASS",
+    "seconds": 0.06,
+    "output": "flora + authored landmark checks: PASS\n"
+  },
+  {
+    "test": "regional-focal",
+    "status": "PASS",
+    "seconds": 0.25,
+    "output": "regional focal checks: PASS 6 { 'old-root': 2, 'reed-shelf': 2, 'reed-cove': 1, 'berry-grove': 1 }\n"
+  },
+  {
+    "test": "terrain-motifs",
+    "status": "PASS",
+    "seconds": 0.24,
+    "output": "terrain motif checks: PASS { 'bend-shelf': 7, 'root-pocket': 5, 'bank-shelf': 1 }\n"
+  },
+  {
+    "test": "scene",
+    "status": "PASS",
+    "seconds": 0.25,
+    "output": "habitat scene checks: PASS {\n  'feeding-ground': 9,\n  'thicket-pocket': 11,\n  'open-clearing': 5,\n  'watering-margin': 20\n}\n"
+  },
+  {
+    "test": "depth-render",
+    "status": "PASS",
+    "seconds": 0.07,
+    "output": "world depth presentation checks: PASS\n"
+  },
+  {
+    "test": "habitat-render",
+    "status": "PASS",
+    "seconds": 18.19,
+    "output": "habitat contour checks: PASS\n"
+  },
+  {
+    "test": "overhead-flora-art",
+    "status": "PASS",
+    "seconds": 0.05,
+    "output": "60 biomass/season plant cases, inherited coats/seed colors, registered foliage, shared shore anchor, honest seedlings and readback-free cached paint PASS\n"
+  },
+  {
+    "test": "world-resource-selection",
+    "status": "PASS",
+    "seconds": 0.19,
+    "output": "Visible plant selection, bare ground, depletion, stale-world and read-only checks PASS\n"
+  },
+  {
+    "test": "target-resource-states",
+    "status": "PASS",
+    "seconds": 0.19,
+    "output": "Target drink states, canonical parity, pause and depletion PASS\n"
+  },
+  {
+    "test": "mouse-resources",
+    "status": "PASS",
+    "seconds": 0.39,
+    "output": "Explicit resource/key parity, natural food consumption, drink physiology, read-only availability and pause safety PASS\n"
+  },
+  {
+    "test": "selected-water-filtering",
+    "status": "PASS",
+    "seconds": 0.19,
+    "output": "Read-only water harvest preview, selected-source filtering and full physiology gating PASS\n"
+  },
+  {
+    "test": "inherited-coats",
+    "status": "PASS",
+    "seconds": 0.32,
+    "output": "Inherited coat/seed axes, immutable adults, legacy schemas, finite tissue and handling tradeoffs, real germination, specialization and save parity PASS\n"
+  },
+  {
+    "test": "plant-handling",
+    "status": "PASS",
+    "seconds": 0.26,
+    "output": "Resistant coat cost, specialization, authoritative failure, no unpaid harvest, finite transfers and save parity PASS\n"
+  },
+  {
+    "test": "flora-tissue-propagules",
+    "status": "PASS",
+    "seconds": 0.33,
+    "output": "Finite tissues, anatomy-specific kernel destruction, real genotype cargo/deposition/establishment, read-only commands and stock-preserving save migration PASS\n"
+  },
+  {
+    "test": "flora-seed-codec",
+    "status": "PASS",
+    "seconds": 1.49,
+    "output": "Lossless Float64 rare amounts, ordering/null/undefined/metadata isolation, corruption rejection, real continuation and dictionary size reduction PASS\n"
+  },
+  {
+    "test": "plant-resource-contract",
+    "status": "PASS",
+    "seconds": 1.17,
+    "output": "Funded growth limits, finite input flux reconciliation, land nutrient inventory, bounded receipts and stock-preserving migration PASS\n"
+  },
+  {
+    "test": "botanical-genetics",
+    "status": "PASS",
+    "seconds": 0.06,
+    "output": "Dedicated botanical signal/recognition, resource-independent cross compatibility, selfing/SI, diploid hybrids, gradual overlap loss, real recessive embryo failure and no universal selfing penalty PASS\n"
+  },
+  {
+    "test": "botanical-reproduction",
+    "status": "PASS",
+    "seconds": 0.47,
+    "output": "Autonomous funded anatomy, actual diet-valid flower contacts, nonduplicated pollen cargo, cross-alias fertilization, separate seed development/release, real seed-bank genotype and save continuity PASS\n"
+  },
+  {
+    "test": "botanical-safety",
+    "status": "PASS",
+    "seconds": 0.25,
+    "output": "Malformed delivery/restore fail before stock mutation, finite pollen death transfer and exact rare-cohort genotype retention PASS\n"
+  },
+  {
+    "test": "save-persistence",
+    "status": "PASS",
+    "seconds": 1.76,
+    "output": "save persistence roundtrip: PASS\n"
+  },
+  {
+    "test": "native-part-catalog",
+    "status": "PASS",
+    "seconds": 0.45,
+    "output": "native-part-catalog: 79 indexed assets, 1264 exact RGBA frames, eight facings, 0 missing native art packs PASS\n"
+  },
+  {
+    "test": "native-catalog-loading",
+    "status": "PASS",
+    "seconds": 0.06,
+    "output": "Bounded native loading, atomic install, preserved live art and stale-load supersession PASS\nDuplicate error reporting and failed-reload live-art retention PASS\n"
+  }
+]

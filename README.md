@@ -2,7 +2,7 @@
 
 Canonical source for the evolutionary survival game. Development happens on **main**; this repository has one branch.
 
-Current checkpoint: **Native Overhead Flora and Reliable Selection (2026-10-14)**. Existing plants now use overhead canopies, crowns, caps and inherited pod states, with fruit-free seedlings and shared painted/clicked anchors. Actual 800x600 selection, Inspect/E feeding, coat/season fixtures and save/load pass; paired natural-world rendering preserves the entire serialized simulation. See [the current review](docs/GenVo-Overhead-Flora-Review.md). Larger background landmarks, natural adaptation, dense-world performance and human playtesting remain open.
+Current checkpoint: **Grounded Habitats and Readable Creatures (2026-10-14)**. Native overhead substrate replaces upright scene/regional vegetation props and fabricated food. Separate cached ground/vegetation layers preserve live food targets, while creatures draw above scenery. Actual multi-chunk movement, five food workflows, depletion, saves and 23 focused suites pass. See [the current review](docs/GenVo-Overhead-Habitats-Review.md). Texture memory increases; large-world performance, broader art and human playtesting remain open.
 
 Run the game from the repository root:
 

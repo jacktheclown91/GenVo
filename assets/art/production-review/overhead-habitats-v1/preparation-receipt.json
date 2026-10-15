@@ -1,0 +1,52 @@
+{
+  "masterSha256": "6c22f5cd64a57cd2767bdc841b18405e12364a1cd08072dcb3079081c338560c",
+  "runtimeSha256": "660f9115c24aaf1055a5c76b5004bb817518a8f89e39f840fd64690d03ab6d0f",
+  "alphaThreshold": 128,
+  "sampling": "nearest",
+  "nativeSize": [
+    32,
+    32
+  ],
+  "items": [
+    {
+      "name": "wet-roots",
+      "cropBounds": [
+        43,
+        111,
+        511,
+        624
+      ],
+      "visiblePixels": 532
+    },
+    {
+      "name": "thicket-litter",
+      "cropBounds": [
+        12,
+        96,
+        507,
+        630
+      ],
+      "visiblePixels": 553
+    },
+    {
+      "name": "decay-floor",
+      "cropBounds": [
+        15,
+        96,
+        509,
+        630
+      ],
+      "visiblePixels": 550
+    },
+    {
+      "name": "worn-earth",
+      "cropBounds": [
+        5,
+        112,
+        491,
+        637
+      ],
+      "visiblePixels": 516
+    }
+  ]
+}

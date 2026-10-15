@@ -1,0 +1,1408 @@
+{
+  "status": "PASS",
+  "scope": "Real 800x600 game. Body/placement/reserves and valid canonical coat/season fixtures are controlled. Four foods use natural stocks; founding fungi use an explicit finite stock/substrate fixture. Actual mouse/E consumes those stocks. No natural adaptation, reproductive success or human acceptance claimed.",
+  "runs": [
+    {
+      "label": "before",
+      "trials": [
+        {
+          "spot": {
+            "i": 1597,
+            "x": 61.5,
+            "y": 12.5,
+            "amount": 1,
+            "kind": "sunmoss",
+            "click": {
+              "x": 414.5999999999999,
+              "y": 305
+            },
+            "anchor": {
+              "i": 1597,
+              "food": "sunmoss",
+              "x": 61.5,
+              "y": 12.5,
+              "hitX": 61.15625,
+              "hitY": 12.65625
+            },
+            "scope": "Naturally present finite resource; controlled legal nibbling body, adult reserves and nearby placement. No food/terrain spawned."
+          },
+          "selected": {
+            "kind": "plant",
+            "i": 1597,
+            "food": "sunmoss",
+            "x": 61.5,
+            "y": 12.5,
+            "hitX": 61.15625,
+            "hitY": 12.65625,
+            "label": "Moss"
+          },
+          "before": 1,
+          "result": {
+            "stock": 0.7799999713897705,
+            "receipt": {
+              "type": "eat",
+              "actorId": 109,
+              "kind": "sunmoss",
+              "tissue": null,
+              "processingCost": 0,
+              "energyGain": 3.607435415340195,
+              "waterGain": 1,
+              "tick": 5
+            },
+            "radialClosed": true
+          }
+        },
+        {
+          "spot": {
+            "i": 15093,
+            "x": 117.5,
+            "y": 117.5,
+            "amount": 0.33261314034461975,
+            "kind": "bramble",
+            "click": {
+              "x": 416.5999999999999,
+              "y": 287
+            },
+            "anchor": {
+              "i": 15093,
+              "food": "bramble",
+              "x": 117.5,
+              "y": 117.5,
+              "hitX": 117.21875,
+              "hitY": 117.09375
+            },
+            "scope": "Naturally present finite resource; controlled legal nibbling body, adult reserves and nearby placement. No food/terrain spawned."
+          },
+          "selected": {
+            "kind": "plant",
+            "i": 15093,
+            "food": "bramble",
+            "x": 117.5,
+            "y": 117.5,
+            "hitX": 117.21875,
+            "hitY": 117.09375,
+            "label": "Berries"
+          },
+          "before": 0.33261314034461975,
+          "result": {
+            "stock": 0.17261314392089844,
+            "receipt": {
+              "type": "eat",
+              "actorId": 109,
+              "kind": "bramble",
+              "tissue": "crop",
+              "processingCost": 0,
+              "producerGenomeId": "flora4-2656af01-9b534496",
+              "energyGain": 6.617941777364528,
+              "waterGain": 4,
+              "tick": 12
+            },
+            "meal": {
+              "kind": "bramble",
+              "i": 15093,
+              "tissue": "crop",
+              "removed": 0.16,
+              "coat": 0,
+              "edible": 0.128,
+              "viableSeeds": 0.032,
+              "destroyedSeeds": 0,
+              "discarded": 0,
+              "genome": {
+                "schema": 4,
+                "id": "flora4-2656af01-9b534496",
+                "resourceAlias": "bramble",
+                "traits": {
+                  "growth": 0.032,
+                  "waterNeed": 0.42,
+                  "nutrition": 16,
+                  "seedAllocation": 0.2,
+                  "coatAllocation": 0
+                },
+                "traitAlleles": {
+                  "growth": [
+                    0.032,
+                    0.032
+                  ],
+                  "waterNeed": [
+                    0.42,
+                    0.42
+                  ],
+                  "nutrition": [
+                    16,
+                    16
+                  ],
+                  "seedAllocation": [
+                    0.2,
+                    0.2
+                  ],
+                  "coatAllocation": [
+                    0,
+                    0
+                  ]
+                },
+                "botanical": {
+                  "schema": 1,
+                  "cue": [
+                    0,
+                    0
+                  ],
+                  "receptor": [
+                    0,
+                    0
+                  ],
+                  "selfMarker": [
+                    "si:3",
+                    "si:2"
+                  ],
+                  "selfCompatible": [
+                    false,
+                    false
+                  ],
+                  "anther": [
+                    true,
+                    true
+                  ],
+                  "stigma": [
+                    true,
+                    true
+                  ],
+                  "ovule": [
+                    true,
+                    true
+                  ],
+                  "embryo": [
+                    true,
+                    true
+                  ]
+                },
+                "reproduction": "sexual-and-clonal",
+                "mutationEnabled": true
+              },
+              "producerId": "bramble:15093:founder",
+              "originCell": 15093,
+              "processingCost": 0,
+              "specializedHandling": false,
+              "actorId": 109,
+              "tick": 12,
+              "parentGenomeId": "flora1-bramble",
+              "mutation": 0,
+              "coatMutation": 0,
+              "mutationAxis": null,
+              "seedTransferComplete": true
+            },
+            "radialClosed": true
+          }
+        },
+        {
+          "spot": {
+            "i": 738,
+            "x": 98.5,
+            "y": 5.5,
+            "amount": 0.430203914642334,
+            "kind": "marshroot",
+            "click": {
+              "x": 425.5999999999999,
+              "y": 293
+            },
+            "anchor": {
+              "i": 738,
+              "food": "marshroot",
+              "x": 98.5,
+              "y": 5.5,
+              "hitX": 98.5,
+              "hitY": 5.28125
+            },
+            "scope": "Naturally present finite resource; controlled legal nibbling body, adult reserves and nearby placement. No food/terrain spawned."
+          },
+          "selected": {
+            "kind": "plant",
+            "i": 738,
+            "food": "marshroot",
+            "x": 98.5,
+            "y": 5.5,
+            "hitX": 98.5,
+            "hitY": 5.28125,
+            "label": "Reeds"
+          },
+          "before": 0.430203914642334,
+          "result": {
+            "stock": 0.26020392775535583,
+            "receipt": {
+              "type": "eat",
+              "actorId": 109,
+              "kind": "marshroot",
+              "tissue": null,
+              "processingCost": 0,
+              "energyGain": 7.247665698092572,
+              "waterGain": 9,
+              "tick": 17
+            },
+            "meal": {
+              "kind": "bramble",
+              "i": 15093,
+              "tissue": "crop",
+              "removed": 0.16,
+              "coat": 0,
+              "edible": 0.128,
+              "viableSeeds": 0.032,
+              "destroyedSeeds": 0,
+              "discarded": 0,
+              "genome": {
+                "schema": 4,
+                "id": "flora4-2656af01-9b534496",
+                "resourceAlias": "bramble",
+                "traits": {
+                  "growth": 0.032,
+                  "waterNeed": 0.42,
+                  "nutrition": 16,
+                  "seedAllocation": 0.2,
+                  "coatAllocation": 0
+                },
+                "traitAlleles": {
+                  "growth": [
+                    0.032,
+                    0.032
+                  ],
+                  "waterNeed": [
+                    0.42,
+                    0.42
+                  ],
+                  "nutrition": [
+                    16,
+                    16
+                  ],
+                  "seedAllocation": [
+                    0.2,
+                    0.2
+                  ],
+                  "coatAllocation": [
+                    0,
+                    0
+                  ]
+                },
+                "botanical": {
+                  "schema": 1,
+                  "cue": [
+                    0,
+                    0
+                  ],
+                  "receptor": [
+                    0,
+                    0
+                  ],
+                  "selfMarker": [
+                    "si:3",
+                    "si:2"
+                  ],
+                  "selfCompatible": [
+                    false,
+                    false
+                  ],
+                  "anther": [
+                    true,
+                    true
+                  ],
+                  "stigma": [
+                    true,
+                    true
+                  ],
+                  "ovule": [
+                    true,
+                    true
+                  ],
+                  "embryo": [
+                    true,
+                    true
+                  ]
+                },
+                "reproduction": "sexual-and-clonal",
+                "mutationEnabled": true
+              },
+              "producerId": "bramble:15093:founder",
+              "originCell": 15093,
+              "processingCost": 0,
+              "specializedHandling": false,
+              "actorId": 109,
+              "tick": 12,
+              "parentGenomeId": "flora1-bramble",
+              "mutation": 0,
+              "coatMutation": 0,
+              "mutationAxis": null,
+              "seedTransferComplete": true
+            },
+            "radialClosed": true
+          }
+        },
+        {
+          "spot": {
+            "i": 4469,
+            "x": 117.5,
+            "y": 34.5,
+            "amount": 0.08999346196651459,
+            "fixture": "Controlled finite fungus (.6) and real substrate (.3); no natural growth claim",
+            "kind": "rotcap",
+            "click": {
+              "x": 413.5999999999999,
+              "y": 301
+            },
+            "anchor": {
+              "i": 4469,
+              "food": "rotcap",
+              "x": 117.5,
+              "y": 34.5,
+              "hitX": 117.125,
+              "hitY": 34.53125
+            },
+            "scope": "Controlled finite fungus (.6) and real substrate (.3); no natural growth claim"
+          },
+          "selected": {
+            "kind": "plant",
+            "i": 4469,
+            "food": "rotcap",
+            "x": 117.5,
+            "y": 34.5,
+            "hitX": 117.125,
+            "hitY": 34.53125,
+            "label": "Mushrooms"
+          },
+          "before": 0.6000000238418579,
+          "result": {
+            "stock": 0.4400000274181366,
+            "receipt": {
+              "type": "eat",
+              "actorId": 109,
+              "kind": "rotcap",
+              "tissue": null,
+              "processingCost": 0,
+              "energyGain": 3.995508013051033,
+              "waterGain": 3,
+              "tick": 23
+            },
+            "meal": {
+              "kind": "bramble",
+              "i": 15093,
+              "tissue": "crop",
+              "removed": 0.16,
+              "coat": 0,
+              "edible": 0.128,
+              "viableSeeds": 0.032,
+              "destroyedSeeds": 0,
+              "discarded": 0,
+              "genome": {
+                "schema": 4,
+                "id": "flora4-2656af01-9b534496",
+                "resourceAlias": "bramble",
+                "traits": {
+                  "growth": 0.032,
+                  "waterNeed": 0.42,
+                  "nutrition": 16,
+                  "seedAllocation": 0.2,
+                  "coatAllocation": 0
+                },
+                "traitAlleles": {
+                  "growth": [
+                    0.032,
+                    0.032
+                  ],
+                  "waterNeed": [
+                    0.42,
+                    0.42
+                  ],
+                  "nutrition": [
+                    16,
+                    16
+                  ],
+                  "seedAllocation": [
+                    0.2,
+                    0.2
+                  ],
+                  "coatAllocation": [
+                    0,
+                    0
+                  ]
+                },
+                "botanical": {
+                  "schema": 1,
+                  "cue": [
+                    0,
+                    0
+                  ],
+                  "receptor": [
+                    0,
+                    0
+                  ],
+                  "selfMarker": [
+                    "si:3",
+                    "si:2"
+                  ],
+                  "selfCompatible": [
+                    false,
+                    false
+                  ],
+                  "anther": [
+                    true,
+                    true
+                  ],
+                  "stigma": [
+                    true,
+                    true
+                  ],
+                  "ovule": [
+                    true,
+                    true
+                  ],
+                  "embryo": [
+                    true,
+                    true
+                  ]
+                },
+                "reproduction": "sexual-and-clonal",
+                "mutationEnabled": true
+              },
+              "producerId": "bramble:15093:founder",
+              "originCell": 15093,
+              "processingCost": 0,
+              "specializedHandling": false,
+              "actorId": 109,
+              "tick": 12,
+              "parentGenomeId": "flora1-bramble",
+              "mutation": 0,
+              "coatMutation": 0,
+              "mutationAxis": null,
+              "seedTransferComplete": true
+            },
+            "radialClosed": true
+          }
+        },
+        {
+          "spot": {
+            "i": 4809,
+            "x": 73.5,
+            "y": 37.5,
+            "amount": 0.26934748888015747,
+            "kind": "thistlepod",
+            "click": {
+              "x": 417.5999999999999,
+              "y": 291
+            },
+            "anchor": {
+              "i": 4809,
+              "food": "thistlepod",
+              "x": 73.5,
+              "y": 37.5,
+              "hitX": 73.25,
+              "hitY": 37.21875
+            },
+            "scope": "Naturally present finite resource; controlled legal nibbling body, adult reserves and nearby placement. No food/terrain spawned."
+          },
+          "selected": {
+            "kind": "plant",
+            "i": 4809,
+            "food": "thistlepod",
+            "x": 73.5,
+            "y": 37.5,
+            "hitX": 73.25,
+            "hitY": 37.21875,
+            "label": "Seed Pods"
+          },
+          "before": 0.26934748888015747,
+          "result": {
+            "stock": 0.11934749037027359,
+            "receipt": {
+              "type": "eat",
+              "actorId": 109,
+              "kind": "thistlepod",
+              "tissue": "crop",
+              "processingCost": 0.6,
+              "producerGenomeId": "flora4-d276f2ec-9b8d3b0b",
+              "energyGain": 1.7518989348732923,
+              "waterGain": 0,
+              "tick": 27
+            },
+            "meal": {
+              "kind": "thistlepod",
+              "i": 4809,
+              "tissue": "crop",
+              "removed": 0.15,
+              "coat": 0.0375,
+              "edible": 0.08250000041492389,
+              "viableSeeds": 0.02999999958507611,
+              "destroyedSeeds": 0,
+              "discarded": 0.0375,
+              "genome": {
+                "schema": 4,
+                "id": "flora4-d276f2ec-9b8d3b0b",
+                "resourceAlias": "thistlepod",
+                "traits": {
+                  "growth": 0.026,
+                  "waterNeed": 0.25,
+                  "nutrition": 11,
+                  "seedAllocation": 0.2,
+                  "coatAllocation": 0.25
+                },
+                "traitAlleles": {
+                  "growth": [
+                    0.026,
+                    0.026
+                  ],
+                  "waterNeed": [
+                    0.25,
+                    0.25
+                  ],
+                  "nutrition": [
+                    11,
+                    11
+                  ],
+                  "seedAllocation": [
+                    0.2,
+                    0.2
+                  ],
+                  "coatAllocation": [
+                    0.25,
+                    0.25
+                  ]
+                },
+                "botanical": {
+                  "schema": 1,
+                  "cue": [
+                    0,
+                    0
+                  ],
+                  "receptor": [
+                    0,
+                    0
+                  ],
+                  "selfMarker": [
+                    "si:7",
+                    "si:7"
+                  ],
+                  "selfCompatible": [
+                    false,
+                    true
+                  ],
+                  "anther": [
+                    true,
+                    true
+                  ],
+                  "stigma": [
+                    true,
+                    true
+                  ],
+                  "ovule": [
+                    true,
+                    true
+                  ],
+                  "embryo": [
+                    true,
+                    true
+                  ]
+                },
+                "reproduction": "sexual-and-clonal",
+                "mutationEnabled": true
+              },
+              "producerId": "thistlepod:4809:founder",
+              "originCell": 4809,
+              "processingCost": 0.6,
+              "specializedHandling": false,
+              "actorId": 109,
+              "tick": 27,
+              "parentGenomeId": "flora1-thistlepod",
+              "mutation": 0,
+              "coatMutation": 0,
+              "mutationAxis": null,
+              "seedTransferComplete": true
+            },
+            "radialClosed": true
+          }
+        }
+      ],
+      "traits": [
+        {
+          "genome": {
+            "schema": 3,
+            "id": "flora3-thistlepod-0.20000-0.10000",
+            "resourceAlias": "thistlepod",
+            "traits": {
+              "growth": 0.026,
+              "waterNeed": 0.25,
+              "nutrition": 11,
+              "seedAllocation": 0.2,
+              "coatAllocation": 0.1
+            },
+            "reproduction": "clonal-propagule",
+            "mutationEnabled": true
+          },
+          "amount": 0.11934749037027359,
+          "tick": 29
+        },
+        {
+          "genome": {
+            "schema": 3,
+            "id": "flora3-thistlepod-0.20000-0.25000",
+            "resourceAlias": "thistlepod",
+            "traits": {
+              "growth": 0.026,
+              "waterNeed": 0.25,
+              "nutrition": 11,
+              "seedAllocation": 0.2,
+              "coatAllocation": 0.25
+            },
+            "reproduction": "clonal-propagule",
+            "mutationEnabled": true
+          },
+          "amount": 0.11934749037027359,
+          "tick": 29
+        },
+        {
+          "genome": {
+            "schema": 3,
+            "id": "flora3-thistlepod-0.20000-0.40000",
+            "resourceAlias": "thistlepod",
+            "traits": {
+              "growth": 0.026,
+              "waterNeed": 0.25,
+              "nutrition": 11,
+              "seedAllocation": 0.2,
+              "coatAllocation": 0.4
+            },
+            "reproduction": "clonal-propagule",
+            "mutationEnabled": true
+          },
+          "amount": 0.11934749037027359,
+          "tick": 29
+        }
+      ],
+      "seasons": [
+        {
+          "season": "SPRING",
+          "amount": 0.11934749037027359
+        },
+        {
+          "season": "SUMMER",
+          "amount": 0.11934749037027359
+        },
+        {
+          "season": "AUTUMN",
+          "amount": 0.11934749037027359
+        },
+        {
+          "season": "WINTER",
+          "amount": 0.11934749037027359
+        }
+      ],
+      "saved": {
+        "body": true,
+        "stock": true,
+        "genome": true
+      },
+      "depleted": {
+        "food": "thistlepod",
+        "i": 4809,
+        "stock": 0.11934749037027359,
+        "hidden": true
+      },
+      "errors": []
+    },
+    {
+      "label": "after",
+      "trials": [
+        {
+          "spot": {
+            "i": 1597,
+            "x": 61.5,
+            "y": 12.5,
+            "amount": 1,
+            "kind": "sunmoss",
+            "click": {
+              "x": 414.5999999999999,
+              "y": 305
+            },
+            "anchor": {
+              "i": 1597,
+              "food": "sunmoss",
+              "x": 61.5,
+              "y": 12.5,
+              "hitX": 61.15625,
+              "hitY": 12.65625
+            },
+            "scope": "Naturally present finite resource; controlled legal nibbling body, adult reserves and nearby placement. No food/terrain spawned."
+          },
+          "selected": {
+            "kind": "plant",
+            "i": 1597,
+            "food": "sunmoss",
+            "x": 61.5,
+            "y": 12.5,
+            "hitX": 61.15625,
+            "hitY": 12.65625,
+            "label": "Moss"
+          },
+          "before": 1,
+          "result": {
+            "stock": 0.7799999713897705,
+            "receipt": {
+              "type": "eat",
+              "actorId": 109,
+              "kind": "sunmoss",
+              "tissue": null,
+              "processingCost": 0,
+              "energyGain": 3.607435415340195,
+              "waterGain": 1,
+              "tick": 5
+            },
+            "radialClosed": true
+          }
+        },
+        {
+          "spot": {
+            "i": 15093,
+            "x": 117.5,
+            "y": 117.5,
+            "amount": 0.33261314034461975,
+            "kind": "bramble",
+            "click": {
+              "x": 416.5999999999999,
+              "y": 287
+            },
+            "anchor": {
+              "i": 15093,
+              "food": "bramble",
+              "x": 117.5,
+              "y": 117.5,
+              "hitX": 117.21875,
+              "hitY": 117.09375
+            },
+            "scope": "Naturally present finite resource; controlled legal nibbling body, adult reserves and nearby placement. No food/terrain spawned."
+          },
+          "selected": {
+            "kind": "plant",
+            "i": 15093,
+            "food": "bramble",
+            "x": 117.5,
+            "y": 117.5,
+            "hitX": 117.21875,
+            "hitY": 117.09375,
+            "label": "Berries"
+          },
+          "before": 0.33261314034461975,
+          "result": {
+            "stock": 0.17261314392089844,
+            "receipt": {
+              "type": "eat",
+              "actorId": 109,
+              "kind": "bramble",
+              "tissue": "crop",
+              "processingCost": 0,
+              "producerGenomeId": "flora4-2656af01-9b534496",
+              "energyGain": 6.617941777364528,
+              "waterGain": 4,
+              "tick": 12
+            },
+            "meal": {
+              "kind": "bramble",
+              "i": 15093,
+              "tissue": "crop",
+              "removed": 0.16,
+              "coat": 0,
+              "edible": 0.128,
+              "viableSeeds": 0.032,
+              "destroyedSeeds": 0,
+              "discarded": 0,
+              "genome": {
+                "schema": 4,
+                "id": "flora4-2656af01-9b534496",
+                "resourceAlias": "bramble",
+                "traits": {
+                  "growth": 0.032,
+                  "waterNeed": 0.42,
+                  "nutrition": 16,
+                  "seedAllocation": 0.2,
+                  "coatAllocation": 0
+                },
+                "traitAlleles": {
+                  "growth": [
+                    0.032,
+                    0.032
+                  ],
+                  "waterNeed": [
+                    0.42,
+                    0.42
+                  ],
+                  "nutrition": [
+                    16,
+                    16
+                  ],
+                  "seedAllocation": [
+                    0.2,
+                    0.2
+                  ],
+                  "coatAllocation": [
+                    0,
+                    0
+                  ]
+                },
+                "botanical": {
+                  "schema": 1,
+                  "cue": [
+                    0,
+                    0
+                  ],
+                  "receptor": [
+                    0,
+                    0
+                  ],
+                  "selfMarker": [
+                    "si:3",
+                    "si:2"
+                  ],
+                  "selfCompatible": [
+                    false,
+                    false
+                  ],
+                  "anther": [
+                    true,
+                    true
+                  ],
+                  "stigma": [
+                    true,
+                    true
+                  ],
+                  "ovule": [
+                    true,
+                    true
+                  ],
+                  "embryo": [
+                    true,
+                    true
+                  ]
+                },
+                "reproduction": "sexual-and-clonal",
+                "mutationEnabled": true
+              },
+              "producerId": "bramble:15093:founder",
+              "originCell": 15093,
+              "processingCost": 0,
+              "specializedHandling": false,
+              "actorId": 109,
+              "tick": 12,
+              "parentGenomeId": "flora1-bramble",
+              "mutation": 0,
+              "coatMutation": 0,
+              "mutationAxis": null,
+              "seedTransferComplete": true
+            },
+            "radialClosed": true
+          }
+        },
+        {
+          "spot": {
+            "i": 738,
+            "x": 98.5,
+            "y": 5.5,
+            "amount": 0.430203914642334,
+            "kind": "marshroot",
+            "click": {
+              "x": 425.5999999999999,
+              "y": 293
+            },
+            "anchor": {
+              "i": 738,
+              "food": "marshroot",
+              "x": 98.5,
+              "y": 5.5,
+              "hitX": 98.5,
+              "hitY": 5.28125
+            },
+            "scope": "Naturally present finite resource; controlled legal nibbling body, adult reserves and nearby placement. No food/terrain spawned."
+          },
+          "selected": {
+            "kind": "plant",
+            "i": 738,
+            "food": "marshroot",
+            "x": 98.5,
+            "y": 5.5,
+            "hitX": 98.5,
+            "hitY": 5.28125,
+            "label": "Reeds"
+          },
+          "before": 0.430203914642334,
+          "result": {
+            "stock": 0.26020392775535583,
+            "receipt": {
+              "type": "eat",
+              "actorId": 109,
+              "kind": "marshroot",
+              "tissue": null,
+              "processingCost": 0,
+              "energyGain": 7.247665698092572,
+              "waterGain": 9,
+              "tick": 19
+            },
+            "meal": {
+              "kind": "bramble",
+              "i": 15093,
+              "tissue": "crop",
+              "removed": 0.16,
+              "coat": 0,
+              "edible": 0.128,
+              "viableSeeds": 0.032,
+              "destroyedSeeds": 0,
+              "discarded": 0,
+              "genome": {
+                "schema": 4,
+                "id": "flora4-2656af01-9b534496",
+                "resourceAlias": "bramble",
+                "traits": {
+                  "growth": 0.032,
+                  "waterNeed": 0.42,
+                  "nutrition": 16,
+                  "seedAllocation": 0.2,
+                  "coatAllocation": 0
+                },
+                "traitAlleles": {
+                  "growth": [
+                    0.032,
+                    0.032
+                  ],
+                  "waterNeed": [
+                    0.42,
+                    0.42
+                  ],
+                  "nutrition": [
+                    16,
+                    16
+                  ],
+                  "seedAllocation": [
+                    0.2,
+                    0.2
+                  ],
+                  "coatAllocation": [
+                    0,
+                    0
+                  ]
+                },
+                "botanical": {
+                  "schema": 1,
+                  "cue": [
+                    0,
+                    0
+                  ],
+                  "receptor": [
+                    0,
+                    0
+                  ],
+                  "selfMarker": [
+                    "si:3",
+                    "si:2"
+                  ],
+                  "selfCompatible": [
+                    false,
+                    false
+                  ],
+                  "anther": [
+                    true,
+                    true
+                  ],
+                  "stigma": [
+                    true,
+                    true
+                  ],
+                  "ovule": [
+                    true,
+                    true
+                  ],
+                  "embryo": [
+                    true,
+                    true
+                  ]
+                },
+                "reproduction": "sexual-and-clonal",
+                "mutationEnabled": true
+              },
+              "producerId": "bramble:15093:founder",
+              "originCell": 15093,
+              "processingCost": 0,
+              "specializedHandling": false,
+              "actorId": 109,
+              "tick": 12,
+              "parentGenomeId": "flora1-bramble",
+              "mutation": 0,
+              "coatMutation": 0,
+              "mutationAxis": null,
+              "seedTransferComplete": true
+            },
+            "radialClosed": true
+          }
+        },
+        {
+          "spot": {
+            "i": 4469,
+            "x": 117.5,
+            "y": 34.5,
+            "amount": 0.08999346196651459,
+            "fixture": "Controlled finite fungus (.6) and real substrate (.3); no natural growth claim",
+            "kind": "rotcap",
+            "click": {
+              "x": 413.5999999999999,
+              "y": 301
+            },
+            "anchor": {
+              "i": 4469,
+              "food": "rotcap",
+              "x": 117.5,
+              "y": 34.5,
+              "hitX": 117.125,
+              "hitY": 34.53125
+            },
+            "scope": "Controlled finite fungus (.6) and real substrate (.3); no natural growth claim"
+          },
+          "selected": {
+            "kind": "plant",
+            "i": 4469,
+            "food": "rotcap",
+            "x": 117.5,
+            "y": 34.5,
+            "hitX": 117.125,
+            "hitY": 34.53125,
+            "label": "Mushrooms"
+          },
+          "before": 0.6000000238418579,
+          "result": {
+            "stock": 0.4400000274181366,
+            "receipt": {
+              "type": "eat",
+              "actorId": 109,
+              "kind": "rotcap",
+              "tissue": null,
+              "processingCost": 0,
+              "energyGain": 3.995508013051033,
+              "waterGain": 3,
+              "tick": 25
+            },
+            "meal": {
+              "kind": "bramble",
+              "i": 15093,
+              "tissue": "crop",
+              "removed": 0.16,
+              "coat": 0,
+              "edible": 0.128,
+              "viableSeeds": 0.032,
+              "destroyedSeeds": 0,
+              "discarded": 0,
+              "genome": {
+                "schema": 4,
+                "id": "flora4-2656af01-9b534496",
+                "resourceAlias": "bramble",
+                "traits": {
+                  "growth": 0.032,
+                  "waterNeed": 0.42,
+                  "nutrition": 16,
+                  "seedAllocation": 0.2,
+                  "coatAllocation": 0
+                },
+                "traitAlleles": {
+                  "growth": [
+                    0.032,
+                    0.032
+                  ],
+                  "waterNeed": [
+                    0.42,
+                    0.42
+                  ],
+                  "nutrition": [
+                    16,
+                    16
+                  ],
+                  "seedAllocation": [
+                    0.2,
+                    0.2
+                  ],
+                  "coatAllocation": [
+                    0,
+                    0
+                  ]
+                },
+                "botanical": {
+                  "schema": 1,
+                  "cue": [
+                    0,
+                    0
+                  ],
+                  "receptor": [
+                    0,
+                    0
+                  ],
+                  "selfMarker": [
+                    "si:3",
+                    "si:2"
+                  ],
+                  "selfCompatible": [
+                    false,
+                    false
+                  ],
+                  "anther": [
+                    true,
+                    true
+                  ],
+                  "stigma": [
+                    true,
+                    true
+                  ],
+                  "ovule": [
+                    true,
+                    true
+                  ],
+                  "embryo": [
+                    true,
+                    true
+                  ]
+                },
+                "reproduction": "sexual-and-clonal",
+                "mutationEnabled": true
+              },
+              "producerId": "bramble:15093:founder",
+              "originCell": 15093,
+              "processingCost": 0,
+              "specializedHandling": false,
+              "actorId": 109,
+              "tick": 12,
+              "parentGenomeId": "flora1-bramble",
+              "mutation": 0,
+              "coatMutation": 0,
+              "mutationAxis": null,
+              "seedTransferComplete": true
+            },
+            "radialClosed": true
+          }
+        },
+        {
+          "spot": {
+            "i": 4809,
+            "x": 73.5,
+            "y": 37.5,
+            "amount": 0.26934748888015747,
+            "kind": "thistlepod",
+            "click": {
+              "x": 417.5999999999999,
+              "y": 291
+            },
+            "anchor": {
+              "i": 4809,
+              "food": "thistlepod",
+              "x": 73.5,
+              "y": 37.5,
+              "hitX": 73.25,
+              "hitY": 37.21875
+            },
+            "scope": "Naturally present finite resource; controlled legal nibbling body, adult reserves and nearby placement. No food/terrain spawned."
+          },
+          "selected": {
+            "kind": "plant",
+            "i": 4809,
+            "food": "thistlepod",
+            "x": 73.5,
+            "y": 37.5,
+            "hitX": 73.25,
+            "hitY": 37.21875,
+            "label": "Seed Pods"
+          },
+          "before": 0.26934748888015747,
+          "result": {
+            "stock": 0.11934749037027359,
+            "receipt": {
+              "type": "eat",
+              "actorId": 109,
+              "kind": "thistlepod",
+              "tissue": "crop",
+              "processingCost": 0.6,
+              "producerGenomeId": "flora4-d276f2ec-9b8d3b0b",
+              "energyGain": 1.7518989348732923,
+              "waterGain": 0,
+              "tick": 30
+            },
+            "meal": {
+              "kind": "thistlepod",
+              "i": 4809,
+              "tissue": "crop",
+              "removed": 0.15,
+              "coat": 0.0375,
+              "edible": 0.08250000041492389,
+              "viableSeeds": 0.02999999958507611,
+              "destroyedSeeds": 0,
+              "discarded": 0.0375,
+              "genome": {
+                "schema": 4,
+                "id": "flora4-d276f2ec-9b8d3b0b",
+                "resourceAlias": "thistlepod",
+                "traits": {
+                  "growth": 0.026,
+                  "waterNeed": 0.25,
+                  "nutrition": 11,
+                  "seedAllocation": 0.2,
+                  "coatAllocation": 0.25
+                },
+                "traitAlleles": {
+                  "growth": [
+                    0.026,
+                    0.026
+                  ],
+                  "waterNeed": [
+                    0.25,
+                    0.25
+                  ],
+                  "nutrition": [
+                    11,
+                    11
+                  ],
+                  "seedAllocation": [
+                    0.2,
+                    0.2
+                  ],
+                  "coatAllocation": [
+                    0.25,
+                    0.25
+                  ]
+                },
+                "botanical": {
+                  "schema": 1,
+                  "cue": [
+                    0,
+                    0
+                  ],
+                  "receptor": [
+                    0,
+                    0
+                  ],
+                  "selfMarker": [
+                    "si:7",
+                    "si:7"
+                  ],
+                  "selfCompatible": [
+                    false,
+                    true
+                  ],
+                  "anther": [
+                    true,
+                    true
+                  ],
+                  "stigma": [
+                    true,
+                    true
+                  ],
+                  "ovule": [
+                    true,
+                    true
+                  ],
+                  "embryo": [
+                    true,
+                    true
+                  ]
+                },
+                "reproduction": "sexual-and-clonal",
+                "mutationEnabled": true
+              },
+              "producerId": "thistlepod:4809:founder",
+              "originCell": 4809,
+              "processingCost": 0.6,
+              "specializedHandling": false,
+              "actorId": 109,
+              "tick": 30,
+              "parentGenomeId": "flora1-thistlepod",
+              "mutation": 0,
+              "coatMutation": 0,
+              "mutationAxis": null,
+              "seedTransferComplete": true
+            },
+            "radialClosed": true
+          }
+        }
+      ],
+      "traits": [
+        {
+          "genome": {
+            "schema": 3,
+            "id": "flora3-thistlepod-0.20000-0.10000",
+            "resourceAlias": "thistlepod",
+            "traits": {
+              "growth": 0.026,
+              "waterNeed": 0.25,
+              "nutrition": 11,
+              "seedAllocation": 0.2,
+              "coatAllocation": 0.1
+            },
+            "reproduction": "clonal-propagule",
+            "mutationEnabled": true
+          },
+          "amount": 0.11934749037027359,
+          "tick": 32
+        },
+        {
+          "genome": {
+            "schema": 3,
+            "id": "flora3-thistlepod-0.20000-0.25000",
+            "resourceAlias": "thistlepod",
+            "traits": {
+              "growth": 0.026,
+              "waterNeed": 0.25,
+              "nutrition": 11,
+              "seedAllocation": 0.2,
+              "coatAllocation": 0.25
+            },
+            "reproduction": "clonal-propagule",
+            "mutationEnabled": true
+          },
+          "amount": 0.11934749037027359,
+          "tick": 32
+        },
+        {
+          "genome": {
+            "schema": 3,
+            "id": "flora3-thistlepod-0.20000-0.40000",
+            "resourceAlias": "thistlepod",
+            "traits": {
+              "growth": 0.026,
+              "waterNeed": 0.25,
+              "nutrition": 11,
+              "seedAllocation": 0.2,
+              "coatAllocation": 0.4
+            },
+            "reproduction": "clonal-propagule",
+            "mutationEnabled": true
+          },
+          "amount": 0.11934749037027359,
+          "tick": 32
+        }
+      ],
+      "seasons": [
+        {
+          "season": "SPRING",
+          "amount": 0.11934749037027359
+        },
+        {
+          "season": "SUMMER",
+          "amount": 0.11934749037027359
+        },
+        {
+          "season": "AUTUMN",
+          "amount": 0.11934749037027359
+        },
+        {
+          "season": "WINTER",
+          "amount": 0.11934749037027359
+        }
+      ],
+      "saved": {
+        "body": true,
+        "stock": true,
+        "genome": true
+      },
+      "depleted": {
+        "food": "thistlepod",
+        "i": 4809,
+        "stock": 0.11934749037027359,
+        "hidden": true
+      },
+      "errors": []
+    }
+  ]
+}

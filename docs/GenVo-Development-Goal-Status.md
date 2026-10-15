@@ -1,6 +1,10 @@
 # Active GenVo development goal: evidence audit
 
-## Latest implementation - October 14 overhead flora and reliable selection
+## Latest implementation - October 14 grounded habitats and readable creatures
+
+Scene and regional habitat props now use native overhead substrate instead of duplicate decorative food/profile silhouettes. Ground and vegetation caches are separate; live nearby resources remain current, and creatures draw above ground decoration. Exact natural-model parity, actual multi-chunk movement at 800x600 and a 1280x720 viewport, five food workflows, depletion, saves and 23 focused suites pass. Short renderer CPU averages are effectively unchanged; chunk texture memory doubles and large-world memory remains open. See [the habitat review](GenVo-Overhead-Habitats-Review.md). The full development goal remains active.
+
+## Previous implementation - October 14 overhead flora and reliable selection
 
 Existing finite plant resources now use native overhead canopies/crowns/caps, inherited coat states and fruit-free seedlings. Painted and clickable positions share one anchor, including shoreline reeds. Paired natural-world snapshots match the entire serialized simulation. Real 800x600 selected-resource feeding, inspection, season/coat fixtures and saves pass, with natural resources and controlled fungal stock explicitly distinguished. Seventeen focused suites pass. See [the flora review](GenVo-Overhead-Flora-Review.md). Larger background landmarks, natural adaptation and human usability remain open; the complete development goal remains active.
 
