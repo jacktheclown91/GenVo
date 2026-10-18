@@ -34,7 +34,7 @@ try{
   const g=window.__GENVO8__,{founderPlan}=await import('/src/lineage/body-inheritance.js'),{makePlan,validatePlan}=await import('/src/lineage/body-plan.js'),{drawGenvoSprite}=await import('/src/render/genvo-draw.js'),{phenotypeFor}=await import('/src/organisms/species.js');
   const ids=['filament-tuft','fur-mantle','feather-mantle','proto-wing','climber-leg','hook-pad'];
   const normal=founderPlan(),base=normal.nodes.map(n=>({partId:n.partId,parent:n.parent,socket:n.socket})),
-   paint=document.createElement('canvas');paint.width=8*154;paint.height=6*158;
+   paint=document.createElement('canvas');paint.width=8*172;paint.height=6*178;
   paint.id='e4-review-contact-sheet';paint.style='position:fixed';paint.style='top:0';paint.style='left:0';paint.style='z-index:999999';paint.style.background='#19232a';
   document.body.append(paint);
   const c=paint.getContext('2d',{willReadFrequently:true}),rows=[];
@@ -48,11 +48,11 @@ try{
   for(let j=0;j<ids.length;j++){
    const id=ids[j],plan=make(id),digests=[];
    for(let d=0;d<8;d++){
-    const x=d*154+77,y=j*158+83;const animal={id:1000+j,age:36,alive:true,health:100,energy:95,hydration:95,species:'genvo',genes:{},anatomy:{},adaptations:[],bodyPlan:plan,dir:d};
+    const x=d*172+86,y=j*178+88;const animal={id:1000+j,age:36,alive:true,health:100,energy:95,hydration:95,species:'genvo',genes:{},anatomy:{},adaptations:[],bodyPlan:plan,dir:d};
     c.save();c.translate(x,y);
-    drawGenvoSprite(c,{animal,phenotype:phenotypeFor(animal),scale:4,frame:1,moving:false,palette:{body:'#86b0c4',shade:'#31556c',light:'#d3ebeb'},pose:{dir:d,action:'court',life:{breath:.5},behavior:{crestSpread:.85}}});
-    c.restore();c.fillStyle='#d8e2e6';c.font='12px monospace';c.fillText(id,d*154+5,j*158+150);
-    const pixels=c.getImageData(d*154+10,j*158+16,135,115).data;
+    drawGenvoSprite(c,{animal,phenotype:phenotypeFor(animal),scale:5,frame:1,moving:false,palette:{body:'#86b0c4',shade:'#31556c',light:'#d3ebeb'},pose:{dir:d,action:'court',life:{breath:.5},behavior:{crestSpread:.85}}});
+    c.restore();c.fillStyle='#d8e2e6';c.font='12px monospace';c.fillText(id,d*172+5,j*178+169);
+    const pixels=c.getImageData(d*172+8,j*178+8,154,150).data;
     let n=0,hash=2166136261;for(let k=0;k<pixels.length;k+=4){if(pixels[k+3])n++;hash=Math.imul(hash^pixels[k],16777619);hash=Math.imul(hash^pixels[k+1],16777619);hash=Math.imul(hash^pixels[k+2],16777619);hash=Math.imul(hash^pixels[k+3],16777619)}
     if(n<70)throw Error(id+' missing rendered pixels facing '+d);
     digests.push(hash>>>0);
@@ -63,7 +63,9 @@ try{
   const status=g.nativeArtStatus();
   return{scope:'Actual Chromium GenVo game boot, 85 loaded native part packs, six valid reviewed actual mounted bodies, eight true top-down facings, in-game renderer. Controlled screenshot is a preview, not a naturally evolved lineage or subjective art approval.',nativeArt:status,rows};
  });
- await page.locator('#e4-review-contact-sheet').screenshot({path:path.join(output,'all-evolved-parts-overhead-8-directions.png')});
+ const contactPng=await page.locator('#e4-review-contact-sheet').evaluate(el=>el.toDataURL('image/png').split(',')[1]);
+ fs.writeFileSync(path.join(output,'all-evolved-parts-overhead-8-directions.png'),Buffer.from(contactPng,'base64'));
+ // A pure canvas export avoids game HUD/toasts overlapping the review sheet.
  await page.evaluate(()=>document.querySelector('#e4-review-contact-sheet').remove());
  await page.screenshot({path:path.join(output,'real-game-e4-world.png')});
  if(errors.length)throw Error('Browser page errors: '+errors.join('; '));
