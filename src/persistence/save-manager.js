@@ -95,7 +95,16 @@ function restoreWorld(world,state,{initializeMissingFreshwater=false}={}){
     if(!world.seedBank[kind])continue;
     restoreTyped(world.seedBank[kind],source,`world.seedBank.${kind}`);
   }
-  if(state.plantResources){validatePlantResources(world,state.plantResources);world.plantResources=state.plantResources;}else initializePlantResources(world);if(state.organicResources){validateOrganicResources(world,state.organicResources);world.organicResources=state.organicResources;}else initializeOrganicResources(world);if(state.soilWater){validateSoilWater(world,state.soilWater);world.soilWater={...state.soilWater,scratch:new Float32Array(world.len)};}else delete world.soilWater;
+  // New flora must not appear from generator defaults when an older world is loaded.
+  for(const kind of Object.keys(world.plants))if(!Object.hasOwn(state.plants||{},kind))world.plants[kind].fill(0);
+  for(const kind of Object.keys(world.seedBank))if(!Object.hasOwn(state.seedBank||{},kind))world.seedBank[kind].fill(0);
+  if(state.plantResources){
+    for(const kind of Object.keys(world.plantResources.energy)){
+      if(!Object.hasOwn(state.plantResources.energy||{},kind))state.plantResources.energy[kind]=new Float64Array(world.len);
+      if(!Object.hasOwn(state.plantResources.limits||{},kind))state.plantResources.limits[kind]=new Uint8Array(world.len);
+    }
+    validatePlantResources(world,state.plantResources);world.plantResources=state.plantResources;
+  }else initializePlantResources(world);if(state.organicResources){validateOrganicResources(world,state.organicResources);world.organicResources=state.organicResources;}else initializeOrganicResources(world);if(state.soilWater){validateSoilWater(world,state.soilWater);world.soilWater={...state.soilWater,scratch:new Float32Array(world.len)};}else delete world.soilWater;
 }
 
 function snapshotControllers(sim){
