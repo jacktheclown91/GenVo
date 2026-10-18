@@ -1,0 +1,43 @@
+name: GenVo D1 page vegetation validation
+on:
+  push:
+    branches:
+      - feat/d1-page-vegetation-work
+  workflow_dispatch:
+concurrency:
+  group: d1-page-vegetation-${{ github.ref_name }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  d1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Paged vegetation and exact conservation
+        run: |
+          node tests/page-vegetation-work.mjs
+          node tests/page-offscreen-continuity.mjs
+          node tests/page-residency.mjs
+      - name: Existing producer, resource and world contracts
+        run: |
+          node tests/plant-resource-contract.mjs
+          node tests/soil-water.mjs
+          node tests/organic-resource-cycle.mjs
+          node tests/world-pages.mjs
+          node tests/save-persistence.mjs
+      - name: Full unchanged fast regression
+        run: node tools/run-tests.mjs --json docs/test-runs/d1-page-vegetation-ci.json
+      - name: Upload regression evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: d1-page-vegetation-validation
+          path: |
+            docs/test-runs/d1-page-vegetation-ci.json
+            docs/test-runs/d1-page-vegetation-ci.artifacts/
+          if-no-files-found: ignore
