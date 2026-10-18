@@ -1,0 +1,76 @@
+name: GenVo D2 seed movement validation
+on:
+  push:
+    branches:
+      - feat/d2-seed-page-transfer-receipts
+  workflow_dispatch:
+concurrency:
+  group: d2-seed-page-${{ github.ref_name }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  d2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Actual page seed deposits and previous biology contracts
+        run: |
+          node tests/page-seed-transfers.mjs
+          node tests/dispersal.mjs
+          node tests/clonal-flora.mjs
+          node tests/flora-tissue-propagules.mjs
+          node tests/botanical-reproduction.mjs
+          node tests/botanical-safety.mjs
+          node tests/page-vegetation-work.mjs
+          node tests/save-persistence.mjs
+      - name: Exact D1 parent baseline
+        uses: actions/checkout@v4
+        with:
+          ref: 6fef0796232bb17c80611a7b25b1ef995e9561a3
+          path: baseline
+      - name: Whole simulation source parity and seeded seam cargo
+        shell: bash
+        run: |
+          set -euo pipefail
+          fingerprint() {
+            (cd "$1" && node --input-type=module <<'NODE'
+          import {Simulation} from './src/sim/simulation.js';
+          import {createSimulationSnapshot} from './src/persistence/save-manager.js';
+          import {createHash} from 'node:crypto';
+          import {serialize} from 'node:v8';
+          for(const seed of ['D2-PARENT-PARITY-A','D2-PARENT-PARITY-B']){
+            const sim=new Simulation(seed,{player:false}),w=sim.world;
+            for(let tick=0;tick<120;tick++)sim.update(null);
+            let y=12;
+            while(y<w.n-12&&(w.water[w.idx(63,y)]||w.water[w.idx(64,y)]))y++;
+            if(y>=w.n-12)throw Error('No dry seed movement seam');
+            const kind='thistlepod',source=w.idx(63,y);
+            sim.dispersal.deposit(kind,64.5,y+.5,.2,{payload:{originCell:source}});
+            for(let tick=0;tick<72;tick++)sim.update(null);
+            const saved=structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'d2-parent-state'}));
+            delete saved.controllers.dispersal.pageSeedTransfers; // D2 audit only
+            console.log(seed+' '+createHash('sha256').update(serialize(saved)).digest('hex'));
+          }
+          NODE
+            )
+          }
+          fingerprint baseline > "$RUNNER_TEMP/d2-baseline.sha"
+          fingerprint . > "$RUNNER_TEMP/d2-candidate.sha"
+          diff -u "$RUNNER_TEMP/d2-baseline.sha" "$RUNNER_TEMP/d2-candidate.sha"
+          echo 'D2 material, inheritance, organism and RNG parity: PASS'
+      - name: Full unchanged fast regression
+        run: node tools/run-tests.mjs --json docs/test-runs/d2-page-seed-ci.json
+      - name: Archive regression evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: d2-seed-page-validation
+          path: |
+            docs/test-runs/d2-page-seed-ci.json
+            docs/test-runs/d2-page-seed-ci.artifacts/
+          if-no-files-found: ignore
