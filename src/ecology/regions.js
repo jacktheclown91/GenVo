@@ -15,6 +15,7 @@ export class RegionalEcologyController{
   constructor(sim){this.sim=sim;this.chunkSize=16;this.records=new Map();this.membership=new Map();this.lastDay=-1;this.historyLimit=12;this.engineeringHistoryLimit=28;this.engineeringSampleDays=4;this.pageTransit=createPageResidency();}
   keyAt(x,y){const n=this.sim.world.n;return `${Math.floor(Math.max(0,Math.min(n-1,x))/this.chunkSize)}:${Math.floor(Math.max(0,Math.min(n-1,y))/this.chunkSize)}`;}
   bounds(key){const [cx,cy]=String(key).split(':').map(Number),n=this.sim.world.n;if(!Number.isInteger(cx)||!Number.isInteger(cy)||cx<0||cy<0||cx*this.chunkSize>=n||cy*this.chunkSize>=n)throw Error('Invalid ecological region');return{x0:cx*this.chunkSize,y0:cy*this.chunkSize,x1:Math.min(n,(cx+1)*this.chunkSize),y1:Math.min(n,(cy+1)*this.chunkSize)};}
+  resetPageResidency(){this.pageTransit=createPageResidency();this.reconcilePages();}
   ensurePageTransit(){return this.pageTransit??(this.pageTransit=createPageResidency());}
   notePageBirth(animal){recordPageResident(this.ensurePageTransit(),this.sim.world,animal,{day:this.sim.day,tick:this.sim.tickCount});}
   notePageDeath(animal){removePageResident(this.pageTransit,animal.id);}
