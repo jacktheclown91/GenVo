@@ -1,0 +1,43 @@
+name: Diagnostic D4 4x page-owner performance
+on:
+  push:
+    branches:
+      - diagnostic/d4-owner-performance-parity
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: e6deb766964541d6d0c78dc664fe5dfb5c9e3254
+          path: d3
+      - uses: actions/checkout@v4
+        with:
+          ref: d853e96f4a8248fce2988fecb4d5b67b89ba1b6b
+          path: d4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Same-runner unchanged observer-play ABBA
+        shell: bash
+        run: |
+          set +e
+          n=0
+          for v in d3 d4 d4 d3; do
+            n=$((n+1))
+            (cd "$v" && node tests/observer-play.mjs) > "$RUNNER_TEMP/d4-4x-${n}-${v}.log" 2>&1
+            code=$?
+            echo "observer ${n} ${v} exit=${code}"
+            grep -E '4x large-population cost|ms per real second of play|observer play ok' "$RUNNER_TEMP/d4-4x-${n}-${v}.log" || cat "$RUNNER_TEMP/d4-4x-${n}-${v}.log"
+          done
+          echo 'No threshold modifications or disabled tests. This is a relative diagnostic, not a release gate.'
+      - name: Archive raw metrics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: d4-unchanged-4x-performance
+          path: ${{ runner.temp }}/d4-4x-*.log
+          if-no-files-found: ignore
