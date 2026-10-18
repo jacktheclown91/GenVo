@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Candidate B1 source
         uses: actions/checkout@v4
+        with:
+          ref: feat/b1-page-salt-transfer-receipts
       - name: Unmodified main source
         uses: actions/checkout@v4
         with:
