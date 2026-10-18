@@ -18,8 +18,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Organism residency and exact save
-        run: node tests/page-residency.mjs
+      - name: Organism residency, offscreen biology and exact save
+        run: |
+          node tests/page-residency.mjs
+          node tests/page-offscreen-continuity.mjs
       - name: Existing region and migration authorities
         run: |
           node tests/regional-ecology.mjs
