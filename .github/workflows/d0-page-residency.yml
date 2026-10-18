@@ -1,0 +1,41 @@
+name: GenVo D0 regional identity validation
+on:
+  push:
+    branches:
+      - feat/d0-canonical-page-residency
+  pull_request:
+    branches:
+      - feat/b1-page-salt-transfer-receipts
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  d0:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Organism residency and exact save
+        run: node tests/page-residency.mjs
+      - name: Existing region and migration authorities
+        run: |
+          node tests/regional-ecology.mjs
+          node tests/regional-migration-arrivals.mjs
+          node tests/world-pages.mjs
+          node tests/save-persistence.mjs
+          node tests/page-groundwater-transfers.mjs
+          node tests/page-salt-transfers.mjs
+      - name: Fast baseline with unchanged failure and time limits
+        run: node tools/run-tests.mjs --json docs/test-runs/d0-page-residency-ci.json
+      - name: Save all validation logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: d0-page-residency-validation
+          path: |
+            docs/test-runs/d0-page-residency-ci.json
+            docs/test-runs/d0-page-residency-ci.artifacts/
+          if-no-files-found: ignore
