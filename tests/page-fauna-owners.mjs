@@ -46,6 +46,17 @@ off.x=32.5;off.y=65.5;
 r.reconcilePages();
 assert.equal(r.pageOwner(off),'0,1','out-of-band movement reconciles with canonical coordinates');
 assert.equal(r.pageActors(null).includes(off),false);
+// Specialized movers may change x/y without the normal player movement hook.
+// The real lifecycle actor pass must repair page ownership in the same visit,
+// not defer the correction to an unrelated daily observer sweep.
+const unmapped=new Simulation('D4-LIFECYCLE-MOVER',{player:false});
+const mover=unmapped.animals.find(a=>a.alive),oldOwner=unmapped.regionalEcology.pageOwner(mover);
+mover.x=oldOwner?.startsWith('0,')?70.5:20.5;
+mover.y=20.5;mover.health=100;mover.age=0;
+unmapped.phaseLifecycle();
+const movedPage=Math.floor(mover.x/64)+','+Math.floor(mover.y/64);
+assert.equal(unmapped.regionalEcology.pageOwner(mover),movedPage,'lifecycle updates a moved actor in its existing pass');
+assert.equal(unmapped.regionalEcology.pageActors(movedPage).find(a=>a.id===mover.id),mover,'lifecycle retains the same object');
 const saved=snapshot(sim);
 for(const y of [0,1])for(const x of [0,1])w.pages.unload(x,y);
 assert.deepEqual(snapshot(sim),saved,'evicting camera-page views does not unload any living actor');
