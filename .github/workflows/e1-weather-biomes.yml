@@ -1,0 +1,70 @@
+name: GenVo E1 regional weather and physical biomes
+on:
+  push:
+    branches:
+      - feat/e1-weather-fronts-biome-ecology
+  workflow_dispatch:
+concurrency:
+  group: e1-weather-biomes-${{ github.ref_name }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  e1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Physical weather fronts, biome and ecosystem preservation
+        run: |
+          node tests/weather-front-biomes.mjs
+          node tests/weather-patterns.mjs
+          node tests/weather-soil-resume.mjs
+          node tests/regional-environment.mjs
+          node tests/soil-water.mjs
+          node tests/storm-aftermath.mjs
+          node tests/page-groundwater-transfers.mjs
+          node tests/page-salt-transfers.mjs
+          node tests/fauna-page-checkpoint.mjs
+      - name: Pin legacy D5 source for exact backward-compatibility
+        uses: actions/checkout@v4
+        with:
+          ref: b41521f0718cb8f353846fb123a9ae5920b09e44
+          path: baseline
+      - name: Unchanged original world simulation, RNG and resources
+        shell: bash
+        run: |
+          set -euo pipefail
+          fingerprint() {
+            (cd "$1" && node --input-type=module <<'NODE'
+          import {Simulation} from './src/sim/simulation.js';
+          import {createSimulationSnapshot} from './src/persistence/save-manager.js';
+          import {serialize} from 'node:v8';
+          import {createHash} from 'node:crypto';
+          for(const seed of ['E1-LEGACY-PARITY-A','E1-LEGACY-PARITY-B']){
+            const sim=new Simulation(seed,{player:false});
+            for(let t=0;t<120;t++)sim.update(null);
+            const snapshot=structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'e1-legacy-parity'}));
+            console.log(seed+' '+createHash('sha256').update(serialize(snapshot)).digest('hex'));
+          }
+          NODE
+            )
+          }
+          fingerprint baseline > "$RUNNER_TEMP/e1-legacy-baseline.sha"
+          fingerprint . > "$RUNNER_TEMP/e1-legacy-candidate.sha"
+          diff -u "$RUNNER_TEMP/e1-legacy-baseline.sha" "$RUNNER_TEMP/e1-legacy-candidate.sha"
+          echo 'Legacy world biology, materials and RNG unchanged: PASS'
+      - name: Full unchanged fast regression
+        run: node tools/run-tests.mjs --json docs/test-runs/e1-weather-biomes-ci.json
+      - name: Archive full evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e1-weather-biomes
+          path: |
+            docs/test-runs/e1-weather-biomes-ci.json
+            docs/test-runs/e1-weather-biomes-ci.artifacts/
+          if-no-files-found: ignore
