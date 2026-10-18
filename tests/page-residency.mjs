@@ -50,6 +50,22 @@ const altered=structuredClone(saved);altered.controllers.regionalEcology.pageTra
 assert.throws(()=>restoreSimulationSnapshot(altered),/page transfers do not reconcile/i,'counters must match cumulative signed crossings');
 const old=structuredClone(saved);delete old.controllers.regionalEcology.pageTransit;
 assert.deepEqual(snap(restoreSimulationSnapshot(old)),old,'old snapshot lacking page residency remains unchanged');
+// Existing scripts and test fixtures can temporarily place an otherwise living actor
+// outside the local map. There is no page resident there, but no organism dies and
+// no migration is invented on its return to a valid tile.
+const outlier=new Simulation('D0-OFFMAP-OBSERVATION',{player:false});
+const odd=outlier.animals.find(a=>a.alive),id=odd.id,alive=odd.alive;
+odd.x=-2.5;outlier.day++;
+assert.doesNotThrow(()=>outlier.regionalEcology.observe(),'out-of-map observation must never break the existing simulation');
+assert.equal(outlier.regionalEcology.pageTransit.membership.has(id),false,'finite out-of-map actor owns no page');
+const outSerial=outlier.regionalEcology.pageTransit.transferred;
+odd.x=4.5;odd.y=4.5;outlier.day++;outlier.regionalEcology.observe();
+assert.equal(outlier.regionalEcology.pageTransit.membership.get(id),'0,0');
+assert.equal(outlier.regionalEcology.pageTransit.transferred,outSerial,'return from unowned space is not a fabricated migration');
+assert.equal(odd.alive,alive,'observer never changes actor life');
+assert.equal(outlier.animals.find(a=>a.id===id),odd,'observer never replaces an actor');
+const outSnap=snap(outlier);
+assert.deepEqual(snap(restoreSimulationSnapshot(structuredClone(outSnap))),outSnap,'out-of-map history exact after return');
 const duplicate=createPageResidency();
 const a={id:1,alive:true,species:'genvo',x:2,y:3};
 recordPageResident(duplicate,world,a);recordPageResident(duplicate,world,a);
