@@ -15,7 +15,7 @@ export const SOCKET_TYPES=Object.freeze(['limb','head','mouth','eye','dorsal','f
 // Capability names (locked for v0). Owning systems decide what each one does.
 export const CAPABILITIES=Object.freeze([
   'walk','sprint','pounce','carry','dig','graze','bite','tear','crush','see','see-wide',
-  'armor','retaliate','strike','venom','store','signal','swim-propel',
+  'armor','retaliate','strike','venom','store','signal','swim-propel','insulate','climb',
   // Wave 1 (creator decision 2026-10-09): eight bodies, legs, mouths and eyes.
   'run','brace','swim','quiet','peck','filter','suck','swallow','nibble','aim','spot','glance','track','display','call','dance','flare','scent','gesture','lay-eggs','live-birth'
 ]);
@@ -102,6 +102,8 @@ export const PARTS=Object.freeze(Object.fromEntries([
   part('sturdy-leg','limbs',{tags:['leg','land','brace'],prereq:['walking-leg'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','foot'],mass:.6,upkeep:.14,cost:2,actions:['walk','brace','dance'],niche:['predator-pressure'],anim:'gait'}),
   part('webbed-leg','limbs',{tags:['leg','land','water'],prereq:['walking-leg'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','web'],mass:.45,upkeep:.14,cost:2,actions:['walk','swim','dance'],niche:['wet-margin'],anim:'gait',legacy:{axis:'waterBody',threshold:.8,adaptation:'webbed-limbs'}}),
   part('padded-leg','limbs',{tags:['leg','land','quiet'],prereq:['walking-leg'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','pad'],mass:.4,upkeep:.12,cost:2,actions:['walk','quiet','dance'],niche:['stealth'],anim:'gait'}),
+  // E3: two true grasper descendants can get purchase on inclined ground.
+  part('climber-leg','limbs',{tags:['leg','land','grip','climb'],prereq:['grasper'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','curved-claw','foot'],mass:.58,upkeep:.22,cost:4,actions:['walk','climb','carry','dance'],niche:['slopes','woodland'],anim:'gait'}),
   part('digging-forelimb','limbs',{tags:['leg','soil'],prereq:['walking-leg'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','spade'],mass:.5,upkeep:.15,cost:2,actions:['walk','dig','dance'],niche:['burrow','roots'],anim:'gait'}),
   part('grazing-mouth','feeding',{tags:['mouth','plant'],sockets:['mouth'],mass:.3,upkeep:.05,cost:1,actions:['graze','bite','call'],niche:['plants'],symmetry:'single'}),
   part('tearing-jaw','feeding',{tags:['mouth','flesh'],prereq:['grazing-mouth'],sockets:['mouth'],mass:.5,upkeep:.2,cost:2,actions:['graze','bite','tear','call'],niche:['carcass','prey'],symmetry:'single',legacy:{axis:'jaw',threshold:.5,adaptation:'heavy-jaw'}}),
@@ -127,6 +129,12 @@ export const PARTS=Object.freeze(Object.fromEntries([
   part('venom-gland','offense',{tags:['gland','toxin'],prereq:['tearing-jaw'],sockets:['flank'],mass:.2,upkeep:.15,cost:3,actions:['venom'],niche:['prey']}),
   part('storage-sac','metabolism',{tags:['sac','store'],sockets:['flank'],mass:.5,upkeep:.05,cost:2,actions:['store'],niche:['dry-ground','scarcity'],legacy:{axis:'waterBody',threshold:.5,adaptation:'water-sacs'}}),
   part('silt-fin','locomotion',{tags:['back','fin','water'],prereq:['paddle-tail'],sockets:['dorsal'],mass:.28,upkeep:.09,cost:3,actions:['swim-propel','flare'],niche:['aquatic','wet-margin'],symmetry:'single',anim:'sweep'}),
+  // E3: biological coverage evolves through genuine ancestral precursors.
+  // Display membranes have no flight action or air traversal without later physics.
+  part('filament-tuft','metabolism',{tags:['cover','proto-filament'],sockets:['dorsal'],mass:.18,upkeep:.08,cost:2,actions:['insulate'],niche:['cold'],symmetry:'single'}),
+  part('fur-mantle','metabolism',{tags:['cover','fur'],prereq:['filament-tuft'],sockets:['dorsal'],mass:.48,upkeep:.20,cost:4,actions:['insulate'],niche:['cold','woodland'],symmetry:'single'}),
+  part('feather-mantle','metabolism',{tags:['cover','feathers'],prereq:['filament-tuft'],sockets:['dorsal'],mass:.39,upkeep:.21,cost:5,actions:['insulate','display'],niche:['cold','courtship'],symmetry:'single'}),
+  part('proto-wing','locomotion',{tags:['cover','proto-wing','display'],prereq:['feather-mantle'],sockets:['dorsal'],mass:.72,upkeep:.32,cost:7,actions:['display','flare'],niche:['courtship','woodland'],symmetry:'single',anim:'sweep'}),
   part('signal-crest','social',{tags:['crest','display'],sockets:['dorsal'],mass:.1,upkeep:.05,cost:1,actions:['signal','flare'],niche:['family'],symmetry:'single',legacy:{axis:'signal',threshold:.5,adaptation:'alarm-pulse'}}),
   // GDD 6.2 slice restriction: buildable and previewable, but grants no open-water travel until
   // water physics, world collision and survival balancing genuinely support it.
