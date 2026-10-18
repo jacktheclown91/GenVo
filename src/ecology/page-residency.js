@@ -8,7 +8,10 @@ const integer=n=>Number.isSafeInteger(n)&&n>=0;
 function pageGrid(w){if(!integer(w?.n)||w.n===0)return null;return Math.ceil(w.n/WORLD_PAGE_SIZE);}
 export function residencyPage(w,x,y){
  const grid=pageGrid(w);
- if(!grid||!Number.isFinite(x)||!Number.isFinite(y)||x<0||y<0||x>=w.n||y>=w.n)throw Error('Invalid resident coordinates.');
+ if(!grid||!Number.isFinite(x)||!Number.isFinite(y))throw Error('Invalid resident coordinates.');
+ // The existing simulation can temporarily position test/scripted creatures outside
+ // the playable map. Those have no page owner; observation must not change biology.
+ if(x<0||y<0||x>=w.n||y>=w.n)return null;
  return Math.floor(x/WORLD_PAGE_SIZE)+','+Math.floor(y/WORLD_PAGE_SIZE);
 }
 function validKey(key,grid){
@@ -21,7 +24,9 @@ export function recordPageResident(ledger,w,animal,{from=null,day=0,tick=0}={}){
  if(!ledger||ledger.schema!==PAGE_RESIDENCY_SCHEMA||!(ledger.membership instanceof Map)||!(ledger.byEdge instanceof Map)||!Array.isArray(ledger.recent))throw Error('Invalid page residency ledger.');
  if(!integer(animal?.id)||animal.id===0||!integer(day)||!integer(tick))throw Error('Invalid page resident identity/time.');
  if(!animal.alive){ledger.membership.delete(animal.id);return false;}
- const page=residencyPage(w,animal.x,animal.y),previous=ledger.membership.get(animal.id)??(from?residencyPage(w,from.x,from.y):null);
+ const page=residencyPage(w,animal.x,animal.y);
+ if(page===null){ledger.membership.delete(animal.id);return false;}
+ const previous=ledger.membership.get(animal.id)??(from?residencyPage(w,from.x,from.y):null);
  if(previous===page){ledger.membership.set(animal.id,page);return false;}
  if(previous!==null){
   if(!integer(ledger.transferred)||ledger.transferred>=Number.MAX_SAFE_INTEGER)throw Error('Page residency sequence exhausted.');
