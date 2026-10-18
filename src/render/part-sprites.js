@@ -20,6 +20,9 @@ export const PART_SPRITES=Object.freeze({
   'spring-leg':{layer:'rear'},
   'grasper':{layer:'front'},
   'digging-forelimb':{layer:'front'},
+  'climber-leg':{layer:'front'},
+  'hook-pad':{layer:'front'},
+  'filament-tuft':{layer:'body'},'fur-mantle':{layer:'body'},'feather-mantle':{layer:'body'},'proto-wing':{layer:'body'},
   'grazing-mouth':{layer:'face',base:true},
   'tearing-jaw':{layer:'face'},
   'crushing-jaw':{layer:'face'},
@@ -70,6 +73,28 @@ const DRAW={
   'storage-sac'(c,k){const sx=k.bx+k.perp.x*k.sign*(k.bodyW*.48)-k.fx*.5,sy=k.by+k.perp.y*k.sign*(k.bodyH*.38)-k.fy*.5;pixel(c,snap(sx),snap(sy),2,2,k.s,k.p.body);pixel(c,snap(sx),snap(sy),1,1,k.s,k.p.light)},
   // Venom gland: a swollen 2x2 sac with a dark duct toward the jaw.
   'venom-gland'(c,k){const gx=k.bx+k.perp.x*k.sign*(k.bodyW*.40)+k.fx*.8,gy=k.by+k.perp.y*k.sign*(k.bodyH*.40)+k.fy*.8;pixel(c,snap(gx),snap(gy),2,2,k.s,'#9fd14f');pixel(c,snap(gx),snap(gy),1,1,k.s,'#e2f5a8');pixelLine(c,gx+k.fx,gy+k.fy,gx+k.fx*2-k.perp.x*k.sign,gy+k.fy*2-k.perp.y*k.sign,k.s,'#4e6d2a')},
+  // Overhead E3 insulation stages. Mounted to the upper body, NOT to the face.
+  'filament-tuft'(c,k){const b=backTop(k);for(let n=-2;n<=2;n++){
+    const x=b.x+k.perp.x*n*.78,y=b.y+k.perp.y*n*.78-.5;
+    pixelLine(c,x,y,x+k.perp.x*n*.3-k.fx*(1.0+Math.abs(n)*.15),y+k.perp.y*n*.3-k.fy*(1.0+Math.abs(n)*.15)-.4,k.s,n&1?'#d6bf93':'#e4d7ba',.45)}},
+  'fur-mantle'(c,k){const b=backTop(k);
+    pixel(c,b.x-2.8,b.y-1.3,5.6,2.4,k.s,'#6b6659');
+    pixel(c,b.x-2.4,b.y-1.3,4.8,1.3,k.s,'#bbab8d');
+    for(let n=-3;n<=3;n++){const a=b.x+k.perp.x*n*.72,b0=b.y+k.perp.y*n*.72;
+      pixelLine(c,a,b0,a-k.fx*.8+k.perp.x*n*.20,b0-k.fy*.8+k.perp.y*n*.20-1,k.s,n&1?'#f3dfb7':'#d3bb94',.55)}},
+  'feather-mantle'(c,k){const b=backTop(k);for(let n=-2;n<=2;n++){
+    const side=n<0?-1:1,a={x:b.x+k.perp.x*n*.55,y:b.y+k.perp.y*n*.55},t={x:a.x-k.fx*2.0+k.perp.x*side*1.1,y:a.y-k.fy*2.0+k.perp.y*side*1.1-1.1};
+    pixelLine(c,a.x,a.y,t.x,t.y,k.s,'#5a7381',1.2);
+    pixelLine(c,a.x,a.y,t.x,t.y,k.s,n%2?'#cbd8d4':'#aebfbe',.55);
+    pixel(c,snap(t.x),snap(t.y),.5,.5,k.s,'#ecede0')}},
+  // Wing precursor is DISPLAY ONLY: six tapered vanes anchored to the back.
+  'proto-wing'(c,k){const b=backTop(k),fold=k.behavior?.crestSpread>0?.8:.55;
+    for(const sign of [-1,1])for(let n=0;n<3;n++){
+      const x=b.x-k.fx*(.2+n*.75)+k.perp.x*sign*.55,y=b.y-k.fy*(.2+n*.75)+k.perp.y*sign*.55;
+      const ex=x-k.fx*(2.5+n*.35)+k.perp.x*sign*(1.0+n*.5)*fold,ey=y-k.fy*(2.5+n*.35)+k.perp.y*sign*(1.0+n*.5)*fold-.35;
+      pixelLine(c,x,y,ex,ey,k.s,'#354f66',1.1);
+      pixelLine(c,x,y,ex,ey,k.s,n&1?'#b6cbd2':'#e0dfc8',.6);
+      pixel(c,snap(ex),snap(ey),.6,.6,k.s,'#eef3ef')}},
   'signal-crest'(c,k){for(const sign of [-1,1]){const cx=k.bx-k.fx*(k.bodyW*.28)+k.perp.x*sign*1.4,cy=k.by-k.fy*(k.bodyH*.28)+k.perp.y*sign*1.4-1;pixelLine(c,cx,cy,cx-k.fx*2.4+k.perp.x*sign,cy-k.fy*2.4+k.perp.y*sign-1.2,k.s,'#f0e0a0');pixel(c,cx-k.fx*2.4+k.perp.x*sign,cy-k.fy*2.4+k.perp.y*sign-1.2,1,1,k.s,'#e07050')}},
   // Tearing jaw: two forward mandibles with pale hooked tips either side of the mouth.
   'tearing-jaw'(c,k){const base=k.face.mouthForward+.8;for(const sign of [-1,1]){const x0=k.bx+k.fx*base+k.perp.x*sign*1.5,y0=k.by+k.fy*base+k.perp.y*sign*1.5,x1=x0+k.fx*2-k.perp.x*sign*.6,y1=y0+k.fy*2-k.perp.y*sign*.6;pixelLine(c,x0,y0,x1,y1,k.s,'#2b3f66');pixel(c,snap(x1),snap(y1),1,1,k.s,'#f1e8cf')}},
@@ -168,6 +193,11 @@ Object.assign(DRAW,{
   'heel-spike'(c,k){pixelLine(c,k.foot.x,k.foot.y,k.foot.x-k.fx*1.4,k.foot.y-k.fy*1.4-.5,k.s,'#2b3f66',.5)},
   'sensory-bristle'(c,k){const sg=Math.sign(k.leg.side)||1;for(const d of [-.6,.6])pixelLine(c,k.knee.x,k.knee.y,k.knee.x+sg*1.4,k.knee.y-1+d,k.s,'#e6e2c8',.5)},
   'grip-pad'(c,k){pixel(c,k.foot.x-.5,k.foot.y+.5,1.5,.5,k.s,'#1f3550')},
+  // E4 curved hook pads visibly fasten to the creature's own moving foot.
+  'hook-pad'(c,k){const f=k.foot,side=Math.sign(k.leg?.side)||1,xx=f.x+k.fx*.7,yy=f.y+k.fy*.7;
+    pixel(c,snap(f.x-.7),snap(f.y-.4),1.5,1,k.s,'#435b55');
+    pixelLine(c,xx,yy,xx+k.fx*.9+k.perp.x*side*.75,yy+k.fy*.9+k.perp.y*side*.75,k.s,'#ead8a8',.8);
+    pixel(c,snap(xx+k.fx*.9),snap(yy+k.fy*.9),.7,.7,k.s,'#faf0d0')},
   // Relic parts: a curved pale horn and two long tusks.
   'horn-crest'(c,k){const b=backTop(k),h={x:b.x+k.fx*1.6,y:b.y};pixelLine(c,h.x,h.y,h.x+k.fx*.6,h.y-3,k.s,'#f1e8cf');pixelLine(c,h.x+k.fx*.6,h.y-3,h.x+k.fx*1.6,h.y-3.8,k.s,'#f1e8cf',.5);pixel(c,h.x,h.y-.5,1,1,k.s,'#c9a86a')},
   'tusk-jaw'(c,k){const m=along(k,k.face.mouthForward+.6);for(const sg of [-1,1]){const r={x:m.x+k.perp.x*sg*1.2,y:m.y+k.perp.y*sg*1.2},e={x:r.x+k.fx*2.4+k.perp.x*sg*.6,y:r.y+k.fy*2.4+k.perp.y*sg*.6-.8};pixelLine(c,r.x,r.y,e.x,e.y,k.s,'#f6eeda');pixel(c,e.x,e.y,.5,.5,k.s,'#ffffff')}},
@@ -201,6 +231,15 @@ function standardLimb(c,k){
 // creature-assembler LEG_GAIT; the shapes are here).
 const toe=(c,k,x,y,w,h,col)=>pixel(c,snap(x),snap(y),w,h,k.s,col);
 export const LIMB_ART={
+  // Climber: jointed weight-bearing limb, thick forearm and paired recurved digits.
+  'climber-leg'(c,k){const {root,knee,foot,s,p,leg}=k,sg=Math.sign(leg?.side)||1;
+    pixelLine(c,root.x,root.y,knee.x,knee.y,s,p.shade,1.8);
+    pixelLine(c,knee.x,knee.y,foot.x,foot.y,s,p.body,1.3);
+    pixel(c,snap(knee.x-.5),snap(knee.y-.5),1.4,1.2,s,p.light);
+    for(const n of [-1,1]){const ax=foot.x+k.perp.x*n*.5,ay=foot.y+k.perp.y*n*.5;
+      const tx=ax+k.fx*1.2+k.perp.x*n*.7,ty=ay+k.fy*1.2+k.perp.y*n*.7;
+      pixelLine(c,ax,ay,tx,ty,s,'#d7b889',.75);
+      pixel(c,snap(tx-k.fx*.5+sg*k.perp.x*.3),snap(ty-k.fy*.5+sg*k.perp.y*.3),.65,.65,s,'#f5e4bf')}},
   // Runner: a slender limb, a light springy shin and a long forward-reaching toe.
   'runner-leg'(c,k){const {root,knee,foot,s,p,leg}=k,lifted=Number(leg.liftAmount)||0;pixelLine(c,root.x,root.y,knee.x,knee.y,s,p.shade,1);pixelLine(c,knee.x,knee.y,foot.x,foot.y,s,lifted>.62?p.light:p.body,.5);
     pixel(c,snap(knee.x),snap(knee.y),.5,.5,s,p.light);pixelLine(c,foot.x,foot.y,foot.x+k.fx*1.4,foot.y+k.fy*1.4,s,p.shade,.5);toe(c,k,foot.x+k.fx*1.4,foot.y+k.fy*1.4,.5,.5,p.light)},
