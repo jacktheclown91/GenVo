@@ -1,0 +1,26 @@
+name: Diagnostic E2 functional regression details
+on:
+  push:
+    branches:
+      - feat/e2-living-woodland
+permissions:
+  contents: read
+jobs:
+  explicit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run four cases with complete stack traces
+        shell: bash
+        run: |
+          set +e
+          for t in consolidation-demand-parity gestation-inheritance manual-resource-pose vocabulary; do
+            echo "::group::$t"
+            node "tests/$t.mjs"
+            echo "EXIT $t : $?"
+            echo "::endgroup::"
+          done
