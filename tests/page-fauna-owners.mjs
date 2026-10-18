@@ -53,7 +53,7 @@ assert.equal(validateFaunaPageOwners(sim).living,sim.animals.filter(a=>a.alive).
 const resumed=restoreSimulationSnapshot(structuredClone(saved)),rr=resumed.regionalEcology;
 assert.deepEqual(snapshot(resumed),saved,'runtime page-owner index is reconstructed, not duplicated in saves');
 assert.equal(validateFaunaPageOwners(resumed).living,sim.animals.filter(a=>a.alive).length);
-assert.deepEqual(rr.pageActors(next).map(a=>a.id),r.pageActors(next).map(a=>a.id));
+assert.deepEqual(rr.pageActors(next).map(a=>a.id).sort((a,b)=>a-b),r.pageActors(next).map(a=>a.id).sort((a,b)=>a-b),'page ownership is a set of identities, not a lifecycle iteration order');
 assert.equal(rr.pageActors(next).find(a=>a.id===player.id),resumed.animals.find(a=>a.id===player.id));
 for(let t=0;t<96;t++){if(t%12===0)resumed.world.pages.unload(1,0);sim.update(null);resumed.update(null);}
 assert.deepEqual(snapshot(sim),snapshot(resumed),'restored page ownership produces identical real lifecycle, RNG and materials');
