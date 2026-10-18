@@ -1,0 +1,60 @@
+name: E4 six native evolved part art, source provenance and regression
+on:
+  push:
+    branches:
+      - feat/e4-native-evolved-part-art
+  workflow_dispatch:
+concurrency:
+  group: e4-asset-build-${{ github.ref_name }}
+  cancel-in-progress: false
+permissions:
+  contents: write
+jobs:
+  install-art-and-validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Produce exact native 32px source packs, indexed assets and PNG previews
+        run: |
+          node tools/generate-e4-evolved-art.mjs
+          node tools/build-native-part-art.mjs
+      - name: Verify full native art contract and modular editor/runtime rendering
+        run: |
+          node tests/e4-visual-anatomy.mjs
+          node tests/native-part-catalog.mjs
+          node tests/native-specialty-wave.mjs
+          node tests/creature-assembly.mjs
+          node tests/editor-pass.mjs
+          node tests/anatomical-climate-precursors.mjs
+          node tests/part-animation-catalog.mjs
+          node tests/inherited-coats.mjs
+          node tests/indexed-part-renderer.mjs
+          node tests/fauna-page-checkpoint.mjs
+      - name: Commit only generated art onto E4 branch after strict source validation
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add assets/art/catalog.json assets/art/parts/
+          if ! git diff --cached --quiet; then
+            git config user.name "GenVo Art Build"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Install E4 six reproducible native 32px evolved part sheets"
+            git push origin HEAD:feat/e4-native-evolved-part-art
+          fi
+      - name: Full unchanged fast regression, including original 4x performance gate
+        run: node tools/run-tests.mjs --json docs/test-runs/e4-native-parts-ci.json
+      - name: Preserve evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e4-evolved-native-part-art
+          path: |
+            docs/test-runs/e4-native-parts-ci.json
+            docs/test-runs/e4-native-parts-ci.artifacts/
+          if-no-files-found: ignore
