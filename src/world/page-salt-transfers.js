@@ -20,7 +20,7 @@ export function recordPageSaltTransfer(ledger,n,i,j,signedSalt){
 }
 export function finishPageSaltTransfers(ledger){
  if(!(ledger instanceof Map))throw Error('Invalid page salt transfer ledger.');
- return{schema:PAGE_SALT_TRANSFER_SCHEMA,flows:Array.from(ledger.values(),row=>({...row,netSalt:row.forwardSalt-row.backwardSalt})).sort((a,b)=>a.from.localeCompare(b.from)||a.to.localeCompare(b.to))};
+ return{schema:PAGE_SALT_TRANSFER_SCHEMA,flows:Array.from(ledger.values(),row=>({...row,netSalt:row.forwardSalt-row.backwardSalt})).sort((a,b)=>(a.from<b.from?-1:a.from>b.from?1:0)||(a.to<b.to?-1:a.to>b.to?1:0))};
 }
 export function validatePageSaltTransfers(w,receipt){
  validWorldSize(w?.n);
@@ -35,7 +35,7 @@ export function validatePageSaltTransfers(w,receipt){
     !((a[0]+1===b[0]&&a[1]===b[1])||(a[0]===b[0]&&a[1]+1===b[1]))||
     f.from!==a.join(',')||f.to!==b.join(','))throw Error('Invalid page salt transfer edge.');
   const key=f.from+'>'+f.to;
-  if(seen.has(key)||previous&&previous.localeCompare(key)>=0)throw Error('Duplicate or unordered page salt transfer.');
+  if(seen.has(key)||previous&&previous>=key)throw Error('Duplicate or unordered page salt transfer.');
   seen.add(key);previous=key;
   if(!Number.isFinite(f.forwardSalt)||f.forwardSalt<0||!Number.isFinite(f.backwardSalt)||f.backwardSalt<0||
      f.forwardSalt+f.backwardSalt<=0||!Number.isFinite(f.netSalt)||
