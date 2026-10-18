@@ -1,0 +1,47 @@
+name: Diagnostic regional 4x observer performance
+on:
+  push:
+    branches:
+      - diagnostic/d2-4x-observer-parity
+permissions:
+  contents: read
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: 6a407f956a48cf1fb8544fffad325a66fd7151fe
+          path: d0
+      - uses: actions/checkout@v4
+        with:
+          ref: 6fef0796232bb17c80611a7b25b1ef995e9561a3
+          path: d1
+      - uses: actions/checkout@v4
+        with:
+          ref: a469c3047f26566d643345c1c548c54f4b78a876
+          path: d2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Six same-runner original observer benchmarks (ABCCBA)
+        shell: bash
+        run: |
+          set +e
+          n=0
+          for v in d0 d1 d2 d2 d1 d0; do
+            n=$((n+1))
+            (cd "$v" && node tests/observer-play.mjs) > "$RUNNER_TEMP/observer-${n}-${v}.log" 2>&1
+            code=$?
+            echo "observer ${n} ${v} exit=${code}"
+            grep -E '4x large-population cost|ms per real second of play|observer play ok' "$RUNNER_TEMP/observer-${n}-${v}.log" || cat "$RUNNER_TEMP/observer-${n}-${v}.log"
+          done
+          echo 'Benchmarks preserve original 500ms ceiling; workflow is diagnostic and never changes acceptance.'
+      - name: Archive performance comparison
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: d2-performance-same-runner
+          path: ${{ runner.temp }}/observer-*.log
+          if-no-files-found: ignore
