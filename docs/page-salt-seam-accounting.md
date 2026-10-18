@@ -25,3 +25,13 @@ A local Node 22 execution of the standalone page-ledger helper checks passed, in
 5. Keep separate tests for resource conservation, births/deaths, migrations, archival integrity and mature-world performance.
 
 The original five known fast-gate failures and 12 deferred long suites remain the last **recorded** baseline; no new current-tree test-run receipt or visual acceptance has been fabricated. No release requested.
+
+## Subsequent bounded B1 increment: actual land groundwater page seams
+
+`exchangeTerrainGroundwater` already conservatively moves land groundwater between adjacent World cells, using the existing elevation/head, `SOIL_WATER.lateral`, and available local groundwater. This continuation **does not change that law**. It now exposes an optional observer only for real *land-to-land page-seam* movements. `advanceSoilWater` aggregates those signed quantities in `soilWater.pageGroundwaterTransfers`; `advanceSoilDay` places the resulting receipt in the daily/lastDay history. `validateSoilWater` rejects altered or nonadjacent page evidence while accepting earlier saves without it. Every stock remains in the original canonical groundwater array.
+
+Boundary note: land/open-water exchange remains a fixed-reservoir source/sink in the existing `totals.lateral` soil-water budget and is **deliberately excluded** from land-to-land page transfers. Neither the generated planet nor the current detailed world has dynamic cross-region open-water reservoirs. Land-to-land receipts are not substitutes for accounting rain, evapotranspiration, runoff, deep drainage, and open-water exchanges.
+
+The new `tests/page-groundwater-transfers.mjs` checks the exact prior terrain-exchange output with observation enabled/disabled, two-axis page seam balance from actual Float32 groundwater stores, opposing flows, malformed receipt rejection, no state mutation on view eviction and full Simulation save continuation. A local isolated Node 22 version of the ledger tests passed for directed movement, preservation of opposing flows and invalid receipt handling. **The integrated test and full fast gate remain unexecuted here** because github.com was not resolvable from the container. No verified runtime/browser outcome is claimed. The draft PR remains held for independent verification.
+
+Further work is still required for true cross-region stocked **water volume** and mineral movements, exact-once unloaded-region event processing, and region-scale conservation before increasing live geography. No larger-world approval, biome completion or performance certification is inferred from this increment.
