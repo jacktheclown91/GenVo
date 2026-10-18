@@ -1,0 +1,47 @@
+name: Diagnostic observer platform parity
+on:
+  push:
+    branches:
+      - diagnostic/b1-observer-platform-parity
+permissions:
+  contents: read
+jobs:
+  observer-platform-parity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Candidate B1 source
+        uses: actions/checkout@v4
+      - name: Unmodified main source
+        uses: actions/checkout@v4
+        with:
+          ref: c4453fe8faf54f41c74aff90a82d6e92f76b3228
+          path: baseline
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: ABBA identical benchmark comparisons (diagnostic only)
+        shell: bash
+        run: |
+          set +e
+          index=0
+          for variant in baseline candidate candidate baseline; do
+            index=$((index+1))
+            result="$RUNNER_TEMP/observer-${index}-${variant}.log"
+            echo "Running ${index}: ${variant}"
+            if [ "$variant" = baseline ]; then
+              (cd baseline && node tests/observer-play.mjs) > "$result" 2>&1
+            else
+              node tests/observer-play.mjs > "$result" 2>&1
+            fi
+            status=$?
+            printf 'observer %s %s exit=%s\n' "$index" "$variant" "$status"
+            grep -E '4x large-population cost|ms per real second of play|observer play ok' "$result" || cat "$result"
+          done
+          echo "Diagnostics only: each test retains its original 500 ms assertion. No result is reclassified or threshold changed."
+      - name: Preserve comparison logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b1-observer-parity
+          path: ${{ runner.temp }}/observer-*.log
