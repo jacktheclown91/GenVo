@@ -1,0 +1,69 @@
+name: GenVo D5 portable fauna page checkpoints
+on:
+  push:
+    branches:
+      - feat/d5-fauna-page-checkpoints
+  workflow_dispatch:
+concurrency:
+  group: d5-fauna-checkpoint-${{ github.ref_name }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  d5:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Page checkpoint integrity and canonical save compatibility
+        run: |
+          node tests/fauna-page-checkpoint.mjs
+          node tests/page-fauna-owners.mjs
+          node tests/page-fauna-work.mjs
+          node tests/page-residency.mjs
+          node tests/page-offscreen-continuity.mjs
+          node tests/page-seed-transfers.mjs
+          node tests/page-vegetation-work.mjs
+          node tests/save-persistence.mjs
+      - name: Pin untouched D4 parent
+        uses: actions/checkout@v4
+        with:
+          ref: 46aa95abea5d51edf4f05c712d184b3bc83579e8
+          path: baseline
+      - name: Full-world material and RNG parity against D4
+        shell: bash
+        run: |
+          set -euo pipefail
+          fingerprint() {
+            (cd "$1" && node --input-type=module <<'NODE'
+          import {Simulation} from './src/sim/simulation.js';
+          import {createSimulationSnapshot} from './src/persistence/save-manager.js';
+          import {createHash} from 'node:crypto';
+          import {serialize} from 'node:v8';
+          for(const seed of ['D5-PARENT-CONTINUITY-A','D5-PARENT-CONTINUITY-B']){
+            const sim=new Simulation(seed,{player:false});
+            for(let tick=0;tick<168;tick++)sim.update(null);
+            const saved=structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'d5-parent-parity'}));
+            console.log(seed+' '+createHash('sha256').update(serialize(saved)).digest('hex'));
+          }
+          NODE
+            )
+          }
+          fingerprint baseline > "$RUNNER_TEMP/d5-baseline.sha"
+          fingerprint . > "$RUNNER_TEMP/d5-candidate.sha"
+          diff -u "$RUNNER_TEMP/d5-baseline.sha" "$RUNNER_TEMP/d5-candidate.sha"
+          echo 'D5 has no changes to canonical simulation or RNG: PASS'
+      - name: Full unchanged fast regression
+        run: node tools/run-tests.mjs --json docs/test-runs/d5-page-checkpoints-ci.json
+      - name: Archive validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: d5-fauna-page-checkpoints
+          path: |
+            docs/test-runs/d5-page-checkpoints-ci.json
+            docs/test-runs/d5-page-checkpoints-ci.artifacts/
+          if-no-files-found: ignore
