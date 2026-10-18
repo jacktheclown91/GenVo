@@ -30,6 +30,35 @@ jobs:
           node tests/organic-resource-cycle.mjs
           node tests/world-pages.mjs
           node tests/save-persistence.mjs
+      - name: Exact D0 parent code for state comparison
+        uses: actions/checkout@v4
+        with:
+          ref: 6a407f956a48cf1fb8544fffad325a66fd7151fe
+          path: baseline
+      - name: Prove no ecology, RNG, or actor changes versus D0
+        shell: bash
+        run: |
+          set -euo pipefail
+          fingerprint() {
+            ( cd "$1" && node --input-type=module <<'NODE'
+          import {Simulation} from './src/sim/simulation.js';
+          import {createSimulationSnapshot} from './src/persistence/save-manager.js';
+          import {createHash} from 'node:crypto';
+          import {serialize} from 'node:v8';
+          for(const seed of ['D1-PARENT-PARITY-A','D1-PARENT-PARITY-B']){
+            const sim=new Simulation(seed,{player:false});
+            for(let tick=0;tick<144;tick++)sim.update(null);
+            const saved=structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'d1-parent-state'}));
+            delete saved.core.pageDayWork; // D1-only receipt; biology must match exactly
+            console.log(seed+' '+createHash('sha256').update(serialize(saved)).digest('hex'));
+          }
+          NODE
+            )
+          }
+          fingerprint baseline > "$RUNNER_TEMP/d1-baseline.sha"
+          fingerprint . > "$RUNNER_TEMP/d1-candidate.sha"
+          diff -u "$RUNNER_TEMP/d1-baseline.sha" "$RUNNER_TEMP/d1-candidate.sha"
+          echo 'D1 world, organism, RNG, chemistry and save-state parity: PASS'
       - name: Full unchanged fast regression
         run: node tools/run-tests.mjs --json docs/test-runs/d1-page-vegetation-ci.json
       - name: Upload regression evidence
