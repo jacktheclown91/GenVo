@@ -39,7 +39,7 @@ for(const id of ids){
  // remains visible. Dense fur/feathers are not an opaque generic white blob.
  if(id!=='filament-tuft'){
    const sourceCenter=(16*32+16)*4+3;
-   assert.equal(pixels[2][sourceCenter],0,id+' preserves the native body's center');
+   assert.equal(pixels[2][sourceCenter],0,`${id} preserves the native body's center`);
  }
  const facing=pixels[2],mask=new Set(),styles=new Set();
  for(let i=0;i<1024;i++)if(facing[i*4+3]){
