@@ -1,4 +1,5 @@
 import {hasPart} from '../lineage/part-abilities.js';
+import {createPageResidency,recordPageResident,removePageResident,reconcilePageResidency,residencyPage} from './page-residency.js';
 import {observeEngineerSuccession,noteEngineerWork,engineerSuccessionEvents} from './engineer-succession.js';
 import {noteEngineerConception,noteEngineerColonyBirth,observeEngineerColony,engineerColonyEvidence} from './engineer-colonies.js';
 import {observeEngineerBreedingOpportunity} from './engineer-breeding-opportunities.js';
@@ -10,11 +11,21 @@ import {noteEngineerFamilySettlementBirth,noteEngineerFamilySettlementDeath,obse
 // Regional observation and persistence boundary. Inventories read canonical world
 // fields; these records neither own duplicate stocks nor set population targets.
 export class RegionalEcologyController{
-  constructor(sim){this.sim=sim;this.chunkSize=16;this.records=new Map();this.membership=new Map();this.lastDay=-1;this.historyLimit=12;this.engineeringHistoryLimit=28;this.engineeringSampleDays=4;}
+  constructor(sim){this.sim=sim;this.chunkSize=16;this.records=new Map();this.membership=new Map();this.lastDay=-1;this.historyLimit=12;this.engineeringHistoryLimit=28;this.engineeringSampleDays=4;this.pageTransit=createPageResidency();}
   keyAt(x,y){const n=this.sim.world.n;return `${Math.floor(Math.max(0,Math.min(n-1,x))/this.chunkSize)}:${Math.floor(Math.max(0,Math.min(n-1,y))/this.chunkSize)}`;}
   bounds(key){const [cx,cy]=String(key).split(':').map(Number),n=this.sim.world.n;if(!Number.isInteger(cx)||!Number.isInteger(cy)||cx<0||cy<0||cx*this.chunkSize>=n||cy*this.chunkSize>=n)throw Error('Invalid ecological region');return{x0:cx*this.chunkSize,y0:cy*this.chunkSize,x1:Math.min(n,(cx+1)*this.chunkSize),y1:Math.min(n,(cy+1)*this.chunkSize)};}
+  ensurePageTransit(){return this.pageTransit??(this.pageTransit=createPageResidency());}
+  notePageBirth(animal){recordPageResident(this.ensurePageTransit(),this.sim.world,animal,{day:this.sim.day,tick:this.sim.tickCount});}
+  notePageDeath(animal){removePageResident(this.pageTransit,animal.id);}
+  notePageMove(animal,x,y){
+    // Skip movement inside a page. A crossing is recorded after the organism itself moves.
+    const w=this.sim.world,oldPage=residencyPage(w,x,y),current=residencyPage(w,animal.x,animal.y);
+    if(oldPage===current)return false;
+    return recordPageResident(this.ensurePageTransit(),w,animal,{from:{x,y},day:this.sim.day,tick:this.sim.tickCount});
+  }
+  reconcilePages(){reconcilePageResidency(this.ensurePageTransit(),this.sim);}
   ensure(key){this.bounds(key);let r=this.records.get(key);if(!r){r={key,population:{},lineage:0,observedDay:null,observedTick:null,births:{},deaths:{},mortality:{},arrivals:{},departures:{},history:[]};this.records.set(key,r);}return r;}
-  noteBirth(animal){const mother=this.sim.animals.find(a=>a.id===animal.parentIds?.[0]);noteEngineerLifeBirth(this,animal,mother,this.sim.day);noteEngineerBreedingHabitatBirth(this,animal,mother,this.sim.day);noteEngineerFamilySettlementBirth(this,animal,mother,this.sim.day);const r=this.ensure(this.keyAt(animal.x,animal.y));r.births[animal.species]=(r.births[animal.species]||0)+1;if(hasPart(animal,'digging-forelimb')){r.recentEngineerBirths??=[];r.recentEngineerBirths.push({id:animal.id,day:this.sim.day});if(r.recentEngineerBirths.length>16)r.recentEngineerBirths.shift();noteEngineerColonyBirth(r,animal,this.sim.day);}}
+  noteBirth(animal){this.notePageBirth(animal);const mother=this.sim.animals.find(a=>a.id===animal.parentIds?.[0]);noteEngineerLifeBirth(this,animal,mother,this.sim.day);noteEngineerBreedingHabitatBirth(this,animal,mother,this.sim.day);noteEngineerFamilySettlementBirth(this,animal,mother,this.sim.day);const r=this.ensure(this.keyAt(animal.x,animal.y));r.births[animal.species]=(r.births[animal.species]||0)+1;if(hasPart(animal,'digging-forelimb')){r.recentEngineerBirths??=[];r.recentEngineerBirths.push({id:animal.id,day:this.sim.day});if(r.recentEngineerBirths.length>16)r.recentEngineerBirths.shift();noteEngineerColonyBirth(r,animal,this.sim.day);}}
   noteMating(mother,father){if(!hasPart(mother,'digging-forelimb')&&!hasPart(father,'digging-forelimb'))return false;const key=this.keyAt(mother.x,mother.y);if(key!==this.keyAt(father.x,father.y))return false;noteEngineerLifeConception(this,mother,father,this.sim.day);noteEngineerBreedingHabitatConception(this,mother,father,this.sim.day);return noteEngineerConception(this.ensure(key),mother,father,this.sim.day);}
   noteMigrationArrival(animal,target){
     const r=this.ensure(this.keyAt(animal.x,animal.y));
@@ -49,8 +60,9 @@ export class RegionalEcologyController{
   }
   engineerTransitions(key){return engineerSuccessionEvents(this.records.get(key));}
   engineerColonyEvidence(key){return engineerColonyEvidence(this.records.get(key));}
-  noteDeath(animal,cause){noteEngineerLifeDeath(this,animal,cause,this.sim.day);noteEngineerFamilySettlementDeath(this,animal,this.sim.day);const r=this.ensure(this.keyAt(animal.x,animal.y));r.deaths[animal.species]=(r.deaths[animal.species]||0)+1;const key=`${animal.species}:${cause}`;r.mortality[key]=(r.mortality[key]||0)+1;}
+  noteDeath(animal,cause){this.notePageDeath(animal);noteEngineerLifeDeath(this,animal,cause,this.sim.day);noteEngineerFamilySettlementDeath(this,animal,this.sim.day);const r=this.ensure(this.keyAt(animal.x,animal.y));r.deaths[animal.species]=(r.deaths[animal.species]||0)+1;const key=`${animal.species}:${cause}`;r.mortality[key]=(r.mortality[key]||0)+1;}
   observe(){
+    this.reconcilePages();
     if(this.lastDay===this.sim.day)return;this.lastDay=this.sim.day;
     for(const r of this.records.values()){r.population={};r.lineage=0;}
     const living=new Set(),engineers=new Map();
