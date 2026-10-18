@@ -13,8 +13,16 @@ for(const species of Object.keys(SPECIES)){
   // Staged as well-fed, as in the other conception fixtures; this suite tests gestation inheritance.
   for(const a of [mother,father])Object.assign(a,{energy:SPECIES[species].maxEnergy*.9,hydration:SPECIES[species].maxHydration*.9,health:100,infected:false});
   if(species==='genvo')father.lineage=true;
-  placeSupportedBreedingPair(sim,mother,father);
-  assert.ok(sim.tryMate(mother,father),`${species}: ${mother.lastCourtshipFailure?.reason||mother.lastCourtshipRefusal?.reason||JSON.stringify(sim.conceptionAvailability(mother,father))}`);
+  // Conception remains biologically probabilistic. Retry through real funded
+  // compatibility and reciprocal mate choice, never inject a fake pregnancy.
+  let conceived=false;
+  for(let attempt=0;attempt<16&&!conceived;attempt++){
+    mother.reproCooldown=father.reproCooldown=0;
+    for(const a of [mother,father])Object.assign(a,{energy:SPECIES[species].maxEnergy*.9,hydration:SPECIES[species].maxHydration*.9,health:100});
+    placeSupportedBreedingPair(sim,mother,father);
+    conceived=sim.tryMate(mother,father);
+  }
+  assert.ok(conceived,`${species}: no funded conception after 16 choices; ${mother.lastCourtshipFailure?.reason||mother.lastCourtshipRefusal?.reason||''}`);
   const inherited=mother.pregnant.paternalInheritance;
   assert.equal(inherited.id,father.id);
   assert.notStrictEqual(inherited.genes,father.genes,'inheritance is detached from the live parent');
