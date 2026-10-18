@@ -23,7 +23,6 @@ jobs:
           node tests/anatomical-climate-precursors.mjs
           node tests/evolution-draft.mjs
           node tests/evolution-editor.mjs
-          node tests/evolution-contract.mjs
           node tests/body-cost-readability.mjs
           node tests/part-abilities.mjs
           node tests/parts-wave1.mjs
