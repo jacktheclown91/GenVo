@@ -1,0 +1,43 @@
+name: Diagnostic D3 4x fauna lifecycle parity
+on:
+  push:
+    branches:
+      - diagnostic/d3-fauna-performance-parity
+permissions:
+  contents: read
+jobs:
+  observer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: a469c3047f26566d643345c1c548c54f4b78a876
+          path: d2
+      - uses: actions/checkout@v4
+        with:
+          ref: e6deb766964541d6d0c78dc664fe5dfb5c9e3254
+          path: d3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Same runner unchanged benchmark ABBA
+        shell: bash
+        run: |
+          set +e
+          n=0
+          for v in d2 d3 d3 d2; do
+            n=$((n+1))
+            (cd "$v" && node tests/observer-play.mjs) > "$RUNNER_TEMP/d3-4x-${n}-${v}.log" 2>&1
+            code=$?
+            echo "observer ${n} ${v} exit=${code}"
+            grep -E '4x large-population cost|ms per real second of play|observer play ok' "$RUNNER_TEMP/d3-4x-${n}-${v}.log" || cat "$RUNNER_TEMP/d3-4x-${n}-${v}.log"
+          done
+          echo 'Original 500ms benchmark retained; report both versions on identical hardware.'
+      - name: Archive raw benchmark runs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: d3-fauna-4x-benchmark
+          path: ${{ runner.temp }}/d3-4x-*.log
+          if-no-files-found: ignore
