@@ -59,8 +59,9 @@ assert.throws(()=>restoreFaunaPageCheckpoint(bogus),/Invalid fauna checkpoint pa
 
 const swapped=structuredClone(archive);swapped.slots.reverse();
 const alternate=restoreFaunaPageCheckpoint(swapped);
-assert.notDeepEqual(alternate.animals.map(a=>a.id),sim.animals.map(a=>a.id),'manifest order governs real restoration, never map iteration order');
-assert.equal(alternate.animals.length,sim.animals.length,'no creature duplicated or lost when order is different');
+assert.notDeepEqual(alternate.animals.map(a=>a.id),archive.slots.map(s=>s.id),'manifest order governs real restoration, never map iteration order');
+assert.deepEqual(alternate.animals.map(a=>a.id),swapped.slots.map(s=>s.id),'restoration follows the exact persisted manifest order');
+assert.equal(alternate.animals.length,archive.slots.length,'no creature duplicated or lost when order is different');
 // A checkpoint can be inspected on a page without turning it into live actors.
 const actorsBefore=sim.animals.length,detached=pageCheckpointActors(archive,pkey);
 detached[0].health=-999;
