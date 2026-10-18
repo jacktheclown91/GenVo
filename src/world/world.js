@@ -3,6 +3,7 @@ import {initializePlanetWorld} from './planet-world.js';
 import {WorldPages} from './pages.js';
 import {WORLD_GENERATORS,generatorForState,generatedWaterAt,newTopologyState,synchronizeSurfaceWater} from './surface-topology.js';
 import {initializeEnvironment,coastlineX,potableWater,salineMargin} from './environment.js';
+import {biomeAt,countBiomes} from './biomes.js';
 import {initializeTopography} from './topography.js';
 import {initializeOrganicResources} from '../ecology/organic-resource-cycle.js';
 import {initializePlantResources} from '../ecology/plant-resources.js';
@@ -14,6 +15,8 @@ export class World{
     this.moisture=new Float32Array(this.len);this.fertility=new Float32Array(this.len);this.temperature=new Float32Array(this.len);this.water=new Uint8Array(this.len);this.landRegion=new Uint16Array(this.len);this.seepage=new Float32Array(this.len);this.drinkable=new Uint8Array(this.len);this.waterDistance=new Uint16Array(this.len);this.drinkSpots=[];this.carrion=new Float32Array(this.len);
     this.plants={};this.seedBank={};for(const [kind,p] of Object.entries(PLANTS)){const field=new Float32Array(this.len);this.plants[kind]=field;this[kind]=field;if(p.dispersal)this.seedBank[kind]=new Float32Array(this.len)}this.generate();this._topologyMask=this.water.slice();this.pages=new WorldPages(this);}
   idx(x,y){x=Math.max(0,Math.min(this.n-1,x|0));y=Math.max(0,Math.min(this.n-1,y|0));return y*this.n+x}
+  biomeAt(x,y,climate){if(!Number.isFinite(x)||!Number.isFinite(y)||x<0||y<0||x>=this.n||y>=this.n)throw Error('Biome query outside world.');return biomeAt(this,this.idx(x,y),climate)}
+  biomeCounts(climate){return countBiomes(this,climate)}
   isPlayable(x,y){return x>1&&y>1&&x<this.n-2&&y<this.n-2}
   generate(){if(this.planet)return initializePlanetWorld(this);const n=this.n;for(let y=0;y<n;y++)for(let x=0;x<n;x++){const i=y*n+x;const broad=(coordNoise(this.seedHash,x>>3,y>>3)+coordNoise(this.seedHash^0x915f,x>>4,y>>4))*.5;const fine=coordNoise(this.seedHash^0x51ac,x,y);const river=Math.abs((y/n)-(.5+.18*Math.sin((x+this.seedHash%97)*.055)))<.025;const wet=Math.min(1,.18+broad*.68+(river?.55:0));this.moisture[i]=wet;this.water[i]=generatedWaterAt(this,x,y,this.generator);this.fertility[i]=Math.min(1,.22+.58*coordNoise(this.seedHash^0x8191,x>>2,y>>2)+.2*wet);this.temperature[i]=.62-.28*(y/n)+.08*(fine-.5);
       for(const [kind,p] of Object.entries(PLANTS))this.plants[kind][i]=this.water[i]?0:this.initialPlant(p.init,{wet,fine,fertility:this.fertility[i],x,y,kind});
