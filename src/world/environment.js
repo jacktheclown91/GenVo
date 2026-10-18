@@ -2,6 +2,7 @@
 import {coordNoise} from '../core/rng.js';
 import {recordPageSaltTransfer,finishPageSaltTransfers,validatePageSaltTransfers} from './page-salt-transfers.js';
 import {WORLD_PAGE_SIZE} from './pages.js';
+import {regionalRainfall} from './weather-fronts.js';
 const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 function smooth(seed,x,y,size){const ax=Math.floor(x/size),ay=Math.floor(y/size),u0=x/size-ax,v0=y/size-ay,u=u0*u0*(3-2*u0),v=v0*v0*(3-2*v0);return (coordNoise(seed,ax,ay)*(1-u)+coordNoise(seed,ax+1,ay)*u)*(1-v)+(coordNoise(seed,ax,ay+1)*(1-u)+coordNoise(seed,ax+1,ay+1)*u)*v}
 export function coastlineX(w,y){return w.n*(.84+.035*Math.sin(y/w.n*6.28+(w.seedHash%97)/97*6.28))}
@@ -27,7 +28,7 @@ export function validateEnvironment(w,e){
  }
 }
 export function localTemperature(w,climate,i){return clamp(climate.temp+(w.environment?.temperatureOffset[i]||0),-.5,1.5)}
-export function localRain(w,climate,i){return Math.max(0,climate.rain)*(w.environment?.rainScale[i]??1)}
+export function localRain(w,climate,i){return regionalRainfall(w,climate,i)}
 export function salinityAt(w,i){const e=w.environment;return e?.depth[i]>0?e.salt[i]/e.depth[i]:0}
 export function potableWater(w,i){return !!w.water[i]&&salinityAt(w,i)<=.05}
 export function salineMargin(w,i){if(!w.environment)return false;const x=i%w.n,y=(i/w.n)|0;for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++){const nx=x+dx,ny=y+dy;if(nx>=0&&ny>=0&&nx<w.n&&ny<w.n&&w.water[ny*w.n+nx]&&!potableWater(w,ny*w.n+nx))return true}return false}
@@ -36,9 +37,9 @@ export function saltStorage(w){let total=0;for(const amount of w.environment?.sa
 // conservatively; freshwater rain displaces an equal volume, exporting its dissolved salt.
 // Edge reservoirs restore freshwater (1) / seawater (2), with explicit salt input/output receipts.
 export function advanceEnvironmentWater(w,climate,day){
- const e=w.environment;if(!e)return;const before=saltStorage(w),next=new Float64Array(e.salt),n=w.n,t=e.totals,input0=t.saltInput,output0=t.saltOutput,pageLedger=new Map();
+ const e=w.environment;if(!e)return;const atmospheric={...climate,frontDay:day};const before=saltStorage(w),next=new Float64Array(e.salt),n=w.n,t=e.totals,input0=t.saltInput,output0=t.saltOutput,pageLedger=new Map();
  const pair=(i,j)=>{if(!w.water[i]||!w.water[j])return;const c=salinityAt(w,i)-salinityAt(w,j),from=c>0?i:j,to=c>0?j:i,flow=Math.min(Math.abs(c)*Math.min(e.depth[i],e.depth[j])*.08,e.salt[from]*.25);next[from]-=flow;next[to]+=flow;if(flow>0&&((j===i+1&&(i%n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)||(j===i+n&&Math.floor(i/n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)))recordPageSaltTransfer(pageLedger,n,i,j,from===i?flow:-flow)};
  for(let i=0;i<w.len;i++){if(i%n<n-1)pair(i,i+1);if(i+n<w.len)pair(i,i+n)}
- for(let i=0;i<w.len;i++)if(w.water[i]){const rain=localRain(w,climate,i)*.06,volume=e.depth[i],lost=next[i]*(1-Math.exp(-rain/volume));next[i]-=lost;t.rainWater+=rain;t.displacedWater+=rain;t.saltOutput+=lost;const reservoir=e.boundary[i];if(reservoir){const target=reservoir===2?volume:0,delta=target-next[i];if(delta>=0)t.saltInput+=delta;else t.saltOutput-=delta;next[i]=target;}}
+ for(let i=0;i<w.len;i++)if(w.water[i]){const rain=localRain(w,atmospheric,i)*.06,volume=e.depth[i],lost=next[i]*(1-Math.exp(-rain/volume));next[i]-=lost;t.rainWater+=rain;t.displacedWater+=rain;t.saltOutput+=lost;const reservoir=e.boundary[i];if(reservoir){const target=reservoir===2?volume:0,delta=target-next[i];if(delta>=0)t.saltInput+=delta;else t.saltOutput-=delta;next[i]=target;}}
  e.salt.set(next);e.day=day;const after=saltStorage(w),input=t.saltInput-input0,output=t.saltOutput-output0,row={day,before,after,input,output,closure:input-output-(after-before),pageTransfers:finishPageSaltTransfers(pageLedger)};e.daily.push(row);if(e.daily.length>64)e.daily.shift();e.lastDay=row;w.buildHydrology?.();return row;
 }
