@@ -4,6 +4,7 @@
 // Preserve actor order because mortality RNG, incubation, and live births depend
 // on it. Newborns created during the pass wait for the following lifecycle step.
 import {WORLD_PAGE_SIZE} from '../world/pages.js';
+import {noteFaunaPageOwner} from './page-fauna-owners.js';
 export const PAGE_FAUNA_WORK_SCHEMA=1;
 const integer=n=>Number.isSafeInteger(n)&&n>=0;
 function gridFor(w){
@@ -33,8 +34,12 @@ export function visitLivingFaunaByPage(sim,visitor){
   const id=animal.id;
   if(!integer(id)||id===0||seen.has(id))throw Error('Duplicate or invalid living fauna identity.');
   seen.add(id);
+  // Life processing is a real actor-authority boundary. Capture movements from
+  // specialized hunters, scripted relocations and other non-player movers here
+  // without a second full-population pass or a duplicate organism.
+  const owner=noteFaunaPageOwner(sim,animal);
   const x=animal.x,y=animal.y;
-  if(Number.isFinite(x)&&Number.isFinite(y)&&x>=0&&y>=0&&x<n&&y<n){
+  if(owner!==null){
    const index=Math.floor(y/WORLD_PAGE_SIZE)*grid+Math.floor(x/WORLD_PAGE_SIZE);
    counts[index]++;
   }else outside++;
