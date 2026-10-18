@@ -14,8 +14,8 @@ const manifest=JSON.parse(fs.readFileSync(manifestPath,'utf8'));
 const IDS=['filament-tuft','fur-mantle','feather-mantle'];
 const records=IDS.map(id=>manifest.parts.find(p=>p.partId===id));
 if(records.some((r,i)=>!r||!PARTS[IDS[i]]))throw Error('E5 requires three already installed E4 biological art parts.');
-if(records.every(r=>r.status==='e5-native-coat-silhouette-review')){console.log('E5 cover art already installed; no changes');process.exit(0)}
-if(records.some(r=>r.status!=='e4-procedural-native-32px-review'))throw Error('E5 partial or unexpected art version: fail closed.');
+if(records.every(r=>r.status==='e5-native-coat-open-body-review')){console.log('E5 cover art already installed; no changes');process.exit(0)}
+if(records.some(r=>r.status!=='e5-native-coat-silhouette-review'))throw Error('E5 partial or unexpected art version: fail closed.');
 for(const r of records){
  const bytes=fs.readFileSync(new URL(r.path,root)),hash=crypto.createHash('sha256').update(bytes).digest('hex');
  if(hash!==r.checksumSha256)throw Error('E4 source art was modified outside canonical catalogue: '+r.partId);
@@ -61,18 +61,18 @@ function draw(id,phase){
   // Thick continuous ragged silhouette. Guard hairs project beyond the body
   // on all sides, with warm cream tips visible even against dark vegetation.
   ellipse(16,16,10.8,9.6,0);
-  ellipse(16,15.8,9.8,8.6,1);
-  ellipse(16,15.6,8.5,7.4,2);
+  ellipse(16,15.8,9.8,8.6,5);
+  ellipse(16,15.6,8.5,7.4,6);
   ellipse(15.7,14.4,6.6,4.5,3);
   for(let n=0;n<24;n++){
    const a=n*Math.PI/12,rx=9.7,ry=8.6,x=16+Math.cos(a)*rx,y=16+Math.sin(a)*ry;
    const extend=1.7+(n%3)*.62+(b&&n%4===0?.6:0);
-   line(x,y,x+Math.cos(a)*extend,y+Math.sin(a)*extend,n%4===0?6:3,n%4===0?1.0:.8);
+   line(x,y,x+Math.cos(a)*extend,y+Math.sin(a)*extend,n%4===0?7:6,n%4===0?1.0:.8);
    if(n%3===0)dot(x+Math.cos(a)*(extend+.5),y+Math.sin(a)*(extend+.5),7);
   }
   for(let n=0;n<8;n++){
    const x=9+n*2,y=12+(n%2)*2;
-   line(x,y,x+2.5,y+3.5,n%3===0?6:4,.85);
+   line(x,y,x+2.5,y+3.5,n%3===0?7:5,.85);
   }
   for(let n=0;n<4;n++)line(12+n*2.3,9,11+n*2.5,6+b*.3,7,.7);
  }else if(id==='feather-mantle'){
@@ -125,6 +125,18 @@ function draw(id,phase){
    line(24,y+n*.9,24.5,14+n*3,7,.8);
   }
  }
+ // These are tissue *coverings* on a living body, not pale shields painted
+ // over the creature's entire torso. Keep the eyes, torso shape, and inherited
+ // body color visible through the dorsal center. Edge material alone produces
+ // recognizable shag or quill silhouettes at normal game zoom.
+ if(id==='fur-mantle'||id==='feather-mantle'){
+   const cx=id==='fur-mantle'?16:17,cy=16,
+     rx=id==='fur-mantle'?7.1:5.6,ry=id==='fur-mantle'?5.7:4.1;
+   for(let y=0;y<32;y++)for(let x=0;x<32;x++){
+     const nx=(x-cx)/rx,ny=(y-cy)/ry;
+     if(nx*nx+ny*ny<1){const i=y*32+x;c.alpha[i]=0;c.tones[i]=0;}
+   }
+ }
  // Rotate exact native pixel coordinates relative to torso facing. Reverse
  // sampling avoids 45-degree holes; frame 0/1 are distinct for EVERY facing.
  return Array.from({length:1024},(_,i)=>{
@@ -161,18 +173,18 @@ for(const id of IDS){
   frames.push({...metadata,rgbaBase64:Buffer.from(rgba).toString('base64')});
   nativeFrames.push({...metadata,rgba});
  }
- const source={schema:'genvo.native-part-source/1',partId:id,version:2,width:32,height:32,displayScale:1,
+ const source={schema:'genvo.native-part-source/1',partId:id,version:3,width:32,height:32,displayScale:1,
   rootAnchorPx:[16,16],regions:[
    {id:regionIds[0],protected:false,colors:colors.skin},
    {id:regionIds[1],protected:true,colors:colors.protected}
-  ],frames,authorship:'AI-assisted procedural 32x32 overhead coat silhouette revision. Creator readability and art review pending.'};
+  ],frames,authorship:'AI-assisted procedural overhead coat revision with visible open center. Creator art review pending.'};
  const compiled=await compileSourceRgbaPart({...source,frames:nativeFrames});
  for(let i=0;i<16;i++)if(!Buffer.from(recolorIndexedFrame(compiled,compiled.frames[i].key)).equals(Buffer.from(nativeFrames[i].rgba)))throw Error(id+' pixel identity mismatch '+i);
  if(nativeFrames.some(f=>!f.rgba.some((n,i)=>i%4===3&&n)))throw Error(id+' empty facing');
  for(let facing=0;facing<8;facing++)if(Buffer.from(nativeFrames[facing*2].rgba).equals(Buffer.from(nativeFrames[facing*2+1].rgba)))throw Error(id+' static frames '+facing);
  const sourceBuffer=Buffer.from(JSON.stringify(source)),hash=crypto.createHash('sha256').update(sourceBuffer).digest('hex');
  const entry={partId:id,path:'./parts/'+id+'.json',png:'./parts/'+id+'.png',
-  checksumSha256:hash,status:'e5-native-coat-silhouette-review',
+  checksumSha256:hash,status:'e5-native-coat-open-body-review',
   indexed:'./parts/'+id+'.indexed.json',compiledChecksum:compiled.checksum};
  pending.push({id,sourceBuffer,compiled,entry,png:pngRGBA(oriented(draw(id,0),2))});
 }
