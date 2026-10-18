@@ -17,8 +17,8 @@ export function rainFrontFactor(world,day,index){
  return 1+RAIN_FRONTS.amplitude*Math.sin(phase);
 }
 export function regionalRainfall(world,climate,index){
- if(!climate||!Number.isFinite(climate.rain)||climate.rain<0)throw Error('Invalid rain climate.');
- const staticRain=climate.rain*(world.environment?.rainScale[index]??1);
+ if(!climate||!Number.isFinite(climate.rain))throw Error('Invalid rain climate.');
+ const staticRain=Math.max(0,climate.rain)*(world.environment?.rainScale[index]??1);
  const front=rainFrontFactor(world,climate.frontDay,index);
  return Math.max(0,staticRain*front);
 }
