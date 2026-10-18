@@ -1,0 +1,69 @@
+name: GenVo D4 canonical fauna page ownership
+on:
+  push:
+    branches:
+      - feat/d4-canonical-fauna-page-owners
+  workflow_dispatch:
+concurrency:
+  group: d4-fauna-owner-${{ github.ref_name }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  d4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Real canonical page ownership and compatibility
+        run: |
+          node tests/page-fauna-owners.mjs
+          node tests/page-fauna-work.mjs
+          node tests/page-residency.mjs
+          node tests/page-offscreen-continuity.mjs
+          node tests/regional-ecology.mjs
+          node tests/page-seed-transfers.mjs
+          node tests/page-vegetation-work.mjs
+          node tests/save-persistence.mjs
+      - name: Pin untouched D3 comparison
+        uses: actions/checkout@v4
+        with:
+          ref: e6deb766964541d6d0c78dc664fe5dfb5c9e3254
+          path: baseline
+      - name: Whole-world save and RNG identity versus D3
+        shell: bash
+        run: |
+          set -euo pipefail
+          fingerprint() {
+            (cd "$1" && node --input-type=module <<'NODE'
+          import {Simulation} from './src/sim/simulation.js';
+          import {createSimulationSnapshot} from './src/persistence/save-manager.js';
+          import {createHash} from 'node:crypto';
+          import {serialize} from 'node:v8';
+          for(const seed of ['D4-OWNER-PARITY-A','D4-OWNER-PARITY-B']){
+            const sim=new Simulation(seed,{player:false});
+            for(let tick=0;tick<168;tick++)sim.update(null);
+            const saved=structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'d4-parent-parity'}));
+            console.log(seed+' '+createHash('sha256').update(serialize(saved)).digest('hex'));
+          }
+          NODE
+            )
+          }
+          fingerprint baseline > "$RUNNER_TEMP/d4-baseline.sha"
+          fingerprint . > "$RUNNER_TEMP/d4-candidate.sha"
+          diff -u "$RUNNER_TEMP/d4-baseline.sha" "$RUNNER_TEMP/d4-candidate.sha"
+          echo 'D4 direct actor owner registry preserves all canonical material/biology/RNG: PASS'
+      - name: Full unchanged fast regression
+        run: node tools/run-tests.mjs --json docs/test-runs/d4-fauna-owner-ci.json
+      - name: Archive full regression
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: d4-fauna-page-ownership
+          path: |
+            docs/test-runs/d4-fauna-owner-ci.json
+            docs/test-runs/d4-fauna-owner-ci.artifacts/
+          if-no-files-found: ignore
