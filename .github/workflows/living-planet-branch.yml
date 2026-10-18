@@ -25,4 +25,4 @@ jobs:
       - name: Focused neutral inheritance and developmental symmetry
         run: |
           node tests/developmental-symmetry.mjs
-          node tests/neutral-inheritance.mjs
+          node tests/neutral-birth-core.mjs
