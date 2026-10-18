@@ -74,5 +74,5 @@ assert.equal(validateFaunaPageOwners(resumed,{reconcile:true}).living,resumed.an
 const fixture={world:{n:128,len:128*128},animals:[
  {id:7,x:4,y:4,alive:true},{id:7,x:70,y:70,alive:true}
 ]};
-assert.throws(()=>reconcileFaunaPageOwners(fixture),/Duplicate canonical organism identity/);
+assert.throws(()=>reconcileFaunaPageOwners(fixture),/Duplicate or invalid living fauna identity/);
 console.log('D4 exclusive fauna page object ownership, real transfer, death, off-map, eviction, save and exact resume PASS');
