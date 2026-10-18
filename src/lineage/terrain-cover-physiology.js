@@ -21,7 +21,7 @@ export function thermalCoverFactor(animal,temp,comfort,{wet=false}={}){
 export function inclineGrip(animal,grade){
  const counts=planPartCounts(animal);
  const climber=Math.min(4,counts['climber-leg']||0),pads=Math.min(4,counts['hook-pad']||0);
- const grip=climber+Math.floor(pads/2);
+ const grip=climber+pads;
  if(!grip)return{speed:1,energy:1,grip:0,climbing:false};
  // A true supporting pair is necessary. One claw is not an uphill gait.
  if(grip<2)return{speed:.985,energy:1.01,grip,climbing:false};
