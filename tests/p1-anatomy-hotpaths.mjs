@@ -15,7 +15,7 @@ assert.equal(first,again,'identical immutable plan returns precisely the same pr
 assert.notEqual(optionalLossChoices(p,{asymmetric:true}),first,'asymmetric removals use a distinct cached choice order');
 assert.deepEqual(p.nodes,before,'planning optional losses does not mutate the living plan');
 assert.equal(JSON.stringify(p),ident);
-const equivalent=wildStartPlan('mosskip');
+const equivalent=structuredClone(wildStartPlan('mosskip'));
 assert.notEqual(optionalLossChoices(equivalent),first,'memoization never aliases different actor plan instances');
 const body=founderPlan();
 const fit=id=>({bodyPlan:makePlan([...body.nodes.filter(n=>n.socket!=='dorsal').map(n=>({partId:n.partId,parent:n.parent,socket:n.socket})),{partId:id,parent:'root',socket:'dorsal'}])});
