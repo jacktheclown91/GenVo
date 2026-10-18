@@ -33,7 +33,7 @@ export function plantAvailableWater(w,i,capacity){return Math.max(0,w.moisture[i
 // Called after producers have withdrawn from the plant-available store: the withdrawal leaves the soil.
 export function withdrawPlantUptake(w,i,capacity,remaining){const s=w.soilWater,next=SOIL_WATER.wiltingPoint+remaining/capacity,used=Math.max(0,w.moisture[i]-next);if(used>0){w.moisture[i]-=used;if(s)s.totals.uptake+=used}return used}
 export function advanceSoilWater(w,climate,day){
-  const P=SOIL_WATER,s=w.soilWater||initializeSoilWater(w),fc=s.fieldCapacity,g=s.groundwater,next=s.scratch,n=w.n,t=s.totals;
+  const P=SOIL_WATER,s=w.soilWater||initializeSoilWater(w),fc=s.fieldCapacity,g=s.groundwater,next=s.scratch,n=w.n,t=s.totals,atmospheric=w.environment?{...climate,frontDay:day}:climate;
   const rain=Math.max(0,climate.rain)*P.rainScale,potential=P.potentialBase+P.potentialTemp*Math.max(0,climate.temp);
   // Groundwater lateral flow from the previous state: each pair of land neighbours exchanges the same amount in
   // opposite directions, open water is a fixed head of 1 and map edges are closed. t.lateral is the net inflow
@@ -44,7 +44,7 @@ export function advanceSoilWater(w,climate,day){
     if(x>0)d+=g[i-1]-gi;if(x<n-1)d+=g[i+1]-gi;if(y>0)d+=g[i-n]-gi;if(y<n-1)d+=g[i+n]-gi;
     const flow=P.lateral*.25*d;next[i]=gi+flow;t.lateral+=flow}}
   for(let i=0;i<w.len;i++){if(w.water[i]){g[i]=1;w.moisture[i]=1;continue}
-    let m=w.moisture[i],gw=next[i];const cap=fc[i],cellRain=w.environment?localRain(w,climate,i)*P.rainScale:rain,cellPotential=w.environment?P.potentialBase+P.potentialTemp*Math.max(0,localTemperature(w,climate,i)):potential;
+    let m=w.moisture[i],gw=next[i];const cap=fc[i],cellRain=w.environment?localRain(w,atmospheric,i)*P.rainScale:rain,cellPotential=w.environment?P.potentialBase+P.potentialTemp*Math.max(0,localTemperature(w,climate,i)):potential;
     const infiltration=cellRain*Math.min(1,Math.max(0,(1-m)/(1-cap)));m+=infiltration;
     const evaporation=Math.min(m,cellPotential*Math.min(1,m/cap));m-=evaporation;
     const percolation=P.drain*Math.max(0,m-cap);m-=percolation;gw+=percolation;
