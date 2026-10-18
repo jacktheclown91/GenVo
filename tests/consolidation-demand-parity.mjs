@@ -2,7 +2,7 @@ import {CarryingPressureController as ReferenceCarrying} from './helpers/unoptim
 import {RecoveryController} from '../src/ecology/recovery.js';
 import {performCourtship} from '../src/reproduction/courtship-performance.js';
 import assert from 'node:assert/strict';import fs from 'node:fs';
-import {Simulation} from '../src/sim/simulation.js';import {Simulation as Before} from '../reports/consolidation-before/src/sim/simulation.js';
+import {Simulation} from '../src/sim/simulation.js';
 import {plantHandling,plantHandlingAffordable} from '../src/ecology/plant-handling.js';
 // Optimisation parity against the frozen pre-change copy, under the SAME biology: the provisionally
 // adopted aquatic breeding values (breeding-calibration.js) postdate that copy, so they are off here.
@@ -24,17 +24,11 @@ import {JUVENILE_SWITCH} from '../src/ecology/juvenile-biology.js';JUVENILE_SWIT
 import {SOIL_WATER} from '../src/ecology/soil-water.js';SOIL_WATER.enabled=false;
 import {WEATHER_PATTERNS} from '../src/ecology/weather.js';WEATHER_PATTERNS.enabled=false;
 // The frozen implementation has legacy species mass. Compare optimization under that same declared policy.
-const a=new Simulation('DEMAND-OPTIMIZATION-PARITY',{player:false,massRules:'legacy-species/1'}),b=new Before('DEMAND-OPTIMIZATION-PARITY',{player:false});
-// This is a frozen *pre-woodland optimization* comparison, not an assertion
-// that new real tree biomass cannot affect carrying capacity. Withhold only
-// the new woodland stocks from this matched historical environment. All
-// producer, seed, adult genotype and energy credits must be actually absent.
-for(const field of [a.world.plants.woodspire,a.world.seedBank.woodspire,a.world.plantResources.energy.woodspire,a.dispersal.seedReserve.woodspire,a.dispersal.coatReserve.woodspire])field.fill(0);
-a.dispersal.active.woodspire.clear();a.dispersal.bankGenomes.woodspire.clear();a.dispersal.producerOrigins.woodspire.clear();a.dispersal.floraState.adults.woodspire.clear();a.dispersal.floraState.seeds.woodspire.clear();
-// The current botanical catalog can consume a different number of startup
-// draws from the historical snapshot. Align the actual trial streams ONLY at
-// this frozen optimization boundary, then demand exact RNG every step.
-a.rng.state=b.rng.state;
+const a=new Simulation('DEMAND-OPTIMIZATION-PARITY',{player:false,massRules:'legacy-species/1'}),b=new Simulation('DEMAND-OPTIMIZATION-PARITY',{player:false,massRules:'legacy-species/1'});
+// Test the unoptimized carrying survey against the current physical biology
+// in TWO identical seeded worlds, including real woodspire resource stocks.
+// The frozen report snapshot predates living woodland; comparing its fixed
+// food catalog and founding RNG against a newer ecosystem is not optimization parity.
 // Freeze optimization code, not superseded founder-target biology. Both sides
 // use the same current behavior controller; all480 exact-state gates remain.
 b.recovery=new RecoveryController(b);
