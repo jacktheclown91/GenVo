@@ -18,6 +18,7 @@ import {restoreSurfaceTopology} from '../world/surface-topology.js';
 import {deriveDrainage,validateTopography} from '../world/topography.js';
 import {validateSoilWater} from '../ecology/soil-water.js';
 import {validatePageResidency} from '../ecology/page-residency.js';
+import {validatePageDayWork} from '../world/page-vegetation-work.js';
 
 // Schema 9 (v1.39.0): the new creature bodies. Creator decision 2026-10-09: start fresh, so older
 // saves before schema 9 are not carried over.
@@ -223,6 +224,7 @@ export function restoreSimulationSnapshot(snapshot){
   restoreBirthRules(sim,snapshot.core||{});
   restoreEcologyRules(sim,snapshot.core||{});
   restoreWorld(sim.world,snapshot.world,{initializeMissingFreshwater});
+  validatePageDayWork(sim.pageDayWork,sim.world);
   sim.animals=snapshot.animals;
   restoreMassRules(sim,snapshot.core||{});
   for(const a of sim.animals)if(!a.matePreferences)a.matePreferences=matePreferencesFor(snapshot.seed,a);
