@@ -62,6 +62,7 @@ jobs:
       - name: Same runner E5 vs P1 ABBA 4x observer timing diagnostics
         shell: bash
         run: |
+          set +e
           set -u
           for repoPath in baseline . . baseline; do
             echo "=== $repoPath ==="
