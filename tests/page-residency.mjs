@@ -1,0 +1,57 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {createPageResidency,recordPageResident,validatePageResidency} from '../src/ecology/page-residency.js';
+
+const sim=new Simulation('D0-PAGE-RESIDENTS',{player:true}),world=sim.world,regions=sim.regionalEcology;
+const snap=s=>structuredClone(createSimulationSnapshot(s,{reason:'page-residence',savedAt:'fixed'}));
+assert.equal(world.n,128,'no live map enlargement is introduced');
+assert.equal(regions.pageTransit.membership.size,sim.animals.filter(a=>a.alive).length,'initial actors own exactly one page identity');
+validatePageResidency(regions.pageTransit,world);
+const player=sim.player();
+const row=Array.from({length:110},(_,i)=>i+8).find(y=>[62,63,64,65,66].every(x=>!world.water[world.idx(x,y)]));
+assert.ok(row!==undefined,'real world has a short dry page-seam lane');
+Object.assign(player,{x:63.95,y:row+.5});regions.reconcilePages();
+const startSerial=regions.pageTransit.transferred;
+const original=player,originalId=player.id,originalGenes=structuredClone(player.genes);
+for(let k=0;k<48&&player.x<64;k++)sim.playerControlStep({right:true},8);
+assert.ok(player.x>=64,'actual player movement crosses page seam');
+assert.equal(regions.pageTransit.membership.get(originalId),'1,'+Math.floor(player.y/64));
+assert.equal(regions.pageTransit.transferred,startSerial+1,'one real crossing has one receipt');
+const latest=regions.pageTransit.recent.at(-1);
+assert.equal(latest.id,originalId);assert.equal(latest.from,'0,'+Math.floor(row/64));assert.equal(latest.to,'1,'+Math.floor(row/64));
+assert.equal(regions.pageTransit.byEdge.get(latest.from+'>'+latest.to)>=1,true);
+regions.reconcilePages();regions.reconcilePages();
+assert.equal(regions.pageTransit.transferred,startSerial+1,'repeated observation cannot double-commit transit');
+assert.equal(sim.animals.find(a=>a.id===originalId),original,'no cloned actor at destination');
+assert.deepEqual(player.genes,originalGenes,'crossing does not rewrite heredity');
+const page=world.pages.get(1,Math.floor(player.y/64));
+assert.ok(page.organisms(sim).includes(player));
+const beforeEvict=snap(sim);
+world.pages.unload(1,Math.floor(player.y/64));world.pages.unload(0,Math.floor(player.y/64));
+assert.deepEqual(snap(sim),beforeEvict,'view unload does not affect live actors or page ledger');
+assert.ok(world.pages.get(1,Math.floor(player.y/64)).organisms(sim).includes(player));
+
+const wild=sim.spawnAnimal('rootling',43.5,43.5);
+assert.equal(regions.pageTransit.membership.get(wild.id),'0,0','new actor recorded at spawn, not fabricated as immigrant');
+const births=regions.pageTransit.transferred;regions.notePageBirth(wild);
+assert.equal(regions.pageTransit.transferred,births,'repeat birth notice is idempotent');
+sim.kill(wild,'test');
+assert.equal(regions.pageTransit.membership.has(wild.id),false,'death removes residence, not another creature copy');
+regions.reconcilePages();validatePageResidency(regions.pageTransit,world);
+
+const saved=snap(sim),restored=restoreSimulationSnapshot(structuredClone(saved));
+assert.deepEqual(snap(restored),saved,'resident identities, counters and history survive exact save');
+for(let t=0;t<60;t++){sim.update(null);restored.update(null);}
+assert.deepEqual(snap(restored),snap(sim),'world continues identically after page transit save');
+const broken=structuredClone(saved);broken.controllers.regionalEcology.pageTransit.membership.set(player.id,'99,0');
+assert.throws(()=>restoreSimulationSnapshot(broken),/page resident/i,'malformed page identity cannot be accepted');
+const altered=structuredClone(saved);altered.controllers.regionalEcology.pageTransit.transferred+=1;
+assert.throws(()=>restoreSimulationSnapshot(altered),/page transfers do not reconcile/i,'counters must match cumulative signed crossings');
+const old=structuredClone(saved);delete old.controllers.regionalEcology.pageTransit;
+assert.deepEqual(snap(restoreSimulationSnapshot(old)),old,'old snapshot lacking page residency remains unchanged');
+const duplicate=createPageResidency();
+const a={id:1,alive:true,species:'genvo',x:2,y:3};
+recordPageResident(duplicate,world,a);recordPageResident(duplicate,world,a);
+assert.equal(duplicate.transferred,0,'registering same location never invents migration');
+console.log('D0 regional residency: real movement, identity continuity, death, view eviction and exact save PASS');
