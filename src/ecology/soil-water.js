@@ -13,6 +13,7 @@
 // fieldCapacity comes from the generated terrain wetness (fine, organic low-lying soils retain more water).
 import {localRain,localTemperature} from '../world/environment.js';
 import {exchangeTerrainGroundwater} from '../world/topography.js';
+import {recordPageGroundwater,finishPageGroundwater,validatePageGroundwater} from '../world/page-groundwater-transfers.js';
 export const SOIL_WATER={enabled:true,rainScale:.06,potentialBase:.025,potentialTemp:.035,capacityBase:.3,capacityWet:.4,drain:.15,rise:.08,lateral:.5,deepDrain:.004,wiltingPoint:.03};
 const clamp01=v=>v<0?0:v>1?1:v;
 export function initializeSoilWater(w){
@@ -24,6 +25,8 @@ export function initializeSoilWater(w){
 export function validateSoilWater(w,s){
   if(s?.schema!==1)throw Error('Invalid soil water schema.');
   for(const k of ['fieldCapacity','groundwater'])if(!(s[k] instanceof Float32Array)||s[k].length!==w.len||s[k].some(v=>!Number.isFinite(v)||v<0||v>1))throw Error('Invalid soil water store '+k+'.');
+  if(s.pageGroundwaterTransfers!==undefined)validatePageGroundwater(w,s.pageGroundwaterTransfers);
+  for(const row of [...(s.daily||[]),...(s.lastDay?[s.lastDay]:[])])if(row.pageGroundwaterTransfers!==undefined)validatePageGroundwater(w,row.pageGroundwaterTransfers);
 }
 // Plant-available water in plant-resource units (capacity 2 per unit moisture), above the wilting point.
 export function plantAvailableWater(w,i,capacity){return Math.max(0,w.moisture[i]-SOIL_WATER.wiltingPoint)*capacity}
@@ -35,10 +38,11 @@ export function advanceSoilWater(w,climate,day){
   // Groundwater lateral flow from the previous state: each pair of land neighbours exchanges the same amount in
   // opposite directions, open water is a fixed head of 1 and map edges are closed. t.lateral is the net inflow
   // from open water.
-  if(w.terrain)t.lateral+=exchangeTerrainGroundwater(w,g,next,P.lateral);
+  if(w.terrain){const pageLedger=new Map();t.lateral+=exchangeTerrainGroundwater(w,g,next,P.lateral,(i,j,water)=>recordPageGroundwater(pageLedger,n,i,j,water));s.pageGroundwaterTransfers=finishPageGroundwater(pageLedger);}
+  else{delete s.pageGroundwaterTransfers;
   else for(let i=0;i<w.len;i++){if(w.water[i]){next[i]=1;continue}const x=i%n,y=(i/n)|0,gi=g[i];let d=0;
     if(x>0)d+=g[i-1]-gi;if(x<n-1)d+=g[i+1]-gi;if(y>0)d+=g[i-n]-gi;if(y<n-1)d+=g[i+n]-gi;
-    const flow=P.lateral*.25*d;next[i]=gi+flow;t.lateral+=flow}
+    const flow=P.lateral*.25*d;next[i]=gi+flow;t.lateral+=flow}}
   for(let i=0;i<w.len;i++){if(w.water[i]){g[i]=1;w.moisture[i]=1;continue}
     let m=w.moisture[i],gw=next[i];const cap=fc[i],cellRain=w.environment?localRain(w,climate,i)*P.rainScale:rain,cellPotential=w.environment?P.potentialBase+P.potentialTemp*Math.max(0,localTemperature(w,climate,i)):potential;
     const infiltration=cellRain*Math.min(1,Math.max(0,(1-m)/(1-cap)));m+=infiltration;
@@ -65,7 +69,7 @@ export function advanceSoilDay(w,climate,day){
   advanceSoilWater(w,climate,day);
   const after=soilWaterStorage(w),f=Object.fromEntries(FLOWS.map(k=>[k,s.totals[k]-t0[k]])),inputs=f.rain+f.lateral,outputs=f.runoff+f.evaporation+f.deepDrainage+f.uptake+f.overflow;
   let land=0;for(let i=0;i<w.len;i++)if(!w.water[i])land++;
-  s.lastDay={day,climateRain:climate.rain,climateTemp:climate.temp,...f,inputs,outputs,storageBefore:before,storageAfter:after,storageChange:after-before,closure:inputs-outputs-(after-before),meanMoisture:land?(after-sumGroundwater(w))/land:0};
+  s.lastDay={day,climateRain:climate.rain,climateTemp:climate.temp,...f,inputs,outputs,storageBefore:before,storageAfter:after,storageChange:after-before,closure:inputs-outputs-(after-before),meanMoisture:land?(after-sumGroundwater(w))/land:0,...(s.pageGroundwaterTransfers?{pageGroundwaterTransfers:s.pageGroundwaterTransfers}:{})};
   (s.daily||(s.daily=[])).push(s.lastDay);if(s.daily.length>64)s.daily.shift();
   return s;
 }
