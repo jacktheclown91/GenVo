@@ -26,8 +26,16 @@ export function removeOptionalSubtrees(plan,targets){
   const draft=createDraft({base:next,ancestry:plan.nodes.map(n=>n.partId),budget:Infinity});if(draftProblems(draft).length)return null;
   return{plan:next,removed:plan.nodes.filter(n=>drop.has(n.id)).map(n=>({id:n.id,partId:n.partId,parent:n.parent,socket:n.socket}))};
 }
+// Failed ancestral mutations revisit the same canonical body-plan object.
+// Reusing pure removal candidates avoids reconstructing and revalidating every
+// possible amputated subtree on each attempt. No changed choice order or RNG.
+const lossCache=new WeakMap();
 export function optionalLossChoices(plan,{asymmetric=false}={}){
+  const mode=asymmetric?'asymmetric':'paired';
+  let cached=lossCache.get(plan);
+  if(cached?.[mode])return cached[mode];
   const out=[],seen=new Set(),paired=DEVELOPMENTAL_SYMMETRY.enabled&&!asymmetric;
   for(const n of [...plan.nodes].sort((a,b)=>a.id<b.id?-1:a.id>b.id?1:0)){if(!n.parent)continue;const mirror=paired?mirroredNode(plan,n):null,targets=[n.id];if(mirror&&mirror.id!==n.id)targets.push(mirror.id);targets.sort();const key=targets.join('|');if(seen.has(key))continue;seen.add(key);const result=removeOptionalSubtrees(plan,targets);if(result)out.push({targets,...result})}
+  cached??={};cached[mode]=out;lossCache.set(plan,cached);
   return out;
 }
