@@ -1,0 +1,213 @@
+{
+ "seed": "LIFE-A",
+ "days": 720,
+ "previous": {
+  "variant": "previous",
+  "days": 720,
+  "species": {
+   "rillsifter": {
+    "births": 7,
+    "matured": 7,
+    "diedJuvenile": {},
+    "juvenileAtEnd": 0,
+    "motherBirths": 6,
+    "motherDied60": {
+     "age": 4
+    },
+    "motherEnergyAfter": {
+     "min": 0.739,
+     "median": 0.748
+    }
+   },
+   "mirelick": {
+    "births": 0,
+    "matured": 0,
+    "diedJuvenile": {},
+    "juvenileAtEnd": 0,
+    "motherBirths": 0,
+    "motherDied60": {},
+    "motherEnergyAfter": null
+   },
+   "podshell": {
+    "births": 0,
+    "matured": 0,
+    "diedJuvenile": {},
+    "juvenileAtEnd": 0,
+    "motherBirths": 0,
+    "motherDied60": {},
+    "motherEnergyAfter": null
+   }
+  },
+  "series": [
+   {
+    "day": 0,
+    "rillsifter": 18,
+    "mirelick": 20,
+    "podshell": 18
+   },
+   {
+    "day": 90,
+    "rillsifter": 18,
+    "mirelick": 19,
+    "podshell": 18
+   },
+   {
+    "day": 180,
+    "rillsifter": 18,
+    "mirelick": 19,
+    "podshell": 18
+   },
+   {
+    "day": 270,
+    "rillsifter": 15,
+    "mirelick": 13,
+    "podshell": 17
+   },
+   {
+    "day": 360,
+    "rillsifter": 13,
+    "mirelick": 8,
+    "podshell": 8
+   },
+   {
+    "day": 450,
+    "rillsifter": 8,
+    "mirelick": 2,
+    "podshell": 2
+   },
+   {
+    "day": 540,
+    "rillsifter": 4,
+    "mirelick": 0,
+    "podshell": 0
+   },
+   {
+    "day": 630,
+    "rillsifter": 0,
+    "mirelick": 0,
+    "podshell": 0
+   },
+   {
+    "day": 720,
+    "rillsifter": 0,
+    "mirelick": 0,
+    "podshell": 0
+   }
+  ],
+  "starvation": {
+   "mosskip:starvation": 17,
+   "rootling:starvation": 5,
+   "genvo:starvation": 15,
+   "needlejaw:starvation": 7,
+   "bankjaw:starvation": 7
+  },
+  "integrityChecks": 90
+ },
+ "adopted": {
+  "variant": "adopted",
+  "days": 720,
+  "species": {
+   "rillsifter": {
+    "births": 23,
+    "matured": 23,
+    "diedJuvenile": {},
+    "juvenileAtEnd": 0,
+    "motherBirths": 16,
+    "motherDied60": {},
+    "motherEnergyAfter": {
+     "min": 0.718,
+     "median": 0.753
+    }
+   },
+   "mirelick": {
+    "births": 7,
+    "matured": 7,
+    "diedJuvenile": {},
+    "juvenileAtEnd": 0,
+    "motherBirths": 4,
+    "motherDied60": {},
+    "motherEnergyAfter": {
+     "min": 0.717,
+     "median": 0.718
+    }
+   },
+   "podshell": {
+    "births": 7,
+    "matured": 7,
+    "diedJuvenile": {},
+    "juvenileAtEnd": 0,
+    "motherBirths": 4,
+    "motherDied60": {},
+    "motherEnergyAfter": {
+     "min": 0.707,
+     "median": 0.735
+    }
+   }
+  },
+  "series": [
+   {
+    "day": 0,
+    "rillsifter": 18,
+    "mirelick": 20,
+    "podshell": 18
+   },
+   {
+    "day": 90,
+    "rillsifter": 29,
+    "mirelick": 23,
+    "podshell": 25
+   },
+   {
+    "day": 180,
+    "rillsifter": 29,
+    "mirelick": 24,
+    "podshell": 25
+   },
+   {
+    "day": 270,
+    "rillsifter": 20,
+    "mirelick": 20,
+    "podshell": 24
+   },
+   {
+    "day": 360,
+    "rillsifter": 19,
+    "mirelick": 12,
+    "podshell": 17
+   },
+   {
+    "day": 450,
+    "rillsifter": 15,
+    "mirelick": 2,
+    "podshell": 9
+   },
+   {
+    "day": 540,
+    "rillsifter": 9,
+    "mirelick": 0,
+    "podshell": 3
+   },
+   {
+    "day": 630,
+    "rillsifter": 7,
+    "mirelick": 0,
+    "podshell": 0
+   },
+   {
+    "day": 720,
+    "rillsifter": 3,
+    "mirelick": 0,
+    "podshell": 0
+   }
+  ],
+  "starvation": {
+   "genvo:starvation": 28,
+   "mosskip:starvation": 21,
+   "mirelick:starvation": 1,
+   "needlejaw:starvation": 7,
+   "bankjaw:starvation": 8,
+   "rillsifter:starvation": 1
+  },
+  "integrityChecks": 90
+ }
+}

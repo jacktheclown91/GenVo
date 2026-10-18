@@ -1,0 +1,88 @@
+{
+ "schema": "genvo.test-run/3",
+ "mode": "fast",
+ "date": "2026-10-17T16:56:40.189Z",
+ "seconds": 2,
+ "artifacts": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\observation-parity-2026-10-17.artifacts",
+ "total": 1,
+ "pass": 1,
+ "knownFail": 0,
+ "fail": 0,
+ "timeout": 0,
+ "stale": 0,
+ "deferred": 0,
+ "byKind": {
+  "biological-invariant": {
+   "pass": 1,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "mechanism": {
+   "pass": 1,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "ecological-observation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "performance": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "historical-expectation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "release-gate": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "unclassified": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  }
+ },
+ "results": [
+  {
+   "name": "ecological-observation",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\observation-parity-2026-10-17.artifacts\\ecological-observation.log"
+  }
+ ]
+}

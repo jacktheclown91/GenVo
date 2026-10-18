@@ -1,0 +1,25 @@
+{
+  "scope": "Actual normal-gestation births checked against frozen conception parents. Replay includes the same updates and three recorded journal-model observations at birth; the existing journal reader initializes empty foraging records. It is not claimed to be a pure state read or tissue ownership proof.",
+  "rows": [
+    {
+      "id": 3,
+      "nodes": 9,
+      "parent1": 0,
+      "parent2": 9
+    },
+    {
+      "id": 4,
+      "nodes": 9,
+      "parent1": 4,
+      "parent2": 5
+    },
+    {
+      "id": 5,
+      "nodes": 9,
+      "parent1": 2,
+      "parent2": 7
+    }
+  ],
+  "exactMidGestationReplayWithRecordedObservations": true,
+  "initialMismatch": "Omitting the journal observations left foraging.states empty instead of creating the original three empty records; no body/RNG difference was found."
+}

@@ -1,0 +1,804 @@
+{
+ "schema": "genvo.player-strategy/1",
+ "days": 160,
+ "rows": [
+  {
+   "physiology": "shared",
+   "firstDeathDay": null,
+   "share": {},
+   "mate": {
+    "branch": 0,
+    "eligible": 0,
+    "tries": 22,
+    "conceived": 1,
+    "attempts": [
+     {
+      "day": 6,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 7,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 7,
+      "stage": "declined:first-declines",
+      "decliner": "partner",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 8,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 8,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 9,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 9,
+      "stage": "declined:second-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 10,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 10,
+      "stage": "declined:first-declines",
+      "decliner": "partner",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 10,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 10,
+      "stage": "declined:first-declines",
+      "decliner": "partner",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 11,
+      "stage": "conceived",
+      "decliner": null,
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 27,
+      "stage": "blocked:survival-priority",
+      "decliner": null,
+      "partner": "rootling#66",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 28,
+      "stage": "blocked:survival-priority",
+      "decliner": null,
+      "partner": "rootling#66",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 29,
+      "stage": "blocked:survival-priority",
+      "decliner": null,
+      "partner": "rootling#66",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 53,
+      "stage": "blocked:survival-priority",
+      "decliner": null,
+      "partner": "rootling#74",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 54,
+      "stage": "blocked:survival-priority",
+      "decliner": null,
+      "partner": "rootling#74",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 54,
+      "stage": "blocked:survival-priority",
+      "decliner": null,
+      "partner": "rootling#74",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 55,
+      "stage": "blocked:survival-priority",
+      "decliner": null,
+      "partner": "rootling#74",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 56,
+      "stage": "blocked:survival-priority",
+      "decliner": null,
+      "partner": "rootling#74",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 151,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#267",
+      "partnerLineage": false,
+      "chance": 0.866,
+      "gamete": 0.945,
+      "fertility": [
+       1,
+       0.917
+      ]
+     },
+     {
+      "day": 152,
+      "stage": "blocked:crowding",
+      "decliner": null,
+      "partner": "genvo#267",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     }
+    ]
+   },
+   "deathCause": "faded day 160 W0.61 E0.74",
+   "seed": "STRAT-B",
+   "strategy": "auto",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 0,
+   "lineageBirths": 4,
+   "firstChildDay": 26,
+   "highestGeneration": 3,
+   "energyMedian": 0.75
+  },
+  {
+   "physiology": "shared",
+   "firstDeathDay": null,
+   "share": {
+    "other": 0.06,
+    "eat": 0.933,
+    "drink": 0.007
+   },
+   "mate": {
+    "branch": 6920,
+    "eligible": 6914,
+    "tries": 12,
+    "conceived": 0,
+    "started": 11,
+    "attempts": [
+     {
+      "day": 5,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 6,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 6,
+      "stage": "declined:first-declines",
+      "decliner": "partner",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 7,
+      "stage": "blocked:encounter-ended",
+      "decliner": null,
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 7,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 8,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 8,
+      "stage": "declined:second-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 9,
+      "stage": "blocked:encounter-ended",
+      "decliner": null,
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 9,
+      "stage": "blocked:encounter-ended",
+      "decliner": null,
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 10,
+      "stage": "blocked:encounter-ended",
+      "decliner": null,
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 11,
+      "stage": "blocked:encounter-ended",
+      "decliner": null,
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 11,
+      "stage": "declined:second-declines",
+      "decliner": "partner",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     }
+    ],
+    "refusals": {
+     "An approach or performance is already underway.": 6903
+    }
+   },
+   "deathCause": "faded day 160 W0.70 E0.74",
+   "seed": "STRAT-B",
+   "strategy": "forager",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.82
+  },
+  {
+   "physiology": "shared",
+   "firstDeathDay": null,
+   "share": {
+    "other": 0.06,
+    "eat": 0.933,
+    "drink": 0.007
+   },
+   "mate": {
+    "branch": 6920,
+    "eligible": 6914,
+    "tries": 12,
+    "conceived": 0,
+    "started": 11,
+    "attempts": [
+     {
+      "day": 5,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 6,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 6,
+      "stage": "declined:first-declines",
+      "decliner": "partner",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 7,
+      "stage": "blocked:encounter-ended",
+      "decliner": null,
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 7,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 8,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 8,
+      "stage": "declined:second-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 9,
+      "stage": "blocked:encounter-ended",
+      "decliner": null,
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 9,
+      "stage": "blocked:encounter-ended",
+      "decliner": null,
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 10,
+      "stage": "blocked:encounter-ended",
+      "decliner": null,
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 11,
+      "stage": "blocked:encounter-ended",
+      "decliner": null,
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 11,
+      "stage": "declined:second-declines",
+      "decliner": "partner",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     }
+    ],
+    "refusals": {
+     "An approach or performance is already underway.": 6903
+    }
+   },
+   "deathCause": "faded day 160 W0.70 E0.74",
+   "seed": "STRAT-B",
+   "strategy": "refuge",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.82
+  },
+  {
+   "physiology": "shared",
+   "firstDeathDay": null,
+   "share": {
+    "other": 0.06,
+    "eat": 0.933,
+    "drink": 0.007
+   },
+   "mate": {
+    "branch": 6920,
+    "eligible": 6914,
+    "tries": 12,
+    "conceived": 0,
+    "started": 11,
+    "attempts": [
+     {
+      "day": 5,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 6,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 6,
+      "stage": "declined:first-declines",
+      "decliner": "partner",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 7,
+      "stage": "blocked:encounter-ended",
+      "decliner": null,
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 7,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 8,
+      "stage": "declined:first-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 8,
+      "stage": "declined:second-declines",
+      "decliner": "player",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     },
+     {
+      "day": 9,
+      "stage": "blocked:encounter-ended",
+      "decliner": null,
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 9,
+      "stage": "blocked:encounter-ended",
+      "decliner": null,
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 10,
+      "stage": "blocked:encounter-ended",
+      "decliner": null,
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 11,
+      "stage": "blocked:encounter-ended",
+      "decliner": null,
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": null,
+      "gamete": null,
+      "fertility": null
+     },
+     {
+      "day": 11,
+      "stage": "declined:second-declines",
+      "decliner": "partner",
+      "partner": "genvo#116",
+      "partnerLineage": false,
+      "chance": 0.984,
+      "gamete": 0.984,
+      "fertility": [
+       1,
+       1
+      ]
+     }
+    ],
+    "refusals": {
+     "An approach or performance is already underway.": 6903
+    }
+   },
+   "deathCause": "faded day 160 W0.70 E0.74",
+   "seed": "STRAT-B",
+   "strategy": "defend",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.82
+  }
+ ]
+}

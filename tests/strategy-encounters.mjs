@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
+import {interactAs} from './helpers/interaction.js';
 import {SPECIES} from '../src/organisms/species.js';
 
 function isolateNearPlayer(sim){
@@ -19,7 +20,7 @@ function clearPlayerFoods(sim){for(const k of ['sunmoss','bramble','marshroot','
   const hunter=stalker(sim,p.x+4,p.y);sim.rebuildSpatial();
   const goal=sim.specialization.playerChallenge(p);assert.equal(goal?.branch,'stealth');assert.equal(goal?.title,'Risky feeding ground');
   const hide=sim.playerHide();assert.equal(hide.ok,true);assert.equal(p.hidden,true);
-  const eat=sim.playerInteract();assert.equal(eat.ok,true);assert.equal(eat.type,'eat');assert.equal(p.hidden,true,'quiet plant feeding keeps camouflage');
+  const eat=interactAs(sim,assert,`eat:bramble:${i}`);assert.equal(eat.ok,true);assert.equal(eat.type,'eat');assert.equal(p.hidden,true,'quiet plant feeding keeps camouflage');
   assert.match(sim.specialization.generationSummary(p),/^Stealth:/);
   assert.equal(sim.specialization.challenges.get(p.id).complete,true);
   assert.ok(hunter.alive);

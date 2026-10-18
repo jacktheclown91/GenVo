@@ -4,6 +4,8 @@ import {SPECIES_LIFESTYLES} from '../src/lineage/species-lifestyle.js';
 import {SPECIES} from '../src/organisms/species.js';
 import {ROOT_TAXON_ID} from '../src/lineage/evolution-tree.js';
 import {PLANTS} from '../src/sim/config.js';
+import {makePlan} from '../src/lineage/body-plan.js';
+import {applyLineageTarget} from '../src/lineage/reproduction-bridge.js';
 
 function setLifestyle(sim,id){
   const ctrl=sim.speciesLifestyle,state=ctrl.ensure(ROOT_TAXON_ID),def=SPECIES_LIFESTYLES[id];
@@ -33,7 +35,9 @@ function drySpot(sim,radius=16){
   prey.x=p.x+2.1;prey.y=p.y;prey.health=100;prey.energy=SPECIES.mosskip.maxEnergy;prey.hydration=SPECIES.mosskip.maxHydration;
   sim.rebuildSpatial();
   assert.equal(sim.isPredatorTo(p,prey),false,'ancestral GenVo8 is not automatically a predator to Hoppers');
-  setLifestyle(sim,'hunter');sim.rebuildSpatial();
+  // Since v1.63 the mounted mouth governs the ability to hunt (phenotype-directed ecology), so the
+  // Hunter lineage carries a tearing jaw evolved through the canonical lineage path.
+  setLifestyle(sim,'hunter');applyLineageTarget(p,makePlan(p.bodyPlan.nodes.map(n=>({partId:n.socket==='mouth'?'tearing-jaw':n.partId,parent:n.parent,socket:n.socket}))));sim.rebuildSpatial();
   assert.equal(sim.isPredatorTo(p,prey),true,'Hunter GenVo8 is recognized as a predator to edible wildlife');
   sim.social.observe({force:true});
   const social=sim.social.state(prey);assert.equal(social?.alarm?.threat?.id,p.id,'Hopper herd alarm identifies the Hunter GenVo8');

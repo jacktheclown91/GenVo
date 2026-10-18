@@ -13,11 +13,11 @@ for(const f of Object.values(w.plants))f.fill(0);for(const f of Object.values(w.
 const empty=sim.carrying.breedingState(a);assert.equal(empty.allowed,false);
 w.freshwaterFood.fry.fill(.35);sim.carrying.forageCache.clear();const rng=sim.rng.state;
 const fed=sim.carrying.breedingState(a);assert.ok(fed.resource>empty.resource,'finite accessible aquatic prey contributes to hunter resource capacity');
-assert.equal(fed.preyReference.source,'mounted-adult-anatomy');const ref=preyNormalization(sim,a);assert.equal(preyNormalization(sim,{...a,bodyPlan:null}).mass,0,'No ancestry template can fabricate a missing physical reference');assert.deepEqual(ref,preyNormalization(sim,{...a,species:'genvo'}),'Fallback units cannot be selected by a founding name');assert.ok(fed.allowed,'an abundant actual prey supply can support reproduction without animal prey agents');
+assert.equal(fed.preyReference.source,'local-edible-biomass/1');const ref=preyNormalization(sim,a);assert.deepEqual(ref,preyNormalization(sim,{...a,species:'genvo',bodyPlan:null}),'A unit conversion is not an invented reference animal or resource');assert.ok(fed.allowed,'an abundant actual prey supply can support reproduction without animal prey agents');
 assert.equal(sim.rng.state,rng);assert.equal(w.freshwaterFood.fry[w.idx(a.x,a.y)],Math.fround(.35),'survey does not harvest or replenish prey');
 // Access, not raw water stock, owns usable supply. Remove lawful swimming/gills.
 const aquaticPlan=a.bodyPlan;a.bodyPlan=terrestrialPlan;sim.animals=[a];sim.carrying.forageCache.clear();assert.equal(sim.carrying.breedingState(a).allowed,false,'Inaccessible aquatic biomass grants no capacity');a.bodyPlan=aquaticPlan;sim.carrying.forageCache.clear();
-// A real mixed community keeps the established living adult-prey unit.
-w.water[w.idx(a.x+2,a.y)]=0;w.buildLandRegions();w.buildHydrology();const prey=sim.spawnAnimal('mosskip',a.x+2,a.y);prey.age=100;const mixed=preyNormalization(sim,a);assert.equal(mixed.source,'living-eligible-adult-unit');assert.equal(mixed.mass,bodyMass(prey)/bodyMassFraction(prey));sim.animals=[a];sim.carrying.forageCache.clear();
+// Adding a real community member cannot redefine an energy unit.
+w.water[w.idx(a.x+2,a.y)]=0;w.buildLandRegions();w.buildHydrology();const prey=sim.spawnAnimal('mosskip',a.x+2,a.y);prey.age=100;const mixed=preyNormalization(sim,a);assert.deepEqual(mixed,ref);sim.animals=[a];sim.carrying.forageCache.clear();
 w.freshwaterFood.fry.fill(.00001);sim.carrying.forageCache.clear();assert.equal(sim.carrying.breedingState(a).allowed,false,'sparse aquatic prey cannot satisfy the unchanged breeding requirement');
 console.log('hunter capacity counts finite accessible aquatic nutrition conservatively: PASS');

@@ -9,7 +9,9 @@ function scene(){
   for(const field of Object.values(w.plants))field.fill(0);w.carrion.fill(0);
   w.plants.bramble[w.idx(28,25)]=.7;w.buildLandRegions();w.buildHydrology();
   const a=sim.animals.find(a=>a.species==='rootling');
-  Object.assign(a,{x:22.5,y:25.5,age:30,bodyPlan:null,adaptations:[],ecoLifestyle:null,energy:55,hydration:106,intent:'feed',target:{x:28.5,y:25.5,kind:'bramble'}});
+  // The rootling keeps its own modular body: a body-less creature (pre-modular state, refused
+  // on load) has no mouth and so no edible yield.
+  Object.assign(a,{x:22.5,y:25.5,age:30,adaptations:[],ecoLifestyle:null,energy:55,hydration:106,intent:'feed',target:{x:28.5,y:25.5,kind:'bramble'}});
   sim.animals=[a];sim.rebuildSpatial();return{sim,a,w};
 }
 const {sim,a,w}=scene();const target=a.target;

@@ -1,0 +1,313 @@
+{
+  "scope": "Controlled finite stock sweep. Remote initialized eligible adult presence only; identical local supply, local prey count, world stocks and RNG. No actual deaths, births or natural outcome frequency claim.",
+  "changed": 0,
+  "gateFlips": 0,
+  "rows": [
+    {
+      "stock": 0,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 0,
+      "before": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0,
+        "resourceValue": 0,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      },
+      "after": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0,
+        "resourceValue": 0,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    },
+    {
+      "stock": 0.001,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 1.6660000791307539,
+      "before": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.006125000290921889,
+        "resourceValue": 0.049000002327375114,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      },
+      "after": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.006125000290921889,
+        "resourceValue": 0.049000002327375114,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    },
+    {
+      "stock": 0.002,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 3.3320001582615077,
+      "before": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.012250000581843778,
+        "resourceValue": 0.09800000465475023,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      },
+      "after": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.012250000581843778,
+        "resourceValue": 0.09800000465475023,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    },
+    {
+      "stock": 0.005,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 8.32999981380999,
+      "before": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.030624999315477908,
+        "resourceValue": 0.24499999452382326,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      },
+      "after": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.030624999315477908,
+        "resourceValue": 0.24499999452382326,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    },
+    {
+      "stock": 0.01,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 16.65999962761998,
+      "before": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.061249998630955815,
+        "resourceValue": 0.4899999890476465,
+        "driveRate": 0.00554763553491541,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      },
+      "after": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.061249998630955815,
+        "resourceValue": 0.4899999890476465,
+        "driveRate": 0.00554763553491541,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    },
+    {
+      "stock": 0.02,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 33.31999925523996,
+      "before": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.12249999726191163,
+        "resourceValue": 0.979999978095293,
+        "driveRate": 0.01109527106983082,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      },
+      "after": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.12249999726191163,
+        "resourceValue": 0.979999978095293,
+        "driveRate": 0.01109527106983082,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    },
+    {
+      "stock": 0.05,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 83.30000124126673,
+      "before": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.3062500045634806,
+        "resourceValue": 2.450000036507845,
+        "driveRate": 0.027738178707904716,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      },
+      "after": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.3062500045634806,
+        "resourceValue": 2.450000036507845,
+        "driveRate": 0.027738178707904716,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    },
+    {
+      "stock": 0.1,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 166.60000248253345,
+      "before": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.6125000091269612,
+        "resourceValue": 4.90000007301569,
+        "driveRate": 0.05547635741580943,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      },
+      "after": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.6125000091269612,
+        "resourceValue": 4.90000007301569,
+        "driveRate": 0.05547635741580943,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    },
+    {
+      "stock": 0.35,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 583.0999900698662,
+      "before": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 1.12,
+        "resourceValue": 17.14999970793724,
+        "driveRate": 0.10144248062015507,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      },
+      "after": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 1.12,
+        "resourceValue": 17.14999970793724,
+        "driveRate": 0.10144248062015507,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    }
+  ]
+}

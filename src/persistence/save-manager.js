@@ -1,3 +1,7 @@
+import {restoreMassRules} from '../organisms/body-mass.js';
+import {restoreEcologyRules} from '../ecology/rule-policy.js';
+import {PlanetGeography} from '../world/planet-geography.js';
+import {restoreBirthRules} from '../lineage/birth-rules.js';
 import {packFloraSeedBanks,unpackFloraSeedBanks} from './flora-seed-codec.js';
 import {initializeOrganicResources,validateOrganicResources,validateCarriedMaterial} from '../ecology/organic-resource-cycle.js';
 import {initializePlantResources,validatePlantResources} from '../ecology/plant-resources.js';
@@ -9,6 +13,10 @@ import {LEGACY_PRESSURE_KINDS} from '../lineage/pressure.js';
 import {anatomyFromAdaptations} from '../lineage/evolution.js';
 import {migrateLegacyReadings} from '../lineage/readings.js';
 import {initializeFreshwater} from '../ecology/freshwater-food.js';
+import {validatePageLayout} from '../world/pages.js';
+import {restoreSurfaceTopology} from '../world/surface-topology.js';
+import {deriveDrainage,validateTopography} from '../world/topography.js';
+import {validateSoilWater} from '../ecology/soil-water.js';
 
 // Schema 9 (v1.39.0): the new creature bodies. Creator decision 2026-10-09: start fresh, so older
 // saves before schema 9 are not carried over.
@@ -30,7 +38,7 @@ const CONTROLLER_KEYS=[
   'specialization','tendency','divergence','generationProgress','predator','stalkerTerritory','foraging','exposure',
   'familyWeather','illness','familyIllness','injury','activity','wildlifeRhythm','exertion','playerCombat','habits','evolutionBudget','evolutionEditor','partAbilities','discovery'
 ];
-const STRUCTURAL_KEYS=new Set(['seed','rng','world','animals','spatial','spatialBucketSize','spatialCols',...CONTROLLER_KEYS]);
+const STRUCTURAL_KEYS=new Set(['seed','rng','world','animals','_player','spatial','spatialBucketSize','spatialCols',...CONTROLLER_KEYS]);
 const WORLD_MUTABLE_FIELDS=['moisture','fertility','temperature','carrion'];
 
 function ownState(object,{skip=[]}={}){
@@ -45,10 +53,15 @@ function ownState(object,{skip=[]}={}){
 function snapshotWorld(world){
   const state={};
   for(const key of WORLD_MUTABLE_FIELDS)state[key]=world[key];
-  state.organicResources=world.organicResources;state.plantResources=world.plantResources;
+  state.organicResources=world.organicResources;state.plantResources=world.plantResources;if(world.soilWater){const {scratch,...soil}=world.soilWater;state.soilWater=soil;}
   state.plants={...world.plants};
   state.seedBank={...world.seedBank};
   state.freshwaterFood={...world.freshwaterFood};
+  state.pageLayout=world.pages.layout();
+  if(world.planet)state.planet=world.planet.descriptor;
+  state.generator=world.generator;state.topology=structuredClone(world.topology);
+  state.environment=world.environment?{...world.environment}:null;
+  state.terrain=world.terrain?{schema:1,elevation:world.terrain.elevation.slice(),travelEnabled:world.terrain.travelEnabled??false}:null;
   state.surfaceWater={schema:1,mask:world.water.slice()};
   return state;
 }
@@ -61,11 +74,12 @@ function restoreTyped(target,source,label){
 
 function restoreWorld(world,state,{initializeMissingFreshwater=false}={}){
   if(!state)throw new Error('Save has no world state.');
-  if(state.surfaceWater){
-    const record=state.surfaceWater;if(record.schema!==1||!record.mask||record.mask.length!==world.len)throw new Error('Invalid saved surface water topology.');
-    for(const value of record.mask)if(value!==0&&value!==1)throw new Error('Invalid saved surface water mask.');
-    restoreTyped(world.water,record.mask,'world.surfaceWater.mask');world.buildLandRegions();world.buildHydrology();
-  }
+  if(state.generator==='planetary/1'){if(!state.planet)throw Error('Saved planet descriptor is missing.');world.planet=new PlanetGeography(world.seed,state.planet)}else{if(state.planet!=null)throw Error('Planet descriptor conflicts with saved generator.');delete world.planet}
+  if(state.pageLayout)validatePageLayout(world,state.pageLayout);
+  restoreSurfaceTopology(world,state);
+  // Existing saves retain flat-ground hydrology; terrain is never retrofitted from a new generator.
+  if(state.terrain!=null){validateTopography(world,state.terrain);world.terrain={schema:1,elevation:state.terrain.elevation.slice(),travelEnabled:state.terrain.travelEnabled??false};deriveDrainage(world);}else delete world.terrain;
+  world.buildLandRegions();world.buildHydrology();
   for(const key of WORLD_MUTABLE_FIELDS)restoreTyped(world[key],state[key],`world.${key}`);
   if(!state.freshwaterFood&&initializeMissingFreshwater)initializeFreshwater(world);
   else for(const [kind,target] of Object.entries(world.freshwaterFood))restoreTyped(target,state.freshwaterFood?.[kind],`world.freshwaterFood.${kind}`);
@@ -77,7 +91,7 @@ function restoreWorld(world,state,{initializeMissingFreshwater=false}={}){
     if(!world.seedBank[kind])continue;
     restoreTyped(world.seedBank[kind],source,`world.seedBank.${kind}`);
   }
-  if(state.plantResources){validatePlantResources(world,state.plantResources);world.plantResources=state.plantResources;}else initializePlantResources(world);if(state.organicResources){validateOrganicResources(world,state.organicResources);world.organicResources=state.organicResources;}else initializeOrganicResources(world);
+  if(state.plantResources){validatePlantResources(world,state.plantResources);world.plantResources=state.plantResources;}else initializePlantResources(world);if(state.organicResources){validateOrganicResources(world,state.organicResources);world.organicResources=state.organicResources;}else initializeOrganicResources(world);if(state.soilWater){validateSoilWater(world,state.soilWater);world.soilWater={...state.soilWater,scratch:new Float32Array(world.len)};}else delete world.soilWater;
 }
 
 function snapshotControllers(sim){
@@ -202,10 +216,14 @@ export function restoreSimulationSnapshot(snapshot){
 
   const sim=new Simulation(snapshot.seed,{player:snapshot.core?.playerEnabled!==false,bootstrap:false});
   Object.assign(sim,snapshot.core||{});
+  delete sim._player; // Runtime lookup cache is rebuilt from canonical playerId/animals.
   sim.seed=snapshot.seed;
   sim.rng.state=snapshot.rngState>>>0;
+  restoreBirthRules(sim,snapshot.core||{});
+  restoreEcologyRules(sim,snapshot.core||{});
   restoreWorld(sim.world,snapshot.world,{initializeMissingFreshwater});
   sim.animals=snapshot.animals;
+  restoreMassRules(sim,snapshot.core||{});
   for(const a of sim.animals)if(!a.matePreferences)a.matePreferences=matePreferencesFor(snapshot.seed,a);
   // Older gestations already carry snapshots of both parents. Keep their new
   // preference alleles frozen at conception when upgrading a saved world.
@@ -218,8 +236,13 @@ export function restoreSimulationSnapshot(snapshot){
   restoreControllers(sim,snapshot.controllers);
   sim.dispersal.upgrade();for(const a of sim.animals)validateCarriedMaterial(a);
   sim.rebuildSpatial();
-  sim.lineage?.refreshSelection?.();
-  sim.reproduction?.refreshSelection?.();
+  // Restore keeps the saved heir and mate selections exactly (Phase 3I): re-running the HUD's refresh here
+  // could pick a new selection that an uninterrupted run never had (the player's courtship uses it), so a
+  // resumed world diverged from the same world played on. A selection whose animal no longer lives is
+  // cleared; the HUD refreshes selections itself during play.
+  const alive=id=>id!=null&&sim.animals.some(a=>a.id===id&&a.alive);
+  if(sim.lineage&&!alive(sim.lineage.selectedHeirId))sim.lineage.selectedHeirId=null;
+  if(sim.reproduction&&!alive(sim.reproduction.selectedMateId))sim.reproduction.selectedMateId=null;
   return sim;
 }
 
@@ -321,7 +344,8 @@ export class SaveManager{
     if(!this.available)return null;
     const sim=this.getSim?.();if(!sim?.player?.())return null;
     if(this.busy){this.pendingReason=reason;return null}
-    this.busy=true;this.status('saving','Saving...');
+    // A new world's first save is part of preparing it; every other save says what it is.
+    this.busy=true;this.status('saving',reason==='world-start'?'Preparing ecosystem...':'Saving...');
     try{
       const slotId=this.activeSlotId;
       const snapshot=createSimulationSnapshot(sim,{reason});

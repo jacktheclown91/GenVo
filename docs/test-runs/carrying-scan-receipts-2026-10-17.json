@@ -1,0 +1,159 @@
+{
+ "schema": "genvo.test-run/3",
+ "validationCode": {
+  "scope": "src, tools and tests code/configuration; not a release seal",
+  "start": "f2a6bb41b7f599b5d175db454bc90445bb0968f080e7162f5d9297baa5dd7c4f",
+  "end": "f2a6bb41b7f599b5d175db454bc90445bb0968f080e7162f5d9297baa5dd7c4f",
+  "inputDrift": false
+ },
+ "classificationNote": "byKind counts overlap for mixed suites; unclassified means not yet audited",
+ "mode": "fast",
+ "date": "2026-10-17T17:19:22.566Z",
+ "seconds": 1,
+ "artifacts": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\carrying-scan-receipts-2026-10-17.artifacts",
+ "total": 6,
+ "pass": 6,
+ "knownFail": 0,
+ "fail": 0,
+ "timeout": 0,
+ "stale": 0,
+ "deferred": 0,
+ "byKind": {
+  "biological-invariant": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "mechanism": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "ecological-observation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "performance": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "historical-expectation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "release-gate": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "unclassified": {
+   "pass": 6,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  }
+ },
+ "results": [
+  {
+   "name": "carrying",
+   "kinds": [
+    "unclassified"
+   ],
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\carrying-scan-receipts-2026-10-17.artifacts\\carrying.log"
+  },
+  {
+   "name": "carrying-anatomy-cache",
+   "kinds": [
+    "unclassified"
+   ],
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\carrying-scan-receipts-2026-10-17.artifacts\\carrying-anatomy-cache.log"
+  },
+  {
+   "name": "carrying-connected-demand",
+   "kinds": [
+    "unclassified"
+   ],
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\carrying-scan-receipts-2026-10-17.artifacts\\carrying-connected-demand.log"
+  },
+  {
+   "name": "carrying-land-access",
+   "kinds": [
+    "unclassified"
+   ],
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\carrying-scan-receipts-2026-10-17.artifacts\\carrying-land-access.log"
+  },
+  {
+   "name": "carrying-live-stock",
+   "kinds": [
+    "unclassified"
+   ],
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\carrying-scan-receipts-2026-10-17.artifacts\\carrying-live-stock.log"
+  },
+  {
+   "name": "freshwater-carrying",
+   "kinds": [
+    "unclassified"
+   ],
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\carrying-scan-receipts-2026-10-17.artifacts\\freshwater-carrying.log"
+  }
+ ]
+}

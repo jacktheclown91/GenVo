@@ -1,0 +1,106 @@
+{
+ "schema": "genvo.player-strategy/1",
+ "days": 160,
+ "rows": [
+  {
+   "share": {},
+   "mate": {
+    "branch": 0,
+    "eligible": 0,
+    "tries": 11,
+    "conceived": 0
+   },
+   "deathCause": null,
+   "seed": "STRAT-B",
+   "strategy": "auto",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.64
+  },
+  {
+   "share": {
+    "other": 0.019,
+    "eat": 0.944,
+    "drink": 0.037
+   },
+   "mate": {
+    "branch": 5807,
+    "eligible": 5801,
+    "tries": 8,
+    "conceived": 0,
+    "started": 6,
+    "refusals": {
+     "An approach or performance is already underway.": 5795
+    }
+   },
+   "deathCause": null,
+   "seed": "STRAT-B",
+   "strategy": "forager",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.81
+  },
+  {
+   "share": {
+    "other": 0.019,
+    "eat": 0.944,
+    "drink": 0.037
+   },
+   "mate": {
+    "branch": 5807,
+    "eligible": 5801,
+    "tries": 8,
+    "conceived": 0,
+    "started": 6,
+    "refusals": {
+     "An approach or performance is already underway.": 5795
+    }
+   },
+   "deathCause": null,
+   "seed": "STRAT-B",
+   "strategy": "refuge",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.81
+  },
+  {
+   "share": {
+    "other": 0.019,
+    "eat": 0.944,
+    "drink": 0.037
+   },
+   "mate": {
+    "branch": 5807,
+    "eligible": 5801,
+    "tries": 8,
+    "conceived": 0,
+    "started": 6,
+    "refusals": {
+     "An approach or performance is already underway.": 5795
+    }
+   },
+   "deathCause": null,
+   "seed": "STRAT-B",
+   "strategy": "defend",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.81
+  }
+ ]
+}

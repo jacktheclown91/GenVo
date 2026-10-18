@@ -20,7 +20,9 @@ function isolate(sim,animal){
   sim.rebuildSpatial();
 }
 function stalker(sim,animal,distance=4){
-  const x=animal.x+distance,y=animal.y;let hunter=sim.animals.find(a=>a.alive&&a.species==='needlejaw');
+  // Same distance; the first bearing that stays on the animal's own land (a fixed east offset can fall in water).
+  let x=animal.x+distance,y=animal.y;for(let k=0;k<16;k++){const t=k*Math.PI/8,cx=animal.x+Math.cos(t)*distance,cy=animal.y+Math.sin(t)*distance;if(!sim.world.water[sim.world.idx(cx,cy)]&&sim.world.sameLand(animal.x,animal.y,cx,cy)){x=cx;y=cy;break}}
+  let hunter=sim.animals.find(a=>a.alive&&a.species==='needlejaw');
   if(!hunter)hunter=sim.spawnAnimal('needlejaw',x,y);hunter.x=x;hunter.y=y;hunter.health=100;sim.rebuildSpatial();return hunter;
 }
 

@@ -3,7 +3,7 @@ import {Simulation} from '../src/sim/simulation.js';
 import {CFG,PLANTS} from '../src/sim/config.js';
 import {SPECIES,GENE_KEYS,canPreyOn} from '../src/organisms/species.js';
 
-assert.equal(CFG.version,'1.63.0');
+assert.equal(CFG.version,'1.65.0');
 assert.equal(CFG.controlHz,64);
 assert.equal(CFG.controlHz%CFG.simHz,0);
 assert.equal(CFG.simHz,8);

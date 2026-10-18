@@ -1,4 +1,6 @@
 import {CFG,PLANTS} from '../sim/config.js';
+import {ANATOMICAL_MASS,massPolicy,bodyMass} from '../organisms/body-mass.js';
+import {remainingPreyBiomass} from './prey-biomass.js';
 import {SPECIES} from '../organisms/species.js';
 
 // Environmental memory. These fields record consequences already produced by the simulation
@@ -18,7 +20,7 @@ export class EnvironmentalHistoryController{
   biomassAt(i){let total=0;for(const kind of this.producerKeys)total+=this.sim.world.plants[kind]?.[i]||0;return total}
   activate(i,{previous=null}={}){if(!this.active.has(i)){this.active.add(i);this.previousBiomass[i]=previous??this.biomassAt(i)}}
   noteStep(animal,weight=1){
-    if(!animal?.alive)return;this.sim.discovery?.noteMovementTrace(animal);const i=this.sim.world.idx(animal.x,animal.y),mass=SPECIES[animal.species]?.mass||1;this.activate(i);
+    if(!animal?.alive)return;this.sim.discovery?.noteMovementTrace(animal);const i=this.sim.world.idx(animal.x,animal.y),mass=massPolicy(animal)===ANATOMICAL_MASS?bodyMass(animal):(SPECIES[animal.species]?.mass||1);this.activate(i);
     this.traffic[i]=Math.min(2.2,this.traffic[i]+.010*Math.sqrt(Math.max(.25,mass))*Math.max(0,weight));
   }
   notePlantConsumption(kind,x,y,amount){
@@ -26,7 +28,7 @@ export class EnvironmentalHistoryController{
     this.grazing[i]=Math.min(2.2,this.grazing[i]+amount*1.55);
   }
   noteDeath(animal){
-    if(!animal)return;const i=this.sim.world.idx(animal.x,animal.y),mass=SPECIES[animal.species]?.mass||1;this.activate(i);
+    if(!animal)return;const i=this.sim.world.idx(animal.x,animal.y),mass=massPolicy(animal)===ANATOMICAL_MASS?remainingPreyBiomass(animal):(SPECIES[animal.species]?.mass||1);this.activate(i);
     this.nutrientLegacy[i]=Math.min(2.5,this.nutrientLegacy[i]+mass*.16);
   }
   noteDecomposition(i,amount){

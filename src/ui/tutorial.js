@@ -115,8 +115,20 @@ export class TutorialController{
     if(this.briefing&&!this.briefing.hidden)return;
     const p=this.sim.player();this.detectHandoff();const milestone=this.sim.generationProgress?.takeNotice?.();if(milestone)this.showToast(milestone.text,5200,milestone.tone||'success','progress');const lostKnowledge=this.sim.cognition?.takeKnowledgeNotice?.();if(lostKnowledge)this.showToast(lostKnowledge.text,5200,lostKnowledge.tone||'warn');const fear=this.sim.cognition?.takeFearNotice?.();if(fear)this.showToast(fear.text,4200,fear.tone||'warn');const designed=this.sim.evolutionEditor?.takeNotice?.();if(designed)this.showToast(designed.text,4200,designed.tone||'success','progress');const found=!designed&&this.sim.discovery?.takeNotice?.();if(found)this.showToast(found.text,4200,found.tone||'safe','progress');const autoHome=this.sim.autoHomeNotice;if(autoHome){this.sim.autoHomeNotice=null;this.showToast(autoHome.text,5200,autoHome.tone||'warn')}
     if(!p){this.renderer.guideTarget=null;this.render('Your family line ended.','Press R to start again.');if(!this.lineageEndedShown&&this.sim.lineage?.founderId){this.lineageEndedShown=true;this.showTransition('The family line ended','No grown descendant survived to take over. Press R to start a new run.','Close',true)}return}
+    this.noteEnergyBalance(p);
     if(this.stage==='goals'){if(this.renderOpeningGoals(p))return}
     this.renderer.guideTarget=null;this.renderDynamicGoal(p);
+  }
+  // Phase 4: make a slow energy deficit visible with real numbers (no bonus, no change to biology).
+  // Once a sim day, if the creature is below 70% and lost energy over the last day, say so at most
+  // every 3 days, naming the measured daily loss and what genuinely helps under the same rules.
+  noteEnergyBalance(p){
+    const s=SPECIES[p.species],day=this.sim.day;if(!s)return;
+    if(!this.energyLog||this.energyLog.id!==p.id){this.energyLog={id:p.id,day,energy:p.energy,noticeDay:-Infinity};return}
+    if(day===this.energyLog.day)return;
+    const loss=(this.energyLog.energy-p.energy)/Math.max(1,day-this.energyLog.day);this.energyLog.day=day;this.energyLog.energy=p.energy;
+    if(loss>.5&&p.energy/s.maxEnergy<.7&&day-this.energyLog.noticeDay>=3){this.energyLog.noticeDay=day;
+      this.showToast(`Losing about ${Math.round(loss)} energy a day: meals are not keeping up with what this body burns. Richer food (bigger meal numbers), less time fleeing or drinking, or a quieter patch helps.`,5200,'warn');}
   }
   // The three opening goals, read from real state so any order works.
   openingGoals(p){
@@ -144,7 +156,9 @@ export class TutorialController{
     // v1.33.6: in AUTO the creature acts on its own, so the tip says what it is doing and what only you can do.
     if(this.sim.playerAutonomy){tip=!g.needs?'your creature looks for food and water on its own':!g.paired?'it courts a mate when one is close':!g.home?(g.homeSettled?'it builds the family shelter on its own on good ground near home':`it builds a family shelter on its own once this ground becomes home · familiarity ${g.familiarity}%`):tip}
     this.renderer.guideTarget=target;
-    this.render('Your first goals',`${list}${tip?' · next: '+tip:''}`,{step:`${(g.needs?1:0)+(g.paired?1:0)+(g.home?1:0)}/3`,compact:true});return true;
+    // Phase 4: the collapsed pill names the next goal, so the goal is visible without opening the panel.
+    const next=!g.needs?(g.watered?'Find food':g.fed?'Find water':'Eat and drink'):!g.paired?'Find a mate':!g.home?'Make a home':'';
+    this.render('Your first goals',`${list}${tip?' · next: '+tip:''}`,{step:`${(g.needs?1:0)+(g.paired?1:0)+(g.home?1:0)}/3`,compact:true,next});return true;
   }
   preferredBirthShelter(p){return this.sim.shelter?.broodShelterFor?.(p)||this.sim.shelter?.nearest?.(p,{radius:Infinity,familyOnly:true})||null}
   shouldFoundBroodHome(p){
@@ -380,7 +394,7 @@ export class TutorialController{
   }
   markEvolutionChoice(id){for(const b of this.transitionEvolutionChoices?.querySelectorAll?.('.evolution-choice')||[]){const selected=b.dataset.adaptation===id;b.classList.toggle('selected',selected);b.disabled=!selected}}
 
-  render(title,body,{step='',compact=false}={}){if(!this.tutorial)return;if(this.sim?.playerAutonomy&&/((press|·)\s+([A-Z]|Space|Shift)\b|^([A-Z]|Space|Shift) ·)/.test(body)&&!/take over/.test(body))body+=' · take over to do this';this.tutorial.hidden=false;this.tutorial.className=`objective${compact?' compact':''}`;this.tutorial.dataset.guideTitle=title;this.tutorial.dataset.guideBody=body;this.tutorial.dataset.guideCompact=compact?'1':'0';const p=this.sim.player?.(),progress=compact&&p?`G${Math.min(8,p.generation||1)}/8`:'·';this.tutorial.dataset.guideStep=step||progress;this.tutorial.title=compact?'Open task steps':'';this.tutorial.setAttribute('role',compact?'button':'region');this.tutorial.tabIndex=compact?0:-1;this.tutorial.setAttribute('aria-label',compact?title+' - open task steps':title);this.tutorial.innerHTML=`<div class="objective-step">${step||progress}</div><div><strong>${title}</strong><span>${body}</span></div>`}
+  render(title,body,{step='',compact=false,next=''}={}){if(!this.tutorial)return;if(this.sim?.playerAutonomy&&/((press|·)\s+([A-Z]|Space|Shift)\b|^([A-Z]|Space|Shift) ·)/.test(body)&&!/take over/.test(body))body+=' · take over to do this';this.tutorial.hidden=false;this.tutorial.className=`objective${compact?' compact':''}`;this.tutorial.dataset.guideTitle=title;this.tutorial.dataset.guideBody=body;this.tutorial.dataset.guideCompact=compact?'1':'0';const p=this.sim.player?.(),progress=compact&&p?`G${Math.min(8,p.generation||1)}/8`:'·';this.tutorial.dataset.guideStep=step||progress;this.tutorial.title=compact?'Open task steps':'';this.tutorial.setAttribute('role',compact?'button':'region');this.tutorial.tabIndex=compact?0:-1;this.tutorial.setAttribute('aria-label',compact?title+' - open task steps':title);this.tutorial.innerHTML=`<div class="objective-step">${step||progress}</div><div><strong>${title}${compact&&next?`<b class="objective-next">· ${next}</b>`:''}</strong><span>${body}</span></div>`}
   showToast(text,ms=3500,tone='info',channel=tone==='warn'?'critical':'action'){this.notifications.post(text,ms,tone,channel)}
 }
 function friendlyCause(c){return c==='predation'?'predation':c==='starvation'?'starvation':c==='age'?'old age':c||'health collapse'}

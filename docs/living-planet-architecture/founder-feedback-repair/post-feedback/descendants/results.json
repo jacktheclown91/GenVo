@@ -1,0 +1,2120 @@
+{
+  "schema": "genvo.accessibility-descendants/1",
+  "scope": "One disclosed unrelated simple adult immigrant and one supported encounter after natural cooldown recovery, using the actual current-policy mature swimmer. Mate/candidate placement is staged; no food, candidate age/genome/body/reserve edits, cooldown reset, forced consent, repeated acceptance attempts or mutation boost. Not an autonomous ecosystem frequency or player-guided trial.",
+  "input": {
+    "sha256": "1a66373c479fcbd668f85db2043d9a28569e12a27cb1607065677abe70b4ba96",
+    "seed": "ACCESSIBILITY-NEUTRAL-WATER-015",
+    "candidateId": 3,
+    "birthRules": {
+      "schema": 1,
+      "inheritedVariation": "neutral-core/1",
+      "populationTraits": "neutral-parental/1",
+      "familyForms": "neutral-parental/1",
+      "anatomyProjection": "supported-water/1"
+    },
+    "ecologyRules": {
+      "schema": 1,
+      "populationFeedback": "local-opportunity/1"
+    }
+  },
+  "immigrant": {
+    "id": 6,
+    "species": "genvo",
+    "x": 62.41185969459565,
+    "y": 44.08618051695209,
+    "vx": 0,
+    "vy": 0,
+    "dir": 5,
+    "age": 32,
+    "energy": 107.47784265648573,
+    "hydration": 88.37624649125152,
+    "health": 100,
+    "genes": {
+      "body": 0.9940029478166252,
+      "motion": 0.9796402090694756,
+      "metabolism": 1.0882738273590804,
+      "digestion": 0.9923931953031571,
+      "senses": 0.9224245661869646,
+      "climate": 0.943629127368331,
+      "immunity": 0.9371324250008911,
+      "temperament": 1.0990325436461719
+    },
+    "reproductiveGenome": {
+      "schema": 1,
+      "loci": {
+        "gamete": [
+          1.03595,
+          1.05419
+        ],
+        "development": [
+          0.93014,
+          0.93014
+        ]
+      },
+      "origin": "founding-lineage",
+      "lineage": "genvo"
+    },
+    "matePreferences": {
+      "weights": {
+        "size": 0.09871,
+        "strength": -0.54784,
+        "ornament": -0.19841,
+        "display": -0.49941,
+        "behavior": 0.43849
+      },
+      "selectivity": 0.68616,
+      "ritualTastes": {
+        "dance": 0.19457,
+        "call": -0.09779,
+        "flare": 0.00516,
+        "scent": 0.88412,
+        "gesture": 0.42141
+      },
+      "tempo": -0.75991,
+      "similarity": 0.40149
+    },
+    "inbreeding": 0,
+    "sex": "M",
+    "pregnant": null,
+    "reproCooldown": 2.705993850249797,
+    "intent": "explore",
+    "target": null,
+    "alive": true,
+    "infected": false,
+    "infection": null,
+    "immune": false,
+    "immuneUntilDay": 0,
+    "player": false,
+    "lineage": false,
+    "parentIds": [],
+    "grandparentIds": [],
+    "generation": 1,
+    "lastMate": null,
+    "reproDrive": 0,
+    "caregiverId": null,
+    "birthTick": 2448,
+    "birthDay": 52,
+    "birthYear": 2,
+    "anim": 0,
+    "adaptations": [],
+    "bodyPlan": {
+      "schema": "genvo8.bodyplan/0",
+      "registryVersion": 0,
+      "nodes": [
+        {
+          "id": "root",
+          "partId": "small-torso",
+          "partVersion": 1,
+          "parent": null,
+          "socket": null
+        },
+        {
+          "id": "root/eye.left",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.left"
+        },
+        {
+          "id": "root/eye.right",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.right"
+        },
+        {
+          "id": "root/limb.1",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.1"
+        },
+        {
+          "id": "root/limb.3",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.3"
+        },
+        {
+          "id": "root/limb.5",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.5"
+        },
+        {
+          "id": "root/limb.7",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.7"
+        },
+        {
+          "id": "root/mouth",
+          "partId": "grazing-mouth",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "mouth"
+        }
+      ],
+      "id": "bp0-4134709b"
+    },
+    "anatomy": {
+      "armor": 0,
+      "barbs": 0,
+      "glands": 0,
+      "spring": 0,
+      "waterBody": 0,
+      "gut": 0,
+      "repair": 0,
+      "signal": 0,
+      "rally": 0,
+      "skin": 0,
+      "jaw": 0,
+      "forelimb": 0,
+      "waterStorage": 0,
+      "webbing": 0
+    },
+    "legacyWaterPhysiology": []
+  },
+  "placement": {
+    "developedDays": 0
+  },
+  "readyPlacement": {
+    "developedDays": 0
+  },
+  "placementFailure": null,
+  "readyDeadline": 72,
+  "attempt": {
+    "day": 54,
+    "before": {
+      "day": 54,
+      "tick": 2580,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 32,
+        "health": 100,
+        "energy": 92.36736188358219,
+        "hydration": 69.76559321279281,
+        "reproCooldown": -0.047655514907091856,
+        "pregnant": false,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 34,
+        "health": 100,
+        "energy": 105.70366404647204,
+        "hydration": 87.23906778649061,
+        "reproCooldown": -0.044006149750202894
+      },
+      "integrity": {
+        "day": 54,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13338.534534275532,
+          "bramble": 3062.840421656787,
+          "marshroot": 2030.770728835836,
+          "rotcap": 907.6266588885337,
+          "thistlepod": 2170.7401045499137,
+          "algae": 675.6056369543076,
+          "duckweed": 202.35365679860115,
+          "waterweed": 298.508506052196,
+          "larvae": 23.50051249936223,
+          "fry": 3.6616786129307,
+          "carrion": 0
+        }
+      }
+    },
+    "after": {
+      "day": 54,
+      "tick": 2580,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 32,
+        "health": 100,
+        "energy": 68.5673618835822,
+        "hydration": 69.76559321279281,
+        "reproCooldown": 24,
+        "pregnant": true,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 34,
+        "health": 100,
+        "energy": 97.54366404647205,
+        "hydration": 87.23906778649061,
+        "reproCooldown": 8
+      },
+      "integrity": {
+        "day": 54,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13338.534534275532,
+          "bramble": 3062.840421656787,
+          "marshroot": 2030.770728835836,
+          "rotcap": 907.6266588885337,
+          "thistlepod": 2170.7401045499137,
+          "algae": 675.6056369543076,
+          "duckweed": 202.35365679860115,
+          "waterweed": 298.508506052196,
+          "larvae": 23.50051249936223,
+          "fry": 3.6616786129307,
+          "carrion": 0
+        }
+      }
+    },
+    "availability": {
+      "enabled": true,
+      "reasonCode": "available",
+      "reason": "",
+      "compatibility": {
+        "enabled": true,
+        "reason": "",
+        "gameteMatch": 0.9837142857142858,
+        "fertilityA": 0.9641249999999999,
+        "fertilityB": 1,
+        "conceptionChance": 0.9484235357142856,
+        "model": "provisional-diploid-loci/1"
+      },
+      "playerPair": false
+    },
+    "conceived": true,
+    "refusal": null,
+    "pregnancy": {
+      "fatherId": 6,
+      "paternalInheritance": {
+        "alive": false,
+        "player": false,
+        "id": 6,
+        "species": "genvo",
+        "sex": "M",
+        "generation": 1,
+        "parentIds": [],
+        "grandparentIds": [],
+        "genes": {
+          "body": 0.9940029478166252,
+          "motion": 0.9796402090694756,
+          "metabolism": 1.0882738273590804,
+          "digestion": 0.9923931953031571,
+          "senses": 0.9224245661869646,
+          "climate": 0.943629127368331,
+          "immunity": 0.9371324250008911,
+          "temperament": 1.0990325436461719
+        },
+        "reproductiveGenome": {
+          "schema": 1,
+          "loci": {
+            "gamete": [
+              1.03595,
+              1.05419
+            ],
+            "development": [
+              0.93014,
+              0.93014
+            ]
+          },
+          "origin": "founding-lineage",
+          "lineage": "genvo"
+        },
+        "matePreferences": {
+          "weights": {
+            "size": 0.09871,
+            "strength": -0.54784,
+            "ornament": -0.19841,
+            "display": -0.49941,
+            "behavior": 0.43849
+          },
+          "selectivity": 0.68616,
+          "ritualTastes": {
+            "dance": 0.19457,
+            "call": -0.09779,
+            "flare": 0.00516,
+            "scent": 0.88412,
+            "gesture": 0.42141
+          },
+          "tempo": -0.75991,
+          "similarity": 0.40149
+        },
+        "adaptations": [],
+        "anatomy": {
+          "armor": 0,
+          "barbs": 0,
+          "glands": 0,
+          "spring": 0,
+          "waterBody": 0,
+          "gut": 0,
+          "repair": 0,
+          "signal": 0,
+          "rally": 0,
+          "skin": 0,
+          "jaw": 0,
+          "forelimb": 0,
+          "waterStorage": 0,
+          "webbing": 0
+        },
+        "legacyWaterPhysiology": [],
+        "bodyPlan": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "small-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            },
+            {
+              "id": "root/mouth",
+              "partId": "grazing-mouth",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "mouth"
+            }
+          ],
+          "id": "bp0-4134709b"
+        },
+        "lineage": false,
+        "x": 3.2,
+        "y": 3
+      },
+      "maternalInheritance": {
+        "alive": false,
+        "player": false,
+        "id": 3,
+        "species": "genvo",
+        "sex": "F",
+        "generation": 2,
+        "parentIds": [
+          1,
+          2
+        ],
+        "grandparentIds": [],
+        "genes": {
+          "body": 1.01056401251754,
+          "motion": 1.0120994924561189,
+          "metabolism": 1.0134520985939501,
+          "digestion": 0.9895763997079375,
+          "senses": 0.9792977525520001,
+          "climate": 1.0515110819528615,
+          "immunity": 1.0459074525270617,
+          "temperament": 1.0434146082622155
+        },
+        "reproductiveGenome": {
+          "schema": 1,
+          "loci": {
+            "gamete": [
+              1.05007,
+              1.05305
+            ],
+            "development": [
+              0.98572,
+              0.96563
+            ]
+          },
+          "inheritance": {
+            "gamete": [
+              {
+                "parentId": 1,
+                "alleleIndex": 0,
+                "baseline": 1.06105,
+                "mutation": -0.01098
+              },
+              {
+                "parentId": 2,
+                "alleleIndex": 0,
+                "baseline": 1.05587,
+                "mutation": -0.00282
+              }
+            ],
+            "development": [
+              {
+                "parentId": 1,
+                "alleleIndex": 0,
+                "baseline": 0.95321,
+                "mutation": 0.03251
+              },
+              {
+                "parentId": 2,
+                "alleleIndex": 1,
+                "baseline": 0.9607,
+                "mutation": 0.00493
+              }
+            ]
+          },
+          "origin": "parental-gametes"
+        },
+        "matePreferences": {
+          "weights": {
+            "size": 0.34971,
+            "strength": 0.25074,
+            "ornament": -0.05772,
+            "display": -0.20378,
+            "behavior": 0.32855
+          },
+          "selectivity": 0.49097,
+          "ritualTastes": {
+            "dance": 0.20698,
+            "call": 0.25131,
+            "flare": -0.16323,
+            "scent": 0.64202,
+            "gesture": -0.44676
+          },
+          "tempo": 0.58581,
+          "similarity": -0.38306
+        },
+        "adaptations": [
+          "webbed-limbs"
+        ],
+        "anatomy": {
+          "armor": 0,
+          "barbs": 0,
+          "glands": 0,
+          "spring": 0,
+          "waterBody": 0,
+          "gut": 0,
+          "repair": 0,
+          "signal": 0,
+          "rally": 0,
+          "skin": 0,
+          "jaw": 0,
+          "forelimb": 0,
+          "waterStorage": 0,
+          "webbing": 0.9
+        },
+        "legacyWaterPhysiology": [],
+        "bodyPlan": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "small-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "webbed-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "webbed-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            },
+            {
+              "id": "root/mouth",
+              "partId": "grazing-mouth",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "mouth"
+            }
+          ],
+          "id": "bp0-6d3db393"
+        },
+        "lineage": false,
+        "x": 3,
+        "y": 3
+      },
+      "days": 16,
+      "totalDays": 16,
+      "startedDay": 54,
+      "startedYear": 2,
+      "mode": "live",
+      "dualAtConception": false,
+      "compatibilityAtConception": {
+        "enabled": true,
+        "reason": "",
+        "gameteMatch": 0.9837142857142858,
+        "fertilityA": 0.9641249999999999,
+        "fertilityB": 1,
+        "conceptionChance": 0.9484235357142856,
+        "model": "provisional-diploid-loci/1"
+      },
+      "plannedLitterSize": 4,
+      "birthCost": 68,
+      "reserveInvestment": 31.959999999999997,
+      "dualCostPaid": null
+    }
+  },
+  "children": [
+    {
+      "id": 7,
+      "day": 70,
+      "age": 0,
+      "generation": 3,
+      "parentIds": [
+        3,
+        6
+      ],
+      "grandparentIds": [
+        1,
+        2
+      ],
+      "body": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "webbed-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "webbed-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-6d3db393"
+      },
+      "genes": {
+        "body": 1.024118193003874,
+        "motion": 0.9922351483991011,
+        "metabolism": 1.0376115630278293,
+        "digestion": 0.9796194281354668,
+        "senses": 0.998517461590704,
+        "climate": 1.0439748018436121,
+        "immunity": 1.0255896076416497,
+        "temperament": 1.0921016310080045
+      },
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0.9
+      },
+      "adaptations": [
+        "webbed-limbs"
+      ],
+      "legacyWaterPhysiology": [],
+      "swims": true,
+      "webbedLegs": 2,
+      "energy": 14.853960000000004,
+      "hydration": 15.552735000000004
+    },
+    {
+      "id": 8,
+      "day": 70,
+      "age": 0,
+      "generation": 3,
+      "parentIds": [
+        3,
+        6
+      ],
+      "grandparentIds": [
+        1,
+        2
+      ],
+      "body": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/flank.left",
+            "partId": "storage-sac",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "flank.left"
+          },
+          {
+            "id": "root/flank.right",
+            "partId": "storage-sac",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "flank.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "webbed-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "webbed-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-dccd3b2c"
+      },
+      "genes": {
+        "body": 1.0205568085275272,
+        "motion": 1.0082807407663088,
+        "metabolism": 1.0973573865032193,
+        "digestion": 0.9550163554354978,
+        "senses": 0.9864308845160672,
+        "climate": 0.9665310863950426,
+        "immunity": 0.9874967558814324,
+        "temperament": 1.038084055061155
+      },
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0.65,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0.65,
+        "webbing": 0.9
+      },
+      "adaptations": [
+        "water-sacs",
+        "webbed-limbs"
+      ],
+      "legacyWaterPhysiology": [],
+      "swims": true,
+      "webbedLegs": 2,
+      "energy": 14.853960000000004,
+      "hydration": 15.552735000000004
+    },
+    {
+      "id": 9,
+      "day": 70,
+      "age": 0,
+      "generation": 3,
+      "parentIds": [
+        3,
+        6
+      ],
+      "grandparentIds": [
+        1,
+        2
+      ],
+      "body": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-4134709b"
+      },
+      "genes": {
+        "body": 1.0361169908803824,
+        "motion": 0.9866085026862239,
+        "metabolism": 1.0448253276791621,
+        "digestion": 1.0326643692257755,
+        "senses": 0.9629209767406378,
+        "climate": 1.0130808904595128,
+        "immunity": 1.0138806246276169,
+        "temperament": 1.0986741357059933
+      },
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "adaptations": [],
+      "legacyWaterPhysiology": [],
+      "swims": false,
+      "webbedLegs": 0,
+      "energy": 14.853960000000004,
+      "hydration": 15.552735000000004
+    },
+    {
+      "id": 10,
+      "day": 70,
+      "age": 0,
+      "generation": 3,
+      "parentIds": [
+        3,
+        6
+      ],
+      "grandparentIds": [
+        1,
+        2
+      ],
+      "body": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "webbed-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "webbed-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-6d3db393"
+      },
+      "genes": {
+        "body": 1.0436319993553904,
+        "motion": 0.9820472140518285,
+        "metabolism": 1.0152418863803883,
+        "digestion": 1.0281451738997263,
+        "senses": 0.9565649706096923,
+        "climate": 0.9514341244814285,
+        "immunity": 0.954880843963446,
+        "temperament": 1.0287274132163815
+      },
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0.9
+      },
+      "adaptations": [
+        "webbed-limbs"
+      ],
+      "legacyWaterPhysiology": [],
+      "swims": true,
+      "webbedLegs": 2,
+      "energy": 14.853960000000004,
+      "hydration": 15.552735000000004
+    }
+  ],
+  "rows": [
+    {
+      "day": 52,
+      "tick": 2448,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 30,
+        "health": 100,
+        "energy": 88.20020353560477,
+        "hydration": 70.90277191755372,
+        "reproCooldown": -0.047655514907091856,
+        "pregnant": false,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 32,
+        "health": 100,
+        "energy": 107.47784265648573,
+        "hydration": 88.37624649125152,
+        "reproCooldown": 2.705993850249797
+      },
+      "integrity": {
+        "day": 52,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13288.928643107414,
+          "bramble": 2958.570245996525,
+          "marshroot": 2003.4985912693664,
+          "rotcap": 905.9503259826452,
+          "thistlepod": 2151.0699301397544,
+          "algae": 659.3301420211792,
+          "duckweed": 200.19059075415134,
+          "waterweed": 290.8932722583413,
+          "larvae": 23.166221337392926,
+          "fry": 3.6680285246111453,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 53,
+      "tick": 2496,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 31,
+        "health": 100,
+        "energy": 90.92948581707242,
+        "hydration": 70.48653709850994,
+        "reproCooldown": -0.047655514907091856,
+        "pregnant": false,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 33,
+        "health": 100,
+        "energy": 106.38241536658325,
+        "hydration": 87.96001167220774,
+        "reproCooldown": 1.705993850249797
+      },
+      "integrity": {
+        "day": 53,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13313.0205655694,
+          "bramble": 3009.8545240800595,
+          "marshroot": 2017.0870665870607,
+          "rotcap": 906.2980551216751,
+          "thistlepod": 2160.312588208064,
+          "algae": 667.6617515683174,
+          "duckweed": 201.3094596862793,
+          "waterweed": 294.7223434150219,
+          "larvae": 23.33181589655578,
+          "fry": 3.6648148195818067,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 54,
+      "tick": 2544,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 32,
+        "health": 100,
+        "energy": 89.39721191635702,
+        "hydration": 70.07328909850999,
+        "reproCooldown": -0.047655514907091856,
+        "pregnant": false,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 34,
+        "health": 100,
+        "energy": 105.99442329037784,
+        "hydration": 87.54676367220779,
+        "reproCooldown": 0.7059938502497971
+      },
+      "integrity": {
+        "day": 54,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13338.854534327984,
+          "bramble": 3062.840421656787,
+          "marshroot": 2030.770728835836,
+          "rotcap": 907.6266588885337,
+          "thistlepod": 2170.7401045499137,
+          "algae": 675.6056369543076,
+          "duckweed": 202.35365679860115,
+          "waterweed": 298.508506052196,
+          "larvae": 23.50051249936223,
+          "fry": 3.6616786129307,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 55,
+      "tick": 2592,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 33,
+        "health": 100,
+        "energy": 72.2627653747647,
+        "hydration": 69.66302791755375,
+        "reproCooldown": 23.75,
+        "pregnant": true,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 35,
+        "health": 100,
+        "energy": 97.2952626266431,
+        "hydration": 87.13650249125155,
+        "reproCooldown": 7.75
+      },
+      "integrity": {
+        "day": 55,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13359.200881659985,
+          "bramble": 3114.3251896502334,
+          "marshroot": 2043.249277036637,
+          "rotcap": 909.6700227577239,
+          "thistlepod": 2175.1500536659732,
+          "algae": 683.0280837416649,
+          "duckweed": 203.35729984939098,
+          "waterweed": 302.26470109820366,
+          "larvae": 23.672223575413227,
+          "fry": 3.658620848087594,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 56,
+      "tick": 2640,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 34,
+        "health": 100,
+        "energy": 83.05472698583382,
+        "hydration": 69.2540039175537,
+        "reproCooldown": 22.75,
+        "pregnant": true,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 36,
+        "health": 100,
+        "energy": 95.97361436760572,
+        "hydration": 86.7274784912515,
+        "reproCooldown": 6.75
+      },
+      "integrity": {
+        "day": 56,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13377.137044548988,
+          "bramble": 3164.534139471012,
+          "marshroot": 2054.709985584952,
+          "rotcap": 909.8714173119515,
+          "thistlepod": 2179.591143601865,
+          "algae": 689.8408293128014,
+          "duckweed": 204.29978908598423,
+          "waterweed": 305.9381423443556,
+          "larvae": 23.84684695675969,
+          "fry": 3.6556424412410706,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 57,
+      "tick": 2688,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 35,
+        "health": 100,
+        "energy": 89.58536974862044,
+        "hydration": 68.84374273659746,
+        "reproCooldown": 21.75,
+        "pregnant": true,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 37,
+        "health": 100,
+        "energy": 94.67768620943163,
+        "hydration": 86.31721731029526,
+        "reproCooldown": 5.75
+      },
+      "integrity": {
+        "day": 57,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13395.809464633465,
+          "bramble": 3214.4439369107713,
+          "marshroot": 2066.2507599228993,
+          "rotcap": 912.9466167930514,
+          "thistlepod": 2186.9363289936446,
+          "algae": 696.0247071385384,
+          "duckweed": 205.23464418947697,
+          "waterweed": 309.50605534017086,
+          "larvae": 24.024282043799758,
+          "fry": 3.6527442494407296,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 58,
+      "tick": 2736,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 36,
+        "health": 100,
+        "energy": 92.01778625907714,
+        "hydration": 68.46006273659744,
+        "reproCooldown": 20.75,
+        "pregnant": true,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 38,
+        "health": 100,
+        "energy": 93.38228259874097,
+        "hydration": 85.93353731029524,
+        "reproCooldown": 4.75
+      },
+      "integrity": {
+        "day": 58,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13386.903723180294,
+          "bramble": 3171.178617671365,
+          "marshroot": 2070.021796170622,
+          "rotcap": 915.5144450347871,
+          "thistlepod": 2166.5708072056295,
+          "algae": 701.6431523561478,
+          "duckweed": 206.09697376191616,
+          "waterweed": 313.0162114650011,
+          "larvae": 24.204441914334893,
+          "fry": 3.649927095975727,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 59,
+      "tick": 2784,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 37,
+        "health": 100,
+        "energy": 90.62419369150126,
+        "hydration": 68.0733959175537,
+        "reproCooldown": 19.75,
+        "pregnant": true,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 39,
+        "health": 100,
+        "energy": 92.08853347651983,
+        "hydration": 85.5468704912515,
+        "reproCooldown": 3.75
+      },
+      "integrity": {
+        "day": 59,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13381.353279650211,
+          "bramble": 3129.375497518282,
+          "marshroot": 2074.409889014438,
+          "rotcap": 919.4089421834797,
+          "thistlepod": 2148.645070156199,
+          "algae": 706.8248801827431,
+          "duckweed": 206.92701818048954,
+          "waterweed": 316.4131502211094,
+          "larvae": 24.387266647070646,
+          "fry": 3.647191771771759,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 60,
+      "tick": 2832,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 38,
+        "health": 100,
+        "energy": 89.99035989188822,
+        "hydration": 67.68549191755365,
+        "reproCooldown": 18.75,
+        "pregnant": true,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 40,
+        "health": 100,
+        "energy": 90.79608667542892,
+        "hydration": 85.15896649125145,
+        "reproCooldown": 2.75
+      },
+      "integrity": {
+        "day": 60,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13376.577331781387,
+          "bramble": 3091.8979785165284,
+          "marshroot": 2078.61019245442,
+          "rotcap": 934.8818052280694,
+          "thistlepod": 2133.47658051335,
+          "algae": 711.4693111181259,
+          "duckweed": 207.68251444399357,
+          "waterweed": 319.68580040335655,
+          "larvae": 24.572681833058596,
+          "fry": 3.644539047498256,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 61,
+      "tick": 2880,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 39,
+        "health": 100,
+        "energy": 89.57280767137583,
+        "hydration": 67.29882509850991,
+        "reproCooldown": 17.75,
+        "pregnant": true,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 41,
+        "health": 100,
+        "energy": 89.50441910066074,
+        "hydration": 84.77229967220771,
+        "reproCooldown": 1.75
+      },
+      "integrity": {
+        "day": 61,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13370.808056235313,
+          "bramble": 3055.205652850331,
+          "marshroot": 2082.319770967588,
+          "rotcap": 941.2969488427043,
+          "thistlepod": 2117.8874735594145,
+          "algae": 715.8240290284157,
+          "duckweed": 208.41103234887123,
+          "waterweed": 322.8565130382776,
+          "larvae": 24.760654106736183,
+          "fry": 3.6419696686789393,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 62,
+      "tick": 2928,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 40,
+        "health": 100,
+        "energy": 93.0897201275307,
+        "hydration": 66.91514509850988,
+        "reproCooldown": 16.75,
+        "pregnant": true,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 42,
+        "health": 100,
+        "energy": 92.36457280675843,
+        "hydration": 84.38861967220768,
+        "reproCooldown": 0.75
+      },
+      "integrity": {
+        "day": 62,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13361.953986823559,
+          "bramble": 3019.9977962357225,
+          "marshroot": 2085.321404173039,
+          "rotcap": 957.0991619993001,
+          "thistlepod": 2103.565044105402,
+          "algae": 719.9591479301453,
+          "duckweed": 209.09402641654015,
+          "waterweed": 325.9282483160496,
+          "larvae": 24.9511640612036,
+          "fry": 3.639484371058643,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 63,
+      "tick": 2976,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 41,
+        "health": 100,
+        "energy": 91.55527404986792,
+        "hydration": 66.53445191755357,
+        "reproCooldown": 15.75,
+        "pregnant": true,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 43,
+        "health": 100,
+        "energy": 90.94449407936901,
+        "hydration": 84.00792649125137,
+        "reproCooldown": 0
+      },
+      "integrity": {
+        "day": 63,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13350.47584193945,
+          "bramble": 2982.7976473399904,
+          "marshroot": 2087.4413118697703,
+          "rotcap": 972.237915309146,
+          "thistlepod": 2085.891002174758,
+          "algae": 723.8216409683228,
+          "duckweed": 209.75743082165718,
+          "waterweed": 328.9200420230627,
+          "larvae": 25.144182359799743,
+          "fry": 3.6370838962029666,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 64,
+      "tick": 3024,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 42,
+        "health": 100,
+        "energy": 89.99245702056142,
+        "hydration": 66.15499591755356,
+        "reproCooldown": 14.75,
+        "pregnant": true,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 44,
+        "health": 100,
+        "energy": 89.49806485278103,
+        "hydration": 83.62847049125136,
+        "reproCooldown": 0
+      },
+      "integrity": {
+        "day": 64,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13338.191999554634,
+          "bramble": 2943.58107880404,
+          "marshroot": 2088.999194576405,
+          "rotcap": 980.2896482478827,
+          "thistlepod": 2067.4195659247343,
+          "algae": 727.4508625268936,
+          "duckweed": 210.3925722539425,
+          "waterweed": 331.8688668310642,
+          "larvae": 25.339684883132577,
+          "fry": 3.6347689523827285,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 65,
+      "tick": 3072,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 43,
+        "health": 100,
+        "energy": 88.59165447351862,
+        "hydration": 65.77430273659725,
+        "reproCooldown": 13.75,
+        "pregnant": true,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 45,
+        "health": 100,
+        "energy": 92.30452150714065,
+        "hydration": 83.24777731029505,
+        "reproCooldown": 0
+      },
+      "integrity": {
+        "day": 65,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13326.680526971817,
+          "bramble": 2905.17925282364,
+          "marshroot": 2090.7897762227803,
+          "rotcap": 996.3071951493621,
+          "thistlepod": 2049.3425573089044,
+          "algae": 730.9177929759026,
+          "duckweed": 210.96968913078308,
+          "waterweed": 334.7626463621855,
+          "larvae": 25.537662168964744,
+          "fry": 3.6325402564834803,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 66,
+      "tick": 3120,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 44,
+        "health": 100,
+        "energy": 86.89111299907097,
+        "hydration": 65.3652787365972,
+        "reproCooldown": 12.75,
+        "pregnant": true,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 46,
+        "health": 100,
+        "energy": 91.00797308007482,
+        "hydration": 82.838753310295,
+        "reproCooldown": 0
+      },
+      "integrity": {
+        "day": 66,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13343.520590484142,
+          "bramble": 2903.329125341028,
+          "marshroot": 2101.114568294026,
+          "rotcap": 1000.9767404962331,
+          "thistlepod": 2062.4681388523313,
+          "algae": 734.2066931724548,
+          "duckweed": 211.49615842103958,
+          "waterweed": 337.5767644047737,
+          "larvae": 25.738100327551365,
+          "fry": 3.6303985139820725,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 67,
+      "tick": 3168,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 45,
+        "health": 100,
+        "energy": 85.19137445082944,
+        "hydration": 64.95326791755345,
+        "reproCooldown": 11.75,
+        "pregnant": true,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 47,
+        "health": 100,
+        "energy": 89.71216559342174,
+        "hydration": 82.42674249125125,
+        "reproCooldown": 0
+      },
+      "integrity": {
+        "day": 67,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13362.435210227966,
+          "bramble": 2904.7061600403977,
+          "marshroot": 2111.215852882713,
+          "rotcap": 1014.9704999178648,
+          "thistlepod": 2079.319566324586,
+          "algae": 737.3492882847786,
+          "duckweed": 211.9957496523857,
+          "waterweed": 340.3734634369612,
+          "larvae": 25.94099048897624,
+          "fry": 3.628344427095726,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 68,
+      "tick": 3216,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 46,
+        "health": 100,
+        "energy": 88.79160661473202,
+        "hydration": 69.7400199175535,
+        "reproCooldown": 10.75,
+        "pregnant": true,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 48,
+        "health": 100,
+        "energy": 92.24168659385825,
+        "hydration": 82.0134944912513,
+        "reproCooldown": 0
+      },
+      "integrity": {
+        "day": 68,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13382.768578708172,
+          "bramble": 2913.569639943191,
+          "marshroot": 2122.072858646512,
+          "rotcap": 1018.1269162334502,
+          "thistlepod": 2099.9751888984465,
+          "algae": 740.3886776566505,
+          "duckweed": 212.46889999508858,
+          "waterweed": 342.6981302946806,
+          "larvae": 26.146332435309887,
+          "fry": 3.6263786896597594,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 69,
+      "tick": 3264,
+      "candidate": {
+        "id": 3,
+        "alive": true,
+        "age": 47,
+        "health": 100,
+        "energy": 92.59537674004402,
+        "hydration": 69.32800909850974,
+        "reproCooldown": 9.75,
+        "pregnant": true,
+        "growthPaid": 54.06960040442419,
+        "growthDelayDays": 6
+      },
+      "mate": {
+        "id": 6,
+        "alive": true,
+        "age": 49,
+        "health": 100,
+        "energy": 90.94742467287575,
+        "hydration": 81.60148367220754,
+        "reproCooldown": 0
+      },
+      "integrity": {
+        "day": 69,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 3,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13401.175644278526,
+          "bramble": 2918.5048806041596,
+          "marshroot": 2132.274057132192,
+          "rotcap": 1024.712486186996,
+          "thistlepod": 2117.425745143846,
+          "algae": 743.2982259988785,
+          "duckweed": 212.90226858854294,
+          "waterweed": 344.9748482257128,
+          "larvae": 26.35412303544581,
+          "fry": 3.624502008082345,
+          "carrion": 0
+        }
+      }
+    }
+  ],
+  "final": {
+    "day": 70,
+    "tick": 3312,
+    "candidate": {
+      "id": 3,
+      "alive": true,
+      "age": 48,
+      "health": 100,
+      "energy": 23.260954214405487,
+      "hydration": 6.708045098509679,
+      "reproCooldown": 80,
+      "pregnant": false,
+      "growthPaid": 54.06960040442419,
+      "growthDelayDays": 6
+    },
+    "mate": {
+      "id": 6,
+      "alive": true,
+      "age": 50,
+      "health": 100,
+      "energy": 89.65374607939346,
+      "hydration": 81.19245967220749,
+      "reproCooldown": 0
+    },
+    "integrity": {
+      "day": 70,
+      "population": {
+        "mosskip": 0,
+        "rootling": 0,
+        "needlejaw": 0,
+        "rillsifter": 0,
+        "mirelick": 0,
+        "podshell": 0,
+        "bankjaw": 0,
+        "genvo": 10
+      },
+      "births": 7,
+      "deaths": 0,
+      "resources": {
+        "sunmoss": 13416.893646478653,
+        "bramble": 2923.8296564060147,
+        "marshroot": 2141.853973163292,
+        "rotcap": 1029.6618632581085,
+        "thistlepod": 2133.7888862040127,
+        "algae": 746.0751100182533,
+        "duckweed": 213.29212528467178,
+        "waterweed": 347.62928856909275,
+        "larvae": 26.56435751914978,
+        "fry": 3.622715073870495,
+        "carrion": 0
+      }
+    }
+  },
+  "unchangedCandidateBody": true,
+  "unchangedCandidateGenes": true,
+  "unchangedCandidateAnatomy": true,
+  "exactSaveAndTwelveUpdateResume": true,
+  "status": "ACTUAL CURRENT-POLICY DESCENDANT BIRTH"
+}

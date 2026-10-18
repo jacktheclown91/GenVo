@@ -1,27 +1,19 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
-import {SPECIES} from '../src/organisms/species.js';
-import {PLANTS} from '../src/sim/config.js';
-
-const sim=new Simulation('GENVO8-PROTO-GENE-FLOW',{player:true}),founder=sim.player(),starter=sim.animals.find(a=>a.alive&&a.species==='genvo'&&a.id!==founder.id),size=sim.territory.cellSize;
-assert.ok(starter);
-function dryBlock(excludes=[]){for(let cy=2;cy<14;cy++)for(let cx=2;cx<14;cx++){const point={x:(cx+.5)*size,y:(cy+.5)*size,cx,cy};if(excludes.some(e=>Math.hypot(point.x-e.x,point.y-e.y)<34))continue;let dry=true;for(let oy=-1;oy<=1&&dry;oy++)for(let ox=-1;ox<=1;ox++){const x=(cx+ox+.5)*size,y=(cy+oy+.5)*size;if(sim.world.water[sim.world.idx(x,y)]){dry=false;break}}if(dry)return point}return null}
-function tuneBlock(block,{food,moisture,temp}){for(let oy=-1;oy<=1;oy++)for(let ox=-1;ox<=1;ox++){const cx=block.cx+ox,cy=block.cy+oy;for(let y=cy*size;y<(cy+1)*size;y++)for(let x=cx*size;x<(cx+1)*size;x++){const i=sim.world.idx(x,y);if(sim.world.water[i])continue;sim.world.moisture[i]=moisture;sim.world.temperature[i]=temp;for(const kind of Object.keys(PLANTS))sim.world.plants[kind][i]=food?Math.max(.38,(PLANTS[kind].carry||1)*.82):.003}}}
-function childOf(a,b,x,y,age=SPECIES.genvo.maturity+3){const child=sim.spawnAnimal('genvo',x,y,[a,b]);child.age=age;child.energy=110;child.hydration=105;child.health=100;sim.lineage.registerBirth(child,[a,b]);return child}
-
-const home=dryBlock(),outer=dryBlock([home]),neutral=dryBlock([home,outer]);assert.ok(home&&outer&&neutral);
-founder.x=home.x;founder.y=home.y;starter.x=home.x+1;starter.y=home.y;sim.shelter.shelters=[{id:1,ownerId:founder.id,x:home.x,y:home.y,integrity:100,weatherSeal:.9,foodStore:8,capacity:28,kind:'primary',constructedDay:sim.day,constructedYear:sim.year,lastUsedTick:sim.tickCount}];
-const g2=childOf(founder,starter,home.x+.4,home.y+.3),homeParent=childOf(g2,starter,home.x+.8,home.y+.3),outerParent=childOf(g2,starter,outer.x+.3,outer.y+.3);assert.equal(homeParent.generation,3);assert.equal(outerParent.generation,3);
-const outerCenter=sim.generationProgress.addPopulationCenter({kind:'range-band',form:'forager',x:outer.x,y:outer.y,label:'Ranging Band',generation:3,animalId:outerParent.id});
-tuneBlock(home,{food:true,moisture:.12,temp:.76});tuneBlock(outer,{food:false,moisture:.5,temp:.58});for(let i=0;i<8;i++){const species=i%2?'rootling':'mosskip',a=sim.spawnAnimal(species,outer.x+(i%4)*.42,outer.y+Math.floor(i/4)*.42);a.age=SPECIES[species].maturity+2;a.energy=80;a.hydration=80}
-homeParent.x=home.x+.7;homeParent.y=home.y+.2;outerParent.x=outer.x+.4;outerParent.y=outer.y+.2;sim.rebuildSpatial();sim.sustainability.invalidate();for(let d=0;d<6;d++){sim.populationMemory.advanceDay();sim.day++}
-const outsider=sim.animals.find(a=>a.alive&&a.species==='genvo'&&!a.lineage&&a.id!==starter.id)||sim.spawnAnimal('genvo',home.x+2,home.y+2);outsider.age=40;outsider.energy=110;outsider.hydration=108;
-const homeG4=childOf(homeParent,outsider,home.x+.5,home.y+.4),outerG4=childOf(outerParent,outsider,outer.x+.5,outer.y+.4),homeTrait=sim.protoSpeciation.traitFor(homeG4),outerTrait=sim.protoSpeciation.traitFor(outerG4);assert.ok(homeTrait&&outerTrait&&homeTrait.id!==outerTrait.id,'separated G4 populations express distinct proto traits');
-const homePop=sim.populationMemory.populationByKey('home'),outerPop=sim.populationMemory.populationByKey(`center:${outerCenter.id}`);for(let d=0;d<3;d++){sim.populationMemory.noteResidence(homeG4,homePop);sim.populationMemory.noteResidence(outerG4,outerPop);sim.day++}
-const pureG5=childOf(homeG4,outsider,home.x+.6,home.y+.45),pure=sim.protoSpeciation.traitFor(pureG5);assert.equal(pure.id,homeTrait.id);assert.equal(pure.inheritanceState,'reinforced');assert.ok(pure.strength>homeTrait.strength,'same population pressure reinforces the inherited expression');assert.ok(pure.lineageDepth>homeTrait.lineageDepth,'reinforcement records multi-generation depth');
-const mixedG5=childOf(homeG4,outerG4,home.x+.7,home.y+.5),mixed=sim.protoSpeciation.traitFor(mixedG5);assert.equal(mixed.id,homeTrait.id,'local pressure remains the dominant expressed trait');assert.match(mixed.inheritanceState,/mixed/);assert.ok(mixed.mixedFrom.some(t=>t.id===outerTrait.id),'gene flow records the other population trait');assert.ok(mixed.geneFlow>=.2);assert.ok(mixed.strength<pure.strength,'gene flow softens local reinforcement rather than stacking both benefits');assert.match(sim.protoSpeciation.revealText(mixedG5),/gene flow/i);
-const neutralCenter=sim.generationProgress.addPopulationCenter({kind:'range-band',form:'forager',x:neutral.x,y:neutral.y,label:'New Reach',generation:5,animalId:pureG5.id});
-const weakG6=childOf(pureG5,outsider,neutral.x+.4,neutral.y+.3),weak=sim.protoSpeciation.traitFor(weakG6);assert.ok(weak,'a population trait can persist for a generation after migration');assert.equal(weak.id,pure.id);assert.equal(weak.populationKey,`center:${neutralCenter.id}`);assert.equal(weak.originPopulationKey,pure.originPopulationKey,'migration does not rewrite where a proto trait originated');assert.equal(weak.inheritanceState,'weakened');assert.ok(weak.strength<pure.strength,'unsupported migration weakens expression');assert.match(sim.protoSpeciation.chipText(weakG6),/WEAKENED/);
-
-assert.equal(homeG4.species,'genvo');assert.equal(outerG4.species,'genvo');assert.equal(mixedG5.species,'genvo');assert.equal(weakG6.species,'genvo','reinforcement and gene flow still do not declare new species');
-console.log('proto gene-flow inheritance checks: PASS');
+import {setProto} from '../src/lineage/readings.js';
+const sim=new Simulation('PROTO-NEUTRAL-PARENTAL',{player:false,bootstrap:false});
+const a=sim.spawnAnimal('genvo',32,32),b=sim.spawnAnimal('genvo',33,32),outsider=sim.spawnAnimal('genvo',34,32);
+setProto(a,{id:'dryland-skin',strength:.55,populationKey:'home',populationLabel:'Home',originPopulationKey:'home',lineageDepth:2});
+setProto(b,{id:'range-sense',strength:.42,populationKey:'outer',populationLabel:'Outer',originPopulationKey:'outer',lineageDepth:3});
+let pop={key:'home',label:'Home'};sim.protoSpeciation.sourcePopulationFor=()=>pop;
+sim.populationMemory.profile=()=>{throw Error('pressure profile consulted by inheritance')};
+const child=(parents,generation=2)=>{const c={id:100+sim.rng.state,alive:true,species:'genvo',generation,anatomy:{},adaptations:[]};sim.protoSpeciation.onBirth(c,parents);return c};
+const pure=child([a,outsider]),t=sim.protoSpeciation.traitFor(pure);
+assert.equal(t.id,'dryland-skin');assert.equal(t.strength,.55);assert.equal(t.inheritanceState,'inherited-neutral');assert.equal(t.lineageDepth,3);
+const seen=new Set();for(let i=0;i<64;i++){const c=child([a,b]),r=sim.protoSpeciation.traitFor(c);seen.add(r.id);assert.ok(['dryland-skin','range-sense'].includes(r.id));assert.equal(r.strength,r.id==='dryland-skin'?.55:.42,'parental strength is neither boosted, weakened nor stacked');assert.equal(r.sourceParentId,r.id==='dryland-skin'?a.id:b.id)}
+assert.equal(seen.size,2,'both parental determinants are selectable');
+pop={key:'new-region',label:'New region'};const migrant=child([pure,outsider],1),r=sim.protoSpeciation.traitFor(migrant);
+assert.equal(r.populationKey,'new-region');assert.equal(r.originPopulationKey,'home');assert.equal(r.strength,.55,'migration cannot instruct weakening');assert.match(sim.protoSpeciation.chipText(migrant),/INHERITED/);assert.match(sim.protoSpeciation.revealText(migrant),/environmental pressure did not select/);
+assert.equal(sim.protoSpeciation.onBirth({generation:99,anatomy:{}},[outsider,outsider]),null,'population need cannot create missing traits');
+assert.ok([pure,migrant].every(c=>c.species==='genvo'),'inherited traits do not declare a new species');
+console.log('proto parental gene flow: both sources, unchanged strength, no pressure input, early inheritance and origin-preserving migration PASS');

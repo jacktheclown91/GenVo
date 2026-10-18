@@ -1,0 +1,184 @@
+{
+ "seed": "ECO-CMP-D",
+ "years": 2,
+ "current": {
+  "variant": "current",
+  "start": {
+   "mosskip": 64,
+   "rootling": 32,
+   "needlejaw": 12,
+   "genvo": 24,
+   "rillsifter": 18,
+   "mirelick": 20,
+   "podshell": 18,
+   "bankjaw": 8
+  },
+  "births": {
+   "mosskip": 31,
+   "genvo": 23,
+   "rootling": 6
+  },
+  "deaths": {
+   "mirelick": 1
+  },
+  "end": {
+   "mosskip": 95,
+   "rootling": 38,
+   "needlejaw": 12,
+   "genvo": 47,
+   "rillsifter": 18,
+   "mirelick": 19,
+   "podshell": 18,
+   "bankjaw": 8
+  },
+  "bankjaw": {
+   "attempts": 4,
+   "bites": 1,
+   "kills": 0,
+   "targets": {
+    "mosskip": 4
+   },
+   "energyMedian": 0.674,
+   "energyGatePass": 0.262
+  },
+  "integrityChecks": 8
+ },
+ "breeding": {
+  "variant": "breeding",
+  "start": {
+   "mosskip": 64,
+   "rootling": 32,
+   "needlejaw": 12,
+   "genvo": 24,
+   "rillsifter": 18,
+   "mirelick": 20,
+   "podshell": 18,
+   "bankjaw": 8
+  },
+  "births": {
+   "mosskip": 39,
+   "genvo": 22,
+   "podshell": 6,
+   "rootling": 3,
+   "rillsifter": 8,
+   "mirelick": 2
+  },
+  "deaths": {
+   "rootling": 2,
+   "mirelick": 2
+  },
+  "end": {
+   "mosskip": 103,
+   "rootling": 33,
+   "needlejaw": 12,
+   "genvo": 46,
+   "rillsifter": 26,
+   "mirelick": 20,
+   "podshell": 24,
+   "bankjaw": 8
+  },
+  "bankjaw": {
+   "attempts": 18,
+   "bites": 5,
+   "kills": 1,
+   "targets": {
+    "mirelick": 4,
+    "podshell": 9,
+    "mosskip": 5
+   },
+   "energyMedian": 0.705,
+   "energyGatePass": 0.344
+  },
+  "integrityChecks": 8
+ },
+ "ecology": {
+  "variant": "ecology",
+  "start": {
+   "mosskip": 64,
+   "rootling": 32,
+   "needlejaw": 12,
+   "genvo": 24,
+   "rillsifter": 18,
+   "mirelick": 20,
+   "podshell": 18,
+   "bankjaw": 8
+  },
+  "births": {
+   "mosskip": 31,
+   "genvo": 23,
+   "rootling": 5
+  },
+  "deaths": {
+   "mirelick": 1
+  },
+  "end": {
+   "mosskip": 95,
+   "rootling": 37,
+   "needlejaw": 12,
+   "genvo": 47,
+   "rillsifter": 18,
+   "mirelick": 19,
+   "podshell": 18,
+   "bankjaw": 8
+  },
+  "bankjaw": {
+   "attempts": 4,
+   "bites": 1,
+   "kills": 0,
+   "targets": {
+    "mosskip": 4
+   },
+   "energyMedian": 0.674,
+   "energyGatePass": 0.262
+  },
+  "integrityChecks": 8
+ },
+ "both": {
+  "variant": "both",
+  "start": {
+   "mosskip": 64,
+   "rootling": 32,
+   "needlejaw": 12,
+   "genvo": 24,
+   "rillsifter": 18,
+   "mirelick": 20,
+   "podshell": 18,
+   "bankjaw": 8
+  },
+  "births": {
+   "mosskip": 43,
+   "genvo": 22,
+   "podshell": 7,
+   "rootling": 3,
+   "rillsifter": 8,
+   "mirelick": 4
+  },
+  "deaths": {
+   "rootling": 2,
+   "mirelick": 2
+  },
+  "end": {
+   "mosskip": 107,
+   "rootling": 33,
+   "needlejaw": 12,
+   "genvo": 46,
+   "rillsifter": 26,
+   "mirelick": 22,
+   "podshell": 25,
+   "bankjaw": 8
+  },
+  "bankjaw": {
+   "attempts": 14,
+   "bites": 4,
+   "kills": 1,
+   "targets": {
+    "mirelick": 4,
+    "podshell": 6,
+    "mosskip": 4
+   },
+   "energyMedian": 0.702,
+   "energyGatePass": 0.344
+  },
+  "integrityChecks": 8
+ }
+}

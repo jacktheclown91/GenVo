@@ -1,0 +1,74 @@
+{
+ "weatherPatterns": true,
+ "params": {
+  "enabled": true,
+  "fastPersistence": 0.7,
+  "fastSpread": 0.25,
+  "slowPersistence": 0.97,
+  "slowSpread": 0.3
+ },
+ "seeds": [
+  "SELECT-A",
+  "SELECT-C",
+  "W-1",
+  "W-2"
+ ],
+ "years": 500,
+ "lag1Autocorrelation": 0.814,
+ "bySeason": {
+  "SPRING": {
+   "meanRain": 0.579,
+   "normal": 0.58,
+   "relMean": 0.997,
+   "relCV": 0.408,
+   "heavyRainDayShare": 0.228,
+   "dailyMeanHeavyShare": 0.228
+  },
+  "SUMMER": {
+   "meanRain": 0.348,
+   "normal": 0.35,
+   "relMean": 0.995,
+   "relCV": 0.404,
+   "heavyRainDayShare": 0.019,
+   "dailyMeanHeavyShare": 0.019
+  },
+  "AUTUMN": {
+   "meanRain": 0.458,
+   "normal": 0.46,
+   "relMean": 0.996,
+   "relCV": 0.409,
+   "heavyRainDayShare": 0.089,
+   "dailyMeanHeavyShare": 0.089
+  },
+  "WINTER": {
+   "meanRain": 0.258,
+   "normal": 0.26,
+   "relMean": 0.992,
+   "relCV": 0.41,
+   "heavyRainDayShare": 0.002,
+   "dailyMeanHeavyShare": 0.002
+  }
+ },
+ "stepShareHeavyRain": 0.085,
+ "stepShareRoughRain": 0.178,
+ "stormDays": {
+  "perYear": 1.068,
+  "meanDays": 2.535,
+  "maxDays": 14
+ },
+ "wetSpells": {
+  "perYear": 2.01,
+  "meanDays": 3.518,
+  "maxDays": 81
+ },
+ "drySpells": {
+  "perYear": 1.466,
+  "meanDays": 3.084,
+  "maxDays": 66
+ },
+ "droughts": {
+  "perYear": 0.302,
+  "meanDays": 17.774,
+  "maxDays": 133
+ }
+}

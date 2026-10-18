@@ -46,7 +46,7 @@ const sim=new Simulation('GENVO8-ANATOMY-READINGS',{player:true}),p=sim.player()
   setForm(p,{kind:'forager',strength:.9,sourceGeneration:2});setForm(mate,{kind:'forager',strength:.9,sourceGeneration:2});p.generation=3;
   const mother=p.sex==='F'?p:mate,father=p.sex==='F'?mate:p;mother.pregnant={fatherId:father.id,days:0,totalDays:16};
   const kids=sim.giveBirth(mother).filter(k=>k.lineage);assert.ok(kids.length,'a lineage litter was born');
-  for(const k of kids){assert.ok(k.anatomy.reach>0,'newborn form strength is on its body');assert.equal(formReading(k).sourceGeneration,k.generation);assert.deepEqual(sim.lineage.records.get(k.id).divergence,formReading(k))}
+  for(const k of kids){assert.ok(k.anatomy.reach>0,'newborn form strength is on its body');assert.equal(formReading(k).sourceGeneration,2,'inherited source generation is preserved rather than rewritten at every birth');assert.equal(formReading(k).bornDay,sim.day);assert.deepEqual(sim.lineage.records.get(k.id).divergence,formReading(k))}
 }
 
 // Saves: schema 7 caches (and older) become body axes plus history, with nothing gained or lost.
@@ -61,7 +61,7 @@ const sim=new Simulation('GENVO8-ANATOMY-READINGS',{player:true}),p=sim.player()
     delete a.formHistory;delete a.protoHistory;if(f)a.lineageForm=f;if(t)a.populationTrait=t;
   }
   // v1.39.0 (creator decision 2026-10-09): saves start fresh; an older save is refused with a clear message.
-  assert.throws(()=>restoreSimulationSnapshot(old),/earlier GenVo8/,'older saves are refused, not migrated');
+  assert.throws(()=>restoreSimulationSnapshot(old),/predates GenVo's modular creature bodies/,'older saves are refused, not migrated');
   // Lineage-record shaped objects (portraits) convert the same way.
   const portrait=migrateLegacyReadings({adaptations:[],lineageForm:{kind:'colony',strength:.6}});assert.equal(formReading(portrait).kind,'colony');
 }

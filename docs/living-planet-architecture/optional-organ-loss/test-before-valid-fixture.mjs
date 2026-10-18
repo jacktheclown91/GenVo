@@ -1,0 +1,27 @@
+import assert from 'node:assert/strict';
+import {optionalLossChoices,removeOptionalSubtrees} from '../src/lineage/optional-loss.js';
+import {founderPlan,mutatePlan,inheritBody,BODY_VARIATION} from '../src/lineage/body-inheritance.js';
+import {makePlan,validatePlan} from '../src/lineage/body-plan.js';
+import {applyLineageTarget} from '../src/lineage/reproduction-bridge.js';
+import {createDraft,place} from '../src/lineage/evolution-draft.js';
+import {ASYMMETRIC_SHARE} from '../src/lineage/developmental-symmetry.js';
+import {Simulation} from '../src/sim/simulation.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {BIRTH_RULES,birthRuleMigrationMessage} from '../src/lineage/birth-rules.js';
+const founder=founderPlan(),original=JSON.stringify(founder);
+assert.equal(BODY_VARIATION.mutationChance,.25);assert.equal(ASYMMETRIC_SHARE,.05);
+assert.equal(removeOptionalSubtrees(founder,['root']),null);assert.equal(removeOptionalSubtrees(founder,['missing']),null);assert.equal(removeOptionalSubtrees(founder,['root/mouth']),null);assert.equal(removeOptionalSubtrees(founder,['root/limb.1']),null);
+assert.equal(optionalLossChoices(founder).length,0,'paired loss cannot remove both required eyes or four-leg support');
+const asym=optionalLossChoices(founder,{asymmetric:true});assert.equal(asym.length,2);assert.ok(asym.every(c=>c.removed.length===1&&c.removed[0].socket.startsWith('eye')));assert.equal(JSON.stringify(founder),original);
+const extra=makePlan([...founder.nodes.map(n=>({partId:n.partId,parent:n.parent,socket:n.socket})),...[2,6].flatMap(i=>[{partId:'walking-leg',parent:'root',socket:`limb.${i}`},{partId:'barb',parent:`root/limb.${i}`,socket:'spur'}])]);
+const paired=optionalLossChoices(extra),loss=paired.find(c=>c.targets.includes('root/limb.2'));assert.ok(loss);assert.deepEqual(loss.targets,['root/limb.2','root/limb.6']);assert.equal(loss.removed.length,4);assert.equal(loss.plan.nodes.length,founder.nodes.length);assert.ok(validatePlan(loss.plan).ok);assert.ok(!loss.plan.nodes.some(n=>n.partId==='barb'));
+assert.ok(optionalLossChoices(extra,{asymmetric:true}).some(c=>c.targets.length===1&&c.targets[0]==='root/limb.2'&&c.removed.length===2));
+const d=createDraft({base:founder,ancestry:[],budget:Infinity});assert.ok(place(d,'head-base','root','head').ok);assert.equal(removeOptionalSubtrees(d.plan,['root/head']),null,'head removal cannot silently reattach its required face subtree');
+let bound=0;mutatePlan({chance:()=>false,int:(_min,max)=>{bound=max;return 0}},extra);let choice=null;
+for(let i=0;i<=bound;i++){let event;mutatePlan({chance:()=>false,int:()=>i},extra,{onMutation:e=>{event=e}});if(event.operator==='delete'&&event.targets.includes('root/limb.2'))choice=i}
+assert.notEqual(choice,null);const sim=new Simulation('OPTIONAL-LOSS-UNIT',{player:false,bootstrap:false}),parents=[sim.spawnAnimal('genvo'),sim.spawnAnimal('genvo')];for(const p of parents)applyLineageTarget(p,extra);assert.ok(parents.every(p=>p.adaptations.includes('barbed-limbs')));
+const before=structuredClone(parents),child=sim.spawnAnimal('genvo',30,30,parents),draws=[];
+assert.ok(inheritBody({rng:{chance:p=>{draws.push(p);return p===.25},int:()=>choice}},child,...parents));assert.equal(child.bodyVariation.operator,'delete');assert.equal(child.bodyVariation.removed.length,4);assert.equal(child.bodyPlan.nodes.length,8);assert.ok(!child.bodyPlan.nodes.some(n=>n.partId==='barb'));assert.ok(!child.adaptations.includes('barbed-limbs'),'reconciliation cannot recreate the deleted support or its unsupported trait');assert.deepEqual(parents,before);assert.deepEqual(draws,[.25,.05]);
+const snap=s=>structuredClone(createSimulationSnapshot(s,{savedAt:'fixed',reason:'optional-loss'})),old=snap(sim);delete old.core.birthRules.bodyVariation;const migrated=restoreSimulationSnapshot(structuredClone(old));assert.deepEqual(migrated.animals,old.animals);assert.deepEqual(snap(migrated).world,old.world);assert.equal(migrated.rng.state,old.rngState);assert.ok(birthRuleMigrationMessage(migrated));assert.equal(migrated.birthRules.bodyVariation,BIRTH_RULES.bodyVariation);
+const state=snap(migrated),again=restoreSimulationSnapshot(structuredClone(state));assert.deepEqual(snap(again),state);for(let i=0;i<12;i++){migrated.update(null);again.update(null)}assert.deepEqual(snap(again),snap(migrated));const bad=structuredClone(old);bad.core.birthRules.bodyVariation='unknown';assert.throws(()=>restoreSimulationSnapshot(bad),/birth rules/);
+console.log('optional organ loss: atomic paired/asymmetric subtree removal, retained viability, no organ re-creation, unchanged parents/event chance and explicit exact-save migration PASS');

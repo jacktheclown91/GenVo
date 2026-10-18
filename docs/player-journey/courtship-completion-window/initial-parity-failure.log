@@ -1,0 +1,23 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: 443:126:energy
++ actual - expected
+
++ 111.02918599228124
+- 110.68323399228125
+
+    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/consolidation-demand-parity.mjs:32:157
+    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 111.02918599228124,
+  expected: 110.68323399228125,
+  operator: 'strictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.14.0

@@ -1,0 +1,32 @@
+{
+  "scope": "Read-only inspection of actual day66 archive; no inferred earlier terminal cause.",
+  "input": "docs/player-journey/current-policy-continuation-2/checkpoint.snapshot.bin",
+  "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+  "tick": 3149,
+  "playerId": 109,
+  "performance": {
+    "partnerId": 202,
+    "startedAt": 2898,
+    "endsAt": 2916,
+    "intensity": 0.3784,
+    "energySpent": 0.34595200000000004,
+    "sequence": [
+      "dance"
+    ],
+    "attempt": 6,
+    "quality": 0.5959006071380915,
+    "qualityBase": 0.5959006071380915,
+    "tempo": -0.06409926046617309
+  },
+  "completed": null,
+  "intent": "player",
+  "refusal": {
+    "tick": 2664,
+    "reason": "first-declines",
+    "day": 56,
+    "declinerId": 109,
+    "taste": null,
+    "count": 1,
+    "otherId": 144
+  }
+}

@@ -7,6 +7,8 @@ import {FLORA_TISSUES,founderFloraGenome,floraMealChannels,validFloraGenome} fro
 import {PLANTS} from '../sim/config.js';
 
 const cropYieldCaches=new WeakMap();
+// Read-only diagnostics; does not initialize or invalidate meal caches.
+export function cropYieldCacheStats(controller){const groups=cropYieldCaches.get(controller);let entries=0;for(const cells of groups?.values()||[])entries+=cells.size;return{groups:groups?.size||0,entries,perGroupLimit:8192}}
 const LOCAL_DIRS=Object.freeze([[-1,-1],[0,-1],[1,-1],[-1,0],[1,0],[-1,1],[0,1],[1,1]]);
 
 // Plant reproduction/dispersal lives inside the existing vegetation phase.
@@ -32,16 +34,18 @@ export class PlantDispersalController{
   noteGrowth(kind,i,before,after){exportPlantReserve(this.sim,kind,i,before,after);if(!FLORA_TISSUES[kind])return;const g=this.genomeAt(kind,i),seed=this.seedReserve[kind],coat=this.coatReserve[kind];if(after>=before){seed[i]+=(after-before)*g.traits.seedAllocation;coat[i]+=(after-before)*g.traits.coatAllocation}else{const scale=before>0?after/before:0;seed[i]*=scale;coat[i]*=scale}}
   tissueView(kind,i){const total=Math.max(0,this.sim.world.plants[kind]?.[i]||0),seed=Math.min(total,this.seedReserve[kind]?.[i]||0),coat=Math.min(total-seed,this.coatReserve[kind]?.[i]||0);return{total,seed,coat,flesh:Math.max(0,total-seed-coat),genome:this.genomeAt(kind,i)}}
   cropYield(a,kind,i){
-    const total=Math.max(0,this.sim.world.plants[kind]?.[i]||0),seed=Math.min(total,this.seedReserve[kind]?.[i]||0),coat=Math.min(total-seed,this.coatReserve[kind]?.[i]||0),genome=this.genomeAt(kind,i),bite=Math.min(total,this.sim.foraging.profile(kind).bite),key=kind+':'+i+':'+mouthOf(a);
+    const total=Math.max(0,this.sim.world.plants[kind]?.[i]||0),seed=Math.min(total,this.seedReserve[kind]?.[i]||0),coat=Math.min(total-seed,this.coatReserve[kind]?.[i]||0),genome=this.genomeAt(kind,i),bite=Math.min(total,this.sim.foraging.profile(kind).bite),group=kind+':'+mouthOf(a);
     // Cache immutable meal calculations, never an individual's affordability.
     // Exact tissue/genotype comparisons invalidate immediately after real harvest.
-    let cache=cropYieldCaches.get(this);if(!cache){cache=new Map();cropYieldCaches.set(this,cache)}let recipe=cache.get(key);
+    // Phase 3K performance: one sub-map per kind and mouth keyed by cell number (no per-call string key); results
+    // are unchanged, since a missing recipe is recomputed exactly.
+    let caches=cropYieldCaches.get(this);if(!caches){caches=new Map();cropYieldCaches.set(this,caches)}let cache=caches.get(group);if(!cache){cache=new Map();caches.set(group,cache)}let recipe=cache.get(i);
     if(!recipe||recipe.total!==total||recipe.seed!==seed||recipe.coat!==coat||recipe.genome!==genome||recipe.bite!==bite){
       const v={total,seed,coat,flesh:Math.max(0,total-seed-coat),genome},options=floraMealChannels(a,kind).map(c=>{
         const receipt=this.receiptFromTissues(kind,i,v,v.total,c.tissue),biteReceipt=this.receiptFromTissues(kind,i,v,bite,c.tissue),full=plantHandling(a,receipt);
         return{coat:biteReceipt.coat,yield:Math.max(0,receipt.edible*c.eff-full.energyCost/(v.genome.traits.nutrition*3.6))};
       });
-      recipe={total:v.total,seed:v.seed,coat:v.coat,genome:v.genome,bite,options};cache.set(key,recipe);
+      recipe={total:v.total,seed:v.seed,coat:v.coat,genome:v.genome,bite,options};cache.set(i,recipe);
       if(cache.size>8192)cache.delete(cache.keys().next().value);
     }
     let best=0;for(const o of recipe.options)if(plantHandlingAffordable(a,o.coat))best=Math.max(best,o.yield);return best;

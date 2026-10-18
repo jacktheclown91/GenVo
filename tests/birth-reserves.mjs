@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {conceive} from './helpers/conception.js';
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
 import {placeSupportedBreedingPair} from './helpers/breeding-pair.js';
@@ -10,7 +11,7 @@ function conceived(species){
   Object.assign(mother,{sex:'F',age:s.maturity,energy:s.maxEnergy,reproCooldown:0});
   Object.assign(father,{sex:'M',age:s.maturity,energy:s.maxEnergy,reproCooldown:0});
   placeSupportedBreedingPair(sim,mother,father);
-  const total=mother.energy+father.energy;assert.ok(sim.tryMate(mother,father));
+  const total=mother.energy+father.energy;assert.ok(conceive(sim,mother,father));
   return{sim,mother,father,total};
 }
 for(const species of Object.keys(SPECIES)){

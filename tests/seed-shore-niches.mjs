@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
+import {RESOURCE_FOUNDING} from '../src/ecology/resource-founding.js';
 import {SPECIES} from '../src/organisms/species.js';
 import {PARTS,registryProblems} from '../src/lineage/part-registry.js';
 import {PART_SPRITES,hasComponent} from '../src/render/part-sprites.js';
@@ -14,9 +15,13 @@ import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persist
 assert.deepEqual(registryProblems(),[]);
 for(const id of ['kernel-beak','thorn-carapace'])assert.ok(PARTS[id]&&PART_SPRITES[id]&&hasComponent(id),`${id}: registered & drawn`);
 for(const id of ['podshell','bankjaw'])assert.ok(SPECIES[id]&&wildStartPlan(id),`${id}: canonical species and body plan`);
-const sim=new Simulation('GENVO8-SEED-SHORE-2026',{player:false});
+const founded=new Simulation('GENVO8-SEED-SHORE-2026',{player:false});
+{const pods=founded.animals.filter(a=>a.species==='podshell'),banks=founded.animals.filter(a=>a.species==='bankjaw');
+// Resource-informed founding (Phase 3H/3I): 8 bankjaws are configured, but only as many are founded as the renewable food their bodies can reach supports; a species that cannot support a pair is founded absent.
+assert.equal(pods.length,18);assert.equal(founded.foundingReport.bankjaw.configured,8);assert.equal(banks.length,founded.foundingReport.bankjaw.supportable);assert.ok(banks.length<8&&banks.length!==1,'bankjaw founders limited by renewable reachable food: absent or at least a pair (Phase 3I)');}
+// The anatomy, predation, heredity and persistence checks below need bankjaw bodies: same world, founded as configured.
+RESOURCE_FOUNDING.enabled=false;const sim=new Simulation('GENVO8-SEED-SHORE-2026',{player:false});RESOURCE_FOUNDING.enabled=true;
 const pods=sim.animals.filter(a=>a.species==='podshell'),banks=sim.animals.filter(a=>a.species==='bankjaw');
-assert.equal(pods.length,18);assert.equal(banks.length,8);
 assert.ok(pods.every(a=>!sim.world.water[sim.world.idx(a.x,a.y)]&&!swimsByBody(a)));
 assert.ok(banks.every(a=>a.bodyPlan&&swimsByBody(a)&&!isWaterDweller(a)&&!sim.world.water[sim.world.idx(a.x,a.y)]),'amphibious land founders');
 assert.ok(freshwaterPreference(banks[0],'fry')>0,'gape mouth can take finite freshwater fry');

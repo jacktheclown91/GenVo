@@ -1,0 +1,349 @@
+{
+  "scope": "Current acceptance provenance inspection, not behavioral proof or completion certificate",
+  "openMilestoneCriteria": [
+    "LP-1",
+    "LP-2",
+    "LP-3",
+    "LP-4",
+    "LP-5",
+    "LP-6",
+    "LP-7"
+  ],
+  "hashedReceipts": [
+    {
+      "receipt": "docs/planet-geography/seed-continuity.json",
+      "inputs": [
+        {
+          "path": "src/world/planet-geography.js",
+          "matches": true
+        },
+        {
+          "path": "src/world/planet-world.js",
+          "matches": true
+        },
+        {
+          "path": "src/world/world.js",
+          "matches": true
+        },
+        {
+          "path": "src/persistence/save-manager.js",
+          "matches": false
+        }
+      ],
+      "allInputsMatch": false,
+      "note": "Historical behavioral proof. Current source hashes checked where the original receipt supplies a hash; null means unverified, never a current pass."
+    },
+    {
+      "receipt": "docs\\living-planet-architecture\\developmental-operator-audit.json",
+      "inputs": [
+        {
+          "path": "src/lineage/body-inheritance.js",
+          "matches": false
+        },
+        {
+          "path": "src/lineage/evolution-draft.js",
+          "matches": true
+        },
+        {
+          "path": "src/lineage/part-registry.js",
+          "matches": true
+        },
+        {
+          "path": "src/lineage/developmental-symmetry.js",
+          "matches": true
+        }
+      ],
+      "allInputsMatch": false,
+      "note": "Historical behavioral proof. Current source hashes checked where the original receipt supplies a hash; null means unverified, never a current pass."
+    },
+    {
+      "receipt": "docs\\living-planet-architecture\\accessibility-experiment\\current-policy\\parental-guidance-runtime\\focused-tests.json",
+      "inputs": [
+        {
+          "path": "src/ui/inspector.js",
+          "matches": true
+        },
+        {
+          "path": "src/ui/parental-adaptations.js",
+          "matches": true
+        },
+        {
+          "path": "tests/parental-adaptation-guidance.mjs",
+          "matches": true
+        }
+      ],
+      "allInputsMatch": true,
+      "note": "Historical behavioral proof. Current source hashes checked where the original receipt supplies a hash; null means unverified, never a current pass."
+    }
+  ],
+  "otherReferencedReceipts": [
+    "docs/world-pages/runtime/evidence.json",
+    "docs/planet-geography/runtime/evidence.json",
+    "docs\\living-planet-architecture\\accessibility-experiment\\current-policy\\maturity\\results.json",
+    "docs\\living-planet-architecture\\accessibility-experiment\\current-policy\\descendants\\results.json",
+    "docs\\living-planet-architecture\\accessibility-experiment\\current-policy\\descendants\\runtime\\evidence.json",
+    "docs/test-runs/planet-b0-fast-2026-10-17.json",
+    "docs/living-planet-architecture/optional-organ-loss/birth-audit/continuous-replay-verification.json",
+    "docs/living-planet-architecture/optional-organ-loss/reduced-land-maturity/results.json",
+    "docs/living-planet-architecture/optional-organ-loss/reduced-descendants/results.json",
+    "docs/living-planet-architecture/optional-organ-loss/runtime/evidence.json",
+    "docs/player-journey/courtship-feedback/results.json",
+    "docs/player-journey/exploration-followthrough/results.json",
+    "docs/player-journey/exploration-followthrough/structural-effects.json",
+    "docs/player-journey/native-save-checkpoint/save-verification.json",
+    "docs/player-journey/native-save-continuation-1/save-verification.json",
+    "docs/player-journey/native-save-continuation-1/native-continue-verification.json",
+    "docs/living-planet-architecture/physical-authority-audit/current.json",
+    "docs/living-planet-architecture/physical-authority-audit/nonlocal-prey-reference-before.json",
+    "docs/living-planet-architecture/physical-authority-audit/local-food-final-counterfactual.json",
+    "docs/living-planet-architecture/physical-authority-audit/local-food-final-migration/results.json",
+    "docs/living-planet-architecture/physical-authority-audit/local-food-final-runtime/native-continue-verification.json",
+    "docs/living-planet-architecture/tissue-ledger-foundation/browser-proof.json"
+  ],
+  "fullObjectiveComplete": false,
+  "pendingReview": "No renewed approval required for the completed bounded mass pass. Larger worlds, new anatomical routes and historical mass conversion remain separately gated.",
+  "verifiedAtUtc": "2026-10-18T18:55:32.735Z",
+  "latestFullFastReceipt": "docs/test-runs/recombination-provenance-2026-10-18.json",
+  "currentFullFastInputMatchReceipt": {
+    "receipt": "docs/test-runs/recombination-provenance-2026-10-18.json",
+    "validationCode": {
+      "scope": "src, tools and tests code/configuration; not a release seal",
+      "start": "cfd848e755b13f9ebf60850c51d4a8ce09d37ae15c1d14d1faff5061cb809edc",
+      "end": "cfd848e755b13f9ebf60850c51d4a8ce09d37ae15c1d14d1faff5061cb809edc",
+      "inputDrift": false
+    },
+    "pass": 408,
+    "knownFail": 5,
+    "fail": 0,
+    "timeout": 0,
+    "stale": 0,
+    "deferred": 12,
+    "total": 425
+  },
+  "founderFeedbackRepair": "docs\\living-planet-architecture\\founder-feedback-repair\\REPORT.md",
+  "optionalOrganLoss": {
+    "approved": true,
+    "report": "docs/living-planet-architecture/optional-organ-loss/REPORT.md",
+    "normalBirthAndContinuousReplay": true,
+    "unassistedBirthSiteMaturity": false,
+    "controlledLandMaturity": true,
+    "actualDescendantBirths": 4,
+    "runtimeVisualAcceptance": "Completed native scenes inspected; paused controlled save/body inspection only, not ordinary player progression.",
+    "broadFastGate": "398 pass, 5 known failures, 0 new failures/timeouts/stale ledger, 12 deferred of415; only subsequent harness wait differs, reconstructed hash matches."
+  },
+  "ordinaryPlayerJourney": {
+    "report": "docs/player-journey/COURTSHIP-FEEDBACK-REPORT.md",
+    "actualApproachAndRefusal": true,
+    "inspectedOutcomeExplanation": true,
+    "ordinaryDescendantJourney": false,
+    "firstLitterReport": "docs/player-journey/ORDINARY-FIRST-LITTER-REPORT.md",
+    "normalAcceptedConception": true,
+    "normalFullGestationAndFirstBirths": 3,
+    "birthDay": 28,
+    "drinkingAndActiveCare": false,
+    "snapshotContinuationOfThisTrial": false
+  },
+  "nativeLineageContinuation": {
+    "report": "docs/player-journey/NATIVE-LINEAGE-CONTINUATION-REPORT.md",
+    "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+    "day": 54,
+    "tick": 2564,
+    "snapshot": "docs/player-journey/native-save-continuation-1/checkpoint.snapshot.bin",
+    "rawRoundtripAndIntermediateSaveTwelveUpdates": true,
+    "correctedInspectedNativeContinue": true,
+    "initialWeakWaitRejected": true,
+    "playerOffspring": 0,
+    "descendantControl": false,
+    "currentPolicySnapshot": "docs/living-planet-architecture/physical-authority-audit/local-food-final-migration/continued-world.snapshot.bin"
+  },
+  "paddedIntermediateAccessibility": {
+    "receipt": "docs/player-journey/exploration-followthrough/padded-accessibility.json",
+    "choices": 107,
+    "quietResults": 6,
+    "actualViableDescendantsOrStealth": false
+  },
+  "localFoodOpportunityRepair": {
+    "report": "docs/living-planet-architecture/physical-authority-audit/LOCAL-PREY-REPAIR.md",
+    "beforeRemoteGateFlips": 2,
+    "afterRemoteGateFlips": 0,
+    "actualLoadPreservedActors": 245,
+    "actualLoadPreservedPregnancies": 15,
+    "actualCompleteContinuationUpdates": 12,
+    "nativeContinueNoticeInspected": true,
+    "tissueMassCalibrated": false,
+    "metabolicCompetitorWeightingAdopted": false
+  },
+  "inactiveTissueLedger": {
+    "report": "docs/living-planet-architecture/tissue-ledger-foundation/REPORT.md",
+    "source": "src/organisms/tissue-ledger.js",
+    "activatedInSimulation": false,
+    "exactAtomicIdempotentTransfers": true,
+    "nodeBrowserParitySyntheticEvents": 100,
+    "actualBiologicalConstructionProven": false,
+    "calibrationSlotsAdopted": 0,
+    "allLpCriteriaRemainOpen": true
+  },
+  "inactiveConstructionFoundation": {
+    "report": "docs/living-planet-architecture/tissue-construction-foundation/REPORT.md",
+    "browserReceipt": "docs/living-planet-architecture/tissue-construction-foundation/browser-proof.json",
+    "scope": "Inactive synthetic inventory and funding only; no calibrated quantities, organism development or gameplay acceptance."
+  },
+  "currentPolicyPlayerContinuation": {
+    "report": "docs/player-journey/current-policy-continuation-2/REPORT.md",
+    "saveProof": "docs/player-journey/current-policy-continuation-2/save-verification.json",
+    "inputProof": "docs/player-journey/current-policy-continuation-2/validation-inputs.json",
+    "day": 66,
+    "offspring": 0,
+    "scope": "Actual world continuation and exact saves, not completed family lifecycle."
+  },
+  "manualCourtshipRepair": {
+    "report": "docs/player-journey/approach-interruption-repair/REPORT.md",
+    "actualSaveProof": "docs/player-journey/approach-interruption-repair/actual-save-repair.json",
+    "browserContinuation": "docs/player-journey/manual-courtship-expiry-continuation-4/results.json",
+    "saveProof": "docs/player-journey/manual-courtship-expiry-continuation-4/save-verification.json",
+    "day": 96,
+    "offspring": 0
+  },
+  "nativeDrinking": {
+    "report": "docs/player-journey/native-drinking-5/REPORT.md",
+    "saveProof": "docs/player-journey/native-drinking-5/save-verification.json",
+    "browserProof": "docs/player-journey/native-drinking-5/native-continue-verification.json",
+    "day": 97,
+    "hydrationBefore": 56.88984623641542,
+    "hydrationAfter": 81.9222595887959,
+    "scope": "Actual enabled Drink mouse click; current hydration mechanics only, not complete finite planetary water/material accounting."
+  },
+  "historicalObservationInputProof": "docs/player-journey/native-drinking-5/validation-inputs.json",
+  "historicalObservationInputScope": "Biology/tests and other tools unchanged; only the documented observation tool differs. Current whole-input fingerprint is not the broad-gate fingerprint.",
+  "courtshipCompletionAndPanel": {
+    "report": "docs/player-journey/courtship-completion-window/REPORT.md",
+    "panelProof": "docs/player-journey/courtship-completion-window/panel-browser-proof.json",
+    "actualContinuation": "docs/player-journey/completion-window-panel-continuation-9/results.json",
+    "saveProof": "docs/player-journey/completion-window-panel-continuation-9/save-verification.json",
+    "day": 118,
+    "offspring": 0,
+    "scope": "Controlled completion-window repair, real DOM/control repair and saved-world continuation. No actual display was observed in the ordinary trial; no integrated100-day or family-cycle acceptance."
+  },
+  "courtshipTargetOwnership": {
+    "report": "docs/player-journey/courtship-termination-trace/REPORT.md",
+    "originalTrace": "docs/player-journey/courtship-termination-trace/observed-target-assignments.json",
+    "observerParity": "docs/player-journey/courtship-termination-trace/observer-parity-post-repair.json",
+    "repairedObservations": "docs/player-journey/courtship-termination-trace/repaired-pair-observations.json",
+    "saveProof": "docs/player-journey/ownership-repair-continuation-11/save-verification.json",
+    "day": 150,
+    "offspring": 0,
+    "unrelatedCalls": 307,
+    "samePartnerUnrelatedCalls": 17,
+    "wrongClears": 0,
+    "scope": "Pair-scoped cleanup repair; no successful family-cycle acceptance."
+  },
+  "physicalCourtshipReachability": {
+    "report": "docs/player-journey/physical-courtship-reachability/REPORT.md",
+    "audit": "docs/player-journey/physical-courtship-reachability/actual-save-audit.json",
+    "actualUI": "docs/player-journey/reachability-continuation-12/results.json",
+    "saveProof": "docs/player-journey/reachability-continuation-12/save-verification.json",
+    "nativeContinue": "docs/player-journey/reachability-continuation-12/native-continue-verification.json",
+    "day": 151,
+    "offspring": 0,
+    "scope": "Shared current traversal checks and actual blocked-approach feedback. Controlled swimming fixture is not new natural development or full family-cycle proof."
+  },
+  "actualNativeFamily": {
+    "report": "docs/player-journey/accessible-region-census/REPORT.md",
+    "census": "docs/player-journey/accessible-region-census/census.json",
+    "birthProvenance": "docs/player-journey/northern-exploration-continuation-13/family-provenance.json",
+    "birthSaveChecks": "docs/player-journey/northern-exploration-continuation-13/save-verification.json",
+    "growthAudit": "docs/player-journey/offspring-growth-continuation-14/growth-audit.json",
+    "growthSaveChecks": "docs/player-journey/offspring-growth-continuation-14/save-verification.json",
+    "handoffAudit": "docs/player-journey/mature-handoff-confirmed-16/handoff-audit.json",
+    "handoffSaveChecks": "docs/player-journey/mature-handoff-confirmed-16/save-verification.json",
+    "nativeAnchorContinue": "docs/player-journey/mature-handoff-confirmed-16/native-continue-verification.json",
+    "founderId": 109,
+    "motherId": 202,
+    "founderOffspringIds": [
+      491,
+      492,
+      493
+    ],
+    "matureHeirId": 491,
+    "matureHeirAge": 30,
+    "matureHeirOwnOffspringCount": 0,
+    "permanentLineageAnchor": 491,
+    "birthDay": 181,
+    "maturityAndHandoffDay": 213,
+    "newAnatomicalCapabilitiesInBrood": false,
+    "activeParentalCareProven": false,
+    "humanSkillTrial": false,
+    "scope": "Census-assisted ordinary UI family path under existing biology; no novel anatomy, calibrated physiology, field-readiness completion or full Living Planet acceptance."
+  },
+  "previousFullFastReceipt": "docs/test-runs/body-cost-readability-2026-10-18.json",
+  "optionalLossCounterpartRepair": {
+    "report": "docs/living-planet-architecture/optional-loss-mirror-repair/REPORT.md",
+    "futureBirthPolicy": "neutral-optional-loss/2",
+    "flankOccupancyCombinations": 16,
+    "actualMigrationChecks": "docs/living-planet-architecture/optional-loss-mirror-repair/save-migration.json",
+    "nativeContinue": "docs/living-planet-architecture/optional-loss-mirror-repair/runtime/native-continue-verification.json",
+    "scope": "Correct mirrored organ selection, not persistent inherited module identity, calibrated physics or a new anatomical route."
+  },
+  "headStructure": {
+    "approval": "Approve the bounded head-structure pass",
+    "review": "docs/living-planet-architecture/HEAD-STRUCTURE-REVIEW.md",
+    "policy": "neutral-head-structure/1",
+    "accessibility": "docs/living-planet-architecture/head-structure-implementation/accessibility-current/results.json",
+    "pipeline": "docs/living-planet-architecture/head-structure-implementation/accessibility-current/pipeline-check.json",
+    "catalogPartWitnesses": 71,
+    "policyExcludedParts": 8,
+    "headedAcceptedNonDeletionFaceChoices": 10,
+    "mixedParentCrossesTested": 640,
+    "actualBirthExperiment": "docs/living-planet-architecture/head-structure-implementation/birth-audit/results.json",
+    "actualBirthExperimentScope": "Terminal:103 attempts,94 conceptions,280 births; actual headed female4 in targeted HEAD-STRUCTURE-102 world. Staged founding pairs, not ordinary player discovery.",
+    "scope": "Approved neutral implicit-head structural conversion and existing facial-route repair. Not persistent inherited module identity or calibrated physiology.",
+    "report": "docs/living-planet-architecture/head-structure-implementation/REPORT.md",
+    "actualBornHeadedId": 4,
+    "birthDay": 17,
+    "maturityDay": 53,
+    "maturityAge": 30,
+    "paidGrowth": 56.19185729896012,
+    "growthDelayDays": 7,
+    "descendantBirthDay": 77,
+    "actualDescendantIds": [
+      8,
+      9,
+      10,
+      11
+    ],
+    "explicitHeadRetentionInNextLitter": 0,
+    "descendantLayouts": "All four actual descendants use implicit heads; no actual second-generation explicit-node retention claimed.",
+    "provenance": "docs/living-planet-architecture/head-structure-implementation/provenance-and-validation.json",
+    "nativeMigration": "docs/living-planet-architecture/head-structure-implementation/native-migration/native-continue-verification.json",
+    "runtime": "docs/living-planet-architecture/head-structure-implementation/runtime/evidence.json"
+  },
+  "anatomicalMass": {
+    "status": "IMPLEMENTED, BOUNDED PROOF; FULL PHYSIOLOGY OPEN",
+    "creatorApproval": "Approve the anatomy-based game-unit pass",
+    "policy": "relative-anatomical-load/1",
+    "historicalMissingVersion": "legacy-species/1, including future offspring; no automatic conversion",
+    "report": "docs/living-planet-architecture/anatomical-mass-implementation/REPORT.md",
+    "runtime": "docs/living-planet-architecture/anatomical-mass-implementation/runtime-interior-verified/results.json",
+    "newNativeContinue": "docs/living-planet-architecture/anatomical-mass-implementation/runtime-interior-verified/native-continue.json",
+    "oldNativeContinue": "docs/living-planet-architecture/anatomical-mass-implementation/legacy-continue-verified/native-continue-verification.json",
+    "limits": "Relative structural capacity and paid postnatal growth, not kg, complete elemental tissue custody, embryonic construction, muscle/support/power or complete advanced physiology. Diagnostic substitutions, not naturally sampled novelty."
+  },
+  "defensiveFeedingRepair": {
+    "status": "IMPLEMENTED",
+    "report": "docs/living-planet-architecture/counterstrike-feeding-repair/REPORT.md",
+    "historicalBoundaryReceipt": "docs/test-runs/counterstrike-feeding-fast-2026-10-18.json"
+  },
+  "bodyCostReadability": {
+    "status": "IMPLEMENTED WITH BOUNDED RUNTIME PROOF",
+    "report": "docs/living-planet-architecture/body-cost-readability/REPORT.md",
+    "runtime": "docs/living-planet-architecture/body-cost-readability/runtime-final/results.json",
+    "actualNewborns": "docs/living-planet-architecture/body-cost-readability/actual-newborn-readings.json",
+    "limit": "Actual short experiment had three newborns and no swimming novelty. Browser juvenile conditions and uncommitted editor comparison are disclosed fixtures, not evolved lineage proof."
+  },
+  "structuralRecombinationProvenance": {
+    "status": "IMPLEMENTED, BOUNDED BODY/RNG AND ACTUAL BIRTH VERIFICATION",
+    "report": "docs/living-planet-architecture/recombination-provenance/REPORT.md",
+    "actual": "docs/living-planet-architecture/recombination-provenance/actual-verification.json",
+    "limit": "Structural selection observations before development, not tissue identity/material custody; new journal text has not yet had separate native visual acceptance."
+  }
+}

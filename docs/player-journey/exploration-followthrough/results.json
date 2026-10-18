@@ -1,0 +1,3235 @@
+{
+  "scope": "Normal UI-guided exploration and courtship under shared biology; no biological state edits. Finite six-region search with at most three different attempted partners and at most140 seconds following one accepted UI-selected opportunity; outcome retained. Not a completed player life-cycle trial.",
+  "initiated": true,
+  "rows": [
+    {
+      "label": "opening",
+      "day": 1,
+      "tick": 29,
+      "player": {
+        "id": 109,
+        "age": 32,
+        "x": 18.5,
+        "y": 37.5,
+        "energy": 113.86322390170257,
+        "hydration": 102.39548799999999,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": null
+    },
+    {
+      "label": "attempt-1-follow-0",
+      "day": 2,
+      "tick": 49,
+      "player": {
+        "id": 109,
+        "age": 33,
+        "x": 18.748127319710097,
+        "y": 33.38760027453532,
+        "energy": 119.22462361807388,
+        "hydration": 102.19097599999996,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-1",
+      "day": 2,
+      "tick": 65,
+      "player": {
+        "id": 109,
+        "age": 33,
+        "x": 17.622067047035944,
+        "y": 29.77704799682144,
+        "energy": 118.6979824809055,
+        "hydration": 102.08797329523902,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-2",
+      "day": 2,
+      "tick": 81,
+      "player": {
+        "id": 109,
+        "age": 33,
+        "x": 14.375277874261847,
+        "y": 27.72830941809943,
+        "energy": 118.11753267065897,
+        "hydration": 101.93346923809762,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-3",
+      "day": 3,
+      "tick": 97,
+      "player": {
+        "id": 109,
+        "age": 34,
+        "x": 11.336091895044555,
+        "y": 25.383608485074916,
+        "energy": 117.53701055038833,
+        "hydration": 101.7789651809562,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-4",
+      "day": 3,
+      "tick": 113,
+      "player": {
+        "id": 109,
+        "age": 34,
+        "x": 9.902201625638105,
+        "y": 21.808471184819908,
+        "energy": 117.01058065206335,
+        "hydration": 101.67565318095622,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-5",
+      "day": 3,
+      "tick": 129,
+      "player": {
+        "id": 109,
+        "age": 34,
+        "x": 10.461511871817047,
+        "y": 18.05864232155984,
+        "energy": 116.4303657250568,
+        "hydration": 101.52068518095624,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-6",
+      "day": 4,
+      "tick": 145,
+      "player": {
+        "id": 109,
+        "age": 35,
+        "x": 13.628216515209946,
+        "y": 15.976867019571293,
+        "energy": 115.8499097965481,
+        "hydration": 101.36571718095625,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-7",
+      "day": 4,
+      "tick": 162,
+      "player": {
+        "id": 109,
+        "age": 35,
+        "x": 17.18668509240288,
+        "y": 15.238353959631274,
+        "energy": 114.94982224758088,
+        "hydration": 101.21121312381484,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-8",
+      "day": 4,
+      "tick": 178,
+      "player": {
+        "id": 109,
+        "age": 35,
+        "x": 17.18668509240288,
+        "y": 15.238353959631274,
+        "energy": 114.8421691513063,
+        "hydration": 101.1082104190539,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-9",
+      "day": 5,
+      "tick": 194,
+      "player": {
+        "id": 109,
+        "age": 36,
+        "x": 17.18668509240288,
+        "y": 15.238353959631274,
+        "energy": 114.68069346006578,
+        "hydration": 100.9537063619125,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "region-end-0",
+      "day": 5,
+      "tick": 194,
+      "player": {
+        "id": 109,
+        "age": 36,
+        "x": 17.18668509240288,
+        "y": 15.238353959631274,
+        "energy": 114.68069346006578,
+        "hydration": 100.9537063619125,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "explored-0",
+      "day": 6,
+      "tick": 242,
+      "player": {
+        "id": 109,
+        "age": 37,
+        "x": 28.849745358780932,
+        "y": 15.238353959631274,
+        "energy": 119.01269181413853,
+        "hydration": 100.54468236191245,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "region-end-1",
+      "day": 6,
+      "tick": 256,
+      "player": {
+        "id": 109,
+        "age": 37,
+        "x": 28.849745358780932,
+        "y": 15.238353959631274,
+        "energy": 118.90509205413214,
+        "hydration": 100.4431730666734,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "explored-1",
+      "day": 7,
+      "tick": 304,
+      "player": {
+        "id": 109,
+        "age": 38,
+        "x": 28.849745358780932,
+        "y": 26.901414226009283,
+        "energy": 123.23731609334244,
+        "hydration": 100.03744518095623,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "region-end-2",
+      "day": 7,
+      "tick": 317,
+      "player": {
+        "id": 109,
+        "age": 38,
+        "x": 28.849745358780932,
+        "y": 26.901414226009283,
+        "energy": 123.129737551818,
+        "hydration": 99.93624518095622,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "explored-2",
+      "day": 8,
+      "tick": 365,
+      "player": {
+        "id": 109,
+        "age": 39,
+        "x": 40.51280562515898,
+        "y": 26.901414226009283,
+        "energy": 124,
+        "hydration": 99.5308265904781,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-0",
+      "day": 9,
+      "tick": 385,
+      "player": {
+        "id": 109,
+        "age": 40,
+        "x": 44.29723674679756,
+        "y": 28.507829487633334,
+        "energy": 123.33947020786438,
+        "hydration": 99.32780799999999,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": 119,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-1",
+      "day": 9,
+      "tick": 402,
+      "player": {
+        "id": 109,
+        "age": 40,
+        "x": 48.34384518745816,
+        "y": 29.249875937729108,
+        "energy": 122.7326989328465,
+        "hydration": 99.0643317647059,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": 119,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-2",
+      "day": 9,
+      "tick": 418,
+      "player": {
+        "id": 109,
+        "age": 40,
+        "x": 52.19003824141845,
+        "y": 29.742313161361913,
+        "energy": 122.20622355381816,
+        "hydration": 98.8886809411765,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": 119,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-3",
+      "day": 10,
+      "tick": 434,
+      "player": {
+        "id": 109,
+        "age": 41,
+        "x": 56.03623129537874,
+        "y": 30.23475038499472,
+        "energy": 121.62590890925867,
+        "hydration": 98.62520470588241,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": 119,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-4",
+      "day": 10,
+      "tick": 451,
+      "player": {
+        "id": 109,
+        "age": 41,
+        "x": 60.04905020859652,
+        "y": 31.052967599677196,
+        "energy": 121.0195227233696,
+        "hydration": 98.31319066459085,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": 119,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-5",
+      "day": 10,
+      "tick": 467,
+      "player": {
+        "id": 109,
+        "age": 41,
+        "x": 59.4679911239148,
+        "y": 32.380950610457646,
+        "energy": 120.2518926451633,
+        "hydration": 98.10518130372981,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": 119,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-6",
+      "day": 11,
+      "tick": 483,
+      "player": {
+        "id": 109,
+        "age": 42,
+        "x": 55.85121103129392,
+        "y": 31.518610211533517,
+        "energy": 119.67145373999162,
+        "hydration": 97.79316726243825,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": 119,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-7",
+      "day": 11,
+      "tick": 499,
+      "player": {
+        "id": 109,
+        "age": 42,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 119.09073681022906,
+        "hydration": 97.46104820361471,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": 119,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-8",
+      "day": 11,
+      "tick": 515,
+      "player": {
+        "id": 109,
+        "age": 42,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 118.55671361106963,
+        "hydration": 97.23963549773235,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": 119,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-9",
+      "day": 12,
+      "tick": 531,
+      "player": {
+        "id": 109,
+        "age": 43,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 118.39444089723547,
+        "hydration": 96.90751643890881,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": 119,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-10",
+      "day": 12,
+      "tick": 540,
+      "player": {
+        "id": 109,
+        "age": 43,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 112.16603786788603,
+        "hydration": 96.69950707804777,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-11",
+      "day": 12,
+      "tick": 556,
+      "player": {
+        "id": 109,
+        "age": 43,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 112.0576348385366,
+        "hydration": 96.49149771718673,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-12",
+      "day": 12,
+      "tick": 572,
+      "player": {
+        "id": 109,
+        "age": 43,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 111.89503029451245,
+        "hydration": 96.17948367589517,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-13",
+      "day": 13,
+      "tick": 588,
+      "player": {
+        "id": 109,
+        "age": 44,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 111.7320149561233,
+        "hydration": 95.89982817193525,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-14",
+      "day": 13,
+      "tick": 604,
+      "player": {
+        "id": 109,
+        "age": 44,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 111.62333806386386,
+        "hydration": 95.72417734840586,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-15",
+      "day": 13,
+      "tick": 620,
+      "player": {
+        "id": 109,
+        "age": 44,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 111.4603227254747,
+        "hydration": 95.46070111311177,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-16",
+      "day": 14,
+      "tick": 636,
+      "player": {
+        "id": 109,
+        "age": 45,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 111.29701160669468,
+        "hydration": 95.22958341514929,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-17",
+      "day": 14,
+      "tick": 652,
+      "player": {
+        "id": 109,
+        "age": 45,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 111.188137527508,
+        "hydration": 95.08629112895152,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-18",
+      "day": 14,
+      "tick": 668,
+      "player": {
+        "id": 109,
+        "age": 45,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 111.02482640872799,
+        "hydration": 94.87135269965485,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-19",
+      "day": 15,
+      "tick": 684,
+      "player": {
+        "id": 109,
+        "age": 46,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 110.86132072282392,
+        "hydration": 94.66981761537947,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-20",
+      "day": 15,
+      "tick": 700,
+      "player": {
+        "id": 109,
+        "age": 46,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 110.7523169322212,
+        "hydration": 94.53992867420298,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-21",
+      "day": 15,
+      "tick": 716,
+      "player": {
+        "id": 109,
+        "age": 46,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 110.58881124631714,
+        "hydration": 94.34509526243825,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-22",
+      "day": 16,
+      "tick": 732,
+      "player": {
+        "id": 109,
+        "age": 47,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 110.42516156241417,
+        "hydration": 94.13685850565223,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-23",
+      "day": 16,
+      "tick": 748,
+      "player": {
+        "id": 109,
+        "age": 47,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 110.31606177314553,
+        "hydration": 93.99356621945445,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-24",
+      "day": 16,
+      "tick": 765,
+      "player": {
+        "id": 109,
+        "age": 47,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 110.15241208924257,
+        "hydration": 93.77862779015778,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-25",
+      "day": 17,
+      "tick": 780,
+      "player": {
+        "id": 109,
+        "age": 48,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 109.98860846593797,
+        "hydration": 93.60366964705891,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-26",
+      "day": 17,
+      "tick": 797,
+      "player": {
+        "id": 109,
+        "age": 48,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 109.87940605040157,
+        "hydration": 93.50035764705892,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-27",
+      "day": 17,
+      "tick": 813,
+      "player": {
+        "id": 109,
+        "age": 48,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 109.71560242709697,
+        "hydration": 93.34538964705894,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-28",
+      "day": 18,
+      "tick": 828,
+      "player": {
+        "id": 109,
+        "age": 49,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 109.55206231905701,
+        "hydration": 93.189674942298,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-29",
+      "day": 18,
+      "tick": 844,
+      "player": {
+        "id": 109,
+        "age": 49,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 109.44303558036371,
+        "hydration": 93.08561623753705,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-30",
+      "day": 18,
+      "tick": 860,
+      "player": {
+        "id": 109,
+        "age": 49,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 109.27949547232376,
+        "hydration": 92.92952818039564,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-31",
+      "day": 19,
+      "tick": 876,
+      "player": {
+        "id": 109,
+        "age": 50,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 109.11612153943561,
+        "hydration": 92.77313082801517,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-32",
+      "day": 19,
+      "tick": 892,
+      "player": {
+        "id": 109,
+        "age": 50,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 109.00720558417684,
+        "hydration": 92.66876282801518,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-33",
+      "day": 19,
+      "tick": 908,
+      "player": {
+        "id": 109,
+        "age": 50,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 108.8438316512887,
+        "hydration": 92.51221082801518,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-34",
+      "day": 20,
+      "tick": 924,
+      "player": {
+        "id": 109,
+        "age": 51,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 108.68057673132537,
+        "hydration": 92.35596812325424,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-35",
+      "day": 20,
+      "tick": 940,
+      "player": {
+        "id": 109,
+        "age": 51,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 108.57174011801649,
+        "hydration": 92.2519094184933,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-36",
+      "day": 20,
+      "tick": 957,
+      "player": {
+        "id": 109,
+        "age": 51,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 108.40848519805317,
+        "hydration": 92.09582136135188,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-37",
+      "day": 21,
+      "tick": 972,
+      "player": {
+        "id": 109,
+        "age": 52,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 108.24536223076481,
+        "hydration": 91.94048000897142,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-38",
+      "day": 21,
+      "tick": 989,
+      "player": {
+        "id": 109,
+        "age": 52,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 108.1366135859059,
+        "hydration": 91.83716800897143,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-39",
+      "day": 21,
+      "tick": 1005,
+      "player": {
+        "id": 109,
+        "age": 52,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 107.97349061861755,
+        "hydration": 91.68220000897145,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-40",
+      "day": 22,
+      "tick": 1021,
+      "player": {
+        "id": 109,
+        "age": 53,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 107.81054948874902,
+        "hydration": 91.5279787137324,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-41",
+      "day": 22,
+      "tick": 1037,
+      "player": {
+        "id": 109,
+        "age": 53,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 107.70192206883667,
+        "hydration": 91.42541341849333,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-42",
+      "day": 22,
+      "tick": 1053,
+      "player": {
+        "id": 109,
+        "age": 53,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 107.53898093896814,
+        "hydration": 91.27156547563474,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-43",
+      "day": 23,
+      "tick": 1069,
+      "player": {
+        "id": 109,
+        "age": 54,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 107.37626554380235,
+        "hydration": 91.1180268280152,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-44",
+      "day": 23,
+      "tick": 1085,
+      "player": {
+        "id": 109,
+        "age": 54,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 107.26778861369182,
+        "hydration": 91.01577082801519,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-45",
+      "day": 23,
+      "tick": 1101,
+      "player": {
+        "id": 109,
+        "age": 54,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 107.10507321852603,
+        "hydration": 90.86238682801518,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-46",
+      "day": 24,
+      "tick": 1117,
+      "player": {
+        "id": 109,
+        "age": 55,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 106.9425836919384,
+        "hydration": 90.70869353277611,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-47",
+      "day": 24,
+      "tick": 1133,
+      "player": {
+        "id": 109,
+        "age": 55,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 106.83425734087997,
+        "hydration": 90.60612823753705,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-48",
+      "day": 24,
+      "tick": 1149,
+      "player": {
+        "id": 109,
+        "age": 55,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 106.67176781429234,
+        "hydration": 90.45228029467846,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-49",
+      "day": 25,
+      "tick": 1165,
+      "player": {
+        "id": 109,
+        "age": 56,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 106.46138933000297,
+        "hydration": 90.30507764705892,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-50",
+      "day": 25,
+      "tick": 1181,
+      "player": {
+        "id": 109,
+        "age": 56,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 106.31398333070929,
+        "hydration": 90.20915764705892,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-51",
+      "day": 25,
+      "tick": 1197,
+      "player": {
+        "id": 109,
+        "age": 56,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 106.09590447741941,
+        "hydration": 90.0652776470589,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-52",
+      "day": 26,
+      "tick": 1213,
+      "player": {
+        "id": 109,
+        "age": 57,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 105.88409532404752,
+        "hydration": 89.92065094229797,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-53",
+      "day": 26,
+      "tick": 1229,
+      "player": {
+        "id": 109,
+        "age": 57,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 105.7447338481853,
+        "hydration": 89.82398423753703,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-54",
+      "day": 26,
+      "tick": 1245,
+      "player": {
+        "id": 109,
+        "age": 57,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 105.53569163439198,
+        "hydration": 89.67898418039563,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-55",
+      "day": 27,
+      "tick": 1260,
+      "player": {
+        "id": 109,
+        "age": 58,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 105.32881487609724,
+        "hydration": 89.53367482801515,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-56",
+      "day": 27,
+      "tick": 1276,
+      "player": {
+        "id": 109,
+        "age": 58,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 105.19166110650055,
+        "hydration": 89.43669882801514,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-57",
+      "day": 27,
+      "tick": 1292,
+      "player": {
+        "id": 109,
+        "age": 58,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 104.9859304521055,
+        "hydration": 89.29123482801512,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [
+        {
+          "id": 119,
+          "pregnant": true
+        }
+      ],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-58",
+      "day": 28,
+      "tick": 1307,
+      "player": {
+        "id": 109,
+        "age": 59,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 104.84730740184816,
+        "hydration": 89.19441347563465,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [
+        {
+          "id": 210,
+          "age": 0,
+          "alive": true,
+          "parentIds": [
+            119,
+            109
+          ],
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "small-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-4134709b"
+          }
+        },
+        {
+          "id": 211,
+          "age": 0,
+          "alive": true,
+          "parentIds": [
+            119,
+            109
+          ],
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "small-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "padded-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-85b8561c"
+          }
+        },
+        {
+          "id": 212,
+          "age": 0,
+          "alive": true,
+          "parentIds": [
+            119,
+            109
+          ],
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "small-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-4134709b"
+          }
+        }
+      ],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "region-end-3",
+      "day": 28,
+      "tick": 1307,
+      "player": {
+        "id": 109,
+        "age": 59,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 104.84730740184816,
+        "hydration": 89.19441347563465,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [
+        {
+          "id": 210,
+          "age": 0,
+          "alive": true,
+          "parentIds": [
+            119,
+            109
+          ],
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "small-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-4134709b"
+          }
+        },
+        {
+          "id": 211,
+          "age": 0,
+          "alive": true,
+          "parentIds": [
+            119,
+            109
+          ],
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "small-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "padded-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-85b8561c"
+          }
+        },
+        {
+          "id": 212,
+          "age": 0,
+          "alive": true,
+          "parentIds": [
+            119,
+            109
+          ],
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "small-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-4134709b"
+          }
+        }
+      ],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "final",
+      "day": 28,
+      "tick": 1307,
+      "player": {
+        "id": 109,
+        "age": 59,
+        "x": 54.37893291940135,
+        "y": 28.09733162438477,
+        "energy": 104.84730740184816,
+        "hydration": 89.19441347563465,
+        "health": 100,
+        "lastMate": 119,
+        "alive": true
+      },
+      "children": [
+        {
+          "id": 210,
+          "age": 0,
+          "alive": true,
+          "parentIds": [
+            119,
+            109
+          ],
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "small-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-4134709b"
+          }
+        },
+        {
+          "id": 211,
+          "age": 0,
+          "alive": true,
+          "parentIds": [
+            119,
+            109
+          ],
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "small-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "padded-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-85b8561c"
+          }
+        },
+        {
+          "id": 212,
+          "age": 0,
+          "alive": true,
+          "parentIds": [
+            119,
+            109
+          ],
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "small-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-4134709b"
+          }
+        }
+      ],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 132,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    }
+  ],
+  "actions": [
+    "E: eat available local food",
+    {
+      "region": 0,
+      "choice": 0,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 12.2 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 12.2 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "movement": "KeyD",
+      "seconds": 6
+    },
+    {
+      "region": 1,
+      "choice": 0,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 16.3 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 16.3 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 1,
+      "choice": 1,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 16.3 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 16.3 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 1,
+      "choice": 2,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 16.6 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 16.6 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 1,
+      "choice": 3,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 16.8 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 16.8 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 1,
+      "choice": 4,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 16.9 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 16.9 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 1,
+      "choice": 5,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 17.1 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 17.1 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 1,
+      "choice": 6,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 17.4 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 17.4 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 1,
+      "choice": 7,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 17.6 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 17.6 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "movement": "KeyS",
+      "seconds": 6
+    },
+    {
+      "region": 2,
+      "choice": 0,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 21.1 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 21.1 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 2,
+      "choice": 1,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 20.8 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 20.8 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 2,
+      "choice": 2,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 20.5 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 20.5 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 2,
+      "choice": 3,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 20.2 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 20.2 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 2,
+      "choice": 4,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 19.7 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 19.7 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 2,
+      "choice": 5,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 19.4 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 19.4 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 2,
+      "choice": 6,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 19.1 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 19.1 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 2,
+      "choice": 7,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 18.9 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 18.9 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "movement": "KeyD",
+      "seconds": 6
+    },
+    {
+      "region": 3,
+      "choice": 0,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 2\nSelected #125 · F · adult · 20.5 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 20.5 tiles · compatible · matching body\n#119 · 22.1 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 3,
+      "choice": 1,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 2\nSelected #119 · F · adult · 22.2 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.06928,1.04811],\"development\":[0.96653,0.96653]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#125 · 20.2 tiles · compatible · matching body\n▸ #119 · 22.2 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids behavior (74% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · larger body · bolder and more social\nLIKELY CHILD TRAITS\nfaster movement · lower energy use · bolder and more social · larger body\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    "Keep the old body: ordinary pending litter UI"
+  ],
+  "errors": []
+}

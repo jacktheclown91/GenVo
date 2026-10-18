@@ -1,0 +1,97 @@
+{
+ "seed": "JUV-B",
+ "days": 540,
+ "before": {
+  "variant": "before",
+  "births": {
+   "mosskip": 104,
+   "genvo": 98,
+   "rootling": 22,
+   "rillsifter": 46,
+   "mirelick": 4,
+   "podshell": 5,
+   "needlejaw": 1
+  },
+  "juvenileDeaths": {},
+  "recruits": {
+   "mosskip": 104,
+   "genvo": 94,
+   "rootling": 22,
+   "rillsifter": 45,
+   "mirelick": 4,
+   "podshell": 5,
+   "needlejaw": 1
+  },
+  "kills": {
+   "juvenile": 0,
+   "adult": 19
+  },
+  "killsBySpecies": {
+   "mosskip": 7,
+   "rootling": 4,
+   "genvo": 5,
+   "rillsifter": 3
+  },
+  "end": {
+   "mosskip": 28,
+   "rootling": 10,
+   "needlejaw": 5,
+   "genvo": 57,
+   "mirelick": 1,
+   "podshell": 2,
+   "rillsifter": 22
+  },
+  "growthEnergy": 0,
+  "growthDelays": 0,
+  "integrityChecks": 67
+ },
+ "juvenile": {
+  "variant": "juvenile",
+  "births": {
+   "mosskip": 144,
+   "genvo": 58,
+   "rootling": 7,
+   "rillsifter": 29,
+   "podshell": 2,
+   "needlejaw": 2
+  },
+  "juvenileDeaths": {
+   "genvo:predation": 3,
+   "mosskip:starvation": 3,
+   "rootling:starvation": 1,
+   "genvo:starvation": 3,
+   "rillsifter:starvation": 3
+  },
+  "recruits": {
+   "mosskip": 135,
+   "genvo": 52,
+   "rootling": 6,
+   "rillsifter": 26,
+   "podshell": 2,
+   "needlejaw": 1
+  },
+  "kills": {
+   "juvenile": 3,
+   "adult": 81
+  },
+  "killsBySpecies": {
+   "rootling": 18,
+   "mosskip": 47,
+   "mirelick": 2,
+   "genvo(j)": 3,
+   "genvo": 14
+  },
+  "end": {
+   "rootling": 3,
+   "needlejaw": 10,
+   "genvo": 25,
+   "rillsifter": 8,
+   "mirelick": 1,
+   "bankjaw": 2,
+   "mosskip": 62
+  },
+  "growthEnergy": 10960,
+  "growthDelays": 6256,
+  "integrityChecks": 67
+ }
+}

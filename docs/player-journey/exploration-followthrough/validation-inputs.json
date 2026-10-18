@@ -1,0 +1,11 @@
+{
+  "scope": "Previous broad gate plus only two added read-only UI observation harnesses; canonical src/tests and other tools unchanged.",
+  "previousGate": "07bf9e2d442b14f8aa5fca36d219886a2200015394795556137ee2427104ebc5",
+  "current": "7b33bfc93ea7eeb7d2a35c021d76b84d5af7b848534ee685737aad2344dbcb2d",
+  "withoutOnlyAddedHarnesses": "07bf9e2d442b14f8aa5fca36d219886a2200015394795556137ee2427104ebc5",
+  "addedHarnesses": [
+    "tools/observe-ordinary-player-exploration.cjs",
+    "tools/observe-ordinary-player-followthrough.cjs"
+  ],
+  "reconstructionMatches": true
+}

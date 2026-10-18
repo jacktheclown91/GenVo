@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';import {Simulation} from '../src/sim/simulation.js';import {SPECIES} from '../src/organisms/species.js';import {placeSupportedBreedingPair} from './helpers/breeding-pair.js';import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+const sim=new Simulation('EXTENDED-KIN',{player:false}),founders=sim.animals.filter(a=>a.species==='genvo');
+const [g1,g2,u1,u2]=founders;const p=sim.spawnAnimal('genvo',g1.x,g1.y,[g1,g2]),uncle=sim.spawnAnimal('genvo',g1.x,g1.y,[g1,g2]);const child=sim.spawnAnimal('genvo',g1.x,g1.y,[p,u1]),cousin=sim.spawnAnimal('genvo',g1.x,g1.y,[uncle,u2]);
+assert.equal(sim.recovery.kinship(uncle,child),'close','aunt/uncle must not be unrelated');assert.equal(sim.recovery.kinship(child,uncle),'close');assert.equal(sim.recovery.kinship(g1,child),'direct','grandparent is a direct ancestor');assert.equal(sim.recovery.kinship(child,cousin),'close','first cousins share grandparents');assert.equal(sim.recovery.kinship(p,uncle),'sibling');assert.equal(sim.recovery.kinship(child,u2),'none','unrelated founder remains available');
+for(const a of [uncle,child])Object.assign(a,{age:SPECIES.genvo.maturity+10,reproCooldown:0});uncle.sex='M';child.sex='F';placeSupportedBreedingPair(sim,child,uncle);
+const rng=sim.rng.state,energy=child.energy+uncle.energy;assert.equal(sim.tryMate(child,uncle),false,'arrival cannot conceive with close kin');assert.equal(sim.rng.state,rng);assert.equal(child.energy+uncle.energy,energy);
+sim.animals=sim.animals.filter(a=>![g1.id,g2.id,p.id].includes(a.id));const restored=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim))),a=restored.animals.find(a=>a.id===uncle.id),b=restored.animals.find(a=>a.id===child.id);assert.equal(restored.recovery.kinship(a,b),'close','ancestry survives removed parents and save/load');
+delete uncle.grandparentIds;delete child.grandparentIds;
+sim.lineage.register({...p,lineage:true},p.parentIds);
+const legacy=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim)));
+assert.equal(legacy.recovery.kinship(legacy.animals.find(a=>a.id===uncle.id),legacy.animals.find(a=>a.id===child.id)),'close','legacy genealogy can recover from retained lineage history');
+const scarce=new Simulation('KIN-SIBLING-RELAXATION',{player:false});const siblings=scarce.animals.filter(a=>a.species==='rootling').slice(0,2);scarce.animals=siblings;
+for(const a of siblings)Object.assign(a,{parentIds:[9001,9002],age:SPECIES.rootling.maturity+10,reproCooldown:0});siblings[0].sex='F';siblings[1].sex='M';placeSupportedBreedingPair(scarce,...siblings);
+assert.equal(scarce.tryMate(...siblings),true,'explicit critical sibling relaxation remains available without an unrelated mate');
+console.log('extended close ancestry, arrival rejection and persistent genealogy: PASS');

@@ -2,10 +2,16 @@ import {CFG} from '../sim/config.js';
 import {nearestWater,isWaterDweller} from '../lineage/aquatic.js';
 import {canHunt,ecologicalCapabilities,plantPreference} from './functional-diet.js';
 import {hasPart} from '../lineage/part-abilities.js';
+import {canSwim} from '../lineage/lifestyle.js';
+import {stalkerProfileFor,STALKER_PROFILES} from '../organisms/stalker-profile.js';
 
 // Anatomy-directed ambient behavior cadence for healthy autonomous wildlife.
 // This controller is deliberately stateless and consumes no simulation RNG: it only
 // turns the shared ecology beat into distinct, ID-staggered anatomy-derived rhythms.
+// Shoreline reach for a swimming hunter's ambient routine (tiles).
+const SHORE_REACH=6;
+// Ambient phase shares (of a 36-beat cycle) per inherited hunting temperament.
+const HUNTER_RHYTHM=Object.freeze({wary:{watch:14,rest:9},ambusher:{watch:10,rest:8},rusher:{watch:6,rest:6}});
 const DIRS=[[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];
 
 export class WildlifeRhythmController{
@@ -18,12 +24,18 @@ export class WildlifeRhythmController{
     // immediately even when its ancestry label is unchanged.
     const role=ecologicalCapabilities(a);
     if(isWaterDweller(a))return this.sifter(a,step);
-    if(canHunt(a))return this.bankHunter(a,step);
+    // Hunters by function and circumstance, not founding label: a hunter that can swim and has
+    // water within reach works the shoreline; any other hunter prowls, in a style set by its own
+    // inherited temperament and evolved senses/legs (stalkerProfileFor).
+    if(canHunt(a))return canSwim(a)&&nearestWater(this.sim.world,a.x,a.y,SHORE_REACH)?this.bankHunter(a,step):this.landHunter(a,step);
     if(hasPart(a,'digging-forelimb'))return this.digger(a,step);
     if(role.filterFeeder)return this.sifter(a,step);
     if(role.carrion&&plantPreference(a,'rotcap')>=.6)return this.scavenger(a,step);
     if(hasPart(a,'kernel-beak'))return this.seedCarrier(a,step);
-    return this.hopper(a,step);
+    // Remaining foragers follow their actual social organisation (the canonical social
+    // controller's live group mode): a band keeps band rhythms, a herd keeps herd rhythms.
+    const social=this.sim.social?.state?.(a)?.mode??this.sim.social?.profile?.(a)?.mode;
+    return social==='band'?this.genvo(a,step):this.hopper(a,step);
 
   }
 
@@ -88,10 +100,12 @@ export class WildlifeRhythmController{
     return{intent:'ground-probe',target:null,mode:'probe'};
   }
 
-  stalker(a,step){
-    const phase=(step+a.id*7)%36;
-    if(phase<10)return{intent:'scent-watch',target:null,mode:'watch'};
-    if(phase<28)return{intent:'shadow-patrol',target:this.localTarget(a,5.6,step,7),mode:'patrol'};
+  landHunter(a,step){
+    // Watch/patrol/rest shares come from the inherited temperament profile; patrol reach from
+    // the profile's (sight-scaled) trigger range. Wary hunters watch longest, rushers range farthest.
+    const p=stalkerProfileFor(a),share=HUNTER_RHYTHM[p.id]||HUNTER_RHYTHM.ambusher,phase=(step+a.id*7)%36;
+    if(phase<share.watch)return{intent:'scent-watch',target:null,mode:'watch'};
+    if(phase<36-share.rest)return{intent:'shadow-patrol',target:this.localTarget(a,5.6*p.triggerRange/STALKER_PROFILES.wary.triggerRange,step,7),mode:'patrol'};
     return{intent:'stalker-rest',target:null,mode:'rest'};
   }
 

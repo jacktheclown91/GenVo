@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
+import {interactAs} from './helpers/interaction.js';
 import {CFG} from '../src/sim/config.js';
 import {SPECIES} from '../src/organisms/species.js';
 
@@ -27,7 +28,7 @@ for(const a of sim.animals)if(a.id!==p.id&&a.id!==hunter.id&&SPECIES[p.species].
 const site=sim.stalkerTerritory.nearbySite(p,{radius:1.9});assert.equal(site?.known,false);assert.equal(site?.style,'rusher');
 assert.match(sim.interactionHint(),/Read Stalker signs/);
 const rngBefore=sim.rng.state;
-const result=sim.playerInteract();
+const result=interactAs(sim,assert,'den-inspect');
 assert.equal(result.ok,true);assert.equal(result.type,'den-inspect');assert.equal(result.style,'rusher');
 assert.match(result.message,/deep straight gouges/);assert.equal(sim.rng.state,rngBefore,'reading sign must not consume simulation RNG');
 assert.equal(p.hidden,true,'reading a den should not break concealment');assert.equal(den.known,true);assert.equal(den.lastInspectedTick,sim.tickCount);

@@ -1,6 +1,6 @@
 import {SPECIES} from '../organisms/species.js';
-import {compareMateOptions} from './mate-preferences.js';
-import {availableCourtshipMoves,courtshipCost,COURTSHIP_PERFORMANCE,upcomingMoveAvailability,changeUpcomingMove} from './courtship-performance.js';
+import {compareMateOptions,SAME_TAXON_AFFINITY} from './mate-preferences.js';
+import {availableCourtshipMoves,courtshipCost,COURTSHIP_PERFORMANCE,activeCourtship,upcomingMoveAvailability,changeUpcomingMove} from './courtship-performance.js';
 import {reproductiveMode} from './reproductive-anatomy.js';
 
 export class ReproductionController{
@@ -21,7 +21,9 @@ export class ReproductionController{
       const distance=Math.hypot(b.x-active.x,b.y-active.y);
       if(distance<=senseRadius)out.push({animal:b,distance});
     });
-    return out.sort((a,b)=>compareMateOptions(active,a.animal,b.animal,this.sim.seed,senseRadius)).map(x=>x.animal);
+    // Same-taxon search tendency, weighed with inherited preference (docs/HERITABLE_MATE_CHOICE.md).
+    const tree=this.sim.evolutionTree,affinity=tree?.sameTaxon?b=>tree.sameTaxon(active,b)?SAME_TAXON_AFFINITY:0:null;
+    return out.sort((a,b)=>compareMateOptions(active,a.animal,b.animal,this.sim.seed,senseRadius,{affinity})).map(x=>x.animal);
   }
   taxonRelation(a,b){const tree=this.sim.evolutionTree;if(!a||!b||!tree)return{same:true,kind:'same',from:'GenVo',to:'GenVo'};const from=tree.taxonLabel(a),to=tree.taxonLabel(b),same=tree.sameTaxon(a,b);return{same,kind:same?'same':'gene-flow',from,to,label:same?`same taxon · ${to}`:`gene flow · ${from} × ${to}`}}
   selectedMate(){
@@ -67,11 +69,16 @@ export class ReproductionController{
     mother.reproductiveStrategy=choices[(choices.indexOf(mother.reproductiveStrategy||'adaptive')+1)%choices.length];
     return {ok:true,strategy:mother.reproductiveStrategy};
   }
+  approachAvailability(active,mate){
+    const pair=this.sim.matePairAvailability(active,mate,{ready:true});if(!pair.enabled)return pair;
+    if(!this.sim.canReach(active,mate.x,mate.y))return{enabled:false,reasonCode:'unreachable',reason:'Your body cannot reach this partner from here.'};
+    return pair;
+  }
   courtshipAvailability({targetId=this.selectedMateId}={}){
     const active=this.sim.player(),mate=this.sim.animals.find(a=>a.id===targetId&&a.alive);
     if(!active?.alive||!mate)return{enabled:false,reason:'The selected partner is no longer here.'};
     if(this.sim.paused)return{enabled:false,reason:'Resume the world first.'};
-    const pair=this.sim.matePairAvailability(active,mate,{ready:true});if(!pair.enabled)return pair;
+    const pair=this.approachAvailability(active,mate);if(!pair.enabled)return pair;
     if(active.courtshipPerformance||(this.courtTargetId===mate.id&&active.intent==='mate'&&active.target?.id===mate.id))return{enabled:false,reason:'An approach or performance is already underway.'};
     const allowed=availableCourtshipMoves(active),sequence=this.ritualQueue;
     if(sequence.length>3||sequence.some(m=>m!=='approach'&&!allowed.includes(m)))return{enabled:false,reason:'This body cannot perform the chosen sequence.'};
@@ -93,9 +100,25 @@ export class ReproductionController{
   }
   courtTarget(){
     const active=this.sim.player();
-    const mate=this.sim.animals.find(a=>a.id===this.courtTargetId&&a.alive)||null;
-    if(!active||!mate||!this.sim.canMatePair(active,mate,{ready:true})){this.courtTargetId=null;return null}
+    // Manual decisions bypass the autonomous display validator. Use the same
+    // validity/lifetime authority so a paid but interrupted display cannot
+    // remain a permanent lock after movement, partner loss or save/restore.
+    const display=active?.courtshipPerformance;
+    if(display&&!activeCourtship(this.sim,active)){
+      const partner=this.sim.animals.find(a=>a.id===display.partnerId)||{id:display.partnerId};
+      this.sim.endBlockedCourtship(active,partner,{reason:'The courtship performance ended before pairing.',reasonCode:'performance-ended',stage:'performance'});
+    }
+    const mate=this.sim.animals.find(a=>a.id===this.courtTargetId)||null;
+    if(this.courtTargetId==null)return null;
+    if(!active){this.courtTargetId=null;return null}
+    const status=this.approachAvailability(active,mate);
+    if(!status.enabled){this.sim.endBlockedCourtship(active,mate,{...status,stage:'approach'});this.courtTargetId=null;return null}
     return mate;
+  }
+  endSelectedEncounter(a,b){
+    const active=this.sim.player();if(!active)return false;
+    const involved=a?.id===active.id&&b?.id===this.courtTargetId||b?.id===active.id&&a?.id===this.courtTargetId;
+    if(involved)this.courtTargetId=null;return involved;
   }
   onMated(a,b){
     a.lastMatingTick=b.lastMatingTick=this.sim.tickCount;

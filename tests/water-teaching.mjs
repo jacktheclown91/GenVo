@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
+import {interactAs} from './helpers/interaction.js';
 
 const sim=new Simulation('GENVO8-WATER-TEACHING-HOTFIX',{player:true});
 const parent=sim.player();
@@ -20,7 +21,7 @@ parent.x=bank.x;parent.y=bank.y;child.x=bank.x+.55;child.y=bank.y+.15;
 assert.equal(sim.world.water[sim.world.idx(child.x,child.y)],0,'the juvenile can stand beside the caregiver on land');
 parent.hydration=SPECIES.genvo.maxHydration*.45;
 sim.rebuildSpatial();
-const result=sim.playerInteract();
+const result=interactAs(sim,assert,'drink');
 assert.equal(result.type,'drink','the caregiver drinks from the bank using the normal E interaction');
 sim.family.phaseCare();
 assert.ok((child.learningLessons?.water||0)>=1,'the juvenile learns water from a caregiver drinking at the bank');

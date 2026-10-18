@@ -1,0 +1,95 @@
+{
+ "schema": "genvo.test-run/3",
+ "validationCode": {
+  "scope": "src, tools and tests code/configuration; not a release seal",
+  "start": "f2a6bb41b7f599b5d175db454bc90445bb0968f080e7162f5d9297baa5dd7c4f",
+  "end": "f2a6bb41b7f599b5d175db454bc90445bb0968f080e7162f5d9297baa5dd7c4f",
+  "inputDrift": false
+ },
+ "classificationNote": "byKind counts overlap for mixed suites; unclassified means not yet audited",
+ "mode": "fast",
+ "date": "2026-10-17T17:16:05.203Z",
+ "seconds": 3,
+ "artifacts": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\observer-scan-receipt-2026-10-17.artifacts",
+ "total": 1,
+ "pass": 1,
+ "knownFail": 0,
+ "fail": 0,
+ "timeout": 0,
+ "stale": 0,
+ "deferred": 0,
+ "byKind": {
+  "biological-invariant": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "mechanism": {
+   "pass": 1,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "ecological-observation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "performance": {
+   "pass": 1,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "historical-expectation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "release-gate": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "unclassified": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  }
+ },
+ "results": [
+  {
+   "name": "observer-play",
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "tier": "fast",
+   "seconds": 3.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\observer-scan-receipt-2026-10-17.artifacts\\observer-play.log"
+  }
+ ]
+}

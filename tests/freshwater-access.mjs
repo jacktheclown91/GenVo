@@ -1,3 +1,4 @@
+import {interactAs} from './helpers/interaction.js';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
@@ -11,7 +12,7 @@ p.adaptations=['water-sacs','webbed-limbs'];p.hydration=20;
 assert.equal(sim.canOccupy(p,p.x,p.y),true);
 assert.equal(w.isDrinkable(p.x,p.y),true,'occupied freshwater is drinkable');
 assert.deepEqual(w.nextDrinkStep(p.x,p.y),{x:p.x,y:p.y,score:1,drinkable:true});
-const before=p.hydration;assert.equal(sim.playerInteract().type,'drink');assert.ok(p.hydration>before,'player drinks in occupied freshwater');
+const before=p.hydration;assert.equal(interactAs(sim,assert,'drink').type,'drink');assert.ok(p.hydration>before,'player drinks in occupied freshwater');
 p.intent='drink';p.hydration=20;sim.resolveInteraction(p);assert.ok(p.hydration>20,'autonomous interaction drinks the same water');
 const restored=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim)));
 assert.equal(restored.world.isDrinkable(p.x,p.y),true,'save/load rebuilds the same access authority');

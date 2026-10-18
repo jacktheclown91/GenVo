@@ -1,0 +1,477 @@
+{
+ "schema": "genvo.validation-kinds/1",
+ "note": "Validation purpose is separate from fast/long execution tier. Mixed suites retain all their gates when selected. Unreviewed suites stay unclassified.",
+ "kinds": {
+  "biological-invariant": "Accounted finite stocks, valid identities/genetic sources, and deterministic mechanical consistency.",
+  "mechanism": "Controlled evidence that a biological/environmental process works under its required conditions.",
+  "ecological-observation": "Natural survival, extinction, population, migration and divergence measurements; no preferred outcome.",
+  "performance": "Explicit runtime or memory evidence; timeout is never an ecological pass.",
+  "historical-expectation": "Preserved comparisons against earlier contracts; differences need explanation.",
+  "release-gate": "Provenance, packaging and player-facing style checks; separate from biological validity.",
+  "unclassified": "Not yet individually audited; never silently inferred from a suite name."
+ },
+ "defaultKinds": [
+  "unclassified"
+ ],
+ "suites": {
+  "natural-world-soak": {
+   "kinds": [
+    "biological-invariant",
+    "ecological-observation",
+    "performance"
+   ],
+   "note": "Five original seeds and 640/320 days. All daily/tick gates retained; survival is recorded. 1500 s unchanged."
+  },
+  "ecology-observation-100": {
+   "kinds": [
+    "biological-invariant",
+    "ecological-observation",
+    "performance"
+   ],
+   "note": "Additional five 100-day worlds; not replacement coverage. New diagnostic budget 300 s, not yet measured."
+  },
+  "wild-evolution": {
+   "kinds": [
+    "mechanism"
+   ],
+   "note": "Controlled starting anatomy, functional parts, digging, relic ownership and mutation exclusion. Natural block moved intact in seed/horizon to observation suite."
+  },
+  "wild-evolution-observation": {
+   "kinds": [
+    "biological-invariant",
+    "ecological-observation",
+    "performance"
+   ],
+   "note": "GENVO8-WILD-RUN, original 420 days and 900 s ceiling. Retains evolved-survivor, population and branch measurements without targets."
+  },
+  "ecological-integrity": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Existing strict accounting, source/ownership or corruption-rejection coverage remains a gate."
+  },
+  "botanical-safety": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Existing strict accounting, source/ownership or corruption-rejection coverage remains a gate."
+  },
+  "plant-resource-contract": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Existing strict accounting, source/ownership or corruption-rejection coverage remains a gate."
+  },
+  "conception-parental-inheritance": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Existing strict accounting, source/ownership or corruption-rejection coverage remains a gate."
+  },
+  "maternal-birth-authority": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Existing strict accounting, source/ownership or corruption-rejection coverage remains a gate."
+  },
+  "soil-water": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Controlled mechanism, validity, or exact determinism checks; no natural population target introduced."
+  },
+  "weather-patterns": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Controlled mechanism, validity, or exact determinism checks; no natural population target introduced."
+  },
+  "weather-soil-resume": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Controlled mechanism, validity, or exact determinism checks; no natural population target introduced."
+  },
+  "storm-aftermath": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Controlled mechanism, validity, or exact determinism checks; no natural population target introduced."
+  },
+  "weather-exposure": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Controlled mechanism, validity, or exact determinism checks; no natural population target introduced."
+  },
+  "family-weather-refuge": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Controlled mechanism, validity, or exact determinism checks; no natural population target introduced."
+  },
+  "shelter-weatherproofing": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Controlled mechanism, validity, or exact determinism checks; no natural population target introduced."
+  },
+  "hydrology": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Controlled mechanism, validity, or exact determinism checks; no natural population target introduced."
+  },
+  "gestation-inheritance": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Controlled mechanism, validity, or exact determinism checks; no natural population target introduced."
+  },
+  "reproductive-compatibility": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Controlled mechanism, validity, or exact determinism checks; no natural population target introduced."
+  },
+  "consolidation-demand-parity": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Controlled mechanism, validity, or exact determinism checks; no natural population target introduced."
+  },
+  "ecological-observation": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Controlled mechanism, validity, or exact determinism checks; no natural population target introduced."
+  },
+  "autonomous-soil-engineering": {
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "note": "Slow-scenario purpose reviewed. Existing assertions retained; finer assertion audit remains explicit future work."
+  },
+  "engineer-colony-natural": {
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "note": "Slow-scenario purpose reviewed. Existing assertions retained; finer assertion audit remains explicit future work."
+  },
+  "engineer-loss-return": {
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "note": "Slow-scenario purpose reviewed. Existing assertions retained; finer assertion audit remains explicit future work."
+  },
+  "engineer-natural-regional-observation": {
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "note": "Slow-scenario purpose reviewed. Existing assertions retained; finer assertion audit remains explicit future work."
+  },
+  "family-observer-resume": {
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "note": "Slow-scenario purpose reviewed. Existing assertions retained; finer assertion audit remains explicit future work."
+  },
+  "family-recruitment-observer": {
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "note": "Slow-scenario purpose reviewed. Existing assertions retained; finer assertion audit remains explicit future work."
+  },
+  "ecology-resume": {
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "note": "Slow-scenario purpose reviewed. Existing assertions retained; finer assertion audit remains explicit future work."
+  },
+  "observer-play": {
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "note": "Observer controls and existing 500 ms simulation budget; serial execution retained.",
+   "failureRules": [
+    {
+     "match": "ms per real second of play",
+     "kind": "performance"
+    }
+   ]
+  },
+  "evolution-baseline": {
+   "kinds": [
+    "mechanism",
+    "historical-expectation"
+   ],
+   "note": "Frozen mechanism matrix and historical natural trace remain unchanged; known natural mismatch stays visible.",
+   "failureRules": [
+    {
+     "match": "natural AUTO runs match the consolidation baseline",
+     "kind": "historical-expectation"
+    }
+   ]
+  },
+  "ai-disclosure": {
+   "kinds": [
+    "release-gate"
+   ],
+   "note": "Existing known release/provenance/style gate remains visible and still executes."
+  },
+  "canonical-source": {
+   "kinds": [
+    "release-gate"
+   ],
+   "note": "Existing known release/provenance/style gate remains visible and still executes."
+  },
+  "evolution-contract": {
+   "kinds": [
+    "release-gate"
+   ],
+   "note": "Existing known release/provenance/style gate remains visible and still executes."
+  },
+  "provenance": {
+   "kinds": [
+    "release-gate"
+   ],
+   "note": "Existing known release/provenance/style gate remains visible and still executes."
+  },
+  "player-copy-style": {
+   "kinds": [
+    "release-gate"
+   ],
+   "note": "Existing known release/provenance/style gate remains visible and still executes."
+  },
+  "validation-process": {
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "note": "Controlled fixture verifies retained output and owned descendant cleanup at timeout."
+  },
+  "validation-kinds": {
+   "kinds": [
+    "mechanism"
+   ],
+   "note": "Catalog references, original long ceilings, and historical ecological finding remain valid."
+  },
+  "dietary-scan-parity": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Exact complete natural state and candidate/reserve parity against the frozen pre-cache demand function."
+  },
+  "cpu-profile-retention": {
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "note": "A deliberately interrupted short fixture must preserve completed CPU chunks and remain an incomplete observation."
+  },
+  "topography": {
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ]
+  },
+  "regional-environment": {
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ]
+  },
+  "terrain-travel": {
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ]
+  },
+  "surface-topology": {
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ]
+  },
+  "world-pages": {
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ]
+  },
+  "world-generators": {
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ]
+  },
+  "processing-capacity": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Diagnostic thresholds cannot clip funded litters, laying or hatching; parental accounting and resume equality."
+  },
+  "frame-stepper": {
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ],
+   "note": "Budgeted frame grouping retains admitted steps and preserves full biological state for identical inputs; not mature performance proof."
+  },
+  "neutral-birth-core": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Neutral core exposure/lineage counterfactual, untouched historical organisms/world/RNG, explicit migration and deterministic new-policy resume; population/phenotype components remain legacy."
+  },
+  "neutral-parental-traits": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Inherited proto/form state is independent of pressure, behavior, generation and lineage; frozen parental determinants, migration and exact resume."
+  },
+  "supported-water-physiology": {
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ],
+   "note": "Independent water expression/support, no phantom organs across births, explicit inherited legacy physiology, migration and exact resume."
+  },
+  "planet-geography": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Current 128-tile opt-in geography, canonical planetary coordinates, shared river boundaries, descriptor rejection and exact live-state save continuation. No global ecology or enlarged-world claim."
+  },
+  "parental-adaptation-guidance": {
+   "kinds": [
+    "mechanism"
+   ],
+   "note": "Observed parental phenotype ownership and canonical gameplay consequences; no offspring probability guarantee, no inspection-time anatomy mutation. Not a player-guided evolution trial."
+  },
+  "founder-independent-ecology": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "No runtime founder-target feedback; local resource opportunity unchanged, explicit future behavior migration, preserved organisms/world/RNG and exact save continuation."
+  },
+  "recovery": {
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ],
+   "note": "Founder-independent opportunity, unchanged kinship and inbreeding accounting. Historical founder-ratio boost/refuge assertions archived explicitly in founder-feedback-repair."
+  },
+  "optional-organ-loss": {
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ],
+   "note": "Neutral optional subtree deletion, paired closure, existing viability, expression, explicit future-birth migration and deterministic save continuity. Controlled mechanism fixtures are not ordinary ecological frequency evidence."
+  },
+  "local-prey-opportunity": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Local finite edible stock and remote-animal counterfactual; juvenile/wound budgets; explicit old ecology migration and actual deterministic continuation. Not an ecosystem survival target."
+  },
+  "tissue-ledger": {
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ],
+   "note": "Inactive exact quantity-transfer kernel: atomic multi-owner funding, conserved explicit material/energy counts, idempotent custody events and JSON save continuation. Synthetic quanta are not gameplay calibration or live physics proof."
+  },
+  "tissue-construction": {
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ],
+   "note": "Inactive explicit anatomy-to-custody increment compiler; synthetic quantities, complete net compartments/head modes, blueprint/policy-bound replay, no partial funding or implicit defaults. Not actual biological development or calibrated physics."
+  },
+  "courtship-target-ownership": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Controlled pair-scoped cleanup authority: unrelated refusal and failed conception preserve player encounter; actual participants end it; saved identity retained. Not ordinary consent/lineage proof."
+  },
+  "courtship-reachability": {
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "note": "Manual approach and ongoing target use shared canReach authority; controlled topology, saved interruption, connected detour and existing supported swimming. No ordinary inherited-development claim."
+  }
+ },
+ "failureRules": [
+  {
+   "match": "invalid finite resource stock",
+   "kind": "biological-invariant"
+  },
+  {
+   "match": "population must reconcile with actual births and deaths",
+   "kind": "biological-invariant"
+  },
+  {
+   "match": "duplicate living actor identity",
+   "kind": "biological-invariant"
+  },
+  {
+   "match": "nonfinite actor",
+   "kind": "biological-invariant"
+  },
+  {
+   "match": "population census must include every living actor",
+   "kind": "biological-invariant"
+  },
+  {
+   "match": "simulation must advance",
+   "kind": "biological-invariant"
+  },
+  {
+   "match": "census values are finite",
+   "kind": "biological-invariant"
+  },
+  {
+   "match": "complete natural saved state differs",
+   "kind": "biological-invariant"
+  },
+  {
+   "match": "preserve exact saved state",
+   "kind": "biological-invariant"
+  }
+ ]
+}

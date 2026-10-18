@@ -6,6 +6,8 @@
 // the existing ecology's shared RNG stream.
 import {RNG} from '../core/rng.js';
 import {planPartCounts} from '../lineage/part-abilities.js';
+import {SPECIES} from '../organisms/species.js';
+import {bodyMass} from '../organisms/body-mass.js';
 
 export const PREFERENCE_AXES=Object.freeze(['size','strength','ornament','display','behavior']);
 export const RITUAL_ACTIONS=Object.freeze(['dance','call','flare','scent','gesture']);
@@ -34,7 +36,9 @@ export function founderMatePreferences(seed,id){
   const rng=new RNG(`${seed}:mate-genotype:${id}`),weights={};
   for(const key of PREFERENCE_AXES)weights[key]=Number(rng.range(-.55,.55).toFixed(5));
   const ritualTastes=Object.fromEntries(RITUAL_ACTIONS.map(action=>[action,Number(rng.range(-1,1).toFixed(5))]));
-  return {weights,selectivity:Number(rng.range(.25,.75).toFixed(5)),ritualTastes,tempo:Number(rng.range(-1,1).toFixed(5))};
+  const selectivity=Number(rng.range(.25,.75).toFixed(5)),tempo=Number(rng.range(-1,1).toFixed(5));
+  // Drawn last so every earlier founder value is unchanged.
+  return {weights,selectivity,ritualTastes,tempo,similarity:Number(rng.range(-.55,.55).toFixed(5))};
 }
 export function inheritMatePreferences(seed,id,mother,father){
   const rng=new RNG(`${seed}:mate-offspring:${id}:${mother?.id??'unknown'}:${father?.id??'unknown'}`),weights={};
@@ -47,13 +51,24 @@ export function inheritMatePreferences(seed,id,mother,father){
   const ra=matePreferencesFor(seed,mother).ritualTastes,rb=matePreferencesFor(seed,father).ritualTastes;
   const ritualTastes=Object.fromEntries(RITUAL_ACTIONS.map(action=>[action,Number(clamp(-1,1,((ra?.[action]??0)+(rb?.[action]??0))/2+rng.range(-.18,.18)).toFixed(5))]));
   const tempo=Number(clamp(-1,1,((matePreferencesFor(seed,mother).tempo??0)+(matePreferencesFor(seed,father).tempo??0))/2+rng.range(-.16,.16)).toFixed(5));
-  return {weights,selectivity:Number(clamp(0,1,(sa+sb)/2+rng.range(-.08,.08)).toFixed(5)),ritualTastes,tempo};
+  const selectivity=Number(clamp(0,1,(sa+sb)/2+rng.range(-.08,.08)).toFixed(5));
+  // Inherited similarity preference (drawn after every existing value): parental mean plus variation.
+  const similarity=Number(clamp(-LIMIT,LIMIT,((matePreferencesFor(seed,mother).similarity??0)+(matePreferencesFor(seed,father).similarity??0))/2+rng.range(-.10,.10)).toFixed(5));
+  return {weights,selectivity,ritualTastes,tempo,similarity};
 }
 export function matePreferencesFor(seed,animal){
   const founder=founderMatePreferences(seed,animal?.id??0);
   const own=animal?.matePreferences;return own?{...founder,...own,ritualTastes:{...founder.ritualTastes,...own.ritualTastes}}:founder;
 }
 
+export const SIMILARITY_PREFERENCE={enabled:true};
+const ORNAMENTS=['display-frill','signal-crest','luminous-tail','flag-tail','scent-gland','display-eye'];
+function hueOf(animal){const hex=SPECIES[animal?.species]?.color||'#888888',r=parseInt(hex.slice(1,3),16)/255,g=parseInt(hex.slice(3,5),16)/255,b=parseInt(hex.slice(5,7),16)/255,mx=Math.max(r,g,b),mn=Math.min(r,g,b),d=mx-mn;let h=0;if(d)h=mx===r?((g-b)/d)%6:mx===g?(b-r)/d+2:(r-g)/d+4;const gs=animal?.genes||{};return(h*60+360+((gs.climate??1)-1)*165+((gs.temperament??1)-1)*36)%360}
+export function perceivedAppearance(animal){const parts=planPartCounts(animal),legs=Object.entries(parts).filter(([id])=>/leg|forelimb|grasper/.test(id)).reduce((n,[,c])=>n+c,0),webbed=parts['webbed-leg']||0;
+  return{size:Math.log(Math.max(.05,bodyMass(animal))),limb:legs?webbed/legs:0,ornament:ORNAMENTS.reduce((n,id)=>n+(parts[id]||0),0),hue:hueOf(animal)}}
+export function appearanceDistance(a,b){const x=perceivedAppearance(a),y=perceivedAppearance(b),dh=Math.min(Math.abs(x.hue-y.hue),360-Math.abs(x.hue-y.hue));
+  return(Math.min(1,Math.abs(x.size-y.size)/Math.log(4))+Math.abs(x.limb-y.limb)+Math.min(1,Math.abs(x.ornament-y.ornament)/3)+dh/180)/4}
+export function perceptionOf(animal){const parts=planPartCounts(animal),eyes=Object.entries(parts).filter(([id])=>/eye/.test(id)).reduce((n,[,c])=>n+c,0),senses=animal?.genes?.senses??1;return eyes?Math.max(.5,Math.min(1.2,senses)):.3*senses}
 export function individualMateChoice(chooser,candidate,seed='GENVO8'){
   const genotype=matePreferencesFor(seed,chooser),traits=expressedMateTraits(candidate),w=genotype.weights||{};
   let total=0,dominant=null,largest=0;
@@ -63,15 +78,24 @@ export function individualMateChoice(chooser,candidate,seed='GENVO8'){
     total+=term;
     if(Math.abs(term)>largest){largest=Math.abs(term);dominant=axis}
   }
+  // Heritable similarity preference (creator decision 2026-10-15): positive alleles favour partners whose
+  // PERCEPTIBLE anatomy (size, limb build, ornament, colour) resembles the chooser's own, negative alleles
+  // favour contrast. Weighted by the chooser's perception (senses; much weaker without eyes). It is one
+  // more inherited axis of the same score, never a compatibility gate.
+  if(SIMILARITY_PREFERENCE.enabled){const allele=clamp(-LIMIT,LIMIT,genotype.similarity??0),term=allele*(1-2*appearanceDistance(chooser,candidate))*perceptionOf(chooser);total+=term;if(Math.abs(term)>largest){largest=Math.abs(term);dominant='similarity'}}
   // Absolute allele magnitude matters: a weakly inherited preference must
   // not behave as though it were a strong preference simply by normalization.
   const score=clamp(-1,1,total/PREFERENCE_AXES.length);
   const threshold=-.16+.08*clamp(0,1,genotype.selectivity??.5);
   const accepted=score>=threshold;
-  const dominantAllele=dominant?clamp(-1,1,w[dominant]):0;
+  const dominantAllele=dominant==='similarity'?clamp(-1,1,genotype.similarity??0):dominant?clamp(-1,1,w[dominant]):0;
   const direction=dominantAllele>=0?'greater':'less';
   return {accepted,score,threshold,reason:accepted?'accepted':`preference-${dominant||'general'}`,dominant,direction};
 }
+// Plain-language inclination for the player's own creature (Phase 3J): which inherited taste led it to hold
+// back, never a number. axis/direction come from individualMateChoice's dominant term.
+const TASTE={similarity:['partners that look like itself','partners that look unlike itself'],size:['larger partners','smaller partners'],strength:['stronger partners','slighter partners'],ornament:['more ornamented partners','plainer partners'],display:['bolder displays','quieter displays'],behavior:['livelier partners','calmer partners']};
+export function tasteText(taste){const t=TASTE[taste?.axis];return t?`it is drawn to ${t[taste.direction==='less'?1:0]}`:'it is not drawn to this partner'}
 export function reciprocalMateChoice(a,b,seed='GENVO8'){
   const aChoice=individualMateChoice(a,b,seed),bChoice=individualMateChoice(b,a,seed);
   return {accepted:aChoice.accepted&&bChoice.accepted,
@@ -101,11 +125,19 @@ export function mateOptionAssessment(chooser,candidate,seed='GENVO8',distance=0,
       preferenceValue>.075?'strong fit':preferenceValue>.015?'favored':'compatible'};
 }
 
-export function compareMateOptions(chooser,first,second,seed='GENVO8',radius=12){
+// Same-taxon search tendency (docs/HERITABLE_MATE_CHOICE.md: same taxon before gene flow).
+// A TENDENCY, not a barrier: it is added to the ordinal value, so a compatible cross-taxon
+// candidate the chooser clearly prefers can still rank first. Measured scale (3 seeds x 30
+// days): accepted preference values mostly lie within +/-0.03 and a chooser's best-to-worst
+// accepted gap has median 0.055, p90 0.09. CANDIDATE 0.01 (creator: 0.04 too strong); sweep across
+// set sizes and preference strengths in docs/mate-affinity/sweep-2026-10-15.json. Not final.
+export const SAME_TAXON_AFFINITY=.01;
+export function compareMateOptions(chooser,first,second,seed='GENVO8',radius=12,{affinity=null}={}){
   const ad=Math.hypot(chooser.x-first.x,chooser.y-first.y);
   const bd=Math.hypot(chooser.x-second.x,chooser.y-second.y);
   const a=mateOptionAssessment(chooser,first,seed,ad,radius);
   const b=mateOptionAssessment(chooser,second,seed,bd,radius);
   if(a.choice.accepted!==b.choice.accepted)return a.choice.accepted?-1:1;
-  return b.value-a.value||ad-bd||first.id-second.id;
+  const av=a.value+(affinity?affinity(first):0),bv=b.value+(affinity?affinity(second):0);
+  return bv-av||ad-bd||first.id-second.id;
 }

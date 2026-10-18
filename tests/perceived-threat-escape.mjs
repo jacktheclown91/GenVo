@@ -1,19 +1,24 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
+// Decision-coordination audit (threat appraisal): flight follows perceptible behaviour, so a staged hunter
+// is staged hunting and facing its prey.
+// Since Phase 3K (threat-perception.js) a hunter behind the prey is heard only while moving, as a hunting one is:
+// movedTick 0 marks it as just having moved (these scenes decide at tick 0).
+const stageHunting=(h,prey)=>{const a=Math.atan2(prey.y-h.y,prey.x-h.x);Object.assign(h,{intent:'hunt',target:prey,dir:(Math.round(a/(Math.PI/4))+2+8)%8,movedTick:0})};
 import {escapeDestination} from '../src/world/escape-route.js';
 function scene(species,unseen=false,refuge=false){
   const sim=new Simulation('PERCEIVED-ESCAPE-'+species,{player:false}),w=sim.world;
   w.water.fill(0);if(refuge)for(let y=0;y<w.n;y++)w.water[w.idx(41,y)]=1;
   w.buildLandRegions();w.buildHydrology();
   const prey=sim.animals.find(a=>a.species===species),allHunters=sim.animals.filter(a=>a.species==='needlejaw'),hunters=allHunters.slice(0,2);
-  const swimmer=refuge?structuredClone(prey.bodyPlan):null;
-  if(swimmer)for(const n of swimmer.nodes)if(/^root\/limb\.\d+$/.test(n.id))n.partId='webbed-leg';
+  const swimmer=structuredClone(prey.bodyPlan);
+  if(refuge)for(const n of swimmer.nodes)if(/^root\/limb\.\d+$/.test(n.id))n.partId='webbed-leg';
   Object.assign(prey,{x:40.5,y:40.5,age:SPECIES[species].maturity+2,energy:SPECIES[species].maxEnergy*.9,hydration:SPECIES[species].maxHydration,bodyPlan:swimmer,adaptations:[],ecoLifestyle:null});
   prey.genes.senses=1;
   Object.assign(hunters[0],{x:39.5,y:40.5,age:60});Object.assign(hunters[1],{x:42.5,y:40.5,age:60});
   const distant=allHunters[2];Object.assign(distant,{x:70.5,y:40.5,age:60});
-  sim.animals=[prey,...hunters,...(unseen?[distant]:[])];sim.rebuildSpatial();sim.phaseDecision(null);
+  for(const h of hunters)stageHunting(h,prey);sim.animals=[prey,...hunters,...(unseen?[distant]:[])];sim.rebuildSpatial();sim.phaseDecision(null);
   return{sim,prey,hunters};
 }
 for(const species of ['mosskip','rootling','genvo']){

@@ -1,0 +1,253 @@
+{
+ "schema": "genvo.reproductive-viability/1",
+ "date": "2026-10-15",
+ "candidate": false,
+ "days": 20,
+ "seeds": [
+  "VIAB-A",
+  "VIAB-B",
+  "VIAB-C"
+ ],
+ "note": "Diagnostic. Stage 2 is a controlled favourable-condition fixture, not a natural observation.",
+ "standing": {
+  "mosskip": {
+   "adultSamples": 1952,
+   "births60d": 108,
+   "energyMedian": 0.722,
+   "energyP90": 0.759,
+   "hydrationP90": 0.8,
+   "energyGate": 0.528,
+   "habitatGate": 0.611,
+   "bothGates": 0.37
+  },
+  "rootling": {
+   "adultSamples": 882,
+   "births60d": 22,
+   "energyMedian": 0.726,
+   "energyP90": 0.816,
+   "hydrationP90": 0.834,
+   "energyGate": 0.587,
+   "habitatGate": 0.807,
+   "bothGates": 0.514
+  },
+  "needlejaw": {
+   "adultSamples": 317,
+   "births60d": 1,
+   "energyMedian": 0.712,
+   "energyP90": 0.796,
+   "hydrationP90": 0.875,
+   "energyGate": 0.448,
+   "habitatGate": 0.836,
+   "bothGates": 0.404
+  },
+  "rillsifter": {
+   "adultSamples": 509,
+   "births60d": 0,
+   "energyMedian": 0.79,
+   "energyP90": 0.936,
+   "hydrationP90": 1,
+   "energyGate": 1,
+   "habitatGate": 0.014,
+   "bothGates": 0.014
+  },
+  "mirelick": {
+   "adultSamples": 546,
+   "births60d": 0,
+   "energyMedian": 0.727,
+   "energyP90": 0.8,
+   "hydrationP90": 0.832,
+   "energyGate": 0.311,
+   "habitatGate": 0,
+   "bothGates": 0
+  },
+  "podshell": {
+   "adultSamples": 496,
+   "births60d": 0,
+   "energyMedian": 0.745,
+   "energyP90": 0.791,
+   "hydrationP90": 0.812,
+   "energyGate": 0.433,
+   "habitatGate": 0.014,
+   "bothGates": 0.01
+  },
+  "bankjaw": {
+   "adultSamples": 209,
+   "births60d": 0,
+   "energyMedian": 0.641,
+   "energyP90": 0.798,
+   "hydrationP90": 0.839,
+   "energyGate": 0.206,
+   "habitatGate": 0.813,
+   "bothGates": 0.182
+  },
+  "genvo": {
+   "adultSamples": 666,
+   "births60d": 58,
+   "energyMedian": 0.724,
+   "energyP90": 0.755,
+   "hydrationP90": 0.849,
+   "energyGate": 0.556,
+   "habitatGate": 0.625,
+   "bothGates": 0.393
+  }
+ },
+ "pairs": {
+  "mosskip": {
+   "bestCell": {
+    "x": 123.5,
+    "y": 55.5,
+    "resourceValue": 9.779
+   },
+   "furthestStage": "birth",
+   "firstPregnantDay": 3,
+   "alive": true,
+   "energyEnd": 0.353,
+   "courtshipStarts": 7,
+   "matingAttempts": 6,
+   "conceptions": 1,
+   "births": 1,
+   "reasons": {
+    "first-declines": 1238,
+    "second-declines": 120
+   },
+   "intents": [
+    "explore:859",
+    "mate:324",
+    "feed:247",
+    "drink:5",
+    "escape:5"
+   ]
+  },
+  "rootling": {
+   "bestCell": {
+    "x": 57.5,
+    "y": 121.5,
+    "resourceValue": 11.763
+   },
+   "furthestStage": "birth",
+   "firstPregnantDay": 3,
+   "alive": true,
+   "energyEnd": 0.44,
+   "courtshipStarts": 8,
+   "matingAttempts": 7,
+   "conceptions": 1,
+   "births": 1,
+   "reasons": {
+    "first-declines": 1658,
+    "second-declines": 84
+   },
+   "intents": [
+    "explore:965",
+    "mate:457",
+    "feed:349",
+    "breeding-site-rest:48",
+    "drink:5"
+   ]
+  },
+  "needlejaw": {
+   "bestCell": {
+    "x": 21.5,
+    "y": 21.5,
+    "resourceValue": 9
+   },
+   "furthestStage": "courtship incomplete",
+   "firstPregnantDay": null,
+   "alive": true,
+   "energyEnd": 0.586,
+   "courtshipStarts": 15,
+   "matingAttempts": 0,
+   "conceptions": 0,
+   "births": 0,
+   "reasons": {
+    "second-declines": 251,
+    "first-declines": 341,
+    "survival-priority": 1328
+   },
+   "intents": [
+    "mate:1241",
+    "hunt:415",
+    "escape:127",
+    "idle:90",
+    "explore:47"
+   ]
+  },
+  "rillsifter": {
+   "result": "blocked: no breeding-habitat cell anywhere in this world",
+   "stage": "habitat"
+  },
+  "mirelick": {
+   "result": "blocked: no breeding-habitat cell anywhere in this world",
+   "stage": "habitat"
+  },
+  "podshell": {
+   "bestCell": {
+    "x": 41.5,
+    "y": 3.5,
+    "resourceValue": 5.335
+   },
+   "furthestStage": "no courtship",
+   "firstPregnantDay": null,
+   "alive": true,
+   "energyEnd": 0.787,
+   "courtshipStarts": 0,
+   "matingAttempts": 0,
+   "conceptions": 0,
+   "births": 0,
+   "reasons": {},
+   "intents": [
+    "explore:1477",
+    "migrate:408",
+    "feed:30",
+    "drink:5"
+   ]
+  },
+  "bankjaw": {
+   "bestCell": {
+    "x": 31.5,
+    "y": 3.5,
+    "resourceValue": 7
+   },
+   "furthestStage": "no courtship",
+   "firstPregnantDay": null,
+   "alive": true,
+   "energyEnd": 0.71,
+   "courtshipStarts": 0,
+   "matingAttempts": 0,
+   "conceptions": 0,
+   "births": 0,
+   "reasons": {},
+   "intents": [
+    "mate:624",
+    "explore:491",
+    "escape:312",
+    "hunt:277",
+    "migrate:216"
+   ]
+  },
+  "genvo": {
+   "bestCell": {
+    "x": 121.5,
+    "y": 3.5,
+    "resourceValue": 10.022
+   },
+   "furthestStage": "gestation (no birth yet)",
+   "firstPregnantDay": 5,
+   "alive": true,
+   "energyEnd": 0.737,
+   "courtshipStarts": 15,
+   "matingAttempts": 14,
+   "conceptions": 1,
+   "births": 0,
+   "reasons": {
+    "first-declines": 1790,
+    "second-declines": 84
+   },
+   "intents": [
+    "explore:1141",
+    "mate:498",
+    "feed:276",
+    "migrate:5"
+   ]
+  }
+ }
+}

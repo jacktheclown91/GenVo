@@ -1,0 +1,109 @@
+{
+  "scope": "Opt-in planetary world created through normal menu. Ordinary keyboard movement and explicit isolated-context save/continue; no organism relocation, gene edits or simulated long trial. Atlas is static diagnostic geography, not omniscient gameplay or global living ecology.",
+  "start": {
+    "generator": "planetary/1",
+    "extent": 128,
+    "descriptor": {
+      "schema": 1,
+      "generator": "planetary/1",
+      "planetId": "planet:PLANET-B0-A",
+      "seed": "PLANET-B0-A",
+      "coordinateUnits": "terrain-tiles",
+      "equatorialCircumferenceTiles": 1048576,
+      "macroWidth": 512,
+      "macroHeight": 256,
+      "pageSizeTiles": 64,
+      "projection": "regional-equirectangular/1",
+      "anchor": {
+        "latitude": 0.669199118715111,
+        "longitude": -0.0004889532434657363
+      },
+      "landingEdge": 37632
+    },
+    "day": 1,
+    "tick": 30,
+    "player": {
+      "id": 109,
+      "x": 117.5,
+      "y": 66.5,
+      "energy": 113.79539991431768
+    },
+    "alive": 188,
+    "water": 512,
+    "soilWaterStateInitialized": false,
+    "weather": true
+  },
+  "moved": {
+    "generator": "planetary/1",
+    "extent": 128,
+    "descriptor": {
+      "schema": 1,
+      "generator": "planetary/1",
+      "planetId": "planet:PLANET-B0-A",
+      "seed": "PLANET-B0-A",
+      "coordinateUnits": "terrain-tiles",
+      "equatorialCircumferenceTiles": 1048576,
+      "macroWidth": 512,
+      "macroHeight": 256,
+      "pageSizeTiles": 64,
+      "projection": "regional-equirectangular/1",
+      "anchor": {
+        "latitude": 0.669199118715111,
+        "longitude": -0.0004889532434657363
+      },
+      "landingEdge": 37632
+    },
+    "day": 1,
+    "tick": 44,
+    "player": {
+      "id": 109,
+      "x": 120.90997619762535,
+      "y": 66.5,
+      "energy": 113.30040725928257
+    },
+    "alive": 188,
+    "water": 512,
+    "soilWaterStateInitialized": false,
+    "weather": true
+  },
+  "resumed": {
+    "generator": "planetary/1",
+    "extent": 128,
+    "descriptor": {
+      "schema": 1,
+      "generator": "planetary/1",
+      "planetId": "planet:PLANET-B0-A",
+      "seed": "PLANET-B0-A",
+      "coordinateUnits": "terrain-tiles",
+      "equatorialCircumferenceTiles": 1048576,
+      "macroWidth": 512,
+      "macroHeight": 256,
+      "pageSizeTiles": 64,
+      "projection": "regional-equirectangular/1",
+      "anchor": {
+        "latitude": 0.669199118715111,
+        "longitude": -0.0004889532434657363
+      },
+      "landingEdge": 37632
+    },
+    "day": 2,
+    "tick": 60,
+    "player": {
+      "id": 109,
+      "x": 120.90997619762535,
+      "y": 66.5,
+      "energy": 113.12964636169663
+    },
+    "alive": 188,
+    "water": 512,
+    "soilWaterStateInitialized": true,
+    "weather": true
+  },
+  "direction": "KeyD",
+  "atlas": {
+    "land": 86895,
+    "ocean": 44177,
+    "macroCells": 131072
+  },
+  "errors": []
+}

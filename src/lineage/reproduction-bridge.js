@@ -1,3 +1,4 @@
+import {projectWaterPhysiology} from './water-physiology.js';
 import {PARTS} from './part-registry.js';
 import {bodyPlanFromLegacy,serializePlan,deserializePlan,validatePlan} from './body-plan.js';
 import {syncAnatomy,refreshExpression,ANATOMY_FOR} from './evolution.js';
@@ -25,11 +26,12 @@ export function ancestryFor(sim,animal){
 const AXIS_PARTS=(()=>{const m={};for(const p of Object.values(PARTS))if(p.legacy){(m[p.legacy.axis]||=[]).push({id:p.id,threshold:p.legacy.threshold,adaptation:p.legacy.adaptation})}return m})();
 export function editableAxes(){return Object.keys(AXIS_PARTS)}
 
-export function applyLineageTarget(child,plan){
+export function applyLineageTarget(child,plan,{preserveLegacyWater=false}={}){
   if(!child||!plan||!validatePlan(plan).ok)return false;
   child.bodyPlan=deserializePlan(serializePlan(plan));const an=syncAnatomy(child);if(!an)return false;
   const present=new Set(plan.nodes.map(n=>n.partId));
   for(const [axis,parts] of Object.entries(AXIS_PARTS)){
+    if(axis==='waterBody')continue;
     const have=parts.filter(p=>present.has(p.id)).sort((a,b)=>b.threshold-a.threshold)[0];
     if(have){const seed=have.threshold>=.8?.9:.65;an[axis]=Math.max(an[axis]||0,seed);
       // The highest part on this axis caps it below the next tier unless that tier is present too.
@@ -37,5 +39,6 @@ export function applyLineageTarget(child,plan){
       if(higher!=null&&!parts.some(p=>p.threshold>=higher&&present.has(p.id))&&parts.some(p=>p.threshold>=higher))an[axis]=Math.min(an[axis],higher-.15)}
     else{const low=Math.min(...parts.map(p=>p.threshold));if((an[axis]||0)>=low)an[axis]=Math.max(0,low-.15)}
   }
+  projectWaterPhysiology(child,plan,{preserveLegacy:preserveLegacyWater});
   refreshExpression(child);return true;
 }

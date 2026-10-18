@@ -44,7 +44,8 @@ if(saved)assert.deepEqual(saved.contract,contract,'checkpoint requires identical
 const result=saved?.result??{days,seeds,start,sourceFingerprint,player:false,config:structuredClone(CFG.wildHunt),runs:[],complete:false};
 function persist(state){fs.writeFileSync(out,JSON.stringify(result,null,2));if(checkpoint){const tmp=checkpoint+'.tmp';fs.writeFileSync(tmp,v8.serialize({contract,result,...state}));fs.renameSync(tmp,checkpoint)}}
 function ecologyObservation(sim){
-  checkEcologicalIntegrity(sim,Object.values(CFG.initial).reduce((n,v)=>n+v,0));
+  // Resource-informed founding (Phase 3H) may found fewer animals than configured; the report travels with saves.
+  checkEcologicalIntegrity(sim,Object.values(CFG.initial).reduce((n,v)=>n+v,0)-Object.values(sim.foundingReport||{}).reduce((n,r)=>n+r.configured-r.supportable,0));
   // Read-only census: no diagnostic decisions, RNG draws or food harvesting.
   const resources={};for(const [kind,field] of Object.entries({...sim.world.plants,...sim.world.freshwaterFood,carrion:sim.world.carrion})){
     let total=0;for(const value of field)total+=value;resources[kind]=total;

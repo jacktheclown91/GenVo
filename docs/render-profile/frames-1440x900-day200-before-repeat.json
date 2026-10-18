@@ -1,0 +1,32 @@
+{
+ "viewport": "1440x900",
+ "advancedDays": 200,
+ "day": 201,
+ "animals": 247,
+ "frames": 1362,
+ "dt": {
+  "p50": 16.7,
+  "p95": 33.3,
+  "p99": 33.4
+ },
+ "render": {
+  "p50": 9.9,
+  "p95": 20.2
+ },
+ "sim": {
+  "p50": 0,
+  "p95": 0
+ },
+ "otherP95": 22.1,
+ "slowFrames": 3,
+ "slowFrameShare": {
+  "render": 0.19,
+  "sim": 0,
+  "other": 0.81
+ },
+ "memory": {
+  "jsHeapUsedMB": 159.3,
+  "jsHeapTotalMB": 289.9
+ },
+ "errors": []
+}

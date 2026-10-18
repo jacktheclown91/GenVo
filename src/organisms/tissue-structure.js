@@ -1,3 +1,4 @@
+import {hasImplicitHead} from '../lineage/head-plan.js';
 import {PARTS} from '../lineage/part-registry.js';
 import {validatePlan} from '../lineage/body-plan.js';
 
@@ -29,8 +30,7 @@ export function tissueInventory(plan){
   const validation=validatePlan(plan);if(!validation.ok)return{ok:false,reason:'invalid-body',errors:validation.errors,entries:[]};
   const entries=plan.nodes.map(n=>({nodeId:n.id,partId:n.partId,components:TISSUE_PARTS[n.partId].components,implicit:false}));
   // Match the existing assembly's legacy implicit head without adding a graph node.
-  const face=plan.nodes.some(n=>n.parent==='root'&&(n.socket==='mouth'||n.socket?.startsWith('eye')));
-  if(face&&plan.headMode!=='torso'&&!plan.nodes.some(n=>n.parent==='root'&&n.socket==='head'))entries.push({nodeId:'@implicit-head',partId:'head-base',components:TISSUE_PARTS['head-base'].components,implicit:true});
+  if(hasImplicitHead(plan))entries.push({nodeId:'@implicit-head',partId:'head-base',components:TISSUE_PARTS['head-base'].components,implicit:true});
   return{ok:true,entries,ownership:'Each mounted structure owns only its net tissue. Torso excludes head, mounted organs and resource contents. Mouth/eye tissue is excluded from its host head. Contents need a separate conserved-volume contract before inclusion.'};
 }
 

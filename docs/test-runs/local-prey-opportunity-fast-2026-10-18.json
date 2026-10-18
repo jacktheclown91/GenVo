@@ -1,0 +1,5945 @@
+{
+ "schema": "genvo.test-run/3",
+ "validationCode": {
+  "scope": "src, tools and tests code/configuration; not a release seal",
+  "start": "665c39e7165cb563b71c4b1e2ddba0ced7c2fff6e28cd5bb1a7a774f798741b3",
+  "end": "665c39e7165cb563b71c4b1e2ddba0ced7c2fff6e28cd5bb1a7a774f798741b3",
+  "inputDrift": false
+ },
+ "classificationNote": "byKind counts overlap for mixed suites; unclassified means not yet audited",
+ "mode": "fast",
+ "date": "2026-10-18T07:35:19.684Z",
+ "seconds": 123,
+ "artifacts": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts",
+ "total": 416,
+ "pass": 399,
+ "knownFail": 5,
+ "fail": 0,
+ "timeout": 0,
+ "stale": 0,
+ "deferred": 12,
+ "byKind": {
+  "biological-invariant": {
+   "pass": 33,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 4
+  },
+  "mechanism": {
+   "pass": 39,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 9
+  },
+  "ecological-observation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 3
+  },
+  "performance": {
+   "pass": 3,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 10
+  },
+  "historical-expectation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 1
+  },
+  "release-gate": {
+   "pass": 0,
+   "known-fail": 5,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "unclassified": {
+   "pass": 360,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  }
+ },
+ "byFailureKind": {
+  "biological-invariant": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "mechanism": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "ecological-observation": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "performance": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "historical-expectation": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "release-gate": {
+   "known-fail": 5,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "unclassified": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  }
+ },
+ "results": [
+  {
+   "name": "accessible-guidance",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\accessible-guidance.log"
+  },
+  {
+   "name": "action-icons",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\action-icons.log"
+  },
+  {
+   "name": "action-restriction-reasons",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\action-restriction-reasons.log"
+  },
+  {
+   "name": "active-care-conservation",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\active-care-conservation.log"
+  },
+  {
+   "name": "active-family-separation",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\active-family-separation.log"
+  },
+  {
+   "name": "activity-budget",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\activity-budget.log"
+  },
+  {
+   "name": "adaptation",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\adaptation.log"
+  },
+  {
+   "name": "ai-disclosure",
+   "kinds": [
+    "release-gate"
+   ],
+   "failureKind": "release-gate",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/ai-disclosure.mjs:4",
+   "error": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\submission\\AI_DISCLOSURE.txt'\r",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\ai-disclosure.log",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "anatomical-strike-performance",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\anatomical-strike-performance.log"
+  },
+  {
+   "name": "anatomy-locomotion",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\anatomy-locomotion.log"
+  },
+  {
+   "name": "anatomy-readings",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\anatomy-readings.log"
+  },
+  {
+   "name": "anatomy-thresholds",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\anatomy-thresholds.log"
+  },
+  {
+   "name": "animation",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\animation.log"
+  },
+  {
+   "name": "aquatic",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 30,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\aquatic.log"
+  },
+  {
+   "name": "aquatic-lifestyle",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\aquatic-lifestyle.log"
+  },
+  {
+   "name": "audio",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\audio.log"
+  },
+  {
+   "name": "audio-assets",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\audio-assets.log"
+  },
+  {
+   "name": "audio-phenotype",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\audio-phenotype.log"
+  },
+  {
+   "name": "audio-runtime",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\audio-runtime.log"
+  },
+  {
+   "name": "authored-draft-compiler",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\authored-draft-compiler.log"
+  },
+  {
+   "name": "auto-home",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 7.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\auto-home.log"
+  },
+  {
+   "name": "autonomous-soil-engineering",
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "background-movement-budget",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\background-movement-budget.log"
+  },
+  {
+   "name": "behavior-readability",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\behavior-readability.log"
+  },
+  {
+   "name": "behavioral-specialization",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\behavioral-specialization.log"
+  },
+  {
+   "name": "birth-hydration",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 7.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\birth-hydration.log"
+  },
+  {
+   "name": "birth-reserves",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\birth-reserves.log"
+  },
+  {
+   "name": "botanical-genetics",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\botanical-genetics.log"
+  },
+  {
+   "name": "botanical-populations",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\botanical-populations.log"
+  },
+  {
+   "name": "botanical-reproduction",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\botanical-reproduction.log"
+  },
+  {
+   "name": "botanical-safety",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\botanical-safety.log"
+  },
+  {
+   "name": "breeding-site-attachment",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\breeding-site-attachment.log"
+  },
+  {
+   "name": "brood-investment",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\brood-investment.log"
+  },
+  {
+   "name": "canonical-source",
+   "kinds": [
+    "release-gate"
+   ],
+   "failureKind": "release-gate",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/canonical-source.mjs:6",
+   "error": "AssertionError [ERR_ASSERTION]: {\r",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\canonical-source.log",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "canvas-recorder",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\canvas-recorder.log"
+  },
+  {
+   "name": "care-command-provision",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\care-command-provision.log"
+  },
+  {
+   "name": "carrying",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\carrying.log"
+  },
+  {
+   "name": "carrying-anatomy-cache",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\carrying-anatomy-cache.log"
+  },
+  {
+   "name": "carrying-connected-demand",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\carrying-connected-demand.log"
+  },
+  {
+   "name": "carrying-land-access",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\carrying-land-access.log"
+  },
+  {
+   "name": "carrying-live-stock",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\carrying-live-stock.log"
+  },
+  {
+   "name": "clarity-feedback-v110",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\clarity-feedback-v110.log"
+  },
+  {
+   "name": "clonal-flora",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\clonal-flora.log"
+  },
+  {
+   "name": "cognition",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\cognition.log"
+  },
+  {
+   "name": "combat-footwork",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\combat-footwork.log"
+  },
+  {
+   "name": "combat-pressure",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\combat-pressure.log"
+  },
+  {
+   "name": "community-ui-feedback",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\community-ui-feedback.log"
+  },
+  {
+   "name": "composition",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\composition.log"
+  },
+  {
+   "name": "conception-availability",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\conception-availability.log"
+  },
+  {
+   "name": "conception-parental-inheritance",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 4.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\conception-parental-inheritance.log"
+  },
+  {
+   "name": "consolidation-demand-parity",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 6.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\consolidation-demand-parity.log"
+  },
+  {
+   "name": "context-guidance",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\context-guidance.log"
+  },
+  {
+   "name": "contextual-interactions",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\contextual-interactions.log"
+  },
+  {
+   "name": "control-response",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\control-response.log"
+  },
+  {
+   "name": "core",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\core.log"
+  },
+  {
+   "name": "courtship-performance",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\courtship-performance.log"
+  },
+  {
+   "name": "courtship-refusal-explanation",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\courtship-refusal-explanation.log"
+  },
+  {
+   "name": "courtship-tendency-priority",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\courtship-tendency-priority.log"
+  },
+  {
+   "name": "courtship-threat-priority",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\courtship-threat-priority.log"
+  },
+  {
+   "name": "cpu-profile-retention",
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 3.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\cpu-profile-retention.log"
+  },
+  {
+   "name": "creature-assembly",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\creature-assembly.log"
+  },
+  {
+   "name": "creature-instance-expression",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\creature-instance-expression.log"
+  },
+  {
+   "name": "creature-lab-assembly",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\creature-lab-assembly.log"
+  },
+  {
+   "name": "decisions-under-pressure",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\decisions-under-pressure.log"
+  },
+  {
+   "name": "depth-render",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\depth-render.log"
+  },
+  {
+   "name": "developmental-cost",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\developmental-cost.log"
+  },
+  {
+   "name": "developmental-hunt",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\developmental-hunt.log"
+  },
+  {
+   "name": "developmental-symmetry",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\developmental-symmetry.log"
+  },
+  {
+   "name": "diet-lifestyles",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\diet-lifestyles.log"
+  },
+  {
+   "name": "dietary-scan-parity",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 5.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\dietary-scan-parity.log"
+  },
+  {
+   "name": "digging-calendar",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\digging-calendar.log"
+  },
+  {
+   "name": "discovery",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\discovery.log"
+  },
+  {
+   "name": "disease",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\disease.log"
+  },
+  {
+   "name": "dispersal",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\dispersal.log"
+  },
+  {
+   "name": "dispersal-feeding-priority",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\dispersal-feeding-priority.log"
+  },
+  {
+   "name": "disturbed-soil-germination",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\disturbed-soil-germination.log"
+  },
+  {
+   "name": "drink-goal",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\drink-goal.log"
+  },
+  {
+   "name": "dual-physiology",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\dual-physiology.log"
+  },
+  {
+   "name": "dual-reproductive-anatomy",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\dual-reproductive-anatomy.log"
+  },
+  {
+   "name": "ecological-integrity",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\ecological-integrity.log"
+  },
+  {
+   "name": "ecological-observation",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\ecological-observation.log"
+  },
+  {
+   "name": "ecology-observation-100",
+   "kinds": [
+    "biological-invariant",
+    "ecological-observation",
+    "performance"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "ecology-progress",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 2.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\ecology-progress.log"
+  },
+  {
+   "name": "ecology-resume",
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "editor-pass",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\editor-pass.log"
+  },
+  {
+   "name": "egg-nest-predation",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\egg-nest-predation.log"
+  },
+  {
+   "name": "emergent-contracts",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\emergent-contracts.log"
+  },
+  {
+   "name": "encounter-reactions",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\encounter-reactions.log"
+  },
+  {
+   "name": "engineer-breeding-habitat",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\engineer-breeding-habitat.log"
+  },
+  {
+   "name": "engineer-breeding-opportunities",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\engineer-breeding-opportunities.log"
+  },
+  {
+   "name": "engineer-colony-boundaries",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\engineer-colony-boundaries.log"
+  },
+  {
+   "name": "engineer-colony-natural",
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "engineer-colony-recruitment",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\engineer-colony-recruitment.log"
+  },
+  {
+   "name": "engineer-family-settlement",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\engineer-family-settlement.log"
+  },
+  {
+   "name": "engineer-life-history",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\engineer-life-history.log"
+  },
+  {
+   "name": "engineer-loss-return",
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "engineer-natural-regional-observation",
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "engineer-recovery-foraging",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\engineer-recovery-foraging.log"
+  },
+  {
+   "name": "engineer-succession-observer",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\engineer-succession-observer.log"
+  },
+  {
+   "name": "engineer-water-access",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\engineer-water-access.log"
+  },
+  {
+   "name": "escape-path",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\escape-path.log"
+  },
+  {
+   "name": "evolution-agency",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\evolution-agency.log"
+  },
+  {
+   "name": "evolution-baseline",
+   "kinds": [
+    "mechanism",
+    "historical-expectation"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "evolution-branches",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\evolution-branches.log"
+  },
+  {
+   "name": "evolution-contract",
+   "kinds": [
+    "release-gate"
+   ],
+   "failureKind": "release-gate",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/evolution-contract.mjs:15",
+   "error": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\evolution-expansion\\baseline-v1.33.7\\creature-fixture.json'\r",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\evolution-contract.log",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "evolution-draft",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\evolution-draft.log"
+  },
+  {
+   "name": "evolution-editor",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\evolution-editor.log"
+  },
+  {
+   "name": "evolutionary-tree",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\evolutionary-tree.log"
+  },
+  {
+   "name": "evolving-courtship-rituals",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\evolving-courtship-rituals.log"
+  },
+  {
+   "name": "exploration-boundary",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\exploration-boundary.log"
+  },
+  {
+   "name": "exploration-geometry",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\exploration-geometry.log"
+  },
+  {
+   "name": "expression-coordinator",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\expression-coordinator.log"
+  },
+  {
+   "name": "expression-physical-signals",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\expression-physical-signals.log"
+  },
+  {
+   "name": "expression-rig-validation",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\expression-rig-validation.log"
+  },
+  {
+   "name": "extended-kinship",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\extended-kinship.log"
+  },
+  {
+   "name": "family",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\family.log"
+  },
+  {
+   "name": "family-agency",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\family-agency.log"
+  },
+  {
+   "name": "family-care",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\family-care.log"
+  },
+  {
+   "name": "family-checkpoint-consistency",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\family-checkpoint-consistency.log"
+  },
+  {
+   "name": "family-decision-observer",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 2.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\family-decision-observer.log"
+  },
+  {
+   "name": "family-directives",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\family-directives.log"
+  },
+  {
+   "name": "family-expansion",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\family-expansion.log"
+  },
+  {
+   "name": "family-genealogy-audit",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\family-genealogy-audit.log"
+  },
+  {
+   "name": "family-illness",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\family-illness.log"
+  },
+  {
+   "name": "family-learning",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\family-learning.log"
+  },
+  {
+   "name": "family-nesting",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\family-nesting.log"
+  },
+  {
+   "name": "family-observer-resume",
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "family-practice",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\family-practice.log"
+  },
+  {
+   "name": "family-recruitment-observer",
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "family-sustainability",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\family-sustainability.log"
+  },
+  {
+   "name": "family-trajectory-audit",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\family-trajectory-audit.log"
+  },
+  {
+   "name": "family-weather-refuge",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\family-weather-refuge.log"
+  },
+  {
+   "name": "fauna-visual",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\fauna-visual.log"
+  },
+  {
+   "name": "feeding-performance",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\feeding-performance.log"
+  },
+  {
+   "name": "finite-water-nutrition",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\finite-water-nutrition.log"
+  },
+  {
+   "name": "flank-placement",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\flank-placement.log"
+  },
+  {
+   "name": "flora-landmarks",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\flora-landmarks.log"
+  },
+  {
+   "name": "flora-seed-codec",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\flora-seed-codec.log"
+  },
+  {
+   "name": "flora-tissue-propagules",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\flora-tissue-propagules.log"
+  },
+  {
+   "name": "food-choice-view",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\food-choice-view.log"
+  },
+  {
+   "name": "food-commitment",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\food-commitment.log"
+  },
+  {
+   "name": "food-web-feedback",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\food-web-feedback.log"
+  },
+  {
+   "name": "forage-patches",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\forage-patches.log"
+  },
+  {
+   "name": "forage-season-competition",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\forage-season-competition.log"
+  },
+  {
+   "name": "foraging-choice",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\foraging-choice.log"
+  },
+  {
+   "name": "founder-body",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\founder-body.log"
+  },
+  {
+   "name": "founder-independent-ecology",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\founder-independent-ecology.log"
+  },
+  {
+   "name": "founder-migration-connectivity",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\founder-migration-connectivity.log"
+  },
+  {
+   "name": "frame-stepper",
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\frame-stepper.log"
+  },
+  {
+   "name": "freshwater-access",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\freshwater-access.log"
+  },
+  {
+   "name": "freshwater-bank-capacity",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\freshwater-bank-capacity.log"
+  },
+  {
+   "name": "freshwater-carrying",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\freshwater-carrying.log"
+  },
+  {
+   "name": "freshwater-competition-demand",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\freshwater-competition-demand.log"
+  },
+  {
+   "name": "freshwater-encounters",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\freshwater-encounters.log"
+  },
+  {
+   "name": "freshwater-food",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\freshwater-food.log"
+  },
+  {
+   "name": "freshwater-foraging",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\freshwater-foraging.log"
+  },
+  {
+   "name": "freshwater-hunter-capacity",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\freshwater-hunter-capacity.log"
+  },
+  {
+   "name": "freshwater-turnover",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\freshwater-turnover.log"
+  },
+  {
+   "name": "functional-ecology-v163",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\functional-ecology-v163.log"
+  },
+  {
+   "name": "funded-display-expression",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\funded-display-expression.log"
+  },
+  {
+   "name": "funded-jaw-expression",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\funded-jaw-expression.log"
+  },
+  {
+   "name": "g2-brood-home",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\g2-brood-home.log"
+  },
+  {
+   "name": "gameplay-actions",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\gameplay-actions.log"
+  },
+  {
+   "name": "gameplay-pressure",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\gameplay-pressure.log"
+  },
+  {
+   "name": "generation-progression",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\generation-progression.log"
+  },
+  {
+   "name": "generation-reveal",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\generation-reveal.log"
+  },
+  {
+   "name": "genvo-visual",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\genvo-visual.log"
+  },
+  {
+   "name": "gestation-inheritance",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 3.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\gestation-inheritance.log"
+  },
+  {
+   "name": "glance-ui",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\glance-ui.log"
+  },
+  {
+   "name": "grazing-scars",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\grazing-scars.log"
+  },
+  {
+   "name": "grounded-locomotion",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\grounded-locomotion.log"
+  },
+  {
+   "name": "habitat-ground-art",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\habitat-ground-art.log"
+  },
+  {
+   "name": "habitat-render",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 16.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\habitat-render.log"
+  },
+  {
+   "name": "habits",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\habits.log"
+  },
+  {
+   "name": "handoff-transition",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\handoff-transition.log"
+  },
+  {
+   "name": "head-attention",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\head-attention.log"
+  },
+  {
+   "name": "head-face-readability",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\head-face-readability.log"
+  },
+  {
+   "name": "healing-review",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\healing-review.log"
+  },
+  {
+   "name": "held-brace-input",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\held-brace-input.log"
+  },
+  {
+   "name": "heritable-mate-choice",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\heritable-mate-choice.log"
+  },
+  {
+   "name": "hierarchy",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\hierarchy.log"
+  },
+  {
+   "name": "history",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 3.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\history.log"
+  },
+  {
+   "name": "hydrology",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "identity",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\identity.log"
+  },
+  {
+   "name": "illness-feeding-priority",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\illness-feeding-priority.log"
+  },
+  {
+   "name": "illness-recovery",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\illness-recovery.log"
+  },
+  {
+   "name": "immunity-awareness",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\immunity-awareness.log"
+  },
+  {
+   "name": "indexed-part-art",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\indexed-part-art.log"
+  },
+  {
+   "name": "indexed-part-renderer",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\indexed-part-renderer.log"
+  },
+  {
+   "name": "inheritance-visual",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\inheritance-visual.log"
+  },
+  {
+   "name": "inherited-coats",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\inherited-coats.log"
+  },
+  {
+   "name": "inherited-wild-nutrition",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\inherited-wild-nutrition.log"
+  },
+  {
+   "name": "injury-recovery",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\injury-recovery.log"
+  },
+  {
+   "name": "intrinsic-digging",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\intrinsic-digging.log"
+  },
+  {
+   "name": "journal",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\journal.log"
+  },
+  {
+   "name": "juvenile-weak-attempts",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\juvenile-weak-attempts.log"
+  },
+  {
+   "name": "knowledge",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\knowledge.log"
+  },
+  {
+   "name": "land-detour",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\land-detour.log"
+  },
+  {
+   "name": "landform",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\landform.log"
+  },
+  {
+   "name": "learned-danger-spacing",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\learned-danger-spacing.log"
+  },
+  {
+   "name": "learned-fear",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\learned-fear.log"
+  },
+  {
+   "name": "learned-resource-validity",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\learned-resource-validity.log"
+  },
+  {
+   "name": "life-render",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\life-render.log"
+  },
+  {
+   "name": "lifestyle-readings",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\lifestyle-readings.log"
+  },
+  {
+   "name": "limb-articulation",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\limb-articulation.log"
+  },
+  {
+   "name": "lineage",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\lineage.log"
+  },
+  {
+   "name": "lineage-comparison",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\lineage-comparison.log"
+  },
+  {
+   "name": "lineage-dispersal-residence",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 5.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\lineage-dispersal-residence.log"
+  },
+  {
+   "name": "lineage-dispersal-resume",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 16.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\lineage-dispersal-resume.log"
+  },
+  {
+   "name": "lineage-divergence",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\lineage-divergence.log"
+  },
+  {
+   "name": "lineage-pressure-dispersal",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\lineage-pressure-dispersal.log"
+  },
+  {
+   "name": "lineage-purpose",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\lineage-purpose.log"
+  },
+  {
+   "name": "lineage-settlement-completion",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 5.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\lineage-settlement-completion.log"
+  },
+  {
+   "name": "lineage-specialization",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\lineage-specialization.log"
+  },
+  {
+   "name": "lineage-strategy",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\lineage-strategy.log"
+  },
+  {
+   "name": "live-courtship-encounters",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\live-courtship-encounters.log"
+  },
+  {
+   "name": "living-rest",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\living-rest.log"
+  },
+  {
+   "name": "local-prey-choice",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\local-prey-choice.log"
+  },
+  {
+   "name": "local-prey-opportunity",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\local-prey-opportunity.log"
+  },
+  {
+   "name": "local-receptive-courtship",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\local-receptive-courtship.log"
+  },
+  {
+   "name": "lod-interaction-consistency",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\lod-interaction-consistency.log"
+  },
+  {
+   "name": "manual-resource-pose",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\manual-resource-pose.log"
+  },
+  {
+   "name": "maternal-birth-authority",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\maternal-birth-authority.log"
+  },
+  {
+   "name": "mating-arrival-maturity",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\mating-arrival-maturity.log"
+  },
+  {
+   "name": "mating-arrival-pressure",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\mating-arrival-pressure.log"
+  },
+  {
+   "name": "menu-task-usability",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\menu-task-usability.log"
+  },
+  {
+   "name": "menu-world-slots",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\menu-world-slots.log"
+  },
+  {
+   "name": "migration",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 6.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\migration.log"
+  },
+  {
+   "name": "migration-habitat",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\migration-habitat.log"
+  },
+  {
+   "name": "migration-land-survey-access",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\migration-land-survey-access.log"
+  },
+  {
+   "name": "migration-stale-destination",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\migration-stale-destination.log"
+  },
+  {
+   "name": "modular-head-v176",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\modular-head-v176.log"
+  },
+  {
+   "name": "motion-render",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\motion-render.log"
+  },
+  {
+   "name": "mouse-courtship",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\mouse-courtship.log"
+  },
+  {
+   "name": "mouse-resources",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\mouse-resources.log"
+  },
+  {
+   "name": "movement-parity",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\movement-parity.log"
+  },
+  {
+   "name": "multi-partner-sexual-selection",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\multi-partner-sexual-selection.log"
+  },
+  {
+   "name": "native-anatomy-depth",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-anatomy-depth.log"
+  },
+  {
+   "name": "native-anatomy-rig",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-anatomy-rig.log"
+  },
+  {
+   "name": "native-catalog-loading",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-catalog-loading.log"
+  },
+  {
+   "name": "native-contact-expression-v174",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-contact-expression-v174.log"
+  },
+  {
+   "name": "native-dorsal-display",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-dorsal-display.log"
+  },
+  {
+   "name": "native-face-expression-v172",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-face-expression-v172.log"
+  },
+  {
+   "name": "native-forms-quality-v171",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-forms-quality-v171.log"
+  },
+  {
+   "name": "native-hip-insertion",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-hip-insertion.log"
+  },
+  {
+   "name": "native-inherited-pigment",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-inherited-pigment.log"
+  },
+  {
+   "name": "native-jaw-attachment",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-jaw-attachment.log"
+  },
+  {
+   "name": "native-joint-surface",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-joint-surface.log"
+  },
+  {
+   "name": "native-knee-continuity",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-knee-continuity.log"
+  },
+  {
+   "name": "native-lab-hidden-pixels",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-lab-hidden-pixels.log"
+  },
+  {
+   "name": "native-limb-detail-v173",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-limb-detail-v173.log"
+  },
+  {
+   "name": "native-part-catalog",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-part-catalog.log"
+  },
+  {
+   "name": "native-sha256-fallback",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-sha256-fallback.log"
+  },
+  {
+   "name": "native-specialty-wave",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\native-specialty-wave.log"
+  },
+  {
+   "name": "natural-world-soak",
+   "kinds": [
+    "biological-invariant",
+    "ecological-observation",
+    "performance"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "neutral-birth-core",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\neutral-birth-core.log"
+  },
+  {
+   "name": "neutral-parental-traits",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\neutral-parental-traits.log"
+  },
+  {
+   "name": "notification-lane",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\notification-lane.log"
+  },
+  {
+   "name": "nursing-conservation",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\nursing-conservation.log"
+  },
+  {
+   "name": "observed-creature-guide-v175",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\observed-creature-guide-v175.log"
+  },
+  {
+   "name": "observer-play",
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 2.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\observer-play.log"
+  },
+  {
+   "name": "observer-readability",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\observer-readability.log"
+  },
+  {
+   "name": "onboarding",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\onboarding.log"
+  },
+  {
+   "name": "opening-goals",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\opening-goals.log"
+  },
+  {
+   "name": "optional-organ-loss",
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\optional-organ-loss.log"
+  },
+  {
+   "name": "organic-creature-presentation-v175",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\organic-creature-presentation-v175.log"
+  },
+  {
+   "name": "organic-resource-cycle",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\organic-resource-cycle.log"
+  },
+  {
+   "name": "overhead-flora-art",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\overhead-flora-art.log"
+  },
+  {
+   "name": "overhead-projection",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\overhead-projection.log"
+  },
+  {
+   "name": "parental-adaptation-guidance",
+   "kinds": [
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\parental-adaptation-guidance.log"
+  },
+  {
+   "name": "part-abilities",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\part-abilities.log"
+  },
+  {
+   "name": "part-animation-catalog",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\part-animation-catalog.log"
+  },
+  {
+   "name": "part-expression-geometry",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\part-expression-geometry.log"
+  },
+  {
+   "name": "part-expression-tracker",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\part-expression-tracker.log"
+  },
+  {
+   "name": "part-instance-expression",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\part-instance-expression.log"
+  },
+  {
+   "name": "parts-wave1",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\parts-wave1.log"
+  },
+  {
+   "name": "parts-wave2",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\parts-wave2.log"
+  },
+  {
+   "name": "perceived-threat-escape",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\perceived-threat-escape.log"
+  },
+  {
+   "name": "performance-hotfix",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\performance-hotfix.log"
+  },
+  {
+   "name": "phenotype-cache-context",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\phenotype-cache-context.log"
+  },
+  {
+   "name": "physical-breeding",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\physical-breeding.log"
+  },
+  {
+   "name": "physicality-render",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\physicality-render.log"
+  },
+  {
+   "name": "physiology-parity",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\physiology-parity.log"
+  },
+  {
+   "name": "planet-geography",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 2.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\planet-geography.log"
+  },
+  {
+   "name": "plant-handling",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\plant-handling.log"
+  },
+  {
+   "name": "plant-resource-contract",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\plant-resource-contract.log"
+  },
+  {
+   "name": "plate-protection-reading",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 2.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\plate-protection-reading.log"
+  },
+  {
+   "name": "player-copy-style",
+   "kinds": [
+    "release-gate"
+   ],
+   "failureKind": "release-gate",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/player-copy-style.mjs:12",
+   "error": "AssertionError [ERR_ASSERTION]: player-facing runtime source should not contain em dashes\r",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\player-copy-style.log",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "player-facing-feedback",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\player-facing-feedback.log"
+  },
+  {
+   "name": "player-lookup-cache",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\player-lookup-cache.log"
+  },
+  {
+   "name": "player-motion-presentation",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\player-motion-presentation.log"
+  },
+  {
+   "name": "player-presence",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\player-presence.log"
+  },
+  {
+   "name": "playtest-clarity",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\playtest-clarity.log"
+  },
+  {
+   "name": "pointer-route-availability",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\pointer-route-availability.log"
+  },
+  {
+   "name": "population-center-ecology",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\population-center-ecology.log"
+  },
+  {
+   "name": "population-pressure-memory",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\population-pressure-memory.log"
+  },
+  {
+   "name": "pounce",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\pounce.log"
+  },
+  {
+   "name": "predation-parity",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\predation-parity.log"
+  },
+  {
+   "name": "predator-encounter",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\predator-encounter.log"
+  },
+  {
+   "name": "predator-interference",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\predator-interference.log"
+  },
+  {
+   "name": "predator-retaliation",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\predator-retaliation.log"
+  },
+  {
+   "name": "predator-variation",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\predator-variation.log"
+  },
+  {
+   "name": "pressure",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 2.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\pressure.log"
+  },
+  {
+   "name": "pressure-vocabulary",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\pressure-vocabulary.log"
+  },
+  {
+   "name": "prey-biomass",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\prey-biomass.log"
+  },
+  {
+   "name": "prey-risk",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\prey-risk.log"
+  },
+  {
+   "name": "processing-capacity",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\processing-capacity.log"
+  },
+  {
+   "name": "proto-gene-flow",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\proto-gene-flow.log"
+  },
+  {
+   "name": "proto-speciation",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\proto-speciation.log"
+  },
+  {
+   "name": "provenance",
+   "kinds": [
+    "release-gate"
+   ],
+   "failureKind": "release-gate",
+   "tier": "fast",
+   "seconds": 6.3,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/provenance.mjs:22",
+   "error": "AssertionError [ERR_ASSERTION]: last ledger record must fingerprint current canonical source tree\r",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\provenance.log",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "provenance-development-checkpoint",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\provenance-development-checkpoint.log"
+  },
+  {
+   "name": "public-export",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\public-export.log"
+  },
+  {
+   "name": "quick-access",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\quick-access.log"
+  },
+  {
+   "name": "quick-interaction",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\quick-interaction.log"
+  },
+  {
+   "name": "quick-interaction-default",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\quick-interaction-default.log"
+  },
+  {
+   "name": "rarity-encounter",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\rarity-encounter.log"
+  },
+  {
+   "name": "readability",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\readability.log"
+  },
+  {
+   "name": "reciprocal-partner-encounters",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\reciprocal-partner-encounters.log"
+  },
+  {
+   "name": "recovery",
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\recovery.log"
+  },
+  {
+   "name": "refuge-parity",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\refuge-parity.log"
+  },
+  {
+   "name": "regional-ecology",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\regional-ecology.log"
+  },
+  {
+   "name": "regional-environment",
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 2.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\regional-environment.log"
+  },
+  {
+   "name": "regional-focal",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\regional-focal.log"
+  },
+  {
+   "name": "regional-migration-arrivals",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\regional-migration-arrivals.log"
+  },
+  {
+   "name": "regional-soil-history",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\regional-soil-history.log"
+  },
+  {
+   "name": "remembered-food-access",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\remembered-food-access.log"
+  },
+  {
+   "name": "render-cache",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\render-cache.log"
+  },
+  {
+   "name": "reproduction",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\reproduction.log"
+  },
+  {
+   "name": "reproduction-gate-observation",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\reproduction-gate-observation.log"
+  },
+  {
+   "name": "reproductive-anatomy-eggs",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\reproductive-anatomy-eggs.log"
+  },
+  {
+   "name": "reproductive-compatibility",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\reproductive-compatibility.log"
+  },
+  {
+   "name": "rng-long-state",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\rng-long-state.log"
+  },
+  {
+   "name": "save-persistence",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\save-persistence.log"
+  },
+  {
+   "name": "save-storage",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\save-storage.log"
+  },
+  {
+   "name": "scavenge-priority",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\scavenge-priority.log"
+  },
+  {
+   "name": "scene",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\scene.log"
+  },
+  {
+   "name": "seed-observations",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\seed-observations.log"
+  },
+  {
+   "name": "seed-shore-niches",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\seed-shore-niches.log"
+  },
+  {
+   "name": "selected-combat-actions",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\selected-combat-actions.log"
+  },
+  {
+   "name": "selected-water-filtering",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\selected-water-filtering.log"
+  },
+  {
+   "name": "selective-breeding-guidance",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\selective-breeding-guidance.log"
+  },
+  {
+   "name": "shared-dietary-demand",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\shared-dietary-demand.log"
+  },
+  {
+   "name": "shelter",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 5.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\shelter.log"
+  },
+  {
+   "name": "shelter-objective",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\shelter-objective.log"
+  },
+  {
+   "name": "shelter-weatherproofing",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\shelter-weatherproofing.log"
+  },
+  {
+   "name": "similarity-preference-validation",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\similarity-preference-validation.log"
+  },
+  {
+   "name": "small-population-opportunities",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\small-population-opportunities.log"
+  },
+  {
+   "name": "social",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\social.log"
+  },
+  {
+   "name": "socket-layout",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\socket-layout.log"
+  },
+  {
+   "name": "soil-disturbance",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\soil-disturbance.log"
+  },
+  {
+   "name": "soil-disturbance-establishment",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\soil-disturbance-establishment.log"
+  },
+  {
+   "name": "soil-engineering-pilot",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 5.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\soil-engineering-pilot.log"
+  },
+  {
+   "name": "soil-water",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 2.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\soil-water.log"
+  },
+  {
+   "name": "source-rgba-part-art",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\source-rgba-part-art.log"
+  },
+  {
+   "name": "sparse-mate-search",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\sparse-mate-search.log"
+  },
+  {
+   "name": "special-creatures",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\special-creatures.log"
+  },
+  {
+   "name": "speciation-threshold",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\speciation-threshold.log"
+  },
+  {
+   "name": "species-body-language",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\species-body-language.log"
+  },
+  {
+   "name": "species-coexistence",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\species-coexistence.log"
+  },
+  {
+   "name": "species-leadership",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\species-leadership.log"
+  },
+  {
+   "name": "species-lifestyle-playloops",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\species-lifestyle-playloops.log"
+  },
+  {
+   "name": "species-lifestyles",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\species-lifestyles.log"
+  },
+  {
+   "name": "sprite-sheet-export",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\sprite-sheet-export.log"
+  },
+  {
+   "name": "stalker-den-reading",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\stalker-den-reading.log"
+  },
+  {
+   "name": "stalker-landscape",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\stalker-landscape.log"
+  },
+  {
+   "name": "stalker-readability",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\stalker-readability.log"
+  },
+  {
+   "name": "stalker-territory",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\stalker-territory.log"
+  },
+  {
+   "name": "stalker-territory-competition",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\stalker-territory-competition.log"
+  },
+  {
+   "name": "storm-aftermath",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\storm-aftermath.log"
+  },
+  {
+   "name": "strategy-arcs",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\strategy-arcs.log"
+  },
+  {
+   "name": "strategy-encounters",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\strategy-encounters.log"
+  },
+  {
+   "name": "strike-controller-parity",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 3.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\strike-controller-parity.log"
+  },
+  {
+   "name": "succession-selection",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\succession-selection.log"
+  },
+  {
+   "name": "supported-water-physiology",
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\supported-water-physiology.log"
+  },
+  {
+   "name": "surface-topology",
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\surface-topology.log"
+  },
+  {
+   "name": "surface-water-persistence",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\surface-water-persistence.log"
+  },
+  {
+   "name": "swimming-review",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\swimming-review.log"
+  },
+  {
+   "name": "target-resource-states",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\target-resource-states.log"
+  },
+  {
+   "name": "targeted-feeding",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\targeted-feeding.log"
+  },
+  {
+   "name": "taxon-name-generator",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\taxon-name-generator.log"
+  },
+  {
+   "name": "tendency-forage-consumption",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\tendency-forage-consumption.log"
+  },
+  {
+   "name": "tendency-forage-learning",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\tendency-forage-learning.log"
+  },
+  {
+   "name": "terrain-cohesion",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\terrain-cohesion.log"
+  },
+  {
+   "name": "terrain-motifs",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\terrain-motifs.log"
+  },
+  {
+   "name": "terrain-travel",
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\terrain-travel.log"
+  },
+  {
+   "name": "territory",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\territory.log"
+  },
+  {
+   "name": "threat-appraisal",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\threat-appraisal.log"
+  },
+  {
+   "name": "threat-perception",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\threat-perception.log"
+  },
+  {
+   "name": "tissue-structure",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\tissue-structure.log"
+  },
+  {
+   "name": "topography",
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 1.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\topography.log"
+  },
+  {
+   "name": "trophic-recognition",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\trophic-recognition.log"
+  },
+  {
+   "name": "tutorial-diet-guide",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\tutorial-diet-guide.log"
+  },
+  {
+   "name": "ui-art-direction",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\ui-art-direction.log"
+  },
+  {
+   "name": "ui-presentation",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\ui-presentation.log"
+  },
+  {
+   "name": "validation-kinds",
+   "kinds": [
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\validation-kinds.log"
+  },
+  {
+   "name": "validation-process",
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 2.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\validation-process.log"
+  },
+  {
+   "name": "vocabulary",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\vocabulary.log"
+  },
+  {
+   "name": "water-roam-route",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\water-roam-route.log"
+  },
+  {
+   "name": "water-teaching",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\water-teaching.log"
+  },
+  {
+   "name": "wayfinding",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\wayfinding.log"
+  },
+  {
+   "name": "weather-exposure",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\weather-exposure.log"
+  },
+  {
+   "name": "weather-patterns",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\weather-patterns.log"
+  },
+  {
+   "name": "weather-soil-resume",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 9.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\weather-soil-resume.log"
+  },
+  {
+   "name": "wetland-niches",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\wetland-niches.log"
+  },
+  {
+   "name": "wild-evolution",
+   "kinds": [
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\wild-evolution.log"
+  },
+  {
+   "name": "wild-evolution-observation",
+   "kinds": [
+    "biological-invariant",
+    "ecological-observation",
+    "performance"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "wild-pressure-movement",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\wild-pressure-movement.log"
+  },
+  {
+   "name": "wildlife-arrival-reproduction",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\wildlife-arrival-reproduction.log"
+  },
+  {
+   "name": "wildlife-rhythm",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\wildlife-rhythm.log"
+  },
+  {
+   "name": "wildlife-spread-audit",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\wildlife-spread-audit.log"
+  },
+  {
+   "name": "workshop-projection",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\workshop-projection.log"
+  },
+  {
+   "name": "world-generators",
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\world-generators.log"
+  },
+  {
+   "name": "world-pages",
+   "kinds": [
+    "mechanism",
+    "biological-invariant"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 2.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\world-pages.log"
+  },
+  {
+   "name": "world-resource-selection",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\world-resource-selection.log"
+  },
+  {
+   "name": "world-swap-render",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\world-swap-render.log"
+  },
+  {
+   "name": "world-trail-discovery",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\local-prey-opportunity-fast-2026-10-18.artifacts\\world-trail-discovery.log"
+  }
+ ]
+}

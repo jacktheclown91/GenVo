@@ -4,7 +4,7 @@ import {SPECIES} from '../src/organisms/species.js';
 import {mateOptionAssessment,compareMateOptions,reciprocalMateChoice} from '../src/reproduction/mate-preferences.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 
-const neutral={weights:{size:0,strength:0,ornament:0,display:0,behavior:0},selectivity:.5};
+const neutral={weights:{size:0,strength:0,ornament:0,display:0,behavior:0},selectivity:.5,similarity:0};
 const desiresSize=x=>({weights:{...neutral.weights,size:x},selectivity:.5});
 const sim=new Simulation('MULTIPLE-PARTNERS-REAL',{player:false});
 const [seeker,small,large]=sim.animals.filter(a=>a.species==='rootling');
@@ -13,7 +13,8 @@ sim.animals=[seeker,small,large];
 const spec=SPECIES.rootling;
 let home=null;
 for(let y=14;y<100&&!home;y+=3)for(let x=14;x<100&&!home;x+=3){
-  if([0,1,3].every(dx=>sim.canOccupy(seeker,x+dx,y)&&sim.canReach(seeker,x+dx,y)))home={x,y};
+  // Both candidates must be breeding-eligible where they stand, so the choice tests preference, not eligibility.
+  if([0,1,3].every(dx=>sim.canOccupy(seeker,x+dx,y)&&sim.canReach(seeker,x+dx,y))&&sim.carrying.breedingState(small,{at:{x:x+1,y}}).allowed&&sim.carrying.breedingState(large,{at:{x:x+3,y}}).allowed)home={x,y};
 }
 assert.ok(home);
 for(const a of sim.animals){

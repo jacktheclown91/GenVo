@@ -1,0 +1,175 @@
+{
+  "scope": "Lossless transfer of this actual native save into a new isolated test IndexedDB, then normal Continue. Wait requires saved world identity/tick/age and complete scene before observation. A few live updates before normal pause are allowed, not claimed exact browser-frame equality.",
+  "expected": {
+    "seed": "GENVO8-TEST-A",
+    "slot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+    "day": 213,
+    "tick": 10209
+  },
+  "actual": {
+    "massRules": null,
+    "playerMassPolicy": null,
+    "ecologyRules": {
+      "schema": 1,
+      "populationFeedback": "local-opportunity/1",
+      "preyOpportunity": "local-edible-biomass/1",
+      "defensiveFeeding": "carcass-only/1"
+    },
+    "ecologyMigrations": [
+      {
+        "from": {
+          "schema": 1,
+          "populationFeedback": "local-opportunity/1"
+        },
+        "to": {
+          "schema": 1,
+          "populationFeedback": "local-opportunity/1",
+          "preyOpportunity": "local-edible-biomass/1"
+        },
+        "tick": 2564,
+        "scope": "Future behavior: no founder-relative reproductive boost, search-radius expansion, sibling relaxation or global-count prey refuge. Hunter resource opportunity now measures accessible local remaining edible biomass plus surveyed local usable nutrition in existing carcass-equivalent units; unchanged minPrey numerical requirements use these units instead of headcount/global-adult units. Accessible carrion is included for every mouth that can eat it; metabolic competitor weighting is unchanged. Existing organisms, ancestry, RNG, pending gestations and resource stocks unchanged; local opportunity and consent remain authoritative."
+      },
+      {
+        "from": {
+          "schema": 1,
+          "populationFeedback": "local-opportunity/1",
+          "preyOpportunity": "local-edible-biomass/1"
+        },
+        "to": {
+          "schema": 1,
+          "populationFeedback": "local-opportunity/1",
+          "preyOpportunity": "local-edible-biomass/1",
+          "defensiveFeeding": "carcass-only/1"
+        },
+        "tick": 10209,
+        "scope": "Future behavior: no founder-relative reproductive boost, search-radius expansion, sibling relaxation or global-count prey refuge. Hunter resource opportunity now measures accessible local remaining edible biomass plus surveyed local usable nutrition in existing carcass-equivalent units; unchanged minPrey numerical requirements use these units instead of headcount/global-adult units. Accessible carrion is included for every mouth that can eat it; metabolic competitor weighting is unchanged. Existing organisms, ancestry, RNG, pending gestations and resource stocks unchanged; local opportunity and consent remain authoritative. Defensive counterstrike kills no longer grant an unfunded species-mass food reward alongside the remaining carcass; later meals consume finite carcass stocks. No prior kill, reserve or ancestry is rewritten."
+      }
+    ],
+    "birthRules": {
+      "schema": 1,
+      "inheritedVariation": "neutral-core/1",
+      "populationTraits": "neutral-parental/1",
+      "familyForms": "neutral-parental/1",
+      "anatomyProjection": "supported-water/1",
+      "bodyVariation": "neutral-head-structure/1"
+    },
+    "birthRuleMigrations": [
+      {
+        "from": {
+          "schema": 1,
+          "inheritedVariation": "neutral-core/1",
+          "populationTraits": "neutral-parental/1",
+          "familyForms": "neutral-parental/1",
+          "anatomyProjection": "supported-water/1",
+          "bodyVariation": "neutral-optional-loss/1"
+        },
+        "to": {
+          "schema": 1,
+          "inheritedVariation": "neutral-core/1",
+          "populationTraits": "neutral-parental/1",
+          "familyForms": "neutral-parental/1",
+          "anatomyProjection": "supported-water/1",
+          "bodyVariation": "neutral-head-structure/1"
+        },
+        "tick": 10209,
+        "scope": "Future neutral continuous genes, parental population traits and family forms; existing organisms/history unchanged; independent supported water physiology for future bodies; neutral optional subtree deletion in future structural variation; existing event chance/symmetry share unchanged and conditional operator distribution extended; multi-occupant paired deletion matches actual part counterparts rather than socket ordinals; existing implicit head may become explicit by relocating its actual face; facial variation uses the actual host; other tissue physics remains incomplete."
+      }
+    ],
+    "visibleText": "GenVo\n\nEvery life leaves a trace.\n\nPaused\n\nGeneration 3 · Year 7, Day 214\n\nResume\n↗\nSave World\nLoad World\nOptions\nCredits\nReturn to Main Menu\n✦\nGENVO\n/\nLIVING WORLDS",
+    "lineageActiveId": 491,
+    "handoffs": [
+      {
+        "from": 109,
+        "to": 491,
+        "generation": 3,
+        "day": 213,
+        "year": 7,
+        "reason": "handoff",
+        "changes": [
+          {
+            "key": "motion",
+            "current": 0.9992367755654986,
+            "baseline": 0.9017648529727013,
+            "delta": 0.09747192259279736,
+            "phrase": "faster movement",
+            "noun": "Movement"
+          },
+          {
+            "key": "metabolism",
+            "current": 0.8841540899338708,
+            "baseline": 0.9668144827242942,
+            "delta": -0.08266039279042336,
+            "phrase": "higher energy use",
+            "noun": "Metabolism"
+          },
+          {
+            "key": "body",
+            "current": 1.0808847765032412,
+            "baseline": 1.030085538001731,
+            "delta": 0.050799238501510136,
+            "phrase": "larger body",
+            "noun": "Body size"
+          }
+        ],
+        "founderChanges": [
+          {
+            "key": "motion",
+            "current": 0.9992367755654986,
+            "baseline": 0.9017648529727013,
+            "delta": 0.09747192259279736,
+            "phrase": "faster movement",
+            "noun": "Movement"
+          },
+          {
+            "key": "metabolism",
+            "current": 0.8841540899338708,
+            "baseline": 0.9668144827242942,
+            "delta": -0.08266039279042336,
+            "phrase": "higher energy use",
+            "noun": "Metabolism"
+          },
+          {
+            "key": "body",
+            "current": 1.0808847765032412,
+            "baseline": 1.030085538001731,
+            "delta": 0.050799238501510136,
+            "phrase": "larger body",
+            "noun": "Body size"
+          }
+        ],
+        "newlyEstablished": false,
+        "fromTaxon": {
+          "id": "genvo8-root",
+          "label": "GenVo"
+        },
+        "toTaxon": {
+          "id": "genvo8-root",
+          "label": "GenVo"
+        },
+        "crossTaxon": false,
+        "bornAdaptations": [],
+        "mutationBudget": {
+          "budget": 12,
+          "bonus": 4
+        },
+        "preparedness": {
+          "fieldReady": false,
+          "routes": 0,
+          "lessons": 1,
+          "independence": 0.5341666666666668,
+          "label": "still learning"
+        }
+      }
+    ],
+    "seed": "GENVO8-TEST-A",
+    "slot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+    "day": 214,
+    "tick": 10228,
+    "id": 491,
+    "age": 31,
+    "body": "bp0-4134709b",
+    "sceneShown": true,
+    "scenePending": false
+  },
+  "errors": []
+}

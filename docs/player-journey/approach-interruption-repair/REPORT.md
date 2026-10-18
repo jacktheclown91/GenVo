@@ -1,0 +1,23 @@
+# Manual courtship interruption and stale display repair
+
+The genuine day66 save retained a paid performance for partner202 ending at tick2916, still present at tick3149. The manual-player decision branch bypassed the display validator used by autonomous creatures. A subsequent bounded normal-control continuation reached day81 with the stale record still blocking new courtship availability. Those unsuccessful artifacts and saves remain in ../approach-interruption-continuation-3; they are evidence of the defect, not a successful family journey. The exact original cause of the unfinished encounter is not reconstructed.
+
+Manual courtTarget now uses the existing activeCourtship validity and lifetime authority. Invalid or expired displays clear through the shared failure handler and record performance-ended with partner identity. No new lifetime, acceptance probability, refund, preference-learning update or resource grant is introduced. A valid active display stays intact. Approaches that lose readiness also record the existing readiness reason with stage approach. Dead partners retain their encounter identity. The shared failure handler preserves unrelated partner displays and clears only involved state.
+
+The observation tool now checks unique save slot alongside seed/tick/age and complete scene, records slot and seed, and derives its initial refusal exclusion from this actual save rather than unrelated hardcoded IDs. Generic day16 scope prose was corrected. Its six-region/three-command protocol still chooses via detailed mate-panel guidance; it is UI-guided automation, not human or mouse-first acceptance, and issued commands do not by themselves establish an accepted encounter.
+
+## Verification
+
+The expanded conception-availability regression covers lost readiness, absence, exact saved failure, unchanged energy/RNG/learning/refusal, unrelated display preservation, repeated idle polling, stale-display release and valid-display preservation. Live encounter, mouse courtship and refusal-explanation checks pass.
+
+actual-save-repair.json uses an exact copy of the genuine day81 save. The normal validator clears the stale record without changing energy, body, RNG or learning, and the resulting complete snapshot roundtrips exactly. The initial check wrongly expected courtship availability while the saved world was paused and failed. initial-actual-save-check-failure.txt retains that limitation. The corrected check explicitly unpauses without advancing time; normal pause gating is retained and at least one actual eligible partner is available.
+
+The repaired normal-control continuation in ../manual-courtship-expiry-continuation-4 records cleanup at day81/tick3864. Further approaches became possible and a new pairing with147 was declined on day86. Other commands yielded no offspring; their exact terminal causes are not inferred from sparse observations. The same unique world/player reached day96/tick4586, age127, with no children. No actor/resource/RNG/consent edits, spawning or fast-forward were used. This is short mechanism/player-continuation evidence, not an integrated100-day milestone trial.
+
+Native Save World and reload/Continue preserved the actual world. save-verification.json proves exact complete-state restoration and twelve ecology updates with an intermediate save after six. The final compressed archive SHA256 is75440a1f2a95dcc6328a3522d89258f89dc0e7f32c118de4a24f692224bfab31. native-continue.png was visually inspected: the world, organisms and player controls render, and the Drink control is enabled. Drinking itself was not performed or proven. Browser errors were empty. No exact-frame equality or hardware responsiveness benchmark is claimed.
+
+The final fast receipt docs/test-runs/manual-courtship-expiry-fast-2026-10-18.json records401 passes, five known failures, zero new failures/timeouts/stale ledger, twelve deferred of418 in149 seconds. validation-inputs.json confirms matching final src/tools/tests fingerprints. The earlier approach-interruption fast receipt is historical and predates the stale-display repair. Known failures remain ai-disclosure, canonical-source, evolution-contract, player-copy-style and provenance; no assertions or budgets were weakened.
+
+## Remaining objective
+
+This fixes a real player-facing courtship lock. It does not guarantee successful reproduction or establish every interruption cause. Active family care, drinking, juvenile maturation, descendant control, calibrated paid physical development, expanded developmental grammar and continental ecology remain unfinished. All seven LP criteria remain OPEN; the full A-H objective and October30 freeze remain visible. No commit, push or release was performed.

@@ -1,0 +1,136 @@
+{
+ "viewport": "1440x900",
+ "seconds": 40,
+ "label": "current",
+ "frames": 943,
+ "median": 33.4,
+ "p95": 66.7,
+ "p99": 233.3,
+ "worst": 650,
+ "over50": 147,
+ "over100": 21,
+ "longFrameTimeBy": {
+  "render": 6053.8,
+  "buildTerrainChunk": 142.5,
+  "staticLandTile": 93.7,
+  "drawLiveVegetationWindow": 80.7,
+  "vegetationLayer": 74,
+  "sim.update": 42.6,
+  "sim.playerControlStep": 10.7,
+  "queueTerrainWarmRing": 5,
+  "waterBaseTile": 0.3
+ },
+ "worstFrames": [
+  {
+   "dt": 650,
+   "day": 3,
+   "parts": {
+    "sim.playerControlStep": 0.2,
+    "queueTerrainWarmRing": 0.1,
+    "vegetationLayer": 0.3,
+    "drawLiveVegetationWindow": 0.6,
+    "render": 63.2,
+    "sim.update": 0.3
+   }
+  },
+  {
+   "dt": 350,
+   "day": 4,
+   "parts": {
+    "staticLandTile": 7.1,
+    "vegetationLayer": 3.8,
+    "drawLiveVegetationWindow": 0.6,
+    "buildTerrainChunk": 12.2,
+    "render": 60.3,
+    "sim.update": 0.4
+   }
+  },
+  {
+   "dt": 349.9,
+   "day": 7,
+   "parts": {
+    "queueTerrainWarmRing": 0.1,
+    "staticLandTile": 3.3,
+    "vegetationLayer": 3.6,
+    "drawLiveVegetationWindow": 0.8,
+    "buildTerrainChunk": 7.5,
+    "render": 53.3,
+    "sim.update": 0.2
+   }
+  },
+  {
+   "dt": 300,
+   "day": 6,
+   "parts": {
+    "sim.playerControlStep": 0.1,
+    "vegetationLayer": 0.6,
+    "drawLiveVegetationWindow": 0.9,
+    "render": 43.3
+   }
+  },
+  {
+   "dt": 299.9,
+   "day": 6,
+   "parts": {
+    "queueTerrainWarmRing": 0.1,
+    "vegetationLayer": 0.2,
+    "drawLiveVegetationWindow": 0.4,
+    "render": 23.1
+   }
+  },
+  {
+   "dt": 283.4,
+   "day": 2,
+   "parts": {
+    "sim.playerControlStep": 0.1,
+    "vegetationLayer": 0.2,
+    "drawLiveVegetationWindow": 0.7,
+    "render": 59.6
+   }
+  },
+  {
+   "dt": 283.3,
+   "day": 7,
+   "parts": {
+    "sim.playerControlStep": 0.1,
+    "queueTerrainWarmRing": 0.1,
+    "vegetationLayer": 0.3,
+    "drawLiveVegetationWindow": 0.6,
+    "render": 37.5
+   }
+  },
+  {
+   "dt": 266.7,
+   "day": 5,
+   "parts": {
+    "staticLandTile": 5.1,
+    "vegetationLayer": 1.8,
+    "drawLiveVegetationWindow": 0.6,
+    "buildTerrainChunk": 8.2,
+    "render": 24.4,
+    "sim.update": 0.2
+   }
+  }
+ ],
+ "totals": {
+  "sim.playerControlStep": 56.6,
+  "sim.playerControlStep#": 2461,
+  "queueTerrainWarmRing": 30.7,
+  "queueTerrainWarmRing#": 973,
+  "waterBaseTile": 3.1,
+  "waterBaseTile#": 6086,
+  "staticLandTile": 797.9,
+  "staticLandTile#": 10170,
+  "vegetationLayer": 525.7,
+  "vegetationLayer#": 74957,
+  "drawLiveVegetationWindow": 486.7,
+  "drawLiveVegetationWindow#": 973,
+  "buildTerrainChunk": 1531.2,
+  "buildTerrainChunk#": 216,
+  "render": 31015.6,
+  "render#": 973,
+  "sim.update": 2114.1,
+  "sim.update#": 307
+ },
+ "errors": []
+}

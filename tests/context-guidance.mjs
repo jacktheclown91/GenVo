@@ -47,5 +47,6 @@ assert.match(wheel,/this\.canvas\.addEventListener\('click'/,'armed command mode
 assert.match(wheel,/pointerType!==\'touch\'/,'touch long-press path exists');
 assert.match(renderer,/screenToWorld\(/,'radial placement converts screen position into simulation space');
 assert.match(css,/\.command-wheel\{[^}]*pointer-events:none/s,'radial wheel is transient world UI rather than a permanent panel');
-assert.doesNotMatch(css,/border-radius|linear-gradient/,'radial keeps the authored non-card UI language');
+// Same boundary as ui-art-direction.mjs: the authored v1.65 title menu is exempt.
+assert.doesNotMatch(css.split('/* GenVo v1.65')[0],/border-radius|linear-gradient/,'radial keeps the authored non-card UI language');
 console.log('contextual icon guidance checks: PASS');

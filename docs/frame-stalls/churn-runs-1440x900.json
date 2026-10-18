@@ -1,0 +1,497 @@
+{
+ "label": "runs",
+ "viewport": "1440x900",
+ "seconds": 20,
+ "canvasCreated": 3777,
+ "canvasPerSecond": 188.8,
+ "canvasSites": [
+  [
+   "Renderer.drawOrganicLandBase (src/render/renderer.js:506:27) < Renderer.staticLandTile (src/render/renderer.js:448:12)",
+   1165
+  ],
+  [
+   "Renderer.staticLandTile (src/render/renderer.js:442:25) < Renderer.buildTerrainChunk (src/render/renderer.js:368:39)",
+   1115
+  ],
+  [
+   "mk (src/render/renderer.js:473:63) < Renderer.vegetationLayer (src/render/renderer.js:476:28)",
+   688
+  ],
+  [
+   "sourceCanvas (src/render/authored-flora.js:24:19) < drawAuthoredFlora (src/render/authored-flora.js:31:15)",
+   241
+  ],
+  [
+   "src/render/indexed-part-renderer.js:6:85 < tinted (src/render/indexed-part-renderer.js:38:22)",
+   239
+  ],
+  [
+   "Renderer.staticLandTile (src/render/renderer.js:442:25) < Renderer.drawTile (src/render/renderer.js:399:25)",
+   80
+  ],
+  [
+   "Renderer.buildTerrainChunk (src/render/renderer.js:362:97) < Renderer.processTerrainRefreshQueue (src/render/renderer.js:354:389)",
+   74
+  ],
+  [
+   "Renderer.buildTerrainChunk (src/render/renderer.js:363:31) < Renderer.processTerrainRefreshQueue (src/render/renderer.js:354:389)",
+   74
+  ],
+  [
+   "Renderer.drawOrganicLandBase (src/render/renderer.js:506:27) < Renderer.buildTerrainChunk (src/render/renderer.js:369:16)",
+   69
+  ],
+  [
+   "Renderer.drawOrganicLandBase (src/render/renderer.js:506:27) < Renderer.drawTile (src/render/renderer.js:404:12)",
+   32
+  ]
+ ],
+ "cpuSelfMsTop": [
+  [
+   "drawImage :0",
+   5216
+  ],
+  [
+   "(program) :0",
+   3820
+  ],
+  [
+   "recolorIndexedFrame src/render/indexed-part-art.js:105",
+   1181
+  ],
+  [
+   "tinted src/render/indexed-part-renderer.js:29",
+   836
+  ],
+  [
+   "save :0",
+   444
+  ],
+  [
+   "fillRect :0",
+   341
+  ],
+  [
+   "o.<computed> src/main.js:239",
+   289
+  ],
+  [
+   "putImageData :0",
+   262
+  ],
+  [
+   "createImageData :0",
+   246
+  ],
+  [
+   "livingCounts src/lineage/evolution-tree.js:49",
+   226
+  ],
+  [
+   "drawAnimal src/render/renderer.js:821",
+   205
+  ],
+  [
+   "drawGenvoBody src/render/genvo-draw.js:107",
+   197
+  ],
+  [
+   "drawGenvoSprite src/render/genvo-draw.js:64",
+   174
+  ],
+  [
+   "(garbage collector) :0",
+   154
+  ],
+  [
+   "restore :0",
+   146
+  ],
+  [
+   "render src/render/renderer.js:68",
+   143
+  ],
+  [
+   "Document.createElement :2",
+   134
+  ],
+  [
+   "scale :0",
+   125
+  ],
+  [
+   "paintOrganicLandBase src/render/renderer.js:513",
+   117
+  ],
+  [
+   "now :0",
+   107
+  ],
+  [
+   "habitatSceneAt src/render/scene.js:9",
+   102
+  ],
+  [
+   "getContext :0",
+   100
+  ],
+  [
+   "genvoVisualPose src/render/genvo.js:12",
+   98
+  ],
+  [
+   "createImageBitmap :0",
+   92
+  ],
+  [
+   "snapshot src/lineage/evolution-tree.js:57",
+   91
+  ]
+ ],
+ "cpuInclusiveMsTop": [
+  [
+   "frame src/main.js:217",
+   17102
+  ],
+  [
+   "render src/render/renderer.js:68",
+   14827
+  ],
+  [
+   "o.<computed> src/main.js:239",
+   14796
+  ],
+  [
+   "drawAnimal src/render/renderer.js:821",
+   10666
+  ],
+  [
+   "drawGenvoSprite src/render/genvo-draw.js:64",
+   9275
+  ],
+  [
+   "drawGenvoBody src/render/genvo-draw.js:107",
+   5159
+  ],
+  [
+   "tinted src/render/indexed-part-renderer.js:29",
+   2627
+  ],
+  [
+   "drawLeg src/render/genvo-draw.js:129",
+   1970
+  ],
+  [
+   "drawLimb src/render/part-sprites.js:221",
+   1880
+  ],
+  [
+   "drawLimb src/render/indexed-part-renderer.js:100",
+   1864
+  ],
+  [
+   "drawPart src/render/part-sprites.js:276",
+   1549
+  ],
+  [
+   "draw src/render/indexed-part-renderer.js:117",
+   1387
+  ],
+  [
+   "update src/sim/simulation.js:153",
+   1298
+  ],
+  [
+   "recolorIndexedFrame src/render/indexed-part-art.js:105",
+   1181
+  ],
+  [
+   "processTerrainRefreshQueue src/render/renderer.js:353",
+   1027
+  ],
+  [
+   "buildTerrainChunk src/render/renderer.js:361",
+   1021
+  ],
+  [
+   "drawSurface src/render/indexed-part-renderer.js:75",
+   944
+  ],
+  [
+   "phasePerception src/sim/simulation.js:211",
+   709
+  ],
+  [
+   "areaStatus src/family/directives.js:87",
+   682
+  ],
+  [
+   "shifted src/render/genvo-draw.js:123",
+   668
+  ],
+  [
+   "observe src/ecology/migration.js:19",
+   666
+  ],
+  [
+   "recommend src/ecology/migration.js:93",
+   661
+  ],
+  [
+   "breedingState src/ecology/carrying.js:57",
+   661
+  ],
+  [
+   "recommendWild src/ecology/migration.js:119",
+   656
+  ],
+  [
+   "(anon) src/render/genvo-draw.js:124",
+   563
+  ],
+  [
+   "staticLandTile src/render/renderer.js:439",
+   554
+  ],
+  [
+   "drawBone src/render/indexed-part-renderer.js:47",
+   547
+  ],
+  [
+   "drawFamilyGuidance src/render/renderer.js:114",
+   538
+  ],
+  [
+   "drawHead src/render/head.js:24",
+   537
+  ],
+  [
+   "drawHead src/render/indexed-part-renderer.js:83",
+   534
+  ]
+ ],
+ "longBusyRuns": [
+  {
+   "ms": 332,
+   "top": [
+    [
+     "frame src/main.js:217",
+     326
+    ],
+    [
+     "o.<computed> src/main.js:239",
+     319
+    ],
+    [
+     "update src/sim/simulation.js:153",
+     279
+    ],
+    [
+     "phasePerception src/sim/simulation.js:211",
+     271
+    ],
+    [
+     "observe src/ecology/migration.js:19",
+     266
+    ],
+    [
+     "recommend src/ecology/migration.js:93",
+     264
+    ],
+    [
+     "recommendWild src/ecology/migration.js:119",
+     261
+    ],
+    [
+     "breedingState src/ecology/carrying.js:57",
+     251
+    ]
+   ]
+  },
+  {
+   "ms": 262,
+   "top": [
+    [
+     "frame src/main.js:217",
+     257
+    ],
+    [
+     "o.<computed> src/main.js:239",
+     252
+    ],
+    [
+     "update src/sim/simulation.js:153",
+     213
+    ],
+    [
+     "phasePerception src/sim/simulation.js:211",
+     204
+    ],
+    [
+     "observe src/ecology/migration.js:19",
+     200
+    ],
+    [
+     "recommend src/ecology/migration.js:93",
+     198
+    ],
+    [
+     "recommendWild src/ecology/migration.js:119",
+     196
+    ],
+    [
+     "breedingState src/ecology/carrying.js:57",
+     193
+    ]
+   ]
+  },
+  {
+   "ms": 261,
+   "top": [
+    [
+     "frame src/main.js:217",
+     255
+    ],
+    [
+     "o.<computed> src/main.js:239",
+     248
+    ],
+    [
+     "update src/sim/simulation.js:153",
+     209
+    ],
+    [
+     "phasePerception src/sim/simulation.js:211",
+     202
+    ],
+    [
+     "recommend src/ecology/migration.js:93",
+     200
+    ],
+    [
+     "observe src/ecology/migration.js:19",
+     200
+    ],
+    [
+     "recommendWild src/ecology/migration.js:119",
+     199
+    ],
+    [
+     "breedingState src/ecology/carrying.js:57",
+     189
+    ]
+   ]
+  },
+  {
+   "ms": 193,
+   "top": [
+    [
+     "frame src/main.js:217",
+     188
+    ],
+    [
+     "o.<computed> src/main.js:239",
+     175
+    ],
+    [
+     "update src/sim/simulation.js:153",
+     135
+    ],
+    [
+     "phaseVegetation src/sim/simulation.js:210",
+     124
+    ],
+    [
+     "advanceBotanicalReproduction src/ecology/dispersal.js:81",
+     58
+    ],
+    [
+     "advanceBotanicalReproduction src/ecology/botanical-reproduction.js:37",
+     57
+    ],
+    [
+     "render src/render/renderer.js:68",
+     50
+    ],
+    [
+     "drawAnimal src/render/renderer.js:821",
+     37
+    ]
+   ]
+  },
+  {
+   "ms": 186,
+   "top": [
+    [
+     "frame src/main.js:217",
+     179
+    ],
+    [
+     "o.<computed> src/main.js:239",
+     159
+    ],
+    [
+     "update src/sim/simulation.js:153",
+     108
+    ],
+    [
+     "phaseVegetation src/sim/simulation.js:210",
+     88
+    ],
+    [
+     "render src/render/renderer.js:68",
+     67
+    ],
+    [
+     "drawAnimal src/render/renderer.js:821",
+     45
+    ],
+    [
+     "drawGenvoSprite src/render/genvo-draw.js:64",
+     44
+    ],
+    [
+     "advanceBotanicalReproduction src/ecology/dispersal.js:81",
+     36
+    ]
+   ]
+  },
+  {
+   "ms": 176,
+   "top": [
+    [
+     "frame src/main.js:217",
+     173
+    ],
+    [
+     "o.<computed> src/main.js:239",
+     157
+    ],
+    [
+     "update src/sim/simulation.js:153",
+     108
+    ],
+    [
+     "phaseVegetation src/sim/simulation.js:210",
+     99
+    ],
+    [
+     "render src/render/renderer.js:68",
+     60
+    ],
+    [
+     "advanceBotanicalReproduction src/ecology/botanical-reproduction.js:37",
+     45
+    ],
+    [
+     "advanceBotanicalReproduction src/ecology/dispersal.js:81",
+     45
+    ],
+    [
+     "drawAnimal src/render/renderer.js:821",
+     43
+    ]
+   ]
+  }
+ ]
+}

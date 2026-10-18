@@ -24,7 +24,14 @@ node tests/targeted-feeding.mjs
 node tests/seed-observations.mjs
 node tests/save-persistence.mjs
 node tests/consolidation-demand-parity.mjs
+node tests/encounter-reactions.mjs
+node tests/plate-protection-reading.mjs
+node tests/anatomy-locomotion.mjs
+node tests/soil-disturbance-establishment.mjs
+node tests/juvenile-weak-attempts.mjs
 ```
+
+Tiered runner: `node tools/run-tests.mjs` runs the fast tier (every suite outside `tests/test-tiers.json`'s long tier, 240 s cap) and lists long suites as deferred; `--all` adds the long tier, `--long` runs it alone, `--json <file>` saves the report. Known failures in `tests/known-failures.json` still run and are reported as `known-fail`; the runner exits non-zero only on a new failure, a timeout, or a ledger entry whose suite now passes.
 
 Browser capture tools expect the configured Playwright dependency runtime. Development checkpoints do not establish creator visual approval, unfamiliar-player comprehension or full ecological balance. Physical mass structure is implemented; coefficient adoption and swimming migration await creator review.
 
@@ -1694,9 +1701,7 @@ v0.53 turns four v0.52 strategies into real multi-generation branches instead of
 - `node tests/history.mjs`
 - `node tests/pressure.mjs`
 - `node tests/disease.mjs`
-- `node tests/ecology-stability.mjs`
-- `node tests/headless-short.mjs`
-- `node tests/headless.mjs`
+- `node tests/natural-world-soak.mjs` (replaces `ecology-stability`, `headless-short` and `headless`; diagnostics formerly in `probe-kills`/`probe-recovery` are `node tools/probe-natural-world.mjs`)
 
 All five deterministic 10-year ecology seeds remain alive across all four animal families. The Year-21 disease regression also requires natural Mirefever emergence, substantial recovery, non-catastrophic direct mortality, and peak prevalence below 55% of peak animal population. The strengthened Year-21 stability suite keeps every starter animal family extant in all three canonical long seeds, keeps systemic dehydration below the regression threshold, and requires peak population to remain below the 560-animal performance target.
 

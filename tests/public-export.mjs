@@ -8,7 +8,11 @@ try{
  assert.equal(result.status,0,result.stdout+result.stderr);
  const {reachable}=sourceGraph(root);
  for(const p of reachable)assert.equal(fs.readFileSync(path.join(temp,p)).compare(fs.readFileSync(path.join(root,p))),0,p);
- for(const p of ['src/lineage/phenotype-resolver.js','src/render/authored-draft-compiler.js'])assert.equal(fs.existsSync(path.join(temp,p)),false,`${p} is tool-only`);
+ assert.equal(fs.existsSync(path.join(temp,'src/lineage/phenotype-resolver.js')),false,'src/lineage/phenotype-resolver.js is tool-only');
+ // The exporter ships the optional Creature Lab with its real dependencies (tools/export-public.mjs), so the
+ // draft compiler is present as a Lab dependency, but it must never be part of the game's own runtime graph.
+ assert.equal(reachable.has('src/render/authored-draft-compiler.js'),false,'authored-draft-compiler is not reachable from the game entry');
+ assert.ok(fs.readFileSync(path.join(root,'tools/creature-lab/app.js'),'utf8').includes('authored-draft-compiler'),'it ships only because the Creature Lab imports it');
  assert.equal(fs.existsSync(path.join(temp,'references/generated-sprite-sheets/genvo8-walk.png')),false,'derived sprites not shipped');
  assert.equal(fs.existsSync(path.join(temp,'assets/audio-source')),false,'lossless audio sources are not browser assets');
  assert.equal(fs.existsSync(path.join(temp,'assets/art/catalog.json')),true,'installed native part artwork must be in public build');

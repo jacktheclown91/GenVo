@@ -1,0 +1,448 @@
+{
+ "res": "1440x900",
+ "seed": "PHASE4-ORDINARY",
+ "dayAdvanced": 120,
+ "query": "",
+ "moving": 0,
+ "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3050 (0x00002582) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+ "software": false,
+ "day": 121,
+ "animals": 321,
+ "playerAlive": true,
+ "paused": false,
+ "frames": 20358,
+ "presentedFps": 33.9,
+ "frameMs": {
+  "mean": 29.5,
+  "p50": 26.7,
+  "p95": 40.1,
+  "p99": 146.8,
+  "max": 1240.4
+ },
+ "renderMs": {
+  "mean": 14.6,
+  "p50": 13.8,
+  "p95": 21.9
+ },
+ "simMs": {
+  "mean": 2.1,
+  "p50": 0.1,
+  "p95": 1.6
+ },
+ "creaturePrepMs": {
+  "mean": 6,
+  "p50": 5.5,
+  "p95": 9.4
+ },
+ "creatureComposeMs": {
+  "mean": 3,
+  "p50": 2.7,
+  "p95": 5.3
+ },
+ "otherMs": {
+  "p50": 10.7,
+  "p95": 25.4
+ },
+ "visibleCreatures": {
+  "mean": 62.3,
+  "p50": 59,
+  "p95": 83
+ },
+ "movingVisible": {
+  "mean": 46.5,
+  "p50": 44,
+  "p95": 68
+ },
+ "freshSpritesPerFrame": {
+  "mean": 49.8,
+  "p50": 48,
+  "p95": 73
+ },
+ "canvasesCreatedPerSecond": 40.54,
+ "heapMB": {
+  "start": 314.5,
+  "end": 225
+ },
+ "drawsPerFrame": null,
+ "worstFrames": [
+  {
+   "i": 14508,
+   "ms": 1240.4,
+   "render": 13.5,
+   "sim": 1.5,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 2
+  },
+  {
+   "i": 13124,
+   "ms": 1227.1,
+   "render": 14.1,
+   "sim": 0,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 0
+  },
+  {
+   "i": 15642,
+   "ms": 1200.4,
+   "render": 9.6,
+   "sim": 0.1,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 0
+  },
+  {
+   "i": 424,
+   "ms": 1187.1,
+   "render": 20.6,
+   "sim": 1.6,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 0
+  },
+  {
+   "i": 11392,
+   "ms": 1173.8,
+   "render": 10.7,
+   "sim": 1.3,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 0
+  },
+  {
+   "i": 3378,
+   "ms": 1173.6,
+   "render": 16.7,
+   "sim": 1.6,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 1
+  }
+ ],
+ "saves": [
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 889.7,
+   "totalMs": 1259.1
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 866.8,
+   "totalMs": 1124.6
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 979.8,
+   "totalMs": 1286.3
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 916.8,
+   "totalMs": 1208.5
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 866.8,
+   "totalMs": 1108
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 882.8,
+   "totalMs": 1171.9
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 897.8,
+   "totalMs": 1201
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 919,
+   "totalMs": 1222.3
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 930.4,
+   "totalMs": 1257.9
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 950.2,
+   "totalMs": 1249.3
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 868.7,
+   "totalMs": 1172.5
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 955.4,
+   "totalMs": 1209.2
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 970.8,
+   "totalMs": 1243.8
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 861.6,
+   "totalMs": 1130.1
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 852.6,
+   "totalMs": 1164.7
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 847.7,
+   "totalMs": 1119.4
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 885.6,
+   "totalMs": 1165.2
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 861.9,
+   "totalMs": 1146.1
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 900.9,
+   "totalMs": 1162
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 869.1,
+   "totalMs": 1116.4
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 854.8,
+   "totalMs": 1124.9
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 864.7,
+   "totalMs": 1099.1
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 863.5,
+   "totalMs": 1101.8
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 925.4,
+   "totalMs": 1169.1
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 856.1,
+   "totalMs": 1097.9
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 861.8,
+   "totalMs": 1101.4
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 908.4,
+   "totalMs": 1152.2
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 842.9,
+   "totalMs": 1082.8
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 853.6,
+   "totalMs": 1149.1
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 859.6,
+   "totalMs": 1104.7
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 865.1,
+   "totalMs": 1119.4
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 886.6,
+   "totalMs": 1113.8
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 970.3,
+   "totalMs": 1229.9
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 879.8,
+   "totalMs": 1164.4
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 948.1,
+   "totalMs": 1204.1
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 885.7,
+   "totalMs": 1193
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 925.9,
+   "totalMs": 1175.5
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 1009.6,
+   "totalMs": 1338
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 874.5,
+   "totalMs": 1183.9
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 886.3,
+   "totalMs": 1149.8
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 886.9,
+   "totalMs": 1119.8
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 929.4,
+   "totalMs": 1173.8
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 1061.6,
+   "totalMs": 1292.5
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 925.2,
+   "totalMs": 1179.7
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 923,
+   "totalMs": 1147.9
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 1004.6,
+   "totalMs": 1291.4
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 868.4,
+   "totalMs": 1123.1
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 882.8,
+   "totalMs": 1139.7
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 934,
+   "totalMs": 1166
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 854.8,
+   "totalMs": 1066.8
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 872.2,
+   "totalMs": 1278.3
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 876.2,
+   "totalMs": 1135.6
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 860.9,
+   "totalMs": 1078
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 863.9,
+   "totalMs": 1104.7
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 881.2,
+   "totalMs": 1128.8
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 867,
+   "totalMs": 1133.5
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 857.5,
+   "totalMs": 1081.7
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 863.8,
+   "totalMs": 1129.2
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 852.7,
+   "totalMs": 1095
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 925.7,
+   "totalMs": 1202.6
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 888.3,
+   "totalMs": 1123.3
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 856.7,
+   "totalMs": 1248.7
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 861.7,
+   "totalMs": 1152
+  }
+ ],
+ "canvasSources": null,
+ "live": {
+  "paused": false,
+  "playerAlive": true,
+  "day": 208,
+  "animals": 370
+ },
+ "errors": []
+}

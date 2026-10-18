@@ -1,0 +1,34 @@
+# Mechanism-first validation audit and proposed plan - October 17, 2026
+
+Requested strategy review. No additional balance changes are authorized by this document. No commit, push, release, or creator acceptance is implied.
+
+## Current audit
+
+| Finding | Classification | Treatment |
+| --- | --- | --- |
+| wild-evolution again timed out at 900.1 s, mostly without another simulation suite running | Performance failure | Profile a mature world and identify scaling by phase, cohort count, and retained objects. Do not alter biology or increase its ceiling to turn it green. Its historical needlejaw assertion was not reached. |
+| wild-evolution requires living needlejaw/mosskip, evolved survivors, and at least three branches after 420 days | Ecological observation / outdated universal expectation | Separate these measurements from controlled inheritance, mutation, anatomical validity, and functional-effect checks. Retain the historical finding and full horizon; absence of an evolved survivor is not by itself a broken inheritance mechanism. Changes require explicit documentation, not deletion of evidence. |
+| natural-world-soak mixes daily integrity checks with an end-of-run requirement that some animal survives | Biological invariants plus an ecological outcome expectation | Keep tick advancement, finite stocks, population reconciliation, unique IDs, and the emergency capacity guard strict. Report complete extinction and its causal evidence as an observation rather than universal failure. Keep existing 640/320-day coverage. |
+| Five isolated seed workers at about 318 s used about 7.1 GB combined working set | Performance / memory investigation | Working set is not a retained-JS-heap measurement and does not establish a leak. Measure live heap after GC, peak RSS, cohorts/genomes, caches, and histories by age. Test concurrency separately from per-world scaling. The current run is still pending. |
+| Original hydrology test required the old seepage floor under the replacement water model | Outdated mechanism expectation, corrected | Fixed-floor coverage remains for legacy mode. The current model is checked for daily budget closure, actual open-water inflow, and wetter banks. Passed standalone and within the comprehensive run. |
+| Soil-water, persistent weather, storm interactions, deterministic save/resume | Mechanism coverage, passing in completed checks | Preserve strict tests. Integration exists; do not equate this with a mechanism-complete environmental model or accepted ecosystem balance. |
+| Existing evolution-baseline mismatch | Historical regression comparison | Keep the frozen baseline and explain accepted mechanism differences. Add same-version deterministic tests rather than rewriting history to obtain a green result. |
+| AI disclosure, canonical-source, evolution-contract, provenance, and player-copy-style failures | Release/provenance/style gates | Keep separate and visible. They are not evidence of a biological failure; do not manufacture release records for an unapproved tree. |
+
+No new biological invariant failure has appeared among the first 390 completed suites. That is bounded evidence, not comprehensive success: wild-evolution timed out, the isolated five-world soak remains running, and the serial observer budget check is pending.
+
+## Environmental mechanism gaps to keep visible
+
+The current soil-water and persistent-weather implementations account for rainfall, soil storage, groundwater exchange, evaporation, drainage, and growth-water withdrawals. Weather has an independent deterministic stream and save continuity. Existing reports still identify permissive plant moisture tolerance and growth-only water use; neither has been recalibrated in this continuation. These are mechanism questions to investigate with water/biomass measurements, not reasons to restore desired population counts. Regional fronts are optional later scope. Thermoregulation, fur, feathers, and pigmentation are not prerequisites for closing this bounded environmental validation pass.
+
+## Proposed revised plan
+
+1. **Inventory and label gates.** Add explicit biological-invariant, mechanism, ecological-observation, performance, and historical/release classifications while retaining fast/long execution tiers as a separate scheduling dimension. Audit assertions as well as suite names because current suites mix categories.
+2. **Protect strict gates.** Preserve finite accounted resources, funded biological actions, valid inherited sources/anatomy, birth/death reconciliation, and deterministic seed/save continuation. Controlled mechanism tests must still prove that inheritance and adaptation mechanisms can operate when their necessary conditions exist; natural worlds need not exercise every pathway.
+3. **Split mixed tests without erasing coverage.** Keep wild-body functional checks and all soak integrity checks. Move natural survival, evolved-survivor counts, branch counts, biodiversity, and extinction outcomes into retained observation records. Preserve current long horizons; add a bounded five-world 100-day observation pass for quick diagnosis, not as a replacement for long coverage.
+4. **Profile actual mature-world cost.** Capture progress and phase costs through the wild-evolution horizon, plus GC/heap evidence at multiple ages. Attribute memory to cohorts, genomes, bounded/unbounded history, and caches; compare worker counts on the same workloads. Use exact differential-state checks for optimizations. The current array-allocation reduction is locally proven but did not resolve the 900 s timeout.
+5. **Close soil/weather mechanism validation first.** Complete the outstanding integration results. Investigate moisture-response and plant-water-accounting questions independently; make only causally justified mechanism corrections. Do not add food, reproduction, mortality, or rainfall compensation for ecosystem survival.
+6. **Observe and explain.** Record weather and water budgets, producer biomass, food availability, funded reproduction stages, deaths by cause, migration, lineage births, and divergence together. Distinguish observed correlations from traced causal receipts. Report uncertainty rather than invent a cause for an extinction.
+7. **Reassess before expansion.** Review the environmental and scalability evidence before another balance pass. Keep thermoregulation/coverings as separately scoped later decisions, respect the October 30 freeze, preserve parallel work, and obtain creator approval before any commit, push, or release.
+
+This is a proposed plan. No outcome assertions or additional balance parameters were changed to implement it during the audit.

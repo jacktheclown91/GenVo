@@ -74,9 +74,27 @@ assert.equal(sim.speciesCoexistence.autonomousDecision(mover)?.intent,'species-s
 // Autonomous breeding prefers a same-taxon mate even if a gene-flow mate is closer.
 const actor=branchAdults.find(a=>a.sex==='M'),sameMate=branchAdults.find(a=>a.sex==='F');
 const crossMate=rootIntruders.find(a=>a.sex==='F');
-actor.x=site.x;actor.y=site.y;sameMate.x=site.x+4.8;sameMate.y=site.y;crossMate.x=site.x+.8;crossMate.y=site.y;
-actor.reproCooldown=sameMate.reproCooldown=crossMate.reproCooldown=0;sim.rebuildSpatial();
+// Same taxon is a search TENDENCY weighed with inherited preference, never a barrier
+// (creator decision 2026-10-15). With neutral preferences at equal distance, the own taxon wins.
+const neutral={weights:{size:0,strength:0,ornament:0,display:0,behavior:0},selectivity:.5,similarity:0};
+for(const b of [actor,sameMate,crossMate])b.matePreferences={...(b.matePreferences||{}),...structuredClone(neutral)};
+actor.x=site.x;actor.y=site.y;sameMate.x=site.x+1.6;sameMate.y=site.y;crossMate.x=site.x-1.6;crossMate.y=site.y;
+actor.reproCooldown=sameMate.reproCooldown=crossMate.reproCooldown=0;
+// A clean tie: only these two candidates are in range (others restored afterwards).
+const bystanders=sim.animals.filter(b=>b.alive&&b!==sameMate&&b!==crossMate&&b.sex==='F').map(b=>[b,b.x]);for(const [b] of bystanders)b.x=site.x+60;sim.rebuildSpatial();
 assert.equal(sim.autonomousMateTarget(actor,{far:true})?.id,sameMate.id,'autonomous mate search prefers its own living taxon before gene flow');
+for(const [b,x] of bystanders)b.x=x;sim.rebuildSpatial();
+// A compatible hybrid the chooser strongly prefers still ranks first: hybridization stays possible
+// while same-taxon candidates exist.
+actor.matePreferences.weights.ornament=1;crossMate.bodyPlan=structuredClone(crossMate.bodyPlan);
+{const {makePlan}=await import('../src/lineage/body-plan.js');const nodes=crossMate.bodyPlan.nodes.filter(n=>n.socket!=='dorsal'&&n.socket!=='tail');nodes.push({parent:'root',socket:'dorsal',partId:'signal-crest'},{parent:'root',socket:'tail',partId:'flag-tail'});crossMate.bodyPlan=makePlan(nodes.map(n=>({partId:n.partId,parent:n.parent===null?null:n.parent,socket:n.socket})))}
+sim.rebuildSpatial();
+assert.equal(sim.autonomousMateTarget(actor,{far:true})?.id,crossMate.id,'a strongly preferred compatible hybrid can outrank a same-taxon candidate');
+// With no same-taxon candidate, gene flow is the fallback.
+for(const b of [actor,sameMate,crossMate])b.matePreferences={...b.matePreferences,...structuredClone(neutral)};
+const away=branchAdults.filter(b=>b.sex==='F').map(b=>[b,b.x]);for(const [b] of away)b.x=site.x+60;sim.rebuildSpatial();
+{const fallback=sim.autonomousMateTarget(actor,{far:true});assert.ok(fallback&&!sim.evolutionTree.sameTaxon(actor,fallback),'gene flow remains available when no same-taxon mate is reachable')}
+for(const [b,x] of away)b.x=x;sim.rebuildSpatial();
 
 // Stage enough learned range and shelter capacity for a taxon-scoped satellite settlement.
 sim.shelter.shelters.length=0;sim.shelter.nextId=2;sim.shelter.shelters.push({id:1,ownerId:p.id,x:p.x,y:p.y,integrity:100,weatherSeal:1,foodStore:8,capacity:28,kind:'primary',constructedDay:sim.day,constructedYear:sim.year,lastUsedTick:sim.tickCount});

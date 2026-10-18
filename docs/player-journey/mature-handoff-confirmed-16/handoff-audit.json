@@ -1,0 +1,127 @@
+{
+  "scope": "Read-only actual mature/post-H native archives and adjacent UI observations. One permanent lineage event, unchanged inherited body/genes/alleles/adaptations and no resource/age grant at H. Post-handoff E is an ordinary finite meal. Not new anatomical capability, completed field-readiness challenge or full Living Planet acceptance.",
+  "input": "docs/player-journey/offspring-growth-continuation-14/checkpoint.snapshot.bin",
+  "output": "docs/player-journey/mature-handoff-confirmed-16/checkpoint.snapshot.bin",
+  "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+  "day": 213,
+  "tick": 10209,
+  "from": 109,
+  "to": 491,
+  "age": 30,
+  "generation": 3,
+  "bodyGenesAllelesUnchanged": true,
+  "growthPaid": 61.97669684941282,
+  "noHandoffAgeOrReserveGrant": true,
+  "newHandoffs": [
+    {
+      "from": 109,
+      "to": 491,
+      "generation": 3,
+      "day": 213,
+      "year": 7,
+      "reason": "handoff",
+      "changes": [
+        {
+          "key": "motion",
+          "current": 0.9992367755654986,
+          "baseline": 0.9017648529727013,
+          "delta": 0.09747192259279736,
+          "phrase": "faster movement",
+          "noun": "Movement"
+        },
+        {
+          "key": "metabolism",
+          "current": 0.8841540899338708,
+          "baseline": 0.9668144827242942,
+          "delta": -0.08266039279042336,
+          "phrase": "higher energy use",
+          "noun": "Metabolism"
+        },
+        {
+          "key": "body",
+          "current": 1.0808847765032412,
+          "baseline": 1.030085538001731,
+          "delta": 0.050799238501510136,
+          "phrase": "larger body",
+          "noun": "Body size"
+        }
+      ],
+      "founderChanges": [
+        {
+          "key": "motion",
+          "current": 0.9992367755654986,
+          "baseline": 0.9017648529727013,
+          "delta": 0.09747192259279736,
+          "phrase": "faster movement",
+          "noun": "Movement"
+        },
+        {
+          "key": "metabolism",
+          "current": 0.8841540899338708,
+          "baseline": 0.9668144827242942,
+          "delta": -0.08266039279042336,
+          "phrase": "higher energy use",
+          "noun": "Metabolism"
+        },
+        {
+          "key": "body",
+          "current": 1.0808847765032412,
+          "baseline": 1.030085538001731,
+          "delta": 0.050799238501510136,
+          "phrase": "larger body",
+          "noun": "Body size"
+        }
+      ],
+      "newlyEstablished": false,
+      "fromTaxon": {
+        "id": "genvo8-root",
+        "label": "GenVo"
+      },
+      "toTaxon": {
+        "id": "genvo8-root",
+        "label": "GenVo"
+      },
+      "crossTaxon": false,
+      "bornAdaptations": [],
+      "mutationBudget": {
+        "budget": 12,
+        "bonus": 4
+      },
+      "preparedness": {
+        "fieldReady": false,
+        "routes": 0,
+        "lessons": 1,
+        "independence": 0.5341666666666668,
+        "label": "still learning"
+      }
+    }
+  ],
+  "succession": {
+    "fromId": 109,
+    "toId": 491,
+    "handoffIndex": 0,
+    "reason": "handoff",
+    "startedTick": 10197,
+    "startedDay": 213,
+    "stage": "home",
+    "target": {
+      "x": 10.403024299814572,
+      "y": 29.403024539304592,
+      "kind": "caregiver",
+      "label": "family anchor"
+    },
+    "preparedness": {
+      "fieldReady": false,
+      "routes": 0,
+      "lessons": 1,
+      "independence": 0.5341666666666668,
+      "label": "still learning"
+    },
+    "homeReached": false,
+    "resourceConfirmed": false,
+    "lastActionTick": -1,
+    "completed": false
+  },
+  "finalEnergy": 123.94064082963855,
+  "finalHydration": 6.302061253922185
+}

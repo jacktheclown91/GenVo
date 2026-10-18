@@ -14,13 +14,15 @@ function childOf(sim,a,b){
   return child;
 }
 
-// Established wide-ranging family behavior becomes a fixed G2 Forager form.
+// Existing inherited Forager form retains appearance/mechanics; learned behavior cannot create it.
 {
   const sim=new Simulation('GENVO8-DIVERGE-FORAGER',{player:true}),p=sim.player(),mate=mateFor(sim,p);
   sim.tendency.scores={forager:7.5,colony:.8};sim.tendency.evaluate();
+  assert.equal(sim.divergence.onBirth({generation:2},[p,mate]),null,'learned behavior does not create an inherited form');
+  setForm(p,{kind:'forager',strength:.6,sourceGeneration:1});
   const child=childOf(sim,p,mate),form=sim.divergence.formFor(child);
   assert.equal(form?.kind,'forager');
-  assert.ok(form.strength>.45,'established family behavior should create a visible G2 form');
+  assert.equal(form.strength,.6,'existing parental form strength is inherited unchanged');
   const plain=phenotypeFor(withoutReadings(child)),changed=phenotypeFor(child);
   assert.ok(changed.bodyWidthScale<plain.bodyWidthScale,'Forager form narrows the mantle');
   assert.ok(changed.limbScale>plain.limbScale,'Forager form lengthens limbs');
@@ -34,17 +36,18 @@ function childOf(sim,a,b){
   const decision=sim.tendency.autonomousDecision(child);
   assert.ok(decision&&['tendency-forage','tendency-roam'].includes(decision.intent),'inherited Forager form preserves autonomous wide-ranging behavior');
 
-  // Repeating the same way of living into G3 deepens the inherited form.
+  // Repeating learned behavior does not strengthen the inherited G3 determinant.
   sim.tendency.scores={forager:8.2,colony:.7};sim.tendency.lastSnapshot=null;sim.tendency.evaluate();
   const outsider=mateFor(sim,child),grandchild=childOf(sim,child,outsider),deep=sim.divergence.formFor(grandchild);
   assert.equal(deep?.kind,'forager');
-  assert.ok(deep.strength>form.strength,'continued family behavior should deepen the form in a later generation');
+  assert.equal(deep.strength,form.strength,'continued family behavior cannot strengthen inherited anatomy');
 }
 
-// Colony living produces a different body and concrete shelter economy/protection.
+// Existing inherited Colony form retains a different body and concrete shelter effects.
 {
   const sim=new Simulation('GENVO8-DIVERGE-COLONY',{player:true}),p=sim.player(),mate=mateFor(sim,p);
   sim.tendency.scores={forager:.6,colony:7.8};sim.tendency.evaluate();
+  setForm(p,{kind:'colony',strength:.6,sourceGeneration:1});
   const child=childOf(sim,p,mate),form=sim.divergence.formFor(child);
   assert.equal(form?.kind,'colony');
   const plain=phenotypeFor(withoutReadings(child)),changed=phenotypeFor(child);

@@ -95,6 +95,16 @@ export function buildBaseline(opts={}){return{schema:1,version:CFG.version,note:
 
 if(process.argv[1]&&fileURLToPath(import.meta.url)===path.resolve(process.argv[1])){
   const now=buildBaseline();
+  const ci=process.argv.indexOf('--compare');
+  if(ci>=0){
+    // A separately labelled CURRENT-SOURCE COMPARISON. It never touches the historical baseline.
+    const old=JSON.parse(fs.readFileSync(baselinePath,'utf8')),out=process.argv[ci+1]||path.join(root,'docs','evolution-baseline-comparison.json');
+    const matrixDiffs=[];for(const [row,vals] of Object.entries(now.matrix))for(const [k,v] of Object.entries(vals)){const o=old.matrix?.[row]?.[k];if(o!==v)matrixDiffs.push({row,key:k,baseline:o,current:v})}
+    const delta=(a,b)=>a&&b&&typeof a==='object'?Object.fromEntries(Object.keys({...a,...b}).map(k=>[k,typeof a[k]==='number'&&typeof b[k]==='number'?+(b[k]-a[k]).toFixed(6):delta(a[k],b[k])])):undefined;
+    const natural=Object.fromEntries(Object.keys({...old.natural,...now.natural}).map(seed=>[seed,{baseline:old.natural[seed],current:now.natural[seed],delta:delta(old.natural[seed],now.natural[seed])}]));
+    fs.writeFileSync(out,JSON.stringify({schema:'genvo.evolution-baseline-comparison/1',label:'Current-source comparison. NOT a baseline; the historical baseline is unchanged.',date:new Date().toISOString().slice(0,10),baselineVersion:old.version,currentVersion:now.version,seeds:Object.keys(now.natural),matrixMatches:!matrixDiffs.length,matrixDiffs,natural},null,1)+'\n');
+    console.log(`wrote ${path.relative(root,out)} (matrix ${matrixDiffs.length?matrixDiffs.length+' differences':'matches'})`);process.exit(0);
+  }
   if(process.argv.includes('--write')){fs.writeFileSync(baselinePath,JSON.stringify(now,null,1)+'\n');console.log(`wrote ${path.relative(root,baselinePath)}`)}
   else{
     const old=fs.existsSync(baselinePath)?JSON.parse(fs.readFileSync(baselinePath,'utf8')):null;

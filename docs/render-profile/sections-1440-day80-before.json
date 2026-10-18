@@ -1,0 +1,161 @@
+{
+ "viewport": "1440x900",
+ "advancedDays": 80,
+ "day": 81,
+ "animals": 240,
+ "frames": 1286,
+ "totalSelfMsPerFrame": 7.75,
+ "rows": [
+  {
+   "method": "drawAnimal",
+   "msPerFrame": 1.761,
+   "callsPerFrame": 37
+  },
+  {
+   "method": "drawEnvironmentalHistory",
+   "msPerFrame": 1.383,
+   "callsPerFrame": 1186
+  },
+  {
+   "method": "drawFamilyGuidance",
+   "msPerFrame": 1.088,
+   "callsPerFrame": 1
+  },
+  {
+   "method": "drawTileDynamic",
+   "msPerFrame": 0.615,
+   "callsPerFrame": 1426
+  },
+  {
+   "method": "drawTerrainChunks",
+   "msPerFrame": 0.551,
+   "callsPerFrame": 2
+  },
+  {
+   "method": "render",
+   "msPerFrame": 0.379,
+   "callsPerFrame": 1
+  },
+  {
+   "method": "visualWaterMask",
+   "msPerFrame": 0.296,
+   "callsPerFrame": 1430.9
+  },
+  {
+   "method": "drawOrganicWaterMotion",
+   "msPerFrame": 0.279,
+   "callsPerFrame": 286
+  },
+  {
+   "method": "terrainChunk",
+   "msPerFrame": 0.172,
+   "callsPerFrame": 216
+  },
+  {
+   "method": "drawOnHabitatLand",
+   "msPerFrame": 0.17,
+   "callsPerFrame": 12
+  },
+  {
+   "method": "paintOrganicLandBase",
+   "msPerFrame": 0.163,
+   "callsPerFrame": 1.8
+  },
+  {
+   "method": "buildTerrainChunk",
+   "msPerFrame": 0.115,
+   "callsPerFrame": 0.1
+  },
+  {
+   "method": "queueTerrainWarmRing",
+   "msPerFrame": 0.086,
+   "callsPerFrame": 1
+  },
+  {
+   "method": "drawOrganicLandBase",
+   "msPerFrame": 0.086,
+   "callsPerFrame": 1.8
+  },
+  {
+   "method": "staticLandTile",
+   "msPerFrame": 0.072,
+   "callsPerFrame": 1.6
+  },
+  {
+   "method": "visualHabitatMask",
+   "msPerFrame": 0.055,
+   "callsPerFrame": 3.3
+  },
+  {
+   "method": "vegetationLayer",
+   "msPerFrame": 0.054,
+   "callsPerFrame": 3.5
+  },
+  {
+   "method": "terrainChunkSignature",
+   "msPerFrame": 0.047,
+   "callsPerFrame": 359.1
+  },
+  {
+   "method": "drawHabitatTransitions",
+   "msPerFrame": 0.037,
+   "callsPerFrame": 1
+  },
+  {
+   "method": "actionPose",
+   "msPerFrame": 0.034,
+   "callsPerFrame": 37
+  },
+  {
+   "method": "plantVisualSignature",
+   "msPerFrame": 0.027,
+   "callsPerFrame": 3.5
+  },
+  {
+   "method": "drawSites",
+   "msPerFrame": 0.026,
+   "callsPerFrame": 1
+  },
+  {
+   "method": "liveVegetationBounds",
+   "msPerFrame": 0.026,
+   "callsPerFrame": 2
+  },
+  {
+   "method": "drawMarkers",
+   "msPerFrame": 0.026,
+   "callsPerFrame": 37
+  },
+  {
+   "method": "drawPlant",
+   "msPerFrame": 0.025,
+   "callsPerFrame": 1.1
+  },
+  {
+   "method": "paintOrganicWaterBase",
+   "msPerFrame": 0.022,
+   "callsPerFrame": 0.3
+  },
+  {
+   "method": "drawVegetation",
+   "msPerFrame": 0.021,
+   "callsPerFrame": 3.3
+  },
+  {
+   "method": "drawLifeEffects",
+   "msPerFrame": 0.019,
+   "callsPerFrame": 37
+  },
+  {
+   "method": "drawStalkerDens",
+   "msPerFrame": 0.016,
+   "callsPerFrame": 1
+  },
+  {
+   "method": "easedDir",
+   "msPerFrame": 0.012,
+   "callsPerFrame": 37
+  }
+ ],
+ "errors": []
+}

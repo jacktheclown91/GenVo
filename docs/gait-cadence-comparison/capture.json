@@ -1,0 +1,79 @@
+{
+ "tool": "tools/capture-gait-cadence-comparison.cjs",
+ "note": "GAIT_REVIEW.strideScale set in page only; shipped value is 1",
+ "runs": [
+  {
+   "body": "walker",
+   "strideScale": 1,
+   "file": "walker-stride1x.webm",
+   "fps": 57.5,
+   "tilesPerSecond": 2.22,
+   "strideCyclesPerSecond": 6.92
+  },
+  {
+   "body": "walker",
+   "strideScale": 1.5,
+   "file": "walker-stride1_5x.webm",
+   "fps": 56.8,
+   "tilesPerSecond": 2.18,
+   "strideCyclesPerSecond": 4.48
+  },
+  {
+   "body": "walker",
+   "strideScale": 2,
+   "file": "walker-stride2x.webm",
+   "fps": 59.1,
+   "tilesPerSecond": 2.23,
+   "strideCyclesPerSecond": 3.46
+  },
+  {
+   "body": "heavy",
+   "strideScale": 1,
+   "file": "heavy-stride1x.webm",
+   "fps": 58.4,
+   "tilesPerSecond": 2.09,
+   "strideCyclesPerSecond": 8.26
+  },
+  {
+   "body": "heavy",
+   "strideScale": 1.5,
+   "file": "heavy-stride1_5x.webm",
+   "fps": 57.6,
+   "tilesPerSecond": 2.08,
+   "strideCyclesPerSecond": 5.53
+  },
+  {
+   "body": "heavy",
+   "strideScale": 2,
+   "file": "heavy-stride2x.webm",
+   "fps": 59.6,
+   "tilesPerSecond": 2.1,
+   "strideCyclesPerSecond": 4.16
+  },
+  {
+   "body": "runner",
+   "strideScale": 1,
+   "file": "runner-stride1x.webm",
+   "fps": 54.7,
+   "tilesPerSecond": 2.43,
+   "strideCyclesPerSecond": 5.82
+  },
+  {
+   "body": "runner",
+   "strideScale": 1.5,
+   "file": "runner-stride1_5x.webm",
+   "fps": 58.4,
+   "tilesPerSecond": 2.46,
+   "strideCyclesPerSecond": 3.9
+  },
+  {
+   "body": "runner",
+   "strideScale": 2,
+   "file": "runner-stride2x.webm",
+   "fps": 56.6,
+   "tilesPerSecond": 2.4,
+   "strideCyclesPerSecond": 2.87
+  }
+ ],
+ "errors": []
+}

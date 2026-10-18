@@ -1,0 +1,243 @@
+{
+ "viewport": "1920x1080",
+ "advancedDays": 80,
+ "day": 81,
+ "animals": 240,
+ "ops": {
+  "drawImage": {
+   "perFrame": 497,
+   "mainCanvas": 389
+  },
+  "fillRect": {
+   "perFrame": 3929.3,
+   "mainCanvas": 3514
+  },
+  "save": {
+   "perFrame": 1606.9,
+   "mainCanvas": 1501
+  },
+  "restore": {
+   "perFrame": 1606.9,
+   "mainCanvas": 1501
+  },
+  "beginPath": {
+   "perFrame": 43,
+   "mainCanvas": 43
+  },
+  "fill": {
+   "perFrame": 0,
+   "mainCanvas": 0
+  },
+  "stroke": {
+   "perFrame": 31,
+   "mainCanvas": 31
+  },
+  "arc": {
+   "perFrame": 24,
+   "mainCanvas": 24
+  },
+  "putImageData": {
+   "perFrame": 0.4,
+   "mainCanvas": 0
+  },
+  "getImageData": {
+   "perFrame": 0,
+   "mainCanvas": 0
+  },
+  "setTransform": {
+   "perFrame": 24.2,
+   "mainCanvas": 0
+  },
+  "translate": {
+   "perFrame": 185,
+   "mainCanvas": 116
+  },
+  "scale": {
+   "perFrame": 76.3,
+   "mainCanvas": 0
+  },
+  "fillText": {
+   "perFrame": 0,
+   "mainCanvas": 0
+  },
+  "createPattern": {
+   "perFrame": 0,
+   "mainCanvas": 0
+  },
+  "createLinearGradient": {
+   "perFrame": 0,
+   "mainCanvas": 0
+  },
+  "createRadialGradient": {
+   "perFrame": 0,
+   "mainCanvas": 0
+  },
+  "filterSet": {
+   "perFrame": 0,
+   "mainCanvas": 0
+  },
+  "getContext": {
+   "perFrame": 16.4,
+   "mainCanvas": 0
+  },
+  "createCanvas": {
+   "perFrame": 8,
+   "mainCanvas": 0
+  }
+ },
+ "frames": 966,
+ "totalSelfMsPerFrame": 8.12,
+ "rows": [
+  {
+   "method": "drawAnimal",
+   "msPerFrame": 1.955,
+   "callsPerFrame": 57
+  },
+  {
+   "method": "drawEnvironmentalHistory",
+   "msPerFrame": 1.629,
+   "callsPerFrame": 1681
+  },
+  {
+   "method": "drawTileDynamic",
+   "msPerFrame": 0.788,
+   "callsPerFrame": 1944
+  },
+  {
+   "method": "drawTerrainChunks",
+   "msPerFrame": 0.651,
+   "callsPerFrame": 2
+  },
+  {
+   "method": "render",
+   "msPerFrame": 0.421,
+   "callsPerFrame": 1
+  },
+  {
+   "method": "visualWaterMask",
+   "msPerFrame": 0.392,
+   "callsPerFrame": 1953.1
+  },
+  {
+   "method": "drawOrganicWaterMotion",
+   "msPerFrame": 0.344,
+   "callsPerFrame": 315
+  },
+  {
+   "method": "terrainChunk",
+   "msPerFrame": 0.3,
+   "callsPerFrame": 308
+  },
+  {
+   "method": "paintOrganicLandBase",
+   "msPerFrame": 0.273,
+   "callsPerFrame": 3.2
+  },
+  {
+   "method": "buildTerrainChunk",
+   "msPerFrame": 0.175,
+   "callsPerFrame": 0.2
+  },
+  {
+   "method": "drawOnHabitatLand",
+   "msPerFrame": 0.175,
+   "callsPerFrame": 12
+  },
+  {
+   "method": "drawOrganicLandBase",
+   "msPerFrame": 0.139,
+   "callsPerFrame": 3.2
+  },
+  {
+   "method": "staticLandTile",
+   "msPerFrame": 0.122,
+   "callsPerFrame": 2.9
+  },
+  {
+   "method": "visualHabitatMask",
+   "msPerFrame": 0.09,
+   "callsPerFrame": 6.2
+  },
+  {
+   "method": "vegetationLayer",
+   "msPerFrame": 0.085,
+   "callsPerFrame": 6.5
+  },
+  {
+   "method": "terrainChunkSignature",
+   "msPerFrame": 0.066,
+   "callsPerFrame": 503.2
+  },
+  {
+   "method": "queueTerrainWarmRing",
+   "msPerFrame": 0.065,
+   "callsPerFrame": 1
+  },
+  {
+   "method": "drawHabitatTransitions",
+   "msPerFrame": 0.051,
+   "callsPerFrame": 1
+  },
+  {
+   "method": "actionPose",
+   "msPerFrame": 0.046,
+   "callsPerFrame": 57
+  },
+  {
+   "method": "drawPlant",
+   "msPerFrame": 0.043,
+   "callsPerFrame": 2
+  },
+  {
+   "method": "plantVisualSignature",
+   "msPerFrame": 0.041,
+   "callsPerFrame": 6.5
+  },
+  {
+   "method": "paintOrganicWaterBase",
+   "msPerFrame": 0.032,
+   "callsPerFrame": 0.4
+  },
+  {
+   "method": "drawSites",
+   "msPerFrame": 0.03,
+   "callsPerFrame": 1
+  },
+  {
+   "method": "drawLifeEffects",
+   "msPerFrame": 0.025,
+   "callsPerFrame": 57
+  },
+  {
+   "method": "queueTerrainRefresh",
+   "msPerFrame": 0.021,
+   "callsPerFrame": 112.8
+  },
+  {
+   "method": "drawMarkers",
+   "msPerFrame": 0.021,
+   "callsPerFrame": 57
+  },
+  {
+   "method": "drawVegetation",
+   "msPerFrame": 0.016,
+   "callsPerFrame": 6.1
+  },
+  {
+   "method": "drawOrganicHabitat",
+   "msPerFrame": 0.013,
+   "callsPerFrame": 2.9
+  },
+  {
+   "method": "waterBaseTile",
+   "msPerFrame": 0.013,
+   "callsPerFrame": 0.4
+  },
+  {
+   "method": "easedDir",
+   "msPerFrame": 0.013,
+   "callsPerFrame": 57
+  }
+ ],
+ "errors": []
+}

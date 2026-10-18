@@ -1,0 +1,894 @@
+{
+ "seed": "AQ-CMP-A",
+ "days": 540,
+ "base": {
+  "variant": "base",
+  "days": 540,
+  "series": [
+   {
+    "day": 0,
+    "algae": 354.79,
+    "larvae": 7.1,
+    "fry": 0.16,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.864,
+    "rillsifter": 18
+   },
+   {
+    "day": 60,
+    "algae": 775.72,
+    "larvae": 12.35,
+    "fry": 0.13,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.591,
+    "rillsifter": 18
+   },
+   {
+    "day": 120,
+    "algae": 787.46,
+    "larvae": 23.8,
+    "fry": 0.11,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.498,
+    "rillsifter": 18
+   },
+   {
+    "day": 180,
+    "algae": 784.18,
+    "larvae": 46.42,
+    "fry": 0.1,
+    "detritus": 0.42,
+    "bankjaw": 6,
+    "bankjawEnergyMedian": 0.364,
+    "rillsifter": 17
+   },
+   {
+    "day": 240,
+    "algae": 731.14,
+    "larvae": 87.83,
+    "fry": 0.1,
+    "detritus": 1.34,
+    "bankjaw": 5,
+    "bankjawEnergyMedian": 0.159,
+    "rillsifter": 15
+   },
+   {
+    "day": 300,
+    "algae": 641.84,
+    "larvae": 154.37,
+    "fry": 0.11,
+    "detritus": 0,
+    "bankjaw": 2,
+    "bankjawEnergyMedian": 0.332,
+    "rillsifter": 12
+   },
+   {
+    "day": 360,
+    "algae": 428.38,
+    "larvae": 208.37,
+    "fry": 0.14,
+    "detritus": 1.28,
+    "bankjaw": 1,
+    "bankjawEnergyMedian": 0.203,
+    "rillsifter": 13
+   },
+   {
+    "day": 420,
+    "algae": 289.11,
+    "larvae": 209.22,
+    "fry": 0.18,
+    "detritus": 0.17,
+    "bankjaw": 0,
+    "bankjawEnergyMedian": null,
+    "rillsifter": 12
+   },
+   {
+    "day": 480,
+    "algae": 243.15,
+    "larvae": 173.45,
+    "fry": 0.22,
+    "detritus": 0.24,
+    "bankjaw": 0,
+    "bankjawEnergyMedian": null,
+    "rillsifter": 12
+   },
+   {
+    "day": 540,
+    "algae": 229.66,
+    "larvae": 144.76,
+    "fry": 0.26,
+    "detritus": 0,
+    "bankjaw": 0,
+    "bankjawEnergyMedian": null,
+    "rillsifter": 13
+   }
+  ],
+  "births": {
+   "mosskip": 123,
+   "genvo": 38,
+   "rootling": 5,
+   "needlejaw": 5,
+   "rillsifter": 14
+  },
+  "deaths": {
+   "mosskip:predation": 24,
+   "mirelick:predation": 1,
+   "genvo:starvation": 14,
+   "mosskip:starvation": 11,
+   "genvo:predation": 8,
+   "needlejaw:starvation": 4,
+   "mosskip:age": 114,
+   "bankjaw:starvation": 8,
+   "rillsifter:age": 18,
+   "mirelick:age": 19,
+   "rootling:age": 32,
+   "podshell:age": 14,
+   "rootling:predation": 1,
+   "genvo:age": 25,
+   "needlejaw:age": 4,
+   "rillsifter:starvation": 1
+  },
+  "meals": {
+   "rillsifter:algae": 284.586,
+   "rillsifter:larvae": 37.99,
+   "mosskip:algae": 25.546,
+   "genvo:algae": 13.075,
+   "mosskip:waterweed": 2.038,
+   "rillsifter:detritus": 0.368,
+   "genvo:duckweed": 1.071,
+   "mosskip:duckweed": 0.004
+  },
+  "integrityChecks": 67
+ },
+ "forage": {
+  "variant": "forage",
+  "days": 540,
+  "series": [
+   {
+    "day": 0,
+    "algae": 354.79,
+    "larvae": 7.1,
+    "fry": 0.16,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.864,
+    "rillsifter": 18
+   },
+   {
+    "day": 60,
+    "algae": 775.72,
+    "larvae": 12.35,
+    "fry": 0.13,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.591,
+    "rillsifter": 18
+   },
+   {
+    "day": 120,
+    "algae": 786.07,
+    "larvae": 23.81,
+    "fry": 0.11,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.498,
+    "rillsifter": 18
+   },
+   {
+    "day": 180,
+    "algae": 777.42,
+    "larvae": 46.28,
+    "fry": 0.1,
+    "detritus": 0,
+    "bankjaw": 6,
+    "bankjawEnergyMedian": 0.313,
+    "rillsifter": 18
+   },
+   {
+    "day": 240,
+    "algae": 741.06,
+    "larvae": 89.27,
+    "fry": 0.1,
+    "detritus": 0,
+    "bankjaw": 5,
+    "bankjawEnergyMedian": 0.165,
+    "rillsifter": 17
+   },
+   {
+    "day": 300,
+    "algae": 638.98,
+    "larvae": 150.85,
+    "fry": 0.11,
+    "detritus": 1.75,
+    "bankjaw": 4,
+    "bankjawEnergyMedian": 0.455,
+    "rillsifter": 13
+   },
+   {
+    "day": 360,
+    "algae": 421.99,
+    "larvae": 210.95,
+    "fry": 0.14,
+    "detritus": 0.11,
+    "bankjaw": 2,
+    "bankjawEnergyMedian": 0.676,
+    "rillsifter": 13
+   },
+   {
+    "day": 420,
+    "algae": 270.69,
+    "larvae": 212.3,
+    "fry": 0.18,
+    "detritus": 1.26,
+    "bankjaw": 1,
+    "bankjawEnergyMedian": 0.47,
+    "rillsifter": 12
+   },
+   {
+    "day": 480,
+    "algae": 225.32,
+    "larvae": 178.73,
+    "fry": 0.22,
+    "detritus": 0,
+    "bankjaw": 0,
+    "bankjawEnergyMedian": null,
+    "rillsifter": 13
+   },
+   {
+    "day": 540,
+    "algae": 214.38,
+    "larvae": 145.46,
+    "fry": 0.26,
+    "detritus": 1.7,
+    "bankjaw": 0,
+    "bankjawEnergyMedian": null,
+    "rillsifter": 17
+   }
+  ],
+  "births": {
+   "mosskip": 147,
+   "genvo": 59,
+   "rootling": 5,
+   "needlejaw": 5,
+   "rillsifter": 20
+  },
+  "deaths": {
+   "mosskip:predation": 16,
+   "mirelick:predation": 2,
+   "genvo:starvation": 19,
+   "mosskip:starvation": 14,
+   "genvo:predation": 13,
+   "needlejaw:starvation": 8,
+   "mosskip:age": 128,
+   "bankjaw:starvation": 6,
+   "rillsifter:age": 19,
+   "rootling:predation": 3,
+   "mirelick:age": 17,
+   "podshell:starvation": 7,
+   "mirelick:starvation": 1,
+   "podshell:age": 9,
+   "rootling:age": 31,
+   "rootling:starvation": 3,
+   "genvo:age": 22,
+   "rillsifter:starvation": 2,
+   "needlejaw:age": 6,
+   "bankjaw:age": 2
+  },
+  "meals": {
+   "rillsifter:algae": 284.37,
+   "rillsifter:larvae": 31.134,
+   "mosskip:algae": 40.781,
+   "genvo:algae": 12.225,
+   "bankjaw:fry": 0,
+   "mosskip:duckweed": 8.58,
+   "rillsifter:detritus": 0.46,
+   "bankjaw:detritus": 3.465,
+   "mosskip:waterweed": 35.904,
+   "rillsifter:waterweed": 19.361,
+   "rillsifter:duckweed": 0.448,
+   "genvo:waterweed": 1.645,
+   "genvo:duckweed": 0.357
+  },
+  "integrityChecks": 67
+ },
+ "growth": {
+  "variant": "growth",
+  "days": 540,
+  "series": [
+   {
+    "day": 0,
+    "algae": 354.79,
+    "larvae": 7.1,
+    "fry": 0.16,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.864,
+    "rillsifter": 18
+   },
+   {
+    "day": 60,
+    "algae": 775.74,
+    "larvae": 12.32,
+    "fry": 0.13,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.591,
+    "rillsifter": 18
+   },
+   {
+    "day": 120,
+    "algae": 786.09,
+    "larvae": 23.68,
+    "fry": 0.12,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.498,
+    "rillsifter": 18
+   },
+   {
+    "day": 180,
+    "algae": 777.52,
+    "larvae": 45.91,
+    "fry": 0.13,
+    "detritus": 0,
+    "bankjaw": 6,
+    "bankjawEnergyMedian": 0.313,
+    "rillsifter": 18
+   },
+   {
+    "day": 240,
+    "algae": 748.21,
+    "larvae": 88.31,
+    "fry": 0.15,
+    "detritus": 0,
+    "bankjaw": 5,
+    "bankjawEnergyMedian": 0.1,
+    "rillsifter": 19
+   },
+   {
+    "day": 300,
+    "algae": 649.26,
+    "larvae": 155.37,
+    "fry": 0.24,
+    "detritus": 1.76,
+    "bankjaw": 2,
+    "bankjawEnergyMedian": 0.51,
+    "rillsifter": 11
+   },
+   {
+    "day": 360,
+    "algae": 435.87,
+    "larvae": 207.77,
+    "fry": 0.43,
+    "detritus": 0.34,
+    "bankjaw": 1,
+    "bankjawEnergyMedian": 0.406,
+    "rillsifter": 10
+   },
+   {
+    "day": 420,
+    "algae": 290.57,
+    "larvae": 210.34,
+    "fry": 0.81,
+    "detritus": 0.17,
+    "bankjaw": 1,
+    "bankjawEnergyMedian": 0.414,
+    "rillsifter": 7
+   },
+   {
+    "day": 480,
+    "algae": 235.01,
+    "larvae": 177.24,
+    "fry": 1.45,
+    "detritus": 0,
+    "bankjaw": 1,
+    "bankjawEnergyMedian": 0.279,
+    "rillsifter": 6
+   },
+   {
+    "day": 540,
+    "algae": 210.29,
+    "larvae": 144.6,
+    "fry": 2.48,
+    "detritus": 0.57,
+    "bankjaw": 1,
+    "bankjawEnergyMedian": 0.217,
+    "rillsifter": 4
+   }
+  ],
+  "births": {
+   "mosskip": 112,
+   "genvo": 48,
+   "rootling": 5,
+   "needlejaw": 6,
+   "rillsifter": 5
+  },
+  "deaths": {
+   "mosskip:predation": 21,
+   "mirelick:predation": 2,
+   "genvo:starvation": 20,
+   "mosskip:starvation": 9,
+   "genvo:predation": 12,
+   "needlejaw:starvation": 7,
+   "mosskip:age": 118,
+   "bankjaw:starvation": 6,
+   "rillsifter:age": 19,
+   "rootling:predation": 5,
+   "podshell:starvation": 7,
+   "mirelick:starvation": 2,
+   "rootling:age": 30,
+   "mirelick:age": 16,
+   "rootling:starvation": 1,
+   "genvo:age": 28,
+   "podshell:age": 10,
+   "bankjaw:age": 1,
+   "needlejaw:age": 6
+  },
+  "meals": {
+   "rillsifter:algae": 301.768,
+   "rillsifter:larvae": 29.01,
+   "mosskip:algae": 30.85,
+   "genvo:algae": 19.234,
+   "bankjaw:fry": 0,
+   "mosskip:duckweed": 7.497,
+   "rillsifter:detritus": 0.515,
+   "bankjaw:detritus": 2.115
+  },
+  "integrityChecks": 67
+ },
+ "founding": {
+  "variant": "founding",
+  "days": 540,
+  "series": [
+   {
+    "day": 0,
+    "algae": 197.11,
+    "larvae": 19.71,
+    "fry": 3.94,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.864,
+    "rillsifter": 18
+   },
+   {
+    "day": 60,
+    "algae": 600.54,
+    "larvae": 25.19,
+    "fry": 3.36,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.602,
+    "rillsifter": 18
+   },
+   {
+    "day": 120,
+    "algae": 735.03,
+    "larvae": 43.54,
+    "fry": 3.03,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.375,
+    "rillsifter": 18
+   },
+   {
+    "day": 180,
+    "algae": 724.26,
+    "larvae": 78.27,
+    "fry": 2.97,
+    "detritus": 0,
+    "bankjaw": 7,
+    "bankjawEnergyMedian": 0.123,
+    "rillsifter": 19
+   },
+   {
+    "day": 240,
+    "algae": 662.78,
+    "larvae": 136.65,
+    "fry": 3.2,
+    "detritus": 0.08,
+    "bankjaw": 2,
+    "bankjawEnergyMedian": 0.573,
+    "rillsifter": 13
+   },
+   {
+    "day": 300,
+    "algae": 479.36,
+    "larvae": 180.05,
+    "fry": 3.84,
+    "detritus": 0.07,
+    "bankjaw": 2,
+    "bankjawEnergyMedian": 0.294,
+    "rillsifter": 15
+   },
+   {
+    "day": 360,
+    "algae": 334.26,
+    "larvae": 191.96,
+    "fry": 4.76,
+    "detritus": 0.72,
+    "bankjaw": 2,
+    "bankjawEnergyMedian": 0.395,
+    "rillsifter": 12
+   },
+   {
+    "day": 420,
+    "algae": 257.68,
+    "larvae": 170.42,
+    "fry": 5.69,
+    "detritus": 0,
+    "bankjaw": 2,
+    "bankjawEnergyMedian": 0.121,
+    "rillsifter": 13
+   },
+   {
+    "day": 480,
+    "algae": 226.5,
+    "larvae": 143.17,
+    "fry": 6.5,
+    "detritus": 0.06,
+    "bankjaw": 1,
+    "bankjawEnergyMedian": 0.434,
+    "rillsifter": 13
+   },
+   {
+    "day": 540,
+    "algae": 213.18,
+    "larvae": 120.64,
+    "fry": 7.2,
+    "detritus": 0.13,
+    "bankjaw": 0,
+    "bankjawEnergyMedian": null,
+    "rillsifter": 11
+   }
+  ],
+  "births": {
+   "mosskip": 134,
+   "genvo": 44,
+   "needlejaw": 5,
+   "rootling": 5,
+   "rillsifter": 14
+  },
+  "deaths": {
+   "mosskip:predation": 34,
+   "mirelick:predation": 1,
+   "genvo:predation": 7,
+   "genvo:dehydration": 1,
+   "genvo:starvation": 21,
+   "mosskip:starvation": 9,
+   "needlejaw:starvation": 6,
+   "rootling:starvation": 1,
+   "bankjaw:starvation": 7,
+   "mosskip:age": 109,
+   "rootling:predation": 3,
+   "rillsifter:age": 19,
+   "mirelick:age": 19,
+   "rootling:age": 31,
+   "podshell:age": 16,
+   "rillsifter:starvation": 2,
+   "genvo:age": 14,
+   "needlejaw:age": 5,
+   "podshell:predation": 1,
+   "bankjaw:age": 1
+  },
+  "meals": {
+   "rillsifter:algae": 241.849,
+   "rillsifter:larvae": 40.383,
+   "bankjaw:fry": 0.716,
+   "mosskip:waterweed": 28.567,
+   "mosskip:duckweed": 5.545,
+   "mosskip:algae": 1.319,
+   "rillsifter:detritus": 0.396,
+   "bankjaw:detritus": 4.295,
+   "genvo:waterweed": 40.409,
+   "genvo:duckweed": 9.279,
+   "genvo:larvae": 5.837,
+   "genvo:algae": 4.366,
+   "rillsifter:waterweed": 10.397,
+   "rillsifter:duckweed": 0.85,
+   "genvo:fry": 0.023,
+   "rootling:duckweed": 0.714,
+   "genvo:detritus": 0.063
+  },
+  "integrityChecks": 67
+ },
+ "both": {
+  "variant": "both",
+  "days": 540,
+  "series": [
+   {
+    "day": 0,
+    "algae": 197.11,
+    "larvae": 19.71,
+    "fry": 3.94,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.864,
+    "rillsifter": 18
+   },
+   {
+    "day": 60,
+    "algae": 606.4,
+    "larvae": 23.52,
+    "fry": 3.52,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.602,
+    "rillsifter": 18
+   },
+   {
+    "day": 120,
+    "algae": 696.17,
+    "larvae": 37.6,
+    "fry": 3.38,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.417,
+    "rillsifter": 22
+   },
+   {
+    "day": 180,
+    "algae": 714.53,
+    "larvae": 62,
+    "fry": 3.65,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.264,
+    "rillsifter": 22
+   },
+   {
+    "day": 240,
+    "algae": 694.08,
+    "larvae": 101.34,
+    "fry": 4.52,
+    "detritus": 0.92,
+    "bankjaw": 5,
+    "bankjawEnergyMedian": 0.273,
+    "rillsifter": 14
+   },
+   {
+    "day": 300,
+    "algae": 589.49,
+    "larvae": 146.41,
+    "fry": 6.06,
+    "detritus": 0.59,
+    "bankjaw": 3,
+    "bankjawEnergyMedian": 0.362,
+    "rillsifter": 12
+   },
+   {
+    "day": 360,
+    "algae": 427.08,
+    "larvae": 174.18,
+    "fry": 9.48,
+    "detritus": 0,
+    "bankjaw": 3,
+    "bankjawEnergyMedian": 0.105,
+    "rillsifter": 13
+   },
+   {
+    "day": 420,
+    "algae": 311.99,
+    "larvae": 159.36,
+    "fry": 11.15,
+    "detritus": 0.27,
+    "bankjaw": 2,
+    "bankjawEnergyMedian": 0.543,
+    "rillsifter": 9
+   },
+   {
+    "day": 480,
+    "algae": 246.49,
+    "larvae": 133.33,
+    "fry": 12.69,
+    "detritus": 0.42,
+    "bankjaw": 2,
+    "bankjawEnergyMedian": 0.725,
+    "rillsifter": 6
+   },
+   {
+    "day": 540,
+    "algae": 233.2,
+    "larvae": 100.61,
+    "fry": 13.13,
+    "detritus": 0,
+    "bankjaw": 2,
+    "bankjawEnergyMedian": 0.726,
+    "rillsifter": 3
+   }
+  ],
+  "births": {
+   "mosskip": 127,
+   "genvo": 53,
+   "needlejaw": 3,
+   "rootling": 9,
+   "rillsifter": 8
+  },
+  "deaths": {
+   "mosskip:predation": 22,
+   "mirelick:predation": 1,
+   "genvo:predation": 6,
+   "rootling:predation": 5,
+   "genvo:dehydration": 1,
+   "mosskip:starvation": 16,
+   "genvo:starvation": 16,
+   "rootling:starvation": 3,
+   "mosskip:age": 122,
+   "rillsifter:age": 23,
+   "bankjaw:starvation": 6,
+   "mirelick:age": 16,
+   "rootling:age": 29,
+   "needlejaw:starvation": 6,
+   "podshell:starvation": 1,
+   "podshell:age": 15,
+   "genvo:age": 21,
+   "mirelick:starvation": 1,
+   "needlejaw:age": 8
+  },
+  "meals": {
+   "rillsifter:algae": 296.045,
+   "rillsifter:larvae": 29.303,
+   "mosskip:waterweed": 34.878,
+   "mosskip:duckweed": 6.585,
+   "bankjaw:fry": 8.942,
+   "mosskip:algae": 7.549,
+   "genvo:duckweed": 1.802,
+   "genvo:waterweed": 23.212,
+   "genvo:algae": 0.153,
+   "bankjaw:detritus": 3.912,
+   "rillsifter:detritus": 0.536,
+   "genvo:larvae": 1.645,
+   "genvo:fry": 0.46
+  },
+  "integrityChecks": 67
+ },
+ "shore": {
+  "variant": "shore",
+  "days": 540,
+  "series": [
+   {
+    "day": 0,
+    "algae": 197.11,
+    "larvae": 19.71,
+    "fry": 3.94,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.873,
+    "rillsifter": 18
+   },
+   {
+    "day": 60,
+    "algae": 600.02,
+    "larvae": 23.17,
+    "fry": 3.66,
+    "detritus": 0,
+    "bankjaw": 8,
+    "bankjawEnergyMedian": 0.63,
+    "rillsifter": 18
+   },
+   {
+    "day": 120,
+    "algae": 710.08,
+    "larvae": 36.61,
+    "fry": 3.55,
+    "detritus": 0,
+    "bankjaw": 7,
+    "bankjawEnergyMedian": 0.377,
+    "rillsifter": 18
+   },
+   {
+    "day": 180,
+    "algae": 708.93,
+    "larvae": 62.01,
+    "fry": 3.86,
+    "detritus": 0,
+    "bankjaw": 6,
+    "bankjawEnergyMedian": 0.247,
+    "rillsifter": 18
+   },
+   {
+    "day": 240,
+    "algae": 683.71,
+    "larvae": 100.72,
+    "fry": 5.07,
+    "detritus": 0.49,
+    "bankjaw": 3,
+    "bankjawEnergyMedian": 0.186,
+    "rillsifter": 16
+   },
+   {
+    "day": 300,
+    "algae": 558.36,
+    "larvae": 140.74,
+    "fry": 7.83,
+    "detritus": 0,
+    "bankjaw": 2,
+    "bankjawEnergyMedian": 0.242,
+    "rillsifter": 16
+   },
+   {
+    "day": 360,
+    "algae": 397.32,
+    "larvae": 152.6,
+    "fry": 12.19,
+    "detritus": 0.53,
+    "bankjaw": 2,
+    "bankjawEnergyMedian": 0.16,
+    "rillsifter": 10
+   },
+   {
+    "day": 420,
+    "algae": 303.71,
+    "larvae": 128.84,
+    "fry": 18.73,
+    "detritus": 0,
+    "bankjaw": 0,
+    "bankjawEnergyMedian": null,
+    "rillsifter": 9
+   },
+   {
+    "day": 480,
+    "algae": 268.28,
+    "larvae": 86.33,
+    "fry": 24.55,
+    "detritus": 0.02,
+    "bankjaw": 0,
+    "bankjawEnergyMedian": null,
+    "rillsifter": 6
+   },
+   {
+    "day": 540,
+    "algae": 293.72,
+    "larvae": 48.48,
+    "fry": 26.41,
+    "detritus": 0.14,
+    "bankjaw": 0,
+    "bankjawEnergyMedian": null,
+    "rillsifter": 4
+   }
+  ],
+  "births": {
+   "mosskip": 98,
+   "rootling": 7,
+   "genvo": 51,
+   "needlejaw": 2,
+   "rillsifter": 5
+  },
+  "deaths": {
+   "mosskip:predation": 17,
+   "genvo:predation": 6,
+   "mosskip:starvation": 7,
+   "genvo:starvation": 10,
+   "bankjaw:starvation": 7,
+   "mirelick:predation": 1,
+   "mosskip:age": 110,
+   "rillsifter:age": 19,
+   "mirelick:age": 19,
+   "needlejaw:starvation": 3,
+   "podshell:age": 17,
+   "rootling:age": 31,
+   "genvo:age": 23,
+   "needlejaw:age": 5,
+   "bankjaw:age": 1
+  },
+  "meals": {
+   "rillsifter:algae": 304.537,
+   "rillsifter:larvae": 24.459,
+   "bankjaw:fry": 0.986,
+   "bankjaw:detritus": 2.473,
+   "rillsifter:detritus": 0.372,
+   "rootling:duckweed": 2.499,
+   "genvo:waterweed": 7.638,
+   "mosskip:larvae": 2.576,
+   "genvo:duckweed": 1.374,
+   "mosskip:algae": 6.172,
+   "genvo:algae": 16.021,
+   "mosskip:duckweed": 0.357,
+   "mosskip:detritus": 0.008,
+   "mosskip:waterweed": 10.92
+  },
+  "integrityChecks": 67
+ }
+}

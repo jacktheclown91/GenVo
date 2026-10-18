@@ -22,7 +22,7 @@ assert.doesNotMatch(src,/frame:Math\.floor\(phase\)/,'no creature is drawn at a 
 
 // Near-side legs are drawn after the torso.
 const draw=fs.readFileSync(new URL('../src/render/genvo-draw.js',import.meta.url),'utf8');
-assert.match(draw,/nearLegs\.push\(leg\)/);assert.ok(draw.indexOf('for(const leg of nearLegs')>draw.indexOf('roundedMantleRows(bodyW*D'),'near-side legs draw after the body');
+assert.match(draw,/front:nearLegs\}=anatomicalLimbLayers\(/,'near-side legs are their own layer (anatomicalLimbLayers)');assert.ok(draw.indexOf('for(const leg of nearLegs')>draw.indexOf('roundedMantleRows(bodyW*D'),'near-side legs draw after the body');
 
 // Turning eases one facing at a time (every 70 ms), the short way round.
 const r={renderNow:0};const ease=Renderer.prototype.easedDir;
@@ -31,6 +31,6 @@ r.renderNow=180;assert.equal(ease.call(r,1,6),0);r.renderNow=260;assert.equal(ea
 r.renderNow=345;assert.equal(ease.call(r,1,6),6,'and stays once it arrives');
 console.log('animation ok');
 // v1.60.2: a new or loaded world starts every creature at its own facing (ids are reused across worlds).
-const w={renderNow:0};ease.call(w,7,2);w.renderNow=100;ease.call(w,7,6);Renderer.prototype.resetWorldCaches.call(Object.assign(w,{partExpressions:{reset(){}},terrainChunkCache:new Map(),terrainRefreshQueue:[],terrainRefreshQueued:new Set(),landformMaskCache:new Map(),habitatMaskCache:new Map(),landBaseTileCache:new Map(),waterBaseTileCache:new Map(),staticLandTileCache:new Map()}));
+const w={renderNow:0};ease.call(w,7,2);w.renderNow=100;ease.call(w,7,6);Renderer.prototype.resetWorldCaches.call(Object.assign(w,{sim:{world:{}},partExpressions:{reset(){}},terrainChunkCache:new Map(),terrainRefreshQueue:[],terrainRefreshQueued:new Set(),landformMaskCache:new Map(),habitatMaskCache:new Map(),landBaseTileCache:new Map(),waterBaseTileCache:new Map(),staticLandTileCache:new Map()}));
 assert.equal(ease.call(w,7,6),6,'turn state is cleared with the world caches');
 console.log('turn reset ok');

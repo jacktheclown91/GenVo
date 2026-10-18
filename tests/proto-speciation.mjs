@@ -55,12 +55,16 @@ assert.equal(sim.populationMemory.affinityFor(outerParent)?.key,`center:${center
 
 const outsider=sim.animals.find(a=>a.alive&&a.species==='genvo'&&!a.lineage&&a.id!==starter.id)||sim.spawnAnimal('genvo',home.x+2,home.y+2);
 outsider.age=SPECIES.genvo.maturity+5;outsider.energy=100;outsider.hydration=100;
+assert.equal(sim.protoSpeciation.candidateFor({generation:9},[homeParent,outsider]),null,'separated pressure cannot create an absent determinant');
+// Explicit legacy-parent determinant fixtures, not evolved endpoint evidence.
+setProto(homeParent,{id:'dryland-skin',strength:.55,populationKey:'home',populationLabel:'Home',originPopulationKey:'home',sourceDays:6,sourceDifference:.2});
+setProto(outerParent,{id:'range-sense',strength:.55,populationKey:`center:${center.id}`,populationLabel:'Ranging Band',originPopulationKey:`center:${center.id}`,sourceDays:6,sourceDifference:.2});
 const homeChild=lineageChild(homeParent,outsider,home.x+.5,home.y+.4,4);
 const outerChild=lineageChild(outerParent,outsider,outer.x+.5,outer.y+.4,4);
 const ht=sim.protoSpeciation.traitFor(homeChild),ot=sim.protoSpeciation.traitFor(outerChild);
-assert.ok(ht,'G4 child born to a home-resident parent gains an eligible population trait');
-assert.ok(ot,'G4 child born to a secondary-resident parent gains an eligible population trait');
-assert.notEqual(ht.id,ot.id,'different lived population pressures can create different inherited proto traits in the same ancestral lineage');
+assert.ok(ht,'child inherits an existing home-parent determinant');
+assert.ok(ot,'child inherits an existing secondary-parent determinant');
+assert.notEqual(ht.id,ot.id,'different parental determinants retain their distinct functions');
 assert.equal(ht.populationKey,'home');assert.equal(ot.populationKey,`center:${center.id}`);
 assert.equal(homeChild.species,'genvo');assert.equal(outerChild.species,'genvo','proto divergence does not declare a new species');
 assert.deepEqual(homeChild.adaptations.filter(id=>!g2.adaptations.includes(id)),[],'proto trait is separate from adaptation unlocks');
@@ -83,8 +87,8 @@ assert.equal(recHome.protoTrait?.id,ht.id);assert.equal(recOuter.protoTrait?.id,
 assert.match(sim.protoSpeciation.revealText(outerChild),/not a separate species/i);
 assert.match(sim.protoSpeciation.statusLine(),/Proto-divergence/i);
 
-// A young lineage with too little separate history cannot jump straight to proto-speciation.
+// A lineage without parental determinants cannot create a trait from observed need.
 const early=new Simulation('GENVO8-PROTO-EARLY',{player:true}),ep=early.player(),em=early.animals.find(a=>a.alive&&a.species==='genvo'&&a.id!==ep.id),ec=early.spawnAnimal('genvo',ep.x+.4,ep.y,[ep,em]);ec.generation=4;ec.lineage=true;
-assert.equal(early.protoSpeciation.candidateFor(ec,[ep,em]),null,'proto trait requires prospective multi-day population evidence');
+assert.equal(early.protoSpeciation.candidateFor(ec,[ep,em]),null,'missing parental determinants cannot be replaced by population evidence');
 
 console.log('proto-speciation checks: PASS');

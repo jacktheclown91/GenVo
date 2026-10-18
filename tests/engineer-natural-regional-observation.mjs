@@ -6,11 +6,11 @@ import {checkEcologicalIntegrity} from '../tools/ecological-integrity.mjs';
 // Live baseline: no translocations, mortality injection, population seeding, or dig suppression.
 // This test does NOT require chance occurrence of true regional loss/return.
 const seed=process.argv[2]||'NATURAL-ENGINEERS-B',limit=Number(process.argv[3]||110);
-const sim=new Simulation(seed,{player:false});
+const sim=new Simulation(seed,{player:false}),initialPopulation=sim.animals.filter(a=>a.alive).length;
 let lastDay=0,realDigs=0;
 const original=sim.partAbilities.dig.bind(sim.partAbilities);
 sim.partAbilities.dig=a=>{const result=original(a);if(result.ok){assert.ok(hasPart(a,'digging-forelimb'));realDigs++;}return result;};
-while(sim.day<=limit){sim.update(null);if(lastDay!==sim.day){lastDay=sim.day;if(lastDay%30===0){console.log('natural EL day',lastDay);checkEcologicalIntegrity(sim,132);}}}
+while(sim.day<=limit){sim.update(null);if(lastDay!==sim.day){lastDay=sim.day;if(lastDay%30===0){console.log('natural EL day',lastDay);checkEcologicalIntegrity(sim,initialPopulation);}}}
 const regions=[...sim.regionalEcology.records.values()];
 const events=regions.flatMap(r=>sim.regionalEcology.engineerTransitions(r.key).map(e=>({region:r.key,...e})));
 const vacancies=events.filter(e=>e.type==='vacancy'),returns=events.filter(e=>e.type==='reoccupation');

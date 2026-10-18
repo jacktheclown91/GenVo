@@ -42,7 +42,12 @@ function ops(animal,dir,frame,moving){const out=[];const c={set fillStyle(v){thi
   for(let dir=0;dir<8;dir++)for(let frame=0;frame<8;frame++)for(const moving of [false,true]){
     founder.dir=built.dir=dir;const a=ops(founder,dir,frame,moving),b=ops(built,dir,frame,moving);
     assert.ok(b.length>a.length,'the built body draws its extra parts');
-    for(const r of b){const far=Math.max(Math.abs(r.x),Math.abs(r.y),Math.abs(r.x+r.w),Math.abs(r.y+r.h));assert.ok(far<=12*4,`facing ${dir} frame ${frame}: a part pixel at ${r.x},${r.y} is detached from the body`)}
+    // Attachment is connectivity: every drawn pixel joins the body through touching pixels
+    // (a limb tip at full stride may reach past 12 units yet stay attached). It must also stay
+    // inside the creature's 32x32 sprite cell (16 units from the origin at this scale).
+    {const touch=(p,q)=>p.x<=q.x+q.w&&p.x+p.w>=q.x&&p.y<=q.y+q.h&&p.y+p.h>=q.y,seen=new Set();let start=b.findIndex(r=>r.x<=0&&r.x+r.w>=0&&r.y<=0&&r.y+r.h>=0);if(start<0)start=0;const queue=[start];seen.add(start);
+     while(queue.length){const i=queue.pop();for(let j=0;j<b.length;j++)if(!seen.has(j)&&touch(b[i],b[j])){seen.add(j);queue.push(j)}}
+     for(const [j,r] of b.entries()){const far=Math.max(Math.abs(r.x),Math.abs(r.y),Math.abs(r.x+r.w),Math.abs(r.y+r.h));assert.ok(seen.has(j)&&far<=16*4,`facing ${dir} frame ${frame}: a part pixel at ${r.x},${r.y} is detached from the body`)}}
     for(const colour of ['#e2cf9f','#f1e8cf','#9fd14f'])assert.ok(b.some(r=>r.f===colour),`facing ${dir}: ${colour} part is drawn`);
   }
   // The spring heel grows with the developed legs.

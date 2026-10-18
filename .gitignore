@@ -111,3 +111,14 @@ reports/limb-production/*
 !reports/overhead-habitats-before/
 !reports/overhead-habitats-before/**
 !/docs/overhead-habitats-*-runtime.webm
+# Full review recordings are archived outside Git (tools/archive-review-artifacts.mjs); manifests stay in docs/
+docs/integrated-gameplay/**/*.webm
+docs/gait-cadence-comparison/**/*.webm
+docs/anatomy-locomotion/**/*.webm
+
+# Local simulation checkpoints and per-suite diagnostic output (kept on disk)
+docs/**/*.snapshot.bin
+docs/**/*.snapshot.json.gz
+docs/**/*.cpuprofile
+docs/test-runs/*.artifacts/
+docs/test-runs/artifacts/

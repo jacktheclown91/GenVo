@@ -1,0 +1,148 @@
+{
+ "res": "800x600",
+ "seed": "PHASE4-ORDINARY",
+ "dayAdvanced": 20,
+ "query": "?spriteBatch=0&tilePool=0",
+ "moving": 0,
+ "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3050 (0x00002582) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+ "software": false,
+ "day": 21,
+ "animals": 187,
+ "playerAlive": true,
+ "paused": false,
+ "frames": 1044,
+ "presentedFps": 53.3,
+ "frameMs": {
+  "mean": 18.8,
+  "p50": 13.4,
+  "p95": 26.8,
+  "p99": 66.7,
+  "max": 373.3
+ },
+ "renderMs": {
+  "mean": 10.3,
+  "p50": 8.6,
+  "p95": 20.7
+ },
+ "simMs": {
+  "mean": 1.3,
+  "p50": 0,
+  "p95": 1.1
+ },
+ "creaturePrepMs": {
+  "mean": 6.5,
+  "p50": 5.5,
+  "p95": 14.8
+ },
+ "creatureComposeMs": {
+  "mean": 0,
+  "p50": 0,
+  "p95": 0
+ },
+ "otherMs": {
+  "p50": 6.7,
+  "p95": 21
+ },
+ "visibleCreatures": {
+  "mean": 19,
+  "p50": 19,
+  "p95": 25
+ },
+ "movingVisible": {
+  "mean": 13.3,
+  "p50": 13,
+  "p95": 17
+ },
+ "freshSpritesPerFrame": {
+  "mean": 16.2,
+  "p50": 16,
+  "p95": 22
+ },
+ "canvasesCreatedPerSecond": 288.41,
+ "heapMB": {
+  "start": 172.3,
+  "end": 115.4
+ },
+ "drawsPerFrame": null,
+ "worstFrames": [
+  {
+   "i": 1011,
+   "ms": 373.3,
+   "render": 8.2,
+   "sim": 1,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 0
+  },
+  {
+   "i": 83,
+   "ms": 333.5,
+   "render": 9.3,
+   "sim": 18.3,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 9
+  },
+  {
+   "i": 725,
+   "ms": 333.5,
+   "render": 8.1,
+   "sim": 0.8,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 0
+  },
+  {
+   "i": 948,
+   "ms": 226.7,
+   "render": 9,
+   "sim": 0,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 0
+  },
+  {
+   "i": 224,
+   "ms": 213.5,
+   "render": 20.5,
+   "sim": 0.1,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 55
+  },
+  {
+   "i": 583,
+   "ms": 186.7,
+   "render": 5.3,
+   "sim": 0.2,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 0
+  }
+ ],
+ "saves": [
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 216.4,
+   "totalMs": 386.7
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 239.4,
+   "totalMs": 379.8
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 274.9,
+   "totalMs": 406.8
+  }
+ ],
+ "canvasSources": null,
+ "live": {
+  "paused": false,
+  "playerAlive": true,
+  "day": 24,
+  "animals": 191
+ },
+ "errors": []
+}

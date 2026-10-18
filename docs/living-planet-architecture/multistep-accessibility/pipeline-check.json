@@ -1,0 +1,5573 @@
+{
+  "schema": "genvo.accessibility-pipeline-check/1",
+  "scope": "Controlled diagnostic calls to actual inheritBody using two identical synthetic parent body records, clean child adaptations and explicit mutation-index/chance outcomes. Confirms legal body paths survive this pipeline configuration; not real conception, complete inherited genomes, births, ecological viability, or natural frequencies. Factors are existing abstract coefficient projections, not observed behavior or calibrated physics.",
+  "inputSha256": "458b4b2e08d8658f1f47a56282f2d0994005c115beff27ae99e27ec3c9045ef2",
+  "sourceHashes": {
+    "src/lineage/body-inheritance.js": "a59aa46e72553edcc406aeb90c2f5bb5da938679ee9080b3cfba765746dde0ca",
+    "src/lineage/part-abilities.js": "5d236062961095d5720969dd48ebfe6757171485f6c960e32cda8a33f22f6806"
+  },
+  "pathGoals": 71,
+  "totalPipelineSteps": 107,
+  "rows": [
+    {
+      "goal": "small-torso",
+      "steps": [],
+      "finalBodyId": "bp0-4134709b",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "soft-torso",
+      "steps": [
+        {
+          "bodyId": "bp0-cc6b3afc",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 28,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-cc6b3afc",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.018,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "reinforced-torso",
+      "steps": [
+        {
+          "bodyId": "bp0-cc6b3afc",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 28,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-7ae72a53",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 33,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-7ae72a53",
+      "factors": {
+        "sprintSpeed": 0.93,
+        "damageTaken": 0.85,
+        "rearDamage": 1,
+        "metabolism": 1.1383200000000002,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "sleek-torso",
+      "steps": [
+        {
+          "bodyId": "bp0-cc6b3afc",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 28,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-42b23de2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 34,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-42b23de2",
+      "factors": {
+        "sprintSpeed": 1.08,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0752000000000002,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "light-torso",
+      "steps": [
+        {
+          "bodyId": "bp0-1235ecb8",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 29,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-1235ecb8",
+      "factors": {
+        "sprintSpeed": 1.04,
+        "damageTaken": 1.15,
+        "rearDamage": 1,
+        "metabolism": 0.9,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "stout-torso",
+      "steps": [
+        {
+          "bodyId": "bp0-cc6b3afc",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 28,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-e65bc155",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 35,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-e65bc155",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 0.927,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 0.95,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "barrel-torso",
+      "steps": [
+        {
+          "bodyId": "bp0-cc6b3afc",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 28,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-e65bc155",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 35,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-9b2b0bf8",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 33,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-9b2b0bf8",
+      "factors": {
+        "sprintSpeed": 0.94,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.048,
+        "waterUse": 0.8,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "dome-torso",
+      "steps": [
+        {
+          "bodyId": "bp0-cc6b3afc",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 28,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-7ae72a53",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 33,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-da704b2f",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 33,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-da704b2f",
+      "factors": {
+        "sprintSpeed": 0.9,
+        "damageTaken": 0.9,
+        "rearDamage": 0.6,
+        "metabolism": 1.11724,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "long-torso",
+      "steps": [
+        {
+          "bodyId": "bp0-cc6b3afc",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 28,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-42b23de2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 34,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-1df294b2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 33,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-1df294b2",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.1236000000000002,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1.25,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "walking-leg",
+      "steps": [],
+      "finalBodyId": "bp0-4134709b",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "spring-leg",
+      "steps": [
+        {
+          "bodyId": "bp0-1f74b4b7",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 0,
+          "adaptations": [
+            "spring-tendons"
+          ]
+        }
+      ],
+      "finalBodyId": "bp0-1f74b4b7",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0192,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "grasper",
+      "steps": [
+        {
+          "bodyId": "bp0-698a0527",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 1,
+          "adaptations": [
+            "grasping-limbs"
+          ]
+        }
+      ],
+      "finalBodyId": "bp0-698a0527",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0096,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "runner-leg",
+      "steps": [
+        {
+          "bodyId": "bp0-b16bbeb1",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 2,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-b16bbeb1",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0048,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1.0816000000000001,
+        "landSpeed": 1.0499999999999998,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "sturdy-leg",
+      "steps": [
+        {
+          "bodyId": "bp0-6f19c41b",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 3,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-6f19c41b",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0096,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 0.8835999999999999,
+        "landSpeed": 0.97,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "webbed-leg",
+      "steps": [
+        {
+          "bodyId": "bp0-6d3db393",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 4,
+          "adaptations": [
+            "webbed-limbs"
+          ]
+        }
+      ],
+      "finalBodyId": "bp0-6d3db393",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0096,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 0.99,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "padded-leg",
+      "steps": [
+        {
+          "bodyId": "bp0-62c1bb11",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 5,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-62c1bb11",
+      "factors": {
+        "sprintSpeed": 0.96,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0048,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": true,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "digging-forelimb",
+      "steps": [
+        {
+          "bodyId": "bp0-9e3d78d3",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 6,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-9e3d78d3",
+      "factors": {
+        "sprintSpeed": 0.95,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.012,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": true,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "grazing-mouth",
+      "steps": [],
+      "finalBodyId": "bp0-4134709b",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "tearing-jaw",
+      "steps": [
+        {
+          "bodyId": "bp0-c2ef0f08",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 30,
+          "adaptations": [
+            "heavy-jaw"
+          ]
+        }
+      ],
+      "finalBodyId": "bp0-c2ef0f08",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.018,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "tearing-jaw",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "crushing-jaw",
+      "steps": [
+        {
+          "bodyId": "bp0-c2ef0f08",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 30,
+          "adaptations": [
+            "heavy-jaw"
+          ]
+        },
+        {
+          "bodyId": "bp0-61042f9d",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 31,
+          "adaptations": [
+            "heavy-jaw",
+            "crushing-jaw"
+          ]
+        }
+      ],
+      "finalBodyId": "bp0-61042f9d",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.03,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "crushing-jaw",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "beak-mouth",
+      "steps": [
+        {
+          "bodyId": "bp0-9442d1dc",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 31,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-9442d1dc",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0012,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "beak-mouth",
+        "mouthFood": {
+          "food": {
+            "thistlepod": 1.35
+          },
+          "plants": 0.95
+        },
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "kernel-beak",
+      "steps": [
+        {
+          "bodyId": "bp0-9442d1dc",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 31,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-0bc8b246",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 31,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-0bc8b246",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.05882,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "kernel-beak",
+        "mouthFood": {
+          "food": {
+            "thistlepod": 1.6
+          },
+          "plants": 0.78,
+          "metabolism": 1.05
+        },
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "filter-mouth",
+      "steps": [
+        {
+          "bodyId": "bp0-38c67967",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 32,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-38c67967",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0012,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "filter-mouth",
+        "mouthFood": {
+          "drinkEnergy": 6,
+          "drinkEnergyTick": 0.6,
+          "plants": 0.94
+        },
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "reed-sieve-mouth",
+      "steps": [
+        {
+          "bodyId": "bp0-38c67967",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 32,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-25603d06",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 31,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-25603d06",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.039968,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "reed-sieve-mouth",
+        "mouthFood": {
+          "plants": 0.82,
+          "metabolism": 1.035
+        },
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "nibbler-mouth",
+      "steps": [
+        {
+          "bodyId": "bp0-44bcde9d",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 33,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-44bcde9d",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 0.95,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "nibbler-mouth",
+        "mouthFood": {
+          "plants": 0.9,
+          "metabolism": 0.95
+        },
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "sucker-mouth",
+      "steps": [
+        {
+          "bodyId": "bp0-c2ef0f08",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 30,
+          "adaptations": [
+            "heavy-jaw"
+          ]
+        },
+        {
+          "bodyId": "bp0-25a75328",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 32,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-25a75328",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.006,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "sucker-mouth",
+        "mouthFood": {
+          "food": {
+            "carrion": 1.4
+          },
+          "plants": 0.94
+        },
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "gape-mouth",
+      "steps": [
+        {
+          "bodyId": "bp0-c2ef0f08",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 30,
+          "adaptations": [
+            "heavy-jaw"
+          ]
+        },
+        {
+          "bodyId": "bp0-4657e7fa",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 33,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-4657e7fa",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.04854,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0.08,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "gape-mouth",
+        "mouthFood": {
+          "prey": 1.15,
+          "huntBonus": 0.08,
+          "metabolism": 1.03
+        },
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "simple-eye",
+      "steps": [],
+      "finalBodyId": "bp0-4134709b",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "wide-field-eye",
+      "steps": [
+        {
+          "bodyId": "bp0-9deaeacb",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 34,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-9deaeacb",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0398880000000001,
+        "waterUse": 1.04,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1.4,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": true,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "hunter-eye",
+      "steps": [
+        {
+          "bodyId": "bp0-1db83503",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 35,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-1db83503",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0048000000000001,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0.05,
+        "threatSense": 0.92,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "stalk-eye",
+      "steps": [
+        {
+          "bodyId": "bp0-a695b0b1",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 36,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-a695b0b1",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0449920000000001,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1.2,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "compound-eye",
+      "steps": [
+        {
+          "bodyId": "bp0-9deaeacb",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 34,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-17536997",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 35,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-17536997",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.04236,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1.15,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": true,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "tracker-eye",
+      "steps": [
+        {
+          "bodyId": "bp0-42a1886f",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 37,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-42a1886f",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.034944,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1.15,
+        "cue": 1.5,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "display-eye",
+      "steps": [
+        {
+          "bodyId": "bp0-154a0c7b",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 38,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-154a0c7b",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0449920000000001,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 0.92,
+        "forage": 1,
+        "cue": 1,
+        "courtship": 0.5,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "eyespot",
+      "steps": [
+        {
+          "bodyId": "bp0-ea7fb6d1",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 39,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-ea7fb6d1",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 0.97,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 0.8,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "armor-plate",
+      "steps": [
+        {
+          "bodyId": "bp0-cfd726ce",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 40,
+          "adaptations": [
+            "hardened-mantle"
+          ]
+        }
+      ],
+      "finalBodyId": "bp0-cfd726ce",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0288,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "barb",
+      "steps": [
+        {
+          "bodyId": "bp0-6982de21",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 42,
+          "adaptations": [
+            "barbed-limbs"
+          ]
+        }
+      ],
+      "finalBodyId": "bp0-6982de21",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0096,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "claw",
+      "steps": [
+        {
+          "bodyId": "bp0-faa7a0a1",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 43,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-faa7a0a1",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0096,
+        "waterUse": 1,
+        "playerStrike": 0.9,
+        "strikeWindup": 0.6,
+        "carryCapacity": 0.8,
+        "huntBonus": 0.06,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "venom-gland",
+      "steps": [
+        {
+          "bodyId": "bp0-c2ef0f08",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 30,
+          "adaptations": [
+            "heavy-jaw"
+          ]
+        },
+        {
+          "bodyId": "bp0-bfdcd0f1",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 44,
+          "adaptations": [
+            "heavy-jaw"
+          ]
+        }
+      ],
+      "finalBodyId": "bp0-bfdcd0f1",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.09616,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "tearing-jaw",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": true,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "storage-sac",
+      "steps": [
+        {
+          "bodyId": "bp0-e081f284",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 44,
+          "adaptations": [
+            "water-sacs"
+          ]
+        }
+      ],
+      "finalBodyId": "bp0-e081f284",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.012,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "silt-fin",
+      "steps": [
+        {
+          "bodyId": "bp0-8e588d03",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 46,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-209796cd",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 45,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-209796cd",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.053484,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 0.8736,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1.16,
+        "swimEnergy": 0.94,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": true
+      }
+    },
+    {
+      "goal": "signal-crest",
+      "steps": [
+        {
+          "bodyId": "bp0-265bd56f",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 45,
+          "adaptations": [
+            "alarm-pulse"
+          ]
+        }
+      ],
+      "finalBodyId": "bp0-265bd56f",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.006,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "paddle-tail",
+      "steps": [
+        {
+          "bodyId": "bp0-8e588d03",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 46,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-8e588d03",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.012,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 0.96,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": true
+      }
+    },
+    {
+      "goal": "balance-tail",
+      "steps": [
+        {
+          "bodyId": "bp0-afc2503d",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 47,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-afc2503d",
+      "factors": {
+        "sprintSpeed": 1.05,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.02612,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "club-tail",
+      "steps": [
+        {
+          "bodyId": "bp0-afc2503d",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 47,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-255be953",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 47,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-255be953",
+      "factors": {
+        "sprintSpeed": 0.96,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.012,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0.25,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "spined-tail",
+      "steps": [
+        {
+          "bodyId": "bp0-afc2503d",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 47,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-255be953",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 47,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-fac1f428",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 48,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-fac1f428",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 0.82,
+        "metabolism": 1.034688,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "whip-tail",
+      "steps": [
+        {
+          "bodyId": "bp0-afc2503d",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 47,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-60ccce41",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 48,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-60ccce41",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0398880000000001,
+        "waterUse": 1,
+        "playerStrike": 1.1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "prehensile-tail",
+      "steps": [
+        {
+          "bodyId": "bp0-afc2503d",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 47,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-f7900c0a",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 49,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-f7900c0a",
+      "factors": {
+        "sprintSpeed": 0.98,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0096,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1.25,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "fat-tail",
+      "steps": [
+        {
+          "bodyId": "bp0-90ab5dd4",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 48,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-90ab5dd4",
+      "factors": {
+        "sprintSpeed": 0.96,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 0.9344640000000002,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "flag-tail",
+      "steps": [
+        {
+          "bodyId": "bp0-afc2503d",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 47,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-9a7ff101",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 51,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-9a7ff101",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0048000000000001,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": 0.55,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1.1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "sail-fin",
+      "steps": [
+        {
+          "bodyId": "bp0-3b3c0ae4",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 49,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-3b3c0ae4",
+      "factors": {
+        "sprintSpeed": 0.97,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0072,
+        "waterUse": 0.92,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "spine-ridge",
+      "steps": [
+        {
+          "bodyId": "bp0-0dbd302a",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 50,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-0dbd302a",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.029792,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 0.92,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "water-hump",
+      "steps": [
+        {
+          "bodyId": "bp0-3b3c0ae4",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 49,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-12cd18bd",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 50,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-12cd18bd",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0072,
+        "waterUse": 0.85,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 0.97,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "display-frill",
+      "steps": [
+        {
+          "bodyId": "bp0-265bd56f",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 45,
+          "adaptations": [
+            "alarm-pulse"
+          ]
+        },
+        {
+          "bodyId": "bp0-cde18f0b",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 50,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-cde18f0b",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0072,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 0.95,
+        "forage": 1,
+        "cue": 1,
+        "courtship": 0.55,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "moss-back",
+      "steps": [
+        {
+          "bodyId": "bp0-47a50ce5",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 51,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-47a50ce5",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.027344,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": 0.28,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "thorn-carapace",
+      "steps": [
+        {
+          "bodyId": "bp0-03640465",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 41,
+          "adaptations": [
+            "hardened-mantle"
+          ]
+        },
+        {
+          "bodyId": "bp0-3c4614b7",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 51,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-3c4614b7",
+      "factors": {
+        "sprintSpeed": 0.89,
+        "damageTaken": 0.81,
+        "rearDamage": 1,
+        "metabolism": 1.09693,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0.22,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "sensory-quills",
+      "steps": [
+        {
+          "bodyId": "bp0-0dbd302a",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 50,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-e0c1453b",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 51,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-e0c1453b",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.038652,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1.12,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "fat-pad",
+      "steps": [
+        {
+          "bodyId": "bp0-c4b29b8c",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 52,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-c4b29b8c",
+      "factors": {
+        "sprintSpeed": 0.97,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 0.946768,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "gill-slits",
+      "steps": [
+        {
+          "bodyId": "bp0-e081f284",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 44,
+          "adaptations": [
+            "water-sacs"
+          ]
+        },
+        {
+          "bodyId": "bp0-adb65a64",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 53,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-adb65a64",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0192,
+        "waterUse": 1.03,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1.1,
+        "swimEnergy": 0.85,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "scent-gland",
+      "steps": [
+        {
+          "bodyId": "bp0-1b4fb3e2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 53,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-1b4fb3e2",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.012,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": 0.55,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1.08,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "spine-cluster",
+      "steps": [
+        {
+          "bodyId": "bp0-03640465",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 41,
+          "adaptations": [
+            "hardened-mantle"
+          ]
+        },
+        {
+          "bodyId": "bp0-a3d63978",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 54,
+          "adaptations": [
+            "hardened-mantle"
+          ]
+        }
+      ],
+      "finalBodyId": "bp0-a3d63978",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0336,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 0.9,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0.2,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "brood-pouch",
+      "steps": [
+        {
+          "bodyId": "bp0-e081f284",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 44,
+          "adaptations": [
+            "water-sacs"
+          ]
+        },
+        {
+          "bodyId": "bp0-9130f466",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 55,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-9130f466",
+      "factors": {
+        "sprintSpeed": 0.97,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.012,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1.2,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "egg-chamber",
+      "steps": [
+        {
+          "bodyId": "bp0-9427ce12",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 54,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-9427ce12",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0528,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "live-womb",
+      "steps": [
+        {
+          "bodyId": "bp0-e5ca35aa",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 55,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-e5ca35aa",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0864,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "hook-spur",
+      "steps": [
+        {
+          "bodyId": "bp0-4ffff9a1",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 35,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-26819923",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 56,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-26819923",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.01729718,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0.03,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "dew-claw",
+      "steps": [
+        {
+          "bodyId": "bp0-2d9e5b21",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 56,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-2d9e5b21",
+      "factors": {
+        "sprintSpeed": 0.994009,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0048000000000001,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 0.970225,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "heel-spike",
+      "steps": [
+        {
+          "bodyId": "bp0-05da7b21",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 28,
+          "adaptations": [
+            "barbed-limbs"
+          ]
+        },
+        {
+          "bodyId": "bp0-9159c039",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 57,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-9159c039",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 0.9409,
+        "metabolism": 1.0072,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 0.994009,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "sensory-bristle",
+      "steps": [
+        {
+          "bodyId": "bp0-41be0971",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 57,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-41be0971",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0148731199999999,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1.0404,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "grip-pad",
+      "steps": [
+        {
+          "bodyId": "bp0-c0146b95",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 58,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-c0146b95",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.0048000000000001,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1.0100249999999997,
+        "landSpeed": 1.012036,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "kick-spur",
+      "steps": [
+        {
+          "bodyId": "bp0-4ffff9a1",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 35,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-b4fdb909",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 60,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-b4fdb909",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.01729718,
+        "waterUse": 1,
+        "playerStrike": 1.050625,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    },
+    {
+      "goal": "twelve-legs",
+      "steps": [
+        {
+          "bodyId": "bp0-cc6b3afc",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 28,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-bd5d70bc",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 1,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-1df3381d",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 1,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-56156dec",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 0,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-de47bc6a",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 58,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-feeab7ba",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 57,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-624eb2e8",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 0,
+          "adaptations": []
+        },
+        {
+          "bodyId": "bp0-07bc96ad",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 0,
+          "adaptations": []
+        }
+      ],
+      "finalBodyId": "bp0-07bc96ad",
+      "factors": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1.2253600000000002,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1.25,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1.17,
+        "legs": 12,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      }
+    }
+  ],
+  "headedFace": {
+    "scope": "Separate valid editor-produced headed founder. Full current operator enumeration diagnoses existing facial change reachability; no mounted head endpoint is injected into an actual organism.",
+    "body": {
+      "schema": "genvo8.bodyplan/0",
+      "registryVersion": 0,
+      "nodes": [
+        {
+          "id": "root",
+          "partId": "small-torso",
+          "partVersion": 1,
+          "parent": null,
+          "socket": null
+        },
+        {
+          "id": "root/head",
+          "partId": "head-base",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "head"
+        },
+        {
+          "id": "root/head/eye.left",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root/head",
+          "socket": "eye.left"
+        },
+        {
+          "id": "root/head/eye.right",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root/head",
+          "socket": "eye.right"
+        },
+        {
+          "id": "root/head/mouth",
+          "partId": "grazing-mouth",
+          "partVersion": 1,
+          "parent": "root/head",
+          "socket": "mouth"
+        },
+        {
+          "id": "root/limb.1",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.1"
+        },
+        {
+          "id": "root/limb.3",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.3"
+        },
+        {
+          "id": "root/limb.5",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.5"
+        },
+        {
+          "id": "root/limb.7",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.7"
+        }
+      ],
+      "id": "bp0-b076d13f"
+    },
+    "enumeratedChoices": 109,
+    "acceptedNonDeletionFacialChanges": 0,
+    "choices": [
+      {
+        "asymmetric": false,
+        "choice": 0,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 0,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-4213d723",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 1,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 1,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-101a1773",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 2,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 2,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-15ff9b5d",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 3,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 3,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-f1b5fc7f",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 4,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 4,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-6739de17",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 5,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 5,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-97fb6afd",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 6,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 6,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-9e40e917",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 7,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 7,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-d44992f3",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 8,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 8,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-7d9e57d3",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 9,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 9,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-d6e6bd4d",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 10,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 10,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-80275047",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 11,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 11,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-64571e27",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 12,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 12,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-4bb2a82d",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 13,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 13,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-c684eb27",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 14,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 14,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-d44992f3",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 15,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 15,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-7d9e57d3",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 16,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 16,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-d6e6bd4d",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 17,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 17,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-80275047",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 18,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 18,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-64571e27",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 19,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 19,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-4bb2a82d",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 20,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 20,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-c684eb27",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 21,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 21,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-4213d723",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 22,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 22,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-101a1773",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 23,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 23,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-15ff9b5d",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 24,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 24,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-f1b5fc7f",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 25,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 25,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-6739de17",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 26,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 26,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-97fb6afd",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 27,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 27,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-9e40e917",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 28,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 28,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-df4c463e",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 29,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 29,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-632e57aa",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 30,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 30,
+          "options": 59,
+          "attempted": true,
+          "accepted": false,
+          "from": "bp0-b076d13f",
+          "to": "bp0-b076d13f",
+          "targets": [],
+          "removed": [],
+          "problems": [
+            "Attach facial organs to the head."
+          ]
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 31,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 31,
+          "options": 59,
+          "attempted": true,
+          "accepted": false,
+          "from": "bp0-b076d13f",
+          "to": "bp0-b076d13f",
+          "targets": [],
+          "removed": [],
+          "problems": [
+            "Attach facial organs to the head."
+          ]
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 32,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 32,
+          "options": 59,
+          "attempted": true,
+          "accepted": false,
+          "from": "bp0-b076d13f",
+          "to": "bp0-b076d13f",
+          "targets": [],
+          "removed": [],
+          "problems": [
+            "Attach facial organs to the head."
+          ]
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 33,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 33,
+          "options": 59,
+          "attempted": true,
+          "accepted": false,
+          "from": "bp0-b076d13f",
+          "to": "bp0-b076d13f",
+          "targets": [],
+          "removed": [],
+          "problems": [
+            "Attach facial organs to the head."
+          ]
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 34,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 34,
+          "options": 59,
+          "attempted": true,
+          "accepted": false,
+          "from": "bp0-b076d13f",
+          "to": "bp0-b076d13f",
+          "targets": [],
+          "removed": [],
+          "problems": [
+            "Attach facial organs to the head."
+          ]
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 35,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 35,
+          "options": 59,
+          "attempted": true,
+          "accepted": false,
+          "from": "bp0-b076d13f",
+          "to": "bp0-b076d13f",
+          "targets": [],
+          "removed": [],
+          "problems": [
+            "Attach facial organs to the head."
+          ]
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 36,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 36,
+          "options": 59,
+          "attempted": true,
+          "accepted": false,
+          "from": "bp0-b076d13f",
+          "to": "bp0-b076d13f",
+          "targets": [],
+          "removed": [],
+          "problems": [
+            "Attach facial organs to the head."
+          ]
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 37,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 37,
+          "options": 59,
+          "attempted": true,
+          "accepted": false,
+          "from": "bp0-b076d13f",
+          "to": "bp0-b076d13f",
+          "targets": [],
+          "removed": [],
+          "problems": [
+            "Attach facial organs to the head."
+          ]
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 38,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 38,
+          "options": 59,
+          "attempted": true,
+          "accepted": false,
+          "from": "bp0-b076d13f",
+          "to": "bp0-b076d13f",
+          "targets": [],
+          "removed": [],
+          "problems": [
+            "Attach facial organs to the head."
+          ]
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 39,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 39,
+          "options": 59,
+          "attempted": true,
+          "accepted": false,
+          "from": "bp0-b076d13f",
+          "to": "bp0-b076d13f",
+          "targets": [],
+          "removed": [],
+          "problems": [
+            "Attach facial organs to the head."
+          ]
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 40,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 40,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-03813fd8",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 41,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 41,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-33068971",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 42,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 42,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-c798cbad",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 43,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 43,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-c7e4090d",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 44,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 44,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-155baa1e",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 45,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 45,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-6dbcf133",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 46,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 46,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-6d15bb6f",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 47,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 47,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-4490cdf9",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 48,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 48,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-963343c8",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 49,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 49,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-d28299f6",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 50,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 50,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-4fef200c",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 51,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 51,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-b56642f1",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 52,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 52,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-7c028e4a",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 53,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 53,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-1c715554",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 54,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 54,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-8b153e3c",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 55,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 55,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-fd270050",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 56,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 56,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-b34264cd",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 57,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 57,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-53b0411d",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": false,
+        "choice": 58,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "paired",
+          "choice": 58,
+          "options": 59,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-335e5649",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 0,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 0,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-034bce31",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 1,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 1,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-dde0f299",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 2,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 2,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-073bb8a2",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 3,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 3,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-6dbdb97f",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 4,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 4,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-6334ba9d",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 5,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 5,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-93d500d2",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 6,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 6,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-9d36f8f1",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 7,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 7,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-8a2f9c4d",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 8,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 8,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-0eb53ea5",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 9,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 9,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-fd1fde62",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 10,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 10,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-1a4aed43",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 11,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 11,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-f8ac221d",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 12,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 12,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-79dd221a",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 13,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 13,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-8fa96421",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 14,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 14,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-019ae0c1",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 15,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 15,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-94919641",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 16,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 16,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-880e95aa",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 17,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 17,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-af02dee3",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 18,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 18,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-5f307981",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 19,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 19,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-d3a1f292",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 20,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 20,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-1050fbfd",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 21,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 21,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-647cd5e5",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 22,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 22,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-a48fd625",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 23,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 23,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-b85331e2",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 24,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 24,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-83f5653f",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 25,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 25,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-5d37bfc9",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 26,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 26,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-b7c016c2",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 27,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 27,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-92594a4d",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 28,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 28,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-714898ad",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 29,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 29,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-495ad66b",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 30,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 30,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-d90d7025",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 31,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 31,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-81733923",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 32,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 32,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-c78c586f",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 33,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 33,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-612da8d5",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 34,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 34,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-b633f8f7",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 35,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 35,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-196f247d",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 36,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 36,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-aa596584",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 37,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 37,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-046c0556",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 38,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 38,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-0977c460",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 39,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 39,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-bb0d4c7a",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 40,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 40,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-9e44c409",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 41,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 41,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-82e7265f",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 42,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 42,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-10749561",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 43,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 43,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-01d570ef",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 44,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 44,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-db617be0",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 45,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 45,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-f8b497ca",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 46,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 46,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-5e8e4d58",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 47,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "add-or-replace",
+          "branch": "asymmetric",
+          "choice": 47,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-8a2ed8e2",
+          "targets": [],
+          "removed": [],
+          "problems": []
+        },
+        "facialChange": false
+      },
+      {
+        "asymmetric": true,
+        "choice": 48,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "delete",
+          "branch": "asymmetric",
+          "choice": 48,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-7632fafd",
+          "targets": [
+            "root/head/eye.left"
+          ],
+          "removed": [
+            {
+              "id": "root/head/eye.left",
+              "partId": "simple-eye",
+              "parent": "root/head",
+              "socket": "eye.left"
+            }
+          ],
+          "problems": []
+        },
+        "facialChange": true
+      },
+      {
+        "asymmetric": true,
+        "choice": 49,
+        "event": {
+          "policy": "neutral-optional-loss/2",
+          "operator": "delete",
+          "branch": "asymmetric",
+          "choice": 49,
+          "options": 50,
+          "attempted": true,
+          "accepted": true,
+          "from": "bp0-b076d13f",
+          "to": "bp0-cc84654c",
+          "targets": [
+            "root/head/eye.right"
+          ],
+          "removed": [
+            {
+              "id": "root/head/eye.right",
+              "partId": "simple-eye",
+              "parent": "root/head",
+              "socket": "eye.right"
+            }
+          ],
+          "problems": []
+        },
+        "facialChange": true
+      }
+    ]
+  }
+}

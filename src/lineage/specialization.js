@@ -270,6 +270,9 @@ export class LineageSpecializationController{
     for(const [kind,eff] of Object.entries(groundDiet(animal))){
       if(eff<=0)continue;const arr=kind==='carrion'?w.carrion:w.plants[kind];if(!arr)continue;
       const amount=arr[index]||0,minimum=kind==='carrion'?0:.07;if(amount<=minimum+.04)continue;
+      // Same edible authority as Simulation.bestFood: tissue-bearing plants this anatomy cannot
+      // currently process yield nothing, so they are not a feeding target.
+      if(kind!=='carrion'&&this.sim.dispersal.seedReserve[kind]&&!(this.sim.dispersal.cropYield(animal,kind,index)>0))continue;
       const nutrition=kind==='carrion'?34:(PLANTS[kind]?.nutrition||0)*3.6,value=amount*eff*nutrition*.08;
       if(value>bestValue){bestValue=value;best={x,y,kind,value,risky:true}}
     }
@@ -346,7 +349,9 @@ export class LineageSpecializationController{
     const damage=(crushing?8.8:5.2)+Math.max(0,(animal.genes.body-1)*(crushing?15:10));
     target.health-=damage;
     if(crushing&&target.health>0&&this.sim.rng.chance(.42)){target.playerAversion={targetId:animal.id,untilTick:this.sim.tickCount+CFG.simHz*1.4};target.target=null}else target.target=animal;
-    if(target.health<=0){this.sim.kill(target,'predation');animal.energy=Math.min(SPECIES[animal.species].maxEnergy,animal.energy+SPECIES[target.species].mass*8)}
+    // A defensive strike is not a meal. The remaining body enters carrion once;
+    // any later food gain must use the normal finite carcass-consumption path.
+    if(target.health<=0)this.sim.kill(target,'predation');
     return true;
   }
 

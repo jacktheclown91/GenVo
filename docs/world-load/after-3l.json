@@ -1,0 +1,97 @@
+{
+ "seed": "PHASE4-ORDINARY",
+ "bootMs": 2191,
+ "fresh": {
+  "label": "new world",
+  "liveAfterMs": 789,
+  "longTasks": [
+   [
+    286,
+    82
+   ],
+   [
+    369,
+    56
+   ],
+   [
+    1179,
+    139
+   ]
+  ],
+  "longTaskTotalMs": 277,
+  "longestTaskMs": 139,
+  "longestFrameGapMs": 320,
+  "longestFrameGapStartsAtMs": 1852,
+  "statusText": [
+   [
+    265,
+    "Preparing ecosystem..."
+   ],
+   [
+    1864,
+    "Preparing ecosystem..."
+   ],
+   [
+    1893,
+    "Saved"
+   ],
+   [
+    2517,
+    "Saving..."
+   ],
+   [
+    2526,
+    "Saved"
+   ]
+  ]
+ },
+ "steps": {
+  "buildWorldMs": 64,
+  "snapshotMs": 0,
+  "structuredCloneMs": 5,
+  "restoreMs": 39,
+  "snapshotApproxMB": 3.3,
+  "animals": 181
+ },
+ "resumed": {
+  "label": "continue saved world",
+  "liveAfterMs": 1133,
+  "longTasks": [
+   [
+    267,
+    72
+   ],
+   [
+    348,
+    53
+   ],
+   [
+    862,
+    61
+   ],
+   [
+    1728,
+    288
+   ]
+  ],
+  "longTaskTotalMs": 474,
+  "longestTaskMs": 288,
+  "longestFrameGapMs": 280,
+  "longestFrameGapStartsAtMs": 1726,
+  "statusText": [
+   [
+    192,
+    "Loading world..."
+   ],
+   [
+    2133,
+    "World loaded"
+   ],
+   [
+    3537,
+    "(hidden)"
+   ]
+  ]
+ },
+ "errors": []
+}

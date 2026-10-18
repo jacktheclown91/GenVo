@@ -1,0 +1,123 @@
+{
+  "schema": "genvo.head-lineage-provenance/1",
+  "scope": "Read-only actual preconception/mid-gestation/birth/mature/descendant archives; no body or ancestry assignments. Controlled crossings are separate diagnostic evidence. Not calibrated physiology or actual retained explicit head in the four descendant births.",
+  "first": {
+    "seed": "HEAD-STRUCTURE-102",
+    "index": 102,
+    "childId": 4,
+    "motherId": 1,
+    "fatherId": 2,
+    "day": 17
+  },
+  "birthDay": 17,
+  "matureDay": 53,
+  "matureAge": 30,
+  "paidGrowth": 56.19185729896012,
+  "growthDelayDays": 7,
+  "conceptionBodyParentsMatched": true,
+  "faceRelocationsMatched": true,
+  "tissueInventoryMultisetUnchanged": true,
+  "bodyGenesReproductiveGenomeUnchangedThroughMaturity": true,
+  "actualDescendantBirthDay": 77,
+  "descendants": [
+    {
+      "id": 8,
+      "parentIds": [
+        4,
+        7
+      ],
+      "grandparentIds": [
+        1,
+        2
+      ],
+      "bodyId": "bp0-44bcde9d",
+      "explicitHead": false,
+      "implicitHead": true,
+      "variation": "add-or-replace"
+    },
+    {
+      "id": 9,
+      "parentIds": [
+        4,
+        7
+      ],
+      "grandparentIds": [
+        1,
+        2
+      ],
+      "bodyId": "bp0-b16bbeb1",
+      "explicitHead": false,
+      "implicitHead": true,
+      "variation": "add-or-replace"
+    },
+    {
+      "id": 10,
+      "parentIds": [
+        4,
+        7
+      ],
+      "grandparentIds": [
+        1,
+        2
+      ],
+      "bodyId": "bp0-4134709b",
+      "explicitHead": false,
+      "implicitHead": true,
+      "variation": "inherit"
+    },
+    {
+      "id": 11,
+      "parentIds": [
+        4,
+        7
+      ],
+      "grandparentIds": [
+        1,
+        2
+      ],
+      "bodyId": "bp0-4134709b",
+      "explicitHead": false,
+      "implicitHead": true,
+      "variation": "inherit"
+    }
+  ],
+  "actualExplicitHeadRetentionInNextLitter": 0,
+  "controlledCrossings": [
+    {
+      "parentBodyIds": [
+        "bp0-4134709b",
+        "bp0-b076d13f"
+      ],
+      "trials": 256,
+      "explicitHeadResults": 144,
+      "scope": "Controlled synthetic recombination draws, not ordinary birth frequency or proof of actual second-generation explicit-head transmission."
+    },
+    {
+      "parentBodyIds": [
+        "bp0-b076d13f",
+        "bp0-4134709b"
+      ],
+      "trials": 256,
+      "explicitHeadResults": 112,
+      "scope": "Controlled synthetic recombination draws, not ordinary birth frequency or proof of actual second-generation explicit-head transmission."
+    },
+    {
+      "parentBodyIds": [
+        "bp0-b076d13f",
+        "bp0-b076d13f"
+      ],
+      "trials": 256,
+      "explicitHeadResults": 256,
+      "scope": "Controlled synthetic recombination draws, not ordinary birth frequency or proof of actual second-generation explicit-head transmission."
+    }
+  ],
+  "currentCodeFingerprint": "858ee68902e9e36022b6c028d899ae7dc910d3a5718149a0d26b992bdff91327",
+  "fastGateFingerprintMatches": true,
+  "rawArchives": {
+    "birth-audit/before-conception.snapshot.bin": "5aac76516a7b038a8ea0e634312c71e168ff3596d3915fb5e571d78753beb5ff",
+    "birth-audit/mid-gestation.snapshot.bin": "88eef6964f2fc4efabcb146f2366e35cdfec5ea8462eca1b25c283ff38e1672b",
+    "birth-audit/candidate-birth.snapshot.bin": "b7881f6c3059636c3bcb76d6589f3db86f9866fcf2456f7860556525e230b3e9",
+    "maturity/final.snapshot.bin": "853b62c64c652108f76f473b63046dd078bc4cac6577bc4c816ba827bca07b34",
+    "descendants/birth.snapshot.bin": "557ac4552a7b6328cf7c3cc2f1275f81734382595658646dfce43d4655df5749"
+  }
+}

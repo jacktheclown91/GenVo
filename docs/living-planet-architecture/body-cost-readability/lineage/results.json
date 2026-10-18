@@ -1,0 +1,1463 @@
+{
+  "scope": "One previously identified seed, rerun under current rules as a targeted lineage case, not a seed-frequency survey. Two disclosed unrelated simple adult founders, opposite sexes/full initial reserves, supported existing dry habitat. No food injection, forced consent, mutation boost, endpoint injection or gestation shortcut.",
+  "seed": "ACCESSIBILITY-NEUTRAL-WATER-015",
+  "massRules": "relative-anatomical-load/1",
+  "parents": [
+    {
+      "id": 1,
+      "species": "genvo",
+      "x": 32,
+      "y": 32,
+      "vx": 0,
+      "vy": 0,
+      "dir": 7,
+      "age": 32,
+      "energy": 124,
+      "hydration": 114,
+      "health": 100,
+      "genes": {
+        "body": 1.0698040681891143,
+        "motion": 0.9633083990775049,
+        "metabolism": 1.065363760991022,
+        "digestion": 1.061445073131472,
+        "senses": 1.0244216428603978,
+        "climate": 1.028839194821194,
+        "immunity": 1.05986360674724,
+        "temperament": 0.9575268489774317
+      },
+      "reproductiveGenome": {
+        "schema": 1,
+        "loci": {
+          "gamete": [
+            1.06105,
+            1.04958
+          ],
+          "development": [
+            0.95321,
+            0.95321
+          ]
+        },
+        "origin": "founding-lineage",
+        "lineage": "genvo"
+      },
+      "matePreferences": {
+        "weights": {
+          "size": 0.39489,
+          "strength": 0.44223,
+          "ornament": 0.18502,
+          "display": -0.52459,
+          "behavior": 0.12705
+        },
+        "selectivity": 0.48134,
+        "ritualTastes": {
+          "dance": 0.6132,
+          "call": 0.7208,
+          "flare": -0.46092,
+          "scent": 0.58053,
+          "gesture": 0.12827
+        },
+        "tempo": 0.51017,
+        "similarity": -0.34394
+      },
+      "inbreeding": 0,
+      "sex": "F",
+      "pregnant": null,
+      "reproCooldown": 0,
+      "intent": "explore",
+      "target": null,
+      "alive": true,
+      "infected": false,
+      "infection": null,
+      "immune": false,
+      "immuneUntilDay": 0,
+      "player": false,
+      "lineage": false,
+      "parentIds": [],
+      "grandparentIds": [],
+      "generation": 1,
+      "lastMate": null,
+      "reproDrive": 0,
+      "caregiverId": null,
+      "birthTick": 0,
+      "birthDay": 1,
+      "birthYear": 1,
+      "anim": 0,
+      "adaptations": [],
+      "massPolicy": "relative-anatomical-load/1",
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-4134709b"
+      },
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "legacyWaterPhysiology": []
+    },
+    {
+      "id": 2,
+      "species": "genvo",
+      "x": 33,
+      "y": 32,
+      "vx": 0,
+      "vy": 0,
+      "dir": 1,
+      "age": 32,
+      "energy": 124,
+      "hydration": 114,
+      "health": 100,
+      "genes": {
+        "body": 0.9709077042993158,
+        "motion": 1.0219678326044233,
+        "metabolism": 1.011196200735867,
+        "digestion": 0.9287869264371693,
+        "senses": 0.9560829394031316,
+        "climate": 1.0340327948331833,
+        "immunity": 1.0195683735888452,
+        "temperament": 1.0755310576874764
+      },
+      "reproductiveGenome": {
+        "schema": 1,
+        "loci": {
+          "gamete": [
+            1.05587,
+            1.03718
+          ],
+          "development": [
+            0.9607,
+            0.9607
+          ]
+        },
+        "origin": "founding-lineage",
+        "lineage": "genvo"
+      },
+      "matePreferences": {
+        "weights": {
+          "size": 0.29494,
+          "strength": 0.03646,
+          "ornament": -0.34722,
+          "display": 0.25782,
+          "behavior": 0.39253
+        },
+        "selectivity": 0.50801,
+        "ritualTastes": {
+          "dance": 0.03467,
+          "call": 0.06699,
+          "flare": 0.27665,
+          "scent": 0.42792,
+          "gesture": -0.77702
+        },
+        "tempo": 0.55118,
+        "similarity": -0.365
+      },
+      "inbreeding": 0,
+      "sex": "M",
+      "pregnant": null,
+      "reproCooldown": 0,
+      "intent": "explore",
+      "target": null,
+      "alive": true,
+      "infected": false,
+      "infection": null,
+      "immune": false,
+      "immuneUntilDay": 0,
+      "player": false,
+      "lineage": false,
+      "parentIds": [],
+      "grandparentIds": [],
+      "generation": 1,
+      "lastMate": null,
+      "reproDrive": 0,
+      "caregiverId": null,
+      "birthTick": 0,
+      "birthDay": 1,
+      "birthYear": 1,
+      "anim": 0,
+      "adaptations": [],
+      "massPolicy": "relative-anatomical-load/1",
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-4134709b"
+      },
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "legacyWaterPhysiology": []
+    }
+  ],
+  "placement": {
+    "developedDays": 0
+  },
+  "conceived": true,
+  "births": [
+    {
+      "id": 3,
+      "species": "genvo",
+      "x": 5.074872512753416,
+      "y": 13.581549343643184,
+      "vx": 0,
+      "vy": 0,
+      "dir": 7,
+      "age": 0,
+      "energy": 14.853960000000004,
+      "hydration": 15.552735000000004,
+      "health": 100,
+      "genes": {
+        "body": 1.01056401251754,
+        "motion": 1.0120994924561189,
+        "metabolism": 1.0134520985939501,
+        "digestion": 0.9895763997079375,
+        "senses": 0.9792977525520001,
+        "climate": 1.0515110819528615,
+        "immunity": 1.0459074525270617,
+        "temperament": 1.0434146082622155
+      },
+      "reproductiveGenome": {
+        "schema": 1,
+        "loci": {
+          "gamete": [
+            1.05007,
+            1.05305
+          ],
+          "development": [
+            0.98572,
+            0.96563
+          ]
+        },
+        "inheritance": {
+          "gamete": [
+            {
+              "parentId": 1,
+              "alleleIndex": 0,
+              "baseline": 1.06105,
+              "mutation": -0.01098
+            },
+            {
+              "parentId": 2,
+              "alleleIndex": 0,
+              "baseline": 1.05587,
+              "mutation": -0.00282
+            }
+          ],
+          "development": [
+            {
+              "parentId": 1,
+              "alleleIndex": 0,
+              "baseline": 0.95321,
+              "mutation": 0.03251
+            },
+            {
+              "parentId": 2,
+              "alleleIndex": 1,
+              "baseline": 0.9607,
+              "mutation": 0.00493
+            }
+          ]
+        },
+        "origin": "parental-gametes"
+      },
+      "matePreferences": {
+        "weights": {
+          "size": 0.34971,
+          "strength": 0.25074,
+          "ornament": -0.05772,
+          "display": -0.20378,
+          "behavior": 0.32855
+        },
+        "selectivity": 0.49097,
+        "ritualTastes": {
+          "dance": 0.20698,
+          "call": 0.25131,
+          "flare": -0.16323,
+          "scent": 0.64202,
+          "gesture": -0.44676
+        },
+        "tempo": 0.58581,
+        "similarity": -0.38306
+      },
+      "inbreeding": 0,
+      "sex": "F",
+      "pregnant": null,
+      "reproCooldown": 3.577344485092908,
+      "intent": "explore",
+      "target": null,
+      "alive": true,
+      "infected": false,
+      "infection": null,
+      "immune": false,
+      "immuneUntilDay": 0,
+      "player": false,
+      "lineage": false,
+      "parentIds": [
+        1,
+        2
+      ],
+      "grandparentIds": [],
+      "generation": 2,
+      "lastMate": null,
+      "reproDrive": 0,
+      "caregiverId": 1,
+      "birthTick": 768,
+      "birthDay": 16,
+      "birthYear": 1,
+      "anim": 0,
+      "adaptations": [],
+      "massPolicy": "relative-anatomical-load/1",
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "bodyVariation": {
+        "policy": "neutral-head-structure/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 26,
+        "options": 60,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-4134709b",
+        "to": "bp0-62c1bb11",
+        "targets": [],
+        "removed": [],
+        "moved": [],
+        "problems": [],
+        "parentBodies": [
+          {
+            "id": 1,
+            "bodyId": "bp0-4134709b"
+          },
+          {
+            "id": 2,
+            "bodyId": "bp0-4134709b"
+          }
+        ],
+        "finalBody": "bp0-62c1bb11",
+        "guidedOverride": false,
+        "expression": []
+      },
+      "legacyWaterPhysiology": [],
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "padded-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "padded-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-62c1bb11"
+      },
+      "bornWith": [],
+      "careProfile": {
+        "lineageOnly": true,
+        "dependentUntil": 0.62,
+        "followDistance": 2.1,
+        "nurseRadius": 1.6,
+        "nurseRate": 0.065,
+        "nurseEfficiency": 1.4,
+        "nurseTarget": 0.8,
+        "parentReserve": 0.5,
+        "guardThreatRadius": 5
+      },
+      "careStress": 0.08,
+      "careStressTotal": 0,
+      "careStressSamples": 0,
+      "careHighStressSamples": 0,
+      "careTendedCount": 0,
+      "careThreatDays": 0,
+      "lastCareThreatDay": null,
+      "lastTendedDay": null,
+      "careCooldownUntil": 0,
+      "learningLessons": {
+        "water": 0,
+        "food": 0,
+        "shelter": 0,
+        "danger": 0
+      },
+      "learningMemory": {
+        "water": null,
+        "food": null,
+        "shelter": null,
+        "danger": null
+      },
+      "learningLessonDays": {},
+      "practiceStats": {
+        "water": {
+          "attempts": 0,
+          "successes": 0
+        },
+        "food": {
+          "attempts": 0,
+          "successes": 0
+        },
+        "completed": 0,
+        "returns": 0,
+        "recoveries": 0,
+        "aborts": 0
+      },
+      "practiceRun": null,
+      "practiceCooldownUntil": 0,
+      "growthDelayDays": 1,
+      "currentMass": 0.24124375000000006,
+      "adultMass": 1.45,
+      "swims": false
+    },
+    {
+      "id": 4,
+      "species": "genvo",
+      "x": 5.026506540515754,
+      "y": 14.126887391311522,
+      "vx": 0,
+      "vy": 0,
+      "dir": 2,
+      "age": 0,
+      "energy": 14.853960000000004,
+      "hydration": 15.552735000000004,
+      "health": 100,
+      "genes": {
+        "body": 0.9970466517245373,
+        "motion": 0.9840182326899412,
+        "metabolism": 1.078487534553268,
+        "digestion": 1.0626674324417955,
+        "senses": 0.9411038210571196,
+        "climate": 1.0578155387174404,
+        "immunity": 1.0805365023293907,
+        "temperament": 1.0359374326134712
+      },
+      "reproductiveGenome": {
+        "schema": 1,
+        "loci": {
+          "gamete": [
+            1.01084,
+            1.07457
+          ],
+          "development": [
+            0.96442,
+            0.96972
+          ]
+        },
+        "inheritance": {
+          "gamete": [
+            {
+              "parentId": 1,
+              "alleleIndex": 1,
+              "baseline": 1.04958,
+              "mutation": -0.03874
+            },
+            {
+              "parentId": 2,
+              "alleleIndex": 1,
+              "baseline": 1.03718,
+              "mutation": 0.03739
+            }
+          ],
+          "development": [
+            {
+              "parentId": 1,
+              "alleleIndex": 1,
+              "baseline": 0.95321,
+              "mutation": 0.01121
+            },
+            {
+              "parentId": 2,
+              "alleleIndex": 0,
+              "baseline": 0.9607,
+              "mutation": 0.00902
+            }
+          ]
+        },
+        "origin": "parental-gametes"
+      },
+      "matePreferences": {
+        "weights": {
+          "size": 0.35089,
+          "strength": 0.21235,
+          "ornament": 0.00781,
+          "display": -0.22738,
+          "behavior": 0.33611
+        },
+        "selectivity": 0.49439,
+        "ritualTastes": {
+          "dance": 0.39906,
+          "call": 0.26347,
+          "flare": 0.03519,
+          "scent": 0.67904,
+          "gesture": -0.309
+        },
+        "tempo": 0.62171,
+        "similarity": -0.32365
+      },
+      "inbreeding": 0,
+      "sex": "M",
+      "pregnant": null,
+      "reproCooldown": 6.628868149127811,
+      "intent": "explore",
+      "target": null,
+      "alive": true,
+      "infected": false,
+      "infection": null,
+      "immune": false,
+      "immuneUntilDay": 0,
+      "player": false,
+      "lineage": false,
+      "parentIds": [
+        1,
+        2
+      ],
+      "grandparentIds": [],
+      "generation": 2,
+      "lastMate": null,
+      "reproDrive": 0,
+      "caregiverId": 1,
+      "birthTick": 768,
+      "birthDay": 16,
+      "birthYear": 1,
+      "anim": 0,
+      "adaptations": [],
+      "massPolicy": "relative-anatomical-load/1",
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "bodyVariation": {
+        "policy": "neutral-head-structure/1",
+        "operator": "inherit",
+        "attempted": false,
+        "accepted": true,
+        "from": "bp0-4134709b",
+        "to": "bp0-4134709b",
+        "targets": [],
+        "removed": [],
+        "moved": [],
+        "parentBodies": [
+          {
+            "id": 1,
+            "bodyId": "bp0-4134709b"
+          },
+          {
+            "id": 2,
+            "bodyId": "bp0-4134709b"
+          }
+        ],
+        "finalBody": "bp0-4134709b",
+        "guidedOverride": false,
+        "expression": []
+      },
+      "legacyWaterPhysiology": [],
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-4134709b"
+      },
+      "bornWith": [],
+      "careProfile": {
+        "lineageOnly": true,
+        "dependentUntil": 0.62,
+        "followDistance": 2.1,
+        "nurseRadius": 1.6,
+        "nurseRate": 0.065,
+        "nurseEfficiency": 1.4,
+        "nurseTarget": 0.8,
+        "parentReserve": 0.5,
+        "guardThreatRadius": 5
+      },
+      "careStress": 0.08,
+      "careStressTotal": 0,
+      "careStressSamples": 0,
+      "careHighStressSamples": 0,
+      "careTendedCount": 0,
+      "careThreatDays": 0,
+      "lastCareThreatDay": null,
+      "lastTendedDay": null,
+      "careCooldownUntil": 0,
+      "learningLessons": {
+        "water": 0,
+        "food": 0,
+        "shelter": 0,
+        "danger": 0
+      },
+      "learningMemory": {
+        "water": null,
+        "food": null,
+        "shelter": null,
+        "danger": null
+      },
+      "learningLessonDays": {},
+      "practiceStats": {
+        "water": {
+          "attempts": 0,
+          "successes": 0
+        },
+        "food": {
+          "attempts": 0,
+          "successes": 0
+        },
+        "completed": 0,
+        "returns": 0,
+        "recoveries": 0,
+        "aborts": 0
+      },
+      "practiceRun": null,
+      "practiceCooldownUntil": 0,
+      "growthDelayDays": 1,
+      "currentMass": 0.24124375000000006,
+      "adultMass": 1.45,
+      "swims": false
+    },
+    {
+      "id": 5,
+      "species": "genvo",
+      "x": 5.126307567498941,
+      "y": 14.303399113229881,
+      "vx": 0,
+      "vy": 0,
+      "dir": 0,
+      "age": 0,
+      "energy": 14.853960000000004,
+      "hydration": 15.552735000000004,
+      "health": 100,
+      "genes": {
+        "body": 1.0017929849279565,
+        "motion": 1.002737441838116,
+        "metabolism": 1.04936007277993,
+        "digestion": 1.0151544575553042,
+        "senses": 1.0333285497460205,
+        "climate": 1.016345366021015,
+        "immunity": 1.0955487643023532,
+        "temperament": 0.9463936712500988
+      },
+      "reproductiveGenome": {
+        "schema": 1,
+        "loci": {
+          "gamete": [
+            1.02794,
+            1.08515
+          ],
+          "development": [
+            0.94508,
+            1.00133
+          ]
+        },
+        "inheritance": {
+          "gamete": [
+            {
+              "parentId": 1,
+              "alleleIndex": 0,
+              "baseline": 1.06105,
+              "mutation": -0.03311
+            },
+            {
+              "parentId": 2,
+              "alleleIndex": 0,
+              "baseline": 1.05587,
+              "mutation": 0.02928
+            }
+          ],
+          "development": [
+            {
+              "parentId": 1,
+              "alleleIndex": 0,
+              "baseline": 0.95321,
+              "mutation": -0.00813
+            },
+            {
+              "parentId": 2,
+              "alleleIndex": 0,
+              "baseline": 0.9607,
+              "mutation": 0.04063
+            }
+          ]
+        },
+        "origin": "parental-gametes"
+      },
+      "matePreferences": {
+        "weights": {
+          "size": 0.26742,
+          "strength": 0.22276,
+          "ornament": -0.1634,
+          "display": -0.10991,
+          "behavior": 0.25205
+        },
+        "selectivity": 0.47508,
+        "ritualTastes": {
+          "dance": 0.14405,
+          "call": 0.54538,
+          "flare": -0.00668,
+          "scent": 0.65688,
+          "gesture": -0.34305
+        },
+        "tempo": 0.66824,
+        "similarity": -0.36286
+      },
+      "inbreeding": 0,
+      "sex": "M",
+      "pregnant": null,
+      "reproCooldown": 8.287906763143837,
+      "intent": "explore",
+      "target": null,
+      "alive": true,
+      "infected": false,
+      "infection": null,
+      "immune": false,
+      "immuneUntilDay": 0,
+      "player": false,
+      "lineage": false,
+      "parentIds": [
+        1,
+        2
+      ],
+      "grandparentIds": [],
+      "generation": 2,
+      "lastMate": null,
+      "reproDrive": 0,
+      "caregiverId": 1,
+      "birthTick": 768,
+      "birthDay": 16,
+      "birthYear": 1,
+      "anim": 0,
+      "adaptations": [],
+      "massPolicy": "relative-anatomical-load/1",
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "bodyVariation": {
+        "policy": "neutral-head-structure/1",
+        "operator": "inherit",
+        "attempted": false,
+        "accepted": true,
+        "from": "bp0-4134709b",
+        "to": "bp0-4134709b",
+        "targets": [],
+        "removed": [],
+        "moved": [],
+        "parentBodies": [
+          {
+            "id": 1,
+            "bodyId": "bp0-4134709b"
+          },
+          {
+            "id": 2,
+            "bodyId": "bp0-4134709b"
+          }
+        ],
+        "finalBody": "bp0-4134709b",
+        "guidedOverride": false,
+        "expression": []
+      },
+      "legacyWaterPhysiology": [],
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-4134709b"
+      },
+      "bornWith": [],
+      "careProfile": {
+        "lineageOnly": true,
+        "dependentUntil": 0.62,
+        "followDistance": 2.1,
+        "nurseRadius": 1.6,
+        "nurseRate": 0.065,
+        "nurseEfficiency": 1.4,
+        "nurseTarget": 0.8,
+        "parentReserve": 0.5,
+        "guardThreatRadius": 5
+      },
+      "careStress": 0.08,
+      "careStressTotal": 0,
+      "careStressSamples": 0,
+      "careHighStressSamples": 0,
+      "careTendedCount": 0,
+      "careThreatDays": 0,
+      "lastCareThreatDay": null,
+      "lastTendedDay": null,
+      "careCooldownUntil": 0,
+      "learningLessons": {
+        "water": 0,
+        "food": 0,
+        "shelter": 0,
+        "danger": 0
+      },
+      "learningMemory": {
+        "water": null,
+        "food": null,
+        "shelter": null,
+        "danger": null
+      },
+      "learningLessonDays": {},
+      "practiceStats": {
+        "water": {
+          "attempts": 0,
+          "successes": 0
+        },
+        "food": {
+          "attempts": 0,
+          "successes": 0
+        },
+        "completed": 0,
+        "returns": 0,
+        "recoveries": 0,
+        "aborts": 0
+      },
+      "practiceRun": null,
+      "practiceCooldownUntil": 0,
+      "growthDelayDays": 1,
+      "currentMass": 0.24124375000000006,
+      "adultMass": 1.45,
+      "swims": false
+    }
+  ],
+  "pregnancy": {
+    "fatherId": 2,
+    "paternalInheritance": {
+      "alive": false,
+      "player": false,
+      "id": 2,
+      "species": "genvo",
+      "sex": "M",
+      "generation": 1,
+      "parentIds": [],
+      "grandparentIds": [],
+      "genes": {
+        "body": 0.9709077042993158,
+        "motion": 1.0219678326044233,
+        "metabolism": 1.011196200735867,
+        "digestion": 0.9287869264371693,
+        "senses": 0.9560829394031316,
+        "climate": 1.0340327948331833,
+        "immunity": 1.0195683735888452,
+        "temperament": 1.0755310576874764
+      },
+      "reproductiveGenome": {
+        "schema": 1,
+        "loci": {
+          "gamete": [
+            1.05587,
+            1.03718
+          ],
+          "development": [
+            0.9607,
+            0.9607
+          ]
+        },
+        "origin": "founding-lineage",
+        "lineage": "genvo"
+      },
+      "matePreferences": {
+        "weights": {
+          "size": 0.29494,
+          "strength": 0.03646,
+          "ornament": -0.34722,
+          "display": 0.25782,
+          "behavior": 0.39253
+        },
+        "selectivity": 0.50801,
+        "ritualTastes": {
+          "dance": 0.03467,
+          "call": 0.06699,
+          "flare": 0.27665,
+          "scent": 0.42792,
+          "gesture": -0.77702
+        },
+        "tempo": 0.55118,
+        "similarity": -0.365
+      },
+      "adaptations": [],
+      "massPolicy": "relative-anatomical-load/1",
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "legacyWaterPhysiology": [],
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-4134709b"
+      },
+      "lineage": false,
+      "x": 3.2,
+      "y": 3
+    },
+    "maternalInheritance": {
+      "alive": false,
+      "player": false,
+      "id": 1,
+      "species": "genvo",
+      "sex": "F",
+      "generation": 1,
+      "parentIds": [],
+      "grandparentIds": [],
+      "genes": {
+        "body": 1.0698040681891143,
+        "motion": 0.9633083990775049,
+        "metabolism": 1.065363760991022,
+        "digestion": 1.061445073131472,
+        "senses": 1.0244216428603978,
+        "climate": 1.028839194821194,
+        "immunity": 1.05986360674724,
+        "temperament": 0.9575268489774317
+      },
+      "reproductiveGenome": {
+        "schema": 1,
+        "loci": {
+          "gamete": [
+            1.06105,
+            1.04958
+          ],
+          "development": [
+            0.95321,
+            0.95321
+          ]
+        },
+        "origin": "founding-lineage",
+        "lineage": "genvo"
+      },
+      "matePreferences": {
+        "weights": {
+          "size": 0.39489,
+          "strength": 0.44223,
+          "ornament": 0.18502,
+          "display": -0.52459,
+          "behavior": 0.12705
+        },
+        "selectivity": 0.48134,
+        "ritualTastes": {
+          "dance": 0.6132,
+          "call": 0.7208,
+          "flare": -0.46092,
+          "scent": 0.58053,
+          "gesture": 0.12827
+        },
+        "tempo": 0.51017,
+        "similarity": -0.34394
+      },
+      "adaptations": [],
+      "massPolicy": "relative-anatomical-load/1",
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "legacyWaterPhysiology": [],
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-4134709b"
+      },
+      "lineage": false,
+      "x": 3,
+      "y": 3
+    },
+    "days": 16,
+    "totalDays": 16,
+    "startedDay": 1,
+    "startedYear": 1,
+    "mode": "live",
+    "dualAtConception": false,
+    "compatibilityAtConception": {
+      "enabled": true,
+      "reason": "",
+      "gameteMatch": 0.9786874999999999,
+      "fertilityA": 1,
+      "fertilityB": 1,
+      "conceptionChance": 0.9786874999999999,
+      "model": "provisional-diploid-loci/1"
+    },
+    "plannedLitterSize": 3,
+    "birthCost": 51,
+    "reserveInvestment": 23.97,
+    "dualCostPaid": null
+  },
+  "final": {
+    "day": 17,
+    "tick": 768,
+    "motherAlive": true,
+    "fatherAlive": true
+  }
+}

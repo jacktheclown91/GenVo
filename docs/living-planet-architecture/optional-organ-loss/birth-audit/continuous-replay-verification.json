@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "scope": "Actual preconception -> accepted conception -> stored mid-gestation -> exact recorded birth replay, then uninterrupted versus restored12 updates. No outcome or random source intervention.",
+  "checks": [
+    {
+      "phase": "mid-gestation",
+      "tick": 384,
+      "continuousFullStateEqual": true
+    },
+    {
+      "phase": "candidate-birth",
+      "tick": 768,
+      "continuousFullStateEqual": true
+    }
+  ],
+  "rawCheckpointRestoration": true,
+  "postBirthResumeUpdates": 12,
+  "completeStateEqual": true
+}

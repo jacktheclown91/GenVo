@@ -1,3 +1,4 @@
+import {interactAs} from './helpers/interaction.js';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {TutorialController} from '../src/ui/tutorial.js';
@@ -14,7 +15,7 @@ const sim=new Simulation('GENVO8-DRINK-GOAL',{player:true}),p=sim.player(),c=con
 // A real drink at a bank shows on the goal list straight away, before the creature has eaten.
 {
   const bank=sim.world.nearestDrinkable(p.x,p.y,60);assert.ok(bank);p.x=bank.x;p.y=bank.y;p.hydration=40;
-  assert.equal(sim.playerInteract().type,'drink');
+  assert.equal(interactAs(sim,assert,'drink').type,'drink');
   c.renderOpeningGoals(p);assert.match(c.shown.body,/◐ Watered · now feed/,'the water half of the first goal is shown as done');
   assert.equal(c.shown.opts.step,'0/3','the goal itself still needs food too');
 }

@@ -1,0 +1,219 @@
+{
+  "scope": "Exact genuine day150 world through archive transport into fresh isolated IndexedDB, native Continue, normal M/details click and C against an unreachable partner, then native Save World. Read-only observations, no body/resource/RNG/consent edits, spawning or time advance. Existing current traversal rules only, not full planetary navigation or family acceptance.",
+  "input": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\player-journey\\ownership-repair-continuation-11\\checkpoint.snapshot.json.gz",
+  "initial": {
+    "target": null,
+    "failure": {
+      "tick": 7158,
+      "day": 150,
+      "partnerId": 79,
+      "reason": "Your body cannot reach this partner from here.",
+      "reasonCode": "unreachable",
+      "stage": "approach"
+    }
+  },
+  "rows": [
+    {
+      "label": "continued-actual-native-save",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 150,
+      "tick": 7174,
+      "player": {
+        "id": 109,
+        "age": 181,
+        "x": 79.13858655538179,
+        "y": 83.96940158130438,
+        "energy": 103.60128167521137,
+        "hydration": 55.48292665434775,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 293,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 6132,
+        "reason": "second-declines",
+        "day": 128,
+        "declinerId": 328,
+        "taste": null,
+        "count": 1,
+        "otherId": 328
+      },
+      "failure": {
+        "tick": 7158,
+        "day": 150,
+        "partnerId": 79,
+        "reason": "Your body cannot reach this partner from here.",
+        "reasonCode": "unreachable",
+        "stage": "approach"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-4a80f2ea-269a1cbd",
+        "energyGain": 5.585250358372406,
+        "waterGain": 0,
+        "tick": 7152
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reasonCode": "unreachable",
+        "reason": "Your body cannot reach this partner from here."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "before-unreachable-C",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 150,
+      "tick": 7187,
+      "player": {
+        "id": 109,
+        "age": 181,
+        "x": 79.13858655538179,
+        "y": 83.96940158130438,
+        "energy": 103.49280766343074,
+        "hydration": 55.38036135910869,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 170,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 6132,
+        "reason": "second-declines",
+        "day": 128,
+        "declinerId": 328,
+        "taste": null,
+        "count": 1,
+        "otherId": 328
+      },
+      "failure": {
+        "tick": 7158,
+        "day": 150,
+        "partnerId": 79,
+        "reason": "Your body cannot reach this partner from here.",
+        "reasonCode": "unreachable",
+        "stage": "approach"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-4a80f2ea-269a1cbd",
+        "energyGain": 5.585250358372406,
+        "waterGain": 0,
+        "tick": 7152
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reasonCode": "unreachable",
+        "reason": "Your body cannot reach this partner from here."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "after-unreachable-C",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 150,
+      "tick": 7188,
+      "player": {
+        "id": 109,
+        "age": 181,
+        "x": 79.13858655538179,
+        "y": 83.96940158130438,
+        "energy": 103.43857065754042,
+        "hydration": 55.32907871148916,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 170,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 6132,
+        "reason": "second-declines",
+        "day": 128,
+        "declinerId": 328,
+        "taste": null,
+        "count": 1,
+        "otherId": 328
+      },
+      "failure": {
+        "tick": 7158,
+        "day": 150,
+        "partnerId": 79,
+        "reason": "Your body cannot reach this partner from here.",
+        "reasonCode": "unreachable",
+        "stage": "approach"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-4a80f2ea-269a1cbd",
+        "energyGain": 5.585250358372406,
+        "waterGain": 0,
+        "tick": 7152
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reasonCode": "unreachable",
+        "reason": "Your body cannot reach this partner from here."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    }
+  ],
+  "actions": [
+    {
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nMirelick Keenwalker · elder\nClose\nExpand\nMirelick Keenwalker · elder. Your body cannot reach this partner from here.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 11\nSelected #170 · F · elder · 13.9 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n0/10 mounted positions match · 10 differ\ntorso: yours small torso / mate stout torso\ndorsal: yours empty / mate moss back\neye left: yours simple eye / mate tracker eye\neye right: yours simple eye / mate tracker eye\nlimb 1: yours walking leg / mate padded leg\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 80% · gamete match 80% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[0.93089,0.92702],\"development\":[0.94654,0.94654]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#67 · 13.0 tiles · compatible · 7 different sockets\n▸ #170 · 13.9 tiles · compatible · 10 different sockets\n#80 · 16.9 tiles · compatible · 7 different sockets\n#84 · 14.8 tiles · compatible · 7 different sockets\n#363 · 15.7 tiles · compatible · 7 different sockets\n#79 · 20.7 tiles · compatible · 7 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (56% selective)\n\nYOU\nslower movement · better digestion\nMATE\nstronger disease resistance · smaller body · weaker senses\nLIKELY CHILD TRAITS\nsmaller body · stronger disease resistance · faster movement · poorer digestion\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    "Pressed normal C against the currently selected unreachable partner"
+  ],
+  "errors": []
+}

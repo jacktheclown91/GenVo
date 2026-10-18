@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
 import {hasPart} from '../src/lineage/part-abilities.js';
+import {matePreferencesFor} from '../src/reproduction/mate-preferences.js';
 import {ENGINEER_LIFE_HISTORY} from '../src/ecology/engineer-life-history.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 
@@ -25,6 +26,9 @@ assert.ok(away);
 const s=SPECIES.rootling;
 for(const a of [mother,father])Object.assign(a,{age:100,energy:s.maxEnergy*.94,hydration:s.maxHydration*.94,health:100,reproCooldown:0,pregnant:null,parentIds:[],infected:false,x:tile.x,y:tile.y});
 mother.sex='F';father.sex='M';sim.rebuildSpatial();
+// Staged pair: keep each founder's inherited tastes, but neutralise the similarity/contrast allele
+// (Phase 3H), which can legitimately make a contrast-seeking founder decline a look-alike partner.
+for(const a of [mother,father])a.matePreferences={...matePreferencesFor(sim.seed,a),similarity:0};
 const oldRng=sim.rng.state,oldPlant=structuredClone(sim.world.plants),oldBank=structuredClone(sim.world.seedBank);
 assert.equal(sim.tryMate(mother,father),true,'real reproduction path accepts genuine eligible pair');
 let evidence=sim.regionalEcology.engineerLifeHistoryEvidence();

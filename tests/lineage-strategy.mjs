@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
+import {interactAs} from './helpers/interaction.js';
 import {SPECIES} from '../src/organisms/species.js';
 
 function lineageNpc(sim,adaptations,{x=null,y=null}={}){
@@ -17,9 +18,11 @@ function lineageNpc(sim,adaptations,{x=null,y=null}={}){
   const response=sim.specialization.threatResponse(a,hunter);
   assert.equal(response?.intent,'stealth-forage','a hungry camouflage descendant can feed from covered biomass while a Stalker is nearby');
   assert.equal(a.hidden,true);
-  a.intent=response.intent;a.target=response.target;const beforePlant=sim.world.plants.bramble[i],beforeEnergy=a.energy;
+  // The target is whatever this anatomy can actually eat here (edible-yield authority), not
+  // necessarily the bramble the fixture added.
+  const kind=response.target.kind;a.intent=response.intent;a.target=response.target;const beforePlant=sim.world.plants[kind][i],beforeEnergy=a.energy;
   sim.resolveInteraction(a);
-  assert.ok(sim.world.plants.bramble[i]<beforePlant,'stealth feeding consumes canonical biomass');
+  assert.ok(sim.world.plants[kind][i]<beforePlant,'stealth feeding consumes canonical biomass');
   assert.ok(a.energy>beforeEnergy,'stealth feeding restores real energy');
   assert.equal(a.hidden,true,'stationary covered feeding does not discard concealment');
 }
@@ -83,7 +86,7 @@ function lineageNpc(sim,adaptations,{x=null,y=null}={}){
   const i=sim.world.idx(a.x,a.y);sim.world.plants.bramble[i]=.82;sim.world.drinkable[i]=0;sim.world.moisture[i]=.3;
   assert.equal(sim.playerHide().ok,true);assert.equal(a.hidden,true);
   const hint=sim.interactionHint();assert.match(hint,/Eat .*V emerge/,'hidden food interaction stays visible while the simplified HUD preserves the emerge hint');
-  const before=sim.world.plants.bramble[i],result=sim.playerInteract();
+  const before=sim.world.plants.bramble[i],result=interactAs(sim,assert,`eat:bramble:${i}`);
   assert.equal(result.type,'eat');assert.ok(sim.world.plants.bramble[i]<before);assert.equal(a.hidden,true,'quiet covered feeding preserves player concealment');
 }
 

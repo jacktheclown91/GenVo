@@ -1,0 +1,509 @@
+{
+ "schema": "genvo.soak-equivalence/1",
+ "date": "2026-10-15",
+ "summary": "tests/natural-world-soak.mjs reproduces the results of the five suites it replaces: 57 of 57 comparisons equal. tools/probe-natural-world.mjs reproduces probe-kills and probe-recovery exactly (kill records and 28 recovery samples equal).",
+ "wallSeconds": {
+  "old": {
+   "headless": 1366,
+   "headless-short": 1475,
+   "ecology-stability": 1370,
+   "probe-kills": 548,
+   "probe-recovery": 549,
+   "note": "run in parallel, uncapped"
+  },
+  "new": {
+   "natural-world-soak": 497,
+   "tools/probe-natural-world.mjs (optional diagnostic)": 547
+  }
+ },
+ "old": {
+  "headless": [
+   {
+    "seed": "GENVO8-TEST-A",
+    "year": 21,
+    "day": 641,
+    "pop": {
+     "mosskip": 5,
+     "rootling": 0,
+     "needlejaw": 2,
+     "rillsifter": 9,
+     "mirelick": 0,
+     "podshell": 0,
+     "bankjaw": 0,
+     "genvo": 66
+    },
+    "births": 251,
+    "deaths": 365,
+    "causes": {
+     "predation": 33,
+     "starvation": 75,
+     "age": 257
+    }
+   },
+   {
+    "seed": "GENVO8-TEST-C",
+    "year": 21,
+    "day": 641,
+    "pop": {
+     "mosskip": 7,
+     "rootling": 1,
+     "needlejaw": 5,
+     "rillsifter": 12,
+     "mirelick": 0,
+     "podshell": 1,
+     "bankjaw": 0,
+     "genvo": 41
+    },
+    "births": 189,
+    "deaths": 318,
+    "causes": {
+     "predation": 24,
+     "starvation": 52,
+     "age": 242
+    }
+   },
+   {
+    "seed": "GENVO8-TEST-E",
+    "year": 21,
+    "day": 641,
+    "pop": {
+     "mosskip": 8,
+     "rootling": 1,
+     "needlejaw": 1,
+     "rillsifter": 16,
+     "mirelick": 0,
+     "podshell": 0,
+     "bankjaw": 0,
+     "genvo": 0
+    },
+    "births": 102,
+    "deaths": 272,
+    "causes": {
+     "predation": 22,
+     "starvation": 83,
+     "age": 166,
+     "disease": 1
+    }
+   }
+  ],
+  "ecology-stability": [
+   {
+    "seed": "GENVO8-TEST-A",
+    "day": 641,
+    "population": {
+     "mosskip": 5,
+     "rootling": 0,
+     "needlejaw": 2,
+     "rillsifter": 9,
+     "mirelick": 0,
+     "podshell": 0,
+     "bankjaw": 0,
+     "genvo": 66
+    },
+    "peak": 297,
+    "abovePerformanceExpectation": false,
+    "atEmergencyCeiling": false,
+    "byCause": {
+     "predation": 33,
+     "starvation": 75,
+     "age": 257
+    },
+    "ecologicalReview": "required"
+   },
+   {
+    "seed": "GENVO8-TEST-C",
+    "day": 641,
+    "population": {
+     "mosskip": 7,
+     "rootling": 1,
+     "needlejaw": 5,
+     "rillsifter": 12,
+     "mirelick": 0,
+     "podshell": 1,
+     "bankjaw": 0,
+     "genvo": 41
+    },
+    "peak": 263,
+    "abovePerformanceExpectation": false,
+    "atEmergencyCeiling": false,
+    "byCause": {
+     "predation": 24,
+     "starvation": 52,
+     "age": 242
+    },
+    "ecologicalReview": "required"
+   },
+   {
+    "seed": "GENVO8-TEST-E",
+    "day": 641,
+    "population": {
+     "mosskip": 8,
+     "rootling": 1,
+     "needlejaw": 1,
+     "rillsifter": 16,
+     "mirelick": 0,
+     "podshell": 0,
+     "bankjaw": 0,
+     "genvo": 0
+    },
+    "peak": 251,
+    "abovePerformanceExpectation": false,
+    "atEmergencyCeiling": false,
+    "byCause": {
+     "predation": 22,
+     "starvation": 83,
+     "age": 166,
+     "disease": 1
+    },
+    "ecologicalReview": "required"
+   }
+  ],
+  "headless-short-day321": [
+   {
+    "seed": "GENVO8-TEST-A",
+    "day": 321,
+    "population": {
+     "mosskip": 45,
+     "rootling": 17,
+     "needlejaw": 11,
+     "rillsifter": 22,
+     "mirelick": 9,
+     "podshell": 15,
+     "bankjaw": 1,
+     "genvo": 118
+    },
+    "births": 205,
+    "deaths": 163,
+    "peak": 297,
+    "causes": {
+     "predation": 23,
+     "starvation": 61,
+     "age": 79
+    }
+   },
+   {
+    "seed": "GENVO8-TEST-B",
+    "day": 321,
+    "population": {
+     "mosskip": 82,
+     "rootling": 31,
+     "needlejaw": 11,
+     "rillsifter": 14,
+     "mirelick": 11,
+     "podshell": 15,
+     "bankjaw": 1,
+     "genvo": 46
+    },
+    "births": 155,
+    "deaths": 140,
+    "peak": 281,
+    "causes": {
+     "predation": 17,
+     "starvation": 44,
+     "age": 79
+    }
+   },
+   {
+    "seed": "GENVO8-TEST-C",
+    "day": 321,
+    "population": {
+     "mosskip": 54,
+     "rootling": 27,
+     "needlejaw": 12,
+     "rillsifter": 23,
+     "mirelick": 4,
+     "podshell": 14,
+     "bankjaw": 1,
+     "genvo": 67
+    },
+    "births": 144,
+    "deaths": 138,
+    "peak": 263,
+    "causes": {
+     "predation": 18,
+     "starvation": 40,
+     "age": 80
+    }
+   },
+   {
+    "seed": "GENVO8-TEST-D",
+    "day": 321,
+    "population": {
+     "mosskip": 70,
+     "rootling": 22,
+     "needlejaw": 11,
+     "rillsifter": 16,
+     "mirelick": 7,
+     "podshell": 12,
+     "bankjaw": 1,
+     "genvo": 70
+    },
+    "births": 155,
+    "deaths": 142,
+    "peak": 291,
+    "causes": {
+     "starvation": 42,
+     "predation": 12,
+     "age": 88
+    }
+   },
+   {
+    "seed": "GENVO8-TEST-E",
+    "day": 321,
+    "population": {
+     "mosskip": 28,
+     "rootling": 22,
+     "needlejaw": 8,
+     "rillsifter": 17,
+     "mirelick": 9,
+     "podshell": 8,
+     "bankjaw": 1,
+     "genvo": 4
+    },
+    "births": 79,
+    "deaths": 178,
+    "peak": 251,
+    "causes": {
+     "predation": 18,
+     "starvation": 81,
+     "age": 78,
+     "disease": 1
+    }
+   }
+  ]
+ },
+ "new": [
+  {
+   "seed": "GENVO8-TEST-A",
+   "day": 641,
+   "population": {
+    "mosskip": 5,
+    "rootling": 0,
+    "needlejaw": 2,
+    "rillsifter": 9,
+    "mirelick": 0,
+    "podshell": 0,
+    "bankjaw": 0,
+    "genvo": 66
+   },
+   "births": 251,
+   "deaths": 365,
+   "peak": 297,
+   "causes": {
+    "predation": 33,
+    "starvation": 75,
+    "age": 257
+   },
+   "checkpoint": {
+    "seed": "GENVO8-TEST-A",
+    "day": 321,
+    "population": {
+     "mosskip": 45,
+     "rootling": 17,
+     "needlejaw": 11,
+     "rillsifter": 22,
+     "mirelick": 9,
+     "podshell": 15,
+     "bankjaw": 1,
+     "genvo": 118
+    },
+    "births": 205,
+    "deaths": 163,
+    "peak": 297,
+    "causes": {
+     "predation": 23,
+     "starvation": 61,
+     "age": 79
+    }
+   },
+   "abovePerformanceExpectation": false,
+   "atEmergencyCeiling": false
+  },
+  {
+   "seed": "GENVO8-TEST-B",
+   "day": 321,
+   "population": {
+    "mosskip": 82,
+    "rootling": 31,
+    "needlejaw": 11,
+    "rillsifter": 14,
+    "mirelick": 11,
+    "podshell": 15,
+    "bankjaw": 1,
+    "genvo": 46
+   },
+   "births": 155,
+   "deaths": 140,
+   "peak": 281,
+   "causes": {
+    "predation": 17,
+    "starvation": 44,
+    "age": 79
+   },
+   "checkpoint": {
+    "seed": "GENVO8-TEST-B",
+    "day": 321,
+    "population": {
+     "mosskip": 82,
+     "rootling": 31,
+     "needlejaw": 11,
+     "rillsifter": 14,
+     "mirelick": 11,
+     "podshell": 15,
+     "bankjaw": 1,
+     "genvo": 46
+    },
+    "births": 155,
+    "deaths": 140,
+    "peak": 281,
+    "causes": {
+     "predation": 17,
+     "starvation": 44,
+     "age": 79
+    }
+   },
+   "abovePerformanceExpectation": false,
+   "atEmergencyCeiling": false
+  },
+  {
+   "seed": "GENVO8-TEST-C",
+   "day": 641,
+   "population": {
+    "mosskip": 7,
+    "rootling": 1,
+    "needlejaw": 5,
+    "rillsifter": 12,
+    "mirelick": 0,
+    "podshell": 1,
+    "bankjaw": 0,
+    "genvo": 41
+   },
+   "births": 189,
+   "deaths": 318,
+   "peak": 263,
+   "causes": {
+    "predation": 24,
+    "starvation": 52,
+    "age": 242
+   },
+   "checkpoint": {
+    "seed": "GENVO8-TEST-C",
+    "day": 321,
+    "population": {
+     "mosskip": 54,
+     "rootling": 27,
+     "needlejaw": 12,
+     "rillsifter": 23,
+     "mirelick": 4,
+     "podshell": 14,
+     "bankjaw": 1,
+     "genvo": 67
+    },
+    "births": 144,
+    "deaths": 138,
+    "peak": 263,
+    "causes": {
+     "predation": 18,
+     "starvation": 40,
+     "age": 80
+    }
+   },
+   "abovePerformanceExpectation": false,
+   "atEmergencyCeiling": false
+  },
+  {
+   "seed": "GENVO8-TEST-D",
+   "day": 321,
+   "population": {
+    "mosskip": 70,
+    "rootling": 22,
+    "needlejaw": 11,
+    "rillsifter": 16,
+    "mirelick": 7,
+    "podshell": 12,
+    "bankjaw": 1,
+    "genvo": 70
+   },
+   "births": 155,
+   "deaths": 142,
+   "peak": 291,
+   "causes": {
+    "starvation": 42,
+    "predation": 12,
+    "age": 88
+   },
+   "checkpoint": {
+    "seed": "GENVO8-TEST-D",
+    "day": 321,
+    "population": {
+     "mosskip": 70,
+     "rootling": 22,
+     "needlejaw": 11,
+     "rillsifter": 16,
+     "mirelick": 7,
+     "podshell": 12,
+     "bankjaw": 1,
+     "genvo": 70
+    },
+    "births": 155,
+    "deaths": 142,
+    "peak": 291,
+    "causes": {
+     "starvation": 42,
+     "predation": 12,
+     "age": 88
+    }
+   },
+   "abovePerformanceExpectation": false,
+   "atEmergencyCeiling": false
+  },
+  {
+   "seed": "GENVO8-TEST-E",
+   "day": 641,
+   "population": {
+    "mosskip": 8,
+    "rootling": 1,
+    "needlejaw": 1,
+    "rillsifter": 16,
+    "mirelick": 0,
+    "podshell": 0,
+    "bankjaw": 0,
+    "genvo": 0
+   },
+   "births": 102,
+   "deaths": 272,
+   "peak": 251,
+   "causes": {
+    "predation": 22,
+    "starvation": 83,
+    "age": 166,
+    "disease": 1
+   },
+   "checkpoint": {
+    "seed": "GENVO8-TEST-E",
+    "day": 321,
+    "population": {
+     "mosskip": 28,
+     "rootling": 22,
+     "needlejaw": 8,
+     "rillsifter": 17,
+     "mirelick": 9,
+     "podshell": 8,
+     "bankjaw": 1,
+     "genvo": 4
+    },
+    "births": 79,
+    "deaths": 178,
+    "peak": 251,
+    "causes": {
+     "predation": 18,
+     "starvation": 81,
+     "age": 78,
+     "disease": 1
+    }
+   },
+   "abovePerformanceExpectation": false,
+   "atEmergencyCeiling": false
+  }
+ ]
+}

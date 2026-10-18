@@ -1,0 +1,313 @@
+{
+  "scope": "Controlled finite stock sweep. Remote initialized eligible adult presence only; identical local supply, local prey count, world stocks and RNG. No actual deaths, births or natural outcome frequency claim.",
+  "changed": 8,
+  "gateFlips": 2,
+  "rows": [
+    {
+      "stock": 0,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 0,
+      "before": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0,
+        "resourceValue": 0,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "mass": 6.920000000000001,
+          "source": "mounted-adult-anatomy"
+        }
+      },
+      "after": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0,
+        "resourceValue": 0,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "mass": 0.8,
+          "source": "living-eligible-adult-unit"
+        }
+      }
+    },
+    {
+      "stock": 0.001,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 1.6660000791307539,
+      "before": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.0008851156489771515,
+        "resourceValue": 0.007080925191817212,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "mass": 6.920000000000001,
+          "source": "mounted-adult-anatomy"
+        }
+      },
+      "after": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.007656250363652361,
+        "resourceValue": 0.061250002909218886,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "mass": 0.8,
+          "source": "living-eligible-adult-unit"
+        }
+      }
+    },
+    {
+      "stock": 0.002,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 3.3320001582615077,
+      "before": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.001770231297954303,
+        "resourceValue": 0.014161850383634425,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "mass": 6.920000000000001,
+          "source": "mounted-adult-anatomy"
+        }
+      },
+      "after": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.015312500727304721,
+        "resourceValue": 0.12250000581843777,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "mass": 0.8,
+          "source": "living-eligible-adult-unit"
+        }
+      }
+    },
+    {
+      "stock": 0.005,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 8.32999981380999,
+      "before": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.0044255779357627026,
+        "resourceValue": 0.03540462348610162,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "mass": 6.920000000000001,
+          "source": "mounted-adult-anatomy"
+        }
+      },
+      "after": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.03828124914434738,
+        "resourceValue": 0.306249993154779,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "mass": 0.8,
+          "source": "living-eligible-adult-unit"
+        }
+      }
+    },
+    {
+      "stock": 0.01,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 16.65999962761998,
+      "before": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.008851155871525405,
+        "resourceValue": 0.07080924697220324,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "mass": 6.920000000000001,
+          "source": "mounted-adult-anatomy"
+        }
+      },
+      "after": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.07656249828869476,
+        "resourceValue": 0.612499986309558,
+        "driveRate": 0.006934544418644262,
+        "preyReference": {
+          "mass": 0.8,
+          "source": "living-eligible-adult-unit"
+        }
+      }
+    },
+    {
+      "stock": 0.02,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 33.31999925523996,
+      "before": {
+        "allowed": false,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.01770231174305081,
+        "resourceValue": 0.14161849394440648,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "mass": 6.920000000000001,
+          "source": "mounted-adult-anatomy"
+        }
+      },
+      "after": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.1531249965773895,
+        "resourceValue": 1.224999972619116,
+        "driveRate": 0.013869088837288523,
+        "preyReference": {
+          "mass": 0.8,
+          "source": "living-eligible-adult-unit"
+        }
+      }
+    },
+    {
+      "stock": 0.05,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 83.30000124126673,
+      "before": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.04425578100628332,
+        "resourceValue": 0.3540462480502666,
+        "driveRate": 0.004528682170542637,
+        "preyReference": {
+          "mass": 6.920000000000001,
+          "source": "mounted-adult-anatomy"
+        }
+      },
+      "after": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.3828125057043507,
+        "resourceValue": 3.0625000456348057,
+        "driveRate": 0.034672723384880894,
+        "preyReference": {
+          "mass": 0.8,
+          "source": "living-eligible-adult-unit"
+        }
+      }
+    },
+    {
+      "stock": 0.1,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 166.60000248253345,
+      "before": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.08851156201256664,
+        "resourceValue": 0.7080924961005332,
+        "driveRate": 0.00801681465546379,
+        "preyReference": {
+          "mass": 6.920000000000001,
+          "source": "mounted-adult-anatomy"
+        }
+      },
+      "after": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.7656250114087014,
+        "resourceValue": 6.125000091269611,
+        "driveRate": 0.06934544676976179,
+        "preyReference": {
+          "mass": 0.8,
+          "source": "living-eligible-adult-unit"
+        }
+      }
+    },
+    {
+      "stock": 0.35,
+      "remoteDistance": 84.8528137423857,
+      "localPrey": 0,
+      "waterEnergy": 583.0999900698662,
+      "before": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.3097904571520455,
+        "resourceValue": 2.478323657216364,
+        "driveRate": 0.028058850398174424,
+        "preyReference": {
+          "mass": 6.920000000000001,
+          "source": "mounted-adult-anatomy"
+        }
+      },
+      "after": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 1.12,
+        "resourceValue": 21.437499634921547,
+        "driveRate": 0.10144248062015507,
+        "preyReference": {
+          "mass": 0.8,
+          "source": "living-eligible-adult-unit"
+        }
+      }
+    }
+  ]
+}

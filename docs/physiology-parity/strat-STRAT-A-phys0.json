@@ -1,0 +1,118 @@
+{
+ "schema": "genvo.player-strategy/1",
+ "days": 160,
+ "rows": [
+  {
+   "physiology": "old",
+   "firstDeathDay": 125,
+   "share": {},
+   "mate": {
+    "branch": 0,
+    "eligible": 0,
+    "tries": 0,
+    "conceived": 0
+   },
+   "deathCause": "predation day 125 W0.02 E0.02",
+   "seed": "STRAT-A",
+   "strategy": "auto",
+   "survivedDays": 125,
+   "playerAlive": false,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.6
+  },
+  {
+   "physiology": "old",
+   "firstDeathDay": 67,
+   "share": {
+    "other": 0.049,
+    "eat": 0.564,
+    "drink": 0.004,
+    "threatNear": 0.384
+   },
+   "mate": {
+    "branch": 994,
+    "eligible": 988,
+    "tries": 2,
+    "conceived": 0,
+    "started": 7,
+    "refusals": {
+     "An approach or performance is already underway.": 981
+    }
+   },
+   "deathCause": "predation day 67 W0.00 E0.24",
+   "seed": "STRAT-A",
+   "strategy": "forager",
+   "survivedDays": 67,
+   "playerAlive": false,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.79
+  },
+  {
+   "physiology": "old",
+   "firstDeathDay": 116,
+   "share": {
+    "other": 0.028,
+    "eat": 0.68,
+    "drink": 0.085,
+    "threatNear": 0.206
+   },
+   "mate": {
+    "branch": 2556,
+    "eligible": 2532,
+    "tries": 2,
+    "conceived": 0,
+    "started": 7,
+    "refusals": {
+     "An approach or performance is already underway.": 2525
+    }
+   },
+   "deathCause": "dehydration day 116 W0.00 E0.42",
+   "seed": "STRAT-A",
+   "strategy": "refuge",
+   "survivedDays": 116,
+   "playerAlive": false,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.8
+  },
+  {
+   "physiology": "old",
+   "firstDeathDay": 124,
+   "share": {
+    "other": 0.026,
+    "eat": 0.65,
+    "drink": 0.074,
+    "threatNear": 0.249,
+    "brace": 0.001
+   },
+   "mate": {
+    "branch": 2557,
+    "eligible": 2551,
+    "tries": 2,
+    "conceived": 0,
+    "started": 7,
+    "refusals": {
+     "An approach or performance is already underway.": 2544
+    }
+   },
+   "deathCause": "dehydration day 124 W0.00 E0.21",
+   "seed": "STRAT-A",
+   "strategy": "defend",
+   "survivedDays": 124,
+   "playerAlive": false,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.8
+  }
+ ]
+}

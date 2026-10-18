@@ -1,0 +1,173 @@
+{
+ "res": "1440x900",
+ "seed": "PHASE4-ORDINARY",
+ "dayAdvanced": 120,
+ "query": "?spriteBatch=0&tilePool=0",
+ "moving": 0,
+ "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3050 (0x00002582) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+ "software": false,
+ "day": 121,
+ "animals": 321,
+ "playerAlive": true,
+ "paused": false,
+ "frames": 743,
+ "presentedFps": 12.5,
+ "frameMs": {
+  "mean": 80.3,
+  "p50": 66.7,
+  "p95": 120.1,
+  "p99": 240.2,
+  "max": 1200.4
+ },
+ "renderMs": {
+  "mean": 55.9,
+  "p50": 52.6,
+  "p95": 89
+ },
+ "simMs": {
+  "mean": 5.1,
+  "p50": 1,
+  "p95": 24.8
+ },
+ "creaturePrepMs": {
+  "mean": 46.3,
+  "p50": 44.1,
+  "p95": 80.2
+ },
+ "creatureComposeMs": {
+  "mean": 0,
+  "p50": 0,
+  "p95": 0
+ },
+ "otherMs": {
+  "p50": 9.3,
+  "p95": 63.9
+ },
+ "visibleCreatures": {
+  "mean": 77.6,
+  "p50": 78,
+  "p95": 83
+ },
+ "movingVisible": {
+  "mean": 61.5,
+  "p50": 61,
+  "p95": 72
+ },
+ "freshSpritesPerFrame": {
+  "mean": 68.4,
+  "p50": 68,
+  "p95": 80
+ },
+ "canvasesCreatedPerSecond": 259.03,
+ "heapMB": {
+  "start": 326.9,
+  "end": 255.3
+ },
+ "drawsPerFrame": null,
+ "stalls": {
+  "over250ms": 8,
+  "over500ms": 7,
+  "secondsLost": 7.9
+ },
+ "worstFrames": [
+  {
+   "i": 4,
+   "ms": 1200.4,
+   "render": 44.9,
+   "sim": 1.9,
+   "terrainRefresh": false,
+   "heapDropMB": -8.7,
+   "canvases": 35
+  },
+  {
+   "i": 191,
+   "ms": 1120.3,
+   "render": 64.3,
+   "sim": 28.4,
+   "terrainRefresh": false,
+   "heapDropMB": 13,
+   "canvases": 1
+  },
+  {
+   "i": 357,
+   "ms": 1093.7,
+   "render": 59.9,
+   "sim": 0.1,
+   "terrainRefresh": false,
+   "heapDropMB": -6.4,
+   "canvases": 0
+  },
+  {
+   "i": 547,
+   "ms": 1093.6,
+   "render": 37.2,
+   "sim": 1.1,
+   "terrainRefresh": false,
+   "heapDropMB": -6.9,
+   "canvases": 3
+  },
+  {
+   "i": 74,
+   "ms": 1067.1,
+   "render": 39.3,
+   "sim": 1.4,
+   "terrainRefresh": false,
+   "heapDropMB": -8.7,
+   "canvases": 38
+  },
+  {
+   "i": 459,
+   "ms": 1067,
+   "render": 60.9,
+   "sim": 1.4,
+   "terrainRefresh": false,
+   "heapDropMB": 23.5,
+   "canvases": 0
+  }
+ ],
+ "saves": [
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 996.2,
+   "totalMs": 1446.4
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 855,
+   "totalMs": 1303.9
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 880.7,
+   "totalMs": 1298.2
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 874,
+   "totalMs": 1259.9
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 875,
+   "totalMs": 1222.4
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 859.6,
+   "totalMs": 1280.4
+  },
+  {
+   "reason": "lineage-milestone",
+   "syncMs": 840.7,
+   "totalMs": 1423.3
+  }
+ ],
+ "canvasSources": null,
+ "live": {
+  "paused": false,
+  "playerAlive": true,
+  "day": 129,
+  "animals": 328
+ },
+ "errors": []
+}

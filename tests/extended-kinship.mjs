@@ -11,5 +11,8 @@ const legacy=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(
 assert.equal(legacy.recovery.kinship(legacy.animals.find(a=>a.id===uncle.id),legacy.animals.find(a=>a.id===child.id)),'close','legacy genealogy can recover from retained lineage history');
 const scarce=new Simulation('KIN-SIBLING-RELAXATION',{player:false});const siblings=scarce.animals.filter(a=>a.species==='rootling').slice(0,2);scarce.animals=siblings;
 for(const a of siblings)Object.assign(a,{parentIds:[9001,9002],age:SPECIES.rootling.maturity+10,reproCooldown:0});siblings[0].sex='F';siblings[1].sex='M';placeSupportedBreedingPair(scarce,...siblings);
-assert.equal(scarce.tryMate(...siblings),true,'explicit critical sibling relaxation remains available without an unrelated mate');
+const siblingRng=scarce.rng.state,siblingEnergy=siblings.map(a=>a.energy);
+assert.equal(scarce.tryMate(...siblings),false,'low global counts do not waive sibling avoidance');
+assert.equal(scarce.rng.state,siblingRng);assert.deepEqual(siblings.map(a=>a.energy),siblingEnergy);
+assert.equal(scarce.recovery.inbreedingLoad(siblings),.18,'historical sibling ancestry retains its biological load');
 console.log('extended close ancestry, arrival rejection and persistent genealogy: PASS');

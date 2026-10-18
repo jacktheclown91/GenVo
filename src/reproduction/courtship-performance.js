@@ -126,7 +126,8 @@ export function performCourtship(sim,actor,target){
   if(!actor?.alive||!target?.alive||dist(actor,target)>COURTSHIP_PERFORMANCE.radius){actor.courtshipPerformance=null;return false;}
   if(!sim.canMatePair(actor,target,{ready:true})){actor.courtshipPerformance=null;return false;}
   const current=actor.courtshipPerformance;
-  if(current?.partnerId===target.id&&current.endsAt>=sim.tickCount){
+  // Completion uses the same one-life-update validity window as activeCourtship.
+  if(current?.partnerId===target.id&&sim.tickCount<=current.endsAt+CFG.lifeStride){
     if(sim.tickCount<current.endsAt)return false;
     actor.completedCourtship={...current};actor.courtshipPerformance=null;
     return true;

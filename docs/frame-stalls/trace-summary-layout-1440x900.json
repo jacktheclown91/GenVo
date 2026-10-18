@@ -1,0 +1,653 @@
+{
+ "label": "layout",
+ "viewport": "1440x900",
+ "seconds": 20,
+ "longMainTasks": 99,
+ "longTaskEntries": [
+  {
+   "ms": 297.8,
+   "inner": [
+    {
+     "name": "FireAnimationFrame",
+     "ms": 290,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "v8.callFunction",
+     "ms": 290,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "FunctionCall",
+     "ms": 290,
+     "fn": "frame",
+     "at": "src/main.js:217"
+    },
+    {
+     "name": "ParseHTML",
+     "ms": 0.1,
+     "fn": "",
+     "at": ""
+    }
+   ]
+  },
+  {
+   "ms": 265.1,
+   "inner": [
+    {
+     "name": "FireAnimationFrame",
+     "ms": 258.5,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "v8.callFunction",
+     "ms": 258.5,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "FunctionCall",
+     "ms": 258.4,
+     "fn": "frame",
+     "at": "src/main.js:217"
+    },
+    {
+     "name": "ParseHTML",
+     "ms": 0,
+     "fn": "",
+     "at": ""
+    }
+   ]
+  },
+  {
+   "ms": 253.1,
+   "inner": [
+    {
+     "name": "FireAnimationFrame",
+     "ms": 245.8,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "v8.callFunction",
+     "ms": 245.8,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "FunctionCall",
+     "ms": 245.7,
+     "fn": "frame",
+     "at": "src/main.js:217"
+    },
+    {
+     "name": "ParseHTML",
+     "ms": 0,
+     "fn": "",
+     "at": ""
+    }
+   ]
+  },
+  {
+   "ms": 185.8,
+   "inner": [
+    {
+     "name": "FireAnimationFrame",
+     "ms": 177.4,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "v8.callFunction",
+     "ms": 177.4,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "FunctionCall",
+     "ms": 177.3,
+     "fn": "frame",
+     "at": "src/main.js:217"
+    },
+    {
+     "name": "ParseHTML",
+     "ms": 0,
+     "fn": "",
+     "at": ""
+    }
+   ]
+  },
+  {
+   "ms": 165.9,
+   "inner": [
+    {
+     "name": "FireAnimationFrame",
+     "ms": 158.9,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "v8.callFunction",
+     "ms": 158.9,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "FunctionCall",
+     "ms": 158.8,
+     "fn": "frame",
+     "at": "src/main.js:217"
+    },
+    {
+     "name": "ParseHTML",
+     "ms": 0,
+     "fn": "",
+     "at": ""
+    }
+   ]
+  },
+  {
+   "ms": 160.6,
+   "inner": [
+    {
+     "name": "FireAnimationFrame",
+     "ms": 153.3,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "v8.callFunction",
+     "ms": 153.3,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "FunctionCall",
+     "ms": 153.2,
+     "fn": "frame",
+     "at": "src/main.js:217"
+    },
+    {
+     "name": "ParseHTML",
+     "ms": 0,
+     "fn": "",
+     "at": ""
+    }
+   ]
+  },
+  {
+   "ms": 88.3,
+   "inner": [
+    {
+     "name": "FireAnimationFrame",
+     "ms": 80.4,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "v8.callFunction",
+     "ms": 80.4,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "FunctionCall",
+     "ms": 80.3,
+     "fn": "frame",
+     "at": "src/main.js:217"
+    },
+    {
+     "name": "FireAnimationFrame",
+     "ms": 0.3,
+     "fn": "",
+     "at": ""
+    }
+   ]
+  },
+  {
+   "ms": 80.3,
+   "inner": [
+    {
+     "name": "FireAnimationFrame",
+     "ms": 71.7,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "v8.callFunction",
+     "ms": 71.7,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "FunctionCall",
+     "ms": 71.7,
+     "fn": "frame",
+     "at": "src/main.js:217"
+    },
+    {
+     "name": "ParseHTML",
+     "ms": 0.1,
+     "fn": "",
+     "at": ""
+    }
+   ]
+  },
+  {
+   "ms": 78.8,
+   "inner": [
+    {
+     "name": "FireAnimationFrame",
+     "ms": 71.9,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "v8.callFunction",
+     "ms": 71.9,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "FunctionCall",
+     "ms": 71.8,
+     "fn": "frame",
+     "at": "src/main.js:217"
+    },
+    {
+     "name": "ParseHTML",
+     "ms": 0,
+     "fn": "",
+     "at": ""
+    }
+   ]
+  },
+  {
+   "ms": 74.2,
+   "inner": [
+    {
+     "name": "FireAnimationFrame",
+     "ms": 66.6,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "v8.callFunction",
+     "ms": 66.5,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "FunctionCall",
+     "ms": 66.5,
+     "fn": "frame",
+     "at": "src/main.js:217"
+    },
+    {
+     "name": "ParseHTML",
+     "ms": 0,
+     "fn": "",
+     "at": ""
+    }
+   ]
+  },
+  {
+   "ms": 73.9,
+   "inner": [
+    {
+     "name": "FireAnimationFrame",
+     "ms": 66.4,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "v8.callFunction",
+     "ms": 66.3,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "FunctionCall",
+     "ms": 66.3,
+     "fn": "frame",
+     "at": "src/main.js:217"
+    },
+    {
+     "name": "ParseHTML",
+     "ms": 0,
+     "fn": "",
+     "at": ""
+    }
+   ]
+  },
+  {
+   "ms": 71.4,
+   "inner": [
+    {
+     "name": "FireAnimationFrame",
+     "ms": 63.6,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "v8.callFunction",
+     "ms": 63.5,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "FunctionCall",
+     "ms": 63.5,
+     "fn": "frame",
+     "at": "src/main.js:217"
+    },
+    {
+     "name": "ParseHTML",
+     "ms": 0.1,
+     "fn": "",
+     "at": ""
+    }
+   ]
+  },
+  {
+   "ms": 70.8,
+   "inner": [
+    {
+     "name": "FireAnimationFrame",
+     "ms": 63.2,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "v8.callFunction",
+     "ms": 63.1,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "FunctionCall",
+     "ms": 63.1,
+     "fn": "frame",
+     "at": "src/main.js:217"
+    },
+    {
+     "name": "ParseHTML",
+     "ms": 0,
+     "fn": "",
+     "at": ""
+    }
+   ]
+  },
+  {
+   "ms": 70.2,
+   "inner": [
+    {
+     "name": "FireAnimationFrame",
+     "ms": 62.9,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "v8.callFunction",
+     "ms": 62.9,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "FunctionCall",
+     "ms": 62.8,
+     "fn": "frame",
+     "at": "src/main.js:217"
+    },
+    {
+     "name": "ParseHTML",
+     "ms": 0,
+     "fn": "",
+     "at": ""
+    }
+   ]
+  },
+  {
+   "ms": 69.4,
+   "inner": [
+    {
+     "name": "FireAnimationFrame",
+     "ms": 62.4,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "v8.callFunction",
+     "ms": 62.4,
+     "fn": "",
+     "at": ""
+    },
+    {
+     "name": "FunctionCall",
+     "ms": 62.3,
+     "fn": "frame",
+     "at": "src/main.js:217"
+    },
+    {
+     "name": "ParseHTML",
+     "ms": 0,
+     "fn": "",
+     "at": ""
+    }
+   ]
+  }
+ ],
+ "worstMainTasks": [
+  {
+   "ms": 297.8,
+   "parts": {
+    "FunctionCall": 290,
+    "Commit": 5.7,
+    "MinorGC": 3.5,
+    "V8.GCScavenger": 3.2,
+    "GC:V8.GC_SCAVENGER": 3,
+    "GC:V8.GC_SCAVENGER_SCAVENGE": 2.9
+   }
+  },
+  {
+   "ms": 265.1,
+   "parts": {
+    "FunctionCall": 258.4,
+    "Commit": 5.8,
+    "MinorGC": 3.9,
+    "V8.GCScavenger": 3.6,
+    "GC:V8.GC_SCAVENGER": 2.7,
+    "GC:V8.GC_SCAVENGER_SCAVENGE": 2.6
+   }
+  },
+  {
+   "ms": 253.1,
+   "parts": {
+    "FunctionCall": 245.7,
+    "Commit": 6.6,
+    "MinorGC": 3.1,
+    "V8.GCScavenger": 2.9,
+    "GC:V8.GC_SCAVENGER": 2.8,
+    "GC:V8.GC_SCAVENGER_SCAVENGE": 2.7
+   }
+  },
+  {
+   "ms": 185.8,
+   "parts": {
+    "FunctionCall": 177.3,
+    "Commit": 6.6,
+    "MinorGC": 1.2,
+    "V8.GCScavenger": 1.1,
+    "UpdateLayoutTree": 1.1,
+    "GC:V8.GC_SCAVENGER": 1
+   }
+  },
+  {
+   "ms": 165.9,
+   "parts": {
+    "FunctionCall": 158.8,
+    "Commit": 6,
+    "MinorGC": 1.7,
+    "V8.GCScavenger": 1.6,
+    "GC:V8.GC_SCAVENGER": 1.5,
+    "GC:V8.GC_SCAVENGER_SCAVENGE": 1.5
+   }
+  },
+  {
+   "ms": 160.6,
+   "parts": {
+    "FunctionCall": 153.2,
+    "Commit": 6.3,
+    "MinorGC": 1.4,
+    "V8.GCScavenger": 1.3,
+    "GC:V8.GC_SCAVENGER": 1.3,
+    "GC:V8.GC_SCAVENGER_SCAVENGE": 1.2
+   }
+  },
+  {
+   "ms": 88.3,
+   "parts": {
+    "FunctionCall": 80.3,
+    "Commit": 6.3,
+    "UpdateLayoutTree": 0.7,
+    "Layout": 0.5,
+    "Paint": 0.3,
+    "PrePaint": 0.1
+   }
+  },
+  {
+   "ms": 80.3,
+   "parts": {
+    "FunctionCall": 71.7,
+    "Commit": 6.2,
+    "UpdateLayoutTree": 1.1,
+    "Paint": 0.9,
+    "Layout": 0.6,
+    "PrePaint": 0.2
+   }
+  },
+  {
+   "ms": 78.8,
+   "parts": {
+    "FunctionCall": 71.8,
+    "Commit": 5.1,
+    "UpdateLayoutTree": 0.6,
+    "Layout": 0.3,
+    "Paint": 0.2,
+    "PrePaint": 0.1
+   }
+  },
+  {
+   "ms": 74.2,
+   "parts": {
+    "FunctionCall": 66.5,
+    "Commit": 6.7,
+    "UpdateLayoutTree": 0.6,
+    "Paint": 0.2,
+    "Layout": 0.2,
+    "PrePaint": 0.1
+   }
+  },
+  {
+   "ms": 73.9,
+   "parts": {
+    "FunctionCall": 66.3,
+    "MajorGC": 12.4,
+    "V8.GCFinalizeMC": 12.4,
+    "V8.GC_MARK_COMPACTOR": 12.4,
+    "Commit": 5.9,
+    "GC:V8.GC_MC_CLEAR": 4.1
+   }
+  },
+  {
+   "ms": 71.4,
+   "parts": {
+    "FunctionCall": 63.5,
+    "Commit": 5.7,
+    "UpdateLayoutTree": 1.2,
+    "Layout": 0.5,
+    "Paint": 0.5,
+    "ParseHTML": 0.2
+   }
+  },
+  {
+   "ms": 70.8,
+   "parts": {
+    "FunctionCall": 63.1,
+    "Commit": 6.1,
+    "MinorGC": 0.8,
+    "V8.GCScavenger": 0.8,
+    "GC:V8.GC_SCAVENGER": 0.8,
+    "UpdateLayoutTree": 0.8
+   }
+  },
+  {
+   "ms": 70.2,
+   "parts": {
+    "FunctionCall": 62.8,
+    "Commit": 6.2,
+    "UpdateLayoutTree": 0.4,
+    "Paint": 0.3,
+    "Layout": 0.2,
+    "PrePaint": 0.1
+   }
+  },
+  {
+   "ms": 69.4,
+   "parts": {
+    "FunctionCall": 62.3,
+    "Commit": 6,
+    "UpdateLayoutTree": 0.5,
+    "Paint": 0.3,
+    "Layout": 0.2,
+    "PrePaint": 0.1
+   }
+  }
+ ],
+ "longGC": [
+  {
+   "name": "MajorGC",
+   "ms": 15.6
+  },
+  {
+   "name": "V8.GCFinalizeMC",
+   "ms": 15.6
+  },
+  {
+   "name": "V8.GC_MARK_COMPACTOR",
+   "ms": 15.6
+  },
+  {
+   "name": "MajorGC",
+   "ms": 12.4
+  },
+  {
+   "name": "V8.GCFinalizeMC",
+   "ms": 12.4
+  },
+  {
+   "name": "V8.GC_MARK_COMPACTOR",
+   "ms": 12.4
+  },
+  {
+   "name": "MajorGC",
+   "ms": 12.2
+  },
+  {
+   "name": "V8.GCFinalizeMC",
+   "ms": 12.1
+  },
+  {
+   "name": "V8.GC_MARK_COMPACTOR",
+   "ms": 12.1
+  },
+  {
+   "name": "MajorGC",
+   "ms": 11.9
+  }
+ ],
+ "longGraphics": []
+}

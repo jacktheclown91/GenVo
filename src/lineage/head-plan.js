@@ -1,5 +1,16 @@
 import {makePlan,validatePlan} from './body-plan.js';
 import {partDef} from './part-registry.js';
+// Shared structural ownership query. A torso-face compatibility body has an
+// implicit head unless its saved layout explicitly says those organs are torso-mounted.
+export function facialHostId(plan){return plan?.nodes?.find(n=>n.parent==='root'&&n.socket==='head')?.id||'root'}
+export function hasImplicitHead(plan){return plan?.headMode!=='torso'&&facialHostId(plan)==='root'&&!!plan?.nodes?.some(n=>n.parent==='root'&&(n.socket==='mouth'||n.socket?.startsWith('eye')))}
+// Receipts describe socket relocations, not persistent tissue/module identities.
+export function headStructureMoves(before,after){
+ const host=facialHostId(after);if(host==='root')return[];
+ const sockets=new Set(partDef(after.nodes.find(n=>n.id===host).partId).providedSockets.map(s=>s.id));
+ const tops=before.nodes.filter(n=>n.parent==='root'&&sockets.has(n.socket));
+ return before.nodes.flatMap(n=>{const top=tops.find(t=>n.id===t.id||n.id.startsWith(t.id+'/'));if(!top)return[];const next=after.nodes.find(q=>q.id===host+'/'+top.socket+n.id.slice(top.id.length));return next&&next.partId===n.partId?[{from:n.id,to:next.id,partId:n.partId,parentFrom:n.parent,parentTo:next.parent}]:[]});
+}
 // Structural editing only. Existing eye/mouth identities move intact with their descendants.
 export function attachHeadPlan(plan,partId='head-base'){
  const def=partDef(partId);if(!def?.compatibleSocketTypes.includes('head'))throw Error('Not a head part');

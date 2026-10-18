@@ -6,6 +6,17 @@ import {canHunt} from './functional-diet.js';
 // Player/founder-family behavior and active threats always stay on the full simulation cadence.
 // Ambient wandering receives deterministic micro-pauses so wildlife does not read as one
 // synchronized conveyor belt, while far-off autonomous decisions are evaluated less often.
+// Simulation consistency (Phase 3H, Milestone E): background movement strides are compensated in
+// distance, but an animal already at its food or water used to interact only on advance beats, so
+// distant wildlife ate and drank less often than identical animals near the player (measured 10-14%
+// less energy per animal-day in the far bands). Interactions at the target now resolve every beat.
+// ?lodInteraction=0 restores the old behaviour for comparison.
+export const ACTIVITY_REVIEW={continuousInteraction:true};
+export function atInteractionTarget(sim,a){
+  if(!a?.target||a.target.species)return false;
+  if(a.intent==='drink')return sim.world.isDrinkable(a.x,a.y);
+  return a.target.kind!=null&&Math.hypot(a.x-a.target.x,a.y-a.target.y)<1.1;
+}
 export class ActivityBudgetController{
   constructor(sim){this.sim=sim}
 
@@ -16,7 +27,7 @@ export class ActivityBudgetController{
     const s=SPECIES[a.species];if(!s)return true;
     if(a.playerHunt||a.playerThreat?.untilTick>this.sim.tickCount||a.familyRally?.untilTick>this.sim.tickCount)return true;
     if(a.hydration/s.maxHydration<.48||a.energy/s.maxEnergy<.52||a.health<74||a.infected)return true;
-    if(['hunt','stalk-player','hunt-windup','charge-player','escape','group-alarm','mob','drink','feed','mate','shelter'].includes(a.intent))return true;
+    if(['hunt','stalk-player','hunt-windup','charge-player','escape','refuge','group-alarm','wary','mob','drink','feed','mate','shelter'].includes(a.intent))return true;
     return false;
   }
 

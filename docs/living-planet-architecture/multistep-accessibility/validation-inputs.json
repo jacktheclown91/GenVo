@@ -1,0 +1,17 @@
+{
+  "scope": "Read-only audit artifacts under docs only. Canonical src/tools/tests code and configuration exactly match the completed403-pass fast run; no repeat broad run needed for diagnostic-only files.",
+  "gate": "docs/living-planet-architecture/optional-loss-mirror-repair/fast-gate.json",
+  "currentCodeFingerprint": "abfe354b5a485577d15c19b5ceaa1220c7c323699d87ce27c09d5bf3928d9e74",
+  "matchesGatePostRunFingerprint": true,
+  "auditSourceHashesCurrent": true,
+  "artifacts": {
+    "audit.mjs": "eccfcfd047238c824c3af041e59452ff3ff9f71939eb76df83ffaf99b60be44a",
+    "results.json": "458b4b2e08d8658f1f47a56282f2d0994005c115beff27ae99e27ec3c9045ef2",
+    "check-pipeline.mjs": "16737bc59705b84117aa2de455682d9bc86522bee56ee59307838c78900cbefd",
+    "pipeline-check.json": "4239bab9c4baa357ef7a828c92c278e8ef36f34b0fd66b308bbd2bc5100be2c7",
+    "CATALOG-PATH-REVIEW.md": "a4640677542db1d830397dfae21aa7d3ac645bee48d4c18a91082582deb63a6d"
+  },
+  "catalogIdsMatched": 79,
+  "partWitnesses": 70,
+  "controlledPipelineSteps": 107
+}

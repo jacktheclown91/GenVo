@@ -1,0 +1,471 @@
+{
+  "schema": "genvo.planet-seed-continuity/1",
+  "scope": "Eight declared current-size planetary worlds, bounded-cache eviction/order independence and 64 ordinary updates with exact save continuation each. Finite environment/resource/identity checks, no population survival target. Not a mature performance or 100-day ecology trial.",
+  "sourceHashes": {
+    "src/world/planet-geography.js": "497d4a62bf4f02f46a2a5fbca5242a2f758f2ede9b99526010293b07a9669a70",
+    "src/world/planet-world.js": "317b567298daf382ce28089dd8b15b73c019d038901b891ccda1959485d0cde6",
+    "src/world/world.js": "30d86f36416a367f0fa5df5986e3e8c06a3f931de79f782fe39994822e4cb5d9",
+    "src/persistence/save-manager.js": "be38d7121a644ecb569441c094d3ae01063b913d9ea468077036c9dbe2bc72ec"
+  },
+  "seeds": [
+    "B0-CONTINUITY-000",
+    "B0-CONTINUITY-001",
+    "B0-CONTINUITY-002",
+    "B0-CONTINUITY-003",
+    "B0-CONTINUITY-004",
+    "B0-CONTINUITY-005",
+    "B0-CONTINUITY-006",
+    "B0-CONTINUITY-007"
+  ],
+  "allPassed": true,
+  "rows": [
+    {
+      "seed": "B0-CONTINUITY-000",
+      "staticHash": "5fdc03acfd51fe068449283ce780414bbfe64c3e93d40639f9ed2f4c7662d660",
+      "descriptor": {
+        "schema": 1,
+        "generator": "planetary/1",
+        "planetId": "planet:B0-CONTINUITY-000",
+        "seed": "B0-CONTINUITY-000",
+        "coordinateUnits": "terrain-tiles",
+        "equatorialCircumferenceTiles": 1048576,
+        "macroWidth": 512,
+        "macroHeight": 256,
+        "pageSizeTiles": 64,
+        "projection": "regional-equirectangular/1",
+        "anchor": {
+          "latitude": 0.626247656654313,
+          "longitude": -0.0004733150085347338
+        },
+        "landingEdge": 39679
+      },
+      "updates": 64,
+      "dailyChecks": 1,
+      "day": 2,
+      "initialPopulation": 184,
+      "finalPopulation": 184,
+      "waterTiles": 570,
+      "integrity": {
+        "day": 2,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 6,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 2,
+          "genvo": 24
+        },
+        "births": 0,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 11061.10862237215,
+          "bramble": 2211.7966077029705,
+          "marshroot": 281.7590653076768,
+          "rotcap": 866.3776790834963,
+          "thistlepod": 1543.9120458364487,
+          "algae": 130.82700867950916,
+          "duckweed": 55.207435980439186,
+          "waterweed": 102.30698826909065,
+          "larvae": 12.875249525532126,
+          "fry": 2.5770632973872125,
+          "carrion": 0
+        }
+      },
+      "exactResume": true
+    },
+    {
+      "seed": "B0-CONTINUITY-001",
+      "staticHash": "654fdc6f1f9c07fa47b2b27458066e815592cdd17f459e8e4d44e1a42a87d464",
+      "descriptor": {
+        "schema": 1,
+        "generator": "planetary/1",
+        "planetId": "planet:B0-CONTINUITY-001",
+        "seed": "B0-CONTINUITY-001",
+        "coordinateUnits": "terrain-tiles",
+        "equatorialCircumferenceTiles": 1048576,
+        "macroWidth": 512,
+        "macroHeight": 256,
+        "pageSizeTiles": 64,
+        "projection": "regional-equirectangular/1",
+        "anchor": {
+          "latitude": 0.8225971975036751,
+          "longitude": -0.0864666223947168
+        },
+        "landingEdge": 30968
+      },
+      "updates": 64,
+      "dailyChecks": 1,
+      "day": 2,
+      "initialPopulation": 185,
+      "finalPopulation": 185,
+      "waterTiles": 614,
+      "integrity": {
+        "day": 2,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 7,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 2,
+          "genvo": 24
+        },
+        "births": 0,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12792.93029898405,
+          "bramble": 2317.8828168958426,
+          "marshroot": 1417.3538171723485,
+          "rotcap": 864.7761991433799,
+          "thistlepod": 1317.3455164656043,
+          "algae": 158.38238555192947,
+          "duckweed": 60.775837540626526,
+          "waterweed": 115.61862510442734,
+          "larvae": 15.486497638747096,
+          "fry": 3.09861271455884,
+          "carrion": 0
+        }
+      },
+      "exactResume": true
+    },
+    {
+      "seed": "B0-CONTINUITY-002",
+      "staticHash": "7e823be62a2045bd4271d4cc902aef64929f382d141992ec8bca56ea4d5409dd",
+      "descriptor": {
+        "schema": 1,
+        "generator": "planetary/1",
+        "planetId": "planet:B0-CONTINUITY-002",
+        "seed": "B0-CONTINUITY-002",
+        "coordinateUnits": "terrain-tiles",
+        "equatorialCircumferenceTiles": 1048576,
+        "macroWidth": 512,
+        "macroHeight": 256,
+        "pageSizeTiles": 64,
+        "projection": "regional-equirectangular/1",
+        "anchor": {
+          "latitude": 0.626247656654313,
+          "longitude": -0.08637623913013079
+        },
+        "landingEdge": 39673
+      },
+      "updates": 64,
+      "dailyChecks": 1,
+      "day": 2,
+      "initialPopulation": 184,
+      "finalPopulation": 184,
+      "waterTiles": 548,
+      "integrity": {
+        "day": 2,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 6,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 2,
+          "genvo": 24
+        },
+        "births": 0,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 11952.182143330574,
+          "bramble": 2311.2734718173742,
+          "marshroot": 318.92949183285236,
+          "rotcap": 869.9291748255491,
+          "thistlepod": 1560.5888886861503,
+          "algae": 135.25157187879086,
+          "duckweed": 57.274388551712036,
+          "waterweed": 104.54015809297562,
+          "larvae": 13.294924544170499,
+          "fry": 2.660191539209336,
+          "carrion": 0
+        }
+      },
+      "exactResume": true
+    },
+    {
+      "seed": "B0-CONTINUITY-003",
+      "staticHash": "6c1c014b6523d7c38c47d104cb3843697f10ca70c9c94c543c06b0dbee7adaae",
+      "descriptor": {
+        "schema": 1,
+        "generator": "planetary/1",
+        "planetId": "planet:B0-CONTINUITY-003",
+        "seed": "B0-CONTINUITY-003",
+        "coordinateUnits": "terrain-tiles",
+        "equatorialCircumferenceTiles": 1048576,
+        "macroWidth": 512,
+        "macroHeight": 256,
+        "pageSizeTiles": 64,
+        "projection": "regional-equirectangular/1",
+        "anchor": {
+          "latitude": 0.613975810351228,
+          "longitude": 0.024074507239261037
+        },
+        "landingEdge": 40193
+      },
+      "updates": 64,
+      "dailyChecks": 1,
+      "day": 2,
+      "initialPopulation": 181,
+      "finalPopulation": 181,
+      "waterTiles": 656,
+      "integrity": {
+        "day": 2,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 5,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 0,
+          "genvo": 24
+        },
+        "births": 0,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 11455.361725568771,
+          "bramble": 2260.2736542224884,
+          "marshroot": 352.41510882228613,
+          "rotcap": 868.5981523077935,
+          "thistlepod": 1512.9213203154504,
+          "algae": 155.42560178041458,
+          "duckweed": 61.357145830988884,
+          "waterweed": 114.1560922563076,
+          "larvae": 15.284939348697662,
+          "fry": 3.0643858835101128,
+          "carrion": 0
+        }
+      },
+      "exactResume": true
+    },
+    {
+      "seed": "B0-CONTINUITY-004",
+      "staticHash": "1b0ea6d84e934f53930544893d2245a64213d27f7b42eb6e7dfd225784e3adb7",
+      "descriptor": {
+        "schema": 1,
+        "generator": "planetary/1",
+        "planetId": "planet:B0-CONTINUITY-004",
+        "seed": "B0-CONTINUITY-004",
+        "coordinateUnits": "terrain-tiles",
+        "equatorialCircumferenceTiles": 1048576,
+        "macroWidth": 512,
+        "macroHeight": 256,
+        "pageSizeTiles": 64,
+        "projection": "regional-equirectangular/1",
+        "anchor": {
+          "latitude": 0.6017039640481427,
+          "longitude": -0.00046519661462185777
+        },
+        "landingEdge": 40703
+      },
+      "updates": 64,
+      "dailyChecks": 1,
+      "day": 2,
+      "initialPopulation": 182,
+      "finalPopulation": 181,
+      "waterTiles": 650,
+      "integrity": {
+        "day": 2,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 3,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 2,
+          "genvo": 24
+        },
+        "births": 0,
+        "deaths": 1,
+        "resources": {
+          "sunmoss": 11763.839346021414,
+          "bramble": 2269.6611168682575,
+          "marshroot": 453.43438531830907,
+          "rotcap": 863.6527292057872,
+          "thistlepod": 1467.7777910642326,
+          "algae": 157.48499277234077,
+          "duckweed": 64.23811802268028,
+          "waterweed": 119.45943984389305,
+          "larvae": 15.452356582507491,
+          "fry": 3.0911596254445612,
+          "carrion": 0
+        }
+      },
+      "exactResume": true
+    },
+    {
+      "seed": "B0-CONTINUITY-005",
+      "staticHash": "da64bb7cd534906c0d2684d8fe8d7789878d2e283e392f7e817c67391c28550f",
+      "descriptor": {
+        "schema": 1,
+        "generator": "planetary/1",
+        "planetId": "planet:B0-CONTINUITY-005",
+        "seed": "B0-CONTINUITY-005",
+        "coordinateUnits": "terrain-tiles",
+        "equatorialCircumferenceTiles": 1048576,
+        "macroWidth": 512,
+        "macroHeight": 256,
+        "pageSizeTiles": 64,
+        "projection": "regional-equirectangular/1",
+        "anchor": {
+          "latitude": 0.6201117335027705,
+          "longitude": 0.07315984554895062
+        },
+        "landingEdge": 39686
+      },
+      "updates": 64,
+      "dailyChecks": 1,
+      "day": 2,
+      "initialPopulation": 185,
+      "finalPopulation": 185,
+      "waterTiles": 512,
+      "integrity": {
+        "day": 2,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 5,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 4,
+          "genvo": 24
+        },
+        "births": 0,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 11155.409070461988,
+          "bramble": 2255.491678506136,
+          "marshroot": 230.31206063181162,
+          "rotcap": 869.3136287778616,
+          "thistlepod": 1538.927310243249,
+          "algae": 115.73146595060825,
+          "duckweed": 45.11380963027477,
+          "waterweed": 88.98386752605438,
+          "larvae": 11.633297760039568,
+          "fry": 2.3338582082651556,
+          "carrion": 0
+        }
+      },
+      "exactResume": true
+    },
+    {
+      "seed": "B0-CONTINUITY-006",
+      "staticHash": "f319fbe5767e0a457aa311a4425f5658f29c2176bc80cb8b83f65451c95f066a",
+      "descriptor": {
+        "schema": 1,
+        "generator": "planetary/1",
+        "planetId": "planet:B0-CONTINUITY-006",
+        "seed": "B0-CONTINUITY-006",
+        "coordinateUnits": "terrain-tiles",
+        "equatorialCircumferenceTiles": 1048576,
+        "macroWidth": 512,
+        "macroHeight": 256,
+        "pageSizeTiles": 64,
+        "projection": "regional-equirectangular/1",
+        "anchor": {
+          "latitude": 0.6323835798058556,
+          "longitude": 0.0731556435995166
+        },
+        "landingEdge": 39173
+      },
+      "updates": 64,
+      "dailyChecks": 1,
+      "day": 2,
+      "initialPopulation": 184,
+      "finalPopulation": 184,
+      "waterTiles": 512,
+      "integrity": {
+        "day": 2,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 5,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 3,
+          "genvo": 24
+        },
+        "births": 0,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 11964.699349552393,
+          "bramble": 2288.0318307727575,
+          "marshroot": 402.0801551491022,
+          "rotcap": 870.9436596296728,
+          "thistlepod": 1511.357765790075,
+          "algae": 120.24874322116375,
+          "duckweed": 48.214054957032204,
+          "waterweed": 92.20815309882164,
+          "larvae": 12.263275047764182,
+          "fry": 2.445546549744904,
+          "carrion": 0
+        }
+      },
+      "exactResume": true
+    },
+    {
+      "seed": "B0-CONTINUITY-007",
+      "staticHash": "fc39018844b068d87e4b30b3fcd7a6612bd34f28f51b4666c0bffe1c600eb9a6",
+      "descriptor": {
+        "schema": 1,
+        "generator": "planetary/1",
+        "planetId": "planet:B0-CONTINUITY-007",
+        "seed": "B0-CONTINUITY-007",
+        "coordinateUnits": "terrain-tiles",
+        "equatorialCircumferenceTiles": 1048576,
+        "macroWidth": 512,
+        "macroHeight": 256,
+        "pageSizeTiles": 64,
+        "projection": "regional-equirectangular/1",
+        "anchor": {
+          "latitude": 0.6876068881697387,
+          "longitude": -0.39319534401648143
+        },
+        "landingEdge": 37087
+      },
+      "updates": 64,
+      "dailyChecks": 1,
+      "day": 2,
+      "initialPopulation": 185,
+      "finalPopulation": 183,
+      "waterTiles": 536,
+      "integrity": {
+        "day": 2,
+        "population": {
+          "mosskip": 63,
+          "rootling": 32,
+          "needlejaw": 7,
+          "rillsifter": 18,
+          "mirelick": 19,
+          "podshell": 18,
+          "bankjaw": 2,
+          "genvo": 24
+        },
+        "births": 0,
+        "deaths": 2,
+        "resources": {
+          "sunmoss": 11863.345495134592,
+          "bramble": 2320.233414143324,
+          "marshroot": 134.35685097053647,
+          "rotcap": 870.4917863048613,
+          "thistlepod": 1762.3266116790473,
+          "algae": 134.93895654380322,
+          "duckweed": 55.224547266960144,
+          "waterweed": 107.0298715531826,
+          "larvae": 13.233310364186764,
+          "fry": 2.647125892341137,
+          "carrion": 7.2514705351522935e-9
+        }
+      },
+      "exactResume": true
+    }
+  ]
+}

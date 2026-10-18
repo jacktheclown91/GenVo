@@ -1,0 +1,22 @@
+{
+  "scope": "Actual native UI save archives; raw complete state roundtrip, then normal unpause and12 real ecology updates with intermediate restore at6. No biology edits. Not a live browser frame/input performance or completed juvenile development trial.",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "checkpoint",
+      "sha256": "17d31c27dbb8e0e6c78ee1f0b95211de44e048aae323d2b39d651c1f7bab48e3",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 150,
+      "tick": 7193,
+      "playerId": 109,
+      "age": 181,
+      "parentIds": [],
+      "bodyId": "bp0-4134709b",
+      "exactRawRoundtrip": true,
+      "realUpdates": 12,
+      "intermediateSaveAfterUpdates": 6,
+      "completeStateEqual": true
+    }
+  ]
+}

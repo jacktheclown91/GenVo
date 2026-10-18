@@ -1,0 +1,12 @@
+{
+  "scope": "Only completed-scene wait in capture harness changed after broad gate; reconstruction is read-only, no source rollback.",
+  "gate": {
+    "scope": "src, tools and tests code/configuration; not a release seal",
+    "start": "0a4a82698636a7532a519c81e5d0346d84410936e89c7bcb643b666fe996e4d7",
+    "end": "0a4a82698636a7532a519c81e5d0346d84410936e89c7bcb643b666fe996e4d7",
+    "inputDrift": false
+  },
+  "current": "56cebe78f47f010fdb1f00530de53d793e447a99b169b67e1725a169eebef87c",
+  "withOnlyHarnessWaitReconstructed": "0a4a82698636a7532a519c81e5d0346d84410936e89c7bcb643b666fe996e4d7",
+  "reconstructionMatches": true
+}

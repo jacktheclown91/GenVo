@@ -1,0 +1,24 @@
+{
+  "schema": "genvo.planet-geography-proposal/1",
+  "status": "REVIEW_REQUIRED_NOT_RUNTIME_CONFIGURATION",
+  "coordinateUnits": "existing terrain tile units; no claim of metres or Earth scale",
+  "equatorialCircumferenceTiles": 1048576,
+  "macroWidth": 512,
+  "macroHeight": 256,
+  "pageSizeTiles": 64,
+  "initialDetailedExtentTiles": [
+    128,
+    128
+  ],
+  "candidateLaterExtentTiles": [
+    256,
+    256
+  ],
+  "localProjection": "equirectangular tangent approximation at saved anchor; reject unsupported polar/wrap traversal until verified",
+  "exampleAnchorDegrees": {
+    "latitude": 35,
+    "longitude": 0
+  },
+  "legacyPolicy": "No automatic reinterpretation of freshwater/1 or coastal/1 saves; descriptor absent remains legacy",
+  "worldSizeExpansionAuthorized": false
+}

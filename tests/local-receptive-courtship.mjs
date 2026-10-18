@@ -18,7 +18,7 @@ seeker.sex='M';tired.sex=healthy.sex='F';
 // This legacy physiology test isolates local availability from sexual selection.
 // Neutral inherited tastes deliberately retain its prior nearest-partner setup;
 // multi-candidate preference rankings have a separate focused contract.
-for(const a of [seeker,tired,healthy])a.matePreferences={weights:{size:0,strength:0,ornament:0,display:0,behavior:0},selectivity:.5};
+for(const a of [seeker,tired,healthy])a.matePreferences={weights:{size:0,strength:0,ornament:0,display:0,behavior:0},selectivity:.5,similarity:0};
 seeker.x=home.x;seeker.y=home.y;
 tired.x=home.x+1;tired.y=home.y;
 healthy.x=home.x+2.8;healthy.y=home.y;

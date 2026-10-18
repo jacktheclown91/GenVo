@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {PREDATION_PARITY} from '../src/gameplay/predation-parity.js';
 import {Simulation} from '../src/sim/simulation.js';
 import {CFG} from '../src/sim/config.js';
 import {SPECIES} from '../src/organisms/species.js';
@@ -25,9 +26,15 @@ const den=sim.stalkerTerritory.siteFor(hunter);assert.ok(den);assert.equal(den.o
 const pressure=sim.stalkerTerritory.pressureFor(hunter,p);assert.equal(pressure.inside,true);assert.equal(pressure.insideCore,true,'player should be inside the defended den core');
 const status=sim.stalkerTerritory.playerStatus(p);assert.equal(status.ownerId,hunter.id);assert.equal(status.insideCore,true);
 
-// A well-fed Stalker that would normally ignore prey at 95% energy can defend its den core.
-sim.rebuildSpatial();const oldRefresh=sim.carrying.shouldRefreshDecision;sim.carrying.shouldRefreshDecision=()=>true;sim.phaseDecision({});sim.carrying.shouldRefreshDecision=oldRefresh;
-assert.ok(['stalk-player','chase-player','hunt-windup','charge-player'].includes(hunter.intent),`den owner should engage an intruder while satiated, got ${hunter.intent}`);
+// Phase 3I predation parity: the den core no longer makes a well-fed Stalker hunt the player when it
+// would ignore any other prey; a hungry owner engages the intruder under the ordinary hunting rule.
+const ENGAGE=['stalk-player','chase-player','hunt-windup','charge-player'];
+sim.rebuildSpatial();const oldRefresh=sim.carrying.shouldRefreshDecision;sim.carrying.shouldRefreshDecision=()=>true;sim.phaseDecision({});
+assert.ok(!ENGAGE.includes(hunter.intent),`a satiated den owner does not hunt the player (parity), got ${hunter.intent}`);
+sim.predator.clear(hunter);hunter.x=patch.x;hunter.y=patch.y;hunter.energy=SPECIES.needlejaw.maxEnergy*.6;sim.animals=sim.animals.filter(a=>a===p||a===hunter||!(Math.hypot(a.x-hunter.x,a.y-hunter.y)<30));sim.rebuildSpatial();sim.phaseDecision({});
+assert.ok(ENGAGE.includes(hunter.intent),`a hungry den owner engages the intruder, got ${hunter.intent}`);
+PREDATION_PARITY.enabled=false;sim.predator.clear(hunter);hunter.x=patch.x;hunter.y=patch.y;hunter.energy=SPECIES.needlejaw.maxEnergy*.95;sim.rebuildSpatial();sim.phaseDecision({});PREDATION_PARITY.enabled=true;sim.carrying.shouldRefreshDecision=oldRefresh;
+assert.ok(ENGAGE.includes(hunter.intent),`?predationParity=0: den owner engages while satiated, got ${hunter.intent}`);
 
 // Away from an active hunt, well-fed adults use the den as an anchor rather than wandering indefinitely.
 sim.predator.clear(hunter);hunter.playerAversion=null;hunter.x=den.x+den.radius*1.5;hunter.y=den.y;hunter.energy=SPECIES.needlejaw.maxEnergy*.9;

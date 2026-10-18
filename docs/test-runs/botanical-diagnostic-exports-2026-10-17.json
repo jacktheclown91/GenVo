@@ -1,0 +1,134 @@
+{
+ "schema": "genvo.test-run/3",
+ "validationCode": {
+  "scope": "src, tools and tests code/configuration; not a release seal",
+  "start": "c039f480a4b507de4f44a94d1d89422c41dfb5c508e5fa2ccb1228ae6319132e",
+  "end": "c039f480a4b507de4f44a94d1d89422c41dfb5c508e5fa2ccb1228ae6319132e",
+  "inputDrift": false
+ },
+ "classificationNote": "byKind counts overlap for mixed suites; unclassified means not yet audited",
+ "mode": "fast",
+ "date": "2026-10-17T17:00:24.011Z",
+ "seconds": 1,
+ "artifacts": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\botanical-diagnostic-exports-2026-10-17.artifacts",
+ "total": 4,
+ "pass": 4,
+ "knownFail": 0,
+ "fail": 0,
+ "timeout": 0,
+ "stale": 0,
+ "deferred": 0,
+ "byKind": {
+  "biological-invariant": {
+   "pass": 1,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "mechanism": {
+   "pass": 1,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "ecological-observation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "performance": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "historical-expectation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "release-gate": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "unclassified": {
+   "pass": 3,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  }
+ },
+ "results": [
+  {
+   "name": "botanical-genetics",
+   "kinds": [
+    "unclassified"
+   ],
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\botanical-diagnostic-exports-2026-10-17.artifacts\\botanical-genetics.log"
+  },
+  {
+   "name": "botanical-populations",
+   "kinds": [
+    "unclassified"
+   ],
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\botanical-diagnostic-exports-2026-10-17.artifacts\\botanical-populations.log"
+  },
+  {
+   "name": "botanical-reproduction",
+   "kinds": [
+    "unclassified"
+   ],
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\botanical-diagnostic-exports-2026-10-17.artifacts\\botanical-reproduction.log"
+  },
+  {
+   "name": "botanical-safety",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\botanical-diagnostic-exports-2026-10-17.artifacts\\botanical-safety.log"
+  }
+ ]
+}

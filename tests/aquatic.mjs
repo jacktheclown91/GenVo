@@ -30,7 +30,7 @@ assert.ok(swim.speed>plainSwim.speed&&swim.energy<plainSwim.energy,'a dweller sw
 assert.ok(land.speed<movementProfile(plainSwimmer,w,{fromX:hop.x,fromY:hop.y,toX:hop.x,toY:hop.y}).speed,'and is slow on land');
 
 // It lives in water: in a world run it stays in or returns to water, keeps its water up and feeds there.
-{const s=new Simulation('GENVO8-AQUATIC-LIFE',{player:false});s.update(null);const h=s.animals.find(a=>a.alive&&a.species==='mosskip'&&nearestWater(s.world,a.x,a.y,10));assert.ok(h,'a Hopper lives near water');aquatic(h,'filter-mouth');
+{const s=new Simulation('GENVO8-AQUATIC-LIFE',{player:false});s.update(null);const h=s.animals.find(a=>a.alive&&a.species==='mosskip'&&nearestWater(s.world,a.x,a.y,10));assert.ok(h,'a Hopper lives near water');aquatic(h,'filter-mouth');h.age=Math.max(h.age,SPECIES.mosskip.maturity+5);// an adult's way of life is tested here; juveniles now pay for growth and are realistic prey
  // Start it ashore two tiles from water (land animals cover only a tile or so a day).
  {const wt=nearestWater(s.world,h.x,h.y,10);for(const [dx,dy] of [[2,0],[-2,0],[0,2],[0,-2],[2,2],[-2,-2]]){const x=wt.x+dx,y=wt.y+dy;if(!s.world.water[s.world.idx(x,y)]){h.x=x;h.y=y;break}}s.rebuildSpatial?.()}
  const ashore=!s.world.water[s.world.idx(h.x,h.y)];let wet=0,steps=0,reached=false;const ashoreWhy={};let bankMeals=0;const startDay=s.day;

@@ -24,10 +24,15 @@ assert.equal(groundDiet(carrier).thistlepod,undefined);
 assert.ok(canHunt(carrier),'inherited jaw grants hunting despite grazer ancestry');
 assert.ok(preyPreference(carrier,sifter)>0,'predation has no named-species gate');
 assert.ok(sim.isPredatorTo(carrier,sifter));
-assert.ok(sim.tryKill(carrier,sifter,{chanceBonus:1})||sifter.health<100,'bite reaches shared damage logic');
+// The fixture places the prey beside the predator on reachable land (it used to rely on spawn luck).
+sifter.x=carrier.x+.6;sifter.y=carrier.y;sim.rebuildSpatial();assert.ok(sim.canReach(carrier,sifter.x,sifter.y));
+// Hunt success is capped below certainty (90%); a few genuine attempts show the bite reaches the damage logic.
+{let landed=false;for(let k=0;k<10&&!landed;k++)landed=sim.tryKill(carrier,sifter,{chanceBonus:1})||sifter.health<100;assert.ok(landed,'bite reaches shared damage logic')}
 sim.playerEnabled=true;
 const behavior=sim.wildlifeRhythm.decision(carrier,{energy:1,hydration:1});
-assert.match(behavior?.intent||'',/^bank-/,'ambient behavior responds to changed jaws');
+// A land seed carrier that inherits a hunting jaw takes up hunter behaviour. It cannot swim, so it
+// prowls (shoreline routines are for hunters that can swim, creator decision 2026-10-15).
+assert.match(behavior?.intent||'',/^(scent-watch|shadow-patrol|stalker-rest)$/,'ambient behavior responds to changed jaws');
 carrier.bodyPlan=original;
 assert.equal(canHunt(carrier),false,'hunting ceases when jaw is removed');
 assert.ok(plantPreference(carrier,'thistlepod')>1,'restoring beak restores seed feeding');

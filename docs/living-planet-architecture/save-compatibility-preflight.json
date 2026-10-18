@@ -1,0 +1,29 @@
+{
+  "scope": "Read-only compatibility preflight, no implementation or trial run",
+  "cases": [
+    {
+      "name": "unchanged current physical model",
+      "status": "restored",
+      "environment": true,
+      "waterCount": 3271
+    },
+    {
+      "name": "changed mask after existing rebuild calls",
+      "status": "rejected",
+      "reason": "Environment water topology mismatch."
+    },
+    {
+      "name": "environment present but saved mask absent",
+      "status": "rejected",
+      "reason": "Environment water topology mismatch."
+    },
+    {
+      "name": "saved mask present without environment",
+      "status": "restored",
+      "environment": false,
+      "waterCount": 3393
+    }
+  ],
+  "addedWaterCells": 122,
+  "missingDepthCells": 122
+}

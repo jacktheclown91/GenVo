@@ -15,9 +15,14 @@ function arena(seed,{temperament=1,distance=6,cover=null}={}){
   assert.ok(spot,'test arena found');p.x=spot.x;p.y=spot.y;
   for(let y=-10;y<=10;y++)for(let x=-14;x<=22;x++){const i=w.idx(spot.x+x,spot.y+y);for(const k of Object.keys(w.plants))w.plants[k][i]=Math.min(w.plants[k][i],.08)}
   if(cover)for(let y=-2;y<=2;y++)for(let x=-2;x<=2;x++)w.plants.bramble[w.idx(spot.x+cover.x+x,spot.y+cover.y+y)]=.8;
-  for(const a of sim.animals)if(a.alive&&a.id!==p.id&&Math.hypot(a.x-p.x,a.y-p.y)<40){a.x=a.species==='genvo'?6:4;a.y=a.species==='genvo'?6:4}
+  // Remove bystanders near the arena (Phase 3I: relocating them to a corner could leave them inside the
+  // hunter's range, where under predation parity a hungry hunter may rightly prefer them to the player).
+  {const keep=sim.animals.find(a=>a.species==='needlejaw'&&a.alive);sim.animals=sim.animals.filter(a=>a.id===p.id||a===keep||!(a.alive&&Math.hypot(a.x-p.x,a.y-p.y)<60))}
   const h=sim.animals.find(a=>a.species==='needlejaw'&&a.alive);
   h.x=p.x-distance;h.y=p.y;h.energy=60;h.health=100;h.genes.motion=1;h.genes.senses=1;h.genes.temperament=temperament;p.genes.motion=1;p.health=100;p.energy=110;p.dir=6;
+  // The arena stands in for a player among its kin. Since Phase 3J the rare-prey capture penalty is off by
+  // default (?rarityReview=0 restores it); the local GenVo count is stubbed so the test holds under either.
+  {const lc=sim.localCount.bind(sim);sim.localCount=(a,species,r)=>species==='genvo'?Math.max(CFG.wildHunt.scarceCount,lc(a,species,r)):lc(a,species,r)}
   sim.rebuildSpatial();return{sim,p,h};
 }
 function run({sim,p,h},bot,seconds=25){
@@ -118,10 +123,17 @@ const committed=s=>s?.phase==='windup'||s?.phase==='charge';
   assert.equal(fight.ended,'gave-up');assert.equal(fight.outcome,'driven-off','fight: punishing openings drives the Stalker off');assert.equal(fight.hits,0);
   const brace=run(arena('GENVO8-V128-BRACE-WIN',{temperament:1.08}),({p,h,status})=>{const d=Math.hypot(h.x-p.x,h.y-p.y);if(status?.phase==='recover'&&d<1.6)return{input:{},attack:true};return{input:{brace:committed(status)}}});
   assert.equal(brace.ended,'gave-up','brace: standing ground against a fast Rusher works');assert.equal(brace.outcome,'driven-off');assert.ok(brace.health>70,'braced hits are survivable');
-  const shiftE=run(arena('GENVO8-V128-SHIFTE',{temperament:1.08}),({p,h,t})=>({input:{...toward(p,h),sprint:true},interact:Math.floor(t*8)%2===0}));
-  assert.equal(shiftE.ended,'dead','Shift+E no longer fights: sprinting in and pressing E gets the GenVo8 killed');
-  const still=run(arena('GENVO8-V128-STILL',{temperament:1}),()=>({input:{}}));
-  assert.equal(still.ended,'dead','doing nothing is not a strategy');
+  const shiftArena=arena('GENVO8-V128-SHIFTE',{temperament:1.08}),stalkerHealth=shiftArena.h.health;
+  const shiftE=run(shiftArena,({p,h,t})=>({input:{...toward(p,h),sprint:true},interact:Math.floor(t*8)%2===0}));
+  // The rule, not one run's outcome: E never strikes. (Pursuit stamina may now make the Stalker give up.)
+  assert.equal(shiftArena.h.health,stalkerHealth,'Shift+E no longer fights: pressing E never wounds the Stalker');
+  assert.ok(shiftE.hits>0&&shiftE.outcome!=='driven-off','pressing E in danger neither protects nor drives the Stalker off: '+JSON.stringify(shiftE));
+  // Doing nothing is not a strategy. Under parity a contact bite lands about 39% of the time and a hunter
+  // may tire and break off, so one arena can survive by luck; across independent arenas standing still is
+  // bitten repeatedly and often killed, unlike the responses tested above (Phase 3J: no single-seed outcome).
+  const stills=['A','B','C','D','E','F'].map(k=>run(arena('GENVO8-V128-STILL-'+k,{temperament:1}),()=>({input:{}}),25));
+  const bitten=stills.filter(r=>r.hits>0||r.ended==='dead').length,dead=stills.filter(r=>r.ended==='dead').length;
+  assert.ok(bitten>=4&&dead>=1,'doing nothing is not a strategy: '+JSON.stringify(stills.map(r=>r.ended+':'+r.hits)));
 }
 
 // Cover: slipping quietly into dense plants breaks sight; sprinting in does not.

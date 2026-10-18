@@ -1,15 +1,17 @@
 import assert from 'node:assert/strict';
+import {PHYSIOLOGY_PARITY} from '../src/ecology/physiology.js';
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
 
 const sim=new Simulation('GENVO8-RETALIATION',{player:true});
 const p=sim.player(),hunter=sim.animals.find(a=>a.alive&&a.species==='needlejaw');assert.ok(p&&hunter);
 hunter.genes.temperament=1.08;hunter.x=p.x+.65;hunter.y=p.y;hunter.health=100;hunter.energy=SPECIES.needlejaw.maxEnergy*.85;
-assert.equal(sim.isOpeningProtected(p),true,'opening begins protected');
+// Phase 3J: no opening immunity, so there is no safe start for an attack to end.
+assert.equal(sim.isOpeningProtected(p),false,'no hidden opening immunity');
 const oldChance=sim.rng.chance;sim.rng.chance=()=>true;
 const strike=sim.playerStrike(hunter);
 assert.equal(sim.isOpeningProtected(p),false,'attacking a Stalker deliberately ends opening safety');
-assert.equal(strike.engaged,true);assert.match(strike.message,/safe start ended/i);
+assert.equal(strike.engaged,true);assert.doesNotMatch(strike.message,/safe start ended/i);
 assert.equal(hunter.playerHunt?.phase,'windup','attacked Stalker immediately telegraphs retaliation');
 
 hunter.playerHunt.untilTick=sim.tickCount;sim.rebuildSpatial();sim.phaseDecision({});
@@ -22,6 +24,5 @@ const contact=new Simulation('GENVO8-CONTACT-DANGER',{player:true});const cp=con
 ch.x=cp.x+1.42;ch.y=cp.y;const before={x:cp.x,y:cp.y};
 contact.playerControlStep({right:true},32);
 assert.ok(cp.x>before.x,'player moved toward the nearby Stalker');
-assert.equal(contact.isOpeningProtected(cp),false,'walking into combat range also ends tutorial safety instead of allowing harmless enemy collisions');
-assert.equal(contact.openingGraceReason,'approached stalker');
+assert.equal(contact.isOpeningProtected(cp),false,'no tutorial safety allows harmless enemy collisions (Phase 3J: there is no opening immunity at all)');
 console.log('Stalker retaliation after player aggression/contact: PASS');

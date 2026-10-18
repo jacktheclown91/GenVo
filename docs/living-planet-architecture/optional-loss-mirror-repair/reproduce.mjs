@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {founderPlan} from '../../../src/lineage/body-inheritance.js';
+import {makePlan,validatePlan} from '../../../src/lineage/body-plan.js';
+import {optionalLossChoices} from '../../../src/lineage/optional-loss.js';
+const plan=makePlan([...founderPlan().nodes.map(n=>({partId:n.parent?n.partId:'soft-torso',parent:n.parent,socket:n.socket})),{partId:'armor-plate',parent:'root',socket:'flank.left'},{partId:'storage-sac',parent:'root',socket:'flank.left'},{partId:'storage-sac',parent:'root',socket:'flank.right'}]);
+assert.ok(validatePlan(plan).ok);
+const choices=optionalLossChoices(plan).filter(c=>c.removed.some(n=>n.socket?.startsWith('flank')));
+const report={scope:'Controlled valid asymmetric multi-occupant fixture, not ordinary birth or evolutionary frequency.',nodes:plan.nodes,choices:choices.map(c=>({targets:c.targets,removed:c.removed})),mixedPartPairs:choices.filter(c=>new Set(c.removed.map(n=>n.partId)).size>1).length,unpairedSharedStorage:choices.filter(c=>c.removed.filter(n=>n.partId==='storage-sac').length===1).length};
+fs.writeFileSync(process.argv[2],JSON.stringify(report,null,2));
+console.log(JSON.stringify(report));

@@ -1,0 +1,235 @@
+{
+ "schema": "genvo.test-run/3",
+ "validationCode": {
+  "scope": "src, tools and tests code/configuration; not a release seal",
+  "start": "9466e27ea4362698232342bec50097e6aacc84857c32894f31a118e64084de4e",
+  "end": "9466e27ea4362698232342bec50097e6aacc84857c32894f31a118e64084de4e",
+  "inputDrift": false
+ },
+ "classificationNote": "byKind counts overlap for mixed suites; unclassified means not yet audited",
+ "mode": "fast",
+ "date": "2026-10-17T21:21:54.401Z",
+ "seconds": 14,
+ "artifacts": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\topography-soil-focused-2026-10-17.artifacts",
+ "total": 8,
+ "pass": 7,
+ "knownFail": 0,
+ "fail": 0,
+ "timeout": 0,
+ "stale": 0,
+ "deferred": 1,
+ "byKind": {
+  "biological-invariant": {
+   "pass": 2,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "mechanism": {
+   "pass": 2,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 1
+  },
+  "ecological-observation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "performance": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 1
+  },
+  "historical-expectation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "release-gate": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "unclassified": {
+   "pass": 5,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  }
+ },
+ "byFailureKind": {
+  "biological-invariant": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "mechanism": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "ecological-observation": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "performance": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "historical-expectation": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "release-gate": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "unclassified": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  }
+ },
+ "results": [
+  {
+   "name": "autonomous-soil-engineering",
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "disturbed-soil-germination",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\topography-soil-focused-2026-10-17.artifacts\\disturbed-soil-germination.log"
+  },
+  {
+   "name": "regional-soil-history",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\topography-soil-focused-2026-10-17.artifacts\\regional-soil-history.log"
+  },
+  {
+   "name": "soil-disturbance",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\topography-soil-focused-2026-10-17.artifacts\\soil-disturbance.log"
+  },
+  {
+   "name": "soil-disturbance-establishment",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\topography-soil-focused-2026-10-17.artifacts\\soil-disturbance-establishment.log"
+  },
+  {
+   "name": "soil-engineering-pilot",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 7.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\topography-soil-focused-2026-10-17.artifacts\\soil-engineering-pilot.log"
+  },
+  {
+   "name": "soil-water",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\topography-soil-focused-2026-10-17.artifacts\\soil-water.log"
+  },
+  {
+   "name": "weather-soil-resume",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 12.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\topography-soil-focused-2026-10-17.artifacts\\weather-soil-resume.log"
+  }
+ ]
+}

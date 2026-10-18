@@ -1,0 +1,225 @@
+{
+ "schema": "genvo.review-artifacts/1",
+ "date": "2026-10-15",
+ "store": "../genvo-review-artifacts/2026-10-15",
+ "note": "Full recordings live outside the repository; verify with sha256 before review.",
+ "files": [
+  {
+   "path": "docs/anatomy-locomotion/page@48be1362e721bc5c59015ac4a146f0c2.webm",
+   "sha256": "7bffea30f86b73cf20807f7414e7156da83aacf23b93a8e91e49db4013d7a4da",
+   "bytes": 6387518,
+   "capturedBy": "tools/capture-anatomy-locomotion.cjs"
+  },
+  {
+   "path": "docs/gait-cadence-comparison/heavy-stride1_5x.webm",
+   "sha256": "a7ca3365e02400702bd54d418f9c678c937d9d69fc6faecfd520df21e142fd27",
+   "bytes": 720660,
+   "capturedBy": "tools/capture-gait-cadence-comparison.cjs"
+  },
+  {
+   "path": "docs/gait-cadence-comparison/heavy-stride1x.webm",
+   "sha256": "a9d9a799f1a43f83d9cbd04e0812de04444841efb3e71eb268d9b9ba7a63df82",
+   "bytes": 753549,
+   "capturedBy": "tools/capture-gait-cadence-comparison.cjs"
+  },
+  {
+   "path": "docs/gait-cadence-comparison/heavy-stride2x.webm",
+   "sha256": "3079828c7afedf0a18232b1ba1bdc09a2bc3ac903ef0979304b6fae480a3e70f",
+   "bytes": 783392,
+   "capturedBy": "tools/capture-gait-cadence-comparison.cjs"
+  },
+  {
+   "path": "docs/gait-cadence-comparison/runner-stride1_5x.webm",
+   "sha256": "591139836701252db1fcccb4ef20ccebb622b482ff07a494ad4f6232f5d16239",
+   "bytes": 768294,
+   "capturedBy": "tools/capture-gait-cadence-comparison.cjs"
+  },
+  {
+   "path": "docs/gait-cadence-comparison/runner-stride1x.webm",
+   "sha256": "d33375f6db4d055eace50f2bc28831697622f7d52080104b8ac289e919d7ae77",
+   "bytes": 619750,
+   "capturedBy": "tools/capture-gait-cadence-comparison.cjs"
+  },
+  {
+   "path": "docs/gait-cadence-comparison/runner-stride2x.webm",
+   "sha256": "6f704a4c189f441c0c265470a4292e586732158cdbc0c9aeacb8c14a89253eb7",
+   "bytes": 720724,
+   "capturedBy": "tools/capture-gait-cadence-comparison.cjs"
+  },
+  {
+   "path": "docs/gait-cadence-comparison/walker-stride1_5x.webm",
+   "sha256": "49b52e1165a4700a7dab33f101607f4cc7935892feadc9adfe77f7118cdc2f88",
+   "bytes": 775458,
+   "capturedBy": "tools/capture-gait-cadence-comparison.cjs"
+  },
+  {
+   "path": "docs/gait-cadence-comparison/walker-stride1x.webm",
+   "sha256": "8ceb8e6f1814f1e7818ed5f97857b3510ac59451d6a5ca6f5418b4fd35e60082",
+   "bytes": 605539,
+   "capturedBy": "tools/capture-gait-cadence-comparison.cjs"
+  },
+  {
+   "path": "docs/gait-cadence-comparison/walker-stride2x.webm",
+   "sha256": "1f05f0def15fd117026f46bd92ff2932cec71c41a52e3152d4c8ef6a170613b7",
+   "bytes": 721970,
+   "capturedBy": "tools/capture-gait-cadence-comparison.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/1440x900/braced-charge.webm",
+   "sha256": "fdf175251da3c2b8fd79a0c60307351023b531d6ef850bb3c6a04aa170471c62",
+   "bytes": 411753,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/1440x900/club-tail-repel.webm",
+   "sha256": "8960bfb61dacdaa21ede02c7fcefbca2380fda6b1d33c8381edde5bcb7837378",
+   "bytes": 395720,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/1440x900/gait-heavy.webm",
+   "sha256": "4789f39307164a7fc241bd2f3fa91d498fa0f958bf687520bc35299f7aec5b7f",
+   "bytes": 1005395,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/1440x900/gait-runner.webm",
+   "sha256": "70e43d69fe3e2d8135ccc4ce7ca3ec6edff2a967ca4588692bd9686936a1905d",
+   "bytes": 1063058,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/1440x900/gait-spring.webm",
+   "sha256": "0cab76b3323f05901e8d648cf5977494e19360aed9ff97db8c54513bff738bc2",
+   "bytes": 1024174,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/1440x900/gait-walker.webm",
+   "sha256": "9c59d332822e380b0b46f02ab83295ce2c23fc45bb30aaf762fac35cb43666c5",
+   "bytes": 900483,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/1440x900/gait-webbed.webm",
+   "sha256": "2e38d859e5a3bdfd9f7b0cd098ca741d70d6275389a38b2097d7f3e6449446ff",
+   "bytes": 1071288,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/1440x900/natural-session.webm",
+   "sha256": "b8a6c38b27474f42fa17fcb95c9e1635a4fe7c7ca44619ccfbd760abda95a43e",
+   "bytes": 12542525,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/1440x900/prey-bite.webm",
+   "sha256": "98750ffc23f995f5d78d9b9d5be826aabe2ba33a8e96917b809e5c27ac650bdb",
+   "bytes": 405549,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/1440x900/prey-dodge.webm",
+   "sha256": "5e317d3cee866200a894325d0d73b2abe798f33faaebf96c4b7e74e1000ab9b6",
+   "bytes": 674272,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/1440x900/shell-from-behind.webm",
+   "sha256": "03ec802afabc56d32ccc2106021336c89741e7cbd632dd0c325d94eedd077b19",
+   "bytes": 479662,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/1440x900/swim-paddle.webm",
+   "sha256": "86fc51d74fc899ff48014f4a264f4ca4b2bfc95655242bab63b12ae9403a25a4",
+   "bytes": 999736,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/1440x900/swim-walker-blocked.webm",
+   "sha256": "685d62b79657f905a1d401deb6b64dcfb3e90d243037dfce36b99827c0c308a5",
+   "bytes": 598389,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/800x600/braced-charge.webm",
+   "sha256": "eb058a83025fc13e13d1cec6065d32d4a7b2711e955ce2bcbde91ee107492a21",
+   "bytes": 531224,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/800x600/club-tail-repel.webm",
+   "sha256": "07f3f49ee23a04163b36d64b2377631c73f0972c37528c319028e25ea63ae32e",
+   "bytes": 629387,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/800x600/gait-heavy.webm",
+   "sha256": "b6fb82c5e3e62795bceda210b554c2aa9e40b6c179b9628520b22b10b13ba2a6",
+   "bytes": 1026396,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/800x600/gait-runner.webm",
+   "sha256": "413719201ba0ac5d1eabaef299dac68867601f0d8d2e15e3643c506e5a3a07b6",
+   "bytes": 1016638,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/800x600/gait-spring.webm",
+   "sha256": "90ad92bbaf37024363c15a1e7c3c6b143e9733dcf52c02c61d125bf6f8a34bc8",
+   "bytes": 1041296,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/800x600/gait-walker.webm",
+   "sha256": "b273d94f797ec53fe16963c1321d6907f2bb3ffc96289209e35f667a896c90ec",
+   "bytes": 1112398,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/800x600/gait-webbed.webm",
+   "sha256": "21a0499a9c3ccb820d98018813bf8f4bb3d02aef8f7266e23eeffb3a2a093ad1",
+   "bytes": 1190508,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/800x600/natural-session.webm",
+   "sha256": "49b6cf648232fb2e6cc82b415a52b84577d267afd6ff439c88ec08389bd5d289",
+   "bytes": 19875726,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/800x600/prey-bite.webm",
+   "sha256": "a4964fd94e68d3c9f4aaafdea94d5203d29021a6903729caca559ee7664e59a3",
+   "bytes": 488211,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/800x600/prey-dodge.webm",
+   "sha256": "02f8f0d97916b8a7adea3bb20ef121fd806301ad81491a44775f514b794d92e7",
+   "bytes": 676714,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/800x600/shell-from-behind.webm",
+   "sha256": "5f396188268a66744714c7bca05b8545d0768f67111b7f618adff85437cf21a8",
+   "bytes": 551810,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/800x600/swim-paddle.webm",
+   "sha256": "05a64755330dbf219fab0da82157471d93d0af7c5a417814abad2a64837a7683",
+   "bytes": 943625,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  },
+  {
+   "path": "docs/integrated-gameplay/800x600/swim-walker-blocked.webm",
+   "sha256": "5e42a969f039bed342515f4e1083b2d10a3edc38424d3727975f01055370fe11",
+   "bytes": 710691,
+   "capturedBy": "tools/capture-integrated-gameplay.cjs"
+  }
+ ],
+ "totalBytes": 64223482
+}

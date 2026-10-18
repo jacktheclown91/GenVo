@@ -1,0 +1,1225 @@
+{
+  "scope": "Unmodified new world, normal keyboard exploration and existing mate-panel choice. No fixture imports, state/RNG/resource/consent edits or simulation time advance. UI-guided automation, not human play or mouse-first acceptance.",
+  "rows": [
+    {
+      "label": "opening",
+      "day": 1,
+      "tick": 31,
+      "player": {
+        "id": 109,
+        "age": 32,
+        "x": 18.5,
+        "y": 37.5,
+        "energy": 113.80902987712821,
+        "hydration": 102.34435999999998,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": null
+    },
+    {
+      "label": "attempt-1-follow-0",
+      "day": 2,
+      "tick": 51,
+      "player": {
+        "id": 109,
+        "age": 33,
+        "x": 18.720567562755914,
+        "y": 33.38673571735124,
+        "energy": 119.2242849156132,
+        "hydration": 102.19097599999996,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-1",
+      "day": 2,
+      "tick": 67,
+      "player": {
+        "id": 109,
+        "age": 33,
+        "x": 17.369681159815382,
+        "y": 29.850328691714125,
+        "energy": 118.64354037559482,
+        "hydration": 102.03647194285855,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-2",
+      "day": 2,
+      "tick": 83,
+      "player": {
+        "id": 109,
+        "age": 33,
+        "x": 14.13054130547216,
+        "y": 27.760334899715613,
+        "energy": 118.11686174177511,
+        "hydration": 101.93346923809762,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-3",
+      "day": 3,
+      "tick": 99,
+      "player": {
+        "id": 109,
+        "age": 34,
+        "x": 11.27146775582407,
+        "y": 25.206558315101088,
+        "energy": 117.53633962150447,
+        "hydration": 101.7789651809562,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-4",
+      "day": 3,
+      "tick": 116,
+      "player": {
+        "id": 109,
+        "age": 34,
+        "x": 9.917957026596655,
+        "y": 21.34299917694874,
+        "energy": 116.92989164519246,
+        "hydration": 101.62399718095622,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-5",
+      "day": 3,
+      "tick": 132,
+      "player": {
+        "id": 109,
+        "age": 34,
+        "x": 10.911885158864303,
+        "y": 17.695795251293518,
+        "energy": 116.34967421494669,
+        "hydration": 101.46902918095624,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-6",
+      "day": 4,
+      "tick": 148,
+      "player": {
+        "id": 109,
+        "age": 35,
+        "x": 14.275178942417117,
+        "y": 15.8938498975232,
+        "energy": 115.82302146485412,
+        "hydration": 101.36571718095625,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-7",
+      "day": 4,
+      "tick": 164,
+      "player": {
+        "id": 109,
+        "age": 35,
+        "x": 17.353095645399303,
+        "y": 15.221452992512804,
+        "energy": 114.97527336221167,
+        "hydration": 101.21121312381484,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": 125
+    },
+    {
+      "label": "attempt-1-follow-8",
+      "day": 4,
+      "tick": 180,
+      "player": {
+        "id": 109,
+        "age": 35,
+        "x": 17.353095645399303,
+        "y": 15.221452992512804,
+        "energy": 114.81379371779978,
+        "hydration": 101.05670906667343,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "region-end-0",
+      "day": 4,
+      "tick": 180,
+      "player": {
+        "id": 109,
+        "age": 35,
+        "x": 17.353095645399303,
+        "y": 15.221452992512804,
+        "energy": 114.81379371779978,
+        "hydration": 101.05670906667343,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "explored-0",
+      "day": 5,
+      "tick": 229,
+      "player": {
+        "id": 109,
+        "age": 36,
+        "x": 29.016155911777357,
+        "y": 15.221452992512804,
+        "energy": 119.06349971369899,
+        "hydration": 100.64693836191246,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "region-end-1",
+      "day": 6,
+      "tick": 241,
+      "player": {
+        "id": 109,
+        "age": 37,
+        "x": 29.016155911777357,
+        "y": 15.221452992512804,
+        "energy": 118.95579146961137,
+        "hydration": 100.54468236191245,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "explored-1",
+      "day": 7,
+      "tick": 290,
+      "player": {
+        "id": 109,
+        "age": 38,
+        "x": 29.016155911777357,
+        "y": 26.884513258890813,
+        "energy": 123.28799627871727,
+        "hydration": 100.13864518095623,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "region-end-2",
+      "day": 7,
+      "tick": 293,
+      "player": {
+        "id": 109,
+        "age": 38,
+        "x": 29.016155911777357,
+        "y": 26.884513258890813,
+        "energy": 123.28799627871727,
+        "hydration": 100.13864518095623,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "explored-2",
+      "day": 8,
+      "tick": 341,
+      "player": {
+        "id": 109,
+        "age": 39,
+        "x": 40.67921617815541,
+        "y": 26.884513258890813,
+        "energy": 124,
+        "hydration": 99.73384518095621,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 125,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-0",
+      "day": 8,
+      "tick": 369,
+      "player": {
+        "id": 109,
+        "age": 39,
+        "x": 44.26921129619586,
+        "y": 28.890037494370745,
+        "energy": 123.28578231463796,
+        "hydration": 99.48007194285857,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": 119,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-1",
+      "day": 9,
+      "tick": 386,
+      "player": {
+        "id": 109,
+        "age": 40,
+        "x": 48.17953421413658,
+        "y": 30.180076781438462,
+        "energy": 122.67910476702056,
+        "hydration": 99.32780799999999,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": 119,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-2",
+      "day": 9,
+      "tick": 402,
+      "player": {
+        "id": 109,
+        "age": 40,
+        "x": 51.777633275382364,
+        "y": 31.625198255109886,
+        "energy": 122.09856466474432,
+        "hydration": 99.0643317647059,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": 119,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-3",
+      "day": 9,
+      "tick": 418,
+      "player": {
+        "id": 109,
+        "age": 40,
+        "x": 55.373638017696585,
+        "y": 33.07586890029629,
+        "energy": 121.5718869172721,
+        "hydration": 98.8886809411765,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": 119,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-4",
+      "day": 10,
+      "tick": 434,
+      "player": {
+        "id": 109,
+        "age": 41,
+        "x": 58.07064157443225,
+        "y": 34.16387188418614,
+        "energy": 120.75017845975981,
+        "hydration": 98.62520470588241,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": 119,
+      "refusal": {
+        "tick": 180,
+        "reason": "first-declines",
+        "day": 4,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 125
+      }
+    },
+    {
+      "label": "attempt-2-follow-5",
+      "day": 10,
+      "tick": 451,
+      "player": {
+        "id": 109,
+        "age": 41,
+        "x": 58.07064157443225,
+        "y": 34.16387188418614,
+        "energy": 120.58867135473298,
+        "hydration": 98.31319066459085,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 450,
+        "reason": "first-declines",
+        "day": 10,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 119
+      }
+    },
+    {
+      "label": "attempt-2-follow-6",
+      "day": 10,
+      "tick": 467,
+      "player": {
+        "id": 109,
+        "age": 41,
+        "x": 58.07064157443225,
+        "y": 34.16387188418614,
+        "energy": 120.48099995138176,
+        "hydration": 98.10518130372981,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 450,
+        "reason": "first-declines",
+        "day": 10,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 119
+      }
+    },
+    {
+      "label": "region-end-3",
+      "day": 10,
+      "tick": 467,
+      "player": {
+        "id": 109,
+        "age": 41,
+        "x": 58.07064157443225,
+        "y": 34.16387188418614,
+        "energy": 120.48099995138176,
+        "hydration": 98.10518130372981,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 450,
+        "reason": "first-declines",
+        "day": 10,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 119
+      }
+    },
+    {
+      "label": "explored-3",
+      "day": 11,
+      "tick": 515,
+      "player": {
+        "id": 109,
+        "age": 42,
+        "x": 58.07064157443225,
+        "y": 22.531105280837643,
+        "energy": 124,
+        "hydration": 97.23963549773235,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 450,
+        "reason": "first-declines",
+        "day": 10,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 119
+      }
+    },
+    {
+      "label": "region-end-4",
+      "day": 12,
+      "tick": 529,
+      "player": {
+        "id": 109,
+        "age": 43,
+        "x": 58.07064157443225,
+        "y": 22.531105280837643,
+        "energy": 123.83774982070452,
+        "hydration": 96.90751643890881,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 450,
+        "reason": "first-declines",
+        "day": 10,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 119
+      }
+    },
+    {
+      "label": "explored-4",
+      "day": 13,
+      "tick": 577,
+      "player": {
+        "id": 109,
+        "age": 44,
+        "x": 46.52875596017241,
+        "y": 22.531105280837643,
+        "energy": 124,
+        "hydration": 96.07547899546465,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 450,
+        "reason": "first-declines",
+        "day": 10,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 119
+      }
+    },
+    {
+      "label": "attempt-3-follow-0",
+      "day": 13,
+      "tick": 599,
+      "player": {
+        "id": 109,
+        "age": 44,
+        "x": 47.38931449664654,
+        "y": 26.80128058336126,
+        "energy": 123.36596009672564,
+        "hydration": 95.81200276017056,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 123,
+      "courtTarget": 123,
+      "refusal": {
+        "tick": 450,
+        "reason": "first-declines",
+        "day": 10,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 119
+      }
+    },
+    {
+      "label": "attempt-3-follow-1",
+      "day": 13,
+      "tick": 616,
+      "player": {
+        "id": 109,
+        "age": 44,
+        "x": 48.23555378547594,
+        "y": 30.83136290304812,
+        "energy": 122.75812911594713,
+        "hydration": 95.54852652487646,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 123,
+      "courtTarget": 123,
+      "refusal": {
+        "tick": 450,
+        "reason": "first-declines",
+        "day": 10,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 119
+      }
+    },
+    {
+      "label": "attempt-3-follow-2",
+      "day": 14,
+      "tick": 631,
+      "player": {
+        "id": 109,
+        "age": 45,
+        "x": 48.43380873122759,
+        "y": 33.24641247346849,
+        "energy": 121.90728322708914,
+        "hydration": 95.30122955824818,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 123,
+      "courtTarget": 123,
+      "refusal": {
+        "tick": 450,
+        "reason": "first-declines",
+        "day": 10,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 119
+      }
+    },
+    {
+      "label": "attempt-3-follow-3",
+      "day": 14,
+      "tick": 647,
+      "player": {
+        "id": 109,
+        "age": 45,
+        "x": 48.43380873122759,
+        "y": 33.24641247346849,
+        "energy": 121.79841515536883,
+        "hydration": 95.1579372720504,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 123,
+      "courtTarget": 123,
+      "refusal": {
+        "tick": 450,
+        "reason": "first-declines",
+        "day": 10,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 119
+      }
+    },
+    {
+      "label": "attempt-3-follow-4",
+      "day": 14,
+      "tick": 664,
+      "player": {
+        "id": 109,
+        "age": 45,
+        "x": 48.43380873122759,
+        "y": 33.24641247346849,
+        "energy": 121.63511304778837,
+        "hydration": 94.94299884275374,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 123,
+      "courtTarget": 123,
+      "refusal": {
+        "tick": 450,
+        "reason": "first-declines",
+        "day": 10,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 119
+      }
+    },
+    {
+      "label": "attempt-3-follow-5",
+      "day": 15,
+      "tick": 679,
+      "player": {
+        "id": 109,
+        "age": 46,
+        "x": 48.43380873122759,
+        "y": 33.24641247346849,
+        "energy": 121.47168050786512,
+        "hydration": 94.73476208596772,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 123,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 666,
+        "reason": "first-declines",
+        "day": 14,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 123
+      }
+    },
+    {
+      "label": "attempt-3-follow-6",
+      "day": 15,
+      "tick": 695,
+      "player": {
+        "id": 109,
+        "age": 46,
+        "x": 48.43380873122759,
+        "y": 33.24641247346849,
+        "energy": 121.36268200380202,
+        "hydration": 94.60487314479123,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 123,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 666,
+        "reason": "first-declines",
+        "day": 14,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 123
+      }
+    },
+    {
+      "label": "region-end-5",
+      "day": 15,
+      "tick": 695,
+      "player": {
+        "id": 109,
+        "age": 46,
+        "x": 48.43380873122759,
+        "y": 33.24641247346849,
+        "energy": 121.36268200380202,
+        "hydration": 94.60487314479123,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 123,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 666,
+        "reason": "first-declines",
+        "day": 14,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 123
+      }
+    },
+    {
+      "label": "explored-5",
+      "day": 16,
+      "tick": 743,
+      "player": {
+        "id": 109,
+        "age": 47,
+        "x": 48.43380873122759,
+        "y": 44.667123435610115,
+        "energy": 124,
+        "hydration": 94.06521236255334,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 666,
+        "reason": "first-declines",
+        "day": 14,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 123
+      }
+    },
+    {
+      "label": "birth-or-final",
+      "day": 16,
+      "tick": 743,
+      "player": {
+        "id": 109,
+        "age": 47,
+        "x": 48.43380873122759,
+        "y": 44.667123435610115,
+        "energy": 124,
+        "hydration": 94.06521236255334,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 666,
+        "reason": "first-declines",
+        "day": 14,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 123
+      }
+    },
+    {
+      "label": "native-continue",
+      "day": 16,
+      "tick": 745,
+      "player": {
+        "id": 109,
+        "age": 47,
+        "x": 48.43380873122759,
+        "y": 44.667123435610115,
+        "energy": 123.94548943818981,
+        "hydration": 93.99356621945445,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 119,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 666,
+        "reason": "first-declines",
+        "day": 14,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 123
+      }
+    }
+  ],
+  "actions": [
+    "E: eat available local food",
+    {
+      "region": 0,
+      "choice": 0,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 12.2 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 12.2 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "movement": "KeyD",
+      "seconds": 6
+    },
+    {
+      "region": 1,
+      "choice": 0,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 16.2 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 16.2 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 1,
+      "choice": 1,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 16.4 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 16.4 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 1,
+      "choice": 2,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 16.7 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 16.7 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 1,
+      "choice": 3,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 16.7 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 16.7 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 1,
+      "choice": 4,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 16.9 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 16.9 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 1,
+      "choice": 5,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 17.0 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 17.0 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 1,
+      "choice": 6,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 17.1 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 17.1 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 1,
+      "choice": 7,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 17.2 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 17.2 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "movement": "KeyS",
+      "seconds": 6
+    },
+    {
+      "region": 2,
+      "choice": 0,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nCreature\nClose\nExpand\nNo ready, unrelated compatible partners nearby. Explore and check again.\nBiological details & recorded observations\nNEARBY MATES\nADULT #109 · M\nNo ready, unrelated compatible partners nearby.\n\nMove around and check again.\nM: close"
+    },
+    {
+      "movement": "KeyD",
+      "seconds": 6
+    },
+    {
+      "region": 3,
+      "choice": 0,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 19.6 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 19.6 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 3,
+      "choice": 1,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 19.6 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 19.6 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 3,
+      "choice": 2,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 19.6 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 19.6 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 3,
+      "choice": 3,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 19.6 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 19.6 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 3,
+      "choice": 4,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 1\nSelected #125 · F · adult · 19.6 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 19.6 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 3,
+      "choice": 5,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 2\nSelected #125 · F · adult · 19.6 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #125 · 19.6 tiles · compatible · matching body\n#119 · 23.2 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 3,
+      "choice": 6,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 2\nSelected #119 · F · adult · 23.0 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.06928,1.04811],\"development\":[0.96653,0.96653]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#125 · 19.6 tiles · compatible · matching body\n▸ #119 · 23.0 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids behavior (74% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · larger body · bolder and more social\nLIKELY CHILD TRAITS\nfaster movement · lower energy use · bolder and more social · larger body\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "movement": "KeyW",
+      "seconds": 6
+    },
+    {
+      "region": 4,
+      "choice": 0,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 2\nSelected #119 · F · adult · 0.7 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.06928,1.04811],\"development\":[0.96653,0.96653]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #119 · 0.7 tiles · compatible · matching body\n#125 · 20.7 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids behavior (74% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · larger body · bolder and more social\nLIKELY CHILD TRAITS\nfaster movement · lower energy use · bolder and more social · larger body\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 4,
+      "choice": 1,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 2\nSelected #125 · F · adult · 20.4 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#119 · 0.7 tiles · compatible · matching body\n▸ #125 · 20.4 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 4,
+      "choice": 2,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 2\nSelected #119 · F · adult · 0.7 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.06928,1.04811],\"development\":[0.96653,0.96653]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #119 · 0.7 tiles · compatible · matching body\n#125 · 19.8 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids behavior (74% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · larger body · bolder and more social\nLIKELY CHILD TRAITS\nfaster movement · lower energy use · bolder and more social · larger body\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 4,
+      "choice": 3,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 2\nSelected #125 · F · adult · 19.6 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#119 · 0.7 tiles · compatible · matching body\n▸ #125 · 19.6 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 4,
+      "choice": 4,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 2\nSelected #119 · F · adult · 0.7 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.06928,1.04811],\"development\":[0.96653,0.96653]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #119 · 0.7 tiles · compatible · matching body\n#125 · 19.3 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids behavior (74% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · larger body · bolder and more social\nLIKELY CHILD TRAITS\nfaster movement · lower energy use · bolder and more social · larger body\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 4,
+      "choice": 5,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 2\nSelected #125 · F · adult · 19.0 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#119 · 0.7 tiles · compatible · matching body\n▸ #125 · 19.0 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 4,
+      "choice": 6,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 2\nSelected #119 · F · adult · 0.7 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.06928,1.04811],\"development\":[0.96653,0.96653]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #119 · 0.7 tiles · compatible · matching body\n#125 · 19.0 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids behavior (74% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · larger body · bolder and more social\nLIKELY CHILD TRAITS\nfaster movement · lower energy use · bolder and more social · larger body\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 4,
+      "choice": 7,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 2\nSelected #125 · F · adult · 19.0 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.05375,1.06655],\"development\":[0.96438,0.96438]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#119 · 0.7 tiles · compatible · matching body\n▸ #125 · 19.0 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (47% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · higher energy use · smaller body\nLIKELY CHILD TRAITS\nfaster movement · smaller body · sharper senses · more cautious and solitary\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "movement": "KeyA",
+      "seconds": 6
+    },
+    {
+      "region": 5,
+      "choice": 0,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 4\nSelected #119 · F · adult · 6.5 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.06928,1.04811],\"development\":[0.96653,0.96653]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nLast approach was declined.\nPARTNER OPTIONS (individual preference and distance)\n▸ #119 · 6.5 tiles · compatible · matching body\n#123 · 21.3 tiles · favored · matching body\n#125 · 17.4 tiles · compatible · matching body\n#126 · 18.6 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids behavior (74% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbetter digestion · larger body · bolder and more social\nLIKELY CHILD TRAITS\nfaster movement · lower energy use · bolder and more social · larger body\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 5,
+      "choice": 1,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nGenvo Leafwalker · adult\nClose\nExpand\nGenvo Leafwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 4\nSelected #123 · F · adult · 21.0 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Matching physical builds · mating offers next-generation editor\nAll mounted parts and sockets match\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 98% · gamete match 98% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.06163,1.03926],\"development\":[0.95793,0.95793]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#119 · 6.2 tiles · compatible · matching body\n▸ #123 · 21.0 tiles · favored · matching body\n#125 · 17.4 tiles · compatible · matching body\n#126 · 18.4 tiles · compatible · matching body\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (63% selective)\n\nYOU\nslower movement · better digestion\nMATE\nsharper senses · stronger disease resistance · poorer digestion\nLIKELY CHILD TRAITS\nfaster movement · poorer digestion · sharper senses · stronger disease resistance\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "movement": "KeyS",
+      "seconds": 6
+    }
+  ],
+  "errors": []
+}

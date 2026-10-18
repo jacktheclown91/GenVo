@@ -1,12 +1,16 @@
 import {SPECIES} from '../organisms/species.js';
+import {HEALING_REVIEW} from '../ecology/healing-review.js';
+import {still} from '../ecology/refuges.js';
 
 const clamp=(min,max,v)=>Math.max(min,Math.min(max,v));
 
-// Player-facing wound/recovery authority. It reacts only to real damage already
-// applied by canonical combat and never rolls damage, infection, or recovery RNG.
+// Wound/recovery authority. It reacts only to real damage already applied by canonical combat and never
+// rolls damage, infection, or recovery RNG. Phase 3I healing physiology: it applies to every animal (wild
+// or player); with ?healing=0 it reverts to the player's founding family only.
 export class InjuryRecoveryController{
   constructor(sim){this.sim=sim}
-  enabled(animal){return !!(this.sim.playerEnabled&&animal?.alive&&animal.player&&animal.lineage)}
+  enabled(animal){return HEALING_REVIEW.enabled?!!animal?.alive:!!(this.sim.playerEnabled&&animal?.alive&&animal.player&&animal.lineage)}
+  wounded(){return this.sim.animals.filter(a=>a.alive&&a.injuryCare?.active&&this.enabled(a))}
   ensure(animal){
     if(!this.enabled(animal))return null;
     if(!animal.injuryCare)animal.injuryCare={active:false,level:'none',label:'',remaining:0,initial:0,restToday:0,strainToday:0,lastMode:'none',lastHitTick:-Infinity,recoveredDay:0,attackerSpecies:null};
@@ -22,12 +26,15 @@ export class InjuryRecoveryController{
     if(!s.active||rank[level]>=rank[s.level]){s.level=level;s.label=label;s.initial=Math.max(days,s.initial||0);s.remaining=Math.max(days,s.remaining||0)}
     else s.remaining=Math.min(Math.max(s.initial,days)+1.25,s.remaining+Math.max(.45,damage/55));
     s.active=true;s.restToday=0;s.strainToday=Math.min(1.2,s.strainToday+.12);s.lastHitTick=this.sim.tickCount;s.attackerSpecies=attacker?.species||s.attackerSpecies||null;s.recoveredDay=0;
-    this.sim.cognition?.recordOnce?.(animal,`wounded:${this.sim.year}:${this.sim.day}:${animal.id}`,`${label} after a predator attack`,{damage:Math.round(damage),health:Math.round(animal.health),attacker:s.attackerSpecies});
+    if(animal.lineage)this.sim.cognition?.recordOnce?.(animal,`wounded:${this.sim.year}:${this.sim.day}:${animal.id}`,`${label} after a predator attack`,{damage:Math.round(damage),health:Math.round(animal.health),attacker:s.attackerSpecies});
     return this.snapshot(animal);
   }
   mode(animal){
     const s=this.ensure(animal);if(!s?.active)return{mode:'none',label:'',resting:false,sheltered:false,cover:0,strained:false};
-    const moving=animal.intent==='player'&&!!animal.target&&(Math.abs(animal.target.dx||0)+Math.abs(animal.target.dy||0)>.01),sprinting=!!(moving&&animal.target?.sprint);
+    // Moving and straining are judged the same way for every animal: movement in the last half second
+    // (movedTick), and sprinting (player) or a flight/pursuit intent (any animal).
+    const moving=HEALING_REVIEW.enabled?!still(this.sim,animal):animal.intent==='player'&&!!animal.target&&(Math.abs(animal.target.dx||0)+Math.abs(animal.target.dy||0)>.01);
+    const sprinting=!!(moving&&(animal.target?.sprint||HEALING_REVIEW.enabled&&['escape','refuge','hunt','chase-player','charge-player','stalk-player','mob'].includes(animal.intent)));
     const shelter=this.sim.shelter?.nearest?.(animal,{radius:1.6,familyOnly:true})||null,cover=this.sim.coverAt?.(animal)||0;
     let mode='active',label='Moving while wounded';
     if(sprinting){mode='strained';label='Straining the wound'}
@@ -37,7 +44,11 @@ export class InjuryRecoveryController{
     return{mode,label,resting:!moving,sheltered:!!shelter,cover,strained:sprinting,shelter};
   }
   phase(){
-    const animal=this.sim.player();if(!this.enabled(animal))return null;const s=this.ensure(animal);if(!s.active)return null;
+    if(HEALING_REVIEW.enabled){for(const a of this.wounded())this.phaseFor(a);return this.snapshot()}
+    return this.phaseFor(this.sim.player());
+  }
+  phaseFor(animal){
+    if(!this.enabled(animal))return null;const s=this.ensure(animal);if(!s.active)return null;
     const m=this.mode(animal);s.lastMode=m.mode;
     if(m.mode==='shelter-rest')s.restToday=clamp(0,1.5,s.restToday+.15);
     else if(m.mode==='cover-rest')s.restToday=clamp(0,1.5,s.restToday+.085);
@@ -46,13 +57,17 @@ export class InjuryRecoveryController{
     return this.snapshot(animal);
   }
   advanceDay(){
-    const animal=this.sim.player();if(!this.enabled(animal))return null;const s=this.ensure(animal);if(!s.active)return null;
+    if(HEALING_REVIEW.enabled){for(const a of this.wounded())this.advanceDayFor(a);return this.snapshot()}
+    return this.advanceDayFor(this.sim.player());
+  }
+  advanceDayFor(animal){
+    if(!this.enabled(animal))return null;const s=this.ensure(animal);if(!s.active)return null;
     const spec=SPECIES[animal.species],fed=animal.energy/spec.maxEnergy,water=animal.hydration/spec.maxHydration,nourished=Math.min(fed,water);
     const supply=nourished>=.60?1.08:nourished>=.38?.88:.58;
     const base=.58*supply,rest=Math.min(.82,s.restToday*.68)*supply,strain=Math.min(.32,s.strainToday*.20);
     s.remaining=Math.max(0,s.remaining-Math.max(.22,base+rest-strain));
     s.restToday=0;s.strainToday=0;
-    if(s.remaining<=0){const prior=s.label;s.active=false;s.level='none';s.label='';s.remaining=0;s.initial=0;s.lastMode='recovered';s.recoveredDay=(this.sim.year-1)*32+this.sim.day;this.sim.cognition?.recordOnce?.(animal,`wound-recovered:${this.sim.year}:${this.sim.day}:${animal.id}`,`Recovered from ${prior.toLowerCase()}`,{});}
+    if(s.remaining<=0){const prior=s.label;s.active=false;s.level='none';s.label='';s.remaining=0;s.initial=0;s.lastMode='recovered';s.recoveredDay=(this.sim.year-1)*32+this.sim.day;if(animal.lineage)this.sim.cognition?.recordOnce?.(animal,`wound-recovered:${this.sim.year}:${this.sim.day}:${animal.id}`,`Recovered from ${prior.toLowerCase()}`,{});}
     return this.snapshot(animal);
   }
   movementMultiplier(animal){const s=this.ensure(animal);if(!s?.active)return 1;return s.level==='severe'?.78:s.level==='wounded'?.88:.95}

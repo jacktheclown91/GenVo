@@ -1,0 +1,1347 @@
+{
+  "scope": "One targeted initial pair. Mother is a simple founder registered as the documentary lineage; father begins with the existing approved explicit-head layout. Both are disclosed unrelated adults with staged sexes/full initial reserves, placed once in existing supported habitat. No inferred evolutionary history for the father, endpoint mutation injection, forced consent, mutation boost, food injection or gestation shortcut. Not an ordinary discovery or novel-route demonstration.",
+  "seed": "ACCESSIBILITY-NEUTRAL-WATER-015",
+  "parents": [
+    {
+      "id": 1,
+      "species": "genvo",
+      "x": 32,
+      "y": 32,
+      "vx": 0,
+      "vy": 0,
+      "dir": 7,
+      "age": 32,
+      "energy": 124,
+      "hydration": 114,
+      "health": 100,
+      "genes": {
+        "body": 1.0698040681891143,
+        "motion": 0.9633083990775049,
+        "metabolism": 1.065363760991022,
+        "digestion": 1.061445073131472,
+        "senses": 1.0244216428603978,
+        "climate": 1.028839194821194,
+        "immunity": 1.05986360674724,
+        "temperament": 0.9575268489774317
+      },
+      "reproductiveGenome": {
+        "schema": 1,
+        "loci": {
+          "gamete": [
+            1.06105,
+            1.04958
+          ],
+          "development": [
+            0.95321,
+            0.95321
+          ]
+        },
+        "origin": "founding-lineage",
+        "lineage": "genvo"
+      },
+      "matePreferences": {
+        "weights": {
+          "size": 0.39489,
+          "strength": 0.44223,
+          "ornament": 0.18502,
+          "display": -0.52459,
+          "behavior": 0.12705
+        },
+        "selectivity": 0.48134,
+        "ritualTastes": {
+          "dance": 0.6132,
+          "call": 0.7208,
+          "flare": -0.46092,
+          "scent": 0.58053,
+          "gesture": 0.12827
+        },
+        "tempo": 0.51017,
+        "similarity": -0.34394
+      },
+      "inbreeding": 0,
+      "sex": "F",
+      "pregnant": null,
+      "reproCooldown": 0,
+      "intent": "explore",
+      "target": null,
+      "alive": true,
+      "infected": false,
+      "infection": null,
+      "immune": false,
+      "immuneUntilDay": 0,
+      "player": false,
+      "lineage": true,
+      "parentIds": [],
+      "grandparentIds": [],
+      "generation": 1,
+      "lastMate": null,
+      "reproDrive": 0,
+      "caregiverId": null,
+      "birthTick": 0,
+      "birthDay": 1,
+      "birthYear": 1,
+      "anim": 0,
+      "adaptations": [],
+      "massPolicy": "relative-anatomical-load/1",
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-4134709b"
+      },
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "legacyWaterPhysiology": []
+    },
+    {
+      "id": 2,
+      "species": "genvo",
+      "x": 33,
+      "y": 32,
+      "vx": 0,
+      "vy": 0,
+      "dir": 1,
+      "age": 32,
+      "energy": 124,
+      "hydration": 114,
+      "health": 100,
+      "genes": {
+        "body": 0.9709077042993158,
+        "motion": 1.0219678326044233,
+        "metabolism": 1.011196200735867,
+        "digestion": 0.9287869264371693,
+        "senses": 0.9560829394031316,
+        "climate": 1.0340327948331833,
+        "immunity": 1.0195683735888452,
+        "temperament": 1.0755310576874764
+      },
+      "reproductiveGenome": {
+        "schema": 1,
+        "loci": {
+          "gamete": [
+            1.05587,
+            1.03718
+          ],
+          "development": [
+            0.9607,
+            0.9607
+          ]
+        },
+        "origin": "founding-lineage",
+        "lineage": "genvo"
+      },
+      "matePreferences": {
+        "weights": {
+          "size": 0.29494,
+          "strength": 0.03646,
+          "ornament": -0.34722,
+          "display": 0.25782,
+          "behavior": 0.39253
+        },
+        "selectivity": 0.50801,
+        "ritualTastes": {
+          "dance": 0.03467,
+          "call": 0.06699,
+          "flare": 0.27665,
+          "scent": 0.42792,
+          "gesture": -0.77702
+        },
+        "tempo": 0.55118,
+        "similarity": -0.365
+      },
+      "inbreeding": 0,
+      "sex": "M",
+      "pregnant": null,
+      "reproCooldown": 0,
+      "intent": "explore",
+      "target": null,
+      "alive": true,
+      "infected": false,
+      "infection": null,
+      "immune": false,
+      "immuneUntilDay": 0,
+      "player": false,
+      "lineage": false,
+      "parentIds": [],
+      "grandparentIds": [],
+      "generation": 1,
+      "lastMate": null,
+      "reproDrive": 0,
+      "caregiverId": null,
+      "birthTick": 0,
+      "birthDay": 1,
+      "birthYear": 1,
+      "anim": 0,
+      "adaptations": [],
+      "massPolicy": "relative-anatomical-load/1",
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/head",
+            "partId": "head-base",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "head"
+          },
+          {
+            "id": "root/head/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/head/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/head/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "mouth"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          }
+        ],
+        "id": "bp0-b076d13f"
+      },
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "legacyWaterPhysiology": []
+    }
+  ],
+  "placement": {
+    "developedDays": 0
+  },
+  "births": [
+    {
+      "id": 3,
+      "day": 17,
+      "parentIds": [
+        1,
+        2
+      ],
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/head",
+            "partId": "head-base",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "head"
+          },
+          {
+            "id": "root/head/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/head/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/head/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "mouth"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          }
+        ],
+        "id": "bp0-b076d13f"
+      },
+      "receipt": {
+        "schema": "genvo.recombination-receipt/1",
+        "parents": [
+          {
+            "id": 1,
+            "bodyId": "bp0-4134709b",
+            "recombinationBodyId": "bp0-4134709b",
+            "filteredExclusiveParts": false
+          },
+          {
+            "id": 2,
+            "bodyId": "bp0-b076d13f",
+            "recombinationBodyId": "bp0-b076d13f",
+            "filteredExclusiveParts": false
+          }
+        ],
+        "recombined": {
+          "schema": "genvo.recombination-receipt/1",
+          "mode": "selected-groups",
+          "bodyId": "bp0-b076d13f",
+          "nodes": [
+            {
+              "nodeId": "root",
+              "partId": "small-torso",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/head",
+              "partId": "head-base",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/head"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/head/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/head/eye.left"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/head/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/head/eye.right"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/head/mouth",
+              "partId": "grazing-mouth",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/head/mouth"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/limb.1",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/limb.1"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/limb.3"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/limb.5"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/limb.7",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/limb.7"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "variation": {
+        "policy": "neutral-head-structure/1",
+        "operator": "inherit",
+        "attempted": false,
+        "accepted": true,
+        "from": "bp0-b076d13f",
+        "to": "bp0-b076d13f",
+        "targets": [],
+        "removed": [],
+        "moved": [],
+        "parentBodies": [
+          {
+            "id": 1,
+            "bodyId": "bp0-4134709b"
+          },
+          {
+            "id": 2,
+            "bodyId": "bp0-b076d13f"
+          }
+        ],
+        "finalBody": "bp0-b076d13f",
+        "guidedOverride": false,
+        "expression": []
+      },
+      "journal": "Recorded recombination: 0 from parent 1 #1, 9 from parent 2 #2. This records structure selection before development, not transferred parental tissue."
+    },
+    {
+      "id": 4,
+      "day": 17,
+      "parentIds": [
+        1,
+        2
+      ],
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/head",
+            "partId": "head-base",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "head"
+          },
+          {
+            "id": "root/head/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/head/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/head/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "mouth"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          }
+        ],
+        "id": "bp0-b076d13f"
+      },
+      "receipt": {
+        "schema": "genvo.recombination-receipt/1",
+        "parents": [
+          {
+            "id": 1,
+            "bodyId": "bp0-4134709b",
+            "recombinationBodyId": "bp0-4134709b",
+            "filteredExclusiveParts": false
+          },
+          {
+            "id": 2,
+            "bodyId": "bp0-b076d13f",
+            "recombinationBodyId": "bp0-b076d13f",
+            "filteredExclusiveParts": false
+          }
+        ],
+        "recombined": {
+          "schema": "genvo.recombination-receipt/1",
+          "mode": "selected-groups",
+          "bodyId": "bp0-b076d13f",
+          "nodes": [
+            {
+              "nodeId": "root",
+              "partId": "small-torso",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/head",
+              "partId": "head-base",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/head"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/head/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/head/eye.left"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/head/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/head/eye.right"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/head/mouth",
+              "partId": "grazing-mouth",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/head/mouth"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/limb.1",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 0,
+                  "nodeId": "root/limb.1"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 0,
+                  "nodeId": "root/limb.3"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 0,
+                  "nodeId": "root/limb.5"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/limb.7",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 0,
+                  "nodeId": "root/limb.7"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "variation": {
+        "policy": "neutral-head-structure/1",
+        "operator": "inherit",
+        "attempted": false,
+        "accepted": true,
+        "from": "bp0-b076d13f",
+        "to": "bp0-b076d13f",
+        "targets": [],
+        "removed": [],
+        "moved": [],
+        "parentBodies": [
+          {
+            "id": 1,
+            "bodyId": "bp0-4134709b"
+          },
+          {
+            "id": 2,
+            "bodyId": "bp0-b076d13f"
+          }
+        ],
+        "finalBody": "bp0-b076d13f",
+        "guidedOverride": false,
+        "expression": []
+      },
+      "journal": "Recorded recombination: 4 from parent 1 #1, 5 from parent 2 #2. This records structure selection before development, not transferred parental tissue."
+    },
+    {
+      "id": 5,
+      "day": 17,
+      "parentIds": [
+        1,
+        2
+      ],
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/head",
+            "partId": "head-base",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "head"
+          },
+          {
+            "id": "root/head/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/head/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/head/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "mouth"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          }
+        ],
+        "id": "bp0-b076d13f"
+      },
+      "receipt": {
+        "schema": "genvo.recombination-receipt/1",
+        "parents": [
+          {
+            "id": 1,
+            "bodyId": "bp0-4134709b",
+            "recombinationBodyId": "bp0-4134709b",
+            "filteredExclusiveParts": false
+          },
+          {
+            "id": 2,
+            "bodyId": "bp0-b076d13f",
+            "recombinationBodyId": "bp0-b076d13f",
+            "filteredExclusiveParts": false
+          }
+        ],
+        "recombined": {
+          "schema": "genvo.recombination-receipt/1",
+          "mode": "selected-groups",
+          "bodyId": "bp0-b076d13f",
+          "nodes": [
+            {
+              "nodeId": "root",
+              "partId": "small-torso",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/head",
+              "partId": "head-base",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/head"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/head/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/head/eye.left"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/head/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/head/eye.right"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/head/mouth",
+              "partId": "grazing-mouth",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/head/mouth"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/limb.1",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/limb.1"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 0,
+                  "nodeId": "root/limb.3"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 0,
+                  "nodeId": "root/limb.5"
+                }
+              ]
+            },
+            {
+              "nodeId": "root/limb.7",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "sources": [
+                {
+                  "parentIndex": 1,
+                  "nodeId": "root/limb.7"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "variation": {
+        "policy": "neutral-head-structure/1",
+        "operator": "inherit",
+        "attempted": false,
+        "accepted": true,
+        "from": "bp0-b076d13f",
+        "to": "bp0-b076d13f",
+        "targets": [],
+        "removed": [],
+        "moved": [],
+        "parentBodies": [
+          {
+            "id": 1,
+            "bodyId": "bp0-4134709b"
+          },
+          {
+            "id": 2,
+            "bodyId": "bp0-b076d13f"
+          }
+        ],
+        "finalBody": "bp0-b076d13f",
+        "guidedOverride": false,
+        "expression": []
+      },
+      "journal": "Recorded recombination: 2 from parent 1 #1, 7 from parent 2 #2. This records structure selection before development, not transferred parental tissue."
+    }
+  ],
+  "conceived": true,
+  "pregnancy": {
+    "fatherId": 2,
+    "paternalInheritance": {
+      "alive": false,
+      "player": false,
+      "id": 2,
+      "species": "genvo",
+      "sex": "M",
+      "generation": 1,
+      "parentIds": [],
+      "grandparentIds": [],
+      "genes": {
+        "body": 0.9709077042993158,
+        "motion": 1.0219678326044233,
+        "metabolism": 1.011196200735867,
+        "digestion": 0.9287869264371693,
+        "senses": 0.9560829394031316,
+        "climate": 1.0340327948331833,
+        "immunity": 1.0195683735888452,
+        "temperament": 1.0755310576874764
+      },
+      "reproductiveGenome": {
+        "schema": 1,
+        "loci": {
+          "gamete": [
+            1.05587,
+            1.03718
+          ],
+          "development": [
+            0.9607,
+            0.9607
+          ]
+        },
+        "origin": "founding-lineage",
+        "lineage": "genvo"
+      },
+      "matePreferences": {
+        "weights": {
+          "size": 0.29494,
+          "strength": 0.03646,
+          "ornament": -0.34722,
+          "display": 0.25782,
+          "behavior": 0.39253
+        },
+        "selectivity": 0.50801,
+        "ritualTastes": {
+          "dance": 0.03467,
+          "call": 0.06699,
+          "flare": 0.27665,
+          "scent": 0.42792,
+          "gesture": -0.77702
+        },
+        "tempo": 0.55118,
+        "similarity": -0.365
+      },
+      "adaptations": [],
+      "massPolicy": "relative-anatomical-load/1",
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "legacyWaterPhysiology": [],
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/head",
+            "partId": "head-base",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "head"
+          },
+          {
+            "id": "root/head/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/head/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/head/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "mouth"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          }
+        ],
+        "id": "bp0-b076d13f"
+      },
+      "lineage": false,
+      "x": 3.2,
+      "y": 3
+    },
+    "maternalInheritance": {
+      "alive": false,
+      "player": false,
+      "id": 1,
+      "species": "genvo",
+      "sex": "F",
+      "generation": 1,
+      "parentIds": [],
+      "grandparentIds": [],
+      "genes": {
+        "body": 1.0698040681891143,
+        "motion": 0.9633083990775049,
+        "metabolism": 1.065363760991022,
+        "digestion": 1.061445073131472,
+        "senses": 1.0244216428603978,
+        "climate": 1.028839194821194,
+        "immunity": 1.05986360674724,
+        "temperament": 0.9575268489774317
+      },
+      "reproductiveGenome": {
+        "schema": 1,
+        "loci": {
+          "gamete": [
+            1.06105,
+            1.04958
+          ],
+          "development": [
+            0.95321,
+            0.95321
+          ]
+        },
+        "origin": "founding-lineage",
+        "lineage": "genvo"
+      },
+      "matePreferences": {
+        "weights": {
+          "size": 0.39489,
+          "strength": 0.44223,
+          "ornament": 0.18502,
+          "display": -0.52459,
+          "behavior": 0.12705
+        },
+        "selectivity": 0.48134,
+        "ritualTastes": {
+          "dance": 0.6132,
+          "call": 0.7208,
+          "flare": -0.46092,
+          "scent": 0.58053,
+          "gesture": 0.12827
+        },
+        "tempo": 0.51017,
+        "similarity": -0.34394
+      },
+      "adaptations": [],
+      "massPolicy": "relative-anatomical-load/1",
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "legacyWaterPhysiology": [],
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-4134709b"
+      },
+      "lineage": true,
+      "x": 3,
+      "y": 3
+    },
+    "days": 16,
+    "totalDays": 16,
+    "startedDay": 1,
+    "startedYear": 1,
+    "mode": "live",
+    "dualAtConception": false,
+    "compatibilityAtConception": {
+      "enabled": true,
+      "reason": "",
+      "gameteMatch": 0.9786874999999999,
+      "fertilityA": 1,
+      "fertilityB": 1,
+      "conceptionChance": 0.9786874999999999,
+      "model": "provisional-diploid-loci/1"
+    },
+    "plannedLitterSize": 3,
+    "birthCost": 51,
+    "reserveInvestment": 23.97,
+    "dualCostPaid": null
+  },
+  "final": {
+    "day": 17,
+    "tick": 768,
+    "stats": {
+      "births": 3,
+      "deaths": 0,
+      "byCause": {},
+      "extinctions": [],
+      "threatStages": {
+        "vigilance": 0,
+        "alarm": 0,
+        "flight": 0,
+        "wary": 0
+      },
+      "growthDelays": 3
+    },
+    "motherAlive": true,
+    "fatherAlive": true
+  }
+}

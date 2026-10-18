@@ -2,6 +2,9 @@ import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
 import {buildJournalEntry} from '../src/ui/journal.js';
+// Decision-coordination audit (threat appraisal): flight follows perceptible behaviour, so a staged hunter
+// is staged hunting and facing its prey.
+const stageHunting=(h,prey)=>{const a=Math.atan2(prey.y-h.y,prey.x-h.x);Object.assign(h,{intent:'hunt',target:prey,dir:(Math.round(a/(Math.PI/4))+2+8)%8})};
 import {createSimulationSnapshot,restoreSimulationSnapshot,SAVE_SCHEMA} from '../src/persistence/save-manager.js';
 
 // v1.30 Habits: what you do with a creature becomes how it behaves on its own.
@@ -48,8 +51,8 @@ const shelter={id:901,ownerId:p.id,x:p.x,y:p.y,integrity:100,foodStore:0,capacit
   const a=sim.animals.find(x=>x.alive&&x.species==='genvo'&&x.id!==p.id&&!sim.family.isDependent(x));a.lineage=true;a.age=SPECIES.genvo.maturity+5;a.health=100;
   a.habits={range:0,home:0,caution:.9,boldness:0,hunting:0};assert.ok(H.threatRadiusMultiplier(a)>1.3,'cautious creatures notice threats farther away');
   a.habits={range:0,home:0,caution:0,boldness:.8,hunting:0};assert.equal(H.standsGround(a),true);
-  const h=sim.animals.find(x=>x.alive&&x.species==='needlejaw');h.x=a.x+2;h.y=a.y;h.playerHunt=null;sim.rebuildSpatial();
-  sim.carrying.shouldRefreshDecision=()=>true;sim.phaseDecision(null);
+  const h=sim.animals.find(x=>x.alive&&x.species==='needlejaw');h.x=a.x+2;h.y=a.y;h.playerHunt=null;stageHunting(h,a);sim.rebuildSpatial();
+  sim.carrying.shouldRefreshDecision=x=>x===a;sim.phaseDecision(null);
   assert.equal(a.intent,'mob','a bold adult stands its ground against a nearby Stalker instead of fleeing');
   a.habits={range:.9,home:0,caution:0,boldness:0,hunting:0};assert.ok(H.forageRangeMultiplier(a)>1.4,'a ranging habit widens the food search');assert.equal(H.rangeStyle(a),'forager');
   a.habits={range:0,home:0,caution:0,boldness:0,hunting:.8};assert.ok(H.huntRadius(a)>10,'a hunting habit makes a hungry adult look for prey');
@@ -67,7 +70,7 @@ const shelter={id:901,ownerId:p.id,x:p.x,y:p.y,integrity:100,foodStore:0,capacit
   assert.ok(SAVE_SCHEMA>=3);
   const old=structuredClone(createSimulationSnapshot(sim));old.schema=2;for(const a of old.animals)delete a.habits;delete old.controllers.habits;
 // v1.39.0 (creator decision 2026-10-09): saves start fresh; an older save is refused with a clear message.
-  assert.throws(()=>restoreSimulationSnapshot(old),/earlier GenVo8/,'older saves are refused, not migrated');
+  assert.throws(()=>restoreSimulationSnapshot(old),/predates GenVo's modular creature bodies/,'older saves are refused, not migrated');
   const rt=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim)));rt.player().habits.caution=.5;const again=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(rt)));assert.equal(again.player().habits.caution,.5,'habits round-trip');
 }
 console.log('habits ok');

@@ -44,6 +44,19 @@ export function huntingAbility(animal){
   return jaw?jaw*clamp(.72,1.28,animal?.genes?.digestion??1):0;
 }
 export function canHunt(animal){return huntingAbility(animal)>0}
+// Effective predation stops at prey 2.1x the hunter's mass. A hunter with real attack anatomy may
+// still ATTEMPT a weak bite on non-kin prey beyond that, up to 4x (creator-approved behaviour; the 4x
+// and 0.35 values are provisional pending review: a newborn Stalker vs an adult rootling is 3.72x).
+// Simulation.tryKill resolves such attempts as non-subduing and yields no meal.
+export const EFFECTIVE_PREY_RATIO=2.1,WEAK_ATTEMPT_RATIO=4,WEAK_BITE_DAMAGE=.35;
+export function weakBiteAttempt(pred,prey){
+  if(!pred?.alive||!prey?.alive||pred===prey||(pred.id!=null&&pred.id===prey.id))return false;
+  if(!huntingAbility(pred)||preyPreference(pred,prey)>0)return false;
+  const family=new Set([pred.id,...(pred.parentIds||[])]);
+  if(family.has(prey.id)||(prey.parentIds||[]).includes(pred.id)||(pred.parentIds?.length&&prey.parentIds?.some(id=>family.has(id))))return false;
+  const ratio=bodyMass(prey)/Math.max(.1,bodyMass(pred));
+  return ratio>EFFECTIVE_PREY_RATIO&&ratio<=WEAK_ATTEMPT_RATIO;
+}
 export function preyPreference(pred,prey){
   if(!pred?.alive||!prey?.alive||pred===prey||(pred.id!=null&&pred.id===prey.id))return 0;
   const attack=huntingAbility(pred);if(!attack)return 0;
@@ -54,7 +67,7 @@ export function preyPreference(pred,prey){
   const ratio=bodyMass(prey)/Math.max(.1,bodyMass(pred));
   // A powerful jaw can tackle comparable-sized prey; juveniles are edible and
   // independently smaller. No named predator/prey whitelist exists.
-  if(ratio>2.1)return 0;
+  if(ratio>EFFECTIVE_PREY_RATIO)return 0;
   return attack*clamp(.25,1.5,1.15-.25*ratio);
 }
 export function ecologicalCapabilities(animal){

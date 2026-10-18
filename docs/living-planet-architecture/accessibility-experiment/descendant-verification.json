@@ -1,0 +1,65 @@
+{
+  "scope": "Read-only ancestry/phenotype check plus two independent 12-update canonical save continuations; no claim of neutral mutation or tissue-derived cost validity.",
+  "status": "PASS",
+  "mother": {
+    "id": 4,
+    "growthPaid": 52.239287614337314,
+    "growthDelayDays": 6,
+    "bodyUnchanged": true,
+    "genesUnchanged": true
+  },
+  "descendants": [
+    {
+      "id": 8,
+      "generation": 3,
+      "parentIds": [
+        4,
+        7
+      ],
+      "grandparentIds": [
+        1,
+        2
+      ],
+      "parts": [
+        "small-torso",
+        "simple-eye",
+        "simple-eye",
+        "storage-sac",
+        "storage-sac",
+        "webbed-leg",
+        "walking-leg",
+        "walking-leg",
+        "webbed-leg",
+        "grazing-mouth"
+      ],
+      "swims": true
+    },
+    {
+      "id": 9,
+      "generation": 3,
+      "parentIds": [
+        4,
+        7
+      ],
+      "grandparentIds": [
+        1,
+        2
+      ],
+      "parts": [
+        "small-torso",
+        "simple-eye",
+        "simple-eye",
+        "storage-sac",
+        "storage-sac",
+        "webbed-leg",
+        "webbed-leg",
+        "webbed-leg",
+        "webbed-leg",
+        "grazing-mouth"
+      ],
+      "swims": true
+    }
+  ],
+  "resumeUpdates": 12,
+  "completeSavedStateEqual": true
+}

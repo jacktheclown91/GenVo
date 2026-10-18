@@ -1,0 +1,151 @@
+{
+ "label": "after",
+ "viewport": "1440x900",
+ "seconds": 20,
+ "canvasCreated": 3522,
+ "canvasPerSecond": 176.1,
+ "canvasSites": [
+  [
+   "Renderer.drawOrganicLandBase (src/render/renderer.js:506:27) < Renderer.staticLandTile (src/render/renderer.js:448:12)",
+   1137
+  ],
+  [
+   "Renderer.staticLandTile (src/render/renderer.js:442:25) < Renderer.buildTerrainChunk (src/render/renderer.js:368:39)",
+   1088
+  ],
+  [
+   "mk (src/render/renderer.js:473:63) < Renderer.vegetationLayer (src/render/renderer.js:476:28)",
+   428
+  ],
+  [
+   "sourceCanvas (src/render/authored-flora.js:24:19) < drawAuthoredFlora (src/render/authored-flora.js:31:15)",
+   263
+  ],
+  [
+   "src/render/indexed-part-renderer.js:6:85 < tinted (src/render/indexed-part-renderer.js:38:22)",
+   182
+  ],
+  [
+   "Renderer.drawOrganicLandBase (src/render/renderer.js:506:27) < Renderer.buildTerrainChunk (src/render/renderer.js:369:16)",
+   151
+  ],
+  [
+   "Renderer.staticLandTile (src/render/renderer.js:442:25) < Renderer.drawTile (src/render/renderer.js:399:25)",
+   81
+  ],
+  [
+   "Renderer.buildTerrainChunk (src/render/renderer.js:362:97) < Renderer.processTerrainRefreshQueue (src/render/renderer.js:354:389)",
+   80
+  ],
+  [
+   "Renderer.buildTerrainChunk (src/render/renderer.js:363:31) < Renderer.processTerrainRefreshQueue (src/render/renderer.js:354:389)",
+   80
+  ],
+  [
+   "Renderer.drawOrganicLandBase (src/render/renderer.js:506:27) < Renderer.drawTile (src/render/renderer.js:404:12)",
+   32
+  ]
+ ],
+ "cpuSelfMsTop": [
+  [
+   "(program) :0",
+   5136
+  ],
+  [
+   "drawImage :0",
+   4196
+  ],
+  [
+   "recolorIndexedFrame src/render/indexed-part-art.js:105",
+   900
+  ],
+  [
+   "(idle) :0",
+   606
+  ],
+  [
+   "tinted src/render/indexed-part-renderer.js:29",
+   597
+  ],
+  [
+   "save :0",
+   443
+  ],
+  [
+   "o.<computed> src/main.js:236",
+   310
+  ],
+  [
+   "livingCounts src/lineage/evolution-tree.js:49",
+   299
+  ],
+  [
+   "fillRect :0",
+   274
+  ],
+  [
+   "drawAnimal src/render/renderer.js:821",
+   202
+  ],
+  [
+   "putImageData :0",
+   198
+  ],
+  [
+   "(garbage collector) :0",
+   183
+  ],
+  [
+   "drawGenvoSprite src/render/genvo-draw.js:64",
+   177
+  ],
+  [
+   "createImageData :0",
+   159
+  ],
+  [
+   "render src/render/renderer.js:68",
+   148
+  ],
+  [
+   "now :0",
+   139
+  ],
+  [
+   "drawGenvoBody src/render/genvo-draw.js:107",
+   134
+  ],
+  [
+   "restore :0",
+   125
+  ],
+  [
+   "botanicalPlantView src/ecology/botanical-reproduction.js:49",
+   116
+  ],
+  [
+   "scale :0",
+   102
+  ],
+  [
+   "snapshot src/lineage/evolution-tree.js:57",
+   101
+  ],
+  [
+   "createImageBitmap :0",
+   96
+  ],
+  [
+   "genvoVisualPose src/render/genvo.js:12",
+   95
+  ],
+  [
+   "visualWaterMask src/render/renderer.js:488",
+   92
+  ],
+  [
+   "drawGroundContact src/render/physicality.js:14",
+   89
+  ]
+ ]
+}

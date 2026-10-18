@@ -1,0 +1,158 @@
+{
+ "schema": "genvo.lineage-observation/1",
+ "seed": "LINEAGE-OBS-B",
+ "days": 240,
+ "note": "Natural AUTO lineage; nothing forced.",
+ "timeline": [
+  {
+   "day": 2,
+   "alive": 1,
+   "highestGeneration": 1,
+   "byGeneration": {
+    "1": 1
+   }
+  },
+  {
+   "day": 22,
+   "alive": 1,
+   "highestGeneration": 1,
+   "byGeneration": {
+    "1": 1
+   }
+  },
+  {
+   "day": 42,
+   "alive": 4,
+   "highestGeneration": 2,
+   "byGeneration": {
+    "1": 1,
+    "2": 3
+   }
+  },
+  {
+   "day": 62,
+   "alive": 4,
+   "highestGeneration": 2,
+   "byGeneration": {
+    "1": 1,
+    "2": 3
+   }
+  },
+  {
+   "day": 82,
+   "alive": 4,
+   "highestGeneration": 2,
+   "byGeneration": {
+    "1": 1,
+    "2": 3
+   }
+  },
+  {
+   "day": 102,
+   "alive": 4,
+   "highestGeneration": 2,
+   "byGeneration": {
+    "1": 1,
+    "2": 3
+   }
+  },
+  {
+   "day": 122,
+   "alive": 4,
+   "highestGeneration": 2,
+   "byGeneration": {
+    "1": 1,
+    "2": 3
+   }
+  },
+  {
+   "day": 142,
+   "alive": 4,
+   "highestGeneration": 2,
+   "byGeneration": {
+    "1": 1,
+    "2": 3
+   }
+  },
+  {
+   "day": 162,
+   "alive": 3,
+   "highestGeneration": 2,
+   "byGeneration": {
+    "2": 3
+   }
+  },
+  {
+   "day": 182,
+   "alive": 2,
+   "highestGeneration": 2,
+   "byGeneration": {
+    "2": 2
+   }
+  },
+  {
+   "day": 202,
+   "alive": 1,
+   "highestGeneration": 2,
+   "byGeneration": {
+    "2": 1
+   }
+  },
+  {
+   "day": 222,
+   "alive": 0,
+   "highestGeneration": 2,
+   "byGeneration": {}
+  }
+ ],
+ "generations": {
+  "1": {
+   "members": 1,
+   "alive": 0,
+   "distinctBodies": 1,
+   "mouths": {
+    "grazing-mouth": 1
+   },
+   "adaptations": {},
+   "landSpeed": 2.344,
+   "forageRange": 9.101,
+   "threatSense": 5.056,
+   "metabolism": 0.943,
+   "behaviour": {
+    "feed": 0.491,
+    "drink": 0.325,
+    "escape": 0.052,
+    "group-alarm": 0.049,
+    "mate": 0.042,
+    "storm-shelter": 0.019
+   },
+   "deaths": {
+    "predation": 1
+   }
+  },
+  "2": {
+   "members": 3,
+   "alive": 0,
+   "distinctBodies": 1,
+   "mouths": {
+    "grazing-mouth": 3
+   },
+   "adaptations": {},
+   "landSpeed": 2.273,
+   "forageRange": 9.178,
+   "threatSense": 5.064,
+   "metabolism": 0.993,
+   "behaviour": {
+    "drink": 0.324,
+    "feed": 0.212,
+    "group-alarm": 0.186,
+    "escape": 0.098,
+    "tendency-forage": 0.061,
+    "explore": 0.034
+   },
+   "deaths": {
+    "starvation": 3
+   }
+  }
+ }
+}

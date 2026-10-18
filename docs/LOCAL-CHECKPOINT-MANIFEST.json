@@ -1,0 +1,401 @@
+{
+  "scope": "Large local audit checkpoints retained in this workspace and intentionally excluded from Git. Git reports reference these relative paths; a clone alone cannot replay archive-based experiments without the listed files. This is an inventory, not a release or biological completion certificate. Per-suite diagnostic logs and CPU profiles are also local; structured validation summaries stay in Git.",
+  "files": [
+    {
+      "path": "docs/living-planet-architecture/accessibility-experiment/candidate-birth.snapshot.bin",
+      "bytes": 16747525,
+      "sha256": "cddf11e880ce4e6e3401c513a759f4a80ab0c0153b79fa748e24942f5f1d25e0"
+    },
+    {
+      "path": "docs/living-planet-architecture/accessibility-experiment/candidate-mature.snapshot.bin",
+      "bytes": 41721899,
+      "sha256": "d8f73eea7a3a8922dc1f23277307337399943ee474411f83d6c0c1876a33f133"
+    },
+    {
+      "path": "docs/living-planet-architecture/accessibility-experiment/current-policy/candidate-birth.snapshot.bin",
+      "bytes": 16580593,
+      "sha256": "df2e437e688a5e23eebbaf93f5cf3c1739e9eba60acab3615d228b5023d72d3e"
+    },
+    {
+      "path": "docs/living-planet-architecture/accessibility-experiment/current-policy/descendants/birth.snapshot.bin",
+      "bytes": 50353731,
+      "sha256": "9561e68bd1ae8dfd1a0e9efab9c1fed9cd4829997ebe1ead942a45b559e0ab23"
+    },
+    {
+      "path": "docs/living-planet-architecture/accessibility-experiment/current-policy/descendants/final.snapshot.bin",
+      "bytes": 50353749,
+      "sha256": "6d169ab194eea49afb2860eba64de8f8b3b2dfa7073045e4a5f6f8734c78da9b"
+    },
+    {
+      "path": "docs/living-planet-architecture/accessibility-experiment/current-policy/maturity/final.snapshot.bin",
+      "bytes": 39491197,
+      "sha256": "690eac376c8918532d58f4877df6485a75616231a6a9b4dd86cc3fc7429e1239"
+    },
+    {
+      "path": "docs/living-planet-architecture/accessibility-experiment/descendant-birth.snapshot.bin",
+      "bytes": 54169115,
+      "sha256": "41bf347ba2c404226fe71bed8b51b52e07a57e4927c2db36317c218ebff500f5"
+    },
+    {
+      "path": "docs/living-planet-architecture/accessibility-experiment/descendant-final.snapshot.bin",
+      "bytes": 41712649,
+      "sha256": "f105708baa2e48c7ee644795a181b6220375e1546ed839eff766dd9a955f27a7"
+    },
+    {
+      "path": "docs/living-planet-architecture/accessibility-experiment/encounter-final.snapshot.bin",
+      "bytes": 55858830,
+      "sha256": "24b9f163fff652a300c077ef602182e47d93d80e417a7fe1b65f7eddcefb4578"
+    },
+    {
+      "path": "docs/living-planet-architecture/body-cost-readability/lineage/after-attempt.snapshot.bin",
+      "bytes": 3359686,
+      "sha256": "a13586fbe17426a1c5aaf2f98c731ae74d83abc227fdb8181b36bf9eb061a246"
+    },
+    {
+      "path": "docs/living-planet-architecture/body-cost-readability/lineage/birth.snapshot.bin",
+      "bytes": 16580511,
+      "sha256": "37ddf437e8a702a601595c9db1f3c94397eef1debce31c7edde4048c1bffc996"
+    },
+    {
+      "path": "docs/living-planet-architecture/body-cost-readability/player-lineage/after-attempt.snapshot.bin",
+      "bytes": 3357478,
+      "sha256": "31f28ab083d210e4842953702f139df01039d7d233eaa76dfe06bf0ff1b8f6f2"
+    },
+    {
+      "path": "docs/living-planet-architecture/body-cost-readability/player-lineage/birth.snapshot.bin",
+      "bytes": 3357490,
+      "sha256": "e62ecb41be9daf0be1e4d3a8eba77d7a26f4856f5f018523b20b72fa6493c6a4"
+    },
+    {
+      "path": "docs/living-planet-architecture/counterstrike-feeding-repair/native-migration/checkpoint.snapshot.bin",
+      "bytes": 99711063,
+      "sha256": "9232b3351a33647bf75c22ad2c0160f9bfa2fc460f8ee1577d177c983e10d419"
+    },
+    {
+      "path": "docs/living-planet-architecture/counterstrike-feeding-repair/native-migration/checkpoint.snapshot.json.gz",
+      "bytes": 31914772,
+      "sha256": "4df193504c6023f104fcc7ac3a492db6daf7cda3ec2d5d048434343ab796337f"
+    },
+    {
+      "path": "docs/living-planet-architecture/founder-feedback-repair/post-feedback/descendants/birth.snapshot.bin",
+      "bytes": 50328236,
+      "sha256": "5ec4085609d0b12aa8a88db4922d31cc50ea2fb1dc7ce4502acad50d323e4110"
+    },
+    {
+      "path": "docs/living-planet-architecture/founder-feedback-repair/post-feedback/descendants/final.snapshot.bin",
+      "bytes": 50328282,
+      "sha256": "b764b3525ba2cb005a0c2927f2947389419ba82ae9d51e7c0e71c2aa5bc100f0"
+    },
+    {
+      "path": "docs/living-planet-architecture/founder-feedback-repair/post-feedback/maturity/final.snapshot.bin",
+      "bytes": 39491675,
+      "sha256": "c877bc86ed389ffe05a86f99e12b306d0f3f36b4009376ed04a61ac5b5ab2828"
+    },
+    {
+      "path": "docs/living-planet-architecture/head-structure-implementation/birth-audit/before-conception.snapshot.bin",
+      "bytes": 3356331,
+      "sha256": "5aac76516a7b038a8ea0e634312c71e168ff3596d3915fb5e571d78753beb5ff"
+    },
+    {
+      "path": "docs/living-planet-architecture/head-structure-implementation/birth-audit/candidate-birth.snapshot.bin",
+      "bytes": 15357882,
+      "sha256": "b7881f6c3059636c3bcb76d6589f3db86f9866fcf2456f7860556525e230b3e9"
+    },
+    {
+      "path": "docs/living-planet-architecture/head-structure-implementation/birth-audit/mid-gestation.snapshot.bin",
+      "bytes": 6785075,
+      "sha256": "88eef6964f2fc4efabcb146f2366e35cdfec5ea8462eca1b25c283ff38e1672b"
+    },
+    {
+      "path": "docs/living-planet-architecture/head-structure-implementation/descendants/birth.snapshot.bin",
+      "bytes": 53970999,
+      "sha256": "557ac4552a7b6328cf7c3cc2f1275f81734382595658646dfce43d4655df5749"
+    },
+    {
+      "path": "docs/living-planet-architecture/head-structure-implementation/descendants/final.snapshot.bin",
+      "bytes": 53971017,
+      "sha256": "343424b6029bd0fbd5f995186ab965e3af2426a3c76b8e2ae4b9feddce58cde8"
+    },
+    {
+      "path": "docs/living-planet-architecture/head-structure-implementation/maturity/final.snapshot.bin",
+      "bytes": 39106270,
+      "sha256": "853b62c64c652108f76f473b63046dd078bc4cac6577bc4c816ba827bca07b34"
+    },
+    {
+      "path": "docs/living-planet-architecture/head-structure-implementation/native-migration/checkpoint.snapshot.bin",
+      "bytes": 99711063,
+      "sha256": "9232b3351a33647bf75c22ad2c0160f9bfa2fc460f8ee1577d177c983e10d419"
+    },
+    {
+      "path": "docs/living-planet-architecture/head-structure-implementation/native-migration/checkpoint.snapshot.json.gz",
+      "bytes": 31914772,
+      "sha256": "4df193504c6023f104fcc7ac3a492db6daf7cda3ec2d5d048434343ab796337f"
+    },
+    {
+      "path": "docs/living-planet-architecture/optional-loss-mirror-repair/runtime/checkpoint.snapshot.bin",
+      "bytes": 99711063,
+      "sha256": "9232b3351a33647bf75c22ad2c0160f9bfa2fc460f8ee1577d177c983e10d419"
+    },
+    {
+      "path": "docs/living-planet-architecture/optional-loss-mirror-repair/runtime/checkpoint.snapshot.json.gz",
+      "bytes": 31914772,
+      "sha256": "4df193504c6023f104fcc7ac3a492db6daf7cda3ec2d5d048434343ab796337f"
+    },
+    {
+      "path": "docs/living-planet-architecture/optional-organ-loss/birth-audit/before-conception.snapshot.bin",
+      "bytes": 3357789,
+      "sha256": "df038d4106a0a06d89d58c43a2fe50c578f17ac7d0b7c0e82c6c7f5b20fb2658"
+    },
+    {
+      "path": "docs/living-planet-architecture/optional-organ-loss/birth-audit/candidate-birth.snapshot.bin",
+      "bytes": 12940664,
+      "sha256": "98ccf1d7fa464cef22d4915e8fce723e97f6a15d4993971b74604129e8f51b1d"
+    },
+    {
+      "path": "docs/living-planet-architecture/optional-organ-loss/birth-audit/mid-gestation.snapshot.bin",
+      "bytes": 6528133,
+      "sha256": "b90bb6904cd0a08c63df5bf069d46770118e16f1eeb248e66816f00118e5208a"
+    },
+    {
+      "path": "docs/living-planet-architecture/optional-organ-loss/eye-loss-replay/before-conception.snapshot.bin",
+      "bytes": 3356865,
+      "sha256": "8301ec7bacd19d6f1841aa9086a1c81295a5a54b843fb75239b33876e57258e4"
+    },
+    {
+      "path": "docs/living-planet-architecture/optional-organ-loss/eye-loss-replay/candidate-birth.snapshot.bin",
+      "bytes": 18201157,
+      "sha256": "743aa34f4b9ceea28f0feb40632cc7cc1fd919d929bd0a3f13c74fb196ace488"
+    },
+    {
+      "path": "docs/living-planet-architecture/optional-organ-loss/eye-loss-replay/mid-gestation.snapshot.bin",
+      "bytes": 7485787,
+      "sha256": "5b36b00581514f37ba5cd03ed549005274908408fe62878d7f3141bfda457778"
+    },
+    {
+      "path": "docs/living-planet-architecture/optional-organ-loss/parent-maturity-verified/final.snapshot.bin",
+      "bytes": 64687032,
+      "sha256": "de7a5bd73e41fb12e0c6244761aeb677332414a27304d9d3e6f34e516d01b054"
+    },
+    {
+      "path": "docs/living-planet-architecture/optional-organ-loss/reduced-descendants/birth.snapshot.bin",
+      "bytes": 47258218,
+      "sha256": "0b7fcb88ceb3b7f9047d6a74f2b76b22d05f2752e0ea90beac4b4610eb7114cc"
+    },
+    {
+      "path": "docs/living-planet-architecture/optional-organ-loss/reduced-descendants/final.snapshot.bin",
+      "bytes": 47258236,
+      "sha256": "cd46376c8ab427f47ffa93ea9ce10782f885d74d2c4684f13c2a326f3c76c013"
+    },
+    {
+      "path": "docs/living-planet-architecture/optional-organ-loss/reduced-land-maturity/final.snapshot.bin",
+      "bytes": 36513695,
+      "sha256": "28595b3a1aee2ef032816655e7b67bb1b6ae12e717fff75fb2a899c1c0343d3b"
+    },
+    {
+      "path": "docs/living-planet-architecture/optional-organ-loss/reduced-maturity/final.snapshot.bin",
+      "bytes": 42640726,
+      "sha256": "0f85387d02470d29362a9541a32da8eb21226a735fe85c3fb919f3e14544ad6a"
+    },
+    {
+      "path": "docs/living-planet-architecture/physical-authority-audit/local-biomass-migration/current-day54.snapshot.bin",
+      "bytes": 43739364,
+      "sha256": "fb72caf3e8cc44f857620381f0b6a0744dd9f7dc154ae02a86ccf90ebc13b00c"
+    },
+    {
+      "path": "docs/living-planet-architecture/physical-authority-audit/local-food-final-migration/continued-world.snapshot.bin",
+      "bytes": 44527776,
+      "sha256": "cdf241ddfb8cb69a59a4fa9e4761533db638b851a7e36dddb78db142f464513b"
+    },
+    {
+      "path": "docs/living-planet-architecture/physical-authority-audit/local-food-final-migration/continued-world.snapshot.json.gz",
+      "bytes": 12414837,
+      "sha256": "948c9acd317191ad3655f5c6d46b342ff82da7b0071d79251f83647be05a1b29"
+    },
+    {
+      "path": "docs/living-planet-architecture/physical-authority-audit/local-food-final-migration/current-day54.snapshot.bin",
+      "bytes": 43739488,
+      "sha256": "46a6612d2fd85c9310ca58d63f0ace6e80082dbce102266fe3ca7249049bfdd6"
+    },
+    {
+      "path": "docs/living-planet-architecture/population-origins-audit/paid-eggs/after-parent-deaths.snapshot.bin",
+      "bytes": 18139336,
+      "sha256": "b17a9aaebaa84cf76739c7b30459792a823b113a202827532c0559f81a6ae560"
+    },
+    {
+      "path": "docs/living-planet-architecture/population-origins-audit/paid-eggs/before-conception.snapshot.bin",
+      "bytes": 3359662,
+      "sha256": "ad576b1b26133cde61b1d41268951d2da23f45405a5db67dd09976f7ddf63f0c"
+    },
+    {
+      "path": "docs/living-planet-architecture/population-origins-audit/paid-eggs/final.snapshot.bin",
+      "bytes": 26860947,
+      "sha256": "95bc08f680e5953e0f7520e1764f3bd86fff87b58152c0614d17f8f5db15939c"
+    },
+    {
+      "path": "docs/living-planet-architecture/population-origins-audit/paid-eggs/laid.snapshot.bin",
+      "bytes": 18140404,
+      "sha256": "22567adb4a1107ce6bf6b78530a2b629681e23089276778bf95cbe18c974aaca"
+    },
+    {
+      "path": "docs/living-planet-architecture/population-origins-audit/paid-eggs/mid-gestation.snapshot.bin",
+      "bytes": 7680926,
+      "sha256": "8350c94e53a3ccf993f3f503137c4cd687d2d5ea51c736dfc279d815651ee185"
+    },
+    {
+      "path": "docs/living-planet-architecture/recombination-provenance/actual-birth/before.snapshot.bin",
+      "bytes": 3357398,
+      "sha256": "e349f9d6bc163b38c5e42af4573af4555e7c03d1979acb4ef87b8d8fa5541712"
+    },
+    {
+      "path": "docs/living-planet-architecture/recombination-provenance/actual-birth/birth.snapshot.bin",
+      "bytes": 16611157,
+      "sha256": "b8a179342fa24343910fd7533cf728d2f7f1ae100500567a1fdf8e29a00de655"
+    },
+    {
+      "path": "docs/living-planet-architecture/recombination-provenance/actual-birth/middle.snapshot.bin",
+      "bytes": 7309160,
+      "sha256": "fb8f8173b67cbaa366183624087883dc69295c80e4e038bf6458fcfb936689d8"
+    },
+    {
+      "path": "docs/player-journey/approach-interruption-continuation-3/checkpoint.snapshot.bin",
+      "bytes": 58885773,
+      "sha256": "0e34e5fdcca0557c7fccd8ff6f0645262302ee522b896fdb5d343070288250c0"
+    },
+    {
+      "path": "docs/player-journey/approach-interruption-continuation-3/checkpoint.snapshot.json.gz",
+      "bytes": 16938002,
+      "sha256": "33355dba3bf9db70379f9b62aeae329e034b85d511660cded3746a785826121d"
+    },
+    {
+      "path": "docs/player-journey/completion-window-panel-continuation-9/checkpoint.snapshot.bin",
+      "bytes": 68408717,
+      "sha256": "720899ced54f3b936b3a0d4c2f23c5863e2bf0cf6b4b56cd35608eeac8a9e596"
+    },
+    {
+      "path": "docs/player-journey/completion-window-panel-continuation-9/checkpoint.snapshot.json.gz",
+      "bytes": 20668403,
+      "sha256": "563305dca655d3cb6af503737e2d051bfc4b92a975cf40b609daae89ac90e57b"
+    },
+    {
+      "path": "docs/player-journey/current-policy-continuation-2/checkpoint.snapshot.bin",
+      "bytes": 49851349,
+      "sha256": "bf427a966f38f5b23fe832878203a82c67d87613a898635c6d66ec0664bcdef3"
+    },
+    {
+      "path": "docs/player-journey/current-policy-continuation-2/checkpoint.snapshot.json.gz",
+      "bytes": 14349102,
+      "sha256": "46d3ecfe3dca271877473e95240ca59082e6de7efe31b2572832dcd5d6b80053"
+    },
+    {
+      "path": "docs/player-journey/manual-courtship-expiry-continuation-4/checkpoint.snapshot.bin",
+      "bytes": 61773728,
+      "sha256": "69cd1542b819370de277f0a178d02b9e05797278d6eddc30a258912a37f72311"
+    },
+    {
+      "path": "docs/player-journey/manual-courtship-expiry-continuation-4/checkpoint.snapshot.json.gz",
+      "bytes": 18353826,
+      "sha256": "75440a1f2a95dcc6328a3522d89258f89dc0e7f32c118de4a24f692224bfab31"
+    },
+    {
+      "path": "docs/player-journey/mature-handoff-confirmed-16/checkpoint.snapshot.bin",
+      "bytes": 99711063,
+      "sha256": "9232b3351a33647bf75c22ad2c0160f9bfa2fc460f8ee1577d177c983e10d419"
+    },
+    {
+      "path": "docs/player-journey/mature-handoff-confirmed-16/checkpoint.snapshot.json.gz",
+      "bytes": 31914772,
+      "sha256": "4df193504c6023f104fcc7ac3a492db6daf7cda3ec2d5d048434343ab796337f"
+    },
+    {
+      "path": "docs/player-journey/native-drinking-5/checkpoint.snapshot.bin",
+      "bytes": 62924947,
+      "sha256": "dd1b50a8da8145c26fb8a9e034900d5363d01b525d534c4e3c1bc9922e77a16d"
+    },
+    {
+      "path": "docs/player-journey/native-drinking-5/checkpoint.snapshot.json.gz",
+      "bytes": 18525443,
+      "sha256": "8ed05a08a645525998c27fd3c9b7db0b9ceabfec54450c40096980cadc4ad2c5"
+    },
+    {
+      "path": "docs/player-journey/native-save-checkpoint/checkpoint.snapshot.bin",
+      "bytes": 16716175,
+      "sha256": "b928b06157a8fed2d83d2a156cb54add21e80a284daaf88d8969cd9c0db4479d"
+    },
+    {
+      "path": "docs/player-journey/native-save-checkpoint/checkpoint.snapshot.json.gz",
+      "bytes": 5193510,
+      "sha256": "2fc4d93acfe4e9c8ba929ca703a810685877b421965776ff23ba60694bb3698c"
+    },
+    {
+      "path": "docs/player-journey/native-save-continuation-1/checkpoint.snapshot.bin",
+      "bytes": 42230299,
+      "sha256": "c401ef786faea8940f0e5fa2e927be32e0ee26f47bd9711f8cbabf0dfe6a8435"
+    },
+    {
+      "path": "docs/player-journey/native-save-continuation-1/checkpoint.snapshot.json.gz",
+      "bytes": 12414013,
+      "sha256": "dfa5ecbac4792880aaec214eccd0dd100f8eb77ba38221ecc9388710a0cb6aa8"
+    },
+    {
+      "path": "docs/player-journey/northern-exploration-continuation-13/birth.snapshot.bin",
+      "bytes": 87939159,
+      "sha256": "818cd547e4090a74c32ee6d4b41aac00c8b1a00248fe43fe6c1790a21a9171c7"
+    },
+    {
+      "path": "docs/player-journey/northern-exploration-continuation-13/birth.snapshot.json.gz",
+      "bytes": 27674394,
+      "sha256": "eb12e2cb42f4278165050159a6f812288835778965ed37948a5bcf83a5372f8e"
+    },
+    {
+      "path": "docs/player-journey/northern-exploration-continuation-13/offspring-controlled.snapshot.bin",
+      "bytes": 87840039,
+      "sha256": "907ec1afd03fc96116e57c0baaec7632acb2d3033f989da5a0e4a3653c8ef53a"
+    },
+    {
+      "path": "docs/player-journey/northern-exploration-continuation-13/offspring-controlled.snapshot.json.gz",
+      "bytes": 27689152,
+      "sha256": "afc5a86165cb1e62faaec420f7d7cbfe62934c31950e066614e8f296ef0cd4be"
+    },
+    {
+      "path": "docs/player-journey/offspring-growth-continuation-14/checkpoint.snapshot.bin",
+      "bytes": 99704216,
+      "sha256": "b4a6f5f61fec6cc1b70e0c3276479c1b02db98c1d6b2fe2938c752abdb68d0b5"
+    },
+    {
+      "path": "docs/player-journey/offspring-growth-continuation-14/checkpoint.snapshot.json.gz",
+      "bytes": 31913333,
+      "sha256": "97d5144afb2038441bc501d919e41ffca0dd7e689bfc556fb5a1f712cbf8fb1d"
+    },
+    {
+      "path": "docs/player-journey/ownership-repair-continuation-11/checkpoint.snapshot.bin",
+      "bytes": 77134858,
+      "sha256": "e5cd9f3400a29c533c84a825e36b343c171dd69fbb2f97f2fe16b41c39454ff5"
+    },
+    {
+      "path": "docs/player-journey/ownership-repair-continuation-11/checkpoint.snapshot.json.gz",
+      "bytes": 23809056,
+      "sha256": "06afc5da30e262cc8835f2d695668f2e04f45116a2d023814eab01cec0778632"
+    },
+    {
+      "path": "docs/player-journey/reachability-continuation-12/checkpoint.snapshot.bin",
+      "bytes": 77148883,
+      "sha256": "d0be39a382e569b1c294acb5a81f9cda191d22b9c69b88ba85d296dfc1c6534b"
+    },
+    {
+      "path": "docs/player-journey/reachability-continuation-12/checkpoint.snapshot.json.gz",
+      "bytes": 23822619,
+      "sha256": "17d31c27dbb8e0e6c78ee1f0b95211de44e048aae323d2b39d651c1f7bab48e3"
+    },
+    {
+      "path": "docs/player-journey/termination-trace-continuation-10/checkpoint.snapshot.bin",
+      "bytes": 72317181,
+      "sha256": "6d29fabcb18d9f181de72640e3507016cb4d3a714c243e55a96371bdac6287f5"
+    },
+    {
+      "path": "docs/player-journey/termination-trace-continuation-10/checkpoint.snapshot.json.gz",
+      "bytes": 21999870,
+      "sha256": "3037b086dca3db6d27c0ef1ed3db2bd53ec565568c5472b818b10a4f5c9a05f0"
+    }
+  ],
+  "totalBytes": 2895178364
+}

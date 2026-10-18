@@ -1,0 +1,74 @@
+{
+ "res": "1440x900",
+ "seed": "PHASE4-ORDINARY",
+ "dayAdvanced": 120,
+ "query": "",
+ "moving": 0,
+ "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3050 (0x00002582) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+ "software": false,
+ "day": 121,
+ "animals": 321,
+ "playerAlive": true,
+ "paused": false,
+ "frames": 87,
+ "presentedFps": 4.9,
+ "frameMs": {
+  "mean": 202.1,
+  "p50": 200.1,
+  "p95": 266.7,
+  "p99": 386.8,
+  "max": 386.9
+ },
+ "renderMs": {
+  "mean": 181,
+  "p50": 186.6,
+  "p95": 211.8
+ },
+ "simMs": {
+  "mean": 9.9,
+  "p50": 1.2,
+  "p95": 35.1
+ },
+ "creaturePrepMs": {
+  "mean": 169.8,
+  "p50": 176,
+  "p95": 199.7
+ },
+ "creatureComposeMs": {
+  "mean": 0.5,
+  "p50": 0.5,
+  "p95": 0.6
+ },
+ "otherMs": {
+  "p50": 11.3,
+  "p95": 84.1
+ },
+ "visibleCreatures": {
+  "mean": 83.7,
+  "p50": 84,
+  "p95": 86
+ },
+ "movingVisible": {
+  "mean": 65.9,
+  "p50": 66,
+  "p95": 75
+ },
+ "freshSpritesPerFrame": {
+  "mean": 74,
+  "p50": 74,
+  "p95": 84
+ },
+ "canvasesCreatedPerSecond": 156.09,
+ "heapMB": {
+  "start": 348.8,
+  "end": 156.1
+ },
+ "spriteTimingMsPerFrame": {},
+ "live": {
+  "paused": false,
+  "playerAlive": true,
+  "day": 123,
+  "animals": 319
+ },
+ "errors": []
+}

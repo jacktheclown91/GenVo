@@ -1,0 +1,348 @@
+{
+ "schema": "genvo.test-run/3",
+ "validationCode": {
+  "scope": "src, tools and tests code/configuration; not a release seal",
+  "start": "c039f480a4b507de4f44a94d1d89422c41dfb5c508e5fa2ccb1228ae6319132e",
+  "end": "c039f480a4b507de4f44a94d1d89422c41dfb5c508e5fa2ccb1228ae6319132e",
+  "inputDrift": false
+ },
+ "classificationNote": "byKind counts overlap for mixed suites; unclassified means not yet audited",
+ "mode": "fast",
+ "date": "2026-10-17T17:01:25.775Z",
+ "seconds": 28,
+ "artifacts": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts",
+ "total": 20,
+ "pass": 16,
+ "knownFail": 0,
+ "fail": 0,
+ "timeout": 0,
+ "stale": 0,
+ "deferred": 4,
+ "byKind": {
+  "biological-invariant": {
+   "pass": 16,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 4
+  },
+  "mechanism": {
+   "pass": 16,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 1
+  },
+  "ecological-observation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 3
+  },
+  "performance": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 3
+  },
+  "historical-expectation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "release-gate": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "unclassified": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  }
+ },
+ "results": [
+  {
+   "name": "botanical-safety",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts\\botanical-safety.log"
+  },
+  {
+   "name": "conception-parental-inheritance",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 6.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts\\conception-parental-inheritance.log"
+  },
+  {
+   "name": "consolidation-demand-parity",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 13,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts\\consolidation-demand-parity.log"
+  },
+  {
+   "name": "ecological-integrity",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts\\ecological-integrity.log"
+  },
+  {
+   "name": "ecological-observation",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 2.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts\\ecological-observation.log"
+  },
+  {
+   "name": "ecology-observation-100",
+   "kinds": [
+    "biological-invariant",
+    "ecological-observation",
+    "performance"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "family-weather-refuge",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts\\family-weather-refuge.log"
+  },
+  {
+   "name": "gestation-inheritance",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 4.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts\\gestation-inheritance.log"
+  },
+  {
+   "name": "hydrology",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "maternal-birth-authority",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 0.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts\\maternal-birth-authority.log"
+  },
+  {
+   "name": "natural-world-soak",
+   "kinds": [
+    "biological-invariant",
+    "ecological-observation",
+    "performance"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "plant-resource-contract",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 1.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts\\plant-resource-contract.log"
+  },
+  {
+   "name": "reproductive-compatibility",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts\\reproductive-compatibility.log"
+  },
+  {
+   "name": "shelter-weatherproofing",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 1.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts\\shelter-weatherproofing.log"
+  },
+  {
+   "name": "soil-water",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 3.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts\\soil-water.log"
+  },
+  {
+   "name": "storm-aftermath",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts\\storm-aftermath.log"
+  },
+  {
+   "name": "weather-exposure",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 1.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts\\weather-exposure.log"
+  },
+  {
+   "name": "weather-patterns",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts\\weather-patterns.log"
+  },
+  {
+   "name": "weather-soil-resume",
+   "kinds": [
+    "biological-invariant",
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 15.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\invariants-mechanism-first-2026-10-17.artifacts\\weather-soil-resume.log"
+  },
+  {
+   "name": "wild-evolution-observation",
+   "kinds": [
+    "biological-invariant",
+    "ecological-observation",
+    "performance"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  }
+ ]
+}

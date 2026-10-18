@@ -1,3 +1,4 @@
+import {salinityAt} from '../world/environment.js';
 import {fundAquaticGrowth,mineralizeOrganic,exportAquaticReserve} from './organic-resource-cycle.js';
 import {coordNoise} from '../core/rng.js';
 
@@ -11,19 +12,35 @@ export const FRESHWATER_FOOD=Object.freeze({
   detritus:{label:'Aquatic carrion / detritus',nutrition:34,surface:false}
 });
 const KEYS=Object.keys(FRESHWATER_FOOD).filter(k=>k!=='detritus');
+// Aquatic food-web corrections (Phase 3F diagnosis).
+// Diagnosis (docs/GenVo-Phase3F-Report.md): consumer tiers grow only in proportion to their own
+// biomass, founded at 2% of their source. Fry's best net rate is ~0.8%/day (growth .012, upkeep .004),
+// so from 0.0002 per cell fry need roughly two game years to become food, and Bankjaw has none.
+//  fryGrowth: fry growth matches larvae (.025). Energy still comes only from larvae at efficiency .2.
+//  founding: initial larvae/fry stocks are 10% (not 2%) of their source, still funded from producer
+//    biomass at that efficiency during world generation. No food is added after the world begins.
+// PROVISIONAL DEVELOPMENT DEFAULTS (creator decision 2026-10-15); ?aquaticReview=0 restores the previous values.
+export const AQUATIC_REVIEW={fryGrowth:true,founding:true,crowding:true};
+// crowding: interference competition. A consumer tier's upkeep rises with its own density relative to
+// habitat capacity (x(1+CROWDING_STRENGTH*density/carry)); losses become aquatic carrion as before.
+// A self-limiting mechanism, not a cap. CROWDING_STRENGTH is a PROPOSAL.
+export const CROWDING_STRENGTH=1;
+const REVIEW_FRY_GROWTH=.025,REVIEW_FOUNDING=.10;
+export const growthOf=(kind,p)=>kind==='fry'&&AQUATIC_REVIEW.fryGrowth?REVIEW_FRY_GROWTH:p.growth;
 export function initializeFreshwater(world){
   world.freshwaterProducerKinds=KEYS.filter(k=>!FRESHWATER_FOOD[k].source);
   world.freshwaterFood=Object.fromEntries(KEYS.map(k=>[k,new Float32Array(world.len)]));
   for(let i=0;i<world.len;i++){
     if(!world.water[i]||!world.isPlayable(i%world.n+.5,(i/world.n|0)+.5))continue;
     const x=i%world.n,y=i/world.n|0,patch=coordNoise(world.seedHash^0x741ac,x,y),f=world.fertility[i];
-    const fields=world.freshwaterFood;
-    fields.algae[i]=.25+.35*f;
-    fields.duckweed[i]=patch>.55?.12+.14*f:0;
-    fields.waterweed[i]=patch>.35?.15+.2*f:0;
+    const fields=world.freshwaterFood;const fresh=Math.max(0,1-salinityAt(world,i)*10);
+    fields.algae[i]=(.25+.35*f)*fresh;
+    fields.duckweed[i]=patch>.55?(.12+.14*f)*fresh:0;
+    fields.waterweed[i]=patch>.35?(.15+.2*f)*fresh:0;
     // Initial lower trophic organisms are funded from standing producer biomass.
-    const larvae=fields.algae[i]*.02;fields.algae[i]-=larvae/.2;fields.larvae[i]=larvae;
-    const fry=larvae*.02;fields.larvae[i]-=fry/.2;fields.fry[i]=fry;
+    const share=AQUATIC_REVIEW.founding?REVIEW_FOUNDING:.02;
+    const larvae=fields.algae[i]*share;fields.algae[i]-=larvae/.2;fields.larvae[i]=larvae;
+    const fry=larvae*share;fields.larvae[i]-=fry/.2;fields.fry[i]=fry;
   }
 }
 export function freshwaterField(world,kind){return kind==='detritus'?world.carrion:world.freshwaterFood?.[kind]}
@@ -36,13 +53,13 @@ export function canAccessFreshwater(sim,animal,x,y,food){
 export function advanceFreshwater(world){
   for(let i=0;i<world.len;i++){
     if(!world.water[i]||!world.isPlayable(i%world.n+.5,(i/world.n|0)+.5))continue;
-    const light=Math.max(.15,1-Math.abs(world.temperature[i]-.58)*1.7),nutrients=Math.max(0,Math.min(1,world.fertility[i]));
-    const requests=world.freshwaterProducerKinds.map(kind=>{const p=FRESHWATER_FOOD[kind],field=freshwaterField(world,kind),eligible=!p.minPatch||coordNoise(world.seedHash^0x741ac,i%world.n,i/world.n|0)>p.minPatch;return{kind,field,wanted:eligible?Math.min(Math.max(0,p.carry-field[i]),p.growth*light*nutrients*(.1+field[i]/p.carry)):0}});fundAquaticGrowth(world,i,requests,light);
+    const fresh=Math.max(0,1-salinityAt(world,i)*10),light=Math.max(.15,1-Math.abs(world.temperature[i]-.58)*1.7),nutrients=Math.max(0,Math.min(1,world.fertility[i]));
+    const requests=world.freshwaterProducerKinds.map(kind=>{const p=FRESHWATER_FOOD[kind],field=freshwaterField(world,kind),eligible=!p.minPatch||coordNoise(world.seedHash^0x741ac,i%world.n,i/world.n|0)>p.minPatch;return{kind,field,wanted:eligible&&fresh>0?fresh*Math.min(Math.max(0,p.carry-field[i]),p.growth*light*nutrients*(.1+field[i]/p.carry)):0}});fundAquaticGrowth(world,i,requests,light);
     for(const kind of KEYS){const p=FRESHWATER_FOOD[kind],field=freshwaterField(world,kind);
       if(p.minPatch&&coordNoise(world.seedHash^0x741ac,i%world.n,i/world.n|0)<=p.minPatch)continue;
       if(p.source){
-        const before=field[i],maintenance=before*p.upkeep;
-        const growth=Math.min(p.growth*before*light,Math.max(0,p.carry-before));
+        const before=field[i],maintenance=before*p.upkeep*(AQUATIC_REVIEW.crowding?1+CROWDING_STRENGTH*before/(p.carry||1):1);
+        const growth=Math.min(growthOf(kind,p)*before*light,Math.max(0,p.carry-before));
         let needed=maintenance+growth,assimilated=0,consumed=0;
         // Feeding at capacity still pays upkeep; without food, existing tissue
         // is lost rather than becoming immortal standing prey biomass.
@@ -64,6 +81,7 @@ export function advanceFreshwater(world){
       }
       
     }
+    if(fresh<1)for(const kind of KEYS){const field=freshwaterField(world,kind),before=field[i],loss=before*(1-fresh)*.1;field[i]-=loss;exportAquaticReserve(world,kind,i,loss,before);world.organicResources.litter[i]+=loss;world.organicResources.totals.aquaticWaste+=loss;}
     const decay=Math.min(world.carrion[i],.03*light);const beforeCarrion=world.carrion[i];world.carrion[i]-=decay;mineralizeOrganic(world,i,beforeCarrion-world.carrion[i]);const organic=world.organicResources,spent=Math.min(organic.litter[i],.03*light);organic.litter[i]-=spent;mineralizeOrganic(world,i,spent);world.fertility[i]=Math.min(1,world.fertility[i]+decay*.018);
   }
 }

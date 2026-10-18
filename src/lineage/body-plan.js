@@ -1,3 +1,4 @@
+import {adaptationAxis} from './water-physiology.js';
 import {PARTS,REGISTRY_VERSION,partDef} from './part-registry.js';
 import {anatomyFromAdaptations} from './evolution.js';
 
@@ -76,7 +77,7 @@ export function partCounts(plan){const out={};for(const n of plan.nodes)out[n.pa
 // is the founder default (soft torso, eight walking legs, grazing mouth, two simple eyes).
 export function bodyPlanFromLegacy(animal){
   const an=animal?.anatomy?{...animal.anatomy}:anatomyFromAdaptations(animal?.adaptations);
-  const at=(axis,t)=>(an[axis]||0)>=t,placements=[{partId:'soft-torso',parent:null,socket:null}];
+  const at=(axis,t)=>(an[axis==='waterBody'?adaptationAxis(an,t>=.8?'webbed-limbs':'water-sacs',axis):axis]||0)>=t,placements=[{partId:'soft-torso',parent:null,socket:null}];
   // Legs in DIR8 order relative to facing: 0 front ... 4 rear. Rear legs 3-5 carry the tendons, the three
   // front legs (7, 0, 1) the hooks, and the six side legs the barbs, matching how v1.33.7 drew them.
   for(let i=0;i<8;i++){

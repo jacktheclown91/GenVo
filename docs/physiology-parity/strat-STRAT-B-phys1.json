@@ -1,0 +1,111 @@
+{
+ "schema": "genvo.player-strategy/1",
+ "days": 160,
+ "rows": [
+  {
+   "physiology": "shared",
+   "firstDeathDay": null,
+   "share": {},
+   "mate": {
+    "branch": 0,
+    "eligible": 0,
+    "tries": 20,
+    "conceived": 1
+   },
+   "deathCause": "faded day 160 W0.67 E0.72",
+   "seed": "STRAT-B",
+   "strategy": "auto",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 0,
+   "lineageBirths": 11,
+   "firstChildDay": 26,
+   "highestGeneration": 3,
+   "energyMedian": 0.71
+  },
+  {
+   "physiology": "shared",
+   "firstDeathDay": null,
+   "share": {
+    "other": 0.06,
+    "eat": 0.94
+   },
+   "mate": {
+    "branch": 7064,
+    "eligible": 7058,
+    "tries": 12,
+    "conceived": 0,
+    "started": 11,
+    "refusals": {
+     "An approach or performance is already underway.": 7047
+    }
+   },
+   "deathCause": "faded day 160 W0.58 E0.72",
+   "seed": "STRAT-B",
+   "strategy": "forager",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.82
+  },
+  {
+   "physiology": "shared",
+   "firstDeathDay": null,
+   "share": {
+    "other": 0.06,
+    "eat": 0.94
+   },
+   "mate": {
+    "branch": 7064,
+    "eligible": 7058,
+    "tries": 12,
+    "conceived": 0,
+    "started": 11,
+    "refusals": {
+     "An approach or performance is already underway.": 7047
+    }
+   },
+   "deathCause": "faded day 160 W0.58 E0.72",
+   "seed": "STRAT-B",
+   "strategy": "refuge",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.82
+  },
+  {
+   "physiology": "shared",
+   "firstDeathDay": null,
+   "share": {
+    "other": 0.06,
+    "eat": 0.94
+   },
+   "mate": {
+    "branch": 7064,
+    "eligible": 7058,
+    "tries": 12,
+    "conceived": 0,
+    "started": 11,
+    "refusals": {
+     "An approach or performance is already underway.": 7047
+    }
+   },
+   "deathCause": "faded day 160 W0.58 E0.72",
+   "seed": "STRAT-B",
+   "strategy": "defend",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.82
+  }
+ ]
+}

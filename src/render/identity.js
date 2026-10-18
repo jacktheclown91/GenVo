@@ -29,10 +29,15 @@ export function terrainPaletteAt(world,wx,wy,moisture=null,fertility=null){
   // Continuous renderer-only ground bias. Unlike habitat identity labels, these values never
   // jump at a tile or category threshold, so broad meadow color reads as one landscape instead
   // of a checkerboard of independently tinted cells.
+  const e=world.terrain?.elevation;
+  const height=(x,y)=>e?.[world.idx(x,y)]||0;
+  const x=Math.floor(wx),y=Math.floor(wy),u=wx-x,v=wy-y;
+  const sampleHeight=(ox,oy)=>(height(x+ox,y+oy)*(1-u)+height(x+ox+1,y+oy)*u)*(1-v)+(height(x+ox,y+oy+1)*(1-u)+height(x+ox+1,y+oy+1)*u)*v;
+  const relief=e?Math.max(-3,Math.min(3,(sampleHeight(-1,-1)-sampleHeight(1,1))*24)):0;
   return {
     hue:(broad-.5)*3.2+(sub-.5)*1.4+wet*1.8-dry*5.4+rich*.9,
     sat:(broad-.5)*1.1+wet*1.5-dry*1.7+rich*1.8,
-    light:(sub-.5)*1.0+dry*1.5-rich*.8-wet*.35
+    light:(sub-.5)*1.0+dry*1.5-rich*.8-wet*.35+relief
   };
 }
 

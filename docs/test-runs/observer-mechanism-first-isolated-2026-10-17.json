@@ -1,0 +1,95 @@
+{
+ "schema": "genvo.test-run/3",
+ "validationCode": {
+  "scope": "src, tools and tests code/configuration; not a release seal",
+  "start": "2d74907b5c52a42e0eaf9e864baa7a98ed5106dcd7c2c25e1eb13ded8b44c8b0",
+  "end": "2d74907b5c52a42e0eaf9e864baa7a98ed5106dcd7c2c25e1eb13ded8b44c8b0",
+  "inputDrift": false
+ },
+ "classificationNote": "byKind counts overlap for mixed suites; unclassified means not yet audited",
+ "mode": "fast",
+ "date": "2026-10-17T17:11:45.275Z",
+ "seconds": 4,
+ "artifacts": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\observer-mechanism-first-isolated-2026-10-17.artifacts",
+ "total": 1,
+ "pass": 0,
+ "knownFail": 0,
+ "fail": 1,
+ "timeout": 0,
+ "stale": 0,
+ "deferred": 0,
+ "byKind": {
+  "biological-invariant": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "mechanism": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 1,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "ecological-observation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "performance": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 1,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "historical-expectation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "release-gate": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "unclassified": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  }
+ },
+ "results": [
+  {
+   "name": "observer-play",
+   "kinds": [
+    "mechanism",
+    "performance"
+   ],
+   "tier": "fast",
+   "seconds": 3.5,
+   "timeoutSeconds": 120,
+   "status": "fail",
+   "at": "tests/observer-play.mjs:59",
+   "error": "AssertionError [ERR_ASSERTION]: 4x with 560+ animals costs 544 ms per real second of play\r",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\observer-mechanism-first-isolated-2026-10-17.artifacts\\observer-play.log"
+  }
+ ]
+}

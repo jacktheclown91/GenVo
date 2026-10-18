@@ -1,0 +1,31 @@
+# Courtship completion inside the existing validity window
+
+A paid display remained valid through endsAt + CFG.lifeStride in activeCourtship, but performCourtship required observation at the exact endsAt tick. Returning to arrival range one update late could start a second paid display instead of completing the first. The new regression reproduced that contradiction against the old source; pre-repair-failure.txt preserves its result. It does not reconstruct the unknown cause of an earlier ordinary encounter.
+
+Completion now uses the same existing grace endpoint as the shared validator. No display duration, acceptance probability, preferred population outcome or mutation rule changes. Completion still delegates to normal mating/conception checks. The regression checks every offset1..6 in the existing window, retaining the original funded display, attempt identity, energy, learning and ecology RNG, with saved completion preserved. Focused courtship, interrupted approach, live encounter and refusal checks pass.
+
+The first browser continuation attempt stopped at a page.reload load-event timeout before recording the saved world. Its failure is retained in ../completion-window-continuation-6/failure.json. No browser page errors were recorded. It provides no gameplay or renderer verdict. Subsequent verification is recorded below after completion.
+
+The full A-H objective and all seven LP criteria remain open. This timing repair cannot prove general anatomy, calibrated physical development, care, maturation, descendant handoff or continental ecology. No commit, push or release was performed.
+
+## Optimization reference and final gate
+
+The first full gate exposed an intentional-biology mismatch in consolidation-demand-parity: the frozen reference used exact-tick completion and spent one extra0.345952 display energy at update443/actor126. initial-parity-failure.log preserves that failure. The comparison now dispatches only mate interactions through the current shared performCourtship authority on the reference side; its frozen foraging/carrying algorithms remain intact. All480 exact actor-position/reserve/intent/drive, RNG, population-length and carrying assertions remain. The natural reference run exercised377 courtship checks. This is a justified same-biology optimization comparison, not historical behavioral equivalence with the repaired defect.
+
+The final source gate, including the later panel repair, is docs/test-runs/courtship-window-panel-final-fast-2026-10-18.json:401 pass, five known failures, zero new failures/timeouts/stale ledger, twelve deferred of418 in136 seconds. Final src/tools/tests hashes match in validation-inputs.json. Known failures remain ai-disclosure, canonical-source, evolution-contract, player-copy-style and provenance. No budgets or biological assertions were weakened. Earlier gate receipts remain historical.
+
+## Live panel controls
+
+The running mate panel rebuilt its summary on every live refresh; a normal mouse click repeatedly lost its target to DOM replacement. The failed live trial is retained in ../completion-window-continuation-7/failure.json. The mate panel now opts into text-node updates only when its complete markup/attribute structure matches. Summary, Close and Expand identity survive text changes. Structural changes still use the previous full rebuild and preserve open state/focus. Other knowledge panels retain their existing behavior.
+
+panel-browser-proof.json and its executed script verify the actual module in fresh Chromium:100 animation-frame text updates preserve the same controls, normal summary/Close clicks work, and an actual structural addition rebuilds correctly with open state preserved. No synthetic organism is involved. The proof source hash matches current source. Existing menu, presentation and knowledge checks also pass.
+
+The next live attempt stopped before Continue appeared, with no page errors; ../completion-window-panel-continuation-8/failure.json preserves that observation failure. The final diagnostic script waits for the application object after DOM readiness and records page state/screenshot if it fails. It does not change biology or force clicks. Its exact script is retained here. The real biological-details click and expanded panel in ../completion-window-panel-continuation-9/region-0.png were visually inspected. The protocol is now terminal; its saved-world results follow below.
+
+## Actual saved-world continuation
+
+The diagnostic run in ../completion-window-panel-continuation-9 resumed the genuine day97 world. Normal mate-panel clicks, keyboard selection, three courtship commands, exploration and available local meals reached day118/tick5644 with player109 age149, health100 and no offspring. No body/genome/resource/RNG/consent edits, spawning or fast-forward were used. It is UI-guided automation, not human or mouse-first skilled-player acceptance. None of its sparse observations contains an active or completed display: the new completion-window behavior is proven by controlled regression, not claimed as exercised by this ordinary run. Approaches ended without new per-encounter terminal records in this telemetry; their precise causes remain unresolved. No successful mating is inferred from issuing C.
+
+Native Save World preserved slot world-ee0f0ce2-69fd-4041-8b06-01e769e98716, seed GENVO8-TEST-A, body bp0-4134709b. The compressed archive SHA256 is563305dca655d3cb6af503737e2d051bfc4b92a975cf40b609daae89ac90e57b. save-verification.json proves full raw roundtrip and twelve real updates with an intermediate restore after six. Normal reload/Continue reached tick5658 in the same world; the complete loaded scene was visually inspected in native-continue.png. Browser errors were empty. Exact browser-frame equality and hardware performance were not measured.
+
+This is a sequence of local saved-world interaction checks. Reaching an absolute day118 does not establish the original young/established and autonomous/player-guided100-day integrated trials, whose essential mechanisms remain incomplete. Active care, maturation, descendant control and the complete A-H scope remain open. The next player-observation gap includes attributing approach termination and physical reachability, rather than repeating an unexplained mate search or fabricating success.

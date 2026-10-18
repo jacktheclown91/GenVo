@@ -1,0 +1,172 @@
+{
+ "tool": "tools/capture-integrated-gameplay.cjs",
+ "viewport": "1440x900",
+ "controlled": [
+  {
+   "name": "gait-walker",
+   "seconds": 2.4,
+   "recorded": false,
+   "frames": 279,
+   "fps": 56.7,
+   "medianMs": 16.7,
+   "p95Ms": 16.8,
+   "worstMs": 83.4,
+   "staged": "legal body on cleared land; real keyboard input"
+  },
+  {
+   "name": "gait-runner",
+   "seconds": 2.4,
+   "recorded": false,
+   "frames": 282,
+   "fps": 57.7,
+   "medianMs": 16.7,
+   "p95Ms": 16.7,
+   "worstMs": 200,
+   "staged": "legal body on cleared land; real keyboard input"
+  },
+  {
+   "name": "gait-heavy",
+   "seconds": 2.4,
+   "recorded": false,
+   "frames": 273,
+   "fps": 55.9,
+   "medianMs": 16.7,
+   "p95Ms": 16.8,
+   "worstMs": 199.9,
+   "staged": "legal body on cleared land; real keyboard input"
+  },
+  {
+   "name": "gait-spring",
+   "seconds": 2.4,
+   "recorded": false,
+   "frames": 263,
+   "fps": 54,
+   "medianMs": 16.7,
+   "p95Ms": 16.8,
+   "worstMs": 200,
+   "staged": "legal body on cleared land; real keyboard input"
+  },
+  {
+   "name": "gait-webbed",
+   "seconds": 2.4,
+   "recorded": false,
+   "frames": 266,
+   "fps": 54.6,
+   "medianMs": 16.7,
+   "p95Ms": 16.8,
+   "worstMs": 183.3,
+   "staged": "legal body on cleared land; real keyboard input"
+  },
+  {
+   "name": "swim-paddle",
+   "seconds": 2.6,
+   "recorded": false,
+   "frames": 301,
+   "fps": 55.9,
+   "medianMs": 16.7,
+   "p95Ms": 16.8,
+   "worstMs": 100,
+   "staged": "legal body at a shore; real keyboard input into water"
+  },
+  {
+   "name": "swim-walker-blocked",
+   "seconds": 2,
+   "recorded": false,
+   "frames": 215,
+   "fps": 52.8,
+   "medianMs": 16.7,
+   "p95Ms": 33.3,
+   "worstMs": 266.6,
+   "staged": "non-swimmer pushed at water with real input"
+  },
+  {
+   "name": "braced-charge",
+   "seconds": 1.6,
+   "recorded": false,
+   "frames": 88,
+   "fps": 50.2,
+   "medianMs": 16.7,
+   "p95Ms": 33.4,
+   "worstMs": 100.1,
+   "staged": "heavy plated body braces a staged charge; contact forced to land; predator.resolveCharge resolves it"
+  },
+  {
+   "name": "club-tail-repel",
+   "seconds": 1.6,
+   "recorded": false,
+   "frames": 84,
+   "fps": 47.4,
+   "medianMs": 16.7,
+   "p95Ms": 33.3,
+   "worstMs": 233.4,
+   "staged": "club tail facing away; bite and repel roll forced; tryKill resolves damage and repel"
+  },
+  {
+   "name": "shell-from-behind",
+   "seconds": 1.6,
+   "recorded": false,
+   "frames": 95,
+   "fps": 53.2,
+   "medianMs": 16.7,
+   "p95Ms": 33.4,
+   "worstMs": 49.9,
+   "staged": "shell back bitten from behind; bite forced to land, repel forced off"
+  },
+  {
+   "name": "prey-bite",
+   "seconds": 1.6,
+   "recorded": false,
+   "frames": 83,
+   "fps": 46,
+   "medianMs": 16.7,
+   "p95Ms": 33.3,
+   "worstMs": 183.3,
+   "staged": "tearing jaw bites a mosskip; hit forced"
+  },
+  {
+   "name": "prey-dodge",
+   "seconds": 1.6,
+   "recorded": false,
+   "frames": 82,
+   "fps": 46.3,
+   "medianMs": 16.7,
+   "p95Ms": 33.3,
+   "worstMs": 250.1,
+   "staged": "same bite forced to miss"
+  }
+ ],
+ "natural": {
+  "name": "natural-session",
+  "seconds": 20,
+  "recorded": false,
+  "frames": 2305,
+  "fps": 55.1,
+  "medianMs": 16.7,
+  "p95Ms": 16.8,
+  "worstMs": 266.6,
+  "staged": "none: fresh world, opening grace ended, keyboard wandering at normal time",
+  "reactionKinds": {},
+  "summary": {
+   "tick": 335,
+   "playerAlive": true,
+   "health": 100,
+   "injury": "none",
+   "lastDamage": null,
+   "defense": null,
+   "alive": 196
+  }
+ },
+ "errors": [],
+ "consoleErrors": [],
+ "controlledReactionKinds": {
+  "stagger": 88,
+  "brace-frontal": 37,
+  "armor-absorb": 58,
+  "organ-recoil": 37,
+  "organ:club": 29,
+  "retreat-cowed": 70,
+  "shell-turn": 46,
+  "prey-bitten": 29,
+  "prey-dodge": 24
+ }
+}

@@ -1,0 +1,186 @@
+{
+  "scope": "Read-only audit of actual native birth and offspring-controlled archives, matched to UI telemetry and original unique world. Actual ancestry and recorded current-rule inheritance, not SI tissue accounting, new capability, maturity or permanent succession acceptance.",
+  "input": "docs/player-journey/reachability-continuation-12/checkpoint.snapshot.bin",
+  "birthFile": "docs\\player-journey\\northern-exploration-continuation-13\\birth.snapshot.bin",
+  "controlFile": "docs\\player-journey\\northern-exploration-continuation-13\\offspring-controlled.snapshot.bin",
+  "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+  "seed": "GENVO8-TEST-A",
+  "birthDay": 181,
+  "birthRules": {
+    "schema": 1,
+    "inheritedVariation": "neutral-core/1",
+    "populationTraits": "neutral-parental/1",
+    "familyForms": "neutral-parental/1",
+    "anatomyProjection": "supported-water/1",
+    "bodyVariation": "neutral-optional-loss/1"
+  },
+  "children": [
+    {
+      "id": 491,
+      "generation": 3,
+      "parentIds": [
+        202,
+        109
+      ],
+      "age": 0,
+      "alive": true,
+      "bornDay": 180,
+      "bodyId": "bp0-4134709b",
+      "parts": {
+        "small-torso": 1,
+        "simple-eye": 2,
+        "walking-leg": 4,
+        "grazing-mouth": 1
+      },
+      "bodyVariation": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "inherit",
+        "attempted": false,
+        "accepted": true,
+        "from": "bp0-4134709b",
+        "to": "bp0-4134709b",
+        "targets": [],
+        "removed": [],
+        "parentBodies": [
+          {
+            "id": 202,
+            "bodyId": "bp0-4134709b"
+          },
+          {
+            "id": 109,
+            "bodyId": "bp0-4134709b"
+          }
+        ],
+        "finalBody": "bp0-4134709b",
+        "guidedOverride": false,
+        "expression": []
+      },
+      "capabilities": {
+        "swims": false,
+        "quiet": false,
+        "dig": false,
+        "venom": false,
+        "wideField": false,
+        "paddle": false
+      },
+      "newBooleanCapabilities": [],
+      "actualConceptionBodySnapshotsMatch": true,
+      "reproductiveAlleleReceiptsMatch": true
+    },
+    {
+      "id": 492,
+      "generation": 3,
+      "parentIds": [
+        202,
+        109
+      ],
+      "age": 0,
+      "alive": true,
+      "bornDay": 180,
+      "bodyId": "bp0-4134709b",
+      "parts": {
+        "small-torso": 1,
+        "simple-eye": 2,
+        "walking-leg": 4,
+        "grazing-mouth": 1
+      },
+      "bodyVariation": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "inherit",
+        "attempted": false,
+        "accepted": true,
+        "from": "bp0-4134709b",
+        "to": "bp0-4134709b",
+        "targets": [],
+        "removed": [],
+        "parentBodies": [
+          {
+            "id": 202,
+            "bodyId": "bp0-4134709b"
+          },
+          {
+            "id": 109,
+            "bodyId": "bp0-4134709b"
+          }
+        ],
+        "finalBody": "bp0-4134709b",
+        "guidedOverride": false,
+        "expression": []
+      },
+      "capabilities": {
+        "swims": false,
+        "quiet": false,
+        "dig": false,
+        "venom": false,
+        "wideField": false,
+        "paddle": false
+      },
+      "newBooleanCapabilities": [],
+      "actualConceptionBodySnapshotsMatch": true,
+      "reproductiveAlleleReceiptsMatch": true
+    },
+    {
+      "id": 493,
+      "generation": 3,
+      "parentIds": [
+        202,
+        109
+      ],
+      "age": 0,
+      "alive": true,
+      "bornDay": 180,
+      "bodyId": "bp0-4134709b",
+      "parts": {
+        "small-torso": 1,
+        "simple-eye": 2,
+        "walking-leg": 4,
+        "grazing-mouth": 1
+      },
+      "bodyVariation": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "inherit",
+        "attempted": false,
+        "accepted": true,
+        "from": "bp0-4134709b",
+        "to": "bp0-4134709b",
+        "targets": [],
+        "removed": [],
+        "parentBodies": [
+          {
+            "id": 202,
+            "bodyId": "bp0-4134709b"
+          },
+          {
+            "id": 109,
+            "bodyId": "bp0-4134709b"
+          }
+        ],
+        "finalBody": "bp0-4134709b",
+        "guidedOverride": false,
+        "expression": []
+      },
+      "capabilities": {
+        "swims": false,
+        "quiet": false,
+        "dig": false,
+        "venom": false,
+        "wideField": false,
+        "paddle": false
+      },
+      "newBooleanCapabilities": [],
+      "actualConceptionBodySnapshotsMatch": true,
+      "reproductiveAlleleReceiptsMatch": true
+    }
+  ],
+  "editorCommitsUnchanged": true,
+  "temporaryControl": {
+    "playerId": 491,
+    "lineageActiveId": 109,
+    "observedDistance": 1.1748838650204085,
+    "age": 0
+  },
+  "archiveHashes": {
+    "birth.snapshot.bin": "818cd547e4090a74c32ee6d4b41aac00c8b1a00248fe43fe6c1790a21a9171c7",
+    "offspring-controlled.snapshot.bin": "907ec1afd03fc96116e57c0baaec7632acb2d3033f989da5a0e4a3653c8ef53a"
+  }
+}

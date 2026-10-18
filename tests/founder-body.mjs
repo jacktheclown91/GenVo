@@ -43,5 +43,5 @@ const legsOf=a=>a.bodyPlan.nodes.filter(n=>/^root\/limb\.\d+$/.test(n.id)).lengt
  for(const k of kids){assert.equal(k.bodyPlan.nodes.find(n=>!n.parent).partId,'soft-torso');assert.equal(legsOf(k),6);assert.ok(partEffectFactors(k).landSpeed>1,'six legs are faster than four')}
  // Saves keep the new bodies; older saves are refused.
  const snap=structuredClone(createSimulationSnapshot(sim)),r2=restoreSimulationSnapshot(structuredClone(snap));assert.deepEqual(r2.animals.find(a=>a.id===kids[0].id).bodyPlan,kids[0].bodyPlan);
- assert.equal(SAVE_SCHEMA,10);const old={...snap,schema:8};assert.throws(()=>restoreSimulationSnapshot(old),/earlier GenVo8/)}
+ assert.equal(SAVE_SCHEMA,10);const old={...snap,schema:8};assert.throws(()=>restoreSimulationSnapshot(old),/predates GenVo's modular creature bodies/)}
 console.log('founder body ok');

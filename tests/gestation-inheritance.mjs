@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {RESOURCE_FOUNDING} from '../src/ecology/resource-founding.js';RESOURCE_FOUNDING.enabled=false;// per-species rule checks need every configured species present (founding itself: tests/seed-shore-niches.mjs)
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
 import {placeSupportedBreedingPair} from './helpers/breeding-pair.js';
@@ -9,6 +10,8 @@ for(const species of Object.keys(SPECIES)){
   const [mother,father]=sim.animals.filter(a=>a.species===species&&!a.player);
   mother.sex='F';father.sex='M';mother.reproCooldown=father.reproCooldown=0;
   mother.age=father.age=SPECIES[species].maturity+10;
+  // Staged as well-fed, as in the other conception fixtures; this suite tests gestation inheritance.
+  for(const a of [mother,father])Object.assign(a,{energy:SPECIES[species].maxEnergy*.9,hydration:SPECIES[species].maxHydration*.9,health:100,infected:false});
   if(species==='genvo')father.lineage=true;
   placeSupportedBreedingPair(sim,mother,father);
   assert.ok(sim.tryMate(mother,father));

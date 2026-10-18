@@ -1,0 +1,40 @@
+{
+  "recordType": "Historical summary transcribed from the retained pre-repair console output, not a newly executed audit. The first post-repair invocation replaced the original detailed JSON; the retained observations below preserve its negative result without claiming its lost full payload.",
+  "scope": "Pre-neutral-core controlled exposure-only funded-birth counterfactual",
+  "status": "VIOLATED",
+  "pressureChangesNewborn": true,
+  "branches": [
+    {
+      "kind": "none",
+      "adaptations": [
+        "water-sacs",
+        "webbed-limbs"
+      ],
+      "bodyId": "bp0-88796c03",
+      "rngAfter": 2385484208
+    },
+    {
+      "kind": "wetness",
+      "adaptations": [],
+      "bodyId": "bp0-4134709b",
+      "rngAfter": 553918395
+    },
+    {
+      "kind": "predation",
+      "adaptations": [
+        "barbed-limbs"
+      ],
+      "bodyId": "bp0-19b1285b",
+      "rngAfter": 2385484208
+    },
+    {
+      "kind": "dryness",
+      "adaptations": [
+        "water-sacs"
+      ],
+      "bodyId": "bp0-e081f284",
+      "rngAfter": 2385484208
+    }
+  ],
+  "currentResult": "pressure-counterfactual-neutral-core.json"
+}

@@ -15,7 +15,7 @@ let site=null;
 for(let y=10;y<108&&!site;y+=2)for(let x=10;x<108&&!site;x+=2){
   const p={x:x+.5,y:y+.5};if(!sim.canOccupy(mother,p.x,p.y)||!sim.canReach(mother,p.x,p.y))continue;
   if(sim.world.waterDistance[sim.world.idx(p.x,p.y)]>3)continue;
-  const q=sim.migration.habitatQuality(mother,p.x,p.y);if(q.food>.1&&q.water>.16&&q.danger<.48)site=p;
+  const q=sim.migration.habitatQuality(mother,p.x,p.y);if(q.food>.1&&q.water>.16&&q.danger<.48&&sim.carrying.breedingState(mother,{at:p}).allowed)site=p;// conception fixtures use a real supported habitat (tests/helpers/breeding-pair.js)
 }
 assert.ok(site,'must find a genuinely drinkable nearby bank and existing food');
 for(const a of duo)Object.assign(a,site);sim.rebuildSpatial();

@@ -1,3 +1,4 @@
+import {processingCapacity,processingCapacityMessage} from '../sim/processing-capacity.js';
 import {creatureIdentity} from './creature-identity.js';
 import {escapePanel,knowledgeFold,updateKnowledgeHTML} from './knowledge-panel.js';
 import {reproductiveCompatibility,reproductiveGenomeFor} from '../reproduction/reproductive-compatibility.js';
@@ -16,10 +17,21 @@ import {dominantTraits,founderShift,compareGenes,traitListText,strongestTraitTex
 import {playerMoodLabel} from '../render/life.js';
 import {vitalModel,compactFamilyLabel,contextTone} from './presentation.js';
 import {hasAdaptation,ADAPTATIONS} from '../lineage/evolution.js';
-import {adaptationCarryChance} from '../lineage/heredity.js';
+import {tasteText} from '../reproduction/mate-preferences.js';
+import {parentalAdaptationText} from './parental-adaptations.js';
 
+// The E prompt names the action E will actually run (the context tray's resolved choice), so the
+// prompt and the key can never disagree. Danger/combat prompts (not "E · ...") are unchanged.
+let interactPromptSource=null;
+export function setInteractPromptSource(fn){interactPromptSource=fn}
+function eKeyPrompt(hint){if(!/^E · /.test(hint)||!interactPromptSource)return hint;const label=interactPromptSource();if(!label)return hint;return 'E · '+label+(hint.includes('Q switch')?' · Q switch':hint.includes('reveals cover')?' · reveals cover':'')}
 export function updateHUD(sim,{renderer=null,mateOpen=false,mindOpen=false,territoryOpen=false,shelterOpen=false,migrationOpen=false,ecologyOpen=false,helpOpen=false,guideOpen=false,journalOpen=false,commandMode=false}={}){
   const clock=document.querySelector('#clock'),ps=document.querySelector('#playerStats'),pop=document.querySelector('#populations'),help=document.querySelector('#help'),guide=document.querySelector('#guide'),context=document.querySelector('#context'),mate=document.querySelector('#mate'),mind=document.querySelector('#mind'),territory=document.querySelector('#territory'),shelter=document.querySelector('#shelter'),migration=document.querySelector('#migration');
+  let capacityNotice=document.querySelector('#processingCapacity');
+  const capacity=processingCapacity(sim);
+  const capacityMessage=processingCapacityMessage(capacity);
+  if(capacityMessage&&!capacityNotice){capacityNotice=document.createElement('div');capacityNotice.id='processingCapacity';capacityNotice.setAttribute('role','status');capacityNotice.style.cssText='position:fixed;bottom:90px;left:50%;transform:translateX(-50%);max-width:min(620px,90vw);padding:10px 14px;border:1px solid #bf9a55;border-radius:8px;background:#25251ff2;color:#ffe4ae;font:13px/1.4 sans-serif;z-index:90;pointer-events:none';document.querySelector('#app')?.appendChild(capacityNotice)}
+  if(capacityNotice){capacityNotice.hidden=!capacityMessage;capacityNotice.textContent=capacityMessage}
   const p=sim.player(),counts=sim.population(),day=((sim.day-1)%CFG.seasonDays)+1;
   if(clock)clock.innerHTML=`<span class="season-mark">${titleCase(sim.season)}</span><strong>Day ${day}</strong><span>Y${sim.year}</span>${sim.paused?'<em>Paused</em>':''}`;
   if(p){
@@ -82,7 +94,7 @@ export function updateHUD(sim,{renderer=null,mateOpen=false,mindOpen=false,terri
 
 function escapeHtml(value=''){return String(value).replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]))}
 function summaryCard(label,value,detail=''){return`<div><b>${escapeHtml(label)}</b><strong>${escapeHtml(value)}</strong>${detail?`<span>${escapeHtml(detail)}</span>`:''}</div>`}
-function renderReadablePanel(el,html){el.classList.add('knowledge-panel');html=html.replace('</header>',`<button type="button" data-knowledge-close="${escapePanel(el.id)}" data-focus-key="close" aria-label="Close ${escapePanel(el.id)} panel">Close</button></header>`);updateKnowledgeHTML(el,html)}
+function renderReadablePanel(el,html){el.classList.add('knowledge-panel');html=html.replace('</header>',`<button type="button" data-knowledge-close="${escapePanel(el.id)}" data-focus-key="close" aria-label="Close ${escapePanel(el.id)} panel">Close</button></header>`);updateKnowledgeHTML(el,html,{preserveTextNodes:el.id==='mate'})}
 function sectionBlock(title,text,open=false){return`<details data-section="${escapeHtml(title)}"${open?' open':''}><summary data-focus-key="${escapeHtml(title)}">${escapeHtml(title)}</summary><div class="panel-section">${escapeHtml(text||'Nothing recorded yet.')}</div></details>`}
 
 function behaviorTendencyText(sim){
@@ -188,7 +200,7 @@ function updateQuickMenu({guideOpen=false,journalOpen=false,territoryOpen=false,
 
 function updateContext(context,sim,p,renderer,commandMode=false){
   if(!context)return;
-  const scope=sim.familyDirectives?.scopeMeta?.();let prompt=commandMode?`CHOOSE GROUND${scope?.multipleTaxa?` · ${scope.scope==='taxon'?scope.label.toUpperCase()+' ONLY':'WHOLE LINEAGE'}`:''} · click or tap · R cancel`:(sim.interactionHint?.()||'');
+  const scope=sim.familyDirectives?.scopeMeta?.();let prompt=commandMode?`CHOOSE GROUND${scope?.multipleTaxa?` · ${scope.scope==='taxon'?scope.label.toUpperCase()+' ONLY':'WHOLE LINEAGE'}`:''} · click or tap · R cancel`:(eKeyPrompt(sim.interactionHint?.()||''));
   const tutorialStage=sim.uiTutorialStage||'done';
   if(p&&!commandMode){
     const sp=SPECIES[p.species],wr=p.hydration/sp.maxHydration,er=p.energy/sp.maxEnergy,threat=nearestThreat(sim,p,8*(partEffectFactors(p)?.threatSense??1));
@@ -346,11 +358,9 @@ function runGoal(sim,p){
   if(p.lastMate)return'<div class="run-goal"><b>Start G2</b><span>Survive together · a child is how this lineage continues</span></div>';
   return'<div class="run-goal"><b>Build the first family</b><span>Survive → pair → raise G2 → hand off</span></div>';
 }
-function friendlyIntent(intent){const map={'family-follow':'Following your direction','family-forage':'Foraging by direction','family-relief-forage':'Seeking richer family ground','family-home':'Returning home','family-hold':'Waiting near family','family-scout':'Scouting the family frontier','family-scout-hold':'Watching the frontier','family-area-gather':'Gathering at your mark','family-area-forage':'Foraging at your mark','family-area-scout':'Scouting your mark','family-area-nest':'Establishing a new nest','family-area-avoid':'Avoiding your marked area','family-area-hold':'Holding at your mark','tendency-forage':'Foraging independently','tendency-roam':'Ranging independently','tendency-home':'Returning to the colony','tendency-gather':'Keeping with the colony',player:'Moving',drink:'Seeking water',feed:'Foraging',hunt:'Hunting',mate:'Courting',escape:'Fleeing',shelter:'Seeking shelter','shelter-feed':'Returning to food cache',follow:'Following family',guard:'Protecting family',social:'Staying with family',group:'Keeping with group','group-space':'Making space','group-alarm':'Following group alarm',migrate:'Migrating','migration-return':'Returning home','return-home':'Returning home','aquatic-range':'Moving toward wet habitat','guardian-hold':'Holding defended ground','burrow-return':'Returning to the burrow','learn-water':'Following a water lesson','learn-food':'Following a feeding lesson','learn-shelter':'Learning shelter safety','practice-return':'Returning from solo practice','storm-shelter':'Returning for storm refuge','storm-refuge':'Sheltering with family','illness-distance':'Keeping illness distance','illness-buffer':'Buffering young from illness','illness-isolate':'Resting apart while sick','illness-care':'Staying with sick young','illness-immune-care':'Safely caring after recovery','illness-immune-support':'Staying near sick family','illness-regroup':'Regrouping after fever',explore:'Exploring',idle:'Watching',ward:'Warding intruder','leave-core':'Leaving territory',swim:'Swimming'};return map[intent]||titleCase(intent||'exploring')}
+function friendlyIntent(intent){const map={'family-follow':'Following your direction','family-forage':'Foraging by direction','family-relief-forage':'Seeking richer family ground','family-home':'Returning home','family-hold':'Waiting near family','family-scout':'Scouting the family frontier','family-scout-hold':'Watching the frontier','family-area-gather':'Gathering at your mark','family-area-forage':'Foraging at your mark','family-area-scout':'Scouting your mark','family-area-nest':'Establishing a new nest','family-area-avoid':'Avoiding your marked area','family-area-hold':'Holding at your mark','tendency-forage':'Foraging independently','tendency-roam':'Ranging independently','tendency-home':'Returning to the colony','tendency-gather':'Keeping with the colony',player:'Moving',drink:'Seeking water',feed:'Foraging',hunt:'Hunting',mate:'Courting',escape:'Fleeing',shelter:'Seeking shelter','shelter-feed':'Returning to food cache',follow:'Following family',guard:'Protecting family',social:'Staying with family',group:'Keeping with group','group-space':'Making space','group-alarm':'Following group alarm','wary':'Wary: keeping away from a predator',migrate:'Migrating','migration-return':'Returning home','return-home':'Returning home','aquatic-range':'Moving toward wet habitat','guardian-hold':'Holding defended ground','burrow-return':'Returning to the burrow','learn-water':'Following a water lesson','learn-food':'Following a feeding lesson','learn-shelter':'Learning shelter safety','practice-return':'Returning from solo practice','storm-shelter':'Returning for storm refuge','storm-refuge':'Sheltering with family','illness-distance':'Keeping illness distance','illness-buffer':'Buffering young from illness','illness-isolate':'Resting apart while sick','illness-care':'Staying with sick young','illness-immune-care':'Safely caring after recovery','illness-immune-support':'Staying near sick family','illness-regroup':'Regrouping after fever',explore:'Exploring',idle:'Watching',ward:'Warding intruder','leave-core':'Leaving territory',swim:'Swimming'};return map[intent]||titleCase(intent||'exploring')}
 function titleCase(v){return String(v||'').toLowerCase().replace(/(^|[- ])./g,m=>m.toUpperCase())}
 
-// v1.31: a parent's adaptation reaches most but not all young; both parents carrying it is reliable.
-function mateAdaptationOdds(a,b){const ids=[...new Set([...(a.adaptations||[]),...(b.adaptations||[])])];if(!ids.length)return'none between you';return ids.map(id=>{const c=adaptationCarryChance(id,a,b);return`${ADAPTATIONS[id]?.name||id} ${c>=1?'(both of you · all young)':`(${a.adaptations?.includes(id)?'yours':'mate'} · about ${Math.round(c*100)}% of young)`}`}).join(' · ')}
 function updateMate(el,sim,open){
   if(!el)return;el.hidden=!open;if(!open)return;
   const active=sim.player();
@@ -372,7 +382,7 @@ function updateMate(el,sim,open){
   }).join('\n');
   const compatibility=reproductiveCompatibility(active,selected),loci=reproductiveGenomeFor(selected);
   const biologyLine=`Biological conception potential ${Math.round(compatibility.conceptionChance*100)}% · gamete match ${Math.round(compatibility.gameteMatch*100)}% · individual fertility ${Math.round(compatibility.fertilityA*100)}% / ${Math.round(compatibility.fertilityB*100)}%\nDedicated inherited loci (provisional model): ${JSON.stringify(loci?.loci)}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.`;
-  const choiceLine=choice.accepted?'Both currently favor this pairing':choice.reason==='first-declines'?'Your creature is currently less receptive':'The other creature is currently less receptive';
+  const choiceLine=choice.accepted?'Both currently favor this pairing':choice.reason==='first-declines'?`Your creature is not drawn to this partner: ${tasteText({axis:choice.a?.dominant,direction:choice.a?.direction})}`:'The other creature is currently less receptive';
   const moves=availableCourtshipMoves(active);
   const actionNames=['dance','call','flare','scent','gesture'];
   const actionHint=actionNames.map((m,i)=>`${i+1} ${m}${moves.includes(m)?'':' (unavailable)'}`).join(' · ');
@@ -388,7 +398,7 @@ function updateMate(el,sim,open){
   const reproAbility=reproductiveMode(active),reproPlan=conceptionMode(active,sim.world);
   const broodLine=reproAbility==='dual'?`DUAL ANATOMY: ${active.sex==='F'?`${active.reproductiveStrategy||'adaptive'} · next brood ${reproPlan} · V: change choice (cannot change pregnancy)`:'offspring may inherit both organs · gestating parent chooses mode'}`:`REPRODUCTION: ${reproAbility==='egg'?'egg laying':'live birth'} · dual requires egg chamber + live womb`;
   const flowLine=taxon.same?`Taxon: ${taxon.to} · local pairing`:`GENE FLOW: ${taxon.from} × ${taxon.to} · repeated cross-branch births can weaken a young species boundary`;
-  el._rawKnowledge=`NEARBY MATES\nNearby candidates ${candidates.length}\nSelected #${selected.id} · ${selected.sex} · ${maturityLabel(selected)} · ${dist.toFixed(1)} tiles${pregLine}\n${flowLine}\n${broodLine}\nANATOMY: ${anatomyLine}\n${anatomyDetail}\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: ${choiceLine}\n${biologyLine}${recentRefusal}${performanceLine}${contestLine}\nPARTNER OPTIONS (individual preference and distance)\n${mateOptions}\nYour inherited preference: ${preferenceSummary(active,sim.seed)}\nPartner preference: ${preferenceSummary(selected,sim.seed)}\n\nYOU\n  ${strongestTraitText(active)}\nMATE\n  ${strongestTraitText(selected)}\nLIKELY CHILD TRAITS\n  ${traitListText(tendency,{empty:'likely close to you'})}\nADAPTATIONS YOUNG MAY CARRY\n  ${mateAdaptationOdds(active,selected)}\n\nGenetic difference: ${contrast<.025?'subtle':contrast<.06?'moderate':'strong'}\n${court}\nRitual moves: ${actionHint}\nChosen: ${queuedRitual}\nBackspace: clear · C: perform · Q / E: mates · M: close`;
+  el._rawKnowledge=`NEARBY MATES\nNearby candidates ${candidates.length}\nSelected #${selected.id} · ${selected.sex} · ${maturityLabel(selected)} · ${dist.toFixed(1)} tiles${pregLine}\n${flowLine}\n${broodLine}\nANATOMY: ${anatomyLine}\n${anatomyDetail}\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: ${choiceLine}\n${biologyLine}${recentRefusal}${performanceLine}${contestLine}\nPARTNER OPTIONS (individual preference and distance)\n${mateOptions}\nYour inherited preference: ${preferenceSummary(active,sim.seed)}\nPartner preference: ${preferenceSummary(selected,sim.seed)}\n\nYOU\n  ${strongestTraitText(active)}\nMATE\n  ${strongestTraitText(selected)}\nLIKELY CHILD TRAITS\n  ${traitListText(tendency,{empty:'likely close to you'})}\nOBSERVED PARENTAL ADAPTATIONS\n  ${parentalAdaptationText(active,selected)}\n\nGenetic difference: ${contrast<.025?'subtle':contrast<.06?'moderate':'strong'}\n${court}\nRitual moves: ${actionHint}\nChosen: ${queuedRitual}\nBackspace: clear · C: perform · Q / E: mates · M: close`;
 }
 
 function updateMind(el,sim,open){

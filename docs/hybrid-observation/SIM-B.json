@@ -1,0 +1,152 @@
+{
+ "seed": "HYB-B",
+ "days": 360,
+ "founding": {
+  "variant": "founding",
+  "attempts": {
+   "same": 440,
+   "cross": 392
+  },
+  "conceptions": {
+   "same": 50,
+   "cross": 27
+  },
+  "births": {
+   "pure": 96,
+   "hybrid": 45
+  },
+  "hybridAttempts": 98,
+  "hybridConceptions": 6,
+  "crossChance": {
+   "median": 0.7,
+   "min": 0.45
+  },
+  "bySpecies": {
+   "mosskip": {
+    "births": 57,
+    "hybridBirths": 26,
+    "attemptsSame": 207,
+    "attemptsCross": 195
+   },
+   "rootling": {
+    "births": 7,
+    "hybridBirths": 0,
+    "attemptsSame": 56,
+    "attemptsCross": 0
+   },
+   "genvo": {
+    "births": 58,
+    "hybridBirths": 14,
+    "attemptsSame": 107,
+    "attemptsCross": 105
+   },
+   "podshell": {
+    "births": 1,
+    "hybridBirths": 0,
+    "attemptsSame": 20,
+    "attemptsCross": 5
+   },
+   "needlejaw": {
+    "births": 1,
+    "hybridBirths": 1,
+    "attemptsSame": 0,
+    "attemptsCross": 43
+   },
+   "rillsifter": {
+    "births": 17,
+    "hybridBirths": 4,
+    "attemptsSame": 50,
+    "attemptsCross": 44
+   }
+  },
+  "end": {
+   "mosskip": 35,
+   "rootling": 20,
+   "needlejaw": 11,
+   "genvo": 53,
+   "rillsifter": 14,
+   "mirelick": 8,
+   "podshell": 10
+  },
+  "similarityMeanAlive": -0.045,
+  "similarityMeanBorn": -0.061,
+  "integrityChecks": 45
+ },
+ "similarity": {
+  "variant": "similarity",
+  "attempts": {
+   "same": 475,
+   "cross": 614
+  },
+  "conceptions": {
+   "same": 66,
+   "cross": 27
+  },
+  "births": {
+   "pure": 98,
+   "hybrid": 48
+  },
+  "hybridAttempts": 170,
+  "hybridConceptions": 16,
+  "crossChance": {
+   "median": 0.73,
+   "min": 0.39
+  },
+  "bySpecies": {
+   "rootling": {
+    "births": 3,
+    "hybridBirths": 0,
+    "attemptsSame": 29,
+    "attemptsCross": 2
+   },
+   "genvo": {
+    "births": 39,
+    "hybridBirths": 22,
+    "attemptsSame": 51,
+    "attemptsCross": 89
+   },
+   "podshell": {
+    "births": 3,
+    "hybridBirths": 2,
+    "attemptsSame": 2,
+    "attemptsCross": 2
+   },
+   "mosskip": {
+    "births": 70,
+    "hybridBirths": 17,
+    "attemptsSame": 297,
+    "attemptsCross": 456
+   },
+   "needlejaw": {
+    "births": 3,
+    "hybridBirths": 1,
+    "attemptsSame": 0,
+    "attemptsCross": 29
+   },
+   "mirelick": {
+    "births": 0,
+    "hybridBirths": 0,
+    "attemptsSame": 4,
+    "attemptsCross": 0
+   },
+   "rillsifter": {
+    "births": 28,
+    "hybridBirths": 6,
+    "attemptsSame": 92,
+    "attemptsCross": 36
+   }
+  },
+  "end": {
+   "mosskip": 50,
+   "rootling": 16,
+   "needlejaw": 11,
+   "genvo": 37,
+   "rillsifter": 31,
+   "mirelick": 3,
+   "podshell": 9
+  },
+  "similarityMeanAlive": 0.045,
+  "similarityMeanBorn": 0.059,
+  "integrityChecks": 45
+ }
+}

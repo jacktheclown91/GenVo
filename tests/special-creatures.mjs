@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
+import {interactAs} from './helpers/interaction.js';
 import {SPECIAL_KINDS,wildTraits,wildStartPlan} from '../src/organisms/wild-bodies.js';
 import {partEffectFactors} from '../src/lineage/part-abilities.js';
 import {createDraft,place} from '../src/lineage/evolution-draft.js';
@@ -38,7 +39,7 @@ g.bodyVariationChance=undefined;
 
 // The Ghost GenVo8 fades away after a while and leaves its relic where it was.
 {const h=new Simulation('GENVO8-GHOST',{player:true});h.update();h.day=50;h.discovery.maybeElder();const ghost=h.discovery.specials().find(a=>a.elder.kind==='ghost-genvo');assert.ok(ghost);
- h.day=50+SPECIAL_KINDS['ghost-genvo'].fades;h.discovery.maybeElder();assert.equal(ghost.alive,false,'it fades');assert.ok(h.discovery.sites.some(s=>s.kind==='relic'&&s.from==='Ghost GenVo8'))}
+ h.day=50+SPECIAL_KINDS['ghost-genvo'].fades;h.discovery.maybeElder();assert.equal(ghost.alive,false,'it fades');assert.ok(h.discovery.sites.some(s=>s.kind==='relic'&&s.from==='Ghost GenVo'))}
 
 // Saves keep special creatures and their timers.
 {const r=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(g)));assert.equal(r.discovery.specials().length,4);assert.deepEqual(r.discovery.specialDays,D.specialDays)}
@@ -47,7 +48,7 @@ g.bodyVariationChance=undefined;
 const p=g.player(),draft=()=>createDraft({base:bodyPlanFromLegacy(p),ancestry:[],budget:99,unlocked:D.unlockedParts});
 assert.equal(place(draft(),'glow-eye','root','eye.left').ok,false,'locked before its relic');
 for(const [kind,a] of Object.entries(byKind)){g.kill(a,'predation');const relic=D.sites.find(s=>s.kind==='relic'&&!s.gone);assert.ok(relic,`the ${a.elder.label} leaves a relic`);assert.deepEqual(relic.parts,SPECIAL_KINDS[kind].parts);
-  for(const o of g.animals)if(o.alive&&o!==p&&Math.hypot(o.x-relic.x,o.y-relic.y)<3)o.x+=6;p.x=relic.x;p.y=relic.y;const r=g.playerInteract();assert.equal(r.type,'relic',r.message);assert.match(r.message,new RegExp(SPECIAL_KINDS[kind].label))}
+  for(const o of g.animals)if(o.alive&&o!==p&&Math.hypot(o.x-relic.x,o.y-relic.y)<3)o.x+=6;p.x=relic.x;p.y=relic.y;const r=interactAs(g,assert,'collect-relic');assert.equal(r.type,'relic',r.message);assert.match(r.message,new RegExp(SPECIAL_KINDS[kind].label))}
 assert.deepEqual([...D.unlockedParts].sort(),Object.values(SPECIAL_KINDS).flatMap(s=>s.parts).sort());
 for(const [id,socket] of [['glow-eye','eye.left'],['echo-crest','dorsal'],['shell-back','dorsal'],['armored-hide','flank.left'],['gliding-membrane','flank.left'],['luminous-tail','tail']])assert.equal(place(draft(),id,'root',socket).ok,true,`${id} can be evolved after its relic`);
 

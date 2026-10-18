@@ -1,0 +1,49 @@
+{
+ "viewport": "1600x900",
+ "advancedDays": 120,
+ "day": 121,
+ "animals": 321,
+ "playerAlive": true,
+ "paused": false,
+ "frames": 460,
+ "dt": {
+  "p50": 66.6,
+  "p95": 116.6,
+  "p99": 249.9
+ },
+ "render": {
+  "p50": 42.9,
+  "p95": 64.2
+ },
+ "sim": {
+  "p50": 0.2,
+  "p95": 39.5
+ },
+ "otherP95": 64.7,
+ "slowFrames": 370,
+ "slowFrameShare": {
+  "render": 0.61,
+  "sim": 0.1,
+  "other": 0.29
+ },
+ "sprites": {
+  "perFrame": {
+   "hits": 11.9,
+   "pending": 0,
+   "misses": 65,
+   "uncached": 1.1,
+   "evictions": 62.5
+  },
+  "cacheSize": 2400,
+  "spriteSide": 88,
+  "nearPlayer": 49.1,
+  "movingNearPlayer": 39.8
+ },
+ "ticksSimulated": 244,
+ "liveAtEnd": true,
+ "memory": {
+  "jsHeapUsedMB": 159.3,
+  "jsHeapTotalMB": 347.1
+ },
+ "errors": []
+}

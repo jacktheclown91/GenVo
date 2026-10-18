@@ -10,7 +10,7 @@ function scene(){
   for(let y=20;y<=30;y++)w.water[w.idx(25,y)]=1;
   w.buildLandRegions();w.buildHydrology();
   const a=sim.animals.find(a=>a.species==='rootling');
-  a.x=22.5;a.y=25.5;a.bodyPlan=null;a.adaptations=[];a.ecoLifestyle=null;
+  a.x=22.5;a.y=25.5;a.adaptations=[];a.ecoLifestyle=null;
   a.intent='explore';a.target={x:28.5,y:25.5};a.pursuitEngaged=false;
   sim.animals=[a];sim.rebuildSpatial();
   sim.activity.movementBudget=()=>({advance:true,scale:1});

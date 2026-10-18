@@ -1,0 +1,4555 @@
+{
+  "schema": "genvo.part-audit-snapshot/1",
+  "scope": "Read-only export of current catalog, not proof that named capabilities are physically implemented",
+  "count": 79,
+  "registryProblems": [],
+  "parts": [
+    {
+      "id": "head-base",
+      "family": "core",
+      "assetId": "genvo/head-base",
+      "partVersion": 1,
+      "tags": [
+        "head",
+        "starter"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "head"
+      ],
+      "providedSockets": [
+        {
+          "id": "mouth",
+          "type": "mouth",
+          "max": 1,
+          "at": {
+            "f": 0.95,
+            "s": 0,
+            "u": 0
+          }
+        },
+        {
+          "id": "eye.left",
+          "type": "eye",
+          "max": 1,
+          "at": {
+            "f": 0.28,
+            "s": -0.82,
+            "u": 0.12
+          }
+        },
+        {
+          "id": "eye.right",
+          "type": "eye",
+          "max": 1,
+          "at": {
+            "f": 0.28,
+            "s": 0.82,
+            "u": 0.12
+          }
+        },
+        {
+          "id": "eye.left.2",
+          "type": "eye",
+          "max": 1,
+          "at": {
+            "f": -0.5,
+            "s": -0.86,
+            "u": 0
+          }
+        },
+        {
+          "id": "eye.right.2",
+          "type": "eye",
+          "max": 1,
+          "at": {
+            "f": -0.5,
+            "s": 0.86,
+            "u": 0
+          }
+        }
+      ],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 3,
+        "h": 3
+      },
+      "mass": 0,
+      "upkeep": 0,
+      "mutationCost": 0,
+      "effectContributions": {},
+      "actionCapabilities": [],
+      "animationProfile": "breathing",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [],
+      "legacy": null
+    },
+    {
+      "id": "small-torso",
+      "family": "core",
+      "assetId": "genvo/small-torso",
+      "partVersion": 1,
+      "tags": [
+        "root",
+        "torso",
+        "small",
+        "starter"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [],
+      "providedSockets": [
+        {
+          "id": "limb.1",
+          "type": "limb",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1,
+          "slot": 2,
+          "at": {
+            "f": 0.5,
+            "s": 0.8,
+            "u": -0.2
+          }
+        },
+        {
+          "id": "limb.3",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-right",
+          "direction": 3,
+          "slot": 6,
+          "at": {
+            "f": -0.5,
+            "s": 0.8,
+            "u": -0.2
+          }
+        },
+        {
+          "id": "limb.5",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-left",
+          "direction": 5,
+          "slot": 10,
+          "at": {
+            "f": -0.5,
+            "s": -0.8,
+            "u": -0.2
+          }
+        },
+        {
+          "id": "limb.7",
+          "type": "limb",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7,
+          "slot": 14,
+          "at": {
+            "f": 0.5,
+            "s": -0.8,
+            "u": -0.2
+          }
+        },
+        {
+          "id": "head",
+          "type": "head",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "at": {
+            "f": 0.88,
+            "s": 0,
+            "u": 0
+          }
+        },
+        {
+          "id": "mouth",
+          "type": "mouth",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "at": {
+            "f": 1.36,
+            "s": 0,
+            "u": 0
+          }
+        },
+        {
+          "id": "eye.left",
+          "type": "eye",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7,
+          "at": {
+            "f": 1.08,
+            "s": -0.6,
+            "u": 0
+          }
+        },
+        {
+          "id": "eye.right",
+          "type": "eye",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1,
+          "at": {
+            "f": 1.08,
+            "s": 0.6,
+            "u": 0
+          }
+        },
+        {
+          "id": "dorsal",
+          "type": "dorsal",
+          "max": 1,
+          "position": "top",
+          "direction": null,
+          "at": {
+            "f": -0.25,
+            "s": 0,
+            "u": 0.92
+          }
+        },
+        {
+          "id": "flank.left",
+          "type": "flank",
+          "max": 1,
+          "position": "left",
+          "direction": 6,
+          "at": {
+            "f": -0.05,
+            "s": -0.96,
+            "u": 0
+          }
+        },
+        {
+          "id": "flank.right",
+          "type": "flank",
+          "max": 1,
+          "position": "right",
+          "direction": 2,
+          "at": {
+            "f": -0.05,
+            "s": 0.96,
+            "u": 0
+          }
+        },
+        {
+          "id": "tail",
+          "type": "tail",
+          "max": 1,
+          "position": "rear",
+          "direction": 4,
+          "at": {
+            "f": -1.04,
+            "s": 0,
+            "u": 0
+          }
+        }
+      ],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 0
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 6,
+        "h": 5
+      },
+      "mass": 3,
+      "upkeep": 0.85,
+      "mutationCost": 0,
+      "effectContributions": {},
+      "actionCapabilities": [],
+      "animationProfile": "breathing",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [],
+      "legacy": null
+    },
+    {
+      "id": "soft-torso",
+      "family": "core",
+      "assetId": "genvo/soft-torso",
+      "partVersion": 1,
+      "tags": [
+        "root",
+        "torso"
+      ],
+      "developmentalPrerequisites": [
+        "small-torso"
+      ],
+      "compatibleSocketTypes": [],
+      "providedSockets": [
+        {
+          "id": "limb.0",
+          "type": "limb",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "slot": 0
+        },
+        {
+          "id": "limb.1",
+          "type": "limb",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1,
+          "slot": 2
+        },
+        {
+          "id": "limb.2",
+          "type": "limb",
+          "max": 1,
+          "position": "right",
+          "direction": 2,
+          "slot": 4
+        },
+        {
+          "id": "limb.3",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-right",
+          "direction": 3,
+          "slot": 6
+        },
+        {
+          "id": "limb.4",
+          "type": "limb",
+          "max": 1,
+          "position": "rear",
+          "direction": 4,
+          "slot": 8
+        },
+        {
+          "id": "limb.5",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-left",
+          "direction": 5,
+          "slot": 10
+        },
+        {
+          "id": "limb.6",
+          "type": "limb",
+          "max": 1,
+          "position": "left",
+          "direction": 6,
+          "slot": 12
+        },
+        {
+          "id": "limb.7",
+          "type": "limb",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7,
+          "slot": 14
+        },
+        {
+          "id": "head",
+          "type": "head",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "at": {
+            "f": 0.88,
+            "s": 0,
+            "u": 0
+          }
+        },
+        {
+          "id": "mouth",
+          "type": "mouth",
+          "max": 1,
+          "position": "front",
+          "direction": 0
+        },
+        {
+          "id": "eye.left",
+          "type": "eye",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7
+        },
+        {
+          "id": "eye.right",
+          "type": "eye",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1
+        },
+        {
+          "id": "dorsal",
+          "type": "dorsal",
+          "max": 1,
+          "position": "top",
+          "direction": null
+        },
+        {
+          "id": "flank.left",
+          "type": "flank",
+          "max": 2,
+          "position": "left",
+          "direction": 6
+        },
+        {
+          "id": "flank.right",
+          "type": "flank",
+          "max": 2,
+          "position": "right",
+          "direction": 2
+        },
+        {
+          "id": "tail",
+          "type": "tail",
+          "max": 1,
+          "position": "rear",
+          "direction": 4
+        }
+      ],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 0
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 8,
+        "h": 7
+      },
+      "mass": 4,
+      "upkeep": 1,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [],
+      "animationProfile": "breathing",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [],
+      "legacy": null
+    },
+    {
+      "id": "reinforced-torso",
+      "family": "core",
+      "assetId": "genvo/reinforced-torso",
+      "partVersion": 1,
+      "tags": [
+        "root",
+        "torso",
+        "tough"
+      ],
+      "developmentalPrerequisites": [
+        "soft-torso"
+      ],
+      "compatibleSocketTypes": [],
+      "providedSockets": [
+        {
+          "id": "limb.0",
+          "type": "limb",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "slot": 0
+        },
+        {
+          "id": "limb.1",
+          "type": "limb",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1,
+          "slot": 2
+        },
+        {
+          "id": "limb.2",
+          "type": "limb",
+          "max": 1,
+          "position": "right",
+          "direction": 2,
+          "slot": 4
+        },
+        {
+          "id": "limb.3",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-right",
+          "direction": 3,
+          "slot": 6
+        },
+        {
+          "id": "limb.4",
+          "type": "limb",
+          "max": 1,
+          "position": "rear",
+          "direction": 4,
+          "slot": 8
+        },
+        {
+          "id": "limb.5",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-left",
+          "direction": 5,
+          "slot": 10
+        },
+        {
+          "id": "limb.6",
+          "type": "limb",
+          "max": 1,
+          "position": "left",
+          "direction": 6,
+          "slot": 12
+        },
+        {
+          "id": "limb.7",
+          "type": "limb",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7,
+          "slot": 14
+        },
+        {
+          "id": "head",
+          "type": "head",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "at": {
+            "f": 0.88,
+            "s": 0,
+            "u": 0
+          }
+        },
+        {
+          "id": "mouth",
+          "type": "mouth",
+          "max": 1,
+          "position": "front",
+          "direction": 0
+        },
+        {
+          "id": "eye.left",
+          "type": "eye",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7
+        },
+        {
+          "id": "eye.right",
+          "type": "eye",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1
+        },
+        {
+          "id": "dorsal",
+          "type": "dorsal",
+          "max": 1,
+          "position": "top",
+          "direction": null
+        },
+        {
+          "id": "flank.left",
+          "type": "flank",
+          "max": 2,
+          "position": "left",
+          "direction": 6
+        },
+        {
+          "id": "flank.right",
+          "type": "flank",
+          "max": 2,
+          "position": "right",
+          "direction": 2
+        },
+        {
+          "id": "tail",
+          "type": "tail",
+          "max": 1,
+          "position": "rear",
+          "direction": 4
+        }
+      ],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 0
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 8,
+        "h": 7
+      },
+      "mass": 5,
+      "upkeep": 1.3,
+      "mutationCost": 4,
+      "effectContributions": {},
+      "actionCapabilities": [],
+      "animationProfile": "breathing",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [],
+      "legacy": null
+    },
+    {
+      "id": "sleek-torso",
+      "family": "core",
+      "assetId": "genvo/sleek-torso",
+      "partVersion": 1,
+      "tags": [
+        "root",
+        "torso",
+        "fast"
+      ],
+      "developmentalPrerequisites": [
+        "soft-torso"
+      ],
+      "compatibleSocketTypes": [],
+      "providedSockets": [
+        {
+          "id": "limb.0",
+          "type": "limb",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "slot": 0
+        },
+        {
+          "id": "limb.1",
+          "type": "limb",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1,
+          "slot": 2
+        },
+        {
+          "id": "limb.2",
+          "type": "limb",
+          "max": 1,
+          "position": "right",
+          "direction": 2,
+          "slot": 4
+        },
+        {
+          "id": "limb.3",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-right",
+          "direction": 3,
+          "slot": 6
+        },
+        {
+          "id": "limb.4",
+          "type": "limb",
+          "max": 1,
+          "position": "rear",
+          "direction": 4,
+          "slot": 8
+        },
+        {
+          "id": "limb.5",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-left",
+          "direction": 5,
+          "slot": 10
+        },
+        {
+          "id": "limb.6",
+          "type": "limb",
+          "max": 1,
+          "position": "left",
+          "direction": 6,
+          "slot": 12
+        },
+        {
+          "id": "limb.7",
+          "type": "limb",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7,
+          "slot": 14
+        },
+        {
+          "id": "head",
+          "type": "head",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "at": {
+            "f": 0.88,
+            "s": 0,
+            "u": 0
+          }
+        },
+        {
+          "id": "mouth",
+          "type": "mouth",
+          "max": 1,
+          "position": "front",
+          "direction": 0
+        },
+        {
+          "id": "eye.left",
+          "type": "eye",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7
+        },
+        {
+          "id": "eye.right",
+          "type": "eye",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1
+        },
+        {
+          "id": "dorsal",
+          "type": "dorsal",
+          "max": 1,
+          "position": "top",
+          "direction": null
+        },
+        {
+          "id": "flank.left",
+          "type": "flank",
+          "max": 1,
+          "position": "left",
+          "direction": 6
+        },
+        {
+          "id": "flank.right",
+          "type": "flank",
+          "max": 1,
+          "position": "right",
+          "direction": 2
+        },
+        {
+          "id": "tail",
+          "type": "tail",
+          "max": 1,
+          "position": "rear",
+          "direction": 4
+        }
+      ],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 0
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 10,
+        "h": 5
+      },
+      "mass": 3.5,
+      "upkeep": 1.05,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "run"
+      ],
+      "animationProfile": "breathing",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [],
+      "legacy": null
+    },
+    {
+      "id": "light-torso",
+      "family": "core",
+      "assetId": "genvo/light-torso",
+      "partVersion": 1,
+      "tags": [
+        "root",
+        "torso",
+        "small"
+      ],
+      "developmentalPrerequisites": [
+        "small-torso"
+      ],
+      "compatibleSocketTypes": [],
+      "providedSockets": [
+        {
+          "id": "limb.1",
+          "type": "limb",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1,
+          "slot": 2
+        },
+        {
+          "id": "limb.2",
+          "type": "limb",
+          "max": 1,
+          "position": "right",
+          "direction": 2,
+          "slot": 4
+        },
+        {
+          "id": "limb.3",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-right",
+          "direction": 3,
+          "slot": 6
+        },
+        {
+          "id": "limb.5",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-left",
+          "direction": 5,
+          "slot": 10
+        },
+        {
+          "id": "limb.6",
+          "type": "limb",
+          "max": 1,
+          "position": "left",
+          "direction": 6,
+          "slot": 12
+        },
+        {
+          "id": "limb.7",
+          "type": "limb",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7,
+          "slot": 14
+        },
+        {
+          "id": "head",
+          "type": "head",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "at": {
+            "f": 0.88,
+            "s": 0,
+            "u": 0
+          }
+        },
+        {
+          "id": "mouth",
+          "type": "mouth",
+          "max": 1,
+          "position": "front",
+          "direction": 0
+        },
+        {
+          "id": "eye.left",
+          "type": "eye",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7
+        },
+        {
+          "id": "eye.right",
+          "type": "eye",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1
+        },
+        {
+          "id": "dorsal",
+          "type": "dorsal",
+          "max": 1,
+          "position": "top",
+          "direction": null
+        },
+        {
+          "id": "flank.left",
+          "type": "flank",
+          "max": 1,
+          "position": "left",
+          "direction": 6
+        },
+        {
+          "id": "flank.right",
+          "type": "flank",
+          "max": 1,
+          "position": "right",
+          "direction": 2
+        },
+        {
+          "id": "tail",
+          "type": "tail",
+          "max": 1,
+          "position": "rear",
+          "direction": 4
+        }
+      ],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 0
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 6,
+        "h": 5
+      },
+      "mass": 2.6,
+      "upkeep": 0.8,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [],
+      "animationProfile": "breathing",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [],
+      "legacy": null
+    },
+    {
+      "id": "stout-torso",
+      "family": "core",
+      "assetId": "genvo/stout-torso",
+      "partVersion": 1,
+      "tags": [
+        "root",
+        "torso",
+        "store"
+      ],
+      "developmentalPrerequisites": [
+        "soft-torso"
+      ],
+      "compatibleSocketTypes": [],
+      "providedSockets": [
+        {
+          "id": "limb.0",
+          "type": "limb",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "slot": 0
+        },
+        {
+          "id": "limb.1",
+          "type": "limb",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1,
+          "slot": 2
+        },
+        {
+          "id": "limb.2",
+          "type": "limb",
+          "max": 1,
+          "position": "right",
+          "direction": 2,
+          "slot": 4
+        },
+        {
+          "id": "limb.3",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-right",
+          "direction": 3,
+          "slot": 6
+        },
+        {
+          "id": "limb.4",
+          "type": "limb",
+          "max": 1,
+          "position": "rear",
+          "direction": 4,
+          "slot": 8
+        },
+        {
+          "id": "limb.5",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-left",
+          "direction": 5,
+          "slot": 10
+        },
+        {
+          "id": "limb.6",
+          "type": "limb",
+          "max": 1,
+          "position": "left",
+          "direction": 6,
+          "slot": 12
+        },
+        {
+          "id": "limb.7",
+          "type": "limb",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7,
+          "slot": 14
+        },
+        {
+          "id": "head",
+          "type": "head",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "at": {
+            "f": 0.88,
+            "s": 0,
+            "u": 0
+          }
+        },
+        {
+          "id": "mouth",
+          "type": "mouth",
+          "max": 1,
+          "position": "front",
+          "direction": 0
+        },
+        {
+          "id": "eye.left",
+          "type": "eye",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7
+        },
+        {
+          "id": "eye.right",
+          "type": "eye",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1
+        },
+        {
+          "id": "dorsal",
+          "type": "dorsal",
+          "max": 1,
+          "position": "top",
+          "direction": null
+        },
+        {
+          "id": "flank.left",
+          "type": "flank",
+          "max": 3,
+          "position": "left",
+          "direction": 6
+        },
+        {
+          "id": "flank.right",
+          "type": "flank",
+          "max": 3,
+          "position": "right",
+          "direction": 2
+        },
+        {
+          "id": "tail",
+          "type": "tail",
+          "max": 1,
+          "position": "rear",
+          "direction": 4
+        }
+      ],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 0
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 8,
+        "h": 9
+      },
+      "mass": 5,
+      "upkeep": 1.1,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "store"
+      ],
+      "animationProfile": "breathing",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [],
+      "legacy": null
+    },
+    {
+      "id": "barrel-torso",
+      "family": "core",
+      "assetId": "genvo/barrel-torso",
+      "partVersion": 1,
+      "tags": [
+        "root",
+        "torso",
+        "store",
+        "large"
+      ],
+      "developmentalPrerequisites": [
+        "stout-torso"
+      ],
+      "compatibleSocketTypes": [],
+      "providedSockets": [
+        {
+          "id": "limb.0",
+          "type": "limb",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "slot": 0
+        },
+        {
+          "id": "limb.1",
+          "type": "limb",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1,
+          "slot": 2
+        },
+        {
+          "id": "limb.2",
+          "type": "limb",
+          "max": 1,
+          "position": "right",
+          "direction": 2,
+          "slot": 4
+        },
+        {
+          "id": "limb.3",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-right",
+          "direction": 3,
+          "slot": 6
+        },
+        {
+          "id": "limb.4",
+          "type": "limb",
+          "max": 1,
+          "position": "rear",
+          "direction": 4,
+          "slot": 8
+        },
+        {
+          "id": "limb.5",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-left",
+          "direction": 5,
+          "slot": 10
+        },
+        {
+          "id": "limb.6",
+          "type": "limb",
+          "max": 1,
+          "position": "left",
+          "direction": 6,
+          "slot": 12
+        },
+        {
+          "id": "limb.7",
+          "type": "limb",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7,
+          "slot": 14
+        },
+        {
+          "id": "limb.10",
+          "type": "limb",
+          "max": 1,
+          "position": "between-right",
+          "direction": null,
+          "slot": 5
+        },
+        {
+          "id": "limb.13",
+          "type": "limb",
+          "max": 1,
+          "position": "between-rear-left",
+          "direction": null,
+          "slot": 11
+        },
+        {
+          "id": "head",
+          "type": "head",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "at": {
+            "f": 0.88,
+            "s": 0,
+            "u": 0
+          }
+        },
+        {
+          "id": "mouth",
+          "type": "mouth",
+          "max": 1,
+          "position": "front",
+          "direction": 0
+        },
+        {
+          "id": "eye.left",
+          "type": "eye",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7
+        },
+        {
+          "id": "eye.right",
+          "type": "eye",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1
+        },
+        {
+          "id": "eye.left.2",
+          "type": "eye",
+          "max": 1,
+          "position": "head-left",
+          "direction": 7
+        },
+        {
+          "id": "eye.right.2",
+          "type": "eye",
+          "max": 1,
+          "position": "head-right",
+          "direction": 1
+        },
+        {
+          "id": "dorsal",
+          "type": "dorsal",
+          "max": 2,
+          "position": "top",
+          "direction": null
+        },
+        {
+          "id": "flank.left",
+          "type": "flank",
+          "max": 2,
+          "position": "left",
+          "direction": 6
+        },
+        {
+          "id": "flank.right",
+          "type": "flank",
+          "max": 2,
+          "position": "right",
+          "direction": 2
+        },
+        {
+          "id": "tail",
+          "type": "tail",
+          "max": 1,
+          "position": "rear",
+          "direction": 4
+        }
+      ],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 0
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 9,
+        "h": 9
+      },
+      "mass": 6,
+      "upkeep": 1.25,
+      "mutationCost": 5,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "store"
+      ],
+      "animationProfile": "breathing",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [],
+      "legacy": null
+    },
+    {
+      "id": "dome-torso",
+      "family": "core",
+      "assetId": "genvo/dome-torso",
+      "partVersion": 1,
+      "tags": [
+        "root",
+        "torso",
+        "tough",
+        "shell"
+      ],
+      "developmentalPrerequisites": [
+        "reinforced-torso"
+      ],
+      "compatibleSocketTypes": [],
+      "providedSockets": [
+        {
+          "id": "limb.0",
+          "type": "limb",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "slot": 0
+        },
+        {
+          "id": "limb.1",
+          "type": "limb",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1,
+          "slot": 2
+        },
+        {
+          "id": "limb.2",
+          "type": "limb",
+          "max": 1,
+          "position": "right",
+          "direction": 2,
+          "slot": 4
+        },
+        {
+          "id": "limb.3",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-right",
+          "direction": 3,
+          "slot": 6
+        },
+        {
+          "id": "limb.4",
+          "type": "limb",
+          "max": 1,
+          "position": "rear",
+          "direction": 4,
+          "slot": 8
+        },
+        {
+          "id": "limb.5",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-left",
+          "direction": 5,
+          "slot": 10
+        },
+        {
+          "id": "limb.6",
+          "type": "limb",
+          "max": 1,
+          "position": "left",
+          "direction": 6,
+          "slot": 12
+        },
+        {
+          "id": "limb.7",
+          "type": "limb",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7,
+          "slot": 14
+        },
+        {
+          "id": "head",
+          "type": "head",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "at": {
+            "f": 0.88,
+            "s": 0,
+            "u": 0
+          }
+        },
+        {
+          "id": "mouth",
+          "type": "mouth",
+          "max": 1,
+          "position": "front",
+          "direction": 0
+        },
+        {
+          "id": "eye.left",
+          "type": "eye",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7
+        },
+        {
+          "id": "eye.right",
+          "type": "eye",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1
+        },
+        {
+          "id": "dorsal",
+          "type": "dorsal",
+          "max": 2,
+          "position": "top",
+          "direction": null
+        },
+        {
+          "id": "flank.left",
+          "type": "flank",
+          "max": 2,
+          "position": "left",
+          "direction": 6
+        },
+        {
+          "id": "flank.right",
+          "type": "flank",
+          "max": 2,
+          "position": "right",
+          "direction": 2
+        },
+        {
+          "id": "tail",
+          "type": "tail",
+          "max": 1,
+          "position": "rear",
+          "direction": 4
+        }
+      ],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 0
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 9,
+        "h": 8
+      },
+      "mass": 6,
+      "upkeep": 1.3,
+      "mutationCost": 6,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "armor"
+      ],
+      "animationProfile": "breathing",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [],
+      "legacy": null
+    },
+    {
+      "id": "long-torso",
+      "family": "core",
+      "assetId": "genvo/long-torso",
+      "partVersion": 1,
+      "tags": [
+        "root",
+        "torso",
+        "large",
+        "segmented"
+      ],
+      "developmentalPrerequisites": [
+        "sleek-torso"
+      ],
+      "compatibleSocketTypes": [],
+      "providedSockets": [
+        {
+          "id": "limb.0",
+          "type": "limb",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "slot": 0
+        },
+        {
+          "id": "limb.1",
+          "type": "limb",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1,
+          "slot": 2
+        },
+        {
+          "id": "limb.2",
+          "type": "limb",
+          "max": 1,
+          "position": "right",
+          "direction": 2,
+          "slot": 4
+        },
+        {
+          "id": "limb.3",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-right",
+          "direction": 3,
+          "slot": 6
+        },
+        {
+          "id": "limb.4",
+          "type": "limb",
+          "max": 1,
+          "position": "rear",
+          "direction": 4,
+          "slot": 8
+        },
+        {
+          "id": "limb.5",
+          "type": "limb",
+          "max": 1,
+          "position": "rear-left",
+          "direction": 5,
+          "slot": 10
+        },
+        {
+          "id": "limb.6",
+          "type": "limb",
+          "max": 1,
+          "position": "left",
+          "direction": 6,
+          "slot": 12
+        },
+        {
+          "id": "limb.7",
+          "type": "limb",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7,
+          "slot": 14
+        },
+        {
+          "id": "limb.9",
+          "type": "limb",
+          "max": 1,
+          "position": "between-front-right",
+          "direction": null,
+          "slot": 3
+        },
+        {
+          "id": "limb.10",
+          "type": "limb",
+          "max": 1,
+          "position": "between-right",
+          "direction": null,
+          "slot": 5
+        },
+        {
+          "id": "limb.13",
+          "type": "limb",
+          "max": 1,
+          "position": "between-rear-left",
+          "direction": null,
+          "slot": 11
+        },
+        {
+          "id": "limb.14",
+          "type": "limb",
+          "max": 1,
+          "position": "between-left",
+          "direction": null,
+          "slot": 13
+        },
+        {
+          "id": "head",
+          "type": "head",
+          "max": 1,
+          "position": "front",
+          "direction": 0,
+          "at": {
+            "f": 0.88,
+            "s": 0,
+            "u": 0
+          }
+        },
+        {
+          "id": "mouth",
+          "type": "mouth",
+          "max": 1,
+          "position": "front",
+          "direction": 0
+        },
+        {
+          "id": "eye.left",
+          "type": "eye",
+          "max": 1,
+          "position": "front-left",
+          "direction": 7
+        },
+        {
+          "id": "eye.right",
+          "type": "eye",
+          "max": 1,
+          "position": "front-right",
+          "direction": 1
+        },
+        {
+          "id": "eye.left.2",
+          "type": "eye",
+          "max": 1,
+          "position": "head-left",
+          "direction": 7
+        },
+        {
+          "id": "eye.right.2",
+          "type": "eye",
+          "max": 1,
+          "position": "head-right",
+          "direction": 1
+        },
+        {
+          "id": "dorsal",
+          "type": "dorsal",
+          "max": 2,
+          "position": "top",
+          "direction": null
+        },
+        {
+          "id": "flank.left",
+          "type": "flank",
+          "max": 3,
+          "position": "left",
+          "direction": 6
+        },
+        {
+          "id": "flank.right",
+          "type": "flank",
+          "max": 3,
+          "position": "right",
+          "direction": 2
+        },
+        {
+          "id": "tail",
+          "type": "tail",
+          "max": 1,
+          "position": "rear",
+          "direction": 4
+        }
+      ],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 0
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 12,
+        "h": 6
+      },
+      "mass": 6,
+      "upkeep": 1.35,
+      "mutationCost": 6,
+      "effectContributions": {},
+      "actionCapabilities": [],
+      "animationProfile": "breathing",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [],
+      "legacy": null
+    },
+    {
+      "id": "walking-leg",
+      "family": "limbs",
+      "assetId": "genvo/walking-leg",
+      "partVersion": 1,
+      "tags": [
+        "leg",
+        "land"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "limb"
+      ],
+      "providedSockets": [
+        {
+          "id": "spur",
+          "type": "spur",
+          "max": 1,
+          "position": "knee",
+          "direction": null
+        }
+      ],
+      "jointChain": [
+        "hip",
+        "knee",
+        "foot"
+      ],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.4,
+      "upkeep": 0.1,
+      "mutationCost": 1,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "walk",
+        "sprint",
+        "dance"
+      ],
+      "animationProfile": "gait",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "ground"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "spring-leg",
+      "family": "limbs",
+      "assetId": "genvo/spring-leg",
+      "partVersion": 1,
+      "tags": [
+        "leg",
+        "land",
+        "burst"
+      ],
+      "developmentalPrerequisites": [
+        "walking-leg"
+      ],
+      "compatibleSocketTypes": [
+        "limb"
+      ],
+      "providedSockets": [
+        {
+          "id": "spur",
+          "type": "spur",
+          "max": 1,
+          "position": "knee",
+          "direction": null
+        }
+      ],
+      "jointChain": [
+        "hip",
+        "knee",
+        "tendon",
+        "foot"
+      ],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.5,
+      "upkeep": 0.18,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "walk",
+        "sprint",
+        "pounce",
+        "dance"
+      ],
+      "animationProfile": "gait",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "ambush",
+        "escape"
+      ],
+      "legacy": {
+        "axis": "spring",
+        "threshold": 0.5,
+        "adaptation": "spring-tendons",
+        "action": {
+          "pounce": 0.8
+        }
+      }
+    },
+    {
+      "id": "grasper",
+      "family": "limbs",
+      "assetId": "genvo/grasper",
+      "partVersion": 1,
+      "tags": [
+        "leg",
+        "manipulate"
+      ],
+      "developmentalPrerequisites": [
+        "walking-leg"
+      ],
+      "compatibleSocketTypes": [
+        "limb"
+      ],
+      "providedSockets": [
+        {
+          "id": "spur",
+          "type": "spur",
+          "max": 1,
+          "position": "knee",
+          "direction": null
+        }
+      ],
+      "jointChain": [
+        "hip",
+        "knee",
+        "hook"
+      ],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.45,
+      "upkeep": 0.14,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "walk",
+        "carry",
+        "dance",
+        "gesture"
+      ],
+      "animationProfile": "gait",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "provisioning"
+      ],
+      "legacy": {
+        "axis": "forelimb",
+        "threshold": 0.5,
+        "adaptation": "grasping-limbs"
+      }
+    },
+    {
+      "id": "runner-leg",
+      "family": "limbs",
+      "assetId": "genvo/runner-leg",
+      "partVersion": 1,
+      "tags": [
+        "leg",
+        "land",
+        "fast"
+      ],
+      "developmentalPrerequisites": [
+        "walking-leg"
+      ],
+      "compatibleSocketTypes": [
+        "limb"
+      ],
+      "providedSockets": [
+        {
+          "id": "spur",
+          "type": "spur",
+          "max": 1,
+          "position": "knee",
+          "direction": null
+        }
+      ],
+      "jointChain": [
+        "hip",
+        "knee",
+        "foot"
+      ],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.35,
+      "upkeep": 0.12,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "walk",
+        "sprint",
+        "run",
+        "dance"
+      ],
+      "animationProfile": "gait",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "open-ground"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "sturdy-leg",
+      "family": "limbs",
+      "assetId": "genvo/sturdy-leg",
+      "partVersion": 1,
+      "tags": [
+        "leg",
+        "land",
+        "brace"
+      ],
+      "developmentalPrerequisites": [
+        "walking-leg"
+      ],
+      "compatibleSocketTypes": [
+        "limb"
+      ],
+      "providedSockets": [
+        {
+          "id": "spur",
+          "type": "spur",
+          "max": 1,
+          "position": "knee",
+          "direction": null
+        }
+      ],
+      "jointChain": [
+        "hip",
+        "knee",
+        "foot"
+      ],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.6,
+      "upkeep": 0.14,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "walk",
+        "brace",
+        "dance"
+      ],
+      "animationProfile": "gait",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "predator-pressure"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "webbed-leg",
+      "family": "limbs",
+      "assetId": "genvo/webbed-leg",
+      "partVersion": 1,
+      "tags": [
+        "leg",
+        "land",
+        "water"
+      ],
+      "developmentalPrerequisites": [
+        "walking-leg"
+      ],
+      "compatibleSocketTypes": [
+        "limb"
+      ],
+      "providedSockets": [
+        {
+          "id": "spur",
+          "type": "spur",
+          "max": 1,
+          "position": "knee",
+          "direction": null
+        }
+      ],
+      "jointChain": [
+        "hip",
+        "knee",
+        "web"
+      ],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.45,
+      "upkeep": 0.14,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "walk",
+        "swim",
+        "dance"
+      ],
+      "animationProfile": "gait",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "wet-margin"
+      ],
+      "legacy": {
+        "axis": "waterBody",
+        "threshold": 0.8,
+        "adaptation": "webbed-limbs"
+      }
+    },
+    {
+      "id": "padded-leg",
+      "family": "limbs",
+      "assetId": "genvo/padded-leg",
+      "partVersion": 1,
+      "tags": [
+        "leg",
+        "land",
+        "quiet"
+      ],
+      "developmentalPrerequisites": [
+        "walking-leg"
+      ],
+      "compatibleSocketTypes": [
+        "limb"
+      ],
+      "providedSockets": [
+        {
+          "id": "spur",
+          "type": "spur",
+          "max": 1,
+          "position": "knee",
+          "direction": null
+        }
+      ],
+      "jointChain": [
+        "hip",
+        "knee",
+        "pad"
+      ],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.4,
+      "upkeep": 0.12,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "walk",
+        "quiet",
+        "dance"
+      ],
+      "animationProfile": "gait",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "stealth"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "digging-forelimb",
+      "family": "limbs",
+      "assetId": "genvo/digging-forelimb",
+      "partVersion": 1,
+      "tags": [
+        "leg",
+        "soil"
+      ],
+      "developmentalPrerequisites": [
+        "walking-leg"
+      ],
+      "compatibleSocketTypes": [
+        "limb"
+      ],
+      "providedSockets": [
+        {
+          "id": "spur",
+          "type": "spur",
+          "max": 1,
+          "position": "knee",
+          "direction": null
+        }
+      ],
+      "jointChain": [
+        "hip",
+        "knee",
+        "spade"
+      ],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.5,
+      "upkeep": 0.15,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "walk",
+        "dig",
+        "dance"
+      ],
+      "animationProfile": "gait",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "burrow",
+        "roots"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "grazing-mouth",
+      "family": "feeding",
+      "assetId": "genvo/grazing-mouth",
+      "partVersion": 1,
+      "tags": [
+        "mouth",
+        "plant"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "mouth"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.3,
+      "upkeep": 0.05,
+      "mutationCost": 1,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "graze",
+        "bite",
+        "call"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "plants"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "tearing-jaw",
+      "family": "feeding",
+      "assetId": "genvo/tearing-jaw",
+      "partVersion": 1,
+      "tags": [
+        "mouth",
+        "flesh"
+      ],
+      "developmentalPrerequisites": [
+        "grazing-mouth"
+      ],
+      "compatibleSocketTypes": [
+        "mouth"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.5,
+      "upkeep": 0.2,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "graze",
+        "bite",
+        "tear",
+        "call"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "carcass",
+        "prey"
+      ],
+      "legacy": {
+        "axis": "jaw",
+        "threshold": 0.5,
+        "adaptation": "heavy-jaw"
+      }
+    },
+    {
+      "id": "crushing-jaw",
+      "family": "feeding",
+      "assetId": "genvo/crushing-jaw",
+      "partVersion": 1,
+      "tags": [
+        "mouth",
+        "hard-food"
+      ],
+      "developmentalPrerequisites": [
+        "tearing-jaw"
+      ],
+      "compatibleSocketTypes": [
+        "mouth"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.7,
+      "upkeep": 0.3,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "graze",
+        "bite",
+        "tear",
+        "crush",
+        "call"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "hard-food",
+        "prey"
+      ],
+      "legacy": {
+        "axis": "jaw",
+        "threshold": 0.8,
+        "adaptation": "crushing-jaw"
+      }
+    },
+    {
+      "id": "beak-mouth",
+      "family": "feeding",
+      "assetId": "genvo/beak-mouth",
+      "partVersion": 1,
+      "tags": [
+        "mouth",
+        "seed"
+      ],
+      "developmentalPrerequisites": [
+        "grazing-mouth"
+      ],
+      "compatibleSocketTypes": [
+        "mouth"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.3,
+      "upkeep": 0.06,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "graze",
+        "bite",
+        "peck",
+        "call"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "seeds"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "kernel-beak",
+      "family": "feeding",
+      "assetId": "genvo/kernel-beak",
+      "partVersion": 1,
+      "tags": [
+        "mouth",
+        "seed",
+        "hard-food"
+      ],
+      "developmentalPrerequisites": [
+        "beak-mouth"
+      ],
+      "compatibleSocketTypes": [
+        "mouth"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.46,
+      "upkeep": 0.12,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "graze",
+        "peck",
+        "crush",
+        "bite",
+        "call"
+      ],
+      "animationProfile": "feeding",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "dry-ground",
+        "seeds"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "filter-mouth",
+      "family": "feeding",
+      "assetId": "genvo/filter-mouth",
+      "partVersion": 1,
+      "tags": [
+        "mouth",
+        "water"
+      ],
+      "developmentalPrerequisites": [
+        "grazing-mouth"
+      ],
+      "compatibleSocketTypes": [
+        "mouth"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.3,
+      "upkeep": 0.06,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "graze",
+        "filter",
+        "call"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "wet-margin"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "reed-sieve-mouth",
+      "family": "feeding",
+      "assetId": "genvo/reed-sieve-mouth",
+      "partVersion": 1,
+      "tags": [
+        "mouth",
+        "water",
+        "sieve"
+      ],
+      "developmentalPrerequisites": [
+        "filter-mouth"
+      ],
+      "compatibleSocketTypes": [
+        "mouth"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.35,
+      "upkeep": 0.09,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "filter",
+        "graze",
+        "call"
+      ],
+      "animationProfile": "feeding",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "wet-margin",
+        "detritus",
+        "larvae"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "nibbler-mouth",
+      "family": "feeding",
+      "assetId": "genvo/nibbler-mouth",
+      "partVersion": 1,
+      "tags": [
+        "mouth",
+        "plant",
+        "small"
+      ],
+      "developmentalPrerequisites": [
+        "grazing-mouth"
+      ],
+      "compatibleSocketTypes": [
+        "mouth"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.2,
+      "upkeep": 0.03,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "graze",
+        "nibble",
+        "call"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "plants"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "sucker-mouth",
+      "family": "feeding",
+      "assetId": "genvo/sucker-mouth",
+      "partVersion": 1,
+      "tags": [
+        "mouth",
+        "carrion"
+      ],
+      "developmentalPrerequisites": [
+        "tearing-jaw"
+      ],
+      "compatibleSocketTypes": [
+        "mouth"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.35,
+      "upkeep": 0.1,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "bite",
+        "suck",
+        "call"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "carcass"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "gape-mouth",
+      "family": "feeding",
+      "assetId": "genvo/gape-mouth",
+      "partVersion": 1,
+      "tags": [
+        "mouth",
+        "prey"
+      ],
+      "developmentalPrerequisites": [
+        "tearing-jaw"
+      ],
+      "compatibleSocketTypes": [
+        "mouth"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.55,
+      "upkeep": 0.2,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "bite",
+        "swallow",
+        "call"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "prey"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "simple-eye",
+      "family": "senses",
+      "assetId": "genvo/simple-eye",
+      "partVersion": 1,
+      "tags": [
+        "eye",
+        "vision"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "eye"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.05,
+      "upkeep": 0.03,
+      "mutationCost": 1,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "see"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "open-ground"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "wide-field-eye",
+      "family": "senses",
+      "assetId": "genvo/wide-field-eye",
+      "partVersion": 1,
+      "tags": [
+        "eye",
+        "vision",
+        "peripheral"
+      ],
+      "developmentalPrerequisites": [
+        "simple-eye"
+      ],
+      "compatibleSocketTypes": [
+        "eye"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.08,
+      "upkeep": 0.07,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "see",
+        "see-wide"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "prey-vigilance"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "hunter-eye",
+      "family": "senses",
+      "assetId": "genvo/hunter-eye",
+      "partVersion": 1,
+      "tags": [
+        "eye",
+        "vision",
+        "forward"
+      ],
+      "developmentalPrerequisites": [
+        "simple-eye"
+      ],
+      "compatibleSocketTypes": [
+        "eye"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.06,
+      "upkeep": 0.05,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "see",
+        "aim"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "prey"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "stalk-eye",
+      "family": "senses",
+      "assetId": "genvo/stalk-eye",
+      "partVersion": 1,
+      "tags": [
+        "eye",
+        "vision",
+        "raised"
+      ],
+      "developmentalPrerequisites": [
+        "simple-eye"
+      ],
+      "compatibleSocketTypes": [
+        "eye"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.07,
+      "upkeep": 0.05,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "see",
+        "spot"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "cover"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "compound-eye",
+      "family": "senses",
+      "assetId": "genvo/compound-eye",
+      "partVersion": 1,
+      "tags": [
+        "eye",
+        "vision",
+        "motion"
+      ],
+      "developmentalPrerequisites": [
+        "wide-field-eye"
+      ],
+      "compatibleSocketTypes": [
+        "eye"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.09,
+      "upkeep": 0.08,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "see",
+        "glance"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "prey-vigilance"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "tracker-eye",
+      "family": "senses",
+      "assetId": "genvo/tracker-eye",
+      "partVersion": 1,
+      "tags": [
+        "eye",
+        "vision",
+        "forage"
+      ],
+      "developmentalPrerequisites": [
+        "simple-eye"
+      ],
+      "compatibleSocketTypes": [
+        "eye"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.06,
+      "upkeep": 0.05,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "see",
+        "track"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "foraging"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "display-eye",
+      "family": "senses",
+      "assetId": "genvo/display-eye",
+      "partVersion": 1,
+      "tags": [
+        "eye",
+        "vision",
+        "social"
+      ],
+      "developmentalPrerequisites": [
+        "simple-eye"
+      ],
+      "compatibleSocketTypes": [
+        "eye"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.06,
+      "upkeep": 0.05,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "see",
+        "display",
+        "flare"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "courtship"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "eyespot",
+      "family": "senses",
+      "assetId": "genvo/eyespot",
+      "partVersion": 1,
+      "tags": [
+        "eye",
+        "light",
+        "cheap"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "eye"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.02,
+      "upkeep": 0.01,
+      "mutationCost": 1,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "see"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "scarcity"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "armor-plate",
+      "family": "defense",
+      "assetId": "genvo/armor-plate",
+      "partVersion": 1,
+      "tags": [
+        "plate",
+        "protect"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "flank",
+        "dorsal"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.6,
+      "upkeep": 0.12,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "armor"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "predator-pressure"
+      ],
+      "legacy": {
+        "axis": "armor",
+        "threshold": 0.5,
+        "adaptation": "hardened-mantle"
+      }
+    },
+    {
+      "id": "barb",
+      "family": "defense",
+      "assetId": "genvo/barb",
+      "partVersion": 1,
+      "tags": [
+        "spike",
+        "retaliate"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "spur"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.1,
+      "upkeep": 0.04,
+      "mutationCost": 1,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "retaliate"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "predator-pressure"
+      ],
+      "legacy": {
+        "axis": "barbs",
+        "threshold": 0.5,
+        "adaptation": "barbed-limbs"
+      }
+    },
+    {
+      "id": "claw",
+      "family": "offense",
+      "assetId": "genvo/claw",
+      "partVersion": 1,
+      "tags": [
+        "claw",
+        "strike"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "spur"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.12,
+      "upkeep": 0.04,
+      "mutationCost": 1,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "strike"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "prey"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "venom-gland",
+      "family": "offense",
+      "assetId": "genvo/venom-gland",
+      "partVersion": 1,
+      "tags": [
+        "gland",
+        "toxin"
+      ],
+      "developmentalPrerequisites": [
+        "tearing-jaw"
+      ],
+      "compatibleSocketTypes": [
+        "flank"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.2,
+      "upkeep": 0.15,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "venom"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "prey"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "storage-sac",
+      "family": "metabolism",
+      "assetId": "genvo/storage-sac",
+      "partVersion": 1,
+      "tags": [
+        "sac",
+        "store"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "flank"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.5,
+      "upkeep": 0.05,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "store"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "dry-ground",
+        "scarcity"
+      ],
+      "legacy": {
+        "axis": "waterBody",
+        "threshold": 0.5,
+        "adaptation": "water-sacs"
+      }
+    },
+    {
+      "id": "silt-fin",
+      "family": "locomotion",
+      "assetId": "genvo/silt-fin",
+      "partVersion": 1,
+      "tags": [
+        "back",
+        "fin",
+        "water"
+      ],
+      "developmentalPrerequisites": [
+        "paddle-tail"
+      ],
+      "compatibleSocketTypes": [
+        "dorsal"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.28,
+      "upkeep": 0.09,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "swim-propel",
+        "flare"
+      ],
+      "animationProfile": "sweep",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "aquatic",
+        "wet-margin"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "signal-crest",
+      "family": "social",
+      "assetId": "genvo/signal-crest",
+      "partVersion": 1,
+      "tags": [
+        "crest",
+        "display"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "dorsal"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.1,
+      "upkeep": 0.05,
+      "mutationCost": 1,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "signal",
+        "flare"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "family"
+      ],
+      "legacy": {
+        "axis": "signal",
+        "threshold": 0.5,
+        "adaptation": "alarm-pulse"
+      }
+    },
+    {
+      "id": "paddle-tail",
+      "family": "locomotion",
+      "assetId": "genvo/paddle-tail",
+      "partVersion": 1,
+      "tags": [
+        "tail",
+        "water"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "tail"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.4,
+      "upkeep": 0.1,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "swim-propel"
+      ],
+      "animationProfile": "sweep",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "wet-margin"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "horn-crest",
+      "family": "defense",
+      "assetId": "genvo/horn-crest",
+      "partVersion": 1,
+      "tags": [
+        "back",
+        "exclusive"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "dorsal"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.3,
+      "upkeep": 0.08,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "retaliate",
+        "display",
+        "flare"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "predator-pressure"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "tusk-jaw",
+      "family": "feeding",
+      "assetId": "genvo/tusk-jaw",
+      "partVersion": 1,
+      "tags": [
+        "mouth",
+        "exclusive",
+        "flesh"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "mouth"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.6,
+      "upkeep": 0.2,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "bite",
+        "tear",
+        "crush",
+        "call"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "prey"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "gliding-membrane",
+      "family": "locomotion",
+      "assetId": "genvo/gliding-membrane",
+      "partVersion": 1,
+      "tags": [
+        "flank",
+        "exclusive"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "flank"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.25,
+      "upkeep": 0.08,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "sprint"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "escape"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "luminous-tail",
+      "family": "social",
+      "assetId": "genvo/luminous-tail",
+      "partVersion": 1,
+      "tags": [
+        "tail",
+        "exclusive"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "tail"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.3,
+      "upkeep": 0.06,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "display",
+        "signal",
+        "flare"
+      ],
+      "animationProfile": "sweep",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "courtship",
+        "prey"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "shell-back",
+      "family": "defense",
+      "assetId": "genvo/shell-back",
+      "partVersion": 1,
+      "tags": [
+        "back",
+        "exclusive",
+        "shell"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "dorsal"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.7,
+      "upkeep": 0.08,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "armor"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "predator-pressure"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "armored-hide",
+      "family": "defense",
+      "assetId": "genvo/armored-hide",
+      "partVersion": 1,
+      "tags": [
+        "plate",
+        "exclusive",
+        "protect"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "flank"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.6,
+      "upkeep": 0.1,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "armor",
+        "retaliate"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "predator-pressure"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "glow-eye",
+      "family": "senses",
+      "assetId": "genvo/glow-eye",
+      "partVersion": 1,
+      "tags": [
+        "eye",
+        "vision",
+        "exclusive",
+        "light"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "eye"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.06,
+      "upkeep": 0.05,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "see",
+        "track"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "foraging",
+        "cover"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "echo-crest",
+      "family": "senses",
+      "assetId": "genvo/echo-crest",
+      "partVersion": 1,
+      "tags": [
+        "back",
+        "exclusive"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "dorsal"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.2,
+      "upkeep": 0.06,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "see-wide",
+        "spot",
+        "call"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "prey-vigilance"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "balance-tail",
+      "family": "locomotion",
+      "assetId": "genvo/balance-tail",
+      "partVersion": 1,
+      "tags": [
+        "tail"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "tail"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.35,
+      "upkeep": 0.05,
+      "mutationCost": 1,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "run"
+      ],
+      "animationProfile": "sweep",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "open-ground"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "club-tail",
+      "family": "locomotion",
+      "assetId": "genvo/club-tail",
+      "partVersion": 1,
+      "tags": [
+        "tail"
+      ],
+      "developmentalPrerequisites": [
+        "balance-tail"
+      ],
+      "compatibleSocketTypes": [
+        "tail"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.35,
+      "upkeep": 0.1,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "retaliate"
+      ],
+      "animationProfile": "sweep",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "predator-pressure"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "spined-tail",
+      "family": "locomotion",
+      "assetId": "genvo/spined-tail",
+      "partVersion": 1,
+      "tags": [
+        "tail"
+      ],
+      "developmentalPrerequisites": [
+        "club-tail"
+      ],
+      "compatibleSocketTypes": [
+        "tail"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.35,
+      "upkeep": 0.12,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "armor"
+      ],
+      "animationProfile": "sweep",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "predator-pressure"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "whip-tail",
+      "family": "locomotion",
+      "assetId": "genvo/whip-tail",
+      "partVersion": 1,
+      "tags": [
+        "tail"
+      ],
+      "developmentalPrerequisites": [
+        "balance-tail"
+      ],
+      "compatibleSocketTypes": [
+        "tail"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.35,
+      "upkeep": 0.08,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "strike"
+      ],
+      "animationProfile": "sweep",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "prey"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "prehensile-tail",
+      "family": "locomotion",
+      "assetId": "genvo/prehensile-tail",
+      "partVersion": 1,
+      "tags": [
+        "tail"
+      ],
+      "developmentalPrerequisites": [
+        "balance-tail"
+      ],
+      "compatibleSocketTypes": [
+        "tail"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.35,
+      "upkeep": 0.08,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "carry"
+      ],
+      "animationProfile": "sweep",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "provisioning"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "fat-tail",
+      "family": "locomotion",
+      "assetId": "genvo/fat-tail",
+      "partVersion": 1,
+      "tags": [
+        "tail"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "tail"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.35,
+      "upkeep": 0.04,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "store"
+      ],
+      "animationProfile": "sweep",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "scarcity"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "flag-tail",
+      "family": "locomotion",
+      "assetId": "genvo/flag-tail",
+      "partVersion": 1,
+      "tags": [
+        "tail"
+      ],
+      "developmentalPrerequisites": [
+        "balance-tail"
+      ],
+      "compatibleSocketTypes": [
+        "tail"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.35,
+      "upkeep": 0.04,
+      "mutationCost": 1,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "display",
+        "flare"
+      ],
+      "animationProfile": "sweep",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "courtship"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "sail-fin",
+      "family": "metabolism",
+      "assetId": "genvo/sail-fin",
+      "partVersion": 1,
+      "tags": [
+        "back"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "dorsal"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.3,
+      "upkeep": 0.06,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "store"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "dry-ground"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "spine-ridge",
+      "family": "defense",
+      "assetId": "genvo/spine-ridge",
+      "partVersion": 1,
+      "tags": [
+        "back"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "dorsal"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.3,
+      "upkeep": 0.08,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "brace"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "predator-pressure"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "water-hump",
+      "family": "metabolism",
+      "assetId": "genvo/water-hump",
+      "partVersion": 1,
+      "tags": [
+        "back"
+      ],
+      "developmentalPrerequisites": [
+        "sail-fin"
+      ],
+      "compatibleSocketTypes": [
+        "dorsal"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.3,
+      "upkeep": 0.06,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "store"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "dry-ground",
+        "scarcity"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "display-frill",
+      "family": "social",
+      "assetId": "genvo/display-frill",
+      "partVersion": 1,
+      "tags": [
+        "back"
+      ],
+      "developmentalPrerequisites": [
+        "signal-crest"
+      ],
+      "compatibleSocketTypes": [
+        "dorsal"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.3,
+      "upkeep": 0.06,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "display",
+        "flare"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "courtship"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "moss-back",
+      "family": "defense",
+      "assetId": "genvo/moss-back",
+      "partVersion": 1,
+      "tags": [
+        "back"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "dorsal"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.3,
+      "upkeep": 0.06,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "quiet"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "cover"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "thorn-carapace",
+      "family": "defense",
+      "assetId": "genvo/thorn-carapace",
+      "partVersion": 1,
+      "tags": [
+        "back",
+        "shell",
+        "spike"
+      ],
+      "developmentalPrerequisites": [
+        "armor-plate"
+      ],
+      "compatibleSocketTypes": [
+        "dorsal"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.84,
+      "upkeep": 0.17,
+      "mutationCost": 4,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "armor",
+        "retaliate"
+      ],
+      "animationProfile": "breathing",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "predator-pressure",
+        "dry-ground"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "sensory-quills",
+      "family": "senses",
+      "assetId": "genvo/sensory-quills",
+      "partVersion": 1,
+      "tags": [
+        "back"
+      ],
+      "developmentalPrerequisites": [
+        "spine-ridge"
+      ],
+      "compatibleSocketTypes": [
+        "dorsal"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.3,
+      "upkeep": 0.07,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "glance"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "prey-vigilance"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "fat-pad",
+      "family": "metabolism",
+      "assetId": "genvo/fat-pad",
+      "partVersion": 1,
+      "tags": [
+        "flank"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "flank"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.3,
+      "upkeep": 0.03,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "store"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "scarcity"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "gill-slits",
+      "family": "locomotion",
+      "assetId": "genvo/gill-slits",
+      "partVersion": 1,
+      "tags": [
+        "flank"
+      ],
+      "developmentalPrerequisites": [
+        "storage-sac"
+      ],
+      "compatibleSocketTypes": [
+        "flank"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.3,
+      "upkeep": 0.08,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "swim"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "wet-margin"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "scent-gland",
+      "family": "social",
+      "assetId": "genvo/scent-gland",
+      "partVersion": 1,
+      "tags": [
+        "flank"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "flank"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.3,
+      "upkeep": 0.05,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "display",
+        "scent"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "courtship"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "spine-cluster",
+      "family": "defense",
+      "assetId": "genvo/spine-cluster",
+      "partVersion": 1,
+      "tags": [
+        "flank"
+      ],
+      "developmentalPrerequisites": [
+        "armor-plate"
+      ],
+      "compatibleSocketTypes": [
+        "flank"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.3,
+      "upkeep": 0.08,
+      "mutationCost": 3,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "retaliate"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "predator-pressure"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "brood-pouch",
+      "family": "metabolism",
+      "assetId": "genvo/brood-pouch",
+      "partVersion": 1,
+      "tags": [
+        "flank"
+      ],
+      "developmentalPrerequisites": [
+        "storage-sac"
+      ],
+      "compatibleSocketTypes": [
+        "flank"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.3,
+      "upkeep": 0.05,
+      "mutationCost": 2,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "carry"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "family"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "egg-chamber",
+      "family": "metabolism",
+      "assetId": "genvo/egg-chamber",
+      "partVersion": 1,
+      "tags": [
+        "flank",
+        "reproduction",
+        "oviparous"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "flank"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.8,
+      "upkeep": 0.22,
+      "mutationCost": 5,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "lay-eggs"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "reproduction",
+        "dry-ground"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "live-womb",
+      "family": "metabolism",
+      "assetId": "genvo/live-womb",
+      "partVersion": 1,
+      "tags": [
+        "flank",
+        "reproduction",
+        "viviparous"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "flank"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "single",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 1.1,
+      "upkeep": 0.36,
+      "mutationCost": 7,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "live-birth"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "reproduction",
+        "family"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "hook-spur",
+      "family": "offense",
+      "assetId": "genvo/hook-spur",
+      "partVersion": 1,
+      "tags": [
+        "spur"
+      ],
+      "developmentalPrerequisites": [
+        "claw"
+      ],
+      "compatibleSocketTypes": [
+        "spur"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.08,
+      "upkeep": 0.03,
+      "mutationCost": 1,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "strike"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "prey"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "dew-claw",
+      "family": "defense",
+      "assetId": "genvo/dew-claw",
+      "partVersion": 1,
+      "tags": [
+        "spur"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "spur"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.08,
+      "upkeep": 0.02,
+      "mutationCost": 1,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "brace"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "predator-pressure"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "heel-spike",
+      "family": "defense",
+      "assetId": "genvo/heel-spike",
+      "partVersion": 1,
+      "tags": [
+        "spur"
+      ],
+      "developmentalPrerequisites": [
+        "barb"
+      ],
+      "compatibleSocketTypes": [
+        "spur"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.08,
+      "upkeep": 0.03,
+      "mutationCost": 1,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "armor"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "predator-pressure"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "sensory-bristle",
+      "family": "senses",
+      "assetId": "genvo/sensory-bristle",
+      "partVersion": 1,
+      "tags": [
+        "spur"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "spur"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.08,
+      "upkeep": 0.02,
+      "mutationCost": 1,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "glance"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "prey-vigilance"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "grip-pad",
+      "family": "limbs",
+      "assetId": "genvo/grip-pad",
+      "partVersion": 1,
+      "tags": [
+        "spur"
+      ],
+      "developmentalPrerequisites": [],
+      "compatibleSocketTypes": [
+        "spur"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.08,
+      "upkeep": 0.02,
+      "mutationCost": 1,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "run"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "open-ground"
+      ],
+      "legacy": null
+    },
+    {
+      "id": "kick-spur",
+      "family": "offense",
+      "assetId": "genvo/kick-spur",
+      "partVersion": 1,
+      "tags": [
+        "spur"
+      ],
+      "developmentalPrerequisites": [
+        "claw"
+      ],
+      "compatibleSocketTypes": [
+        "spur"
+      ],
+      "providedSockets": [],
+      "jointChain": [],
+      "mountingBounds": {
+        "minSockets": 1
+      },
+      "orientationRules": "follows-socket",
+      "symmetryRules": "paired",
+      "dimensions": {
+        "w": 2,
+        "h": 2
+      },
+      "mass": 0.08,
+      "upkeep": 0.03,
+      "mutationCost": 1,
+      "effectContributions": {},
+      "actionCapabilities": [
+        "strike"
+      ],
+      "animationProfile": "static",
+      "inheritanceProfile": "parental-blend",
+      "ecologicalNicheTags": [
+        "prey"
+      ],
+      "legacy": null
+    }
+  ]
+}

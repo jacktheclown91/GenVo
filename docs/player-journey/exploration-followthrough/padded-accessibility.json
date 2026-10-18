@@ -1,0 +1,6007 @@
+{
+  "scope": "Exhaustive controlled operator-index enumeration starting from the actual recorded ordinary newborn211 body. Not actual descendant births, natural mutation frequency, viable maturation, a new approved route, genotype reconstruction or observed stealth. The real newborn has one pad and quiet=false; legal existing mutations can cross the current two-pad threshold.",
+  "input": "docs/player-journey/exploration-followthrough/results.json",
+  "childId": 211,
+  "parentIds": [
+    119,
+    109
+  ],
+  "inputSha256": "ffcf3f4dd3ca5bae9b2a9d79dece51e6211c796c4d639a891b61b20751c01b1f",
+  "sourceHashes": {
+    "src/lineage/body-inheritance.js": "f91945e14de204ceee5a7bc1c4ade52a4f8325f3fea267741d4e5288c8479d0a",
+    "src/lineage/optional-loss.js": "530e757f4eeab24433bfdcebdc475865d77d812ffaa5dcc88a6637ceefa919a6",
+    "src/lineage/part-abilities.js": "5d236062961095d5720969dd48ebfe6757171485f6c960e32cda8a33f22f6806"
+  },
+  "choices": 107,
+  "quietResults": 6,
+  "rows": [
+    {
+      "asymmetric": false,
+      "index": 0,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 0,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-03735442",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "spring-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "spring-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 1,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 1,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-fdd19408",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "grasper"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "grasper"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 2,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 2,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-5d770cb2",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "runner-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "runner-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 3,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 3,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-a9b36cc6",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "sturdy-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "sturdy-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 4,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 4,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-c562b166",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "webbed-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "webbed-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 5,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 5,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-0e28a47a",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": true,
+      "sprintSpeed": 0.96
+    },
+    {
+      "asymmetric": false,
+      "index": 6,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 6,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-c733d7ee",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "digging-forelimb"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "digging-forelimb"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 0.95
+    },
+    {
+      "asymmetric": false,
+      "index": 7,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 7,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-a3fe6347",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "spring-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "spring-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 8,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 8,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-c856bea7",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "grasper"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "grasper"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 9,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 9,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-1bfc7581",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "runner-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "runner-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 10,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 10,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-15541463",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "sturdy-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "sturdy-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 11,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 11,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-88796c03",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "webbed-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "webbed-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 12,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 12,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-3ce46923",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "digging-forelimb"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "digging-forelimb"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 0.95
+    },
+    {
+      "asymmetric": false,
+      "index": 13,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 13,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-a3fe6347",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "spring-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "spring-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 14,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 14,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-c856bea7",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "grasper"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "grasper"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 15,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 15,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-1bfc7581",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "runner-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "runner-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 16,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 16,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-15541463",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "sturdy-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "sturdy-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 17,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 17,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-88796c03",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "webbed-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "webbed-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 18,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 18,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-55bf1841",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": true,
+      "sprintSpeed": 0.96
+    },
+    {
+      "asymmetric": false,
+      "index": 19,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 19,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-3ce46923",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "digging-forelimb"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "digging-forelimb"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 0.95
+    },
+    {
+      "asymmetric": false,
+      "index": 20,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 20,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-03735442",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "spring-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "spring-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 21,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 21,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-fdd19408",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "grasper"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "grasper"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 22,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 22,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-5d770cb2",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "runner-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "runner-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 23,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 23,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-a9b36cc6",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "sturdy-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "sturdy-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 24,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 24,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-c562b166",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "webbed-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "webbed-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 25,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 25,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-0e28a47a",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": true,
+      "sprintSpeed": 0.96
+    },
+    {
+      "asymmetric": false,
+      "index": 26,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 26,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-c733d7ee",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "digging-forelimb"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "digging-forelimb"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 0.95
+    },
+    {
+      "asymmetric": false,
+      "index": 27,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 27,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-c089f045",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "soft-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 28,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 28,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-86569489",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "light-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1.04
+    },
+    {
+      "asymmetric": false,
+      "index": 29,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 29,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-2d617ba3",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "tearing-jaw"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 30,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 30,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-ac2af561",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "beak-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 31,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 31,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-4d5947ae",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "filter-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 32,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 32,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-bc91d3d6",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "nibbler-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 33,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 33,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-c6154d6c",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "wide-field-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "wide-field-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 34,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 34,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-323f3894",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "hunter-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "hunter-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 35,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 35,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-e5baf7ce",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "stalk-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "stalk-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 36,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 36,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-14c97388",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "tracker-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "tracker-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 37,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 37,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-c2f421fc",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "display-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "display-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 38,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 38,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-15ff71ee",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "eyespot"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "eyespot"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 39,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 39,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-4dabfb8b",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "flank.left",
+          "partId": "armor-plate"
+        },
+        {
+          "socket": "flank.right",
+          "partId": "armor-plate"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 40,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 40,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-4cefceba",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "dorsal",
+          "partId": "armor-plate"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 41,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 41,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-cb9054ee",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "barb"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "barb"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 42,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 42,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-83ebe282",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "claw"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "claw"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 43,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 43,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-96d3e61d",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "flank.left",
+          "partId": "storage-sac"
+        },
+        {
+          "socket": "flank.right",
+          "partId": "storage-sac"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 44,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 44,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-5f0a1288",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "dorsal",
+          "partId": "signal-crest"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 45,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 45,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-f35525b0",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        },
+        {
+          "socket": "tail",
+          "partId": "paddle-tail"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 46,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 46,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-5a8f220c",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        },
+        {
+          "socket": "tail",
+          "partId": "balance-tail"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1.05
+    },
+    {
+      "asymmetric": false,
+      "index": 47,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 47,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-fd199039",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        },
+        {
+          "socket": "tail",
+          "partId": "fat-tail"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 0.96
+    },
+    {
+      "asymmetric": false,
+      "index": 48,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 48,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-78b9f6fd",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "dorsal",
+          "partId": "sail-fin"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 0.97
+    },
+    {
+      "asymmetric": false,
+      "index": 49,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 49,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-d3c3a96f",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "dorsal",
+          "partId": "spine-ridge"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 50,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 50,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-9491f43a",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "dorsal",
+          "partId": "moss-back"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 51,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 51,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-65dd7475",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "flank.left",
+          "partId": "fat-pad"
+        },
+        {
+          "socket": "flank.right",
+          "partId": "fat-pad"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 0.97
+    },
+    {
+      "asymmetric": false,
+      "index": 52,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 52,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-0caafd37",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "flank.left",
+          "partId": "scent-gland"
+        },
+        {
+          "socket": "flank.right",
+          "partId": "scent-gland"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 53,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 53,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-74fcdc87",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "flank.left",
+          "partId": "egg-chamber"
+        },
+        {
+          "socket": "flank.right",
+          "partId": "egg-chamber"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 54,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 54,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-f31bfdef",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "flank.left",
+          "partId": "live-womb"
+        },
+        {
+          "socket": "flank.right",
+          "partId": "live-womb"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 55,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 55,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-cc3c976c",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "dew-claw"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "dew-claw"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 0.994009
+    },
+    {
+      "asymmetric": false,
+      "index": 56,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 56,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-acea7960",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "sensory-bristle"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "sensory-bristle"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": false,
+      "index": 57,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 57,
+        "options": 58,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-3a080278",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "grip-pad"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "grip-pad"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 0,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 0,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-89c76032",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "spring-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 1,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 1,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-dffb2c7a",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "grasper"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 2,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 2,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-02cf8afd",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "runner-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 3,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 3,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-dfb8c31c",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "sturdy-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 4,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 4,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-7946c05e",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "webbed-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 5,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 5,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-705adaad",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": true,
+      "sprintSpeed": 0.96
+    },
+    {
+      "asymmetric": true,
+      "index": 6,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 6,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-5a6ee0b2",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "digging-forelimb"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 0.95
+    },
+    {
+      "asymmetric": true,
+      "index": 7,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 7,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-ba0308f1",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "spring-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 8,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 8,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-18e7e359",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "grasper"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 9,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 9,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-08e5e5e4",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "runner-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 10,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 10,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-c7f38537",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "sturdy-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 11,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 11,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-ee047c61",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "webbed-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 12,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 12,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-655a38bd",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "digging-forelimb"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 0.95
+    },
+    {
+      "asymmetric": true,
+      "index": 13,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 13,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-e5b90314",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "spring-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 14,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 14,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-f39ae4ea",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "grasper"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 15,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 15,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-4f1f9a89",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "runner-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 16,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 16,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-6c0ce182",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "sturdy-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 17,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 17,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-56ee7fd4",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "webbed-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 18,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 18,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-55bf1841",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": true,
+      "sprintSpeed": 0.96
+    },
+    {
+      "asymmetric": true,
+      "index": 19,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 19,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-47b087a8",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "digging-forelimb"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 0.95
+    },
+    {
+      "asymmetric": true,
+      "index": 20,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 20,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-771e0780",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "spring-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 21,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 21,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-1a081f6e",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "grasper"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 22,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 22,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-102ba259",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "runner-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 23,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 23,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-a27d6dc6",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "sturdy-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 24,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 24,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-e68a3b1c",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "webbed-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 25,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 25,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-41f35629",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": true,
+      "sprintSpeed": 0.96
+    },
+    {
+      "asymmetric": true,
+      "index": 26,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 26,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-fde4eb30",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "digging-forelimb"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 0.95
+    },
+    {
+      "asymmetric": true,
+      "index": 27,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 27,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-1aa4b39e",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "barb"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 28,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 28,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-297b1d30",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "barb"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 29,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 29,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-dc04eb96",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "barb"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 30,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 30,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-da61c3a8",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "barb"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 31,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 31,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-113a931c",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "claw"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 32,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 32,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-feb83502",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "claw"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 33,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 33,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-46f37390",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "claw"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 34,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 34,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-e40dc582",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "claw"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 35,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 35,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-e514e7bb",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "dew-claw"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 0.997
+    },
+    {
+      "asymmetric": true,
+      "index": 36,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 36,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-adc4203f",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "dew-claw"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 0.997
+    },
+    {
+      "asymmetric": true,
+      "index": 37,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 37,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-bffbd0ed",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "dew-claw"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 0.997
+    },
+    {
+      "asymmetric": true,
+      "index": 38,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 38,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-a2c40e63",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "dew-claw"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 0.997
+    },
+    {
+      "asymmetric": true,
+      "index": 39,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 39,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-62dad61a",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "sensory-bristle"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 40,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 40,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-d8259e0a",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "sensory-bristle"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 41,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 41,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-1d94061c",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "sensory-bristle"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 42,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 42,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-2a18ef5e",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "sensory-bristle"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 43,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 43,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-44e269a7",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "grip-pad"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 44,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 44,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-078f13f7",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "grip-pad"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 45,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 45,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-12eab711",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "grip-pad"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 46,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "add-or-replace",
+        "branch": "asymmetric",
+        "choice": 46,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-d893ffa7",
+        "targets": [],
+        "removed": [],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "spur",
+          "partId": "grip-pad"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 47,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "delete",
+        "branch": "asymmetric",
+        "choice": 47,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-09e5ff59",
+        "targets": [
+          "root/eye.left"
+        ],
+        "removed": [
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "parent": "root",
+            "socket": "eye.left"
+          }
+        ],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.right",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    },
+    {
+      "asymmetric": true,
+      "index": 48,
+      "event": {
+        "policy": "neutral-optional-loss/1",
+        "operator": "delete",
+        "branch": "asymmetric",
+        "choice": 48,
+        "options": 49,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-85b8561c",
+        "to": "bp0-18df2b48",
+        "targets": [
+          "root/eye.right"
+        ],
+        "removed": [
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "parent": "root",
+            "socket": "eye.right"
+          }
+        ],
+        "problems": []
+      },
+      "parts": [
+        {
+          "socket": null,
+          "partId": "small-torso"
+        },
+        {
+          "socket": "eye.left",
+          "partId": "simple-eye"
+        },
+        {
+          "socket": "limb.1",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.3",
+          "partId": "padded-leg"
+        },
+        {
+          "socket": "limb.5",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "limb.7",
+          "partId": "walking-leg"
+        },
+        {
+          "socket": "mouth",
+          "partId": "grazing-mouth"
+        }
+      ],
+      "quiet": false,
+      "sprintSpeed": 1
+    }
+  ]
+}

@@ -2,6 +2,14 @@ import {recolorIndexedFrame} from './indexed-part-art.js';
 const segmentDensity=(section,a,b)=>Math.hypot(b.x-a.x,b.y-a.y)/Math.hypot(section.end[0]-section.start[0],section.end[1]-section.start[1]);
 
 // Prepare once per asset/palette. Drawing performs no decoding or pixel allocation.
+// Phase 3L: a tinted frame used in the current frame is never recycled within that frame. The batched creature pass
+// draws every body before any is read, so recycling (repainting) a frame canvas that an earlier body of the same
+// frame still references forced the browser to settle that body first, once per creature: with 200 walking,
+// individually pigmented creatures the 256-frame cache was exceeded inside one frame and creature preparation rose
+// from 10 to 134 ms. The cache may then grow past MAX_TINTED_FRAMES (up to TINT_HARD_MAX) and shrinks back by
+// recycling only frames from earlier frames. Output is identical: a cache only decides reuse.
+let tintFrame=0;export function beginTintFrame(){tintFrame++}
+const TINT_HARD_MAX=2048;
 export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
  const factory=createCanvas||(()=>{if(typeof document!=='undefined')return document.createElement('canvas');if(typeof OffscreenCanvas!=='undefined')return new OffscreenCanvas(32,32);throw Error('Canvas backend unavailable')});
  function prepared(frame,canvas,rgba){
@@ -25,16 +33,21 @@ export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
  // Inherited skin coloration is derived from the creature's phenotype at draw time.
  // The compiled/source RGB sheets remain untouched. Cache only displayed frames, never
  // 16 frame canvases for every animal or every palette variant.
- const tintCache=new Map(),MAX_TINTED_FRAMES=64;
+ const tintCache=new Map(),MAX_TINTED_FRAMES=256;
  function tinted(entry,pigment){
   if(!pigment||!asset.regions.some(r=>r.id==='skin'&&!r.protected))return entry;
   const key=entry.frame.key+'|'+pigment.map(c=>c.join(',')).join(';');
-  let hit=tintCache.get(key);if(hit){tintCache.delete(key);tintCache.set(key,hit);return hit}
-  const canvas=factory();canvas.width=asset.width;canvas.height=asset.height;
-  const ctx=canvas.getContext('2d'),data=ctx.createImageData(asset.width,asset.height);
+  let hit=tintCache.get(key);if(hit){hit.usedFrame=tintFrame;tintCache.delete(key);tintCache.set(key,hit);return hit}
+  // Eviction recycles the oldest frame's canvas and context: many individually pigmented creatures
+  // exceed the cache, and allocating a canvas per miss made Blink finalize thousands per second
+  // (long embedder GC pauses). putImageData overwrites every pixel, so recycled output is identical.
+  let canvas=null,ctx=null;
+  if(tintCache.size>=MAX_TINTED_FRAMES){const oldKey=tintCache.keys().next().value,old=tintCache.get(oldKey);
+    if(old.usedFrame!==tintFrame||tintCache.size>=TINT_HARD_MAX){tintCache.delete(oldKey);if(!old.dorsalPaint&&old.ctx&&old.usedFrame!==tintFrame){canvas=old.canvas;ctx=old.ctx}}}
+  if(!canvas){canvas=factory();canvas.width=asset.width;canvas.height=asset.height;ctx=canvas.getContext('2d')}
+  const data=ctx.createImageData(asset.width,asset.height);
   data.data.set(recolorIndexedFrame(asset,entry.frame.key,{skin:pigment}));ctx.putImageData(data,0,0);
-  hit=prepared(entry.frame,canvas,data.data);tintCache.set(key,hit);
-  if(tintCache.size>MAX_TINTED_FRAMES)tintCache.delete(tintCache.keys().next().value);
+  hit=prepared(entry.frame,canvas,data.data);hit.ctx=ctx;hit.usedFrame=tintFrame;tintCache.set(key,hit);
   return hit;
  }
  const displayScale=asset.displayScale??1;

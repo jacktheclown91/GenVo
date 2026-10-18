@@ -1,0 +1,106 @@
+{
+  "scope": "Lossless transfer of this actual native save into a new isolated test IndexedDB, then normal Continue. Wait requires saved world identity/tick/age and complete scene before observation. A few live updates before normal pause are allowed, not claimed exact browser-frame equality.",
+  "expected": {
+    "seed": "GENVO8-TEST-A",
+    "slot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+    "day": 213,
+    "tick": 10209
+  },
+  "actual": {
+    "lineageActiveId": 491,
+    "handoffs": [
+      {
+        "from": 109,
+        "to": 491,
+        "generation": 3,
+        "day": 213,
+        "year": 7,
+        "reason": "handoff",
+        "changes": [
+          {
+            "key": "motion",
+            "current": 0.9992367755654986,
+            "baseline": 0.9017648529727013,
+            "delta": 0.09747192259279736,
+            "phrase": "faster movement",
+            "noun": "Movement"
+          },
+          {
+            "key": "metabolism",
+            "current": 0.8841540899338708,
+            "baseline": 0.9668144827242942,
+            "delta": -0.08266039279042336,
+            "phrase": "higher energy use",
+            "noun": "Metabolism"
+          },
+          {
+            "key": "body",
+            "current": 1.0808847765032412,
+            "baseline": 1.030085538001731,
+            "delta": 0.050799238501510136,
+            "phrase": "larger body",
+            "noun": "Body size"
+          }
+        ],
+        "founderChanges": [
+          {
+            "key": "motion",
+            "current": 0.9992367755654986,
+            "baseline": 0.9017648529727013,
+            "delta": 0.09747192259279736,
+            "phrase": "faster movement",
+            "noun": "Movement"
+          },
+          {
+            "key": "metabolism",
+            "current": 0.8841540899338708,
+            "baseline": 0.9668144827242942,
+            "delta": -0.08266039279042336,
+            "phrase": "higher energy use",
+            "noun": "Metabolism"
+          },
+          {
+            "key": "body",
+            "current": 1.0808847765032412,
+            "baseline": 1.030085538001731,
+            "delta": 0.050799238501510136,
+            "phrase": "larger body",
+            "noun": "Body size"
+          }
+        ],
+        "newlyEstablished": false,
+        "fromTaxon": {
+          "id": "genvo8-root",
+          "label": "GenVo"
+        },
+        "toTaxon": {
+          "id": "genvo8-root",
+          "label": "GenVo"
+        },
+        "crossTaxon": false,
+        "bornAdaptations": [],
+        "mutationBudget": {
+          "budget": 12,
+          "bonus": 4
+        },
+        "preparedness": {
+          "fieldReady": false,
+          "routes": 0,
+          "lessons": 1,
+          "independence": 0.5341666666666668,
+          "label": "still learning"
+        }
+      }
+    ],
+    "seed": "GENVO8-TEST-A",
+    "slot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+    "day": 213,
+    "tick": 10223,
+    "id": 491,
+    "age": 30,
+    "body": "bp0-4134709b",
+    "sceneShown": true,
+    "scenePending": false
+  },
+  "errors": []
+}

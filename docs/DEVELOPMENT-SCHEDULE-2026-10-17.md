@@ -1,0 +1,167 @@
+# Development priorities through October 30
+
+This schedule implements the creator's October 17 direction. It changes execution priorities, not biological correctness requirements. Suggested effort allocation: 65% implementation, 25% focused verification, 10% extended verification; guidance, not a rigid quota.
+
+## Lean validation schedule
+
+| Trigger | Validation |
+| --- | --- |
+| Relevant code change | Changed mechanism and affected invariants; preserve rigorous inheritance, finite-resource, save/load, hybridization and corruption checks. |
+| Gameplay or rendering change | Real browser gameplay smoke with inspected frames and interaction evidence. |
+| Major mechanism integration | Fast regression gate, then one canonical 100-day observation and ordinary gameplay review. |
+| Milestone, release candidate, or specifically justified late defect | Selected longer scenarios or full multi-world soak. State the question before running. |
+| Repeated timeout | Preserve failure, investigate separately using bounded profiles. No automatic unchanged rerun or larger ceiling. |
+
+Default fast runner remains fast. Existing five-world and 420/640-day scenarios remain available and reported as deferred when unrun. They are not routine development gates. Missing mechanisms are recorded as dependencies; unrelated balance changes must not compensate for them.
+
+## One primary 100-day benchmark
+
+Canonical seed: `GENVO8-TEST-A`, existing biological rules, 100 completed simulated days. Command after major integration:
+
+```powershell
+node tools/observe-ecology.mjs GENVO8-TEST-A 100 --development-100
+```
+
+This is an explicit integration command, not an automatic per-edit action. Samples: initial baseline plus completed days 1, 10, 30, 60, 100. The simulation starts with game-day counter 1; completing 100 days ends at counter 101. Artifacts record both `day` and `completedDays` to avoid off-by-one claims. No extra five-world run is implied.
+
+| Checkpoint | Review |
+| --- | --- |
+| 1, 10 | Establishment, actual capabilities, feeding/hunting/shelter/mating behavior, understandable player interaction. |
+| 30 | Weather, finite resources, births, deaths, dispersal and explainable ecological consequences. |
+| 60 | Maturation and inherited variation where life cycles allow; observed reproductive differences, not compulsory divergence. |
+| 100 | Persistent history, consistent state, responsiveness, memory and meaningful player activity. |
+
+Use ordinary gameplay as well as accelerated simulation. At these stages inspect interactions, frame pacing and regional history; headless completion cannot prove enjoyable or smooth gameplay. Record absence of opportunity separately from mechanism failure. No species survival quotas, target population, equilibrium, forced speciation or rescue. This window cannot establish long-term stability or rare evolutionary events.
+
+## Next ecological milestone: environmental foundations
+
+Current world generation has per-cell moisture, fertility and temperature, binary freshwater, connected land regions and water-distance access. Persistent weather and soil-water flows are integrated. Temperature has a north/south gradient, not a complete latitude/elevation climate model. Groundwater transfer is not an elevation-derived watershed. The generator currently has no elevation, slope, depth or salinity fields.
+
+Proceed in bounded implementation slices: finish the approved weather/soil integration review; then add deterministic elevation and derived drainage connected to the existing water budget, with explicit save compatibility and visible terrain review. Extend regional climate and producer responses from physical fields. Follow with planned creature mechanisms that can respond to those conditions. Multi-biome foundations take priority over broad population balancing.
+
+Representative settings should eventually cover temperate habitat, dryland, cold region, mountain watershed, freshwater wetland, coast/ocean and a connected diverse world. Select one setting for each mechanism's integration question; do not run all settings after every edit. Cold-adaptation claims await applicable physiology; marine claims await depth, salinity and marine mechanisms. Labels describe conditions and never grant organism bonuses. Connected gradients support migration, isolation, gene flow and contact zones without forcing divergence.
+
+## Recent effort accounting
+
+Command durations are measured wall time; implementation was interleaved with test runs, so these rows are not an additive timesheet or measured percentage allocation.
+
+| Category | Recent evidence |
+| --- | --- |
+| Implementation | Approximately 30-40 minutes of active editing/review, estimated rather than instrumented: observation split, strict integrity reporting, process cleanup, exact-parity performance corrections and retained diagnostic evidence. |
+| Focused testing | Two revised full fast passes: 130 + 137 seconds (4m27s), plus several minutes of targeted parity, invariants, process cleanup and observer checks. |
+| Extended testing | Original comprehensive run: 3,203 seconds (53m23s), a mixed fast/long run; five-world 100-day observation: 159.8 seconds (2m40s). Of the comprehensive run, 40 minutes were its two timeout waits. |
+| Separate timeout investigation | 900.4-second mature-world diagnostic (15m), plus two 120-day profiling comparisons totaling about 217 seconds (3m37s), and short observer profiling. The 40 minutes above are included in extended testing, not counted again here. |
+
+Verification dominated elapsed execution. No more full or long reruns are scheduled for the benchmark sampling/documentation change. The new checkpoint mode needs only the short observer parity fixture. Future effort follows the lean schedule above.
+
+## Evidence and outstanding limits
+
+Final pre-checkpoint fast run: 382 pass, five known failures, no new failures/timeouts; 12 long suites deferred. Later CPU-chunk retention fixture passed separately. Five-world 100-day headless observation completed, but used the former 20-day sampling cadence; it does not supply the newly requested checkpoints or prove ordinary gameplay through day 100.
+
+The separate 420-day diagnostic timed out under the unchanged 900-second ceiling. Last complete sample was after 300 days; no final receipt or completed CPU-window profile exists. Seed cohorts and post-GC heap grew; actor-side and vegetation costs both increased. This is unresolved scalability evidence, not proof of a leak or a soil-water defect. Short CPU chunks now survive timeout, proven by a small fixture; the long prefix was not replayed.
+
+No commits, pushes, packaging or releases are authorized by this schedule.
+
+## First environmental slice implemented
+
+Elevation, derived slopes/drainage and conservative terrain-driven groundwater are now implemented for new worlds, with optional persisted terrain and legacy flow for existing saves. See `environment-foundations/REPORT.md` for mechanism limits, focused tests, inspected runtime frames and integration results. This is not a complete mountain/biome generator: elevation-based climate, terrain movement costs, depth, salinity and marine/cold physiology remain later slices.
+
+## Living Planet milestone supersedes per-slice ecological cadence
+
+Creator objective: `FIRST-100-DAYS-LIVING-PLANET-GAP-ANALYSIS.md`. Complete environmental, biological and player foundations, then integration/polish before the next major canonical 100-day evaluation. Focused correctness and real browser checks continue throughout. Earlier 100-day receipts remain valid evidence of their narrower incomplete systems, not acceptance of the mechanism-complete milestone. All seven Living Planet criteria remain open.
+
+## Continental and evolutionary possibility-space review update
+
+The creator expanded this milestone to persistent continental geography, major functional evolutionary routes, simple ancestry and distinct young/established demonstrations. Review proposal and exact 79-part matrix: `living-planet-architecture/`. Earlier local-world work is partial evidence, not completion. New feature implementation is held until review; preserve the uncommitted prototype and its recorded surface-water save regression.
+
+## October 17 reviewed A0/A and player-guided validation update
+
+Architecture review authorizes A0 then A on the current-sized world. Their verification is recorded in docs/living-planet-architecture/A0-VERIFICATION.md and docs/world-pages/REPORT.md (paths relative to repository root). Larger geography still requires reviewed scale mapping and measured performance. The full A-H roadmap remains active.
+
+Separate Autonomous Ecosystem and Player-Guided Evolution trials must use identical physiology, inheritance, developmental costs, mate acceptance and environmental rules. Young versus established ancestry is a separate dimension. Skilled players may specialize faster through legitimate strategy and editor choices; do not impose arbitrary generation gates, fabricate precursors, boost mutation or guarantee outcomes. Strategic options must be discoverable. See docs/living-planet-architecture/PLAYER-GUIDED-VALIDATION.md. Major integrated 100-day trials remain deferred until mechanisms are ready.
+
+## October 17 computational birth-cap correction
+
+Silent maxAnimals clipping in funded births/hatching and global egg-laying clipping have been removed. Historical thresholds now drive a visible diagnostic and observation metadata. Nine focused suites pass, including exact funded-birth/reference independence and resume, actual 900-plus actors, 130-egg laying/hatching, corruption rejection and persistence. Real isolated-browser notice inspected. See `docs/processing-capacity/REPORT.md` relative to the repository root. Earlier statements that clipping remains unresolved are historical; throughput and overload scheduling remain unproven. The earlier full A0/A gate predates this patch. No new major trial, world expansion, commit, push or release.
+
+## Ordered frame pacing follow-up
+
+Runtime processing now yields between complete control steps after a 12-ms budget, retaining all admitted queued work and the ecology substep phase. Visible feedback reports lag; no newborn limit is reintroduced. Exact full-state parity and existing timing/movement/save checks pass. A fresh-world browser sample and a disclosed forced-backlog/recovery fixture were captured and inspected; see `docs/frame-pacing/REPORT.md` relative to repository root. Single-tick stalls, mature-world memory/throughput and planetary scale remain unproven.
+
+## October 17 existing-route accessibility audit
+
+Bounded existing-mechanism audit retained all64 seeds: 58 conceptions, 174 real births after ordinary gestation, four paired-webbed swimmers from non-swimming simple parents. The archived actual newborn crossed existing water with normal charged movement; parent blocked; isolated browser frames inspected. Partial evidence only: lineage-specific pressure-directed inheritance violates the shared neutral rule, tissue costs and descendant reproduction remain open. See `docs/living-planet-architecture/accessibility-experiment/REPORT.md` and `NEUTRAL-INHERITANCE-REPAIR.md` in its parent directory. No new anatomical-route or runtime biology implementation was performed.
+
+## October 17 actual descendant follow-up
+
+The original archived swimmer now survived ordinary paid growth to adulthood on day52 (52.2393 energy, six recorded growth-delay days), retaining its original genes/body. One disclosed unrelated simple adult immigrant initially failed the recovery gate; after normal recovery, the pair conceived on day60 and completed ordinary gestation. Actual generation3 offspring8/9 both swim, with parentIDs4/7 and grandparents1/2. Daily integrity checks passed; two independent12-update descendant save continuations match exactly. See `docs/living-planet-architecture/accessibility-experiment/DESCENDANT-REPORT.md` relative to repository root. Earlier statements that descendant reproduction is unproven are superseded for this controlled current-rule route. Shared neutral rules, tissue costs, storage-axis coupling and the full possibility space remain unresolved; overall route acceptance remains PARTIAL.
+
+## Next review request prepared
+
+Creator review requested for the concrete neutral-inheritance defect repair and B0 opt-in planetary geography at current map size; see `living-planet-architecture/NEXT-REVIEW-CHECKPOINT.md`. Larger geography remains gated. The full A-H objective and October30 freeze remain intact; no route, biome or100-day outcome is declared complete. Static planet-coordinate arithmetic passes, with scope limited to the proposal.
+
+## Creator approval received
+
+The creator explicitly answered: "Approve both bounded passes" on October17. Neutral-inheritance repair with explicit future-birth rule migration and B0 opt-in planetary geography on the current128 x128 map are authorized. The referenced candidate policy, coordinate contract, preserved historical organisms/saves and acceptance checks define the boundary. No larger-world expansion, new anatomical route, commit, push or release is authorized. The prior review request is resolved; do not ask for the same approval again.
+
+## Approved neutral-core implementation started
+
+Shared continuous-gene/anatomy inheritance now applies across player/background parent flags, and the active exposure-directed emergence hook is removed. Component-versioned save migration preserves old organisms/world/RNG while recording the changed future birth policy. Nine focused checks pass; population-trait and legacy anatomy-projection repairs remain unfinished. See `docs/living-planet-architecture/NEUTRAL-CORE-IMPLEMENTATION.md` relative to repository root. The refreshed391-pass fast gate is explicitly the pre-repair checkpoint; no new full-gate result is claimed for later edits. Both bounded passes remain authorized without another approval request.
+
+## Neutral parental trait follow-up
+
+Population traits and family forms now inherit existing frozen parental determinants without pressure/learned-behavior creation, strengthening or arbitrary generation gates. Shared background/player birth registration preserves source strength and provenance. Explicit partial-policy migration and exact resume pass, alongside15 focused suites; old superseded assertions/sources are retained and revised with preserved mechanics/visual/genealogy gates. A runtime player-cache serialization defect was fixed without relaxing exact-save assertions. See `docs/living-planet-architecture/parental-trait-repair/REPORT.md` relative to repository root. Anatomy projection remains legacy and unfinished; the approved current-size geography pass is still pending.
+
+## Supported water projection implemented
+
+Newborn/design swimming and storage now have independent expression and actual structural support, with no automatic water-organ fabrication. Existing organisms retain their state; anatomy-only legacy water physiology remains explicit inherited compatibility. Future-birth migration is recorded and explained on load. A separate32-seed current-policy ordinary-gestation audit produced82 births and one paired swimmer with zero storage trait/organ and no legacy exemption; normal water entry versus its blocked parent was inspected in Chromium. The full fast gate is still running. See `docs/living-planet-architecture/water-projection-repair/REPORT.md` relative to repository root. Historical route receipts remain historical; tissue costs and the full A-H scope remain unfinished.
+
+## Neutral/water integration checkpoint
+
+Current complete fast receipt:393 pass, five known failures, one timing overrun,12 long suites deferred of411; no new functional failure or input drift. Observer timing518ms exceeded the unchanged500ms budget; prior full run479ms and the standalone463ms check passed. Preserve the overrun and limited margin; do not claim an all-green full gate or scalability acceptance. Current-policy swimming is actual birth/runtime evidence without phantom storage. The approved B0 current-size geography pass remains next; full A-H acceptance and tissue costs remain unfinished. Detailed receipts and fixes: `docs/living-planet-architecture/water-projection-repair/REPORT.md` relative to repository root.
+
+## Approved B0 implementation checkpoint
+
+The approved opt-in planetary geography foundation is implemented on the unchanged 128 x 128 biological map. The saved planetary descriptor, deterministic macro drainage/region sampling, canonical shared river boundary IDs and strict save handling now have focused passing evidence. New World offers a planetary river preview; established local geography remains default. A fresh headed Chromium run passed normal creation, movement and save/Continue with no page errors, and the resulting menu, resumed scene and atlas were visually inspected. The initial failed Continue capture and its corrected callback defect are retained honestly. See `docs/planet-geography/REPORT.md` relative to repository root.
+
+This is B0: immutable initial geography plus finite current-world initialization. It does not establish dynamic global reservoir exchange, persistent populated regions beyond the map, final polar terrain, larger-world performance or full A-H acceptance. B1/D, world enlargement and specific new anatomical routes remain separate review boundaries. The broader fast gate is currently running; its final receipt is recorded separately when complete. October 30 freeze remains visible; no commit, push or release is included.
+
+## Completed B0 fast validation receipt
+
+`docs/test-runs/planet-b0-fast-2026-10-17.json`: 395 pass, five known failures, zero new failures, zero timeouts, zero stale ledger entries and 12 deferred long suites of 412, in 119 seconds. Validation source/configuration fingerprints match (`bb94b3c628afe3d71aeaef72ecf2607f909695fe85d88c1c2b7495854194a037`), inputDrift=false. The five known failures remain ai-disclosure, canonical-source, evolution-contract, player-copy-style and provenance; this is not an all-green release gate. Observer-play passes at 401 ms against its unchanged 500 ms ceiling for its declared 560-animal fixture. Prior 518 ms overrun remains preserved; this result does not prove mature planetary capacity. No source edits occurred during the run.
+
+This receipt supersedes the pending-fast-gate wording above. The two approved bounded implementation passes have current evidence. Full A-H completion, larger worlds, global living ecology and new anatomical routes are not claimed. See `docs/planet-geography/REPORT.md` and the neutral/water reports for exact scope.
+
+## Current-policy maturity, descendants and function verified
+
+The archived ordinary swimmer from the declared 32-seed neutral/supported-water audit now reached maturity on day52 with ordinary updates,54.0696 paid growth energy and six natural growth-delay days. No age/reserve/body/genome edit or resource addition was used. One disclosed unrelated simple adult immigrant and supported encounter produced accepted conception on day54 and normal generation-three births7/8 on day70. One offspring swims with two webbed legs; the other does not swim. Both have parents3/6, grandparents1/2, zero storage and no legacy exemption. The mother remains healthy; unchanged anatomy/genome and exact full-save/twelve-update continuation pass. A fresh headed Chromium comparison at the same existing bank was inspected: nonswimmer stopped on land, swimmer entered charged water movement with no body/genome change or page errors.
+
+This replaces the earlier missing current-policy maturity/descendant evidence for this controlled existing route. It does not approve new routes, establish tissue-derived physiology, ordinary player succession, autonomous frequency or the two integrated100-day trials. Controlled mate/placement interventions are disclosed. Receipts, input hashes, scope and date correction: `docs/living-planet-architecture/accessibility-experiment/current-policy/DESCENDANT-REPORT.md` relative to repository root. The prior B0 full fast receipt remains395 pass/five known failures/12 deferred; the added observation/capture tools postdate that fingerprint, with their direct assertions and runtime receipts verified separately. No biological source rule changed for these experiments.
+
+## Player-facing inheritance guidance corrected
+
+The mate panel no longer promises all young or a fixed fraction will express a parental adaptation. A read-only parental phenotype summary attributes observations, exposes canonical gameplay consequences/tradeoffs and explains that offspring may inherit different bodies/abilities. It no longer calls the anatomy synchronizer to produce presentation text. Nine focused suites and an inspected isolated headed Chromium panel pass, including unchanged animal/RNG/water/moisture state while inspecting. This advances discoverable player-guided strategy without changing biology or claiming completion of that trial. See `docs/living-planet-architecture/accessibility-experiment/current-policy/PARENTAL-GUIDANCE-REPORT.md` relative to repository root. Prior full fast results predate this UI change; current verification is focused and runtime evidence. No new route, enlarged map, commit, push or release.
+
+## Developmental operator audit and pending route review
+
+A read-only source-backed enumeration now covers every one-step founder mutation choice in both current symmetry branches:107 choices,107 changed bodies,8-10 nodes,zero deleted mounted sockets. All79 part IDs match the catalog matrix. Metadata prerequisite closure reaches71 nonexclusive IDs but ignores placement, development and physics, so it is not a viable-pathway proof. Source hashes and all choices are retained in developmental-operator-audit.json.
+
+DEVELOPMENTAL-GRAMMAR-CONTRACT.md defines the full grammar and a concrete proposed neutral optional-organ loss pass, with versioned future-birth policy, unchanged historical organisms, actual normal development/reproduction, functional loss and save/runtime evidence. The creator review question is pending; no loss operator or new route has been implemented. Existing four-leg/eye restrictions and tissue-cost gaps stay explicit. The catalog/accessibility documents now distinguish repaired neutral/water inheritance from their original historical findings. This is design/audit progress, not A-H completion or authorization to enlarge the world.
+
+## Multi-seed current-size continuity check
+
+`tools/check-planet-seed-continuity.mjs` completed eight declared seeds B0-CONTINUITY-000 through007. More than four different macro worlds were generated and revisited in reverse order, exercising shared-cache eviction. Descriptors, negative/remote static samples, page boundary descriptions and detailed region hashes remained identical. Each actual128-tile simulation and its restored copy completed64 ordinary updates through the first daily boundary with exact complete-state equality; environment validation and ecological identity/resource accounting passed. Initial populations181-185, water tiles512-656. Three deaths across two seeds were retained and reconciled; no survival target or resource rescue was used.
+
+Receipt: `docs/planet-geography/seed-continuity.json` relative to repository root, including source hashes and each seed's outputs. This is short continuity/finite-state evidence, not a100-day ecosystem outcome, mature performance, bigger-world approval or global water exchange. No product source or biological rule changed. The optional-organ loss implementation review remains pending; no new route was activated.
+
+## Founder-feedback repair and current verification
+
+A fixed-runtime counterfactual found CFG.initial steering reproductive drive/search/kinship. RecoveryController now has no founder-relative runtime feedback; local opportunity/condition, actual compatibility and consent remain authoritative. An ecologyRules local-opportunity/1 migration records/explains future behavior changes while preserving organisms/history/world/RNG. Unknown versions reject; exact save continuation passes. Three superseded comparator contracts were explicitly revised with originals/failures retained and meaningful assertions preserved. Final fast gate397 pass, five known failures, zero new failures/timeouts/stale ledger,12 deferred of414; source fingerprint matches current inputs. The post-migration archived swimmer matured and reproduced normally, yielding three swimmers and one nonswimmer, with inspected actual water-entry difference. See founder-feedback-repair/REPORT.md within living-planet-architecture for scopes, low postbirth maternal reserves and historical input boundaries. Full A-H/LP acceptance remains incomplete; optional-organ loss question is still pending. No map expansion, new route, commit, push or release.
+
+## Optional-organ loss authorization and implementation in progress
+
+The creator explicitly approved the optional-organ loss pass. No repeated approval is needed within DEVELOPMENTAL-GRAMMAR-CONTRACT.md. The operator is implemented with atomic subtree closure, existing viability and paired/asymmetric rules, deterministic choice ordering, unchanged0.25 event chance and0.05 asymmetric share. Conditional operator choices are extended rather than secretly rerolled. New birthRules.bodyVariation neutral-optional-loss/1 explicitly migrates future births without rewriting old organisms; unknown versions reject. Per-birth operator/removed-node/parent-body/final-expression evidence is saved, with guided overrides distinguished.
+
+Focused optional-loss, structural symmetry, supported-water, neutral inheritance, physical breeding, conception snapshot, kinship and save checks pass. A corrected compatible-torso fixture replaces an invalid test setup; the original is preserved. The traced optional-storage offspring8 also matured naturally with unchanged body/genome,49.9354 paid growth energy and three natural growth delays. A finite maximum256-seed normal-conception/gestation experiment is now running with a declared first-qualifying-birth stopping rule; all attempted seeds/siblings and failed attempts are retained. The actual source parent and the staged unrelated ready adult, placement, counterfactual-world import and source ancestry are explicitly disclosed. No mutation boost, forced deletion, fabricated ancestor or existing-parent reserve reset is used.
+
+The397-pass broad receipt predates these edits; current optional-loss acceptance and a settled fast gate remain unfinished. No larger world, other new anatomical route, commit, push or release is authorized. The earlier ordinary-opening UI probe is preserved; the rest of that player journey follows this approved core pass.

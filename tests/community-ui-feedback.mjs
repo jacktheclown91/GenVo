@@ -5,5 +5,7 @@ assert.match(css,/#hud\{[^}]*background:rgba\(/s,'primary HUD has a readability 
 assert.match(css,/\.objective\{[^}]*background:rgba\(/s,'objective has a readability wash');
 assert.match(css,/\.objective strong\{[^}]*17px/s,'primary objective type is larger');
 assert.match(css,/\.context\{[^}]*font:bold 13px/s,'interaction prompt is larger');
-assert.doesNotMatch(css,/linear-gradient|border-radius/,'feedback pass preserves authored UI direction');
+// The separately authored v1.65 title menu deliberately uses gradients and button geometry
+// (same boundary as ui-art-direction.mjs); the field UI before it must not.
+assert.doesNotMatch(css.split('/* GenVo v1.65')[0],/linear-gradient|border-radius/,'feedback pass preserves authored UI direction');
 console.log('community UI feedback checks: PASS');

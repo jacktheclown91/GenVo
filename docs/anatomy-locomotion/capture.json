@@ -1,0 +1,338 @@
+{
+ "tool": "tools/capture-anatomy-locomotion.cjs",
+ "viewport": "800x600",
+ "zoom": "default 2x",
+ "runs": [
+  {
+   "body": "walker",
+   "heading": "east",
+   "videoStart": 4.19,
+   "videoEnd": 6.39,
+   "shots": [
+    "walker-east-0.png",
+    "walker-east-1.png",
+    "walker-east-2.png"
+   ],
+   "seconds": 2.08,
+   "fps": 47,
+   "p95FrameMs": 33.4,
+   "tilesPerSecond": 2,
+   "strideCyclesPerSecond": 8.56,
+   "inWaterFrames": 0,
+   "frames": 99
+  },
+  {
+   "body": "walker",
+   "heading": "south",
+   "videoStart": 6.56,
+   "videoEnd": 8.55,
+   "shots": [
+    "walker-south-0.png",
+    "walker-south-1.png",
+    "walker-south-2.png"
+   ],
+   "seconds": 2.05,
+   "fps": 59.5,
+   "p95FrameMs": 16.7,
+   "tilesPerSecond": 1.94,
+   "strideCyclesPerSecond": 8.34,
+   "inWaterFrames": 0,
+   "frames": 123
+  },
+  {
+   "body": "walker",
+   "heading": "northwest",
+   "videoStart": 8.88,
+   "videoEnd": 11.12,
+   "shots": [
+    "walker-northwest-0.png",
+    "walker-northwest-1.png",
+    "walker-northwest-2.png"
+   ],
+   "seconds": 2.43,
+   "fps": 50.1,
+   "p95FrameMs": 33.2,
+   "tilesPerSecond": 1.82,
+   "strideCyclesPerSecond": 7.79,
+   "inWaterFrames": 0,
+   "frames": 123
+  },
+  {
+   "body": "runner",
+   "heading": "east",
+   "videoStart": 11.29,
+   "videoEnd": 13.56,
+   "shots": [
+    "runner-east-0.png",
+    "runner-east-1.png",
+    "runner-east-2.png"
+   ],
+   "seconds": 2.3,
+   "fps": 54.4,
+   "p95FrameMs": 33.4,
+   "tilesPerSecond": 2.16,
+   "strideCyclesPerSecond": 7.17,
+   "inWaterFrames": 0,
+   "frames": 126
+  },
+  {
+   "body": "runner",
+   "heading": "south",
+   "videoStart": 13.75,
+   "videoEnd": 16.32,
+   "shots": [
+    "runner-south-0.png",
+    "runner-south-1.png",
+    "runner-south-2.png"
+   ],
+   "seconds": 2.62,
+   "fps": 45.9,
+   "p95FrameMs": 33.4,
+   "tilesPerSecond": 2.02,
+   "strideCyclesPerSecond": 6.63,
+   "inWaterFrames": 0,
+   "frames": 121
+  },
+  {
+   "body": "runner",
+   "heading": "northwest",
+   "videoStart": 16.52,
+   "videoEnd": 18.77,
+   "shots": [
+    "runner-northwest-0.png",
+    "runner-northwest-1.png",
+    "runner-northwest-2.png"
+   ],
+   "seconds": 2.3,
+   "fps": 55.7,
+   "p95FrameMs": 33.3,
+   "tilesPerSecond": 2.16,
+   "strideCyclesPerSecond": 7.2,
+   "inWaterFrames": 0,
+   "frames": 129
+  },
+  {
+   "body": "heavy",
+   "heading": "east",
+   "videoStart": 18.95,
+   "videoEnd": 21.37,
+   "shots": [
+    "heavy-east-0.png",
+    "heavy-east-1.png",
+    "heavy-east-2.png"
+   ],
+   "seconds": 2.48,
+   "fps": 50.3,
+   "p95FrameMs": 33.4,
+   "tilesPerSecond": 1.81,
+   "strideCyclesPerSecond": 9.49,
+   "inWaterFrames": 0,
+   "frames": 126
+  },
+  {
+   "body": "heavy",
+   "heading": "south",
+   "videoStart": 21.55,
+   "videoEnd": 23.96,
+   "shots": [
+    "heavy-south-0.png",
+    "heavy-south-1.png",
+    "heavy-south-2.png"
+   ],
+   "seconds": 2.47,
+   "fps": 40.1,
+   "p95FrameMs": 33.4,
+   "tilesPerSecond": 1.69,
+   "strideCyclesPerSecond": 8.52,
+   "inWaterFrames": 0,
+   "frames": 100
+  },
+  {
+   "body": "heavy",
+   "heading": "northwest",
+   "videoStart": 24.17,
+   "videoEnd": 26.62,
+   "shots": [
+    "heavy-northwest-0.png",
+    "heavy-northwest-1.png",
+    "heavy-northwest-2.png"
+   ],
+   "seconds": 2.5,
+   "fps": 45.2,
+   "p95FrameMs": 33.4,
+   "tilesPerSecond": 1.85,
+   "strideCyclesPerSecond": 10.22,
+   "inWaterFrames": 0,
+   "frames": 114
+  },
+  {
+   "body": "spring",
+   "heading": "east",
+   "videoStart": 26.78,
+   "videoEnd": 29.13,
+   "shots": [
+    "spring-east-0.png",
+    "spring-east-1.png",
+    "spring-east-2.png"
+   ],
+   "seconds": 2.38,
+   "fps": 46.2,
+   "p95FrameMs": 33.4,
+   "tilesPerSecond": 1.86,
+   "strideCyclesPerSecond": 6.89,
+   "inWaterFrames": 0,
+   "frames": 111
+  },
+  {
+   "body": "spring",
+   "heading": "south",
+   "videoStart": 29.33,
+   "videoEnd": 31.54,
+   "shots": [
+    "spring-south-0.png",
+    "spring-south-1.png",
+    "spring-south-2.png"
+   ],
+   "seconds": 2.28,
+   "fps": 52.6,
+   "p95FrameMs": 33.4,
+   "tilesPerSecond": 1.97,
+   "strideCyclesPerSecond": 7.32,
+   "inWaterFrames": 0,
+   "frames": 121
+  },
+  {
+   "body": "spring",
+   "heading": "northwest",
+   "videoStart": 31.75,
+   "videoEnd": 34.05,
+   "shots": [
+    "spring-northwest-0.png",
+    "spring-northwest-1.png",
+    "spring-northwest-2.png"
+   ],
+   "seconds": 2.38,
+   "fps": 51.6,
+   "p95FrameMs": 33.3,
+   "tilesPerSecond": 1.92,
+   "strideCyclesPerSecond": 7.21,
+   "inWaterFrames": 0,
+   "frames": 124
+  },
+  {
+   "body": "webbed",
+   "heading": "east",
+   "videoStart": 34.4,
+   "videoEnd": 36.67,
+   "shots": [
+    "webbed-east-0.png",
+    "webbed-east-1.png",
+    "webbed-east-2.png"
+   ],
+   "seconds": 2.25,
+   "fps": 51.1,
+   "p95FrameMs": 33.4,
+   "tilesPerSecond": 1.8,
+   "strideCyclesPerSecond": 8.54,
+   "inWaterFrames": 0,
+   "frames": 116
+  },
+  {
+   "body": "webbed",
+   "heading": "south",
+   "videoStart": 36.85,
+   "videoEnd": 39.05,
+   "shots": [
+    "webbed-south-0.png",
+    "webbed-south-1.png",
+    "webbed-south-2.png"
+   ],
+   "seconds": 2.25,
+   "fps": 54.7,
+   "p95FrameMs": 33.3,
+   "tilesPerSecond": 1.76,
+   "strideCyclesPerSecond": 8.34,
+   "inWaterFrames": 0,
+   "frames": 124
+  },
+  {
+   "body": "webbed",
+   "heading": "northwest",
+   "videoStart": 39.24,
+   "videoEnd": 41.56,
+   "shots": [
+    "webbed-northwest-0.png",
+    "webbed-northwest-1.png",
+    "webbed-northwest-2.png"
+   ],
+   "seconds": 2.37,
+   "fps": 46.5,
+   "p95FrameMs": 33.4,
+   "tilesPerSecond": 1.63,
+   "strideCyclesPerSecond": 7.76,
+   "inWaterFrames": 0,
+   "frames": 111
+  },
+  {
+   "body": "walker",
+   "heading": "into-water",
+   "videoStart": 42.01,
+   "videoEnd": 44.95,
+   "shots": [
+    "walker-into-water-0.png",
+    "walker-into-water-1.png",
+    "walker-into-water-2.png"
+   ],
+   "seconds": 2.77,
+   "fps": 25.3,
+   "p95FrameMs": 50.1,
+   "tilesPerSecond": 0.35,
+   "strideCyclesPerSecond": 2.14,
+   "inWaterFrames": 0,
+   "frames": 71
+  },
+  {
+   "body": "webbed",
+   "heading": "into-water",
+   "videoStart": 45.15,
+   "videoEnd": 48.37,
+   "shots": [
+    "webbed-into-water-0.png",
+    "webbed-into-water-1.png",
+    "webbed-into-water-2.png"
+   ],
+   "seconds": 3.2,
+   "fps": 23.1,
+   "p95FrameMs": 66.6,
+   "tilesPerSecond": 1.42,
+   "strideCyclesPerSecond": 6.76,
+   "inWaterFrames": 47,
+   "frames": 75
+  },
+  {
+   "body": "webbedPaddle",
+   "heading": "into-water",
+   "videoStart": 48.6,
+   "videoEnd": 51.22,
+   "shots": [
+    "webbedPaddle-into-water-0.png",
+    "webbedPaddle-into-water-1.png",
+    "webbedPaddle-into-water-2.png"
+   ],
+   "seconds": 2.63,
+   "fps": 28.9,
+   "p95FrameMs": 50.1,
+   "tilesPerSecond": 1.81,
+   "strideCyclesPerSecond": 8.58,
+   "inWaterFrames": 48,
+   "frames": 77
+  }
+ ],
+ "errors": [],
+ "swim": {
+  "walker": false,
+  "webbed": true,
+  "webbedPaddle": true
+ },
+ "video": "docs/anatomy-locomotion/page@48be1362e721bc5c59015ac4a146f0c2.webm"
+}

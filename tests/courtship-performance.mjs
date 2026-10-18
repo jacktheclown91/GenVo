@@ -9,7 +9,7 @@ const sim=new Simulation('COURTSHIP-PERFORMANCE-TEST',{player:false});
 const [a,b,c]=sim.animals.filter(v=>v.species==='rootling').slice(0,3);
 assert.ok(a&&b&&c,'three natural creatures exist');
 const species=SPECIES.rootling;
-const neutral={weights:{size:0,strength:0,ornament:0,display:0,behavior:0},selectivity:.5};
+const neutral={weights:{size:0,strength:0,ornament:0,display:0,behavior:0},selectivity:.5,similarity:0};
 const strongSize={weights:{...neutral.weights,size:1},selectivity:.3};
 for(const x of [a,b,c]){
   x.age=species.maturity+25;x.pregnant=null;x.reproCooldown=0;x.health=100;x.infected=false;
@@ -78,3 +78,17 @@ sim.resolveInteraction(a);
 assert.equal(a.courtshipPerformance,null,'live interaction completes or rejects with no parallel gestation path');
 
 console.log('courtship-performance: anatomy-costed action, nonbinding competition, soft consent, persistence and interruption PASS');
+
+// Completion must agree with the existing validator grace interval. A suitor
+// may miss the exact end tick while a partner briefly leaves arrival range.
+for(let late=1;late<=CFG.lifeStride;late++) {
+ const t=new Simulation('DISPLAY-END-WINDOW-'+late,{player:false}),[first,second]=t.animals.filter(x=>x.species==='rootling').slice(0,2);
+ for(const x of [first,second])Object.assign(x,{age:SPECIES.rootling.maturity+10,health:100,energy:SPECIES.rootling.maxEnergy*.99,hydration:SPECIES.rootling.maxHydration*.99,infected:false,reproCooldown:0,pregnant:null,parentIds:[]});
+ first.sex='M';second.sex='F';first.x=second.x=40;first.y=second.y=40;
+ assert.equal(performCourtship(t,first,second),false);const paid=structuredClone(first.courtshipPerformance),spent=first.energy,rng=t.rng.state,learning=structuredClone(first.courtshipLearning);
+ t.tickCount=paid.endsAt+late;assert.equal(activeCourtship(t,first),second,'Existing grace retains this exact display');
+ assert.equal(performCourtship(t,first,second),true,'Late observation within existing lifetime completes the paid display');
+ assert.equal(first.energy,spent,'No restart or second charge');assert.equal(t.rng.state,rng);assert.deepEqual(first.courtshipLearning,learning);assert.deepEqual(first.completedCourtship,paid);assert.equal(first.courtshipPerformance,null);
+ const snap=createSimulationSnapshot(t),copy=restoreSimulationSnapshot(structuredClone(snap));assert.deepEqual(copy.animals.find(a=>a.id===first.id).completedCourtship,paid);
+}
+console.log('Every existing completion grace tick preserves original funded display, attempt, RNG and saved completion: PASS');

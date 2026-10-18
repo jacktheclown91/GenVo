@@ -1,0 +1,114 @@
+{
+ "schema": "genvo.player-strategy/1",
+ "days": 160,
+ "rows": [
+  {
+   "physiology": "old",
+   "firstDeathDay": 56,
+   "share": {},
+   "mate": {
+    "branch": 0,
+    "eligible": 0,
+    "tries": 8,
+    "conceived": 1
+   },
+   "deathCause": "faded day 160 W0.67 E0.67",
+   "seed": "STRAT-C",
+   "strategy": "auto",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 2,
+   "lineageBirths": 4,
+   "firstChildDay": 29,
+   "highestGeneration": 2,
+   "energyMedian": 0.23
+  },
+  {
+   "physiology": "old",
+   "firstDeathDay": null,
+   "share": {
+    "other": 0.642,
+    "eat": 0.35,
+    "drink": 0.008
+   },
+   "mate": {
+    "branch": 422,
+    "eligible": 416,
+    "tries": 38,
+    "conceived": 2,
+    "started": 18,
+    "refusals": {
+     "An approach or performance is already underway.": 398
+    }
+   },
+   "deathCause": "faded day 160 W0.58 E0.59",
+   "seed": "STRAT-C",
+   "strategy": "forager",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 0,
+   "lineageBirths": 8,
+   "firstChildDay": 39,
+   "highestGeneration": 3,
+   "energyMedian": 0.86
+  },
+  {
+   "physiology": "old",
+   "firstDeathDay": null,
+   "share": {
+    "other": 0.642,
+    "eat": 0.35,
+    "drink": 0.008
+   },
+   "mate": {
+    "branch": 422,
+    "eligible": 416,
+    "tries": 38,
+    "conceived": 2,
+    "started": 18,
+    "refusals": {
+     "An approach or performance is already underway.": 398
+    }
+   },
+   "deathCause": "faded day 160 W0.58 E0.59",
+   "seed": "STRAT-C",
+   "strategy": "refuge",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 0,
+   "lineageBirths": 8,
+   "firstChildDay": 39,
+   "highestGeneration": 3,
+   "energyMedian": 0.86
+  },
+  {
+   "physiology": "old",
+   "firstDeathDay": null,
+   "share": {
+    "other": 0.642,
+    "eat": 0.35,
+    "drink": 0.008
+   },
+   "mate": {
+    "branch": 422,
+    "eligible": 416,
+    "tries": 38,
+    "conceived": 2,
+    "started": 18,
+    "refusals": {
+     "An approach or performance is already underway.": 398
+    }
+   },
+   "deathCause": "faded day 160 W0.58 E0.59",
+   "seed": "STRAT-C",
+   "strategy": "defend",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 0,
+   "lineageBirths": 8,
+   "firstChildDay": 39,
+   "highestGeneration": 3,
+   "energyMedian": 0.86
+  }
+ ]
+}

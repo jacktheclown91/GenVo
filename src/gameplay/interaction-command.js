@@ -17,7 +17,9 @@ export function contextualInteractions(sim,target=null){
   const nest=chooseCareNest(sim,a);if(nest&&Math.hypot(nest.x-a.x,nest.y-a.y)<=1.4)candidates.push({kind:'nest',id:nest.id,x:nest.x,y:nest.y,label:'Clutch'});
   const shelter=sim.shelter.nearest(a,{radius:2.2,familyOnly:true});if(shelter)candidates.push({kind:'shelter',id:shelter.id,x:shelter.x,y:shelter.y,label:'Shelter'});
   const denSite=sim.stalkerTerritory?.nearbySite?.(a,{radius:1.9,includeAbandoned:true});if(denSite&&!denSite.known)candidates.push({kind:'den',id:denSite.den.id,x:denSite.den.x,y:denSite.den.y,label:'Animal scrape'});
-  const options=[...new Map(candidates.map(t=>[targetKey(t),t])).values()].sort((p,q)=>Math.hypot(p.x-a.x,p.y-a.y)-Math.hypot(q.x-a.x,q.y-a.y)||(targetKey(p)<targetKey(q)?-1:targetKey(p)>targetKey(q)?1:0)).flatMap(t=>contextualInteractions(sim,t)).filter(o=>o.enabled&&o.id!=='inspect');
+  const options=[...new Map(candidates.map(t=>[targetKey(t),t])).values()].sort((p,q)=>Math.hypot(p.x-a.x,p.y-a.y)-Math.hypot(q.x-a.x,q.y-a.y)||(targetKey(p)<targetKey(q)?-1:targetKey(p)>targetKey(q)?1:0)).flatMap(t=>contextualInteractions(sim,t)).filter(o=>o.enabled&&o.id!=='inspect')
+   // A meal can be reached both as a forage target and through its water cell; one action id is one choice.
+   .filter((o,k,all)=>all.findIndex(x=>x.id===o.id)===k);
   if(sim.partAbilities.digAvailability(a).enabled&&!sim.nearestPlayerCombatTarget(a,1.9))options.push(...contextualInteractions(sim,{kind:'ground',x:a.x,y:a.y,i:sim.world.idx(a.x,a.y)}));
   return options;
  }

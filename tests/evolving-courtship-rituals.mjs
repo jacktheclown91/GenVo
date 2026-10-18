@@ -28,6 +28,8 @@ a.bodyPlan={nodes:[{partId:'small-torso'}]};
 assert.deepEqual(availableCourtshipMoves(a),[]);
 assert.deepEqual(chooseCourtshipSequence(world,a),['approach'],'a body without a signal can still court');
 a.bodyPlan={nodes:[{partId:'small-torso'},{partId:'walking-leg'},{partId:'grazing-mouth'},{partId:'display-frill'}]};
+a.bodyPlan=makePlan([{partId:'small-torso',parent:null,socket:null},{partId:'walking-leg',parent:'root',socket:'limb.1'},{partId:'grazing-mouth',parent:'root',socket:'mouth'},{partId:'display-frill',parent:'root',socket:'dorsal'}]);
+assert.ok(validatePlan(a.bodyPlan).ok);
 const prefs=matePreferencesFor(world.seed,b);
 assert.equal(prefs.ritualTastes.call,1);
 const favorable={partnerId:b.id,sequence:['call','flare'],quality:.9,tempo:0};
@@ -97,7 +99,7 @@ for(const x of [performer,recipient])Object.assign(x,{x:40,y:40,age:spec.maturit
   energy:spec.maxEnergy*.99,hydration:spec.maxHydration*.99,reproCooldown:0,infected:false,
   pregnant:null,parentIds:[],reproDrive:1});
 performer.sex='M';recipient.sex='F';performer.intent='mate';performer.target=recipient;
-performer.bodyPlan={nodes:[{partId:'small-torso'},{partId:'walking-leg'}]};
+performer.bodyPlan=makePlan([{partId:'small-torso',parent:null,socket:null},{partId:'walking-leg',parent:'root',socket:'limb.1'}]);
 const emptyWeights={size:0,strength:0,ornament:0,display:0,behavior:0};
 performer.matePreferences={weights:emptyWeights,selectivity:.5,ritualTastes:{dance:1,call:0,flare:0,scent:0,gesture:0},tempo:0};
 recipient.matePreferences={weights:emptyWeights,selectivity:.5,ritualTastes:{dance:-1,call:1,flare:1,scent:0,gesture:0},tempo:0};

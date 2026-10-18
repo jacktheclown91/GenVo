@@ -1,0 +1,122 @@
+{
+ "schema": "genvo.hunter-behaviour/1",
+ "days": 120,
+ "rows": [
+  {
+   "group": "bankjaw|swimmer|ambusher",
+   "animals": 7,
+   "shareHunting": 0.584,
+   "shareProwl": 0.025,
+   "shareWatch": 0.014,
+   "shareShore": 0.008,
+   "attempts": 102,
+   "bites": 8,
+   "kills": 0,
+   "failedAttempts": 94,
+   "mealEnergy": 210,
+   "mateAttempts": 0,
+   "energyMedian": 0.479,
+   "deaths": {
+    "starvation": 1
+   }
+  },
+  {
+   "group": "bankjaw|swimmer|rusher",
+   "animals": 5,
+   "shareHunting": 0.516,
+   "shareProwl": 0.016,
+   "shareWatch": 0.003,
+   "shareShore": 0.006,
+   "attempts": 4,
+   "bites": 1,
+   "kills": 0,
+   "failedAttempts": 3,
+   "mealEnergy": 26,
+   "mateAttempts": 0,
+   "energyMedian": 0.524,
+   "deaths": {}
+  },
+  {
+   "group": "bankjaw|swimmer|wary",
+   "animals": 4,
+   "shareHunting": 0.594,
+   "shareProwl": 0.004,
+   "shareWatch": 0.004,
+   "shareShore": 0.004,
+   "attempts": 7,
+   "bites": 3,
+   "kills": 0,
+   "failedAttempts": 4,
+   "mealEnergy": 87,
+   "mateAttempts": 4,
+   "energyMedian": 0.579,
+   "deaths": {}
+  },
+  {
+   "group": "needlejaw|land|ambusher",
+   "animals": 11,
+   "shareHunting": 0.341,
+   "shareProwl": 0.036,
+   "shareWatch": 0.019,
+   "shareShore": 0,
+   "attempts": 170,
+   "bites": 60,
+   "kills": 7,
+   "failedAttempts": 110,
+   "mealEnergy": 1949,
+   "mateAttempts": 13,
+   "energyMedian": 0.704,
+   "deaths": {}
+  },
+  {
+   "group": "needlejaw|land|rusher",
+   "animals": 10,
+   "shareHunting": 0.379,
+   "shareProwl": 0.039,
+   "shareWatch": 0.011,
+   "shareShore": 0,
+   "attempts": 274,
+   "bites": 50,
+   "kills": 2,
+   "failedAttempts": 224,
+   "mealEnergy": 1737,
+   "mateAttempts": 19,
+   "energyMedian": 0.707,
+   "deaths": {}
+  },
+  {
+   "group": "needlejaw|land|wary",
+   "animals": 4,
+   "shareHunting": 0.384,
+   "shareProwl": 0.017,
+   "shareWatch": 0.02,
+   "shareShore": 0,
+   "attempts": 36,
+   "bites": 19,
+   "kills": 2,
+   "failedAttempts": 17,
+   "mealEnergy": 523,
+   "mateAttempts": 0,
+   "energyMedian": 0.684,
+   "deaths": {
+    "predation": 1
+   }
+  },
+  {
+   "group": "rillsifter|swimmer|wary",
+   "animals": 1,
+   "shareHunting": 0.353,
+   "shareProwl": 0,
+   "shareWatch": 0,
+   "shareShore": 0,
+   "attempts": 4,
+   "bites": 2,
+   "kills": 1,
+   "failedAttempts": 2,
+   "mealEnergy": 78,
+   "mateAttempts": 0,
+   "energyMedian": 0.21,
+   "deaths": {}
+  }
+ ]
+}

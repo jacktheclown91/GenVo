@@ -2,6 +2,8 @@ import {makePlan} from '../src/lineage/body-plan.js';
 import {applyLineageTarget} from '../src/lineage/reproduction-bridge.js';
 import {preyPreference} from '../src/ecology/functional-diet.js';
 import assert from 'node:assert/strict';
+import {RESOURCE_FOUNDING} from '../src/ecology/resource-founding.js';RESOURCE_FOUNDING.enabled=false;// per-species rule checks need every configured species present (founding itself: tests/seed-shore-niches.mjs)
+import {REPAIR_SHARE,TISSUE_ENERGY,REPAIR_EFFICIENCY} from '../src/ecology/healing-review.js';
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
 import {preyBodyMass,remainingPreyBiomass,consumePreyBiomass,regrowPreyBiomass} from '../src/ecology/prey-biomass.js';
@@ -11,7 +13,7 @@ for(const species of ['mosskip','rootling','genvo']){
   const sim=new Simulation(`BODY-BUDGET-${species}`,{player:false});
   const hunter=sim.animals.find(a=>a.species==='needlejaw');
   const prey=sim.animals.find(a=>a.species===species);
-  const mass=SPECIES[species].mass;
+  const mass=preyBodyMass({...prey,age:SPECIES[species].maturity});
   hunter.energy=0;prey.age=SPECIES[species].maturity;prey.health=100;const eff=preyPreference(hunter,prey);sim.rng.chance=()=>true;
   const i=sim.world.idx(prey.x,prey.y);sim.world.carrion[i]=0;
   sim.tryKill(hunter,prey);
@@ -31,7 +33,7 @@ for(const species of ['mosskip','rootling','genvo']){
 {
   const sim=new Simulation('BODY-BUDGET-AGE',{player:false}),prey=sim.animals.find(a=>a.species==='mosskip');
   prey.age=SPECIES.mosskip.maturity;
-  const mass=SPECIES.mosskip.mass,i=sim.world.idx(prey.x,prey.y);sim.world.carrion[i]=0;
+  const mass=preyBodyMass(prey),i=sim.world.idx(prey.x,prey.y);sim.world.carrion[i]=0;
   assert.equal(consumePreyBiomass(prey,mass*.3),mass*.3);
   sim.kill(prey,'age');
   assert.ok(Math.abs(sim.world.carrion[i]-mass*.7)<1e-7,'later non-hunting death deposits only remaining body mass');
@@ -77,13 +79,16 @@ for(const species of ['mosskip','rootling','genvo']){
   const restored=.4-a.predationConsumedMass;
   assert.ok(restored>0,'normal metabolic healing restores edible tissue');
   assert.equal(a.health,b.health,'tissue accounting does not grant extra healing');
-  assert.ok(Math.abs(b.energy-a.energy-restored*34)<1e-7,'metabolic tissue regrowth pays exactly its food-energy cost');
+  // Phase 3I healing physiology: repairing a wound costs REPAIR_SHARE of body tissue per 100 health; eaten
+  // tissue is part of that wound, so the animal pays the larger of the two costs, never both.
+  const gain=b.health-80,repair=gain/100*preyBodyMass(b)*REPAIR_SHARE*TISSUE_ENERGY/REPAIR_EFFICIENCY;
+  assert.ok(Math.abs(b.energy-a.energy-Math.max(0,restored*34-repair))<1e-7,'tissue regrowth is paid once, inside the wound-repair cost');
 }
 for(const species of Object.keys(SPECIES)){
   const sim=new Simulation(`JUVENILE-BODY-${species}`,{player:false});
   const prey=sim.animals.find(a=>a.species===species);
   prey.age=0;prey.predationConsumedMass=0;
-  const newborn=preyBodyMass(prey),adult=SPECIES[species].mass;
+  const newborn=preyBodyMass(prey),adult=preyBodyMass({...prey,age:SPECIES[species].maturity});
   assert.ok(Math.abs(newborn-adult*.55**3)<1e-12,'newborn biomass follows shared rendered growth');
   assert.ok(newborn<adult*.2,'newborn is not an adult-sized meal');
   consumePreyBiomass(prey,newborn*.25);
@@ -93,7 +98,7 @@ for(const species of Object.keys(SPECIES)){
   sim.kill(prey,'predation');
   assert.ok(Math.abs(sim.world.carrion[i]-newborn*.75)<1e-7,'juvenile corpse excludes previously eaten tissue');
   const ages=[0,SPECIES[species].maturity*.18,SPECIES[species].maturity*.55,SPECIES[species].maturity];
-  let previous=0;for(const age of ages){const mass=preyBodyMass({species,age});assert.ok(mass>=previous&&mass<=adult);previous=mass}
+  let previous=0;for(const age of ages){const mass=preyBodyMass({...prey,age});assert.ok(mass>=previous&&mass<=adult);previous=mass}
   assert.equal(previous,adult,'adult body budget is unchanged');
 }
 for(const species of ['mosskip','rootling','genvo']){

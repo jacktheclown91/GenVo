@@ -1,0 +1,129 @@
+{
+  "scope": "Value-preserving setter observations from genuine day118-to129 UI continuation, before cleanup ownership repair. Stack identifies the assignment path; no retroactive outcome is inferred for earlier trials.",
+  "input": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\player-journey\\completion-window-panel-continuation-9\\checkpoint.snapshot.json.gz",
+  "events": [
+    {
+      "tick": 5673,
+      "day": 119,
+      "from": null,
+      "to": 300,
+      "playerId": 109,
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "stack": "Error: courtTarget assignment\n    at ReproductionController.set [as courtTargetId] (eval at evaluate (:311:30), <anonymous>:1:354)\n    at ReproductionController.courtSelected (https://genvo.review/src/reproduction/reproduction.js:88:51)\n    at https://genvo.review/src/main.js:245:157"
+    },
+    {
+      "tick": 5700,
+      "day": 119,
+      "from": 300,
+      "to": null,
+      "playerId": 109,
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "stack": "Error: courtTarget assignment\n    at ReproductionController.set [as courtTargetId] (eval at evaluate (:311:30), <anonymous>:1:354)\n    at Simulation.tryMate (https://genvo.review/src/sim/simulation.js:432:945)\n    at Simulation.resolveInteraction (https://genvo.review/src/sim/simulation.js:329:129)\n    at ri (https://genvo.review/src/sim/simulation.js:316:114)\n    at Simulation.phaseMovement (https://genvo.review/src/sim/simulation.js:316:768)\n    at Simulation.update (https://genvo.review/src/sim/simulation.js:186:232)\n    at o.<computed> (https://genvo.review/src/main.js:282:126)\n    at frameStepper.advance.paused (https://genvo.review/src/main.js:261:106)\n    at FrameStepper.advance (https://genvo.review/src/sim/frame-stepper.js:17:38)\n    at frame (https://genvo.review/src/main.js:261:33)"
+    },
+    {
+      "tick": 5835,
+      "day": 122,
+      "from": null,
+      "to": 300,
+      "playerId": 109,
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "stack": "Error: courtTarget assignment\n    at ReproductionController.set [as courtTargetId] (eval at evaluate (:311:30), <anonymous>:1:354)\n    at ReproductionController.courtSelected (https://genvo.review/src/reproduction/reproduction.js:88:51)\n    at https://genvo.review/src/main.js:245:157"
+    },
+    {
+      "tick": 5886,
+      "day": 123,
+      "from": 300,
+      "to": null,
+      "playerId": 109,
+      "failure": {
+        "tick": 5886,
+        "day": 123,
+        "partnerId": 300,
+        "reason": "One creature is recovering from reproduction.",
+        "stage": "approach"
+      },
+      "stack": "Error: courtTarget assignment\n    at ReproductionController.set [as courtTargetId] (eval at evaluate (:311:30), <anonymous>:1:354)\n    at Simulation.endBlockedCourtship (https://genvo.review/src/sim/simulation.js:431:923)\n    at ReproductionController.courtTarget (https://genvo.review/src/reproduction/reproduction.js:110:34)\n    at Simulation.phaseDecision (https://genvo.review/src/sim/simulation.js:243:462)\n    at Simulation.update (https://genvo.review/src/sim/simulation.js:186:193)\n    at o.<computed> (https://genvo.review/src/main.js:282:126)\n    at frameStepper.advance.paused (https://genvo.review/src/main.js:261:106)\n    at FrameStepper.advance (https://genvo.review/src/sim/frame-stepper.js:17:38)\n    at frame (https://genvo.review/src/main.js:261:33)"
+    },
+    {
+      "tick": 5886,
+      "day": 123,
+      "from": null,
+      "to": null,
+      "playerId": 109,
+      "failure": {
+        "tick": 5886,
+        "day": 123,
+        "partnerId": 300,
+        "reason": "One creature is recovering from reproduction.",
+        "stage": "approach"
+      },
+      "stack": "Error: courtTarget assignment\n    at ReproductionController.set [as courtTargetId] (eval at evaluate (:311:30), <anonymous>:1:354)\n    at ReproductionController.courtTarget (https://genvo.review/src/reproduction/reproduction.js:110:114)\n    at Simulation.phaseDecision (https://genvo.review/src/sim/simulation.js:243:462)\n    at Simulation.update (https://genvo.review/src/sim/simulation.js:186:193)\n    at o.<computed> (https://genvo.review/src/main.js:282:126)\n    at frameStepper.advance.paused (https://genvo.review/src/main.js:261:106)\n    at FrameStepper.advance (https://genvo.review/src/sim/frame-stepper.js:17:38)\n    at frame (https://genvo.review/src/main.js:261:33)"
+    },
+    {
+      "tick": 5916,
+      "day": 124,
+      "from": null,
+      "to": null,
+      "playerId": 109,
+      "failure": {
+        "tick": 5886,
+        "day": 123,
+        "partnerId": 300,
+        "reason": "One creature is recovering from reproduction.",
+        "stage": "approach"
+      },
+      "stack": "Error: courtTarget assignment\n    at ReproductionController.set [as courtTargetId] (eval at evaluate (:311:30), <anonymous>:1:354)\n    at Simulation.tryMate (https://genvo.review/src/sim/simulation.js:435:454)\n    at Simulation.resolveInteraction (https://genvo.review/src/sim/simulation.js:329:129)\n    at ri (https://genvo.review/src/sim/simulation.js:316:114)\n    at Simulation.phaseMovement (https://genvo.review/src/sim/simulation.js:316:768)\n    at Simulation.update (https://genvo.review/src/sim/simulation.js:186:232)\n    at o.<computed> (https://genvo.review/src/main.js:282:126)\n    at frameStepper.advance.paused (https://genvo.review/src/main.js:261:106)\n    at FrameStepper.advance (https://genvo.review/src/sim/frame-stepper.js:17:38)\n    at frame (https://genvo.review/src/main.js:261:33)"
+    },
+    {
+      "tick": 5980,
+      "day": 125,
+      "from": null,
+      "to": 328,
+      "playerId": 109,
+      "failure": {
+        "tick": 5886,
+        "day": 123,
+        "partnerId": 300,
+        "reason": "One creature is recovering from reproduction.",
+        "stage": "approach"
+      },
+      "stack": "Error: courtTarget assignment\n    at ReproductionController.set [as courtTargetId] (eval at evaluate (:311:30), <anonymous>:1:354)\n    at ReproductionController.courtSelected (https://genvo.review/src/reproduction/reproduction.js:88:51)\n    at https://genvo.review/src/main.js:245:157"
+    },
+    {
+      "tick": 6132,
+      "day": 128,
+      "from": 328,
+      "to": null,
+      "playerId": 109,
+      "failure": {
+        "tick": 5886,
+        "day": 123,
+        "partnerId": 300,
+        "reason": "One creature is recovering from reproduction.",
+        "stage": "approach"
+      },
+      "stack": "Error: courtTarget assignment\n    at ReproductionController.set [as courtTargetId] (eval at evaluate (:311:30), <anonymous>:1:354)\n    at Simulation.tryMate (https://genvo.review/src/sim/simulation.js:432:945)\n    at Simulation.resolveInteraction (https://genvo.review/src/sim/simulation.js:329:129)\n    at ri (https://genvo.review/src/sim/simulation.js:316:114)\n    at Simulation.phaseMovement (https://genvo.review/src/sim/simulation.js:316:768)\n    at Simulation.update (https://genvo.review/src/sim/simulation.js:186:232)\n    at o.<computed> (https://genvo.review/src/main.js:282:126)\n    at frameStepper.advance.paused (https://genvo.review/src/main.js:261:106)\n    at FrameStepper.advance (https://genvo.review/src/sim/frame-stepper.js:17:38)\n    at frame (https://genvo.review/src/main.js:261:33)"
+    }
+  ]
+}

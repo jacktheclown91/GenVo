@@ -1,3 +1,5 @@
+import {ANATOMICAL_MASS,massPolicy,bodyMass} from '../organisms/body-mass.js';
+import {remainingPreyBiomass} from './prey-biomass.js';
 import {SPECIES} from '../organisms/species.js';
 
 const clamp=(min,max,v)=>Math.max(min,Math.min(max,v));
@@ -118,7 +120,7 @@ export class DiseaseController{
   }
   onDeath(animal){
     if(!animal)return;
-    const i=this.sim.world.idx(animal.x,animal.y),mass=SPECIES[animal.species]?.mass||1;
+    const i=this.sim.world.idx(animal.x,animal.y),mass=massPolicy(animal)===ANATOMICAL_MASS?remainingPreyBiomass(animal):(SPECIES[animal.species]?.mass||1);
     // All carrion carries a low background pathogen load; infected deaths amplify it.
     const load=animal.infected&&animal.infection?1.15*mass*animal.infection.severity:.42*mass;
     this.contaminate(i,load);

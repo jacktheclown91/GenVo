@@ -1,0 +1,12 @@
+{
+  "scope": "Single unchanged observer-play timing suite after the concurrent fast gate. Not a replacement full-gate receipt.",
+  "command": "node tests/observer-play.mjs",
+  "exitCode": 0,
+  "observedMsPerRealSecond": 463,
+  "budgetMsPerRealSecond": 500,
+  "livingActors": 560,
+  "fullGateTimingMs": 518,
+  "priorFullGateTimingMs": 479,
+  "codeFingerprint": "329e04515830c741ac115650bbc82173f9b1099519a0465ab9029761567c77e5",
+  "note": "Ceiling unchanged. Full-run performance variability remains recorded; isolated pass does not erase the concurrent overrun."
+}

@@ -121,12 +121,12 @@ export class MigrationController{
     const ready=animal.age>=s.maturity&&animal.energy/s.maxEnergy>=.72&&animal.hydration/s.maxHydration>=.58&&!animal.infected&&!sim.family.isDependent(animal);
     const radius=9*animal.genes.senses*forageRangeEffect(sim,animal);
     const evaluate=(x,y,pressure)=>{const habitat=this.habitatQuality(animal,x,y);return{x,y,quality:.45*Math.min(1,pressure.resource)+.30*pressure.crowd+.15*habitat.temp+.10*habitat.water-.20*habitat.danger,detail:habitat,carrying:pressure}};
-    const here=evaluate(animal.x,animal.y,current);let best=here;
+    const here=evaluate(animal.x,animal.y,current);let best=here;const surveyMemo=new Map();
     // Existing sensing, anatomy and route authority; candidate demand includes the migrant.
     if(ready&&!current.allowed)for(let dy=-Math.floor(radius);dy<=radius;dy+=2)for(let dx=-Math.floor(radius);dx<=radius;dx+=2){
       const distance=Math.hypot(dx,dy);if(distance<2||distance>radius)continue;
       const x=animal.x+dx,y=animal.y+dy;if(!sim.canOccupy(animal,x,y)||!sim.canReach(animal,x,y))continue;
-      const pressure=sim.carrying.breedingState(animal,{at:{x,y}});if(!pressure.allowed)continue;
+      const pressure=sim.carrying.breedingState(animal,{at:{x,y},surveyMemo,onlyIfAllowed:true});if(!pressure.allowed)continue;
       const candidate=evaluate(x,y,pressure);if(candidate.quality>best.quality+.001)best=candidate;
     }
     const delta=best.quality-here.quality,shouldMigrate=ready&&!current.allowed&&best!==here&&delta>=.06;

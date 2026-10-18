@@ -1,0 +1,58 @@
+{
+ "schema": "genvo.known-failures/1",
+ "baseline": "d2f676c",
+ "recorded": "2026-10-15 (Phase 3I)",
+ "note": "Known failures still RUN every time and are reported as known-fail. A known suite that fails at a different place (at) or message (match) is reported as a NEW failure. A known suite that passes is reported as stale so the entry gets removed. Remove an entry when the suite is fixed.",
+ "failures": {
+  "ai-disclosure": {
+   "category": "release-bookkeeping",
+   "at": "tests/ai-disclosure.mjs:4",
+   "message": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\submission\\AI_DISCLOSURE.txt'\r",
+   "note": "Release ledger, provenance fingerprints or local release files; correct to fail on an uncommitted tree."
+  },
+  "canonical-source": {
+   "category": "release-bookkeeping",
+   "at": "tests/canonical-source.mjs:6",
+   "message": "AssertionError [ERR_ASSERTION]: {\r",
+   "note": "Release ledger, provenance fingerprints or local release files; correct to fail on an uncommitted tree."
+  },
+  "evolution-baseline": {
+   "category": "preserved-baseline",
+   "at": "tests/evolution-baseline.mjs:15",
+   "message": "AssertionError [ERR_ASSERTION]: natural AUTO runs match the consolidation baseline\r",
+   "note": "Creator decision 2026-10-15: keep the historical baseline unchanged. Current-source differences are recorded separately (node tools/evolution-baseline.mjs --compare; docs/evolution-baseline-comparison-2026-10-15.json). A new baseline follows the accepted biological corrections."
+  },
+  "evolution-contract": {
+   "category": "release-bookkeeping",
+   "at": "tests/evolution-contract.mjs:15",
+   "message": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\evolution-expansion\\baseline-v1.33.7\\creature-f",
+   "note": "Release ledger, provenance fingerprints or local release files; correct to fail on an uncommitted tree."
+  },
+  "player-copy-style": {
+   "category": "release-bookkeeping",
+   "at": "tests/player-copy-style.mjs:12",
+   "message": "AssertionError [ERR_ASSERTION]: player-facing runtime source should not contain em dashes\r",
+   "note": "Release ledger, provenance fingerprints or local release files; correct to fail on an uncommitted tree."
+  },
+  "provenance": {
+   "category": "release-bookkeeping",
+   "at": "tests/provenance.mjs:22",
+   "message": "AssertionError [ERR_ASSERTION]: last ledger record must fingerprint current canonical source tree\r",
+   "note": "Release ledger, provenance fingerprints or local release files; correct to fail on an uncommitted tree."
+  }
+ },
+ "historicalObservations": {
+  "wild-evolution": {
+   "category": "ecological-finding",
+   "match": "needlejaw bodies have evolved",
+   "message": "needlejaw bodies have evolved (0/9)",
+   "note": "Long tier. No needlejaw body-plan change: needlejaw births are near zero (2 in 8 seed-years; courtship lapses to survival-priority, docs/GenVo-Phase3E-Report.md), so there is no inheritance to evolve. Same on HEAD.",
+   "formerSuite": "wild-evolution",
+   "observationSuite": "wild-evolution-observation",
+   "reclassified": "2026-10-17 creator-approved mechanism-first validation",
+   "reason": "Natural evolved-survivor counts are retained as observations. Controlled wild-body mechanism checks stay strict. The original 420-day workload and 900 s ceiling remain; a timeout still fails.",
+   "frozenAssertionFile": "docs/timeout-investigation/wild-evolution-outcome-assertions-before.txt",
+   "frozenAssertionSha256": "a3aba2e394f92eedc6fdf8b4b5cd1e08d7d182599379f9345cfa97ba8a851150"
+  }
+ }
+}

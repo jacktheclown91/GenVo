@@ -1,0 +1,31 @@
+{
+  "schema": "genvo.founder-feedback-audit/1",
+  "scope": "Controlled same-runtime-state counterfactual: six explicitly spawned mechanism-fixture organisms, no ancestry claim. Only authoring initial-population configuration changes temporarily, restored afterward. Demonstrates founder-target feedback, not outcomes or rescue spawning.",
+  "sourceHashes": {
+    "src/ecology/recovery.js": "8f3b5d059eba36e01fc4e4e12c6d9cc1b2fbc4e34cf9c476b44db2c46b09e7c7",
+    "src/ecology/carrying.js": "52a9cbf34ff4f39e0e5da4c5ca6f31ffd48e0cb926cfc66656b3e0c4be73e164",
+    "src/sim/simulation.js": "ca702361aed26e6f81c76c023f7ba21ecf1b1cda38a31b4d453b8a0f1567015e",
+    "src/sim/config.js": "dcf7e9e7e8e93314887ff01c80afcd04ee356e24ab007e5b5d90e36302efb54a"
+  },
+  "first": {
+    "actualLiving": 6,
+    "authoringInitial": 32,
+    "driveBoost": 1.528125,
+    "nearMateRadius": 34,
+    "farMateRadius": 88,
+    "critical": true,
+    "mayRelaxSibling": true
+  },
+  "second": {
+    "actualLiving": 6,
+    "authoringInitial": 1,
+    "driveBoost": 1,
+    "nearMateRadius": 12,
+    "farMateRadius": 20,
+    "critical": false,
+    "mayRelaxSibling": false
+  },
+  "completeSnapshotUnchanged": true,
+  "configurationRestored": true,
+  "conclusion": "Founder-relative global counts alter reproductive drive, search radius and sibling-relaxation eligibility without changed local environment, organisms or RNG."
+}

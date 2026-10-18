@@ -3,7 +3,7 @@ import {Simulation} from '../src/sim/simulation.js';
 import {CFG} from '../src/sim/config.js';
 import {RNG} from '../src/core/rng.js';
 import {ADAPTATION_IDS,ANATOMY_FOR,expressedAdaptations,anatomyFromAdaptations,syncAnatomy,nearThreshold} from '../src/lineage/evolution.js';
-import {inheritLineageAnatomy,emergentAdaptation} from '../src/lineage/heredity.js';
+import {inheritLineageAnatomy} from '../src/lineage/heredity.js';
 import {buildSuccessorChoices} from '../src/ui/succession-chooser.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot,SAVE_SCHEMA} from '../src/persistence/save-manager.js';
 
@@ -24,19 +24,18 @@ for(const id of ADAPTATION_IDS){const ids=expressedAdaptations(anatomyFromAdapta
   const sibs=Array.from({length:12},(_,i)=>inheritLineageAnatomy(rng,[p1,p3],i).spring);assert.ok(new Set(sibs.map(v=>v.toFixed(3))).size>3,'siblings carry slightly different body parts');
 }
 
-// Lived pressure develops a body part over generations until it crosses its threshold.
+// Pressure alone cannot instruct an inherited storage organ; developing readings remain visible.
 {
-  const sim=new Simulation('GENVO8-ANATOMY-DRIFT',{player:true});sim.pressure.lifetimeSummary=()=>[{kind:'dryness',score:30}];
-  sim.rng.chance=()=>false; // no sudden variation: only gradual drift
-  let parents=[{adaptations:[],anatomy:anatomyFromAdaptations([])},{adaptations:[],anatomy:anatomyFromAdaptations([])}],crossed=0,seenNear=false;
-  for(let g=1;g<=8&&!crossed;g++){
-    const child={adaptations:[],anatomy:inheritLineageAnatomy(sim.rng,parents,g)};child.adaptations=expressedAdaptations(child.anatomy);
-    emergentAdaptation(sim,child,parents);if(child.adaptations.includes('water-sacs'))crossed=g;
-    if(!crossed&&nearThreshold(child).some(x=>x.id==='water-sacs'))seenNear=true;
+  const rng=new RNG('NEUTRAL-ANATOMY-THRESHOLD');
+  let parents=[{adaptations:[],anatomy:anatomyFromAdaptations([])},{adaptations:[],anatomy:anatomyFromAdaptations([])}];
+  for(let generation=1;generation<=8;generation++){
+    const child={anatomy:inheritLineageAnatomy(rng,parents,generation)};child.adaptations=expressedAdaptations(child.anatomy);
+    assert.equal(child.adaptations.includes('water-sacs'),false,'inheritance cannot grow a missing storage determinant from need');
     parents=[child,{...child,anatomy:{...child.anatomy}}];
   }
-  assert.ok(crossed>=2,`sustained dryness grew Water Sacs over ${crossed} generations rather than instantly`);
-  assert.ok(seenNear,'a developing body part is visible before it is expressed');
+  const developing={anatomy:{waterStorage:.45,webbing:0},adaptations:[]};
+  assert.ok(nearThreshold(developing).some(x=>x.id==='water-sacs'),'an independent developing storage determinant is visible before expression');
+  assert.equal(nearThreshold(developing).some(x=>x.id==='webbed-limbs'),false,'storage development does not imply webbing');
 }
 
 // Directly edited adaptation lists (older saves, tests, the legacy draft) fold into anatomy.
@@ -56,6 +55,6 @@ for(const id of ADAPTATION_IDS){const ids=expressedAdaptations(anatomyFromAdapta
   assert.ok(SAVE_SCHEMA>=6);
   const old=structuredClone(createSimulationSnapshot(sim));old.schema=5;for(const a of old.animals)delete a.anatomy;
   // v1.39.0 (creator decision 2026-10-09): saves start fresh; an older save is refused with a clear message.
-  assert.throws(()=>restoreSimulationSnapshot(old),/earlier GenVo8/,'older saves are refused, not migrated');
+  assert.throws(()=>restoreSimulationSnapshot(old),/predates GenVo's modular creature bodies/,'older saves are refused, not migrated');
 }
 console.log('anatomy thresholds ok');

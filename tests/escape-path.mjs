@@ -1,10 +1,15 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
+// Decision-coordination audit (threat appraisal): flight follows perceptible behaviour, so a staged hunter
+// is staged hunting and facing its prey.
+// Since Phase 3K (threat-perception.js) a hunter behind the prey is heard only while moving, as a hunting one is:
+// movedTick 0 marks it as just having moved (these scenes decide at tick 0).
+const stageHunting=(h,prey)=>{const a=Math.atan2(prey.y-h.y,prey.x-h.x);Object.assign(h,{intent:'hunt',target:prey,dir:(Math.round(a/(Math.PI/4))+2+8)%8,movedTick:0})};
 import {escapeDestination} from '../src/world/escape-route.js';
 
 function scene(kind,swimmer=false){
-  const sim=new Simulation('ESCAPE-TARGET-'+kind,{player:false}),w=sim.world;
+  const sim=new Simulation('ESCAPE-TARGET-'+kind,{player:false,massRules:'legacy-species/1'}),w=sim.world;
   w.water.fill(0);
   if(kind==='bank')for(let y=0;y<w.n;y++)w.water[w.idx(26,y)]=1;
   if(kind==='trapped'){w.water.fill(1);w.water[w.idx(24,40)]=0;w.water[w.idx(22,40)]=0}
@@ -13,7 +18,7 @@ function scene(kind,swimmer=false){
   Object.assign(prey,{x:kind==='border'?1.5:24.5,y:40.5,age:30,bodyPlan:null,adaptations:swimmer?['webbed-limbs']:[],ecoLifestyle:null,target:null});
   Object.assign(hunter,{x:kind==='border'?3.5:22.5,y:40.5,age:60,target:null});
   prey.energy=SPECIES.mosskip.maxEnergy*.9;prey.hydration=SPECIES.mosskip.maxHydration*.9;
-  sim.animals=[prey,hunter];sim.rebuildSpatial();sim.phaseDecision(null);
+  stageHunting(hunter,prey);sim.animals=[prey,hunter];sim.rebuildSpatial();sim.phaseDecision(null);
   return{sim,prey,hunter};
 }
 for(const kind of ['border','bank']){

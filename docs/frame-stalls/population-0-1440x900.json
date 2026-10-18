@@ -1,0 +1,28 @@
+{
+ "viewport": "1440x900",
+ "advancedDays": 0,
+ "day": 1,
+ "animals": 196,
+ "frames": 1078,
+ "dt": {
+  "p50": 16.7,
+  "p95": 16.8,
+  "p99": 33.4
+ },
+ "render": {
+  "p50": 7,
+  "p95": 13.3
+ },
+ "sim": {
+  "p50": 0.1,
+  "p95": 0.3
+ },
+ "otherP95": 12.7,
+ "slowFrames": 8,
+ "slowFrameShare": {
+  "render": 0.1,
+  "sim": 0,
+  "other": 0.9
+ },
+ "errors": []
+}

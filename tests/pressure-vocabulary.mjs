@@ -22,5 +22,5 @@ assert.ok(SAVE_SCHEMA>=5);
 const st=sim.pressure.ensure(p);st.exposure={water:4,thermal:2,bottleneck:1,predation:3};st.peak={water:.6,thermal:.4,bottleneck:.2};
 const old=structuredClone(createSimulationSnapshot(sim));old.schema=4;
 // v1.39.0 (creator decision 2026-10-09): saves start fresh; an older save is refused with a clear message.
-assert.throws(()=>restoreSimulationSnapshot(old),/earlier GenVo8/,'older saves are refused, not migrated');
+assert.throws(()=>restoreSimulationSnapshot(old),/predates GenVo's modular creature bodies/,'older saves are refused, not migrated');
 console.log('pressure vocabulary ok');

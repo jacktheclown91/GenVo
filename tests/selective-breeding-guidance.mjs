@@ -24,7 +24,7 @@ const origins=offspringPartOrigins(serializePlan(fakeChild),serializePlan(mother
 assert.ok(origins.both.length>=1,'same sockets are marked shared');
 assert.equal(origins.mother.find(x=>x.location==='limb 3')?.part,'spring leg');
 assert.equal(origins.father.find(x=>x.location==='tail')?.part,'flag tail');
-assert.ok(originSummary(origins).includes('From father'));
+assert.ok(originSummary(origins).includes('Matches father'));
 assert.equal(JSON.stringify([serializePlan(motherPlan),serializePlan(fatherPlan)]),untouched,'guidance must not edit plans');
 
 const sim=new Simulation('GENVO8-GUIDED-BREEDING',{player:true});
@@ -48,7 +48,7 @@ assert.ok(rec.parentBodyPlans?.length===2);
 assert.equal(comparePhysicalBuilds(rec.parentBodyPlans[0],gestationalMother).exact,true);
 assert.equal(comparePhysicalBuilds(rec.parentBodyPlans[1],gestationalFather).exact,true);
 const entry=buildJournalEntry(sim,child.id);
-assert.ok(entry?.inheritance?.includes('Shared'));
+assert.ok(entry?.inheritance?.includes('Recorded recombination'));
 assert.ok(entry.parentBuilds.includes('Parents differ'));
 // A parent changing or dying later must not rewrite an offspring's birth-history evidence.
 mother.bodyPlan=base;father.bodyPlan=base;
@@ -59,5 +59,6 @@ assert.deepEqual(loaded.lineage.records.get(child.id).parentBodyPlans,rec.parent
 assert.equal(buildJournalEntry(loaded,child.id).inheritance,entry.inheritance);
 // Historic saves missing this new, optional evidence should display an honest unknown.
 delete loaded.lineage.records.get(child.id).parentBodyPlans;
+delete loaded.lineage.records.get(child.id).bodyInheritance;
 assert.match(buildJournalEntry(loaded,child.id).inheritance,/not recorded/);
 console.log('selective breeding: exact socket comparison, real parent-origin history, journal and save continuity ok');

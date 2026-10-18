@@ -1,0 +1,61 @@
+{
+  "scope": "Reads actual recorded newborns from the single current-rule full-gestation experiment. Read-only complete saved-state equality, plus12 actual updates of exact continuation. No journal genealogy was fabricated for these non-player organisms. This seed had no swimming newborn.",
+  "snapshotSha256": "37ddf437e8a702a601595c9db1f3c94397eef1debce31c7edde4048c1bffc996",
+  "rows": [
+    {
+      "id": 3,
+      "parentIds": [
+        1,
+        2
+      ],
+      "age": 0,
+      "energy": 14.853960000000004,
+      "reading": {
+        "currentMass": 0.24124375000000006,
+        "adultMass": 1.45,
+        "nextGrowthEnergy": 1.2439808689712506,
+        "growing": true,
+        "paidGrowth": true,
+        "canPay": false,
+        "text": "Body mass 0.24 / 1.45 adult (relative units). Next growth needs 1.24 energy. Growth waits until enough energy remains after payment. Anatomy sets this body load. More load costs energy to grow and move."
+      }
+    },
+    {
+      "id": 4,
+      "parentIds": [
+        1,
+        2
+      ],
+      "age": 0,
+      "energy": 14.853960000000004,
+      "reading": {
+        "currentMass": 0.24124375000000006,
+        "adultMass": 1.45,
+        "nextGrowthEnergy": 1.1689657802042692,
+        "growing": true,
+        "paidGrowth": true,
+        "canPay": false,
+        "text": "Body mass 0.24 / 1.45 adult (relative units). Next growth needs 1.17 energy. Growth waits until enough energy remains after payment. Anatomy sets this body load. More load costs energy to grow and move."
+      }
+    },
+    {
+      "id": 5,
+      "parentIds": [
+        1,
+        2
+      ],
+      "age": 0,
+      "energy": 14.853960000000004,
+      "reading": {
+        "currentMass": 0.24124375000000006,
+        "adultMass": 1.45,
+        "nextGrowthEnergy": 1.201413180253557,
+        "growing": true,
+        "paidGrowth": true,
+        "canPay": false,
+        "text": "Body mass 0.24 / 1.45 adult (relative units). Next growth needs 1.20 energy. Growth waits until enough energy remains after payment. Anatomy sets this body load. More load costs energy to grow and move."
+      }
+    }
+  ],
+  "exactContinuationUpdates": 12
+}

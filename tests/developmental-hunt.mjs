@@ -12,9 +12,11 @@ function attack(predAge,preyAge){
   return {hit,damage:100-prey.health,chance,ratio:preyBodyMass(pred)/preyBodyMass(prey)};
 }
 const adult=attack(SPECIES.needlejaw.maturity,SPECIES.rootling.maturity);
-const young=attack(0,SPECIES.rootling.maturity);
+const newborn=attack(0,SPECIES.rootling.maturity);
+assert.equal(newborn.hit,false,'newborn hunter is beyond the anatomical weak-attempt size limit');
+const young=attack(8,SPECIES.rootling.maturity);
 assert.equal(adult.hit,true);assert.equal(young.hit,true,'young hunters can still attempt and land bites');
-assert.ok(young.damage<adult.damage*.5,'newborn hunter cannot exert full adult bite force against adult prey');
+assert.ok(young.damage<adult.damage*.5,'small juvenile hunter cannot exert full adult bite force against adult prey');
 assert.ok(young.chance<adult.chance,'body-size capture advantage follows actual developmental mass');
 const equalYoung=attack(0,0);
 assert.ok(Math.abs(equalYoung.ratio-adult.ratio)<1e-10,'same developmental scaling preserves relative size');

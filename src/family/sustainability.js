@@ -19,19 +19,28 @@ const STATUS=[
 export class FamilySustainabilityController{
   constructor(sim){this.sim=sim;this.cacheDay=-1;this.cacheTick=-Infinity;this.cacheMemberCount=-1;this.cacheCellCount=-1;this.cache=null;this.cellCache=new Map()}
   invalidate(){this.cacheDay=-1;this.cacheTick=-Infinity;this.cacheMemberCount=-1;this.cacheCellCount=-1;this.cache=null;this.cellCache.clear()}
-  dietOverlap(animal){
+  // Mean family preference per plant, computed once per query (same summation order as before).
+  familyDietProfile(){
     const relatives=this.sim.animals.filter(a=>a.alive&&a.lineage);
-    if(!relatives.length)return 0;
+    if(!relatives.length)return null;
+    return PLANT_KEYS.map(key=>relatives.reduce((sum,a)=>sum+plantPreference(a,key),0)/relatives.length);
+  }
+  dietOverlap(animal,profile=this.familyDietProfile()){
+    if(!profile)return 0;
     let overlap=0;
-    for(const key of PLANT_KEYS){const family=relatives.reduce((sum,a)=>sum+plantPreference(a,key),0)/relatives.length;
-      overlap+=Math.min(family,plantPreference(animal,key));}
+    for(let k=0;k<PLANT_KEYS.length;k++)overlap+=Math.min(profile[k],plantPreference(animal,PLANT_KEYS[k]));
     return overlap;
   }
   competitorsIn(cell){
     const size=this.sim.territory.cellSize,x0=cell.cx*size,y0=cell.cy*size,x1=x0+size,y1=y0+size,out=[];
+    // Bounds first and one family profile per call: previously every animal re-scanned every
+    // animal for relatives (N x N x plants per cell). Results are identical.
+    let profile;
     for(const a of this.sim.animals){
-      if(!a.alive||a.lineage||canHunt(a)||this.dietOverlap(a)<=.35)continue;
-      if(a.x>=x0&&a.x<x1&&a.y>=y0&&a.y<y1)out.push(a);
+      if(!a.alive||a.lineage||!(a.x>=x0&&a.x<x1&&a.y>=y0&&a.y<y1)||canHunt(a))continue;
+      if(profile===undefined)profile=this.familyDietProfile();
+      if(this.dietOverlap(a,profile)<=.35)continue;
+      out.push(a);
     }
     return out;
   }

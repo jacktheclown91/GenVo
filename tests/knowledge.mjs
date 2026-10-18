@@ -1,3 +1,4 @@
+import {interactAs} from './helpers/interaction.js';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
@@ -14,7 +15,7 @@ const bank=w.nearestDrinkable(p.x,p.y,60);assert.ok(bank,'there is water to lear
 
 // A creature knows a bank by drinking at it.
 {
-  p.x=bank.x;p.y=bank.y;sim.playerInteract();
+  p.x=bank.x;p.y=bank.y;interactAs(sim,assert,'drink');
   const known=cog.knownWater(p);assert.ok(known,'drinking teaches a water place');assert.equal(known.source,'self');assert.ok(known.sureness>.99);
 }
 

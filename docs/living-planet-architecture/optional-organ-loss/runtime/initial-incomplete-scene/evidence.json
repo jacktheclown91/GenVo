@@ -1,0 +1,257 @@
+{
+  "scope": "Actual archived adult parent and reduced descendant, temporary paused control for inspection. No body, genes, anatomy or reserves edited. Diagnostic captions are harness annotations. Existing canonical modifier consequence, not physical reservoir or ordinary gameplay acceptance. Reduced snapshot copy deliberately omits only future-birth bodyVariation to prove explicit migration; source snapshots unchanged.",
+  "results": [
+    {
+      "id": 8,
+      "age": 30,
+      "body": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/flank.left",
+            "partId": "storage-sac",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "flank.left"
+          },
+          {
+            "id": "root/flank.right",
+            "partId": "storage-sac",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "flank.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "webbed-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "webbed-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-dccd3b2c"
+      },
+      "adaptations": [
+        "water-sacs",
+        "webbed-limbs"
+      ],
+      "effects": {
+        "predatorDamage": 1,
+        "sprintSpeed": 0.97,
+        "sprintEnergy": 1,
+        "waterUse": 0.72,
+        "foodGain": 1,
+        "healing": 1,
+        "metabolism": 1.0216,
+        "playerStrike": 1,
+        "strikeEnergy": 1,
+        "bitterSlime": false,
+        "alarmPulse": false,
+        "camouflage": false,
+        "adaptiveCamouflage": false,
+        "mobbing": false,
+        "coordinatedDefense": false,
+        "grasping": false,
+        "provisioning": false,
+        "swim": true,
+        "swimSpeed": 0.66,
+        "swimEnergy": 1.48,
+        "carryCapacity": 1,
+        "carrySprint": 1
+      },
+      "storageParts": 2,
+      "unchanged": true,
+      "oldMigrations": 1,
+      "migrations": [
+        {
+          "from": {
+            "schema": 1,
+            "inheritedVariation": "neutral-core/1",
+            "populationTraits": "neutral-parental/1",
+            "familyForms": "neutral-parental/1",
+            "anatomyProjection": "supported-water/1"
+          },
+          "to": {
+            "schema": 1,
+            "inheritedVariation": "neutral-core/1",
+            "populationTraits": "neutral-parental/1",
+            "familyForms": "neutral-parental/1",
+            "anatomyProjection": "supported-water/1",
+            "bodyVariation": "neutral-optional-loss/1"
+          },
+          "tick": 3312,
+          "scope": "Future neutral continuous genes, parental population traits and family forms; existing organisms/history unchanged; independent supported water physiology for future bodies; neutral optional subtree deletion in future structural variation; existing event chance/symmetry share unchanged and conditional operator distribution extended; other tissue physics remains incomplete."
+        }
+      ],
+      "message": "World restored"
+    },
+    {
+      "id": 1004,
+      "age": 30,
+      "body": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-4134709b"
+      },
+      "adaptations": [],
+      "effects": {
+        "predatorDamage": 1,
+        "sprintSpeed": 1,
+        "sprintEnergy": 1,
+        "waterUse": 1,
+        "foodGain": 1,
+        "healing": 1,
+        "metabolism": 1,
+        "playerStrike": 1,
+        "strikeEnergy": 1,
+        "bitterSlime": false,
+        "alarmPulse": false,
+        "camouflage": false,
+        "adaptiveCamouflage": false,
+        "mobbing": false,
+        "coordinatedDefense": false,
+        "grasping": false,
+        "provisioning": false,
+        "swim": false,
+        "swimSpeed": 0,
+        "swimEnergy": 1,
+        "carryCapacity": 1,
+        "carrySprint": 1
+      },
+      "storageParts": 0,
+      "unchanged": true,
+      "oldMigrations": 0,
+      "migrations": [
+        {
+          "from": {
+            "schema": 1,
+            "inheritedVariation": "neutral-core/1",
+            "populationTraits": "neutral-parental/1",
+            "familyForms": "neutral-parental/1",
+            "anatomyProjection": "supported-water/1"
+          },
+          "to": {
+            "schema": 1,
+            "inheritedVariation": "neutral-core/1",
+            "populationTraits": "neutral-parental/1",
+            "familyForms": "neutral-parental/1",
+            "anatomyProjection": "supported-water/1",
+            "bodyVariation": "neutral-optional-loss/1"
+          },
+          "tick": 2304,
+          "scope": "Future neutral continuous genes, parental population traits and family forms; existing organisms/history unchanged; independent supported water physiology for future bodies; neutral optional subtree deletion in future structural variation; existing event chance/symmetry share unchanged and conditional operator distribution extended; other tissue physics remains incomplete."
+        }
+      ],
+      "message": "World restored. Future offspring use updated inheritance rules; existing organisms and ancestry are preserved."
+    }
+  ],
+  "errors": []
+}

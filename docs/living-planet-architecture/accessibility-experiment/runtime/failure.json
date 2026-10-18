@@ -1,0 +1,14 @@
+{
+  "message": "page.evaluate: TypeError: this.active[kind]?.add is not a function\n    at PlantDispersalController.upgrade (https://genvo.review/src/ecology/dispersal.js:25:92)\n    at restoreSimulationSnapshot (https://genvo.review/src/persistence/save-manager.js:227:17)\n    at eval (eval at evaluate (:311:30), <anonymous>:1:393)\n    at async <anonymous>:337:30",
+  "state": {
+    "status": {
+      "status": "ready",
+      "installed": 79,
+      "revision": 1,
+      "errors": []
+    },
+    "day": 1,
+    "body": "0/3\nYour first goals· Eat and drink\nMenu\nGenvo Kinwalker\nHealth\nEnergy\nWater\nBreath\nEat fruit\nE\nDrink\nShift+E\nAttack\nSpace\nBrace\nJ\nRest"
+  },
+  "errors": []
+}

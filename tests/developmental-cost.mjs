@@ -6,7 +6,7 @@ function costs(species,age){
   const sim=new Simulation('DEVELOPMENTAL-COST',{player:false});sim.phaseClimate();
   const a=sim.animals.find(a=>a.species===species);
   sim.world.water.fill(0);sim.world.buildLandRegions();sim.world.buildHydrology();
-  Object.assign(a,{x:40.5,y:40.5,age,health:100,genes:{body:1,motion:1,metabolism:1,digestion:1,senses:1,climate:1,immunity:1,temperament:1},bodyPlan:null,adaptations:[],ecoLifestyle:null,energy:SPECIES[species].maxEnergy*.9,intent:'explore',target:{x:60.5,y:40.5}});
+  Object.assign(a,{x:40.5,y:40.5,age,health:100,genes:{body:1,motion:1,metabolism:1,digestion:1,senses:1,climate:1,immunity:1,temperament:1},adaptations:[],ecoLifestyle:null,energy:SPECIES[species].maxEnergy*.9,intent:'explore',target:{x:60.5,y:40.5}});
   sim.animals=[a];sim.rebuildSpatial();sim.activity.movementBudget=()=>({advance:true,scale:1});sim.activity.ambientMoveAllowed=()=>true;
   const initial=a.energy,water=a.hydration;sim.phaseMetabolism();const maintenance=initial-a.energy;
   const start=a.energy;sim.phaseMovement();return {maintenance,water:water-a.hydration,movement:start-a.energy,distance:a.x-40.5};

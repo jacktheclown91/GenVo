@@ -1,0 +1,56 @@
+{
+  "scope": "Controlled validator on exact copy of genuine day81 save, then explicit unpause without time advance to test readiness. No actor/resource/RNG/consent edits; not ordinary gameplay.",
+  "input": "docs/player-journey/approach-interruption-continuation-3/checkpoint.snapshot.bin",
+  "sha256": "0e34e5fdcca0557c7fccd8ff6f0645262302ee522b896fdb5d343070288250c0",
+  "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+  "day": 81,
+  "tick": 3861,
+  "playerId": 109,
+  "expiredPerformance": {
+    "partnerId": 202,
+    "startedAt": 2898,
+    "endsAt": 2916,
+    "intensity": 0.3784,
+    "energySpent": 0.34595200000000004,
+    "sequence": [
+      "dance"
+    ],
+    "attempt": 6,
+    "quality": 0.5959006071380915,
+    "qualityBase": 0.5959006071380915,
+    "tempo": -0.06409926046617309
+  },
+  "recordedFailure": {
+    "tick": 3861,
+    "day": 81,
+    "partnerId": 202,
+    "reason": "The courtship performance ended before pairing.",
+    "reasonCode": "performance-ended",
+    "stage": "performance"
+  },
+  "energyUnchanged": true,
+  "rngUnchanged": true,
+  "learningUnchanged": true,
+  "bodyUnchanged": true,
+  "completeSaveRoundtrip": true,
+  "initiallyPaused": true,
+  "pausedTargets": [
+    {
+      "id": 144,
+      "availability": {
+        "enabled": false,
+        "reason": "Resume the world first."
+      }
+    }
+  ],
+  "targets": [
+    {
+      "id": 144,
+      "availability": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      }
+    }
+  ]
+}

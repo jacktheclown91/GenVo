@@ -1,0 +1,4298 @@
+{
+  "scope": "Continuation of the identified actual native save through lossless archive transfer, native Continue and normal keyboard exploration/mate selection. No synthesized organisms, body/genome/reserve/RNG/consent edits or time advance. UI-guided automation, not human play or mouse-first acceptance.",
+  "rows": [
+    {
+      "label": "continued-actual-native-save",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 97,
+      "tick": 4621,
+      "player": {
+        "id": 109,
+        "age": 128,
+        "x": 71.00605614737933,
+        "y": 82.98665437629444,
+        "energy": 123.50998098883926,
+        "hydration": 81.77241694117635,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "drink",
+        "actorId": 109,
+        "tick": 4603
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-0",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 97,
+      "tick": 4652,
+      "player": {
+        "id": 109,
+        "age": 128,
+        "x": 71.02291925958795,
+        "y": 82.97232965402657,
+        "energy": 123.25485544021836,
+        "hydration": 81.51677694117632,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-1",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 98,
+      "tick": 4664,
+      "player": {
+        "id": 109,
+        "age": 129,
+        "x": 71.03797102342507,
+        "y": 82.96861257472112,
+        "energy": 122.83138915402458,
+        "hydration": 81.41414758879584,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-2",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 98,
+      "tick": 4681,
+      "player": {
+        "id": 109,
+        "age": 129,
+        "x": 71.04001970332565,
+        "y": 82.71133456061135,
+        "energy": 122.22235944789628,
+        "hydration": 81.25964353165443,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-3",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 98,
+      "tick": 4697,
+      "player": {
+        "id": 109,
+        "age": 129,
+        "x": 71.30532506268435,
+        "y": 82.94861459651504,
+        "energy": 121.69421426905296,
+        "hydration": 81.1566408268935,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-4",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 99,
+      "tick": 4710,
+      "player": {
+        "id": 109,
+        "age": 130,
+        "x": 71.07246853024813,
+        "y": 82.92596268995318,
+        "energy": 121.1900887317152,
+        "hydration": 81.00198212213256,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-5",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 99,
+      "tick": 4726,
+      "player": {
+        "id": 109,
+        "age": 130,
+        "x": 71.09887246747539,
+        "y": 82.92956592848154,
+        "energy": 120.6621688290129,
+        "hydration": 80.89867012213257,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-6",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 99,
+      "tick": 4743,
+      "player": {
+        "id": 109,
+        "age": 130,
+        "x": 71.07823012459862,
+        "y": 82.68995893359002,
+        "energy": 120.05347703709612,
+        "hydration": 80.74370212213259,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-7",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 100,
+      "tick": 4757,
+      "player": {
+        "id": 109,
+        "age": 131,
+        "x": 71.07994402699187,
+        "y": 82.67877186035882,
+        "energy": 119.57800477608768,
+        "hydration": 80.6403901221326,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-8",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 100,
+      "tick": 4773,
+      "player": {
+        "id": 109,
+        "age": 131,
+        "x": 71.05007404407219,
+        "y": 82.68994669860477,
+        "energy": 118.9958072934406,
+        "hydration": 80.48588606499119,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-9",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 100,
+      "tick": 4775,
+      "player": {
+        "id": 109,
+        "age": 131,
+        "x": 71.377073812236,
+        "y": 82.99579706790682,
+        "energy": 118.94346784711584,
+        "hydration": 80.48588606499119,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-10",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 100,
+      "tick": 4791,
+      "player": {
+        "id": 109,
+        "age": 131,
+        "x": 71.3884754999076,
+        "y": 82.96399955299684,
+        "energy": 118.36127036446877,
+        "hydration": 80.33138200784978,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-11",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 101,
+      "tick": 4805,
+      "player": {
+        "id": 109,
+        "age": 132,
+        "x": 71.39754980318772,
+        "y": 82.9385973013349,
+        "energy": 117.8859924368795,
+        "hydration": 80.22837930308884,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-12",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 101,
+      "tick": 4820,
+      "player": {
+        "id": 109,
+        "age": 132,
+        "x": 71.63417915182264,
+        "y": 82.99657413455617,
+        "energy": 117.33022309154501,
+        "hydration": 80.07499530308883,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-13",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 101,
+      "tick": 4837,
+      "player": {
+        "id": 109,
+        "age": 132,
+        "x": 71.09627396675762,
+        "y": 82.7749251647053,
+        "energy": 116.72211429988575,
+        "hydration": 79.92161130308881,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-14",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 102,
+      "tick": 4851,
+      "player": {
+        "id": 109,
+        "age": 133,
+        "x": 71.23204660151889,
+        "y": 82.88392049054015,
+        "energy": 116.24697640558303,
+        "hydration": 79.8193553030888,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-15",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 102,
+      "tick": 4866,
+      "player": {
+        "id": 109,
+        "age": 133,
+        "x": 71.00506124651385,
+        "y": 82.97127284927042,
+        "energy": 115.69136874595796,
+        "hydration": 79.66709136023022,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-16",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 102,
+      "tick": 4871,
+      "player": {
+        "id": 109,
+        "age": 133,
+        "x": 71.22002424356778,
+        "y": 82.85916132005673,
+        "energy": 115.56052013014605,
+        "hydration": 79.66709136023022,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-17",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 102,
+      "tick": 4887,
+      "player": {
+        "id": 109,
+        "age": 133,
+        "x": 71.21791797667657,
+        "y": 82.83595565720347,
+        "energy": 114.9787427473586,
+        "hydration": 79.51482741737163,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-18",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 103,
+      "tick": 4901,
+      "player": {
+        "id": 109,
+        "age": 134,
+        "x": 71.23449710590509,
+        "y": 82.99810221133696,
+        "energy": 114.50368426982979,
+        "hydration": 79.41331812213258,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-19",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 103,
+      "tick": 4917,
+      "player": {
+        "id": 109,
+        "age": 134,
+        "x": 71.24466632412816,
+        "y": 82.96882249217403,
+        "energy": 113.92198345165465,
+        "hydration": 79.26151812213257,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-20",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 103,
+      "tick": 4933,
+      "player": {
+        "id": 109,
+        "age": 134,
+        "x": 71.25481481320368,
+        "y": 82.93960245711051,
+        "energy": 113.34028263347952,
+        "hydration": 79.10971812213256,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-21",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 104,
+      "tick": 4948,
+      "player": {
+        "id": 109,
+        "age": 135,
+        "x": 71.49203022333661,
+        "y": 82.99543541216742,
+        "energy": 112.83909333955785,
+        "hydration": 79.00851812213256,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-22",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 104,
+      "tick": 4963,
+      "player": {
+        "id": 109,
+        "age": 135,
+        "x": 71.26952456073934,
+        "y": 82.88933262090734,
+        "energy": 112.28360240024134,
+        "hydration": 78.85625417927398,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-23",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 104,
+      "tick": 4979,
+      "player": {
+        "id": 109,
+        "age": 135,
+        "x": 71.25263199280332,
+        "y": 82.85403868496181,
+        "energy": 111.75625676838936,
+        "hydration": 78.75474488403492,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-24",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 105,
+      "tick": 4993,
+      "player": {
+        "id": 109,
+        "age": 136,
+        "x": 71.2728735525767,
+        "y": 82.9994602973963,
+        "energy": 111.22695640506035,
+        "hydration": 78.60248094117634,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-25",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 105,
+      "tick": 5009,
+      "player": {
+        "id": 109,
+        "age": 136,
+        "x": 71.27780485746358,
+        "y": 82.92701814408193,
+        "energy": 110.69965247885861,
+        "hydration": 78.42683011764694,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-26",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 105,
+      "tick": 5015,
+      "player": {
+        "id": 109,
+        "age": 136,
+        "x": 71.76172705147165,
+        "y": 82.89533423560017,
+        "energy": 110.4883399620825,
+        "hydration": 78.33900470588225,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-27",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 105,
+      "tick": 5031,
+      "player": {
+        "id": 109,
+        "age": 136,
+        "x": 71.27279837505851,
+        "y": 82.84884596526655,
+        "energy": 109.90674185807896,
+        "hydration": 78.07552847058815,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-28",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 106,
+      "tick": 5045,
+      "player": {
+        "id": 109,
+        "age": 137,
+        "x": 71.27144244457577,
+        "y": 82.83226798550749,
+        "energy": 109.43200351549268,
+        "hydration": 77.89987764705876,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-29",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 106,
+      "tick": 5061,
+      "player": {
+        "id": 109,
+        "age": 137,
+        "x": 71.27202424904958,
+        "y": 82.83420998211825,
+        "energy": 108.85108382336122,
+        "hydration": 77.5878636057672,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-30",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 106,
+      "tick": 5062,
+      "player": {
+        "id": 109,
+        "age": 137,
+        "x": 71.03358210407326,
+        "y": 82.87755197979912,
+        "energy": 108.82491410019884,
+        "hydration": 77.5878636057672,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-31",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 106,
+      "tick": 5078,
+      "player": {
+        "id": 109,
+        "age": 137,
+        "x": 71.00125787200564,
+        "y": 82.95361607307257,
+        "energy": 108.24399440806738,
+        "hydration": 77.27584956447564,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-32",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 107,
+      "tick": 5093,
+      "player": {
+        "id": 109,
+        "age": 138,
+        "x": 71.0934603111901,
+        "y": 82.92294237079285,
+        "energy": 107.74353338671898,
+        "hydration": 77.0678402036146,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-33",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 107,
+      "tick": 5108,
+      "player": {
+        "id": 109,
+        "age": 138,
+        "x": 71.33750563691288,
+        "y": 82.91939961419051,
+        "energy": 107.1894461390786,
+        "hydration": 76.73572114479106,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-34",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 107,
+      "tick": 5125,
+      "player": {
+        "id": 109,
+        "age": 138,
+        "x": 71.12223815063852,
+        "y": 82.8955994243532,
+        "energy": 106.58301944511345,
+        "hydration": 76.40360208596752,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-1-follow-35",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 108,
+      "tick": 5139,
+      "player": {
+        "id": 109,
+        "age": 139,
+        "x": 71.1312559050236,
+        "y": 82.87970114448748,
+        "energy": 106.21354898327849,
+        "hydration": 76.18218938008516,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "region-end-0",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 108,
+      "tick": 5140,
+      "player": {
+        "id": 109,
+        "age": 139,
+        "x": 71.1312559050236,
+        "y": 82.87970114448748,
+        "energy": 106.21354898327849,
+        "hydration": 76.18218938008516,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.4900190111607401,
+        "waterGain": 0,
+        "tick": 4622
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "explored-0",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 108,
+      "tick": 5170,
+      "player": {
+        "id": 109,
+        "age": 139,
+        "x": 78.4017350321164,
+        "y": 82.87970114448748,
+        "energy": 105.38999614836773,
+        "hydration": 75.66216597793256,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "rotcap",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.2311693440095297,
+        "waterGain": 0,
+        "tick": 5170
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": false,
+        "reason": "Move beside drinkable water."
+      }
+    },
+    {
+      "label": "attempt-2-follow-0",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 109,
+      "tick": 5192,
+      "player": {
+        "id": 109,
+        "age": 140,
+        "x": 74.63763733892569,
+        "y": 83.82074039217726,
+        "energy": 104.72906650463285,
+        "hydration": 75.2623265248763,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "rotcap",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.2311693440095297,
+        "waterGain": 0,
+        "tick": 5170
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-2-follow-1",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 109,
+      "tick": 5209,
+      "player": {
+        "id": 109,
+        "age": 140,
+        "x": 73.0450342261882,
+        "y": 83.87880399510574,
+        "energy": 104.33125076163863,
+        "hydration": 74.99885028958221,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "rotcap",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.2311693440095297,
+        "waterGain": 0,
+        "tick": 5170
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-2-follow-2",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 109,
+      "tick": 5225,
+      "player": {
+        "id": 109,
+        "age": 140,
+        "x": 73.0450342261882,
+        "y": 83.87880399510574,
+        "energy": 104.22305860528344,
+        "hydration": 74.82319946605281,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "rotcap",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.2311693440095297,
+        "waterGain": 0,
+        "tick": 5170
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-2-follow-3",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 110,
+      "tick": 5238,
+      "player": {
+        "id": 109,
+        "age": 141,
+        "x": 73.0450342261882,
+        "y": 83.87880399510574,
+        "energy": 104.06051501573036,
+        "hydration": 74.57590249942453,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "rotcap",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.2311693440095297,
+        "waterGain": 0,
+        "tick": 5170
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-2-follow-4",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 110,
+      "tick": 5255,
+      "player": {
+        "id": 109,
+        "age": 141,
+        "x": 73.0450342261882,
+        "y": 83.87880399510574,
+        "energy": 103.95206750435487,
+        "hydration": 74.43261021322675,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "rotcap",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.2311693440095297,
+        "waterGain": 0,
+        "tick": 5170
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-2-follow-5",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 110,
+      "tick": 5271,
+      "player": {
+        "id": 109,
+        "age": 141,
+        "x": 73.0450342261882,
+        "y": 83.87880399510574,
+        "energy": 103.78939623729164,
+        "hydration": 74.21767178393009,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "rotcap",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.2311693440095297,
+        "waterGain": 0,
+        "tick": 5170
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-2-follow-6",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 111,
+      "tick": 5286,
+      "player": {
+        "id": 109,
+        "age": 142,
+        "x": 73.0450342261882,
+        "y": 83.87880399510574,
+        "energy": 103.6265440707058,
+        "hydration": 74.00943502714406,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "rotcap",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.2311693440095297,
+        "waterGain": 0,
+        "tick": 5170
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "region-end-1",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 111,
+      "tick": 5286,
+      "player": {
+        "id": 109,
+        "age": 142,
+        "x": 73.0450342261882,
+        "y": 83.87880399510574,
+        "energy": 103.6265440707058,
+        "hydration": 74.00943502714406,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "rotcap",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.2311693440095297,
+        "waterGain": 0,
+        "tick": 5170
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "explored-1",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 112,
+      "tick": 5333,
+      "player": {
+        "id": 109,
+        "age": 143,
+        "x": 73.0450342261882,
+        "y": 83.99997864722395,
+        "energy": 109.09637153050097,
+        "hydration": 73.55482373302635,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-28dbf429-bad80962",
+        "energyGain": 5.863182281465669,
+        "waterGain": 0,
+        "tick": 5333
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-3-follow-0",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 112,
+      "tick": 5351,
+      "player": {
+        "id": 109,
+        "age": 143,
+        "x": 73.07232407904758,
+        "y": 83.75554382740754,
+        "energy": 108.64535039352971,
+        "hydration": 73.33988530372969,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-28dbf429-bad80962",
+        "energyGain": 5.863182281465669,
+        "waterGain": 0,
+        "tick": 5333
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-3-follow-1",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 112,
+      "tick": 5367,
+      "player": {
+        "id": 109,
+        "age": 143,
+        "x": 73.07864300143375,
+        "y": 83.75624379023756,
+        "energy": 108.06348064074653,
+        "hydration": 73.12494687443302,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-28dbf429-bad80962",
+        "energyGain": 5.863182281465669,
+        "waterGain": 0,
+        "tick": 5333
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-3-follow-2",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 113,
+      "tick": 5381,
+      "player": {
+        "id": 109,
+        "age": 144,
+        "x": 73.08870808444104,
+        "y": 83.75736988007932,
+        "energy": 107.58826392844976,
+        "hydration": 72.98165458823524,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-28dbf429-bad80962",
+        "energyGain": 5.863182281465669,
+        "waterGain": 0,
+        "tick": 5333
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-3-follow-3",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 113,
+      "tick": 5397,
+      "player": {
+        "id": 109,
+        "age": 144,
+        "x": 73.09097928494668,
+        "y": 83.75761580516476,
+        "energy": 107.00618077596646,
+        "hydration": 72.82668658823526,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-28dbf429-bad80962",
+        "energyGain": 5.863182281465669,
+        "waterGain": 0,
+        "tick": 5333
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-3-follow-4",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 113,
+      "tick": 5399,
+      "player": {
+        "id": 109,
+        "age": 144,
+        "x": 73.09126308819297,
+        "y": 83.75764654968697,
+        "energy": 106.95384132964169,
+        "hydration": 72.82668658823526,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-28dbf429-bad80962",
+        "energyGain": 5.863182281465669,
+        "waterGain": 0,
+        "tick": 5333
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-3-follow-5",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 113,
+      "tick": 5415,
+      "player": {
+        "id": 109,
+        "age": 144,
+        "x": 73.09353274014687,
+        "y": 83.7578925368601,
+        "energy": 106.37175817715838,
+        "hydration": 72.67171858823528,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": 230,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-28dbf429-bad80962",
+        "energyGain": 5.863182281465669,
+        "waterGain": 0,
+        "tick": 5333
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "An approach or performance is already underway."
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "attempt-3-follow-6",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 114,
+      "tick": 5429,
+      "player": {
+        "id": 109,
+        "age": 145,
+        "x": 73.1007218606583,
+        "y": 83.75870207038002,
+        "energy": 106.05355906752119,
+        "hydration": 72.56840658823529,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-28dbf429-bad80962",
+        "energyGain": 5.863182281465669,
+        "waterGain": 0,
+        "tick": 5333
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "region-end-2",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 114,
+      "tick": 5429,
+      "player": {
+        "id": 109,
+        "age": 145,
+        "x": 73.1007218606583,
+        "y": 83.75870207038002,
+        "energy": 106.05355906752119,
+        "hydration": 72.56840658823529,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-28dbf429-bad80962",
+        "energyGain": 5.863182281465669,
+        "waterGain": 0,
+        "tick": 5333
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "explored-2",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 114,
+      "tick": 5461,
+      "player": {
+        "id": 109,
+        "age": 145,
+        "x": 80.52266930289888,
+        "y": 83.75870207038002,
+        "energy": 108.14955621618319,
+        "hydration": 72.25623047395246,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 92,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 3.223757702769248,
+        "waterGain": 0,
+        "tick": 5460
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "region-end-3",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 115,
+      "tick": 5485,
+      "player": {
+        "id": 109,
+        "age": 146,
+        "x": 80.52266930289888,
+        "y": 83.75870207038002,
+        "energy": 107.93213449028212,
+        "hydration": 72.04780376919152,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 160,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 3.223757702769248,
+        "waterGain": 0,
+        "tick": 5460
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "explored-3",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 115,
+      "tick": 5516,
+      "player": {
+        "id": 109,
+        "age": 146,
+        "x": 80.52266930289888,
+        "y": 76.60939759540543,
+        "energy": 112.1880232721291,
+        "hydration": 71.78688376919153,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 284,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-a0ef0d53-2f805180",
+        "energyGain": 5.299622718790317,
+        "waterGain": 0,
+        "tick": 5516
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": false,
+        "reason": "Move beside drinkable water."
+      }
+    },
+    {
+      "label": "region-end-4",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 116,
+      "tick": 5538,
+      "player": {
+        "id": 109,
+        "age": 147,
+        "x": 80.52266930289888,
+        "y": 76.60939759540543,
+        "energy": 111.97074624591869,
+        "hydration": 71.57861171205012,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 163,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-a0ef0d53-2f805180",
+        "energyGain": 5.299622718790317,
+        "waterGain": 0,
+        "tick": 5516
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": false,
+        "reason": "Move beside drinkable water."
+      }
+    },
+    {
+      "label": "explored-4",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 117,
+      "tick": 5584,
+      "player": {
+        "id": 109,
+        "age": 148,
+        "x": 69.5866569492301,
+        "y": 76.60939759540543,
+        "energy": 110.78921688730729,
+        "hydration": 71.21515295014777,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 300,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "rotcap",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.3795179004608258,
+        "waterGain": 0,
+        "tick": 5584
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": false,
+        "reason": "Move beside drinkable water."
+      }
+    },
+    {
+      "label": "region-end-5",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 117,
+      "tick": 5607,
+      "player": {
+        "id": 109,
+        "age": 148,
+        "x": 69.5866569492301,
+        "y": 76.60939759540543,
+        "energy": 110.57206825376328,
+        "hydration": 71.00852895014779,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 300,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "rotcap",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.3795179004608258,
+        "waterGain": 0,
+        "tick": 5584
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": false,
+        "reason": "Move beside drinkable water."
+      }
+    },
+    {
+      "label": "explored-5",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 118,
+      "tick": 5640,
+      "player": {
+        "id": 109,
+        "age": 149,
+        "x": 69.5866569492301,
+        "y": 81.97137595163638,
+        "energy": 115.59468244087006,
+        "hydration": 70.70008635966968,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 300,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-aed34611-f2fe8416",
+        "energyGain": 5.927091499912706,
+        "waterGain": 0,
+        "tick": 5639
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "birth-or-final",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 118,
+      "tick": 5640,
+      "player": {
+        "id": 109,
+        "age": 149,
+        "x": 69.5866569492301,
+        "y": 81.97137595163638,
+        "energy": 115.59468244087006,
+        "hydration": 70.70008635966968,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 300,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-aed34611-f2fe8416",
+        "energyGain": 5.927091499912706,
+        "waterGain": 0,
+        "tick": 5639
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "native-continue",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 118,
+      "tick": 5658,
+      "player": {
+        "id": 109,
+        "age": 149,
+        "x": 69.5866569492301,
+        "y": 81.97137595163638,
+        "energy": 115.43197142319912,
+        "hydration": 70.5462384168111,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 300,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "bramble",
+        "tissue": "crop",
+        "processingCost": 0,
+        "producerGenomeId": "flora4-aed34611-f2fe8416",
+        "energyGain": 5.927091499912706,
+        "waterGain": 0,
+        "tick": 5639
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    }
+  ],
+  "actions": [
+    "E: eat available local food",
+    {
+      "region": 0,
+      "choice": 0,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nDigger Burrowwalker · adult\nClose\nExpand\nDigger Burrowwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 6\nSelected #230 · F · adult · 9.6 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n2/9 mounted positions match · 7 differ\ntorso: yours small torso / mate stout torso\neye left: yours simple eye / mate eyespot\neye right: yours simple eye / mate eyespot\nlimb 1: yours walking leg / mate digging forelimb\nlimb 7: yours walking leg / mate digging forelimb\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 94% · gamete match 96% · individual fertility 100% / 98%\nDedicated inherited loci (provisional model): {\"gamete\":[1.03318,1.00792],\"development\":[0.96037,0.95068]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#139 · 6.2 tiles · compatible · 11 different sockets\n#147 · 3.3 tiles · compatible · 11 different sockets\n#284 · 13.4 tiles · compatible · 7 different sockets\n▸ #230 · 9.6 tiles · compatible · 7 different sockets\n#94 · 11.0 tiles · compatible · 7 different sockets\n#77 · 18.1 tiles · compatible · 7 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: favors strength (52% selective)\n\nYOU\nslower movement · better digestion\nMATE\nslower movement · stronger disease resistance · more cautious and solitary\nLIKELY CHILD TRAITS\nsmaller body · stronger disease resistance · prefers cool · lower energy use\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    "Chose existing Dance through mate-panel key1",
+    {
+      "movement": "KeyD",
+      "seconds": 6
+    },
+    {
+      "region": 1,
+      "choice": 0,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nDigger Burrowwalker · adult\nClose\nExpand\nDigger Burrowwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 5\nSelected #230 · F · adult · 14.0 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n2/9 mounted positions match · 7 differ\ntorso: yours small torso / mate stout torso\neye left: yours simple eye / mate eyespot\neye right: yours simple eye / mate eyespot\nlimb 1: yours walking leg / mate digging forelimb\nlimb 7: yours walking leg / mate digging forelimb\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 94% · gamete match 96% · individual fertility 100% / 98%\nDedicated inherited loci (provisional model): {\"gamete\":[1.03318,1.00792],\"development\":[0.96037,0.95068]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#168 · 19.3 tiles · compatible · 10 different sockets\n#94 · 15.0 tiles · compatible · 7 different sockets\n▸ #230 · 14.0 tiles · compatible · 7 different sockets\n#307 · 22.1 tiles · compatible · 8 different sockets\n#81 · 20.8 tiles · compatible · 7 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: favors strength (52% selective)\n\nYOU\nslower movement · better digestion\nMATE\nslower movement · stronger disease resistance · more cautious and solitary\nLIKELY CHILD TRAITS\nsmaller body · stronger disease resistance · prefers cool · lower energy use\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    "Chose existing Dance through mate-panel key1",
+    {
+      "movement": "KeyS",
+      "seconds": 6
+    },
+    {
+      "region": 2,
+      "choice": 0,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nDigger Burrowwalker · adult\nClose\nExpand\nDigger Burrowwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 9\nSelected #230 · F · adult · 18.6 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n2/9 mounted positions match · 7 differ\ntorso: yours small torso / mate stout torso\neye left: yours simple eye / mate eyespot\neye right: yours simple eye / mate eyespot\nlimb 1: yours walking leg / mate digging forelimb\nlimb 7: yours walking leg / mate digging forelimb\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 94% · gamete match 96% · individual fertility 100% / 98%\nDedicated inherited loci (provisional model): {\"gamete\":[1.03318,1.00792],\"development\":[0.96037,0.95068]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#92 · 10.9 tiles · favored · 7 different sockets\n#307 · 12.8 tiles · compatible · 8 different sockets\n#300 · 16.3 tiles · compatible · 6 different sockets\n#160 · 18.7 tiles · compatible · 10 different sockets\n#313 · 18.1 tiles · compatible · 11 different sockets\n#77 · 21.5 tiles · compatible · 7 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: favors strength (52% selective)\n\nYOU\nslower movement · better digestion\nMATE\nslower movement · stronger disease resistance · more cautious and solitary\nLIKELY CHILD TRAITS\nsmaller body · stronger disease resistance · prefers cool · lower energy use\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    "Chose existing Dance through mate-panel key1",
+    {
+      "movement": "KeyD",
+      "seconds": 6
+    },
+    {
+      "region": 3,
+      "choice": 0,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nDigger Burrowwalker · adult\nClose\nExpand\nDigger Burrowwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 7\nSelected #92 · F · adult · 15.5 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n2/9 mounted positions match · 7 differ\ntorso: yours small torso / mate stout torso\neye left: yours simple eye / mate eyespot\neye right: yours simple eye / mate eyespot\nlimb 1: yours walking leg / mate digging forelimb\nlimb 7: yours walking leg / mate digging forelimb\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 95% · gamete match 95% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.02439,1.00619],\"development\":[0.95157,0.95157]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#284 · 8.9 tiles · compatible · 7 different sockets\n▸ #92 · 15.5 tiles · favored · 7 different sockets\n#77 · 16.4 tiles · compatible · 7 different sockets\n#160 · 18.2 tiles · compatible · 10 different sockets\n#300 · 17.6 tiles · compatible · 6 different sockets\n#314 · 22.2 tiles · compatible · 6 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids display (48% selective)\n\nYOU\nslower movement · better digestion\nMATE\nlower energy use · bolder and more social · prefers warmth\nLIKELY CHILD TRAITS\nlower energy use · faster movement · smaller body · bolder and more social\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 3,
+      "choice": 1,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nDigger Burrowwalker · adult\nClose\nExpand\nDigger Burrowwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 6\nSelected #77 · F · adult · 16.0 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n2/9 mounted positions match · 7 differ\ntorso: yours small torso / mate stout torso\neye left: yours simple eye / mate eyespot\neye right: yours simple eye / mate eyespot\nlimb 1: yours walking leg / mate digging forelimb\nlimb 7: yours walking leg / mate digging forelimb\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 98% · gamete match 98% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.03195,1.02862],\"development\":[0.96781,0.96781]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#284 · 8.9 tiles · compatible · 7 different sockets\n#92 · 15.9 tiles · favored · 7 different sockets\n▸ #77 · 16.0 tiles · compatible · 7 different sockets\n#160 · 18.4 tiles · compatible · 10 different sockets\n#300 · 17.6 tiles · compatible · 6 different sockets\n#314 · 22.8 tiles · compatible · 6 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids display (67% selective)\n\nYOU\nslower movement · better digestion\nMATE\nlower energy use · weaker senses · poorer digestion\nLIKELY CHILD TRAITS\npoorer digestion · lower energy use · smaller body · prefers cool\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 3,
+      "choice": 2,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nMirelick Keenwalker · adult\nClose\nExpand\nMirelick Keenwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 6\nSelected #160 · F · adult · 18.5 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n0/10 mounted positions match · 10 differ\ntorso: yours small torso / mate stout torso\ndorsal: yours empty / mate moss back\neye left: yours simple eye / mate tracker eye\neye right: yours simple eye / mate tracker eye\nlimb 1: yours walking leg / mate padded leg\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 78% · gamete match 78% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[0.91761,0.92767],\"development\":[0.93163,0.93163]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#284 · 8.9 tiles · compatible · 7 different sockets\n#92 · 16.1 tiles · favored · 7 different sockets\n#77 · 15.8 tiles · compatible · 7 different sockets\n▸ #160 · 18.5 tiles · compatible · 10 different sockets\n#300 · 17.6 tiles · compatible · 6 different sockets\n#314 · 23.0 tiles · compatible · 6 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids ornament (67% selective)\n\nYOU\nslower movement · better digestion\nMATE\nlower disease resistance · lower energy use · faster movement\nLIKELY CHILD TRAITS\nfaster movement · lower energy use · lower disease resistance · prefers cool\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 3,
+      "choice": 3,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nHopper Springwalker · adult\nClose\nExpand\nHopper Springwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 6\nSelected #300 · F · adult · 17.6 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n3/9 mounted positions match · 6 differ\ntorso: yours small torso / mate light torso\neye left: yours simple eye / mate wide field eye\neye right: yours simple eye / mate wide field eye\nlimb 3: yours walking leg / mate spring leg\nlimb 5: yours walking leg / mate spring leg\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 63% · gamete match 69% · individual fertility 100% / 91%\nDedicated inherited loci (provisional model): {\"gamete\":[0.85651,0.88761],\"development\":[0.95217,1.005]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#284 · 8.9 tiles · compatible · 7 different sockets\n#92 · 16.3 tiles · favored · 7 different sockets\n#77 · 15.2 tiles · compatible · 7 different sockets\n#160 · 18.6 tiles · compatible · 10 different sockets\n▸ #300 · 17.6 tiles · compatible · 6 different sockets\n#163 · 22.5 tiles · compatible · 10 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (42% selective)\n\nYOU\nslower movement · better digestion\nMATE\npoorer digestion · prefers cool · smaller body\nLIKELY CHILD TRAITS\npoorer digestion · faster movement · prefers cool · lower energy use\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 3,
+      "choice": 4,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nMirelick Keenwalker · adult\nClose\nExpand\nMirelick Keenwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 7\nSelected #163 · F · adult · 22.0 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n0/10 mounted positions match · 10 differ\ntorso: yours small torso / mate stout torso\ndorsal: yours empty / mate moss back\neye left: yours simple eye / mate tracker eye\neye right: yours simple eye / mate tracker eye\nlimb 1: yours walking leg / mate padded leg\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 78% · gamete match 78% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[0.90542,0.94005],\"development\":[0.93338,0.93338]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#284 · 8.9 tiles · compatible · 7 different sockets\n#92 · 15.9 tiles · favored · 7 different sockets\n#77 · 14.8 tiles · compatible · 7 different sockets\n#160 · 18.6 tiles · compatible · 10 different sockets\n#300 · 17.6 tiles · compatible · 6 different sockets\n#79 · 22.9 tiles · compatible · 7 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids size (59% selective)\n\nYOU\nslower movement · better digestion\nMATE\nweaker senses · larger body · faster movement\nLIKELY CHILD TRAITS\nfaster movement · poorer digestion · lower disease resistance · weaker senses\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 3,
+      "choice": 5,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nPodshell Shellwalker · adult\nClose\nExpand\nPodshell Shellwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 7\nSelected #284 · F · adult · 8.9 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n3/10 mounted positions match · 7 differ\ntorso: yours small torso / mate light torso\ndorsal: yours empty / mate thorn carapace\neye left: yours simple eye / mate wide field eye\neye right: yours simple eye / mate wide field eye\nlimb 3: yours walking leg / mate spring leg\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 74% · gamete match 86% · individual fertility 100% / 87%\nDedicated inherited loci (provisional model): {\"gamete\":[1.02018,0.905],\"development\":[0.98894,0.91589]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n▸ #284 · 8.9 tiles · compatible · 7 different sockets\n#92 · 15.7 tiles · favored · 7 different sockets\n#77 · 14.6 tiles · compatible · 7 different sockets\n#160 · 18.8 tiles · compatible · 10 different sockets\n#300 · 17.6 tiles · compatible · 6 different sockets\n#79 · 22.7 tiles · compatible · 7 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: favors behavior (49% selective)\n\nYOU\nslower movement · better digestion\nMATE\nweaker senses · stronger disease resistance · bolder and more social\nLIKELY CHILD TRAITS\nfaster movement · bolder and more social · stronger disease resistance · poorer digestion\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 3,
+      "choice": 6,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nDigger Burrowwalker · adult\nClose\nExpand\nDigger Burrowwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 7\nSelected #92 · F · adult · 15.2 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n2/9 mounted positions match · 7 differ\ntorso: yours small torso / mate stout torso\neye left: yours simple eye / mate eyespot\neye right: yours simple eye / mate eyespot\nlimb 1: yours walking leg / mate digging forelimb\nlimb 7: yours walking leg / mate digging forelimb\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 95% · gamete match 95% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.02439,1.00619],\"development\":[0.95157,0.95157]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#284 · 8.9 tiles · compatible · 7 different sockets\n▸ #92 · 15.2 tiles · favored · 7 different sockets\n#77 · 14.2 tiles · compatible · 7 different sockets\n#160 · 18.8 tiles · compatible · 10 different sockets\n#300 · 17.6 tiles · compatible · 6 different sockets\n#79 · 22.3 tiles · compatible · 7 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids display (48% selective)\n\nYOU\nslower movement · better digestion\nMATE\nlower energy use · bolder and more social · prefers warmth\nLIKELY CHILD TRAITS\nlower energy use · faster movement · smaller body · bolder and more social\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 3,
+      "choice": 7,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nDigger Burrowwalker · adult\nClose\nExpand\nDigger Burrowwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 7\nSelected #77 · F · adult · 14.8 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n2/9 mounted positions match · 7 differ\ntorso: yours small torso / mate stout torso\neye left: yours simple eye / mate eyespot\neye right: yours simple eye / mate eyespot\nlimb 1: yours walking leg / mate digging forelimb\nlimb 7: yours walking leg / mate digging forelimb\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 98% · gamete match 98% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.03195,1.02862],\"development\":[0.96781,0.96781]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#284 · 8.7 tiles · compatible · 7 different sockets\n#92 · 15.9 tiles · favored · 7 different sockets\n▸ #77 · 14.8 tiles · compatible · 7 different sockets\n#160 · 18.6 tiles · compatible · 10 different sockets\n#300 · 17.6 tiles · compatible · 6 different sockets\n#79 · 21.6 tiles · compatible · 7 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids display (67% selective)\n\nYOU\nslower movement · better digestion\nMATE\nlower energy use · weaker senses · poorer digestion\nLIKELY CHILD TRAITS\npoorer digestion · lower energy use · smaller body · prefers cool\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "movement": "KeyW",
+      "seconds": 6
+    },
+    {
+      "region": 4,
+      "choice": 0,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nPodshell Shellwalker · adult\nClose\nExpand\nPodshell Shellwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 6\nSelected #284 · F · adult · 15.6 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n3/10 mounted positions match · 7 differ\ntorso: yours small torso / mate light torso\ndorsal: yours empty / mate thorn carapace\neye left: yours simple eye / mate wide field eye\neye right: yours simple eye / mate wide field eye\nlimb 3: yours walking leg / mate spring leg\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 74% · gamete match 86% · individual fertility 100% / 87%\nDedicated inherited loci (provisional model): {\"gamete\":[1.02018,0.905],\"development\":[0.98894,0.91589]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#297 · 14.6 tiles · compatible · 6 different sockets\n▸ #284 · 15.6 tiles · compatible · 7 different sockets\n#163 · 18.3 tiles · compatible · 10 different sockets\n#84 · 19.7 tiles · compatible · 7 different sockets\n#159 · 21.8 tiles · compatible · 10 different sockets\n#300 · 23.1 tiles · compatible · 6 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: favors behavior (49% selective)\n\nYOU\nslower movement · better digestion\nMATE\nweaker senses · stronger disease resistance · bolder and more social\nLIKELY CHILD TRAITS\nfaster movement · bolder and more social · stronger disease resistance · poorer digestion\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 4,
+      "choice": 1,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nMirelick Keenwalker · adult\nClose\nExpand\nMirelick Keenwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 6\nSelected #163 · F · adult · 18.6 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n0/10 mounted positions match · 10 differ\ntorso: yours small torso / mate stout torso\ndorsal: yours empty / mate moss back\neye left: yours simple eye / mate tracker eye\neye right: yours simple eye / mate tracker eye\nlimb 1: yours walking leg / mate padded leg\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 78% · gamete match 78% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[0.90542,0.94005],\"development\":[0.93338,0.93338]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#297 · 14.7 tiles · compatible · 6 different sockets\n#284 · 15.6 tiles · compatible · 7 different sockets\n#84 · 19.7 tiles · compatible · 7 different sockets\n▸ #163 · 18.6 tiles · compatible · 10 different sockets\n#159 · 21.5 tiles · compatible · 10 different sockets\n#300 · 22.5 tiles · compatible · 6 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids size (59% selective)\n\nYOU\nslower movement · better digestion\nMATE\nweaker senses · larger body · faster movement\nLIKELY CHILD TRAITS\nfaster movement · poorer digestion · lower disease resistance · weaker senses\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 4,
+      "choice": 2,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nMirelick Keenwalker · adult\nClose\nExpand\nMirelick Keenwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 6\nSelected #159 · F · adult · 21.1 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n0/10 mounted positions match · 10 differ\ntorso: yours small torso / mate stout torso\ndorsal: yours empty / mate moss back\neye left: yours simple eye / mate tracker eye\neye right: yours simple eye / mate tracker eye\nlimb 1: yours walking leg / mate padded leg\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 79% · gamete match 79% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[0.9365,0.9204],\"development\":[0.96234,0.96234]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#297 · 14.9 tiles · compatible · 6 different sockets\n#284 · 15.6 tiles · compatible · 7 different sockets\n#84 · 19.7 tiles · compatible · 7 different sockets\n#163 · 18.9 tiles · compatible · 10 different sockets\n▸ #159 · 21.1 tiles · compatible · 10 different sockets\n#300 · 22.0 tiles · compatible · 6 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: favors ornament (56% selective)\n\nYOU\nslower movement · better digestion\nMATE\nweaker senses · smaller body · prefers cool\nLIKELY CHILD TRAITS\nfaster movement · smaller body · prefers cool · poorer digestion\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 4,
+      "choice": 3,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nHopper Springwalker · adult\nClose\nExpand\nHopper Springwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 6\nSelected #300 · F · adult · 21.7 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n3/9 mounted positions match · 6 differ\ntorso: yours small torso / mate light torso\neye left: yours simple eye / mate wide field eye\neye right: yours simple eye / mate wide field eye\nlimb 3: yours walking leg / mate spring leg\nlimb 5: yours walking leg / mate spring leg\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 63% · gamete match 69% · individual fertility 100% / 91%\nDedicated inherited loci (provisional model): {\"gamete\":[0.85651,0.88761],\"development\":[0.95217,1.005]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#297 · 14.8 tiles · compatible · 6 different sockets\n#284 · 15.7 tiles · compatible · 7 different sockets\n#84 · 19.9 tiles · compatible · 7 different sockets\n#163 · 19.0 tiles · compatible · 10 different sockets\n#159 · 21.0 tiles · compatible · 10 different sockets\n▸ #300 · 21.7 tiles · compatible · 6 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (42% selective)\n\nYOU\nslower movement · better digestion\nMATE\npoorer digestion · prefers cool · smaller body\nLIKELY CHILD TRAITS\npoorer digestion · faster movement · prefers cool · lower energy use\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 4,
+      "choice": 4,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nHopper Springwalker · adult\nClose\nExpand\nHopper Springwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 6\nSelected #297 · F · adult · 14.8 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n3/9 mounted positions match · 6 differ\ntorso: yours small torso / mate light torso\neye left: yours simple eye / mate wide field eye\neye right: yours simple eye / mate wide field eye\nlimb 3: yours walking leg / mate spring leg\nlimb 5: yours walking leg / mate spring leg\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 64% · gamete match 69% · individual fertility 100% / 92%\nDedicated inherited loci (provisional model): {\"gamete\":[0.86028,0.87817],\"development\":[0.90295,0.94533]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n▸ #297 · 14.8 tiles · compatible · 6 different sockets\n#284 · 15.7 tiles · compatible · 7 different sockets\n#84 · 19.9 tiles · compatible · 7 different sockets\n#159 · 20.6 tiles · compatible · 10 different sockets\n#300 · 21.1 tiles · compatible · 6 different sockets\n#163 · 19.0 tiles · compatible · 10 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids display (34% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbolder and more social · larger body · lower energy use\nLIKELY CHILD TRAITS\nlower energy use · bolder and more social · prefers cool · larger body\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 4,
+      "choice": 5,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nPodshell Shellwalker · adult\nClose\nExpand\nPodshell Shellwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 6\nSelected #284 · F · adult · 15.9 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n3/10 mounted positions match · 7 differ\ntorso: yours small torso / mate light torso\ndorsal: yours empty / mate thorn carapace\neye left: yours simple eye / mate wide field eye\neye right: yours simple eye / mate wide field eye\nlimb 3: yours walking leg / mate spring leg\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 74% · gamete match 86% · individual fertility 100% / 87%\nDedicated inherited loci (provisional model): {\"gamete\":[1.02018,0.905],\"development\":[0.98894,0.91589]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#297 · 14.8 tiles · compatible · 6 different sockets\n▸ #284 · 15.9 tiles · compatible · 7 different sockets\n#300 · 20.3 tiles · compatible · 6 different sockets\n#159 · 20.1 tiles · compatible · 10 different sockets\n#84 · 19.7 tiles · compatible · 7 different sockets\n#163 · 19.0 tiles · compatible · 10 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: favors behavior (49% selective)\n\nYOU\nslower movement · better digestion\nMATE\nweaker senses · stronger disease resistance · bolder and more social\nLIKELY CHILD TRAITS\nfaster movement · bolder and more social · stronger disease resistance · poorer digestion\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 4,
+      "choice": 6,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nHopper Springwalker · adult\nClose\nExpand\nHopper Springwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 6\nSelected #300 · F · adult · 20.3 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n3/9 mounted positions match · 6 differ\ntorso: yours small torso / mate light torso\neye left: yours simple eye / mate wide field eye\neye right: yours simple eye / mate wide field eye\nlimb 3: yours walking leg / mate spring leg\nlimb 5: yours walking leg / mate spring leg\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 63% · gamete match 69% · individual fertility 100% / 91%\nDedicated inherited loci (provisional model): {\"gamete\":[0.85651,0.88761],\"development\":[0.95217,1.005]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#297 · 14.8 tiles · compatible · 6 different sockets\n#284 · 15.9 tiles · compatible · 7 different sockets\n▸ #300 · 20.3 tiles · compatible · 6 different sockets\n#159 · 20.1 tiles · compatible · 10 different sockets\n#84 · 19.7 tiles · compatible · 7 different sockets\n#163 · 19.0 tiles · compatible · 10 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (42% selective)\n\nYOU\nslower movement · better digestion\nMATE\npoorer digestion · prefers cool · smaller body\nLIKELY CHILD TRAITS\npoorer digestion · faster movement · prefers cool · lower energy use\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 4,
+      "choice": 7,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nDigger Burrowwalker · adult\nClose\nExpand\nDigger Burrowwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 6\nSelected #84 · F · adult · 19.6 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n2/9 mounted positions match · 7 differ\ntorso: yours small torso / mate stout torso\neye left: yours simple eye / mate eyespot\neye right: yours simple eye / mate eyespot\nlimb 1: yours walking leg / mate digging forelimb\nlimb 7: yours walking leg / mate digging forelimb\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 96% · gamete match 96% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.00675,1.03483],\"development\":[0.93391,0.93391]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#297 · 14.8 tiles · compatible · 6 different sockets\n#284 · 16.3 tiles · compatible · 7 different sockets\n#300 · 20.0 tiles · compatible · 6 different sockets\n#159 · 19.9 tiles · compatible · 10 different sockets\n▸ #84 · 19.6 tiles · compatible · 7 different sockets\n#163 · 19.0 tiles · compatible · 10 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (64% selective)\n\nYOU\nslower movement · better digestion\nMATE\npoorer digestion · slower movement · weaker senses\nLIKELY CHILD TRAITS\npoorer digestion · smaller body · bolder and more social · faster movement\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "movement": "KeyA",
+      "seconds": 6
+    },
+    {
+      "region": 5,
+      "choice": 0,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nHopper Springwalker · adult\nClose\nExpand\nHopper Springwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 3\nSelected #300 · F · adult · 18.7 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n3/9 mounted positions match · 6 differ\ntorso: yours small torso / mate light torso\neye left: yours simple eye / mate wide field eye\neye right: yours simple eye / mate wide field eye\nlimb 3: yours walking leg / mate spring leg\nlimb 5: yours walking leg / mate spring leg\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 63% · gamete match 69% · individual fertility 100% / 91%\nDedicated inherited loci (provisional model): {\"gamete\":[0.85651,0.88761],\"development\":[0.95217,1.005]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#92 · 23.0 tiles · favored · 7 different sockets\n#75 · 21.7 tiles · favored · 7 different sockets\n▸ #300 · 18.7 tiles · compatible · 6 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (42% selective)\n\nYOU\nslower movement · better digestion\nMATE\npoorer digestion · prefers cool · smaller body\nLIKELY CHILD TRAITS\npoorer digestion · faster movement · prefers cool · lower energy use\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 5,
+      "choice": 1,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nDigger Burrowwalker · adult\nClose\nExpand\nDigger Burrowwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 3\nSelected #92 · F · adult · 22.7 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n2/9 mounted positions match · 7 differ\ntorso: yours small torso / mate stout torso\neye left: yours simple eye / mate eyespot\neye right: yours simple eye / mate eyespot\nlimb 1: yours walking leg / mate digging forelimb\nlimb 7: yours walking leg / mate digging forelimb\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 95% · gamete match 95% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.02439,1.00619],\"development\":[0.95157,0.95157]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n▸ #92 · 22.7 tiles · favored · 7 different sockets\n#75 · 21.4 tiles · favored · 7 different sockets\n#300 · 18.9 tiles · compatible · 6 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids display (48% selective)\n\nYOU\nslower movement · better digestion\nMATE\nlower energy use · bolder and more social · prefers warmth\nLIKELY CHILD TRAITS\nlower energy use · faster movement · smaller body · bolder and more social\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 5,
+      "choice": 2,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nDigger Burrowwalker · adult\nClose\nExpand\nDigger Burrowwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 2\nSelected #75 · F · adult · 21.1 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n2/9 mounted positions match · 7 differ\ntorso: yours small torso / mate stout torso\neye left: yours simple eye / mate eyespot\neye right: yours simple eye / mate eyespot\nlimb 1: yours walking leg / mate digging forelimb\nlimb 7: yours walking leg / mate digging forelimb\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.01573,1.04317],\"development\":[0.95765,0.95765]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n▸ #75 · 21.1 tiles · favored · 7 different sockets\n#300 · 19.1 tiles · compatible · 6 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids ornament (41% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbolder and more social · higher energy use · smaller body\nLIKELY CHILD TRAITS\nbolder and more social · smaller body · poorer digestion · prefers cool\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 5,
+      "choice": 3,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nHopper Springwalker · adult\nClose\nExpand\nHopper Springwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 2\nSelected #300 · F · adult · 19.1 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n3/9 mounted positions match · 6 differ\ntorso: yours small torso / mate light torso\neye left: yours simple eye / mate wide field eye\neye right: yours simple eye / mate wide field eye\nlimb 3: yours walking leg / mate spring leg\nlimb 5: yours walking leg / mate spring leg\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 63% · gamete match 69% · individual fertility 100% / 91%\nDedicated inherited loci (provisional model): {\"gamete\":[0.85651,0.88761],\"development\":[0.95217,1.005]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#75 · 20.9 tiles · favored · 7 different sockets\n▸ #300 · 19.1 tiles · compatible · 6 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (42% selective)\n\nYOU\nslower movement · better digestion\nMATE\npoorer digestion · prefers cool · smaller body\nLIKELY CHILD TRAITS\npoorer digestion · faster movement · prefers cool · lower energy use\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 5,
+      "choice": 4,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nDigger Burrowwalker · adult\nClose\nExpand\nDigger Burrowwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 2\nSelected #75 · F · adult · 20.7 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n2/9 mounted positions match · 7 differ\ntorso: yours small torso / mate stout torso\neye left: yours simple eye / mate eyespot\neye right: yours simple eye / mate eyespot\nlimb 1: yours walking leg / mate digging forelimb\nlimb 7: yours walking leg / mate digging forelimb\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.01573,1.04317],\"development\":[0.95765,0.95765]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n▸ #75 · 20.7 tiles · favored · 7 different sockets\n#300 · 19.2 tiles · compatible · 6 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids ornament (41% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbolder and more social · higher energy use · smaller body\nLIKELY CHILD TRAITS\nbolder and more social · smaller body · poorer digestion · prefers cool\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 5,
+      "choice": 5,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nHopper Springwalker · adult\nClose\nExpand\nHopper Springwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 3\nSelected #300 · F · adult · 19.4 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n3/9 mounted positions match · 6 differ\ntorso: yours small torso / mate light torso\neye left: yours simple eye / mate wide field eye\neye right: yours simple eye / mate wide field eye\nlimb 3: yours walking leg / mate spring leg\nlimb 5: yours walking leg / mate spring leg\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 63% · gamete match 69% · individual fertility 100% / 91%\nDedicated inherited loci (provisional model): {\"gamete\":[0.85651,0.88761],\"development\":[0.95217,1.005]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#75 · 20.5 tiles · favored · 7 different sockets\n▸ #300 · 19.4 tiles · compatible · 6 different sockets\n#77 · 23.0 tiles · compatible · 7 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids strength (42% selective)\n\nYOU\nslower movement · better digestion\nMATE\npoorer digestion · prefers cool · smaller body\nLIKELY CHILD TRAITS\npoorer digestion · faster movement · prefers cool · lower energy use\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 5,
+      "choice": 6,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nDigger Burrowwalker · adult\nClose\nExpand\nDigger Burrowwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 3\nSelected #77 · F · adult · 22.9 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n2/9 mounted positions match · 7 differ\ntorso: yours small torso / mate stout torso\neye left: yours simple eye / mate eyespot\neye right: yours simple eye / mate eyespot\nlimb 1: yours walking leg / mate digging forelimb\nlimb 7: yours walking leg / mate digging forelimb\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 98% · gamete match 98% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.03195,1.02862],\"development\":[0.96781,0.96781]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n#75 · 20.7 tiles · favored · 7 different sockets\n#300 · 19.4 tiles · compatible · 6 different sockets\n▸ #77 · 22.9 tiles · compatible · 7 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids display (67% selective)\n\nYOU\nslower movement · better digestion\nMATE\nlower energy use · weaker senses · poorer digestion\nLIKELY CHILD TRAITS\npoorer digestion · lower energy use · smaller body · prefers cool\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: strong\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "region": 5,
+      "choice": 7,
+      "matePanel": "FIELD KNOWLEDGE\nNearby partners\nDigger Burrowwalker · adult\nClose\nExpand\nDigger Burrowwalker · adult. Court can begin an encounter. Acceptance is reciprocal.\nBiological details & recorded observations\nNEARBY MATES\nNearby candidates 3\nSelected #75 · F · adult · 20.9 tiles\nTaxon: GenVo · local pairing\nREPRODUCTION: live birth · dual requires egg chamber + live womb\nANATOMY: Different physical builds · young can inherit a mixture · editor waits for a matching pair\n2/9 mounted positions match · 7 differ\ntorso: yours small torso / mate stout torso\neye left: yours simple eye / mate eyespot\neye right: yours simple eye / mate eyespot\nlimb 1: yours walking leg / mate digging forelimb\nlimb 7: yours walking leg / mate digging forelimb\n…more differences\nMatching here describes bodies, not guaranteed mating or offspring.\nCHOICE: Both currently favor this pairing\nBiological conception potential 97% · gamete match 97% · individual fertility 100% / 100%\nDedicated inherited loci (provisional model): {\"gamete\":[1.01573,1.04317],\"development\":[0.95765,0.95765]}\nConditional on reciprocal acceptance and ordinary roles, kinship, readiness and resource checks. Species names and physical build do not determine compatibility.\nPARTNER OPTIONS (individual preference and distance)\n▸ #75 · 20.9 tiles · favored · 7 different sockets\n#300 · 19.4 tiles · compatible · 6 different sockets\n#77 · 22.5 tiles · compatible · 7 different sockets\nYour inherited preference: favors behavior (47% selective)\nPartner preference: avoids ornament (41% selective)\n\nYOU\nslower movement · better digestion\nMATE\nbolder and more social · higher energy use · smaller body\nLIKELY CHILD TRAITS\nbolder and more social · smaller body · poorer digestion · prefers cool\nOBSERVED PARENTAL ADAPTATIONS\nNo expressed adaptations observed in either parent. New inherited variation can still occur.\n\nGenetic difference: moderate\nC: begin courtship\nRitual moves: 1 dance · 2 call · 3 flare (unavailable) · 4 scent (unavailable) · 5 gesture (unavailable)\nChosen: explore from experience\nBackspace: clear · C: perform · Q / E: mates · M: close"
+    },
+    {
+      "movement": "KeyS",
+      "seconds": 6
+    }
+  ],
+  "errors": []
+}

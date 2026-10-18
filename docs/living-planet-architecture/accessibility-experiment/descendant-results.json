@@ -1,0 +1,1854 @@
+{
+  "scope": "Follow the original archived newborn under ordinary simulation to maturity, without body/genome/age/reserve edits or food injection. If mature, stage one disclosed unrelated simple adult immigrant and one supported encounter, preserving mate acceptance, compatibility, gestation and costs. Not an autonomous founding-world frequency trial or player/shared-rule acceptance.",
+  "candidateId": 4,
+  "extendedGrowthWindow": true,
+  "priorWindow": {
+    "status": "MATURITY NOT REACHED",
+    "day": 49,
+    "age": 27
+  },
+  "reachedMaturity": true,
+  "unchangedCandidateBody": true,
+  "unchangedCandidateGenes": true,
+  "immigrant": {
+    "id": 7,
+    "sex": "M",
+    "age": 32,
+    "genes": {
+      "body": 0.9722689830698074,
+      "motion": 0.9815999707207084,
+      "metabolism": 1.0807733597699554,
+      "digestion": 0.9616046319715679,
+      "senses": 1.0274351573549212,
+      "climate": 0.9979976077564061,
+      "immunity": 1.093109049042687,
+      "temperament": 0.9154626118484884
+    },
+    "body": {
+      "schema": "genvo8.bodyplan/0",
+      "registryVersion": 0,
+      "nodes": [
+        {
+          "id": "root",
+          "partId": "small-torso",
+          "partVersion": 1,
+          "parent": null,
+          "socket": null
+        },
+        {
+          "id": "root/eye.left",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.left"
+        },
+        {
+          "id": "root/eye.right",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.right"
+        },
+        {
+          "id": "root/limb.1",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.1"
+        },
+        {
+          "id": "root/limb.3",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.3"
+        },
+        {
+          "id": "root/limb.5",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.5"
+        },
+        {
+          "id": "root/limb.7",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.7"
+        },
+        {
+          "id": "root/mouth",
+          "partId": "grazing-mouth",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "mouth"
+        }
+      ],
+      "id": "bp0-4134709b"
+    },
+    "energy": 84.30224806640297,
+    "hydration": 108.20018741827458,
+    "parentIds": []
+  },
+  "placement": {
+    "developedDays": 0
+  },
+  "placementFailure": null,
+  "attempts": [
+    {
+      "day": 52,
+      "available": {
+        "enabled": false,
+        "reasonCode": "occupied",
+        "reason": "One creature is carrying offspring or recovering from reproduction."
+      },
+      "conceived": false,
+      "refusal": null,
+      "pregnancy": null
+    }
+  ],
+  "children": [],
+  "rows": [
+    {
+      "day": 17,
+      "tick": 768,
+      "candidate": {
+        "alive": true,
+        "age": 0,
+        "sex": "F",
+        "health": 100,
+        "energy": 14.853960000000004,
+        "hydration": 15.552735000000004,
+        "x": 14.836008694751142,
+        "y": 11.582767538551193,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 0,
+        "growthDelayDays": 1
+      },
+      "integrity": {
+        "day": 17,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12445.425043046474,
+          "bramble": 2384.5543166584102,
+          "marshroot": 1424.168833753094,
+          "rotcap": 836.9799203444272,
+          "thistlepod": 1655.6913832924329,
+          "algae": 324.44663166999817,
+          "duckweed": 121.16328974068165,
+          "waterweed": 191.5869496166706,
+          "larvae": 20.032984217628837,
+          "fry": 3.888006311375648,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 18,
+      "tick": 816,
+      "candidate": {
+        "alive": true,
+        "age": 0,
+        "sex": "F",
+        "health": 100,
+        "energy": 14.598494423433955,
+        "hydration": 15.503232022080004,
+        "x": 7.399308882018332,
+        "y": 18.60069111810147,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 0,
+        "growthDelayDays": 2
+      },
+      "integrity": {
+        "day": 18,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12510.22928544879,
+          "bramble": 2421.2211892046616,
+          "marshroot": 1449.1257084598765,
+          "rotcap": 836.2070456501096,
+          "thistlepod": 1680.4373685841565,
+          "algae": 332.45491537451744,
+          "duckweed": 124.13582153618336,
+          "waterweed": 194.45453482866287,
+          "larvae": 20.076834117993712,
+          "fry": 3.8831756464205682,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 19,
+      "tick": 864,
+      "candidate": {
+        "alive": true,
+        "age": 0,
+        "sex": "F",
+        "health": 100,
+        "energy": 14.31561654412739,
+        "hydration": 15.453371253106758,
+        "x": 12.864256035750014,
+        "y": 26.864256033766605,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 0,
+        "growthDelayDays": 3
+      },
+      "integrity": {
+        "day": 19,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12567.749348044395,
+          "bramble": 2460.9243225682876,
+          "marshroot": 1473.4705890798941,
+          "rotcap": 836.3631885834038,
+          "thistlepod": 1704.0023986861343,
+          "algae": 340.61331021785736,
+          "duckweed": 127.14165782928467,
+          "waterweed": 197.3586367368698,
+          "larvae": 20.124396182596684,
+          "fry": 3.8783756871707737,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 20,
+      "tick": 912,
+      "candidate": {
+        "alive": true,
+        "age": 0,
+        "sex": "F",
+        "health": 100,
+        "energy": 14.028223622583852,
+        "hydration": 15.403362282226757,
+        "x": 20.6989722521778,
+        "y": 34.698972252177796,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 0,
+        "growthDelayDays": 4
+      },
+      "integrity": {
+        "day": 20,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12621.382545232773,
+          "bramble": 2503.7201348752715,
+          "marshroot": 1496.3966428255662,
+          "rotcap": 836.7841765731573,
+          "thistlepod": 1726.9117423913558,
+          "algae": 348.9176504909992,
+          "duckweed": 130.17675007879734,
+          "waterweed": 200.29974386096,
+          "larvae": 20.17567775771022,
+          "fry": 3.87360812490806,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 21,
+      "tick": 960,
+      "candidate": {
+        "alive": true,
+        "age": 0,
+        "sex": "F",
+        "health": 100,
+        "energy": 13.887654385193814,
+        "hydration": 46.553501513253515,
+        "x": 23.441122928274616,
+        "y": 37.441122928274616,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 0,
+        "growthDelayDays": 5
+      },
+      "integrity": {
+        "day": 21,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12674.317968606949,
+          "bramble": 2552.4842494715704,
+          "marshroot": 1519.4908447386697,
+          "rotcap": 837.3791554346681,
+          "thistlepod": 1750.9599999074126,
+          "algae": 357.36685156822205,
+          "duckweed": 133.22924128174782,
+          "waterweed": 203.27835127711296,
+          "larvae": 20.23068587295711,
+          "fry": 3.8688746602274477,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 22,
+      "tick": 1008,
+      "candidate": {
+        "alive": true,
+        "age": 0,
+        "sex": "F",
+        "health": 100,
+        "energy": 18.75907078506802,
+        "hydration": 67.3039985353335,
+        "x": 21.285686134248145,
+        "y": 39.91069747416593,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 0,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 22,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12728.37801015377,
+          "bramble": 2601.587540676992,
+          "marshroot": 1542.6976408706978,
+          "rotcap": 837.3299427498132,
+          "thistlepod": 1776.1215539345285,
+          "algae": 365.9615049958229,
+          "duckweed": 135.94714330136776,
+          "waterweed": 206.29496172070503,
+          "larvae": 20.28942839242518,
+          "fry": 3.864176973234862,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 23,
+      "tick": 1056,
+      "candidate": {
+        "alive": true,
+        "age": 1,
+        "sex": "F",
+        "health": 100,
+        "energy": 47.395741854617164,
+        "hydration": 67.25485334846672,
+        "x": 21.479002130764556,
+        "y": 43.50241450878621,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 1.2018708093800732,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 23,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12775.227292001247,
+          "bramble": 2645.7752632162883,
+          "marshroot": 1563.9296387052163,
+          "rotcap": 837.1395888682455,
+          "thistlepod": 1798.5884382358054,
+          "algae": 374.7144940793514,
+          "duckweed": 137.22533006966114,
+          "waterweed": 208.89510942995548,
+          "larvae": 20.3519192840904,
+          "fry": 3.8595167421735823,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 24,
+      "tick": 1104,
+      "candidate": {
+        "alive": true,
+        "age": 2,
+        "sex": "F",
+        "health": 100,
+        "energy": 75.95076657852647,
+        "hydration": 67.20020813107902,
+        "x": 20.54790242741276,
+        "y": 40.840683455193506,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 2.492729849688245,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 24,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12818.703315973282,
+          "bramble": 2691.267831772275,
+          "marshroot": 1584.7987678358331,
+          "rotcap": 836.8000002577901,
+          "thistlepod": 1821.032135999354,
+          "algae": 383.61745062470436,
+          "duckweed": 140.3148837313056,
+          "waterweed": 209.21712067723274,
+          "larvae": 20.418168934062123,
+          "fry": 3.8548956317827106,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 25,
+      "tick": 1152,
+      "candidate": {
+        "alive": true,
+        "age": 3,
+        "sex": "F",
+        "health": 100,
+        "energy": 89.33917506316995,
+        "hydration": 67.13931284263248,
+        "x": 20.479930436639844,
+        "y": 39.388185028563626,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 3.875755272029087,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 25,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12862.511596441269,
+          "bramble": 2741.6196790226386,
+          "marshroot": 1606.446376023814,
+          "rotcap": 836.4337266124785,
+          "thistlepod": 1842.3404454089468,
+          "algae": 392.6727372407913,
+          "duckweed": 142.7044605538249,
+          "waterweed": 211.83550577238202,
+          "larvae": 20.488188851624727,
+          "fry": 3.8503153247293085,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 26,
+      "tick": 1200,
+      "candidate": {
+        "alive": true,
+        "age": 4,
+        "sex": "F",
+        "health": 100,
+        "energy": 92.5033103391634,
+        "hydration": 67.07626616608928,
+        "x": 17.834675342519535,
+        "y": 43.530198708377625,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 5.354125227507179,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 26,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12868.942784667015,
+          "bramble": 2723.785050555307,
+          "marshroot": 1619.4901651162654,
+          "rotcap": 836.4461949281394,
+          "thistlepod": 1836.7309616479906,
+          "algae": 401.8746007978916,
+          "duckweed": 145.47411193326116,
+          "waterweed": 214.9472889378667,
+          "larvae": 20.5619884300977,
+          "fry": 3.8457774652633816,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 27,
+      "tick": 1248,
+      "candidate": {
+        "alive": true,
+        "age": 5,
+        "sex": "F",
+        "health": 100,
+        "energy": 90.57846496615532,
+        "hydration": 67.00616080031256,
+        "x": 24.494484932037317,
+        "y": 48.2510149597921,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 6.931017867227091,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 27,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12879.136823356152,
+          "bramble": 2711.21989569813,
+          "marshroot": 1633.0533018270507,
+          "rotcap": 836.4393068607897,
+          "thistlepod": 1835.3358725812868,
+          "algae": 411.2178702056408,
+          "duckweed": 148.6216881237924,
+          "waterweed": 218.09926318377256,
+          "larvae": 20.6395754609257,
+          "fry": 3.84128371742554,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 28,
+      "tick": 1296,
+      "candidate": {
+        "alive": true,
+        "age": 6,
+        "sex": "F",
+        "health": 100,
+        "energy": 88.72439731173496,
+        "hydration": 66.92880311517291,
+        "x": 28.92646970484497,
+        "y": 48.2510149597921,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 8.39865330810374,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 28,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12890.351339042187,
+          "bramble": 2698.628185546142,
+          "marshroot": 1646.5147109488025,
+          "rotcap": 843.563568348065,
+          "thistlepod": 1835.6102351846057,
+          "algae": 420.70241048932076,
+          "duckweed": 151.77554262056947,
+          "waterweed": 221.29137947410345,
+          "larvae": 20.72095826640725,
+          "fry": 3.836835721042007,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 29,
+      "tick": 1344,
+      "candidate": {
+        "alive": true,
+        "age": 7,
+        "sex": "F",
+        "health": 100,
+        "energy": 91.96093644775137,
+        "hydration": 66.8451719522215,
+        "x": 30.818560949903308,
+        "y": 44.807295783921894,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 9.799432318337496,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 29,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12900.593382894993,
+          "bramble": 2684.9627257223474,
+          "marshroot": 1659.0370628330857,
+          "rotcap": 850.1607315745205,
+          "thistlepod": 1834.22309582436,
+          "algae": 430.32953456044197,
+          "duckweed": 154.58161127194762,
+          "waterweed": 224.52365442365408,
+          "larvae": 20.806146383285522,
+          "fry": 3.832435114774853,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 30,
+      "tick": 1392,
+      "candidate": {
+        "alive": true,
+        "age": 8,
+        "sex": "F",
+        "health": 100,
+        "energy": 90.31456520295703,
+        "hydration": 66.75601168962038,
+        "x": 29.20555968905156,
+        "y": 44.807295783921894,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 11.268032722588652,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 30,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12907.170897483826,
+          "bramble": 2670.6935591804795,
+          "marshroot": 1669.9196673901752,
+          "rotcap": 858.8207631092519,
+          "thistlepod": 1831.565797696123,
+          "algae": 440.0950102210045,
+          "duckweed": 157.769976221025,
+          "waterweed": 227.79766332358122,
+          "larvae": 20.895148258656263,
+          "fry": 3.8280835286714137,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 31,
+      "tick": 1440,
+      "candidate": {
+        "alive": true,
+        "age": 9,
+        "sex": "F",
+        "health": 100,
+        "energy": 88.66317847115623,
+        "hydration": 66.66112181732245,
+        "x": 29.20555968905156,
+        "y": 44.807295783921894,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 12.80605786350535,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 31,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12909.802584052086,
+          "bramble": 2652.068860229221,
+          "marshroot": 1679.3847661754116,
+          "rotcap": 863.3206047881395,
+          "thistlepod": 1824.8565692167613,
+          "algae": 449.99909141659737,
+          "duckweed": 160.9754012823105,
+          "waterweed": 231.11344717815518,
+          "larvae": 20.987973062321544,
+          "fry": 3.823782585794106,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 32,
+      "tick": 1488,
+      "candidate": {
+        "alive": true,
+        "age": 10,
+        "sex": "F",
+        "health": 100,
+        "energy": 91.53271229585697,
+        "hydration": 66.55983482423989,
+        "x": 35.42532726880349,
+        "y": 39.52775090055264,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 14.415111083735779,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 32,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12910.510159611702,
+          "bramble": 2633.8172459834022,
+          "marshroot": 1688.2637833068147,
+          "rotcap": 871.8117624092847,
+          "thistlepod": 1818.6093145046616,
+          "algae": 460.04479029774666,
+          "duckweed": 163.8388211801648,
+          "waterweed": 234.47156530618668,
+          "larvae": 21.084631947800517,
+          "fry": 3.819533903384581,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 33,
+      "tick": 1536,
+      "candidate": {
+        "alive": true,
+        "age": 11,
+        "sex": "F",
+        "health": 100,
+        "energy": 89.29571543513306,
+        "hydration": 66.45117955828863,
+        "x": 38.950949566642215,
+        "y": 36.00212860271392,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 16.096795725928082,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 33,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12912.810548841953,
+          "bramble": 2621.9739680602797,
+          "marshroot": 1697.1474103648216,
+          "rotcap": 881.4785009976476,
+          "thistlepod": 1815.5019881954067,
+          "algae": 470.22977390885353,
+          "duckweed": 167.03625525534153,
+          "waterweed": 237.87258490920067,
+          "larvae": 21.18513561040163,
+          "fry": 3.815339092630893,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 34,
+      "tick": 1584,
+      "candidate": {
+        "alive": true,
+        "age": 12,
+        "sex": "F",
+        "health": 100,
+        "energy": 91.87194041798199,
+        "hydration": 66.3265351386031,
+        "x": 35.715474015218305,
+        "y": 38.93408707422586,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 17.85271513273045,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 34,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12952.950248003006,
+          "bramble": 2650.83152326406,
+          "marshroot": 1718.0267015127465,
+          "rotcap": 885.0012555774301,
+          "thistlepod": 1839.6298303948133,
+          "algae": 480.5588853061199,
+          "duckweed": 169.80274131894112,
+          "waterweed": 241.31708163022995,
+          "larvae": 21.289497293531895,
+          "fry": 3.811199759831652,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 35,
+      "tick": 1632,
+      "candidate": {
+        "alive": true,
+        "age": 13,
+        "sex": "F",
+        "health": 100,
+        "energy": 89.40806305411208,
+        "hydration": 66.19266826586176,
+        "x": 35.715474015218305,
+        "y": 38.93408707422586,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 19.68447264679101,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 35,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 12994.708997964859,
+          "bramble": 2677.136644829996,
+          "marshroot": 1738.0164688769728,
+          "rotcap": 893.1645869668573,
+          "thistlepod": 1865.0794529157574,
+          "algae": 491.03019750118256,
+          "duckweed": 172.82969526201487,
+          "waterweed": 244.80563824623823,
+          "larvae": 21.39773002266884,
+          "fry": 3.8071175038348883,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 36,
+      "tick": 1680,
+      "candidate": {
+        "alive": true,
+        "age": 14,
+        "sex": "F",
+        "health": 100,
+        "energy": 92.07890405356571,
+        "hydration": 71.2497021138853,
+        "x": 35.74243380302076,
+        "y": 41.06650237052933,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 21.593671610757973,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 36,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13036.659890115261,
+          "bramble": 2707.2117618692573,
+          "marshroot": 1757.4137190692127,
+          "rotcap": 894.1537228748202,
+          "thistlepod": 1892.5367526796763,
+          "algae": 501.64708292484283,
+          "duckweed": 175.40571684390306,
+          "waterweed": 248.33636245131493,
+          "larvae": 21.509848767891526,
+          "fry": 3.8030939211603254,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 37,
+      "tick": 1728,
+      "candidate": {
+        "alive": true,
+        "age": 15,
+        "sex": "F",
+        "health": 100,
+        "energy": 89.67120747963861,
+        "hydration": 71.09812610987878,
+        "x": 39.746671746139874,
+        "y": 41.06650237052933,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 23.58191536727946,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 37,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13074.413175106049,
+          "bramble": 2729.3252824860974,
+          "marshroot": 1776.189291615039,
+          "rotcap": 894.8248226717114,
+          "thistlepod": 1916.38252235431,
+          "algae": 512.4068700373173,
+          "duckweed": 178.1794046908617,
+          "waterweed": 251.91478454321623,
+          "larvae": 21.625868244096637,
+          "fry": 3.7991306057665497,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 38,
+      "tick": 1776,
+      "candidate": {
+        "alive": true,
+        "age": 16,
+        "sex": "F",
+        "health": 100,
+        "energy": 87.38194344486553,
+        "hydration": 70.93830511784167,
+        "x": 39.746671746139874,
+        "y": 41.06650237052933,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 25.650807259003674,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 38,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13106.399892449379,
+          "bramble": 2746.28237320116,
+          "marshroot": 1793.36515872553,
+          "rotcap": 895.7186526320875,
+          "thistlepod": 1936.7171966641326,
+          "algae": 523.3118578195572,
+          "duckweed": 180.78476896137,
+          "waterweed": 255.53906600177288,
+          "larvae": 21.74580455943942,
+          "fry": 3.7952291555702686,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 39,
+      "tick": 1824,
+      "candidate": {
+        "alive": true,
+        "age": 17,
+        "sex": "F",
+        "health": 100,
+        "energy": 89.80959339675402,
+        "hydration": 70.76999935965331,
+        "x": 43.71069865881372,
+        "y": 44.432692424274,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 27.507628248392525,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 39,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13133.614320576191,
+          "bramble": 2759.5283916667686,
+          "marshroot": 1809.0188777344301,
+          "rotcap": 898.522970199585,
+          "thistlepod": 1954.1192565524252,
+          "algae": 534.3667577803135,
+          "duckweed": 182.86733023822308,
+          "waterweed": 259.2088263705373,
+          "larvae": 21.86967626400292,
+          "fry": 3.7913911412470043,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 40,
+      "tick": 1872,
+      "candidate": {
+        "alive": true,
+        "age": 18,
+        "sex": "F",
+        "health": 100,
+        "energy": 92.22942988559093,
+        "hydration": 70.59357034585686,
+        "x": 43.52830592180383,
+        "y": 47.953585082891294,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 29.124476024361638,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 40,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13157.812658071518,
+          "bramble": 2769.165995371295,
+          "marshroot": 1823.9333978351206,
+          "rotcap": 899.3487901352346,
+          "thistlepod": 1969.0558873529662,
+          "algae": 545.4889195859432,
+          "duckweed": 184.79167687892914,
+          "waterweed": 262.9266678020358,
+          "larvae": 21.997481716796756,
+          "fry": 3.787618130678311,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 41,
+      "tick": 1920,
+      "candidate": {
+        "alive": true,
+        "age": 19,
+        "sex": "F",
+        "health": 100,
+        "energy": 89.66867004840395,
+        "hydration": 70.40905917150339,
+        "x": 37.45373598384211,
+        "y": 41.879015144929575,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 30.786626594074942,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 41,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13183.199463427067,
+          "bramble": 2781.0224510911503,
+          "marshroot": 1838.8502758806571,
+          "rotcap": 903.2806418053806,
+          "thistlepod": 1985.3308261338389,
+          "algae": 556.6059813499451,
+          "duckweed": 186.85861422866583,
+          "waterweed": 266.69224313646555,
+          "larvae": 22.129203042015433,
+          "fry": 3.783911680802703,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 42,
+      "tick": 1968,
+      "candidate": {
+        "alive": true,
+        "age": 20,
+        "sex": "F",
+        "health": 100,
+        "energy": 92.14408945444141,
+        "hydration": 70.20337858366533,
+        "x": 36.55164927418713,
+        "y": 42.26319710563302,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 32.49470590286918,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 42,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13190.621650874615,
+          "bramble": 2772.030401094351,
+          "marshroot": 1848.420699302107,
+          "rotcap": 905.2300552260131,
+          "thistlepod": 2008.8364608840202,
+          "algae": 567.6916708350182,
+          "duckweed": 188.4036362990737,
+          "waterweed": 270.506195679307,
+          "larvae": 22.264818282797933,
+          "fry": 3.780273317359388,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 43,
+      "tick": 2016,
+      "candidate": {
+        "alive": true,
+        "age": 21,
+        "sex": "F",
+        "health": 100,
+        "energy": 89.4377520176521,
+        "hydration": 69.98770051229668,
+        "x": 29.926783792382825,
+        "y": 35.63833162382873,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 34.24933989608103,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 43,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13193.593254506588,
+          "bramble": 2758.1161210188293,
+          "marshroot": 1856.190535593778,
+          "rotcap": 909.6576729379594,
+          "thistlepod": 2027.6417605344323,
+          "algae": 578.6650359034538,
+          "duckweed": 190.18764675408602,
+          "waterweed": 274.36858608573675,
+          "larvae": 22.404289050027728,
+          "fry": 3.776704527437687,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 44,
+      "tick": 2064,
+      "candidate": {
+        "alive": true,
+        "age": 22,
+        "sex": "F",
+        "health": 100,
+        "energy": 91.51587328101493,
+        "hydration": 69.76257027964222,
+        "x": 31.676612913925254,
+        "y": 38.484192293514276,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 36.051154519047195,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 44,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13194.179358661175,
+          "bramble": 2741.687622938538,
+          "marshroot": 1862.69036977645,
+          "rotcap": 916.9752403125167,
+          "thistlepod": 2042.9719990389422,
+          "algae": 589.3702743649483,
+          "duckweed": 191.4722606986761,
+          "waterweed": 278.2812502607703,
+          "larvae": 22.547543983906507,
+          "fry": 3.7732067469041795,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 45,
+      "tick": 2112,
+      "candidate": {
+        "alive": true,
+        "age": 23,
+        "sex": "F",
+        "health": 100,
+        "energy": 88.63303065654165,
+        "hydration": 69.5290208963262,
+        "x": 35.00060149353096,
+        "y": 38.484192293514276,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 37.90077571710441,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 45,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13195.429217398167,
+          "bramble": 2726.1811561072827,
+          "marshroot": 1868.5978623963892,
+          "rotcap": 919.5600629281253,
+          "thistlepod": 2058.7020616935333,
+          "algae": 599.894349694252,
+          "duckweed": 192.9848132506013,
+          "waterweed": 282.2442747578025,
+          "larvae": 22.694535598158836,
+          "fry": 3.7697813904378563,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 46,
+      "tick": 2160,
+      "candidate": {
+        "alive": true,
+        "age": 24,
+        "sex": "F",
+        "health": 100,
+        "energy": 90.79697576048659,
+        "hydration": 69.2878355331783,
+        "x": 32.378327951564216,
+        "y": 43.31634845183957,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 39.79882943558937,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 46,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13198.891960084438,
+          "bramble": 2713.9153690355015,
+          "marshroot": 1874.8541812375188,
+          "rotcap": 927.6261279601604,
+          "thistlepod": 2075.2176911093993,
+          "algae": 610.2228488326073,
+          "duckweed": 194.04195072501898,
+          "waterweed": 286.2576827928424,
+          "larvae": 22.845216024667025,
+          "fry": 3.766429810784757,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 47,
+      "tick": 2208,
+      "candidate": {
+        "alive": true,
+        "age": 25,
+        "sex": "F",
+        "health": 100,
+        "energy": 87.75175132679362,
+        "hydration": 69.03890108732845,
+        "x": 32.378327951564216,
+        "y": 46.13910065833018,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 41.74594161983876,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 47,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13205.403271496296,
+          "bramble": 2707.6992575452314,
+          "marshroot": 1881.602196923457,
+          "rotcap": 930.3843654040247,
+          "thistlepod": 2095.3390140460106,
+          "algae": 620.3110292553902,
+          "duckweed": 195.31692996621132,
+          "waterweed": 290.30672831088305,
+          "larvae": 22.99953069537878,
+          "fry": 3.7631533634848893,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 48,
+      "tick": 2256,
+      "candidate": {
+        "alive": true,
+        "age": 26,
+        "sex": "F",
+        "health": 100,
+        "energy": 89.61219041986246,
+        "hydration": 68.78105756625975,
+        "x": 37.8820120111281,
+        "y": 51.19288140865773,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 43.74273821518932,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 48,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13212.399993121624,
+          "bramble": 2701.153061660938,
+          "marshroot": 1888.0430752923712,
+          "rotcap": 937.9593613445759,
+          "thistlepod": 2113.874036837311,
+          "algae": 630.1020976901054,
+          "duckweed": 196.53177278488874,
+          "waterweed": 293.8782869949937,
+          "larvae": 23.157417261973023,
+          "fry": 3.7599533246830106,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 49,
+      "tick": 2304,
+      "candidate": {
+        "alive": true,
+        "age": 27,
+        "sex": "F",
+        "health": 100,
+        "energy": 87.19222973082584,
+        "hydration": 68.51257549367769,
+        "x": 38.07787991656358,
+        "y": 51.38874931409322,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 45.78984516697777,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 49,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13217.424479782581,
+          "bramble": 2696.9626207189867,
+          "marshroot": 1894.3284063469619,
+          "rotcap": 944.8572697993368,
+          "thistlepod": 2133.415085204935,
+          "algae": 639.4201159477234,
+          "duckweed": 197.62390775978565,
+          "waterweed": 297.866568505764,
+          "larvae": 23.318778034299612,
+          "fry": 3.7568309435155243,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 50,
+      "tick": 2352,
+      "candidate": {
+        "alive": true,
+        "age": 28,
+        "sex": "F",
+        "health": 100,
+        "energy": 88.84014064288472,
+        "hydration": 68.24565931167287,
+        "x": 39.46650848976402,
+        "y": 44.27055052443467,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 47.887888420540754,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 50,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13242.335272729397,
+          "bramble": 2738.5723948592786,
+          "marshroot": 1907.5741208977997,
+          "rotcap": 947.1217772271484,
+          "thistlepod": 2144.0232930814964,
+          "algae": 648.399194419384,
+          "duckweed": 198.22497785836458,
+          "waterweed": 301.8228504359722,
+          "larvae": 23.48354753293097,
+          "fry": 3.7537874195259064,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 51,
+      "tick": 2400,
+      "candidate": {
+        "alive": true,
+        "age": 29,
+        "sex": "F",
+        "health": 100,
+        "energy": 90.27159934179406,
+        "hydration": 67.96678030113459,
+        "x": 34.75988440419558,
+        "y": 49.211270283901605,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 50.03749392121504,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 51,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13263.426955759525,
+          "bramble": 2781.6106159194605,
+          "marshroot": 1918.4463185193017,
+          "rotcap": 952.6298670452088,
+          "thistlepod": 2150.0961488910834,
+          "algae": 656.95815294981,
+          "duckweed": 199.11631893366575,
+          "waterweed": 305.3081111833453,
+          "larvae": 23.651646131649613,
+          "fry": 3.7508239068556577,
+          "carrion": 0
+        }
+      }
+    },
+    {
+      "day": 52,
+      "tick": 2448,
+      "candidate": {
+        "alive": true,
+        "age": 30,
+        "sex": "F",
+        "health": 100,
+        "energy": 86.72298844937583,
+        "hydration": 67.67676158063877,
+        "x": 30.699442960780107,
+        "y": 52.35857638392208,
+        "swims": true,
+        "webbedLegs": 2,
+        "pregnant": false,
+        "growthPaid": 52.239287614337314,
+        "growthDelayDays": 6
+      },
+      "integrity": {
+        "day": 52,
+        "population": {
+          "mosskip": 0,
+          "rootling": 0,
+          "needlejaw": 0,
+          "rillsifter": 0,
+          "mirelick": 0,
+          "podshell": 0,
+          "bankjaw": 0,
+          "genvo": 6
+        },
+        "births": 4,
+        "deaths": 0,
+        "resources": {
+          "sunmoss": 13282.91227978468,
+          "bramble": 2827.703052435827,
+          "marshroot": 1928.9906506184489,
+          "rotcap": 955.112217143178,
+          "thistlepod": 2156.503011066874,
+          "algae": 665.1070584058762,
+          "duckweed": 199.95676346123219,
+          "waterweed": 309.23523849248886,
+          "larvae": 23.82299702987075,
+          "fry": 3.7479415226262063,
+          "carrion": 0
+        }
+      }
+    }
+  ],
+  "final": {
+    "day": 52,
+    "tick": 2448,
+    "candidate": {
+      "alive": true,
+      "age": 30,
+      "sex": "F",
+      "health": 100,
+      "energy": 86.72298844937583,
+      "hydration": 67.67676158063877,
+      "x": 3,
+      "y": 3,
+      "swims": true,
+      "webbedLegs": 2,
+      "pregnant": false,
+      "growthPaid": 52.239287614337314,
+      "growthDelayDays": 6
+    },
+    "integrity": {
+      "day": 52,
+      "population": {
+        "mosskip": 0,
+        "rootling": 0,
+        "needlejaw": 0,
+        "rillsifter": 0,
+        "mirelick": 0,
+        "podshell": 0,
+        "bankjaw": 0,
+        "genvo": 7
+      },
+      "births": 4,
+      "deaths": 0,
+      "resources": {
+        "sunmoss": 13282.91227978468,
+        "bramble": 2827.703052435827,
+        "marshroot": 1928.9906506184489,
+        "rotcap": 955.112217143178,
+        "thistlepod": 2156.503011066874,
+        "algae": 665.1070584058762,
+        "duckweed": 199.95676346123219,
+        "waterweed": 309.23523849248886,
+        "larvae": 23.82299702987075,
+        "fry": 3.7479415226262063,
+        "carrion": 0
+      }
+    }
+  },
+  "status": "MATURE; REPRODUCTION NOT PROVEN"
+}

@@ -1,3 +1,4 @@
+import {chooseParentalReading} from './parental-reading.js';
 // First true family-scale lineage divergence. Behavioral tendency remains a reversible
 // family culture; a lineage form is set on the body at birth and stays with the descendant.
 // This lets sustained lived behavior become inherited morphology and mechanics without
@@ -32,22 +33,12 @@ export class LineageDivergenceController{
     return{...FORMS[form.kind],kind:form.kind,strength:clamp(Number(form.strength)||0,0,1),sourceGeneration:form.sourceGeneration||animal.generation||1};
   }
   onBirth(child,parents=[]){
-    if(!child?.lineage||child.species!=='genvo'||(child.generation||1)<2)return null;
-    const scores={forager:0,colony:0},snap=this.sim.tendency?.snapshot?.()||null;
-    if(snap?.dominant&&snap.stage>=1){
-      const stageWeight=[0,.34,.56,.70][Math.min(3,snap.stage)]||0;
-      const confidence=.84+Math.max(0,(snap.confidence||.5)-.5)*.32;
-      scores[snap.dominant]+=stageWeight*confidence;
-    }
-    for(const parent of parents||[]){
-      const p=this.formFor(parent);if(!p)continue;
-      scores[p.kind]+=p.strength*.42;
-    }
-    const ranked=Object.entries(scores).sort((a,b)=>b[1]-a[1]||a[0].localeCompare(b[0])),[kind,high]=ranked[0],[,low]=ranked[1];
-    if(high<.24||high-low<.10)return null;
-    const generationGain=Math.min(.10,Math.max(0,(child.generation||2)-2)*.035);
-    const strength=clamp(high-low*.26+generationGain,.22,.92);
-    writeForm(child,kind,strength,{sourceGeneration:child.generation,bornDay:this.sim.day});
+    if(!child)return null;
+    const chosen=chooseParentalReading(this.sim.rng,parents,p=>this.formFor(p));
+    if(!chosen)return null;
+    const source=chosen.reading;
+    writeForm(child,source.kind,source.strength,{...source,sourceParentId:chosen.sourceParentId,
+      bornDay:this.sim.day,inheritanceRules:'neutral-parental/1'});
     return this.formFor(child);
   }
   movementMultiplier(animal){const p=this.formFor(animal);if(!p)return 1;return p.kind==='forager'?1+.075*p.strength:1-.018*p.strength}
@@ -68,7 +59,7 @@ export class LineageDivergenceController{
   }
   revealText(animal){
     const p=this.formFor(animal);if(!p)return'';
-    return`${this.mechanicsText(animal)}. ${p.cause} ${p.opportunity}`;
+    return p.inheritanceRules==='neutral-parental/1'?`${this.mechanicsText(animal)}. Inherited from parent ${p.sourceParentId}. ${p.opportunity}`:`${this.mechanicsText(animal)}. ${p.cause} ${p.opportunity}`;
   }
   chipText(animal,previous=null){const p=this.formFor(animal);if(!p)return'';const before=this.formFor(previous);if(!before||before.kind!==p.kind)return`${p.label} emerged`;if(p.strength>before.strength+.08)return`${p.label} deepened`;return`${p.label} inherited`}
 }

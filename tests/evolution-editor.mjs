@@ -1,3 +1,4 @@
+import {bodyPlanFromLegacy} from '../src/lineage/body-plan.js';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
@@ -13,7 +14,9 @@ function setup(seed,generation=2){
   const sim=new Simulation(seed,{player:true}),p=sim.player();p.generation=generation;p.age=SPECIES.genvo.maturity+5;p.adaptations=[];
   const mate=sim.animals.find(a=>a.alive&&a.species==='genvo'&&a.id!==p.id&&a.sex!==p.sex);mate.age=SPECIES.genvo.maturity+5;mate.adaptations=[];
   // These tests design on the old eight-legged body, now a mid-developed creature (v1.39.0).
-  delete p.bodyPlan;delete mate.bodyPlan;
+  // Body-less creatures no longer exist in play (pre-modular saves are refused); use the canonical
+  // conversion of that legacy eight-legged body instead of deleting the plan.
+  p.bodyPlan=bodyPlanFromLegacy({adaptations:[]});mate.bodyPlan=bodyPlanFromLegacy({adaptations:[]});
   return{sim,p,mate};
 }
 function mate(sim,a,b){const female=a.sex==='F'?a:b,male=a.sex==='F'?b:a;female.pregnant={fatherId:male.id,days:1,totalDays:16,startedDay:sim.day,startedYear:sim.year};sim.reproduction.onMated(a,b);return female}
@@ -59,7 +62,7 @@ assert.equal(sim.lineage.records.get(kidsA[0].id).bodyPlanParts.includes('spring
  const d3=sim.evolutionEditor.openDraft();assert.ok(d3.base.nodes.some(n=>n.partId==='spring-leg'),'the child\'s design is the next starting point');assert.equal(place(d3,'crushing-jaw','root','mouth').ok,true,'the tearing jaw ancestor unlocks the crushing jaw')}
 
 // Removing a mapped part removes its ability.
-{const {sim:s,p:q,mate:mm}=setup('GENVO8-EDITOR-REMOVE');q.adaptations=['hardened-mantle'];q.anatomy={...(q.anatomy||{}),armor:.65};mm.anatomy={...q.anatomy};mm.adaptations=[...q.adaptations];const mum=mate(s,q,mm);const d=s.evolutionEditor.openDraft();
+{const {sim:s,p:q,mate:mm}=setup('GENVO8-EDITOR-REMOVE');q.adaptations=['hardened-mantle'];q.anatomy={...(q.anatomy||{}),armor:.65};mm.anatomy={...q.anatomy};mm.adaptations=[...q.adaptations];for(const x of [q,mm])x.bodyPlan=bodyPlanFromLegacy({adaptations:x.adaptations});const mum=mate(s,q,mm);const d=s.evolutionEditor.openDraft();
  assert.ok(d.base.nodes.some(n=>n.partId==='armor-plate'));for(const n of d.base.nodes.filter(n=>n.partId==='armor-plate'))d.plan=d.plan; // keep base
  const {remove}=await import('../src/lineage/evolution-draft.js');for(const id of d.plan.nodes.filter(n=>n.partId==='armor-plate').map(n=>n.id))remove(d,id);
  assert.equal(s.evolutionEditor.commit(d).ok,true);const kids=s.giveBirth(mum);for(const k of kids)assert.equal(k.adaptations.includes('hardened-mantle'),false,'removing armor removes Hardened Mantle in the litter')}

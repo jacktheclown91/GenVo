@@ -52,6 +52,7 @@ const flat=v=>Object.fromEntries(GENE_KEYS.map(k=>[k,v]));
   const lineageKids=kids.filter(k=>k.lineage);assert.ok(lineageKids.length>10);
   const carriers=lineageKids.filter(k=>k.adaptations.includes('heavy-jaw')).length;assert.ok(carriers>0&&carriers<lineageKids.length,'siblings differ in which adaptations they carry');
   assert.ok(lineageKids.some(k=>k.bornWith?.length),'some newborns show a new adaptation');
+  const parentalTraits=new Set([...(p.adaptations||[]),...(mate.adaptations||[])]);for(const k of lineageKids)for(const id of k.bornWith||[]){assert.ok(k.adaptations.includes(id));assert.equal(parentalTraits.has(id),false,'birth labels describe actual new expression, not inherited or invented traits');assert.equal(k.birthVariationSource,'inherited-variation');}
   const sizes=lineageKids.map(k=>phenotypeFor(k).bodyScale);assert.ok(Math.max(...sizes)-Math.min(...sizes)>.05,'body differences are visible in the drawn size');
 }
 
@@ -75,7 +76,7 @@ const flat=v=>Object.fromEntries(GENE_KEYS.map(k=>[k,v]));
   sim.evolution.pending={fromId:1,toId:p.id,generation:p.generation,pressure:[],offers:[{id:'water-sacs',name:'Water Sacs'},{id:'efficient-gut',name:'Efficient Gut'}],chosen:null,handoff:null};
   const old=structuredClone(createSimulationSnapshot(sim));old.schema=3;for(const a of old.animals)delete a.bornWith;
   // v1.39.0 (creator decision 2026-10-09): saves start fresh; an older save is refused with a clear message.
-  assert.throws(()=>restoreSimulationSnapshot(old),/earlier GenVo8/,'older saves are refused, not migrated');
+  assert.throws(()=>restoreSimulationSnapshot(old),/predates GenVo's modular creature bodies/,'older saves are refused, not migrated');
   const cur=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim))),cp=cur.player();assert.ok(cur.evolution.offerFor(cp),'a pending choice survives a save');assert.ok(cur.evolution.choose('water-sacs'));assert.ok(cp.adaptations.includes('water-sacs'));
 }
 console.log('succession as selection ok');

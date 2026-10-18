@@ -84,6 +84,9 @@ export class FamilyDirectiveController{
     if(this.areaOrder?.type==='scout'&&!this.sim.expansion?.scoutUnlocked?.())this.areaOrder=null;
     if(this.areaOrder?.type==='nest'){const project=this.sim.shelter?.nearestProject?.(this.areaOrder.x,this.areaOrder.y,2.5);if(!project)this.areaOrder=null}
   }
+  // Render-time read of just the marks drawn on the map (Phase 3H performance): same pruning as
+  // areaStatus(), without the expansion snapshot, commandable scan and scope metadata.
+  guidanceMarks(){this.pruneLocalGuidance();return{order:this.areaOrder,avoid:this.avoidZones}}
   areaStatus(){this.pruneLocalGuidance();const reach=this.sim.expansion?.snapshot?.()||null,scope=this.scopeMeta();return{order:this.areaOrder?{...this.areaOrder}:null,avoid:this.avoidZones.map(z=>({...z})),available:this.commandable().length>0,scope,scoutUnlocked:!!reach?.scoutUnlocked,nestUnlocked:!!reach?.nestUnlocked,nestAvailable:!!reach?.nestAvailable,nestCapacity:reach?.shelterCapacity||1}}
   avoidDecision(animal){
     this.pruneLocalGuidance();const zones=this.avoidZones;if(!zones.length)return null;

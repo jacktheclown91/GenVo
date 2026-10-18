@@ -1,0 +1,329 @@
+{
+ "viewport": "1920x1080",
+ "advancedDays": 120,
+ "day": 121,
+ "animals": 276,
+ "playerAlive": true,
+ "paused": false,
+ "areaRows": [
+  {
+   "op": "drawImage drawTerrainChunks",
+   "megapixelsPerFrame": 5.402
+  },
+  {
+   "op": "fillRect render",
+   "megapixelsPerFrame": 2.074
+  },
+  {
+   "op": "drawImage drawAnimal",
+   "megapixelsPerFrame": 0.644
+  },
+  {
+   "op": "drawImage drawLiveVegetationWindow",
+   "megapixelsPerFrame": 0.247
+  },
+  {
+   "op": "fillRect drawEnvironmentalHistory",
+   "megapixelsPerFrame": 0.152
+  },
+  {
+   "op": "drawImage drawSites",
+   "megapixelsPerFrame": 0.107
+  },
+  {
+   "op": "drawImage drawOnHabitatLand",
+   "megapixelsPerFrame": 0.066
+  },
+  {
+   "op": "drawImage drawOrganicLandBase",
+   "megapixelsPerFrame": 0.035
+  },
+  {
+   "op": "fillRect drawAnimal",
+   "megapixelsPerFrame": 0.027
+  },
+  {
+   "op": "drawImage drawOrganicWater",
+   "megapixelsPerFrame": 0.015
+  },
+  {
+   "op": "fillRect drawOnHabitatLand",
+   "megapixelsPerFrame": 0.006
+  },
+  {
+   "op": "fillRect drawOrganicHabitat",
+   "megapixelsPerFrame": 0.006
+  },
+  {
+   "op": "drawImage drawTile",
+   "megapixelsPerFrame": 0.005
+  },
+  {
+   "op": "fillRect drawOrganicWaterMotion",
+   "megapixelsPerFrame": 0.002
+  }
+ ],
+ "canvasSites": [
+  {
+   "perFrame": 7.76,
+   "site": "src/render/renderer.js:506:27) < at R.<computed> [as drawOrganicLandBase] (eval at evaluate (:311:30), <anonymous>:3:114) < src/render/renderer.js:448:12) < at R.<computed> [as staticLandTile] (eval at evaluate (:311:30), <anonymous>:3:114)"
+  },
+  {
+   "perFrame": 7.59,
+   "site": "src/render/renderer.js:442:25) < at R.<computed> [as staticLandTile] (eval at evaluate (:311:30), <anonymous>:3:114) < src/render/renderer.js:368:39) < at R.<computed> [as buildTerrainChunk] (eval at evaluate (:311:30), <anonymous>:3:114)"
+  },
+  {
+   "perFrame": 2.36,
+   "site": "src/render/renderer.js:473:63) < src/render/renderer.js:476:28) < at R.<computed> [as vegetationLayer] (eval at evaluate (:311:30), <anonymous>:3:114) < src/render/renderer.js:376:250)"
+  },
+  {
+   "perFrame": 2.28,
+   "site": "src/render/indexed-part-renderer.js:6:85 < src/render/indexed-part-renderer.js:38:22) < src/render/indexed-part-renderer.js:117:223) < src/render/part-sprites.js:288:451)"
+  },
+  {
+   "perFrame": 2.25,
+   "site": "src/render/indexed-part-renderer.js:6:85 < src/render/indexed-part-renderer.js:38:22) < src/render/indexed-part-renderer.js:117:223) < src/render/part-sprites.js:288:496)"
+  },
+  {
+   "perFrame": 1.92,
+   "site": "src/render/indexed-part-renderer.js:6:85 < src/render/indexed-part-renderer.js:38:22) < src/render/indexed-part-renderer.js:102:142) < src/render/part-sprites.js:225:58)"
+  }
+ ],
+ "ops": {
+  "drawImage": {
+   "perFrame": 1895.8,
+   "mainCanvas": 549.2
+  },
+  "fillRect": {
+   "perFrame": 7094.7,
+   "mainCanvas": 5465.9
+  },
+  "save": {
+   "perFrame": 3288.3,
+   "mainCanvas": 2009.4
+  },
+  "restore": {
+   "perFrame": 3288.3,
+   "mainCanvas": 2009.4
+  },
+  "beginPath": {
+   "perFrame": 118.5,
+   "mainCanvas": 118.5
+  },
+  "fill": {
+   "perFrame": 53.4,
+   "mainCanvas": 53.4
+  },
+  "stroke": {
+   "perFrame": 103.9,
+   "mainCanvas": 103.9
+  },
+  "arc": {
+   "perFrame": 32.5,
+   "mainCanvas": 32.5
+  },
+  "putImageData": {
+   "perFrame": 55.3,
+   "mainCanvas": 0
+  },
+  "getImageData": {
+   "perFrame": 0,
+   "mainCanvas": 0
+  },
+  "setTransform": {
+   "perFrame": 194.4,
+   "mainCanvas": 0
+  },
+  "translate": {
+   "perFrame": 1357.4,
+   "mainCanvas": 191.8
+  },
+  "scale": {
+   "perFrame": 1034.1,
+   "mainCanvas": 0
+  },
+  "fillText": {
+   "perFrame": 0,
+   "mainCanvas": 0
+  },
+  "createPattern": {
+   "perFrame": 0,
+   "mainCanvas": 0
+  },
+  "createLinearGradient": {
+   "perFrame": 0,
+   "mainCanvas": 0
+  },
+  "createRadialGradient": {
+   "perFrame": 0,
+   "mainCanvas": 0
+  },
+  "filterSet": {
+   "perFrame": 0,
+   "mainCanvas": 0
+  },
+  "getContext": {
+   "perFrame": 56.8,
+   "mainCanvas": 0
+  },
+  "createCanvas": {
+   "perFrame": 28.3,
+   "mainCanvas": 0
+  }
+ },
+ "frames": 287,
+ "totalSelfMsPerFrame": 31.66,
+ "rows": [
+  {
+   "method": "drawAnimal",
+   "msPerFrame": 17.372,
+   "callsPerFrame": 83.2
+  },
+  {
+   "method": "drawEnvironmentalHistory",
+   "msPerFrame": 2.826,
+   "callsPerFrame": 1846.5
+  },
+  {
+   "method": "render",
+   "msPerFrame": 1.42,
+   "callsPerFrame": 1
+  },
+  {
+   "method": "drawTileDynamic",
+   "msPerFrame": 0.863,
+   "callsPerFrame": 2071.5
+  },
+  {
+   "method": "drawTerrainChunks",
+   "msPerFrame": 0.834,
+   "callsPerFrame": 2
+  },
+  {
+   "method": "paintOrganicLandBase",
+   "msPerFrame": 0.706,
+   "callsPerFrame": 8.1
+  },
+  {
+   "method": "drawOrganicLandBase",
+   "msPerFrame": 0.675,
+   "callsPerFrame": 42.4
+  },
+  {
+   "method": "vegetationLayer",
+   "msPerFrame": 0.645,
+   "callsPerFrame": 70.8
+  },
+  {
+   "method": "visualWaterMask",
+   "msPerFrame": 0.63,
+   "callsPerFrame": 2177.4
+  },
+  {
+   "method": "drawLiveVegetationWindow",
+   "msPerFrame": 0.577,
+   "callsPerFrame": 1
+  },
+  {
+   "method": "staticLandTile",
+   "msPerFrame": 0.566,
+   "callsPerFrame": 13.2
+  },
+  {
+   "method": "drawLandDetailLive",
+   "msPerFrame": 0.518,
+   "callsPerFrame": 21.3
+  },
+  {
+   "method": "buildTerrainChunk",
+   "msPerFrame": 0.473,
+   "callsPerFrame": 0.5
+  },
+  {
+   "method": "drawOrganicWaterMotion",
+   "msPerFrame": 0.432,
+   "callsPerFrame": 316.7
+  },
+  {
+   "method": "plantVisualSignature",
+   "msPerFrame": 0.369,
+   "callsPerFrame": 70.8
+  },
+  {
+   "method": "visualHabitatMask",
+   "msPerFrame": 0.276,
+   "callsPerFrame": 37.2
+  },
+  {
+   "method": "drawOnHabitatLand",
+   "msPerFrame": 0.27,
+   "callsPerFrame": 14.6
+  },
+  {
+   "method": "terrainChunk",
+   "msPerFrame": 0.256,
+   "callsPerFrame": 329.7
+  },
+  {
+   "method": "drawReadabilityCues",
+   "msPerFrame": 0.239,
+   "callsPerFrame": 1
+  },
+  {
+   "method": "drawMarkers",
+   "msPerFrame": 0.15,
+   "callsPerFrame": 83.2
+  },
+  {
+   "method": "drawPlant",
+   "msPerFrame": 0.145,
+   "callsPerFrame": 4.8
+  },
+  {
+   "method": "actionPose",
+   "msPerFrame": 0.139,
+   "callsPerFrame": 83.2
+  },
+  {
+   "method": "drawTile",
+   "msPerFrame": 0.128,
+   "callsPerFrame": 39.7
+  },
+  {
+   "method": "drawOrganicHabitat",
+   "msPerFrame": 0.125,
+   "callsPerFrame": 29.1
+  },
+  {
+   "method": "drawHabitatTransitions",
+   "msPerFrame": 0.103,
+   "callsPerFrame": 1
+  },
+  {
+   "method": "terrainChunkSignature",
+   "msPerFrame": 0.098,
+   "callsPerFrame": 538.5
+  },
+  {
+   "method": "queueTerrainWarmRing",
+   "msPerFrame": 0.095,
+   "callsPerFrame": 1
+  },
+  {
+   "method": "queueTerrainRefresh",
+   "msPerFrame": 0.082,
+   "callsPerFrame": 400.5
+  },
+  {
+   "method": "drawLifeEffects",
+   "msPerFrame": 0.057,
+   "callsPerFrame": 83.2
+  },
+  {
+   "method": "drawOrganicBankAccents",
+   "msPerFrame": 0.055,
+   "callsPerFrame": 6.5
+  }
+ ],
+ "errors": []
+}

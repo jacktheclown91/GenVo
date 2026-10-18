@@ -1,0 +1,3043 @@
+{
+  "scope": "Fresh current-map runtime sample, then deliberately restricted zero ms frame budget (one atomic step per frame) and forced 4x observer speed with automatic danger slowdown disabled only for this pacing fixture to verify visible queued updates and recovery. Not mature-world or continental performance acceptance.",
+  "baseline": {
+    "elapsedMs": 2505.699999988079,
+    "frames": 183,
+    "p50Ms": 13.300000000001091,
+    "p95Ms": 13.5,
+    "maxMs": 80,
+    "startTick": 29,
+    "endTick": 49,
+    "alive": 181,
+    "maxPending": 0.015424999999999934,
+    "budgetLimitedFrames": 0,
+    "warning": "",
+    "trace": [
+      {
+        "ms": 5.600000023841858,
+        "workMs": 0,
+        "pending": 0.01342499999999998,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 6.099999964237213,
+        "pending": 0.011199999999999617,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000000546,
+        "workMs": 0,
+        "pending": 0.008975000000000163,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.006650000000000343,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.004324999999999614,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000000546,
+        "workMs": 0,
+        "pending": 0.0021000000000001573,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.015400000000000339,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.013074999999999611,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000000546,
+        "workMs": 0,
+        "pending": 0.010850000000000158,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.10000002384185791,
+        "pending": 0.008624999999999793,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0.40000003576278687,
+        "pending": 0.006299999999999972,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.003975000000000152,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.0016500000000003318,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.015049999999999968,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.012824999999999604,
+        "limited": false
+      },
+      {
+        "ms": 13.200000000000728,
+        "workMs": 0,
+        "pending": 0.010400000000000333,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.008174999999999967,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.005850000000000147,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.10000002384185791,
+        "pending": 0.003624999999999781,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0.5,
+        "pending": 0.001299999999999961,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.014600000000000142,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.012374999999999779,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.010049999999999962,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.0077250000000001415,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.005499999999999776,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0.10000002384185791,
+        "pending": 0.0031749999999999556,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.0009499999999995901,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.014249999999999772,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.011924999999999953,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.30000001192092896,
+        "pending": 0.009699999999999591,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.007374999999999771,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.00504999999999995,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.00272500000000013,
+        "limited": false
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 0.0006000000000001282,
+        "limited": false
+      },
+      {
+        "ms": 13.199999999999818,
+        "workMs": 0,
+        "pending": 0.013799999999999946,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.011574999999999582,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.009249999999999765,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.006924999999999945,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.30000001192092896,
+        "pending": 0.0046999999999995795,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000000546,
+        "workMs": 0,
+        "pending": 0.002475000000000123,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.00015000000000030267,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.013549999999999939,
+        "limited": false
+      },
+      {
+        "ms": 13.199999999999818,
+        "workMs": 0,
+        "pending": 0.011124999999999757,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000000546,
+        "workMs": 0,
+        "pending": 0.008900000000000304,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.006574999999999574,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000000546,
+        "workMs": 0,
+        "pending": 0.004350000000000118,
+        "limited": false
+      },
+      {
+        "ms": 13.199999999999818,
+        "workMs": 0,
+        "pending": 0.0019249999999999337,
+        "limited": false
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 0.015424999999999934,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0.5,
+        "pending": 0.013100000000000115,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.010775000000000298,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.10000002384185791,
+        "pending": 0.008549999999999933,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.006225000000000112,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.10000002384185791,
+        "pending": 0.003999999999999747,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.0016749999999999265,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.014975000000000108,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.09999996423721313,
+        "pending": 0.012749999999999744,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.010424999999999927,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 5,
+        "pending": 0.008100000000000107,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.10000002384185791,
+        "pending": 0.0058749999999997415,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.0035499999999999213,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.001225000000000101,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.014624999999999737,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0.10000002384185791,
+        "pending": 0.012299999999999919,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.009975000000000102,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.007749999999999736,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000000546,
+        "workMs": 0,
+        "pending": 0.00552500000000028,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0.5999999642372131,
+        "pending": 0.0031999999999995504,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.0008749999999997302,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.014174999999999912,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.011949999999999548,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.009624999999999731,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.007299999999999911,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.005074999999999545,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000000546,
+        "workMs": 0,
+        "pending": 0.0028500000000000886,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.0005250000000002683,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.01382499999999954,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000000546,
+        "workMs": 1.2999999523162842,
+        "pending": 0.011600000000000086,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.009374999999999724,
+        "limited": false
+      },
+      {
+        "ms": 13.199999999999818,
+        "workMs": 0,
+        "pending": 0.00694999999999954,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000000546,
+        "workMs": 0.10000002384185791,
+        "pending": 0.004725000000000083,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0.09999996423721313,
+        "pending": 0.002400000000000263,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.00007499999999953377,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.013374999999999715,
+        "limited": false
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 0.011249999999999715,
+        "limited": false
+      },
+      {
+        "ms": 13.199999999999818,
+        "workMs": 0,
+        "pending": 0.008824999999999535,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000000546,
+        "workMs": 0.5,
+        "pending": 0.006600000000000078,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.0043749999999997125,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.002049999999999892,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.015350000000000074,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.013025000000000255,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.010799999999999893,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.008475000000000073,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.0061500000000002525,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.003924999999999887,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0.699999988079071,
+        "pending": 0.0016000000000000666,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.014999999999999703,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.012674999999999884,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.010350000000000067,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.008124999999999702,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000000546,
+        "workMs": 0,
+        "pending": 0.005900000000000245,
+        "limited": false
+      },
+      {
+        "ms": 13.199999999999818,
+        "workMs": 0,
+        "pending": 0.0034750000000000614,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.0012499999999996958,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000000182,
+        "workMs": 0,
+        "pending": 0.014549999999999877,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.012324999999999513,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0.5,
+        "pending": 0.010000000000000606,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.00777500000000024,
+        "limited": false
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0,
+        "pending": 0.005349999999999147,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 0.003125000000000603,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.0007999999999998772,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.014199999999999513,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.01197499999999915,
+        "limited": false
+      },
+      {
+        "ms": 13.200000000000728,
+        "workMs": 0,
+        "pending": 0.009549999999999878,
+        "limited": false
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 0.007424999999999876,
+        "limited": false
+      },
+      {
+        "ms": 13.200000000000728,
+        "workMs": 5.5,
+        "pending": 0.005000000000000601,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.0027750000000002356,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.00044999999999950635,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.013750000000000599,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.011525000000000236,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.009299999999999871,
+        "limited": false
+      },
+      {
+        "ms": 13.200000000000728,
+        "workMs": 0,
+        "pending": 0.006875000000000596,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.00465000000000023,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.002324999999999501,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.5,
+        "pending": 0.0000999999999991355,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.013400000000000228,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.011174999999999866,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.008849999999999136,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.0065250000000002285,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.004299999999999866,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.002074999999999501,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.015375000000000593,
+        "limited": false
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0,
+        "pending": 0.012949999999999504,
+        "limited": false
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 0.010824999999999502,
+        "limited": false
+      },
+      {
+        "ms": 13.200000000000728,
+        "workMs": 0.5,
+        "pending": 0.008400000000000227,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.0060749999999994975,
+        "limited": false
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 0.003949999999999496,
+        "limited": false
+      },
+      {
+        "ms": 13.200000000000728,
+        "workMs": 0,
+        "pending": 0.0015250000000002206,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.014924999999999857,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.01259999999999913,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 0.010375000000000585,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0.10000002384185791,
+        "pending": 0.008049999999999856,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.00582499999999949,
+        "limited": false
+      },
+      {
+        "ms": 13.200000000000728,
+        "workMs": 0.6000000238418579,
+        "pending": 0.0034000000000002153,
+        "limited": false
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 0.0012750000000002135,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.014574999999999486,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.01225000000000058,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.00992499999999985,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.007699999999999485,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.005375000000000577,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.003150000000000215,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.0008249999999994859,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.014125000000000578,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0.3999999761581421,
+        "pending": 0.011799999999999852,
+        "limited": false
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 0.00967499999999985,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.007349999999999121,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0.10000002384185791,
+        "pending": 0.005025000000000213,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.0026999999999994875,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.00037500000000057973,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.013775000000000216,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.011449999999999488,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.009224999999999123,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0.5,
+        "pending": 0.006900000000000215,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.004574999999999489,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.0023499999999991236,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0.09999996423721313,
+        "pending": 0.000025000000000215822,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.013424999999999852,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.011199999999999488,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.00887500000000058,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.006650000000000218,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.004324999999999489,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 63.59999996423721,
+        "pending": 0.002000000000000581,
+        "limited": false
+      },
+      {
+        "ms": 80,
+        "workMs": 0,
+        "pending": 0.0038750000000005863,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.001549999999999857,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.014949999999999493,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.012625000000000587,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0.6000000238418579,
+        "pending": 0.010299999999999858,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.008074999999999492,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.0057500000000005845,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.0035250000000002224,
+        "limited": false
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0,
+        "pending": 0.0010999999999991295,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 0.014500000000000585,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.012275000000000223,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.009949999999999494,
+        "limited": false
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 0.007824999999999492,
+        "limited": false
+      }
+    ]
+  },
+  "stressed": {
+    "elapsedMs": 2516.899999976158,
+    "frames": 184,
+    "p50Ms": 13.300000000001091,
+    "p95Ms": 13.400000000001455,
+    "maxMs": 80.10000000000036,
+    "startTick": 50,
+    "endTick": 73,
+    "alive": 181,
+    "maxPending": 7.253200000000001,
+    "budgetLimitedFrames": 184,
+    "warning": "Processing load - 181 living organisms, 0 eggs. All offspring are retained. Simulation is running behind; 7.0 simulation seconds queued. Updates continue in order.",
+    "trace": [
+      {
+        "ms": 5.200000011920565,
+        "workMs": 0,
+        "pending": 0.08257499999999948,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0.10000002384185791,
+        "pending": 0.12015000000000386,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.1581250000000024,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.19569999999999949,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.23367499999999802,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 0.27165000000000383,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.3092250000000009,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0.5999999642372131,
+        "pending": 0.346799999999998,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 0.3847750000000038,
+        "limited": true
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0.10000002384185791,
+        "pending": 0.42194999999999944,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.459924999999998,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0.10000002384185791,
+        "pending": 0.4975000000000024,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.5354750000000009,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.5730499999999981,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 0.6110250000000039,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.5,
+        "pending": 0.6490000000000025,
+        "limited": true
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0,
+        "pending": 0.6861749999999981,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 0.724150000000004,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.7617250000000011,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.7992999999999982,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 0.8372750000000041,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.09999996423721313,
+        "pending": 0.8752500000000026,
+        "limited": true
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0,
+        "pending": 0.9124249999999983,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0.3999999761581421,
+        "pending": 0.9504000000000041,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.9879750000000012,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 1.0255499999999982,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0.10000002384185791,
+        "pending": 1.063525000000004,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 1.101100000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.10000002384185791,
+        "pending": 1.1390749999999996,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 1.176650000000004,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 1.214225000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 78.5,
+        "pending": 1.2521999999999995,
+        "limited": true
+      },
+      {
+        "ms": 80.10000000000036,
+        "workMs": 0,
+        "pending": 1.5569750000000009,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 1.5949499999999994,
+        "limited": true
+      },
+      {
+        "ms": 13.100000000000364,
+        "workMs": 0,
+        "pending": 1.631725000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 1.670100000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 1.707674999999998,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 1.7452500000000024,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 1.7828249999999994,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.5999999642372131,
+        "pending": 1.820799999999998,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 1.8583750000000023,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 1.8959499999999994,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 1.933924999999998,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 1.9715000000000023,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 2.0090749999999993,
+        "limited": true
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0.10000002384185791,
+        "pending": 2.047449999999999,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 2.0850250000000035,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0.800000011920929,
+        "pending": 2.1226000000000007,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 2.160174999999998,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 2.1977500000000023,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.09999996423721313,
+        "pending": 2.235725000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 2.273299999999998,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 2.3112750000000037,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 2.348850000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 2.3868249999999995,
+        "limited": true
+      },
+      {
+        "ms": 13.200000000000728,
+        "workMs": 0.5,
+        "pending": 2.4240000000000026,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 2.461975000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 2.4999499999999997,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 2.537525000000004,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 2.5751000000000013,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 2.613075,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 2.650650000000004,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 2.6886250000000027,
+        "limited": true
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0.6000000238418579,
+        "pending": 2.7257999999999982,
+        "limited": true
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 2.764174999999998,
+        "limited": true
+      },
+      {
+        "ms": 13.200000000000728,
+        "workMs": 0,
+        "pending": 2.801350000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 2.8393249999999997,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 2.877299999999998,
+        "limited": true
+      },
+      {
+        "ms": 13.200000000000728,
+        "workMs": 0,
+        "pending": 2.9144750000000013,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 2.95245,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 2.990025000000004,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.5999999642372131,
+        "pending": 3.0280000000000027,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 3.065575,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 3.1035499999999985,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 3.141525000000004,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 3.1791000000000014,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0.10000002384185791,
+        "pending": 3.2166749999999986,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 3.254250000000003,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 3.2922250000000015,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 4.600000023841858,
+        "pending": 3.3297999999999988,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 3.367375000000003,
+        "limited": true
+      },
+      {
+        "ms": 13.600000000000364,
+        "workMs": 0,
+        "pending": 3.4061500000000047,
+        "limited": true
+      },
+      {
+        "ms": 13.099999999998545,
+        "workMs": 0,
+        "pending": 3.442924999999999,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 3.4809000000000045,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 3.518475000000002,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 3.556049999999999,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 3.5940250000000047,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0.3999999761581421,
+        "pending": 3.631600000000002,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 3.6695750000000005,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 3.707150000000005,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 3.7451250000000034,
+        "limited": true
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0,
+        "pending": 3.782299999999999,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 3.8202750000000045,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 3.858250000000003,
+        "limited": true
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0,
+        "pending": 3.8954249999999986,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 1,
+        "pending": 3.9334000000000042,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 3.9713750000000028,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 4.00895,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 4.046525000000004,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 4.084500000000003,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 4.122075,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 4.160049999999998,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 4.197625000000003,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.5,
+        "pending": 4.235600000000002,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 4.273174999999998,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 4.310750000000003,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.09999996423721313,
+        "pending": 4.348725000000002,
+        "limited": true
+      },
+      {
+        "ms": 13.200000000000728,
+        "workMs": 0,
+        "pending": 4.385900000000005,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 4.423875000000003,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 4.46145,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 4.499424999999999,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0.5999999642372131,
+        "pending": 4.5370000000000035,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 4.574575,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 4.612150000000005,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 4.650125000000004,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 4.688100000000002,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 4.725674999999999,
+        "limited": true
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 4.764049999999999,
+        "limited": true
+      },
+      {
+        "ms": 13.200000000000728,
+        "workMs": 0,
+        "pending": 4.801225000000002,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0.5999999642372131,
+        "pending": 4.838799999999999,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 4.876775000000005,
+        "limited": true
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0,
+        "pending": 4.913950000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 4.952325000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 4.989900000000006,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 5.027875000000004,
+        "limited": true
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0,
+        "pending": 5.06505,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 5.103025000000006,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 5.199999988079071,
+        "pending": 5.140600000000003,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 5.178575000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0.10000002384185791,
+        "pending": 5.216150000000006,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 5.253725000000003,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 5.291700000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 5.329275000000006,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 5.367250000000005,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 5.4048250000000015,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0.5,
+        "pending": 5.442400000000006,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 5.480375000000005,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 5.517950000000002,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 5.555925,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 5.593500000000005,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 5.631075000000002,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 5.668650000000007,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 5.706625000000005,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0.5,
+        "pending": 5.744200000000002,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 5.7821750000000005,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 5.819750000000005,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 5.857725000000004,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 5.895300000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 5.933275000000006,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 5.970850000000003,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 6.008425,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0.5999999642372131,
+        "pending": 6.046000000000005,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 6.083975000000003,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 6.12155,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 6.159125000000005,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 6.197100000000003,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 6.235075000000002,
+        "limited": true
+      },
+      {
+        "ms": 13.200000000000728,
+        "workMs": 0,
+        "pending": 6.272250000000005,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 6.309825000000002,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.6000000238418579,
+        "pending": 6.3478,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 6.385775000000006,
+        "limited": true
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0,
+        "pending": 6.422950000000002,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 6.4609250000000005,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 6.498900000000006,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 6.536475000000003,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 6.57405,
+        "limited": true
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 6.612025000000005,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.5,
+        "pending": 6.650000000000004,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 6.687575000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 6.7251500000000055,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 6.763125000000004,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 6.800700000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 6.838275000000006,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 6.876250000000004,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.10000002384185791,
+        "pending": 6.914225000000003,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 4.199999988079071,
+        "pending": 6.9517999999999995,
+        "limited": true
+      },
+      {
+        "ms": 13.200000000000728,
+        "workMs": 0,
+        "pending": 6.988975000000003,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 7.026950000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 7.064525000000006,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 7.1025000000000045,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 7.140075000000001,
+        "limited": true
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 7.1784500000000016,
+        "limited": true
+      },
+      {
+        "ms": 13.100000000000364,
+        "workMs": 0,
+        "pending": 7.215225000000003,
+        "limited": true
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.5999999642372131,
+        "pending": 7.253200000000001,
+        "limited": true
+      }
+    ]
+  },
+  "recovered": {
+    "elapsedMs": 2006.699999988079,
+    "frames": 132,
+    "p50Ms": 13.300000000001091,
+    "p95Ms": 13.5,
+    "maxMs": 80.10000000000036,
+    "startTick": 90,
+    "endTick": 151,
+    "alive": 181,
+    "maxPending": 4.885300000000004,
+    "budgetLimitedFrames": 4,
+    "warning": "",
+    "trace": [
+      {
+        "ms": -11.399999964236486,
+        "workMs": 62.89999997615814,
+        "pending": 4.885300000000004,
+        "limited": true
+      },
+      {
+        "ms": 79.89999999999964,
+        "workMs": 66,
+        "pending": 4.215200000000004,
+        "limited": true
+      },
+      {
+        "ms": 80.10000000000036,
+        "workMs": 12,
+        "pending": 2.6703000000000046,
+        "limited": true
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 12.199999988079071,
+        "pending": 1.3086000000000038,
+        "limited": true
+      },
+      {
+        "ms": 26.700000000000728,
+        "workMs": 7.800000011920929,
+        "pending": 0.007175000000004594,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.004950000000004229,
+        "limited": false
+      },
+      {
+        "ms": 26.600000000000364,
+        "workMs": 0.40000003576278687,
+        "pending": 0.00030000000000458826,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.01360000000000386,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.011375000000003497,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.009150000000003135,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.006825000000004227,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.004600000000003865,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.0022750000000031356,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.015575000000004228,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.013250000000003502,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.011025000000003136,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 4.299999952316284,
+        "pending": 0.008700000000004229,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.0064750000000038666,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.004150000000003137,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.0018250000000042295,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.015225000000003866,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.012900000000003138,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.01057500000000423,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.008350000000003868,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.006025000000003139,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0.5,
+        "pending": 0.003700000000004231,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.0013750000000035054,
+        "limited": false
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 0.014875000000003505,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.0125500000000046,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.01022500000000387,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.008000000000003504,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.0056750000000045965,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.0034500000000042344,
+        "limited": false
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0,
+        "pending": 0.0010250000000031415,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 0.014425000000004597,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.5999999642372131,
+        "pending": 0.012200000000004235,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.009875000000003506,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.007550000000004598,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.005225000000003872,
+        "limited": false
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 0.0031000000000038705,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.0007750000000031412,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.014075000000004233,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.011850000000003871,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.009525000000003142,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0.6000000238418579,
+        "pending": 0.007200000000004234,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.004975000000003872,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.002650000000003143,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 0.0004250000000045988,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.013725000000003871,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.011400000000003144,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0.09999996423721313,
+        "pending": 0.009075000000004236,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.006850000000003874,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.0045250000000031446,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0.7000000476837158,
+        "pending": 0.0023000000000046004,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.00007500000000423834,
+        "limited": false
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0,
+        "pending": 0.013275000000003147,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 0.011050000000004605,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.00882500000000424,
+        "limited": false
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0,
+        "pending": 0.006400000000003146,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 0.004175000000004602,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.0018500000000038763,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.015250000000003512,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.012925000000004606,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0.6000000238418579,
+        "pending": 0.010600000000003877,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.008275000000003148,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.00595000000000424,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.003725000000003878,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.0014000000000031487,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 0.014800000000004605,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.012475000000003879,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.01015000000000315,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 0.007925000000004605,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 64.30000001192093,
+        "pending": 0.005700000000004243,
+        "limited": false
+      },
+      {
+        "ms": 66.60000000000036,
+        "workMs": 0,
+        "pending": 0.00980000000000461,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.007475000000003881,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.005250000000003516,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0.10000002384185791,
+        "pending": 0.002925000000004608,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0.5,
+        "pending": 0.0006000000000038822,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.014000000000003518,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.011775000000003154,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.009450000000004247,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.007125000000003517,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0.10000002384185791,
+        "pending": 0.00480000000000461,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.002475000000003884,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.00025000000000351824,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.013650000000003154,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.011325000000004248,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.5999999642372131,
+        "pending": 0.009100000000003883,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.0067750000000031535,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.004450000000004246,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.00212500000000352,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.015525000000003156,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.01320000000000425,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.010975000000003884,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.008650000000003155,
+        "limited": false
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 0.006525000000003153,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0.800000011920929,
+        "pending": 0.0042000000000042455,
+        "limited": false
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0,
+        "pending": 0.001775000000003156,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 0.015175000000004612,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.01295000000000425,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0.09999996423721313,
+        "pending": 0.01062500000000352,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0.10000002384185791,
+        "pending": 0.008400000000003155,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.006075000000004247,
+        "limited": false
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0,
+        "pending": 0.0036500000000031577,
+        "limited": false
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 0.0015250000000031558,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.014825000000004248,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0.5,
+        "pending": 0.012500000000003522,
+        "limited": false
+      },
+      {
+        "ms": 13.200000000000728,
+        "workMs": 0,
+        "pending": 0.010075000000004247,
+        "limited": false
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 0.007950000000004245,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.00572500000000388,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.0034000000000031505,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.0010750000000042427,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.014375000000003515,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.012050000000004606,
+        "limited": false
+      },
+      {
+        "ms": 13.5,
+        "workMs": 0,
+        "pending": 0.009925000000004604,
+        "limited": false
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0.5,
+        "pending": 0.007500000000003511,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.005275000000003145,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.0029500000000042374,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.0006250000000035116,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.014025000000003148,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.011700000000004242,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.009475000000003876,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0,
+        "pending": 0.007150000000003147,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.004825000000004239,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 66.40000003576279,
+        "pending": 0.002600000000003877,
+        "limited": false
+      },
+      {
+        "ms": 66.70000000000073,
+        "workMs": 0,
+        "pending": 0.006800000000004608,
+        "limited": false
+      },
+      {
+        "ms": 13.199999999998909,
+        "workMs": 0,
+        "pending": 0.004375000000003515,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.0021500000000031494,
+        "limited": false
+      },
+      {
+        "ms": 13.300000000001091,
+        "workMs": 0,
+        "pending": 0.015450000000004242,
+        "limited": false
+      },
+      {
+        "ms": 13.399999999999636,
+        "workMs": 0,
+        "pending": 0.01322500000000388,
+        "limited": false
+      },
+      {
+        "ms": 13.299999999999272,
+        "workMs": 0.699999988079071,
+        "pending": 0.01090000000000315,
+        "limited": false
+      },
+      {
+        "ms": 13.400000000001455,
+        "workMs": 0,
+        "pending": 0.008675000000004606,
+        "limited": false
+      }
+    ]
+  },
+  "errors": []
+}

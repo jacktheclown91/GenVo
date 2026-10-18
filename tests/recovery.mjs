@@ -16,29 +16,11 @@ assert.equal(sim.recovery.inbreedingLoad([a,b]),.18);
 const child=roots[2];child.parentIds=[a.id,999999];
 assert.equal(sim.recovery.kinship(a,child),'direct');
 
-// Low-density state strengthens recovery but still creates no organisms.
-sim._decisionPopulation={...sim.population(),rootling:Math.max(2,Math.floor(CFG.initial.rootling*.3)),genvo:CFG.initial.genvo,mosskip:CFG.initial.mosskip,needlejaw:CFG.initial.needlejaw};
-assert.ok(sim.recovery.critical('rootling'));
-assert.ok(sim.recovery.driveBoost('rootling')>1);
-assert.ok(sim.recovery.mateRadius('rootling',{far:true})>50);
-assert.ok(sim.recovery.mayRelaxSibling(a));
-
-// Predators switch away from rare prey while common alternatives exist unless
-// they are in an actual starvation emergency.
+// Founder-relative recovery assertions are preserved in the dated repair report.
+// Population authoring counts cannot change runtime behavior at fixed biology.
+const before={drive:sim.recovery.driveBoost('rootling'),near:sim.recovery.mateRadius('rootling'),far:sim.recovery.mateRadius('rootling',{far:true})},initial=CFG.initial.rootling;
+try{CFG.initial.rootling=1;assert.deepEqual({drive:sim.recovery.driveBoost('rootling'),near:sim.recovery.mateRadius('rootling'),far:sim.recovery.mateRadius('rootling',{far:true})},before)}finally{CFG.initial.rootling=initial}
+assert.equal(before.drive,1);assert.equal(before.near,12);assert.equal(before.far,20);assert.equal(sim.recovery.mayRelaxSibling(a),false);
 const pred=sim.animals.find(x=>x.alive&&x.species==='needlejaw');
-pred.energy=120;
-const rareGlobal={mosskip:80,rootling:6,needlejaw:10,genvo:24};
-assert.equal(sim.recovery.preyIsRefuged(pred,'rootling',rareGlobal),true);
-pred.energy=10;
-assert.equal(sim.recovery.preyIsRefuged(pred,'rootling',rareGlobal),false);
-
-// A well-fed hunter must not suppress its only local recovering cohort merely
-// because abundant alternatives live on an unreachable island.
-pred.energy=120;
-assert.equal(sim.recovery.preyIsRefuged(pred,'rootling',rareGlobal,{rootling:2}),true);
-pred.energy=60;
-assert.equal(sim.recovery.preyIsRefuged(pred,'rootling',rareGlobal,{rootling:2}),false,'hungry hunters can use their only local prey');
-pred.energy=10;
-assert.equal(sim.recovery.preyIsRefuged(pred,'rootling',rareGlobal,{rootling:2,mosskip:30}),false,'starvation overrides refuge even with alternatives');
-
-console.log('low-density recovery + rare-prey refuge checks: PASS');
+for(const energy of [10,60,120]){pred.energy=energy;assert.equal(sim.recovery.preyIsRefuged(pred,'rootling',{rootling:1,mosskip:80},{rootling:2}),false)}
+console.log('founder-independent opportunity and retained kinship/inbreeding checks: PASS');

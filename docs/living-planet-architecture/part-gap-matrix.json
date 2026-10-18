@@ -1,0 +1,1404 @@
+{
+  "schema": "genvo.part-gap-audit/1",
+  "count": 79,
+  "rows": [
+    {
+      "id": "head-base",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "head"
+      ],
+      "capabilities": [],
+      "registryMass": 0,
+      "registryUpkeep": 0,
+      "implementedScope": "Mounted face/socket support; no independent physiological power.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "small-torso",
+      "status": "PARTIAL",
+      "prerequisites": [],
+      "sockets": [],
+      "capabilities": [],
+      "registryMass": 3,
+      "registryUpkeep": 0.85,
+      "implementedScope": "Shape/socket topology and legacy coefficients exist. Live mass still comes from species metadata; tissue support/volume not derived.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "soft-torso",
+      "status": "PARTIAL",
+      "prerequisites": [
+        "small-torso"
+      ],
+      "sockets": [],
+      "capabilities": [],
+      "registryMass": 4,
+      "registryUpkeep": 1,
+      "implementedScope": "Shape/socket topology and legacy coefficients exist. Live mass still comes from species metadata; tissue support/volume not derived.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "reinforced-torso",
+      "status": "PARTIAL",
+      "prerequisites": [
+        "soft-torso"
+      ],
+      "sockets": [],
+      "capabilities": [],
+      "registryMass": 5,
+      "registryUpkeep": 1.3,
+      "implementedScope": "Shape/socket topology and legacy coefficients exist. Live mass still comes from species metadata; tissue support/volume not derived.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "sleek-torso",
+      "status": "PARTIAL",
+      "prerequisites": [
+        "soft-torso"
+      ],
+      "sockets": [],
+      "capabilities": [
+        "run"
+      ],
+      "registryMass": 3.5,
+      "registryUpkeep": 1.05,
+      "implementedScope": "Shape/socket topology and legacy coefficients exist. Live mass still comes from species metadata; tissue support/volume not derived.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "light-torso",
+      "status": "PARTIAL",
+      "prerequisites": [
+        "small-torso"
+      ],
+      "sockets": [],
+      "capabilities": [],
+      "registryMass": 2.6,
+      "registryUpkeep": 0.8,
+      "implementedScope": "Shape/socket topology and legacy coefficients exist. Live mass still comes from species metadata; tissue support/volume not derived.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "stout-torso",
+      "status": "PARTIAL",
+      "prerequisites": [
+        "soft-torso"
+      ],
+      "sockets": [],
+      "capabilities": [
+        "store"
+      ],
+      "registryMass": 5,
+      "registryUpkeep": 1.1,
+      "implementedScope": "Shape/socket topology and legacy coefficients exist. Live mass still comes from species metadata; tissue support/volume not derived.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "barrel-torso",
+      "status": "PARTIAL",
+      "prerequisites": [
+        "stout-torso"
+      ],
+      "sockets": [],
+      "capabilities": [
+        "store"
+      ],
+      "registryMass": 6,
+      "registryUpkeep": 1.25,
+      "implementedScope": "Shape/socket topology and legacy coefficients exist. Live mass still comes from species metadata; tissue support/volume not derived.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "dome-torso",
+      "status": "PARTIAL",
+      "prerequisites": [
+        "reinforced-torso"
+      ],
+      "sockets": [],
+      "capabilities": [
+        "armor"
+      ],
+      "registryMass": 6,
+      "registryUpkeep": 1.3,
+      "implementedScope": "Shape/socket topology and legacy coefficients exist. Live mass still comes from species metadata; tissue support/volume not derived.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "long-torso",
+      "status": "PARTIAL",
+      "prerequisites": [
+        "sleek-torso"
+      ],
+      "sockets": [],
+      "capabilities": [],
+      "registryMass": 6,
+      "registryUpkeep": 1.35,
+      "implementedScope": "Shape/socket topology and legacy coefficients exist. Live mass still comes from species metadata; tissue support/volume not derived.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "walking-leg",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "limb"
+      ],
+      "capabilities": [
+        "walk",
+        "sprint",
+        "dance"
+      ],
+      "registryMass": 0.4,
+      "registryUpkeep": 0.1,
+      "implementedScope": "Ground locomotion/carry/brace coefficients in part-abilities and shared movement.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "spring-leg",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "walking-leg"
+      ],
+      "sockets": [
+        "limb"
+      ],
+      "capabilities": [
+        "walk",
+        "sprint",
+        "pounce",
+        "dance"
+      ],
+      "registryMass": 0.5,
+      "registryUpkeep": 0.18,
+      "implementedScope": "Sprint and Pounce work; ballistic jumping/height/landing do not.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "grasper",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "walking-leg"
+      ],
+      "sockets": [
+        "limb"
+      ],
+      "capabilities": [
+        "walk",
+        "carry",
+        "dance",
+        "gesture"
+      ],
+      "registryMass": 0.45,
+      "registryUpkeep": 0.14,
+      "implementedScope": "Ground locomotion/carry/brace coefficients in part-abilities and shared movement.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "runner-leg",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "walking-leg"
+      ],
+      "sockets": [
+        "limb"
+      ],
+      "capabilities": [
+        "walk",
+        "sprint",
+        "run",
+        "dance"
+      ],
+      "registryMass": 0.35,
+      "registryUpkeep": 0.12,
+      "implementedScope": "Ground locomotion/carry/brace coefficients in part-abilities and shared movement.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "sturdy-leg",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "walking-leg"
+      ],
+      "sockets": [
+        "limb"
+      ],
+      "capabilities": [
+        "walk",
+        "brace",
+        "dance"
+      ],
+      "registryMass": 0.6,
+      "registryUpkeep": 0.14,
+      "implementedScope": "Ground locomotion/carry/brace coefficients in part-abilities and shared movement.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "webbed-leg",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "walking-leg"
+      ],
+      "sockets": [
+        "limb"
+      ],
+      "capabilities": [
+        "walk",
+        "swim",
+        "dance"
+      ],
+      "registryMass": 0.45,
+      "registryUpkeep": 0.14,
+      "implementedScope": "Swimming gate/propulsion and land tradeoff; no osmoregulation.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "padded-leg",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "walking-leg"
+      ],
+      "sockets": [
+        "limb"
+      ],
+      "capabilities": [
+        "walk",
+        "quiet",
+        "dance"
+      ],
+      "registryMass": 0.4,
+      "registryUpkeep": 0.12,
+      "implementedScope": "Ground locomotion/carry/brace coefficients in part-abilities and shared movement.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "digging-forelimb",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "walking-leg"
+      ],
+      "sockets": [
+        "limb"
+      ],
+      "capabilities": [
+        "walk",
+        "dig",
+        "dance"
+      ],
+      "registryMass": 0.5,
+      "registryUpkeep": 0.15,
+      "implementedScope": "Paid finite root digging, disturbance and hiding; subterranean travel absent.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "grazing-mouth",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "mouth"
+      ],
+      "capabilities": [
+        "graze",
+        "bite",
+        "call"
+      ],
+      "registryMass": 0.3,
+      "registryUpkeep": 0.05,
+      "implementedScope": "Shared functional-diet and finite food/prey interactions; coefficient-based mechanics.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "tearing-jaw",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "grazing-mouth"
+      ],
+      "sockets": [
+        "mouth"
+      ],
+      "capabilities": [
+        "graze",
+        "bite",
+        "tear",
+        "call"
+      ],
+      "registryMass": 0.5,
+      "registryUpkeep": 0.2,
+      "implementedScope": "Shared functional-diet and finite food/prey interactions; coefficient-based mechanics.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "crushing-jaw",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "tearing-jaw"
+      ],
+      "sockets": [
+        "mouth"
+      ],
+      "capabilities": [
+        "graze",
+        "bite",
+        "tear",
+        "crush",
+        "call"
+      ],
+      "registryMass": 0.7,
+      "registryUpkeep": 0.3,
+      "implementedScope": "Finite seed/coat handling and attacks.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "beak-mouth",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "grazing-mouth"
+      ],
+      "sockets": [
+        "mouth"
+      ],
+      "capabilities": [
+        "graze",
+        "bite",
+        "peck",
+        "call"
+      ],
+      "registryMass": 0.3,
+      "registryUpkeep": 0.06,
+      "implementedScope": "Shared functional-diet and finite food/prey interactions; coefficient-based mechanics.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "kernel-beak",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "beak-mouth"
+      ],
+      "sockets": [
+        "mouth"
+      ],
+      "capabilities": [
+        "graze",
+        "peck",
+        "crush",
+        "bite",
+        "call"
+      ],
+      "registryMass": 0.46,
+      "registryUpkeep": 0.12,
+      "implementedScope": "Consumes kernels and destroys propagules; handling cost.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "filter-mouth",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "grazing-mouth"
+      ],
+      "sockets": [
+        "mouth"
+      ],
+      "capabilities": [
+        "graze",
+        "filter",
+        "call"
+      ],
+      "registryMass": 0.3,
+      "registryUpkeep": 0.06,
+      "implementedScope": "Consumes actual finite reachable aquatic food.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "reed-sieve-mouth",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "filter-mouth"
+      ],
+      "sockets": [
+        "mouth"
+      ],
+      "capabilities": [
+        "filter",
+        "graze",
+        "call"
+      ],
+      "registryMass": 0.35,
+      "registryUpkeep": 0.09,
+      "implementedScope": "Aquatic diet with land-food tradeoff.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "nibbler-mouth",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "grazing-mouth"
+      ],
+      "sockets": [
+        "mouth"
+      ],
+      "capabilities": [
+        "graze",
+        "nibble",
+        "call"
+      ],
+      "registryMass": 0.2,
+      "registryUpkeep": 0.03,
+      "implementedScope": "Shared functional-diet and finite food/prey interactions; coefficient-based mechanics.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "sucker-mouth",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "tearing-jaw"
+      ],
+      "sockets": [
+        "mouth"
+      ],
+      "capabilities": [
+        "bite",
+        "suck",
+        "call"
+      ],
+      "registryMass": 0.35,
+      "registryUpkeep": 0.1,
+      "implementedScope": "Shared functional-diet and finite food/prey interactions; coefficient-based mechanics.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "gape-mouth",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "tearing-jaw"
+      ],
+      "sockets": [
+        "mouth"
+      ],
+      "capabilities": [
+        "bite",
+        "swallow",
+        "call"
+      ],
+      "registryMass": 0.55,
+      "registryUpkeep": 0.2,
+      "implementedScope": "Shared functional-diet and finite food/prey interactions; coefficient-based mechanics.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "simple-eye",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "eye"
+      ],
+      "capabilities": [
+        "see"
+      ],
+      "registryMass": 0.05,
+      "registryUpkeep": 0.03,
+      "implementedScope": "Visual threat/food/courtship modifiers, not a separate sensory physics model.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "wide-field-eye",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "simple-eye"
+      ],
+      "sockets": [
+        "eye"
+      ],
+      "capabilities": [
+        "see",
+        "see-wide"
+      ],
+      "registryMass": 0.08,
+      "registryUpkeep": 0.07,
+      "implementedScope": "Visual threat/food/courtship modifiers, not a separate sensory physics model.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "hunter-eye",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "simple-eye"
+      ],
+      "sockets": [
+        "eye"
+      ],
+      "capabilities": [
+        "see",
+        "aim"
+      ],
+      "registryMass": 0.06,
+      "registryUpkeep": 0.05,
+      "implementedScope": "Visual threat/food/courtship modifiers, not a separate sensory physics model.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "stalk-eye",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "simple-eye"
+      ],
+      "sockets": [
+        "eye"
+      ],
+      "capabilities": [
+        "see",
+        "spot"
+      ],
+      "registryMass": 0.07,
+      "registryUpkeep": 0.05,
+      "implementedScope": "Visual threat/food/courtship modifiers, not a separate sensory physics model.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "compound-eye",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "wide-field-eye"
+      ],
+      "sockets": [
+        "eye"
+      ],
+      "capabilities": [
+        "see",
+        "glance"
+      ],
+      "registryMass": 0.09,
+      "registryUpkeep": 0.08,
+      "implementedScope": "Visual threat/food/courtship modifiers, not a separate sensory physics model.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "tracker-eye",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "simple-eye"
+      ],
+      "sockets": [
+        "eye"
+      ],
+      "capabilities": [
+        "see",
+        "track"
+      ],
+      "registryMass": 0.06,
+      "registryUpkeep": 0.05,
+      "implementedScope": "Visual threat/food/courtship modifiers, not a separate sensory physics model.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "display-eye",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "simple-eye"
+      ],
+      "sockets": [
+        "eye"
+      ],
+      "capabilities": [
+        "see",
+        "display",
+        "flare"
+      ],
+      "registryMass": 0.06,
+      "registryUpkeep": 0.05,
+      "implementedScope": "Visual threat/food/courtship modifiers, not a separate sensory physics model.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "eyespot",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "eye"
+      ],
+      "capabilities": [
+        "see"
+      ],
+      "registryMass": 0.02,
+      "registryUpkeep": 0.01,
+      "implementedScope": "Visual threat/food/courtship modifiers, not a separate sensory physics model.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "armor-plate",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "flank",
+        "dorsal"
+      ],
+      "capabilities": [
+        "armor"
+      ],
+      "registryMass": 0.6,
+      "registryUpkeep": 0.12,
+      "implementedScope": "Shared damage/contact/brace tradeoff; material mechanics uncalibrated.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "barb",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "spur"
+      ],
+      "capabilities": [
+        "retaliate"
+      ],
+      "registryMass": 0.1,
+      "registryUpkeep": 0.04,
+      "implementedScope": "Shared damage/contact/brace tradeoff; material mechanics uncalibrated.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "claw",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "spur"
+      ],
+      "capabilities": [
+        "strike"
+      ],
+      "registryMass": 0.12,
+      "registryUpkeep": 0.04,
+      "implementedScope": "Shared strike/retaliation/venom path with abstract upkeep.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "venom-gland",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "tearing-jaw"
+      ],
+      "sockets": [
+        "flank"
+      ],
+      "capabilities": [
+        "venom"
+      ],
+      "registryMass": 0.2,
+      "registryUpkeep": 0.15,
+      "implementedScope": "Doses, damage/slow, metabolic expense; toxin synthesis abstract.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "storage-sac",
+      "status": "PARTIAL",
+      "prerequisites": [],
+      "sockets": [
+        "flank"
+      ],
+      "capabilities": [
+        "store"
+      ],
+      "registryMass": 0.5,
+      "registryUpkeep": 0.05,
+      "implementedScope": "Water-use modifier; explicit finite organ reservoir missing.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "silt-fin",
+      "status": "PARTIAL",
+      "prerequisites": [
+        "paddle-tail"
+      ],
+      "sockets": [
+        "dorsal"
+      ],
+      "capabilities": [
+        "swim-propel",
+        "flare"
+      ],
+      "registryMass": 0.28,
+      "registryUpkeep": 0.09,
+      "implementedScope": "Swimming speed/energy effect and land tradeoff; not a force-based fin.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "signal-crest",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "dorsal"
+      ],
+      "capabilities": [
+        "signal",
+        "flare"
+      ],
+      "registryMass": 0.1,
+      "registryUpkeep": 0.05,
+      "implementedScope": "Existing display/signal/courtship actions and presentation.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "paddle-tail",
+      "status": "PARTIAL",
+      "prerequisites": [],
+      "sockets": [
+        "tail"
+      ],
+      "capabilities": [
+        "swim-propel"
+      ],
+      "registryMass": 0.4,
+      "registryUpkeep": 0.1,
+      "implementedScope": "Faster/cheaper swimming on already-swimming bodies; force/buoyancy model missing.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "horn-crest",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "dorsal"
+      ],
+      "capabilities": [
+        "retaliate",
+        "display",
+        "flare"
+      ],
+      "registryMass": 0.3,
+      "registryUpkeep": 0.08,
+      "implementedScope": "Shared damage/contact/brace tradeoff; material mechanics uncalibrated.",
+      "naturalRouteBlocked": true,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "tusk-jaw",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "mouth"
+      ],
+      "capabilities": [
+        "bite",
+        "tear",
+        "crush",
+        "call"
+      ],
+      "registryMass": 0.6,
+      "registryUpkeep": 0.2,
+      "implementedScope": "Shared functional-diet and finite food/prey interactions; coefficient-based mechanics.",
+      "naturalRouteBlocked": true,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "gliding-membrane",
+      "status": "PARTIAL",
+      "prerequisites": [],
+      "sockets": [
+        "flank"
+      ],
+      "capabilities": [
+        "sprint"
+      ],
+      "registryMass": 0.25,
+      "registryUpkeep": 0.08,
+      "implementedScope": "Only ground sprint/speed modifiers. Gliding, lift, height and landing missing.",
+      "naturalRouteBlocked": true,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "luminous-tail",
+      "status": "PARTIAL",
+      "prerequisites": [],
+      "sockets": [
+        "tail"
+      ],
+      "capabilities": [
+        "display",
+        "signal",
+        "flare"
+      ],
+      "registryMass": 0.3,
+      "registryUpkeep": 0.06,
+      "implementedScope": "Display/visibility modifier; light synthesis/optics missing.",
+      "naturalRouteBlocked": true,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "shell-back",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "dorsal"
+      ],
+      "capabilities": [
+        "armor"
+      ],
+      "registryMass": 0.7,
+      "registryUpkeep": 0.08,
+      "implementedScope": "Shared damage/contact/brace tradeoff; material mechanics uncalibrated.",
+      "naturalRouteBlocked": true,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "armored-hide",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "flank"
+      ],
+      "capabilities": [
+        "armor",
+        "retaliate"
+      ],
+      "registryMass": 0.6,
+      "registryUpkeep": 0.1,
+      "implementedScope": "Shared damage/contact/brace tradeoff; material mechanics uncalibrated.",
+      "naturalRouteBlocked": true,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "glow-eye",
+      "status": "PARTIAL",
+      "prerequisites": [],
+      "sockets": [
+        "eye"
+      ],
+      "capabilities": [
+        "see",
+        "track"
+      ],
+      "registryMass": 0.06,
+      "registryUpkeep": 0.05,
+      "implementedScope": "Range/cue/threat coefficients; no distinct low-light sensor physics.",
+      "naturalRouteBlocked": true,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "echo-crest",
+      "status": "PARTIAL",
+      "prerequisites": [],
+      "sockets": [
+        "dorsal"
+      ],
+      "capabilities": [
+        "see-wide",
+        "spot",
+        "call"
+      ],
+      "registryMass": 0.2,
+      "registryUpkeep": 0.06,
+      "implementedScope": "Threat/call modifiers; echo emission/propagation/hearing missing.",
+      "naturalRouteBlocked": true,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "balance-tail",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "tail"
+      ],
+      "capabilities": [
+        "run"
+      ],
+      "registryMass": 0.35,
+      "registryUpkeep": 0.05,
+      "implementedScope": "Existing ground/swim modifiers, not general mechanical thrust/support.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "club-tail",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "balance-tail"
+      ],
+      "sockets": [
+        "tail"
+      ],
+      "capabilities": [
+        "retaliate"
+      ],
+      "registryMass": 0.35,
+      "registryUpkeep": 0.1,
+      "implementedScope": "Existing ground/swim modifiers, not general mechanical thrust/support.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "spined-tail",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "club-tail"
+      ],
+      "sockets": [
+        "tail"
+      ],
+      "capabilities": [
+        "armor"
+      ],
+      "registryMass": 0.35,
+      "registryUpkeep": 0.12,
+      "implementedScope": "Existing ground/swim modifiers, not general mechanical thrust/support.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "whip-tail",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "balance-tail"
+      ],
+      "sockets": [
+        "tail"
+      ],
+      "capabilities": [
+        "strike"
+      ],
+      "registryMass": 0.35,
+      "registryUpkeep": 0.08,
+      "implementedScope": "Existing ground/swim modifiers, not general mechanical thrust/support.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "prehensile-tail",
+      "status": "PARTIAL",
+      "prerequisites": [
+        "balance-tail"
+      ],
+      "sockets": [
+        "tail"
+      ],
+      "capabilities": [
+        "carry"
+      ],
+      "registryMass": 0.35,
+      "registryUpkeep": 0.08,
+      "implementedScope": "Carrying modifier; grasp anchors, climbing and support missing.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "fat-tail",
+      "status": "PARTIAL",
+      "prerequisites": [],
+      "sockets": [
+        "tail"
+      ],
+      "capabilities": [
+        "store"
+      ],
+      "registryMass": 0.35,
+      "registryUpkeep": 0.04,
+      "implementedScope": "Metabolism/sprint modifier; explicit filled energy reserve missing.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "flag-tail",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "balance-tail"
+      ],
+      "sockets": [
+        "tail"
+      ],
+      "capabilities": [
+        "display",
+        "flare"
+      ],
+      "registryMass": 0.35,
+      "registryUpkeep": 0.04,
+      "implementedScope": "Existing ground/swim modifiers, not general mechanical thrust/support.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "sail-fin",
+      "status": "PARTIAL",
+      "prerequisites": [],
+      "sockets": [
+        "dorsal"
+      ],
+      "capabilities": [
+        "store"
+      ],
+      "registryMass": 0.3,
+      "registryUpkeep": 0.06,
+      "implementedScope": "Water-use/sprint modifier; real thermal exchange missing.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "spine-ridge",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "dorsal"
+      ],
+      "capabilities": [
+        "brace"
+      ],
+      "registryMass": 0.3,
+      "registryUpkeep": 0.08,
+      "implementedScope": "Shared damage/contact/brace tradeoff; material mechanics uncalibrated.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "water-hump",
+      "status": "PARTIAL",
+      "prerequisites": [
+        "sail-fin"
+      ],
+      "sockets": [
+        "dorsal"
+      ],
+      "capabilities": [
+        "store"
+      ],
+      "registryMass": 0.3,
+      "registryUpkeep": 0.06,
+      "implementedScope": "Water-use/land modifier; explicit filled water store missing.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "display-frill",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "signal-crest"
+      ],
+      "sockets": [
+        "dorsal"
+      ],
+      "capabilities": [
+        "display",
+        "flare"
+      ],
+      "registryMass": 0.3,
+      "registryUpkeep": 0.06,
+      "implementedScope": "Existing display/signal/courtship actions and presentation.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "moss-back",
+      "status": "PARTIAL",
+      "prerequisites": [],
+      "sockets": [
+        "dorsal"
+      ],
+      "capabilities": [
+        "quiet"
+      ],
+      "registryMass": 0.3,
+      "registryUpkeep": 0.06,
+      "implementedScope": "Concealment modifier; no autonomous symbiotic producer.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "thorn-carapace",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "armor-plate"
+      ],
+      "sockets": [
+        "dorsal"
+      ],
+      "capabilities": [
+        "armor",
+        "retaliate"
+      ],
+      "registryMass": 0.84,
+      "registryUpkeep": 0.17,
+      "implementedScope": "Shared damage/contact/brace tradeoff; material mechanics uncalibrated.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "sensory-quills",
+      "status": "PARTIAL",
+      "prerequisites": [
+        "spine-ridge"
+      ],
+      "sockets": [
+        "dorsal"
+      ],
+      "capabilities": [
+        "glance"
+      ],
+      "registryMass": 0.3,
+      "registryUpkeep": 0.07,
+      "implementedScope": "Threat modifier; tactile signal model missing.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "fat-pad",
+      "status": "PARTIAL",
+      "prerequisites": [],
+      "sockets": [
+        "flank"
+      ],
+      "capabilities": [
+        "store"
+      ],
+      "registryMass": 0.3,
+      "registryUpkeep": 0.03,
+      "implementedScope": "Metabolic modifier; reserve/insulation tissue missing.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "gill-slits",
+      "status": "PARTIAL",
+      "prerequisites": [
+        "storage-sac"
+      ],
+      "sockets": [
+        "flank"
+      ],
+      "capabilities": [
+        "swim"
+      ],
+      "registryMass": 0.3,
+      "registryUpkeep": 0.08,
+      "implementedScope": "Aquatic score, refill/dry-out, swim effects; oxygen extraction/osmoregulation missing.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "scent-gland",
+      "status": "PARTIAL",
+      "prerequisites": [],
+      "sockets": [
+        "flank"
+      ],
+      "capabilities": [
+        "display",
+        "scent"
+      ],
+      "registryMass": 0.3,
+      "registryUpkeep": 0.05,
+      "implementedScope": "Courtship/visibility modifier; transported chemical sensing missing.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "spine-cluster",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "armor-plate"
+      ],
+      "sockets": [
+        "flank"
+      ],
+      "capabilities": [
+        "retaliate"
+      ],
+      "registryMass": 0.3,
+      "registryUpkeep": 0.08,
+      "implementedScope": "Shared damage/contact/brace tradeoff; material mechanics uncalibrated.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "brood-pouch",
+      "status": "PARTIAL",
+      "prerequisites": [
+        "storage-sac"
+      ],
+      "sockets": [
+        "flank"
+      ],
+      "capabilities": [
+        "carry"
+      ],
+      "registryMass": 0.3,
+      "registryUpkeep": 0.05,
+      "implementedScope": "Carrying/sprint modifiers; paid pouch-specific brood protection missing.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "egg-chamber",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "flank"
+      ],
+      "capabilities": [
+        "lay-eggs"
+      ],
+      "registryMass": 0.8,
+      "registryUpkeep": 0.22,
+      "implementedScope": "Funded egg lifecycle/laying; new habitat/physiology integration pending.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "live-womb",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "flank"
+      ],
+      "capabilities": [
+        "live-birth"
+      ],
+      "registryMass": 1.1,
+      "registryUpkeep": 0.36,
+      "implementedScope": "Funded live birth/dual-path cost; not proof of mammalian physiology.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "hook-spur",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "claw"
+      ],
+      "sockets": [
+        "spur"
+      ],
+      "capabilities": [
+        "strike"
+      ],
+      "registryMass": 0.08,
+      "registryUpkeep": 0.03,
+      "implementedScope": "Shared strike/retaliation/venom path with abstract upkeep.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "dew-claw",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [],
+      "sockets": [
+        "spur"
+      ],
+      "capabilities": [
+        "brace"
+      ],
+      "registryMass": 0.08,
+      "registryUpkeep": 0.02,
+      "implementedScope": "Shared damage/contact/brace tradeoff; material mechanics uncalibrated.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "heel-spike",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "barb"
+      ],
+      "sockets": [
+        "spur"
+      ],
+      "capabilities": [
+        "armor"
+      ],
+      "registryMass": 0.08,
+      "registryUpkeep": 0.03,
+      "implementedScope": "Shared damage/contact/brace tradeoff; material mechanics uncalibrated.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "sensory-bristle",
+      "status": "PARTIAL",
+      "prerequisites": [],
+      "sockets": [
+        "spur"
+      ],
+      "capabilities": [
+        "glance"
+      ],
+      "registryMass": 0.08,
+      "registryUpkeep": 0.02,
+      "implementedScope": "Threat modifier; contact-vibration modality missing.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "grip-pad",
+      "status": "PARTIAL",
+      "prerequisites": [],
+      "sockets": [
+        "spur"
+      ],
+      "capabilities": [
+        "run"
+      ],
+      "registryMass": 0.08,
+      "registryUpkeep": 0.02,
+      "implementedScope": "Ground/brace coefficients; climbing missing.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    },
+    {
+      "id": "kick-spur",
+      "status": "FUNCTIONAL (bounded)",
+      "prerequisites": [
+        "claw"
+      ],
+      "sockets": [
+        "spur"
+      ],
+      "capabilities": [
+        "strike"
+      ],
+      "registryMass": 0.08,
+      "registryUpkeep": 0.03,
+      "implementedScope": "Shared strike/retaliation/venom path with abstract upkeep.",
+      "naturalRouteBlocked": false,
+      "physicalCostStatus": "PARTIAL: metadata mass is not live mass; abstract upkeep"
+    }
+  ]
+}

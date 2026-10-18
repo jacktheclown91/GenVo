@@ -1,0 +1,6674 @@
+{
+  "scope": "Actual old day54 save, explicit future-opportunity migration. Animals, world, stats and RNG unchanged at load; same current-policy12-update continuation. Instantaneous old-formula/current food opportunity comparisons retain all outcomes; no preferred population target or long-run survival claim.",
+  "input": "docs/player-journey/native-save-continuation-1/checkpoint.snapshot.bin",
+  "inputSha256": "c401ef786faea8940f0e5fa2e927be32e0ee26f47bd9711f8cbabf0dfe6a8435",
+  "rules": {
+    "schema": 1,
+    "populationFeedback": "local-opportunity/1",
+    "preyOpportunity": "local-edible-biomass/1"
+  },
+  "history": [
+    {
+      "from": {
+        "schema": 1,
+        "populationFeedback": "local-opportunity/1"
+      },
+      "to": {
+        "schema": 1,
+        "populationFeedback": "local-opportunity/1",
+        "preyOpportunity": "local-edible-biomass/1"
+      },
+      "tick": 2564,
+      "scope": "Future behavior: no founder-relative reproductive boost, search-radius expansion, sibling relaxation or global-count prey refuge. Hunter resource opportunity now measures accessible local remaining edible biomass plus surveyed local usable nutrition in existing carcass-equivalent units; unchanged minPrey numerical requirements use these units instead of headcount/global-adult units. Accessible carrion is included for every mouth that can eat it; metabolic competitor weighting is unchanged. Existing organisms, ancestry, RNG, pending gestations and resource stocks unchanged; local opportunity and consent remain authoritative."
+    }
+  ],
+  "exactLoadPreservation": true,
+  "actualPendingPregnancies": 15,
+  "eggs": 0,
+  "actualAdvanceUpdates": 12,
+  "completeContinuationEqual": true,
+  "actors": 245,
+  "hunters": 4,
+  "changedAllowed": 0,
+  "rows": [
+    {
+      "id": 1,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 3,
+        "ratio": 0.5714285714285714,
+        "crowd": 0.7076411960132891,
+        "resource": 1.0088812743342257,
+        "resourceValue": 9.435525097336903,
+        "driveRate": 0.14278519032105655,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 3,
+        "ratio": 0.5714285714285714,
+        "crowd": 0.7076411960132891,
+        "resource": 1.0088812743342257,
+        "resourceValue": 9.435525097336903,
+        "driveRate": 0.14278519032105655,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 2,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 9,
+        "competitors": 7.388337090349738,
+        "ratio": 1.1983338700499626,
+        "crowd": 0,
+        "resource": 0.6529008914662375,
+        "resourceValue": 8.01160356586495,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 9,
+        "competitors": 7.388337090349738,
+        "ratio": 1.1983338700499626,
+        "crowd": 0,
+        "resource": 0.6529008914662375,
+        "resourceValue": 8.01160356586495,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 3,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 7,
+        "ratio": 1.1428571428571428,
+        "crowd": 0.04318936877076429,
+        "resource": 0.6529008914662375,
+        "resourceValue": 8.01160356586495,
+        "driveRate": 0.005639675474459218,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 7,
+        "ratio": 1.1428571428571428,
+        "crowd": 0.04318936877076429,
+        "resource": 0.6529008914662375,
+        "resourceValue": 8.01160356586495,
+        "driveRate": 0.005639675474459218,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 4,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.251173105828912,
+        "ratio": 0.8930247294041304,
+        "crowd": 0.3336921751114763,
+        "resource": 0.6751234064241558,
+        "resourceValue": 8.100493625696624,
+        "driveRate": 0.04505667959166916,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.251173105828912,
+        "ratio": 0.8930247294041304,
+        "crowd": 0.3336921751114763,
+        "resource": 0.6751234064241558,
+        "resourceValue": 8.100493625696624,
+        "driveRate": 0.04505667959166916,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 5,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 5,
+        "ratio": 0.8571428571428571,
+        "crowd": 0.3754152823920266,
+        "resource": 0.912827056582366,
+        "resourceValue": 9.051308226329464,
+        "driveRate": 0.06853784544439027,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 5,
+        "ratio": 0.8571428571428571,
+        "crowd": 0.3754152823920266,
+        "resource": 0.912827056582366,
+        "resourceValue": 9.051308226329464,
+        "driveRate": 0.06853784544439027,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 6,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 12,
+        "competitors": 7.030286665508167,
+        "ratio": 1.1471838093583098,
+        "crowd": 0.03815836121126781,
+        "resource": 1.0202583101558047,
+        "resourceValue": 9.48103324062322,
+        "driveRate": 0.007786277025544581,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 12,
+        "competitors": 7.030286665508167,
+        "ratio": 1.1471838093583098,
+        "crowd": 0.03815836121126781,
+        "resource": 1.0202583101558047,
+        "resourceValue": 9.48103324062322,
+        "driveRate": 0.007786277025544581,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 7,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.7142857142857143,
+        "crowd": 0.5415282392026578,
+        "resource": 0.7832662827766903,
+        "resourceValue": 8.533065131106762,
+        "driveRate": 0.08483216218777444,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.7142857142857143,
+        "crowd": 0.5415282392026578,
+        "resource": 0.7832662827766903,
+        "resourceValue": 8.533065131106762,
+        "driveRate": 0.08483216218777444,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 8,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 2.7953295667290536,
+        "ratio": 0.5421899381041505,
+        "crowd": 0.741639606855639,
+        "resource": 0.6214954034399556,
+        "resourceValue": 7.885981613759823,
+        "driveRate": 0.09218512133395908,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 2.7953295667290536,
+        "ratio": 0.5421899381041505,
+        "crowd": 0.741639606855639,
+        "resource": 0.6214954034399556,
+        "resourceValue": 7.885981613759823,
+        "driveRate": 0.09218512133395908,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 9,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.383859543776592,
+        "ratio": 0.340551363396656,
+        "crowd": 0.9761030658178419,
+        "resource": 0.5779268478694353,
+        "resourceValue": 7.711707391477741,
+        "driveRate": 0.11282323360475946,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.383859543776592,
+        "ratio": 0.340551363396656,
+        "crowd": 0.9761030658178419,
+        "resource": 0.5779268478694353,
+        "resourceValue": 7.711707391477741,
+        "driveRate": 0.11282323360475946,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 10,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 10,
+        "competitors": 5.6035631416534795,
+        "ratio": 0.9433661630933542,
+        "crowd": 0.27515562431005325,
+        "resource": 0.8713148072142975,
+        "resourceValue": 8.88525922885719,
+        "driveRate": 0.047949433949928746,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 10,
+        "competitors": 5.6035631416534795,
+        "ratio": 0.9433661630933542,
+        "crowd": 0.27515562431005325,
+        "resource": 0.8713148072142975,
+        "resourceValue": 8.88525922885719,
+        "driveRate": 0.047949433949928746,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 11,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.7142857142857143,
+        "crowd": 0.5415282392026578,
+        "resource": 0.912827056582366,
+        "resourceValue": 9.051308226329464,
+        "driveRate": 0.09886432572951871,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.7142857142857143,
+        "crowd": 0.5415282392026578,
+        "resource": 0.912827056582366,
+        "resourceValue": 9.051308226329464,
+        "driveRate": 0.09886432572951871,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 12,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 5.455912443724012,
+        "ratio": 0.9222732062462874,
+        "crowd": 0.2996823183182704,
+        "resource": 0.7562806418167329,
+        "resourceValue": 8.425122567266932,
+        "driveRate": 0.045328787207773606,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 5.455912443724012,
+        "ratio": 0.9222732062462874,
+        "crowd": 0.2996823183182704,
+        "resource": 0.7562806418167329,
+        "resourceValue": 8.425122567266932,
+        "driveRate": 0.045328787207773606,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 13,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 1,
+        "ratio": 0.2857142857142857,
+        "crowd": 1,
+        "resource": 1.08,
+        "resourceValue": 10.016236068812452,
+        "driveRate": 0.21600000000000003,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 1,
+        "ratio": 0.2857142857142857,
+        "crowd": 1,
+        "resource": 1.08,
+        "resourceValue": 10.016236068812452,
+        "driveRate": 0.21600000000000003,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 15,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 7.181302894678321,
+        "ratio": 1.1687575563826174,
+        "crowd": 0.013072608857421786,
+        "resource": 0.6529008914662375,
+        "resourceValue": 8.01160356586495,
+        "driveRate": 0.0017070235953600234,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 7.181302894678321,
+        "ratio": 1.1687575563826174,
+        "crowd": 0.013072608857421786,
+        "resource": 0.6529008914662375,
+        "resourceValue": 8.01160356586495,
+        "driveRate": 0.0017070235953600234,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 16,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 3.433514239356282,
+        "ratio": 0.6333591770508974,
+        "crowd": 0.6356288638943053,
+        "resource": 0.6743604200508555,
+        "resourceValue": 8.097441680203422,
+        "driveRate": 0.08572858953044235,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 3.433514239356282,
+        "ratio": 0.6333591770508974,
+        "crowd": 0.6356288638943053,
+        "resource": 0.6743604200508555,
+        "resourceValue": 8.097441680203422,
+        "driveRate": 0.08572858953044235,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 17,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 0.44250684864072387,
+        "ratio": 0.20607240694867482,
+        "crowd": 1,
+        "resource": 0.7647864953164092,
+        "resourceValue": 8.459145981265637,
+        "driveRate": 0.15295729906328184,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 0.44250684864072387,
+        "ratio": 0.20607240694867482,
+        "crowd": 1,
+        "resource": 0.7647864953164092,
+        "resourceValue": 8.459145981265637,
+        "driveRate": 0.15295729906328184,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 18,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 11,
+        "competitors": 4.956281909255614,
+        "ratio": 0.8508974156079449,
+        "crowd": 0.382677423711692,
+        "resource": 0.9183481283807309,
+        "resourceValue": 9.073392513522924,
+        "driveRate": 0.07028621916783845,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 11,
+        "competitors": 4.956281909255614,
+        "ratio": 0.8508974156079449,
+        "crowd": 0.382677423711692,
+        "resource": 0.9183481283807309,
+        "resourceValue": 9.073392513522924,
+        "driveRate": 0.07028621916783845,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 19,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0.9116798327934545,
+        "resourceValue": 9.046719331173819,
+        "driveRate": 0.18233596655869092,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0.9116798327934545,
+        "resourceValue": 9.046719331173819,
+        "driveRate": 0.18233596655869092,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 20,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 5.4839553101364436,
+        "ratio": 0.9262793300194919,
+        "crowd": 0.2950240348610559,
+        "resource": 0.9888182816283893,
+        "resourceValue": 9.355273126513557,
+        "driveRate": 0.05834503183807666,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 5.4839553101364436,
+        "ratio": 0.9262793300194919,
+        "crowd": 0.2950240348610559,
+        "resource": 0.9888182816283893,
+        "resourceValue": 9.355273126513557,
+        "driveRate": 0.05834503183807666,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 21,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 1,
+        "ratio": 0.2857142857142857,
+        "crowd": 1,
+        "resource": 1.08,
+        "resourceValue": 10.016236068812452,
+        "driveRate": 0.21600000000000003,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 1,
+        "ratio": 0.2857142857142857,
+        "crowd": 1,
+        "resource": 1.08,
+        "resourceValue": 10.016236068812452,
+        "driveRate": 0.21600000000000003,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 22,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 5.4839553101364436,
+        "ratio": 0.9262793300194919,
+        "crowd": 0.2950240348610559,
+        "resource": 0.9888182816283893,
+        "resourceValue": 9.355273126513557,
+        "driveRate": 0.05834503183807666,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 5.4839553101364436,
+        "ratio": 0.9262793300194919,
+        "crowd": 0.2950240348610559,
+        "resource": 0.9888182816283893,
+        "resourceValue": 9.355273126513557,
+        "driveRate": 0.05834503183807666,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 23,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 1,
+        "ratio": 0.2857142857142857,
+        "crowd": 1,
+        "resource": 0.9548751353825002,
+        "resourceValue": 9.219500541530001,
+        "driveRate": 0.19097502707650005,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 1,
+        "ratio": 0.2857142857142857,
+        "crowd": 1,
+        "resource": 0.9548751353825002,
+        "resourceValue": 9.219500541530001,
+        "driveRate": 0.19097502707650005,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 24,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 5.4839553101364436,
+        "ratio": 0.9262793300194919,
+        "crowd": 0.2950240348610559,
+        "resource": 0.9888182816283893,
+        "resourceValue": 9.355273126513557,
+        "driveRate": 0.05834503183807666,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 5.4839553101364436,
+        "ratio": 0.9262793300194919,
+        "crowd": 0.2950240348610559,
+        "resource": 0.9888182816283893,
+        "resourceValue": 9.355273126513557,
+        "driveRate": 0.05834503183807666,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 25,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.40295422594391,
+        "ratio": 0.9147077465634157,
+        "crowd": 0.30847936446114466,
+        "resource": 0.73978622019755,
+        "resourceValue": 8.3591448807902,
+        "driveRate": 0.04564175660873053,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.40295422594391,
+        "ratio": 0.9147077465634157,
+        "crowd": 0.30847936446114466,
+        "resource": 0.73978622019755,
+        "resourceValue": 8.3591448807902,
+        "driveRate": 0.04564175660873053,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 26,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 4.905359105251545,
+        "ratio": 0.8436227293216493,
+        "crowd": 0.39113636125389617,
+        "resource": 0.6751234064241558,
+        "resourceValue": 8.100493625696624,
+        "driveRate": 0.052813062517215924,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 4.905359105251545,
+        "ratio": 0.8436227293216493,
+        "crowd": 0.39113636125389617,
+        "resource": 0.6751234064241558,
+        "resourceValue": 8.100493625696624,
+        "driveRate": 0.052813062517215924,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 27,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.42857142857142855,
+        "crowd": 0.8737541528239203,
+        "resource": 0.8966962265136518,
+        "resourceValue": 8.986784906054607,
+        "driveRate": 0.1566984103475684,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.42857142857142855,
+        "crowd": 0.8737541528239203,
+        "resource": 0.8966962265136518,
+        "resourceValue": 8.986784906054607,
+        "driveRate": 0.1566984103475684,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 28,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 3.4921925842539503,
+        "ratio": 0.6417417977505643,
+        "crowd": 0.6258816305225996,
+        "resource": 0.9159116770978692,
+        "resourceValue": 9.063646708391477,
+        "driveRate": 0.11465045877534064,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 3.4921925842539503,
+        "ratio": 0.6417417977505643,
+        "crowd": 0.6258816305225996,
+        "resource": 0.9159116770978692,
+        "resourceValue": 9.063646708391477,
+        "driveRate": 0.11465045877534064,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 29,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.42857142857142855,
+        "crowd": 0.8737541528239203,
+        "resource": 0.7832662827766903,
+        "resourceValue": 8.533065131106762,
+        "driveRate": 0.13687643346861766,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.42857142857142855,
+        "crowd": 0.8737541528239203,
+        "resource": 0.7832662827766903,
+        "resourceValue": 8.533065131106762,
+        "driveRate": 0.13687643346861766,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 30,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 4.6989935027387695,
+        "ratio": 0.8141419289626813,
+        "crowd": 0.4254163616713008,
+        "resource": 0.7562806418167329,
+        "resourceValue": 8.425122567266932,
+        "driveRate": 0.06434683180882216,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 4.6989935027387695,
+        "ratio": 0.8141419289626813,
+        "crowd": 0.4254163616713008,
+        "resource": 0.7562806418167329,
+        "resourceValue": 8.425122567266932,
+        "driveRate": 0.06434683180882216,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 31,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.7142857142857143,
+        "crowd": 0.5415282392026578,
+        "resource": 0.7318659850949474,
+        "resourceValue": 8.32746394037979,
+        "driveRate": 0.0792652196481571,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.7142857142857143,
+        "crowd": 0.5415282392026578,
+        "resource": 0.7318659850949474,
+        "resourceValue": 8.32746394037979,
+        "driveRate": 0.0792652196481571,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 32,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 4.497432302730035,
+        "ratio": 0.7853474718185763,
+        "crowd": 0.4588982885830508,
+        "resource": 0.8713148072142975,
+        "resourceValue": 8.88525922885719,
+        "driveRate": 0.07996897476954241,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 4.497432302730035,
+        "ratio": 0.7853474718185763,
+        "crowd": 0.4588982885830508,
+        "resource": 0.8713148072142975,
+        "resourceValue": 8.88525922885719,
+        "driveRate": 0.07996897476954241,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 33,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 4.329937063416857,
+        "ratio": 0.7614195804881224,
+        "crowd": 0.4867214180370669,
+        "resource": 1.0049740715933426,
+        "resourceValue": 9.41989628637337,
+        "driveRate": 0.0978284810432793,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 4.329937063416857,
+        "ratio": 0.7614195804881224,
+        "crowd": 0.4867214180370669,
+        "resource": 1.0049740715933426,
+        "resourceValue": 9.41989628637337,
+        "driveRate": 0.0978284810432793,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 34,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.251173105828912,
+        "ratio": 0.8930247294041304,
+        "crowd": 0.3336921751114763,
+        "resource": 0.6751234064241558,
+        "resourceValue": 8.100493625696624,
+        "driveRate": 0.04505667959166916,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.251173105828912,
+        "ratio": 0.8930247294041304,
+        "crowd": 0.3336921751114763,
+        "resource": 0.6751234064241558,
+        "resourceValue": 8.100493625696624,
+        "driveRate": 0.04505667959166916,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 35,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 4.764765020892062,
+        "ratio": 0.8235378601274375,
+        "crowd": 0.4144908603169333,
+        "resource": 0.932538070367464,
+        "resourceValue": 9.130152281469856,
+        "driveRate": 0.07730570141298061,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 4.764765020892062,
+        "ratio": 0.8235378601274375,
+        "crowd": 0.4144908603169333,
+        "resource": 0.932538070367464,
+        "resourceValue": 9.130152281469856,
+        "driveRate": 0.07730570141298061,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 36,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 7.595586505264186,
+        "ratio": 1.2279409293234553,
+        "crowd": 0,
+        "resource": 0.9862240312801145,
+        "resourceValue": 9.344896125120458,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 7.595586505264186,
+        "ratio": 1.2279409293234553,
+        "crowd": 0,
+        "resource": 0.9862240312801145,
+        "resourceValue": 9.344896125120458,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 37,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 5.80590845188782,
+        "ratio": 0.9722726359839743,
+        "crowd": 0.24154344653026238,
+        "resource": 0.73978622019755,
+        "resourceValue": 8.3591448807902,
+        "driveRate": 0.035738102664422365,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 5.80590845188782,
+        "ratio": 0.9722726359839743,
+        "crowd": 0.24154344653026238,
+        "resource": 0.73978622019755,
+        "resourceValue": 8.3591448807902,
+        "driveRate": 0.035738102664422365,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 38,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 2.7988816651662582,
+        "ratio": 0.5426973807380369,
+        "crowd": 0.7410495572813525,
+        "resource": 0.6450383315669181,
+        "resourceValue": 7.980153326267673,
+        "driveRate": 0.09560107400743338,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 2.7988816651662582,
+        "ratio": 0.5426973807380369,
+        "crowd": 0.7410495572813525,
+        "resource": 0.6450383315669181,
+        "resourceValue": 7.980153326267673,
+        "driveRate": 0.09560107400743338,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 39,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 5.764765020892062,
+        "ratio": 0.9663950029845803,
+        "crowd": 0.24837790350630207,
+        "resource": 0.932538070367464,
+        "resourceValue": 9.130152281469856,
+        "driveRate": 0.04632437017153662,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 5.764765020892062,
+        "ratio": 0.9663950029845803,
+        "crowd": 0.24837790350630207,
+        "resource": 0.932538070367464,
+        "resourceValue": 9.130152281469856,
+        "driveRate": 0.04632437017153662,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 40,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 2.7953295667290536,
+        "ratio": 0.5421899381041505,
+        "crowd": 0.741639606855639,
+        "resource": 0.6214954034399556,
+        "resourceValue": 7.885981613759823,
+        "driveRate": 0.09218512133395908,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 2.7953295667290536,
+        "ratio": 0.5421899381041505,
+        "crowd": 0.741639606855639,
+        "resource": 0.6214954034399556,
+        "resourceValue": 7.885981613759823,
+        "driveRate": 0.09218512133395908,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 41,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.415815120559882,
+        "ratio": 0.9165450172228403,
+        "crowd": 0.30634300322925534,
+        "resource": 0.8040999440971324,
+        "resourceValue": 8.61639977638853,
+        "driveRate": 0.04926607835423838,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.415815120559882,
+        "ratio": 0.9165450172228403,
+        "crowd": 0.30634300322925534,
+        "resource": 0.8040999440971324,
+        "resourceValue": 8.61639977638853,
+        "driveRate": 0.04926607835423838,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 42,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 5.207502469636727,
+        "ratio": 0.886786067090961,
+        "crowd": 0.34094643361516164,
+        "resource": 0.9888182816283893,
+        "resourceValue": 9.355273126513557,
+        "driveRate": 0.06742681332293436,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 5.207502469636727,
+        "ratio": 0.886786067090961,
+        "crowd": 0.34094643361516164,
+        "resource": 0.9888182816283893,
+        "resourceValue": 9.355273126513557,
+        "driveRate": 0.06742681332293436,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 43,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0.9168579454351282,
+        "resourceValue": 9.067431781740513,
+        "driveRate": 0.18337158908702567,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0.9168579454351282,
+        "resourceValue": 9.067431781740513,
+        "driveRate": 0.18337158908702567,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 44,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 12,
+        "competitors": 7.051218879842751,
+        "ratio": 1.1501741256918214,
+        "crowd": 0.034681249195556485,
+        "resource": 0.9862240312801145,
+        "resourceValue": 9.344896125120458,
+        "driveRate": 0.006840696278294389,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 12,
+        "competitors": 7.051218879842751,
+        "ratio": 1.1501741256918214,
+        "crowd": 0.034681249195556485,
+        "resource": 0.9862240312801145,
+        "resourceValue": 9.344896125120458,
+        "driveRate": 0.006840696278294389,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 45,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0.8836394779691803,
+        "resourceValue": 8.934557911876722,
+        "driveRate": 0.17672789559383606,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0.8836394779691803,
+        "resourceValue": 8.934557911876722,
+        "driveRate": 0.17672789559383606,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 46,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 5.9474353715547235,
+        "ratio": 0.9924907673649604,
+        "crowd": 0.21803399143609248,
+        "resource": 0.8624460851523206,
+        "resourceValue": 8.849784340609283,
+        "driveRate": 0.03760851246883851,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 5.9474353715547235,
+        "ratio": 0.9924907673649604,
+        "crowd": 0.21803399143609248,
+        "resource": 0.8624460851523206,
+        "resourceValue": 8.849784340609283,
+        "driveRate": 0.03760851246883851,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 47,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 0.8082587170342599,
+        "ratio": 0.2583226738620371,
+        "crowd": 1,
+        "resource": 0.8023303665669577,
+        "resourceValue": 8.609321466267831,
+        "driveRate": 0.16046607331339155,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 0.8082587170342599,
+        "ratio": 0.2583226738620371,
+        "crowd": 1,
+        "resource": 0.8023303665669577,
+        "resourceValue": 8.609321466267831,
+        "driveRate": 0.16046607331339155,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 48,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.590659133458107,
+        "ratio": 0.9415227333511582,
+        "crowd": 0.27729914726609517,
+        "resource": 0.6214954034399556,
+        "resourceValue": 7.885981613759823,
+        "driveRate": 0.034468029080739496,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.590659133458107,
+        "ratio": 0.9415227333511582,
+        "crowd": 0.27729914726609517,
+        "resource": 0.6214954034399556,
+        "resourceValue": 7.885981613759823,
+        "driveRate": 0.034468029080739496,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 49,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.42857142857142855,
+        "crowd": 0.8737541528239203,
+        "resource": 1.0088812743342257,
+        "resourceValue": 9.435525097336903,
+        "driveRate": 0.17630284063116372,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.42857142857142855,
+        "crowd": 0.8737541528239203,
+        "resource": 1.0088812743342257,
+        "resourceValue": 9.435525097336903,
+        "driveRate": 0.17630284063116372,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 50,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0.49737528654788754,
+        "resourceValue": 7.3895011461915505,
+        "driveRate": 0.09947505730957751,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0.49737528654788754,
+        "resourceValue": 7.3895011461915505,
+        "driveRate": 0.09947505730957751,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 52,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 5.581910842426801,
+        "ratio": 0.940272977489543,
+        "crowd": 0.2787523517563453,
+        "resource": 1.0049740715933426,
+        "resourceValue": 9.41989628637337,
+        "driveRate": 0.056027777182158796,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 5.581910842426801,
+        "ratio": 0.940272977489543,
+        "crowd": 0.2787523517563453,
+        "resource": 1.0049740715933426,
+        "resourceValue": 9.41989628637337,
+        "driveRate": 0.056027777182158796,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 53,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.42857142857142855,
+        "crowd": 0.8737541528239203,
+        "resource": 0.7318659850949474,
+        "resourceValue": 8.32746394037979,
+        "driveRate": 0.12789418875745595,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.42857142857142855,
+        "crowd": 0.8737541528239203,
+        "resource": 0.7318659850949474,
+        "resourceValue": 8.32746394037979,
+        "driveRate": 0.12789418875745595,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 55,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 5,
+        "ratio": 0.8571428571428571,
+        "crowd": 0.3754152823920266,
+        "resource": 0.912827056582366,
+        "resourceValue": 9.051308226329464,
+        "driveRate": 0.06853784544439027,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 5,
+        "ratio": 0.8571428571428571,
+        "crowd": 0.3754152823920266,
+        "resource": 0.912827056582366,
+        "resourceValue": 9.051308226329464,
+        "driveRate": 0.06853784544439027,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 56,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 0.44367266454553644,
+        "ratio": 0.20623895207793377,
+        "crowd": 1,
+        "resource": 0.8271406820890115,
+        "resourceValue": 8.708562728356046,
+        "driveRate": 0.1654281364178023,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 0.44367266454553644,
+        "ratio": 0.20623895207793377,
+        "crowd": 1,
+        "resource": 0.8271406820890115,
+        "resourceValue": 8.708562728356046,
+        "driveRate": 0.1654281364178023,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 57,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 0.4317560518616245,
+        "ratio": 0.20453657883737494,
+        "crowd": 1,
+        "resource": 0.9071390005518891,
+        "resourceValue": 9.028556002207557,
+        "driveRate": 0.18142780011037785,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 0.4317560518616245,
+        "ratio": 0.20453657883737494,
+        "crowd": 1,
+        "resource": 0.9071390005518891,
+        "resourceValue": 9.028556002207557,
+        "driveRate": 0.18142780011037785,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 58,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 5.933618381108108,
+        "ratio": 0.9905169115868725,
+        "crowd": 0.220329172573404,
+        "resource": 0.9275121784283789,
+        "resourceValue": 9.110048713713516,
+        "driveRate": 0.040871598164976035,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 5.933618381108108,
+        "ratio": 0.9905169115868725,
+        "crowd": 0.220329172573404,
+        "resource": 0.9275121784283789,
+        "resourceValue": 9.110048713713516,
+        "driveRate": 0.040871598164976035,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 59,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0.7234040894024969,
+        "resourceValue": 8.293616357609988,
+        "driveRate": 0.14468081788049938,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0.7234040894024969,
+        "resourceValue": 8.293616357609988,
+        "driveRate": 0.14468081788049938,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 60,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 3.637781371351286,
+        "ratio": 0.6625401959073266,
+        "crowd": 0.6016974466193876,
+        "resource": 0.8070903146351318,
+        "resourceValue": 8.628361258540528,
+        "driveRate": 0.09712483630143941,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 3.637781371351286,
+        "ratio": 0.6625401959073266,
+        "crowd": 0.6016974466193876,
+        "resource": 0.8070903146351318,
+        "resourceValue": 8.628361258540528,
+        "driveRate": 0.09712483630143941,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 61,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.4043796245337794,
+        "ratio": 0.34348280350482563,
+        "crowd": 0.9726944145292725,
+        "resource": 0.7584975103315328,
+        "resourceValue": 8.433990041326132,
+        "driveRate": 0.14755725834676825,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.4043796245337794,
+        "ratio": 0.34348280350482563,
+        "crowd": 0.9726944145292725,
+        "resource": 0.7584975103315328,
+        "resourceValue": 8.433990041326132,
+        "driveRate": 0.14755725834676825,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 62,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 2.7988816651662582,
+        "ratio": 0.5426973807380369,
+        "crowd": 0.7410495572813525,
+        "resource": 0.6450383315669181,
+        "resourceValue": 7.980153326267673,
+        "driveRate": 0.09560107400743338,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 2.7988816651662582,
+        "ratio": 0.5426973807380369,
+        "crowd": 0.7410495572813525,
+        "resource": 0.6450383315669181,
+        "resourceValue": 7.980153326267673,
+        "driveRate": 0.09560107400743338,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 63,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 3,
+        "ratio": 0.5714285714285714,
+        "crowd": 0.7076411960132891,
+        "resource": 0.912827056582366,
+        "resourceValue": 9.051308226329464,
+        "driveRate": 0.12919080601464716,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 3,
+        "ratio": 0.5714285714285714,
+        "crowd": 0.7076411960132891,
+        "resource": 0.912827056582366,
+        "resourceValue": 9.051308226329464,
+        "driveRate": 0.12919080601464716,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 64,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 5.455529935288346,
+        "ratio": 0.9222185621840494,
+        "crowd": 0.2997458579255239,
+        "resource": 0.932538070367464,
+        "resourceValue": 9.130152281469856,
+        "driveRate": 0.05590488479010161,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 5.455529935288346,
+        "ratio": 0.9222185621840494,
+        "crowd": 0.2997458579255239,
+        "resource": 0.932538070367464,
+        "resourceValue": 9.130152281469856,
+        "driveRate": 0.05590488479010161,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 65,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 10,
+        "competitors": 4.041179729407545,
+        "ratio": 0.8401966215679241,
+        "crowd": 0.395120207479158,
+        "resource": 0.9267768122184038,
+        "resourceValue": 10.248528698648338,
+        "driveRate": 0.06957576680281559,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 10,
+        "competitors": 4.041179729407545,
+        "ratio": 0.8401966215679241,
+        "crowd": 0.395120207479158,
+        "resource": 0.9267768122184038,
+        "resourceValue": 10.248528698648338,
+        "driveRate": 0.06957576680281559,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 66,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 2.302123910173229,
+        "ratio": 0.5503539850288716,
+        "crowd": 0.7321465290361959,
+        "resource": 0.8451642947341378,
+        "resourceValue": 9.856788614723861,
+        "driveRate": 0.11756897992243545,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 2.302123910173229,
+        "ratio": 0.5503539850288716,
+        "crowd": 0.7321465290361959,
+        "resource": 0.8451642947341378,
+        "resourceValue": 9.856788614723861,
+        "driveRate": 0.11756897992243545,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 67,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 3.4103032803164437,
+        "ratio": 0.7350505467194073,
+        "crowd": 0.5173830852099915,
+        "resource": 0.3839914681420296,
+        "resourceValue": 7.643159047081742,
+        "driveRate": 0.03774743119151112,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 3.4103032803164437,
+        "ratio": 0.7350505467194073,
+        "crowd": 0.5173830852099915,
+        "resource": 0.3839914681420296,
+        "resourceValue": 7.643159047081742,
+        "driveRate": 0.03774743119151112,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 68,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 7.864021905579041,
+        "ratio": 1.4773369842631734,
+        "crowd": 0,
+        "resource": 1.0094818856060535,
+        "resourceValue": 10.645513050909056,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 7.864021905579041,
+        "ratio": 1.4773369842631734,
+        "crowd": 0,
+        "resource": 1.0094818856060535,
+        "resourceValue": 10.645513050909056,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 69,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 5.674119334474871,
+        "ratio": 1.1123532224124786,
+        "crowd": 0.0786590437064203,
+        "resource": 0.5961839950551467,
+        "resourceValue": 8.661683176264704,
+        "driveRate": 0.0089100999555811,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 5.674119334474871,
+        "ratio": 1.1123532224124786,
+        "crowd": 0.0786590437064203,
+        "resource": 0.5961839950551467,
+        "resourceValue": 8.661683176264704,
+        "driveRate": 0.0089100999555811,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 70,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 2.2687440918588795,
+        "ratio": 0.54479068197648,
+        "crowd": 0.7386154860738605,
+        "resource": 0.7979888587786479,
+        "resourceValue": 9.63034652213751,
+        "driveRate": 0.11198731647358008,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 2.2687440918588795,
+        "ratio": 0.54479068197648,
+        "crowd": 0.7386154860738605,
+        "resource": 0.7979888587786479,
+        "resourceValue": 9.63034652213751,
+        "driveRate": 0.11198731647358008,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 71,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 0.7721555685275843,
+        "ratio": 0.29535926142126406,
+        "crowd": 1,
+        "resource": 0.6691378348499871,
+        "resourceValue": 9.011861607279938,
+        "driveRate": 0.12713618862149756,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 0.7721555685275843,
+        "ratio": 0.29535926142126406,
+        "crowd": 1,
+        "resource": 0.6691378348499871,
+        "resourceValue": 9.011861607279938,
+        "driveRate": 0.12713618862149756,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 72,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 4.654691967738501,
+        "ratio": 0.9424486612897501,
+        "crowd": 0.2762224868723835,
+        "resource": 0.8971461283718317,
+        "resourceValue": 10.106301416184792,
+        "driveRate": 0.04708426758669162,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 4.654691967738501,
+        "ratio": 0.9424486612897501,
+        "crowd": 0.2762224868723835,
+        "resource": 0.8971461283718317,
+        "resourceValue": 10.106301416184792,
+        "driveRate": 0.04708426758669162,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 73,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 3.9210170278033423,
+        "ratio": 0.8201695046338905,
+        "crowd": 0.41840755275129005,
+        "resource": 0.8601064248551659,
+        "resourceValue": 9.928510839304796,
+        "driveRate": 0.06837625462256916,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 3.9210170278033423,
+        "ratio": 0.8201695046338905,
+        "crowd": 0.41840755275129005,
+        "resource": 0.8601064248551659,
+        "resourceValue": 9.928510839304796,
+        "driveRate": 0.06837625462256916,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 74,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 4.5914765033143805,
+        "ratio": 0.9319127505523968,
+        "crowd": 0.2884735458693062,
+        "resource": 1.08,
+        "resourceValue": 11.167200777283677,
+        "driveRate": 0.05919477161238163,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 4.5914765033143805,
+        "ratio": 0.9319127505523968,
+        "crowd": 0.2884735458693062,
+        "resource": 1.08,
+        "resourceValue": 11.167200777283677,
+        "driveRate": 0.05919477161238163,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 75,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 3.520857233841327,
+        "ratio": 0.7534762056402212,
+        "crowd": 0.4959579004183474,
+        "resource": 0.34668192494538713,
+        "resourceValue": 7.464073239737858,
+        "driveRate": 0.03266853152569201,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 3.520857233841327,
+        "ratio": 0.7534762056402212,
+        "crowd": 0.4959579004183474,
+        "resource": 0.34668192494538713,
+        "resourceValue": 7.464073239737858,
+        "driveRate": 0.03266853152569201,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 76,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 4.868642781549296,
+        "ratio": 0.9781071302582159,
+        "crowd": 0.2347591508625395,
+        "resource": 0.8645451469714688,
+        "resourceValue": 9.94981670546305,
+        "driveRate": 0.03856237807121678,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 4.868642781549296,
+        "ratio": 0.9781071302582159,
+        "crowd": 0.2347591508625395,
+        "resource": 0.8645451469714688,
+        "resourceValue": 9.94981670546305,
+        "driveRate": 0.03856237807121678,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 77,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.209227676911445,
+        "ratio": 0.36820461281857414,
+        "crowd": 0.943948124629565,
+        "resource": 0.6425212633255867,
+        "resourceValue": 8.884102063962816,
+        "driveRate": 0.11523628089465322,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.209227676911445,
+        "ratio": 0.36820461281857414,
+        "crowd": 0.943948124629565,
+        "resource": 0.6425212633255867,
+        "resourceValue": 8.884102063962816,
+        "driveRate": 0.11523628089465322,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 78,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 4.895533690271758,
+        "ratio": 0.9825889483786264,
+        "crowd": 0.22954773444345755,
+        "resource": 0.5633147455627446,
+        "resourceValue": 8.503910778701174,
+        "driveRate": 0.024568448488278945,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 4.895533690271758,
+        "ratio": 0.9825889483786264,
+        "crowd": 0.22954773444345755,
+        "resource": 0.5633147455627446,
+        "resourceValue": 8.503910778701174,
+        "driveRate": 0.024568448488278945,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 79,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 6.504449045838379,
+        "ratio": 1.2507415076397297,
+        "crowd": 0,
+        "resource": 0.8601064248551659,
+        "resourceValue": 9.928510839304796,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 6.504449045838379,
+        "ratio": 1.2507415076397297,
+        "crowd": 0,
+        "resource": 0.8601064248551659,
+        "resourceValue": 9.928510839304796,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 80,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 15,
+        "competitors": 8.791866268501478,
+        "ratio": 1.631977711416913,
+        "crowd": 0,
+        "resource": 0.8709373024333624,
+        "resourceValue": 9.98049905168014,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 15,
+        "competitors": 8.791866268501478,
+        "ratio": 1.631977711416913,
+        "crowd": 0,
+        "resource": 0.8709373024333624,
+        "resourceValue": 9.98049905168014,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 81,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 5.2048513477016805,
+        "ratio": 1.0341418912836133,
+        "crowd": 0.1696024519957985,
+        "resource": 0.3870345576306996,
+        "resourceValue": 7.657765876627358,
+        "driveRate": 0.012471981896442408,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 5.2048513477016805,
+        "ratio": 1.0341418912836133,
+        "crowd": 0.1696024519957985,
+        "resource": 0.3870345576306996,
+        "resourceValue": 7.657765876627358,
+        "driveRate": 0.012471981896442408,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 82,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 3.60943602850544,
+        "ratio": 0.76823933808424,
+        "crowd": 0.4787914673439069,
+        "resource": 0.790155509488209,
+        "resourceValue": 9.592746445543403,
+        "driveRate": 0.07188074600536906,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 3.60943602850544,
+        "ratio": 0.76823933808424,
+        "crowd": 0.4787914673439069,
+        "resource": 0.790155509488209,
+        "resourceValue": 9.592746445543403,
+        "driveRate": 0.07188074600536906,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 83,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 3.591476503314381,
+        "ratio": 0.7652460838857301,
+        "crowd": 0.4822719954817092,
+        "resource": 1.08,
+        "resourceValue": 11.167200777283677,
+        "driveRate": 0.09896221347284673,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 3.591476503314381,
+        "ratio": 0.7652460838857301,
+        "crowd": 0.4822719954817092,
+        "resource": 1.08,
+        "resourceValue": 11.167200777283677,
+        "driveRate": 0.09896221347284673,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 84,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 11,
+        "competitors": 5.7640692629019075,
+        "ratio": 1.1273448771503178,
+        "crowd": 0.06122688703451418,
+        "resource": 0.9203780673429198,
+        "resourceValue": 10.217814723246015,
+        "driveRate": 0.010706857952067392,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 11,
+        "competitors": 5.7640692629019075,
+        "ratio": 1.1273448771503178,
+        "crowd": 0.06122688703451418,
+        "resource": 0.9203780673429198,
+        "resourceValue": 10.217814723246015,
+        "driveRate": 0.010706857952067392,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 86,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 3.2417104957638587,
+        "ratio": 0.7069517492939764,
+        "crowd": 0.5500561054721205,
+        "resource": 0.5633147455627446,
+        "resourceValue": 8.503910778701174,
+        "driveRate": 0.058872395868859735,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 3.2417104957638587,
+        "ratio": 0.7069517492939764,
+        "crowd": 0.5500561054721205,
+        "resource": 0.5633147455627446,
+        "resourceValue": 8.503910778701174,
+        "driveRate": 0.058872395868859735,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 87,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 13,
+        "competitors": 8.127780460734337,
+        "ratio": 1.521296743455723,
+        "crowd": 0,
+        "resource": 1.0532017076401943,
+        "resourceValue": 10.855368196672933,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 13,
+        "competitors": 8.127780460734337,
+        "ratio": 1.521296743455723,
+        "crowd": 0,
+        "resource": 1.0532017076401943,
+        "resourceValue": 10.855368196672933,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 88,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 2.4103032803164437,
+        "ratio": 0.5683838800527407,
+        "crowd": 0.7111815348223947,
+        "resource": 0.3839914681420296,
+        "resourceValue": 7.643159047081742,
+        "driveRate": 0.05188665191767112,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 2.4103032803164437,
+        "ratio": 0.5683838800527407,
+        "crowd": 0.7111815348223947,
+        "resource": 0.3839914681420296,
+        "resourceValue": 7.643159047081742,
+        "driveRate": 0.05188665191767112,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 89,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 4.654691967738501,
+        "ratio": 0.9424486612897501,
+        "crowd": 0.2762224868723835,
+        "resource": 0.8971461283718317,
+        "resourceValue": 10.106301416184792,
+        "driveRate": 0.04708426758669162,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 4.654691967738501,
+        "ratio": 0.9424486612897501,
+        "crowd": 0.2762224868723835,
+        "resource": 0.8971461283718317,
+        "resourceValue": 10.106301416184792,
+        "driveRate": 0.04708426758669162,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 90,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 15,
+        "competitors": 10.864021905579042,
+        "ratio": 1.9773369842631736,
+        "crowd": 0,
+        "resource": 1.0094818856060535,
+        "resourceValue": 10.645513050909056,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 15,
+        "competitors": 10.864021905579042,
+        "ratio": 1.9773369842631736,
+        "crowd": 0,
+        "resource": 1.0094818856060535,
+        "resourceValue": 10.645513050909056,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 91,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 3.2417104957638587,
+        "ratio": 0.7069517492939764,
+        "crowd": 0.5500561054721205,
+        "resource": 0.5633147455627446,
+        "resourceValue": 8.503910778701174,
+        "driveRate": 0.058872395868859735,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 3.2417104957638587,
+        "ratio": 0.7069517492939764,
+        "crowd": 0.5500561054721205,
+        "resource": 0.5633147455627446,
+        "resourceValue": 8.503910778701174,
+        "driveRate": 0.058872395868859735,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 92,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 2.487524057406068,
+        "ratio": 0.581254009567678,
+        "crowd": 0.6962162679445605,
+        "resource": 0.3934597625439688,
+        "resourceValue": 7.68860686021105,
+        "driveRate": 0.052047286618295836,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 2.487524057406068,
+        "ratio": 0.581254009567678,
+        "crowd": 0.6962162679445605,
+        "resource": 0.3934597625439688,
+        "resourceValue": 7.68860686021105,
+        "driveRate": 0.052047286618295836,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 93,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 3.67411933447487,
+        "ratio": 0.779019889079145,
+        "crowd": 0.46625594293122674,
+        "resource": 0.5961839950551467,
+        "resourceValue": 8.661683176264704,
+        "driveRate": 0.05281512284723922,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 3.67411933447487,
+        "ratio": 0.779019889079145,
+        "crowd": 0.46625594293122674,
+        "resource": 0.5961839950551467,
+        "resourceValue": 8.661683176264704,
+        "driveRate": 0.05281512284723922,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 94,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 0.7200982227213117,
+        "ratio": 0.28668303712021864,
+        "crowd": 1,
+        "resource": 0.6952393467583834,
+        "resourceValue": 9.13714886444024,
+        "driveRate": 0.13209547588409284,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 0.7200982227213117,
+        "ratio": 0.28668303712021864,
+        "crowd": 1,
+        "resource": 0.6952393467583834,
+        "resourceValue": 9.13714886444024,
+        "driveRate": 0.13209547588409284,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 95,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 11,
+        "competitors": 8.089390818487141,
+        "ratio": 1.514898469747857,
+        "crowd": 0,
+        "resource": 0.7979888587786479,
+        "resourceValue": 9.63034652213751,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 11,
+        "competitors": 8.089390818487141,
+        "ratio": 1.514898469747857,
+        "crowd": 0,
+        "resource": 0.7979888587786479,
+        "resourceValue": 9.63034652213751,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 96,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 11,
+        "competitors": 7.155265255191628,
+        "ratio": 1.3592108758652712,
+        "crowd": 0,
+        "resource": 0.8709373024333624,
+        "resourceValue": 9.98049905168014,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 11,
+        "competitors": 7.155265255191628,
+        "ratio": 1.3592108758652712,
+        "crowd": 0,
+        "resource": 0.8709373024333624,
+        "resourceValue": 9.98049905168014,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 101,
+      "species": "needlejaw",
+      "hunter": true,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.875,
+        "resourceValue": 7,
+        "driveRate": 0.07925193798449615,
+        "preyReference": {
+          "mass": 2.1,
+          "source": "living-eligible-adult-unit"
+        }
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.8483180236185163,
+        "resourceValue": 6.78654418894813,
+        "driveRate": 0.07683525417022284,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    },
+    {
+      "id": 103,
+      "species": "needlejaw",
+      "hunter": true,
+      "previous": {
+        "allowed": true,
+        "local": 15,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 1.12,
+        "resourceValue": 12,
+        "driveRate": 0.10144248062015507,
+        "preyReference": {
+          "mass": 2.1,
+          "source": "living-eligible-adult-unit"
+        }
+      },
+      "current": {
+        "allowed": true,
+        "local": 15,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 1.12,
+        "resourceValue": 10.827362054963055,
+        "driveRate": 0.10144248062015507,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    },
+    {
+      "id": 104,
+      "species": "needlejaw",
+      "hunter": true,
+      "previous": {
+        "allowed": true,
+        "local": 44,
+        "competitors": 0.4669837025598513,
+        "ratio": 0.48899456751995046,
+        "crowd": 0.8034946889302902,
+        "resource": 1.12,
+        "resourceValue": 43,
+        "driveRate": 0.08279209274737712,
+        "preyReference": {
+          "mass": 2.1,
+          "source": "living-eligible-adult-unit"
+        }
+      },
+      "current": {
+        "allowed": true,
+        "local": 44,
+        "competitors": 0.4669837025598513,
+        "ratio": 0.48899456751995046,
+        "crowd": 0.8034946889302902,
+        "resource": 1.12,
+        "resourceValue": 40.53045826139853,
+        "driveRate": 0.08279209274737712,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    },
+    {
+      "id": 109,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 3.320876195821919,
+        "ratio": 0.7201460326369865,
+        "crowd": 0.5347139155383878,
+        "resource": 0.6022016607135003,
+        "resourceValue": 7.969026808925351,
+        "driveRate": 0.057961009429890395,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 3.320876195821919,
+        "ratio": 0.7201460326369865,
+        "crowd": 0.5347139155383878,
+        "resource": 0.6022016607135003,
+        "resourceValue": 7.969026808925351,
+        "driveRate": 0.057961009429890395,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 110,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 9,
+        "competitors": 8,
+        "ratio": 1.5,
+        "crowd": 0,
+        "resource": 0.9248058494592198,
+        "resourceValue": 9.291703982782801,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 9,
+        "competitors": 8,
+        "ratio": 1.5,
+        "crowd": 0,
+        "resource": 0.9248058494592198,
+        "resourceValue": 9.291703982782801,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 111,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 9,
+        "competitors": 8,
+        "ratio": 1.5,
+        "crowd": 0,
+        "resource": 0.8122914051022447,
+        "resourceValue": 8.830394760919203,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 9,
+        "competitors": 8,
+        "ratio": 1.5,
+        "crowd": 0,
+        "resource": 0.8122914051022447,
+        "resourceValue": 8.830394760919203,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 112,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 0.49929394185889564,
+        "resourceValue": 7.547105161621472,
+        "driveRate": 0.08987290953460123,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 0.49929394185889564,
+        "resourceValue": 7.547105161621472,
+        "driveRate": 0.08987290953460123,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 113,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 5,
+        "ratio": 1,
+        "crowd": 0.2093023255813954,
+        "resource": 1.08,
+        "resourceValue": 10.303096715127166,
+        "driveRate": 0.04068837209302328,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 5,
+        "ratio": 1,
+        "crowd": 0.2093023255813954,
+        "resource": 1.08,
+        "resourceValue": 10.303096715127166,
+        "driveRate": 0.04068837209302328,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 114,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 4.3792281287848205,
+        "ratio": 0.8965380214641367,
+        "crowd": 0.3296069517858876,
+        "resource": 0.8110665067346585,
+        "resourceValue": 8.8253726776121,
+        "driveRate": 0.048119968616479006,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 4.3792281287848205,
+        "ratio": 0.8965380214641367,
+        "crowd": 0.3296069517858876,
+        "resource": 0.8110665067346585,
+        "resourceValue": 8.8253726776121,
+        "driveRate": 0.048119968616479006,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 115,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.8333333333333334,
+        "crowd": 0.4031007751937984,
+        "resource": 0.5551624201524163,
+        "resourceValue": 7.776165922624907,
+        "driveRate": 0.040281552345942766,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.8333333333333334,
+        "crowd": 0.4031007751937984,
+        "resource": 0.5551624201524163,
+        "resourceValue": 7.776165922624907,
+        "driveRate": 0.040281552345942766,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 116,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 9,
+        "competitors": 6.407215036501276,
+        "ratio": 1.2345358394168793,
+        "crowd": 0,
+        "resource": 0.8143255042969838,
+        "resourceValue": 8.838734567617633,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 9,
+        "competitors": 6.407215036501276,
+        "ratio": 1.2345358394168793,
+        "crowd": 0,
+        "resource": 0.8143255042969838,
+        "resourceValue": 8.838734567617633,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 117,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 11,
+        "ratio": 2,
+        "crowd": 0,
+        "resource": 0.855410533077205,
+        "resourceValue": 9.00718318561654,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 11,
+        "ratio": 2,
+        "crowd": 0,
+        "resource": 0.855410533077205,
+        "resourceValue": 9.00718318561654,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 118,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.8333333333333334,
+        "crowd": 0.4031007751937984,
+        "resource": 0.5551624201524163,
+        "resourceValue": 7.776165922624907,
+        "driveRate": 0.040281552345942766,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.8333333333333334,
+        "crowd": 0.4031007751937984,
+        "resource": 0.5551624201524163,
+        "resourceValue": 7.776165922624907,
+        "driveRate": 0.040281552345942766,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 119,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 6.203607518250638,
+        "ratio": 1.200601253041773,
+        "crowd": 0,
+        "resource": 0.8143255042969838,
+        "resourceValue": 8.838734567617633,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 6.203607518250638,
+        "ratio": 1.200601253041773,
+        "crowd": 0,
+        "resource": 0.8143255042969838,
+        "resourceValue": 8.838734567617633,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 120,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 3,
+        "ratio": 0.6666666666666666,
+        "crowd": 0.5968992248062016,
+        "resource": 0.564843420618468,
+        "resourceValue": 7.815858024535719,
+        "driveRate": 0.06068782798272844,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 3,
+        "ratio": 0.6666666666666666,
+        "crowd": 0.5968992248062016,
+        "resource": 0.564843420618468,
+        "resourceValue": 7.815858024535719,
+        "driveRate": 0.06068782798272844,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 121,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.5,
+        "crowd": 0.7906976744186047,
+        "resource": 0.6973451964236805,
+        "resourceValue": 8.35911530533709,
+        "driveRate": 0.09925006051425408,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.5,
+        "crowd": 0.7906976744186047,
+        "resource": 0.6973451964236805,
+        "resourceValue": 8.35911530533709,
+        "driveRate": 0.09925006051425408,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 122,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 1,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.7057272222199291,
+        "resourceValue": 8.39348161110171,
+        "driveRate": 0.1250614286817642,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 1,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.7057272222199291,
+        "resourceValue": 8.39348161110171,
+        "driveRate": 0.1250614286817642,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 123,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 6,
+        "ratio": 1.1666666666666667,
+        "crowd": 0.015503875968992165,
+        "resource": 0.9248058494592198,
+        "resourceValue": 9.291703982782801,
+        "driveRate": 0.0025808535333745534,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 6,
+        "ratio": 1.1666666666666667,
+        "crowd": 0.015503875968992165,
+        "resource": 0.9248058494592198,
+        "resourceValue": 9.291703982782801,
+        "driveRate": 0.0025808535333745534,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 124,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 0.575394780758212,
+        "resourceValue": 7.859118601108669,
+        "driveRate": 0.10357106053647817,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 0.575394780758212,
+        "resourceValue": 7.859118601108669,
+        "driveRate": 0.10357106053647817,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 125,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 4.549993661129614,
+        "ratio": 0.9249989435216023,
+        "crowd": 0.29651285637022984,
+        "resource": 0.7277024393288124,
+        "resourceValue": 8.48358000124813,
+        "driveRate": 0.03883916319713461,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 4.549993661129614,
+        "ratio": 0.9249989435216023,
+        "crowd": 0.29651285637022984,
+        "resource": 0.7277024393288124,
+        "resourceValue": 8.48358000124813,
+        "driveRate": 0.03883916319713461,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 126,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.819372761544673,
+        "ratio": 0.4698954602574455,
+        "crowd": 0.8257029531890169,
+        "resource": 0.5489466689378126,
+        "resourceValue": 7.750681342645032,
+        "driveRate": 0.08158803942334059,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.819372761544673,
+        "ratio": 0.4698954602574455,
+        "crowd": 0.8257029531890169,
+        "resource": 0.5489466689378126,
+        "resourceValue": 7.750681342645032,
+        "driveRate": 0.08158803942334059,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 127,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 7,
+        "ratio": 1.3333333333333333,
+        "crowd": 0,
+        "resource": 0.8143255042969838,
+        "resourceValue": 8.838734567617633,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 7,
+        "ratio": 1.3333333333333333,
+        "crowd": 0,
+        "resource": 0.8143255042969838,
+        "resourceValue": 8.838734567617633,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 128,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.52939054498503,
+        "ratio": 1.088231757497505,
+        "crowd": 0.10670725872383158,
+        "resource": 0.6123558807403718,
+        "resourceValue": 8.010659111035524,
+        "driveRate": 0.011761707131500073,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.52939054498503,
+        "ratio": 1.088231757497505,
+        "crowd": 0.10670725872383158,
+        "resource": 0.6123558807403718,
+        "resourceValue": 8.010659111035524,
+        "driveRate": 0.011761707131500073,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 129,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 1,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.5483491078254935,
+        "resourceValue": 7.748231342084523,
+        "driveRate": 0.09717256282861073,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 1,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.5483491078254935,
+        "resourceValue": 7.748231342084523,
+        "driveRate": 0.09717256282861073,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 130,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 14,
+        "competitors": 7.465580274656143,
+        "ratio": 1.410930045776024,
+        "crowd": 0,
+        "resource": 0.8374588592063894,
+        "resourceValue": 8.933581322746196,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 14,
+        "competitors": 7.465580274656143,
+        "ratio": 1.410930045776024,
+        "crowd": 0,
+        "resource": 0.8374588592063894,
+        "resourceValue": 8.933581322746196,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 131,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 0.5474723142994384,
+        "resourceValue": 7.744636488627697,
+        "driveRate": 0.09854501657389893,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 0.5474723142994384,
+        "resourceValue": 7.744636488627697,
+        "driveRate": 0.09854501657389893,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 132,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 5,
+        "ratio": 1,
+        "crowd": 0.2093023255813954,
+        "resource": 0.6123558807403718,
+        "resourceValue": 8.010659111035524,
+        "driveRate": 0.02307015178603262,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 5,
+        "ratio": 1,
+        "crowd": 0.2093023255813954,
+        "resource": 0.6123558807403718,
+        "resourceValue": 8.010659111035524,
+        "driveRate": 0.02307015178603262,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 133,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 6,
+        "competitors": 4.124162734574072,
+        "ratio": 0.640520341821759,
+        "crowd": 0.6273019281142338,
+        "resource": 0,
+        "resourceValue": 2.546089726735895,
+        "driveRate": 0.006273019281142338,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 6,
+        "competitors": 4.124162734574072,
+        "ratio": 0.640520341821759,
+        "crowd": 0.6273019281142338,
+        "resource": 0,
+        "resourceValue": 2.546089726735895,
+        "driveRate": 0.006273019281142338,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 134,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 6.3637138810289,
+        "ratio": 0.9204642351286125,
+        "crowd": 0.30178577310626453,
+        "resource": 0.013474637956110697,
+        "resourceValue": 2.9107797103648885,
+        "driveRate": 0.0030178577310626454,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 6.3637138810289,
+        "ratio": 0.9204642351286125,
+        "crowd": 0.30178577310626453,
+        "resource": 0.013474637956110697,
+        "resourceValue": 2.9107797103648885,
+        "driveRate": 0.0030178577310626454,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 135,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 6,
+        "competitors": 4.3637138810289,
+        "ratio": 0.6704642351286125,
+        "crowd": 0.5924834475248691,
+        "resource": 0.013474637956110697,
+        "resourceValue": 2.9107797103648885,
+        "driveRate": 0.0059248344752486914,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 6,
+        "competitors": 4.3637138810289,
+        "ratio": 0.6704642351286125,
+        "crowd": 0.5924834475248691,
+        "resource": 0.013474637956110697,
+        "resourceValue": 2.9107797103648885,
+        "driveRate": 0.0059248344752486914,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 136,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 2,
+        "competitors": 0.25050367332963797,
+        "ratio": 0.15631295916620475,
+        "crowd": 1,
+        "resource": 0.03257997720977511,
+        "resourceValue": 2.92606398176782,
+        "driveRate": 0.010000000000000002,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 2,
+        "competitors": 0.25050367332963797,
+        "ratio": 0.15631295916620475,
+        "crowd": 1,
+        "resource": 0.03257997720977511,
+        "resourceValue": 2.92606398176782,
+        "driveRate": 0.010000000000000002,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 137,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 6,
+        "ratio": 0.875,
+        "crowd": 0.35465116279069775,
+        "resource": 0.7112940237833646,
+        "resourceValue": 3.4690352190266918,
+        "driveRate": 0.0504522505241689,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 6,
+        "ratio": 0.875,
+        "crowd": 0.35465116279069775,
+        "resource": 0.7112940237833646,
+        "resourceValue": 3.4690352190266918,
+        "driveRate": 0.0504522505241689,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 138,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.231074313797137,
+        "ratio": 0.7788842892246421,
+        "crowd": 0.46641361718064867,
+        "resource": 0.7112940237833646,
+        "resourceValue": 3.4690352190266918,
+        "driveRate": 0.06635144370235549,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.231074313797137,
+        "ratio": 0.7788842892246421,
+        "crowd": 0.46641361718064867,
+        "resource": 0.7112940237833646,
+        "resourceValue": 3.4690352190266918,
+        "driveRate": 0.06635144370235549,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 139,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 6,
+        "competitors": 3.413117993834423,
+        "ratio": 0.5516397492293028,
+        "crowd": 0.7306514543845316,
+        "resource": 0,
+        "resourceValue": 1.770093003113241,
+        "driveRate": 0.007306514543845316,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 6,
+        "competitors": 3.413117993834423,
+        "ratio": 0.5516397492293028,
+        "crowd": 0.7306514543845316,
+        "resource": 0,
+        "resourceValue": 1.770093003113241,
+        "driveRate": 0.007306514543845316,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 140,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 4,
+        "competitors": 1.8084846003386108,
+        "ratio": 0.35106057504232635,
+        "crowd": 0.9638830522763647,
+        "resource": 0,
+        "resourceValue": 2.877628036826228,
+        "driveRate": 0.009638830522763648,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 4,
+        "competitors": 1.8084846003386108,
+        "ratio": 0.35106057504232635,
+        "crowd": 0.9638830522763647,
+        "resource": 0,
+        "resourceValue": 2.877628036826228,
+        "driveRate": 0.009638830522763648,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 141,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.625,
+        "crowd": 0.6453488372093024,
+        "resource": 0.7112940237833646,
+        "resourceValue": 3.4690352190266918,
+        "driveRate": 0.09180655423250404,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.625,
+        "crowd": 0.6453488372093024,
+        "resource": 0.7112940237833646,
+        "resourceValue": 3.4690352190266918,
+        "driveRate": 0.09180655423250404,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 142,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 2,
+        "competitors": 1,
+        "ratio": 0.25,
+        "crowd": 1,
+        "resource": 0,
+        "resourceValue": 1.8223921889563401,
+        "driveRate": 0.010000000000000002,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 2,
+        "competitors": 1,
+        "ratio": 0.25,
+        "crowd": 1,
+        "resource": 0,
+        "resourceValue": 1.8223921889563401,
+        "driveRate": 0.010000000000000002,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 143,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 2.1553715689856867,
+        "ratio": 0.39442144612321084,
+        "crowd": 0.9134634347404526,
+        "resource": 0.7112940237833646,
+        "resourceValue": 3.4690352190266918,
+        "driveRate": 0.12994821641510187,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 2.1553715689856867,
+        "ratio": 0.39442144612321084,
+        "crowd": 0.9134634347404526,
+        "resource": 0.7112940237833646,
+        "resourceValue": 3.4690352190266918,
+        "driveRate": 0.12994821641510187,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 144,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 3.691216269749315,
+        "ratio": 0.5864020337186644,
+        "crowd": 0.6902301933503903,
+        "resource": 0.2890989023365308,
+        "resourceValue": 3.1312791218692246,
+        "driveRate": 0.03990895825142585,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 3.691216269749315,
+        "ratio": 0.5864020337186644,
+        "crowd": 0.6902301933503903,
+        "resource": 0.2890989023365308,
+        "resourceValue": 3.1312791218692246,
+        "driveRate": 0.03990895825142585,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 145,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 5,
+        "competitors": 3.1241627345740723,
+        "ratio": 0.5155203418217591,
+        "crowd": 0.7726507653235359,
+        "resource": 0,
+        "resourceValue": 2.546089726735895,
+        "driveRate": 0.0077265076532353595,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 5,
+        "competitors": 3.1241627345740723,
+        "ratio": 0.5155203418217591,
+        "crowd": 0.7726507653235359,
+        "resource": 0,
+        "resourceValue": 2.546089726735895,
+        "driveRate": 0.0077265076532353595,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 146,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 10,
+        "competitors": 6.578614030556054,
+        "ratio": 0.9473267538195067,
+        "crowd": 0.27055028625638766,
+        "resource": 0.8919431822635795,
+        "resourceValue": 3.6135545458108638,
+        "driveRate": 0.04826309665716896,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 10,
+        "competitors": 6.578614030556054,
+        "ratio": 0.9473267538195067,
+        "crowd": 0.27055028625638766,
+        "resource": 0.8919431822635795,
+        "resourceValue": 3.6135545458108638,
+        "driveRate": 0.04826309665716896,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 147,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 6,
+        "competitors": 3.312140768628681,
+        "ratio": 0.5390175960785851,
+        "crowd": 0.745328376652808,
+        "resource": 0,
+        "resourceValue": 2.1754437533142617,
+        "driveRate": 0.007453283766528081,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 6,
+        "competitors": 3.312140768628681,
+        "ratio": 0.5390175960785851,
+        "crowd": 0.745328376652808,
+        "resource": 0,
+        "resourceValue": 2.1754437533142617,
+        "driveRate": 0.007453283766528081,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 148,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.231074313797137,
+        "ratio": 0.7788842892246421,
+        "crowd": 0.46641361718064867,
+        "resource": 0.7112940237833646,
+        "resourceValue": 3.4690352190266918,
+        "driveRate": 0.06635144370235549,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.231074313797137,
+        "ratio": 0.7788842892246421,
+        "crowd": 0.46641361718064867,
+        "resource": 0.7112940237833646,
+        "resourceValue": 3.4690352190266918,
+        "driveRate": 0.06635144370235549,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 149,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 4,
+        "competitors": 1.4545439355100394,
+        "ratio": 0.3068179919387549,
+        "crowd": 1,
+        "resource": 0,
+        "resourceValue": 2.546089726735895,
+        "driveRate": 0.010000000000000002,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 4,
+        "competitors": 1.4545439355100394,
+        "ratio": 0.3068179919387549,
+        "crowd": 1,
+        "resource": 0,
+        "resourceValue": 2.546089726735895,
+        "driveRate": 0.010000000000000002,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 150,
+      "species": "rillsifter",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 2,
+        "competitors": 0.28949447062224454,
+        "ratio": 0.16118680882778058,
+        "crowd": 1,
+        "resource": 0,
+        "resourceValue": 1.770093003113241,
+        "driveRate": 0.010000000000000002,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 2,
+        "competitors": 0.28949447062224454,
+        "ratio": 0.16118680882778058,
+        "crowd": 1,
+        "resource": 0,
+        "resourceValue": 1.770093003113241,
+        "driveRate": 0.010000000000000002,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 151,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 13,
+        "competitors": 11.0749782540347,
+        "ratio": 2.41499565080694,
+        "crowd": 0,
+        "resource": 0.6382120065611527,
+        "resourceValue": 3.4382120065611526,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 13,
+        "competitors": 11.0749782540347,
+        "ratio": 2.41499565080694,
+        "crowd": 0,
+        "resource": 0.6382120065611527,
+        "resourceValue": 3.4382120065611526,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 152,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 7,
+        "competitors": 5.0991074149662445,
+        "ratio": 1.219821482993249,
+        "crowd": 0,
+        "resource": 1.031886389897017,
+        "resourceValue": 3.831886389897017,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 7,
+        "competitors": 5.0991074149662445,
+        "ratio": 1.219821482993249,
+        "crowd": 0,
+        "resource": 1.031886389897017,
+        "resourceValue": 3.831886389897017,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 154,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 18,
+        "competitors": 15.390986484218073,
+        "ratio": 3.278197296843615,
+        "crowd": 0,
+        "resource": 0.6382120065611527,
+        "resourceValue": 3.4382120065611526,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 18,
+        "competitors": 15.390986484218073,
+        "ratio": 3.278197296843615,
+        "crowd": 0,
+        "resource": 0.6382120065611527,
+        "resourceValue": 3.4382120065611526,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 155,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 9.147332254881738,
+        "ratio": 2.0294664509763476,
+        "crowd": 0,
+        "resource": 0.4677802836139242,
+        "resourceValue": 3.267780283613924,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 9.147332254881738,
+        "ratio": 2.0294664509763476,
+        "crowd": 0,
+        "resource": 0.4677802836139242,
+        "resourceValue": 3.267780283613924,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 156,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 9.748497610771446,
+        "ratio": 2.149699522154289,
+        "crowd": 0,
+        "resource": 0.4584450279528789,
+        "resourceValue": 3.2584450279528787,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 9.748497610771446,
+        "ratio": 2.149699522154289,
+        "crowd": 0,
+        "resource": 0.4584450279528789,
+        "resourceValue": 3.2584450279528787,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 157,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 4.558703218820146,
+        "ratio": 1.1117406437640294,
+        "crowd": 0.07937134446043104,
+        "resource": 0.13892980106992336,
+        "resourceValue": 2.938929801069923,
+        "driveRate": 0.0019407599369910486,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 4.558703218820146,
+        "ratio": 1.1117406437640294,
+        "crowd": 0.07937134446043104,
+        "resource": 0.13892980106992336,
+        "resourceValue": 2.938929801069923,
+        "driveRate": 0.0019407599369910486,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 158,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 15,
+        "competitors": 11.733762140696845,
+        "ratio": 2.546752428139369,
+        "crowd": 0,
+        "resource": 0.8562067069635391,
+        "resourceValue": 3.656206706963539,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 15,
+        "competitors": 11.733762140696845,
+        "ratio": 2.546752428139369,
+        "crowd": 0,
+        "resource": 0.8562067069635391,
+        "resourceValue": 3.656206706963539,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 159,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 5.7488011165815776,
+        "ratio": 1.3497602233163155,
+        "crowd": 0,
+        "resource": 0.634389840247922,
+        "resourceValue": 3.434389840247922,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 5.7488011165815776,
+        "ratio": 1.3497602233163155,
+        "crowd": 0,
+        "resource": 0.634389840247922,
+        "resourceValue": 3.434389840247922,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 160,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 20,
+        "competitors": 16.395230503728996,
+        "ratio": 3.479046100745799,
+        "crowd": 0,
+        "resource": 0.8562067069635391,
+        "resourceValue": 3.656206706963539,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 20,
+        "competitors": 16.395230503728996,
+        "ratio": 3.479046100745799,
+        "crowd": 0,
+        "resource": 0.8562067069635391,
+        "resourceValue": 3.656206706963539,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 161,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 15,
+        "competitors": 11.551704480454177,
+        "ratio": 2.5103408960908355,
+        "crowd": 0,
+        "resource": 0.5797731850565628,
+        "resourceValue": 3.3797731850565627,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 15,
+        "competitors": 11.551704480454177,
+        "ratio": 2.5103408960908355,
+        "crowd": 0,
+        "resource": 0.5797731850565628,
+        "resourceValue": 3.3797731850565627,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 162,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 18,
+        "competitors": 14.469642526213788,
+        "ratio": 3.0939285052427574,
+        "crowd": 0,
+        "resource": 0.8562067069635391,
+        "resourceValue": 3.656206706963539,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 18,
+        "competitors": 14.469642526213788,
+        "ratio": 3.0939285052427574,
+        "crowd": 0,
+        "resource": 0.8562067069635391,
+        "resourceValue": 3.656206706963539,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 163,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 11,
+        "competitors": 8.425914763877174,
+        "ratio": 1.8851829527754347,
+        "crowd": 0,
+        "resource": 0.5797731850565628,
+        "resourceValue": 3.3797731850565627,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 11,
+        "competitors": 8.425914763877174,
+        "ratio": 1.8851829527754347,
+        "crowd": 0,
+        "resource": 0.5797731850565628,
+        "resourceValue": 3.3797731850565627,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 164,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 9,
+        "competitors": 5.9821382349485575,
+        "ratio": 1.3964276469897114,
+        "crowd": 0,
+        "resource": 0,
+        "resourceValue": 2.256878003117828,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 9,
+        "competitors": 5.9821382349485575,
+        "ratio": 1.3964276469897114,
+        "crowd": 0,
+        "resource": 0,
+        "resourceValue": 2.256878003117828,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 165,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 9.227330332724797,
+        "ratio": 2.0454660665449595,
+        "crowd": 0,
+        "resource": 0.4677802836139242,
+        "resourceValue": 3.267780283613924,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 9.227330332724797,
+        "ratio": 2.0454660665449595,
+        "crowd": 0,
+        "resource": 0.4677802836139242,
+        "resourceValue": 3.267780283613924,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 166,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 9,
+        "competitors": 6.134887045359024,
+        "ratio": 1.4269774090718048,
+        "crowd": 0,
+        "resource": 0,
+        "resourceValue": 2.61879897273687,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 9,
+        "competitors": 6.134887045359024,
+        "ratio": 1.4269774090718048,
+        "crowd": 0,
+        "resource": 0,
+        "resourceValue": 2.61879897273687,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 167,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 13,
+        "competitors": 10.793418780507233,
+        "ratio": 2.3586837561014464,
+        "crowd": 0,
+        "resource": 0.6382120065611527,
+        "resourceValue": 3.4382120065611526,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 13,
+        "competitors": 10.793418780507233,
+        "ratio": 2.3586837561014464,
+        "crowd": 0,
+        "resource": 0.6382120065611527,
+        "resourceValue": 3.4382120065611526,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 168,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 14,
+        "competitors": 11.46483069580083,
+        "ratio": 2.492966139160166,
+        "crowd": 0,
+        "resource": 0.5070878877614278,
+        "resourceValue": 3.3070878877614276,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 14,
+        "competitors": 11.46483069580083,
+        "ratio": 2.492966139160166,
+        "crowd": 0,
+        "resource": 0.5070878877614278,
+        "resourceValue": 3.3070878877614276,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 169,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 11,
+        "competitors": 8.417161182923477,
+        "ratio": 1.8834322365846954,
+        "crowd": 0,
+        "resource": 0.2889376240079198,
+        "resourceValue": 3.0889376240079196,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 11,
+        "competitors": 8.417161182923477,
+        "ratio": 1.8834322365846954,
+        "crowd": 0,
+        "resource": 0.2889376240079198,
+        "resourceValue": 3.0889376240079196,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 170,
+      "species": "mirelick",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 11,
+        "competitors": 8.421264709542864,
+        "ratio": 1.884252941908573,
+        "crowd": 0,
+        "resource": 0.4659992608734016,
+        "resourceValue": 3.2659992608734014,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 11,
+        "competitors": 8.421264709542864,
+        "ratio": 1.884252941908573,
+        "crowd": 0,
+        "resource": 0.4659992608734016,
+        "resourceValue": 3.2659992608734014,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 171,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 11,
+        "competitors": 8.18654029987036,
+        "ratio": 1.5310900499783935,
+        "crowd": 0,
+        "resource": 0.20111180598084039,
+        "resourceValue": 4.360889444784672,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 11,
+        "competitors": 8.18654029987036,
+        "ratio": 1.5310900499783935,
+        "crowd": 0,
+        "resource": 0.20111180598084039,
+        "resourceValue": 4.360889444784672,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 172,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 2.4751378762660803,
+        "ratio": 0.5791896460443468,
+        "crowd": 0.6986166906461084,
+        "resource": 0.39807683317434017,
+        "resourceValue": 4.518461466539472,
+        "driveRate": 0.04894614908746474,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 2.4751378762660803,
+        "ratio": 0.5791896460443468,
+        "crowd": 0.6986166906461084,
+        "resource": 0.39807683317434017,
+        "resourceValue": 4.518461466539472,
+        "driveRate": 0.04894614908746474,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 173,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 0.7672621974869751,
+        "ratio": 0.2945436995811625,
+        "crowd": 1,
+        "resource": 0.9705259476721475,
+        "resourceValue": 4.976420758137718,
+        "driveRate": 0.17081256679029796,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 0.7672621974869751,
+        "ratio": 0.2945436995811625,
+        "crowd": 1,
+        "resource": 0.9705259476721475,
+        "resourceValue": 4.976420758137718,
+        "driveRate": 0.17081256679029796,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 174,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 15,
+        "competitors": 10.258949410692807,
+        "ratio": 1.8764915684488013,
+        "crowd": 0,
+        "resource": 1.08,
+        "resourceValue": 5.231529319246511,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 15,
+        "competitors": 10.258949410692807,
+        "ratio": 1.8764915684488013,
+        "crowd": 0,
+        "resource": 1.08,
+        "resourceValue": 5.231529319246511,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 175,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.7053146302547408,
+        "ratio": 0.4508857717091235,
+        "crowd": 0.8478072421986936,
+        "resource": 0.20310859935149145,
+        "resourceValue": 4.362486879481193,
+        "driveRate": 0.030306661701012812,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.7053146302547408,
+        "ratio": 0.4508857717091235,
+        "crowd": 0.8478072421986936,
+        "resource": 0.20310859935149145,
+        "resourceValue": 4.362486879481193,
+        "driveRate": 0.030306661701012812,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 176,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 11,
+        "competitors": 4.769978489373735,
+        "ratio": 0.9616630815622892,
+        "crowd": 0.25388013771826834,
+        "resource": 0.7764361789107279,
+        "resourceValue": 4.821148943128582,
+        "driveRate": 0.034693423429509096,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 11,
+        "competitors": 4.769978489373735,
+        "ratio": 0.9616630815622892,
+        "crowd": 0.25388013771826834,
+        "resource": 0.7764361789107279,
+        "resourceValue": 4.821148943128582,
+        "driveRate": 0.034693423429509096,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 177,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 9,
+        "competitors": 5.311316086178785,
+        "ratio": 1.0518860143631308,
+        "crowd": 0.14896975074054564,
+        "resource": 0,
+        "resourceValue": 4.077663416917709,
+        "driveRate": 0.0013109338065168017,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 9,
+        "competitors": 5.311316086178785,
+        "ratio": 1.0518860143631308,
+        "crowd": 0.14896975074054564,
+        "resource": 0,
+        "resourceValue": 4.077663416917709,
+        "driveRate": 0.0013109338065168017,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 178,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 0.6442124424015107,
+        "resourceValue": 4.715369953921209,
+        "driveRate": 0.11338138986266588,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 0.6442124424015107,
+        "resourceValue": 4.715369953921209,
+        "driveRate": 0.11338138986266588,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 179,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 13,
+        "competitors": 8.28125259134264,
+        "ratio": 1.5468754318904399,
+        "crowd": 0,
+        "resource": 0.748737259172051,
+        "resourceValue": 4.798989807337641,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 13,
+        "competitors": 8.28125259134264,
+        "ratio": 1.5468754318904399,
+        "crowd": 0,
+        "resource": 0.748737259172051,
+        "resourceValue": 4.798989807337641,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 180,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 16,
+        "competitors": 11.686779154296639,
+        "ratio": 2.114463192382773,
+        "crowd": 0,
+        "resource": 0.7392463281816509,
+        "resourceValue": 4.791397062545321,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 16,
+        "competitors": 11.686779154296639,
+        "ratio": 2.114463192382773,
+        "crowd": 0,
+        "resource": 0.7392463281816509,
+        "resourceValue": 4.791397062545321,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 181,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.5069181595223176,
+        "ratio": 0.41781969325371965,
+        "crowd": 0.8862561706352097,
+        "resource": 1.08,
+        "resourceValue": 5.156917398465739,
+        "driveRate": 0.1684595729143407,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.5069181595223176,
+        "ratio": 0.41781969325371965,
+        "crowd": 0.8862561706352097,
+        "resource": 1.08,
+        "resourceValue": 5.156917398465739,
+        "driveRate": 0.1684595729143407,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 182,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 1,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.20310859935149145,
+        "resourceValue": 4.362486879481193,
+        "driveRate": 0.0351928946721282,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 1,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.20310859935149145,
+        "resourceValue": 4.362486879481193,
+        "driveRate": 0.0351928946721282,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 183,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 0.6854495047998367,
+        "resourceValue": 4.748359603839869,
+        "driveRate": 0.12063911284477127,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 0.6854495047998367,
+        "resourceValue": 4.748359603839869,
+        "driveRate": 0.12063911284477127,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 184,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.0750123268872356,
+        "ratio": 0.34583538781453926,
+        "crowd": 0.9699588513784427,
+        "resource": 0.9186102361061823,
+        "resourceValue": 4.934888188884946,
+        "driveRate": 0.1568184867881338,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.0750123268872356,
+        "ratio": 0.34583538781453926,
+        "crowd": 0.9699588513784427,
+        "resource": 0.9186102361061823,
+        "resourceValue": 4.934888188884946,
+        "driveRate": 0.1568184867881338,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 185,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 1.6584745556429201,
+        "ratio": 0.44307909260715334,
+        "crowd": 0.8568847760381938,
+        "resource": 0.09884549687951608,
+        "resourceValue": 4.279076397503613,
+        "driveRate": 0.01490705945625391,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 1.6584745556429201,
+        "ratio": 0.44307909260715334,
+        "crowd": 0.8568847760381938,
+        "resource": 0.09884549687951608,
+        "resourceValue": 4.279076397503613,
+        "driveRate": 0.01490705945625391,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 186,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 13,
+        "competitors": 8.671554116485648,
+        "ratio": 1.6119256860809414,
+        "crowd": 0,
+        "resource": 1.0298695338905497,
+        "resourceValue": 5.02389562711244,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 13,
+        "competitors": 8.671554116485648,
+        "ratio": 1.6119256860809414,
+        "crowd": 0,
+        "resource": 1.0298695338905497,
+        "resourceValue": 5.02389562711244,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 187,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 0.30530079843562935,
+        "resourceValue": 4.444240638748504,
+        "driveRate": 0.05373294052467077,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 0.30530079843562935,
+        "resourceValue": 4.444240638748504,
+        "driveRate": 0.05373294052467077,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 188,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.42267223340204,
+        "ratio": 0.40377870556700673,
+        "crowd": 0.9025829005034806,
+        "resource": 0.9008978167713757,
+        "resourceValue": 4.920718253417101,
+        "driveRate": 0.14311175375530202,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.42267223340204,
+        "ratio": 0.40377870556700673,
+        "crowd": 0.9025829005034806,
+        "resource": 0.9008978167713757,
+        "resourceValue": 4.920718253417101,
+        "driveRate": 0.14311175375530202,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 197,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 4.651461388775236,
+        "ratio": 0.8073516269678909,
+        "crowd": 0.43331206166524316,
+        "resource": 0.9275121784283789,
+        "resourceValue": 9.110048713713516,
+        "driveRate": 0.08038044285088435,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 4.651461388775236,
+        "ratio": 0.8073516269678909,
+        "crowd": 0.43331206166524316,
+        "resource": 0.9275121784283789,
+        "resourceValue": 9.110048713713516,
+        "driveRate": 0.08038044285088435,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 199,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 0.20414539298926684,
+        "ratio": 0.20069089883154448,
+        "crowd": 1,
+        "resource": 0.9467462605822939,
+        "resourceValue": 9.381659668387405,
+        "driveRate": 0.17041432690481292,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 0.20414539298926684,
+        "ratio": 0.20069089883154448,
+        "crowd": 1,
+        "resource": 0.9467462605822939,
+        "resourceValue": 9.381659668387405,
+        "driveRate": 0.17041432690481292,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 200,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.5239633424503596,
+        "ratio": 0.42066055707505995,
+        "crowd": 0.8829528406103955,
+        "resource": 0.6913289596728581,
+        "resourceValue": 8.334448734658718,
+        "driveRate": 0.10987395637308835,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.5239633424503596,
+        "ratio": 0.42066055707505995,
+        "crowd": 0.8829528406103955,
+        "resource": 0.6913289596728581,
+        "resourceValue": 8.334448734658718,
+        "driveRate": 0.10987395637308835,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 201,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 7,
+        "ratio": 1.3333333333333333,
+        "crowd": 0,
+        "resource": 0.9248058494592198,
+        "resourceValue": 9.291703982782801,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 7,
+        "ratio": 1.3333333333333333,
+        "crowd": 0,
+        "resource": 0.9248058494592198,
+        "resourceValue": 9.291703982782801,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 202,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 6,
+        "ratio": 1.1666666666666667,
+        "crowd": 0.015503875968992165,
+        "resource": 0.6526569572106697,
+        "resourceValue": 8.175893524563746,
+        "driveRate": 0.0018213682526809292,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 6,
+        "ratio": 1.1666666666666667,
+        "crowd": 0.015503875968992165,
+        "resource": 0.6526569572106697,
+        "resourceValue": 8.175893524563746,
+        "driveRate": 0.0018213682526809292,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 203,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 6,
+        "competitors": 4.607663033977019,
+        "ratio": 0.9346105056628365,
+        "crowd": 0.285336621322283,
+        "resource": 0,
+        "resourceValue": 5.16990230780791,
+        "driveRate": 0.002568029591900547,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 6,
+        "competitors": 4.607663033977019,
+        "ratio": 0.9346105056628365,
+        "crowd": 0.285336621322283,
+        "resource": 0,
+        "resourceValue": 5.16990230780791,
+        "driveRate": 0.002568029591900547,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 204,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.5,
+        "crowd": 0.7906976744186047,
+        "resource": 0.9181303214729918,
+        "resourceValue": 9.264334318039266,
+        "driveRate": 0.1306734318003421,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.5,
+        "crowd": 0.7906976744186047,
+        "resource": 0.9181303214729918,
+        "resourceValue": 9.264334318039266,
+        "driveRate": 0.1306734318003421,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 205,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.5,
+        "crowd": 0.7906976744186047,
+        "resource": 0.6973451964236805,
+        "resourceValue": 8.35911530533709,
+        "driveRate": 0.09925006051425408,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.5,
+        "crowd": 0.7906976744186047,
+        "resource": 0.6973451964236805,
+        "resourceValue": 8.35911530533709,
+        "driveRate": 0.09925006051425408,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 206,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 6.561058541915984,
+        "ratio": 1.260176423652664,
+        "crowd": 0,
+        "resource": 0.855410533077205,
+        "resourceValue": 9.00718318561654,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 6.561058541915984,
+        "ratio": 1.260176423652664,
+        "crowd": 0,
+        "resource": 0.855410533077205,
+        "resourceValue": 9.00718318561654,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 207,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.415815120559882,
+        "ratio": 0.9165450172228403,
+        "crowd": 0.30634300322925534,
+        "resource": 0.8040999440971324,
+        "resourceValue": 8.61639977638853,
+        "driveRate": 0.04926607835423838,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.415815120559882,
+        "ratio": 0.9165450172228403,
+        "crowd": 0.30634300322925534,
+        "resource": 0.8040999440971324,
+        "resourceValue": 8.61639977638853,
+        "driveRate": 0.04926607835423838,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 208,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.8333333333333334,
+        "crowd": 0.4031007751937984,
+        "resource": 0.6973451964236805,
+        "resourceValue": 8.35911530533709,
+        "driveRate": 0.0505980700660903,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.8333333333333334,
+        "crowd": 0.4031007751937984,
+        "resource": 0.6973451964236805,
+        "resourceValue": 8.35911530533709,
+        "driveRate": 0.0505980700660903,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 209,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 6,
+        "ratio": 1.1666666666666667,
+        "crowd": 0.015503875968992165,
+        "resource": 0.6526569572106697,
+        "resourceValue": 8.175893524563746,
+        "driveRate": 0.0018213682526809292,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 6,
+        "ratio": 1.1666666666666667,
+        "crowd": 0.015503875968992165,
+        "resource": 0.6526569572106697,
+        "resourceValue": 8.175893524563746,
+        "driveRate": 0.0018213682526809292,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 210,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.52939054498503,
+        "ratio": 1.088231757497505,
+        "crowd": 0.10670725872383158,
+        "resource": 0.6123558807403718,
+        "resourceValue": 8.010659111035524,
+        "driveRate": 0.011761707131500073,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.52939054498503,
+        "ratio": 1.088231757497505,
+        "crowd": 0.10670725872383158,
+        "resource": 0.6123558807403718,
+        "resourceValue": 8.010659111035524,
+        "driveRate": 0.011761707131500073,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 211,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 3,
+        "ratio": 0.6666666666666666,
+        "crowd": 0.5968992248062016,
+        "resource": 0.564843420618468,
+        "resourceValue": 7.815858024535719,
+        "driveRate": 0.06068782798272844,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 3,
+        "ratio": 0.6666666666666666,
+        "crowd": 0.5968992248062016,
+        "resource": 0.564843420618468,
+        "resourceValue": 7.815858024535719,
+        "driveRate": 0.06068782798272844,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 212,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 12,
+        "competitors": 7.118994947121652,
+        "ratio": 1.159856421017379,
+        "crowd": 0.02342276625886175,
+        "resource": 0.9862240312801145,
+        "resourceValue": 9.344896125120458,
+        "driveRate": 0.004620018992709296,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 12,
+        "competitors": 7.118994947121652,
+        "ratio": 1.159856421017379,
+        "crowd": 0.02342276625886175,
+        "resource": 0.9862240312801145,
+        "resourceValue": 9.344896125120458,
+        "driveRate": 0.004620018992709296,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 213,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 4.448311068973959,
+        "ratio": 0.7783301527105656,
+        "crowd": 0.4670579619644586,
+        "resource": 0.7017482636418868,
+        "resourceValue": 8.206993054567548,
+        "driveRate": 0.06555142276573545,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 4.448311068973959,
+        "ratio": 0.7783301527105656,
+        "crowd": 0.4670579619644586,
+        "resource": 0.7017482636418868,
+        "resourceValue": 8.206993054567548,
+        "driveRate": 0.06555142276573545,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 214,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.238357496858483,
+        "ratio": 0.31976535669406897,
+        "crowd": 1,
+        "resource": 0.8133118273752835,
+        "resourceValue": 8.653247309501134,
+        "driveRate": 0.16266236547505672,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.238357496858483,
+        "ratio": 0.31976535669406897,
+        "crowd": 1,
+        "resource": 0.8133118273752835,
+        "resourceValue": 8.653247309501134,
+        "driveRate": 0.16266236547505672,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 215,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0.8270879394690307,
+        "resourceValue": 8.708351757876123,
+        "driveRate": 0.16541758789380615,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0.8270879394690307,
+        "resourceValue": 8.708351757876123,
+        "driveRate": 0.16541758789380615,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 216,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 11,
+        "competitors": 5.955673814574423,
+        "ratio": 0.9936676877963462,
+        "crowd": 0.21666547930657432,
+        "resource": 0.949395253933512,
+        "resourceValue": 9.197581015734048,
+        "driveRate": 0.04114023554897825,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 11,
+        "competitors": 5.955673814574423,
+        "ratio": 0.9936676877963462,
+        "crowd": 0.21666547930657432,
+        "resource": 0.949395253933512,
+        "resourceValue": 9.197581015734048,
+        "driveRate": 0.04114023554897825,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 217,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 10,
+        "competitors": 8.415815120559882,
+        "ratio": 1.3451164457942688,
+        "crowd": 0,
+        "resource": 0.8040999440971324,
+        "resourceValue": 8.61639977638853,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 10,
+        "competitors": 8.415815120559882,
+        "ratio": 1.3451164457942688,
+        "crowd": 0,
+        "resource": 0.8040999440971324,
+        "resourceValue": 8.61639977638853,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 218,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 5,
+        "ratio": 1,
+        "crowd": 0.2093023255813954,
+        "resource": 0.8100371257489506,
+        "resourceValue": 8.821152215570697,
+        "driveRate": 0.03051767776077443,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 5,
+        "ratio": 1,
+        "crowd": 0.2093023255813954,
+        "resource": 0.8100371257489506,
+        "resourceValue": 8.821152215570697,
+        "driveRate": 0.03051767776077443,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 219,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 6,
+        "ratio": 1.1666666666666667,
+        "crowd": 0.015503875968992165,
+        "resource": 0.6123558807403718,
+        "resourceValue": 8.010659111035524,
+        "driveRate": 0.0017089001322987032,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 6,
+        "ratio": 1.1666666666666667,
+        "crowd": 0.015503875968992165,
+        "resource": 0.6123558807403718,
+        "resourceValue": 8.010659111035524,
+        "driveRate": 0.0017089001322987032,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 220,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 4.89662213794792,
+        "ratio": 0.8423745911354171,
+        "crowd": 0.39258768472625905,
+        "resource": 0.7017482636418868,
+        "resourceValue": 8.206993054567548,
+        "driveRate": 0.05509954521676816,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 4.89662213794792,
+        "ratio": 0.8423745911354171,
+        "crowd": 0.39258768472625905,
+        "resource": 0.7017482636418868,
+        "resourceValue": 8.206993054567548,
+        "driveRate": 0.05509954521676816,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 221,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 1.0660285154122384,
+        "resourceValue": 9.664114061648954,
+        "driveRate": 0.21320570308244768,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 1.0660285154122384,
+        "resourceValue": 9.664114061648954,
+        "driveRate": 0.21320570308244768,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 222,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 7,
+        "ratio": 1.3333333333333333,
+        "crowd": 0,
+        "resource": 0.9248058494592198,
+        "resourceValue": 9.291703982782801,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 7,
+        "ratio": 1.3333333333333333,
+        "crowd": 0,
+        "resource": 0.9248058494592198,
+        "resourceValue": 9.291703982782801,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 223,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 1,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.8187401927683369,
+        "resourceValue": 8.856834790350181,
+        "driveRate": 0.14508837834638902,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 2,
+        "competitors": 1,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.8187401927683369,
+        "resourceValue": 8.856834790350181,
+        "driveRate": 0.14508837834638902,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 224,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 6,
+        "ratio": 1.1666666666666667,
+        "crowd": 0.015503875968992165,
+        "resource": 0.8122914051022447,
+        "resourceValue": 8.830394760919203,
+        "driveRate": 0.0022668597351690432,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 6,
+        "ratio": 1.1666666666666667,
+        "crowd": 0.015503875968992165,
+        "resource": 0.8122914051022447,
+        "resourceValue": 8.830394760919203,
+        "driveRate": 0.0022668597351690432,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 225,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.819372761544673,
+        "ratio": 0.4698954602574455,
+        "crowd": 0.8257029531890169,
+        "resource": 0.5489466689378126,
+        "resourceValue": 7.750681342645032,
+        "driveRate": 0.08158803942334059,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.819372761544673,
+        "ratio": 0.4698954602574455,
+        "crowd": 0.8257029531890169,
+        "resource": 0.5489466689378126,
+        "resourceValue": 7.750681342645032,
+        "driveRate": 0.08158803942334059,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 226,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 6.56963998502806,
+        "ratio": 1.0813771407182942,
+        "crowd": 0.11467774335082082,
+        "resource": 0.6529008914662375,
+        "resourceValue": 8.01160356586495,
+        "driveRate": 0.01497464017301746,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 6.56963998502806,
+        "ratio": 1.0813771407182942,
+        "crowd": 0.11467774335082082,
+        "resource": 0.6529008914662375,
+        "resourceValue": 8.01160356586495,
+        "driveRate": 0.01497464017301746,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 227,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0.6475617429797282,
+        "resourceValue": 7.990246971918913,
+        "driveRate": 0.12951234859594565,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0.6475617429797282,
+        "resourceValue": 7.990246971918913,
+        "driveRate": 0.12951234859594565,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 228,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 10,
+        "competitors": 7.108141820018864,
+        "ratio": 1.1583059742884092,
+        "crowd": 0.025225611292547523,
+        "resource": 0.7675676738220867,
+        "resourceValue": 8.470270695288347,
+        "driveRate": 0.0038724727561121725,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 10,
+        "competitors": 7.108141820018864,
+        "ratio": 1.1583059742884092,
+        "crowd": 0.025225611292547523,
+        "resource": 0.7675676738220867,
+        "resourceValue": 8.470270695288347,
+        "driveRate": 0.0038724727561121725,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 229,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0.5353537766942109,
+        "resourceValue": 7.541415106776844,
+        "driveRate": 0.1070707553388422,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0.5353537766942109,
+        "resourceValue": 7.541415106776844,
+        "driveRate": 0.1070707553388422,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 230,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 13,
+        "competitors": 8.864021905579042,
+        "ratio": 1.6440036509298404,
+        "crowd": 0,
+        "resource": 1.0094818856060535,
+        "resourceValue": 10.645513050909056,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 13,
+        "competitors": 8.864021905579042,
+        "ratio": 1.6440036509298404,
+        "crowd": 0,
+        "resource": 1.0094818856060535,
+        "resourceValue": 10.645513050909056,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 231,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 6,
+        "ratio": 1.1666666666666667,
+        "crowd": 0.015503875968992165,
+        "resource": 0.6123558807403718,
+        "resourceValue": 8.010659111035524,
+        "driveRate": 0.0017089001322987032,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 6,
+        "ratio": 1.1666666666666667,
+        "crowd": 0.015503875968992165,
+        "resource": 0.6123558807403718,
+        "resourceValue": 8.010659111035524,
+        "driveRate": 0.0017089001322987032,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 232,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.5,
+        "crowd": 0.7906976744186047,
+        "resource": 0.5984270907524866,
+        "resourceValue": 7.953551072085195,
+        "driveRate": 0.08517148361407485,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.5,
+        "crowd": 0.7906976744186047,
+        "resource": 0.5984270907524866,
+        "resourceValue": 7.953551072085195,
+        "driveRate": 0.08517148361407485,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 233,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.1451224696763127,
+        "ratio": 0.3575204116127188,
+        "crowd": 0.9563716144038154,
+        "resource": 0.7931326747055375,
+        "resourceValue": 8.751843966292704,
+        "driveRate": 0.1365353237780192,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.1451224696763127,
+        "ratio": 0.3575204116127188,
+        "crowd": 0.9563716144038154,
+        "resource": 0.7931326747055375,
+        "resourceValue": 8.751843966292704,
+        "driveRate": 0.1365353237780192,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 234,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.2549624886984225,
+        "ratio": 0.32213749838548894,
+        "crowd": 0.9975145367610594,
+        "resource": 0.8331400779336029,
+        "resourceValue": 8.732560311734412,
+        "driveRate": 0.16621386777940217,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 1.2549624886984225,
+        "ratio": 0.32213749838548894,
+        "crowd": 0.9975145367610594,
+        "resource": 0.8331400779336029,
+        "resourceValue": 8.732560311734412,
+        "driveRate": 0.16621386777940217,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 235,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 3.805908451887821,
+        "ratio": 0.6865583502696887,
+        "crowd": 0.5737693601515248,
+        "resource": 0.73978622019755,
+        "resourceValue": 8.3591448807902,
+        "driveRate": 0.08489333324233266,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 3.805908451887821,
+        "ratio": 0.6865583502696887,
+        "crowd": 0.5737693601515248,
+        "resource": 0.73978622019755,
+        "resourceValue": 8.3591448807902,
+        "driveRate": 0.08489333324233266,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 236,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 10,
+        "competitors": 7.342546073415322,
+        "ratio": 1.191792296202189,
+        "crowd": 0,
+        "resource": 0.9275121784283789,
+        "resourceValue": 9.110048713713516,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 10,
+        "competitors": 7.342546073415322,
+        "ratio": 1.191792296202189,
+        "crowd": 0,
+        "resource": 0.9275121784283789,
+        "resourceValue": 9.110048713713516,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 237,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 7,
+        "ratio": 1.3333333333333333,
+        "crowd": 0,
+        "resource": 0.8122914051022447,
+        "resourceValue": 8.830394760919203,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 7,
+        "ratio": 1.3333333333333333,
+        "crowd": 0,
+        "resource": 0.8122914051022447,
+        "resourceValue": 8.830394760919203,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 238,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 11,
+        "competitors": 10,
+        "ratio": 1.8333333333333333,
+        "crowd": 0,
+        "resource": 0.9248058494592198,
+        "resourceValue": 9.291703982782801,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 11,
+        "competitors": 10,
+        "ratio": 1.8333333333333333,
+        "crowd": 0,
+        "resource": 0.9248058494592198,
+        "resourceValue": 9.291703982782801,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 239,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 6,
+        "ratio": 1.1666666666666667,
+        "crowd": 0.015503875968992165,
+        "resource": 1.08,
+        "resourceValue": 10.303096715127166,
+        "driveRate": 0.0030139534883720774,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 6,
+        "ratio": 1.1666666666666667,
+        "crowd": 0.015503875968992165,
+        "resource": 1.08,
+        "resourceValue": 10.303096715127166,
+        "driveRate": 0.0030139534883720774,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 240,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 6.545410945562569,
+        "ratio": 1.2575684909270948,
+        "crowd": 0,
+        "resource": 0.7890552200305926,
+        "resourceValue": 8.73512640212543,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 6.545410945562569,
+        "ratio": 1.2575684909270948,
+        "crowd": 0,
+        "resource": 0.7890552200305926,
+        "resourceValue": 8.73512640212543,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 241,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.5,
+        "crowd": 0.7906976744186047,
+        "resource": 0.8100371257489506,
+        "resourceValue": 8.821152215570697,
+        "driveRate": 0.11528900487403672,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.5,
+        "crowd": 0.7906976744186047,
+        "resource": 0.8100371257489506,
+        "resourceValue": 8.821152215570697,
+        "driveRate": 0.11528900487403672,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 242,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.8333333333333334,
+        "crowd": 0.4031007751937984,
+        "resource": 0.8100371257489506,
+        "resourceValue": 8.821152215570697,
+        "driveRate": 0.0587747867985285,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.8333333333333334,
+        "crowd": 0.4031007751937984,
+        "resource": 0.8100371257489506,
+        "resourceValue": 8.821152215570697,
+        "driveRate": 0.0587747867985285,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 243,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 10,
+        "competitors": 9,
+        "ratio": 1.6666666666666667,
+        "crowd": 0,
+        "resource": 0.855410533077205,
+        "resourceValue": 9.00718318561654,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 10,
+        "competitors": 9,
+        "ratio": 1.6666666666666667,
+        "crowd": 0,
+        "resource": 0.855410533077205,
+        "resourceValue": 9.00718318561654,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 244,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 4.919374345215895,
+        "ratio": 0.9865623908693159,
+        "crowd": 0.22492745247753965,
+        "resource": 0.24392194996079258,
+        "resourceValue": 4.395137559968634,
+        "driveRate": 0.009656194734214156,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 4.919374345215895,
+        "ratio": 0.9865623908693159,
+        "crowd": 0.22492745247753965,
+        "resource": 0.24392194996079258,
+        "resourceValue": 4.395137559968634,
+        "driveRate": 0.009656194734214156,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 245,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 4.42277770877798,
+        "ratio": 0.7746825298254257,
+        "crowd": 0.47129938392392356,
+        "resource": 0.8334046666019219,
+        "resourceValue": 8.733618666407688,
+        "driveRate": 0.07855662118576175,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 4.42277770877798,
+        "ratio": 0.7746825298254257,
+        "crowd": 0.47129938392392356,
+        "resource": 0.8334046666019219,
+        "resourceValue": 8.733618666407688,
+        "driveRate": 0.07855662118576175,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 246,
+      "species": "mosskip",
+      "hunter": true,
+      "previous": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0,
+        "resourceValue": 0,
+        "driveRate": 0.010000000000000002,
+        "preyReference": {
+          "mass": 1.45,
+          "source": "living-eligible-adult-unit"
+        }
+      },
+      "current": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0,
+        "resourceValue": 0,
+        "driveRate": 0.010000000000000002,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    },
+    {
+      "id": 247,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 3.850259964683337,
+        "ratio": 0.6928942806690481,
+        "crowd": 0.566401999222037,
+        "resource": 0.6759908865227366,
+        "resourceValue": 8.103963546090947,
+        "driveRate": 0.07657651791647105,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 3.850259964683337,
+        "ratio": 0.6928942806690481,
+        "crowd": 0.566401999222037,
+        "resource": 0.6759908865227366,
+        "resourceValue": 8.103963546090947,
+        "driveRate": 0.07657651791647105,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 248,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 3.527708284532485,
+        "ratio": 0.7546180474220808,
+        "crowd": 0.4946301774161851,
+        "resource": 0.790155509488209,
+        "resourceValue": 9.592746445543403,
+        "driveRate": 0.0742586043704605,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 3.527708284532485,
+        "ratio": 0.7546180474220808,
+        "crowd": 0.4946301774161851,
+        "resource": 0.790155509488209,
+        "resourceValue": 9.592746445543403,
+        "driveRate": 0.0742586043704605,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 249,
+      "species": "rootling",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 15,
+        "competitors": 8.791866268501478,
+        "ratio": 1.631977711416913,
+        "crowd": 0,
+        "resource": 0.8709373024333624,
+        "resourceValue": 9.98049905168014,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 15,
+        "competitors": 8.791866268501478,
+        "ratio": 1.631977711416913,
+        "crowd": 0,
+        "resource": 0.8709373024333624,
+        "resourceValue": 9.98049905168014,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 250,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.7142857142857143,
+        "crowd": 0.5415282392026578,
+        "resource": 0.7110524700657712,
+        "resourceValue": 8.244209880263085,
+        "driveRate": 0.07701099841908353,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 4,
+        "ratio": 0.7142857142857143,
+        "crowd": 0.5415282392026578,
+        "resource": 0.7110524700657712,
+        "resourceValue": 8.244209880263085,
+        "driveRate": 0.07701099841908353,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 251,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.388337090349738,
+        "ratio": 0.9126195843356769,
+        "crowd": 0.3109074600747942,
+        "resource": 0.6529008914662375,
+        "resourceValue": 8.01160356586495,
+        "driveRate": 0.04059835156926736,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 5.388337090349738,
+        "ratio": 0.9126195843356769,
+        "crowd": 0.3109074600747942,
+        "resource": 0.6529008914662375,
+        "resourceValue": 8.01160356586495,
+        "driveRate": 0.04059835156926736,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 252,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 9,
+        "competitors": 7.388337090349738,
+        "ratio": 1.1983338700499626,
+        "crowd": 0,
+        "resource": 0.6529008914662375,
+        "resourceValue": 8.01160356586495,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 9,
+        "competitors": 7.388337090349738,
+        "ratio": 1.1983338700499626,
+        "crowd": 0,
+        "resource": 0.6529008914662375,
+        "resourceValue": 8.01160356586495,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 253,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 6.585110494388319,
+        "ratio": 1.0835872134840456,
+        "crowd": 0.11210789129762144,
+        "resource": 0.8334046666019219,
+        "resourceValue": 8.733618666407688,
+        "driveRate": 0.01868624795406774,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 6.585110494388319,
+        "ratio": 1.0835872134840456,
+        "crowd": 0.11210789129762144,
+        "resource": 0.8334046666019219,
+        "resourceValue": 8.733618666407688,
+        "driveRate": 0.01868624795406774,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 254,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 5.6059984220355865,
+        "ratio": 0.9437140602907981,
+        "crowd": 0.27475109268511855,
+        "resource": 0.932538070367464,
+        "resourceValue": 9.130152281469856,
+        "driveRate": 0.05124317076078654,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 9,
+        "competitors": 5.6059984220355865,
+        "ratio": 0.9437140602907981,
+        "crowd": 0.27475109268511855,
+        "resource": 0.932538070367464,
+        "resourceValue": 9.130152281469856,
+        "driveRate": 0.05124317076078654,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 255,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 0.5140761658000095,
+        "resourceValue": 7.6077122797800385,
+        "driveRate": 0.09253370984400172,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 0.5140761658000095,
+        "resourceValue": 7.6077122797800385,
+        "driveRate": 0.09253370984400172,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 256,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 0.5360049861597528,
+        "resourceValue": 7.697620443254986,
+        "driveRate": 0.0964808975087555,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 0.5360049861597528,
+        "resourceValue": 7.697620443254986,
+        "driveRate": 0.0964808975087555,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 257,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.5,
+        "crowd": 0.7906976744186047,
+        "resource": 0.5331406118618394,
+        "resourceValue": 7.685876508633541,
+        "driveRate": 0.07587954754870832,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.5,
+        "crowd": 0.7906976744186047,
+        "resource": 0.5331406118618394,
+        "resourceValue": 7.685876508633541,
+        "driveRate": 0.07587954754870832,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 258,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 1.2149829719864675,
+        "ratio": 0.3691638286644112,
+        "crowd": 0.9428327573669637,
+        "resource": 0.8903684834358261,
+        "resourceValue": 9.150510782086887,
+        "driveRate": 0.15110434301587952,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 1.2149829719864675,
+        "ratio": 0.3691638286644112,
+        "crowd": 0.9428327573669637,
+        "resource": 0.8903684834358261,
+        "resourceValue": 9.150510782086887,
+        "driveRate": 0.15110434301587952,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 259,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 1.08,
+        "resourceValue": 5.177606450290111,
+        "driveRate": 0.19008000000000003,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 1,
+        "competitors": 0,
+        "ratio": 0.16666666666666666,
+        "crowd": 1,
+        "resource": 1.08,
+        "resourceValue": 5.177606450290111,
+        "driveRate": 0.19008000000000003,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 260,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.42857142857142855,
+        "crowd": 0.8737541528239203,
+        "resource": 0.7318659850949474,
+        "resourceValue": 8.32746394037979,
+        "driveRate": 0.12789418875745595,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 3,
+        "competitors": 2,
+        "ratio": 0.42857142857142855,
+        "crowd": 0.8737541528239203,
+        "resource": 0.7318659850949474,
+        "resourceValue": 8.32746394037979,
+        "driveRate": 0.12789418875745595,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 261,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 1.381120118046823,
+        "ratio": 0.39685335300780383,
+        "crowd": 0.9106356360374375,
+        "resource": 0.9540966849863423,
+        "resourceValue": 9.411796408444003,
+        "driveRate": 0.15639019948327473,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 5,
+        "competitors": 1.381120118046823,
+        "ratio": 0.39685335300780383,
+        "crowd": 0.9106356360374375,
+        "resource": 0.9540966849863423,
+        "resourceValue": 9.411796408444003,
+        "driveRate": 0.15639019948327473,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 262,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 3,
+        "ratio": 0.6666666666666666,
+        "crowd": 0.5968992248062016,
+        "resource": 0.5984270907524866,
+        "resourceValue": 7.953551072085195,
+        "driveRate": 0.06429611998317415,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 4,
+        "competitors": 3,
+        "ratio": 0.6666666666666666,
+        "crowd": 0.5968992248062016,
+        "resource": 0.5984270907524866,
+        "resourceValue": 7.953551072085195,
+        "driveRate": 0.06429611998317415,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 263,
+      "species": "podshell",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 10,
+        "competitors": 5.983846086773697,
+        "ratio": 1.1639743477956161,
+        "crowd": 0.018634479307423124,
+        "resource": 0.8150791147479022,
+        "resourceValue": 4.852063291798322,
+        "driveRate": 0.0026731891819921274,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 10,
+        "competitors": 5.983846086773697,
+        "ratio": 1.1639743477956161,
+        "crowd": 0.018634479307423124,
+        "resource": 0.8150791147479022,
+        "resourceValue": 4.852063291798322,
+        "driveRate": 0.0026731891819921274,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 264,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 2.569423119880493,
+        "ratio": 0.5099175885543562,
+        "crowd": 0.779165594704237,
+        "resource": 0.838792235556979,
+        "resourceValue": 8.755168942227916,
+        "driveRate": 0.13071161021021,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 6,
+        "competitors": 2.569423119880493,
+        "ratio": 0.5099175885543562,
+        "crowd": 0.779165594704237,
+        "resource": 0.838792235556979,
+        "resourceValue": 8.755168942227916,
+        "driveRate": 0.13071161021021,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 265,
+      "species": "mosskip",
+      "hunter": false,
+      "previous": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 4.034799899978638,
+        "ratio": 0.7192571285683769,
+        "crowd": 0.5357475249204919,
+        "resource": 0.838792235556979,
+        "resourceValue": 8.755168942227916,
+        "driveRate": 0.08987617282443555,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": true,
+        "local": 7,
+        "competitors": 4.034799899978638,
+        "ratio": 0.7192571285683769,
+        "crowd": 0.5357475249204919,
+        "resource": 0.838792235556979,
+        "resourceValue": 8.755168942227916,
+        "driveRate": 0.08987617282443555,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 266,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 6.872972524524465,
+        "ratio": 1.312162087420744,
+        "crowd": 0,
+        "resource": 0.723264392500358,
+        "resourceValue": 8.465384009251467,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 6.872972524524465,
+        "ratio": 1.312162087420744,
+        "crowd": 0,
+        "resource": 0.723264392500358,
+        "resourceValue": 8.465384009251467,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 267,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 14,
+        "competitors": 8.047567029429358,
+        "ratio": 1.5079278382382262,
+        "crowd": 0,
+        "resource": 0.723264392500358,
+        "resourceValue": 8.465384009251467,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 14,
+        "competitors": 8.047567029429358,
+        "ratio": 1.5079278382382262,
+        "crowd": 0,
+        "resource": 0.723264392500358,
+        "resourceValue": 8.465384009251467,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    },
+    {
+      "id": 268,
+      "species": "genvo",
+      "hunter": false,
+      "previous": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 7.018037591253189,
+        "ratio": 1.3363395985421984,
+        "crowd": 0,
+        "resource": 0.8143255042969838,
+        "resourceValue": 8.838734567617633,
+        "driveRate": 0,
+        "preyReference": null
+      },
+      "current": {
+        "allowed": false,
+        "local": 12,
+        "competitors": 7.018037591253189,
+        "ratio": 1.3363395985421984,
+        "crowd": 0,
+        "resource": 0.8143255042969838,
+        "resourceValue": 8.838734567617633,
+        "driveRate": 0,
+        "preyReference": null
+      }
+    }
+  ]
+}

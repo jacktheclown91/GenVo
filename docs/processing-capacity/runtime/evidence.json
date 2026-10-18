@@ -1,0 +1,12 @@
+{
+  "scope": "Controlled capacity UI fixture: actors explicitly spawned and simulation paused. Not ecological or performance evidence.",
+  "baseline": {
+    "alive": 181,
+    "warning": ""
+  },
+  "overloaded": {
+    "alive": 901,
+    "warning": "Processing capacity warning · 901 living organisms, 0 eggs. All offspring are retained. Simulation may run more slowly."
+  },
+  "errors": []
+}

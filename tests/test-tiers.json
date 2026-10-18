@@ -1,0 +1,74 @@
+{
+ "schema": "genvo.test-tiers/2",
+ "note": "Fast tier = every suite NOT listed here (each measured under 30 s). Suites listed here are long natural, ecological, resume or observation scenarios: they stay in comprehensive validation (tools/run-tests.mjs --all) and are always reported; the fast tier marks them deferred instead of omitting them. Timeouts are measured runtimes (2026-10-15, 3-4 parallel jobs) with headroom.",
+ "fastTimeoutSeconds": 120,
+ "long": {
+  "natural-world-soak": {
+   "timeoutSeconds": 1500,
+   "measuredSeconds": 497,
+   "reason": "five canonical natural worlds (640/320 days), one process per seed; replaces headless, headless-short, ecology-stability"
+  },
+  "autonomous-soil-engineering": {
+   "timeoutSeconds": 900,
+   "measuredSeconds": 345,
+   "reason": "three paired 90-day natural ecology runs in child workers"
+  },
+  "ecology-resume": {
+   "timeoutSeconds": 600,
+   "measuredSeconds": 232,
+   "reason": "checkpoint/resume equivalence over a long ecology run"
+  },
+  "family-observer-resume": {
+   "timeoutSeconds": 400,
+   "measuredSeconds": 114,
+   "reason": "family observer checkpoint/resume equivalence"
+  },
+  "engineer-loss-return": {
+   "timeoutSeconds": 900,
+   "measuredSeconds": null,
+   "reason": "free-world (~113 s) and return-patch child runs, each with a 300 s child budget"
+  },
+  "evolution-baseline": {
+   "timeoutSeconds": 400,
+   "measuredSeconds": 109,
+   "reason": "natural AUTO evolution runs against the consolidation baseline"
+  },
+  "engineer-colony-natural": {
+   "timeoutSeconds": 400,
+   "measuredSeconds": 109,
+   "reason": "130-day natural engineer colony assay"
+  },
+  "family-recruitment-observer": {
+   "timeoutSeconds": 300,
+   "measuredSeconds": 86,
+   "reason": "family recruitment observer equivalence"
+  },
+  "engineer-natural-regional-observation": {
+   "timeoutSeconds": 300,
+   "measuredSeconds": 85,
+   "reason": "110-day natural regional observation"
+  },
+  "hydrology": {
+   "timeoutSeconds": 300,
+   "measuredSeconds": 83,
+   "reason": "whole-world hydrology and long water-distance checks"
+  },
+  "wild-evolution-observation": {
+   "timeoutSeconds": 900,
+   "measuredSeconds": 378,
+   "reason": "Original 420-day natural wild evolution, now observed separately from controlled mechanism checks; original 900 s ceiling retained"
+  },
+  "ecology-observation-100": {
+   "timeoutSeconds": 300,
+   "measuredSeconds": null,
+   "reason": "Additional five canonical 100-day observations; does not replace 640/320-day soak"
+  }
+ },
+ "serial": [
+  "observer-play",
+  "natural-world-soak",
+  "wild-evolution-observation",
+  "ecology-observation-100"
+ ],
+ "serialNote": "Wall-clock performance-budget suites and the five-worker natural-world soak run alone, after the parallel pool. The soak already uses internal process concurrency; overlapping other suites would oversubscribe its workload. All suites still run and are reported under unchanged timeouts."
+}

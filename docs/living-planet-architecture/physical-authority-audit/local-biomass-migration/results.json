@@ -1,0 +1,130 @@
+{
+  "scope": "Actual old day54 save, explicit future-opportunity migration. Animals, world, stats and RNG unchanged at load; same current-policy12-update continuation. Instantaneous old-formula/current food opportunity comparisons retain all outcomes; no preferred population target or long-run survival claim.",
+  "input": "docs/player-journey/native-save-continuation-1/checkpoint.snapshot.bin",
+  "inputSha256": "c401ef786faea8940f0e5fa2e927be32e0ee26f47bd9711f8cbabf0dfe6a8435",
+  "rules": {
+    "schema": 1,
+    "populationFeedback": "local-opportunity/1",
+    "preyOpportunity": "local-edible-biomass/1"
+  },
+  "history": [
+    {
+      "from": {
+        "schema": 1,
+        "populationFeedback": "local-opportunity/1"
+      },
+      "to": {
+        "schema": 1,
+        "populationFeedback": "local-opportunity/1",
+        "preyOpportunity": "local-edible-biomass/1"
+      },
+      "tick": 2564,
+      "scope": "Future behavior: no founder-relative reproductive boost, search-radius expansion, sibling relaxation or global-count prey refuge. Hunter resource opportunity now measures accessible local remaining edible biomass plus aquatic nutrition in existing carcass-equivalent units; unchanged minPrey numerical requirements use these units instead of headcount/global-adult units. Existing organisms, ancestry, RNG, pending gestations and resource stocks unchanged; local opportunity and consent remain authoritative."
+    }
+  ],
+  "exactLoadPreservation": true,
+  "actualPendingPregnancies": 15,
+  "eggs": 0,
+  "actualAdvanceUpdates": 12,
+  "completeContinuationEqual": true,
+  "hunters": 4,
+  "changedAllowed": 0,
+  "rows": [
+    {
+      "id": 101,
+      "species": "needlejaw",
+      "previous": {
+        "reference": 2.1,
+        "resourceValue": 7,
+        "resource": 0.875,
+        "allowed": true
+      },
+      "current": {
+        "allowed": true,
+        "local": 8,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 0.8483180236185163,
+        "resourceValue": 6.78654418894813,
+        "driveRate": 0.07683525417022284,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    },
+    {
+      "id": 103,
+      "species": "needlejaw",
+      "previous": {
+        "reference": 2.1,
+        "resourceValue": 12,
+        "resource": 1.12,
+        "allowed": true
+      },
+      "current": {
+        "allowed": true,
+        "local": 15,
+        "competitors": 0,
+        "ratio": 0.3333333333333333,
+        "crowd": 0.9844961240310078,
+        "resource": 1.12,
+        "resourceValue": 10.827362054963055,
+        "driveRate": 0.10144248062015507,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    },
+    {
+      "id": 104,
+      "species": "needlejaw",
+      "previous": {
+        "reference": 2.1,
+        "resourceValue": 43,
+        "resource": 1.12,
+        "allowed": true
+      },
+      "current": {
+        "allowed": true,
+        "local": 44,
+        "competitors": 0.4669837025598513,
+        "ratio": 0.48899456751995046,
+        "crowd": 0.8034946889302902,
+        "resource": 1.12,
+        "resourceValue": 40.02578792097089,
+        "driveRate": 0.08279209274737712,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    },
+    {
+      "id": 246,
+      "species": "mosskip",
+      "previous": {
+        "reference": 1.45,
+        "resourceValue": 0,
+        "resource": 0,
+        "allowed": false
+      },
+      "current": {
+        "allowed": false,
+        "local": 8,
+        "competitors": 0,
+        "ratio": 0.14285714285714285,
+        "crowd": 1,
+        "resource": 0,
+        "resourceValue": 0,
+        "driveRate": 0.010000000000000002,
+        "preyReference": {
+          "energyPerUnit": 34,
+          "source": "local-edible-biomass/1"
+        }
+      }
+    }
+  ]
+}

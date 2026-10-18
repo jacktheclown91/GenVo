@@ -1,0 +1,13 @@
+{
+  "date": "2026-10-18T08:41:20.611Z",
+  "scope": "Exactly one observation tool changed since broad gate. Reversing only the documented telemetry/drink-only additions reconstructs the full gate fingerprint; all other src/tools/tests bytes are identical.",
+  "baselineFullGate": "docs/test-runs/manual-courtship-expiry-fast-2026-10-18.json",
+  "reconstructedBaseline": "30fd887acab8ba2774d59320746ce13d3fe1079065ba312e9804ec09637007ac",
+  "matches": true,
+  "changedFile": "tools/continue-player-native-lineage.cjs",
+  "currentToolSHA256": "1c79434611b0b66729d94cd65543f536cb4c15fdcf7a4f352872a40fb8f8ca1f",
+  "noBiologyOrTestChanges": true,
+  "currentWholeFingerprint": "972e4ab2c7789021e4bcc58d84fba22476e7e2732ecb72bffdde6df65cb06a3f",
+  "currentWholeFingerprintMatchesBroadGate": false,
+  "matchesBaselineExceptObservationTool": true
+}

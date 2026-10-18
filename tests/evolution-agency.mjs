@@ -26,7 +26,9 @@ const fightSim=new Simulation('GENVO8-DESPERATE-BITE',{player:true});const p=fig
 p.adaptations=['barbed-limbs'];stalk.health=100;stalk.x=p.x+.6;const old2=fightSim.rng.chance;fightSim.rng.chance=()=>true;const barb=fightSim.playerStrike(stalk);fightSim.rng.chance=old2;assert.ok(barb.damage>bite.damage*2,'barbed limbs significantly improve defensive strike');assert.equal(barb.repelled,true);assert.ok(stalk.playerAversion?.untilTick>fightSim.tickCount);
 
 // Hardened mantle and bitter slime affect incoming predator contact.
-p.adaptations=['hardened-mantle','bitter-slime'];p.health=100;stalk.health=100;stalk.x=p.x+.5;stalk.y=p.y;const old3=fightSim.rng.chance;fightSim.rng.chance=()=>true;fightSim.tryKill(stalk,p);fightSim.rng.chance=old3;assert.ok(p.health>60,'hardened mantle reduces Stalker damage');assert.ok(stalk.playerAversion?.untilTick>fightSim.tickCount,'bitter slime creates predator aversion');
+// Phase 3I predation parity: the player takes the wildlife bite, so the mantle is judged against the same bite unprotected.
+p.adaptations=[];p.health=100;stalk.health=100;stalk.x=p.x+.5;stalk.y=p.y;stalk.playerAversion=null;const old3b=fightSim.rng.chance;fightSim.rng.chance=()=>true;fightSim.tryKill(stalk,p);fightSim.rng.chance=old3b;const unprotected=100-p.health;p.alive=true;
+p.adaptations=['hardened-mantle','bitter-slime'];p.health=100;stalk.health=100;stalk.x=p.x+.5;stalk.y=p.y;const old3=fightSim.rng.chance;fightSim.rng.chance=()=>true;fightSim.tryKill(stalk,p);fightSim.rng.chance=old3;assert.ok(unprotected>0&&100-p.health<unprotected*.8,'hardened mantle reduces Stalker damage');assert.ok(stalk.playerAversion?.untilTick>fightSim.tickCount,'bitter slime creates predator aversion');
 
 const fx=adaptationEffects({adaptations:['water-sacs','efficient-gut','fast-healing','spring-tendons']});assert.ok(fx.waterUse<1&&fx.foodGain>1&&fx.healing>1&&fx.sprintSpeed>1);
 

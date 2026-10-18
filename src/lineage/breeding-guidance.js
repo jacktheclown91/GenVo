@@ -48,11 +48,11 @@ export function offspringPartOrigins(child,mother,father){
   return out;
 }
 
-// A bounded, comprehensible summary of actual physical origins. "Novel" means not
+// A bounded comparison of recorded layouts; this does not identify a selected donor. "Novel" means not
 // present at the same socket in either known parent; mutation, trait reconciliation,
 // and parent snapshots are possible causes, not guaranteed diagnoses.
 export function originSummary(origins,{limit=3}={}){
   if(!origins)return'Parental body plans not recorded';
   const describe=(label,list)=>`${label} ${list.length}${list.length?` (${list.slice(0,limit).map(n=>`${n.part} · ${n.location}`).join(', ')}${list.length>limit?', …':''})`:''}`;
-  return [describe('Shared',origins.both),describe('From mother',origins.mother),describe('From father',origins.father),describe('Other arrangement',origins.novel)].join(' · ');
+  return [describe('Matches both',origins.both),describe('Matches mother',origins.mother),describe('Matches father',origins.father),describe('Other arrangement',origins.novel)].join(' · ');
 }

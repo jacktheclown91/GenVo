@@ -1,4 +1,7 @@
 import assert from 'node:assert/strict';
+import {basalResourceCosts} from '../src/organisms/body-mass.js';
+import {adaptationEffects} from '../src/lineage/evolution.js';
+import {waterUseEffect} from '../src/lineage/effects.js';
 import {Simulation} from '../src/sim/simulation.js';
 import {makePlan} from '../src/lineage/body-plan.js';
 import {founderPlan} from '../src/lineage/body-inheritance.js';
@@ -11,7 +14,8 @@ b.genes=structuredClone(a.genes);b.adaptations=structuredClone(a.adaptations);
 b.bodyPlan=founderPlan();a.bodyPlan=makePlan([...b.bodyPlan.nodes.map(n=>({partId:n.partId,parent:n.parent,socket:n.socket})),{partId:'egg-chamber',parent:'root',socket:'flank.left'},{partId:'live-womb',parent:'root',socket:'flank.right'}]);
 sim.phaseClimate();
 const energyBefore=a.energy-b.energy,waterBefore=a.hydration-b.hydration;
+const extraBasalWater=(basalResourceCosts(a).water-basalResourceCosts(b).water)*(1+sim.climate.temp*.3)*waterUseEffect(sim,a,adaptationEffects(a));
 sim.phaseMetabolism();
 assert.ok((b.energy-a.energy+energyBefore)>=DUAL_ENERGY_UPKEEP-1e-5,'ongoing additional energy upkeep is real');
-assert.ok(Math.abs((b.hydration-a.hydration+waterBefore)-DUAL_WATER_UPKEEP)<1e-5,'ongoing additional hydration upkeep is real');
+assert.ok(Math.abs((b.hydration-a.hydration+waterBefore)-DUAL_WATER_UPKEEP-extraBasalWater)<1e-5,'ongoing additional hydration upkeep is real');
 console.log('dual reproductive physiology: same physiology with extra ongoing real resource costs PASS');

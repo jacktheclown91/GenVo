@@ -1,0 +1,551 @@
+{
+  "schema": "genvo.relative-anatomical-mass-proposal/1",
+  "status": "REVIEW PROTOTYPE ONLY; NO LIVE AUTHORITY CHANGED",
+  "scope": "Explicitly proposed reinterpretation of existing registry mass weights as relative structural load, globally normalized to the existing simple-founder game mass. Not independently calibrated tissue quantities, SI mass, density, net compartment ownership or full material conservation. The zero-load head-base remains a compatibility routing marker; distinct head/torso tissue allocation is unfinished.",
+  "normalization": {
+    "founderRegistryLoad": 5,
+    "founderReferenceGameMass": 1.45,
+    "gameMassPerRegistryLoad": 0.29
+  },
+  "catalogLoads": {
+    "head-base": 0,
+    "small-torso": 3,
+    "soft-torso": 4,
+    "reinforced-torso": 5,
+    "sleek-torso": 3.5,
+    "light-torso": 2.6,
+    "stout-torso": 5,
+    "barrel-torso": 6,
+    "dome-torso": 6,
+    "long-torso": 6,
+    "walking-leg": 0.4,
+    "spring-leg": 0.5,
+    "grasper": 0.45,
+    "runner-leg": 0.35,
+    "sturdy-leg": 0.6,
+    "webbed-leg": 0.45,
+    "padded-leg": 0.4,
+    "digging-forelimb": 0.5,
+    "grazing-mouth": 0.3,
+    "tearing-jaw": 0.5,
+    "crushing-jaw": 0.7,
+    "beak-mouth": 0.3,
+    "kernel-beak": 0.46,
+    "filter-mouth": 0.3,
+    "reed-sieve-mouth": 0.35,
+    "nibbler-mouth": 0.2,
+    "sucker-mouth": 0.35,
+    "gape-mouth": 0.55,
+    "simple-eye": 0.05,
+    "wide-field-eye": 0.08,
+    "hunter-eye": 0.06,
+    "stalk-eye": 0.07,
+    "compound-eye": 0.09,
+    "tracker-eye": 0.06,
+    "display-eye": 0.06,
+    "eyespot": 0.02,
+    "armor-plate": 0.6,
+    "barb": 0.1,
+    "claw": 0.12,
+    "venom-gland": 0.2,
+    "storage-sac": 0.5,
+    "silt-fin": 0.28,
+    "signal-crest": 0.1,
+    "paddle-tail": 0.4,
+    "horn-crest": 0.3,
+    "tusk-jaw": 0.6,
+    "gliding-membrane": 0.25,
+    "luminous-tail": 0.3,
+    "shell-back": 0.7,
+    "armored-hide": 0.6,
+    "glow-eye": 0.06,
+    "echo-crest": 0.2,
+    "balance-tail": 0.35,
+    "club-tail": 0.35,
+    "spined-tail": 0.35,
+    "whip-tail": 0.35,
+    "prehensile-tail": 0.35,
+    "fat-tail": 0.35,
+    "flag-tail": 0.35,
+    "sail-fin": 0.3,
+    "spine-ridge": 0.3,
+    "water-hump": 0.3,
+    "display-frill": 0.3,
+    "moss-back": 0.3,
+    "thorn-carapace": 0.84,
+    "sensory-quills": 0.3,
+    "fat-pad": 0.3,
+    "gill-slits": 0.3,
+    "scent-gland": 0.3,
+    "spine-cluster": 0.3,
+    "brood-pouch": 0.3,
+    "egg-chamber": 0.8,
+    "live-womb": 1.1,
+    "hook-spur": 0.08,
+    "dew-claw": 0.08,
+    "heel-spike": 0.08,
+    "sensory-bristle": 0.08,
+    "grip-pad": 0.08,
+    "kick-spur": 0.08
+  },
+  "rows": [
+    {
+      "name": "simple-founder",
+      "mass": {
+        "policy": "relative-anatomical-load/1",
+        "units": "existing game mass units; not kg or calibrated tissue",
+        "adultMass": 1.45,
+        "currentMass": 1.45,
+        "components": [
+          {
+            "nodeId": "root",
+            "partId": "small-torso",
+            "load": 3,
+            "adultMass": 0.8699999999999999
+          },
+          {
+            "nodeId": "root/eye.left",
+            "partId": "simple-eye",
+            "load": 0.05,
+            "adultMass": 0.014499999999999999
+          },
+          {
+            "nodeId": "root/eye.right",
+            "partId": "simple-eye",
+            "load": 0.05,
+            "adultMass": 0.014499999999999999
+          },
+          {
+            "nodeId": "root/limb.1",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.3",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.5",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.7",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/mouth",
+            "partId": "grazing-mouth",
+            "load": 0.3,
+            "adultMass": 0.087
+          }
+        ]
+      },
+      "atAge10GrowthCost": 1.764020787080721,
+      "adultBasal": {
+        "energyPerMetabolismStep": 0.052,
+        "waterPerMetabolismStep": 0.044
+      }
+    },
+    {
+      "name": "same-founder-explicit-head",
+      "mass": {
+        "policy": "relative-anatomical-load/1",
+        "units": "existing game mass units; not kg or calibrated tissue",
+        "adultMass": 1.45,
+        "currentMass": 1.45,
+        "components": [
+          {
+            "nodeId": "root",
+            "partId": "small-torso",
+            "load": 3,
+            "adultMass": 0.8699999999999999
+          },
+          {
+            "nodeId": "root/head",
+            "partId": "head-base",
+            "load": 0,
+            "adultMass": 0
+          },
+          {
+            "nodeId": "root/head/eye.left",
+            "partId": "simple-eye",
+            "load": 0.05,
+            "adultMass": 0.014499999999999999
+          },
+          {
+            "nodeId": "root/head/eye.right",
+            "partId": "simple-eye",
+            "load": 0.05,
+            "adultMass": 0.014499999999999999
+          },
+          {
+            "nodeId": "root/head/mouth",
+            "partId": "grazing-mouth",
+            "load": 0.3,
+            "adultMass": 0.087
+          },
+          {
+            "nodeId": "root/limb.1",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.3",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.5",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.7",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          }
+        ]
+      },
+      "atAge10GrowthCost": 1.764020787080721,
+      "adultBasal": {
+        "energyPerMetabolismStep": 0.052,
+        "waterPerMetabolismStep": 0.044
+      }
+    },
+    {
+      "name": "actual-storage-parent8",
+      "mass": {
+        "policy": "relative-anatomical-load/1",
+        "units": "existing game mass units; not kg or calibrated tissue",
+        "adultMass": 1.7689999999999997,
+        "currentMass": 1.7689999999999997,
+        "components": [
+          {
+            "nodeId": "root",
+            "partId": "small-torso",
+            "load": 3,
+            "adultMass": 0.8699999999999999
+          },
+          {
+            "nodeId": "root/eye.left",
+            "partId": "simple-eye",
+            "load": 0.05,
+            "adultMass": 0.014499999999999999
+          },
+          {
+            "nodeId": "root/eye.right",
+            "partId": "simple-eye",
+            "load": 0.05,
+            "adultMass": 0.014499999999999999
+          },
+          {
+            "nodeId": "root/flank.left",
+            "partId": "storage-sac",
+            "load": 0.5,
+            "adultMass": 0.145
+          },
+          {
+            "nodeId": "root/flank.right",
+            "partId": "storage-sac",
+            "load": 0.5,
+            "adultMass": 0.145
+          },
+          {
+            "nodeId": "root/limb.1",
+            "partId": "webbed-leg",
+            "load": 0.45,
+            "adultMass": 0.1305
+          },
+          {
+            "nodeId": "root/limb.3",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.5",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.7",
+            "partId": "webbed-leg",
+            "load": 0.45,
+            "adultMass": 0.1305
+          },
+          {
+            "nodeId": "root/mouth",
+            "partId": "grazing-mouth",
+            "load": 0.3,
+            "adultMass": 0.087
+          }
+        ]
+      },
+      "atAge10GrowthCost": 2.152105360238483,
+      "adultBasal": {
+        "energyPerMetabolismStep": 0.06343999999999998,
+        "waterPerMetabolismStep": 0.05367999999999999
+      }
+    },
+    {
+      "name": "same-parent-two-sacs-deleted-diagnostic",
+      "mass": {
+        "policy": "relative-anatomical-load/1",
+        "units": "existing game mass units; not kg or calibrated tissue",
+        "adultMass": 1.4789999999999999,
+        "currentMass": 1.4789999999999999,
+        "components": [
+          {
+            "nodeId": "root",
+            "partId": "small-torso",
+            "load": 3,
+            "adultMass": 0.8699999999999999
+          },
+          {
+            "nodeId": "root/eye.left",
+            "partId": "simple-eye",
+            "load": 0.05,
+            "adultMass": 0.014499999999999999
+          },
+          {
+            "nodeId": "root/eye.right",
+            "partId": "simple-eye",
+            "load": 0.05,
+            "adultMass": 0.014499999999999999
+          },
+          {
+            "nodeId": "root/limb.1",
+            "partId": "webbed-leg",
+            "load": 0.45,
+            "adultMass": 0.1305
+          },
+          {
+            "nodeId": "root/limb.3",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.5",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.7",
+            "partId": "webbed-leg",
+            "load": 0.45,
+            "adultMass": 0.1305
+          },
+          {
+            "nodeId": "root/mouth",
+            "partId": "grazing-mouth",
+            "load": 0.3,
+            "adultMass": 0.087
+          }
+        ]
+      },
+      "atAge10GrowthCost": 1.799301202822338,
+      "adultBasal": {
+        "energyPerMetabolismStep": 0.05303999999999999,
+        "waterPerMetabolismStep": 0.044879999999999996
+      }
+    },
+    {
+      "name": "actual-reduced-offspring1004",
+      "mass": {
+        "policy": "relative-anatomical-load/1",
+        "units": "existing game mass units; not kg or calibrated tissue",
+        "adultMass": 1.45,
+        "currentMass": 1.45,
+        "components": [
+          {
+            "nodeId": "root",
+            "partId": "small-torso",
+            "load": 3,
+            "adultMass": 0.8699999999999999
+          },
+          {
+            "nodeId": "root/eye.left",
+            "partId": "simple-eye",
+            "load": 0.05,
+            "adultMass": 0.014499999999999999
+          },
+          {
+            "nodeId": "root/eye.right",
+            "partId": "simple-eye",
+            "load": 0.05,
+            "adultMass": 0.014499999999999999
+          },
+          {
+            "nodeId": "root/limb.1",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.3",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.5",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.7",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/mouth",
+            "partId": "grazing-mouth",
+            "load": 0.3,
+            "adultMass": 0.087
+          }
+        ]
+      },
+      "atAge10GrowthCost": 1.764020787080721,
+      "adultBasal": {
+        "energyPerMetabolismStep": 0.052,
+        "waterPerMetabolismStep": 0.044
+      }
+    },
+    {
+      "name": "constructed-twelve-leg-path-endpoint",
+      "mass": {
+        "policy": "relative-anatomical-load/1",
+        "units": "existing game mass units; not kg or calibrated tissue",
+        "adultMass": 3.2479999999999998,
+        "currentMass": 3.2479999999999998,
+        "components": [
+          {
+            "nodeId": "root",
+            "partId": "long-torso",
+            "load": 6,
+            "adultMass": 1.7399999999999998
+          },
+          {
+            "nodeId": "root/eye.left",
+            "partId": "simple-eye",
+            "load": 0.05,
+            "adultMass": 0.014499999999999999
+          },
+          {
+            "nodeId": "root/eye.right",
+            "partId": "simple-eye",
+            "load": 0.05,
+            "adultMass": 0.014499999999999999
+          },
+          {
+            "nodeId": "root/limb.0",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.1",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.10",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.13",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.14",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.2",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.3",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.4",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.5",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.6",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.7",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/limb.9",
+            "partId": "walking-leg",
+            "load": 0.4,
+            "adultMass": 0.11599999999999999
+          },
+          {
+            "nodeId": "root/mouth",
+            "partId": "grazing-mouth",
+            "load": 0.3,
+            "adultMass": 0.087
+          }
+        ]
+      },
+      "atAge10GrowthCost": 3.951406563060816,
+      "adultBasal": {
+        "energyPerMetabolismStep": 0.11647999999999999,
+        "waterPerMetabolismStep": 0.09856
+      }
+    }
+  ],
+  "isolatedStorageDifference": 0.2899999999999998,
+  "originalActualOrganismsUnchanged": true,
+  "actualParentReducedDifferenceIncludesOtherInheritedChanges": true,
+  "sourceHashes": {
+    "src/lineage/part-registry.js": "28187ee944cf5d4f6fb7742e0da26534620b96467feec8a0699c712f18c6c4fb",
+    "src/organisms/body-mass.js": "c546339e33dd6e6452f4ab0f2aa8f79be57bf7d53de862822c871eac83739870",
+    "src/ecology/juvenile-biology.js": "a97baa811faccdad8de4649677172f963d42cb9ff993425962c93bda9b749f29"
+  }
+}

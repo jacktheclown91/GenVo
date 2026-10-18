@@ -3,6 +3,8 @@
 import {PLANTS} from '../sim/config.js';
 export const BOTANICAL_LOCI=Object.freeze(['cue','receptor','selfMarker','selfCompatible','anther','stigma','ovule','embryo']);
 const generatedGenomes=new Map(),embeddings=new WeakMap(),clonalVariants=new WeakMap(),validatedGenomes=new WeakSet();
+// Process-wide immutable-generation cache, distinct from each world's retained registry.
+export function botanicalGenomeCacheStats(){return{entries:generatedGenomes.size,limit:16384,scope:'process-wide generated genomes; WeakMap/WeakSet retention is not enumerated'}}
 const traitKeys=['growth','waterNeed','nutrition','seedAllocation','coatAllocation'];
 export function botanicalHash(value){const text=String(value);let h=2166136261;for(let i=0;i<text.length;i++)h=Math.imul(h^text.charCodeAt(i),16777619);return h>>>0}
 // Avalanche the lineage hash before allele choice so adjacent locus names do not

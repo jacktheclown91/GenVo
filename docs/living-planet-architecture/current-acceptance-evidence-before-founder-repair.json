@@ -1,0 +1,86 @@
+{
+  "scope": "Current acceptance provenance inspection, not behavioral proof or completion certificate",
+  "openMilestoneCriteria": [
+    "LP-1",
+    "LP-2",
+    "LP-3",
+    "LP-4",
+    "LP-5",
+    "LP-6",
+    "LP-7"
+  ],
+  "hashedReceipts": [
+    {
+      "receipt": "docs/planet-geography/seed-continuity.json",
+      "inputs": [
+        {
+          "path": "src/world/planet-geography.js",
+          "matches": true
+        },
+        {
+          "path": "src/world/planet-world.js",
+          "matches": true
+        },
+        {
+          "path": "src/world/world.js",
+          "matches": true
+        },
+        {
+          "path": "src/persistence/save-manager.js",
+          "matches": true
+        }
+      ],
+      "allInputsMatch": true
+    },
+    {
+      "receipt": "docs\\living-planet-architecture\\developmental-operator-audit.json",
+      "inputs": [
+        {
+          "path": "src/lineage/body-inheritance.js",
+          "matches": true
+        },
+        {
+          "path": "src/lineage/evolution-draft.js",
+          "matches": true
+        },
+        {
+          "path": "src/lineage/part-registry.js",
+          "matches": true
+        },
+        {
+          "path": "src/lineage/developmental-symmetry.js",
+          "matches": true
+        }
+      ],
+      "allInputsMatch": true
+    },
+    {
+      "receipt": "docs\\living-planet-architecture\\accessibility-experiment\\current-policy\\parental-guidance-runtime\\focused-tests.json",
+      "inputs": [
+        {
+          "path": "src/ui/inspector.js",
+          "matches": true
+        },
+        {
+          "path": "src/ui/parental-adaptations.js",
+          "matches": true
+        },
+        {
+          "path": "tests/parental-adaptation-guidance.mjs",
+          "matches": true
+        }
+      ],
+      "allInputsMatch": true
+    }
+  ],
+  "otherReferencedReceipts": [
+    "docs/world-pages/runtime/evidence.json",
+    "docs/planet-geography/runtime/evidence.json",
+    "docs\\living-planet-architecture\\accessibility-experiment\\current-policy\\maturity\\results.json",
+    "docs\\living-planet-architecture\\accessibility-experiment\\current-policy\\descendants\\results.json",
+    "docs\\living-planet-architecture\\accessibility-experiment\\current-policy\\descendants\\runtime\\evidence.json",
+    "docs/test-runs/planet-b0-fast-2026-10-17.json"
+  ],
+  "fullObjectiveComplete": false,
+  "pendingReview": "DEVELOPMENTAL-GRAMMAR-CONTRACT.md optional-organ loss"
+}

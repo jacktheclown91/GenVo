@@ -1,0 +1,1971 @@
+{
+  "schema": "genvo.tissue-quantity-review/1",
+  "activation": "none; this is not a runtime calibration",
+  "status": "234 uncalibrated ownership slots; no biological coefficients approved by this scaffold",
+  "targetDraftUnits": {
+    "volume": "m3",
+    "density": "kg/m3"
+  },
+  "existingLiveMassUnit": "abstract, no automatic SI interpretation",
+  "bodyGeneScaling": null,
+  "materials": {},
+  "parts": {
+    "head-base": {
+      "group": "core",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "small-torso": {
+      "group": "core",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "soft-torso": {
+      "group": "core",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "reinforced-torso": {
+      "group": "core",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "sleek-torso": {
+      "group": "core",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "light-torso": {
+      "group": "core",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "stout-torso": {
+      "group": "core",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "barrel-torso": {
+      "group": "core",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "dome-torso": {
+      "group": "core",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "long-torso": {
+      "group": "core",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "walking-leg": {
+      "group": "limb",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "spring-leg": {
+      "group": "limb",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "grasper": {
+      "group": "limb",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "runner-leg": {
+      "group": "limb",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "sturdy-leg": {
+      "group": "limb",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "webbed-leg": {
+      "group": "limb",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "padded-leg": {
+      "group": "limb",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "digging-forelimb": {
+      "group": "limb",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "grazing-mouth": {
+      "group": "feeding",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "tearing-jaw": {
+      "group": "feeding",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "crushing-jaw": {
+      "group": "feeding",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "beak-mouth": {
+      "group": "feeding",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "kernel-beak": {
+      "group": "feeding",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "filter-mouth": {
+      "group": "feeding",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "reed-sieve-mouth": {
+      "group": "feeding",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "nibbler-mouth": {
+      "group": "feeding",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "sucker-mouth": {
+      "group": "feeding",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "gape-mouth": {
+      "group": "feeding",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "tusk-jaw": {
+      "group": "feeding",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "simple-eye": {
+      "group": "sensory",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "wide-field-eye": {
+      "group": "sensory",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "hunter-eye": {
+      "group": "sensory",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "stalk-eye": {
+      "group": "sensory",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "compound-eye": {
+      "group": "sensory",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "tracker-eye": {
+      "group": "sensory",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "display-eye": {
+      "group": "sensory",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "eyespot": {
+      "group": "sensory",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "glow-eye": {
+      "group": "sensory",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "echo-crest": {
+      "group": "sensory",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "sensory-quills": {
+      "group": "sensory",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "sensory-bristle": {
+      "group": "sensory",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "armor-plate": {
+      "group": "protective",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "barb": {
+      "group": "protective",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "claw": {
+      "group": "protective",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "horn-crest": {
+      "group": "protective",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "shell-back": {
+      "group": "protective",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "armored-hide": {
+      "group": "protective",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "spine-ridge": {
+      "group": "protective",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "thorn-carapace": {
+      "group": "protective",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "spine-cluster": {
+      "group": "protective",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "hook-spur": {
+      "group": "protective",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "dew-claw": {
+      "group": "protective",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "heel-spike": {
+      "group": "protective",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "kick-spur": {
+      "group": "protective",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "venom-gland": {
+      "group": "gland",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "scent-gland": {
+      "group": "gland",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "storage-sac": {
+      "group": "organ",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "sail-fin": {
+      "group": "organ",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "water-hump": {
+      "group": "organ",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "fat-pad": {
+      "group": "organ",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "gill-slits": {
+      "group": "organ",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "brood-pouch": {
+      "group": "organ",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "egg-chamber": {
+      "group": "organ",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "live-womb": {
+      "group": "organ",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "moss-back": {
+      "group": "organ",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "organ": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "silt-fin": {
+      "group": "appendage",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "signal-crest": {
+      "group": "appendage",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "paddle-tail": {
+      "group": "appendage",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "gliding-membrane": {
+      "group": "appendage",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "luminous-tail": {
+      "group": "appendage",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "balance-tail": {
+      "group": "appendage",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "club-tail": {
+      "group": "appendage",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "spined-tail": {
+      "group": "appendage",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "whip-tail": {
+      "group": "appendage",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "prehensile-tail": {
+      "group": "appendage",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "fat-tail": {
+      "group": "appendage",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "flag-tail": {
+      "group": "appendage",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "display-frill": {
+      "group": "appendage",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    },
+    "grip-pad": {
+      "group": "appendage",
+      "netTissueExcludesMountedChildren": true,
+      "contentsExcluded": true,
+      "components": {
+        "muscle": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "support": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        },
+        "covering": {
+          "adultNetVolume": null,
+          "materialId": null,
+          "evidence": null,
+          "reviewed": false
+        }
+      }
+    }
+  }
+}

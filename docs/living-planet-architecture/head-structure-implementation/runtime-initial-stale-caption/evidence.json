@@ -1,0 +1,221 @@
+{
+  "scope": "Actual archived implicit-head parent and normally born headed offspring, temporary paused control for inspection. Bodies, genes, anatomy and reserves remain unchanged. Diagnostic captions are harness annotations. Explicit head/face placement with identical current part factors, not a new functional capability, calibrated head tissue or ordinary player acceptance.",
+  "results": [
+    {
+      "id": 1,
+      "age": 32,
+      "body": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-4134709b"
+      },
+      "adaptations": [],
+      "effects": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      },
+      "host": "root",
+      "headParts": 0,
+      "unchanged": true,
+      "oldMigrations": 0,
+      "migrations": [],
+      "message": "World restored"
+    },
+    {
+      "id": 4,
+      "age": 30,
+      "body": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "small-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/head",
+            "partId": "head-base",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "head"
+          },
+          {
+            "id": "root/head/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/head/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/head/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root/head",
+            "socket": "mouth"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          }
+        ],
+        "id": "bp0-b076d13f"
+      },
+      "adaptations": [],
+      "effects": {
+        "sprintSpeed": 1,
+        "damageTaken": 1,
+        "rearDamage": 1,
+        "metabolism": 1,
+        "waterUse": 1,
+        "playerStrike": 1,
+        "strikeWindup": 1,
+        "carryCapacity": 1,
+        "huntBonus": 0,
+        "threatSense": 1,
+        "forage": 1,
+        "cue": 1,
+        "courtship": null,
+        "brace": 1,
+        "landSpeed": 1,
+        "legs": 4,
+        "repel": 0,
+        "visibility": 1,
+        "coverHide": null,
+        "swimSpeed": 1,
+        "swimEnergy": 1,
+        "quiet": false,
+        "mouth": "grazing-mouth",
+        "mouthFood": {},
+        "wideField": false,
+        "dig": false,
+        "venom": false,
+        "paddle": false
+      },
+      "host": "root/head",
+      "headParts": 1,
+      "unchanged": true,
+      "oldMigrations": 0,
+      "migrations": [],
+      "message": "World restored"
+    }
+  ],
+  "errors": []
+}

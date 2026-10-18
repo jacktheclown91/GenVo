@@ -135,7 +135,9 @@ Object.assign(DRAW,{
 // Wave 2 components (tails, backs, flanks, spurs), drawn on the 32-pixel grid.
 const tailRoot=k=>k.L?.tail?{x:k.L.tail.x,y:k.L.tail.y+1}:({x:k.bx-k.fx*(k.bodyW*.46),y:k.by-k.fy*(k.bodyH*.46)+1});
 const tailSweep=k=>((k.frameInt%4)-1.5)*.4+(Number(k.behavior?.tailSweep)||0);
-const tailEnd=(k,len)=>{const r=tailRoot(k),w=tailSweep(k);return{r,x:r.x-k.fx*len+k.perp.x*w,y:r.y-k.fy*len+k.perp.y*w}};
+// A cowed retreat tucks the tail in toward the body; the root stays anatomically fixed.
+const tailTuck=k=>Math.max(0,Math.min(1,Number(k.behavior?.tailTuck)||0));
+const tailEnd=(k,len)=>{const r=tailRoot(k),w=tailSweep(k);len*=1-.5*tailTuck(k);return{r,x:r.x-k.fx*len+k.perp.x*w,y:r.y-k.fy*len+k.perp.y*w}};
 const backTop=k=>k.L?.dorsal?{x:k.L.dorsal.x,y:k.L.dorsal.y}:({x:k.bx-k.fx*1,y:k.by-k.fy*1});
 const flankAt=k=>{const a=k.L?.[k.sign<0?'flank.left':'flank.right'];return a?{x:a.x,y:a.y}:{x:k.bx+k.perp.x*k.sign*(k.bodyW*.44),y:k.by+k.perp.y*k.sign*(k.bodyH*.40)}};
 Object.assign(DRAW,{
@@ -255,7 +257,7 @@ export function artMount(partId,k){
  if(sockets.includes('tail')){
    const at=authored('tail'),radius=ellipseRadius(k.fx,k.fy);
    return {x:at?.x??x0-k.fx*radius*.96,y:at?.y??y0-k.fy*radius*.96,
-     scale:.40,rotation:(Number(k.behavior?.tailSweep)||0)*.12,mirrorX:false};
+     scale:.40*(1-.35*tailTuck(k)),rotation:(Number(k.behavior?.tailSweep)||0)*.12,mirrorX:false};
  }
  if(sockets.includes('flank')&&(!sockets.includes('dorsal')||k.sign)){
    const at=authored(side<0?'flank.left':'flank.right');

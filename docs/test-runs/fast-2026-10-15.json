@@ -1,0 +1,3021 @@
+{
+ "schema": "genvo.test-run/1",
+ "mode": "fast",
+ "date": "2026-10-15T09:29:22.648Z",
+ "seconds": 772,
+ "total": 377,
+ "pass": 331,
+ "fail": 38,
+ "timeout": 4,
+ "deferred": 4,
+ "results": [
+  {
+   "name": "accessible-guidance",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "action-icons",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "action-restriction-reasons",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "active-care-conservation",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "active-family-separation",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "activity-budget",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "adaptation",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "ai-disclosure",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\submission\\AI_DISCLOSURE.txt'\r"
+  },
+  {
+   "name": "anatomical-strike-performance",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "anatomy-locomotion",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "anatomy-readings",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "anatomy-thresholds",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "animation",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "aquatic",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 8.7,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "aquatic-lifestyle",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "audio",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "audio-assets",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "audio-phenotype",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "audio-runtime",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "authored-draft-compiler",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "auto-home",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 6.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "autonomous-soil-engineering",
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "background-movement-budget",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "behavior-readability",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "behavioral-specialization",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "birth-hydration",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 1,
+   "timeoutSeconds": 240,
+   "error": "Error: No existing habitat supports this conception fixture\r"
+  },
+  {
+   "name": "birth-reserves",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.6,
+   "timeoutSeconds": 240,
+   "error": "Error: No existing habitat supports this conception fixture\r"
+  },
+  {
+   "name": "botanical-genetics",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "botanical-populations",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "botanical-reproduction",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.6,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "botanical-safety",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "breeding-site-attachment",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "brood-investment",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "canonical-source",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: {\r"
+  },
+  {
+   "name": "care-command-provision",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "carrying",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "carrying-anatomy-cache",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "carrying-connected-demand",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "carrying-land-access",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "carrying-live-stock",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "clarity-feedback-v110",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "clonal-flora",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.6,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "cognition",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "combat-footwork",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "combat-pressure",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "community-ui-feedback",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "composition",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "conception-availability",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "conception-parental-inheritance",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.9,
+   "timeoutSeconds": 240,
+   "error": "Error: No existing habitat supports this conception fixture\r"
+  },
+  {
+   "name": "consolidation-demand-parity",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 10.8,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "context-guidance",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "contextual-interactions",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "control-response",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "core",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r"
+  },
+  {
+   "name": "courtship-performance",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "courtship-tendency-priority",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "courtship-threat-priority",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "creature-assembly",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: facing 6 frame 3: a part pixel at 46,-4 is detached from the body\r"
+  },
+  {
+   "name": "creature-instance-expression",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "creature-lab-assembly",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "decisions-under-pressure",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "depth-render",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "developmental-cost",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "developmental-hunt",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "diet-lifestyles",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "digging-calendar",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "discovery",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "disease",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "dispersal",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "dispersal-feeding-priority",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "disturbed-soil-germination",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "drink-goal",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "dual-physiology",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "dual-reproductive-anatomy",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "ecological-integrity",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "ecology-progress",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 3.6,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "ecology-resume",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 231.7,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "ecology-stability",
+   "tier": "fast",
+   "status": "timeout",
+   "seconds": 240.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "editor-pass",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "egg-nest-predation",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "emergent-contracts",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 1.8,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "encounter-reactions",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.9,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "engineer-breeding-habitat",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: real eligible mating is the only source of episodes\r"
+  },
+  {
+   "name": "engineer-breeding-opportunities",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "engineer-colony-boundaries",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "engineer-colony-natural",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 108.7,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "engineer-colony-recruitment",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "engineer-family-settlement",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r"
+  },
+  {
+   "name": "engineer-life-history",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "engineer-loss-return",
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "engineer-natural-regional-observation",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 84.9,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "engineer-recovery-foraging",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "engineer-succession-observer",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "engineer-water-access",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "escape-path",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "evolution-agency",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "evolution-baseline",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 109.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "evolution-branches",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "evolution-contract",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\evolution-expansion\\baseline-v1.33.7\\creature-fixture.json'\r"
+  },
+  {
+   "name": "evolution-draft",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "evolution-editor",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "evolutionary-tree",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "evolving-courtship-rituals",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "exploration-boundary",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "exploration-geometry",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "expression-coordinator",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "expression-physical-signals",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "expression-rig-validation",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "extended-kinship",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family-agency",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family-care",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family-checkpoint-consistency",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.7,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family-decision-observer",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 2.8,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family-directives",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family-expansion",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family-genealogy-audit",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family-illness",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family-learning",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family-nesting",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 2.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family-observer-resume",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 113.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family-practice",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family-recruitment-observer",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 86.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family-sustainability",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family-trajectory-audit",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "family-weather-refuge",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "fauna-visual",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "feeding-performance",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "finite-water-nutrition",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "flank-placement",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: different real organ types receive separate runtime pivots\r"
+  },
+  {
+   "name": "flora-landmarks",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "flora-seed-codec",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 1.8,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "flora-tissue-propagules",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "food-choice-view",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "food-commitment",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: ordinary decisions and movement reach and consume the selected patch\r"
+  },
+  {
+   "name": "food-web-feedback",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: Hunter GenVo8 is recognized as a predator to edible wildlife\r"
+  },
+  {
+   "name": "forage-patches",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.6,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: headless ecology does not create player forage-patch knowledge\r"
+  },
+  {
+   "name": "forage-season-competition",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.7,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r"
+  },
+  {
+   "name": "foraging-choice",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "founder-body",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "founder-migration-connectivity",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "freshwater-access",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "freshwater-bank-capacity",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "freshwater-carrying",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "freshwater-competition-demand",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "freshwater-encounters",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "freshwater-food",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "freshwater-foraging",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "freshwater-hunter-capacity",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "freshwater-turnover",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "functional-ecology-v163",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.6,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "funded-display-expression",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "funded-jaw-expression",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "g2-brood-home",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "gameplay-actions",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "gameplay-pressure",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "generation-progression",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "generation-reveal",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "genvo-visual",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "gestation-inheritance",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\r"
+  },
+  {
+   "name": "glance-ui",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "grazing-scars",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "grounded-locomotion",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "habitat-ground-art",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "habitat-render",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 21.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "habits",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "handoff-transition",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: succession bearing is confirmed through the ordinary player interaction authority\r"
+  },
+  {
+   "name": "head-attention",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "head-face-readability",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "headless",
+   "tier": "fast",
+   "status": "timeout",
+   "seconds": 240.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "headless-short",
+   "tier": "fast",
+   "status": "timeout",
+   "seconds": 240.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "held-brace-input",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "heritable-mate-choice",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "hierarchy",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "history",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 4.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "hydrology",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 82.8,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "identity",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "illness-feeding-priority",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "illness-recovery",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "immunity-awareness",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r"
+  },
+  {
+   "name": "indexed-part-art",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "indexed-part-renderer",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "inheritance-visual",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "inherited-coats",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "inherited-wild-nutrition",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "injury-recovery",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "intrinsic-digging",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "journal",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "juvenile-weak-attempts",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "knowledge",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "land-detour",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "landform",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.6,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "learned-danger-spacing",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "learned-fear",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "learned-resource-validity",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "life-render",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "lifestyle-readings",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "limb-articulation",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "lineage",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "lineage-comparison",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "lineage-dispersal-residence",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 10.7,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "lineage-dispersal-resume",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 1.4,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: arrival requires actual normal updates\r"
+  },
+  {
+   "name": "lineage-divergence",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "lineage-pressure-dispersal",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "lineage-purpose",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "lineage-settlement-completion",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 10.9,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "lineage-specialization",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "lineage-strategy",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: stealth feeding consumes canonical biomass\r"
+  },
+  {
+   "name": "live-courtship-encounters",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "living-rest",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "local-prey-choice",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "local-receptive-courtship",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "manual-resource-pose",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "maternal-birth-authority",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": "Error: No existing habitat supports this conception fixture\r"
+  },
+  {
+   "name": "mating-arrival-maturity",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "mating-arrival-pressure",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "menu-task-usability",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "menu-world-slots",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "migration",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 8.9,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "migration-habitat",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "migration-land-survey-access",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "migration-stale-destination",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "modular-head-v176",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "motion-render",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "mouse-courtship",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "mouse-resources",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "multi-partner-sexual-selection",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-anatomy-depth",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-anatomy-rig",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-catalog-loading",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-contact-expression-v174",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-dorsal-display",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-face-expression-v172",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-forms-quality-v171",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-hip-insertion",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-inherited-pigment",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-jaw-attachment",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-joint-surface",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-knee-continuity",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-lab-hidden-pixels",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-limb-detail-v173",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-part-catalog",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-sha256-fallback",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "native-specialty-wave",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "notification-lane",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "nursing-conservation",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "observed-creature-guide-v175",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "observer-play",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 3.7,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: 4x with 560+ animals costs 507 ms per real second of play\r"
+  },
+  {
+   "name": "observer-readability",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": "Error: this.tutorial.setAttribute is not a function\r"
+  },
+  {
+   "name": "onboarding",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.7,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "opening-goals",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "organic-creature-presentation-v175",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "organic-resource-cycle",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "overhead-flora-art",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "overhead-projection",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "part-abilities",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.6,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "part-animation-catalog",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "part-expression-geometry",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "part-expression-tracker",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "part-instance-expression",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "parts-wave1",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "parts-wave2",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "perceived-threat-escape",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "performance-hotfix",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "phenotype-cache-context",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "physical-breeding",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "physicality-render",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "plant-handling",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "plant-resource-contract",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 1.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "plate-protection-reading",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 2.6,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "player-copy-style",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: player-facing runtime source should not contain em dashes\r"
+  },
+  {
+   "name": "player-facing-feedback",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "player-motion-presentation",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "player-presence",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "playtest-clarity",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "pointer-route-availability",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "population-center-ecology",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "population-pressure-memory",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 1.8,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "pounce",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "predator-encounter",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "predator-interference",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "predator-retaliation",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "predator-variation",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "pressure",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 2.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "pressure-vocabulary",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 1.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "prey-biomass",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 1.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "probe-kills",
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "probe-recovery",
+   "tier": "fast",
+   "status": "timeout",
+   "seconds": 240.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "proto-gene-flow",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "proto-speciation",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "provenance",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 17.7,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: last ledger record must fingerprint current canonical source tree\r"
+  },
+  {
+   "name": "provenance-development-checkpoint",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "public-export",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.9,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "quick-access",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "quick-interaction",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "readability",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "reciprocal-partner-encounters",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "recovery",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "regional-ecology",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "regional-focal",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "regional-migration-arrivals",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "regional-soil-history",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "remembered-food-access",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "render-cache",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "reproduction",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "reproduction-gate-observation",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "reproductive-anatomy-eggs",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "reproductive-compatibility",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "rng-long-state",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "save-persistence",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 1.8,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "save-storage",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "scavenge-priority",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "scene",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "seed-observations",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "seed-shore-niches",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.8,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "selected-combat-actions",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "selected-water-filtering",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "selective-breeding-guidance",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "shared-dietary-demand",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "shelter",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 9.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "shelter-objective",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "shelter-weatherproofing",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 1.6,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "small-population-opportunities",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "social",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "socket-layout",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "soil-disturbance",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "soil-disturbance-establishment",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "soil-engineering-pilot",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 8.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "source-rgba-part-art",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "sparse-mate-search",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "special-creatures",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\r"
+  },
+  {
+   "name": "speciation-threshold",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "species-body-language",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "species-coexistence",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: autonomous mate search prefers its own living taxon before gene flow\r"
+  },
+  {
+   "name": "species-leadership",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: cross-taxon mate remains available\r"
+  },
+  {
+   "name": "species-lifestyle-playloops",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "species-lifestyles",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "sprite-sheet-export",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "stalker-den-reading",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r"
+  },
+  {
+   "name": "stalker-landscape",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "stalker-readability",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "stalker-territory",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "stalker-territory-competition",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "storm-aftermath",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "strategy-arcs",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r"
+  },
+  {
+   "name": "strategy-encounters",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r"
+  },
+  {
+   "name": "strike-controller-parity",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 2.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "succession-selection",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "surface-water-persistence",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 1.5,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "swimming-review",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "target-resource-states",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "targeted-feeding",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.4,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "taxon-name-generator",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "tendency-forage-consumption",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "tendency-forage-learning",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "terrain-cohesion",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "terrain-motifs",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "territory",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.9,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "tissue-structure",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "tutorial-diet-guide",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "ui-art-direction",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "ui-presentation",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "vocabulary",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "water-roam-route",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "water-teaching",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: the caregiver drinks from the bank using the normal E interaction\r"
+  },
+  {
+   "name": "wayfinding",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "weather-exposure",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.9,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "wetland-niches",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.6,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "wild-evolution",
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  },
+  {
+   "name": "wild-pressure-movement",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "wildlife-arrival-reproduction",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "wildlife-rhythm",
+   "tier": "fast",
+   "status": "fail",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": "AssertionError [ERR_ASSERTION]: needlejaw cycles through its complete species-specific ambient vocabulary\r"
+  },
+  {
+   "name": "wildlife-spread-audit",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "workshop-projection",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.1,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "world-resource-selection",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.2,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "world-swap-render",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  },
+  {
+   "name": "world-trail-discovery",
+   "tier": "fast",
+   "status": "pass",
+   "seconds": 0.3,
+   "timeoutSeconds": 240,
+   "error": ""
+  }
+ ]
+}

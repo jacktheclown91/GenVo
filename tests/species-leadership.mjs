@@ -42,8 +42,13 @@ assert.equal(sim.familyDirectives.decision(branchHeir),null,'old species-local m
 const opposite=p.sex==='F'?'M':'F';
 const localMate=sim.spawnAnimal('genvo',p.x+5,p.y);localMate.sex=opposite;localMate.age=SPECIES.genvo.maturity+5;localMate.energy=SPECIES.genvo.maxEnergy*.9;localMate.hydration=SPECIES.genvo.maxHydration*.9;localMate.health=100;localMate.reproCooldown=0;
 const crossMate=sim.spawnAnimal('genvo',p.x+1.2,p.y);crossMate.sex=opposite;crossMate.age=SPECIES.genvo.maturity+5;crossMate.energy=SPECIES.genvo.maxEnergy*.9;crossMate.hydration=SPECIES.genvo.maxHydration*.9;crossMate.health=100;crossMate.reproCooldown=0;crossMate.speciesBranch={...branch};tree.onIdentityAssigned(crossMate,branch);
+// Same taxon is a search tendency weighed with inherited preference, not a barrier (creator
+// decision 2026-10-15; strong-preference hybrids are tested in species-coexistence.mjs). With
+// neutral preferences the nearby same-taxon mate is presented first, and gene flow stays listed.
+for(const b of [p,localMate,crossMate])b.matePreferences={...(b.matePreferences||{}),weights:{size:0,strength:0,ornament:0,display:0,behavior:0},selectivity:.5,similarity:0};
+localMate.x=p.x+1.6;localMate.y=p.y;crossMate.x=p.x-1.2;crossMate.y=p.y;
 sim.rebuildSpatial();
-const mates=sim.reproduction.eligibleMates();const crossIndex=mates.findIndex(a=>a.id===crossMate.id);assert.ok(crossIndex>0,'cross-taxon mate remains available');assert.equal(tree.sameTaxon(p,mates[0]),true,'same-taxon mate is presented before closer gene-flow candidate');assert.ok(mates.slice(0,crossIndex).every(a=>tree.sameTaxon(p,a)),'all same-taxon candidates sort ahead of cross-taxon gene flow');
+const mates=sim.reproduction.eligibleMates();const crossIndex=mates.findIndex(a=>a.id===crossMate.id);assert.ok(crossIndex>0,'cross-taxon mate remains available');assert.equal(tree.sameTaxon(p,mates[0]),true,'same-taxon mate is presented before closer gene-flow candidate');
 assert.equal(sim.reproduction.taxonRelation(p,crossMate).kind,'gene-flow');
 
 // Succession prefers the current taxon, but a deliberate cross-branch handoff is still allowed and recorded.

@@ -1,0 +1,291 @@
+{
+  "seed": "GENVO8-WILD-RUN",
+  "days": 120,
+  "seconds": 103.6821179,
+  "rows": [
+    {
+      "day": 21,
+      "seconds": 6.5333453,
+      "blockSeconds": 6.5333453,
+      "alive": 180,
+      "genomes": 3753
+    },
+    {
+      "day": 41,
+      "seconds": 17.224044799999998,
+      "blockSeconds": 10.690699500000003,
+      "alive": 265,
+      "genomes": 6950
+    },
+    {
+      "day": 61,
+      "seconds": 30.7281489,
+      "blockSeconds": 13.504104100000001,
+      "alive": 302,
+      "genomes": 8819
+    },
+    {
+      "day": 81,
+      "seconds": 50.0926953,
+      "blockSeconds": 19.364546399999995,
+      "alive": 339,
+      "genomes": 10245
+    },
+    {
+      "day": 101,
+      "seconds": 74.415807,
+      "blockSeconds": 24.323111700000002,
+      "alive": 370,
+      "genomes": 11035
+    },
+    {
+      "day": 121,
+      "seconds": 103.659058,
+      "blockSeconds": 29.243251000000004,
+      "alive": 416,
+      "genomes": 11651
+    }
+  ],
+  "hot": [
+    {
+      "fn": "pruneUnusedFloraGenomes",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/flora-genome-lifetime.js",
+      "line": 4,
+      "ms": 8954.483
+    },
+    {
+      "fn": "advanceBotanicalReproduction",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/botanical-reproduction.js",
+      "line": 37,
+      "ms": 4160.586
+    },
+    {
+      "fn": "overlapOf",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/dietary-demand.js",
+      "line": 35,
+      "ms": 2688.307
+    },
+    {
+      "fn": "(garbage collector)",
+      "file": "",
+      "line": 0,
+      "ms": 2460.671
+    },
+    {
+      "fn": "cropYield",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/dispersal.js",
+      "line": 34,
+      "ms": 1978.119
+    },
+    {
+      "fn": "surveyAt",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/carrying.js",
+      "line": 21,
+      "ms": 1967.367
+    },
+    {
+      "fn": "dietaryDemand",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/dietary-demand.js",
+      "line": 13,
+      "ms": 1934.143
+    },
+    {
+      "fn": "overlapOf",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/dietary-demand.js",
+      "line": 35,
+      "ms": 1925.211
+    },
+    {
+      "fn": "surveyAt",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/carrying.js",
+      "line": 21,
+      "ms": 1798.726
+    },
+    {
+      "fn": "phaseMovement",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/sim/simulation.js",
+      "line": 313,
+      "ms": 1797.59
+    },
+    {
+      "fn": "overlapOf",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/dietary-demand.js",
+      "line": 35,
+      "ms": 1703.046
+    },
+    {
+      "fn": "surveyAt",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/carrying.js",
+      "line": 21,
+      "ms": 1681.868
+    },
+    {
+      "fn": "breedingState",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/carrying.js",
+      "line": 73,
+      "ms": 1578.63
+    },
+    {
+      "fn": "cropYield",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/dispersal.js",
+      "line": 34,
+      "ms": 1477.043
+    },
+    {
+      "fn": "botanicalGamete",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/botanical-genetics.js",
+      "line": 17,
+      "ms": 1398.987
+    },
+    {
+      "fn": "cropYield",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/dispersal.js",
+      "line": 34,
+      "ms": 1366.415
+    },
+    {
+      "fn": "",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/dietary-demand.js",
+      "line": 27,
+      "ms": 1321.507
+    },
+    {
+      "fn": "scaleSeedCohorts",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/flora-inheritance.js",
+      "line": 29,
+      "ms": 1312.468
+    },
+    {
+      "fn": "cropYield",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/dispersal.js",
+      "line": 34,
+      "ms": 1310.106
+    },
+    {
+      "fn": "cropYield",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/dispersal.js",
+      "line": 34,
+      "ms": 1282.354
+    },
+    {
+      "fn": "cropYield",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/dispersal.js",
+      "line": 34,
+      "ms": 1251.217
+    },
+    {
+      "fn": "habitatQuality",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/migration.js",
+      "line": 64,
+      "ms": 1162.52
+    },
+    {
+      "fn": "phaseDecision",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/sim/simulation.js",
+      "line": 240,
+      "ms": 1124.54
+    },
+    {
+      "fn": "identity",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/botanical-genetics.js",
+      "line": 22,
+      "ms": 1108.002
+    },
+    {
+      "fn": "deliverBotanicalPollen",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/botanical-reproduction.js",
+      "line": 34,
+      "ms": 1008.927
+    },
+    {
+      "fn": "growLandProducers",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/plant-resources.js",
+      "line": 46,
+      "ms": 965.713
+    },
+    {
+      "fn": "botanicalGamete",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/botanical-genetics.js",
+      "line": 17,
+      "ms": 929.608
+    },
+    {
+      "fn": "addTrace",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/gameplay/discovery.js",
+      "line": 61,
+      "ms": 855.203
+    },
+    {
+      "fn": "add",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/flora-genome-lifetime.js",
+      "line": 4,
+      "ms": 827.562
+    },
+    {
+      "fn": "update",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/sim/simulation.js",
+      "line": 175,
+      "ms": 818.245
+    },
+    {
+      "fn": "cropYield",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/dispersal.js",
+      "line": 34,
+      "ms": 781.302
+    },
+    {
+      "fn": "resolveBotanicalFloraGenome",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/botanical-genetics.js",
+      "line": 31,
+      "ms": 715.546
+    },
+    {
+      "fn": "botanicalFloraGenome",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/botanical-genetics.js",
+      "line": 23,
+      "ms": 694.341
+    },
+    {
+      "fn": "phaseVegetation",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/sim/simulation.js",
+      "line": 232,
+      "ms": 657.39
+    },
+    {
+      "fn": "botanicalHash",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/botanical-genetics.js",
+      "line": 7,
+      "ms": 610.954
+    },
+    {
+      "fn": "validBotanicalGamete",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/botanical-genetics.js",
+      "line": 16,
+      "ms": 597.764
+    },
+    {
+      "fn": "canReach",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/sim/simulation.js",
+      "line": 211,
+      "ms": 597.481
+    },
+    {
+      "fn": "dietaryDemand",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/dietary-demand.js",
+      "line": 13,
+      "ms": 570.882
+    },
+    {
+      "fn": "isUrgent",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/activity.js",
+      "line": 25,
+      "ms": 539.452
+    },
+    {
+      "fn": "dietaryDemand",
+      "file": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/dietary-demand.js",
+      "line": 13,
+      "ms": 522.382
+    }
+  ]
+}

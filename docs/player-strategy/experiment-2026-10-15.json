@@ -1,0 +1,102 @@
+{
+ "schema": "genvo.player-strategy/1",
+ "days": 160,
+ "rows": [
+  {
+   "deathCause": "starvation day 54 W0.00 E0.00",
+   "seed": "STRAT-A",
+   "strategy": "auto",
+   "survivedDays": 54,
+   "playerAlive": false,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.33
+  },
+  {
+   "deathCause": "predation day 53 W0.61 E0.80",
+   "seed": "STRAT-A",
+   "strategy": "forager",
+   "survivedDays": 53,
+   "playerAlive": false,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.8
+  },
+  {
+   "deathCause": "predation day 59 W0.31 E0.00",
+   "seed": "STRAT-B",
+   "strategy": "auto",
+   "survivedDays": 59,
+   "playerAlive": false,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.48
+  },
+  {
+   "deathCause": "predation day 24 W0.49 E0.69",
+   "seed": "STRAT-B",
+   "strategy": "forager",
+   "survivedDays": 24,
+   "playerAlive": false,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.81
+  },
+  {
+   "deathCause": "starvation day 97 W0.62 E0.00",
+   "seed": "STRAT-C",
+   "strategy": "auto",
+   "survivedDays": 97,
+   "playerAlive": false,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.34
+  },
+  {
+   "deathCause": "predation day 28 W0.42 E0.60",
+   "seed": "STRAT-C",
+   "strategy": "forager",
+   "survivedDays": 28,
+   "playerAlive": false,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.75
+  },
+  {
+   "deathCause": "starvation day 152 W0.61 E0.00",
+   "seed": "STRAT-D",
+   "strategy": "auto",
+   "survivedDays": 160,
+   "playerAlive": true,
+   "playerSuccessions": 2,
+   "lineageBirths": 7,
+   "firstChildDay": 22,
+   "highestGeneration": 3,
+   "energyMedian": 0.55
+  },
+  {
+   "deathCause": "predation day 28 W0.66 E0.75",
+   "seed": "STRAT-D",
+   "strategy": "forager",
+   "survivedDays": 28,
+   "playerAlive": false,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.79
+  }
+ ]
+}

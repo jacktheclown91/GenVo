@@ -1,9 +1,15 @@
+import {CanvasRecorder} from './canvas-recorder.js';
+import {beginTintFrame} from './indexed-part-renderer.js';
 import {attentionTarget,HeadAttentionPresentation} from './head-attention.js';
 import {gaitTravelFor} from './genvo.js';
+import {assemblyFor} from './creature-assembler.js';
+import {locomotionStyle,locomotionOffsets} from './locomotion-style.js';
+import {movementProfile} from '../lineage/lifestyle.js';
 import {botanicalPlantView} from '../ecology/botanical-reproduction.js';
 import {FeedingPresentation,applyFeedingExpression} from './feeding-expression.js';
 import {drawWorldTraces} from './world-traces.js';
 import {EncounterPresentation,applyEncounterPose} from './encounter-expression.js';
+import {EncounterReactionPresentation,applyEncounterReaction,reactionAttention,reactionShove,drawEncounterReactionMarks,applyDefenseReaction,defenseShove,drawDefenseMarks} from './encounter-reactions.js';
 import {canHunt} from '../ecology/functional-diet.js';
 import {PartExpressionTracker} from './part-expression.js';
 // v1.41.0 32-pixel world: cached terrain tiles hold 32 art pixels per tile (painted on a 2x-scaled canvas).
@@ -24,7 +30,7 @@ import {buildVisualHabitatMask,visualHabitatAt,buildSmoothedHabitatField,HABITAT
 import {visualCompositionAt} from './composition.js';
 import {visualLifeState} from './life.js';
 import {behaviorVisualState,visualActionFromIntent} from './behavior.js';
-import {drawGenvoSprite} from './genvo-draw.js';
+import {drawGenvoSprite,SPRITE_BATCH,beginSpriteBatch,endSpriteBatch,spriteBatchAfterFlush,spriteBatchBeforeFlush} from './genvo-draw.js';
 import {creaturePalette} from './creature-palette.js';
 import {drawSite} from './sites.js';
 import {drawRiparianDepth,drawHabitatClusterAccents} from './habitat-detail.js';
@@ -51,25 +57,48 @@ const GAIT=[0,1,2,1,0,-1,-2,-1];
 const BODY_BOB=[0,-1,-1,0,0,1,1,0];
 const SWAY=[-1,0,1,1,0,-1,-1,0];
 
+const TERRAIN_POOL_MAX=4096;// spare terrain tile canvases kept for reuse (32x32, 4 KB each)
+export const TERRAIN_POOL={enabled:true};// ?tilePool=0 allocates a new canvas per tile, as before
 export class Renderer{
   constructor(canvas,sim){this.partExpressions=new PartExpressionTracker();this.landformMaskCache=new Map();this.habitatField=null;this.habitatFieldDay=-1;this.pendingHabitatDay=null;this.pendingHabitatFrames=0;this.habitatMaskCache=new Map();this.landBaseTileCache=new Map();this.waterBaseTileCache=new Map();this.staticLandTileCache=new Map();this.terrainChunkCache=new Map();this.terrainRefreshQueue=[];this.terrainRefreshQueued=new Set();this.terrainRefreshFrame=0;this.macroHabitatSeed=null;this.macroHabitatSeason=-1;this.habitatScenesKey='';this.guideTarget=null;this.canvas=canvas;this.ctx=canvas.getContext('2d');this.ctx.imageSmoothingEnabled=false;this.sim=sim;this.motionSim=sim;this.motion=new VisualMotionTracker({simHz:CFG.simHz});this.renderNow=performance.now();this.lastRenderNow=this.renderNow;this.zoom=2;this.camera={x:64,y:64};this.playerPresentation={input:null,aheadSeconds:0};this.playerVisual=null;this.cameraReady=false;this.habitatScenes=[];this.regionalFocals=[];this.habitatTransitions=[];this.focalApproaches=new Map();this.resize();addEventListener('resize',()=>this.resize())}
   // v1.32.5: a new or loaded world replaces the title-screen world. Every cache keyed only by
   // tile position belongs to the old world: without this, tiles that were land there drew as
   // flat land with a stepped bank in the new world's water, and the reverse showed phantom water.
-  resetWorldCaches(){this.visiblePlantTargets=new Map();this.plantTargetWorld=this.sim.world;this.partExpressions.reset();this.feeding?.reset();this.headAttention?.reset();this.turnState?.clear();this.vegLayerCache?.clear?.();this.staticGroundTileCache?.clear?.();this.waterToneCache?.clear?.();this.habitatField=null;this.habitatFieldDay=-1;this.pendingHabitatDay=null;this.pendingHabitatFrames=0;this.macroHabitatSeed=null;this.habitatScenesKey='';this.terrainChunkCache.clear();this.terrainRefreshQueue.length=0;this.terrainRefreshQueued.clear();this.terrainRefreshFrame=0;this.landformMaskCache.clear();this.habitatMaskCache.clear();this.landBaseTileCache.clear();this.waterBaseTileCache.clear();this.staticLandTileCache.clear()}
+  resetWorldCaches(){this.visibleWorldPages=[];this.visiblePlantTargets=new Map();this.plantTargetWorld=this.sim.world;this.partExpressions.reset();this.feeding?.reset();this.headAttention?.reset();this.turnState?.clear();this.vegLayerCache?.clear?.();this.staticGroundTileCache?.clear?.();this.waterToneCache?.clear?.();this.habitatField=null;this.habitatFieldDay=-1;this.pendingHabitatDay=null;this.pendingHabitatFrames=0;this.macroHabitatSeed=null;this.habitatScenesKey='';this.terrainChunkCache.clear();this.terrainRefreshQueue.length=0;this.terrainRefreshQueued.clear();this.terrainRefreshFrame=0;this.landformMaskCache.clear();this.habitatMaskCache.clear();this.landBaseTileCache.clear();this.waterBaseTileCache.clear();this.staticLandTileCache.clear()}
   resize(){const dpr=1,w=innerWidth,h=innerHeight; // Pixel-art canvas renders at CSS-pixel resolution; DOM UI stays device-sharp and high-DPI screens avoid 2-4x canvas fill cost.
 this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.canvas.style.width=w+'px';this.canvas.style.height=h+'px';this.ctx.setTransform(dpr,0,0,dpr,0,0);this.w=w;this.h=h;this.ctx.imageSmoothingEnabled=false}
   setPlayerPresentation(input,aheadSeconds=0){this.playerPresentation={input:input?{...input}:null,aheadSeconds:Math.max(0,Number(aheadSeconds)||0)}}
   screenToWorld(clientX,clientY){const rect=this.canvas.getBoundingClientRect();if(!rect.width||!rect.height)return null;const sx=(clientX-rect.left)*(this.w/rect.width),sy=(clientY-rect.top)*(this.h/rect.height),tile=CFG.tileSize*this.zoom;return{x:this.camera.x+(sx-this.w/2)/tile,y:this.camera.y+(sy-this.h/2)/tile}}
-  render(){this.renderNow=performance.now();(this.encounters||=new EncounterPresentation()).beginFrame(this.sim,this.renderNow);const renderDt=Math.min(.05,Math.max(0,(this.renderNow-this.lastRenderNow)/1000));this.lastRenderNow=this.renderNow;if(this.motionSim!==this.sim){this.motion.clear();this.motionSim=this.sim;this.cameraReady=false;this.resetWorldCaches()}if(this.habitatFieldDay!==this.sim.day){const initial=!this.habitatField;if(initial){this.terrainSeason=this.sim.seasonIndex;this.terrainRefreshAt=this.renderNow;this.habitatField=buildSmoothedHabitatField(this.sim.world);this.habitatMaskCache.clear();this.landBaseTileCache.clear();this.staticLandTileCache.clear();this.habitatScenesKey='';this.habitatFieldDay=this.sim.day;this.pendingHabitatDay=null;this.pendingHabitatFrames=0}else if(this.pendingHabitatDay!==this.sim.day){this.pendingHabitatDay=this.sim.day;this.pendingHabitatFrames=4}else if(this.pendingHabitatFrames>0)this.pendingHabitatFrames--;
+  // Phase 3L: the start of every frame (world switch, habitat field, macro habitat, camera, view range), shared by
+  // render() and prepareScene() so preparation sees exactly the state the first frame will draw. Moved verbatim.
+  syncScene(renderDt){if(this.motionSim!==this.sim){this.motion.clear();this.motionSim=this.sim;this.cameraReady=false;this.resetWorldCaches()}if(this.habitatFieldDay!==this.sim.day){const initial=!this.habitatField;if(initial){this.terrainSeason=this.sim.seasonIndex;this.terrainRefreshAt=this.renderNow;this.habitatField=buildSmoothedHabitatField(this.sim.world);this.habitatMaskCache.clear();this.recycleTileCache(this.landBaseTileCache);this.recycleTileCache(this.staticLandTileCache);this.habitatScenesKey='';this.habitatFieldDay=this.sim.day;this.pendingHabitatDay=null;this.pendingHabitatFrames=0}else if(this.pendingHabitatDay!==this.sim.day){this.pendingHabitatDay=this.sim.day;this.pendingHabitatFrames=4}else if(this.pendingHabitatFrames>0)this.pendingHabitatFrames--;
       // v1.57.2: the whole visible terrain is repainted at most every 20 seconds or when the season turns,
       // not every in-game day (a day is a few seconds, so wide windows were repainting constantly). Plants
       // next to the active creature are drawn live every frame, so nearby food is always current.
       else if(this.sim.seasonIndex===this.terrainSeason&&this.renderNow-(this.terrainRefreshAt||0)<20000)this.pendingHabitatFrames=30;
-      else{this.terrainSeason=this.sim.seasonIndex;this.terrainRefreshAt=this.renderNow;this.habitatField=buildSmoothedHabitatField(this.sim.world);this.habitatMaskCache.clear();this.landBaseTileCache.clear();this.staticLandTileCache.clear();this.habitatScenesKey='';this.habitatFieldDay=this.sim.day;this.pendingHabitatDay=null}}const macroSeed=this.sim.world?.seedHash;if(this.macroHabitatSeed!==macroSeed){this.regionalFocals=collectRegionalFocals(this.sim,this.habitatField);this.habitatTransitions=collectHabitatTransitions(this.sim.world,this.habitatField);this.focalApproaches=new Map(this.regionalFocals.map(f=>[`${f.regionX},${f.regionY}`,focalApproachFor(this.sim.world,f,this.habitatField)]));this.macroHabitatSeed=macroSeed;this.macroHabitatSeason=this.sim.seasonIndex;this.waterBaseTileCache.clear()}else if(this.macroHabitatSeason!==this.sim.seasonIndex){this.macroHabitatSeason=this.sim.seasonIndex;this.waterBaseTileCache.clear()}const p=this.sim.player();if(p){const predicted=predictPlayerPose(this.sim,this.playerPresentation.input,this.playerPresentation.aheadSeconds),vp=predicted||this.motion.sample(p,this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear'});this.playerVisual=vp;if(!this.cameraReady){this.camera.x=vp.x;this.camera.y=vp.y;this.cameraReady=true}else{const follow=1-Math.exp(-CFG.cameraFollowHz*renderDt);this.camera.x+=(vp.x-this.camera.x)*follow;this.camera.y+=(vp.y-this.camera.y)*follow;const maxLag=.055,dx=vp.x-this.camera.x,dy=vp.y-this.camera.y,d=Math.hypot(dx,dy);if(d>maxLag){this.camera.x=vp.x-dx/d*maxLag;this.camera.y=vp.y-dy/d*maxLag}}}else this.playerVisual=null;const c=this.ctx,tile=CFG.tileSize*this.zoom,cols=Math.ceil(this.w/tile)+2,rows=Math.ceil(this.h/tile)+2,startX=Math.floor(this.camera.x-cols/2),startY=Math.floor(this.camera.y-rows/2);c.fillStyle='#09140e';c.fillRect(0,0,this.w,this.h);
+      else{this.terrainSeason=this.sim.seasonIndex;this.terrainRefreshAt=this.renderNow;this.habitatField=buildSmoothedHabitatField(this.sim.world);this.habitatMaskCache.clear();this.recycleTileCache(this.landBaseTileCache);this.recycleTileCache(this.staticLandTileCache);this.habitatScenesKey='';this.habitatFieldDay=this.sim.day;this.pendingHabitatDay=null}}const macroSeed=this.sim.world?.seedHash;if(this.macroHabitatSeed!==macroSeed){this.regionalFocals=collectRegionalFocals(this.sim,this.habitatField);this.habitatTransitions=collectHabitatTransitions(this.sim.world,this.habitatField);this.focalApproaches=new Map(this.regionalFocals.map(f=>[`${f.regionX},${f.regionY}`,focalApproachFor(this.sim.world,f,this.habitatField)]));this.macroHabitatSeed=macroSeed;this.macroHabitatSeason=this.sim.seasonIndex;this.waterBaseTileCache.clear()}else if(this.macroHabitatSeason!==this.sim.seasonIndex){this.macroHabitatSeason=this.sim.seasonIndex;this.waterBaseTileCache.clear()}const p=this.sim.player();if(p){const predicted=predictPlayerPose(this.sim,this.playerPresentation.input,this.playerPresentation.aheadSeconds),vp=predicted||this.motion.sample(p,this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear'});this.playerVisual=vp;if(!this.cameraReady){this.camera.x=vp.x;this.camera.y=vp.y;this.cameraReady=true}else{const follow=1-Math.exp(-CFG.cameraFollowHz*renderDt);this.camera.x+=(vp.x-this.camera.x)*follow;this.camera.y+=(vp.y-this.camera.y)*follow;const maxLag=.055,dx=vp.x-this.camera.x,dy=vp.y-this.camera.y,d=Math.hypot(dx,dy);if(d>maxLag){this.camera.x=vp.x-dx/d*maxLag;this.camera.y=vp.y-dy/d*maxLag}}}else this.playerVisual=null;const tile=CFG.tileSize*this.zoom,cols=Math.ceil(this.w/tile)+2,rows=Math.ceil(this.h/tile)+2,startX=Math.floor(this.camera.x-cols/2),startY=Math.floor(this.camera.y-rows/2);return{tile,cols,rows,startX,startY}}
+  // Phase 3L start-up: prepare the first visible scene before it is shown. Building every visible terrain chunk in
+  // the first frame blocked the page for 1.0-1.3 s. Each call builds missing visible chunks, nearest first, until
+  // budgetMs is spent, through the same cache render() uses (buildTerrainChunk), and returns true once the next
+  // render() will find every visible chunk prepared. The canvas shows the scene's own background meanwhile, never
+  // a partial scene. The simulation keeps running; render() itself still builds anything missing, so callers that
+  // never prepare (tests, tools) are unchanged.
+  prepareScene(budgetMs=24){const t0=performance.now();this.renderNow=t0;const v=this.syncScene(0),size=TERRAIN_CHUNK;this.cameraReady=false;/* the first real frame snaps the camera exactly as it would without preparation */
+    if(!this.preparingScene){this.preparingScene=true;this.ctx.fillStyle='#09140e';this.ctx.fillRect(0,0,this.w,this.h)}
+    const minCx=Math.floor((v.startX-1)/size),maxCx=Math.floor((v.startX+v.cols+1)/size),minCy=Math.floor((v.startY-1)/size),maxCy=Math.floor((v.startY+v.rows+1)/size),cx0=this.camera.x/size,cy0=this.camera.y/size,todo=[];
+    for(let cy=minCy;cy<=maxCy;cy++)for(let cx=minCx;cx<=maxCx;cx++){if(cx<0||cy<0||cx*size>=CFG.worldSize||cy*size>=CFG.worldSize)continue;const sig=this.terrainChunkSignature(cx,cy,size),e=this.terrainChunkCache.get(`${cx},${cy},${size}`);if(e?.sig!==sig)todo.push({cx,cy,sig,d:Math.hypot(cx+.5-cx0,cy+.5-cy0)})}
+    todo.sort((p,q)=>p.d-q.d);for(const j of todo){if(performance.now()-t0>=budgetMs)return false;this.buildTerrainChunk(j.cx,j.cy,size,j.sig)}
+    this.preparingScene=false;return true}
+  // Start-up preparation driven by the game loop: a world install calls beginScenePreparation(); renderOrPrepare()
+  // then prepares (bounded per frame) until the first scene is complete and renders normally from the next frame;
+  // sceneReady() resolves once that first complete frame has been drawn.
+  beginScenePreparation(){this.scenePending=true;this.preparingScene=false;this.sceneShown=false;this.sceneReadyPromise=new Promise(r=>{this.resolveSceneReady=r})}
+  sceneReady(){return this.sceneReadyPromise||Promise.resolve()}
+  renderOrPrepare(budgetMs=24){if(this.scenePending){if(this.prepareScene(budgetMs))this.scenePending=false;return}this.render();if(!this.sceneShown){this.sceneShown=true;this.resolveSceneReady?.()}}
+  render(){beginTintFrame();this.renderNow=performance.now();(this.encounters||=new EncounterPresentation()).beginFrame(this.sim,this.renderNow);const renderDt=Math.min(.05,Math.max(0,(this.renderNow-this.lastRenderNow)/1000));this.lastRenderNow=this.renderNow;const c=this.ctx,{tile,cols,rows,startX,startY}=this.syncScene(renderDt);c.fillStyle='#09140e';c.fillRect(0,0,this.w,this.h);
     this.drawTerrainChunks(tile,startX,startY,cols,rows);this.queueTerrainWarmRing(startX,startY,cols,rows);
     this.groundPassOnly=true;try{
-    const focus=this.sim.player();for(let sy=0;sy<rows;sy++)for(let sx=0;sx<cols;sx++){const wx=startX+sx,wy=startY+sy;if(wx<0||wy<0||wx>=CFG.worldSize||wy>=CFG.worldSize)continue;const i=this.sim.world.idx(wx,wy),px=Math.round((wx-this.camera.x)*tile+this.w/2),py=Math.round((wy-this.camera.y)*tile+this.h/2),nearFocus=!!focus&&Math.hypot((wx+.5)-focus.x,(wy+.5)-focus.y)<3.55;if(nearFocus)this.drawTile(px,py,tile,i,wx,wy);else this.drawTileDynamic(px,py,tile,i,wx,wy)}
+    const focus=this.sim.player();for(let sy=0;sy<rows;sy++)for(let sx=0;sx<cols;sx++){const wx=startX+sx,wy=startY+sy;if(wx<0||wy<0||wx>=CFG.worldSize||wy>=CFG.worldSize)continue;const i=this.sim.world.pages?this.sim.world.pages.indexAt(wx,wy):this.sim.world.idx(wx,wy),px=Math.round((wx-this.camera.x)*tile+this.w/2),py=Math.round((wy-this.camera.y)*tile+this.h/2),nearFocus=!!focus&&Math.hypot((wx+.5)-focus.x,(wy+.5)-focus.y)<3.55;if(nearFocus)this.drawTile(px,py,tile,i,wx,wy);else this.drawTileDynamic(px,py,tile,i,wx,wy)}
     }finally{this.groundPassOnly=false}
     // Multi-tile habitat scenes summarize real ecology (water, biomass, use history) without creating game state.
     const sceneEpoch=Math.floor(this.sim.tickCount/Math.max(1,CFG.simHz)),sceneKey=`${startX},${startY},${cols},${rows},${sceneEpoch}`;if(sceneKey!==this.habitatScenesKey){this.habitatScenes=collectHabitatScenes(this.sim,this.habitatField,{startX,startY,cols,rows,block:8});this.habitatScenesKey=sceneKey}
@@ -89,7 +118,12 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     this.drawEggs(tile);drawWorldTraces(this,tile);
     const visible=this.sim.animals.filter(a=>a.alive&&Math.abs(a.x-this.camera.x)<cols/2+2&&Math.abs(a.y-this.camera.y)<rows/2+2).sort((a,b)=>a.y-b.y);this.visibleAnimals=visible;
     if(!this.lowDetail){this.drawForegroundHabitat(tile,startX,startY,cols,rows);this.drawHabitatSceneForeground(tile);this.drawRegionalFocalForeground(tile);this.drawSceneDepthForeground(tile)}
-    for(const a of visible)this.drawAnimal(a,tile);
+    // Phase 3L: creatures are prepared through a recording context and composed afterwards in the same order, so
+    // freshly drawn sprites are staged together (genvo-draw.js SPRITE_BATCH). frameStats are timing only.
+    {const t0=performance.now(),fs=this.frameStats||={};fs.creatures=visible.length;
+     if(SPRITE_BATCH.enabled){const rec=this.creatureRecorder||=new CanvasRecorder();rec.onFlush=spriteBatchBeforeFlush;rec.afterFlush=spriteBatchAfterFlush;const real=this.ctx;this.ctx=rec.begin(real);beginSpriteBatch(()=>rec.flush());let t1=t0;
+       try{for(const a of visible)this.drawAnimal(a,tile)}finally{this.ctx=real;t1=performance.now();try{rec.flush()}finally{endSpriteBatch()}}fs.creaturePrep=t1-t0;fs.creatureCompose=performance.now()-t1;fs.recorderFlushes=rec.stats.flushes}
+     else{for(const a of visible)this.drawAnimal(a,tile);fs.creaturePrep=performance.now()-t0;fs.creatureCompose=0}}
     // Weather and interaction cues remain above creatures; ground decoration does not.
     if(!this.lowDetail)this.drawWeatherOverlay();
     this.drawPlayerAnchor(tile);this.drawRelativeMarks(tile);this.drawReadabilityCues(tile);this.motion.prune(this.sim.tickCount);this.processTerrainRefreshQueue();}
@@ -108,7 +142,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     }
   }
   drawFamilyGuidance(tile){
-    const status=this.sim.familyDirectives?.areaStatus?.();if(!status)return;const c=this.ctx,pulse=.5+.5*Math.sin(this.renderNow/210),toScreen=(x,y)=>({x:Math.round((x-this.camera.x)*tile+this.w/2),y:Math.round((y-this.camera.y)*tile+this.h/2)});
+    const status=this.sim.familyDirectives?.guidanceMarks?.();if(!status||(!status.order&&!status.avoid?.length))return;const c=this.ctx,pulse=.5+.5*Math.sin(this.renderNow/210),toScreen=(x,y)=>({x:Math.round((x-this.camera.x)*tile+this.w/2),y:Math.round((y-this.camera.y)*tile+this.h/2)});
     for(const zone of status.avoid||[]){const q=toScreen(zone.x,zone.y),r=zone.radius*tile;c.save();c.strokeStyle=`rgba(220,111,91,${(.32+pulse*.12).toFixed(3)})`;c.lineWidth=1.5;c.setLineDash([5,7]);c.beginPath();c.arc(q.x,q.y,r,0,Math.PI*2);c.stroke();c.setLineDash([]);c.translate(q.x,q.y);c.strokeStyle='rgba(240,143,123,.84)';c.lineWidth=2;c.beginPath();c.moveTo(-6,-6);c.lineTo(6,6);c.moveTo(6,-6);c.lineTo(-6,6);c.stroke();c.restore()}
     const order=status.order;if(!order)return;const q=toScreen(order.x,order.y),tone=order.type==='forage'?'rgba(170,213,117,.88)':order.type==='scout'?'rgba(110,205,221,.88)':'rgba(230,205,116,.88)';c.save();c.translate(q.x,q.y);c.strokeStyle=tone;c.lineWidth=2;c.setLineDash([4,4]);c.beginPath();c.arc(0,0,12+pulse*2,0,Math.PI*2);c.stroke();c.setLineDash([]);c.fillStyle='rgba(8,14,10,.58)';c.beginPath();for(let i=0;i<8;i++){const a=Math.PI/8+i*Math.PI/4,r=i%2?9:11,x=Math.cos(a)*r,y=Math.sin(a)*r;i?c.lineTo(x,y):c.moveTo(x,y)}c.closePath();c.fill();c.strokeStyle=tone;c.lineWidth=1.5;
     if(order.type==='gather'){for(const [x,y] of [[0,-3],[-4,3],[4,3]]){c.beginPath();c.arc(x,y,2,0,Math.PI*2);c.stroke()}}
@@ -323,6 +357,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     if(D.revealUntil>this.sim.tickCount){c.save();c.strokeStyle='rgba(239,105,94,.95)';c.lineWidth=2;for(const h of this.sim.animals){if(!h.alive||!canHunt(h))continue;const x=Math.round((h.x-this.camera.x)*tile+this.w/2),y=Math.round((h.y-this.camera.y)*tile+this.h/2);if(x<-20||y<-20||x>this.w+20||y>this.h+20)continue;c.beginPath();c.arc(x,y,9,0,Math.PI*2);c.stroke()}c.restore()}
   }
   drawTerrainChunks(tile,startX,startY,cols,rows,vegetation=false){
+    this.visibleWorldPages=this.sim.world.pages?.window(startX,startY,cols,rows,{halo:1})||[];
     const size=TERRAIN_CHUNK,minCx=Math.floor((startX-1)/size),maxCx=Math.floor((startX+cols+1)/size),minCy=Math.floor((startY-1)/size),maxCy=Math.floor((startY+rows+1)/size),c=this.ctx;
     if(vegetation){const b=this.liveVegetationBounds(),left=(b.x0-this.camera.x)*tile+this.w/2,top=(b.y0-this.camera.y)*tile+this.h/2;c.save();if(b.active){c.beginPath();c.rect(0,0,this.w,this.h);c.rect(left,top,(b.x1-b.x0)*tile,(b.y1-b.y0)*tile);c.clip('evenodd')}}
     for(let cy=minCy;cy<=maxCy;cy++)for(let cx=minCx;cx<=maxCx;cx++){
@@ -346,8 +381,9 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     }
   }
 
+  // Off-screen chunks are built one every other frame, the one nearest where the camera is heading first (Phase 3L).
   processTerrainRefreshQueue(){
-    if(!this.terrainRefreshQueue.length)return;this.terrainRefreshFrame=(this.terrainRefreshFrame+1)%2;if(this.terrainRefreshFrame)return;const job=this.terrainRefreshQueue.shift(),key=`${job.cx},${job.cy},${job.size}`;this.terrainRefreshQueued.delete(key);const sig=this.terrainChunkSignature(job.cx,job.cy,job.size),entry=this.terrainChunkCache.get(key);if(entry?.sig===sig)return;this.buildTerrainChunk(job.cx,job.cy,job.size,sig)
+    if(!this.terrainRefreshQueue.length)return;this.terrainRefreshFrame=(this.terrainRefreshFrame+1)%2;if(this.terrainRefreshFrame)return;const q=this.terrainRefreshQueue,cam=this.camera,last=cam?this.queueCamera||{x:cam.x,y:cam.y}:null,ax=cam?cam.x+(cam.x-last.x)*30:0,ay=cam?cam.y+(cam.y-last.y)*30:0;if(cam)this.queueCamera={x:cam.x,y:cam.y};let bi=0,bd=Infinity;for(let k=0;cam&&k<q.length;k++){const j=q[k],d=Math.hypot((j.cx+.5)*j.size-ax,(j.cy+.5)*j.size-ay);if(d<bd){bd=d;bi=k}}const job=q.splice(bi,1)[0],key=`${job.cx},${job.cy},${job.size}`;this.terrainRefreshQueued.delete(key);const sig=this.terrainChunkSignature(job.cx,job.cy,job.size),entry=this.terrainChunkCache.get(key);if(entry?.sig===sig)return;this.buildTerrainChunk(job.cx,job.cy,job.size,sig)
   }
 
   terrainChunk(cx,cy,size=TERRAIN_CHUNK){
@@ -432,10 +468,18 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     if(!this.groundPassOnly&&w.carrion[i]>.08)this.drawCarrion(px,py,u,w.carrion[i]);
   }
 
+  // Phase 3L: terrain tile canvases are recycled instead of reallocated. Every terrain refresh (season, or at most
+  // every 20 s) cleared the tile caches and every stale tile got a new canvas: about 270 new canvases a second while
+  // walking at day 120, each later finalized by the garbage collector (frame stalls). A recycled canvas is reset
+  // (transparent, default state), exactly like a new one. TERRAIN_POOL_MAX bounds the spare canvases kept.
+  takeTileCanvas(n){const pool=this.tileCanvasPool;let cv=null;while(pool?.length&&!cv){const c=pool.pop();if(c.width===n&&c.height===n)cv=c}
+    if(cv){const g=cv.getContext('2d');if(typeof g.reset==='function')g.reset();else cv.width=n;return cv}cv=document.createElement('canvas');cv.width=n;cv.height=n;return cv}
+  recycleTileCanvas(cv){if(!cv||typeof document==='undefined'||!TERRAIN_POOL.enabled)return;const pool=this.tileCanvasPool||=[];if(pool.length<TERRAIN_POOL_MAX)pool.push(cv)}
+  recycleTileCache(cache){if(!cache)return;for(const v of cache.values())this.recycleTileCanvas(v?.canvas||v);cache.clear()}
   staticLandTile(i,x,y,identity,veg=true){
     const cache=veg?this.staticLandTileCache:(this.staticGroundTileCache||=new Map()),key=y*CFG.worldSize+x,sig=veg?this.plantVisualSignature(i):this.habitatFieldDay,entry=cache.get(key);if(entry?.sig===sig)return entry.canvas;
     if(typeof document==='undefined')return null;
-    const tile=document.createElement('canvas');tile.width=16*TILE_ART;tile.height=16*TILE_ART;const tc=tile.getContext('2d');if(!tc)return null;
+    if(entry)this.recycleTileCanvas(entry.canvas);const tile=this.takeTileCanvas(16*TILE_ART);const tc=tile.getContext('2d');if(!tc)return null;
     tc.imageSmoothingEnabled=false;tc.scale(TILE_ART,TILE_ART);const old=this.ctx;this.ctx=tc;
     try{
       const hierarchy=visualHierarchyAt(this.sim.world,x,y,{habitatField:this.habitatField}),hash=hash2(x,y,11);
@@ -499,7 +543,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // Cache it at the canonical 16x16 logical-pixel resolution, then nearest-scale it with the rest
     // of the pixel-art scene. Dynamic vegetation, tracks, water motion and hierarchy remain live.
     if(!cached&&typeof document!=='undefined'){
-      const tile=document.createElement('canvas');tile.width=16*TILE_ART;tile.height=16*TILE_ART;const tc=tile.getContext('2d');
+      const tile=this.takeTileCanvas(16*TILE_ART);const tc=tile.getContext('2d');
       if(tc){tc.imageSmoothingEnabled=false;tc.scale(TILE_ART,TILE_ART);this.paintOrganicLandBase(tc,0,0,1,x,y,season,hash,identity);cached=tile;this.landBaseTileCache?.set(key,cached)}
     }
     if(cached){c.drawImage(cached,px,py,16*u,16*u);return}
@@ -721,7 +765,11 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const c=this.ctx;
     // The excavation appears immediately and fades despite cached terrain.
     drawDisturbedSoil(c,{records:this.sim.partAbilities?.soilDisturbance,cell:i,day:this.sim.day,x,y,px,py,u});
-    const h=this.sim.history?.cell(i);if(!h)return;const seed=hash2(x,y,311);
+    // Phase 3H performance: read only the four history values drawn here (cell() also derives scar and
+    // biomass) and skip the save/restore pair when nothing on this tile is above its visible threshold.
+    const hist=this.sim.history;if(!hist)return;
+    const h={traffic:hist.traffic[i]||0,grazing:hist.grazing[i]||0,nutrient:hist.nutrientLegacy[i]||0,recovery:hist.recovery[i]||0};
+    if(!(h.traffic>.12||h.grazing>.13||h.nutrient>.10||h.recovery>.035))return;const seed=hash2(x,y,311);
     c.save();
     // Repeated travel compacts connected paths into the soil. Direction follows actual neighboring
     // traffic, so years of movement produce routes instead of unrelated per-tile stripes.
@@ -816,7 +864,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   drawCarrion(px,py,u,amount){const c=this.ctx;c.save();c.translate(px,py);pixel(c,4,11,8,2,u,'rgba(48,29,26,.42)');pixel(c,5,8,6,3,u,'#8b554d');pixel(c,4,9,2,2,u,'#6f443f');if(amount>.7){pixel(c,10,7,1,4,u,'#d2c7a9');pixel(c,9,8,3,1,u,'#d2c7a9')}c.restore()}
   drawAnimal(a,tile){
     const c=this.ctx;
-    const scale=this.zoom,ph=phenotypeFor(a),dev=developmentFor(a),social=this.sim.social?.visualState?.(a)||null,gaitPerTile=8*CFG.tileSize/gaitTravelFor(ph.limbScale*(.72+.28*(a.player?dev.growth:Math.round(dev.growth*32)/32))),visual=a.player&&this.playerVisual?{...this.playerVisual,gaitPhase:this.motion.sample({...a,x:this.playerVisual.x,y:this.playerVisual.y},this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear',snap:true,gaitPerTile}).gaitPhase}:this.motion.sample(a,this.sim.tickCount,this.renderNow,{hz:(a.player||a.pursuitEngaged)?CFG.controlHz:CFG.simHz,response:'linear',gaitPerTile}),px=Math.round((visual.x-this.camera.x)*tile+this.w/2),py=Math.round((visual.y-this.camera.y)*tile+this.h/2);(this.screenPos||=new Map()).set(a.id,{x:px,y:py});let action=this.actionPose(a,!!visual.moving);
+    const scale=this.zoom,ph=phenotypeFor(a),dev=developmentFor(a),social=this.sim.social?.visualState?.(a)||null,gaitPerTile=8*CFG.tileSize/gaitTravelFor(ph.limbScale*(.72+.28*(a.player?dev.growth:Math.round(dev.growth*32)/32)),assemblyFor(a)?.legSlots),visual=a.player&&this.playerVisual?{...this.playerVisual,gaitPhase:this.motion.sample({...a,x:this.playerVisual.x,y:this.playerVisual.y},this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear',snap:true,gaitPerTile}).gaitPhase}:this.motion.sample(a,this.sim.tickCount,this.renderNow,{hz:(a.player||a.pursuitEngaged)?CFG.controlHz:CFG.simHz,response:'linear',gaitPerTile}),px=Math.round((visual.x-this.camera.x)*tile+this.w/2),py=Math.round((visual.y-this.camera.y)*tile+this.h/2);(this.screenPos||=new Map()).set(a.id,{x:px,y:py});let action=this.actionPose(a,!!visual.moving);
     const targetTravel=!!(a.target&&!['eat','drink','court'].includes(action)),moving=!!visual.moving||(!a.player&&!!visual.recentlyMoving&&targetTravel);
     let phase=moving?(visual.gaitPhase??visual.phase):(((this.encounters?.time||0)/.22)+a.id)%8;
     // Autonomous gait phases are ID-offset in presentation so unrelated wildlife does not
@@ -828,6 +876,8 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     }
     const feeding=(this.feeding||=new FeedingPresentation()).sample(this.sim,a,this.encounters?.time||0,{moving,phase});if(feeding&&!social?.alarm)action=feeding.mode==='crush'?'crack':'eat';
     const encounter=this.encounters?.sample(this.sim,a,phase)||{};
+    // Brace receipts, stalled charges, carried wounds and retreats read from combat state.
+    const reaction=(this.reactions||=new EncounterReactionPresentation()).sample(this.sim,a,this.encounters?.time||0),defense=this.reactions.sampleDefense(this.sim,a,this.encounters?.time||0),reactionAt=reactionAttention(reaction);if(reactionAt&&!encounter.attention&&!a.player)encounter.attention=reactionAt;
     const frame=Math.floor(phase)&7,gait=cycle8(GAIT,phase),alert=!!social?.alarm;
     // v1.59.0: cached creatures animate in quarter frames while moving (32 poses a stride), so their
     // bodies move smoothly instead of jumping between eight whole poses; idle creatures use whole frames.
@@ -855,14 +905,16 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // of snapping across several at once. Presentation only; the simulation's facing is unchanged.
     drawDir=this.easedDir(a.id,drawDir&7);
     const bob=(alert||['drink','eat','hunt'].includes(action))?0:(moving?cycle8(BODY_BOB,phase):0);
+    // Whole-body carriage from mounted legs and build; a plain walker keeps exactly the shared bob.
+    const carriage=(alert||['drink','eat','hunt'].includes(action))?null:locomotionOffsets(locomotionStyle(a),{phase,moving,action,baseBob:bob,propulsion:action==='swim'?(movementProfile(a,this.sim.world).speed||0)/.66:1});
     const visualGrowth=a.player?dev.growth:Math.round(dev.growth*32)/32;ph.bodyScale*=visualGrowth;ph.limbScale*=.72+.28*visualGrowth;ph.sensoryScale*=.78+.22*visualGrowth;if(dev.maturity<.55){ph.stripe=false;ph.spot=false}
     const inWater=!!this.sim.world.water[this.sim.world.idx(a.x,a.y)];if(inWater&&this.sim.canSwim?.(a)&&!['eat','drink','crack'].includes(action))action='swim';
     const life=visualLifeState(this.sim,a,{frame,moving,action,development:dev,social,timeSeconds:this.encounters?.time});life.growth=visualGrowth;if(!a.player){life.breath=Math.round(life.breath*8)/8;life.settle=Math.round(life.settle*8)/8;}
     const behavior=behaviorVisualState({bodyPlan:a.bodyPlan,id:a.id,action,phase,moving,life,social});
     // Body and joints yield above support; contact shadows/toes stay on the ground.
-    if(action!=='swim')behavior.bodyRise-=bob;
+    if(carriage){behavior.bodyRise+=carriage.rise;behavior.bodySway=(behavior.bodySway||0)+carriage.sway;behavior.torsoTwist=carriage.twist;behavior.dorsalRoll=carriage.roll;behavior.bodyLean=(behavior.bodyLean||0)+carriage.lean}
     if(!social?.alarm)applyFeedingExpression(behavior,feeding);
-    applyEncounterPose(behavior,encounter);
+    applyEncounterPose(behavior,encounter);applyEncounterReaction(behavior,reaction);applyDefenseReaction(behavior,defense);
     const attackTarget=a.player&&a.attackAction?.targetId!==undefined?this.sim.animals.find(t=>t.id===a.attackAction.targetId&&t.alive):null;
     const looking=attentionTarget(a,{social,encounter,feeding,committedAim,attackTarget,action});
     behavior.headTurn=(this.headAttention||=new HeadAttentionPresentation()).sample(this.sim,a,looking,drawDir,this.encounters?.time||0);
@@ -872,16 +924,18 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const contact=environmentContactFor(this.sim.world,a,{action,phase,moving});
     this.drawPredatorChargeTell(a,tile,px,py);
     let recoilX=0,recoilY=0;if(impact&&impact.kind!=='miss'){const p=this.sim.player(),dx=a.x-(p?.x??a.x),dy=a.y-(p?.y??a.y),len=Math.hypot(dx,dy)||1,k=(3-Math.max(0,this.sim.tickCount-impact.tick))*.32;recoilX=dx/len*k;recoilY=dy/len*k}
+    const shove=reactionShove(reaction,a);if(shove){recoilX+=shove.x;recoilY+=shove.y}const dShove=defenseShove(defense,a);if(dShove){recoilX+=dShove.x;recoilY+=dShove.y}
     c.save();c.translate(px+recoilX*scale,py+((life.hurt&&!moving?1:0)+recoilY)*scale);
     drawGroundContact(c,{contact,scale,bodyScale:ph.bodyScale,dir:drawDir});
     drawActivityGround(c,{bodyPlan:a.bodyPlan,id:a.id,frame:phase,moving,action,scale,dir:drawDir});
     const depthShadow=creatureShadowFor(this.sim.world,a,this.habitatField,{bodyScale:ph.bodyScale+(life.exhausted?.08:0),moving,dir:drawDir});drawCreatureDepthShadow(c,{shadow:depthShadow,scale,hurt:life.hurt});
     const palette=creaturePalette(ph);
     if(a.hidden)c.globalAlpha*=.58;
-    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:a.player?phase:cachePhase,moving,palette,pose,cacheKey:a.player||feeding||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome?null:spriteKey(a,palette,drawDir,cachePhase,moving,pose,life)});
+    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:a.player?phase:cachePhase,moving,palette,pose,cacheKey:a.player||feeding||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,cachePhase,moving,pose,life)});
     if(a.pollenCargo?.mass>0){pixel(c,-3,-3,1,1,scale,'#dfba5b');pixel(c,2,-4,1,1,scale,'#e9d37d');pixel(c,4,-1,1,1,scale,'#cda64e')}
     this.drawLifeEffects(a,scale,frame,pose,palette);
     if(combatStatus)drawPlayerCombatFeedback(c,{animal:a,status:combatStatus,winded,scale,now:this.renderNow,dir:drawDir});else if(a.playerHunt)drawStalkerPursuitFeedback(c,{animal:a,scale,now:this.renderNow});
+    drawEncounterReactionMarks(c,{reaction,animal:a,scale,dir:drawDir});drawDefenseMarks(c,{reaction:defense,animal:a,scale,dir:drawDir});
     drawForegroundContact(c,{contact,scale,bodyScale:ph.bodyScale,isPlayer:!!a.player});
     this.drawMarkers(a,scale);if(a.infected){pixel(c,-6,-7,1,2,scale,'rgba(219,121,177,.78)');pixel(c,5,-7,1,2,scale,'rgba(219,121,177,.62)')}c.restore();
   }

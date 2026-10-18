@@ -1,0 +1,309 @@
+import {ecologyRuleMigrationMessage} from './ecology/rule-policy.js';
+import {birthRuleMigrationMessage} from './lineage/birth-rules.js';
+import {FrameStepper} from './sim/frame-stepper.js';
+import {setProcessingLoad} from './sim/processing-capacity.js';
+import {PointerApproach} from './ui/pointer-approach.js';
+import {approachGoal} from './ui/world-resource-target.js';
+import {CourtshipTray} from './ui/courtship-tray.js';
+import {HeldBraceInput} from './ui/held-brace-input.js';
+import {CreatureContextTray} from './ui/creature-context-tray.js';
+import {combatActions} from './ui/gameplay-actions.js';
+import {FrontEnd} from './ui/front-end.js';
+import {loadNativePartCatalog,nativeArtStatus} from './render/runtime-part-art.js';
+import {Simulation} from './sim/simulation.js';
+import {Renderer,TERRAIN_POOL} from './render/renderer.js';
+import {GAIT_REVIEW} from './render/genvo.js';
+import {BREEDING_REVIEW,LIFE_HISTORY} from './ecology/breeding-calibration.js';
+import {ECOLOGY_REVIEW} from './ecology/ecology-review.js';
+import {AQUATIC_REVIEW} from './ecology/freshwater-food.js';
+import {FOUNDING_GENETICS} from './reproduction/reproductive-compatibility.js';
+import {JUVENILE_SWITCH} from './ecology/juvenile-biology.js';
+import {ACTIVITY_REVIEW} from './ecology/activity.js';
+import {HEALING_REVIEW} from './ecology/healing-review.js';
+import {PREDATION_PARITY} from './gameplay/predation-parity.js';
+import {REFUGE_PARITY,MOTION_REVEALS} from './ecology/refuges.js';
+import {PHYSIOLOGY_PARITY} from './ecology/physiology.js';
+import {RARITY_REVIEW} from './ecology/prey-encounter.js';
+import {TROPHIC_RECOGNITION} from './reproduction/trophic-recognition.js';
+import {HUNT_COMMITMENT} from './ecology/hunt-commitment.js';
+import {PLANT_TURNOVER} from './ecology/plant-resources.js';
+import {MODULAR_HEAD,SPRITE_CACHE,SPRITE_BATCH} from './render/genvo-draw.js';
+import {THREAT_APPRAISAL} from './ecology/threat-appraisal.js';
+import {MOVEMENT_PARITY} from './ecology/movement-parity.js';
+import {SOIL_WATER} from './ecology/soil-water.js';
+import {WEATHER_PATTERNS} from './ecology/weather.js';
+import {THREAT_STAGES} from './ecology/threat-perception.js';
+import {PREY_RISK} from './ecology/prey-risk.js';
+import {DEVELOPMENTAL_SYMMETRY} from './lineage/developmental-symmetry.js';
+import {RESOURCE_FOUNDING} from './ecology/resource-founding.js';
+import {updateHUD,relativeSummary,setInteractPromptSource} from './ui/inspector.js';
+import {TutorialController} from './ui/tutorial.js';
+import {CFG} from './sim/config.js';
+import {FieldJournal} from './ui/journal.js';
+import {AudioDirector} from './audio/audio.js';
+import {LeadershipWheel} from './ui/leadership-wheel.js';
+import {EffectFeedbackController} from './ui/effect-feedback.js';
+import {SaveManager} from './persistence/save-manager.js';
+import {ObserverController} from './ui/observer.js';
+import {SuccessionChooser} from './ui/succession-chooser.js';
+import {CreatureEditor} from './ui/creature-editor.js';
+import {FieldGuide} from './ui/field-guide.js';
+import {setForm,formReading} from './lineage/readings.js';
+
+let seed=new URLSearchParams(location.search).get('seed')||'GENVO8-8FOLD';
+// Creator visual review of gait stride (?strideReview=1.5). Shipped default stays 1x.
+{const review=Number(new URLSearchParams(location.search).get('strideReview'));if([1,1.5,2].includes(review))GAIT_REVIEW.strideScale=review}
+// Creator review of the aquatic/marsh breeding calibration candidate (?breedingReview=1). Off by default.
+{const breeding=new URLSearchParams(location.search).get('breedingReview');if(breeding==='0')BREEDING_REVIEW.enabled=false;else if(breeding==='1')BREEDING_REVIEW.enabled=true}
+{const q=new URLSearchParams(location.search);if(q.get('lodInteraction')==='0')ACTIVITY_REVIEW.continuousInteraction=false;if(q.get('healing')==='0')HEALING_REVIEW.enabled=false;if(q.get('predationParity')==='0')PREDATION_PARITY.enabled=false;if(q.get('refuges')==='0')REFUGE_PARITY.enabled=false;if(q.get('physiologyParity')==='0')PHYSIOLOGY_PARITY.enabled=false;if(q.get('rarityReview')==='0')RARITY_REVIEW.enabled=false;if(q.get('trophicRecognition')==='0')TROPHIC_RECOGNITION.enabled=false;if(q.get('huntCommitment')==='1')HUNT_COMMITMENT.enabled=true;if(q.get('motionReveals')==='1')MOTION_REVEALS.enabled=true;if(q.get('plantTurnover')==='1')PLANT_TURNOVER.enabled=true;if(q.get('modularHead')==='1')MODULAR_HEAD.enabled=true;if(q.get('threatAppraisal')==='0')THREAT_APPRAISAL.enabled=false;if(q.get('movementParity')==='0')MOVEMENT_PARITY.enabled=false;if(q.get('soilWater')==='0')SOIL_WATER.enabled=false;if(q.get('weatherPatterns')==='0')WEATHER_PATTERNS.enabled=false;if(q.get('threatStages')==='0')THREAT_STAGES.enabled=false;if(q.get('preyRisk')==='0')PREY_RISK.enabled=false;if(q.get('developmentalSymmetry')==='0')DEVELOPMENTAL_SYMMETRY.enabled=false;if(q.get('spriteCacheMoving')==='1')SPRITE_CACHE.skipMoving=false;if(q.get('spriteBatch')==='0')SPRITE_BATCH.enabled=false;if(q.get('tilePool')==='0')TERRAIN_POOL.enabled=false;if(q.get('batchMode'))SPRITE_BATCH.mode=q.get('batchMode');if(q.get('batchPage'))SPRITE_BATCH.pageSize=Number(q.get('batchPage'))||1024;if(q.get('batchPages'))SPRITE_BATCH.maxPages=Number(q.get('batchPages'))||4;if(q.get('scratchPool'))SPRITE_CACHE.scratchPool=Number(q.get('scratchPool'))||1;if(q.get('ecologyReview')==='0')ECOLOGY_REVIEW.amphibiousForage=ECOLOGY_REVIEW.shoreHabitat=false;if(q.get('aquaticReview')==='0')AQUATIC_REVIEW.fryGrowth=AQUATIC_REVIEW.founding=false;if(q.get('foundingGenetics')==='0')FOUNDING_GENETICS.enabled=false;if(q.get('juvenileBiology')==='0')JUVENILE_SWITCH.growthCost=JUVENILE_SWITCH.preyAppraisal=false;if(q.get('resourceFounding')==='0')RESOURCE_FOUNDING.enabled=false;if(q.get('lifeHistory')==='1')LIFE_HISTORY.fundedGate=LIFE_HISTORY.conditionRecovery=true}
+let sim=new Simulation(seed,{player:true});
+const canvas=document.querySelector('#game'),renderer=new Renderer(canvas,sim),keys={},pauseNotice=document.querySelector('#pauseNotice');
+let mateOpen=false,mindOpen=false,territoryOpen=false,shelterOpen=false,migrationOpen=false,ecologyOpen=false,helpOpen=false,guideOpen=false,manualPause=false;
+let pointerApproach=null;
+const MOVE_CODES=new Set(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight','KeyJ']);
+const WORLD_ACTION_CODES=new Set(['Space','KeyE','KeyQ','KeyN','KeyF','KeyX','KeyV','KeyZ','KeyC','KeyG','KeyH','Digit1','Digit2','Digit3','Digit4','Digit5']);
+const MANUAL_TAKEOVER_CODES=new Set(['Space','KeyE','KeyQ','KeyN','KeyF','KeyX','KeyV','KeyZ','KeyC','KeyG']);
+function clearMovementKeys(){pointerApproach?.cancel();braceInput?.release();sim.playerCombat?.releaseBrace(sim.player());for(const code of MOVE_CODES)keys[code]=false}
+function takeManualControl(){if(!sim.playerAutonomy)return false;sim.setPlayerAutonomy(false);tutorial?.showToast?.('Manual control',900,'safe');return true}
+function setManualPause(value){if(tutorial.worldInputBlocked?.())return false;manualPause=!!value;sim.paused=manualPause;clearMovementKeys();if(pauseNotice)pauseNotice.hidden=!manualPause;audio.note('confirm');return true}
+const braceInput=new HeldBraceInput({getSim:()=>sim,blocked:()=>sim.paused||!!tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||succession.open,onBegin:()=>{sim.discovery.cancelTraceFollow();pointerApproach?.cancel();takeManualControl();applyObserverResult(observer.onManualInput());if(courtshipTray.isOpen){sim.reproduction.cancelCourtship();courtshipTray.close()}}});
+const tutorial=new TutorialController(sim,renderer);
+const observer=new ObserverController(()=>sim);
+const editor=new CreatureEditor({getSim:()=>sim,onDone:r=>{if(r.ok)audio.note('confirm');else tutorial.showToast('Design cancelled · the litter inherits normally · nothing was spent',2600,'safe')}});
+const fieldGuide=new FieldGuide({getSim:()=>sim});
+const succession=new SuccessionChooser({getSim:()=>sim,onDone:r=>{if(!r.ok){tutorial.showToast('That descendant cannot take over yet.',1800,'warn');audio.note('deny')}else audio.note('confirm')}});
+const speedButton=document.querySelector('#quickMenu button[data-action="speed"]');
+function syncSpeedButton(){if(!speedButton)return;const s=observer.speed;speedButton.classList.toggle('active',s>1);speedButton.setAttribute('aria-pressed',s>1?'true':'false');speedButton.title=`Speed: ${s}x`;const label=speedButton.querySelector('.quick-speed-label');if(label)label.textContent=`${s}x`}
+function applyObserverResult(r){if(!r)return;if(r.summary)tutorial.showToast(r.summary.text,5200,r.summary.danger?'warn':'safe');else if(r.message)tutorial.showToast(r.message,r.ok?1800:2200,r.ok?'safe':'warn');syncSpeedButton()}
+function changeSpeed(kind){if(tutorial.worldInputBlocked?.())return;const r=kind==='wrap'?observer.cycleWrap():observer.cycle(kind);applyObserverResult(r);audio.note(r.ok?'confirm':'deny');updateHUD(sim,{renderer,mateOpen,mindOpen,territoryOpen,shelterOpen,migrationOpen,ecologyOpen,helpOpen,guideOpen,journalOpen:journal.open,commandMode:leadershipWheel.commandMode})}
+const effectFeedback=new EffectFeedbackController(sim);
+const journal=new FieldJournal(sim);
+const audio=new AudioDirector(sim);
+const quickMenu=document.querySelector('#quickMenu');
+const continueGame=document.querySelector('#continueGame'),newLineage=document.querySelector('#newLineage'),startGame=document.querySelector('#startGame'),skipTutorial=document.querySelector('#skipTutorial'),welcomeSaveSummary=document.querySelector('#welcomeSaveSummary'),saveStatus=document.querySelector('#saveStatus'),saveNowButton=document.querySelector('#saveNow'),loadSaveButton=document.querySelector('#loadSave'),saveDetails=document.querySelector('#saveDetails');
+let saveStatusTimer=null;
+function showSaveStatus(message,{error=false,duration=1600}={}){
+  if(!saveStatus)return;saveStatus.textContent=message;saveStatus.classList.toggle('error',!!error);saveStatus.hidden=false;
+  if(saveStatusTimer)clearTimeout(saveStatusTimer);saveStatusTimer=setTimeout(()=>{saveStatus.hidden=true;saveStatus.classList.remove('error')},duration);
+}
+const saveManager=new SaveManager({getSim:()=>sim,onStatus:({kind,message,meta})=>{
+  if(kind==='saving')showSaveStatus(message,{duration:2200});
+  else if(kind==='saved'){showSaveStatus(message);if(saveDetails)saveDetails.textContent=`Last save: G${meta?.generation||1}, Year ${meta?.year||1} Day ${meta?.day||1}.`;}
+  else if(kind==='error')showSaveStatus(message,{error:true,duration:2600});
+}});
+let inGameplay=false;
+function closeGameMenus(){frontEnd.close();sim.paused=!!(tutorial.worldInputBlocked?.()||editor.open||succession.open);clearMovementKeys();if(pauseNotice)pauseNotice.hidden=true;inGameplay=true}
+// Starting or loading a world: the loading message is painted before the heavy work, and stays until the first
+// world frame has been drawn: the renderer prepares the visible terrain over several bounded frames first (Phase 3L,
+// renderer.prepareScene), so the page never freezes and the scene appears complete. The world-start save runs once
+// the world is live.
+const nextPaint=()=>new Promise(r=>requestAnimationFrame(()=>setTimeout(r,0)));
+async function loadWorldFromMenu(slotId){
+  if(inGameplay){const checkpoint=await saveManager.saveNow('before-world-switch');if(!checkpoint)throw Error('Save the active world before switching.');}
+  showSaveStatus('Loading world...',{duration:60000});await nextPaint();
+  const loaded=await saveManager.load(slotId);if(!loaded){showSaveStatus('This world could not be loaded',{error:true,duration:4000});throw Error('This world has no playable save.')}
+  installSimulation(loaded,{resume:true});closeGameMenus();await renderer.sceneReady();await nextPaint();showSaveStatus('World loaded',{duration:1400});return true;
+}
+async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1'}){
+  if(!['freshwater/1','planetary/1'].includes(geography))throw Error('Unsupported new-world geography.');
+  if(inGameplay){const checkpoint=await saveManager.saveNow('before-world-switch');if(!checkpoint)throw Error('Save the active world before switching.');}
+  await saveManager.allocateWorld(name);
+  const nextSeed=chosenSeed||'GENVO-'+Math.random().toString(16).slice(2,10).toUpperCase();
+  showSaveStatus('Preparing ecosystem...',{duration:60000});await nextPaint();
+  installSimulation(new Simulation(nextSeed,{player:true,worldGenerator:geography}),{fresh:true});
+  tutorial.beginInWorld();closeGameMenus();await renderer.sceneReady();await nextPaint();
+  try{const saved=await saveManager.saveNow('world-start');if(!saved)showSaveStatus('Storage unavailable — this world is not saved',{error:true,duration:6500})}
+  catch(error){console.error(error);showSaveStatus('Could not save this new world — check browser storage',{error:true,duration:6500})}
+  return true;
+}
+const frontEnd=new FrontEnd({saveManager,audio,
+  getWorldInfo:()=>`Generation ${sim.player()?.generation||sim.lineage?.highestGeneration||1} · Year ${sim.year||1}, Day ${sim.day||1}`,
+  onContinue:loadWorldFromMenu,onLoad:loadWorldFromMenu,onCreate:createWorldFromMenu,
+  onSave:async()=>{const checkpoint=await saveManager.saveNow('manual');if(!checkpoint)throw Error('Unable to save this world.');return checkpoint},
+  onResume:()=>closeGameMenus(),
+  onReturn:async(save)=>{
+    if(save){const checkpoint=await saveManager.saveNow('manual-return');if(!checkpoint)throw Error('Unable to save this world.');}
+    sim.paused=true;clearMovementKeys();inGameplay=false;closeDetailPanels();journal.setOpen(false);
+    if(pauseNotice)pauseNotice.hidden=true;return true;
+  }
+});
+sim.paused=true;
+// Progressive load: procedural fallback remains playable if native art is absent or invalid.
+loadNativePartCatalog().then(result=>{if(result.errors.length)console.warn('GenVo art fallback:',result.errors)});
+function closeDetailPanels(except=''){
+  if(except!=='journal')journal.setOpen(false);
+  if(except!=='mate')mateOpen=false;if(except!=='mind')mindOpen=false;if(except!=='territory')territoryOpen=false;
+  if(except!=='shelter')shelterOpen=false;if(except!=='migration')migrationOpen=false;if(except!=='population')ecologyOpen=false;
+  if(except!=='help')helpOpen=false;if(except!=='guide')guideOpen=false;
+}
+document.addEventListener('click',e=>{const close=e.target.closest('[data-knowledge-close]');if(close){closeDetailPanels();document.getElementById(close.dataset.knowledgeClose).hidden=true}});
+function toggleQuickPanel(name){
+  audio.unlock();
+  if(name==='guide'){const next=!guideOpen;closeDetailPanels('guide');guideOpen=next}
+  else if(name==='journal'){const next=!journal.open;closeDetailPanels('journal');journal.setOpen(next)}
+  else if(name==='territory'){const next=!territoryOpen;closeDetailPanels('territory');territoryOpen=next}
+  else if(name==='population'){const next=!ecologyOpen;closeDetailPanels('population');ecologyOpen=next}
+  else if(name==='help'){const next=!helpOpen;closeDetailPanels('help');helpOpen=next}
+  audio.note('confirm');
+}
+tutorial.tutorial?.addEventListener('click',e=>{if(!tutorial.tutorial.classList.contains('compact'))return;e.preventDefault();toggleQuickPanel('guide')});
+tutorial.tutorial?.addEventListener('keydown',e=>{if(tutorial.tutorial.classList.contains('compact')&&(e.code==='Enter'||e.code==='Space')){e.preventDefault();e.stopPropagation();toggleQuickPanel('guide')}});
+const leadershipWheel=new LeadershipWheel({
+  canvas,renderer,getSim:()=>sim,
+  canOpen:()=>!sim.paused&&!tutorial.worldInputBlocked?.()&&!journal.open&&!mateOpen&&!mindOpen&&!territoryOpen&&!shelterOpen&&!migrationOpen&&!ecologyOpen&&!helpOpen&&!guideOpen,
+  onFeedback:r=>{tutorial.showToast(r.message,r.quiet?2600:r.ok?1350:1900,r.ok?'safe':'warn');if(!r.quiet)audio.note(r.ok?'confirm':'deny')},
+  onModeChange:active=>{if(active)closeDetailPanels();updateHUD(sim,{renderer,mateOpen,mindOpen,territoryOpen,shelterOpen,migrationOpen,ecologyOpen,helpOpen,guideOpen,journalOpen:journal.open,commandMode:active})}
+});
+quickMenu?.addEventListener('click',e=>{
+  const command=e.target.closest('button[data-command="leadership"]');if(command){e.preventDefault();e.stopPropagation();if(!leadershipWheel.commandMode)closeDetailPanels();leadershipWheel.toggleCommandMode();return}
+  const speed=e.target.closest('button[data-action="speed"]');if(speed){e.preventDefault();e.stopPropagation();changeSpeed('wrap');return}
+  const autonomy=e.target.closest('button[data-action="autonomy"]');if(autonomy){e.preventDefault();e.stopPropagation();const on=sim.togglePlayerAutonomy();if(!on)applyObserverResult(observer.onManualInput());clearMovementKeys();tutorial.showToast(on?'Automation on · selected creature is acting on its own.':'Automation off · manual control.',1800,on?'safe':'success');audio.note('confirm');updateHUD(sim,{renderer,mateOpen,mindOpen,territoryOpen,shelterOpen,migrationOpen,ecologyOpen,helpOpen,guideOpen,journalOpen:journal.open,commandMode:leadershipWheel.commandMode});return}
+  const b=e.target.closest('button[data-panel]');if(!b)return;e.preventDefault();e.stopPropagation();leadershipWheel.setCommandMode(false);toggleQuickPanel(b.dataset.panel)
+});
+
+function installSimulation(next,{fresh=false,resume=false}={}){
+  seed=next.seed;sim=next;renderer.sim=sim;observer.reset();succession.close();editor.close();syncSpeedButton();frameStepper.reset();last=performance.now();hudTimer=0;clearMovementKeys();
+  manualPause=resume?!!sim.paused:false;if(!resume)sim.paused=false;if(pauseNotice)pauseNotice.hidden=!manualPause;
+  leadershipWheel.resetDiscovery();tutorial.setSimulation(sim,{fresh,resume});effectFeedback.setSimulation(sim);journal.setSimulation(sim);audio.setSimulation(sim);
+  mateOpen=false;mindOpen=false;territoryOpen=false;shelterOpen=false;migrationOpen=false;ecologyOpen=false;helpOpen=false;guideOpen=false;leadershipWheel.setCommandMode(false);saveManager.resetObservation(sim);renderer.beginScenePreparation();
+  updateHUD(sim,{renderer,mateOpen,mindOpen,territoryOpen,shelterOpen,migrationOpen,ecologyOpen,helpOpen,guideOpen,journalOpen:journal.open,commandMode:false});journal.update();
+}
+function resetRun(){
+  const nextSeed='GENVO8-'+Math.random().toString(16).slice(2,8).toUpperCase();
+  installSimulation(new Simulation(nextSeed,{player:true,worldGenerator:sim.world.generator}),{fresh:true});
+}
+async function loadSavedLineage(){
+  try{
+    const loaded=await saveManager.load();
+    if(!loaded){showSaveStatus('No saved checkpoint found',{error:true});return false}
+    installSimulation(loaded,{resume:true});closeGameMenus();showSaveStatus([birthRuleMigrationMessage(loaded),ecologyRuleMigrationMessage(loaded)].filter(Boolean).join(' ')||'World restored',{duration:6000});return true;
+  }catch(error){console.error(error);showSaveStatus('Could not load saved checkpoint',{error:true,duration:3500});return false}
+}
+saveNowButton?.addEventListener('click',()=>saveManager.saveNow('manual').catch(error=>console.error(error)));
+loadSaveButton?.addEventListener('click',()=>{if(confirm('Load the last saved lineage? Unsaved progress since that save will be lost.'))loadSavedLineage()});
+addEventListener('pointerdown',()=>{audio.unlock()},{passive:true});
+addEventListener('keydown',e=>{
+  if(e.target.closest?.('#interactionDock,.context-radial,#stageUtilities')&&['Tab','Enter','Space'].includes(e.code))return;
+  if(!MOVE_CODES.has(e.code)&&(!e.repeat||!audio.unlocked))audio.unlock();
+  if(frontEnd.handleKey(e))return;
+  if(!e.repeat&&e.code==='Escape'&&(fieldGuide.open||journal.open)){e.preventDefault();fieldGuide.setOpen(false);journal.setOpen(false);return}
+  if(!e.repeat&&e.code==='Escape'&&(guideOpen||helpOpen||mateOpen||mindOpen||territoryOpen||shelterOpen||migrationOpen||ecologyOpen)){e.preventDefault();closeDetailPanels();return}
+  if(!e.repeat&&(e.code==='Escape'||e.code==='KeyP')&&!tutorial.worldInputBlocked?.()&&!editor.open&&!succession.open){e.preventDefault();closeDetailPanels();journal.setOpen(false);sim.paused=true;clearMovementKeys();frontEnd.show('pause');return}
+  if(tutorial.handleKey(e)){e.preventDefault();return}
+  if(editor.handleKey(e)){e.preventDefault();return}
+  if(succession.handleKey(e)){e.preventDefault();return}
+  const panelOpen=journal.open||mateOpen||courtshipTray.isOpen||mindOpen||territoryOpen||shelterOpen||migrationOpen||ecologyOpen||helpOpen||guideOpen||leadershipWheel.commandMode;
+  if(e.code==='Tab'&&!e.repeat&&!panelOpen){e.preventDefault();if(sim.paused){if(manualPause)tutorial.showToast('Paused · press P to resume.',1200,'safe');return}const result=sim.switchFamilyControl(e.shiftKey?-1:1);clearMovementKeys();if(result.ok){tutorial.showToast(`G${result.to.generation} #${result.to.id} · ${relativeSummary(sim,result.to)} · ${result.index+1}/${result.count}${result.autonomy?' · AUTO':''}`,2600,'safe');audio.note('confirm')}else{tutorial.showToast(result.message,1800,'warn');audio.note('deny')}return}
+  if(MOVE_CODES.has(e.code)||MANUAL_TAKEOVER_CODES.has(e.code)){applyObserverResult(observer.onManualInput());takeManualControl()}
+  if((e.code==='BracketRight'||e.code==='BracketLeft')&&!e.repeat){e.preventDefault();changeSpeed(e.code==='BracketRight'?1:-1);return}
+  if(e.code==='KeyR'&&!e.repeat){e.preventDefault();if(!sim.player())resetRun();else if(!sim.paused){if(!leadershipWheel.commandMode)closeDetailPanels();leadershipWheel.toggleCommandMode()}return}
+  if(!leadershipWheel.el?.hidden&&e.code!=='Escape')leadershipWheel.close();
+  // P and Escape are handled by the authored pause navigator above.
+  if(sim.paused&&WORLD_ACTION_CODES.has(e.code)){e.preventDefault();if(manualPause)tutorial.showToast('Paused · press P to resume.',1200,'safe');return}
+  if(sim.paused&&MOVE_CODES.has(e.code)){e.preventDefault();return}
+  if(MOVE_CODES.has(e.code)){sim.discovery.cancelTraceFollow();pointerApproach?.cancel();keys[e.code]=true;}if(e.code==='KeyJ'&&!e.repeat&&courtshipTray.isOpen){sim.reproduction.cancelCourtship();courtshipTray.close()}
+  if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();
+  // Space is the dedicated attack: a short wind-up, then the strike resolves on its own.
+  if(e.code==='Space'&&!e.repeat){if(document.activeElement?.tagName==='BUTTON')document.activeElement.blur();contextTray.attack({pounce:!!(keys.ShiftLeft||keys.ShiftRight)})}
+  if(e.code==='KeyY'&&!e.repeat){fieldGuide.toggle();return}
+  // v1.57.0: the backquote key shows a frame-rate counter, so a player can report how the game runs.
+  if(e.code==='Backquote'&&!e.repeat){if(e.shiftKey)fpsMeter.toggleLow();else fpsMeter.toggle();return}
+  if(e.code==='KeyU'&&!e.repeat){const enabled=audio.toggleMute();tutorial.showToast(`Audio ${enabled?'on':'muted'}.`,1500,enabled?'success':'safe');if(enabled)audio.note('confirm')}
+  if(/^Digit[1-5]$/.test(e.code)&&!e.repeat&&!mateOpen&&!courtshipTray.isOpen){const index=Number(e.code.slice(-1))-1,ok=sim.familyDirectives.setByIndex(index),st=sim.familyDirectives.status(),scope=st.scope?.multipleTaxa?(st.scope.scope==='taxon'?st.scope.label:'Whole lineage'):'Family';const locked=index===4&&!st.scoutUnlocked;tutorial.showToast(locked?'Scout unlocks when 3 adults sustain 6 familiar cells.':st.available?`${scope} · ${st.short}`:`${scope} · ${st.short} · no grown relatives yet`,locked?2200:1500,locked?'warn':'safe');audio.note(ok?'confirm':'deny')}
+  if(e.code==='Slash'&&!e.repeat){guideOpen=false;helpOpen=!helpOpen;}
+  if(e.code==='KeyO'&&!e.repeat){guideOpen=false;ecologyOpen=!ecologyOpen;}
+  if(e.code==='KeyL'&&!e.repeat){journal.toggle();if(journal.open){mateOpen=false;mindOpen=false;territoryOpen=false;shelterOpen=false;migrationOpen=false;ecologyOpen=false;helpOpen=false;guideOpen=false}}
+  if(e.code==='KeyM'&&!e.repeat){mateOpen=!mateOpen;if(mateOpen)sim.reproduction.refreshSelection()}
+  if(e.code==='KeyI'&&!e.repeat)mindOpen=!mindOpen;
+  if(e.code==='KeyT'&&!e.repeat){guideOpen=false;territoryOpen=!territoryOpen;}
+  if(e.code==='KeyB'&&!e.repeat)shelterOpen=!shelterOpen;
+  if(e.code==='KeyK'&&!e.repeat)migrationOpen=!migrationOpen;
+  if(e.code==='KeyG'&&!e.repeat)sim.migration.togglePlayer(sim.player());
+  if(e.code==='KeyN'&&!e.repeat){const r=sim.shelter.constructOrRepair(sim.player());tutorial.onShelterAction?.(r);audio.noteResult(r)}
+  if(e.code==='KeyF'&&!e.repeat){const r=sim.shelter.cacheNearbyFood(sim.player());tutorial.onShelterAction?.(r);audio.noteResult(r)}
+  if(e.code==='KeyX'&&!e.repeat){const r=sim.playerAlarm();tutorial.onInteraction(r);audio.noteResult(r)}
+  if(e.code==='KeyV'&&!e.repeat){if(mateOpen){const r=sim.reproduction.cycleBroodStrategy();tutorial.showToast(r.ok?`Brood strategy: ${r.strategy}`:r.reason,1800,r.ok?'safe':'warn');audio.note(r.ok?'confirm':'deny')}else{const r=sim.playerHide();tutorial.onInteraction(r);audio.noteResult(r)}}
+  if(e.code==='KeyZ'&&!e.repeat){const r=sim.playerCarry();tutorial.onInteraction(r);audio.noteResult(r)}
+  if(e.code==='KeyQ'&&!e.repeat){if(mateOpen)sim.reproduction.cycleMate(-1);else if(journal.open)journal.cycle(-1);else contextTray.cycleInteract()}
+  if(e.code==='KeyE'&&!e.repeat){
+    if(mateOpen){sim.reproduction.cycleMate(1);audio.note('confirm')}
+    else if(journal.open){journal.cycle(1);audio.note('confirm')}
+    else if(e.shiftKey)contextTray.drink();else contextTray.interact();
+  }
+  if((mateOpen||courtshipTray.isOpen)&&!e.repeat&&['Digit1','Digit2','Digit3','Digit4','Digit5'].includes(e.code)){
+    const action={Digit1:'dance',Digit2:'call',Digit3:'flare',Digit4:'scent',Digit5:'gesture'}[e.code];
+    const r=sim.player()?.courtshipPerformance?sim.reproduction.changeLiveMove(action):sim.reproduction.queueRitualMove(action);
+    tutorial.showToast(r.ok?'Ritual: '+r.sequence.join(' → '):r.reason,1700,r.ok?'safe':'warn');
+    audio.note(r.ok?'confirm':'deny');
+  }
+  if((mateOpen||courtshipTray.isOpen)&&!e.repeat&&e.code==='Backspace'){
+    e.preventDefault();sim.reproduction.clearRitualQueue();tutorial.showToast('Ritual cleared',1200,'safe');
+  }
+  if(e.code==='KeyC'&&!e.repeat){
+    // Phase 4: C courts the best nearby ready partner even when the mate panel was never opened, and
+    // a refusal says why on screen instead of failing silently.
+    let ok;if(courtshipTray.isOpen)ok=courtshipTray.play();else{if(!sim.reproduction.selectedMate())sim.reproduction.refreshSelection();ok=sim.reproduction.courtSelected();if(ok&&!mateOpen)courtshipTray.show(sim.reproduction.courtTargetId);
+      if(!ok){const why=sim.reproduction.selectedMate()?sim.reproduction.courtshipAvailability().reason:'No ready partner nearby. Partners need to be adult, healthy and well fed.';tutorial.showToast(why||'No partner can be courted right now.',2000,'warn')}}
+    audio.note(ok?'court':'deny');
+  }
+  if(e.code==='KeyH'&&!e.repeat){if(journal.open)journal.handoffSelected();else if(!sim.paused||succession.open){const r=succession.request();if(!r.ok&&r.message){tutorial.showToast(r.message,1800,'warn');audio.note('deny')}}}
+  if(e.code==='Escape'&&!e.repeat&&fieldGuide.open){fieldGuide.setOpen(false);return}
+  if(e.code==='Escape'&&!e.repeat){leadershipWheel.setCommandMode(false);journal.setOpen(false);mateOpen=false;mindOpen=false;territoryOpen=false;shelterOpen=false;migrationOpen=false;ecologyOpen=false;helpOpen=false;guideOpen=false}
+});
+addEventListener('keyup',e=>{if(MOVE_CODES.has(e.code)){keys[e.code]=false;if(!audio.unlocked)audio.unlock()}});
+addEventListener('blur',clearMovementKeys);
+
+function input(){const manual={up:keys.KeyW||keys.ArrowUp,down:keys.KeyS||keys.ArrowDown,left:keys.KeyA||keys.ArrowLeft,right:keys.KeyD||keys.ArrowRight,sprint:keys.ShiftLeft||keys.ShiftRight,brace:braceInput.read()||!!keys.KeyJ};return pointerApproach?pointerApproach.read(manual):manual}
+const frameStepper=new FrameStepper({controlHz:CFG.controlHz,simHz:CFG.simHz});
+let last=performance.now(),hudTimer=0;
+function frame(now){
+  const dt=Math.max(0,Math.min(.1,(now-last)/1000));last=now;const controls=input();
+  const processing=frameStepper.advance(dt,observer.speed,hz=>sim.playerControlStep(controls,hz),()=>sim.update(controls,{externalPlayerControl:true}),{paused:sim.paused});
+  setProcessingLoad(sim,processing);
+  const combatResult=sim.playerCombat.consumeResult();if(combatResult){if(!combatResult.quiet||combatResult.type!=='attack')tutorial.onInteraction(combatResult);audio.noteResult(combatResult)}
+  sim.cognition.showOverlay=mindOpen;sim.territory.showOverlay=territoryOpen;sim.shelter.showOverlay=shelterOpen;sim.migration.showOverlay=migrationOpen;
+  renderer.setPlayerPresentation(controls,frameStepper.presentationAhead);
+  // Evolution Expansion: a waiting design opportunity opens the editor once nothing else is modal.
+  if(!frontEnd.isOpen&&!editor.open&&!succession.open&&sim.evolutionEditor?.pending?.()&&editor.request())clearMovementKeys();
+  if(!frontEnd.isOpen)tutorial.update();if(!frontEnd.isOpen)audio.update(dt,controls);renderer.renderOrPrepare();contextTray.update();courtshipTray.update();tutorial.notifications.layout();fpsMeter.frame();hudTimer+=dt;fieldGuide.refresh(dt);
+  if(hudTimer>.12){sim.lineage.refreshSelection();sim.reproduction.refreshSelection();leadershipWheel.sync();updateHUD(sim,{renderer,mateOpen,mindOpen,territoryOpen,shelterOpen,migrationOpen,ecologyOpen,helpOpen,guideOpen,journalOpen:journal.open,commandMode:leadershipWheel.commandMode});journal.update();const tendencyNotice=sim.tendency?.consumeNotice?.();if(tendencyNotice)tutorial.showToast(tendencyNotice.message,2600,'safe');const centerNotice=sim.populationEcology?.consumeNotice?.();if(centerNotice)tutorial.showToast(centerNotice.message,3200,centerNotice.tone||'warn');const memoryNotice=tutorial.toastEl?.hidden?sim.populationMemory?.consumeNotice?.():null;if(memoryNotice)tutorial.showToast(memoryNotice.message,3400,memoryNotice.tone||'safe');const protoNotice=tutorial.toastEl?.hidden?sim.protoSpeciation?.consumeNotice?.():null;if(protoNotice)tutorial.showToast(protoNotice.message,3600,protoNotice.tone||'success');const speciesNotice=tutorial.toastEl?.hidden?sim.speciation?.consumeNotice?.():null;if(speciesNotice)tutorial.showToast(speciesNotice.message,4000,speciesNotice.tone||'success');const coexistNotice=tutorial.toastEl?.hidden?sim.speciesCoexistence?.consumeNotice?.():null;if(coexistNotice)tutorial.showToast(coexistNotice.message,3600,coexistNotice.tone||'warn');const lifestyleNotice=tutorial.toastEl?.hidden?sim.speciesLifestyle?.consumeNotice?.():null;if(lifestyleNotice)tutorial.showToast(lifestyleNotice.message,3600,lifestyleNotice.tone||'success');const effectNotice=tutorial.toastEl?.hidden?effectFeedback.observe():null;if(effectNotice)tutorial.showToast(effectNotice.message,3000,effectNotice.tone||'safe');const controlStatus=sim.familyControlStatus?.();if(controlStatus?.unlocked&&!sim.familyControlExplained&&!tutorial.worldInputBlocked?.()&&tutorial.toastEl?.hidden){sim.familyControlExplained=true;tutorial.showToast('Family control unlocked · TAB switches relatives · AUTO lets the selected creature act on its own.',3600,'success')}saveManager.observe({eligible:!frontEnd.isOpen&&!sim.paused&&!tutorial.worldInputBlocked?.()});applyObserverResult(observer.observe());hudTimer=0}
+  requestAnimationFrame(frame)
+}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&!frontEnd.isOpen&&!tutorial.worldInputBlocked?.())saveManager.saveNow('visibility').catch(()=>{})});
+addEventListener('pagehide',()=>{if(!frontEnd.isOpen&&!tutorial.worldInputBlocked?.())saveManager.saveNow('pagehide').catch(()=>{})});
+frontEnd.refreshHome().catch(()=>{});
+updateHUD(sim,{renderer,mateOpen,mindOpen,territoryOpen,shelterOpen,migrationOpen,ecologyOpen,helpOpen,guideOpen,journalOpen:journal.open,commandMode:leadershipWheel.commandMode});journal.update();requestAnimationFrame(frame);
+// v1.57.0 frame-rate counter (toggle with the backquote key): frames per second, the slowest frame
+// of the last second and the window size. v1.57.2: a second line shows the average milliseconds per
+// frame spent in each part of drawing and in the simulation, so a slow machine can show what is slow.
+// Performance mode (decorative foreground and weather layers off) turns on by itself after three
+// slow seconds; Shift+backquote switches it by hand.
+const fpsMeter=(()=>{const el=document.createElement('div');el.id='fpsMeter';el.hidden=true;document.querySelector('#app')?.appendChild(el);let n=0,worst=0,last=performance.now(),acc=0,slow=0;const parts={};
+  const wrap=(o,name,label)=>{const f=o?.[name];if(typeof f!=='function')return;o[name]=function(...a){if(el.hidden)return f.apply(this,a);const t=performance.now();try{return f.apply(this,a)}finally{parts[label]=(parts[label]||0)+performance.now()-t}}};
+  for(const [m,l] of [['drawTerrainChunks','terrain'],['drawTile','tiles'],['drawTileDynamic','tiles'],['drawHabitatScenes','scenes'],['drawHabitatTransitions','scenes'],['drawRegionalFocals','scenes'],['drawSites','places'],['drawAnimal','creatures'],['drawForegroundHabitat','fringe'],['drawHabitatSceneForeground','fringe'],['drawSceneDepthForeground','fringe'],['drawWeatherOverlay','weather'],['processTerrainRefreshQueue','builds']])wrap(renderer,m,l);
+  wrap(Object.getPrototypeOf(sim),'update','sim');
+  return{toggle(){el.hidden=!el.hidden},setLow(v){renderer.lowDetail=v},toggleLow(){renderer.lowDetail=!renderer.lowDetail},frame(){const t=performance.now(),dt=t-last;last=t;n++;acc+=dt;if(dt>worst)worst=dt;if(acc>=1000){const fps=Math.round(n*1000/acc);slow=fps<40?slow+1:0;if(slow>=3&&!renderer.lowDetail)renderer.lowDetail=true;
+    if(!el.hidden){const top=Object.entries(parts).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`${k} ${(v/n).toFixed(1)}`).join(' · ');el.textContent=`${fps} FPS · slowest ${Math.round(worst)} ms · ${innerWidth}×${innerHeight}${renderer.lowDetail?' · performance mode':''}\nms per frame: ${top}`}
+    for(const k in parts)parts[k]=0;n=0;acc=0;worst=0}}}})();
+const courtshipTray=new CourtshipTray({getSim:()=>sim,blocked:()=>frontEnd.isOpen||editor.open||succession.open||journal.open||fieldGuide.open||mateOpen,
+ onManual:()=>{takeManualControl();applyObserverResult(observer.onManualInput())},
+ onFeedback:r=>{if(r.message||!r.ok&&r.reason)tutorial.showToast(r.message||r.reason,2400,r.ok?'success':'warn','action');audio.note(r.ok?'confirm':'deny')},
+ onObserve:a=>{sim.discovery.noteCreatureAppearance(a);fieldGuide.setOpen(true)},onDetails:()=>{mateOpen=true;courtshipTray.close()}
+});
+pointerApproach=new PointerApproach({getSim:()=>sim,blocked:()=>frontEnd.isOpen||editor.open||succession.open||journal.open||fieldGuide.open||guideOpen||helpOpen||mateOpen||courtshipTray.isOpen});
+const contextTray=new CreatureContextTray({canvas,renderer,braceInput,getSim:()=>sim,
+ onSelect:()=>{sim.discovery.cancelTraceFollow();pointerApproach?.cancel();takeManualControl();if(courtshipTray.isOpen){sim.reproduction.cancelCourtship();courtshipTray.close()}},
+ onClear:()=>{sim.discovery.cancelTraceFollow();pointerApproach?.cancel();sim.reproduction.cancelCourtship();courtshipTray.close()},
+ canUseFamilyGuidance:(creature,resource)=>leadershipWheel.available()&&(!resource||resource.kind==='ground')&&(!creature||sim.controllableFamily().some(a=>a.id===creature.id)),
+ onApproachAvailability:target=>pointerApproach.availability(approachGoal(sim,target)),
+ onApproach:(target,onArrival,{quiet=false,ready=null,onInterrupted=null}={})=>{const goal=approachGoal(sim,target);if(!goal)return;takeManualControl();clearMovementKeys();sim.reproduction.cancelCourtship();courtshipTray.close();applyObserverResult(observer.onManualInput());const result=pointerApproach.start(goal,onArrival,{ready,onInterrupted});if(!quiet){tutorial.onInteraction(result);audio.noteResult(result)}},
+ onRest:()=>{sim.discovery.cancelTraceFollow();pointerApproach?.cancel();if(sim.paused||sim.playerCombat.attackActive(sim.player()))return;takeManualControl();clearMovementKeys();sim.reproduction.cancelCourtship();courtshipTray.close();const a=sim.player();if(a){a.intent='idle';a.target=null;tutorial.showToast('Resting · regain breath while still. Move to resume.',1800,'safe');audio.note('confirm')}},stageBlocked:()=>tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||fieldGuide.open||journal.open||guideOpen||helpOpen||mindOpen||territoryOpen||shelterOpen||migrationOpen||ecologyOpen||mateOpen||succession.open||leadershipWheel.commandMode,
+ onMode:mode=>{if(mode==='combat'&&courtshipTray.isOpen){const id=courtshipTray.targetId;sim.reproduction.cancelCourtship();courtshipTray.close();contextTray.targetId=id;contextTray.world=sim}},blocked:()=>tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||fieldGuide.open||journal.open||guideOpen||helpOpen||mindOpen||territoryOpen||shelterOpen||migrationOpen||ecologyOpen||mateOpen||courtshipTray.isOpen||succession.open||leadershipWheel.commandMode,
+ onResult:r=>{if(!(r.ok&&r.type==='trace-follow'))sim.discovery.cancelTraceFollow();pointerApproach?.cancel();takeManualControl();tutorial.onInteraction(r);audio.noteResult(r)},
+ onObserve:a=>{sim.discovery.noteCreatureAppearance(a);fieldGuide.setOpen(true)},
+ onCourt:a=>{takeManualControl();if(!courtshipTray.show(a.id))tutorial.showToast('This creature is not currently an eligible mate.',1800,'warn')}
+});
+setInteractPromptSource(()=>{try{const c=contextTray.directChoice?.();return c?.enabled?c.label:null}catch{return null}});
+journal.onRevisit=id=>{const o=sim.discovery.seedObservations?.find(o=>o.id===id);if(!o)return;journal.setOpen(false);const target=sim.discovery.seedPatchTarget(o);if(!contextTray.selectResource(target))return;const choice=contextTray.directChoice();if(choice?.enabled)contextTray.interact();else tutorial.showToast(choice?.reason||'This body cannot revisit the patch.',1800,'warn')};
+
+window.__GENVO8__={frameStepper,get pointerApproach(){return pointerApproach},nativeArtStatus,courtshipTray,braceInput,contextTray,combatActions:()=>combatActions(sim),get sim(){return sim},CFG,setForm,formReading,tutorial,renderer,journal,audio,leadershipWheel,saveManager,loadSavedLineage,observer,editor,fieldGuide};

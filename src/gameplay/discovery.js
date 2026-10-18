@@ -7,6 +7,7 @@ import {partEffectFactors,hasPart} from '../lineage/part-abilities.js';
 import {FOUNDER_PLACEMENTS,founderPlan} from '../lineage/body-inheritance.js';
 import {PARTS} from '../lineage/part-registry.js';
 import {FRESHWATER_FOOD} from '../ecology/freshwater-food.js';
+import {REFUGE_PARITY,armoured} from '../ecology/refuges.js';
 import {bodyMass} from '../organisms/body-mass.js';
 
 // Phase G first slice (GDD v1 section 14, creator decision 2026-10-09): places to discover, a field
@@ -153,7 +154,7 @@ export class DiscoveryController{
     // Save the actual observed anatomy, inherited genes and visible proportions.
     // A later mutation cannot silently rewrite this journal entry.
     const name=this.sim.speciation?.identityFor?.(animal)?.label||animal.speciesBranch?.label||`Observed creature ${animal.id}`;
-    this.observedBodies.push({id:animal.id,name,bodyPlan:structuredClone(animal.bodyPlan),genes:{...animal.genes},adaptations:[...(animal.adaptations||[])],anatomy:{...animal.anatomy},phenotype:phenotypeFor(animal),day:this.sim.day});
+    this.observedBodies.push({id:animal.id,species:animal.species,name,bodyPlan:structuredClone(animal.bodyPlan),genes:{...animal.genes},adaptations:[...(animal.adaptations||[])],anatomy:{...animal.anatomy},phenotype:phenotypeFor(animal),day:this.sim.day});
     if(this.observedBodies.length>256)this.observedBodies.shift();
   }
   seeParts(animal){
@@ -248,8 +249,8 @@ export class DiscoveryController{
     if((this.sim.evolutionBudget?.matured?.length||0)>0)this.complete('raise');
     // Field guide: species and wild GenVo bodies seen nearby.
     if(t%(CFG.simHz*2)===0){const r=8*sight;for(const a of this.sim.animals){if(!a.alive||a.id===p.id||Math.hypot(a.x-p.x,a.y-p.y)>r)continue;this.noteCreatureAppearance(a);if(!this.seenSpecies.includes(a.species))this.seenSpecies.push(a.species);if(isWildSpecies(a.species)&&a.bodyPlan){const br=wildBranch(a);this.seenBranches||=[];if(br.id!=='common'&&!this.seenBranches.includes(br.id)){this.seenBranches.push(br.id);this.notice(`Field guide: a ${br.label} · its body has evolved`,'warn')}}if((a.species==='genvo'&&!a.lineage)||isWildSpecies(a.species))this.seeParts(a)}if(this.wildPartsSeen()>=5)this.complete('spot5')}
-    // Thorn brakes scratch soft-bodied family members.
-    for(const a of this.sim.animals){if(!a.alive||!a.lineage||a.species!=='genvo')continue;if(this.siteAt(a,'thorn-brake',1.8)&&!this.armored(a))a.health=Math.max(1,a.health-.5)}
+    // Thorn brakes scratch any soft-bodied occupant (Phase 3I refuges; previously only family GenVo).
+    for(const a of this.sim.animals){if(!a.alive||!REFUGE_PARITY.enabled&&(!a.lineage||a.species!=='genvo'))continue;if(this.siteAt(a,'thorn-brake',1.8)&&!(REFUGE_PARITY.enabled?armoured(this.sim,a):this.armored(a)))a.health=Math.max(1,a.health-.5)}
     // A carcass appears every so often within reach of the active creature; it draws Stalkers.
     const carcass=this.sites.find(s=>s.kind==='carcass'&&!s.gone);
     if(carcass){const i=this.sim.world.idx(carcass.x,carcass.y);if((this.sim.world.carrion[i]||0)<.1)carcass.gone=true;

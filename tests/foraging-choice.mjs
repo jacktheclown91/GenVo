@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {PHYSIOLOGY_PARITY} from '../src/ecology/physiology.js';
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
 import {makePlan,validatePlan} from '../src/lineage/body-plan.js';
@@ -27,13 +28,19 @@ function setup(seed='GENVO8-FORAGE-CHOICE'){
   assert.match(sim.interactionHint(),/Q switch/);assert.match(sim.interactionHint(),/E · Eat/);
 }
 
-{
+// Phase 3J shared physiology: plant meals follow one rule for player and wildlife. The default is the rule
+// wild ecology was calibrated on (no water from food); the food-water alternative awaits a creator decision.
+for(const foodWater of [false,true]){
+  PHYSIOLOGY_PARITY.foodWater=foodWater;
   const {sim,p}=setup('GENVO8-FORAGE-WATER');
   // Force reeds as the manually selected meal, then use the ordinary E interaction path.
   const opts=sim.foraging.options(p),reedIndex=opts.findIndex(o=>o.kind==='marshroot');sim.foraging.state(p).selectedKind='marshroot';sim.foraging.state(p).manual=true;
   assert.ok(reedIndex>=0);const e0=p.energy,w0=p.hydration,r=sim.playerInteract();
-  assert.equal(r.type,'eat');assert.equal(r.kind,'marshroot');assert.ok(p.energy>e0);assert.ok(p.hydration>w0+4,'water-rich forage materially restores hydration');assert.ok(r.waterGain>4);assert.equal(sim.lastPlayerAction.kind,'marshroot');
+  assert.equal(r.type,'eat');assert.equal(r.kind,'marshroot');assert.ok(p.energy>e0);assert.equal(sim.lastPlayerAction.kind,'marshroot');
+  if(foodWater){assert.ok(p.hydration>w0+4,'with food water, water-rich forage materially restores hydration');assert.ok(r.waterGain>4)}
+  else assert.equal(p.hydration,w0,'default shared rule: plant meals give no water');
 }
+PHYSIOLOGY_PARITY.foodWater=false;
 
 {
   const {sim,p,w,i}=setup('GENVO8-FORAGE-BREADTH');

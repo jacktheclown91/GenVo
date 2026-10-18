@@ -1,0 +1,197 @@
+{
+  "scope": "Actual saved-world continuation in fresh isolated IndexedDB, normal Continue and one mouse click on the enabled Drink control. Read-only before/after telemetry and normal Save World. No body/resource/RNG/consent edits, spawning or fast-forward. Current hydration behavior only, not a complete planetary water/material balance or human play acceptance.",
+  "input": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\player-journey\\manual-courtship-expiry-continuation-4\\checkpoint.snapshot.json.gz",
+  "rows": [
+    {
+      "label": "continued-actual-native-save",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 96,
+      "tick": 4600,
+      "player": {
+        "id": 109,
+        "age": 127,
+        "x": 71.00605614737933,
+        "y": 82.98665437629444,
+        "energy": 123.7718414579911,
+        "hydration": 56.88984623641542,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 2.9870243447019504,
+        "waterGain": 0,
+        "tick": 4582
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "before-drink-click",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 96,
+      "tick": 4601,
+      "player": {
+        "id": 109,
+        "age": 127,
+        "x": 71.00605614737933,
+        "y": 82.98665437629444,
+        "energy": 123.7718414579911,
+        "hydration": 56.88984623641542,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 109,
+        "kind": "marshroot",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 2.9870243447019504,
+        "waterGain": 0,
+        "tick": 4582
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    },
+    {
+      "label": "after-drink-click",
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 96,
+      "tick": 4604,
+      "player": {
+        "id": 109,
+        "age": 127,
+        "x": 71.00605614737933,
+        "y": 82.98665437629444,
+        "energy": 123.6957886106548,
+        "hydration": 81.9222595887959,
+        "health": 100,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 230,
+      "courtTarget": null,
+      "refusal": {
+        "tick": 4092,
+        "reason": "first-declines",
+        "day": 86,
+        "declinerId": 109,
+        "taste": null,
+        "count": 1,
+        "otherId": 147
+      },
+      "failure": {
+        "tick": 3864,
+        "day": 81,
+        "partnerId": 202,
+        "reason": "The courtship performance ended before pairing.",
+        "reasonCode": "performance-ended",
+        "stage": "performance"
+      },
+      "lastPlayerAction": {
+        "type": "drink",
+        "actorId": 109,
+        "tick": 4603
+      },
+      "performance": null,
+      "completedPerformance": null,
+      "queuedPerformance": [
+        "dance"
+      ],
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": true,
+        "reason": ""
+      }
+    }
+  ],
+  "actions": [
+    "Clicked the existing enabled Drink control once"
+  ],
+  "errors": []
+}

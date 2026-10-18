@@ -29,6 +29,7 @@ export function conceptionMode(mother,world=null){
 // Freeze mode at conception. Updating a parent's anatomy or later strategic choice
 // must never convert an already funded pregnancy from one route into the other.
 export const INCUBATION_DAYS=9;
+// Historical capacity reference for diagnostics; not a biological laying limit.
 export const MAX_WORLD_EGGS=128;
 export function eggSiteQuality(world,x,y){
   if(!world||!Number.isFinite(x)||!Number.isFinite(y))return 0;

@@ -33,7 +33,7 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
   const legs=[];
   // Designed bodies (wave 1) pass their own leg slots: angles in sixteenths of a turn relative to
   // the facing, with a reach factor per leg type. Without them the eight radial legs are unchanged.
-  const slotList=Array.isArray(legSlots)?legSlots:null,count=slotList?slotList.length:8,travel=slotList&&moving?gaitTravelFor(limbScale):null;
+  const slotList=Array.isArray(legSlots)?legSlots:null,count=slotList?slotList.length:8,travel=slotList&&moving?gaitTravelFor(limbScale,slotList):null;
   for(let n=0;n<count;n++){
     let k=n,dx,dy,reachScale=1,slot=null,gait=null;
     if(slotList){const L=slotList[n],raw=L.slot*Math.PI/8,ang=splayAngle(raw);slot=L.slot;reachScale=L.reach||1;gait=L.gait||null;k=(L.slot>>1)+(L.slot&1);dx=fx*Math.cos(ang)+perp.x*Math.sin(ang);dy=fy*Math.cos(ang)+perp.y*Math.sin(ang)}
@@ -100,7 +100,14 @@ export function roundedMantleRows(width,height,{squash=0}={}){
 // planted foot; the toe returns along the travel axis, not around a radial spoke.
 // One renderer-only travel contract: over five support beats the body advances
 // 5/8 of a cycle, and the planted toe retracts by exactly that same distance.
-export function gaitTravelFor(limbScale=1){return Math.max(2.6,4.6*limbScale)}
+// World distance per full gait cycle. Each mounted leg type contributes its own step length
+// (runner long, sturdy short), so cadence follows anatomy while planted toes stay fixed:
+// the renderer's gait phase and the stance sweep both use this one number.
+export function strideLengthFor(legSlots){if(!Array.isArray(legSlots)||!legSlots.length)return 1;let t=0;for(const l of legSlots)t+=Number(l?.gait?.step)||1;return t/legSlots.length}
+// Review-only stride scale for cadence comparison captures. 1 is the shipped value; any
+// change applies equally to pose stance sweep and renderer gait phase, so toes stay planted.
+export const GAIT_REVIEW={strideScale:1};
+export function gaitTravelFor(limbScale=1,legSlots=null){return Math.max(2.6,4.6*limbScale)*strideLengthFor(legSlots)*GAIT_REVIEW.strideScale}
 export function organicFootfall(phase,travel=null,recovery=1){
  const p=((Number(phase)+7)%8+8)%8,span=Number.isFinite(travel)?travel*5/8:2.9;
  if(p<3){const t=p/3,e=t*t*(3-2*t),style=recovery===1?0:(recovery-1)*span*.3*Math.sin(Math.PI*t)*Math.sin(Math.PI*2*t);return{stride:-span/2+span*e+style,lift:2*Math.sin(Math.PI*t),planted:false}}

@@ -2,6 +2,7 @@
 // regional engineer return. This neither changes wildlife decisions nor
 // counts an opportunity as a mating, birth or sustainable colony.
 import {SPECIES} from '../organisms/species.js';
+import {breedingEnergyGate} from './breeding-calibration.js';
 
 const empty=()=>({observations:0,founderAliveDays:0,founderResidentDays:0,
   founderPhysiologicallyReadyDays:0,mateResidentDays:0,mateReadyResidentDays:0,
@@ -9,7 +10,7 @@ const empty=()=>({observations:0,founderAliveDays:0,founderResidentDays:0,
 
 const physicallyReady=(a,s)=>a.age>=s.maturity && a.reproCooldown<=0 &&
   !a.pregnant && !a.infected && a.health>=55 &&
-  a.energy/s.maxEnergy>(s.reproduction?.energy??.72);
+  a.energy/s.maxEnergy>breedingEnergyGate(a.species);
 
 export function observeEngineerBreedingOpportunity(region,sim,day){
   const event=region?.engineerSuccession?.events?.at(-1);

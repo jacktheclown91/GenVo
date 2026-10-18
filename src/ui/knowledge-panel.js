@@ -5,9 +5,25 @@ export function knowledgeWindowHTML(html){
  let content=html.slice(header.length);const footer=content.match(/<footer\b[\s\S]*?<\/footer>\s*$/)?.[0]||'';if(footer)content=content.slice(0,content.length-footer.length);
  return header+'<div class="knowledge-scroll" data-focus-key="information-scroll" tabindex="0" aria-label="Scrollable information">'+content+'</div>'+footer;
 }
-export function updateKnowledgeHTML(el,html){
+// Opt-in live text refresh: retain control identity only when the complete
+// markup/attribute structure matches. Structural changes use the normal rebuild.
+function textPatches(current,next,patches){
+ const children=node=>[...node.childNodes].filter(n=>!(n.nodeType===1&&n.hasAttribute('data-knowledge-size')));
+ const a=children(current),b=children(next);if(a.length!==b.length)return false;
+ for(let i=0;i<a.length;i++){
+  const x=a[i],y=b[i];if(x.nodeType!==y.nodeType||x.nodeName!==y.nodeName)return false;
+  if(x.nodeType===1){
+   const attrs=n=>[...n.attributes].filter(v=>!(n.tagName==='DETAILS'&&v.name==='open')).map(v=>[v.name,v.value]).sort(([a],[b])=>a<b?-1:a>b?1:0);
+   if(JSON.stringify(attrs(x))!==JSON.stringify(attrs(y))||!textPatches(x,y,patches))return false;
+  }else if(x.nodeValue!==y.nodeValue)patches.push([x,y.nodeValue]);
+ }
+ return true;
+}
+export function updateKnowledgeHTML(el,html,{preserveTextNodes=false}={}){
  if(el.classList.contains('knowledge-panel'))html=knowledgeWindowHTML(html);
- if(el._knowledgeHTML===html)return;const scrollOwner=el.querySelector('.knowledge-scroll,.journal-scroll')||el,scroll=scrollOwner.scrollTop,open=new Map([...el.querySelectorAll('details')].map(d=>[d.dataset.section||d.querySelector('summary')?.textContent,d.open])),focused=el.contains(document.activeElement)?document.activeElement:null,key=focused?.dataset.focusKey;
+ if(el._knowledgeHTML===html)return;
+ if(preserveTextNodes&&el._knowledgeHTML!==undefined){const template=document.createElement('template');template.innerHTML=html;const patches=[];if(textPatches(el,template.content,patches)){for(const [node,value]of patches)node.nodeValue=value;el._knowledgeHTML=html;installKnowledgeSizeControl(el);return}}
+ const scrollOwner=el.querySelector('.knowledge-scroll,.journal-scroll')||el,scroll=scrollOwner.scrollTop,open=new Map([...el.querySelectorAll('details')].map(d=>[d.dataset.section||d.querySelector('summary')?.textContent,d.open])),focused=el.contains(document.activeElement)?document.activeElement:null,key=focused?.dataset.focusKey;
  el.innerHTML=html;el._knowledgeHTML=html;for(const d of el.querySelectorAll('details')){const id=d.dataset.section||d.querySelector('summary')?.textContent;if(open.has(id))d.open=open.get(id)}(el.querySelector('.knowledge-scroll,.journal-scroll')||el).scrollTop=scroll;
  installKnowledgeSizeControl(el);
  if(key)[...el.querySelectorAll('[data-focus-key]')].find(n=>n.dataset.focusKey===key)?.focus({preventScroll:true});

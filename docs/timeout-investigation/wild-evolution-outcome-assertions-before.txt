@@ -1,0 +1,5 @@
+// Over a long natural run, wild bodies evolve and split into branches; the field guide sees their parts.
+{const w=new Simulation('GENVO8-WILD-RUN',{player:false});while(w.day<=420)w.update(null);
+ for(const species of ['needlejaw','mosskip']){const live=w.animals.filter(a=>a.alive&&a.species===species);assert.ok(live.length>0,`${species} survive`);const evolved=live.filter(a=>a.bodyPlan.id!==wildStartPlan(species).id).length;assert.ok(evolved>0,`${species} bodies have evolved (${evolved}/${live.length})`)}
+ const branches=new Set(w.animals.filter(a=>a.alive&&isWildSpecies(a.species)).map(a=>wildBranch(a).id));assert.ok(branches.size>=3,`branches: ${[...branches]}`)}
+

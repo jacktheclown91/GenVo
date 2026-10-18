@@ -1,0 +1,81 @@
+{
+ "seed": "BREED-CMP-D",
+ "years": 3,
+ "current": {
+  "enabled": false,
+  "start": {
+   "mosskip": 64,
+   "rootling": 32,
+   "needlejaw": 12,
+   "genvo": 24,
+   "rillsifter": 18,
+   "mirelick": 20,
+   "podshell": 18,
+   "bankjaw": 8
+  },
+  "births": {
+   "mosskip": 23,
+   "genvo": 38,
+   "rootling": 8,
+   "needlejaw": 3
+  },
+  "deaths": {
+   "mirelick": 1,
+   "rootling": 2,
+   "mosskip": 6,
+   "genvo": 5
+  },
+  "end": {
+   "mosskip": 81,
+   "rootling": 38,
+   "needlejaw": 15,
+   "genvo": 57,
+   "rillsifter": 18,
+   "mirelick": 19,
+   "podshell": 18,
+   "bankjaw": 8
+  },
+  "integrityChecks": 12,
+  "seconds": 125
+ },
+ "candidate": {
+  "enabled": true,
+  "start": {
+   "mosskip": 64,
+   "rootling": 32,
+   "needlejaw": 12,
+   "genvo": 24,
+   "rillsifter": 18,
+   "mirelick": 20,
+   "podshell": 18,
+   "bankjaw": 8
+  },
+  "births": {
+   "mosskip": 32,
+   "genvo": 22,
+   "rootling": 8,
+   "rillsifter": 11,
+   "mirelick": 2,
+   "podshell": 8,
+   "needlejaw": 2
+  },
+  "deaths": {
+   "mirelick": 3,
+   "mosskip": 7,
+   "rillsifter": 8,
+   "genvo": 9
+  },
+  "end": {
+   "mosskip": 89,
+   "rootling": 40,
+   "needlejaw": 14,
+   "genvo": 37,
+   "rillsifter": 21,
+   "mirelick": 19,
+   "podshell": 26,
+   "bankjaw": 8
+  },
+  "integrityChecks": 12,
+  "seconds": 112
+ }
+}

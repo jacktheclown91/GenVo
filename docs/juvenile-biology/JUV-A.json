@@ -1,0 +1,104 @@
+{
+ "seed": "JUV-A",
+ "days": 540,
+ "before": {
+  "variant": "before",
+  "births": {
+   "mosskip": 50,
+   "genvo": 60,
+   "rootling": 7,
+   "podshell": 10,
+   "needlejaw": 1,
+   "rillsifter": 46,
+   "mirelick": 1
+  },
+  "juvenileDeaths": {
+   "rillsifter:predation": 1
+  },
+  "recruits": {
+   "mosskip": 50,
+   "genvo": 60,
+   "rootling": 7,
+   "podshell": 10,
+   "needlejaw": 1,
+   "rillsifter": 45,
+   "mirelick": 1
+  },
+  "kills": {
+   "juvenile": 1,
+   "adult": 35
+  },
+  "killsBySpecies": {
+   "mosskip": 19,
+   "rootling": 3,
+   "genvo": 7,
+   "podshell": 4,
+   "rillsifter(j)": 1,
+   "rillsifter": 2
+  },
+  "end": {
+   "rootling": 3,
+   "needlejaw": 4,
+   "genvo": 15,
+   "podshell": 2,
+   "rillsifter": 23,
+   "mosskip": 10
+  },
+  "growthEnergy": 0,
+  "growthDelays": 0,
+  "integrityChecks": 67
+ },
+ "juvenile": {
+  "variant": "juvenile",
+  "births": {
+   "genvo": 64,
+   "mosskip": 30,
+   "mirelick": 3,
+   "rootling": 5,
+   "podshell": 6,
+   "rillsifter": 30,
+   "needlejaw": 1
+  },
+  "juvenileDeaths": {
+   "genvo:predation": 1,
+   "rootling:predation": 1,
+   "rillsifter:predation": 1
+  },
+  "recruits": {
+   "genvo": 63,
+   "mosskip": 30,
+   "mirelick": 3,
+   "rootling": 4,
+   "podshell": 6,
+   "rillsifter": 29,
+   "needlejaw": 1
+  },
+  "kills": {
+   "juvenile": 3,
+   "adult": 84
+  },
+  "killsBySpecies": {
+   "mosskip": 37,
+   "mirelick": 8,
+   "rootling": 10,
+   "genvo(j)": 1,
+   "podshell": 11,
+   "genvo": 14,
+   "rootling(j)": 1,
+   "rillsifter": 3,
+   "rillsifter(j)": 1,
+   "needlejaw": 1
+  },
+  "end": {
+   "rootling": 2,
+   "needlejaw": 5,
+   "genvo": 34,
+   "podshell": 3,
+   "rillsifter": 15,
+   "mosskip": 7
+  },
+  "growthEnergy": 8449,
+  "growthDelays": 2720,
+  "integrityChecks": 67
+ }
+}

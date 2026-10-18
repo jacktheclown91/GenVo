@@ -25,8 +25,16 @@ function scratchFor(n){
   if(scratch&&scratch.n===n)return scratch;const a=makeCanvas(n),b=makeCanvas(n);if(!a||!b)return null;
   // v1.57.3: the scratch canvases are CPU canvases (willReadFrequently). On a GPU backend, drawing a
   // freshly painted GPU canvas forces the card to finish its work first, several stalls per creature.
-  const ctx=cv=>{const x=cv.getContext('2d',{willReadFrequently:true});x.imageSmoothingEnabled=false;return x};scratch={n,a:ctx(a),b:ctx(b)};return scratch;
+  const ctx=cv=>{const x=cv.getContext('2d',{willReadFrequently:true});x.imageSmoothingEnabled=false;return x};scratch={n,a:ctx(a),b:ctx(b),pool:[],next:0,ctx};return scratch;
 }
+// Phase 3K render audit: on a GPU backend, copying the one shared finished-sprite canvas onto the page right
+// after repainting it waited for the previous upload: 83.5 ms of a 112 ms frame (headed Chromium, D3D11) for
+// ~29 freshly drawn creatures, against 1 ms in software rendering. Rotating through SPRITE_CACHE.scratchPool
+// finished-sprite canvases means no canvas is repainted while its previous copy may still be in flight.
+// Pixels are unchanged; the pool is capped at POOL_BYTES of canvas memory. ?scratchPool=1 restores the single
+// shared canvas. Measured, headed Chromium on D3D11, day 20: render p50 103 ms (one canvas), 36.5 (16), 29 (64), 20.8 (256).
+const POOL_BYTES=32*1024*1024;
+function finishCanvas(S){const k=Math.min(SPRITE_CACHE.scratchPool|0,Math.floor(POOL_BYTES/(S.n*S.n*4)));if(k<=1)return S.b;S.next=(S.next+1)%k;let x=S.pool[S.next];if(!x){const cv=makeCanvas(S.n);x=cv&&S.ctx(cv);if(!x)return S.b;S.pool[S.next]=x}return x}
 // The outline colour: the palette's shade, much darker.
 // A blend of two hex colours (t = 0 gives a, 1 gives b).
 export function mixHex(a,b,t){const A=/^#([0-9a-f]{6})$/i.exec(a||''),B=/^#([0-9a-f]{6})$/i.exec(b||'');if(!A||!B)return a;const x=parseInt(A[1],16),y=parseInt(B[1],16),ch=k=>Math.round((x>>k&255)*(1-t)+(y>>k&255)*t).toString(16).padStart(2,'0');return'#'+ch(16)+ch(8)+ch(0)}
@@ -51,22 +59,80 @@ export function outlineColor(p){const m=/^#([0-9a-f]{6})$/i.exec(p?.shade||'');i
 // the graphics card, so drawing it never waits on other canvas work. Until the bitmap is ready the
 // sprite is drawn from a small CPU canvas. (A shared atlas was tried in v1.57.2: writing new sprites
 // into a texture that is drawn from in the same frame stalls GPU backends.)
-const spriteCache=new Map(),SPRITE_CACHE_MAX=2400;
-function keepSprite(ck,src,n){
+const spriteCache=new Map(),SPRITE_CACHE_MAX=2400,bodyLayerCache=new Map(),BODY_LAYER_MAX=1200;
+// Diagnostic counters (read by tools/profile-population-frames.cjs; cost one increment per sprite draw).
+export const SPRITE_STATS={pendingBitmaps:0,hits:0,pending:0,misses:0,uncached:0,evictions:0,lastSide:0,size:()=>spriteCache.size};
+// skipMoving: a walking creature's pose (32 per stride x direction x head turn) was almost never drawn twice
+// before eviction (Phase 3K render audit: 3483 of 3483 sampled misses were new keys), so caching it only paid
+// a bitmap upload and pushed out reusable resting poses. Moving poses are drawn directly; pixels are identical.
+// ?spriteCacheMoving=1 restores caching them.
+export const SPRITE_CACHE={skipMoving:true,scratchPool:256};
+// Phase 3L batched creature rendering. The renderer prepares the visible creatures through a recording context
+// (canvas-recorder.js), so no screen drawing happens until every creature has been prepared; then the recorded
+// sequence is replayed in the original painter order. Freshly drawn sprites are staged so that every staging
+// surface is written completely before anything reads it:
+//   1. bodies: each fresh creature body is drawn;
+//   2. before the replay, every outline is composed (body -> slot of a large 'final' page);
+//   3. the replay copies each finished sprite from its final-page slot to the screen.
+// Measured on headed Chromium (D3D11), each read of a canvas that still had pending writes cost ~0.4-0.6 ms, once
+// per creature, in the old one-canvas-per-creature flow; here each surface is flushed about once per frame.
+// Modes: 'exact' draws each body at the origin of its own small canvas (a per-frame pool), exactly as the old
+// path rasterizes it, so frames are pixel-identical in deterministic rendering; 'gpu' draws bodies straight into
+// a large GPU-backed body page (faster; drawing at an offset inside a large surface rounds a few rotated-part edge
+// pixels differently). Slots have transparent gutters so filtered or fractional copies never read a neighbour.
+// Memory is bounded (pages: maxPages x 2 x pageSize^2 x 4 bytes; body pool: maxBodies small canvases). When
+// staging fills, everything prepared so far is replayed and staging restarts, so no creature is ever dropped.
+// A cached sprite evicted mid-frame is closed only after the replay that may still draw it.
+// ?spriteBatch=0 restores immediate drawing; ?batchMode=gpu|exact selects the mode.
+export const SPRITE_BATCH={enabled:true,mode:'exact',pageSize:1024,maxPages:4,maxBodies:384,gutter:2};
+const batch={active:false,bodyPages:[],finalPages:[],bodyPool:[],bodies:0,outlines:[],page:0,x:0,y:0,row:0,flush:null,deferredClose:[],stats:{staged:0,overflowFlushes:0}};
+export const SPRITE_BATCH_STATS=batch.stats;
+function resetStaging(){batch.page=0;batch.x=0;batch.y=0;batch.row=0;batch.bodies=0}
+function closeDeferred(){for(const img of batch.deferredClose)img.close?.();batch.deferredClose.length=0}
+function closeBitmap(img){if(!img)return;if(batch.active)batch.deferredClose.push(img);else img.close?.()}
+export function beginSpriteBatch(flush){batch.active=true;batch.flush=flush;resetStaging()}
+// Runs before each replay: every staged body is finished, so all outlines are composed in one pass and the
+// finished sprites are kept for reuse (the cache snapshots the final-page slot).
+export function spriteBatchBeforeFlush(){const jobs=batch.outlines;
+  for(const {src,sx,sy,F,x0,y0,size,o,color} of jobs){F.save();F.beginPath();F.rect(x0,y0,size,size);F.clip();F.clearRect(x0,y0,size,size);for(const [dx,dy] of [[o,0],[-o,0],[0,o],[0,-o]])F.drawImage(src,sx,sy,size,size,x0+dx,y0+dy,size,size);F.globalCompositeOperation='source-in';F.fillStyle=color;F.fillRect(x0,y0,size,size);F.globalCompositeOperation='source-over';F.drawImage(src,sx,sy,size,size,x0,y0,size,size);F.restore()}
+  for(const {F,x0,y0,ck,n} of jobs)if(ck&&!spriteCache.has(ck))keepSprite(ck,F.canvas,n,x0,y0);jobs.length=0}
+export function spriteBatchAfterFlush(){resetStaging();closeDeferred()}
+export function endSpriteBatch(){batch.active=false;batch.flush=null;resetStaging();closeDeferred()}
+function page(list,i,P){let g=list[i];if(!g||g.canvas.width!==P){const cv=makeCanvas(P);if(!cv)return null;g=cv.getContext('2d');g.imageSmoothingEnabled=false;list[i]=g}return g}
+// A slot (inside its gutter) on the current page pair; null when every page is full.
+function stagingSlot(n){const P=SPRITE_BATCH.pageSize,G=SPRITE_BATCH.gutter,cell=n+2*G;if(cell>P)return null;for(;;){if(batch.page>=SPRITE_BATCH.maxPages)return null;if(batch.x+cell>P){batch.x=0;batch.y+=batch.row;batch.row=0}if(batch.y+cell>P){batch.page++;batch.x=0;batch.y=0;batch.row=0;continue}
+  const F=page(batch.finalPages,batch.page,P),B=SPRITE_BATCH.mode==='gpu'?page(batch.bodyPages,batch.page,P):null;if(!F)return null;const slot={F,B,x:batch.x+G,y:batch.y+G};batch.x+=cell;batch.row=Math.max(batch.row,cell);return slot}}
+// 'exact' bodies: small canvases each used once per frame (the same rasterization as the old scratch canvas).
+function poolBody(S){if(batch.bodies>=SPRITE_BATCH.maxBodies)return null;let x=batch.bodyPool[batch.bodies];if(!x||x.canvas.width!==S.n){const cv=makeCanvas(S.n);x=cv&&S.ctx(cv);if(!x)return null;batch.bodyPool[batch.bodies]=x}batch.bodies++;return x}
+function keepSprite(ck,src,n,sx=0,sy=0){SPRITE_STATS.lastSide=n;
+  // createImageBitmap snapshots the source synchronously, so no intermediate canvas is needed. Until
+  // the bitmap resolves the entry has no image and the sprite is simply drawn normally.
+  if(typeof createImageBitmap==='function'){const entry={img:null};spriteCache.set(ck,entry);SPRITE_STATS.pendingBitmaps++;createImageBitmap(src,sx,sy,n,n).then(bmp=>{if(spriteCache.get(ck)===entry)entry.img=bmp;else bmp.close?.()}).catch(()=>{if(spriteCache.get(ck)===entry)spriteCache.delete(ck)}).finally(()=>{SPRITE_STATS.pendingBitmaps--});
+    if(spriteCache.size>SPRITE_CACHE_MAX){const [oldKey,old]=spriteCache.entries().next().value;spriteCache.delete(oldKey);closeBitmap(old.img);SPRITE_STATS.evictions++}return}
   const cv=makeCanvas(n);if(!cv)return;const x=cv.getContext('2d',{willReadFrequently:true});x.drawImage(src,0,0,n,n,0,0,n,n);const entry={img:cv};spriteCache.set(ck,entry);
   if(typeof createImageBitmap==='function')createImageBitmap(cv).then(bmp=>{if(spriteCache.get(ck)===entry)entry.img=bmp;else bmp.close?.()}).catch(()=>{});
-  if(spriteCache.size>SPRITE_CACHE_MAX){const [oldKey,old]=spriteCache.entries().next().value;spriteCache.delete(oldKey);old.img?.close?.()}
+  if(spriteCache.size>SPRITE_CACHE_MAX){const [oldKey,old]=spriteCache.entries().next().value;spriteCache.delete(oldKey);closeBitmap(old.img);SPRITE_STATS.evictions++}
 }
 export function drawGenvoSprite(c,opts={}){
   const s=opts.scale||1,n=Math.ceil(44*s/2)*2;
   const S=typeof c?.drawImage==='function'?scratchFor(n):null;if(!S)return drawGenvoBody(c,opts);
-  const artRevision=nativeArtStatus().revision;const ck=opts.cacheKey&&!opts.authoredParts?opts.cacheKey+'|art'+artRevision+'|'+s+'|look'+(opts.pose?.behavior?.headTurn||0)+'|'+'|'+JSON.stringify(opts.pose?.partExpression||null):null;if(ck){const hit=spriteCache.get(ck);if(hit){c.drawImage(hit.img,-n/2,-n/2);return}}
-  const {a,b}=S,size=S.n,h=size/2,o=Math.max(1,Math.round(s/ART_DETAIL));
+  const artRevision=nativeArtStatus().revision;const ck=opts.cacheKey&&!opts.authoredParts&&!(SPRITE_CACHE.skipMoving&&opts.moving)?opts.cacheKey+'|art'+artRevision+'|'+s+'|look'+(opts.pose?.behavior?.headTurn||0)+'|'+'|'+JSON.stringify(opts.pose?.partExpression||null):null;if(ck){const hit=spriteCache.get(ck);if(hit?.img){SPRITE_STATS.hits++;c.drawImage(hit.img,-n/2,-n/2);return}if(hit)SPRITE_STATS.pending++;else{SPRITE_STATS.misses++;if(SPRITE_STATS.sample&&SPRITE_STATS.sample.length<4000)SPRITE_STATS.sample.push(ck)}}else SPRITE_STATS.uncached++;
+  const size=S.n,h=size/2,o=Math.max(1,Math.round(s/ART_DETAIL));
+  if(batch.active&&!(MODULAR_HEAD.enabled&&ck)){let slot=stagingSlot(size),body=slot&&!slot.B?poolBody(S):null;
+    if(!slot||(!slot.B&&!body)){batch.stats.overflowFlushes++;batch.flush();slot=stagingSlot(size);body=slot&&!slot.B?poolBody(S):null}
+    if(slot&&(slot.B||body)){const {F,B,x:x0,y:y0}=slot;let src,sx=0,sy=0;
+      if(B){B.save();B.beginPath();B.rect(x0,y0,size,size);B.clip();B.clearRect(x0,y0,size,size);B.translate(x0+h,y0+h);drawGenvoBody(B,opts);B.restore();src=B.canvas;sx=x0;sy=y0}
+      else{body.setTransform(1,0,0,1,0,0);body.globalCompositeOperation='source-over';body.globalAlpha=1;body.clearRect(0,0,size,size);body.translate(h,h);drawGenvoBody(body,opts);body.setTransform(1,0,0,1,0,0);src=body.canvas}
+      batch.outlines.push({src,sx,sy,F,x0,y0,size,o,color:outlineColor(opts.palette),ck,n});c.drawImage(F.canvas,x0,y0,size,size,-h,-h,size,size);batch.stats.staged++;return}}
+  const {a}=S,b=finishCanvas(S);
   for(const x of [a,b]){x.setTransform(1,0,0,1,0,0);x.globalCompositeOperation='source-over';x.globalAlpha=1;x.clearRect(0,0,size,size)}
-  a.translate(h,h);drawGenvoBody(a,opts);a.setTransform(1,0,0,1,0,0);
+  const bodyKey=MODULAR_HEAD.enabled&&ck?ck.replace(/\|look[^|]*/,''):null;let layer=bodyKey?bodyLayerCache.get(bodyKey):null;
+  if(bodyKey&&!layer){layer=makeCanvas(size);if(layer){const lc=layer.getContext('2d');lc.translate(h,h);drawGenvoBody(lc,{...opts,layer:'body'});bodyLayerCache.set(bodyKey,layer);if(bodyLayerCache.size>BODY_LAYER_MAX)bodyLayerCache.delete(bodyLayerCache.keys().next().value)}}
+  if(layer){a.drawImage(layer,0,0);a.translate(h,h);drawGenvoBody(a,{...opts,layer:'head'});a.setTransform(1,0,0,1,0,0)}
+  else{a.translate(h,h);drawGenvoBody(a,opts);a.setTransform(1,0,0,1,0,0)}
     for(const [dx,dy] of [[o,0],[-o,0],[0,o],[0,-o]])b.drawImage(a.canvas,dx,dy);b.globalCompositeOperation='source-in';b.fillStyle=outlineColor(opts.palette);b.fillRect(0,0,size,size);b.globalCompositeOperation='source-over';b.drawImage(a.canvas,0,0);
   c.drawImage(b.canvas,0,0,size,size,-h,-h,size,size);
-  if(ck)keepSprite(ck,b.canvas,n);
+  if(ck&&!spriteCache.has(ck))keepSprite(ck,b.canvas,n);
 }
 // Editor (v1.53.0): where each socket of a creature sits on its drawing, in the same units as
 // drawGenvoSprite (multiply by scale for pixels). Empty limb sockets get the point a leg there
@@ -100,7 +166,14 @@ export function genvoAnchors({animal:a,phenotype:ph,frame=0,pose={}}={}){
   for(const n of plan?.nodes||[]){const m=/^root\/limb\.(\d+)$/.exec(n.id);if(!m)continue;const id=Number(m[1]),slot=id<8?id*2:(id-8)*2+1,leg=legs.find(l=>l.slot===slot);if(leg){const sh=hipShift(slot);out.push({key:n.id+'|spur',parent:n.id,socket:'spur',type:'spur',x:leg.knee.x+bx*.48+sh.x,y:leg.knee.y+by*.48+sh.y})}}
   return{anchors:out,body:{x:bx,y:by,w:bodyW,h:bodyH}};
 }
-function drawGenvoBody(c,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,palette:p,pose={},authoredParts,authoredTimeMs=0}={}){
+// Modular head composition prototype (Phase 3J Step 7; OFF by default until creator visual approval).
+// The head, mouth and eyes are drawn after every body part, and head-turn moves only head sockets, so a
+// body layer cached without head-turn plus a live head on top, outlined together, should reproduce the
+// full sprite exactly. 'body' draws everything before the head; 'head' runs the body code against a canvas
+// that ignores drawing (to compute the same positions) and draws only head, mouth and eyes. ?modularHead=1.
+export const MODULAR_HEAD={enabled:false};
+const NULL_CTX=new Proxy({},{get:(t,k)=>k==='getTransform'?()=>new DOMMatrix():typeof k==='string'&&k!=='canvas'?()=>{}:undefined,set:()=>true});
+function drawGenvoBody(c0,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,palette:p,pose={},authoredParts,authoredTimeMs=0,layer='all'}={}){let c=layer==='head'?NULL_CTX:c0;
   const asm=assemblyFor(a),[shapeW,shapeH]=shapeScales(asm.shape,pose.dir??a.dir??0);
   const frameInt=Math.floor(frame)&7,life=pose.life||{},profile=genvoVisualPose({id:a.id,dir:pose.dir??a.dir,frame,moving,action:pose.action||'idle',legSlots:asm.legSlots,bodyScale:ph.bodyScale,bodyWidthScale:(ph.bodyWidthScale||1)*shapeW,bodyHeightScale:(ph.bodyHeightScale||1)*shapeH,limbScale:ph.limbScale,sensoryScale:ph.sensoryScale,eyeScale:ph.eyeScale,feelerScale:ph.feelerScale,temperamentScale:ph.temperamentScale,dependent:!!pose.dependent,alert:!!pose.alert,stage:pose.stage||'adult',life,behavior:pose.behavior||{}});
   const {v,perp,bodyW,bodyH,bodyOffset,legs,flee,drink,court,hunt}=profile,fx=v.x,fy=v.y,bx=bodyOffset.x,by=bodyOffset.y;
@@ -112,13 +185,20 @@ function drawGenvoBody(c,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pal
   if(L){const proj=pt=>({f:(pt.x-bx)*fx+(pt.y-by)*fy,s:(pt.x-bx)*perp.x+(pt.y-by)*perp.y});if(L.mouth)face.mouthForward=proj(L.mouth).f;if(L['eye.right']){const e=proj(L['eye.right']);face.eyeForward=e.f;face.eyeSpread=Math.abs(e.s)}}
   const expressionNode=(socket,index=0)=>asm.faceNodes[socket]||a.bodyPlan?.nodes.filter(n=>n.parent==='root'&&n.socket===socket)[index]?.id;
   const K={s,p,nativeBodyScale:ph.bodyScale,behavior:profile.behavior,originX:bx,originY:by,nativePigment:inheritedSkinRamp(p),fx,fy,perp,bx,by,bodyW,bodyH,face,frameInt,authoredParts,authoredState:pose.action||'idle',authoredFacing:pose.dir??a.dir??0,authoredTimeMs:authoredTimeMs||frameInt*125,explicit:asm.explicit,L,partExpression:pose.partExpression};
-  if(asm.tail)drawPart(c,asm.tail,K);
+  // Gait articulation (renderer-owned): the torso twists about its centre while walking, so the
+  // head end and tail end swing to opposite sides and dorsal tissue rolls past the outline.
+  // Whole-pixel canvas offsets keep pixel art crisp; feet are never moved (contacts stay planted).
+  const twist=Number(profile.behavior?.torsoTwist)||0,roll=Number(profile.behavior?.dorsalRoll)||0;
+  const shifted=(amount,draw)=>{const dx=Math.round(perp.x*amount*s),dy=Math.round(perp.y*amount*s);if(!dx&&!dy)return draw();c.save();c.translate(dx,dy);try{return draw()}finally{c.restore()}};
+  if(asm.tail)shifted(-twist,()=>drawPart(c,asm.tail,K));
 
   // Ordinary legs join beneath the dorsal body; genuinely raised strikes can cross it.
   // Each mounted part supplies its tissue, while canonical locomotion owns its contacts.
   const {back:farLegs,front:nearLegs}=anatomicalLimbLayers(legs,by);
   const drawLeg=leg=>{
     let root={x:leg.root.x+bx,y:leg.root.y+by},knee={x:leg.knee.x+bx*.48,y:leg.knee.y+by*.48},foot=leg.foot;
+    // Hips ride with their end of the twisting torso; knees take half; the planted foot stays.
+    if(twist){const end=leg.front>.25?1:leg.front<-.25?-1:0;if(end){const hx=perp.x*twist*end,hy=perp.y*twist*end;root={x:root.x+hx,y:root.y+hy};knee={x:knee.x+hx*.5,y:knee.y+hy*.5}}}
     // v1.54.0: an authored body puts the hip where it says; the leg keeps its own shape and stride.
     {const hip=leg.slot!=null&&L?.[limbOfSlot(leg.slot)];if(hip){const dx=hip.x-root.x,dy=hip.y-root.y;root={x:hip.x,y:hip.y};knee={x:knee.x+dx,y:knee.y+dy};foot={x:foot.x+dx,y:foot.y+dy}}}
     const rel=relativeLegIndex(leg),legPart=leg.slot!=null?asm.slotLegs[leg.slot]:asm.legs[rel],spurPart=leg.slot!=null?asm.slotSpurs[leg.slot]:asm.spurs[rel],LK={...K,leg,root,knee,foot,size:a?.anatomy?.spring};
@@ -131,7 +211,7 @@ function drawGenvoBody(c,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pal
   // Flank parts (armor plates, storage sacs, venom glands), beneath the dorsal torso in near-vertical overhead.
   if(!asm.explicit){for(const part of ['armor-plate','storage-sac','venom-gland'])for(const sign of [-1,1])if(asm.flanks[sign].includes(part))drawPart(c,part,{...K,sign})}
   // Every organ shares the flank region, including unlike part types.
-  else for(const sign of [-1,1]){const parts=asm.flanks[sign];for(let index=0;index<parts.length;index++){const offset=flankInstanceOffset(index,parts.length,bodyW,bodyH);drawPart(c,parts[index],{...K,sign,bx:bx-fx*offset,by:by-fy*offset})}}
+  else for(const sign of [-1,1]){const parts=asm.flanks[sign];for(let index=0;index<parts.length;index++){const offset=flankInstanceOffset(index,parts.length,bodyW,bodyH);shifted(roll,()=>drawPart(c,parts[index],{...K,sign,bx:bx-fx*offset,by:by-fy*offset}))}}
 
 
   // Native torso art (nine distinct 32px anatomical silhouettes). Preserve the original
@@ -189,8 +269,11 @@ function drawGenvoBody(c,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pal
   if(ad.efficientGut){const gx=bx-fx*(bodyW*.18),gy=by-fy*(bodyH*.18)+2;pixelLine(c,gx-perp.x*2,gy-perp.y*2,gx+perp.x*2,gy+perp.y*2,s,p.shade)}
   if(ad.fastHealing){pixel(c,snap(bx-perp.x*2-fx),snap(by-perp.y*2-fy),1,1,s,'rgba(245,239,211,.88)');pixel(c,snap(bx+perp.x*2),snap(by+perp.y*2),1,1,s,'rgba(245,239,211,.68)')}
   if(ad.bitter){pixel(c,snap(bx+perp.x*(bodyW*.42)),snap(by+perp.y*(bodyH*.42)),1,1,s,'#d9e98f');pixel(c,snap(bx-perp.x*(bodyW*.42)),snap(by-perp.y*(bodyH*.42)),1,1,s,'#d9e98f')}
-  if(asm.dorsal)drawPart(c,asm.dorsal,{...K,expressionNodeId:expressionNode('dorsal')});
-  if(asm.dorsal2)drawPart(c,asm.dorsal2,{...K,expressionNodeId:expressionNode('dorsal',1),bx:bx-fx*2.2,by:by-fy*2.2});
+  if(asm.dorsal)shifted(roll*1.5,()=>drawPart(c,asm.dorsal,{...K,expressionNodeId:expressionNode('dorsal')}));
+  if(asm.dorsal2)shifted(roll*1.5,()=>drawPart(c,asm.dorsal2,{...K,expressionNodeId:expressionNode('dorsal',1),bx:bx-fx*2.2,by:by-fy*2.2}));
+  // The head end of the twist carries the head, face organs and everything mounted on them.
+  if(layer==='body')return;c=c0;
+  const headShift={x:Math.round(perp.x*twist*s),y:Math.round(perp.y*twist*s)},headShifted=!!(headShift.x||headShift.y);if(headShifted){c.save();c.translate(headShift.x,headShift.y)}
   // The mounted head owns its art; inherited organs are drawn over it.
   drawHead(c,head,{scale:s,palette:p,pigment:K.nativePigment,frame,timeMs:K.authoredTimeMs,state:K.authoredState,facing:K.authoredFacing,authoredParts});
   if(ad.mobbing){for(const sign of [-1,1]){const cx=bx-fx*(bodyW*.18)+perp.x*sign*2.2,cy=by-fy*(bodyH*.18)+perp.y*sign*2.2;pixel(c,snap(cx),snap(cy-1),1,2,s,p.light)}}
@@ -285,5 +368,6 @@ function drawGenvoBody(c,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pal
   if(hunt)pixel(c,snap(bx+fx*3),snap(by+fy*3),1,1,s,'#f3d5d5');
   if(ph.energetic)pixel(c,snap(bx-1),snap(by+bodyH*.35),2,1,s,'#f0d889');
   if(pose.sharedAlert)pixel(c,snap(bx+perp.x*5),snap(by+perp.y*5),1,1,s,'#e7b36f');
+  if(headShifted)c.restore();
 }
 

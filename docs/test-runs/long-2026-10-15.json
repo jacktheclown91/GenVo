@@ -1,0 +1,2283 @@
+{
+ "schema": "genvo.test-run/1",
+ "mode": "long",
+ "date": "2026-10-15T09:56:41.967Z",
+ "seconds": 453,
+ "total": 377,
+ "pass": 2,
+ "fail": 2,
+ "timeout": 0,
+ "deferred": 373,
+ "results": [
+  {
+   "name": "accessible-guidance",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "action-icons",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "action-restriction-reasons",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "active-care-conservation",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "active-family-separation",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "activity-budget",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "adaptation",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "ai-disclosure",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "anatomical-strike-performance",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "anatomy-locomotion",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "anatomy-readings",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "anatomy-thresholds",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "animation",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "aquatic",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "aquatic-lifestyle",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "audio",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "audio-assets",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "audio-phenotype",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "audio-runtime",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "authored-draft-compiler",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "auto-home",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "autonomous-soil-engineering",
+   "tier": "long",
+   "status": "pass",
+   "seconds": 344.5,
+   "timeoutSeconds": 900,
+   "error": ""
+  },
+  {
+   "name": "background-movement-budget",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "behavior-readability",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "behavioral-specialization",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "birth-hydration",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "birth-reserves",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "botanical-genetics",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "botanical-populations",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "botanical-reproduction",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "botanical-safety",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "breeding-site-attachment",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "brood-investment",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "canonical-source",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "care-command-provision",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "carrying",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "carrying-anatomy-cache",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "carrying-connected-demand",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "carrying-land-access",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "carrying-live-stock",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "clarity-feedback-v110",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "clonal-flora",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "cognition",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "combat-footwork",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "combat-pressure",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "community-ui-feedback",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "composition",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "conception-availability",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "conception-parental-inheritance",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "consolidation-demand-parity",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "context-guidance",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "contextual-interactions",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "control-response",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "core",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "courtship-performance",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "courtship-tendency-priority",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "courtship-threat-priority",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "creature-assembly",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "creature-instance-expression",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "creature-lab-assembly",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "decisions-under-pressure",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "depth-render",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "developmental-cost",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "developmental-hunt",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "diet-lifestyles",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "digging-calendar",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "discovery",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "disease",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "dispersal",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "dispersal-feeding-priority",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "disturbed-soil-germination",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "drink-goal",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "dual-physiology",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "dual-reproductive-anatomy",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "ecological-integrity",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "ecology-progress",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "ecology-resume",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "ecology-stability",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "editor-pass",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "egg-nest-predation",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "emergent-contracts",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "encounter-reactions",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "engineer-breeding-habitat",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "engineer-breeding-opportunities",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "engineer-colony-boundaries",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "engineer-colony-natural",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "engineer-colony-recruitment",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "engineer-family-settlement",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "engineer-life-history",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "engineer-loss-return",
+   "tier": "long",
+   "status": "fail",
+   "seconds": 110.2,
+   "timeoutSeconds": 1200,
+   "error": "AssertionError [ERR_ASSERTION]: free-world: failed or timed out (spawnSync C:\\Program Files\\nodejs\\node.exe ETIMEDOUT)\r"
+  },
+  {
+   "name": "engineer-natural-regional-observation",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "engineer-recovery-foraging",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "engineer-succession-observer",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "engineer-water-access",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "escape-path",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "evolution-agency",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "evolution-baseline",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "evolution-branches",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "evolution-contract",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "evolution-draft",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "evolution-editor",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "evolutionary-tree",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "evolving-courtship-rituals",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "exploration-boundary",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "exploration-geometry",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "expression-coordinator",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "expression-physical-signals",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "expression-rig-validation",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "extended-kinship",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family-agency",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family-care",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family-checkpoint-consistency",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family-decision-observer",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family-directives",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family-expansion",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family-genealogy-audit",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family-illness",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family-learning",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family-nesting",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family-observer-resume",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family-practice",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family-recruitment-observer",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family-sustainability",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family-trajectory-audit",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "family-weather-refuge",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "fauna-visual",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "feeding-performance",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "finite-water-nutrition",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "flank-placement",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "flora-landmarks",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "flora-seed-codec",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "flora-tissue-propagules",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "food-choice-view",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "food-commitment",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "food-web-feedback",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "forage-patches",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "forage-season-competition",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "foraging-choice",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "founder-body",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "founder-migration-connectivity",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "freshwater-access",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "freshwater-bank-capacity",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "freshwater-carrying",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "freshwater-competition-demand",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "freshwater-encounters",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "freshwater-food",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "freshwater-foraging",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "freshwater-hunter-capacity",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "freshwater-turnover",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "functional-ecology-v163",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "funded-display-expression",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "funded-jaw-expression",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "g2-brood-home",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "gameplay-actions",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "gameplay-pressure",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "generation-progression",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "generation-reveal",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "genvo-visual",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "gestation-inheritance",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "glance-ui",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "grazing-scars",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "grounded-locomotion",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "habitat-ground-art",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "habitat-render",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "habits",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "handoff-transition",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "head-attention",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "head-face-readability",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "headless",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "headless-short",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "held-brace-input",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "heritable-mate-choice",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "hierarchy",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "history",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "hydrology",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "identity",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "illness-feeding-priority",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "illness-recovery",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "immunity-awareness",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "indexed-part-art",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "indexed-part-renderer",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "inheritance-visual",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "inherited-coats",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "inherited-wild-nutrition",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "injury-recovery",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "intrinsic-digging",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "journal",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "juvenile-weak-attempts",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "knowledge",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "land-detour",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "landform",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "learned-danger-spacing",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "learned-fear",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "learned-resource-validity",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "life-render",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "lifestyle-readings",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "limb-articulation",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "lineage",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "lineage-comparison",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "lineage-dispersal-residence",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "lineage-dispersal-resume",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "lineage-divergence",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "lineage-pressure-dispersal",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "lineage-purpose",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "lineage-settlement-completion",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "lineage-specialization",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "lineage-strategy",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "live-courtship-encounters",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "living-rest",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "local-prey-choice",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "local-receptive-courtship",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "manual-resource-pose",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "maternal-birth-authority",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "mating-arrival-maturity",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "mating-arrival-pressure",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "menu-task-usability",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "menu-world-slots",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "migration",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "migration-habitat",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "migration-land-survey-access",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "migration-stale-destination",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "modular-head-v176",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "motion-render",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "mouse-courtship",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "mouse-resources",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "multi-partner-sexual-selection",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-anatomy-depth",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-anatomy-rig",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-catalog-loading",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-contact-expression-v174",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-dorsal-display",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-face-expression-v172",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-forms-quality-v171",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-hip-insertion",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-inherited-pigment",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-jaw-attachment",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-joint-surface",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-knee-continuity",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-lab-hidden-pixels",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-limb-detail-v173",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-part-catalog",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-sha256-fallback",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "native-specialty-wave",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "notification-lane",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "nursing-conservation",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "observed-creature-guide-v175",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "observer-play",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "observer-readability",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "onboarding",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "opening-goals",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "organic-creature-presentation-v175",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "organic-resource-cycle",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "overhead-flora-art",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "overhead-projection",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "part-abilities",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "part-animation-catalog",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "part-expression-geometry",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "part-expression-tracker",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "part-instance-expression",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "parts-wave1",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "parts-wave2",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "perceived-threat-escape",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "performance-hotfix",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "phenotype-cache-context",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "physical-breeding",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "physicality-render",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "plant-handling",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "plant-resource-contract",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "plate-protection-reading",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "player-copy-style",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "player-facing-feedback",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "player-motion-presentation",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "player-presence",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "playtest-clarity",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "pointer-route-availability",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "population-center-ecology",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "population-pressure-memory",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "pounce",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "predator-encounter",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "predator-interference",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "predator-retaliation",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "predator-variation",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "pressure",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "pressure-vocabulary",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "prey-biomass",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "probe-kills",
+   "tier": "long",
+   "status": "pass",
+   "seconds": 452.9,
+   "timeoutSeconds": 1200,
+   "error": ""
+  },
+  {
+   "name": "probe-recovery",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "proto-gene-flow",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "proto-speciation",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "provenance",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "provenance-development-checkpoint",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "public-export",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "quick-access",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "quick-interaction",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "readability",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "reciprocal-partner-encounters",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "recovery",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "regional-ecology",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "regional-focal",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "regional-migration-arrivals",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "regional-soil-history",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "remembered-food-access",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "render-cache",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "reproduction",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "reproduction-gate-observation",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "reproductive-anatomy-eggs",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "reproductive-compatibility",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "rng-long-state",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "save-persistence",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "save-storage",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "scavenge-priority",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "scene",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "seed-observations",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "seed-shore-niches",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "selected-combat-actions",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "selected-water-filtering",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "selective-breeding-guidance",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "shared-dietary-demand",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "shelter",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "shelter-objective",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "shelter-weatherproofing",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "small-population-opportunities",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "social",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "socket-layout",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "soil-disturbance",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "soil-disturbance-establishment",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "soil-engineering-pilot",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "source-rgba-part-art",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "sparse-mate-search",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "special-creatures",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "speciation-threshold",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "species-body-language",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "species-coexistence",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "species-leadership",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "species-lifestyle-playloops",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "species-lifestyles",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "sprite-sheet-export",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "stalker-den-reading",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "stalker-landscape",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "stalker-readability",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "stalker-territory",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "stalker-territory-competition",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "storm-aftermath",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "strategy-arcs",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "strategy-encounters",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "strike-controller-parity",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "succession-selection",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "surface-water-persistence",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "swimming-review",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "target-resource-states",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "targeted-feeding",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "taxon-name-generator",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "tendency-forage-consumption",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "tendency-forage-learning",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "terrain-cohesion",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "terrain-motifs",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "territory",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "tissue-structure",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "tutorial-diet-guide",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "ui-art-direction",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "ui-presentation",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "vocabulary",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "water-roam-route",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "water-teaching",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "wayfinding",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "weather-exposure",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "wetland-niches",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "wild-evolution",
+   "tier": "long",
+   "status": "fail",
+   "seconds": 378.4,
+   "timeoutSeconds": 1200,
+   "error": "AssertionError [ERR_ASSERTION]: needlejaw bodies have evolved (0/9)\r"
+  },
+  {
+   "name": "wild-pressure-movement",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "wildlife-arrival-reproduction",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "wildlife-rhythm",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "wildlife-spread-audit",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "workshop-projection",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "world-resource-selection",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "world-swap-render",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  },
+  {
+   "name": "world-trail-discovery",
+   "tier": "fast",
+   "status": "deferred",
+   "reason": "fast tier (run with default or --all)"
+  }
+ ]
+}

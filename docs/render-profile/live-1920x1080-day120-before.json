@@ -1,0 +1,36 @@
+{
+ "viewport": "1920x1080",
+ "advancedDays": 120,
+ "day": 121,
+ "animals": 276,
+ "playerAlive": true,
+ "paused": false,
+ "frames": 471,
+ "dt": {
+  "p50": 33.4,
+  "p95": 83.3,
+  "p99": 200
+ },
+ "render": {
+  "p50": 24.7,
+  "p95": 54.2
+ },
+ "sim": {
+  "p50": 0.1,
+  "p95": 20
+ },
+ "otherP95": 46.8,
+ "slowFrames": 169,
+ "slowFrameShare": {
+  "render": 0.52,
+  "sim": 0.05,
+  "other": 0.43
+ },
+ "ticksSimulated": 157,
+ "liveAtEnd": true,
+ "memory": {
+  "jsHeapUsedMB": 189.8,
+  "jsHeapTotalMB": 347.1
+ },
+ "errors": []
+}

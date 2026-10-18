@@ -1,0 +1,380 @@
+{
+  "scope": "Continuation of the identified actual native save through lossless archive transfer, native Continue and normal keyboard exploration/mate selection. No synthesized organisms, body/genome/reserve/RNG/consent edits or time advance. UI-guided automation, not human play or mouse-first acceptance.",
+  "rows": [
+    {
+      "label": "continued-mature-offspring",
+      "lineageActiveId": 109,
+      "handoffs": [],
+      "succession": null,
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 213,
+      "tick": 10200,
+      "player": {
+        "id": 491,
+        "age": 30,
+        "parentIds": [
+          202,
+          109
+        ],
+        "bodyId": "bp0-4134709b",
+        "growthPaid": 61.97669684941282,
+        "growthDelayDays": 3,
+        "x": 24.80840204801136,
+        "y": 21.748177758571636,
+        "energy": 121.03577408698865,
+        "hydration": 6.353717253922185,
+        "health": 96.64999999999924,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 266,
+      "courtTarget": null,
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 491,
+        "kind": "sunmoss",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.17192220896166077,
+        "waterGain": 0,
+        "tick": 10167
+      },
+      "selectedCourtship": {
+        "enabled": true,
+        "reason": "",
+        "cost": 0.34595200000000004
+      },
+      "drink": {
+        "enabled": false,
+        "reason": "Move beside drinkable water."
+      }
+    },
+    {
+      "label": "permanent-mature-handoff",
+      "lineageActiveId": 491,
+      "handoffs": [
+        {
+          "from": 109,
+          "to": 491,
+          "generation": 3,
+          "day": 213,
+          "year": 7,
+          "reason": "handoff",
+          "changes": [
+            {
+              "key": "motion",
+              "current": 0.9992367755654986,
+              "baseline": 0.9017648529727013,
+              "delta": 0.09747192259279736,
+              "phrase": "faster movement",
+              "noun": "Movement"
+            },
+            {
+              "key": "metabolism",
+              "current": 0.8841540899338708,
+              "baseline": 0.9668144827242942,
+              "delta": -0.08266039279042336,
+              "phrase": "higher energy use",
+              "noun": "Metabolism"
+            },
+            {
+              "key": "body",
+              "current": 1.0808847765032412,
+              "baseline": 1.030085538001731,
+              "delta": 0.050799238501510136,
+              "phrase": "larger body",
+              "noun": "Body size"
+            }
+          ],
+          "founderChanges": [
+            {
+              "key": "motion",
+              "current": 0.9992367755654986,
+              "baseline": 0.9017648529727013,
+              "delta": 0.09747192259279736,
+              "phrase": "faster movement",
+              "noun": "Movement"
+            },
+            {
+              "key": "metabolism",
+              "current": 0.8841540899338708,
+              "baseline": 0.9668144827242942,
+              "delta": -0.08266039279042336,
+              "phrase": "higher energy use",
+              "noun": "Metabolism"
+            },
+            {
+              "key": "body",
+              "current": 1.0808847765032412,
+              "baseline": 1.030085538001731,
+              "delta": 0.050799238501510136,
+              "phrase": "larger body",
+              "noun": "Body size"
+            }
+          ],
+          "newlyEstablished": false,
+          "fromTaxon": {
+            "id": "genvo8-root",
+            "label": "GenVo"
+          },
+          "toTaxon": {
+            "id": "genvo8-root",
+            "label": "GenVo"
+          },
+          "crossTaxon": false,
+          "bornAdaptations": [],
+          "mutationBudget": {
+            "budget": 12,
+            "bonus": 4
+          },
+          "preparedness": {
+            "fieldReady": false,
+            "routes": 0,
+            "lessons": 1,
+            "independence": 0.5341666666666668,
+            "label": "still learning"
+          }
+        }
+      ],
+      "succession": {
+        "fromId": 109,
+        "toId": 491,
+        "handoffIndex": 0,
+        "reason": "handoff",
+        "startedTick": 10201,
+        "startedDay": 213,
+        "stage": "home",
+        "target": {
+          "x": 10.795346197117937,
+          "y": 29.795346350956855,
+          "kind": "caregiver",
+          "label": "family anchor"
+        },
+        "preparedness": {
+          "fieldReady": false,
+          "routes": 0,
+          "lessons": 1,
+          "independence": 0.5341666666666668,
+          "label": "still learning"
+        },
+        "homeReached": false,
+        "resourceConfirmed": false,
+        "lastActionTick": -1,
+        "completed": false
+      },
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 213,
+      "tick": 10202,
+      "player": {
+        "id": 491,
+        "age": 30,
+        "parentIds": [
+          202,
+          109
+        ],
+        "bodyId": "bp0-4134709b",
+        "growthPaid": 61.97669684941282,
+        "growthDelayDays": 3,
+        "x": 24.80840204801136,
+        "y": 21.748177758571636,
+        "energy": 121.03577408698865,
+        "hydration": 6.353717253922185,
+        "health": 96.64999999999924,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 481,
+      "courtTarget": null,
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 491,
+        "kind": "sunmoss",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.17192220896166077,
+        "waterGain": 0,
+        "tick": 10167
+      },
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "Resume the world first."
+      },
+      "drink": {
+        "enabled": false,
+        "reason": "Resume the world first."
+      }
+    },
+    {
+      "label": "post-handoff-resource-action",
+      "lineageActiveId": 491,
+      "handoffs": [
+        {
+          "from": 109,
+          "to": 491,
+          "generation": 3,
+          "day": 213,
+          "year": 7,
+          "reason": "handoff",
+          "changes": [
+            {
+              "key": "motion",
+              "current": 0.9992367755654986,
+              "baseline": 0.9017648529727013,
+              "delta": 0.09747192259279736,
+              "phrase": "faster movement",
+              "noun": "Movement"
+            },
+            {
+              "key": "metabolism",
+              "current": 0.8841540899338708,
+              "baseline": 0.9668144827242942,
+              "delta": -0.08266039279042336,
+              "phrase": "higher energy use",
+              "noun": "Metabolism"
+            },
+            {
+              "key": "body",
+              "current": 1.0808847765032412,
+              "baseline": 1.030085538001731,
+              "delta": 0.050799238501510136,
+              "phrase": "larger body",
+              "noun": "Body size"
+            }
+          ],
+          "founderChanges": [
+            {
+              "key": "motion",
+              "current": 0.9992367755654986,
+              "baseline": 0.9017648529727013,
+              "delta": 0.09747192259279736,
+              "phrase": "faster movement",
+              "noun": "Movement"
+            },
+            {
+              "key": "metabolism",
+              "current": 0.8841540899338708,
+              "baseline": 0.9668144827242942,
+              "delta": -0.08266039279042336,
+              "phrase": "higher energy use",
+              "noun": "Metabolism"
+            },
+            {
+              "key": "body",
+              "current": 1.0808847765032412,
+              "baseline": 1.030085538001731,
+              "delta": 0.050799238501510136,
+              "phrase": "larger body",
+              "noun": "Body size"
+            }
+          ],
+          "newlyEstablished": false,
+          "fromTaxon": {
+            "id": "genvo8-root",
+            "label": "GenVo"
+          },
+          "toTaxon": {
+            "id": "genvo8-root",
+            "label": "GenVo"
+          },
+          "crossTaxon": false,
+          "bornAdaptations": [],
+          "mutationBudget": {
+            "budget": 12,
+            "bonus": 4
+          },
+          "preparedness": {
+            "fieldReady": false,
+            "routes": 0,
+            "lessons": 1,
+            "independence": 0.5341666666666668,
+            "label": "still learning"
+          }
+        }
+      ],
+      "succession": {
+        "fromId": 109,
+        "toId": 491,
+        "handoffIndex": 0,
+        "reason": "handoff",
+        "startedTick": 10201,
+        "startedDay": 213,
+        "stage": "home",
+        "target": {
+          "x": 10.795346197117937,
+          "y": 29.795346350956855,
+          "kind": "caregiver",
+          "label": "family anchor"
+        },
+        "preparedness": {
+          "fieldReady": false,
+          "routes": 0,
+          "lessons": 1,
+          "independence": 0.5341666666666668,
+          "label": "still learning"
+        },
+        "homeReached": false,
+        "resourceConfirmed": false,
+        "lastActionTick": -1,
+        "completed": false
+      },
+      "worldSlot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+      "seed": "GENVO8-TEST-A",
+      "day": 213,
+      "tick": 10202,
+      "player": {
+        "id": 491,
+        "age": 30,
+        "parentIds": [
+          202,
+          109
+        ],
+        "bodyId": "bp0-4134709b",
+        "growthPaid": 61.97669684941282,
+        "growthDelayDays": 3,
+        "x": 24.80840204801136,
+        "y": 21.748177758571636,
+        "energy": 121.03577408698865,
+        "hydration": 6.353717253922185,
+        "health": 96.64999999999924,
+        "lastMate": null,
+        "alive": true
+      },
+      "children": [],
+      "pregnancies": [],
+      "editor": false,
+      "selected": 481,
+      "courtTarget": null,
+      "lastPlayerAction": {
+        "type": "eat",
+        "actorId": 491,
+        "kind": "sunmoss",
+        "tissue": null,
+        "processingCost": 0,
+        "energyGain": 0.17192220896166077,
+        "waterGain": 0,
+        "tick": 10167
+      },
+      "selectedCourtship": {
+        "enabled": false,
+        "reason": "Resume the world first."
+      },
+      "drink": {
+        "enabled": false,
+        "reason": "Resume the world first."
+      }
+    }
+  ],
+  "actions": [
+    "Pressed normal H for mature succession",
+    "Normal E after succession"
+  ],
+  "errors": []
+}

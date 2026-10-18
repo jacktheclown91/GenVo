@@ -1,0 +1,144 @@
+{
+ "schema": "genvo.test-run/3",
+ "mode": "fast",
+ "date": "2026-10-17T16:58:37.849Z",
+ "seconds": 21,
+ "artifacts": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\release-gates-classified-2026-10-17.artifacts",
+ "total": 5,
+ "pass": 0,
+ "knownFail": 5,
+ "fail": 0,
+ "timeout": 0,
+ "stale": 0,
+ "deferred": 0,
+ "byKind": {
+  "biological-invariant": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "mechanism": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "ecological-observation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "performance": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "historical-expectation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "release-gate": {
+   "pass": 0,
+   "known-fail": 5,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "unclassified": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  }
+ },
+ "results": [
+  {
+   "name": "ai-disclosure",
+   "kinds": [
+    "release-gate"
+   ],
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/ai-disclosure.mjs:4",
+   "error": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\submission\\AI_DISCLOSURE.txt'\r",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\release-gates-classified-2026-10-17.artifacts\\ai-disclosure.log",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "canonical-source",
+   "kinds": [
+    "release-gate"
+   ],
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/canonical-source.mjs:6",
+   "error": "AssertionError [ERR_ASSERTION]: {\r",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\release-gates-classified-2026-10-17.artifacts\\canonical-source.log",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "evolution-contract",
+   "kinds": [
+    "release-gate"
+   ],
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/evolution-contract.mjs:15",
+   "error": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\evolution-expansion\\baseline-v1.33.7\\creature-fixture.json'\r",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\release-gates-classified-2026-10-17.artifacts\\evolution-contract.log",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "player-copy-style",
+   "kinds": [
+    "release-gate"
+   ],
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/player-copy-style.mjs:12",
+   "error": "AssertionError [ERR_ASSERTION]: player-facing runtime source should not contain em dashes\r",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\release-gates-classified-2026-10-17.artifacts\\player-copy-style.log",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "provenance",
+   "kinds": [
+    "release-gate"
+   ],
+   "tier": "fast",
+   "seconds": 20.3,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/provenance.mjs:22",
+   "error": "AssertionError [ERR_ASSERTION]: last ledger record must fingerprint current canonical source tree\r",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\release-gates-classified-2026-10-17.artifacts\\provenance.log",
+   "category": "release-bookkeeping"
+  }
+ ]
+}

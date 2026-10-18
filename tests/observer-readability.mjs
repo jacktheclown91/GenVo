@@ -54,7 +54,7 @@ setForm(kids[0],{kind:'forager',strength:.7,sourceGeneration:2});kids[1].genes.b
 {
   const s2=new Simulation('GENVO8-OBSERVER-AUTO',{player:true}),p2=s2.player(),c=Object.create(TutorialController.prototype);
   c.sim=s2;c.renderer={guideTarget:null};c.stage='goals';s2.uiTutorialStage='goals';c.startPos={x:p2.x-5,y:p2.y};c.toasts=[];c.showToast=m=>c.toasts.push(m);
-  c.tutorial={hidden:true,dataset:{},className:'',innerHTML:'',title:''};
+  c.tutorial={hidden:true,dataset:{},className:'',innerHTML:'',title:'',setAttribute(k,v){this[k]=v}};
   s2.playerAutonomy=true;c.renderOpeningGoals(p2);assert.match(c.tutorial.dataset.guideBody,/looks for food and water on its own/);
   s2.cognition.recordOnce(p2,'first-drink','d');s2.cognition.recordOnce(p2,'first-meal:sunmoss','m');p2.lastMate=1;c.renderOpeningGoals(p2);
   assert.ok(c.tutorial.dataset.guideBody.includes('builds a family shelter on its own once this ground becomes home'),'v1.33.7: AUTO builds the first home itself once home ground settles');

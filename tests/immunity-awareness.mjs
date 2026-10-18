@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
+import {interactAs} from './helpers/interaction.js';
 import {SPECIES} from '../src/organisms/species.js';
 
 const sim=new Simulation('IMMUNITY-AWARENESS',{player:true});sim.endOpeningGrace('test');const p=sim.player();
@@ -15,7 +16,7 @@ assert.equal(sim.familyIllness.healthyCarer(child)?.id,p.id,'immune recovered pa
 let snap=sim.familyIllness.snapshot(p);assert.equal(snap.infectedCount,1);assert(snap.immuneCount>=1,'family outbreak snapshot counts recovered immune relatives');
 let dec=sim.familyIllness.decision(mate);assert(dec&&dec.intent==='illness-distance','susceptible co-parent continues making space');
 dec=sim.familyIllness.decision(adult);assert(dec&&dec.intent==='illness-distance','susceptible adult relative continues making space');
-p.x=child.x+.65;p.y=child.y;sim.rebuildSpatial();let hint=sim.interactionHint();assert.match(hint,/recovered immunity/i,'close-care prompt explains why recovered player can safely stay');const cared=sim.playerInteract();assert.equal(cared.ok,true);assert.equal(cared.type,'illness-care');assert(child.infected,'immune caregiving does not cure Marsh fever');
+p.x=child.x+.65;p.y=child.y;sim.rebuildSpatial();let hint=sim.interactionHint();assert.match(hint,/recovered immunity/i,'close-care prompt explains why recovered player can safely stay');const cared=interactAs(sim,assert,'illness-care');assert.equal(cared.ok,true);assert.equal(cared.type,'illness-care');assert(child.infected,'immune caregiving does not cure Marsh fever');
 // A recovered immune non-parent can become the safest helper when both parents are susceptible.
 const helper=adult;helper.infected=false;helper.immune=true;helper.immuneUntilDay=sim.disease.absoluteDay()+12;helper.x=child.x+2.6;helper.y=child.y+.1;p.immune=false;p.immuneUntilDay=0;mate.immune=false;mate.immuneUntilDay=0;
 assert.equal(sim.familyIllness.healthyCarer(child)?.id,helper.id,'temporary immunity can make a healthy adult relative the safest close caregiver');dec=sim.familyIllness.decision(helper);assert(dec&&dec.intent==='illness-immune-care','immune non-parent actively stays with sick young');

@@ -51,6 +51,8 @@ export class LineageTracker{
       bodyPlanParts:animal.bodyPlan?[...new Set(animal.bodyPlan.nodes.map(n=>n.partId))]:null,
       // v1.57.0: the body itself, so portraits (handoff, journal) show the real creature.
       bodyPlan:animal.bodyPlan?serializePlan(animal.bodyPlan):null,
+      ...(animal.bodyVariation?{bodyVariation:structuredClone(animal.bodyVariation)}:{}),
+      ...(animal.bodyInheritance?{bodyInheritance:structuredClone(animal.bodyInheritance)}:{}),
       speciesBranchHistory:(animal.speciesBranchHistory||[]).map(v=>({...v})),
       strategy:null
     };
@@ -61,7 +63,8 @@ export class LineageTracker{
   }
   registerBirth(child,parents,conceptionParents=parents){
     child.lineage=parents.some(p=>p?.lineage);
-    if(child.lineage){this.sim.divergence?.onBirth?.(child,parents);this.sim.protoSpeciation?.onBirth?.(child,parents);this.sim.speciation?.noteBirth?.(child,parents);const record=this.register(child,parents.map(p=>p.id));
+    this.sim.divergence?.onBirth?.(child,conceptionParents);this.sim.protoSpeciation?.onBirth?.(child,conceptionParents);
+    if(child.lineage){this.sim.speciation?.noteBirth?.(child,parents);const record=this.register(child,parents.map(p=>p.id));
       // Birth-time evidence from actual gestational parent snapshots (not their own
       // historical birth records). Never alters the live recombination pipeline.
       if(record){record.parentBodyPlans=(conceptionParents||[]).map(p=>p?.bodyPlan?serializePlan(p.bodyPlan):null);record.parentPhenotypes=(conceptionParents||[]).map(p=>p?{id:p.id,genes:{...p.genes},adaptations:[...(p.adaptations||[])],anatomy:{...(p.anatomy||{})},ecoLifestyle:p.ecoLifestyle?structuredClone(p.ecoLifestyle):null}:null);}}

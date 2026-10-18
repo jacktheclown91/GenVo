@@ -1,0 +1,3631 @@
+{
+  "mode": "all",
+  "kind": null,
+  "suites": [
+    {
+      "name": "accessible-guidance",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "action-icons",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "action-restriction-reasons",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "active-care-conservation",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "active-family-separation",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "activity-budget",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "adaptation",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "ai-disclosure",
+      "kinds": [
+        "release-gate"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "anatomical-strike-performance",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "anatomy-locomotion",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "anatomy-readings",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "anatomy-thresholds",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "animation",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "aquatic-lifestyle",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "aquatic",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "audio-assets",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "audio-phenotype",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "audio-runtime",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "audio",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "authored-draft-compiler",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "auto-home",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "autonomous-soil-engineering",
+      "kinds": [
+        "mechanism",
+        "performance"
+      ],
+      "tier": "long",
+      "run": true,
+      "timeout": 900000
+    },
+    {
+      "name": "background-movement-budget",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "behavior-readability",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "behavioral-specialization",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "birth-hydration",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "birth-reserves",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "botanical-genetics",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "botanical-populations",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "botanical-reproduction",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "botanical-safety",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "breeding-site-attachment",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "brood-investment",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "canonical-source",
+      "kinds": [
+        "release-gate"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "canvas-recorder",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "care-command-provision",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "carrying-anatomy-cache",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "carrying-connected-demand",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "carrying-land-access",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "carrying-live-stock",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "carrying",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "clarity-feedback-v110",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "clonal-flora",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "cognition",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "combat-footwork",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "combat-pressure",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "community-ui-feedback",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "composition",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "conception-availability",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "conception-parental-inheritance",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "consolidation-demand-parity",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "context-guidance",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "contextual-interactions",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "control-response",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "core",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "courtship-performance",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "courtship-refusal-explanation",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "courtship-tendency-priority",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "courtship-threat-priority",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "creature-assembly",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "creature-instance-expression",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "creature-lab-assembly",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "decisions-under-pressure",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "depth-render",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "developmental-cost",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "developmental-hunt",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "developmental-symmetry",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "diet-lifestyles",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "dietary-scan-parity",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "digging-calendar",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "discovery",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "disease",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "dispersal-feeding-priority",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "dispersal",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "disturbed-soil-germination",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "drink-goal",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "dual-physiology",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "dual-reproductive-anatomy",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "ecological-integrity",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "ecological-observation",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "ecology-observation-100",
+      "kinds": [
+        "biological-invariant",
+        "ecological-observation",
+        "performance"
+      ],
+      "tier": "long",
+      "run": true,
+      "timeout": 300000
+    },
+    {
+      "name": "ecology-progress",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "ecology-resume",
+      "kinds": [
+        "mechanism",
+        "performance"
+      ],
+      "tier": "long",
+      "run": true,
+      "timeout": 600000
+    },
+    {
+      "name": "editor-pass",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "egg-nest-predation",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "emergent-contracts",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "encounter-reactions",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "engineer-breeding-habitat",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "engineer-breeding-opportunities",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "engineer-colony-boundaries",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "engineer-colony-natural",
+      "kinds": [
+        "mechanism",
+        "performance"
+      ],
+      "tier": "long",
+      "run": true,
+      "timeout": 400000
+    },
+    {
+      "name": "engineer-colony-recruitment",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "engineer-family-settlement",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "engineer-life-history",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "engineer-loss-return",
+      "kinds": [
+        "mechanism",
+        "performance"
+      ],
+      "tier": "long",
+      "run": true,
+      "timeout": 900000
+    },
+    {
+      "name": "engineer-natural-regional-observation",
+      "kinds": [
+        "mechanism",
+        "performance"
+      ],
+      "tier": "long",
+      "run": true,
+      "timeout": 300000
+    },
+    {
+      "name": "engineer-recovery-foraging",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "engineer-succession-observer",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "engineer-water-access",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "escape-path",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "evolution-agency",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "evolution-baseline",
+      "kinds": [
+        "mechanism",
+        "historical-expectation"
+      ],
+      "tier": "long",
+      "run": true,
+      "timeout": 400000
+    },
+    {
+      "name": "evolution-branches",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "evolution-contract",
+      "kinds": [
+        "release-gate"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "evolution-draft",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "evolution-editor",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "evolutionary-tree",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "evolving-courtship-rituals",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "exploration-boundary",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "exploration-geometry",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "expression-coordinator",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "expression-physical-signals",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "expression-rig-validation",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "extended-kinship",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "family-agency",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "family-care",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "family-checkpoint-consistency",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "family-decision-observer",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "family-directives",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "family-expansion",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "family-genealogy-audit",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "family-illness",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "family-learning",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "family-nesting",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "family-observer-resume",
+      "kinds": [
+        "mechanism",
+        "performance"
+      ],
+      "tier": "long",
+      "run": true,
+      "timeout": 400000
+    },
+    {
+      "name": "family-practice",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "family-recruitment-observer",
+      "kinds": [
+        "mechanism",
+        "performance"
+      ],
+      "tier": "long",
+      "run": true,
+      "timeout": 300000
+    },
+    {
+      "name": "family-sustainability",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "family-trajectory-audit",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "family-weather-refuge",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "family",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "fauna-visual",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "feeding-performance",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "finite-water-nutrition",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "flank-placement",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "flora-landmarks",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "flora-seed-codec",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "flora-tissue-propagules",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "food-choice-view",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "food-commitment",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "food-web-feedback",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "forage-patches",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "forage-season-competition",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "foraging-choice",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "founder-body",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "founder-migration-connectivity",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "freshwater-access",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "freshwater-bank-capacity",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "freshwater-carrying",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "freshwater-competition-demand",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "freshwater-encounters",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "freshwater-food",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "freshwater-foraging",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "freshwater-hunter-capacity",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "freshwater-turnover",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "functional-ecology-v163",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "funded-display-expression",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "funded-jaw-expression",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "g2-brood-home",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "gameplay-actions",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "gameplay-pressure",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "generation-progression",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "generation-reveal",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "genvo-visual",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "gestation-inheritance",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "glance-ui",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "grazing-scars",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "grounded-locomotion",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "habitat-ground-art",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "habitat-render",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "habits",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "handoff-transition",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "head-attention",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "head-face-readability",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "healing-review",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "held-brace-input",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "heritable-mate-choice",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "hierarchy",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "history",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "hydrology",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "long",
+      "run": true,
+      "timeout": 300000
+    },
+    {
+      "name": "identity",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "illness-feeding-priority",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "illness-recovery",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "immunity-awareness",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "indexed-part-art",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "indexed-part-renderer",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "inheritance-visual",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "inherited-coats",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "inherited-wild-nutrition",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "injury-recovery",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "intrinsic-digging",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "journal",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "juvenile-weak-attempts",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "knowledge",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "land-detour",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "landform",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "learned-danger-spacing",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "learned-fear",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "learned-resource-validity",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "life-render",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "lifestyle-readings",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "limb-articulation",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "lineage-comparison",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "lineage-dispersal-residence",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "lineage-dispersal-resume",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "lineage-divergence",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "lineage-pressure-dispersal",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "lineage-purpose",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "lineage-settlement-completion",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "lineage-specialization",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "lineage-strategy",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "lineage",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "live-courtship-encounters",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "living-rest",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "local-prey-choice",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "local-receptive-courtship",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "lod-interaction-consistency",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "manual-resource-pose",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "maternal-birth-authority",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "mating-arrival-maturity",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "mating-arrival-pressure",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "menu-task-usability",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "menu-world-slots",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "migration-habitat",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "migration-land-survey-access",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "migration-stale-destination",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "migration",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "modular-head-v176",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "motion-render",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "mouse-courtship",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "mouse-resources",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "movement-parity",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "multi-partner-sexual-selection",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-anatomy-depth",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-anatomy-rig",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-catalog-loading",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-contact-expression-v174",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-dorsal-display",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-face-expression-v172",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-forms-quality-v171",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-hip-insertion",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-inherited-pigment",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-jaw-attachment",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-joint-surface",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-knee-continuity",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-lab-hidden-pixels",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-limb-detail-v173",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-part-catalog",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-sha256-fallback",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "native-specialty-wave",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "natural-world-soak",
+      "kinds": [
+        "biological-invariant",
+        "ecological-observation",
+        "performance"
+      ],
+      "tier": "long",
+      "run": true,
+      "timeout": 1500000
+    },
+    {
+      "name": "notification-lane",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "nursing-conservation",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "observed-creature-guide-v175",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "observer-play",
+      "kinds": [
+        "mechanism",
+        "performance"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "observer-readability",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "onboarding",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "opening-goals",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "organic-creature-presentation-v175",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "organic-resource-cycle",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "overhead-flora-art",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "overhead-projection",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "part-abilities",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "part-animation-catalog",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "part-expression-geometry",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "part-expression-tracker",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "part-instance-expression",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "parts-wave1",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "parts-wave2",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "perceived-threat-escape",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "performance-hotfix",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "phenotype-cache-context",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "physical-breeding",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "physicality-render",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "physiology-parity",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "plant-handling",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "plant-resource-contract",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "plate-protection-reading",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "player-copy-style",
+      "kinds": [
+        "release-gate"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "player-facing-feedback",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "player-lookup-cache",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "player-motion-presentation",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "player-presence",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "playtest-clarity",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "pointer-route-availability",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "population-center-ecology",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "population-pressure-memory",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "pounce",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "predation-parity",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "predator-encounter",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "predator-interference",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "predator-retaliation",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "predator-variation",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "pressure-vocabulary",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "pressure",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "prey-biomass",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "prey-risk",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "proto-gene-flow",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "proto-speciation",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "provenance-development-checkpoint",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "provenance",
+      "kinds": [
+        "release-gate"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "public-export",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "quick-access",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "quick-interaction-default",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "quick-interaction",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "rarity-encounter",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "readability",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "reciprocal-partner-encounters",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "recovery",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "refuge-parity",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "regional-ecology",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "regional-focal",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "regional-migration-arrivals",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "regional-soil-history",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "remembered-food-access",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "render-cache",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "reproduction-gate-observation",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "reproduction",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "reproductive-anatomy-eggs",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "reproductive-compatibility",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "rng-long-state",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "save-persistence",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "save-storage",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "scavenge-priority",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "scene",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "seed-observations",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "seed-shore-niches",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "selected-combat-actions",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "selected-water-filtering",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "selective-breeding-guidance",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "shared-dietary-demand",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "shelter-objective",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "shelter-weatherproofing",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "shelter",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "similarity-preference-validation",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "small-population-opportunities",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "social",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "socket-layout",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "soil-disturbance-establishment",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "soil-disturbance",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "soil-engineering-pilot",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "soil-water",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "source-rgba-part-art",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "sparse-mate-search",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "special-creatures",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "speciation-threshold",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "species-body-language",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "species-coexistence",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "species-leadership",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "species-lifestyle-playloops",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "species-lifestyles",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "sprite-sheet-export",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "stalker-den-reading",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "stalker-landscape",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "stalker-readability",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "stalker-territory-competition",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "stalker-territory",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "storm-aftermath",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "strategy-arcs",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "strategy-encounters",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "strike-controller-parity",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "succession-selection",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "surface-water-persistence",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "swimming-review",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "target-resource-states",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "targeted-feeding",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "taxon-name-generator",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "tendency-forage-consumption",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "tendency-forage-learning",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "terrain-cohesion",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "terrain-motifs",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "territory",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "threat-appraisal",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "threat-perception",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "tissue-structure",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "trophic-recognition",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "tutorial-diet-guide",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "ui-art-direction",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "ui-presentation",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "validation-kinds",
+      "kinds": [
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "validation-process",
+      "kinds": [
+        "mechanism",
+        "performance"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "vocabulary",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "water-roam-route",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "water-teaching",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "wayfinding",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "weather-exposure",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "weather-patterns",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "weather-soil-resume",
+      "kinds": [
+        "biological-invariant",
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "wetland-niches",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "wild-evolution-observation",
+      "kinds": [
+        "biological-invariant",
+        "ecological-observation",
+        "performance"
+      ],
+      "tier": "long",
+      "run": true,
+      "timeout": 900000
+    },
+    {
+      "name": "wild-evolution",
+      "kinds": [
+        "mechanism"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "wild-pressure-movement",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "wildlife-arrival-reproduction",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "wildlife-rhythm",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "wildlife-spread-audit",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "workshop-projection",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "world-resource-selection",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "world-swap-render",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    },
+    {
+      "name": "world-trail-discovery",
+      "kinds": [
+        "unclassified"
+      ],
+      "tier": "fast",
+      "run": true,
+      "timeout": 120000
+    }
+  ]
+}

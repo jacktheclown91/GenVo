@@ -91,7 +91,7 @@ export class FrontEnd{
       else if(a==='create'){
         const name=this.el.querySelector('#newWorldName').value.trim(),seed=this.el.querySelector('#newWorldSeed').value.trim();
         if(!name){this.setMessage('Give your world a name.',true);return}
-        if(await this.onCreate({name,seed}))this.close();
+        if(await this.onCreate({name,seed,geography:this.el.querySelector('#newWorldGeography')?.value||'freshwater/1'}))this.close();
       }
       else if(a==='load-world'){if(await this.onLoad(button.dataset.slot))this.close()}
       else if(a==='rename-world'){

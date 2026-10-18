@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict';
+import {reconcileSeedCell} from '../src/ecology/flora-inheritance.js';
+import {plantPreference} from '../src/ecology/functional-diet.js';
 import {spawnSync} from 'node:child_process';
 import {fileURLToPath} from 'node:url';
 import {Simulation} from '../src/sim/simulation.js';
@@ -6,12 +8,16 @@ import {CFG} from '../src/sim/config.js';
 import {hasPart} from '../src/lineage/part-abilities.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 import {disturbanceAt} from '../src/ecology/soil-disturbance.js';
+import {SPECIES} from '../src/organisms/species.js';
+const SPECIES_ROOT=SPECIES.rootling;
 
 // One natural long observation and one deliberately staged causal comparison.
 // Distinguishes 'work suspended' from actual species extinction.
 if(!process.argv[2]){
  for(const mode of ['free-world','return-patch']){
-  const r=spawnSync(process.execPath,[fileURLToPath(import.meta.url),mode],{stdio:'inherit',timeout:110000});
+  // Long-tier scenario (tests/test-tiers.json): the free-world run needs ~113 s, so the child budget
+  // follows the approved long-tier policy instead of the old 110 s cap. Assertions are unchanged.
+  const r=spawnSync(process.execPath,[fileURLToPath(import.meta.url),mode],{stdio:'inherit',timeout:300000});
   assert.equal(r.status,0,`${mode}: failed or timed out (${r.error?.message||r.signal||r.status})`);
  }
  process.exit(0);
@@ -43,9 +49,22 @@ if(mode==='free-world'){
    }
   }
  }
- assert.ok(staged>10,'Unassisted wildlife must engineer the world before intervention');
- assert.ok(returned>10,'Unassisted wildlife resume engineering after cessation');
- assert.ok(Object.keys(digsByGeneration).some(n=>Number(n)>1),'Natural descendants perform renewed engineering');
+ // Phase 3I (creator decision): natural dig counts on this one seed are an OBSERVATION, not a requirement.
+ // Investigation: an uninterrupted run and a save/resumed run from the same state are identical through day
+ // 168, including dig counts (tools/save-resume-determinism.mjs, docs/save-resume/), and three further
+ // seeds resume 17-22 digs; diggers dig only when hungry on fertile land away from other food, so the count
+ // follows each trajectory. The causal rules are asserted below and in intrinsic-digging, soil-disturbance,
+ // digging-calendar and engineer-recovery-foraging.
+ console.log('natural digging observation',JSON.stringify({staged,returned,digsByGeneration}));
+ assert.ok(staged>0,'Unassisted wildlife engineer the world before intervention');
+ // Causal continuation: once the interruption has ended, an eligible digger (digging forelimbs, root-eating
+ // mouth, hungry, fertile undug land, no near meal) chooses to dig and completes a dig with soil effects.
+ {const digger=sim.animals.find(a=>a.alive&&a.species==='rootling'&&hasPart(a,'digging-forelimb')&&a.age>=1);assert.ok(digger,'a living digger remains');
+  const w=sim.world;let cell=null;for(let y=8;y<w.n-8&&!cell;y++)for(let x=8;x<w.n-8;x++){const i=w.idx(x+.5,y+.5);if(!w.water[i]&&w.isPlayable(x+.5,y+.5)&&w.fertility[i]>=.5&&sim.canOccupy(digger,x+.5,y+.5)&&!sim.partAbilities.dug?.[i]){cell={x:x+.5,y:y+.5,i};break}}
+  assert.ok(cell);Object.assign(digger,{x:cell.x,y:cell.y,energy:SPECIES_ROOT.maxEnergy*.4,hydration:SPECIES_ROOT.maxHydration*.8,health:100,digUntilTick:0,intent:'explore',target:null});
+  assert.equal(sim.partAbilities.digDecision(digger)?.kind,'roots','a hungry eligible digger on fertile undug land chooses to dig after the interruption');
+  digger.intent='dig';digger.target={x:digger.x,y:digger.y,kind:'roots'};const e0=digger.energy,before=work;sim.resolveInteraction(digger);
+  assert.equal(work,before+1,'the dig completes through the ordinary interaction');assert.ok(digger.energy>e0,'roots feed the digger');assert.ok(disturbanceAt(sim.partAbilities.soilDisturbance,cell.i,sim.day)>0,'the completed dig disturbs the soil');}
  const restored=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim)));
  assert.deepEqual(restored.regionalEcology.records,sim.regionalEcology.records,'Environmental engineering observations survive normal save/restore');
  const regions=[...sim.regionalEcology.records.values()].filter(r=>r.engineering?.digs);
@@ -57,7 +76,8 @@ if(mode==='free-world'){
 }else if(mode==='return-patch'){
  const sim=new Simulation('NATURAL-ENGINEERS-B',{player:false});
  while(sim.day<=60)sim.update(null);
- const descendant=sim.animals.find(a=>a.alive&&a.generation>=2&&hasPart(a,'digging-forelimb'));
+ // A functional digger: the forelimb digs and its own (inherited) mouth can eat the roots it exposes.
+ const descendant=sim.animals.find(a=>a.alive&&a.generation>=2&&hasPart(a,'digging-forelimb')&&plantPreference(a,'marshroot')>0);
  assert.ok(descendant,'Naturally born functional digging descendants must be present at the intervention');
  // A controlled translocation, not a natural emigration claim. Stage a cleared
  // island of cells to attribute new plant establishment only to prepared soil.
@@ -66,7 +86,7 @@ if(mode==='free-world'){
   const i=w.idx(cx,cy);if(!w.water[i]&&w.fertility[i]>.68&&w.moisture[i]>.14&&w.moisture[i]<.56){x=cx;y=cy;break}
  }
  assert.ok(x>0,'Experimental plot requires naturally suitable exposed ground');
- const i=w.idx(x,y);w.plants.thistlepod[i]=0;w.seedBank.thistlepod[i]=0;sim.dispersal.active.thistlepod.delete(i);
+ const i=w.idx(x,y);w.plants.thistlepod[i]=0;w.seedBank.thistlepod[i]=0;reconcileSeedCell(sim.dispersal,'thistlepod',i);sim.dispersal.active.thistlepod.delete(i);// canonical cohort reconciliation keeps the seed genotype ledger equal to the cleared stock
  const snap=structuredClone(createSimulationSnapshot(sim));
  const absent=restoreSimulationSnapshot(structuredClone(snap));
  const returning=restoreSimulationSnapshot(structuredClone(snap));
@@ -116,7 +136,7 @@ if(mode==='free-world'){
    for(const world of worlds){
     // Standardized fresh seedbed isolates NEW establishment from unrelated
     // local seed arrivals during the 79-day recovery interval.
-    world.world.plants.thistlepod[i]=0;world.world.seedBank.thistlepod[i]=0;
+    world.world.plants.thistlepod[i]=0;world.world.seedBank.thistlepod[i]=0;reconcileSeedCell(world.dispersal,'thistlepod',i);
     world.dispersal.active.thistlepod.delete(i);
     const planted=world.dispersal.deposit('thistlepod',x,y,.8);
     assert.ok(Math.abs(planted-.65)<1e-5,'Canonical deposit caps per-cell seed arrival at .65 in all comparison worlds');

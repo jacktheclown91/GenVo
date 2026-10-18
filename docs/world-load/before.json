@@ -1,0 +1,76 @@
+{
+ "seed": "PHASE4-ORDINARY",
+ "bootMs": 1448,
+ "fresh": {
+  "label": "new world",
+  "liveAfterMs": 1982,
+  "longTasks": [
+   [
+    206,
+    86
+   ],
+   [
+    293,
+    1015
+   ],
+   [
+    2279,
+    324
+   ],
+   [
+    2607,
+    157
+   ]
+  ],
+  "longTaskTotalMs": 1582,
+  "longestTaskMs": 1015,
+  "longestFrameGapMs": 1093,
+  "longestFrameGapStartsAtMs": 212,
+  "statusText": [
+   [
+    285,
+    "Saving..."
+   ],
+   [
+    1350,
+    "Saved"
+   ],
+   [
+    2969,
+    "(hidden)"
+   ]
+  ]
+ },
+ "steps": {
+  "buildWorldMs": 63,
+  "snapshotMs": 0,
+  "structuredCloneMs": 5,
+  "restoreMs": 40,
+  "snapshotApproxMB": 3.3,
+  "animals": 181
+ },
+ "resumed": {
+  "label": "continue saved world",
+  "liveAfterMs": 1728,
+  "longTasks": [
+   [
+    243,
+    57
+   ],
+   [
+    312,
+    959
+   ],
+   [
+    1995,
+    118
+   ]
+  ],
+  "longTaskTotalMs": 1134,
+  "longestTaskMs": 959,
+  "longestFrameGapMs": 1040,
+  "longestFrameGapStartsAtMs": 244,
+  "statusText": []
+ },
+ "errors": []
+}

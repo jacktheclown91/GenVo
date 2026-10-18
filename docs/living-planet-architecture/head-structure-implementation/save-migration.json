@@ -1,0 +1,102 @@
+{
+  "scope": "Actual preserved native and optional-loss experimental archives; future-birth migration only, no historical body or pregnancy rewriting. Not live-browser migration acceptance.",
+  "status": "PASS",
+  "rows": [
+    {
+      "file": "docs/player-journey/mature-handoff-confirmed-16/checkpoint.snapshot.bin",
+      "sha256": "9232b3351a33647bf75c22ad2c0160f9bfa2fc460f8ee1577d177c983e10d419",
+      "day": 213,
+      "playerId": 491,
+      "pendingPregnancies": 23,
+      "unchangedAnimalsWorldControllersRng": true,
+      "receipt": {
+        "from": {
+          "schema": 1,
+          "inheritedVariation": "neutral-core/1",
+          "populationTraits": "neutral-parental/1",
+          "familyForms": "neutral-parental/1",
+          "anatomyProjection": "supported-water/1",
+          "bodyVariation": "neutral-optional-loss/1"
+        },
+        "to": {
+          "schema": 1,
+          "inheritedVariation": "neutral-core/1",
+          "populationTraits": "neutral-parental/1",
+          "familyForms": "neutral-parental/1",
+          "anatomyProjection": "supported-water/1",
+          "bodyVariation": "neutral-head-structure/1"
+        },
+        "tick": 10209,
+        "scope": "Future neutral continuous genes, parental population traits and family forms; existing organisms/history unchanged; independent supported water physiology for future bodies; neutral optional subtree deletion in future structural variation; existing event chance/symmetry share unchanged and conditional operator distribution extended; multi-occupant paired deletion matches actual part counterparts rather than socket ordinals; existing implicit head may become explicit by relocating its actual face; facial variation uses the actual host; other tissue physics remains incomplete."
+      },
+      "exactMigratedRoundtrip": true,
+      "realUpdates": 12,
+      "intermediateRestoreAt": 6,
+      "continuationEqual": true
+    },
+    {
+      "file": "docs/living-planet-architecture/optional-organ-loss/birth-audit/before-conception.snapshot.bin",
+      "sha256": "df038d4106a0a06d89d58c43a2fe50c578f17ac7d0b7c0e82c6c7f5b20fb2658",
+      "day": 1,
+      "playerId": null,
+      "pendingPregnancies": 0,
+      "unchangedAnimalsWorldControllersRng": true,
+      "receipt": {
+        "from": {
+          "schema": 1,
+          "inheritedVariation": "neutral-core/1",
+          "populationTraits": "neutral-parental/1",
+          "familyForms": "neutral-parental/1",
+          "anatomyProjection": "supported-water/1",
+          "bodyVariation": "neutral-optional-loss/1"
+        },
+        "to": {
+          "schema": 1,
+          "inheritedVariation": "neutral-core/1",
+          "populationTraits": "neutral-parental/1",
+          "familyForms": "neutral-parental/1",
+          "anatomyProjection": "supported-water/1",
+          "bodyVariation": "neutral-head-structure/1"
+        },
+        "tick": 0,
+        "scope": "Future neutral continuous genes, parental population traits and family forms; existing organisms/history unchanged; independent supported water physiology for future bodies; neutral optional subtree deletion in future structural variation; existing event chance/symmetry share unchanged and conditional operator distribution extended; multi-occupant paired deletion matches actual part counterparts rather than socket ordinals; existing implicit head may become explicit by relocating its actual face; facial variation uses the actual host; other tissue physics remains incomplete."
+      },
+      "exactMigratedRoundtrip": true,
+      "realUpdates": 12,
+      "intermediateRestoreAt": 6,
+      "continuationEqual": true
+    },
+    {
+      "file": "docs/living-planet-architecture/optional-organ-loss/birth-audit/mid-gestation.snapshot.bin",
+      "sha256": "b90bb6904cd0a08c63df5bf069d46770118e16f1eeb248e66816f00118e5208a",
+      "day": 9,
+      "playerId": null,
+      "pendingPregnancies": 1,
+      "unchangedAnimalsWorldControllersRng": true,
+      "receipt": {
+        "from": {
+          "schema": 1,
+          "inheritedVariation": "neutral-core/1",
+          "populationTraits": "neutral-parental/1",
+          "familyForms": "neutral-parental/1",
+          "anatomyProjection": "supported-water/1",
+          "bodyVariation": "neutral-optional-loss/1"
+        },
+        "to": {
+          "schema": 1,
+          "inheritedVariation": "neutral-core/1",
+          "populationTraits": "neutral-parental/1",
+          "familyForms": "neutral-parental/1",
+          "anatomyProjection": "supported-water/1",
+          "bodyVariation": "neutral-head-structure/1"
+        },
+        "tick": 384,
+        "scope": "Future neutral continuous genes, parental population traits and family forms; existing organisms/history unchanged; independent supported water physiology for future bodies; neutral optional subtree deletion in future structural variation; existing event chance/symmetry share unchanged and conditional operator distribution extended; multi-occupant paired deletion matches actual part counterparts rather than socket ordinals; existing implicit head may become explicit by relocating its actual face; facial variation uses the actual host; other tissue physics remains incomplete."
+      },
+      "exactMigratedRoundtrip": true,
+      "realUpdates": 12,
+      "intermediateRestoreAt": 6,
+      "continuationEqual": true
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+ "res": "1440x900",
+ "seed": "PHASE4-ORDINARY",
+ "dayAdvanced": 0,
+ "query": "",
+ "moving": 200,
+ "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3050 (0x00002582) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+ "software": false,
+ "day": 1,
+ "animals": 181,
+ "playerAlive": true,
+ "paused": false,
+ "frames": 104,
+ "presentedFps": 5.9,
+ "frameMs": {
+  "mean": 168.3,
+  "p50": 173.5,
+  "p95": 306.7,
+  "p99": 333.4,
+  "max": 573.5
+ },
+ "renderMs": {
+  "mean": 147.9,
+  "p50": 159.6,
+  "p95": 270.1
+ },
+ "simMs": {
+  "mean": 7.8,
+  "p50": 1.1,
+  "p95": 29.6
+ },
+ "creaturePrepMs": {
+  "mean": 127.5,
+  "p50": 134,
+  "p95": 246
+ },
+ "creatureComposeMs": {
+  "mean": 10.9,
+  "p50": 9.6,
+  "p95": 19.2
+ },
+ "otherMs": {
+  "p50": 16.7,
+  "p95": 131.5
+ },
+ "visibleCreatures": {
+  "mean": 204.3,
+  "p50": 206,
+  "p95": 210
+ },
+ "movingVisible": {
+  "mean": 165.6,
+  "p50": 140,
+  "p95": 207
+ },
+ "freshSpritesPerFrame": {
+  "mean": 182.8,
+  "p50": 195,
+  "p95": 208
+ },
+ "canvasesCreatedPerSecond": 135.83,
+ "heapMB": {
+  "start": 95.2,
+  "end": 165.6
+ },
+ "drawsPerFrame": null,
+ "worstFrames": [
+  {
+   "i": 56,
+   "ms": 573.5,
+   "render": 174.8,
+   "sim": 1.4,
+   "terrainRefresh": false,
+   "heapDropMB": -18.7,
+   "canvases": 1
+  },
+  {
+   "i": 48,
+   "ms": 373.5,
+   "render": 240.5,
+   "sim": 0.2,
+   "terrainRefresh": false,
+   "heapDropMB": 18.2,
+   "canvases": 0
+  },
+  {
+   "i": 75,
+   "ms": 333.4,
+   "render": 275,
+   "sim": 1.2,
+   "terrainRefresh": false,
+   "heapDropMB": 15.4,
+   "canvases": 50
+  },
+  {
+   "i": 78,
+   "ms": 320.1,
+   "render": 307.6,
+   "sim": 1.9,
+   "terrainRefresh": false,
+   "heapDropMB": -6.5,
+   "canvases": 0
+  },
+  {
+   "i": 79,
+   "ms": 320.1,
+   "render": 250.2,
+   "sim": 1.2,
+   "terrainRefresh": false,
+   "heapDropMB": -18.6,
+   "canvases": 52
+  },
+  {
+   "i": 77,
+   "ms": 306.9,
+   "render": 312.8,
+   "sim": 0.1,
+   "terrainRefresh": false,
+   "heapDropMB": 12.3,
+   "canvases": 51
+  }
+ ],
+ "saves": [],
+ "canvasSources": null,
+ "live": {
+  "paused": false,
+  "playerAlive": true,
+  "day": 2,
+  "animals": 381
+ },
+ "errors": []
+}

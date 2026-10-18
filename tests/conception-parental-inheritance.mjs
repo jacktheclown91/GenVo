@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
+import {RESOURCE_FOUNDING} from '../src/ecology/resource-founding.js';RESOURCE_FOUNDING.enabled=false;// per-species rule checks need every configured species present (founding itself: tests/seed-shore-niches.mjs)
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
 import {placeSupportedBreedingPair} from './helpers/breeding-pair.js';
+import {matePreferencesFor} from '../src/reproduction/mate-preferences.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 
 for(const species of Object.keys(SPECIES)){
@@ -10,6 +12,8 @@ for(const species of Object.keys(SPECIES)){
   Object.assign(mother,{sex:'F',age:SPECIES[species].maturity+10,reproCooldown:0});
   Object.assign(father,{sex:'M',age:SPECIES[species].maturity+10,reproCooldown:0});
   if(species==='genvo')mother.lineage=true;
+  // Inherited tastes kept; the similarity/contrast allele (Phase 3H) is neutralised so a contrast-seeking founder can't decline its staged partner.
+  for(const a of [mother,father])a.matePreferences={...matePreferencesFor(sim.seed,a),similarity:0};
   placeSupportedBreedingPair(sim,mother,father);
   assert.ok(sim.tryMate(mother,father));
   assert.notStrictEqual(mother.pregnant.maternalInheritance.genes,mother.genes);

@@ -24,7 +24,7 @@ export function visualLifeState(sim,a,{frame=0,moving=false,action='idle',develo
   const lean=action==='flee'?2:action==='stalk'||action==='hunt'?1:action==='court'?-1:0;
   const gaze=action==='eat'||action==='drink'?1:action==='flee'||social?.alarm?2:0;
   const legWave=STEP[frame&7];
-  return {growth:development?.growth??1,energy,hydration,health,exhausted,thirsty,hurt,injured,sick,recovering,strained,dependent,blink,breath,settle,settleIndex,lean,gaze,legWave};
+  return {growth:development?.growth??1,energy,hydration,health,exhausted,thirsty,hurt,injured,injuryLevel:injured?injury.level:'none',sick,recovering,strained,dependent,blink,breath,settle,settleIndex,lean,gaze,legWave};
 }
 
 export function playerMoodLabel(sim,a){
@@ -37,6 +37,7 @@ export function playerMoodLabel(sim,a){
   if(water<.28)return'Thirsty';
   if(energy<.28)return'Hungry';
   if(a.intent==='escape'||a.intent==='group-alarm')return'Alarmed';
+  if(a.intent==='wary')return'Wary';
   if(a.intent==='mate')return'Courting';
   if(a.intent==='guard')return'Protective';
   if(a.intent==='social'||a.intent==='group'||a.intent==='follow')return'With family';

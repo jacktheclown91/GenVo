@@ -1,14 +1,17 @@
+import {reproductionFor} from './breeding-calibration.js';
 import {dietaryDemand} from './dietary-demand.js';
-import {preyNormalization} from './prey-normalization.js';
+import {preyNormalization,localPreyOpportunity} from './prey-normalization.js';
 import {FRESHWATER_FOOD,freshwaterPreference,freshwaterField,canAccessFreshwater} from './freshwater-food.js';
 import {CFG,PLANTS} from '../sim/config.js';
 import {SPECIES} from '../organisms/species.js';
-import {groundDiet,canHunt} from './functional-diet.js';
+import {groundDiet,canHunt,plantPreference} from './functional-diet.js';
+import {DEMAND_REVIEW} from './demand-review.js';
+import {canSwim} from '../lineage/lifestyle.js';
 
 const clamp=(min,max,v)=>Math.max(min,Math.min(max,v));
 
 // CarryingPressureController keeps reproduction tied to local crowding and food
-// availability while leaving CFG.maxAnimals as an emergency safety ceiling only.
+// availability. Computational warning thresholds do not constrain births.
 // Forage is sampled lazily per occupied coarse cell/day instead of scanning the
 // entire 128x128 world each update.
 export class CarryingPressureController{
@@ -50,13 +53,30 @@ export class CarryingPressureController{
         const edible=this.sim.dispersal.seedReserve[kind]?this.sim.dispersal.cropYield(a,kind,i)*nutrition:energy*eff;
         food+=edible;rows.push({kind,x,y,wet:false,preference:edible/energy,energy});
       }
+      {const pref=plantPreference(a,'carrion'),stock=w.carrion?.[i]||0;if(pref>0&&stock>0){const energy=stock*34;food+=energy*pref;rows.push({kind:'carrion',x,y,wet:false,preference:pref,energy})}}
     }
     return{value:land?food/land:0,rows,waterEnergy,totalEnergy:food};
   }
-  breedingState(a,{at=null}={}){
+  // A caller scanning many candidate positions for ONE animal within one tick may pass a Map as
+  // surveyMemo. surveyAt depends on the position only through its sampling bucket and, for a
+  // non-swimmer, the connected land region that canReach tests, so those are the key. Stocks
+  // cannot change mid-scan because the scan only reads. Never reuse a memo across ticks or animals.
+  surveyFor(a,memo){
+    if(!memo)return this.surveyAt(a);
+    const bx=Math.max(0,Math.min(this.cols-1,Math.floor(a.x/this.bucketSize))),by=Math.max(0,Math.min(this.cols-1,Math.floor(a.y/this.bucketSize)));
+    const key=bx+':'+by+':'+(canSwim(a)?'swim':this.sim.world.regionAt(a.x,a.y));
+    let supply=memo.get(key);if(!supply){supply=this.surveyAt(a);memo.set(key,supply)}return supply;
+  }
+  // onlyIfAllowed: the caller discards any refused result, so a forager whose surveyed forage
+  // already fails the resource gate (which no crowding value can rescue) returns {allowed:false}
+  // without the crowding survey. Hunters keep the full evaluation (their resource is prey-based).
+  breedingState(a,{at=null,surveyMemo=null,onlyIfAllowed=false}={}){
     const resident=a;if(at)a={...a,x:at.x,y:at.y};
-    const s=SPECIES[a.species],density=s?.density||{radius:4,softCap:10},repro=s?.reproduction||{};
-    const supply=this.surveyAt(a),demand=dietaryDemand(this.sim,a,supply,density.radius,{residentId:resident.id});
+    const s=SPECIES[a.species],density=s?.density||{radius:4,softCap:10},repro=reproductionFor(a.species);
+    const supply=this.surveyFor(a,surveyMemo);
+    if(onlyIfAllowed&&!canHunt(a)&&this.sim.speciesLifestyle?.feedingMode?.(a)!=='hunter'){const min=repro.minForage??0,opt=Math.max(min+.01,repro.optimalForage??Math.max(1,min*1.6));if(!(clamp(0,1.08,(supply.value-min)/(opt-min))>.04))return{allowed:false}}
+    const overlaps=surveyMemo?(surveyMemo.overlaps??=new WeakMap()):null;let overlapMemo=overlaps?.get(supply)||null;if(overlaps&&!overlapMemo){overlapMemo=new Map();overlaps.set(supply,overlapMemo)}
+    const demand=dietaryDemand(this.sim,a,supply,density.radius,{residentId:resident.id,overlapMemo});
     // Nearby is a habitat headcount, not a family or species population. Only
     // accessible finite-food overlap contributes consumer-equivalent demand.
     const local=demand.nearby,competitors=demand.demand;
@@ -66,12 +86,12 @@ export class CarryingPressureController{
     const hunterLifestyle=this.sim.speciesLifestyle?.feedingMode?.(a)==='hunter';
     if(canHunt(a)||hunterLifestyle){
       const radius=hunterLifestyle?Math.max(10,density.radius):repro.preyRadius??density.radius;
-      const prey=this.sim.localPreyCount(a,radius),need=hunterLifestyle?4:Math.max(1,repro.minPrey??1);
-      // Same adult-prey equivalent units. Accessible finite aquatic energy is
-      // the supply; normalization contributes no resource and grants no breeding.
+      const prey=localPreyOpportunity(this.sim,a,radius),need=hunterLifestyle?4:Math.max(1,repro.minPrey??1);
+      // Current edible-biomass equivalents from local finite stock only.
+      // Retained minPrey numbers now use these declared units, not headcounts.
       preyReference=preyNormalization(this.sim,a);
-      const waterPrey=preyReference.mass?supply.waterEnergy/(preyReference.mass*FRESHWATER_FOOD.detritus.nutrition):0;
-      resourceValue=prey+waterPrey;resource=clamp(0,1.12,resourceValue/need);
+      const surveyedFood=supply.totalEnergy/preyReference.energyPerUnit;
+      resourceValue=prey.foodUnits+surveyedFood;resource=clamp(0,1.12,resourceValue/need);
     }else{const forage=supply.value,min=repro.minForage??0,opt=Math.max(min+.01,repro.optimalForage??Math.max(1,min*1.6));resourceValue=forage;resource=clamp(0,1.08,(forage-min)/(opt-min))}
     const recoveryBoost=this.sim.recovery?.driveBoost(a.species)??1;
     const driveRate=.20*(repro.driveScale??1)*recoveryBoost*crowd*Math.max(.05,resource);

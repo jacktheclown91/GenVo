@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {parentalAdaptationText} from '../src/ui/parental-adaptations.js';
+const freeze=a=>Object.freeze({adaptations:Object.freeze(a),anatomy:Object.freeze({waterBody:.9}),bodyPlan:Object.freeze({nodes:Object.freeze([])})});
+const swimmer=freeze(['webbed-limbs']),storage=freeze(['water-sacs']),plain=freeze([]),before=JSON.stringify([swimmer,storage,plain]);
+const pair=parentalAdaptationText(swimmer,storage);
+assert.match(pair,/Webbed Limbs \(you\)/);assert.match(pair,/Water Sacs \(partner\)/);
+assert.match(pair,/Cross rivers and open water/);assert.match(pair,/drains energy faster/);assert.match(pair,/Lose water more slowly/);
+assert.match(pair,/Young can inherit a different body/);assert.doesNotMatch(pair,/all young|%/);
+const both=parentalAdaptationText(swimmer,swimmer);assert.match(both,/both parents/);assert.doesNotMatch(both,/all young|%/);
+assert.match(parentalAdaptationText(plain,plain),/New inherited variation can still occur/);
+assert.doesNotThrow(()=>parentalAdaptationText(undefined,undefined));assert.match(parentalAdaptationText(freeze(['historical-trait']),plain),/historical-trait/);
+assert.equal(JSON.stringify([swimmer,storage,plain]),before,'a read-only panel cannot synchronize or fabricate parental anatomy');
+const inspector=fs.readFileSync(new URL('../src/ui/inspector.js',import.meta.url),'utf8');assert.ok(inspector.includes('parentalAdaptationText(active,selected)'));assert.ok(!inspector.includes('adaptationCarryChance'));
+console.log('parental adaptation guidance: observed owners/consequences, no phenotype guarantee and no state mutation PASS');

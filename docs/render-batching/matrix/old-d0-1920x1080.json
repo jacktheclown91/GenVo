@@ -1,0 +1,132 @@
+{
+ "res": "1920x1080",
+ "seed": "PHASE4-ORDINARY",
+ "dayAdvanced": 0,
+ "query": "?spriteBatch=0&tilePool=0",
+ "moving": 0,
+ "gpu": "ANGLE (NVIDIA, NVIDIA GeForce RTX 3050 (0x00002582) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+ "software": false,
+ "day": 1,
+ "animals": 181,
+ "playerAlive": true,
+ "paused": false,
+ "frames": 1198,
+ "presentedFps": 61.7,
+ "frameMs": {
+  "mean": 16.2,
+  "p50": 13.4,
+  "p95": 26.7,
+  "p99": 40.1,
+  "max": 253.5
+ },
+ "renderMs": {
+  "mean": 8.4,
+  "p50": 6.9,
+  "p95": 19.3
+ },
+ "simMs": {
+  "mean": 0.7,
+  "p50": 0,
+  "p95": 0.7
+ },
+ "creaturePrepMs": {
+  "mean": 4.4,
+  "p50": 2.4,
+  "p95": 13.9
+ },
+ "creatureComposeMs": {
+  "mean": 0,
+  "p50": 0,
+  "p95": 0
+ },
+ "otherMs": {
+  "p50": 7.9,
+  "p95": 21.4
+ },
+ "visibleCreatures": {
+  "mean": 8.9,
+  "p50": 8,
+  "p95": 14
+ },
+ "movingVisible": {
+  "mean": 5.9,
+  "p50": 6,
+  "p95": 10
+ },
+ "freshSpritesPerFrame": {
+  "mean": 6.3,
+  "p50": 6,
+  "p95": 10
+ },
+ "canvasesCreatedPerSecond": 297.74,
+ "heapMB": {
+  "start": 68.9,
+  "end": 52.7
+ },
+ "drawsPerFrame": null,
+ "worstFrames": [
+  {
+   "i": 1181,
+   "ms": 253.5,
+   "render": 5.4,
+   "sim": 0.2,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 1
+  },
+  {
+   "i": 9,
+   "ms": 146.7,
+   "render": 16.5,
+   "sim": 0.1,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 59
+  },
+  {
+   "i": 1112,
+   "ms": 133.3,
+   "render": 18.5,
+   "sim": 0.1,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 40
+  },
+  {
+   "i": 362,
+   "ms": 93.4,
+   "render": 8.4,
+   "sim": 0.1,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 3
+  },
+  {
+   "i": 705,
+   "ms": 93.4,
+   "render": 16.6,
+   "sim": 0.1,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 2
+  },
+  {
+   "i": 400,
+   "ms": 79.9,
+   "render": 20.1,
+   "sim": 0,
+   "terrainRefresh": false,
+   "heapDropMB": 0,
+   "canvases": 0
+  }
+ ],
+ "saves": [],
+ "canvasSources": null,
+ "live": {
+  "paused": false,
+  "playerAlive": true,
+  "day": 4,
+  "animals": 181
+ },
+ "errors": []
+}

@@ -1,0 +1,2693 @@
+{
+  "schema": "genvo.developmental-operator-audit/1",
+  "scope": "Exhaustive enumeration of one mutation operator choice from the simple founder in each existing symmetry branch, with controlled choice indices. Not births, random occurrence rates, viable growth or a multi-step reachability proof. Metadata closure below is only a deliberately weaker comparison, ignoring placement, funding and physical viability.",
+  "sourceHashes": {
+    "src/lineage/body-inheritance.js": "dd491c585f3dae7ad3c0d9550afa45b68600492f05a93af933699d208d36731e",
+    "src/lineage/evolution-draft.js": "c0c8b9c492126088ec7ce305c2c5a777f7af979a3404c71e61eddaca591e011d",
+    "src/lineage/part-registry.js": "28187ee944cf5d4f6fb7742e0da26534620b96467feec8a0699c712f18c6c4fb",
+    "src/lineage/developmental-symmetry.js": "59d42413571ec909969760b541750d59746aa23ebf2d012a0f469bb98cfda40c"
+  },
+  "policy": {
+    "bodyMutationChance": 0.25,
+    "developmentalSymmetry": true,
+    "asymmetricShare": 0.05
+  },
+  "founder": {
+    "id": "bp0-4134709b",
+    "nodes": 8,
+    "parts": [
+      "small-torso",
+      "simple-eye",
+      "simple-eye",
+      "walking-leg",
+      "walking-leg",
+      "walking-leg",
+      "walking-leg",
+      "grazing-mouth"
+    ]
+  },
+  "summary": {
+    "catalogParts": 79,
+    "enumeratedChoices": 107,
+    "changedChoices": 107,
+    "deletedSocketChoices": 0,
+    "minNodes": 8,
+    "maxNodes": 10,
+    "metadataClosureParts": 71,
+    "exclusiveParts": [
+      "horn-crest",
+      "tusk-jaw",
+      "gliding-membrane",
+      "luminous-tail",
+      "shell-back",
+      "armored-hide",
+      "glow-eye",
+      "echo-crest"
+    ]
+  },
+  "rows": [
+    {
+      "branch": "paired",
+      "choice": 0,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-1f74b4b7",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "spring-leg"
+        },
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "spring-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 1,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-698a0527",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "grasper"
+        },
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "grasper"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 2,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-b16bbeb1",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "runner-leg"
+        },
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "runner-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 3,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-6f19c41b",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "sturdy-leg"
+        },
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "sturdy-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 4,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-6d3db393",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "webbed-leg"
+        },
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "webbed-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 5,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-62c1bb11",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "padded-leg"
+        },
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "padded-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 6,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-9e3d78d3",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "digging-forelimb"
+        },
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "digging-forelimb"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 7,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-a3fe6347",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "spring-leg"
+        },
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "spring-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 8,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-c856bea7",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "grasper"
+        },
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "grasper"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 9,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-1bfc7581",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "runner-leg"
+        },
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "runner-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 10,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-15541463",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "sturdy-leg"
+        },
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "sturdy-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 11,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-88796c03",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "webbed-leg"
+        },
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "webbed-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 12,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-55bf1841",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "padded-leg"
+        },
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "padded-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 13,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-3ce46923",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "digging-forelimb"
+        },
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "digging-forelimb"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 14,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-a3fe6347",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "spring-leg"
+        },
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "spring-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 15,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-c856bea7",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "grasper"
+        },
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "grasper"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 16,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-1bfc7581",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "runner-leg"
+        },
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "runner-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 17,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-15541463",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "sturdy-leg"
+        },
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "sturdy-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 18,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-88796c03",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "webbed-leg"
+        },
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "webbed-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 19,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-55bf1841",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "padded-leg"
+        },
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "padded-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 20,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-3ce46923",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "digging-forelimb"
+        },
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "digging-forelimb"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 21,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-1f74b4b7",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "spring-leg"
+        },
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "spring-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 22,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-698a0527",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "grasper"
+        },
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "grasper"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 23,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-b16bbeb1",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "runner-leg"
+        },
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "runner-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 24,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-6f19c41b",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "sturdy-leg"
+        },
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "sturdy-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 25,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-6d3db393",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "webbed-leg"
+        },
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "webbed-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 26,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-62c1bb11",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "padded-leg"
+        },
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "padded-leg"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 27,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-9e3d78d3",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "digging-forelimb"
+        },
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "digging-forelimb"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 28,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-cc6b3afc",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root",
+          "from": "small-torso",
+          "to": "soft-torso"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 29,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-1235ecb8",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root",
+          "from": "small-torso",
+          "to": "light-torso"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 30,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-c2ef0f08",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/mouth",
+          "from": "grazing-mouth",
+          "to": "tearing-jaw"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 31,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-9442d1dc",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/mouth",
+          "from": "grazing-mouth",
+          "to": "beak-mouth"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 32,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-38c67967",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/mouth",
+          "from": "grazing-mouth",
+          "to": "filter-mouth"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 33,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-44bcde9d",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/mouth",
+          "from": "grazing-mouth",
+          "to": "nibbler-mouth"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 34,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-9deaeacb",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/eye.left",
+          "from": "simple-eye",
+          "to": "wide-field-eye"
+        },
+        {
+          "id": "root/eye.right",
+          "from": "simple-eye",
+          "to": "wide-field-eye"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 35,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-1db83503",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/eye.left",
+          "from": "simple-eye",
+          "to": "hunter-eye"
+        },
+        {
+          "id": "root/eye.right",
+          "from": "simple-eye",
+          "to": "hunter-eye"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 36,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-a695b0b1",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/eye.left",
+          "from": "simple-eye",
+          "to": "stalk-eye"
+        },
+        {
+          "id": "root/eye.right",
+          "from": "simple-eye",
+          "to": "stalk-eye"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 37,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-42a1886f",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/eye.left",
+          "from": "simple-eye",
+          "to": "tracker-eye"
+        },
+        {
+          "id": "root/eye.right",
+          "from": "simple-eye",
+          "to": "tracker-eye"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 38,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-154a0c7b",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/eye.left",
+          "from": "simple-eye",
+          "to": "display-eye"
+        },
+        {
+          "id": "root/eye.right",
+          "from": "simple-eye",
+          "to": "display-eye"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 39,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-ea7fb6d1",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/eye.left",
+          "from": "simple-eye",
+          "to": "eyespot"
+        },
+        {
+          "id": "root/eye.right",
+          "from": "simple-eye",
+          "to": "eyespot"
+        }
+      ]
+    },
+    {
+      "branch": "paired",
+      "choice": 40,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-cfd726ce",
+      "nodeCount": 10,
+      "addedSockets": [
+        {
+          "id": "root/flank.left",
+          "part": "armor-plate"
+        },
+        {
+          "id": "root/flank.right",
+          "part": "armor-plate"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 41,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-03640465",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/dorsal",
+          "part": "armor-plate"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 42,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-6982de21",
+      "nodeCount": 10,
+      "addedSockets": [
+        {
+          "id": "root/limb.1/spur",
+          "part": "barb"
+        },
+        {
+          "id": "root/limb.7/spur",
+          "part": "barb"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 43,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-faa7a0a1",
+      "nodeCount": 10,
+      "addedSockets": [
+        {
+          "id": "root/limb.1/spur",
+          "part": "claw"
+        },
+        {
+          "id": "root/limb.7/spur",
+          "part": "claw"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 44,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-e081f284",
+      "nodeCount": 10,
+      "addedSockets": [
+        {
+          "id": "root/flank.left",
+          "part": "storage-sac"
+        },
+        {
+          "id": "root/flank.right",
+          "part": "storage-sac"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 45,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-265bd56f",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/dorsal",
+          "part": "signal-crest"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 46,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-8e588d03",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/tail",
+          "part": "paddle-tail"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 47,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-afc2503d",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/tail",
+          "part": "balance-tail"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 48,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-90ab5dd4",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/tail",
+          "part": "fat-tail"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 49,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-3b3c0ae4",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/dorsal",
+          "part": "sail-fin"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 50,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-0dbd302a",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/dorsal",
+          "part": "spine-ridge"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 51,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-47a50ce5",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/dorsal",
+          "part": "moss-back"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 52,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-c4b29b8c",
+      "nodeCount": 10,
+      "addedSockets": [
+        {
+          "id": "root/flank.left",
+          "part": "fat-pad"
+        },
+        {
+          "id": "root/flank.right",
+          "part": "fat-pad"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 53,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-1b4fb3e2",
+      "nodeCount": 10,
+      "addedSockets": [
+        {
+          "id": "root/flank.left",
+          "part": "scent-gland"
+        },
+        {
+          "id": "root/flank.right",
+          "part": "scent-gland"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 54,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-9427ce12",
+      "nodeCount": 10,
+      "addedSockets": [
+        {
+          "id": "root/flank.left",
+          "part": "egg-chamber"
+        },
+        {
+          "id": "root/flank.right",
+          "part": "egg-chamber"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 55,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-e5ca35aa",
+      "nodeCount": 10,
+      "addedSockets": [
+        {
+          "id": "root/flank.left",
+          "part": "live-womb"
+        },
+        {
+          "id": "root/flank.right",
+          "part": "live-womb"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 56,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-2d9e5b21",
+      "nodeCount": 10,
+      "addedSockets": [
+        {
+          "id": "root/limb.1/spur",
+          "part": "dew-claw"
+        },
+        {
+          "id": "root/limb.7/spur",
+          "part": "dew-claw"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 57,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-41be0971",
+      "nodeCount": 10,
+      "addedSockets": [
+        {
+          "id": "root/limb.1/spur",
+          "part": "sensory-bristle"
+        },
+        {
+          "id": "root/limb.7/spur",
+          "part": "sensory-bristle"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "paired",
+      "choice": 58,
+      "options": 59,
+      "changed": true,
+      "planId": "bp0-c0146b95",
+      "nodeCount": 10,
+      "addedSockets": [
+        {
+          "id": "root/limb.1/spur",
+          "part": "grip-pad"
+        },
+        {
+          "id": "root/limb.7/spur",
+          "part": "grip-pad"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 0,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-cdda7eed",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "spring-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 1,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-5ead3725",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "grasper"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 2,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-9b3406e4",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "runner-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 3,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-efe0079b",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "sturdy-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 4,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-881a44e1",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "webbed-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 5,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-14b19d34",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "padded-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 6,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-c589c86d",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.1",
+          "from": "walking-leg",
+          "to": "digging-forelimb"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 7,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-ba0308f1",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "spring-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 8,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-18e7e359",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "grasper"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 9,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-08e5e5e4",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "runner-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 10,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-c7f38537",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "sturdy-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 11,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-ee047c61",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "webbed-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 12,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-85b8561c",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "padded-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 13,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-655a38bd",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.3",
+          "from": "walking-leg",
+          "to": "digging-forelimb"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 14,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-dde2067d",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "spring-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 15,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-0a58a14d",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "grasper"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 16,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-bf232c0c",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "runner-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 17,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-91474717",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "sturdy-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 18,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-5fa19f7d",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "webbed-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 19,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-2d624dd4",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "padded-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 20,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-f1762c41",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.5",
+          "from": "walking-leg",
+          "to": "digging-forelimb"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 21,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-dcaa2d29",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "spring-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 22,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-3db240b9",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "grasper"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 23,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-13512504",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "runner-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 24,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-1519571b",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "sturdy-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 25,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-433f6ce5",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "webbed-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 26,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-fb890844",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "padded-leg"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 27,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-9c8906b1",
+      "nodeCount": 8,
+      "addedSockets": [],
+      "deletedSockets": [],
+      "replacements": [
+        {
+          "id": "root/limb.7",
+          "from": "walking-leg",
+          "to": "digging-forelimb"
+        }
+      ]
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 28,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-05da7b21",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.1/spur",
+          "part": "barb"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 29,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-ff4381df",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.3/spur",
+          "part": "barb"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 30,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-4e5b2599",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.5/spur",
+          "part": "barb"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 31,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-18456077",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.7/spur",
+          "part": "barb"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 32,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-df3a779b",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.1/spur",
+          "part": "claw"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 33,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-c3ae5359",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.3/spur",
+          "part": "claw"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 34,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-a9e70543",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.5/spur",
+          "part": "claw"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 35,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-4ffff9a1",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.7/spur",
+          "part": "claw"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 36,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-d161c69e",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.1/spur",
+          "part": "dew-claw"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 37,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-a82e76c0",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.3/spur",
+          "part": "dew-claw"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 38,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-123bf132",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.5/spur",
+          "part": "dew-claw"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 39,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-c17dc50c",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.7/spur",
+          "part": "dew-claw"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 40,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-910c3845",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.1/spur",
+          "part": "sensory-bristle"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 41,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-5a69db6b",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.3/spur",
+          "part": "sensory-bristle"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 42,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-835cefbd",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.5/spur",
+          "part": "sensory-bristle"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 43,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-d3d7215b",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.7/spur",
+          "part": "sensory-bristle"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 44,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-28f9b832",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.1/spur",
+          "part": "grip-pad"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 45,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-4ac097fc",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.3/spur",
+          "part": "grip-pad"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 46,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-4cc1b2aa",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.5/spur",
+          "part": "grip-pad"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    },
+    {
+      "branch": "asymmetric",
+      "choice": 47,
+      "options": 48,
+      "changed": true,
+      "planId": "bp0-4817bd94",
+      "nodeCount": 9,
+      "addedSockets": [
+        {
+          "id": "root/limb.7/spur",
+          "part": "grip-pad"
+        }
+      ],
+      "deletedSockets": [],
+      "replacements": []
+    }
+  ],
+  "catalog": [
+    {
+      "id": "head-base",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "small-torso",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "soft-torso",
+      "prerequisites": [
+        "small-torso"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "reinforced-torso",
+      "prerequisites": [
+        "soft-torso"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "sleek-torso",
+      "prerequisites": [
+        "soft-torso"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "light-torso",
+      "prerequisites": [
+        "small-torso"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "stout-torso",
+      "prerequisites": [
+        "soft-torso"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "barrel-torso",
+      "prerequisites": [
+        "stout-torso"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "dome-torso",
+      "prerequisites": [
+        "reinforced-torso"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "long-torso",
+      "prerequisites": [
+        "sleek-torso"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "walking-leg",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "spring-leg",
+      "prerequisites": [
+        "walking-leg"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "grasper",
+      "prerequisites": [
+        "walking-leg"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "runner-leg",
+      "prerequisites": [
+        "walking-leg"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "sturdy-leg",
+      "prerequisites": [
+        "walking-leg"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "webbed-leg",
+      "prerequisites": [
+        "walking-leg"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "padded-leg",
+      "prerequisites": [
+        "walking-leg"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "digging-forelimb",
+      "prerequisites": [
+        "walking-leg"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "grazing-mouth",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "tearing-jaw",
+      "prerequisites": [
+        "grazing-mouth"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "crushing-jaw",
+      "prerequisites": [
+        "tearing-jaw"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "beak-mouth",
+      "prerequisites": [
+        "grazing-mouth"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "kernel-beak",
+      "prerequisites": [
+        "beak-mouth"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "filter-mouth",
+      "prerequisites": [
+        "grazing-mouth"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "reed-sieve-mouth",
+      "prerequisites": [
+        "filter-mouth"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "nibbler-mouth",
+      "prerequisites": [
+        "grazing-mouth"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "sucker-mouth",
+      "prerequisites": [
+        "tearing-jaw"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "gape-mouth",
+      "prerequisites": [
+        "tearing-jaw"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "simple-eye",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "wide-field-eye",
+      "prerequisites": [
+        "simple-eye"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "hunter-eye",
+      "prerequisites": [
+        "simple-eye"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "stalk-eye",
+      "prerequisites": [
+        "simple-eye"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "compound-eye",
+      "prerequisites": [
+        "wide-field-eye"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "tracker-eye",
+      "prerequisites": [
+        "simple-eye"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "display-eye",
+      "prerequisites": [
+        "simple-eye"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "eyespot",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "armor-plate",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "barb",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "claw",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "venom-gland",
+      "prerequisites": [
+        "tearing-jaw"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "storage-sac",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "silt-fin",
+      "prerequisites": [
+        "paddle-tail"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "signal-crest",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "paddle-tail",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "horn-crest",
+      "prerequisites": [],
+      "exclusive": true,
+      "metadataClosure": false,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "tusk-jaw",
+      "prerequisites": [],
+      "exclusive": true,
+      "metadataClosure": false,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "gliding-membrane",
+      "prerequisites": [],
+      "exclusive": true,
+      "metadataClosure": false,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "luminous-tail",
+      "prerequisites": [],
+      "exclusive": true,
+      "metadataClosure": false,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "shell-back",
+      "prerequisites": [],
+      "exclusive": true,
+      "metadataClosure": false,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "armored-hide",
+      "prerequisites": [],
+      "exclusive": true,
+      "metadataClosure": false,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "glow-eye",
+      "prerequisites": [],
+      "exclusive": true,
+      "metadataClosure": false,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "echo-crest",
+      "prerequisites": [],
+      "exclusive": true,
+      "metadataClosure": false,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "balance-tail",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "club-tail",
+      "prerequisites": [
+        "balance-tail"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "spined-tail",
+      "prerequisites": [
+        "club-tail"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "whip-tail",
+      "prerequisites": [
+        "balance-tail"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "prehensile-tail",
+      "prerequisites": [
+        "balance-tail"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "fat-tail",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "flag-tail",
+      "prerequisites": [
+        "balance-tail"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "sail-fin",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "spine-ridge",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "water-hump",
+      "prerequisites": [
+        "sail-fin"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "display-frill",
+      "prerequisites": [
+        "signal-crest"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "moss-back",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "thorn-carapace",
+      "prerequisites": [
+        "armor-plate"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "sensory-quills",
+      "prerequisites": [
+        "spine-ridge"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "fat-pad",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "gill-slits",
+      "prerequisites": [
+        "storage-sac"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "scent-gland",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "spine-cluster",
+      "prerequisites": [
+        "armor-plate"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "brood-pouch",
+      "prerequisites": [
+        "storage-sac"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "egg-chamber",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "live-womb",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "hook-spur",
+      "prerequisites": [
+        "claw"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "dew-claw",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "heel-spike",
+      "prerequisites": [
+        "barb"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    },
+    {
+      "id": "sensory-bristle",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "grip-pad",
+      "prerequisites": [],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": true
+    },
+    {
+      "id": "kick-spur",
+      "prerequisites": [
+        "claw"
+      ],
+      "exclusive": false,
+      "metadataClosure": true,
+      "appearsInFounderOrOneStep": false
+    }
+  ]
+}

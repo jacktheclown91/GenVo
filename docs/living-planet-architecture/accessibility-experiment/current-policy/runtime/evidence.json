@@ -1,0 +1,350 @@
+{
+  "scope": "Current neutral/supported-water actual newborn versus parent, explicitly relocated to the same existing water edge and temporarily controlled for a locomotion fixture. No inherited anatomy or genotype edits; not ordinary succession or a mature lineage demonstration.",
+  "results": [
+    {
+      "before": {
+        "id": 1,
+        "x": 45.8,
+        "y": 38.5,
+        "age": 48,
+        "body": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "small-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            },
+            {
+              "id": "root/mouth",
+              "partId": "grazing-mouth",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "mouth"
+            }
+          ],
+          "id": "bp0-4134709b"
+        },
+        "genes": {
+          "body": 1.0698040681891143,
+          "motion": 0.9633083990775049,
+          "metabolism": 1.065363760991022,
+          "digestion": 1.061445073131472,
+          "senses": 1.0244216428603978,
+          "climate": 1.028839194821194,
+          "immunity": 1.05986360674724,
+          "temperament": 0.9575268489774317
+        },
+        "energy": 41.86212099955081,
+        "adaptations": [],
+        "legacyWaterPhysiology": [],
+        "wet": false,
+        "tick": 773
+      },
+      "after": {
+        "id": 1,
+        "x": 45.99416684918906,
+        "y": 38.5,
+        "age": 48,
+        "body": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "small-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            },
+            {
+              "id": "root/mouth",
+              "partId": "grazing-mouth",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "mouth"
+            }
+          ],
+          "id": "bp0-4134709b"
+        },
+        "genes": {
+          "body": 1.0698040681891143,
+          "motion": 0.9633083990775049,
+          "metabolism": 1.065363760991022,
+          "digestion": 1.061445073131472,
+          "senses": 1.0244216428603978,
+          "climate": 1.028839194821194,
+          "immunity": 1.05986360674724,
+          "temperament": 0.9575268489774317
+        },
+        "energy": 41.744015230545514,
+        "adaptations": [],
+        "legacyWaterPhysiology": [],
+        "wet": false,
+        "tick": 781
+      }
+    },
+    {
+      "before": {
+        "id": 3,
+        "x": 45.8,
+        "y": 38.5,
+        "age": 0,
+        "body": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "small-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "webbed-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "webbed-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            },
+            {
+              "id": "root/mouth",
+              "partId": "grazing-mouth",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "mouth"
+            }
+          ],
+          "id": "bp0-6d3db393"
+        },
+        "genes": {
+          "body": 1.01056401251754,
+          "motion": 1.0120994924561189,
+          "metabolism": 1.0134520985939501,
+          "digestion": 0.9895763997079375,
+          "senses": 0.9792977525520001,
+          "climate": 1.0515110819528615,
+          "immunity": 1.0459074525270617,
+          "temperament": 1.0434146082622155
+        },
+        "energy": 14.853960000000004,
+        "adaptations": [
+          "webbed-limbs"
+        ],
+        "legacyWaterPhysiology": [],
+        "wet": false,
+        "tick": 773
+      },
+      "after": {
+        "id": 3,
+        "x": 47.29451355272437,
+        "y": 38.5,
+        "age": 0,
+        "body": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "small-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "webbed-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "webbed-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            },
+            {
+              "id": "root/mouth",
+              "partId": "grazing-mouth",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "mouth"
+            }
+          ],
+          "id": "bp0-6d3db393"
+        },
+        "genes": {
+          "body": 1.01056401251754,
+          "motion": 1.0120994924561189,
+          "metabolism": 1.0134520985939501,
+          "digestion": 0.9895763997079375,
+          "senses": 0.9792977525520001,
+          "climate": 1.0515110819528615,
+          "immunity": 1.0459074525270617,
+          "temperament": 1.0434146082622155
+        },
+        "energy": 14.802228124144117,
+        "adaptations": [
+          "webbed-limbs"
+        ],
+        "legacyWaterPhysiology": [],
+        "wet": true,
+        "tick": 781
+      }
+    }
+  ],
+  "errors": []
+}

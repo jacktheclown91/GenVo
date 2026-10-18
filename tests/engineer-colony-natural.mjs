@@ -7,9 +7,9 @@ import {checkEcologicalIntegrity} from '../tools/ecological-integrity.mjs';
 // finding, NOT test failure. Confirm receipts agree with actual anatomy and ID.
 const seed=process.argv[2]||'NATURAL-ENGINEERS-A';
 const limit=Number(process.argv[3]||130);
-const sim=new Simulation(seed,{player:false});
+const sim=new Simulation(seed,{player:false}),initialPopulation=sim.animals.filter(a=>a.alive).length;
 let lastDay=0;
-while(sim.day<=limit){sim.update(null);if(lastDay!==sim.day){lastDay=sim.day;if(lastDay%30===0){console.log('EM wildlife day',lastDay);checkEcologicalIntegrity(sim,132);}}}
+while(sim.day<=limit){sim.update(null);if(lastDay!==sim.day){lastDay=sim.day;if(lastDay%30===0){console.log('EM wildlife day',lastDay);checkEcologicalIntegrity(sim,initialPopulation);}}}
 const evidence=[...sim.regionalEcology.records.values()].flatMap(r=>sim.regionalEcology.engineerColonyEvidence(r.key).map(e=>({key:r.key,...e})));
 for(const e of evidence){
   assert.ok(e.localBirths>=e.recruited);

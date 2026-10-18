@@ -1,0 +1,119 @@
+{
+  "scope": "Controlled valid asymmetric multi-occupant fixture, not ordinary birth or evolutionary frequency.",
+  "nodes": [
+    {
+      "id": "root",
+      "partId": "soft-torso",
+      "partVersion": 1,
+      "parent": null,
+      "socket": null
+    },
+    {
+      "id": "root/eye.left",
+      "partId": "simple-eye",
+      "partVersion": 1,
+      "parent": "root",
+      "socket": "eye.left"
+    },
+    {
+      "id": "root/eye.right",
+      "partId": "simple-eye",
+      "partVersion": 1,
+      "parent": "root",
+      "socket": "eye.right"
+    },
+    {
+      "id": "root/flank.left",
+      "partId": "armor-plate",
+      "partVersion": 1,
+      "parent": "root",
+      "socket": "flank.left"
+    },
+    {
+      "id": "root/flank.left#2",
+      "partId": "storage-sac",
+      "partVersion": 1,
+      "parent": "root",
+      "socket": "flank.left"
+    },
+    {
+      "id": "root/flank.right",
+      "partId": "storage-sac",
+      "partVersion": 1,
+      "parent": "root",
+      "socket": "flank.right"
+    },
+    {
+      "id": "root/limb.1",
+      "partId": "walking-leg",
+      "partVersion": 1,
+      "parent": "root",
+      "socket": "limb.1"
+    },
+    {
+      "id": "root/limb.3",
+      "partId": "walking-leg",
+      "partVersion": 1,
+      "parent": "root",
+      "socket": "limb.3"
+    },
+    {
+      "id": "root/limb.5",
+      "partId": "walking-leg",
+      "partVersion": 1,
+      "parent": "root",
+      "socket": "limb.5"
+    },
+    {
+      "id": "root/limb.7",
+      "partId": "walking-leg",
+      "partVersion": 1,
+      "parent": "root",
+      "socket": "limb.7"
+    },
+    {
+      "id": "root/mouth",
+      "partId": "grazing-mouth",
+      "partVersion": 1,
+      "parent": "root",
+      "socket": "mouth"
+    }
+  ],
+  "choices": [
+    {
+      "targets": [
+        "root/flank.left",
+        "root/flank.right"
+      ],
+      "removed": [
+        {
+          "id": "root/flank.left",
+          "partId": "armor-plate",
+          "parent": "root",
+          "socket": "flank.left"
+        },
+        {
+          "id": "root/flank.right",
+          "partId": "storage-sac",
+          "parent": "root",
+          "socket": "flank.right"
+        }
+      ]
+    },
+    {
+      "targets": [
+        "root/flank.left#2"
+      ],
+      "removed": [
+        {
+          "id": "root/flank.left#2",
+          "partId": "storage-sac",
+          "parent": "root",
+          "socket": "flank.left"
+        }
+      ]
+    }
+  ],
+  "mixedPartPairs": 1,
+  "unpairedSharedStorage": 2
+}

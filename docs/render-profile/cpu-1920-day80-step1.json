@@ -1,0 +1,312 @@
+{
+ "viewport": "1920x1080",
+ "advancedDays": 80,
+ "day": 81,
+ "animals": 240,
+ "seconds": 20.021,
+ "rows": [
+  {
+   "fn": "(program) (native):0",
+   "msPerSec": 343.4,
+   "pct": 33.5
+  },
+  {
+   "fn": "(idle) (native):0",
+   "msPerSec": 267.2,
+   "pct": 26.1
+  },
+  {
+   "fn": "drawImage (native):0",
+   "msPerSec": 85.2,
+   "pct": 8.3
+  },
+  {
+   "fn": "drawEnvironmentalHistory src/render/renderer.js:724",
+   "msPerSec": 48,
+   "pct": 4.7
+  },
+  {
+   "fn": "fillRect (native):0",
+   "msPerSec": 22.9,
+   "pct": 2.2
+  },
+  {
+   "fn": "o.<computed> src/main.js:252",
+   "msPerSec": 22.3,
+   "pct": 2.2
+  },
+  {
+   "fn": "save (native):0",
+   "msPerSec": 18.7,
+   "pct": 1.8
+  },
+  {
+   "fn": "(garbage collector) (native):0",
+   "msPerSec": 14.4,
+   "pct": 1.4
+  },
+  {
+   "fn": "now (native):0",
+   "msPerSec": 13.8,
+   "pct": 1.3
+  },
+  {
+   "fn": "terrainChunk src/render/renderer.js:357",
+   "msPerSec": 8.7,
+   "pct": 0.8
+  },
+  {
+   "fn": "paintOrganicLandBase src/render/renderer.js:513",
+   "msPerSec": 8.2,
+   "pct": 0.8
+  },
+  {
+   "fn": "drawAnimal src/render/renderer.js:825",
+   "msPerSec": 7.2,
+   "pct": 0.7
+  },
+  {
+   "fn": "riverIdentityAt src/render/identity.js:39",
+   "msPerSec": 6.7,
+   "pct": 0.7
+  },
+  {
+   "fn": "scale (native):0",
+   "msPerSec": 6.2,
+   "pct": 0.6
+  },
+  {
+   "fn": "drawCreatureDepthShadow src/render/depth.js:57",
+   "msPerSec": 5,
+   "pct": 0.5
+  },
+  {
+   "fn": "visualWaterMask src/render/renderer.js:488",
+   "msPerSec": 5,
+   "pct": 0.5
+  },
+  {
+   "fn": "getContext (native):0",
+   "msPerSec": 4.9,
+   "pct": 0.5
+  },
+  {
+   "fn": "drawTileDynamic src/render/renderer.js:383",
+   "msPerSec": 4.6,
+   "pct": 0.5
+  },
+  {
+   "fn": "restore (native):0",
+   "msPerSec": 4.4,
+   "pct": 0.4
+  },
+  {
+   "fn": "drawOrganicWaterMotion src/render/renderer.js:566",
+   "msPerSec": 3.5,
+   "pct": 0.3
+  },
+  {
+   "fn": "drawGroundContact src/render/physicality.js:14",
+   "msPerSec": 3.3,
+   "pct": 0.3
+  },
+  {
+   "fn": "getBoundingClientRect (native):0",
+   "msPerSec": 3.2,
+   "pct": 0.3
+  },
+  {
+   "fn": "livingCounts src/lineage/evolution-tree.js:49",
+   "msPerSec": 3.2,
+   "pct": 0.3
+  },
+  {
+   "fn": "drawGenvoSprite src/render/genvo-draw.js:64",
+   "msPerSec": 3.2,
+   "pct": 0.3
+  },
+  {
+   "fn": "render src/render/renderer.js:68",
+   "msPerSec": 3,
+   "pct": 0.3
+  },
+  {
+   "fn": "hash2 src/render/renderer.js:964",
+   "msPerSec": 2.9,
+   "pct": 0.3
+  },
+  {
+   "fn": "smoothSeedNoise src/render/habitat.js:61",
+   "msPerSec": 2.9,
+   "pct": 0.3
+  },
+  {
+   "fn": "drawTerrainChunks src/render/renderer.js:329",
+   "msPerSec": 2.7,
+   "pct": 0.3
+  },
+  {
+   "fn": "behaviorVisualState src/render/behavior.js:6",
+   "msPerSec": 2.7,
+   "pct": 0.3
+  },
+  {
+   "fn": "queueTerrainWarmRing src/render/renderer.js:346",
+   "msPerSec": 2.4,
+   "pct": 0.2
+  },
+  {
+   "fn": "(anon) src/render/renderer.js:94",
+   "msPerSec": 2.2,
+   "pct": 0.2
+  },
+  {
+   "fn": "drawGenvoBody src/render/genvo-draw.js:107",
+   "msPerSec": 2.1,
+   "pct": 0.2
+  },
+  {
+   "fn": "visualActionFromIntent src/render/behavior.js:80",
+   "msPerSec": 2,
+   "pct": 0.2
+  },
+  {
+   "fn": "assemblyFor src/render/creature-assembler.js:51",
+   "msPerSec": 1.8,
+   "pct": 0.2
+  },
+  {
+   "fn": "phenotypeFor src/organisms/species.js:26",
+   "msPerSec": 1.8,
+   "pct": 0.2
+  },
+  {
+   "fn": "sample src/render/encounter-expression.js:8",
+   "msPerSec": 1.7,
+   "pct": 0.2
+  },
+  {
+   "fn": "render src/ui/tutorial.js:397",
+   "msPerSec": 1.6,
+   "pct": 0.2
+  },
+  {
+   "fn": "frame src/main.js:230",
+   "msPerSec": 1.5,
+   "pct": 0.1
+  },
+  {
+   "fn": "tinted src/render/indexed-part-renderer.js:29",
+   "msPerSec": 1.5,
+   "pct": 0.1
+  },
+  {
+   "fn": "applyEncounterPose src/render/encounter-expression.js:36",
+   "msPerSec": 1.5,
+   "pct": 0.1
+  }
+ ],
+ "files": [
+  {
+   "file": "(native)",
+   "msPerSec": 794.3,
+   "pct": 77.5
+  },
+  {
+   "file": "src/render/renderer.js",
+   "msPerSec": 113.6,
+   "pct": 11.1
+  },
+  {
+   "file": "src/main.js",
+   "msPerSec": 24,
+   "pct": 2.3
+  },
+  {
+   "file": "src/render/identity.js",
+   "msPerSec": 7.7,
+   "pct": 0.8
+  },
+  {
+   "file": "src/render/genvo-draw.js",
+   "msPerSec": 7.4,
+   "pct": 0.7
+  },
+  {
+   "file": "src/render/depth.js",
+   "msPerSec": 6.1,
+   "pct": 0.6
+  },
+  {
+   "file": "src/render/physicality.js",
+   "msPerSec": 5.7,
+   "pct": 0.6
+  },
+  {
+   "file": "src/render/indexed-part-renderer.js",
+   "msPerSec": 5.4,
+   "pct": 0.5
+  },
+  {
+   "file": "src/render/habitat.js",
+   "msPerSec": 5.2,
+   "pct": 0.5
+  },
+  {
+   "file": "src/render/behavior.js",
+   "msPerSec": 5.1,
+   "pct": 0.5
+  },
+  {
+   "file": "src/render/encounter-expression.js",
+   "msPerSec": 4.7,
+   "pct": 0.5
+  },
+  {
+   "file": "src/lineage/evolution-tree.js",
+   "msPerSec": 4.5,
+   "pct": 0.4
+  },
+  {
+   "file": "src/render/landform.js",
+   "msPerSec": 3.1,
+   "pct": 0.3
+  },
+  {
+   "file": "src/render/creature-palette.js",
+   "msPerSec": 2.9,
+   "pct": 0.3
+  },
+  {
+   "file": "src/render/terrain-motifs.js",
+   "msPerSec": 2.8,
+   "pct": 0.3
+  },
+  {
+   "file": "src/render/creature-assembler.js",
+   "msPerSec": 1.8,
+   "pct": 0.2
+  },
+  {
+   "file": "src/organisms/species.js",
+   "msPerSec": 1.8,
+   "pct": 0.2
+  },
+  {
+   "file": "src/render/head-attention.js",
+   "msPerSec": 1.8,
+   "pct": 0.2
+  },
+  {
+   "file": "src/ui/tutorial.js",
+   "msPerSec": 1.7,
+   "pct": 0.2
+  },
+  {
+   "file": "src/render/genvo.js",
+   "msPerSec": 1.7,
+   "pct": 0.2
+  }
+ ],
+ "errors": []
+}

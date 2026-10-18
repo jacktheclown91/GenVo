@@ -1,0 +1,25 @@
+// Uses only a newly launched nonpersistent browser and an explicit fresh context.
+// No existing browser profile, storage state, or user autosave is opened.
+const fs=require('node:fs'),path=require('node:path');
+const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
+(async()=>{const out=path.resolve('docs/world-pages/runtime');fs.mkdirSync(out,{recursive:true});
+const browser=await chromium.launch({headless:false,args:['--ignore-gpu-blocklist']});
+const context=await browser.newContext({viewport:{width:1440,height:900},storageState:{cookies:[],origins:[]}});
+const page=await context.newPage(),errors=[];try{page.on('pageerror',e=>errors.push(e.message));
+const cdp=await browser.newBrowserCDPSession();const gpu=(await cdp.send('SystemInfo.getInfo')).gpu;
+const root=path.resolve(__dirname,'..'),types={'.html':'text/html','.js':'text/javascript','.json':'application/json','.css':'text/css','.png':'image/png','.ogg':'audio/ogg','.mp3':'audio/mpeg','.wav':'audio/wav','.svg':'image/svg+xml'};
+// Same in-process file transport as the repository's existing GPU/parity harnesses.
+await context.route('https://genvo.review/**',async route=>{const file=path.resolve(root,decodeURIComponent(new URL(route.request().url()).pathname).replace(/^\//,'')||'index.html');if(!file.startsWith(root+path.sep))return route.abort();if(!fs.existsSync(file))return route.fulfill({status:404,body:''});return route.fulfill({body:fs.readFileSync(file),contentType:types[path.extname(file)]||'application/octet-stream'})});
+await page.goto('https://genvo.review/index.html');await page.waitForFunction(()=>window.__GENVO8__?.contextTray);
+await page.getByRole('button',{name:/New World/}).click();await page.locator('#newWorldSeed').fill('GENVO8-TEST-A');await page.getByRole('button',{name:'Begin World',exact:true}).click();
+await page.waitForFunction(()=>window.__GENVO8__?.nativeArtStatus().status==='ready'&&window.__GENVO8__?.sim?.player(),null,{timeout:60000});await page.waitForTimeout(4000);
+await page.evaluate(()=>{const {sim:s,renderer:r}=window.__GENVO8__,p=s.player(),w=s.world;let row=null;for(let y=8;y<120&&row===null;y++)if(Array.from({length:10},(_,k)=>!w.water[w.idx(60+k,y)]).every(Boolean))row=y+.5;if(row===null)throw Error('No clear seam lane');p.x=62.5;p.y=row;s.rebuildSpatial();r.cameraReady=false;});await page.waitForTimeout(700);
+const read=()=>{const s=window.__GENVO8__.sim,p=s.player();return{day:s.day,tick:s.tickCount,paused:s.paused,alive:s.animals.filter(a=>a.alive).length,player:p&&{id:p.id,x:p.x,y:p.y,alive:p.alive},terrain:s.world.terrain&&{schema:s.world.terrain.schema,min:Math.min(...s.world.terrain.elevation),max:Math.max(...s.world.terrain.elevation)},page:s.world.pages.cellAt(p.x,p.y)?.key,visiblePages:window.__GENVO8__.renderer.visibleWorldPages?.map(p=>p.key),soilWater:!!s.world.soilWater,weather:!!s.weatherPattern}};
+const start=await page.evaluate(read);await page.screenshot({path:path.join(out,'new-world.png')});
+await page.keyboard.down('KeyD');await page.waitForTimeout(2500);await page.keyboard.up('KeyD');
+const moved=await page.evaluate(read);await page.screenshot({path:path.join(out,'walking.png')});
+await page.evaluate(async()=>{await window.__GENVO8__.saveManager.saveNow('page-seam-runtime-test')});
+await page.reload();await page.waitForFunction(()=>window.__GENVO8__?.contextTray);await page.locator('[data-action="continue"]').first().click();await page.waitForFunction(()=>window.__GENVO8__?.nativeArtStatus().status==='ready'&&window.__GENVO8__?.sim?.player(),null,{timeout:60000});await page.waitForTimeout(4000);const resumed=await page.evaluate(read);await page.screenshot({path:path.join(out,'continued.png')});
+fs.writeFileSync(path.join(out,'evidence.json'),JSON.stringify({scope:'Controlled current-map page seam experiment: founder placed once in a clear lane, then ordinary key movement and explicit temporary-context save/continue. Not an ordinary founding/lineage playthrough or mature performance claim.',gpu:{devices:gpu.devices,auxAttributes:gpu.auxAttributes},start,moved,resumed,errors},null,2));console.log(JSON.stringify({start,moved,resumed,errors}));
+if(errors.length||moved.tick<=start.tick||resumed.paused||start.page===moved.page||resumed.page!==moved.page||resumed.player.id!==moved.player.id)process.exitCode=1;
+}catch(error){await page.screenshot({path:path.join(out,'failure.png')}).catch(()=>{});const state=await page.evaluate(()=>({status:window.__GENVO8__?.nativeArtStatus?.(),day:window.__GENVO8__?.sim?.day,body:document.body.innerText.slice(-3000)})).catch(()=>null);fs.writeFileSync(path.join(out,'failure.json'),JSON.stringify({message:error.message,state,errors},null,2));throw error}finally{await context.close();await browser.close()}})().catch(e=>{console.error(e);process.exitCode=1});

@@ -1,5 +1,6 @@
 // Deterministic detours for an autonomous land target. Routes are ordinary
 // animal state, so a checkpoint retains the same next waypoint. No RNG draws.
+import {terrainTravel} from './topography.js';
 export function landRouteTarget(sim,a,target){
   const r=a.navigationRoute;
   if(!r)return target;
@@ -39,7 +40,7 @@ export function planLandDetour(sim,a,target){
     for(const [dx,dy] of [[1,0],[0,1],[-1,0],[0,-1]]){
       const nx=x+dx,ny=y+dy;
       if(!sim.canOccupy(a,nx+.5,ny+.5))continue;
-      const j=ny*w.n+nx,next=cost[i]+1;
+      const j=ny*w.n+nx,next=cost[i]+terrainTravel(w,x+.5,y+.5,nx+.5,ny+.5).routeCost;
       if(closed[j]||next>=cost[j])continue;
       cost[j]=next;parent[j]=i;push({i:j,f:next+heuristic(j)});
     }

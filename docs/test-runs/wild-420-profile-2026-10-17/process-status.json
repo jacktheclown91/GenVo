@@ -1,0 +1,14 @@
+{
+  "schema": "genvo.diagnostic-process/1",
+  "seed": "GENVO8-WILD-RUN",
+  "horizon": 420,
+  "budgetSeconds": 900,
+  "scope": "Original wild seed/horizon under unchanged ceiling, with strict invariants, inclusive phase clocks, explicit GC and CPU sampling; diagnostic overhead is included.",
+  "code": 1,
+  "signal": null,
+  "timedOut": true,
+  "spawnError": null,
+  "cleanupError": null,
+  "stderr": "",
+  "seconds": 900.4
+}

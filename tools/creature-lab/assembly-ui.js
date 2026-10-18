@@ -6,6 +6,7 @@ import {GENE_KEYS,phenotypeFor} from '../../src/organisms/species.js';
 import {drawGenvoSprite,genvoAnchors} from '../../src/render/genvo-draw.js';
 import {starterPlan,attachPart,removePart,checked} from './assembly-model.js';
 import {loadNativePartCatalog} from '../../src/render/runtime-part-art.js';
+import {planProtectionInPlay} from '../../src/lineage/protection-reading.js';
 await loadNativePartCatalog();
 let authoredParts={},artRevision=0;
 window.addEventListener('genvo8-lab-authored-renderer',event=>{authoredParts={...authoredParts,[event.detail.partId]:event.detail};artRevision++;boundsCache.clear();showAuthoredBindings();renderPreview();message('Authored artwork installed for '+event.detail.partId+' in this preview.')});
@@ -22,8 +23,10 @@ function refresh(){
  for(const n of plan.nodes){for(const s of partDef(n.partId).providedSockets){if(n.id==='root'&&plan.nodes.some(x=>x.socket==='head')&&(s.type==='mouth'||s.type==='eye'))continue;const option=document.createElement('option');option.value=JSON.stringify([n.id,s.id]);option.textContent=n.id+' / '+s.id+' · '+s.type;$('attachmentSocket').append(option)}
  const row=document.createElement('div');row.textContent=n.id+' · '+n.partId;if(n.parent){const b=document.createElement('button');b.textContent='Remove '+n.id;b.onclick=()=>{try{commit(removePart(plan,n.id))}catch(e){message(e.message)}};row.append(b)}$('assemblyNodes').append(row)}
  renderPreview();
- message('Valid canonical body plan · '+plan.nodes.length+' parts');
+ message('Valid canonical body plan · '+plan.nodes.length+' parts');showProtection();
 }
+// What this plan would protect in play, through the same lineage path the evolution editor uses.
+function showProtection(){let el=$('assemblyProtection');if(!el){el=document.createElement('p');el.id='assemblyProtection';el.className='lab-in-play';$('assemblyStatus').after(el)}const r=planProtectionInPlay(plan);el.hidden=!r;el.textContent=r?'In play: '+r.detail:''}
 function previewAnimal(body=plan){return{id:1,species:'genvo',alive:true,age:60,dir:Number($('previewDirection').value),genes:Object.fromEntries(GENE_KEYS.map(k=>[k,1])),adaptations:[],bodyPlan:body}}
 function measure(body,dir){const key=body.id+'|'+dir+'|'+artRevision;if(!boundsCache.has(key))boundsCache.set(key,workshopBounds(previewAnimal(body),dir,{authoredParts}));return boundsCache.get(key)}
 function renderPreview(){const action=$('previewAction').value,dir=Number($('previewDirection').value),moving=['walk','flee','hunt'].includes(action),bound=measure(plan,dir),other=reference?measure(reference,dir):null;

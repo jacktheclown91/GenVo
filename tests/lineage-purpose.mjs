@@ -7,10 +7,9 @@ const tutorial=fs.readFileSync(new URL('../src/ui/tutorial.js',import.meta.url),
 const reveal=fs.readFileSync(new URL('../src/ui/generation-reveal.js',import.meta.url),'utf8');
 
 assert.match(html,/id="briefing"/,'opening has a dedicated large narrative briefing');
-assert.match(html,/Guide a lineage, not just one creature/,'welcome frames species/lineage purpose');
-assert.match(html,/directly control one creature at a time/i,'welcome explains control scope');
-assert.match(html,/Generation 8.*then keep going/i,'welcome explains G8 is not an ending');
-assert.match(html,/family members live and act on their own/i,'welcome explains autonomous relatives');
+// The v1.65 menu redesign deliberately removed the compulsory welcome text
+// (docs/GenVo-Menu-Redesign-v1.65.0.md). Control scope and post-G8 continuation are
+// still answered by Help below and by the retained briefing copy.
 assert.match(html,/How the lineage works/,'help has a lineage explanation section');
 assert.match(html,/one GenVo at a time/i,'help answers multi-control question');
 assert.match(html,/ecosystem keeps running/i,'help answers what happens after G8');

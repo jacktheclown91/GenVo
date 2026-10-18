@@ -6,6 +6,7 @@ import {FRESHWATER_FOOD,freshwaterField,freshwaterPreference} from '../ecology/f
 import {CFG,PLANTS} from '../sim/config.js';
 import {SPECIES} from '../organisms/species.js';
 import {adaptationEffects} from '../lineage/evolution.js';
+import {PHYSIOLOGY_PARITY,noteFoodGroup,mealBiteFor,plantMealWater} from '../ecology/physiology.js';
 import {PLACE,taughtOffset} from '../cognition/cognition.js';
 
 // Player-facing food physiology and learned forage places. Ecology still owns plant
@@ -79,7 +80,8 @@ export class ForagingController{
   cycle(animal=this.sim.player(),step=1){
     const options=this.options(animal);if(!options.length)return null;const s=this.state(animal),selected=this.selected(animal),current=Math.max(0,options.findIndex(o=>o.kind===selected?.kind&&o.tissue===selected?.tissue));const next=(current+(step<0?-1:1)+options.length)%options.length;s.selectedKind=options[next].kind;s.selectedTissue=options[next].tissue;s.manual=true;return {...options[next],index:next,count:options.length};
   }
-  projectedBreadth(animal,kind){const s=this.state(animal),group=this.profile(kind).group,recent=[...s.recent.slice(-3),group];return new Set(recent).size}
+  // Phase 3J shared physiology: diet variety is read from the animal itself, the same record autonomous feeding keeps.
+  projectedBreadth(animal,kind){const group=this.profile(kind).group,recent=[...(PHYSIOLOGY_PARITY.enabled?(animal?.dietRecent||[]):this.state(animal).recent).slice(-3),group];return new Set(recent).size}
   breadthBonus(animal,kind){return 1+Math.max(0,this.projectedBreadth(animal,kind)-1)*.025}
   availability(animal=this.sim.player(),target=null){
     if(!animal?.alive)return{enabled:false,reason:'No active creature.'};
@@ -92,9 +94,9 @@ export class ForagingController{
     if(!animal?.alive||!target)return{ok:false,type:'eat',message:'No food nearby.'};
     const w=this.sim.world,spec=SPECIES[animal.species],profile=this.profile(target.kind),arr=FRESHWATER_FOOD[target.kind]?freshwaterField(w,target.kind):target.kind==='carrion'?w.carrion:w.plants[target.kind];if(!arr)return{ok:false,type:'eat',message:'That food is gone.'};
     if(FRESHWATER_FOOD[target.kind]&&(!w.water[target.i]||!freshwaterPreference(animal,target.kind)||Math.hypot(animal.x-target.x,animal.y-target.y)>1.5||!FRESHWATER_FOOD[target.kind].surface&&(!this.sim.canOccupy(animal,target.x,target.y)||!this.sim.canReach(animal,target.x,target.y))))return{ok:false,type:'eat',message:'Cannot reach that food.'};
-    const validated=this.options(animal,{index:target.i,kind:target.kind,tissue:target.tissue??null}).find(o=>!target.tissue||o.tissue===target.tissue);if(!validated)return{ok:false,type:'eat',message:'That tissue is unavailable for this anatomy.'};target=validated;if(!target.handling.enabled)return{ok:false,type:'eat',message:`Not enough energy to open this coat (${target.handling.energyCost.toFixed(2)} needed). Find softer food.`};const available=arr[target.i]||0,got=Math.min(profile.bite,available);if(got<=(FRESHWATER_FOOD[target.kind]?0:.01))return{ok:false,type:'eat',kind:target.kind,message:'That patch is picked clean.'};
+    const validated=this.options(animal,{index:target.i,kind:target.kind,tissue:target.tissue??null}).find(o=>!target.tissue||o.tissue===target.tissue);if(!validated)return{ok:false,type:'eat',message:'That tissue is unavailable for this anatomy.'};target=validated;if(!target.handling.enabled)return{ok:false,type:'eat',message:`Not enough energy to open this coat (${target.handling.energyCost.toFixed(2)} needed). Find softer food.`};const available=arr[target.i]||0,got=Math.min(PLANTS[target.kind]?mealBiteFor(profile):profile.bite,available);if(got<=(FRESHWATER_FOOD[target.kind]?0:.01))return{ok:false,type:'eat',kind:target.kind,message:'That patch is picked clean.'};
     const beforeEnergy=animal.energy,beforeWater=animal.hydration,breadth=this.projectedBreadth(animal,target.kind),breadthBonus=this.breadthBonus(animal,target.kind),fx=adaptationEffects(animal);
-    const lifestyleFood=this.sim.speciesLifestyle?.foodEnergyMultiplier?.(animal,{kind:target.kind})||1,preview=target.tissue?this.sim.dispersal.previewMeal(animal,target.kind,target.i,got,target.tissue):null,gross=(preview?.edible??got)*target.nutrition*target.eff*animal.genes.digestion*fx.foodGain*profile.energy*breadthBonus*lifestyleFood,waterScale=Math.min(1,got/profile.bite),potentialWater=target.tissue==='kernel'?0:profile.water*waterScale*(preview?preview.edible/Math.max(.001,got):1);
+    const lifestyleFood=this.sim.speciesLifestyle?.foodEnergyMultiplier?.(animal,{kind:target.kind})||1,preview=target.tissue?this.sim.dispersal.previewMeal(animal,target.kind,target.i,got,target.tissue):null,gross=(preview?.edible??got)*target.nutrition*target.eff*animal.genes.digestion*fx.foodGain*profile.energy*breadthBonus*lifestyleFood,waterScale=Math.min(1,got/profile.bite),potentialWater=target.tissue==='kernel'||(PLANTS[target.kind]&&!plantMealWater())?0:profile.water*waterScale*(preview?preview.edible/Math.max(.001,got):1);
     if(beforeEnergy>=spec.maxEnergy-.05&&beforeWater>=spec.maxHydration-.05)return{ok:false,type:'eat',kind:target.kind,message:'Already full and hydrated.'};
     const beforePatch=(PLANTS[target.kind]||FRESHWATER_FOOD[target.kind])?this.surveyPatch(target.kind,target.x,target.y):null;
     if(FRESHWATER_FOOD[target.kind]){const before=arr[target.i];arr[target.i]-=got;exportAquaticReserve(w,target.kind,target.i,before-arr[target.i],before);w.organicResources.totals.foodExported+=before-arr[target.i];if(target.kind==='detritus')this.sim.disease.onCarrionFeed(animal,target.i,got)}
@@ -102,7 +104,7 @@ export class ForagingController{
     else{if(target.tissue){const receipt=this.sim.dispersal.harvestMeal(animal,target.kind,target.i,got,target.tissue);if(!receipt)return{ok:false,type:'eat',message:'That crop tissue is no longer available.'}}else{w.consume(target.kind,target.i%w.n+.5,Math.floor(target.i/w.n)+.5,got);this.sim.dispersal.onFeed(animal,target.kind,got)}this.sim.history.notePlantConsumption(target.kind,target.x,target.y,got)}
     animal.energy=Math.min(spec.maxEnergy,animal.energy+gross);if(target.tissue&&animal.lastPlantMeal){animal.lastPlantMeal.processingCost=target.handling.energyCost;animal.lastPlantMeal.specializedHandling=target.handling.specialized;}
     animal.hydration=Math.min(spec.maxHydration,animal.hydration+potentialWater);
-    const state=this.state(animal),group=profile.group;state.recent.push(group);if(state.recent.length>4)state.recent.shift();state.recentKinds.push(target.kind);if(state.recentKinds.length>4)state.recentKinds.shift();state.selectedKind=target.kind;state.selectedTissue=target.tissue;state.manual=false;
+    const state=this.state(animal),group=profile.group;if(PHYSIOLOGY_PARITY.enabled)noteFoodGroup(animal,group);state.recent.push(group);if(state.recent.length>4)state.recent.shift();state.recentKinds.push(target.kind);if(state.recentKinds.length>4)state.recentKinds.shift();state.selectedKind=target.kind;state.selectedTissue=target.tissue;state.manual=false;
     const energyGain=animal.energy-beforeEnergy,waterGain=animal.hydration-beforeWater;state.lastMeal={kind:target.kind,tissue:target.tissue,producerGenomeId:preview?.genome?.id,group,energyGain,waterGain,processingCost:target.handling.energyCost,breadth,day:this.sim.day,year:this.sim.year,tick:this.sim.tickCount};
     this.sim.cognition.onFeed(animal,target.kind,{x:target.x,y:target.y});this.sim.speciesLifestyle?.noteFeeding?.(animal,{kind:target.kind,amount:got,energyGain});
     const patch=(PLANTS[target.kind]||FRESHWATER_FOOD[target.kind])?this.rememberPatch(animal,target.kind,target.x,target.y,{before:beforePatch,meal:true}):null;

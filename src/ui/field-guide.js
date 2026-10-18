@@ -4,6 +4,7 @@ import {phenotypeFor} from '../organisms/species.js';
 import {drawGenvoSprite} from '../render/genvo-draw.js';
 import {creaturePalette} from '../render/creature-palette.js';
 import {drawSite} from '../render/sites.js';
+import {plateProtectionReading} from '../lineage/protection-reading.js';
 
 // Phase G field guide (GDD v1 Phase G: journal, anatomy and species discovery). Y opens it.
 // v1.53.0 (creator direction 2026-10-09: menus should not look system-like and must show all
@@ -24,21 +25,21 @@ export class FieldGuide{
   setOpen(v){this.open=!!v;this.el.hidden=!this.open;if(this.open){this.key=null;this.render()}}
   creatures(D){
     const list=[],seen=new Set(),player=this.getSim()?.player?.();
-    if(player?.bodyPlan){list.push({id:player.bodyPlan.id,name:'Your current creature',animal:player,known:true});seen.add(player.bodyPlan.id)}
-    for(const animal of D.observedBodies||[]){if(seen.has(animal.bodyPlan.id))continue;seen.add(animal.bodyPlan.id);list.push({id:animal.bodyPlan.id,name:animal.name,animal,known:true})}
+    if(player?.bodyPlan){list.push({id:player.bodyPlan.id,name:'Your current creature',animal:player,known:true,protection:plateProtectionReading(player)});seen.add(player.bodyPlan.id)}
+    for(const animal of D.observedBodies||[]){if(seen.has(animal.bodyPlan.id))continue;seen.add(animal.bodyPlan.id);list.push({id:animal.bodyPlan.id,name:animal.name,animal,known:true,protection:plateProtectionReading(animal)})}
     return list;
   }
   render(){
     const D=this.getSim()?.discovery;if(!D||!this.open)return;
     const creatures=this.creatures(D),found=new Set(D.sites.filter(s=>D.isFound(s)).map(s=>s.kind)),placeKinds=Object.keys(SITE_KINDS).filter(k=>k!=='relic'&&k!=='carcass');
-    const key=JSON.stringify([this.page,creatures.map(c=>[c.id,c.name,c.animal?.genes]),[...found],D.trials,D.unlockedParts,D.seenParts.length]);if(key===this.key)return;this.key=key;
+    const key=JSON.stringify([this.page,creatures.map(c=>[c.id,c.name,c.animal?.genes,c.protection?.label,c.protection?.detail]),[...found],D.trials,D.unlockedParts,D.seenParts.length]);if(key===this.key)return;this.key=key;
     const missingPlaces=placeKinds.filter(k=>!found.has(k)).length,doneTrials=Object.keys(D.trials).length;
     const trials=Object.entries(TRIALS).map(([id,t])=>`<li class="${D.trials[id]?'done':''}"><i></i><div><b>${esc(t.label)}</b><small>${esc(t.text)}</small></div></li>`).join('');
     const seen=Object.keys(PARTS).filter(id=>D.seenParts.includes(id)&&!PARTS[id].tags.includes('starter'));
     this.el.innerHTML=`<header class="fg-head"><div><h2>Field guide</h2><p>What your family has seen and learned. Press Y to close.</p></div><button type="button" data-act="close">Close</button></header>
       <nav class="fg-tabs">${[['creatures','Creatures'],['places','Places'],['trials','Trials'],['parts','Parts']].map(([id,l])=>`<button type="button" data-page="${id}" class="${this.page===id?'active':''}">${l}</button>`).join('')}</nav>
       <div class="fg-body" data-show="${this.page}">
-        <section class="fg-creatures"><h3>Creatures</h3><div class="fg-cards">${creatures.map((c,i)=>`<figure class="${c.known?'':'unknown'} ${c.special?'special':''}"><canvas data-c="${i}" width="96" height="76"></canvas><figcaption>${c.known?esc(c.name):c.special?'Rare creature':'Not seen yet'}</figcaption></figure>`).join('')}</div></section>
+        <section class="fg-creatures"><h3>Creatures</h3><div class="fg-cards">${creatures.map((c,i)=>`<figure class="${c.known?'':'unknown'} ${c.special?'special':''}"><canvas data-c="${i}" width="96" height="76"></canvas><figcaption>${c.known?esc(c.name):c.special?'Rare creature':'Not seen yet'}</figcaption>${c.known&&c.protection?`<small class="fg-protection ${c.protection.protective?'on':'off'}" title="${esc(c.protection.detail)}">${esc(c.protection.label)}</small>`:''}</figure>`).join('')}</div>${(()=>{const notes=creatures.filter(c=>c.known&&c.protection);return notes.length?`<dl class="fg-protection-notes"><dt>Plate protection</dt>${notes.map(c=>`<dd><strong>${esc(c.name)}:</strong> ${esc(c.protection.detail)}</dd>`).join('')}</dl>`:''})()}</section>
         <section class="fg-places"><h3>Places</h3><div class="fg-cards">${placeKinds.map(k=>`<figure class="${found.has(k)?'':'unknown'}" title="${found.has(k)?esc(SITE_KINDS[k].blurb):''}"><canvas data-p="${k}" width="96" height="64"></canvas><figcaption>${found.has(k)?esc(SITE_KINDS[k].label):'Not found yet'}</figcaption>${found.has(k)?`<small>${esc(SITE_KINDS[k].blurb)}</small>`:''}</figure>`).join('')}</div><p class="fg-note">${missingPlaces?`${missingPlaces} kind${missingPlaces===1?'':'s'} of place still to find. Lookout rocks reveal places nearby.`:'You have found every kind of place.'}</p></section>
         <section class="fg-trials"><h3>Trials <span>${doneTrials} of ${Object.keys(TRIALS).length}</span></h3><ul>${trials}</ul><p class="fg-note">Each trial adds to the bonus points for your next evolution (up to 4 more).</p></section>
         <section class="fg-parts"><h3>Relic parts</h3><p>${(D.unlockedParts||[]).length?(D.unlockedParts||[]).map(id=>`<span class="tag relic">${esc(nice(id))}</span>`).join(' '):'None yet. Rare creatures leave a relic where they die; pick it up with E.'}</p>

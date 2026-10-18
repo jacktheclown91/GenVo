@@ -1,0 +1,44 @@
+{
+  "scope": "Static proposal arithmetic and page-coordinate reconstruction only; not a terrain generator, runtime geography, hydrology or performance acceptance.",
+  "status": "PASS",
+  "descriptor": {
+    "schema": "genvo.planet-geography-proposal/1",
+    "status": "REVIEW_REQUIRED_NOT_RUNTIME_CONFIGURATION",
+    "coordinateUnits": "existing terrain tile units; no claim of metres or Earth scale",
+    "equatorialCircumferenceTiles": 1048576,
+    "macroWidth": 512,
+    "macroHeight": 256,
+    "pageSizeTiles": 64,
+    "initialDetailedExtentTiles": [
+      128,
+      128
+    ],
+    "candidateLaterExtentTiles": [
+      256,
+      256
+    ],
+    "localProjection": "equirectangular tangent approximation at saved anchor; reject unsupported polar/wrap traversal until verified",
+    "exampleAnchorDegrees": {
+      "latitude": 35,
+      "longitude": 0
+    },
+    "legacyPolicy": "No automatic reinterpretation of freshwater/1 or coastal/1 saves; descriptor absent remains legacy",
+    "worldSizeExpansionAuthorized": false
+  },
+  "macroCells": 131072,
+  "equatorialTilesPerMacroColumn": 2048,
+  "rows": [
+    {
+      "widthTiles": 128,
+      "latitudeSpanDegrees": 0.0439453125,
+      "longitudeSpanDegrees": 0.053647320795181176,
+      "fractionOfEquator": 0.0001220703125
+    },
+    {
+      "widthTiles": 256,
+      "latitudeSpanDegrees": 0.087890625,
+      "longitudeSpanDegrees": 0.10729464159036235,
+      "fractionOfEquator": 0.000244140625
+    }
+  ]
+}

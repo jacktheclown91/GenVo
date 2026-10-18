@@ -15,7 +15,8 @@ let place;
 for(let boundary=16;boundary<sim.world.n-8&&!place;boundary+=16)for(let y=6;y<sim.world.n-6&&!place;y++){
   const site={x:boundary-.45,y:y+.4},birth={x:boundary+.8,y:y+.4};
   if(sim.canOccupy(mother,site.x,site.y)&&sim.canOccupy(mother,birth.x,birth.y)&&
-  sim.world.landRegion[sim.world.idx(site.x,site.y)]===sim.world.landRegion[sim.world.idx(birth.x,birth.y)])place={site,birth};
+  sim.world.landRegion[sim.world.idx(site.x,site.y)]===sim.world.landRegion[sim.world.idx(birth.x,birth.y)]&&
+  sim.carrying.breedingState(mother,{at:site}).allowed)place={site,birth};// a real supported habitat (tests/helpers/breeding-pair.js)
 }
 assert.ok(place,'find genuine reachable land on opposite sides of a regional border');
 for(const a of duo)Object.assign(a,place.site);sim.rebuildSpatial();
@@ -70,7 +71,7 @@ for(let regionX=0;regionX<next.world.n/16&&!same;regionX++)for(let y=6;y<next.wo
   const left={x:regionX*16+2.5,y:y+.4},right={x:regionX*16+12.5,y:y+.4};
   if(left.x>=next.world.n-1||right.x>=next.world.n-1)continue;
   if(next.canOccupy(m,left.x,left.y)&&next.canOccupy(m,right.x,right.y)&&
-    next.regionalEcology.keyAt(left.x,left.y)===next.regionalEcology.keyAt(right.x,right.y))same={left,right};
+    next.regionalEcology.keyAt(left.x,left.y)===next.regionalEcology.keyAt(right.x,right.y)&&next.carrying.breedingState(m,{at:left}).allowed)same={left,right};
 }
 assert.ok(same,'find two positions ten tiles apart inside one region');
 for(const a of pair)Object.assign(a,same.left);next.rebuildSpatial();assert.equal(next.tryMate(m,f),true);

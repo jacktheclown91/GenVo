@@ -59,15 +59,25 @@ outsider.sex='M';outsider.age=100;outsider.reproCooldown=0;outsider.energy=110;o
 assert.equal(sim.regionalEcology.noteMating(growing,{...outsider,x:65.5,y:33.5}),false,'Off-region mating cannot qualify');
 // Use a real mating, not only the observer, to check that the reproduction
 // controller and child parentId chain connect to the regional study.
-sim.day=35;assert.equal(sim.tryMate(growing,outsider),true);
-sim.day=51;sim.tickCount=51*CFG.dayTicks;
+sim.day=35;
+// Conception is probabilistic. A valid accepted non-conception waits out its
+// real recovery through ordinary updates before a new staged local encounter.
+let conceived=false;for(let attempt=0;attempt<4&&!conceived;attempt++){
+  at(growing,33,33);at(outsider,33,33);sim.rebuildSpatial();
+  if(growing.pregnant){conceived=true;break}
+  conceived=sim.tryMate(growing,outsider);
+  if(!conceived){assert.equal(growing.lastReproductiveAttempt?.accepted,true,'fixture pair really accepts; do not bypass refusal');const until=sim.day+Math.ceil(Math.max(growing.reproCooldown,outsider.reproCooldown))+1;while(sim.day<until&&!growing.pregnant)sim.update(null);}
+}
+assert.equal(conceived||!!growing.pregnant,true,'ordinary accepted attempts can form a pregnancy without forcing probability');
+const birthDay=sim.day+(growing.pregnant?.totalDays||16);
+sim.day=birthDay;sim.tickCount=birthDay*CFG.dayTicks;
 const grandchildren=sim.giveBirth(growing);
 assert.ok(grandchildren.length>0,'Actual third generation born');
 const beforeRecruit=get();
 assert.equal(beforeRecruit.establishedDay,null,'Birth does not immediately establish a multigeneration colony');
-for(let day=52;day<=51+ENGINEER_COLONY.juvenileResidenceDays;day++){sim.day=day;sim.tickCount=day*CFG.dayTicks;sim.regionalEcology.observe();}
+for(let day=birthDay+1;day<=birthDay+ENGINEER_COLONY.juvenileResidenceDays;day++){sim.day=day;sim.tickCount=day*CFG.dayTicks;sim.regionalEcology.observe();}
 assert.ok(get().multigenerationRecruits>0,'Recruited local offspring became a parent of recruited local descendants');
-assert.ok(get().establishedDay>=52,'Colony established only after another generation remained resident');
+assert.ok(get().establishedDay>=birthDay+1,'Colony established only after another generation remained resident');
 const evidenceCopy=sim.regionalEcology.engineerTransitions(A);evidenceCopy.at(-1).breeding.relatedIds.splice(0);
 assert.ok(sim.regionalEcology.engineerTransitions(A).at(-1).breeding.relatedIds.length>0,'Nested copies cannot mutate study');
 const snap2=createSimulationSnapshot(sim),restored2=restoreSimulationSnapshot(structuredClone(snap2));

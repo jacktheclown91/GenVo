@@ -3,7 +3,7 @@ import {Simulation} from '../src/sim/simulation.js';
 import {CFG} from '../src/sim/config.js';
 import {SPECIES} from '../src/organisms/species.js';
 
-assert.ok(CFG.maxAnimals>CFG.performanceTarget,'emergency ceiling should sit above performance target');
+assert.ok(CFG.maxAnimals>CFG.performanceTarget,'processing warning reference should sit above performance target');
 const sim=new Simulation('GENVO8-CARRYING',{player:true});
 sim.rebuildSpatial();sim.carrying.observe();
 for(const x of sim.animals)if(x.species==='mosskip'){x.x=100;x.y=100}

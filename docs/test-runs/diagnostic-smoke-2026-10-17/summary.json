@@ -1,0 +1,357 @@
+{
+  "schema": "genvo.observation-summary/1",
+  "seed": "DIAGNOSTIC-SMOKE",
+  "completed": true,
+  "integrity": "pass",
+  "requestedHorizon": 3,
+  "observedThroughDay": 4,
+  "totalExtinctionAtLastSample": false,
+  "populationAtLastSample": {
+    "mosskip": 64,
+    "rootling": 32,
+    "needlejaw": 5,
+    "rillsifter": 18,
+    "mirelick": 20,
+    "podshell": 18,
+    "bankjaw": 0,
+    "genvo": 24
+  },
+  "wildAtLastSample": {
+    "mosskip": {
+      "alive": 64,
+      "evolved": 0
+    },
+    "rootling": {
+      "alive": 32,
+      "evolved": 0
+    },
+    "needlejaw": {
+      "alive": 5,
+      "evolved": 0
+    },
+    "rillsifter": {
+      "alive": 18,
+      "evolved": 0
+    },
+    "mirelick": {
+      "alive": 20,
+      "evolved": 0
+    },
+    "podshell": {
+      "alive": 18,
+      "evolved": 0
+    }
+  },
+  "branchIds": [
+    "common",
+    "rillsifter:aquatic"
+  ],
+  "peakSampledRss": 115306496,
+  "lastStructures": {
+    "animals": 181,
+    "living": 181,
+    "genomes": 499,
+    "seedCells": 412,
+    "seedCohorts": 408,
+    "floraBirthHistory": 128,
+    "dispersalEvents": 32,
+    "flowers": 990,
+    "pollen": 200,
+    "embryos": 131,
+    "botanicalReceipts": 128,
+    "migrationStates": 181,
+    "lineageEvents": 0,
+    "lineageNodes": 1,
+    "producerReceipts": 0
+  },
+  "lastCaches": {
+    "cropYield": {
+      "groups": 8,
+      "entries": 11470,
+      "perGroupLimit": 8192
+    },
+    "generatedBotanical": {
+      "entries": 497,
+      "limit": 16384,
+      "scope": "process-wide generated genomes; WeakMap/WeakSet retention is not enumerated"
+    }
+  },
+  "lastProducerLimits": {
+    "sunmoss": {
+      "0": 3218,
+      "1": 13166
+    },
+    "bramble": {
+      "0": 9609,
+      "1": 5896,
+      "4": 879
+    },
+    "marshroot": {
+      "0": 10832,
+      "1": 1122,
+      "4": 4430
+    },
+    "thistlepod": {
+      "0": 10136,
+      "1": 5941,
+      "4": 307
+    }
+  },
+  "lastMigration": {
+    "states": 181,
+    "statuses": {
+      "settled": 174,
+      "outbound": 7
+    },
+    "reasons": {
+      "reached habitat": 22,
+      "scarcity": 7
+    }
+  },
+  "lastLineage": {
+    "taxa": 1,
+    "statuses": {
+      "living": 1
+    }
+  },
+  "intervals": [
+    {
+      "fromDay": 1,
+      "toDay": 2,
+      "seconds": 0.39725980000000005,
+      "msPerDay": 397.25980000000004,
+      "heapChange": 14884936,
+      "postGcHeapChange": 14884936,
+      "cohortChange": 105,
+      "genomeChange": 122,
+      "births": 0,
+      "deaths": 0,
+      "deathCauses": {},
+      "resources": {
+        "sunmoss": 42.21451699733734,
+        "bramble": 60.87758772075176,
+        "marshroot": 75.83327074348927,
+        "rotcap": -1.8451089635491371,
+        "thistlepod": 28.391316950321198,
+        "algae": 6.467578038573265,
+        "duckweed": 2.3935224264860153,
+        "waterweed": 2.373804047703743,
+        "larvae": -0.026478637009859085,
+        "fry": -0.005041105207055807,
+        "carrion": 0
+      },
+      "waterFlows": {},
+      "producerFlows": {
+        "rain": 0,
+        "shoreInflow": 0,
+        "evaporation": 0,
+        "runoff": 0,
+        "photosynthesis": 310.76647801722794,
+        "respiration": 47.429466013803804,
+        "growth": 228.84314332454636,
+        "waterUsed": 114.42157166227318,
+        "mineralsUsed": 22.88431433245472,
+        "mineralized": 0.7391246436869502,
+        "plantLitter": 4.304723623601007,
+        "seedLitter": 0,
+        "reserveExport": 1.9248193434001863,
+        "biomassExported": 13.172501605749133,
+        "soilExchange": -797.9758120438873,
+        "botanicalInvestment": 2.9117458015680313
+      },
+      "phases": {
+        "phaseClimate": {
+          "calls": 8,
+          "ms": 0.5727000000000544
+        },
+        "phaseSoil": {
+          "calls": 8,
+          "ms": 10.334500000000219
+        },
+        "phaseVegetation": {
+          "calls": 1,
+          "ms": 73.23900000000003
+        },
+        "phasePerception": {
+          "calls": 8,
+          "ms": 147.7729999999999
+        },
+        "phaseDecision": {
+          "calls": 8,
+          "ms": 85.96620000000007
+        },
+        "phaseMovement": {
+          "calls": 48,
+          "ms": 46.834299999999644
+        },
+        "phaseMetabolism": {
+          "calls": 8,
+          "ms": 13.305399999999963
+        },
+        "phaseLifecycle": {
+          "calls": 8,
+          "ms": 0.6069999999999709
+        }
+      }
+    },
+    {
+      "fromDay": 2,
+      "toDay": 3,
+      "seconds": 0.2801763,
+      "msPerDay": 280.17629999999997,
+      "heapChange": 2441136,
+      "postGcHeapChange": 2441136,
+      "cohortChange": 144,
+      "genomeChange": 196,
+      "births": 0,
+      "deaths": 0,
+      "deathCauses": {},
+      "resources": {
+        "sunmoss": 43.67524304986,
+        "bramble": 59.46092586219311,
+        "marshroot": 35.5395618788898,
+        "rotcap": -1.957365421578288,
+        "thistlepod": 28.126566659659147,
+        "algae": 10.446720212697983,
+        "duckweed": 2.457056224346161,
+        "waterweed": 2.4040482938289642,
+        "larvae": -0.019681403413414955,
+        "fry": -0.0050429399125278,
+        "carrion": 0
+      },
+      "waterFlows": {},
+      "producerFlows": {
+        "rain": 0,
+        "shoreInflow": 0,
+        "evaporation": 0,
+        "runoff": 0,
+        "photosynthesis": 269.3734789870961,
+        "respiration": 48.059936091319116,
+        "growth": 186.50170736206218,
+        "waterUsed": 93.25085368103109,
+        "mineralsUsed": 18.650170736206405,
+        "mineralized": 0.69350761616297,
+        "plantLitter": 3.6626486551270023,
+        "seedLitter": 0.01222938671708107,
+        "reserveExport": 1.6744512959550821,
+        "biomassExported": 10.002501428127292,
+        "soilExchange": 400.3652588633547,
+        "botanicalInvestment": 4.828205585479736
+      },
+      "phases": {
+        "phaseClimate": {
+          "calls": 8,
+          "ms": 0.17630000000008295
+        },
+        "phaseSoil": {
+          "calls": 8,
+          "ms": 3.8786000000001195
+        },
+        "phaseVegetation": {
+          "calls": 1,
+          "ms": 67.45770000000005
+        },
+        "phasePerception": {
+          "calls": 8,
+          "ms": 86.19889999999998
+        },
+        "phaseDecision": {
+          "calls": 8,
+          "ms": 48.16159999999991
+        },
+        "phaseMovement": {
+          "calls": 48,
+          "ms": 36.1952
+        },
+        "phaseMetabolism": {
+          "calls": 8,
+          "ms": 10.369299999999953
+        },
+        "phaseLifecycle": {
+          "calls": 8,
+          "ms": 0.25749999999993634
+        }
+      }
+    },
+    {
+      "fromDay": 3,
+      "toDay": 4,
+      "seconds": 0.24578160000000004,
+      "msPerDay": 245.78160000000005,
+      "heapChange": -6697520,
+      "postGcHeapChange": -6697520,
+      "cohortChange": 159,
+      "genomeChange": 178,
+      "births": 0,
+      "deaths": 0,
+      "deathCauses": {},
+      "resources": {
+        "sunmoss": 44.97604104876518,
+        "bramble": 53.66828201711178,
+        "marshroot": 24.221152926795185,
+        "rotcap": -2.030131869018078,
+        "thistlepod": 27.05102743022144,
+        "algae": 6.475324854254723,
+        "duckweed": 2.522354871034622,
+        "waterweed": 2.4346969574689865,
+        "larvae": -0.016088111326098442,
+        "fry": -0.005042960401624441,
+        "carrion": 0
+      },
+      "waterFlows": {},
+      "producerFlows": {
+        "rain": 0,
+        "shoreInflow": 0,
+        "evaporation": 0,
+        "runoff": 0,
+        "photosynthesis": 284.4119873862131,
+        "respiration": 48.57033298506745,
+        "growth": 166.6794500694631,
+        "waterUsed": 83.33972503473154,
+        "mineralsUsed": 16.66794500694673,
+        "mineralized": 0.66256659437712,
+        "plantLitter": 3.2745349903227003,
+        "seedLitter": 0.02803926426466391,
+        "reserveExport": 1.3144488292736436,
+        "biomassExported": 6.6250009000301375,
+        "soilExchange": 282.9957432979667,
+        "botanicalInvestment": 5.707797557115555
+      },
+      "phases": {
+        "phaseClimate": {
+          "calls": 8,
+          "ms": 0.09389999999984866
+        },
+        "phaseSoil": {
+          "calls": 8,
+          "ms": 8.137999999999579
+        },
+        "phaseVegetation": {
+          "calls": 1,
+          "ms": 75.5743
+        },
+        "phasePerception": {
+          "calls": 8,
+          "ms": 57.84610000000032
+        },
+        "phaseDecision": {
+          "calls": 8,
+          "ms": 44.91949999999997
+        },
+        "phaseMovement": {
+          "calls": 48,
+          "ms": 29.398399999999924
+        },
+        "phaseMetabolism": {
+          "calls": 8,
+          "ms": 9.053100000000313
+        },
+        "phaseLifecycle": {
+          "calls": 8,
+          "ms": 0.19519999999988613
+        }
+      }
+    }
+  ],
+  "causalLimit": "Net stocks, recorded causes and diagnostic association do not alone establish why a lineage survived or went extinct. Phase clocks are inclusive and diagnostic overhead/GC is included in elapsed time."
+}

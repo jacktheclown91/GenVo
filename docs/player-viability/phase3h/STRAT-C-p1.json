@@ -1,0 +1,107 @@
+{
+ "schema": "genvo.player-strategy/1",
+ "days": 160,
+ "rows": [
+  {
+   "share": {},
+   "mate": {
+    "branch": 0,
+    "eligible": 0,
+    "tries": 5,
+    "conceived": 1
+   },
+   "deathCause": "starvation day 57 W0.37 E0.00",
+   "seed": "STRAT-C",
+   "strategy": "auto",
+   "survivedDays": 57,
+   "playerAlive": false,
+   "playerSuccessions": 0,
+   "lineageBirths": 2,
+   "firstChildDay": 34,
+   "highestGeneration": 2,
+   "energyMedian": 0.66
+  },
+  {
+   "share": {
+    "other": 0.024,
+    "eat": 0.461,
+    "threatNear": 0.512,
+    "drink": 0.004
+   },
+   "mate": {
+    "branch": 3178,
+    "eligible": 3172,
+    "tries": 12,
+    "conceived": 0,
+    "started": 13,
+    "refusals": {
+     "An approach or performance is already underway.": 3159
+    }
+   },
+   "deathCause": "predation day 111 W0.26 E0.63",
+   "seed": "STRAT-C",
+   "strategy": "forager",
+   "survivedDays": 111,
+   "playerAlive": false,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.81
+  },
+  {
+   "share": {
+    "other": 0.065,
+    "eat": 0.211,
+    "threatNear": 0.724
+   },
+   "mate": {
+    "branch": 184,
+    "eligible": 178,
+    "tries": 9,
+    "conceived": 0,
+    "started": 9,
+    "refusals": {
+     "An approach or performance is already underway.": 169
+    }
+   },
+   "deathCause": "dehydration day 41 W0.00 E0.17",
+   "seed": "STRAT-C",
+   "strategy": "refuge",
+   "survivedDays": 41,
+   "playerAlive": false,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.64
+  },
+  {
+   "share": {
+    "other": 0.065,
+    "eat": 0.211,
+    "threatNear": 0.724
+   },
+   "mate": {
+    "branch": 184,
+    "eligible": 178,
+    "tries": 9,
+    "conceived": 0,
+    "started": 9,
+    "refusals": {
+     "An approach or performance is already underway.": 169
+    }
+   },
+   "deathCause": "dehydration day 41 W0.00 E0.17",
+   "seed": "STRAT-C",
+   "strategy": "defend",
+   "survivedDays": 41,
+   "playerAlive": false,
+   "playerSuccessions": 0,
+   "lineageBirths": 0,
+   "firstChildDay": null,
+   "highestGeneration": 1,
+   "energyMedian": 0.64
+  }
+ ]
+}

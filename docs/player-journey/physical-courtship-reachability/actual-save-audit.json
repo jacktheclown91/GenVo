@@ -1,0 +1,328 @@
+{
+  "scope": "Read-only genuine day150 snapshot, candidate queries and detours on detached actor copies only. Complete snapshot/RNG equality checked. Current topology/body capability, not future flight/planetary navigation.",
+  "input": "docs/player-journey/ownership-repair-continuation-11/checkpoint.snapshot.bin",
+  "day": 150,
+  "tick": 7157,
+  "player": {
+    "id": 109,
+    "x": 79.13858655538179,
+    "y": 83.96940158130438,
+    "body": "bp0-4134709b",
+    "canSwim": false
+  },
+  "selected": {
+    "id": 79,
+    "x": 54.15136618965695,
+    "y": 94.00978019858889,
+    "distance": 26.928987808377023,
+    "targetWater": false,
+    "canReach": false,
+    "canOccupy": true,
+    "pair": {
+      "enabled": true,
+      "reason": "",
+      "compatibility": {
+        "enabled": true,
+        "reason": "",
+        "gameteMatch": 0.9580982142857144,
+        "fertilityA": 1,
+        "fertilityB": 1,
+        "conceptionChance": 0.9580982142857144,
+        "model": "provisional-diploid-loci/1"
+      }
+    },
+    "waypoint": null,
+    "routePoints": 0
+  },
+  "candidates": [
+    {
+      "id": 170,
+      "x": 89.0725215300791,
+      "y": 93.63519107085892,
+      "distance": 13.860395035420076,
+      "targetWater": false,
+      "canReach": false,
+      "canOccupy": true,
+      "pair": {
+        "enabled": true,
+        "reason": "",
+        "compatibility": {
+          "enabled": true,
+          "reason": "",
+          "gameteMatch": 0.7953392857142858,
+          "fertilityA": 1,
+          "fertilityB": 1,
+          "conceptionChance": 0.7953392857142858,
+          "model": "provisional-diploid-loci/1"
+        }
+      },
+      "waypoint": null,
+      "routePoints": 0
+    },
+    {
+      "id": 363,
+      "x": 87.8893293632068,
+      "y": 94.63502860997711,
+      "distance": 13.796053769228914,
+      "targetWater": false,
+      "canReach": false,
+      "canOccupy": true,
+      "pair": {
+        "enabled": true,
+        "reason": "",
+        "compatibility": {
+          "enabled": true,
+          "reason": "",
+          "gameteMatch": 0.8266339285714286,
+          "fertilityA": 1,
+          "fertilityB": 0.9381964285714287,
+          "conceptionChance": 0.7755449995216838,
+          "model": "provisional-diploid-loci/1"
+        }
+      },
+      "waypoint": null,
+      "routePoints": 0
+    },
+    {
+      "id": 326,
+      "x": 89.80947053105369,
+      "y": 92.44832507310784,
+      "distance": 13.629376669609943,
+      "targetWater": false,
+      "canReach": false,
+      "canOccupy": true,
+      "pair": {
+        "enabled": true,
+        "reason": "",
+        "compatibility": {
+          "enabled": true,
+          "reason": "",
+          "gameteMatch": 0.8772321428571429,
+          "fertilityA": 1,
+          "fertilityB": 0.9326071428571429,
+          "conceptionChance": 0.818112962372449,
+          "model": "provisional-diploid-loci/1"
+        }
+      },
+      "waypoint": null,
+      "routePoints": 0
+    },
+    {
+      "id": 84,
+      "x": 95.96662446808378,
+      "y": 81.96662348804942,
+      "distance": 16.946798520138177,
+      "targetWater": false,
+      "canReach": false,
+      "canOccupy": true,
+      "pair": {
+        "enabled": true,
+        "reason": "",
+        "compatibility": {
+          "enabled": true,
+          "reason": "",
+          "gameteMatch": 0.9593303571428571,
+          "fertilityA": 1,
+          "fertilityB": 1,
+          "conceptionChance": 0.9593303571428571,
+          "model": "provisional-diploid-loci/1"
+        }
+      },
+      "waypoint": null,
+      "routePoints": 0
+    },
+    {
+      "id": 293,
+      "x": 68.12325960016874,
+      "y": 99.0632986561979,
+      "distance": 18.685907974666964,
+      "targetWater": false,
+      "canReach": false,
+      "canOccupy": true,
+      "pair": {
+        "enabled": true,
+        "reason": "",
+        "compatibility": {
+          "enabled": true,
+          "reason": "",
+          "gameteMatch": 0.9477142857142855,
+          "fertilityA": 1,
+          "fertilityB": 0.9532678571428571,
+          "conceptionChance": 0.9034255663265304,
+          "model": "provisional-diploid-loci/1"
+        }
+      },
+      "waypoint": null,
+      "routePoints": 0
+    },
+    {
+      "id": 69,
+      "x": 96.69837330149406,
+      "y": 80.77237975969359,
+      "distance": 17.84844696596305,
+      "targetWater": false,
+      "canReach": false,
+      "canOccupy": true,
+      "pair": {
+        "enabled": true,
+        "reason": "",
+        "compatibility": {
+          "enabled": true,
+          "reason": "",
+          "gameteMatch": 0.9690357142857144,
+          "fertilityA": 1,
+          "fertilityB": 1,
+          "conceptionChance": 0.9690357142857144,
+          "model": "provisional-diploid-loci/1"
+        }
+      },
+      "waypoint": null,
+      "routePoints": 0
+    },
+    {
+      "id": 230,
+      "x": 85.30631804472986,
+      "y": 96.9773353908237,
+      "distance": 14.39608466623934,
+      "targetWater": false,
+      "canReach": false,
+      "canOccupy": true,
+      "pair": {
+        "enabled": true,
+        "reason": "",
+        "compatibility": {
+          "enabled": true,
+          "reason": "",
+          "gameteMatch": 0.9589017857142856,
+          "fertilityA": 1,
+          "fertilityB": 0.9826964285714286,
+          "conceptionChance": 0.9423093601721938,
+          "model": "provisional-diploid-loci/1"
+        }
+      },
+      "waypoint": null,
+      "routePoints": 0
+    },
+    {
+      "id": 67,
+      "x": 68.96193136543613,
+      "y": 99.96193888428695,
+      "distance": 18.95588458084552,
+      "targetWater": false,
+      "canReach": false,
+      "canOccupy": true,
+      "pair": {
+        "enabled": true,
+        "reason": "",
+        "compatibility": {
+          "enabled": true,
+          "reason": "",
+          "gameteMatch": 0.9667410714285716,
+          "fertilityA": 1,
+          "fertilityB": 1,
+          "conceptionChance": 0.9667410714285716,
+          "model": "provisional-diploid-loci/1"
+        }
+      },
+      "waypoint": null,
+      "routePoints": 0
+    },
+    {
+      "id": 80,
+      "x": 100.52484133991673,
+      "y": 87.52487175755799,
+      "distance": 21.679789249051122,
+      "targetWater": false,
+      "canReach": false,
+      "canOccupy": true,
+      "pair": {
+        "enabled": true,
+        "reason": "",
+        "compatibility": {
+          "enabled": true,
+          "reason": "",
+          "gameteMatch": 0.9561964285714286,
+          "fertilityA": 1,
+          "fertilityB": 1,
+          "conceptionChance": 0.9561964285714286,
+          "model": "provisional-diploid-loci/1"
+        }
+      },
+      "waypoint": null,
+      "routePoints": 0
+    },
+    {
+      "id": 77,
+      "x": 72.4549791213595,
+      "y": 106.10473808451128,
+      "distance": 23.12236429179166,
+      "targetWater": false,
+      "canReach": false,
+      "canOccupy": true,
+      "pair": {
+        "enabled": true,
+        "reason": "",
+        "compatibility": {
+          "enabled": true,
+          "reason": "",
+          "gameteMatch": 0.9762857142857144,
+          "fertilityA": 1,
+          "fertilityB": 1,
+          "conceptionChance": 0.9762857142857144,
+          "model": "provisional-diploid-loci/1"
+        }
+      },
+      "waypoint": null,
+      "routePoints": 0
+    },
+    {
+      "id": 81,
+      "x": 96.72949614779078,
+      "y": 80.30428052175277,
+      "distance": 17.96867309150777,
+      "targetWater": false,
+      "canReach": false,
+      "canOccupy": true,
+      "pair": {
+        "enabled": true,
+        "reason": "",
+        "compatibility": {
+          "enabled": true,
+          "reason": "",
+          "gameteMatch": 0.9741250000000001,
+          "fertilityA": 1,
+          "fertilityB": 1,
+          "conceptionChance": 0.9741250000000001,
+          "model": "provisional-diploid-loci/1"
+        }
+      },
+      "waypoint": null,
+      "routePoints": 0
+    },
+    {
+      "id": 94,
+      "x": 68.48221599487248,
+      "y": 99.39010073661619,
+      "distance": 18.744497751647653,
+      "targetWater": false,
+      "canReach": false,
+      "canOccupy": true,
+      "pair": {
+        "enabled": true,
+        "reason": "",
+        "compatibility": {
+          "enabled": true,
+          "reason": "",
+          "gameteMatch": 0.9578303571428572,
+          "fertilityA": 1,
+          "fertilityB": 1,
+          "conceptionChance": 0.9578303571428572,
+          "model": "provisional-diploid-loci/1"
+        }
+      },
+      "waypoint": null,
+      "routePoints": 0
+    }
+  ],
+  "completeStateUnchanged": true
+}

@@ -1,0 +1,714 @@
+{
+ "viewport": "1920x1080",
+ "advancedDays": 120,
+ "day": 121,
+ "animals": 276,
+ "playerAlive": true,
+ "paused": false,
+ "seconds": 16.896,
+ "rows": [
+  {
+   "fn": "(program) (native):0",
+   "msPerSec": 245.4,
+   "pct": 23.8
+  },
+  {
+   "fn": "drawImage (native):0",
+   "msPerSec": 218.6,
+   "pct": 21.2
+  },
+  {
+   "fn": "drawEnvironmentalHistory src/render/renderer.js:724",
+   "msPerSec": 31.1,
+   "pct": 3
+  },
+  {
+   "fn": "recolorIndexedFrame src/render/indexed-part-art.js:105",
+   "msPerSec": 22.5,
+   "pct": 2.2
+  },
+  {
+   "fn": "(garbage collector) (native):0",
+   "msPerSec": 21.7,
+   "pct": 2.1
+  },
+  {
+   "fn": "fillRect (native):0",
+   "msPerSec": 21,
+   "pct": 2
+  },
+  {
+   "fn": "tinted src/render/indexed-part-renderer.js:29",
+   "msPerSec": 19,
+   "pct": 1.8
+  },
+  {
+   "fn": "save (native):0",
+   "msPerSec": 17.8,
+   "pct": 1.7
+  },
+  {
+   "fn": "paintOrganicLandBase src/render/renderer.js:513",
+   "msPerSec": 12.1,
+   "pct": 1.2
+  },
+  {
+   "fn": "drawAnimal src/render/renderer.js:825",
+   "msPerSec": 11.5,
+   "pct": 1.1
+  },
+  {
+   "fn": "cropYield src/ecology/dispersal.js:34",
+   "msPerSec": 11.3,
+   "pct": 1.1
+  },
+  {
+   "fn": "scale (native):0",
+   "msPerSec": 9.7,
+   "pct": 0.9
+  },
+  {
+   "fn": "drawGenvoSprite src/render/genvo-draw.js:64",
+   "msPerSec": 9.1,
+   "pct": 0.9
+  },
+  {
+   "fn": "getContext (native):0",
+   "msPerSec": 8.6,
+   "pct": 0.8
+  },
+  {
+   "fn": "putImageData (native):0",
+   "msPerSec": 8.5,
+   "pct": 0.8
+  },
+  {
+   "fn": "botanicalPlantView src/ecology/botanical-reproduction.js:49",
+   "msPerSec": 7.6,
+   "pct": 0.7
+  },
+  {
+   "fn": "drawGenvoBody src/render/genvo-draw.js:107",
+   "msPerSec": 5.9,
+   "pct": 0.6
+  },
+  {
+   "fn": "restore (native):0",
+   "msPerSec": 5.6,
+   "pct": 0.5
+  },
+  {
+   "fn": "render src/render/renderer.js:68",
+   "msPerSec": 5.4,
+   "pct": 0.5
+  },
+  {
+   "fn": "o.<computed> src/main.js:255",
+   "msPerSec": 5.2,
+   "pct": 0.5
+  },
+  {
+   "fn": "genvoVisualPose src/render/genvo.js:12",
+   "msPerSec": 5,
+   "pct": 0.5
+  },
+  {
+   "fn": "createImageBitmap (native):0",
+   "msPerSec": 4.7,
+   "pct": 0.5
+  },
+  {
+   "fn": "pixel src/render/pixel-art.js:9",
+   "msPerSec": 4.6,
+   "pct": 0.4
+  },
+  {
+   "fn": "createImageData (native):0",
+   "msPerSec": 4.6,
+   "pct": 0.4
+  },
+  {
+   "fn": "pruneUnusedFloraGenomes src/ecology/flora-genome-lifetime.js:4",
+   "msPerSec": 4.5,
+   "pct": 0.4
+  },
+  {
+   "fn": "livingCounts src/lineage/evolution-tree.js:49",
+   "msPerSec": 4.5,
+   "pct": 0.4
+  },
+  {
+   "fn": "groundDiet src/ecology/functional-diet.js:34",
+   "msPerSec": 4.3,
+   "pct": 0.4
+  },
+  {
+   "fn": "drawTileDynamic src/render/renderer.js:383",
+   "msPerSec": 3.9,
+   "pct": 0.4
+  },
+  {
+   "fn": "drawCreatureDepthShadow src/render/depth.js:57",
+   "msPerSec": 3.9,
+   "pct": 0.4
+  },
+  {
+   "fn": "terrainChunk src/render/renderer.js:357",
+   "msPerSec": 3.8,
+   "pct": 0.4
+  },
+  {
+   "fn": "(anon) src/render/indexed-part-renderer.js:31",
+   "msPerSec": 3.5,
+   "pct": 0.3
+  },
+  {
+   "fn": "huntingAbility src/ecology/functional-diet.js:40",
+   "msPerSec": 3.4,
+   "pct": 0.3
+  },
+  {
+   "fn": "draw src/render/indexed-part-renderer.js:117",
+   "msPerSec": 3.4,
+   "pct": 0.3
+  },
+  {
+   "fn": "canReach src/lineage/lifestyle.js:18",
+   "msPerSec": 3.4,
+   "pct": 0.3
+  },
+  {
+   "fn": "(anon) src/family/family.js:47",
+   "msPerSec": 3.3,
+   "pct": 0.3
+  },
+  {
+   "fn": "visualWaterMask src/render/renderer.js:488",
+   "msPerSec": 3.3,
+   "pct": 0.3
+  },
+  {
+   "fn": "surveyAt src/ecology/carrying.js:21",
+   "msPerSec": 3.3,
+   "pct": 0.3
+  },
+  {
+   "fn": "drawGroundContact src/render/physicality.js:14",
+   "msPerSec": 3.2,
+   "pct": 0.3
+  },
+  {
+   "fn": "getBoundingClientRect (native):0",
+   "msPerSec": 3.2,
+   "pct": 0.3
+  },
+  {
+   "fn": "(anon) src/cognition/social.js:68",
+   "msPerSec": 3.2,
+   "pct": 0.3
+  },
+  {
+   "fn": "keepSprite src/render/genvo-draw.js:55",
+   "msPerSec": 3.1,
+   "pct": 0.3
+  },
+  {
+   "fn": "rotate (native):0",
+   "msPerSec": 3.1,
+   "pct": 0.3
+  },
+  {
+   "fn": "smoothSeedNoise src/render/habitat.js:61",
+   "msPerSec": 3,
+   "pct": 0.3
+  },
+  {
+   "fn": "select src/render/indexed-part-renderer.js:67",
+   "msPerSec": 3,
+   "pct": 0.3
+  },
+  {
+   "fn": "(idle) (native):0",
+   "msPerSec": 2.9,
+   "pct": 0.3
+  },
+  {
+   "fn": "habitatSceneAt src/render/scene.js:9",
+   "msPerSec": 2.9,
+   "pct": 0.3
+  },
+  {
+   "fn": "adultFloraGenome src/ecology/flora-inheritance.js:15",
+   "msPerSec": 2.8,
+   "pct": 0.3
+  },
+  {
+   "fn": "drawPart src/render/part-sprites.js:276",
+   "msPerSec": 2.7,
+   "pct": 0.3
+  },
+  {
+   "fn": "phenotypeFor src/organisms/species.js:26",
+   "msPerSec": 2.7,
+   "pct": 0.3
+  },
+  {
+   "fn": "overlapOf src/ecology/dietary-demand.js:35",
+   "msPerSec": 2.7,
+   "pct": 0.3
+  },
+  {
+   "fn": "hash2 src/render/renderer.js:964",
+   "msPerSec": 2.5,
+   "pct": 0.2
+  },
+  {
+   "fn": "(anon) src/gameplay/discovery.js:54",
+   "msPerSec": 2.5,
+   "pct": 0.2
+  },
+  {
+   "fn": "riverIdentityAt src/render/identity.js:39",
+   "msPerSec": 2.5,
+   "pct": 0.2
+  },
+  {
+   "fn": "plantVisualSignature src/render/renderer.js:484",
+   "msPerSec": 2.3,
+   "pct": 0.2
+  },
+  {
+   "fn": "options src/gameplay/foraging.js:51",
+   "msPerSec": 2.3,
+   "pct": 0.2
+  },
+  {
+   "fn": "behaviorVisualState src/render/behavior.js:6",
+   "msPerSec": 2.3,
+   "pct": 0.2
+  },
+  {
+   "fn": "render src/ui/tutorial.js:397",
+   "msPerSec": 2.2,
+   "pct": 0.2
+  },
+  {
+   "fn": "buildVisualWaterMask src/render/landform.js:7",
+   "msPerSec": 2.2,
+   "pct": 0.2
+  },
+  {
+   "fn": "visualActionFromIntent src/render/behavior.js:80",
+   "msPerSec": 2.2,
+   "pct": 0.2
+  },
+  {
+   "fn": "visualState src/cognition/social.js:65",
+   "msPerSec": 2.1,
+   "pct": 0.2
+  },
+  {
+   "fn": "clearRect (native):0",
+   "msPerSec": 2,
+   "pct": 0.2
+  },
+  {
+   "fn": "headPose src/render/head.js:6",
+   "msPerSec": 2,
+   "pct": 0.2
+  },
+  {
+   "fn": "resourceAction src/sim/simulation.js:535",
+   "msPerSec": 2,
+   "pct": 0.2
+  },
+  {
+   "fn": "translate (native):0",
+   "msPerSec": 2,
+   "pct": 0.2
+  },
+  {
+   "fn": "visualLifeState src/render/life.js:6",
+   "msPerSec": 2,
+   "pct": 0.2
+  },
+  {
+   "fn": "drawBone src/render/indexed-part-renderer.js:47",
+   "msPerSec": 1.9,
+   "pct": 0.2
+  },
+  {
+   "fn": "breedingState src/ecology/carrying.js:73",
+   "msPerSec": 1.9,
+   "pct": 0.2
+  },
+  {
+   "fn": "forEachNearby src/sim/simulation.js:224",
+   "msPerSec": 1.9,
+   "pct": 0.2
+  },
+  {
+   "fn": "frame src/main.js:233",
+   "msPerSec": 1.9,
+   "pct": 0.2
+  },
+  {
+   "fn": "sample src/render/encounter-expression.js:8",
+   "msPerSec": 1.9,
+   "pct": 0.2
+  },
+  {
+   "fn": "visualCompositionAt src/render/composition.js:7",
+   "msPerSec": 1.8,
+   "pct": 0.2
+  },
+  {
+   "fn": "plantPreference src/ecology/functional-diet.js:28",
+   "msPerSec": 1.8,
+   "pct": 0.2
+  },
+  {
+   "fn": "dietaryDemand src/ecology/dietary-demand.js:13",
+   "msPerSec": 1.7,
+   "pct": 0.2
+  },
+  {
+   "fn": "(anon) src/ecology/dietary-demand.js:27",
+   "msPerSec": 1.7,
+   "pct": 0.2
+  },
+  {
+   "fn": "competitorsIn src/family/sustainability.js:34",
+   "msPerSec": 1.7,
+   "pct": 0.2
+  },
+  {
+   "fn": "drawOrganicHabitat src/render/renderer.js:530",
+   "msPerSec": 1.6,
+   "pct": 0.2
+  },
+  {
+   "fn": "setTransform (native):0",
+   "msPerSec": 1.6,
+   "pct": 0.2
+  },
+  {
+   "fn": "drawLeg src/render/genvo-draw.js:129",
+   "msPerSec": 1.6,
+   "pct": 0.2
+  },
+  {
+   "fn": "sample src/render/motion.js:8",
+   "msPerSec": 1.6,
+   "pct": 0.2
+  },
+  {
+   "fn": "drawOrganicLandBase src/render/renderer.js:500",
+   "msPerSec": 1.5,
+   "pct": 0.1
+  },
+  {
+   "fn": "drawOrganicWaterMotion src/render/renderer.js:566",
+   "msPerSec": 1.5,
+   "pct": 0.1
+  },
+  {
+   "fn": "canHunt src/ecology/functional-diet.js:46",
+   "msPerSec": 1.5,
+   "pct": 0.1
+  },
+  {
+   "fn": "(anon) src/render/renderer.js:94",
+   "msPerSec": 1.5,
+   "pct": 0.1
+  },
+  {
+   "fn": "environmentContactFor src/render/physicality.js:5",
+   "msPerSec": 1.5,
+   "pct": 0.1
+  },
+  {
+   "fn": "artMount src/render/part-sprites.js:236",
+   "msPerSec": 1.5,
+   "pct": 0.1
+  },
+  {
+   "fn": "color src/render/creature-palette.js:5",
+   "msPerSec": 1.5,
+   "pct": 0.1
+  },
+  {
+   "fn": "queueTerrainWarmRing src/render/renderer.js:346",
+   "msPerSec": 1.5,
+   "pct": 0.1
+  },
+  {
+   "fn": "vegetationLayer src/render/renderer.js:470",
+   "msPerSec": 1.4,
+   "pct": 0.1
+  },
+  {
+   "fn": "(anon) src/gameplay/discovery.js:57",
+   "msPerSec": 1.4,
+   "pct": 0.1
+  },
+  {
+   "fn": "socketPoints src/render/socket-layout.js:25",
+   "msPerSec": 1.4,
+   "pct": 0.1
+  },
+  {
+   "fn": "applyEncounterPose src/render/encounter-expression.js:36",
+   "msPerSec": 1.4,
+   "pct": 0.1
+  },
+  {
+   "fn": "spriteKey src/render/renderer.js:967",
+   "msPerSec": 1.4,
+   "pct": 0.1
+  },
+  {
+   "fn": "visualHabitatAt src/render/habitat.js:22",
+   "msPerSec": 1.4,
+   "pct": 0.1
+  },
+  {
+   "fn": "close (native):0",
+   "msPerSec": 1.4,
+   "pct": 0.1
+  },
+  {
+   "fn": "advanceBotanicalReproduction src/ecology/botanical-reproduction.js:37",
+   "msPerSec": 1.3,
+   "pct": 0.1
+  },
+  {
+   "fn": "terrainColor src/render/renderer.js:974",
+   "msPerSec": 1.3,
+   "pct": 0.1
+  },
+  {
+   "fn": "record src/ecology/flora-genome-lifetime.js:4",
+   "msPerSec": 1.3,
+   "pct": 0.1
+  },
+  {
+   "fn": "sampleField src/render/habitat.js:55",
+   "msPerSec": 1.2,
+   "pct": 0.1
+  },
+  {
+   "fn": "assemblyFor src/render/creature-assembler.js:51",
+   "msPerSec": 1.2,
+   "pct": 0.1
+  },
+  {
+   "fn": "playerStatus src/gameplay/predator-encounter.js:293",
+   "msPerSec": 1.2,
+   "pct": 0.1
+  },
+  {
+   "fn": "smoothSeedNoise src/render/landform.js:48",
+   "msPerSec": 1.2,
+   "pct": 0.1
+  },
+  {
+   "fn": "sampleCell src/family/sustainability.js:52",
+   "msPerSec": 1.2,
+   "pct": 0.1
+  },
+  {
+   "fn": "habitatQuality src/ecology/migration.js:64",
+   "msPerSec": 1.2,
+   "pct": 0.1
+  },
+  {
+   "fn": "drawOrganicBankAccents src/render/renderer.js:600",
+   "msPerSec": 1.2,
+   "pct": 0.1
+  },
+  {
+   "fn": "drawTerrainChunks src/render/renderer.js:329",
+   "msPerSec": 1.2,
+   "pct": 0.1
+  },
+  {
+   "fn": "update src/ui/interaction-dock.js:23",
+   "msPerSec": 1.2,
+   "pct": 0.1
+  },
+  {
+   "fn": "drawVegetation src/render/renderer.js:791",
+   "msPerSec": 1.1,
+   "pct": 0.1
+  },
+  {
+   "fn": "nearbyFood src/ui/readability.js:17",
+   "msPerSec": 1.1,
+   "pct": 0.1
+  },
+  {
+   "fn": "creatureShadowFor src/render/depth.js:48",
+   "msPerSec": 1.1,
+   "pct": 0.1
+  },
+  {
+   "fn": "sum src/ecology/flora-inheritance.js:7",
+   "msPerSec": 1.1,
+   "pct": 0.1
+  },
+  {
+   "fn": "drawLandDetailLive src/render/renderer.js:417",
+   "msPerSec": 1.1,
+   "pct": 0.1
+  },
+  {
+   "fn": "drawForegroundContact src/render/physicality.js:34",
+   "msPerSec": 1.1,
+   "pct": 0.1
+  },
+  {
+   "fn": "stroke (native):0",
+   "msPerSec": 1,
+   "pct": 0.1
+  },
+  {
+   "fn": "pollCourtshipAudio src/audio/audio.js:166",
+   "msPerSec": 1,
+   "pct": 0.1
+  },
+  {
+   "fn": "hexRgb src/render/genvo-draw.js:35",
+   "msPerSec": 1,
+   "pct": 0.1
+  },
+  {
+   "fn": "drawRiparianDepth src/render/habitat-detail.js:6",
+   "msPerSec": 1,
+   "pct": 0.1
+  },
+  {
+   "fn": "collectHabitatScenes src/render/scene.js:40",
+   "msPerSec": 0.9,
+   "pct": 0.1
+  },
+  {
+   "fn": "legsOf src/lineage/aquatic.js:25",
+   "msPerSec": 0.9,
+   "pct": 0.1
+  },
+  {
+   "fn": "affinityFor src/ecology/population-memory.js:68",
+   "msPerSec": 0.9,
+   "pct": 0.1
+  },
+  {
+   "fn": "buildVisualHabitatMask src/render/habitat.js:28",
+   "msPerSec": 0.9,
+   "pct": 0.1
+  }
+ ],
+ "files": [
+  {
+   "file": "(native)",
+   "msPerSec": 588.7,
+   "pct": 57.1
+  },
+  {
+   "file": "src/render/renderer.js",
+   "msPerSec": 105.1,
+   "pct": 10.2
+  },
+  {
+   "file": "src/render/indexed-part-renderer.js",
+   "msPerSec": 35.1,
+   "pct": 3.4
+  },
+  {
+   "file": "src/render/genvo-draw.js",
+   "msPerSec": 24.8,
+   "pct": 2.4
+  },
+  {
+   "file": "src/render/indexed-part-art.js",
+   "msPerSec": 23.4,
+   "pct": 2.3
+  },
+  {
+   "file": "src/ecology/functional-diet.js",
+   "msPerSec": 14,
+   "pct": 1.4
+  },
+  {
+   "file": "src/ecology/dispersal.js",
+   "msPerSec": 13.8,
+   "pct": 1.3
+  },
+  {
+   "file": "src/sim/simulation.js",
+   "msPerSec": 11.5,
+   "pct": 1.1
+  },
+  {
+   "file": "src/ecology/botanical-reproduction.js",
+   "msPerSec": 10,
+   "pct": 1
+  },
+  {
+   "file": "src/family/family.js",
+   "msPerSec": 8,
+   "pct": 0.8
+  },
+  {
+   "file": "src/main.js",
+   "msPerSec": 7.5,
+   "pct": 0.7
+  },
+  {
+   "file": "src/ecology/dietary-demand.js",
+   "msPerSec": 6.7,
+   "pct": 0.6
+  },
+  {
+   "file": "src/render/habitat.js",
+   "msPerSec": 6.6,
+   "pct": 0.6
+  },
+  {
+   "file": "src/cognition/social.js",
+   "msPerSec": 6.5,
+   "pct": 0.6
+  },
+  {
+   "file": "src/ecology/carrying.js",
+   "msPerSec": 6.5,
+   "pct": 0.6
+  },
+  {
+   "file": "src/ecology/flora-genome-lifetime.js",
+   "msPerSec": 6.4,
+   "pct": 0.6
+  },
+  {
+   "file": "src/render/depth.js",
+   "msPerSec": 6.4,
+   "pct": 0.6
+  },
+  {
+   "file": "src/gameplay/discovery.js",
+   "msPerSec": 6.3,
+   "pct": 0.6
+  },
+  {
+   "file": "src/lineage/evolution-tree.js",
+   "msPerSec": 6.2,
+   "pct": 0.6
+  },
+  {
+   "file": "src/render/genvo.js",
+   "msPerSec": 6.1,
+   "pct": 0.6
+  }
+ ],
+ "errors": []
+}

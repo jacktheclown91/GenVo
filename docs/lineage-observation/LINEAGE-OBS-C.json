@@ -1,0 +1,128 @@
+{
+ "schema": "genvo.lineage-observation/1",
+ "seed": "LINEAGE-OBS-C",
+ "days": 240,
+ "note": "Natural AUTO lineage; nothing forced.",
+ "timeline": [
+  {
+   "day": 2,
+   "alive": 1,
+   "highestGeneration": 1,
+   "byGeneration": {
+    "1": 1
+   }
+  },
+  {
+   "day": 22,
+   "alive": 1,
+   "highestGeneration": 1,
+   "byGeneration": {
+    "1": 1
+   }
+  },
+  {
+   "day": 42,
+   "alive": 1,
+   "highestGeneration": 1,
+   "byGeneration": {
+    "1": 1
+   }
+  },
+  {
+   "day": 62,
+   "alive": 1,
+   "highestGeneration": 1,
+   "byGeneration": {
+    "1": 1
+   }
+  },
+  {
+   "day": 82,
+   "alive": 1,
+   "highestGeneration": 1,
+   "byGeneration": {
+    "1": 1
+   }
+  },
+  {
+   "day": 102,
+   "alive": 1,
+   "highestGeneration": 1,
+   "byGeneration": {
+    "1": 1
+   }
+  },
+  {
+   "day": 122,
+   "alive": 1,
+   "highestGeneration": 1,
+   "byGeneration": {
+    "1": 1
+   }
+  },
+  {
+   "day": 142,
+   "alive": 1,
+   "highestGeneration": 1,
+   "byGeneration": {
+    "1": 1
+   }
+  },
+  {
+   "day": 162,
+   "alive": 1,
+   "highestGeneration": 1,
+   "byGeneration": {
+    "1": 1
+   }
+  },
+  {
+   "day": 182,
+   "alive": 1,
+   "highestGeneration": 1,
+   "byGeneration": {
+    "1": 1
+   }
+  },
+  {
+   "day": 202,
+   "alive": 1,
+   "highestGeneration": 1,
+   "byGeneration": {
+    "1": 1
+   }
+  },
+  {
+   "day": 222,
+   "alive": 0,
+   "highestGeneration": 1,
+   "byGeneration": {}
+  }
+ ],
+ "generations": {
+  "1": {
+   "members": 1,
+   "alive": 0,
+   "distinctBodies": 1,
+   "mouths": {
+    "grazing-mouth": 1
+   },
+   "adaptations": {},
+   "landSpeed": 2.002,
+   "forageRange": 8.253,
+   "threatSense": 4.585,
+   "metabolism": 1.055,
+   "behaviour": {
+    "feed": 0.584,
+    "drink": 0.335,
+    "group-alarm": 0.04,
+    "ward": 0.016,
+    "explore": 0.015,
+    "mate": 0.011
+   },
+   "deaths": {
+    "starvation": 1
+   }
+  }
+ }
+}

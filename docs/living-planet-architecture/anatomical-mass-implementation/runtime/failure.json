@@ -1,0 +1,4 @@
+{
+  "message": "locator.click: Error: strict mode violation: locator('[data-screen-target=\"new\"]') resolved to 2 elements:\n    1) <button data-screen-target=\"new\">…</button> aka getByRole('button', { name: 'New World' })\n    2) <button data-screen-target=\"new\">New World</button> aka getByLabel('Saved worlds').getByText('New World')\n\nCall log:\n\u001b[2m  - waiting for locator('[data-screen-target=\"new\"]')\u001b[22m\n",
+  "errors": []
+}

@@ -1,0 +1,30 @@
+{
+  "scope": "Lossless transfer of this actual native save into a new isolated test IndexedDB, then normal Continue. Wait requires saved world identity/tick/age and complete scene before observation. A few live updates before normal pause are allowed, not claimed exact browser-frame equality.",
+  "expected": {
+    "seed": "GENVO8-TEST-A",
+    "slot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+    "day": 150,
+    "tick": 7193
+  },
+  "actual": {
+    "seed": "GENVO8-TEST-A",
+    "slot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+    "day": 151,
+    "tick": 7208,
+    "id": 109,
+    "age": 182,
+    "body": "bp0-4134709b",
+    "lastRefusal": {
+      "tick": 6132,
+      "reason": "second-declines",
+      "day": 128,
+      "declinerId": 328,
+      "taste": null,
+      "count": 1,
+      "otherId": 328
+    },
+    "sceneShown": true,
+    "scenePending": false
+  },
+  "errors": []
+}

@@ -1,3 +1,4 @@
+import {WATER_AXES,adaptationAxis} from './water-physiology.js';
 import {GENETIC_DOMAIN} from '../organisms/species.js';
 import {CFG} from '../sim/config.js';
 import {ADAPTATIONS,ADAPTATION_IDS,ANATOMY_AXES,ANATOMY_FOR,BODY_ABILITIES,syncAnatomy,expressedAdaptations,emptyAnatomy,seedValueFor,refreshExpression} from './evolution.js';
@@ -43,13 +44,18 @@ export function inheritLineageAnatomy(rng,parents,childSeed=0){
     if(v>0){const j=Math.max(0,Math.min(1,v+jitter(childSeed,ax)));if(tier(j,ax)===tier(v,ax))v=j}
     out[ax]=v;
   }
+  for(const [id,axis] of Object.entries(WATER_AXES)){
+    const def=ANATOMY_FOR[id],va=a[adaptationAxis(a,id,def.axis)]||0,vb=b[adaptationAxis(b,id,def.axis)]||0;
+    const hi=Math.max(va,vb),lo=Math.min(va,vb);
+    out[axis]=(hi>=def.threshold)===(lo>=def.threshold)?(va+vb)/2:(rng.chance(H.singleParentCarry)?hi:lo);
+  }
   return out;
 }
 
 // Kept for older callers and tests: the adaptations a child would express.
 export function inheritLineageAdaptations(rng,parents){return expressedAdaptations(inheritLineageAnatomy(rng,parents))}
 export function adaptationCarryChance(id,a,b){
-  const def=ANATOMY_FOR[id],ea=def?(syncAnatomy(a)?.[def.axis]||0)>=def.threshold:false,eb=def?(syncAnatomy(b)?.[def.axis]||0)>=def.threshold:false;
+  const def=ANATOMY_FOR[id],aa=syncAnatomy(a),ab=syncAnatomy(b),ea=def?(aa?.[adaptationAxis(aa,id,def.axis)]||0)>=def.threshold:false,eb=def?(ab?.[adaptationAxis(ab,id,def.axis)]||0)>=def.threshold:false;
   const n=(ea?1:0)+(eb?1:0);
   return n>=2?1:n===1?CFG.heredity.singleParentCarry:0;
 }
@@ -66,7 +72,8 @@ export function rankEmergentAdaptations(existing,pressure){
   return [...scores].sort((x,y)=>y[1]-x[1]||x[0].localeCompare(y[0]));
 }
 
-// Occasionally a newborn shows a new adaptation suited to what its parents faced.
+// Historical directed-emergence helper, retained for legacy contract diagnostics only.
+// The active Simulation birth authority no longer calls this function.
 export function emergentAdaptation(sim,child,parents){
   const H=CFG.heredity;if(!child||!parents?.length)return null;
   const pressure=[];for(const p of parents)for(const item of sim.pressure?.lifetimeSummary?.(p,{limit:4})||[])pressure.push(item);

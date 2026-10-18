@@ -1,0 +1,21 @@
+// Review prototype only. Not imported by World, Simulation or live bodyMass.
+import {PARTS} from '../../../src/lineage/part-registry.js';
+import {validatePlan} from '../../../src/lineage/body-plan.js';
+import {founderPlan} from '../../../src/lineage/body-inheritance.js';
+import {SPECIES} from '../../../src/organisms/species.js';
+import {developmentFor} from '../../../src/family/family.js';
+import {TISSUE_ENERGY_PER_MASS,GROWTH_EFFICIENCY} from '../../../src/ecology/juvenile-biology.js';
+export const MASS_PROPOSAL='relative-anatomical-load/1';
+export const FOUNDER_LOAD=founderPlan().nodes.reduce((n,p)=>n+PARTS[p.partId].mass,0);
+export const REFERENCE_ADULT_MASS=SPECIES.genvo.mass;
+export const MASS_PER_LOAD=REFERENCE_ADULT_MASS/FOUNDER_LOAD;
+export function proposedMass(plan,{growth=1}={}){
+ const validation=validatePlan(plan);if(!validation.ok)throw Error('Invalid body: '+validation.errors.join('; '));
+ if(!Number.isFinite(growth)||growth<=0||growth>1)throw Error('Invalid current development fraction');
+ const components=plan.nodes.map(n=>{const load=PARTS[n.partId].mass;if(!Number.isFinite(load)||load<0)throw Error('Unreviewed load: '+n.partId);return{nodeId:n.id,partId:n.partId,load,adultMass:load*MASS_PER_LOAD}}),adult=components.reduce((n,p)=>n+p.adultMass,0);
+ if(!(adult>0&&Number.isFinite(adult)))throw Error('Invalid total anatomical load');
+ return{policy:MASS_PROPOSAL,units:'existing game mass units; not kg or calibrated tissue',adultMass:adult,currentMass:adult*growth**3,components};
+}
+export function proposedGrowthCost(animal){const species=SPECIES[animal.species];if(!species)throw Error('Unknown developmental schedule');if(animal.age>=species.maturity)return 0;const adult=proposedMass(animal.bodyPlan).adultMass,at=age=>adult*developmentFor({...animal,age}).growth**3;return Math.max(0,at(animal.age+1)-at(animal.age))*TISSUE_ENERGY_PER_MASS/GROWTH_EFFICIENCY/Math.max(.5,animal.genes?.metabolism??1)}
+export function proposedBasalCosts(animal){const mass=proposedMass(animal.bodyPlan,{growth:developmentFor(animal).growth}).currentMass;return{energyPerMetabolismStep:SPECIES.genvo.baseMetabolism/REFERENCE_ADULT_MASS*mass/Math.max(.5,animal.genes?.metabolism??1),waterPerMetabolismStep:SPECIES.genvo.waterUse/REFERENCE_ADULT_MASS*mass};}
+export const catalogLoads=Object.fromEntries(Object.values(PARTS).map(p=>[p.id,p.mass]));

@@ -6,6 +6,8 @@ import {CFG} from '../sim/config.js';
 import {SPECIES,canPreyOn} from '../organisms/species.js';
 import {stalkerProfileFor} from '../organisms/stalker-profile.js';
 import {hasAdaptation} from '../lineage/evolution.js';
+import {PREDATION_PARITY} from './predation-parity.js';
+import {REFUGE_PARITY,refugeAgainst,coverHides} from '../ecology/refuges.js';
 
 // Player-facing predator encounter authority.
 // Background predator/prey ecology remains on the canonical hunt/tryKill() path.
@@ -39,6 +41,8 @@ export class PredatorEncounterController{
     if(this.sim.camouflageConceals(player,hunter,distance))return false;
     const P=CFG.stalkerPursuit,senses=(hunter.genes?.senses||1)*wildTraits(hunter).sight;
     const pf=partEffectFactors(player);if(distance>P.sight*senses*(pf?.quiet?WAVE1.quietSight:1)*(pf?.visibility??1))return false;
+    // Phase 3I refuges: the same cover rule that hides any prey from any hunter (size-scaled, noise-aware).
+    if(REFUGE_PARITY.enabled)return !coverHides(this.sim,player,hunter,distance,{tracking:hunter.playerHunt?.targetId===player.id});
     if((player.noisyUntilTick||0)>=this.sim.tickCount)return true;
     const cover=this.sim.coverAt(player);
     if(cover>=P.coverHide&&distance>(this.sim.playerCombat?.isStill?.(player)?P.stillCoverRange:P.coverHideRange)*senses)return false;
@@ -53,7 +57,8 @@ export class PredatorEncounterController{
 
   giveUp(hunter,player,outcome,seconds){
     this.noteOutcome(hunter,player,outcome);
-    hunter.playerAversion={targetId:player.id,untilTick:this.sim.tickCount+Math.round(CFG.simHz*seconds)};
+    // reason/wounds are presentation evidence for the retreat; aversion timing stays the authority.
+    hunter.playerAversion={targetId:player.id,untilTick:this.sim.tickCount+Math.round(CFG.simHz*seconds),reason:outcome,wounds:hunter.playerHunt?.wounds||0};
     this.clear(hunter);
     const den=this.sim.stalkerTerritory?.retreatTarget?.(hunter,player);if(den)return{intent:'return-den',target:den};
     const dx=hunter.x-player.x,dy=hunter.y-player.y,len=Math.hypot(dx,dy)||1;
@@ -62,7 +67,7 @@ export class PredatorEncounterController{
 
   decision(hunter,player){
     if(!this.validPair(hunter,player)){this.clear(hunter);return null}
-    if(hunter.playerHunt&&this.sim.discovery?.refugeFor?.(player))return this.giveUp(hunter,player,'lost',CFG.stalkerPursuit.outrunAversion||4);
+    if(hunter.playerHunt&&(REFUGE_PARITY.enabled?refugeAgainst(this.sim,player,hunter):this.sim.discovery?.refugeFor?.(player)))return this.giveUp(hunter,player,'lost',CFG.stalkerPursuit.outrunAversion||4);
     const profile=stalkerProfileFor(hunter),distance=Math.hypot(hunter.x-player.x,hunter.y-player.y),concealed=this.sim.camouflageConceals(player,hunter,distance);
     let state=hunter.playerHunt?.targetId===player.id?hunter.playerHunt:null;
     if(concealed&&state?.phase!=='charge'){this.clear(hunter);return null}
@@ -80,7 +85,7 @@ export class PredatorEncounterController{
       // Distance only counts if the player actually made it: a long overrun alone is not an escape.
       if(distance>=breakawayRange&&distance>=(state.recoverStartDistance||0)+1.2){
         this.noteOutcome(hunter,player,'escaped');
-        hunter.playerAversion={targetId:player.id,untilTick:this.sim.tickCount+Math.round(CFG.simHz*profile.breakawayAversion)};
+        hunter.playerAversion={targetId:player.id,untilTick:this.sim.tickCount+Math.round(CFG.simHz*profile.breakawayAversion),reason:'escaped',wounds:state.wounds||0};
         this.clear(hunter);
         const dx=hunter.x-player.x,dy=hunter.y-player.y,len=Math.hypot(dx,dy)||1;
         return{intent:'escape',target:{x:hunter.x+dx/len*5,y:hunter.y+dy/len*5}};
@@ -228,7 +233,8 @@ export class PredatorEncounterController{
     if(distance>.92)return false;
     // Real body contact at the end of a committed lane usually lands; the canonical
     // predation roll still decides it, so shelter and adaptations keep their say.
-    const hit=this.sim.tryKill(hunter,player,{chanceBonus:CFG.stalkerPursuit.contactBonus});
+    // Predation parity (Phase 3I): contact resolves exactly like a wild hunter's bite, with no extra bonus.
+    const hit=this.sim.tryKill(hunter,player,{chanceBonus:PREDATION_PARITY.enabled?0:CFG.stalkerPursuit.contactBonus});
     this.noteOutcome(hunter,player,hit?'hit':'dodged');
     // Bitter slime already writes a real aversion in tryKill(); preserve that authority by
     // ending the hunt immediately instead of overwriting it with a generic recovery state.
@@ -275,7 +281,7 @@ export class PredatorEncounterController{
 
     // Wary Stalkers can be driven out of the engagement by a clean wound.
     if(result.ok&&profile.id==='wary'&&player){
-      hunter.playerAversion={targetId:player.id,untilTick:this.sim.tickCount+Math.round(CFG.simHz*2.65)};
+      hunter.playerAversion={targetId:player.id,untilTick:this.sim.tickCount+Math.round(CFG.simHz*2.65),reason:'driven-off',wounds:hunter.playerHunt.wounds||0};
       this.clear(hunter);hunter.intent='escape';hunter.target=null;return;
     }
     // A successful counter-hit during the tell interrupts commitment. Hitting during the

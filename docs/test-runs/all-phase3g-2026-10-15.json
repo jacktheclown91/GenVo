@@ -1,0 +1,3388 @@
+{
+ "schema": "genvo.test-run/2",
+ "mode": "all",
+ "date": "2026-10-15T20:57:50.717Z",
+ "seconds": 694,
+ "total": 374,
+ "pass": 367,
+ "knownFail": 7,
+ "fail": 0,
+ "timeout": 0,
+ "stale": 0,
+ "deferred": 0,
+ "results": [
+  {
+   "name": "accessible-guidance",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "action-icons",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "action-restriction-reasons",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "active-care-conservation",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "active-family-separation",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "activity-budget",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "adaptation",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "ai-disclosure",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/ai-disclosure.mjs:4",
+   "error": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\submission\\AI_DISCLOSURE.txt'\r",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "anatomical-strike-performance",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "anatomy-locomotion",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "anatomy-readings",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "anatomy-thresholds",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "animation",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "aquatic",
+   "tier": "fast",
+   "seconds": 6.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "aquatic-lifestyle",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "audio",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "audio-assets",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "audio-phenotype",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "audio-runtime",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "authored-draft-compiler",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "auto-home",
+   "tier": "fast",
+   "seconds": 4.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "autonomous-soil-engineering",
+   "tier": "long",
+   "seconds": 242.6,
+   "timeoutSeconds": 900,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "background-movement-budget",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "behavior-readability",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "behavioral-specialization",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "birth-hydration",
+   "tier": "fast",
+   "seconds": 8.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "birth-reserves",
+   "tier": "fast",
+   "seconds": 1.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "botanical-genetics",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "botanical-populations",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "botanical-reproduction",
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "botanical-safety",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "breeding-site-attachment",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "brood-investment",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "canonical-source",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/canonical-source.mjs:6",
+   "error": "AssertionError [ERR_ASSERTION]: {\r",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "care-command-provision",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "carrying",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "carrying-anatomy-cache",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "carrying-connected-demand",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "carrying-land-access",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "carrying-live-stock",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "clarity-feedback-v110",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "clonal-flora",
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "cognition",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "combat-footwork",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "combat-pressure",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "community-ui-feedback",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "composition",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "conception-availability",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "conception-parental-inheritance",
+   "tier": "fast",
+   "seconds": 4.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "consolidation-demand-parity",
+   "tier": "fast",
+   "seconds": 8.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "context-guidance",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "contextual-interactions",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "control-response",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "core",
+   "tier": "fast",
+   "seconds": 1.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "courtship-performance",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "courtship-tendency-priority",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "courtship-threat-priority",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "creature-assembly",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "creature-instance-expression",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "creature-lab-assembly",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "decisions-under-pressure",
+   "tier": "fast",
+   "seconds": 3.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "depth-render",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "developmental-cost",
+   "tier": "fast",
+   "seconds": 0.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "developmental-hunt",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "diet-lifestyles",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "digging-calendar",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "discovery",
+   "tier": "fast",
+   "seconds": 0.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "disease",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "dispersal",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "dispersal-feeding-priority",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "disturbed-soil-germination",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "drink-goal",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "dual-physiology",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "dual-reproductive-anatomy",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "ecological-integrity",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "ecology-progress",
+   "tier": "fast",
+   "seconds": 3.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "ecology-resume",
+   "tier": "long",
+   "seconds": 200.3,
+   "timeoutSeconds": 600,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "editor-pass",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "egg-nest-predation",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "emergent-contracts",
+   "tier": "fast",
+   "seconds": 1.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "encounter-reactions",
+   "tier": "fast",
+   "seconds": 0.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "engineer-breeding-habitat",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "engineer-breeding-opportunities",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "engineer-colony-boundaries",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "engineer-colony-natural",
+   "tier": "long",
+   "seconds": 87.4,
+   "timeoutSeconds": 400,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "engineer-colony-recruitment",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "engineer-family-settlement",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "engineer-life-history",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "engineer-loss-return",
+   "tier": "long",
+   "seconds": 182.6,
+   "timeoutSeconds": 900,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "engineer-natural-regional-observation",
+   "tier": "long",
+   "seconds": 70,
+   "timeoutSeconds": 300,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "engineer-recovery-foraging",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "engineer-succession-observer",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "engineer-water-access",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "escape-path",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "evolution-agency",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "evolution-baseline",
+   "tier": "long",
+   "seconds": 85.4,
+   "timeoutSeconds": 400,
+   "status": "known-fail",
+   "at": "tests/evolution-baseline.mjs:15",
+   "error": "AssertionError [ERR_ASSERTION]: natural AUTO runs match the consolidation baseline\r",
+   "category": "preserved-baseline"
+  },
+  {
+   "name": "evolution-branches",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "evolution-contract",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/evolution-contract.mjs:15",
+   "error": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\evolution-expansion\\baseline-v1.33.7\\creature-fixture.json'\r",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "evolution-draft",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "evolution-editor",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "evolutionary-tree",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "evolving-courtship-rituals",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "exploration-boundary",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "exploration-geometry",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "expression-coordinator",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "expression-physical-signals",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "expression-rig-validation",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "extended-kinship",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family-agency",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family-care",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family-checkpoint-consistency",
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family-decision-observer",
+   "tier": "fast",
+   "seconds": 2.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family-directives",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family-expansion",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family-genealogy-audit",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family-illness",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family-learning",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family-nesting",
+   "tier": "fast",
+   "seconds": 1.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family-observer-resume",
+   "tier": "long",
+   "seconds": 88.9,
+   "timeoutSeconds": 400,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family-practice",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family-recruitment-observer",
+   "tier": "long",
+   "seconds": 66.9,
+   "timeoutSeconds": 300,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family-sustainability",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family-trajectory-audit",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "family-weather-refuge",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "fauna-visual",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "feeding-performance",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "finite-water-nutrition",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "flank-placement",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "flora-landmarks",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "flora-seed-codec",
+   "tier": "fast",
+   "seconds": 1.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "flora-tissue-propagules",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "food-choice-view",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "food-commitment",
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "food-web-feedback",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "forage-patches",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "forage-season-competition",
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "foraging-choice",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "founder-body",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "founder-migration-connectivity",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "freshwater-access",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "freshwater-bank-capacity",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "freshwater-carrying",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "freshwater-competition-demand",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "freshwater-encounters",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "freshwater-food",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "freshwater-foraging",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "freshwater-hunter-capacity",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "freshwater-turnover",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "functional-ecology-v163",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "funded-display-expression",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "funded-jaw-expression",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "g2-brood-home",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "gameplay-actions",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "gameplay-pressure",
+   "tier": "fast",
+   "seconds": 0.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "generation-progression",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "generation-reveal",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "genvo-visual",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "gestation-inheritance",
+   "tier": "fast",
+   "seconds": 3.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "glance-ui",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "grazing-scars",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "grounded-locomotion",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "habitat-ground-art",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "habitat-render",
+   "tier": "fast",
+   "seconds": 17.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "habits",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "handoff-transition",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "head-attention",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "head-face-readability",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "held-brace-input",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "heritable-mate-choice",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "hierarchy",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "history",
+   "tier": "fast",
+   "seconds": 3.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "hydrology",
+   "tier": "long",
+   "seconds": 87,
+   "timeoutSeconds": 300,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "identity",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "illness-feeding-priority",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "illness-recovery",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "immunity-awareness",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "indexed-part-art",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "indexed-part-renderer",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "inheritance-visual",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "inherited-coats",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "inherited-wild-nutrition",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "injury-recovery",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "intrinsic-digging",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "journal",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "juvenile-weak-attempts",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "knowledge",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "land-detour",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "landform",
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "learned-danger-spacing",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "learned-fear",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "learned-resource-validity",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "life-render",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "lifestyle-readings",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "limb-articulation",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "lineage",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "lineage-comparison",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "lineage-dispersal-residence",
+   "tier": "fast",
+   "seconds": 8.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "lineage-dispersal-resume",
+   "tier": "fast",
+   "seconds": 16,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "lineage-divergence",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "lineage-pressure-dispersal",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "lineage-purpose",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "lineage-settlement-completion",
+   "tier": "fast",
+   "seconds": 8.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "lineage-specialization",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "lineage-strategy",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "live-courtship-encounters",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "living-rest",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "local-prey-choice",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "local-receptive-courtship",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "manual-resource-pose",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "maternal-birth-authority",
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "mating-arrival-maturity",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "mating-arrival-pressure",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "menu-task-usability",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "menu-world-slots",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "migration",
+   "tier": "fast",
+   "seconds": 8.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "migration-habitat",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "migration-land-survey-access",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "migration-stale-destination",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "modular-head-v176",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "motion-render",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "mouse-courtship",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "mouse-resources",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "multi-partner-sexual-selection",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-anatomy-depth",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-anatomy-rig",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-catalog-loading",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-contact-expression-v174",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-dorsal-display",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-face-expression-v172",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-forms-quality-v171",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-hip-insertion",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-inherited-pigment",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-jaw-attachment",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-joint-surface",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-knee-continuity",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-lab-hidden-pixels",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-limb-detail-v173",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-part-catalog",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-sha256-fallback",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "native-specialty-wave",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "natural-world-soak",
+   "tier": "long",
+   "seconds": 383.9,
+   "timeoutSeconds": 1500,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "notification-lane",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "nursing-conservation",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "observed-creature-guide-v175",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "observer-play",
+   "tier": "fast",
+   "seconds": 2.8,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "observer-readability",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "onboarding",
+   "tier": "fast",
+   "seconds": 1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "opening-goals",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "organic-creature-presentation-v175",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "organic-resource-cycle",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "overhead-flora-art",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "overhead-projection",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "part-abilities",
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "part-animation-catalog",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "part-expression-geometry",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "part-expression-tracker",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "part-instance-expression",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "parts-wave1",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "parts-wave2",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "perceived-threat-escape",
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "performance-hotfix",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "phenotype-cache-context",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "physical-breeding",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "physicality-render",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "plant-handling",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "plant-resource-contract",
+   "tier": "fast",
+   "seconds": 1.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "plate-protection-reading",
+   "tier": "fast",
+   "seconds": 2.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "player-copy-style",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/player-copy-style.mjs:12",
+   "error": "AssertionError [ERR_ASSERTION]: player-facing runtime source should not contain em dashes\r",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "player-facing-feedback",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "player-motion-presentation",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "player-presence",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "playtest-clarity",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "pointer-route-availability",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "population-center-ecology",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "population-pressure-memory",
+   "tier": "fast",
+   "seconds": 1.9,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "pounce",
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "predator-encounter",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "predator-interference",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "predator-retaliation",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "predator-variation",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "pressure",
+   "tier": "fast",
+   "seconds": 2.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "pressure-vocabulary",
+   "tier": "fast",
+   "seconds": 1.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "prey-biomass",
+   "tier": "fast",
+   "seconds": 1.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "proto-gene-flow",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "proto-speciation",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "provenance",
+   "tier": "fast",
+   "seconds": 4.5,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/provenance.mjs:22",
+   "error": "AssertionError [ERR_ASSERTION]: last ledger record must fingerprint current canonical source tree\r",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "provenance-development-checkpoint",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "public-export",
+   "tier": "fast",
+   "seconds": 1.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "quick-access",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "quick-interaction",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "quick-interaction-default",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "readability",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "reciprocal-partner-encounters",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "recovery",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "regional-ecology",
+   "tier": "fast",
+   "seconds": 2.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "regional-focal",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "regional-migration-arrivals",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "regional-soil-history",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "remembered-food-access",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "render-cache",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "reproduction",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "reproduction-gate-observation",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "reproductive-anatomy-eggs",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "reproductive-compatibility",
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "rng-long-state",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "save-persistence",
+   "tier": "fast",
+   "seconds": 1.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "save-storage",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "scavenge-priority",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "scene",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "seed-observations",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "seed-shore-niches",
+   "tier": "fast",
+   "seconds": 0.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "selected-combat-actions",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "selected-water-filtering",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "selective-breeding-guidance",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "shared-dietary-demand",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "shelter",
+   "tier": "fast",
+   "seconds": 7.7,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "shelter-objective",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "shelter-weatherproofing",
+   "tier": "fast",
+   "seconds": 1.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "small-population-opportunities",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "social",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "socket-layout",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "soil-disturbance",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "soil-disturbance-establishment",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "soil-engineering-pilot",
+   "tier": "fast",
+   "seconds": 7.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "source-rgba-part-art",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "sparse-mate-search",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "special-creatures",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "speciation-threshold",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "species-body-language",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "species-coexistence",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "species-leadership",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "species-lifestyle-playloops",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "species-lifestyles",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "sprite-sheet-export",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "stalker-den-reading",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "stalker-landscape",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "stalker-readability",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "stalker-territory",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "stalker-territory-competition",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "storm-aftermath",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "strategy-arcs",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "strategy-encounters",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "strike-controller-parity",
+   "tier": "fast",
+   "seconds": 2.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "succession-selection",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "surface-water-persistence",
+   "tier": "fast",
+   "seconds": 1.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "swimming-review",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "target-resource-states",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "targeted-feeding",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "taxon-name-generator",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "tendency-forage-consumption",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "tendency-forage-learning",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "terrain-cohesion",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "terrain-motifs",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "territory",
+   "tier": "fast",
+   "seconds": 1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "tissue-structure",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "tutorial-diet-guide",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "ui-art-direction",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "ui-presentation",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "vocabulary",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "water-roam-route",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "water-teaching",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "wayfinding",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "weather-exposure",
+   "tier": "fast",
+   "seconds": 1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "wetland-niches",
+   "tier": "fast",
+   "seconds": 0.6,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "wild-evolution",
+   "tier": "long",
+   "seconds": 288.1,
+   "timeoutSeconds": 900,
+   "status": "known-fail",
+   "at": "tests/wild-evolution.mjs:35",
+   "error": "AssertionError [ERR_ASSERTION]: needlejaw bodies have evolved (0/9)\r",
+   "category": "ecological-finding"
+  },
+  {
+   "name": "wild-pressure-movement",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "wildlife-arrival-reproduction",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "wildlife-rhythm",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "wildlife-spread-audit",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "workshop-projection",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "world-resource-selection",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "world-swap-render",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "world-trail-discovery",
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  }
+ ]
+}

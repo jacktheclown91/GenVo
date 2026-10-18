@@ -290,3 +290,24 @@ A tester opens an existing Creature run, survives using the normal game, reprodu
 
 ---
 **Locked decisions remain authoritative until the creator explicitly revises them.** Design/tuning values marked “proposed” require simulation tests and playtesting before they become balance constants.
+
+
+## October 17, 2026: governing Living Planet direction
+
+Creator direction: GenVo is an open-ended evolutionary life simulation. Players enter a living planet populated by organisms descended from comparatively simple ancestral forms. Rather than offering predefined creature classes or predetermined evolutionary paths, GenVo provides a modular biological system containing the developmental mechanisms, inherited traits, anatomical structures, physiological processes, and behavioral capabilities from which diverse organisms may evolve.
+
+The planet supplies changing environmental conditions and ecological opportunities. Life responds through survival, reproduction, inheritance, variation, migration, competition, and natural selection. Complexity is possible, not guaranteed. Biodiversity is possible, not guaranteed. Extinction is possible, not prevented.
+
+**The game defines what biology can do, not what evolution must produce.**
+
+The ancestor is a viable evolvable developmental system, not a hidden blueprint for every animal. Anatomical gain, modification, duplication, specialization, reduction and loss arise through compatible inherited development with real costs. Environmental pressure changes realized survival/reproduction; it does not instruct useful mutations. Player guidance cannot bypass ancestry, viability or resource funding. No generation/birth counter, species label, discovery reward or biome bonus grants a physical capability.
+
+This direction supersedes conflicting progression/class/pressure-inheritance assumptions in this historical GDD; it does not claim those runtime rules are already migrated. Preserve top-down presentation, modular art, canonical authorities and historical saves. No new feature implementation until the continental architecture plan is reviewed.
+
+Review: [Continental Living Planet architecture](docs/living-planet-architecture/PROPOSAL.md) and [full 79-part gap matrix](docs/living-planet-architecture/PART-CATALOG-GAPS.md). The First 100 Days requires simple ordinary beginnings, authentic functional inherited branching, and a separate valid multi-generation ancestry fixture proving advanced possibilities. It does not require every advanced organism or dramatic diversification within 100 days.
+
+## October 17 reviewed A0/A and player-guided validation update
+
+Architecture review authorizes A0 then A on the current-sized world. Their verification is recorded in docs/living-planet-architecture/A0-VERIFICATION.md and docs/world-pages/REPORT.md (paths relative to repository root). Larger geography still requires reviewed scale mapping and measured performance. The full A-H roadmap remains active.
+
+Separate Autonomous Ecosystem and Player-Guided Evolution trials must use identical physiology, inheritance, developmental costs, mate acceptance and environmental rules. Young versus established ancestry is a separate dimension. Skilled players may specialize faster through legitimate strategy and editor choices; do not impose arbitrary generation gates, fabricate precursors, boost mutation or guarantee outcomes. Strategic options must be discoverable. See docs/living-planet-architecture/PLAYER-GUIDED-VALIDATION.md. Major integrated 100-day trials remain deferred until mechanisms are ready.

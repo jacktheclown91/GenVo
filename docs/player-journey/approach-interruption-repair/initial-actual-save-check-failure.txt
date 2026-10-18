@@ -1,0 +1,1 @@
+Initial controlled check cleared the stale display and passed energy/RNG/body/save assertions, then incorrectly expected courtship available while the native saved world was paused. The availability assertion failed. Corrected check explicitly unpauses without advancing time; paused gating remains required.

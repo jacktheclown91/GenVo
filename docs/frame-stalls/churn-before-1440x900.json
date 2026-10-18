@@ -1,0 +1,155 @@
+{
+ "label": "current",
+ "viewport": "1440x900",
+ "seconds": 20,
+ "canvasCreated": 57147,
+ "canvasPerSecond": 2857.3,
+ "canvasSites": [
+  [
+   "src/render/indexed-part-renderer.js:6:85 < tinted (src/render/indexed-part-renderer.js:33:16)",
+   40981
+  ],
+  [
+   "makeCanvas (src/render/genvo-draw.js:23:76) < keepSprite (src/render/genvo-draw.js:56:12)",
+   12868
+  ],
+  [
+   "Renderer.drawOrganicLandBase (src/render/renderer.js:506:27) < Renderer.staticLandTile (src/render/renderer.js:448:12)",
+   1083
+  ],
+  [
+   "Renderer.staticLandTile (src/render/renderer.js:442:25) < Renderer.buildTerrainChunk (src/render/renderer.js:368:39)",
+   1035
+  ],
+  [
+   "mk (src/render/renderer.js:473:63) < Renderer.vegetationLayer (src/render/renderer.js:476:28)",
+   640
+  ],
+  [
+   "sourceCanvas (src/render/authored-flora.js:24:19) < drawAuthoredFlora (src/render/authored-flora.js:31:15)",
+   226
+  ],
+  [
+   "Renderer.staticLandTile (src/render/renderer.js:442:25) < Renderer.drawTile (src/render/renderer.js:399:25)",
+   73
+  ],
+  [
+   "Renderer.buildTerrainChunk (src/render/renderer.js:362:97) < Renderer.processTerrainRefreshQueue (src/render/renderer.js:354:389)",
+   69
+  ],
+  [
+   "Renderer.buildTerrainChunk (src/render/renderer.js:363:31) < Renderer.processTerrainRefreshQueue (src/render/renderer.js:354:389)",
+   69
+  ],
+  [
+   "Renderer.drawOrganicLandBase (src/render/renderer.js:506:27) < Renderer.buildTerrainChunk (src/render/renderer.js:369:16)",
+   69
+  ],
+  [
+   "Renderer.drawOrganicLandBase (src/render/renderer.js:506:27) < Renderer.drawTile (src/render/renderer.js:404:12)",
+   34
+  ]
+ ],
+ "cpuSelfMsTop": [
+  [
+   "drawImage :0",
+   3259
+  ],
+  [
+   "(program) :0",
+   2619
+  ],
+  [
+   "Document.createElement :2",
+   1794
+  ],
+  [
+   "putImageData :0",
+   1173
+  ],
+  [
+   "(garbage collector) :0",
+   1147
+  ],
+  [
+   "(anon) src/family/sustainability.js:23",
+   944
+  ],
+  [
+   "getContext :0",
+   909
+  ],
+  [
+   "recolorIndexedFrame src/render/indexed-part-art.js:105",
+   852
+  ],
+  [
+   "tinted src/render/indexed-part-renderer.js:29",
+   628
+  ],
+  [
+   "plantPreference src/ecology/functional-diet.js:28",
+   381
+  ],
+  [
+   "competitorsIn src/family/sustainability.js:30",
+   295
+  ],
+  [
+   "save :0",
+   242
+  ],
+  [
+   "(anon) src/ecology/functional-diet.js:25",
+   237
+  ],
+  [
+   "o.<computed> src/main.js:236",
+   201
+  ],
+  [
+   "fillRect :0",
+   193
+  ],
+  [
+   "mouthOf src/ecology/functional-diet.js:25",
+   190
+  ],
+  [
+   "createImageBitmap :0",
+   159
+  ],
+  [
+   "drawAnimal src/render/renderer.js:821",
+   158
+  ],
+  [
+   "dietOverlap src/family/sustainability.js:22",
+   149
+  ],
+  [
+   "livingCounts src/lineage/evolution-tree.js:49",
+   126
+  ],
+  [
+   "drawGenvoSprite src/render/genvo-draw.js:60",
+   119
+  ],
+  [
+   "createImageData :0",
+   119
+  ],
+  [
+   "drawGenvoBody src/render/genvo-draw.js:103",
+   99
+  ],
+  [
+   "scale :0",
+   91
+  ],
+  [
+   "render src/render/renderer.js:68",
+   91
+  ]
+ ]
+}

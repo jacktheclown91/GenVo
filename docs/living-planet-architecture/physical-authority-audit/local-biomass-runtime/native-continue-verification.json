@@ -1,0 +1,51 @@
+{
+  "scope": "Lossless transfer of this actual native save into a new isolated test IndexedDB, then normal Continue. Wait requires saved world identity/tick/age and complete scene before observation. A few live updates before normal pause are allowed, not claimed exact browser-frame equality.",
+  "expected": {
+    "seed": "GENVO8-TEST-A",
+    "slot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+    "day": 54,
+    "tick": 2564
+  },
+  "actual": {
+    "seed": "GENVO8-TEST-A",
+    "slot": "world-ee0f0ce2-69fd-4041-8b06-01e769e98716",
+    "day": 54,
+    "tick": 2578,
+    "id": 109,
+    "age": 85,
+    "body": "bp0-4134709b",
+    "rules": {
+      "schema": 1,
+      "populationFeedback": "local-opportunity/1",
+      "preyOpportunity": "local-edible-biomass/1"
+    },
+    "migrations": [
+      {
+        "from": {
+          "schema": 1,
+          "populationFeedback": "local-opportunity/1"
+        },
+        "to": {
+          "schema": 1,
+          "populationFeedback": "local-opportunity/1",
+          "preyOpportunity": "local-edible-biomass/1"
+        },
+        "tick": 2564,
+        "scope": "Future behavior: no founder-relative reproductive boost, search-radius expansion, sibling relaxation or global-count prey refuge. Hunter resource opportunity now measures accessible local remaining edible biomass plus aquatic nutrition in existing carcass-equivalent units; unchanged minPrey numerical requirements use these units instead of headcount/global-adult units. Existing organisms, ancestry, RNG, pending gestations and resource stocks unchanged; local opportunity and consent remain authoritative."
+      }
+    ],
+    "migrationText": "World loaded. Population behavior updated: breeding uses local food and crowding; existing organisms and resource stocks are preserved.",
+    "lastRefusal": {
+      "tick": 1206,
+      "reason": "first-declines",
+      "day": 26,
+      "declinerId": 109,
+      "taste": null,
+      "count": 1,
+      "otherId": 135
+    },
+    "sceneShown": true,
+    "scenePending": false
+  },
+  "errors": []
+}

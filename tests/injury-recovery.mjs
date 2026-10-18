@@ -40,13 +40,14 @@ function setup(seed){const sim=new Simulation(seed,{player:true}),p=sim.player()
 
 {
   const {sim,p}=setup('GENVO8-INJURY-STRAIN');sim.injury.onDamage(p,{damage:46});const state=p.injuryCare;
-  p.intent='player';p.target={dx:1,dy:0,sprint:true};for(let i=0;i<5;i++)sim.injury.phase();assert.ok(state.strainToday>.25,'sprinting while wounded accumulates recovery strain');
+  p.intent='player';p.target={dx:1,dy:0,sprint:true};for(let i=0;i<5;i++){p.movedTick=sim.tickCount;sim.injury.phase()}// Phase 3I: movement is judged by actual movement (movedTick) for every animalassert.ok(state.strainToday>.25,'sprinting while wounded accumulates recovery strain');
   p.health=28;sim.injury.onDamage(p,{damage:62});assert.equal(sim.injury.snapshot(p).level,'severe','a second major trauma can escalate the wound');
   state.remaining=.2;p.intent='idle';p.target=null;sim.shelter.shelters.push({id:2,ownerId:p.id,x:p.x,y:p.y,integrity:100,weatherSeal:1,foodStore:0,capacity:28,constructedDay:sim.day,constructedYear:sim.year,lastUsedTick:sim.tickCount});for(let i=0;i<8;i++)sim.injury.phase();sim.injury.advanceDay();assert.equal(sim.injury.snapshot(p).active,false,'supported recovery eventually clears the injury state');
 }
 
 {
   const sim=new Simulation('GENVO8-INJURY-HEADLESS',{player:false}),a=sim.animals.find(x=>x.alive&&x.species==='genvo'),rng=sim.rng.state;
-  assert.equal(sim.injury.onDamage(a,{damage:50}),null);sim.injury.phase();sim.injury.advanceDay();assert.equal(a.injuryCare,undefined,'player:false ecology creates no injury recovery state');assert.equal(sim.rng.state,rng,'headless injury authority consumes no simulation RNG');
+  // Phase 3I healing physiology: wild animals in any world carry the same wound state as the player.
+  const snap=sim.injury.onDamage(a,{damage:50});assert.ok(snap?.active&&a.injuryCare?.active,'a wild animal gets a wound record');sim.injury.phase();sim.injury.advanceDay();assert.ok(a.injuryCare.remaining<a.injuryCare.initial,'and recovers by the same daily rule');assert.equal(sim.rng.state,rng,'injury authority consumes no simulation RNG');
 }
 console.log('injury recovery checks: PASS');

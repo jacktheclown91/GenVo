@@ -1,3 +1,4 @@
+import {adaptationAxis} from './water-physiology.js';
 import {partEffectFactors} from './part-abilities.js';
 import {CFG} from '../sim/config.js';
 // Major inherited adaptations: discrete lineage unlocks earned from lived pressure.
@@ -24,7 +25,7 @@ export const ADAPTATIONS={
   'crushing-jaw':{name:'Crushing Jaw',short:'Crushing jaw',branch:'offense',tier:2,requires:['heavy-jaw'],summary:'Bites can stagger Stalkers; healthy descendants patrol a wider home core.',tradeoff:'The larger jaw costs more energy and water.',pressure:{predation:6,scarcity:2},visual:'massive paired jaw plates'},
   'coordinated-defense':{name:'Coordinated Defense',short:'Coordinated defense',branch:'social',tier:2,requires:['mobbing-instinct'],summary:'Rallied adults brace together and defend young across a wider family area.',tradeoff:'A coordinated rally still risks several family members.',pressure:{predation:5,fewMates:5},visual:'paired rally crests'},
   'provisioning-pouches':{name:'Provisioning Pouches',short:'Provisioning',branch:'utility',tier:2,requires:['grasping-limbs'],summary:'Carry a double food load; stocked shelter supports longer family excursions.',tradeoff:'A full load slows movement more heavily.',pressure:{scarcity:6,fewMates:3},visual:'full ventral food pouches'},
-  'webbed-limbs':{name:'Webbed Limbs',short:'Swimming',branch:'aquatic',tier:2,requires:['water-sacs'],summary:'Cross rivers and open water instead of stopping at the bank.',tradeoff:'Swimming is slower than land travel and drains energy faster.',pressure:{wetness:9,predation:1,scarcity:1},visual:'broad webbing between the outer toes'}
+  'webbed-limbs':{name:'Webbed Limbs',short:'Swimming',branch:'aquatic',tier:2,summary:'Cross rivers and open water instead of stopping at the bank.',tradeoff:'Swimming is slower than land travel and drains energy faster.',pressure:{wetness:9,predation:1,scarcity:1},visual:'broad webbing between the outer toes'}
 };
 
 export const ADAPTATION_IDS=Object.keys(ADAPTATIONS);
@@ -62,7 +63,7 @@ export function bodyAbility(animal,id){const def=BODY_ABILITIES[id];if(!def||ani
 export function emptyAnatomy(){return Object.fromEntries(Object.keys(ANATOMY_AXES).map(k=>[k,0]))}
 export function seedValueFor(id){const def=ANATOMY_FOR[id];return def?.threshold>=.8?ANATOMY_SEED.tier2:ANATOMY_SEED.tier1}
 export function expressedAdaptations(anatomy){
-  if(!anatomy)return[];return ADAPTATION_IDS.filter(id=>{const def=ANATOMY_FOR[id];return def&&(anatomy[def.axis]||0)>=def.threshold});
+  if(!anatomy)return[];return ADAPTATION_IDS.filter(id=>{const def=ANATOMY_FOR[id];return def&&(anatomy[adaptationAxis(anatomy,id,def.axis)]||0)>=def.threshold});
 }
 export function anatomyFromAdaptations(ids){
   const out=emptyAnatomy();for(const id of ids||[]){const def=ANATOMY_FOR[id];if(def)out[def.axis]=Math.max(out[def.axis],seedValueFor(id))}
@@ -75,16 +76,16 @@ export function syncAnatomy(animal){
   if(!animal.anatomy){animal.anatomy=anatomyFromAdaptations(animal.adaptations);return animal.anatomy}
   const want=new Set(animal.adaptations||[]),have=expressedAdaptations(animal.anatomy);
   if(have.length===want.size&&have.every(id=>want.has(id)))return animal.anatomy;
-  for(const id of want){const def=ANATOMY_FOR[id];if(def&&(animal.anatomy[def.axis]||0)<def.threshold)animal.anatomy[def.axis]=seedValueFor(id)}
-  for(const id of expressedAdaptations(animal.anatomy))if(!want.has(id)){const def=ANATOMY_FOR[id];animal.anatomy[def.axis]=Math.max(0,def.threshold-.15)}
+  for(const id of want){const def=ANATOMY_FOR[id],axis=def&&adaptationAxis(animal.anatomy,id,def.axis);if(def&&(animal.anatomy[axis]||0)<def.threshold)animal.anatomy[axis]=seedValueFor(id)}
+  for(const id of expressedAdaptations(animal.anatomy))if(!want.has(id)){const def=ANATOMY_FOR[id],axis=adaptationAxis(animal.anatomy,id,def.axis);animal.anatomy[axis]=Math.max(0,def.threshold-.15)}
   return animal.anatomy;
 }
 export function refreshExpression(animal){if(!animal)return[];animal.adaptations=expressedAdaptations(animal.anatomy);return animal.adaptations}
 // Body parts that are developing but not yet expressed, for successor and mate comparisons.
 export function nearThreshold(animal,margin=.12){
   const a=syncAnatomy(animal);if(!a)return[];const out=[];
-  for(const id of ADAPTATION_IDS){const def=ANATOMY_FOR[id],v=a[def.axis]||0;if(v<def.threshold&&v>=def.threshold-margin&&v>0&&(!ADAPTATIONS[id].requires||ADAPTATIONS[id].requires.every(r=>{const d=ANATOMY_FOR[r];return (a[d.axis]||0)>=d.threshold})))out.push({id,name:ADAPTATIONS[id].name,progress:v/def.threshold})}
-  for(const [id,def] of Object.entries(BODY_ABILITIES)){const v=a[def.axis]||0;if(v<def.threshold&&v>=def.threshold-margin&&(!def.requires||(animal.adaptations||[]).includes(def.requires)))out.push({id,name:def.name,progress:v/def.threshold,ability:true})}
+  for(const id of ADAPTATION_IDS){const def=ANATOMY_FOR[id],v=a[adaptationAxis(a,id,def.axis)]||0;if(v<def.threshold&&v>=def.threshold-margin&&v>0&&(!ADAPTATIONS[id].requires||ADAPTATIONS[id].requires.every(r=>{const d=ANATOMY_FOR[r];return (a[adaptationAxis(a,r,d.axis)]||0)>=d.threshold})))out.push({id,name:ADAPTATIONS[id].name,progress:v/def.threshold})}
+  for(const [id,def] of Object.entries(BODY_ABILITIES)){const v=a[adaptationAxis(a,id,def.axis)]||0;if(v<def.threshold&&v>=def.threshold-margin&&(!def.requires||(animal.adaptations||[]).includes(def.requires)))out.push({id,name:def.name,progress:v/def.threshold,ability:true})}
   return out.sort((x,y)=>y.progress-x.progress);
 }
 
@@ -113,7 +114,7 @@ export class EvolutionController{
   choose(id){
     const p=this.pending;if(!p||p.chosen||!p.offers.some(o=>o.id===id))return false;
     const animal=this.sim.animals.find(a=>a.id===p.toId&&a.alive);if(!animal)return false;
-    syncAnatomy(animal);const def=ANATOMY_FOR[id];if(def)animal.anatomy[def.axis]=Math.max(animal.anatomy[def.axis]||0,seedValueFor(id));refreshExpression(animal);
+    syncAnatomy(animal);const def=ANATOMY_FOR[id],axis=def&&adaptationAxis(animal.anatomy,id,def.axis);if(def)animal.anatomy[axis]=Math.max(animal.anatomy[axis]||0,seedValueFor(id));refreshExpression(animal);
     const rec=this.sim.lineage.records.get(animal.id);if(rec)rec.adaptations=[...animal.adaptations];
     p.chosen=id;this.lastChoice={id,animalId:animal.id,generation:animal.generation,tick:this.sim.tickCount};
     return ADAPTATIONS[id];

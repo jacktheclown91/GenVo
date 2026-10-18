@@ -55,7 +55,9 @@ function prepareFamily(seed='GENVO8-FAMILY-CARE-ACTIVE'){
 }
 
 {
-  const {sim,active,child}=prepareFamily('GENVO8-CARE-STATUS');
+  const {sim,active,child,mother,father}=prepareFamily('GENVO8-CARE-STATUS');
+  // Litter size is a real 1-2 draw; if this litter is a singleton, stage one more ordinary birth.
+  if(!sim.family.livingChildren(active).some(a=>a.id!==child.id)){mother.pregnant={fatherId:father.id,days:1,totalDays:SPECIES.genvo.gestation};const more=sim.giveBirth(mother);for(const k of more){k.energy=SPECIES.genvo.maxEnergy*.9;k.hydration=SPECIES.genvo.maxHydration*.95;k.careStress=.08}sim.rebuildSpatial()}
   const sibling=sim.family.livingChildren(active).find(a=>a.id!==child.id);
   assert.ok(sibling,'seeded fixture has a second actual litter member');
   child.energy=SPECIES.genvo.maxEnergy*.34;child.hydration=SPECIES.genvo.maxHydration*.9;child.careStress=.62;

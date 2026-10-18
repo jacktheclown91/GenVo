@@ -1,0 +1,17 @@
+{
+  "scope": "Canonical src/tests and prior tools unchanged from broad gate; eight added UI/audit/archive tools are separately verified as described in report.",
+  "previousGate": "07bf9e2d442b14f8aa5fca36d219886a2200015394795556137ee2427104ebc5",
+  "current": "a5a89c366aa14ffcd91eb9401a968d3be914f9cdd793827f2943ccf556d47cb5",
+  "withoutOnlyAddedTools": "07bf9e2d442b14f8aa5fca36d219886a2200015394795556137ee2427104ebc5",
+  "addedTools": [
+    "tools/observe-ordinary-player-exploration.cjs",
+    "tools/observe-ordinary-player-followthrough.cjs",
+    "tools/observe-saved-player-family.cjs",
+    "tools/verify-native-family-save.mjs",
+    "tools/observe-player-native-checkpoint.cjs",
+    "tools/audit-ordinary-padded-intermediate.mjs",
+    "tools/continue-player-native-lineage.cjs",
+    "tools/check-native-checkpoint-continue.cjs"
+  ],
+  "reconstructionMatches": true
+}

@@ -1,0 +1,51 @@
+{
+ "schema": "genvo.test-run/2",
+ "mode": "fast",
+ "date": "2026-10-17T16:12:35.648Z",
+ "seconds": 1,
+ "total": 4,
+ "pass": 4,
+ "knownFail": 0,
+ "fail": 0,
+ "timeout": 0,
+ "stale": 0,
+ "deferred": 0,
+ "results": [
+  {
+   "name": "botanical-genetics",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "botanical-populations",
+   "tier": "fast",
+   "seconds": 0.2,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "botanical-reproduction",
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  },
+  {
+   "name": "botanical-safety",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": ""
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+  "scope": "Controlled existing head-conversion layout, no biological rule change. Three existing facial structures relocate but socket matching classifies them with the added routing node as other arrangement. Matching cannot identify actual recombination donor.",
+  "inferred": {
+    "both": [
+      {
+        "socket": "root",
+        "location": "torso",
+        "part": "small torso"
+      },
+      {
+        "socket": "root/limb.1",
+        "location": "limb 1",
+        "part": "walking leg"
+      },
+      {
+        "socket": "root/limb.3",
+        "location": "limb 3",
+        "part": "walking leg"
+      },
+      {
+        "socket": "root/limb.5",
+        "location": "limb 5",
+        "part": "walking leg"
+      },
+      {
+        "socket": "root/limb.7",
+        "location": "limb 7",
+        "part": "walking leg"
+      }
+    ],
+    "mother": [],
+    "father": [],
+    "novel": [
+      {
+        "socket": "root/head",
+        "location": "head",
+        "part": "head base"
+      },
+      {
+        "socket": "root/head/eye.left",
+        "location": "head / eye left",
+        "part": "simple eye"
+      },
+      {
+        "socket": "root/head/eye.right",
+        "location": "head / eye right",
+        "part": "simple eye"
+      },
+      {
+        "socket": "root/head/mouth",
+        "location": "head / mouth",
+        "part": "grazing mouth"
+      }
+    ]
+  },
+  "summary": "Shared 5 (small torso · torso, walking leg · limb 1, walking leg · limb 3, …) · From mother 0 · From father 0 · Other arrangement 4 (head base · head, simple eye · head / eye left, simple eye · head / eye right, …)"
+}

@@ -1,0 +1,98 @@
+{
+ "schema": "genvo.test-run/3",
+ "mode": "fast",
+ "date": "2026-10-17T16:56:40.791Z",
+ "seconds": 0,
+ "artifacts": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\wild-mechanisms-2026-10-17.artifacts",
+ "total": 2,
+ "pass": 0,
+ "knownFail": 0,
+ "fail": 1,
+ "timeout": 0,
+ "stale": 0,
+ "deferred": 1,
+ "byKind": {
+  "biological-invariant": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 1
+  },
+  "mechanism": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 1,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "ecological-observation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 1
+  },
+  "performance": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 1
+  },
+  "historical-expectation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "release-gate": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "unclassified": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  }
+ },
+ "results": [
+  {
+   "name": "wild-evolution",
+   "kinds": [
+    "mechanism"
+   ],
+   "tier": "fast",
+   "seconds": 0.5,
+   "timeoutSeconds": 120,
+   "status": "fail",
+   "at": "tests/wild-evolution.mjs:44",
+   "error": "AssertionError [ERR_ASSERTION]: Choose how to interact.\r",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\wild-mechanisms-2026-10-17.artifacts\\wild-evolution.log"
+  },
+  {
+   "name": "wild-evolution-observation",
+   "kinds": [
+    "biological-invariant",
+    "ecological-observation",
+    "performance"
+   ],
+   "tier": "long",
+   "status": "deferred",
+   "reason": "long tier (run with --all or --long)"
+  }
+ ]
+}

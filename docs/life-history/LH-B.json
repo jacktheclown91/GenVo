@@ -1,0 +1,247 @@
+{
+ "seed": "LH-B",
+ "days": 540,
+ "off": {
+  "variant": "off",
+  "start": {
+   "mosskip": 64,
+   "rootling": 32,
+   "needlejaw": 12,
+   "genvo": 24,
+   "rillsifter": 18,
+   "mirelick": 20,
+   "podshell": 18,
+   "bankjaw": 2
+  },
+  "births": {
+   "mosskip": 87,
+   "genvo": 55,
+   "mirelick": 3,
+   "rillsifter": 18,
+   "rootling": 7,
+   "podshell": 3,
+   "needlejaw": 3
+  },
+  "recruits": {
+   "mosskip": 86,
+   "genvo": 51,
+   "mirelick": 3,
+   "rillsifter": 17,
+   "rootling": 6,
+   "podshell": 2,
+   "needlejaw": 1
+  },
+  "deaths": {
+   "rootling:predation": 5,
+   "mosskip:predation": 40,
+   "genvo:predation": 13,
+   "mirelick:predation": 4,
+   "bankjaw:starvation": 2,
+   "podshell:predation": 1,
+   "needlejaw:starvation": 3,
+   "genvo:starvation": 5,
+   "mosskip:age": 90,
+   "rillsifter:age": 34,
+   "mirelick:age": 19,
+   "rootling:age": 25,
+   "mosskip:starvation": 4,
+   "podshell:age": 18,
+   "genvo:age": 30,
+   "rootling:starvation": 3,
+   "rillsifter:starvation": 1,
+   "needlejaw:age": 8
+  },
+  "end": {
+   "rootling": 6,
+   "needlejaw": 4,
+   "podshell": 2,
+   "genvo": 31,
+   "mosskip": 17,
+   "rillsifter": 1
+  },
+  "integrityChecks": 67
+ },
+ "recovery": {
+  "variant": "recovery",
+  "start": {
+   "mosskip": 64,
+   "rootling": 32,
+   "needlejaw": 12,
+   "genvo": 24,
+   "rillsifter": 18,
+   "mirelick": 20,
+   "podshell": 18,
+   "bankjaw": 2
+  },
+  "births": {
+   "mosskip": 123,
+   "genvo": 50,
+   "mirelick": 3,
+   "rillsifter": 22,
+   "rootling": 5,
+   "podshell": 4
+  },
+  "recruits": {
+   "mosskip": 112,
+   "genvo": 44,
+   "mirelick": 3,
+   "rillsifter": 22,
+   "rootling": 4,
+   "podshell": 4
+  },
+  "deaths": {
+   "rootling:predation": 5,
+   "mosskip:predation": 60,
+   "genvo:predation": 15,
+   "bankjaw:starvation": 1,
+   "mirelick:predation": 2,
+   "mosskip:age": 70,
+   "mosskip:starvation": 10,
+   "rillsifter:age": 34,
+   "genvo:starvation": 12,
+   "mirelick:age": 21,
+   "podshell:age": 18,
+   "rootling:age": 27,
+   "rootling:starvation": 2,
+   "genvo:age": 18,
+   "needlejaw:age": 4,
+   "rillsifter:predation": 1,
+   "bankjaw:age": 1,
+   "needlejaw:starvation": 1
+  },
+  "end": {
+   "rootling": 3,
+   "needlejaw": 7,
+   "genvo": 29,
+   "podshell": 4,
+   "mosskip": 47,
+   "rillsifter": 5
+  },
+  "integrityChecks": 67
+ },
+ "gate": {
+  "variant": "gate",
+  "start": {
+   "mosskip": 64,
+   "rootling": 32,
+   "needlejaw": 12,
+   "genvo": 24,
+   "rillsifter": 18,
+   "mirelick": 20,
+   "podshell": 18,
+   "bankjaw": 2
+  },
+  "births": {
+   "mosskip": 111,
+   "rootling": 9,
+   "genvo": 81,
+   "mirelick": 8,
+   "rillsifter": 24,
+   "podshell": 9,
+   "needlejaw": 3
+  },
+  "recruits": {
+   "mosskip": 100,
+   "rootling": 7,
+   "genvo": 73,
+   "mirelick": 7,
+   "rillsifter": 22,
+   "podshell": 8,
+   "needlejaw": 2
+  },
+  "deaths": {
+   "genvo:predation": 16,
+   "rootling:predation": 11,
+   "mosskip:predation": 41,
+   "mirelick:predation": 9,
+   "bankjaw:starvation": 2,
+   "needlejaw:starvation": 3,
+   "mosskip:starvation": 7,
+   "mosskip:age": 88,
+   "podshell:predation": 2,
+   "mirelick:age": 18,
+   "rillsifter:age": 29,
+   "rootling:age": 27,
+   "podshell:age": 18,
+   "genvo:age": 29,
+   "rootling:starvation": 1,
+   "rillsifter:starvation": 2,
+   "rillsifter:predation": 3,
+   "needlejaw:age": 6,
+   "genvo:starvation": 5
+  },
+  "end": {
+   "rootling": 2,
+   "needlejaw": 6,
+   "genvo": 55,
+   "podshell": 7,
+   "mosskip": 39,
+   "mirelick": 1,
+   "rillsifter": 8
+  },
+  "integrityChecks": 67
+ },
+ "both": {
+  "variant": "both",
+  "start": {
+   "mosskip": 64,
+   "rootling": 32,
+   "needlejaw": 12,
+   "genvo": 24,
+   "rillsifter": 18,
+   "mirelick": 20,
+   "podshell": 18,
+   "bankjaw": 2
+  },
+  "births": {
+   "mosskip": 136,
+   "rootling": 15,
+   "genvo": 89,
+   "mirelick": 9,
+   "rillsifter": 63,
+   "podshell": 7,
+   "needlejaw": 2
+  },
+  "recruits": {
+   "mosskip": 131,
+   "rootling": 13,
+   "genvo": 70,
+   "mirelick": 7,
+   "rillsifter": 50,
+   "podshell": 6,
+   "needlejaw": 1
+  },
+  "deaths": {
+   "genvo:predation": 22,
+   "rootling:predation": 10,
+   "mosskip:predation": 49,
+   "mirelick:predation": 14,
+   "bankjaw:starvation": 2,
+   "needlejaw:starvation": 4,
+   "mosskip:age": 113,
+   "rillsifter:age": 26,
+   "rootling:age": 25,
+   "podshell:predation": 1,
+   "podshell:age": 19,
+   "mirelick:age": 14,
+   "genvo:starvation": 21,
+   "rootling:starvation": 4,
+   "mosskip:starvation": 4,
+   "genvo:age": 14,
+   "podshell:starvation": 1,
+   "needlejaw:age": 6,
+   "rillsifter:starvation": 2,
+   "rillsifter:predation": 2
+  },
+  "end": {
+   "rootling": 8,
+   "needlejaw": 4,
+   "genvo": 56,
+   "podshell": 4,
+   "mirelick": 1,
+   "mosskip": 34,
+   "rillsifter": 51
+  },
+  "integrityChecks": 67
+ }
+}

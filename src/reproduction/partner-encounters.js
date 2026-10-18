@@ -1,4 +1,5 @@
 import {reproductiveCompatibility} from './reproductive-compatibility.js';
+import {breedingEnergyGate} from '../ecology/breeding-calibration.js';
 // Pass EP: explainable, reciprocal partner encounters for autonomous engineering
 // colonies. This code neither grants consent nor conceives animals. It only
 // evaluates whether two physically present adults can pursue each other;
@@ -21,7 +22,7 @@ export function partnerAvailability(sim,a,b){
   if(!species||!partnerSpec||a.age<species.maturity||b.age<partnerSpec.maturity)return {available:false,reason:'immature'};
   if(a.pregnant||b.pregnant||a.reproCooldown>0||b.reproCooldown>0)return {available:false,reason:'occupied'};
   if(a.infected||b.infected||a.health<PARTNER_ENCOUNTER.minHealth||b.health<PARTNER_ENCOUNTER.minHealth)return {available:false,reason:'unwell'};
-  if(a.energy/species.maxEnergy <= (species.reproduction?.energy??.72)||b.energy/partnerSpec.maxEnergy <= (partnerSpec.reproduction?.energy??.72)||
+  if(a.energy/species.maxEnergy <= breedingEnergyGate(a.species)||b.energy/partnerSpec.maxEnergy <= breedingEnergyGate(b.species)||
      a.hydration/species.maxHydration<PARTNER_ENCOUNTER.minHydration||b.hydration/partnerSpec.maxHydration<PARTNER_ENCOUNTER.minHydration)return {available:false,reason:'survival-priority'};
   const kin=sim.recovery.kinship(a,b);
   if(kin!=='none'&&!(kin==='sibling'&&sim.recovery.mayRelaxSibling(a)))return {available:false,reason:'kinship'};

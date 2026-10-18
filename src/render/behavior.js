@@ -58,7 +58,10 @@ export function behaviorVisualState({bodyPlan=null,id=0,action='idle',phase=0,mo
   }
 
   if(social?.alarm){state.eyeWide=true;state.feelerForward=Math.max(state.feelerForward,1.15);state.stanceSpread=Math.max(state.stanceSpread,.55);state.attention='threat'}
-  if(life?.hurt||life?.injured){state.limp=life?.hurt ? .8 : .62;state.recoil=life?.hurt&&(phase>5.15&&phase<6.55)?1:0;state.bodyDrop+=life?.hurt ? .5 : .24;state.bodyLean-=.15;state.eyeNarrow=true;state.feelerForward*=.86;state.groundEmphasis=Math.max(state.groundEmphasis,.55)}
+  // Authoritative wound severity grades the favoured side: a sore creature barely
+  // spares a leg, a badly wounded one carries it and hitches on every stride.
+  const wound=life?.injured?({sore:.42,wounded:.7,severe:1}[life.injuryLevel]??.62):0;
+  if(life?.hurt||life?.injured){state.limp=Math.max(life?.hurt?.8:0,wound);state.recoil=(life?.hurt||wound>=.7)&&(phase>5.15&&phase<6.55)?1:0;state.bodyDrop+=Math.max(life?.hurt?.5:0,wound*.42);if(wound>=1)state.headDrop+=.35;state.bodyLean-=.15;state.eyeNarrow=true;state.feelerForward*=.86;state.groundEmphasis=Math.max(state.groundEmphasis,.55)}
   if(life?.exhausted){state.bodyDrop+=.35;state.compress+=.12;state.feelerForward*=.82;state.eyeNarrow=true}
   if(life?.thirsty&&action!=='drink'){state.headDrop+=.18}
   if(life?.strained&&!moving){state.bodyDrop+=.1}
@@ -83,7 +86,7 @@ export function visualActionFromIntent(sim,a,{moving=false}={}){
   const plantMeal=a.lastPlantMeal,mealAge=(sim?.tickCount??0)-(plantMeal?.tick??-Infinity);if(!moving&&!a.bracing&&!a.attackAction&&!a.courtshipPerformance&&plantMeal?.actorId===a.id&&plantMeal.tissue==='kernel'&&mealAge>=0&&mealAge<CFG.simHz*.9&&['idle','rest','feed','explore'].includes(a.intent))return'crack';
   const d=a.target&&Number.isFinite(a.target.x)&&Number.isFinite(a.target.y)?Math.hypot(a.target.x-a.x,a.target.y-a.y):999;
   if(a.intent==='escape'||a.intent==='group-alarm'||a.intent==='avoid-intruder'||a.intent==='shelter')return'flee';
-  if(a.intent==='guardian-hold'||a.intent==='burrow-return'||a.intent==='aquatic-range')return'move';
+  if(a.intent==='guardian-hold'||a.intent==='burrow-return'||a.intent==='aquatic-range'||a.intent==='wary')return'move';
   if(a.intent==='storm-shelter')return'move';
   if(a.intent==='storm-refuge')return'social';
   if(a.intent==='storm-resume')return'move';

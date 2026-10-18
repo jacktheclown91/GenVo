@@ -1,0 +1,262 @@
+{
+ "schema": "genvo.aquatic-food-web/1",
+ "seed": "VIAB-A",
+ "days": 120,
+ "noGrazers": true,
+ "waterCells": 806,
+ "rows": [
+  {
+   "day": 0,
+   "algae": 353.7,
+   "larvae": 7.07,
+   "fry": 0.157,
+   "detritus": 0,
+   "larvaePerCell": {
+    "p50": 0.0087,
+    "p90": 0.0103,
+    "max": 0.0108
+   },
+   "fryNeedsLarvae": 0.0812,
+   "cellsWhereLarvaeCanGrow": 1,
+   "cellsWhereFryCanGrow": 0,
+   "rillsifters": 0,
+   "eaten": {}
+  },
+  {
+   "day": 10,
+   "algae": 504.8,
+   "larvae": 7.58,
+   "fry": 0.152,
+   "detritus": 0,
+   "larvaePerCell": {
+    "p50": 0.0093,
+    "p90": 0.0112,
+    "max": 0.012
+   },
+   "fryNeedsLarvae": 0.0812,
+   "cellsWhereLarvaeCanGrow": 1,
+   "cellsWhereFryCanGrow": 0,
+   "rillsifters": 0,
+   "eaten": {}
+  },
+  {
+   "day": 20,
+   "algae": 644.7,
+   "larvae": 8.29,
+   "fry": 0.147,
+   "detritus": 0,
+   "larvaePerCell": {
+    "p50": 0.0101,
+    "p90": 0.0124,
+    "max": 0.0137
+   },
+   "fryNeedsLarvae": 0.0812,
+   "cellsWhereLarvaeCanGrow": 1,
+   "cellsWhereFryCanGrow": 0,
+   "rillsifters": 0,
+   "eaten": {}
+  },
+  {
+   "day": 30,
+   "algae": 756.8,
+   "larvae": 9.19,
+   "fry": 0.142,
+   "detritus": 0,
+   "larvaePerCell": {
+    "p50": 0.0112,
+    "p90": 0.0138,
+    "max": 0.0156
+   },
+   "fryNeedsLarvae": 0.0812,
+   "cellsWhereLarvaeCanGrow": 1,
+   "cellsWhereFryCanGrow": 0,
+   "rillsifters": 0,
+   "eaten": {}
+  },
+  {
+   "day": 40,
+   "algae": 800.1,
+   "larvae": 10.25,
+   "fry": 0.138,
+   "detritus": 0,
+   "larvaePerCell": {
+    "p50": 0.0124,
+    "p90": 0.0154,
+    "max": 0.0178
+   },
+   "fryNeedsLarvae": 0.0812,
+   "cellsWhereLarvaeCanGrow": 1,
+   "cellsWhereFryCanGrow": 0,
+   "rillsifters": 0,
+   "eaten": {
+    "mosskip:algae": 0
+   }
+  },
+  {
+   "day": 50,
+   "algae": 804.9,
+   "larvae": 11.44,
+   "fry": 0.134,
+   "detritus": 0,
+   "larvaePerCell": {
+    "p50": 0.0139,
+    "p90": 0.0173,
+    "max": 0.0204
+   },
+   "fryNeedsLarvae": 0.0812,
+   "cellsWhereLarvaeCanGrow": 1,
+   "cellsWhereFryCanGrow": 0,
+   "rillsifters": 0,
+   "eaten": {
+    "mosskip:algae": 0
+   }
+  },
+  {
+   "day": 60,
+   "algae": 804.8,
+   "larvae": 12.78,
+   "fry": 0.13,
+   "detritus": 0,
+   "larvaePerCell": {
+    "p50": 0.0154,
+    "p90": 0.0194,
+    "max": 0.0233
+   },
+   "fryNeedsLarvae": 0.0812,
+   "cellsWhereLarvaeCanGrow": 1,
+   "cellsWhereFryCanGrow": 0,
+   "rillsifters": 0,
+   "eaten": {
+    "mosskip:algae": 0,
+    "mosskip:duckweed": 0.003,
+    "mosskip:waterweed": 0.017
+   }
+  },
+  {
+   "day": 70,
+   "algae": 804.6,
+   "larvae": 14.29,
+   "fry": 0.126,
+   "detritus": 0,
+   "larvaePerCell": {
+    "p50": 0.0172,
+    "p90": 0.0217,
+    "max": 0.0266
+   },
+   "fryNeedsLarvae": 0.0812,
+   "cellsWhereLarvaeCanGrow": 1,
+   "cellsWhereFryCanGrow": 0,
+   "rillsifters": 0,
+   "eaten": {
+    "mosskip:algae": 0,
+    "mosskip:duckweed": 0.019,
+    "mosskip:waterweed": 0.028
+   }
+  },
+  {
+   "day": 80,
+   "algae": 804.5,
+   "larvae": 15.96,
+   "fry": 0.122,
+   "detritus": 0,
+   "larvaePerCell": {
+    "p50": 0.0193,
+    "p90": 0.0244,
+    "max": 0.0305
+   },
+   "fryNeedsLarvae": 0.0812,
+   "cellsWhereLarvaeCanGrow": 1,
+   "cellsWhereFryCanGrow": 0,
+   "rillsifters": 0,
+   "eaten": {
+    "mosskip:algae": 0,
+    "mosskip:duckweed": 0.019,
+    "mosskip:waterweed": 0.028
+   }
+  },
+  {
+   "day": 90,
+   "algae": 804.3,
+   "larvae": 17.84,
+   "fry": 0.119,
+   "detritus": 0,
+   "larvaePerCell": {
+    "p50": 0.0216,
+    "p90": 0.0275,
+    "max": 0.0348
+   },
+   "fryNeedsLarvae": 0.0812,
+   "cellsWhereLarvaeCanGrow": 1,
+   "cellsWhereFryCanGrow": 0,
+   "rillsifters": 0,
+   "eaten": {
+    "mosskip:algae": 0,
+    "mosskip:duckweed": 0.019,
+    "mosskip:waterweed": 0.028
+   }
+  },
+  {
+   "day": 100,
+   "algae": 804.1,
+   "larvae": 19.95,
+   "fry": 0.116,
+   "detritus": 0,
+   "larvaePerCell": {
+    "p50": 0.0241,
+    "p90": 0.0311,
+    "max": 0.0398
+   },
+   "fryNeedsLarvae": 0.0812,
+   "cellsWhereLarvaeCanGrow": 1,
+   "cellsWhereFryCanGrow": 0,
+   "rillsifters": 0,
+   "eaten": {
+    "mosskip:algae": 0,
+    "mosskip:duckweed": 0.019,
+    "mosskip:waterweed": 0.028
+   }
+  },
+  {
+   "day": 110,
+   "algae": 803.9,
+   "larvae": 22.3,
+   "fry": 0.114,
+   "detritus": 0,
+   "larvaePerCell": {
+    "p50": 0.027,
+    "p90": 0.0351,
+    "max": 0.0455
+   },
+   "fryNeedsLarvae": 0.0812,
+   "cellsWhereLarvaeCanGrow": 1,
+   "cellsWhereFryCanGrow": 0,
+   "rillsifters": 0,
+   "eaten": {
+    "mosskip:algae": 0,
+    "mosskip:duckweed": 0.019,
+    "mosskip:waterweed": 0.068
+   }
+  },
+  {
+   "day": 120,
+   "algae": 803.6,
+   "larvae": 24.94,
+   "fry": 0.111,
+   "detritus": 0,
+   "larvaePerCell": {
+    "p50": 0.0301,
+    "p90": 0.0396,
+    "max": 0.052
+   },
+   "fryNeedsLarvae": 0.0812,
+   "cellsWhereLarvaeCanGrow": 1,
+   "cellsWhereFryCanGrow": 0,
+   "rillsifters": 0,
+   "eaten": {
+    "mosskip:algae": 0,
+    "mosskip:duckweed": 0.019,
+    "mosskip:waterweed": 0.145
+   }
+  }
+ ]
+}

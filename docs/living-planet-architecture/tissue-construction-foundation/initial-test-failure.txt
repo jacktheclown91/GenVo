@@ -1,0 +1,1 @@
+The initial malformed-request loop used delete on the result of Array.find. That expression did not remove a module, so valid construction correctly succeeded and the expected rejection assertion failed. The test now actually removes the implicit-head row; all rejection and ownership assertions remain. This was a fixture error, not a removed biological validation.

@@ -1,3 +1,5 @@
+import {recordedInheritanceSummary} from '../lineage/recombination-receipt.js';
+import {bodyCostReading} from './body-cost-reading.js';
 import {lineageComparisonModels,drawLineageComparison} from './lineage-comparison.js';
 import {seedPatchDescription} from '../gameplay/seed-observations.js';
 import {creatureIdentity} from './creature-identity.js';
@@ -34,7 +36,7 @@ export class FieldJournal{
     if(!this.el)return;
     this.el.hidden=!this.open;if(!this.open)return;
     const record=this.selectedRecord();if(!record){this.el.innerHTML='<div class="journal-page"><p>No family history yet.</p></div>';return}
-    const model=buildJournalEntry(this.sim,record.id),signature=JSON.stringify([record.id,record.alive,record.children.length,(record.adaptations||[]).join(','),this.sim.day,this.sim.lineage.activeId,model.notes.length,model.home,model.lastFood,model.lastWater,model.seedPatches]);
+    const model=buildJournalEntry(this.sim,record.id),signature=JSON.stringify([record.id,record.alive,record.children.length,(record.adaptations||[]).join(','),this.sim.day,this.sim.lineage.activeId,model.notes.length,model.home,model.lastFood,model.lastWater,model.seedPatches,model.bodyCost?.text]);
     if(signature===this.lastSignature)return;this.lastSignature=signature;
     updateKnowledgeHTML(this.el,journalMarkup(model,this.canTakeOver(record)));
     drawLineageComparison(this.el,this.sim,record.id);
@@ -66,11 +68,12 @@ export function buildJournalEntry(sim,recordId){
     trait:animal?strongestTraitText(animal):traitListText(compareGenes(record.genes,founder?.genes||record.genes,{limit:2}),{empty:'close to the family baseline'}),
     changes:traitListText(changes,{empty:'close to the founder'}),looks,
     adaptations:(record.adaptations||[]).map(id=>ADAPTATIONS[id]?.name).filter(Boolean),
+    bodyCost:bodyCostReading(animal),
     bodyComparison:lineageComparisonModels(sim,record.id).map(m=>({label:m.label,id:m.id})),
     seedPatches:(sim.discovery.seedObservations||[]).filter(o=>o.actorId===record.id).slice(-8).map(o=>({id:o.id,text:seedPatchDescription(o),when:'Last observed day '+o.observedDay})),
     habits:sim.habits?.summary?.(animal||{habits:record.habits})||'no settled habits yet',
     developing:animal?nearThreshold(animal).slice(0,2).map(n=>n.name):[],
-    parents,children,ancestry,notes,inheritance:inheritance?originSummary(inheritance,{limit:2}):'Parental body plans at conception not recorded (older lineage)',parentBuilds:parentBuilds?.exact?'Parents have matching physical builds':parentBuilds?`Parents differ at ${parentBuilds.different} mounted positions`:'Parental pairing unavailable',livingMatches,
+    parents,children,ancestry,notes,inheritance:recordedInheritanceSummary(record.bodyInheritance,record.bodyVariation)||(inheritance?originSummary(inheritance,{limit:2}):'Parental body plans at conception not recorded (older lineage)'),parentBuilds:parentBuilds?.exact?'Parents have matching physical builds':parentBuilds?`Parents differ at ${parentBuilds.different} mounted positions`:'Parental pairing unavailable',livingMatches,
     home:territory?.established&&territory.home?`settled home · radius ${Math.round(territory.radius)} tiles`:'no settled home recorded',
     // v1.33.4: what this creature itself knows (v1.33 knowledge), not its last glimpse.
     lastWater:knowledgeLine(sim,animal),
@@ -97,6 +100,7 @@ function journalMarkup(m,canTakeOver){
       <section class="journal-notes">
         ${m.taxonExplanation?`<h3>Where the species name came from</h3><p>${escapeHtml(m.taxonExplanation)}</p>`:''}
         <h3>Habits</h3><p>${escapeHtml(m.habits)}</p>
+        ${m.bodyCost?`<h3>Body and growth</h3><p>${escapeHtml(m.bodyCost.text)}</p>`:''}
         ${m.developing?.length?`<h3>Body developing toward</h3><p>${escapeHtml(m.developing.join(' · '))}</p>`:''}
         <h3>What changed</h3><p>${escapeHtml(m.changes)}</p>
         <h3>Family</h3><p>Parents: ${escapeHtml(parents)}</p><div class="journal-children">${children}</div>
