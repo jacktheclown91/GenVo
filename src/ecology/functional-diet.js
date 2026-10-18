@@ -9,10 +9,10 @@ import {bodyMass} from '../organisms/body-mass.js';
 import {SPECIES} from '../organisms/species.js';
 
 const MOUTHS=Object.freeze({
-  'grazing-mouth':{ground_producer:1,fruiting_shrub:.75,wetland_producer:.40,seed_producer:.60,decomposer:.08},
-  'nibbler-mouth':{ground_producer:.72,fruiting_shrub:.95,wetland_producer:1,seed_producer:.65,decomposer:.70},
-  'beak-mouth':{ground_producer:.35,fruiting_shrub:.75,wetland_producer:.25,seed_producer:1.20,decomposer:.12},
-  'kernel-beak':{ground_producer:.32,fruiting_shrub:.58,wetland_producer:.12,seed_producer:1.38,decomposer:.02},
+  'grazing-mouth':{ground_producer:1,fruiting_shrub:.75,wetland_producer:.40,seed_producer:.60,woody_producer:.04,decomposer:.08},
+  'nibbler-mouth':{ground_producer:.72,fruiting_shrub:.95,wetland_producer:1,seed_producer:.65,woody_producer:.20,decomposer:.70},
+  'beak-mouth':{ground_producer:.35,fruiting_shrub:.75,wetland_producer:.25,seed_producer:1.20,woody_producer:.28,decomposer:.12},
+  'kernel-beak':{ground_producer:.32,fruiting_shrub:.58,wetland_producer:.12,seed_producer:1.38,woody_producer:.32,decomposer:.02},
   'sucker-mouth':{ground_producer:.16,fruiting_shrub:.22,wetland_producer:.42,seed_producer:.18,decomposer:1.18,carrion:1.0},
   'filter-mouth':{ground_producer:.16,wetland_producer:.62,decomposer:.08,carrion:.10},
   'reed-sieve-mouth':{ground_producer:.10,wetland_producer:.82,decomposer:.08,carrion:.12},
