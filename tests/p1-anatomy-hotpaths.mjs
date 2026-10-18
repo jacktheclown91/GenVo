@@ -11,12 +11,13 @@ import {createHash} from 'node:crypto';
 const p=wildStartPlan('mosskip');
 const before=p.nodes.map(n=>({...n})),ident=JSON.stringify(p);
 const first=optionalLossChoices(p),again=optionalLossChoices(p);
-assert.equal(first,again,'identical immutable plan returns precisely the same prevalidated removal choices');
+assert.notEqual(first,again,'reverted mutation choices are freshly validated every time');
+assert.deepEqual(first,again,'original deterministic optional removal choices are identical by value');
 assert.notEqual(optionalLossChoices(p,{asymmetric:true}),first,'asymmetric removals use a distinct cached choice order');
 assert.deepEqual(p.nodes,before,'planning optional losses does not mutate the living plan');
 assert.equal(JSON.stringify(p),ident);
 const equivalent=structuredClone(wildStartPlan('mosskip'));
-assert.notEqual(optionalLossChoices(equivalent),first,'memoization never aliases different actor plan instances');
+assert.notEqual(optionalLossChoices(equivalent),first,'different actor plans never alias mutable option collections');
 const body=founderPlan();
 const fit=id=>({bodyPlan:makePlan([...body.nodes.filter(n=>n.socket!=='dorsal').map(n=>({partId:n.partId,parent:n.parent,socket:n.socket})),{partId:id,parent:'root',socket:'dorsal'}])});
 for(const [id,cold,hot]of [['filament-tuft',.78,1.04],['fur-mantle',.48,1.24],['feather-mantle',.55,1.12],['proto-wing',.83,1.13]]){
