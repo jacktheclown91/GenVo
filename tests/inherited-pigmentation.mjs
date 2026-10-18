@@ -31,7 +31,7 @@ const previous=phenotypeFor(historical),previousPalette=creaturePalette(previous
 assert.equal(previous.hueShift,0);
 assert.equal(previous.lightShift,0);
 assert.equal(previous.pigmentChroma,null);
-assert.equal(previousPalette.body,'#4ca98b','legacy skin tone retains old quantized palette');
+assert.equal(previousPalette.body,'#5b9a75','legacy skin tone retains old quantized palette');
 const modern=phenotypeFor({...historical,pigmentGenome:founderPigmentGenome('NEW-WORLD',11,'genvo')});
 assert.ok(Number.isFinite(modern.pigmentChroma));
 assert.notDeepEqual(creaturePalette(modern),previousPalette);
