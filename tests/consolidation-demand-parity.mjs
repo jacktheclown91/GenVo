@@ -31,6 +31,10 @@ const a=new Simulation('DEMAND-OPTIMIZATION-PARITY',{player:false,massRules:'leg
 // producer, seed, adult genotype and energy credits must be actually absent.
 for(const field of [a.world.plants.woodspire,a.world.seedBank.woodspire,a.world.plantResources.energy.woodspire,a.dispersal.seedReserve.woodspire,a.dispersal.coatReserve.woodspire])field.fill(0);
 a.dispersal.active.woodspire.clear();a.dispersal.bankGenomes.woodspire.clear();a.dispersal.producerOrigins.woodspire.clear();a.dispersal.floraState.adults.woodspire.clear();a.dispersal.floraState.seeds.woodspire.clear();
+// The current botanical catalog can consume a different number of startup
+// draws from the historical snapshot. Align the actual trial streams ONLY at
+// this frozen optimization boundary, then demand exact RNG every step.
+a.rng.state=b.rng.state;
 // Freeze optimization code, not superseded founder-target biology. Both sides
 // use the same current behavior controller; all480 exact-state gates remain.
 b.recovery=new RecoveryController(b);
