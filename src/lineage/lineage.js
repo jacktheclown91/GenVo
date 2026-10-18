@@ -42,6 +42,7 @@ export class LineageTracker{
       cause:null,
       alive:true,
       genes:{...animal.genes},
+      pigmentGenome:animal.pigmentGenome?structuredClone(animal.pigmentGenome):null,
       reproductiveGenome:animal.reproductiveGenome?structuredClone(animal.reproductiveGenome):null,
       matePreferences:animal.matePreferences?structuredClone(animal.matePreferences):null,
       adaptations:[...(animal.adaptations||[])],
@@ -67,7 +68,7 @@ export class LineageTracker{
     if(child.lineage){this.sim.speciation?.noteBirth?.(child,parents);const record=this.register(child,parents.map(p=>p.id));
       // Birth-time evidence from actual gestational parent snapshots (not their own
       // historical birth records). Never alters the live recombination pipeline.
-      if(record){record.parentBodyPlans=(conceptionParents||[]).map(p=>p?.bodyPlan?serializePlan(p.bodyPlan):null);record.parentPhenotypes=(conceptionParents||[]).map(p=>p?{id:p.id,genes:{...p.genes},adaptations:[...(p.adaptations||[])],anatomy:{...(p.anatomy||{})},ecoLifestyle:p.ecoLifestyle?structuredClone(p.ecoLifestyle):null}:null);}}
+      if(record){record.parentBodyPlans=(conceptionParents||[]).map(p=>p?.bodyPlan?serializePlan(p.bodyPlan):null);record.parentPhenotypes=(conceptionParents||[]).map(p=>p?{id:p.id,genes:{...p.genes},pigmentGenome:p.pigmentGenome?structuredClone(p.pigmentGenome):null,adaptations:[...(p.adaptations||[])],anatomy:{...(p.anatomy||{})},ecoLifestyle:p.ecoLifestyle?structuredClone(p.ecoLifestyle):null}:null);}}
     this.refreshSelection();
   }
   registerDeath(animal,cause){
