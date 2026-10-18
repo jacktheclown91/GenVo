@@ -1,4 +1,4 @@
-import {makePlan,validatePlan} from './body-plan.js';
+import {makePlan,validatePlan,serializePlan} from './body-plan.js';
 import {partDef} from './part-registry.js';
 import {createDraft,draftProblems,mirrorSocket} from './evolution-draft.js';
 import {DEVELOPMENTAL_SYMMETRY} from './developmental-symmetry.js';
@@ -32,8 +32,12 @@ export function removeOptionalSubtrees(plan,targets){
 const lossCache=new WeakMap();
 export function optionalLossChoices(plan,{asymmetric=false}={}){
   const mode=asymmetric?'asymmetric':'paired';
+  // Plans can be reused by external editor/tests and mutation migration. Verify
+  // the COMPLETE canonical layout before using a previously compiled choice.
+  const signature=serializePlan(plan)+'|sym='+DEVELOPMENTAL_SYMMETRY.enabled;
   let cached=lossCache.get(plan);
-  if(cached?.[mode])return cached[mode];
+  if(cached?.signature===signature&&cached[mode])return cached[mode];
+  if(cached?.signature!==signature)cached={signature};
   const out=[],seen=new Set(),paired=DEVELOPMENTAL_SYMMETRY.enabled&&!asymmetric;
   for(const n of [...plan.nodes].sort((a,b)=>a.id<b.id?-1:a.id>b.id?1:0)){if(!n.parent)continue;const mirror=paired?mirroredNode(plan,n):null,targets=[n.id];if(mirror&&mirror.id!==n.id)targets.push(mirror.id);targets.sort();const key=targets.join('|');if(seen.has(key))continue;seen.add(key);const result=removeOptionalSubtrees(plan,targets);if(result)out.push({targets,...result})}
   cached??={};cached[mode]=out;lossCache.set(plan,cached);
