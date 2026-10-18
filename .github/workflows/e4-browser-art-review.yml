@@ -1,0 +1,36 @@
+name: E4 real Chromium 32px creature artwork review
+on:
+  push:
+    branches:
+      - feat/e4-native-evolved-part-art
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 17
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify exact source registry, fallback and inherited body mounts
+        run: |
+          node tests/socket-layout.mjs
+          node tests/proto-speciation.mjs
+          node tests/e4-visual-anatomy.mjs
+          node tests/native-part-catalog.mjs
+      - name: Install Chromium for real runtime capture
+        run: |
+          npm install --no-save --no-package-lock --no-audit --no-fund playwright
+          npx playwright install --with-deps chromium
+      - name: Boot GenVo in Chromium and capture all six part types at eight angles
+        run: node tools/verify-e4-browser-art.mjs
+      - name: Keep exact screenshots and browser review receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: genvo-e4-real-chromium-part-review
+          path: docs/test-runs/e4-browser-review/
+          if-no-files-found: ignore
