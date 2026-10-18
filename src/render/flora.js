@@ -30,6 +30,7 @@ export function drawFloraPlant(ctx,{shape,color,amount,px,py,u,x,y,kind,seedAllo
   else if(shape==='reed')drawReedFan(ctx,{x,y,u,density,body,light,shade,seed,isWater,season});
   else if(shape==='fungus')drawMushrooms(ctx,{x,y,u,density,body,light,shade,seed,amount,season});
   else if(shape==='pod')drawSeedPods(ctx,{x,y,u,density,body,light,shade,seed,amount,season,coatAllocation});
+  else if(shape==='tree')drawWoodspire(ctx,{u,body,light,shade,deep,seed,amount,season});
   else pixel(ctx,7,7,2,2,u,body);
   }
   if(reproduction?.receptive){pixel(ctx,at.cx-2,at.cy-4,3,1,u,'#e4d1b0');pixel(ctx,at.cx-1,at.cy-5,1,3,u,'#e4d1b0');pixel(ctx,at.cx-1,at.cy-4,1,1,u,'#e6bd63')}if(reproduction?.pollen){pixel(ctx,at.cx+2,at.cy-4,1,1,u,'#dfba5b');pixel(ctx,at.cx+3,at.cy-2,1,1,u,'#e9d37d')}if(reproduction?.developing){pixel(ctx,at.cx-2,at.cy-2,3,2,u,'#bd9c58');pixel(ctx,at.cx-1,at.cy-2,1,1,u,'#dfc47d')}
@@ -46,6 +47,7 @@ export function drawFloraTrace(ctx,{shape,color,px,py,u,x,y,kind,amount,season='
   else if(shape==='reed'){pixel(ctx,ox,oy-3,1,4,u,body);if(h>.6)pixel(ctx,ox+2,oy-4,1,5,u,light)}
   else if(shape==='fungus'){pixel(ctx,ox,oy-1,1,2,u,'#77675a');pixel(ctx,ox-1,oy-2,3,1,u,body)}
   else if(shape==='pod'){pixel(ctx,ox,oy-3,1,4,u,body);pixel(ctx,ox-1,oy-4,3,1,u,light)}
+  else if(shape==='tree'){pixel(ctx,ox,oy-1,2,2,u,'#655842');pixel(ctx,ox-2,oy-4,6,3,u,shade);pixel(ctx,ox-1,oy-5,4,1,u,light)}
   ctx.restore();
 }
 
@@ -60,6 +62,25 @@ export function drawFloraSeedling(ctx,{p,amount,bank,px,py,u,x,y,kind}){
   pixel(ctx,ox-2,base-4,2,1,u,leaf);pixel(ctx,ox-1,base-5,1,1,u,leaf);
   if(amount>.02||bank>.12){pixel(ctx,ox+1,base-5,2,1,u,leaf2);pixel(ctx,ox+2,base-6,1,1,u,leaf2)}
   ctx.restore();
+}
+
+// Small authored procedural overhead crown, not a side-view trunk. A dark
+// inner ring, broken foliage layers and visible woody center distinguish it
+// from edible berry shrubs even at the smallest zoom levels.
+function drawWoodspire(c,{u,body,light,shade,deep,seed,amount,season}){
+ const size=amount>.85?1:amount>.40?.85:.65,fall=season==='AUTUMN',
+  winter=season==='WINTER',leaves=fall?'#7c8350':body;
+ c.save();c.translate(8*u,8*u);c.scale(size,size);
+ pixel(c,-1,1,3,3,u,'#655843');pixel(c,-3,-2,7,6,u,deep);
+ for(const [x,y,w,h] of [[-5,-2,4,5],[-2,-5,5,4],[2,-3,4,5],[-3,2,6,3]])
+  pixel(c,x,y,w,h,u,shade);
+ for(const [x,y,w,h] of [[-4,-3,5,3],[-1,-5,4,3],[1,-1,4,3],[-3,1,3,2]])
+  pixel(c,x,y,w,h,u,winter?shade:leaves);
+ if(!winter){pixel(c,-2,-3,3,2,u,light);pixel(c,2,0,2,2,u,light);
+  if(seed>.46)pixel(c,-4,0,2,1,u,light);
+ }else{pixel(c,0,-2,2,3,u,'#7c7862');pixel(c,-3,1,3,1,u,'#77806b');}
+ pixel(c,0,0,2,2,u,'#786a4c');
+ c.restore();
 }
 
 function drawMoss(c,{x,y,u,density,body,light,shade,seed,amount,season}){
