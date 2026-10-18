@@ -59,7 +59,7 @@ wrongPage.slots.find(s=>s.id===target.id).owner='outside';
 assert.throws(()=>restoreFaunaPageCheckpoint(wrongPage),/incorrect page ownership/,'identity cannot be silently assigned to a different page');
 
 const missingSlot=structuredClone(archive);missingSlot.slots.pop();
-assert.throws(()=>restoreFaunaPageCheckpoint(missingSlot),/incorrect page ownership|Incomplete fauna/,'extra unslotted creature cannot be loaded');
+assert.throws(()=>restoreFaunaPageCheckpoint(missingSlot),/Invalid fauna page checkpoint|incorrect page ownership|Incomplete fauna/,'extra unslotted creature cannot be loaded');
 
 const bogus=structuredClone(archive);bogus.pages.set('99,0',[{id:999,x:999,y:0,alive:true}]);
 assert.throws(()=>restoreFaunaPageCheckpoint(bogus),/Invalid fauna checkpoint page/,'pages must fit the actual canonical world');
