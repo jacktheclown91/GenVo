@@ -21,7 +21,7 @@ jobs:
         run: |
           node tests/p1-anatomy-hotpaths.mjs
           node tests/anatomical-climate-precursors.mjs
-          node tests/optional-loss.mjs
+          node tests/optional-organ-loss.mjs
           node tests/body-cost-readability.mjs
           node tests/terrain-travel.mjs
           node tests/save-persistence.mjs
