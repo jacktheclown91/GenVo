@@ -23,7 +23,6 @@ const w=sim.world,d=sim.dispersal;
 assert.ok(d.seedReserve.woodspire instanceof Float32Array&&d.coatReserve.woodspire instanceof Float32Array);
 assert.ok(d.floraState.adults.woodspire instanceof Map);
 validatePlantResources(w,w.plantResources);
-const wooded=[...w.plants.woodspire].findIndex(x=>x>.15&&!w.water[w.plants.woodspire.indexOf(x)]);
 // Choose an actual planted tile, not a synthetic class label.
 let i=-1;for(let p=0;p<w.len;p++)if(w.plants.woodspire[p]>.15&&!w.water[p]&&w.plants.sunmoss[p]>.2){i=p;break}
 assert.ok(i>=0,'forest and ground producers inhabit some of the same real cells');
@@ -44,8 +43,9 @@ assert.ok(shade.world.plantResources.energy.sunmoss[i]<sun.world.plantResources.
 assert.ok(shade.world.plantResources.totals.photosynthesis<sun.world.plantResources.totals.photosynthesis,
  'intercepted sunlight is not invented as another free energy input');
 assert.equal(w.plants.sunmoss[i],oldMoss,'competition observations do not mutate original world');
-const biomeBefore=w.biomeAt(i%w.n+.5,Math.floor(i/w.n)+.5,sim.climate);
-assert.equal(biomeBefore.code,biomeAt(w,i,w.biomeClimate(sim.climate)).code);
+const climate={temp:.6,rain:.6};
+const biomeBefore=w.biomeAt(i%w.n+.5,Math.floor(i/w.n)+.5,climate);
+assert.equal(biomeBefore.code,biomeAt(w,i,w.biomeClimate(climate)).code);
 const save=snap(sim),copy=restoreSimulationSnapshot(structuredClone(save));
 assert.deepEqual(snap(copy),save,'tree genotype and physical reserves round-trip through normal saves');
 for(let t=0;t<96;t++){sim.update(null);copy.update(null);}
