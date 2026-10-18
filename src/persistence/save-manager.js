@@ -225,6 +225,7 @@ export function restoreSimulationSnapshot(snapshot){
   restoreEcologyRules(sim,snapshot.core||{});
   restoreWorld(sim.world,snapshot.world,{initializeMissingFreshwater});
   validatePageDayWork(sim.pageDayWork,sim.world);
+  if(sim.pageDayWork&&sim.pageDayWork.lastDay>sim.day)throw Error('Vegetation page work day is in the future.');
   sim.animals=snapshot.animals;
   restoreMassRules(sim,snapshot.core||{});
   for(const a of sim.animals)if(!a.matePreferences)a.matePreferences=matePreferencesFor(snapshot.seed,a);
