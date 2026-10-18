@@ -3,10 +3,10 @@ on:
   push:
     branches:
       - feat/d0-canonical-page-residency
-  pull_request:
-    branches:
-      - feat/b1-page-salt-transfer-receipts
   workflow_dispatch:
+concurrency:
+  group: d0-page-residency-${{ github.ref_name }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
