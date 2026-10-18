@@ -73,6 +73,7 @@ export class World{
     case 'shrub':return fertility>.43&&noise>.48?Math.max(0,.10+.16*noise+.08*fertility):0;
     case 'wetland':return wet>.52&&noise>.38?Math.max(0,(wet-.48)*1.18+.05*fine):0;
     case 'fungus':return Math.max(0,.02+.07*noise);
+    case 'woodland':return wet>.39&&fertility>.38&&noise>.67?Math.min(.40,.09+.18*wet*fertility+.08*noise):0;
     case 'dry_seed':return wet<.62&&noise>.46?Math.max(0,.07+.18*(1-wet)*fertility+.08*noise):0;
     default:return Math.max(0,.03+.08*noise);
   }}
