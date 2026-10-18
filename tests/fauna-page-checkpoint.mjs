@@ -47,6 +47,13 @@ const duplicate=structuredClone(archive),pkey=[...duplicate.pages.keys()].find(k
 duplicate.pages.get(pkey).push(duplicate.pages.get(pkey)[0]);
 assert.throws(()=>restoreFaunaPageCheckpoint(duplicate),/duplicated|incorrect page ownership/,'duplicate actor record cannot be loaded');
 
+const coordinatedLoss=structuredClone(archive),lost=coordinatedLoss.slots[0];
+coordinatedLoss.slots.shift();
+const bucket=coordinatedLoss.pages.get(lost.owner);
+bucket.splice(bucket.findIndex(a=>a.id===lost.id),1);
+if(!bucket.length)coordinatedLoss.pages.delete(lost.owner);
+assert.throws(()=>restoreFaunaPageCheckpoint(coordinatedLoss),/Invalid fauna page checkpoint/,'removing both a manifest slot and its physical page actor is detectable by original cardinality');
+
 const wrongPage=structuredClone(archive),target=wrongPage.pages.get(pkey)[0];
 wrongPage.slots.find(s=>s.id===target.id).owner='outside';
 assert.throws(()=>restoreFaunaPageCheckpoint(wrongPage),/incorrect page ownership/,'identity cannot be silently assigned to a different page');
