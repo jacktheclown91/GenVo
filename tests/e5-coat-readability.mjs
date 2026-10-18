@@ -14,11 +14,11 @@ assert.equal(catalog.parts.length,Object.keys(PARTS).length,'no missing, duplica
 const masks=new Map(),opaque=new Map();
 for(const id of ids){
  const entry=catalog.parts.find(p=>p.partId===id);
- assert.equal(entry?.status,'e5-native-coat-silhouette-review');
+ assert.equal(entry?.status,'e5-native-coat-open-body-review');
  const content=fs.readFileSync(new URL('../assets/art/'+entry.path.slice(2),import.meta.url));
  assert.equal(crypto.createHash('sha256').update(content).digest('hex'),entry.checksumSha256);
  const source=JSON.parse(content),native=JSON.parse(fs.readFileSync(new URL('../assets/art/'+entry.indexed.slice(2),import.meta.url)));
- assert.equal(source.version,2);
+ assert.equal(source.version,3);
  assert.equal(source.frames.length,16);
  assert.equal(source.regions.length,2);
  const built=await compileSourceRgbaPart({...source,frames:source.frames.map(f=>({...f,rgba:Buffer.from(f.rgbaBase64,'base64')}))});
@@ -34,6 +34,12 @@ for(const id of ids){
    assert.deepEqual(Buffer.from(recolorIndexedFrame(native,`idle:${f}:1`)),b);
    assert.notDeepEqual(a,b,'real frame variation '+id+' facing '+f);
    pixels.push(a);
+ }
+ // Dorsal coverings must retain a transparent central aperture so a body
+ // remains visible. Dense fur/feathers are not an opaque generic white blob.
+ if(id!=='filament-tuft'){
+   const sourceCenter=(16*32+16)*4+3;
+   assert.equal(pixels[2][sourceCenter],0,id+' preserves the native body's center');
  }
  const facing=pixels[2],mask=new Set(),styles=new Set();
  for(let i=0;i<1024;i++)if(facing[i*4+3]){
