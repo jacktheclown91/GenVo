@@ -180,6 +180,7 @@ export const PARTS=Object.freeze(Object.fromEntries([
   part('heel-spike','defense',{tags:['spur'],prereq:["barb"],sockets:['spur'],mass:.08,upkeep:0.03,cost:1,actions:["armor"],niche:["predator-pressure"]}),
   part('sensory-bristle','senses',{tags:['spur'],prereq:[],sockets:['spur'],mass:.08,upkeep:0.02,cost:1,actions:["glance"],niche:["prey-vigilance"]}),
   part('grip-pad','limbs',{tags:['spur'],prereq:[],sockets:['spur'],mass:.08,upkeep:0.02,cost:1,actions:["run"],niche:["open-ground"]}),
+  part('hook-pad','limbs',{tags:['spur','grip','climb'],prereq:['grip-pad'],sockets:['spur'],mass:.12,upkeep:.035,cost:3,actions:['climb','brace'],niche:['slopes','woodland']}),
   part('kick-spur','offense',{tags:['spur'],prereq:["claw"],sockets:['spur'],mass:.08,upkeep:0.03,cost:1,actions:["strike"],niche:["prey"]}),
 ].map(p=>[p.id,p])));
 
