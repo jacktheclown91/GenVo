@@ -1,0 +1,46 @@
+name: GenVo E2 living woodland and biological resource contracts
+on:
+  push:
+    branches:
+      - feat/e2-living-woodland
+  workflow_dispatch:
+concurrency:
+  group: e2-woodland-${{ github.ref_name }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  e2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Physical woodland, seed/genome and resource tests
+        run: |
+          node tests/living-woodland.mjs
+          node tests/plant-resource-contract.mjs
+          node tests/botanical-reproduction.mjs
+          node tests/botanical-safety.mjs
+          node tests/clonal-flora.mjs
+          node tests/flora-tissue-propagules.mjs
+          node tests/page-seed-transfers.mjs
+          node tests/page-vegetation-work.mjs
+          node tests/shared-dietary-demand.mjs
+          node tests/soil-water.mjs
+          node tests/overhead-flora-art.mjs
+          node tests/save-persistence.mjs
+          node tests/fauna-page-checkpoint.mjs
+      - name: Full unchanged fast regression
+        run: node tools/run-tests.mjs --json docs/test-runs/e2-woodland-ci.json
+      - name: Archive regression evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e2-living-woodland
+          path: |
+            docs/test-runs/e2-woodland-ci.json
+            docs/test-runs/e2-woodland-ci.artifacts/
+          if-no-files-found: ignore
