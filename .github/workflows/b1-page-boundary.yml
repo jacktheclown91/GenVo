@@ -1,0 +1,49 @@
+name: GenVo B1 page-boundary validation
+on:
+  push:
+    branches:
+      - feat/b1-page-salt-transfer-receipts
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'src/world/**'
+      - 'src/ecology/soil-water.js'
+      - 'tests/page-*-transfers.mjs'
+      - '.github/workflows/b1-page-boundary.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  b1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Page boundary receipts and conserved water
+        run: |
+          node tests/page-salt-transfers.mjs
+          node tests/page-groundwater-transfers.mjs
+      - name: Existing topography, ecology and save compatibility
+        run: |
+          node tests/topography.mjs
+          node tests/soil-water.mjs
+          node tests/regional-environment.mjs
+          node tests/surface-topology.mjs
+          node tests/surface-water-persistence.mjs
+          node tests/world-pages.mjs
+          node tests/save-persistence.mjs
+      - name: Fast regression ledger
+        run: node tools/run-tests.mjs --json docs/test-runs/b1-page-boundary-ci.json
+      - name: Retain validation summary and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: b1-page-boundary-validation
+          path: |
+            docs/test-runs/b1-page-boundary-ci.json
+            docs/test-runs/b1-page-boundary-ci.artifacts/
+          if-no-files-found: ignore
