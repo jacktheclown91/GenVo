@@ -74,19 +74,27 @@ const DRAW={
   // Venom gland: a swollen 2x2 sac with a dark duct toward the jaw.
   'venom-gland'(c,k){const gx=k.bx+k.perp.x*k.sign*(k.bodyW*.40)+k.fx*.8,gy=k.by+k.perp.y*k.sign*(k.bodyH*.40)+k.fy*.8;pixel(c,snap(gx),snap(gy),2,2,k.s,'#9fd14f');pixel(c,snap(gx),snap(gy),1,1,k.s,'#e2f5a8');pixelLine(c,gx+k.fx,gy+k.fy,gx+k.fx*2-k.perp.x*k.sign,gy+k.fy*2-k.perp.y*k.sign,k.s,'#4e6d2a')},
   // Overhead E3 insulation stages. Mounted to the upper body, NOT to the face.
-  'filament-tuft'(c,k){const b=backTop(k);for(let n=-2;n<=2;n++){
-    const x=b.x+k.perp.x*n*.78,y=b.y+k.perp.y*n*.78-.5;
-    pixelLine(c,x,y,x+k.perp.x*n*.3-k.fx*(1.0+Math.abs(n)*.15),y+k.perp.y*n*.3-k.fy*(1.0+Math.abs(n)*.15)-.4,k.s,n&1?'#d6bf93':'#e4d7ba',.45)}},
+  'filament-tuft'(c,k){const b=backTop(k);for(let n=-4;n<=4;n++){
+    const x=b.x+k.perp.x*n*.47,y=b.y+k.perp.y*n*.47;
+    pixelLine(c,x,y,x-k.fx*(1.4+Math.abs(n)*.14),y-k.fy*(1.4+Math.abs(n)*.14)+k.perp.y*n*.28,k.s,n%3===0?'#f0e2ba':'#d8c6a2',.46)}},
   'fur-mantle'(c,k){const b=backTop(k);
-    pixel(c,b.x-2.8,b.y-1.3,5.6,2.4,k.s,'#6b6659');
-    pixel(c,b.x-2.4,b.y-1.3,4.8,1.3,k.s,'#bbab8d');
-    for(let n=-3;n<=3;n++){const a=b.x+k.perp.x*n*.72,b0=b.y+k.perp.y*n*.72;
-      pixelLine(c,a,b0,a-k.fx*.8+k.perp.x*n*.20,b0-k.fy*.8+k.perp.y*n*.20-1,k.s,n&1?'#f3dfb7':'#d3bb94',.55)}},
-  'feather-mantle'(c,k){const b=backTop(k);for(let n=-2;n<=2;n++){
-    const side=n<0?-1:1,a={x:b.x+k.perp.x*n*.55,y:b.y+k.perp.y*n*.55},t={x:a.x-k.fx*2.0+k.perp.x*side*1.1,y:a.y-k.fy*2.0+k.perp.y*side*1.1-1.1};
-    pixelLine(c,a.x,a.y,t.x,t.y,k.s,'#5a7381',1.2);
-    pixelLine(c,a.x,a.y,t.x,t.y,k.s,n%2?'#cbd8d4':'#aebfbe',.55);
-    pixel(c,snap(t.x),snap(t.y),.5,.5,k.s,'#ecede0')}},
+    // Jagged perimeter and a broad warm mantle, unlike the narrow sparse tuft.
+    for(let n=-5;n<=5;n++){
+      const side=n<0?-1:1,x=b.x+k.perp.x*n*.82,y=b.y+k.perp.y*n*.82;
+      pixelLine(c,x-k.fx*.8,y-k.fy*.8,x-k.fx*(2.8+Math.abs(n%3)*.32)+k.perp.x*side*.35,
+        y-k.fy*(2.8+Math.abs(n%3)*.32)+k.perp.y*side*.35,k.s,n%3===0?'#e6c798':'#aa8063',1.1);
+      pixel(c,snap(x),snap(y),1,1,k.s,n%2?'#705747':'#d8b688');
+    }},
+  'feather-mantle'(c,k){const b=backTop(k);
+    // Separate lateral vanes and pale tapered quills preserve top-down readability.
+    for(const side of [-1,1])for(let n=0;n<5;n++){
+      const a={x:b.x-k.fx*n*.43+k.perp.x*side*.2,y:b.y-k.fy*n*.43+k.perp.y*side*.2};
+      const t={x:a.x-k.fx*(2.2+n*.12)+k.perp.x*side*(2.0+n*.52),
+        y:a.y-k.fy*(2.2+n*.12)+k.perp.y*side*(2.0+n*.52)};
+      pixelLine(c,a.x,a.y,t.x,t.y,k.s,'#476477',1.15);
+      pixelLine(c,a.x,a.y,t.x,t.y,k.s,n%2?'#a2c6ce':'#e5eee8',.6);
+      pixel(c,snap(t.x),snap(t.y),.8,.8,k.s,n%2?'#d4dcb5':'#eff5ec');
+    }},
   // Wing precursor is DISPLAY ONLY: six tapered vanes anchored to the back.
   'proto-wing'(c,k){const b=backTop(k),fold=k.behavior?.crestSpread>0?.8:.55;
     for(const sign of [-1,1])for(let n=0;n<3;n++){
@@ -306,9 +314,13 @@ export function artMount(partId,k){
  }
  if(sockets.includes('dorsal')){
    const at=authored('dorsal');
+   // E5 readability: coat tissue extends visibly past the body edge, whereas
+   // a filament precursor stays a small, sparse tuft. Original dorsal gadgets
+   // and display anatomy retain their established native footprint.
+   const coatScale=partId==='filament-tuft'?.42:partId==='fur-mantle'?.51:partId==='feather-mantle'?.48:.31;
    return {x:at?.x??x0-k.fx*Math.min(k.bodyW,k.bodyH)*.10,
      y:at?.y??y0-k.fy*Math.min(k.bodyW,k.bodyH)*.10,
-     scale:.31*(1+(partDef(partId)?.actionCapabilities.includes('flare')?(Number(k.behavior?.crestSpread)||0):0)),mirrorX:false};
+     scale:coatScale*(1+(partDef(partId)?.actionCapabilities.includes('flare')?(Number(k.behavior?.crestSpread)||0):0)),mirrorX:false};
  }
  return null;
 }
