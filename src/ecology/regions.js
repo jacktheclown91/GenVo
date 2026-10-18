@@ -1,5 +1,6 @@
 import {hasPart} from '../lineage/part-abilities.js';
-import {createPageResidency,recordPageResident,removePageResident,reconcilePageResidency,residencyPage} from './page-residency.js';
+import {createPageResidency,recordPageResident,removePageResident,reconcilePageResidency} from './page-residency.js';
+import {WORLD_PAGE_SIZE} from '../world/pages.js';
 import {observeEngineerSuccession,noteEngineerWork,engineerSuccessionEvents} from './engineer-succession.js';
 import {noteEngineerConception,noteEngineerColonyBirth,observeEngineerColony,engineerColonyEvidence} from './engineer-colonies.js';
 import {observeEngineerBreedingOpportunity} from './engineer-breeding-opportunities.js';
@@ -19,9 +20,8 @@ export class RegionalEcologyController{
   notePageDeath(animal){removePageResident(this.pageTransit,animal.id);}
   notePageMove(animal,x,y){
     // Skip movement inside a page. A crossing is recorded after the organism itself moves.
-    const w=this.sim.world,oldPage=residencyPage(w,x,y),current=residencyPage(w,animal.x,animal.y);
-    if(oldPage===current)return false;
-    return recordPageResident(this.ensurePageTransit(),w,animal,{from:{x,y},day:this.sim.day,tick:this.sim.tickCount});
+    if(Math.floor(x/WORLD_PAGE_SIZE)===Math.floor(animal.x/WORLD_PAGE_SIZE)&&Math.floor(y/WORLD_PAGE_SIZE)===Math.floor(animal.y/WORLD_PAGE_SIZE))return false;
+    return recordPageResident(this.ensurePageTransit(),this.sim.world,animal,{from:{x,y},day:this.sim.day,tick:this.sim.tickCount});
   }
   reconcilePages(){reconcilePageResidency(this.ensurePageTransit(),this.sim);}
   ensure(key){this.bounds(key);let r=this.records.get(key);if(!r){r={key,population:{},lineage:0,observedDay:null,observedTick:null,births:{},deaths:{},mortality:{},arrivals:{},departures:{},history:[]};this.records.set(key,r);}return r;}
