@@ -18,8 +18,8 @@ const SIDE={'flank.left':-1,'flank.right':1,'eye.left':-1,'eye.right':1};
 // How far each leg type reaches, relative to a walking leg.
 // Limb type shapes free recovery and lift. Supported toes share the travel contract
 // in genvo.js rather than skating through type-specific stance multipliers.
-export const LEG_GAIT=Object.freeze({'runner-leg':{stride:1.4,lift:.75,step:1.3},'sturdy-leg':{stride:.65,lift:.55,step:.78},'spring-leg':{stride:1.1,lift:1.5,step:1.15},'walking-leg':{stride:1,lift:1,step:1},'grasper':{stride:.9,lift:.9,step:.92},'digging-forelimb':{stride:.8,lift:.8,step:.85},'webbed-leg':{stride:1,lift:.85,step:.9},'padded-leg':{stride:.95,lift:.7,step:.95}});
-export const LEG_REACH=Object.freeze({'runner-leg':1.16,'sturdy-leg':.84,'spring-leg':1,'walking-leg':1,'grasper':1,'digging-forelimb':.94,'webbed-leg':1,'padded-leg':.96});
+export const LEG_GAIT=Object.freeze({'runner-leg':{stride:1.4,lift:.75,step:1.3},'sturdy-leg':{stride:.65,lift:.55,step:.78},'spring-leg':{stride:1.1,lift:1.5,step:1.15},'walking-leg':{stride:1,lift:1,step:1},'grasper':{stride:.9,lift:.9,step:.92},'digging-forelimb':{stride:.8,lift:.8,step:.85},'webbed-leg':{stride:1,lift:.85,step:.9},'padded-leg':{stride:.95,lift:.7,step:.95},'climber-leg':{stride:.72,lift:.85,step:.78}});
+export const LEG_REACH=Object.freeze({'runner-leg':1.16,'sturdy-leg':.84,'spring-leg':1,'walking-leg':1,'grasper':1,'digging-forelimb':.94,'webbed-leg':1,'padded-leg':.96,'climber-leg':.94});
 
 export function layoutFromPlan(plan,{explicit=false}={}){
   const out={planId:plan.id,explicit,torso:'soft-torso',legs:Array(8).fill(null),spurs:Array(8).fill(null),slotLegs:{},slotSpurs:{},legSlots:null,mouth:null,eyes:{'-1':null,'1':null},eyes2:{'-1':null,'1':null},flanks:{'-1':[],'1':[]},dorsal:null,dorsal2:null,tail:null,shape:null,head:null,headNodeId:null,implicitHead:false,faceNodes:{}};
