@@ -43,6 +43,7 @@ const land=probe[30],probeClimate={...climate,frontDay:6};
 const landBiome=w.biomeAt(land%n+.5,Math.floor(land/n)+.5,probeClimate);
 assert.ok(Object.hasOwn(BIOMES,landBiome.code));
 assert.ok(Number.isFinite(landBiome.rain)&&Number.isFinite(landBiome.temperature));
+assert.deepEqual(w.biomeAt(land%n+.5,Math.floor(land/n)+.5,climate),landBiome,'world biome query reads the actual current weather front without requiring UI to provide its day');
 const classes=w.biomeCounts(probeClimate);
 assert.equal(Object.values(classes).reduce((a,b)=>a+b,0),w.len,'every actual world cell has one readable habitat');
 assert.deepEqual(classes,countBiomes(w,probeClimate));
