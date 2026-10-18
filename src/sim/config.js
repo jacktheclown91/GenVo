@@ -29,7 +29,7 @@ export const PLANTS={
   marshroot:{label:'Reeds',guild:'wetland_producer',growth:.042,carry:.9,nutrition:13,waterNeed:.64,render:'reed',color:'#75915b',init:'wetland',dispersal:{seedLimited:true,animal:false,germination:.16,establish:.040,mature:.30,localRelease:.018,bankDecay:.986}},
   rotcap:{label:'Mushrooms',guild:'decomposer',growth:.025,carry:.55,nutrition:10,waterNeed:.48,render:'fungus',color:'#c6b48a',init:'fungus'},
   // E2: Long-lived, seeded woody canopy. Real tissue, finite growth inputs and inherited seed cohorts.
-  woodspire:{label:'Woodspire',guild:'woody_producer',growth:.012,carry:1.8,nutrition:5,waterNeed:.53,render:'shrub',color:'#35654b',init:'woodland',dispersal:{seedLimited:true,animal:true,seedLoad:.52,transitDays:[2,5],germination:.075,establish:.023,mature:.85,localRelease:.007,bankDecay:.991}},
+  woodspire:{label:'Woodspire',guild:'woody_producer',growth:.012,carry:1.8,nutrition:5,waterNeed:.53,render:'tree',color:'#35654b',init:'woodland',dispersal:{seedLimited:true,animal:true,seedLoad:.52,transitDays:[2,5],germination:.075,establish:.023,mature:.85,localRelease:.007,bankDecay:.991}},
   // Ninth organism family: a drought-tolerant seed plant proving content is not hard-capped at eight.
   thistlepod:{label:'Seed Pods',guild:'seed_producer',growth:.026,carry:.58,nutrition:11,waterNeed:.25,render:'pod',color:'#9a9b54',init:'dry_seed',dispersal:{seedLimited:true,animal:true,seedLoad:.86,transitDays:[1,2],germination:.20,soilDisturbanceResponse:.25,establish:.038,mature:.24,localRelease:.024,bankDecay:.976}}
 };
