@@ -40,7 +40,7 @@ export function advanceSoilWater(w,climate,day){
   // from open water.
   if(w.terrain){const pageLedger=new Map();t.lateral+=exchangeTerrainGroundwater(w,g,next,P.lateral,(i,j,water)=>recordPageGroundwater(pageLedger,n,i,j,water));s.pageGroundwaterTransfers=finishPageGroundwater(pageLedger);}
   else{delete s.pageGroundwaterTransfers;
-  else for(let i=0;i<w.len;i++){if(w.water[i]){next[i]=1;continue}const x=i%n,y=(i/n)|0,gi=g[i];let d=0;
+  for(let i=0;i<w.len;i++){if(w.water[i]){next[i]=1;continue}const x=i%n,y=(i/n)|0,gi=g[i];let d=0;
     if(x>0)d+=g[i-1]-gi;if(x<n-1)d+=g[i+1]-gi;if(y>0)d+=g[i-n]-gi;if(y<n-1)d+=g[i+n]-gi;
     const flow=P.lateral*.25*d;next[i]=gi+flow;t.lateral+=flow}}
   for(let i=0;i<w.len;i++){if(w.water[i]){g[i]=1;w.moisture[i]=1;continue}
