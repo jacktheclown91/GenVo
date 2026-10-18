@@ -4,7 +4,7 @@ import {validSexualFloraGenome,cloneBotanicalFloraGenome} from './botanical-gene
 import {PLANTS} from '../sim/config.js';
 import {mouthOf,feedingProfile} from './functional-diet.js';
 import {PARTS} from '../lineage/part-registry.js';
-export const FLORA_TISSUES=Object.freeze({bramble:{seed:.20,coat:0,label:'Fruit'},thistlepod:{seed:.20,coat:.25,label:'Pods'}});
+export const FLORA_TISSUES=Object.freeze({bramble:{seed:.20,coat:0,label:'Fruit'},thistlepod:{seed:.20,coat:.25,label:'Pods'},woodspire:{seed:.16,coat:.24,label:'Canopy seeds'}});
 const genomes=new Map(),validated=new WeakSet();
 export function founderFloraGenome(kind){if(genomes.has(kind))return genomes.get(kind);const p=PLANTS[kind];if(!p?.dispersal)return null;const t=FLORA_TISSUES[kind];const genome={schema:1,id:'flora1-'+kind,resourceAlias:kind,traits:{growth:p.growth,waterNeed:p.waterNeed,nutrition:p.nutrition,seedAllocation:t?.seed??0,coatAllocation:t?.coat??0},reproduction:'propagule',mutationEnabled:false};Object.freeze(genome.traits);Object.freeze(genome);genomes.set(kind,genome);return genome}
 export function canCrackSeeds(a){return !!PARTS[mouthOf(a)]?.actionCapabilities.includes('crush')}
