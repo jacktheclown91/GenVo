@@ -3,6 +3,7 @@ import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES,phenotypeFor} from '../src/organisms/species.js';
 import {PLANTS} from '../src/sim/config.js';
 import {setForm,setProto,formReading,protoReading,migrateLegacyReadings} from '../src/lineage/readings.js';
+import {expressedAdaptations} from '../src/lineage/evolution.js';
 // A copy of an animal with no form or proto-trait on its body (for before/after phenotype checks).
 const withoutReadings=a=>{const c={...a,anatomy:{...(a.anatomy||{})}};setForm(c,null);setProto(c,null);return c};
 
@@ -67,7 +68,16 @@ assert.ok(ot,'child inherits an existing secondary-parent determinant');
 assert.notEqual(ht.id,ot.id,'different parental determinants retain their distinct functions');
 assert.equal(ht.populationKey,'home');assert.equal(ot.populationKey,`center:${center.id}`);
 assert.equal(homeChild.species,'genvo');assert.equal(outerChild.species,'genvo','proto divergence does not declare a new species');
-assert.deepEqual(homeChild.adaptations.filter(id=>!g2.adaptations.includes(id)),[],'proto trait is separate from adaptation unlocks');
+// Children may inherit or mutate genuine ordinary body parts across generations.
+ // Prove instead that proto anatomy axes do not themselves produce adaptation
+ // unlocks, for either parental determinant, without forbidding real evolution.
+ for(const child of [homeChild,outerChild]){
+   const counterfactual=withoutReadings(child);
+   assert.deepEqual(expressedAdaptations(child.anatomy),expressedAdaptations(counterfactual.anatomy),
+     'proto readings alone never unlock ordinary adaptations');
+   assert.ok(!child.adaptations.includes(sim.protoSpeciation.traitFor(child)?.id),
+     'population proto labels are not regular part unlock IDs');
+ }
 assert.ok(ht.sourceDays>=5&&ot.sourceDays>=5,'trait records prospective pressure history rather than inventing a cause retroactively');
 assert.ok(ht.sourceDifference>=.18&&ot.sourceDifference>=.18,'trait records a material population difference');
 
