@@ -63,8 +63,8 @@ export class RegionalEcologyController{
   engineerColonyEvidence(key){return engineerColonyEvidence(this.records.get(key));}
   noteDeath(animal,cause){this.notePageDeath(animal);noteEngineerLifeDeath(this,animal,cause,this.sim.day);noteEngineerFamilySettlementDeath(this,animal,this.sim.day);const r=this.ensure(this.keyAt(animal.x,animal.y));r.deaths[animal.species]=(r.deaths[animal.species]||0)+1;const key=`${animal.species}:${cause}`;r.mortality[key]=(r.mortality[key]||0)+1;}
   observe(){
-    this.reconcilePages();
-    if(this.lastDay===this.sim.day)return;this.lastDay=this.sim.day;
+    if(this.lastDay===this.sim.day)return;
+    this.reconcilePages();this.lastDay=this.sim.day;
     for(const r of this.records.values()){r.population={};r.lineage=0;}
     const living=new Set(),engineers=new Map();
     for(const a of this.sim.animals){if(!a.alive)continue;living.add(a.id);const key=this.keyAt(a.x,a.y),r=this.ensure(key),previous=this.membership.get(a.id);
