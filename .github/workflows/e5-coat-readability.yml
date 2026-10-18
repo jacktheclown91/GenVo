@@ -1,0 +1,71 @@
+name: E5 readable inherited coat silhouettes, browser and full regression
+on:
+  push:
+    branches:
+      - feat/e5-readable-cover-silhouettes
+  workflow_dispatch:
+concurrency:
+  group: e5-coat-review-${{ github.ref_name }}
+  cancel-in-progress: true
+permissions:
+  contents: write
+jobs:
+  coats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Re-author exact 32px native coats without altering biology
+        run: |
+          node tools/polish-e5-cover-art.mjs
+          node tools/build-native-part-art.mjs
+      - name: Native silhouette, art source, ecology and editor regression
+        run: |
+          node tests/e5-coat-readability.mjs
+          node tests/e4-visual-anatomy.mjs
+          node tests/native-part-catalog.mjs
+          node tests/native-specialty-wave.mjs
+          node tests/creature-assembly.mjs
+          node tests/socket-layout.mjs
+          node tests/editor-pass.mjs
+          node tests/woodspire-trace-render.mjs
+          node tests/anatomical-climate-precursors.mjs
+          node tests/inherited-coats.mjs
+          node tests/save-persistence.mjs
+      - name: Install Chromium for actual native gameplay render review
+        run: |
+          npm install --no-save --no-package-lock --no-audit --no-fund playwright
+          npx playwright install --with-deps chromium
+      - name: Capture real game and all six 8-facing body examples
+        run: node tools/verify-e5-browser-coats.mjs
+      - name: Install verified native E5 covers only on this feature branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add assets/art/catalog.json
+          for id in filament-tuft fur-mantle feather-mantle; do
+            git add "assets/art/parts/$id.json" "assets/art/parts/$id.indexed.json" "assets/art/parts/$id.png"
+          done
+          if ! git diff --cached --quiet; then
+            git config user.name "GenVo Native Art Build"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Install E5 distinct 32px inherited coat silhouettes"
+            git push origin HEAD:feat/e5-readable-cover-silhouettes
+          fi
+      - name: Full unchanged fast tier including original 500 ms benchmark
+        run: node tools/run-tests.mjs --json docs/test-runs/e5-coat-readability-ci.json
+      - name: Preserve Chromium screenshots and unmodified regression evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: genvo-e5-native-coat-visual-and-fast-evidence
+          path: |
+            docs/test-runs/e5-coat-review/
+            docs/test-runs/e5-coat-readability-ci.json
+            docs/test-runs/e5-coat-readability-ci.artifacts/
+          if-no-files-found: ignore
