@@ -1,0 +1,48 @@
+name: GenVo E3 evolved physiology and traction
+on:
+  push:
+    branches:
+      - feat/e3-insulation-climbing-precursors
+  workflow_dispatch:
+concurrency:
+  group: e3-evolved-parts-${{ github.ref_name }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  e3:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: New biology and existing evolution, movement and save contracts
+        run: |
+          node tests/anatomical-climate-precursors.mjs
+          node tests/evolution-draft.mjs
+          node tests/evolution-editor.mjs
+          node tests/evolution-contract.mjs
+          node tests/body-cost-readability.mjs
+          node tests/part-abilities.mjs
+          node tests/parts-wave1.mjs
+          node tests/parts-wave2.mjs
+          node tests/terrain-travel.mjs
+          node tests/anatomy-locomotion.mjs
+          node tests/grounded-locomotion.mjs
+          node tests/inherited-coats.mjs
+          node tests/save-persistence.mjs
+          node tests/living-woodland.mjs
+          node tests/fauna-page-checkpoint.mjs
+      - name: Full unchanged fast regression
+        run: node tools/run-tests.mjs --json docs/test-runs/e3-climate-precursors-ci.json
+      - name: Archive all evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: e3-evolved-physiology-and-traction
+          path: |
+            docs/test-runs/e3-climate-precursors-ci.json
+            docs/test-runs/e3-climate-precursors-ci.artifacts/
+          if-no-files-found: ignore
