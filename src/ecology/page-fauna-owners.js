@@ -21,7 +21,7 @@ function detach(r,id,old){
 function placeActor(r,world,a){
  if(!validId(a?.id))throw Error('Invalid canonical fauna identity.');
  const id=a.id,prior=r.byId.get(id),had=r.byId.has(id),old=r.pageOf.get(id);
- if(had&&prior!==a)throw Error('Duplicate canonical organism identity.');
+ if(had&&prior!==a)throw Error('Duplicate or invalid living fauna identity.');
  if(!a.alive){if(had){detach(r,id,old);r.byId.delete(id);r.pageOf.delete(id);}return null;}
  const page=residencyPage(world,a.x,a.y);
  if(had&&old===page)return page;
