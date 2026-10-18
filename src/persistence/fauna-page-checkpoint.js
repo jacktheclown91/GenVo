@@ -46,7 +46,7 @@ export function createFaunaPageCheckpoint(sim,options={}){
  }
  delete base.animals;
  const checkpoint={schema:FAUNA_PAGE_CHECKPOINT_SCHEMA,worldSize:n,pageSize:WORLD_PAGE_SIZE,
-  header:base,slots,pages};
+  actorCount:actors.length,header:base,slots,pages};
  validateFaunaPageCheckpoint(checkpoint);
  return checkpoint;
 }
@@ -54,7 +54,8 @@ export function createFaunaPageCheckpoint(sim,options={}){
 export function validateFaunaPageCheckpoint(checkpoint){
  const c=checkpoint;
  if(c?.schema!==FAUNA_PAGE_CHECKPOINT_SCHEMA||c.pageSize!==WORLD_PAGE_SIZE||
-  !Array.isArray(c.slots)||!(c.pages instanceof Map)||!c.header||
+  !Array.isArray(c.slots)||!natural(c.actorCount)||c.slots.length!==c.actorCount||
+  !(c.pages instanceof Map)||!c.header||
   Object.hasOwn(c.header,'animals'))throw Error('Invalid fauna page checkpoint.');
  const n=geometry(c.header),expected=new Map(),ids=new Set();
  if(c.worldSize!==n)throw Error('Fauna checkpoint world dimensions do not match.');
