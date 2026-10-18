@@ -112,7 +112,8 @@ export const WAVE1_TEXT=Object.freeze({
   'tracker-eye':{gain:'Food and water shown and found farther away',cost:'More food upkeep.'},
   'display-eye':{gain:'Courts and mates at lower energy',cost:'More food upkeep; threats noticed a little later.'},
   'eyespot':{gain:'Almost no upkeep',cost:'Threats noticed much later.'},
-  'glow-eye':{gain:'Relic part: finds food and water much farther away, and spots threats sooner',cost:'More food.'}
+  'glow-eye':{gain:'Relic part: finds food and water much farther away, and spots threats sooner',cost:'More food.'},
+  'climber-leg':{gain:'Two or more climbing legs gain purchase on uphill slopes',cost:'Costs food, slower on flats, and needs ancestral graspers.'}
 });
 
 
@@ -188,7 +189,12 @@ export const WAVE2_TEXT=Object.freeze({
   'luminous-tail':{gain:'Relic part: courts at lower energy, and its glow lures prey closer',cost:'Stalkers spot you farther away.'},
   'shell-back':{gain:'Relic part: hits from behind do about half damage',cost:'Slower sprint, a little more food.'},
   'armored-hide':{gain:'Relic part: takes less damage, and attackers may recoil',cost:'Slightly slower sprint, more food.'},
-  'echo-crest':{gain:'Relic part: spots threats much farther away',cost:'A little more food.'}
+  'echo-crest':{gain:'Relic part: spots threats much farther away',cost:'A little more food.'},
+  'filament-tuft':{gain:'Inherited filaments reduce cold energy use',cost:'Small upkeep and heat retention.'},
+  'fur-mantle':{gain:'Thick fur reduces cold energy loss',cost:'Needs filament ancestry; wet fur insulates less, and heat costs more.'},
+  'feather-mantle':{gain:'Feathers insulate in cold and resist wetting',cost:'Needs ancestral filaments; costs food and heat. Not a flight ability.'},
+  'proto-wing':{gain:'Feather-derived display precursor for future flight evolution',cost:'Needs feather ancestry, high cost and upkeep. Cannot fly or glide.'},
+  'hook-pad':{gain:'A pair of hooks gives uphill grip on existing slopes',cost:'Needs grip-pad ancestry, food upkeep and at least two supporting grips.'}
 });
 // Combined wave 2 modifiers for a plan's part counts.
 function wave2Mods(c){
