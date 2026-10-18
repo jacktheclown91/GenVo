@@ -21,7 +21,10 @@ function record(s,entry){const r=s.world.plantResources;r.receipts.push({...entr
 export function advancePlantInputs(s){const w=s.world,r=w.plantResources,u=PLANT_RESOURCE_UNITS;r.day=s.day;
   for(let i=0;i<w.len;i++){if(w.water[i])continue;if(SOIL_WATER.enabled){const before=r.water[i];r.water[i]=plantAvailableWater(w,i,u.waterCapacity);r.totals.soilExchange=(r.totals.soilExchange||0)+r.water[i]-before;}else{const before=r.water[i],rain=Math.max(0,s.climate.rain)*.06,shore=(w.seepage[i]||0)*.02,evap=Math.min(before+rain+shore,.025+.035*Math.max(0,s.climate.temp)),next=before+rain+shore-evap,runoff=Math.max(0,next-u.waterCapacity);r.water[i]=Math.min(u.waterCapacity,next);r.totals.rain+=rain;r.totals.shoreInflow+=shore;r.totals.evaporation+=evap;r.totals.runoff+=runoff;}
     const total=LAND_PRODUCERS.reduce((v,k)=>v+w.plants[k][i],0),flux=Math.max(0,1-localRain(w,s.climate,i)*.45)*.04;
-    for(const k of LAND_PRODUCERS){const biomass=w.plants[k][i],energy=r.energy[k],incoming=total>0?flux*Math.min(1,total)*biomass/total:0,beforeEnergy=energy[i],respiration=Math.min(beforeEnergy+incoming,.003*biomass),excess=Math.max(0,beforeEnergy+incoming-respiration-u.energyCapacity);energy[i]=Math.min(u.energyCapacity,beforeEnergy+incoming-respiration);r.totals.photosynthesis+=incoming;r.totals.respiration+=respiration+excess;}
+    // A real standing woody canopy intercepts light before it reaches plants
+    // below. Interception reduces solar input; it never creates new reserves.
+    const shade=Math.min(.60,Math.max(0,(w.plants.woodspire?.[i]||0)*.55));
+    for(const k of LAND_PRODUCERS){const biomass=w.plants[k][i],energy=r.energy[k],incoming=(total>0?flux*Math.min(1,total)*biomass/total:0)*(k==='woodspire'?1:k==='sunmoss'||k==='bramble'?1-shade:1-shade*.35),beforeEnergy=energy[i],respiration=Math.min(beforeEnergy+incoming,.003*biomass),excess=Math.max(0,beforeEnergy+incoming-respiration-u.energyCapacity);energy[i]=Math.min(u.energyCapacity,beforeEnergy+incoming-respiration);r.totals.photosynthesis+=incoming;r.totals.respiration+=respiration+excess;}
   }
   r.soilWaterLinked=SOIL_WATER.enabled;
 }
