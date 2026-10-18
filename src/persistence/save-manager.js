@@ -19,6 +19,7 @@ import {deriveDrainage,validateTopography} from '../world/topography.js';
 import {validateSoilWater} from '../ecology/soil-water.js';
 import {validatePageResidency} from '../ecology/page-residency.js';
 import {validatePageDayWork} from '../world/page-vegetation-work.js';
+import {validatePageSeedTransfers} from '../ecology/page-seed-transfers.js';
 
 // Schema 9 (v1.39.0): the new creature bodies. Creator decision 2026-10-09: start fresh, so older
 // saves before schema 9 are not carried over.
@@ -241,6 +242,7 @@ export function restoreSimulationSnapshot(snapshot){
   // Observational page identities cannot create or replace an organism on load.
   // Old snapshots may lack this field; do not invent historical crossings.
   validatePageResidency(sim.regionalEcology.pageTransit,sim.world);
+  validatePageSeedTransfers(sim.dispersal.pageSeedTransfers,sim.world);
   sim.dispersal.upgrade();for(const a of sim.animals)validateCarriedMaterial(a);
   sim.rebuildSpatial();
   // Restore keeps the saved heir and mate selections exactly (Phase 3I): re-running the HUD's refresh here
