@@ -1,0 +1,69 @@
+name: GenVo D3 canonical fauna lifecycle validation
+on:
+  push:
+    branches:
+      - feat/d3-fauna-lifecycle-page-work
+  workflow_dispatch:
+concurrency:
+  group: d3-fauna-page-${{ github.ref_name }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  d3:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Fauna page lifecycle and existing conservation
+        run: |
+          node tests/page-fauna-work.mjs
+          node tests/page-residency.mjs
+          node tests/page-offscreen-continuity.mjs
+          node tests/regional-ecology.mjs
+          node tests/page-seed-transfers.mjs
+          node tests/page-vegetation-work.mjs
+          node tests/save-persistence.mjs
+      - name: Exact D2 parent
+        uses: actions/checkout@v4
+        with:
+          ref: a469c3047f26566d643345c1c548c54f4b78a876
+          path: baseline
+      - name: Biology identity, death, reproduction and RNG parity
+        shell: bash
+        run: |
+          set -euo pipefail
+          fingerprint() {
+            (cd "$1" && node --input-type=module <<'NODE'
+          import {Simulation} from './src/sim/simulation.js';
+          import {createSimulationSnapshot} from './src/persistence/save-manager.js';
+          import {createHash} from 'node:crypto';
+          import {serialize} from 'node:v8';
+          for(const seed of ['D3-PARENT-PARITY-A','D3-PARENT-PARITY-B']){
+            const sim=new Simulation(seed,{player:false});
+            for(let tick=0;tick<168;tick++)sim.update(null);
+            const saved=structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'d3-parent-parity'}));
+            delete saved.core.pageFaunaWork;
+            console.log(seed+' '+createHash('sha256').update(serialize(saved)).digest('hex'));
+          }
+          NODE
+            )
+          }
+          fingerprint baseline > "$RUNNER_TEMP/d3-parent.sha"
+          fingerprint . > "$RUNNER_TEMP/d3-candidate.sha"
+          diff -u "$RUNNER_TEMP/d3-parent.sha" "$RUNNER_TEMP/d3-candidate.sha"
+          echo 'Canonical fauna lifecycle is fully state-identical to D2: PASS'
+      - name: Full unchanged fast regression
+        run: node tools/run-tests.mjs --json docs/test-runs/d3-page-fauna-ci.json
+      - name: Archive full regression
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: d3-fauna-page-validation
+          path: |
+            docs/test-runs/d3-page-fauna-ci.json
+            docs/test-runs/d3-page-fauna-ci.artifacts/
+          if-no-files-found: ignore
