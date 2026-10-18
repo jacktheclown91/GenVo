@@ -28,6 +28,10 @@ let i=-1;for(let p=0;p<w.len;p++)if(w.plants.woodspire[p]>.15&&!w.water[p]&&w.pl
 assert.ok(i>=0,'forest and ground producers inhabit some of the same real cells');
 const current=w.biomeAt(i%w.n+.5,Math.floor(i/w.n)+.5,{temp:.6,rain:.6,frontDay:1});
 const originalTree=w.plants.woodspire[i],oldMoss=w.plants.sunmoss[i];
+// A coastal tree may be drought-stressed, in which case steppe wins. Establish
+// a physically moist lowland control before asserting the woodland threshold.
+w.moisture[i]=.54;w.seepage[i]=0;w.plants.marshroot[i]=0;
+w.terrain.elevation[i]=Math.min(w.terrain.elevation[i],.50);
 w.plants.woodspire[i]=.9;
 assert.equal(biomeAt(w,i,{temp:.6,rain:.6,frontDay:1}).code,'woodland','physical tree density creates a readable woodland habitat');
 w.plants.woodspire[i]=0;
