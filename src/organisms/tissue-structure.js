@@ -7,18 +7,19 @@ import {validatePlan} from '../lineage/body-plan.js';
 export const TISSUE_SCHEMA='genvo.tissue-calibration/1';
 const groups={
   core:['head-base','small-torso','soft-torso','reinforced-torso','sleek-torso','light-torso','stout-torso','barrel-torso','dome-torso','long-torso'],
-  limb:['walking-leg','spring-leg','grasper','runner-leg','sturdy-leg','webbed-leg','padded-leg','digging-forelimb'],
+  limb:['walking-leg','spring-leg','grasper','runner-leg','sturdy-leg','webbed-leg','padded-leg','digging-forelimb','climber-leg'],
   feeding:['grazing-mouth','tearing-jaw','crushing-jaw','beak-mouth','kernel-beak','filter-mouth','reed-sieve-mouth','nibbler-mouth','sucker-mouth','gape-mouth','tusk-jaw'],
   sensory:['simple-eye','wide-field-eye','hunter-eye','stalk-eye','compound-eye','tracker-eye','display-eye','eyespot','glow-eye','echo-crest','sensory-quills','sensory-bristle'],
   protective:['armor-plate','barb','claw','horn-crest','shell-back','armored-hide','spine-ridge','thorn-carapace','spine-cluster','hook-spur','dew-claw','heel-spike','kick-spur'],
   gland:['venom-gland','scent-gland'],
+  integument:['filament-tuft','fur-mantle','feather-mantle'],
   organ:['storage-sac','sail-fin','water-hump','fat-pad','gill-slits','brood-pouch','egg-chamber','live-womb','moss-back'],
-  appendage:['silt-fin','signal-crest','paddle-tail','gliding-membrane','luminous-tail','balance-tail','club-tail','spined-tail','whip-tail','prehensile-tail','fat-tail','flag-tail','display-frill','grip-pad']
+  appendage:['silt-fin','signal-crest','paddle-tail','gliding-membrane','luminous-tail','balance-tail','club-tail','spined-tail','whip-tail','prehensile-tail','fat-tail','flag-tail','display-frill','grip-pad','hook-pad','proto-wing']
 };
 // Named partitions are volume ownership slots, not claims about universal skeletons.
 // Support can be filled with the reviewed material for each part (bone, cartilage,
 // chitin, etc.). Empty partitions use volume zero in a reviewed calibration.
-const partitions={core:['muscle','support','organ','covering'],limb:['muscle','support','covering'],feeding:['muscle','support','organ','covering'],sensory:['organ','support','covering'],protective:['support','covering'],gland:['organ','covering'],organ:['organ','covering'],appendage:['muscle','support','covering']};
+const partitions={core:['muscle','support','organ','covering'],limb:['muscle','support','covering'],feeding:['muscle','support','organ','covering'],sensory:['organ','support','covering'],protective:['support','covering'],gland:['organ','covering'],integument:['covering'],organ:['organ','covering'],appendage:['muscle','support','covering']};
 const catalog={};for(const [group,ids] of Object.entries(groups))for(const id of ids){
   if(!PARTS[id]||catalog[id])throw Error('Invalid tissue catalog part '+id);
   catalog[id]=Object.freeze({partId:id,group,components:Object.freeze([...partitions[group]]),volumeBasis:'adult net tissue excluding mounted children and contents'});
