@@ -232,14 +232,14 @@ function standardLimb(c,k){
 const toe=(c,k,x,y,w,h,col)=>pixel(c,snap(x),snap(y),w,h,k.s,col);
 export const LIMB_ART={
   // Climber: jointed weight-bearing limb, thick forearm and paired recurved digits.
-  'climber-leg'(c,k){const {root,knee,foot,s,p,leg}=k,sg=Math.sign(leg?.side)||1;
+  'climber-leg'(c,k){const {root,knee,foot,s,p,leg}=k,sg=Math.sign(leg?.side)||1,perp=k.perp||{x:0,y:1},fx=k.fx??1,fy=k.fy??0;
     pixelLine(c,root.x,root.y,knee.x,knee.y,s,p.shade,1.8);
     pixelLine(c,knee.x,knee.y,foot.x,foot.y,s,p.body,1.3);
     pixel(c,snap(knee.x-.5),snap(knee.y-.5),1.4,1.2,s,p.light);
-    for(const n of [-1,1]){const ax=foot.x+k.perp.x*n*.5,ay=foot.y+k.perp.y*n*.5;
-      const tx=ax+k.fx*1.2+k.perp.x*n*.7,ty=ay+k.fy*1.2+k.perp.y*n*.7;
+    for(const n of [-1,1]){const ax=foot.x+perp.x*n*.5,ay=foot.y+perp.y*n*.5;
+      const tx=ax+fx*1.2+perp.x*n*.7,ty=ay+fy*1.2+perp.y*n*.7;
       pixelLine(c,ax,ay,tx,ty,s,'#d7b889',.75);
-      pixel(c,snap(tx-k.fx*.5+sg*k.perp.x*.3),snap(ty-k.fy*.5+sg*k.perp.y*.3),.65,.65,s,'#f5e4bf')}},
+      pixel(c,snap(tx-fx*.5+sg*perp.x*.3),snap(ty-fy*.5+sg*perp.y*.3),.65,.65,s,'#f5e4bf')}},
   // Runner: a slender limb, a light springy shin and a long forward-reaching toe.
   'runner-leg'(c,k){const {root,knee,foot,s,p,leg}=k,lifted=Number(leg.liftAmount)||0;pixelLine(c,root.x,root.y,knee.x,knee.y,s,p.shade,1);pixelLine(c,knee.x,knee.y,foot.x,foot.y,s,lifted>.62?p.light:p.body,.5);
     pixel(c,snap(knee.x),snap(knee.y),.5,.5,s,p.light);pixelLine(c,foot.x,foot.y,foot.x+k.fx*1.4,foot.y+k.fy*1.4,s,p.shade,.5);toe(c,k,foot.x+k.fx*1.4,foot.y+k.fy*1.4,.5,.5,p.light)},
