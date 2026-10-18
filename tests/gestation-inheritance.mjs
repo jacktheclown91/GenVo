@@ -14,7 +14,7 @@ for(const species of Object.keys(SPECIES)){
   for(const a of [mother,father])Object.assign(a,{energy:SPECIES[species].maxEnergy*.9,hydration:SPECIES[species].maxHydration*.9,health:100,infected:false});
   if(species==='genvo')father.lineage=true;
   placeSupportedBreedingPair(sim,mother,father);
-  assert.ok(sim.tryMate(mother,father));
+  assert.ok(sim.tryMate(mother,father),`${species}: ${mother.lastCourtshipFailure?.reason||mother.lastCourtshipRefusal?.reason||JSON.stringify(sim.conceptionAvailability(mother,father))}`);
   const inherited=mother.pregnant.paternalInheritance;
   assert.equal(inherited.id,father.id);
   assert.notStrictEqual(inherited.genes,father.genes,'inheritance is detached from the live parent');
