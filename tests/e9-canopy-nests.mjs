@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
+import {canHunt} from '../src/ecology/functional-diet.js';
 import {founderPlan} from '../src/lineage/body-inheritance.js';
 import {createDraft,place} from '../src/lineage/evolution-draft.js';
 import {makePlan,validatePlan} from '../src/lineage/body-plan.js';
@@ -56,9 +57,11 @@ const egg={id:9001,motherId:p.id,fatherId:-1,nestId:nest.id,x:p.x,y:p.y,energy:2
 sim.eggs.push(egg);
 assert.ok(nestCareAvailability(sim,p,nest).enabled,'canopy parent can tend real clutch');
 const energyBefore=p.energy;assert.equal(careForNest(sim,p,nest),true);assert.ok(p.energy<energyBefore);
-const stalker=sim.animals.find(a=>a.alive&&!a.player);stalker.x=p.x;stalker.y=p.y;
+const stalker=sim.animals.find(a=>a.alive&&!a.player&&canHunt(a));assert.ok(stalker,'actual hunting body required to test canopy egg protection');stalker.x=p.x;stalker.y=p.y;
 assert.equal(canAccessCanopyNest(stalker,w,nest),false);
-assert.equal(eggFeedingAvailability(sim,stalker,egg).enabled,false,'ground fauna cannot raid tree clutches');
+assert.equal(eggFeedingAvailability(sim,stalker,egg).enabled,false,'ground hunting animals cannot raid tree clutches');
+assert.equal(sim.playerCombat.attackAvailability().enabled,false,'roost prohibits surface bite through canopy geometry');
+assert.equal(sim.playerStrike(stalker).ok,false,'direct strike authority also respects height, not just UI');
 p.perched=false;assert.equal(nestCareAvailability(sim,p,nest).enabled,false,'surface parent cannot remotely tend canopy');
 p.perched=true;
 const snap=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'e9'})));
