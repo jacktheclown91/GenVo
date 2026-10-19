@@ -46,7 +46,8 @@ assert.equal(homeArchive.snapshot.world.plants.bramble[fromIndex],sim.world.plan
 
 const eastIndex=east.world.idx(24,47),eastStock=east.world.plants.bramble[eastIndex];
 east.world.plants.bramble[eastIndex]=.217;
-east.world.seedBank.bramble[eastIndex]=.091;
+// Keep seed-bank changes inside dispersal's canonical seed/genotype controller;
+// this test changes standing crop tissue only, not an unsynchronized raw bank.
 const liveSave=checkpoint(east);
 assert.equal(liveSave.regionalWorlds?.length||0,0,'archived physical region must not be written twice into regionalWorlds');
 const loaded=restoreSimulationSnapshot(structuredClone(liveSave));
