@@ -33,6 +33,8 @@ export function drawFloraPlant(ctx,{shape,color,amount,px,py,u,x,y,kind,seedAllo
   else if(shape==='tree')drawWoodspire(ctx,{u,body,light,shade,deep,seed,amount,season});
   else if(shape==='bulb')drawDuneBulbs(ctx,{u,body,light,shade,deep,seed,amount,season});
   else if(shape==='sage')drawDustSage(ctx,{u,body,light,shade,deep,seed,amount,season});
+  else if(shape==='lichen')drawFrostLichen(ctx,{u,body,light,shade,deep,seed,amount,season});
+  else if(shape==='snowberry')drawSnowberry(ctx,{u,body,light,shade,deep,seed,amount,season});
   else pixel(ctx,7,7,2,2,u,body);
   }
   if(reproduction?.receptive){pixel(ctx,at.cx-2,at.cy-4,3,1,u,'#e4d1b0');pixel(ctx,at.cx-1,at.cy-5,1,3,u,'#e4d1b0');pixel(ctx,at.cx-1,at.cy-4,1,1,u,'#e6bd63')}if(reproduction?.pollen){pixel(ctx,at.cx+2,at.cy-4,1,1,u,'#dfba5b');pixel(ctx,at.cx+3,at.cy-2,1,1,u,'#e9d37d')}if(reproduction?.developing){pixel(ctx,at.cx-2,at.cy-2,3,2,u,'#bd9c58');pixel(ctx,at.cx-1,at.cy-2,1,1,u,'#dfc47d')}
@@ -52,6 +54,8 @@ export function drawFloraTrace(ctx,{shape,color,px,py,u,x,y,kind,amount,season='
   else if(shape==='tree'){pixel(ctx,ox,oy-1,2,2,u,'#655842');pixel(ctx,ox-2,oy-4,6,3,u,shade);pixel(ctx,ox-1,oy-5,4,1,u,light)}
   else if(shape==='bulb'){pixel(ctx,ox-1,oy-2,3,2,u,shade);pixel(ctx,ox,oy-3,1,2,u,light)}
   else if(shape==='sage'){pixel(ctx,ox,oy-3,1,4,u,shade);pixel(ctx,ox-2,oy-4,5,2,u,light)}
+  else if(shape==='lichen'){pixel(ctx,ox-2,oy-1,5,2,u,shade);pixel(ctx,ox-1,oy-2,3,1,u,light)}
+  else if(shape==='snowberry'){pixel(ctx,ox,oy-3,1,4,u,shade);pixel(ctx,ox-2,oy-4,5,2,u,body);pixel(ctx,ox+1,oy-3,1,1,u,'#e0e7dc')}
   ctx.restore();
 }
 
@@ -114,6 +118,35 @@ function drawDustSage(c,{u,body,light,shade,deep,seed,amount,season}){
   pixel(c,x+dx,y+dy,1,1,u,'#d5b879');}
 }
 
+// E11: ground-hugging circular crusts with speckled growth rings, deliberately
+// unlike moss grass tufts. These are overhead silhouettes, not side views.
+function drawFrostLichen(c,{u,body,light,shade,deep,seed,amount,season}){
+ const x=8+(seed>.58?1:-1),y=9,wide=amount>.29;
+ for(const [dx,dy,w,h] of [[-5,0,6,3],[-2,-4,5,5],[1,-1,5,4]]){
+  pixel(c,x+dx,y+dy,w,h,u,deep);
+  pixel(c,x+dx+1,y+dy+1,w-2,Math.max(1,h-1),u,body);
+ }
+ for(const [dx,dy] of [[-3,0],[1,-3],[3,1],[0,2],[-1,-1]])
+  pixel(c,x+dx,y+dy,wide?2:1,1,u,season==='WINTER'?'#d2dad4':light);
+ pixel(c,x,y,1,1,u,shade);
+}
+function drawSnowberry(c,{u,body,light,shade,deep,seed,amount,season}){
+ const cx=8+(seed>.54?1:-1),cy=8,large=amount>.27;
+ // Dwarf, radial woody shrub with berry clusters; its appearance is readable
+ // even at a low zoom as a separate plant from the green bramble bushes.
+ for(const [dx,dy] of [[-4,-2],[4,-2],[-2,3],[2,3],[0,-5]]){
+  pixelLine(c,cx,cy,cx+dx,cy+dy,u,deep,.8);
+  pixel(c,cx+dx-1,cy+dy-1,large?3:2,2,u,body);
+  pixel(c,cx+dx,cy+dy-1,1,1,u,light);
+ }
+ if(season==='AUTUMN'||season==='WINTER'||amount>.31){
+  for(const [dx,dy] of [[-4,-2],[3,-3],[-2,2],[2,2]]){
+   pixel(c,cx+dx,cy+dy,1,1,u,'#f1eeea');
+   if(large)pixel(c,cx+dx+1,cy+dy+1,1,1,u,'#a6c1bf');
+  }
+ }
+ pixel(c,cx,cy,2,2,u,shade);
+}
 function drawMoss(c,{x,y,u,density,body,light,shade,seed,amount,season}){
   const patches=2+Math.min(3,density);
   for(let k=0;k<patches;k++){
