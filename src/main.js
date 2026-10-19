@@ -164,10 +164,12 @@ quickMenu?.addEventListener('click',e=>{
 
 function travelPlanetaryRegion(){
   if(tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||succession.open)return;
-  const result=crossPlanetaryBorder(sim);
-  if(!result.ok){tutorial.showToast(result.message,2600,'warn');audio.note('deny');return}
-  installSimulation(result.simulation,{resume:true});closeDetailPanels();clearMovementKeys();
-  tutorial.showToast(result.message,3500,'success');audio.note('confirm');
+  try{
+    const result=crossPlanetaryBorder(sim);
+    if(!result.ok){tutorial.showToast(result.message,2600,'warn');audio.note('deny');return}
+    installSimulation(result.simulation,{resume:true});closeDetailPanels();clearMovementKeys();
+    tutorial.showToast(result.message,3500,'success');audio.note('confirm');
+  }catch(error){console.error('Regional crossing failed:',error);tutorial.showToast('Regional passage could not be completed. Current world remains active.',3500,'warn');audio.note('deny')}
 }
 function installSimulation(next,{fresh=false,resume=false}={}){
   seed=next.seed;sim=next;renderer.sim=sim;observer.reset();succession.close();editor.close();syncSpeedButton();frameStepper.reset();last=performance.now();hudTimer=0;clearMovementKeys();
