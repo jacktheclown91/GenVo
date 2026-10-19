@@ -31,7 +31,11 @@ export const PLANTS={
   // E2: Long-lived, seeded woody canopy. Real tissue, finite growth inputs and inherited seed cohorts.
   woodspire:{label:'Woodspire',guild:'woody_producer',growth:.012,carry:1.8,nutrition:5,waterNeed:.53,render:'tree',color:'#35654b',init:'woodland',dispersal:{seedLimited:true,animal:true,seedLoad:.52,transitDays:[2,5],germination:.075,establish:.023,mature:.85,localRelease:.007,bankDecay:.991}},
   // Ninth organism family: a drought-tolerant seed plant proving content is not hard-capped at eight.
-  thistlepod:{label:'Seed Pods',guild:'seed_producer',growth:.026,carry:.58,nutrition:11,waterNeed:.25,render:'pod',color:'#9a9b54',init:'dry_seed',dispersal:{seedLimited:true,animal:true,seedLoad:.86,transitDays:[1,2],germination:.20,soilDisturbanceResponse:.25,establish:.038,mature:.24,localRelease:.024,bankDecay:.976}}
+  thistlepod:{label:'Seed Pods',guild:'seed_producer',growth:.026,carry:.58,nutrition:11,waterNeed:.25,render:'pod',color:'#9a9b54',init:'dry_seed',dispersal:{seedLimited:true,animal:true,seedLoad:.86,transitDays:[1,2],germination:.20,soilDisturbanceResponse:.25,establish:.038,mature:.24,localRelease:.024,bankDecay:.976}},
+  // E7: complementary scarce-water food chains. Both require funded growth and real seed arrival.
+  // The fleshy fruit of the bulb favors browsers; the coated sage heads favor seed-crackers.
+  dunebulb:{label:'Dune Bulbs',guild:'fruiting_shrub',growth:.018,carry:.44,nutrition:12,waterNeed:.19,render:'bulb',color:'#8d9a70',init:'dry_bulb',dispersal:{seedLimited:true,animal:true,seedLoad:.42,transitDays:[2,4],germination:.12,establish:.026,mature:.23,localRelease:.008,bankDecay:.992}},
+  dustsage:{label:'Dust Sage',guild:'seed_producer',growth:.022,carry:.64,nutrition:9,waterNeed:.30,render:'sage',color:'#87957d',init:'dry_shrub',dispersal:{seedLimited:true,animal:true,seedLoad:.64,transitDays:[1,3],germination:.16,soilDisturbanceResponse:.16,establish:.032,mature:.28,localRelease:.016,bankDecay:.979}}
 };
 
 export const ECO_GUILDS={
