@@ -34,5 +34,12 @@ jobs:
           node tests/flora-seed-codec.mjs
       - name: Deterministic full save and continuation
         run: node tests/save-persistence.mjs
+      - name: Match original seed codec and reject malformed records
+        run: |
+          node tests/flora-seed-decoder-parity.mjs
+          node tests/flora-seed-codec-reference-parity.mjs
+          node tests/flora-seed-metadata-copy.mjs
+      - name: Measure decoding without artificial expected speedup
+        run: node tools/benchmark-flora-seed-decoder.mjs
       - name: Observe synthetic large-bank processing cost without outcome targets
         run: node tools/benchmark-seed-daily-hotpath.mjs
