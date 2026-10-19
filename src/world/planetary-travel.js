@@ -11,6 +11,7 @@ import {SPECIES} from '../organisms/species.js';
 import {canSwim} from '../lineage/lifestyle.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../persistence/save-manager.js';
 import {bodyMass} from '../organisms/body-mass.js';
+import {familyTravelCohort,familyArrivalPoint,FAMILY_PASSAGE} from './family-passage.js';
 
 const LIMIT=16,BOUNDARY=3.75,SIZE=128;
 const GLOBAL_AUTHORITIES=['lineage','evolution','evolutionTree','evolutionBudget','evolutionEditor','generationProgress'];
@@ -49,11 +50,6 @@ function continuousBorder(sim,dir,animal,destination,point){
  const idx=destination.idx(point.x,point.y);
  return destination.isPlayable(point.x,point.y)&&(!destination.water[idx]||flying||swimmer);
 }
-function hasDependentChildren(sim,a){
- return sim.animals.some(b=>b.alive&&b.id!==a.id&&
-  (b.caregiverId===a.id||b.lactationParentId===a.id)&&
-  b.age<(SPECIES[b.species]?.maturity||10)*.8);
-}
 export function planetaryTravelAvailability(sim){
  let proximity=null;
  const unavailable=reason=>({enabled:false,reason,...(proximity||{})});
@@ -65,7 +61,9 @@ export function planetaryTravelAvailability(sim){
  if(sim.paused)return unavailable('Resume the world first.');
  if(sim.playerAutonomy)return unavailable('Take manual control to cross a planetary frontier.');
  if(animal.perched||animal.torpor)return unavailable('Descend or wake before traveling.');
- if(animal.pregnant||hasDependentChildren(sim,animal))return unavailable('Dependent young or pregnancy require remaining with the local family.');
+ if(animal.pregnant)return unavailable('Complete the pregnancy before regional travel.');
+ const cohort=familyTravelCohort(sim);
+ if(!cohort.ok)return unavailable(cohort.reason);
  if(animal.courtshipPerformance||animal.courtshipSession)return unavailable('Finish courtship before leaving the region.');
  if(sim.playerCombat?.attackActive?.(animal)||animal.pursuitEngaged)return unavailable('Leave combat before crossing.');
  if(animal.energy<1||animal.hydration<1)return unavailable('Too exhausted or dehydrated for a regional journey.');
@@ -81,15 +79,21 @@ export function planetaryTravelAvailability(sim){
   isPlayable(x,y){return x>1&&y>1&&x<SIZE-2&&y<SIZE-2},
   water:new Proxy({}, {get(_,key){const i=Number(key);if(!Number.isSafeInteger(i))return undefined;return sim.world.planet.sample(nextOrigin.x+(i%SIZE)+.5,nextOrigin.y+Math.floor(i/SIZE)+.5).water}})
  };
- if(!continuousBorder(sim,closest,animal,dest,point))return unavailable('The border contains water or unsuitable terrain. Find another crossing or evolve swimming/flight.');
- return{enabled:true,reason:'Walk into the '+closest.name+' planetary region; your creature and local ecosystems are preserved.',
-  direction:closest.name,to:nextOrigin,point,distance:closest.distance(animal)};
+ const placements=cohort.members.map((member,index)=>({member,point:familyArrivalPoint(animal,point,member,closest.name,index)}));
+ for(const item of placements)if(!continuousBorder(sim,closest,item.member,dest,item.point))
+  return unavailable('A family member cannot physically cross this border. Reposition the group or evolve suitable movement anatomy.');
+ return{enabled:true,reason:cohort.members.length>1?'Cross '+closest.name+' together with '+(cohort.members.length-1)+' nearby family members.':'Cross the '+closest.name+' planetary region while preserving your creature and local ecology.',
+  direction:closest.name,to:nextOrigin,point,distance:closest.distance(animal),members:cohort.members.map(m=>m.id),
+  dependentCount:cohort.dependentCount,adultCount:cohort.adultCount,placements:placements.map(({member,point})=>({id:member.id,point}))};
 }
-function strippedRegionSnapshot(sim,animalId){
+function strippedRegionSnapshot(sim,ids){
  const source=structuredClone(createSimulationSnapshot(sim,{reason:'regional-departure',savedAt:'regional-checkpoint'}));
- source.core.regionalTravelerSlot=source.animals.findIndex(a=>a.id===animalId);
- if(source.core.regionalTravelerSlot<0)throw Error('Departing traveler does not belong to active region.');
- source.animals=source.animals.filter(a=>a.id!==animalId);
+ const departure=new Set(ids);
+ const slots=source.animals.flatMap((a,index)=>departure.has(a.id)?[{id:a.id,index}]:[]);
+ if(slots.length!==departure.size)throw Error('Regional family cohort is not fully owned by departing territory.');
+ if(slots.length===1)source.core.regionalTravelerSlot=slots[0].index;
+ else source.core.regionalTravelerSlots=slots;
+ source.animals=source.animals.filter(a=>!departure.has(a.id));
  source.core.playerId=null;source.core.playerEnabled=false;
  delete source.core.planetaryTravel;delete source.regionalWorlds;
  return source;
@@ -109,7 +113,7 @@ function transferGlobals(from,to){
 export function crossPlanetaryBorder(sim){
  const status=planetaryTravelAvailability(sim);
  if(!status.enabled)return{ok:false,type:'planet-travel',message:status.reason};
- const traveler=sim.player(),sourceKey=regionKey(sim.world.regionOrigin),destinationKey=regionKey(status.to),prior=stored(sim);
+ const traveler=sim.player(),memberIds=status.members,cohort=memberIds.map(id=>sim.animals.find(a=>a.id===id)),sourceKey=regionKey(sim.world.regionOrigin),destinationKey=regionKey(status.to),prior=stored(sim);
  const sessions=prior.sessions.filter(s=>s.key!==destinationKey&&s.key!==sourceKey).map(s=>({key:s.key,snapshot:s.snapshot}));
  const archivedDestination=prior.sessions.find(s=>s.key===destinationKey);
  const nextId=Math.max(prior.nextId,sim.nextId);
@@ -124,19 +128,32 @@ export function crossPlanetaryBorder(sim){
   dest.spawnInitial(); // Only ONCE for a newly entered region.
   dest.regionalEcology.resetPageResidency();
  }
- const arrival=structuredClone(traveler);
- arrival.x=status.point.x;arrival.y=status.point.y;arrival.player=true;
- arrival.target=null;arrival.navigationRoute=null;arrival.pursuitEngaged=false;
- arrival.hidden=false;arrival.movedTick=sim.tickCount;
- // Crossing the 2-tile local collision margins costs actual energy.
- arrival.energy=Math.max(0,arrival.energy-.035*bodyMass(arrival));
- if(dest.animals.some(a=>a.id===arrival.id))throw Error('Cannot transfer duplicate creature identity into a region.');
- const slot=dest.regionalTravelerSlot;
- if(Number.isSafeInteger(slot)&&slot>=0&&slot<=dest.animals.length)dest.animals.splice(slot,0,arrival);
- else dest.animals.push(arrival);
- delete dest.regionalTravelerSlot;
- dest.playerId=arrival.id;dest.playerEnabled=true;
- dest.nextId=Math.max(dest.nextId,nextId+1,arrival.id+1);
+ const placements=new Map(status.placements.map(p=>[p.id,p.point]));
+ const arrivals=cohort.map(member=>{
+  const copy=structuredClone(member),point=placements.get(member.id);
+  if(!point)throw Error('Cohort arrival missing physically validated crossing.');
+  Object.assign(copy,{x:point.x,y:point.y,player:member.id===traveler.id,
+   target:null,navigationRoute:null,pursuitEngaged:false,hidden:false,movedTick:sim.tickCount});
+  copy.energy=Math.max(0,copy.energy-FAMILY_PASSAGE.energyCost*bodyMass(copy));
+  return copy;
+ });
+ const arrivalsById=new Map(arrivals.map(a=>[a.id,a]));
+ if(dest.animals.some(a=>arrivalsById.has(a.id)))throw Error('Cannot transfer duplicate creature identity into a region.');
+ const oldSlots=dest.regionalTravelerSlots||(
+  Number.isSafeInteger(dest.regionalTravelerSlot)?[{id:traveler.id,index:dest.regionalTravelerSlot}]:[]);
+ const used=new Set();
+ // Insert travelers at their historical position in their old region if
+ // remembered. This preserves exact pre-departure family and wildlife order.
+ for(const {id,index} of [...oldSlots].sort((a,b)=>a.index-b.index)){
+  const arrival=arrivalsById.get(id);
+  if(!arrival)continue;
+  if(!Number.isSafeInteger(index)||index<0||index>dest.animals.length)throw Error('Corrupt regional traveler position.');
+  dest.animals.splice(index,0,arrival);used.add(id);
+ }
+ for(const arrival of arrivals)if(!used.has(arrival.id))dest.animals.push(arrival);
+ delete dest.regionalTravelerSlot;delete dest.regionalTravelerSlots;
+ dest.playerId=traveler.id;dest.playerEnabled=true;
+ dest.nextId=Math.max(dest.nextId,nextId+1,...arrivals.map(a=>a.id+1));
  transferGlobals(sim,dest);
  dest.tickCount=sim.tickCount;dest.day=sim.day;dest.year=sim.year;dest.seasonIndex=sim.seasonIndex;
  dest.phase=sim.phase;dest.climate=sim.climate?{...sim.climate}:undefined;
@@ -150,8 +167,9 @@ export function crossPlanetaryBorder(sim){
   atlas.install(world);
  }
  dest.planetaryRegions=atlas;
- sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,traveler.id)});
+ sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,memberIds)});
  dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions};
- dest.lastPlayerAction={type:'planet-travel',actorId:arrival.id,from:sourceKey,to:destinationKey,tick:dest.tickCount};
- return{ok:true,type:'planet-travel',message:'Crossed '+status.direction+' into planetary region '+destinationKey+'. Regional wildlife and resources are retained.',simulation:dest,from:sourceKey,to:destinationKey,id:arrival.id};
+ dest.travelFamilyGroup=!!sim.travelFamilyGroup;
+ dest.lastPlayerAction={type:'planet-travel',actorId:traveler.id,members:memberIds,from:sourceKey,to:destinationKey,tick:dest.tickCount};
+ return{ok:true,type:'planet-travel',message:'Crossed '+status.direction+' into planetary region '+destinationKey+(memberIds.length>1?' with '+(memberIds.length-1)+' family members.':'.')+' Regional wildlife and resources are retained.',simulation:dest,from:sourceKey,to:destinationKey,id:traveler.id,members:memberIds};
 }
