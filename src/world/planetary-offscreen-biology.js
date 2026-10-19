@@ -85,7 +85,8 @@ export function advanceRemoteBiology(active,session,{maxTicks=OFFSCREEN_BIOLOGY.
  const startTick=temp.tickCount,initialDay=temp.day;
  // Always reserve an identity watermark above every regional animal. A new
  // offspring in a remote region may not reuse any living or archived ID.
- temp.nextId=Math.max(temp.nextId,highId(active));
+ const reservedNextId=highId(active);
+ temp.nextId=Math.max(temp.nextId,reservedNextId);
  const ledger=session.biologicalLedger
   ? {...session.biologicalLedger}
   : {schema:1,firstTick:startTick,lastTick:startTick,ticks:0,
@@ -123,7 +124,10 @@ export function advanceRemoteBiology(active,session,{maxTicks=OFFSCREEN_BIOLOGY.
  validateRemoteBiologyLedger(candidate);
  validateRemoteEnvironmentalLedger(candidate);
  const nextSessions=active.planetaryTravel.sessions.map(s=>s===session?candidate:s);
- validatePlanetAnimalOwnership(active.animals,{schema:1,nextId:Math.max(highId(active),temp.nextId),sessions:nextSessions});
+ // The active owner and its archived snapshots have not changed since the
+ // identity watermark was checked above. Reuse it rather than walking every
+ // remote animal a second time for each synchronized replay transaction.
+ validatePlanetAnimalOwnership(active.animals,{schema:1,nextId:Math.max(reservedNextId,temp.nextId),sessions:nextSessions});
  // Atomic publish after completing all duplicate and material checks.
  session.snapshot=copy;
  session.biologicalLedger=ledger;
