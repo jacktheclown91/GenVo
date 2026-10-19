@@ -53,6 +53,14 @@ assert.ok(parent.energy<beforeWarmth);
 child.lastMaternalWarmthTick=sim.tickCount;
 assert.ok(neonatalWarmthFactor(child,sim.tickCount,6)<1);
 assert.equal(motherWarmth(parent,child,.8),false,'no invented cold exposure in a hot biome');
+// Exercise the real life-cycle family phase, not only the isolated helper.
+child.energy-=3;
+const lifeBefore=child.energy,lifeParentEnergy=parent.energy,lifeParentWater=parent.hydration;
+sim.family.phaseCare();
+assert.ok(child.energy>lifeBefore,'existing family phase now feeds nursing offspring');
+assert.ok(parent.energy<lifeParentEnergy&&parent.hydration<lifeParentWater,'ordinary simulation phase must fund the feeding');
+assert.ok(child.lastMilkTick===sim.tickCount);
+assert.ok(child.lastMaternalWarmthTick===sim.tickCount,'cold contact warms newborn in the normal family phase');
 const saved=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'e10'})));
 const savedChild=saved.animals.find(a=>a.id===child.id);
 assert.equal(savedChild.lactationParentId,parent.id,'lactation lineage persists save/load');
