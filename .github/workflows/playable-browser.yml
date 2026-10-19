@@ -1,0 +1,37 @@
+name: GenVo browser boot and save smoke
+on:
+  push:
+    branches:
+      - codex/repository-consolidation
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: genvo-playable-browser-${{ github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  real-chromium:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install Chromium test dependencies
+        run: |
+          npm install --no-save --no-package-lock playwright@latest
+          npx playwright install --with-deps chromium
+      - name: Boot real game and verify actual browser saves
+        run: node tools/verify-save-coherence-browser.mjs docs/test-runs/playable-browser-ci
+      - name: Launch a fresh world and verify native anatomy render
+        run: node tools/verify-e4-browser-art.mjs
+      - name: Preserve browser receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: genvo-playable-browser
+          path: |
+            docs/test-runs/playable-browser-ci/
+            docs/test-runs/e4-browser-review/
+          if-no-files-found: ignore
