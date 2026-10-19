@@ -1,0 +1,28 @@
+name: E14 planetary region foundation
+on:
+  push:
+    branches:
+      - feat/e14-planetary-region-foundation
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  region-authority:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax of E14 regional authority
+        run: |
+          node --check src/world/planet-regions.js
+          node --check src/world/world.js
+          node --check src/world/planet-world.js
+          node --check src/world/surface-topology.js
+          node --check src/ecology/cold-flora.js
+          node --check src/sim/simulation.js
+          node --check src/persistence/save-manager.js
+      - name: Neighbor physical regions and persistent save authority
+        run: node tests/e14-planetary-regions.mjs
