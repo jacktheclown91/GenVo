@@ -10,15 +10,19 @@ export class SocialController{
   rememberContacts(encounters){
     this.contacts??=new Map();this.lastContactDay??=-Infinity;
     const day=this.sim.day;
-    if(day===this.lastContactDay)return;
-    this.lastContactDay=day;
-    const alive=new Set(this.sim.animals.filter(a=>a.alive).map(a=>a.id));
-    for(const [key,c] of this.contacts){
-      if(day-c.day>16||!alive.has(c.a)||!alive.has(c.b))this.contacts.delete(key);
+    if(day!==this.lastContactDay){
+      this.lastContactDay=day;
+      const alive=new Set(this.sim.animals.filter(a=>a.alive).map(a=>a.id));
+      for(const [key,c] of this.contacts){
+        if(day-c.day>16||!alive.has(c.a)||!alive.has(c.b))this.contacts.delete(key);
+      }
     }
     for(const [key,encounter] of encounters){
-      const old=this.contacts.get(key),observations=old?.observations||0;
-      this.contacts.set(key,{a:encounter.a,b:encounter.b,day,observations:Math.min(16,observations+1),
+      const old=this.contacts.get(key);
+      // Contacts can begin at any time of day. Repeated physics samples of
+      // the same pair do not create extra experience in that calendar day.
+      if(old?.day===day)continue;
+      this.contacts.set(key,{a:encounter.a,b:encounter.b,day,observations:Math.min(16,(old?.observations||0)+1),
         sharedDanger:Math.min(8,(old?.sharedDanger||0)+(encounter.sharedDanger?1:0))});
     }
   }
