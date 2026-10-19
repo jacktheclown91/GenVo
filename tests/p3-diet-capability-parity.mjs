@@ -10,9 +10,14 @@ import {SPECIES} from '../src/organisms/species.js';
 const kinds=Object.keys(PLANTS);
 let checked=0;
 function check(a,label){
-  const expected={};
-  for(const kind of kinds){const p=plantPreference(a,kind);if(p>0)expected[kind]=p;}
-  const carrion=plantPreference(a,'carrion');if(carrion>0)expected.carrion=carrion;
+  // Historical bodyless founders return the full saved species diet object,
+  // including zero-valued fields; the mounted pathway filters positive foods.
+  const legacy=!a?.bodyPlan?.nodes?.length;
+  const expected=legacy?{...(SPECIES[a?.species]?.diets||{})}:{};
+  if(!legacy){
+    for(const kind of kinds){const p=plantPreference(a,kind);if(p>0)expected[kind]=p;}
+    const carrion=plantPreference(a,'carrion');if(carrion>0)expected.carrion=carrion;
+  }
   assert.deepEqual(groundDiet(a),expected,label);
   assert.notStrictEqual(groundDiet(a),groundDiet(a),'surveys must not expose shared mutable diet objects');
   checked++;
