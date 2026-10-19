@@ -8,7 +8,7 @@ const foodLabel=k=>PLANTS[k]?.label||FRESHWATER_FOOD[k]?.label||(k==='carrion'?'
 const targetKey=t=>t.kind+':'+(t.id??t.i??'')+':'+(t.food||'')+':'+(t.tissue||'');
 const info=(id,label,target,status,extra={})=>({id,key:id+'|'+targetKey(target),label,target,enabled:!!status.enabled,state:status.state||(status.enabled?'available':'unavailable'),reason:status.reason||label,...extra});
 export function contextualInteractions(sim,target=null){
- const a=sim.player();if(!a?.alive)return[];
+ const a=sim.player();if(!a?.alive||a.airborne)return[];
  if(!target){
   const candidates=[];const manual=sim.foraging.states.get(a.id);for(const meal of sim.foraging.options(a)){if(manual?.manual&&meal.kind!==manual.selectedKind)continue;candidates.push({kind:'food',food:meal.kind,i:meal.i,x:meal.i%sim.world.n+.5,y:Math.floor(meal.i/sim.world.n)+.5,label:foodLabel(meal.kind),tissue:meal.tissue})}
   if(sim.resourceAvailability('drink').enabled){const w=sim.world;let source=null,best=Infinity;for(let y=-1;y<=1;y++)for(let x=-1;x<=1;x++){const i=w.idx(a.x+x,a.y+y);if(!w.water[i])continue;const t={kind:'water',i,x:i%w.n+.5,y:Math.floor(i/w.n)+.5,label:'Water'},d=Math.hypot(t.x-a.x,t.y-a.y);if(d<best){best=d;source=t}}candidates.push(source||{kind:'drinkable-ground',x:a.x,y:a.y,i:w.idx(a.x,a.y),label:'Drinkable ground'})}
@@ -49,6 +49,7 @@ export function contextualInteractions(sim,target=null){
 }
 export function executeInteraction(sim,target=null,actionId=null){
  if(sim.paused)return{ok:false,type:'interact',message:'Resume the world first.'};
+ if(sim.player()?.airborne)return{ok:false,type:'interact',message:'Land before feeding, drinking, mating or tending creatures.'};
  const options=contextualInteractions(sim,target),available=options.filter(o=>o.enabled);
  if(actionId===null&&available.length>1)return{ok:false,type:'interaction-choice',choices:available,message:'Choose how to interact.'};
  const option=actionId===null?available[0]:options.find(o=>o.id===actionId);
