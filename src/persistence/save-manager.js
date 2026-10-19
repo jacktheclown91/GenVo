@@ -360,11 +360,15 @@ export class SaveManager{
   }
   async deleteWorld(id){
     if(!safeSlot(id))throw Error('Invalid world slot.');
+    // Never delete a slot while an earlier write could recreate it.
+    if(this.activeSave)await this.activeSave;
     const db=await this.db(),tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');
     tx.objectStore(SAVE_STORE).delete(id);tx.objectStore(META_STORE).delete(id);await transactionDone(tx);
     if(id===this.activeSlotId)this.setActiveSlot(SAVE_KEY);this.worldNames.delete(id);
   }
   async allocateWorld(name){
+    // Preserve the previous slot's write before changing the active save target.
+    if(this.activeSave)await this.activeSave;
     const id='world-'+(typeof crypto!=='undefined'&&crypto.randomUUID?crypto.randomUUID():`${Date.now()}-${Math.random().toString(36).slice(2)}`);
     this.worldNames.set(id,String(name||'New World').trim().slice(0,40)||'New World');this.setActiveSlot(id);return id;
   }
@@ -389,6 +393,9 @@ export class SaveManager{
   }
   async load(id=this.activeSlotId){
     if(!safeSlot(id))throw Error('Invalid world slot.');
+    // Continue from the most recent committed checkpoint, not a stale read
+    // taken while an in-flight autosave is finishing.
+    if(this.activeSave)await this.activeSave;
     const snapshot=await this.loadSnapshot(id);
     if(!snapshot)return null;
     const sim=restoreSimulationSnapshot(snapshot);this.setActiveSlot(id);this.worldNames.set(id,snapshot.meta?.worldName||'');this.lastSavedAt=Date.now();this.lastSavedTick=sim.tickCount;this.lastObservedSignature=this.signature(sim);return sim;
@@ -458,6 +465,7 @@ export class SaveManager{
   }
   async clear(){
     if(!this.available)return;
+    if(this.activeSave)await this.activeSave;
     const db=await this.db(),tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');
     tx.objectStore(SAVE_STORE).delete(this.activeSlotId);tx.objectStore(META_STORE).delete(this.activeSlotId);await transactionDone(tx);
     this.lastSavedAt=0;this.lastSavedTick=-1;this.lastObservedSignature='';this.status('cleared','Save cleared');
