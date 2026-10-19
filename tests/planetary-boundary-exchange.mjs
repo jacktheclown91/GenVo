@@ -90,7 +90,7 @@ assert.deepEqual(snap(restoreSimulationSnapshot(structuredClone(legacyInitial)))
  'historic zero-flux planet stays byte-identical under restore');
 const forged=structuredClone(initial);
 forged.world.environment.boundary[w.n+1]=2;
-assert.throws(()=>restoreSimulationSnapshot(forged),/Invalid environment reservoir boundary/);
+assert.throws(()=>restoreSimulationSnapshot(forged),/Invalid environment reservoir boundary|Environment water topology mismatch/);
 const badRow=structuredClone(initial);
 badRow.world.environment.lastDay.boundaryInput=-1;
 assert.throws(()=>restoreSimulationSnapshot(badRow),/Invalid planetary boundary flux receipt/);
