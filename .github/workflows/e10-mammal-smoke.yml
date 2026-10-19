@@ -1,0 +1,28 @@
+name: E10 focused mammalian and cold ecology
+on:
+  push:
+    branches:
+      - feat/e10-mammalian-nursing-cold
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mammalian-slice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax of integrated E10 modules
+        run: |
+          node --check src/ecology/mammalian-care.js
+          node --check src/lineage/part-registry.js
+          node --check src/lineage/part-abilities.js
+          node --check src/organisms/tissue-structure.js
+          node --check src/render/part-sprites.js
+          node --check src/family/family.js
+          node --check src/sim/simulation.js
+      - name: Focused mammalian live-birth milk and thermoregulation contract
+        run: node tests/e10-mammal-cold.mjs
