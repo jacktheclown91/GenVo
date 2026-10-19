@@ -1,0 +1,32 @@
+name: P1 sampled 4x biological simulation CPU diagnostic
+on:
+  push:
+    branches:
+      - feat/p1-anatomy-hotpaths-aquatic-profiling
+  workflow_dispatch:
+concurrency:
+  group: p1-profiler-${{ github.ref_name }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  profile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Exact 560+ animal 4x load CPU samples P1
+        run: node tools/p1-profile-observer.mjs
+      - uses: actions/checkout@v4
+        with:
+          ref: 2c9468ef195d709b34b94ed3e43baf0181467126
+          path: baseline
+      - name: Sample original E5 4x load on the same host
+        shell: bash
+        run: |
+          cp tools/p1-profile-observer.mjs baseline/tools/p1-profile-observer.mjs
+          cd baseline
+          node tools/p1-profile-observer.mjs
