@@ -1,0 +1,66 @@
+// E8: actual first-generation aerial traversal, funded by the organism's existing
+// energy and mounted, inherited bilateral flight-wing structure. The wing is one
+// symmetrical dorsal organ, not a wing granted by a species name or an edit of a
+// living adult. This module owns no independent energy or locomotion authority.
+import {adultBodyMass} from '../organisms/body-mass.js';
+import {SPECIES} from '../organisms/species.js';
+import {planPartCounts} from './part-abilities.js';
+
+export const FLIGHT=Object.freeze({
+ maxAdultMass:2.25, takeoffEnergy:6, minimumEnergy:14,
+ basalEnergyPerSecond:.42, movingEnergyPerSecond:.24,
+ airSpeed:1.48, airEnergy:1.85, minHealth:35,
+ emergencyDamage:24
+});
+export function winged(animal){return (planPartCounts(animal)['flight-wing']||0)>0}
+export function flightMass(animal){return adultBodyMass(animal)}
+export function flightAvailability(animal,world){
+ if(!animal?.alive)return{enabled:false,reason:'No living creature.'};
+ if(!winged(animal))return{enabled:false,reason:'Evolve a flight wing from an ancestral proto-wing.'};
+ if(animal.airborne)return{enabled:true,airborne:true,reason:'Already flying. Land on ground to feed, drink or mate.'};
+ if(flightMass(animal)>FLIGHT.maxAdultMass)return{enabled:false,reason:'This body is too heavy to lift. Evolve a lighter torso or shed mass.'};
+ const maturity=SPECIES[animal.species]?.maturity??0;
+ if(animal.age<maturity*.75)return{enabled:false,reason:'Flight muscles are not developed yet.'};
+ if(animal.health<FLIGHT.minHealth)return{enabled:false,reason:'Too injured to take off.'};
+ if(animal.energy<FLIGHT.minimumEnergy)return{enabled:false,reason:'Need more stored food energy for powered flight.'};
+ if(animal.carryingFood)return{enabled:false,reason:'Drop carried food before taking off.'};
+ if(!world?.isPlayable(animal.x,animal.y)||world.water[world.idx(animal.x,animal.y)])return{enabled:false,reason:'Take off from firm ground.'};
+ return{enabled:true,airborne:false,reason:'Lift off with inherited wings. Flapping consumes energy.'};
+}
+export function takeoff(animal,world){
+ const available=flightAvailability(animal,world);
+ if(!available.enabled||available.airborne)return{ok:false,type:'flight',message:available.reason};
+ animal.energy-=FLIGHT.takeoffEnergy;
+ animal.airborne=true;animal.flightSeconds=0;animal.hidden=false;
+ return{ok:true,type:'flight',message:'Airborne. Movement crosses water and slopes. Land on solid ground to recover.'};
+}
+export function landingAvailability(animal,world,{swimmer=false}={}){
+ if(!animal?.airborne)return{enabled:false,reason:'Already on the surface.'};
+ if(!world?.isPlayable(animal.x,animal.y))return{enabled:false,reason:'Cannot land beyond the world boundary.'};
+ if(world.water[world.idx(animal.x,animal.y)]&&!swimmer)return{enabled:false,reason:'Open water below. Reach solid land before descending.'};
+ return{enabled:true,reason:'Land here and return to surface movement.'};
+}
+export function land(animal,world,{swimmer=false}={}){
+ const availability=landingAvailability(animal,world,{swimmer});
+ if(!availability.enabled)return{ok:false,type:'flight',message:availability.reason};
+ animal.airborne=false;animal.flightSeconds=0;
+ return{ok:true,type:'flight',message:'Landed. Ground interactions are available again.'};
+}
+export function toggleFlight(animal,world,{swimmer=false}={}){
+ return animal?.airborne?land(animal,world,{swimmer}):takeoff(animal,world);
+}
+// Called at the existing metabolism cadence, once per life step, including
+// when idle. There is no free hovering, infinite flight or hidden fuel stock.
+// Emergency descent is a physical fall. A non-swimmer above open water remains
+// stranded in water with real survival pressure instead of being teleported.
+export function advanceFlight(animal,world,elapsedSeconds,{rain=0,swimmer=false}={}){
+ if(!animal?.alive||!animal.airborne)return null;
+ const mass=flightMass(animal),load=Math.max(.7,mass/1.5);
+ const wetPenalty=1+Math.max(0,rain-.45)*.5;
+ const cost=(FLIGHT.basalEnergyPerSecond+FLIGHT.movingEnergyPerSecond*(animal.movedTick!=null?1:0))*load*wetPenalty*elapsedSeconds;
+ animal.energy-=cost;animal.flightSeconds=(animal.flightSeconds||0)+elapsedSeconds;
+ if(animal.energy>0&&animal.health>=FLIGHT.minHealth&&winged(animal)&&mass<=FLIGHT.maxAdultMass)return null;
+ animal.airborne=false;animal.flightSeconds=0;
+ animal.health=Math.max(0,animal.health-FLIGHT.emergencyDamage);
+ return{ok:false,type:'flight',message:world.water[world.idx(animal.x,animal.y)]&&!swimmer?'Flight exhausted over water. The creature falls into the water.':'Flight exhausted. Emergency landing causes injury.',cost,forced:true};
+}
