@@ -9,7 +9,7 @@ import {World} from './world.js';
 import {RNG} from '../core/rng.js';
 import {SPECIES} from '../organisms/species.js';
 import {canSwim} from '../lineage/lifestyle.js';
-import {createSimulationSnapshot,restoreSimulationSnapshot} from '../persistence/save-manager.js';
+import {createSimulationSnapshot,restoreDetachedSimulationSnapshot} from '../persistence/save-manager.js';
 import {bodyMass} from '../organisms/body-mass.js';
 import {familyTravelCohort,familyArrivalPoint,FAMILY_PASSAGE} from './family-passage.js';
 import {advanceRemoteEnvironment,remoteEnvironmentDue,OFFSCREEN_ENVIRONMENT} from './planetary-offscreen-environment.js';
@@ -136,14 +136,17 @@ export function crossPlanetaryBorder(sim){
  const traveler=sim.player(),memberIds=status.members,cohort=memberIds.map(id=>sim.animals.find(a=>a.id===id)),sourceKey=regionKey(sim.world.regionOrigin),destinationKey=regionKey(status.to),prior=stored(sim);
  const sessions=prior.sessions.filter(s=>s.key!==destinationKey&&s.key!==sourceKey).map(s=>({...s}));
  const oldDestination=prior.sessions.find(s=>s.key===destinationKey);
- const archivedDestination=oldDestination?structuredClone(oldDestination):null;
+ // Archived snapshots are immutable input until their replacement is
+ // atomically published. A shallow session shell is enough for catchup:
+ // replay assigns a NEW snapshot and ledger only after successful validation.
+ const archivedDestination=oldDestination?{...oldDestination}:null;
  if(archivedDestination){
   if(archivedDestination.biologicalMode==='canonical-ticks/1')advanceRemoteBiology(sim,archivedDestination,{maxTicks:OFFSCREEN_BIOLOGY.maxEntryTicks});
   else advanceRemoteEnvironment(sim,archivedDestination,{maxDays:OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays});
  }
  const nextId=Math.max(prior.nextId,sim.nextId);
  // Construct destination and all receipts before modifying the active sim.
- const dest=archivedDestination?restoreSimulationSnapshot(structuredClone(archivedDestination.snapshot)):
+ const dest=archivedDestination?restoreDetachedSimulationSnapshot(archivedDestination.snapshot):
   new Simulation(sim.seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:status.to,massRules:sim.massRules});
  if(!archivedDestination){
   const surveyed=sim.planetaryRegions.get(status.to,{create:false});
