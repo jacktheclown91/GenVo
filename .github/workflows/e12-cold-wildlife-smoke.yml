@@ -22,5 +22,6 @@ jobs:
           node --check src/sim/simulation.js
           node --check src/main.js
           node --check src/ui/creature-context-tray.js
+          node --check src/render/renderer.js
       - name: Focused cold-season wildlife physics, decisions and routes
         run: node tests/e12-cold-wildlife.mjs
