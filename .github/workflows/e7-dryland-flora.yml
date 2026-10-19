@@ -1,0 +1,26 @@
+name: E7 targeted dryland flora
+on:
+  push:
+    branches:
+      - feat/e7-dryland-flora
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  targeted-content:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax of new ecosystem integration
+        run: |
+          node --check src/sim/config.js
+          node --check src/world/world.js
+          node --check src/ecology/flora-genotype.js
+          node --check src/gameplay/foraging.js
+          node --check src/render/flora.js
+      - name: New feature smoke check only
+        run: node tests/e7-dryland-flora.mjs
