@@ -192,6 +192,8 @@ export const WAVE2_TEXT=Object.freeze({
   'echo-crest':{gain:'Relic part: spots threats much farther away',cost:'A little more food.'},
   'filament-tuft':{gain:'Inherited filaments reduce cold energy use',cost:'Small upkeep and heat retention.'},
   'fur-mantle':{gain:'Thick fur reduces cold energy loss',cost:'Needs filament ancestry; wet fur insulates less, and heat costs more.'},
+  'endothermic-core':{gain:'Regulates internal heat in cold regions and helps protect newborn young at close range',cost:'Needs ancestral fur, a free organ slot, and significant ongoing food energy. Heat costs rise in hot climates.'},
+  'mammary-gland':{gain:'Live-born dependent young can nurse from the birth parent, funded by maternal food energy and water',cost:'Requires earlier endothermy and live birth, another organ slot, and higher food upkeep. Milk competes with adult survival.'},
   'feather-mantle':{gain:'Feathers insulate in cold and resist wetting',cost:'Needs ancestral filaments; costs food and heat. Not a flight ability.'},
   'proto-wing':{gain:'Feather-derived display precursor for future flight evolution',cost:'Needs feather ancestry, high cost and upkeep. Cannot fly or glide.'},
   'flight-wing':{gain:'A lightweight adult can take off and cross open water, rivers and steep slopes using real food energy (6 or the action dock)',cost:'Requires proto-wing ancestry across generations, 8 mutation points, high part upkeep and a body light enough to lift. Flying costs energy each second, and poor landings can injure.'},
