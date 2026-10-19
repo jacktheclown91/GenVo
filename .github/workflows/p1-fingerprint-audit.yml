@@ -1,0 +1,35 @@
+name: P1 GenVo repeatability audit of exact mutation fingerprints
+on:
+  push:
+    branches:
+      - feat/p1-anatomy-hotpaths-aquatic-profiling
+  workflow_dispatch:
+concurrency:
+  group: p1-fingerprint-audit-${{ github.ref_name }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  fingerprints:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/checkout@v4
+        with:
+          ref: 2c9468ef195d709b34b94ed3e43baf0181467126
+          path: baseline
+      - name: Compare repeated pinned E5 and P1 JSON/V8 mutation digests
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp tools/p1-fingerprint-audit.mjs baseline/tools/p1-fingerprint-audit.mjs
+          for round in 1 2 3; do
+            echo "=== UNCHANGED E5 BASELINE round $round ==="
+            (cd baseline && node tools/p1-fingerprint-audit.mjs)
+            echo "=== P1 CANDIDATE round $round ==="
+            node tools/p1-fingerprint-audit.mjs
+          done
