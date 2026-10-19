@@ -2,6 +2,7 @@ import {ecologyRuleMigrationMessage} from './ecology/rule-policy.js';
 import {birthRuleMigrationMessage} from './lineage/birth-rules.js';
 import {FrameStepper} from './sim/frame-stepper.js';
 import {setProcessingLoad} from './sim/processing-capacity.js';
+import {planetaryTravelAvailability,crossPlanetaryBorder} from './world/planetary-travel.js';
 import {PointerApproach} from './ui/pointer-approach.js';
 import {approachGoal} from './ui/world-resource-target.js';
 import {CourtshipTray} from './ui/courtship-tray.js';
@@ -61,8 +62,8 @@ const canvas=document.querySelector('#game'),renderer=new Renderer(canvas,sim),k
 let mateOpen=false,mindOpen=false,territoryOpen=false,shelterOpen=false,migrationOpen=false,ecologyOpen=false,helpOpen=false,guideOpen=false,manualPause=false;
 let pointerApproach=null;
 const MOVE_CODES=new Set(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight','KeyJ']);
-const WORLD_ACTION_CODES=new Set(['Space','KeyE','KeyQ','KeyN','KeyF','KeyX','KeyV','KeyZ','KeyC','KeyG','KeyH','Digit1','Digit2','Digit3','Digit4','Digit5','Digit6','Digit7','Digit8']);
-const MANUAL_TAKEOVER_CODES=new Set(['Space','KeyE','KeyQ','KeyN','KeyF','KeyX','KeyV','KeyZ','KeyC','KeyG','Digit6','Digit7','Digit8']);
+const WORLD_ACTION_CODES=new Set(['Space','KeyE','KeyQ','KeyN','KeyF','KeyX','KeyV','KeyZ','KeyC','KeyG','KeyH','Digit1','Digit2','Digit3','Digit4','Digit5','Digit6','Digit7','Digit8','Digit9']);
+const MANUAL_TAKEOVER_CODES=new Set(['Space','KeyE','KeyQ','KeyN','KeyF','KeyX','KeyV','KeyZ','KeyC','KeyG','Digit6','Digit7','Digit8','Digit9']);
 function clearMovementKeys(){pointerApproach?.cancel();braceInput?.release();sim.playerCombat?.releaseBrace(sim.player());for(const code of MOVE_CODES)keys[code]=false}
 function takeManualControl(){if(!sim.playerAutonomy)return false;sim.setPlayerAutonomy(false);tutorial?.showToast?.('Manual control',900,'safe');return true}
 function setManualPause(value){if(tutorial.worldInputBlocked?.())return false;manualPause=!!value;sim.paused=manualPause;clearMovementKeys();if(pauseNotice)pauseNotice.hidden=!manualPause;audio.note('confirm');return true}
@@ -161,6 +162,13 @@ quickMenu?.addEventListener('click',e=>{
   const b=e.target.closest('button[data-panel]');if(!b)return;e.preventDefault();e.stopPropagation();leadershipWheel.setCommandMode(false);toggleQuickPanel(b.dataset.panel)
 });
 
+function travelPlanetaryRegion(){
+  if(tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||succession.open)return;
+  const result=crossPlanetaryBorder(sim);
+  if(!result.ok){tutorial.showToast(result.message,2600,'warn');audio.note('deny');return}
+  installSimulation(result.simulation,{resume:true});closeDetailPanels();clearMovementKeys();
+  tutorial.showToast(result.message,3500,'success');audio.note('confirm');
+}
 function installSimulation(next,{fresh=false,resume=false}={}){
   seed=next.seed;sim=next;renderer.sim=sim;observer.reset();succession.close();editor.close();syncSpeedButton();frameStepper.reset();last=performance.now();hudTimer=0;clearMovementKeys();
   manualPause=resume?!!sim.paused:false;if(!resume)sim.paused=false;if(pauseNotice)pauseNotice.hidden=!manualPause;
@@ -222,6 +230,7 @@ addEventListener('keydown',e=>{
   if(e.code==='Digit6'&&!e.repeat){const r=sim.playerToggleFlight();tutorial.onInteraction(r);audio.noteResult(r)}
   if(e.code==='Digit7'&&!e.repeat){const r=sim.playerToggleRoost();tutorial.onInteraction(r);audio.noteResult(r)}
   if(e.code==='Digit8'&&!e.repeat){const r=sim.playerToggleTorpor();tutorial.onInteraction(r);audio.noteResult(r)}
+  if(e.code==='Digit9'&&!e.repeat){e.preventDefault();travelPlanetaryRegion();return}
   if(e.code==='KeyN'&&!e.repeat){const r=sim.shelter.constructOrRepair(sim.player());tutorial.onShelterAction?.(r);audio.noteResult(r)}
   if(e.code==='KeyF'&&!e.repeat){const r=sim.shelter.cacheNearbyFood(sim.player());tutorial.onShelterAction?.(r);audio.noteResult(r)}
   if(e.code==='KeyX'&&!e.repeat){const r=sim.playerAlarm();tutorial.onInteraction(r);audio.noteResult(r)}
@@ -300,6 +309,7 @@ const contextTray=new CreatureContextTray({canvas,renderer,braceInput,getSim:()=
  canUseFamilyGuidance:(creature,resource)=>leadershipWheel.available()&&(!resource||resource.kind==='ground')&&(!creature||sim.controllableFamily().some(a=>a.id===creature.id)),
  onApproachAvailability:target=>pointerApproach.availability(approachGoal(sim,target)),
  onApproach:(target,onArrival,{quiet=false,ready=null,onInterrupted=null}={})=>{const goal=approachGoal(sim,target);if(!goal)return;takeManualControl();clearMovementKeys();sim.reproduction.cancelCourtship();courtshipTray.close();applyObserverResult(observer.onManualInput());const result=pointerApproach.start(goal,onArrival,{ready,onInterrupted});if(!quiet){tutorial.onInteraction(result);audio.noteResult(result)}},
+ onTravel:travelPlanetaryRegion,travelStatus:()=>planetaryTravelAvailability(sim),
  onRest:()=>{sim.discovery.cancelTraceFollow();pointerApproach?.cancel();if(sim.paused||sim.playerCombat.attackActive(sim.player()))return;takeManualControl();clearMovementKeys();sim.reproduction.cancelCourtship();courtshipTray.close();const a=sim.player();if(a){a.intent='idle';a.target=null;tutorial.showToast('Resting · regain breath while still. Move to resume.',1800,'safe');audio.note('confirm')}},stageBlocked:()=>tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||fieldGuide.open||journal.open||guideOpen||helpOpen||mindOpen||territoryOpen||shelterOpen||migrationOpen||ecologyOpen||mateOpen||succession.open||leadershipWheel.commandMode,
  onMode:mode=>{if(mode==='combat'&&courtshipTray.isOpen){const id=courtshipTray.targetId;sim.reproduction.cancelCourtship();courtshipTray.close();contextTray.targetId=id;contextTray.world=sim}},blocked:()=>tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||fieldGuide.open||journal.open||guideOpen||helpOpen||mindOpen||territoryOpen||shelterOpen||migrationOpen||ecologyOpen||mateOpen||courtshipTray.isOpen||succession.open||leadershipWheel.commandMode,
  onResult:r=>{if(!(r.ok&&r.type==='trace-follow'))sim.discovery.cancelTraceFollow();pointerApproach?.cancel();takeManualControl();tutorial.onInteraction(r);audio.noteResult(r)},
