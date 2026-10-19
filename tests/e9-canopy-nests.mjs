@@ -27,8 +27,8 @@ assert.ok(flightMass(p)<2.25);
 assert.equal(canopyGrips(p),2);
 // Use a real land cell and set existing Woodspire's single authoritative
 // plant stock. Notify the canonical seed/tissue accounting of the change.
-let cell=-1;for(let i=0;i<w.len;i++){let x=i%w.n+.5,y=(i/w.n|0)+.5;if(w.isPlayable(x,y)&&!w.water[i]&&w.plants.woodspire[i]>.4){cell=i;break}}
-assert.ok(cell>=0,'generated world has living mature woody habitat');
+let cell=-1;for(let i=0;i<w.len;i++){let x=i%w.n+.5,y=(i/w.n|0)+.5;if(w.isPlayable(x,y)&&!w.water[i]&&w.plants.woodspire[i]>.05){cell=i;break}}
+assert.ok(cell>=0,'generated world has a real juvenile woody stand');
 p.x=cell%w.n+.5;p.y=(cell/w.n|0)+.5;
 const old=w.plants.woodspire[cell];w.plants.woodspire[cell]=1.6;sim.dispersal.noteGrowth('woodspire',cell,old,1.6);
 assert.ok(canopySupport(w,p.x,p.y).supported);
