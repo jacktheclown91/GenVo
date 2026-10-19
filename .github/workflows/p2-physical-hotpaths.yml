@@ -69,6 +69,9 @@ jobs:
       - name: P1 versus P2 original 500ms ABBA diagnostic only
         shell: bash
         run: |
+          # Diagnostic: record all four original assertions even when >500ms.
+          # The separate full unchanged test remains the absolute acceptance.
+          set +e
           set -u
           for repoPath in baseline . . baseline; do
             echo "=== $repoPath ==="
