@@ -75,6 +75,10 @@ export class World{
     case 'fungus':return Math.max(0,.02+.07*noise);
     case 'woodland':return wet>.39&&fertility>.38&&noise>.67?Math.min(.40,.09+.18*wet*fertility+.08*noise):0;
     case 'dry_seed':return wet<.62&&noise>.46?Math.max(0,.07+.18*(1-wet)*fertility+.08*noise):0;
+    // Dry-niche founders are real standing tissue and share the existing finite
+    // soil/water/energy pool. Absent stands can recolonize only from funded seeds.
+    case 'dry_bulb':return wet<.38&&fertility>.24&&noise>.63?Math.max(0,.055+.15*(1-wet)*fertility+.04*noise):0;
+    case 'dry_shrub':return wet<.53&&fertility>.22&&noise>.49?Math.max(0,.065+.17*(1-wet)*fertility+.06*noise):0;
     default:return Math.max(0,.03+.08*noise);
   }}
   plantAt(kind,x,y){return this.plants[kind]?.[this.idx(x,y)]||0}
