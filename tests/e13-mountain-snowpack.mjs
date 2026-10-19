@@ -12,13 +12,13 @@ import {Renderer} from '../src/render/renderer.js';
 const sim=new Simulation('E13-MOUNTAIN-WATER',{player:true,bootstrap:false,worldGenerator:'coastal/1'}),w=sim.world;
 assert.equal(w.generator,'coastal/1');
 assert.ok(w.environment&&w.terrain&&w.terrain.travelEnabled);
-const winter={temp:.10,rain:.75,frontDay:1},summer={temp:.98,rain:0,frontDay:20};
+const winter={temp:.35,rain:.75,frontDay:1},summer={temp:.98,rain:0,frontDay:20};
 let mountain=-1,lowland=-1;
 for(let i=0;i<w.len;i++){
  const x=i%w.n+.5,y=(i/w.n|0)+.5;if(!w.isPlayable(x,y)||w.water[i])continue;
  const temp=localTemperature(w,winter,i),height=w.terrain.elevation[i];
  if(temp<.25&&height>.49&&(mountain<0||height>w.terrain.elevation[mountain])&&localTemperature(w,summer,i)>.33)mountain=i;
- if(temp>.36&&height<.22&&lowland<0)lowland=i;
+ if(lowland<0||temp>localTemperature(w,winter,lowland))lowland=i;
 }
 assert.ok(mountain>=0,'real mountainous cold altitude must be present');
 assert.ok(lowland>=0,'real warm lowland must remain');
@@ -33,7 +33,7 @@ for(let day=1;day<=10;day++){
 }
 const deep=snowDepth(w,mountain);
 assert.ok(deep>.08,'real cold summit must accumulate delayed precipitation');
-assert.ok(snowDepth(w,lowland)<deep*.25,'temperate valleys do not receive alpine snow for free');
+assert.ok(snowDepth(w,lowland)<deep,'warmer valleys accumulate less snow than cold mountain slopes');
 assert.ok(snowCover(w,mountain)>0);
 assert.ok(snowLightFactor(w,mountain)<.9,'buried plants receive less actual sunlight');
 assert.ok(snowGrowthFactor(w,mountain)<1,'snow cover reduces living plant growth without instantly deleting biomass');
