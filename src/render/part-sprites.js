@@ -44,7 +44,7 @@ export const PART_SPRITES=Object.freeze({
   // Wave 2 components.
   'balance-tail':{layer:'rear'},'club-tail':{layer:'rear'},'spined-tail':{layer:'rear'},'whip-tail':{layer:'rear'},'prehensile-tail':{layer:'rear'},'fat-tail':{layer:'rear'},'flag-tail':{layer:'rear'},
   'sail-fin':{layer:'body'},'spine-ridge':{layer:'body'},'water-hump':{layer:'body'},'display-frill':{layer:'body'},'moss-back':{layer:'body'},'sensory-quills':{layer:'body'},
-  'fat-pad':{layer:'body'},'gill-slits':{layer:'body'},'scent-gland':{layer:'body'},'spine-cluster':{layer:'body'},'brood-pouch':{layer:'body'},'egg-chamber':{layer:'body'},'live-womb':{layer:'body'},
+  'fat-pad':{layer:'body'},'gill-slits':{layer:'body'},'scent-gland':{layer:'body'},'spine-cluster':{layer:'body'},'brood-pouch':{layer:'body'},'egg-chamber':{layer:'body'},'live-womb':{layer:'body'},'endothermic-core':{layer:'body'},'mammary-gland':{layer:'body'}, 
   'hook-spur':{layer:'front'},'dew-claw':{layer:'front'},'heel-spike':{layer:'front'},'sensory-bristle':{layer:'front'},'grip-pad':{layer:'front'},'kick-spur':{layer:'front'},
   'horn-crest':{layer:'body'},'tusk-jaw':{layer:'face'},
   'gliding-membrane':{layer:'body'},'luminous-tail':{layer:'rear'},'shell-back':{layer:'body'},'armored-hide':{layer:'body'},'glow-eye':{layer:'face'},'echo-crest':{layer:'body'},
@@ -73,6 +73,9 @@ const DRAW={
   'storage-sac'(c,k){const sx=k.bx+k.perp.x*k.sign*(k.bodyW*.48)-k.fx*.5,sy=k.by+k.perp.y*k.sign*(k.bodyH*.38)-k.fy*.5;pixel(c,snap(sx),snap(sy),2,2,k.s,k.p.body);pixel(c,snap(sx),snap(sy),1,1,k.s,k.p.light)},
   // Venom gland: a swollen 2x2 sac with a dark duct toward the jaw.
   'venom-gland'(c,k){const gx=k.bx+k.perp.x*k.sign*(k.bodyW*.40)+k.fx*.8,gy=k.by+k.perp.y*k.sign*(k.bodyH*.40)+k.fy*.8;pixel(c,snap(gx),snap(gy),2,2,k.s,'#9fd14f');pixel(c,snap(gx),snap(gy),1,1,k.s,'#e2f5a8');pixelLine(c,gx+k.fx,gy+k.fy,gx+k.fx*2-k.perp.x*k.sign,gy+k.fy*2-k.perp.y*k.sign,k.s,'#4e6d2a')},
+  // Small flank-mounted thermal sac, visible from the usual top-down angle.
+  'endothermic-core'(c,k){const f=flankAt(k);pixel(c,snap(f.x-1),snap(f.y-1),3,3,k.s,'#6e3d36');pixel(c,snap(f.x),snap(f.y),2,2,k.s,'#d78958');pixel(c,snap(f.x+1),snap(f.y),1,1,k.s,'#f5c285')},
+  'mammary-gland'(c,k){const f=flankAt(k),x=f.x+k.fx*.8,y=f.y+k.fy*.8;pixel(c,snap(x-1),snap(y),3,2,k.s,'#986b76');pixel(c,snap(x),snap(y),2,1,k.s,'#dfb6b2');pixel(c,snap(x+1),snap(y+1),1,1,k.s,'#f0ded2')},
   // Overhead E3 insulation stages. Mounted to the upper body, NOT to the face.
   'filament-tuft'(c,k){const b=backTop(k);for(let n=-4;n<=4;n++){
     const x=b.x+k.perp.x*n*.47,y=b.y+k.perp.y*n*.47;
