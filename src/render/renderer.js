@@ -5,6 +5,7 @@ import {gaitTravelFor} from './genvo.js';
 import {assemblyFor} from './creature-assembler.js';
 import {locomotionStyle,locomotionOffsets} from './locomotion-style.js';
 import {movementProfile} from '../lineage/lifestyle.js';
+import {snowCover} from '../world/snowpack.js';
 import {botanicalPlantView} from '../ecology/botanical-reproduction.js';
 import {FeedingPresentation,applyFeedingExpression} from './feeding-expression.js';
 import {drawWorldTraces} from './world-traces.js';
@@ -103,6 +104,9 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // Multi-tile habitat scenes summarize real ecology (water, biomass, use history) without creating game state.
     const sceneEpoch=Math.floor(this.sim.tickCount/Math.max(1,CFG.simHz)),sceneKey=`${startX},${startY},${cols},${rows},${sceneEpoch}`;if(sceneKey!==this.habitatScenesKey){this.habitatScenes=collectHabitatScenes(this.sim,this.habitatField,{startX,startY,cols,rows,block:8});this.habitatScenesKey=sceneKey}
     this.drawHabitatTransitions(tile,startX,startY,cols,rows);this.drawHabitatScenes(tile);this.drawRegionalFocalApproaches(tile);this.drawRegionalFocals(tile);
+    // Snow is daily climate state. Composite over cached terrain, beneath
+    // living flora; never freeze snow art into old seasonal chunk caches.
+    this.drawSnowWindow(tile,startX,startY,cols,rows);
     this.drawTerrainChunks(tile,startX,startY,cols,rows,true);this.drawLiveVegetationWindow(tile);
     // Organic remains are an actual selectable resource, above floor and vegetation.
     for(let sy=0;sy<rows;sy++)for(let sx=0;sx<cols;sx++){const x=startX+sx,y=startY+sy;if(x<0||y<0||x>=this.sim.world.n||y>=this.sim.world.n)continue;const i=this.sim.world.idx(x,y);if(!this.sim.world.water[i]&&this.sim.world.carrion[i]>.08)this.drawCarrion(Math.round((x-this.camera.x)*tile+this.w/2),Math.round((y-this.camera.y)*tile+this.h/2),this.zoom,this.sim.world.carrion[i])}
@@ -355,6 +359,28 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     for(const site of D.sites){if(site.gone||Math.abs(site.x-this.camera.x)>cols/2+2||Math.abs(site.y-this.camera.y)>rows/2+2)continue;const px=Math.round((site.x-this.camera.x)*tile+this.w/2),py=Math.round((site.y-this.camera.y)*tile+this.h/2);drawSite(c,site,{px,py,u,found:D.isFound(site)})}
     // A lookout reveals every Stalker in sight for a while.
     if(D.revealUntil>this.sim.tickCount){c.save();c.strokeStyle='rgba(239,105,94,.95)';c.lineWidth=2;for(const h of this.sim.animals){if(!h.alive||!canHunt(h))continue;const x=Math.round((h.x-this.camera.x)*tile+this.w/2),y=Math.round((h.y-this.camera.y)*tile+this.h/2);if(x<-20||y<-20||x>this.w+20||y>this.h+20)continue;c.beginPath();c.arc(x,y,9,0,Math.PI*2);c.stroke()}c.restore()}
+  }
+  drawSnowWindow(tile,startX,startY,cols,rows){
+    const w=this.sim.world,depth=w.soilWater?.snowpack;
+    if(!depth)return;const c=this.ctx;let drawn=0;
+    for(let y=Math.max(0,startY);y<Math.min(w.n,startY+rows);y++)
+      for(let x=Math.max(0,startX);x<Math.min(w.n,startX+cols);x++){
+        const i=y*w.n+x;if(w.water[i]||depth[i]<.012)continue;
+        const cover=snowCover(w,i),px=Math.round((x-this.camera.x)*tile+this.w/2),py=Math.round((y-this.camera.y)*tile+this.h/2),
+          q=hash2(x,y,5531),r=hash2(x,y,5537);
+        // Irregular 32-grid top-down snow drifts and exposed gravel. This is
+        // surface coverage from real stored snowfall, not a winter season tint.
+        c.save();c.globalAlpha*=Math.min(.91,.22+cover*.72);
+        c.fillStyle='#dce9e7';
+        if(cover>.54){c.fillRect(px+tile*.06,py+tile*.06,tile*.82,tile*.68);
+          c.fillRect(px+tile*.15,py+tile*.69,tile*.66,tile*.22)}
+        else{c.fillRect(px+tile*(q>.5?.18:.04),py+tile*.20,tile*(.21+cover*.36),tile*(.15+cover*.24));
+          c.fillRect(px+tile*.51,py+tile*(r>.5?.62:.45),tile*(.15+cover*.28),tile*.15)}
+        c.fillStyle='#f1f7f3';
+        c.fillRect(px+tile*(.24+q*.17),py+tile*.14,tile*.18,tile*.06);
+        c.restore();drawn++;
+      }
+    return drawn;
   }
   drawTerrainChunks(tile,startX,startY,cols,rows,vegetation=false){
     this.visibleWorldPages=this.sim.world.pages?.window(startX,startY,cols,rows,{halo:1})||[];
