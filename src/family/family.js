@@ -16,6 +16,9 @@ export class FamilyController{
     // Existing care practices travel with the actual caregiving relationship,
     // rather than disappearing when a hybrid receives another founding label.
     const care=this.careProfile(mother)||this.careProfile(father);if(care)child.careProfile={...care};
+    // A milk-dependent lineage needs caregiver behavior even if its founding
+    // taxon previously lacked any family-care metadata.
+    if(child.lactationParentId!=null)child.careProfile={...child.careProfile,lineageOnly:false,dependentUntil:.65,followDistance:2.1,nurseRadius:MAMMAL.contactDistance,parentReserve:MAMMAL.parentEnergyReserve,guardThreatRadius:5};
     child.birthTick=this.sim.tickCount;
     child.birthDay=this.sim.day;
     child.birthYear=this.sim.year;
@@ -44,7 +47,7 @@ export class FamilyController{
   development(animal){return developmentFor(animal)}
   careProfile(animal){
     if(!animal)return null;
-    return SPECIES[animal.species]?.familyCare||animal.careProfile||
+    return animal.careProfile||SPECIES[animal.species]?.familyCare||
       SPECIES[this.sim.animals.find(a=>a.id===animal.caregiverId)?.species]?.familyCare||null;
   }
   isDependent(animal){
