@@ -17,7 +17,7 @@ export function neighboringRegion(region,direction){
  return planetRegionOrigin({x:r.x+dx,y:r.y+dy});
 }
 export function planetaryCell(world,localX,localY){
- if(!world?.planet||!world.isPlayable(localX,localY))throw Error('Not a supported playable planetary cell.');
+ if(!world?.planet||![localX,localY].every(Number.isFinite)||localX<0||localY<0||localX>=world.n||localY>=world.n)throw Error('Not a supported local planetary cell.');
  const r=planetRegionOrigin(world.regionOrigin);
  return{worldX:r.x+localX,worldY:r.y+localY,region:regionKey(r),localX,localY};
 }
@@ -33,6 +33,7 @@ export class PlanetRegionAtlas{
    throw Error('Cannot mix worlds from different planets.');
   const origin=planetRegionOrigin(world.regionOrigin),key=regionKey(origin);
   if(this.regions.has(key)&&this.regions.get(key)!==world)throw Error('Regional world already owns this physical territory.');
+  if(!this.regions.has(key)&&this.regions.size>=17)throw Error('Too many simultaneously materialized planetary regions.');
   this.regions.set(key,world);return world;
  }
  get(origin,{create=false}={}){
