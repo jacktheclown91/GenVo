@@ -67,7 +67,8 @@ for(let day=11;day<=21;day++){
 }
 assert.ok(snowDepth(w,mountain)<savedDepth,'summer melt consumes real earlier winter snow');
 assert.ok(w.soilWater.totals.snowmelt>0,'snowmelt has an auditable physical receipt');
-assert.ok(Math.abs(soilWaterStorage(w)-beforeWarm)<250,'meltwater remains within recorded water flux, not an unbounded source');
+assert.ok(w.soilWater.totals.snowmelt<=w.soilWater.totals.snowfall+1e-8,'cumulative melt cannot exceed physically deposited snowfall');
+assert.ok(soilWaterStorage(w)<beforeWarm,'warm-season runoff and evaporation remove water, not create it; daily closures were verified above');
 const beforeRender=snowDepth(restored.world,mountain);
 let rectangles=0;
 const fake={ctx:{save(){},restore(){},fillRect(){rectangles++},set fillStyle(v){},set globalAlpha(v){},get globalAlpha(){return 1}},sim:{world:restored.world},camera:{x:x,y:y},w:800,h:600};
