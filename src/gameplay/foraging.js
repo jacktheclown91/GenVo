@@ -20,10 +20,12 @@ export const FOOD_PROFILES=Object.freeze({
   thistlepod:{group:'seed',role:'dense seed',bite:.15,energy:1.14,water:0},
   dunebulb:{group:'fruit',role:'drought bulb flesh',bite:.14,energy:1.04,water:4},
   dustsage:{group:'seed',role:'hard-coated sage seeds',bite:.14,energy:1.07,water:0},
+  frostlichen:{group:'ground',role:'cold ground cover',bite:.16,energy:1.01,water:1},
+  snowberry:{group:'fruit',role:'cold-season fruit',bite:.14,energy:1.05,water:3},
   carrion:{group:'animal',role:'dense · disease risk',bite:.18,energy:1.20,water:0}
 });
 
-const FOOD_ORDER=['sunmoss','bramble','marshroot','rotcap','thistlepod','woodspire','dunebulb','dustsage','carrion'];
+const FOOD_ORDER=['sunmoss','bramble','marshroot','rotcap','thistlepod','woodspire','dunebulb','dustsage','frostlichen','snowberry','carrion'];
 export const SEASONAL_FORAGE=Object.freeze({
   sunmoss:{SPRING:1.10,SUMMER:.96,AUTUMN:1.02,WINTER:.72},
   bramble:{SPRING:.92,SUMMER:1.02,AUTUMN:1.16,WINTER:.68},
@@ -31,7 +33,9 @@ export const SEASONAL_FORAGE=Object.freeze({
   rotcap:{SPRING:1.06,SUMMER:.86,AUTUMN:1.15,WINTER:.76},
   thistlepod:{SPRING:.86,SUMMER:1.16,AUTUMN:1.08,WINTER:.78},
   dunebulb:{SPRING:1.05,SUMMER:.83,AUTUMN:1.12,WINTER:.68},
-  dustsage:{SPRING:.90,SUMMER:1.10,AUTUMN:1.05,WINTER:.76}
+  dustsage:{SPRING:.90,SUMMER:1.10,AUTUMN:1.05,WINTER:.76},
+  frostlichen:{SPRING:1.06,SUMMER:.80,AUTUMN:1.04,WINTER:.96},
+  snowberry:{SPRING:.92,SUMMER:.98,AUTUMN:1.16,WINTER:.68}
 });
 const PATCH_RADIUS=2.5,PATCH_MERGE=5,PATCH_MEMORY_LIMIT=8,PATCH_READY=.45,PATCH_ABUNDANT=.72,PATCH_THIN=.18,COMPETITION_RADIUS=6;
 const clamp01=v=>Math.max(0,Math.min(1,Number(v)||0));
