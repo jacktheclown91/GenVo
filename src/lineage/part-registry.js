@@ -15,7 +15,7 @@ export const SOCKET_TYPES=Object.freeze(['limb','head','mouth','eye','dorsal','f
 // Capability names (locked for v0). Owning systems decide what each one does.
 export const CAPABILITIES=Object.freeze([
   'walk','sprint','pounce','carry','dig','graze','bite','tear','crush','see','see-wide',
-  'armor','retaliate','strike','venom','store','signal','swim-propel','insulate','climb','fly',
+  'armor','retaliate','strike','venom','store','signal','swim-propel','insulate','climb','fly','thermoregulate','lactate',
   // Wave 1 (creator decision 2026-10-09): eight bodies, legs, mouths and eyes.
   'run','brace','swim','quiet','peck','filter','suck','swallow','nibble','aim','spot','glance','track','display','call','dance','flare','scent','gesture','lay-eggs','live-birth'
 ]);
@@ -184,6 +184,11 @@ export const PARTS=Object.freeze(Object.fromEntries([
   // Optional live-bearing organ. On an egg-bearing body this adds an expensive second
   // reproductive pathway; both take real part slots, mutation points and upkeep.
   part('live-womb','metabolism',{tags:['flank','reproduction','viviparous'],sockets:['flank'],mass:1.1,upkeep:.36,cost:7,actions:['live-birth'],niche:['reproduction','family'],symmetry:'single'}),
+  // E10: costly fur-derived internally regulated heat, followed by a milk gland.
+  // Both use actual organ sockets. The starter small torso cannot carry the
+  // whole complex: the lineage first needs a torso with more flank capacity.
+  part('endothermic-core','metabolism',{tags:['flank','warm-blooded','thermoregulation'],prereq:['fur-mantle'],sockets:['flank'],mass:.65,upkeep:.32,cost:6,actions:['thermoregulate'],niche:['cold','alpine','tundra'],symmetry:'single'}),
+  part('mammary-gland','metabolism',{tags:['flank','reproduction','milk','parental-investment'],prereq:['endothermic-core','live-womb'],sockets:['flank'],mass:.56,upkeep:.31,cost:7,actions:['lactate'],niche:['family','tundra','reproduction'],symmetry:'single'}),
   part('hook-spur','offense',{tags:['spur'],prereq:["claw"],sockets:['spur'],mass:.08,upkeep:0.03,cost:1,actions:["strike"],niche:["prey"]}),
   part('dew-claw','defense',{tags:['spur'],prereq:[],sockets:['spur'],mass:.08,upkeep:0.02,cost:1,actions:["brace"],niche:["predator-pressure"]}),
   part('heel-spike','defense',{tags:['spur'],prereq:["barb"],sockets:['spur'],mass:.08,upkeep:0.03,cost:1,actions:["armor"],niche:["predator-pressure"]}),
