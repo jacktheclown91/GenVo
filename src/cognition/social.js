@@ -64,12 +64,13 @@ export class SocialController{
         encounters.set(key,{a,b,sharedDanger:sharedDanger||!!previous?.sharedDanger});
       }
       const center={x:members.reduce((n,m)=>n+m.x,0)/members.length,y:members.reduce((n,m)=>n+m.y,0)/members.length};
+      const guide=this.currentGuide(members);
       let nearest=null,nearestD=Infinity,alarm=null;
       for(const m of members){
         if(m.id!==animal.id){const d=Math.hypot(m.x-animal.x,m.y-animal.y);if(d<nearestD){nearestD=d;nearest=m}}
         const signal=directAlarms.get(m.id);if(signal&&(!alarm||signal.distance<alarm.distance))alarm=signal;
       }
-      this.states.set(animal.id,{mode:profile.mode,label:profile.label||profile.mode,members:members.map(m=>m.id),size:members.length,center,nearestId:nearest?.id??null,nearestDistance:nearestD,alarm});
+      this.states.set(animal.id,{mode:profile.mode,label:profile.label||profile.mode,members:members.map(m=>m.id),size:members.length,center,nearestId:nearest?.id??null,nearestDistance:nearestD,alarm,guideId:guide?.id??null});
     }
     if(!force)this.rememberContacts(encounters);
   }
@@ -91,6 +92,31 @@ export class SocialController{
     if(previous)score*=1+Math.min(.25,previous.observations*.016)+Math.min(.12,previous.sharedDanger*.015);
     return score;
   }
+  currentGuide(members){
+    if(members.length<3)return null;
+    const traveling=new Set(['drink','to-water','feed','migrate','family-scout','hunt','explore','player']);
+    let best=null,bestSupport=1;
+    for(const candidate of members){
+      if(!candidate.alive||!traveling.has(candidate.intent))continue;
+      const goal=candidate.target;
+      const hasPlace=Number.isFinite(goal?.x)&&Number.isFinite(goal?.y);
+      const hasManualDirection=candidate.intent==='player'&&
+        Number.isFinite(goal?.dx)&&Number.isFinite(goal?.dy)&&(goal.dx||goal.dy);
+      if(!hasPlace&&!hasManualDirection)continue;
+      if(hasPlace&&Math.hypot(goal.x-candidate.x,goal.y-candidate.y)<1)continue;
+      // A guide needs at least two independently familiar companions.
+      // No species tag, rank, combat strength or fixed alpha grants obedience.
+      let support=0;
+      for(const other of members){
+        if(other.id===candidate.id)continue;
+        if((this.familiarity(candidate,other)?.observations||0)>=2)support++;
+      }
+      if(support>bestSupport||(support===bestSupport&&best&&candidate.id<best.id)){
+        best=candidate;bestSupport=support;
+      }
+    }
+    return best;
+  }
   state(animal){return this.states.get(animal?.id)||null}
   snapshot(animal){
     const s=this.state(animal),p=this.profile(animal);if(!s||!p)return null;
@@ -100,7 +126,7 @@ export class SocialController{
     const s=this.state(animal);if(!s)return null;
     const ids=[...s.members].sort((a,b)=>a-b),memberIndex=Math.max(0,ids.indexOf(animal.id)),threat=s.alarm?.threat||null;
     const caregiver=animal?.caregiverId?this.sim.animals.find(a=>a.id===animal.caregiverId&&a.alive)||null:null;
-    return{mode:s.mode,size:s.size,groupKey:ids[0]??animal.id,memberIndex,center:s.center,alarm:!!threat,sharedAlarm:!!threat&&s.alarm.sourceId!==animal.id,threatX:threat?.x??null,threatY:threat?.y??null,caregiverX:caregiver?.x??null,caregiverY:caregiver?.y??null};
+    return{mode:s.mode,size:s.size,groupKey:ids[0]??animal.id,memberIndex,center:s.center,guideId:s.guideId??null,alarm:!!threat,sharedAlarm:!!threat&&s.alarm.sourceId!==animal.id,threatX:threat?.x??null,threatY:threat?.y??null,caregiverX:caregiver?.x??null,caregiverY:caregiver?.y??null};
   }
   cohesionRadius(animal,profile=this.profile(animal)){
     let r=profile?.cohesionRadius||4;
@@ -124,8 +150,12 @@ export class SocialController{
   cohesionTarget(animal){
     if(this.sim.isManualPlayer?.(animal)||!this.behaviorEnabled(animal))return null;const s=this.state(animal),p=this.profile(animal);if(!s||s.size<3)return null;
     const spec=SPECIES[animal.species];if(animal.energy/spec.maxEnergy<.58||animal.hydration/spec.maxHydration<.58)return null;
-    const d=Math.hypot(s.center.x-animal.x,s.center.y-animal.y),limit=this.cohesionRadius(animal,p);
-    if(d<=limit)return null;this.stats.cohesionMoves++;return{x:s.center.x,y:s.center.y};
+    const guide=s.guideId!=null&&s.guideId!==animal.id&&s.members.includes(s.guideId)
+      ?this.sim.animals.find(a=>a.id===s.guideId&&a.alive):null;
+    const destination=guide||s.center;
+    const d=Math.hypot(destination.x-animal.x,destination.y-animal.y),limit=this.cohesionRadius(animal,p);
+    if(d<=limit)return null;this.stats.cohesionMoves++;
+    return{x:destination.x,y:destination.y};
   }
   noteAlarm(animal){const s=this.state(animal);if(s?.alarm)this.stats.alarms++}
 }
