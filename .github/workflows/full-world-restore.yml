@@ -25,6 +25,8 @@ jobs:
           node --check src/sim/simulation.js
       - name: Allocation-only restore matches canonical generated world
         run: node tests/world-restore-generation-parity.mjs
+      - name: Restore surveyed neighbor worlds without regenerating ecology
+        run: node tests/region-restore-direct-parity.mjs
       - name: Authentic remote organisms and exact offscreen resources
         run: node tests/e18-offscreen-biology.mjs
       - name: Synchronized three-region journey and mid-barrier saves
