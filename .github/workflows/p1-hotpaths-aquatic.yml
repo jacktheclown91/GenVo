@@ -1,0 +1,103 @@
+name: P1 immutable anatomy hot paths and aquatic diagnostic
+on:
+  push:
+    branches:
+      - feat/p1-anatomy-hotpaths-aquatic-profiling
+  workflow_dispatch:
+concurrency:
+  group: p1-ecology-hotpaths-${{ github.ref_name }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  lineage-and-fingerprint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Immutable body and full ancestral operator receipts
+        run: |
+          node tests/p1-anatomy-hotpaths.mjs
+          node tests/p1-carrying-reach-parity.mjs
+          node tests/consolidation-demand-parity.mjs
+          node tests/anatomical-climate-precursors.mjs
+          node tests/optional-organ-loss.mjs
+          node tests/body-cost-readability.mjs
+          node tests/terrain-travel.mjs
+          node tests/save-persistence.mjs
+      - name: Checkout untouched E5 baseline separately
+        uses: actions/checkout@v4
+        with:
+          ref: 2c9468ef195d709b34b94ed3e43baf0181467126
+          path: baseline
+      - name: Exact mutation and whole-world state/RNG parity against E5
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp tools/p1-fingerprint.mjs baseline/tools/p1-fingerprint.mjs
+          node tools/p1-fingerprint.mjs > "$RUNNER_TEMP/p1-candidate"
+          (cd baseline && node tools/p1-fingerprint.mjs) > "$RUNNER_TEMP/p1-e5-baseline"
+          diff -u "$RUNNER_TEMP/p1-e5-baseline" "$RUNNER_TEMP/p1-candidate"
+          echo "P1 exact operator selection, state and RNG parity with E5: PASS"
+      - name: Exact original E5 versus P1 high-population 4x saved-world identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp tools/p1-observer-fingerprint.mjs baseline/tools/p1-observer-fingerprint.mjs
+          node tools/p1-observer-fingerprint.mjs > "$RUNNER_TEMP/p1-large-world"
+          (cd baseline && node tools/p1-observer-fingerprint.mjs) > "$RUNNER_TEMP/p1-e5-large-world"
+          diff -u "$RUNNER_TEMP/p1-e5-large-world" "$RUNNER_TEMP/p1-large-world"
+          echo 'Real 560-creature full saved-world, ecology and RNG exact parity: PASS'
+  aquatic-unchanged:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Unmodified aquatic 120 second acceptance
+        run: timeout 120s node tests/aquatic.mjs
+  observer-relative:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - uses: actions/checkout@v4
+        with:
+          ref: 2c9468ef195d709b34b94ed3e43baf0181467126
+          path: baseline
+      - name: Same runner E5 vs P1 ABBA 4x observer timing diagnostics
+        shell: bash
+        run: |
+          set +e
+          set -u
+          for repoPath in baseline . . baseline; do
+            echo "=== $repoPath ==="
+            (cd "$repoPath" && node tests/observer-play.mjs > "$RUNNER_TEMP/p1-observer.log" 2>&1)
+            code=$?
+            grep -E "4x large-population cost|4x with|observer play ok" "$RUNNER_TEMP/p1-observer.log" || true
+            echo "absolute-500ms-check-exit: $code"
+          done
+          echo 'ABBA is diagnostic ONLY; unchanged gate runs separately.'
+  full-unchanged:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '22'}
+      - name: Full unchanged fast tier with original budgets
+        run: node tools/run-tests.mjs --json docs/test-runs/p1-hotpath-ci.json
+      - name: Preserve evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p1-real-simulation-regression
+          path: |
+            docs/test-runs/p1-hotpath-ci.json
+            docs/test-runs/p1-hotpath-ci.artifacts/
+          if-no-files-found: ignore

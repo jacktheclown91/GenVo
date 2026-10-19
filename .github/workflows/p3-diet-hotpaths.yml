@@ -1,0 +1,103 @@
+name: P3 batched diet capability parity
+on:
+  push:
+    branches:
+      - feat/p3-diet-hotpath-lookup
+  workflow_dispatch:
+concurrency:
+  group: p3-diet-hotpaths-${{ github.ref_name }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  exact-parity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Batched diet, finite-food and biological equivalence tests
+        run: |
+          node tests/p3-diet-capability-parity.mjs
+          node tests/p1-anatomy-hotpaths.mjs
+          node tests/p1-carrying-reach-parity.mjs
+          node tests/consolidation-demand-parity.mjs
+          node tests/anatomical-climate-precursors.mjs
+          node tests/soil-water.mjs
+          node tests/terrain-travel.mjs
+          node tests/save-persistence.mjs
+      - name: Exact pinned P2 baseline
+        uses: actions/checkout@v4
+        with:
+          ref: ab0535bce5e523b6c8198a75d232e136e8e51672
+          path: baseline
+      - name: All canonical RNG and organism material state versus P2
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp tools/p1-fingerprint.mjs baseline/tools/p1-fingerprint.mjs
+          cp tools/p1-observer-fingerprint.mjs baseline/tools/p1-observer-fingerprint.mjs
+          for script in p1-fingerprint p1-observer-fingerprint; do
+            node "tools/$script.mjs" > "$RUNNER_TEMP/p3-$script-current"
+            (cd baseline && node "tools/$script.mjs") > "$RUNNER_TEMP/p3-$script-p1"
+            diff -u "$RUNNER_TEMP/p3-$script-p1" "$RUNNER_TEMP/p3-$script-current"
+          done
+          echo 'P3 matches original P2 full organism/world/RNG and 560-creature observer replay exactly'
+  isolated-unchanged-aquatic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Unmodified aquatic 120-second acceptance
+        run: timeout 120s node tests/aquatic.mjs
+  relative-observer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/checkout@v4
+        with:
+          ref: ab0535bce5e523b6c8198a75d232e136e8e51672
+          path: baseline
+      - name: P2 versus P3 original 500ms ABBA diagnostic only
+        shell: bash
+        run: |
+          # Diagnostic: record all four original assertions even when >500ms.
+          # The separate full unchanged test remains the absolute acceptance.
+          set +e
+          set -u
+          for repoPath in baseline . . baseline; do
+            echo "=== $repoPath ==="
+            (cd "$repoPath" && node tests/observer-play.mjs > "$RUNNER_TEMP/p3-observer.log" 2>&1)
+            result=$?
+            grep -E "4x large-population cost|4x with|observer play ok" "$RUNNER_TEMP/p3-observer.log" || true
+            echo "original-500ms-gate-exit: $result"
+          done
+          echo 'ABBA is diagnostic, not successful standalone performance acceptance'
+  full-original-fast:
+    runs-on: ubuntu-latest
+    timeout-minutes: 16
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Complete unchanged fast tier with original budgets
+        run: node tools/run-tests.mjs --json docs/test-runs/p3-diet-hotpaths-ci.json
+      - name: Retain audit evidence even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p3-original-simulation-gates
+          path: |
+            docs/test-runs/p3-diet-hotpaths-ci.json
+            docs/test-runs/p3-diet-hotpaths-ci.artifacts/
+          if-no-files-found: ignore

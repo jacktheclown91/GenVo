@@ -51,9 +51,12 @@ export function dietaryDemand(sim,a,supply,radius,{residentId=a.id,overlapMemo=n
       if(r.prey){if(sim.canReach(b,r.prey.x,r.prey.y))preference=preyPreference(b,r.prey)}
       else if(r.wet){const key=r.i*3+(FRESHWATER_FOOD[r.kind].surface?1:2);if(!access.has(key))access.set(key,canAccessFreshwater(sim,b,r.x,r.y,FRESHWATER_FOOD[r.kind]));if(access.get(key)){if(!preferences.has(r.kind))preferences.set(r.kind,freshwaterPreference(b,r.kind));preference=preferences.get(r.kind)}}
       else{
-        const key=r.i*3;if(!access.has(key))access.set(key,sim.canReach(b,r.x,r.y));if(!access.get(key))continue;
+        const key=r.i*3;// Land meal rows were already verified as playable by the source
+        // survey. For the neighbour, canonical canReach is just swimming or
+        // matching nonzero land-region labels. Region was read once above.
+        if(!access.has(key))access.set(key,swimming||(region!==0&&sim.world.landRegion[r.i]===region));if(!access.get(key))continue;
         if(!preferences.has(r.kind))preferences.set(r.kind,plantPreference(b,r.kind));preference=preferences.get(r.kind);
-        if(preference>0&&sim.dispersal.seedReserve[r.kind]){const i=sim.world.idx(r.x,r.y),nutrition=sim.dispersal.genomeAt(r.kind,i).traits.nutrition;preference=sim.dispersal.cropYield(b,r.kind,i)*nutrition/r.energy}
+        if(preference>0&&sim.dispersal.seedReserve[r.kind]){const i=r.i,nutrition=sim.dispersal.genomeAt(r.kind,i).traits.nutrition;preference=sim.dispersal.cropYield(b,r.kind,i)*nutrition/r.energy}
       }
       shared+=r.energy*Math.min(r.preference,preference);
     }

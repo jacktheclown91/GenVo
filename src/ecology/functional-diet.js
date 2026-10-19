@@ -33,8 +33,17 @@ export function plantPreference(animal,kind){
 }
 export function groundDiet(animal){
   if(legacyOnly(animal))return {...(SPECIES[animal?.species]?.diets||{})};
-  const out={};for(const key of Object.keys(PLANTS)){const preference=plantPreference(animal,key);if(preference>0)out[key]=preference}
-  const carrion=plantPreference(animal,'carrion');if(carrion>0)out.carrion=carrion;
+  // The mouth is the authority for this entire survey. Resolve it once rather
+  // than searching the same mounted nodes twice for every individual plant.
+  // Do not cache across calls: editor/fixture plan edits must take effect now.
+  const mouth=mouthOf(animal),profile=MOUTHS[mouth]||EMPTY,cracks=PARTS[mouth]?.actionCapabilities.includes('crush');
+  const out={};
+  for(const key of Object.keys(PLANTS)){
+    const plant=PLANTS[key],whole=profile[plant.guild]||0;
+    const preference=plant.dispersal?.animal&&cracks?Math.max(whole,profile.seed_producer||0):whole;
+    if(preference>0)out[key]=preference;
+  }
+  const carrion=profile.carrion||0;if(carrion>0)out.carrion=carrion;
   return out;
 }
 export function huntingAbility(animal){

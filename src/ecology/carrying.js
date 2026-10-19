@@ -34,6 +34,11 @@ export class CarryingPressureController{
       this.forageCache.set(key,cells);
     }
     const rows=[],foods=Object.entries(groundDiet(a)).filter(([kind,eff])=>PLANTS[kind]&&eff>0),wetFoods=Object.entries(FRESHWATER_FOOD).map(([kind,p])=>({kind,p,preference:freshwaterPreference(a,kind)})).filter(v=>v.preference>0);
+    // Reach to ground cells depends only on one physical land-region label,
+    // unless the animal is capable of swimming. Read the resident's region
+    // exactly once rather than re-querying both coordinates for 121 survey
+    // samples. We still check the same playable coordinates and same water.
+    const swimmer=canSwim(a),originRegion=swimmer?0:w.regionAt(a.x,a.y);
     const seenWater=new Set();let food=0,land=0,waterEnergy=0;
     for(const {x,y,i} of cells){
       if(w.water[i]){
@@ -46,7 +51,7 @@ export class CarryingPressureController{
         }
         if(accessible)land++;continue;
       }
-      if(!this.sim.canOccupy(a,x,y)||!this.sim.canReach(a,x,y))continue;land++;
+      if(!w.isPlayable(x,y)||!(swimmer||(originRegion!==0&&w.landRegion[i]===originRegion)))continue;land++;
       for(const [kind,eff] of foods){
         const stock=w.plants[kind]?.[i]||0;if(stock<=0)continue;
         const nutrition=this.sim.dispersal.genomeAt(kind,i)?.traits.nutrition??PLANTS[kind].nutrition,energy=stock*nutrition;
