@@ -1,0 +1,33 @@
+name: GenVo full-world restore parity
+on:
+  push:
+    branches:
+      - codex/repository-consolidation
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: genvo-world-restore-${{ github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  regional-restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Restore source syntax
+        run: |
+          node --check src/world/world.js
+          node --check src/persistence/save-manager.js
+          node --check src/sim/simulation.js
+      - name: Allocation-only restore matches canonical generated world
+        run: node tests/world-restore-generation-parity.mjs
+      - name: Authentic remote organisms and exact offscreen resources
+        run: node tests/e18-offscreen-biology.mjs
+      - name: Synchronized three-region journey and mid-barrier saves
+        run: node tests/regional-synchronized-replay.mjs
+      - name: Save migrations and backwards compatibility
+        run: node tests/save-persistence.mjs
