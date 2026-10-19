@@ -38,6 +38,43 @@ export function validatePlanetaryTravelState(state,activeKey=null){
   if(item.snapshot.animals?.some(a=>a.player))throw Error('Traveler cannot remain inside archived population.');
  }
 }
+// World-local populations, including frozen regional sessions, must have one
+// canonical owner per animal ID. An archived baby's ID must never be
+// resurrected in the active family on save restoration.
+export function validatePlanetAnimalOwnership(activeAnimals,travelState){
+ if(!Array.isArray(activeAnimals))throw Error('Invalid active planetary creature collection.');
+ const ids=new Set();
+ function inspect(animals,label){
+  if(!Array.isArray(animals))throw Error('Invalid '+label+' creature archive.');
+  for(const animal of animals){
+   if(!Number.isSafeInteger(animal?.id)||animal.id<1||ids.has(animal.id))
+    throw Error('Duplicate or invalid planetary animal identity.');
+   ids.add(animal.id);
+  }
+ }
+ inspect(activeAnimals,'active');
+ if(!travelState)return;
+ validatePlanetaryTravelState(travelState);
+ for(const session of travelState.sessions){
+  inspect(session.snapshot.animals,'regional');
+  const holders=new Set(session.snapshot.animals.map(a=>a.id));
+  const slots=session.snapshot.core?.regionalTravelerSlots;
+  if(slots!==undefined){
+   if(!Array.isArray(slots)||slots.length<2||slots.length>8)throw Error('Invalid cohort position archive.');
+   const seen=new Set(),indexes=new Set();
+   for(const slot of slots){
+    if(!Number.isSafeInteger(slot?.id)||slot.id<1||holders.has(slot.id)||seen.has(slot.id)||
+       !Number.isSafeInteger(slot.index)||slot.index<0||
+       slot.index>session.snapshot.animals.length+slots.length-1||indexes.has(slot.index))
+     throw Error('Duplicate or invalid cohort position archive.');
+    seen.add(slot.id);indexes.add(slot.index);
+   }
+  }
+  const slot=session.snapshot.core?.regionalTravelerSlot;
+  if(slot!==undefined&&(!Number.isSafeInteger(slot)||slot<0||slot>session.snapshot.animals.length))
+   throw Error('Invalid single traveler position archive.');
+ }
+}
 export class PlanetRegionAtlas{
  constructor(current,createWorld){
   if(!current?.planet||typeof createWorld!=='function')throw Error('Region atlas requires a planetary World factory.');
