@@ -63,7 +63,7 @@ export function planetaryTravelAvailability(sim){
  if(sim.playerAutonomy)return unavailable('Take manual control to cross a planetary frontier.');
  if(animal.perched||animal.torpor)return unavailable('Descend or wake before traveling.');
  if(animal.pregnant||hasDependentChildren(sim,animal))return unavailable('Dependent young or pregnancy require remaining with the local family.');
- if(sim.reproduction?.activeCourtship?.(animal)||animal.courtshipPerformance)return unavailable('Finish courtship before leaving the region.');
+ if(animal.courtshipPerformance||animal.courtshipSession)return unavailable('Finish courtship before leaving the region.');
  if(sim.playerCombat?.attackActive?.(animal)||animal.pursuitEngaged)return unavailable('Leave combat before crossing.');
  if(animal.energy<1||animal.hydration<1)return unavailable('Too exhausted or dehydrated for a regional journey.');
  const closest=[...dirs].sort((a,b)=>a.distance(animal)-b.distance(animal))[0];
@@ -71,7 +71,14 @@ export function planetaryTravelAvailability(sim){
  const nextOrigin=neighboringRegion(sim.world.regionOrigin,closest.name),point=approach(sim,closest,animal);
  const sessions=stored(sim),found=sessions.sessions.find(s=>s.key===regionKey(nextOrigin));
  if(!found&&sessions.sessions.length>=LIMIT)return unavailable('Regional archive full. Return to an explored region.');
- const dest=sim.planetaryRegions.get(nextOrigin,{create:false})||new World(sim.seed,{generator:'planetary/1',planetOrigin:nextOrigin});
+ const surveyed=sim.planetaryRegions.get(nextOrigin,{create:false});
+ const dest=surveyed||{
+  regionOrigin:nextOrigin,
+  n:SIZE,
+  idx(x,y){return limit(Math.floor(y),0,SIZE-1)*SIZE+limit(Math.floor(x),0,SIZE-1)},
+  isPlayable(x,y){return x>1&&y>1&&x<SIZE-2&&y<SIZE-2},
+  water:new Proxy({}, {get(_,key){const i=Number(key);if(!Number.isSafeInteger(i))return undefined;return sim.world.planet.sample(nextOrigin.x+(i%SIZE)+.5,nextOrigin.y+Math.floor(i/SIZE)+.5).water}})
+ };
  if(!continuousBorder(sim,closest,animal,dest,point))return unavailable('The border contains water or unsuitable terrain. Find another crossing or evolve swimming/flight.');
  return{enabled:true,reason:'Walk into the '+closest.name+' planetary region; your creature and local ecosystems are preserved.',
   direction:closest.name,to:nextOrigin,point,distance:closest.distance(animal)};
