@@ -69,6 +69,7 @@ export class PlayerCombatController{
   releaseBrace(actor){if(actor)actor.bracing=false}
   attackTargetStatus(a,id){
     const target=this.sim.animals.find(o=>o.id===id&&o.alive&&o.id!==a.id);if(!target)return{enabled:false,state:'unavailable',reason:'The selected creature is no longer here.',target:null};
+    if(target.airborne||target.perched||a.airborne||a.perched)return{enabled:false,state:'unavailable',reason:'Surface attack cannot reach an aerial or canopy creature.',target:null};
     const hunter=canHunt(target);if(!hunter&&preyPreference(a,target)<=0)return{enabled:false,state:'unavailable',reason:'Your feeding anatomy cannot hunt this creature.',target:null};
     const reach=hunter?CFG.attack.stalkerReach:CFG.attack.preyReach;
     if(!(Math.hypot(target.x-a.x,target.y-a.y)<reach))return{enabled:false,state:'approachable',reason:'Selected creature is out of reach. Approach it first.',target:null};
@@ -81,6 +82,7 @@ export class PlayerCombatController{
     const a=this.sim.player();
     if(!a?.alive)return{enabled:false,reason:'No active creature.'};
     if(this.sim.paused)return{enabled:false,reason:'Resume the world first.'};
+    if(a.airborne||a.perched)return{enabled:false,reason:'Land on the surface before using a ground attack.'};
     if(this.attackActive(a))return{enabled:false,reason:'Finish the current attack and recovery.'};
     if(!pounce&&a.bodyPlan?.nodes?.length&&!physicalAttackProfile(a).mode)return{enabled:false,state:'unavailable',reason:'A biting or striking part is required for this attack.'};
     if(targetId!==null&&!pounce){const status=this.attackTargetStatus(a,targetId);if(!status.enabled)return{enabled:status.enabled,state:status.state,reason:status.reason}}
