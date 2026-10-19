@@ -20,6 +20,7 @@ import {restoreSurfaceTopology} from '../world/surface-topology.js';
 import {deriveDrainage,validateTopography} from '../world/topography.js';
 import {validateSoilWater} from '../ecology/soil-water.js';
 import {validateSnowpack} from '../world/snowpack.js';
+import {validateRemoteEnvironmentalLedger} from '../world/planetary-offscreen-environment.js';
 import {validatePageResidency} from '../ecology/page-residency.js';
 import {validatePageDayWork} from '../world/page-vegetation-work.js';
 import {validatePageSeedTransfers} from '../ecology/page-seed-transfers.js';
@@ -249,6 +250,7 @@ export function restoreSimulationSnapshot(snapshot){
   const sim=new Simulation(snapshot.seed,{player:snapshot.core?.playerEnabled!==false,bootstrap:false,worldGenerator:snapshot.world?.generator==='planetary/1'?'planetary/1':undefined,planetOrigin});
   Object.assign(sim,snapshot.core||{});
   validatePlanetaryTravelState(sim.planetaryTravel,sim.world.planet?regionKey(sim.world.regionOrigin):null);
+  for(const session of sim.planetaryTravel?.sessions||[])validateRemoteEnvironmentalLedger(session);
   delete sim._player; // Runtime lookup cache is rebuilt from canonical playerId/animals.
   sim.seed=snapshot.seed;
   sim.rng.state=snapshot.rngState>>>0;
