@@ -26,3 +26,7 @@ jobs:
           node --check src/persistence/save-manager.js
       - name: Neighbor physical regions and persistent save authority
         run: node tests/e14-planetary-regions.mjs
+      - name: Existing planetary generator and legacy world-save regression
+        run: |
+          node tests/planet-geography.mjs
+          node tests/world-generators.mjs
