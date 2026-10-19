@@ -11,9 +11,9 @@ const groups={
   feeding:['grazing-mouth','tearing-jaw','crushing-jaw','beak-mouth','kernel-beak','filter-mouth','reed-sieve-mouth','nibbler-mouth','sucker-mouth','gape-mouth','tusk-jaw'],
   sensory:['simple-eye','wide-field-eye','hunter-eye','stalk-eye','compound-eye','tracker-eye','display-eye','eyespot','glow-eye','echo-crest','sensory-quills','sensory-bristle'],
   protective:['armor-plate','barb','claw','horn-crest','shell-back','armored-hide','spine-ridge','thorn-carapace','spine-cluster','hook-spur','dew-claw','heel-spike','kick-spur'],
-  gland:['venom-gland','scent-gland'],
+  gland:['venom-gland','scent-gland','mammary-gland'], 
   integument:['filament-tuft','fur-mantle','feather-mantle','wax-plates'],
-  organ:['storage-sac','sail-fin','water-hump','fat-pad','gill-slits','brood-pouch','egg-chamber','live-womb','moss-back'],
+  organ:['storage-sac','sail-fin','water-hump','fat-pad','gill-slits','brood-pouch','egg-chamber','live-womb','endothermic-core','moss-back'],
   appendage:['silt-fin','signal-crest','paddle-tail','gliding-membrane','luminous-tail','balance-tail','club-tail','spined-tail','whip-tail','prehensile-tail','fat-tail','flag-tail','display-frill','grip-pad','hook-pad','proto-wing','flight-wing','heat-frill']
 };
 // Named partitions are volume ownership slots, not claims about universal skeletons.
