@@ -1,7 +1,7 @@
 import {restoreMassRules} from '../organisms/body-mass.js';
 import {restoreEcologyRules} from '../ecology/rule-policy.js';
 import {PlanetGeography} from '../world/planet-geography.js';
-import {planetRegionOrigin,regionKey} from '../world/planet-regions.js';
+import {planetRegionOrigin,regionKey,validatePlanetaryTravelState} from '../world/planet-regions.js';
 import {World} from '../world/world.js';
 import {restoreBirthRules} from '../lineage/birth-rules.js';
 import {packFloraSeedBanks,unpackFloraSeedBanks} from './flora-seed-codec.js';
@@ -183,7 +183,7 @@ export function createSimulationSnapshot(sim,{reason='autosave',savedAt=new Date
     world:snapshotWorld(sim.world),
     // Remote physical regions are owned independently, never duplicated into
     // the active biome or inventing stock when a save is resumed.
-    ...(sim.planetaryRegions&&sim.planetaryRegions.regions.size>1?{regionalWorlds:sim.planetaryRegions.entries().filter(e=>e.world!==sim.world).map(e=>({origin:planetRegionOrigin(e.origin),world:snapshotWorld(e.world)}))}:{}),
+    ...(sim.planetaryRegions&&sim.planetaryRegions.regions.size>1?{regionalWorlds:sim.planetaryRegions.entries().filter(e=>e.world!==sim.world&&!sim.planetaryTravel?.sessions?.some(s=>s.key===e.key)).map(e=>({origin:planetRegionOrigin(e.origin),world:snapshotWorld(e.world)}))}:{}),
     animals:sim.animals,
     controllers:snapshotControllers(sim),
     meta:saveMetadata(sim,{savedAt,reason})
@@ -248,6 +248,7 @@ export function restoreSimulationSnapshot(snapshot){
   const planetOrigin=snapshot.world?.generator==='planetary/1'?planetRegionOrigin(snapshot.world.regionOrigin||{x:0,y:0}):{x:0,y:0};
   const sim=new Simulation(snapshot.seed,{player:snapshot.core?.playerEnabled!==false,bootstrap:false,worldGenerator:snapshot.world?.generator==='planetary/1'?'planetary/1':undefined,planetOrigin});
   Object.assign(sim,snapshot.core||{});
+  validatePlanetaryTravelState(sim.planetaryTravel,sim.world.planet?regionKey(sim.world.regionOrigin):null);
   delete sim._player; // Runtime lookup cache is rebuilt from canonical playerId/animals.
   sim.seed=snapshot.seed;
   sim.rng.state=snapshot.rngState>>>0;
