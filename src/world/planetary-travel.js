@@ -55,10 +55,13 @@ function hasDependentChildren(sim,a){
   b.age<(SPECIES[b.species]?.maturity||10)*.8);
 }
 export function planetaryTravelAvailability(sim){
- const unavailable=reason=>({enabled:false,reason});
+ let proximity=null;
+ const unavailable=reason=>({enabled:false,reason,...(proximity||{})});
  if(!sim?.planetaryRegions||sim.world.generator!=='planetary/1')return unavailable('Regional travel requires a planetary world.');
  const animal=sim.player();
  if(!animal?.alive)return unavailable('No living traveler.');
+ const closest=[...dirs].sort((a,b)=>a.distance(animal)-b.distance(animal))[0];
+ proximity={distance:closest.distance(animal),direction:closest.name};
  if(sim.paused)return unavailable('Resume the world first.');
  if(sim.playerAutonomy)return unavailable('Take manual control to cross a planetary frontier.');
  if(animal.perched||animal.torpor)return unavailable('Descend or wake before traveling.');
@@ -66,7 +69,6 @@ export function planetaryTravelAvailability(sim){
  if(animal.courtshipPerformance||animal.courtshipSession)return unavailable('Finish courtship before leaving the region.');
  if(sim.playerCombat?.attackActive?.(animal)||animal.pursuitEngaged)return unavailable('Leave combat before crossing.');
  if(animal.energy<1||animal.hydration<1)return unavailable('Too exhausted or dehydrated for a regional journey.');
- const closest=[...dirs].sort((a,b)=>a.distance(animal)-b.distance(animal))[0];
  if(closest.distance(animal)>BOUNDARY)return unavailable('Approach the edge of the planetary map to continue walking.');
  const nextOrigin=neighboringRegion(sim.world.regionOrigin,closest.name),point=approach(sim,closest,animal);
  const sessions=stored(sim),found=sessions.sessions.find(s=>s.key===regionKey(nextOrigin));
