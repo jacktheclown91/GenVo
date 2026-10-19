@@ -1,4 +1,5 @@
 import {PlanetGeography} from './planet-geography.js';
+import {planetRegionOrigin} from './planet-regions.js';
 import {initializePlanetWorld} from './planet-world.js';
 import {WorldPages} from './pages.js';
 import {WORLD_GENERATORS,generatorForState,generatedWaterAt,newTopologyState,synchronizeSurfaceWater} from './surface-topology.js';
@@ -12,7 +13,7 @@ import {coordNoise,hashString} from '../core/rng.js';
 import {CFG,PLANTS} from '../sim/config.js';
 import {initializeFreshwater} from '../ecology/freshwater-food.js';
 export class World{
-  constructor(seed,{generator=WORLD_GENERATORS.legacy}={}){this.seed=String(seed);this.seedHash=hashString(this.seed);this.n=CFG.worldSize;this.len=this.n*this.n;this.generator=generatorForState({generator});if(this.generator===WORLD_GENERATORS.planet)this.planet=new PlanetGeography(this.seed);this.topology=newTopologyState();
+  constructor(seed,{generator=WORLD_GENERATORS.legacy,planetOrigin={x:0,y:0}}={}){this.seed=String(seed);this.seedHash=hashString(this.seed);this.n=CFG.worldSize;this.len=this.n*this.n;this.generator=generatorForState({generator});if(this.generator===WORLD_GENERATORS.planet){this.regionOrigin=planetRegionOrigin(planetOrigin);this.planet=new PlanetGeography(this.seed)}else if(planetOrigin?.x||planetOrigin?.y)throw Error('Only planetary worlds accept a regional origin.');this.topology=newTopologyState();
     this.moisture=new Float32Array(this.len);this.fertility=new Float32Array(this.len);this.temperature=new Float32Array(this.len);this.water=new Uint8Array(this.len);this.landRegion=new Uint16Array(this.len);this.seepage=new Float32Array(this.len);this.drinkable=new Uint8Array(this.len);this.waterDistance=new Uint16Array(this.len);this.drinkSpots=[];this.carrion=new Float32Array(this.len);
     this.plants={};this.seedBank={};for(const [kind,p] of Object.entries(PLANTS)){const field=new Float32Array(this.len);this.plants[kind]=field;this[kind]=field;if(p.dispersal)this.seedBank[kind]=new Float32Array(this.len)}this.generate();this._topologyMask=this.water.slice();this.pages=new WorldPages(this);}
   idx(x,y){x=Math.max(0,Math.min(this.n-1,x|0));y=Math.max(0,Math.min(this.n-1,y|0));return y*this.n+x}
@@ -69,7 +70,7 @@ export class World{
     if(bestD>=65535||bestI===ci)return null;const bx=bestI%this.n,by=(bestI/this.n)|0;return{x:bx+.5,y:by+.5,score:1-bestD/Math.max(1,this.n),drinkable:this.drinkable[bestI]===1};
   }
   nearestDrinkable(x,y,radius=18){let best=null,bestD=radius*radius;for(const spot of this.drinkSpots){const dx=spot.x-x,dy=spot.y-y,d=dx*dx+dy*dy;if(d<bestD){bestD=d;best=spot}}return best?{x:best.x,y:best.y,score:1-Math.sqrt(bestD)/Math.max(1,radius),drinkable:true}:null}
-  initialPlant(type,{wet,fine,fertility,x,y,kind}){const noise=coordNoise(this.seedHash^hashKind(kind),x,y);switch(type){
+  initialPlant(type,{wet,fine,fertility,x,y,kind}){const rx=x+(this.regionOrigin?.x||0),ry=y+(this.regionOrigin?.y||0),noise=coordNoise(this.seedHash^hashKind(kind),rx,ry);switch(type){
     case 'ground':return clamp01(.28+.55*fertility+.25*wet+.16*(fine-.5));
     case 'shrub':return fertility>.43&&noise>.48?Math.max(0,.10+.16*noise+.08*fertility):0;
     case 'wetland':return wet>.52&&noise>.38?Math.max(0,(wet-.48)*1.18+.05*fine):0;
