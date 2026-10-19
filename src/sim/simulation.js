@@ -19,6 +19,7 @@ import {CFG,PLANTS} from './config.js';
 import {RNG} from '../core/rng.js';
 import {World} from '../world/world.js';
 import {PlanetRegionAtlas} from '../world/planet-regions.js';
+import {advanceOffscreenEnvironments} from '../world/planetary-offscreen-environment.js';
 import {landRouteTarget,planLandDetour} from '../world/land-route.js';
 import {escapeDestination} from '../world/escape-route.js';
 import {explorationDestination} from '../world/exploration-destination.js';
@@ -185,6 +186,9 @@ export class Simulation{
   spawnAnimal(species,x=null,y=null,parents=null){const p=x==null?this.safeSpawn(species):{x,y};const s=SPECIES[species];if(!s)throw new Error(`Unknown species: ${species}`);const inheritedBirth=parents?.length===2&&parents.every(p=>p?.genes),anatomy=inheritedBirth?inheritLineageAnatomy(this.rng,parents,this.nextId):null,genes=inheritedBirth?inheritLineageGenes(this.rng,parents[0].genes,parents[1].genes,GENE_KEYS):makeGenes(this.rng);const inbreeding=this.recovery?.inbreedingLoad(parents)||0;if(inbreeding){genes.immunity=Math.max(.72,genes.immunity*(1-inbreeding*.22));genes.metabolism=Math.max(.72,genes.metabolism*(1-inbreeding*.12))}const a={id:this.nextId++,species,x:p.x,y:p.y,vx:0,vy:0,dir:this.rng.int(0,7),age:parents?0:this.rng.range(s.maturity*.25,s.maturity*1.3),energy:s.maxEnergy*this.rng.range(.62,.95),hydration:s.maxHydration*this.rng.range(.65,.98),health:100-inbreeding*18,genes,reproductiveGenome:inheritReproductiveGenome(this.seed,this.nextId-1,parents,{species}),matePreferences:parents?inheritMatePreferences(this.seed,this.nextId-1,parents[0],parents[1]):founderMatePreferences(this.seed,this.nextId-1),inbreeding,sex:this.rng.chance(.5)?'F':'M',pregnant:null,reproCooldown:this.rng.range(0,10),intent:'explore',target:null,alive:true,infected:false,infection:null,immune:false,immuneUntilDay:0,player:false,lineage:false,parentIds:parents?[parents[0].id,parents[1].id]:[],grandparentIds:parents?[...new Set(parents.flatMap(p=>p.parentIds||[]))]:[],generation:parents?Math.max(parents[0].generation,parents[1].generation)+1:1,lastMate:null,reproDrive:0,caregiverId:null,birthTick:this.tickCount,birthDay:this.day,birthYear:this.year,anim:0,adaptations:inheritedBirth?expressedAdaptations(anatomy):inheritedAdaptations(parents)};if(this.massRules===ANATOMICAL_MASS)a.massPolicy=ANATOMICAL_MASS;if(parents?.some(p=>(p.massPolicy??LEGACY_MASS)!==(this.massRules??LEGACY_MASS)))throw Error('Parental mass policy differs from world');if(anatomy)a.anatomy=anatomy;if((species==='genvo'||isWildSpecies(species))&&!parents)giveFounderBody(a);if(parents&&this.massRules===ANATOMICAL_MASS)inheritBody(this,a,parents[0],parents[1]);this.animals.push(a);this.regionalEcology?.notePageBirth(a);return a}
   update(input=null,{externalPlayerControl=false}={}){
     if(this.paused)return;this.tickCount++;
+    // E17 replays archived physical seasons over bounded ecology strides, not
+    // inside rendering or input control. No inactive fauna tick is run.
+    if(this.tickCount%CFG.lifeStride===0)advanceOffscreenEnvironments(this);
     const manualMoved=externalPlayerControl?this.playerInputActive(input):this.phasePlayerMovement(input);
     // Player-facing Stalker pursuit runs on real time (every tick for decisions, every
     // control step for movement) instead of the slower ambient life stride.
