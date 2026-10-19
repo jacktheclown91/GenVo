@@ -93,7 +93,15 @@ export function planetaryTravelAvailability(sim){
   dependentCount:cohort.dependentCount,adultCount:cohort.adultCount,placements:placements.map(({member,point})=>({id:member.id,point}))};
 }
 function strippedRegionSnapshot(sim,ids){
- const source=structuredClone(createSimulationSnapshot(sim,{reason:'regional-departure',savedAt:'regional-checkpoint'}));
+ // The checkpoint is a newly built descriptor. Remove other regional
+ // authorities BEFORE deep cloning: each belongs to the destination's
+ // separate session ledger, never inside the region being archived.
+ // Cloning first multiplied every archived seed bank and fauna store during
+ // each border crossing, only to discard those copies immediately.
+ const checkpoint=createSimulationSnapshot(sim,{reason:'regional-departure',savedAt:'regional-checkpoint'});
+ delete checkpoint.core.planetaryTravel;
+ delete checkpoint.regionalWorlds;
+ const source=structuredClone(checkpoint);
  const departure=new Set(ids);
  const slots=source.animals.flatMap((a,index)=>departure.has(a.id)?[{id:a.id,index}]:[]);
  if(slots.length!==departure.size)throw Error('Regional family cohort is not fully owned by departing territory.');
@@ -101,16 +109,22 @@ function strippedRegionSnapshot(sim,ids){
  else source.core.regionalTravelerSlots=slots;
  source.animals=source.animals.filter(a=>!departure.has(a.id));
  source.core.playerId=null;source.core.playerEnabled=false;
- delete source.core.planetaryTravel;delete source.regionalWorlds;
  return source;
 }
 function transferGlobals(from,to){
  // Lineage progression/evolution budgets apply to a traveler globally, while
  // feeding, territory, nest, soil and all local fauna controllers remain local.
- const snapshot=createSimulationSnapshot(from,{reason:'regional-handoff',savedAt:'regional-handoff'});
+ // These six traveler-global controllers do not require a full World or
+ // packed seed-bank snapshot. Copy their own enumerable saved fields with
+ // exactly the same omit-functions/omit-sim semantics as snapshotControllers.
  for(const name of GLOBAL_AUTHORITIES){
-  const controller=to[name],owned=snapshot.controllers?.[name];
-  if(!controller||!owned)continue;
+  const controller=to[name];
+  if(!controller)continue;
+  const owned={};
+  for(const [key,value] of Object.entries(from[name]||{})){
+   if(key==='sim'||typeof value==='function')continue;
+   owned[key]=value;
+  }
   for(const key of Object.keys(controller))if(key!=='sim'&&!(key in owned))delete controller[key];
   Object.assign(controller,structuredClone(owned));
   controller.sim=to;
