@@ -38,7 +38,7 @@ export const PLANTS={
   dustsage:{label:'Dust Sage',guild:'seed_producer',growth:.022,carry:.64,nutrition:9,waterNeed:.30,render:'sage',color:'#87957d',init:'dry_shrub',dispersal:{seedLimited:true,animal:true,seedLoad:.64,transitDays:[1,3],germination:.16,soilDisturbanceResponse:.16,establish:.032,mature:.28,localRelease:.016,bankDecay:.979}},
   // E11 cold lineages occupy genuine tundra/alpine soil and compete for existing resources.
   frostlichen:{label:'Frost Lichen',guild:'ground_producer',tempOptimum:.16,tempTolerance:2.1,growth:.028,carry:.58,nutrition:8,waterNeed:.29,render:'lichen',color:'#a2b8a5',init:'cold_lichen',dispersal:{seedLimited:true,animal:false,germination:.13,establish:.035,mature:.18,localRelease:.019,bankDecay:.992}},
-  snowberry:{label:'Snowberries',guild:'fruiting_shrub',growth:.017,carry:.49,nutrition:16,waterNeed:.41,render:'snowberry',color:'#657d75',init:'cold_berry',dispersal:{seedLimited:true,animal:true,seedLoad:.46,transitDays:[2,5],germination:.10,establish:.023,mature:.21,localRelease:.009,bankDecay:.991}}
+  snowberry:{label:'Snowberries',guild:'fruiting_shrub',tempOptimum:.27,tempTolerance:2.6,growth:.017,carry:.49,nutrition:16,waterNeed:.41,render:'snowberry',color:'#657d75',init:'cold_berry',dispersal:{seedLimited:true,animal:true,seedLoad:.46,transitDays:[2,5],germination:.10,establish:.023,mature:.21,localRelease:.009,bankDecay:.991}}
 };
 
 export const ECO_GUILDS={
