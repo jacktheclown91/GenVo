@@ -194,7 +194,10 @@ export const WAVE2_TEXT=Object.freeze({
   'fur-mantle':{gain:'Thick fur reduces cold energy loss',cost:'Needs filament ancestry; wet fur insulates less, and heat costs more.'},
   'feather-mantle':{gain:'Feathers insulate in cold and resist wetting',cost:'Needs ancestral filaments; costs food and heat. Not a flight ability.'},
   'proto-wing':{gain:'Feather-derived display precursor for future flight evolution',cost:'Needs feather ancestry, high cost and upkeep. Cannot fly or glide.'},
-  'hook-pad':{gain:'A pair of hooks gives uphill grip on existing slopes',cost:'Needs grip-pad ancestry, food upkeep and at least two supporting grips.'}
+  'hook-pad':{gain:'A pair of hooks gives uphill grip on existing slopes',cost:'Needs grip-pad ancestry, food upkeep and at least two supporting grips.'},
+  'heat-frill':{gain:'Radiates heat in hot weather, reducing heat-related food loss',cost:'Needs signal-crest ancestry; increases cold exposure and food upkeep.'},
+  'wax-plates':{gain:'Reduces water use on actually dry ground',cost:'Needs armor-plate ancestry, retains heat, and increases food upkeep.'},
+  'arid-pad':{gain:'Two or more wide pads improve dry-ground travel and reduce its energy cost',cost:'Needs padded-leg ancestry; wide pads are slower and tiring on soaked ground.'}
 });
 // Combined wave 2 modifiers for a plan's part counts.
 function wave2Mods(c){
