@@ -51,6 +51,9 @@ const CONTROLLER_KEYS=[
 ];
 const STRUCTURAL_KEYS=new Set(['seed','rng','world','animals','planetaryRegions','_player','spatial','spatialBucketSize','spatialCols',...CONTROLLER_KEYS]);
 const WORLD_MUTABLE_FIELDS=['moisture','fertility','temperature','carrion'];
+// Private to restores that have already cloned everything except the packed
+// flora columns. Ordinary external snapshots must continue copying on load.
+const OWNED_DETACHED_BUFFERS=Symbol('genvo-owned-detached-world-buffers');
 
 function ownState(object,{skip=[]}={}){
   const ignored=new Set(skip),state={};
@@ -83,7 +86,18 @@ function restoreTyped(target,source,label){
   target.set(source);
 }
 
-function restoreWorld(world,state,{initializeMissingFreshwater=false}={}){
+function restoreOwnedTyped(target,source,label,adopt){
+  // A detached snapshot owns its source arrays. Reuse only exact matching
+  // typed arrays and preserve legacy, partial and malformed input behavior.
+  if(adopt&&source?.constructor===target?.constructor&&
+     ArrayBuffer.isView(source)&&!(source instanceof DataView)){
+    if(target.length!==source.length)throw Error(`Save ${label} size does not match this build.`);
+    return source;
+  }
+  restoreTyped(target,source,label);
+  return target;
+}
+function restoreWorld(world,state,{initializeMissingFreshwater=false,adoptOwnedWorldBuffers=false}={}){
   if(!state)throw new Error('Save has no world state.');
   if(state.generator==='planetary/1'){
     const expected=planetRegionOrigin(world.regionOrigin),actual=planetRegionOrigin(state.regionOrigin||{x:0,y:0});
@@ -96,18 +110,20 @@ function restoreWorld(world,state,{initializeMissingFreshwater=false}={}){
   if(state.pageLayout)validatePageLayout(world,state.pageLayout);
   restoreSurfaceTopology(world,state);
   // Existing saves retain flat-ground hydrology; terrain is never retrofitted from a new generator.
-  if(state.terrain!=null){validateTopography(world,state.terrain);world.terrain={schema:1,elevation:state.terrain.elevation.slice(),travelEnabled:state.terrain.travelEnabled??false};deriveDrainage(world);}else delete world.terrain;
+  if(state.terrain!=null){validateTopography(world,state.terrain);world.terrain={schema:1,elevation:adoptOwnedWorldBuffers?state.terrain.elevation:state.terrain.elevation.slice(),travelEnabled:state.terrain.travelEnabled??false};deriveDrainage(world);}else delete world.terrain;
   world.buildLandRegions();world.buildHydrology();
-  for(const key of WORLD_MUTABLE_FIELDS)restoreTyped(world[key],state[key],`world.${key}`);
+  for(const key of WORLD_MUTABLE_FIELDS)world[key]=restoreOwnedTyped(world[key],state[key],`world.${key}`,adoptOwnedWorldBuffers);
   if(!state.freshwaterFood&&initializeMissingFreshwater)initializeFreshwater(world);
-  else for(const [kind,target] of Object.entries(world.freshwaterFood))restoreTyped(target,state.freshwaterFood?.[kind],`world.freshwaterFood.${kind}`);
+  else for(const [kind,target] of Object.entries(world.freshwaterFood))
+    world.freshwaterFood[kind]=restoreOwnedTyped(target,state.freshwaterFood?.[kind],`world.freshwaterFood.${kind}`,adoptOwnedWorldBuffers);
   for(const [kind,source] of Object.entries(state.plants||{})){
     if(!world.plants[kind])continue;
-    restoreTyped(world.plants[kind],source,`world.plants.${kind}`);
+    world.plants[kind]=restoreOwnedTyped(world.plants[kind],source,`world.plants.${kind}`,adoptOwnedWorldBuffers);
+    world[kind]=world.plants[kind];
   }
   for(const [kind,source] of Object.entries(state.seedBank||{})){
     if(!world.seedBank[kind])continue;
-    restoreTyped(world.seedBank[kind],source,`world.seedBank.${kind}`);
+    world.seedBank[kind]=restoreOwnedTyped(world.seedBank[kind],source,`world.seedBank.${kind}`,adoptOwnedWorldBuffers);
   }
   // New flora must not appear from generator defaults when an older world is loaded.
   for(const kind of Object.keys(world.plants))if(!Object.hasOwn(state.plants||{},kind))world.plants[kind].fill(0);
@@ -250,7 +266,7 @@ export function restoreDetachedSimulationSnapshot(snapshot){
  if(snapshot?.schema!==SAVE_SCHEMA||packed?.codec!=='genvo.flora-seed-columns/1')return restoreSimulationSnapshot(structuredClone(snapshot));
  const detached=structuredClone({...snapshot,controllers:{...snapshot.controllers,dispersal:{...snapshot.controllers.dispersal,floraState:{...snapshot.controllers.dispersal.floraState,seeds:null}}}});
  detached.controllers.dispersal.floraState.seeds=packed;
- return restoreSimulationSnapshot(detached);
+ return restoreSimulationSnapshot(detached,{[OWNED_DETACHED_BUFFERS]:true});
 }
 
 // Modern snapshots already contain every world stock and the complete terrain.
@@ -265,7 +281,7 @@ export function completeWorldForDirectRestore(snapshot){
     (!PLANTS[k].dispersal||w.seedBank[k] instanceof Float32Array))&&
     Object.keys(FRESHWATER_FOOD).filter(k=>k!=='detritus').every(k=>w.freshwaterFood[k] instanceof Float32Array);
 }
-export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false}={}){
+export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED_DETACHED_BUFFERS]:adoptOwnedWorldBuffers=false}={}){
   if(!snapshot||typeof snapshot!=='object')throw new Error('Save data is missing.');
   const initializeMissingFreshwater=snapshot.schema===9;
   snapshot=migrateSaveSnapshot(snapshot);
@@ -290,7 +306,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false}={}){
   sim.rng.state=snapshot.rngState>>>0;
   restoreBirthRules(sim,snapshot.core||{});
   restoreEcologyRules(sim,snapshot.core||{});
-  restoreWorld(sim.world,snapshot.world,{initializeMissingFreshwater});
+  restoreWorld(sim.world,snapshot.world,{initializeMissingFreshwater,adoptOwnedWorldBuffers});
   if(snapshot.regionalWorlds!==undefined){
     if(!sim.planetaryRegions||!Array.isArray(snapshot.regionalWorlds)||snapshot.regionalWorlds.length>16)
       throw Error('Invalid saved planetary region set.');
@@ -305,7 +321,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false}={}){
       // it, but keep historical/partial regional saves on the original path.
       const direct=!regenerateWorld&&completeWorldForDirectRestore({schema:snapshot.schema,world:entry.world});
       const region=new World(snapshot.seed,{generator:'planetary/1',planetOrigin:origin,restoreOnly:direct});
-      restoreWorld(region,entry.world);sim.planetaryRegions.install(region);
+      restoreWorld(region,entry.world,{adoptOwnedWorldBuffers});sim.planetaryRegions.install(region);
     }
   }
   validatePageDayWork(sim.pageDayWork,sim.world);
