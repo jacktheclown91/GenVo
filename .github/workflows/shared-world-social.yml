@@ -23,5 +23,6 @@ jobs:
           node --check src/cognition/social.js
           node tests/social.mjs
           node tests/remote-wild-social.mjs
+          node tests/social-familiarity.mjs
       - name: Canonical biological region replay regression
         run: node tests/e18-offscreen-biology.mjs
