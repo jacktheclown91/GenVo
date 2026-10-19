@@ -1,0 +1,28 @@
+name: E13 mountain snowpack focused
+on:
+  push:
+    branches:
+      - feat/e13-mountain-snowpack
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mountain-snow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: E13 touched module syntax
+        run: |
+          node --check src/world/snowpack.js
+          node --check src/ecology/soil-water.js
+          node --check src/ecology/plant-resources.js
+          node --check src/lineage/lifestyle.js
+          node --check src/persistence/save-manager.js
+          node --check src/world/biomes.js
+          node --check src/render/renderer.js
+      - name: Focused winter snow, meltwater, soil budget and creature traversability
+        run: node tests/e13-mountain-snowpack.mjs
