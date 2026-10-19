@@ -12,6 +12,7 @@ import {canSwim} from '../lineage/lifestyle.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../persistence/save-manager.js';
 import {bodyMass} from '../organisms/body-mass.js';
 import {familyTravelCohort,familyArrivalPoint,FAMILY_PASSAGE} from './family-passage.js';
+import {advanceRemoteEnvironment,remoteEnvironmentDue,OFFSCREEN_ENVIRONMENT} from './planetary-offscreen-environment.js';
 
 const LIMIT=16,BOUNDARY=3.75,SIZE=128;
 const GLOBAL_AUTHORITIES=['lineage','evolution','evolutionTree','evolutionBudget','evolutionEditor','generationProgress'];
@@ -70,6 +71,8 @@ export function planetaryTravelAvailability(sim){
  if(closest.distance(animal)>BOUNDARY)return unavailable('Approach the edge of the planetary map to continue walking.');
  const nextOrigin=neighboringRegion(sim.world.regionOrigin,closest.name),point=approach(sim,closest,animal);
  const sessions=stored(sim),found=sessions.sessions.find(s=>s.key===regionKey(nextOrigin));
+ if(found&&remoteEnvironmentDue(sim,found)>OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays)
+  return unavailable('This region has more than '+OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays+' days of physical weather to reconcile. Continue the current world to advance its environmental archive.');
  if(!found&&sessions.sessions.length>=LIMIT)return unavailable('Regional archive full. Return to an explored region.');
  const surveyed=sim.planetaryRegions.get(nextOrigin,{create:false});
  const dest=surveyed||{
@@ -115,7 +118,9 @@ export function crossPlanetaryBorder(sim){
  if(!status.enabled)return{ok:false,type:'planet-travel',message:status.reason};
  const traveler=sim.player(),memberIds=status.members,cohort=memberIds.map(id=>sim.animals.find(a=>a.id===id)),sourceKey=regionKey(sim.world.regionOrigin),destinationKey=regionKey(status.to),prior=stored(sim);
  const sessions=prior.sessions.filter(s=>s.key!==destinationKey&&s.key!==sourceKey).map(s=>({key:s.key,snapshot:s.snapshot}));
- const archivedDestination=prior.sessions.find(s=>s.key===destinationKey);
+ const oldDestination=prior.sessions.find(s=>s.key===destinationKey);
+ const archivedDestination=oldDestination?structuredClone(oldDestination):null;
+ if(archivedDestination)advanceRemoteEnvironment(sim,archivedDestination,{maxDays:OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays});
  const nextId=Math.max(prior.nextId,sim.nextId);
  // Construct destination and all receipts before modifying the active sim.
  const dest=archivedDestination?restoreSimulationSnapshot(structuredClone(archivedDestination.snapshot)):
