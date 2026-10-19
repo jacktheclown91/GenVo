@@ -20,6 +20,8 @@ jobs:
       - name: Immutable body and full ancestral operator receipts
         run: |
           node tests/p1-anatomy-hotpaths.mjs
+          node tests/p1-carrying-reach-parity.mjs
+          node tests/consolidation-demand-parity.mjs
           node tests/anatomical-climate-precursors.mjs
           node tests/optional-organ-loss.mjs
           node tests/body-cost-readability.mjs
