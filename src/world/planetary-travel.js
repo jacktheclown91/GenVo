@@ -85,6 +85,8 @@ export function planetaryTravelAvailability(sim){
 }
 function strippedRegionSnapshot(sim,animalId){
  const source=structuredClone(createSimulationSnapshot(sim,{reason:'regional-departure',savedAt:'regional-checkpoint'}));
+ source.core.regionalTravelerSlot=source.animals.findIndex(a=>a.id===animalId);
+ if(source.core.regionalTravelerSlot<0)throw Error('Departing traveler does not belong to active region.');
  source.animals=source.animals.filter(a=>a.id!==animalId);
  source.core.playerId=null;source.core.playerEnabled=false;
  delete source.core.planetaryTravel;delete source.regionalWorlds;
@@ -127,7 +129,11 @@ export function crossPlanetaryBorder(sim){
  // Crossing the 2-tile local collision margins costs actual energy.
  arrival.energy=Math.max(0,arrival.energy-.035*bodyMass(arrival));
  if(dest.animals.some(a=>a.id===arrival.id))throw Error('Cannot transfer duplicate creature identity into a region.');
- dest.animals.push(arrival);dest.playerId=arrival.id;dest.playerEnabled=true;
+ const slot=dest.regionalTravelerSlot;
+ if(Number.isSafeInteger(slot)&&slot>=0&&slot<=dest.animals.length)dest.animals.splice(slot,0,arrival);
+ else dest.animals.push(arrival);
+ delete dest.regionalTravelerSlot;
+ dest.playerId=arrival.id;dest.playerEnabled=true;
  dest.nextId=Math.max(dest.nextId,nextId+1,arrival.id+1);
  transferGlobals(sim,dest);
  dest.tickCount=sim.tickCount;dest.day=sim.day;dest.year=sim.year;dest.seasonIndex=sim.seasonIndex;
