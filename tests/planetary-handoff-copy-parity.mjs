@@ -57,6 +57,14 @@ for(const name of globals){
 const originalArchive=structuredClone(homeStored.snapshot);
 const current=locate(east,'west',exitY);
 const expectedEast=referenceArchive(east,current.members);
+const fullEast=createSimulationSnapshot(east,{reason:'regional-departure',savedAt:'regional-checkpoint'});
+const departureOnly=createSimulationSnapshot(east,{reason:'regional-departure',savedAt:'regional-checkpoint',regionalDeparture:true});
+delete fullEast.core.planetaryTravel;
+delete fullEast.regionalWorlds;
+same(structuredClone(departureOnly),structuredClone(fullEast),
+ 'departure-only snapshot mode matches the entire historical snapshot after discarded archives are removed');
+assert.equal(Object.hasOwn(departureOnly.core,'planetaryTravel'),false,'departure mode never creates a recursive travel payload');
+assert.equal(Object.hasOwn(departureOnly,'regionalWorlds'),false,'departure mode never creates surveyed neighboring world payloads');
 const returned=crossPlanetaryBorder(east);
 assert.equal(returned.ok,true,returned.message);
 const homeAgain=returned.simulation;
