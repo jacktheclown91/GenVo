@@ -20,7 +20,16 @@ assert.equal(region.biologicalMode,'canonical-ticks/1');
 assert.equal(region.snapshot.core.day,1);
 assert.equal(region.snapshot.core.tickCount,0);
 assert.throws(()=>advanceRemoteEnvironment(active,region,{maxDays:1}),/duplicate environmental days/);
-const doomed=region.snapshot.animals.find(a=>a.alive&&a.health>0);
+// Fund one pending, canonically gestated live birth using two actual
+// reproductively complete wild parents, not a synthetic "population gain".
+const moss=region.snapshot.animals.filter(a=>a.alive&&a.species==='mosskip');
+const mother=moss.find(a=>a.sex==='F'),father=moss.find(a=>a.sex==='M'&&a.id!==mother?.id);
+assert.ok(mother&&father,'a real wild mating pair must exist in the founded biota');
+mother.age=40;mother.energy=87;mother.hydration=90;mother.health=100;
+mother.pregnant={fatherId:father.id,days:1,totalDays:1,mode:'live',plannedLitterSize:1,
+ birthCost:12,reserveInvestment:2};
+const originalMotherGenes=structuredClone(mother.genes);
+const doomed=region.snapshot.animals.find(a=>a.alive&&a.id!==mother.id&&a.id!==father.id&&a.health>0);
 assert.ok(doomed);
 doomed.health=-.05;doomed.energy=0;
 const deadId=doomed.id,initialPopulation=region.snapshot.animals.length;
@@ -61,6 +70,14 @@ assert.deepEqual(region.snapshot.world.organicResources,physical.world.organicRe
 assert.deepEqual(region.snapshot.controllers.dispersal,physical.controllers.dispersal);
 assert.equal(region.snapshot.core.stats.deaths,reference.stats.deaths);
 assert.equal(region.snapshot.core.stats.births,reference.stats.births);
+assert.ok(region.snapshot.core.stats.births>=1,'canonically funded mother produced a real child');
+const offspring=region.snapshot.animals.find(a=>a.alive&&a.parentIds?.includes(mother.id)&&a.parentIds.includes(father.id));
+assert.ok(offspring,'the newborn must have actual living maternal/paternal creature IDs');
+assert.ok(offspring.genes&&offspring.bodyPlan,'real heredity allocated genes and physical body');
+assert.equal(offspring.generation,Math.max(mother.generation,father.generation)+1);
+assert.ok(offspring.energy>=0,'birth must not create negative offspring reserves');
+assert.equal(region.biologicalLedger.births,region.snapshot.core.stats.births);
+assert.ok(region.snapshot.animals.some(a=>a.id===mother.id&&a.genes.motion===originalMotherGenes.motion));
 assert.ok(!region.snapshot.animals.some(a=>a.id===deadId&&a.alive),'canonical death removes or marks organism nonliving');
 assert.notDeepEqual(region.snapshot.world.plants,beforeWorld.plants,'canonical production must actually alter finite flora stocks');
 const checkpoint=snap(active);
