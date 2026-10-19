@@ -1,0 +1,36 @@
+name: P1 diagnostic optional-loss validation parity
+on:
+  push:
+    branches:
+      - diagnostic/p1-loss-validation-parity
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  loss:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/checkout@v4
+        with:
+          ref: 2c9468ef195d709b34b94ed3e43baf0181467126
+          path: baseline
+      - name: Verify literal optional-organ loss and ancestor mutation decisions
+        run: |
+          node tests/optional-organ-loss.mjs
+          node tests/p1-anatomy-hotpaths.mjs
+      - name: Exact complete stable mutation and 168-tick world parity versus pinned E5
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp tools/p1-fingerprint.mjs baseline/tools/p1-fingerprint.mjs
+          node tools/p1-fingerprint.mjs > "$RUNNER_TEMP/p1-diag"
+          (cd baseline && node tools/p1-fingerprint.mjs) > "$RUNNER_TEMP/p1-e5-diag"
+          diff -u "$RUNNER_TEMP/p1-e5-diag" "$RUNNER_TEMP/p1-diag"
+          echo "Mutations and all world material/RNG hashes exactly match: PASS"
+      - name: Original aquatic 120-second scenario with no timeout change
+        run: timeout 120s node tests/aquatic.mjs
