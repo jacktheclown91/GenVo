@@ -1,0 +1,26 @@
+name: E12 focused cold-season wildlife
+on:
+  push:
+    branches:
+      - feat/e12-cold-season-wildlife
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cold-wildlife:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax of E12 integrated modules
+        run: |
+          node --check src/ecology/cold-wildlife.js
+          node --check src/ecology/migration.js
+          node --check src/sim/simulation.js
+          node --check src/main.js
+          node --check src/ui/creature-context-tray.js
+      - name: Focused cold-season wildlife physics, decisions and routes
+        run: node tests/e12-cold-wildlife.mjs
