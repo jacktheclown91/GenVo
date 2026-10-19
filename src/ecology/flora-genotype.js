@@ -4,13 +4,13 @@ import {validSexualFloraGenome,cloneBotanicalFloraGenome} from './botanical-gene
 import {PLANTS} from '../sim/config.js';
 import {mouthOf,feedingProfile} from './functional-diet.js';
 import {PARTS} from '../lineage/part-registry.js';
-export const FLORA_TISSUES=Object.freeze({bramble:{seed:.20,coat:0,label:'Fruit'},thistlepod:{seed:.20,coat:.25,label:'Pods'},woodspire:{seed:.16,coat:.24,label:'Canopy seeds'}});
+export const FLORA_TISSUES=Object.freeze({bramble:{seed:.20,coat:0,label:'Fruit'},thistlepod:{seed:.20,coat:.25,label:'Pods'},woodspire:{seed:.16,coat:.24,label:'Canopy seeds'},dunebulb:{seed:.14,coat:.12,label:'Bulb seeds',mealLabel:'Eat bulb flesh'},dustsage:{seed:.22,coat:.30,label:'Sage seeds',mealLabel:'Eat seed heads'}});
 const genomes=new Map(),validated=new WeakSet();
 export function founderFloraGenome(kind){if(genomes.has(kind))return genomes.get(kind);const p=PLANTS[kind];if(!p?.dispersal)return null;const t=FLORA_TISSUES[kind];const genome={schema:1,id:'flora1-'+kind,resourceAlias:kind,traits:{growth:p.growth,waterNeed:p.waterNeed,nutrition:p.nutrition,seedAllocation:t?.seed??0,coatAllocation:t?.coat??0},reproduction:'propagule',mutationEnabled:false};Object.freeze(genome.traits);Object.freeze(genome);genomes.set(kind,genome);return genome}
 export function canCrackSeeds(a){return !!PARTS[mouthOf(a)]?.actionCapabilities.includes('crush')}
 export function floraMealChannels(a,kind){
  if(!FLORA_TISSUES[kind])return[];const profile=feedingProfile(a),plant=PLANTS[kind],out=[];
- const whole=profile[plant.guild]||0;if(whole>0)out.push({tissue:'crop',eff:whole,label:kind==='bramble'?'Eat fruit':'Eat pods',reason:'Feeds on edible tissue; intact propagules may travel with you.'});
+ const whole=profile[plant.guild]||0;if(whole>0)out.push({tissue:'crop',eff:whole,label:FLORA_TISSUES[kind].mealLabel||(kind==='bramble'?'Eat fruit':'Eat pods'),reason:'Feeds on edible tissue; intact propagules may travel with you.'});
  const seed=profile.seed_producer||0;if(canCrackSeeds(a)&&seed>0)out.push({tissue:'kernel',eff:seed,label:'Crush seeds',reason:'Consumes kernels and destroys their propagules; discarded tissue returns to the soil.'});
  return out;
 }
