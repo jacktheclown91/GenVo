@@ -27,10 +27,11 @@ export function familyTravelCohort(sim,{withFamily=!!sim?.travelFamilyGroup}={})
   return{ok:true,members:[player],adultCount:1,dependentCount:0,withFamily:false};
  }
  const members=[player],ids=new Set([player.id]);
+ const familyIds=new Set(sim.family?.activeMembers?.(player)?.map(a=>a.id)||[]);
  // Adult escorts must be actually present and lineage-related. Never follow
  // a species label or assume every nearby animal is part of the family.
  for(const adult of sim.animals){
-  if(!adult.alive||adult.id===player.id||!adult.lineage||
+  if(!adult.alive||adult.id===player.id||!familyIds.has(adult.id)||
     adult.age<(SPECIES[adult.species]?.maturity||10)*FAMILY_PASSAGE.adultMaturityFraction||
     !near(adult,player,FAMILY_PASSAGE.escortRadius))continue;
   members.push(adult);ids.add(adult.id);
