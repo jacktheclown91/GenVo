@@ -727,6 +727,6 @@ export class Simulation{
     const miss=PLAYER_MISS.get(this.animals);if(!c&&miss&&miss.id===this.playerId&&miss.length===this.animals.length)return null;
     const p=this.animals.find(a=>a.id===this.playerId&&a.alive)||null;this._player=p;if(p)PLAYER_MISS.delete(this.animals);else PLAYER_MISS.set(this.animals,{id:this.playerId,length:this.animals.length});return p}
 }
-function grow(v,p,m,f,t,{seedLimited=false}={}){if(seedLimited&&v<=.0005)return 0;const moisture=Math.max(0,1-Math.abs(m-p.waterNeed)*1.7),temp=Math.max(0,1-Math.abs(t-.58)*1.4);return Math.max(0,Math.min(p.carry,v+p.growth*moisture*temp*f*(1-v/p.carry)-.004*v))}
+function grow(v,p,m,f,t,{seedLimited=false}={}){if(seedLimited&&v<=.0005)return 0;const moisture=Math.max(0,1-Math.abs(m-p.waterNeed)*1.7),temp=Math.max(0,1-Math.abs(t-(p.tempOptimum??.58))*(p.tempTolerance??1.4));return Math.max(0,Math.min(p.carry,v+p.growth*moisture*temp*f*(1-v/p.carry)-.004*v))}
 function dirIndex(dx,dy){const a=Math.atan2(dy,dx),oct=Math.round(a/(Math.PI/4));return(oct+2+8)%8}
 function inputVector(i){let dx=(i.right?1:0)-(i.left?1:0),dy=(i.down?1:0)-(i.up?1:0);if(dx&&dy){dx*=.707106;dy*=.707106}return[dx,dy]}
