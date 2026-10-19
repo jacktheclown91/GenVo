@@ -162,6 +162,12 @@ quickMenu?.addEventListener('click',e=>{
   const b=e.target.closest('button[data-panel]');if(!b)return;e.preventDefault();e.stopPropagation();leadershipWheel.setCommandMode(false);toggleQuickPanel(b.dataset.panel)
 });
 
+function toggleFamilyPassage(){
+  if(!sim.planetaryRegions||tutorial.worldInputBlocked?.()||frontEnd.isOpen)return;
+  sim.travelFamilyGroup=!sim.travelFamilyGroup;
+  tutorial.showToast(sim.travelFamilyGroup?'Family passage on. Gather relatives and dependents close to the border.':'Family passage off. Cross alone if no young depend on you.',2600,'safe');
+  audio.note('confirm');
+}
 function travelPlanetaryRegion(){
   if(tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||succession.open)return;
   try{
@@ -311,7 +317,7 @@ const contextTray=new CreatureContextTray({canvas,renderer,braceInput,getSim:()=
  canUseFamilyGuidance:(creature,resource)=>leadershipWheel.available()&&(!resource||resource.kind==='ground')&&(!creature||sim.controllableFamily().some(a=>a.id===creature.id)),
  onApproachAvailability:target=>pointerApproach.availability(approachGoal(sim,target)),
  onApproach:(target,onArrival,{quiet=false,ready=null,onInterrupted=null}={})=>{const goal=approachGoal(sim,target);if(!goal)return;takeManualControl();clearMovementKeys();sim.reproduction.cancelCourtship();courtshipTray.close();applyObserverResult(observer.onManualInput());const result=pointerApproach.start(goal,onArrival,{ready,onInterrupted});if(!quiet){tutorial.onInteraction(result);audio.noteResult(result)}},
- onTravel:travelPlanetaryRegion,travelStatus:()=>planetaryTravelAvailability(sim),
+ onTravel:travelPlanetaryRegion,onFamilyTravel:toggleFamilyPassage,travelStatus:()=>planetaryTravelAvailability(sim),
  onRest:()=>{sim.discovery.cancelTraceFollow();pointerApproach?.cancel();if(sim.paused||sim.playerCombat.attackActive(sim.player()))return;takeManualControl();clearMovementKeys();sim.reproduction.cancelCourtship();courtshipTray.close();const a=sim.player();if(a){a.intent='idle';a.target=null;tutorial.showToast('Resting · regain breath while still. Move to resume.',1800,'safe');audio.note('confirm')}},stageBlocked:()=>tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||fieldGuide.open||journal.open||guideOpen||helpOpen||mindOpen||territoryOpen||shelterOpen||migrationOpen||ecologyOpen||mateOpen||succession.open||leadershipWheel.commandMode,
  onMode:mode=>{if(mode==='combat'&&courtshipTray.isOpen){const id=courtshipTray.targetId;sim.reproduction.cancelCourtship();courtshipTray.close();contextTray.targetId=id;contextTray.world=sim}},blocked:()=>tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||fieldGuide.open||journal.open||guideOpen||helpOpen||mindOpen||territoryOpen||shelterOpen||migrationOpen||ecologyOpen||mateOpen||courtshipTray.isOpen||succession.open||leadershipWheel.commandMode,
  onResult:r=>{if(!(r.ok&&r.type==='trace-follow'))sim.discovery.cancelTraceFollow();pointerApproach?.cancel();takeManualControl();tutorial.onInteraction(r);audio.noteResult(r)},
