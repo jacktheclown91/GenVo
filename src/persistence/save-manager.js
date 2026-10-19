@@ -142,9 +142,9 @@ function restoreWorld(world,state,{initializeMissingFreshwater=false,adoptOwnedW
   }else delete world.soilWater;
 }
 
-function snapshotControllers(sim){
+function snapshotControllers(sim,{ownedRegionalSeedMetadata=false}={}){
   const out={};
-  for(const key of CONTROLLER_KEYS){out[key]=ownState(sim[key],{skip:key==='familyIllness'?['sim','_familyTick','_familySize','_familyPlayer','_familyCache']:['sim']});if(key==='dispersal'&&out[key].floraState?.seeds)out[key].floraState={...out[key].floraState,seeds:packFloraSeedBanks(out[key].floraState.seeds)};}
+  for(const key of CONTROLLER_KEYS){out[key]=ownState(sim[key],{skip:key==='familyIllness'?['sim','_familyTick','_familySize','_familyPlayer','_familyCache']:['sim']});if(key==='dispersal'&&out[key].floraState?.seeds)out[key].floraState={...out[key].floraState,seeds:packFloraSeedBanks(out[key].floraState.seeds,{ownedMetadata:ownedRegionalSeedMetadata})};}
   return out;
 }
 
@@ -184,7 +184,7 @@ export function saveMetadata(sim,{savedAt=new Date().toISOString(),reason='autos
   };
 }
 
-export function createSimulationSnapshot(sim,{reason='autosave',savedAt=new Date().toISOString(),regionalDeparture=false}={}){
+export function createSimulationSnapshot(sim,{reason='autosave',savedAt=new Date().toISOString(),regionalDeparture=false,ownedRegionalSeedMetadata=false}={}){
   // A departed region owns only its local world and fauna. Its caller holds
   // the other archived sessions and surveyed Worlds separately. Do not
   // materialize either only to throw it away before a deep clone.
@@ -208,7 +208,7 @@ export function createSimulationSnapshot(sim,{reason='autosave',savedAt=new Date
     // the active biome or inventing stock when a save is resumed.
     ...(!regionalDeparture&&sim.planetaryRegions&&sim.planetaryRegions.entries().some(e=>e.world!==sim.world&&!sim.planetaryTravel?.sessions?.some(s=>s.key===e.key))?{regionalWorlds:sim.planetaryRegions.entries().filter(e=>e.world!==sim.world&&!sim.planetaryTravel?.sessions?.some(s=>s.key===e.key)).map(e=>({origin:planetRegionOrigin(e.origin),world:snapshotWorld(e.world)}))}:{}),
     animals:sim.animals,
-    controllers:snapshotControllers(sim),
+    controllers:snapshotControllers(sim,{ownedRegionalSeedMetadata}),
     meta:saveMetadata(sim,{savedAt,reason})
   };
 }
