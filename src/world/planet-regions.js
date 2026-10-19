@@ -21,6 +21,23 @@ export function planetaryCell(world,localX,localY){
  const r=planetRegionOrigin(world.regionOrigin);
  return{worldX:r.x+localX,worldY:r.y+localY,region:regionKey(r),localX,localY};
 }
+// Validate archived region sessions independently of the active world. Archives
+// hold local fauna/controller snapshots, not a second live set of actors.
+export function validatePlanetaryTravelState(state,activeKey=null){
+ if(state===undefined)return;
+ if(state?.schema!==1||!Number.isSafeInteger(state.nextId)||state.nextId<1||
+   !Array.isArray(state.sessions)||state.sessions.length>16)throw Error('Invalid planetary travel archive.');
+ const keys=new Set();
+ for(const item of state.sessions){
+  if(!item||typeof item.key!=='string'||!item.snapshot?.world?.regionOrigin||item.snapshot.world.generator!=='planetary/1')
+   throw Error('Invalid planetary travel session.');
+  const origin=planetRegionOrigin(item.snapshot.world.regionOrigin),key=regionKey(origin);
+  if(item.key!==key||keys.has(key)||key===activeKey)throw Error('Duplicate or misplaced planetary travel session.');
+  keys.add(key);
+  if(item.snapshot.core?.planetaryTravel||item.snapshot.regionalWorlds)throw Error('Recursive planetary travel snapshot rejected.');
+  if(item.snapshot.animals?.some(a=>a.player))throw Error('Traveler cannot remain inside archived population.');
+ }
+}
 export class PlanetRegionAtlas{
  constructor(current,createWorld){
   if(!current?.planet||typeof createWorld!=='function')throw Error('Region atlas requires a planetary World factory.');
