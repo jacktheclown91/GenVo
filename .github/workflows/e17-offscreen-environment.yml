@@ -1,0 +1,33 @@
+name: E17 offscreen planetary physics
+on:
+  push:
+    branches:
+      - feat/e17-offscreen-environment-ledger
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  physical-remote-time:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax check archive and lifecycle wiring
+        run: |
+          node --check src/world/planetary-offscreen-environment.js
+          node --check src/world/planetary-travel.js
+          node --check src/sim/simulation.js
+          node --check src/persistence/save-manager.js
+      - name: True historic weather and conservation ledger
+        run: node tests/e17-offscreen-environment.mjs
+      - name: E16 family border regression
+        run: node tests/e16-family-travel.mjs
+      - name: E15 real player return regression
+        run: node tests/e15-planetary-travel.mjs
+      - name: E14 region ecology and geographic persistence
+        run: |
+          node tests/e14-planetary-regions.mjs
+          node tests/planet-geography.mjs
