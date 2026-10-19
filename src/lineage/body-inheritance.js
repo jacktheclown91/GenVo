@@ -31,6 +31,12 @@ export function giveFounderBody(animal){if(isWildSpecies(animal?.species)){anima
 // Place a part on a socket and on its mirror when the body has one. With developmental symmetry the pair is
 // all-or-nothing (a failed mirror fails the mutation); otherwise the first side stands alone, as before.
 function placePair(d,part,parent,socket,{mirrorWhen=()=>true}={}){const a=place(d,part,parent,socket);if(!a.ok)return a;const m=mirrorSocket(socket);if(m===socket||!mirrorWhen(m))return a;const b=place(d,part,parent,m);return DEVELOPMENTAL_SYMMETRY.enabled&&!b.ok?{ok:false,reason:'mirror failed'}:a}
+// Preserve registry insertion order in immutable lookup lists. Construction of
+// mutation options is a hot path for large lineage populations; walking through
+// the same 85-part catalog and rebuilding identical leg variant arrays for
+// every offspring is unnecessary. We do not cache plan-dependent candidates.
+const MUTATION_PART_CATALOG=Object.values(PARTS);
+const MUTATION_LEG_VARIANTS=MUTATION_PART_CATALOG.filter(p=>p.tags.includes('leg')&&p.id!=='walking-leg');
 // The small changes a body can make in one generation, in a fixed order (so a seed replays).
 function mutationOptions(plan){
   // v1.61.0 (creator direction 2026-10-10: "all creatures should have more evolutionary traits"): any leg
@@ -40,10 +46,10 @@ function mutationOptions(plan){
   // A new leg on an empty limb socket (with its mirror when there is one).
   for(const s of torso.providedSockets)if(s.type==='limb'&&!has(`root/${s.id}`))out.push(d=>placePair(d,'walking-leg','root',s.id,{mirrorWhen:m=>torso.providedSockets.some(x=>x.id===m)&&!d.plan.nodes.some(n=>n.id===`root/${m}`)}));
   // A leg pair becomes a variant leg its lineage can reach.
-  const legVariants=Object.values(PARTS).filter(p=>p.tags.includes('leg')&&p.id!=='walking-leg');
+  const legVariants=MUTATION_LEG_VARIANTS;
   for(const n of plan.nodes.filter(n=>/^root\/limb\.\d+$/.test(n.id)))for(const v of legVariants)if(v.id!==n.partId&&v.developmentalPrerequisites.every(q=>present.has(q)||(q==='walking-leg'&&PARTS[n.partId]?.tags.includes('leg'))))out.push(d=>placePair(d,v.id,'root',n.socket,{mirrorWhen:m=>d.plan.nodes.some(x=>x.id===`root/${m}`)}));
   // The next body, mouth or eye in the lineage's reach.
-  for(const p of Object.values(PARTS)){
+  for(const p of MUTATION_PART_CATALOG){
     if(p.tags.includes('exclusive'))continue;
     if(!p.developmentalPrerequisites.every(q=>present.has(q))||present.has(p.id))continue;
     if(p.tags.includes('head')&&hasImplicitHead(plan)){const conversion=d=>place(d,p.id,'root','head');conversion.headStructure=true;out.push(conversion)}
@@ -52,7 +58,7 @@ function mutationOptions(plan){
     else if(p.tags.includes('eye'))out.push(d=>placePair(d,p.id,facialHostId(d.plan),'eye.left'));
   }
   // A flank, back, tail or spur part.
-  for(const p of Object.values(PARTS)){
+  for(const p of MUTATION_PART_CATALOG){
     if(p.tags.includes('exclusive'))continue;
     if(!p.developmentalPrerequisites.every(q=>present.has(q)))continue;
     if(p.compatibleSocketTypes.includes('flank'))out.push(d=>placePair(d,p.id,'root','flank.left'));
@@ -69,9 +75,9 @@ function mutationOptions(plan){
 // variant its lineage can reach, or gains a spur.
 function asymmetricOptions(plan){const out=[],present=new Set(plan.nodes.map(n=>n.partId)),has=id=>plan.nodes.some(n=>n.id===id);
   const paired=plan.nodes.filter(n=>/^root\/limb\.\d+$/.test(n.id)&&mirrorSocket(n.socket)!==n.socket&&has(`root/${mirrorSocket(n.socket)}`));
-  const legVariants=Object.values(PARTS).filter(p=>p.tags.includes('leg')&&p.id!=='walking-leg');
+  const legVariants=MUTATION_LEG_VARIANTS;
   for(const n of paired)for(const v of legVariants)if(v.id!==n.partId&&v.developmentalPrerequisites.every(q=>present.has(q)||(q==='walking-leg'&&PARTS[n.partId]?.tags.includes('leg'))))out.push(d=>place(d,v.id,'root',n.socket));
-  for(const p of Object.values(PARTS))if(!p.tags.includes('exclusive')&&p.compatibleSocketTypes.includes('spur')&&p.developmentalPrerequisites.every(q=>present.has(q)))for(const n of paired)if(!plan.nodes.some(x=>x.parent===n.id))out.push(d=>place(d,p.id,n.id,'spur'));
+  for(const p of MUTATION_PART_CATALOG)if(!p.tags.includes('exclusive')&&p.compatibleSocketTypes.includes('spur')&&p.developmentalPrerequisites.every(q=>present.has(q)))for(const n of paired)if(!plan.nodes.some(x=>x.parent===n.id))out.push(d=>place(d,p.id,n.id,'spur'));
   return out}
 // One reachable mutation of a plan, or the plan unchanged when none is viable.
 export function mutatePlan(rng,plan,{onMutation=null}={}){
