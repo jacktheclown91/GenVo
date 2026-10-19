@@ -5,6 +5,8 @@ import {preyPreference,canHunt} from '../ecology/functional-diet.js';
 import {SPECIES} from '../organisms/species.js';
 import {CFG} from '../sim/config.js';
 import {hasPart} from '../lineage/part-abilities.js';
+import {CANOPY,canopySupport,canopyFeedingPosition,canAccessCanopyNest,canopyGrips} from '../ecology/canopy-site.js';
+import {winged} from '../lineage/flight.js';
 
 export const NEST_MATERIAL=0.18;
 export const NEST_ENERGY=2.4;
@@ -19,16 +21,19 @@ export function nestForEgg(sim,egg){return egg?.nestId==null?null:(sim.nests||[]
 export function constructNest(sim,mother){
   if(!mother?.alive||mother.energy<NEST_ENERGY+1||(sim.nests||[]).length>=MAX_NESTS)return null;
   const w=sim.world,i=w.idx(mother.x,mother.y);
-  if(w.water[i])return null;
-  // Find actual harvestable ground cover; never inject a free nest or plant stock.
-  const kind=PLANT_KINDS.find(k=>w.plants[k]?.[i]>=NEST_MATERIAL);
+  if(w.water[i]||mother.airborne)return null;
+  const aloft=!!mother.perched;
+  // Existing standing Woodspire directly funds the nest, while a healthy tree
+  // remains to support the nest afterward. Surface nests use their old rules.
+  if(aloft&&(!canopyFeedingPosition(mother,w)||w.plants.woodspire[i]<CANOPY.minimumTree+NEST_MATERIAL+.04))return null;
+  const kind=aloft?'woodspire':PLANT_KINDS.find(k=>w.plants[k]?.[i]>=NEST_MATERIAL);
   if(!kind)return null;
   const used=w.consume(kind,mother.x,mother.y,NEST_MATERIAL);
   if(used<NEST_MATERIAL-.0001)return null;
   mother.energy-=NEST_ENERGY;
   const protectedByPart=hasPart(mother,'brood-pouch');
   const nest={id:sim.nextNestId++,x:mother.x,y:mother.y,builderId:mother.id,
-    material:kind,materialUsed:used,integrity:protectedByPart?.83:.62,
+    material:kind,materialUsed:used,layer:aloft?'canopy':'ground',integrity:protectedByPart?.83:.62,
     dayBuilt:sim.day,careCount:0,lastCareDay:-1};
   sim.nests.push(nest);
   sim.family?.pushEvent?.({type:'nest-built',animalId:mother.id,nestId:nest.id,material:kind});
@@ -40,6 +45,7 @@ export function chooseCareNest(sim,parent){
   const eggs=(sim.eggs||[]).filter(e=>e.motherId===parent.id||e.fatherId===parent.id);
   let best=null,bestDistance=Infinity;
   for(const egg of eggs){const nest=nestForEgg(sim,egg);if(!nest||nest.integrity>=.96||nest.lastCareDay===sim.day)continue;
+    if(nest.layer==='canopy'&&(!winged(parent)||canopyGrips(parent)<2))continue;
     const d=distance(parent,nest);if(d>5||d>=bestDistance)continue;
     if(!sim.canReach(parent,nest.x,nest.y))continue;
     bestDistance=d;best=nest;
@@ -54,6 +60,8 @@ export function nestCareAvailability(sim,parent,nest){
  if(nest.lastCareDay===sim.day)return fail('This clutch has already been tended today.');
  if(parent.energy<NEST_CARE_ENERGY+1)return fail('Not enough energy to tend the clutch.');
  if(parent.hydration<SPECIES[parent.species].maxHydration*.42)return fail('Drink before tending the clutch.');
+ if(nest.layer==='canopy'&&!canAccessCanopyNest(parent,sim.world,nest))return fail('Perch in this living tree to reach its elevated nest.');
+ if(nest.layer!=='canopy'&&(parent.perched||parent.airborne))return fail('Descend to the ground to tend this nest.');
  if(distance(parent,nest)>1.4)return{enabled:false,state:'approachable',reason:'Approach this clutch first.',cost:NEST_CARE_ENERGY};
  return{enabled:true,state:'available',reason:'Tend the clutch · '+NEST_CARE_ENERGY+' energy.',cost:NEST_CARE_ENERGY};
 }
@@ -76,7 +84,9 @@ export function nestIncubationQuality(nest,baseQuality){
 export function advanceNests(sim){
   if(!sim.nests?.length)return;
   const activeIds=new Set((sim.eggs||[]).map(e=>e.nestId).filter(id=>id!=null));
-  for(const nest of sim.nests)nest.integrity=clamp(nest.integrity-(activeIds.has(nest.id)?.024:.09));
+  for(const nest of sim.nests){nest.integrity=clamp(nest.integrity-(activeIds.has(nest.id)?.024:.09));
+    if(nest.layer==='canopy'&&!canopySupport(sim.world,nest.x,nest.y).supported)nest.integrity=clamp(nest.integrity-CANOPY.nestFailureDamage);
+  }
   sim.nests=sim.nests.filter(n=>n.integrity>0);
 }
 
@@ -85,6 +95,9 @@ export function edibleEggTarget(sim,predator,{radius=8}={}){
   let best=null,closest=radius;
   for(const egg of sim.eggs||[]){
     if(!canHunt(predator))continue;
+    const nest=nestForEgg(sim,egg);
+    if(nest?.layer==='canopy'&&!canAccessCanopyNest(predator,sim.world,nest))continue;
+    if(nest?.layer!=='canopy'&&(predator.perched||predator.airborne))continue;
     const d=distance(predator,egg);
     if(d>=closest||!sim.canReach(predator,egg.x,egg.y))continue;
     closest=d;best=egg;
@@ -96,6 +109,9 @@ export function eggFeedingAvailability(sim,predator,egg){
  if(!predator?.alive)return{enabled:false,state:'unavailable',reason:'No active creature.'};
  if(!egg||!(sim.eggs||[]).includes(egg))return{enabled:false,state:'unavailable',reason:'That egg is no longer here.'};
  if(!canHunt(predator))return{enabled:false,state:'unavailable',reason:'Predatory feeding anatomy is required to raid eggs.'};
+ const nesting=nestForEgg(sim,egg);
+ if(nesting?.layer==='canopy'&&!canAccessCanopyNest(predator,sim.world,nesting))return{enabled:false,state:'unavailable',reason:'Elevated clutch requires an attacker actually perched in that canopy.'};
+ if(nesting?.layer!=='canopy'&&(predator.perched||predator.airborne))return{enabled:false,state:'unavailable',reason:'Ground eggs require landing first.'};
  if((predator.nextEggAttackTick||0)>sim.tickCount)return{enabled:false,state:'unavailable',reason:'Recover before raiding again.'};
  const label=nestForEgg(sim,egg)?.integrity>.22?'Break nest cover':'Eat Egg';
  if(distance(predator,egg)>1.1)return{enabled:false,state:'approachable',reason:'Approach this egg first.',label,cost:.4};
