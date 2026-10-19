@@ -27,6 +27,8 @@ jobs:
         run: node tests/world-restore-generation-parity.mjs
       - name: Restore surveyed neighbor worlds without regenerating ecology
         run: node tests/region-restore-direct-parity.mjs
+      - name: Planetary border archive and global authority clone parity
+        run: node tests/planetary-handoff-copy-parity.mjs
       - name: Authentic remote organisms and exact offscreen resources
         run: node tests/e18-offscreen-biology.mjs
       - name: Synchronized three-region journey and mid-barrier saves
