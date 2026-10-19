@@ -63,6 +63,13 @@ export function thermoregulation(animal,temperature){
  const affordable=animal.energy>spec.maxEnergy*MAMMAL.parentEnergyReserve;
  return{coldFactor:affordable?.66:1,extraEnergy:MAMMAL.coreHeatCostPerLifeStep*(temperature>.75?MAMMAL.hotCoreMultiplier:1)};
 }
+export function neonatalColdExposure(animal,temperature){
+ const stage=(animal?.age||0)/Math.max(1,SPECIES[animal?.species]?.maturity||1);
+ if(stage>=.36||temperature>=MAMMAL.coldTrigger)return 1;
+ // Babies of *all* anatomies are more susceptible to real cold cells before
+ // mature fur and body mass. Mammals can offset it by paid maternal warmth.
+ return 1+Math.max(0,MAMMAL.coldTrigger-temperature)*1.6*(1-stage/.36);
+}
 export function neonatalWarmthFactor(animal,tick,lifeStride){
  return animal?.lastMaternalWarmthTick!=null&&tick-animal.lastMaternalWarmthTick<=lifeStride*2?1-MAMMAL.heatProtection:1;
 }
