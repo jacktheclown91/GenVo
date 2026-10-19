@@ -11,12 +11,12 @@ import {initializeOrganicResources,validateOrganicResources,validateCarriedMater
 import {initializePlantResources,validatePlantResources} from '../ecology/plant-resources.js';
 import {ancestralReproductiveGenome,validReproductiveGenome} from '../reproduction/reproductive-compatibility.js';
 import {matePreferencesFor} from '../reproduction/mate-preferences.js';
-import {CFG} from '../sim/config.js';
+import {CFG,PLANTS} from '../sim/config.js';
 import {Simulation} from '../sim/simulation.js';
 import {LEGACY_PRESSURE_KINDS} from '../lineage/pressure.js';
 import {anatomyFromAdaptations} from '../lineage/evolution.js';
 import {migrateLegacyReadings} from '../lineage/readings.js';
-import {initializeFreshwater} from '../ecology/freshwater-food.js';
+import {initializeFreshwater,FRESHWATER_FOOD} from '../ecology/freshwater-food.js';
 import {validatePageLayout} from '../world/pages.js';
 import {restoreSurfaceTopology} from '../world/surface-topology.js';
 import {deriveDrainage,validateTopography} from '../world/topography.js';
@@ -250,7 +250,19 @@ export function restoreDetachedSimulationSnapshot(snapshot){
  return restoreSimulationSnapshot(detached);
 }
 
-export function restoreSimulationSnapshot(snapshot){
+// Modern snapshots already contain every world stock and the complete terrain.
+ // Historical or partial saves continue through the original generator path.
+ // No migration policy or saved schema is changed by this allocation shortcut.
+export function completeWorldForDirectRestore(snapshot){
+  const w=snapshot?.world;
+  if(snapshot?.schema!==SAVE_SCHEMA||!w?.surfaceWater?.mask||!w.terrain?.elevation||
+     !w.plantResources||!w.organicResources||!w.soilWater||!w.freshwaterFood||
+     !w.plants||!w.seedBank)return false;
+  return Object.keys(PLANTS).every(k=>w.plants[k] instanceof Float32Array &&
+    (!PLANTS[k].dispersal||w.seedBank[k] instanceof Float32Array))&&
+    Object.keys(FRESHWATER_FOOD).filter(k=>k!=='detritus').every(k=>w.freshwaterFood[k] instanceof Float32Array);
+}
+export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false}={}){
   if(!snapshot||typeof snapshot!=='object')throw new Error('Save data is missing.');
   const initializeMissingFreshwater=snapshot.schema===9;
   snapshot=migrateSaveSnapshot(snapshot);
@@ -262,7 +274,7 @@ export function restoreSimulationSnapshot(snapshot){
   validateCarcassSnapshot(snapshot);
 
   const planetOrigin=snapshot.world?.generator==='planetary/1'?planetRegionOrigin(snapshot.world.regionOrigin||{x:0,y:0}):{x:0,y:0};
-  const sim=new Simulation(snapshot.seed,{player:snapshot.core?.playerEnabled!==false,bootstrap:false,worldGenerator:snapshot.world?.generator==='planetary/1'?'planetary/1':undefined,planetOrigin,reuseGeneratedBase:true,deferDispersalInitialization:!!snapshot.controllers?.dispersal});
+  const sim=new Simulation(snapshot.seed,{player:snapshot.core?.playerEnabled!==false,bootstrap:false,worldGenerator:snapshot.world?.generator==='planetary/1'?'planetary/1':undefined,planetOrigin,reuseGeneratedBase:true,restoreOnlyWorld:!regenerateWorld&&completeWorldForDirectRestore(snapshot),deferDispersalInitialization:!!snapshot.controllers?.dispersal});
   Object.assign(sim,snapshot.core||{});
   if(!Object.hasOwn(snapshot.core||{},'regionalReplayPolicy'))delete sim.regionalReplayPolicy;
   regionalReplayPolicy(sim);
