@@ -22,7 +22,7 @@ export const PART_SPRITES=Object.freeze({
   'digging-forelimb':{layer:'front'},
   'climber-leg':{layer:'front'},'arid-pad':{layer:'rear'},
   'hook-pad':{layer:'front'},
-  'filament-tuft':{layer:'body'},'fur-mantle':{layer:'body'},'feather-mantle':{layer:'body'},'proto-wing':{layer:'body'},'heat-frill':{layer:'body'},'wax-plates':{layer:'body'},
+  'filament-tuft':{layer:'body'},'fur-mantle':{layer:'body'},'feather-mantle':{layer:'body'},'proto-wing':{layer:'body'},'flight-wing':{layer:'body'},'heat-frill':{layer:'body'},'wax-plates':{layer:'body'},
   'grazing-mouth':{layer:'face',base:true},
   'tearing-jaw':{layer:'face'},
   'crushing-jaw':{layer:'face'},
@@ -114,6 +114,19 @@ const DRAW={
     const x=f.x-k.fx*n*1.1,y=f.y-k.fy*n*1.1;
     pixel(c,snap(x-.6),snap(y-.5),1.35,1.1,k.s,'#817456');
     pixel(c,snap(x-.55),snap(y-.55),1.25,.36,k.s,'#e6d7a3');}},
+  // E8: two swept load-bearing wings, overhead only, flapping from the actual dorsal
+  // mount. The stroke depends on existing gait/pose time, not simulation RNG.
+  'flight-wing'(c,k){const b=backTop(k),phase=k.frameInt??0,spread=k.behavior?.flightSpread??(k.behavior?.crestSpread>0?.95:.75),lift=((phase%8+8)%8)/8,beat=.8+.2*Math.cos(lift*Math.PI*2);
+    for(const side of [-1,1]){
+      const root={x:b.x+k.perp.x*side*.9,y:b.y+k.perp.y*side*.9};
+      const elbow={x:root.x+k.perp.x*side*3.6*spread,y:root.y+k.perp.y*side*3.6*spread-k.fy*1.8};
+      const tip={x:elbow.x+k.perp.x*side*(3.5+beat*1.8),y:elbow.y+k.perp.y*side*(3.5+beat*1.8)-k.fx*(1.6+beat)};
+      pixelLine(c,root.x,root.y,elbow.x,elbow.y,k.s,'#435e71',1.3);
+      pixelLine(c,elbow.x,elbow.y,tip.x,tip.y,k.s,'#b7cccb',1.15);
+      for(let n=0;n<5;n++){const t=(n+.4)/5,x=elbow.x+(tip.x-elbow.x)*t,y=elbow.y+(tip.y-elbow.y)*t;
+        pixelLine(c,x,y,x-k.fx*(2.2-n*.28)+k.perp.x*side*.65,y-k.fy*(2.2-n*.28)+k.perp.y*side*.65,k.s,n%2?'#d6d6b2':'#7e9cac',.9)}
+      pixel(c,snap(tip.x),snap(tip.y),.9,.9,k.s,'#f1e9cb');
+    }},
   'signal-crest'(c,k){for(const sign of [-1,1]){const cx=k.bx-k.fx*(k.bodyW*.28)+k.perp.x*sign*1.4,cy=k.by-k.fy*(k.bodyH*.28)+k.perp.y*sign*1.4-1;pixelLine(c,cx,cy,cx-k.fx*2.4+k.perp.x*sign,cy-k.fy*2.4+k.perp.y*sign-1.2,k.s,'#f0e0a0');pixel(c,cx-k.fx*2.4+k.perp.x*sign,cy-k.fy*2.4+k.perp.y*sign-1.2,1,1,k.s,'#e07050')}},
   // Tearing jaw: two forward mandibles with pale hooked tips either side of the mouth.
   'tearing-jaw'(c,k){const base=k.face.mouthForward+.8;for(const sign of [-1,1]){const x0=k.bx+k.fx*base+k.perp.x*sign*1.5,y0=k.by+k.fy*base+k.perp.y*sign*1.5,x1=x0+k.fx*2-k.perp.x*sign*.6,y1=y0+k.fy*2-k.perp.y*sign*.6;pixelLine(c,x0,y0,x1,y1,k.s,'#2b3f66');pixel(c,snap(x1),snap(y1),1,1,k.s,'#f1e8cf')}},
