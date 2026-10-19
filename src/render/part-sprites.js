@@ -20,9 +20,9 @@ export const PART_SPRITES=Object.freeze({
   'spring-leg':{layer:'rear'},
   'grasper':{layer:'front'},
   'digging-forelimb':{layer:'front'},
-  'climber-leg':{layer:'front'},
+  'climber-leg':{layer:'front'},'arid-pad':{layer:'rear'},
   'hook-pad':{layer:'front'},
-  'filament-tuft':{layer:'body'},'fur-mantle':{layer:'body'},'feather-mantle':{layer:'body'},'proto-wing':{layer:'body'},
+  'filament-tuft':{layer:'body'},'fur-mantle':{layer:'body'},'feather-mantle':{layer:'body'},'proto-wing':{layer:'body'},'heat-frill':{layer:'body'},'wax-plates':{layer:'body'},
   'grazing-mouth':{layer:'face',base:true},
   'tearing-jaw':{layer:'face'},
   'crushing-jaw':{layer:'face'},
@@ -103,6 +103,17 @@ const DRAW={
       pixelLine(c,x,y,ex,ey,k.s,'#354f66',1.1);
       pixelLine(c,x,y,ex,ey,k.s,n&1?'#b6cbd2':'#e0dfc8',.6);
       pixel(c,snap(ex),snap(ey),.6,.6,k.s,'#eef3ef')}},
+  // E6: radial heat frill, distinct from the ornamental signal crest.
+  'heat-frill'(c,k){const b=backTop(k);for(let n=-3;n<=3;n++){
+    const sx=b.x+k.perp.x*n*.65,sy=b.y+k.perp.y*n*.65;
+    const ex=sx-k.fx*(2.5-Math.abs(n)*.22)+k.perp.x*n*.55,
+          ey=sy-k.fy*(2.5-Math.abs(n)*.22)+k.perp.y*n*.55-1.1;
+    pixelLine(c,sx,sy,ex,ey,k.s,n%2?'#c86b3e':'#f2a45e',.8);
+    pixel(c,snap(ex-.4),snap(ey-.4),.85,.85,k.s,'#ffe4a5');}},
+  'wax-plates'(c,k){const f=flankAt(k);for(const n of [-1,0,1]){
+    const x=f.x-k.fx*n*1.1,y=f.y-k.fy*n*1.1;
+    pixel(c,snap(x-.6),snap(y-.5),1.35,1.1,k.s,'#817456');
+    pixel(c,snap(x-.55),snap(y-.55),1.25,.36,k.s,'#e6d7a3');}},
   'signal-crest'(c,k){for(const sign of [-1,1]){const cx=k.bx-k.fx*(k.bodyW*.28)+k.perp.x*sign*1.4,cy=k.by-k.fy*(k.bodyH*.28)+k.perp.y*sign*1.4-1;pixelLine(c,cx,cy,cx-k.fx*2.4+k.perp.x*sign,cy-k.fy*2.4+k.perp.y*sign-1.2,k.s,'#f0e0a0');pixel(c,cx-k.fx*2.4+k.perp.x*sign,cy-k.fy*2.4+k.perp.y*sign-1.2,1,1,k.s,'#e07050')}},
   // Tearing jaw: two forward mandibles with pale hooked tips either side of the mouth.
   'tearing-jaw'(c,k){const base=k.face.mouthForward+.8;for(const sign of [-1,1]){const x0=k.bx+k.fx*base+k.perp.x*sign*1.5,y0=k.by+k.fy*base+k.perp.y*sign*1.5,x1=x0+k.fx*2-k.perp.x*sign*.6,y1=y0+k.fy*2-k.perp.y*sign*.6;pixelLine(c,x0,y0,x1,y1,k.s,'#2b3f66');pixel(c,snap(x1),snap(y1),1,1,k.s,'#f1e8cf')}},
@@ -262,6 +273,11 @@ export const LIMB_ART={
   'webbed-leg'(c,k){standardLimb(c,k);const {foot,s}=k,perp=k.perp||{x:0,y:1};for(const d of [-1,0,1])pixel(c,snap(foot.x+perp.x*d*.8),snap(foot.y+perp.y*d*.8+.5),.5,1,s,'#2f6f86');pixel(c,snap(foot.x-1),snap(foot.y+.5),2,.5,s,'#7fc8c8')},
   // Padded: the standard limb on a round soft pad that lifts only a little.
   'padded-leg'(c,k){standardLimb(c,k);const {foot,s,p}=k;toe(c,k,foot.x-1,foot.y,2,1,p.shade);toe(c,k,foot.x-.5,foot.y,1,.5,p.light)},
+  // Broad, joint-following arid contact pad; not a free-floating terrain sprite.
+  'arid-pad'(c,k){standardLimb(c,k);const f=k.foot,p=k.p;
+    pixel(c,snap(f.x-1.6),snap(f.y-.25),3.2,1.25,k.s,'#856a49');
+    pixel(c,snap(f.x-1.2),snap(f.y-.25),2.4,.4,k.s,'#e7ca85');
+    for(const n of [-1,0,1])pixel(c,snap(f.x+n*1.05),snap(f.y+.55),.7,.7,k.s,p.light)},
   // Digging forelimb: a heavy forearm (the spade is drawn by its part detail).
   'digging-forelimb'(c,k){const {root,knee,foot,s,p}=k;pixelLine(c,root.x,root.y,knee.x,knee.y,s,p.shade,1.5);pixelLine(c,knee.x,knee.y,foot.x,foot.y,s,p.body,1.5);pixel(c,snap(knee.x),snap(knee.y),1,1,s,p.light)}
 };
