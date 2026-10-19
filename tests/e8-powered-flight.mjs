@@ -1,0 +1,75 @@
+import assert from 'node:assert/strict';
+import {PARTS,registryProblems} from '../src/lineage/part-registry.js';
+import {TISSUE_PARTS} from '../src/organisms/tissue-structure.js';
+import {PART_SPRITES} from '../src/render/part-sprites.js';
+import {founderPlan} from '../src/lineage/body-inheritance.js';
+import {createDraft,place,whyNot,draftProblems} from '../src/lineage/evolution-draft.js';
+import {makePlan,validatePlan} from '../src/lineage/body-plan.js';
+import {Simulation} from '../src/sim/simulation.js';
+import {SPECIES} from '../src/organisms/species.js';
+import {flightAvailability,flightMass,takeoff,land,advanceFlight,FLIGHT} from '../src/lineage/flight.js';
+import {movementProfile,canOccupy,canReach} from '../src/lineage/lifestyle.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+
+assert.deepEqual(registryProblems(),[]);
+assert.ok(PARTS['flight-wing'].actionCapabilities.includes('fly'));
+assert.equal(PARTS['flight-wing'].mutationCost,8);
+assert.ok(PART_SPRITES['flight-wing']&&TISSUE_PARTS['flight-wing']);
+assert.ok(!PARTS['proto-wing'].actionCapabilities.includes('fly'));
+const base=founderPlan(), ancestral=['filament-tuft','feather-mantle','proto-wing','flight-wing'];
+let draft=createDraft({base,ancestry:[],budget:8});
+assert.match(whyNot(draft,'flight-wing','root','dorsal'),/Requires/i);
+for(const id of ancestral){
+ const next=createDraft({base:draft.plan,ancestry:[...draft.ancestry],budget:8});
+ const result=place(next,id,'root','dorsal');
+ assert.equal(result.ok,true,id+': '+result.reason);
+ assert.deepEqual(draftProblems(next),[],id+' draft must be accepted');
+ assert.ok(validatePlan(next.plan).ok);
+ draft=next;
+}
+const wingBody=draft.plan;
+assert.ok(wingBody.nodes.some(n=>n.partId==='flight-wing'));
+const sim=new Simulation('E8-FLIGHT',{player:true}),p=sim.player(),w=sim.world;
+assert.ok(p);
+p.bodyPlan=structuredClone(wingBody);p.age=SPECIES[p.species].maturity+1;p.health=100;p.energy=100;
+assert.ok(flightMass(p)<FLIGHT.maxAdultMass,'reviewed founder wing body must lift');
+assert.equal(sim.flightStatus(p).enabled,true);
+const did=sim.playerToggleFlight();assert.ok(did.ok);assert.equal(p.airborne,true);
+assert.ok(p.energy<100,'taking off is an actual funded action');
+let from=null,to=null;for(let y=4;y<w.n-4&&!to;y++)for(let x=4;x<w.n-4;x++){
+ const i=w.idx(x,y),j=w.idx(x+1,y);
+ if(!w.water[i]&&w.water[j]){from={x:x+.5,y:y+.5};to={x:x+1.5,y:y+.5};break}
+}
+assert.ok(to,'the generated map must have a real shoreline');
+p.x=from.x;p.y=from.y;
+const flightMove=movementProfile(p,w,{fromX:p.x,fromY:p.y,toX:to.x,toY:to.y});
+assert.equal(flightMove.allowed,true);
+assert.equal(flightMove.flying,true);
+assert.equal(canOccupy(p,w,to.x,to.y),true,'winged airborne organism can cross real open water');
+assert.equal(canReach(p,w,to.x,to.y),true);
+const before=p.energy;
+sim.phaseMetabolism();
+assert.ok(p.energy<before,'real metabolism charges flight even when hovering');
+assert.equal(sim.resourceAvailability('drink').enabled,false);
+assert.equal(sim.resourceAvailability('eat').enabled,false);
+assert.equal(sim.interactionOptions().length,0,'airborne actors cannot harvest surface stores');
+p.x=to.x;p.y=to.y;
+assert.equal(sim.playerToggleFlight().ok,false,'non-swimmer cannot land in open water');
+assert.equal(p.airborne,true);
+p.x=from.x;p.y=from.y;
+assert.equal(sim.playerToggleFlight().ok,true,'can land on actual land');
+assert.equal(p.airborne,false);
+assert.ok(!canOccupy(p,w,to.x,to.y),'flight does not permanently grant ground swimming');
+const saved=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'e8'})));
+assert.equal(saved.player().airborne,false);
+p.energy=80;p.x=from.x;p.y=from.y;
+assert.ok(sim.playerToggleFlight().ok);
+const flyingSave=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'e8-air'})));
+assert.equal(flyingSave.player().airborne,true,'midflight save preserves vertical collision layer');
+assert.equal(movementProfile(flyingSave.player(),flyingSave.world,{toX:to.x,toY:to.y}).flying,true);
+p.x=to.x;p.y=to.y;p.energy=0.1;
+const crashed=advanceFlight(p,w,2,{rain:.1,swimmer:false,moving:true});
+assert.ok(crashed?.forced);
+assert.ok(!p.airborne);
+assert.equal(p.health,100-FLIGHT.emergencyDamage,'forced water landing injures rather than creating a free rescue');
+console.log('E8 flight wing lineage, mass lift, funded takeoff, live airborne movement, water landing restriction, metabolic drain, persistence, emergency fall PASS');
