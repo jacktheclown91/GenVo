@@ -48,6 +48,9 @@ export class World{
     if(restoreOnly){
       // Initialization without ecological stocks is safe ONLY for a complete
       // authoritative snapshot, selected by the restore coordinator.
+      // Restore-world migration checks use the canonical producer-key registry.
+      // No stocks are created here; the saved resource fields are authoritative.
+      this.plantResources={energy:Object.fromEntries(Object.keys(PLANTS).filter(k=>k!=='rotcap').map(k=>[k,null]))};
       this.freshwaterProducerKinds=Object.keys(FRESHWATER_FOOD).filter(k=>!FRESHWATER_FOOD[k].source&&k!=='detritus');
       this.freshwaterFood=Object.fromEntries(Object.keys(FRESHWATER_FOOD).filter(k=>k!=='detritus').map(k=>[k,new Float32Array(this.len)]));
     }else this.generate();
