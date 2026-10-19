@@ -2,6 +2,7 @@
 // Existing vegetation schedules and biomass remain authoritative; no second plant simulation.
 import {localRain} from '../world/environment.js';
 import {coldFloraDieback} from './cold-flora.js';
+import {snowLightFactor,snowGrowthFactor} from '../world/snowpack.js';
 import {PLANTS} from '../sim/config.js';
 import {SOIL_WATER,plantAvailableWater} from './soil-water.js';
 export const PLANT_RESOURCE_UNITS=Object.freeze({waterPerBiomass:.5,mineralPerBiomass:.1,energyPerBiomass:1,waterCapacity:2,energyCapacity:.25});
@@ -24,8 +25,8 @@ export function advancePlantInputs(s){const w=s.world,r=w.plantResources,u=PLANT
     const total=LAND_PRODUCERS.reduce((v,k)=>v+w.plants[k][i],0),flux=Math.max(0,1-localRain(w,s.climate,i)*.45)*.04;
     // A real standing woody canopy intercepts light before it reaches plants
     // below. Interception reduces solar input; it never creates new reserves.
-    const shade=Math.min(.60,Math.max(0,(w.plants.woodspire?.[i]||0)*.55));
-    for(const k of LAND_PRODUCERS){const biomass=w.plants[k][i],energy=r.energy[k],incoming=(total>0?flux*Math.min(1,total)*biomass/total:0)*(k==='woodspire'?1:k==='sunmoss'||k==='bramble'?1-shade:1-shade*.35),beforeEnergy=energy[i],respiration=Math.min(beforeEnergy+incoming,.003*biomass),excess=Math.max(0,beforeEnergy+incoming-respiration-u.energyCapacity);energy[i]=Math.min(u.energyCapacity,beforeEnergy+incoming-respiration);r.totals.photosynthesis+=incoming;r.totals.respiration+=respiration+excess;}
+    const shade=Math.min(.60,Math.max(0,(w.plants.woodspire?.[i]||0)*.55)),snowlight=snowLightFactor(w,i);
+    for(const k of LAND_PRODUCERS){const biomass=w.plants[k][i],energy=r.energy[k],incoming=(total>0?flux*snowlight*Math.min(1,total)*biomass/total:0)*(k==='woodspire'?1:k==='sunmoss'||k==='bramble'?1-shade:1-shade*.35),beforeEnergy=energy[i],respiration=Math.min(beforeEnergy+incoming,.003*biomass),excess=Math.max(0,beforeEnergy+incoming-respiration-u.energyCapacity);energy[i]=Math.min(u.energyCapacity,beforeEnergy+incoming-respiration);r.totals.photosynthesis+=incoming;r.totals.respiration+=respiration+excess;}
   }
   r.soilWaterLinked=SOIL_WATER.enabled;
 }
@@ -57,7 +58,9 @@ export function growLandProducers(s,i,entries,{m,f,temp,scar,grow}){
     const heatLoss=current*coldFloraDieback(kind,temp);
     if(heatLoss>0){current-=heatLoss;returnPlantLoss(s,kind,i,heatLoss)}
     if(PLANT_TURNOVER.enabled&&current>0){const shed=current*PLANT_TURNOVER.rate;current-=shed;returnPlantLoss(s,kind,i,shed);w.plantResources.totals.senescence=(w.plantResources.totals.senescence||0)+shed}
-    const genome=dispersal.genomeAt(kind,i),phenotype=genome?.schema===4?{...p,growth:genome.traits.growth,waterNeed:genome.traits.waterNeed}:p;let desired=grow(current,phenotype,m,f,temp,{seedLimited:!!d?.seedLimited&&!dispersal.isEstablished(kind,i)});if(scar>0&&desired>current)desired=current+(desired-current)*(1-scar);desired=Math.min(p.carry,desired*seasonBoost);
+    const genome=dispersal.genomeAt(kind,i),phenotype=genome?.schema===4?{...p,growth:genome.traits.growth,waterNeed:genome.traits.waterNeed}:p;let desired=grow(current,phenotype,m,f,temp,{seedLimited:!!d?.seedLimited&&!dispersal.isEstablished(kind,i)});if(scar>0&&desired>current)desired=current+(desired-current)*(1-scar);
+    if(desired>current)desired=current+(desired-current)*snowGrowthFactor(w,i);
+    desired=Math.min(p.carry,desired*seasonBoost);
     requests.push({e,initial,current,desired,wanted:Math.max(0,desired-current),demand:Math.min(Math.max(0,desired-current),r.energy[kind][i]/u.energyPerBiomass)});
   }
   const total=requests.reduce((a,b)=>a+b.demand,0),waterScale=total>0?r.water[i]/(total*u.waterPerBiomass):1,mineralScale=total>0?r.minerals[i]/(total*u.mineralPerBiomass):1,scale=Math.min(1,waterScale,mineralScale),sharedLimit=scale<1?(waterScale<=mineralScale?2:3):0;
