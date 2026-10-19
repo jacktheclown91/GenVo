@@ -6,20 +6,19 @@ export class SocialController{
   profile(animal){return SPECIES[animal?.species]?.social||null}
   enabled(animal){const p=this.profile(animal);return !!(animal?.alive&&p&&p.mode!=='solitary')}
   behaviorEnabled(animal){
-    if(!this.sim.playerEnabled)return false;
-    if(animal?.player||animal?.lineage)return true;
-    const player=this.sim.player?.();if(!player)return false;
-    return Math.hypot(animal.x-player.x,animal.y-player.y)<=42;
+    // Shared social behavior is not restricted to the player camera.
+    // Archived biological simulations have no active player but still
+    // require actual herding, spacing, and predator alarm perception.
+    return this.enabled(animal);
   }
   observe({force=false}={}){
-    if(!force&&!this.sim.playerEnabled){this.states.clear();return}
     const interval=CFG.lifeStride*2;
     if(!force&&this.states.size&&this.sim.tickCount-this.lastObserveTick<interval)return;
     this.lastObserveTick=this.sim.tickCount;this.states.clear();
     const directAlarms=new Map(),socialAnimals=[];
     // Compute each animal's own alarm once; group members can then relay it without repeating predator searches.
     for(const animal of this.sim.animals){
-      if(!this.enabled(animal)||(!force&&!this.behaviorEnabled(animal)))continue;socialAnimals.push(animal);const profile=this.profile(animal);
+      if(!this.enabled(animal))continue;socialAnimals.push(animal);const profile=this.profile(animal);
       const threat=this.sim.findNearest(animal,b=>this.sim.isPredatorTo?.(b,animal)??(b.alive&&SPECIES[b.species]?.hunter&&canPreyOn(b.species,animal.species)),profile.alarmRadius||6);
       if(threat)directAlarms.set(animal.id,{threat,distance:Math.hypot(threat.x-animal.x,threat.y-animal.y),sourceId:animal.id});
     }
