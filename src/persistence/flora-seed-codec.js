@@ -21,12 +21,16 @@ function copyMetadata(value){
  try{return copy(value)}catch(error){if(error===nativeFallback)return structuredClone(value);throw error;}
 }
 const dictionary=()=>({values:[],index:new Map(),strings:new Map()});
-function intern(d,v){const strings=typeof v==='string',index=strings?d.strings:d.index,k=strings?v:fingerprint(v),old=index.get(k);if(old!==undefined)return old;const i=d.values.length;index.set(k,i);d.values.push(copyMetadata(v));return i;}
+function intern(d,v,ownedMetadata=false){const strings=typeof v==='string',index=strings?d.strings:d.index,k=strings?v:fingerprint(v),old=index.get(k);if(old!==undefined)return old;const i=d.values.length;index.set(k,i);
+ // An offscreen replay can TRANSFER ownership of its detached, soon-discarded
+ // runtime metadata into the unique new snapshot. Ordinary callers always
+ // receive independent copies, as before.
+ d.values.push(ownedMetadata?v:copyMetadata(v));return i;}
 // Object.keys supplies a dense string array: native JSON is an unambiguous
 // order key without recursively re-tagging every field name for every cohort.
 function internOrder(d,keys){const k=JSON.stringify(keys),old=d.index.get(k);if(old!==undefined)return old;const i=d.values.length;d.index.set(k,i);d.values.push([...keys]);return i;}
-export function packFloraSeedBanks(seeds){const kinds={};for(const [kind,cells] of Object.entries(seeds)){if(!(cells instanceof Map))throw Error('Invalid live seed bank.');const cellIds=[],offsets=[0],ids=dictionary(),orders=dictionary(),rowIds=[],amounts=[],rowOrders=[],columns=new Map();let n=0;
- for(const [cell,rows] of cells){if(!Number.isSafeInteger(cell)||cell<0||cell>2147483647)throw Error('Invalid seed cell.');cellIds.push(cell);if(!(rows instanceof Map))throw Error('Invalid live seed cohorts.');for(const [id,r] of rows){if(typeof id!=='string'||!Number.isFinite(r.amount)||r.amount<0)throw Error('Invalid seed quantity.');const keys=Object.keys(r);rowIds.push(intern(ids,id));amounts.push(r.amount);rowOrders.push(internOrder(orders,keys));for(const field of keys){if(field==='amount')continue;let col=columns.get(field);if(!col){col={...dictionary(),indices:[]};columns.set(field,col)}col.indices[n]=intern(col,r[field])+1;}n++;}offsets.push(n);}
+export function packFloraSeedBanks(seeds,{ownedMetadata=false}={}){const kinds={};for(const [kind,cells] of Object.entries(seeds)){if(!(cells instanceof Map))throw Error('Invalid live seed bank.');const cellIds=[],offsets=[0],ids=dictionary(),orders=dictionary(),rowIds=[],amounts=[],rowOrders=[],columns=new Map();let n=0;
+ for(const [cell,rows] of cells){if(!Number.isSafeInteger(cell)||cell<0||cell>2147483647)throw Error('Invalid seed cell.');cellIds.push(cell);if(!(rows instanceof Map))throw Error('Invalid live seed cohorts.');for(const [id,r] of rows){if(typeof id!=='string'||!Number.isFinite(r.amount)||r.amount<0)throw Error('Invalid seed quantity.');const keys=Object.keys(r);rowIds.push(intern(ids,id));amounts.push(r.amount);rowOrders.push(internOrder(orders,keys));for(const field of keys){if(field==='amount')continue;let col=columns.get(field);if(!col){col={...dictionary(),indices:[]};columns.set(field,col)}col.indices[n]=intern(col,r[field],ownedMetadata)+1;}n++;}offsets.push(n);}
  kinds[kind]={cells:Int32Array.from(cellIds),offsets:Uint32Array.from(offsets),genomes:ids.values,genomeIndices:Uint32Array.from(rowIds),amounts:Float64Array.from(amounts),orders:orders.values,orderIndices:Uint32Array.from(rowOrders),columns:[...columns].map(([field,col])=>({field,values:col.values,indices:Uint32Array.from({length:n},(_,i)=>col.indices[i]||0)}))};}
  return{codec:'genvo.flora-seed-columns/1',kinds};}
 function invalid(){throw Error('Invalid packed seed cohort table.');}
