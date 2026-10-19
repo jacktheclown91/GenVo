@@ -1,0 +1,33 @@
+name: E16 family crossing contracts
+on:
+  push:
+    branches:
+      - feat/e16-family-crossings
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  family-region-crossing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax for cohort, movement, UI and persistence
+        run: |
+          node --check src/world/family-passage.js
+          node --check src/world/planetary-travel.js
+          node --check src/main.js
+          node --check src/ui/creature-context-tray.js
+          node --check src/world/planet-regions.js
+          node --check src/persistence/save-manager.js
+      - name: E16 related-family and nursing cohort travel
+        run: node tests/e16-family-travel.mjs
+      - name: E15 living individual travel regression
+        run: node tests/e15-planetary-travel.mjs
+      - name: E14 canonical region stores and planet geography
+        run: |
+          node tests/e14-planetary-regions.mjs
+          node tests/planet-geography.mjs
