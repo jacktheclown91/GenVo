@@ -1,6 +1,8 @@
 import {restoreMassRules} from '../organisms/body-mass.js';
 import {restoreEcologyRules} from '../ecology/rule-policy.js';
 import {PlanetGeography} from '../world/planet-geography.js';
+import {planetRegionOrigin,regionKey} from '../world/planet-regions.js';
+import {World} from '../world/world.js';
 import {restoreBirthRules} from '../lineage/birth-rules.js';
 import {packFloraSeedBanks,unpackFloraSeedBanks} from './flora-seed-codec.js';
 import {initializeOrganicResources,validateOrganicResources,validateCarriedMaterial} from '../ecology/organic-resource-cycle.js';
@@ -43,7 +45,7 @@ const CONTROLLER_KEYS=[
   'specialization','tendency','divergence','generationProgress','predator','stalkerTerritory','foraging','exposure',
   'familyWeather','illness','familyIllness','injury','activity','wildlifeRhythm','exertion','playerCombat','habits','evolutionBudget','evolutionEditor','partAbilities','discovery'
 ];
-const STRUCTURAL_KEYS=new Set(['seed','rng','world','animals','_player','spatial','spatialBucketSize','spatialCols',...CONTROLLER_KEYS]);
+const STRUCTURAL_KEYS=new Set(['seed','rng','world','animals','planetaryRegions','_player','spatial','spatialBucketSize','spatialCols',...CONTROLLER_KEYS]);
 const WORLD_MUTABLE_FIELDS=['moisture','fertility','temperature','carrion'];
 
 function ownState(object,{skip=[]}={}){
@@ -63,7 +65,7 @@ function snapshotWorld(world){
   state.seedBank={...world.seedBank};
   state.freshwaterFood={...world.freshwaterFood};
   state.pageLayout=world.pages.layout();
-  if(world.planet)state.planet=world.planet.descriptor;
+  if(world.planet){state.planet=world.planet.descriptor;state.regionOrigin=planetRegionOrigin(world.regionOrigin);}
   state.generator=world.generator;state.topology=structuredClone(world.topology);
   state.environment=world.environment?{...world.environment}:null;
   state.terrain=world.terrain?{schema:1,elevation:world.terrain.elevation.slice(),travelEnabled:world.terrain.travelEnabled??false}:null;
@@ -79,6 +81,10 @@ function restoreTyped(target,source,label){
 
 function restoreWorld(world,state,{initializeMissingFreshwater=false}={}){
   if(!state)throw new Error('Save has no world state.');
+  if(state.generator==='planetary/1'){
+    const expected=planetRegionOrigin(world.regionOrigin),actual=planetRegionOrigin(state.regionOrigin||{x:0,y:0});
+    if(expected.x!==actual.x||expected.y!==actual.y)throw Error('Saved planet region does not match its physical World.');
+  }else if(state.regionOrigin!==undefined)throw Error('Nonplanetary world cannot have a region origin.');
   if(state.generator==='planetary/1'){if(!state.planet)throw Error('Saved planet descriptor is missing.');world.planet=new PlanetGeography(world.seed,state.planet)}else{if(state.planet!=null)throw Error('Planet descriptor conflicts with saved generator.');delete world.planet}
   if(state.pageLayout)validatePageLayout(world,state.pageLayout);
   restoreSurfaceTopology(world,state);
@@ -172,6 +178,9 @@ export function createSimulationSnapshot(sim,{reason='autosave',savedAt=new Date
     rngState:sim.rng.state,
     core,
     world:snapshotWorld(sim.world),
+    // Remote physical regions are owned independently, never duplicated into
+    // the active biome or inventing stock when a save is resumed.
+    ...(sim.planetaryRegions&&sim.planetaryRegions.regions.size>1?{regionalWorlds:sim.planetaryRegions.entries().filter(e=>e.world!==sim.world).map(e=>({origin:planetRegionOrigin(e.origin),world:snapshotWorld(e.world)}))}:{}),
     animals:sim.animals,
     controllers:snapshotControllers(sim),
     meta:saveMetadata(sim,{savedAt,reason})
@@ -233,7 +242,8 @@ export function restoreSimulationSnapshot(snapshot){
   if(!snapshot.seed)throw new Error('Save has no world seed.');
   if(!Array.isArray(snapshot.animals))throw new Error('Save has no animal state.');
 
-  const sim=new Simulation(snapshot.seed,{player:snapshot.core?.playerEnabled!==false,bootstrap:false});
+  const planetOrigin=snapshot.world?.generator==='planetary/1'?planetRegionOrigin(snapshot.world.regionOrigin||{x:0,y:0}):{x:0,y:0};
+  const sim=new Simulation(snapshot.seed,{player:snapshot.core?.playerEnabled!==false,bootstrap:false,worldGenerator:snapshot.world?.generator==='planetary/1'?'planetary/1':undefined,planetOrigin});
   Object.assign(sim,snapshot.core||{});
   delete sim._player; // Runtime lookup cache is rebuilt from canonical playerId/animals.
   sim.seed=snapshot.seed;
@@ -241,6 +251,19 @@ export function restoreSimulationSnapshot(snapshot){
   restoreBirthRules(sim,snapshot.core||{});
   restoreEcologyRules(sim,snapshot.core||{});
   restoreWorld(sim.world,snapshot.world,{initializeMissingFreshwater});
+  if(snapshot.regionalWorlds!==undefined){
+    if(!sim.planetaryRegions||!Array.isArray(snapshot.regionalWorlds)||snapshot.regionalWorlds.length>16)
+      throw Error('Invalid saved planetary region set.');
+    const seen=new Set([regionKey(planetOrigin)]);
+    for(const entry of snapshot.regionalWorlds){
+      const origin=planetRegionOrigin(entry?.origin),key=regionKey(origin);
+      if(seen.has(key))throw Error('Duplicate planetary region authority.');seen.add(key);
+      if(!entry.world||regionKey(planetRegionOrigin(entry.world.regionOrigin))!==key)
+        throw Error('Regional world has inconsistent geographic identity.');
+      const region=new World(snapshot.seed,{generator:'planetary/1',planetOrigin:origin});
+      restoreWorld(region,entry.world);sim.planetaryRegions.install(region);
+    }
+  }
   validatePageDayWork(sim.pageDayWork,sim.world);
   if(sim.pageDayWork&&sim.pageDayWork.lastDay>sim.day)throw Error('Vegetation page work day is in the future.');
   sim.animals=snapshot.animals;
