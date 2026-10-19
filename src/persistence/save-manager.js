@@ -297,7 +297,11 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false}={}){
       if(seen.has(key))throw Error('Duplicate planetary region authority.');seen.add(key);
       if(!entry.world||regionKey(planetRegionOrigin(entry.world.regionOrigin))!==key)
         throw Error('Regional world has inconsistent geographic identity.');
-      const region=new World(snapshot.seed,{generator:'planetary/1',planetOrigin:origin});
+      // Saved surveyed regions have the same complete physical-field authority
+      // as the active world. Do not regenerate a second biome only to overwrite
+      // it, but keep historical/partial regional saves on the original path.
+      const direct=!regenerateWorld&&completeWorldForDirectRestore({schema:snapshot.schema,world:entry.world});
+      const region=new World(snapshot.seed,{generator:'planetary/1',planetOrigin:origin,restoreOnly:direct});
       restoreWorld(region,entry.world);sim.planetaryRegions.install(region);
     }
   }
