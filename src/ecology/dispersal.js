@@ -1,6 +1,7 @@
 import {initializeBotanicalReproduction,advanceBotanicalReproduction,contactBotanicalFlower,dropBotanicalPollen} from './botanical-reproduction.js';
 import {mouthOf} from './functional-diet.js';
 import {plantHandling,plantHandlingAffordable} from './plant-handling.js';
+import {coldFloraTemperatureFactor} from './cold-flora.js';
 import {initializeFloraInheritance,adultFloraGenome,makeClonalPropagule,registerFloraGenome,addSeedCohorts,scaleSeedCohorts,chooseSeedCohort,commitSeedEstablishment,reconcileSeedCell} from './flora-inheritance.js';
 import {exportPlantReserve,producerBoundary} from './plant-resources.js';
 import {FLORA_TISSUES,founderFloraGenome,floraMealChannels,validFloraGenome} from './flora-genotype.js';
@@ -95,7 +96,7 @@ export class PlantDispersalController{
   }
   germinate(kind,i,moisture,fertility,temp){
     const p=PLANTS[kind],d=p?.dispersal,bank=this.seedBank(kind);if(!d||!bank||this.isEstablished(kind,i)||this.sim.world.plants[kind][i]>.002||bank[i]<.012)return 0;
-    const selected=chooseSeedCohort(this,kind,i);if(!selected)return 0;const waterFit=Math.max(0,1-Math.abs(moisture-selected.genome.traits.waterNeed)*1.75),tempFit=Math.max(0,1-Math.abs(temp-.58)*1.55),fit=waterFit*tempFit*(.42+.58*fertility);
+    const selected=chooseSeedCohort(this,kind,i);if(!selected)return 0;const waterFit=Math.max(0,1-Math.abs(moisture-selected.genome.traits.waterNeed)*1.75),tempFit=coldFloraTemperatureFactor(kind,temp),fit=waterFit*tempFit*(.42+.58*fertility);
     if(fit<.20)return 0;
     const x=i%this.sim.world.n,y=Math.floor(i/this.sim.world.n);
     const disturbance=d.soilDisturbanceResponse?this.sim.partAbilities?.disturbedSoilAt(x,y)||0:0;
