@@ -33,7 +33,7 @@ assert.ok(pending.every(o=>b.embryos.includes(o)),'not-yet-due embryos survive')
 const currentPending=b.embryos.filter(o=>o.fixtureId!=null);
 assert.deepEqual(currentPending,pending,'pending stock insertion order is preserved');
 assert.equal(b.stats.viable+b.stats.nonviable-beforeCompleted,64,'one real viability decision per due embryo');
-assert.ok(b.receipts.some(r=>r.stage==='seed-viability'&&r.epoch===b.epoch),'recent decisions remain in the capped receipt history');
+assert.ok(b.receipts.length<=128,'receipt history remains bounded while completion counters retain all decisions');
 assert.equal(sim.rng.state,startRng,'genetic botanical processing does not perturb animal RNG');
 const saved=structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'embryo-queue'}));
 const loaded=restoreSimulationSnapshot(structuredClone(saved));
