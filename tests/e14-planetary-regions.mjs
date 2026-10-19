@@ -63,7 +63,7 @@ east.moisture[i]=.44;
 east.carrion[i]=.29;
 assert.equal(center.plants.bramble[i],oldOther);
 assert.strictEqual(atlas.get({x:128,y:0}),east);
-assert.equal(east.plants.bramble[i],.376,'returning to a region sees consumed or modified stocks, not new founders');
+assert.ok(Math.abs(east.plants.bramble[i]-.376)<1e-6,'returning to a region sees modified Float32 stock, not new founders');
 assert.equal(atlas.entries().length,4);
 const snapshot=structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'e14'}));
 assert.equal(snapshot.regionalWorlds.length,3,'exactly one copy per inactive region and none of active world');
