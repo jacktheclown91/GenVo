@@ -31,6 +31,8 @@ jobs:
           node tests/dispersal.mjs
           node tests/flora-tissue-propagules.mjs
           node tests/botanical-reproduction.mjs
+          node tests/botanical-safety.mjs
+          node tests/botanical-embryo-queue.mjs
           node tests/flora-seed-codec.mjs
       - name: Deterministic full save and continuation
         run: node tests/save-persistence.mjs
@@ -43,3 +45,5 @@ jobs:
         run: node tools/benchmark-flora-seed-decoder.mjs
       - name: Observe synthetic large-bank processing cost without outcome targets
         run: node tools/benchmark-seed-daily-hotpath.mjs
+      - name: Measure ordered botanical embryo queue work
+        run: node tools/benchmark-botanical-embryos.mjs
