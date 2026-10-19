@@ -1,0 +1,30 @@
+name: E9 focused canopy ecology
+on:
+  push:
+    branches:
+      - feat/e9-canopy-roost-nesting
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  canopy-slice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Only feature-integrated syntax
+        run: |
+          node --check src/ecology/canopy-site.js
+          node --check src/lineage/flight.js
+          node --check src/lineage/lifestyle.js
+          node --check src/reproduction/egg-ecology.js
+          node --check src/sim/simulation.js
+          node --check src/gameplay/interaction-command.js
+          node --check src/ui/creature-context-tray.js
+          node --check src/render/renderer.js
+          node --check src/main.js
+      - name: Targeted real ecology smoke
+        run: node tests/e9-canopy-nests.mjs
