@@ -1,0 +1,35 @@
+name: E18 canonical offscreen biology
+on:
+  push:
+    branches:
+      - feat/e18-offscreen-biological-replay
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  real-offscreen-ecology:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax checks
+        run: |
+          node --check src/world/planetary-offscreen-biology.js
+          node --check src/world/planetary-offscreen-environment.js
+          node --check src/world/planetary-travel.js
+          node --check src/sim/simulation.js
+          node --check src/persistence/save-manager.js
+      - name: E18 real independent fauna ecology and return trip
+        run: node tests/e18-offscreen-biology.mjs
+      - name: E17 physical-only legacy and environmental ledgers
+        run: node tests/e17-offscreen-environment.mjs
+      - name: E16 family and nursing cohort border travel
+        run: node tests/e16-family-travel.mjs
+      - name: E15 animal handoff and E14 geography
+        run: |
+          node tests/e15-planetary-travel.mjs
+          node tests/e14-planetary-regions.mjs
+          node tests/planet-geography.mjs
