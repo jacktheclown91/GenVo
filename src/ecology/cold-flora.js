@@ -37,7 +37,7 @@ export function initializeColdFlora(world){
    if(world.water[i]){plants[i]=0;continue}
    const x=i%world.n,y=(i/world.n)|0,
      viability=coldFloraSuitability(kind,{temperature:world.temperature[i],elevation:world.terrain?.elevation?.[i]||0,moisture:world.moisture[i],fertility:world.fertility[i]});
-   const noise=coordNoise(world.seedHash^(kind==='frostlichen'?0x4541311:0x4541322),x,y);
+   const noise=coordNoise(world.seedHash^(kind==='frostlichen'?0x4541311:0x4541322),x+(world.regionOrigin?.x||0),y+(world.regionOrigin?.y||0));
    const threshold=kind==='frostlichen'?.38:.60;
    plants[i]=viability>.08&&noise>threshold?Math.min(PLANTS[kind].carry,(kind==='frostlichen'?.20:.24)*viability*(.45+noise)):0;
   }
