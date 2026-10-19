@@ -7,6 +7,7 @@ import {biomeAt,countBiomes} from './biomes.js';
 import {initializeTopography} from './topography.js';
 import {initializeOrganicResources} from '../ecology/organic-resource-cycle.js';
 import {initializePlantResources} from '../ecology/plant-resources.js';
+import {initializeColdFlora} from '../ecology/cold-flora.js';
 import {coordNoise,hashString} from '../core/rng.js';
 import {CFG,PLANTS} from '../sim/config.js';
 import {initializeFreshwater} from '../ecology/freshwater-food.js';
@@ -22,7 +23,7 @@ export class World{
   generate(){if(this.planet)return initializePlanetWorld(this);const n=this.n;for(let y=0;y<n;y++)for(let x=0;x<n;x++){const i=y*n+x;const broad=(coordNoise(this.seedHash,x>>3,y>>3)+coordNoise(this.seedHash^0x915f,x>>4,y>>4))*.5;const fine=coordNoise(this.seedHash^0x51ac,x,y);const river=Math.abs((y/n)-(.5+.18*Math.sin((x+this.seedHash%97)*.055)))<.025;const wet=Math.min(1,.18+broad*.68+(river?.55:0));this.moisture[i]=wet;this.water[i]=generatedWaterAt(this,x,y,this.generator);this.fertility[i]=Math.min(1,.22+.58*coordNoise(this.seedHash^0x8191,x>>2,y>>2)+.2*wet);this.temperature[i]=.62-.28*(y/n)+.08*(fine-.5);
       for(const [kind,p] of Object.entries(PLANTS))this.plants[kind][i]=this.water[i]?0:this.initialPlant(p.init,{wet,fine,fertility:this.fertility[i],x,y,kind});
     }
-    this.buildLandRegions();this.buildHydrology();initializeTopography(this);this.terrain.travelEnabled=this.generator===WORLD_GENERATORS.coast;if(this.generator===WORLD_GENERATORS.coast){initializeEnvironment(this);for(let i=0;i<this.len;i++){this.temperature[i]=.54+this.environment.temperatureOffset[i];if(!this.water[i]){this.moisture[i]=Math.min(1,this.moisture[i]*this.environment.rainScale[i]);const x=i%n,y=(i/n)|0;for(const [kind,p] of Object.entries(PLANTS))this.plants[kind][i]=this.initialPlant(p.init,{wet:this.moisture[i],fine:coordNoise(this.seedHash^0x51ac,x,y),fertility:this.fertility[i],x,y,kind});}}}this.buildHydrology();initializeFreshwater(this);initializePlantResources(this);initializeOrganicResources(this);
+    this.buildLandRegions();this.buildHydrology();initializeTopography(this);this.terrain.travelEnabled=this.generator===WORLD_GENERATORS.coast;if(this.generator===WORLD_GENERATORS.coast){initializeEnvironment(this);for(let i=0;i<this.len;i++){this.temperature[i]=.54+this.environment.temperatureOffset[i];if(!this.water[i]){this.moisture[i]=Math.min(1,this.moisture[i]*this.environment.rainScale[i]);const x=i%n,y=(i/n)|0;for(const [kind,p] of Object.entries(PLANTS))this.plants[kind][i]=this.initialPlant(p.init,{wet:this.moisture[i],fine:coordNoise(this.seedHash^0x51ac,x,y),fertility:this.fertility[i],x,y,kind});}}}this.buildHydrology();initializeColdFlora(this);initializeFreshwater(this);initializePlantResources(this);initializeOrganicResources(this);
   }
 
   buildLandRegions(){
