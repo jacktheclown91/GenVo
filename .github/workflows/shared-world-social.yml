@@ -1,0 +1,27 @@
+name: GenVo shared-world social biology
+on:
+  push:
+    branches:
+      - codex/repository-consolidation
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: shared-world-social-${{ github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  wildlife:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Social authority, active world and independent region
+        run: |
+          node --check src/cognition/social.js
+          node tests/social.mjs
+          node tests/remote-wild-social.mjs
+      - name: Canonical biological region replay regression
+        run: node tests/e18-offscreen-biology.mjs
