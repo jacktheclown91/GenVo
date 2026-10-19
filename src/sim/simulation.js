@@ -560,6 +560,7 @@ export class Simulation{
   resourceAvailability(type){
     const a=this.player();if(!a?.alive)return{enabled:false,reason:'No active creature.'};
     if(this.paused)return{enabled:false,reason:'Resume the world first.'};
+    if(a.airborne)return{enabled:false,reason:'Land first. Surface food and water cannot be used while airborne.'};
     if(type==='drink'){if(!this.world.isDrinkable(a.x,a.y))return{enabled:false,reason:'Move beside drinkable water.'};const spec=SPECIES[a.species],limit=Math.min((this.discovery?.poolBonus?.(a)||0)+(partEffectFactors(a)?.mouthFood?.drinkEnergy||0),spec.maxEnergy-a.energy);if(a.hydration>=spec.maxHydration-.05&&!freshwaterHarvestCandidate(this,a,limit))return{enabled:false,reason:'Already hydrated; no usable filter food here.'};return{enabled:true,reason:''}}
     if(type==='eat')return this.foraging.availability(a);
     return{enabled:false,reason:'Unknown resource action.'};
