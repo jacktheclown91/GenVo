@@ -183,7 +183,7 @@ export function createSimulationSnapshot(sim,{reason='autosave',savedAt=new Date
     world:snapshotWorld(sim.world),
     // Remote physical regions are owned independently, never duplicated into
     // the active biome or inventing stock when a save is resumed.
-    ...(sim.planetaryRegions&&sim.planetaryRegions.regions.size>1?{regionalWorlds:sim.planetaryRegions.entries().filter(e=>e.world!==sim.world&&!sim.planetaryTravel?.sessions?.some(s=>s.key===e.key)).map(e=>({origin:planetRegionOrigin(e.origin),world:snapshotWorld(e.world)}))}:{}),
+    ...(sim.planetaryRegions&&sim.planetaryRegions.entries().some(e=>e.world!==sim.world&&!sim.planetaryTravel?.sessions?.some(s=>s.key===e.key))?{regionalWorlds:sim.planetaryRegions.entries().filter(e=>e.world!==sim.world&&!sim.planetaryTravel?.sessions?.some(s=>s.key===e.key)).map(e=>({origin:planetRegionOrigin(e.origin),world:snapshotWorld(e.world)}))}:{}),
     animals:sim.animals,
     controllers:snapshotControllers(sim),
     meta:saveMetadata(sim,{savedAt,reason})
