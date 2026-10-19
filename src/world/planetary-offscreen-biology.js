@@ -116,7 +116,11 @@ export function advanceRemoteBiology(active,session,{maxTicks=OFFSCREEN_BIOLOGY.
  // The snapshot builder owns food/seed/soil/genomes; never synthesize a copy
  // of one selected field and discard its corresponding conservation account.
  const copy=createSimulationSnapshot(temp,{
-  reason:session.snapshot.reason,savedAt:session.snapshot.savedAt});
+  reason:session.snapshot.reason,savedAt:session.snapshot.savedAt,
+  // The restored region is exclusively owned and discarded after publication.
+  // Transfer immutable checkpoint metadata instead of cloning all cohort
+  // arrays/objects yet again. Ordinary saves retain protective deep copies.
+  ownedRegionalSeedMetadata:true});
  copy.meta=session.snapshot.meta;
  delete copy.regionalWorlds;
  const candidate={...session,snapshot:copy,biologicalLedger:ledger,
