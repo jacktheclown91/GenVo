@@ -3,6 +3,7 @@
 // season temperature, moving precipitation, terrain and actual vegetation
 // determine the label. Changes in those fields may change the local biome.
 import {localTemperature,localRain,salinityAt} from './environment.js';
+import {snowDepth} from './snowpack.js';
 
 export const BIOMES=Object.freeze({
  ocean:'Saline waters',freshwater:'Fresh water',alpine:'Alpine slopes',
@@ -29,7 +30,7 @@ export function biomeAt(world,index,climate){
  else if(moisture>=.51&&bramble>=.18)code='thicket';
  else if(moisture>=.51&&rain>=.53)code='meadow';
  else code='grassland';
- return{code,label:BIOMES[code],temperature:temp,rain,moisture,elevation:height,fertility,
+ return{code,label:BIOMES[code],temperature:temp,rain,moisture,elevation:height,snowDepth:snowDepth(w,index),fertility,
   salinity:w.water[index]?salinityAt(w,index):0};
 }
 export function countBiomes(world,climate){
