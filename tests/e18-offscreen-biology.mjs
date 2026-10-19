@@ -61,7 +61,7 @@ assert.deepEqual(region.snapshot.world.organicResources,physical.world.organicRe
 assert.deepEqual(region.snapshot.controllers.dispersal,physical.controllers.dispersal);
 assert.equal(region.snapshot.core.stats.deaths,reference.stats.deaths);
 assert.equal(region.snapshot.core.stats.births,reference.stats.births);
-assert.equal(region.snapshot.animals.find(a=>a.id===deadId)?.alive,false);
+assert.ok(!region.snapshot.animals.some(a=>a.id===deadId&&a.alive),'canonical death removes or marks organism nonliving');
 assert.notDeepEqual(region.snapshot.world.plants,beforeWorld.plants,'canonical production must actually alter finite flora stocks');
 const checkpoint=snap(active);
 assert.deepEqual(snap(restoreSimulationSnapshot(structuredClone(checkpoint))),checkpoint,
@@ -78,7 +78,7 @@ const returned=crossPlanetaryBorder(reloaded);
 assert.equal(returned.ok,true,returned.message);
 const home=returned.simulation;
 assert.equal(home.world.regionOrigin.x,0);
-assert.equal(home.animals.find(a=>a.id===deadId)?.alive,false);
+assert.ok(!home.animals.some(a=>a.id===deadId&&a.alive),'return must not resurrect dead archived animals');
 assert.deepEqual(home.world.plants,reference.world.plants);
 assert.deepEqual(home.world.carrion,reference.world.carrion);
 assert.equal(home.world.environment.day,1);
