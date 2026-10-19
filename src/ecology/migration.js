@@ -3,6 +3,7 @@ import {SPECIES} from '../organisms/species.js';
 import {groundDiet,canHunt,preyPreference} from './functional-diet.js';
 import {forageRangeEffect} from '../lineage/effects.js';
 import {FRESHWATER_FOOD,freshwaterPreference,freshwaterField} from './freshwater-food.js';
+import {coldMigrationOpportunity,COLD_BEHAVIOR} from './cold-wildlife.js';
 
 // Shared habitat migration authority. Founder lines retain seasonal home/refuge
 // behavior; ordinary wildlife evaluates perceived connected habitat under pressure.
@@ -26,7 +27,7 @@ export class MigrationController{
       this.progress(animal,state);
       if(!this.founder(animal)&&state.status!=='settled')continue;
       state.recommendation=this.recommend(animal);
-      if(!animal.player&&state.status==='settled'&&state.recommendation?.shouldMigrate&&!this.sim.family.isDependent(animal))this.begin(animal,state.recommendation.target,'scarcity');
+      if(!animal.player&&state.status==='settled'&&state.recommendation?.shouldMigrate&&!this.sim.family.isDependent(animal))this.begin(animal,state.recommendation.target,state.recommendation.reason==='cold-season refuge'?'cold-season refuge':'scarcity');
     }
   }
   progress(animal,state=this.ensure(animal)){
@@ -36,6 +37,13 @@ export class MigrationController{
       if(!target||!this.sim.canOccupy(animal,target.x,target.y)||!this.sim.canReach(animal,target.x,target.y)||!this.sim.carrying.breedingState(animal,{at:target}).allowed){state.status='settled';state.target=null;state.dispersalArrival=null;state.reason='dispersal destination requires reassessment';return}
       const committed=this.sim.territory.state(animal)?.residenceAnchor;if(state.dispersalArrival&&committed?.arrivalDay===state.dispersalArrival.day){state.status='settled';state.target=null;state.reason='established dispersal home';return}
       if(Math.hypot(animal.x-target.x,animal.y-target.y)<=1){if(!state.dispersalArrival){const territory=this.sim.territory.state(animal);const visitBaseline=[...territory.cells.values()].filter(c=>Math.hypot(c.x-animal.x,c.y-animal.y)<=8).reduce((n,c)=>n+c.visits,0);state.dispersalArrival={x:animal.x,y:animal.y,day:this.sim.day,visitBaseline};state.arrivedDay=this.sim.day;}const learned=this.sim.territory.state(animal)?.residenceAnchor;state.status=learned?.arrivalDay===state.dispersalArrival.day?'settled':'settling';if(state.status==='settled')state.target=null;state.reason=state.status==='settled'?'established dispersal home':'learning dispersal home';}
+      return;
+    }
+    if(state.purpose==='cold'){
+      const now=this.sim.world.temperature[this.sim.world.idx(animal.x,animal.y)];
+      if(!target||!this.sim.canOccupy(animal,target.x,target.y)||!this.sim.canReach(animal,target.x,target.y)||
+         now>COLD_BEHAVIOR.wakeTemperature){state.status='settled';state.target=null;state.reason='cold route no longer required or reachable';return}
+      if(Math.hypot(animal.x-target.x,animal.y-target.y)<=1.2){state.status='settled';state.target=null;state.arrivedDay=this.sim.day;state.reason='reached warmer forage';this.sim.regionalEcology?.noteMigrationArrival(animal,target)}
       return;
     }
     if(this.founder(animal)&&(!target||!this.sim.canOccupy(animal,target.x,target.y)||!this.sim.canReach(animal,target.x,target.y))){state.status='settled';state.target=null;state.reason='destination requires reassessment';return}
@@ -113,10 +121,12 @@ export class MigrationController{
     if(this.founder(animal)&&!home&&target.purpose!=='dispersal')return false;
     if(!this.sim.canOccupy(animal,target.x,target.y)||!this.sim.canReach(animal,target.x,target.y))return false;
     if(!this.founder(animal)&&(!this.sim.canOccupy(animal,target.x,target.y)||!this.sim.canReach(animal,target.x,target.y)||Math.hypot(target.x-animal.x,target.y-animal.y)>9*animal.genes.senses*forageRangeEffect(this.sim,animal)))return false;
-    state.dispersalArrival=null;state.purpose=target.purpose==='dispersal'?'dispersal':'seasonal';state.status='outbound';state.origin=home?{...home}:{x:animal.x,y:animal.y};state.target={x:target.x,y:target.y,quality:target.quality??this.habitatQuality(animal,target.x,target.y).score};state.reason=reason;state.departedSeason=this.sim.season;state.departedDay=this.sim.day;state.arrivedDay=null;
+    state.dispersalArrival=null;state.purpose=target.purpose==='dispersal'?'dispersal':reason==='cold-season refuge'?'cold':'seasonal';state.status='outbound';state.origin=home?{...home}:{x:animal.x,y:animal.y};state.target={x:target.x,y:target.y,quality:target.quality??this.habitatQuality(animal,target.x,target.y).score};state.reason=reason;state.departedSeason=this.sim.season;state.departedDay=this.sim.day;state.arrivedDay=null;
     this.sim.cognition.recordOnce(animal,`migration-depart:${this.sim.year}:${this.sim.day}`,`Left home for a better ${this.sim.season.toLowerCase()} area`,{x:state.target.x,y:state.target.y,reason});return true;
   }
   recommendWild(animal){
+    const thermal=coldMigrationOpportunity(this.sim,animal);
+    if(thermal)return{home:{x:animal.x,y:animal.y},homeQuality:this.habitatQuality(animal,animal.x,animal.y),target:thermal,delta:thermal.temp-this.sim.world.temperature[this.sim.world.idx(animal.x,animal.y)],shouldMigrate:true,reason:'cold-season refuge',distance:Math.hypot(thermal.x-animal.x,thermal.y-animal.y)};
     const sim=this.sim,s=SPECIES[animal.species],origin={x:animal.x,y:animal.y},current=sim.carrying.breedingState(animal);
     const ready=animal.age>=s.maturity&&animal.energy/s.maxEnergy>=.72&&animal.hydration/s.maxHydration>=.58&&!animal.infected&&!sim.family.isDependent(animal);
     const radius=9*animal.genes.senses*forageRangeEffect(sim,animal);
