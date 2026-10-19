@@ -8,7 +8,10 @@ export function rainFrontFactor(world,day,index){
  if(!world?.environment||!Number.isSafeInteger(day)||day<0)return 1;
  const n=world.n;
  if(!Number.isSafeInteger(n)||n<=0||!Number.isSafeInteger(index)||index<0||index>=world.len)throw Error('Invalid regional rain front position.');
- const x=(index%n+.5)/n,y=(Math.floor(index/n)+.5)/n;
+ // Planetary regions share one absolute front field. Localized inland
+ // worlds retain their established n-relative rainfall pattern unchanged.
+ const x=((world.regionOrigin?.x||0)+(index%n)+.5)/n,
+   y=((world.regionOrigin?.y||0)+Math.floor(index/n)+.5)/n;
  const seedPhase=TAU*((world.seedHash>>>0)/4294967296);
  // Two traveling wet/dry bands wrap across the current world. Fixed latitude
  // shear keeps the bands broad and contiguous. A complete x-row has mean 1,
