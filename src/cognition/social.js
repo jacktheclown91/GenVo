@@ -2,7 +2,26 @@ import {CFG} from '../sim/config.js';
 import {SPECIES,canPreyOn} from '../organisms/species.js';
 
 export class SocialController{
-  constructor(sim){this.sim=sim;this.states=new Map();this.lastObserveTick=-Infinity;this.stats={alarms:0,cohesionMoves:0,spacingMoves:0}}
+  constructor(sim){this.sim=sim;this.states=new Map();this.contacts=new Map();this.lastContactDay=-Infinity;this.lastObserveTick=-Infinity;this.stats={alarms:0,cohesionMoves:0,spacingMoves:0}}
+  contactKey(a,b){return a<b?`${a}:${b}`:`${b}:${a}`}
+  familiarity(a,b){return this.contacts?.get(this.contactKey(a.id,b.id))||null}
+  // Pair history is actual repeated contact, not a universal affection score.
+  // Forgotten acquaintances cannot accumulate without bound in mature worlds.
+  rememberContacts(encounters){
+    this.contacts??=new Map();this.lastContactDay??=-Infinity;
+    const day=this.sim.day;
+    if(day===this.lastContactDay)return;
+    this.lastContactDay=day;
+    const alive=new Set(this.sim.animals.filter(a=>a.alive).map(a=>a.id));
+    for(const [key,c] of this.contacts){
+      if(day-c.day>16||!alive.has(c.a)||!alive.has(c.b))this.contacts.delete(key);
+    }
+    for(const [key,encounter] of encounters){
+      const old=this.contacts.get(key),observations=old?.observations||0;
+      this.contacts.set(key,{a:encounter.a,b:encounter.b,day,observations:Math.min(16,observations+1),
+        sharedDanger:Math.min(8,(old?.sharedDanger||0)+(encounter.sharedDanger?1:0))});
+    }
+  }
   profile(animal){return SPECIES[animal?.species]?.social||null}
   enabled(animal){const p=this.profile(animal);return !!(animal?.alive&&p&&p.mode!=='solitary')}
   behaviorEnabled(animal){
@@ -15,7 +34,7 @@ export class SocialController{
     const interval=CFG.lifeStride*2;
     if(!force&&this.states.size&&this.sim.tickCount-this.lastObserveTick<interval)return;
     this.lastObserveTick=this.sim.tickCount;this.states.clear();
-    const directAlarms=new Map(),socialAnimals=[];
+    const directAlarms=new Map(),socialAnimals=[],encounters=new Map();
     // Compute each animal's own alarm once; group members can then relay it without repeating predator searches.
     for(const animal of this.sim.animals){
       if(!this.enabled(animal))continue;socialAnimals.push(animal);const profile=this.profile(animal);
@@ -31,6 +50,15 @@ export class SocialController{
       });
       candidates.sort((a,b)=>b.affinity-a.affinity||a.distance-b.distance||a.animal.id-b.animal.id);
       for(const c of candidates.slice(0,Math.max(0,(profile.maxGroup||8)-1)))members.push(c.animal);
+      // Collect observations before publishing any new memories. The candidate
+      // ranking for this pass must not depend on animal iteration order.
+      if(!force)for(const other of members){
+        if(other.id===animal.id)continue;
+        const key=this.contactKey(animal.id,other.id),a=Math.min(animal.id,other.id),b=Math.max(animal.id,other.id);
+        const sharedDanger=!!(directAlarms.get(animal.id)||directAlarms.get(other.id));
+        const previous=encounters.get(key);
+        encounters.set(key,{a,b,sharedDanger:sharedDanger||!!previous?.sharedDanger});
+      }
       const center={x:members.reduce((n,m)=>n+m.x,0)/members.length,y:members.reduce((n,m)=>n+m.y,0)/members.length};
       let nearest=null,nearestD=Infinity,alarm=null;
       for(const m of members){
@@ -39,6 +67,7 @@ export class SocialController{
       }
       this.states.set(animal.id,{mode:profile.mode,label:profile.label||profile.mode,members:members.map(m=>m.id),size:members.length,center,nearestId:nearest?.id??null,nearestDistance:nearestD,alarm});
     }
+    if(!force)this.rememberContacts(encounters);
   }
   associates(a,b){
     // Temporary local social membership is neither genealogy nor food demand.
@@ -54,6 +83,8 @@ export class SocialController{
       if(rel!=='unrelated')score*=profile.kinBias;
 
     }
+    const previous=this.familiarity(a,b);
+    if(previous)score*=1+Math.min(.25,previous.observations*.016)+Math.min(.12,previous.sharedDanger*.015);
     return score;
   }
   state(animal){return this.states.get(animal?.id)||null}
