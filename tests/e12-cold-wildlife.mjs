@@ -8,6 +8,7 @@ import {COLD_BEHAVIOR,winterFatAnatomy,torporStatus,enterTorpor,wakeTorpor,maint
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 
 const sim=new Simulation('E12-COLD-SEASON',{player:true,bootstrap:false});
+sim.climate={temp:.20,rain:.24,wind:0,frontDay:1}; // ordinary phaseClimate normally initializes this in a bootstrapped world
 const root=founderPlan().nodes.map(n=>({partId:n.partId,parent:n.parent,socket:n.socket}));
 const fat=makePlan([...root,{partId:'fat-tail',parent:'root',socket:'tail'}]);
 const animal=sim.spawnAnimal('genvo',49.5,49.5);
