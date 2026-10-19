@@ -35,7 +35,7 @@ function referenceChoose(f){
   for(const [id,c] of records){draw-=c.amount;if(draw<=0)return{id,record:c,genome:d.floraState.genomes.get(id)}}
   return null;
 }
-const tiny=Number.MIN_VALUE*32;
+const tiny=2**-140; // Positive Float32 subnormal, retained exactly in the bank.
 const cases=[
   {name:'single coherent',stock:.6,rows:[['a',Math.fround(.6),{route:'gut'}]],next:Math.fround(.6)*.982},
   {name:'multi coherent',stock:1,rows:[['a',.2,{originCell:2}],['b',.3,{originCell:3}],['c',.5,{originCell:4}]],next:.982},
