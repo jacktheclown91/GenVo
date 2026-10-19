@@ -31,5 +31,43 @@ export function packFloraSeedBanks(seeds){const kinds={};for(const [kind,cells] 
  return{codec:'genvo.flora-seed-columns/1',kinds};}
 function invalid(){throw Error('Invalid packed seed cohort table.');}
 export function unpackFloraSeedBanks(packed){if(packed?.codec!=='genvo.flora-seed-columns/1'||!packed.kinds||typeof packed.kinds!=='object')invalid();const out={};for(const [kind,t] of Object.entries(packed.kinds)){if(!t||!(t.cells instanceof Int32Array)||!(t.offsets instanceof Uint32Array)||!(t.amounts instanceof Float64Array)||!(t.genomeIndices instanceof Uint32Array)||!(t.orderIndices instanceof Uint32Array)||!Array.isArray(t.genomes)||!Array.isArray(t.orders)||!Array.isArray(t.columns))invalid();const n=t.amounts.length;if(t.offsets.length!==t.cells.length+1||t.offsets[0]!==0||t.offsets.at(-1)!==n||t.genomeIndices.length!==n||t.orderIndices.length!==n||new Set(t.genomes).size!==t.genomes.length||t.genomes.some(id=>typeof id!=='string'))invalid();const columns=new Map();for(const c of t.columns){if(!c||typeof c.field!=='string'||c.field==='amount'||columns.has(c.field)||!Array.isArray(c.values)||!(c.indices instanceof Uint32Array)||c.indices.length!==n)invalid();for(const v of c.values)fingerprint(v);for(const j of c.indices)if(j>c.values.length)invalid();columns.set(c.field,c);}
- const cells=new Map();for(let c=0;c<t.cells.length;c++){const cell=t.cells[c],start=t.offsets[c],end=t.offsets[c+1];if(cell<0||cells.has(cell)||start>end||end>n)invalid();const rows=new Map();for(let i=start;i<end;i++){const id=t.genomes[t.genomeIndices[i]],keys=t.orders[t.orderIndices[i]];if(typeof id!=='string'||rows.has(id)||!Number.isFinite(t.amounts[i])||t.amounts[i]<0||!Array.isArray(keys)||!keys.includes('amount')||new Set(keys).size!==keys.length||keys.some(k=>typeof k!=='string'))invalid();const entries=[];for(const k of keys){if(k==='amount')entries.push([k,t.amounts[i]]);else{const col=columns.get(k),j=col?.indices[i];if(!j)invalid();entries.push([k,copyMetadata(col.values[j-1])]);}}for(const [k,col] of columns)if(col.indices[i]&&!keys.includes(k))invalid();rows.set(id,Object.fromEntries(entries));}cells.set(cell,rows);}out[kind]=cells;}
+ // Field layouts repeat across many seed cohorts. Validate each used order
+ // once, while retaining the original per-row column-presence checks.
+ // The decoder owns this cache only for this unpack call, never the live bank.
+ const orders=new Map();
+ const orderFor=index=>{
+  let info=orders.get(index);
+  if(info)return info;
+  const keys=t.orders[index];
+  if(!Array.isArray(keys)||!keys.includes('amount')||new Set(keys).size!==keys.length||keys.some(k=>typeof k!=='string'))invalid();
+  info={keys,keySet:new Set(keys),fields:keys.map(k=>k==='amount'?null:columns.get(k))};
+  orders.set(index,info);
+  return info;
+ };
+ const cells=new Map();
+ for(let c=0;c<t.cells.length;c++){
+  const cell=t.cells[c],start=t.offsets[c],end=t.offsets[c+1];
+  if(cell<0||cells.has(cell)||start>end||end>n)invalid();
+  const rows=new Map();
+  for(let i=start;i<end;i++){
+   const id=t.genomes[t.genomeIndices[i]];
+   if(typeof id!=='string'||rows.has(id)||!Number.isFinite(t.amounts[i])||t.amounts[i]<0)invalid();
+   const order=orderFor(t.orderIndices[i]),record={};
+   for(let k=0;k<order.keys.length;k++){
+    const field=order.keys[k];
+    if(field==='amount'){record.amount=t.amounts[i];continue;}
+    const column=order.fields[k],j=column?.indices[i];
+    if(!j)invalid();
+    const value=copyMetadata(column.values[j-1]);
+    // Object.fromEntries historically produces an OWN __proto__ property;
+    // ordinary assignment changes the prototype instead.
+    if(field==='__proto__')Object.defineProperty(record,field,{value,enumerable:true,writable:true,configurable:true});
+    else record[field]=value;
+   }
+   for(const [key,column] of columns)if(column.indices[i]&&!order.keySet.has(key))invalid();
+   rows.set(id,record);
+  }
+  cells.set(cell,rows);
+ }
+ out[kind]=cells;}
  return out;}
