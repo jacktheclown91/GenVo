@@ -23,7 +23,7 @@ export function coldFloraSuitability(kind,{temperature,elevation,moisture,fertil
 }
 export function coldFloraTemperatureFactor(kind,temp){
  const p=COLD_FLORA[kind];
- return p?clamp(1-Math.abs(temp-p.optimalTemperature)*p.tolerance):clamp(1-Math.abs(temp-.58)*1.4);
+ return p?clamp(1-Math.abs(temp-p.optimalTemperature)*p.tolerance):clamp(1-Math.abs(temp-.58)*1.55);
 }
 export function coldFloraDieback(kind,temp){
  const p=COLD_FLORA[kind];return p?clamp((temp-p.heatStressStart)*p.heatDieback/.16,0,p.heatDieback):0;
