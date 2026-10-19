@@ -24,14 +24,14 @@ export function flightAvailability(animal,world){
  if(animal.health<FLIGHT.minHealth)return{enabled:false,reason:'Too injured to take off.'};
  if(animal.energy<FLIGHT.minimumEnergy)return{enabled:false,reason:'Need more stored food energy for powered flight.'};
  if(animal.carryingFood)return{enabled:false,reason:'Drop carried food before taking off.'};
- if(!world?.isPlayable(animal.x,animal.y)||world.water[world.idx(animal.x,animal.y)])return{enabled:false,reason:'Take off from firm ground.'};
+ if(!world?.isPlayable(animal.x,animal.y)||(!animal.perched&&world.water[world.idx(animal.x,animal.y)]))return{enabled:false,reason:'Take off from firm ground or a stable canopy perch.'};
  return{enabled:true,airborne:false,reason:'Lift off with inherited wings. Flapping consumes energy.'};
 }
 export function takeoff(animal,world){
  const available=flightAvailability(animal,world);
  if(!available.enabled||available.airborne)return{ok:false,type:'flight',message:available.reason};
  animal.energy-=FLIGHT.takeoffEnergy;
- animal.airborne=true;animal.flightSeconds=0;animal.hidden=false;
+ animal.airborne=true;animal.perched=false;animal.flightSeconds=0;animal.hidden=false;
  return{ok:true,type:'flight',message:'Airborne. Movement crosses water and slopes. Land on solid ground to recover.'};
 }
 export function landingAvailability(animal,world,{swimmer=false}={}){
