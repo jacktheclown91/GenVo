@@ -17,6 +17,7 @@ import {validatePageLayout} from '../world/pages.js';
 import {restoreSurfaceTopology} from '../world/surface-topology.js';
 import {deriveDrainage,validateTopography} from '../world/topography.js';
 import {validateSoilWater} from '../ecology/soil-water.js';
+import {validateSnowpack} from '../world/snowpack.js';
 import {validatePageResidency} from '../ecology/page-residency.js';
 import {validatePageDayWork} from '../world/page-vegetation-work.js';
 import {validatePageSeedTransfers} from '../ecology/page-seed-transfers.js';
@@ -104,7 +105,12 @@ function restoreWorld(world,state,{initializeMissingFreshwater=false}={}){
       if(!Object.hasOwn(state.plantResources.limits||{},kind))state.plantResources.limits[kind]=new Uint8Array(world.len);
     }
     validatePlantResources(world,state.plantResources);world.plantResources=state.plantResources;
-  }else initializePlantResources(world);if(state.organicResources){validateOrganicResources(world,state.organicResources);world.organicResources=state.organicResources;}else initializeOrganicResources(world);if(state.soilWater){validateSoilWater(world,state.soilWater);world.soilWater={...state.soilWater,scratch:new Float32Array(world.len)};}else delete world.soilWater;
+  }else initializePlantResources(world);if(state.organicResources){validateOrganicResources(world,state.organicResources);world.organicResources=state.organicResources;}else initializeOrganicResources(world);if(state.soilWater){validateSoilWater(world,state.soilWater);
+    // Earlier worlds never accumulated snow. Initialize only absent historical
+    // fields to zero, never reconstruct invented past snowfall from the biome.
+    const snowpack=state.soilWater.snowpack??new Float64Array(world.len);validateSnowpack(world,snowpack);
+    world.soilWater={...state.soilWater,snowpack,totals:{...state.soilWater.totals,snowfall:state.soilWater.totals.snowfall??0,snowmelt:state.soilWater.totals.snowmelt??0},scratch:new Float32Array(world.len)};
+  }else delete world.soilWater;
 }
 
 function snapshotControllers(sim){
