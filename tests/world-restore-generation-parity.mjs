@@ -4,12 +4,13 @@ import assert from 'node:assert/strict';
 import {isDeepStrictEqual} from 'node:util';
 import {Simulation} from '../src/sim/simulation.js';
 import {World} from '../src/world/world.js';
+import {CFG} from '../src/sim/config.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot,completeWorldForDirectRestore} from '../src/persistence/save-manager.js';
 
 const save=sim=>structuredClone(createSimulationSnapshot(sim,{reason:'restore-parity',savedAt:'fixed'}));
 for(const [seed,worldGenerator] of [['RESTORE-FAST-FRESH','freshwater/1'],['PLANET-B0-A','planetary/1']]){
   const original=new Simulation(seed,{player:true,worldGenerator});
-  for(let i=0;i<12;i++)original.update(null);
+  for(let i=0;i<CFG.dayTicks+6;i++)original.update(null);
   const checkpoint=save(original);
   assert.equal(completeWorldForDirectRestore(checkpoint),true,'complete current snapshot is eligible');
   // In this mode no world generation is allowed; tests must observe a real
