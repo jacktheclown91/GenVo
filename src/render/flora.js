@@ -31,6 +31,8 @@ export function drawFloraPlant(ctx,{shape,color,amount,px,py,u,x,y,kind,seedAllo
   else if(shape==='fungus')drawMushrooms(ctx,{x,y,u,density,body,light,shade,seed,amount,season});
   else if(shape==='pod')drawSeedPods(ctx,{x,y,u,density,body,light,shade,seed,amount,season,coatAllocation});
   else if(shape==='tree')drawWoodspire(ctx,{u,body,light,shade,deep,seed,amount,season});
+  else if(shape==='bulb')drawDuneBulbs(ctx,{u,body,light,shade,deep,seed,amount,season});
+  else if(shape==='sage')drawDustSage(ctx,{u,body,light,shade,deep,seed,amount,season});
   else pixel(ctx,7,7,2,2,u,body);
   }
   if(reproduction?.receptive){pixel(ctx,at.cx-2,at.cy-4,3,1,u,'#e4d1b0');pixel(ctx,at.cx-1,at.cy-5,1,3,u,'#e4d1b0');pixel(ctx,at.cx-1,at.cy-4,1,1,u,'#e6bd63')}if(reproduction?.pollen){pixel(ctx,at.cx+2,at.cy-4,1,1,u,'#dfba5b');pixel(ctx,at.cx+3,at.cy-2,1,1,u,'#e9d37d')}if(reproduction?.developing){pixel(ctx,at.cx-2,at.cy-2,3,2,u,'#bd9c58');pixel(ctx,at.cx-1,at.cy-2,1,1,u,'#dfc47d')}
@@ -48,6 +50,8 @@ export function drawFloraTrace(ctx,{shape,color,px,py,u,x,y,kind,amount,season='
   else if(shape==='fungus'){pixel(ctx,ox,oy-1,1,2,u,'#77675a');pixel(ctx,ox-1,oy-2,3,1,u,body)}
   else if(shape==='pod'){pixel(ctx,ox,oy-3,1,4,u,body);pixel(ctx,ox-1,oy-4,3,1,u,light)}
   else if(shape==='tree'){pixel(ctx,ox,oy-1,2,2,u,'#655842');pixel(ctx,ox-2,oy-4,6,3,u,shade);pixel(ctx,ox-1,oy-5,4,1,u,light)}
+  else if(shape==='bulb'){pixel(ctx,ox-1,oy-2,3,2,u,shade);pixel(ctx,ox,oy-3,1,2,u,light)}
+  else if(shape==='sage'){pixel(ctx,ox,oy-3,1,4,u,shade);pixel(ctx,ox-2,oy-4,5,2,u,light)}
   ctx.restore();
 }
 
@@ -81,6 +85,33 @@ function drawWoodspire(c,{u,body,light,shade,deep,seed,amount,season}){
  }else{pixel(c,0,-2,2,3,u,'#7c7862');pixel(c,-3,1,3,1,u,'#77806b');}
  pixel(c,0,0,2,2,u,'#786a4c');
  c.restore();
+}
+
+// Seed-limited dryland flora. Both silhouettes remain overhead at every facing,
+// use only paint and deterministic seed input, and never affect the simulation.
+function drawDuneBulbs(c,{u,body,light,shade,deep,seed,amount,season}){
+ const x=7+Math.floor(seed*3),y=9,size=amount>.26?1:.76;
+ c.save();c.translate(x*u,y*u);c.scale(size,size);
+ // Squat radiating fleshy leaves surround a recessed seed crown.
+ for(const [dx,dy,w,h] of [[-6,-1,5,3],[2,-2,5,3],[-2,-6,3,5],[-1,2,3,5]]){
+  pixel(c,dx,dy,w,h,u,deep);pixel(c,dx+.5,dy+.5,w-1,h-1,u,body);
+ }
+ pixel(c,-3,-3,6,6,u,shade);pixel(c,-2,-2,4,4,u,light);
+ pixel(c,-1,-1,2,2,u,'#b18d5d');
+ if((season==='AUTUMN'||amount>.35)&&seed>.30){pixel(c,-1,-2,2,1,u,'#dfbc69');pixel(c,0,0,1,1,u,'#7a5c3d')}
+ c.restore();
+}
+function drawDustSage(c,{u,body,light,shade,deep,seed,amount,season}){
+ const x=7+Math.floor(seed*3),y=11,dense=amount>.30;
+ // Sparse woody spokes bear silver leaves and several protected seed heads.
+ pixel(c,x,y-2,2,5,u,deep);
+ for(const [dx,dy] of [[-5,-4],[4,-5],[-3,-8],[2,-9]]){
+  pixelLine(c,x,y, x+dx,y+dy,u,shade,.85);
+  pixel(c,x+dx-1,y+dy-1,3,dense?2:1,u,body);
+  pixel(c,x+dx,y+dy-1,1,1,u,light);
+ }
+ if(season==='SUMMER'||season==='AUTUMN'){for(const [dx,dy] of [[-5,-5],[4,-6],[2,-10]])
+  pixel(c,x+dx,y+dy,1,1,u,'#d5b879');}
 }
 
 function drawMoss(c,{x,y,u,density,body,light,shade,seed,amount,season}){
