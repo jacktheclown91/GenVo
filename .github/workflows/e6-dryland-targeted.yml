@@ -1,0 +1,25 @@
+name: E6 targeted dryland mechanics
+on:
+  push:
+    branches:
+      - feat/e6-dryland-evolution
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  dryland-targeted:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check only edited gameplay modules and targeted new mechanic
+        run: |
+          node --check src/lineage/terrain-cover-physiology.js
+          node --check src/lineage/lifestyle.js
+          node --check src/sim/simulation.js
+          node --check src/render/part-sprites.js
+          node --check src/lineage/part-registry.js
+          node tests/e6-dryland-evolution.mjs
