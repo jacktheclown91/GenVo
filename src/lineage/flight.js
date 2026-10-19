@@ -57,7 +57,7 @@ export function advanceFlight(animal,world,elapsedSeconds,{rain=0,swimmer=false}
  if(!animal?.alive||!animal.airborne)return null;
  const mass=flightMass(animal),load=Math.max(.7,mass/1.5);
  const wetPenalty=1+Math.max(0,rain-.45)*.5;
- const cost=(FLIGHT.basalEnergyPerSecond+FLIGHT.movingEnergyPerSecond*(animal.movedTick!=null?1:0))*load*wetPenalty*elapsedSeconds;
+ const cost=(FLIGHT.basalEnergyPerSecond+FLIGHT.movingEnergyPerSecond*(moving?1:0))*load*wetPenalty*elapsedSeconds;
  animal.energy-=cost;animal.flightSeconds=(animal.flightSeconds||0)+elapsedSeconds;
  if(animal.energy>0&&animal.health>=FLIGHT.minHealth&&winged(animal)&&mass<=FLIGHT.maxAdultMass)return null;
  animal.airborne=false;animal.flightSeconds=0;
