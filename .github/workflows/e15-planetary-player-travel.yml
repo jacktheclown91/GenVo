@@ -1,0 +1,30 @@
+name: E15 planetary player handoff
+on:
+  push:
+    branches:
+      - feat/e15-player-region-handoff
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  actor-crossing:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Changed module syntax
+        run: |
+          node --check src/world/planetary-travel.js
+          node --check src/world/planet-regions.js
+          node --check src/persistence/save-manager.js
+          node --check src/main.js
+          node --check src/ui/creature-context-tray.js
+      - name: Living player frontier and return trip
+        run: node tests/e15-planetary-travel.mjs
+      - name: Planet foundations regression
+        run: |
+          node tests/e14-planetary-regions.mjs
+          node tests/planet-geography.mjs
