@@ -72,6 +72,7 @@ function highId(sim){
 export function advanceRemoteBiology(active,session,{maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass}={}){
  if(!safe(maxTicks)||maxTicks>OFFSCREEN_BIOLOGY.maxEntryTicks)
   throw Error('Unbounded remote biological work.');
+ if(session?.biologicalMode!=='canonical-ticks/1')throw Error('Archived region has no biological replay authority.');
  const debt=remoteBiologicalDebt(active,session),steps=Math.min(debt,maxTicks);
  if(!steps)return{ticks:0,remaining:debt,key:session.key};
  validateRemoteBiologyLedger(session);
@@ -140,7 +141,7 @@ export function advanceOffscreenBiology(sim,{
  if(!safe(regionsPerPass)||regionsPerPass>1||
    !safe(ticksPerPass)||ticksPerPass>CFG.lifeStride)
   throw Error('Invalid bounded dormant biology scheduler.');
- const due=sim.planetaryTravel.sessions.filter(s=>remoteBiologicalDebt(sim,s)>0)
+ const due=sim.planetaryTravel.sessions.filter(s=>s.biologicalMode==='canonical-ticks/1'&&remoteBiologicalDebt(sim,s)>0)
   .sort((a,b)=>a.snapshot.core.tickCount-b.snapshot.core.tickCount||a.key.localeCompare(b.key));
  return due.slice(0,regionsPerPass).map(s=>advanceRemoteBiology(sim,s,{maxTicks:ticksPerPass}));
 }
