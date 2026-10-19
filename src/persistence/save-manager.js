@@ -1,7 +1,7 @@
 import {restoreMassRules} from '../organisms/body-mass.js';
 import {restoreEcologyRules} from '../ecology/rule-policy.js';
 import {PlanetGeography} from '../world/planet-geography.js';
-import {planetRegionOrigin,regionKey,validatePlanetaryTravelState} from '../world/planet-regions.js';
+import {planetRegionOrigin,regionKey,validatePlanetaryTravelState,validatePlanetAnimalOwnership} from '../world/planet-regions.js';
 import {World} from '../world/world.js';
 import {restoreBirthRules} from '../lineage/birth-rules.js';
 import {packFloraSeedBanks,unpackFloraSeedBanks} from './flora-seed-codec.js';
@@ -271,6 +271,7 @@ export function restoreSimulationSnapshot(snapshot){
   validatePageDayWork(sim.pageDayWork,sim.world);
   if(sim.pageDayWork&&sim.pageDayWork.lastDay>sim.day)throw Error('Vegetation page work day is in the future.');
   sim.animals=snapshot.animals;
+  validatePlanetAnimalOwnership(sim.animals,sim.planetaryTravel);
   restoreMassRules(sim,snapshot.core||{});
   for(const a of sim.animals)if(!a.matePreferences)a.matePreferences=matePreferencesFor(snapshot.seed,a);
   // Older gestations already carry snapshots of both parents. Keep their new
