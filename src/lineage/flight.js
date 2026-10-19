@@ -53,7 +53,7 @@ export function toggleFlight(animal,world,{swimmer=false}={}){
 // when idle. There is no free hovering, infinite flight or hidden fuel stock.
 // Emergency descent is a physical fall. A non-swimmer above open water remains
 // stranded in water with real survival pressure instead of being teleported.
-export function advanceFlight(animal,world,elapsedSeconds,{rain=0,swimmer=false}={}){
+export function advanceFlight(animal,world,elapsedSeconds,{rain=0,swimmer=false,moving=false}={}){
  if(!animal?.alive||!animal.airborne)return null;
  const mass=flightMass(animal),load=Math.max(.7,mass/1.5);
  const wetPenalty=1+Math.max(0,rain-.45)*.5;
