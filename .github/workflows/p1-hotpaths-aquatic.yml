@@ -41,6 +41,15 @@ jobs:
           (cd baseline && node tools/p1-fingerprint.mjs) > "$RUNNER_TEMP/p1-e5-baseline"
           diff -u "$RUNNER_TEMP/p1-e5-baseline" "$RUNNER_TEMP/p1-candidate"
           echo "P1 exact operator selection, state and RNG parity with E5: PASS"
+      - name: Exact original E5 versus P1 high-population 4x saved-world identity
+        shell: bash
+        run: |
+          set -euo pipefail
+          cp tools/p1-observer-fingerprint.mjs baseline/tools/p1-observer-fingerprint.mjs
+          node tools/p1-observer-fingerprint.mjs > "$RUNNER_TEMP/p1-large-world"
+          (cd baseline && node tools/p1-observer-fingerprint.mjs) > "$RUNNER_TEMP/p1-e5-large-world"
+          diff -u "$RUNNER_TEMP/p1-e5-large-world" "$RUNNER_TEMP/p1-large-world"
+          echo 'Real 560-creature full saved-world, ecology and RNG exact parity: PASS'
   aquatic-unchanged:
     runs-on: ubuntu-latest
     timeout-minutes: 5
