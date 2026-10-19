@@ -1,0 +1,36 @@
+name: GenVo seed daily hot path parity
+on:
+  push:
+    branches:
+      - codex/repository-consolidation
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: seed-daily-parity-${{ github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  seed-parity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Source syntax
+        run: |
+          node --check src/ecology/flora-inheritance.js
+          node --check src/ecology/dispersal.js
+          node --check tests/seed-decay-stream-parity.mjs
+      - name: Exact seed cohort arithmetic and iteration parity
+        run: node tests/seed-decay-stream-parity.mjs
+      - name: Natural flora history and genotype accounting
+        run: |
+          node tests/clonal-flora.mjs
+          node tests/dispersal.mjs
+          node tests/flora-tissue-propagules.mjs
+          node tests/botanical-reproduction.mjs
+          node tests/flora-seed-codec.mjs
+      - name: Deterministic full save and continuation
+        run: node tests/save-persistence.mjs
