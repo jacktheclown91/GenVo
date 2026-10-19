@@ -4,6 +4,7 @@ import {deriveDrainage} from './topography.js';
 import {initializeFreshwater} from '../ecology/freshwater-food.js';
 import {initializePlantResources} from '../ecology/plant-resources.js';
 import {initializeOrganicResources} from '../ecology/organic-resource-cycle.js';
+import {initializeColdFlora} from '../ecology/cold-flora.js';
 // Initial geography is immutable input. These World arrays are the sole live state.
 export function initializePlanetWorld(w){
  if(w.n!==128)throw Error('Planet preview currently supports the reviewed 128-tile extent only.');
@@ -15,5 +16,5 @@ export function initializePlanetWorld(w){
  // This bounded preview has no declared external reservoir flux. Dynamic cross-region
  // ocean/river transport is a later authority; do not fabricate replenishment here.
  w.environment={schema:1,temperatureOffset,rainScale,depth,salt,boundary,day:0,totals:{saltInput:0,saltOutput:0,rainWater:0,displacedWater:0},daily:[]};
- w.buildLandRegions();w.buildHydrology();initializeFreshwater(w);initializePlantResources(w);initializeOrganicResources(w);
+ w.buildLandRegions();w.buildHydrology();initializeColdFlora(w);initializeFreshwater(w);initializePlantResources(w);initializeOrganicResources(w);
 }
