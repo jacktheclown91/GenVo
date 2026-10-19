@@ -7,6 +7,8 @@ import {advanceOffscreenEnvironments,advanceRemoteEnvironment,remoteEnvironmentD
  OFFSCREEN_ENVIRONMENT} from '../src/world/planetary-offscreen-environment.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 import {soilWaterStorage} from '../src/ecology/soil-water.js';
+import {rainFrontFactor} from '../src/world/weather-fronts.js';
+import {World} from '../src/world/world.js';
 const seed='PLANET-B0-A',sim=new Simulation(seed,{player:true,worldGenerator:'planetary/1'});
 const save=s=>structuredClone(createSimulationSnapshot(s,{savedAt:'fixed',reason:'e17'})),actor=sim.player();
 let allowed=null;
@@ -91,6 +93,32 @@ assert.equal(home.planetaryTravel.sessions[0].snapshot.core.day,5,'normal game u
 assert.equal(home.planetaryTravel.sessions[0].environmentalLedger.days,2);
 
 // This is a bounded atmospheric processor, NOT a 20-year background fauna sim.
+// Planetary weather fronts must not jump at a world border just because
+// each physical region's arrays restart at index zero.
+const north=new World(seed,{generator:'planetary/1',planetOrigin:{x:0,y:-128}});
+const w=new World(seed,{generator:'planetary/1'});
+for(const x of [11,61,112]){
+ const p=rainFrontFactor(north,17,north.idx(x,127)),q=rainFrontFactor(w,17,w.idx(x,0));
+ assert.ok(Math.abs(p-q)<.02,'moving global weather fronts must be continuous at the north/south seam');
+}
+// Real dormant-region winter: snowfall must accumulate from actual regional
+// precipitation and spring must melt ONLY previously recorded frozen water.
+const coldSim=new Simulation(seed,{player:false,bootstrap:false,worldGenerator:'planetary/1'});
+coldSim.day=25;coldSim.seasonIndex=3;coldSim.year=1;
+const coldArchive={key:'0,0',snapshot:save(coldSim)},coldClock={day:30};
+assert.equal(advanceRemoteEnvironment(coldClock,coldArchive,{maxDays:5}).days,5);
+const snow=coldArchive.snapshot.world.soilWater.snowpack;
+const storedSnow=snow.reduce((acc,v)=>acc+v,0);
+assert.ok(storedSnow>0,'physical winter precipitation forms nonzero archived snow water');
+const snowfall=coldArchive.snapshot.world.soilWater.totals.snowfall;
+assert.ok(snowfall>=storedSnow);
+const springClock={day:40};
+assert.equal(advanceRemoteEnvironment(springClock,coldArchive,{maxDays:10}).days,10);
+assert.ok(coldArchive.snapshot.world.soilWater.totals.snowmelt>0,
+ 'historical spring receives melt from conserved winter snow rather than a biome bonus');
+assert.ok(Math.abs(coldArchive.snapshot.world.soilWater.lastDay.closure)<=1);
+assert.equal(coldArchive.environmentalLedger.days,15);
+assert.equal(coldArchive.snapshot.core.day,40);
 const forged=save(home);const previous=home.planetaryTravel.sessions[0];
 const bogus=structuredClone(forged);bogus.core.planetaryTravel.sessions[0].environmentalLedger.lastDay+=1;
 assert.throws(()=>restoreSimulationSnapshot(bogus),/environmental conservation ledger/);
