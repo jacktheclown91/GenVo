@@ -1,0 +1,29 @@
+name: E8 lightweight flight mechanics
+on:
+  push:
+    branches:
+      - feat/e8-powered-flight
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  flight-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Only changed module syntax
+        run: |
+          node --check src/lineage/flight.js
+          node --check src/lineage/lifestyle.js
+          node --check src/sim/simulation.js
+          node --check src/render/part-sprites.js
+          node --check src/render/renderer.js
+          node --check src/ui/creature-context-tray.js
+          node --check src/main.js
+          node --check src/gameplay/interaction-command.js
+      - name: Focused flight gameplay smoke only
+        run: node tests/e8-powered-flight.mjs
