@@ -94,7 +94,6 @@ export function advanceRemoteEnvironment(active,session,{maxDays=OFFSCREEN_ENVIR
  // save format. Keep save-level identity fields of the existing archive.
  const after=createSimulationSnapshot(temp,{reason:session.snapshot.reason,savedAt:session.snapshot.savedAt});
  after.key=session.snapshot.key;
- after.meta=session.snapshot.meta;
  delete after.regionalWorlds;
  if(after.core.planetaryTravel)throw Error('Recursive offscreen archive.');
  const copy={...session,snapshot:after,environmentalLedger:ledger};
