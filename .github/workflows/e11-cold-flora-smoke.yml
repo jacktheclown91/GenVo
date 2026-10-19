@@ -1,0 +1,31 @@
+name: E11 focused tundra and alpine flora
+on:
+  push:
+    branches:
+      - feat/e11-tundra-alpine-flora
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cold-ecosystem:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Syntax of E11 ecosystem integration
+        run: |
+          node --check src/ecology/cold-flora.js
+          node --check src/ecology/dispersal.js
+          node --check src/ecology/plant-resources.js
+          node --check src/ecology/flora-genotype.js
+          node --check src/world/world.js
+          node --check src/world/planet-world.js
+          node --check src/sim/config.js
+          node --check src/sim/simulation.js
+          node --check src/gameplay/foraging.js
+          node --check src/render/flora.js
+      - name: Focused finite cold plant food web
+        run: node tests/e11-cold-flora.mjs
