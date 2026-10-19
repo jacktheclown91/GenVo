@@ -106,8 +106,17 @@ assert.equal(denialSim.animals.length,previousCount);
 assert.equal(leader2.energy,previousEnergy);
 assert.equal(denialSim.planetaryRegions.regions.size,1,'failed group crossing allocates no new remote region');
 infant.x=leader2.x-.5;infant.y=leader2.y;
-infant.lactationParentId=990001; // absent record is ignored; only actual living parents constrain closure
-assert.ok(!denialSim.animals.some(a=>a.id===infant.lactationParentId&&a.alive));
+// A second living lactation parent who remains inland is not silently
+// stripped from an infant's actual nursing relationship.
+const inland=denialSim.animals.find(a=>a.species==='genvo'&&a.id!==leader2.id&&a.alive);
+assert.ok(inland);
+inland.x=66;inland.y=58;
+infant.lactationParentId=inland.id;
+const noParent=planetaryTravelAvailability(denialSim);
+assert.equal(noParent.enabled,false);
+assert.match(noParent.reason,/living caregiver/i);
+assert.equal(denialSim.animals.filter(a=>a.id===infant.id).length,1);
+
 const duplicate=structuredClone(save);
 const forged=structuredClone(duplicate.animals.find(a=>a.id===baby.id));forged.player=false;
 duplicate.core.planetaryTravel.sessions[0].snapshot.animals.push(forged);
