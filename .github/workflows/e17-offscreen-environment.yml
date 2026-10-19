@@ -18,6 +18,7 @@ jobs:
       - name: Syntax check archive and lifecycle wiring
         run: |
           node --check src/world/planetary-offscreen-environment.js
+          node --check src/world/weather-fronts.js
           node --check src/world/planetary-travel.js
           node --check src/sim/simulation.js
           node --check src/persistence/save-manager.js
