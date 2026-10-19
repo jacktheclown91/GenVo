@@ -61,8 +61,8 @@ const canvas=document.querySelector('#game'),renderer=new Renderer(canvas,sim),k
 let mateOpen=false,mindOpen=false,territoryOpen=false,shelterOpen=false,migrationOpen=false,ecologyOpen=false,helpOpen=false,guideOpen=false,manualPause=false;
 let pointerApproach=null;
 const MOVE_CODES=new Set(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight','KeyJ']);
-const WORLD_ACTION_CODES=new Set(['Space','KeyE','KeyQ','KeyN','KeyF','KeyX','KeyV','KeyZ','KeyC','KeyG','KeyH','Digit1','Digit2','Digit3','Digit4','Digit5','Digit6','Digit7']);
-const MANUAL_TAKEOVER_CODES=new Set(['Space','KeyE','KeyQ','KeyN','KeyF','KeyX','KeyV','KeyZ','KeyC','KeyG','Digit6','Digit7']);
+const WORLD_ACTION_CODES=new Set(['Space','KeyE','KeyQ','KeyN','KeyF','KeyX','KeyV','KeyZ','KeyC','KeyG','KeyH','Digit1','Digit2','Digit3','Digit4','Digit5','Digit6','Digit7','Digit8']);
+const MANUAL_TAKEOVER_CODES=new Set(['Space','KeyE','KeyQ','KeyN','KeyF','KeyX','KeyV','KeyZ','KeyC','KeyG','Digit6','Digit7','Digit8']);
 function clearMovementKeys(){pointerApproach?.cancel();braceInput?.release();sim.playerCombat?.releaseBrace(sim.player());for(const code of MOVE_CODES)keys[code]=false}
 function takeManualControl(){if(!sim.playerAutonomy)return false;sim.setPlayerAutonomy(false);tutorial?.showToast?.('Manual control',900,'safe');return true}
 function setManualPause(value){if(tutorial.worldInputBlocked?.())return false;manualPause=!!value;sim.paused=manualPause;clearMovementKeys();if(pauseNotice)pauseNotice.hidden=!manualPause;audio.note('confirm');return true}
@@ -221,6 +221,7 @@ addEventListener('keydown',e=>{
   if(e.code==='KeyG'&&!e.repeat)sim.migration.togglePlayer(sim.player());
   if(e.code==='Digit6'&&!e.repeat){const r=sim.playerToggleFlight();tutorial.onInteraction(r);audio.noteResult(r)}
   if(e.code==='Digit7'&&!e.repeat){const r=sim.playerToggleRoost();tutorial.onInteraction(r);audio.noteResult(r)}
+  if(e.code==='Digit8'&&!e.repeat){const r=sim.playerToggleTorpor();tutorial.onInteraction(r);audio.noteResult(r)}
   if(e.code==='KeyN'&&!e.repeat){const r=sim.shelter.constructOrRepair(sim.player());tutorial.onShelterAction?.(r);audio.noteResult(r)}
   if(e.code==='KeyF'&&!e.repeat){const r=sim.shelter.cacheNearbyFood(sim.player());tutorial.onShelterAction?.(r);audio.noteResult(r)}
   if(e.code==='KeyX'&&!e.repeat){const r=sim.playerAlarm();tutorial.onInteraction(r);audio.noteResult(r)}
