@@ -37,6 +37,8 @@ jobs:
         run: |
           node tests/e17-offscreen-environment.mjs
           node tests/offscreen-environment-detached-parity.mjs
+      - name: Compare full-clone and detached legacy weather restore transport
+        run: node tools/benchmark-legacy-offscreen-restore.mjs
       - name: Authentic remote organisms and exact offscreen resources
         run: node tests/e18-offscreen-biology.mjs
       - name: Synchronized three-region journey and mid-barrier saves
