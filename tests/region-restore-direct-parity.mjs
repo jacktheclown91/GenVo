@@ -5,13 +5,21 @@ import assert from 'node:assert/strict';
 import {isDeepStrictEqual} from 'node:util';
 import {Simulation} from '../src/sim/simulation.js';
 import {World} from '../src/world/world.js';
+import {CFG} from '../src/sim/config.js';
+import {initializeSoilWater} from '../src/ecology/soil-water.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot,completeWorldForDirectRestore} from '../src/persistence/save-manager.js';
 
 const snapshot=s=>structuredClone(createSimulationSnapshot(s,{savedAt:'fixed',reason:'multi-region-direct-restore'}));
 const sim=new Simulation('PLANET-B0-A',{player:true,worldGenerator:'planetary/1'});
-for(let tick=0;tick<12;tick++)sim.update(null);
+for(let tick=0;tick<CFG.dayTicks+6;tick++)sim.update(null);
 const origin=sim.world.regionOrigin;
-for(const dir of ['east','south','west'])sim.planetaryRegions.neighbor(origin,dir,{create:true});
+for(const dir of ['east','south','west']){
+ const region=sim.planetaryRegions.neighbor(origin,dir,{create:true});
+ // An unvisited survey may lack the soil-water controller, and must retain
+ // generated fallback. Set up complete, physically initialized surveyed
+ // regions to exercise the dedicated fast path, without adding any biology.
+ if(!region.soilWater)initializeSoilWater(region);
+}
 const source=snapshot(sim);
 assert.equal(source.regionalWorlds.length,3,'three real surveyed neighboring worlds');
 for(const entry of source.regionalWorlds)
