@@ -279,7 +279,8 @@ function compactVital(model){
 function socialLine(sim,p){
   const s=sim.social?.snapshot?.(p);if(!s||s.size<2)return'';
   const alarm=s.alarmSpecies?`alarm · ${SPECIES[s.alarmSpecies]?.label||s.alarmSpecies}`:'calm';
-  return `<div class="socialline ${s.alarmSpecies?'alarm':''}"><span>${s.label}</span><b>${s.size} nearby · ${alarm}</b></div>`;
+  const guide=s.guideId==null?'':s.guideId===p.id?' · guiding group':` · guide #${s.guideId}`;
+  return `<div class="socialline ${s.alarmSpecies?'alarm':''}"><span>${s.label}</span><b>${s.size} nearby · ${alarm}${guide}</b></div>`;
 }
 
 function diseaseLine(sim,p){
