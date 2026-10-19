@@ -1,3 +1,5 @@
+> Historical checkpoint / branch-local proposal. See the repository README, design/CURRENT-DESIGN.md and docs/CURRENT-IMPLEMENTATION.md for current authorities. Original text below is preserved; its pending-work statements are not current instructions.
+
 # GenVo8: answering the playtest feedback
 
 Written 2026-10-08 against v1.33.7, after James's playtests. Plan only; nothing is built.

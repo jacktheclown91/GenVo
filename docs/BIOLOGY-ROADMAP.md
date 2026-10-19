@@ -1,3 +1,5 @@
+> Historical checkpoint / branch-local proposal. See the repository README, design/CURRENT-DESIGN.md and docs/CURRENT-IMPLEMENTATION.md for current authorities. Original text below is preserved; its pending-work statements are not current instructions.
+
 # GenVo biological development roadmap (recorded October 16, 2026)
 
 This is the creator's direction, recorded for planning. Nothing here is implemented. Sequencing: finish the Phase 3L GPU rendering work first; inherited pigmentation is the next creature-art milestone after performance stabilizes.

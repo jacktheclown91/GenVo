@@ -1,3 +1,5 @@
+> Historical checkpoint / branch-local proposal. See the repository README, design/CURRENT-DESIGN.md and docs/CURRENT-IMPLEMENTATION.md for current authorities. Original text below is preserved; its pending-work statements are not current instructions.
+
 # GenVo | Living Planet completion work goal
 Status: ACTIVE IMPLEMENTATION on `work/living-planet-completion`
 Baseline: `c4453fe8faf54f41c74aff90a82d6e92f76b3228` (October 18, 2026)

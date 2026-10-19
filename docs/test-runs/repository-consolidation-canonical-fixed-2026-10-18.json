@@ -1,0 +1,139 @@
+{
+ "schema": "genvo.test-run/3",
+ "validationCode": {
+  "scope": "src, tools and tests code/configuration; not a release seal",
+  "start": "e8920e9677852ee1301f7c5e45637642332875d32656f6ad3d1798123b4c17cf",
+  "end": "e8920e9677852ee1301f7c5e45637642332875d32656f6ad3d1798123b4c17cf",
+  "inputDrift": false
+ },
+ "classificationNote": "byKind counts overlap for mixed suites; unclassified means not yet audited",
+ "mode": "fast",
+ "date": "2026-10-19T04:40:02.779Z",
+ "seconds": 0,
+ "artifacts": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\repository-consolidation-canonical-fixed-2026-10-18.artifacts",
+ "total": 1,
+ "pass": 1,
+ "knownFail": 0,
+ "fail": 0,
+ "timeout": 0,
+ "stale": 0,
+ "deferred": 0,
+ "byKind": {
+  "biological-invariant": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "mechanism": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "ecological-observation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "performance": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "historical-expectation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "release-gate": {
+   "pass": 1,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "unclassified": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  }
+ },
+ "byFailureKind": {
+  "biological-invariant": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "mechanism": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "ecological-observation": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "performance": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "historical-expectation": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "release-gate": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "unclassified": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  }
+ },
+ "results": [
+  {
+   "name": "canonical-source",
+   "kinds": [
+    "release-gate"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\repository-consolidation-canonical-fixed-2026-10-18.artifacts\\canonical-source.log"
+  }
+ ]
+}

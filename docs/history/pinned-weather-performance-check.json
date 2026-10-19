@@ -1,0 +1,26 @@
+{
+  "schema": "genvo.pinned-failure-check/1",
+  "results": [
+    {
+      "revision": "dfe097a",
+      "test": "weather-soil-resume",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: rain splits into infiltration and runoff\n    at file:///C:/Users/jackt/AppData/Local/Temp/genvo-pinned-check-j_h17cp8/tests/weather-soil-resume.mjs:21:10\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n"
+    },
+    {
+      "revision": "dfe097a",
+      "test": "observer-play",
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: 4x with 560+ animals costs 598 ms per real second of play\n    at file:///C:/Users/jackt/AppData/Local/Temp/genvo-pinned-check-j_h17cp8/tests/observer-play.mjs:59:10\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n"
+    },
+    {
+      "revision": "integrated-working-tree",
+      "test": "observer-play",
+      "exitCode": 0,
+      "stdout": "4x large-population cost: 500 ms simulation per real second (560 animals)\nobserver play ok\n",
+      "stderr": ""
+    }
+  ]
+}

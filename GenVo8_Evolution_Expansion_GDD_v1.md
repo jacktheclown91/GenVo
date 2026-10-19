@@ -1,3 +1,5 @@
+> Historical checkpoint / branch-local proposal. See the repository README, design/CURRENT-DESIGN.md and docs/CURRENT-IMPLEMENTATION.md for current authorities. Original text below is preserved; its pending-work statements are not current instructions.
+
 # GENVO8 — EVOLUTION EXPANSION
 ## Implementation-ready Game Design Document (GDD v1.0)
 **Decision date:** 2026-10-08  

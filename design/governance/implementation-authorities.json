@@ -139,20 +139,67 @@
         "src/render/part-sprites.js",
         "src/main.js"
       ],
-      "note": "Art-only runtime catalog; single indexed codec and procedural fallback; part identity and biological properties remain in part-registry.js. First wave is only 14 face/mouth parts."
+      "note": "Art-only runtime catalog; single indexed codec and procedural fallback. Registered biological identities remain in part-registry.js; count is derived, never a fixed milestone."
+    },
+    "stableWorldPages": {
+      "authority": "src/world/pages.js",
+      "consumers": [
+        "src/world/world.js"
+      ]
+    },
+    "planetaryGeography": {
+      "authority": "src/world/planet-geography.js",
+      "consumers": [
+        "src/world/planet-world.js"
+      ]
+    },
+    "planetaryRegions": {
+      "authority": "src/world/planet-regions.js",
+      "consumers": [
+        "src/world/planetary-travel.js"
+      ]
+    },
+    "planetaryTravel": {
+      "authority": "src/world/planetary-travel.js",
+      "consumers": [
+        "src/main.js"
+      ]
+    },
+    "offscreenEnvironmentReplay": {
+      "authority": "src/world/planetary-offscreen-environment.js",
+      "consumers": [
+        "src/sim/simulation.js"
+      ]
+    },
+    "offscreenBiologicalReplay": {
+      "authority": "src/world/planetary-offscreen-biology.js",
+      "consumers": [
+        "src/sim/simulation.js"
+      ]
+    },
+    "inheritedPigmentation": {
+      "authority": "src/organisms/pigmentation.js",
+      "consumers": [
+        "src/sim/simulation.js",
+        "src/render/creature-palette.js"
+      ]
     }
   },
   "nonRuntimeModules": {
     "src/render/authored-draft-compiler.js": "creature art lab draft compiler; does not publish art to the live part catalog",
     "src/ui/food-choice-view.js": "read-only legacy food selection view retained for compatibility tests; persistent commands use canonical interaction options",
     "src/lineage/phenotype-resolver.js": "legacy Phase A compatibility/reference adapter exercised by evolution and creature assembly contract tests",
-    "src/render/fauna.js": "Retired fixed-creature renderer retained for legacy presentation tests and historical source evidence only; live gameplay and current exports use inherited body plans with genvo-draw.js."
+    "src/render/fauna.js": "Retired fixed-creature renderer retained for legacy presentation tests and historical source evidence only; live gameplay and current exports use inherited body plans with genvo-draw.js.",
+    "src/lineage/swimming-review.js": "Review-only swimming policy exercised by tests/swimming-review.mjs; not live movement authority.",
+    "src/organisms/tissue-construction.js": "Experimental material funding kernel exercised by tests/tissue-construction.mjs; not complete runtime tissue conservation.",
+    "src/organisms/tissue-ledger.js": "Experimental material ledger exercised by tests/tissue-ledger.mjs and tissue-construction tests; preserve historical accounting contracts.",
+    "src/persistence/fauna-page-checkpoint.js": "Standalone checkpoint contract tested by tests/fauna-page-checkpoint.mjs; live persistence uses current save/region authorities."
   },
   "derivedReferences": {
     "references/generated-sprite-sheets": "exported images generated from gameplay render functions; never gameplay imports",
     "tools/creature-lab": "isolated authoring UI for editable source art; its drafts are not automatically installed"
   },
-  "historicalArtifacts": "reports/ stores historical observations and preserved experiment evidence, not executable runtime authority. No historical results may be silently rewritten.",
+  "historicalArtifacts": "reports/ contains observations and preserved executable test/capture fixtures. It is not live runtime authority; do not remove fixtures or rewrite receipts merely because a design is superseded.",
   "requiredAudit": "node tools/canonical-source-audit.mjs",
   "browserExport": "tools/export-public.mjs (uses tools/source-graph.mjs, shared with the audit)",
   "releasePolicy": "A development checkpoint is not a stable release; stable manifest may only be updated after full acceptance."

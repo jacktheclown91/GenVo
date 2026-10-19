@@ -1,3 +1,5 @@
+> Historical checkpoint / branch-local proposal. See the repository README, design/CURRENT-DESIGN.md and docs/CURRENT-IMPLEMENTATION.md for current authorities. Original text below is preserved; its pending-work statements are not current instructions.
+
 # GenVo — Consolidated Remaining Expansion Backlog
 **Source baseline:** v1.73.0 detailed-limbs development toolkit (October 12, 2026)
 **Purpose:** Collate approved and documented future development without re-listing already implemented foundations as unfinished. This is a planning inventory, not a new implementation or creator approval.

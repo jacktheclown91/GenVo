@@ -1,3 +1,5 @@
+> Historical checkpoint / branch-local proposal. See the repository README, design/CURRENT-DESIGN.md and docs/CURRENT-IMPLEMENTATION.md for current authorities. Original text below is preserved; its pending-work statements are not current instructions.
+
 # GenVo8 at v1.33.7: where it stands and where it could go
 
 Written 2026-10-08 after the v1.32 consolidation, knowledge, Pounce, ecology and readability passes. Judged from the running build (browser tours, AUTO observer runs, the Stalker probes) and the code. The earlier design review (`reviews/genvo8-design-review.md`) was not reachable from this machine, so this does not compare against it line by line.

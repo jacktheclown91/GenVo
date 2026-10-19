@@ -1,0 +1,42 @@
+{
+  "schema": "genvo.pinned-failure-check/1",
+  "revision": "dfe097a",
+  "method": "Independent temporary extraction of committed source, tests, assets, tools and design; no integration changes",
+  "results": [
+    {
+      "test": "e4-visual-anatomy",
+      "exitCode": 1,
+      "failure": "AssertionError [ERR_ASSERTION]: native catalog covers every real registered part"
+    },
+    {
+      "test": "e5-coat-readability",
+      "exitCode": 1,
+      "failure": "AssertionError [ERR_ASSERTION]: no missing, duplicated or invented biological assets"
+    },
+    {
+      "test": "native-part-catalog",
+      "exitCode": 1,
+      "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:"
+    },
+    {
+      "test": "native-specialty-wave",
+      "exitCode": 1,
+      "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:"
+    },
+    {
+      "test": "soil-water",
+      "exitCode": 1,
+      "failure": "TypeError: Cannot read properties of undefined (reading '1')"
+    },
+    {
+      "test": "terrain-travel",
+      "exitCode": 1,
+      "failure": "TypeError: Cannot read properties of undefined (reading '17')"
+    },
+    {
+      "test": "vocabulary",
+      "exitCode": 1,
+      "failure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:"
+    }
+  ]
+}

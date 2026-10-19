@@ -1,3 +1,5 @@
+> Historical checkpoint / branch-local proposal. See the repository README, design/CURRENT-DESIGN.md and docs/CURRENT-IMPLEMENTATION.md for current authorities. Original text below is preserved; its pending-work statements are not current instructions.
+
 # Current acceptance map: full Living Planet objective
 
 October17 local development session; receipts also carry exact UTC timestamps. This is a current evidence map, not a completion certificate. The original A-H scope and all seven LP criteria remain intact. Earlier audit prose is retained as historical evidence and must not be read as the current source state.

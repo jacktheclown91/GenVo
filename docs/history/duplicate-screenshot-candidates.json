@@ -1,0 +1,60 @@
+{
+  "schema": "genvo.duplicate-evidence-candidates/1",
+  "removed": false,
+  "groups": [
+    {
+      "paths": [
+        "docs/head-attention-before-whole-body-poses.png",
+        "docs/joint-surface-after-whole-body-poses.png"
+      ],
+      "sha256": "4226f8be9fc0b32df1f6cde0a6a3ca89ece27336e946f5bdbf663d3eb47d14db",
+      "bytesEach": 34366,
+      "action": "retain distinct evidence roles; deduplication proposed only"
+    },
+    {
+      "paths": [
+        "docs/living-growth-before-0.png",
+        "docs/living-growth-before-1.png"
+      ],
+      "sha256": "3598625676d88576c86a7c353b97acaa5025d110c2fda4e7b5b3c40e1bf3d6ba",
+      "bytesEach": 1607,
+      "action": "retain distinct evidence roles; deduplication proposed only"
+    },
+    {
+      "paths": [
+        "docs/living-planet-architecture/accessibility-experiment/current-policy/parental-guidance-runtime/collapsed-panel-attempt/failure.png",
+        "docs/living-planet-architecture/accessibility-experiment/current-policy/parental-guidance-runtime/failure.png"
+      ],
+      "sha256": "85a63137464febf7ab5eaf1e9b20ec7d7568f60e222d745b0527a47641382008",
+      "bytesEach": 279918,
+      "action": "retain distinct evidence roles; deduplication proposed only"
+    },
+    {
+      "paths": [
+        "docs/living-planet-architecture/accessibility-experiment/current-policy/parental-guidance-runtime/mate-panel.png",
+        "docs/living-planet-architecture/founder-feedback-repair/runtime/mate-panel.png"
+      ],
+      "sha256": "bc138b107eddd04b8f2b0fa9bca635eca58d545f9366f5e5cb4944d6e10696aa",
+      "bytesEach": 408850,
+      "action": "retain distinct evidence roles; deduplication proposed only"
+    },
+    {
+      "paths": [
+        "docs/planet-geography/first-capture-failure/failure.png",
+        "docs/planet-geography/runtime/failure.png"
+      ],
+      "sha256": "f523a8705b885497c47c5d20990dee62353f51d258fdbe142a1cca61281c3414",
+      "bytesEach": 995048,
+      "action": "retain distinct evidence roles; deduplication proposed only"
+    },
+    {
+      "paths": [
+        "docs/render-batching/rejected-variants/parity-combat-A.png",
+        "docs/render-batching/rejected-variants/parity-combat-B.png"
+      ],
+      "sha256": "c1d2a268ea6689252ef6dd2d604c4716ccb9774f0ef1a72ccf4f7f6d03c62cfd",
+      "bytesEach": 373142,
+      "action": "retain distinct evidence roles; deduplication proposed only"
+    }
+  ]
+}

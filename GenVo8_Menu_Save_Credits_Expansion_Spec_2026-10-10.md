@@ -1,3 +1,5 @@
+> Historical checkpoint / branch-local proposal. See the repository README, design/CURRENT-DESIGN.md and docs/CURRENT-IMPLEMENTATION.md for current authorities. Original text below is preserved; its pending-work statements are not current instructions.
+
 # GenVo8 — Menu, Multi-World Saves, Settings & Credits Expansion
 
 **Status:** Approved design proposal for next UI/UX pass; not implemented by this document.  

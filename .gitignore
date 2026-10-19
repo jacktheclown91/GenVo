@@ -122,3 +122,6 @@ docs/**/*.snapshot.json.gz
 docs/**/*.cpuprofile
 docs/test-runs/*.artifacts/
 docs/test-runs/artifacts/
+
+# Reproducible presentation exports; regenerate with tools/export_sprite_sheets.cjs
+references/generated-sprite-sheets/
