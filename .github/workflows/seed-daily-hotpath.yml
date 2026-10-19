@@ -34,3 +34,5 @@ jobs:
           node tests/flora-seed-codec.mjs
       - name: Deterministic full save and continuation
         run: node tests/save-persistence.mjs
+      - name: Observe synthetic large-bank processing cost without outcome targets
+        run: node tools/benchmark-seed-daily-hotpath.mjs
