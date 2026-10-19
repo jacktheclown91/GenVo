@@ -126,7 +126,7 @@ export class PlantDispersalController{
   }
   advanceDay(){
     this.advanceAnimalCargo();
-    for(const [kind,set] of Object.entries(this.active)){const bank=this.seedBank(kind),decay=PLANTS[kind]?.dispersal?.bankDecay??.98;for(const i of [...set]){const before=bank[i],next=before*decay;scaleSeedCohorts(this,kind,i,next);bank[i]=next;if(bank[i]<=0){set.delete(i);this.bankGenomes[kind].delete(i);this.floraState.seeds[kind].delete(i)}const lost=before-bank[i];this.litter[i]+=lost;this.sim.world.plantResources.totals.seedLitter+=lost;}}
+    for(const [kind,set] of Object.entries(this.active)){const bank=this.seedBank(kind),decay=PLANTS[kind]?.dispersal?.bankDecay??.98;for(const i of set){const before=bank[i],next=before*decay;scaleSeedCohorts(this,kind,i,next);bank[i]=next;if(bank[i]<=0){set.delete(i);this.bankGenomes[kind].delete(i);this.floraState.seeds[kind].delete(i)}const lost=before-bank[i];this.litter[i]+=lost;this.sim.world.plantResources.totals.seedLitter+=lost;}}
   }
 }
 function hashKind(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
