@@ -1,4 +1,4 @@
-import {makePlan,validatePlan} from './body-plan.js';
+import {makePlan} from './body-plan.js';
 import {partDef} from './part-registry.js';
 import {createDraft,draftProblems,mirrorSocket} from './evolution-draft.js';
 import {DEVELOPMENTAL_SYMMETRY} from './developmental-symmetry.js';
@@ -22,7 +22,9 @@ export function removeOptionalSubtrees(plan,targets){
   if(!Array.isArray(targets)||!targets.length||targets.some(id=>id==='root'||!plan.nodes.some(n=>n.id===id)))return null;
   const drop=new Set(targets);let grew=true;while(grew){grew=false;for(const n of plan.nodes)if(n.parent&&drop.has(n.parent)&&!drop.has(n.id)){drop.add(n.id);grew=true}}
   const next=makePlan(plan.nodes.filter(n=>!drop.has(n.id)).map(n=>({partId:n.partId,parent:n.parent,socket:n.socket})),{headMode:plan.headMode});
-  if(!validatePlan(next).ok)return null;
+  // draftProblems invokes validatePlan with the SAME full structural checks,
+  // plus ancestry and viability. A second pre-check performed the expensive
+  // complete graph validation twice for every attempted organ removal.
   const draft=createDraft({base:next,ancestry:plan.nodes.map(n=>n.partId),budget:Infinity});if(draftProblems(draft).length)return null;
   return{plan:next,removed:plan.nodes.filter(n=>drop.has(n.id)).map(n=>({id:n.id,partId:n.partId,parent:n.parent,socket:n.socket}))};
 }
