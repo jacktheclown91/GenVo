@@ -56,7 +56,7 @@ export function dietaryDemand(sim,a,supply,radius,{residentId=a.id,overlapMemo=n
         // matching nonzero land-region labels. Region was read once above.
         if(!access.has(key))access.set(key,swimming||(region!==0&&sim.world.landRegion[r.i]===region));if(!access.get(key))continue;
         if(!preferences.has(r.kind))preferences.set(r.kind,plantPreference(b,r.kind));preference=preferences.get(r.kind);
-        if(preference>0&&sim.dispersal.seedReserve[r.kind]){const i=sim.world.idx(r.x,r.y),nutrition=sim.dispersal.genomeAt(r.kind,i).traits.nutrition;preference=sim.dispersal.cropYield(b,r.kind,i)*nutrition/r.energy}
+        if(preference>0&&sim.dispersal.seedReserve[r.kind]){const i=r.i,nutrition=sim.dispersal.genomeAt(r.kind,i).traits.nutrition;preference=sim.dispersal.cropYield(b,r.kind,i)*nutrition/r.energy}
       }
       shared+=r.energy*Math.min(r.preference,preference);
     }
