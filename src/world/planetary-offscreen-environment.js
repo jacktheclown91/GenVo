@@ -7,7 +7,7 @@ import {CFG} from '../sim/config.js';
 import {createWeatherState,advanceWeatherTo,validWeatherState} from '../ecology/weather.js';
 import {advanceEnvironmentWater,localTemperature} from './environment.js';
 import {advanceSoilDay} from '../ecology/soil-water.js';
-import {createSimulationSnapshot,restoreSimulationSnapshot} from '../persistence/save-manager.js';
+import {createSimulationSnapshot,restoreDetachedSimulationSnapshot} from '../persistence/save-manager.js';
 
 export const OFFSCREEN_ENVIRONMENT=Object.freeze({
  schema:1,regionsPerPass:2,daysPerRegionPass:2,maxEntryBacklogDays:24
@@ -56,7 +56,11 @@ export function advanceRemoteEnvironment(active,session,{maxDays=OFFSCREEN_ENVIR
  const due=remoteEnvironmentDue(active,session),steps=Math.min(due,maxDays);
  if(!steps)return{days:0,remaining:due,key:session.key};
  validateRemoteEnvironmentalLedger(session);
- const temp=restoreSimulationSnapshot(structuredClone(session.snapshot));
+ // The region snapshot is read-only until the full hydrology ledger validates.
+ // Detached restore clones every mutable authority while decoding packed seed
+ // columns directly and adopting only its separately owned world buffers.
+ // The old full-snapshot clone duplicated large mature seed tables unnecessarily.
+ const temp=restoreDetachedSimulationSnapshot(session.snapshot);
  const beforeIds=temp.animals.map(a=>a.id),beforeCount=temp.animals.length;
  const old=session.environmentalLedger;
  const firstDay=old?.firstDay??temp.day;
