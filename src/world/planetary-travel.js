@@ -98,9 +98,10 @@ function strippedRegionSnapshot(sim,ids){
  // separate session ledger, never inside the region being archived.
  // Cloning first multiplied every archived seed bank and fauna store during
  // each border crossing, only to discard those copies immediately.
- const checkpoint=createSimulationSnapshot(sim,{reason:'regional-departure',savedAt:'regional-checkpoint'});
- delete checkpoint.core.planetaryTravel;
- delete checkpoint.regionalWorlds;
+ const checkpoint=createSimulationSnapshot(sim,{reason:'regional-departure',savedAt:'regional-checkpoint',regionalDeparture:true});
+ // Defense in depth: no other regional owner may be embedded in this archive.
+ if(checkpoint.core.planetaryTravel||checkpoint.regionalWorlds)
+  throw Error('Recursive regional departure authority.');
  const source=structuredClone(checkpoint);
  const departure=new Set(ids);
  const slots=source.animals.flatMap((a,index)=>departure.has(a.id)?[{id:a.id,index}]:[]);
