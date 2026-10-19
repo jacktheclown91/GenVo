@@ -1,5 +1,5 @@
 import {terrainTravel} from '../world/topography.js';
-import {inclineGrip} from './terrain-cover-physiology.js';
+import {inclineGrip,aridFooting} from './terrain-cover-physiology.js';
 import {paddleFactors,landSpeedFactor,partEffectFactors} from './part-abilities.js';
 import {hasAdaptation} from './evolution.js';
 import {swimsByBody,aquaticMovement} from './aquatic.js';
@@ -29,7 +29,9 @@ export function movementProfile(animal,world,{fromX=animal?.x,fromY=animal?.y,to
   if(swimming&&!swimmer)return{allowed:false,swimming:true,swimmer:false,speed:0,energy:1,sprint:1};
   const pad=paddleFactors(animal);
   const aq=aquaticMovement(animal);
-  if(!swimming){const terrain=terrainTravel(world,fromX,fromY,toX,toY),grip=inclineGrip(animal,terrain.grade);return{allowed:true,swimming:false,swimmer,speed:landSpeedFactor(animal)*aq.land*terrain.speed*grip.speed,energy:terrain.energy*grip.energy,sprint:sprint?1.55:1,grade:terrain.grade,grip:grip.grip};}
+  if(!swimming){const terrain=terrainTravel(world,fromX,fromY,toX,toY),grip=inclineGrip(animal,terrain.grade);
+    const footing=aridFooting(animal,world.moisture[world.idx(toX,toY)]);
+    return{allowed:true,swimming:false,swimmer,speed:landSpeedFactor(animal)*aq.land*terrain.speed*grip.speed*footing.speed,energy:terrain.energy*grip.energy*footing.energy,sprint:sprint?1.55:1,grade:terrain.grade,grip:grip.grip};}
   const pf=partEffectFactors(animal);
   return{allowed:true,swimming:true,swimmer:true,speed:.66*(pad?pad.swimSpeed:1)*(pf?.swimSpeed??1)*aq.swimSpeed,energy:1.48*(pad?pad.swimEnergy:1)*(pf?.swimEnergy??1)*aq.swimEnergy,sprint:sprint?1.16:1};
 }
