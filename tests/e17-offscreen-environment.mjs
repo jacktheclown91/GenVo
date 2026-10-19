@@ -10,6 +10,8 @@ import {soilWaterStorage} from '../src/ecology/soil-water.js';
 import {rainFrontFactor} from '../src/world/weather-fronts.js';
 import {World} from '../src/world/world.js';
 const seed='PLANET-B0-A',sim=new Simulation(seed,{player:true,worldGenerator:'planetary/1'});
+// E18 keeps the E17 pure-physical archive as an explicit legacy mode.
+sim.offscreenBiologyEnabled=false;
 const save=s=>structuredClone(createSimulationSnapshot(s,{savedAt:'fixed',reason:'e17'})),actor=sim.player();
 let allowed=null;
 for(let y=8.5;y<118.5;y++){actor.x=125.2;actor.y=y;const st=planetaryTravelAvailability(sim);if(st.enabled){allowed=st;break}}
