@@ -102,6 +102,8 @@ export const PARTS=Object.freeze(Object.fromEntries([
   part('sturdy-leg','limbs',{tags:['leg','land','brace'],prereq:['walking-leg'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','foot'],mass:.6,upkeep:.14,cost:2,actions:['walk','brace','dance'],niche:['predator-pressure'],anim:'gait'}),
   part('webbed-leg','limbs',{tags:['leg','land','water'],prereq:['walking-leg'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','web'],mass:.45,upkeep:.14,cost:2,actions:['walk','swim','dance'],niche:['wet-margin'],anim:'gait',legacy:{axis:'waterBody',threshold:.8,adaptation:'webbed-limbs'}}),
   part('padded-leg','limbs',{tags:['leg','land','quiet'],prereq:['walking-leg'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','pad'],mass:.4,upkeep:.12,cost:2,actions:['walk','quiet','dance'],niche:['stealth'],anim:'gait'}),
+  // E6 dryland route: paired pads earn purchase on real dry ground, not a universal sprint buff.
+  part('arid-pad','limbs',{tags:['leg','land','dryland'],prereq:['padded-leg'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','wide-pad','foot'],mass:.46,upkeep:.16,cost:3,actions:['walk','run','dance'],niche:['dry-ground','scarcity'],anim:'gait'}),
   // E3: two true grasper descendants can get purchase on inclined ground.
   part('climber-leg','limbs',{tags:['leg','land','grip','climb'],prereq:['grasper'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','curved-claw','foot'],mass:.58,upkeep:.22,cost:4,actions:['walk','climb','carry','dance'],niche:['slopes','woodland'],anim:'gait'}),
   part('digging-forelimb','limbs',{tags:['leg','soil'],prereq:['walking-leg'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','spade'],mass:.5,upkeep:.15,cost:2,actions:['walk','dig','dance'],niche:['burrow','roots'],anim:'gait'}),
@@ -124,6 +126,8 @@ export const PARTS=Object.freeze(Object.fromEntries([
   part('display-eye','senses',{tags:['eye','vision','social'],prereq:['simple-eye'],sockets:['eye'],mass:.06,upkeep:.05,cost:2,actions:['see','display','flare'],niche:['courtship']}),
   part('eyespot','senses',{tags:['eye','light','cheap'],sockets:['eye'],mass:.02,upkeep:.01,cost:1,actions:['see'],niche:['scarcity']}),
   part('armor-plate','defense',{tags:['plate','protect'],sockets:['flank','dorsal'],mass:.6,upkeep:.12,cost:2,actions:['armor'],niche:['predator-pressure'],legacy:{axis:'armor',threshold:.5,adaptation:'hardened-mantle'}}),
+  // Dryland barrier derived from protective plating. Trades insulation/food for reduced dehydration.
+  part('wax-plates','metabolism',{tags:['flank','dryland','water-barrier'],prereq:['armor-plate'],sockets:['flank'],mass:.44,upkeep:.18,cost:4,actions:['insulate','armor'],niche:['dry-ground','scarcity']}),
   part('barb','defense',{tags:['spike','retaliate'],sockets:['spur'],mass:.1,upkeep:.04,cost:1,actions:['retaliate'],niche:['predator-pressure'],legacy:{axis:'barbs',threshold:.5,adaptation:'barbed-limbs'}}),
   part('claw','offense',{tags:['claw','strike'],sockets:['spur'],mass:.12,upkeep:.04,cost:1,actions:['strike'],niche:['prey']}),
   part('venom-gland','offense',{tags:['gland','toxin'],prereq:['tearing-jaw'],sockets:['flank'],mass:.2,upkeep:.15,cost:3,actions:['venom'],niche:['prey']}),
@@ -135,6 +139,8 @@ export const PARTS=Object.freeze(Object.fromEntries([
   part('fur-mantle','metabolism',{tags:['cover','fur'],prereq:['filament-tuft'],sockets:['dorsal'],mass:.48,upkeep:.20,cost:4,actions:['insulate'],niche:['cold','woodland'],symmetry:'single'}),
   part('feather-mantle','metabolism',{tags:['cover','feathers'],prereq:['filament-tuft'],sockets:['dorsal'],mass:.39,upkeep:.21,cost:5,actions:['insulate','display'],niche:['cold','courtship'],symmetry:'single'}),
   part('proto-wing','locomotion',{tags:['cover','proto-wing','display'],prereq:['feather-mantle'],sockets:['dorsal'],mass:.72,upkeep:.32,cost:7,actions:['display','flare'],niche:['courtship','woodland'],symmetry:'single',anim:'sweep'}),
+  // Display crests can evolve into active heat-dissipating dorsal frills.
+  part('heat-frill','metabolism',{tags:['back','radiator','dryland'],prereq:['signal-crest'],sockets:['dorsal'],mass:.45,upkeep:.22,cost:5,actions:['insulate','display','flare'],niche:['hot','dry-ground'],symmetry:'single',anim:'breathing'}),
   part('signal-crest','social',{tags:['crest','display'],sockets:['dorsal'],mass:.1,upkeep:.05,cost:1,actions:['signal','flare'],niche:['family'],symmetry:'single',legacy:{axis:'signal',threshold:.5,adaptation:'alarm-pulse'}}),
   // GDD 6.2 slice restriction: buildable and previewable, but grants no open-water travel until
   // water physics, world collision and survival balancing genuinely support it.
