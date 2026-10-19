@@ -93,6 +93,14 @@ backEast.simulation.animals.push(child);
 backEast.simulation.player().x=2.5;
 assert.match(planetaryTravelAvailability(backEast.simulation).reason,/Dependent young/);
 backEast.simulation.animals.pop();
+// Region transfer must remain playable after crossing: actual ecology ticks,
+// perception, independent fauna decisions and environment updates still run.
+const live=backEast.simulation,actorId=live.playerId;
+for(let tick=0;tick<12;tick++)live.update(null);
+assert.equal(live.tickCount,home.tickCount+12);
+assert.equal(live.playerId,actorId);
+assert.equal(live.world.regionOrigin.x,128);
+assert.ok(live.animals.some(t=>t.id===actorId&&t.alive),'transferred animal survives a normal regional ecology step');
 const bad=checkpoint(home);
 bad.core.planetaryTravel.sessions.push(structuredClone(bad.core.planetaryTravel.sessions[0]));
 assert.throws(()=>restoreSimulationSnapshot(bad),/Duplicate or misplaced/);
