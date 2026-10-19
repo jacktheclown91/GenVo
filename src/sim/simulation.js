@@ -53,7 +53,7 @@ import {DiseaseController} from '../ecology/disease.js';
 import {SocialController} from '../cognition/social.js';
 import {EvolutionController,inheritedAdaptations,adaptationEffects,hasAdaptation} from '../lineage/evolution.js';
 import {canSwim,canOccupy,canReach,movementProfile} from '../lineage/lifestyle.js';
-import {flightAvailability,toggleFlight,takeoff,land,advanceFlight} from '../lineage/flight.js';
+import {flightAvailability,landingAvailability,toggleFlight,takeoff,land,advanceFlight} from '../lineage/flight.js';
 import {LineageSpecializationController} from '../lineage/specialization.js';
 import {BehavioralTendencyController} from '../lineage/behavioral-tendency.js';
 import {LineageDivergenceController} from '../lineage/divergence.js';
@@ -213,7 +213,7 @@ export class Simulation{
     if(!next){this.playerId=null;return false}
     for(const a of this.animals)if(a.player)a.player=false;next.player=true;this.playerId=next.id;next.target=null;next.intent=this.playerAutonomy?'explore':'idle';this.reproduction?.onActiveChanged?.();return true;
   }
-  flightStatus(animal=this.player()){return flightAvailability(animal,this.world)}
+  flightStatus(animal=this.player()){return animal?.airborne?landingAvailability(animal,this.world,{swimmer:canSwim(animal)}):flightAvailability(animal,this.world)}
   playerToggleFlight(){if(this.paused)return{ok:false,type:'flight',message:'Resume the world first.'};const a=this.player();if(!a)return{ok:false,type:'flight',message:'No active creature.'};if(this.playerCombat.attackActive(a))return{ok:false,type:'flight',message:'Finish the attack before flying.'};const result=toggleFlight(a,this.world,{swimmer:canSwim(a)});if(result.ok){a.target=null;a.hidden=false;a.intent='idle';this.lastPlayerAction={type:a.airborne?'takeoff':'landing',actorId:a.id,tick:this.tickCount}}return result}
   canSwim(animal){return canSwim(animal)}
   canOccupy(animal,x,y){return this.world.isPlayable(x,y)&&canOccupy(animal,this.world,x,y)}
@@ -260,7 +260,7 @@ export class Simulation{
         // Staged perception (threat-perception.js): detection by senses, then a threat level against vigilance, alarm and flight thresholds.
         if(!this.isPredatorTo(b,a)||d>=threatRadius||d>threatRadius*wildTraits(b).stealth&&!watching(this,a,b)||!detects(this,a,b,d,threatRadius))return false;const L=threatLevel(a,b,d,threatRadius);if(L>=stages.alarm){perceived.push(b);if(L>alarmLevel){alarmLevel=L;alarmBy=b}}else if(L>=stages.vigilance&&L>watchLevel){watchLevel=L;watchBy=b}return L>=stages.flight},threatRadius);if(perceived.length)escapeThreats.set(a.id,perceived);
       if(stages){const st=this.stats.threatStages??={vigilance:0,alarm:0,flight:0,wary:0};if(threat)st.flight++;else if(alarmBy){st.alarm++;noteVigilance(this,a,alarmBy);alarmed.set(a,alarmBy)}else if(watchBy){st.vigilance++;noteVigilance(this,a,watchBy)}}
-      if(threat){const lifestyleDefense=this.speciesLifestyle?.threatDecision?.(a,threat);if(lifestyleDefense){a.intent=lifestyleDefense.intent;a.target=lifestyleDefense.target;continue}const specialized=this.specialization.threatResponse(a,threat);if(specialized){a.intent=specialized.intent;a.target=specialized.target;continue}if(a.lineage&&canHunt(threat)&&this.habits.standsGround(a)){this.habits.noteStand(a);a.intent='mob';a.target=threat;continue}if(a.lineage)this.habits.noteFlee(a);const caregiver=this.family.caregiver(a),shelterTarget=(a.lineage&&this.family.isDependent(a))?this.shelter.safeTarget(a,{maxDistance:12}):null;const refuge=!a.lineage&&!shelterTarget&&canSwim(a)&&!canSwim(threat)?nearestWater(this.world,a.x,a.y,AQUATIC.refuge):null;if(refuge){a.intent='escape';a.target=refuge;continue}const den=!shelterTarget?refugeTarget(this,a,threat):null;if(den){a.intent='refuge';a.target={x:den.x,y:den.y,siteId:den.id};continue}
+      if(threat){if(!a.airborne&&!a.player&&a.energy>24&&flightAvailability(a,this.world).enabled)takeoff(a,this.world);const lifestyleDefense=this.speciesLifestyle?.threatDecision?.(a,threat);if(lifestyleDefense){a.intent=lifestyleDefense.intent;a.target=lifestyleDefense.target;continue}const specialized=this.specialization.threatResponse(a,threat);if(specialized){a.intent=specialized.intent;a.target=specialized.target;continue}if(a.lineage&&canHunt(threat)&&this.habits.standsGround(a)){this.habits.noteStand(a);a.intent='mob';a.target=threat;continue}if(a.lineage)this.habits.noteFlee(a);const caregiver=this.family.caregiver(a),shelterTarget=(a.lineage&&this.family.isDependent(a))?this.shelter.safeTarget(a,{maxDistance:12}):null;const refuge=!a.lineage&&!shelterTarget&&canSwim(a)&&!canSwim(threat)?nearestWater(this.world,a.x,a.y,AQUATIC.refuge):null;if(refuge){a.intent='escape';a.target=refuge;continue}const den=!shelterTarget?refugeTarget(this,a,threat):null;if(den){a.intent='refuge';a.target={x:den.x,y:den.y,siteId:den.id};continue}
         a.intent=shelterTarget?'shelter':'escape';a.target=shelterTarget||((this.family.isDependent(a)&&caregiver)?{x:caregiver.x,y:caregiver.y}:{x:a.x+(a.x-threat.x)*2,y:a.y+(a.y-threat.y)*2});continue}
       const sharedAlarm=this.social.alarmResponse(a);if(sharedAlarm){a.intent='group-alarm';a.target=sharedAlarm;this.social.noteAlarm(a);continue}
       const pressured=this.territory.pressureTarget(a);if(pressured){a.intent='leave-core';a.target=pressured;continue}
