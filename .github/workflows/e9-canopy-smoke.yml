@@ -22,6 +22,7 @@ jobs:
           node --check src/lineage/lifestyle.js
           node --check src/reproduction/egg-ecology.js
           node --check src/sim/simulation.js
+          node --check src/gameplay/player-combat.js
           node --check src/gameplay/interaction-command.js
           node --check src/ui/creature-context-tray.js
           node --check src/render/renderer.js
