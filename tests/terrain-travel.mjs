@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import {terrainTravel,elevationAt} from '../src/world/topography.js';
 import {movementProfile} from '../src/lineage/lifestyle.js';
 import {planLandDetour} from '../src/world/land-route.js';
-const n=7,w={n,len:n*n,water:new Uint8Array(n*n),terrain:{elevation:new Float32Array(n*n)},idx(x,y){return Math.max(0,Math.min(n-1,y|0))*n+Math.max(0,Math.min(n-1,x|0))}};
+const n=7,w={n,len:n*n,water:new Uint8Array(n*n),moisture:new Float32Array(n*n).fill(.5),terrain:{elevation:new Float32Array(n*n)},idx(x,y){return Math.max(0,Math.min(n-1,y|0))*n+Math.max(0,Math.min(n-1,x|0))}};
 for(let y=0;y<n;y++)for(let x=0;x<n;x++)w.terrain.elevation[y*n+x]=x*.1;
 const up=terrainTravel(w,2.5,2.5,3.5,2.5),down=terrainTravel(w,3.5,2.5,2.5,2.5),flat=terrainTravel(w,2.5,2.5,2.5,3.5);
 assert.ok(up.energy>down.energy&&down.energy>=flat.energy,'climbing pays work; descending cannot create energy');assert.ok(up.speed<down.speed&&down.speed<=flat.speed);

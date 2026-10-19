@@ -1,0 +1,2312 @@
+{
+  "scope": "Actual main game loop and IndexedDB; controlled frontier placement, founded organisms, one active day, not human acceptance or mature planetary performance",
+  "policy": "synchronized-strides/1",
+  "tick": 48,
+  "remote": [
+    {
+      "key": "0,0",
+      "tick": 42,
+      "debt": 6,
+      "mode": "canonical-ticks/1"
+    },
+    {
+      "key": "128,0",
+      "tick": 42,
+      "debt": 6,
+      "mode": "canonical-ticks/1"
+    }
+  ],
+  "frames": [
+    {
+      "now": 2988.6,
+      "tick": 5,
+      "remote": [
+        0,
+        0
+      ],
+      "notice": ""
+    },
+    {
+      "now": 3005.2,
+      "tick": 5,
+      "remote": [
+        0,
+        0
+      ],
+      "notice": ""
+    },
+    {
+      "now": 3021.9,
+      "tick": 6,
+      "remote": [
+        0,
+        0
+      ],
+      "notice": ""
+    },
+    {
+      "now": 3388.5,
+      "tick": 6,
+      "remote": [
+        6,
+        0
+      ],
+      "notice": ""
+    },
+    {
+      "now": 3838.5,
+      "tick": 6,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 4088.5,
+      "tick": 8,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 4105.2,
+      "tick": 8,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 4121.8,
+      "tick": 8,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4138.5,
+      "tick": 8,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4155.2,
+      "tick": 8,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4171.9,
+      "tick": 9,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4188.5,
+      "tick": 9,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4205.1,
+      "tick": 9,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4221.8,
+      "tick": 9,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4238.5,
+      "tick": 9,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4255.1,
+      "tick": 9,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4271.9,
+      "tick": 9,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4288.5,
+      "tick": 10,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4305.2,
+      "tick": 10,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4321.9,
+      "tick": 10,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4338.5,
+      "tick": 10,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4355.2,
+      "tick": 10,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4371.8,
+      "tick": 10,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4388.4,
+      "tick": 10,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4405.2,
+      "tick": 10,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4421.8,
+      "tick": 11,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4438.5,
+      "tick": 11,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4455.2,
+      "tick": 11,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4471.9,
+      "tick": 11,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4488.5,
+      "tick": 11,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4505.1,
+      "tick": 11,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4521.8,
+      "tick": 11,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4538.5,
+      "tick": 12,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4555.2,
+      "tick": 12,
+      "remote": [
+        12,
+        6
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4655.2,
+      "tick": 12,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 4738.4,
+      "tick": 13,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 4755.2,
+      "tick": 13,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 4771.8,
+      "tick": 13,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 4788.5,
+      "tick": 14,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4805.1,
+      "tick": 14,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4821.9,
+      "tick": 14,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4838.5,
+      "tick": 14,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4855.2,
+      "tick": 14,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4871.8,
+      "tick": 14,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4888.5,
+      "tick": 14,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4905.2,
+      "tick": 14,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4921.8,
+      "tick": 15,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4938.5,
+      "tick": 15,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4955.2,
+      "tick": 15,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4971.8,
+      "tick": 15,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 4988.4,
+      "tick": 15,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5005.2,
+      "tick": 15,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5021.8,
+      "tick": 15,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5038.5,
+      "tick": 16,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5055.1,
+      "tick": 16,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5071.8,
+      "tick": 16,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5088.4,
+      "tick": 16,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5105.1,
+      "tick": 16,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5121.8,
+      "tick": 16,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5138.5,
+      "tick": 16,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5155.1,
+      "tick": 16,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5171.8,
+      "tick": 17,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5188.5,
+      "tick": 17,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5205.1,
+      "tick": 17,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5221.8,
+      "tick": 17,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5238.5,
+      "tick": 17,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5255.2,
+      "tick": 17,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5271.8,
+      "tick": 17,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5288.5,
+      "tick": 18,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5305.1,
+      "tick": 18,
+      "remote": [
+        18,
+        12
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5388.4,
+      "tick": 18,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 5471.8,
+      "tick": 19,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 5488.4,
+      "tick": 19,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 5505.1,
+      "tick": 19,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 5521.7,
+      "tick": 19,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5538.4,
+      "tick": 19,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5555.1,
+      "tick": 20,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5571.8,
+      "tick": 20,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5588.5,
+      "tick": 20,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5605.1,
+      "tick": 20,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5621.8,
+      "tick": 20,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5638.5,
+      "tick": 20,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5655.1,
+      "tick": 20,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5671.8,
+      "tick": 21,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5688.4,
+      "tick": 21,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5705.1,
+      "tick": 21,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5721.7,
+      "tick": 21,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5738.4,
+      "tick": 21,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5755.1,
+      "tick": 21,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5771.8,
+      "tick": 21,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5788.4,
+      "tick": 21,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5805.1,
+      "tick": 22,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5821.7,
+      "tick": 22,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5838.4,
+      "tick": 22,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5855.1,
+      "tick": 22,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5871.8,
+      "tick": 22,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5888.4,
+      "tick": 22,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5905.1,
+      "tick": 22,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5921.7,
+      "tick": 23,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5938.5,
+      "tick": 23,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5955.1,
+      "tick": 23,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5971.8,
+      "tick": 23,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 5988.5,
+      "tick": 23,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6005.1,
+      "tick": 23,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6021.7,
+      "tick": 23,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6038.4,
+      "tick": 23,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6055.1,
+      "tick": 24,
+      "remote": [
+        24,
+        18
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 6155.1,
+      "tick": 24,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 6238.5,
+      "tick": 25,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6255.1,
+      "tick": 25,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6271.8,
+      "tick": 25,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6288.4,
+      "tick": 25,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6305.1,
+      "tick": 26,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6321.7,
+      "tick": 26,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6338.5,
+      "tick": 26,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6355,
+      "tick": 26,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6371.7,
+      "tick": 26,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6388.4,
+      "tick": 26,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6405,
+      "tick": 26,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6421.7,
+      "tick": 27,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6438.4,
+      "tick": 27,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6455,
+      "tick": 27,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6471.7,
+      "tick": 27,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6488.4,
+      "tick": 27,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6505,
+      "tick": 27,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6521.7,
+      "tick": 27,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6538.4,
+      "tick": 27,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6555.1,
+      "tick": 28,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6571.7,
+      "tick": 28,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6588.4,
+      "tick": 28,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6605.1,
+      "tick": 28,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6621.7,
+      "tick": 28,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6638.4,
+      "tick": 28,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6655.1,
+      "tick": 28,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6671.8,
+      "tick": 29,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6688.4,
+      "tick": 29,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6705.1,
+      "tick": 29,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6721.7,
+      "tick": 29,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6738.4,
+      "tick": 29,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6755.1,
+      "tick": 29,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6771.7,
+      "tick": 29,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6788.4,
+      "tick": 29,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6805.1,
+      "tick": 30,
+      "remote": [
+        30,
+        24
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6888.4,
+      "tick": 30,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6971.7,
+      "tick": 31,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 6988.4,
+      "tick": 31,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7005,
+      "tick": 31,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7021.7,
+      "tick": 31,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7038.4,
+      "tick": 31,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7055,
+      "tick": 32,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7071.7,
+      "tick": 32,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7088.4,
+      "tick": 32,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7105.1,
+      "tick": 32,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7121.7,
+      "tick": 32,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7138.4,
+      "tick": 32,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7155,
+      "tick": 32,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7171.7,
+      "tick": 33,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7188.4,
+      "tick": 33,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7205.1,
+      "tick": 33,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7221.7,
+      "tick": 33,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7238.4,
+      "tick": 33,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7255,
+      "tick": 33,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7271.7,
+      "tick": 33,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7288.3,
+      "tick": 33,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7305,
+      "tick": 34,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7321.7,
+      "tick": 34,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7338.3,
+      "tick": 34,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7355,
+      "tick": 34,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7371.7,
+      "tick": 34,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7388.3,
+      "tick": 34,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7405.1,
+      "tick": 34,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7421.7,
+      "tick": 35,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7438.4,
+      "tick": 35,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7455,
+      "tick": 35,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7471.7,
+      "tick": 35,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7488.4,
+      "tick": 35,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7505,
+      "tick": 35,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7521.7,
+      "tick": 35,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7538.3,
+      "tick": 35,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7555.1,
+      "tick": 36,
+      "remote": [
+        36,
+        30
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7638.4,
+      "tick": 36,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 7721.7,
+      "tick": 37,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 7738.3,
+      "tick": 37,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 7755.1,
+      "tick": 37,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 7771.7,
+      "tick": 37,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7788.3,
+      "tick": 37,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7805,
+      "tick": 38,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7821.7,
+      "tick": 38,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7838.3,
+      "tick": 38,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7855,
+      "tick": 38,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7871.7,
+      "tick": 38,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7888.3,
+      "tick": 38,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7905,
+      "tick": 38,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7921.7,
+      "tick": 39,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7938.3,
+      "tick": 39,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7955,
+      "tick": 39,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7971.6,
+      "tick": 39,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 7988.3,
+      "tick": 39,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8005.1,
+      "tick": 39,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8021.6,
+      "tick": 39,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8038.3,
+      "tick": 39,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8055,
+      "tick": 40,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8071.7,
+      "tick": 40,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8088.4,
+      "tick": 40,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8105,
+      "tick": 40,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8121.7,
+      "tick": 40,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8138.3,
+      "tick": 40,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8155,
+      "tick": 40,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8171.7,
+      "tick": 41,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8188.3,
+      "tick": 41,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8205,
+      "tick": 41,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8221.7,
+      "tick": 41,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8238.3,
+      "tick": 41,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8255,
+      "tick": 41,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8271.6,
+      "tick": 41,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8288.4,
+      "tick": 41,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8305,
+      "tick": 42,
+      "remote": [
+        42,
+        36
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 8388.4,
+      "tick": 42,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order."
+    },
+    {
+      "now": 8471.7,
+      "tick": 43,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8488.3,
+      "tick": 43,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8504.9,
+      "tick": 43,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8521.7,
+      "tick": 43,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8538.3,
+      "tick": 43,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8555,
+      "tick": 44,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8571.7,
+      "tick": 44,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8588.3,
+      "tick": 44,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8605,
+      "tick": 44,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8621.6,
+      "tick": 44,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8638.3,
+      "tick": 44,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8655,
+      "tick": 44,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8671.6,
+      "tick": 45,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8688.3,
+      "tick": 45,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8705,
+      "tick": 45,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8721.6,
+      "tick": 45,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8738.4,
+      "tick": 45,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8754.9,
+      "tick": 45,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8771.7,
+      "tick": 45,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8788.3,
+      "tick": 45,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8805,
+      "tick": 46,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8821.6,
+      "tick": 46,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8838.3,
+      "tick": 46,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8855,
+      "tick": 46,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8871.7,
+      "tick": 46,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8888.3,
+      "tick": 46,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8905,
+      "tick": 46,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8921.7,
+      "tick": 47,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8938.3,
+      "tick": 47,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8954.9,
+      "tick": 47,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8971.7,
+      "tick": 47,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 8988.4,
+      "tick": 47,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 9004.9,
+      "tick": 47,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 9021.7,
+      "tick": 47,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 9038.3,
+      "tick": 47,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    },
+    {
+      "now": 9054.9,
+      "tick": 48,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": ""
+    }
+  ],
+  "heldLocalFramesWithRemoteProgress": 10,
+  "roundTripExact": true,
+  "maxFrameGap": 450,
+  "warningObserved": true,
+  "pageErrors": []
+}

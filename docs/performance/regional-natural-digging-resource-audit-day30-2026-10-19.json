@@ -1,0 +1,73 @@
+{
+  "status": "resource-accounting-gap-observed",
+  "scope": "Controlled placement of actual natural offspring and both matching retained parents on existing dry ground; actual dig action, no genotype/age/reserve edits. Physical-world/flora equality tests resource debits. No whole-ecosystem balance acceptance is claimed.",
+  "input": "docs/test-runs/artifacts/regional-autonomous-100day-r2-2026-10-19/day30.snapshot.bin",
+  "inputSha256": "198fbd84f21178b7cef5a6fed2d70b702b21acb4a4c28f9afebe2a78a8ee46ff",
+  "birthReceipt": "docs/performance/regional-natural-anatomical-births-day30-2026-10-19.json",
+  "child": 630,
+  "birthDay": 24,
+  "parentIds": [
+    427,
+    516
+  ],
+  "results": [
+    {
+      "id": 427,
+      "bodyId": "bp0-225474e8",
+      "point": {
+        "x": 8.5,
+        "y": 8.5
+      },
+      "energyBefore": 66.653211554918,
+      "energyAfter": 66.653211554918,
+      "hydrationBefore": 55.77991998912601,
+      "hydrationAfter": 55.77991998912601,
+      "result": {
+        "ok": false,
+        "type": "dig",
+        "message": "You have no digging forelimbs."
+      },
+      "physicalWorldUnchanged": true,
+      "floraControllerUnchanged": true
+    },
+    {
+      "id": 516,
+      "bodyId": "bp0-4134709b",
+      "point": {
+        "x": 8.5,
+        "y": 8.5
+      },
+      "energyBefore": 92.85285575940347,
+      "energyAfter": 92.85285575940347,
+      "hydrationBefore": 85.68527535084633,
+      "hydrationAfter": 85.68527535084633,
+      "result": {
+        "ok": false,
+        "type": "dig",
+        "message": "You have no digging forelimbs."
+      },
+      "physicalWorldUnchanged": true,
+      "floraControllerUnchanged": true
+    },
+    {
+      "id": 630,
+      "bodyId": "bp0-0103be10",
+      "point": {
+        "x": 8.5,
+        "y": 8.5
+      },
+      "energyBefore": 69.81436148999008,
+      "energyAfter": 78.92548811314376,
+      "hydrationBefore": 57.6628275833896,
+      "hydrationAfter": 59.6628275833896,
+      "result": {
+        "ok": true,
+        "type": "dig",
+        "energyGain": 9.111126623153686,
+        "message": "Dug up roots · +9 energy."
+      },
+      "physicalWorldUnchanged": true,
+      "floraControllerUnchanged": true
+    }
+  ]
+}

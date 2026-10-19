@@ -4,6 +4,8 @@ import {CFG} from '../src/sim/config.js';
 import {PART_ABILITY} from '../src/lineage/part-abilities.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 const sim=new Simulation('DIGGING-CALENDAR',{player:false}),a=sim.animals.find(a=>a.species==='genvo'),root=sim.animals.find(a=>a.species==='rootling');
+// Explicit historical-policy regression: legacy patch renewal and clock conversion remain supported.
+sim.diggingRules='legacy-patch-reward/1';
 // Controlled capability fixture; no claim of natural mutation or adult editing.
 a.bodyPlan=structuredClone(root.bodyPlan);a.energy=20;const cell=sim.world.idx(a.x,a.y);
 assert.equal(sim.world.water[cell],0);

@@ -1,0 +1,1025 @@
+{
+  "schema": "genvo.multistep-accessibility/1",
+  "scope": "Deterministic targeted controlled operator-index search from the unmodified simple founder. Each witness replays the actual mutatePlan authority, including installed draft viability, optional loss and head-structure policies. Search goals guide this diagnostic only; ordinary mutations are unchanged. Not sampled births, inheritance frequencies, recombination proof, funded development, survival, reproduction or functional-physics acceptance.",
+  "policy": {
+    "schema": 1,
+    "inheritedVariation": "neutral-core/1",
+    "populationTraits": "neutral-parental/1",
+    "familyForms": "neutral-parental/1",
+    "anatomyProjection": "supported-water/1",
+    "bodyVariation": "neutral-head-structure/1"
+  },
+  "limits": {
+    "expandedPerGoal": 512,
+    "maxDepth": 10,
+    "frontier": 2048
+  },
+  "search": "Best-first prerequisite-distance heuristic; full serialized-body deduplication; both mutation symmetry branches enumerated at every expanded state. Depth, expansion and frontier bounds are explicit. Failure to find a witness never establishes impossibility. Witnesses are not certified shortest paths.",
+  "sourceHashes": {
+    "src/lineage/body-inheritance.js": "d94a96bd998a0ebb49daea109732b166458afadaa1e8f2cd0299674acb55ae40",
+    "src/lineage/body-plan.js": "f45b082fd35c5bc84e65b90f70127fe777922d8698d51e62bdc4ec965f97dd40",
+    "src/lineage/optional-loss.js": "b1224c839b6c295be0448d342c778f067448f9654564d829e7b645fa9ea336cf",
+    "src/lineage/evolution-draft.js": "c0c8b9c492126088ec7ce305c2c5a777f7af979a3404c71e61eddaca591e011d",
+    "src/lineage/part-registry.js": "cd77c3685383bb0bcbd53340b54ca3ae59520a70dd6da8fd1b1c144f3658a3a9",
+    "src/lineage/developmental-symmetry.js": "59d42413571ec909969760b541750d59746aa23ebf2d012a0f469bb98cfda40c",
+    "src/lineage/birth-rules.js": "1789fc7ecd23b6573df46f41cbd4f55ffaf620af98b2ce1dad4757011785e6d9"
+  },
+  "founder": {
+    "schema": "genvo8.bodyplan/0",
+    "registryVersion": 0,
+    "nodes": [
+      {
+        "id": "root",
+        "partId": "small-torso",
+        "partVersion": 1,
+        "parent": null,
+        "socket": null
+      },
+      {
+        "id": "root/eye.left",
+        "partId": "simple-eye",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "eye.left"
+      },
+      {
+        "id": "root/eye.right",
+        "partId": "simple-eye",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "eye.right"
+      },
+      {
+        "id": "root/limb.1",
+        "partId": "walking-leg",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "limb.1"
+      },
+      {
+        "id": "root/limb.3",
+        "partId": "walking-leg",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "limb.3"
+      },
+      {
+        "id": "root/limb.5",
+        "partId": "walking-leg",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "limb.5"
+      },
+      {
+        "id": "root/limb.7",
+        "partId": "walking-leg",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "limb.7"
+      },
+      {
+        "id": "root/mouth",
+        "partId": "grazing-mouth",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "mouth"
+      }
+    ],
+    "id": "bp0-4134709b"
+  },
+  "summary": {
+    "catalogParts": 91,
+    "partWitnesses": 0,
+    "partSearchUnresolved": [
+      "mammary-gland"
+    ],
+    "policyExcluded": [],
+    "twelveLegs": "legal-operator-witness",
+    "cachedExpandedBodies": 519,
+    "enumeratedChoices": 59423
+  },
+  "rows": [
+    {
+      "kind": "part",
+      "id": "mammary-gland",
+      "status": "not-found-within-bounds",
+      "expanded": 512,
+      "visited": 34058,
+      "frontierRemaining": 2048,
+      "pruned": 31498,
+      "reachedDepthLimit": false,
+      "path": null,
+      "finalPartCounts": null
+    },
+    {
+      "kind": "limb-count",
+      "id": "twelve-legs",
+      "status": "legal-operator-witness",
+      "expanded": 8,
+      "visited": 940,
+      "frontierRemaining": 931,
+      "pruned": 0,
+      "reachedDepthLimit": false,
+      "path": [
+        {
+          "asymmetric": false,
+          "choice": 29,
+          "options": 61,
+          "event": {
+            "policy": "neutral-head-structure/1",
+            "operator": "add-or-replace",
+            "branch": "paired",
+            "choice": 29,
+            "options": 61,
+            "attempted": true,
+            "accepted": true,
+            "from": "bp0-4134709b",
+            "to": "bp0-cc6b3afc",
+            "targets": [],
+            "removed": [],
+            "moved": [],
+            "problems": []
+          },
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "soft-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-cc6b3afc"
+          }
+        },
+        {
+          "asymmetric": false,
+          "choice": 1,
+          "options": 67,
+          "event": {
+            "policy": "neutral-head-structure/1",
+            "operator": "add-or-replace",
+            "branch": "paired",
+            "choice": 1,
+            "options": 67,
+            "attempted": true,
+            "accepted": true,
+            "from": "bp0-cc6b3afc",
+            "to": "bp0-bd5d70bc",
+            "targets": [],
+            "removed": [],
+            "moved": [],
+            "problems": []
+          },
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "soft-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.2",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.2"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.6",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.6"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-bd5d70bc"
+          }
+        },
+        {
+          "asymmetric": false,
+          "choice": 1,
+          "options": 82,
+          "event": {
+            "policy": "neutral-head-structure/1",
+            "operator": "add-or-replace",
+            "branch": "paired",
+            "choice": 1,
+            "options": 82,
+            "attempted": true,
+            "accepted": true,
+            "from": "bp0-bd5d70bc",
+            "to": "bp0-1df3381d",
+            "targets": [],
+            "removed": [],
+            "moved": [],
+            "problems": []
+          },
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "soft-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.2",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.2"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.4",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.4"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.6",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.6"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-1df3381d"
+          }
+        },
+        {
+          "asymmetric": false,
+          "choice": 0,
+          "options": 89,
+          "event": {
+            "policy": "neutral-head-structure/1",
+            "operator": "add-or-replace",
+            "branch": "paired",
+            "choice": 0,
+            "options": 89,
+            "attempted": true,
+            "accepted": true,
+            "from": "bp0-1df3381d",
+            "to": "bp0-56156dec",
+            "targets": [],
+            "removed": [],
+            "moved": [],
+            "problems": []
+          },
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "soft-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.0",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.0"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.2",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.2"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.4",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.4"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.6",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.6"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-56156dec"
+          }
+        },
+        {
+          "asymmetric": false,
+          "choice": 59,
+          "options": 96,
+          "event": {
+            "policy": "neutral-head-structure/1",
+            "operator": "add-or-replace",
+            "branch": "paired",
+            "choice": 59,
+            "options": 96,
+            "attempted": true,
+            "accepted": true,
+            "from": "bp0-56156dec",
+            "to": "bp0-de47bc6a",
+            "targets": [],
+            "removed": [],
+            "moved": [],
+            "problems": []
+          },
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "sleek-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.0",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.0"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.2",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.2"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.4",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.4"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.6",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.6"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-de47bc6a"
+          }
+        },
+        {
+          "asymmetric": false,
+          "choice": 58,
+          "options": 94,
+          "event": {
+            "policy": "neutral-head-structure/1",
+            "operator": "add-or-replace",
+            "branch": "paired",
+            "choice": 58,
+            "options": 94,
+            "attempted": true,
+            "accepted": true,
+            "from": "bp0-de47bc6a",
+            "to": "bp0-feeab7ba",
+            "targets": [],
+            "removed": [],
+            "moved": [],
+            "problems": []
+          },
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "long-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.0",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.0"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.2",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.2"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.4",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.4"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.6",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.6"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-feeab7ba"
+          }
+        },
+        {
+          "asymmetric": false,
+          "choice": 0,
+          "options": 97,
+          "event": {
+            "policy": "neutral-head-structure/1",
+            "operator": "add-or-replace",
+            "branch": "paired",
+            "choice": 0,
+            "options": 97,
+            "attempted": true,
+            "accepted": true,
+            "from": "bp0-feeab7ba",
+            "to": "bp0-624eb2e8",
+            "targets": [],
+            "removed": [],
+            "moved": [],
+            "problems": []
+          },
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "long-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.0",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.0"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.14",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.14"
+              },
+              {
+                "id": "root/limb.2",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.2"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.4",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.4"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.6",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.6"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/limb.9",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.9"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-624eb2e8"
+          }
+        },
+        {
+          "asymmetric": false,
+          "choice": 0,
+          "options": 110,
+          "event": {
+            "policy": "neutral-head-structure/1",
+            "operator": "add-or-replace",
+            "branch": "paired",
+            "choice": 0,
+            "options": 110,
+            "attempted": true,
+            "accepted": true,
+            "from": "bp0-624eb2e8",
+            "to": "bp0-07bc96ad",
+            "targets": [],
+            "removed": [],
+            "moved": [],
+            "problems": []
+          },
+          "body": {
+            "schema": "genvo8.bodyplan/0",
+            "registryVersion": 0,
+            "nodes": [
+              {
+                "id": "root",
+                "partId": "long-torso",
+                "partVersion": 1,
+                "parent": null,
+                "socket": null
+              },
+              {
+                "id": "root/eye.left",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.left"
+              },
+              {
+                "id": "root/eye.right",
+                "partId": "simple-eye",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "eye.right"
+              },
+              {
+                "id": "root/limb.0",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.0"
+              },
+              {
+                "id": "root/limb.1",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.1"
+              },
+              {
+                "id": "root/limb.10",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.10"
+              },
+              {
+                "id": "root/limb.13",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.13"
+              },
+              {
+                "id": "root/limb.14",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.14"
+              },
+              {
+                "id": "root/limb.2",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.2"
+              },
+              {
+                "id": "root/limb.3",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.3"
+              },
+              {
+                "id": "root/limb.4",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.4"
+              },
+              {
+                "id": "root/limb.5",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.5"
+              },
+              {
+                "id": "root/limb.6",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.6"
+              },
+              {
+                "id": "root/limb.7",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.7"
+              },
+              {
+                "id": "root/limb.9",
+                "partId": "walking-leg",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "limb.9"
+              },
+              {
+                "id": "root/mouth",
+                "partId": "grazing-mouth",
+                "partVersion": 1,
+                "parent": "root",
+                "socket": "mouth"
+              }
+            ],
+            "id": "bp0-07bc96ad"
+          }
+        }
+      ],
+      "finalPartCounts": {
+        "long-torso": 1,
+        "simple-eye": 2,
+        "walking-leg": 12,
+        "grazing-mouth": 1
+      }
+    }
+  ],
+  "auditedGoals": {
+    "goalFilter": "mammary-gland",
+    "expandedPerGoal": 512,
+    "partGoals": 1
+  },
+  "experimentProvenance": {
+    "script": "docs/living-planet-architecture/multistep-accessibility/audit.mjs",
+    "sha256": "eccfcfd047238c824c3af041e59452ff3ff9f71939eb76df83ffaf99b60be44a",
+    "changes": "Fresh output path, absolute imports and updated scope wording; optional declared goal filter/expansion bound; same bounded search algorithm",
+    "limitations": "Constructed mutation-operator witnesses; not actual inherited births, developmental funding, survival, reproduction, frequency or functional action proof"
+  }
+}

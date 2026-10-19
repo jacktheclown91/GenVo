@@ -1,0 +1,88 @@
+{
+  "schema": "genvo.regional-cpu-summary/1",
+  "rawProfile": "docs\\test-runs\\artifacts\\regional-replay-2026-10-19.cpuprofile",
+  "scope": "Whole profiled process includes initialization/crossing, diagnostics and GC; inclusive categories are disjoint by precedence; not browser frame time",
+  "sampledMs": 12693.562,
+  "categoriesMs": {
+    "Other process work including canonical ecology and diagnostics": 5875.55,
+    "Garbage collection": 448.289,
+    "Structured clone outside restore": 1040.276,
+    "Snapshot projection/packing": 152.725,
+    "World construction inside restore": 2265.744,
+    "Other restore work": 2910.978
+  },
+  "topSelfMs": [
+    {
+      "frame": "structuredClone@js_transferable",
+      "ms": 1062.535
+    },
+    {
+      "frame": "upgrade@dispersal.js",
+      "ms": 669.809
+    },
+    {
+      "frame": "buildHydrology@world.js",
+      "ms": 619.21
+    },
+    {
+      "frame": "initializePlanetWorld@planet-world.js",
+      "ms": 568.596
+    },
+    {
+      "frame": "#sample@planet-geography.js",
+      "ms": 511.577
+    },
+    {
+      "frame": "(garbage collector)@",
+      "ms": 448.289
+    },
+    {
+      "frame": "adultBodyMass@body-mass.js",
+      "ms": 361.14
+    },
+    {
+      "frame": "initializePlantResources@plant-resources.js",
+      "ms": 360.707
+    },
+    {
+      "frame": "cropYield@dispersal.js",
+      "ms": 333.982
+    },
+    {
+      "frame": "canReach@lifestyle.js",
+      "ms": 250.949
+    },
+    {
+      "frame": "growLandProducers@plant-resources.js",
+      "ms": 241.723
+    },
+    {
+      "frame": "overlapOf@dietary-demand.js",
+      "ms": 232.964
+    },
+    {
+      "frame": "restoreWorld@save-manager.js",
+      "ms": 219.667
+    },
+    {
+      "frame": "validatePlantResources@plant-resources.js",
+      "ms": 205.825
+    },
+    {
+      "frame": "@simulation.js",
+      "ms": 171.992
+    },
+    {
+      "frame": "surveyAt@carrying.js",
+      "ms": 156.653
+    },
+    {
+      "frame": "advanceBotanicalReproduction@botanical-reproduction.js",
+      "ms": 156.612
+    },
+    {
+      "frame": "initializeFloraInheritance@flora-inheritance.js",
+      "ms": 154.386
+    }
+  ]
+}

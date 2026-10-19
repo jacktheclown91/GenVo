@@ -1,0 +1,49 @@
+{
+  "schema": "genvo.horizon-save-probe/1",
+  "seed": "GENVO8-TEST-A",
+  "requestedDays": 100,
+  "actualGenerator": "planetary/1",
+  "origin": {
+    "x": 0,
+    "y": 2560
+  },
+  "physicalAuditDays": 100,
+  "calendarDay": 101,
+  "integrity": "pass",
+  "scope": "Headless autonomous default founders; exact complete snapshot and one full-day continuation",
+  "beforeSnapshot": {
+    "rss": 1080180736,
+    "heapTotal": 824520704,
+    "heapUsed": 356202992,
+    "external": 13045396,
+    "arrayBuffers": 10052007
+  },
+  "snapshotMs": 1966.4644000000117,
+  "v8EncodingMs": 287.8243999999977,
+  "snapshotBytes": 73938447,
+  "snapshotSha256": "923f5d772df23486e4cf40ad7109afdd1148b67cc4c5fbbd3020235c7595d022",
+  "snapshotHashScope": "Artifact identity only; V8 encoding is not a canonical state hash",
+  "restoreMs": 2731.7744000000093,
+  "exactRoundtrip": true,
+  "componentV8Bytes": {
+    "seedColumns": 30464796,
+    "floraGenomes": 9425942,
+    "botanical": 12329254
+  },
+  "afterRestore": {
+    "rss": 1275731968,
+    "heapTotal": 809664512,
+    "heapUsed": 616808376,
+    "external": 202431487,
+    "arrayBuffers": 110136862
+  },
+  "exactFullDayContinuation": true,
+  "finalCalendarDay": 102,
+  "afterContinuation": {
+    "rss": 1647153152,
+    "heapTotal": 1216745472,
+    "heapUsed": 1121680240,
+    "external": 215190153,
+    "arrayBuffers": 138867390
+  }
+}

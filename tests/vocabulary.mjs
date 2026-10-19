@@ -5,7 +5,7 @@ import {SPECIES} from '../src/organisms/species.js';
 import {DISEASES} from '../src/ecology/disease.js';
 
 assert.deepEqual(Object.fromEntries(Object.entries(PLANTS).map(([k,v])=>[k,v.label])),{
-  sunmoss:'Moss',bramble:'Berries',marshroot:'Reeds',rotcap:'Mushrooms',woodspire:'Woodspire',thistlepod:'Seed Pods'
+  sunmoss:'Moss',bramble:'Berries',marshroot:'Reeds',rotcap:'Mushrooms',woodspire:'Woodspire',thistlepod:'Seed Pods',dunebulb:'Dune Bulbs',dustsage:'Dust Sage',frostlichen:'Frost Lichen',snowberry:'Snowberries'
 });
 assert.equal(SPECIES.mosskip.label,'Hopper');
 assert.equal(SPECIES.rootling.label,'Digger');

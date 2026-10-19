@@ -75,9 +75,8 @@ export function advanceSoilDay(w,climate,day){
   if(r?.soilWaterLinked){for(let i=0;i<w.len;i++)if(!w.water[i])withdrawPlantUptake(w,i,cap,r.water[i]);r.soilWaterLinked=false}
   advanceSoilWater(w,climate,day);
   const after=soilWaterStorage(w),f=Object.fromEntries(FLOWS.map(k=>[k,s.totals[k]-t0[k]])),inputs=f.rain+f.lateral,outputs=f.runoff+f.evaporation+f.deepDrainage+f.uptake+f.overflow;
-  let land=0;for(let i=0;i<w.len;i++)if(!w.water[i])land++;
-  s.lastDay={day,climateRain:climate.rain,climateTemp:climate.temp,...f,inputs,outputs,storageBefore:before,storageAfter:after,storageChange:after-before,closure:inputs-outputs-(after-before),meanMoisture:land?(after-sumGroundwater(w))/land:0,...(s.pageGroundwaterTransfers?{pageGroundwaterTransfers:s.pageGroundwaterTransfers}:{})};
+  let land=0,moisture=0;for(let i=0;i<w.len;i++)if(!w.water[i]){land++;moisture+=w.moisture[i]}
+  s.lastDay={day,climateRain:climate.rain,climateTemp:climate.temp,...f,inputs,outputs,storageBefore:before,storageAfter:after,storageChange:after-before,closure:inputs-outputs-(after-before),meanMoisture:land?moisture/land:0,...(s.pageGroundwaterTransfers?{pageGroundwaterTransfers:s.pageGroundwaterTransfers}:{})};
   (s.daily||(s.daily=[])).push(s.lastDay);if(s.daily.length>64)s.daily.shift();
   return s;
 }
-function sumGroundwater(w){const g=w.soilWater.groundwater;let s=0;for(let i=0;i<w.len;i++)if(!w.water[i])s+=g[i];return s}

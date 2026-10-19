@@ -1,0 +1,3677 @@
+{
+  "archives": 2,
+  "regions": [
+    {
+      "key": "0,0",
+      "tick": 474,
+      "debt": 6,
+      "organisms": 194,
+      "biologicalLedger": {
+        "schema": 1,
+        "firstTick": 0,
+        "lastTick": 474,
+        "ticks": 474,
+        "fullDays": 9,
+        "births": 0,
+        "deaths": 1,
+        "lastDay": 10,
+        "lastPopulation": 194
+      },
+      "environmentalLedger": {
+        "schema": 1,
+        "firstDay": 1,
+        "lastDay": 9,
+        "days": 9,
+        "rain": 2634.5127535730044,
+        "saltInput": 0,
+        "saltOutput": 0,
+        "soilMaxAbsClosure": 0.0000046599714096373646,
+        "saltMaxAbsClosure": 0,
+        "lastSoilClosure": -0.0000028472875328589,
+        "lastSaltClosure": 0
+      }
+    },
+    {
+      "key": "128,0",
+      "tick": 474,
+      "debt": 6,
+      "organisms": 188,
+      "biologicalLedger": {
+        "schema": 1,
+        "firstTick": 0,
+        "lastTick": 474,
+        "ticks": 474,
+        "fullDays": 9,
+        "births": 0,
+        "deaths": 0,
+        "lastDay": 10,
+        "lastPopulation": 188
+      },
+      "environmentalLedger": {
+        "schema": 1,
+        "firstDay": 1,
+        "lastDay": 9,
+        "days": 9,
+        "rain": 2631.04508616456,
+        "saltInput": 0,
+        "saltOutput": 0,
+        "soilMaxAbsClosure": 0.000004879984771832824,
+        "saltMaxAbsClosure": 0,
+        "lastSoilClosure": -0.000004879984771832824,
+        "lastSaltClosure": 0
+      }
+    }
+  ],
+  "tickTiming": {
+    "count": 480,
+    "p50": 0.8385999999991327,
+    "p95": 474.58380000000034,
+    "max": 886.3166,
+    "over50ms": 99
+  },
+  "cacheEnabled": true,
+  "cache": {
+    "entries": 2,
+    "limit": 4,
+    "hits": 156,
+    "misses": 2
+  },
+  "reference": null,
+  "exactReferenceState": null,
+  "snapshotArtifact": "docs/test-runs/artifacts/regional-synchronized-10day-2026-10-19.snapshot.bin",
+  "schema": "genvo.regional-replay-profile/1",
+  "scope": "Actual border crossings after controlled legal frontier placement, default founded organisms, ordinary canonical ticks; not natural navigation, autonomous continental migration or a long-run scale verdict",
+  "days": 10,
+  "frontier": {
+    "direction": "east"
+  },
+  "remoteInitial": 195,
+  "remoteFinal": 194,
+  "remoteLedger": {
+    "schema": 1,
+    "firstTick": 0,
+    "lastTick": 474,
+    "ticks": 474,
+    "fullDays": 9,
+    "births": 0,
+    "deaths": 1,
+    "lastDay": 10,
+    "lastPopulation": 194
+  },
+  "environmentalLedger": {
+    "schema": 1,
+    "firstDay": 1,
+    "lastDay": 9,
+    "days": 9,
+    "rain": 2634.5127535730044,
+    "saltInput": 0,
+    "saltOutput": 0,
+    "soilMaxAbsClosure": 0.0000046599714096373646,
+    "saltMaxAbsClosure": 0,
+    "lastSoilClosure": -0.0000028472875328589,
+    "lastSaltClosure": 0
+  },
+  "remoteDebt": 6,
+  "elapsedMs": 36577.7899,
+  "activePhaseMs": 4348.535400000002,
+  "outsideActivePhasesMs": 32229.254500000003,
+  "overheadScope": "Includes offscreen replay plus integrity/readouts/GC/yields; CPU profile is needed to attribute it",
+  "result": {
+    "schema": "genvo.ecological-observation/1",
+    "seed": "PLANET-B0-A",
+    "horizon": 10,
+    "checkedDays": 10,
+    "peak": 197,
+    "checkpoint": null,
+    "samples": [
+      {
+        "seed": "PLANET-B0-A",
+        "day": 1,
+        "tick": 0,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 12,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 8,
+          "genvo": 25
+        },
+        "processingCapacity": {
+          "living": 197,
+          "eggs": 0,
+          "animalReference": 900,
+          "eggReference": 128,
+          "exceeded": false,
+          "load": {
+            "pendingSeconds": 0,
+            "budgetLimited": false,
+            "workMs": 0
+          }
+        },
+        "totalExtinction": false,
+        "births": 0,
+        "deaths": 0,
+        "deathCauses": {},
+        "extinctions": [],
+        "resources": {
+          "sunmoss": 10875.980616927147,
+          "bramble": 2154.584891065955,
+          "marshroot": 356.26904163882136,
+          "rotcap": 874.8394082654268,
+          "woodspire": 1067.4903611242771,
+          "thistlepod": 1377.5013819932938,
+          "dunebulb": 0,
+          "dustsage": 1042.4676298052073,
+          "frostlichen": 1049.4642703607678,
+          "snowberry": 1233.1152399927378,
+          "algae": 112.86174692213535,
+          "duckweed": 47.54518711566925,
+          "waterweed": 88.82246053218842,
+          "larvae": 11.286174692213535,
+          "fry": 2.257234938442707,
+          "carrion": 0
+        },
+        "producerFlows": {
+          "rain": 0,
+          "shoreInflow": 0,
+          "evaporation": 0,
+          "runoff": 0,
+          "photosynthesis": 0,
+          "respiration": 0,
+          "growth": 0,
+          "waterUsed": 0,
+          "mineralsUsed": 0,
+          "mineralized": 0,
+          "plantLitter": 0,
+          "seedLitter": 0
+        },
+        "producerLimits": {
+          "sunmoss": {
+            "0": 16384
+          },
+          "bramble": {
+            "0": 16384
+          },
+          "marshroot": {
+            "0": 16384
+          },
+          "woodspire": {
+            "0": 16384
+          },
+          "thistlepod": {
+            "0": 16384
+          },
+          "dunebulb": {
+            "0": 16384
+          },
+          "dustsage": {
+            "0": 16384
+          },
+          "frostlichen": {
+            "0": 16384
+          },
+          "snowberry": {
+            "0": 16384
+          }
+        },
+        "migration": {
+          "states": 0,
+          "statuses": {},
+          "reasons": {}
+        },
+        "lineage": {
+          "taxa": 1,
+          "statuses": {
+            "living": 1
+          }
+        },
+        "recentLineageEvents": [],
+        "climate": {},
+        "waterFlows": null,
+        "recentWaterClosureMax": null,
+        "waterBudget": null,
+        "wild": {
+          "needlejaw": {
+            "alive": 12,
+            "evolved": 0
+          },
+          "mosskip": {
+            "alive": 64,
+            "evolved": 0
+          },
+          "rillsifter": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "mirelick": {
+            "alive": 20,
+            "evolved": 0
+          },
+          "podshell": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "bankjaw": {
+            "alive": 8,
+            "evolved": 0
+          },
+          "rootling": {
+            "alive": 32,
+            "evolved": 0
+          }
+        },
+        "branchIds": [
+          "common",
+          "rillsifter:aquatic"
+        ],
+        "structures": {
+          "animals": 197,
+          "living": 197,
+          "genomes": 8,
+          "seedCells": 0,
+          "seedCohorts": 0,
+          "floraBirthHistory": 0,
+          "dispersalEvents": 0,
+          "flowers": 0,
+          "pollen": 0,
+          "embryos": 0,
+          "botanicalReceipts": 0,
+          "migrationStates": 0,
+          "lineageEvents": 0,
+          "lineageNodes": 1,
+          "producerReceipts": 0
+        },
+        "caches": {
+          "cropYield": {
+            "groups": 0,
+            "entries": 0,
+            "perGroupLimit": 8192
+          },
+          "generatedBotanical": {
+            "entries": 0,
+            "limit": 16384,
+            "scope": "process-wide generated genomes; WeakMap/WeakSet retention is not enumerated"
+          }
+        },
+        "causalLimit": "Observed stocks and receipts; aggregate association alone does not prove a cause.",
+        "horizon": 10,
+        "completedDays": 0,
+        "seconds": 0.018010300000000028,
+        "memory": {
+          "rss": 176254976,
+          "heapTotal": 89731072,
+          "heapUsed": 37767080,
+          "external": 35385643,
+          "arrayBuffers": 33245671,
+          "heapBeforeGc": 49762200,
+          "gcRequested": true,
+          "gcCollected": true
+        },
+        "phases": {
+          "phaseClimate": {
+            "calls": 0,
+            "ms": 0
+          },
+          "phaseSoil": {
+            "calls": 0,
+            "ms": 0
+          },
+          "phaseVegetation": {
+            "calls": 0,
+            "ms": 0
+          },
+          "phasePerception": {
+            "calls": 0,
+            "ms": 0
+          },
+          "phaseDecision": {
+            "calls": 0,
+            "ms": 0
+          },
+          "phaseMovement": {
+            "calls": 0,
+            "ms": 0
+          },
+          "phaseMetabolism": {
+            "calls": 0,
+            "ms": 0
+          },
+          "phaseLifecycle": {
+            "calls": 0,
+            "ms": 0
+          }
+        }
+      },
+      {
+        "seed": "PLANET-B0-A",
+        "day": 2,
+        "tick": 48,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 12,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 8,
+          "genvo": 25
+        },
+        "processingCapacity": {
+          "living": 197,
+          "eggs": 0,
+          "animalReference": 900,
+          "eggReference": 128,
+          "exceeded": false,
+          "load": {
+            "pendingSeconds": 0,
+            "budgetLimited": false,
+            "workMs": 0
+          }
+        },
+        "totalExtinction": false,
+        "births": 0,
+        "deaths": 0,
+        "deathCauses": {},
+        "extinctions": [],
+        "resources": {
+          "sunmoss": 10912.33128067851,
+          "bramble": 2200.658871874213,
+          "marshroot": 373.6515599116683,
+          "rotcap": 872.1771803554147,
+          "woodspire": 1079.2582210302353,
+          "thistlepod": 1400.9493184313178,
+          "dunebulb": 0,
+          "dustsage": 1065.8290242999792,
+          "frostlichen": 1089.6593630984426,
+          "snowberry": 1221.957713469863,
+          "algae": 113.46518541872501,
+          "duckweed": 48.45193064212799,
+          "waterweed": 89.66068261861801,
+          "larvae": 11.252069694921374,
+          "fry": 2.2525146789848804,
+          "carrion": 0
+        },
+        "producerFlows": {
+          "rain": 0,
+          "shoreInflow": 0,
+          "evaporation": 0,
+          "runoff": 0,
+          "photosynthesis": 477.23339067518464,
+          "respiration": 57.42529029234442,
+          "growth": 233.6942212801712,
+          "waterUsed": 116.8471106400856,
+          "mineralsUsed": 23.369422128016954,
+          "mineralized": 0.3804371325531958,
+          "plantLitter": 0.46249411797959394,
+          "seedLitter": 0,
+          "reserveExport": 3.1053723730138767,
+          "biomassExported": 16.37250233888626,
+          "soilExchange": -1696.604788965594,
+          "botanicalInvestment": 28.601963251829147
+        },
+        "producerLimits": {
+          "sunmoss": {
+            "0": 1142,
+            "1": 15242
+          },
+          "bramble": {
+            "0": 8086,
+            "1": 8298
+          },
+          "marshroot": {
+            "0": 14445,
+            "1": 1815,
+            "4": 124
+          },
+          "woodspire": {
+            "0": 11116,
+            "1": 5268
+          },
+          "thistlepod": {
+            "0": 8575,
+            "1": 7806,
+            "4": 3
+          },
+          "dunebulb": {
+            "0": 16384
+          },
+          "dustsage": {
+            "0": 9687,
+            "1": 6697
+          },
+          "frostlichen": {
+            "0": 6633,
+            "1": 9751
+          },
+          "snowberry": {
+            "0": 9969,
+            "1": 6415
+          }
+        },
+        "migration": {
+          "states": 197,
+          "statuses": {
+            "settled": 173,
+            "outbound": 24
+          },
+          "reasons": {
+            "scarcity": 24
+          }
+        },
+        "lineage": {
+          "taxa": 1,
+          "statuses": {
+            "living": 1
+          }
+        },
+        "recentLineageEvents": [],
+        "climate": {
+          "temp": 0.54,
+          "rain": 0.6104754627541338,
+          "weatherFactor": 1.0525439013002307
+        },
+        "waterFlows": {
+          "rain": 387.2585204529333,
+          "snowfall": 186.38166045782881,
+          "snowmelt": 0,
+          "infiltration": 194.65521829268852,
+          "runoff": 6.2216417024151385,
+          "evaporation": 581.777639881746,
+          "percolation": 19.81028751837598,
+          "capillary": 34.790315391437666,
+          "lateral": 8.135946772992611,
+          "deepDrainage": 31.29012365154919,
+          "uptake": 0,
+          "overflow": 0
+        },
+        "recentWaterClosureMax": 0.000002131676694716589,
+        "waterBudget": {
+          "day": 1,
+          "climateRain": 0.6104754627541338,
+          "climateTemp": 0.54,
+          "rain": 387.2585204529333,
+          "snowfall": 186.38166045782881,
+          "snowmelt": 0,
+          "infiltration": 194.65521829268852,
+          "runoff": 6.2216417024151385,
+          "evaporation": 581.777639881746,
+          "percolation": 19.81028751837598,
+          "capillary": 34.790315391437666,
+          "lateral": 8.135946772992611,
+          "deepDrainage": 31.29012365154919,
+          "uptake": 0,
+          "overflow": 0,
+          "inputs": 395.3944672259259,
+          "outputs": 619.2894052357103,
+          "storageBefore": 15658.74998998642,
+          "storageAfter": 15434.855049844959,
+          "storageChange": -223.89494014146112,
+          "closure": 0.000002131676694716589,
+          "meanMoisture": 0.46983572331843,
+          "pageGroundwaterTransfers": {
+            "schema": 1,
+            "flows": [
+              {
+                "from": "0,0",
+                "to": "1,0",
+                "forwardWater": 0.00001710653305053711,
+                "backwardWater": 0.0002623535692691803,
+                "netWater": -0.0002452470362186432
+              },
+              {
+                "from": "0,1",
+                "to": "1,1",
+                "forwardWater": 0.00027830153703689575,
+                "backwardWater": 0,
+                "netWater": 0.00027830153703689575
+              }
+            ]
+          }
+        },
+        "wild": {
+          "needlejaw": {
+            "alive": 12,
+            "evolved": 0
+          },
+          "mosskip": {
+            "alive": 64,
+            "evolved": 0
+          },
+          "rillsifter": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "mirelick": {
+            "alive": 20,
+            "evolved": 0
+          },
+          "podshell": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "bankjaw": {
+            "alive": 8,
+            "evolved": 0
+          },
+          "rootling": {
+            "alive": 32,
+            "evolved": 0
+          }
+        },
+        "branchIds": [
+          "common",
+          "rillsifter:aquatic"
+        ],
+        "structures": {
+          "animals": 197,
+          "living": 197,
+          "genomes": 278,
+          "seedCells": 140,
+          "seedCohorts": 140,
+          "floraBirthHistory": 128,
+          "dispersalEvents": 32,
+          "flowers": 1589,
+          "pollen": 1589,
+          "embryos": 0,
+          "botanicalReceipts": 128,
+          "migrationStates": 197,
+          "lineageEvents": 0,
+          "lineageNodes": 1,
+          "producerReceipts": 4
+        },
+        "caches": {
+          "cropYield": {
+            "groups": 24,
+            "entries": 13594,
+            "perGroupLimit": 8192
+          },
+          "generatedBotanical": {
+            "entries": 270,
+            "limit": 16384,
+            "scope": "process-wide generated genomes; WeakMap/WeakSet retention is not enumerated"
+          }
+        },
+        "causalLimit": "Observed stocks and receipts; aggregate association alone does not prove a cause.",
+        "horizon": 10,
+        "completedDays": 1,
+        "seconds": 2.5690368,
+        "memory": {
+          "rss": 293814272,
+          "heapTotal": 174141440,
+          "heapUsed": 55394608,
+          "external": 63222123,
+          "arrayBuffers": 48613831,
+          "heapBeforeGc": 96030200,
+          "gcRequested": true,
+          "gcCollected": true
+        },
+        "phases": {
+          "phaseClimate": {
+            "calls": 8,
+            "ms": 0.27220000000056643
+          },
+          "phaseSoil": {
+            "calls": 8,
+            "ms": 49.966399999999226
+          },
+          "phaseVegetation": {
+            "calls": 1,
+            "ms": 146.70320000000038
+          },
+          "phasePerception": {
+            "calls": 8,
+            "ms": 196.7765000000005
+          },
+          "phaseDecision": {
+            "calls": 8,
+            "ms": 79.80529999999999
+          },
+          "phaseMovement": {
+            "calls": 48,
+            "ms": 28.363499999997998
+          },
+          "phaseMetabolism": {
+            "calls": 8,
+            "ms": 14.283299999999826
+          },
+          "phaseLifecycle": {
+            "calls": 8,
+            "ms": 1.310200000000691
+          }
+        }
+      },
+      {
+        "seed": "PLANET-B0-A",
+        "day": 3,
+        "tick": 96,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 12,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 8,
+          "genvo": 25
+        },
+        "processingCapacity": {
+          "living": 197,
+          "eggs": 0,
+          "animalReference": 900,
+          "eggReference": 128,
+          "exceeded": false,
+          "load": {
+            "pendingSeconds": 0,
+            "budgetLimited": false,
+            "workMs": 0
+          }
+        },
+        "totalExtinction": false,
+        "births": 0,
+        "deaths": 0,
+        "deathCauses": {},
+        "extinctions": [],
+        "resources": {
+          "sunmoss": 10959.156304836273,
+          "bramble": 2249.1267451792955,
+          "marshroot": 387.40919544547796,
+          "rotcap": 869.3977694418281,
+          "woodspire": 1091.2913862913847,
+          "thistlepod": 1427.0581296849996,
+          "dunebulb": 0,
+          "dustsage": 1090.7305023372173,
+          "frostlichen": 1131.6927355006337,
+          "snowberry": 1229.4296351075172,
+          "algae": 114.04230812191963,
+          "duckweed": 49.3748791962862,
+          "waterweed": 90.50746494531631,
+          "larvae": 11.094263391569257,
+          "fry": 2.2477557151578367,
+          "carrion": 0
+        },
+        "producerFlows": {
+          "rain": 0,
+          "shoreInflow": 0,
+          "evaporation": 0,
+          "runoff": 0,
+          "photosynthesis": 983.8390210595104,
+          "respiration": 115.43084634712974,
+          "growth": 477.83151050152435,
+          "waterUsed": 238.91575525076217,
+          "mineralsUsed": 47.783151050152306,
+          "mineralized": 0.7411559887117575,
+          "plantLitter": 0.7758902683861135,
+          "seedLitter": 0.0049237392377108335,
+          "reserveExport": 4.663951084575946,
+          "biomassExported": 26.869761428236963,
+          "soilExchange": -1963.746593887264,
+          "botanicalInvestment": 40.042370691895485
+        },
+        "producerLimits": {
+          "sunmoss": {
+            "0": 967,
+            "1": 15417
+          },
+          "bramble": {
+            "0": 8086,
+            "1": 8298
+          },
+          "marshroot": {
+            "0": 14445,
+            "1": 1271,
+            "4": 668
+          },
+          "woodspire": {
+            "0": 11116,
+            "1": 5268
+          },
+          "thistlepod": {
+            "0": 8575,
+            "1": 7799,
+            "4": 10
+          },
+          "dunebulb": {
+            "0": 16384
+          },
+          "dustsage": {
+            "0": 9687,
+            "1": 6697
+          },
+          "frostlichen": {
+            "0": 6633,
+            "1": 9751
+          },
+          "snowberry": {
+            "0": 9969,
+            "1": 6415
+          }
+        },
+        "migration": {
+          "states": 197,
+          "statuses": {
+            "settled": 183,
+            "outbound": 14
+          },
+          "reasons": {
+            "scarcity": 14,
+            "reached habitat": 16,
+            "destination requires reassessment": 2
+          }
+        },
+        "lineage": {
+          "taxa": 1,
+          "statuses": {
+            "living": 1
+          }
+        },
+        "recentLineageEvents": [],
+        "climate": {
+          "temp": 0.568284271247462,
+          "rain": 0.4999440754065515,
+          "weatherFactor": 0.8619725438043992
+        },
+        "waterFlows": {
+          "rain": 704.3984270751137,
+          "snowfall": 249.31113024398948,
+          "snowmelt": 170.8240700218587,
+          "infiltration": 612.4939615666287,
+          "runoff": 13.417405286348647,
+          "evaporation": 1168.3083379250004,
+          "percolation": 32.10900160300711,
+          "capillary": 82.21008124802428,
+          "lateral": 15.161895275115967,
+          "deepDrainage": 62.3427063938291,
+          "uptake": 58.423555320042915,
+          "overflow": 0
+        },
+        "recentWaterClosureMax": 0.000002131676694716589,
+        "waterBudget": {
+          "day": 2,
+          "climateRain": 0.4999440754065515,
+          "climateTemp": 0.568284271247462,
+          "rain": 317.1399066221804,
+          "snowfall": 62.929469786160666,
+          "snowmelt": 170.8240700218587,
+          "infiltration": 417.8387432739402,
+          "runoff": 7.195763583933508,
+          "evaporation": 586.5306980432543,
+          "percolation": 12.29871408463113,
+          "capillary": 47.419765856586615,
+          "lateral": 7.025948502123356,
+          "deepDrainage": 31.052582742279906,
+          "uptake": 58.423555320042915,
+          "overflow": 0,
+          "inputs": 324.16585512430373,
+          "outputs": 683.2025996895107,
+          "storageBefore": 15434.855049844959,
+          "storageAfter": 15075.818306419362,
+          "storageChange": -359.0367434255968,
+          "closure": -0.0000011396102195249114,
+          "meanMoisture": 0.4577392983070064,
+          "pageGroundwaterTransfers": {
+            "schema": 1,
+            "flows": [
+              {
+                "from": "0,0",
+                "to": "1,0",
+                "forwardWater": 0.00018373504281044006,
+                "backwardWater": 0.0000872388482093811,
+                "netWater": 0.00009649619460105896
+              },
+              {
+                "from": "0,1",
+                "to": "1,1",
+                "forwardWater": 0.0003048330545425415,
+                "backwardWater": 0,
+                "netWater": 0.0003048330545425415
+              }
+            ]
+          }
+        },
+        "wild": {
+          "needlejaw": {
+            "alive": 12,
+            "evolved": 0
+          },
+          "mosskip": {
+            "alive": 64,
+            "evolved": 0
+          },
+          "rillsifter": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "mirelick": {
+            "alive": 20,
+            "evolved": 0
+          },
+          "podshell": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "bankjaw": {
+            "alive": 8,
+            "evolved": 0
+          },
+          "rootling": {
+            "alive": 32,
+            "evolved": 0
+          }
+        },
+        "branchIds": [
+          "common",
+          "rillsifter:aquatic"
+        ],
+        "structures": {
+          "animals": 197,
+          "living": 197,
+          "genomes": 481,
+          "seedCells": 190,
+          "seedCohorts": 190,
+          "floraBirthHistory": 128,
+          "dispersalEvents": 32,
+          "flowers": 1395,
+          "pollen": 619,
+          "embryos": 1177,
+          "botanicalReceipts": 128,
+          "migrationStates": 197,
+          "lineageEvents": 0,
+          "lineageNodes": 1,
+          "producerReceipts": 8
+        },
+        "caches": {
+          "cropYield": {
+            "groups": 24,
+            "entries": 16083,
+            "perGroupLimit": 8192
+          },
+          "generatedBotanical": {
+            "entries": 499,
+            "limit": 16384,
+            "scope": "process-wide generated genomes; WeakMap/WeakSet retention is not enumerated"
+          }
+        },
+        "causalLimit": "Observed stocks and receipts; aggregate association alone does not prove a cause.",
+        "horizon": 10,
+        "completedDays": 2,
+        "seconds": 5.5457929,
+        "memory": {
+          "rss": 347365376,
+          "heapTotal": 191324160,
+          "heapUsed": 51643184,
+          "external": 72406495,
+          "arrayBuffers": 49157867,
+          "heapBeforeGc": 102023904,
+          "gcRequested": true,
+          "gcCollected": true
+        },
+        "phases": {
+          "phaseClimate": {
+            "calls": 16,
+            "ms": 0.3314000000016222
+          },
+          "phaseSoil": {
+            "calls": 16,
+            "ms": 75.7886999999995
+          },
+          "phaseVegetation": {
+            "calls": 2,
+            "ms": 293.05610000000115
+          },
+          "phasePerception": {
+            "calls": 16,
+            "ms": 340.4038999999999
+          },
+          "phaseDecision": {
+            "calls": 16,
+            "ms": 131.92139999999972
+          },
+          "phaseMovement": {
+            "calls": 96,
+            "ms": 55.8144999999962
+          },
+          "phaseMetabolism": {
+            "calls": 16,
+            "ms": 23.932000000000016
+          },
+          "phaseLifecycle": {
+            "calls": 16,
+            "ms": 1.9939999999995734
+          }
+        }
+      },
+      {
+        "seed": "PLANET-B0-A",
+        "day": 4,
+        "tick": 144,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 12,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 8,
+          "genvo": 25
+        },
+        "processingCapacity": {
+          "living": 197,
+          "eggs": 0,
+          "animalReference": 900,
+          "eggReference": 128,
+          "exceeded": false,
+          "load": {
+            "pendingSeconds": 0,
+            "budgetLimited": false,
+            "workMs": 0
+          }
+        },
+        "totalExtinction": false,
+        "births": 0,
+        "deaths": 0,
+        "deathCauses": {},
+        "extinctions": [],
+        "resources": {
+          "sunmoss": 11003.899615675211,
+          "bramble": 2297.730250582099,
+          "marshroot": 397.99060931336135,
+          "rotcap": 869.5735574308783,
+          "woodspire": 1103.4730585962534,
+          "thistlepod": 1452.8681810367852,
+          "dunebulb": 0,
+          "dustsage": 1116.1467548161745,
+          "frostlichen": 1172.557405412197,
+          "snowberry": 1241.6387911885977,
+          "algae": 115.05669198930264,
+          "duckweed": 50.31545414030552,
+          "waterweed": 91.36390513181686,
+          "larvae": 10.8731086011976,
+          "fry": 2.238470475189388,
+          "carrion": 0
+        },
+        "producerFlows": {
+          "rain": 0,
+          "shoreInflow": 0,
+          "evaporation": 0,
+          "runoff": 0,
+          "photosynthesis": 1439.9081603931243,
+          "respiration": 174.08749024514765,
+          "growth": 720.1351185169751,
+          "waterUsed": 360.06755925848756,
+          "mineralsUsed": 72.01351185169726,
+          "mineralized": 2.247444089136655,
+          "plantLitter": 1.011827266743933,
+          "seedLitter": 0.012928871205076575,
+          "reserveExport": 7.0216066536344055,
+          "biomassExported": 41.4822632998228,
+          "soilExchange": -1984.2675406000524,
+          "botanicalInvestment": 46.50603260099888
+        },
+        "producerLimits": {
+          "sunmoss": {
+            "0": 880,
+            "1": 15504
+          },
+          "bramble": {
+            "0": 8086,
+            "1": 8298
+          },
+          "marshroot": {
+            "0": 14444,
+            "1": 929,
+            "4": 1011
+          },
+          "woodspire": {
+            "0": 11116,
+            "1": 5268
+          },
+          "thistlepod": {
+            "0": 8575,
+            "1": 7794,
+            "4": 15
+          },
+          "dunebulb": {
+            "0": 16384
+          },
+          "dustsage": {
+            "0": 9687,
+            "1": 6697
+          },
+          "frostlichen": {
+            "0": 6633,
+            "1": 8890,
+            "4": 861
+          },
+          "snowberry": {
+            "0": 9969,
+            "1": 6353,
+            "4": 62
+          }
+        },
+        "migration": {
+          "states": 197,
+          "statuses": {
+            "settled": 180,
+            "outbound": 17
+          },
+          "reasons": {
+            "destination requires reassessment": 5,
+            "reached habitat": 17,
+            "scarcity": 17
+          }
+        },
+        "lineage": {
+          "taxa": 1,
+          "statuses": {
+            "living": 1
+          }
+        },
+        "recentLineageEvents": [],
+        "climate": {
+          "temp": 0.5800000000000001,
+          "rain": 0.8023237620265927,
+          "weatherFactor": 1.3833168310803323
+        },
+        "waterFlows": {
+          "rain": 1213.3506555545223,
+          "snowfall": 290.6556499086333,
+          "snowmelt": 249.31113024399022,
+          "infiltration": 1152.1792340489312,
+          "runoff": 19.82690184094789,
+          "evaporation": 1756.6050908614202,
+          "percolation": 41.97132658080576,
+          "capillary": 130.42341266160892,
+          "lateral": 21.600693956017494,
+          "deepDrainage": 93.14342998162998,
+          "uptake": 119.45787762538053,
+          "overflow": 0
+        },
+        "recentWaterClosureMax": 0.000002131676694716589,
+        "waterBudget": {
+          "day": 3,
+          "climateRain": 0.8023237620265927,
+          "climateTemp": 0.5800000000000001,
+          "rain": 508.95222847940863,
+          "snowfall": 41.3445196646438,
+          "snowmelt": 78.48706022213153,
+          "infiltration": 539.6852724823025,
+          "runoff": 6.409496554599244,
+          "evaporation": 588.2967529364198,
+          "percolation": 9.86232497779865,
+          "capillary": 48.21333141358464,
+          "lateral": 6.438798680901527,
+          "deepDrainage": 30.80072358780088,
+          "uptake": 61.03432230533762,
+          "overflow": 0,
+          "inputs": 515.3910271603102,
+          "outputs": 686.5412953841576,
+          "storageBefore": 15075.818306419362,
+          "storageAfter": 14904.668038775231,
+          "storageChange": -171.1502676441305,
+          "closure": -5.797169251309242e-7,
+          "meanMoisture": 0.45324743870127526,
+          "pageGroundwaterTransfers": {
+            "schema": 1,
+            "flows": [
+              {
+                "from": "0,0",
+                "to": "1,0",
+                "forwardWater": 0.0012627318501472473,
+                "backwardWater": 0.00018766522407531738,
+                "netWater": 0.00107506662607193
+              },
+              {
+                "from": "0,1",
+                "to": "1,1",
+                "forwardWater": 0.0007883273065090179,
+                "backwardWater": 0.0003859288990497589,
+                "netWater": 0.00040239840745925903
+              }
+            ]
+          }
+        },
+        "wild": {
+          "needlejaw": {
+            "alive": 12,
+            "evolved": 0
+          },
+          "mosskip": {
+            "alive": 64,
+            "evolved": 0
+          },
+          "rillsifter": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "mirelick": {
+            "alive": 20,
+            "evolved": 0
+          },
+          "podshell": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "bankjaw": {
+            "alive": 8,
+            "evolved": 0
+          },
+          "rootling": {
+            "alive": 32,
+            "evolved": 0
+          }
+        },
+        "branchIds": [
+          "common",
+          "rillsifter:aquatic"
+        ],
+        "structures": {
+          "animals": 197,
+          "living": 197,
+          "genomes": 512,
+          "seedCells": 1318,
+          "seedCohorts": 1382,
+          "floraBirthHistory": 128,
+          "dispersalEvents": 32,
+          "flowers": 1505,
+          "pollen": 773,
+          "embryos": 256,
+          "botanicalReceipts": 128,
+          "migrationStates": 197,
+          "lineageEvents": 0,
+          "lineageNodes": 1,
+          "producerReceipts": 12
+        },
+        "caches": {
+          "cropYield": {
+            "groups": 24,
+            "entries": 18719,
+            "perGroupLimit": 8192
+          },
+          "generatedBotanical": {
+            "entries": 830,
+            "limit": 16384,
+            "scope": "process-wide generated genomes; WeakMap/WeakSet retention is not enumerated"
+          }
+        },
+        "causalLimit": "Observed stocks and receipts; aggregate association alone does not prove a cause.",
+        "horizon": 10,
+        "completedDays": 3,
+        "seconds": 8.691938899999998,
+        "memory": {
+          "rss": 391016448,
+          "heapTotal": 207089664,
+          "heapUsed": 56164832,
+          "external": 82468306,
+          "arrayBuffers": 77665495,
+          "heapBeforeGc": 97662504,
+          "gcRequested": true,
+          "gcCollected": true
+        },
+        "phases": {
+          "phaseClimate": {
+            "calls": 24,
+            "ms": 0.39360000000283435
+          },
+          "phaseSoil": {
+            "calls": 24,
+            "ms": 107.30860000000155
+          },
+          "phaseVegetation": {
+            "calls": 3,
+            "ms": 417.2873000000013
+          },
+          "phasePerception": {
+            "calls": 24,
+            "ms": 469.0697000000006
+          },
+          "phaseDecision": {
+            "calls": 24,
+            "ms": 192.74809999999934
+          },
+          "phaseMovement": {
+            "calls": 144,
+            "ms": 90.07900000000006
+          },
+          "phaseMetabolism": {
+            "calls": 24,
+            "ms": 33.759600000000546
+          },
+          "phaseLifecycle": {
+            "calls": 24,
+            "ms": 2.6417000000000144
+          }
+        }
+      },
+      {
+        "seed": "PLANET-B0-A",
+        "day": 5,
+        "tick": 192,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 12,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 8,
+          "genvo": 25
+        },
+        "processingCapacity": {
+          "living": 197,
+          "eggs": 0,
+          "animalReference": 900,
+          "eggReference": 128,
+          "exceeded": false,
+          "load": {
+            "pendingSeconds": 0,
+            "budgetLimited": false,
+            "workMs": 0
+          }
+        },
+        "totalExtinction": false,
+        "births": 0,
+        "deaths": 0,
+        "deathCauses": {},
+        "extinctions": [],
+        "resources": {
+          "sunmoss": 11051.517823815346,
+          "bramble": 2345.569016560912,
+          "marshroot": 406.7211071429774,
+          "rotcap": 867.7845507226884,
+          "woodspire": 1115.1512294113636,
+          "thistlepod": 1480.0736853219569,
+          "dunebulb": 0,
+          "dustsage": 1142.1524841338396,
+          "frostlichen": 1210.0426161065698,
+          "snowberry": 1253.4032685304992,
+          "algae": 115.33281417936087,
+          "duckweed": 51.272637128829956,
+          "waterweed": 92.2288606762886,
+          "larvae": 10.533105501905084,
+          "fry": 2.2335584829561412,
+          "carrion": 0
+        },
+        "producerFlows": {
+          "rain": 0,
+          "shoreInflow": 0,
+          "evaporation": 0,
+          "runoff": 0,
+          "photosynthesis": 1941.2008876139046,
+          "respiration": 233.4076742402062,
+          "growth": 959.6034939857203,
+          "waterUsed": 479.80174699286016,
+          "mineralsUsed": 95.96034939857157,
+          "mineralized": 2.967424047318497,
+          "plantLitter": 1.1772654706801102,
+          "seedLitter": 0.11630315566435456,
+          "reserveExport": 9.480300959361479,
+          "biomassExported": 55.48476508557794,
+          "soilExchange": -2366.7098807569514,
+          "botanicalInvestment": 53.29399731755257
+        },
+        "producerLimits": {
+          "sunmoss": {
+            "0": 795,
+            "1": 15589
+          },
+          "bramble": {
+            "0": 8086,
+            "1": 8298
+          },
+          "marshroot": {
+            "0": 14443,
+            "1": 752,
+            "4": 1189
+          },
+          "woodspire": {
+            "0": 11116,
+            "1": 5268
+          },
+          "thistlepod": {
+            "0": 8575,
+            "1": 7787,
+            "4": 22
+          },
+          "dunebulb": {
+            "0": 16384
+          },
+          "dustsage": {
+            "0": 9687,
+            "1": 6697
+          },
+          "frostlichen": {
+            "0": 6633,
+            "1": 7355,
+            "4": 2396
+          },
+          "snowberry": {
+            "0": 9942,
+            "1": 6405,
+            "4": 37
+          }
+        },
+        "migration": {
+          "states": 197,
+          "statuses": {
+            "settled": 180,
+            "outbound": 17
+          },
+          "reasons": {
+            "destination requires reassessment": 3,
+            "reached habitat": 21,
+            "scarcity": 17
+          }
+        },
+        "lineage": {
+          "taxa": 1,
+          "statuses": {
+            "living": 1
+          }
+        },
+        "recentLineageEvents": [],
+        "climate": {
+          "temp": 0.568284271247462,
+          "rain": 0.5416300631026179,
+          "weatherFactor": 0.933844936383824
+        },
+        "waterFlows": {
+          "rain": 1556.9318812440026,
+          "snowfall": 358.8004806793438,
+          "snowmelt": 290.655649908634,
+          "infiltration": 1465.7367755282658,
+          "runoff": 23.05027494503435,
+          "evaporation": 2320.618886676878,
+          "percolation": 46.93847820066939,
+          "capillary": 194.62564688359262,
+          "lateral": 27.725341118872166,
+          "deepDrainage": 123.60850891770748,
+          "uptake": 180.03377962924608,
+          "overflow": 0
+        },
+        "recentWaterClosureMax": 0.000002131676694716589,
+        "waterBudget": {
+          "day": 4,
+          "climateRain": 0.5416300631026179,
+          "climateTemp": 0.568284271247462,
+          "rain": 343.58122568948033,
+          "snowfall": 68.14483077071054,
+          "snowmelt": 41.3445196646438,
+          "infiltration": 313.55754147933453,
+          "runoff": 3.223373104086459,
+          "evaporation": 564.0137958154578,
+          "percolation": 4.967151619863628,
+          "capillary": 64.2022342219837,
+          "lateral": 6.1246471628546715,
+          "deepDrainage": 30.465078936077504,
+          "uptake": 60.57590200386555,
+          "overflow": 0,
+          "inputs": 349.705872852335,
+          "outputs": 658.2781498594873,
+          "storageBefore": 14904.668038775231,
+          "storageAfter": 14596.095759816471,
+          "storageChange": -308.57227895875985,
+          "closure": 0.0000019516076008585515,
+          "meanMoisture": 0.43738320784928697,
+          "pageGroundwaterTransfers": {
+            "schema": 1,
+            "flows": [
+              {
+                "from": "0,0",
+                "to": "1,0",
+                "forwardWater": 0.002794954925775528,
+                "backwardWater": 0.0002468116581439972,
+                "netWater": 0.0025481432676315308
+              },
+              {
+                "from": "0,1",
+                "to": "1,1",
+                "forwardWater": 0.0017051473259925842,
+                "backwardWater": 0.0007154718041419983,
+                "netWater": 0.000989675521850586
+              }
+            ]
+          }
+        },
+        "wild": {
+          "needlejaw": {
+            "alive": 12,
+            "evolved": 0
+          },
+          "mosskip": {
+            "alive": 64,
+            "evolved": 0
+          },
+          "rillsifter": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "mirelick": {
+            "alive": 20,
+            "evolved": 0
+          },
+          "podshell": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "bankjaw": {
+            "alive": 8,
+            "evolved": 0
+          },
+          "rootling": {
+            "alive": 32,
+            "evolved": 0
+          }
+        },
+        "branchIds": [
+          "common",
+          "rillsifter:aquatic"
+        ],
+        "structures": {
+          "animals": 197,
+          "living": 197,
+          "genomes": 575,
+          "seedCells": 1598,
+          "seedCohorts": 1651,
+          "floraBirthHistory": 128,
+          "dispersalEvents": 32,
+          "flowers": 1547,
+          "pollen": 1034,
+          "embryos": 456,
+          "botanicalReceipts": 128,
+          "migrationStates": 197,
+          "lineageEvents": 0,
+          "lineageNodes": 1,
+          "producerReceipts": 16
+        },
+        "caches": {
+          "cropYield": {
+            "groups": 24,
+            "entries": 20860,
+            "perGroupLimit": 8192
+          },
+          "generatedBotanical": {
+            "entries": 947,
+            "limit": 16384,
+            "scope": "process-wide generated genomes; WeakMap/WeakSet retention is not enumerated"
+          }
+        },
+        "causalLimit": "Observed stocks and receipts; aggregate association alone does not prove a cause.",
+        "horizon": 10,
+        "completedDays": 4,
+        "seconds": 11.9743108,
+        "memory": {
+          "rss": 366628864,
+          "heapTotal": 238284800,
+          "heapUsed": 60043624,
+          "external": 92096642,
+          "arrayBuffers": 49333443,
+          "heapBeforeGc": 148113576,
+          "gcRequested": true,
+          "gcCollected": true
+        },
+        "phases": {
+          "phaseClimate": {
+            "calls": 32,
+            "ms": 0.46530000000507243
+          },
+          "phaseSoil": {
+            "calls": 32,
+            "ms": 129.91960000000051
+          },
+          "phaseVegetation": {
+            "calls": 4,
+            "ms": 541.0580000000004
+          },
+          "phasePerception": {
+            "calls": 32,
+            "ms": 615.7239999999971
+          },
+          "phaseDecision": {
+            "calls": 32,
+            "ms": 259.4939999999956
+          },
+          "phaseMovement": {
+            "calls": 192,
+            "ms": 125.66640000001132
+          },
+          "phaseMetabolism": {
+            "calls": 32,
+            "ms": 44.0273000000027
+          },
+          "phaseLifecycle": {
+            "calls": 32,
+            "ms": 3.357499999999959
+          }
+        }
+      },
+      {
+        "seed": "PLANET-B0-A",
+        "day": 6,
+        "tick": 240,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 12,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 8,
+          "genvo": 25
+        },
+        "processingCapacity": {
+          "living": 197,
+          "eggs": 0,
+          "animalReference": 900,
+          "eggReference": 128,
+          "exceeded": false,
+          "load": {
+            "pendingSeconds": 0,
+            "budgetLimited": false,
+            "workMs": 0
+          }
+        },
+        "totalExtinction": false,
+        "births": 0,
+        "deaths": 0,
+        "deathCauses": {},
+        "extinctions": [],
+        "resources": {
+          "sunmoss": 11093.628111153841,
+          "bramble": 2390.75869846344,
+          "marshroot": 413.18605542648584,
+          "rotcap": 865.6666707377881,
+          "woodspire": 1125.9185178130865,
+          "thistlepod": 1506.8989062272012,
+          "dunebulb": 0,
+          "dustsage": 1168.0609496831894,
+          "frostlichen": 1244.6934199258685,
+          "snowberry": 1263.0209866398945,
+          "algae": 115.25531406700611,
+          "duckweed": 52.24362201988697,
+          "waterweed": 93.09961846470833,
+          "larvae": 10.27846568915993,
+          "fry": 2.2285662866197526,
+          "carrion": 0
+        },
+        "producerFlows": {
+          "rain": 0,
+          "shoreInflow": 0,
+          "evaporation": 0,
+          "runoff": 0,
+          "photosynthesis": 2442.8283468443533,
+          "respiration": 293.3631879258712,
+          "growth": 1191.643391788093,
+          "waterUsed": 595.8216958940465,
+          "mineralsUsed": 119.16433917880887,
+          "mineralized": 3.623090930115543,
+          "plantLitter": 1.2950373368556345,
+          "seedLitter": 0.2363130035983594,
+          "reserveExport": 13.38985100739542,
+          "biomassExported": 77.36232909262176,
+          "soilExchange": -2801.1814827665753,
+          "botanicalInvestment": 61.44437511265278
+        },
+        "producerLimits": {
+          "sunmoss": {
+            "0": 727,
+            "1": 15657
+          },
+          "bramble": {
+            "0": 8086,
+            "1": 8298
+          },
+          "marshroot": {
+            "0": 14443,
+            "1": 674,
+            "4": 1267
+          },
+          "woodspire": {
+            "0": 11116,
+            "1": 5268
+          },
+          "thistlepod": {
+            "0": 8575,
+            "1": 7783,
+            "4": 26
+          },
+          "dunebulb": {
+            "0": 16384
+          },
+          "dustsage": {
+            "0": 9687,
+            "1": 6697
+          },
+          "frostlichen": {
+            "0": 6633,
+            "1": 6162,
+            "4": 3589
+          },
+          "snowberry": {
+            "0": 9935,
+            "1": 6406,
+            "4": 43
+          }
+        },
+        "migration": {
+          "states": 197,
+          "statuses": {
+            "settled": 185,
+            "outbound": 12
+          },
+          "reasons": {
+            "destination requires reassessment": 3,
+            "scarcity": 12,
+            "reached habitat": 28
+          }
+        },
+        "lineage": {
+          "taxa": 1,
+          "statuses": {
+            "living": 1
+          }
+        },
+        "recentLineageEvents": [],
+        "climate": {
+          "temp": 0.54,
+          "rain": 0.5017433833068049,
+          "weatherFactor": 0.8650747988048362
+        },
+        "waterFlows": {
+          "rain": 1875.2116842170444,
+          "snowfall": 511.92843320413743,
+          "snowmelt": 358.8004806793445,
+          "infiltration": 1697.6303537862234,
+          "runoff": 24.453377906021114,
+          "evaporation": 2848.4688688158044,
+          "percolation": 48.98817682212965,
+          "capillary": 275.39594821134125,
+          "lateral": 33.77283522486687,
+          "deepDrainage": 153.66103509254998,
+          "uptake": 239.90087349643147,
+          "overflow": 0
+        },
+        "recentWaterClosureMax": 0.000004279555355424236,
+        "waterBudget": {
+          "day": 5,
+          "climateRain": 0.5017433833068049,
+          "climateTemp": 0.54,
+          "rain": 318.2798029730418,
+          "snowfall": 153.1279525247936,
+          "snowmelt": 68.14483077071048,
+          "infiltration": 231.89357825795764,
+          "runoff": 1.4031029609867645,
+          "evaporation": 527.8499821389264,
+          "percolation": 2.0496986214602657,
+          "capillary": 80.77030132774863,
+          "lateral": 6.047494105994701,
+          "deepDrainage": 30.052526174842498,
+          "uptake": 59.86709386718539,
+          "overflow": 0,
+          "inputs": 324.3272970790365,
+          "outputs": 619.172705141941,
+          "storageBefore": 14596.095759816471,
+          "storageAfter": 14301.250347474012,
+          "storageChange": -294.8454123424599,
+          "closure": 0.000004279555355424236,
+          "meanMoisture": 0.41992460812194154,
+          "pageGroundwaterTransfers": {
+            "schema": 1,
+            "flows": [
+              {
+                "from": "0,0",
+                "to": "1,0",
+                "forwardWater": 0.004297684878110886,
+                "backwardWater": 0.00024956464767456055,
+                "netWater": 0.004048120230436325
+              },
+              {
+                "from": "0,1",
+                "to": "1,1",
+                "forwardWater": 0.0027085617184638977,
+                "backwardWater": 0.0008825026452541351,
+                "netWater": 0.0018260590732097626
+              }
+            ]
+          }
+        },
+        "wild": {
+          "needlejaw": {
+            "alive": 12,
+            "evolved": 0
+          },
+          "mosskip": {
+            "alive": 64,
+            "evolved": 0
+          },
+          "rillsifter": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "mirelick": {
+            "alive": 20,
+            "evolved": 0
+          },
+          "podshell": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "bankjaw": {
+            "alive": 8,
+            "evolved": 0
+          },
+          "rootling": {
+            "alive": 32,
+            "evolved": 0
+          }
+        },
+        "branchIds": [
+          "common",
+          "rillsifter:aquatic"
+        ],
+        "structures": {
+          "animals": 197,
+          "living": 197,
+          "genomes": 654,
+          "seedCells": 2002,
+          "seedCohorts": 2131,
+          "floraBirthHistory": 128,
+          "dispersalEvents": 32,
+          "flowers": 1674,
+          "pollen": 1215,
+          "embryos": 652,
+          "botanicalReceipts": 128,
+          "migrationStates": 197,
+          "lineageEvents": 0,
+          "lineageNodes": 1,
+          "producerReceipts": 20
+        },
+        "caches": {
+          "cropYield": {
+            "groups": 24,
+            "entries": 23667,
+            "perGroupLimit": 8192
+          },
+          "generatedBotanical": {
+            "entries": 1087,
+            "limit": 16384,
+            "scope": "process-wide generated genomes; WeakMap/WeakSet retention is not enumerated"
+          }
+        },
+        "causalLimit": "Observed stocks and receipts; aggregate association alone does not prove a cause.",
+        "horizon": 10,
+        "completedDays": 5,
+        "seconds": 15.429631399999998,
+        "memory": {
+          "rss": 402448384,
+          "heapTotal": 221147136,
+          "heapUsed": 64597608,
+          "external": 88686498,
+          "arrayBuffers": 49369299,
+          "heapBeforeGc": 167479368,
+          "gcRequested": true,
+          "gcCollected": true
+        },
+        "phases": {
+          "phaseClimate": {
+            "calls": 40,
+            "ms": 0.540300000003981
+          },
+          "phaseSoil": {
+            "calls": 40,
+            "ms": 152.74000000000103
+          },
+          "phaseVegetation": {
+            "calls": 5,
+            "ms": 666.3211000000006
+          },
+          "phasePerception": {
+            "calls": 40,
+            "ms": 769.7088000000009
+          },
+          "phaseDecision": {
+            "calls": 40,
+            "ms": 334.0051999999946
+          },
+          "phaseMovement": {
+            "calls": 240,
+            "ms": 164.31180000001075
+          },
+          "phaseMetabolism": {
+            "calls": 40,
+            "ms": 56.01430000000005
+          },
+          "phaseLifecycle": {
+            "calls": 40,
+            "ms": 4.123199999999883
+          }
+        }
+      },
+      {
+        "seed": "PLANET-B0-A",
+        "day": 7,
+        "tick": 288,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 12,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 8,
+          "genvo": 25
+        },
+        "processingCapacity": {
+          "living": 197,
+          "eggs": 0,
+          "animalReference": 900,
+          "eggReference": 128,
+          "exceeded": false,
+          "load": {
+            "pendingSeconds": 0,
+            "budgetLimited": false,
+            "workMs": 0
+          }
+        },
+        "totalExtinction": false,
+        "births": 0,
+        "deaths": 0,
+        "deathCauses": {},
+        "extinctions": [],
+        "resources": {
+          "sunmoss": 11134.874988526106,
+          "bramble": 2431.984832689166,
+          "marshroot": 418.54174091666937,
+          "rotcap": 863.8009866215289,
+          "woodspire": 1135.477664873004,
+          "thistlepod": 1533.4321975633502,
+          "dunebulb": 0,
+          "dustsage": 1193.6428192853928,
+          "frostlichen": 1278.3844572231174,
+          "snowberry": 1272.0928760226816,
+          "algae": 116.0658556651324,
+          "duckweed": 53.2255507260561,
+          "waterweed": 93.97350004315376,
+          "larvae": 10.083910739107523,
+          "fry": 2.214548680000007,
+          "carrion": 0
+        },
+        "producerFlows": {
+          "rain": 0,
+          "shoreInflow": 0,
+          "evaporation": 0,
+          "runoff": 0,
+          "photosynthesis": 2967.5172667962097,
+          "respiration": 353.9170948540469,
+          "growth": 1415.8509206439462,
+          "waterUsed": 707.9254603219731,
+          "mineralsUsed": 141.58509206439632,
+          "mineralized": 4.340099155421784,
+          "plantLitter": 1.3737790773119762,
+          "seedLitter": 0.37837977237913295,
+          "reserveExport": 17.793955054675884,
+          "biomassExported": 100.86259286999696,
+          "soilExchange": -3392.262391003157,
+          "botanicalInvestment": 69.34480601549149
+        },
+        "producerLimits": {
+          "sunmoss": {
+            "0": 665,
+            "1": 15719
+          },
+          "bramble": {
+            "0": 8086,
+            "1": 8298
+          },
+          "marshroot": {
+            "0": 14441,
+            "1": 617,
+            "4": 1326
+          },
+          "woodspire": {
+            "0": 11116,
+            "1": 5268
+          },
+          "thistlepod": {
+            "0": 8575,
+            "1": 7777,
+            "4": 32
+          },
+          "dunebulb": {
+            "0": 16384
+          },
+          "dustsage": {
+            "0": 9687,
+            "1": 6697
+          },
+          "frostlichen": {
+            "0": 6633,
+            "1": 5221,
+            "4": 4530
+          },
+          "snowberry": {
+            "0": 9922,
+            "1": 6414,
+            "4": 48
+          }
+        },
+        "migration": {
+          "states": 197,
+          "statuses": {
+            "settled": 183,
+            "outbound": 14
+          },
+          "reasons": {
+            "destination requires reassessment": 3,
+            "scarcity": 14,
+            "reached habitat": 31
+          }
+        },
+        "lineage": {
+          "taxa": 1,
+          "statuses": {
+            "living": 1
+          }
+        },
+        "recentLineageEvents": [],
+        "climate": {
+          "temp": 0.5117157287525381,
+          "rain": 0.3155386028440006,
+          "weatherFactor": 0.5440320738689666
+        },
+        "waterFlows": {
+          "rain": 2075.373891780612,
+          "snowfall": 664.828016357399,
+          "snowmelt": 399.84946966915123,
+          "infiltration": 1785.6871706435647,
+          "runoff": 24.708174448810116,
+          "evaporation": 3334.0756413240947,
+          "percolation": 49.42731800876106,
+          "capillary": 377.8445918377023,
+          "lateral": 39.907033391296864,
+          "deepDrainage": 183.2098499294153,
+          "uptake": 297.91084794702493,
+          "overflow": 0
+        },
+        "recentWaterClosureMax": 0.000004279555355424236,
+        "waterBudget": {
+          "day": 6,
+          "climateRain": 0.3155386028440006,
+          "climateTemp": 0.5117157287525381,
+          "rain": 200.1622075635678,
+          "snowfall": 152.89958315326152,
+          "snowmelt": 41.04898898980673,
+          "infiltration": 88.05681685734135,
+          "runoff": 0.254796542789002,
+          "evaporation": 485.6067725082903,
+          "percolation": 0.4391411866314101,
+          "capillary": 102.44864362636105,
+          "lateral": 6.1341981664299965,
+          "deepDrainage": 29.54881483686532,
+          "uptake": 58.00997445059346,
+          "overflow": 0,
+          "inputs": 206.2964057299978,
+          "outputs": 573.4203583385381,
+          "storageBefore": 14301.250347474012,
+          "storageAfter": 13934.126390913414,
+          "storageChange": -367.12395656059743,
+          "closure": 0.000003952057113565388,
+          "meanMoisture": 0.39764950551550776,
+          "pageGroundwaterTransfers": {
+            "schema": 1,
+            "flows": [
+              {
+                "from": "0,0",
+                "to": "1,0",
+                "forwardWater": 0.005670391023159027,
+                "backwardWater": 0.0002719387412071228,
+                "netWater": 0.005398452281951904
+              },
+              {
+                "from": "0,1",
+                "to": "1,1",
+                "forwardWater": 0.0037259161472320557,
+                "backwardWater": 0.0008934922516345978,
+                "netWater": 0.002832423895597458
+              }
+            ]
+          }
+        },
+        "wild": {
+          "needlejaw": {
+            "alive": 12,
+            "evolved": 0
+          },
+          "mosskip": {
+            "alive": 64,
+            "evolved": 0
+          },
+          "rillsifter": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "mirelick": {
+            "alive": 20,
+            "evolved": 0
+          },
+          "podshell": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "bankjaw": {
+            "alive": 8,
+            "evolved": 0
+          },
+          "rootling": {
+            "alive": 32,
+            "evolved": 0
+          }
+        },
+        "branchIds": [
+          "common",
+          "rillsifter:aquatic"
+        ],
+        "structures": {
+          "animals": 197,
+          "living": 197,
+          "genomes": 750,
+          "seedCells": 2564,
+          "seedCohorts": 2807,
+          "floraBirthHistory": 128,
+          "dispersalEvents": 32,
+          "flowers": 1780,
+          "pollen": 1153,
+          "embryos": 780,
+          "botanicalReceipts": 128,
+          "migrationStates": 197,
+          "lineageEvents": 0,
+          "lineageNodes": 1,
+          "producerReceipts": 24
+        },
+        "caches": {
+          "cropYield": {
+            "groups": 24,
+            "entries": 25770,
+            "perGroupLimit": 8192
+          },
+          "generatedBotanical": {
+            "entries": 1271,
+            "limit": 16384,
+            "scope": "process-wide generated genomes; WeakMap/WeakSet retention is not enumerated"
+          }
+        },
+        "causalLimit": "Observed stocks and receipts; aggregate association alone does not prove a cause.",
+        "horizon": 10,
+        "completedDays": 6,
+        "seconds": 19.048992900000002,
+        "memory": {
+          "rss": 433188864,
+          "heapTotal": 247959552,
+          "heapUsed": 68660376,
+          "external": 95526294,
+          "arrayBuffers": 57744599,
+          "heapBeforeGc": 135868280,
+          "gcRequested": true,
+          "gcCollected": true
+        },
+        "phases": {
+          "phaseClimate": {
+            "calls": 48,
+            "ms": 0.6105000000059135
+          },
+          "phaseSoil": {
+            "calls": 48,
+            "ms": 180.60329999999465
+          },
+          "phaseVegetation": {
+            "calls": 6,
+            "ms": 792.0692000000013
+          },
+          "phasePerception": {
+            "calls": 48,
+            "ms": 890.3180999999973
+          },
+          "phaseDecision": {
+            "calls": 48,
+            "ms": 417.5216999999925
+          },
+          "phaseMovement": {
+            "calls": 288,
+            "ms": 201.9778000000082
+          },
+          "phaseMetabolism": {
+            "calls": 48,
+            "ms": 66.75390000000812
+          },
+          "phaseLifecycle": {
+            "calls": 48,
+            "ms": 4.890699999997992
+          }
+        }
+      },
+      {
+        "seed": "PLANET-B0-A",
+        "day": 8,
+        "tick": 336,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 12,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 8,
+          "genvo": 25
+        },
+        "processingCapacity": {
+          "living": 197,
+          "eggs": 0,
+          "animalReference": 900,
+          "eggReference": 128,
+          "exceeded": false,
+          "load": {
+            "pendingSeconds": 0,
+            "budgetLimited": false,
+            "workMs": 0
+          }
+        },
+        "totalExtinction": false,
+        "births": 0,
+        "deaths": 0,
+        "deathCauses": {},
+        "extinctions": [],
+        "resources": {
+          "sunmoss": 11174.215835988522,
+          "bramble": 2468.0299945771694,
+          "marshroot": 424.00076171569526,
+          "rotcap": 862.1211742162704,
+          "woodspire": 1143.604064002633,
+          "thistlepod": 1559.344952126965,
+          "dunebulb": 0,
+          "dustsage": 1217.952687472105,
+          "frostlichen": 1309.93990880996,
+          "snowberry": 1278.9291475792415,
+          "algae": 116.65102511644363,
+          "duckweed": 54.217334523797035,
+          "waterweed": 94.84946867823601,
+          "larvae": 9.982088583870791,
+          "fry": 2.200556701980531,
+          "carrion": 0
+        },
+        "producerFlows": {
+          "rain": 0,
+          "shoreInflow": 0,
+          "evaporation": 0,
+          "runoff": 0,
+          "photosynthesis": 3467.877398928125,
+          "respiration": 415.0702215238057,
+          "growth": 1624.0753369952959,
+          "waterUsed": 812.0376684976479,
+          "mineralsUsed": 162.40753369952913,
+          "mineralized": 5.1246481657087655,
+          "plantLitter": 1.4274817935018715,
+          "seedLitter": 0.5454248809504842,
+          "reserveExport": 22.445659223591427,
+          "biomassExported": 122.46432497128836,
+          "soilExchange": -3985.9970136464603,
+          "botanicalInvestment": 78.06297205388546
+        },
+        "producerLimits": {
+          "sunmoss": {
+            "0": 621,
+            "1": 15763
+          },
+          "bramble": {
+            "0": 8086,
+            "1": 8298
+          },
+          "marshroot": {
+            "0": 14441,
+            "1": 613,
+            "4": 1330
+          },
+          "woodspire": {
+            "0": 11116,
+            "1": 5268
+          },
+          "thistlepod": {
+            "0": 8575,
+            "1": 7769,
+            "4": 40
+          },
+          "dunebulb": {
+            "0": 16384
+          },
+          "dustsage": {
+            "0": 9687,
+            "1": 6696,
+            "4": 1
+          },
+          "frostlichen": {
+            "0": 6633,
+            "1": 4480,
+            "4": 5271
+          },
+          "snowberry": {
+            "0": 9900,
+            "1": 6414,
+            "4": 70
+          }
+        },
+        "migration": {
+          "states": 197,
+          "statuses": {
+            "settled": 182,
+            "outbound": 15
+          },
+          "reasons": {
+            "destination requires reassessment": 4,
+            "scarcity": 15,
+            "reached habitat": 33
+          }
+        },
+        "lineage": {
+          "taxa": 1,
+          "statuses": {
+            "living": 1
+          }
+        },
+        "recentLineageEvents": [],
+        "climate": {
+          "temp": 0.5,
+          "rain": 0.3561394880718923,
+          "weatherFactor": 0.6140336001239523
+        },
+        "waterFlows": {
+          "rain": 2301.2930490663025,
+          "snowfall": 863.8538565529598,
+          "snowmelt": 405.5675697744964,
+          "infiltration": 1818.2650486838677,
+          "runoff": 24.741713603966907,
+          "evaporation": 3785.707529472118,
+          "percolation": 49.4544443975257,
+          "capillary": 500.0584158395436,
+          "lateral": 46.257749035954475,
+          "deepDrainage": 212.17712556675866,
+          "uptake": 353.96273016099326,
+          "overflow": 0
+        },
+        "recentWaterClosureMax": 0.000004279555355424236,
+        "waterBudget": {
+          "day": 7,
+          "climateRain": 0.3561394880718923,
+          "climateTemp": 0.5,
+          "rain": 225.9191572856903,
+          "snowfall": 199.02584019556082,
+          "snowmelt": 5.718100105345172,
+          "infiltration": 32.57787804030295,
+          "runoff": 0.03353915515679162,
+          "evaporation": 451.63188814802334,
+          "percolation": 0.02712638876463558,
+          "capillary": 122.21382400184132,
+          "lateral": 6.350715644657612,
+          "deepDrainage": 28.967275637343363,
+          "uptake": 56.05188221396833,
+          "overflow": 0,
+          "inputs": 232.2698729303479,
+          "outputs": 536.6845851544917,
+          "storageBefore": 13934.126390913414,
+          "storageAfter": 13629.711677916066,
+          "storageChange": -304.41471299734803,
+          "closure": 7.732041922281496e-7,
+          "meanMoisture": 0.37541417326147275,
+          "pageGroundwaterTransfers": {
+            "schema": 1,
+            "flows": [
+              {
+                "from": "0,0",
+                "to": "1,0",
+                "forwardWater": 0.0067664869129657745,
+                "backwardWater": 0.00024075806140899658,
+                "netWater": 0.006525728851556778
+              },
+              {
+                "from": "0,1",
+                "to": "1,1",
+                "forwardWater": 0.004511173814535141,
+                "backwardWater": 0.0010131597518920898,
+                "netWater": 0.003498014062643051
+              }
+            ]
+          }
+        },
+        "wild": {
+          "needlejaw": {
+            "alive": 12,
+            "evolved": 0
+          },
+          "mosskip": {
+            "alive": 64,
+            "evolved": 0
+          },
+          "rillsifter": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "mirelick": {
+            "alive": 20,
+            "evolved": 0
+          },
+          "podshell": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "bankjaw": {
+            "alive": 8,
+            "evolved": 0
+          },
+          "rootling": {
+            "alive": 32,
+            "evolved": 0
+          }
+        },
+        "branchIds": [
+          "common",
+          "rillsifter:aquatic"
+        ],
+        "structures": {
+          "animals": 197,
+          "living": 197,
+          "genomes": 825,
+          "seedCells": 3180,
+          "seedCohorts": 3607,
+          "floraBirthHistory": 128,
+          "dispersalEvents": 32,
+          "flowers": 1968,
+          "pollen": 1227,
+          "embryos": 687,
+          "botanicalReceipts": 128,
+          "migrationStates": 197,
+          "lineageEvents": 0,
+          "lineageNodes": 1,
+          "producerReceipts": 28
+        },
+        "caches": {
+          "cropYield": {
+            "groups": 24,
+            "entries": 28377,
+            "perGroupLimit": 8192
+          },
+          "generatedBotanical": {
+            "entries": 1462,
+            "limit": 16384,
+            "scope": "process-wide generated genomes; WeakMap/WeakSet retention is not enumerated"
+          }
+        },
+        "causalLimit": "Observed stocks and receipts; aggregate association alone does not prove a cause.",
+        "horizon": 10,
+        "completedDays": 7,
+        "seconds": 22.968880000000002,
+        "memory": {
+          "rss": 421167104,
+          "heapTotal": 270635008,
+          "heapUsed": 72183400,
+          "external": 104630282,
+          "arrayBuffers": 49524755,
+          "heapBeforeGc": 200447552,
+          "gcRequested": true,
+          "gcCollected": true
+        },
+        "phases": {
+          "phaseClimate": {
+            "calls": 56,
+            "ms": 0.689100000003009
+          },
+          "phaseSoil": {
+            "calls": 56,
+            "ms": 211.65109999999493
+          },
+          "phaseVegetation": {
+            "calls": 7,
+            "ms": 923.4557000000018
+          },
+          "phasePerception": {
+            "calls": 56,
+            "ms": 1038.6332000000007
+          },
+          "phaseDecision": {
+            "calls": 56,
+            "ms": 508.6236999999878
+          },
+          "phaseMovement": {
+            "calls": 336,
+            "ms": 242.89700000000846
+          },
+          "phaseMetabolism": {
+            "calls": 56,
+            "ms": 77.16880000001152
+          },
+          "phaseLifecycle": {
+            "calls": 56,
+            "ms": 5.722700000000145
+          }
+        }
+      },
+      {
+        "seed": "PLANET-B0-A",
+        "day": 9,
+        "tick": 384,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 12,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 8,
+          "genvo": 25
+        },
+        "processingCapacity": {
+          "living": 197,
+          "eggs": 0,
+          "animalReference": 900,
+          "eggReference": 128,
+          "exceeded": false,
+          "load": {
+            "pendingSeconds": 0,
+            "budgetLimited": false,
+            "workMs": 0
+          }
+        },
+        "totalExtinction": false,
+        "births": 0,
+        "deaths": 0,
+        "deathCauses": {},
+        "extinctions": [],
+        "resources": {
+          "sunmoss": 11212.594307035208,
+          "bramble": 2500.7381108403206,
+          "marshroot": 428.65489353146404,
+          "rotcap": 860.3652367638424,
+          "woodspire": 1150.845231756568,
+          "thistlepod": 1584.2795467767864,
+          "dunebulb": 0,
+          "dustsage": 1241.5467498451471,
+          "frostlichen": 1340.4879105091095,
+          "snowberry": 1283.7395500643179,
+          "algae": 114.75402684882283,
+          "duckweed": 55.220479384064674,
+          "waterweed": 95.72879323363304,
+          "larvae": 9.823733561264817,
+          "fry": 2.1910197813995183,
+          "carrion": 0
+        },
+        "producerFlows": {
+          "rain": 0,
+          "shoreInflow": 0,
+          "evaporation": 0,
+          "runoff": 0,
+          "photosynthesis": 3966.0672291586,
+          "respiration": 477.57901097325134,
+          "growth": 1822.5007865223129,
+          "waterUsed": 911.2503932611564,
+          "mineralsUsed": 182.2500786522326,
+          "mineralized": 5.874881893494181,
+          "plantLitter": 1.4681472177048756,
+          "seedLitter": 0.7431276744033573,
+          "reserveExport": 27.479375792950236,
+          "biomassExported": 143.65074428915977,
+          "soilExchange": -4416.334275697155,
+          "botanicalInvestment": 88.04237681627274
+        },
+        "producerLimits": {
+          "sunmoss": {
+            "0": 599,
+            "1": 15785
+          },
+          "bramble": {
+            "0": 8086,
+            "1": 8293,
+            "4": 5
+          },
+          "marshroot": {
+            "0": 14441,
+            "1": 670,
+            "4": 1273
+          },
+          "woodspire": {
+            "0": 11116,
+            "1": 5268
+          },
+          "thistlepod": {
+            "0": 8575,
+            "1": 7761,
+            "4": 48
+          },
+          "dunebulb": {
+            "0": 16384
+          },
+          "dustsage": {
+            "0": 9687,
+            "1": 6686,
+            "4": 11
+          },
+          "frostlichen": {
+            "0": 6633,
+            "1": 3899,
+            "4": 5852
+          },
+          "snowberry": {
+            "0": 9871,
+            "1": 6413,
+            "4": 100
+          }
+        },
+        "migration": {
+          "states": 197,
+          "statuses": {
+            "outbound": 8,
+            "settled": 189
+          },
+          "reasons": {
+            "scarcity": 8,
+            "destination requires reassessment": 4,
+            "reached habitat": 43
+          }
+        },
+        "lineage": {
+          "taxa": 1,
+          "statuses": {
+            "living": 1
+          }
+        },
+        "recentLineageEvents": [],
+        "climate": {
+          "temp": 0.5117157287525381,
+          "rain": 0.3101920848082548,
+          "weatherFactor": 0.5348139393245772
+        },
+        "waterFlows": {
+          "rain": 2498.067113120643,
+          "snowfall": 1014.1371588567215,
+          "snowmelt": 446.61655876430314,
+          "infiltration": 1905.7800646418752,
+          "runoff": 24.766448386362867,
+          "evaporation": 4221.27188977204,
+          "percolation": 49.4544443975257,
+          "capillary": 632.939127910882,
+          "lateral": 52.883326806128025,
+          "deepDrainage": 240.52351155984377,
+          "uptake": 406.0188342488316,
+          "overflow": 0
+        },
+        "recentWaterClosureMax": 0.000004279555355424236,
+        "waterBudget": {
+          "day": 8,
+          "climateRain": 0.3101920848082548,
+          "climateTemp": 0.5117157287525381,
+          "rain": 196.77406405434067,
+          "snowfall": 150.28330230376173,
+          "snowmelt": 41.04898898980673,
+          "infiltration": 87.51501595800755,
+          "runoff": 0.024734782395960053,
+          "evaporation": 435.56436029992165,
+          "percolation": 0,
+          "capillary": 132.8807120713384,
+          "lateral": 6.62557777017355,
+          "deepDrainage": 28.346385993085107,
+          "uptake": 52.05610408783832,
+          "overflow": 0,
+          "inputs": 203.39964182451422,
+          "outputs": 515.9915851632411,
+          "storageBefore": 13629.711677916066,
+          "storageAfter": 13317.119736772822,
+          "storageChange": -312.5919411432442,
+          "closure": -0.0000021954826934234006,
+          "meanMoisture": 0.3585779374303867,
+          "pageGroundwaterTransfers": {
+            "schema": 1,
+            "flows": [
+              {
+                "from": "0,0",
+                "to": "1,0",
+                "forwardWater": 0.007509894669055939,
+                "backwardWater": 0.0002762041985988617,
+                "netWater": 0.007233690470457077
+              },
+              {
+                "from": "0,1",
+                "to": "1,1",
+                "forwardWater": 0.005206655710935593,
+                "backwardWater": 0.001151394098997116,
+                "netWater": 0.0040552616119384766
+              }
+            ]
+          }
+        },
+        "wild": {
+          "needlejaw": {
+            "alive": 12,
+            "evolved": 0
+          },
+          "mosskip": {
+            "alive": 64,
+            "evolved": 0
+          },
+          "rillsifter": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "mirelick": {
+            "alive": 20,
+            "evolved": 0
+          },
+          "podshell": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "bankjaw": {
+            "alive": 8,
+            "evolved": 0
+          },
+          "rootling": {
+            "alive": 32,
+            "evolved": 0
+          }
+        },
+        "branchIds": [
+          "common",
+          "rillsifter:aquatic"
+        ],
+        "structures": {
+          "animals": 197,
+          "living": 197,
+          "genomes": 924,
+          "seedCells": 3688,
+          "seedCohorts": 4322,
+          "floraBirthHistory": 128,
+          "dispersalEvents": 32,
+          "flowers": 2105,
+          "pollen": 1308,
+          "embryos": 742,
+          "botanicalReceipts": 128,
+          "migrationStates": 197,
+          "lineageEvents": 0,
+          "lineageNodes": 1,
+          "producerReceipts": 32
+        },
+        "caches": {
+          "cropYield": {
+            "groups": 24,
+            "entries": 30762,
+            "perGroupLimit": 8192
+          },
+          "generatedBotanical": {
+            "entries": 1633,
+            "limit": 16384,
+            "scope": "process-wide generated genomes; WeakMap/WeakSet retention is not enumerated"
+          }
+        },
+        "causalLimit": "Observed stocks and receipts; aggregate association alone does not prove a cause.",
+        "horizon": 10,
+        "completedDays": 8,
+        "seconds": 27.154918400000003,
+        "memory": {
+          "rss": 448012288,
+          "heapTotal": 238653440,
+          "heapUsed": 76098360,
+          "external": 60903410,
+          "arrayBuffers": 49634147,
+          "heapBeforeGc": 153990480,
+          "gcRequested": true,
+          "gcCollected": true
+        },
+        "phases": {
+          "phaseClimate": {
+            "calls": 64,
+            "ms": 0.7628000000001975
+          },
+          "phaseSoil": {
+            "calls": 64,
+            "ms": 235.55139999999608
+          },
+          "phaseVegetation": {
+            "calls": 8,
+            "ms": 1047.164900000003
+          },
+          "phasePerception": {
+            "calls": 64,
+            "ms": 1139.829000000002
+          },
+          "phaseDecision": {
+            "calls": 64,
+            "ms": 601.575199999987
+          },
+          "phaseMovement": {
+            "calls": 384,
+            "ms": 282.66320000002486
+          },
+          "phaseMetabolism": {
+            "calls": 64,
+            "ms": 88.1226000000072
+          },
+          "phaseLifecycle": {
+            "calls": 64,
+            "ms": 6.632100000004243
+          }
+        }
+      },
+      {
+        "seed": "PLANET-B0-A",
+        "day": 10,
+        "tick": 432,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 12,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 8,
+          "genvo": 25
+        },
+        "processingCapacity": {
+          "living": 197,
+          "eggs": 0,
+          "animalReference": 900,
+          "eggReference": 128,
+          "exceeded": false,
+          "load": {
+            "pendingSeconds": 0,
+            "budgetLimited": false,
+            "workMs": 0
+          }
+        },
+        "totalExtinction": false,
+        "births": 0,
+        "deaths": 0,
+        "deathCauses": {},
+        "extinctions": [],
+        "resources": {
+          "sunmoss": 11267.718636572361,
+          "bramble": 2538.4621679484844,
+          "marshroot": 436.134743321687,
+          "rotcap": 858.6804767778694,
+          "woodspire": 1160.9557788074017,
+          "thistlepod": 1627.690780883655,
+          "dunebulb": 0,
+          "dustsage": 1271.6108936667442,
+          "frostlichen": 1374.0698119178414,
+          "snowberry": 1287.8842236062046,
+          "algae": 114.10760791227221,
+          "duckweed": 56.26558296382427,
+          "waterweed": 96.6380146741867,
+          "larvae": 9.563573258754332,
+          "fry": 2.1859111012890935,
+          "carrion": 0
+        },
+        "producerFlows": {
+          "rain": 0,
+          "shoreInflow": 0,
+          "evaporation": 0,
+          "runoff": 0,
+          "photosynthesis": 4536.59883499872,
+          "respiration": 545.8694949739408,
+          "growth": 2083.0330113659866,
+          "waterUsed": 1041.5165056829933,
+          "mineralsUsed": 208.30330113659923,
+          "mineralized": 6.64853071965496,
+          "plantLitter": 1.5014184814011493,
+          "seedLitter": 0.9668113280392373,
+          "reserveExport": 33.246154404161665,
+          "biomassExported": 163.91923533678062,
+          "soilExchange": -3973.087896844421,
+          "botanicalInvestment": 106.2644973397255
+        },
+        "producerLimits": {
+          "sunmoss": {
+            "0": 585,
+            "1": 15799
+          },
+          "bramble": {
+            "0": 8086,
+            "1": 8277,
+            "4": 21
+          },
+          "marshroot": {
+            "0": 14439,
+            "1": 607,
+            "4": 1338
+          },
+          "woodspire": {
+            "0": 11116,
+            "1": 5268
+          },
+          "thistlepod": {
+            "0": 8575,
+            "1": 7750,
+            "4": 59
+          },
+          "dunebulb": {
+            "0": 16384
+          },
+          "dustsage": {
+            "0": 9687,
+            "1": 6652,
+            "4": 45
+          },
+          "frostlichen": {
+            "0": 6633,
+            "1": 3583,
+            "4": 6168
+          },
+          "snowberry": {
+            "0": 9844,
+            "1": 6415,
+            "4": 125
+          }
+        },
+        "migration": {
+          "states": 197,
+          "statuses": {
+            "settled": 187,
+            "outbound": 10
+          },
+          "reasons": {
+            "reached habitat": 43,
+            "destination requires reassessment": 5,
+            "scarcity": 10
+          }
+        },
+        "lineage": {
+          "taxa": 1,
+          "statuses": {
+            "living": 1
+          }
+        },
+        "recentLineageEvents": [],
+        "climate": {
+          "temp": 0.78,
+          "rain": 0.20415616753007876,
+          "weatherFactor": 0.5833033358002251
+        },
+        "waterFlows": {
+          "rain": 2627.5774191890414,
+          "snowfall": 1014.1371588567215,
+          "snowmelt": 1013.6568417668058,
+          "infiltration": 2602.296726999216,
+          "runoff": 24.800375099967685,
+          "evaporation": 4800.5095293003415,
+          "percolation": 49.62777665263026,
+          "capillary": 737.4566269314432,
+          "lateral": 59.77697242796421,
+          "deepDrainage": 268.366709923347,
+          "uptake": 455.6251966305907,
+          "overflow": 0
+        },
+        "recentWaterClosureMax": 0.000004279555355424236,
+        "waterBudget": {
+          "day": 9,
+          "climateRain": 0.20415616753007876,
+          "climateTemp": 0.78,
+          "rain": 129.51030606839822,
+          "snowfall": 0,
+          "snowmelt": 567.0402830025026,
+          "infiltration": 696.5166623573407,
+          "runoff": 0.03392671360481714,
+          "evaporation": 579.2376395283018,
+          "percolation": 0.17333225510456174,
+          "capillary": 104.51749902056122,
+          "lateral": 6.8936456218361855,
+          "deepDrainage": 27.843198363503234,
+          "uptake": 49.60636238175914,
+          "overflow": 0,
+          "inputs": 136.4039516902344,
+          "outputs": 656.721126987169,
+          "storageBefore": 13317.119736772822,
+          "storageAfter": 12796.802559409483,
+          "storageChange": -520.3171773633385,
+          "closure": 0.0000020664039084294927,
+          "meanMoisture": 0.36941569115057765,
+          "pageGroundwaterTransfers": {
+            "schema": 1,
+            "flows": [
+              {
+                "from": "0,0",
+                "to": "1,0",
+                "forwardWater": 0.008051596581935883,
+                "backwardWater": 0.0003134682774543762,
+                "netWater": 0.007738128304481506
+              },
+              {
+                "from": "0,1",
+                "to": "1,1",
+                "forwardWater": 0.0057307519018650055,
+                "backwardWater": 0.001235954463481903,
+                "netWater": 0.004494797438383102
+              }
+            ]
+          }
+        },
+        "wild": {
+          "needlejaw": {
+            "alive": 12,
+            "evolved": 0
+          },
+          "mosskip": {
+            "alive": 64,
+            "evolved": 0
+          },
+          "rillsifter": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "mirelick": {
+            "alive": 20,
+            "evolved": 0
+          },
+          "podshell": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "bankjaw": {
+            "alive": 8,
+            "evolved": 0
+          },
+          "rootling": {
+            "alive": 32,
+            "evolved": 0
+          }
+        },
+        "branchIds": [
+          "common",
+          "rillsifter:aquatic"
+        ],
+        "structures": {
+          "animals": 197,
+          "living": 197,
+          "genomes": 1203,
+          "seedCells": 4217,
+          "seedCohorts": 5109,
+          "floraBirthHistory": 128,
+          "dispersalEvents": 32,
+          "flowers": 2596,
+          "pollen": 1720,
+          "embryos": 793,
+          "botanicalReceipts": 128,
+          "migrationStates": 197,
+          "lineageEvents": 0,
+          "lineageNodes": 1,
+          "producerReceipts": 36
+        },
+        "caches": {
+          "cropYield": {
+            "groups": 24,
+            "entries": 33744,
+            "perGroupLimit": 8192
+          },
+          "generatedBotanical": {
+            "entries": 2013,
+            "limit": 16384,
+            "scope": "process-wide generated genomes; WeakMap/WeakSet retention is not enumerated"
+          }
+        },
+        "causalLimit": "Observed stocks and receipts; aggregate association alone does not prove a cause.",
+        "horizon": 10,
+        "completedDays": 9,
+        "seconds": 31.647713,
+        "memory": {
+          "rss": 450342912,
+          "heapTotal": 259567616,
+          "heapUsed": 81279456,
+          "external": 88358718,
+          "arrayBuffers": 53560487,
+          "heapBeforeGc": 182735016,
+          "gcRequested": true,
+          "gcCollected": true
+        },
+        "phases": {
+          "phaseClimate": {
+            "calls": 72,
+            "ms": 0.8375000000085038
+          },
+          "phaseSoil": {
+            "calls": 72,
+            "ms": 257.75679999999863
+          },
+          "phaseVegetation": {
+            "calls": 9,
+            "ms": 1192.1948000000043
+          },
+          "phasePerception": {
+            "calls": 72,
+            "ms": 1287.8901999999985
+          },
+          "phaseDecision": {
+            "calls": 72,
+            "ms": 711.1442999999877
+          },
+          "phaseMovement": {
+            "calls": 432,
+            "ms": 323.7716000000113
+          },
+          "phaseMetabolism": {
+            "calls": 72,
+            "ms": 98.11630000000628
+          },
+          "phaseLifecycle": {
+            "calls": 72,
+            "ms": 7.5021000000032245
+          }
+        }
+      },
+      {
+        "seed": "PLANET-B0-A",
+        "day": 11,
+        "tick": 480,
+        "population": {
+          "mosskip": 64,
+          "rootling": 32,
+          "needlejaw": 12,
+          "rillsifter": 18,
+          "mirelick": 20,
+          "podshell": 18,
+          "bankjaw": 8,
+          "genvo": 25
+        },
+        "processingCapacity": {
+          "living": 197,
+          "eggs": 0,
+          "animalReference": 900,
+          "eggReference": 128,
+          "exceeded": false,
+          "load": {
+            "pendingSeconds": 0,
+            "budgetLimited": false,
+            "workMs": 0
+          }
+        },
+        "totalExtinction": false,
+        "births": 0,
+        "deaths": 0,
+        "deathCauses": {},
+        "extinctions": [],
+        "resources": {
+          "sunmoss": 11329.103309094906,
+          "bramble": 2571.79390591383,
+          "marshroot": 442.7097803102806,
+          "rotcap": 857.166752325913,
+          "woodspire": 1171.1767740547657,
+          "thistlepod": 1674.0766119919717,
+          "dunebulb": 0,
+          "dustsage": 1304.1733108758926,
+          "frostlichen": 1405.281864270568,
+          "snowberry": 1291.2887752617244,
+          "algae": 112.34725869074464,
+          "duckweed": 57.35622690618038,
+          "waterweed": 97.5795379281044,
+          "larvae": 9.33740969421342,
+          "fry": 2.1808111369609833,
+          "carrion": 0
+        },
+        "producerFlows": {
+          "rain": 0,
+          "shoreInflow": 0,
+          "evaporation": 0,
+          "runoff": 0,
+          "photosynthesis": 5088.904492245625,
+          "respiration": 629.3503921180262,
+          "growth": 2352.9778128534717,
+          "waterUsed": 1176.4889064267359,
+          "mineralsUsed": 235.29778128534315,
+          "mineralized": 7.4915906950816815,
+          "plantLitter": 1.5132331637979415,
+          "seedLitter": 1.2168666105068344,
+          "reserveExport": 40.22823504596688,
+          "biomassExported": 186.50276493728177,
+          "soilExchange": -4461.979761888814,
+          "botanicalInvestment": 127.94080066680908
+        },
+        "producerLimits": {
+          "sunmoss": {
+            "0": 552,
+            "1": 15832
+          },
+          "bramble": {
+            "0": 8086,
+            "1": 8244,
+            "4": 54
+          },
+          "marshroot": {
+            "0": 14437,
+            "1": 579,
+            "4": 1368
+          },
+          "woodspire": {
+            "0": 11116,
+            "1": 5268
+          },
+          "thistlepod": {
+            "0": 8575,
+            "1": 7700,
+            "4": 109
+          },
+          "dunebulb": {
+            "0": 16384
+          },
+          "dustsage": {
+            "0": 9687,
+            "1": 6533,
+            "4": 164
+          },
+          "frostlichen": {
+            "0": 6633,
+            "1": 3553,
+            "4": 6198
+          },
+          "snowberry": {
+            "0": 9811,
+            "1": 6415,
+            "4": 158
+          }
+        },
+        "migration": {
+          "states": 197,
+          "statuses": {
+            "settled": 193,
+            "outbound": 4
+          },
+          "reasons": {
+            "reached habitat": 48,
+            "destination requires reassessment": 6,
+            "scarcity": 4
+          }
+        },
+        "lineage": {
+          "taxa": 1,
+          "statuses": {
+            "living": 1
+          }
+        },
+        "recentLineageEvents": [],
+        "climate": {
+          "temp": 0.8082842712474619,
+          "rain": 0.30662862560932913,
+          "weatherFactor": 0.8760817874552261
+        },
+        "waterFlows": {
+          "rain": 2822.095163287085,
+          "snowfall": 1014.1371588567215,
+          "snowmelt": 1014.1371588566988,
+          "infiltration": 2797.2137750236525,
+          "runoff": 24.881388263465315,
+          "evaporation": 5360.413832821123,
+          "percolation": 49.62838090894356,
+          "capillary": 857.9985545823145,
+          "lateral": 66.83900169283152,
+          "deepDrainage": 295.64461832936206,
+          "uptake": 520.7582528415036,
+          "overflow": 0
+        },
+        "recentWaterClosureMax": 0.000004279555355424236,
+        "waterBudget": {
+          "day": 10,
+          "climateRain": 0.30662862560932913,
+          "climateTemp": 0.8082842712474619,
+          "rain": 194.51774409804375,
+          "snowfall": 0,
+          "snowmelt": 0.48031708989299204,
+          "infiltration": 194.91704802443655,
+          "runoff": 0.0810131634976301,
+          "evaporation": 559.9043035207815,
+          "percolation": 0.0006042563133021872,
+          "capillary": 120.54192765087123,
+          "lateral": 7.062029264867306,
+          "deepDrainage": 27.277908406015058,
+          "uptake": 65.13305621091286,
+          "overflow": 0,
+          "inputs": 201.57977336291106,
+          "outputs": 652.396281301207,
+          "storageBefore": 12796.802559409483,
+          "storageAfter": 12345.986053228378,
+          "storageChange": -450.81650618110507,
+          "closure": -0.000001757190830176114,
+          "meanMoisture": 0.3499109665581566,
+          "pageGroundwaterTransfers": {
+            "schema": 1,
+            "flows": [
+              {
+                "from": "0,0",
+                "to": "1,0",
+                "forwardWater": 0.008543707430362701,
+                "backwardWater": 0.0003626197576522827,
+                "netWater": 0.008181087672710419
+              },
+              {
+                "from": "0,1",
+                "to": "1,1",
+                "forwardWater": 0.006867881864309311,
+                "backwardWater": 0.0010135024785995483,
+                "netWater": 0.005854379385709763
+              }
+            ]
+          }
+        },
+        "wild": {
+          "needlejaw": {
+            "alive": 12,
+            "evolved": 0
+          },
+          "mosskip": {
+            "alive": 64,
+            "evolved": 0
+          },
+          "rillsifter": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "mirelick": {
+            "alive": 20,
+            "evolved": 0
+          },
+          "podshell": {
+            "alive": 18,
+            "evolved": 0
+          },
+          "bankjaw": {
+            "alive": 8,
+            "evolved": 0
+          },
+          "rootling": {
+            "alive": 32,
+            "evolved": 0
+          }
+        },
+        "branchIds": [
+          "common",
+          "rillsifter:aquatic"
+        ],
+        "structures": {
+          "animals": 197,
+          "living": 197,
+          "genomes": 1420,
+          "seedCells": 4755,
+          "seedCohorts": 5924,
+          "floraBirthHistory": 128,
+          "dispersalEvents": 32,
+          "flowers": 2940,
+          "pollen": 1862,
+          "embryos": 1098,
+          "botanicalReceipts": 128,
+          "migrationStates": 197,
+          "lineageEvents": 0,
+          "lineageNodes": 1,
+          "producerReceipts": 40
+        },
+        "caches": {
+          "cropYield": {
+            "groups": 24,
+            "entries": 34696,
+            "perGroupLimit": 8192
+          },
+          "generatedBotanical": {
+            "entries": 2320,
+            "limit": 16384,
+            "scope": "process-wide generated genomes; WeakMap/WeakSet retention is not enumerated"
+          }
+        },
+        "causalLimit": "Observed stocks and receipts; aggregate association alone does not prove a cause.",
+        "horizon": 10,
+        "completedDays": 10,
+        "seconds": 36.5773078,
+        "memory": {
+          "rss": 475111424,
+          "heapTotal": 265330688,
+          "heapUsed": 88440168,
+          "external": 62445382,
+          "arrayBuffers": 49870727,
+          "heapBeforeGc": 128678408,
+          "gcRequested": true,
+          "gcCollected": true
+        },
+        "phases": {
+          "phaseClimate": {
+            "calls": 80,
+            "ms": 0.9334999999989577
+          },
+          "phaseSoil": {
+            "calls": 80,
+            "ms": 287.4255999999981
+          },
+          "phaseVegetation": {
+            "calls": 10,
+            "ms": 1342.9025000000033
+          },
+          "phasePerception": {
+            "calls": 80,
+            "ms": 1382.2485000000056
+          },
+          "phaseDecision": {
+            "calls": 80,
+            "ms": 847.8727999999996
+          },
+          "phaseMovement": {
+            "calls": 480,
+            "ms": 370.5497999999974
+          },
+          "phaseMetabolism": {
+            "calls": 80,
+            "ms": 108.23939999999607
+          },
+          "phaseLifecycle": {
+            "calls": 80,
+            "ms": 8.363300000002596
+          }
+        }
+      }
+    ],
+    "final": {
+      "seed": "PLANET-B0-A",
+      "day": 11,
+      "tick": 480,
+      "population": {
+        "mosskip": 64,
+        "rootling": 32,
+        "needlejaw": 12,
+        "rillsifter": 18,
+        "mirelick": 20,
+        "podshell": 18,
+        "bankjaw": 8,
+        "genvo": 25
+      },
+      "processingCapacity": {
+        "living": 197,
+        "eggs": 0,
+        "animalReference": 900,
+        "eggReference": 128,
+        "exceeded": false,
+        "load": {
+          "pendingSeconds": 0,
+          "budgetLimited": false,
+          "workMs": 0
+        }
+      },
+      "totalExtinction": false,
+      "births": 0,
+      "deaths": 0,
+      "deathCauses": {},
+      "extinctions": [],
+      "resources": {
+        "sunmoss": 11329.103309094906,
+        "bramble": 2571.79390591383,
+        "marshroot": 442.7097803102806,
+        "rotcap": 857.166752325913,
+        "woodspire": 1171.1767740547657,
+        "thistlepod": 1674.0766119919717,
+        "dunebulb": 0,
+        "dustsage": 1304.1733108758926,
+        "frostlichen": 1405.281864270568,
+        "snowberry": 1291.2887752617244,
+        "algae": 112.34725869074464,
+        "duckweed": 57.35622690618038,
+        "waterweed": 97.5795379281044,
+        "larvae": 9.33740969421342,
+        "fry": 2.1808111369609833,
+        "carrion": 0
+      },
+      "producerFlows": {
+        "rain": 0,
+        "shoreInflow": 0,
+        "evaporation": 0,
+        "runoff": 0,
+        "photosynthesis": 5088.904492245625,
+        "respiration": 629.3503921180262,
+        "growth": 2352.9778128534717,
+        "waterUsed": 1176.4889064267359,
+        "mineralsUsed": 235.29778128534315,
+        "mineralized": 7.4915906950816815,
+        "plantLitter": 1.5132331637979415,
+        "seedLitter": 1.2168666105068344,
+        "reserveExport": 40.22823504596688,
+        "biomassExported": 186.50276493728177,
+        "soilExchange": -4461.979761888814,
+        "botanicalInvestment": 127.94080066680908
+      },
+      "producerLimits": {
+        "sunmoss": {
+          "0": 552,
+          "1": 15832
+        },
+        "bramble": {
+          "0": 8086,
+          "1": 8244,
+          "4": 54
+        },
+        "marshroot": {
+          "0": 14437,
+          "1": 579,
+          "4": 1368
+        },
+        "woodspire": {
+          "0": 11116,
+          "1": 5268
+        },
+        "thistlepod": {
+          "0": 8575,
+          "1": 7700,
+          "4": 109
+        },
+        "dunebulb": {
+          "0": 16384
+        },
+        "dustsage": {
+          "0": 9687,
+          "1": 6533,
+          "4": 164
+        },
+        "frostlichen": {
+          "0": 6633,
+          "1": 3553,
+          "4": 6198
+        },
+        "snowberry": {
+          "0": 9811,
+          "1": 6415,
+          "4": 158
+        }
+      },
+      "migration": {
+        "states": 197,
+        "statuses": {
+          "settled": 193,
+          "outbound": 4
+        },
+        "reasons": {
+          "reached habitat": 48,
+          "destination requires reassessment": 6,
+          "scarcity": 4
+        }
+      },
+      "lineage": {
+        "taxa": 1,
+        "statuses": {
+          "living": 1
+        }
+      },
+      "recentLineageEvents": [],
+      "climate": {
+        "temp": 0.8082842712474619,
+        "rain": 0.30662862560932913,
+        "weatherFactor": 0.8760817874552261
+      },
+      "waterFlows": {
+        "rain": 2822.095163287085,
+        "snowfall": 1014.1371588567215,
+        "snowmelt": 1014.1371588566988,
+        "infiltration": 2797.2137750236525,
+        "runoff": 24.881388263465315,
+        "evaporation": 5360.413832821123,
+        "percolation": 49.62838090894356,
+        "capillary": 857.9985545823145,
+        "lateral": 66.83900169283152,
+        "deepDrainage": 295.64461832936206,
+        "uptake": 520.7582528415036,
+        "overflow": 0
+      },
+      "recentWaterClosureMax": 0.000004279555355424236,
+      "waterBudget": {
+        "day": 10,
+        "climateRain": 0.30662862560932913,
+        "climateTemp": 0.8082842712474619,
+        "rain": 194.51774409804375,
+        "snowfall": 0,
+        "snowmelt": 0.48031708989299204,
+        "infiltration": 194.91704802443655,
+        "runoff": 0.0810131634976301,
+        "evaporation": 559.9043035207815,
+        "percolation": 0.0006042563133021872,
+        "capillary": 120.54192765087123,
+        "lateral": 7.062029264867306,
+        "deepDrainage": 27.277908406015058,
+        "uptake": 65.13305621091286,
+        "overflow": 0,
+        "inputs": 201.57977336291106,
+        "outputs": 652.396281301207,
+        "storageBefore": 12796.802559409483,
+        "storageAfter": 12345.986053228378,
+        "storageChange": -450.81650618110507,
+        "closure": -0.000001757190830176114,
+        "meanMoisture": 0.3499109665581566,
+        "pageGroundwaterTransfers": {
+          "schema": 1,
+          "flows": [
+            {
+              "from": "0,0",
+              "to": "1,0",
+              "forwardWater": 0.008543707430362701,
+              "backwardWater": 0.0003626197576522827,
+              "netWater": 0.008181087672710419
+            },
+            {
+              "from": "0,1",
+              "to": "1,1",
+              "forwardWater": 0.006867881864309311,
+              "backwardWater": 0.0010135024785995483,
+              "netWater": 0.005854379385709763
+            }
+          ]
+        }
+      },
+      "wild": {
+        "needlejaw": {
+          "alive": 12,
+          "evolved": 0
+        },
+        "mosskip": {
+          "alive": 64,
+          "evolved": 0
+        },
+        "rillsifter": {
+          "alive": 18,
+          "evolved": 0
+        },
+        "mirelick": {
+          "alive": 20,
+          "evolved": 0
+        },
+        "podshell": {
+          "alive": 18,
+          "evolved": 0
+        },
+        "bankjaw": {
+          "alive": 8,
+          "evolved": 0
+        },
+        "rootling": {
+          "alive": 32,
+          "evolved": 0
+        }
+      },
+      "branchIds": [
+        "common",
+        "rillsifter:aquatic"
+      ],
+      "structures": {
+        "animals": 197,
+        "living": 197,
+        "genomes": 1420,
+        "seedCells": 4755,
+        "seedCohorts": 5924,
+        "floraBirthHistory": 128,
+        "dispersalEvents": 32,
+        "flowers": 2940,
+        "pollen": 1862,
+        "embryos": 1098,
+        "botanicalReceipts": 128,
+        "migrationStates": 197,
+        "lineageEvents": 0,
+        "lineageNodes": 1,
+        "producerReceipts": 40
+      },
+      "caches": {
+        "cropYield": {
+          "groups": 24,
+          "entries": 34696,
+          "perGroupLimit": 8192
+        },
+        "generatedBotanical": {
+          "entries": 2320,
+          "limit": 16384,
+          "scope": "process-wide generated genomes; WeakMap/WeakSet retention is not enumerated"
+        }
+      },
+      "causalLimit": "Observed stocks and receipts; aggregate association alone does not prove a cause.",
+      "horizon": 10,
+      "completedDays": 10,
+      "seconds": 36.5773078,
+      "memory": {
+        "rss": 475111424,
+        "heapTotal": 265330688,
+        "heapUsed": 88440168,
+        "external": 62445382,
+        "arrayBuffers": 49870727,
+        "heapBeforeGc": 128678408,
+        "gcRequested": true,
+        "gcCollected": true
+      },
+      "phases": {
+        "phaseClimate": {
+          "calls": 80,
+          "ms": 0.9334999999989577
+        },
+        "phaseSoil": {
+          "calls": 80,
+          "ms": 287.4255999999981
+        },
+        "phaseVegetation": {
+          "calls": 10,
+          "ms": 1342.9025000000033
+        },
+        "phasePerception": {
+          "calls": 80,
+          "ms": 1382.2485000000056
+        },
+        "phaseDecision": {
+          "calls": 80,
+          "ms": 847.8727999999996
+        },
+        "phaseMovement": {
+          "calls": 480,
+          "ms": 370.5497999999974
+        },
+        "phaseMetabolism": {
+          "calls": 80,
+          "ms": 108.23939999999607
+        },
+        "phaseLifecycle": {
+          "calls": 80,
+          "ms": 8.363300000002596
+        }
+      }
+    },
+    "integrity": "pass",
+    "outcomePolicy": "No mandatory survival, evolved-survivor count, or branch count.",
+    "seconds": 36.577789900000006
+  }
+}

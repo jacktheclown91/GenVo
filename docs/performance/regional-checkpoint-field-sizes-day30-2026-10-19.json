@@ -1,0 +1,1379 @@
+{
+  "scope": "Read-only V8 snapshot field attribution. Each field is separately encoded, so shared references and encoding overhead mean sizes cannot be added to recover the original artifact byte count. No restore, simulation, filtering, variant removal or source edits. Archive nesting excluded from active core to avoid counting the planet recursively.",
+  "input": "docs/test-runs/artifacts/regional-autonomous-100day-r2-2026-10-19/day30.snapshot.bin",
+  "inputBytes": 140143857,
+  "inputSha256": "198fbd84f21178b7cef5a6fed2d70b702b21acb4a4c28f9afebe2a78a8ee46ff",
+  "regions": [
+    {
+      "key": "active",
+      "tick": 1440,
+      "animals": 228,
+      "topLevel": [
+        {
+          "field": "controllers",
+          "bytes": 43720564
+        },
+        {
+          "field": "world",
+          "bytes": 4646208
+        },
+        {
+          "field": "animals",
+          "bytes": 825469
+        },
+        {
+          "field": "core",
+          "bytes": 3229
+        },
+        {
+          "field": "meta",
+          "bytes": 174
+        },
+        {
+          "field": "reason",
+          "bytes": 21
+        },
+        {
+          "field": "seed",
+          "bytes": 15
+        },
+        {
+          "field": "key",
+          "bytes": 12
+        },
+        {
+          "field": "rngState",
+          "bytes": 11
+        },
+        {
+          "field": "gameVersion",
+          "bytes": 10
+        },
+        {
+          "field": "savedAt",
+          "bytes": 9
+        },
+        {
+          "field": "schema",
+          "bytes": 4
+        },
+        {
+          "field": "regionalWorlds",
+          "bytes": 3
+        }
+      ],
+      "controllerFields": [
+        {
+          "field": "dispersal",
+          "bytes": 42313127
+        },
+        {
+          "field": "history",
+          "bytes": 384446
+        },
+        {
+          "field": "discovery",
+          "bytes": 260529
+        },
+        {
+          "field": "regionalEcology",
+          "bytes": 242618
+        },
+        {
+          "field": "carrying",
+          "bytes": 211111
+        },
+        {
+          "field": "migration",
+          "bytes": 165624
+        },
+        {
+          "field": "disease",
+          "bytes": 65668
+        },
+        {
+          "field": "cognition",
+          "bytes": 63930
+        },
+        {
+          "field": "lineage",
+          "bytes": 8664
+        },
+        {
+          "field": "family",
+          "bytes": 1171
+        },
+        {
+          "field": "partAbilities",
+          "bytes": 823
+        },
+        {
+          "field": "territory",
+          "bytes": 450
+        },
+        {
+          "field": "evolutionTree",
+          "bytes": 296
+        },
+        {
+          "field": "tendency",
+          "bytes": 281
+        },
+        {
+          "field": "familyDirectives",
+          "bytes": 120
+        },
+        {
+          "field": "generationProgress",
+          "bytes": 108
+        },
+        {
+          "field": "evolutionBudget",
+          "bytes": 102
+        },
+        {
+          "field": "sustainability",
+          "bytes": 97
+        },
+        {
+          "field": "social",
+          "bytes": 95
+        },
+        {
+          "field": "shelter",
+          "bytes": 76
+        },
+        {
+          "field": "populationMemory",
+          "bytes": 65
+        },
+        {
+          "field": "reproduction",
+          "bytes": 56
+        },
+        {
+          "field": "familyWeather",
+          "bytes": 56
+        },
+        {
+          "field": "populationEcology",
+          "bytes": 52
+        },
+        {
+          "field": "speciesCoexistence",
+          "bytes": 51
+        },
+        {
+          "field": "speciation",
+          "bytes": 50
+        },
+        {
+          "field": "speciesLifestyle",
+          "bytes": 46
+        },
+        {
+          "field": "stalkerTerritory",
+          "bytes": 44
+        },
+        {
+          "field": "evolutionEditor",
+          "bytes": 38
+        },
+        {
+          "field": "evolution",
+          "bytes": 28
+        },
+        {
+          "field": "familyIllness",
+          "bytes": 27
+        },
+        {
+          "field": "expansion",
+          "bytes": 26
+        },
+        {
+          "field": "protoSpeciation",
+          "bytes": 26
+        },
+        {
+          "field": "playerCombat",
+          "bytes": 24
+        },
+        {
+          "field": "specialization",
+          "bytes": 20
+        },
+        {
+          "field": "pressure",
+          "bytes": 16
+        },
+        {
+          "field": "foraging",
+          "bytes": 16
+        },
+        {
+          "field": "exposure",
+          "bytes": 16
+        },
+        {
+          "field": "recovery",
+          "bytes": 5
+        },
+        {
+          "field": "divergence",
+          "bytes": 5
+        },
+        {
+          "field": "predator",
+          "bytes": 5
+        },
+        {
+          "field": "illness",
+          "bytes": 5
+        },
+        {
+          "field": "injury",
+          "bytes": 5
+        },
+        {
+          "field": "activity",
+          "bytes": 5
+        },
+        {
+          "field": "wildlifeRhythm",
+          "bytes": 5
+        },
+        {
+          "field": "exertion",
+          "bytes": 5
+        },
+        {
+          "field": "habits",
+          "bytes": 5
+        }
+      ],
+      "dispersalFields": [
+        {
+          "field": "botanical",
+          "bytes": 17948249
+        },
+        {
+          "field": "floraState",
+          "bytes": 15912202
+        },
+        {
+          "field": "bankGenomes",
+          "bytes": 6189577
+        },
+        {
+          "field": "producerOrigins",
+          "bytes": 2563603
+        },
+        {
+          "field": "seedReserve",
+          "bytes": 458868
+        },
+        {
+          "field": "coatReserve",
+          "bytes": 458868
+        },
+        {
+          "field": "active",
+          "bytes": 126879
+        },
+        {
+          "field": "litter",
+          "bytes": 65543
+        },
+        {
+          "field": "pageSeedTransfers",
+          "bytes": 7389
+        },
+        {
+          "field": "events",
+          "bytes": 3934
+        },
+        {
+          "field": "kindCodes",
+          "bytes": 184
+        },
+        {
+          "field": "stats",
+          "bytes": 86
+        },
+        {
+          "field": "nextDepositId",
+          "bytes": 6
+        },
+        {
+          "field": "nextProducerId",
+          "bytes": 5
+        }
+      ],
+      "floraStateFields": [
+        {
+          "field": "seeds",
+          "bytes": 10088835
+        },
+        {
+          "field": "genomes",
+          "bytes": 5630584
+        },
+        {
+          "field": "adults",
+          "bytes": 153489
+        },
+        {
+          "field": "births",
+          "bytes": 39163
+        },
+        {
+          "field": "stats",
+          "bytes": 75
+        },
+        {
+          "field": "serial",
+          "bytes": 6
+        },
+        {
+          "field": "schema",
+          "bytes": 4
+        }
+      ],
+      "botanicalFields": [
+        {
+          "field": "pollen",
+          "bytes": 5791476
+        },
+        {
+          "field": "adultGenomes",
+          "bytes": 5208888
+        },
+        {
+          "field": "embryos",
+          "bytes": 3881143
+        },
+        {
+          "field": "flowers",
+          "bytes": 3130177
+        },
+        {
+          "field": "adultOrigins",
+          "bytes": 1025319
+        },
+        {
+          "field": "receipts",
+          "bytes": 14483
+        },
+        {
+          "field": "stats",
+          "bytes": 183
+        },
+        {
+          "field": "genomeCollection",
+          "bytes": 30
+        },
+        {
+          "field": "serial",
+          "bytes": 6
+        },
+        {
+          "field": "schema",
+          "bytes": 4
+        },
+        {
+          "field": "epoch",
+          "bytes": 4
+        }
+      ],
+      "worldFields": [
+        {
+          "field": "plantResources",
+          "bytes": 1590006
+        },
+        {
+          "field": "plants",
+          "bytes": 655519
+        },
+        {
+          "field": "organicResources",
+          "bytes": 573944
+        },
+        {
+          "field": "seedBank",
+          "bytes": 524420
+        },
+        {
+          "field": "environment",
+          "bytes": 347300
+        },
+        {
+          "field": "freshwaterFood",
+          "bytes": 327751
+        },
+        {
+          "field": "soilWater",
+          "bytes": 282398
+        },
+        {
+          "field": "terrain",
+          "bytes": 65583
+        },
+        {
+          "field": "moisture",
+          "bytes": 65543
+        },
+        {
+          "field": "fertility",
+          "bytes": 65543
+        },
+        {
+          "field": "temperature",
+          "bytes": 65543
+        },
+        {
+          "field": "carrion",
+          "bytes": 65543
+        },
+        {
+          "field": "surfaceWater",
+          "bytes": 16410
+        },
+        {
+          "field": "planet",
+          "bytes": 311
+        },
+        {
+          "field": "topology",
+          "bytes": 96
+        },
+        {
+          "field": "pageLayout",
+          "bytes": 71
+        },
+        {
+          "field": "regionOrigin",
+          "bytes": 29
+        },
+        {
+          "field": "generator",
+          "bytes": 15
+        }
+      ]
+    },
+    {
+      "key": "0,0",
+      "tick": 1434,
+      "animals": 224,
+      "topLevel": [
+        {
+          "field": "controllers",
+          "bytes": 40772639
+        },
+        {
+          "field": "world",
+          "bytes": 4645395
+        },
+        {
+          "field": "animals",
+          "bytes": 834282
+        },
+        {
+          "field": "core",
+          "bytes": 3172
+        },
+        {
+          "field": "meta",
+          "bytes": 191
+        },
+        {
+          "field": "savedAt",
+          "bytes": 23
+        },
+        {
+          "field": "reason",
+          "bytes": 22
+        },
+        {
+          "field": "seed",
+          "bytes": 15
+        },
+        {
+          "field": "key",
+          "bytes": 12
+        },
+        {
+          "field": "rngState",
+          "bytes": 11
+        },
+        {
+          "field": "gameVersion",
+          "bytes": 10
+        },
+        {
+          "field": "schema",
+          "bytes": 4
+        },
+        {
+          "field": "regionalWorlds",
+          "bytes": 3
+        }
+      ],
+      "controllerFields": [
+        {
+          "field": "dispersal",
+          "bytes": 39358750
+        },
+        {
+          "field": "history",
+          "bytes": 384992
+        },
+        {
+          "field": "discovery",
+          "bytes": 260174
+        },
+        {
+          "field": "regionalEcology",
+          "bytes": 240545
+        },
+        {
+          "field": "carrying",
+          "bytes": 230045
+        },
+        {
+          "field": "migration",
+          "bytes": 161970
+        },
+        {
+          "field": "disease",
+          "bytes": 65668
+        },
+        {
+          "field": "cognition",
+          "bytes": 64341
+        },
+        {
+          "field": "lineage",
+          "bytes": 2037
+        },
+        {
+          "field": "family",
+          "bytes": 1163
+        },
+        {
+          "field": "partAbilities",
+          "bytes": 505
+        },
+        {
+          "field": "evolutionTree",
+          "bytes": 296
+        },
+        {
+          "field": "tendency",
+          "bytes": 281
+        },
+        {
+          "field": "familyDirectives",
+          "bytes": 120
+        },
+        {
+          "field": "generationProgress",
+          "bytes": 108
+        },
+        {
+          "field": "evolutionBudget",
+          "bytes": 102
+        },
+        {
+          "field": "sustainability",
+          "bytes": 97
+        },
+        {
+          "field": "social",
+          "bytes": 95
+        },
+        {
+          "field": "shelter",
+          "bytes": 76
+        },
+        {
+          "field": "populationMemory",
+          "bytes": 65
+        },
+        {
+          "field": "reproduction",
+          "bytes": 56
+        },
+        {
+          "field": "familyWeather",
+          "bytes": 56
+        },
+        {
+          "field": "populationEcology",
+          "bytes": 52
+        },
+        {
+          "field": "speciesCoexistence",
+          "bytes": 51
+        },
+        {
+          "field": "speciation",
+          "bytes": 50
+        },
+        {
+          "field": "speciesLifestyle",
+          "bytes": 46
+        },
+        {
+          "field": "stalkerTerritory",
+          "bytes": 44
+        },
+        {
+          "field": "territory",
+          "bytes": 42
+        },
+        {
+          "field": "evolutionEditor",
+          "bytes": 38
+        },
+        {
+          "field": "evolution",
+          "bytes": 28
+        },
+        {
+          "field": "familyIllness",
+          "bytes": 27
+        },
+        {
+          "field": "expansion",
+          "bytes": 26
+        },
+        {
+          "field": "protoSpeciation",
+          "bytes": 26
+        },
+        {
+          "field": "playerCombat",
+          "bytes": 24
+        },
+        {
+          "field": "specialization",
+          "bytes": 20
+        },
+        {
+          "field": "pressure",
+          "bytes": 16
+        },
+        {
+          "field": "foraging",
+          "bytes": 16
+        },
+        {
+          "field": "exposure",
+          "bytes": 16
+        },
+        {
+          "field": "recovery",
+          "bytes": 5
+        },
+        {
+          "field": "divergence",
+          "bytes": 5
+        },
+        {
+          "field": "predator",
+          "bytes": 5
+        },
+        {
+          "field": "illness",
+          "bytes": 5
+        },
+        {
+          "field": "injury",
+          "bytes": 5
+        },
+        {
+          "field": "activity",
+          "bytes": 5
+        },
+        {
+          "field": "wildlifeRhythm",
+          "bytes": 5
+        },
+        {
+          "field": "exertion",
+          "bytes": 5
+        },
+        {
+          "field": "habits",
+          "bytes": 5
+        }
+      ],
+      "dispersalFields": [
+        {
+          "field": "botanical",
+          "bytes": 16672722
+        },
+        {
+          "field": "floraState",
+          "bytes": 14854062
+        },
+        {
+          "field": "bankGenomes",
+          "bytes": 5893384
+        },
+        {
+          "field": "producerOrigins",
+          "bytes": 2209281
+        },
+        {
+          "field": "seedReserve",
+          "bytes": 458868
+        },
+        {
+          "field": "coatReserve",
+          "bytes": 458868
+        },
+        {
+          "field": "active",
+          "bytes": 120693
+        },
+        {
+          "field": "litter",
+          "bytes": 65543
+        },
+        {
+          "field": "pageSeedTransfers",
+          "bytes": 7316
+        },
+        {
+          "field": "events",
+          "bytes": 3934
+        },
+        {
+          "field": "kindCodes",
+          "bytes": 184
+        },
+        {
+          "field": "stats",
+          "bytes": 86
+        },
+        {
+          "field": "nextDepositId",
+          "bytes": 6
+        },
+        {
+          "field": "nextProducerId",
+          "bytes": 5
+        }
+      ],
+      "floraStateFields": [
+        {
+          "field": "seeds",
+          "bytes": 9243840
+        },
+        {
+          "field": "genomes",
+          "bytes": 5437797
+        },
+        {
+          "field": "adults",
+          "bytes": 133139
+        },
+        {
+          "field": "births",
+          "bytes": 39155
+        },
+        {
+          "field": "stats",
+          "bytes": 75
+        },
+        {
+          "field": "serial",
+          "bytes": 6
+        },
+        {
+          "field": "schema",
+          "bytes": 4
+        }
+      ],
+      "botanicalFields": [
+        {
+          "field": "pollen",
+          "bytes": 5223665
+        },
+        {
+          "field": "adultGenomes",
+          "bytes": 4923769
+        },
+        {
+          "field": "embryos",
+          "bytes": 3650499
+        },
+        {
+          "field": "flowers",
+          "bytes": 2985700
+        },
+        {
+          "field": "adultOrigins",
+          "bytes": 965311
+        },
+        {
+          "field": "receipts",
+          "bytes": 14484
+        },
+        {
+          "field": "stats",
+          "bytes": 183
+        },
+        {
+          "field": "genomeCollection",
+          "bytes": 30
+        },
+        {
+          "field": "serial",
+          "bytes": 6
+        },
+        {
+          "field": "schema",
+          "bytes": 4
+        },
+        {
+          "field": "epoch",
+          "bytes": 4
+        }
+      ],
+      "worldFields": [
+        {
+          "field": "plantResources",
+          "bytes": 1589999
+        },
+        {
+          "field": "plants",
+          "bytes": 655519
+        },
+        {
+          "field": "organicResources",
+          "bytes": 573944
+        },
+        {
+          "field": "seedBank",
+          "bytes": 524420
+        },
+        {
+          "field": "environment",
+          "bytes": 347199
+        },
+        {
+          "field": "freshwaterFood",
+          "bytes": 327751
+        },
+        {
+          "field": "soilWater",
+          "bytes": 281693
+        },
+        {
+          "field": "terrain",
+          "bytes": 65583
+        },
+        {
+          "field": "moisture",
+          "bytes": 65543
+        },
+        {
+          "field": "fertility",
+          "bytes": 65543
+        },
+        {
+          "field": "temperature",
+          "bytes": 65543
+        },
+        {
+          "field": "carrion",
+          "bytes": 65543
+        },
+        {
+          "field": "surfaceWater",
+          "bytes": 16410
+        },
+        {
+          "field": "planet",
+          "bytes": 311
+        },
+        {
+          "field": "topology",
+          "bytes": 96
+        },
+        {
+          "field": "pageLayout",
+          "bytes": 71
+        },
+        {
+          "field": "regionOrigin",
+          "bytes": 29
+        },
+        {
+          "field": "generator",
+          "bytes": 15
+        }
+      ]
+    },
+    {
+      "key": "128,0",
+      "tick": 1434,
+      "animals": 230,
+      "topLevel": [
+        {
+          "field": "controllers",
+          "bytes": 40869869
+        },
+        {
+          "field": "world",
+          "bytes": 4645444
+        },
+        {
+          "field": "animals",
+          "bytes": 868253
+        },
+        {
+          "field": "core",
+          "bytes": 3257
+        },
+        {
+          "field": "meta",
+          "bytes": 191
+        },
+        {
+          "field": "savedAt",
+          "bytes": 23
+        },
+        {
+          "field": "reason",
+          "bytes": 22
+        },
+        {
+          "field": "seed",
+          "bytes": 15
+        },
+        {
+          "field": "key",
+          "bytes": 12
+        },
+        {
+          "field": "rngState",
+          "bytes": 11
+        },
+        {
+          "field": "gameVersion",
+          "bytes": 10
+        },
+        {
+          "field": "schema",
+          "bytes": 4
+        },
+        {
+          "field": "regionalWorlds",
+          "bytes": 3
+        }
+      ],
+      "controllerFields": [
+        {
+          "field": "dispersal",
+          "bytes": 39469060
+        },
+        {
+          "field": "history",
+          "bytes": 384702
+        },
+        {
+          "field": "discovery",
+          "bytes": 260916
+        },
+        {
+          "field": "regionalEcology",
+          "bytes": 228819
+        },
+        {
+          "field": "carrying",
+          "bytes": 209117
+        },
+        {
+          "field": "migration",
+          "bytes": 170121
+        },
+        {
+          "field": "cognition",
+          "bytes": 75299
+        },
+        {
+          "field": "disease",
+          "bytes": 65668
+        },
+        {
+          "field": "lineage",
+          "bytes": 2037
+        },
+        {
+          "field": "family",
+          "bytes": 1171
+        },
+        {
+          "field": "partAbilities",
+          "bytes": 514
+        },
+        {
+          "field": "evolutionTree",
+          "bytes": 296
+        },
+        {
+          "field": "tendency",
+          "bytes": 281
+        },
+        {
+          "field": "familyDirectives",
+          "bytes": 120
+        },
+        {
+          "field": "generationProgress",
+          "bytes": 108
+        },
+        {
+          "field": "evolutionBudget",
+          "bytes": 102
+        },
+        {
+          "field": "sustainability",
+          "bytes": 97
+        },
+        {
+          "field": "social",
+          "bytes": 95
+        },
+        {
+          "field": "shelter",
+          "bytes": 76
+        },
+        {
+          "field": "populationMemory",
+          "bytes": 65
+        },
+        {
+          "field": "reproduction",
+          "bytes": 56
+        },
+        {
+          "field": "familyWeather",
+          "bytes": 56
+        },
+        {
+          "field": "populationEcology",
+          "bytes": 52
+        },
+        {
+          "field": "speciesCoexistence",
+          "bytes": 51
+        },
+        {
+          "field": "speciation",
+          "bytes": 50
+        },
+        {
+          "field": "speciesLifestyle",
+          "bytes": 46
+        },
+        {
+          "field": "stalkerTerritory",
+          "bytes": 44
+        },
+        {
+          "field": "territory",
+          "bytes": 42
+        },
+        {
+          "field": "evolutionEditor",
+          "bytes": 38
+        },
+        {
+          "field": "evolution",
+          "bytes": 28
+        },
+        {
+          "field": "familyIllness",
+          "bytes": 27
+        },
+        {
+          "field": "expansion",
+          "bytes": 26
+        },
+        {
+          "field": "protoSpeciation",
+          "bytes": 26
+        },
+        {
+          "field": "playerCombat",
+          "bytes": 24
+        },
+        {
+          "field": "specialization",
+          "bytes": 20
+        },
+        {
+          "field": "pressure",
+          "bytes": 16
+        },
+        {
+          "field": "foraging",
+          "bytes": 16
+        },
+        {
+          "field": "exposure",
+          "bytes": 16
+        },
+        {
+          "field": "recovery",
+          "bytes": 5
+        },
+        {
+          "field": "divergence",
+          "bytes": 5
+        },
+        {
+          "field": "predator",
+          "bytes": 5
+        },
+        {
+          "field": "illness",
+          "bytes": 5
+        },
+        {
+          "field": "injury",
+          "bytes": 5
+        },
+        {
+          "field": "activity",
+          "bytes": 5
+        },
+        {
+          "field": "wildlifeRhythm",
+          "bytes": 5
+        },
+        {
+          "field": "exertion",
+          "bytes": 5
+        },
+        {
+          "field": "habits",
+          "bytes": 5
+        }
+      ],
+      "dispersalFields": [
+        {
+          "field": "botanical",
+          "bytes": 16770267
+        },
+        {
+          "field": "floraState",
+          "bytes": 14798418
+        },
+        {
+          "field": "bankGenomes",
+          "bytes": 5927501
+        },
+        {
+          "field": "producerOrigins",
+          "bytes": 2241338
+        },
+        {
+          "field": "seedReserve",
+          "bytes": 458868
+        },
+        {
+          "field": "coatReserve",
+          "bytes": 458868
+        },
+        {
+          "field": "active",
+          "bytes": 121488
+        },
+        {
+          "field": "litter",
+          "bytes": 65543
+        },
+        {
+          "field": "pageSeedTransfers",
+          "bytes": 7330
+        },
+        {
+          "field": "events",
+          "bytes": 3938
+        },
+        {
+          "field": "kindCodes",
+          "bytes": 184
+        },
+        {
+          "field": "stats",
+          "bytes": 86
+        },
+        {
+          "field": "nextDepositId",
+          "bytes": 6
+        },
+        {
+          "field": "nextProducerId",
+          "bytes": 5
+        }
+      ],
+      "floraStateFields": [
+        {
+          "field": "seeds",
+          "bytes": 9294385
+        },
+        {
+          "field": "genomes",
+          "bytes": 5330592
+        },
+        {
+          "field": "adults",
+          "bytes": 134123
+        },
+        {
+          "field": "births",
+          "bytes": 39187
+        },
+        {
+          "field": "stats",
+          "bytes": 75
+        },
+        {
+          "field": "serial",
+          "bytes": 6
+        },
+        {
+          "field": "schema",
+          "bytes": 4
+        }
+      ],
+      "botanicalFields": [
+        {
+          "field": "pollen",
+          "bytes": 5203032
+        },
+        {
+          "field": "adultGenomes",
+          "bytes": 4970508
+        },
+        {
+          "field": "embryos",
+          "bytes": 3675573
+        },
+        {
+          "field": "flowers",
+          "bytes": 3010103
+        },
+        {
+          "field": "adultOrigins",
+          "bytes": 974429
+        },
+        {
+          "field": "receipts",
+          "bytes": 14826
+        },
+        {
+          "field": "stats",
+          "bytes": 183
+        },
+        {
+          "field": "genomeCollection",
+          "bytes": 30
+        },
+        {
+          "field": "serial",
+          "bytes": 6
+        },
+        {
+          "field": "schema",
+          "bytes": 4
+        },
+        {
+          "field": "epoch",
+          "bytes": 4
+        }
+      ],
+      "worldFields": [
+        {
+          "field": "plantResources",
+          "bytes": 1590006
+        },
+        {
+          "field": "plants",
+          "bytes": 655519
+        },
+        {
+          "field": "organicResources",
+          "bytes": 573944
+        },
+        {
+          "field": "seedBank",
+          "bytes": 524420
+        },
+        {
+          "field": "environment",
+          "bytes": 347199
+        },
+        {
+          "field": "freshwaterFood",
+          "bytes": 327751
+        },
+        {
+          "field": "soilWater",
+          "bytes": 281735
+        },
+        {
+          "field": "terrain",
+          "bytes": 65583
+        },
+        {
+          "field": "moisture",
+          "bytes": 65543
+        },
+        {
+          "field": "fertility",
+          "bytes": 65543
+        },
+        {
+          "field": "temperature",
+          "bytes": 65543
+        },
+        {
+          "field": "carrion",
+          "bytes": 65543
+        },
+        {
+          "field": "surfaceWater",
+          "bytes": 16410
+        },
+        {
+          "field": "planet",
+          "bytes": 311
+        },
+        {
+          "field": "topology",
+          "bytes": 96
+        },
+        {
+          "field": "pageLayout",
+          "bytes": 71
+        },
+        {
+          "field": "regionOrigin",
+          "bytes": 29
+        },
+        {
+          "field": "generator",
+          "bytes": 15
+        }
+      ]
+    }
+  ]
+}

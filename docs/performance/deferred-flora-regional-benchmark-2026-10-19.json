@@ -1,0 +1,28 @@
+{
+  "input": "docs/test-runs/artifacts/regional-synchronized-10day-2026-10-19.snapshot.bin",
+  "bytes": 35860786,
+  "inputSha256": "a14a6a3685f90656da40b4bb8bbdc2e88c004259387e9a3f3f4ef91ddea837d2",
+  "scope": "One existing checkpoint, before/after/after/before warm-process restore comparison; independent transport copies; not browser timing or general scalability",
+  "rows": [
+    {
+      "kind": "before",
+      "ms": 224.0003999999999
+    },
+    {
+      "kind": "after",
+      "ms": 160.52060000000006
+    },
+    {
+      "kind": "after",
+      "ms": 150.90300000000025
+    },
+    {
+      "kind": "before",
+      "ms": 189.91399999999976
+    }
+  ],
+  "beforeMeanMs": 206.95719999999983,
+  "afterMeanMs": 155.71180000000015,
+  "exactCheckpointParity": true,
+  "exactNextDayParity": true
+}

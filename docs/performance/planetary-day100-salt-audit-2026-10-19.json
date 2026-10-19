@@ -1,0 +1,12 @@
+{
+  "schema": "genvo.planetary-salt-audit/1",
+  "scope": "Cumulative initial-to-day100 salt budget plus retained last64 daily budgets; first36 individual closures not retained in checkpoint",
+  "initialSalt": 0,
+  "finalSalt": 0,
+  "input": 0,
+  "output": 0,
+  "cumulativeClosure": 0,
+  "recentDailyClosureMax": 0,
+  "tolerance": 0.00001,
+  "retainedDailyRows": 64
+}

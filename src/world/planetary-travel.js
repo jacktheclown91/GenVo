@@ -2,7 +2,7 @@
 // Departing populations and their controller states are checkpointed as a
 // non-active region. The SAME traveling animal ID/body/genotype moves into
 // the receiving simulation, which is installed atomically by the game UI.
-// Remote populations do not tick while their region is inactive.
+// E18 advances inactive populations through bounded canonical biological ticks.
 import {Simulation} from '../sim/simulation.js';
 import {PlanetRegionAtlas,neighboringRegion,regionKey} from './planet-regions.js';
 import {World} from './world.js';
@@ -120,7 +120,7 @@ export function crossPlanetaryBorder(sim){
  const status=planetaryTravelAvailability(sim);
  if(!status.enabled)return{ok:false,type:'planet-travel',message:status.reason};
  const traveler=sim.player(),memberIds=status.members,cohort=memberIds.map(id=>sim.animals.find(a=>a.id===id)),sourceKey=regionKey(sim.world.regionOrigin),destinationKey=regionKey(status.to),prior=stored(sim);
- const sessions=prior.sessions.filter(s=>s.key!==destinationKey&&s.key!==sourceKey).map(s=>({key:s.key,snapshot:s.snapshot}));
+ const sessions=prior.sessions.filter(s=>s.key!==destinationKey&&s.key!==sourceKey).map(s=>({...s}));
  const oldDestination=prior.sessions.find(s=>s.key===destinationKey);
  const archivedDestination=oldDestination?structuredClone(oldDestination):null;
  if(archivedDestination){
@@ -180,8 +180,10 @@ export function crossPlanetaryBorder(sim){
  dest.planetaryRegions=atlas;
  sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,memberIds),...(sim.offscreenBiologyEnabled?{biologicalMode:'canonical-ticks/1'}:{})});
  dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions};
+ for(const key of ['diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
  dest.travelFamilyGroup=!!sim.travelFamilyGroup;
  dest.offscreenBiologyEnabled=!!sim.offscreenBiologyEnabled;
+ if(Object.hasOwn(sim,'regionalReplayPolicy'))dest.regionalReplayPolicy=sim.regionalReplayPolicy;else delete dest.regionalReplayPolicy;
  dest.lastPlayerAction={type:'planet-travel',actorId:traveler.id,members:memberIds,from:sourceKey,to:destinationKey,tick:dest.tickCount};
  return{ok:true,type:'planet-travel',message:'Crossed '+status.direction+' into planetary region '+destinationKey+(memberIds.length>1?' with '+(memberIds.length-1)+' family members.':'.')+' Regional wildlife and resources are retained.',simulation:dest,from:sourceKey,to:destinationKey,id:traveler.id,members:memberIds};
 }

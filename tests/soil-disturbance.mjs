@@ -1,13 +1,14 @@
+import {provideRootFood} from './helpers/finite-root-food.js';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 import {disturbanceAt,recordSoilDig,SOIL_DISTURBANCE} from '../src/ecology/soil-disturbance.js';
 const sim=new Simulation('SOIL-DISTURBANCE',{player:false}),a=sim.animals.find(a=>a.species==='rootling'),ability=sim.partAbilities;
 sim.world.water[sim.world.idx(a.x,a.y)]=0;a.energy=30;
-const plants=structuredClone(sim.world.plants),rng=sim.rng.state;
+provideRootFood(sim,a);const plants=structuredClone(sim.world.plants),rng=sim.rng.state;
 assert.equal(ability.disturbedSoilAt(a.x,a.y),0);
 assert.ok(ability.dig(a).ok);assert.equal(ability.disturbedSoilAt(a.x,a.y),SOIL_DISTURBANCE.perDig);
-assert.deepEqual(sim.world.plants,plants,'Habitat tag does not create plant stocks');assert.equal(sim.rng.state,rng);
+const meal=sim.world.idx(a.x,a.y);assert.ok(sim.world.plants.marshroot[meal]<plants.marshroot[meal]);plants.marshroot[meal]=sim.world.plants.marshroot[meal];assert.deepEqual(sim.world.plants,plants,'Only the finite root meal changes plant stocks');assert.equal(sim.rng.state,rng);
 const unchanged=structuredClone(ability.soilDisturbance);
 assert.equal(ability.dig(a).ok,false);assert.deepEqual(ability.soilDisturbance,unchanged,'Failed or cooldown action leaves no new work');
 const restored=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim)));

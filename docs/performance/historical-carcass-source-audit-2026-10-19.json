@@ -1,0 +1,27 @@
+{
+  "scope": "Versioned discovery spawnCarcass call in a normally generated world with bootstrap disabled and zero animals. Controlled location; no simulation ticks or original trial state modified. Historical --legacy mode demonstrates the retained unfunded event; current mode refuses to create food; does not establish every possible source/sink or full-world balance.",
+  "status": "historical-unfunded-discovery-carrion-confirmed",
+  "rule": "calendar-carcass/1",
+  "before": {
+    "carrion": 0,
+    "animals": 0,
+    "deaths": 0
+  },
+  "after": {
+    "carrion": 7.000000238418579,
+    "animals": 0,
+    "deaths": 0
+  },
+  "addedCarrion": 7.000000238418579,
+  "site": {
+    "id": 1,
+    "kind": "carcass",
+    "x": 73.5,
+    "y": 59.5,
+    "stock": 0,
+    "day": 1
+  },
+  "source": "src/gameplay/discovery.js",
+  "sourceSha256": "5fa9d0de434e6de6c875e52fb532c5c814c6412661ba2dde262e984346e8d091",
+  "relatedScope": "Still-pool energy currently calls harvestFreshwater in Simulation.drink, so its label alone is not evidence of an unfunded reward. Grove/carcass nutrition multipliers and calendar nest-material renewal require separate accounting review."
+}

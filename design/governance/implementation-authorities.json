@@ -183,6 +183,35 @@
         "src/sim/simulation.js",
         "src/render/creature-palette.js"
       ]
+    },
+    "regionalReplay": {
+      "authority": "src/world/planetary-offscreen-biology.js",
+      "consumers": [
+        "src/sim/simulation.js",
+        "src/sim/frame-stepper.js",
+        "src/main.js",
+        "src/world/planetary-travel.js",
+        "src/persistence/save-manager.js"
+      ],
+      "contract": "docs/performance/REGIONAL-REPLAY-POLICY.md"
+    },
+    "diggingRuleVersions": {
+      "authority": "src/lineage/digging-rules.js",
+      "consumers": [
+        "src/lineage/part-abilities.js",
+        "src/gameplay/discovery.js",
+        "src/persistence/save-manager.js",
+        "src/world/planetary-travel.js"
+      ]
+    },
+    "carcassRuleVersions": {
+      "authority": "src/gameplay/carcass-rules.js",
+      "consumers": [
+        "src/gameplay/discovery.js",
+        "src/sim/simulation.js",
+        "src/persistence/save-manager.js",
+        "src/world/planetary-travel.js"
+      ]
     }
   },
   "nonRuntimeModules": {

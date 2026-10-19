@@ -1,0 +1,23 @@
+import fs from 'node:fs';import assert from 'node:assert/strict';import {deserialize} from 'node:v8';import {isDeepStrictEqual} from 'node:util';import {createHash} from 'node:crypto';
+import {copyPlainMetadata} from './plain-metadata-copy.mjs';
+const [input,out]=process.argv.slice(2);assert.ok(input&&out&&!fs.existsSync(out));
+const sourceFile='docs/performance/flora-seed-codec-before-metadata-copy.txt',source=fs.readFileSync(sourceFile,'utf8');
+assert.equal(createHash('sha256').update(source).digest('hex'),'6290803b5bca29ab1c397c506660f55e069f459fd7c3c0fd983a4ffa813802b0');
+const before=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));
+const old="const copyMetadata=v=>v!==null&&typeof v==='object'?structuredClone(v):v;";assert.ok(source.includes(old));
+const candidateSource=source.replace(old,'import {copyPlainMetadata as copyMetadata} from '+JSON.stringify(new URL('./plain-metadata-copy.mjs',import.meta.url).href)+';');
+const after=await import('data:text/javascript;base64,'+Buffer.from(candidateSource).toString('base64'));
+// Structured-clone parity includes aliases, holes, own undefined, property order and safe prototype keys.
+const shared={n:-0,missing:undefined},sparse=new Array(4);sparse[2]=shared;sparse.extra=shared;
+const metadata={a:shared,b:shared,sparse,small:Number.MIN_VALUE};Object.defineProperty(metadata,'__proto__',{value:{owned:true},enumerable:true,writable:true,configurable:true});
+const copied=copyPlainMetadata(metadata);assert.ok(isDeepStrictEqual(copied,structuredClone(metadata)));assert.equal(copied.a,copied.b);assert.equal(copied.sparse[2],copied.a);assert.equal(copied.sparse.extra,copied.a);assert.ok(!(0 in copied.sparse));assert.equal(Object.getPrototypeOf(copied),Object.prototype);
+copied.a.mutated=true;assert.equal(shared.mutated,undefined);assert.equal(copyPlainMetadata(metadata).a.mutated,undefined);
+const fixtures={test:new Map([[3,new Map([['a',{amount:Number.MIN_VALUE,metadata}],['b',{metadata,amount:.1}]])]])};
+const packedBefore=before.packFloraSeedBanks(fixtures),packedAfter=after.packFloraSeedBanks(fixtures);assert.ok(isDeepStrictEqual(packedAfter,packedBefore));
+const unpacked=after.unpackFloraSeedBanks(packedAfter);assert.ok(isDeepStrictEqual(unpacked,before.unpackFloraSeedBanks(packedBefore)));const entries=[...unpacked.test.get(3).values()];assert.notEqual(entries[0].metadata,entries[1].metadata);entries[0].metadata.a.changed=true;assert.equal(entries[1].metadata.a.changed,undefined);
+const bytes=fs.readFileSync(input),snapshot=deserialize(Buffer.from(bytes)),packed=snapshot.controllers.dispersal.floraState.seeds,reference=before.unpackFloraSeedBanks(packed),rows=[];
+for(const label of ['before','after','after','before']){global.gc?.();const at=performance.now(),decoded=(label==='before'?before:after).unpackFloraSeedBanks(packed),ms=performance.now()-at;assert.ok(isDeepStrictEqual(decoded,reference),'complete mature decoded bank differs '+label);rows.push({label,ms});console.log(JSON.stringify(rows.at(-1)))}
+const referencePack=before.packFloraSeedBanks(reference),candidatePack=after.packFloraSeedBanks(reference);assert.ok(isDeepStrictEqual(candidatePack,referencePack),'entire mature re-encoded table differs');
+const mean=label=>{const a=rows.filter(r=>r.label===label);return a.reduce((n,r)=>n+r.ms,0)/a.length};
+const helper=fs.readFileSync(new URL('./plain-metadata-copy.mjs',import.meta.url),'utf8');const body=helper.slice(helper.indexOf('export function copyPlainMetadata')).replace('export function copyPlainMetadata','function copyMetadata').trim();assert.ok(fs.readFileSync('src/persistence/flora-seed-codec.js','utf8').replaceAll('\r\n','\n').includes(body.replaceAll('\r\n','\n')),'candidate helper must match canonical copy implementation');
+const report={status:'isolated-metadata-copy-reference-comparison',scope:'Alternating mature active-region seed decode, same complete input/output and re-encoded table. Synthetic alias/sparse/prototype-key/isolation cases. Explicit GC outside timing. No variant filtering, quantity changes, whole-world continuation, browser or general speedup claim.',input,inputSha256:createHash('sha256').update(bytes).digest('hex'),sourceFile,candidateSha256:createHash('sha256').update(fs.readFileSync(new URL('./plain-metadata-copy.mjs',import.meta.url))).digest('hex'),rows,beforeMeanMs:mean('before'),afterMeanMs:mean('after'),canonicalHelperMatches:true,exactDecodedBank:true,exactReencodedBank:true,metadataGraphAndIsolation:true};fs.writeFileSync(out,JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));

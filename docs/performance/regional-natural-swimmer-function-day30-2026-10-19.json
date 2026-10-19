@@ -1,0 +1,37 @@
+{
+  "status": "traversal-not-demonstrated",
+  "scope": "No qualifying two-tile water edge in the declared scan window of retained candidate regions; no anatomy/terrain edits made. Swim gates alone do not prove crossing.",
+  "input": "docs/test-runs/artifacts/regional-autonomous-100day-r2-2026-10-19/day30.snapshot.bin",
+  "inputSha256": "198fbd84f21178b7cef5a6fed2d70b702b21acb4a4c28f9afebe2a78a8ee46ff",
+  "birthReceipt": "docs/performance/regional-natural-anatomical-births-day30-2026-10-19.json",
+  "checked": [
+    {
+      "id": 595,
+      "parentIds": [
+        5,
+        44
+      ],
+      "childCanSwim": true,
+      "parentsCanSwim": [
+        false,
+        false
+      ],
+      "bankFound": false,
+      "playableWaterTiles": 500
+    },
+    {
+      "id": 615,
+      "parentIds": [
+        383,
+        368
+      ],
+      "childCanSwim": true,
+      "parentsCanSwim": [
+        false,
+        false
+      ],
+      "bankFound": false,
+      "playableWaterTiles": 500
+    }
+  ]
+}

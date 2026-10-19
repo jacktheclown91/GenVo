@@ -1,3 +1,4 @@
+import {provideRootFood} from './helpers/finite-root-food.js';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
@@ -47,7 +48,7 @@ const near=(a,b)=>Math.abs(a-b)<1e-9;
  // A dry spot: no water under the creature.
  const w=sim.world;let dryFound=false;for(let i=w.len>>1;i<w.len;i++){const x=i%w.n+.5,y=Math.floor(i/w.n)+.5;if(sim.canOccupy(p,x,y)&&!w.isDrinkable(x,y)&&!sim.nearestPlayerCombatTarget({...p,x,y},3)&&x>4&&y>4){p.x=x;p.y=y;dryFound=true;break}}assert.ok(dryFound,'digging test must actually place the actor on dry reachable ground');
  for(const a of sim.animals)if(a.id!==p.id&&Math.hypot(a.x-p.x,a.y-p.y)<3)a.x+=8;
- p.energy=40;assert.match(sim.interactionHint(),/Dig for roots/);const available=sim.interactionOptions();if(available.filter(o=>o.enabled).length>1){const pending=sim.playerInteract();assert.equal(pending.type,'interaction-choice');assert.equal(p.energy,40,'choice does not dig eagerly')}const r=sim.playerInteract({kind:'ground',i:w.idx(p.x,p.y),x:p.x,y:p.y},'dig');assert.equal(r.type,'dig',r.message);assert.equal(r.ok,true);assert.ok(p.energy>40);
+ provideRootFood(sim,p);p.energy=40;assert.match(sim.interactionHint(),/Eat/,'ordinary represented food keeps its normal default hint');const available=sim.interactionOptions();assert.ok(available.some(o=>o.id==='dig'&&o.enabled)||sim.partAbilities.digAvailability(p).enabled,'finite digging remains explicitly available');if(available.filter(o=>o.enabled).length>1){const pending=sim.playerInteract();assert.equal(pending.type,'interaction-choice');assert.equal(p.energy,40,'choice does not dig eagerly')}const r=sim.playerInteract({kind:'ground',i:w.idx(p.x,p.y),x:p.x,y:p.y},'dig');assert.equal(r.type,'dig',r.message);assert.equal(r.ok,true);assert.ok(p.energy>40);
  sim.tickCount+=CFG.simHz*2;const again=sim.partAbilities.dig(p);assert.equal(again.ok,false,'the same patch is dug out');
  assert.equal(sim.partAbilities.coverNeeded(p,.36),PART_ABILITY.dig.coverHide);assert.equal(sim.partAbilities.coverNeeded(plain,.36),.36);
  // Damage: the reinforced torso reduces any attacker's hit.
@@ -83,7 +84,7 @@ const near=(a,b)=>Math.abs(a-b)<1e-9;
 // Autonomous creatures follow the same rules: a hungry wild digger with no food digs; a plain one cannot.
 {const sim=fresh('GENVO8-PARTS-AI');for(const field of Object.values(sim.world.plants))field.fill(0);for(const field of Object.values(sim.world.freshwaterFood))field.fill(0);sim.world.carrion.fill(0);
  const wild=sim.animals.filter(a=>a.alive&&a.species==='genvo'&&!a.player&&!a.lineage).slice(0,2);assert.equal(wild.length,2);const [dg,plain]=wild;design(dg,BUILDS.digger);
- let dry=null;for(let i=sim.world.len>>1;i<sim.world.len&&!dry;i++){const x=i%sim.world.n+.5,y=Math.floor(i/sim.world.n)+.5;if(sim.canOccupy(dg,x,y)&&!sim.world.isDrinkable(x,y)&&!sim.nearestPlayerCombatTarget({...dg,x,y},7))dry={x,y}}assert.ok(dry,'wild digging fixture requires safe dry soil');for(const a of wild)Object.assign(a,dry);assert.ok(sim.partAbilities.digAvailability(dg).enabled);
+ let dry=null;for(let i=sim.world.len>>1;i<sim.world.len&&!dry;i++){const x=i%sim.world.n+.5,y=Math.floor(i/sim.world.n)+.5;if(sim.canOccupy(dg,x,y)&&!sim.world.isDrinkable(x,y)&&!sim.nearestPlayerCombatTarget({...dg,x,y},7))dry={x,y}}assert.ok(dry,'wild digging fixture requires safe dry soil');for(const a of wild)Object.assign(a,dry);assert.equal(sim.partAbilities.digAvailability(dg).enabled,false);provideRootFood(sim,dg);assert.ok(sim.partAbilities.digAvailability(dg).enabled);
  for(const a of wild){a.energy=SPECIES.genvo.maxEnergy*.4;a.hydration=SPECIES.genvo.maxHydration;a.pregnant=null}
  sim.phaseDecision(null);assert.equal(dg.intent,'dig');assert.notEqual(plain.intent,'dig');const e0=dg.energy;sim.resolveInteraction(dg);assert.ok(dg.energy>e0,'the wild digger fed itself')}
 

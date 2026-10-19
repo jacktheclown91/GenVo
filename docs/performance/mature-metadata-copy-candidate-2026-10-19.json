@@ -1,0 +1,31 @@
+{
+  "status": "staged-only-not-installed",
+  "scope": "Alternating mature active-region seed decode, same complete input/output and re-encoded table. Synthetic alias/sparse/prototype-key/isolation cases. Explicit GC outside timing. No variant filtering, quantity changes, whole-world continuation, browser or general speedup claim.",
+  "input": "docs/test-runs/artifacts/regional-autonomous-100day-r2-2026-10-19/day60.snapshot.bin",
+  "inputSha256": "0e3a2f4994bdcba66fb69c472702f52808d3ff02953e72ef75ad8b0a3d737a78",
+  "sourceFile": "docs/performance/flora-seed-codec-before-metadata-copy.txt",
+  "candidateSha256": "f028b661d0107fa8318d19a33fd3305373821530b98c04d0db99de1e0149c71b",
+  "rows": [
+    {
+      "label": "before",
+      "ms": 1445.9148
+    },
+    {
+      "label": "after",
+      "ms": 844.3041999999996
+    },
+    {
+      "label": "after",
+      "ms": 843.8180000000002
+    },
+    {
+      "label": "before",
+      "ms": 1384.3412999999991
+    }
+  ],
+  "beforeMeanMs": 1415.1280499999996,
+  "afterMeanMs": 844.0610999999999,
+  "exactDecodedBank": true,
+  "exactReencodedBank": true,
+  "metadataGraphAndIsolation": true
+}

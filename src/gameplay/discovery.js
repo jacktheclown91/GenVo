@@ -1,3 +1,5 @@
+import {carcassRule,CARCASS_RULES} from './carcass-rules.js';
+import {diggingRule,DIGGING_RULES} from '../lineage/digging-rules.js';
 import {rememberSeedTrace,updateSeedObservations,visibleSeedPatches,seedPatchTarget,seedPatchDescription,seedPatchAvailability,readSeedPatch} from './seed-observations.js';
 import {canHunt} from '../ecology/functional-diet.js';
 import {wildBranch,isWildSpecies,wildStartPlan,withRelicParts,SPECIAL_KINDS} from '../organisms/wild-bodies.js';
@@ -144,7 +146,7 @@ export class DiscoveryController{
   }
   siteAt(animal,kind,radius=1.3){if(!animal)return null;for(const s of this.sites)if(s.kind===kind&&!s.gone&&Math.hypot(s.x-animal.x,s.y-animal.y)<=radius)return s;return null}
   isFound(site){return this.found.includes(site.id)}
-  discover(site,how='found'){if(!site||this.isFound(site))return false;this.found.push(site.id);this.notice(`Discovered: ${SITE_KINDS[site.kind].label} · ${SITE_KINDS[site.kind].blurb}`,'success');this.sim.evolutionBudget?.note?.('discovery');return true}
+  discover(site,how='found'){if(!site||this.isFound(site))return false;this.found.push(site.id);this.notice(`Discovered: ${SITE_KINDS[site.kind].label} · ${this.description(site.kind)}`,'success');this.sim.evolutionBudget?.note?.('discovery');return true}
 
   // --- Field guide ---
   noteCreatureAppearance(animal){
@@ -176,6 +178,7 @@ export class DiscoveryController{
   takeNotice(){return this.notices.shift()||null}
 
   // --- Effects used by other systems ---
+  description(kind){if(kind==='carcass'&&carcassRule(this.sim)===CARCASS_RULES.finite)return 'Remains of an organism. Meals use the food actually left here; nearby Stalkers may investigate.';return kind==='root-mound'&&diggingRule(this.sim)===DIGGING_RULES.finite?'Look for existing root or bulb food here. Depleted plants must grow before another meal.':SITE_KINDS[kind]?.blurb||''}
   foodBonus(animal,kind){
     if(!animal?.player&&!animal?.lineage)return 1;
     if(kind==='thistlepod'&&this.siteAt(animal,'pod-grove',2.2))return 1.3;
@@ -183,8 +186,8 @@ export class DiscoveryController{
     return 1;
   }
   poolBonus(animal){if(!this.siteAt(animal,'still-pool',2.2))return 0;return partEffectFactors(animal)?.mouth==='filter-mouth'?16:8}
-  mound(animal,{restock=true}={}){const site=this.siteAt(animal,'root-mound',1.6);if(!site)return null;const due=site.stock<=0&&this.sim.day-(site.restockDay||0)>=10;if(due&&restock)site.stock=5;return site.stock>0||due?site:null}
-  useMound(site){site.stock--;if(site.stock<=0)site.restockDay=this.sim.day}
+  mound(animal,{restock=true}={}){if(diggingRule(this.sim)===DIGGING_RULES.finite){const site=this.siteAt(animal,'root-mound',1.6);return site&&this.sim.partAbilities.rootMealAt(animal)?site:null;}const site=this.siteAt(animal,'root-mound',1.6);if(!site)return null;const due=site.stock<=0&&this.sim.day-(site.restockDay||0)>=10;if(due&&restock)site.stock=5;return site.stock>0||due?site:null}
+  useMound(site){if(diggingRule(this.sim)===DIGGING_RULES.finite){const n=site.finiteHarvests??0;if(!Number.isSafeInteger(n)||n<0||n>=Number.MAX_SAFE_INTEGER)throw Error('Invalid finite mound visit count.');site.finiteHarvests=n+1;site.lastFiniteHarvestDay=this.sim.day;return;}site.stock--;if(site.stock<=0)site.restockDay=this.sim.day}
   logAt(animal){return !!this.siteAt(animal,'hollow-log',1.2)}
   refugeFor(animal){return !!(animal&&this.siteAt(animal,'thorn-brake',1.8))}
   armored(animal){return ARMORED.some(id=>hasPart(animal,id))||(animal?.adaptations||[]).includes('hardened-mantle')}
@@ -251,13 +254,25 @@ export class DiscoveryController{
     if(t%(CFG.simHz*2)===0){const r=8*sight;for(const a of this.sim.animals){if(!a.alive||a.id===p.id||Math.hypot(a.x-p.x,a.y-p.y)>r)continue;this.noteCreatureAppearance(a);if(!this.seenSpecies.includes(a.species))this.seenSpecies.push(a.species);if(isWildSpecies(a.species)&&a.bodyPlan){const br=wildBranch(a);this.seenBranches||=[];if(br.id!=='common'&&!this.seenBranches.includes(br.id)){this.seenBranches.push(br.id);this.notice(`Field guide: a ${br.label} · its body has evolved`,'warn')}}if((a.species==='genvo'&&!a.lineage)||isWildSpecies(a.species))this.seeParts(a)}if(this.wildPartsSeen()>=5)this.complete('spot5')}
     // Thorn brakes scratch any soft-bodied occupant (Phase 3I refuges; previously only family GenVo).
     for(const a of this.sim.animals){if(!a.alive||!REFUGE_PARITY.enabled&&(!a.lineage||a.species!=='genvo'))continue;if(this.siteAt(a,'thorn-brake',1.8)&&!(REFUGE_PARITY.enabled?armoured(this.sim,a):this.armored(a)))a.health=Math.max(1,a.health-.5)}
-    // A carcass appears every so often within reach of the active creature; it draws Stalkers.
+    // Discovery marks nearby carrion under current rules; historical saves retain their original event.
     const carcass=this.sites.find(s=>s.kind==='carcass'&&!s.gone);
     if(carcass){const i=this.sim.world.idx(carcass.x,carcass.y);if((this.sim.world.carrion[i]||0)<.1)carcass.gone=true;
       else if(!carcass.lured&&Math.hypot(carcass.x-p.x,carcass.y-p.y)<=3&&!this.sim.isOpeningProtected?.(p)){let best=null,bd=18;for(const h of this.sim.animals){if(!h.alive||!canHunt(h)||h.playerHunt)continue;const d=Math.hypot(h.x-p.x,h.y-p.y);if(d<bd){bd=d;best=h}}if(best){carcass.lured=true;this.sim.predator.beginStalk(best,p,bd);best.intent='stalk-player';best.target=p;this.notice('The carcass has drawn a Stalker.','warn')}}}
     else if(this.sim.day-this.lastCarcassDay>=12&&this.sim.day>=6){this.spawnCarcass(p)}
   }
+ discoverExistingCarcass(p){
+  const w=this.sim.world;this.lastCarcassDay=this.sim.day;
+  let best=null;
+  for(let y=Math.max(2,Math.floor(p.y-22));y<=Math.min(w.n-3,Math.floor(p.y+22));y++)for(let x=Math.max(2,Math.floor(p.x-22));x<=Math.min(w.n-3,Math.floor(p.x+22));x++){
+   const i=w.idx(x,y),distance=Math.hypot(x+.5-p.x,y+.5-p.y);
+   if(distance>22||w.water[i]||!(w.carrion[i]>=.1)||this.sites.some(s=>s.kind==='carcass'&&!s.gone&&Math.floor(s.x)===x&&Math.floor(s.y)===y))continue;
+   if(!best||distance<best.distance)best={x,y,distance};
+  }
+  if(!best)return false;
+  this.sites.push({id:this.nextSiteId++,kind:'carcass',x:best.x+.5,y:best.y+.5,stock:0,day:this.sim.day});return true;
+ }
   spawnCarcass(p){
+    if(carcassRule(this.sim)===CARCASS_RULES.finite)return this.discoverExistingCarcass(p);
     const w=this.sim.world,seed=(w.seedHash>>>0)||1;this.lastCarcassDay=this.sim.day;
     for(let t=0;t<80;t++){const a=hash(seed,this.sim.day*7+this.sim.year*331,t)*Math.PI*2,r=10+hash(seed,this.sim.day,t+5)*12,x=Math.floor(p.x+Math.cos(a)*r),y=Math.floor(p.y+Math.sin(a)*r);
       if(x<2||y<2||x>=CFG.worldSize-2||y>=CFG.worldSize-2||w.water[w.idx(x,y)])continue;

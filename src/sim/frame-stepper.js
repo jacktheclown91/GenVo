@@ -6,19 +6,20 @@ export class FrameStepper{
     this.stepSeconds=1/controlHz;this.budgetMs=budgetMs;this.clock=clock;this.reset();
   }
   reset(){this.pendingSeconds=0;this.substep=0;this.last={steps:0,pendingSeconds:0,budgetLimited:false,workMs:0}}
-  advance(seconds,speed,controlStep,ecologyStep,{paused=false}={}){
+  advance(seconds,speed,controlStep,ecologyStep,{paused=false,beforeStep=()=>true}={}){
     if(!Number.isFinite(seconds)||seconds<0||!Number.isFinite(speed)||speed<=0)throw new Error('Invalid frame time');
-    const start=this.clock();let steps=0;
+    const start=this.clock();let steps=0,regionalWork=false;
     if(!paused){
       this.pendingSeconds+=seconds*speed;
       while(this.pendingSeconds>=this.stepSeconds){
         if(steps&&this.clock()-start>=this.budgetMs)break;
+        if(!beforeStep()){regionalWork=true;break;}
         controlStep(this.controlHz);this.substep++;
         if(this.substep>=this.ratio){ecologyStep();this.substep=0}
         this.pendingSeconds-=this.stepSeconds;steps++;
       }
     }
-    return this.last={steps,pendingSeconds:this.pendingSeconds,
+    return this.last={steps,pendingSeconds:this.pendingSeconds,regionalWork,
       budgetLimited:!paused&&this.pendingSeconds>=this.stepSeconds,workMs:this.clock()-start};
   }
   get presentationAhead(){return Math.min(this.pendingSeconds,this.stepSeconds)}

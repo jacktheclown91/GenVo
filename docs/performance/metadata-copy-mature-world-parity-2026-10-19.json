@@ -1,0 +1,29 @@
+{
+  "scope": "One actual checkpoint, alternating warm-process restore with explicit GC outside timing. Only reference codec differs; full current/archived state and next canonical day compared. Independent transport buffers. Not general speed, mature frame pacing, browser save timing or ecological acceptance.",
+  "input": "docs/test-runs/artifacts/regional-autonomous-100day-r2-2026-10-19/day60.snapshot.bin",
+  "inputSha256": "0e3a2f4994bdcba66fb69c472702f52808d3ff02953e72ef75ad8b0a3d737a78",
+  "inputBytes": 265412169,
+  "rows": [
+    {
+      "label": "before",
+      "ms": 2261.3518999999997
+    },
+    {
+      "label": "after",
+      "ms": 1867.7474999999977
+    },
+    {
+      "label": "after",
+      "ms": 1892.3019000000022
+    },
+    {
+      "label": "before",
+      "ms": 2435.7137000000002
+    }
+  ],
+  "beforeMeanMs": 2348.5328,
+  "afterMeanMs": 1880.0247,
+  "exactCheckpointState": true,
+  "exactNextDayState": true,
+  "archives": 2
+}

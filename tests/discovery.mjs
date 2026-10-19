@@ -1,3 +1,4 @@
+import {provideRootFood} from './helpers/finite-root-food.js';
 import {interactAs} from './helpers/interaction.js';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
@@ -50,18 +51,18 @@ goTo(p,site('pod-grove'));assert.equal(D.foodBonus(p,'thistlepod'),1.3);goTo(p,{
 {goTo(p,site('nest-ruin'));p.nestMaterial=0;const r=interactAs(sim,assert,'collect-material');assert.equal(r.type,'nest',r.message);assert.ok(p.nestMaterial>=1);
  const carried=p.nestMaterial;assert.ok(sim.shelter.materialAvailable(p.x,p.y)>=carried)}
 
-// Root mound: a digger digs it for a much larger meal; others cannot.
+// Root mound: a clue to finite producer food; no unbacked reward multiplier.
 {const mound=site('root-mound');goTo(p,mound);const plain=sim.partAbilities.canDigAt(p);design(p,[['digging-forelimb',null,'limb.0']]);assert.equal(plain,false);
- p.energy=20;const r=sim.partAbilities.dig(p);assert.equal(r.ok,true,r.message);assert.ok(r.energyGain>20,'three times a normal root meal');assert.equal(mound.stock,4)}
+ provideRootFood(sim,p);const foodBefore=sim.world.plants.marshroot[sim.world.idx(p.x,p.y)],stockBefore=mound.stock;p.energy=20;const r=sim.partAbilities.dig(p);assert.equal(r.ok,true,r.message);assert.ok(r.energyGain>0&&r.energyGain<20,'normal finite meal without mound multiplier');assert.ok(sim.world.plants.marshroot[sim.world.idx(p.x,p.y)]<foodBefore);assert.equal(mound.stock,stockBefore);assert.equal(mound.finiteHarvests,1)}
 
 // Field guide: parts seen on wild GenVo8s cost 1 MP less in the editor.
 {const d0=createDraft({base:bodyPlanFromLegacy(p),ancestry:ALL,budget:99}),d1=createDraft({base:bodyPlanFromLegacy(p),ancestry:ALL,budget:99,known:['tearing-jaw']});
  place(d0,'tearing-jaw','root','mouth');place(d1,'tearing-jaw','root','mouth');assert.equal(draftCost(d1),draftCost(d0)-1)}
 {const wild=sim.animals.find(a=>a.alive&&a.species==='genvo'&&!a.lineage);design(wild,[['club-tail',null,'tail']]);wild.x=p.x+2;wild.y=p.y;sim.tickCount=Math.ceil(sim.tickCount/(CFG.simHz*2))*CFG.simHz*2-1;sim.update({});assert.ok(D.seenParts.includes('club-tail'),'a wild part is noted')}
 
-// Carcass: appears near the active creature and draws a Stalker when approached.
-{sim.day+=13;D.lastCarcassDay=0;D.tick();const before=D.sites.filter(s=>s.kind==='carcass').length;D.spawnCarcass(p);const c=D.sites.filter(s=>s.kind==='carcass').at(-1);assert.ok(c&&D.sites.filter(s=>s.kind==='carcass').length>before);
- assert.ok(sim.world.carrion[sim.world.idx(c.x,c.y)]>1);for(const o of D.sites)if(o.kind==='carcass'&&o!==c)o.gone=true;goTo(p,c);{const h=sim.animals.find(a=>a.alive&&SPECIES[a.species]?.hunter);h.playerHunt=null;h.x=c.x+8;h.y=c.y}p.hidden=false;sim.tickCount=Math.ceil(sim.tickCount/CFG.simHz)*CFG.simHz-1;sim.update({});assert.equal(c.lured,true,'the carcass draws a Stalker')}
+// Carcass: a controlled canonical death supplies food; discovery marks it and draws a Stalker.
+{sim.day+=13;D.lastCarcassDay=0;D.tick();const victim=sim.animals.find(a=>a.alive&&!a.player&&!a.lineage&&!SPECIES[a.species]?.hunter);assert.ok(victim);goTo(victim,p);sim.kill(victim,'controlled-carcass-fixture');for(const old of D.sites)if(old.kind==='carcass')old.gone=true;const corpseCell=sim.world.idx(victim.x,victim.y),foodBefore=sim.world.carrion[corpseCell],before=D.sites.filter(s=>s.kind==='carcass').length;assert.equal(D.spawnCarcass(p),true);const c=D.sites.filter(s=>s.kind==='carcass').at(-1);assert.ok(c&&D.sites.filter(s=>s.kind==='carcass').length>before);
+ assert.ok(foodBefore>0);assert.equal(sim.world.carrion[corpseCell],foodBefore,'discovery only marks existing death-funded food');for(const o of D.sites)if(o.kind==='carcass'&&o!==c)o.gone=true;goTo(p,c);{const h=sim.animals.find(a=>a.alive&&SPECIES[a.species]?.hunter);h.playerHunt=null;h.x=c.x+8;h.y=c.y}p.hidden=false;sim.tickCount=Math.ceil(sim.tickCount/CFG.simHz)*CFG.simHz-1;sim.update({});assert.equal(c.lured,true,'the carcass draws a Stalker')}
 
 // Save and reload keep places, finds, trials and seen parts.
 {const r=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim))),R=r.discovery;assert.deepEqual(R.sites.map(s=>s.id),D.sites.map(s=>s.id));assert.deepEqual(R.found,D.found);assert.deepEqual(R.trials,D.trials);assert.deepEqual(R.seenParts,D.seenParts)}

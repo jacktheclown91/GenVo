@@ -1,0 +1,25 @@
+{
+  "status": "staged-candidate-only-not-installed",
+  "scope": "Local-only copy of actual natural digger 630 and recorded parents, original remote archives excluded from isolated action fixtures; existing stock/no injected food; direct action comparison against normal finite harvest. Calendar-only fixtures isolate depletion. Persistence requires explicit experiment reinstallation; runtime policy/migration integration is not implemented.",
+  "input": "docs/test-runs/artifacts/regional-autonomous-100day-r2-2026-10-19/day30.snapshot.bin",
+  "inputSha256": "198fbd84f21178b7cef5a6fed2d70b702b21acb4a4c28f9afebe2a78a8ee46ff",
+  "foodPoint": {
+    "x": 8.5,
+    "y": 50.5
+  },
+  "kind": "marshroot",
+  "removed": 0.1600000001490116,
+  "totalProbeEnergyGain": 2.9433021841711167,
+  "firstMealEnergyGain": 2.9433021841711167,
+  "firstMealWaterGain": 0,
+  "resourceParityWithNormalMeal": true,
+  "emptyGroundDenied": true,
+  "calendarRefillDenied": true,
+  "finitePatchDepleted": true,
+  "explicitCandidateResumeParity": true,
+  "sourceHashes": {
+    "src/lineage/part-abilities.js": "14e26bf136485b2964bea00b31ac248ffe14b492bb4d19e7a21cb979ab5ea5c4",
+    "src/gameplay/foraging.js": "f084af8512865608a2a6a7b5064561bea85d0897c24aec334efe3565f1eaf88b",
+    "tools/experiments/finite-digging-candidate.mjs": "144af3bdc7554198e3bd88b240f57ca409114254d0c5588404b77da31229f62b"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "independentBinaryTransports": true,
+  "sameDecoder": false,
+  "stateOnly": false,
+  "schema": "genvo.seed-codec-mature-benchmark/1",
+  "input": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\test-runs\\artifacts\\save-day100-baseline-2026-10-19\\day100.snapshot.bin",
+  "inputBytes": 88692169,
+  "inputSha256": "efa997a880ac320d7d33a472d715b6368ecac2a2beca0e2306192884432711d3",
+  "artifactHashScope": "V8 artifact identity only",
+  "calendarDay": 101,
+  "cohorts": 408966,
+  "beforeCodecSha256": "888a8fc4b97c4418021d01159e47e2cafc14af09300815d4aab37afc89713419",
+  "afterCodecSha256": "6290803b5bca29ab1c397c506660f55e069f459fd7c3c0fd983a4ffa813802b0",
+  "gcBeforeTiming": true,
+  "results": [
+    {
+      "mode": "before",
+      "encodeMs": 3304.2634,
+      "decodeMs": 3722.4239,
+      "decodedHeap": 706588480
+    },
+    {
+      "mode": "after",
+      "encodeMs": 2023.6579000000002,
+      "decodeMs": 1865.0830999999998,
+      "decodedHeap": 649064072
+    },
+    {
+      "mode": "after",
+      "encodeMs": 2000.9413999999997,
+      "decodeMs": 1941.0499000000018,
+      "decodedHeap": 649066136
+    },
+    {
+      "mode": "before",
+      "encodeMs": 3260.6033000000025,
+      "decodeMs": 3721.9244,
+      "decodedHeap": 705717768
+    }
+  ],
+  "beforeEncodeMeanMs": 3282.433350000001,
+  "afterEncodeMeanMs": 2012.29965,
+  "beforeDecodeMeanMs": 3722.17415,
+  "afterDecodeMeanMs": 1903.0665000000008,
+  "beforeRestoreMs": 5503.7029,
+  "afterRestoreMs": 2881.921000000002,
+  "exactPackedTable": true,
+  "exactDecodedRows": true,
+  "exactFullRestoredState": true,
+  "exactFullDayContinuation": true,
+  "finalCalendarDay": 102,
+  "scope": "Alternated in-process codec diagnostic and one before/after complete restore using independent byte buffers; browser save time and live cohort memory are separate"
+}

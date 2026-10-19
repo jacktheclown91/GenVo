@@ -7,7 +7,7 @@ import {advanceRemoteEnvironment} from '../src/world/planetary-offscreen-environ
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 
 const snap=s=>structuredClone(createSimulationSnapshot(s,{reason:'e18',savedAt:'fixed'}));
-const sim=new Simulation('PLANET-B0-A',{player:true,worldGenerator:'planetary/1'});
+const sim=new Simulation('PLANET-B0-A',{player:true,worldGenerator:'planetary/1',regionalReplayPolicy:'bounded-strides/1'});
 assert.equal(sim.offscreenBiologyEnabled,true);
 const player=sim.player();
 let feasible=null;

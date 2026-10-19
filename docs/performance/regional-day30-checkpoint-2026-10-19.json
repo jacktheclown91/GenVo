@@ -1,0 +1,34 @@
+{
+  "scope": "Complete milestone checkpoint roundtrip plus two independently transported reloads continuing a full day. Not uninterrupted-versus-resumed parity or browser/IndexedDB acceptance.",
+  "input": "docs/test-runs/artifacts/regional-autonomous-100day-r2-2026-10-19/day30.snapshot.bin",
+  "bytes": 140143857,
+  "sha256": "198fbd84f21178b7cef5a6fed2d70b702b21acb4a4c28f9afebe2a78a8ee46ff",
+  "savedDay": 31,
+  "savedTick": 1440,
+  "exactRoundTrip": true,
+  "independentTransportBuffers": true,
+  "exactReloadNextDayParity": true,
+  "nextDayTicks": 48,
+  "regions": [
+    {
+      "key": "0,0",
+      "tick": 1482,
+      "debt": 6,
+      "animals": 228,
+      "births": 40,
+      "deaths": 7,
+      "soilMaxAbsClosure": 0.0000046599714096373646,
+      "saltMaxAbsClosure": 0
+    },
+    {
+      "key": "128,0",
+      "tick": 1482,
+      "debt": 6,
+      "animals": 229,
+      "births": 44,
+      "deaths": 3,
+      "soilMaxAbsClosure": 0.000004879984771832824,
+      "saltMaxAbsClosure": 0
+    }
+  ]
+}

@@ -6,8 +6,12 @@ import path from 'node:path';
 import http from 'node:http';
 import assert from 'node:assert/strict';
 import {fileURLToPath} from 'node:url';
-import {chromium} from 'playwright';
+import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url);
+let playwright;try{playwright=require('playwright')}catch{playwright=require(path.join(process.env.USERPROFILE||'', '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'))}
+const {chromium}=playwright;
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const expectedParts=JSON.parse(fs.readFileSync(path.join(root,'assets/art/catalog.json'))).parts.length;
 const output=path.join(root,'docs/test-runs/e5-coat-review');
 fs.mkdirSync(output,{recursive:true});
 const mime={'.html':'text/html','.js':'text/javascript','.mjs':'text/javascript','.json':'application/json','.css':'text/css','.png':'image/png','.svg':'image/svg+xml','.woff2':'font/woff2','.wav':'audio/wav'};
@@ -29,7 +33,7 @@ try{
  await page.getByRole('button',{name:/New World/}).click();
  await page.locator('#newWorldSeed').fill('E5-COAT-SILHOUETTES');
  await page.getByRole('button',{name:'Begin World',exact:true}).click();
- await page.waitForFunction(()=>window.__GENVO8__?.nativeArtStatus?.().installed===85,{timeout:60000});
+ await page.waitForFunction(count=>window.__GENVO8__?.nativeArtStatus?.().installed===count,expectedParts,{timeout:60000});
  const report=await page.evaluate(async()=>{
   const g=window.__GENVO8__,{founderPlan}=await import('/src/lineage/body-inheritance.js'),{makePlan,validatePlan}=await import('/src/lineage/body-plan.js'),{drawGenvoSprite}=await import('/src/render/genvo-draw.js'),{phenotypeFor}=await import('/src/organisms/species.js');
   const ids=['filament-tuft','fur-mantle','feather-mantle','proto-wing','climber-leg','hook-pad'];
@@ -61,7 +65,7 @@ try{
    rows.push({part:id,plan:plan.id,directions:digests.length,uniqueDirectionalRenders:new Set(digests).size});
   }
   const status=g.nativeArtStatus();
-  return{scope:'Actual Chromium GenVo game boot, 85 loaded native part packs, six valid reviewed actual mounted bodies, eight true top-down facings, in-game renderer. Controlled screenshot is a preview, not a naturally evolved lineage or subjective art approval.',nativeArt:status,rows};
+  return{scope:'Actual Chromium GenVo game boot, catalog-complete native part packs, six valid reviewed actual mounted bodies, eight true top-down facings, in-game renderer. Controlled screenshot is a preview, not a naturally evolved lineage or subjective art approval.',nativeArt:status,rows};
  });
  const contactPng=await page.locator('#e5-review-contact-sheet').evaluate(el=>el.toDataURL('image/png').split(',')[1]);
  fs.writeFileSync(path.join(output,'e5-all-inherited-parts-8-directions.png'),Buffer.from(contactPng,'base64'));
@@ -69,8 +73,8 @@ try{
  await page.evaluate(()=>document.querySelector('#e5-review-contact-sheet').remove());
  await page.screenshot({path:path.join(output,'real-game-e5-world.png')});
  if(errors.length)throw Error('Browser page errors: '+errors.join('; '));
- assert.equal(report.nativeArt.installed,85);
+ assert.equal(report.nativeArt.installed,expectedParts);
  assert.equal(report.rows.length,6);
  fs.writeFileSync(path.join(output,'review.json'),JSON.stringify({...report,pageErrors:errors},null,2));
- console.log('E5 real Chromium native art: 85 packs loaded, six distinct mounted parts × 8 facings, real world screenshot, zero page errors PASS');
+ console.log('E5 real Chromium native art: catalog-complete packs loaded, six distinct mounted parts × 8 facings, real world screenshot, zero page errors PASS');
 }finally{await browser.close();await new Promise(r=>server.close(r))}

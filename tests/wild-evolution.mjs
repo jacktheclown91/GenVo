@@ -1,3 +1,4 @@
+import {provideRootFood} from './helpers/finite-root-food.js';
 import assert from 'node:assert/strict';
 import {interactAs} from './helpers/interaction.js';
 import {Simulation} from '../src/sim/simulation.js';
@@ -29,7 +30,7 @@ const evolve=(a,edits)=>{const d=createDraft({base:a.bodyPlan,ancestry:Object.ke
 {const s=evolve({...stalker,id:-3},[['venom-gland',null,'flank.left']]);assert.equal(wildBranch(s).label,'Venom Stalker');const prey=sim.animals.find(a=>a.alive&&a.species==='mosskip');prey.health=999;s.alive=true;assert.equal(sim.partAbilities.envenom(s,prey),true,'a venom gland poisons, as on GenVo8s')}
 {const h=sim.animals.find(a=>a.alive&&a.species==='mosskip'),e=evolve({...h,id:-4},[['spine-cluster',null,'flank.left'],['spine-cluster',null,'flank.right']]);assert.ok(wildTraits(e).spines>0);assert.equal(wildBranch(e).label,'Spined Hopper')}
 // Actual digging limbs supply their action even in a starting body; numeric baselines stay neutral.
-{const d=sim.animals.find(a=>a.alive&&a.species==='rootling');assert.equal(partEffectFactors(d).dig,true);assert.equal(partEffectFactors(d).landSpeed,1);assert.equal(partEffectFactors(d).metabolism,1);assert.equal(sim.partAbilities.canDigAt(d),true)}
+{const d=sim.animals.find(a=>a.alive&&a.species==='rootling');assert.equal(partEffectFactors(d).dig,true);assert.equal(partEffectFactors(d).landSpeed,1);assert.equal(partEffectFactors(d).metabolism,1);provideRootFood(sim,d);assert.equal(sim.partAbilities.canDigAt(d),true)}
 
 // The original 420-day natural scenario is retained in wild-evolution-observation.mjs.
 // Its survival/evolved-survivor/branch counts are observations, not universal biological gates.

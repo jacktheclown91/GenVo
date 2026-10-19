@@ -18,7 +18,7 @@ const ps=control.phaseSoil.bind(control);control.phaseSoil=()=>{ps();const d=con
 days(control,N);
 assert.ok(budget.length>=N-1,'a budget record for every day');
 for(const d of budget){assert.ok(Math.abs(d.closure)<=1e-6*d.storageBefore+1e-3,`day ${d.day} budget closes: ${d.closure}`);
-  assert.ok(Math.abs(d.rain-d.infiltration-d.runoff)<1e-6*Math.max(1,d.rain),'rain splits into infiltration and runoff')}
+  assert.ok(Math.abs(d.rain+d.snowmelt-d.snowfall-d.infiltration-d.runoff)<1e-6*Math.max(1,d.rain+d.snowmelt),'precipitation and snowmelt split into snow storage, infiltration and runoff')}
 const part=new Simulation(seed,{player:false});days(part,K);
 const saved=createSimulationSnapshot(part,{savedAt:'fixed',reason:'test'});
 const resumed=restoreSimulationSnapshot(structuredClone(saved));days(resumed,N-K);

@@ -4,7 +4,7 @@
 // silently accelerated by a UI call; remote work is bounded by the active
 // life stride and return trips refuse excessive time debt.
 import {CFG} from '../sim/config.js';
-import {createSimulationSnapshot,restoreSimulationSnapshot} from '../persistence/save-manager.js';
+import {createSimulationSnapshot,restoreDetachedSimulationSnapshot} from '../persistence/save-manager.js';
 import {OFFSCREEN_ENVIRONMENT,validateRemoteEnvironmentalLedger} from './planetary-offscreen-environment.js';
 import {validatePlanetAnimalOwnership} from './planet-regions.js';
 
@@ -77,7 +77,7 @@ export function advanceRemoteBiology(active,session,{maxTicks=OFFSCREEN_BIOLOGY.
  if(!steps)return{ticks:0,remaining:debt,key:session.key};
  validateRemoteBiologyLedger(session);
  validateRemoteEnvironmentalLedger(session);
- const temp=restoreSimulationSnapshot(structuredClone(session.snapshot));
+ const temp=restoreDetachedSimulationSnapshot(session.snapshot);
  if(temp.planetaryTravel)throw Error('Recursive dormant ecology authority.');
  if(temp.animals.length>OFFSCREEN_BIOLOGY.maxAnimals)
   throw Error('Too many archived creatures for bounded biological replay.');
@@ -144,4 +144,24 @@ export function advanceOffscreenBiology(sim,{
  const due=sim.planetaryTravel.sessions.filter(s=>s.biologicalMode==='canonical-ticks/1'&&remoteBiologicalDebt(sim,s)>0)
   .sort((a,b)=>a.snapshot.core.tickCount-b.snapshot.core.tickCount||a.key.localeCompare(b.key));
  return due.slice(0,regionsPerPass).map(s=>advanceRemoteBiology(sim,s,{maxTicks:ticksPerPass}));
+}
+
+// Saved policy: historic worlds retain the E18 single-region stride schedule.
+export const REGIONAL_REPLAY=Object.freeze({legacy:'bounded-strides/1',synchronized:'synchronized-strides/1'});
+export function regionalReplayPolicy(sim){
+ const policy=sim.regionalReplayPolicy===undefined?REGIONAL_REPLAY.legacy:sim.regionalReplayPolicy;
+ if(!Object.values(REGIONAL_REPLAY).includes(policy))throw Error('Unknown regional replay policy.');
+ return policy;
+}
+export function pendingRegionalBiology(sim){
+ if(regionalReplayPolicy(sim)!==REGIONAL_REPLAY.synchronized||sim.tickCount%CFG.lifeStride!==0)return [];
+ return (sim.planetaryTravel?.sessions||[]).filter(s=>s.biologicalMode==='canonical-ticks/1'&&remoteBiologicalDebt(sim,s)>0)
+  .sort((a,b)=>a.snapshot.core.tickCount-b.snapshot.core.tickCount||a.key.localeCompare(b.key));
+}
+// One transaction per caller admission. Browser callers yield after each job;
+// direct simulation callers complete the same ordered jobs before their next tick.
+export function prepareRegionalBiology(sim){
+ const due=pendingRegionalBiology(sim);
+ if(!due.length)return null;
+ return advanceRemoteBiology(sim,due[0],{maxTicks:OFFSCREEN_BIOLOGY.ticksPerPass});
 }

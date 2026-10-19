@@ -1,0 +1,80 @@
+{
+  "schema": "genvo.planetary-first100/1",
+  "seed": "GENVO8-TEST-A",
+  "generator": "planetary/1",
+  "origin": {
+    "x": 0,
+    "y": 0
+  },
+  "sourceBaseCommit": "bf921a4ecb96ffc1264af0f8c603f94595b8e39a",
+  "workingTreeUncommitted": true,
+  "integrity": "pass",
+  "completedDays": 100,
+  "seconds": 102.2587773,
+  "exactSaveRoundtrip": true,
+  "exactNextFullDay": true,
+  "snapshotBytes": 83353859,
+  "snapshotSha256": "a8f8940e668a773e68ae39211eb372cf951460767a868355fdee1ffeca693964",
+  "observations": [
+    {
+      "completedDays": 0,
+      "living": 196,
+      "births": 0,
+      "deaths": 0,
+      "heapAfterGc": 16747640,
+      "seedCohorts": 0,
+      "recentSoilClosureMax": null
+    },
+    {
+      "completedDays": 1,
+      "living": 196,
+      "births": 0,
+      "deaths": 0,
+      "heapAfterGc": 39807952,
+      "seedCohorts": 0,
+      "recentSoilClosureMax": 1.0083567758556455e-07
+    },
+    {
+      "completedDays": 10,
+      "living": 195,
+      "births": 0,
+      "deaths": 1,
+      "heapAfterGc": 39731632,
+      "seedCohorts": 488,
+      "recentSoilClosureMax": 3.910087457370537e-06
+    },
+    {
+      "completedDays": 30,
+      "living": 231,
+      "births": 38,
+      "deaths": 3,
+      "heapAfterGc": 156448816,
+      "seedCohorts": 88997,
+      "recentSoilClosureMax": 3.910087457370537e-06
+    },
+    {
+      "completedDays": 60,
+      "living": 283,
+      "births": 118,
+      "deaths": 31,
+      "heapAfterGc": 277618872,
+      "seedCohorts": 226209,
+      "recentSoilClosureMax": 3.910087457370537e-06
+    },
+    {
+      "completedDays": 100,
+      "living": 301,
+      "births": 152,
+      "deaths": 47,
+      "heapAfterGc": 385835960,
+      "seedCohorts": 384365,
+      "recentSoilClosureMax": 2.5232652660633903e-06
+    }
+  ],
+  "limits": [
+    "One local region, existing configured founding templates; not simple-origin or player acceptance.",
+    "No archived region visited during this horizon; offscreen behavior is a separate five-day profile.",
+    "Node binary timing/size is not browser IndexedDB performance.",
+    "No population/diversity target or resource rescue applied."
+  ]
+}

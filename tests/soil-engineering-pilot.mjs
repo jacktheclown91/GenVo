@@ -1,3 +1,4 @@
+import {provideRootFood} from './helpers/finite-root-food.js';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
@@ -32,6 +33,11 @@ for(const seed of ['SOIL-PILOT-A','SOIL-PILOT-B']){
   for(const sim of [engineered,control]){sim.day=day;sim.tickCount=day*CFG.dayTicks}
   if(day===1||day===7||day===13){
    const digger=engineered.animals.find(a=>a.id===actorId);
+   // Matched externally supplied food fixture isolates soil work from nutrition.
+   // Both arms consume the same finite meal; only the digger disturbs soil.
+   const ordinary=control.animals.find(a=>a.id===actorId);
+   for(const [sim,actor] of [[engineered,digger],[control,ordinary]])provideRootFood(sim,actor);
+   const normalMeal=control.partAbilities.rootMealAt(ordinary);assert.ok(normalMeal);assert.ok(control.foraging.consume(ordinary,normalMeal).ok);
    const result=engineered.partAbilities.dig(digger);
    assert.equal(result.ok,true,`Actual anatomy-gated dig at day ${day}: ${result.message}`);
    successfulDigs++;

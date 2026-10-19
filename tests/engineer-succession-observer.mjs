@@ -1,3 +1,4 @@
+import {provideRootFood} from './helpers/finite-root-food.js';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {CFG} from '../src/sim/config.js';
@@ -30,7 +31,8 @@ assert.equal(events[1].day,11);
 assert.equal(events[1].workSinceReturn,0);
 // Provenance of return work is from real successful anatomy-gated action.
 sim.world.water[sim.world.idx(worker.x,worker.y)]=0;
-assert.equal(sim.partAbilities.dig(worker).ok,true);
+const mealCell=provideRootFood(sim,worker);plants.marshroot[mealCell]=1;
+assert.equal(sim.partAbilities.dig(worker).ok,true);assert.ok(sim.world.plants.marshroot[mealCell]<1,'successful work consumes food');plants.marshroot[mealCell]=sim.world.plants.marshroot[mealCell];
 assert.equal(sim.regionalEcology.engineerTransitions(A).at(-1).workSinceReturn,1);
 assert.equal(sim.partAbilities.dig(worker).ok,false);
 assert.equal(sim.regionalEcology.engineerTransitions(A).at(-1).workSinceReturn,1);

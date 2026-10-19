@@ -1,0 +1,711 @@
+{
+  "scope": "Retained actual lineage records across milestone checkpoints; no simulation, staged births or phenotype edits. Counts are observations, not required survival/diversification outcomes. GrowthPaid records game-unit growth charges, not complete tissue/material or food-source conservation. Selected donor nodes come from the pre-development recombination receipt; later mutations and shared-parent ambiguity remain explicit. Not a simple-origin or whole-resource balance acceptance.",
+  "input": "docs/test-runs/artifacts/regional-autonomous-100day-r2-2026-10-19/day60.snapshot.bin",
+  "inputBytes": 265412169,
+  "inputSha256": "0e3a2f4994bdcba66fb69c472702f52808d3ff02953e72ef75ad8b0a3d737a78",
+  "baselineReceipt": "docs/performance/regional-natural-anatomical-births-day30-2026-10-19.json",
+  "baselineSha256": "7ed17b42a750303e17261056ad7061bf06996ffdcc5dbcc7efec90043147c48e",
+  "activeDay": 61,
+  "activeTick": 2880,
+  "summary": {
+    "tracked": 23,
+    "retained": 23,
+    "notRetained": 0,
+    "retainedMature": 18,
+    "retainedWithGrowthCharges": 22,
+    "withRetainedOffspring": 0,
+    "withSelectedNovelPartsInOffspring": 0
+  },
+  "rows": [
+    {
+      "id": 630,
+      "originalBirthDay": 24,
+      "originalNewParts": [
+        "digging-forelimb"
+      ],
+      "originalBodyId": "bp0-0103be10",
+      "retained": true,
+      "region": "active",
+      "alive": true,
+      "age": 35,
+      "species": "mosskip",
+      "maturityThreshold": 20,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.75
+      },
+      "bodyId": "bp0-0103be10",
+      "bodyUnchanged": true,
+      "bodyMass": 1.45,
+      "adultTargetMass": 1.45,
+      "recordedGrowthPaid": 53.198918200513795,
+      "recordedGrowthDelayDays": 2,
+      "canSwim": false,
+      "energy": 64.10227354573837,
+      "hydration": 55.14295637347088,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 649,
+      "originalBirthDay": 25,
+      "originalNewParts": [
+        "digging-forelimb"
+      ],
+      "originalBodyId": "bp0-6b267698",
+      "retained": true,
+      "region": "active",
+      "alive": true,
+      "age": 30,
+      "species": "mosskip",
+      "maturityThreshold": 20,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.5
+      },
+      "bodyId": "bp0-6b267698",
+      "bodyUnchanged": true,
+      "bodyMass": 1.5109,
+      "adultTargetMass": 1.5109,
+      "recordedGrowthPaid": 61.9196763815424,
+      "recordedGrowthDelayDays": 6,
+      "canSwim": false,
+      "energy": 61.93043286313116,
+      "hydration": 54.958279368802714,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 650,
+      "originalBirthDay": 25,
+      "originalNewParts": [
+        "paddle-tail"
+      ],
+      "originalBodyId": "bp0-9ac00ebc",
+      "retained": true,
+      "region": "active",
+      "alive": true,
+      "age": 32,
+      "species": "mosskip",
+      "maturityThreshold": 20,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.6
+      },
+      "bodyId": "bp0-9ac00ebc",
+      "bodyUnchanged": true,
+      "bodyMass": 1.5253999999999999,
+      "adultTargetMass": 1.5253999999999999,
+      "recordedGrowthPaid": 56.54848885224137,
+      "recordedGrowthDelayDays": 4,
+      "canSwim": false,
+      "energy": 47.879688366887464,
+      "hydration": 49.338081285636335,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 658,
+      "originalBirthDay": 26,
+      "originalNewParts": [
+        "sturdy-leg"
+      ],
+      "originalBodyId": "bp0-d7855593",
+      "retained": true,
+      "region": "active",
+      "alive": true,
+      "age": 30,
+      "species": "mosskip",
+      "maturityThreshold": 20,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.5
+      },
+      "bodyId": "bp0-d7855593",
+      "bodyUnchanged": true,
+      "bodyMass": 2.3228999999999997,
+      "adultTargetMass": 2.3228999999999997,
+      "recordedGrowthPaid": 90.97883289360044,
+      "recordedGrowthDelayDays": 5,
+      "canSwim": false,
+      "energy": 64.80724779943651,
+      "hydration": 55.72073571305279,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 661,
+      "originalBirthDay": 26,
+      "originalNewParts": [
+        "spring-leg"
+      ],
+      "originalBodyId": "bp0-c0990e7a",
+      "retained": true,
+      "region": "active",
+      "alive": true,
+      "age": 29,
+      "species": "rootling",
+      "maturityThreshold": 28,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.0357142857142858
+      },
+      "bodyId": "bp0-c0990e7a",
+      "bodyUnchanged": true,
+      "bodyMass": 2.1430999999999996,
+      "adultTargetMass": 2.1430999999999996,
+      "recordedGrowthPaid": 82.80717624495401,
+      "recordedGrowthDelayDays": 6,
+      "canSwim": false,
+      "energy": 78.39463102095387,
+      "hydration": 61.45315104951409,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 671,
+      "originalBirthDay": 27,
+      "originalNewParts": [
+        "runner-leg"
+      ],
+      "originalBodyId": "bp0-575cc05e",
+      "retained": true,
+      "region": "active",
+      "alive": true,
+      "age": 31,
+      "species": "mosskip",
+      "maturityThreshold": 20,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.55
+      },
+      "bodyId": "bp0-575cc05e",
+      "bodyUnchanged": true,
+      "bodyMass": 1.4239,
+      "adultTargetMass": 1.4239,
+      "recordedGrowthPaid": 54.90999136129885,
+      "recordedGrowthDelayDays": 3,
+      "canSwim": false,
+      "energy": 66.56228335017553,
+      "hydration": 55.67185864741727,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 688,
+      "originalBirthDay": 29,
+      "originalNewParts": [
+        "head-base"
+      ],
+      "originalBodyId": "bp0-fe32296a",
+      "retained": true,
+      "region": "active",
+      "alive": true,
+      "age": 27,
+      "species": "mosskip",
+      "maturityThreshold": 20,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.35
+      },
+      "bodyId": "bp0-fe32296a",
+      "bodyUnchanged": true,
+      "bodyMass": 1.5109,
+      "adultTargetMass": 1.5109,
+      "recordedGrowthPaid": 59.737269954800176,
+      "recordedGrowthDelayDays": 5,
+      "canSwim": false,
+      "energy": 52.278259037258934,
+      "hydration": 56.72280688031653,
+      "health": 79.71735543214064,
+      "offspring": []
+    },
+    {
+      "id": 689,
+      "originalBirthDay": 29,
+      "originalNewParts": [
+        "compound-eye"
+      ],
+      "originalBodyId": "bp0-f75f285c",
+      "retained": true,
+      "region": "active",
+      "alive": true,
+      "age": 27,
+      "species": "mosskip",
+      "maturityThreshold": 20,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.35
+      },
+      "bodyId": "bp0-f75f285c",
+      "bodyUnchanged": true,
+      "bodyMass": 1.5167,
+      "adultTargetMass": 1.5167,
+      "recordedGrowthPaid": 55.795854583323305,
+      "recordedGrowthDelayDays": 5,
+      "canSwim": false,
+      "energy": 58.16909629466857,
+      "hydration": 56.99500785398916,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 694,
+      "originalBirthDay": 29,
+      "originalNewParts": [
+        "padded-leg"
+      ],
+      "originalBodyId": "bp0-62c1bb11",
+      "retained": true,
+      "region": "active",
+      "alive": true,
+      "age": 25,
+      "species": "genvo",
+      "maturityThreshold": 30,
+      "development": {
+        "stage": "adolescent",
+        "growth": 0.9407407407407407,
+        "maturity": 0.8333333333333334
+      },
+      "bodyId": "bp0-62c1bb11",
+      "bodyUnchanged": true,
+      "bodyMass": 1.2071961997662954,
+      "adultTargetMass": 1.45,
+      "recordedGrowthPaid": 41.286751070890205,
+      "recordedGrowthDelayDays": 7,
+      "canSwim": false,
+      "energy": 89.79191860194132,
+      "hydration": 67.57549738154405,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 595,
+      "originalBirthDay": 21,
+      "originalNewParts": [
+        "webbed-leg"
+      ],
+      "originalBodyId": "bp0-1230cc18",
+      "retained": true,
+      "region": "0,0",
+      "alive": true,
+      "age": 36,
+      "species": "mosskip",
+      "maturityThreshold": 20,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.8
+      },
+      "bodyId": "bp0-1230cc18",
+      "bodyUnchanged": true,
+      "bodyMass": 1.4819,
+      "adultTargetMass": 1.4819,
+      "recordedGrowthPaid": 65.7514747486481,
+      "recordedGrowthDelayDays": 3,
+      "canSwim": true,
+      "energy": 65.68874743620331,
+      "hydration": 58.04562960760455,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 621,
+      "originalBirthDay": 23,
+      "originalNewParts": [
+        "grip-pad"
+      ],
+      "originalBodyId": "bp0-97c2962a",
+      "retained": true,
+      "region": "0,0",
+      "alive": true,
+      "age": 30,
+      "species": "mosskip",
+      "maturityThreshold": 20,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.5
+      },
+      "bodyId": "bp0-97c2962a",
+      "bodyUnchanged": true,
+      "bodyMass": 1.5573,
+      "adultTargetMass": 1.5573,
+      "recordedGrowthPaid": 62.16159888352805,
+      "recordedGrowthDelayDays": 7,
+      "canSwim": false,
+      "energy": 65.78399069651114,
+      "hydration": 54.61161105642278,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 638,
+      "originalBirthDay": 24,
+      "originalNewParts": [
+        "digging-forelimb"
+      ],
+      "originalBodyId": "bp0-1ef0f2a8",
+      "retained": true,
+      "region": "0,0",
+      "alive": true,
+      "age": 34,
+      "species": "mosskip",
+      "maturityThreshold": 20,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.7
+      },
+      "bodyId": "bp0-1ef0f2a8",
+      "bodyUnchanged": true,
+      "bodyMass": 1.5689,
+      "adultTargetMass": 1.5689,
+      "recordedGrowthPaid": 61.40573559424688,
+      "recordedGrowthDelayDays": 2,
+      "canSwim": false,
+      "energy": 66.58910373534009,
+      "hydration": 59.91634801281519,
+      "health": 77.65751814517452,
+      "offspring": []
+    },
+    {
+      "id": 642,
+      "originalBirthDay": 24,
+      "originalNewParts": [
+        "light-torso"
+      ],
+      "originalBodyId": "bp0-1235ecb8",
+      "retained": true,
+      "region": "0,0",
+      "alive": true,
+      "age": 31,
+      "species": "genvo",
+      "maturityThreshold": 30,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.0333333333333334
+      },
+      "bodyId": "bp0-1235ecb8",
+      "bodyUnchanged": true,
+      "bodyMass": 1.3339999999999999,
+      "adultTargetMass": 1.3339999999999999,
+      "recordedGrowthPaid": 48.82926917620644,
+      "recordedGrowthDelayDays": 5,
+      "canSwim": false,
+      "energy": 90.8269492489487,
+      "hydration": 65.71433220015558,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 664,
+      "originalBirthDay": 26,
+      "originalNewParts": [
+        "digging-forelimb"
+      ],
+      "originalBodyId": "bp0-3ce46923",
+      "retained": true,
+      "region": "0,0",
+      "alive": true,
+      "age": 27,
+      "species": "genvo",
+      "maturityThreshold": 30,
+      "development": {
+        "stage": "adolescent",
+        "growth": 0.9644444444444444,
+        "maturity": 0.9
+      },
+      "bodyId": "bp0-3ce46923",
+      "bodyUnchanged": true,
+      "bodyMass": 1.3527981128340192,
+      "adultTargetMass": 1.508,
+      "recordedGrowthPaid": 49.53239480230718,
+      "recordedGrowthDelayDays": 7,
+      "canSwim": false,
+      "energy": 90.98324355265443,
+      "hydration": 69.11134516987016,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 673,
+      "originalBirthDay": 27,
+      "originalNewParts": [
+        "padded-leg"
+      ],
+      "originalBodyId": "bp0-73df89a2",
+      "retained": true,
+      "region": "0,0",
+      "alive": true,
+      "age": 30,
+      "species": "mosskip",
+      "maturityThreshold": 20,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.5
+      },
+      "bodyId": "bp0-73df89a2",
+      "bodyUnchanged": true,
+      "bodyMass": 1.5109,
+      "adultTargetMass": 1.5109,
+      "recordedGrowthPaid": 53.88792879375618,
+      "recordedGrowthDelayDays": 3,
+      "canSwim": false,
+      "energy": 65.57606090694809,
+      "hydration": 55.17968810940112,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 695,
+      "originalBirthDay": 29,
+      "originalNewParts": [
+        "moss-back"
+      ],
+      "originalBodyId": "bp0-47a50ce5",
+      "retained": true,
+      "region": "0,0",
+      "alive": true,
+      "age": 23,
+      "species": "genvo",
+      "maturityThreshold": 30,
+      "development": {
+        "stage": "adolescent",
+        "growth": 0.917037037037037,
+        "maturity": 0.7666666666666667
+      },
+      "bodyId": "bp0-47a50ce5",
+      "bodyUnchanged": true,
+      "bodyMass": 1.1853169533359749,
+      "adultTargetMass": 1.537,
+      "recordedGrowthPaid": 40.5726298711995,
+      "recordedGrowthDelayDays": 8,
+      "canSwim": false,
+      "energy": 91.52366114222318,
+      "hydration": 67.58310014530826,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 697,
+      "originalBirthDay": 29,
+      "originalNewParts": [
+        "storage-sac"
+      ],
+      "originalBodyId": "bp0-e081f284",
+      "retained": true,
+      "region": "0,0",
+      "alive": true,
+      "age": 23,
+      "species": "genvo",
+      "maturityThreshold": 30,
+      "development": {
+        "stage": "adolescent",
+        "growth": 0.917037037037037,
+        "maturity": 0.7666666666666667
+      },
+      "bodyId": "bp0-e081f284",
+      "bodyUnchanged": true,
+      "bodyMass": 1.3418682490595941,
+      "adultTargetMass": 1.7399999999999998,
+      "recordedGrowthPaid": 44.94657987517463,
+      "recordedGrowthDelayDays": 8,
+      "canSwim": false,
+      "energy": 89.63861514472524,
+      "hydration": 68.53899489202466,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 598,
+      "originalBirthDay": 21,
+      "originalNewParts": [
+        "sturdy-leg"
+      ],
+      "originalBodyId": "bp0-4072119c",
+      "retained": true,
+      "region": "128,0",
+      "alive": true,
+      "age": 32,
+      "species": "mosskip",
+      "maturityThreshold": 20,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.6
+      },
+      "bodyId": "bp0-4072119c",
+      "bodyUnchanged": true,
+      "bodyMass": 1.5689,
+      "adultTargetMass": 1.5689,
+      "recordedGrowthPaid": 59.486982436583276,
+      "recordedGrowthDelayDays": 7,
+      "canSwim": false,
+      "energy": 42.469460764294126,
+      "hydration": 53.63958763356556,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 601,
+      "originalBirthDay": 21,
+      "originalNewParts": [
+        "live-womb"
+      ],
+      "originalBodyId": "bp0-b61b7e3d",
+      "retained": true,
+      "region": "128,0",
+      "alive": true,
+      "age": 31,
+      "species": "mosskip",
+      "maturityThreshold": 20,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.55
+      },
+      "bodyId": "bp0-b61b7e3d",
+      "bodyUnchanged": true,
+      "bodyMass": 2.1489,
+      "adultTargetMass": 2.1489,
+      "recordedGrowthPaid": 80.54455067351789,
+      "recordedGrowthDelayDays": 8,
+      "canSwim": false,
+      "energy": 49.28649778069083,
+      "hydration": 55.31907389905681,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 615,
+      "originalBirthDay": 22,
+      "originalNewParts": [
+        "webbed-leg"
+      ],
+      "originalBodyId": "bp0-a5e22d2e",
+      "retained": true,
+      "region": "128,0",
+      "alive": true,
+      "age": 29,
+      "species": "podshell",
+      "maturityThreshold": 29,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1
+      },
+      "bodyId": "bp0-a5e22d2e",
+      "bodyUnchanged": true,
+      "bodyMass": 2.8739,
+      "adultTargetMass": 2.8739,
+      "recordedGrowthPaid": 101.20653155256385,
+      "recordedGrowthDelayDays": 9,
+      "canSwim": true,
+      "energy": 76.25070762610389,
+      "hydration": 56.13364001275283,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 644,
+      "originalBirthDay": 24,
+      "originalNewParts": [
+        "grip-pad"
+      ],
+      "originalBodyId": "bp0-97c2962a",
+      "retained": true,
+      "region": "128,0",
+      "alive": true,
+      "age": 31,
+      "species": "mosskip",
+      "maturityThreshold": 20,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.55
+      },
+      "bodyId": "bp0-97c2962a",
+      "bodyUnchanged": true,
+      "bodyMass": 1.5573,
+      "adultTargetMass": 1.5573,
+      "recordedGrowthPaid": 62.453365972277965,
+      "recordedGrowthDelayDays": 5,
+      "canSwim": false,
+      "energy": 51.45978517105192,
+      "hydration": 54.31203023419901,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 646,
+      "originalBirthDay": 24,
+      "originalNewParts": [
+        "armor-plate"
+      ],
+      "originalBodyId": "bp0-ba33dc46",
+      "retained": true,
+      "region": "128,0",
+      "alive": true,
+      "age": 0,
+      "species": "mosskip",
+      "maturityThreshold": 20,
+      "development": {
+        "stage": "newborn",
+        "growth": 0.55,
+        "maturity": 0
+      },
+      "bodyId": "bp0-ba33dc46",
+      "bodyUnchanged": true,
+      "bodyMass": 0.28032523750000005,
+      "adultTargetMass": 1.6848999999999998,
+      "recordedGrowthPaid": null,
+      "recordedGrowthDelayDays": 36,
+      "canSwim": false,
+      "energy": 7.29090862101792,
+      "hydration": 56.52504372831901,
+      "health": 100,
+      "offspring": []
+    },
+    {
+      "id": 682,
+      "originalBirthDay": 28,
+      "originalNewParts": [
+        "scent-gland"
+      ],
+      "originalBodyId": "bp0-f9f02061",
+      "retained": true,
+      "region": "128,0",
+      "alive": true,
+      "age": 26,
+      "species": "mosskip",
+      "maturityThreshold": 20,
+      "development": {
+        "stage": "adult",
+        "growth": 1,
+        "maturity": 1.3
+      },
+      "bodyId": "bp0-f9f02061",
+      "bodyUnchanged": true,
+      "bodyMass": 1.6848999999999998,
+      "adultTargetMass": 1.6848999999999998,
+      "recordedGrowthPaid": 68.00814225776482,
+      "recordedGrowthDelayDays": 6,
+      "canSwim": false,
+      "energy": 52.23056463739322,
+      "hydration": 50.60323687963186,
+      "health": 100,
+      "offspring": []
+    }
+  ]
+}

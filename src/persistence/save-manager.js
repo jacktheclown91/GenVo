@@ -1,3 +1,5 @@
+import {restoreCarcassRules,validateCarcassSnapshot} from '../gameplay/carcass-rules.js';
+import {restoreDiggingRules,validateDiggingSnapshot} from '../lineage/digging-rules.js';
 import {restoreMassRules} from '../organisms/body-mass.js';
 import {restoreEcologyRules} from '../ecology/rule-policy.js';
 import {PlanetGeography} from '../world/planet-geography.js';
@@ -21,7 +23,7 @@ import {deriveDrainage,validateTopography} from '../world/topography.js';
 import {validateSoilWater} from '../ecology/soil-water.js';
 import {validateSnowpack} from '../world/snowpack.js';
 import {validateRemoteEnvironmentalLedger} from '../world/planetary-offscreen-environment.js';
-import {validateRemoteBiologyLedger} from '../world/planetary-offscreen-biology.js';
+import {validateRemoteBiologyLedger,regionalReplayPolicy} from '../world/planetary-offscreen-biology.js';
 import {validatePageResidency} from '../ecology/page-residency.js';
 import {validatePageDayWork} from '../world/page-vegetation-work.js';
 import {validatePageSeedTransfers} from '../ecology/page-seed-transfers.js';
@@ -238,6 +240,16 @@ function migratePressureKinds(pressure){
     if(Array.isArray(st.last))st.last=st.last.map(p=>{const to=LEGACY_PRESSURE_KINDS[p?.kind];return to?{...p,kind:Array.isArray(to)?(p.label==='Cold'?'cold':'heat'):to}:p})}
 }
 
+// Own the restored runtime while decoding a read-only packed bank directly.
+// The codec creates independent rows/metadata; all other snapshot state is cloned.
+export function restoreDetachedSimulationSnapshot(snapshot){
+ const packed=snapshot?.controllers?.dispersal?.floraState?.seeds;
+ if(snapshot?.schema!==SAVE_SCHEMA||packed?.codec!=='genvo.flora-seed-columns/1')return restoreSimulationSnapshot(structuredClone(snapshot));
+ const detached=structuredClone({...snapshot,controllers:{...snapshot.controllers,dispersal:{...snapshot.controllers.dispersal,floraState:{...snapshot.controllers.dispersal.floraState,seeds:null}}}});
+ detached.controllers.dispersal.floraState.seeds=packed;
+ return restoreSimulationSnapshot(detached);
+}
+
 export function restoreSimulationSnapshot(snapshot){
   if(!snapshot||typeof snapshot!=='object')throw new Error('Save data is missing.');
   const initializeMissingFreshwater=snapshot.schema===9;
@@ -246,10 +258,16 @@ export function restoreSimulationSnapshot(snapshot){
   if(snapshot.schema!==SAVE_SCHEMA)throw new Error(`Unsupported save schema ${snapshot.schema ?? 'unknown'}. Expected ${SAVE_SCHEMA}.`);
   if(!snapshot.seed)throw new Error('Save has no world seed.');
   if(!Array.isArray(snapshot.animals))throw new Error('Save has no animal state.');
+  validateDiggingSnapshot(snapshot);
+  validateCarcassSnapshot(snapshot);
 
   const planetOrigin=snapshot.world?.generator==='planetary/1'?planetRegionOrigin(snapshot.world.regionOrigin||{x:0,y:0}):{x:0,y:0};
-  const sim=new Simulation(snapshot.seed,{player:snapshot.core?.playerEnabled!==false,bootstrap:false,worldGenerator:snapshot.world?.generator==='planetary/1'?'planetary/1':undefined,planetOrigin});
+  const sim=new Simulation(snapshot.seed,{player:snapshot.core?.playerEnabled!==false,bootstrap:false,worldGenerator:snapshot.world?.generator==='planetary/1'?'planetary/1':undefined,planetOrigin,reuseGeneratedBase:true,deferDispersalInitialization:!!snapshot.controllers?.dispersal});
   Object.assign(sim,snapshot.core||{});
+  if(!Object.hasOwn(snapshot.core||{},'regionalReplayPolicy'))delete sim.regionalReplayPolicy;
+  regionalReplayPolicy(sim);
+  restoreDiggingRules(sim,snapshot.core||{});
+  restoreCarcassRules(sim,snapshot.core||{});
   validatePlanetaryTravelState(sim.planetaryTravel,sim.world.planet?regionKey(sim.world.regionOrigin):null);
   for(const session of sim.planetaryTravel?.sessions||[]){validateRemoteEnvironmentalLedger(session);validateRemoteBiologyLedger(session)}
   delete sim._player; // Runtime lookup cache is rebuilt from canonical playerId/animals.
@@ -406,14 +424,17 @@ export class SaveManager{
     this.busy=true;this.status('saving',reason==='world-start'?'Preparing ecosystem...':'Saving...');
     try{
       const slotId=this.activeSlotId;
-      const snapshot=createSimulationSnapshot(sim,{reason});
+      const worldName=this.worldNames.get(slotId)||(await this.metadata(slotId))?.worldName||(slotId===SAVE_KEY?'First Lineage':'New World');
+      const db=await this.db();
+      // Capture and enqueue transport in one turn: nested state may still be live.
+      const capturedSignature=this.signature(sim),snapshot=createSimulationSnapshot(sim,{reason});
       snapshot.meta.key=slotId;
-      snapshot.meta.worldName=this.worldNames.get(slotId)||(await this.metadata(slotId))?.worldName||(slotId===SAVE_KEY?'First Lineage':'New World');
-      const db=await this.db(),tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');
+      snapshot.meta.worldName=worldName;
+      const tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');
       tx.objectStore(SAVE_STORE).put(snapshot,slotId);
       tx.objectStore(META_STORE).put(snapshot.meta,slotId);
       await transactionDone(tx);
-      this.lastSavedAt=Date.now();this.lastSavedTick=sim.tickCount;this.lastObservedSignature=this.signature(sim);
+      this.lastSavedAt=Date.now();this.lastSavedTick=snapshot.core.tickCount;this.lastObservedSignature=capturedSignature;
       this.status('saved','Saved',snapshot.meta);
       return snapshot.meta;
     }catch(error){this.status('error','Save failed');throw error}

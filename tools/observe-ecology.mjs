@@ -15,7 +15,9 @@ const post=(method,params={})=>new Promise((resolve,reject)=>session.post(method
 let started=false,stopped=false,chunkStart=null;const cpuChunks=[];
 async function capture(day,{final=false}={}){
  if(!started||stopped)return;const {profile}=await post('Profiler.stop');
- const file=art.result.replace(/\.json$/,'.cpu-'+chunkStart+'-'+day+'.cpuprofile');fs.writeFileSync(file,JSON.stringify(profile));
+ const file=art.result.replace(/\.json$/,'.cpu-'+chunkStart+'-'+day+'.cpuprofile');
+ // A hard timeout may interrupt the write: publish only complete profile files.
+ const pending=file+'.pending';fs.writeFileSync(pending,JSON.stringify(profile),{flag:'wx'});fs.renameSync(pending,file);
  const byId=new Map();for(let i=0;i<(profile.samples||[]).length;i++)byId.set(profile.samples[i],(byId.get(profile.samples[i])||0)+(profile.timeDeltas[i]||0));
  const hot=profile.nodes.map(n=>({fn:n.callFrame.functionName,file:n.callFrame.url,line:n.callFrame.lineNumber+1,ms:(byId.get(n.id)||0)/1000})).sort((a,b)=>b.ms-a.ms).slice(0,50);
  const chunk={cpuStart,cpuEnd,fromDay:chunkStart,throughDay:day,final,file,scope:'Whole diagnostic workload, including strict integrity checks, explicit GC and sampled readouts'};

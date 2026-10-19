@@ -1,0 +1,13 @@
+{
+  "scope": "First three-region autonomous day-100 attempt; did not reach day 100",
+  "completedDays": 15,
+  "targetDays": 100,
+  "terminal": "Error: Invalid single traveler position archive.",
+  "failureAuthority": "validatePlanetAnimalOwnership during canonical remote replay",
+  "cause": "Departed traveler array positions were not compacted when preceding wildlife died and was removed.",
+  "log": "docs/test-runs/artifacts/regional-autonomous-100day-2026-10-19.log",
+  "lastStableMilestone": "docs/test-runs/artifacts/regional-autonomous-100day-2026-10-19/day10.snapshot.bin",
+  "reproduction": "tests/regional-traveler-mortality.mjs fails against the original code and passes with positional compaction",
+  "repairLimit": "Apply the same mortality compaction to remembered slots. No weakening of validation, mortality, births or finite resources. Existing missing historical order cannot be inferred retroactively.",
+  "day100Proven": false
+}

@@ -1,0 +1,31 @@
+{
+  "scope": "Read-only saved finite-rule five-day autonomous run. Unique dug cells/soil records are retained work observations, not total meal counts or whole resource closure. No staged food, actor editing or simulation in this inspection.",
+  "input": "docs/test-runs/artifacts/finite-regions-5day-2026-10-19.snapshot.bin",
+  "inputSha256": "3410ae966655f6a672b9ebac7bafc1b477af9d8f7103835ea1108967d2f63a51",
+  "regions": [
+    {
+      "key": "active",
+      "tick": 240,
+      "rule": "finite-local-root-food/1",
+      "rememberedDugCells": 2,
+      "soilRecords": 2,
+      "finiteMoundMeals": 0
+    },
+    {
+      "key": "0,0",
+      "tick": 240,
+      "rule": "finite-local-root-food/1",
+      "rememberedDugCells": 0,
+      "soilRecords": 0,
+      "finiteMoundMeals": 0
+    },
+    {
+      "key": "128,0",
+      "tick": 240,
+      "rule": "finite-local-root-food/1",
+      "rememberedDugCells": 0,
+      "soilRecords": 0,
+      "finiteMoundMeals": 0
+    }
+  ]
+}

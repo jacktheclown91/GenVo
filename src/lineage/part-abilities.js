@@ -1,3 +1,4 @@
+import {diggingRule,DIGGING_RULES} from './digging-rules.js';
 import {canHunt,plantPreference} from '../ecology/functional-diet.js';
 import {disturbanceAt,recordSoilDig,pruneRecoveredSoil} from '../ecology/soil-disturbance.js';
 import {isWildSpecies,wildStartPlan} from '../organisms/wild-bodies.js';
@@ -284,6 +285,7 @@ export function landSpeedFactor(animal){return partEffectFactors(animal)?.landSp
 // Paddle tail swimming, applied by lifestyle.movementProfile().
 export function paddleFactors(animal){return hasPart(animal,'paddle-tail')?PART_ABILITY.paddle:null}
 
+const ROOT_FOODS=Object.freeze(['marshroot','dunebulb']);
 // Runtime state for digging and venom. Saved as controller key 'partAbilities'.
 export class PartAbilityController{
   constructor(sim){this.sim=sim;this.dug={};this.digClock=0;this.poisoned=[];this.soilDisturbance=new Map()}
@@ -291,7 +293,42 @@ export class PartAbilityController{
   advanceSoilDay(){return pruneRecoveredSoil(this.soilDisturbance,this.sim.day)}
 
   // --- Digging ---
+ rootMealAt(animal,x=animal?.x,y=animal?.y){
+  if(!animal?.alive)return null;const w=this.sim.world;
+  if(!w.isPlayable(x,y)||w.water[w.idx(x,y)])return null;
+  const i=w.idx(x,y),view=x===animal.x&&y===animal.y?animal:{...animal,x,y};
+  const meals=ROOT_FOODS.filter(kind=>(w.plants[kind]?.[i]||0)>.06).flatMap(kind=>this.sim.foraging.options(view,{index:i,kind})).filter(m=>m.tissue!=='kernel'&&m.handling.enabled);
+  return meals.sort((a,b)=>b.needScore-a.needScore||a.kind.localeCompare(b.kind))[0]||null;
+ }
+ finiteCanDigAt(animal,x=animal?.x,y=animal?.y){
+  if(!hasPart(animal,'digging-forelimb')||!partEffectFactors(animal)?.dig)return false;
+  const i=this.sim.world.idx(x,y),last=this.dug[i];
+  if(Number.isFinite(last)&&this.dayIndex()-last<PART_ABILITY.dig.regrowDays)return false;
+  return !!this.rootMealAt(animal,x,y);
+ }
+ finiteDigAvailability(animal){
+  if(!animal?.alive)return{enabled:false,reason:'Nothing to dig with.'};
+  if(animal.airborne||animal.perched)return{enabled:false,reason:'Land before digging.'};
+  if(!ROOT_FOODS.some(kind=>plantPreference(animal,kind)>0))return{enabled:false,reason:'This mouth cannot eat the roots or bulbs here.'};
+  if(!hasPart(animal,'digging-forelimb'))return{enabled:false,reason:'You have no digging forelimbs.'};
+  if((animal.digUntilTick||0)>this.sim.tickCount)return{enabled:false,quiet:true,reason:'Still digging.'};
+  if(!this.canDigAt(animal))return{enabled:false,reason:'No accessible root or bulb meal remains here, or this ground is recovering.'};
+  return{enabled:true,reason:'Harvest existing root or bulb tissue.'};
+ }
+ finiteDig(animal){
+  const status=this.digAvailability(animal);if(!status.enabled)return{ok:false,type:'dig',quiet:status.quiet,message:status.reason};
+  const meal=this.rootMealAt(animal);if(!meal)return{ok:false,type:'dig',message:'That root food is no longer available.'};
+  const before=this.sim.world.plants[meal.kind][meal.i],fed=this.sim.foraging.consume(animal,meal);
+  if(!fed.ok)return{...fed,type:'dig'};
+  const removed=before-this.sim.world.plants[meal.kind][meal.i];if(!(removed>0))throw Error('Digging meal credited without a finite producer debit.');
+  animal.hidden=false;this.soilDisturbance??=new Map();recordSoilDig(this.soilDisturbance,meal.i,this.sim.day,animal.id);this.sim.regionalEcology?.noteSoilDig(animal);
+  this.dug[meal.i]=this.dayIndex();animal.digUntilTick=this.sim.tickCount+PART_ABILITY.dig.cooldownTicks;animal.anim=(animal.anim+2)%8;
+  if(animal.player)this.sim.lastPlayerAction={type:'dig',actorId:animal.id,tick:this.sim.tickCount,kind:meal.kind,amount:removed,energyGain:fed.energyGain};
+  const mound=this.sim.discovery?.siteAt(animal,'root-mound',1.6);if(mound)this.sim.discovery.useMound(mound);
+  return{...fed,type:'dig',amount:removed,message:'Dug '+meal.kind+' Â· '+fed.message};
+ }
   canDigAt(animal,x=animal?.x,y=animal?.y){
+    if(diggingRule(this.sim)===DIGGING_RULES.finite)return this.finiteCanDigAt(animal,x,y);
     // Digging is an action supplied by actual limbs, including starting wild bodies.
     if(!hasPart(animal,'digging-forelimb')||!partEffectFactors(animal)?.dig)return false;const w=this.sim.world,i=w.idx(x,y);
     if(w.water[i])return false;if(this.sim.discovery?.mound?.(animal,{restock:false}))return true;const last=this.dug[i];return !(Number.isFinite(last)&&this.dayIndex()-last<PART_ABILITY.dig.regrowDays);
@@ -307,6 +344,7 @@ export class PartAbilityController{
     return this.sim.day;
   }
   digAvailability(animal){
+    if(diggingRule(this.sim)===DIGGING_RULES.finite)return this.finiteDigAvailability(animal);
     if(!animal?.alive||!SPECIES[animal.species])return{enabled:false,reason:'Nothing to dig with.'};
     if(!hasPart(animal,'digging-forelimb'))return{enabled:false,reason:'You have no digging forelimbs.'};
     if(plantPreference(animal,'marshroot')<=0)return{enabled:false,reason:'This mouth cannot eat the roots produced by digging.'};
@@ -316,6 +354,7 @@ export class PartAbilityController{
     return{enabled:true,reason:'Use the mounted digging forelimbs.'};
   }
   dig(animal){
+    if(diggingRule(this.sim)===DIGGING_RULES.finite)return this.finiteDig(animal);
     const P=PART_ABILITY.dig,s=SPECIES[animal?.species],status=this.digAvailability(animal);if(!status.enabled)return{ok:false,type:'dig',quiet:status.quiet,message:status.reason};const w=this.sim.world,i=w.idx(animal.x,animal.y);
     if(animal.hidden)animal.hidden=false;
     // Roots are richer in moist, fertile ground.
@@ -336,6 +375,11 @@ export class PartAbilityController{
     const energy=animal.energy/(SPECIES[animal.species]?.maxEnergy||1);
     const recovering=animal.health<65&&energy<.78&&!animal.player&&!animal.lineage;
     if(!(energy<PART_ABILITY.dig.aiHunger||recovering)||!this.digAvailability(animal).enabled)return null;
+    if(food&&diggingRule(this.sim)===DIGGING_RULES.finite){
+      const meal=this.rootMealAt(animal);
+      // Use mounted limbs for an already selected local root meal; other nearby food keeps priority.
+      if(meal&&food.kind===meal.kind&&this.sim.world.idx(food.x,food.y)===meal.i)return{x:animal.x,y:animal.y,kind:'roots'};
+    }
     if(food){
       const distance=Math.hypot(animal.x-food.x,animal.y-food.y);
       const fertility=this.sim.world.fertility[this.sim.world.idx(animal.x,animal.y)];

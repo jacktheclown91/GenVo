@@ -6,18 +6,18 @@ import assert from 'node:assert/strict';
 import {SOIL_WATER,initializeSoilWater,advanceSoilWater,advanceSoilDay,plantAvailableWater} from '../src/ecology/soil-water.js';
 
 // A small synthetic world: a river along column 0, uniform generated wetness elsewhere.
-function makeWorld(n=16,wet=.5){const len=n*n,w={n,len,moisture:new Float32Array(len),water:new Uint8Array(len)};
+function makeWorld(n=16,wet=.5){const len=n*n,w={n,len,moisture:new Float32Array(len),temperature:new Float32Array(len).fill(.55),water:new Uint8Array(len)};
   for(let i=0;i<len;i++){if(i%n===0){w.water[i]=1;w.moisture[i]=1}else w.moisture[i]=wet}return w}
 const typical={rain:.41,temp:.55};
 const landMean=w=>{let s=0,c=0;for(let i=0;i<w.len;i++)if(!w.water[i]){s+=w.moisture[i];c++}return s/c};
 const store=w=>{let s=0;for(let i=0;i<w.len;i++)if(!w.water[i])s+=w.moisture[i]+w.soilWater.groundwater[i];return s};
-const run=(w,days,climate=typical)=>{for(let d=0;d<days;d++)advanceSoilWater(w,typeof climate==='function'?climate(d):climate,d)};
+const run=(w,days,climate=typical)=>{for(let d=0;d<days;d++){const c=typeof climate==='function'?climate(d):climate;w.temperature.fill(c.temp);advanceSoilWater(w,c,d)}};
 
 // 1. Closed budget: storage change equals infiltration - evaporation - deep drainage + inflow from open water - overflow.
 {const w=makeWorld();initializeSoilWater(w);const before=store(w);run(w,90,d=>({rain:d%7<3?.7:.1,temp:.3+.4*(d%11)/10}));
   const t=w.soilWater.totals,expected=before+t.infiltration-t.evaporation-t.deepDrainage+t.lateral-t.overflow;
   assert.ok(Math.abs(store(w)-expected)<1e-3,`soil water budget closes: ${store(w)} vs ${expected}`);
-  assert.ok(Math.abs(t.rain-t.infiltration-t.runoff)<1e-6,'rain is split into infiltration and runoff');}
+  assert.ok(Math.abs(t.rain+t.snowmelt-t.snowfall-t.infiltration-t.runoff)<1e-6,'precipitation and snowmelt split into snow storage, infiltration and runoff');}
 
 // 2. Dry soil regains moisture under ordinary rain (the previous rule could only remove water at this climate).
 {const w=makeWorld(16,.05);initializeSoilWater(w);const far=15+8*16,m0=w.moisture[far];run(w,8);

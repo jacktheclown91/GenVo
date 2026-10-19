@@ -1,0 +1,2656 @@
+{
+  "scope": "Actual main game loop and IndexedDB; controlled frontier placement, founded organisms, one active day, not human acceptance or mature planetary performance",
+  "policy": "synchronized-strides/1",
+  "tick": 48,
+  "remote": [
+    {
+      "key": "0,0",
+      "tick": 42,
+      "debt": 6,
+      "mode": "canonical-ticks/1"
+    },
+    {
+      "key": "128,0",
+      "tick": 42,
+      "debt": 6,
+      "mode": "canonical-ticks/1"
+    }
+  ],
+  "frames": [
+    {
+      "now": 2928.2,
+      "tick": 5,
+      "remote": [
+        0,
+        0
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 2944.7,
+      "tick": 5,
+      "remote": [
+        0,
+        0
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 2961.4,
+      "tick": 6,
+      "remote": [
+        0,
+        0
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 3178.1,
+      "tick": 6,
+      "remote": [
+        6,
+        0
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 3761.4,
+      "tick": 6,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 3978.1,
+      "tick": 8,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 3994.8,
+      "tick": 8,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4011.3,
+      "tick": 8,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4044.8,
+      "tick": 9,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4061.4,
+      "tick": 9,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4078,
+      "tick": 9,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4094.8,
+      "tick": 9,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4111.4,
+      "tick": 9,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4128.1,
+      "tick": 9,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4144.7,
+      "tick": 9,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4161.4,
+      "tick": 9,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4178.1,
+      "tick": 10,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4194.7,
+      "tick": 10,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4211.4,
+      "tick": 10,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4228.1,
+      "tick": 10,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4244.7,
+      "tick": 10,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4261.4,
+      "tick": 10,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4278,
+      "tick": 10,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4294.7,
+      "tick": 11,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4311.4,
+      "tick": 11,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4328.1,
+      "tick": 11,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4344.7,
+      "tick": 11,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4361.3,
+      "tick": 11,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4378.1,
+      "tick": 11,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4394.7,
+      "tick": 11,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4411.4,
+      "tick": 11,
+      "remote": [
+        6,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4428.1,
+      "tick": 12,
+      "remote": [
+        12,
+        6
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4511.4,
+      "tick": 12,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 4578,
+      "tick": 13,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 4594.7,
+      "tick": 13,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 4611.4,
+      "tick": 13,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 4628.1,
+      "tick": 13,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 4644.7,
+      "tick": 13,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4661.3,
+      "tick": 13,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4678.1,
+      "tick": 14,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4694.7,
+      "tick": 14,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4711.3,
+      "tick": 14,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4728,
+      "tick": 14,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4744.7,
+      "tick": 14,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4761.4,
+      "tick": 14,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4778.1,
+      "tick": 14,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4794.7,
+      "tick": 15,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4811.3,
+      "tick": 15,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4828,
+      "tick": 15,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4844.7,
+      "tick": 15,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4861.4,
+      "tick": 15,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4878,
+      "tick": 15,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4894.7,
+      "tick": 15,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4911.3,
+      "tick": 15,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4928,
+      "tick": 16,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4944.7,
+      "tick": 16,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4961.4,
+      "tick": 16,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4978,
+      "tick": 16,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 4994.7,
+      "tick": 16,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5011.4,
+      "tick": 16,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5028,
+      "tick": 16,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5044.7,
+      "tick": 17,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5061.3,
+      "tick": 17,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5078,
+      "tick": 17,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5094.6,
+      "tick": 17,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5111.4,
+      "tick": 17,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5128,
+      "tick": 17,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5144.6,
+      "tick": 17,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5161.4,
+      "tick": 17,
+      "remote": [
+        12,
+        12
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5178.1,
+      "tick": 18,
+      "remote": [
+        18,
+        12
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 5261.3,
+      "tick": 18,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 5328,
+      "tick": 19,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5344.6,
+      "tick": 19,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5361.4,
+      "tick": 19,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5378,
+      "tick": 19,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5394.6,
+      "tick": 19,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5411.4,
+      "tick": 19,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5428,
+      "tick": 20,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5444.7,
+      "tick": 20,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5461.3,
+      "tick": 20,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5478,
+      "tick": 20,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5494.6,
+      "tick": 20,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5511.4,
+      "tick": 20,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5528,
+      "tick": 20,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5544.7,
+      "tick": 21,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5561.3,
+      "tick": 21,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5578,
+      "tick": 21,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5594.6,
+      "tick": 21,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5611.3,
+      "tick": 21,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5628,
+      "tick": 21,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5644.7,
+      "tick": 21,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5661.3,
+      "tick": 21,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5678,
+      "tick": 22,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5694.7,
+      "tick": 22,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5711.4,
+      "tick": 22,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5728,
+      "tick": 22,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5744.7,
+      "tick": 22,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5761.3,
+      "tick": 22,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5778,
+      "tick": 22,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5794.7,
+      "tick": 23,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5811.3,
+      "tick": 23,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5828,
+      "tick": 23,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5844.6,
+      "tick": 23,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5861.3,
+      "tick": 23,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5877.9,
+      "tick": 23,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5894.7,
+      "tick": 23,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5911.3,
+      "tick": 23,
+      "remote": [
+        18,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5928,
+      "tick": 24,
+      "remote": [
+        24,
+        18
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 5994.6,
+      "tick": 24,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 6061.4,
+      "tick": 25,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 6094.6,
+      "tick": 25,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 6111.3,
+      "tick": 25,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 6128,
+      "tick": 25,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6144.7,
+      "tick": 25,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6161.3,
+      "tick": 25,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6178,
+      "tick": 26,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6194.6,
+      "tick": 26,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6211.3,
+      "tick": 26,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6228,
+      "tick": 26,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6244.6,
+      "tick": 26,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6261.3,
+      "tick": 26,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6278,
+      "tick": 26,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6294.7,
+      "tick": 27,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6311.3,
+      "tick": 27,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6328,
+      "tick": 27,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6344.7,
+      "tick": 27,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6361.3,
+      "tick": 27,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6377.9,
+      "tick": 27,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6394.6,
+      "tick": 27,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6411.3,
+      "tick": 27,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6428,
+      "tick": 28,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6444.7,
+      "tick": 28,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6461.3,
+      "tick": 28,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6478,
+      "tick": 28,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6494.6,
+      "tick": 28,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6511.3,
+      "tick": 28,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6528,
+      "tick": 28,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6544.6,
+      "tick": 29,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6561.3,
+      "tick": 29,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6577.9,
+      "tick": 29,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6594.7,
+      "tick": 29,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6611.3,
+      "tick": 29,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6628,
+      "tick": 29,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6644.6,
+      "tick": 29,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6661.3,
+      "tick": 29,
+      "remote": [
+        24,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6677.9,
+      "tick": 30,
+      "remote": [
+        30,
+        24
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6744.6,
+      "tick": 30,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6811.3,
+      "tick": 31,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6828,
+      "tick": 31,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6844.6,
+      "tick": 31,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6861.3,
+      "tick": 31,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6878,
+      "tick": 31,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6894.6,
+      "tick": 31,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6911.3,
+      "tick": 31,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6927.9,
+      "tick": 32,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6944.7,
+      "tick": 32,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6961.3,
+      "tick": 32,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6978,
+      "tick": 32,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 6994.6,
+      "tick": 32,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7011.3,
+      "tick": 32,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7027.9,
+      "tick": 32,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7044.6,
+      "tick": 33,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7061.3,
+      "tick": 33,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7078,
+      "tick": 33,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7094.6,
+      "tick": 33,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7111.3,
+      "tick": 33,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7128,
+      "tick": 33,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7144.6,
+      "tick": 33,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7161.3,
+      "tick": 33,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7178,
+      "tick": 34,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7194.6,
+      "tick": 34,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7211.2,
+      "tick": 34,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7227.9,
+      "tick": 34,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7244.6,
+      "tick": 34,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7261.3,
+      "tick": 34,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7277.9,
+      "tick": 34,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7294.6,
+      "tick": 35,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7311.3,
+      "tick": 35,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7327.9,
+      "tick": 35,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7344.6,
+      "tick": 35,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7361.3,
+      "tick": 35,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7377.9,
+      "tick": 35,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7394.6,
+      "tick": 35,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7411.3,
+      "tick": 35,
+      "remote": [
+        30,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7427.9,
+      "tick": 36,
+      "remote": [
+        36,
+        30
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7494.6,
+      "tick": 36,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 7561.3,
+      "tick": 37,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 7577.9,
+      "tick": 37,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 7594.6,
+      "tick": 37,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 7611.3,
+      "tick": 37,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+      "noticeVisible": true
+    },
+    {
+      "now": 7627.9,
+      "tick": 37,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7644.6,
+      "tick": 37,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7661.3,
+      "tick": 37,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7677.9,
+      "tick": 38,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7694.6,
+      "tick": 38,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7711.3,
+      "tick": 38,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7727.9,
+      "tick": 38,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7744.5,
+      "tick": 38,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7761.3,
+      "tick": 38,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7777.9,
+      "tick": 38,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7794.6,
+      "tick": 39,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7811.2,
+      "tick": 39,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7827.9,
+      "tick": 39,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7844.6,
+      "tick": 39,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7861.3,
+      "tick": 39,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7878,
+      "tick": 39,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7894.6,
+      "tick": 39,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7911.3,
+      "tick": 39,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7927.9,
+      "tick": 40,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7944.5,
+      "tick": 40,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7961.2,
+      "tick": 40,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7977.9,
+      "tick": 40,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 7994.6,
+      "tick": 40,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8011.2,
+      "tick": 40,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8027.9,
+      "tick": 40,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8044.6,
+      "tick": 41,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8061.2,
+      "tick": 41,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8077.9,
+      "tick": 41,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8094.6,
+      "tick": 41,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8111.2,
+      "tick": 41,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8127.9,
+      "tick": 41,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8144.5,
+      "tick": 41,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8161.2,
+      "tick": 41,
+      "remote": [
+        36,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8177.9,
+      "tick": 42,
+      "remote": [
+        42,
+        36
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8244.6,
+      "tick": 42,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8311.2,
+      "tick": 43,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8327.9,
+      "tick": 43,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8344.6,
+      "tick": 43,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8361.2,
+      "tick": 43,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8377.9,
+      "tick": 43,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8394.6,
+      "tick": 43,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8411.2,
+      "tick": 43,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8427.8,
+      "tick": 44,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8444.6,
+      "tick": 44,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8461.2,
+      "tick": 44,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8477.9,
+      "tick": 44,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8494.6,
+      "tick": 44,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8511.2,
+      "tick": 44,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8527.9,
+      "tick": 44,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8544.5,
+      "tick": 45,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8561.2,
+      "tick": 45,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8577.9,
+      "tick": 45,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8594.6,
+      "tick": 45,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8611.2,
+      "tick": 45,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8627.9,
+      "tick": 45,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8644.5,
+      "tick": 45,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8661.2,
+      "tick": 45,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8677.8,
+      "tick": 46,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8694.5,
+      "tick": 46,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8711.2,
+      "tick": 46,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8727.9,
+      "tick": 46,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8744.5,
+      "tick": 46,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8761.2,
+      "tick": 46,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8777.9,
+      "tick": 46,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8794.5,
+      "tick": 47,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8811.2,
+      "tick": 47,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8827.9,
+      "tick": 47,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8844.5,
+      "tick": 47,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8861.2,
+      "tick": 47,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8877.8,
+      "tick": 47,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8894.5,
+      "tick": 47,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8911.2,
+      "tick": 47,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    },
+    {
+      "now": 8927.9,
+      "tick": 48,
+      "remote": [
+        42,
+        42
+      ],
+      "notice": "",
+      "noticeVisible": false
+    }
+  ],
+  "heldLocalFramesWithRemoteProgress": 8,
+  "roundTripExact": true,
+  "maxFrameGap": 583.3000000000002,
+  "warningObserved": true,
+  "pageErrors": []
+}

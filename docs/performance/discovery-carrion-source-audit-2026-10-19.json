@@ -1,0 +1,26 @@
+{
+  "scope": "Direct live discovery spawnCarcass call in a normally generated world with bootstrap disabled and zero animals. Controlled location; no simulation ticks or original trial state modified. Proves this action adds carrion without an animal death; does not establish every possible source/sink or full-world balance.",
+  "status": "unfunded-discovery-carrion-confirmed",
+  "before": {
+    "carrion": 0,
+    "animals": 0,
+    "deaths": 0
+  },
+  "after": {
+    "carrion": 7.000000238418579,
+    "animals": 0,
+    "deaths": 0
+  },
+  "addedCarrion": 7.000000238418579,
+  "site": {
+    "id": 1,
+    "kind": "carcass",
+    "x": 73.5,
+    "y": 59.5,
+    "stock": 0,
+    "day": 1
+  },
+  "source": "src/gameplay/discovery.js",
+  "sourceSha256": "b5d0b007bb0fdb6eea390fa4586b0dc9e6dd52d4cfe5dafd83a63a75f70752df",
+  "relatedScope": "Still-pool energy currently calls harvestFreshwater in Simulation.drink, so its label alone is not evidence of an unfunded reward. Grove/carcass nutrition multipliers and calendar nest-material renewal require separate accounting review."
+}

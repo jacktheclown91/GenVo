@@ -31,6 +31,11 @@ for(let day=1;day<=10;day++){
  advanceSoilDay(w,{...winter,frontDay:day},day);
  assert.ok(Math.abs(w.soilWater.lastDay.closure)<.30,'combined snow+ground water ledger must close, got '+w.soilWater.lastDay.closure);
 }
+// Soil moisture is the liquid soil field; frozen surface water belongs only
+// in total storage. A snow-covered world must not report snow as wet soil.
+let liquidSum=0,landCells=0;
+for(let i=0;i<w.len;i++)if(!w.water[i]){liquidSum+=w.moisture[i];landCells++}
+assert.ok(Math.abs(w.soilWater.lastDay.meanMoisture-liquidSum/landCells)<1e-10,'daily soil moisture excludes stored snow and groundwater');
 const deep=snowDepth(w,mountain);
 assert.ok(deep>.08,'real cold summit must accumulate delayed precipitation');
 assert.ok(snowDepth(w,lowland)<deep,'warmer valleys accumulate less snow than cold mountain slopes');

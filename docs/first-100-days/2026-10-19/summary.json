@@ -1,0 +1,159 @@
+{
+  "schema": "genvo.first100-baseline/1",
+  "status": "mechanical integrity pass; broader milestone incomplete",
+  "seed": "GENVO8-TEST-A",
+  "mode": "current default generation and established founding templates; autonomous player:false",
+  "completedDays": 100,
+  "command": "node --expose-gc tools/observe-ecology.mjs GENVO8-TEST-A 100 --development-100 --profile --gc",
+  "fullResultSha256": "5ca22bb0f5dca72f4a2d72e495ef6db22304176d66db0f11fd314e85469b632d",
+  "sourceBaseCommit": "bf921a4ecb96ffc1264af0f8c603f94595b8e39a",
+  "sourceIsUncommitted": true,
+  "codeFingerprintFromLatestFullGate": "35fb5038e826e42c567145d6f81e6ebda5cf2835c081cc9627a94fa5bc24a3e3",
+  "rawLocalArtifact": "docs\\test-runs\\artifacts\\2026-10-19T05-08-45-492Z-30700\\ecology-diagnostic\\GENVO8-TEST-A.json",
+  "integrity": "pass",
+  "initialPopulation": 188,
+  "maximumAbsoluteWaterClosure": 8.161981781995564e-06,
+  "waterClosureLimit": 0.001,
+  "waterCoverage": "Checkpoints are at most 40 completed days apart; each readout includes up to 64 daily water budgets. Overlapping windows cover the 100-day horizon. Initial readout has no completed budget.",
+  "observations": [
+    {
+      "completedDays": 0,
+      "calendarDay": 1,
+      "population": {
+        "mosskip": 64,
+        "rootling": 32,
+        "needlejaw": 12,
+        "rillsifter": 18,
+        "mirelick": 20,
+        "podshell": 18,
+        "bankjaw": 0,
+        "genvo": 24
+      },
+      "living": 188,
+      "births": 0,
+      "deaths": 0,
+      "postGcHeapBytes": 16120472,
+      "rssBytes": 79429632,
+      "seedCohorts": 0,
+      "seconds": 0.018237400000000036,
+      "waterClosureMaxOverRetainedHistory": null
+    },
+    {
+      "completedDays": 1,
+      "calendarDay": 2,
+      "population": {
+        "mosskip": 64,
+        "rootling": 32,
+        "needlejaw": 12,
+        "rillsifter": 18,
+        "mirelick": 20,
+        "podshell": 18,
+        "bankjaw": 0,
+        "genvo": 24
+      },
+      "living": 188,
+      "births": 0,
+      "deaths": 0,
+      "postGcHeapBytes": 40956312,
+      "rssBytes": 129392640,
+      "seedCohorts": 102,
+      "seconds": 0.47069900000000003,
+      "waterClosureMaxOverRetainedHistory": 5.399018391472055e-06
+    },
+    {
+      "completedDays": 10,
+      "calendarDay": 11,
+      "population": {
+        "mosskip": 64,
+        "rootling": 32,
+        "needlejaw": 12,
+        "rillsifter": 18,
+        "mirelick": 20,
+        "podshell": 18,
+        "bankjaw": 0,
+        "genvo": 24
+      },
+      "living": 188,
+      "births": 0,
+      "deaths": 0,
+      "postGcHeapBytes": 47187552,
+      "rssBytes": 246206464,
+      "seedCohorts": 4343,
+      "seconds": 3.7384983000000003,
+      "waterClosureMaxOverRetainedHistory": 8.161981781995564e-06
+    },
+    {
+      "completedDays": 30,
+      "calendarDay": 31,
+      "population": {
+        "mosskip": 88,
+        "rootling": 33,
+        "needlejaw": 12,
+        "rillsifter": 18,
+        "mirelick": 20,
+        "podshell": 20,
+        "bankjaw": 0,
+        "genvo": 34
+      },
+      "living": 225,
+      "births": 37,
+      "deaths": 0,
+      "postGcHeapBytes": 136704048,
+      "rssBytes": 412774400,
+      "seedCohorts": 72294,
+      "seconds": 17.6321803,
+      "waterClosureMaxOverRetainedHistory": 8.161981781995564e-06
+    },
+    {
+      "completedDays": 60,
+      "calendarDay": 61,
+      "population": {
+        "mosskip": 98,
+        "rootling": 41,
+        "needlejaw": 15,
+        "rillsifter": 23,
+        "mirelick": 20,
+        "podshell": 29,
+        "bankjaw": 0,
+        "genvo": 56
+      },
+      "living": 282,
+      "births": 99,
+      "deaths": 5,
+      "postGcHeapBytes": 262818608,
+      "rssBytes": 579293184,
+      "seedCohorts": 218089,
+      "seconds": 48.85402,
+      "waterClosureMaxOverRetainedHistory": 8.161981781995564e-06
+    },
+    {
+      "completedDays": 100,
+      "calendarDay": 101,
+      "population": {
+        "mosskip": 112,
+        "rootling": 41,
+        "needlejaw": 15,
+        "rillsifter": 29,
+        "mirelick": 21,
+        "podshell": 29,
+        "bankjaw": 0,
+        "genvo": 77
+      },
+      "living": 324,
+      "births": 152,
+      "deaths": 16,
+      "postGcHeapBytes": 399454968,
+      "rssBytes": 833970176,
+      "seedCohorts": 408966,
+      "seconds": 102.7780078,
+      "waterClosureMaxOverRetainedHistory": 5.8642926887841895e-06
+    }
+  ],
+  "scopeLimits": [
+    "One seed, current default local world; not the opt-in planetary generator.",
+    "Founding templates are seeded; not proof of biodiversity emerging from one simple ancestor.",
+    "Headless autonomous mechanics; not browser frame performance, player-guided play or creator approval.",
+    "No population, diversity or evolved-trait quota.",
+    "Post-GC sampled memory rises substantially; raw save size and full 100-day save/resume remain unmeasured."
+  ]
+}

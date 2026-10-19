@@ -1,0 +1,903 @@
+{
+  "scope": "Declared targeted operator-index witness, all actual mutatePlan transitions. No runtime policy changed. Not actual births, frequencies, funded growth, intermediate reproductive survival or physiological acceptance.",
+  "sequence": [
+    "soft-torso",
+    "stout-torso",
+    "filament-tuft",
+    "fur-mantle",
+    "live-womb",
+    "endothermic-core",
+    "mammary-gland"
+  ],
+  "steps": [
+    {
+      "target": "soft-torso",
+      "asymmetric": false,
+      "index": 29,
+      "options": 61,
+      "event": {
+        "policy": "neutral-head-structure/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 29,
+        "options": 61,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-4134709b",
+        "to": "bp0-cc6b3afc",
+        "targets": [],
+        "removed": [],
+        "moved": [],
+        "problems": []
+      },
+      "body": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "soft-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-cc6b3afc"
+      }
+    },
+    {
+      "target": "stout-torso",
+      "asymmetric": false,
+      "index": 36,
+      "options": 67,
+      "event": {
+        "policy": "neutral-head-structure/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 36,
+        "options": 67,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-cc6b3afc",
+        "to": "bp0-e65bc155",
+        "targets": [],
+        "removed": [],
+        "moved": [],
+        "problems": []
+      },
+      "body": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "stout-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-e65bc155"
+      }
+    },
+    {
+      "target": "filament-tuft",
+      "asymmetric": false,
+      "index": 50,
+      "options": 65,
+      "event": {
+        "policy": "neutral-head-structure/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 50,
+        "options": 65,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-e65bc155",
+        "to": "bp0-d5221401",
+        "targets": [],
+        "removed": [],
+        "moved": [],
+        "problems": []
+      },
+      "body": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "stout-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/dorsal",
+            "partId": "filament-tuft",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "dorsal"
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-d5221401"
+      }
+    },
+    {
+      "target": "fur-mantle",
+      "asymmetric": false,
+      "index": 50,
+      "options": 67,
+      "event": {
+        "policy": "neutral-head-structure/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 50,
+        "options": 67,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-d5221401",
+        "to": "bp0-628813f4",
+        "targets": [],
+        "removed": [],
+        "moved": [],
+        "problems": []
+      },
+      "body": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "stout-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/dorsal",
+            "partId": "fur-mantle",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "dorsal"
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-628813f4"
+      }
+    },
+    {
+      "target": "live-womb",
+      "asymmetric": false,
+      "index": 61,
+      "options": 67,
+      "event": {
+        "policy": "neutral-head-structure/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 61,
+        "options": 67,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-628813f4",
+        "to": "bp0-65fcb563",
+        "targets": [],
+        "removed": [],
+        "moved": [],
+        "problems": []
+      },
+      "body": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "stout-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/dorsal",
+            "partId": "fur-mantle",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "dorsal"
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/flank.left",
+            "partId": "live-womb",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "flank.left"
+          },
+          {
+            "id": "root/flank.right",
+            "partId": "live-womb",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "flank.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-65fcb563"
+      }
+    },
+    {
+      "target": "endothermic-core",
+      "asymmetric": false,
+      "index": 62,
+      "options": 68,
+      "event": {
+        "policy": "neutral-head-structure/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 62,
+        "options": 68,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-65fcb563",
+        "to": "bp0-25d1fc9e",
+        "targets": [],
+        "removed": [],
+        "moved": [],
+        "problems": []
+      },
+      "body": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "stout-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/dorsal",
+            "partId": "fur-mantle",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "dorsal"
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/flank.left",
+            "partId": "endothermic-core",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "flank.left"
+          },
+          {
+            "id": "root/flank.left#2",
+            "partId": "live-womb",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "flank.left"
+          },
+          {
+            "id": "root/flank.right",
+            "partId": "endothermic-core",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "flank.right"
+          },
+          {
+            "id": "root/flank.right#2",
+            "partId": "live-womb",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "flank.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-25d1fc9e"
+      }
+    },
+    {
+      "target": "mammary-gland",
+      "asymmetric": false,
+      "index": 63,
+      "options": 70,
+      "event": {
+        "policy": "neutral-head-structure/1",
+        "operator": "add-or-replace",
+        "branch": "paired",
+        "choice": 63,
+        "options": 70,
+        "attempted": true,
+        "accepted": true,
+        "from": "bp0-25d1fc9e",
+        "to": "bp0-46535c61",
+        "targets": [],
+        "removed": [],
+        "moved": [],
+        "problems": []
+      },
+      "body": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "stout-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/dorsal",
+            "partId": "fur-mantle",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "dorsal"
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "simple-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/flank.left",
+            "partId": "endothermic-core",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "flank.left"
+          },
+          {
+            "id": "root/flank.left#2",
+            "partId": "live-womb",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "flank.left"
+          },
+          {
+            "id": "root/flank.left#3",
+            "partId": "mammary-gland",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "flank.left"
+          },
+          {
+            "id": "root/flank.right",
+            "partId": "endothermic-core",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "flank.right"
+          },
+          {
+            "id": "root/flank.right#2",
+            "partId": "live-womb",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "flank.right"
+          },
+          {
+            "id": "root/flank.right#3",
+            "partId": "mammary-gland",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "flank.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "walking-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "grazing-mouth",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          }
+        ],
+        "id": "bp0-46535c61"
+      }
+    }
+  ],
+  "founder": {
+    "schema": "genvo8.bodyplan/0",
+    "registryVersion": 0,
+    "nodes": [
+      {
+        "id": "root",
+        "partId": "small-torso",
+        "partVersion": 1,
+        "parent": null,
+        "socket": null
+      },
+      {
+        "id": "root/eye.left",
+        "partId": "simple-eye",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "eye.left"
+      },
+      {
+        "id": "root/eye.right",
+        "partId": "simple-eye",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "eye.right"
+      },
+      {
+        "id": "root/limb.1",
+        "partId": "walking-leg",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "limb.1"
+      },
+      {
+        "id": "root/limb.3",
+        "partId": "walking-leg",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "limb.3"
+      },
+      {
+        "id": "root/limb.5",
+        "partId": "walking-leg",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "limb.5"
+      },
+      {
+        "id": "root/limb.7",
+        "partId": "walking-leg",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "limb.7"
+      },
+      {
+        "id": "root/mouth",
+        "partId": "grazing-mouth",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "mouth"
+      }
+    ],
+    "id": "bp0-4134709b"
+  },
+  "final": {
+    "schema": "genvo8.bodyplan/0",
+    "registryVersion": 0,
+    "nodes": [
+      {
+        "id": "root",
+        "partId": "stout-torso",
+        "partVersion": 1,
+        "parent": null,
+        "socket": null
+      },
+      {
+        "id": "root/dorsal",
+        "partId": "fur-mantle",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "dorsal"
+      },
+      {
+        "id": "root/eye.left",
+        "partId": "simple-eye",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "eye.left"
+      },
+      {
+        "id": "root/eye.right",
+        "partId": "simple-eye",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "eye.right"
+      },
+      {
+        "id": "root/flank.left",
+        "partId": "endothermic-core",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "flank.left"
+      },
+      {
+        "id": "root/flank.left#2",
+        "partId": "live-womb",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "flank.left"
+      },
+      {
+        "id": "root/flank.left#3",
+        "partId": "mammary-gland",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "flank.left"
+      },
+      {
+        "id": "root/flank.right",
+        "partId": "endothermic-core",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "flank.right"
+      },
+      {
+        "id": "root/flank.right#2",
+        "partId": "live-womb",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "flank.right"
+      },
+      {
+        "id": "root/flank.right#3",
+        "partId": "mammary-gland",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "flank.right"
+      },
+      {
+        "id": "root/limb.1",
+        "partId": "walking-leg",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "limb.1"
+      },
+      {
+        "id": "root/limb.3",
+        "partId": "walking-leg",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "limb.3"
+      },
+      {
+        "id": "root/limb.5",
+        "partId": "walking-leg",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "limb.5"
+      },
+      {
+        "id": "root/limb.7",
+        "partId": "walking-leg",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "limb.7"
+      },
+      {
+        "id": "root/mouth",
+        "partId": "grazing-mouth",
+        "partVersion": 1,
+        "parent": "root",
+        "socket": "mouth"
+      }
+    ],
+    "id": "bp0-46535c61"
+  },
+  "exactReplay": true,
+  "sourceHashes": {
+    "src/lineage/body-inheritance.js": "d94a96bd998a0ebb49daea109732b166458afadaa1e8f2cd0299674acb55ae40",
+    "src/lineage/body-plan.js": "f45b082fd35c5bc84e65b90f70127fe777922d8698d51e62bdc4ec965f97dd40",
+    "src/lineage/evolution-draft.js": "c0c8b9c492126088ec7ce305c2c5a777f7af979a3404c71e61eddaca591e011d",
+    "src/lineage/part-registry.js": "cd77c3685383bb0bcbd53340b54ca3ae59520a70dd6da8fd1b1c144f3658a3a9"
+  }
+}

@@ -1,0 +1,46 @@
+// STAGED ONLY: no gameplay import; explicit rule/load adapters for the candidate.
+import {FiniteDiggingCandidate} from './finite-digging-candidate.mjs';
+import {PartAbilityController} from '../../src/lineage/part-abilities.js';
+import {DiscoveryController} from '../../src/gameplay/discovery.js';
+import {restoreSimulationSnapshot} from '../../src/persistence/save-manager.js';
+export const DIGGING_RULES=Object.freeze({legacy:'legacy-patch-reward/1',finite:'finite-local-root-food/1'});
+export function diggingRule(core){
+ if(!Object.hasOwn(core,'diggingRules'))return DIGGING_RULES.legacy;
+ if(!Object.values(DIGGING_RULES).includes(core.diggingRules))throw Error('Unknown digging rules.');return core.diggingRules;
+}
+function validate(core,timelineTick=core.tickCount){
+ const rule=diggingRule(core),history=core.diggingRuleMigrations;
+ if(history!==undefined&&(!Array.isArray(history)||history.length>1||history.some(r=>r?.schema!==1||r.from!==DIGGING_RULES.legacy||r.to!==DIGGING_RULES.finite||typeof r.source!=='string'||!r.source.trim()||!Number.isSafeInteger(r.tick)||r.tick<0||r.tick>core.tickCount||!Number.isSafeInteger(r.globalTick)||r.globalTick<r.tick||r.globalTick>timelineTick)))throw Error('Invalid digging migration history.');
+ if(history?.length&&rule!==DIGGING_RULES.finite)throw Error('Digging policy contradicts migration history.');return rule;
+}
+export function moundDescription(sim){return diggingRule(sim)===DIGGING_RULES.finite?'Look for existing root or bulb food here. Depleted plants must grow before another meal.':'A deep root store. Digging forelimbs dig here for a large meal, several times.'}
+function validateSites(sites,day){for(const site of sites||[])if(site.finiteHarvests!==undefined&&(!Number.isSafeInteger(site.finiteHarvests)||site.finiteHarvests<0)||site.lastFiniteHarvestDay!==undefined&&(!Number.isSafeInteger(site.lastFiniteHarvestDay)||site.lastFiniteHarvestDay<1||site.lastFiniteHarvestDay>day||!site.finiteHarvests))throw Error('Invalid saved finite mound visit.');}
+class FiniteMoundDiscovery extends DiscoveryController{
+ discover(site,how='found'){if(site?.kind!=='root-mound')return super.discover(site,how);if(this.isFound(site))return false;this.found.push(site.id);this.notice('Discovered: Root mound · '+moundDescription(this.sim),'success');this.sim.evolutionBudget?.note?.('discovery');return true}
+ mound(animal){const site=this.siteAt(animal,'root-mound',1.6);return site&&this.sim.partAbilities.rootMealAt(animal)?site:null}
+ useMound(site){const n=site.finiteHarvests??0;if(!Number.isSafeInteger(n)||n<0||n>=Number.MAX_SAFE_INTEGER)throw Error('Invalid finite mound visit count.');site.finiteHarvests=n+1;site.lastFiniteHarvestDay=this.sim.day}
+}
+class IntegratedFiniteDigging extends FiniteDiggingCandidate{
+ digAvailability(animal){if(animal?.airborne||animal?.perched)return{enabled:false,reason:'Land before digging.'};return super.digAvailability(animal)}
+ dig(animal){const mound=this.sim.discovery.siteAt(animal,'root-mound',1.6),result=super.dig(animal);if(result.ok&&mound)this.sim.discovery.useMound(mound);return result}
+}
+export function installDiggingPolicyCandidate(sim){
+ const rule=validate(sim);
+ validateSites(sim.discovery.sites,sim.day);
+ Object.setPrototypeOf(sim.partAbilities,rule===DIGGING_RULES.finite?IntegratedFiniteDigging.prototype:PartAbilityController.prototype);
+ Object.setPrototypeOf(sim.discovery,rule===DIGGING_RULES.finite?FiniteMoundDiscovery.prototype:DiscoveryController.prototype);return sim;
+}
+export function restoreDiggingPolicyCandidate(snapshot){const rule=validate(snapshot.core||{});validateSites(snapshot.controllers?.discovery?.sites,snapshot.core?.day);for(const s of snapshot.core?.planetaryTravel?.sessions||[]){if(validate(s.snapshot.core,snapshot.core.tickCount)!==rule)throw Error('Inconsistent planetary digging rules.');validateSites(s.snapshot.controllers?.discovery?.sites,s.snapshot.core.day)}return installDiggingPolicyCandidate(restoreSimulationSnapshot(snapshot))}
+export function enableFiniteDiggingCandidate(sim,{source}={}){
+ if(typeof source!=='string'||!source.trim())throw Error('Digging migration requires an explicit source.');
+ const from=validate(sim),sessions=sim.planetaryTravel?.sessions||[];
+ validateSites(sim.discovery.sites,sim.day);for(const s of sessions)validateSites(s.snapshot.controllers?.discovery?.sites,s.snapshot.core.day);
+ for(const s of sessions)if(validate(s.snapshot.core,sim.tickCount)!==from)throw Error('Inconsistent planetary digging rules.');
+ if(from===DIGGING_RULES.finite)return{changed:false,rule:from};
+ for(const s of sessions){if(s.biologicalMode!=='canonical-ticks/1')throw Error('Environmental-only archive migration needs an explicit clock conversion.');if(s.snapshot.core.tickCount!==sim.tickCount)throw Error('Finish remote biological catchup before changing digging rules.');}
+ const record=core=>({schema:1,from,to:DIGGING_RULES.finite,tick:core.tickCount,globalTick:sim.tickCount,source:source.trim(),scope:'Future root meals consume existing producer tissue through normal feeding. Existing organisms, genomes, stocks, RNG, pending births, prior rewards and old mound counts are preserved; no past flow is reconstructed.'});
+ // Build all new records before publishing any metadata. Resource graphs stay owned.
+ const planned=sessions.map(s=>({session:s,snapshot:{...s.snapshot,core:{...s.snapshot.core,diggingRules:DIGGING_RULES.finite,diggingRuleMigrations:[record(s.snapshot.core)]}}}));
+ const activeRecord=record(sim);for(const p of planned)validate(p.snapshot.core,sim.tickCount);
+ sim.diggingRules=DIGGING_RULES.finite;sim.diggingRuleMigrations=[activeRecord];for(const p of planned)p.session.snapshot=p.snapshot;installDiggingPolicyCandidate(sim);return{changed:true,rule:sim.diggingRules,regions:planned.length+1};
+}

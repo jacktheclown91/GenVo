@@ -1,0 +1,41 @@
+{
+  "schema": "genvo.crop-yield-benchmark/1",
+  "gcBeforeTiming": true,
+  "scope": "Alternated diagnostic; original observer-play test remains the gate",
+  "beforeMean": 546.9565833333332,
+  "afterMean": 476.42138333333327,
+  "changePercent": -12.895941314050063,
+  "identicalSnapshots": true,
+  "results": [
+    {
+      "mode": "before",
+      "msPerRealSecond": 579.5116999999999,
+      "sha256": "ecea1d952ebd7ac69ea65fc89dc06d228168b4a1373db867c1ec3c884527c4da"
+    },
+    {
+      "mode": "after",
+      "msPerRealSecond": 503.58625000000006,
+      "sha256": "ecea1d952ebd7ac69ea65fc89dc06d228168b4a1373db867c1ec3c884527c4da"
+    },
+    {
+      "mode": "after",
+      "msPerRealSecond": 446.50154999999995,
+      "sha256": "ecea1d952ebd7ac69ea65fc89dc06d228168b4a1373db867c1ec3c884527c4da"
+    },
+    {
+      "mode": "before",
+      "msPerRealSecond": 531.1484500000001,
+      "sha256": "ecea1d952ebd7ac69ea65fc89dc06d228168b4a1373db867c1ec3c884527c4da"
+    },
+    {
+      "mode": "before",
+      "msPerRealSecond": 530.2095999999997,
+      "sha256": "ecea1d952ebd7ac69ea65fc89dc06d228168b4a1373db867c1ec3c884527c4da"
+    },
+    {
+      "mode": "after",
+      "msPerRealSecond": 479.17634999999973,
+      "sha256": "ecea1d952ebd7ac69ea65fc89dc06d228168b4a1373db867c1ec3c884527c4da"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "schema": "genvo.planetary-first100/1",
+  "seed": "GENVO8-TEST-A",
+  "generator": "planetary/1",
+  "origin": {
+    "x": 0,
+    "y": 2560
+  },
+  "sourceBaseCommit": "bf921a4ecb96ffc1264af0f8c603f94595b8e39a",
+  "workingTreeUncommitted": true,
+  "integrity": "pass",
+  "completedDays": 100,
+  "seconds": 88.7114243,
+  "exactSaveRoundtrip": true,
+  "exactNextFullDay": true,
+  "snapshotBytes": 73938447,
+  "snapshotSha256": "923f5d772df23486e4cf40ad7109afdd1148b67cc4c5fbbd3020235c7595d022",
+  "observations": [
+    {
+      "completedDays": 0,
+      "living": 172,
+      "births": 0,
+      "deaths": 0,
+      "heapAfterGc": 16540232,
+      "seedCohorts": 0,
+      "recentSoilClosureMax": null
+    },
+    {
+      "completedDays": 1,
+      "living": 172,
+      "births": 0,
+      "deaths": 0,
+      "heapAfterGc": 40679160,
+      "seedCohorts": 0,
+      "recentSoilClosureMax": 1.1986563777099946e-06
+    },
+    {
+      "completedDays": 10,
+      "living": 172,
+      "births": 0,
+      "deaths": 0,
+      "heapAfterGc": 42031920,
+      "seedCohorts": 593,
+      "recentSoilClosureMax": 2.603776778187239e-06
+    },
+    {
+      "completedDays": 30,
+      "living": 220,
+      "births": 49,
+      "deaths": 1,
+      "heapAfterGc": 143855720,
+      "seedCohorts": 72026,
+      "recentSoilClosureMax": 3.106666440544359e-06
+    },
+    {
+      "completedDays": 60,
+      "living": 264,
+      "births": 98,
+      "deaths": 6,
+      "heapAfterGc": 253961440,
+      "seedCohorts": 191993,
+      "recentSoilClosureMax": 3.106666440544359e-06
+    },
+    {
+      "completedDays": 100,
+      "living": 321,
+      "births": 156,
+      "deaths": 7,
+      "heapAfterGc": 354907504,
+      "seedCohorts": 336462,
+      "recentSoilClosureMax": 2.8086003283078753e-06
+    }
+  ],
+  "limits": [
+    "One local region, existing configured founding templates; not simple-origin or player acceptance.",
+    "No archived region visited during this horizon; offscreen behavior is a separate five-day profile.",
+    "Node binary timing/size is not browser IndexedDB performance.",
+    "No population/diversity target or resource rescue applied."
+  ],
+  "physicalAudit": {
+    "days": 100,
+    "initialSalt": 659.8871902227402,
+    "finalSalt": 0.3546845745687171,
+    "saltInput": 0,
+    "saltOutput": 659.532505648162,
+    "cumulativeClosure": 9.43600753089413e-12,
+    "maxDailySoilClosure": 3.106666440544359e-06,
+    "maxDailySaltClosure": 5.870859354217828e-12
+  }
+}

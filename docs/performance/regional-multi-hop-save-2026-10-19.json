@@ -1,0 +1,41 @@
+{
+  "scope": "Node checkpoint, three visited regions after ten active days; does not prove browser persistence or uninterrupted-versus-restored full-day parity",
+  "bytes": 31805412,
+  "restoreMs": 379.0293,
+  "exactRoundTrip": true,
+  "independentReloadNextDayParity": true,
+  "archived": [
+    {
+      "key": "0,0",
+      "mode": "canonical-ticks/1",
+      "tick": 264,
+      "ledger": {
+        "schema": 1,
+        "firstTick": 0,
+        "lastTick": 264,
+        "ticks": 264,
+        "fullDays": 5,
+        "births": 0,
+        "deaths": 0,
+        "lastDay": 6,
+        "lastPopulation": 195
+      }
+    },
+    {
+      "key": "128,0",
+      "mode": "canonical-ticks/1",
+      "tick": 264,
+      "ledger": {
+        "schema": 1,
+        "firstTick": 0,
+        "lastTick": 264,
+        "ticks": 264,
+        "fullDays": 5,
+        "births": 0,
+        "deaths": 0,
+        "lastDay": 6,
+        "lastPopulation": 188
+      }
+    }
+  ]
+}

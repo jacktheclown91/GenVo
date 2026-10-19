@@ -1,3 +1,4 @@
+import {provideRootFood} from './helpers/finite-root-food.js';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
@@ -8,9 +9,10 @@ assert.ok(hasPart(root,'digging-forelimb'));
 assert.equal(partEffectFactors(root).dig,true,'existing digging limbs confer their action even in a starting wild body');
 assert.equal(partEffectFactors(root).landSpeed,1,'numeric starting-body calibration remains neutral');
 assert.equal(partEffectFactors(root).metabolism,1);
+provideRootFood(sim,root);
 for(const species of Object.keys(SPECIES)){
   const a=sim.animals.find(a=>a.species===species),fixture={...a,x:root.x,y:root.y,bodyPlan:structuredClone(root.bodyPlan)};
-  assert.equal(sim.partAbilities.canDigAt(fixture),true,`${species}: action follows the same assembled limbs`);
+  assert.equal(partEffectFactors(fixture).dig,true,`${species}: anatomy supplies digging capability`);assert.equal(sim.partAbilities.canDigAt(fixture),!!sim.partAbilities.rootMealAt(fixture),`${species}: actual mouth and finite food also constrain use`);
 }
 assert.equal(sim.partAbilities.canDigAt({...root,bodyPlan:null}),false,'origin name alone grants no action');
 const plain=structuredClone(root.bodyPlan);for(const n of plain.nodes)if(n.partId==='digging-forelimb')n.partId='walking-leg';
@@ -18,7 +20,8 @@ assert.equal(sim.partAbilities.canDigAt({...root,bodyPlan:plain}),false,'removin
 for(const field of Object.values(sim.world.plants))field.fill(0);sim.world.carrion.fill(0);
 root.age=SPECIES.rootling.maturity+2;root.energy=SPECIES.rootling.maxEnergy*.15;root.hydration=SPECIES.rootling.maxHydration;
 sim.animals=[root];sim.rebuildSpatial();sim.phaseDecision(null);
-assert.equal(root.intent,'dig','a hungry ordinary Digger can use its real limbs when plant foraging fails');
+assert.notEqual(root.intent,'dig','empty ground cannot generate a meal when ordinary plant foraging fails');
+provideRootFood(sim,root);const decision=sim.partAbilities.digDecision(root);assert.equal(decision?.kind,'roots');root.intent='dig';root.target=decision;
 const before=root.energy;sim.resolveInteraction(root);assert.ok(root.energy>before);
 const fed=root.energy;sim.tickCount+=CFG.simHz*2;
 assert.equal(sim.partAbilities.dig(root).ok,false,'the same excavated patch is finite');assert.equal(root.energy,fed);

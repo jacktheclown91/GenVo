@@ -11,7 +11,32 @@ import {initializePlantResources} from '../ecology/plant-resources.js';
 import {initializeColdFlora} from '../ecology/cold-flora.js';
 import {coordNoise,hashString} from '../core/rng.js';
 import {CFG,PLANTS} from '../sim/config.js';
-import {initializeFreshwater} from '../ecology/freshwater-food.js';
+import {initializeFreshwater,AQUATIC_REVIEW,FRESHWATER_FOOD} from '../ecology/freshwater-food.js';
+// This switch changes only regeneration work, never ecological scheduling or stocks.
+export const WORLD_RESTORE_CACHE={enabled:true};
+const restoreBases=new Map(),RESTORE_BASE_LIMIT=4;let restoreHits=0,restoreMisses=0;
+export function restorationWorldCacheStats(){return{entries:restoreBases.size,limit:RESTORE_BASE_LIMIT,hits:restoreHits,misses:restoreMisses}}
+export function worldForRestore(seed,options={}){
+ if(!WORLD_RESTORE_CACHE.enabled)return new World(seed,options);
+ const generator=generatorForState({generator:options.generator??WORLD_GENERATORS.legacy});
+ const givenOrigin=options.planetOrigin===undefined?{x:0,y:0}:options.planetOrigin;
+ const origin=generator===WORLD_GENERATORS.planet?planetRegionOrigin(givenOrigin):null;
+ if(!origin&&(givenOrigin?.x||givenOrigin?.y))throw Error('Only planetary worlds accept a regional origin.');
+ let key;try{key=JSON.stringify([String(seed),generator,origin,CFG,PLANTS,AQUATIC_REVIEW,FRESHWATER_FOOD],(_,v)=>{if(typeof v==='function'||typeof v==='symbol'||typeof v==='bigint'||typeof v==='number'&&!Number.isFinite(v))throw Error('Uncacheable generation configuration');return v})}catch{return new World(seed,options)}
+ const methods=Object.values(Object.getOwnPropertyDescriptors(World.prototype)).map(d=>d.value).filter(v=>typeof v==='function');
+ let entry=restoreBases.get(key);
+ if(entry&&entry.methods.length===methods.length&&entry.methods.every((fn,i)=>fn===methods[i])){
+  restoreHits++;restoreBases.delete(key);restoreBases.set(key,entry);
+  const world=Object.assign(Object.create(World.prototype),structuredClone(entry.state));
+  if(entry.planet){world.planet=entry.planet;world.regionOrigin=planetRegionOrigin(world.regionOrigin)}
+  world.pages=new WorldPages(world);return world;
+ }
+ restoreMisses++;const world=new World(seed,options);
+ // Cache only pristine generation data, before any controller/callback attaches.
+ // Placeholders preserve own-key order; mutable state never aliases the template.
+ try{const state=structuredClone(Object.fromEntries(Object.entries(world).map(([k,v])=>[k,k==='planet'||k==='pages'?null:v])));restoreBases.set(key,{state,planet:world.planet,methods});if(restoreBases.size>RESTORE_BASE_LIMIT)restoreBases.delete(restoreBases.keys().next().value)}catch(error){if(error.name!=='DataCloneError')throw error}
+ return world;
+}
 export class World{
   constructor(seed,{generator=WORLD_GENERATORS.legacy,planetOrigin={x:0,y:0}}={}){this.seed=String(seed);this.seedHash=hashString(this.seed);this.n=CFG.worldSize;this.len=this.n*this.n;this.generator=generatorForState({generator});if(this.generator===WORLD_GENERATORS.planet){this.regionOrigin=planetRegionOrigin(planetOrigin);this.planet=new PlanetGeography(this.seed)}else if(planetOrigin?.x||planetOrigin?.y)throw Error('Only planetary worlds accept a regional origin.');this.topology=newTopologyState();
     this.moisture=new Float32Array(this.len);this.fertility=new Float32Array(this.len);this.temperature=new Float32Array(this.len);this.water=new Uint8Array(this.len);this.landRegion=new Uint16Array(this.len);this.seepage=new Float32Array(this.len);this.drinkable=new Uint8Array(this.len);this.waterDistance=new Uint16Array(this.len);this.drinkSpots=[];this.carrion=new Float32Array(this.len);

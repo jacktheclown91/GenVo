@@ -1,0 +1,25 @@
+{
+  "status": "canonical-finite-digging-focused-check",
+  "scope": "Local-only copy of actual natural digger 630 and recorded parents, original remote archives excluded from isolated action fixtures; existing stock/no injected food; direct action comparison against normal finite harvest. Calendar-only fixtures isolate depletion. Initial adoption is explicit; subsequent restores use ordinary canonical policy dispatch. No runtime prototype override.",
+  "input": "docs/test-runs/artifacts/regional-autonomous-100day-r2-2026-10-19/day30.snapshot.bin",
+  "inputSha256": "198fbd84f21178b7cef5a6fed2d70b702b21acb4a4c28f9afebe2a78a8ee46ff",
+  "foodPoint": {
+    "x": 8.5,
+    "y": 50.5
+  },
+  "kind": "marshroot",
+  "removed": 0.1600000001490116,
+  "totalProbeEnergyGain": 2.9433021841711167,
+  "firstMealEnergyGain": 2.9433021841711167,
+  "firstMealWaterGain": 0,
+  "resourceParityWithNormalMeal": true,
+  "emptyGroundDenied": true,
+  "calendarRefillDenied": true,
+  "finitePatchDepleted": true,
+  "explicitCandidateResumeParity": true,
+  "sourceHashes": {
+    "src/lineage/part-abilities.js": "adc7bf9d798e34ed03d6dee2fc09a25b5b844d04123e6d553fdb2669940bd956",
+    "src/gameplay/foraging.js": "f084af8512865608a2a6a7b5064561bea85d0897c24aec334efe3565f1eaf88b",
+    "src/lineage/digging-rules.js": "347db5d3f7266a7982e43b81a691a5d524cf10a9ca80a67890bd1093215b533e"
+  }
+}

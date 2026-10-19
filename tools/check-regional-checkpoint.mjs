@@ -1,0 +1,20 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import {deserialize} from 'node:v8';
+import {createHash} from 'node:crypto';
+import {isDeepStrictEqual} from 'node:util';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {validateRemoteBiologyLedger,remoteBiologicalDebt} from '../src/world/planetary-offscreen-biology.js';
+import {validateRemoteEnvironmentalLedger} from '../src/world/planetary-offscreen-environment.js';
+const [input,out]=process.argv.slice(2);assert.ok(input&&out&&!fs.existsSync(out));
+const bytes=fs.readFileSync(input),payload=deserialize(Buffer.from(bytes));
+const canonical=s=>createSimulationSnapshot(s,{savedAt:payload.savedAt,reason:payload.reason});
+const left=restoreSimulationSnapshot(deserialize(Buffer.from(bytes))),right=restoreSimulationSnapshot(deserialize(Buffer.from(bytes)));
+assert.ok(isDeepStrictEqual(canonical(left),payload),'entire checkpoint roundtrip differs');
+assert.notEqual(left.world.moisture.buffer,right.world.moisture.buffer);assert.notEqual(left.world.soilWater.groundwater.buffer,right.world.soilWater.groundwater.buffer);
+for(let i=0;i<left.planetaryTravel.sessions.length;i++)assert.notEqual(left.planetaryTravel.sessions[i].snapshot.world.plants.sunmoss.buffer,right.planetaryTravel.sessions[i].snapshot.world.plants.sunmoss.buffer,'independent regional transport buffers');
+const startTick=left.tickCount,day=left.day;while(left.day===day){left.update(null);right.update(null)}
+assert.ok(isDeepStrictEqual(canonical(left),canonical(right)),'complete next-day deterministic reload parity differs');
+const regions=left.planetaryTravel.sessions.map(s=>{validateRemoteBiologyLedger(s);validateRemoteEnvironmentalLedger(s);return{key:s.key,tick:s.snapshot.core.tickCount,debt:remoteBiologicalDebt(left,s),animals:s.snapshot.animals.length,births:s.biologicalLedger.births,deaths:s.biologicalLedger.deaths,soilMaxAbsClosure:s.environmentalLedger.soilMaxAbsClosure,saltMaxAbsClosure:s.environmentalLedger.saltMaxAbsClosure}});
+const report={scope:'Complete milestone checkpoint roundtrip plus two independently transported reloads continuing a full day. Not uninterrupted-versus-resumed parity or browser/IndexedDB acceptance.',input,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),savedDay:payload.core.day,savedTick:payload.core.tickCount,exactRoundTrip:true,independentTransportBuffers:true,exactReloadNextDayParity:true,nextDayTicks:left.tickCount-startTick,regions};
+fs.writeFileSync(out,JSON.stringify(report,null,2));console.log(JSON.stringify(report,null,2));

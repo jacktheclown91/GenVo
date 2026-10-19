@@ -1,0 +1,28 @@
+{
+  "input": "docs/test-runs/artifacts/save-day100-baseline-2026-10-19/day100.snapshot.bin",
+  "bytes": 88692169,
+  "inputSha256": "efa997a880ac320d7d33a472d715b6368ecac2a2beca0e2306192884432711d3",
+  "scope": "One existing checkpoint, before/after/after/before warm-process restore comparison; independent transport copies; not browser timing or general scalability",
+  "rows": [
+    {
+      "kind": "before",
+      "ms": 2445.7398000000003
+    },
+    {
+      "kind": "after",
+      "ms": 2435.4984999999997
+    },
+    {
+      "kind": "after",
+      "ms": 2545.3675000000003
+    },
+    {
+      "kind": "before",
+      "ms": 2551.144400000001
+    }
+  ],
+  "beforeMeanMs": 2498.4421000000007,
+  "afterMeanMs": 2490.433,
+  "exactCheckpointParity": true,
+  "exactNextDayParity": true
+}

@@ -2,7 +2,7 @@ import {CFG} from './config.js';
 import {MAX_WORLD_EGGS} from '../reproduction/reproductive-anatomy.js';
 
 const runtimeLoad=new WeakMap();
-export function setProcessingLoad(sim,load){runtimeLoad.set(sim,{pendingSeconds:load.pendingSeconds,budgetLimited:load.budgetLimited,workMs:load.workMs})}
+export function setProcessingLoad(sim,load){runtimeLoad.set(sim,{pendingSeconds:load.pendingSeconds,budgetLimited:load.budgetLimited,workMs:load.workMs,regionalWork:!!load.regionalWork})}
 
 // Diagnostics only: never consulted by reproduction, inheritance or mortality.
 // Historical limit names remain compatible configuration, not ecological ceilings.
@@ -14,6 +14,7 @@ export function processingCapacity(sim){
 }
 export function processingCapacityMessage(status){
   const delayed=(status.load?.pendingSeconds||0)>=.25;
+  if(status.load?.regionalWork)return 'Simulating life in visited regions. Local time waits while all organisms continue in order.';
   if(!status.exceeded&&!delayed)return '';
   return `Processing ${status.exceeded?'capacity warning':'load'} - ${status.living} living organisms, ${status.eggs} eggs. All offspring are retained.`+(delayed?` Simulation is running behind; ${status.load.pendingSeconds.toFixed(1)} simulation seconds queued. Updates continue in order.`:' Simulation may run more slowly.');
 }

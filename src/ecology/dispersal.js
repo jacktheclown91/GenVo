@@ -1,6 +1,6 @@
 import {initializeBotanicalReproduction,advanceBotanicalReproduction,contactBotanicalFlower,dropBotanicalPollen} from './botanical-reproduction.js';
 import {mouthOf} from './functional-diet.js';
-import {plantHandling,plantHandlingAffordable} from './plant-handling.js';
+import {plantHandling,plantHandlingAffordable,plantHandlingEnergyCost,plantHandlingCostAffordable} from './plant-handling.js';
 import {coldFloraTemperatureFactor} from './cold-flora.js';
 import {initializeFloraInheritance,adultFloraGenome,makeClonalPropagule,registerFloraGenome,addSeedCohorts,scaleSeedCohorts,chooseSeedCohort,commitSeedEstablishment,reconcileSeedCell} from './flora-inheritance.js';
 import {exportPlantReserve,producerBoundary} from './plant-resources.js';
@@ -15,14 +15,21 @@ const cropYieldCaches=new WeakMap();
 const cropChannelCaches=new WeakMap();
 // Read-only diagnostics; does not initialize or invalidate meal caches.
 export function cropYieldCacheStats(controller){const groups=cropYieldCaches.get(controller);let entries=0;for(const cells of groups?.values()||[])entries+=cells.size;return{groups:groups?.size||0,entries,perGroupLimit:8192}}
+// Shared by forecasts and actual receipts: identical arithmetic, no duplicate resource authority.
+function mealTissues(kind,v,amount,tissue){
+ const removed=Math.min(Math.max(0,amount),v.total),scale=v.total>0?removed/v.total:0,seed=v.seed*scale,coat=v.coat*scale,flesh=v.flesh*scale;
+ return {removed,coat,edible:tissue==='kernel'?(kind==='thistlepod'?seed+flesh:seed):flesh,viableSeeds:tissue==='kernel'?0:seed,destroyedSeeds:tissue==='kernel'?seed:0,discarded:tissue==='kernel'&&kind!=='thistlepod'?flesh+coat:coat};
+}
 const LOCAL_DIRS=Object.freeze([[-1,-1],[0,-1],[1,-1],[-1,0],[1,0],[-1,1],[0,1],[1,1]]);
 
 // Plant reproduction/dispersal lives inside the existing vegetation phase.
 // It is deterministic and uses its own seed-bank state, so it does not perturb the main RNG stream.
 export class PlantDispersalController{
-  constructor(sim){
+  // Restore may defer generated flora that a saved controller replaces.
+  // The restore boundary still calls upgrade on the loaded state.
+  constructor(sim,{initialize=true}={}){
     this.sim=sim;this.active={};this.kindCodes={};this.stats={ingested:0,deposited:0,germinated:0,destroyed:0,lost:0};this.nextProducerId=1;this.nextDepositId=1;this.events=[];this.bankGenomes={};this.producerOrigins={};this.seedReserve={};this.coatReserve={};this.litter=new Float32Array(sim.world.len);
-    for(const [kind,p] of Object.entries(PLANTS)){this.kindCodes[kind]=hashKind(kind);if(p.dispersal){this.active[kind]=new Set();this.bankGenomes[kind]=new Map();this.producerOrigins[kind]=new Map()}}this.upgrade();
+    for(const [kind,p] of Object.entries(PLANTS)){this.kindCodes[kind]=hashKind(kind);if(p.dispersal){this.active[kind]=new Set();this.bankGenomes[kind]=new Map();this.producerOrigins[kind]=new Map()}}if(initialize)this.upgrade();
   }
   seedBank(kind){return this.sim.world.seedBank?.[kind]||null}
   upgrade(){this.nextProducerId||=1;this.nextDepositId||=1;this.stats||={ingested:0,deposited:0,germinated:0};this.sim.world.onCropConsumed=(kind,i,before,after)=>{this.noteGrowth(kind,i,before,after);producerBoundary(this.sim,kind,i,before-after,'out','consumed-or-collected')};
@@ -40,8 +47,12 @@ export class PlantDispersalController{
   noteGrowth(kind,i,before,after){exportPlantReserve(this.sim,kind,i,before,after);if(!FLORA_TISSUES[kind])return;const g=this.genomeAt(kind,i),seed=this.seedReserve[kind],coat=this.coatReserve[kind];if(after>=before){seed[i]+=(after-before)*g.traits.seedAllocation;coat[i]+=(after-before)*g.traits.coatAllocation}else{const scale=before>0?after/before:0;seed[i]*=scale;coat[i]*=scale}}
   tissueView(kind,i){const total=Math.max(0,this.sim.world.plants[kind]?.[i]||0),seed=Math.min(total,this.seedReserve[kind]?.[i]||0),coat=Math.min(total-seed,this.coatReserve[kind]?.[i]||0);return{total,seed,coat,flesh:Math.max(0,total-seed-coat),genome:this.genomeAt(kind,i)}}
   cropYield(a,kind,i){
-    const total=Math.max(0,this.sim.world.plants[kind]?.[i]||0),seed=Math.min(total,this.seedReserve[kind]?.[i]||0),coat=Math.min(total-seed,this.coatReserve[kind]?.[i]||0),genome=this.genomeAt(kind,i),bite=Math.min(total,this.sim.foraging.profile(kind).bite),group=kind+':'+mouthOf(a);
-    // Cache immutable meal calculations, never an individual's affordability.
+    const total=Math.max(0,this.sim.world.plants[kind]?.[i]||0);
+    // An empty standing crop has no edible tissue, regardless of mouth or reserves.
+    // Re-read stock on every call so depletion/regrowth never uses a stale result.
+    if(total===0)return 0;
+    const seed=Math.min(total,this.seedReserve[kind]?.[i]||0),coat=Math.min(total-seed,this.coatReserve[kind]?.[i]||0),genome=this.genomeAt(kind,i),bite=Math.min(total,this.sim.foraging.profile(kind).bite),group=kind+':'+mouthOf(a);
+    // Cache immutable meal calculations and mouth-specific coat costs, never an individual's affordability.
     // Exact tissue/genotype comparisons invalidate immediately after real harvest.
     // Phase 3K performance: one sub-map per kind and mouth keyed by cell number (no per-call string key); results
     // are unchanged, since a missing recipe is recomputed exactly.
@@ -50,17 +61,16 @@ export class PlantDispersalController{
       let byMouth=cropChannelCaches.get(this);if(!byMouth){byMouth=new Map();cropChannelCaches.set(this,byMouth)}
       let channels=byMouth.get(group);if(!channels){channels=floraMealChannels(a,kind);byMouth.set(group,channels)}
       const v={total,seed,coat,flesh:Math.max(0,total-seed-coat),genome},options=channels.map(c=>{
-        const receipt=this.receiptFromTissues(kind,i,v,v.total,c.tissue),biteReceipt=this.receiptFromTissues(kind,i,v,bite,c.tissue),full=plantHandling(a,receipt);
-        return{coat:biteReceipt.coat,yield:Math.max(0,receipt.edible*c.eff-full.energyCost/(v.genome.traits.nutrition*3.6))};
+        const receipt=mealTissues(kind,v,v.total,c.tissue),biteReceipt=mealTissues(kind,v,bite,c.tissue),energyCost=plantHandlingEnergyCost(a,receipt.coat);
+        return{coat:biteReceipt.coat,handlingCost:plantHandlingEnergyCost(a,biteReceipt.coat),yield:Math.max(0,receipt.edible*c.eff-energyCost/(v.genome.traits.nutrition*3.6))};
       });
       recipe={total:v.total,seed:v.seed,coat:v.coat,genome:v.genome,bite,options};cache.set(i,recipe);
       if(cache.size>8192)cache.delete(cache.keys().next().value);
     }
-    let best=0;for(const o of recipe.options)if(plantHandlingAffordable(a,o.coat))best=Math.max(best,o.yield);return best;
+    let best=0;for(const o of recipe.options)if(plantHandlingCostAffordable(a,o.handlingCost))best=Math.max(best,o.yield);return best;
   }
   receiptFromTissues(kind,i,v,amount,tissue){
-    const removed=Math.min(Math.max(0,amount),v.total),scale=v.total>0?removed/v.total:0,seed=v.seed*scale,coat=v.coat*scale,flesh=v.flesh*scale;
-    return {kind,i,tissue,removed,coat,edible:tissue==='kernel'?(kind==='thistlepod'?seed+flesh:seed):flesh,viableSeeds:tissue==='kernel'?0:seed,destroyedSeeds:tissue==='kernel'?seed:0,discarded:tissue==='kernel'&&kind!=='thistlepod'?flesh+coat:coat,genome:v.genome,producerId:this.producerOrigins[kind]?.get(i)?.producerId||kind+':'+i+':founder',originCell:i};
+    return {kind,i,tissue,...mealTissues(kind,v,amount,tissue),genome:v.genome,producerId:this.producerOrigins[kind]?.get(i)?.producerId||kind+':'+i+':founder',originCell:i};
   }
   previewMeal(a,kind,i,amount,tissue='crop'){
     if(!floraMealChannels(a,kind).some(c=>c.tissue===tissue))return null;

@@ -1,3 +1,4 @@
+import {prepareRegionalBiology} from './world/planetary-offscreen-biology.js';
 import {ecologyRuleMigrationMessage} from './ecology/rule-policy.js';
 import {birthRuleMigrationMessage} from './lineage/birth-rules.js';
 import {FrameStepper} from './sim/frame-stepper.js';
@@ -278,7 +279,7 @@ const frameStepper=new FrameStepper({controlHz:CFG.controlHz,simHz:CFG.simHz});
 let last=performance.now(),hudTimer=0;
 function frame(now){
   const dt=Math.max(0,Math.min(.1,(now-last)/1000));last=now;const controls=input();
-  const processing=frameStepper.advance(dt,observer.speed,hz=>sim.playerControlStep(controls,hz),()=>sim.update(controls,{externalPlayerControl:true}),{paused:sim.paused});
+  const processing=frameStepper.advance(dt,observer.speed,hz=>sim.playerControlStep(controls,hz),()=>sim.update(controls,{externalPlayerControl:true}),{paused:sim.paused,beforeStep:()=>!prepareRegionalBiology(sim)});
   setProcessingLoad(sim,processing);
   const combatResult=sim.playerCombat.consumeResult();if(combatResult){if(!combatResult.quiet||combatResult.type!=='attack')tutorial.onInteraction(combatResult);audio.noteResult(combatResult)}
   sim.cognition.showOverlay=mindOpen;sim.territory.showOverlay=territoryOpen;sim.shelter.showOverlay=shelterOpen;sim.migration.showOverlay=migrationOpen;

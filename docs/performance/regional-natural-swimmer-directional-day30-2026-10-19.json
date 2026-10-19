@@ -1,0 +1,451 @@
+{
+  "scope": "Controlled locomotion from naturally recorded autonomous birth. Existing child and both matching birth-parent bodies are relocated to the same real water edge and temporarily directly controlled. No anatomy/genome/age/reserve editing or resource rescue. Not natural route choice, a simple-origin trial, long survival, descendant reproduction or browser visual acceptance.",
+  "input": "docs/test-runs/artifacts/regional-autonomous-100day-r2-2026-10-19/day30.snapshot.bin",
+  "inputSha256": "198fbd84f21178b7cef5a6fed2d70b702b21acb4a4c28f9afebe2a78a8ee46ff",
+  "birthReceipt": "docs/performance/regional-natural-anatomical-births-day30-2026-10-19.json",
+  "region": "0,0",
+  "child": 595,
+  "parentIds": [
+    5,
+    44
+  ],
+  "birthDay": 21,
+  "birthTick": 1008,
+  "bodyVariation": {
+    "policy": "neutral-head-structure/1",
+    "operator": "add-or-replace",
+    "branch": "paired",
+    "choice": 18,
+    "options": 61,
+    "attempted": true,
+    "accepted": true,
+    "from": "bp0-225474e8",
+    "to": "bp0-1230cc18",
+    "targets": [],
+    "removed": [],
+    "moved": [],
+    "problems": [],
+    "parentBodies": [
+      {
+        "id": 5,
+        "bodyId": "bp0-225474e8"
+      },
+      {
+        "id": 44,
+        "bodyId": "bp0-225474e8"
+      }
+    ],
+    "finalBody": "bp0-1230cc18",
+    "guidedOverride": false,
+    "expression": [
+      "webbed-limbs"
+    ]
+  },
+  "results": [
+    {
+      "id": 5,
+      "age": 52.45578703819774,
+      "canSwim": false,
+      "start": {
+        "x": 2.5,
+        "y": 61.5,
+        "dx": 0,
+        "dy": 1,
+        "input": {
+          "down": true
+        }
+      },
+      "end": {
+        "x": 2.5,
+        "y": 61.96426046363064
+      },
+      "energyBefore": 65.34597225674882,
+      "energyAfter": 65.28383382395408,
+      "firstWater": null,
+      "trace": [
+        {
+          "step": 1,
+          "x": 2.5,
+          "y": 61.5357123433562,
+          "wet": false,
+          "energy": 65.34119237730307
+        },
+        {
+          "step": 17,
+          "x": 2.5,
+          "y": 61.96426046363064,
+          "wet": false,
+          "energy": 65.28383382395408
+        },
+        {
+          "step": 33,
+          "x": 2.5,
+          "y": 61.96426046363064,
+          "wet": false,
+          "energy": 65.28383382395408
+        },
+        {
+          "step": 49,
+          "x": 2.5,
+          "y": 61.96426046363064,
+          "wet": false,
+          "energy": 65.28383382395408
+        },
+        {
+          "step": 65,
+          "x": 2.5,
+          "y": 61.96426046363064,
+          "wet": false,
+          "energy": 65.28383382395408
+        },
+        {
+          "step": 81,
+          "x": 2.5,
+          "y": 61.96426046363064,
+          "wet": false,
+          "energy": 65.28383382395408
+        },
+        {
+          "step": 97,
+          "x": 2.5,
+          "y": 61.96426046363064,
+          "wet": false,
+          "energy": 65.28383382395408
+        },
+        {
+          "step": 113,
+          "x": 2.5,
+          "y": 61.96426046363064,
+          "wet": false,
+          "energy": 65.28383382395408
+        },
+        {
+          "step": 129,
+          "x": 2.5,
+          "y": 61.96426046363064,
+          "wet": false,
+          "energy": 65.28383382395408
+        },
+        {
+          "step": 145,
+          "x": 2.5,
+          "y": 61.96426046363064,
+          "wet": false,
+          "energy": 65.28383382395408
+        },
+        {
+          "step": 161,
+          "x": 2.5,
+          "y": 61.96426046363064,
+          "wet": false,
+          "energy": 65.28383382395408
+        },
+        {
+          "step": 177,
+          "x": 2.5,
+          "y": 61.96426046363064,
+          "wet": false,
+          "energy": 65.28383382395408
+        },
+        {
+          "step": 193,
+          "x": 2.5,
+          "y": 61.96426046363064,
+          "wet": false,
+          "energy": 65.28383382395408
+        },
+        {
+          "step": 209,
+          "x": 2.5,
+          "y": 61.96426046363064,
+          "wet": false,
+          "energy": 65.28383382395408
+        },
+        {
+          "step": 225,
+          "x": 2.5,
+          "y": 61.96426046363064,
+          "wet": false,
+          "energy": 65.28383382395408
+        },
+        {
+          "step": 241,
+          "x": 2.5,
+          "y": 61.96426046363064,
+          "wet": false,
+          "energy": 65.28383382395408
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "age": 49.3237833166495,
+      "canSwim": false,
+      "start": {
+        "x": 2.5,
+        "y": 61.5,
+        "dx": 0,
+        "dy": 1,
+        "input": {
+          "down": true
+        }
+      },
+      "end": {
+        "x": 2.5,
+        "y": 61.97379361683339
+      },
+      "energyBefore": 63.37749757135443,
+      "energyAfter": 63.3156381018831,
+      "firstWater": null,
+      "trace": [
+        {
+          "step": 1,
+          "x": 2.5,
+          "y": 61.533842401202385,
+          "wet": false,
+          "energy": 63.373079037820766
+        },
+        {
+          "step": 17,
+          "x": 2.5,
+          "y": 61.97379361683339,
+          "wet": false,
+          "energy": 63.3156381018831
+        },
+        {
+          "step": 33,
+          "x": 2.5,
+          "y": 61.97379361683339,
+          "wet": false,
+          "energy": 63.3156381018831
+        },
+        {
+          "step": 49,
+          "x": 2.5,
+          "y": 61.97379361683339,
+          "wet": false,
+          "energy": 63.3156381018831
+        },
+        {
+          "step": 65,
+          "x": 2.5,
+          "y": 61.97379361683339,
+          "wet": false,
+          "energy": 63.3156381018831
+        },
+        {
+          "step": 81,
+          "x": 2.5,
+          "y": 61.97379361683339,
+          "wet": false,
+          "energy": 63.3156381018831
+        },
+        {
+          "step": 97,
+          "x": 2.5,
+          "y": 61.97379361683339,
+          "wet": false,
+          "energy": 63.3156381018831
+        },
+        {
+          "step": 113,
+          "x": 2.5,
+          "y": 61.97379361683339,
+          "wet": false,
+          "energy": 63.3156381018831
+        },
+        {
+          "step": 129,
+          "x": 2.5,
+          "y": 61.97379361683339,
+          "wet": false,
+          "energy": 63.3156381018831
+        },
+        {
+          "step": 145,
+          "x": 2.5,
+          "y": 61.97379361683339,
+          "wet": false,
+          "energy": 63.3156381018831
+        },
+        {
+          "step": 161,
+          "x": 2.5,
+          "y": 61.97379361683339,
+          "wet": false,
+          "energy": 63.3156381018831
+        },
+        {
+          "step": 177,
+          "x": 2.5,
+          "y": 61.97379361683339,
+          "wet": false,
+          "energy": 63.3156381018831
+        },
+        {
+          "step": 193,
+          "x": 2.5,
+          "y": 61.97379361683339,
+          "wet": false,
+          "energy": 63.3156381018831
+        },
+        {
+          "step": 209,
+          "x": 2.5,
+          "y": 61.97379361683339,
+          "wet": false,
+          "energy": 63.3156381018831
+        },
+        {
+          "step": 225,
+          "x": 2.5,
+          "y": 61.97379361683339,
+          "wet": false,
+          "energy": 63.3156381018831
+        },
+        {
+          "step": 241,
+          "x": 2.5,
+          "y": 61.97379361683339,
+          "wet": false,
+          "energy": 63.3156381018831
+        }
+      ]
+    },
+    {
+      "id": 595,
+      "age": 6,
+      "canSwim": true,
+      "start": {
+        "x": 2.5,
+        "y": 61.5,
+        "dx": 0,
+        "dy": 1,
+        "input": {
+          "down": true
+        }
+      },
+      "end": {
+        "x": 2.5,
+        "y": 69.00809095288496
+      },
+      "energyBefore": 60.845489136135065,
+      "energyAfter": 60.41231605838058,
+      "firstWater": 15,
+      "trace": [
+        {
+          "step": 1,
+          "x": 2.5,
+          "y": 61.53451364236004,
+          "wet": false,
+          "energy": 60.84376904045295
+        },
+        {
+          "step": 17,
+          "x": 2.5,
+          "y": 62.06096674209202,
+          "wet": true,
+          "energy": 60.8163827147415
+        },
+        {
+          "step": 33,
+          "x": 2.5,
+          "y": 62.47577073703319,
+          "wet": true,
+          "energy": 60.789582278240566
+        },
+        {
+          "step": 49,
+          "x": 2.5,
+          "y": 62.890574731974354,
+          "wet": true,
+          "energy": 60.76278184173963
+        },
+        {
+          "step": 65,
+          "x": 2.5,
+          "y": 63.30537872691552,
+          "wet": true,
+          "energy": 60.7359814052387
+        },
+        {
+          "step": 81,
+          "x": 2.5,
+          "y": 63.72018272185669,
+          "wet": true,
+          "energy": 60.70918096873776
+        },
+        {
+          "step": 97,
+          "x": 2.5,
+          "y": 64.13498671679785,
+          "wet": true,
+          "energy": 60.68238053223683
+        },
+        {
+          "step": 113,
+          "x": 2.5,
+          "y": 64.54979071173902,
+          "wet": true,
+          "energy": 60.65558009573589
+        },
+        {
+          "step": 129,
+          "x": 2.5,
+          "y": 64.96459470668019,
+          "wet": true,
+          "energy": 60.62877965923496
+        },
+        {
+          "step": 145,
+          "x": 2.5,
+          "y": 65.37939870162135,
+          "wet": true,
+          "energy": 60.60197922273402
+        },
+        {
+          "step": 161,
+          "x": 2.5,
+          "y": 65.79420269656252,
+          "wet": true,
+          "energy": 60.57517878623309
+        },
+        {
+          "step": 177,
+          "x": 2.5,
+          "y": 66.27799305249202,
+          "wet": false,
+          "energy": 60.548031880797616
+        },
+        {
+          "step": 193,
+          "x": 2.5,
+          "y": 66.83078324404367,
+          "wet": false,
+          "energy": 60.520538506427606
+        },
+        {
+          "step": 209,
+          "x": 2.5,
+          "y": 67.38365749295342,
+          "wet": false,
+          "energy": 60.49304948040648
+        },
+        {
+          "step": 225,
+          "x": 2.5,
+          "y": 67.93657698366763,
+          "wet": false,
+          "energy": 60.465561903834974
+        },
+        {
+          "step": 241,
+          "x": 2.5,
+          "y": 68.48959641777188,
+          "wet": false,
+          "energy": 60.43807981008727
+        }
+      ]
+    }
+  ]
+}
