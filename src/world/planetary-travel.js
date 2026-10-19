@@ -13,6 +13,7 @@ import {createSimulationSnapshot,restoreSimulationSnapshot} from '../persistence
 import {bodyMass} from '../organisms/body-mass.js';
 import {familyTravelCohort,familyArrivalPoint,FAMILY_PASSAGE} from './family-passage.js';
 import {advanceRemoteEnvironment,remoteEnvironmentDue,OFFSCREEN_ENVIRONMENT} from './planetary-offscreen-environment.js';
+import {advanceRemoteBiology,remoteBiologicalDebt,OFFSCREEN_BIOLOGY} from './planetary-offscreen-biology.js';
 
 const LIMIT=16,BOUNDARY=3.75,SIZE=128;
 const GLOBAL_AUTHORITIES=['lineage','evolution','evolutionTree','evolutionBudget','evolutionEditor','generationProgress'];
@@ -71,7 +72,9 @@ export function planetaryTravelAvailability(sim){
  if(closest.distance(animal)>BOUNDARY)return unavailable('Approach the edge of the planetary map to continue walking.');
  const nextOrigin=neighboringRegion(sim.world.regionOrigin,closest.name),point=approach(sim,closest,animal);
  const sessions=stored(sim),found=sessions.sessions.find(s=>s.key===regionKey(nextOrigin));
- if(found&&remoteEnvironmentDue(sim,found)>OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays)
+ if(found&&found.biologicalMode==='canonical-ticks/1'&&remoteBiologicalDebt(sim,found)>OFFSCREEN_BIOLOGY.maxEntryTicks)
+  return unavailable('Remote biology has more than '+OFFSCREEN_BIOLOGY.maxEntryTicks+' ticks to reconcile. Continue the current world for living ecology catchup.');
+ if(found&&found.biologicalMode!=='canonical-ticks/1'&&remoteEnvironmentDue(sim,found)>OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays)
   return unavailable('This region has more than '+OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays+' days of physical weather to reconcile. Continue the current world to advance its environmental archive.');
  if(!found&&sessions.sessions.length>=LIMIT)return unavailable('Regional archive full. Return to an explored region.');
  const surveyed=sim.planetaryRegions.get(nextOrigin,{create:false});
@@ -120,7 +123,10 @@ export function crossPlanetaryBorder(sim){
  const sessions=prior.sessions.filter(s=>s.key!==destinationKey&&s.key!==sourceKey).map(s=>({key:s.key,snapshot:s.snapshot}));
  const oldDestination=prior.sessions.find(s=>s.key===destinationKey);
  const archivedDestination=oldDestination?structuredClone(oldDestination):null;
- if(archivedDestination)advanceRemoteEnvironment(sim,archivedDestination,{maxDays:OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays});
+ if(archivedDestination){
+  if(archivedDestination.biologicalMode==='canonical-ticks/1')advanceRemoteBiology(sim,archivedDestination,{maxTicks:OFFSCREEN_BIOLOGY.maxEntryTicks});
+  else advanceRemoteEnvironment(sim,archivedDestination,{maxDays:OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays});
+ }
  const nextId=Math.max(prior.nextId,sim.nextId);
  // Construct destination and all receipts before modifying the active sim.
  const dest=archivedDestination?restoreSimulationSnapshot(structuredClone(archivedDestination.snapshot)):
@@ -172,9 +178,10 @@ export function crossPlanetaryBorder(sim){
   atlas.install(world);
  }
  dest.planetaryRegions=atlas;
- sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,memberIds)});
+ sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,memberIds),...(sim.offscreenBiologyEnabled?{biologicalMode:'canonical-ticks/1'}:{})});
  dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions};
  dest.travelFamilyGroup=!!sim.travelFamilyGroup;
+ dest.offscreenBiologyEnabled=!!sim.offscreenBiologyEnabled;
  dest.lastPlayerAction={type:'planet-travel',actorId:traveler.id,members:memberIds,from:sourceKey,to:destinationKey,tick:dest.tickCount};
  return{ok:true,type:'planet-travel',message:'Crossed '+status.direction+' into planetary region '+destinationKey+(memberIds.length>1?' with '+(memberIds.length-1)+' family members.':'.')+' Regional wildlife and resources are retained.',simulation:dest,from:sourceKey,to:destinationKey,id:traveler.id,members:memberIds};
 }
