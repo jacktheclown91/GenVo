@@ -12,11 +12,33 @@ export function thermalCoverFactor(animal,temp,comfort,{wet=false}={}){
  const parts=planPartCounts(animal);
  let coverage=null;
  for(const [id,effect] of Object.entries(COVER_PHYSICS))if(parts[id]&&(!coverage||effect.cold<coverage.cold))coverage=effect;
- if(!coverage)return 1;
- if(temp>=comfort)return coverage.hot;
- // Wet fur loses a larger fraction of its insulation than structured feather
- // cover. Current soil/precipitation owns wetness; no fictitious coat-water stock.
- return wet?coverage.cold+(1-coverage.cold)*(1-coverage.wet):coverage.cold;
+ // Existing dorsal fur/feathers remain the only insulation-cover authority.
+ // Dryland organs then apply distinct, physically conditional tradeoffs.
+ let factor=coverage?(temp>=comfort?coverage.hot:wet?coverage.cold+(1-coverage.cold)*(1-coverage.wet):coverage.cold):1;
+ if(parts['heat-frill'])factor*=temp>=comfort?.72:1.14;
+ if(parts['wax-plates']&&temp>=comfort)factor*=1.18;
+ return factor;
+}
+
+// A mounted wax barrier reduces evaporative water demand on actually dry soil.
+// It cannot grant water, alter freshwater access or cancel other basal costs.
+export function aridityWaterFactor(animal,moisture){
+ const count=planPartCounts(animal)['wax-plates']||0;
+ if(!count)return 1;
+ if(!Number.isFinite(moisture))throw Error('Dryland water use needs physical soil moisture.');
+ const dryness=Math.max(0,Math.min(1,(.48-moisture)/.48));
+ return 1-.24*dryness;
+}
+
+// A two-foot support gait spreads body weight across loose dry soil.
+// Single modified feet are incomplete; saturated ground impairs wide pads.
+export function aridFooting(animal,moisture){
+ const pads=planPartCounts(animal)['arid-pad']||0;
+ if(pads<2)return{speed:1,energy:1,pads};
+ if(!Number.isFinite(moisture))throw Error('Dryland footing needs physical soil moisture.');
+ const dry=Math.max(0,Math.min(1,(.46-moisture)/.46));
+ const wet=Math.max(0,Math.min(1,(moisture-.60)/.40));
+ return{speed:1+.18*dry-.10*wet,energy:1-.12*dry+.14*wet,pads};
 }
 export function inclineGrip(animal,grade){
  const counts=planPartCounts(animal);
