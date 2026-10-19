@@ -33,10 +33,11 @@ for(const kind of kinds){
  for(let i=0;i<w.len;i++)if(w.plants[kind][i]>.012&&!w.water[i]){
   const score=coldFloraSuitability(kind,{temperature:w.temperature[i],elevation:w.terrain.elevation[i],moisture:w.moisture[i],fertility:w.fertility[i]});
   assert.ok(score>0,'initial '+kind+' is in a physically viable cold habitat');
-  covered++;if(w.isPlayable(i%w.n+.5,(i/w.n|0)+.5)&&candidate[kind]==null)candidate[kind]=i;
+  covered++;if(w.isPlayable(i%w.n+.5,(i/w.n|0)+.5)&&(candidate[kind]==null||w.plants[kind][i]>w.plants[kind][candidate[kind]]))candidate[kind]=i;
  }
  assert.ok(covered>0,'newly generated world has real cold founders for '+kind);
  assert.ok(candidate[kind]!=null,'cold food must appear on playable ground');
+ assert.ok(w.plants[kind][candidate[kind]]>.08,'mature enough accessible wild cold plants must occur naturally');
  assert.equal(w.plantResources.energy[kind].length,w.len);
  assert.equal(w.plantResources.limits[kind].length,w.len);
  assert.equal(d.seedReserve[kind].length,w.len);
