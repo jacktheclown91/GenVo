@@ -8,6 +8,10 @@ import {PLANTS} from '../sim/config.js';
 import {recordPageSeedDeposit} from './page-seed-transfers.js';
 
 const cropYieldCaches=new WeakMap();
+// Mouth-specific meal channels are immutable recipes for a given plant kind.
+// Cache only the static recipe selection, never actual edible stock, seed
+// reserves, genotype, affordability, energy or harvested material.
+const cropChannelCaches=new WeakMap();
 // Read-only diagnostics; does not initialize or invalidate meal caches.
 export function cropYieldCacheStats(controller){const groups=cropYieldCaches.get(controller);let entries=0;for(const cells of groups?.values()||[])entries+=cells.size;return{groups:groups?.size||0,entries,perGroupLimit:8192}}
 const LOCAL_DIRS=Object.freeze([[-1,-1],[0,-1],[1,-1],[-1,0],[1,0],[-1,1],[0,1],[1,1]]);
@@ -42,7 +46,9 @@ export class PlantDispersalController{
     // are unchanged, since a missing recipe is recomputed exactly.
     let caches=cropYieldCaches.get(this);if(!caches){caches=new Map();cropYieldCaches.set(this,caches)}let cache=caches.get(group);if(!cache){cache=new Map();caches.set(group,cache)}let recipe=cache.get(i);
     if(!recipe||recipe.total!==total||recipe.seed!==seed||recipe.coat!==coat||recipe.genome!==genome||recipe.bite!==bite){
-      const v={total,seed,coat,flesh:Math.max(0,total-seed-coat),genome},options=floraMealChannels(a,kind).map(c=>{
+      let byMouth=cropChannelCaches.get(this);if(!byMouth){byMouth=new Map();cropChannelCaches.set(this,byMouth)}
+      let channels=byMouth.get(group);if(!channels){channels=floraMealChannels(a,kind);byMouth.set(group,channels)}
+      const v={total,seed,coat,flesh:Math.max(0,total-seed-coat),genome},options=channels.map(c=>{
         const receipt=this.receiptFromTissues(kind,i,v,v.total,c.tissue),biteReceipt=this.receiptFromTissues(kind,i,v,bite,c.tissue),full=plantHandling(a,receipt);
         return{coat:biteReceipt.coat,yield:Math.max(0,receipt.edible*c.eff-full.energyCost/(v.genome.traits.nutrition*3.6))};
       });
