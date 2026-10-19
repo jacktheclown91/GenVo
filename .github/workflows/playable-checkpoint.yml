@@ -1,0 +1,41 @@
+name: GenVo playable checkpoint smoke
+on:
+  push:
+    branches:
+      - codex/repository-consolidation
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: playable-checkpoint-${{ github.ref_name }}
+  cancel-in-progress: true
+jobs:
+  everyday-play:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Runtime syntax
+        run: |
+          node --check src/main.js
+          node --check src/ui/front-end.js
+          node --check src/persistence/save-manager.js
+          node --check src/sim/frame-stepper.js
+          node --check tests/save-concurrent-requests.mjs
+      - name: Save, load, and world switching
+        run: |
+          node tests/save-concurrent-requests.mjs
+          node tests/save-async-coherence.mjs
+          node tests/save-persistence.mjs
+          node tests/save-storage.mjs
+          node tests/menu-world-slots.mjs
+      - name: Playable interactions and presentation contracts
+        run: |
+          node tests/quick-interaction-default.mjs
+          node tests/gameplay-actions.mjs
+          node tests/contextual-interactions.mjs
+          node tests/world-swap-render.mjs
+          node tests/menu-task-usability.mjs
