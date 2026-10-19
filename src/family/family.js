@@ -420,10 +420,9 @@ export class FamilyController{
       if(child.lactationParentId!=null&&child.age< SPECIES[child.species].maturity*MAMMAL.weaningFraction){
         if(!milkEligible(lactating,child))continue;
         if(caregiver.id!==lactating.id)continue;
-        const milk=transferMilk(caregiver,child);if(milk.ok){child.lastMilkTick=this.sim.tickCount;
-          const cell=this.sim.world.idx(child.x,child.y),temp=this.sim.world.temperature[cell];
-          if(motherWarmth(caregiver,child,temp))child.lastMaternalWarmthTick=this.sim.tickCount;
-        }
+        const milk=transferMilk(caregiver,child);if(milk.ok)child.lastMilkTick=this.sim.tickCount;
+        const cell=this.sim.world.idx(child.x,child.y),temp=this.sim.world.temperature[cell];
+        if(motherWarmth(caregiver,child,temp))child.lastMaternalWarmthTick=this.sim.tickCount;
         continue;
       }
       const childSpec=SPECIES[child.species],parentSpec=SPECIES[caregiver.species],independence=this.learningProfile(child)?.independence??0;
