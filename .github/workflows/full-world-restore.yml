@@ -29,6 +29,10 @@ jobs:
         run: node tests/region-restore-direct-parity.mjs
       - name: Planetary border archive and global authority clone parity
         run: node tests/planetary-handoff-copy-parity.mjs
+      - name: Detached snapshot buffer ownership and deep-clone reference
+        run: |
+          node tests/restore-detached-seed-ownership.mjs
+          node tests/restore-detached-world-buffers.mjs
       - name: Authentic remote organisms and exact offscreen resources
         run: node tests/e18-offscreen-biology.mjs
       - name: Synchronized three-region journey and mid-barrier saves
