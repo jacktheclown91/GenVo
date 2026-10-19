@@ -84,7 +84,10 @@ function restoreWorld(world,state,{initializeMissingFreshwater=false}={}){
   if(state.generator==='planetary/1'){
     const expected=planetRegionOrigin(world.regionOrigin),actual=planetRegionOrigin(state.regionOrigin||{x:0,y:0});
     if(expected.x!==actual.x||expected.y!==actual.y)throw Error('Saved planet region does not match its physical World.');
-  }else if(state.regionOrigin!==undefined)throw Error('Nonplanetary world cannot have a region origin.');
+  }else if(state.regionOrigin!==undefined){
+    if(state.planet)throw Error('Saved planet descriptor conflicts with saved generator.');
+    throw Error('Nonplanetary world cannot have a region origin.');
+  }
   if(state.generator==='planetary/1'){if(!state.planet)throw Error('Saved planet descriptor is missing.');world.planet=new PlanetGeography(world.seed,state.planet)}else{if(state.planet!=null)throw Error('Planet descriptor conflicts with saved generator.');delete world.planet}
   if(state.pageLayout)validatePageLayout(world,state.pageLayout);
   restoreSurfaceTopology(world,state);
