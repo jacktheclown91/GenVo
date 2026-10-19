@@ -17,6 +17,10 @@ export const WORLD_RESTORE_CACHE={enabled:true};
 const restoreBases=new Map(),RESTORE_BASE_LIMIT=4;let restoreHits=0,restoreMisses=0;
 export function restorationWorldCacheStats(){return{entries:restoreBases.size,limit:RESTORE_BASE_LIMIT,hits:restoreHits,misses:restoreMisses}}
 export function worldForRestore(seed,options={}){
+ // A fully recorded modern snapshot already owns every physical world field.
+ // Allocate only its structural arrays, then let restoreWorld validate and
+ // hydrate those arrays; never regenerate and immediately discard its biome.
+ if(options.restoreOnly)return new World(seed,options);
  if(!WORLD_RESTORE_CACHE.enabled)return new World(seed,options);
  const generator=generatorForState({generator:options.generator??WORLD_GENERATORS.legacy});
  const givenOrigin=options.planetOrigin===undefined?{x:0,y:0}:options.planetOrigin;
@@ -38,9 +42,16 @@ export function worldForRestore(seed,options={}){
  return world;
 }
 export class World{
-  constructor(seed,{generator=WORLD_GENERATORS.legacy,planetOrigin={x:0,y:0}}={}){this.seed=String(seed);this.seedHash=hashString(this.seed);this.n=CFG.worldSize;this.len=this.n*this.n;this.generator=generatorForState({generator});if(this.generator===WORLD_GENERATORS.planet){this.regionOrigin=planetRegionOrigin(planetOrigin);this.planet=new PlanetGeography(this.seed)}else if(planetOrigin?.x||planetOrigin?.y)throw Error('Only planetary worlds accept a regional origin.');this.topology=newTopologyState();
+  constructor(seed,{generator=WORLD_GENERATORS.legacy,planetOrigin={x:0,y:0},restoreOnly=false}={}){this.seed=String(seed);this.seedHash=hashString(this.seed);this.n=CFG.worldSize;this.len=this.n*this.n;this.generator=generatorForState({generator});if(this.generator===WORLD_GENERATORS.planet){this.regionOrigin=planetRegionOrigin(planetOrigin);this.planet=new PlanetGeography(this.seed)}else if(planetOrigin?.x||planetOrigin?.y)throw Error('Only planetary worlds accept a regional origin.');this.topology=newTopologyState();
     this.moisture=new Float32Array(this.len);this.fertility=new Float32Array(this.len);this.temperature=new Float32Array(this.len);this.water=new Uint8Array(this.len);this.landRegion=new Uint16Array(this.len);this.seepage=new Float32Array(this.len);this.drinkable=new Uint8Array(this.len);this.waterDistance=new Uint16Array(this.len);this.drinkSpots=[];this.carrion=new Float32Array(this.len);
-    this.plants={};this.seedBank={};for(const [kind,p] of Object.entries(PLANTS)){const field=new Float32Array(this.len);this.plants[kind]=field;this[kind]=field;if(p.dispersal)this.seedBank[kind]=new Float32Array(this.len)}this.generate();this._topologyMask=this.water.slice();this.pages=new WorldPages(this);}
+    this.plants={};this.seedBank={};for(const [kind,p] of Object.entries(PLANTS)){const field=new Float32Array(this.len);this.plants[kind]=field;this[kind]=field;if(p.dispersal)this.seedBank[kind]=new Float32Array(this.len)}
+    if(restoreOnly){
+      // Initialization without ecological stocks is safe ONLY for a complete
+      // authoritative snapshot, selected by the restore coordinator.
+      this.freshwaterProducerKinds=Object.keys(FRESHWATER_FOOD).filter(k=>!FRESHWATER_FOOD[k].source&&k!=='detritus');
+      this.freshwaterFood=Object.fromEntries(Object.keys(FRESHWATER_FOOD).filter(k=>k!=='detritus').map(k=>[k,new Float32Array(this.len)]));
+    }else this.generate();
+    this._topologyMask=this.water.slice();this.pages=new WorldPages(this);}
   idx(x,y){x=Math.max(0,Math.min(this.n-1,x|0));y=Math.max(0,Math.min(this.n-1,y|0));return y*this.n+x}
   biomeClimate(climate){return this.environment&&climate?.frontDay===undefined?{...climate,frontDay:this.soilWater?.day??this.environment.day??0}:climate}
   biomeAt(x,y,climate){if(!Number.isFinite(x)||!Number.isFinite(y)||x<0||y<0||x>=this.n||y>=this.n)throw Error('Biome query outside world.');return biomeAt(this,this.idx(x,y),this.biomeClimate(climate))}
