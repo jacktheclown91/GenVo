@@ -1,6 +1,7 @@
 // Land-producer resource contract. Prototype normalized units, not calibrated biology.
 // Existing vegetation schedules and biomass remain authoritative; no second plant simulation.
 import {localRain} from '../world/environment.js';
+import {coldFloraDieback} from './cold-flora.js';
 import {PLANTS} from '../sim/config.js';
 import {SOIL_WATER,plantAvailableWater} from './soil-water.js';
 export const PLANT_RESOURCE_UNITS=Object.freeze({waterPerBiomass:.5,mineralPerBiomass:.1,energyPerBiomass:1,waterCapacity:2,energyCapacity:.25});
@@ -51,6 +52,10 @@ export function growLandProducers(s,i,entries,{m,f,temp,scar,grow}){
   const w=s.world,r=w.plantResources,u=PLANT_RESOURCE_UNITS,dispersal=s.dispersal,requests=[];
   for(const e of entries){const {kind,p,d,plants,bank,seasonBoost}=e,initial=plants[i];let current=initial;
     if(d?.seedLimited&&current<=.002&&!dispersal.isEstablished(kind,i)){returnPlantLoss(s,kind,i,current);current=current<=.0005&&(!bank||bank[i]<.012)?0:dispersal.germinate(kind,i,m,f,temp);}
+    // Real warm spells kill specialist tissue; it becomes ordinary decomposer
+    // litter, not vanished biomass or a synthetic climate multiplier.
+    const heatLoss=current*coldFloraDieback(kind,temp);
+    if(heatLoss>0){current-=heatLoss;returnPlantLoss(s,kind,i,heatLoss)}
     if(PLANT_TURNOVER.enabled&&current>0){const shed=current*PLANT_TURNOVER.rate;current-=shed;returnPlantLoss(s,kind,i,shed);w.plantResources.totals.senescence=(w.plantResources.totals.senescence||0)+shed}
     const genome=dispersal.genomeAt(kind,i),phenotype=genome?.schema===4?{...p,growth:genome.traits.growth,waterNeed:genome.traits.waterNeed}:p;let desired=grow(current,phenotype,m,f,temp,{seedLimited:!!d?.seedLimited&&!dispersal.isEstablished(kind,i)});if(scar>0&&desired>current)desired=current+(desired-current)*(1-scar);desired=Math.min(p.carry,desired*seasonBoost);
     requests.push({e,initial,current,desired,wanted:Math.max(0,desired-current),demand:Math.min(Math.max(0,desired-current),r.energy[kind][i]/u.energyPerBiomass)});
