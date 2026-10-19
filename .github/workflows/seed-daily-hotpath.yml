@@ -40,6 +40,7 @@ jobs:
         run: |
           node tests/flora-seed-decoder-parity.mjs
           node tests/flora-seed-codec-reference-parity.mjs
+          node tests/owned-regional-seed-metadata.mjs
           node tests/flora-seed-metadata-copy.mjs
       - name: Measure decoding without artificial expected speedup
         run: node tools/benchmark-flora-seed-decoder.mjs
