@@ -48,7 +48,7 @@ assert.equal(flightMove.flying,true);
 assert.equal(canOccupy(p,w,to.x,to.y),true,'winged airborne organism can cross real open water');
 assert.equal(canReach(p,w,to.x,to.y),true);
 const before=p.energy;
-sim.phaseMetabolism();
+sim.phaseClimate();sim.phaseMetabolism();
 assert.ok(p.energy<before,'real metabolism charges flight even when hovering');
 assert.equal(sim.resourceAvailability('drink').enabled,false);
 assert.equal(sim.resourceAvailability('eat').enabled,false);
