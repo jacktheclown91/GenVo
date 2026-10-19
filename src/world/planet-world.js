@@ -12,9 +12,30 @@ export function initializePlanetWorld(w){
  for(let i=0;i<w.len;i++){const s=samples[i],x=i%w.n,y=Math.floor(i/w.n);w.water[i]=s.water;w.moisture[i]=s.moisture;w.fertility[i]=s.fertility;w.temperature[i]=s.temperature;elevation[i]=s.elevation;temperatureOffset[i]=s.temperature-.54;rainScale[i]=s.rainScale;depth[i]=s.depth;salt[i]=depth[i]*s.salinity;
   for(const [kind,p] of Object.entries(PLANTS))w.plants[kind][i]=s.water?0:w.initialPlant(p.init,{wet:s.moisture,fine:coordNoise(w.seedHash^0x51ac,x+origin.x,y+origin.y),fertility:s.fertility,x,y,kind});
  }
+ // The coarse planetary geography is the only external reservoir descriptor.
+ // A code is assigned only where water crosses the actual 128-tile boundary:
+ // 1 freshwater, 2 ocean, 3 both (corner). Inland lakes stay closed.
+ // Exchange is finite-rate and fully accounted in advanceEnvironmentWater.
+ const n=w.n,edges=[
+  {cells:w.planet.region(origin.x-1,origin.y,1,n),index:k=>k*n},
+  {cells:w.planet.region(origin.x+n,origin.y,1,n),index:k=>k*n+n-1},
+  {cells:w.planet.region(origin.x,origin.y-1,n,1),index:k=>k},
+  {cells:w.planet.region(origin.x,origin.y+n,n,1),index:k=>(n-1)*n+k}
+ ];
+ for(const {cells,index} of edges)for(let k=0;k<n;k++){
+  const i=index(k),outside=cells[k];
+  if(!w.water[i]||!outside.water)continue;
+  const code=outside.ocean?2:1,current=boundary[i];
+  if(current===0)boundary[i]=code;
+  else if(current!==code)boundary[i]=3;
+ }
  w.terrain={schema:1,elevation,travelEnabled:true};deriveDrainage(w);
- // This bounded preview has no declared external reservoir flux. Dynamic cross-region
- // ocean/river transport is a later authority; do not fabricate replenishment here.
- w.environment={schema:1,temperatureOffset,rainScale,depth,salt,boundary,day:0,totals:{saltInput:0,saltOutput:0,rainWater:0,displacedWater:0},daily:[]};
+ // V2: observed geography supplies fixed-composition OPEN boundary water.
+ // No stock is silently reset: a bounded daily mass flux is audited. This
+ // is NOT a paired exchange with an independently simulated neighbor's
+ // mutable water inventory; that larger authority remains future work.
+ w.environment={schema:2,temperatureOffset,rainScale,depth,salt,boundary,day:0,totals:{
+  saltInput:0,saltOutput:0,rainWater:0,displacedWater:0,boundaryInput:0,boundaryOutput:0
+ },daily:[]};
  w.buildLandRegions();w.buildHydrology();initializeColdFlora(w);initializeFreshwater(w);initializePlantResources(w);initializeOrganicResources(w);
 }
