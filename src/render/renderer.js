@@ -864,7 +864,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   drawCarrion(px,py,u,amount){const c=this.ctx;c.save();c.translate(px,py);pixel(c,4,11,8,2,u,'rgba(48,29,26,.42)');pixel(c,5,8,6,3,u,'#8b554d');pixel(c,4,9,2,2,u,'#6f443f');if(amount>.7){pixel(c,10,7,1,4,u,'#d2c7a9');pixel(c,9,8,3,1,u,'#d2c7a9')}c.restore()}
   drawAnimal(a,tile){
     const c=this.ctx;
-    const scale=this.zoom,ph=phenotypeFor(a),dev=developmentFor(a),social=this.sim.social?.visualState?.(a)||null,gaitPerTile=8*CFG.tileSize/gaitTravelFor(ph.limbScale*(.72+.28*(a.player?dev.growth:Math.round(dev.growth*32)/32)),assemblyFor(a)?.legSlots),visual=a.player&&this.playerVisual?{...this.playerVisual,gaitPhase:this.motion.sample({...a,x:this.playerVisual.x,y:this.playerVisual.y},this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear',snap:true,gaitPerTile}).gaitPhase}:this.motion.sample(a,this.sim.tickCount,this.renderNow,{hz:(a.player||a.pursuitEngaged)?CFG.controlHz:CFG.simHz,response:'linear',gaitPerTile}),px=Math.round((visual.x-this.camera.x)*tile+this.w/2),py=Math.round((visual.y-this.camera.y)*tile+this.h/2);(this.screenPos||=new Map()).set(a.id,{x:px,y:py});let action=this.actionPose(a,!!visual.moving);
+    const scale=this.zoom,ph=phenotypeFor(a),dev=developmentFor(a),social=this.sim.social?.visualState?.(a)||null,gaitPerTile=8*CFG.tileSize/gaitTravelFor(ph.limbScale*(.72+.28*(a.player?dev.growth:Math.round(dev.growth*32)/32)),assemblyFor(a)?.legSlots),visual=a.player&&this.playerVisual?{...this.playerVisual,gaitPhase:this.motion.sample({...a,x:this.playerVisual.x,y:this.playerVisual.y},this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear',snap:true,gaitPerTile}).gaitPhase}:this.motion.sample(a,this.sim.tickCount,this.renderNow,{hz:(a.player||a.pursuitEngaged)?CFG.controlHz:CFG.simHz,response:'linear',gaitPerTile}),px=Math.round((visual.x-this.camera.x)*tile+this.w/2),py=Math.round((visual.y-this.camera.y)*tile+this.h/2);(this.screenPos||=new Map()).set(a.id,{x:px,y:py});let action=a.torpor?'rest':this.actionPose(a,!!visual.moving);
     const targetTravel=!!(a.target&&!['eat','drink','court'].includes(action)),moving=!!visual.moving||(!a.player&&!!visual.recentlyMoving&&targetTravel);
     let phase=moving?(visual.gaitPhase??visual.phase):(((this.encounters?.time||0)/.22)+a.id)%8;
     // Autonomous gait phases are ID-offset in presentation so unrelated wildlife does not
@@ -909,7 +909,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const carriage=(alert||['drink','eat','hunt'].includes(action))?null:locomotionOffsets(locomotionStyle(a),{phase,moving,action,baseBob:bob,propulsion:action==='swim'?(movementProfile(a,this.sim.world).speed||0)/.66:1});
     const visualGrowth=a.player?dev.growth:Math.round(dev.growth*32)/32;ph.bodyScale*=visualGrowth;ph.limbScale*=.72+.28*visualGrowth;ph.sensoryScale*=.78+.22*visualGrowth;if(dev.maturity<.55){ph.stripe=false;ph.spot=false}
     const inWater=!!this.sim.world.water[this.sim.world.idx(a.x,a.y)];if(a.airborne)action='fly';else if(inWater&&this.sim.canSwim?.(a)&&!['eat','drink','crack'].includes(action))action='swim';
-    const life=visualLifeState(this.sim,a,{frame,moving,action,development:dev,social,timeSeconds:this.encounters?.time});life.growth=visualGrowth;if(!a.player){life.breath=Math.round(life.breath*8)/8;life.settle=Math.round(life.settle*8)/8;}
+    const life=visualLifeState(this.sim,a,{frame,moving,action,development:dev,social,timeSeconds:this.encounters?.time});life.growth=visualGrowth;if(a.torpor){life.breath*=.28;life.settle=Math.max(life.settle,.72)}if(!a.player){life.breath=Math.round(life.breath*8)/8;life.settle=Math.round(life.settle*8)/8;}
     const behavior=behaviorVisualState({bodyPlan:a.bodyPlan,id:a.id,action,phase,moving,life,social});
     // Body and joints yield above support; contact shadows/toes stay on the ground.
     if(carriage){behavior.bodyRise+=carriage.rise;behavior.bodySway=(behavior.bodySway||0)+carriage.sway;behavior.torsoTwist=carriage.twist;behavior.dorsalRoll=carriage.roll;behavior.bodyLean=(behavior.bodyLean||0)+carriage.lean}
@@ -938,7 +938,11 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     if(combatStatus)drawPlayerCombatFeedback(c,{animal:a,status:combatStatus,winded,scale,now:this.renderNow,dir:drawDir});else if(a.playerHunt)drawStalkerPursuitFeedback(c,{animal:a,scale,now:this.renderNow});
     drawEncounterReactionMarks(c,{reaction,animal:a,scale,dir:drawDir});drawDefenseMarks(c,{reaction:defense,animal:a,scale,dir:drawDir});
     if(!a.airborne&&!a.perched)drawForegroundContact(c,{contact,scale,bodyScale:ph.bodyScale,isPlayer:!!a.player});
-    this.drawMarkers(a,scale);if(a.infected){pixel(c,-6,-7,1,2,scale,'rgba(219,121,177,.78)');pixel(c,5,-7,1,2,scale,'rgba(219,121,177,.62)')}c.restore();
+    this.drawMarkers(a,scale);
+    // Two quiet 32-grid pixel sleep strokes readable from above; no side-view
+    // body, new actor animation state or invented simulation energy.
+    if(a.torpor){const alpha=.55+.20*Math.sin((this.renderNow||0)*.0016+a.id);c.save();c.globalAlpha*=alpha;for(const [x,y] of [[6,-12],[7,-12],[8,-12],[8,-11],[7,-10],[6,-9],[7,-9],[8,-9],[10,-15],[11,-15],[11,-14],[10,-13],[11,-13]])pixel(c,x,y,1,1,scale,'#d8e4e2');c.restore()}
+    if(a.infected){pixel(c,-6,-7,1,2,scale,'rgba(219,121,177,.78)');pixel(c,5,-7,1,2,scale,'rgba(219,121,177,.62)')}c.restore();
   }
   easedDir(id,target){
     const m=this.turnState||(this.turnState=new Map()),now=this.renderNow,st=m.get(id);if(!st){m.set(id,{d:target,t:now});return target}
