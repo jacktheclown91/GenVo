@@ -3,6 +3,7 @@ import {preyPreference,canHunt} from '../ecology/functional-diet.js';
 import {isFeedingIntent} from '../ecology/feeding-intents.js';
 import {SPECIES} from '../organisms/species.js';
 import {CFG} from '../sim/config.js';
+import {milkEligible,transferMilk,motherWarmth,MAMMAL} from '../ecology/mammalian-care.js';
 
 export class FamilyController{
   constructor(sim){
@@ -350,17 +351,23 @@ export class FamilyController{
   }
   tendAvailability(parent,child){
     if(!parent?.alive||!child?.alive||!this.careStatus(child,parent)||!child.parentIds?.includes(parent.id))return{enabled:false,state:'unavailable',reason:'Only dependent young of this caregiver can be tended.'};
-    const provision=this.tendProvision(parent,child),canFeed=provision.fromShelter+provision.fromParent>0,label=canFeed?'Feed':'Tend';
+    const provision=this.tendProvision(parent,child),nursing=milkEligible(parent,child),canFeed=provision.fromShelter+provision.fromParent>0,label=nursing?'Nurse':canFeed?'Feed':'Tend';
     if((child.careCooldownUntil||0)>this.sim.tickCount)return{enabled:false,state:'unavailable',label,reason:'Your young is settled for the moment.'};
     if(Math.hypot(child.x-parent.x,child.y-parent.y)>1.75)return{enabled:false,state:'approachable',label,reason:'Move closer to your young.'};
-    return{enabled:true,state:'available',label,reason:canFeed?'Share available food and settle your young.':provision.water>0?'Share surplus water and settle your young.':'No surplus food or water to share; check and settle your young.'};
+    return{enabled:true,state:'available',label,reason:nursing?'Nurse your live-born young. Milk uses food energy and water from your actual reserves.':canFeed?'Share available food and settle your young.':provision.water>0?'Share surplus water and settle your young.':'No surplus food or water to share; check and settle your young.'};
   }
   tend(parent,child=null){
     if(!parent?.alive)return{ok:false,type:'care',message:'No active caregiver.'};
     const target=child?{child,status:this.careStatus(child,parent),distance:Math.hypot(child.x-parent.x,child.y-parent.y)}:this.careTarget(parent,{radius:1.7,urgentOnly:true});
     if(!target?.child||!target.status||!target.child.parentIds?.includes(parent.id))return{ok:false,type:'care',message:'No young need tending nearby.'};
     const available=this.tendAvailability(parent,target.child);if(!available.enabled)return{ok:false,type:'care',message:available.reason};const young=target.child,status=target.status;
-    const provision=this.tendProvision(parent,young),fromShelter=provision.fromShelter,fed=fromShelter+provision.fromParent,shared=provision.water;
+    const nursing=milkEligible(parent,young)?transferMilk(parent,young,{maximum:2}):null;
+    if(nursing?.ok){young.lastMilkTick=this.sim.tickCount;young.careStress=Math.max(0,(young.careStress??0)-.36);young.careTendedCount=(young.careTendedCount||0)+1;young.lastTendedDay=this.sim.day;young.careCooldownUntil=this.sim.tickCount+CFG.simHz*1.5;this.pushEvent({type:'milk-fed',animalId:young.id,caregiverId:parent.id,energy:nursing.fed});return{ok:true,type:'nursing',child:young,fed:nursing.fed,shared:0,message:'Nursed your young from your food and water reserves.'}}
+    // A milk-dependent infant never receives an extra generic energy handout
+    // from the same mother when nursing cannot be funded. Affectionate care
+    // can still soothe the child, and other caregivers may provision food.
+    const provision=this.tendProvision(parent,young);if(milkEligible(parent,young)){provision.fromParent=0;provision.water=0}
+    const fromShelter=provision.fromShelter,fed=fromShelter+provision.fromParent,shared=provision.water;
     if(fromShelter>0){provision.shelter.foodStore-=fromShelter;provision.shelter.lastUsedTick=this.sim.tickCount}
     parent.energy-=provision.fromParent;young.energy+=fed;parent.hydration-=shared;young.hydration+=shared;
     const before=young.careStress??0;young.careStress=Math.max(0,before-.36);young.careTendedCount=(young.careTendedCount||0)+1;young.lastTendedDay=this.sim.day;
@@ -404,6 +411,18 @@ export class FamilyController{
       }
       const d=Math.hypot(caregiver.x-child.x,caregiver.y-child.y);
       if(d>(care.nurseRadius??1.6))continue;
+      // Mammalian newborns require the *birth parent* for milk. A nearby
+      // substitute caregiver can still share ordinary food, not synthesize milk.
+      const lactating=this.sim.animals.find(a=>a.id===child.lactationParentId&&a.alive)||null;
+      if(child.lactationParentId!=null&&child.age< SPECIES[child.species].maturity*MAMMAL.weaningFraction){
+        if(!milkEligible(lactating,child))continue;
+        if(caregiver.id!==lactating.id)continue;
+        const milk=transferMilk(caregiver,child);if(milk.ok){child.lastMilkTick=this.sim.tickCount;
+          const cell=this.sim.world.idx(child.x,child.y),temp=this.sim.world.temperature[cell];
+          if(motherWarmth(caregiver,child,temp))child.lastMaternalWarmthTick=this.sim.tickCount;
+        }
+        continue;
+      }
       const childSpec=SPECIES[child.species],parentSpec=SPECIES[caregiver.species],independence=this.learningProfile(child)?.independence??0;
       const nurseTarget=(care.nurseTarget??.78)-independence*.14;
       const need=Math.max(0,childSpec.maxEnergy*nurseTarget-child.energy);
