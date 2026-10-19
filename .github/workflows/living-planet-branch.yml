@@ -1,0 +1,28 @@
+name: GenVo branch mechanism checks
+
+on:
+  push:
+    branches:
+      - work/living-planet-completion
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  mechanism:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Independent inherited pigmentation and saves
+        run: node tests/inherited-pigmentation.mjs
+      - name: Existing save persistence
+        run: node tests/save-persistence.mjs
+      - name: Focused neutral inheritance and developmental symmetry
+        run: |
+          node tests/developmental-symmetry.mjs
+          node tests/neutral-birth-core.mjs

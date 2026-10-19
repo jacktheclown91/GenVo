@@ -1,4 +1,5 @@
 import {formReading,protoReading} from '../lineage/readings.js';
+import {pigmentExpression} from './pigmentation.js';
 // Legacy founding-population metadata for birth and save compatibility.
 // Runtime feeding and predation MUST use functional-diet.js, not diets/hunter.
 export const SPECIES={
@@ -47,8 +48,10 @@ export function phenotypeFor(animal){
   const body=clamp(.74,1.36,(1+((g.body??1)-1)*2.6)*(adapt.has('hardened-mantle')?1.06:1)*(adapt.has('water-sacs')?1.04:1)*formVisual.body*protoVisual.body*lifestyleVisual.body);
   const limb=clamp(.72,1.46,(1+((g.motion??1)-1)*2.8)*(adapt.has('spring-tendons')?1.08:1)*formVisual.limb*protoVisual.limb*lifestyleVisual.limb);
   const sensory=clamp(.72,1.40,(1+((g.senses??1)-1)*2.9)*formVisual.sensory*protoVisual.sensory*lifestyleVisual.sensory);
-  const hueShift=((g.climate??1)-1)*165+((g.temperament??1)-1)*36;
-  const lightShift=((g.metabolism??1)-1)*48+((g.immunity??1)-1)*14;
+  const pigment=pigmentExpression(animal?.pigmentGenome);
+  // Historical genomes keep their previous appearance. New genomes own their color loci.
+  const hueShift=pigment?.hueShift??(((g.climate??1)-1)*165+((g.temperament??1)-1)*36);
+  const lightShift=pigment?.lightShift??(((g.metabolism??1)-1)*48+((g.immunity??1)-1)*14);
   const digestion=g.digestion??1,immunity=g.immunity??1,temperament=g.temperament??1;
   return{
     bodyScale:body,
@@ -69,11 +72,12 @@ export function phenotypeFor(animal){
     lineageFormStrength:formStrength,
     hueShift,
     lightShift,
-    patternBands:Math.max(0,Math.min(3,Math.round(Math.abs(digestion-1)*18))),
-    patternSpots:Math.max(0,Math.min(4,Math.round(Math.abs(immunity-1)*20))),
-    patternPolarity:digestion>=1?1:-1,
-    stripe:Math.abs(digestion-1)>=.035,
-    spot:Math.abs(immunity-1)>=.045,
+    pigmentChroma:pigment?.pigmentChroma??null,
+    patternBands:pigment?.patternBands??Math.max(0,Math.min(3,Math.round(Math.abs(digestion-1)*18))),
+    patternSpots:pigment?.patternSpots??Math.max(0,Math.min(4,Math.round(Math.abs(immunity-1)*20))),
+    patternPolarity:pigment?.patternPolarity??(digestion>=1?1:-1),
+    stripe:pigment?.stripe??(Math.abs(digestion-1)>=.035),
+    spot:pigment?.spot??(Math.abs(immunity-1)>=.045),
     compact:(g.body??1)<.955,
     energetic:(g.metabolism??1)>1.055,
     adaptations:{hardened:adapt.has('hardened-mantle'),barbed:adapt.has('barbed-limbs'),bitter:adapt.has('bitter-slime'),spring:adapt.has('spring-tendons'),waterSacs:adapt.has('water-sacs'),efficientGut:adapt.has('efficient-gut'),fastHealing:adapt.has('fast-healing'),alarmPulse:adapt.has('alarm-pulse'),camouflage:adapt.has('camouflage-mantle'),heavyJaw:adapt.has('heavy-jaw'),mobbing:adapt.has('mobbing-instinct'),grasping:adapt.has('grasping-limbs'),adaptiveChromatophores:adapt.has('adaptive-chromatophores'),crushingJaw:adapt.has('crushing-jaw'),coordinatedDefense:adapt.has('coordinated-defense'),provisioningPouches:adapt.has('provisioning-pouches'),webbedLimbs:adapt.has('webbed-limbs')}
