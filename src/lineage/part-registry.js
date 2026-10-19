@@ -15,7 +15,7 @@ export const SOCKET_TYPES=Object.freeze(['limb','head','mouth','eye','dorsal','f
 // Capability names (locked for v0). Owning systems decide what each one does.
 export const CAPABILITIES=Object.freeze([
   'walk','sprint','pounce','carry','dig','graze','bite','tear','crush','see','see-wide',
-  'armor','retaliate','strike','venom','store','signal','swim-propel','insulate','climb',
+  'armor','retaliate','strike','venom','store','signal','swim-propel','insulate','climb','fly',
   // Wave 1 (creator decision 2026-10-09): eight bodies, legs, mouths and eyes.
   'run','brace','swim','quiet','peck','filter','suck','swallow','nibble','aim','spot','glance','track','display','call','dance','flare','scent','gesture','lay-eggs','live-birth'
 ]);
@@ -139,6 +139,9 @@ export const PARTS=Object.freeze(Object.fromEntries([
   part('fur-mantle','metabolism',{tags:['cover','fur'],prereq:['filament-tuft'],sockets:['dorsal'],mass:.48,upkeep:.20,cost:4,actions:['insulate'],niche:['cold','woodland'],symmetry:'single'}),
   part('feather-mantle','metabolism',{tags:['cover','feathers'],prereq:['filament-tuft'],sockets:['dorsal'],mass:.39,upkeep:.21,cost:5,actions:['insulate','display'],niche:['cold','courtship'],symmetry:'single'}),
   part('proto-wing','locomotion',{tags:['cover','proto-wing','display'],prereq:['feather-mantle'],sockets:['dorsal'],mass:.72,upkeep:.32,cost:7,actions:['display','flare'],niche:['courtship','woodland'],symmetry:'single',anim:'sweep'}),
+  // E8: bilateral, load-bearing wing pair built on the existing dorsal socket.
+  // The physiological lift constraint lives in flight.js, not the part label.
+  part('flight-wing','locomotion',{tags:['cover','feathers','wing','powered-flight'],prereq:['proto-wing'],sockets:['dorsal'],mass:.92,upkeep:.43,cost:8,actions:['fly','display','flare'],niche:['flight','migration','woodland'],symmetry:'single',anim:'sweep'}),
   // Display crests can evolve into active heat-dissipating dorsal frills.
   part('heat-frill','metabolism',{tags:['back','radiator','dryland'],prereq:['signal-crest'],sockets:['dorsal'],mass:.45,upkeep:.22,cost:5,actions:['insulate','display','flare'],niche:['hot','dry-ground'],symmetry:'single',anim:'breathing'}),
   part('signal-crest','social',{tags:['crest','display'],sockets:['dorsal'],mass:.1,upkeep:.05,cost:1,actions:['signal','flare'],niche:['family'],symmetry:'single',legacy:{axis:'signal',threshold:.5,adaptation:'alarm-pulse'}}),
