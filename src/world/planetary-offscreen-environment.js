@@ -50,6 +50,7 @@ export function remoteEnvironmentDue(active,session){
 // Mutates a single session ONLY after a complete local archive restoration and
 // field-ledger pass. The final snapshot remains the canonical owner.
 export function advanceRemoteEnvironment(active,session,{maxDays=OFFSCREEN_ENVIRONMENT.daysPerRegionPass}={}){
+ if(session?.biologicalMode)throw Error('Biological region cannot replay duplicate environmental days.');
  if(!Number.isSafeInteger(maxDays)||maxDays<0||maxDays>OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays)
   throw Error('Unbounded remote environmental replay.');
  const due=remoteEnvironmentDue(active,session),steps=Math.min(due,maxDays);
@@ -113,7 +114,7 @@ export function advanceOffscreenEnvironments(sim,{
  if(!Number.isSafeInteger(maxRegions)||maxRegions<0||maxRegions>2||
     !Number.isSafeInteger(daysPerRegion)||daysPerRegion<0||daysPerRegion>2)
   throw Error('Invalid bounded offscreen scheduler.');
- const due=sim.planetaryTravel.sessions.filter(s=>remoteEnvironmentDue(sim,s)>0)
+ const due=sim.planetaryTravel.sessions.filter(s=>!s.biologicalMode&&remoteEnvironmentDue(sim,s)>0)
   .sort((a,b)=>a.snapshot.core.day-b.snapshot.core.day||a.key.localeCompare(b.key));
  return due.slice(0,maxRegions).map(s=>advanceRemoteEnvironment(sim,s,{maxDays:daysPerRegion}));
 }
