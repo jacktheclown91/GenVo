@@ -332,6 +332,8 @@ export class SaveManager{
     this.autosaveMs=autosaveMs;
     this.dbPromise=null;
     this.busy=false;
+    // Save and world-switch requests wait for an in-flight autosave.
+    this.activeSave=null;
     this.pendingReason=null;
     this.pendingTimer=null;
     this.idleHandle=null;
@@ -419,9 +421,18 @@ export class SaveManager{
   async saveNow(reason='manual'){
     if(!this.available)return null;
     const sim=this.getSim?.();if(!sim?.player?.())return null;
-    if(this.busy){this.pendingReason=reason;return null}
+    if(this.busy){
+      // Do not discard a manual save while IndexedDB transport is in progress.
+      // Retry after the previous transaction finishes so a fresh snapshot includes
+      // any player actions that occurred while the first save was writing.
+      await this.activeSave;
+      return this.saveNow(reason);
+    }
     // A new world's first save is part of preparing it; every other save says what it is.
-    this.busy=true;this.status('saving',reason==='world-start'?'Preparing ecosystem...':'Saving...');
+    this.busy=true;
+    let finishSave;
+    this.activeSave=new Promise(resolve=>{finishSave=resolve});
+    this.status('saving',reason==='world-start'?'Preparing ecosystem...':'Saving...');
     try{
       const slotId=this.activeSlotId;
       const worldName=this.worldNames.get(slotId)||(await this.metadata(slotId))?.worldName||(slotId===SAVE_KEY?'First Lineage':'New World');
@@ -438,7 +449,12 @@ export class SaveManager{
       this.status('saved','Saved',snapshot.meta);
       return snapshot.meta;
     }catch(error){this.status('error','Save failed');throw error}
-    finally{this.busy=false;if(this.pendingReason&&this.pendingReason!==reason){const next=this.pendingReason;this.pendingReason=null;this.schedule(next,500)}}
+    finally{
+      this.busy=false;
+      this.activeSave=null;
+      finishSave();
+      if(this.pendingReason&&this.pendingReason!==reason){const next=this.pendingReason;this.pendingReason=null;this.schedule(next,500)}
+    }
   }
   async clear(){
     if(!this.available)return;
