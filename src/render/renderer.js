@@ -243,7 +243,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const c=this.ctx,s=Math.max(1,this.zoom*.75);
     // One physical nest per clutch; eggs use their existing positions above it.
     for(const nest of this.sim.nests||[]){
-      const x=Math.round((nest.x-this.camera.x)*tile+this.w/2),y=Math.round((nest.y-this.camera.y)*tile+this.h/2);
+      const x=Math.round((nest.x-this.camera.x)*tile+this.w/2),y=Math.round((nest.y-this.camera.y)*tile+this.h/2)-(nest.layer==='canopy'?7*s:0);
       if(x<-tile||y<-tile||x>this.w+tile||y>this.h+tile)continue;
       const spread=6*s,fade=Math.max(.2,Math.min(1,nest.integrity||0));
       c.fillStyle=`rgba(67,49,29,${(.5*fade).toFixed(3)})`;c.fillRect(x-spread,y-2*s,spread*2,5*s);
@@ -254,7 +254,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
       c.fillRect(x-6*s,y-4*s,3*s,s);c.fillRect(x+4*s,y+s,3*s,s);
     }
     for(const egg of this.sim.eggs||[]){
-      const x=Math.round((egg.x-this.camera.x)*tile+this.w/2),y=Math.round((egg.y-this.camera.y)*tile+this.h/2);
+      const x=Math.round((egg.x-this.camera.x)*tile+this.w/2),y=Math.round((egg.y-this.camera.y)*tile+this.h/2)-(this.sim.nests?.find(n=>n.id===egg.nestId)?.layer==='canopy'?7*s:0);
       if(x<-tile||y<-tile||x>this.w+tile||y>this.h+tile)continue;
       c.fillStyle='rgba(18,21,15,.4)';c.fillRect(x-3*s,y+2*s,6*s,2*s);
       c.fillStyle='#a78353';c.fillRect(x-3*s,y-2*s,6*s,5*s);
@@ -926,10 +926,10 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     let recoilX=0,recoilY=0;if(impact&&impact.kind!=='miss'){const p=this.sim.player(),dx=a.x-(p?.x??a.x),dy=a.y-(p?.y??a.y),len=Math.hypot(dx,dy)||1,k=(3-Math.max(0,this.sim.tickCount-impact.tick))*.32;recoilX=dx/len*k;recoilY=dy/len*k}
     const shove=reactionShove(reaction,a);if(shove){recoilX+=shove.x;recoilY+=shove.y}const dShove=defenseShove(defense,a);if(dShove){recoilX+=dShove.x;recoilY+=dShove.y}
     c.save();c.translate(px+recoilX*scale,py+((life.hurt&&!moving?1:0)+recoilY)*scale);
-    if(!a.airborne)drawGroundContact(c,{contact,scale,bodyScale:ph.bodyScale,dir:drawDir});
-    if(!a.airborne)drawActivityGround(c,{bodyPlan:a.bodyPlan,id:a.id,frame:phase,moving,action,scale,dir:drawDir});
+    if(!a.airborne&&!a.perched)drawGroundContact(c,{contact,scale,bodyScale:ph.bodyScale,dir:drawDir});
+    if(!a.airborne&&!a.perched)drawActivityGround(c,{bodyPlan:a.bodyPlan,id:a.id,frame:phase,moving,action,scale,dir:drawDir});
     const depthShadow=creatureShadowFor(this.sim.world,a,this.habitatField,{bodyScale:ph.bodyScale+(life.exhausted?.08:0),moving,dir:drawDir});drawCreatureDepthShadow(c,{shadow:depthShadow,scale,hurt:life.hurt});
-    if(a.airborne){c.save();c.globalAlpha*=.22;c.fillStyle='#23303d';c.beginPath();c.ellipse(0,2*scale,6*scale,3*scale,0,0,Math.PI*2);c.fill();c.restore();c.translate(0,-9*scale)}
+    if(a.airborne||a.perched){c.save();c.globalAlpha*=.22;c.fillStyle='#23303d';c.beginPath();c.ellipse(0,2*scale,6*scale,3*scale,0,0,Math.PI*2);c.fill();c.restore();c.translate(0,(a.airborne?-9:-7)*scale)}
     const palette=creaturePalette(ph);
     if(a.hidden)c.globalAlpha*=.58;
     drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:a.player?phase:cachePhase,moving,palette,pose,cacheKey:a.player||feeding||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,cachePhase,moving,pose,life)});
@@ -937,7 +937,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     this.drawLifeEffects(a,scale,frame,pose,palette);
     if(combatStatus)drawPlayerCombatFeedback(c,{animal:a,status:combatStatus,winded,scale,now:this.renderNow,dir:drawDir});else if(a.playerHunt)drawStalkerPursuitFeedback(c,{animal:a,scale,now:this.renderNow});
     drawEncounterReactionMarks(c,{reaction,animal:a,scale,dir:drawDir});drawDefenseMarks(c,{reaction:defense,animal:a,scale,dir:drawDir});
-    if(!a.airborne)drawForegroundContact(c,{contact,scale,bodyScale:ph.bodyScale,isPlayer:!!a.player});
+    if(!a.airborne&&!a.perched)drawForegroundContact(c,{contact,scale,bodyScale:ph.bodyScale,isPlayer:!!a.player});
     this.drawMarkers(a,scale);if(a.infected){pixel(c,-6,-7,1,2,scale,'rgba(219,121,177,.78)');pixel(c,5,-7,1,2,scale,'rgba(219,121,177,.62)')}c.restore();
   }
   easedDir(id,target){
