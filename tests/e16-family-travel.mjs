@@ -108,8 +108,14 @@ assert.equal(denialSim.planetaryRegions.regions.size,1,'failed group crossing al
 infant.x=leader2.x-.5;infant.y=leader2.y;
 infant.lactationParentId=990001; // absent record is ignored; only actual living parents constrain closure
 assert.ok(!denialSim.animals.some(a=>a.id===infant.lactationParentId&&a.alive));
-const bad=structuredClone(save);
-bad.core.planetaryTravel.sessions[0].animals=[{id:baby.id}]; // extra untrusted metadata has no authority
-assert.ok(restoreSimulationSnapshot(bad));
+const duplicate=structuredClone(save);
+const forged=structuredClone(duplicate.animals.find(a=>a.id===baby.id));forged.player=false;
+duplicate.core.planetaryTravel.sessions[0].snapshot.animals.push(forged);
+assert.throws(()=>restoreSimulationSnapshot(duplicate),/Duplicate or invalid planetary animal identity/,
+ 'saved infant ID cannot also remain in archived source region');
+const forgedSlot=structuredClone(save);
+forgedSlot.core.planetaryTravel.sessions[0].snapshot.core.regionalTravelerSlots[0].index=99999;
+assert.throws(()=>restoreSimulationSnapshot(forgedSlot),/Duplicate or invalid cohort position archive/,
+ 'return positions must be physically consistent with the stored population');
 
 console.log('E16 family crossing: explicit linked adult group, live nursing dependent, physical proximity, no orphaned caregivers, exact saved region round trips, birth identity/order, blocked distant infant, normal ecology PASS');
