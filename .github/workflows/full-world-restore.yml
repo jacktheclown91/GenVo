@@ -31,3 +31,5 @@ jobs:
         run: node tests/regional-synchronized-replay.mjs
       - name: Save migrations and backwards compatibility
         run: node tests/save-persistence.mjs
+      - name: Observe warm restore cost without outcome targets
+        run: node tools/benchmark-world-restore.mjs
