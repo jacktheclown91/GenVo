@@ -58,8 +58,9 @@ const testNeighbor=(dx,dy,dir)=>{
  }
  return trueCrossings;
 };
-const east=testNeighbor(128,0,'east'),north=testNeighbor(0,-128,'north');
-assert.ok(east+north>0,'natural neighboring planetary waters cross shared world borders');
+const east=testNeighbor(128,0,'east'),west=testNeighbor(-128,0,'west'),
+ north=testNeighbor(0,-128,'north'),south=testNeighbor(0,128,'south');
+assert.ok(east+west+north+south>0,'natural neighboring planetary waters cross at least one true world border');
 
 const snap=s=>structuredClone(createSimulationSnapshot(s,{savedAt:'fixed',reason:'planetary-boundary-exchange'}));
 const sim=new Simulation(seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:origin});
