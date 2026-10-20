@@ -54,7 +54,7 @@ export function validateEnvironment(w,e){
     (!Number.isFinite(e.totals[k])||e.totals[k]<0)))
   throw Error('Invalid planetary surface-runoff totals.');
  if(!Number.isSafeInteger(e.day)||e.day<0||!e.totals||['saltInput','saltOutput','rainWater','displacedWater'].some(k=>!Number.isFinite(e.totals[k])||e.totals[k]<0)||!Array.isArray(e.daily)||e.daily.length>64)throw Error('Invalid environment history.');
- for(const row of [...e.daily,...(e.lastDay?[e.lastDay]:[])]){if(!Number.isSafeInteger(row.day)||row.day<0||row.day>e.day||['before','after','input','output'].some(k=>!Number.isFinite(row[k])||row[k]<0)||!Number.isFinite(row.closure))throw Error('Invalid salt budget receipt.');
+ for(const row of [...e.daily,...(e.lastDay?[e.lastDay]:[])]){if(!Number.isSafeInteger(row.day)||row.day<0||row.day>e.day||['before','after','input','output'].some(k=>!Number.isFinite(row[k])||row[k]<0)||!Number.isFinite(row.closure)||Math.abs(row.closure)>1e-6||Math.abs(row.input-row.output-(row.after-row.before)-row.closure)>1e-6)throw Error('Invalid salt budget receipt.');
   // Historical receipts have no page-level transfer audit; validate new ones strictly.
   if(e.schema>=2&&['boundaryInput','boundaryOutput'].some(k=>!Number.isFinite(row[k])||row[k]<0))
    throw Error('Invalid planetary boundary flux receipt.');
