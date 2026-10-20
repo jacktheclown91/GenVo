@@ -25,7 +25,8 @@ export function validateBoundaryWaterPolicy(world,environment){
    throw Error('Invalid paired boundary ownership mask.');
   for(let i=0;i<world.len;i++)if(mask[i]){
    const x=i%n,y=Math.floor(i/n);
-   if(mask[i]!==1||!(x===0||x===n-1||y===0||y===n-1)||!environment.boundary[i])
+   const allowed=(x===0?1:0)|(x===n-1?2:0)|(y===0?4:0)|(y===n-1?8:0);
+   if(mask[i]>15||(mask[i]&~allowed)!==0||!environment.boundary[i])
     throw Error('Invalid paired boundary ownership mask.');
   }
  }
@@ -36,10 +37,9 @@ export function validateBoundaryWaterPolicy(world,environment){
    throw Error('Invalid planetary boundary-water totals.');
 }
 
-export function boundaryWaterExchange(environment,i,salt,volume){
+export function boundaryWaterExchange(environment,i,salt,volume,world=null){
  if(![PLANETARY_BOUNDARY_WATER.policy,PLANETARY_BOUNDARY_WATER.pairedPolicy].includes(environment?.boundaryWaterPolicy))
   return null;
- if(environment.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.pairedPolicy&&environment.blockedBoundaries?.[i])return null;
  const boundary=environment.boundary[i];
  if(!boundary)return null;
  if(!Number.isSafeInteger(i)||i<0||i>=environment.boundary.length||
@@ -47,8 +47,32 @@ export function boundaryWaterExchange(environment,i,salt,volume){
    !Number.isFinite(volume)||volume<=0||volume>2||
    salt>volume*2+1e-10)
   throw Error('Invalid planetary boundary-water stock.');
- const reservoirSalinity=boundary===2?1:boundary===3?.5:0;
- const water=volume*PLANETARY_BOUNDARY_WATER.dailyFraction;
+ let reservoirSalinity=boundary===2?1:boundary===3?.5:0,fraction=1;
+ const blocked=environment.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.pairedPolicy
+  ?environment.blockedBoundaries?.[i]||0:0;
+ if(blocked){
+  const n=Math.sqrt(environment.boundary.length),x=i%n,y=Math.floor(i/n);
+  const directions=[
+   ...(x===0?[[1,-1,0]]:[]),...(x===n-1?[[2,1,0]]:[]),
+   ...(y===0?[[4,0,-1]]:[]),...(y===n-1?[[8,0,1]]:[])
+  ];
+  if(!Number.isSafeInteger(n)||!directions.length||(blocked&~directions.reduce((m,v)=>m|v[0],0)))
+   throw Error('Invalid paired boundary ownership mask.');
+  if(directions.every(([bit])=>blocked&bit))return null;
+  if(typeof world?.planet?.sample!=='function')
+   throw Error('Partly paired coastal corner requires planetary geography.');
+  const origin=world.regionOrigin||{x:0,y:0},outside=[];
+  for(const [bit,dx,dy] of directions){
+   const sample=world.planet.sample(origin.x+x+dx+.5,origin.y+y+dy+.5);
+   if(sample.water)outside.push({bit,salinity:sample.ocean?1:0});
+  }
+  if(!outside.length)return null;
+  const open=outside.filter(side=>!(blocked&side.bit));
+  if(!open.length)return null;
+  fraction=open.length/outside.length;
+  reservoirSalinity=open.reduce((sum,side)=>sum+side.salinity,0)/open.length;
+ }
+ const water=volume*PLANETARY_BOUNDARY_WATER.dailyFraction*fraction;
  const saltOutput=Math.min(salt,salt*water/volume);
  const saltInput=water*reservoirSalinity;
  return{saltAfter:salt-saltOutput+saltInput,
