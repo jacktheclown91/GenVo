@@ -112,4 +112,34 @@ older.planetaryTravel.sessions[0].snapshot.world.environment.boundary.fill(0);
 delete older.planetaryTravel.sessions[0].snapshot.world.environment.totals.boundaryInput;
 delete older.planetaryTravel.sessions[0].snapshot.world.environment.totals.boundaryOutput;
 assert.deepEqual(reconcilePlanetarySaltSeams(older),[],'historical isolated salt environment retains its old laws');
+// The previous planetary boundary schema (v2) had no dynamic water volume.
+// Preserve its saved physical inventory unchanged and allow only the older
+// salinity-only seam behavior when visited from a v3 world.
+const v2=structuredClone(previous);
+const v2Environment=v2.core.planetaryTravel.sessions[0].snapshot.world.environment;
+v2Environment.schema=2;
+delete v2Environment.volume;
+for(const row of v2Environment.daily){
+ delete row.waterBefore;delete row.waterAfter;delete row.waterInput;
+ delete row.waterOutput;delete row.waterClosure;
+}
+if(v2Environment.lastDay){
+ for(const key of ['waterBefore','waterAfter','waterInput','waterOutput','waterClosure'])
+  delete v2Environment.lastDay[key];
+}
+const restoredV2=restoreSimulationSnapshot(structuredClone(v2));
+assert.equal(restoredV2.planetaryTravel.sessions[0].snapshot.world.environment.schema,2);
+const v2Volume=restoredV2.world.environment.volume.slice();
+reconcilePlanetarySaltSeams(restoredV2);
+assert.deepEqual(restoredV2.world.environment.volume,v2Volume,
+ 'legacy v2 region cannot secretly modify the new v3 water-volume stock');
+assert.equal(restoredV2.planetaryTravel.sessions[0].snapshot.world.environment.volume,undefined,
+ 'old saves are not silently upgraded to an invented water inventory');
+const corruptVolume=structuredClone(finalized);
+corruptVolume.world.environment.volume[i]=-1;
+assert.throws(()=>restoreSimulationSnapshot(corruptVolume),/Invalid planetary water-volume field/);
+const corruptWaterReceipt=structuredClone(finalized);
+corruptWaterReceipt.world.environment.lastDay.waterClosure=999;
+assert.throws(()=>restoreSimulationSnapshot(corruptWaterReceipt),/Invalid planetary water-volume receipt/);
+
 console.log('Paired planetary salt PASS: same-day real wet seam, reciprocal stock ownership, conserved pair inputs and outputs, historic fallback, duplicate avoidance, full save and regional biological replay');
