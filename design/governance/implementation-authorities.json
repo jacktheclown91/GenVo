@@ -147,6 +147,18 @@
         "src/world/world.js"
       ]
     },
+    "inheritedCoatMoisture": {
+      "authority": "src/lineage/coat-moisture.js",
+      "consumers": [
+        "src/world/planet-world.js",
+        "src/world/environment.js",
+        "src/lineage/terrain-cover-physiology.js",
+        "src/sim/simulation.js",
+        "src/persistence/save-manager.js",
+        "src/ui/creature-context-tray.js"
+      ],
+      "note": "New-world inherited-coat-moisture/1 is a persisted creature condition, not water or energy inventory. Mounted inherited fur, feathers, filament or wings acquire finite saturation from rain and actual immersion and dry in response to temperature and soil humidity. Thermal survival costs remain charged by the preexisting metabolism; save restoration checks finite 0..1 wetness. Historical policy-free planetary and other worlds retain instantaneous climate cover physics; species names and player ownership confer no benefit."
+    },
     "planetaryChannelTopology": {
       "authority": "src/world/planetary-channel-topology.js",
       "consumers": [
