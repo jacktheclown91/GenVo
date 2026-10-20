@@ -75,8 +75,10 @@ export function stagePlanetarySeamRunoff(left,right,i,j,overlandChanges,waterCha
  else{row.waterBToA=(row.waterBToA||0)+amount;row.runoffBToA=(row.runoffBToA||0)+amount}
  if(terrainChanges){
   const sediment=stageTerrainSediment(from,to,fi,ti,amount,terrainChanges);
-  if(a)row.sedimentAToB=(row.sedimentAToB||0)+sediment;
-  else row.sedimentBToA=(row.sedimentBToA||0)+sediment;
+  if(sediment>0){
+   if(a)row.sedimentAToB=(row.sedimentAToB||0)+sediment;
+   else row.sedimentBToA=(row.sedimentBToA||0)+sediment;
+  }
  }
  if(mineralChanges){
   const original=from.env.overland[fi]+fDelta;
