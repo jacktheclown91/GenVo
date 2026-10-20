@@ -14,6 +14,7 @@ import {validateTerrainSedimentPolicy} from './terrain-sediment.js';
 import {validateWetbedPolicy} from './planetary-wetbed-sediment.js';
 import {validateChannelTopologyPolicy} from './planetary-channel-topology.js';
 import {COAT_MOISTURE} from '../lineage/coat-moisture.js';
+import {SEASONAL_COAT} from '../lineage/seasonal-coat.js';
 const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 function smooth(seed,x,y,size){const ax=Math.floor(x/size),ay=Math.floor(y/size),u0=x/size-ax,v0=y/size-ay,u=u0*u0*(3-2*u0),v=v0*v0*(3-2*v0);return (coordNoise(seed,ax,ay)*(1-u)+coordNoise(seed,ax+1,ay)*u)*(1-v)+(coordNoise(seed,ax,ay+1)*(1-u)+coordNoise(seed,ax+1,ay+1)*u)*v}
 export function coastlineX(w,y){return w.n*(.84+.035*Math.sin(y/w.n*6.28+(w.seedHash%97)/97*6.28))}
@@ -39,6 +40,7 @@ export function validateEnvironment(w,e){
  validateWetbedPolicy(w,e);
  validateChannelTopologyPolicy(w,e);
  if(e.coatMoisturePolicy!==undefined&&(e.coatMoisturePolicy!==COAT_MOISTURE.policy||w.generator!=='planetary/1'||e.schema!==6))throw Error('Invalid planetary coat-moisture policy.');
+ if(e.seasonalCoatPolicy!==undefined&&(e.seasonalCoatPolicy!==SEASONAL_COAT.policy||e.coatMoisturePolicy!==COAT_MOISTURE.policy||w.generator!=='planetary/1'||e.schema!==6))throw Error('Invalid planetary seasonal-coat policy.');
  for(const [key,Type,lo,hi] of [['temperatureOffset',Float32Array,-1,1],['rainScale',Float32Array,0,3],['depth',Float32Array,0,2],['salt',Float64Array,0,4],['boundary',Uint8Array,0,e.schema>=2?3:2]])if(!(e[key] instanceof Type)||e[key].length!==w.len||e[key].some(v=>!Number.isFinite(v)||v<lo||v>hi))throw Error('Invalid environment field '+key+'.');
  if(e.schema>=5&&(!(e.overland instanceof Float64Array)||e.overland.length!==w.len||
     e.overland.some((v,i)=>!Number.isFinite(v)||v<0||w.water[i]&&v!==0)))
