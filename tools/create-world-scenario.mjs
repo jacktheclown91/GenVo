@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
+import {gzipSync,gunzipSync} from 'node:zlib';
 import {Simulation} from '../src/sim/simulation.js';
 import {CFG} from '../src/sim/config.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
@@ -20,7 +21,7 @@ if(argv.includes('--help')||!argv.length){
 const id=arg('id'),label=arg('label'),description=arg('description',''),input=arg('input');
 if(!/^[a-z0-9][a-z0-9-]{1,63}$/.test(id||''))throw Error('Scenario id must use lowercase letters, digits and hyphens.');
 if(!label?.trim())throw Error('Scenario label required.');
-const directory=path.resolve('assets/scenarios'),destination=path.join(directory,id+'.json'),catalogPath=path.join(directory,'catalog.json');
+const directory=path.resolve('assets/scenarios'),destination=path.join(directory,id+'.json.gz'),catalogPath=path.join(directory,'catalog.json');
 fs.mkdirSync(directory,{recursive:true});
 const existing=fs.existsSync(catalogPath)?JSON.parse(fs.readFileSync(catalogPath,'utf8')):{schema:1,scenarios:[]};
 validateScenarioCatalog(existing);
@@ -28,7 +29,8 @@ if(!argv.includes('--replace')&&(existing.scenarios.some(s=>s.id===id)||fs.exist
  throw Error('Scenario exists. Use --replace to explicitly replace its immutable baseline.');
 let snapshot;
 if(input){
- const bundle=JSON.parse(fs.readFileSync(path.resolve(input),'utf8'));
+ const bytes=fs.readFileSync(path.resolve(input));
+ const bundle=JSON.parse((input.endsWith('.gz')?gunzipSync(bytes):bytes).toString('utf8'));
  snapshot=openScenarioSnapshot(bundle);
 }else{
  const seed=arg('seed'),generator=arg('generator','planetary/1'),days=Number(arg('days','0'));
@@ -52,15 +54,17 @@ if(restored.seed!==snapshot.seed||restored.day!==snapshot.core.day||
    restored.animals.length!==snapshot.animals.length)
  throw Error('Scenario failed canonical replay identity.');
 const data=JSON.stringify(bundle);
-const sha256=createHash('sha256').update(data,'utf8').digest('hex');
+const zipped=gzipSync(Buffer.from(data,'utf8'),{level:9});
+if(zipped.byteLength>70*1024*1024)throw Error('Scenario compressed bundle too large to curate.');
+const sha256=createHash('sha256').update(zipped).digest('hex');
 const entry={id,label:bundle.metadata.label,description:bundle.metadata.description,
  seed:bundle.metadata.seed,day:bundle.metadata.day,year:bundle.metadata.year,
  generation:bundle.metadata.generation,liveAnimals:bundle.metadata.liveAnimals,
  playable:!!restored.player()?.alive,
- file:'assets/scenarios/'+id+'.json',sha256};
+ file:'assets/scenarios/'+id+'.json.gz',sha256};
 const catalog={schema:1,scenarios:[...existing.scenarios.filter(s=>s.id!==id),entry]};
 validateScenarioCatalog(catalog);
-fs.writeFileSync(destination,data);
+fs.writeFileSync(destination,zipped);
 fs.writeFileSync(catalogPath,JSON.stringify(catalog,null,2)+'\n');
-console.log(JSON.stringify({ok:true,scenario:entry,animals:restored.animals.length,ticks:restored.tickCount,
+console.log(JSON.stringify({ok:true,scenario:entry,compressedBytes:zipped.byteLength,rawBytes:Buffer.byteLength(data),animals:restored.animals.length,ticks:restored.tickCount,
  note:'Real source progression and one canonical restore verified. Browser gameplay and long-run balancing not implied.'},null,2));
