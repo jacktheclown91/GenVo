@@ -7,8 +7,7 @@ export const PLANETARY_CHANNEL_TOPOLOGY=Object.freeze({
  policy:'funded-temporary-channels/1',
  schema:1,
  maxRecededPerDay:8,
- maxRecedingVolume:.025,
- minWetAgeDays:1
+ maxRecedingVolume:.025
 });
 
 export function validateChannelTopologyPolicy(world,environment){
