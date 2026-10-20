@@ -12,7 +12,7 @@ import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persist
 
 const seed='GENVO8-TEST-A',origin={x:0,y:2560};
 const w=new World(seed,{generator:'planetary/1',planetOrigin:origin}),e=w.environment;
-assert.equal(e.schema,5,'new regions use rain-fed conserved internal wet-tile transport');
+assert.equal(e.schema,6,'new regions use versioned flood-capable internal wet-tile transport');
 const wet=w.water.slice(),geography=e.depth.slice(),bed=w.terrain.elevation.slice();
 let site=null;
 for(let i=0;i<w.len;i++){
