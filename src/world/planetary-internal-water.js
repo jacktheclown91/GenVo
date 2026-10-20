@@ -12,7 +12,7 @@ const sum=field=>{let total=0;for(const amount of field)total+=amount;return tot
 
 export function advanceInternalPlanetaryWater(w,salt){
  const e=w.environment;
- if(e?.schema!==4&&e?.schema!==5)return null;
+ if(e?.schema!==4&&e?.schema!==5&&e?.schema!==6)return null;
  if(!(e.volume instanceof Float64Array)||!(salt instanceof Float64Array)||
    salt.length!==w.len||e.volume.length!==w.len)
   throw Error('Invalid internal planetary water authority.');
