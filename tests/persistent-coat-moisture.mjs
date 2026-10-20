@@ -91,6 +91,12 @@ sim.phaseMetabolism();
 assert.ok(subject.coatWetness>.68,
  'real organism metabolism should soak inherited fur during rain');
 subject.coatWetness=.68;
+const other=sim.animals.find(a=>a.alive&&a.id!==subject.id&&a.species===subject.species);
+assert.ok(other,'founder biology supplies compatible ancestors');
+other.coatWetness=.91;
+const newborn=sim.spawnAnimal(subject.species,subject.x,subject.y,[subject,other]);
+assert.equal(newborn.coatWetness,undefined,
+ 'offspring inherit mounted anatomy, never the wetness of their parents');
 const snapshot=structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'coat-moisture'}));
 const replay=restoreSimulationSnapshot(structuredClone(snapshot));
 assert.equal(replay.animals.find(a=>a.id===subject.id).coatWetness,.68);
