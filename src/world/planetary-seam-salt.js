@@ -227,7 +227,13 @@ export function reconcilePlanetarySaltSeams(sim){
  for(let a=0;a<regions.length;a++)for(let b=a+1;b<regions.length;b++){
   const left=regions[a],right=regions[b],direction=adjacent(left.origin,right.origin);
   if(!direction)continue;
+  const bits=direction==='east'?[2,1]:direction==='west'?[1,2]:direction==='south'?[8,4]:[4,8];
   for(const [i,j] of seams(left,right,direction)){
+   if(left.env.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.pairedPolicy&&
+      right.env.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.pairedPolicy&&
+      left.water[i]&&right.water[j]&&left.env.boundary[i]&&right.env.boundary[j]&&
+      (!(left.env.blockedBoundaries[i]&bits[0])||!(right.env.blockedBoundaries[j]&bits[1])))
+    throw Error('Unsynchronized planetary seam water ownership.');
    const transfer=boundedFlux(left,right,i,j);
    if(transfer)stageTransfer(left,right,i,j,transfer,changes,receipts,day,sim.tickCount);
    if(left.water[i]&&right.water[j]&&left.env.boundary[i]&&right.env.boundary[j])
