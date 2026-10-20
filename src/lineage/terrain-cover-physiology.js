@@ -25,11 +25,16 @@ function mountedProfile(animal){
  profileCache.set(plan,profile);
  return profile;
 }
-export function thermalCoverFactor(animal,temp,comfort,{wet=false}={}){
+export function thermalCoverFactor(animal,temp,comfort,{wet=false,wetness=null}={}){
  const {parts,coverage}=mountedProfile(animal);
  // Existing dorsal fur/feathers remain the only insulation-cover authority.
  // Dryland organs then apply distinct, physically conditional tradeoffs.
- let factor=coverage?(temp>=comfort?coverage.hot:wet?coverage.cold+(1-coverage.cold)*(1-coverage.wet):coverage.cold):1;
+ // Continuous saturation is only supplied by the versioned coat controller.
+ // Historical instant wet/dry callers preserve the original cold multiplier.
+ const saturation=wetness==null?(wet?1:0):Math.max(0,Math.min(1,wetness));
+ let factor=coverage?(temp>=comfort
+  ?coverage.hot*(1-.12*saturation)
+  :coverage.cold+(1-coverage.cold)*(1-coverage.wet)*saturation):1;
  if(parts['heat-frill'])factor*=temp>=comfort?.72:1.14;
  if(parts['wax-plates']&&temp>=comfort)factor*=1.18;
  return factor;
