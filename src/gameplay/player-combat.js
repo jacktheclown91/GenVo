@@ -212,7 +212,7 @@ export class PlayerCombatController{
 
   queue(result){
     if(!result)return;
-    this.pending={ok:!!result.ok,type:result.type,message:result.message||'',quiet:!!result.quiet,damage:result.damage||0,killed:!!result.killed,repelled:!!result.repelled,opening:!!result.opening,species:result.species||null,...(result.type==='jump-land'?{water:!!result.water}:{}),drivenOff:!!result.drivenOff};
+    this.pending={ok:!!result.ok,type:result.type,message:result.message||'',quiet:!!result.quiet,damage:result.damage||0,killed:!!result.killed,repelled:!!result.repelled,opening:!!result.opening,species:result.species||null,...(['jump-land','glide-land'].includes(result.type)?{water:!!result.water}:{}),drivenOff:!!result.drivenOff};
   }
   consumeResult(){const r=this.pending;this.pending=null;return r}
 

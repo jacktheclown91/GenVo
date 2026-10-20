@@ -130,7 +130,9 @@ async function exportScenarioFromMenu(slotId){
   }finally{a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);}
 }
 async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1',
- start='new',scenarioFile=null,catalogEntry=null,creature='recorded'}){
+ start='new',scenarioFile=null,catalogEntry=null,creature='recorded',movementRules='recorded'}){
+  if(!['recorded','current'].includes(movementRules))throw Error('Unsupported movement continuation mode.');
+  if(start==='new'&&movementRules==='current')throw Error('New ecology already uses current movement rules.');
   if(!['recorded','resident','guided','sandbox'].includes(creature))throw Error('Unsupported starting creature mode.');
   if(start==='new'&&!['freshwater/1','planetary/1'].includes(geography))
     throw Error('Unsupported new-world geography.');
@@ -138,7 +140,7 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
     if(!checkpoint)throw Error('Save the active world before switching.');}
   showSaveStatus(start==='new'?'Preparing ecosystem...':'Restoring evolved ecosystem...', {duration:60000});
   await nextPaint();
-  let next;
+  let next,sourceSnapshot;
   if(start==='new'){
     const nextSeed=chosenSeed||'GENVO-'+Math.random().toString(16).slice(2,10).toUpperCase();
     next=new Simulation(nextSeed,{player:true,worldGenerator:geography});
@@ -160,7 +162,7 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
     if(!snapshot)throw Error('Selected world contains no checkpoint.');
     // Restoration validates the entire real simulation state, rather than
     // inventing an advanced organism or faking its ancestry/generation.
-    next=restoreSimulationSnapshot(structuredClone(snapshot));
+    sourceSnapshot=snapshot;next=restoreSimulationSnapshot(structuredClone(snapshot));
     if(creature==='recorded'&&!next.player()?.alive)throw Error('This checkpoint has no living controllable lineage. Select a playable saved world.');
   }
   // A new slot is only allocated AFTER the source has been fully validated.
@@ -172,13 +174,16 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
   if(creature==='guided'||creature==='sandbox'){
     const authored=await chooseAuthoredFounder(next,creature);if(!authored)return false;
   }
-  await saveManager.allocateWorld(name);
+  let adoptedSlot=null;
+  if(movementRules==='current')adoptedSlot=await saveManager.storeMovementContinuation(next,sourceSnapshot,{name,source:start==='import'?'import:'+scenarioFile.name:start});
+  else await saveManager.allocateWorld(name);
   installSimulation(next,start==='new'?{fresh:true}:{resume:true});
+  if(adoptedSlot)saveManager.setActiveSlot(adoptedSlot.slotId);
   if(start==='new'||creature==='guided'||creature==='sandbox')tutorial.beginInWorld();
   closeGameMenus();await renderer.sceneReady();await nextPaint();
   try{const saved=await saveManager.saveNow(start==='new'?'world-start':'world-scenario-fork');
-    if(!saved)showSaveStatus('Storage unavailable. This world is not saved.',{error:true,duration:6500});
-  }catch(error){console.error(error);showSaveStatus('Could not save the new world.',{error:true,duration:6500});}
+    if(!saved)showSaveStatus(adoptedSlot?'The continuation and original backup are saved; recent play could not be saved.':'Storage unavailable. This world is not saved.',{error:true,duration:6500});
+  }catch(error){console.error(error);showSaveStatus(adoptedSlot?'The continuation and original backup are saved; recent play could not be saved.':'Could not save the new world.',{error:true,duration:6500});}
   return true;
 }
 const frontEnd=new FrontEnd({saveManager,audio,

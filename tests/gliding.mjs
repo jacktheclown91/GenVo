@@ -67,6 +67,9 @@ sim.phaseMovement();const direct=structuredClone(before);stepGlide(direct,w,1/8)
 for(const k of ['x','y','energy','glideAltitude','glideHeading'])assert.equal(wild[k],direct[k],k+' shared autonomous physics');
 let ticks=0;while(wild.aerialMode==='glide'&&ticks++<1000)sim.phaseMovement();
 assert.ok(ticks<1000&&!wild.airborne,'gliding always ends; no permanent aerial layer');
+const controlled=structuredClone(before);controlled.player=true;controlled.id=sim.nextId++;controlled.glideAltitude=glideGround(w,controlled.x,controlled.y)+.001;
+sim.animals=[controlled];sim.playerId=controlled.id;sim.advanceGlide(controlled,.125);
+const landingNotice=sim.playerCombat.consumeResult();assert.equal(landingNotice.type,'glide-land');assert.equal(landingNotice.damage,controlled.lastFlightIncident.damage);assert.equal(landingNotice.water,controlled.lastFlightIncident.water,'automatic glide landing reaches player feedback with its actual surface');
 const flat={water:new Uint8Array(100),terrain:{elevation:new Float32Array(100)},idx:(x,y)=>Math.floor(y)*10+Math.floor(x),isPlayable:(x,y)=>x>=0&&y>=0&&x<10&&y<10};
 const actor=structuredClone(before);actor.x=4.5;actor.y=4.5;actor.glideAltitude=1;actor.glideHeading=0;actor.energy=90;
 assert.equal(glidingAvailability({world:flat,glidingRules:GLIDING.policy}, {...actor,airborne:false,aerialMode:undefined,perched:false}).enabled,false,'flat ground cannot launch');

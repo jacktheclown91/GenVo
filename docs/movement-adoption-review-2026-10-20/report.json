@@ -1,0 +1,148 @@
+{
+  "kind": "automated Chromium input; authored sandbox anatomy; staged position/facing on unmodified generated terrain; not human or naturally evolved evidence",
+  "mode": "jump",
+  "adoption": {
+    "slots": 2,
+    "active": "world-cc810f81-64a8-428d-92f6-d7bebcf88eb2",
+    "backupSlot": "world-fc9fc260-f774-4832-9767-ed8fb3202a24",
+    "backupFor": "world-cc810f81-64a8-428d-92f6-d7bebcf88eb2",
+    "sourceTick": 1440,
+    "sourceDay": 31,
+    "sourceSeed": "GENVO-VALLEY-REPLAY-30",
+    "sourceRng": 1987768365,
+    "sourceAnimals": 215,
+    "sourceJumping": null,
+    "sourceGliding": null,
+    "sourceIntroductions": 0,
+    "record": {
+      "schema": 1,
+      "source": "catalog:established-valley-d30",
+      "backupSlot": "world-fc9fc260-f774-4832-9767-ed8fb3202a24",
+      "tick": 1440,
+      "globalTick": 1440,
+      "from": {
+        "glidingRules": null,
+        "jumpingRules": null
+      },
+      "to": {
+        "glidingRules": "finite-height-gliding/1",
+        "jumpingRules": "ballistic-jumping/1"
+      },
+      "changed": true
+    },
+    "jumping": "ballistic-jumping/1",
+    "gliding": "finite-height-gliding/1",
+    "glidingStatus": {
+      "enabled": false,
+      "reason": "No downhill launch ahead. Face a real drop or climb into a living canopy."
+    },
+    "readOnly": {
+      "saveRejected": true,
+      "loadRejected": true,
+      "tick": 1440,
+      "jumping": null,
+      "gliding": null
+    },
+    "failedTransaction": {
+      "rejected": true,
+      "before": 2,
+      "after": 2,
+      "activeUnchanged": true,
+      "rolledBack": true
+    },
+    "recovery": {
+      "active": "world-e1526b77-dcc0-473f-9226-e371eb6fc771",
+      "slots": 3,
+      "day": 31,
+      "tick": 1441,
+      "jumping": null,
+      "gliding": null,
+      "recordedPlayer": true,
+      "backupTick": 1440
+    }
+  },
+  "ridge": {
+    "x": 85.5,
+    "y": 66.5,
+    "range": 0.00034600868821144104,
+    "vegetation": 8.704950431827456,
+    "score": 8.70841051870957,
+    "energy": 104.5458639644552,
+    "breath": 100,
+    "body": "bp0-6d1eb6d8",
+    "policy": "ballistic-jumping/1",
+    "age": 30
+  },
+  "flight": {
+    "x": 86.15264318371717,
+    "y": 66.5,
+    "z": 1.4240375930512785,
+    "elapsed": 0.15625,
+    "energy": 97.41472075460884,
+    "breath": 88,
+    "airborne": true,
+    "mode": "jump",
+    "health": 100,
+    "cues": [
+      "jump"
+    ]
+  },
+  "saved": {
+    "playerId": 227,
+    "z": 1.4240375930512785,
+    "elapsed": 0.15625,
+    "x": 86.15264318371717,
+    "mode": "jump",
+    "policy": "ballistic-jumping/1"
+  },
+  "reload": {
+    "id": 227,
+    "z": 1.4240375930512785,
+    "elapsed": 0.15625,
+    "x": 86.15264318371717,
+    "mode": "jump",
+    "policy": "ballistic-jumping/1"
+  },
+  "steered": {
+    "heading": null,
+    "jump": {
+      "schema": 1,
+      "altitude": 1.583691757685667,
+      "verticalVelocity": 1.6529483073201785,
+      "vx": 4.176916375789893,
+      "vy": 0,
+      "elapsed": 0.234375,
+      "purpose": "travel"
+    },
+    "energy": 97.41472075460884
+  },
+  "landed": {
+    "x": 88.86590708609064,
+    "y": 66.5,
+    "health": 100,
+    "energy": 97.31277111261281,
+    "mode": null,
+    "water": false,
+    "incident": {
+      "ok": true,
+      "type": "jump-land",
+      "forced": false,
+      "impact": 4.061655710969465,
+      "damage": 0,
+      "water": false,
+      "message": "Landed. Recover briefly before the next jump.",
+      "tick": 1455
+    },
+    "cues": [
+      "land"
+    ],
+    "audioState": "running"
+  },
+  "keyboard": {
+    "mode": "jump",
+    "energy": 90.180850819197,
+    "breath": 88,
+    "elapsed": 0.046875
+  },
+  "errors": []
+}

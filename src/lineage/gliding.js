@@ -51,7 +51,7 @@ export function endGlide(a,world,{collision=false,swimmer=false,fold=false}={}){
  a.airborne=false;delete a.aerialMode;delete a.glideAltitude;delete a.glideHeading;
  const damage=collision?GLIDING.collisionDamage:water&&!swimmer?GLIDING.waterDamage:0;
  if(damage)a.health=Math.max(0,a.health-damage);
- return{ok:!damage,type:'glide',forced:!!damage,message:collision?'The glide strikes rising terrain or loses support; landing causes injury.':water&&!swimmer?'The glide ends over water. The creature falls into the water.':'Glide landed on the surface.'};
+ return{ok:!damage,type:'glide-land',damage,water,forced:!!damage,message:collision?'The glide strikes rising terrain or loses support; landing causes injury.':water&&!swimmer?'The glide ends over water. The creature falls into the water.':'Glide landed on the surface.'};
 }
 // One shared physics step for player controls and autonomous locomotion.
 // It moves continuously even without steering: gliding cannot become hovering.

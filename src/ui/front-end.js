@@ -55,10 +55,12 @@ export class FrontEnd{
       file=this.el.querySelector('#newWorldScenarioFileLabel'),
       note=this.el.querySelector('#newWorldScenarioDetail');
     if(file)file.hidden=start!=='import';
+    const movement=this.el.querySelector('#newWorldMovementRules'),movementLabel=this.el.querySelector('#newWorldMovementRulesLabel');
+    if(movementLabel)movementLabel.hidden=start==='new';if(movement){movement.disabled=start==='new';if(start==='new')movement.value='recorded'}
     // A real checkpoint already has its own seed and immutable geography.
     // Never imply changing the form's seed could rewrite evolved history.
     for(const id of ['newWorldSeed','newWorldGeography']){
-      const control=this.el.querySelector('#'+id);if(control)control.disabled=start!=='new';
+      const control=this.el.querySelector('#'+id);if(control){control.disabled=start!=='new';control.closest('label').hidden=start!=='new'}
     }
     if(note)note.textContent=start==='new'
       ?'Begin the complete evolutionary journey from the initial ecology.'
@@ -71,7 +73,7 @@ export class FrontEnd{
   close(){this.open=false;this.el.hidden=true;this.setMessage()}
   async refreshHome(){
     try{
-      const worlds=await this.saveManager.listWorlds();const active=worlds.find(w=>w.key===this.saveManager.activeSlotId)||worlds[0];
+      const worlds=await this.saveManager.listWorlds();const active=worlds.find(w=>w.key===this.saveManager.activeSlotId&&w.role!=='movement-backup')||worlds.find(w=>w.role!=='movement-backup');
       const btn=this.el.querySelector('[data-action="continue"]'),msg=this.el.querySelector('#menuResumeMeta');
       btn.disabled=!active;
       btn.dataset.slot=active?.key||'';
@@ -88,10 +90,11 @@ export class FrontEnd{
       const heading=document.createElement('strong');heading.textContent=w.worldName||(w.key==='autosave'?'First Lineage':'Unnamed World');
       const data=document.createElement('small');data.textContent=`Generation ${w.generation||1} · Year ${w.year||1}, Day ${w.day||1}${w.startKind==='authored-founder'?' · Authored '+w.startMode+' start':''}`;
       const actions=document.createElement('div');actions.className='world-actions';
-      for(const [action,label] of [['load-world','Play'],['export-scenario','Export Scenario'],['rename-world','Rename'],['delete-world','Delete']]){
+      for(const [action,label] of [[w.role==='movement-backup'?'fork-backup':'load-world',w.role==='movement-backup'?'New World from backup':'Play'],['export-scenario','Export Scenario'],['rename-world','Rename'],['delete-world','Delete']]){
         const b=document.createElement('button');b.type='button';b.dataset.action=action;b.dataset.slot=w.key;b.textContent=label;
         if(action!=='load-world')b.className='menu-secondary';actions.append(b);
       }
+      if(w.role==='movement-backup')data.textContent+=' · Read-only original checkpoint';else if(w.movementAdopted)data.textContent+=' · Movement continuation';
       article.append(heading,data,actions);this.worldsEl.append(article);
     }
   }
@@ -139,8 +142,9 @@ export class FrontEnd{
         const scenarioFile=this.el.querySelector('#newWorldScenarioFile')?.files?.[0]||null;
         const catalogEntry=start.startsWith('catalog:')?this.catalog.find(c=>c.id===start.slice(8)):null;
         if(await this.onCreate({name,seed,geography:this.el.querySelector('#newWorldGeography')?.value||'freshwater/1',
-          start,scenarioFile,catalogEntry,creature:this.el.querySelector('#newWorldCreature')?.value||'recorded'}))this.close();
+          start,scenarioFile,catalogEntry,movementRules:this.el.querySelector('#newWorldMovementRules')?.value||'recorded',creature:this.el.querySelector('#newWorldCreature')?.value||'recorded'}))this.close();
       }
+      else if(a==='fork-backup'){const slot=button.dataset.slot;await this.show('new');this.el.querySelector('#newWorldStartingPoint').value='fork:'+slot;this.el.querySelector('#newWorldMovementRules').value='recorded';this.el.querySelector('#newWorldCreature').value='recorded';this.syncStartingPoint();}
       else if(a==='load-world'){if(await this.onLoad(button.dataset.slot))this.close()}
       else if(a==='export-scenario'){await this.onExportScenario(button.dataset.slot);this.setMessage('Scenario package exported.');}
       else if(a==='rename-world'){

@@ -28,6 +28,8 @@ In newly generated worlds, paired gliding membranes can launch down real slopes 
 
 Two spring legs enable **Jump** (Enter) in newly generated worlds. Launch follows your facing and commits to an arc; food, breath, body load, terrain and landing recovery matter. Modern pounces use the same arc and bite after landing. See [jumping evidence and limits](docs/JUMPING-2026-10-20.md).
 
+For a saved, imported or bundled evolved world, **New World > Movement in this continuation > Enable new movement · save original backup** enables these rules in a separate continuation. The untouched checkpoint and the continuation commit together before play begins. **Worlds > New World from backup** recovers a playable copy with its original rules and recorded lineage. Ordinary Continue never opts a historical world in. See [movement adoption and recovery](docs/MOVEMENT-ADOPTION-2026-10-20.md).
+
 ## Verify
 
 Node.js and Python are required for the development tools. Browser checks also require Playwright/Chromium.

@@ -328,6 +328,11 @@
       "consumers": ["src/main.js", "src/ui/resident-start.js", "src/persistence/save-manager.js"],
       "note": "Explicit creator choice of an actual living regional resident on an independent world fork. Preserves biological stocks, RNG, body, age, generation and real ancestry; records player-entry provenance, updates playable descendants and carries entry identity through regional saves. Never fabricates simulated evolution or custom anatomy."
     },
+    "movementRuleAdoption": {
+      "authority": "src/lineage/movement-rule-migration.js",
+      "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js", "src/main.js", "src/ui/front-end.js"],
+      "note": "Explicit future movement policy adoption on an isolated validated checkpoint continuation. Source/clock/backup receipts and canonical synchronized regional agreement are validated; bodies, resources, RNG and past events are preserved. SaveManager owns atomic untouched-source backup plus continuation storage, readonly backup guards and activation ordering. Ordinary restoration never adopts policies. Failed commits roll candidate metadata back; unsupported environmental-only regional clocks require explicit conversion."
+    },
     "ballisticJumping": {
       "authority": "src/lineage/jumping.js",
       "consumers": ["src/sim/simulation.js", "src/gameplay/player-combat.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js", "src/ui/creature-context-tray.js", "src/render/renderer.js"],

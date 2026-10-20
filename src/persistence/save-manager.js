@@ -14,6 +14,7 @@ import {initializePlantResources,validatePlantResources} from '../ecology/plant-
 import {ancestralReproductiveGenome,validReproductiveGenome} from '../reproduction/reproductive-compatibility.js';
 import {matePreferencesFor} from '../reproduction/mate-preferences.js';
 import {CFG,PLANTS} from '../sim/config.js';
+import {adoptMovementRules,restoreMovementRuleHistory} from '../lineage/movement-rule-migration.js';
 import {restoreJumpingRules,validateJumpState} from '../lineage/jumping.js';
 import {restoreGlidingRules,validateGlideState} from '../lineage/gliding.js';
 import {Simulation} from '../sim/simulation.js';
@@ -197,6 +198,7 @@ export function saveMetadata(sim,{savedAt=new Date().toISOString(),reason='autos
     day:sim.day,
     year:sim.year,
     generation:player?.generation||sim.lineage?.highestGeneration||1,
+    ...(sim.movementRuleMigrations?.length?{movementAdopted:true,movementBackup:sim.movementRuleMigrations.at(-1).backupSlot}:{}),
     ...(sim.creatureStart?{startKind:sim.creatureStart.kind,startMode:sim.creatureStart.mode||null}:{}),
     playerId:sim.playerId,
     lineageEstablished:!!sim.lineage?.established
@@ -322,6 +324,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   restoreCarcassRules(sim,snapshot.core||{});
   validatePlanetaryTravelState(sim.planetaryTravel,sim.world.planet?regionKey(sim.world.regionOrigin):null);
   validatePlanetarySeamLedger(sim.planetaryTravel?.seamLedger);
+  restoreMovementRuleHistory(sim,snapshot.core||{});
   for(const session of sim.planetaryTravel?.sessions||[]){validateRemoteEnvironmentalLedger(session);validateRemoteBiologyLedger(session)}
   delete sim._player; // Runtime lookup cache is rebuilt from canonical playerId/animals.
   validateResidentStart(sim);
@@ -452,9 +455,9 @@ export class SaveManager{
     });
     return this.dbPromise;
   }
-  async metadata(id=this.activeSlotId){
+  async metadata(id=this.activeSlotId,{strict=false}={}){
     if(!this.available)return null;
-    try{const db=await this.db(),tx=db.transaction(META_STORE,'readonly');return await requestToPromise(tx.objectStore(META_STORE).get(id))||null}catch{return null}
+    try{const db=await this.db(),tx=db.transaction(META_STORE,'readonly');return await requestToPromise(tx.objectStore(META_STORE).get(id))||null}catch(error){if(strict)throw error;return null}
   }
   async loadSnapshot(id=this.activeSlotId){
     const db=await this.db(),tx=db.transaction(SAVE_STORE,'readonly');
@@ -465,6 +468,7 @@ export class SaveManager{
     // Continue from the most recent committed checkpoint, not a stale read
     // taken while an in-flight autosave is finishing.
     if(this.activeSave)await this.activeSave;
+    if((await this.metadata(id,{strict:true}))?.role==='movement-backup')throw Error('Backups are read-only. Use New World to play an independent copy.');
     const snapshot=await this.loadSnapshot(id);
     if(!snapshot)return null;
     const sim=restoreSimulationSnapshot(snapshot);this.setActiveSlot(id);this.worldNames.set(id,snapshot.meta?.worldName||'');this.lastSavedAt=Date.now();this.lastSavedTick=sim.tickCount;this.lastObservedSignature=this.signature(sim);return sim;
@@ -511,7 +515,9 @@ export class SaveManager{
     this.status('saving',reason==='world-start'?'Preparing ecosystem...':'Saving...');
     try{
       const slotId=this.activeSlotId;
-      const worldName=this.worldNames.get(slotId)||(await this.metadata(slotId))?.worldName||(slotId===SAVE_KEY?'First Lineage':'New World');
+      const slotMetadata=await this.metadata(slotId,{strict:true});
+      if(slotMetadata?.role==='movement-backup')throw Error('Cannot overwrite a read-only movement backup.');
+      const worldName=this.worldNames.get(slotId)||slotMetadata?.worldName||(slotId===SAVE_KEY?'First Lineage':'New World');
       const db=await this.db();
       // Capture and enqueue transport in one turn: nested state may still be live.
       const capturedSignature=this.signature(sim),snapshot=createSimulationSnapshot(sim,{reason});
@@ -539,9 +545,33 @@ export class SaveManager{
       if(this.pendingReason&&this.pendingReason!==reason){const next=this.pendingReason;this.pendingReason=null;this.schedule(next,500)}
     }
   }
+  async storeMovementContinuation(sim,sourceSnapshot,{name,source}={}){
+    if(!this.available)throw Error('Browser storage is unavailable; no movement continuation was created.');
+    if(this.activeSave){await this.activeSave;return this.storeMovementContinuation(sim,sourceSnapshot,{name,source})}
+    if(!sim?.player?.()?.alive||sourceSnapshot?.seed!==sim.seed||sourceSnapshot.core?.tickCount!==sim.tickCount)throw Error('Movement continuation must match a validated source checkpoint.');
+    if(!Array.isArray(sourceSnapshot.animals)||!sourceSnapshot.world||!sourceSnapshot.controllers||(sourceSnapshot.schema!==SAVE_SCHEMA&&!MIGRATABLE_SAVE_SCHEMAS.includes(sourceSnapshot.schema)))throw Error('A complete validated source checkpoint is required for backup.');
+    if(sourceSnapshot.animals===sim.animals||sim.planetaryTravel&&sourceSnapshot.core.planetaryTravel===sim.planetaryTravel)throw Error('Movement backup requires a detached source checkpoint.');
+    this.busy=true;let finish;this.activeSave=new Promise(resolve=>{finish=resolve});
+    let tx,done,rollback;try{
+      const db=await this.db(),newId=()=> 'world-'+(globalThis.crypto?.randomUUID?.()||`${Date.now()}-${Math.random().toString(36).slice(2)}`),
+        slotId=newId(),backupSlot=newId(),worldName=(String(name||'Movement continuation').trim().slice(0,40)||'Movement continuation'),savedAt=new Date().toISOString();
+      if(slotId===backupSlot)throw Error('Could not allocate distinct continuation and backup slots.');
+      rollback=adoptMovementRules(sim,{source,backupSlot}).rollback;
+      const snapshot=createSimulationSnapshot(sim,{reason:'movement-rule-continuation',savedAt});snapshot.meta.key=slotId;snapshot.meta.worldName=worldName;
+      const backupMetadata={...sourceSnapshot.meta,key:backupSlot,worldName:('Backup · '+worldName).slice(0,40),savedAt,role:'movement-backup',backupFor:slotId};
+      tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');done=transactionDone(tx);
+      const metadata=tx.objectStore(META_STORE),saves=tx.objectStore(SAVE_STORE);
+      metadata.add(backupMetadata,backupSlot);metadata.add(snapshot.meta,slotId);
+      saves.add(sourceSnapshot,backupSlot);saves.add(snapshot,slotId);
+      await done;tx=null;this.worldNames.set(slotId,worldName);this.worldNames.set(backupSlot,backupMetadata.worldName);
+      return{slotId,backupSlot,meta:snapshot.meta};
+    }catch(error){if(tx){try{tx.abort()}catch{};if(done)await done.catch(()=>{})}rollback?.();throw error}
+    finally{this.busy=false;this.activeSave=null;finish()}
+  }
   async clear(){
     if(!this.available)return;
     if(this.activeSave)await this.activeSave;
+    if((await this.metadata(this.activeSlotId,{strict:true}))?.role==='movement-backup')throw Error('Cannot clear a read-only movement backup.');
     const db=await this.db(),tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');
     tx.objectStore(SAVE_STORE).delete(this.activeSlotId);tx.objectStore(META_STORE).delete(this.activeSlotId);await transactionDone(tx);
     this.lastSavedAt=0;this.lastSavedTick=-1;this.lastObservedSignature='';this.status('cleared','Save cleared');

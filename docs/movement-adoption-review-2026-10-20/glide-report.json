@@ -1,0 +1,141 @@
+{
+  "kind": "automated Chromium input; authored sandbox anatomy; staged position/facing on unmodified generated terrain; not human or naturally evolved evidence",
+  "mode": "glide",
+  "adoption": {
+    "slots": 2,
+    "active": "world-d509db77-ca07-40ea-a67f-94d119a3c12b",
+    "backupSlot": "world-a81208b2-6b5d-4634-b8de-ee4b7184cfa0",
+    "backupFor": "world-d509db77-ca07-40ea-a67f-94d119a3c12b",
+    "sourceTick": 1440,
+    "sourceDay": 31,
+    "sourceSeed": "GENVO-VALLEY-REPLAY-30",
+    "sourceRng": 1987768365,
+    "sourceAnimals": 215,
+    "sourceJumping": null,
+    "sourceGliding": null,
+    "sourceIntroductions": 0,
+    "record": {
+      "schema": 1,
+      "source": "catalog:established-valley-d30",
+      "backupSlot": "world-a81208b2-6b5d-4634-b8de-ee4b7184cfa0",
+      "tick": 1440,
+      "globalTick": 1440,
+      "from": {
+        "glidingRules": null,
+        "jumpingRules": null
+      },
+      "to": {
+        "glidingRules": "finite-height-gliding/1",
+        "jumpingRules": "ballistic-jumping/1"
+      },
+      "changed": true
+    },
+    "jumping": "ballistic-jumping/1",
+    "gliding": "finite-height-gliding/1",
+    "glidingStatus": {
+      "enabled": false,
+      "reason": "No downhill launch ahead. Face a real drop or climb into a living canopy."
+    },
+    "readOnly": {
+      "saveRejected": true,
+      "loadRejected": true,
+      "tick": 1440,
+      "jumping": null,
+      "gliding": null
+    },
+    "failedTransaction": {
+      "rejected": true,
+      "before": 2,
+      "after": 2,
+      "activeUnchanged": true,
+      "rolledBack": true
+    },
+    "recovery": {
+      "active": "world-923681bb-c164-4a34-844d-a58e41c9ced3",
+      "slots": 3,
+      "day": 31,
+      "tick": 1441,
+      "jumping": null,
+      "gliding": null,
+      "recordedPlayer": true,
+      "backupTick": 1440
+    }
+  },
+  "ridge": {
+    "x": 95.5,
+    "y": 66.1,
+    "dir": 0,
+    "dx": 6.123233995736766e-17,
+    "dy": -1,
+    "drop": 0.9006566554307938,
+    "waterBelow": true,
+    "from": 0.04503283277153969,
+    "to": 0,
+    "energy": 104.5458639644552,
+    "breath": 100,
+    "body": "bp0-6d1eb6d8",
+    "policy": "finite-height-gliding/1",
+    "age": 30
+  },
+  "flight": {
+    "x": 95.5,
+    "y": 65.33359939295323,
+    "z": 0.9466727268593651,
+    "elapsed": null,
+    "energy": 101.34652960615057,
+    "breath": 100,
+    "airborne": true,
+    "mode": "glide",
+    "health": 100,
+    "cues": [
+      "confirm"
+    ]
+  },
+  "saved": {
+    "playerId": 227,
+    "z": 0.9466727268593651,
+    "elapsed": null,
+    "x": 95.5,
+    "y": 65.33359939295323,
+    "mode": "glide",
+    "policy": "finite-height-gliding/1"
+  },
+  "reload": {
+    "id": 227,
+    "z": 0.9466727268593651,
+    "elapsed": null,
+    "x": 95.5,
+    "y": 65.33359939295323,
+    "heading": -1.5707963267948966,
+    "mode": "glide",
+    "policy": "finite-height-gliding/1"
+  },
+  "steered": {
+    "heading": -1.5145463267948966,
+    "jump": null,
+    "energy": 101.3281902504494
+  },
+  "landed": {
+    "x": 95.6817750961967,
+    "y": 62.033591596988884,
+    "health": 84,
+    "energy": 100.71583126420713,
+    "mode": null,
+    "water": true,
+    "incident": {
+      "ok": false,
+      "type": "glide-land",
+      "damage": 16,
+      "water": true,
+      "forced": true,
+      "message": "The glide strikes rising terrain or loses support; landing causes injury.",
+      "tick": 1459
+    },
+    "cues": [
+      "splash"
+    ],
+    "audioState": "running"
+  },
+  "keyboard": null,
+  "errors": []
+}
