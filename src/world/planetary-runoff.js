@@ -53,20 +53,23 @@ export function routePlanetaryRunoff(w,runoff,day){
  const after=sum(overland)+sum(volume),closure=captured-(after-before);
  if(Math.abs(closure)>1e-6)
   throw Error('Planetary runoff water closure failed.');
- // All physical stores and receipts are published only after validation.
+ // Validate the combined rain + soil handoff BEFORE touching live stores.
+ // A malformed receipt must never publish only one side of the transfer.
+ const row=e.lastDay;
+ const combinedInput=row.waterInput+captured;
+ const combinedClosure=combinedInput-row.waterOutput-(after-row.waterBefore);
+ if(!Number.isFinite(combinedClosure)||Math.abs(combinedClosure)>1e-6)
+  throw Error('Invalid planetary combined rainfall/runoff closure.');
  e.overland.set(overland);e.volume.set(volume);
  e.totals.soilRunoffReceived=(e.totals.soilRunoffReceived||0)+captured;
  e.totals.runoffDelivered=(e.totals.runoffDelivered||0)+delivered;
  e.totals.overlandMoved=(e.totals.overlandMoved||0)+moved;
- const row=e.lastDay;
- row.waterInput+=captured;
+ row.waterInput=combinedInput;
  row.waterAfter=after;
- row.waterClosure=row.waterInput-row.waterOutput-(after-row.waterBefore);
+ row.waterClosure=combinedClosure;
  row.soilRunoffReceived=captured;
  row.runoffDelivered=delivered;
  row.overlandMoved=moved;
  row.overlandEdges=edges;
- if(Math.abs(row.waterClosure)>1e-6)
-  throw Error('Invalid planetary combined rainfall/runoff closure.');
  return{received:captured,delivered,moved,edges,stored:sum(overland),closure};
 }
