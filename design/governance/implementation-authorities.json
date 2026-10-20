@@ -147,6 +147,14 @@
         "src/world/world.js"
       ]
     },
+    "planetaryBoundaryWater": {
+      "authority": "src/world/planetary-boundary-water.js",
+      "consumers": [
+        "src/world/planet-world.js",
+        "src/world/environment.js"
+      ],
+      "note": "New-world opt-in finite equal-volume ocean/freshwater boundary replacement, explicitly credited water and salt import/export. Historical absent-policy saves retain salt-only boundary flux. This is not shared mutable-ocean coupling between archived regions."
+    },
     "planetaryGeography": {
       "authority": "src/world/planet-geography.js",
       "consumers": [
