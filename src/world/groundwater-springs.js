@@ -28,7 +28,8 @@ export function validateGroundwaterSpringPolicy(w,soil){
 
 export function advanceGroundwaterSprings(w,runoff,day){
  const s=w.soilWater,e=w.environment,rule=GROUNDWATER_SPRINGS;
- if(s?.springPolicy!==rule.policy)return{discharged:0,sites:0};
+ if(s?.springPolicy===undefined)return{discharged:0,sites:0};
+ if(s.springPolicy!==rule.policy)throw Error('Invalid funded groundwater-spring policy.');
  if(!Number.isSafeInteger(day)||day<1||!(runoff instanceof Float64Array)||
     runoff.length!==w.len||!(s.groundwater instanceof Float32Array)||
     s.groundwater.length!==w.len||!(w.terrain?.downstream instanceof Int32Array)||
