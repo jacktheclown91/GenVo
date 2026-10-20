@@ -1,3 +1,5 @@
+import {THERMAL_WEATHER} from '../src/ecology/thermal-weather.js';
+import {adoptThermalRules} from '../src/ecology/thermal-weather-rules.js';
 import {VISIBILITY,adoptVisibilityRules} from '../src/ecology/atmospheric-visibility.js';
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
@@ -30,7 +32,7 @@ const db={transaction(){let ended=false,adds=0;const pending=[];
   }}
  };setTimeout(()=>{if(ended)return;ended=true;for(const p of pending){if(p.remove)stores.get(p.name).delete(p.key);else stores.get(p.name).set(p.key,p.value)}tx.oncomplete?.()},4);return tx;
 }};
-let current=new Simulation('MOVEMENT-ADOPTION',{naturalCaves:false});delete current.visibilityRules;delete current.glidingRules;delete current.jumpingRules;delete current.burrowingRules;delete current.world.subsurface;delete current.climbingRules;delete current.divingRules;delete current.world.divingBathymetry;
+let current=new Simulation('MOVEMENT-ADOPTION',{naturalCaves:false});delete current.thermalRules;delete current.thermalPattern;delete current.visibilityRules;delete current.glidingRules;delete current.jumpingRules;delete current.burrowingRules;delete current.world.subsurface;delete current.climbingRules;delete current.divingRules;delete current.world.divingBathymetry;
 current.player().bodyPlan=makePlan(current.player().bodyPlan.nodes.map(n=>['limb.3','limb.5'].includes(n.socket)?{...n,partId:'spring-leg'}:n));current.player().age=40;
 const manager=new SaveManager({getSim:()=>current});manager.available=true;manager.db=async()=>db;
 await manager.saveNow('historical-source');const source=await manager.loadSnapshot(),sourceCopy=structuredClone(source),originalSlot=manager.activeSlotId;
@@ -52,7 +54,7 @@ const stored=await manager.loadSnapshot(result.slotId),played=restoreSimulationS
 assert.deepEqual(played.movementRuleMigrations,candidate.movementRuleMigrations);assert.equal(played.glidingRules,GLIDING.policy);assert.equal(played.jumpingRules,JUMP.policy);
 const again=adoptMovementRules(played,{source:'already-current fork',backupSlot:'world-00000001-adoption'});assert.equal(again.changed,false);assert.equal(played.movementRuleMigrations.length,2);restoreMovementRuleHistory(played,played);
 await assert.rejects(()=>manager.storeMovementContinuation(candidate,{...source,world:null},{name:'No source',source:'invalid'}),/complete validated/);
-const normalize=s=>{const n=structuredClone(s);for(const key of ['visibilityRules','visibilityRuleMigrations','glidingRules','jumpingRules','movementRuleMigrations','divingRules','divingRuleMigrations','climbingRules','climbingRuleMigrations','caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations'])delete n.core[key];delete n.world.subsurface;delete n.world.divingBathymetry;for(const key of ['savedAt','reason']){delete n[key];delete n.meta[key]}for(const key of ['key','worldName','movementAdopted','movementBackup'])delete n.meta[key];return n};
+const normalize=s=>{const n=structuredClone(s);for(const key of ['thermalRules','thermalPattern','thermalRuleMigrations','visibilityRules','visibilityRuleMigrations','glidingRules','jumpingRules','movementRuleMigrations','divingRules','divingRuleMigrations','climbingRules','climbingRuleMigrations','caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations'])delete n.core[key];delete n.world.subsurface;delete n.world.divingBathymetry;for(const key of ['savedAt','reason']){delete n[key];delete n.meta[key]}for(const key of ['key','worldName','movementAdopted','movementBackup'])delete n.meta[key];return n};
 assert.deepEqual(normalize(stored),normalize(before),'rules, provenance and bed geometry are the only changes to the full simulation');
 manager.setActiveSlot(result.backupSlot);await assert.rejects(()=>manager.saveNow('forbidden'),/read-only/);await assert.rejects(()=>manager.clear(),/read-only/);await assert.rejects(()=>manager.load(result.backupSlot),/read-only/);
 assert.deepEqual(await manager.loadSnapshot(result.backupSlot),sourceCopy,'normal save/load/clear cannot overwrite a backup');
@@ -64,7 +66,7 @@ const debt=stub();debt.planetaryTravel.sessions[0].snapshot.core.tickCount=9;con
 const frozen=stub();delete frozen.planetaryTravel.sessions[0].biologicalMode;assert.throws(()=>adoptMovementRules(frozen,{source:'clock fixture',backupSlot}),/clock conversion/);
 const attack=restoreSimulationSnapshot(structuredClone(source));attack.player().attackAction={pounce:true,phase:'leap'};assert.throws(()=>adoptMovementRules(attack,{source:'pending',backupSlot}),/pending pounce/);
 // Real visited-region inventories, canonical archive clocks and actual travel.
-let regional=new Simulation('MOVEMENT-REGIONAL-ADOPTION',{worldGenerator:'planetary/1',naturalCaves:false});delete regional.visibilityRules;delete regional.burrowingRules;delete regional.world.subsurface;delete regional.climbingRules;delete regional.glidingRules;delete regional.jumpingRules;
+let regional=new Simulation('MOVEMENT-REGIONAL-ADOPTION',{worldGenerator:'planetary/1',naturalCaves:false});delete regional.thermalRules;delete regional.thermalPattern;delete regional.visibilityRules;delete regional.burrowingRules;delete regional.world.subsurface;delete regional.climbingRules;delete regional.glidingRules;delete regional.jumpingRules;
 const frontier=(sim,x,direction)=>{const a=sim.player();for(let y=10.5;y<118.5;y++){a.x=x;a.y=y;const status=planetaryTravelAvailability(sim);if(status.enabled&&status.direction===direction)return true}return false};
 assert.ok(frontier(regional,125.2,'east'));let crossed=crossPlanetaryBorder(regional);assert.ok(crossed.ok,crossed.message);regional=crossed.simulation;
 assert.equal(regional.planetaryTravel.sessions.length,1);assert.equal(regional.jumpingRules,undefined);
@@ -74,6 +76,7 @@ adoptClimbingRules(regional,{source:'real regional fixture',backupSlot:'world-00
 adoptBurrowingRules(regional,{source:'real regional fixture',backupSlot:'world-00000002-adoption'});
 adoptCaveRules(regional,{source:'real regional fixture',backupSlot:'world-00000002-adoption'});
 adoptVisibilityRules(regional,{source:'real regional fixture',backupSlot:'world-00000002-adoption'});
+adoptThermalRules(regional,{source:'real regional fixture',backupSlot:'world-00000002-adoption'});
 const loadedRegional=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(regional,{savedAt:'regional'})));
 assert.equal(loadedRegional.planetaryTravel.sessions[0].snapshot.core.jumpingRules,JUMP.policy);
 assert.equal(loadedRegional.planetaryTravel.sessions[0].snapshot.core.climbingRules,CLIMBING.policy);
@@ -84,6 +87,7 @@ assert.ok(frontier(loadedRegional,2.8,'west'));crossed=crossPlanetaryBorder(load
 const returned=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(crossed.simulation)));
 assert.equal(returned.jumpingRules,JUMP.policy);assert.deepEqual(returned.movementRuleMigrations,regional.movementRuleMigrations,'migration provenance survives returning to the actual visited region');
 assert.equal(returned.climbingRules,CLIMBING.policy);assert.deepEqual(returned.climbingRuleMigrations,regional.climbingRuleMigrations);
+assert.equal(returned.thermalRules,THERMAL_WEATHER.policy);assert.deepEqual(returned.thermalRuleMigrations,regional.thermalRuleMigrations);assert.deepEqual(returned.thermalPattern,regional.thermalPattern);
 assert.equal(returned.visibilityRules,VISIBILITY.policy);assert.deepEqual(returned.visibilityRuleMigrations,regional.visibilityRuleMigrations);
 assert.equal(returned.caveRules,CAVES.policy);assert.deepEqual(returned.caveRuleMigrations,regional.caveRuleMigrations);
 assert.equal(returned.burrowingRules,BURROWING.policy);assert.deepEqual(returned.burrowingRuleMigrations,regional.burrowingRuleMigrations);

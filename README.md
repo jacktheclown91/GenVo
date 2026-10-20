@@ -9,6 +9,7 @@ GenVo is a Living Planet survival game and open-ended evolutionary possibility e
 - [Implementation authorities](design/governance/implementation-authorities.json): ownership of shared mechanisms.
 - [Natural caves](docs/NATURAL-CAVES-2026-10-20.md): connected shallow geology, shared entrances, conserved runoff erosion and remaining underground work.
 - [Weather visibility](docs/ATMOSPHERE-2026-10-20.md): shared fog/precipitation sensing, visual feedback, save policies and remaining atmospheric work.
+- [Temperature spells](docs/THERMAL-WEATHER-2026-10-20.md): persistent heat/cold forcing, shared survival/hydrology effects and exact continuation.
 - [Scenario checkpoints](docs/SCENARIO-CHECKPOINTS.md): immutable advanced-world testing fixtures, exports and playable save forks.
 - [Cleanup manifest](docs/REPOSITORY-CLEANUP.md): integration provenance, retained evidence and archive policy.
 

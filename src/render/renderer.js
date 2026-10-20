@@ -1,5 +1,7 @@
 import {CanvasRecorder} from './canvas-recorder.js';
 import {drawAtmosphere} from './atmosphere.js';
+import {drawThermalWeather} from './thermal-weather.js';
+import {THERMAL_WEATHER} from '../ecology/thermal-weather.js';
 import {VISIBILITY,visuallyObservable} from '../ecology/atmospheric-visibility.js';
 import {CAVES} from '../world/cave-policy.js';
 import {clampCameraToWorld} from './camera-bounds.js';
@@ -137,7 +139,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
        try{for(const a of visible)this.drawAnimal(a,tile)}finally{this.ctx=real;t1=performance.now();try{rec.flush()}finally{endSpriteBatch()}}fs.creaturePrep=t1-t0;fs.creatureCompose=performance.now()-t1;fs.recorderFlushes=rec.stats.flushes}
      else{for(const a of visible)this.drawAnimal(a,tile);fs.creaturePrep=performance.now()-t0;fs.creatureCompose=0}}
     // Weather and interaction cues remain above creatures; ground decoration does not.
-    if((!this.lowDetail||this.sim.visibilityRules===VISIBILITY.policy)&&!this.sim.player()?.underground)this.drawWeatherOverlay();
+    if((!this.lowDetail||this.sim.visibilityRules===VISIBILITY.policy||this.sim.thermalRules===THERMAL_WEATHER.policy)&&!this.sim.player()?.underground)this.drawWeatherOverlay();
     this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId));this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.processTerrainRefreshQueue();}
 
 
@@ -165,7 +167,9 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   }
 
   drawWeatherOverlay(){
-    if(drawAtmosphere(this))return;
+    const atmosphereDrawn=drawAtmosphere(this);
+    drawThermalWeather(this);
+    if(atmosphereDrawn)return;
     const climate=this.sim.climate;if(!climate)return;const c=this.ctx,rain=Math.max(0,Math.min(1,(climate.rain-.30)/.42)),cold=Math.max(0,Math.min(1,(.43-climate.temp)/.18));
     if(rain>.02){
       c.save();c.fillStyle=`rgba(14,28,38,${(.035+rain*.07).toFixed(3)})`;c.fillRect(0,0,this.w,this.h);

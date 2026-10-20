@@ -28,7 +28,7 @@ assert.deepEqual(day('WX-1',300),day('WX-1',300));assert.notEqual(day('WX-1',300
     sim.day++;if((sim.day-1)%CFG.seasonDays===0){sim.seasonIndex=(sim.seasonIndex+1)%4;if(sim.seasonIndex===0)sim.year++}}
   assert.equal(changesWithinDay,0,'rain is a daily weather state');assert.ok(storms>0,'storms occur within 12 years');}
 // Switch off: the previous rule, value for value.
-WEATHER_PATTERNS.enabled=false;try{const sim=new Simulation('WX-OLD',{player:false,bootstrap:false}),shadow=new RNG('WX-OLD');shadow.state=sim.rng.state;
+WEATHER_PATTERNS.enabled=false;try{const sim=new Simulation('WX-OLD',{player:false,bootstrap:false}),shadow=new RNG('WX-OLD');shadow.state=sim.rng.state;delete sim.thermalRules;delete sim.thermalPattern;
   for(let t=0;t<200;t++){sim.phaseClimate();const expected=[.58,.35,.46,.26][sim.seasonIndex]*(.75+.5*shadow.next());assert.equal(sim.climate.rain,expected);assert.deepEqual(Object.keys(sim.climate),['temp','rain'])}}
 finally{WEATHER_PATTERNS.enabled=true}
 console.log('weather-patterns: ok');

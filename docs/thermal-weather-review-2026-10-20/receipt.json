@@ -1,0 +1,103 @@
+{
+  "kind": "normal New World and IndexedDB Continue; generated independent thermal seeds, no staged biological or climate state",
+  "receipts": [
+    {
+      "kind": "cold",
+      "seed": "THERMAL-REVIEW-3",
+      "live": {
+        "reading": {
+          "delta": -0.3030117981025977,
+          "temperature": 0.23698820189740233,
+          "active": true,
+          "label": "Cold snap"
+        },
+        "pattern": {
+          "schema": 1,
+          "sinceDay": 0,
+          "day": 0,
+          "rngState": 1600047871,
+          "fast": -1.9014029750112733,
+          "slow": -1.881191676691173,
+          "anomaly": -0.3030117981025977
+        },
+        "climate": {
+          "temp": 0.23698820189740233,
+          "rain": 0.6093202095064872,
+          "weatherFactor": 1.0505520853560126,
+          "temperatureAnomaly": -0.3030117981025977
+        },
+        "tick": 6,
+        "day": 1,
+        "energy": 114.0031369377087,
+        "hydration": 102.55287175573497
+      },
+      "restored": {
+        "pattern": {
+          "schema": 1,
+          "sinceDay": 0,
+          "day": 0,
+          "rngState": 1600047871,
+          "fast": -1.9014029750112733,
+          "slow": -1.881191676691173,
+          "anomaly": -0.3030117981025977
+        },
+        "climate": {
+          "temp": 0.23698820189740233,
+          "rain": 0.6093202095064872,
+          "weatherFactor": 1.0505520853560126,
+          "temperatureAnomaly": -0.3030117981025977
+        }
+      },
+      "errors": []
+    },
+    {
+      "kind": "heat",
+      "seed": "THERMAL-REVIEW-41",
+      "live": {
+        "reading": {
+          "delta": 0.3083581607139235,
+          "temperature": 0.8483581607139236,
+          "active": true,
+          "label": "Heatwave"
+        },
+        "pattern": {
+          "schema": 1,
+          "sinceDay": 0,
+          "day": 0,
+          "rngState": 2818666509,
+          "fast": 2.3335721679537547,
+          "slow": 1.250015731975801,
+          "anomaly": 0.3083581607139235
+        },
+        "climate": {
+          "temp": 0.8483581607139236,
+          "rain": 0.4758607158667383,
+          "weatherFactor": 0.8204495101150661,
+          "temperatureAnomaly": 0.3083581607139235
+        },
+        "tick": 7,
+        "day": 1,
+        "energy": 114.024240898803,
+        "hydration": 102.47307211187962
+      },
+      "restored": {
+        "pattern": {
+          "schema": 1,
+          "sinceDay": 0,
+          "day": 0,
+          "rngState": 2818666509,
+          "fast": 2.3335721679537547,
+          "slow": 1.250015731975801,
+          "anomaly": 0.3083581607139235
+        },
+        "climate": {
+          "temp": 0.8483581607139236,
+          "rain": 0.4758607158667383,
+          "weatherFactor": 0.8204495101150661,
+          "temperatureAnomaly": 0.3083581607139235
+        }
+      },
+      "errors": []
+    }
+  ]
+}

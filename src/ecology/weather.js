@@ -13,6 +13,7 @@ import {hashString} from '../core/rng.js';
 export const WEATHER_PATTERNS={enabled:true,fastPersistence:.7,fastSpread:.25,slowPersistence:.97,slowSpread:.3};
 function next(st){st.rngState=(st.rngState+0x6D2B79F5)>>>0;let t=st.rngState;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296}
 function gauss(st){const u=1-next(st),v=next(st);return Math.sqrt(-2*Math.log(u))*Math.cos(2*Math.PI*v)}
+export {gauss as weatherGaussian};
 export function createWeatherState(seed){const st={schema:1,rngState:hashString(String(seed)+':weather')||0x9e3779b9,day:0,fast:0,slow:0,factor:1};st.fast=gauss(st);st.slow=gauss(st);st.factor=weatherFactor(st);return st}
 export function weatherFactor(st,P=WEATHER_PATTERNS){const a=P.fastSpread,b=P.slowSpread;return Math.exp(a*st.fast+b*st.slow-(a*a+b*b)/2)}
 // Advance the weather to absolute day index `day` (0 = the first day of the world), one day at a time.
