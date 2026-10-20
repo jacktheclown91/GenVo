@@ -6,5 +6,6 @@
   "seed": "GENVO-VALLEY-REPLAY-30",
   "days": 30,
   "status": "requested",
-  "note": "The corresponding GitHub Actions workflow checks real-world restoration and replay before publishing an artifact. This file is not a curated scenario or proof of successful generation."
+  "note": "Retry one authentic 30-day simulation with a bounded 3-million-node scenario codec. The original catalog stays unchanged unless generated, restored, and replayed in CI.",
+  "attempt": 2
 }
