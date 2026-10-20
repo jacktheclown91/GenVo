@@ -141,6 +141,7 @@ export function routePlanetaryRunoff(w,runoff,day){
  if(!Number.isFinite(combinedClosure)||Math.abs(combinedClosure)>1e-6)
   throw Error('Invalid planetary combined rainfall/runoff closure.');
  e.overland.set(overland);e.volume.set(volume);
+ if(pendingSalt)e.salt.set(pendingSalt);
  if(mineralEnabled)for(const [i,delta] of mineralDelta)minerals[i]+=delta;
  if(eroding)for(const [i,delta] of terrainDelta)w.terrain.elevation[i]=Math.fround(w.terrain.elevation[i]+delta);
  e.totals.soilRunoffReceived=(e.totals.soilRunoffReceived||0)+captured;
@@ -156,9 +157,15 @@ export function routePlanetaryRunoff(w,runoff,day){
  if(mineralEnabled){row.runoffMineralsMoved=mineralsMoved;
   e.totals.runoffMineralsMoved=(e.totals.runoffMineralsMoved||0)+mineralsMoved;
   w.plantResources.totals.runoffMineralsMoved=(w.plantResources.totals.runoffMineralsMoved||0)+mineralsMoved;}
+ if(wetPolicy){
+  row.wetbedSedimentMoved=wetbedMoved;
+  row.wetbedWaterDisplaced=wetbedMoved;
+  e.totals.wetbedSedimentMoved=(e.totals.wetbedSedimentMoved||0)+wetbedMoved;
+  e.totals.wetbedWaterDisplaced=(e.totals.wetbedWaterDisplaced||0)+wetbedMoved;
+ }
  if(eroding){
-  row.sedimentMoved=sedimentMoved;
-  e.totals.sedimentMoved=(e.totals.sedimentMoved||0)+sedimentMoved;
+  row.sedimentMoved=sedimentMoved+wetbedMoved;
+  e.totals.sedimentMoved=(e.totals.sedimentMoved||0)+sedimentMoved+wetbedMoved;
  }
  const inundation=floodFromRunoff(w,day);
  // The next day's runoff must use the new real elevation, not the previous
