@@ -147,6 +147,17 @@
         "src/world/world.js"
       ]
     },
+    "planetaryRunoffMinerals": {
+      "authority": "src/world/planetary-mineral-runoff.js",
+      "consumers": [
+        "src/world/planet-world.js",
+        "src/world/environment.js",
+        "src/world/planetary-runoff.js",
+        "src/world/planetary-seam-runoff.js",
+        "src/world/planetary-seam-salt.js"
+      ],
+      "note": "Opt-in conserved-runoff-minerals/1 mobilizes a bounded fraction of existing plantResources.minerals only when local or paired downhill runoff actually moves water. Both dry soils and existing wet aquatic producers draw from this canonical finite mineral reserve. No duplicate nutrient or sediment stock, speculative fertility generation, or unloaded-region exchange."
+    },
     "planetaryGroundwaterSprings": {
       "authority": "src/world/groundwater-springs.js",
       "consumers": [
