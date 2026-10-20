@@ -3,6 +3,7 @@
 // has a recipient credit. The outer geography reservoir is a separate,
 // explicitly accounted boundary condition, not the other World's stock.
 import {CFG} from '../sim/config.js';
+import {PLANETARY_BOUNDARY_WATER,validateBoundaryWaterPolicy} from './planetary-boundary-water.js';
 import {regionKey} from './planet-regions.js';
 import {REGIONAL_REPLAY,remoteBiologicalDebt} from './planetary-offscreen-biology.js';
 
@@ -57,6 +58,51 @@ function ownedActive(sim){
  return{key:regionKey(sim.world.regionOrigin),origin:sim.world.regionOrigin,
  water:sim.world.water,env:sim.world.environment,terrain:sim.world.terrain,session:null};
 }
+// Assign one source of water for each known, wet inter-region edge. New
+// policy/2 worlds exchange across their shared simulated border instead of
+// ALSO replacing the same water with the immutable outside geography.
+ // Existing policy/1 archives and regions not advancing biological ticks
+// retain their historical independent geography boundary behavior.
+export function syncPlanetaryBoundaryOwnership(sim){
+ if(!sim?.world?.planet||!sim.planetaryTravel)return{pairedCells:0,regions:0};
+ const regions=[ownedActive(sim),...(sim.planetaryTravel.sessions||[])
+  .filter(session=>session.biologicalMode==='canonical-ticks/1')
+  .map(session=>regionOf(sim,session)).filter(Boolean)];
+ const claimed=new Map(),expected=PLANETARY_BOUNDARY_WATER.pairedPolicy;
+ for(const r of regions)if(r.env?.boundaryWaterPolicy===expected){
+  validateBoundaryWaterPolicy({generator:'planetary/1',n:128,len:128*128},r.env);
+  claimed.set(r.key,new Uint8Array(128*128));
+ }
+ let cells=0;
+ if(sim.regionalReplayPolicy===REGIONAL_REPLAY.synchronized){
+  for(let a=0;a<regions.length;a++)for(let b=a+1;b<regions.length;b++){
+   const left=regions[a],right=regions[b],dir=adjacent(left.origin,right.origin);
+   if(!dir||!claimed.has(left.key)||!claimed.has(right.key))continue;
+   const lhs=claimed.get(left.key),rhs=claimed.get(right.key);
+   for(const [i,j] of seams(left,right,dir)){
+    if(!left.water[i]||!right.water[j]||!left.env.boundary[i]||!right.env.boundary[j])continue;
+    if(!lhs[i]){lhs[i]=1;cells++}
+    if(!rhs[j]){rhs[j]=1;cells++}
+   }
+  }
+ }
+ // Prepared masks are published only once all authoritative regions have
+ // passed validation. Session snapshots are copy-on-write so a completed
+ // travel does not mutate a previous simulation's archived checkpoint.
+ for(const r of regions){
+  const mask=claimed.get(r.key);
+  if(!mask)continue;
+  const current=r.env.blockedBoundaries;
+  if(current.length===mask.length&&current.every((v,i)=>v===mask[i]))continue;
+  if(r.session){
+   const snap=r.session.snapshot;
+   r.session.snapshot={...snap,world:{...snap.world,
+    environment:{...r.env,blockedBoundaries:mask}}};
+  }else r.env.blockedBoundaries=mask;
+ }
+ return{pairedCells:cells,regions:claimed.size};
+}
+
 function validRegion(r,day){
  const e=r.env;
  return !!r.origin&&r.water?.length===128*128&&(e?.schema>=2&&e?.schema<=6)&&
