@@ -31,6 +31,12 @@ The second command accepts a file exported from the browser and registers it wit
 
 **The repository's curated catalog starts empty.** No purported Day 30/100/300 fixture is fabricated or shipped before it has been generated, restored and checked.
 
+## Optional one-time cloud generation
+
+`.github/workflows/generate-world-scenario.yml` adds a **manual** GitHub Actions workflow that runs the real ecological simulation once and uploads the resulting scenario package and SHA-256 catalog as a downloadable artifact. It is not triggered on every push. The workflow must be present on the repository's default branch before GitHub's Actions UI generally offers the manual Run workflow control; this development branch alone does not start it. The resulting artifact must be reviewed and deliberately incorporated into `assets/scenarios/` before it appears as a bundled game option.
+
+For expensive ecosystem experiments, generate the checkpoint in this separate one-time job, then conduct rapid repeated tests against the resulting baseline.
+
 ## Short replay tests
 
 ```sh
