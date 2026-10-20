@@ -15,6 +15,10 @@ function floodFromRunoff(w,day){
  const n=w.n,changes=[];
  for(let i=n;i<w.len-n&&changes.length<PLANETARY_RUNOFF.maxNewWetCellsPerDay;i++){
   if(w.water[i])continue;
+  // Inundating a snowy land cell would leave an independent finite snow
+  // reservoir beneath open water. The existing thaw cycle owns that stock:
+  // keep the cell dry until the snow naturally melts into liquid runoff.
+  if(w.soilWater?.snowpack?.[i]>1e-8)continue;
   const x=i%n;
   // A new border cell would need a paired external geography authority.
   if(x===0||x===n-1)continue;
