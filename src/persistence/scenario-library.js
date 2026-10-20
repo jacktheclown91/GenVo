@@ -5,6 +5,17 @@
 import {encodeSnapshotGraph,decodeSnapshotGraph} from './scenario-codec.js';
 
 export const SCENARIO_FORMAT='genvo.world-scenario/1';
+function validContinuation(c){
+ return c&&typeof c==='object'&&/^[a-z0-9][a-z0-9-]{1,63}$/.test(c.fromId||'')&&
+  Number.isSafeInteger(c.fromDay)&&c.fromDay>=1&&
+  Number.isSafeInteger(c.fromTick)&&c.fromTick>=0&&
+  Number.isSafeInteger(c.fromRng)&&c.fromRng>=0&&c.fromRng<=4294967295&&
+  /^[a-f0-9]{64}$/.test(c.fromSha256||'')&&
+  Number.isSafeInteger(c.continuedDays)&&c.continuedDays>0&&
+  Number.isSafeInteger(c.toDay)&&c.toDay===c.fromDay+c.continuedDays&&
+  Number.isSafeInteger(c.toTick)&&c.toTick>c.fromTick;
+}
+
 const validId=s=>typeof s==='string'&&/^[a-z0-9][a-z0-9-]{1,63}$/.test(s);
 export function scenarioMetadata(snapshot,{id,label,description=''}={}){
  if(!snapshot||typeof snapshot!=='object'||!snapshot.world||!snapshot.core||
@@ -42,6 +53,10 @@ export function openScenarioSnapshot(bundle){
   throw Error('Invalid world scenario provenance.');
  const snapshot=decodeSnapshotGraph(bundle.graph);
  const expected=scenarioMetadata(snapshot,{id:m.id,label:m.label,description:m.description});
+ if(m.continuedFrom!==undefined&&
+   (!validContinuation(m.continuedFrom)||m.continuedFrom.toDay!==snapshot.core.day||
+    m.continuedFrom.toTick!==snapshot.core.tickCount))
+  throw Error('Invalid continued-scenario provenance.');
  for(const k of ['seed','saveSchema','generator','day','year','generation','tickCount','liveAnimals','playable','source']){
   if(m[k]!==expected[k])throw Error('Scenario metadata disagrees with its real simulation state: '+k);
  }
@@ -54,6 +69,7 @@ export function validateScenarioCatalog(catalog){
  for(const s of catalog.scenarios){
   if(!validId(s?.id)||ids.has(s.id)||typeof s.label!=='string'||!s.label.trim()||
     !Number.isSafeInteger(s.day)||s.day<1||
+    (s.continuedFrom!==undefined&&(!validContinuation(s.continuedFrom)||s.continuedFrom.toDay!==s.day))||
     typeof s.playable!=='boolean'||
     typeof s.file!=='string'||!/^assets\/scenarios\/[a-z0-9-]+\.json(?:\.gz)?$/.test(s.file)||
     !/^[a-f0-9]{64}$/.test(s.sha256||''))
@@ -91,7 +107,9 @@ export async function loadBundledScenario(entry,{fetchFile=fetch,digest=null}={}
   if(actual!==entry.sha256)throw Error('Scenario file integrity check failed.');
  }
  const bundle=await parseScenarioDocument(bytes,{name:entry.file});
- if(bundle.metadata?.id!==entry.id||bundle.metadata?.day!==entry.day||bundle.metadata?.playable!==entry.playable)
+ if(bundle.metadata?.id!==entry.id||bundle.metadata?.day!==entry.day||
+  bundle.metadata?.playable!==entry.playable||
+  JSON.stringify(bundle.metadata?.continuedFrom??null)!==JSON.stringify(entry.continuedFrom??null))
   throw Error('Catalog does not match scenario history.');
  return openScenarioSnapshot(bundle);
 }
