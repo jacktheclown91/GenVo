@@ -45,6 +45,7 @@ jobs:
           node --check src/world/planet-world.js
           node --check src/world/planetary-internal-water.js
           node --check src/world/planetary-runoff.js
+          node tests/planetary-runoff-inundation.mjs
           node tests/planetary-rainfall-runoff.mjs
           node tests/planetary-internal-water.mjs
           node tests/planetary-boundary-exchange.mjs
