@@ -70,6 +70,24 @@ assert.equal(d.environment.salt[right],0);
 assert.ok(Math.abs(c.environment.lastDay.waterClosure)<1e-12);
 assert.ok(Math.abs(d.environment.lastDay.waterClosure)<1e-12);
 
+// Reversed source direction: the right-hand land owns the donor stock,
+// proving neither the ledger nor the routing assumes a left-to-right river.
+const reverseA=region(0,left,{overland:.05,elevation:.1});
+const reverseB=region(128,right,{overland:.9,elevation:.95});
+const reversed=reconcilePlanetarySaltSeams(encounter(reverseA,reverseB).sim);
+assert.equal(reversed.length,1);
+assert.ok(reversed[0].runoffBToA>0);
+assert.equal(reversed[0].waterBToA,reversed[0].runoffBToA);
+assert.ok(Math.abs(reverseA.environment.overland[left]+reverseB.environment.overland[right]-.95)<1e-12);
+assert.ok(Math.abs(reverseA.environment.lastDay.waterClosure)<1e-12);
+assert.ok(Math.abs(reverseB.environment.lastDay.waterClosure)<1e-12);
+
+// A forged receipt that claims more runoff than the corresponding real
+// physical water transfer cannot survive the seam ledger validator.
+const forgery=structuredClone(sim.planetaryTravel.seamLedger);
+forgery.history[0].runoffAToB=forgery.history[0].waterAToB+1;
+assert.throws(()=>validatePlanetarySeamLedger(forgery),/Invalid paired planetary seam receipt/);
+
 // No uphill routing, no free bridge from a historical saved rule and no
 // speculative outflow toward an unvisited/unsynchronized region.
 const uphill=encounter(region(0,left,{overland:.6,elevation:.15}),
