@@ -36,7 +36,7 @@ export function encodeSnapshotGraph(input){
   let node;
   if(ArrayBuffer.isView(v)){
    const kind=v.constructor.name;
-   if(kind==='DataView')node={type:'buffer',bytes:encodeBytes(new Uint8Array(v.buffer,v.byteOffset,v.byteLength))};
+   if(kind==='DataView')node={type:'data-view',bytes:encodeBytes(new Uint8Array(v.buffer,v.byteOffset,v.byteLength))};
    else if(TYPED[kind])node={type:'typed',kind,bytes:encodeBytes(new Uint8Array(v.buffer,v.byteOffset,v.byteLength))};
    else throw Error('Unsupported scenario typed array.');
   }else if(v instanceof ArrayBuffer)node={type:'buffer',bytes:encodeBytes(new Uint8Array(v))};
@@ -65,6 +65,7 @@ export function decodeSnapshotGraph(data){
    case'set':return new Set();
    case'date':{const d=new Date(node.value);if(!Number.isFinite(+d))throw Error('Invalid scenario date.');return d;}
    case'buffer':return decodeBytes(node.bytes).buffer;
+   case'data-view':return new DataView(decodeBytes(node.bytes).buffer);
    case'typed':{
     const C=TYPED[node.kind];if(!C)throw Error('Unsupported scenario array type.');
     const b=decodeBytes(node.bytes);
@@ -100,7 +101,8 @@ export function decodeSnapshotGraph(data){
    }
   }else if(node.type==='array'){
    if(!Array.isArray(node.items))throw Error('Invalid scenario array elements.');
-   dest.push(...node.items.map(revive));
+   // Large historic arrays can exceed the JS argument-list limit.
+   for(const item of node.items)dest.push(revive(item));
   }else if(node.type==='set'){
    if(!Array.isArray(node.items))throw Error('Invalid scenario set.');
    for(const item of node.items)dest.add(revive(item));
