@@ -83,6 +83,15 @@ Continental geography, finite oceans/rivers/groundwater, moving weather, climate
 - `tests/planetary-seam-runoff.mjs` covers dry-to-dry, dry-to-wet capacity, both directions, uphill and absent-neighbor rejection, conservation, ledger forgery, malformed-stock safety, and new/legacy save continuity.
 - **Verification:** source syntax and direct isolated execution of the committed seam transaction passed for dry/dry and dry/wet flows, historical policy opt-out, uphill refusal and malformed-source refusal. Native Node/Chromium integration tests are not yet run. Sediment and nutrients are not yet transferred, flooded dry-to-wet topology changes remain local, and this is not hydrology across unsimulated continents.
 
+## Synchronized land groundwater exchange (October 19, 2026)
+- New planetary `soilWater` controllers opt in to `paired-land-groundwater/1`. This policy is stored with the **canonical** soil water state. Existing saves with no policy continue to have closed regional land groundwater boundaries; no migration grants them previously absent water.
+- The new `src/world/planetary-seam-groundwater.js` stages finite lateral flow **between two real land cells** at an adjacent synchronized regional seam, driven by hydraulic head (`terrain.elevation + groundwater`). Donor groundwater provides the water; recipient capacity and the existing lateral exchange coefficient limit flux. It does not invent water from unsimulated neighbors or turn soil water into ocean surface volume.
+- The existing `reconcilePlanetarySaltSeams` transaction retains groundwater-only receipts, publishes both groundwater stores, updates **soil-water** daily input/output/storage balances and cumulative paired groundwater totals, and leaves surface-water receipts unchanged. Float32 inventory rounding is audited, not disguised as a new external source.
+- Saved `groundwaterAToB/groundwaterBToA` ledger fields identify the direction, fail on invalid values, and remain distinct from `waterAToB/waterBToA` (surface flows). Soil daily receipts are checked for paired input/output compatibility.
+- `tests/planetary-seam-groundwater.mjs` exercises head-driven flows in both directions, a dry donor, wet cells, missing neighbors, legacy rule opt-out, malformed donor rejection, groundwater-only ledger entries, and snapshot policy continuity.
+- **Verification:** isolated JavaScript execution of the committed paired transaction and syntax parsing passed in both directions with conservation within Float32 tolerance, historical opt-out and dry-source refusal. The complete native Node suite, browser performance and multi-region saved biology replay remain unexecuted.
+- Future extensions: feed groundwater into physically funded springs and wetlands; boundary lithology and permeability; geological aquifer layers; transported dissolved nutrients; long-term climate effects.
+
 ## Batch 4: weather
 - [ ] Introduce globally located wind/pressure/moisture fronts at a coarser atmospheric resolution than terrain, deterministically sampled by local regions.
 - [ ] Route rainfall, snow, evaporation, cloud shade and temperature through the existing climate/soil/water authorities.
