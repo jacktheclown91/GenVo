@@ -75,7 +75,7 @@ export class World{
     if(typeof reason!=='string'||!reason.trim())throw Error('Topology change requires a source/reason.');
     if(!Array.isArray(changes))throw Error('Topology edits must be an array.');
     const before=this.water.slice(),imports=new Map(),seen=new Set();
-    for(const c of changes){if(!Number.isSafeInteger(c.i)||c.i<0||c.i>=this.len||seen.has(c.i)||(c.water!==0&&c.water!==1))throw Error('Invalid topology edit.');seen.add(c.i);if(c.water){if(!Number.isFinite(c.depth)||c.depth<=0||c.depth>2||!Number.isFinite(c.salinity)||c.salinity<0||c.salinity>2)throw Error('Invalid topology water import.');if(c.source==='overland'){
+    for(const c of changes){if(!Number.isSafeInteger(c.i)||c.i<0||c.i>=this.len||seen.has(c.i)||(c.water!==0&&c.water!==1))throw Error('Invalid topology edit.');seen.add(c.i);if(c.water){if(this.soilWater?.snowpack?.[c.i]>1e-8)throw Error('Cannot inundate land with stored snow water.');if(!Number.isFinite(c.depth)||c.depth<=0||c.depth>2||!Number.isFinite(c.salinity)||c.salinity<0||c.salinity>2)throw Error('Invalid topology water import.');if(c.source==='overland'){
    if(this.environment?.schema!==6||c.salinity!==0||
       this.water[c.i]||this.environment.overland[c.i]+1e-12<c.depth)
     throw Error('Runoff inundation lacks owned physical water.');
