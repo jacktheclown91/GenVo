@@ -11,7 +11,7 @@ Open **New World > Starting point**:
 - **Import a real evolved-world checkpoint:** choose an exported `.json` scenario package. The package is decoded and validated before any new slot is allocated.
 - **Evolved: ...:** appears only after verified catalog entries have been built into `assets/scenarios/catalog.json`. A bundled file's SHA-256 must match the manifest before it is restored.
 
-The **Load World** screen has **Export Scenario** for each saved world. It produces a portable `recorded-*.json` with its real saved-day state. No free creature editor or ancestry rewrite is part of checkpoint loading. A source without a living controllable creature cannot currently be used as a player quick start; use a saved world with a viable lineage.
+The **Load World** screen has **Export Scenario** for each saved world. It produces a portable `recorded-*.json` with its real saved-day state. No free creature editor or ancestry rewrite is part of checkpoint loading. A source without a living controllable creature is still a legitimate **developer replay fixture**, but it will not appear as a player quick start. Use a saved world with an active lineage for the New World menu.
 
 ## Export a genuine advanced fixture once
 
@@ -27,7 +27,7 @@ The first command runs the actual canonical `Simulation.update` lifecycle for 30
 - `assets/scenarios/first-valley.json`: lossless typed-array/Map/Set/reference-preserving snapshot package.
 - `assets/scenarios/catalog.json`: label, *actual* saved day, generation, seed, living-creature count, path and SHA-256.
 
-The second command accepts a file exported from the browser and registers it without replaying its entire past. Regeneration of an existing id requires `--replace` so an accepted baseline is not overwritten silently. Commit both the scenario file and catalog together for a shareable browser quick start.
+The second command accepts a file exported from the browser and registers it without replaying its entire past. The exporter records a factual `playable` flag: autonomous or extinct-player worlds remain available to developer replay even if they cannot currently be offered for direct player control. Only a real living player-lineage checkpoint appears as a bundled quick start. Regeneration of an existing id requires `--replace` so an accepted baseline is not overwritten silently. Commit both the scenario file and catalog together for a shareable browser quick start.
 
 **The repository's curated catalog starts empty.** No purported Day 30/100/300 fixture is fabricated or shipped before it has been generated, restored and checked.
 
