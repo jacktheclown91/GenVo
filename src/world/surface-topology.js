@@ -2,6 +2,7 @@
 import {coordNoise} from '../core/rng.js';
 import {coastlineX,validateEnvironment} from './environment.js';
 import {deriveDrainage} from './topography.js';
+import {PLANETARY_CHANNEL_TOPOLOGY} from './planetary-channel-topology.js';
 export const WORLD_GENERATORS=Object.freeze({legacy:'freshwater/1',coast:'coastal/1',planet:'planetary/1'});
 export function generatorForState(state){const generator=state.generator??(state.environment?WORLD_GENERATORS.coast:WORLD_GENERATORS.legacy);if(!Object.values(WORLD_GENERATORS).includes(generator))throw Error('Unknown saved world generator.');return generator}
 export function generatedWaterAt(w,x,y,generator){if(generator===WORLD_GENERATORS.planet){if(!w.planet)throw Error('Planet descriptor required for regeneration.');return w.planet.sample(x+.5+(w.regionOrigin?.x||0),y+.5+(w.regionOrigin?.y||0)).water}if(!Object.values(WORLD_GENERATORS).includes(generator))throw Error('Unknown world generator.');const broad=(coordNoise(w.seedHash,x>>3,y>>3)+coordNoise(w.seedHash^0x915f,x>>4,y>>4))*.5,river=Math.abs(y/w.n-(.5+.18*Math.sin((x+w.seedHash%97)*.055)))<.025,wet=Math.min(1,.18+broad*.68+(river?.55:0));return river||wet>.88||(generator===WORLD_GENERATORS.coast&&x>=coastlineX(w,y))?1:0}
@@ -17,7 +18,7 @@ export function synchronizeSurfaceWater(w,previous,{reason='legacy-mask-edit',ad
  const state=w.topology||newTopologyState();validateTopologyState(state);const row={revision:state.revision+1,reason,changedCells:changed.length,waterInput:0,waterOutput:0,saltInput:0,saltOutput:0,internalWater:0};
  let next=old?{...old,depth:old.depth.slice(),...(old.schema>=3?{volume:old.volume.slice()}:{}),
   ...(old.schema>=6?{overland:old.overland.slice()}:{}),
-  ...(old.schema>=7?{floodOrigin:old.floodOrigin.slice()}:{}),
+  ...(old.schema>=7||old.channelTopologyPolicy===PLANETARY_CHANNEL_TOPOLOGY.policy?{floodOrigin:old.floodOrigin.slice()}:{}),
   salt:old.salt.slice(),boundary:old.boundary.slice(),totals:{...old.totals}}:null;
  for(const i of changed){if(w.water[i]){
   const options=additions?.get(i)||{depth:.15,salinity:0};
@@ -31,15 +32,17 @@ export function synchronizeSurfaceWater(w,previous,{reason='legacy-mask-edit',ad
   const volume=internal?options.depth:next?Math.fround(options.depth):options.depth;
   if(internal){
    next.overland[i]-=volume;row.internalWater+=volume;
-   if(next.schema>=7)next.floodOrigin[i]=1;
-  }else if(next?.schema>=7)next.floodOrigin[i]=0;
-  else{row.waterInput+=volume;row.saltInput+=volume*options.salinity;}
+   if(next.schema>=7||next.channelTopologyPolicy===PLANETARY_CHANNEL_TOPOLOGY.policy)next.floodOrigin[i]=1;
+  }else{
+   if(next&&(next.schema>=7||next.channelTopologyPolicy===PLANETARY_CHANNEL_TOPOLOGY.policy))next.floodOrigin[i]=0;
+   row.waterInput+=volume;row.saltInput+=volume*options.salinity;
+  }
   if(next){next.depth[i]=Math.fround(volume);if(next.schema>=3)next.volume[i]=volume;
    next.salt[i]=volume*options.salinity;next.boundary[i]=0;}
  }else if(next){
   const transfer=additions?.get(i)?.destination==='overland';
   if(transfer){
-   if(next.schema!==7||next.floodOrigin[i]!==1||next.overland[i]!==0||
+   if(!(next.schema===7||next.channelTopologyPolicy===PLANETARY_CHANNEL_TOPOLOGY.policy)||next.floodOrigin[i]!==1||next.overland[i]!==0||
       next.boundary[i]!==0||next.salt[i]!==0||
       !(next.volume[i]>0&&next.volume[i]<=.025))
     throw Error('Receding water must be previously flooded, unsalted and owned.');
@@ -52,7 +55,7 @@ export function synchronizeSurfaceWater(w,previous,{reason='legacy-mask-edit',ad
   }
   next.depth[i]=0;
   if(next.schema>=3)next.volume[i]=0;
-  if(next.schema>=7)next.floodOrigin[i]=0;
+  if(next.schema>=7||next.channelTopologyPolicy===PLANETARY_CHANNEL_TOPOLOGY.policy)next.floodOrigin[i]=0;
   next.salt[i]=0;next.boundary[i]=0;
  }}
  if(next){next.totals.saltInput+=row.saltInput;next.totals.saltOutput+=row.saltOutput;validateEnvironment(w,next);}
