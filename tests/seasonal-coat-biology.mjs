@@ -29,7 +29,12 @@ assert.equal(seasonalCoatProfile(animal()).waterResistance,0);
 assert.ok(seasonalCoatProfile(animal('fur-mantle',true)).waterResistance>0);
 assert.equal(seasonalCoatProfile(animal('feather-mantle',true)).waterResistance,
  seasonalCoatProfile(animal('fur-mantle',true)).waterResistance);
-assert.equal(seasonalCoatProfile(animal(null,true)).waterResistance,0,
+const nakedWax={bodyPlan:makePlan([
+ ...founder.nodes.map(n=>({partId:n.partId,parent:n.parent,socket:n.socket})),
+ {partId:'wax-plates',parent:'root',socket:'flank.left'}
+])};
+assert.ok(validatePlan(nakedWax.bodyPlan,{ancestry:['armor-plate']}).ok);
+assert.equal(seasonalCoatProfile(nakedWax).waterResistance,0,
  'wax plates without a mounted coat cannot waterproof fictitious fur');
 
 const winter=animal(),beforeEnergy=winter.energy;
