@@ -57,6 +57,9 @@ for(const actor of [a,b]){
  actor.genes={...a.genes,metabolism:1};
  actor.bodyPlan=structuredClone(a.bodyPlan);
 }
+// Hold inherited anatomy and other adaptation effects constant so the
+// comparison isolates the climate allele rather than unrelated founders.
+b.adaptations=structuredClone(a.adaptations||[]);
 a.genes.climate=.7;b.genes.climate=1.4;
 const cell=sim.world.idx(p.x,p.y);
 sim.world.temperature[cell]=.8;sim.world.moisture[cell]=.2;
