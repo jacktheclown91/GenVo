@@ -75,7 +75,7 @@ const seed='GENVO8-TEST-A',origin={x:0,y:2560};
 const world=new World(seed,{generator:'planetary/1',planetOrigin:origin});
 assert.equal(world.environment.coatMoisturePolicy,COAT_MOISTURE.policy);
 validateEnvironment(world,world.environment);
-const sim=new Simulation(seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:origin});
+const sim=new Simulation(seed,{player:true,bootstrap:true,worldGenerator:'planetary/1',planetOrigin:origin});
 const subject=sim.animals.find(a=>a.alive&&a.species==='genvo');
 assert.ok(subject,'an active GenVo creature is needed');
 subject.bodyPlan=structuredClone(fur.bodyPlan);
