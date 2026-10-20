@@ -10,7 +10,7 @@ const FUTURE_POLICIES=[
  'youngClimatePolicy','floodOrigin'
 ];
 export function simulateHistoricalPlanetaryEnvironment(world,schema){
- if(!world||world.generator!=='planetary/1'||![4,5].includes(schema)||
+ if(!world||world.generator!=='planetary/1'||![3,4,5].includes(schema)||
    world.environment?.schema!==6)
   throw Error('Only modern planetary environments may be converted into historical test fixtures.');
  const e=world.environment;
