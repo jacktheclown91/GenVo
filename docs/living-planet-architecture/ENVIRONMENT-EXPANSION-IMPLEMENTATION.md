@@ -36,7 +36,7 @@ Continental geography, finite oceans/rivers/groundwater, moving weather, climate
 - [ ] Keep local region size at currently supported 128x128 until profiling justifies changes.
 
 ## Batch 3: connected water
-- [ ] Specify ocean reservoir ownership: immutable unvisited geography versus mutable visited/archived neighboring stocks. Do not apply both at one border.
+- [x] Specify and implement versioned external-versus-paired ownership at known synchronized wet region seams; unsimulated surroundings still use the geographic reservoir.
 - [ ] Build deterministic same-day freshwater/salt transfers across visited region seams, with exactly paired debit/credit and serialized pending handoffs.
 - [ ] Apply finite ocean boundary exchange only where external unsimulated water is declared; remove boundary-mode ambiguity in a new version rather than reinterpreting old snapshots.
 - [ ] Connect soil runoff, river outflow, groundwater and saltwater mixing without fabricated water or double-counted nutrients.
@@ -65,6 +65,15 @@ Continental geography, finite oceans/rivers/groundwater, moving weather, climate
 - `src/world/environment.js` includes water fluxes in day-local physical ledgers; policy, cumulative totals and last-day boundary receipts have rejection checks for invalid/corrupt snapshots. The core 128x128 World region remains the sole live array owner.
 - `tests/planetary-boundary-water.mjs` and `tests/planetary-boundary-exchange.mjs` cover reservoir replacement, water/salt conservation, corruption rejection, real coastal simulation and historical fallback. An isolated numerical/syntax smoke passed, but native Node/Chromium integration tests have not been run here.
 - **Limit:** this is a declared outside-geography reservoir and not yet a shared dynamically changing global ocean. Existing same-day `src/world/planetary-seam-salt.js` already pairs water and salt transfers for synchronized visited neighboring regions, but the new open-reservoir exchange does not yet exclude those loaded neighbors. A future version must arbitrate **one** boundary authority per edge before claiming continuous multi-region ocean circulation; do not silently reinterpret this policy in existing saves.
+
+## Paired ocean and freshwater seam ownership (October 19, 2026)
+- New worlds now use `geography-reservoir-water/2` with a per-region, saved directional `blockedBoundaries` mask. The initial mask is empty until a physically wet neighboring region becomes part of the synchronized archive set. Historical `geography-reservoir-water/1` and missing-policy saves retain their prior behavior.
+- On planetary travel, `syncPlanetaryBoundaryOwnership` pairs real wet-to-wet border cells from the active World with independently archived World snapshots. It publishes the archived boundary masks copy-on-write, so a completed crossing does not mutate the caller's previous snapshots. Only synchronized, canonical-tick archived regions are eligible. No animal, seed or resource stock is duplicated.
+- During local daily physical updates, blocked edge directions no longer import/export external-reservoir water or salt. Later, the existing paired-seam simulation transfers bounded water volume and dissolved salt directly between the two actual regional inventories, with reciprocal receipts.
+- Corner water cells use directional ownership rather than shutting off the whole cell. When a corner has both paired and unpaired wet sides, the open sides alone supply replacement water at their sampled geographic salinity and a proportional per-edge rate.
+- Water-only (zero-dissolved-salt) paired flux is retained as a valid seam receipt. Freshwater transport must not be omitted merely because no salt moved.
+- Targeted regression coverage: `tests/planetary-water-seam-ownership.mjs`, `tests/planetary-boundary-water.mjs`, `tests/planetary-paired-seam-salt.mjs`, and `tests/planetary-boundary-exchange.mjs`.
+- **Verification:** JavaScript parsing and isolated ownership/finite-exchange checks are available; full Node tests, offscreen replay, browser frame performance, and long-lived ocean ecology remain unverified. The connected ocean applies only to registered synchronized regions, not a globally conserved mutable ocean covering the entire planet. External unvisited seas are still declared geographic reservoirs. River runoff across previously unvisited dry boundaries remains future work.
 
 ## Batch 4: weather
 - [ ] Introduce globally located wind/pressure/moisture fronts at a coarser atmospheric resolution than terrain, deterministically sampled by local regions.
