@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "request": "continue-authentic-world",
+  "sourceScenario": "established-valley-d30",
+  "destinationScenario": "mature-valley-d100",
+  "sourceDay": 31,
+  "targetDay": 101,
+  "seed": "GENVO-VALLEY-REPLAY-30",
+  "note": "Resume the actual checked Day 30 snapshot and advance only 70 additional simulation days. Preserve original RNG and ancestry; promote only after restore and repeat replay."
+}
