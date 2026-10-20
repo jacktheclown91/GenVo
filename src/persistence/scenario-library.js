@@ -55,15 +55,32 @@ export function validateScenarioCatalog(catalog){
   if(!validId(s?.id)||ids.has(s.id)||typeof s.label!=='string'||!s.label.trim()||
     !Number.isSafeInteger(s.day)||s.day<1||
     typeof s.playable!=='boolean'||
-    typeof s.file!=='string'||!/^assets\/scenarios\/[a-z0-9-]+\.json$/.test(s.file)||
+    typeof s.file!=='string'||!/^assets\/scenarios\/[a-z0-9-]+\.json(?:\.gz)?$/.test(s.file)||
     !/^[a-f0-9]{64}$/.test(s.sha256||''))
    throw Error('Invalid catalog scenario entry.');
   ids.add(s.id);
  }
  return catalog.scenarios;
 }
+// The canonical graph is JSON, but mature planets are kept as gzip assets
+// for player loading. DecompressionStream is supported in modern Chromium
+// and is shared by the browser import and integrity-checked bundled loader.
+export async function parseScenarioDocument(buffer,{name='scenario.json'}={}){
+ const bytes=new Uint8Array(buffer);
+ if(bytes.byteLength>160*1024*1024)throw Error('Scenario package exceeds the supported compressed size.');
+ const packed=bytes.length>=2&&bytes[0]===0x1f&&bytes[1]===0x8b;
+ if(name.endsWith('.gz')&&!packed)throw Error('Scenario declares gzip but has no gzip header.');
+ let data=buffer;
+ if(packed){
+  if(typeof DecompressionStream!=='function')throw Error('This browser cannot decompress advanced-world scenarios.');
+  const stream=new Blob([buffer]).stream().pipeThrough(new DecompressionStream('gzip'));
+  data=await new Response(stream).arrayBuffer();
+ }
+ if(data.byteLength>160*1024*1024)throw Error('Decompressed scenario exceeds supported size.');
+ return JSON.parse(new TextDecoder().decode(data));
+}
 export async function loadBundledScenario(entry,{fetchFile=fetch,digest=null}={}){
- if(!entry||typeof entry.file!=='string'||!/^assets\/scenarios\/[a-z0-9-]+\.json$/.test(entry.file))
+ if(!entry||typeof entry.file!=='string'||!/^assets\/scenarios\/[a-z0-9-]+\.json(?:\.gz)?$/.test(entry.file))
   throw Error('Invalid scenario path.');
  const response=await fetchFile('./'+entry.file);
  if(!response.ok)throw Error('Scenario package is missing from this build.');
@@ -73,7 +90,7 @@ export async function loadBundledScenario(entry,{fetchFile=fetch,digest=null}={}
   const actual=await digest(bytes);
   if(actual!==entry.sha256)throw Error('Scenario file integrity check failed.');
  }
- const bundle=JSON.parse(new TextDecoder().decode(bytes));
+ const bundle=await parseScenarioDocument(bytes,{name:entry.file});
  if(bundle.metadata?.id!==entry.id||bundle.metadata?.day!==entry.day||bundle.metadata?.playable!==entry.playable)
   throw Error('Catalog does not match scenario history.');
  return openScenarioSnapshot(bundle);
