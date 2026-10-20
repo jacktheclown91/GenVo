@@ -50,7 +50,7 @@ const session={key:regionKey(destination),biologicalMode:'canonical-ticks/1',
 active.planetaryTravel={schema:1,nextId:Math.max(active.nextId,remote.nextId),sessions:[session]};
 const previous=snapshot(active);
 const startCombined=saltStorage(active.world)+session.snapshot.world.environment.salt.reduce((a,b)=>a+b,0);
-assert.ok(previous.world.environment.schema===2&&session.snapshot.world.environment.schema===2);
+assert.ok(previous.world.environment.schema===3&&session.snapshot.world.environment.schema===3);
 const oldFirst=active.world.environment.salt[i],oldSecond=session.snapshot.world.environment.salt[j];
 // No synthetic day or accelerated animal clock. Exchange occurs just before
 // the next legitimate active tick after both regions finished the same day.
