@@ -173,6 +173,9 @@ export function reconcilePlanetarySaltSeams(sim){
    r.session.environmentalLedger.saltInput+=incoming;
    r.session.environmentalLedger.saltOutput+=outgoing;
   }
+  // The active World uses derived hydrological connectivity for drinkability
+  // and shore behavior. Archived Worlds rebuild that view on restoration.
+  if(!r.session)sim.world.buildHydrology?.();
  }
  travel.seamLedger=nextLedger;
  return entries;
