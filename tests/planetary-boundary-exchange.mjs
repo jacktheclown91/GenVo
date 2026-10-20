@@ -104,4 +104,12 @@ const corruptArithmetic=structuredClone(initial);
 corruptArithmetic.world.environment.lastDay.input+=1;
 assert.throws(()=>restoreSimulationSnapshot(corruptArithmetic),/Invalid salt budget receipt/,
  'a forged salt input must disagree with the recorded conservation identity');
+const corruptWaterClosure=structuredClone(initial);
+corruptWaterClosure.world.environment.lastDay.waterClosure=1;
+assert.throws(()=>restoreSimulationSnapshot(corruptWaterClosure),/Invalid planetary water-volume receipt/,
+ 'a saved day cannot hide an unbalanced water transfer');
+const forgedWaterInput=structuredClone(initial);
+forgedWaterInput.world.environment.lastDay.waterInput+=1;
+assert.throws(()=>restoreSimulationSnapshot(forgedWaterInput),/Invalid planetary water-volume receipt/,
+ 'a forged water input must disagree with conservation arithmetic');
 console.log('Planetary boundary flux PASS: geographic wet edges, finite ocean replenishment, 12-day conservation, exact save/replay, and historic no-flux fallback');
