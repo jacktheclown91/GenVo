@@ -93,11 +93,11 @@ function stageTransfer(owner,other,index,opposite,proposal,changes,receipts,day,
  changes.get(to.key).set(ti,(changes.get(to.key).get(ti)||0)+amount);
  if(proposal>0)pair.aToB+=amount;else pair.bToA+=amount;
 }
-function summarize(changes,region){
+function summarize(receipts,region){
  let incoming=0,outgoing=0;
- for(const delta of changes.get(region.key).values()){
-  if(delta>0)incoming+=delta;
-  else outgoing-=delta;
+ for(const item of receipts){
+  if(item.a===region.key){outgoing+=item.aToB;incoming+=item.bToA;}
+  else if(item.b===region.key){incoming+=item.aToB;outgoing+=item.bToA;}
  }
  return{incoming,outgoing};
 }
@@ -120,7 +120,7 @@ export function reconcilePlanetarySaltSeams(sim){
   regions.push(region);
  }
  if(regions.some(r=>!validRegion(r,day)))return[];
- regions.sort((a,b)=>a.key.localeCompare(b.key));
+ regions.sort((a,b)=>a.key<b.key?-1:a.key>b.key?1:0);
  const changes=new Map(regions.map(r=>[r.key,new Map()]));
  const receipts=new Map();
  for(let a=0;a<regions.length;a++)for(let b=a+1;b<regions.length;b++){
@@ -136,7 +136,7 @@ export function reconcilePlanetarySaltSeams(sim){
  // BEFORE editing any independently owned World or snapshot.
  const sums=new Map();
  for(const r of regions){
-  const amounts=changes.get(r.key),{incoming,outgoing}=summarize(changes,r);
+  const amounts=changes.get(r.key),{incoming,outgoing}=summarize(entries,r);
   for(const [i,delta] of amounts){
    const final=r.env.salt[i]+delta;
    if(!Number.isFinite(final)||final<-1e-12||final>r.env.depth[i]*2+1e-10)
