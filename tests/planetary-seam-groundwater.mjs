@@ -96,6 +96,8 @@ assert.throws(()=>validatePlanetarySeamLedger(forgery),/Invalid paired planetary
 // new semantics rather than reconstructing unseen historical groundwater.
 const live=new Simulation('GENVO8-TEST-A',{player:false,bootstrap:false,
  worldGenerator:'planetary/1',planetOrigin:{x:0,y:2560}});
+// A fresh simulation allocates soil stores on its first physical day.
+live.phaseClimate();live.phaseSoil();
 assert.equal(live.world.soilWater.seamGroundwaterPolicy,PLANETARY_SEAM_GROUNDWATER.policy);
 const save=structuredClone(createSimulationSnapshot(live,{savedAt:'fixed',reason:'seam-groundwater'}));
 const restored=restoreSimulationSnapshot(structuredClone(save));
