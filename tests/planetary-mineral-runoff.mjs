@@ -84,6 +84,11 @@ for(const wet of [false,true]){
  const forged=structuredClone(sim.planetaryTravel.seamLedger);
  forged.history[0].mineralsAToB=-1;
  assert.throws(()=>validatePlanetarySeamLedger(forged),/Invalid paired planetary seam receipt/);
+ const unbacked=structuredClone(sim.planetaryTravel.seamLedger);
+ unbacked.history[0].runoffAToB=0;
+ assert.throws(()=>validatePlanetarySeamLedger(unbacked),
+  /Invalid paired planetary seam receipt/,
+  'sediment and mineral inputs must be tied to an actual water transfer');
 }
 // A physical channel with no upstream overland water cannot teleport minerals
 // merely because a neighboring aquatic producer would benefit.
