@@ -350,6 +350,7 @@ export function reconcilePlanetarySaltSeams(sim){
  // water and salt must still close in this one atomic seam transaction.
  let localWater=0,localSalt=0;
  for(const map of waterChanges.values())for(const change of map.values())localWater+=change;
+ for(const map of overlandChanges.values())for(const change of map.values())localWater+=change;
  for(const map of changes.values())for(const change of map.values())localSalt+=change;
  if(Math.abs(localWater)>1e-8||Math.abs(localSalt)>1e-8)
   throw Error('Paired water, salt or wetbed conservation failed.');
