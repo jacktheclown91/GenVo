@@ -8,6 +8,7 @@ import {createDraft,whyNot} from '../src/lineage/evolution-draft.js';
 import {COAT_MOISTURE,advanceCoatMoisture} from '../src/lineage/coat-moisture.js';
 import {SEASONAL_COAT,advanceSeasonalCoat,seasonalCoatProfile,validateSeasonalCoat} from '../src/lineage/seasonal-coat.js';
 import {thermalCoverFactor} from '../src/lineage/terrain-cover-physiology.js';
+import {artMount} from '../src/render/part-sprites.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 import {validateEnvironment} from '../src/world/environment.js';
 
@@ -55,6 +56,19 @@ assert.ok(thermalCoverFactor(winter,.9,.55,{density:winter.coatDensity})<
  thermalCoverFactor(winter,.9,.55,{density:thick}),
  'a lighter coat reduces heat burden in hot habitats');
 
+// The actual native dorsal art must show a visible, bounded winter/summer
+// mantle change without reshaping flight wings or changing historical sprites.
+const k={s:3,fx:1,fy:0,perp:{x:0,y:1},bx:0,by:0,bodyW:7,bodyH:6};
+for(const id of ['filament-tuft','fur-mantle','feather-mantle']){
+ const thin=artMount(id,{...k,coatDensity:.25}),full=artMount(id,{...k,coatDensity:1}),
+       legacy=artMount(id,k);
+ assert.ok(full.scale>thin.scale*1.20,id+' shows winter coat fullness');
+ assert.ok(legacy.scale>thin.scale&&legacy.scale<full.scale,
+  id+' retains historical native coat scale with no seasonal state');
+}
+assert.equal(artMount('flight-wing',{...k,coatDensity:.2}).scale,
+ artMount('flight-wing',{...k,coatDensity:1}).scale,
+ 'molting cannot change the load-bearing aerodynamic wing silhouette');
 const hungry=animal();hungry.energy=15;
 advanceSeasonalCoat(hungry,{temperature:.06,seasonTemperature:.15,comfort:.55,maximumEnergy:100});
 assert.equal(hungry.coatDensity,SEASONAL_COAT.defaultDensity,
