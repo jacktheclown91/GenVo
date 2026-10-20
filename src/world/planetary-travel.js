@@ -197,7 +197,8 @@ export function crossPlanetaryBorder(sim){
  }
  dest.planetaryRegions=atlas;
  sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,memberIds),...(sim.offscreenBiologyEnabled?{biologicalMode:'canonical-ticks/1'}:{})});
- dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions};
+ dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions,
+  ...(prior.seamLedger?{seamLedger:structuredClone(prior.seamLedger)}:{})};
  for(const key of ['diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
  dest.travelFamilyGroup=!!sim.travelFamilyGroup;
  dest.offscreenBiologyEnabled=!!sim.offscreenBiologyEnabled;
