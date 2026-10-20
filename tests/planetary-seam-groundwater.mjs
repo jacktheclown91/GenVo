@@ -5,7 +5,8 @@ import {CFG} from '../src/sim/config.js';
 import {World} from '../src/world/world.js';
 import {Simulation} from '../src/sim/simulation.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
-import {validateSoilWater,soilWaterStorage} from '../src/ecology/soil-water.js';
+import {validateSoilWater,soilWaterStorage,initializeSoilWater} from '../src/ecology/soil-water.js';
+import {validateEnvironment} from '../src/world/environment.js';
 import {PLANETARY_SEAM_GROUNDWATER} from '../src/world/planetary-seam-groundwater.js';
 import {REGIONAL_REPLAY} from '../src/world/planetary-offscreen-biology.js';
 import {reconcilePlanetarySaltSeams,validatePlanetarySeamLedger} from '../src/world/planetary-seam-salt.js';
@@ -91,6 +92,18 @@ assert.equal(brokenB.soilWater.groundwater[east],Math.fround(.2));
 const forgery=structuredClone(sim.planetaryTravel.seamLedger);
 forgery.history[0].groundwaterAToB=-1;
 assert.throws(()=>validatePlanetarySeamLedger(forgery),/Invalid paired planetary seam receipt/);
+
+// If a very old saved world has no soil controller, reinitializing one must
+// not silently opt that world into a new regional groundwater mechanism.
+const oldWorld=new World('GENVO8-TEST-A',{generator:'planetary/1',planetOrigin:{x:0,y:2560}});
+delete oldWorld.environment.groundwaterSeamEligibility;
+initializeSoilWater(oldWorld);
+assert.equal(oldWorld.soilWater.seamGroundwaterPolicy,undefined);
+validateEnvironment(oldWorld,oldWorld.environment);
+const unknownWorld=new World('GENVO8-TEST-A',{generator:'planetary/1',planetOrigin:{x:0,y:2560}});
+unknownWorld.environment.groundwaterSeamEligibility='unknown-groundwater/42';
+assert.throws(()=>validateEnvironment(unknownWorld,unknownWorld.environment),
+ /Invalid planetary groundwater-seam eligibility/);
 
 // The new policy is versioned and the canonical save path retains both old and
 // new semantics rather than reconstructing unseen historical groundwater.
