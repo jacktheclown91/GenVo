@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {PLANTS} from '../src/sim/config.js';
+import {WIND_SEED_POLICIES,planetaryWindSeedOffset} from '../src/world/weather-fronts.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 
 const sim=new Simulation('DISPERSAL-TEST',{player:false});
 const w=sim.world;
@@ -51,4 +53,37 @@ const before=w.seedBank.thistlepod[center.i];sim.dispersal.onDeath(carrier);
 assert(w.seedBank.thistlepod[center.i]>before,'death deposits carried seed cargo into the local seed bank');
 
 assert(sim.dispersal.stats.deposited>0&&sim.dispersal.stats.germinated>0,'dispersal statistics record real transport and establishment');
+// New planetary worlds use a shared moving wind field to move actual
+// inherited seed mass; older saves without the policy keep local directions.
+const planet=new Simulation('GENVO8-TEST-A',{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:{x:0,y:2560}});
+const pw=planet.world,pd=planet.dispersal;
+assert.equal(pd.windSeedPolicy,WIND_SEED_POLICIES.planetary);
+let patch=-1;
+for(let y=10;y<pw.n-10&&patch<0;y++)for(let x=10;x<pw.n-10;x++){
+ const i=y*pw.n+x;
+ if(!pw.water[i]&&[i-1,i+1,i-pw.n,i+pw.n,i-pw.n-1,i-pw.n+1,i+pw.n-1,i+pw.n+1].every(j=>!pw.water[j])){patch=i;break;}
+}
+assert.ok(patch>=0,'planetary land must contain a seed release site');
+const existing=pw.plants.frostlichen[patch],grown=Math.max(existing,.5);
+pw.plants.frostlichen[patch]=grown;pd.noteGrowth('frostlichen',patch,existing,grown);
+const beforeDeposit=pd.stats.deposited,random=planet.rng.state;
+for(let day=1;day<=24&&pd.stats.deposited===beforeDeposit;day++){
+ planet.day=day;pd.releaseLocal('frostlichen',patch,pw.plants.frostlichen[patch]);
+}
+assert.ok(pd.stats.deposited>beforeDeposit,'finite wind-dispersed seeds enter the existing seed bank');
+assert.ok(pw.plants.frostlichen[patch]<grown,'parent plant tissue funds dispersal');
+assert.equal(planet.rng.state,random,'weather and seeds leave wildlife RNG unchanged');
+const event=pd.events.at(-1);
+assert.equal(event.kind,'frostlichen');
+assert.ok(pw.seedBank.frostlichen[event.i]>0);
+assert.ok(pd.floraState.seeds.frostlichen.get(event.i)?.size>0,'the released genotype survives as an inherited seed cohort');
+assert.ok(planetaryWindSeedOffset(pw,planet.day,patch,.35).every(n=>Number.isInteger(n)&&Math.abs(n)<=1));
+const saved=structuredClone(createSimulationSnapshot(planet,{savedAt:'fixed',reason:'wind-seed'}));
+const loaded=restoreSimulationSnapshot(structuredClone(saved));
+assert.equal(loaded.dispersal.windSeedPolicy,WIND_SEED_POLICIES.planetary);
+assert.deepEqual(createSimulationSnapshot(loaded,{savedAt:'fixed',reason:'wind-seed'}),saved);
+const historical=structuredClone(saved);delete historical.controllers.dispersal.windSeedPolicy;
+assert.equal(restoreSimulationSnapshot(historical).dispersal.windSeedPolicy,undefined,
+ 'existing missing-policy saved worlds must not acquire new wind rules');
+
 console.log('dispersal checks: PASS');
