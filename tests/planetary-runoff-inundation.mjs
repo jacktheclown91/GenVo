@@ -79,7 +79,8 @@ assert.throws(()=>restoreSimulationSnapshot(bad),/Invalid planetary overland run
 // automatically, even with the exact same stock and regional geography.
 const old=new World(seed,{generator:'planetary/1',planetOrigin:origin});
 const oi=candidate(old);
-old.environment.schema=5;old.environment.overland[oi]=1.2;
+old.environment.schema=5;delete old.environment.springEligibility;
+old.environment.overland[oi]=1.2;
 advanceEnvironmentWater(old,climate,1);advanceSoilDay(old,climate,1);
 assert.equal(old.water[oi],0,'existing schema-5 world retains previous non-flooding rules');
 assert.equal(old.topology.revision,0);
