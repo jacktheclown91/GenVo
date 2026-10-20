@@ -45,6 +45,7 @@ What checkpoints **do not** prove:
 
 - A Day 100 fixture does not establish that the current code can evolve from Day 1 to Day 100.
 - A verified Node restore does not prove browser playability, asset readability, or acceptable runtime performance.
+- SHA-256 protects the package against unannounced changes after curation; it does **not** cryptographically prove that every prior day was actually simulated. Use reproducible seed-to-checkpoint generation logs and occasional independent full-history runs for that.
 - A fixture validated against one save schema can become incompatible with later physics, ancestry or topology rules. Migration must be explicit and tested, not silently regenerated or labeled as an old world.
 
 Keep a limited number of representative matured checkpoints; use occasional complete fresh-world long runs to independently verify evolutionary continuity. Always keep the original saved source separate from test outputs and player forks.
