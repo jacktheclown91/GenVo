@@ -1,13 +1,14 @@
 import assert from 'node:assert/strict';
 import {World} from '../src/world/world.js';
 import {validateSnowpack} from '../src/world/snowpack.js';
+import {initializeSoilWater} from '../src/ecology/soil-water.js';
 import {totalPlanetarySurfaceWater} from '../src/world/planetary-runoff.js';
 
 // Changing a dry snowy cell directly into open water would hide an existing
 // finite snow reservoir below a new lake. No melting or outside import is
 // permitted to silently destroy that stored water. Native thaw owns it.
 const w=new World('SNOW-TOPOLOGY-REAL',{generator:'planetary/1'});
-const snow=w.soilWater?.snowpack;
+const snow=initializeSoilWater(w).snowpack;
 assert.ok(snow instanceof Float64Array,'planetary region must own physical persistent snow');
 const n=w.n;
 let site=-1;
