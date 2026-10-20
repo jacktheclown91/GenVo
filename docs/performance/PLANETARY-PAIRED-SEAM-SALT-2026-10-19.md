@@ -24,4 +24,14 @@ The number of detailed world regions and the 128×128 extent remain unchanged.
 
 The existing three-region synchronous versus yielded replay regression remains the acceptance test for frame ordering and mid-barrier saves. Historical save tests, salt/conservation checks, gameplay and browser checks continue in GitHub Actions.
 
-This is **not yet full finite-volume hydrology**. Water *volume* stays fixed; river discharge and bidirectional flows of finite water inventories, real ocean circulation, erosion coupling and mature 100-day multiregion performance remain unfinished. The external geography-composition reservoir still exists at open borders even where paired exchanges occur, and its exchanges have separate receipts.
+## Dynamic water inventories, environment schema 3
+
+New planetary Worlds now retain immutable Float32 geographic bathymetry in `environment.depth`, while owning a separate Float64 `environment.volume` inventory. The independently saved volume can change by a finite physical amount at a genuine adjoining wet seam, rather than being silently reset. A higher surface head (terrain elevation plus current volume) supplies bounded outgoing water. Donor salinity determines how much actual dissolved salt that transfer advects.
+
+The same synchronized, once-per-day paired authority stages both water and salt debits/credits. It never deletes a wet tile, floods a land tile, or crosses an unconnected geographical edge. Every accepted transfer is capacity bounded, with a persistent `waterAToB` / `waterBToA` pair receipt. Each World independently records `pairedWaterInput`, `pairedWaterOutput`, `waterBefore`, `waterAfter` and `waterClosure` alongside its existing dissolved-salt receipts. The sum of physical volumes in both regions is conserved to floating-point precision.
+
+Restored `schema:1` and `schema:2` environments retain their historical rules, without fabricated volume fields or implicit migrations. A paired salt seam between an old and new region cannot move water until both actually own a schema-3 dynamic volume ledger.
+
+`tests/planetary-paired-seam-salt.mjs` now verifies an actual hydraulic height gradient, equal source/destination volume flux, salt advection, exact checkpoint restoration and subsequent canonical ticks, v2 fallback, and corrupted-volume rejection.
+
+This is **not yet full finite-volume hydrology**. Water volume changes across already wet *regional seams*; local tile-to-tile water volumes, rainfall-driven changes in stored water depth, tidal/ocean circulation, river discharge across land, and shoreline inundation/drying remain outside this pass. The existing external geography-composition reservoirs continue to use separate physical salt receipts. A mature 100-day multiregion performance and stability run remains required.
