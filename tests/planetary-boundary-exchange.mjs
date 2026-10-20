@@ -40,7 +40,9 @@ for(let day=1;day<=12;day++){
  validateEnvironment(w,e);
 }
 assert.ok(e.totals.boundaryInput>0,'actual coastal replenishment enters from geography-declared ocean');
-assert.ok(e.totals.saltOutput>0,'rain and boundary export carry physical dissolved salt');
+assert.ok(e.totals.saltOutput>=0,'retained freshwater need not expel dissolved salt');
+assert.ok(e.totals.surfaceRainInput>0&&e.totals.surfaceRainOutput>=0,
+ 'newly retained precipitation and any full-capacity overflow are accounted separately');
 assert.ok(Math.abs(saltStorage(w)-baseline-e.totals.saltInput+e.totals.saltOutput)<1e-7,
  'cumulative 12-day salt storage balances recorded external input and output');
 assert.ok(e.salt[firstMarine]!==depth||start!==depth,'boundary state is not overwritten to a fixed salinity every day');
