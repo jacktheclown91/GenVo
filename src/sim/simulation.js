@@ -23,6 +23,7 @@ import {World,worldForRestore} from '../world/world.js';
 import {PlanetRegionAtlas,compactRegionalTravelerPositions} from '../world/planet-regions.js';
 import {advanceOffscreenEnvironments} from '../world/planetary-offscreen-environment.js';
 import {advanceOffscreenBiology,REGIONAL_REPLAY,regionalReplayPolicy,pendingRegionalBiology,prepareRegionalBiology} from '../world/planetary-offscreen-biology.js';
+import {reconcilePlanetarySaltSeams} from '../world/planetary-seam-salt.js';
 import {landRouteTarget,planLandDetour} from '../world/land-route.js';
 import {escapeDestination} from '../world/escape-route.js';
 import {explorationDestination} from '../world/exploration-destination.js';
@@ -193,6 +194,8 @@ export class Simulation{
     // New planetary time waits at a stride boundary for every visited region.
     // The UI may already have completed these exact jobs between frames.
     let jobs=0;while(pendingRegionalBiology(this).length){if(jobs++>=16)throw Error('Regional replay backlog exceeds one synchronized stride.');prepareRegionalBiology(this)}
+    // Paired flows occur once when independent physical clocks coincide.
+    reconcilePlanetarySaltSeams(this);
     this.tickCount++;
     if(this.tickCount%CFG.lifeStride===0){advanceOffscreenEnvironments(this);if(regionalReplayPolicy(this)===REGIONAL_REPLAY.legacy)advanceOffscreenBiology(this)};
     const manualMoved=externalPlayerControl?this.playerInputActive(input):this.phasePlayerMovement(input);
