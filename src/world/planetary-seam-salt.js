@@ -49,7 +49,7 @@ export function validatePlanetarySeamLedger(state){
     (row.groundwaterBToA!==undefined&&!finite(row.groundwaterBToA))||
     (row.runoffAToB!==undefined&&(!finite(row.runoffAToB)||row.runoffAToB>(row.waterAToB||0)+1e-9))||
     (row.runoffBToA!==undefined&&(!finite(row.runoffBToA)||row.runoffBToA>(row.waterBToA||0)+1e-9))||
-    row.aToB+row.bToA+(row.waterAToB||0)+(row.waterBToA||0)<=0||
+    row.aToB+row.bToA+(row.waterAToB||0)+(row.waterBToA||0)+(row.groundwaterAToB||0)+(row.groundwaterBToA||0)<=0||
     row.tick<previousTick||row.tick===previousTick&&row.a+'|'+row.b<=previousPair)
    throw Error('Invalid paired planetary seam receipt.');
   previousTick=row.tick;previousPair=row.a+'|'+row.b;
