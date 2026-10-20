@@ -5,6 +5,7 @@ import {WORLD_PAGE_SIZE} from './pages.js';
 import {regionalRainfall} from './weather-fronts.js';
 import {advanceInternalPlanetaryWater} from './planetary-internal-water.js';
 import {totalPlanetarySurfaceWater} from './planetary-runoff.js';
+import {PLANETARY_BOUNDARY_WATER,validateBoundaryWaterPolicy,boundaryWaterExchange,validateBoundaryWaterReceipt} from './planetary-boundary-water.js';
 const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 function smooth(seed,x,y,size){const ax=Math.floor(x/size),ay=Math.floor(y/size),u0=x/size-ax,v0=y/size-ay,u=u0*u0*(3-2*u0),v=v0*v0*(3-2*v0);return (coordNoise(seed,ax,ay)*(1-u)+coordNoise(seed,ax+1,ay)*u)*(1-v)+(coordNoise(seed,ax,ay+1)*(1-u)+coordNoise(seed,ax+1,ay+1)*u)*v}
 export function coastlineX(w,y){return w.n*(.84+.035*Math.sin(y/w.n*6.28+(w.seedHash%97)/97*6.28))}
@@ -21,6 +22,7 @@ export function initializeEnvironment(w){
 export function validateEnvironment(w,e){
  if(e?.schema!==1&&e?.schema!==2&&e?.schema!==3&&e?.schema!==4&&e?.schema!==5&&e?.schema!==6)throw Error('Invalid environment schema.');
  if(e.schema>=2&&w.generator!=='planetary/1')throw Error('Planetary boundary version requires planetary geography.');
+ validateBoundaryWaterPolicy(w,e);
  for(const [key,Type,lo,hi] of [['temperatureOffset',Float32Array,-1,1],['rainScale',Float32Array,0,3],['depth',Float32Array,0,2],['salt',Float64Array,0,4],['boundary',Uint8Array,0,e.schema>=2?3:2]])if(!(e[key] instanceof Type)||e[key].length!==w.len||e[key].some(v=>!Number.isFinite(v)||v<lo||v>hi))throw Error('Invalid environment field '+key+'.');
  if(e.schema>=5&&(!(e.overland instanceof Float64Array)||e.overland.length!==w.len||
     e.overland.some((v,i)=>!Number.isFinite(v)||v<0||w.water[i]&&v!==0)))
@@ -76,6 +78,7 @@ export function validateEnvironment(w,e){
       Math.abs(row.waterInput-row.waterOutput-(row.waterAfter-row.waterBefore)-row.waterClosure)>1e-6))
     throw Error('Invalid planetary water-volume receipt.');
   }
+  validateBoundaryWaterReceipt(e,row);
   if(row.pageTransfers!==undefined)validatePageSaltTransfers(w,row.pageTransfers);
  }
 }
@@ -91,7 +94,7 @@ export function waterStorage(w){let total=0;for(const amount of w.environment?.v
 // Edge reservoirs restore freshwater (1) / seawater (2), with explicit salt input/output receipts.
 export function advanceEnvironmentWater(w,climate,day){
  const e=w.environment;if(!e)return;const atmospheric={...climate,frontDay:day};const before=saltStorage(w),waterBefore=e.schema>=5?totalPlanetarySurfaceWater(w):e.schema>=3?waterStorage(w):0,next=new Float64Array(e.salt),n=w.n,t=e.totals,input0=t.saltInput,output0=t.saltOutput,pageLedger=new Map();
- let boundaryInput=0,boundaryOutput=0,surfaceRainInput=0,surfaceRainOutput=0;
+ let boundaryInput=0,boundaryOutput=0,surfaceRainInput=0,surfaceRainOutput=0,boundaryWaterInput=0,boundaryWaterOutput=0,boundarySaltInput=0,boundarySaltOutput=0;
  const pair=(i,j)=>{if(!w.water[i]||!w.water[j])return;const c=salinityAt(w,i)-salinityAt(w,j),from=c>0?i:j,to=c>0?j:i,flow=Math.min(Math.abs(c)*Math.min(e.schema>=3?e.volume[i]:e.depth[i],e.schema>=3?e.volume[j]:e.depth[j])*.08,e.salt[from]*.25);next[from]-=flow;next[to]+=flow;if(flow>0&&((j===i+1&&(i%n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)||(j===i+n&&Math.floor(i/n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)))recordPageSaltTransfer(pageLedger,n,i,j,from===i?flow:-flow)};
  for(let i=0;i<w.len;i++){if(i%n<n-1)pair(i,i+1);if(i+n<w.len)pair(i,i+n)}
  for(let i=0;i<w.len;i++)if(w.water[i]){const rain=localRain(w,atmospheric,i)*.06,volume=e.schema>=3?e.volume[i]:e.depth[i];
@@ -105,7 +108,23 @@ export function advanceEnvironmentWater(w,climate,day){
  }
  const lost=next[i]*(1-Math.exp(-displaced/volume));
  next[i]-=lost;t.rainWater+=rain;t.displacedWater+=displaced;t.saltOutput+=lost;const reservoir=e.boundary[i];if(reservoir){
-   if(e.schema>=2){
+   if(e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.policy){
+    // Equal external water replacement carries actual dissolved salt.
+    // The local water volume remains unchanged; both sides of the exchange
+    // appear in today's salt and water receipts.
+    const exchange=boundaryWaterExchange(e,i,next[i],e.volume[i]);
+    next[i]=exchange.saltAfter;
+    boundaryWaterInput+=exchange.waterInput;
+    boundaryWaterOutput+=exchange.waterOutput;
+    boundarySaltInput+=exchange.saltInput;
+    boundarySaltOutput+=exchange.saltOutput;
+    boundaryInput+=exchange.saltInput;
+    boundaryOutput+=exchange.saltOutput;
+    t.saltInput+=exchange.saltInput;
+    t.saltOutput+=exchange.saltOutput;
+    t.boundaryInput+=exchange.saltInput;
+    t.boundaryOutput+=exchange.saltOutput;
+   }else if(e.schema>=2){
     // Equal volumes exchange with a geography-declared external body,
     // rather than resetting salinity to a target on every calendar day.
     // The outside ocean/freshwater is a declared reservoir. Every finite
@@ -123,17 +142,26 @@ export function advanceEnvironmentWater(w,climate,day){
    }
   }}
  const internal=advanceInternalPlanetaryWater(w,next);
+ if(e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.policy){
+  t.boundaryWaterInput+=boundaryWaterInput;
+  t.boundaryWaterOutput+=boundaryWaterOutput;
+  t.boundarySaltInput+=boundarySaltInput;
+  t.boundarySaltOutput+=boundarySaltOutput;
+ }
  if(e.schema>=5){
   t.surfaceRainInput=(t.surfaceRainInput||0)+surfaceRainInput;
   t.surfaceRainOutput=(t.surfaceRainOutput||0)+surfaceRainOutput;
  }
  e.salt.set(next);e.day=day;const after=saltStorage(w),waterAfter=e.schema>=5?totalPlanetarySurfaceWater(w):waterBefore,input=t.saltInput-input0,output=t.saltOutput-output0,row={
  day,before,after,input,output,closure:input-output-(after-before),
+ ...(e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.policy?{
+   boundaryWaterInput,boundaryWaterOutput,boundarySaltInput,boundarySaltOutput
+ }:{}),
  ...(e.schema>=2?{boundaryInput,boundaryOutput}:{}),
  ...(e.schema>=3?(e.schema>=5?{
   ...internal,waterBefore,waterAfter,
-  waterInput:surfaceRainInput,waterOutput:surfaceRainOutput,
-  waterClosure:surfaceRainInput-surfaceRainOutput-(waterAfter-waterBefore),
+  waterInput:surfaceRainInput+boundaryWaterInput,waterOutput:surfaceRainOutput+boundaryWaterOutput,
+  waterClosure:surfaceRainInput+boundaryWaterInput-surfaceRainOutput-boundaryWaterOutput-(waterAfter-waterBefore),
   surfaceRainInput,surfaceRainOutput
  }:internal||{waterBefore,waterAfter:waterBefore,waterInput:0,waterOutput:0,waterClosure:0}):{}),
  pageTransfers:finishPageSaltTransfers(pageLedger)
