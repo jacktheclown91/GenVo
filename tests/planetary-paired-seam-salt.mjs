@@ -118,6 +118,9 @@ assert.deepEqual(reconcilePlanetarySaltSeams(older),[],'historical isolated salt
 const v2=structuredClone(previous);
 const v2Environment=v2.core.planetaryTravel.sessions[0].snapshot.world.environment;
 v2Environment.schema=2;
+// The v2 archive predates both geography-reservoir policy versions.
+delete v2Environment.boundaryWaterPolicy;
+delete v2Environment.blockedBoundaries;
 delete v2Environment.volume;
 for(const row of v2Environment.daily){
  delete row.waterBefore;delete row.waterAfter;delete row.waterInput;
