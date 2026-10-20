@@ -1,6 +1,7 @@
 // One anatomical authority: installed organs, not creature names, determine birth capability.
 // Older bodies lacking specialized organs remain live-bearing for save compatibility.
 import {SPECIES} from '../organisms/species.js';
+import {EMBRYO_CLIMATE,embryoClimateReading} from './embryo-climate.js';
 export const EGG_PART='egg-chamber';
 export const LIVE_PART='live-womb';
 export const DUAL_MATERNAL_COST=6;
@@ -21,7 +22,12 @@ export function conceptionMode(mother,world=null){
   if(ability!=='dual')return ability;
   if(mother.reproductiveStrategy==='egg'||mother.reproductiveStrategy==='live')return mother.reproductiveStrategy;
   const energy=mother.energy??0,hydration=mother.hydration??0;
-  const safe=world&&Number.isFinite(mother.x)&&Number.isFinite(mother.y)?eggSiteQuality(world,mother.x,mother.y):0;
+  const safe=world&&Number.isFinite(mother.x)&&Number.isFinite(mother.y)
+   ?world.environment?.embryoClimatePolicy===EMBRYO_CLIMATE.policy
+     ?embryoClimateReading(world,{x:mother.x,y:mother.y,
+       maternalInheritance:mother,paternalInheritance:mother}).quality
+     :eggSiteQuality(world,mother.x,mother.y)
+   :0;
   // Rich, safe surface sites can favor larger egg clutches; elsewhere retain young.
   const species=SPECIES[mother.species];
   return safe>=.83&&energy>=(species?.maxEnergy||124)*.76&&hydration>=(species?.maxHydration||114)*.62?'egg':'live';
