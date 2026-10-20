@@ -507,8 +507,15 @@ export class SaveManager{
       snapshot.meta.key=slotId;
       snapshot.meta.worldName=worldName;
       const tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');
-      tx.objectStore(SAVE_STORE).put(snapshot,slotId);
-      tx.objectStore(META_STORE).put(snapshot.meta,slotId);
+      // Acquire both stores while the transaction is active. Serializing a
+      // genuine mature world may take long enough for IndexedDB to auto-close
+      // a transaction before a second objectStore lookup. Queue the small
+      // metadata request first so a pending request owns the transaction
+      // while the canonical world snapshot is submitted. Both puts remain
+      // atomic and commit or fail together.
+      const metadataStore=tx.objectStore(META_STORE),saveStore=tx.objectStore(SAVE_STORE);
+      metadataStore.put(snapshot.meta,slotId);
+      saveStore.put(snapshot,slotId);
       await transactionDone(tx);
       this.lastSavedAt=Date.now();this.lastSavedTick=snapshot.core.tickCount;this.lastObservedSignature=capturedSignature;
       this.status('saved','Saved',snapshot.meta);
