@@ -232,7 +232,7 @@ export function reconcilePlanetarySaltSeams(sim){
     stageWater(left,right,i,j,changes,waterChanges,receipts,day,sim.tickCount);
   }
  }
- const entries=[...receipts.values()].filter(r=>r.aToB+r.bToA>0);
+ const entries=[...receipts.values()].filter(r=>r.aToB+r.bToA+(r.waterAToB||0)+(r.waterBToA||0)>0);
  // Verify every staged quantity, closure and archived last-day receipt
  // BEFORE editing any independently owned World or snapshot.
  const sums=new Map();
