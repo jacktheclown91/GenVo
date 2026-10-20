@@ -5,6 +5,7 @@
 import {CFG} from '../sim/config.js';
 import {PLANETARY_BOUNDARY_WATER,validateBoundaryWaterPolicy} from './planetary-boundary-water.js';
 import {PLANETARY_SEAM_RUNOFF,stagePlanetarySeamRunoff} from './planetary-seam-runoff.js';
+import {PLANETARY_MINERAL_RUNOFF} from './planetary-mineral-runoff.js';
 import {PLANETARY_SEAM_GROUNDWATER,stagePlanetarySeamGroundwater} from './planetary-seam-groundwater.js';
 import {regionKey} from './planet-regions.js';
 import {REGIONAL_REPLAY,remoteBiologicalDebt} from './planetary-offscreen-biology.js';
@@ -45,6 +46,8 @@ export function validatePlanetarySeamLedger(state){
     !finite(row.aToB)||!finite(row.bToA)||
     (row.waterAToB!==undefined&&!finite(row.waterAToB))||
     (row.waterBToA!==undefined&&!finite(row.waterBToA))||
+    (row.mineralsAToB!==undefined&&!finite(row.mineralsAToB))||
+    (row.mineralsBToA!==undefined&&!finite(row.mineralsBToA))||
     (row.groundwaterAToB!==undefined&&!finite(row.groundwaterAToB))||
     (row.groundwaterBToA!==undefined&&!finite(row.groundwaterBToA))||
     (row.runoffAToB!==undefined&&(!finite(row.runoffAToB)||row.runoffAToB>(row.waterAToB||0)+1e-9))||
@@ -58,11 +61,11 @@ export function validatePlanetarySeamLedger(state){
 function regionOf(sim,session){
  const w=session?.snapshot?.world;
  if(!w?.environment||!(w.surfaceWater?.mask instanceof Uint8Array))return null;
- return{key:session.key,origin:w.regionOrigin,water:w.surfaceWater.mask,env:w.environment,terrain:w.terrain,soil:w.soilWater,session};
+ return{key:session.key,origin:w.regionOrigin,water:w.surfaceWater.mask,env:w.environment,terrain:w.terrain,soil:w.soilWater,minerals:w.plantResources?.minerals,session};
 }
 function ownedActive(sim){
  return{key:regionKey(sim.world.regionOrigin),origin:sim.world.regionOrigin,
- water:sim.world.water,env:sim.world.environment,terrain:sim.world.terrain,soil:sim.world.soilWater,session:null};
+ water:sim.world.water,env:sim.world.environment,terrain:sim.world.terrain,soil:sim.world.soilWater,minerals:sim.world.plantResources?.minerals,session:null};
 }
 // Assign one source of water for each known, wet inter-region edge. New
 // policy/2 worlds exchange across their shared simulated border instead of
@@ -199,6 +202,14 @@ function summarizeWater(receipts,region){
  }
  return{incoming,outgoing};
 }
+function summarizeMinerals(receipts,region){
+ let incoming=0,outgoing=0;
+ for(const row of receipts){
+  if(row.a===region.key){outgoing+=row.mineralsAToB||0;incoming+=row.mineralsBToA||0}
+  else if(row.b===region.key){incoming+=row.mineralsAToB||0;outgoing+=row.mineralsBToA||0}
+ }
+ return{incoming,outgoing};
+}
 function summarizeGroundwater(receipts,region){
  let incoming=0,outgoing=0;
  for(const row of receipts){
@@ -247,6 +258,7 @@ export function reconcilePlanetarySaltSeams(sim){
  const waterChanges=new Map(regions.map(r=>[r.key,new Map()]));
  const overlandChanges=new Map(regions.map(r=>[r.key,new Map()]));
  const groundwaterChanges=new Map(regions.map(r=>[r.key,new Map()]));
+ const mineralChanges=new Map(regions.map(r=>[r.key,new Map()]));
  const receipts=new Map();
  for(let a=0;a<regions.length;a++)for(let b=a+1;b<regions.length;b++){
   const left=regions[a],right=regions[b],direction=adjacent(left.origin,right.origin);
@@ -262,7 +274,7 @@ export function reconcilePlanetarySaltSeams(sim){
    if(transfer)stageTransfer(left,right,i,j,transfer,changes,receipts,day,sim.tickCount);
    if(left.water[i]&&right.water[j]&&left.env.boundary[i]&&right.env.boundary[j])
     stageWater(left,right,i,j,changes,waterChanges,receipts,day,sim.tickCount);
-   stagePlanetarySeamRunoff(left,right,i,j,overlandChanges,waterChanges,receipts,day,sim.tickCount);
+   stagePlanetarySeamRunoff(left,right,i,j,overlandChanges,waterChanges,receipts,day,sim.tickCount,mineralChanges);
    stagePlanetarySeamGroundwater(left,right,i,j,groundwaterChanges,receipts,day,sim.tickCount);
   }
  }
@@ -272,7 +284,7 @@ export function reconcilePlanetarySaltSeams(sim){
  const sums=new Map();
  for(const r of regions){
   const amounts=changes.get(r.key),{incoming,outgoing}=summarize(entries,r),
-   water=summarizeWater(entries,r),runoff=summarizeRunoff(entries,r),groundwater=summarizeGroundwater(entries,r);
+   water=summarizeWater(entries,r),runoff=summarizeRunoff(entries,r),groundwater=summarizeGroundwater(entries,r),minerals=summarizeMinerals(entries,r);
   for(const [i,delta] of amounts){
    const final=r.env.salt[i]+delta;
    const dynamic=r.env.schema>=3?r.env.volume[i]+(waterChanges.get(r.key).get(i)||0):r.env.depth[i];
@@ -295,21 +307,27 @@ export function reconcilePlanetarySaltSeams(sim){
       !Number.isFinite(store[i]+delta)||store[i]+delta<0||store[i]+delta>1+1e-7)
     throw Error('Invalid cross-region groundwater stock.');
   }
+  for(const [i,delta] of mineralChanges.get(r.key)){
+   const stock=r.minerals?.[i];
+   if(!Number.isFinite(stock)||!Number.isFinite(stock+delta)||stock+delta<-1e-9)
+    throw Error('Invalid cross-region runoff-mineral stock.');
+  }
   const row=r.env.lastDay;
   if(!finite(row.before)||!finite(row.after)||!finite(row.input)||!finite(row.output)||
     !finite(r.env.totals.saltInput)||!finite(r.env.totals.saltOutput))
    throw Error('Invalid cross-region salt conservation origin.');
-  sums.set(r.key,{incoming,outgoing,water,runoff,groundwater});
+  sums.set(r.key,{incoming,outgoing,water,runoff,groundwater,minerals});
  }
  const nextHistory=[...(travel.seamLedger?.history||[]),...entries]
   .slice(-PLANETARY_SEAM_SALT.historyLimit);
  const nextLedger={schema:1,lastTick:sim.tickCount,history:nextHistory};
  validatePlanetarySeamLedger(nextLedger);
  for(const r of regions){
-  const {incoming,outgoing,water,runoff,groundwater}=sums.get(r.key),e=r.env;
+  const {incoming,outgoing,water,runoff,groundwater,minerals}=sums.get(r.key),e=r.env;
   for(const [i,delta] of changes.get(r.key))e.salt[i]+=delta;
   for(const [i,delta] of waterChanges.get(r.key))e.volume[i]+=delta;
   for(const [i,delta] of overlandChanges.get(r.key))e.overland[i]+=delta;
+  for(const [i,delta] of mineralChanges.get(r.key))r.minerals[i]+=delta;
   let actualGroundwater=0;
   for(const [i,delta] of groundwaterChanges.get(r.key)){
    const store=r.soil.groundwater,old=store[i];store[i]=Math.fround(old+delta);actualGroundwater+=store[i]-old;
@@ -337,6 +355,10 @@ export function reconcilePlanetarySaltSeams(sim){
    e.totals.pairedWaterInput=(e.totals.pairedWaterInput||0)+water.incoming;
    e.totals.pairedWaterOutput=(e.totals.pairedWaterOutput||0)+water.outgoing;
   }
+  if(minerals.incoming||minerals.outgoing){
+   e.totals.seamMineralsInput=(e.totals.seamMineralsInput||0)+minerals.incoming;
+   e.totals.seamMineralsOutput=(e.totals.seamMineralsOutput||0)+minerals.outgoing;
+  }
   if(runoff.incoming||runoff.outgoing){
    e.totals.seamRunoffInput=(e.totals.seamRunoffInput||0)+runoff.incoming;
    e.totals.seamRunoffOutput=(e.totals.seamRunoffOutput||0)+runoff.outgoing;
@@ -352,6 +374,10 @@ export function reconcilePlanetarySaltSeams(sim){
     record.waterInput+=water.incoming;record.waterOutput+=water.outgoing;
     record.waterAfter+=water.incoming-water.outgoing;
     record.waterClosure=record.waterInput-record.waterOutput-(record.waterAfter-record.waterBefore);
+    if(minerals.incoming||minerals.outgoing){
+     record.seamMineralsInput=(record.seamMineralsInput||0)+minerals.incoming;
+     record.seamMineralsOutput=(record.seamMineralsOutput||0)+minerals.outgoing;
+    }
     if(runoff.incoming||runoff.outgoing){
      record.seamRunoffInput=(record.seamRunoffInput||0)+runoff.incoming;
      record.seamRunoffOutput=(record.seamRunoffOutput||0)+runoff.outgoing;
