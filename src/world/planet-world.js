@@ -38,7 +38,7 @@ export function initializePlanetWorld(w){
  // No stock is silently reset: a bounded daily mass flux is audited. This
  // is NOT a paired exchange with an independently simulated neighbor's
  // mutable water inventory; that larger authority remains future work.
- w.environment={schema:5,temperatureOffset,rainScale,depth,volume,overland:new Float64Array(w.len),salt,boundary,day:0,totals:{
+ w.environment={schema:6,temperatureOffset,rainScale,depth,volume,overland:new Float64Array(w.len),salt,boundary,day:0,totals:{
   saltInput:0,saltOutput:0,rainWater:0,displacedWater:0,boundaryInput:0,boundaryOutput:0
  },daily:[]};
  w.buildLandRegions();w.buildHydrology();initializeColdFlora(w);initializeFreshwater(w);initializePlantResources(w);initializeOrganicResources(w);
