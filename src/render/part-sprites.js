@@ -350,9 +350,14 @@ export function artMount(partId,k){
    // a filament precursor stays a small, sparse tuft. Original dorsal gadgets
    // and display anatomy retain their established native footprint.
    const coatScale=partId==='filament-tuft'?.42:partId==='fur-mantle'?.51:partId==='feather-mantle'?.48:.31;
+   // Live seasonal fullness changes ONLY authored coat overlay dimensions.
+   // Quantizing matches the shared sprite-cache key and prevents costly
+   // per-life-step re-rasterization. Default is one for older worlds.
+   const mantle=(partId==='filament-tuft'||partId==='fur-mantle'||partId==='feather-mantle')
+      &&Number.isFinite(k.coatDensity)?(.78+.30*Math.max(0,Math.min(1,k.coatDensity))):1;
    return {x:at?.x??x0-k.fx*Math.min(k.bodyW,k.bodyH)*.10,
      y:at?.y??y0-k.fy*Math.min(k.bodyW,k.bodyH)*.10,
-     scale:coatScale*(1+(partDef(partId)?.actionCapabilities.includes('flare')?(Number(k.behavior?.crestSpread)||0):0)),mirrorX:false};
+     scale:coatScale*mantle*(1+(partDef(partId)?.actionCapabilities.includes('flare')?(Number(k.behavior?.crestSpread)||0):0)),mirrorX:false};
  }
  return null;
 }
