@@ -17,6 +17,7 @@ export function scenarioMetadata(snapshot,{id,label,description=''}={}){
     typeof description!=='string'||description.length>360)
   throw Error('Invalid scenario identity or description.');
  const alive=snapshot.animals.filter(a=>a?.alive).length;
+ const playable=snapshot.core.playerEnabled!==false&&snapshot.animals.some(a=>a?.alive&&a.id===snapshot.core.playerId);
  if(alive<1)throw Error('Scenario has no surviving ecosystem animals.');
  const m=snapshot.meta||{};
  return{
@@ -25,7 +26,7 @@ export function scenarioMetadata(snapshot,{id,label,description=''}={}){
   generator:snapshot.world.generator,day:snapshot.core.day,
   year:snapshot.core.year,generation:m.generation||1,
   tickCount:snapshot.core.tickCount,
-  liveAnimals:alive,source:'recorded-simulation'
+  liveAnimals:alive,playable,source:'recorded-simulation'
  };
 }
 export function packageScenarioSnapshot(snapshot,{id,label,description=''}){
@@ -40,7 +41,7 @@ export function openScenarioSnapshot(bundle){
   throw Error('Invalid world scenario provenance.');
  const snapshot=decodeSnapshotGraph(bundle.graph);
  const expected=scenarioMetadata(snapshot,{id:m.id,label:m.label,description:m.description});
- for(const k of ['seed','saveSchema','generator','day','year','generation','tickCount','liveAnimals','source']){
+ for(const k of ['seed','saveSchema','generator','day','year','generation','tickCount','liveAnimals','playable','source']){
   if(m[k]!==expected[k])throw Error('Scenario metadata disagrees with its real simulation state: '+k);
  }
  return snapshot;
@@ -52,6 +53,7 @@ export function validateScenarioCatalog(catalog){
  for(const s of catalog.scenarios){
   if(!validId(s?.id)||ids.has(s.id)||typeof s.label!=='string'||!s.label.trim()||
     !Number.isSafeInteger(s.day)||s.day<1||
+    typeof s.playable!=='boolean'||
     typeof s.file!=='string'||!/^assets\/scenarios\/[a-z0-9-]+\.json$/.test(s.file)||
     !/^[a-f0-9]{64}$/.test(s.sha256||''))
    throw Error('Invalid catalog scenario entry.');
