@@ -12,7 +12,7 @@ import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persist
 const seed='GENVO8-TEST-A',origin={x:0,y:2560};
 const w=new World(seed,{generator:'planetary/1',planetOrigin:origin});
 const e=w.environment;
-assert.equal(e.boundaryWaterPolicy,'geography-reservoir-water/1');
+assert.equal(e.boundaryWaterPolicy,'geography-reservoir-water/2');
 assert.equal(e.schema,6,'new planetary regions support runoff-funded inundation and audited marine boundaries');
 validateEnvironment(w,e);
 const marine=[],fresh=[],mixed=[];
