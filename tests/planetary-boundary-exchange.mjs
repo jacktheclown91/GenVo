@@ -109,6 +109,22 @@ const corruptArithmetic=structuredClone(initial);
 corruptArithmetic.world.environment.lastDay.input+=1;
 assert.throws(()=>restoreSimulationSnapshot(corruptArithmetic),/Invalid salt budget receipt/,
  'a forged salt input must disagree with the recorded conservation identity');
+const forgedBoundaryWater=structuredClone(initial);
+forgedBoundaryWater.world.environment.lastDay.boundaryWaterInput+=1;
+assert.throws(()=>restoreSimulationSnapshot(forgedBoundaryWater),
+ /Unbalanced planetary boundary-water receipt/,
+ 'an external water replacement cannot import more volume than it exports');
+const forgedBoundarySalt=structuredClone(initial);
+forgedBoundarySalt.world.environment.lastDay.boundarySaltOutput=
+ forgedBoundarySalt.world.environment.lastDay.boundaryOutput+1;
+assert.throws(()=>restoreSimulationSnapshot(forgedBoundarySalt),
+ /Unbalanced planetary boundary-water receipt/,
+ 'an ocean-specific salt export cannot exceed all declared boundary exports');
+const forgedPolicy=structuredClone(initial);
+forgedPolicy.world.environment.boundaryWaterPolicy='unrecognized-ocean/2';
+assert.throws(()=>restoreSimulationSnapshot(forgedPolicy),
+ /Invalid planetary boundary-water policy/,
+ 'save restoration rejects unknown ocean exchange versions');
 const corruptWaterClosure=structuredClone(initial);
 corruptWaterClosure.world.environment.lastDay.waterClosure=1;
 assert.throws(()=>restoreSimulationSnapshot(corruptWaterClosure),/Invalid planetary water-volume receipt/,
