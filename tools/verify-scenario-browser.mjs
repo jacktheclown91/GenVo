@@ -12,6 +12,11 @@ let playwright;
 try{playwright=require('playwright')}
 catch{playwright=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'))}
 const output=process.argv[2]||'docs/test-runs/scenario-browser-ci';
+const scenarioId=process.argv[3]||'established-valley-d30';
+const catalog=JSON.parse(fs.readFileSync('assets/scenarios/catalog.json','utf8')).scenarios;
+const scenario=catalog.find(row=>row.id===scenarioId);
+assert.ok(scenario?.playable,'Only genuine playable curated scenarios may enter the browser quick-start check.');
+assert.ok(Number.isSafeInteger(scenario.day)&&scenario.liveAnimals>0&&Number.isSafeInteger(scenario.continuedFrom?.toTick??1440));
 fs.mkdirSync(output,{recursive:true});
 const root=process.cwd();
 const mime={'.js':'text/javascript','.html':'text/html','.json':'application/json','.css':'text/css',
@@ -37,26 +42,28 @@ try{
  await page.waitForFunction(()=>!!window.__GENVO8__?.saveManager);
  await page.locator('.menu-view[data-screen="home"] [data-screen-target="new"]').click();
  const select=page.locator('#newWorldStartingPoint');
- await page.waitForFunction(()=>Array.from(document.querySelector('#newWorldStartingPoint')?.options||[])
-  .some(option=>option.value==='catalog:established-valley-d30'));
+ await page.waitForFunction(id=>Array.from(document.querySelector('#newWorldStartingPoint')?.options||[])
+  .some(option=>option.value==='catalog:'+id),scenarioId);
  await page.screenshot({path:path.join(output,'advanced-start-menu.png')});
- await select.selectOption('catalog:established-valley-d30');
- await page.locator('#newWorldName').fill('Verified Evolved Valley Fork');
+ await select.selectOption('catalog:'+scenarioId);
+ await page.locator('#newWorldName').fill('Verified '+scenario.label+' Fork');
  assert.equal(await page.locator('#newWorldSeed').isDisabled(),true,
   'saved scenario ancestry cannot be relabeled as a different seed');
  await page.locator('.menu-view[data-screen="new"] [data-action="create"]').click();
- await page.waitForFunction(()=>window.__GENVO8__?.sim?.seed==='GENVO-VALLEY-REPLAY-30'
-  &&window.__GENVO8__.sim.day===31
-  &&window.__GENVO8__.sim.player()?.alive,{},{timeout:120000});
+ await page.waitForFunction(({seed,day})=>window.__GENVO8__?.sim?.seed===seed
+  &&window.__GENVO8__.sim.day===day
+  &&window.__GENVO8__.sim.player()?.alive,{seed:scenario.seed,day:scenario.day},{timeout:120000});
  await page.waitForFunction(()=>document.querySelector('#frontEnd')?.hidden===true,
   {},{timeout:120000});
  await page.evaluate(()=>window.__GENVO8__.renderer.sceneReady());
  await page.waitForFunction(async()=>{
   try{
    const data=await window.__GENVO8__?.saveManager?.loadSnapshot();
-   return data?.seed==='GENVO-VALLEY-REPLAY-30'&&data.core?.day===31;
+   return data?.seed===window.__GENVO8__?.sim?.seed &&
+     data?.core?.day===window.__GENVO8__?.sim?.day;
   }catch{return false;}
  },{},{timeout:120000});
+ await page.evaluate(tick=>{window.__expectedScenarioTick=tick;},scenario.continuedFrom?.toTick??1440);
  await page.screenshot({path:path.join(output,'advanced-world-playable.png')});
  const report=await page.evaluate(async()=>{
   const g=window.__GENVO8__,world=g.sim.world,stored=await g.saveManager.loadSnapshot();
@@ -71,21 +78,21 @@ try{
    saveStatus:document.querySelector('#saveStatus')?.textContent,
    newSlot:g.saveManager.activeSlotId,
    screenClosed:document.querySelector('#frontEnd').hidden,
-   originalHistoryRetained:(stored?.core?.tickCount??0)>=1440
+   originalHistoryRetained:(stored?.core?.tickCount??0)>=(window.__expectedScenarioTick??1440)
   };
  });
  fs.writeFileSync(path.join(output,'report.json'),JSON.stringify({...report,errors},null,2));
  assert.ok(report.sceneShown,'evolved-world renderer has not displayed a complete frame');
  assert.ok(report.storedPresent,'advanced-world source fork was not persisted: '+JSON.stringify(report));
- assert.equal(report.seed,'GENVO-VALLEY-REPLAY-30');
+ assert.equal(report.seed,scenario.seed);
  assert.equal(report.worldGenerator,'planetary/1');
  assert.ok(report.liveAnimals>0&&report.playerAlive);
- assert.equal(report.sourceDay,31);
+ assert.equal(report.sourceDay,scenario.day);
  assert.ok(report.newSlot.startsWith('world-'));
  assert.ok(report.originalHistoryRetained);
  assert.deepEqual(errors,[],'browser encountered a fatal gameplay script error');
  fs.writeFileSync(path.join(output,'report.json'),JSON.stringify({ok:true,...report,errors},null,2));
- console.log('Bundled Day 30 real-world New Game quick start and saved browser fork PASS',JSON.stringify(report));
+ console.log('Bundled '+scenario.label+' real-world New Game quick start and saved browser fork PASS',JSON.stringify(report));
 }finally{
  await browser.close();
  await new Promise(resolve=>server.close(resolve));
