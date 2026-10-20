@@ -7,6 +7,7 @@
 // New-world policy only: historical worlds preserve their saved drainage.
 import {PLANETARY_RUNOFF} from './planetary-runoff.js';
 import {stageRunoffMinerals} from './planetary-mineral-runoff.js';
+import {stageTerrainSediment} from './terrain-sediment.js';
 
 export const PLANETARY_SEAM_RUNOFF=Object.freeze({
  policy:'paired-overland-runoff/1',schema:1
@@ -52,7 +53,7 @@ export function seamRunoffProposal(source,target,si,ti,overlandChanges,waterChan
  return Number.isFinite(amount)&&amount>1e-12?amount:0;
 }
 
-export function stagePlanetarySeamRunoff(left,right,i,j,overlandChanges,waterChanges,receipts,day,tick,mineralChanges=null){
+export function stagePlanetarySeamRunoff(left,right,i,j,overlandChanges,waterChanges,receipts,day,tick,mineralChanges=null,terrainChanges=null){
  if(left.env?.seamRunoffPolicy!==PLANETARY_SEAM_RUNOFF.policy||
     right.env?.seamRunoffPolicy!==PLANETARY_SEAM_RUNOFF.policy)return 0;
  // True terrain adjacency includes dry-to-dry and dry-to-wet links.
@@ -72,6 +73,11 @@ export function stagePlanetarySeamRunoff(left,right,i,j,overlandChanges,waterCha
  if(!row){row={tick,day,a:left.key,b:right.key,aToB:0,bToA:0};receipts.set(key,row)}
  if(a){row.waterAToB=(row.waterAToB||0)+amount;row.runoffAToB=(row.runoffAToB||0)+amount}
  else{row.waterBToA=(row.waterBToA||0)+amount;row.runoffBToA=(row.runoffBToA||0)+amount}
+ if(terrainChanges){
+  const sediment=stageTerrainSediment(from,to,fi,ti,amount,terrainChanges);
+  if(a)row.sedimentAToB=(row.sedimentAToB||0)+sediment;
+  else row.sedimentBToA=(row.sedimentBToA||0)+sediment;
+ }
  if(mineralChanges){
   const original=from.env.overland[fi]+fDelta;
   const minerals=stageRunoffMinerals(from,to,fi,ti,amount,original,mineralChanges);
