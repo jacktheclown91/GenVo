@@ -4,7 +4,7 @@ import {Simulation} from '../src/sim/simulation.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 import {SOIL_WATER,advanceSoilDay} from '../src/ecology/soil-water.js';
 import {advanceEnvironmentWater,localRain,saltStorage,validateEnvironment} from '../src/world/environment.js';
-import {rainFrontFactor} from '../src/world/weather-fronts.js';
+import {rainFrontFactor,planetaryWindAt,planetaryWindSeedOffset} from '../src/world/weather-fronts.js';
 import {BIOMES,biomeAt,countBiomes} from '../src/world/biomes.js';
 
 const w=new World('E1-FRONTS',{generator:'coastal/1'}),identical=new World('E1-FRONTS',{generator:'coastal/1'});
@@ -64,6 +64,17 @@ fixture.water[0]=1;fixture.environment.depth[0]=1;fixture.environment.salt[0]=.8
 assert.equal(biomeAt(fixture,0,{rain:.7,temp:.6}).code,'ocean');
 assert.throws(()=>biomeAt(fixture,99,climate),/Invalid biome observation/);
 assert.throws(()=>w.biomeAt(-1,2,climate),/outside world/);
+
+// Spatial atmospheric wind shares the deterministic rain-front field.
+const planetary=new Simulation('GENVO8-TEST-A',{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:{x:0,y:2560}});
+const windWorld=planetary.world,windCell=windWorld.n*40+40;
+const wind=planetaryWindAt(windWorld,12,windCell);
+assert.ok(wind&&Number.isFinite(wind.east)&&Number.isFinite(wind.south));
+assert.notDeepEqual(wind,planetaryWindAt(windWorld,13,windCell),'wind follows moving daily fronts');
+const offset=planetaryWindSeedOffset(windWorld,12,windCell,.35);
+assert.ok(offset.every(v=>Number.isInteger(v)&&Math.abs(v)<=1),'wind produces a legal local seed step');
+assert.deepEqual(offset,planetaryWindSeedOffset(windWorld,12,windCell,.35),'wind uses no mutable RNG');
+assert.throws(()=>planetaryWindSeedOffset(windWorld,12,windCell,1),/variation/);
 
 // Save/resume with real climate/soil/biology on the coastal generator.
 const sim=new Simulation('E1-COAST-SAVE',{player:false,worldGenerator:'coastal/1'});
