@@ -96,6 +96,7 @@ export const WAVE1_TEXT=Object.freeze({
   'barrel-torso':{gain:'Holds water, drinks less often · ten leg slots, four eyes, two back slots',cost:'Slower sprint, heavy.'},
   'dome-torso':{gain:'Shell halves hits from behind, less damage overall · two back slots',cost:'Slow sprint, more food.'},
   'long-torso':{gain:'Twelve leg slots, four eyes, three flank and two back slots · carries more',cost:'More food.'},
+  'spring-leg':{gain:'Two spring legs can launch a real jump arc in new worlds · Jump / Enter',cost:'Body load limits lift. Launch costs food and breath; hard terrain or water landings can injure.'},
   'runner-leg':{gain:'Faster on land',cost:'Weaker brace.'},
   'sturdy-leg':{gain:'Stronger brace against charges',cost:'A little slower.'},
   'webbed-leg':{gain:'Swims across rivers and open water (brings Water Sacs with it)',cost:'A little slower on land; swimming is slow and tiring.'},

@@ -26,6 +26,8 @@ Open http://localhost:8000/ . **New World > Starting point** can fork an existin
 
 In newly generated worlds, paired gliding membranes can launch down real slopes or from a living canopy. Use the **Glide** button (0), steer while descending, and watch the remaining height beside **Fold**. Folding high above the ground causes injury. Two climbing legs enable **Climb** (7) at a mature supporting tree. Historical saves retain their recorded movement rules. See [gliding evidence and limits](docs/GLIDING-2026-10-20.md).
 
+Two spring legs enable **Jump** (Enter) in newly generated worlds. Launch follows your facing and commits to an arc; food, breath, body load, terrain and landing recovery matter. Modern pounces use the same arc and bite after landing. See [jumping evidence and limits](docs/JUMPING-2026-10-20.md).
+
 ## Verify
 
 Node.js and Python are required for the development tools. Browser checks also require Playwright/Chromium.

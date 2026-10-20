@@ -45,7 +45,7 @@ export function locomotionStyle(animal){
 // planted feet do not slide sideways.
 export function locomotionOffsets(style,{phase=0,moving=false,action='move',baseBob=0,propulsion=1}={}){
  const still={rise:0,sway:0,lean:0,twist:0,roll:0};
- if(!moving||action==='glide')return still;
+ if(!moving||['glide','jump','land'].includes(action))return still;
  if(!style)return{...still,rise:action==='swim'?0:-baseBob};
  const p=((Number(phase)%8)+8)%8,a=p/8*TAU;
  if(action==='swim'){

@@ -135,7 +135,7 @@ export class AudioDirector{
     const count=sim.lineage?.handoffs?.length||0;if(count>this.lastHandoffs){const h=sim.lineage.handoffs.at(-1);this.lastHandoffs=count;this.playHandoff(h)}
   }
   updateMovement(dt,input){
-    const p=this.sim.player?.();if(!p||p.hidden||this.sim.paused)return;const moving=!!(input.up||input.down||input.left||input.right);if(!moving){this.moveClock=0;return}
+    const p=this.sim.player?.();if(!p||p.hidden||p.airborne||p.perched||this.sim.paused)return;const moving=!!(input.up||input.down||input.left||input.right);if(!moving){this.moveClock=0;return}
     this.markInteractiveAudio();this.moveClock+=dt;const interval=input.sprint?.29:.46;if(this.moveClock>=interval){this.moveClock%=interval;this.playCue(input.sprint?'sprint':'move',{quiet:true})}
   }
   updateWildlife(dt){
@@ -204,6 +204,9 @@ export class AudioDirector{
     const foodSamples={'eat-moss':'food-moss','eat-berries':'food-berries','eat-reeds':'food-reeds','eat-mushroom':'food-mushroom','eat-seed':'food-seed','eat-carrion':'food-carrion'};
     if(foodSamples[name]){if(this.playSample(foodSamples[name],{volume:name==='eat-carrion'?.62:.54,rate:.96+this.rand()*.08}))return;name='eat'}
     switch(name){
+      case'jump':this.noise(t,.10,.035,1800);this.tone(140,360,t,.13,.035,'triangle');break;
+      case'land':this.noise(t,.08,.045,650);this.tone(115,65,t,.09,.035,'triangle');break;
+      case'splash':this.noise(t,.22,.075,1200);this.tone(420,110,t,.20,.03,'sine');break;
       case'move':this.noise(t,.055,.025,1250);break;
       case'sprint':this.noise(t,.08,.045,950);this.tone(95,72,t,.07,.02,'triangle');break;
       case'drink':this.tone(720,410,t,.16,.055,'sine');this.tone(520,300,t+.09,.2,.04,'sine');break;

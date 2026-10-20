@@ -12,6 +12,9 @@ import {inheritLineageAnatomy,emergentAdaptation} from '../src/lineage/heredity.
 const P=CFG.pounce,DT=1/64;
 function setup(seed,spring){
   const sim=new Simulation(seed,{player:true}),a=sim.player(),w=sim.world;
+  // This suite preserves the historical anatomy-axis/ground-leap contract.
+  // Modern physical spring-leg arcs are exercised in jumping.mjs.
+  delete sim.jumpingRules;
   a.bodyPlan=makePlan(a.bodyPlan.nodes.map(n=>n.socket==='mouth'?{...n,partId:'tearing-jaw'}:n));assert.ok(validatePlan(a.bodyPlan).ok,'hunting fixture requires an actual predatory mouth');
   a.adaptations=['spring-tendons'];a.anatomy=anatomyFromAdaptations(a.adaptations);a.anatomy.spring=spring;a.exertion=CFG.exertion.max;a.exertionWinded=false;
   // Open dry ground with room to the east.
@@ -76,10 +79,11 @@ assert.equal(BODY_ABILITIES.pounce.axis,'spring');assert.ok(!expressedAdaptation
 // A leap never ends in water: it lands at the edge.
 {
   const sim=new Simulation('GENVO8-POUNCE-WATER',{player:true}),a=sim.player(),w=sim.world;a.bodyPlan=makePlan(a.bodyPlan.nodes.map(n=>n.socket==='mouth'?{...n,partId:'tearing-jaw'}:n));assert.ok(validatePlan(a.bodyPlan).ok,'hunting fixture requires an actual predatory mouth');
+  delete sim.jumpingRules; // Recorded legacy bank-stopping leap, not a modern arc.
   a.adaptations=['spring-tendons'];a.anatomy=anatomyFromAdaptations(a.adaptations);a.anatomy.spring=1;a.exertion=100;
   let spot=null;for(let i=0;i<w.len&&!spot;i++){const x=i%w.n,y=Math.floor(i/w.n);if(x<5||x>w.n-8||w.water[i])continue;if(!w.water[w.idx(x+1,y)]&&w.water[w.idx(x+2,y)]&&w.water[w.idx(x+3,y)])spot={x:x+.5,y:y+.5}}
   assert.ok(spot);a.x=spot.x;a.y=spot.y;a.dir=2;const prey=placePrey(sim,a,3.2,0);
-  sim.playerCombat.startAttack({pounce:true});run(sim,a,P.windup+P.leap+DT*3);
+  assert.equal(sim.playerCombat.startAttack({pounce:true}).type,'pounce-start');run(sim,a,P.windup+P.leap+DT*3);
   assert.equal(w.water[w.idx(a.x,a.y)],0,'the pounce stops at the bank');
 }
 

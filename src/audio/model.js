@@ -73,6 +73,8 @@ export function cueForResult(result){
   if(type==='eat')return result.ok?foodCueFor(result.kind):'deny';
   if(type==='fight')return result.ok?(result.killed?'kill':'fight'):'miss';
   if(type==='hunt')return result.ok?'fight':'miss';
+  if(type==='jump')return result.ok?'jump':'deny';
+  if(type==='jump-land')return result.water?'splash':result.damage>0?'damage':'land';
   if(type==='attack-start')return null;
   if(type==='attack')return'miss';
   if(type==='brace')return'deny';

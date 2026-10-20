@@ -63,6 +63,7 @@ export function planetaryTravelAvailability(sim){
  proximity={distance:closest.distance(animal),direction:closest.name};
  if(sim.paused)return unavailable('Resume the world first.');
  if(sim.playerAutonomy)return unavailable('Take manual control to cross a planetary frontier.');
+ if(animal.aerialMode==='jump')return unavailable('Finish the jump before regional travel.');
  if(animal.perched||animal.torpor)return unavailable('Descend or wake before traveling.');
  if(animal.pregnant)return unavailable('Complete the pregnancy before regional travel.');
  const cohort=familyTravelCohort(sim);
@@ -206,7 +207,7 @@ export function crossPlanetaryBorder(sim){
  sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,memberIds),...(sim.offscreenBiologyEnabled?{biologicalMode:'canonical-ticks/1'}:{})});
  dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions,
   ...(prior.seamLedger?{seamLedger:structuredClone(prior.seamLedger)}:{})};
- for(const key of ['glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
+ for(const key of ['jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
  dest.travelFamilyGroup=!!sim.travelFamilyGroup;
  dest.offscreenBiologyEnabled=!!sim.offscreenBiologyEnabled;
  if(Object.hasOwn(sim,'regionalReplayPolicy'))dest.regionalReplayPolicy=sim.regionalReplayPolicy;else delete dest.regionalReplayPolicy;

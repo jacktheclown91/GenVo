@@ -78,7 +78,7 @@ export function restoreGlidingRules(sim,core){
  for(const session of sim.planetaryTravel?.sessions||[])if(session.snapshot.core.glidingRules!==core.glidingRules)throw Error('Inconsistent regional gliding rules.');
 }
 export function validateGlideState(a,rule){
- if(a.aerialMode===undefined)return;
+ if(a.aerialMode===undefined||a.aerialMode==='jump')return;
  if(a.aerialMode!=='glide'||rule!==GLIDING.policy||!a.airborne||a.perched||!hasGlidingSurfaces(a)||
   !Number.isFinite(a.glideAltitude)||a.glideAltitude<0||!Number.isFinite(a.glideHeading))throw Error('Invalid saved glide state.');
 }

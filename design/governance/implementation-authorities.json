@@ -328,6 +328,11 @@
       "consumers": ["src/main.js", "src/ui/resident-start.js", "src/persistence/save-manager.js"],
       "note": "Explicit creator choice of an actual living regional resident on an independent world fork. Preserves biological stocks, RNG, body, age, generation and real ancestry; records player-entry provenance, updates playable descendants and carries entry identity through regional saves. Never fabricates simulated evolution or custom anatomy."
     },
+    "ballisticJumping": {
+      "authority": "src/lineage/jumping.js",
+      "consumers": ["src/sim/simulation.js", "src/gameplay/player-combat.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js", "src/ui/creature-context-tray.js", "src/render/renderer.js"],
+      "note": "New worlds record ballistic-jumping/1. Actual spring legs, anatomical load and existing food/breath fund a committed analytic arc shared by player, wildlife and modern pounce. Existing terrain supplies the vertical datum through gliding.js. Terrain/water impact, recovery, native articulation and saved state are connected. Historical absent-policy worlds retain the older pounce controller. No automatic migration, midair impulse stacking, free landing rescue or fabricated evolutionary evidence."
+    },
     "finiteHeightGliding": {
       "authority": "src/lineage/gliding.js",
       "consumers": ["src/sim/simulation.js", "src/ecology/canopy-site.js", "src/lineage/flight.js", "src/lineage/body-inheritance.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js", "src/ui/creature-context-tray.js", "src/render/renderer.js"],

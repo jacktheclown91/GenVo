@@ -19,6 +19,10 @@ export function behaviorVisualState({bodyPlan=null,id=0,action='idle',phase=0,mo
     Object.assign(state,{bodyLean:1.15,bodyDrop:.15,stanceSpread:.85,compress:.16,feelerForward:.56,feelerPin:.9,eyeWide:true,attention:'threat',groundEmphasis:.8});
   }else if(action==='stalk'||action==='hunt'){
     Object.assign(state,{bodyLean:.65,bodyDrop:.8,stanceSpread:.5,compress:.1,feelerForward:1.32,eyeNarrow:action==='stalk',mouthPulse:action==='hunt'?beat:0,attention:'target',groundEmphasis:.55});
+  }else if(action==='jump'){
+    Object.assign(state,{bodyLean:.5,stanceSpread:.35,forelegLift:.9,compress:.12,groundEmphasis:0});
+  }else if(action==='land'){
+    Object.assign(state,{bodyDrop:.85,stanceSpread:.75,compress:.22,groundEmphasis:1});
   }else if(action==='glide'){
     Object.assign(state,{glideSpread:1,flightSpread:1,bodyLean:.55,stanceSpread:.65,bodyDrop:.12,groundEmphasis:0});
   }else if(action==='fly'){

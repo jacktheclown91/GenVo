@@ -1,0 +1,88 @@
+{
+  "kind": "automated Chromium input; authored sandbox anatomy; staged position/facing on unmodified generated terrain; not human or naturally evolved evidence",
+  "mode": "jump",
+  "ridge": {
+    "x": 107.5,
+    "y": 66.5,
+    "range": 0.020692408084869385,
+    "vegetation": 2.5170765668153763,
+    "score": 2.72400064766407,
+    "energy": 113.23113385416566,
+    "breath": 100,
+    "body": "bp0-a3fe6347",
+    "policy": "ballistic-jumping/1",
+    "age": 30
+  },
+  "flight": {
+    "x": 108.20899729295718,
+    "y": 66.5,
+    "z": 6.310556105746708,
+    "elapsed": 0.1875,
+    "energy": 107.14320720903204,
+    "breath": 88,
+    "airborne": true,
+    "mode": "jump",
+    "health": 100,
+    "cues": [
+      "jump"
+    ]
+  },
+  "saved": {
+    "playerId": 197,
+    "z": 6.310556105746708,
+    "elapsed": 0.1875,
+    "x": 108.20899729295718,
+    "mode": "jump",
+    "policy": "ballistic-jumping/1"
+  },
+  "reload": {
+    "id": 197,
+    "z": 6.310556105746708,
+    "elapsed": 0.1875,
+    "x": 108.20899729295718,
+    "mode": "jump",
+    "policy": "ballistic-jumping/1"
+  },
+  "steered": {
+    "heading": null,
+    "jump": {
+      "schema": 1,
+      "altitude": 6.38190938615421,
+      "verticalVelocity": 2.1270549730400488,
+      "vx": 3.781318895771615,
+      "vy": 0,
+      "elapsed": 0.21875,
+      "purpose": "travel"
+    },
+    "energy": 107.14320720903204
+  },
+  "landed": {
+    "x": 110.85745596504731,
+    "y": 66.5,
+    "health": 100,
+    "energy": 107.08742852523359,
+    "mode": null,
+    "water": false,
+    "incident": {
+      "ok": true,
+      "type": "jump-land",
+      "forced": false,
+      "impact": 4.5645056340981425,
+      "damage": 0,
+      "water": false,
+      "message": "Landed. Recover briefly before the next jump.",
+      "tick": 12
+    },
+    "cues": [
+      "land"
+    ],
+    "audioState": "running"
+  },
+  "keyboard": {
+    "mode": "jump",
+    "energy": 100.99964984143514,
+    "breath": 88,
+    "elapsed": 0.03125
+  },
+  "errors": []
+}

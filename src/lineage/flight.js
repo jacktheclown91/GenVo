@@ -17,7 +17,7 @@ export function winged(animal){return (planPartCounts(animal)['flight-wing']||0)
 export function flightMass(animal){return adultBodyMass(animal)}
 export function flightAvailability(animal,world){
  if(!animal?.alive)return{enabled:false,reason:'No living creature.'};
- if(animal.aerialMode==='glide')return{enabled:false,reason:'Finish gliding before powered flight.'};
+ if(animal.aerialMode)return{enabled:false,reason:'Finish the current aerial movement before powered flight.'};
  if(!winged(animal))return{enabled:false,reason:'Evolve a flight wing from an ancestral proto-wing.'};
  if(animal.airborne)return{enabled:true,airborne:true,reason:'Already flying. Land on ground to feed, drink or mate.'};
  if(flightMass(animal)>FLIGHT.maxAdultMass)return{enabled:false,reason:'This body is too heavy to lift. Evolve a lighter torso or shed mass.'};
@@ -37,7 +37,7 @@ export function takeoff(animal,world){
  return{ok:true,type:'flight',message:'Airborne. Movement crosses water and slopes. Land on solid ground to recover.'};
 }
 export function landingAvailability(animal,world,{swimmer=false}={}){
- if(animal?.aerialMode==='glide')return{enabled:false,reason:'Use Glide / 0 to fold the membranes.'};
+ if(animal?.aerialMode)return{enabled:false,reason:animal.aerialMode==='glide'?'Use Glide / 0 to fold the membranes.':'Finish the jump before another landing action.'};
  if(!animal?.airborne)return{enabled:false,reason:'Already on the surface.'};
  if(!world?.isPlayable(animal.x,animal.y))return{enabled:false,reason:'Cannot land beyond the world boundary.'};
  if(world.water[world.idx(animal.x,animal.y)]&&!swimmer)return{enabled:false,reason:'Open water below. Reach solid land before descending.'};
@@ -57,7 +57,7 @@ export function toggleFlight(animal,world,{swimmer=false}={}){
 // Emergency descent is a physical fall. A non-swimmer above open water remains
 // stranded in water with real survival pressure instead of being teleported.
 export function advanceFlight(animal,world,elapsedSeconds,{rain=0,swimmer=false,moving=false}={}){
- if(!animal?.alive||!animal.airborne||animal.aerialMode==='glide')return null;
+ if(!animal?.alive||!animal.airborne||animal.aerialMode)return null;
  const mass=flightMass(animal),load=Math.max(.7,mass/1.5);
  const wetPenalty=1+Math.max(0,rain-.45)*.5;
  const cost=(FLIGHT.basalEnergyPerSecond+FLIGHT.movingEnergyPerSecond*(moving?1:0))*load*wetPenalty*elapsedSeconds;

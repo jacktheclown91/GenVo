@@ -13,6 +13,7 @@ const syntax=[
 ];
 const runtime=[
   'tests/gliding.mjs',
+  'tests/jumping.mjs',
   'tests/authored-founders.mjs',
   'tests/resident-start.mjs',
   'tests/camera-bounds.mjs',

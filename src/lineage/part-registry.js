@@ -15,7 +15,7 @@ export const SOCKET_TYPES=Object.freeze(['limb','head','mouth','eye','dorsal','f
 // Capability names (locked for v0). Owning systems decide what each one does.
 export const CAPABILITIES=Object.freeze([
   'walk','sprint','pounce','carry','dig','graze','bite','tear','crush','see','see-wide',
-  'armor','retaliate','strike','venom','store','signal','swim-propel','insulate','climb','fly','glide','thermoregulate','lactate',
+  'armor','retaliate','strike','venom','store','signal','swim-propel','insulate','climb','fly','glide','jump','thermoregulate','lactate',
   // Wave 1 (creator decision 2026-10-09): eight bodies, legs, mouths and eyes.
   'run','brace','swim','quiet','peck','filter','suck','swallow','nibble','aim','spot','glance','track','display','call','dance','flare','scent','gesture','lay-eggs','live-birth'
 ]);
@@ -96,7 +96,7 @@ export const PARTS=Object.freeze(Object.fromEntries([
   part('dome-torso','core',{tags:['root','torso','tough','shell'],prereq:['reinforced-torso'],provides:torsoSockets({dorsal:2}),mass:6,upkeep:1.3,cost:6,actions:['armor'],symmetry:'single',dims:{w:9,h:8},anim:'breathing'}),
   part('long-torso','core',{tags:['root','torso','large','segmented'],prereq:['sleek-torso'],provides:torsoSockets({limbs:[0,1,2,3,4,5,6,7,9,10,13,14],flank:3,dorsal:2,eyes:4}),mass:6,upkeep:1.35,cost:6,symmetry:'single',dims:{w:12,h:6},anim:'breathing'}),
   part('walking-leg','limbs',{tags:['leg','land'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','foot'],mass:.4,upkeep:.1,cost:1,actions:['walk','sprint','dance'],niche:['ground'],anim:'gait'}),
-  part('spring-leg','limbs',{tags:['leg','land','burst'],prereq:['walking-leg'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','tendon','foot'],mass:.5,upkeep:.18,cost:2,actions:['walk','sprint','pounce','dance'],niche:['ambush','escape'],anim:'gait',legacy:{axis:'spring',threshold:.5,adaptation:'spring-tendons',action:{pounce:.8}}}),
+  part('spring-leg','limbs',{tags:['leg','land','burst'],prereq:['walking-leg'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','tendon','foot'],mass:.5,upkeep:.18,cost:2,actions:['walk','sprint','pounce','dance','jump'],niche:['ambush','escape'],anim:'gait',legacy:{axis:'spring',threshold:.5,adaptation:'spring-tendons',action:{pounce:.8}}}),
   part('grasper','limbs',{tags:['leg','manipulate'],prereq:['walking-leg'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','hook'],mass:.45,upkeep:.14,cost:2,actions:['walk','carry','dance','gesture'],niche:['provisioning'],anim:'gait',legacy:{axis:'forelimb',threshold:.5,adaptation:'grasping-limbs'}}),
   part('runner-leg','limbs',{tags:['leg','land','fast'],prereq:['walking-leg'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','foot'],mass:.35,upkeep:.12,cost:2,actions:['walk','sprint','run','dance'],niche:['open-ground'],anim:'gait'}),
   part('sturdy-leg','limbs',{tags:['leg','land','brace'],prereq:['walking-leg'],sockets:['limb'],provides:legSockets(),joints:['hip','knee','foot'],mass:.6,upkeep:.14,cost:2,actions:['walk','brace','dance'],niche:['predator-pressure'],anim:'gait'}),

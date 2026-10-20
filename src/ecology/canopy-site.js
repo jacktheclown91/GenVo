@@ -24,6 +24,7 @@ export function canopySupport(world,x,y){
 export function roostAvailability(animal,world,{climbing=false}={}){
  climbing=climbing&&(animal?.bodyPlan?.nodes||[]).filter(n=>n.partId==='climber-leg').length>=2;
  if(!animal?.alive)return{enabled:false,reason:'No living creature.'};
+ if(animal.aerialMode==='jump')return{enabled:false,reason:'Land from the jump before entering the canopy.'};
  if(animal.perched)return{enabled:false,reason:'Already in the canopy. Press 6 to take off or 7 to climb down.'};
  if(!animal.airborne&&!climbing)return{enabled:false,reason:'Take off before roosting in a tree.'};
  if(canopyGrips(animal)<2||(!climbing&&!winged(animal)&&!hasGlidingSurfaces(animal)))return{enabled:false,reason:'Requires two grasping or climbing legs and supported aerial anatomy.'};

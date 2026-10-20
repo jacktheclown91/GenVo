@@ -1,3 +1,4 @@
+import {JUMP,springLegs,jumpKinematics,jumpAvailability,launchJump} from '../lineage/jumping.js';
 import {physicalAttackProfile} from '../lineage/physical-attack.js';
 import {preyPreference,canHunt} from '../ecology/functional-diet.js';
 import {wildTraits} from '../organisms/wild-bodies.js';
@@ -42,12 +43,12 @@ export class PlayerCombatController{
     if(!(dt>0))return this.movementModifiers(a,input);
     this.clock+=dt;if(!a)return this.movementModifiers(null,input);
     this.sim.exertion.ensure(a);
-    const wantBrace=!!input?.brace;
+    const wantBrace=!!input?.brace&&!a.airborne&&!a.perched;
     if(!wantBrace){if(a.bracing)a.bracing=false}
     else if(!a.bracing&&!this.attackWindingUp(a)&&!((a.braceLockUntil||0)>this.clock)&&this.sim.exertion.canStartBrace(a)){a.bracing=true;a.braceStartedAt=this.clock}
     const act=a.attackAction;
     if(act?.phase==='leap')this.leapStep(a,act);
-    if(act&&this.clock>=act.until){if(act.pounce&&act.phase==='windup')this.beginLeap(a,act);else if(act.phase==='leap')this.resolvePounce(a,act);else if(act.phase==='windup')this.resolveAttack(a,act);else a.attackAction=null}
+    if(act&&this.clock>=act.until&&!(act.sharedJump&&a.aerialMode==='jump')){if(act.pounce&&act.phase==='windup')this.beginLeap(a,act);else if(act.phase==='leap')this.resolvePounce(a,act);else if(act.phase==='windup')this.resolveAttack(a,act);else a.attackAction=null}
     const mods=this.movementModifiers(a,input);
     this.sim.exertion.step(a,dt,{moving:mods.moving,sprinting:mods.sprint,bracing:!!a.bracing});
     if(a.bracing&&a.exertionWinded){a.bracing=false;a.braceLockUntil=this.clock+CFG.brace.brokenLock;this.queue({ok:false,type:'brace',message:'Guard broken. Catch your breath before bracing again.'})}
@@ -61,6 +62,7 @@ export class PlayerCombatController{
     const a=this.sim.player();
     if(!a?.alive)return{enabled:false,reason:'No active creature.'};
     if(this.sim.paused)return{enabled:false,reason:'Resume the world first.'};
+    if(a.airborne||a.perched)return{enabled:false,reason:'Land before bracing.'};
     if(this.attackWindingUp(a))return{enabled:false,reason:'Finish the attack windup first.'};
     if((a.braceLockUntil||0)>this.clock)return{enabled:false,reason:'Guard is recovering.'};
     if(a.exertionWinded||(!a.bracing&&(a.exertion??CFG.exertion.max)<CFG.exertion.braceStartMin))return{enabled:false,reason:'Need more breath to brace.'};
@@ -87,6 +89,7 @@ export class PlayerCombatController{
     if(!pounce&&a.bodyPlan?.nodes?.length&&!physicalAttackProfile(a).mode)return{enabled:false,state:'unavailable',reason:'A biting or striking part is required for this attack.'};
     if(targetId!==null&&!pounce){const status=this.attackTargetStatus(a,targetId);if(!status.enabled)return{enabled:status.enabled,state:status.state,reason:status.reason}}
     if(pounce){
+      if(this.sim.jumpingRules===JUMP.policy){const jump=jumpAvailability(this.sim,a,{pounce:true});if(!jump.enabled)return jump}
       if(!(this.pounceReach(a)>0))return{enabled:false,reason:'Need developed spring tendons.'};
       if(a.exertionWinded||(a.exertion??CFG.exertion.max)<CFG.pounce.cost)return{enabled:false,reason:'Not enough breath to pounce.'};
       if(!this.pounceTarget(a,undefined,targetId))return{enabled:false,reason:'No reachable target ahead.'};
@@ -124,7 +127,7 @@ export class PlayerCombatController{
   // front of it: a still crouch, a leap that closes the gap, the normal bite on landing, and a
   // longer recovery (longer still after a miss). It costs breath like any attack. Without the
   // body for it, or without the breath, Shift+Space is the ordinary bite.
-  pounceReach(a){const v=bodyAbility(a,'pounce');if(!v)return 0;const P=CFG.pounce;return P.reach[0]+(v-.8)/.2*(P.reach[1]-P.reach[0])}
+  pounceReach(a){if(this.sim.jumpingRules===JUMP.policy)return springLegs(a)>=2?jumpKinematics(a).range:0;const v=bodyAbility(a,'pounce');if(!v)return 0;const P=CFG.pounce;return P.reach[0]+(v-.8)/.2*(P.reach[1]-P.reach[0])}
   pounceTarget(a,reach=this.pounceReach(a),targetId=null){
     if(!a||!(reach>0))return null;const P=CFG.pounce,f=FACING[a.dir&7]||FACING[0],s=SPECIES[a.species];let best=null,bestD=reach;
     for(const o of this.sim.animals){
@@ -145,9 +148,15 @@ export class PlayerCombatController{
     if(!target){a.attackAction={phase:'recover',...(act.targetId!==undefined?{targetId:act.targetId}:{}),startedAt:this.clock,until:this.clock+P.missRecovery,slow:false,outcome:'miss',pounce:true};this.queue({ok:false,type:'pounce',message:'Your pounce lost its target.'});return}
     const dx=target.x-a.x,dy=target.y-a.y,d=Math.hypot(dx,dy)||1,travel=Math.max(0,Math.min(this.pounceReach(a)||P.reach[0],d-P.landGap));
     a.dir=dirFor(dx,dy);
+    if(this.sim.jumpingRules===JUMP.policy){
+      const launched=launchJump(this.sim,a,{dx,dy,range:travel,pounce:true});
+      if(!launched.ok){a.attackAction={phase:'recover',pounce:true,startedAt:this.clock,until:this.clock+P.missRecovery,slow:false,outcome:'miss'};this.queue(launched);return}
+      a.attackAction={phase:'leap',pounce:true,sharedJump:true,targetId:target.id,startedAt:this.clock,until:this.clock+.001,slow:false};this.queue(launched);return;
+    }
     a.attackAction={phase:'leap',pounce:true,targetId:target.id,startedAt:this.clock,until:this.clock+P.leap,from:{x:a.x,y:a.y},to:{x:a.x+dx/d*travel,y:a.y+dy/d*travel},slow:false};
   }
   leapStep(a,act){
+    if(act.sharedJump)return;
     const t=Math.max(0,Math.min(1,(this.clock-act.startedAt)/Math.max(.001,act.until-act.startedAt))),x=act.from.x+(act.to.x-act.from.x)*t,y=act.from.y+(act.to.y-act.from.y)*t;
     if(this.sim.canOccupy(a,x,y)){a.x=x;a.y=y}else act.until=this.clock; // blocked by water or rock: land here
   }
@@ -203,7 +212,7 @@ export class PlayerCombatController{
 
   queue(result){
     if(!result)return;
-    this.pending={ok:!!result.ok,type:result.type,message:result.message||'',quiet:!!result.quiet,damage:result.damage||0,killed:!!result.killed,repelled:!!result.repelled,opening:!!result.opening,species:result.species||null,drivenOff:!!result.drivenOff};
+    this.pending={ok:!!result.ok,type:result.type,message:result.message||'',quiet:!!result.quiet,damage:result.damage||0,killed:!!result.killed,repelled:!!result.repelled,opening:!!result.opening,species:result.species||null,...(result.type==='jump-land'?{water:!!result.water}:{}),drivenOff:!!result.drivenOff};
   }
   consumeResult(){const r=this.pending;this.pending=null;return r}
 

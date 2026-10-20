@@ -10,7 +10,7 @@ const IDLE_TWITCH=[0,0,.35,0,0,-.25,0,.18];
 // rear slots keep their angle.
 export function splayAngle(a){const t=((a%(2*Math.PI))+2*Math.PI)%(2*Math.PI),side=t<Math.PI?1:-1,u=side>0?t:2*Math.PI-t;if(u<.01||Math.abs(u-Math.PI)<.01)return a;const w=Math.PI/2+(u-Math.PI/2)*.72;return side>0?w:2*Math.PI-w}
 export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',bodyScale=1,bodyWidthScale=1,bodyHeightScale=1,limbScale=1,sensoryScale=1,eyeScale=1,feelerScale=1,temperamentScale=1,dependent=false,alert=false,stage='adult',life={},behavior={},legSlots=null}={}){
-  if(action==='glide'){moving=false;frame=0}
+  if(['glide','jump','land'].includes(action)){moving=false;frame=0}
   frame=((Number(frame)%8)+8)%8;const frameInt=Math.floor(frame);dir&=7;
   const v=DIR8[dir],vmag=Math.hypot(v.x,v.y)||1,fx=v.x/vmag,fy=v.y/vmag,perp={x:-fy,y:fx};
   const flee=action==='flee',eat=action==='eat',drink=action==='drink',court=action==='court',hunt=action==='hunt'||action==='stalk';
@@ -51,7 +51,7 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
     if(alert)reach+=.65;if(flee)reach+=front<-.2?1.35:.35;if(court&&front>.4)reach+=.95;if((eat||drink)&&front>.35)reach-=.8;if(depleted)reach-=.3;
     const limpSide=Math.sign(side||1)===(b.limpSide||1)&&Math.abs(side)>.22;
     if(b.limp&&limpSide)reach-=.75*(Number(b.limp)||0);
-    reach=Math.max(5.0,reach)*reachScale;
+    reach=Math.max(5.0,reach)*reachScale*(action==='jump'?.76:1);
     const attach=(Math.min(bodyW,bodyH)*.36)+.25;
     const sweep=(moving?stride:.45*stride)*(slotList&&moving?1:(0.55+Math.abs(side)*.5));
     const curl=((k&1)?1:-1)*(moving?.75:1.15)+(court&&front>.2?side*.9:0);
@@ -64,10 +64,10 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
     // Body-edge offsets and clearance share one radial calculation. Clearance
     // during support uses the neutral footprint, so a toe cannot slide when
     // fore/aft sweep would otherwise push it back outside a wide torso.
-    if(slotList){const rx=bodyW/2,ry=bodyH/2,edge=1/Math.sqrt((dx/rx)**2+(dy/ry)**2),extra=Math.max(0,edge-Math.min(rx,ry));if(extra)for(const pt of [root,knee,foot]){pt.x+=dx*extra;pt.y+=dy*extra}const need=edge+3*Math.max(.8,limbScale),along=moving?footReach+extra:foot.x*dx+foot.y*dy;if(along<need){const shift=need-along;foot.x+=dx*shift;foot.y+=dy*shift;knee.x+=dx*shift*.6;knee.y+=dy*shift*.6}}
+    if(slotList){const rx=bodyW/2,ry=bodyH/2,edge=1/Math.sqrt((dx/rx)**2+(dy/ry)**2),extra=Math.max(0,edge-Math.min(rx,ry));if(extra)for(const pt of [root,knee,foot]){pt.x+=dx*extra;pt.y+=dy*extra}const need=edge+3*Math.max(.8,limbScale),along=moving?footReach+extra:foot.x*dx+foot.y*dy;if(along<need&&action!=='jump'){const shift=need-along;foot.x+=dx*shift;foot.y+=dy*shift;knee.x+=dx*shift*.6;knee.y+=dy*shift*.6}}
     if(slotList)knee=articulatedKnee({root,foot,forward:{x:fx,y:fy},perp,side,liftAmount});
     knee.y-=.9+liftAmount*.6;if(liftAmount>0){foot.x+=(knee.x-foot.x)*liftAmount*.4;foot.y+=(knee.y-foot.y)*liftAmount*.4}else foot.y+=.35;
-    legs.push(slotList?{index:k,slot,root,knee,foot,lift,liftAmount,...(striking&&attackLift>0?{aboveBody:true}:{}),planted:moving?step.planted&&(!striking||attackLift===0):(!striking||attackLift===0)&&liftAmount<.34,front,side}:{index:k,root,knee,foot,lift,liftAmount,planted:liftAmount<.34,front,side});
+    legs.push(slotList?{index:k,slot,root,knee,foot,lift,liftAmount,...(striking&&attackLift>0?{aboveBody:true}:{}),planted:action==='jump'?false:moving?step.planted&&(!striking||attackLift===0):(!striking||attackLift===0)&&liftAmount<.34,front,side}:{index:k,root,knee,foot,lift,liftAmount,planted:action==='jump'?false:liftAmount<.34,front,side});
   }
   const sensory=Math.max(.8,Number(sensoryScale)||1);
   const eyes=Math.max(.78,Number(eyeScale)||1),feelers=Math.max(.78,Number(feelerScale)||1);

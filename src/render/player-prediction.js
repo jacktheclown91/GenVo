@@ -9,7 +9,7 @@ import {movementEffect} from '../lineage/effects.js';
 // across the small fraction of a control step that has not run yet.
 export function predictPlayerPose(sim,input,aheadSeconds=0){
   const a=sim?.player?.();
-  if(!a||a.aerialMode==='glide')return null;
+  if(!a||a.aerialMode)return null;
   const base={x:a.x,y:a.y,phase:a.anim||0,moving:false,swimming:false};
   if(sim.paused||!input)return base;
   const [dx,dy]=inputVector(input);if(!dx&&!dy)return base;
