@@ -36,8 +36,11 @@ const previous=active.environment.blockedBoundaries.slice();
 const originalNeighbor=neighbor.environment;
 const assigned=syncPlanetaryBoundaryOwnership(sim);
 assert.ok(assigned.pairedCells>=2,'both owners must exclude their common external reservoir');
-assert.equal(active.environment.blockedBoundaries[i],1);
-assert.equal(session.snapshot.world.environment.blockedBoundaries[j],1);
+const direction=neighbor.regionOrigin.x>origin.x?'east':neighbor.regionOrigin.x<origin.x?'west':
+ neighbor.regionOrigin.y>origin.y?'south':'north';
+const expectedBits=direction==='east'?[2,1]:direction==='west'?[1,2]:direction==='south'?[8,4]:[4,8];
+assert.equal(active.environment.blockedBoundaries[i],expectedBits[0]);
+assert.equal(session.snapshot.world.environment.blockedBoundaries[j],expectedBits[1]);
 assert.equal(previous[i],0,'unvisited water previously reached the external reservoir');
 assert.equal(originalNeighbor.blockedBoundaries[j],0,
  'replacing the archive mask does not mutate its previous snapshot');
