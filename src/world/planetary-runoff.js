@@ -2,7 +2,34 @@
 // groundwater overflow become conserved overland water, routed along the
 // actual steepest-downhill drainage graph. Water that cannot reach an existing
 // channel remains in its dry-land basin; this pass does NOT create new lakes.
-export const PLANETARY_RUNOFF=Object.freeze({schema:1,moveFraction:.65});
+export const PLANETARY_RUNOFF=Object.freeze({schema:1,moveFraction:.65,
+ shallowChannelThreshold:.25,closedBasinThreshold:.65,maxNewWetCellsPerDay:8});
+function floodFromRunoff(w,day){
+ const e=w.environment;
+ if(e?.schema!==6)return null;
+ const n=w.n,changes=[];
+ for(let i=n;i<w.len-n&&changes.length<PLANETARY_RUNOFF.maxNewWetCellsPerDay;i++){
+  if(w.water[i])continue;
+  const x=i%n;
+  // A new border cell would need a paired external geography authority.
+  if(x===0||x===n-1)continue;
+  const amount=e.overland[i],downstream=w.terrain.downstream[i];
+  if(amount<PLANETARY_RUNOFF.shallowChannelThreshold||amount>2)continue;
+  const connected=!!(w.water[i-1]||w.water[i+1]||w.water[i-n]||w.water[i+n]);
+  const basin=downstream===-1&&amount>=PLANETARY_RUNOFF.closedBasinThreshold;
+  if(!connected&&!basin)continue;
+  // A new waterway is funded solely by the water already held in this cell,
+  // not a generator reset, external import, or extra rainfall credit.
+  changes.push({i,water:1,depth:amount,salinity:0,source:'overland'});
+ }
+ if(!changes.length)return null;
+ const receipt=w.setSurfaceWater(changes,{reason:'rainfall-runoff-inundation'});
+ const row=w.environment.lastDay,t=w.environment.totals;
+ row.newWetCells=changes.length;row.inundatedWater=receipt.internalWater;
+ t.newWetCells=(t.newWetCells||0)+changes.length;
+ t.inundatedWater=(t.inundatedWater||0)+receipt.internalWater;
+ return receipt;
+}
 const sum=a=>{let n=0;for(const v of a)n+=v;return n;};
 export function totalPlanetarySurfaceWater(w){
  const e=w.environment;
@@ -10,7 +37,7 @@ export function totalPlanetarySurfaceWater(w){
 }
 export function routePlanetaryRunoff(w,runoff,day){
  const e=w.environment;
- if(e?.schema!==5)return null;
+ if(e?.schema<5)return null;
  if(!(runoff instanceof Float64Array)||runoff.length!==w.len||
    !(e.overland instanceof Float64Array)||e.overland.length!==w.len||
    !(e.volume instanceof Float64Array)||e.volume.length!==w.len||
@@ -71,5 +98,7 @@ export function routePlanetaryRunoff(w,runoff,day){
  row.runoffDelivered=delivered;
  row.overlandMoved=moved;
  row.overlandEdges=edges;
- return{received:captured,delivered,moved,edges,stored:sum(overland),closure};
+ const inundation=floodFromRunoff(w,day);
+ return{received:captured,delivered,moved,edges,
+  stored:sum(w.environment.overland),closure,inundation};
 }
