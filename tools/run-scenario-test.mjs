@@ -3,6 +3,7 @@
 // Every run independently decodes and restores the SAME immutable checkpoint.
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
+import {gunzipSync} from 'node:zlib';
 import {CFG} from '../src/sim/config.js';
 import {restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 import {openScenarioSnapshot,validateScenarioCatalog} from '../src/persistence/scenario-library.js';
@@ -30,7 +31,7 @@ if(id){
 }
 const bytes=fs.readFileSync(file),checksum=createHash('sha256').update(bytes).digest('hex');
 if(entry&&checksum!==entry.sha256)throw Error('Scenario catalog checksum does not match file.');
-const baseline=JSON.parse(bytes.toString('utf8'));
+const baseline=JSON.parse((file.endsWith('.gz')?gunzipSync(bytes):bytes).toString('utf8'));
 const results=[];
 for(let pass=0;pass<repeat;pass++){
  const source=openScenarioSnapshot(baseline);
