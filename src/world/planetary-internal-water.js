@@ -46,8 +46,9 @@ export function advanceInternalPlanetaryWater(w,salt){
  // One row-major pass gives stable, deterministic processing for save/replay.
  // Only orthogonal neighbors count; diagonal water cannot cross a land barrier.
  for(let i=0;i<w.len;i++){
-  if(i%n<n-1)pair(i,i+1);
-  if(i+n<w.len)pair(i,i+n);
+  if(!w.water[i])continue;
+  if(i%n<n-1&&w.water[i+1])pair(i,i+1);
+  if(i+n<w.len&&w.water[i+n])pair(i,i+n);
  }
  const after=sum(volume),closure=-(after-start);
  if(!Number.isFinite(after)||Math.abs(closure)>1e-6)
