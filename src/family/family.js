@@ -4,6 +4,7 @@ import {isFeedingIntent} from '../ecology/feeding-intents.js';
 import {SPECIES} from '../organisms/species.js';
 import {CFG} from '../sim/config.js';
 import {milkEligible,transferMilk,motherWarmth,MAMMAL} from '../ecology/mammalian-care.js';
+import {YOUNG_CLIMATE} from '../ecology/young-climate.js';
 
 export class FamilyController{
   constructor(sim){
@@ -422,7 +423,9 @@ export class FamilyController{
         if(caregiver.id!==lactating.id)continue;
         const milk=transferMilk(caregiver,child);if(milk.ok)child.lastMilkTick=this.sim.tickCount;
         const cell=this.sim.world.idx(child.x,child.y),temp=this.sim.world.temperature[cell];
-        if(motherWarmth(caregiver,child,temp))child.lastMaternalWarmthTick=this.sim.tickCount;
+        const climateOption=this.sim.world.environment?.youngClimatePolicy===YOUNG_CLIMATE.policy
+          ?{comfort:.55*child.genes.climate}:undefined;
+        if(motherWarmth(caregiver,child,temp,climateOption))child.lastMaternalWarmthTick=this.sim.tickCount;
         continue;
       }
       const childSpec=SPECIES[child.species],parentSpec=SPECIES[caregiver.species],independence=this.learningProfile(child)?.independence??0;
