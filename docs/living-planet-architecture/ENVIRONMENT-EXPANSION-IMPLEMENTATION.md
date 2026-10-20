@@ -39,7 +39,7 @@ Continental geography, finite oceans/rivers/groundwater, moving weather, climate
 - [x] Specify and implement versioned external-versus-paired ownership at known synchronized wet region seams; unsimulated surroundings still use the geographic reservoir.
 - [ ] Build deterministic same-day freshwater/salt transfers across visited region seams, with exactly paired debit/credit and serialized pending handoffs.
 - [ ] Apply finite ocean boundary exchange only where external unsimulated water is declared; remove boundary-mode ambiguity in a new version rather than reinterpreting old snapshots.
-- [ ] Connect soil runoff, river outflow, groundwater and saltwater mixing without fabricated water or double-counted nutrients.
+- [ ] Extend newly implemented paired dry-terrain runoff across known synchronized regions to sediment, groundwater and nutrient transport. Local runoff and cross-region wet/wet saltwater already have canonical ledger owners.
 - [ ] Verify coast, estuary, lake, closed basin and adjacent-region cases, including replay and save/restore.
 
 ## Wind-to-flora integration checkpoint (October 19, 2026)
@@ -74,6 +74,14 @@ Continental geography, finite oceans/rivers/groundwater, moving weather, climate
 - Water-only (zero-dissolved-salt) paired flux is retained as a valid seam receipt. Freshwater transport must not be omitted merely because no salt moved.
 - Targeted regression coverage: `tests/planetary-water-seam-ownership.mjs`, `tests/planetary-boundary-water.mjs`, `tests/planetary-paired-seam-salt.mjs`, and `tests/planetary-boundary-exchange.mjs`.
 - **Verification:** JavaScript parsing and isolated ownership/finite-exchange checks are available; full Node tests, offscreen replay, browser frame performance, and long-lived ocean ecology remain unverified. The connected ocean applies only to registered synchronized regions, not a globally conserved mutable ocean covering the entire planet. External unvisited seas are still declared geographic reservoirs. River runoff across previously unvisited dry boundaries remains future work.
+
+## Cross-region river runoff implementation (October 19, 2026)
+- `src/world/planetary-seam-runoff.js` implements the versioned `paired-overland-runoff/1` policy. New planetary Worlds opt in; archived Worlds without the policy keep their historical boundary isolation. It adds no second daily water clock, new water inventory, or unloaded-world outflow.
+- At an independently owned, synchronized 128-tile region seam, dry land cells with **existing** `environment.overland` stocks can send bounded runoff downhill to actual adjacent dry terrain or an existing wet channel. The proposal reads terrain elevation, donor store, receiving water head, finite donor fraction and channel capacity. Uphill routes, nonexistent neighbors, incompatible historical policy and unsupported wet-to-dry flooding do not generate water.
+- `src/world/planetary-seam-salt.js` commits this runoff alongside already supported paired ocean water and salt in the **same** tick-synchronized atomic receipt. A donor's overland stock decreases exactly as the destination's overland or channel volume increases. The ledger records direction-specific `runoffAToB/runoffBToA`, included in the reciprocal water totals. Separate cumulative `seamRunoffInput/Output` are observational, never additional physical resource stores.
+- Historical saved environments with no policy preserve their original runoff behavior. Invalid policy/receipt values and overdrawn or nonfinite border stocks are rejected.
+- `tests/planetary-seam-runoff.mjs` covers dry-to-dry, dry-to-wet capacity, both directions, uphill and absent-neighbor rejection, conservation, ledger forgery, malformed-stock safety, and new/legacy save continuity.
+- **Verification:** source syntax and direct isolated execution of the committed seam transaction passed for dry/dry and dry/wet flows, historical policy opt-out, uphill refusal and malformed-source refusal. Native Node/Chromium integration tests are not yet run. Sediment and nutrients are not yet transferred, flooded dry-to-wet topology changes remain local, and this is not hydrology across unsimulated continents.
 
 ## Batch 4: weather
 - [ ] Introduce globally located wind/pressure/moisture fronts at a coarser atmospheric resolution than terrain, deterministically sampled by local regions.
