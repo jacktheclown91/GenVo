@@ -147,6 +147,17 @@
         "src/world/world.js"
       ]
     },
+    "planetaryWetbedSediment": {
+      "authority": "src/world/planetary-wetbed-sediment.js",
+      "consumers": [
+        "src/world/planet-world.js",
+        "src/world/environment.js",
+        "src/world/planetary-runoff.js",
+        "src/world/planetary-seam-runoff.js",
+        "src/world/planetary-seam-salt.js"
+      ],
+      "note": "New-world conserved-wetbed-displacement/1 couples existing terrain elevation deposition to an equal decrease in a wet receiving cell water column and an equal increase in adjacent connected wet water volume, advecting real salt. The canonical terrain.elevation, environment.volume and environment.salt remain sole physical stocks; runoff receipts and regional transfer histories record the displacement. Closed pools and unsupported older saved worlds remain unchanged."
+    },
     "planetaryTerrainSediment": {
       "authority": "src/world/terrain-sediment.js",
       "consumers": [
