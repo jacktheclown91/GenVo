@@ -313,6 +313,11 @@
         "src/sim/simulation.js"
       ]
     },
+    "existingResidentStart": {
+      "authority": "src/persistence/resident-start.js",
+      "consumers": ["src/main.js", "src/ui/resident-start.js", "src/persistence/save-manager.js"],
+      "note": "Explicit creator choice of an actual living regional resident on an independent world fork. Preserves biological stocks, RNG, body, age, generation and real ancestry; records player-entry provenance, updates playable descendants and carries entry identity through regional saves. Never fabricates simulated evolution or custom anatomy."
+    },
     "directionalFlightWind": {
       "authority": "src/lineage/flight-wind.js",
       "consumers": ["src/lineage/lifestyle.js", "src/lineage/flight.js", "src/render/flight-wind.js", "src/world/planet-world.js", "src/world/environment.js"],

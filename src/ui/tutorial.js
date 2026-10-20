@@ -186,6 +186,11 @@ export class TutorialController{
     if(this.renderInjury(p))return;
     if(this.renderKnownWater(p))return;
     if(this.renderForagePatch(p))return;
+    if(p.age<SPECIES[p.species].maturity){
+      const caregiver=this.sim.animals.find(a=>a.id===p.caregiverId&&a.alive),remaining=Math.ceil(SPECIES[p.species].maturity-p.age);
+      if(caregiver)this.renderer.guideTarget={x:caregiver.x,y:caregiver.y,label:'Caregiver'};
+      this.render('Grow into your body',`${developmentFor(p).stage} · about ${remaining} days to maturity. Stay fed, watered and safe${caregiver?'; your caregiver is marked nearby':''}. Courtship becomes available when your body matures.`,{compact:true});return;
+    }
     if(this.renderSpeciesGoal(p))return;
     if(this.renderLifestyleGoal(p))return;
     if(this.sim.lineage.established){this.render('Lineage established','Generation 8 is the milestone, not the ending · descendants and adaptations can continue.',{compact:true});return}

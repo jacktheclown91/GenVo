@@ -12,6 +12,8 @@ const syntax=[
   'tests/save-concurrent-requests.mjs'
 ];
 const runtime=[
+  'tests/resident-start.mjs',
+  'tests/camera-bounds.mjs',
   'tests/save-concurrent-requests.mjs',
   'tests/save-async-coherence.mjs',
   'tests/save-persistence.mjs',

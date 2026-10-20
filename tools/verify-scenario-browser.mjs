@@ -13,6 +13,7 @@ try{playwright=require('playwright')}
 catch{playwright=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'))}
 const output=process.argv[2]||'docs/test-runs/scenario-browser-ci';
 const scenarioId=process.argv[3]||'established-valley-d30';
+const residentMode=process.argv.includes('--resident');
 // An optional static web root exercises the delivered build, including
 // fetch-loaded scenario assets, rather than accidentally using source files.
 const root=path.resolve(process.argv[4]||process.cwd());
@@ -48,10 +49,28 @@ try{
   .some(option=>option.value==='catalog:'+id),scenarioId);
  await page.screenshot({path:path.join(output,'advanced-start-menu.png')});
  await select.selectOption('catalog:'+scenarioId);
+ if(residentMode)await page.locator('#newWorldCreature').selectOption('resident');
  await page.locator('#newWorldName').fill('Verified '+scenario.label+' Fork');
  assert.equal(await page.locator('#newWorldSeed').isDisabled(),true,
   'saved scenario ancestry cannot be relabeled as a different seed');
  await page.locator('.menu-view[data-screen="new"] [data-action="create"]').click();
+ let chosenResident=null,cancelPreservedSlots=null;
+ if(residentMode){
+  await page.locator('#residentStart').waitFor({state:'visible',timeout:120000});
+  const slotsBefore=await page.evaluate(async()=> (await window.__GENVO8__.saveManager.listWorlds()).length);
+  await page.locator('#residentStart button').filter({hasText:'Cancel'}).click();
+  await page.waitForFunction(()=>!document.querySelector('#residentStart'));
+  cancelPreservedSlots=await page.evaluate(async count=>(await window.__GENVO8__.saveManager.listWorlds()).length===count,slotsBefore);
+  assert.ok(cancelPreservedSlots,'cancelling must not allocate an orphan world slot');
+  await page.locator('.menu-view[data-screen="new"] [data-action="create"]').click();
+  await page.locator('#residentStart').waitFor({state:'visible',timeout:120000});
+  const values=await page.locator('#residentStart select option').evaluateAll(options=>options.map(o=>o.value));
+  assert.ok(values.length>1,'real evolved ecology offers several residents');
+  chosenResident=Number(values[1]);
+  await page.locator('#residentStart select').selectOption(String(chosenResident));
+  await page.screenshot({path:path.join(output,'resident-chooser.png')});
+  await page.locator('#residentStart button').filter({hasText:'Begin as this creature'}).click();
+ }
  await page.waitForFunction(({seed,day})=>window.__GENVO8__?.sim?.seed===seed
   &&window.__GENVO8__.sim.day===day
   &&window.__GENVO8__.sim.player()?.alive,{seed:scenario.seed,day:scenario.day},{timeout:120000});
@@ -72,7 +91,7 @@ try{
   return {
    seed:g.sim.seed,day:g.sim.day,tickCount:g.sim.tickCount,year:g.sim.year,
    liveAnimals:g.sim.animals.filter(a=>a.alive).length,
-   playerAlive:!!g.sim.player()?.alive,worldGenerator:world.generator,
+   playerAlive:!!g.sim.player()?.alive,playerId:g.sim.playerId,storedPlayerId:stored?.core?.playerId,playerSpecies:g.sim.player()?.species,creatureStart:g.sim.creatureStart||null,worldGenerator:world.generator,
    sourceDay:stored?.core?.day??null,sourceSeed:stored?.seed??null,
    storedPresent:!!stored,lastSavedTick:g.saveManager.lastSavedTick,
    saveBusy:g.saveManager.busy,sceneShown:g.renderer.sceneShown,
@@ -92,8 +111,9 @@ try{
  assert.equal(report.sourceDay,scenario.day);
  assert.ok(report.newSlot.startsWith('world-'));
  assert.ok(report.originalHistoryRetained);
+ if(residentMode){assert.equal(report.playerId,chosenResident);assert.equal(report.storedPlayerId,chosenResident);assert.equal(report.creatureStart?.actorId,chosenResident);assert.equal(report.creatureStart?.kind,'existing-resident');}
  assert.deepEqual(errors,[],'browser encountered a fatal gameplay script error');
- fs.writeFileSync(path.join(output,'report.json'),JSON.stringify({ok:true,servedRoot:root,...report,errors},null,2));
+ fs.writeFileSync(path.join(output,'report.json'),JSON.stringify({ok:true,servedRoot:root,residentMode,cancelPreservedSlots,...report,errors},null,2));
  console.log('Bundled '+scenario.label+' real-world New Game quick start and saved browser fork PASS',JSON.stringify(report));
 }finally{
  await browser.close();

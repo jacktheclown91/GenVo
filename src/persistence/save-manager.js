@@ -1,6 +1,7 @@
 import {restoreCarcassRules,validateCarcassSnapshot} from '../gameplay/carcass-rules.js';
 import {restoreDiggingRules,validateDiggingSnapshot} from '../lineage/digging-rules.js';
 import {restoreMassRules} from '../organisms/body-mass.js';
+import {validateResidentStart} from './resident-start.js';
 import {restoreEcologyRules} from '../ecology/rule-policy.js';
 import {PlanetGeography} from '../world/planet-geography.js';
 import {planetRegionOrigin,regionKey,validatePlanetaryTravelState,validatePlanetAnimalOwnership} from '../world/planet-regions.js';
@@ -317,6 +318,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   validatePlanetarySeamLedger(sim.planetaryTravel?.seamLedger);
   for(const session of sim.planetaryTravel?.sessions||[]){validateRemoteEnvironmentalLedger(session);validateRemoteBiologyLedger(session)}
   delete sim._player; // Runtime lookup cache is rebuilt from canonical playerId/animals.
+  validateResidentStart(sim);
   sim.seed=snapshot.seed;
   sim.rng.state=snapshot.rngState>>>0;
   restoreBirthRules(sim,snapshot.core||{});

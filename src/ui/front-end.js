@@ -9,6 +9,7 @@ export class FrontEnd{
     this.el.querySelector('#menuMute')?.addEventListener('change',e=>this.updateMute(e.target.checked));
     this.el.querySelector('#menuReduceMotion')?.addEventListener('change',e=>this.updateMotion(e.target.checked));
     this.el.querySelector('#newWorldStartingPoint')?.addEventListener('change',()=>this.syncStartingPoint());
+    this.el.querySelector('#newWorldCreature')?.addEventListener('change',()=>{this.startingPointsReady=this.refreshStartingPoints()});
     try{document.body.classList.toggle('reduced-menu-motion',localStorage.getItem('genvo-menu-reduced-motion')==='1')}catch{}
     this.syncSettings();this.show('home');
   }
@@ -29,6 +30,7 @@ export class FrontEnd{
   }
   async refreshStartingPoints(){
     const el=this.el.querySelector('#newWorldStartingPoint');
+    const previous=el.value,resident=this.el.querySelector('#newWorldCreature')?.value==='resident';
     el.replaceChildren(new Option('New ecology, Day 1','new'),new Option('Import a real evolved-world checkpoint...','import'));
     let worlds=[];
     try{worlds=await this.saveManager.listWorlds()}catch{this.setMessage('Saved worlds could not be listed.',true)}
@@ -42,9 +44,10 @@ export class FrontEnd{
       if(response.ok){
         const {validateScenarioCatalog}=await import('../persistence/scenario-library.js');
         this.catalog=validateScenarioCatalog(await response.json());
-        for(const c of this.catalog.filter(c=>c.playable))el.add(new Option('Evolved: '+c.label+' · Day '+c.day,'catalog:'+c.id));
+        for(const c of this.catalog.filter(c=>c.playable||resident&&c.liveAnimals>0))el.add(new Option('Evolved: '+c.label+' · Day '+c.day,'catalog:'+c.id));
       }
     }catch(error){console.warn('Curated scenarios are unavailable:',error)}
+    if(Array.from(el.options).some(option=>option.value===previous))el.value=previous;
     this.syncStartingPoint();
   }
   syncStartingPoint(){
@@ -106,6 +109,7 @@ export class FrontEnd{
   updateMotion(reduce){document.body.classList.toggle('reduced-menu-motion',reduce);try{localStorage.setItem('genvo-menu-reduced-motion',reduce?'1':'0')}catch{}}
   handleKey(event){
     if(!this.open)return false;
+    if(document.querySelector('#residentStart[open]'))return true;
     if(event.code==='Escape'||event.code==='KeyP'&&this.screen==='pause'){
       event.preventDefault();
       if(this.screen==='pause')this.onResume();
@@ -128,13 +132,14 @@ export class FrontEnd{
     try{
       if(a==='continue'){if(await this.onContinue(button.dataset.slot))this.close()}
       else if(a==='create'){
+        await this.startingPointsReady;
         const name=this.el.querySelector('#newWorldName').value.trim(),seed=this.el.querySelector('#newWorldSeed').value.trim();
         if(!name){this.setMessage('Give your world a name.',true);return}
         const start=this.el.querySelector('#newWorldStartingPoint')?.value||'new';
         const scenarioFile=this.el.querySelector('#newWorldScenarioFile')?.files?.[0]||null;
         const catalogEntry=start.startsWith('catalog:')?this.catalog.find(c=>c.id===start.slice(8)):null;
         if(await this.onCreate({name,seed,geography:this.el.querySelector('#newWorldGeography')?.value||'freshwater/1',
-          start,scenarioFile,catalogEntry}))this.close();
+          start,scenarioFile,catalogEntry,creature:this.el.querySelector('#newWorldCreature')?.value||'recorded'}))this.close();
       }
       else if(a==='load-world'){if(await this.onLoad(button.dataset.slot))this.close()}
       else if(a==='export-scenario'){await this.onExportScenario(button.dataset.slot);this.setMessage('Scenario package exported.');}

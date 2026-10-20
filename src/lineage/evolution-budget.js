@@ -42,11 +42,11 @@ export class EvolutionBudgetController{
   // Event hooks from existing authorities.
   noteDanger(animal,outcome){if(animal&&(animal.player||this.sim.isManualPlayer?.(animal))&&SURVIVED.has(outcome))this.note('stalkerSurvived')}
   noteHunt(pred,killed){if(killed&&pred?.player)this.note('hunt')}
-  noteBirth(child){if(child?.lineage&&child.species==='genvo')this.note('birth')}
-  noteTaught(child){if(child?.lineage&&child.species==='genvo')this.note('taught')}
+  noteBirth(child){if(child?.lineage)this.note('birth')}
+  noteTaught(child){if(child?.lineage)this.note('taught')}
   advanceDay(){
-    if(!this.sim.playerEnabled)return;const maturity=SPECIES.genvo.maturity,seen=new Set(this.matured);
-    for(const a of this.sim.animals){if(!a.alive||!a.lineage||a.species!=='genvo'||(a.generation||1)<2||a.age<maturity||seen.has(a.id))continue;this.matured.push(a.id);this.note('youngRaised')}
+    if(!this.sim.playerEnabled)return;const seen=new Set(this.matured);
+    for(const a of this.sim.animals){const maturity=SPECIES[a.species]?.maturity;if(!a.alive||!a.lineage||!Number.isFinite(maturity)||(a.generation||1)<2||a.age<maturity||seen.has(a.id))continue;this.matured.push(a.id);this.note('youngRaised')}
     if(this.matured.length>200)this.matured=this.matured.slice(-200);
     if(!this.firstHomeCredited&&this.sim.shelter?.activeShelters?.().length){this.firstHomeCredited=true;this.note('firstHome')}
     const p=this.sim.player();const strongest=p?this.sim.pressure?.strongest?.(p):null;if(strongest&&(strongest.severity??strongest.score??0)>=BUDGET.pressureEndured)this.note('pressureEndured');

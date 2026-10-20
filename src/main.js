@@ -11,6 +11,8 @@ import {HeldBraceInput} from './ui/held-brace-input.js';
 import {CreatureContextTray} from './ui/creature-context-tray.js';
 import {combatActions} from './ui/gameplay-actions.js';
 import {FrontEnd} from './ui/front-end.js';
+import {chooseResidentStart} from './ui/resident-start.js';
+import {selectResidentStart} from './persistence/resident-start.js';
 import {loadNativePartCatalog,nativeArtStatus} from './render/runtime-part-art.js';
 import {Simulation} from './sim/simulation.js';
 import {Renderer,TERRAIN_POOL} from './render/renderer.js';
@@ -127,7 +129,8 @@ async function exportScenarioFromMenu(slotId){
   }finally{a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);}
 }
 async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1',
- start='new',scenarioFile=null,catalogEntry=null}){
+ start='new',scenarioFile=null,catalogEntry=null,creature='recorded'}){
+  if(!['recorded','resident'].includes(creature))throw Error('Unsupported starting creature mode.');
   if(start==='new'&&!['freshwater/1','planetary/1'].includes(geography))
     throw Error('Unsupported new-world geography.');
   if(inGameplay){const checkpoint=await saveManager.saveNow('before-world-switch');
@@ -157,10 +160,14 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
     // Restoration validates the entire real simulation state, rather than
     // inventing an advanced organism or faking its ancestry/generation.
     next=restoreSimulationSnapshot(structuredClone(snapshot));
-    if(!next.player()?.alive)throw Error('This checkpoint has no living controllable lineage. Select a playable saved world.');
+    if(creature==='recorded'&&!next.player()?.alive)throw Error('This checkpoint has no living controllable lineage. Select a playable saved world.');
   }
   // A new slot is only allocated AFTER the source has been fully validated.
   // The source snapshot, RNG, player ancestry and archived regions stay intact.
+  if(creature==='resident'){
+    const id=await chooseResidentStart(next);if(id===null)return false;
+    selectResidentStart(next,id);
+  }
   await saveManager.allocateWorld(name);
   installSimulation(next,start==='new'?{fresh:true}:{resume:true});
   if(start==='new')tutorial.beginInWorld();

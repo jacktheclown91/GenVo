@@ -6,6 +6,8 @@ The New World screen and developer replay tooling share **one canonical save sna
 
 Open **New World > Starting point**:
 
+**Starting creature** is independent of the world choice: keep its recorded controlled lineage or choose a real living resident after restoration. The resident chooser preserves actual anatomy, age, condition, generation and retained parent IDs. Confirmation creates an independent save and records the change of player control; cancellation creates no slot. This also supports imported/saved worlds whose original player died while other supported organisms survive. Custom authored founders remain separate unfinished work. See [resident-start evidence](RESIDENT-STARTS-2026-10-20.md).
+
 - **New ecology, Day 1:** unchanged normal GenVo world creation.
 - **Fork saved world:** pick any saved world. The game performs a canonical restore and creates a *new* save slot. The original recorded world stays intact. This works immediately, without any bundled advanced scenarios.
 - **Import a real evolved-world checkpoint:** choose an exported `.json` scenario package. The package is decoded and validated before any new slot is allocated.
