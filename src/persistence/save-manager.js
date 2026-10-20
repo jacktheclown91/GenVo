@@ -29,6 +29,7 @@ import {validatePageResidency} from '../ecology/page-residency.js';
 import {validatePageDayWork} from '../world/page-vegetation-work.js';
 import {validatePageSeedTransfers} from '../ecology/page-seed-transfers.js';
 import {validatePageFaunaWork} from '../ecology/page-fauna-work.js';
+import {COAT_MOISTURE,validateCoatMoisture} from '../lineage/coat-moisture.js';
 
 // Schema 9 (v1.39.0): the new creature bodies. Creator decision 2026-10-09: start fresh, so older
 // saves before schema 9 are not carried over.
@@ -329,6 +330,10 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   validatePageDayWork(sim.pageDayWork,sim.world);
   if(sim.pageDayWork&&sim.pageDayWork.lastDay>sim.day)throw Error('Vegetation page work day is in the future.');
   sim.animals=snapshot.animals;
+  // Wetness is a persistent organism condition, not a new water reserve.
+  // Reject corrupt values without changing historical missing-field saves.
+  if(sim.world.environment?.coatMoisturePolicy===COAT_MOISTURE.policy)
+   for(const animal of sim.animals)validateCoatMoisture(animal);
   validatePlanetAnimalOwnership(sim.animals,sim.planetaryTravel);
   restoreMassRules(sim,snapshot.core||{});
   for(const a of sim.animals)if(!a.matePreferences)a.matePreferences=matePreferencesFor(snapshot.seed,a);
