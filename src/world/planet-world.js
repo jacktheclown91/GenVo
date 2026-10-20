@@ -30,11 +30,15 @@ export function initializePlanetWorld(w){
   else if(current!==code)boundary[i]=3;
  }
  w.terrain={schema:1,elevation,travelEnabled:true};deriveDrainage(w);
- // V2: observed geography supplies fixed-composition OPEN boundary water.
+ // V3 adds an independently conserved dynamic water inventory. The Float32
+ // depth remains the immutable geographic baseline used by historical worlds.
+ // Float64 volume preserves paired transfers without rounding away small flows.
+ const volume=Float64Array.from(depth);
+ // V3: observed geography supplies fixed-composition OPEN boundary water.
  // No stock is silently reset: a bounded daily mass flux is audited. This
  // is NOT a paired exchange with an independently simulated neighbor's
  // mutable water inventory; that larger authority remains future work.
- w.environment={schema:2,temperatureOffset,rainScale,depth,salt,boundary,day:0,totals:{
+ w.environment={schema:3,temperatureOffset,rainScale,depth,volume,salt,boundary,day:0,totals:{
   saltInput:0,saltOutput:0,rainWater:0,displacedWater:0,boundaryInput:0,boundaryOutput:0
  },daily:[]};
  w.buildLandRegions();w.buildHydrology();initializeColdFlora(w);initializeFreshwater(w);initializePlantResources(w);initializeOrganicResources(w);
