@@ -5,6 +5,8 @@
 import {encodeSnapshotGraph,decodeSnapshotGraph} from './scenario-codec.js';
 
 export const SCENARIO_FORMAT='genvo.world-scenario/1';
+const MAX_PACKED_SCENARIO_BYTES=160*1024*1024;
+const MAX_EXPANDED_SCENARIO_BYTES=512*1024*1024;
 function validContinuation(c){
  return c&&typeof c==='object'&&/^[a-z0-9][a-z0-9-]{1,63}$/.test(c.fromId||'')&&
   Number.isSafeInteger(c.fromDay)&&c.fromDay>=1&&
@@ -83,8 +85,9 @@ export function validateScenarioCatalog(catalog){
 // and is shared by the browser import and integrity-checked bundled loader.
 export async function parseScenarioDocument(buffer,{name='scenario.json'}={}){
  const bytes=new Uint8Array(buffer);
- if(bytes.byteLength>160*1024*1024)throw Error('Scenario package exceeds the supported compressed size.');
+ if(bytes.byteLength>MAX_EXPANDED_SCENARIO_BYTES)throw Error('Scenario package exceeds the supported input size.');
  const packed=bytes.length>=2&&bytes[0]===0x1f&&bytes[1]===0x8b;
+ if(packed&&bytes.byteLength>MAX_PACKED_SCENARIO_BYTES)throw Error('Compressed scenario exceeds the supported download size.');
  if(name.endsWith('.gz')&&!packed)throw Error('Scenario declares gzip but has no gzip header.');
  let data=buffer;
  if(packed){
@@ -92,7 +95,7 @@ export async function parseScenarioDocument(buffer,{name='scenario.json'}={}){
   const stream=new Blob([buffer]).stream().pipeThrough(new DecompressionStream('gzip'));
   data=await new Response(stream).arrayBuffer();
  }
- if(data.byteLength>160*1024*1024)throw Error('Decompressed scenario exceeds supported size.');
+ if(data.byteLength>MAX_EXPANDED_SCENARIO_BYTES)throw Error('Expanded scenario exceeds supported size.');
  return JSON.parse(new TextDecoder().decode(data));
 }
 export async function loadBundledScenario(entry,{fetchFile=fetch,digest=null}={}){
@@ -101,7 +104,7 @@ export async function loadBundledScenario(entry,{fetchFile=fetch,digest=null}={}
  const response=await fetchFile('./'+entry.file);
  if(!response.ok)throw Error('Scenario package is missing from this build.');
  const bytes=await response.arrayBuffer();
- if(bytes.byteLength>160*1024*1024)throw Error('Scenario exceeds the supported size.');
+ if(bytes.byteLength>MAX_PACKED_SCENARIO_BYTES)throw Error('Scenario exceeds the supported download size.');
  if(digest){
   const actual=await digest(bytes);
   if(actual!==entry.sha256)throw Error('Scenario file integrity check failed.');
