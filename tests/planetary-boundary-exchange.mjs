@@ -12,7 +12,7 @@ import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persist
 const seed='GENVO8-TEST-A',origin={x:0,y:2560};
 const w=new World(seed,{generator:'planetary/1',planetOrigin:origin});
 const e=w.environment;
-assert.equal(e.schema,4,'new planetary regions use interior flow, dynamic volume and audited boundary flux');
+assert.equal(e.schema,5,'new planetary regions include retained rainfall, overland flow, and audited marine boundaries');
 validateEnvironment(w,e);
 const marine=[],fresh=[],mixed=[];
 for(let i=0;i<w.len;i++){
