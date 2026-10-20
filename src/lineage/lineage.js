@@ -64,7 +64,7 @@ export class LineageTracker{
   }
   registerBirth(child,parents,conceptionParents=parents){
     const entry=this.sim.creatureStart;
-    child.lineage=entry?.kind==='existing-resident'?parents.some(p=>p&&(this.sim.animals.find(a=>a.id===p.id)?.lineage??(p.id===entry.actorId||this.isDescendant(p.id,entry.actorId)))):parents.some(p=>p?.lineage);
+    child.lineage=entry?parents.some(p=>p&&(this.sim.animals.find(a=>a.id===p.id)?.lineage??(p.id===entry.actorId||entry.actorIds?.includes(p.id)||this.isDescendant(p.id,entry.actorId)))):parents.some(p=>p?.lineage);
     this.sim.divergence?.onBirth?.(child,conceptionParents);this.sim.protoSpeciation?.onBirth?.(child,conceptionParents);
     if(child.lineage){this.sim.speciation?.noteBirth?.(child,parents);const record=this.register(child,parents.map(p=>p.id));
       // Birth-time evidence from actual gestational parent snapshots (not their own

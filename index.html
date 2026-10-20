@@ -214,7 +214,7 @@
             <option value="import">Import a real evolved-world checkpoint...</option>
           </select><small id="newWorldScenarioDetail">Recorded worlds can be forked without replaying their earlier days. Each new game receives a separate save.</small></label>
           <label class="menu-field" id="newWorldScenarioFileLabel" hidden>Scenario package (.json)<input type="file" id="newWorldScenarioFile" accept=".json,.gz,application/json,application/gzip" /></label>
-          <label class="menu-field">Starting creature<select id="newWorldCreature"><option value="recorded">Continue the recorded lineage</option><option value="resident">Choose a living resident</option></select><small>Choose independently of the world's age. A resident keeps its existing biology and history.</small></label>
+          <label class="menu-field">Starting creature<select id="newWorldCreature"><option value="recorded">Continue the recorded lineage</option><option value="resident">Choose a living resident</option><option value="guided">Design a founder · guided precursors</option><option value="sandbox">Design a founder · anatomy sandbox</option></select><small>Choose independently of the world's age. Custom founders enter as an explicitly authored pair, with their initial mass and reserves recorded.</small></label>
           <div class="menu-toolbar"><button data-action="create">Begin World</button><button class="menu-secondary" data-action="back">Back</button></div>
         </section>
         <section class="menu-view" data-screen="worlds" hidden aria-label="Saved worlds">

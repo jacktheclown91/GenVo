@@ -58,12 +58,13 @@ export function buildJournalEntry(sim,recordId){
   const looks=founder&&record.id!==founder.id?visualChangeText(record.genes,founder.genes,{limit:3,empty:'much like the founder'}):'the founder';
   const cognitive=sim.cognition.states.get(record.id),territory=sim.territory.states.get(record.id),migration=sim.migration.states.get(record.id);
   const notes=(cognitive?.history||[]).slice(0,5).map(n=>({text:journalNote(n),when:`Y${n.year} · day ${n.day}`}));
-  const ageDays=record.alive&&animal?Math.round(animal.age):Math.max(0,(record.diedDay??record.bornDay)-record.bornDay);
+  const origin=record.authoredOrigin;
+  const ageDays=record.alive&&animal?Math.round(animal.age):origin?origin.authoredAge+Math.max(0,(record.diedDay??origin.introducedDay)-origin.introducedDay):Math.max(0,(record.diedDay??record.bornDay)-record.bornDay);
   const branch=animal?sim.evolutionTree?.currentBranchFor?.(animal):null,lastHistoric=(record.speciesBranchHistory||[]).at(-1)||record.speciesBranch||null,taxon=branch?.label||lastHistoric?.label||'GenVo';
   return{
     subjectName:animal?creatureIdentity(sim,animal).name:taxon,id:record.id,generation:record.generation,sex:record.sex,alive:record.alive,active:record.id===sim.lineage.activeId,stage,ageDays,taxon,
     taxonExplanation:taxonNameExplanation(branch?.nameOrigin||lastHistoric?.nameOrigin),
-    born:`Y${record.bornYear} · day ${record.bornDay}`,
+    born:origin?`Authored adult · introduced day ${origin.introducedDay} (${origin.mode})`:record.bornDay==null?'Birth date not retained':`Y${record.bornYear} · day ${record.bornDay}`,
     death:record.alive?'':`${plainCause(record.cause)} · Y${record.diedYear} · day ${record.diedDay}`,
     trait:animal?strongestTraitText(animal):traitListText(compareGenes(record.genes,founder?.genes||record.genes,{limit:2}),{empty:'close to the family baseline'}),
     changes:traitListText(changes,{empty:'close to the founder'}),looks,

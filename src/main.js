@@ -12,6 +12,7 @@ import {CreatureContextTray} from './ui/creature-context-tray.js';
 import {combatActions} from './ui/gameplay-actions.js';
 import {FrontEnd} from './ui/front-end.js';
 import {chooseResidentStart} from './ui/resident-start.js';
+import {chooseAuthoredFounder} from './ui/founder-start.js';
 import {selectResidentStart} from './persistence/resident-start.js';
 import {loadNativePartCatalog,nativeArtStatus} from './render/runtime-part-art.js';
 import {Simulation} from './sim/simulation.js';
@@ -130,7 +131,7 @@ async function exportScenarioFromMenu(slotId){
 }
 async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1',
  start='new',scenarioFile=null,catalogEntry=null,creature='recorded'}){
-  if(!['recorded','resident'].includes(creature))throw Error('Unsupported starting creature mode.');
+  if(!['recorded','resident','guided','sandbox'].includes(creature))throw Error('Unsupported starting creature mode.');
   if(start==='new'&&!['freshwater/1','planetary/1'].includes(geography))
     throw Error('Unsupported new-world geography.');
   if(inGameplay){const checkpoint=await saveManager.saveNow('before-world-switch');
@@ -168,9 +169,12 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
     const id=await chooseResidentStart(next);if(id===null)return false;
     selectResidentStart(next,id);
   }
+  if(creature==='guided'||creature==='sandbox'){
+    const authored=await chooseAuthoredFounder(next,creature);if(!authored)return false;
+  }
   await saveManager.allocateWorld(name);
   installSimulation(next,start==='new'?{fresh:true}:{resume:true});
-  if(start==='new')tutorial.beginInWorld();
+  if(start==='new'||creature==='guided'||creature==='sandbox')tutorial.beginInWorld();
   closeGameMenus();await renderer.sceneReady();await nextPaint();
   try{const saved=await saveManager.saveNow(start==='new'?'world-start':'world-scenario-fork');
     if(!saved)showSaveStatus('Storage unavailable. This world is not saved.',{error:true,duration:6500});
@@ -178,7 +182,7 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
   return true;
 }
 const frontEnd=new FrontEnd({saveManager,audio,
-  getWorldInfo:()=>`Generation ${sim.player()?.generation||sim.lineage?.highestGeneration||1} · Year ${sim.year||1}, Day ${sim.day||1}`,
+  getWorldInfo:()=>`Generation ${sim.player()?.generation||sim.lineage?.highestGeneration||1} · Year ${sim.year||1}, Day ${sim.day||1}${sim.creatureStart?.kind==='authored-founder'?' · Authored '+sim.creatureStart.mode+' start':''}`,
   onContinue:loadWorldFromMenu,onLoad:loadWorldFromMenu,onCreate:createWorldFromMenu,onExportScenario:exportScenarioFromMenu,
   onSave:async()=>{const checkpoint=await saveManager.saveNow('manual');if(!checkpoint)throw Error('Unable to save this world.');return checkpoint},
   onResume:()=>closeGameMenus(),

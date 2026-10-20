@@ -22,6 +22,8 @@ python -m http.server 8000
 
 Open http://localhost:8000/ . **New World > Starting point** can fork an existing saved ecosystem, import a recorded scenario, or start the bundled genuine established and mature valleys without rerunning their earlier history. Public web exports include the catalog and its integrity-checked checkpoint files. The optional Creature Lab is at http://localhost:8000/tools/creature-lab/index.html . Follow displayed contextual controls: E interacts, Q cycles choices, Shift+E drinks, Space attacks and J braces.
 
+**Starting creature** independently keeps the recorded lineage, selects a living resident, or opens guided/sandbox founder design. Custom founders enter as an explicitly recorded new pair; their anatomy is not presented as naturally evolved in that world. The shared editor supports local body-design export/import. See [custom-founder evidence and limits](docs/AUTHORED-FOUNDERS-2026-10-20.md).
+
 ## Verify
 
 Node.js and Python are required for the development tools. Browser checks also require Playwright/Chromium.

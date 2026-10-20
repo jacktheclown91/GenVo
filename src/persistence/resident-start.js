@@ -54,7 +54,7 @@ export function selectResidentStart(sim,id){
 
 export function validateResidentStart(sim){
  const entry=sim.creatureStart;if(entry===undefined)return;
- if(entry?.schema!==1||entry.kind!=='existing-resident'||!Number.isSafeInteger(entry.actorId)||entry.actorId<1||
+ if(entry?.schema!==1||!['existing-resident','authored-founder'].includes(entry.kind)||!Number.isSafeInteger(entry.actorId)||entry.actorId<1||
   !Number.isSafeInteger(entry.day)||entry.day<1||!Number.isSafeInteger(entry.tick)||entry.tick<0||(sim.playerEnabled!==false&&entry.tick>sim.tickCount)||
   !Number.isSafeInteger(entry.generation)||entry.generation<1||!Array.isArray(entry.parentIds)||entry.parentIds.some(id=>!Number.isSafeInteger(id)||id<1))
   throw Error('Invalid existing-resident start provenance.');

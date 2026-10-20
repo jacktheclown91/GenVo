@@ -6,7 +6,7 @@ The New World screen and developer replay tooling share **one canonical save sna
 
 Open **New World > Starting point**:
 
-**Starting creature** is independent of the world choice: keep its recorded controlled lineage or choose a real living resident after restoration. The resident chooser preserves actual anatomy, age, condition, generation and retained parent IDs. Confirmation creates an independent save and records the change of player control; cancellation creates no slot. This also supports imported/saved worlds whose original player died while other supported organisms survive. Custom authored founders remain separate unfinished work. See [resident-start evidence](RESIDENT-STARTS-2026-10-20.md).
+**Starting creature** is independent of the world choice: keep its recorded controlled lineage, choose a real living resident, or design an explicitly authored founder pair in guided/sandbox mode. Resident choice preserves actual anatomy, age, condition, generation and retained parent IDs. Custom founders enter at generation one with initial mass/reserve receipts, without rewriting old inhabitants or inventing evolved ancestors. Designs can export/import separately from world scenarios. Confirmation creates an independent save; cancellation creates no slot. Imported/saved worlds can also be used when their original player died. See [resident evidence](RESIDENT-STARTS-2026-10-20.md) and [authored-founder evidence](AUTHORED-FOUNDERS-2026-10-20.md).
 
 - **New ecology, Day 1:** unchanged normal GenVo world creation.
 - **Fork saved world:** pick any saved world. The game performs a canonical restore and creates a *new* save slot. The original recorded world stays intact. This works immediately, without any bundled advanced scenarios.
@@ -15,7 +15,7 @@ Open **New World > Starting point**:
 
 Bundled curated worlds are stored as **.json.gz** files, keeping a ~118 MB complete Day 30 simulation graph to roughly 15 MB for transfer without removing any organism or environmental stock. The New World importer accepts either .json or .json.gz scenario packages.
 
-The **Load World** screen has **Export Scenario** for each saved world. It produces a portable `recorded-*.json` with its real saved-day state. No free creature editor or ancestry rewrite is part of checkpoint loading. A source without a living controllable creature is still a legitimate **developer replay fixture**, but it will not appear as a player quick start. Use a saved world with an active lineage for the New World menu.
+The **Load World** screen has **Export Scenario** for each saved world. It produces a portable `recorded-*.json` with its real saved-day state. Loading a recorded lineage never rewrites its ancestry or body. Separately selecting an authored founder adds an explicitly recorded new pair to an independent continuation. Catalog entries with no recorded player remain available for resident starts when other creatures survive, and for authored starts when supported habitat exists. An extinct ecosystem remains an honest developer replay fixture; it is not mislabeled as a surviving natural lineage.
 
 ## Export a genuine advanced fixture once
 

@@ -1,0 +1,51 @@
+
+[GenVo syntax] src/main.js
+
+[GenVo syntax] src/ui/front-end.js
+
+[GenVo syntax] src/persistence/save-manager.js
+
+[GenVo syntax] src/sim/frame-stepper.js
+
+[GenVo syntax] tests/save-concurrent-requests.mjs
+
+[GenVo playable] tests/authored-founders.mjs
+Authored founders: legal precursor trace, explicit sandbox, shared biology/compatibility, external resource receipts, source isolation, exact save and regional provenance PASS
+
+[GenVo playable] tests/resident-start.mjs
+Resident starts: real wild body selection, exact biology/stocks/RNG, retained ancestry, independent fork, future births and provenance refusal PASS
+
+[GenVo playable] tests/camera-bounds.mjs
+Finite regional camera: all borders, zoom levels, interior following and oversized viewports PASS
+
+[GenVo playable] tests/save-concurrent-requests.mjs
+concurrent save requests: delayed autosave, retained manual intent and current-state capture PASS
+
+[GenVo playable] tests/save-async-coherence.mjs
+async save coherence: delayed setup, exact transported state/restore and post-capture biological events PASS
+
+[GenVo playable] tests/save-persistence.mjs
+save persistence roundtrip: PASS
+
+[GenVo playable] tests/save-storage.mjs
+IndexedDB save manager contract: PASS
+
+[GenVo playable] tests/menu-world-slots.mjs
+menu multi-world slots and legacy compatibility: PASS
+
+[GenVo playable] tests/quick-interaction-default.mjs
+plain E acts on the shown default; explicit Q selection keeps its documented stickiness PASS
+
+[GenVo playable] tests/gameplay-actions.mjs
+Canonical combat availability, read-only descriptors, stale state and repeat-click guards PASS
+
+[GenVo playable] tests/contextual-interactions.mjs
+Four dietary anatomies, read-only queries, exact-target/no-fallback, ambiguity, stale feeding descriptors, keyed collection and attack fallback PASS
+
+[GenVo playable] tests/world-swap-render.mjs
+world swap render caches ok
+
+[GenVo playable] tests/menu-task-usability.mjs
+menu clarity + teachable Stalker flee response: PASS
+
+GenVo playable checkpoint: 18 focused checks passed. Browser acceptance is still required.

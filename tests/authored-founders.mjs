@@ -1,0 +1,86 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {FounderDesign,validateFounderDesign} from '../src/lineage/founder-design.js';
+import {place} from '../src/lineage/evolution-draft.js';
+import {prepareAuthoredFounders,installAuthoredFounders} from '../src/persistence/authored-founders.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {canOccupy} from '../src/lineage/lifestyle.js';
+import {planetaryTravelAvailability,crossPlanetaryBorder} from '../src/world/planetary-travel.js';
+import {adultBodyMass} from '../src/organisms/body-mass.js';
+import {buildJournalEntry} from '../src/ui/journal.js';
+
+const guided=new FounderDesign('guided');
+assert.equal(place(guided.draft,'flight-wing','root','dorsal').ok,false,'advanced anatomy still needs authored precursors');
+guided.draft.ancestry.add('proto-wing');
+assert.equal(place(guided.draft,'flight-wing','root','dorsal').ok,true);
+assert.ok(guided.problems().length,'forged draft ancestry cannot bypass session-owned precursor rules');
+const design=new FounderDesign('guided');
+assert.equal(place(design.draft,'filament-tuft','root','dorsal').ok,true);
+assert.equal(design.advance().ok,true);
+assert.equal(place(design.draft,'feather-mantle','root','dorsal').ok,true);
+const finished=design.finish();assert.ok(finished.ok);
+assert.equal(design.steps.length,1,'export/confirmation is read-only until actual installation');
+const record=finished.record,plan=validateFounderDesign(record);
+assert.ok(plan.nodes.some(n=>n.partId==='feather-mantle'));
+const imported=new FounderDesign('guided');imported.load(JSON.parse(JSON.stringify(record)));
+assert.equal(imported.finish().record.plan,record.plan,'saved designs restore the same body and witnessed precursor path');
+assert.throws(()=>new FounderDesign('guided').load(new FounderDesign('sandbox').finish().record),/matching guided or sandbox mode/);
+const tampered=structuredClone(record);tampered.steps[0].spent++;
+assert.throws(()=>validateFounderDesign(tampered),/precursor cost/);
+const disconnected=structuredClone(record);disconnected.steps.shift();
+assert.throws(()=>validateFounderDesign(disconnected),/disconnected/);
+const sandbox=new FounderDesign('sandbox');
+assert.equal(place(sandbox.draft,'flight-wing','root','dorsal').ok,true,'sandbox explicitly opens ancestry locks');
+assert.ok(sandbox.finish().ok);
+assert.ok(validateFounderDesign(sandbox.finish().record).nodes.some(n=>n.partId==='flight-wing'));
+const invalid=new FounderDesign('sandbox');invalid.draft.plan={...invalid.draft.plan,nodes:[]};
+assert.ok(invalid.problems().length,'sandbox never bypasses physical structure/viability');
+
+const source=new Simulation('AUTHORED-FOUNDERS',{worldGenerator:'planetary/1'}),snap=s=>structuredClone(createSimulationSnapshot(s,{savedAt:'fixed',reason:'authored-test'})),baseline=snap(source),
+ fork=restoreSimulationSnapshot(structuredClone(baseline)),beforeCount=fork.animals.length,stats=structuredClone(fork.stats),members=prepareAuthoredFounders(fork),
+ originalBodies=source.animals.map(a=>a.bodyPlan),resources=structuredClone(baseline.world),reserves=members.map(a=>[a.energy,a.hydration]);
+const result=installAuthoredFounders(fork,members,record);
+assert.equal(fork.animals.length,beforeCount+2);
+assert.equal(fork.stats.births,stats.births);assert.equal(fork.stats.deaths,stats.deaths);
+assert.equal(fork.stats.authoredIntroductions,2,'external entry is not a biological birth');
+assert.equal(fork.creatureStart.kind,'authored-founder');
+assert.equal(fork.creatureStart.mode,'guided');
+assert.equal(fork.playerId,members[0].id);
+assert.notEqual(members[0].sex,members[1].sex);
+assert.deepEqual(members.map(a=>[a.energy,a.hydration]),reserves,'authoring never tops up existing initial reserves');
+assert.ok(members.every(a=>a.lineage&&a.generation===1&&a.parentIds.length===0&&canOccupy(a,fork.world,a.x,a.y)));
+assert.ok(members.every(a=>fork.lineage.records.get(a.id).bornDay===null),'no invented birth date inside the preexisting ecosystem');
+assert.equal(result.receipt.actors[0].mass,adultBodyMass(members[0]));
+assert.deepEqual(snap(source),baseline,'original source world and RNG remain intact');
+assert.deepEqual(source.animals.map(a=>a.bodyPlan),originalBodies);
+const saved=snap(fork);assert.deepEqual(saved.world,resources,'founder entry never edits plant/water/soil/terrain stocks');
+const restored=restoreSimulationSnapshot(structuredClone(saved));
+assert.deepEqual(restored.authoredIntroductions,fork.authoredIntroductions);
+assert.deepEqual(restored.player().bodyPlan,plan);
+assert.equal(restored.creatureStart.mode,'guided');
+assert.match(buildJournalEntry(restored,restored.playerId).born,/Authored adult.*introduced day/,'history distinguishes authored entry from a fabricated birth');
+assert.equal(saved.meta.startKind,'authored-founder');
+assert.equal(restored.canMatePair(restored.player(),restored.animals.find(a=>a.id===members[1].id)),true,'founders use actual shared reproductive compatibility');
+// Controlled immediate delivery isolates the real conception/funding and
+// inheritance authorities; this is not a natural gestation-duration claim.
+const breeding=restoreSimulationSnapshot(structuredClone(saved)),a=breeding.player(),b=breeding.animals.find(a=>a.id===members[1].id),energy=a.energy+b.energy;
+assert.ok(breeding.reproduction.selectMate(b.id));
+assert.equal(breeding.reproduction.courtSelected(),true,'founders open an ordinary target-specific courtship encounter');
+assert.equal(breeding.tryMate(a,b),true,'actual ready founder pair conceives through normal mating');
+const mother=a.sex==='F'?a:b;
+assert.deepEqual(mother.pregnant.maternalInheritance.bodyPlan,plan,'conception freezes the authored parent body for ordinary inheritance');
+assert.ok(a.energy+b.energy<energy,'conception spends existing reserves');
+const brood=breeding.giveBirth(mother);
+assert.ok(brood.length>0,'real birth/laying is funded without refilling founder reserves');
+assert.equal(breeding.authoredIntroductions.length,1,'offspring are ordinary biology, not additional external imports');
+const corrupt=structuredClone(saved);corrupt.core.authoredIntroductions[0].actors[0].mass=-1;
+assert.throws(()=>restoreSimulationSnapshot(corrupt),/resource receipt/);
+const missing=structuredClone(saved);delete missing.core.authoredIntroductions;
+assert.throws(()=>restoreSimulationSnapshot(missing),/no introduction receipt/);
+const lead=restored.player();let frontier=null;
+for(let y=10.5;y<118.5;y++){lead.x=125.2;lead.y=y;const s=planetaryTravelAvailability(restored);if(s.enabled){frontier=s;break}}
+assert.ok(frontier);
+const crossed=crossPlanetaryBorder(restored);assert.ok(crossed.ok,crossed.message);
+assert.deepEqual(crossed.simulation.authoredIntroductions,restored.authoredIntroductions);
+assert.equal(restoreSimulationSnapshot(snap(crossed.simulation)).creatureStart.kind,'authored-founder');
+console.log('Authored founders: legal precursor trace, explicit sandbox, shared biology/compatibility, external resource receipts, source isolation, exact save and regional provenance PASS');

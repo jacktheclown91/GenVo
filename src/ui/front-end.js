@@ -30,7 +30,7 @@ export class FrontEnd{
   }
   async refreshStartingPoints(){
     const el=this.el.querySelector('#newWorldStartingPoint');
-    const previous=el.value,resident=this.el.querySelector('#newWorldCreature')?.value==='resident';
+    const previous=el.value,creature=this.el.querySelector('#newWorldCreature')?.value||'recorded',resident=creature==='resident';
     el.replaceChildren(new Option('New ecology, Day 1','new'),new Option('Import a real evolved-world checkpoint...','import'));
     let worlds=[];
     try{worlds=await this.saveManager.listWorlds()}catch{this.setMessage('Saved worlds could not be listed.',true)}
@@ -44,7 +44,7 @@ export class FrontEnd{
       if(response.ok){
         const {validateScenarioCatalog}=await import('../persistence/scenario-library.js');
         this.catalog=validateScenarioCatalog(await response.json());
-        for(const c of this.catalog.filter(c=>c.playable||resident&&c.liveAnimals>0))el.add(new Option('Evolved: '+c.label+' · Day '+c.day,'catalog:'+c.id));
+        for(const c of this.catalog.filter(c=>c.playable||resident&&c.liveAnimals>0||creature==='guided'||creature==='sandbox'))el.add(new Option('Evolved: '+c.label+' · Day '+c.day,'catalog:'+c.id));
       }
     }catch(error){console.warn('Curated scenarios are unavailable:',error)}
     if(Array.from(el.options).some(option=>option.value===previous))el.value=previous;
@@ -75,7 +75,7 @@ export class FrontEnd{
       const btn=this.el.querySelector('[data-action="continue"]'),msg=this.el.querySelector('#menuResumeMeta');
       btn.disabled=!active;
       btn.dataset.slot=active?.key||'';
-      msg.textContent=active?`${active.worldName||'First Lineage'} · Generation ${active.generation||1} · Year ${active.year||1}, Day ${active.day||1}`:'A new world awaits.';
+      msg.textContent=active?`${active.worldName||'First Lineage'} · Generation ${active.generation||1} · Year ${active.year||1}, Day ${active.day||1}${active.startKind==='authored-founder'?' · Authored '+active.startMode+' start':''}`:'A new world awaits.';
     }catch(err){this.setMessage('Saved worlds unavailable on this browser.',true);this.el.querySelector('[data-action="continue"]').disabled=true}
   }
   async refreshWorlds(){
@@ -86,7 +86,7 @@ export class FrontEnd{
     for(const w of worlds){
       const article=document.createElement('article');article.className='world-entry';
       const heading=document.createElement('strong');heading.textContent=w.worldName||(w.key==='autosave'?'First Lineage':'Unnamed World');
-      const data=document.createElement('small');data.textContent=`Generation ${w.generation||1} · Year ${w.year||1}, Day ${w.day||1}`;
+      const data=document.createElement('small');data.textContent=`Generation ${w.generation||1} · Year ${w.year||1}, Day ${w.day||1}${w.startKind==='authored-founder'?' · Authored '+w.startMode+' start':''}`;
       const actions=document.createElement('div');actions.className='world-actions';
       for(const [action,label] of [['load-world','Play'],['export-scenario','Export Scenario'],['rename-world','Rename'],['delete-world','Delete']]){
         const b=document.createElement('button');b.type='button';b.dataset.action=action;b.dataset.slot=w.key;b.textContent=label;
@@ -109,7 +109,7 @@ export class FrontEnd{
   updateMotion(reduce){document.body.classList.toggle('reduced-menu-motion',reduce);try{localStorage.setItem('genvo-menu-reduced-motion',reduce?'1':'0')}catch{}}
   handleKey(event){
     if(!this.open)return false;
-    if(document.querySelector('#residentStart[open]'))return true;
+    if(document.querySelector('#residentStart[open],#founderEditor:not([hidden])'))return true;
     if(event.code==='Escape'||event.code==='KeyP'&&this.screen==='pause'){
       event.preventDefault();
       if(this.screen==='pause')this.onResume();

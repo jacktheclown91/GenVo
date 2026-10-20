@@ -14,6 +14,7 @@ catch{playwright=require(path.join(process.env.USERPROFILE,'.cache/codex-runtime
 const output=process.argv[2]||'docs/test-runs/scenario-browser-ci';
 const scenarioId=process.argv[3]||'established-valley-d30';
 const residentMode=process.argv.includes('--resident');
+const founderMode=process.argv.includes('--founder-guided')?'guided':process.argv.includes('--founder-sandbox')?'sandbox':null;
 // An optional static web root exercises the delivered build, including
 // fetch-loaded scenario assets, rather than accidentally using source files.
 const root=path.resolve(process.argv[4]||process.cwd());
@@ -50,6 +51,7 @@ try{
  await page.screenshot({path:path.join(output,'advanced-start-menu.png')});
  await select.selectOption('catalog:'+scenarioId);
  if(residentMode)await page.locator('#newWorldCreature').selectOption('resident');
+ if(founderMode)await page.locator('#newWorldCreature').selectOption(founderMode);
  await page.locator('#newWorldName').fill('Verified '+scenario.label+' Fork');
  assert.equal(await page.locator('#newWorldSeed').isDisabled(),true,
   'saved scenario ancestry cannot be relabeled as a different seed');
@@ -71,6 +73,32 @@ try{
   await page.screenshot({path:path.join(output,'resident-chooser.png')});
   await page.locator('#residentStart button').filter({hasText:'Begin as this creature'}).click();
  }
+ if(founderMode){
+  const editor=page.locator('#founderEditor');await editor.waitFor({state:'visible',timeout:120000});
+  const slotsBefore=await page.evaluate(async()=> (await window.__GENVO8__.saveManager.listWorlds()).length);
+  await editor.locator('[data-act="cancel"]').click();
+  await page.waitForFunction(()=>!document.querySelector('#founderEditor'));
+  cancelPreservedSlots=await page.evaluate(async count=>(await window.__GENVO8__.saveManager.listWorlds()).length===count,slotsBefore);
+  assert.ok(cancelPreservedSlots,'cancelling custom creation must leave save slots untouched');
+  await page.locator('.menu-view[data-screen="new"] [data-action="create"]').click();
+  await editor.waitFor({state:'visible',timeout:120000});
+  await editor.locator('[data-tray="back"]').click();
+  const attach=async id=>{await editor.locator('[data-part="'+id+'"]').click();await editor.getByRole('button',{name:'Attach to back',exact:true}).click();};
+  if(founderMode==='guided'){
+   await attach('filament-tuft');
+   await editor.locator('[data-act="design-step"]').click();
+   await attach('feather-mantle');
+  }else await attach('flight-wing');
+  const downloading=page.waitForEvent('download');await editor.locator('[data-act="export-design"]').click();
+  const download=await downloading,designFile=path.resolve(output,'authored-creature.json');await download.saveAs(designFile);
+  assert.equal(JSON.parse(fs.readFileSync(designFile,'utf8')).design.mode,founderMode);
+  const choosing=page.waitForEvent('filechooser');await editor.locator('[data-act="import-design"]').click();
+  await (await choosing).setFiles(designFile);
+  await page.waitForFunction(()=>document.querySelector('#founderEditor .ed-message')?.textContent.includes('design restored'));
+  await page.screenshot({path:path.join(output,'authored-founder-editor.png')});
+  await editor.locator('[data-act="commit"]').click();
+  await editor.locator('[data-act="commit"]').click();
+ }
  await page.waitForFunction(({seed,day})=>window.__GENVO8__?.sim?.seed===seed
   &&window.__GENVO8__.sim.day===day
   &&window.__GENVO8__.sim.player()?.alive,{seed:scenario.seed,day:scenario.day},{timeout:120000});
@@ -91,7 +119,8 @@ try{
   return {
    seed:g.sim.seed,day:g.sim.day,tickCount:g.sim.tickCount,year:g.sim.year,
    liveAnimals:g.sim.animals.filter(a=>a.alive).length,
-   playerAlive:!!g.sim.player()?.alive,playerId:g.sim.playerId,storedPlayerId:stored?.core?.playerId,playerSpecies:g.sim.player()?.species,creatureStart:g.sim.creatureStart||null,worldGenerator:world.generator,
+   playerAlive:!!g.sim.player()?.alive,playerId:g.sim.playerId,storedPlayerId:stored?.core?.playerId,playerSpecies:g.sim.player()?.species,creatureStart:g.sim.creatureStart||null,
+   authoredIntroductions:g.sim.authoredIntroductions||null,playerParts:g.sim.player()?.bodyPlan?.nodes?.map(n=>n.partId),worldGenerator:world.generator,
    sourceDay:stored?.core?.day??null,sourceSeed:stored?.seed??null,
    storedPresent:!!stored,lastSavedTick:g.saveManager.lastSavedTick,
    saveBusy:g.saveManager.busy,sceneShown:g.renderer.sceneShown,
@@ -112,9 +141,28 @@ try{
  assert.ok(report.newSlot.startsWith('world-'));
  assert.ok(report.originalHistoryRetained);
  if(residentMode){assert.equal(report.playerId,chosenResident);assert.equal(report.storedPlayerId,chosenResident);assert.equal(report.creatureStart?.actorId,chosenResident);assert.equal(report.creatureStart?.kind,'existing-resident');}
+ if(founderMode){assert.equal(report.creatureStart?.kind,'authored-founder');assert.equal(report.creatureStart.mode,founderMode);assert.equal(report.creatureStart.generation,1);assert.ok(report.authoredIntroductions?.at(-1)?.actors?.length===2);assert.ok(report.playerParts.includes(founderMode==='guided'?'feather-mantle':'flight-wing'));assert.equal(report.storedPlayerId,report.playerId);}
+ let browserReload=null;
+ if(founderMode){
+  if(founderMode==='sandbox'){
+   await page.locator('[data-command="flight"]').click();
+   await page.waitForFunction(()=>window.__GENVO8__.sim.player()?.airborne);
+   await page.screenshot({path:path.join(output,'authored-wing-flight.png')});
+  }
+  await page.evaluate(async()=>{window.__GENVO8__.sim.paused=true;await window.__GENVO8__.saveManager.saveNow('authored-browser-reload')});
+  await page.reload({waitUntil:'domcontentloaded'});
+  await page.waitForFunction(()=>!!window.__GENVO8__?.saveManager);
+  await page.locator('.menu-view[data-screen="home"] [data-action="continue"]').click();
+  await page.waitForFunction(id=>window.__GENVO8__?.sim?.playerId===id&&document.querySelector('#frontEnd')?.hidden,report.playerId,{timeout:120000});
+  await page.evaluate(()=>window.__GENVO8__.renderer.sceneReady());
+  browserReload=await page.evaluate(()=>({playerId:window.__GENVO8__.sim.playerId,mode:window.__GENVO8__.sim.creatureStart?.mode,receipts:window.__GENVO8__.sim.authoredIntroductions?.length,airborne:!!window.__GENVO8__.sim.player()?.airborne}));
+  assert.equal(browserReload.mode,founderMode);assert.ok(browserReload.receipts>0);
+  if(founderMode==='sandbox')assert.ok(browserReload.airborne,'authored wings and midflight state survive actual browser reload');
+  await page.screenshot({path:path.join(output,'authored-world-restored.png')});
+ }
  assert.deepEqual(errors,[],'browser encountered a fatal gameplay script error');
- fs.writeFileSync(path.join(output,'report.json'),JSON.stringify({ok:true,servedRoot:root,residentMode,cancelPreservedSlots,...report,errors},null,2));
- console.log('Bundled '+scenario.label+' real-world New Game quick start and saved browser fork PASS',JSON.stringify(report));
+ fs.writeFileSync(path.join(output,'report.json'),JSON.stringify({ok:true,servedRoot:root,residentMode,founderMode,cancelPreservedSlots,browserReload,...report,errors},null,2));
+ console.log('Bundled '+scenario.label+' '+(founderMode?'authored '+founderMode+' founder':residentMode?'existing resident':'recorded lineage')+' start and saved browser fork PASS',JSON.stringify({seed:report.seed,day:report.day,playerId:report.playerId,storedPlayerId:report.storedPlayerId,kind:report.creatureStart?.kind||'recorded',introduced:report.authoredIntroductions?.at(-1)?.actors?.length||0,sceneShown:report.sceneShown,storedPresent:report.storedPresent}));
 }finally{
  await browser.close();
  await new Promise(resolve=>server.close(resolve));

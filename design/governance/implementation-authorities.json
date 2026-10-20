@@ -313,6 +313,16 @@
         "src/sim/simulation.js"
       ]
     },
+    "authoredFounderStart": {
+      "authority": "src/persistence/authored-founders.js",
+      "consumers": ["src/ui/founder-start.js", "src/main.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js"],
+      "note": "Explicit creator-authored founder pair enters an independent chosen ecosystem through canonical spawning, anatomy, resources, reproduction and persistence. External introduction receipts record initial mass/energy/hydration; no fabricated ancestors, biological births or backdated existence. Guided design traces are authored precursors, sandbox unlocks ancestry without bypassing shared structure/viability."
+    },
+    "authoredPrecursorDesign": {
+      "authority": "src/lineage/founder-design.js",
+      "consumers": ["src/ui/founder-start.js", "src/persistence/authored-founders.js"],
+      "note": "Replay-validates complete authored body-design sequences using the existing draft authorities. Saved design packages preserve mode and precursor trace. This is not a simulated evolutionary lineage."
+    },
     "existingResidentStart": {
       "authority": "src/persistence/resident-start.js",
       "consumers": ["src/main.js", "src/ui/resident-start.js", "src/persistence/save-manager.js"],

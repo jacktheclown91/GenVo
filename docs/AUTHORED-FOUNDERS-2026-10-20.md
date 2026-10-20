@@ -1,0 +1,32 @@
+# Guided and sandbox custom founder starts
+
+**Starting creature** now offers two live custom modes independently of world age: **guided precursors** and **anatomy sandbox**. Either can introduce a new founder pair into fresh ecology, a saved-world fork, an imported checkpoint or a bundled genuinely evolved ecosystem. The existing modular creature editor supplies body/socket editing, native part artwork, measured costs, symmetry, walking preview and confirmation. The ordinary next-generation lineage editor retains its pending-litter contract and never edits a living adult.
+
+## Biological and historical boundaries
+
+Guided creation uses the existing eight-point draft budget per authored precursor step. Recording a viable design step makes its expressed parts available to subsequent steps. These are explicitly **authored design steps, not simulated generations or ancestors**. Sandbox opens ancestry and relic locks with no mutation-point ceiling, while preserving the same socket, structural support, feeding, sight and mass authorities. Neither mode grants unsupported movement just because a part is present.
+
+The installation uses canonical `Simulation.spawnAnimal`, reproductive genomes, body projection, anatomical mass and shared physiology. Both founders are introduced as adults of generation one, without biological parents or backdated in-world birth dates. A compatible pair starts nearby on supported terrain; aquatic-dweller anatomy requires water. Energy and hydration are the ordinary initialized reserves, not refilled to guarantee an outcome. No existing inhabitant, food, water, soil, terrain or RNG history in the original saved source is rewritten.
+
+New organisms necessarily add initial stocks. The saved introduction ledger explicitly records this **external creator-authorized boundary input**: actor IDs, actual initial body mass, energy, hydration, authored age, body design, entry day/tick, mode and design trace. This is not a claim that existing food funded those adults, nor a claim of complete elemental tissue conservation. The world birth/death counters do not count authoring as biological birth. Normal metabolism, movement, courtship, gestation and offspring funding apply after introduction. Prior genealogy remains preserved, while the active playable cohort and unspent bonuses are handled through the same resident-entry authority.
+
+The introduction and design records survive ordinary saves, actual browser reload and planetary handoff. Unknown modes, disconnected or improperly costed guided traces, missing introduction receipts and invalid recorded resource quantities fail validation. Save menus, pause information and the journal identify authored starts/adult entry instead of inventing an earlier birth. Naturally produced offspring follow the ordinary inherited-body pipeline and belong to the new lineage.
+
+## Reusable designs and controls
+
+**Export design** writes a local `genvo.authored-creature/1` JSON package. **Import design** validates its complete precursor trace and mode before restoring it. A sandbox design cannot silently become a guided design. The transport contains authored body design, not an evolved-world history or a grant of prior achievements. Cancelling either custom mode allocates no save slot and discards the independent creation candidate.
+
+Part selection also exposes named attachment buttons alongside the existing canvas sockets. This uses the existing canonical attach transaction and makes the mouse-first editor easier to use and keyboard reachable. No test-only mutation route is needed to exercise custom anatomy in the browser.
+
+## Verification
+
+- `tests/authored-founders.mjs`: guided precursor enforcement even with forged draft ancestry, explicit sandbox unlocks with shared viability, read-only export/validated import, initialized reserve preservation, real source/world isolation, honest introduction counters and genealogy, save continuity, resource/provenance refusal, actual shared courtship and paid conception/delivery, regional transfer and restored entry identity PASS. Immediate delivery in that fixture isolates funding/inheritance; it is not a natural gestation-duration trial.
+- `tools/check-playable.mjs`: all **18 focused checks PASS**; log `test-runs/authored-founders-focused-2026-10-20.log`.
+- Existing editor/draft, reproduction, physical breeding, dual reproductive anatomy, journal, save, menu, resident and family regional-travel checks PASS.
+- Public-export byte parity and canonical audit PASS: 300 source modules, 292 reachable runtime modules, 91 parts. The self-contained browser export contains 669 files.
+- Real Chromium on the exported genuine Day 30 valley: both guided and sandbox paths cancel without allocating saves, edit anatomy through actual pointer controls, download/import the design, confirm a pair, render normal gameplay, save an independent world and load it through the ordinary Continue menu. Both introduce actors 227/228 at actual calendar Day 31 with generation-one authored provenance.
+- Guided source: `test-runs/guided-founder-final-export-2026-10-20/report.json`; native editor and gameplay captures inspected.
+- Sandbox source: `test-runs/sandbox-founder-final-export-2026-10-20/report.json`; actual authored wings take off through the normal action dock, incur shared flight costs and remain airborne after real browser reload. Flight and restored-frame captures inspected.
+- Earlier captures remain as development observations. After the final browser captures, the editor's unchanged-part summary was corrected from “parent” to “recorded design”, malformed missing-mode/step records were rejected explicitly, and founder identity allocation was changed to a scan rather than argument spreading. Targeted founder/editor/save/region/export checks pass after these final refinements; the complete browser sequence was not repeated for those refinements.
+
+Browser actions were automated tests, not human play or creator visual acceptance. Full ecological viability across every custom anatomy, complete tissue/material closure, unrestricted body proportions, unsupported movement modes, long mature-world performance and full-game Gates B through E remain open. Shared current viability still requires four supporting limbs, a mouth and an eye; completing broader viable anatomy is separate work. Earlier full-fast-gate failures and observer timing remain unresolved; no assertion, budget or known-failure classification was weakened, and no long-run campaign replaced implementation.

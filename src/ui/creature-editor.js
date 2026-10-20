@@ -112,9 +112,9 @@ export function isolatedPart(partId){
   const cv=document.createElement('canvas');cv.width=x1-x0+1;cv.height=y1-y0+1;cv.getContext('2d').drawImage(full,-x0,-y0);isoCache.set(partId,cv);return cv;
 }
 export class CreatureEditor{
-  constructor({getSim,root=document.querySelector('#app'),onDone=()=>{}}={}){
+  constructor({getSim,root=document.querySelector('#app'),onDone=()=>{},id='creatureEditor'}={}){
     this.getSim=getSim;this.onDone=onDone;this.open=false;this.draft=null;this.tray='legs';this.symmetry=true;this.facing=3;this.testing=false;this.compare=false;this.frame=0;this.zoom=3;this.selected=null;this.picked=null;this.hoverKey=null;this.hoverPart=null;this.drag=null;
-    this.el=document.createElement('section');this.el.id='creatureEditor';this.el.className='creature-editor';this.el.hidden=true;this.el.setAttribute('role','dialog');this.el.setAttribute('aria-label','Shape the coming generation');root?.appendChild(this.el);
+    this.el=document.createElement('section');this.el.id=id;this.el.className='creature-editor';this.el.hidden=true;this.el.setAttribute('role','dialog');this.el.setAttribute('aria-label','Shape the coming generation');root?.appendChild(this.el);
     this.ghost=document.createElement('canvas');this.ghost.className='ed-ghost';this.ghost.width=84;this.ghost.height=70;this.ghost.hidden=true;root?.appendChild(this.ghost);
     this.el.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.classList.contains('ed-tile'))return;
       if(b.dataset.tray){this.tray=b.dataset.tray;this.selected=null;this.confirming=false;this.render();return}
@@ -128,8 +128,15 @@ export class CreatureEditor{
   }
   get sim(){return this.getSim()}
   request(){
+    this.session=null;
     const sim=this.sim;if(this.open||!sim.evolutionEditor?.pending())return false;this.draft=sim.evolutionEditor.openDraft();if(!this.draft)return false;
     this.wasPaused=!!sim.paused;sim.paused=true;this.open=true;this.el.hidden=false;this.parent=sim.player();this.tray='legs';this.testing=false;this.compare=false;this.confirming=false;this.boundsKey=null;this.message='';this.selected=null;this.picked=null;
+    this.render();this.startLoop();return true;
+  }
+  requestSession(session){
+    if(this.open)return false;this.session=session;this.draft=session.draft;this.parent=session.parent;
+    this.wasPaused=!!this.sim.paused;this.sim.paused=true;this.open=true;this.el.hidden=false;
+    this.el.setAttribute('aria-label',session.title);this.tray='legs';this.testing=false;this.compare=false;this.confirming=false;this.boundsKey=null;this.message='';this.selected=null;this.picked=null;
     this.render();this.startLoop();return true;
   }
   close(){if(this.open&&this.sim)this.sim.paused=!!this.wasPaused;this.open=false;this.el.hidden=true;this.ghost.hidden=true;this.drag=null;this.stopLoop()}
@@ -251,8 +258,11 @@ export class CreatureEditor{
     else if(act==='remove'){const a=this.anchors().find(x=>x.key===this.picked);if(a){this.detach(a);return}}
     else if(act==='fit'){this.zoom=3;this.drawStage();const n=this.el.querySelector('.ed-zoom-n');if(n)n.textContent='100%';return}
     else if(act==='zoom-in'||act==='zoom-out'){this.setZoom(this.zoom+(act==='zoom-in'?1:-1));return}
-    else if(act==='cancel'){this.sim.evolutionEditor.cancel();this.close();this.onDone({ok:false,cancelled:true});return}
-    else if(act==='commit'){if(!this.confirming){this.confirming=true;this.selected=null;this.picked=null;this.hoverPart=null;this.render();return}const r=this.sim.evolutionEditor.commit(d);if(!r.ok){this.message=r.problems.join(' ');this.render();return}this.close();this.onDone({ok:true,record:r.record});return}
+    else if(act==='export-design'&&this.session?.exportDesign){const r=this.session.exportDesign(d);this.message=r.ok?'Creature design exported.':r.problems.join(' ');this.render();return}
+    else if(act==='import-design'&&this.session?.importDesign){this.session.importDesign().then(r=>{if(!r||!this.open)return;if(r.ok){this.draft=r.draft;this.message='Creature design restored.'}else this.message=r.problems.join(' ');this.confirming=false;this.selected=null;this.render()});return}
+    else if(act==='design-step'&&this.session?.advance){const r=this.session.advance(d);if(!r.ok)this.message=r.problems.join(' ');else{this.draft=r.draft;this.message='Precursor step recorded. This is design history, not a simulated generation.'}this.picked=null;this.render();return}
+    else if(act==='cancel'){if(!this.session)this.sim.evolutionEditor.cancel();this.close();this.onDone({ok:false,cancelled:true});return}
+    else if(act==='commit'){if(!this.confirming){this.confirming=true;this.selected=null;this.picked=null;this.hoverPart=null;this.render();return}const r=this.session?this.session.commit(d):this.sim.evolutionEditor.commit(d);if(!r.ok){this.message=r.problems.join(' ');this.render();return}this.close();this.onDone({ok:true,record:r.record});return}
     this.message='';this.picked=null;this.render();
   }
   handleKey(e){
@@ -269,7 +279,7 @@ export class CreatureEditor{
   // --- Drawing ---
   render(){
     const d=this.draft;if(!d)return;const sim=this.sim,cost=draftCost(d),problems=draftProblems(d),left=d.budget-cost,t=this.trayDef(),parts=this.trayParts();
-    const pips=Array.from({length:d.budget},(_,i)=>`<i class="${i<cost?'spent':''}"></i>`).join('')+(cost>d.budget?`<i class="over"></i>`.repeat(cost-d.budget):'');
+    const pips=Array.from({length:Number.isFinite(d.budget)?d.budget:0},(_,i)=>`<i class="${i<cost?'spent':''}"></i>`).join('')+(cost>d.budget?`<i class="over"></i>`.repeat(cost-d.budget):'');
     const tiles=parts.map(p=>`<button type="button" class="ed-tile ${p.on?'on':''} ${p.locked?'locked':''} ${this.selected===p.id?'selected':''} ${p.relic?'relic':''}" data-part="${p.id}" ${p.locked?`data-why="${esc(p.locked)}" aria-disabled="true"`:''} aria-label="${esc(p.name)}"><canvas width="84" height="70"></canvas><b>${esc(p.name)}</b><span class="ed-cost">${p.on?'on body':`${p.cost}`}</span>${p.seen&&!p.on?'<span class="ed-seen" title="Seen in the wild: 1 point cheaper">seen</span>':''}</button>`).join('');
     this.el.innerHTML=`<header class="ed-head"><div><small class="knowledge-kicker">CREATURE LAB · COMING GENERATION</small><h2>Shape generation ${sim.evolutionEditor.pending()?.generation||''}</h2><p>${this.selected?`Now click a glowing socket to attach the ${esc(PART_NAMES[this.selected]).toLowerCase()}.`:'Drag a part onto your creature. Drag a part off the body to remove it.'}</p></div>
         <div class="ed-dna" title="Evolution points"><span class="ed-dna-n ${left<0?'over':''}">${left}</span><span class="ed-dna-l">${left<0?`points over<br><small>budget ${d.budget}: undo or remove a red change</small>`:`points left<br><small>of ${d.budget}</small>`}</span><div class="ed-pips">${pips}</div></div></header>
@@ -283,19 +293,41 @@ export class CreatureEditor{
       <footer class="ed-actions"><button type="button" data-act="undo">Undo</button><button type="button" data-act="redo">Redo</button><button type="button" data-act="revert">Start over</button><span class="ed-gap"></span>${this.confirming?'<button type="button" data-act="edit">Keep editing</button>':''}<button type="button" data-act="cancel">Keep the old body</button><button type="button" data-act="commit" class="commit" ${problems.length?'disabled':''}>${this.confirming?'Confirm evolution':'Evolve'}</button></footer>`;
     this.el.querySelectorAll('.ed-tile').forEach(b=>{const c=b.querySelector('canvas').getContext('2d');if(c)this.drawThumb(c,b.dataset.part,84,70,!b.classList.contains('locked'))});
     this.renderCard();this.renderStats();this.drawStage();const parentCanvas=this.el.querySelector('.ed-parent canvas'),pc=parentCanvas.getContext('2d');pc.imageSmoothingEnabled=false;pc.translate(70,48);const parentBody=this.body(d.base);drawGenvoSprite(pc,{animal:parentBody,phenotype:phenotypeFor(parentBody),scale:4,frame:2,palette:creaturePalette(phenotypeFor(parentBody)),pose:{dir:this.facing}});
+    if(this.session){
+      this.el.querySelector('.knowledge-kicker').textContent=this.session.kicker;
+      this.el.querySelector('h2').textContent=this.session.title;
+      this.el.querySelector('.ed-head p').textContent=this.selected?`Choose a glowing socket for ${PART_NAMES[this.selected]}.`:this.session.description;
+      this.el.querySelector('.ed-specimen-heading strong').textContent='Authored founder body';
+      this.el.querySelector('.ed-specimen-heading strong').title='An introduced founder, not an evolved descendant of this world.';
+      this.el.querySelector('.ed-parent figcaption').textContent='Previous design step';
+      this.el.querySelector('.ed-stats h3').textContent='Compared with the previous design';
+      this.el.querySelector('.ed-stats small').textContent='Shared adult body load and basal needs in relative game units. These values describe the authored founder.';
+      const summary=this.el.querySelector('.ed-change-summary');if(summary?.textContent==='Current parts match the parent.')summary.textContent='Current parts match the recorded design.';
+      this.el.querySelector('[data-act="compare"]').textContent='Compare design';
+      this.el.querySelector('[data-act="cancel"]').textContent='Cancel custom start';
+      this.el.querySelector('[data-act="commit"]').textContent=this.confirming?'Confirm founder pair':'Begin with this body';
+      if(!Number.isFinite(d.budget)){this.el.querySelector('.ed-dna-n').textContent='∞';this.el.querySelector('.ed-dna-l').textContent='Sandbox anatomy';}
+      if(this.session.advance){const button=document.createElement('button');button.type='button';button.dataset.act='design-step';button.textContent='Record precursor step';this.el.querySelector('.ed-actions').prepend(button);}
+      for(const [action,label] of [['export-design','Export design'],['import-design','Import design']]){const button=document.createElement('button');button.type='button';button.dataset.act=action;button.textContent=label;this.el.querySelector('.ed-actions').prepend(button);}
+    }
+    if(this.selected&&!PARTS[this.selected]?.tags.includes('root')){
+      const choices=document.createElement('div');choices.className='ed-mount-choices';choices.setAttribute('aria-label','Available attachment sites');
+      for(const a of this.validFor(this.selected)){const button=document.createElement('button');button.type='button';button.dataset.mount=a.key;button.textContent=`Attach to ${socketName(a)}`;choices.append(button)}
+      this.el.querySelector('.ed-stage-wrap').append(choices);
+    }
   }
   // The info card: the hovered or picked part, or what the new body changes.
   renderCard(){
     const card=this.el.querySelector('.ed-card');if(!card)return;
     const pickedA=this.picked?this.anchors().find(a=>a.key===this.picked):null,hoverA=!this.drag&&this.hoverKey&&this.hoverKey!=='body'?this.anchors().find(a=>a.key===this.hoverKey):null;
     const id=this.hoverPart||pickedA?.part||(hoverA&&!this.selected?hoverA.part:null)||this.selected;
-    if(this.confirming){const changes=mountedChanges(this.draft.base,this.draft.plan);card.innerHTML=`<h3>Confirm the coming body</h3><p>${draftCost(this.draft)} / ${this.draft.budget} mutation points</p><p>The living parent stays unchanged. This design applies only to the pending litter. Genes and pigments still inherit from both parents.</p><ul>${changes.map(c=>`<li>${esc(c.location)}: ${esc(PART_NAMES[c.before]||'empty')} → ${esc(PART_NAMES[c.after]||'removed')}</li>`).join('')||'<li>Keep the inherited body.</li>'}</ul>`;return}
+    if(this.confirming){const changes=mountedChanges(this.draft.base,this.draft.plan);card.innerHTML=`<h3>${this.session?'Confirm the authored body':'Confirm the coming body'}</h3><p>${draftCost(this.draft)} / ${this.draft.budget} mutation points</p><p>${this.session?'Two new founders enter this ecosystem with this body. Their introduced mass and reserves are recorded. Existing inhabitants and world history are preserved. These are not naturally evolved descendants.':'The living parent stays unchanged. This design applies only to the pending litter. Genes and pigments still inherit from both parents.'}</p><ul>${changes.map(c=>`<li>${esc(c.location)}: ${esc(PART_NAMES[c.before]||'empty')} → ${esc(PART_NAMES[c.after]||'removed')}</li>`).join('')||'<li>Keep the inherited body.</li>'}</ul>`;return}
     if(id!==this.cardSubject){this.cardSubject=id;this.el.querySelector('.ed-side').scrollTop=0}if(id){const text=PART_ABILITY_TEXT[id]||(PARTS[id]?.legacy?{gain:ADAPTATIONS[PARTS[id].legacy.adaptation]?.summary,cost:ADAPTATIONS[PARTS[id].legacy.adaptation]?.tradeoff}:{}),why=this.draft.plan.nodes.some(n=>n.partId===id)&&!this.hoverPart?null:this.lockReason(id);
       card.innerHTML=`<h3>${esc(PART_NAMES[id])}</h3>${text.gain?`<p class="gain"><b>What it enables</b><br>${esc(text.gain)}</p>`:''}${text.cost?`<p class="cost"><b>Tradeoff</b><br>${esc(text.cost)}</p>`:''}<p class="price">${partCost(this.draft,id)} point${partCost(this.draft,id)===1?'':'s'}</p>${why?`<p class="why">${esc(why)}</p>`:''}${this.partProjectionHTML(id,pickedA)}<details class="ed-part-biology knowledge-fold"><summary>Biology &amp; evolution path</summary><p>Fits ${esc(PARTS[id]?.compatibleSocketTypes.join(', '))}</p><p>Abilities: ${esc(PARTS[id]?.actionCapabilities.join(', ')||'structural support')}</p><p>${esc(PARTS[id]?.developmentalPrerequisites.length?'Inherited prerequisites: '+PARTS[id].developmentalPrerequisites.map(q=>PART_NAMES[q]).join(', '):'No inherited prerequisite')}</p><p>Related developments: ${esc(Object.values(PARTS).filter(p=>p.developmentalPrerequisites.includes(id)).map(p=>PART_NAMES[p.id]).join(', ')||'No direct prerequisite branches registered')}</p></details>${pickedA?`<button type="button" data-act="remove" class="ed-remove">Remove from the ${esc(socketName(pickedA))}</button>`:''}`;if(this.selected===id){const mounts=card.querySelector('.ed-mounts'),projection=card.querySelector('.ed-projection');if(mounts&&projection)projection.before(mounts)}return}
     const before=measure(previewBody(this.parent,this.draft.base)),now=measure(this.body()),gain=now.parts.filter(p=>partText(p)?.gain&&!before.parts.includes(p)),loss=before.parts.filter(p=>partText(p)&&!now.parts.includes(p)&&!PARTS[p]?.tags.includes('torso'));
     const items=[...gain.map(p=>`<li class="gain"><b>${esc(PART_NAMES[p])}</b> ${esc(partText(p).gain)}<small>${esc(partText(p).cost||'')}</small></li>`),...loss.map(p=>`<li class="loss">Loses <b>${esc(PART_NAMES[p])}</b></li>`)];
     const steps=this.costSteps(),spend=steps.length?`<h4>Points spent</h4><ol class="ed-spend">${steps.map(s=>`<li class="${s.over?'over':''}"><span>${esc(s.text)}</span><b>${s.cost>0?'-':s.cost<0?'+':''}${Math.abs(s.cost)}</b>${s.over?'<small>over budget</small>':''}</li>`).join('')}</ol>`:'';
-    card.innerHTML=`<h3>What changes</h3>${items.length?`<ul>${items.join('')}</ul>`:steps.length?'':'<p class="quiet">Nothing yet. The young will look and act like their parent.</p>'}${spend}`;
+    card.innerHTML=`<h3>What changes</h3>${items.length?`<ul>${items.join('')}</ul>`:steps.length?'':`<p class="quiet">${this.session?'The current body matches the previous design step.':'Nothing yet. The young will look and act like their parent.'}</p>`}${spend}`;
   }
   partProjectionHTML(id,picked){const mounts=this.validFor(id),a=mounts.find(m=>m.key===this.hoverKey)||mounts[0],projected=this.projection(id,a);if(!projected.ok||(!a&&!PARTS[id]?.tags.includes('root')))return '<p class="why">'+esc(this.lockReason(id)||'No compatible mount.')+'</p>';const before=measure(this.body()),after=measure(this.body(projected.plan)),changes=[['Body mass',before.mass,after.mass],['Movement',before.land,after.land],['Sprint',before.sprint,after.sprint],['Food upkeep',before.metabolism,after.metabolism],['Pounce reach',before.pounce,after.pounce],['Carry capacity',before.carry,after.carry],['Bite',before.strike,after.strike],['Water need',before.water,after.water],['Food value',before.food,after.food]];const effects=changes.filter(([,b,n])=>Math.abs(n-b)>.001).map(([label,b,n])=>`<li>${label} ${n>b?'↑':'↓'} ${b?Math.round((n/b-1)*100)+'%':n.toFixed(2)}</li>`).join('');const replaced=mountedChanges(this.draft.plan,projected.plan).filter(c=>c.before).map(c=>PART_NAMES[c.before]).join(', ');return `<div class="ed-projection"><b>Placement preview${a?' · '+esc(socketName(a)+' '+(a.socket.startsWith('limb.')?Number(a.socket.split('.')[1])+1:'')):''}</b><p>${replaced?'Replaces '+esc(replaced):'Adds to an empty mount'}<br>Change ${projected.cost>0?'+':''}${projected.cost} pts · total ${projected.total} / ${this.draft.budget}</p>${effects?'<ul>'+effects+'</ul>':'<p>No change in these measured traits.</p>'}${projected.problems.length?'<p class="why">'+esc(projected.problems.join(' '))+'</p>':''}</div>${this.selected===id&&mounts.length?`<div class="ed-mounts"><b>Choose a compatible mount</b><div>${mounts.map(m=>`<button type="button" data-mount="${esc(m.key)}" title="${esc(m.part?'Replaces '+PART_NAMES[m.part]:'Empty mount')}">${esc(socketName(m))} ${esc(m.socket.startsWith('limb.')?Number(m.socket.split('.')[1])+1:'')}<small>${esc(m.part?PART_NAMES[m.part]:'empty')}</small></button>`).join('')}</div></div>`:''}`}
   renderStats(){
