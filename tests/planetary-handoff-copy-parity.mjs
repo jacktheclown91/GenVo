@@ -18,6 +18,32 @@ const same=(a,b,msg)=>{
   assert.fail(msg);
  }
 };
+function savedBoundaryMask(world){
+ const m=world?.environment?.blockedBoundaries;
+ assert.ok(m instanceof Uint8Array&&m.length===128*128,
+  'synchronized planetary region must own its finite published boundary mask');
+ return m;
+}
+function sameArchiveAfterPhysicalPairing(actual,reference,message){
+ const boundary=savedBoundaryMask(actual?.world);
+ const normalized=structuredClone(reference);
+ // Reconciliation is a real post-departure physical authority action.
+ // Only the canonical paired water-boundary mask may differ from the old
+ // pre-travel full-clone archive; every other archived byte remains identical.
+ normalized.world.environment.blockedBoundaries=boundary.slice();
+ same(actual,normalized,message);
+}
+function assertReciprocalEastWest(west,east){
+ const wa=west.world||west,ea=east.world||east;
+ const wm=savedBoundaryMask(wa),em=savedBoundaryMask(ea);
+ const ww=wa.surfaceWater?.mask||wa.water,ew=ea.surfaceWater?.mask||ea.water;
+ for(let y=0;y<128;y++){
+  const i=y*128+127,j=y*128;
+  const paired=!!(ww[i]&&ew[j]&&wa.environment.boundary[i]&&ea.environment.boundary[j]);
+  assert.equal(wm[i]&2,paired?2:0,'west owner must block only real east-side physical exchange');
+  assert.equal(em[j]&1,paired?1:0,'east owner must reciprocally block its paired west-side exchange');
+ }
+}
 const globals=['lineage','evolution','evolutionTree','evolutionBudget','evolutionEditor','generationProgress'];
 function referenceArchive(sim,ids){
  // Intentionally preserve the ORIGINAL deep-copy-then-discard algorithm for
@@ -57,7 +83,9 @@ const east=depart.simulation;
 same(createSimulationSnapshot(home,{savedAt:'fixed',reason:'origin-immutable'}),beforeHome,
  'departing must leave the original runtime unchanged');
 const homeStored=east.planetaryTravel.sessions.find(s=>s.key==='0,0');
-same(homeStored?.snapshot,expectedHome,'new archive is identical to full-clone reference');
+sameArchiveAfterPhysicalPairing(homeStored?.snapshot,expectedHome,
+ 'new archive keeps every field except valid physical seam mask identical');
+assertReciprocalEastWest(homeStored.snapshot,east.world);
 assert.equal(Object.hasOwn(homeStored.snapshot.core,'planetaryTravel'),false,'archives never nest');
 for(const name of globals){
  const actual=Object.fromEntries(Object.entries(east[name]).filter(([key,value])=>key!=='sim'&&typeof value!=='function'));
@@ -79,7 +107,9 @@ assert.equal(returned.ok,true,returned.message);
 const homeAgain=returned.simulation;
 same(homeStored.snapshot,originalArchive,'return must not edit archived source bytes');
 const eastStored=homeAgain.planetaryTravel.sessions.find(s=>s.key==='128,0');
-same(eastStored?.snapshot,expectedEast,'second departure with existing archive preserves exact source region');
+sameArchiveAfterPhysicalPairing(eastStored?.snapshot,expectedEast,
+ 'second departure keeps regional saved state exact outside its paired seam mask');
+assertReciprocalEastWest(homeAgain.world,eastStored.snapshot);
 assert.equal(regionKey(homeAgain.world.regionOrigin),'0,0');
 assert.equal(homeAgain.player().id,home.player().id,'return uses the original creature identity');
 same(homeAgain.world.plants,home.world.plants,'return retains the original physical plant resources');
