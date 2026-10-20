@@ -12,6 +12,7 @@ import {GROUNDWATER_SPRINGS} from './groundwater-springs.js';
 import {PLANETARY_MINERAL_RUNOFF} from './planetary-mineral-runoff.js';
 import {TERRAIN_SEDIMENT} from './terrain-sediment.js';
 import {PLANETARY_WETBED} from './planetary-wetbed-sediment.js';
+import {PLANETARY_CHANNEL_TOPOLOGY} from './planetary-channel-topology.js';
 // Initial geography is immutable input. These World arrays are the sole live state.
 export function initializePlanetWorld(w){
  if(w.n!==128)throw Error('Planet preview currently supports the reviewed 128-tile extent only.');
@@ -47,7 +48,7 @@ export function initializePlanetWorld(w){
  // No stock is silently reset: a bounded daily mass flux is audited.
  // /2 replaces external imports with actual paired transfers when another
  // synchronized, archived region owns the wet neighboring edge.
- w.environment={schema:6,boundaryWaterPolicy:PLANETARY_BOUNDARY_WATER.pairedPolicy,blockedBoundaries:new Uint8Array(w.len),seamRunoffPolicy:PLANETARY_SEAM_RUNOFF.policy,groundwaterSeamEligibility:PLANETARY_SEAM_GROUNDWATER.policy,springEligibility:GROUNDWATER_SPRINGS.policy,mineralRunoffPolicy:PLANETARY_MINERAL_RUNOFF.policy,terrainSedimentPolicy:TERRAIN_SEDIMENT.policy,wetbedSedimentPolicy:PLANETARY_WETBED.policy,temperatureOffset,rainScale,depth,volume,overland:new Float64Array(w.len),salt,boundary,day:0,totals:{
+ w.environment={schema:6,boundaryWaterPolicy:PLANETARY_BOUNDARY_WATER.pairedPolicy,blockedBoundaries:new Uint8Array(w.len),seamRunoffPolicy:PLANETARY_SEAM_RUNOFF.policy,groundwaterSeamEligibility:PLANETARY_SEAM_GROUNDWATER.policy,springEligibility:GROUNDWATER_SPRINGS.policy,mineralRunoffPolicy:PLANETARY_MINERAL_RUNOFF.policy,terrainSedimentPolicy:TERRAIN_SEDIMENT.policy,wetbedSedimentPolicy:PLANETARY_WETBED.policy,channelTopologyPolicy:PLANETARY_CHANNEL_TOPOLOGY.policy,floodOrigin:new Uint8Array(w.len),temperatureOffset,rainScale,depth,volume,overland:new Float64Array(w.len),salt,boundary,day:0,totals:{
   saltInput:0,saltOutput:0,rainWater:0,displacedWater:0,boundaryInput:0,boundaryOutput:0,boundaryWaterInput:0,boundaryWaterOutput:0,boundarySaltInput:0,boundarySaltOutput:0,seamRunoffInput:0,seamRunoffOutput:0
  },daily:[]};
  w.buildLandRegions();w.buildHydrology();initializeColdFlora(w);initializeFreshwater(w);initializePlantResources(w);initializeOrganicResources(w);
