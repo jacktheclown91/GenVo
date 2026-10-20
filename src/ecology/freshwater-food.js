@@ -1,3 +1,4 @@
+import {aquaticFoodAccessible} from '../lineage/diving.js';
 import {salinityAt} from '../world/environment.js';
 import {fundAquaticGrowth,mineralizeOrganic,exportAquaticReserve} from './organic-resource-cycle.js';
 import {coordNoise} from '../core/rng.js';
@@ -47,6 +48,7 @@ export function freshwaterField(world,kind){return kind==='detritus'?world.carri
 // A resource survey may count floating food from a reachable bank, without
 // granting underwater occupation or access to submerged prey.
 export function canAccessFreshwater(sim,animal,x,y,food){
+  if(!aquaticFoodAccessible(sim,animal,x,y,food))return false;
   if(sim.canOccupy(animal,x,y)&&sim.canReach(animal,x,y))return true;
   return !!food.surface&&[[0,-1],[-1,0],[1,0],[0,1]].some(([dx,dy])=>sim.canOccupy(animal,x+dx,y+dy)&&sim.canReach(animal,x+dx,y+dy));
 }
@@ -103,6 +105,7 @@ export function freshwaterHarvestCandidate(sim,animal,energyLimit,target=null){
     for(const [kind,p] of Object.entries(FRESHWATER_FOOD)){
       if(target&&(target.kind==='water'?i!==target.i:kind!==target.kind||i!==world.idx(target.foodX??target.x,target.foodY??target.y)))continue;
       if(!p.surface&&(!sim.canOccupy(animal,x,y)||!sim.canReach(animal,x,y)))continue;
+      if(!aquaticFoodAccessible(sim,animal,x,y,p))continue;
       const preference=freshwaterPreference(animal,kind),field=freshwaterField(world,kind),available=field?.[i]||0;
       const potential=available*p.nutrition*preference;if(potential>0&&(!best||potential>best.potential))best={kind,p,preference,field,i,potential};
     }
@@ -137,7 +140,7 @@ export function bestFreshwaterFood(sim,animal,radius=9){
         const x=fx+ox,y=fy+oy;if(!w.isPlayable(x,y)||!sim.canOccupy(animal,x,y)||!sim.canReach(animal,x,y))continue;
         if(!position||Math.hypot(x-animal.x,y-animal.y)<Math.hypot(position.x-animal.x,position.y-animal.y))position={x,y};
       }bankPosition=position;}else if(!position&&p.surface)position=bankPosition;
-      if(!position)continue;
+      if(!position||!aquaticFoodAccessible(sim,animal,fx,fy,p,{planning:true}))continue;
       const score=amount*p.nutrition*freshwaterPreference(animal,kind)/34-Math.hypot(position.x-animal.x,position.y-animal.y)*.015;
       if(score>bestScore){bestScore=score;best={...position,kind,foodX:fx,foodY:fy,score}};
     }

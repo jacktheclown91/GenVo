@@ -17,6 +17,7 @@ export function winged(animal){return (planPartCounts(animal)['flight-wing']||0)
 export function flightMass(animal){return adultBodyMass(animal)}
 export function flightAvailability(animal,world){
  if(!animal?.alive)return{enabled:false,reason:'No living creature.'};
+ if((animal.diveDepth||0)>.03)return{enabled:false,reason:'Surface before takeoff.'};
  if(animal.aerialMode)return{enabled:false,reason:'Finish the current aerial movement before powered flight.'};
  if(!winged(animal))return{enabled:false,reason:'Evolve a flight wing from an ancestral proto-wing.'};
  if(animal.airborne)return{enabled:true,airborne:true,reason:'Already flying. Land on ground to feed, drink or mate.'};

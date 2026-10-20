@@ -116,6 +116,7 @@ export class ShelterController{
     return{ok:true,reason:pairFounding?'Ready to establish a new brood home.':'Ready.',material,materialNeed,kind:pairFounding?'brood':'family',pairKey:pairFounding?pairKey:null};
   }
   maintenanceAvailability(animal,id){
+    if((animal?.diveDepth||0)>.03)return{enabled:false,state:'unavailable',reason:'Surface before maintaining a shelter.'};
     const shelter=this.activeShelters().find(s=>s.id===id),fail=reason=>({enabled:false,state:'unavailable',reason});
     if(!shelter||!this.enabled(animal)||!this.familyCanUse(animal,shelter))return fail('This creature cannot maintain that shelter.');
     const seal=this.weatherSeal(shelter),repair=shelter.integrity<86||(shelter.integrity<99&&seal>=.90)||seal>=.92&&shelter.integrity<99;
@@ -125,6 +126,7 @@ export class ShelterController{
     return{enabled:true,state:'available',reason:repair?'Repair · 1.4 energy.':'Reinforce · 1.05 energy.',label:repair?'Repair':'Reinforce'};
   }
   constructOrRepair(animal,targetId=null){
+    if((animal?.diveDepth||0)>.03)return{ok:false,reason:'Surface before building or repairing.'};
     if(!this.enabled(animal))return{ok:false,reason:'No active animal can build right now.'};
     if(targetId!==null){const status=this.maintenanceAvailability(animal,targetId);if(!status.enabled)return{ok:false,reason:status.reason}}const nearby=targetId===null?this.nearest(animal,{radius:2.2,familyOnly:true}):this.activeShelters().find(s=>s.id===targetId);
     if(nearby){
@@ -179,6 +181,7 @@ export class ShelterController{
     return taken;
   }
   cacheNearbyFood(animal){
+    if((animal?.diveDepth||0)>.03)return{ok:false,reason:'Surface before storing food.'};
     if(!this.enabled(animal))return{ok:false,reason:'No active animal can store food right now.'};
     const shelter=this.nearest(animal,{radius:2.0,familyOnly:true});if(!shelter)return{ok:false,reason:'Stand beside your shelter to store food.'};
     if(shelter.foodStore>=shelter.capacity-.05)return{ok:false,reason:'The shelter is full of food.',shelter};

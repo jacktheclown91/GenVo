@@ -18,6 +18,7 @@ export function jumpAvailability(sim,a=sim.player(),{pounce=false}={}){
  const fail=reason=>({enabled:false,reason});
  if(!a?.alive)return fail('No living creature.');
  if(sim.jumpingRules!==JUMP.policy)return fail('This historical world retains its recorded movement rules. Jumping is available in newly generated worlds.');
+ if((a.diveDepth||0)>.03)return fail('Surface before jumping.');
  if(a.airborne||a.perched)return fail('Land or descend before jumping.');
  if(a.torpor)return fail('Wake before jumping.');
  const legs=springLegs(a),mass=adultBodyMass(a);

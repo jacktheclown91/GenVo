@@ -1,3 +1,4 @@
+import {sameDepth,submerged} from '../lineage/diving.js';
 import {JUMP,springLegs,jumpKinematics,jumpAvailability,launchJump} from '../lineage/jumping.js';
 import {physicalAttackProfile} from '../lineage/physical-attack.js';
 import {preyPreference,canHunt} from '../ecology/functional-diet.js';
@@ -43,7 +44,7 @@ export class PlayerCombatController{
     if(!(dt>0))return this.movementModifiers(a,input);
     this.clock+=dt;if(!a)return this.movementModifiers(null,input);
     this.sim.exertion.ensure(a);
-    const wantBrace=!!input?.brace&&!a.airborne&&!a.perched;
+    const wantBrace=!!input?.brace&&!a.airborne&&!a.perched&&!submerged(a);
     if(!wantBrace){if(a.bracing)a.bracing=false}
     else if(!a.bracing&&!this.attackWindingUp(a)&&!((a.braceLockUntil||0)>this.clock)&&this.sim.exertion.canStartBrace(a)){a.bracing=true;a.braceStartedAt=this.clock}
     const act=a.attackAction;
@@ -62,7 +63,7 @@ export class PlayerCombatController{
     const a=this.sim.player();
     if(!a?.alive)return{enabled:false,reason:'No active creature.'};
     if(this.sim.paused)return{enabled:false,reason:'Resume the world first.'};
-    if(a.airborne||a.perched)return{enabled:false,reason:'Land before bracing.'};
+    if(a.airborne||a.perched||submerged(a))return{enabled:false,reason:'Land or surface before bracing.'};
     if(this.attackWindingUp(a))return{enabled:false,reason:'Finish the attack windup first.'};
     if((a.braceLockUntil||0)>this.clock)return{enabled:false,reason:'Guard is recovering.'};
     if(a.exertionWinded||(!a.bracing&&(a.exertion??CFG.exertion.max)<CFG.exertion.braceStartMin))return{enabled:false,reason:'Need more breath to brace.'};
@@ -71,7 +72,7 @@ export class PlayerCombatController{
   releaseBrace(actor){if(actor)actor.bracing=false}
   attackTargetStatus(a,id){
     const target=this.sim.animals.find(o=>o.id===id&&o.alive&&o.id!==a.id);if(!target)return{enabled:false,state:'unavailable',reason:'The selected creature is no longer here.',target:null};
-    if(target.airborne||target.perched||a.airborne||a.perched)return{enabled:false,state:'unavailable',reason:'Surface attack cannot reach an aerial or canopy creature.',target:null};
+    if(!sameDepth(a,target)||target.airborne||target.perched||a.airborne||a.perched)return{enabled:false,state:'unavailable',reason:'Surface attack cannot reach an aerial or canopy creature.',target:null};
     const hunter=canHunt(target);if(!hunter&&preyPreference(a,target)<=0)return{enabled:false,state:'unavailable',reason:'Your feeding anatomy cannot hunt this creature.',target:null};
     const reach=hunter?CFG.attack.stalkerReach:CFG.attack.preyReach;
     if(!(Math.hypot(target.x-a.x,target.y-a.y)<reach))return{enabled:false,state:'approachable',reason:'Selected creature is out of reach. Approach it first.',target:null};

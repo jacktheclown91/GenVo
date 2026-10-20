@@ -375,6 +375,15 @@
         "src/world/planetary-travel.js"
       ]
     },
+    "depthDivingAndRespiration": {
+      "authority": "src/lineage/diving.js",
+      "consumers": ["src/sim/simulation.js", "src/lineage/lifestyle.js", "src/ecology/freshwater-food.js", "src/gameplay/foraging.js", "src/persistence/save-manager.js"],
+      "contract": "docs/DIVING-2026-10-20.md"
+    },
+    "divingRuleVersions": {
+      "authority": "src/lineage/diving-rules.js",
+      "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js"]
+    },
     "carcassRuleVersions": {
       "authority": "src/gameplay/carcass-rules.js",
       "consumers": [

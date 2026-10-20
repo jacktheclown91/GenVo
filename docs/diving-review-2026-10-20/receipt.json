@@ -1,0 +1,53 @@
+{
+  "kind": "automated Chromium, not creator acceptance",
+  "start": {
+    "x": 84.5,
+    "y": 40.5,
+    "depth": 0.6000000238418579,
+    "food": 0.3111639618873596,
+    "energy": 89.70435667216776,
+    "policy": "depth-respiration/1"
+  },
+  "under": {
+    "depth": 0.42000000000000015,
+    "target": 0.55,
+    "air": 22.625,
+    "energy": 89.2128904417869,
+    "id": 197,
+    "x": 84.5,
+    "y": 40.5
+  },
+  "feeding": {
+    "meal": {
+      "kind": "waterweed",
+      "tissue": null,
+      "group": "waterweed",
+      "energyGain": 2.175380942825228,
+      "waterGain": 0,
+      "processingCost": 0,
+      "breadth": 1,
+      "day": 1,
+      "year": 1,
+      "tick": 16
+    },
+    "remaining": 0.13116395473480225
+  },
+  "restored": {
+    "depth": 0.42000000000000015,
+    "air": 22.625,
+    "id": 197,
+    "policy": "depth-respiration/1"
+  },
+  "surface": {
+    "depth": 0,
+    "air": 21.75,
+    "energy": 90.9872432694217,
+    "incident": {
+      "ok": true,
+      "type": "surface",
+      "message": "At the surface. Air is replenishing.",
+      "tick": 23
+    }
+  },
+  "errors": []
+}

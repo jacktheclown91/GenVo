@@ -14,6 +14,8 @@ import {initializePlantResources,validatePlantResources} from '../ecology/plant-
 import {ancestralReproductiveGenome,validReproductiveGenome} from '../reproduction/reproductive-compatibility.js';
 import {matePreferencesFor} from '../reproduction/mate-preferences.js';
 import {CFG,PLANTS} from '../sim/config.js';
+import {restoreDivingRules,adoptDivingRules} from '../lineage/diving-rules.js';
+import {validateDivingWorld,validateDiveState} from '../lineage/diving.js';
 import {adoptMovementRules,restoreMovementRuleHistory} from '../lineage/movement-rule-migration.js';
 import {restoreJumpingRules,validateJumpState} from '../lineage/jumping.js';
 import {restoreGlidingRules,validateGlideState} from '../lineage/gliding.js';
@@ -85,6 +87,7 @@ function snapshotWorld(world){
   state.generator=world.generator;state.topology=structuredClone(world.topology);
   state.environment=world.environment?{...world.environment}:null;
   state.terrain=world.terrain?{schema:1,elevation:world.terrain.elevation.slice(),travelEnabled:world.terrain.travelEnabled??false}:null;
+  if(world.divingBathymetry)state.divingBathymetry=world.divingBathymetry.slice();
   state.surfaceWater={schema:1,mask:world.water.slice()};
   return state;
 }
@@ -129,6 +132,7 @@ function restoreWorld(world,state,{initializeMissingFreshwater=false,adoptOwnedW
       travelEnabled:state.terrain.travelEnabled??false};
   }else delete world.terrain;
   restoreSurfaceTopology(world,state);
+  if(state.divingBathymetry!==undefined){if(!(state.divingBathymetry instanceof Float32Array))throw Error('Invalid diving bathymetry.');world.divingBathymetry=adoptOwnedWorldBuffers?state.divingBathymetry:state.divingBathymetry.slice()}else delete world.divingBathymetry;
   if(world.terrain)deriveDrainage(world);
   world.buildLandRegions();world.buildHydrology();
   for(const key of WORLD_MUTABLE_FIELDS)world[key]=restoreOwnedTyped(world[key],state[key],`world.${key}`,adoptOwnedWorldBuffers);
@@ -318,6 +322,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   Object.assign(sim,snapshot.core||{});
   if(!Object.hasOwn(snapshot.core||{},'regionalReplayPolicy'))delete sim.regionalReplayPolicy;
   regionalReplayPolicy(sim);
+  restoreDivingRules(sim,snapshot.core||{});
   restoreJumpingRules(sim,snapshot.core||{});
   restoreGlidingRules(sim,snapshot.core||{});
   restoreDiggingRules(sim,snapshot.core||{});
@@ -353,7 +358,10 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   }
   validatePageDayWork(sim.pageDayWork,sim.world);
   if(sim.pageDayWork&&sim.pageDayWork.lastDay>sim.day)throw Error('Vegetation page work day is in the future.');
+  validateDivingWorld(sim.world,sim.divingRules);
   sim.animals=snapshot.animals;
+  for(const a of sim.animals)validateDiveState(a,sim.divingRules,sim.world);
+  for(const s of sim.planetaryTravel?.sessions||[]){const world={...s.snapshot.world,len:sim.world.len,n:sim.world.n,water:s.snapshot.world.surfaceWater.mask,idx:(x,y)=>sim.world.idx(x,y)};validateDivingWorld(world,sim.divingRules);for(const a of s.snapshot.animals)validateDiveState(a,sim.divingRules,world)}
   for(const a of sim.animals){validateGlideState(a,sim.glidingRules);validateJumpState(a,sim.jumpingRules)}
   for(const session of sim.planetaryTravel?.sessions||[])for(const a of session.snapshot.animals){validateGlideState(a,sim.glidingRules);validateJumpState(a,sim.jumpingRules)}
   // Wetness is a persistent organism condition, not a new water reserve.
@@ -556,7 +564,8 @@ export class SaveManager{
       const db=await this.db(),newId=()=> 'world-'+(globalThis.crypto?.randomUUID?.()||`${Date.now()}-${Math.random().toString(36).slice(2)}`),
         slotId=newId(),backupSlot=newId(),worldName=(String(name||'Movement continuation').trim().slice(0,40)||'Movement continuation'),savedAt=new Date().toISOString();
       if(slotId===backupSlot)throw Error('Could not allocate distinct continuation and backup slots.');
-      rollback=adoptMovementRules(sim,{source,backupSlot}).rollback;
+      const movement=adoptMovementRules(sim,{source,backupSlot});rollback=movement.rollback;
+      const diving=adoptDivingRules(sim,{source,backupSlot});rollback=()=>{diving.rollback();movement.rollback()};
       const snapshot=createSimulationSnapshot(sim,{reason:'movement-rule-continuation',savedAt});snapshot.meta.key=slotId;snapshot.meta.worldName=worldName;
       const backupMetadata={...sourceSnapshot.meta,key:backupSlot,worldName:('Backup · '+worldName).slice(0,40),savedAt,role:'movement-backup',backupFor:slotId};
       tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');done=transactionDone(tx);

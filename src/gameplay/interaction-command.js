@@ -1,3 +1,4 @@
+import {submerged} from '../lineage/diving.js';
 import {FLORA_TISSUES} from '../ecology/flora-genotype.js';
 import {PLANTS} from '../sim/config.js';
 import {FRESHWATER_FOOD,freshwaterField} from '../ecology/freshwater-food.js';
@@ -16,6 +17,7 @@ export function contextualInteractions(sim,target=null){
   for(const nest of sim.nests||[])if(nest.layer==='canopy'&&Math.hypot(a.x-nest.x,a.y-nest.y)<=1.4&&(!target||target.kind==='nest'&&target.id===nest.id))options.push(info('tend-egg','Tend canopy eggs',{kind:'nest',id:nest.id,x:nest.x,y:nest.y},nestCareAvailability(sim,a,nest),{nestId:nest.id}));
   return sim.paused?options.map(o=>({...o,enabled:false,reason:'Resume the world first.'})):options;
  }
+ if(submerged(a)){if(target&&!['food','water'].includes(target.kind))return[];if(target?.kind==='food'&&!FRESHWATER_FOOD[target.food])return[];if(!target)return sim.foraging.options(a).filter(m=>FRESHWATER_FOOD[m.kind]).flatMap(m=>contextualInteractions(sim,{kind:'food',food:m.kind,i:m.i,x:m.x,y:m.y}));}
  if(!target){
   const candidates=[];const manual=sim.foraging.states.get(a.id);for(const meal of sim.foraging.options(a)){if(manual?.manual&&meal.kind!==manual.selectedKind)continue;candidates.push({kind:'food',food:meal.kind,i:meal.i,x:meal.i%sim.world.n+.5,y:Math.floor(meal.i/sim.world.n)+.5,label:foodLabel(meal.kind),tissue:meal.tissue})}
   if(sim.resourceAvailability('drink').enabled){const w=sim.world;let source=null,best=Infinity;for(let y=-1;y<=1;y++)for(let x=-1;x<=1;x++){const i=w.idx(a.x+x,a.y+y);if(!w.water[i])continue;const t={kind:'water',i,x:i%w.n+.5,y:Math.floor(i/w.n)+.5,label:'Water'},d=Math.hypot(t.x-a.x,t.y-a.y);if(d<best){best=d;source=t}}candidates.push(source||{kind:'drinkable-ground',x:a.x,y:a.y,i:w.idx(a.x,a.y),label:'Drinkable ground'})}

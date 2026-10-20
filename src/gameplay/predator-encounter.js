@@ -1,3 +1,4 @@
+import {sameDepth} from '../lineage/diving.js';
 import {canHunt,preyPreference} from '../ecology/functional-diet.js';
 import {bodyMass} from '../organisms/body-mass.js';
 import {wildTraits} from '../organisms/wild-bodies.js';
@@ -330,7 +331,7 @@ export class PredatorEncounterController{
   }
 
   validPair(hunter,player){
-    return !!(hunter?.alive&&player?.alive&&canHunt(hunter)&&preyPreference(hunter,player)>0&&!this.sim.isOpeningProtected(player)&&this.sim.world.sameLand(hunter.x,hunter.y,player.x,player.y));
+    return !!(hunter?.alive&&player?.alive&&sameDepth(hunter,player)&&canHunt(hunter)&&preyPreference(hunter,player)>0&&!this.sim.isOpeningProtected(player)&&this.sim.world.sameLand(hunter.x,hunter.y,player.x,player.y));
   }
   state(hunter,player){
     if(hunter.playerHunt?.targetId===player.id)return hunter.playerHunt;

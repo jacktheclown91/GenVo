@@ -176,7 +176,7 @@ export const WAVE2_TEXT=Object.freeze({
   'moss-back':{gain:'Hides in thinner cover',cost:'A little more food.'},
   'sensory-quills':{gain:'Spots threats farther away',cost:'More food.'},
   'fat-pad':{gain:'Lasts longer without food',cost:'Slightly slower sprint.'},
-  'gill-slits':{gain:'Swims faster and cheaper, if the body can swim',cost:'Uses a little more water.'},
+  'gill-slits':{gain:'Respire underwater while diving, if swimming anatomy supports the body',cost:'Underwater work consumes food. Uses more water ashore; surface when injured or exhausted.'},
   'scent-gland':{gain:'Courts and mates at lower energy',cost:'Stalkers spot you a little farther away.'},
   'spine-cluster':{gain:'A struck attacker may recoil and break off',cost:'Carries less.'},
   'brood-pouch':{gain:'Carries more',cost:'Slightly slower sprint.'},
@@ -310,6 +310,7 @@ export class PartAbilityController{
   return !!this.rootMealAt(animal,x,y);
  }
  finiteDigAvailability(animal){
+  if((animal?.diveDepth||0)>.03)return{enabled:false,reason:'Surface before digging.'};
   if(!animal?.alive)return{enabled:false,reason:'Nothing to dig with.'};
   if(animal.airborne||animal.perched)return{enabled:false,reason:'Land before digging.'};
   if(!ROOT_FOODS.some(kind=>plantPreference(animal,kind)>0))return{enabled:false,reason:'This mouth cannot eat the roots or bulbs here.'};

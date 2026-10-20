@@ -1,0 +1,66 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {FounderDesign} from '../src/lineage/founder-design.js';
+import {place} from '../src/lineage/evolution-draft.js';
+import {DIVING,waterColumn,submerged,setDiveTarget,stepDiving,aquaticFoodAccessible} from '../src/lineage/diving.js';
+import {adoptDivingRules} from '../src/lineage/diving-rules.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {FRESHWATER_FOOD,harvestFreshwater} from '../src/ecology/freshwater-food.js';
+import {planetaryTravelAvailability,crossPlanetaryBorder} from '../src/world/planetary-travel.js';
+
+const design=new FounderDesign('sandbox');
+for(const socket of ['limb.3','limb.5'])assert.ok(place(design.draft,'webbed-leg','root',socket).ok);
+const body=design.draft.plan;
+const sim=new Simulation('DIVING-INTEGRATION'),a=sim.player(),w=sim.world;
+a.bodyPlan=body;a.age=40;a.energy=90;a.health=100;
+let index=-1;for(let i=0;i<w.len;i++)if(w.water[i]&&w.divingBathymetry[i]>.6&&w.freshwaterFood.waterweed[i]>0&&w.isPlayable(i%w.n+.5,(i/w.n|0)+.5)){index=i;break}
+assert.ok(index>=0,'real generated lake has a water column');a.x=index%w.n+.5;a.y=(index/w.n|0)+.5;
+const stocks=structuredClone({water:w.water,food:w.freshwaterFood,carrion:w.carrion}),rng=sim.rng.state;
+assert.ok(sim.diveStatus().enabled);assert.equal(sim.rng.state,rng);
+assert.equal(aquaticFoodAccessible(sim,a,a.x,a.y,FRESHWATER_FOOD.waterweed),false,'surface swimmer cannot eat below water');
+const target={kind:'waterweed',x:a.x,y:a.y};assert.equal(harvestFreshwater(sim,a,1,target),null);
+assert.ok(sim.playerDive().ok);assert.equal(a.diveDepth,0,'choosing a depth does not teleport');
+for(let i=0;i<30;i++)stepDiving(sim,a,.1);
+assert.ok(a.diveDepth>.4&&a.energy<90&&a.diveAir<24);
+assert.ok(aquaticFoodAccessible(sim,a,a.x,a.y,FRESHWATER_FOOD.waterweed));
+assert.equal(aquaticFoodAccessible(sim,a,a.x,a.y,FRESHWATER_FOOD.algae),false,'underwater mouth cannot eat surface food');
+assert.deepEqual({water:w.water,food:w.freshwaterFood,carrion:w.carrion},stocks,'diving creates neither water nor food');
+const foodBefore=w.freshwaterFood.waterweed[index],meal=harvestFreshwater(sim,a,1,target);
+assert.ok(meal?.amount>0&&meal.energyGain<=1);assert.ok(Math.abs(foodBefore-w.freshwaterFood.waterweed[index]-meal.amount)<1e-7,'real harvested biomass is debited');
+assert.equal(sim.canOccupy(a,...(()=>{const i=w.water.findIndex(v=>!v);return[i%w.n+.5,(i/w.n|0)+.5]})()),false,'cannot swim underground through shore');
+const surface={...a,diveDepth:0,diveTarget:0};assert.equal(sim.familyMobStrike(a,surface),false);
+assert.equal(sim.resourceAvailability('drink').enabled,false);assert.equal(sim.playerCombat.braceAvailability().enabled,false);
+assert.equal(sim.playerCarry().ok,false);assert.equal(sim.shelter.constructOrRepair(a).ok,false);assert.equal(sim.shelter.cacheNearbyFood(a).ok,false);assert.equal(sim.partAbilities.finiteDigAvailability(a).enabled,false);
+const traffic=sim.history.traffic.slice();sim.history.noteStep(a);assert.deepEqual(sim.history.traffic,traffic);
+const saved=structuredClone(createSimulationSnapshot(sim,{savedAt:'depth'})),loaded=restoreSimulationSnapshot(structuredClone(saved));
+assert.deepEqual(loaded.player(),a);assert.deepEqual(loaded.world.divingBathymetry,w.divingBathymetry);
+stepDiving(sim,a,.1);stepDiving(loaded,loaded.player(),.1);assert.deepEqual(loaded.player(),a,'exact submerged continuation');
+const invalid=structuredClone(saved);invalid.animals.find(x=>x.id===a.id).diveAir=Infinity;assert.throws(()=>restoreSimulationSnapshot(invalid),/diving state/);
+assert.ok(setDiveTarget(sim,a,{surface:true}).ok);const depth=a.diveDepth;stepDiving(sim,a,.1);assert.ok(a.diveDepth<depth&&a.diveDepth>0,'surfacing has finite vertical speed');
+for(let i=0;i<500;i++)stepDiving(sim,a,.1);assert.equal(a.diveDepth,0);assert.equal(a.diveAir,24);
+assert.ok(setDiveTarget(sim,a).ok);for(let i=0;i<400;i++)stepDiving(sim,a,.1);assert.equal(a.diveDepth,0,'finite breath forces ascent');assert.ok(a.health>0);
+// Shared gill respiration uses the same step and pays food energy, with no air top-up interaction.
+assert.ok(place(design.draft,'gill-slits','root','flank.left').ok);a.bodyPlan=design.draft.plan;
+a.energy=90;a.health=100;assert.ok(setDiveTarget(sim,a).ok);
+for(let i=0;i<400;i++)stepDiving(sim,a,.1);assert.ok(submerged(a));assert.equal(a.diveAir,24);assert.ok(a.energy<90);
+a.energy=0;stepDiving(sim,a,.1);assert.equal(a.diveTarget,0,'exhausted gills cannot authorize indefinite immersion');
+a.diveAir=0;const health=a.health;stepDiving(sim,a,.1);assert.ok(a.health<health,'unventilated immersion injures the organism');
+// Legacy snapshots retain their original water rules. Explicit adoption changes geometry/rules only.
+const old=structuredClone(saved);delete old.core.divingRules;delete old.world.divingBathymetry;for(const actor of old.animals){delete actor.diveDepth;delete actor.diveTarget;delete actor.diveAir}
+const historical=restoreSimulationSnapshot(old);assert.equal(historical.divingRules,undefined);assert.equal(historical.diveStatus().enabled,false);
+const oldActor=structuredClone(historical.player()),oldRng=historical.rng.state;
+const migration=adoptDivingRules(historical,{source:'test historical checkpoint',backupSlot:'world-00000000-diving'});
+assert.equal(historical.divingRules,DIVING.policy);assert.deepEqual(historical.player(),oldActor);assert.equal(historical.rng.state,oldRng);
+migration.rollback();assert.equal(historical.divingRules,undefined);assert.equal(historical.world.divingBathymetry,undefined);
+const planet=new Simulation('DIVING-PLANET',{worldGenerator:'planetary/1'});assert.equal(planet.world.divingBathymetry,undefined,'planetary water retains its actual finite column authority');
+delete planet.divingRules;
+const frontier=(s,x,direction)=>{const p=s.player();for(let y=10.5;y<118.5;y++){p.x=x;p.y=y;const status=planetaryTravelAvailability(s);if(status.enabled&&status.direction===direction)return true}return false};
+assert.ok(frontier(planet,125.2,'east'));const crossing=crossPlanetaryBorder(planet);assert.ok(crossing.ok,crossing.message);
+const region=crossing.simulation;assert.equal(region.divingRules,undefined);assert.equal(region.planetaryTravel.sessions[0].snapshot.core.divingRules,undefined);
+const archivedAnimals=structuredClone(region.planetaryTravel.sessions[0].snapshot.animals);
+adoptDivingRules(region,{source:'actual regional legacy continuation',backupSlot:'world-00000001-diving'});
+const regional=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(region)));
+assert.deepEqual(regional.planetaryTravel.sessions[0].snapshot.animals,archivedAnimals);assert.equal(regional.planetaryTravel.sessions[0].snapshot.core.divingRules,DIVING.policy);
+assert.ok(frontier(regional,2.8,'west'));const back=crossPlanetaryBorder(regional);assert.ok(back.ok,back.message);assert.equal(back.simulation.divingRules,DIVING.policy);
+assert.deepEqual(back.simulation.divingRuleMigrations,regional.divingRuleMigrations,'returning to an actual archived region retains adoption provenance');
+console.log('Diving PASS: real water columns, gradual submersion/ascent, finite air and energy, gill respiration, depth access/contact, exact continuation, legacy opt-out and reversible adoption.');

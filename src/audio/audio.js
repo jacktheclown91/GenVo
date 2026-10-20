@@ -135,7 +135,7 @@ export class AudioDirector{
     const count=sim.lineage?.handoffs?.length||0;if(count>this.lastHandoffs){const h=sim.lineage.handoffs.at(-1);this.lastHandoffs=count;this.playHandoff(h)}
   }
   updateMovement(dt,input){
-    const p=this.sim.player?.();if(!p||p.hidden||p.airborne||p.perched||this.sim.paused)return;const moving=!!(input.up||input.down||input.left||input.right);if(!moving){this.moveClock=0;return}
+    const p=this.sim.player?.();if(!p||p.hidden||p.airborne||p.perched||(p.diveDepth||0)>.03||this.sim.paused)return;const moving=!!(input.up||input.down||input.left||input.right);if(!moving){this.moveClock=0;return}
     this.markInteractiveAudio();this.moveClock+=dt;const interval=input.sprint?.29:.46;if(this.moveClock>=interval){this.moveClock%=interval;this.playCue(input.sprint?'sprint':'move',{quiet:true})}
   }
   updateWildlife(dt){

@@ -54,6 +54,7 @@ export function chooseCareNest(sim,parent){
 }
 
 export function nestCareAvailability(sim,parent,nest){
+ if((parent?.diveDepth||0)>.03)return{enabled:false,state:'unavailable',reason:'Surface before tending a clutch.'};
  const fail=reason=>({enabled:false,state:'unavailable',reason});
  if(!parent?.alive||!nest||(sim.nests||[]).every(n=>n.id!==nest.id))return fail('That clutch is no longer here.');
  if(!(sim.eggs||[]).some(e=>e.nestId===nest.id&&(e.motherId===parent.id||e.fatherId===parent.id)))return fail('Only a parent can tend this clutch.');
