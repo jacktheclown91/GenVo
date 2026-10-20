@@ -7,6 +7,7 @@ import {exportPlantReserve,producerBoundary} from './plant-resources.js';
 import {FLORA_TISSUES,founderFloraGenome,floraMealChannels,validFloraGenome} from './flora-genotype.js';
 import {PLANTS} from '../sim/config.js';
 import {recordPageSeedDeposit} from './page-seed-transfers.js';
+import {WIND_SEED_POLICIES,planetaryWindSeedOffset} from '../world/weather-fronts.js';
 
 const cropYieldCaches=new WeakMap();
 // Mouth-specific meal channels are immutable recipes for a given plant kind.
@@ -28,11 +29,11 @@ export class PlantDispersalController{
   // Restore may defer generated flora that a saved controller replaces.
   // The restore boundary still calls upgrade on the loaded state.
   constructor(sim,{initialize=true}={}){
-    this.sim=sim;this.active={};this.kindCodes={};this.stats={ingested:0,deposited:0,germinated:0,destroyed:0,lost:0};this.nextProducerId=1;this.nextDepositId=1;this.events=[];this.bankGenomes={};this.producerOrigins={};this.seedReserve={};this.coatReserve={};this.litter=new Float32Array(sim.world.len);
+    this.sim=sim;this.active={};this.kindCodes={};this.stats={ingested:0,deposited:0,germinated:0,destroyed:0,lost:0};this.nextProducerId=1;this.nextDepositId=1;this.windSeedPolicy=sim.world.generator==='planetary/1'?WIND_SEED_POLICIES.planetary:WIND_SEED_POLICIES.legacy;this.events=[];this.bankGenomes={};this.producerOrigins={};this.seedReserve={};this.coatReserve={};this.litter=new Float32Array(sim.world.len);
     for(const [kind,p] of Object.entries(PLANTS)){this.kindCodes[kind]=hashKind(kind);if(p.dispersal){this.active[kind]=new Set();this.bankGenomes[kind]=new Map();this.producerOrigins[kind]=new Map()}}if(initialize)this.upgrade();
   }
   seedBank(kind){return this.sim.world.seedBank?.[kind]||null}
-  upgrade(){this.nextProducerId||=1;this.nextDepositId||=1;this.stats||={ingested:0,deposited:0,germinated:0};this.sim.world.onCropConsumed=(kind,i,before,after)=>{this.noteGrowth(kind,i,before,after);producerBoundary(this.sim,kind,i,before-after,'out','consumed-or-collected')};
+  upgrade(){if(this.windSeedPolicy!==undefined&&!Object.values(WIND_SEED_POLICIES).includes(this.windSeedPolicy))throw Error('Unknown seed wind policy.');this.nextProducerId||=1;this.nextDepositId||=1;this.stats||={ingested:0,deposited:0,germinated:0};this.sim.world.onCropConsumed=(kind,i,before,after)=>{this.noteGrowth(kind,i,before,after);producerBoundary(this.sim,kind,i,before-after,'out','consumed-or-collected')};
     this.events||=[];this.bankGenomes||={};this.producerOrigins||={};this.seedReserve||={};this.coatReserve||={};this.litter||=new Float32Array(this.sim.world.len);this.stats.destroyed||=0;this.stats.lost||=0;
     for(const [kind,p] of Object.entries(PLANTS)){if(!p.dispersal)continue;this.active[kind]||=new Set();this.kindCodes[kind]??=hashKind(kind);this.bankGenomes[kind]||=new Map();this.producerOrigins[kind]||=new Map();const t=FLORA_TISSUES[kind];if(t&&!this.seedReserve[kind]){this.seedReserve[kind]=Float32Array.from(this.sim.world.plants[kind],v=>v*t.seed);this.coatReserve[kind]=Float32Array.from(this.sim.world.plants[kind],v=>v*t.coat)}
       for(let i=0;i<this.sim.world.len;i++)if(this.seedBank(kind)[i]>0){this.active[kind]?.add(i);if(!this.bankGenomes[kind].has(i))this.bankGenomes[kind].set(i,{genomeId:founderFloraGenome(kind).id,route:'legacy-bank',originCell:i});}}
@@ -106,7 +107,12 @@ export class PlantDispersalController{
     // Sparse deterministic pulses keep local spread gradual; animal gut passage is the long-range pathway.
     const code=this.kindCodes[kind]??hashKind(kind);if(((i+this.sim.day*13+code)%12)!==0)return;
     const w=this.sim.world,x=i%w.n,y=(i/w.n)|0,h=mix32(i*1103515245+this.sim.day*2654435761+code);
-    const [dx,dy]=LOCAL_DIRS[h%LOCAL_DIRS.length],nx=x+dx,ny=y+dy;
+    // Wind dispersal is adopted only by newly initialized planetary worlds.
+    // Saved controllers without this policy retain exact historical directions.
+    // Unassisted propagules are wind-borne; animal-carried lineages use wind
+    // in one quarter of ordinary local releases, keeping both routes available.
+    const wind=this.windSeedPolicy===WIND_SEED_POLICIES.planetary&&(!d.animal||(h&3)===0);
+    const [dx,dy]=wind?planetaryWindSeedOffset(w,this.sim.day,i,h/4294967296):LOCAL_DIRS[h%LOCAL_DIRS.length],nx=x+dx,ny=y+dy;
     if(nx<1||ny<1||nx>=w.n-1||ny>=w.n-1||w.water[w.idx(nx,ny)])return;
     const excess=Math.max(0,biomass-(d.mature??0)),requested=d.localRelease*(.35+Math.min(1,excess)),reserve=FLORA_TISSUES[kind]?this.seedReserve[kind][i]:biomass,quantity=Math.min(requested,reserve,.65,Math.max(0,2.5-this.seedBank(kind)[w.idx(nx,ny)]));if(quantity<=.0001)return;const offspring=makeClonalPropagule(this,kind,i,quantity),added=this.deposit(kind,nx,ny,quantity,{payload:offspring});if(added>0){exportPlantReserve(this.sim,kind,i,w.plants[kind][i],w.plants[kind][i]-added);w.plants[kind][i]=Math.max(0,w.plants[kind][i]-added);if(FLORA_TISSUES[kind])this.seedReserve[kind][i]=Math.max(0,this.seedReserve[kind][i]-added)}
   }
