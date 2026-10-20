@@ -10,7 +10,7 @@ import {CFG} from '../src/sim/config.js';
 import {regionKey} from '../src/world/planet-regions.js';
 import {saltStorage,validateEnvironment} from '../src/world/environment.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
-import {reconcilePlanetarySaltSeams,validatePlanetarySeamLedger} from '../src/world/planetary-seam-salt.js';
+import {reconcilePlanetarySaltSeams,syncPlanetaryBoundaryOwnership,validatePlanetarySeamLedger} from '../src/world/planetary-seam-salt.js';
 
 const eq=(a,b,msg)=>assert.ok(isDeepStrictEqual(a,b),msg);
 const seed='GENVO8-TEST-A',origin={x:0,y:2560};
@@ -51,6 +51,9 @@ const snapshot=s=>structuredClone(createSimulationSnapshot(s,{savedAt:'fixed',re
 const session={key:regionKey(destination),biologicalMode:'canonical-ticks/1',
  snapshot:snapshot(remote)};
 active.planetaryTravel={schema:1,nextId:Math.max(active.nextId,remote.nextId),sessions:[session]};
+syncPlanetaryBoundaryOwnership(active);
+assert.ok(active.world.environment.blockedBoundaries[i]>0&&session.snapshot.world.environment.blockedBoundaries[j]>0,
+ 'newly joined physical neighbors exclude the duplicated outside reservoir before paired transfer');
 const previous=snapshot(active);
 const startCombined=saltStorage(active.world)+session.snapshot.world.environment.salt.reduce((a,b)=>a+b,0);
 const initialWater=active.world.environment.volume.reduce((a,b)=>a+b,0)+
