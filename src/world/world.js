@@ -80,7 +80,14 @@ export class World{
       this.water[c.i]||this.environment.overland[c.i]+1e-12<c.depth)
     throw Error('Runoff inundation lacks owned physical water.');
   }else if(c.source!==undefined)throw Error('Invalid topology water source.');
-  imports.set(c.i,{depth:c.depth,salinity:c.salinity,...(c.source?{source:c.source}:{})});}}
+  imports.set(c.i,{depth:c.depth,salinity:c.salinity,...(c.source?{source:c.source}:{})});}
+  else if(c.destination==='overland'){
+   if(this.environment?.channelTopologyPolicy!=='funded-temporary-channels/1'||
+      !this.water[c.i]||this.environment.floodOrigin?.[c.i]!==1)
+    throw Error('Receding water must be historically funded and owned.');
+   imports.set(c.i,{destination:'overland'});
+  }else if(c.destination!==undefined)throw Error('Invalid topology destination.');
+ }
     try{for(const c of changes)this.water[c.i]=c.water;const receipt=synchronizeSurfaceWater(this,before,{reason,additions:imports});this.buildLandRegions();this.buildHydrology();return receipt;}catch(e){this.water.set(before);throw e;}
   }
   regionAt(x,y){return this.landRegion[this.idx(x,y)]||0}
