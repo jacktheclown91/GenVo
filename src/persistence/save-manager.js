@@ -14,6 +14,7 @@ import {initializePlantResources,validatePlantResources} from '../ecology/plant-
 import {ancestralReproductiveGenome,validReproductiveGenome} from '../reproduction/reproductive-compatibility.js';
 import {matePreferencesFor} from '../reproduction/mate-preferences.js';
 import {CFG,PLANTS} from '../sim/config.js';
+import {restoreGlidingRules,validateGlideState} from '../lineage/gliding.js';
 import {Simulation} from '../sim/simulation.js';
 import {LEGACY_PRESSURE_KINDS} from '../lineage/pressure.js';
 import {anatomyFromAdaptations} from '../lineage/evolution.js';
@@ -314,6 +315,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   Object.assign(sim,snapshot.core||{});
   if(!Object.hasOwn(snapshot.core||{},'regionalReplayPolicy'))delete sim.regionalReplayPolicy;
   regionalReplayPolicy(sim);
+  restoreGlidingRules(sim,snapshot.core||{});
   restoreDiggingRules(sim,snapshot.core||{});
   restoreCarcassRules(sim,snapshot.core||{});
   validatePlanetaryTravelState(sim.planetaryTravel,sim.world.planet?regionKey(sim.world.regionOrigin):null);
@@ -347,6 +349,8 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   validatePageDayWork(sim.pageDayWork,sim.world);
   if(sim.pageDayWork&&sim.pageDayWork.lastDay>sim.day)throw Error('Vegetation page work day is in the future.');
   sim.animals=snapshot.animals;
+  for(const a of sim.animals)validateGlideState(a,sim.glidingRules);
+  for(const session of sim.planetaryTravel?.sessions||[])for(const a of session.snapshot.animals)validateGlideState(a,sim.glidingRules);
   // Wetness is a persistent organism condition, not a new water reserve.
   // Reject corrupt values without changing historical missing-field saves.
   if(sim.world.environment?.coatMoisturePolicy===COAT_MOISTURE.policy)

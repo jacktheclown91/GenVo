@@ -10,6 +10,7 @@ import {snowCover} from '../world/snowpack.js';
 import {botanicalPlantView} from '../ecology/botanical-reproduction.js';
 import {FeedingPresentation,applyFeedingExpression} from './feeding-expression.js';
 import {drawWorldTraces} from './world-traces.js';
+import {glideGround} from '../lineage/gliding.js';
 import {drawFlightWind} from './flight-wind.js';
 import {EncounterPresentation,applyEncounterPose} from './encounter-expression.js';
 import {EncounterReactionPresentation,applyEncounterReaction,reactionAttention,reactionShove,drawEncounterReactionMarks,applyDefenseReaction,defenseShove,drawDefenseMarks} from './encounter-reactions.js';
@@ -936,7 +937,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // Whole-body carriage from mounted legs and build; a plain walker keeps exactly the shared bob.
     const carriage=(alert||['drink','eat','hunt'].includes(action))?null:locomotionOffsets(locomotionStyle(a),{phase,moving,action,baseBob:bob,propulsion:action==='swim'?(movementProfile(a,this.sim.world).speed||0)/.66:1});
     const visualGrowth=a.player?dev.growth:Math.round(dev.growth*32)/32;ph.bodyScale*=visualGrowth;ph.limbScale*=.72+.28*visualGrowth;ph.sensoryScale*=.78+.22*visualGrowth;if(dev.maturity<.55){ph.stripe=false;ph.spot=false}
-    const inWater=!!this.sim.world.water[this.sim.world.idx(a.x,a.y)];if(a.airborne)action='fly';else if(inWater&&this.sim.canSwim?.(a)&&!['eat','drink','crack'].includes(action))action='swim';
+    const inWater=!!this.sim.world.water[this.sim.world.idx(a.x,a.y)];if(a.airborne)action=a.aerialMode==='glide'?'glide':'fly';else if(inWater&&this.sim.canSwim?.(a)&&!['eat','drink','crack'].includes(action))action='swim';
     const life=visualLifeState(this.sim,a,{frame,moving,action,development:dev,social,timeSeconds:this.encounters?.time});life.growth=visualGrowth;if(a.torpor){life.breath*=.28;life.settle=Math.max(life.settle,.72)}if(!a.player){life.breath=Math.round(life.breath*8)/8;life.settle=Math.round(life.settle*8)/8;}
     const behavior=behaviorVisualState({bodyPlan:a.bodyPlan,id:a.id,action,phase,moving,life,social});
     // Body and joints yield above support; contact shadows/toes stay on the ground.
@@ -957,7 +958,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     if(!a.airborne&&!a.perched)drawGroundContact(c,{contact,scale,bodyScale:ph.bodyScale,dir:drawDir});
     if(!a.airborne&&!a.perched)drawActivityGround(c,{bodyPlan:a.bodyPlan,id:a.id,frame:phase,moving,action,scale,dir:drawDir});
     const depthShadow=creatureShadowFor(this.sim.world,a,this.habitatField,{bodyScale:ph.bodyScale+(life.exhausted?.08:0),moving,dir:drawDir});drawCreatureDepthShadow(c,{shadow:depthShadow,scale,hurt:life.hurt});
-    if(a.airborne||a.perched){c.save();c.globalAlpha*=.22;c.fillStyle='#23303d';c.beginPath();c.ellipse(0,2*scale,6*scale,3*scale,0,0,Math.PI*2);c.fill();c.restore();c.translate(0,(a.airborne?-9:-7)*scale)}
+    if(a.airborne||a.perched){c.save();c.globalAlpha*=.22;c.fillStyle='#23303d';c.beginPath();c.ellipse(0,2*scale,6*scale,3*scale,0,0,Math.PI*2);c.fill();c.restore();c.translate(0,(a.aerialMode==='glide'?-Math.max(1,Math.min(14,(a.glideAltitude-glideGround(this.sim.world,a.x,a.y))*3)):a.airborne?-9:-7)*scale)}
     const palette=creaturePalette(ph);
     if(a.hidden)c.globalAlpha*=.58;
     drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:a.player?phase:cachePhase,moving,palette,pose,cacheKey:a.player||feeding||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,cachePhase,moving,pose,life)});

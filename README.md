@@ -24,6 +24,8 @@ Open http://localhost:8000/ . **New World > Starting point** can fork an existin
 
 **Starting creature** independently keeps the recorded lineage, selects a living resident, or opens guided/sandbox founder design. Custom founders enter as an explicitly recorded new pair; their anatomy is not presented as naturally evolved in that world. The shared editor supports local body-design export/import. See [custom-founder evidence and limits](docs/AUTHORED-FOUNDERS-2026-10-20.md).
 
+In newly generated worlds, paired gliding membranes can launch down real slopes or from a living canopy. Use the **Glide** button (0), steer while descending, and watch the remaining height beside **Fold**. Folding high above the ground causes injury. Two climbing legs enable **Climb** (7) at a mature supporting tree. Historical saves retain their recorded movement rules. See [gliding evidence and limits](docs/GLIDING-2026-10-20.md).
+
 ## Verify
 
 Node.js and Python are required for the development tools. Browser checks also require Playwright/Chromium.

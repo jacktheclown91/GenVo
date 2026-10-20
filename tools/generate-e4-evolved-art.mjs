@@ -13,7 +13,8 @@ import {compileSourceRgbaPart,recolorIndexedFrame} from '../src/render/indexed-p
 const root=new URL('../assets/art/',import.meta.url),manifestPath=new URL('catalog.json',root);
 const manifest=JSON.parse(fs.readFileSync(manifestPath,'utf8'));
 const physiology=process.argv.includes('--physiology');
-const IDS=physiology?['arid-pad','wax-plates','flight-wing','heat-frill','endothermic-core','mammary-gland']:['filament-tuft','fur-mantle','feather-mantle','proto-wing','climber-leg','hook-pad'];
+const gliding=process.argv.includes('--gliding');
+const IDS=gliding?['patagium']:physiology?['arid-pad','wax-plates','flight-wing','heat-frill','endothermic-core','mammary-gland']:['filament-tuft','fur-mantle','feather-mantle','proto-wing','climber-leg','hook-pad'];
 const existing=new Set(manifest.parts.map(p=>p.partId));
 if(IDS.every(id=>existing.has(id))){console.log('E4 native art already installed; no overwrite');process.exit(0)}
 if(IDS.some(id=>existing.has(id)||!PARTS[id]))throw Error('Partial E4 installation or unregistered part; manual review required.');
@@ -43,7 +44,14 @@ function painter(){
 }
 function draw(id,phase,facing=2){
  const c=painter(),{rect,line,ellipse,poly,dot}=c,b=phase?1:0;
- if(id==='arid-pad'){
+ if(id==='patagium'){
+  poly([[16,7],[29-b,17],[17,26],[13,19],[13,11]],0);
+  poly([[17,9],[27-b,17],[17,24],[15,18],[15,12]],2);
+  poly([[17,11],[25-b,17],[17,22]],3);
+  line(16,8,28-b,17,6,.7);line(16,25,28-b,17,1,.7);
+  line(16,14,27-b,17,4,.5);line(16,20,27-b,17,1,.5);
+  line(15,10,15,23,3,1);dot(17+facing%3,14,4);
+ }else if(id==='arid-pad'){
   // Packed upper/lower clusters follow the canonical hip/knee/foot rig.
   line(4,8,25,8,0,3);line(4,7,25,7,2,2);line(5,6,23,6,3,1);
   ellipse(27,8,3.5,4,1);ellipse(27,7,2.5,2.5,3);
@@ -143,7 +151,7 @@ function draw(id,phase,facing=2){
  // sampling avoids 45-degree holes; frame 0/1 are distinct for EVERY facing.
  return Array.from({length:1024},(_,i)=>{
   const x=i%32,y=Math.floor(i/32);return{x,y};
- }).reduce((acc,{x,y},i)=>{acc.tones[i]=c.tones[i];acc.alpha[i]=c.alpha[i];return acc},{tones:new Uint8Array(1024),alpha:new Uint8Array(1024)});
+ }).reduce((acc,{x,y},i)=>{const source=id==='patagium'?x*32+y:i;acc.tones[i]=c.tones[source];acc.alpha[i]=c.alpha[source];return acc},{tones:new Uint8Array(1024),alpha:new Uint8Array(1024)});
 }
 function oriented(src,face){
  const angle=(face-2)*Math.PI/4,cos=Math.cos(angle),sin=Math.sin(angle);
@@ -186,7 +194,7 @@ for(const id of IDS){
  for(let facing=0;facing<8;facing++)if(Buffer.from(nativeFrames[facing*2].rgba).equals(Buffer.from(nativeFrames[facing*2+1].rgba)))throw Error(id+' static frames '+facing);
  const sourceBuffer=Buffer.from(JSON.stringify(source)),hash=crypto.createHash('sha256').update(sourceBuffer).digest('hex');
  const entry={partId:id,path:'./parts/'+id+'.json',png:'./parts/'+id+'.png',
-  checksumSha256:hash,status:physiology?'physiology-native-32px-review':'e4-procedural-native-32px-review',
+  checksumSha256:hash,status:gliding?'gliding-native-32px-review':physiology?'physiology-native-32px-review':'e4-procedural-native-32px-review',
   indexed:'./parts/'+id+'.indexed.json',compiledChecksum:compiled.checksum};
  pending.push({id,sourceBuffer,compiled,entry,png:pngRGBA(oriented(draw(id,0),2))});
 }
@@ -197,4 +205,4 @@ for(const part of pending){
  manifest.parts.push(part.entry);
 }
 fs.writeFileSync(manifestPath,JSON.stringify(manifest,null,2)+'\n');
-console.log('Generated six complete 32px native part packs, 96 directional frames, exact roundtrip RGBA and manifest checksums.');
+console.log(`Generated ${IDS.length} complete 32px native part packs, ${IDS.length*16} directional frames, exact roundtrip RGBA and manifest checksums.`);

@@ -1,0 +1,57 @@
+{
+  "kind": "automated Chromium input; authored sandbox anatomy; staged position/facing on unmodified generated ridge; not human or naturally evolved evidence",
+  "ridge": {
+    "x": 8.9,
+    "y": 51.5,
+    "drop": 1.0944826900959015,
+    "from": 0.11236219108104706,
+    "to": 0.057638056576251984,
+    "energy": 96.75105988902038,
+    "body": "bp0-2f9c5044",
+    "policy": "finite-height-gliding/1",
+    "age": 30
+  },
+  "flight": {
+    "x": 9.66275882115121,
+    "y": 51.5,
+    "z": 2.299992035906655,
+    "energy": 93.58420181085918,
+    "airborne": true,
+    "mode": "glide",
+    "health": 100
+  },
+  "saved": {
+    "playerId": 197,
+    "z": 2.299992035906655,
+    "x": 9.66275882115121,
+    "mode": "glide",
+    "policy": "finite-height-gliding/1"
+  },
+  "reload": {
+    "id": 197,
+    "z": 2.299992035906655,
+    "x": 9.66275882115121,
+    "mode": "glide",
+    "policy": "finite-height-gliding/1"
+  },
+  "steered": {
+    "heading": 0.1125,
+    "energy": 93.5488264507492
+  },
+  "landed": {
+    "x": 15.96405236118192,
+    "y": 52.198426007752346,
+    "health": 84,
+    "energy": 92.64881003972604,
+    "mode": null,
+    "water": true,
+    "incident": {
+      "ok": false,
+      "type": "glide",
+      "forced": true,
+      "message": "The glide strikes rising terrain or loses support; landing causes injury.",
+      "tick": 23
+    }
+  },
+  "errors": []
+}

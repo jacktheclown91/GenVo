@@ -30,6 +30,7 @@ export function canReach(animal,world,x,y){
 
 export function movementProfile(animal,world,{fromX=animal?.x,fromY=animal?.y,toX=fromX,toY=fromY,sprint=false}={}){
   if(animal?.perched)return{allowed:false,perched:true,swimming:false,speed:0,energy:0,sprint:1};
+  if(animal?.aerialMode==='glide')return{allowed:true,gliding:true,flying:false,swimming:false,swimmer:canSwim(animal),speed:0,energy:0,sprint:1,grade:0,grip:0,authority:'finite-height-gliding/1'};
   if(animal?.airborne){const wind=flightWindFactors(animal,world,{fromX,fromY,toX,toY});return{allowed:true,flying:true,swimming:false,swimmer:canSwim(animal),speed:1.48*wind.speed,energy:1.85*wind.energy,sprint:1.12,grade:0,grip:0};}
   const swimming=isWater(world,fromX,fromY)||isWater(world,toX,toY),swimmer=canSwim(animal);
   if(swimming&&!swimmer)return{allowed:false,swimming:true,swimmer:false,speed:0,energy:1,sprint:1};

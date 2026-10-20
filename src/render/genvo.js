@@ -10,6 +10,7 @@ const IDLE_TWITCH=[0,0,.35,0,0,-.25,0,.18];
 // rear slots keep their angle.
 export function splayAngle(a){const t=((a%(2*Math.PI))+2*Math.PI)%(2*Math.PI),side=t<Math.PI?1:-1,u=side>0?t:2*Math.PI-t;if(u<.01||Math.abs(u-Math.PI)<.01)return a;const w=Math.PI/2+(u-Math.PI/2)*.72;return side>0?w:2*Math.PI-w}
 export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',bodyScale=1,bodyWidthScale=1,bodyHeightScale=1,limbScale=1,sensoryScale=1,eyeScale=1,feelerScale=1,temperamentScale=1,dependent=false,alert=false,stage='adult',life={},behavior={},legSlots=null}={}){
+  if(action==='glide'){moving=false;frame=0}
   frame=((Number(frame)%8)+8)%8;const frameInt=Math.floor(frame);dir&=7;
   const v=DIR8[dir],vmag=Math.hypot(v.x,v.y)||1,fx=v.x/vmag,fy=v.y/vmag,perp={x:-fy,y:fx};
   const flee=action==='flee',eat=action==='eat',drink=action==='drink',court=action==='court',hunt=action==='hunt'||action==='stalk';

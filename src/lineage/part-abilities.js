@@ -148,6 +148,7 @@ export const WAVE2={
   'sensory-bristle':{threatSense:1.02,metabolism:1.005},
   'grip-pad':{land:1.006,brace:1.005},
   'kick-spur':{strike:1.025,metabolism:1.005},
+  'patagium':{land:.97,metabolism:1.04},
   // Relic parts.
   'horn-crest':{repel:.25,strike:1.1,metabolism:1.04},
   'tusk-jaw':{strike:1.35,huntBonus:.06,metabolism:1.05},
@@ -186,7 +187,8 @@ export const WAVE2_TEXT=Object.freeze({
   'kick-spur':{gain:'Slightly harder bites (per leg)',cost:'A little more food.'},
   'horn-crest':{gain:'Relic part: attackers may recoil, and your bite is harder',cost:'More food.'},
   'tusk-jaw':{gain:'Relic part: much harder bites and better hunts',cost:'More food; plants give less.'},
-  'gliding-membrane':{gain:'Relic part: much faster sprint, a little faster on land',cost:'More food.'},
+  'patagium':{gain:'Paired flank membranes glide downhill or from a living canopy in new worlds · Glide / 0',cost:'Cannot hover or climb in the air. Costs food, mass and land speed; requires ancestral climbing legs.'},
+  'gliding-membrane':{gain:'Paired relic membranes glide from real height in new worlds · Glide / 0',cost:'More food. Gliding loses height; historical worlds retain recorded rules.'},
   'luminous-tail':{gain:'Relic part: courts at lower energy, and its glow lures prey closer',cost:'Stalkers spot you farther away.'},
   'shell-back':{gain:'Relic part: hits from behind do about half damage',cost:'Slower sprint, a little more food.'},
   'armored-hide':{gain:'Relic part: takes less damage, and attackers may recoil',cost:'Slightly slower sprint, more food.'},

@@ -15,7 +15,7 @@ export const SOCKET_TYPES=Object.freeze(['limb','head','mouth','eye','dorsal','f
 // Capability names (locked for v0). Owning systems decide what each one does.
 export const CAPABILITIES=Object.freeze([
   'walk','sprint','pounce','carry','dig','graze','bite','tear','crush','see','see-wide',
-  'armor','retaliate','strike','venom','store','signal','swim-propel','insulate','climb','fly','thermoregulate','lactate',
+  'armor','retaliate','strike','venom','store','signal','swim-propel','insulate','climb','fly','glide','thermoregulate','lactate',
   // Wave 1 (creator decision 2026-10-09): eight bodies, legs, mouths and eyes.
   'run','brace','swim','quiet','peck','filter','suck','swallow','nibble','aim','spot','glance','track','display','call','dance','flare','scent','gesture','lay-eggs','live-birth'
 ]);
@@ -153,6 +153,7 @@ export const PARTS=Object.freeze(Object.fromEntries([
   part('horn-crest','defense',{tags:['back','exclusive'],sockets:['dorsal'],mass:.3,upkeep:.08,cost:3,actions:['retaliate','display','flare'],niche:['predator-pressure'],symmetry:'single'}),
   part('tusk-jaw','feeding',{tags:['mouth','exclusive','flesh'],sockets:['mouth'],mass:.6,upkeep:.2,cost:3,actions:['bite','tear','crush','call'],niche:['prey'],symmetry:'single'}),
   // More relic parts (2026-10-09): from the Golden Hopper, the Crystal Digger and the Ghost GenVo8.
+  part('patagium','locomotion',{tags:['flank','membrane'],prereq:['climber-leg'],sockets:['flank'],mass:.25,upkeep:.12,cost:3,actions:['glide'],niche:['canopy','escape']}),
   part('gliding-membrane','locomotion',{tags:['flank','exclusive'],sockets:['flank'],mass:.25,upkeep:.08,cost:3,actions:['sprint'],niche:['escape']}),
   part('luminous-tail','social',{tags:['tail','exclusive'],sockets:['tail'],mass:.3,upkeep:.06,cost:3,actions:['display','signal','flare'],niche:['courtship','prey'],symmetry:'single',anim:'sweep'}),
   part('shell-back','defense',{tags:['back','exclusive','shell'],sockets:['dorsal'],mass:.7,upkeep:.08,cost:3,actions:['armor'],niche:['predator-pressure'],symmetry:'single'}),

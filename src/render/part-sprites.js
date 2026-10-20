@@ -47,7 +47,7 @@ export const PART_SPRITES=Object.freeze({
   'fat-pad':{layer:'body'},'gill-slits':{layer:'body'},'scent-gland':{layer:'body'},'spine-cluster':{layer:'body'},'brood-pouch':{layer:'body'},'egg-chamber':{layer:'body'},'live-womb':{layer:'body'},'endothermic-core':{layer:'body'},'mammary-gland':{layer:'body'}, 
   'hook-spur':{layer:'front'},'dew-claw':{layer:'front'},'heel-spike':{layer:'front'},'sensory-bristle':{layer:'front'},'grip-pad':{layer:'front'},'kick-spur':{layer:'front'},
   'horn-crest':{layer:'body'},'tusk-jaw':{layer:'face'},
-  'gliding-membrane':{layer:'body'},'luminous-tail':{layer:'rear'},'shell-back':{layer:'body'},'armored-hide':{layer:'body'},'glow-eye':{layer:'face'},'echo-crest':{layer:'body'},
+  'patagium':{layer:'body'},'gliding-membrane':{layer:'body'},'luminous-tail':{layer:'rear'},'shell-back':{layer:'body'},'armored-hide':{layer:'body'},'glow-eye':{layer:'face'},'echo-crest':{layer:'body'},
   'hunter-eye':{layer:'face'},'stalk-eye':{layer:'face'},'compound-eye':{layer:'face'},'tracker-eye':{layer:'face'},'display-eye':{layer:'face'},'eyespot':{layer:'face'}
 });
 // Eyes drawn entirely by their own component (the base eye is not drawn under them).
@@ -237,6 +237,7 @@ Object.assign(DRAW,{
   'horn-crest'(c,k){const b=backTop(k),h={x:b.x+k.fx*1.6,y:b.y};pixelLine(c,h.x,h.y,h.x+k.fx*.6,h.y-3,k.s,'#f1e8cf');pixelLine(c,h.x+k.fx*.6,h.y-3,h.x+k.fx*1.6,h.y-3.8,k.s,'#f1e8cf',.5);pixel(c,h.x,h.y-.5,1,1,k.s,'#c9a86a')},
   'tusk-jaw'(c,k){const m=along(k,k.face.mouthForward+.6);for(const sg of [-1,1]){const r={x:m.x+k.perp.x*sg*1.2,y:m.y+k.perp.y*sg*1.2},e={x:r.x+k.fx*2.4+k.perp.x*sg*.6,y:r.y+k.fy*2.4+k.perp.y*sg*.6-.8};pixelLine(c,r.x,r.y,e.x,e.y,k.s,'#f6eeda');pixel(c,e.x,e.y,.5,.5,k.s,'#ffffff')}},
   // Gliding membrane: a thin golden skin flap stretched out from the flank.
+  'patagium'(c,k){const f=flankAt(k),spread=k.behavior?.glideSpread?5:1.5;pixelLine(c,f.x+k.fx*3,f.y+k.fy*3,f.x+k.perp.x*k.sign*spread,f.y+k.perp.y*k.sign*spread,k.s,'#a3c1ba',2);pixelLine(c,f.x+k.perp.x*k.sign*spread,f.y+k.perp.y*k.sign*spread,f.x-k.fx*3,f.y-k.fy*3,k.s,'#476e73',1)},
   'gliding-membrane'(c,k){const f=flankAt(k),o={x:f.x+k.perp.x*k.sign*2.2,y:f.y+k.perp.y*k.sign*2.2},a={x:f.x+k.fx*1.6,y:f.y+k.fy*1.6},b={x:f.x-k.fx*2,y:f.y-k.fy*2};pixel(c,(f.x+o.x)/2-.5,(f.y+o.y)/2-.5,1.5,1.5,k.s,'rgba(246,220,138,.55)');pixelLine(c,a.x,a.y,o.x,o.y,k.s,'#f6dc8a',.5);pixelLine(c,o.x,o.y,b.x,b.y,k.s,'#c9a24a',.5)},
   // Luminous tail: a slim tail ending in a glowing bulb with a soft halo.
   'luminous-tail'(c,k){const t=tailEnd(k,6);pixelLine(c,t.r.x,t.r.y,t.x,t.y,k.s,k.p.shade,.5);pixel(c,t.x-1,t.y-1,2.5,2.5,k.s,'rgba(255,240,150,.35)');pixel(c,t.x-.5,t.y-.5,1.5,1.5,k.s,'#fff3a0');pixel(c,t.x-.5,t.y-.5,.5,.5,k.s,'#ffffff')},
@@ -342,7 +343,7 @@ export function artMount(partId,k){
    const at=authored(side<0?'flank.left':'flank.right');
    const radius=ellipseRadius(k.perp.x,k.perp.y);
    return {x:at?.x??x0+k.perp.x*side*radius*.86,y:at?.y??y0+k.perp.y*side*radius*.86,
-     scale:.25,mirrorX:side<0};
+     scale:['patagium','gliding-membrane'].includes(partId)?(k.behavior?.glideSpread?.55:.23):.25,mirrorX:side<0};
  }
  if(sockets.includes('dorsal')){
    const at=authored('dorsal');

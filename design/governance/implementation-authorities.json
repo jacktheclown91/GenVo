@@ -328,6 +328,11 @@
       "consumers": ["src/main.js", "src/ui/resident-start.js", "src/persistence/save-manager.js"],
       "note": "Explicit creator choice of an actual living regional resident on an independent world fork. Preserves biological stocks, RNG, body, age, generation and real ancestry; records player-entry provenance, updates playable descendants and carries entry identity through regional saves. Never fabricates simulated evolution or custom anatomy."
     },
+    "finiteHeightGliding": {
+      "authority": "src/lineage/gliding.js",
+      "consumers": ["src/sim/simulation.js", "src/ecology/canopy-site.js", "src/lineage/flight.js", "src/lineage/body-inheritance.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js", "src/ui/creature-context-tray.js", "src/render/renderer.js"],
+      "note": "New worlds record finite-height-gliding/1. Bilateral inherited flank membranes use real terrain/canopy launch height, finite descent and movement energy, bounded steering and terrain/water landings. Player and wildlife share physics. Canopy support and costed climbing remain owned by canopy-site.js; powered flight has a separate metabolism. Historical absent-policy saves preserve movement and mutation choices. No automatic migration or fabricated natural evolution."
+    },
     "directionalFlightWind": {
       "authority": "src/lineage/flight-wind.js",
       "consumers": ["src/lineage/lifestyle.js", "src/lineage/flight.js", "src/render/flight-wind.js", "src/world/planet-world.js", "src/world/environment.js"],
