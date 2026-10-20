@@ -42,7 +42,7 @@ export class FrontEnd{
       if(response.ok){
         const {validateScenarioCatalog}=await import('../persistence/scenario-library.js');
         this.catalog=validateScenarioCatalog(await response.json());
-        for(const c of this.catalog)el.add(new Option('Evolved: '+c.label+' · Day '+c.day,'catalog:'+c.id));
+        for(const c of this.catalog.filter(c=>c.playable))el.add(new Option('Evolved: '+c.label+' · Day '+c.day,'catalog:'+c.id));
       }
     }catch(error){console.warn('Curated scenarios are unavailable:',error)}
     this.syncStartingPoint();
