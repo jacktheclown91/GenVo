@@ -72,7 +72,8 @@ export function validateEnvironment(w,e){
     throw Error('Invalid planetary internal-flow receipt.');
    if(['waterBefore','waterAfter','waterInput','waterOutput','waterClosure'].some(k=>!Number.isFinite(row[k]))||
      row.waterBefore<0||row.waterAfter<0||row.waterInput<0||row.waterOutput<0||
-     Math.abs(row.waterClosure)>1e-6)
+     (Math.abs(row.waterClosure)>1e-6||
+      Math.abs(row.waterInput-row.waterOutput-(row.waterAfter-row.waterBefore)-row.waterClosure)>1e-6))
     throw Error('Invalid planetary water-volume receipt.');
   }
   if(row.pageTransfers!==undefined)validatePageSaltTransfers(w,row.pageTransfers);
