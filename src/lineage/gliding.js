@@ -10,7 +10,8 @@ export function hasGlidingSurfaces(a){
  const nodes=a?.bodyPlan?.nodes||[],sides=new Set(nodes.filter(n=>['patagium','gliding-membrane'].includes(n.partId)).map(n=>n.socket));
  return sides.has('flank.left')&&sides.has('flank.right');
 }
-export function canTreeClimb(sim,a){return sim.glidingRules===GLIDING.policy&&(a?.bodyPlan?.nodes||[]).filter(n=>n.partId==='climber-leg').length>=2}
+export function hasClimbingAnatomy(a){return(a?.bodyPlan?.nodes||[]).filter(n=>n.partId==='climber-leg').length>=2}
+export function canTreeClimb(sim,a){return sim.glidingRules===GLIDING.policy&&hasClimbingAnatomy(a)}
 export function glideGround(world,x,y){
  if(!world?.isPlayable(x,y))return null;
  const i=world.idx(x,y);return world.water[i]?0:Math.max(0,world.terrain?.elevation?.[i]||0)*GLIDING.terrainHeight;

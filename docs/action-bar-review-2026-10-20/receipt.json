@@ -1,0 +1,464 @@
+{
+  "kind": "automated UI fixtures; legal body swaps and control handoff are staged, not biological evolution evidence",
+  "base": [
+    {
+      "id": "interact",
+      "disabled": false,
+      "reason": "E performs the displayed interaction; Q cycles choices. Clicking an object selects that target. Eat fruit · Eat from this patch. Q cycles nearby food, water and usable objects.",
+      "left": 492,
+      "right": 571.90625,
+      "top": 793
+    },
+    {
+      "id": "eat",
+      "disabled": false,
+      "reason": "eat",
+      "left": 575.90625,
+      "right": 623.328125,
+      "top": 793
+    },
+    {
+      "id": "drink",
+      "disabled": true,
+      "reason": "Move beside drinkable water.",
+      "left": 627.328125,
+      "right": 718,
+      "top": 793
+    },
+    {
+      "id": "rest",
+      "disabled": false,
+      "reason": "Rest while still to regain breath.",
+      "left": 722,
+      "right": 775.125,
+      "top": 793
+    },
+    {
+      "id": "attack",
+      "disabled": false,
+      "reason": "Basic physical attack · Space.",
+      "left": 779.125,
+      "right": 869.5,
+      "top": 793
+    },
+    {
+      "id": "brace",
+      "disabled": false,
+      "reason": "Hold to defend · J.",
+      "left": 873.5,
+      "right": 939.203125,
+      "top": 793
+    }
+  ],
+  "partial": [
+    {
+      "id": "interact",
+      "disabled": false,
+      "reason": "E performs the displayed interaction; Q cycles choices. Clicking an object selects that target. Eat fruit · Eat from this patch. Q cycles nearby food, water and usable objects.",
+      "left": 492,
+      "right": 571.90625,
+      "top": 793
+    },
+    {
+      "id": "eat",
+      "disabled": false,
+      "reason": "eat",
+      "left": 575.90625,
+      "right": 623.328125,
+      "top": 793
+    },
+    {
+      "id": "drink",
+      "disabled": true,
+      "reason": "Move beside drinkable water.",
+      "left": 627.328125,
+      "right": 718,
+      "top": 793
+    },
+    {
+      "id": "rest",
+      "disabled": false,
+      "reason": "Rest while still to regain breath.",
+      "left": 722,
+      "right": 775.125,
+      "top": 793
+    },
+    {
+      "id": "attack",
+      "disabled": false,
+      "reason": "Basic physical attack · Space.",
+      "left": 779.125,
+      "right": 869.5,
+      "top": 793
+    },
+    {
+      "id": "brace",
+      "disabled": false,
+      "reason": "Hold to defend · J.",
+      "left": 873.5,
+      "right": 939.203125,
+      "top": 793
+    }
+  ],
+  "capable": [
+    {
+      "id": "interact",
+      "disabled": false,
+      "reason": "E performs the displayed interaction; Q cycles choices. Clicking an object selects that target. Eat fruit · Eat from this patch. Q cycles nearby food, water and usable objects.",
+      "left": 492,
+      "right": 571.90625,
+      "top": 758
+    },
+    {
+      "id": "eat",
+      "disabled": false,
+      "reason": "eat",
+      "left": 575.90625,
+      "right": 623.328125,
+      "top": 758
+    },
+    {
+      "id": "drink",
+      "disabled": true,
+      "reason": "Move beside drinkable water.",
+      "left": 627.328125,
+      "right": 718,
+      "top": 758
+    },
+    {
+      "id": "rest",
+      "disabled": false,
+      "reason": "Rest while still to regain breath.",
+      "left": 722,
+      "right": 775.125,
+      "top": 758
+    },
+    {
+      "id": "attack",
+      "disabled": false,
+      "reason": "Basic physical attack · Space.",
+      "left": 779.125,
+      "right": 869.5,
+      "top": 758
+    },
+    {
+      "id": "brace",
+      "disabled": false,
+      "reason": "Hold to defend · J.",
+      "left": 873.5,
+      "right": 939.203125,
+      "top": 758
+    },
+    {
+      "id": "pounce",
+      "disabled": true,
+      "reason": "Need more food energy for this body load.",
+      "left": 492,
+      "right": 611.078125,
+      "top": 798
+    },
+    {
+      "id": "jump",
+      "disabled": true,
+      "reason": "Need more food energy for this body load.",
+      "left": 615.078125,
+      "right": 697.765625,
+      "top": 798
+    },
+    {
+      "id": "glide",
+      "disabled": true,
+      "reason": "This body is too heavy for its gliding surfaces.",
+      "left": 701.765625,
+      "right": 767.515625,
+      "top": 798
+    },
+    {
+      "id": "flight",
+      "disabled": true,
+      "reason": "Need more stored food energy for powered flight.",
+      "left": 771.515625,
+      "right": 850.546875,
+      "top": 798
+    },
+    {
+      "id": "roost",
+      "disabled": true,
+      "reason": "Climbing requires stored food energy, healthy grips and no carried food.",
+      "left": 854.546875,
+      "right": 923.359375,
+      "top": 798
+    },
+    {
+      "id": "torpor",
+      "disabled": true,
+      "reason": "The local ground is too warm for cold-season torpor.",
+      "left": 927.359375,
+      "right": 1000.140625,
+      "top": 798
+    }
+  ],
+  "narrow": [
+    {
+      "id": "interact",
+      "disabled": false,
+      "reason": "E performs the displayed interaction; Q cycles choices. Clicking an object selects that target. Eat fruit · Eat from this patch. Q cycles nearby food, water and usable objects.",
+      "left": 190,
+      "right": 269.90625,
+      "top": 719
+    },
+    {
+      "id": "eat",
+      "disabled": false,
+      "reason": "eat",
+      "left": 273.90625,
+      "right": 321.328125,
+      "top": 719
+    },
+    {
+      "id": "drink",
+      "disabled": true,
+      "reason": "Move beside drinkable water.",
+      "left": 325.328125,
+      "right": 416,
+      "top": 719
+    },
+    {
+      "id": "rest",
+      "disabled": false,
+      "reason": "Rest while still to regain breath.",
+      "left": 420,
+      "right": 473.125,
+      "top": 719
+    },
+    {
+      "id": "attack",
+      "disabled": false,
+      "reason": "Basic physical attack · Space.",
+      "left": 477.125,
+      "right": 567.5,
+      "top": 719
+    },
+    {
+      "id": "brace",
+      "disabled": false,
+      "reason": "Hold to defend · J.",
+      "left": 190,
+      "right": 255.703125,
+      "top": 759
+    },
+    {
+      "id": "pounce",
+      "disabled": true,
+      "reason": "Need more food energy for this body load.",
+      "left": 259.703125,
+      "right": 378.78125,
+      "top": 759
+    },
+    {
+      "id": "jump",
+      "disabled": true,
+      "reason": "Need more food energy for this body load.",
+      "left": 382.78125,
+      "right": 465.46875,
+      "top": 759
+    },
+    {
+      "id": "glide",
+      "disabled": true,
+      "reason": "This body is too heavy for its gliding surfaces.",
+      "left": 469.46875,
+      "right": 535.21875,
+      "top": 759
+    },
+    {
+      "id": "flight",
+      "disabled": true,
+      "reason": "Need more stored food energy for powered flight.",
+      "left": 190,
+      "right": 269.03125,
+      "top": 799
+    },
+    {
+      "id": "roost",
+      "disabled": true,
+      "reason": "Climbing requires stored food energy, healthy grips and no carried food.",
+      "left": 273.03125,
+      "right": 341.84375,
+      "top": 799
+    },
+    {
+      "id": "torpor",
+      "disabled": true,
+      "reason": "The local ground is too warm for cold-season torpor.",
+      "left": 345.84375,
+      "right": 418.625,
+      "top": 799
+    }
+  ],
+  "restored": [
+    {
+      "id": "interact",
+      "disabled": false,
+      "reason": "E performs the displayed interaction; Q cycles choices. Clicking an object selects that target. Eat fruit · Eat from this patch. Q cycles nearby food, water and usable objects.",
+      "left": 492,
+      "right": 571.90625,
+      "top": 758
+    },
+    {
+      "id": "eat",
+      "disabled": false,
+      "reason": "eat",
+      "left": 575.90625,
+      "right": 623.328125,
+      "top": 758
+    },
+    {
+      "id": "drink",
+      "disabled": true,
+      "reason": "Move beside drinkable water.",
+      "left": 627.328125,
+      "right": 718,
+      "top": 758
+    },
+    {
+      "id": "rest",
+      "disabled": false,
+      "reason": "Rest while still to regain breath.",
+      "left": 722,
+      "right": 775.125,
+      "top": 758
+    },
+    {
+      "id": "attack",
+      "disabled": false,
+      "reason": "Basic physical attack · Space.",
+      "left": 779.125,
+      "right": 869.5,
+      "top": 758
+    },
+    {
+      "id": "brace",
+      "disabled": false,
+      "reason": "Hold to defend · J.",
+      "left": 873.5,
+      "right": 939.203125,
+      "top": 758
+    },
+    {
+      "id": "pounce",
+      "disabled": true,
+      "reason": "Need more food energy for this body load.",
+      "left": 492,
+      "right": 611.078125,
+      "top": 798
+    },
+    {
+      "id": "jump",
+      "disabled": true,
+      "reason": "Need more food energy for this body load.",
+      "left": 615.078125,
+      "right": 697.765625,
+      "top": 798
+    },
+    {
+      "id": "glide",
+      "disabled": true,
+      "reason": "This body is too heavy for its gliding surfaces.",
+      "left": 701.765625,
+      "right": 767.515625,
+      "top": 798
+    },
+    {
+      "id": "flight",
+      "disabled": true,
+      "reason": "Need more stored food energy for powered flight.",
+      "left": 771.515625,
+      "right": 850.546875,
+      "top": 798
+    },
+    {
+      "id": "roost",
+      "disabled": true,
+      "reason": "Climbing requires stored food energy, healthy grips and no carried food.",
+      "left": 854.546875,
+      "right": 923.359375,
+      "top": 798
+    },
+    {
+      "id": "torpor",
+      "disabled": true,
+      "reason": "The local ground is too warm for cold-season torpor.",
+      "left": 927.359375,
+      "right": 1000.140625,
+      "top": 798
+    }
+  ],
+  "controlChanged": [
+    {
+      "id": "interact",
+      "disabled": false,
+      "reason": "E performs the displayed interaction; Q cycles choices. Clicking an object selects that target. Eat fruit · Eat from this patch. Q cycles nearby food, water and usable objects.",
+      "left": 492,
+      "right": 571.90625,
+      "top": 758
+    },
+    {
+      "id": "eat",
+      "disabled": false,
+      "reason": "eat",
+      "left": 575.90625,
+      "right": 623.328125,
+      "top": 758
+    },
+    {
+      "id": "drink",
+      "disabled": true,
+      "reason": "Move beside drinkable water.",
+      "left": 627.328125,
+      "right": 718,
+      "top": 758
+    },
+    {
+      "id": "rest",
+      "disabled": false,
+      "reason": "Rest while still to regain breath.",
+      "left": 722,
+      "right": 775.125,
+      "top": 758
+    },
+    {
+      "id": "attack",
+      "disabled": false,
+      "reason": "Basic physical attack · Space.",
+      "left": 779.125,
+      "right": 869.5,
+      "top": 758
+    },
+    {
+      "id": "brace",
+      "disabled": false,
+      "reason": "Hold to defend · J.",
+      "left": 873.5,
+      "right": 939.203125,
+      "top": 758
+    },
+    {
+      "id": "pounce",
+      "disabled": true,
+      "reason": "The body is too young or injured to jump.",
+      "left": 492,
+      "right": 611.078125,
+      "top": 798
+    },
+    {
+      "id": "jump",
+      "disabled": true,
+      "reason": "The body is too young or injured to jump.",
+      "left": 615.078125,
+      "right": 697.765625,
+      "top": 798
+    }
+  ],
+  "errors": []
+}

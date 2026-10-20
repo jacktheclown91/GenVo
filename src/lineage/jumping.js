@@ -9,6 +9,7 @@ export const JUMP=Object.freeze({policy:'ballistic-jumping/1',gravity:10,lift:4.
  speed:4.2,foodPerMass:4,breath:12,minHealth:35,massPerPair:2.6,
  cooldownSeconds:.7,safeImpact:5,impactDamage:4,collisionDamage:12,waterDamage:12,maxSeconds:4});
 export function springLegs(a){return(a?.bodyPlan?.nodes||[]).filter(n=>n.partId==='spring-leg').length}
+export function hasJumpingAnatomy(a){return springLegs(a)>=2}
 export function jumpKinematics(a){
  const load=Math.max(.7,adultBodyMass(a)/(Math.max(2,springLegs(a))/2*1.45)),lift=JUMP.lift/Math.sqrt(load),
   speed=JUMP.speed*Math.max(.5,Math.min(1.6,a.genes?.motion||1))/Math.sqrt(load);
@@ -22,7 +23,7 @@ export function jumpAvailability(sim,a=sim.player(),{pounce=false}={}){
  if(a.airborne||a.perched)return fail('Land or descend before jumping.');
  if(a.torpor)return fail('Wake before jumping.');
  const legs=springLegs(a),mass=adultBodyMass(a);
- if(legs<2)return fail('Jumping requires at least two actual spring legs with developed tendons.');
+ if(!hasJumpingAnatomy(a))return fail('Jumping requires at least two actual spring legs with developed tendons.');
  if(mass>JUMP.massPerPair*legs/2)return fail('The spring legs cannot launch this body load.');
  if(a.health<JUMP.minHealth||a.age<(SPECIES[a.species]?.maturity||0)*.5)return fail('The body is too young or injured to jump.');
  if(a.carryingFood||a.bracing)return fail('Put down carried food and release your brace before jumping.');

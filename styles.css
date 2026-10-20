@@ -470,6 +470,8 @@ button{min-height:34px;padding:6px 16px;border:7px solid transparent;border-imag
 
 #interactionDock .creature-stage-resources button{flex-shrink:0;white-space:nowrap;min-width:max-content}
 #interactionDock .creature-stage-resources button svg,#interactionDock .creature-stage-resources button kbd{flex-shrink:0}
+#interactionDock .creature-stage-resources{justify-content:flex-start;flex-wrap:wrap;overflow-x:visible;gap:4px}
+#interactionDock .creature-stage-resources button[hidden]{display:none!important}
 
 #interactionDock .courtship-sequence button[data-future-beat]{font-size:9px;min-height:18px;padding:1px 4px;margin-left:3px}
 #interactionDock .courtship-sequence button[aria-pressed=true]{outline:1px solid #e3c980}

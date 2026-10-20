@@ -16,6 +16,11 @@
         "src/sim/simulation.js"
       ]
     },
+    "actionPossession": {
+      "authority": "src/lineage/action-capabilities.js",
+      "consumers": ["src/ui/creature-context-tray.js", "src/ui/gameplay-actions.js"],
+      "contract": "docs/ACTION-BAR-2026-10-20.md"
+    },
     "currentPartPixels": {
       "authority": "src/render/part-sprites.js",
       "consumers": [

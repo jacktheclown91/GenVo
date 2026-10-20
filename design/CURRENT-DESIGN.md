@@ -23,6 +23,8 @@ Planet-scale continents, oceans and climate structure are distinct from detailed
 
 Anatomical complexity must remain legible in gameplay. Flight changes movement, insulation changes climatic tolerance, and sensory organs change detection. Player-guided strategies and autonomous evolution are separate validation questions; neither may substitute for the other.
 
+The action bar shows possessed biological capabilities and hides absent ones. Temporarily unavailable abilities remain visible with an explanation from the shared execution authority. Common survival commands remain accessible, specialized actions compact automatically, and anatomy, inheritance, load and control changes refresh the presentation without UI-specific biological rules.
+
 ## First 100 Days milestone
 
 Demonstrate functioning mechanisms and a readable, engaging early-life experience, with causal observations around days 1, 10, 30, 60 and 100. Use a normally initialized young world and a separate established-world fixture with genuine ancestry. Do not demand a biodiversity, population, advanced-organ or survival quota within 100 days. Targeted ancestry experiments can establish accessibility without waiting for rare traits in every ordinary run.

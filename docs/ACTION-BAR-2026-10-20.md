@@ -1,0 +1,13 @@
+# Anatomy-aware action bar
+
+The quick action bar now queries `src/lineage/action-capabilities.js`, which composes the existing movement, aquatic, canopy, cold-behavior and physical-attack authorities. Jumping and climbing expose shared anatomical predicates also used by their execution checks. The UI no longer counts individual part names to decide visibility.
+
+Missing capabilities are hidden. Possessed abilities remain visible when stamina, health, maturity, body load, terrain, world rules, targets or pause prevent use. Disabled buttons retain the controller's explanation in their tooltip and accessible description. Current-state exit actions such as Surface, Fold, Land, Descend and Wake remain reachable even if anatomy changes while active. Powered Land is not exposed merely because the creature is in a ballistic jump; its status now respects the active aerial controller.
+
+Interact, Eat, Drink and Rest stay first. Remaining active exit actions precede usable specialized actions, followed by temporarily unavailable actions. DOM order matches visual and keyboard order. Hidden buttons occupy no space, and the bar wraps at narrow widths. Pounce uses the existing controller and is hidden without its shared spring capability. Context combat actions use the same possession contract. Venom currently modifies a bite automatically; no invented Sting, Spit or standalone Venom command was added.
+
+Queries refresh live, including after anatomy replacement/recombination, loading and controlled-actor changes. No ability results are cached by species or stale body identity. Regional travel callbacks that were declared but omitted from tray initialization are now connected; regional commands use canonical availability rather than disappearing at a UI-invented distance threshold.
+
+Evidence: `tests/action-capabilities.mjs` verifies single versus paired support, bilateral gliding, exhaustion versus possession, read-only queries, actual body recombination, saves, control changes and common-action order. All 23 focused playability checks passed; targeted jumping/gliding/combat checks, public export and canonical-source audit passed. [Chromium receipt](action-bar-review-2026-10-20/receipt.json) and inspected basic/capable/narrow screenshots verify rendered visibility, disabled reasons, wrapping, reload and handoff refresh. Anatomy/control swaps in that browser check are explicit legal fixtures, not evidence of natural evolution or creator acceptance. The final browser check uses the derived public export.
+
+The overall game remains under development. Existing broad-suite issues and full ecological/creator acceptance remain separate from this UI pass.

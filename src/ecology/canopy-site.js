@@ -3,7 +3,7 @@
 // with depleted material cannot magically carry unlimited bodies or eggs.
 import {adultBodyMass} from '../organisms/body-mass.js';
 import {planPartCounts} from '../lineage/part-abilities.js';
-import {hasGlidingSurfaces} from '../lineage/gliding.js';
+import {hasGlidingSurfaces,hasClimbingAnatomy} from '../lineage/gliding.js';
 import {winged,FLIGHT} from '../lineage/flight.js';
 
 export const CANOPY=Object.freeze({
@@ -21,13 +21,16 @@ export function canopySupport(world,x,y){
  if(world.water[i]||stand<CANOPY.minimumTree)return{supported:false,reason:'No mature, living Woodspire canopy here.',stand,i};
  return{supported:true,i,stand,maxLoad:stand*CANOPY.maxLoadPerTree};
 }
+export function roostAnatomy(animal,{climbing=true}={}){
+ return climbing&&hasClimbingAnatomy(animal)||canopyGrips(animal)>=2&&(winged(animal)||hasGlidingSurfaces(animal));
+}
 export function roostAvailability(animal,world,{climbing=false}={}){
- climbing=climbing&&(animal?.bodyPlan?.nodes||[]).filter(n=>n.partId==='climber-leg').length>=2;
+ climbing=climbing&&hasClimbingAnatomy(animal);
  if(!animal?.alive)return{enabled:false,reason:'No living creature.'};
  if(animal.aerialMode==='jump')return{enabled:false,reason:'Land from the jump before entering the canopy.'};
  if(animal.perched)return{enabled:false,reason:'Already in the canopy. Press 6 to take off or 7 to climb down.'};
  if(!animal.airborne&&!climbing)return{enabled:false,reason:'Take off before roosting in a tree.'};
- if(canopyGrips(animal)<2||(!climbing&&!winged(animal)&&!hasGlidingSurfaces(animal)))return{enabled:false,reason:'Requires two grasping or climbing legs and supported aerial anatomy.'};
+ if(!roostAnatomy(animal,{climbing}))return{enabled:false,reason:'Requires two grasping or climbing legs and supported aerial anatomy.'};
  if(!animal.airborne&&(animal.energy<Math.max(8,3*adultBodyMass(animal)+2)||animal.health<35||animal.carryingFood))return{enabled:false,reason:'Climbing requires stored food energy, healthy grips and no carried food.'};
  const site=canopySupport(world,animal.x,animal.y);
  if(!site.supported)return{enabled:false,reason:site.reason};
