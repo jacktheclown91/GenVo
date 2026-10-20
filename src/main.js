@@ -46,6 +46,7 @@ import {AudioDirector} from './audio/audio.js';
 import {LeadershipWheel} from './ui/leadership-wheel.js';
 import {EffectFeedbackController} from './ui/effect-feedback.js';
 import {SaveManager} from './persistence/save-manager.js';
+import {packageScenarioSnapshot,openScenarioSnapshot,loadBundledScenario,sha256Hex} from './persistence/scenario-library.js';
 import {ObserverController} from './ui/observer.js';
 import {SuccessionChooser} from './ui/succession-chooser.js';
 import {CreatureEditor} from './ui/creature-editor.js';
@@ -106,21 +107,72 @@ async function loadWorldFromMenu(slotId){
   const loaded=await saveManager.load(slotId);if(!loaded){showSaveStatus('This world could not be loaded',{error:true,duration:4000});throw Error('This world has no playable save.')}
   installSimulation(loaded,{resume:true});closeGameMenus();await renderer.sceneReady();await nextPaint();const migration=[birthRuleMigrationMessage(loaded),ecologyRuleMigrationMessage(loaded)].filter(Boolean).join(' ');showSaveStatus(migration?`World loaded. ${migration}`:'World loaded',{duration:migration?6500:1400});return true;
 }
-async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1'}){
-  if(!['freshwater/1','planetary/1'].includes(geography))throw Error('Unsupported new-world geography.');
-  if(inGameplay){const checkpoint=await saveManager.saveNow('before-world-switch');if(!checkpoint)throw Error('Save the active world before switching.');}
+async function exportScenarioFromMenu(slotId){
+  if(inGameplay&&slotId===saveManager.activeSlotId){
+    const saved=await saveManager.saveNow('scenario-export');
+    if(!saved)throw Error('Save this world before exporting it.');
+  }
+  if(saveManager.activeSave)await saveManager.activeSave;
+  const snapshot=await saveManager.loadSnapshot(slotId);
+  if(!snapshot)throw Error('Saved world could not be found.');
+  const savedWorld=(await saveManager.listWorlds()).find(w=>w.key===slotId);
+  const label=savedWorld?.worldName||'GenVo Evolved World';
+  const id='recorded-'+Date.now().toString(36);
+  const bundle=packageScenarioSnapshot(snapshot,{id,label,
+    description:'Recorded from a real GenVo world. Independent history and RNG preserved.'});
+  const blob=new Blob([JSON.stringify(bundle)],{type:'application/json'});
+  const url=URL.createObjectURL(blob),a=document.createElement('a');
+  try{
+    a.href=url;a.download=id+'.json';document.body.append(a);a.click();
+  }finally{a.remove();setTimeout(()=>URL.revokeObjectURL(url),1200);}
+}
+async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1',
+ start='new',scenarioFile=null,catalogEntry=null}){
+  if(start==='new'&&!['freshwater/1','planetary/1'].includes(geography))
+    throw Error('Unsupported new-world geography.');
+  if(inGameplay){const checkpoint=await saveManager.saveNow('before-world-switch');
+    if(!checkpoint)throw Error('Save the active world before switching.');}
+  showSaveStatus(start==='new'?'Preparing ecosystem...':'Restoring evolved ecosystem...', {duration:60000});
+  await nextPaint();
+  let next;
+  if(start==='new'){
+    const nextSeed=chosenSeed||'GENVO-'+Math.random().toString(16).slice(2,10).toUpperCase();
+    next=new Simulation(nextSeed,{player:true,worldGenerator:geography});
+  }else{
+    let snapshot;
+    if(start.startsWith('fork:')){
+      if(saveManager.activeSave)await saveManager.activeSave;
+      const slot=start.slice(5);
+      if(!(await saveManager.listWorlds()).some(w=>w.key===slot))throw Error('Source world not found.');
+      snapshot=await saveManager.loadSnapshot(slot);
+    }else if(start==='import'){
+      if(!scenarioFile)throw Error('Choose a recorded GenVo scenario package.');
+      if(scenarioFile.size>160*1024*1024)throw Error('Scenario package is too large.');
+      snapshot=openScenarioSnapshot(JSON.parse(await scenarioFile.text()));
+    }else if(start.startsWith('catalog:')){
+      if(!catalogEntry||catalogEntry.id!==start.slice(8))throw Error('Unknown curated scenario.');
+      snapshot=await loadBundledScenario(catalogEntry,{digest:sha256Hex});
+    }else throw Error('Unsupported starting world.');
+    if(!snapshot)throw Error('Selected world contains no checkpoint.');
+    // Restoration validates the entire real simulation state, rather than
+    // inventing an advanced organism or faking its ancestry/generation.
+    next=restoreSimulationSnapshot(structuredClone(snapshot));
+    if(!next.player()?.alive)throw Error('This checkpoint has no living controllable lineage. Select a playable saved world.');
+  }
+  // A new slot is only allocated AFTER the source has been fully validated.
+  // The source snapshot, RNG, player ancestry and archived regions stay intact.
   await saveManager.allocateWorld(name);
-  const nextSeed=chosenSeed||'GENVO-'+Math.random().toString(16).slice(2,10).toUpperCase();
-  showSaveStatus('Preparing ecosystem...',{duration:60000});await nextPaint();
-  installSimulation(new Simulation(nextSeed,{player:true,worldGenerator:geography}),{fresh:true});
-  tutorial.beginInWorld();closeGameMenus();await renderer.sceneReady();await nextPaint();
-  try{const saved=await saveManager.saveNow('world-start');if(!saved)showSaveStatus('Storage unavailable — this world is not saved',{error:true,duration:6500})}
-  catch(error){console.error(error);showSaveStatus('Could not save this new world — check browser storage',{error:true,duration:6500})}
+  installSimulation(next,start==='new'?{fresh:true}:{resume:true});
+  if(start==='new')tutorial.beginInWorld();
+  closeGameMenus();await renderer.sceneReady();await nextPaint();
+  try{const saved=await saveManager.saveNow(start==='new'?'world-start':'world-scenario-fork');
+    if(!saved)showSaveStatus('Storage unavailable. This world is not saved.',{error:true,duration:6500});
+  }catch(error){console.error(error);showSaveStatus('Could not save the new world.',{error:true,duration:6500});}
   return true;
 }
 const frontEnd=new FrontEnd({saveManager,audio,
   getWorldInfo:()=>`Generation ${sim.player()?.generation||sim.lineage?.highestGeneration||1} · Year ${sim.year||1}, Day ${sim.day||1}`,
-  onContinue:loadWorldFromMenu,onLoad:loadWorldFromMenu,onCreate:createWorldFromMenu,
+  onContinue:loadWorldFromMenu,onLoad:loadWorldFromMenu,onCreate:createWorldFromMenu,onExportScenario:exportScenarioFromMenu,
   onSave:async()=>{const checkpoint=await saveManager.saveNow('manual');if(!checkpoint)throw Error('Unable to save this world.');return checkpoint},
   onResume:()=>closeGameMenus(),
   onReturn:async(save)=>{
