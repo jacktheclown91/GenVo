@@ -9,7 +9,10 @@ const TYPED=Object.freeze({
  ...(typeof BigInt64Array==='function'?{BigInt64Array}:{}),
  ...(typeof BigUint64Array==='function'?{BigUint64Array}:{})
 });
-const MAX_NODES=500000,MAX_BINARY=160*1024*1024;
+// A modern planetary region can contain more than half a million distinct
+// owned resource/organism records. A strict object-count cap remains, but
+// must not reject a real mature-world save before assessing encoded bytes.
+const MAX_NODES=3000000,MAX_BINARY=160*1024*1024;
 function encodeBytes(bytes){
  if(typeof Buffer!=='undefined')return Buffer.from(bytes.buffer,bytes.byteOffset,bytes.byteLength).toString('base64');
  let data='';for(let i=0;i<bytes.length;i+=8192)data+=String.fromCharCode(...bytes.subarray(i,i+8192));
@@ -31,7 +34,7 @@ export function encodeSnapshotGraph(input){
   if(v===null||typeof v==='string'||typeof v==='boolean'||typeof v==='number')return v;
   if(typeof v!=='object')throw Error('Unsupported scenario value.');
   if(seen.has(v))return{$ref:seen.get(v)};
-  if(nodes.length>=MAX_NODES)throw Error('Scenario graph too large.');
+  if(nodes.length>=MAX_NODES)throw Error('Scenario graph exceeds '+MAX_NODES+' owned nodes.');
   const id=nodes.length;seen.set(v,id);nodes.push(null);
   let node;
   if(ArrayBuffer.isView(v)){
