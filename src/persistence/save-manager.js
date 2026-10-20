@@ -14,6 +14,7 @@ import {initializePlantResources,validatePlantResources} from '../ecology/plant-
 import {ancestralReproductiveGenome,validReproductiveGenome} from '../reproduction/reproductive-compatibility.js';
 import {matePreferencesFor} from '../reproduction/mate-preferences.js';
 import {CFG,PLANTS} from '../sim/config.js';
+import {restoreVisibilityRules,adoptVisibilityRules} from '../ecology/atmospheric-visibility.js';
 import {restoreCaveRules,adoptCaveRules} from '../lineage/cave-rules.js';
 import {validateCaves} from '../world/natural-caves.js';
 import {validateCaveTransit} from '../lineage/cave-traversal.js';
@@ -332,6 +333,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   Object.assign(sim,snapshot.core||{});
   if(!Object.hasOwn(snapshot.core||{},'regionalReplayPolicy'))delete sim.regionalReplayPolicy;
   regionalReplayPolicy(sim);
+  restoreVisibilityRules(sim,snapshot.core||{});
   restoreCaveRules(sim,snapshot.core||{});
   restoreBurrowingRules(sim,snapshot.core||{});
   restoreClimbingRules(sim,snapshot.core||{});
@@ -584,6 +586,7 @@ export class SaveManager{
       const climbing=adoptClimbingRules(sim,{source,backupSlot});rollback=()=>{climbing.rollback();diving.rollback();movement.rollback()};
       const burrowing=adoptBurrowingRules(sim,{source,backupSlot});rollback=()=>{burrowing.rollback();climbing.rollback();diving.rollback();movement.rollback()};
       const caves=adoptCaveRules(sim,{source,backupSlot});rollback=()=>{caves.rollback();burrowing.rollback();climbing.rollback();diving.rollback();movement.rollback()};
+      const visibility=adoptVisibilityRules(sim,{source,backupSlot});rollback=()=>{visibility.rollback();caves.rollback();burrowing.rollback();climbing.rollback();diving.rollback();movement.rollback()};
       const snapshot=createSimulationSnapshot(sim,{reason:'movement-rule-continuation',savedAt});snapshot.meta.key=slotId;snapshot.meta.worldName=worldName;
       const backupMetadata={...sourceSnapshot.meta,key:backupSlot,worldName:('Backup · '+worldName).slice(0,40),savedAt,role:'movement-backup',backupFor:slotId};
       tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');done=transactionDone(tx);

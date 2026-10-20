@@ -1,0 +1,63 @@
+{
+  "kind": "automated normal New World and Continue; generated atmosphere; only player observation positions staged; sight probe is read-only",
+  "samples": {
+    "thick": {
+      "x": 87.5,
+      "y": 38.5,
+      "rain": 0.6135756374936339,
+      "temperature": 0.4382661440968514,
+      "wind": {
+        "east": -0.21543418677155468,
+        "south": 0.5748253735908269,
+        "strength": 0.6138697736114352
+      },
+      "fog": 0.24599817272557584,
+      "snow": 0,
+      "liquid": 0.4824240576825136,
+      "extinction": 0.05122886332278221
+    },
+    "clear": {
+      "x": 50.5,
+      "y": 12.5,
+      "rain": 0.29765372474401103,
+      "temperature": 0.4371836417913437,
+      "wind": {
+        "east": -0.6390322278453793,
+        "south": -0.4430880446219142,
+        "strength": 0.7776176460908666
+      },
+      "fog": 0,
+      "snow": 0,
+      "liquid": 0,
+      "extinction": 0
+    },
+    "policy": "atmospheric-visibility/1",
+    "probe": {
+      "detected": true,
+      "distance": 6,
+      "opticalDepth": 0.24334298677781788,
+      "transmission": 0.7840025651376629,
+      "effectiveRange": 6.272020521101303
+    },
+    "climate": {
+      "temp": 0.54,
+      "rain": 0.5023445273271792,
+      "weatherFactor": 0.866111254012378
+    },
+    "day": 1
+  },
+  "restored": {
+    "rain": 0.6135756374936339,
+    "temperature": 0.4382661440968514,
+    "wind": {
+      "east": -0.21543418677155468,
+      "south": 0.5748253735908269,
+      "strength": 0.6138697736114352
+    },
+    "fog": 0.24599817272557584,
+    "snow": 0,
+    "liquid": 0.4824240576825136,
+    "extinction": 0.05122886332278221
+  },
+  "errors": []
+}

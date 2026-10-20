@@ -1,4 +1,5 @@
 import {sameDepth} from '../lineage/diving.js';
+import {atmosphericSight} from '../ecology/atmospheric-visibility.js';
 import {canHunt,preyPreference} from '../ecology/functional-diet.js';
 import {bodyMass} from '../organisms/body-mass.js';
 import {wildTraits} from '../organisms/wild-bodies.js';
@@ -41,7 +42,7 @@ export class PredatorEncounterController{
     if(!hunter||!player)return false;
     if(this.sim.camouflageConceals(player,hunter,distance))return false;
     const P=CFG.stalkerPursuit,senses=(hunter.genes?.senses||1)*wildTraits(hunter).sight;
-    const pf=partEffectFactors(player);if(distance>P.sight*senses*(pf?.quiet?WAVE1.quietSight:1)*(pf?.visibility??1))return false;
+    const pf=partEffectFactors(player),range=P.sight*senses*(pf?.quiet?WAVE1.quietSight:1)*(pf?.visibility??1);if(distance>range||!atmosphericSight(this.sim,hunter,player,range).detected)return false;
     // Phase 3I refuges: the same cover rule that hides any prey from any hunter (size-scaled, noise-aware).
     if(REFUGE_PARITY.enabled)return !coverHides(this.sim,player,hunter,distance,{tracking:hunter.playerHunt?.targetId===player.id});
     if((player.noisyUntilTick||0)>=this.sim.tickCount)return true;

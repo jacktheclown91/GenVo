@@ -49,6 +49,9 @@ sim.openingGraceEnded=true;
 const hunter=sim.animals.find(a=>a.alive&&a.species==='needlejaw');
 assert.ok(hunter,'test has a hunter');
 const dryOffset=[[2.5,0],[-2.5,0],[0,2.5],[0,-2.5]].find(([x,y])=>sim.world.sameLand(p.x,p.y,p.x+x,p.y+y));assert.ok(dryOffset,'Threat fixture must be on the same actual landmass');hunter.x=p.x+dryOffset[0];hunter.y=p.y+dryOffset[1];
+// Danger music now requires a perceived threat. Face the real hunter so this
+// fixture tests its existing escalation rather than an unseen, silent body.
+p.dir=dryOffset[0]>0?2:dryOffset[0]<0?6:dryOffset[1]>0?4:0;
 const danger=musicSceneFor(sim);
 assert.equal(danger.scene,AUDIO_SCENES.DANGER);
 assert.ok(danger.danger>.5);

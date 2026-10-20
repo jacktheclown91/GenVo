@@ -1,3 +1,4 @@
+import {atmosphericSight} from '../ecology/atmospheric-visibility.js';
 import {carcassRule,CARCASS_RULES} from './carcass-rules.js';
 import {diggingRule,DIGGING_RULES} from '../lineage/digging-rules.js';
 import {rememberSeedTrace,updateSeedObservations,visibleSeedPatches,seedPatchTarget,seedPatchDescription,seedPatchAvailability,readSeedPatch} from './seed-observations.js';
@@ -246,12 +247,12 @@ export class DiscoveryController{
     if(t%(CFG.simHz*CFG.dayTicks)===0)this.maybeElder();
     const p=this.sim.player();if(!p?.alive)return;const pf=partEffectFactors(p),sight=pf?.threatSense??1;
     // Places within sight are found; the lookout reveals the area.
-    for(const s of this.sites){if(s.gone)continue;const d=Math.hypot(s.x-p.x,s.y-p.y);if(d<=4*sight)this.discover(s)}
-    const look=this.siteAt(p,'lookout',1.3);if(look){this.revealUntil=t+CFG.simHz*20;this.complete('lookout');for(const s of this.sites)if(!s.gone&&Math.hypot(s.x-p.x,s.y-p.y)<=22*sight)this.discover(s)}
+    for(const s of this.sites){if(s.gone)continue;const d=Math.hypot(s.x-p.x,s.y-p.y);if(d<=4*sight&&atmosphericSight(this.sim,p,s,4*sight).detected)this.discover(s)}
+    const look=this.siteAt(p,'lookout',1.3);if(look){this.revealUntil=t+CFG.simHz*20;this.complete('lookout');for(const s of this.sites)if(!s.gone&&Math.hypot(s.x-p.x,s.y-p.y)<=22*sight&&atmosphericSight(this.sim,p,s,22*sight).detected)this.discover(s)}
     if(this.found.length>=3)this.complete('discover3');
     if((this.sim.evolutionBudget?.matured?.length||0)>0)this.complete('raise');
     // Field guide: species and wild GenVo bodies seen nearby.
-    if(t%(CFG.simHz*2)===0){const r=8*sight;for(const a of this.sim.animals){if(!a.alive||a.id===p.id||Math.hypot(a.x-p.x,a.y-p.y)>r)continue;this.noteCreatureAppearance(a);if(!this.seenSpecies.includes(a.species))this.seenSpecies.push(a.species);if(isWildSpecies(a.species)&&a.bodyPlan){const br=wildBranch(a);this.seenBranches||=[];if(br.id!=='common'&&!this.seenBranches.includes(br.id)){this.seenBranches.push(br.id);this.notice(`Field guide: a ${br.label} · its body has evolved`,'warn')}}if((a.species==='genvo'&&!a.lineage)||isWildSpecies(a.species))this.seeParts(a)}if(this.wildPartsSeen()>=5)this.complete('spot5')}
+    if(t%(CFG.simHz*2)===0){const r=8*sight;for(const a of this.sim.animals){if(!a.alive||a.id===p.id||Math.hypot(a.x-p.x,a.y-p.y)>r||!atmosphericSight(this.sim,p,a,r).detected)continue;this.noteCreatureAppearance(a);if(!this.seenSpecies.includes(a.species))this.seenSpecies.push(a.species);if(isWildSpecies(a.species)&&a.bodyPlan){const br=wildBranch(a);this.seenBranches||=[];if(br.id!=='common'&&!this.seenBranches.includes(br.id)){this.seenBranches.push(br.id);this.notice(`Field guide: a ${br.label} · its body has evolved`,'warn')}}if((a.species==='genvo'&&!a.lineage)||isWildSpecies(a.species))this.seeParts(a)}if(this.wildPartsSeen()>=5)this.complete('spot5')}
     // Thorn brakes scratch any soft-bodied occupant (Phase 3I refuges; previously only family GenVo).
     for(const a of this.sim.animals){if(!a.alive||!REFUGE_PARITY.enabled&&(!a.lineage||a.species!=='genvo'))continue;if(this.siteAt(a,'thorn-brake',1.8)&&!(REFUGE_PARITY.enabled?armoured(this.sim,a):this.armored(a)))a.health=Math.max(1,a.health-.5)}
     // Discovery marks nearby carrion under current rules; historical saves retain their original event.

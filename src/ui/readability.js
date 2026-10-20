@@ -1,4 +1,5 @@
 import {groundDiet,canHunt,preyPreference} from '../ecology/functional-diet.js';
+import {visuallyObservable} from '../ecology/atmospheric-visibility.js';
 import {wildTraits} from '../organisms/wild-bodies.js';
 import {CFG,PLANTS} from '../sim/config.js';
 import {SPECIES,canPreyOn} from '../organisms/species.js';
@@ -9,7 +10,7 @@ export function nearestThreat(sim,animal,radius=10){
   for(const other of sim.animals||[]){
     if(!other.alive||other.id===animal.id||!canHunt(other)||preyPreference(other,animal)<=0)continue;
     const d=Math.hypot(other.x-animal.x,other.y-animal.y)/wildTraits(other).stealth;
-    if(d<bestD){bestD=d;best=other}
+    if(d<bestD&&visuallyObservable(sim,animal,other)){bestD=d;best=other}
   }
   return best?{animal:best,distance:bestD,label:SPECIES[best.species]?.label||best.species}:null;
 }

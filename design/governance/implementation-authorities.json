@@ -3,6 +3,11 @@
   "principle": "One live authority for each mechanism. Multiple states, species, art drafts and measured outcomes are permitted; competing runtime definitions are not.",
   "gameEntrypoint": "src/main.js",
   "systems": {
+    "atmosphericVisibility": {
+      "authority": "src/ecology/atmospheric-visibility.js",
+      "consumers": ["src/ecology/threat-perception.js", "src/sim/simulation.js", "src/gameplay/predator-encounter.js", "src/gameplay/discovery.js", "src/render/renderer.js", "src/render/atmosphere.js", "src/audio/model.js", "src/persistence/save-manager.js"],
+      "contract": "docs/ATMOSPHERE-2026-10-20.md"
+    },
     "partIdsAndSockets": {
       "authority": "src/lineage/part-registry.js",
       "consumers": [

@@ -1,4 +1,6 @@
 import {CanvasRecorder} from './canvas-recorder.js';
+import {drawAtmosphere} from './atmosphere.js';
+import {VISIBILITY,visuallyObservable} from '../ecology/atmospheric-visibility.js';
 import {CAVES} from '../world/cave-policy.js';
 import {clampCameraToWorld} from './camera-bounds.js';
 import {beginTintFrame} from './indexed-part-renderer.js';
@@ -126,7 +128,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     this.drawSites(tile,cols,rows);
     this.drawEggs(tile);drawWorldTraces(this,tile);
     drawSubsurface(this,tile);this.screenPos=new Map();
-    const visible=this.sim.animals.filter(a=>a.alive&&!!a.underground===!!this.sim.player()?.underground&&Math.abs(a.x-this.camera.x)<cols/2+2&&Math.abs(a.y-this.camera.y)<rows/2+2).sort((a,b)=>a.y-b.y);this.visibleAnimals=visible;
+    const visible=this.sim.animals.filter(a=>a.alive&&!!a.underground===!!this.sim.player()?.underground&&visuallyObservable(this.sim,this.sim.player(),a)&&Math.abs(a.x-this.camera.x)<cols/2+2&&Math.abs(a.y-this.camera.y)<rows/2+2).sort((a,b)=>a.y-b.y);this.visibleAnimals=visible;
     if(!this.lowDetail&&!this.sim.player()?.underground){this.drawForegroundHabitat(tile,startX,startY,cols,rows);this.drawHabitatSceneForeground(tile);this.drawRegionalFocalForeground(tile);this.drawSceneDepthForeground(tile)}
     // Phase 3L: creatures are prepared through a recording context and composed afterwards in the same order, so
     // freshly drawn sprites are staged together (genvo-draw.js SPRITE_BATCH). frameStats are timing only.
@@ -135,7 +137,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
        try{for(const a of visible)this.drawAnimal(a,tile)}finally{this.ctx=real;t1=performance.now();try{rec.flush()}finally{endSpriteBatch()}}fs.creaturePrep=t1-t0;fs.creatureCompose=performance.now()-t1;fs.recorderFlushes=rec.stats.flushes}
      else{for(const a of visible)this.drawAnimal(a,tile);fs.creaturePrep=performance.now()-t0;fs.creatureCompose=0}}
     // Weather and interaction cues remain above creatures; ground decoration does not.
-    if(!this.lowDetail&&!this.sim.player()?.underground)this.drawWeatherOverlay();
+    if((!this.lowDetail||this.sim.visibilityRules===VISIBILITY.policy)&&!this.sim.player()?.underground)this.drawWeatherOverlay();
     this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId));this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.processTerrainRefreshQueue();}
 
 
@@ -163,6 +165,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   }
 
   drawWeatherOverlay(){
+    if(drawAtmosphere(this))return;
     const climate=this.sim.climate;if(!climate)return;const c=this.ctx,rain=Math.max(0,Math.min(1,(climate.rain-.30)/.42)),cold=Math.max(0,Math.min(1,(.43-climate.temp)/.18));
     if(rain>.02){
       c.save();c.fillStyle=`rgba(14,28,38,${(.035+rain*.07).toFixed(3)})`;c.fillRect(0,0,this.w,this.h);
@@ -200,6 +203,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     }
   }
   drawWorldCue(x,y,tile,kind,label){
+    if(!visuallyObservable(this.sim,this.sim.player(),{x,y}))return;
     const c=this.ctx,px=Math.round((x-this.camera.x)*tile+this.w/2),py=Math.round((y-this.camera.y)*tile+this.h/2),pulse=5+Math.sin(performance.now()/220)*1.5;
     c.save();c.strokeStyle=kind==='water'?'rgba(111,211,235,.92)':'rgba(176,222,116,.92)';c.lineWidth=2;c.beginPath();c.arc(px,py,pulse,0,Math.PI*2);c.stroke();
     c.restore();
@@ -364,7 +368,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const D=this.sim.discovery;if(!D?.sites?.length)return;const c=this.ctx,u=this.zoom;
     for(const site of D.sites){if(site.gone||Math.abs(site.x-this.camera.x)>cols/2+2||Math.abs(site.y-this.camera.y)>rows/2+2)continue;const px=Math.round((site.x-this.camera.x)*tile+this.w/2),py=Math.round((site.y-this.camera.y)*tile+this.h/2);drawSite(c,site,{px,py,u,found:D.isFound(site)})}
     // A lookout reveals every Stalker in sight for a while.
-    if(D.revealUntil>this.sim.tickCount){c.save();c.strokeStyle='rgba(239,105,94,.95)';c.lineWidth=2;for(const h of this.sim.animals){if(!h.alive||!canHunt(h))continue;const x=Math.round((h.x-this.camera.x)*tile+this.w/2),y=Math.round((h.y-this.camera.y)*tile+this.h/2);if(x<-20||y<-20||x>this.w+20||y>this.h+20)continue;c.beginPath();c.arc(x,y,9,0,Math.PI*2);c.stroke()}c.restore()}
+    if(D.revealUntil>this.sim.tickCount){c.save();c.strokeStyle='rgba(239,105,94,.95)';c.lineWidth=2;for(const h of this.sim.animals){if(!h.alive||!canHunt(h)||!visuallyObservable(this.sim,this.sim.player(),h,22))continue;const x=Math.round((h.x-this.camera.x)*tile+this.w/2),y=Math.round((h.y-this.camera.y)*tile+this.h/2);if(x<-20||y<-20||x>this.w+20||y>this.h+20)continue;c.beginPath();c.arc(x,y,9,0,Math.PI*2);c.stroke()}c.restore()}
   }
   drawSnowWindow(tile,startX,startY,cols,rows){
     const w=this.sim.world,depth=w.soilWater?.snowpack;
