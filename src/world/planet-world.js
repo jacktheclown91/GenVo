@@ -17,6 +17,7 @@ import {COAT_MOISTURE} from '../lineage/coat-moisture.js';
 import {SEASONAL_COAT} from '../lineage/seasonal-coat.js';
 import {EMBRYO_CLIMATE} from '../reproduction/embryo-climate.js';
 import {YOUNG_CLIMATE} from '../ecology/young-climate.js';
+import {FLIGHT_WIND} from '../lineage/flight-wind.js';
 // Initial geography is immutable input. These World arrays are the sole live state.
 export function initializePlanetWorld(w){
  if(w.n!==128)throw Error('Planet preview currently supports the reviewed 128-tile extent only.');
@@ -55,5 +56,6 @@ export function initializePlanetWorld(w){
  w.environment={schema:6,boundaryWaterPolicy:PLANETARY_BOUNDARY_WATER.pairedPolicy,blockedBoundaries:new Uint8Array(w.len),seamRunoffPolicy:PLANETARY_SEAM_RUNOFF.policy,groundwaterSeamEligibility:PLANETARY_SEAM_GROUNDWATER.policy,springEligibility:GROUNDWATER_SPRINGS.policy,mineralRunoffPolicy:PLANETARY_MINERAL_RUNOFF.policy,terrainSedimentPolicy:TERRAIN_SEDIMENT.policy,wetbedSedimentPolicy:PLANETARY_WETBED.policy,channelTopologyPolicy:PLANETARY_CHANNEL_TOPOLOGY.policy,coatMoisturePolicy:COAT_MOISTURE.policy,seasonalCoatPolicy:SEASONAL_COAT.policy,embryoClimatePolicy:EMBRYO_CLIMATE.policy,youngClimatePolicy:YOUNG_CLIMATE.policy,floodOrigin:new Uint8Array(w.len),temperatureOffset,rainScale,depth,volume,overland:new Float64Array(w.len),salt,boundary,day:0,totals:{
   saltInput:0,saltOutput:0,rainWater:0,displacedWater:0,boundaryInput:0,boundaryOutput:0,boundaryWaterInput:0,boundaryWaterOutput:0,boundarySaltInput:0,boundarySaltOutput:0,seamRunoffInput:0,seamRunoffOutput:0
  },daily:[]};
+ w.environment.flightWindPolicy=FLIGHT_WIND.policy;
  w.buildLandRegions();w.buildHydrology();initializeColdFlora(w);initializeFreshwater(w);initializePlantResources(w);initializeOrganicResources(w);
 }

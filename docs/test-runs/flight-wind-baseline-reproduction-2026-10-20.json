@@ -1,0 +1,62 @@
+[
+  {
+    "suite": "aquatic",
+    "baseline": "07ee3e4",
+    "exitCode": 1,
+    "output": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: shore actions require return, mating, escape or a verified compatible freshwater bank meal (group)\r\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/aquatic.mjs:39:49\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/[eval1]:7:1 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: false,\r\n  expected: true,\r\n  operator: '==',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v24.14.0\r\n"
+  },
+  {
+    "suite": "inherited-embryo-climate",
+    "baseline": "07ee3e4",
+    "exitCode": 1,
+    "output": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/organisms/body-mass.js:55\r\n  const check=a=>{if(!a)return;if(massPolicy(a)!==expected)throw Error('Saved organism mass policy differs from world');if(expected===ANATOMICAL_MASS)adultBodyMass(a);};\r\n                                                                 ^\r\n\r\nError: Saved organism mass policy differs from world\r\n    at check (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/organisms/body-mass.js:55:66)\r\n    at restoreMassRules (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/organisms/body-mass.js:57:34)\r\n    at restoreSimulationSnapshot (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/persistence/save-manager.js:354:3)\r\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/inherited-embryo-climate.mjs:93:14\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/[eval1]:7:1\r\n\r\nNode.js v24.14.0\r\n"
+  },
+  {
+    "suite": "persistent-coat-moisture",
+    "baseline": "07ee3e4",
+    "exitCode": 1,
+    "output": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/world/environment.js:47\r\n if(e.seasonalCoatPolicy!==undefined&&(e.seasonalCoatPolicy!==SEASONAL_COAT.policy||e.coatMoisturePolicy!==COAT_MOISTURE.policy||w.generator!=='planetary/1'||e.schema!==6))throw Error('Invalid planetary seasonal-coat policy.');\r\n                                                                                                                                                                                  ^\r\n\r\nError: Invalid planetary seasonal-coat policy.\r\n    at validateEnvironment (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/world/environment.js:47:179)\r\n    at restoreSurfaceTopology (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/world/surface-topology.js:69:112)\r\n    at restoreWorld (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/persistence/save-manager.js:126:3)\r\n    at restoreSimulationSnapshot (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/persistence/save-manager.js:324:3)\r\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/persistent-coat-moisture.mjs:113:16\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/[eval1]:7:1\r\n\r\nNode.js v24.14.0\r\n"
+  },
+  {
+    "suite": "planetary-boundary-exchange",
+    "baseline": "07ee3e4",
+    "exitCode": 1,
+    "output": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/world/environment.js:37\r\n if(e.groundwaterSeamEligibility!==undefined&&(e.groundwaterSeamEligibility!==PLANETARY_SEAM_GROUNDWATER.policy||w.generator!=='planetary/1'||e.schema!==6))throw Error('Invalid planetary groundwater-seam eligibility.');\r\n                                                                                                                                                                  ^\r\n\r\nError: Invalid planetary groundwater-seam eligibility.\r\n    at validateEnvironment (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/world/environment.js:37:163)\r\n    at restoreSurfaceTopology (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/world/surface-topology.js:69:112)\r\n    at restoreWorld (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/persistence/save-manager.js:126:3)\r\n    at restoreSimulationSnapshot (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/persistence/save-manager.js:324:3)\r\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/planetary-boundary-exchange.mjs:92:14\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/[eval1]:7:1\r\n\r\nNode.js v24.14.0\r\n"
+  },
+  {
+    "suite": "planetary-groundwater-springs",
+    "baseline": "07ee3e4",
+    "exitCode": 1,
+    "output": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\r\n\r\n  assert.ok(record.discharged>0&&record.discharged<=GROUNDWATER_SPRINGS.maxDischargePerCell)\r\n\r\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/planetary-groundwater-springs.mjs:34:8\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/[eval1]:7:1 {\r\n  generatedMessage: true,\r\n  code: 'ERR_ASSERTION',\r\n  actual: false,\r\n  expected: true,\r\n  operator: '==',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v24.14.0\r\n"
+  },
+  {
+    "suite": "planetary-terrain-sediment",
+    "baseline": "07ee3e4",
+    "exitCode": 1,
+    "output": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\r\n\r\n  assert.ok(i>=0)\r\n\r\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/planetary-terrain-sediment.mjs:111:8\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/[eval1]:7:1 {\r\n  generatedMessage: true,\r\n  code: 'ERR_ASSERTION',\r\n  actual: false,\r\n  expected: true,\r\n  operator: '==',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v24.14.0\r\n"
+  },
+  {
+    "suite": "planetary-water-seam-ownership",
+    "baseline": "07ee3e4",
+    "exitCode": 1,
+    "output": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\r\n\r\n  assert.ok(Math.abs(aRow.boundaryWaterInput-expectedA)<1e-7)\r\n\r\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/planetary-water-seam-ownership.mjs:65:8\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/[eval1]:7:1 {\r\n  generatedMessage: true,\r\n  code: 'ERR_ASSERTION',\r\n  actual: false,\r\n  expected: true,\r\n  operator: '==',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v24.14.0\r\n"
+  },
+  {
+    "suite": "planetary-wind-pollination",
+    "baseline": "07ee3e4",
+    "exitCode": 1,
+    "output": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: existing flora has funded gametes\r\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/planetary-wind-pollination.mjs:15:8\r\n    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)\r\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)\r\n    at async file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/[eval1]:7:1 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: false,\r\n  expected: true,\r\n  operator: '==',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v24.14.0\r\n"
+  },
+  {
+    "suite": "restore-deferred-flora",
+    "baseline": "07ee3e4",
+    "exitCode": 1,
+    "output": "node:internal/modules/run_main:107\r\n    triggerUncaughtException(\r\n    ^\r\n\r\nAssertionError [ERR_ASSERTION]: freshwater/1 no-controller entire restored state\r\n    at same (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/restore-deferred-flora.mjs:13:32)\r\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/restore-deferred-flora.mjs:22:3 {\r\n  generatedMessage: false,\r\n  code: 'ERR_ASSERTION',\r\n  actual: false,\r\n  expected: true,\r\n  operator: '==',\r\n  diff: 'simple'\r\n}\r\n\r\nNode.js v24.14.0\r\n"
+  },
+  {
+    "suite": "observer-play",
+    "baseline": "07ee3e4",
+    "exitCode": 0,
+    "output": "4x large-population cost: 496 ms simulation per real second (559 animals)\r\nobserver play ok\r\n"
+  }
+]

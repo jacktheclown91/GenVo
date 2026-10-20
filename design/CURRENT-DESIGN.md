@@ -4,6 +4,10 @@ Authority: creator-approved Living Planet direction and subsequent bounded decis
 
 GenVo is a Living Planet, an open-ended evolutionary possibility engine and a playable survival/lineage game. Players influence habitat, actions, partners, care and descendant choices within legitimate ancestry and resource constraints. They do not receive guaranteed evolutionary outcomes.
 
+## Full Creature-stage completion direction
+
+The creator's October 20 directive establishes the complete, interconnected Creature-stage game and supporting Living Planet as the current delivery scope. Canonical development remains in the existing local project on synchronized `main`; coherent completed passes may be committed and pushed through normal history. The [full-game matrix](../docs/FULL-GAME-COMPLETION-MATRIX.md) tracks actual implementation and missing systems. Build missing gameplay and its controls, visuals, animation, audio, inheritance and persistence in dependency-aware passes, using targeted checks during construction. Concentrate prolonged ecology, balancing and opt-in human observation after substantial functional and presentation coverage. The earlier First 100 Days milestone remains useful evidence, not a substitute for full-game acceptance or a restriction on the new scope.
+
 ## Biological rules
 
 - One World and Simulation own physical resources and organisms. Player and wildlife use shared biological authorities. Rendering, labels and cameras cannot decide ecology.

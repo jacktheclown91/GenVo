@@ -313,6 +313,11 @@
         "src/sim/simulation.js"
       ]
     },
+    "directionalFlightWind": {
+      "authority": "src/lineage/flight-wind.js",
+      "consumers": ["src/lineage/lifestyle.js", "src/lineage/flight.js", "src/render/flight-wind.js", "src/world/planet-world.js", "src/world/environment.js"],
+      "note": "New planetary worlds record directional-flight-wind/1. Shared airborne movement samples the existing absolute wind field and physical day for heading-dependent speed and finite movement energy costs. No RNG, atmosphere inventory, automatic historical adoption or player-only physics. Renderer and action tooltip display the same observed wind."
+    },
     "inheritedPigmentation": {
       "authority": "src/organisms/pigmentation.js",
       "consumers": [

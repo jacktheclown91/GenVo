@@ -7,7 +7,7 @@ const FUTURE_POLICIES=[
  'groundwaterSeamEligibility','springEligibility','mineralRunoffPolicy',
  'terrainSedimentPolicy','wetbedSedimentPolicy','channelTopologyPolicy',
  'coatMoisturePolicy','seasonalCoatPolicy','embryoClimatePolicy',
- 'youngClimatePolicy','floodOrigin'
+ 'youngClimatePolicy','flightWindPolicy','floodOrigin'
 ];
 export function simulateHistoricalPlanetaryEnvironment(world,schema){
  if(!world||world.generator!=='planetary/1'||![3,4,5].includes(schema)||

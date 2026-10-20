@@ -5,6 +5,7 @@
 import {adultBodyMass} from '../organisms/body-mass.js';
 import {SPECIES} from '../organisms/species.js';
 import {planPartCounts} from './part-abilities.js';
+import {flightWindReading} from './flight-wind.js';
 
 export const FLIGHT=Object.freeze({
  maxAdultMass:2.25, takeoffEnergy:6, minimumEnergy:14,
@@ -25,7 +26,7 @@ export function flightAvailability(animal,world){
  if(animal.energy<FLIGHT.minimumEnergy)return{enabled:false,reason:'Need more stored food energy for powered flight.'};
  if(animal.carryingFood)return{enabled:false,reason:'Drop carried food before taking off.'};
  if(!world?.isPlayable(animal.x,animal.y)||(!animal.perched&&world.water[world.idx(animal.x,animal.y)]))return{enabled:false,reason:'Take off from firm ground or a stable canopy perch.'};
- return{enabled:true,airborne:false,reason:'Lift off with inherited wings. Flapping consumes energy.'};
+ return{enabled:true,airborne:false,reason:'Lift off with inherited wings. Flapping consumes energy. '+(flightWindReading(animal,world)?.description||'')};
 }
 export function takeoff(animal,world){
  const available=flightAvailability(animal,world);
@@ -38,7 +39,7 @@ export function landingAvailability(animal,world,{swimmer=false}={}){
  if(!animal?.airborne)return{enabled:false,reason:'Already on the surface.'};
  if(!world?.isPlayable(animal.x,animal.y))return{enabled:false,reason:'Cannot land beyond the world boundary.'};
  if(world.water[world.idx(animal.x,animal.y)]&&!swimmer)return{enabled:false,reason:'Open water below. Reach solid land before descending.'};
- return{enabled:true,reason:'Land here and return to surface movement.'};
+ return{enabled:true,reason:'Land here and return to surface movement. '+(flightWindReading(animal,world)?.description||'')};
 }
 export function land(animal,world,{swimmer=false}={}){
  const availability=landingAvailability(animal,world,{swimmer});

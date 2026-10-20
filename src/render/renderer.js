@@ -9,6 +9,7 @@ import {snowCover} from '../world/snowpack.js';
 import {botanicalPlantView} from '../ecology/botanical-reproduction.js';
 import {FeedingPresentation,applyFeedingExpression} from './feeding-expression.js';
 import {drawWorldTraces} from './world-traces.js';
+import {drawFlightWind} from './flight-wind.js';
 import {EncounterPresentation,applyEncounterPose} from './encounter-expression.js';
 import {EncounterReactionPresentation,applyEncounterReaction,reactionAttention,reactionShove,drawEncounterReactionMarks,applyDefenseReaction,defenseShove,drawDefenseMarks} from './encounter-reactions.js';
 import {canHunt} from '../ecology/functional-diet.js';
@@ -130,7 +131,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
      else{for(const a of visible)this.drawAnimal(a,tile);fs.creaturePrep=performance.now()-t0;fs.creatureCompose=0}}
     // Weather and interaction cues remain above creatures; ground decoration does not.
     if(!this.lowDetail)this.drawWeatherOverlay();
-    this.drawPlayerAnchor(tile);this.drawRelativeMarks(tile);this.drawReadabilityCues(tile);this.motion.prune(this.sim.tickCount);this.processTerrainRefreshQueue();}
+    this.drawPlayerAnchor(tile);drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId));this.drawRelativeMarks(tile);this.drawReadabilityCues(tile);this.motion.prune(this.sim.tickCount);this.processTerrainRefreshQueue();}
 
 
   // v1.33.5: which relatives are carrying out your Family Command (solid gold pip) and which
