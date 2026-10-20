@@ -89,4 +89,34 @@ historical.environment.boundaryWaterPolicy=PLANETARY_BOUNDARY_WATER.policy;
 delete historical.environment.blockedBoundaries;
 assert.ok(boundaryWaterExchange(historical.environment,i,
  historical.environment.salt[i],historical.environment.volume[i]));
+// A physically flowing freshwater seam must still publish reciprocal
+// receipts when dissolved salt is exactly zero.
+function freshwaterRegion(origin,index,volume){
+ const wet=new Uint8Array(n*n),edge=new Uint8Array(n*n);
+ const salt=new Float64Array(n*n),water=new Float64Array(n*n),depth=new Float32Array(n*n);
+ wet[index]=1;edge[index]=1;water[index]=volume;depth[index]=volume;
+ const row={day:1,before:0,after:0,input:0,output:0,closure:0,
+  waterBefore:volume,waterAfter:volume,waterInput:0,waterOutput:0,waterClosure:0};
+ return{n,len:n*n,generator:'planetary/1',planet:{},regionOrigin:origin,
+  water:wet,terrain:{elevation:new Float32Array(n*n)},
+  environment:{schema:6,salt,volume:water,depth,boundary:edge,
+   day:1,totals:{saltInput:0,saltOutput:0},lastDay:row,daily:[row]},
+  buildHydrology(){}};
+}
+const freshA=freshwaterRegion({x:0,y:0},n-1,1);
+const freshB=freshwaterRegion({x:128,y:0},0,.5);
+const freshSession={key:'128,0',biologicalMode:'canonical-ticks/1',
+ snapshot:{core:{day:2,tickCount:CFG.dayTicks},world:{
+  regionOrigin:freshB.regionOrigin,environment:freshB.environment,
+  surfaceWater:{mask:freshB.water},terrain:freshB.terrain}}};
+const freshSim={world:freshA,day:2,tickCount:CFG.dayTicks,
+ regionalReplayPolicy:REGIONAL_REPLAY.synchronized,
+ planetaryTravel:{schema:1,nextId:1,sessions:[freshSession]}};
+const freshReceipts=reconcilePlanetarySaltSeams(freshSim);
+assert.equal(freshReceipts.length,1,'the water-only pair must not disappear');
+assert.ok((freshReceipts[0].waterAToB||0)>0);
+assert.equal(freshReceipts[0].aToB+freshReceipts[0].bToA,0);
+assert.ok(Math.abs(freshA.environment.volume[n-1]+freshB.environment.volume[0]-1.5)<1e-12,
+ 'zero-salt freshwater transfers conserve both independently owned stocks');
+
 console.log('Planetary paired water ownership: external exclusion, real conservation, copy-on-write, idempotence and legacy fallback PASS');
