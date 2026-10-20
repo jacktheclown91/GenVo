@@ -81,6 +81,7 @@ if(fromId){
 if(fromId&&sourceReceipt&&(snapshot.core.day!==sourceReceipt.toDay||snapshot.core.tickCount<=sourceReceipt.fromTick))
  throw Error('Continuation did not advance actual simulation ticks.');
 const bundle=packageScenarioSnapshot(snapshot,{id,label,description});
+if(sourceReceipt)bundle.metadata.continuedFrom=sourceReceipt;
 // Decode and restore the actual recorded World once to catch incomplete or
 // incompatible saves BEFORE publishing any manifest entry or overwriting.
 const restored=restoreSimulationSnapshot(openScenarioSnapshot(bundle));
