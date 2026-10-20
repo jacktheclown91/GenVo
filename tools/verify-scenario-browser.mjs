@@ -32,6 +32,7 @@ try{
  const page=await browser.newPage({viewport:{width:1100,height:760}});
  const errors=[];
  page.on('pageerror',error=>errors.push(error.message));
+ page.on('console',m=>{if(m.type()==='error')errors.push('console: '+m.text());});
  await page.goto('http://127.0.0.1:'+server.address().port+'/index.html',{waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>!!window.__GENVO8__?.saveManager);
  await page.locator('.menu-view[data-screen="home"] [data-screen-target="new"]').click();
@@ -49,6 +50,7 @@ try{
   &&window.__GENVO8__.sim.player()?.alive,{},{timeout:120000});
  await page.waitForFunction(()=>document.querySelector('#frontEnd')?.hidden===true,
   {},{timeout:120000});
+ await page.evaluate(()=>window.__GENVO8__.renderer.sceneReady());
  await page.waitForFunction(async()=>{
   try{
    const data=await window.__GENVO8__?.saveManager?.loadSnapshot();
@@ -62,12 +64,19 @@ try{
    seed:g.sim.seed,day:g.sim.day,tickCount:g.sim.tickCount,year:g.sim.year,
    liveAnimals:g.sim.animals.filter(a=>a.alive).length,
    playerAlive:!!g.sim.player()?.alive,worldGenerator:world.generator,
-   sourceDay:stored.core.day,sourceSeed:stored.seed,
+   sourceDay:stored?.core?.day??null,sourceSeed:stored?.seed??null,
+   storedPresent:!!stored,lastSavedTick:g.saveManager.lastSavedTick,
+   saveBusy:g.saveManager.busy,sceneShown:g.renderer.sceneShown,
+   scenePending:g.renderer.scenePending,
+   saveStatus:document.querySelector('#saveStatus')?.textContent,
    newSlot:g.saveManager.activeSlotId,
    screenClosed:document.querySelector('#frontEnd').hidden,
-   originalHistoryRetained:stored.core.tickCount>=1440
+   originalHistoryRetained:(stored?.core?.tickCount??0)>=1440
   };
  });
+ fs.writeFileSync(path.join(output,'report.json'),JSON.stringify({...report,errors},null,2));
+ assert.ok(report.sceneShown,'evolved-world renderer has not displayed a complete frame');
+ assert.ok(report.storedPresent,'advanced-world source fork was not persisted: '+JSON.stringify(report));
  assert.equal(report.seed,'GENVO-VALLEY-REPLAY-30');
  assert.equal(report.worldGenerator,'planetary/1');
  assert.ok(report.liveAnimals>0&&report.playerAlive);
