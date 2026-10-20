@@ -1,13 +1,14 @@
 // GenVo player-facing navigation. Menus never advance the ecosystem; existing renderer owns the world backdrop.
 export class FrontEnd{
-  constructor({saveManager,audio,onContinue,onCreate,onLoad,onResume,onReturn,onSave,getWorldInfo}){
-    Object.assign(this,{saveManager,audio,onContinue,onCreate,onLoad,onResume,onReturn,onSave,getWorldInfo});
+  constructor({saveManager,audio,onContinue,onCreate,onLoad,onResume,onReturn,onSave,onExportScenario,getWorldInfo}){
+    Object.assign(this,{saveManager,audio,onContinue,onCreate,onLoad,onResume,onReturn,onSave,onExportScenario,getWorldInfo});
     this.el=document.querySelector('#frontEnd');this.open=true;this.screen='home';this.previous='home';this.busy=false;
     this.messageEl=document.querySelector('#menuMessage');this.worldsEl=document.querySelector('#worldsList');
     this.el.addEventListener('click',event=>this.click(event));
     this.el.querySelector('#menuVolume')?.addEventListener('input',e=>this.updateVolume(Number(e.target.value)));
     this.el.querySelector('#menuMute')?.addEventListener('change',e=>this.updateMute(e.target.checked));
     this.el.querySelector('#menuReduceMotion')?.addEventListener('change',e=>this.updateMotion(e.target.checked));
+    this.el.querySelector('#newWorldStartingPoint')?.addEventListener('change',()=>this.syncStartingPoint());
     try{document.body.classList.toggle('reduced-menu-motion',localStorage.getItem('genvo-menu-reduced-motion')==='1')}catch{}
     this.syncSettings();this.show('home');
   }
@@ -23,8 +24,41 @@ export class FrontEnd{
     if(screen==='worlds')await this.refreshWorlds();
     if(screen==='pause')this.el.querySelector('#pausedWorldInfo').textContent=this.getWorldInfo()||'Living world';
     if(screen==='settings')this.syncSettings();
-    if(screen==='new')this.el.querySelector('#newWorldName').value='Untamed World';
+    if(screen==='new'){this.el.querySelector('#newWorldName').value='Untamed World';await this.refreshStartingPoints();}
     this.el.querySelector('.menu-view:not([hidden]) button:not([disabled]),.menu-view:not([hidden]) input')?.focus({preventScroll:true});
+  }
+  async refreshStartingPoints(){
+    const el=this.el.querySelector('#newWorldStartingPoint');
+    el.replaceChildren(new Option('New ecology, Day 1','new'),new Option('Import a real evolved-world checkpoint...','import'));
+    let worlds=[];
+    try{worlds=await this.saveManager.listWorlds()}catch{this.setMessage('Saved worlds could not be listed.',true)}
+    for(const w of worlds){
+      el.add(new Option('Fork saved: '+(w.worldName||'Unnamed World')+
+        ' · Day '+(w.day||1)+' · Generation '+(w.generation||1),'fork:'+w.key));
+    }
+    this.catalog=[];
+    try{
+      const response=await fetch('./assets/scenarios/catalog.json');
+      if(response.ok){
+        const {validateScenarioCatalog}=await import('../persistence/scenario-library.js');
+        this.catalog=validateScenarioCatalog(await response.json());
+        for(const c of this.catalog)el.add(new Option('Evolved: '+c.label+' · Day '+c.day,'catalog:'+c.id));
+      }
+    }catch(error){console.warn('Curated scenarios are unavailable:',error)}
+    this.syncStartingPoint();
+  }
+  syncStartingPoint(){
+    const start=this.el.querySelector('#newWorldStartingPoint')?.value||'new',
+      file=this.el.querySelector('#newWorldScenarioFileLabel'),
+      note=this.el.querySelector('#newWorldScenarioDetail');
+    if(file)file.hidden=start!=='import';
+    if(note)note.textContent=start==='new'
+      ?'Begin the complete evolutionary journey from the initial ecology.'
+      :start==='import'
+        ?'Select a GenVo .json scenario package exported from a real saved world.'
+        :start.startsWith('fork:')
+          ?'Fork a real saved world at its recorded day. Your original save will not change.'
+          :'Load a SHA-256 verified simulation checkpoint as an independent world.';
   }
   close(){this.open=false;this.el.hidden=true;this.setMessage()}
   async refreshHome(){
@@ -46,7 +80,7 @@ export class FrontEnd{
       const heading=document.createElement('strong');heading.textContent=w.worldName||(w.key==='autosave'?'First Lineage':'Unnamed World');
       const data=document.createElement('small');data.textContent=`Generation ${w.generation||1} · Year ${w.year||1}, Day ${w.day||1}`;
       const actions=document.createElement('div');actions.className='world-actions';
-      for(const [action,label] of [['load-world','Play'],['rename-world','Rename'],['delete-world','Delete']]){
+      for(const [action,label] of [['load-world','Play'],['export-scenario','Export Scenario'],['rename-world','Rename'],['delete-world','Delete']]){
         const b=document.createElement('button');b.type='button';b.dataset.action=action;b.dataset.slot=w.key;b.textContent=label;
         if(action!=='load-world')b.className='menu-secondary';actions.append(b);
       }
@@ -91,9 +125,14 @@ export class FrontEnd{
       else if(a==='create'){
         const name=this.el.querySelector('#newWorldName').value.trim(),seed=this.el.querySelector('#newWorldSeed').value.trim();
         if(!name){this.setMessage('Give your world a name.',true);return}
-        if(await this.onCreate({name,seed,geography:this.el.querySelector('#newWorldGeography')?.value||'freshwater/1'}))this.close();
+        const start=this.el.querySelector('#newWorldStartingPoint')?.value||'new';
+        const scenarioFile=this.el.querySelector('#newWorldScenarioFile')?.files?.[0]||null;
+        const catalogEntry=start.startsWith('catalog:')?this.catalog.find(c=>c.id===start.slice(8)):null;
+        if(await this.onCreate({name,seed,geography:this.el.querySelector('#newWorldGeography')?.value||'freshwater/1',
+          start,scenarioFile,catalogEntry}))this.close();
       }
       else if(a==='load-world'){if(await this.onLoad(button.dataset.slot))this.close()}
+      else if(a==='export-scenario'){await this.onExportScenario(button.dataset.slot);this.setMessage('Scenario package exported.');}
       else if(a==='rename-world'){
         const current=button.closest('.world-entry')?.querySelector('strong')?.textContent||'';
         const name=window.prompt('World name:',current);
