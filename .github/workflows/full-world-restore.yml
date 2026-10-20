@@ -43,6 +43,8 @@ jobs:
         run: |
           node --check src/world/environment.js
           node --check src/world/planet-world.js
+          node --check src/world/planetary-internal-water.js
+          node tests/planetary-internal-water.mjs
           node tests/planetary-boundary-exchange.mjs
           node tests/regional-environment.mjs
           node tests/planet-geography.mjs
