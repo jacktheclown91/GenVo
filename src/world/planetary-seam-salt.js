@@ -39,7 +39,10 @@ export function validatePlanetarySeamLedger(state){
  for(const row of state.history){
   if(!valid(row.tick)||row.tick>state.lastTick||!valid(row.day)||row.day<1||
     typeof row.a!=='string'||typeof row.b!=='string'||row.a>=row.b||
-    !finite(row.aToB)||!finite(row.bToA)||row.aToB+row.bToA<=0||
+    !finite(row.aToB)||!finite(row.bToA)||
+    (row.waterAToB!==undefined&&!finite(row.waterAToB))||
+    (row.waterBToA!==undefined&&!finite(row.waterBToA))||
+    row.aToB+row.bToA+(row.waterAToB||0)+(row.waterBToA||0)<=0||
     row.tick<previousTick||row.tick===previousTick&&row.a+'|'+row.b<=previousPair)
    throw Error('Invalid paired planetary seam receipt.');
   previousTick=row.tick;previousPair=row.a+'|'+row.b;
@@ -48,16 +51,17 @@ export function validatePlanetarySeamLedger(state){
 function regionOf(sim,session){
  const w=session?.snapshot?.world;
  if(!w?.environment||!(w.surfaceWater?.mask instanceof Uint8Array))return null;
- return{key:session.key,origin:w.regionOrigin,water:w.surfaceWater.mask,env:w.environment,session};
+ return{key:session.key,origin:w.regionOrigin,water:w.surfaceWater.mask,env:w.environment,terrain:w.terrain,session};
 }
 function ownedActive(sim){
  return{key:regionKey(sim.world.regionOrigin),origin:sim.world.regionOrigin,
- water:sim.world.water,env:sim.world.environment,session:null};
+ water:sim.world.water,env:sim.world.environment,terrain:sim.world.terrain,session:null};
 }
 function validRegion(r,day){
  const e=r.env;
  return !!r.origin&&r.water?.length===128*128&&e?.schema===2&&
   e.salt instanceof Float64Array&&e.salt.length===128*128&&
+  (e.schema!==3||(e.volume instanceof Float64Array&&e.volume.length===128*128))&&
   e.depth instanceof Float32Array&&e.depth.length===128*128&&
   e.boundary instanceof Uint8Array&&e.boundary.length===128*128&&
   e.day===day&&e.lastDay?.day===day&&e.daily?.at(-1)?.day===day;
@@ -65,11 +69,12 @@ function validRegion(r,day){
 function boundedFlux(source,target,i,j){
  const a=source.env,b=target.env;
  if(!source.water[i]||!target.water[j]||!a.boundary[i]||!b.boundary[j])return 0;
- const ai=a.salt[i]/a.depth[i],bj=b.salt[j]/b.depth[j];
+ const ai=a.salt[i]/(a.schema===3?a.volume[i]:a.depth[i]),
+  bj=b.salt[j]/(b.schema===3?b.volume[j]:b.depth[j]);
  // Use old-day stocks for every decision. A source's maximum available salt
  // is enforced separately while staging transfers across all four seams.
  const difference=ai-bj;
- return Number.isFinite(difference)?difference*Math.min(a.depth[i],b.depth[j])*
+ return Number.isFinite(difference)?difference*Math.min(a.schema===3?a.volume[i]:a.depth[i],b.schema===3?b.volume[j]:b.depth[j])*
   PLANETARY_SEAM_SALT.dailyFraction:0;
 }
 function stageTransfer(owner,other,index,opposite,proposal,changes,receipts,day,tick){
@@ -86,12 +91,59 @@ function stageTransfer(owner,other,index,opposite,proposal,changes,receipts,day,
  const fi=proposal>0?index:opposite,ti=proposal>0?opposite:index;
  const debit=changes.get(from.key).get(fi)||0;
  const available=from.env.salt[fi]+debit;
- const capacity=to.env.depth[ti]*2-to.env.salt[ti]-(changes.get(to.key).get(ti)||0);
+ const capacity=(to.env.schema===3?to.env.volume[ti]:to.env.depth[ti])*2-to.env.salt[ti]-(changes.get(to.key).get(ti)||0);
  const amount=Math.min(Math.abs(proposal),Math.max(0,available*.25),Math.max(0,capacity));
  if(amount<=0)return;
  changes.get(from.key).set(fi,debit-amount);
  changes.get(to.key).set(ti,(changes.get(to.key).get(ti)||0)+amount);
  if(proposal>0)pair.aToB+=amount;else pair.bToA+=amount;
+}
+// A second, advective flux moves real water, carrying its donor's dissolved
+// salt along with it. This does not override the separate conservative salt
+// diffusion. Only v3 physical Worlds own the new 64-bit volume inventories.
+function stageWater(owner,other,i,j,saltChanges,waterChanges,pairs,day,tick){
+ if(owner.env.schema!==3||other.env.schema!==3||!owner.terrain||!other.terrain)return;
+ const ae=owner.env,be=other.env;
+ const headA=owner.terrain.elevation[i]+ae.volume[i]+(waterChanges.get(owner.key).get(i)||0);
+ const headB=other.terrain.elevation[j]+be.volume[j]+(waterChanges.get(other.key).get(j)||0);
+ const proposed=(headA-headB)*.04;
+ if(!Number.isFinite(proposed)||Math.abs(proposed)<1e-12)return;
+ const from=proposed>0?owner:other,to=proposed>0?other:owner;
+ const fi=proposed>0?i:j,ti=proposed>0?j:i;
+ const fromDelta=waterChanges.get(from.key).get(fi)||0;
+ const toDelta=waterChanges.get(to.key).get(ti)||0;
+ const liveFrom=from.env.volume[fi]+fromDelta;
+ const liveTo=to.env.volume[ti]+toDelta;
+ // Permanent water topology remains wet: an exchange cannot dry a coast or
+ // inundate a land tile. Topology edits have their own explicit receipt law.
+ const minWet=.01;
+ const amount=Math.min(Math.abs(proposed),liveFrom*.1,Math.max(0,liveFrom-minWet),
+  Math.max(0,2-liveTo));
+ if(amount<=1e-12)return;
+ const fSalt=saltChanges.get(from.key).get(fi)||0;
+ const tSalt=saltChanges.get(to.key).get(ti)||0;
+ const liveSalt=from.env.salt[fi]+fSalt;
+ const concentration=Math.max(0,liveSalt/liveFrom);
+ const moveSalt=Math.min(amount*concentration,Math.max(0,liveSalt),
+  Math.max(0,(liveTo+amount)*2-(to.env.salt[ti]+tSalt)));
+ if(moveSalt<0||!Number.isFinite(moveSalt))throw Error('Invalid paired saline-water advection.');
+ waterChanges.get(from.key).set(fi,fromDelta-amount);
+ waterChanges.get(to.key).set(ti,toDelta+amount);
+ saltChanges.get(from.key).set(fi,fSalt-moveSalt);
+ saltChanges.get(to.key).set(ti,tSalt+moveSalt);
+ const key=owner.key+'|'+other.key;
+ let row=pairs.get(key);
+ if(!row){row={tick,day,a:owner.key,b:other.key,aToB:0,bToA:0};pairs.set(key,row)}
+ if(proposed>0){row.waterAToB=(row.waterAToB||0)+amount;row.aToB+=moveSalt;}
+ else{row.waterBToA=(row.waterBToA||0)+amount;row.bToA+=moveSalt;}
+}
+function summarizeWater(receipts,region){
+ let incoming=0,outgoing=0;
+ for(const item of receipts){
+  if(item.a===region.key){outgoing+=item.waterAToB||0;incoming+=item.waterBToA||0}
+  else if(item.b===region.key){incoming+=item.waterAToB||0;outgoing+=item.waterBToA||0}
+ }
+ return{incoming,outgoing};
 }
 function summarize(receipts,region){
  let incoming=0,outgoing=0;
@@ -122,6 +174,7 @@ export function reconcilePlanetarySaltSeams(sim){
  if(regions.some(r=>!validRegion(r,day)))return[];
  regions.sort((a,b)=>a.key<b.key?-1:a.key>b.key?1:0);
  const changes=new Map(regions.map(r=>[r.key,new Map()]));
+ const waterChanges=new Map(regions.map(r=>[r.key,new Map()]));
  const receipts=new Map();
  for(let a=0;a<regions.length;a++)for(let b=a+1;b<regions.length;b++){
   const left=regions[a],right=regions[b],direction=adjacent(left.origin,right.origin);
@@ -129,6 +182,8 @@ export function reconcilePlanetarySaltSeams(sim){
   for(const [i,j] of seams(left,right,direction)){
    const transfer=boundedFlux(left,right,i,j);
    if(transfer)stageTransfer(left,right,i,j,transfer,changes,receipts,day,sim.tickCount);
+   if(left.water[i]&&right.water[j]&&left.env.boundary[i]&&right.env.boundary[j])
+    stageWater(left,right,i,j,changes,waterChanges,receipts,day,sim.tickCount);
   }
  }
  const entries=[...receipts.values()].filter(r=>r.aToB+r.bToA>0);
@@ -136,29 +191,41 @@ export function reconcilePlanetarySaltSeams(sim){
  // BEFORE editing any independently owned World or snapshot.
  const sums=new Map();
  for(const r of regions){
-  const amounts=changes.get(r.key),{incoming,outgoing}=summarize(entries,r);
+  const amounts=changes.get(r.key),{incoming,outgoing}=summarize(entries,r),
+   water=summarizeWater(entries,r);
   for(const [i,delta] of amounts){
    const final=r.env.salt[i]+delta;
-   if(!Number.isFinite(final)||final<-1e-12||final>r.env.depth[i]*2+1e-10)
+   const dynamic=r.env.schema===3?r.env.volume[i]+(waterChanges.get(r.key).get(i)||0):r.env.depth[i];
+   if(!Number.isFinite(final)||final<-1e-12||final>dynamic*2+1e-10)
     throw Error('Invalid cross-region salt stock.');
+  }
+  for(const [i,delta] of waterChanges.get(r.key)){
+   const final=r.env.volume?.[i]+delta;
+   if(!Number.isFinite(final)||final<=0||final>2+1e-10)
+    throw Error('Invalid cross-region water stock.');
   }
   const row=r.env.lastDay;
   if(!finite(row.before)||!finite(row.after)||!finite(row.input)||!finite(row.output)||
     !finite(r.env.totals.saltInput)||!finite(r.env.totals.saltOutput))
    throw Error('Invalid cross-region salt conservation origin.');
-  sums.set(r.key,{incoming,outgoing});
+  sums.set(r.key,{incoming,outgoing,water});
  }
  const nextHistory=[...(travel.seamLedger?.history||[]),...entries]
   .slice(-PLANETARY_SEAM_SALT.historyLimit);
  const nextLedger={schema:1,lastTick:sim.tickCount,history:nextHistory};
  validatePlanetarySeamLedger(nextLedger);
  for(const r of regions){
-  const {incoming,outgoing}=sums.get(r.key),e=r.env;
+  const {incoming,outgoing,water}=sums.get(r.key),e=r.env;
   for(const [i,delta] of changes.get(r.key))e.salt[i]+=delta;
-  if(!incoming&&!outgoing)continue;
+  for(const [i,delta] of waterChanges.get(r.key))e.volume[i]+=delta;
+  if(!incoming&&!outgoing&&!water.incoming&&!water.outgoing)continue;
   e.totals.saltInput+=incoming;e.totals.saltOutput+=outgoing;
   e.totals.pairedInput=(e.totals.pairedInput||0)+incoming;
   e.totals.pairedOutput=(e.totals.pairedOutput||0)+outgoing;
+  if(e.schema===3){
+   e.totals.pairedWaterInput=(e.totals.pairedWaterInput||0)+water.incoming;
+   e.totals.pairedWaterOutput=(e.totals.pairedWaterOutput||0)+water.outgoing;
+  }
   const row=e.lastDay;
   const update=record=>{
    record.input+=incoming;record.output+=outgoing;
@@ -166,6 +233,11 @@ export function reconcilePlanetarySaltSeams(sim){
    record.pairedInput=(record.pairedInput||0)+incoming;
    record.pairedOutput=(record.pairedOutput||0)+outgoing;
    record.closure=record.input-record.output-(record.after-record.before);
+   if(e.schema===3){
+    record.waterInput+=water.incoming;record.waterOutput+=water.outgoing;
+    record.waterAfter+=water.incoming-water.outgoing;
+    record.waterClosure=record.waterInput-record.waterOutput-(record.waterAfter-record.waterBefore);
+   }
   };
   update(row);
   if(e.daily.at(-1)!==row)update(e.daily.at(-1));
