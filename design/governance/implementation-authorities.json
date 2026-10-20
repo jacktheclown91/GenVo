@@ -147,6 +147,19 @@
         "src/world/world.js"
       ]
     },
+    "verifiedScenarioCheckpoints": {
+      "authority": "src/persistence/save-manager.js",
+      "consumers": [
+        "src/persistence/scenario-codec.js",
+        "src/persistence/scenario-library.js",
+        "tools/create-world-scenario.mjs",
+        "tools/run-scenario-test.mjs",
+        "src/main.js",
+        "src/ui/front-end.js",
+        "assets/scenarios/catalog.json"
+      ],
+      "note": "Scenarios package and restore the actual canonical full save, preserving stored RNG, every creature's lineage and controller inventory, water and geology. The graph codec only transports structured-clone-compatible state. Recorded source snapshots are immutable; developer repeats and player starts independently decode and restore and never overwrite the original checkpoint. Curated entries require a real saved-state replay check and a SHA-256-verified package; the catalog remains empty until honest simulation-exported samples exist. Full-from-day-1 evolutionary progression remains a separate necessary validation."
+    },
     "inheritedYoungClimate": {
       "authority": "src/ecology/young-climate.js",
       "consumers": [
