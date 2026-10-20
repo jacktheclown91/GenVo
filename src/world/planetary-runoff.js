@@ -90,6 +90,27 @@ export function routePlanetaryRunoff(w,runoff,day){
   else overland[j]+=amount;
   moved+=amount;edges++;
  }
+ let pendingSalt=null;
+ if(wetPolicy&&wetEdges.length){
+  const wetSalt=e.salt.slice(),wdelta=new Map(),sdelta=new Map();
+  const owner={...terrainOwner,env:{...e,volume,salt:wetSalt}};
+  const wmaps=new Map([['local',wdelta]]),smaps=new Map([['local',sdelta]]);
+  for(const [i,j,water] of wetEdges){
+   const receipt=stageWetbedSediment(owner,owner,i,j,water,terrainChanges,wmaps,smaps);
+   if(receipt)wetbedMoved+=receipt.sediment;
+  }
+  let wc=0,sc=0;
+  for(const [i,d] of wdelta){volume[i]+=d;wc+=d;}
+  for(const [i,d] of sdelta){wetSalt[i]+=d;sc+=d;}
+  if(Math.abs(wc)>1e-9||Math.abs(sc)>1e-9)
+   throw Error('Wetbed water and salt displacement not conserved.');
+  if(wetbedMoved){
+   for(let i=0;i<w.len;i++)if(w.water[i]&&
+    (!Number.isFinite(wetSalt[i])||wetSalt[i]<0||wetSalt[i]>volume[i]*2+1e-9))
+     throw Error('Invalid deposited wetbed salinity.');
+   pendingSalt=wetSalt;
+  }
+ }
  for(let i=0;i<w.len;i++){
   if(!Number.isFinite(overland[i])||overland[i]<-1e-12||
     !Number.isFinite(volume[i])||volume[i]<0||volume[i]>2+1e-10||
