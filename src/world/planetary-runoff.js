@@ -1,4 +1,6 @@
 import {PLANETARY_MINERAL_RUNOFF,stageRunoffMinerals} from './planetary-mineral-runoff.js';
+import {TERRAIN_SEDIMENT,stageTerrainSediment,validateSedimentDeltas} from './terrain-sediment.js';
+import {deriveDrainage} from './topography.js';
 // Version-5 planetary surface-water authority. Soil runoff and rejected
 // groundwater overflow become conserved overland water, routed along the
 // actual steepest-downhill drainage graph. Water that cannot reach an existing
@@ -64,6 +66,10 @@ export function routePlanetaryRunoff(w,runoff,day){
   throw Error('Runoff mineral transport requires canonical plant minerals.');
  const mineralDelta=new Map(),owner={key:'local',env:e,minerals},mineralChanges=new Map([['local',mineralDelta]]);
  let mineralsMoved=0;
+ const eroding=e.terrainSedimentPolicy===TERRAIN_SEDIMENT.policy;
+ const terrainDelta=new Map(),terrainChanges=new Map([['local',terrainDelta]]);
+ const terrainOwner={key:'local',env:e,water:w.water,terrain:w.terrain};
+ let sedimentMoved=0;
  for(let i=0;i<w.len;i++){
   if(w.water[i]||original[i]<=0)continue;
   const j=downstream[i];
@@ -74,6 +80,7 @@ export function routePlanetaryRunoff(w,runoff,day){
   if(w.water[j])amount=Math.min(amount,Math.max(0,2-volume[j]));
   if(amount<=0)continue;
   if(mineralEnabled)mineralsMoved+=stageRunoffMinerals(owner,owner,i,j,amount,original[i],mineralChanges);
+  if(eroding)sedimentMoved+=stageTerrainSediment(terrainOwner,terrainOwner,i,j,amount,terrainChanges);
   overland[i]-=amount;
   if(w.water[j]){volume[j]+=amount;delivered+=amount;}
   else overland[j]+=amount;
@@ -88,6 +95,7 @@ export function routePlanetaryRunoff(w,runoff,day){
  const after=sum(overland)+sum(volume),closure=captured-(after-before);
  if(Math.abs(closure)>1e-6)
   throw Error('Planetary runoff water closure failed.');
+ if(eroding)validateSedimentDeltas([terrainOwner],terrainChanges);
  // The mineral transport is independent of water's physical ledger.
  // It changes the finite existing plant growth mineral stocks, not fertility
  // ratings or resource generation. Publish only after the full water closure.
@@ -109,6 +117,7 @@ export function routePlanetaryRunoff(w,runoff,day){
   throw Error('Invalid planetary combined rainfall/runoff closure.');
  e.overland.set(overland);e.volume.set(volume);
  if(mineralEnabled)for(const [i,delta] of mineralDelta)minerals[i]+=delta;
+ if(eroding)for(const [i,delta] of terrainDelta)w.terrain.elevation[i]=Math.fround(w.terrain.elevation[i]+delta);
  e.totals.soilRunoffReceived=(e.totals.soilRunoffReceived||0)+captured;
  e.totals.runoffDelivered=(e.totals.runoffDelivered||0)+delivered;
  e.totals.overlandMoved=(e.totals.overlandMoved||0)+moved;
@@ -122,7 +131,14 @@ export function routePlanetaryRunoff(w,runoff,day){
  if(mineralEnabled){row.runoffMineralsMoved=mineralsMoved;
   e.totals.runoffMineralsMoved=(e.totals.runoffMineralsMoved||0)+mineralsMoved;
   w.plantResources.totals.runoffMineralsMoved=(w.plantResources.totals.runoffMineralsMoved||0)+mineralsMoved;}
+ if(eroding){
+  row.sedimentMoved=sedimentMoved;
+  e.totals.sedimentMoved=(e.totals.sedimentMoved||0)+sedimentMoved;
+ }
  const inundation=floodFromRunoff(w,day);
+ // The next day's runoff must use the new real elevation, not the previous
+ // land's cached drainage graph. No new water topology is inferred here.
+ if(eroding&&terrainDelta.size)deriveDrainage(w);
  return{received:captured,delivered,moved,edges,
   stored:sum(w.environment.overland),closure,inundation};
 }
