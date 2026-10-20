@@ -1,3 +1,4 @@
+import {PLANETARY_MINERAL_RUNOFF,stageRunoffMinerals} from './planetary-mineral-runoff.js';
 // Version-5 planetary surface-water authority. Soil runoff and rejected
 // groundwater overflow become conserved overland water, routed along the
 // actual steepest-downhill drainage graph. Water that cannot reach an existing
@@ -57,6 +58,12 @@ export function routePlanetaryRunoff(w,runoff,day){
  // Routing uses the existing terrain drainage graph, never a teleport to
  // the nearest lake or a fabricated region-boundary outflow.
  const original=overland.slice();
+ const mineralEnabled=e.mineralRunoffPolicy===PLANETARY_MINERAL_RUNOFF.policy;
+ const minerals=w.plantResources?.minerals;
+ if(mineralEnabled&&(!(minerals instanceof Float64Array)||minerals.length!==w.len))
+  throw Error('Runoff mineral transport requires canonical plant minerals.');
+ const mineralDelta=new Map(),owner={key:'local',env:e,minerals},mineralChanges=new Map([['local',mineralDelta]]);
+ let mineralsMoved=0;
  for(let i=0;i<w.len;i++){
   if(w.water[i]||original[i]<=0)continue;
   const j=downstream[i];
@@ -66,6 +73,7 @@ export function routePlanetaryRunoff(w,runoff,day){
   let amount=original[i]*PLANETARY_RUNOFF.moveFraction;
   if(w.water[j])amount=Math.min(amount,Math.max(0,2-volume[j]));
   if(amount<=0)continue;
+  if(mineralEnabled)mineralsMoved+=stageRunoffMinerals(owner,owner,i,j,amount,original[i],mineralChanges);
   overland[i]-=amount;
   if(w.water[j]){volume[j]+=amount;delivered+=amount;}
   else overland[j]+=amount;
@@ -80,6 +88,18 @@ export function routePlanetaryRunoff(w,runoff,day){
  const after=sum(overland)+sum(volume),closure=captured-(after-before);
  if(Math.abs(closure)>1e-6)
   throw Error('Planetary runoff water closure failed.');
+ // The mineral transport is independent of water's physical ledger.
+ // It changes the finite existing plant growth mineral stocks, not fertility
+ // ratings or resource generation. Publish only after the full water closure.
+ if(mineralEnabled){
+  let deltaTotal=0;
+  for(const [i,delta] of mineralDelta){
+   const after=minerals[i]+delta;
+   if(!Number.isFinite(after)||after<-1e-9)throw Error('Invalid runoff-mineral final stock.');
+   deltaTotal+=delta;
+  }
+  if(Math.abs(deltaTotal)>1e-8)throw Error('Runoff mineral conservation failed.');
+ }
  // Validate the combined rain + soil handoff BEFORE touching live stores.
  // A malformed receipt must never publish only one side of the transfer.
  const row=e.lastDay;
@@ -88,6 +108,7 @@ export function routePlanetaryRunoff(w,runoff,day){
  if(!Number.isFinite(combinedClosure)||Math.abs(combinedClosure)>1e-6)
   throw Error('Invalid planetary combined rainfall/runoff closure.');
  e.overland.set(overland);e.volume.set(volume);
+ if(mineralEnabled)for(const [i,delta] of mineralDelta)minerals[i]+=delta;
  e.totals.soilRunoffReceived=(e.totals.soilRunoffReceived||0)+captured;
  e.totals.runoffDelivered=(e.totals.runoffDelivered||0)+delivered;
  e.totals.overlandMoved=(e.totals.overlandMoved||0)+moved;
@@ -98,6 +119,9 @@ export function routePlanetaryRunoff(w,runoff,day){
  row.runoffDelivered=delivered;
  row.overlandMoved=moved;
  row.overlandEdges=edges;
+ if(mineralEnabled){row.runoffMineralsMoved=mineralsMoved;
+  e.totals.runoffMineralsMoved=(e.totals.runoffMineralsMoved||0)+mineralsMoved;
+  w.plantResources.totals.runoffMineralsMoved=(w.plantResources.totals.runoffMineralsMoved||0)+mineralsMoved;}
  const inundation=floodFromRunoff(w,day);
  return{received:captured,delivered,moved,edges,
   stored:sum(w.environment.overland),closure,inundation};
