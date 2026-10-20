@@ -47,8 +47,6 @@ const bundle=packageScenarioSnapshot(snapshot,{id,label,description});
 // Decode and restore the actual recorded World once to catch incomplete or
 // incompatible saves BEFORE publishing any manifest entry or overwriting.
 const restored=restoreSimulationSnapshot(openScenarioSnapshot(bundle));
-if(!restored.player()?.alive)
- throw Error('Scenario has no living playable lineage. Export a checkpoint with an active creature.');
 if(restored.seed!==snapshot.seed||restored.day!==snapshot.core.day||
    restored.tickCount!==snapshot.core.tickCount||restored.rng.state!==(snapshot.rngState>>>0)||
    restored.animals.length!==snapshot.animals.length)
@@ -58,6 +56,7 @@ const sha256=createHash('sha256').update(data,'utf8').digest('hex');
 const entry={id,label:bundle.metadata.label,description:bundle.metadata.description,
  seed:bundle.metadata.seed,day:bundle.metadata.day,year:bundle.metadata.year,
  generation:bundle.metadata.generation,liveAnimals:bundle.metadata.liveAnimals,
+ playable:!!restored.player()?.alive,
  file:'assets/scenarios/'+id+'.json',sha256};
 const catalog={schema:1,scenarios:[...existing.scenarios.filter(s=>s.id!==id),entry]};
 validateScenarioCatalog(catalog);
