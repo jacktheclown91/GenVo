@@ -22,7 +22,7 @@ const clamp01=v=>v<0?0:v>1?1:v;
 export function initializeSoilWater(w){
   const fieldCapacity=new Float32Array(w.len),groundwater=new Float32Array(w.len);
   for(let i=0;i<w.len;i++){fieldCapacity[i]=SOIL_WATER.capacityBase+SOIL_WATER.capacityWet*clamp01(w.moisture[i]);groundwater[i]=w.water[i]?1:clamp01(w.moisture[i])}
-  w.soilWater={schema:1,...(w.generator==='planetary/1'?{seamGroundwaterPolicy:PLANETARY_SEAM_GROUNDWATER.policy}:{}),fieldCapacity,groundwater,snowpack:new Float64Array(w.len),scratch:new Float32Array(w.len),totals:{rain:0,snowfall:0,snowmelt:0,infiltration:0,runoff:0,evaporation:0,percolation:0,capillary:0,lateral:0,deepDrainage:0,uptake:0,overflow:0},day:0};
+  w.soilWater={schema:1,...(w.generator==='planetary/1'&&w.environment?.groundwaterSeamEligibility===PLANETARY_SEAM_GROUNDWATER.policy?{seamGroundwaterPolicy:PLANETARY_SEAM_GROUNDWATER.policy}:{}),fieldCapacity,groundwater,snowpack:new Float64Array(w.len),scratch:new Float32Array(w.len),totals:{rain:0,snowfall:0,snowmelt:0,infiltration:0,runoff:0,evaporation:0,percolation:0,capillary:0,lateral:0,deepDrainage:0,uptake:0,overflow:0},day:0};
   return w.soilWater;
 }
 export function validateSoilWater(w,s){
