@@ -46,6 +46,10 @@ jobs:
           node tests/planetary-boundary-exchange.mjs
           node tests/regional-environment.mjs
           node tests/planet-geography.mjs
+      - name: Genuine two-owner planetary salt transport and exact save parity
+        run: |
+          node --check src/world/planetary-seam-salt.js
+          node tests/planetary-paired-seam-salt.mjs
       - name: Authentic remote organisms and exact offscreen resources
         run: node tests/e18-offscreen-biology.mjs
       - name: Synchronized three-region journey and mid-barrier saves
