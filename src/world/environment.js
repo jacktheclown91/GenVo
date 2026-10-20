@@ -28,6 +28,9 @@ export function validateEnvironment(w,e){
    throw Error('Invalid environment reservoir boundary.');
  if(e.schema===2&&['boundaryInput','boundaryOutput'].some(k=>!Number.isFinite(e.totals?.[k])||e.totals[k]<0))
   throw Error('Invalid planetary boundary flux totals.');
+ if(e.schema===2&&['pairedInput','pairedOutput'].some(k=>e.totals?.[k]!==undefined&&
+    (!Number.isFinite(e.totals[k])||e.totals[k]<0)))
+  throw Error('Invalid paired planetary salt totals.');
  if(!Number.isSafeInteger(e.day)||e.day<0||!e.totals||['saltInput','saltOutput','rainWater','displacedWater'].some(k=>!Number.isFinite(e.totals[k])||e.totals[k]<0)||!Array.isArray(e.daily)||e.daily.length>64)throw Error('Invalid environment history.');
  for(const row of [...e.daily,...(e.lastDay?[e.lastDay]:[])]){if(!Number.isSafeInteger(row.day)||row.day<0||row.day>e.day||['before','after','input','output'].some(k=>!Number.isFinite(row[k])||row[k]<0)||!Number.isFinite(row.closure))throw Error('Invalid salt budget receipt.');
   // Historical receipts have no page-level transfer audit; validate new ones strictly.
@@ -35,6 +38,9 @@ export function validateEnvironment(w,e){
    throw Error('Invalid planetary boundary flux receipt.');
   if(e.schema===2&&(row.boundaryInput>row.input+1e-8||row.boundaryOutput>row.output+1e-8))
    throw Error('Planetary boundary flux exceeds total salt receipts.');
+  if(e.schema===2&&['pairedInput','pairedOutput'].some(k=>row[k]!==undefined&&
+      (!Number.isFinite(row[k])||row[k]<0)))
+   throw Error('Invalid paired planetary salt receipt.');
   if(row.pageTransfers!==undefined)validatePageSaltTransfers(w,row.pageTransfers);
  }
 }
