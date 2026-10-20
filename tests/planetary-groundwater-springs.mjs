@@ -53,7 +53,8 @@ const n=real.n;
 let site=-1;
 for(let y=8;y<n-8&&site<0;y++)for(let x=8;x<n-8;x++){
  const i=y*n+x;
- if(!real.water[i]&&real.terrain.downstream[i]>=0&&real.temperature[i]>=.4){
+ if(!real.water[i]&&real.terrain.downstream[i]>=0&&real.temperature[i]>=.4&&
+    real.seepage[i]<.5&&(real.plants.marshroot?.[i]||0)<.16){
   site=i;break;
  }
 }
@@ -86,7 +87,7 @@ validateEnvironment(real,real.environment);
 
 // Biome identity responds to the actual stored runoff and groundwater.
 // If water dissipates, there is no permanent hard-coded spring biome.
-const biomeIndex=site,first=real.biomeAt(x+.5,y+.5,{temp:.7,rain:.7});
+const biomeIndex=site;
 const wet=real.environment.overland[biomeIndex],ground=soil.groundwater[biomeIndex];
 real.environment.overland[biomeIndex]=Math.max(.02,wet);
 soil.groundwater[biomeIndex]=Math.fround(.9);
