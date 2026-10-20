@@ -147,6 +147,14 @@
         "src/world/world.js"
       ]
     },
+    "planetarySeamGroundwater": {
+      "authority": "src/world/planetary-seam-groundwater.js",
+      "consumers": [
+        "src/ecology/soil-water.js",
+        "src/world/planetary-seam-salt.js"
+      ],
+      "note": "Policy paired-land-groundwater/1 stages finite hydraulic-head flow from one region-owned soilWater.groundwater stock into another at synchronized terrestrial seams. The existing seam transaction publishes paired soil-water receipts, not surface-water inventories. Historical missing-policy saves retain closed regional groundwater borders."
+    },
     "planetaryBoundaryWater": {
       "authority": "src/world/planetary-boundary-water.js",
       "consumers": [
