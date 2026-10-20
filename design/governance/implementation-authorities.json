@@ -147,6 +147,17 @@
         "src/world/world.js"
       ]
     },
+    "planetaryChannelTopology": {
+      "authority": "src/world/planetary-channel-topology.js",
+      "consumers": [
+        "src/world/planet-world.js",
+        "src/world/environment.js",
+        "src/world/surface-topology.js",
+        "src/world/world.js",
+        "src/world/planetary-runoff.js"
+      ],
+      "note": "New-world funded-temporary-channels/1 retains a Uint8 floodOrigin ownership mask for physical runoff-created water. Existing synchronized topology transitions fund new cells from overland, return shallow unsalted owned water into overland when it recedes, and record the source/sink without changing coastline geography. The water mask, environment.volume, environment.overland, and immutable baseline depth remain their canonical authorities; older policy-free worlds never acquire fabricated flood provenance."
+    },
     "planetaryWetbedSediment": {
       "authority": "src/world/planetary-wetbed-sediment.js",
       "consumers": [
