@@ -46,7 +46,7 @@ import {AudioDirector} from './audio/audio.js';
 import {LeadershipWheel} from './ui/leadership-wheel.js';
 import {EffectFeedbackController} from './ui/effect-feedback.js';
 import {SaveManager,restoreSimulationSnapshot} from './persistence/save-manager.js';
-import {packageScenarioSnapshot,openScenarioSnapshot,loadBundledScenario,sha256Hex} from './persistence/scenario-library.js';
+import {packageScenarioSnapshot,openScenarioSnapshot,loadBundledScenario,sha256Hex,parseScenarioDocument} from './persistence/scenario-library.js';
 import {ObserverController} from './ui/observer.js';
 import {SuccessionChooser} from './ui/succession-chooser.js';
 import {CreatureEditor} from './ui/creature-editor.js';
@@ -148,7 +148,7 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
     }else if(start==='import'){
       if(!scenarioFile)throw Error('Choose a recorded GenVo scenario package.');
       if(scenarioFile.size>160*1024*1024)throw Error('Scenario package is too large.');
-      snapshot=openScenarioSnapshot(JSON.parse(await scenarioFile.text()));
+      snapshot=openScenarioSnapshot(await parseScenarioDocument(await scenarioFile.arrayBuffer(),{name:scenarioFile.name}));
     }else if(start.startsWith('catalog:')){
       if(!catalogEntry||catalogEntry.id!==start.slice(8))throw Error('Unknown curated scenario.');
       snapshot=await loadBundledScenario(catalogEntry,{digest:sha256Hex});
