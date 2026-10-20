@@ -4,6 +4,7 @@
 // explicitly accounted boundary condition, not the other World's stock.
 import {CFG} from '../sim/config.js';
 import {PLANETARY_BOUNDARY_WATER,validateBoundaryWaterPolicy} from './planetary-boundary-water.js';
+import {PLANETARY_SEAM_RUNOFF,stagePlanetarySeamRunoff} from './planetary-seam-runoff.js';
 import {regionKey} from './planet-regions.js';
 import {REGIONAL_REPLAY,remoteBiologicalDebt} from './planetary-offscreen-biology.js';
 
@@ -43,6 +44,8 @@ export function validatePlanetarySeamLedger(state){
     !finite(row.aToB)||!finite(row.bToA)||
     (row.waterAToB!==undefined&&!finite(row.waterAToB))||
     (row.waterBToA!==undefined&&!finite(row.waterBToA))||
+    (row.runoffAToB!==undefined&&(!finite(row.runoffAToB)||row.runoffAToB>(row.waterAToB||0)+1e-9))||
+    (row.runoffBToA!==undefined&&(!finite(row.runoffBToA)||row.runoffBToA>(row.waterBToA||0)+1e-9))||
     row.aToB+row.bToA+(row.waterAToB||0)+(row.waterBToA||0)<=0||
     row.tick<previousTick||row.tick===previousTick&&row.a+'|'+row.b<=previousPair)
    throw Error('Invalid paired planetary seam receipt.');
@@ -193,6 +196,14 @@ function summarizeWater(receipts,region){
  }
  return{incoming,outgoing};
 }
+function summarizeRunoff(receipts,region){
+ let incoming=0,outgoing=0;
+ for(const row of receipts){
+  if(row.a===region.key){outgoing+=row.runoffAToB||0;incoming+=row.runoffBToA||0}
+  else if(row.b===region.key){incoming+=row.runoffAToB||0;outgoing+=row.runoffBToA||0}
+ }
+ return{incoming,outgoing};
+}
 function summarize(receipts,region){
  let incoming=0,outgoing=0;
  for(const item of receipts){
@@ -223,6 +234,7 @@ export function reconcilePlanetarySaltSeams(sim){
  regions.sort((a,b)=>a.key<b.key?-1:a.key>b.key?1:0);
  const changes=new Map(regions.map(r=>[r.key,new Map()]));
  const waterChanges=new Map(regions.map(r=>[r.key,new Map()]));
+ const overlandChanges=new Map(regions.map(r=>[r.key,new Map()]));
  const receipts=new Map();
  for(let a=0;a<regions.length;a++)for(let b=a+1;b<regions.length;b++){
   const left=regions[a],right=regions[b],direction=adjacent(left.origin,right.origin);
@@ -238,6 +250,7 @@ export function reconcilePlanetarySaltSeams(sim){
    if(transfer)stageTransfer(left,right,i,j,transfer,changes,receipts,day,sim.tickCount);
    if(left.water[i]&&right.water[j]&&left.env.boundary[i]&&right.env.boundary[j])
     stageWater(left,right,i,j,changes,waterChanges,receipts,day,sim.tickCount);
+   stagePlanetarySeamRunoff(left,right,i,j,overlandChanges,waterChanges,receipts,day,sim.tickCount);
   }
  }
  const entries=[...receipts.values()].filter(r=>r.aToB+r.bToA+(r.waterAToB||0)+(r.waterBToA||0)>0);
@@ -246,7 +259,7 @@ export function reconcilePlanetarySaltSeams(sim){
  const sums=new Map();
  for(const r of regions){
   const amounts=changes.get(r.key),{incoming,outgoing}=summarize(entries,r),
-   water=summarizeWater(entries,r);
+   water=summarizeWater(entries,r),runoff=summarizeRunoff(entries,r);
   for(const [i,delta] of amounts){
    const final=r.env.salt[i]+delta;
    const dynamic=r.env.schema>=3?r.env.volume[i]+(waterChanges.get(r.key).get(i)||0):r.env.depth[i];
@@ -258,20 +271,26 @@ export function reconcilePlanetarySaltSeams(sim){
    if(!Number.isFinite(final)||final<=0||final>2+1e-10)
     throw Error('Invalid cross-region water stock.');
   }
+  for(const [i,delta] of overlandChanges.get(r.key)){
+   if(r.water[i]||!(r.env.overland instanceof Float64Array)||
+      !Number.isFinite(r.env.overland[i]+delta)||r.env.overland[i]+delta<-1e-10)
+    throw Error('Invalid cross-region overland runoff stock.');
+  }
   const row=r.env.lastDay;
   if(!finite(row.before)||!finite(row.after)||!finite(row.input)||!finite(row.output)||
     !finite(r.env.totals.saltInput)||!finite(r.env.totals.saltOutput))
    throw Error('Invalid cross-region salt conservation origin.');
-  sums.set(r.key,{incoming,outgoing,water});
+  sums.set(r.key,{incoming,outgoing,water,runoff});
  }
  const nextHistory=[...(travel.seamLedger?.history||[]),...entries]
   .slice(-PLANETARY_SEAM_SALT.historyLimit);
  const nextLedger={schema:1,lastTick:sim.tickCount,history:nextHistory};
  validatePlanetarySeamLedger(nextLedger);
  for(const r of regions){
-  const {incoming,outgoing,water}=sums.get(r.key),e=r.env;
+  const {incoming,outgoing,water,runoff}=sums.get(r.key),e=r.env;
   for(const [i,delta] of changes.get(r.key))e.salt[i]+=delta;
   for(const [i,delta] of waterChanges.get(r.key))e.volume[i]+=delta;
+  for(const [i,delta] of overlandChanges.get(r.key))e.overland[i]+=delta;
   if(!incoming&&!outgoing&&!water.incoming&&!water.outgoing)continue;
   e.totals.saltInput+=incoming;e.totals.saltOutput+=outgoing;
   e.totals.pairedInput=(e.totals.pairedInput||0)+incoming;
@@ -279,6 +298,10 @@ export function reconcilePlanetarySaltSeams(sim){
   if(e.schema>=3){
    e.totals.pairedWaterInput=(e.totals.pairedWaterInput||0)+water.incoming;
    e.totals.pairedWaterOutput=(e.totals.pairedWaterOutput||0)+water.outgoing;
+  }
+  if(runoff.incoming||runoff.outgoing){
+   e.totals.seamRunoffInput=(e.totals.seamRunoffInput||0)+runoff.incoming;
+   e.totals.seamRunoffOutput=(e.totals.seamRunoffOutput||0)+runoff.outgoing;
   }
   const row=e.lastDay;
   const update=record=>{
@@ -291,6 +314,10 @@ export function reconcilePlanetarySaltSeams(sim){
     record.waterInput+=water.incoming;record.waterOutput+=water.outgoing;
     record.waterAfter+=water.incoming-water.outgoing;
     record.waterClosure=record.waterInput-record.waterOutput-(record.waterAfter-record.waterBefore);
+    if(runoff.incoming||runoff.outgoing){
+     record.seamRunoffInput=(record.seamRunoffInput||0)+runoff.incoming;
+     record.seamRunoffOutput=(record.seamRunoffOutput||0)+runoff.outgoing;
+    }
    }
   };
   update(row);
