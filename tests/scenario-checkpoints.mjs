@@ -1,8 +1,10 @@
 import assert from 'node:assert/strict';
+import {gzipSync} from 'node:zlib';
+import {createHash} from 'node:crypto';
 import {Simulation} from '../src/sim/simulation.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 import {encodeSnapshotGraph,decodeSnapshotGraph} from '../src/persistence/scenario-codec.js';
-import {packageScenarioSnapshot,openScenarioSnapshot,validateScenarioCatalog} from '../src/persistence/scenario-library.js';
+import {packageScenarioSnapshot,openScenarioSnapshot,validateScenarioCatalog,parseScenarioDocument,loadBundledScenario} from '../src/persistence/scenario-library.js';
 
 // Exact binary arrays, shared references, map keys, set members and cycles
 // survive browser/Node JSON transport. Plain JSON of an IndexedDB state does not.
@@ -42,6 +44,22 @@ assert.equal(scenario.metadata.day,sim.day);
 assert.equal(scenario.metadata.tickCount,sim.tickCount);
 assert.ok(scenario.metadata.liveAnimals>0);
 const roundtrip=JSON.parse(JSON.stringify(scenario));
+// A mature world is transported compressed in the curated web bundle.
+const compressed=gzipSync(Buffer.from(JSON.stringify(roundtrip)),{level:9});
+const document=await parseScenarioDocument(compressed,{name:'real-early-world.json.gz'});
+assert.equal(openScenarioSnapshot(document).seed,sim.seed);
+const sha256=createHash('sha256').update(compressed).digest('hex');
+const entry={id:'real-early-world',label:'Recorded First Ecology',
+ day:scenario.metadata.day,playable:scenario.metadata.playable,
+ file:'assets/scenarios/real-early-world.json.gz',sha256};
+const bytes=compressed.buffer.slice(compressed.byteOffset,compressed.byteOffset+compressed.byteLength);
+const accepted=await loadBundledScenario(entry,{fetchFile:async()=>({ok:true,arrayBuffer:async()=>bytes}),
+ digest:async b=>createHash('sha256').update(Buffer.from(b)).digest('hex')});
+assert.equal(accepted.core.tickCount,sim.tickCount);
+await assert.rejects(()=>loadBundledScenario({...entry,sha256:'0'.repeat(64)},
+ {fetchFile:async()=>({ok:true,arrayBuffer:async()=>bytes}),
+  digest:async b=>createHash('sha256').update(Buffer.from(b)).digest('hex')}),
+ /Scenario file integrity check failed/);
 const first=restoreSimulationSnapshot(openScenarioSnapshot(roundtrip));
 const second=restoreSimulationSnapshot(openScenarioSnapshot(roundtrip));
 assert.equal(first.seed,sim.seed);
