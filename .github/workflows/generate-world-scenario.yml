@@ -1,0 +1,60 @@
+name: Generate GenVo evolved-world checkpoint
+on:
+  workflow_dispatch:
+    inputs:
+      scenario_id:
+        description: 'Stable lowercase id, for example established-valley'
+        required: true
+        default: established-valley
+        type: string
+      scenario_label:
+        description: 'Player-facing checkpoint label'
+        required: true
+        default: Established Valley
+        type: string
+      seed:
+        description: 'Reproducible actual simulation seed'
+        required: true
+        default: GENVO-VALLEY-A
+        type: string
+      days:
+        description: 'Actual simulated days before recording (0 to 1000)'
+        required: true
+        default: '30'
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  prepare-real-world:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check checkpoint transport and real save contract
+        run: node tests/scenario-checkpoints.mjs
+      - name: Simulate actual ecology and verify the saved checkpoint
+        env:
+          SCENARIO_ID: ${{ inputs.scenario_id }}
+          SCENARIO_LABEL: ${{ inputs.scenario_label }}
+          SCENARIO_SEED: ${{ inputs.seed }}
+          SCENARIO_DAYS: ${{ inputs.days }}
+        run: |
+          node tools/create-world-scenario.mjs \
+            --id "$SCENARIO_ID" \
+            --label "$SCENARIO_LABEL" \
+            --seed "$SCENARIO_SEED" \
+            --days "$SCENARIO_DAYS" \
+            --generator planetary/1
+      - name: Archive original checkpoint and its digest catalog
+        uses: actions/upload-artifact@v4
+        with:
+          name: genvo-real-world-scenario
+          path: |
+            assets/scenarios/catalog.json
+            assets/scenarios/*.json
+          retention-days: 14
