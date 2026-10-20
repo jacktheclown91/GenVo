@@ -112,7 +112,7 @@ export function advanceEnvironmentWater(w,climate,day){
     // Equal external water replacement carries actual dissolved salt.
     // The local water volume remains unchanged; both sides of the exchange
     // appear in today's salt and water receipts.
-    const exchange=boundaryWaterExchange(e,i,next[i],e.volume[i]);
+    const exchange=boundaryWaterExchange(e,i,next[i],e.volume[i],w);
     if(exchange){
     next[i]=exchange.saltAfter;
     boundaryWaterInput+=exchange.waterInput;
