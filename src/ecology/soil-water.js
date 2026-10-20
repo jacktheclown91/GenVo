@@ -80,7 +80,7 @@ export function advanceSoilDay(w,climate,day){
   if(r?.soilWaterLinked){for(let i=0;i<w.len;i++)if(!w.water[i])withdrawPlantUptake(w,i,cap,r.water[i]);r.soilWaterLinked=false}
   // Runoff is temporary stage data only. The physical stocks and their
   // receipts are persistent, but no duplicate live runoff authority is saved.
-  const runoff=w.environment?.schema===5?new Float64Array(w.len):null;
+  const runoff=w.environment?.schema>=5?new Float64Array(w.len):null;
   advanceSoilWater(w,climate,day,runoff?{runoffSink:(i,amount)=>runoff[i]=amount}:{});
   const after=soilWaterStorage(w),f=Object.fromEntries(FLOWS.map(k=>[k,s.totals[k]-t0[k]])),inputs=f.rain+f.lateral,outputs=f.runoff+f.evaporation+f.deepDrainage+f.uptake+f.overflow;
   let land=0,moisture=0;for(let i=0;i<w.len;i++)if(!w.water[i]){land++;moisture+=w.moisture[i]}
