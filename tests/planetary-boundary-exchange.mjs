@@ -12,6 +12,7 @@ import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persist
 const seed='GENVO8-TEST-A',origin={x:0,y:2560};
 const w=new World(seed,{generator:'planetary/1',planetOrigin:origin});
 const e=w.environment;
+assert.equal(e.boundaryWaterPolicy,'geography-reservoir-water/1');
 assert.equal(e.schema,6,'new planetary regions support runoff-funded inundation and audited marine boundaries');
 validateEnvironment(w,e);
 const marine=[],fresh=[],mixed=[];
@@ -40,6 +41,9 @@ for(let day=1;day<=12;day++){
  validateEnvironment(w,e);
 }
 assert.ok(e.totals.boundaryInput>0,'actual coastal replenishment enters from geography-declared ocean');
+assert.ok(e.totals.boundaryWaterInput>0&&e.totals.boundaryWaterOutput>0,'real equal water exchanges are recorded at marine edges');
+assert.ok(Math.abs(e.totals.boundaryWaterInput-e.totals.boundaryWaterOutput)<1e-8,'external ocean water replacement is volume-neutral');
+assert.ok(e.totals.boundarySaltInput>0&&e.totals.boundarySaltOutput>0,'real imported and exported dissolved salt are distinguished');
 assert.ok(e.totals.saltOutput>=0,'retained freshwater need not expel dissolved salt');
 assert.ok(e.totals.surfaceRainInput>0&&e.totals.surfaceRainOutput>=0,
  'newly retained precipitation and any full-capacity overflow are accounted separately');
@@ -84,6 +88,7 @@ if(old.world.environment.lastDay){
  delete old.world.environment.lastDay.boundaryInput;
  delete old.world.environment.lastDay.boundaryOutput;
 }
+delete old.world.environment.boundaryWaterPolicy;
 const legacy=restoreSimulationSnapshot(structuredClone(old));
 assert.equal(legacy.world.environment.schema,1);
 assert.ok(legacy.world.environment.boundary.every(v=>v===0));
