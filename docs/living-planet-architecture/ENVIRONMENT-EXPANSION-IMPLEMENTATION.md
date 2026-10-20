@@ -23,7 +23,7 @@ Continental geography, finite oceans/rivers/groundwater, moving weather, climate
 ## Batch 1: authority and compatibility gate
 - [x] Locate existing macrogeography, terrain, climate, water, soil and remote-region owners.
 - [x] Record shared integration boundaries in this document.
-- [ ] Enumerate all live plant reproduction and genetics entrypoints; identify duplicate or obsolete handlers before adding parts.
+- [x] Identify live clonal release in dispersal.js and sexual release in botanical-reproduction.js; both now use one optional wind-direction authority, with their shared deposited seed-bank/genome state unchanged. Broader legacy/duplicate audit remains.
 - [ ] Trace the full daily water/soil/plant ordering, including remote canonical days.
 - [ ] Record measured hot-path budgets and serialize/restore coverage for new environmental fields.
 - [ ] Add source-graph/audit checks against duplicate runtime authorities where possible.
@@ -41,6 +41,16 @@ Continental geography, finite oceans/rivers/groundwater, moving weather, climate
 - [ ] Apply finite ocean boundary exchange only where external unsimulated water is declared; remove boundary-mode ambiguity in a new version rather than reinterpreting old snapshots.
 - [ ] Connect soil runoff, river outflow, groundwater and saltwater mixing without fabricated water or double-counted nutrients.
 - [ ] Verify coast, estuary, lake, closed basin and adjacent-region cases, including replay and save/restore.
+
+## Wind-to-flora integration checkpoint (October 19, 2026)
+- New planetary regions record `dispersal.windSeedPolicy = planetary-wind/1`; historical saves lacking this controller field remain on legacy directions.
+- The existing moving rainfall front now also yields a deterministic global-coordinate wind vector in `src/world/weather-fronts.js`. No second weather RNG or saved atmosphere was added.
+- Wind selects direction for local clonal seed release and sexual embryo seed release in the existing dispersal controllers. Finite standing plant tissue, seed reserves, existing genome cohorts, deposition limits and invalid wet landing checks remain canonical.
+- Unassisted local releases follow wind. Fruit/animal-compatible kinds still use their old local release directions for most pulses; animal gut transport is unchanged.
+- `src/world/planetary-travel.js` carries the policy to both first-entry and restored regions so old saves do not change when exploring.
+- Focused test assertions were added to `tests/dispersal.mjs`, `tests/weather-front-biomes.mjs`, and `tests/e15-planetary-travel.mjs`.
+- **Verification status:** GitHub commits confirmed; the new targeted tests and browser playability have not yet been run here. The patch does not implement cross-region seed transport, global wind pressure circulation or ocean exchange.
+- The wind field is an initial front-correlated model, not final atmospheric physics. Its ecology and visual readability require creator playtests and later weather integration.
 
 ## Batch 4: weather
 - [ ] Introduce globally located wind/pressure/moisture fronts at a coarser atmospheric resolution than terrain, deterministically sampled by local regions.
