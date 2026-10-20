@@ -19,6 +19,28 @@ assert.equal(boundaryWaterExchange(e,3,0,1),null);
 assert.equal(boundaryWaterExchange({...e,boundaryWaterPolicy:undefined},0,.2,1),null);
 assert.throws(()=>boundaryWaterExchange(e,0,5,1),/Invalid planetary boundary-water stock/);
 
+// A coastal corner may touch two different geographic water bodies. If
+// only the west region is simulated, the north outside water remains an
+// external freshwater source. No full-corner shutoff or mixed salinity.
+const sides=new Uint8Array(128*128),boundary=new Uint8Array(128*128);
+sides[0]=1;boundary[0]=3; // west paired, north freshwater outside
+const coast={schema:6,boundaryWaterPolicy:PLANETARY_BOUNDARY_WATER.pairedPolicy,
+ blockedBoundaries:sides,boundary};
+const planet={n:128,len:128*128,regionOrigin:{x:0,y:0},
+ planet:{sample(x,y){return{water:1,ocean:x<0}}}};
+const partial=boundaryWaterExchange(coast,0,.6,1,planet);
+assert.ok(partial);
+assert.ok(Math.abs(partial.waterInput-.04)<1e-12);
+assert.equal(partial.saltInput,0,'the unpaired northern freshwater sets imported salinity');
+assert.ok(Math.abs(partial.saltOutput-.024)<1e-12);
+sides[0]=4; // north paired, west open to the saline ocean
+const marine=boundaryWaterExchange(coast,0,.6,1,planet);
+assert.ok(Math.abs(marine.saltInput-.04)<1e-12);
+sides[0]=5;
+assert.equal(boundaryWaterExchange(coast,0,.6,1,planet),null,
+ 'a fully paired corner must not tap an external reservoir');
+
+
 // Live planetary integration: conservation receipts use exactly the ocean
 // fluxes and physical water inventories. No artificially added biology.
 const origin={x:0,y:2560},seed='GENVO8-TEST-A';
