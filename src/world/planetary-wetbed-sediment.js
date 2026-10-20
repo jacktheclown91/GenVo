@@ -29,12 +29,21 @@ export function validateWetbedPolicy(w,e){
   if(v!==undefined&&(!Number.isFinite(v)||v<0))
    throw Error('Invalid planetary wetbed totals.');
  }
- for(const row of [...(e.daily||[]),...(e.lastDay?[e.lastDay]:[])])
+ for(const row of [...(e.daily||[]),...(e.lastDay?[e.lastDay]:[])]){
   for(const k of ['wetbedSedimentMoved','wetbedWaterDisplaced']){
    const v=row[k];
    if(v!==undefined&&(!Number.isFinite(v)||v<0))
     throw Error('Invalid planetary wetbed receipt.');
   }
+  if((row.wetbedSedimentMoved!==undefined||row.wetbedWaterDisplaced!==undefined)&&
+     (!Number.isFinite(row.wetbedSedimentMoved)||!Number.isFinite(row.wetbedWaterDisplaced)||
+      Math.abs(row.wetbedSedimentMoved-row.wetbedWaterDisplaced)>1e-8))
+    throw Error('Unbalanced planetary wetbed sediment displacement.');
+ }
+ if(e.totals?.wetbedSedimentMoved!==undefined&&
+    e.totals.wetbedWaterDisplaced!==undefined&&
+    Math.abs(e.totals.wetbedSedimentMoved-e.totals.wetbedWaterDisplaced)>1e-6)
+  throw Error('Unbalanced planetary wetbed totals.');
 }
 
 // All changes are signed, STAGED deltas. The calling water authority validates
