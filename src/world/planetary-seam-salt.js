@@ -59,7 +59,7 @@ function ownedActive(sim){
 }
 function validRegion(r,day){
  const e=r.env;
- return !!r.origin&&r.water?.length===128*128&&(e?.schema===2||e?.schema===3)&&
+ return !!r.origin&&r.water?.length===128*128&&(e?.schema===2||e?.schema>=3||e?.schema===4)&&
   e.salt instanceof Float64Array&&e.salt.length===128*128&&
   (e.schema!==3||(e.volume instanceof Float64Array&&e.volume.length===128*128))&&
   e.depth instanceof Float32Array&&e.depth.length===128*128&&
@@ -69,12 +69,12 @@ function validRegion(r,day){
 function boundedFlux(source,target,i,j){
  const a=source.env,b=target.env;
  if(!source.water[i]||!target.water[j]||!a.boundary[i]||!b.boundary[j])return 0;
- const ai=a.salt[i]/(a.schema===3?a.volume[i]:a.depth[i]),
-  bj=b.salt[j]/(b.schema===3?b.volume[j]:b.depth[j]);
+ const ai=a.salt[i]/(a.schema>=3?a.volume[i]:a.depth[i]),
+  bj=b.salt[j]/(b.schema>=3?b.volume[j]:b.depth[j]);
  // Use old-day stocks for every decision. A source's maximum available salt
  // is enforced separately while staging transfers across all four seams.
  const difference=ai-bj;
- return Number.isFinite(difference)?difference*Math.min(a.schema===3?a.volume[i]:a.depth[i],b.schema===3?b.volume[j]:b.depth[j])*
+ return Number.isFinite(difference)?difference*Math.min(a.schema>=3?a.volume[i]:a.depth[i],b.schema>=3?b.volume[j]:b.depth[j])*
   PLANETARY_SEAM_SALT.dailyFraction:0;
 }
 function stageTransfer(owner,other,index,opposite,proposal,changes,receipts,day,tick){
@@ -91,7 +91,7 @@ function stageTransfer(owner,other,index,opposite,proposal,changes,receipts,day,
  const fi=proposal>0?index:opposite,ti=proposal>0?opposite:index;
  const debit=changes.get(from.key).get(fi)||0;
  const available=from.env.salt[fi]+debit;
- const capacity=(to.env.schema===3?to.env.volume[ti]:to.env.depth[ti])*2-to.env.salt[ti]-(changes.get(to.key).get(ti)||0);
+ const capacity=(to.env.schema>=3?to.env.volume[ti]:to.env.depth[ti])*2-to.env.salt[ti]-(changes.get(to.key).get(ti)||0);
  const amount=Math.min(Math.abs(proposal),Math.max(0,available*.25),Math.max(0,capacity));
  if(amount<=0)return;
  changes.get(from.key).set(fi,debit-amount);
@@ -102,7 +102,7 @@ function stageTransfer(owner,other,index,opposite,proposal,changes,receipts,day,
 // salt along with it. This does not override the separate conservative salt
 // diffusion. Only v3 physical Worlds own the new 64-bit volume inventories.
 function stageWater(owner,other,i,j,saltChanges,waterChanges,pairs,day,tick){
- if(owner.env.schema!==3||other.env.schema!==3||!owner.terrain||!other.terrain)return;
+ if(owner.env.schema<3||other.env.schema<3||!owner.terrain||!other.terrain)return;
  const ae=owner.env,be=other.env;
  const headA=owner.terrain.elevation[i]+ae.volume[i]+(waterChanges.get(owner.key).get(i)||0);
  const headB=other.terrain.elevation[j]+be.volume[j]+(waterChanges.get(other.key).get(j)||0);
@@ -195,7 +195,7 @@ export function reconcilePlanetarySaltSeams(sim){
    water=summarizeWater(entries,r);
   for(const [i,delta] of amounts){
    const final=r.env.salt[i]+delta;
-   const dynamic=r.env.schema===3?r.env.volume[i]+(waterChanges.get(r.key).get(i)||0):r.env.depth[i];
+   const dynamic=r.env.schema>=3?r.env.volume[i]+(waterChanges.get(r.key).get(i)||0):r.env.depth[i];
    if(!Number.isFinite(final)||final<-1e-12||final>dynamic*2+1e-10)
     throw Error('Invalid cross-region salt stock.');
   }
@@ -222,7 +222,7 @@ export function reconcilePlanetarySaltSeams(sim){
   e.totals.saltInput+=incoming;e.totals.saltOutput+=outgoing;
   e.totals.pairedInput=(e.totals.pairedInput||0)+incoming;
   e.totals.pairedOutput=(e.totals.pairedOutput||0)+outgoing;
-  if(e.schema===3){
+  if(e.schema>=3){
    e.totals.pairedWaterInput=(e.totals.pairedWaterInput||0)+water.incoming;
    e.totals.pairedWaterOutput=(e.totals.pairedWaterOutput||0)+water.outgoing;
   }
@@ -233,7 +233,7 @@ export function reconcilePlanetarySaltSeams(sim){
    record.pairedInput=(record.pairedInput||0)+incoming;
    record.pairedOutput=(record.pairedOutput||0)+outgoing;
    record.closure=record.input-record.output-(record.after-record.before);
-   if(e.schema===3){
+   if(e.schema>=3){
     record.waterInput+=water.incoming;record.waterOutput+=water.outgoing;
     record.waterAfter+=water.incoming-water.outgoing;
     record.waterClosure=record.waterInput-record.waterOutput-(record.waterAfter-record.waterBefore);
