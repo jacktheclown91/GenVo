@@ -45,7 +45,7 @@ import {FieldJournal} from './ui/journal.js';
 import {AudioDirector} from './audio/audio.js';
 import {LeadershipWheel} from './ui/leadership-wheel.js';
 import {EffectFeedbackController} from './ui/effect-feedback.js';
-import {SaveManager} from './persistence/save-manager.js';
+import {SaveManager,restoreSimulationSnapshot} from './persistence/save-manager.js';
 import {packageScenarioSnapshot,openScenarioSnapshot,loadBundledScenario,sha256Hex} from './persistence/scenario-library.js';
 import {ObserverController} from './ui/observer.js';
 import {SuccessionChooser} from './ui/succession-chooser.js';
