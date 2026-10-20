@@ -56,7 +56,7 @@ const startCombined=saltStorage(active.world)+session.snapshot.world.environment
 const initialWater=active.world.environment.volume.reduce((a,b)=>a+b,0)+
  session.snapshot.world.environment.volume.reduce((a,b)=>a+b,0);
 const previousVolumes=[active.world.environment.volume[i],session.snapshot.world.environment.volume[j]];
-assert.ok(previous.world.environment.schema===4&&session.snapshot.world.environment.schema===4);
+assert.ok(previous.world.environment.schema===5&&session.snapshot.world.environment.schema===5);
 const oldFirst=active.world.environment.salt[i],oldSecond=session.snapshot.world.environment.salt[j];
 // No synthetic day or accelerated animal clock. Exchange occurs just before
 // the next legitimate active tick after both regions finished the same day.
