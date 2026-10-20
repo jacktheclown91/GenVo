@@ -346,6 +346,13 @@ export function reconcilePlanetarySaltSeams(sim){
  let mineralClosure=0;
  for(const map of mineralChanges.values())for(const delta of map.values())mineralClosure+=delta;
  if(Math.abs(mineralClosure)>1e-8)throw Error('Cross-region runoff-mineral conservation failed.');
+ // A displaced wetbed column has no external source or sink: regional
+ // water and salt must still close in this one atomic seam transaction.
+ let localWater=0,localSalt=0;
+ for(const map of waterChanges.values())for(const change of map.values())localWater+=change;
+ for(const map of changes.values())for(const change of map.values())localSalt+=change;
+ if(Math.abs(localWater)>1e-8||Math.abs(localSalt)>1e-8)
+  throw Error('Paired water, salt or wetbed conservation failed.');
  validateSedimentDeltas(regions,terrainChanges);
  const nextHistory=[...(travel.seamLedger?.history||[]),...entries]
   .slice(-PLANETARY_SEAM_SALT.historyLimit);
@@ -385,6 +392,10 @@ export function reconcilePlanetarySaltSeams(sim){
    e.totals.pairedWaterInput=(e.totals.pairedWaterInput||0)+water.incoming;
    e.totals.pairedWaterOutput=(e.totals.pairedWaterOutput||0)+water.outgoing;
   }
+  if(wetbed){
+   e.totals.wetbedSedimentMoved=(e.totals.wetbedSedimentMoved||0)+wetbed;
+   e.totals.wetbedWaterDisplaced=(e.totals.wetbedWaterDisplaced||0)+wetbed;
+  }
   if(sediment.incoming||sediment.outgoing){
    e.totals.seamSedimentInput=(e.totals.seamSedimentInput||0)+sediment.incoming;
    e.totals.seamSedimentOutput=(e.totals.seamSedimentOutput||0)+sediment.outgoing;
@@ -408,6 +419,10 @@ export function reconcilePlanetarySaltSeams(sim){
     record.waterInput+=water.incoming;record.waterOutput+=water.outgoing;
     record.waterAfter+=water.incoming-water.outgoing;
     record.waterClosure=record.waterInput-record.waterOutput-(record.waterAfter-record.waterBefore);
+    if(wetbed){
+     record.wetbedSedimentMoved=(record.wetbedSedimentMoved||0)+wetbed;
+     record.wetbedWaterDisplaced=(record.wetbedWaterDisplaced||0)+wetbed;
+    }
     if(sediment.incoming||sediment.outgoing){
      record.seamSedimentInput=(record.seamSedimentInput||0)+sediment.incoming;
      record.seamSedimentOutput=(record.seamSedimentOutput||0)+sediment.outgoing;
