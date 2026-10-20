@@ -7,7 +7,7 @@ on:
       - assets/scenarios/first-fixture-request.json
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   generate-and-check:
     runs-on: ubuntu-latest
@@ -43,6 +43,16 @@ jobs:
           name: genvo-first-authentic-evolved-world
           path: |
             assets/scenarios/catalog.json
-            assets/scenarios/established-valley-d30.json
+            assets/scenarios/established-valley-d30.json.gz
           if-no-files-found: warn
           retention-days: 14
+      - name: Promote verified compressed world for player quick starts
+        if: success()
+        run: |
+          test -s assets/scenarios/established-valley-d30.json.gz
+          test "$(stat -c%s assets/scenarios/established-valley-d30.json.gz)" -lt 73400320
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/scenarios/catalog.json assets/scenarios/established-valley-d30.json.gz
+          git commit -m "Add authentic verified Day 30 valley quick-start checkpoint"
+          git push origin HEAD:codex/repository-consolidation
