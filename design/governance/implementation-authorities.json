@@ -147,6 +147,17 @@
         "src/world/world.js"
       ]
     },
+    "planetaryTerrainSediment": {
+      "authority": "src/world/terrain-sediment.js",
+      "consumers": [
+        "src/world/planet-world.js",
+        "src/world/environment.js",
+        "src/world/planetary-runoff.js",
+        "src/world/planetary-seam-runoff.js",
+        "src/world/planetary-seam-salt.js"
+      ],
+      "note": "New-world opted conserved-runoff-sediment/1 stages small water-funded transfers of actual mutable Float32 terrain.elevation between adjacent dry land cells, with finite bounded source loss and receiver deposition, no added sediment stock. Drainage is re-derived after local/active changes and archived height persists in terrain snapshots. Wet riverbeds and water-mask changes are deferred to separately coupled topology authority. Historical saved worlds lacking the policy do not erode."
+    },
     "planetaryRunoffMinerals": {
       "authority": "src/world/planetary-mineral-runoff.js",
       "consumers": [
