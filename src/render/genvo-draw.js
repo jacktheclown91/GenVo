@@ -116,7 +116,7 @@ function keepSprite(ck,src,n,sx=0,sy=0){SPRITE_STATS.lastSide=n;
 export function drawGenvoSprite(c,opts={}){
   const s=opts.scale||1,n=Math.ceil(44*s/2)*2;
   const S=typeof c?.drawImage==='function'?scratchFor(n):null;if(!S)return drawGenvoBody(c,opts);
-  const artRevision=nativeArtStatus().revision;const ck=opts.cacheKey&&!opts.authoredParts&&!(SPRITE_CACHE.skipMoving&&opts.moving)?opts.cacheKey+'|art'+artRevision+'|'+s+'|look'+(opts.pose?.behavior?.headTurn||0)+'|'+'|'+JSON.stringify(opts.pose?.partExpression||null):null;if(ck){const hit=spriteCache.get(ck);if(hit?.img){SPRITE_STATS.hits++;c.drawImage(hit.img,-n/2,-n/2);return}if(hit)SPRITE_STATS.pending++;else{SPRITE_STATS.misses++;if(SPRITE_STATS.sample&&SPRITE_STATS.sample.length<4000)SPRITE_STATS.sample.push(ck)}}else SPRITE_STATS.uncached++;
+  const artRevision=nativeArtStatus().revision;const ck=opts.cacheKey&&!opts.authoredParts&&!(SPRITE_CACHE.skipMoving&&opts.moving)?opts.cacheKey+'|coat'+(Number.isFinite(opts.animal?.coatDensity)?Math.round(opts.animal.coatDensity*8):-1)+'|art'+artRevision+'|'+s+'|look'+(opts.pose?.behavior?.headTurn||0)+'|'+'|'+JSON.stringify(opts.pose?.partExpression||null):null;if(ck){const hit=spriteCache.get(ck);if(hit?.img){SPRITE_STATS.hits++;c.drawImage(hit.img,-n/2,-n/2);return}if(hit)SPRITE_STATS.pending++;else{SPRITE_STATS.misses++;if(SPRITE_STATS.sample&&SPRITE_STATS.sample.length<4000)SPRITE_STATS.sample.push(ck)}}else SPRITE_STATS.uncached++;
   const size=S.n,h=size/2,o=Math.max(1,Math.round(s/ART_DETAIL));
   if(batch.active&&!(MODULAR_HEAD.enabled&&ck)){let slot=stagingSlot(size),body=slot&&!slot.B?poolBody(S):null;
     if(!slot||(!slot.B&&!body)){batch.stats.overflowFlushes++;batch.flush();slot=stagingSlot(size);body=slot&&!slot.B?poolBody(S):null}
@@ -184,7 +184,7 @@ function drawGenvoBody(c0,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pa
   const face={...profile.face,eyeForward:profile.face.eyeForward+faceShift,mouthForward:profile.face.mouthForward+faceShift+.35};
   if(L){const proj=pt=>({f:(pt.x-bx)*fx+(pt.y-by)*fy,s:(pt.x-bx)*perp.x+(pt.y-by)*perp.y});if(L.mouth)face.mouthForward=proj(L.mouth).f;if(L['eye.right']){const e=proj(L['eye.right']);face.eyeForward=e.f;face.eyeSpread=Math.abs(e.s)}}
   const expressionNode=(socket,index=0)=>asm.faceNodes[socket]||a.bodyPlan?.nodes.filter(n=>n.parent==='root'&&n.socket===socket)[index]?.id;
-  const K={s,p,nativeBodyScale:ph.bodyScale,behavior:profile.behavior,originX:bx,originY:by,nativePigment:inheritedSkinRamp(p),fx,fy,perp,bx,by,bodyW,bodyH,face,frameInt,authoredParts,authoredState:pose.action||'idle',authoredFacing:pose.dir??a.dir??0,authoredTimeMs:authoredTimeMs||frameInt*125,explicit:asm.explicit,L,partExpression:pose.partExpression};
+  const K={s,p,coatDensity:Number.isFinite(a?.coatDensity)?Math.round(a.coatDensity*8)/8:null,nativeBodyScale:ph.bodyScale,behavior:profile.behavior,originX:bx,originY:by,nativePigment:inheritedSkinRamp(p),fx,fy,perp,bx,by,bodyW,bodyH,face,frameInt,authoredParts,authoredState:pose.action||'idle',authoredFacing:pose.dir??a.dir??0,authoredTimeMs:authoredTimeMs||frameInt*125,explicit:asm.explicit,L,partExpression:pose.partExpression};
   // Gait articulation (renderer-owned): the torso twists about its centre while walking, so the
   // head end and tail end swing to opposite sides and dorsal tissue rolls past the outline.
   // Whole-pixel canvas offsets keep pixel art crisp; feet are never moved (contacts stay planted).
