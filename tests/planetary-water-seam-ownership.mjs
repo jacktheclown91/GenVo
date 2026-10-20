@@ -69,6 +69,14 @@ assert.ok(Math.abs(bRow.boundaryWaterInput-bRow.boundaryWaterOutput)<1e-9);
 const before=saltStorage(active)+saltStorage(neighbor);
 const waterBefore=active.environment.volume.reduce((s,v)=>s+v,0)+
  neighbor.environment.volume.reduce((s,v)=>s+v,0);
+// Corrupt an ownership marker: reject before either physical stock changes.
+const pairedBit=neighbor.environment.blockedBoundaries[j];
+neighbor.environment.blockedBoundaries[j]=0;
+const rejectSalt=saltStorage(active)+saltStorage(neighbor);
+assert.throws(()=>reconcilePlanetarySaltSeams(sim),/Unsynchronized planetary seam water ownership/);
+assert.equal(saltStorage(active)+saltStorage(neighbor),rejectSalt,
+ 'ownership mismatch must not half-commit an ocean transfer');
+neighbor.environment.blockedBoundaries[j]=pairedBit;
 const transfers=reconcilePlanetarySaltSeams(sim);
 assert.ok(transfers.length>0,'true synchronized neighbors pair their water and dissolved salt');
 const after=saltStorage(active)+saltStorage(neighbor);
