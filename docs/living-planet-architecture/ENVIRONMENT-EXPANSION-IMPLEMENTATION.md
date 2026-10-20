@@ -52,6 +52,13 @@ Continental geography, finite oceans/rivers/groundwater, moving weather, climate
 - **Verification status:** GitHub commits confirmed; the new targeted tests and browser playability have not yet been run here. The patch does not implement cross-region seed transport, global wind pressure circulation or ocean exchange.
 - The wind field is an initial front-correlated model, not final atmospheric physics. Its ecology and visual readability require creator playtests and later weather integration.
 
+## Weather-driven botanical pollination (October 19, 2026)
+- `src/ecology/botanical-reproduction.js` now moves already-funded pollen one neighboring terrestrial cell downwind before same-flower self-pollination. Wind chooses direction, not viable mutations or fertilization success.
+- Only a real, already-funded receptive flower can receive transported pollen. The existing `deliverBotanicalPollen` performs inherited receptor recognition, self-incompatibility, ovule investment, embryo generation, receipt generation and nonviable pollen/litter transfers. No new resource controller or special plant identity gate is introduced.
+- Wind dispersal remains restricted to new planetary worlds with the explicit `planetary-wind/1` dispersal policy. Legacy saves lacking the policy keep previous self/animal-contact reproduction. A planetary-only wind policy on nonplanetary terrain is rejected during controller upgrade.
+- `tests/planetary-wind-pollination.mjs` covers naturally funded neighboring pollen, one-packet transfer, conserved botanical mass including litter, recorded wind delivery and a missing-policy opt-out. Existing `tests/dispersal.mjs` covers invalid terrain/policy mismatch.
+- **Verification:** isolated wind-dispatch smoke test and syntax parsing passed; full real-simulation Node suite and Chromium evidence are pending. No regional cross-border pollen transport, long-distance airborne dispersal, climate-dependent pollination physiology or browser visual feedback is claimed.
+
 ## Batch 4: weather
 - [ ] Introduce globally located wind/pressure/moisture fronts at a coarser atmospheric resolution than terrain, deterministically sampled by local regions.
 - [ ] Route rainfall, snow, evaporation, cloud shade and temperature through the existing climate/soil/water authorities.
