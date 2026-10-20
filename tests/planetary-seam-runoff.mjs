@@ -58,7 +58,7 @@ assert.deepEqual(reconcilePlanetarySaltSeams(sim),[],'cannot transfer twice in a
 
 // Dry-to-wet: water becomes real freshwater channel volume; it is not added
 // to salinity, seeds, life or a second overland inventory.
-const c=region(0,left,{overland:.6,elevation:.9});
+const c=region(0,left,{overland:2,elevation:.9});
 const d=region(128,right,{wet:true,volume:1.95,elevation:.1});
 const next=encounter(c,d).sim,amountBefore=c.environment.overland[left]+d.environment.volume[right];
 const r=reconcilePlanetarySaltSeams(next);
