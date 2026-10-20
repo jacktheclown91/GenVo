@@ -26,6 +26,8 @@ jobs:
         run: node tools/verify-save-coherence-browser.mjs docs/test-runs/playable-browser-ci
       - name: Launch a fresh world and verify native anatomy render
         run: node tools/verify-e4-browser-art.mjs
+      - name: Start the verified evolved valley in real Chromium
+        run: node tools/verify-scenario-browser.mjs docs/test-runs/scenario-browser-ci
       - name: Preserve browser receipts
         if: always()
         uses: actions/upload-artifact@v4
@@ -34,4 +36,5 @@ jobs:
           path: |
             docs/test-runs/playable-browser-ci/
             docs/test-runs/e4-browser-review/
+            docs/test-runs/scenario-browser-ci/
           if-no-files-found: ignore
