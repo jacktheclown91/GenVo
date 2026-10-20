@@ -1,4 +1,18 @@
 {
   "schema": 1,
-  "scenarios": []
+  "scenarios": [
+    {
+      "id": "established-valley-d30",
+      "label": "Established Valley, Day 30",
+      "description": "Authentically simulated planetary ecosystem.",
+      "seed": "GENVO-VALLEY-REPLAY-30",
+      "day": 31,
+      "year": 1,
+      "generation": 1,
+      "liveAnimals": 215,
+      "playable": true,
+      "file": "assets/scenarios/established-valley-d30.json.gz",
+      "sha256": "6706d1f3f2896f6eb66ca1cac1006a445732bed2a851658ac80b41dc71414210"
+    }
+  ]
 }
