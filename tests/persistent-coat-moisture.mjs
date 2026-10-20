@@ -80,6 +80,17 @@ const subject=sim.animals.find(a=>a.alive&&a.species==='genvo');
 assert.ok(subject,'an active GenVo creature is needed');
 subject.bodyPlan=structuredClone(fur.bodyPlan);
 subject.coatWetness=.68;
+// Exercise the existing animal metabolism, not just the wetness helper.
+// The real world cell and precipitation supply the exposure for the same
+// player, family and wild-animal life-step path.
+const at=sim.world.idx(subject.x,subject.y);
+sim.world.temperature[at]=.18;
+sim.world.moisture[at]=.9;
+sim.climate={temp:.18,rain:1};
+sim.phaseMetabolism();
+assert.ok(subject.coatWetness>.68,
+ 'real organism metabolism should soak inherited fur during rain');
+subject.coatWetness=.68;
 const snapshot=structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'coat-moisture'}));
 const replay=restoreSimulationSnapshot(structuredClone(snapshot));
 assert.equal(replay.animals.find(a=>a.id===subject.id).coatWetness,.68);
