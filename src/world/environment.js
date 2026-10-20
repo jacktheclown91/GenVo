@@ -126,13 +126,13 @@ export function advanceEnvironmentWater(w,climate,day){
   t.surfaceRainInput=(t.surfaceRainInput||0)+surfaceRainInput;
   t.surfaceRainOutput=(t.surfaceRainOutput||0)+surfaceRainOutput;
  }
- e.salt.set(next);e.day=day;const after=saltStorage(w),input=t.saltInput-input0,output=t.saltOutput-output0,row={
+ e.salt.set(next);e.day=day;const after=saltStorage(w),waterAfter=e.schema>=5?totalPlanetarySurfaceWater(w):waterBefore,input=t.saltInput-input0,output=t.saltOutput-output0,row={
  day,before,after,input,output,closure:input-output-(after-before),
  ...(e.schema>=2?{boundaryInput,boundaryOutput}:{}),
  ...(e.schema>=3?(e.schema>=5?{
-  ...internal,waterBefore,waterAfter:totalPlanetarySurfaceWater(w),
+  ...internal,waterBefore,waterAfter,
   waterInput:surfaceRainInput,waterOutput:surfaceRainOutput,
-  waterClosure:surfaceRainInput-surfaceRainOutput-(totalPlanetarySurfaceWater(w)-waterBefore),
+  waterClosure:surfaceRainInput-surfaceRainOutput-(waterAfter-waterBefore),
   surfaceRainInput,surfaceRainOutput
  }:internal||{waterBefore,waterAfter:waterBefore,waterInput:0,waterOutput:0,waterClosure:0}):{}),
  pageTransfers:finishPageSaltTransfers(pageLedger)
