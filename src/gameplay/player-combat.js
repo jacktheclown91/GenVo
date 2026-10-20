@@ -1,3 +1,4 @@
+import {canopyContact} from '../lineage/climbing.js';
 import {sameDepth,submerged} from '../lineage/diving.js';
 import {JUMP,springLegs,jumpKinematics,jumpAvailability,launchJump} from '../lineage/jumping.js';
 import {physicalAttackProfile} from '../lineage/physical-attack.js';
@@ -72,7 +73,7 @@ export class PlayerCombatController{
   releaseBrace(actor){if(actor)actor.bracing=false}
   attackTargetStatus(a,id){
     const target=this.sim.animals.find(o=>o.id===id&&o.alive&&o.id!==a.id);if(!target)return{enabled:false,state:'unavailable',reason:'The selected creature is no longer here.',target:null};
-    if(!sameDepth(a,target)||target.airborne||target.perched||a.airborne||a.perched)return{enabled:false,state:'unavailable',reason:'Surface attack cannot reach an aerial or canopy creature.',target:null};
+    if(!sameDepth(a,target)||!canopyContact(a,target)||a.airborne||a.perched)return{enabled:false,state:'unavailable',reason:'Surface attack cannot reach an aerial or canopy creature.',target:null};
     const hunter=canHunt(target);if(!hunter&&preyPreference(a,target)<=0)return{enabled:false,state:'unavailable',reason:'Your feeding anatomy cannot hunt this creature.',target:null};
     const reach=hunter?CFG.attack.stalkerReach:CFG.attack.preyReach;
     if(!(Math.hypot(target.x-a.x,target.y-a.y)<reach))return{enabled:false,state:'approachable',reason:'Selected creature is out of reach. Approach it first.',target:null};

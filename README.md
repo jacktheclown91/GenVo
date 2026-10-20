@@ -30,6 +30,8 @@ Two spring legs enable **Jump** (Enter) in newly generated worlds. Launch follow
 
 Two webbed legs enable **Dive / Surface** in water. Page Down selects a deeper target; Page Up surfaces. Held air is finite, gills support underwater respiration, and underwater food requires actual depth. Depth, air and geometry persist across saves. Historical worlds can explicitly adopt these rules in a backed-up continuation. See [diving evidence and limits](docs/DIVING-2026-10-20.md).
 
+Climb/Descend (7) now moves gradually along a supporting living tree in new worlds. Food energy, body load, grips and the tree's remaining stock matter; mid-climb saves continue exactly. Historical worlds retain instant climbing unless explicitly adopted into a backed-up continuation. Natural canopy accessibility remains unproven; see [climbing evidence and limits](docs/CLIMBING-2026-10-20.md).
+
 For a saved, imported or bundled evolved world, **New World > Movement in this continuation > Enable new movement · save original backup** enables these rules in a separate continuation. The untouched checkpoint and the continuation commit together before play begins. **Worlds > New World from backup** recovers a playable copy with its original rules and recorded lineage. Ordinary Continue never opts a historical world in. See [movement adoption and recovery](docs/MOVEMENT-ADOPTION-2026-10-20.md).
 
 ## Verify

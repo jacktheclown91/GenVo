@@ -894,7 +894,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   drawAnimal(a,tile){
     const c=this.ctx;
     const scale=this.zoom,ph=phenotypeFor(a),dev=developmentFor(a),social=this.sim.social?.visualState?.(a)||null,gaitPerTile=8*CFG.tileSize/gaitTravelFor(ph.limbScale*(.72+.28*(a.player?dev.growth:Math.round(dev.growth*32)/32)),assemblyFor(a)?.legSlots),visual=a.player&&this.playerVisual?{...this.playerVisual,gaitPhase:this.motion.sample({...a,x:this.playerVisual.x,y:this.playerVisual.y},this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear',snap:true,gaitPerTile}).gaitPhase}:this.motion.sample(a,this.sim.tickCount,this.renderNow,{hz:(a.player||a.pursuitEngaged)?CFG.controlHz:CFG.simHz,response:'linear',gaitPerTile}),px=Math.round((visual.x-this.camera.x)*tile+this.w/2),py=Math.round((visual.y-this.camera.y)*tile+this.h/2);(this.screenPos||=new Map()).set(a.id,{x:px,y:py});let action=a.torpor?'rest':this.actionPose(a,!!visual.moving);
-    const targetTravel=!!(a.target&&!['eat','drink','court'].includes(action)),moving=!!visual.moving||(!a.player&&!!visual.recentlyMoving&&targetTravel);
+    const targetTravel=!!(a.target&&!['eat','drink','court'].includes(action)),moving=!!a.climb||!!visual.moving||(!a.player&&!!visual.recentlyMoving&&targetTravel);
     let phase=moving?(visual.gaitPhase??visual.phase):(((this.encounters?.time||0)/.22)+a.id)%8;
     // Autonomous gait phases are ID-offset in presentation so unrelated wildlife does not
     // hit the same footfall on every shared ecology beat. Simulation animation stays canonical.
@@ -904,6 +904,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
       phase=(phase+social.memberIndex*.75)%8;
     }
     const feeding=(this.feeding||=new FeedingPresentation()).sample(this.sim,a,this.encounters?.time||0,{moving,phase});if(feeding&&!social?.alarm)action=feeding.mode==='crush'?'crack':'eat';
+    if(a.climb){action='climb';phase=a.anim}
     const encounter=this.encounters?.sample(this.sim,a,phase)||{};
     // Brace receipts, stalled charges, carried wounds and retreats read from combat state.
     const reaction=(this.reactions||=new EncounterReactionPresentation()).sample(this.sim,a,this.encounters?.time||0),defense=this.reactions.sampleDefense(this.sim,a,this.encounters?.time||0),reactionAt=reactionAttention(reaction);if(reactionAt&&!encounter.attention&&!a.player)encounter.attention=reactionAt;
@@ -958,13 +959,14 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     if(!a.airborne&&!a.perched&&!(a.diveDepth>.03))drawGroundContact(c,{contact,scale,bodyScale:ph.bodyScale,dir:drawDir});
     if(!a.airborne&&!a.perched)drawActivityGround(c,{bodyPlan:a.bodyPlan,id:a.id,frame:phase,moving,action,scale,dir:drawDir});
     const depthShadow=creatureShadowFor(this.sim.world,a,this.habitatField,{bodyScale:ph.bodyScale+(life.exhausted?.08:0),moving,dir:drawDir});drawCreatureDepthShadow(c,{shadow:depthShadow,scale,hurt:life.hurt});
-    if(a.airborne||a.perched){c.save();c.globalAlpha*=.22;c.fillStyle='#23303d';c.beginPath();c.ellipse(0,2*scale,6*scale,3*scale,0,0,Math.PI*2);c.fill();c.restore();c.translate(0,(a.aerialMode==='jump'?-Math.max(0,Math.min(16,(a.jump.altitude-glideGround(this.sim.world,a.x,a.y))*7)):a.aerialMode==='glide'?-Math.max(1,Math.min(14,(a.glideAltitude-glideGround(this.sim.world,a.x,a.y))*3)):a.airborne?-9:-7)*scale)}
+    if(a.airborne||a.perched){c.save();c.globalAlpha*=.22;c.fillStyle='#23303d';c.beginPath();c.ellipse(0,2*scale,6*scale,3*scale,0,0,Math.PI*2);c.fill();c.restore();c.translate(0,(a.climb?-a.climb.height*7/3:a.aerialMode==='jump'?-Math.max(0,Math.min(16,(a.jump.altitude-glideGround(this.sim.world,a.x,a.y))*7)):a.aerialMode==='glide'?-Math.max(1,Math.min(14,(a.glideAltitude-glideGround(this.sim.world,a.x,a.y))*3)):a.airborne?-9:-7)*scale)}
     const palette=creaturePalette(ph);
     if(a.hidden)c.globalAlpha*=.58;
     if((a.diveDepth||0)>.03){c.globalAlpha*=.55;c.translate(0,Math.min(4,a.diveDepth*4)*scale)}
     drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:a.player?phase:cachePhase,moving,palette,pose,cacheKey:a.player||feeding||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,cachePhase,moving,pose,life)});
     if(a.pollenCargo?.mass>0){pixel(c,-3,-3,1,1,scale,'#dfba5b');pixel(c,2,-4,1,1,scale,'#e9d37d');pixel(c,4,-1,1,1,scale,'#cda64e')}
     this.drawLifeEffects(a,scale,frame,pose,palette);
+    if(a.climb){c.fillStyle='#e4d4a8';c.font='bold 11px sans-serif';c.textAlign='center';c.fillText('Climb '+a.climb.height.toFixed(1),0,-10*scale)}
     if((a.diveDepth||0)>.03){c.globalAlpha=1;c.strokeStyle='#8acbd2';c.lineWidth=Math.max(1,scale*.35);c.beginPath();c.ellipse(0,-3*scale,7*scale,3*scale,0,0,Math.PI*2);c.stroke();c.fillStyle='#c5f1eb';c.font='bold 11px sans-serif';c.textAlign='center';c.fillText('↓ '+a.diveDepth.toFixed(2),0,-9*scale)}
     if(combatStatus)drawPlayerCombatFeedback(c,{animal:a,status:combatStatus,winded,scale,now:this.renderNow,dir:drawDir});else if(a.playerHunt)drawStalkerPursuitFeedback(c,{animal:a,scale,now:this.renderNow});
     drawEncounterReactionMarks(c,{reaction,animal:a,scale,dir:drawDir});drawDefenseMarks(c,{reaction:defense,animal:a,scale,dir:drawDir});

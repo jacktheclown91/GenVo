@@ -12,6 +12,7 @@ const syntax=[
   'tests/save-concurrent-requests.mjs'
 ];
 const runtime=[
+  'tests/climbing.mjs',
   'tests/action-capabilities.mjs',
   'tests/diving.mjs',
   'tests/movement-adoption.mjs',

@@ -208,7 +208,7 @@ export function crossPlanetaryBorder(sim){
  sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,memberIds),...(sim.offscreenBiologyEnabled?{biologicalMode:'canonical-ticks/1'}:{})});
  dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions,
   ...(prior.seamLedger?{seamLedger:structuredClone(prior.seamLedger)}:{})};
- for(const key of ['divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
+ for(const key of ['climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
  dest.travelFamilyGroup=!!sim.travelFamilyGroup;
  dest.offscreenBiologyEnabled=!!sim.offscreenBiologyEnabled;
  if(Object.hasOwn(sim,'regionalReplayPolicy'))dest.regionalReplayPolicy=sim.regionalReplayPolicy;else delete dest.regionalReplayPolicy;

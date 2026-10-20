@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import {stepClimb} from '../src/lineage/climbing.js';
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
 import {founderPlan,mutatePlan,recombineBodyPlans} from '../src/lineage/body-inheritance.js';
@@ -42,6 +43,7 @@ p.x=cell%w.n+.5;p.y=(cell/w.n|0)+.5;p.dir=2;
 const old=w.plants.woodspire[cell];w.plants.woodspire[cell]=1.6;sim.dispersal.noteGrowth('woodspire',cell,old,1.6);
 const energy=p.energy;
 assert.ok(sim.playerToggleRoost().ok,'climbing legs reach actual living canopy without wings');
+while(p.climb)stepClimb(sim,p,.1);
 assert.ok(p.perched&&p.energy<energy,'climbing consumes finite body energy');
 assert.ok(sim.glidingStatus().enabled);
 assert.ok(sim.playerToggleGlide().ok);assert.equal(p.glideAltitude,glideGround(w,p.x,p.y)+GLIDING.canopyHeight);

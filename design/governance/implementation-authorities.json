@@ -21,6 +21,15 @@
       "consumers": ["src/ui/creature-context-tray.js", "src/ui/gameplay-actions.js"],
       "contract": "docs/ACTION-BAR-2026-10-20.md"
     },
+    "continuousCanopyTraversal": {
+      "authority": "src/lineage/climbing.js",
+      "consumers": ["src/sim/simulation.js", "src/persistence/save-manager.js", "src/gameplay/player-combat.js"],
+      "contract": "docs/CLIMBING-2026-10-20.md"
+    },
+    "climbingRuleVersions": {
+      "authority": "src/lineage/climbing-rules.js",
+      "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js"]
+    },
     "currentPartPixels": {
       "authority": "src/render/part-sprites.js",
       "consumers": [

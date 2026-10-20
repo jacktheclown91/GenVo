@@ -354,6 +354,7 @@ export class FamilyController{
     return{shelter,fromShelter,fromParent,water};
   }
   tendAvailability(parent,child){
+    if(parent?.climb||child?.climb)return{enabled:false,state:'unavailable',reason:'Finish climbing before tending.'};
     if((parent?.diveDepth||0)>.03||(child?.diveDepth||0)>.03)return{enabled:false,state:'unavailable',reason:'Surface with your young before tending.'};
     if(!parent?.alive||!child?.alive||!this.careStatus(child,parent)||!child.parentIds?.includes(parent.id))return{enabled:false,state:'unavailable',reason:'Only dependent young of this caregiver can be tended.'};
     const provision=this.tendProvision(parent,child),nursing=milkEligible(parent,child),canFeed=provision.fromShelter+provision.fromParent>0,label=nursing?'Nurse':canFeed?'Feed':'Tend';

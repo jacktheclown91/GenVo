@@ -21,6 +21,7 @@ export function glidingAvailability(sim,a=sim.player()){
  if(!a?.alive)return fail('No living creature.');
  if(sim.glidingRules!==GLIDING.policy)return fail('This historical world retains its recorded movement rules. Gliding is available in newly generated worlds.');
  if(a.aerialMode==='glide'){const height=Math.max(0,a.glideAltitude-glideGround(sim.world,a.x,a.y));return{enabled:true,height,reason:`Height ${height.toFixed(1)}. Folding above the ground causes a fall and injury.`}}
+ if(a.climb)return fail('Reach the canopy or ground before gliding.');
  if((a.diveDepth||0)>.03)return fail('Surface before gliding.');
  if(a.airborne)return fail('Land from powered flight before starting a glide.');
  if(!hasGlidingSurfaces(a))return fail('A gliding membrane must be mounted on each flank.');

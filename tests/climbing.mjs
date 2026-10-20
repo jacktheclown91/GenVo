@@ -1,0 +1,43 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {FounderDesign} from '../src/lineage/founder-design.js';
+import {place} from '../src/lineage/evolution-draft.js';
+import {adultBodyMass} from '../src/organisms/body-mass.js';
+import {CLIMBING,startClimb,stepClimb,canopyContact} from '../src/lineage/climbing.js';
+import {adoptClimbingRules} from '../src/lineage/climbing-rules.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {genvoVisualPose} from '../src/render/genvo.js';
+import {cueForResult} from '../src/audio/model.js';
+const design=new FounderDesign('sandbox');for(const socket of ['limb.1','limb.7'])assert.ok(place(design.draft,'climber-leg','root',socket).ok);
+const sim=new Simulation('CLIMBING-INTEGRATION'),a=sim.player(),w=sim.world;
+a.bodyPlan=design.draft.plan;a.energy=90;a.health=100;a.age=40;
+// Explicit mature-tree physiology fixture. This does not claim natural tree maturation.
+const i=w.plants.woodspire.findIndex((v,i)=>v>.05&&!w.water[i]&&w.isPlayable(i%w.n+.5,(i/w.n|0)+.5));assert.ok(i>=0);a.x=i%w.n+.5;a.y=(i/w.n|0)+.5;
+const old=w.plants.woodspire[i];w.plants.woodspire[i]=1.6;sim.dispersal.noteGrowth('woodspire',i,old,1.6);
+const stocks=structuredClone({plants:w.plants,water:w.water}),rng=sim.rng.state,startEnergy=a.energy;
+assert.ok(sim.playerToggleRoost().ok);assert.equal(a.climb.height,0);assert.equal(a.energy,startEnergy,'no instant elevation or hidden work');
+assert.equal(sim.playerToggleGlide().ok,false);assert.equal(sim.playerToggleFlight().ok,false);assert.equal(sim.canopyFoodAvailability(a).enabled,false);
+const beforeBirthRng=sim.rng.state,birthCount=sim.animals.length;a.pregnant={days:0};assert.deepEqual(sim.giveBirth(a),[]);assert.equal(sim.animals.length,birthCount);assert.equal(sim.rng.state,beforeBirthRng);assert.ok(a.pregnant,'birth cannot bypass an unfinished climb');delete a.pregnant;
+const x=a.x,y=a.y;sim.playerControlStep({right:true});assert.equal(a.x,x);assert.equal(a.y,y);
+stepClimb(sim,a,.1);assert.ok(a.climb.height>0&&a.climb.height<3&&a.energy<startEnergy);
+assert.ok(canopyContact(a,{perched:false}),'low trunk remains within surface reach');
+for(let k=0;k<20;k++)stepClimb(sim,a,.1);assert.equal(canopyContact(a,{perched:false}),false,'ground attackers cannot reach the middle of a trunk');
+assert.deepEqual({plants:w.plants,water:w.water},stocks);assert.equal(sim.rng.state,rng);
+const saved=structuredClone(createSimulationSnapshot(sim,{savedAt:'climb'})),restored=restoreSimulationSnapshot(structuredClone(saved));
+assert.deepEqual(restored.player(),a);stepClimb(sim,a,.1);stepClimb(restored,restored.player(),.1);assert.deepEqual(restored.player(),a,'exact mid-trunk continuation');
+const invalid=structuredClone(saved);invalid.animals.find(o=>o.id===a.id).climb.height=Infinity;assert.throws(()=>restoreSimulationSnapshot(invalid),/climbing state/);
+const traffic=sim.history.traffic.slice();sim.history.noteStep(a);assert.deepEqual(sim.history.traffic,traffic);
+while(a.climb)stepClimb(sim,a,.1);assert.ok(a.perched);assert.ok(Math.abs(startEnergy-a.energy-3*adultBodyMass(a))<1e-8,'ascent work matches actual height and body load');
+assert.ok(sim.playerToggleRoost().ok);stepClimb(sim,a,.1);assert.ok(a.climb.height<3&&a.climb.height>0,'descent is continuous too');while(a.climb)stepClimb(sim,a,.1);assert.equal(a.perched,false);
+assert.ok(startClimb(sim,a).ok);for(let k=0;k<10;k++)stepClimb(sim,a,.1);a.energy=.5;stepClimb(sim,a,.1);assert.equal(a.climb.target,0,'exhaustion reverses toward safety');while(a.climb)stepClimb(sim,a,.1);assert.equal(a.perched,false);
+a.energy=90;assert.ok(startClimb(sim,a).ok);for(let k=0;k<20;k++)stepClimb(sim,a,.1);const h=a.climb.height,health=a.health;w.plants.woodspire[i]=0;const fall=stepClimb(sim,a,.1);assert.equal(fall.type,'climb-fall');assert.ok(Math.abs(health-a.health-h*5)<1e-8);assert.equal(a.perched,false);assert.equal(a.climb,undefined);w.plants.woodspire[i]=1.6;
+// Same kernel and fixed-time cost for wildlife, independent of control cadence.
+a.energy=90;const wild={...structuredClone(a),id:999,player:false};assert.ok(startClimb(sim,a).ok);assert.ok(startClimb(sim,wild).ok);for(let k=0;k<20;k++){stepClimb(sim,a,.1);stepClimb(sim,wild,.1)}assert.deepEqual(a.climb,wild.climb);assert.equal(a.energy,wild.energy);
+assert.ok(genvoVisualPose({action:'climb',moving:true,frame:2}).legs.every(l=>!l.planted));assert.equal(cueForResult(fall),'damage');
+const oldSave=structuredClone(saved);delete oldSave.core.climbingRules;for(const actor of oldSave.animals){if(actor.climb){delete actor.climb;actor.perched=false}}
+const legacy=restoreSimulationSnapshot(oldSave),p=legacy.player();assert.equal(legacy.climbingRules,undefined);assert.ok(legacy.playerToggleRoost().ok);assert.ok(p.perched&&!p.climb,'historical instant traversal remains recorded');
+const before=structuredClone(p),migration=adoptClimbingRules(legacy,{source:'test checkpoint',backupSlot:'world-00000001-climbing'});assert.deepEqual(p,before);assert.equal(legacy.climbingRules,CLIMBING.policy);migration.rollback();assert.equal(legacy.climbingRules,undefined);
+const refuge=sim.spawnAnimal('mosskip',x,y);refuge.bodyPlan=design.draft.plan;refuge.energy=90;refuge.health=100;refuge.age=40;
+const predator=sim.spawnAnimal('needlejaw',x+.5,y);predator.energy=90;predator.health=100;predator.age=40;
+assert.ok(sim.isPredatorTo(predator,refuge));sim.rebuildSpatial();sim.phaseDecision(null);assert.ok(refuge.climb,'wildlife uses the same continuous ascent to escape at a real supporting tree');
+console.log('Climbing PASS: continuous height/load costs, anchored movement, canopy access timing, falls/reversal, shared wildlife physics, exact saves, native grips, legacy policy and reversible adoption.');

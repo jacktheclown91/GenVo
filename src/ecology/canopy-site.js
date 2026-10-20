@@ -53,7 +53,7 @@ export function descend(animal,world){
  return{ok:true,type:'roost',message:'Climbed down to solid ground.'};
 }
 export function checkCanopyHold(animal,world){
- if(!animal?.perched)return null;
+ if(!animal?.perched||animal.climb)return null;
  const site=canopySupport(world,animal.x,animal.y);
  if(site.supported&&canopyGrips(animal)>=2&&adultBodyMass(animal)<=site.maxLoad)return null;
  animal.perched=false;
@@ -62,7 +62,7 @@ export function checkCanopyHold(animal,world){
 }
 export function canopyFeedingPosition(animal,world){
  const site=canopySupport(world,animal?.x,animal?.y);
- return !!animal?.perched&&site.supported&&canopyGrips(animal)>=2&&adultBodyMass(animal)<=site.maxLoad;
+ return !!animal?.perched&&!animal.climb&&site.supported&&canopyGrips(animal)>=2&&adultBodyMass(animal)<=site.maxLoad;
 }
 // Canopy clutches are protected by their real height, not a universal nest
 // integrity bonus. Only another canopy occupant can physically raid them.
