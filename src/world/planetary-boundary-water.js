@@ -5,8 +5,9 @@
 // exported water carries the cell's measured salinity. Both fluxes are
 // recorded explicitly, never implemented by resetting a concentration.
 //
-// Historical planetary saves without the policy retain their original
-// salt-only boundary flux law.
+// Policy /2 marks owned neighboring region sides, including shared corners.
+// Historical /1 saves preserve the original all-external replacement;
+// historical missing-policy saves preserve their salt-only flux law.
 export const PLANETARY_BOUNDARY_WATER=Object.freeze({
  schema:2,policy:'geography-reservoir-water/1',pairedPolicy:'geography-reservoir-water/2',dailyFraction:.08
 });
