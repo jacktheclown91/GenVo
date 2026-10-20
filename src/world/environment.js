@@ -80,7 +80,10 @@ export function validateEnvironment(w,e){
       Math.abs(row.waterInput-row.waterOutput-(row.waterAfter-row.waterBefore)-row.waterClosure)>1e-6))
     throw Error('Invalid planetary water-volume receipt.');
   }
-  if(e.seamRunoffPolicy!==undefined&&['seamRunoffInput','seamRunoffOutput'].some(k=>row[k]!==undefined&&(!Number.isFinite(row[k])||row[k]<0)))
+  if(e.seamRunoffPolicy!==undefined&&(
+   ['seamRunoffInput','seamRunoffOutput'].some(k=>row[k]!==undefined&&(!Number.isFinite(row[k])||row[k]<0))||
+   (row.seamRunoffInput||0)>row.waterInput+1e-8||
+   (row.seamRunoffOutput||0)>row.waterOutput+1e-8))
    throw Error('Invalid planetary seam-runoff receipt.');
   validateBoundaryWaterReceipt(e,row);
   if(row.pageTransfers!==undefined)validatePageSaltTransfers(w,row.pageTransfers);
