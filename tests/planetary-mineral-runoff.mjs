@@ -30,8 +30,8 @@ assert.ok(world.plantResources.minerals[5]<.8);
 assert.ok(world.plantResources.minerals[6]>.12);
 assert.ok(Math.abs(world.plantResources.minerals[5]+world.plantResources.minerals[6]-before)<1e-12);
 assert.ok(Math.abs(world.environment.lastDay.waterClosure)<1e-9);
-assert.equal(world.environment.lastDay.runoffMineralsMoved,
- world.plantResources.minerals[6]-.12);
+assert.ok(Math.abs(world.environment.lastDay.runoffMineralsMoved-
+ (world.plantResources.minerals[6]-.12))<1e-12);
 const legacy=local(false);
 routePlanetaryRunoff(legacy,new Float64Array(legacy.len),1);
 assert.equal(legacy.plantResources.minerals[5],.8);
@@ -85,6 +85,13 @@ for(const wet of [false,true]){
  forged.history[0].mineralsAToB=-1;
  assert.throws(()=>validatePlanetarySeamLedger(forged),/Invalid paired planetary seam receipt/);
 }
+// A physical channel with no upstream overland water cannot teleport minerals
+// merely because a neighboring aquatic producer would benefit.
+const dryA=region(0,127,{runoff:0,nutrient:.9});
+const dryB=region(128,0,{wet:true,nutrient:.1});
+assert.deepEqual(reconcilePlanetarySaltSeams(link(dryA,dryB)),[]);
+assert.equal(dryA.plantResources.minerals[127],.9);
+assert.equal(dryB.plantResources.minerals[0],.1);
 const oldA=region(0,127,{runoff:.6,nutrient:.9,modern:false});
 const oldB=region(128,0,{runoff:.1,nutrient:.1,modern:false});
 assert.deepEqual(reconcilePlanetarySaltSeams(link(oldA,oldB)),[]);
