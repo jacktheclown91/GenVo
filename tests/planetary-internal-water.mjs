@@ -44,6 +44,7 @@ assert.deepEqual(w.terrain.elevation,bed,'bed elevation was not rewritten');
 validateEnvironment(w,e);
 const climate={temp:.47,rain:.18};
 const cumulativeWater=waterStorage(w),cumulativeSalt=saltStorage(w);
+let retainedRain=0,exportedRain=0;
 for(let day=1;day<=10;day++){
  const row=advanceEnvironmentWater(w,climate,day);
  assert.ok(row.internalWetEdges>0,'real flow was calculated within the wet network');
@@ -51,11 +52,13 @@ for(let day=1;day<=10;day++){
  assert.ok(row.internalSaltMoved>=0);
  assert.ok(Math.abs(row.waterClosure)<1e-6);
  assert.ok(Math.abs(row.closure)<1e-6);
- assert.equal(row.waterInput,0,'rain is not silently turned into new physical volume');
- assert.equal(row.waterOutput,0,'internal flow never deletes coastal water stock');
+ assert.equal(row.waterInput,row.surfaceRainInput,'every surface rainfall input has a receipt');
+ assert.equal(row.waterOutput,row.surfaceRainOutput,'only rejected full-capacity rain is exported');
+ retainedRain+=row.waterInput;exportedRain+=row.waterOutput;
  validateEnvironment(w,e);
 }
-assert.ok(Math.abs(waterStorage(w)-cumulativeWater)<1e-8,'10 inland days conserve volume');
+assert.ok(Math.abs(waterStorage(w)-cumulativeWater-retainedRain+exportedRain)<1e-8,
+ '10 wet-cell days account for actual retained precipitation and full-capacity exports');
 assert.ok(Math.abs(saltStorage(w)-cumulativeSalt-e.totals.saltInput+e.totals.saltOutput)<1e-7,
  'salinity drift entirely explained by existing external reservoir and rain export');
 assert.ok(e.totals.internalWaterMoved>receipt.internalWaterMoved);
