@@ -14,13 +14,14 @@ const d=sim.dispersal,b=d.botanical,w=sim.world,n=w.n;
 assert.equal(d.windSeedPolicy,WIND_SEED_POLICIES.planetary);
 assert.ok(b.pollen.size>0&&b.flowers.size>0,'existing flora has funded gametes');
 const nextDay=sim.day+1,nextEpoch=b.epoch+1;
+const flowerCells=new Set([...b.flowers.values()].filter(f=>f.mass>0).map(f=>f.i));
 let candidates=0;
 for(const p of b.pollen.values()){
  const hash=botanicalHash(p.genome.id+'|wind-pollen|'+p.serial+'|'+nextEpoch);
  const [dx,dy]=planetaryWindSeedOffset(w,nextDay,p.i,hash/4294967296);
  const x=p.i%n+dx,y=Math.floor(p.i/n)+dy;
  if(x<1||y<1||x>=n-1||y>=n-1||w.water[y*n+x])continue;
- for(const f of b.flowers.values())if(f.i===y*n+x&&f.mass>0){candidates++;break}
+ if(flowerCells.has(y*n+x))candidates++;
 }
 assert.ok(candidates>0,'naturally located flowering neighbors exist downwind');
 
