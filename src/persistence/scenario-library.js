@@ -18,7 +18,8 @@ export function scenarioMetadata(snapshot,{id,label,description=''}={}){
   throw Error('Invalid scenario identity or description.');
  const alive=snapshot.animals.filter(a=>a?.alive).length;
  const playable=snapshot.core.playerEnabled!==false&&snapshot.animals.some(a=>a?.alive&&a.id===snapshot.core.playerId);
- if(alive<1)throw Error('Scenario has no surviving ecosystem animals.');
+ // Even total extinction is meaningful for developer replay; only living
+ // player-controlled lineages can be offered as gameplay quick starts.
  const m=snapshot.meta||{};
  return{
   id,label:label.trim(),description:description.trim(),
