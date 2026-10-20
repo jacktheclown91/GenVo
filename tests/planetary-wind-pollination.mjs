@@ -32,7 +32,8 @@ const moved=advanceWindPollination(d);
 assert.ok(moved>0,'funded pollen reaches a nearby receptive flower');
 assert.equal(b.pollen.size,pollen-moved,'transport removes exactly one original pollen packet');
 assert.equal(b.stats.delivered,deliveredBefore+moved,'every delivery uses canonical pollen rules');
-assert.ok(Math.abs(mass()-before)<1e-5,'pollen, fertilized ovules and litter remain accounted');
+assert.ok(Math.abs(mass()-before)<Math.max(1e-5,before*1e-6),
+ 'pollen, fertilized ovules and Float32 litter remain accounted within precision');
 assert.equal(sim.rng.state,rng,'wind pollination does not consume wildlife RNG');
 assert.ok(b.receipts.some(r=>r.route==='wind'),'the actual botanical receipt identifies wind transport');
 assert.ok(b.stats.recognized+b.stats.rejected>0,'receptor acceptance or refusal was actually evaluated');
