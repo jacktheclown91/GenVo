@@ -33,12 +33,15 @@ export function seamRunoffProposal(source,target,si,ti,overlandChanges,waterChan
     target.env?.seamRunoffPolicy!==PLANETARY_SEAM_RUNOFF.policy||
     source.water[si]||!source.terrain?.elevation||!target.terrain?.elevation)
   return 0;
- const from=source.env.overland[si]+(overlandChanges.get(source.key).get(si)||0);
+ const stored=source.env.overland[si];
+ if(!Number.isFinite(stored)||stored<0)throw Error('Invalid cross-region overland runoff stock.');
+ const from=stored+(overlandChanges.get(source.key).get(si)||0);
  if(!(from>0))return 0;
  const wet=!!target.water[ti],to=wet
   ?target.env.volume[ti]+(waterChanges.get(target.key).get(ti)||0)
   :target.env.overland[ti]+(overlandChanges.get(target.key).get(ti)||0);
- const slope=source.terrain.elevation[si]-target.terrain.elevation[ti];
+ if(!Number.isFinite(to)||to<0)throw Error('Invalid receiving cross-region water stock.');
+  const slope=source.terrain.elevation[si]-target.terrain.elevation[ti];
  if(!(slope>0))return 0;
  // One downhill hop per synchronized day; never overdraw the donor or fill
  // a permanent channel past its physical volume capacity.
