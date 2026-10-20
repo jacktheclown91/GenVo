@@ -1,6 +1,7 @@
 import {PLANETARY_MINERAL_RUNOFF,stageRunoffMinerals} from './planetary-mineral-runoff.js';
 import {TERRAIN_SEDIMENT,stageTerrainSediment,validateSedimentDeltas} from './terrain-sediment.js';
 import {deriveDrainage} from './topography.js';
+import {PLANETARY_WETBED,stageWetbedSediment} from './planetary-wetbed-sediment.js';
 // Version-5 planetary surface-water authority. Soil runoff and rejected
 // groundwater overflow become conserved overland water, routed along the
 // actual steepest-downhill drainage graph. Water that cannot reach an existing
@@ -70,6 +71,9 @@ export function routePlanetaryRunoff(w,runoff,day){
  const terrainDelta=new Map(),terrainChanges=new Map([['local',terrainDelta]]);
  const terrainOwner={key:'local',env:e,water:w.water,terrain:w.terrain};
  let sedimentMoved=0;
+ const wetEdges=[];
+ const wetPolicy=e.wetbedSedimentPolicy===PLANETARY_WETBED.policy;
+ let wetbedMoved=0;
  for(let i=0;i<w.len;i++){
   if(w.water[i]||original[i]<=0)continue;
   const j=downstream[i];
@@ -82,7 +86,7 @@ export function routePlanetaryRunoff(w,runoff,day){
   if(mineralEnabled)mineralsMoved+=stageRunoffMinerals(owner,owner,i,j,amount,original[i],mineralChanges);
   if(eroding)sedimentMoved+=stageTerrainSediment(terrainOwner,terrainOwner,i,j,amount,terrainChanges);
   overland[i]-=amount;
-  if(w.water[j]){volume[j]+=amount;delivered+=amount;}
+  if(w.water[j]){volume[j]+=amount;delivered+=amount;if(wetPolicy)wetEdges.push([i,j,amount]);}
   else overland[j]+=amount;
   moved+=amount;edges++;
  }
