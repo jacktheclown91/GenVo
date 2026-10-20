@@ -107,7 +107,7 @@ const seed='GENVO8-TEST-A';
 const sim=new Simulation(seed,{player:false,bootstrap:false,
  worldGenerator:'planetary/1',planetOrigin:{x:0,y:2560}});
 assert.equal(sim.world.environment.terrainSedimentPolicy,policy);
-const i=sim.world.terrain.elevation.findIndex(v=>v>.02&&v<.9);
+const i=sim.world.terrain.elevation.findIndex((v,index)=>!sim.world.water[index]&&v>.02&&v<.9);
 assert.ok(i>=0);
 sim.world.terrain.elevation[i]=Math.fround(sim.world.terrain.elevation[i]-.001);
 deriveDrainage(sim.world);
