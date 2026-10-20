@@ -3,6 +3,20 @@
   "principle": "One live authority for each mechanism. Multiple states, species, art drafts and measured outcomes are permitted; competing runtime definitions are not.",
   "gameEntrypoint": "src/main.js",
   "systems": {
+    "metabolicThermalDemand": {
+      "authority": "src/ecology/thermal-demand.js",
+      "consumers": ["src/sim/simulation.js", "src/ecology/thermal-refuge.js"],
+      "contract": "docs/THERMAL-REFUGE-2026-10-20.md"
+    },
+    "thermalRefugeDecisions": {
+      "authority": "src/ecology/thermal-refuge.js",
+      "consumers": ["src/sim/simulation.js", "src/ecology/thermal-refuge-rules.js"],
+      "contract": "docs/THERMAL-REFUGE-2026-10-20.md"
+    },
+    "thermalRefugeRuleVersions": {
+      "authority": "src/ecology/thermal-refuge-rules.js",
+      "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js"]
+    },
     "persistentTemperature": {
       "authority": "src/ecology/thermal-weather.js",
       "consumers": ["src/sim/simulation.js", "src/render/thermal-weather.js", "src/ecology/thermal-weather-rules.js"],

@@ -1,3 +1,4 @@
+import {restoreThermalRefugeRules,adoptThermalRefugeRules} from '../ecology/thermal-refuge-rules.js';
 import {restoreCarcassRules,validateCarcassSnapshot} from '../gameplay/carcass-rules.js';
 import {restoreDiggingRules,validateDiggingSnapshot} from '../lineage/digging-rules.js';
 import {restoreMassRules} from '../organisms/body-mass.js';
@@ -334,6 +335,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   Object.assign(sim,snapshot.core||{});
   if(!Object.hasOwn(snapshot.core||{},'regionalReplayPolicy'))delete sim.regionalReplayPolicy;
   regionalReplayPolicy(sim);
+  restoreThermalRefugeRules(sim,snapshot.core||{});
   restoreThermalRules(sim,snapshot.core||{});
   restoreVisibilityRules(sim,snapshot.core||{});
   restoreCaveRules(sim,snapshot.core||{});
@@ -590,6 +592,7 @@ export class SaveManager{
       const caves=adoptCaveRules(sim,{source,backupSlot});rollback=()=>{caves.rollback();burrowing.rollback();climbing.rollback();diving.rollback();movement.rollback()};
       const visibility=adoptVisibilityRules(sim,{source,backupSlot});rollback=()=>{visibility.rollback();caves.rollback();burrowing.rollback();climbing.rollback();diving.rollback();movement.rollback()};
       const thermal=adoptThermalRules(sim,{source,backupSlot});const priorRollback=rollback;rollback=()=>{thermal.rollback();priorRollback()};
+      const refuge=adoptThermalRefugeRules(sim,{source,backupSlot});const thermalRollback=rollback;rollback=()=>{refuge.rollback();thermalRollback()};
       const snapshot=createSimulationSnapshot(sim,{reason:'movement-rule-continuation',savedAt});snapshot.meta.key=slotId;snapshot.meta.worldName=worldName;
       const backupMetadata={...sourceSnapshot.meta,key:backupSlot,worldName:('Backup · '+worldName).slice(0,40),savedAt,role:'movement-backup',backupFor:slotId};
       tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');done=transactionDone(tx);

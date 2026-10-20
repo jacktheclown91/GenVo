@@ -1,0 +1,23 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {thermalRefugeDecision,thermalSiteDemand,THERMAL_REFUGE} from '../src/ecology/thermal-refuge.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {SPECIES} from '../src/organisms/species.js';
+const sim=new Simulation('THERMAL-REFUGE'),a=sim.player(),w=sim.world;sim.animals=[a];sim.playerAutonomy=true;sim.phaseClimate();
+// Authored physical-temperature fixture, not a claim of elapsed weather history.
+const offsets=[[2,0],[-2,0],[0,2],[0,-2]],offset=offsets.find(([dx,dy])=>Array.from({length:9},(_,k)=>sim.canOccupy(a,a.x+dx*k/8,a.y+dy*k/8)).every(Boolean)&&sim.canReach(a,a.x+dx,a.y+dy));assert.ok(offset);
+w.temperature.fill(.99);const target={x:a.x+offset[0],y:a.y+offset[1]},i=w.idx(target.x,target.y);w.temperature[i]=.55*a.genes.climate;
+const actor=structuredClone(a),temperatures=w.temperature.slice(),rng=sim.rng.state;
+const source=thermalSiteDemand(sim,a),site=thermalSiteDemand(sim,a,target.x,target.y);assert.ok(source.load>site.load);
+const choice=thermalRefugeDecision(sim,a);assert.equal(choice?.intent,'thermal-refuge');assert.equal(w.idx(choice.target.x,choice.target.y),i);
+assert.deepEqual(a,actor);assert.deepEqual(w.temperature,temperatures);assert.equal(sim.rng.state,rng,'queries consume no reserves, stock or RNG');
+sim.playerAutonomy=false;assert.equal(thermalRefugeDecision(sim,a),null,'manual control is never overridden');sim.playerAutonomy=true;
+const hydration=a.hydration;a.hydration=SPECIES[a.species].maxHydration*.1;assert.equal(thermalRefugeDecision(sim,a),null,'urgent hydration keeps priority');a.hydration=hydration;
+const adapted={...a,genes:{...a.genes,climate:.99/.55}};assert.equal(thermalRefugeDecision(sim,adapted),null,'heat-adapted comfort does not blindly seek colder ground');
+sim.phaseDecision({});assert.equal(a.intent,'thermal-refuge','normal autonomous decision connects the shared query');
+const saved=structuredClone(createSimulationSnapshot(sim)),loaded=restoreSimulationSnapshot(saved);assert.equal(loaded.thermalRefugeRules,THERMAL_REFUGE.policy);assert.deepEqual(loaded.player().target,a.target);
+const energy=a.energy,position={x:a.x,y:a.y};for(let k=0;k<64;k++)sim.phaseMovement();assert.ok(Math.hypot(a.x-position.x,a.y-position.y)>1);assert.ok(a.energy<energy,'ordinary walking pays actual movement cost');assert.ok(thermalSiteDemand(sim,a).load<source.load,'physical arrival reduces the same metabolic thermal terms');
+const costAt=(s,temperature)=>{const p=s.player();s.world.temperature.fill(temperature);const before=p.energy;s.phaseMetabolism();return before-p.energy};
+const hot=restoreSimulationSnapshot(structuredClone(saved)),mild=restoreSimulationSnapshot(structuredClone(saved));assert.ok(costAt(hot,.99)>costAt(mild,.55*a.genes.climate),'actual metabolism charges less energy at the milder temperature');
+delete sim.thermalRefugeRules;assert.equal(thermalRefugeDecision(sim,a),null,'historical absence keeps recorded decisions');
+console.log('Thermal refuge PASS: shared read-only physiology, anatomy-dependent choice, urgent/manual priorities, normal decision and charged movement, actual metabolic relief, exact saved target and historical opt-out.');
