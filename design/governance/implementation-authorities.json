@@ -147,6 +147,17 @@
         "src/world/world.js"
       ]
     },
+    "inheritedEmbryoClimate": {
+      "authority": "src/reproduction/embryo-climate.js",
+      "consumers": [
+        "src/world/planet-world.js",
+        "src/world/environment.js",
+        "src/sim/simulation.js",
+        "src/reproduction/reproductive-anatomy.js",
+        "src/persistence/save-manager.js"
+      ],
+      "note": "New planetary environments opt into inherited-embryo-climate/1. Real local temperature and soil moisture act on each egg's maternal and paternal conception-frozen climate genes; existing egg hydration pays measured daily evaporation. Constructed nests reduce risk from finite paid material/care without overriding flooding. Egg/live-bearing anatomical dual strategies consult maternal inherited site fitness. The canonical egg.condition and egg.hydration are the only viability and water stores; no assigned species advantage, new allele, free clutch, new stochastic roll, or changed historical save semantics."
+    },
     "seasonalCoatPhysiology": {
       "authority": "src/lineage/seasonal-coat.js",
       "consumers": [
