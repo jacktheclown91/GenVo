@@ -1,0 +1,47 @@
+name: GenVo evolved scenario first fixture
+on:
+  push:
+    branches:
+      - codex/repository-consolidation
+    paths:
+      - assets/scenarios/first-fixture-request.json
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  generate-and-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify canonical checkpoint transport and world restore
+        run: |
+          node --check src/persistence/scenario-codec.js
+          node --check src/persistence/scenario-library.js
+          node --check tools/create-world-scenario.mjs
+          node tests/world-restore-generation-parity.mjs
+          node tests/scenario-checkpoints.mjs
+      - name: Run one real 30-day evolving ecology and export the checkpoint
+        run: |
+          node tools/create-world-scenario.mjs \
+            --id established-valley-d30 \
+            --label "Established Valley, Day 30" \
+            --description "Authentically simulated planetary ecosystem." \
+            --seed GENVO-VALLEY-REPLAY-30 \
+            --days 30 \
+            --generator planetary/1
+      - name: Replay a day twice from the recorded original
+        run: node tools/run-scenario-test.mjs --id established-valley-d30 --days 1 --repeat 2
+      - name: Upload checked real checkpoint, manifest and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: genvo-first-authentic-evolved-world
+          path: |
+            assets/scenarios/catalog.json
+            assets/scenarios/established-valley-d30.json
+          if-no-files-found: warn
+          retention-days: 14
