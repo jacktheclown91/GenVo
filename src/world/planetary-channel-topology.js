@@ -37,10 +37,10 @@ export function validateChannelTopologyPolicy(world,environment){
  }
 }
 
-// Only prior-day runoffs are eligible. A cell flooded this morning must not
-// be removed in the same phase merely because its initial volume is shallow.
-// The fixed source geography carries floodOrigin=0 so coastline/old lake cells
-// are never silently removed by this rule.
+// Only currently shallow, previously flooded cells are eligible. Newly
+// flooded runoff lakes start above the separate inundation threshold and thus
+// cannot recede in the same routing phase. Fixed source geography retains
+// floodOrigin=0, so coastlines and original lakes never dry through this rule.
 export function planChannelRecession(world,day){
  const e=world.environment,policy=PLANETARY_CHANNEL_TOPOLOGY;
  if(e?.channelTopologyPolicy!==policy.policy)return[];
