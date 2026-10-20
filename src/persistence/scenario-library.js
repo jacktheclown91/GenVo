@@ -73,7 +73,7 @@ export async function loadBundledScenario(entry,{fetchFile=fetch,digest=null}={}
   if(actual!==entry.sha256)throw Error('Scenario file integrity check failed.');
  }
  const bundle=JSON.parse(new TextDecoder().decode(bytes));
- if(bundle.metadata?.id!==entry.id||bundle.metadata?.day!==entry.day)
+ if(bundle.metadata?.id!==entry.id||bundle.metadata?.day!==entry.day||bundle.metadata?.playable!==entry.playable)
   throw Error('Catalog does not match scenario history.');
  return openScenarioSnapshot(bundle);
 }
