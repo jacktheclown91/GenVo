@@ -1,0 +1,76 @@
+name: GenVo evolved valley continuation to Day 100
+on:
+  push:
+    branches:
+      - codex/repository-consolidation
+    paths:
+      - assets/scenarios/day100-fixture-request.json
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  continue-real-world:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate source catalog, save transport and canonical restore
+        run: |
+          node --check src/persistence/scenario-library.js
+          node --check tools/create-world-scenario.mjs
+          node tests/scenario-checkpoints.mjs
+          node tests/world-restore-generation-parity.mjs
+          node tools/run-scenario-test.mjs --id established-valley-d30 --days 1 --repeat 2
+      - name: Advance the REAL saved valley from Day 31 to Day 101
+        run: |
+          node --max-old-space-size=6144 tools/create-world-scenario.mjs \
+            --id mature-valley-d100 \
+            --label "Mature Valley, Day 100" \
+            --description "Real evolution and ecology continued from the verified Day 30 valley." \
+            --from-id established-valley-d30 \
+            --to-day 101
+      - name: Repeat the Day 100 checkpoint independently
+        run: |
+          node --max-old-space-size=6144 tools/run-scenario-test.mjs \
+            --id mature-valley-d100 --days 1 --repeat 2
+      - name: Confirm source scenario stayed byte-for-byte unchanged
+        run: |
+          node --input-type=module -e "
+            import fs from 'node:fs';import {createHash} from 'node:crypto';
+            const list=JSON.parse(fs.readFileSync('assets/scenarios/catalog.json','utf8')).scenarios;
+            const old=list.find(s=>s.id==='established-valley-d30');
+            const next=list.find(s=>s.id==='mature-valley-d100');
+            if(!old||!next||!next.continuedFrom||next.continuedFrom.fromSha256!==old.sha256||
+               next.continuedFrom.fromDay!==old.day||next.continuedFrom.toDay!==next.day||
+               next.continuedFrom.fromTick!==1440||
+               next.continuedFrom.toTick<=next.continuedFrom.fromTick)
+             throw Error('The Day 100 snapshot has no verified Day 30 canonical source.');
+            for(const s of [old,next]){
+             const sha=createHash('sha256').update(fs.readFileSync(s.file)).digest('hex');
+             if(sha!==s.sha256)throw Error('A scenario was changed while generating the continued world.');
+            }
+            console.log('Real Day 30 history retained, Day 100 advanced on original RNG, both scenario hashes verified');
+          "
+      - name: Upload finished checkpoint and catalog for inspection
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: genvo-authentic-mature-valley-day100
+          path: |
+            assets/scenarios/catalog.json
+            assets/scenarios/mature-valley-d100.json.gz
+          retention-days: 14
+          if-no-files-found: warn
+      - name: Promote only fully verified mature-world checkpoint
+        if: success()
+        run: |
+          test -s assets/scenarios/mature-valley-d100.json.gz
+          test "$(stat -c%s assets/scenarios/mature-valley-d100.json.gz)" -lt 73400320
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/scenarios/catalog.json assets/scenarios/mature-valley-d100.json.gz
+          git commit -m "Add checksum-verified evolved Day 100 valley from real Day 30 checkpoint"
+          git push origin HEAD:codex/repository-consolidation
