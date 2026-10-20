@@ -1,4 +1,5 @@
 import {pruneUnusedFloraGenomes} from './flora-genome-lifetime.js';
+import {WIND_SEED_POLICIES,planetaryWindSeedOffset} from '../world/weather-fronts.js';
 // Staged botanical reproduction, owned by the existing dispersal/vegetation phase.
 // Stocks are converted from real crop flesh; no new biomass or animal RNG is created.
 import {PLANTS} from '../sim/config.js';
@@ -65,4 +66,4 @@ export function botanicalPlantView(d,kind,i){const k=key(kind,i),flower=d.botani
 
 function embryosAt(d,k){const b=d.botanical;if(!b)return[];let cached=embryoIndexes.get(d);if(!cached||cached.epoch!==b.epoch||cached.source!==b.embryos){const index=new Map();for(const e of b.embryos){const k=key(e.kind,e.i);if(!index.has(k))index.set(k,[]);index.get(k).push(e)}cached={epoch:b.epoch,source:b.embryos,index};embryoIndexes.set(d,cached)}return cached.index.get(k)||[]}
 
-export function botanicalSeedDestination(d,embryo,epoch=d.botanical.epoch){const w=d.sim.world,x=embryo.i%w.n,y=(embryo.i/w.n)|0,[dx,dy]=directions[botanicalHash(embryo.genome.id+'|'+epoch)%directions.length],nx=x+dx,ny=y+dy;return nx>=1&&ny>=1&&nx<w.n-1&&ny<w.n-1&&!w.water[w.idx(nx,ny)]?{x:nx,y:ny,i:w.idx(nx,ny)}:null}
+export function botanicalSeedDestination(d,embryo,epoch=d.botanical.epoch){const w=d.sim.world,x=embryo.i%w.n,y=(embryo.i/w.n)|0,hash=botanicalHash(embryo.genome.id+'|'+epoch),wind=d.windSeedPolicy===WIND_SEED_POLICIES.planetary&&(!PLANTS[embryo.kind]?.dispersal?.animal||(hash&3)===0),[dx,dy]=wind?planetaryWindSeedOffset(w,d.sim.day,embryo.i,hash/4294967296):directions[hash%directions.length],nx=x+dx,ny=y+dy;return nx>=1&&ny>=1&&nx<w.n-1&&ny<w.n-1&&!w.water[w.idx(nx,ny)]?{x:nx,y:ny,i:w.idx(nx,ny)}:null}
