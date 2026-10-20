@@ -2,6 +2,7 @@ import {PLANETARY_MINERAL_RUNOFF,stageRunoffMinerals} from './planetary-mineral-
 import {TERRAIN_SEDIMENT,stageTerrainSediment,validateSedimentDeltas} from './terrain-sediment.js';
 import {deriveDrainage} from './topography.js';
 import {PLANETARY_WETBED,stageWetbedSediment} from './planetary-wetbed-sediment.js';
+import {PLANETARY_CHANNEL_TOPOLOGY,planChannelRecession} from './planetary-channel-topology.js';
 // Version-5 planetary surface-water authority. Soil runoff and rejected
 // groundwater overflow become conserved overland water, routed along the
 // actual steepest-downhill drainage graph. Water that cannot reach an existing
@@ -167,10 +168,24 @@ export function routePlanetaryRunoff(w,runoff,day){
   row.sedimentMoved=sedimentMoved+wetbedMoved;
   e.totals.sedimentMoved=(e.totals.sedimentMoved||0)+sedimentMoved+wetbedMoved;
  }
+ // Returning water from a shallow former flood to overland is an internal
+ // physical transfer. A topology receipt records which exact cells receded.
+ let recession=null;
+ if(e.channelTopologyPolicy===PLANETARY_CHANNEL_TOPOLOGY.policy){
+  const edits=planChannelRecession(w,day);
+  if(edits.length){
+   recession=w.setSurfaceWater(edits,{reason:'funded-seasonal-channel-recession'});
+   const actual=w.environment,last=actual.lastDay;
+   last.recededWater=(last.recededWater||0)+recession.recededWater;
+   last.recededCells=(last.recededCells||0)+edits.length;
+   actual.totals.recededWater=(actual.totals.recededWater||0)+recession.recededWater;
+   actual.totals.recededCells=(actual.totals.recededCells||0)+edits.length;
+  }
+ }
  const inundation=floodFromRunoff(w,day);
  // The next day's runoff must use the new real elevation, not the previous
  // land's cached drainage graph. No new water topology is inferred here.
  if(eroding&&terrainDelta.size)deriveDrainage(w);
  return{received:captured,delivered,moved,edges,
-  stored:sum(w.environment.overland),closure,inundation};
+  stored:sum(w.environment.overland),closure,inundation,recession};
 }
