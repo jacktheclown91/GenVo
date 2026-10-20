@@ -40,6 +40,9 @@ assert.ok(remote.world.water[j]&&active.world.water[i]);
 // Staged physicochemical contrast: the completed calendar step will account
 // physical inputs and outputs from this controlled starting stock.
 remote.world.environment.salt[j]=remote.world.environment.depth[j]*.01;
+// A controlled height difference creates a genuine finite-volume gradient.
+// This edits an existing physical stock, not an animal, seed or outcome.
+remote.world.environment.volume[j]=Math.max(.02,remote.world.environment.volume[j]*.5);
 for(let tick=0;tick<CFG.dayTicks;tick++){active.update(null);remote.update(null)}
 assert.equal(active.day,2);
 assert.equal(remote.day,2);
@@ -50,6 +53,9 @@ const session={key:regionKey(destination),biologicalMode:'canonical-ticks/1',
 active.planetaryTravel={schema:1,nextId:Math.max(active.nextId,remote.nextId),sessions:[session]};
 const previous=snapshot(active);
 const startCombined=saltStorage(active.world)+session.snapshot.world.environment.salt.reduce((a,b)=>a+b,0);
+const initialWater=active.world.environment.volume.reduce((a,b)=>a+b,0)+
+ session.snapshot.world.environment.volume.reduce((a,b)=>a+b,0);
+const previousVolumes=[active.world.environment.volume[i],session.snapshot.world.environment.volume[j]];
 assert.ok(previous.world.environment.schema===3&&session.snapshot.world.environment.schema===3);
 const oldFirst=active.world.environment.salt[i],oldSecond=session.snapshot.world.environment.salt[j];
 // No synthetic day or accelerated animal clock. Exchange occurs just before
@@ -61,9 +67,19 @@ assert.equal(ledger.schema,1);
 assert.equal(ledger.lastTick,CFG.dayTicks);
 assert.ok(ledger.history.length>0,'genuine in-scope neighboring water stocks exchanged salt');
 assert.ok(active.world.environment.salt[i]!==oldFirst||session.snapshot.world.environment.salt[j]!==oldSecond);
+assert.ok(active.world.environment.volume[i]!==previousVolumes[0]||
+ session.snapshot.world.environment.volume[j]!==previousVolumes[1],
+ 'genuine hydraulic head transfers water volume across the border');
 const pairedA=active.world.environment.totals,pairedB=session.snapshot.world.environment.totals;
 assert.ok((pairedA.pairedInput||0)+(pairedA.pairedOutput||0)>0);
 assert.ok((pairedB.pairedInput||0)+(pairedB.pairedOutput||0)>0);
+const waterInput=(pairedA.pairedWaterInput||0)+(pairedB.pairedWaterInput||0);
+const waterOutput=(pairedA.pairedWaterOutput||0)+(pairedB.pairedWaterOutput||0);
+assert.ok(waterInput>0&&waterOutput>0,'both regions own paired water-volume flow receipts');
+assert.ok(Math.abs(waterInput-waterOutput)<1e-9,'paired water is neither created nor destroyed');
+const finalWater=active.world.environment.volume.reduce((a,b)=>a+b,0)+
+ session.snapshot.world.environment.volume.reduce((a,b)=>a+b,0);
+assert.ok(Math.abs(finalWater-initialWater)<1e-9,'actual combined regional water inventories are conserved');
 const pairedInput=(pairedA.pairedInput||0)+(pairedB.pairedInput||0);
 const pairedOutput=(pairedA.pairedOutput||0)+(pairedB.pairedOutput||0);
 assert.ok(Math.abs(pairedInput-pairedOutput)<1e-9,'every source salt debit has an equal destination credit');
@@ -74,6 +90,8 @@ validateEnvironment(remote.world,session.snapshot.world.environment);
 for(const environment of [active.world.environment,session.snapshot.world.environment]){
  assert.ok(Math.abs(environment.lastDay.closure)<1e-7,'every region retains a closed post-transfer salt receipt');
  assert.ok(environment.lastDay.pairedInput>=0||environment.lastDay.pairedOutput>=0);
+ assert.ok(Math.abs(environment.lastDay.waterClosure)<1e-8,
+  'each regional physical volume receipt remains closed after paired transport');
 }
 const finalized=snapshot(active);
 eq(snapshot(restoreSimulationSnapshot(structuredClone(finalized))),finalized,'cross-region salt and ledger survive an exact save');
