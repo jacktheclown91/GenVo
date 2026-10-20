@@ -52,6 +52,11 @@ export class FrontEnd{
       file=this.el.querySelector('#newWorldScenarioFileLabel'),
       note=this.el.querySelector('#newWorldScenarioDetail');
     if(file)file.hidden=start!=='import';
+    // A real checkpoint already has its own seed and immutable geography.
+    // Never imply changing the form's seed could rewrite evolved history.
+    for(const id of ['newWorldSeed','newWorldGeography']){
+      const control=this.el.querySelector('#'+id);if(control)control.disabled=start!=='new';
+    }
     if(note)note.textContent=start==='new'
       ?'Begin the complete evolutionary journey from the initial ecology.'
       :start==='import'
