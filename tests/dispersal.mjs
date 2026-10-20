@@ -82,6 +82,11 @@ const saved=structuredClone(createSimulationSnapshot(planet,{savedAt:'fixed',rea
 const loaded=restoreSimulationSnapshot(structuredClone(saved));
 assert.equal(loaded.dispersal.windSeedPolicy,WIND_SEED_POLICIES.planetary);
 assert.deepEqual(createSimulationSnapshot(loaded,{savedAt:'fixed',reason:'wind-seed'}),saved);
+// The planetary wind rule must not be attachable to a legacy nonplanetary
+// environment through a damaged saved controller.
+sim.dispersal.windSeedPolicy=WIND_SEED_POLICIES.planetary;
+assert.throws(()=>sim.dispersal.upgrade(),/requires planetary terrain/);
+delete sim.dispersal.windSeedPolicy;
 const historical=structuredClone(saved);delete historical.controllers.dispersal.windSeedPolicy;
 assert.equal(restoreSimulationSnapshot(historical).dispersal.windSeedPolicy,undefined,
  'existing missing-policy saved worlds must not acquire new wind rules');
