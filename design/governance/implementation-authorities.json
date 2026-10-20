@@ -157,9 +157,11 @@
         "src/sim/simulation.js",
         "src/persistence/save-manager.js",
         "src/ui/creature-context-tray.js",
-        "src/lineage/part-abilities.js"
+        "src/lineage/part-abilities.js",
+        "src/render/genvo-draw.js",
+        "src/render/part-sprites.js"
       ],
-      "note": "Modern planetary worlds opt into funded-seasonal-coat/1. Inherited dorsal filament, fur, feather and wing parts can grow or shed an observed, saved coatDensity (0..1) according to physical local and regional temperatures. Growth debits the canonical creature energy inventory and cannot spend below a physiological reserve; shedding refunds no energy. Existing inherited wax-plates reduce rain/immersion soaking only for physically mounted covers and retain their registry upkeep, temperature and ancestry costs. Old policy-free worlds keep their exact earlier static covering benefits and wetness calculation."
+      "note": "Modern planetary worlds opt into funded-seasonal-coat/1. Inherited dorsal filament, fur, feather and wing parts can grow or shed an observed, saved coatDensity (0..1) according to physical local and regional temperatures. Growth debits the canonical creature energy inventory and cannot spend below a physiological reserve; shedding refunds no energy. Existing inherited wax-plates reduce rain/immersion soaking only for physically mounted covers and retain their registry upkeep, temperature and ancestry costs. Native filament, fur and feather overlays follow saved density in eight quantized visual levels; sprite cache keys include the same scale bin. Wings retain their original aerodynamic outline. Old policy-free worlds keep their exact earlier static covering benefits and wetness calculation."
     },
     "inheritedCoatMoisture": {
       "authority": "src/lineage/coat-moisture.js",
