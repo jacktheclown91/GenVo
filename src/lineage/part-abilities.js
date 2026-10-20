@@ -200,7 +200,7 @@ export const WAVE2_TEXT=Object.freeze({
   'flight-wing':{gain:'A lightweight adult can take off and cross open water, rivers and steep slopes using real food energy (6 or the action dock)',cost:'Requires proto-wing ancestry across generations, 8 mutation points, high part upkeep and a body light enough to lift. Flying costs energy each second, and poor landings can injure.'},
   'hook-pad':{gain:'A pair of hooks gives uphill grip on existing slopes',cost:'Needs grip-pad ancestry, food upkeep and at least two supporting grips.'},
   'heat-frill':{gain:'Radiates heat in hot weather, reducing heat-related food loss',cost:'Needs signal-crest ancestry; increases cold exposure and food upkeep.'},
-  'wax-plates':{gain:'Reduces water use on actually dry ground',cost:'Needs armor-plate ancestry, retains heat, and increases food upkeep.'},
+  'wax-plates':{gain:'Reduces water use on dry soil. Also repels rain from inherited fur or feathers in modern planetary worlds.',cost:'Needs armor-plate ancestry; wax retains heat and adds food upkeep.'},
   'arid-pad':{gain:'Two or more wide pads improve dry-ground travel and reduce its energy cost',cost:'Needs padded-leg ancestry; wide pads are slower and tiring on soaked ground.'}
 });
 // Combined wave 2 modifiers for a plan's part counts.
