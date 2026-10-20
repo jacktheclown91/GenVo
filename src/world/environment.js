@@ -6,6 +6,7 @@ import {regionalRainfall} from './weather-fronts.js';
 import {advanceInternalPlanetaryWater} from './planetary-internal-water.js';
 import {totalPlanetarySurfaceWater} from './planetary-runoff.js';
 import {PLANETARY_BOUNDARY_WATER,validateBoundaryWaterPolicy,boundaryWaterExchange,validateBoundaryWaterReceipt} from './planetary-boundary-water.js';
+import {validateSeamRunoffPolicy} from './planetary-seam-runoff.js';
 const clamp=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 function smooth(seed,x,y,size){const ax=Math.floor(x/size),ay=Math.floor(y/size),u0=x/size-ax,v0=y/size-ay,u=u0*u0*(3-2*u0),v=v0*v0*(3-2*v0);return (coordNoise(seed,ax,ay)*(1-u)+coordNoise(seed,ax+1,ay)*u)*(1-v)+(coordNoise(seed,ax,ay+1)*(1-u)+coordNoise(seed,ax+1,ay+1)*u)*v}
 export function coastlineX(w,y){return w.n*(.84+.035*Math.sin(y/w.n*6.28+(w.seedHash%97)/97*6.28))}
@@ -23,6 +24,7 @@ export function validateEnvironment(w,e){
  if(e?.schema!==1&&e?.schema!==2&&e?.schema!==3&&e?.schema!==4&&e?.schema!==5&&e?.schema!==6)throw Error('Invalid environment schema.');
  if(e.schema>=2&&w.generator!=='planetary/1')throw Error('Planetary boundary version requires planetary geography.');
  validateBoundaryWaterPolicy(w,e);
+ validateSeamRunoffPolicy(w,e);
  for(const [key,Type,lo,hi] of [['temperatureOffset',Float32Array,-1,1],['rainScale',Float32Array,0,3],['depth',Float32Array,0,2],['salt',Float64Array,0,4],['boundary',Uint8Array,0,e.schema>=2?3:2]])if(!(e[key] instanceof Type)||e[key].length!==w.len||e[key].some(v=>!Number.isFinite(v)||v<lo||v>hi))throw Error('Invalid environment field '+key+'.');
  if(e.schema>=5&&(!(e.overland instanceof Float64Array)||e.overland.length!==w.len||
     e.overland.some((v,i)=>!Number.isFinite(v)||v<0||w.water[i]&&v!==0)))
@@ -78,6 +80,8 @@ export function validateEnvironment(w,e){
       Math.abs(row.waterInput-row.waterOutput-(row.waterAfter-row.waterBefore)-row.waterClosure)>1e-6))
     throw Error('Invalid planetary water-volume receipt.');
   }
+  if(e.seamRunoffPolicy!==undefined&&['seamRunoffInput','seamRunoffOutput'].some(k=>row[k]!==undefined&&(!Number.isFinite(row[k])||row[k]<0)))
+   throw Error('Invalid planetary seam-runoff receipt.');
   validateBoundaryWaterReceipt(e,row);
   if(row.pageTransfers!==undefined)validatePageSaltTransfers(w,row.pageTransfers);
  }
