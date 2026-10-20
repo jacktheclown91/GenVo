@@ -589,14 +589,19 @@ export class Simulation{
     const remaining=[];
     for(const egg of this.eggs){
       // Eggs cannot move or drink. Exposure over real days matters.
+      let exposure=null;
       if(this.world.environment?.embryoClimatePolicy===EMBRYO_CLIMATE.policy){
-        const exposure=advanceEmbryoClimate(this.world,egg,nestForEgg(this,egg));
+        exposure=advanceEmbryoClimate(this.world,egg,nestForEgg(this,egg));
         egg.condition-=exposure.conditionLoss;
       }else{
         const quality=nestIncubationQuality(nestForEgg(this,egg),eggSiteQuality(this.world,egg.x,egg.y));
         egg.condition-=quality>=.75?0:(1-quality)*.18+.015;
       }
-      if(egg.condition<=0){this.family.pushEvent({type:'egg-loss',animalId:egg.motherId,eggId:egg.id});continue}
+      if(egg.condition<=0){
+        const cause=exposure?(exposure.flooded?'flooded':egg.hydration<=1e-10?'dehydrated':'climate-exposure'):null;
+        this.family.pushEvent({type:'egg-loss',animalId:egg.motherId,eggId:egg.id,...(cause?{cause}:{})});
+        continue;
+      }
       egg.incubationDays--;
       if(egg.incubationDays>0){remaining.push(egg);continue}
       const liveMother=this.animals.find(a=>a.id===egg.motherId&&a.alive);
