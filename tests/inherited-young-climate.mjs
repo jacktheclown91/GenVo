@@ -34,7 +34,7 @@ assert.equal(motherWarmth(parent,baby,temperature),false,
  'historical fixed cold threshold cannot warm a mild-weather infant');
 const energyBefore=parent.energy;
 assert.equal(motherWarmth(parent,baby,temperature,{comfort:.77}),true);
-assert.equal(energyBefore-parent.energy,MAMMAL.heatEnergyPerStep);
+assert.ok(Math.abs(energyBefore-parent.energy-MAMMAL.heatEnergyPerStep)<1e-10);
 parent.energy=SPECIES.genvo.maxEnergy*MAMMAL.parentEnergyReserve;
 assert.equal(motherWarmth(parent,baby,temperature,{comfort:.77}),false,
  'cold-adapted parenting does not create free heat when hungry');
