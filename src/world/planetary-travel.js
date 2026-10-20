@@ -149,6 +149,12 @@ export function crossPlanetaryBorder(sim){
  // Construct destination and all receipts before modifying the active sim.
  const dest=archivedDestination?restoreDetachedSimulationSnapshot(archivedDestination.snapshot):
   new Simulation(sim.seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:status.to,massRules:sim.massRules});
+ // Local seed-wind rules are a planetary-world policy. A newly entered
+ // region follows the originating world's version; an old missing-policy
+ // save must not silently adopt wind merely because its destination is new.
+ if(Object.hasOwn(sim.dispersal,'windSeedPolicy'))
+  dest.dispersal.windSeedPolicy=sim.dispersal.windSeedPolicy;
+ else delete dest.dispersal.windSeedPolicy;
  if(!archivedDestination){
   const surveyed=sim.planetaryRegions.get(status.to,{create:false});
   if(surveyed)dest.world=surveyed;
