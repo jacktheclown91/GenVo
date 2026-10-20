@@ -112,9 +112,19 @@ function restoreWorld(world,state,{initializeMissingFreshwater=false,adoptOwnedW
   }
   if(state.generator==='planetary/1'){if(!state.planet)throw Error('Saved planet descriptor is missing.');world.planet=new PlanetGeography(world.seed,state.planet)}else{if(state.planet!=null)throw Error('Planet descriptor conflicts with saved generator.');delete world.planet}
   if(state.pageLayout)validatePageLayout(world,state.pageLayout);
+  // The physical environment validator owns sediment and wetbed receipts,
+  // which reference the canonical saved terrain. Install validated elevation
+  // BEFORE restoreSurfaceTopology validates the saved environment and mask.
+  // Drainage is derived AFTER restoring that mask so its wet/dry topology is
+  // correct. Historical saves without terrain remain terrain-free.
+  if(state.terrain!=null){
+    validateTopography(world,state.terrain);
+    world.terrain={schema:1,
+      elevation:adoptOwnedWorldBuffers?state.terrain.elevation:state.terrain.elevation.slice(),
+      travelEnabled:state.terrain.travelEnabled??false};
+  }else delete world.terrain;
   restoreSurfaceTopology(world,state);
-  // Existing saves retain flat-ground hydrology; terrain is never retrofitted from a new generator.
-  if(state.terrain!=null){validateTopography(world,state.terrain);world.terrain={schema:1,elevation:adoptOwnedWorldBuffers?state.terrain.elevation:state.terrain.elevation.slice(),travelEnabled:state.terrain.travelEnabled??false};deriveDrainage(world);}else delete world.terrain;
+  if(world.terrain)deriveDrainage(world);
   world.buildLandRegions();world.buildHydrology();
   for(const key of WORLD_MUTABLE_FIELDS)world[key]=restoreOwnedTyped(world[key],state[key],`world.${key}`,adoptOwnedWorldBuffers);
   if(!state.freshwaterFood&&initializeMissingFreshwater)initializeFreshwater(world);
