@@ -1,10 +1,11 @@
 import {adultBodyMass} from '../organisms/body-mass.js';
+import {undergroundContact} from './burrowing.js';
 import {swimsByBody,hasGills} from './aquatic.js';
 
 export const DIVING=Object.freeze({policy:'depth-respiration/1',maxDepth:2,clearance:.04,minDepth:.12,
  downSpeed:.28,upSpeed:.5,airSeconds:24,refill:6,minimumAir:8,work:.035,verticalWork:.5,suffocation:5});
 export function submerged(a){return(a?.diveDepth||0)>.03}
-export function sameDepth(a,b){return Math.abs((a?.diveDepth||0)-(b?.diveDepth||0))<=.15}
+export function sameDepth(a,b,world=null){return !!a?.underground===!!b?.underground&&(!world||undergroundContact(world,a,b))&&Math.abs((a?.diveDepth||0)-(b?.diveDepth||0))<=.15}
 // Fixed-reservoir local maps need bed GEOMETRY, not a second water stock.
 // Distance to the real shoreline determines the newly modeled bathymetry.
 export function createLocalBathymetry(world){
@@ -20,6 +21,7 @@ export function waterColumn(world,x,y){
 }
 export function divingAvailability(sim,a=sim.player()){
  const fail=reason=>({enabled:false,reason});
+ if(a?.underground||a?.burrowWork)return fail('Return to the surface and finish excavation first.');
  if(!a?.alive)return fail('No living creature.');
  if(sim.divingRules!==DIVING.policy)return fail('This world retains its recorded water rules. Enable diving in a backed-up New World continuation.');
  if(submerged(a)||(a.diveTarget||0)>0)return{enabled:true,reason:'Rise through the real water column to breathe at the surface.',surfacing:true};
@@ -39,7 +41,7 @@ export function setDiveTarget(sim,a=sim.player(),{surface=false,deeper=false}={}
  return{ok:true,type:'dive',message:status.reason};
 }
 export function stepDiving(sim,a,dt){
- if(sim.divingRules!==DIVING.policy||!a?.alive)return null;
+ if(sim.divingRules!==DIVING.policy||!a?.alive||a.underground)return null;
  if(!(dt>0&&dt<=.25))throw Error('Invalid diving step.');
  if(a.diveDepth===undefined&&a.diveAir===undefined)return null;
  const depth=waterColumn(sim.world,a.x,a.y),maximum=Math.max(0,Math.min(DIVING.maxDepth,depth)-DIVING.clearance);

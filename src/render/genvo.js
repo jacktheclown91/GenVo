@@ -46,7 +46,8 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
     const stride=(moving?step.stride:(Number(b.displayStride)||0)?step.stride*b.displayStride:0);
     const settling=!moving&&!b.guardPlanted&&count>1&&n===((life.settleIndex||0)%count)?(life.settle||0)*.8:0;
     const striking=slotList&&b.attackLimbSlots?.includes(slot),attackLift=striking?(Number(b.attackLimbLift)||0):0;
-    const lift=(moving?step.lift*(gait?gait.lift:1):(Number(b.displayLift)||0)*step.lift+(front>.25?(Number(b.forelegLift)||0):0)+settling)+attackLift,liftAmount=Math.max(0,Math.min(1,lift/2));
+    const digLift=action==='dig'&&front>.2?Math.max(0,Math.sin((frame+(k&1)*4)*Math.PI/4))*2:0;
+    const lift=(moving?step.lift*(gait?gait.lift:1):(Number(b.displayLift)||0)*step.lift+(front>.25?(Number(b.forelegLift)||0):0)+settling)+attackLift+digLift,liftAmount=Math.max(0,Math.min(1,lift/2));
     let reach=(6.7+(Math.abs(side)>.45?.75:.35))*limbScale*(dependent?.9:1)*(elder?.91:1);
     if(alert)reach+=.65;if(flee)reach+=front<-.2?1.35:.35;if(court&&front>.4)reach+=.95;if((eat||drink)&&front>.35)reach-=.8;if(depleted)reach-=.3;
     const limpSide=Math.sign(side||1)===(b.limpSide||1)&&Math.abs(side)>.22;

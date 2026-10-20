@@ -20,7 +20,7 @@ export class EnvironmentalHistoryController{
   biomassAt(i){let total=0;for(const kind of this.producerKeys)total+=this.sim.world.plants[kind]?.[i]||0;return total}
   activate(i,{previous=null}={}){if(!this.active.has(i)){this.active.add(i);this.previousBiomass[i]=previous??this.biomassAt(i)}}
   noteStep(animal,weight=1){
-    if(animal?.aerialMode||animal?.climb||(animal?.diveDepth||0)>.03)return; // No surface contact during stratum traversal.
+    if(animal?.underground||animal?.burrowWork||animal?.aerialMode||animal?.climb||(animal?.diveDepth||0)>.03)return; // No surface contact during stratum traversal.
     if(!animal?.alive)return;this.sim.discovery?.noteMovementTrace(animal);const i=this.sim.world.idx(animal.x,animal.y),mass=massPolicy(animal)===ANATOMICAL_MASS?bodyMass(animal):(SPECIES[animal.species]?.mass||1);this.activate(i);
     this.traffic[i]=Math.min(2.2,this.traffic[i]+.010*Math.sqrt(Math.max(.25,mass))*Math.max(0,weight));
   }

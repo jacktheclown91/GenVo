@@ -24,6 +24,7 @@ export function winterFatAnatomy(animal){
 }
 export function torporStatus(sim,animal){
  const fail=reason=>({enabled:false,reason});
+ if(animal?.underground||animal?.burrowWork)return fail('Return to the surface before seasonal torpor.');
  if(!animal?.alive)return fail('No living creature.');
  if(animal.torpor)return{enabled:true,active:true,reason:'Wake and resume normal movement.'};
  if(!winterFatAnatomy(animal))return fail('Evolve a fat pad or fat tail to fuel a cold-season torpor.');

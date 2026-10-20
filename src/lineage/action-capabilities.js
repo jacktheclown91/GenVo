@@ -1,5 +1,6 @@
 // Biological possession, independent of current stamina, position, health or pause.
 // Compose the same authorities used by execution; presentation never counts parts.
+import {burrowingAnatomy} from './burrowing.js';
 import {winged} from './flight.js';
 import {hasGlidingSurfaces} from './gliding.js';
 import {hasJumpingAnatomy} from './jumping.js';
@@ -15,14 +16,14 @@ export function actionCapabilities(sim,animal=sim.player()){
   attack:!!physicalAttackProfile(a).mode,
   pounce:!!a&&sim.playerCombat.pounceReach(a)>0,
   dive:swimsByBody(a),jump:hasJumpingAnatomy(a),glide,flight,
-  roost:roostAnatomy(a),
+  burrow:burrowingAnatomy(a),roost:roostAnatomy(a),
   torpor:winterFatAnatomy(a),
   'planet-travel':!!sim.planetaryRegions,'family-travel':!!sim.planetaryRegions
  };
 }
 // Exit actions remain reachable even when anatomy changes while in that state.
 export function activeAction(a,type){
- return type==='flight'?!!a?.airborne&&!a?.aerialMode:
+ return type==='burrow'?!!a?.underground||!!a?.burrowWork:type==='flight'?!!a?.airborne&&!a?.aerialMode:
   type==='glide'?a?.aerialMode==='glide':type==='dive'?(a?.diveDepth||0)>.03||a?.diveTarget>0:
   type==='roost'?!!a?.perched:type==='torpor'?!!a?.torpor:false;
 }

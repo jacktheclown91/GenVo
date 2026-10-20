@@ -1,3 +1,4 @@
+import {undergroundFood} from '../lineage/burrowing.js';
 import {plantHandling} from '../ecology/plant-handling.js';
 import {exportAquaticReserve} from '../ecology/organic-resource-cycle.js';
 import {FLORA_TISSUES,floraMealChannels} from '../ecology/flora-genotype.js';
@@ -64,7 +65,7 @@ export class ForagingController{
     for(let oy=-1;oy<=1;oy++)for(let ox=-1;ox<=1;ox++){
       const x=animal.x+ox,y=animal.y+oy,i=w.idx(x,y);if(index!==null&&i!==index)continue;
       for(const [kind,eff] of [...Object.entries(groundDiet(animal)),...Object.keys(FRESHWATER_FOOD).map(kind=>[kind,this.foodPreference(animal,kind)])]){
-        if(submerged(animal)&&!FRESHWATER_FOOD[kind])continue;
+        if(!undergroundFood(animal,i,kind,w))continue;if(submerged(animal)&&!FRESHWATER_FOOD[kind])continue;
         if(eff<=0||(onlyKind!==null&&kind!==onlyKind))continue;let amount=0,nutrition=0;
         if(FRESHWATER_FOOD[kind]){if(!aquaticFoodAccessible(this.sim,animal,x,y,FRESHWATER_FOOD[kind]))continue;if(!w.water[i]||!FRESHWATER_FOOD[kind].surface&&(!this.sim.canOccupy(animal,x,y)||!this.sim.canReach(animal,x,y)))continue;amount=freshwaterField(w,kind)?.[i]||0;nutrition=FRESHWATER_FOOD[kind].nutrition}
         else if(kind==='carrion'){amount=w.carrion[i]||0;nutrition=34}

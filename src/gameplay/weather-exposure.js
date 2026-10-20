@@ -1,4 +1,5 @@
 import {CFG} from '../sim/config.js';
+import {undergroundRoof,burrowTemperature} from '../lineage/burrowing.js';
 
 const clamp01=v=>Math.max(0,Math.min(1,Number(v)||0));
 
@@ -12,7 +13,7 @@ export class WeatherExposureController{
     if(!animal)return null;let s=this.states.get(animal.id);if(!s){s={wetness:0,strain:0,lastLabel:'comfortable',lastSevereTick:-Infinity};this.states.set(animal.id,s)}return s;
   }
   conditions(animal=this.sim.player()){
-    if(!animal)return null;const climate=this.sim.climate||{temp:.55,rain:0},rainRaw=clamp01(climate.rain),temp=clamp01(climate.temp);
+    if(!animal)return null;const climate=this.sim.climate||{temp:.55,rain:0},rainRaw=undergroundRoof(this.sim.world,animal)?0:clamp01(climate.rain),temp=clamp01(burrowTemperature(this.sim.world,animal,climate.temp));
     const shelter=this.sim.shelter?.nearest?.(animal,{radius:1.65,familyOnly:true})||null,shelterStrength=shelter?clamp01(this.sim.shelter?.weatherQuality?.(shelter)??shelter.integrity/100):0;
     const cover=clamp01(this.sim.coverAt?.(animal)||0),rain=clamp01((rainRaw-.30)/.42),cold=clamp01((.49-temp)/.23),heat=clamp01((temp-.72)/.17);
     const shelterProtection=shelterStrength*.88,coverProtection=Math.min(.42,cover*.46),rainProtection=Math.max(shelterProtection,coverProtection);

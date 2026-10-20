@@ -133,7 +133,7 @@ export class FamilyController{
     if(!child||!this.isDependent(child))return null;
     const spec=SPECIES[child.species],care=this.careProfile(child)||{};
     const energy=Math.max(0,child.energy/spec.maxEnergy),hydration=Math.max(0,child.hydration/spec.maxHydration);
-    const distance=caregiver?Math.hypot(child.x-caregiver.x,child.y-caregiver.y):Infinity;
+    const distance=caregiver&&!!child.underground===!!caregiver.underground?Math.hypot(child.x-caregiver.x,child.y-caregiver.y):Infinity;
     const independence=this.learningProfile(child)?.independence??0;
     const separationLimit=(care.followDistance??2.2)*(1.35+independence*.85);
     const separated=!caregiver||distance>separationLimit;
@@ -354,7 +354,7 @@ export class FamilyController{
     return{shelter,fromShelter,fromParent,water};
   }
   tendAvailability(parent,child){
-    if(parent?.climb||child?.climb)return{enabled:false,state:'unavailable',reason:'Finish climbing before tending.'};
+    if(parent?.underground||child?.underground||parent?.burrowWork||child?.burrowWork||parent?.climb||child?.climb)return{enabled:false,state:'unavailable',reason:'Finish climbing before tending.'};
     if((parent?.diveDepth||0)>.03||(child?.diveDepth||0)>.03)return{enabled:false,state:'unavailable',reason:'Surface with your young before tending.'};
     if(!parent?.alive||!child?.alive||!this.careStatus(child,parent)||!child.parentIds?.includes(parent.id))return{enabled:false,state:'unavailable',reason:'Only dependent young of this caregiver can be tended.'};
     const provision=this.tendProvision(parent,child),nursing=milkEligible(parent,child),canFeed=provision.fromShelter+provision.fromParent>0,label=nursing?'Nurse':canFeed?'Feed':'Tend';
@@ -415,6 +415,7 @@ export class FamilyController{
         if(status.threat&&status.threatDistance<4.8&&child.lastCareThreatDay!==this.sim.day){child.lastCareThreatDay=this.sim.day;child.careThreatDays=(child.careThreatDays||0)+1}
         if(child.careStress>.84)child.health-=.025;
       }
+      if(caregiver.underground||child.underground||caregiver.burrowWork||child.burrowWork)continue;
       const d=Math.hypot(caregiver.x-child.x,caregiver.y-child.y);
       if(d>(care.nurseRadius??1.6))continue;
       // Mammalian newborns require the *birth parent* for milk. A nearby

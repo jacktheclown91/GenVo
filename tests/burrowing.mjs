@@ -1,0 +1,41 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {FounderDesign} from '../src/lineage/founder-design.js';
+import {place} from '../src/lineage/evolution-draft.js';
+import {BURROWING,toggleBurrow,stepBurrowWork,moveUnderground,entranceRoute,stepUndergroundCondition} from '../src/lineage/burrowing.js';
+import {solidTerrainTotal,excavationSite,validateSubsurface,refreshPassages} from '../src/world/subsurface.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {sameDepth,stepDiving} from '../src/lineage/diving.js';
+import {actionCapabilities} from '../src/lineage/action-capabilities.js';
+import {adoptBurrowingRules} from '../src/lineage/burrowing-rules.js';
+import {genvoVisualPose} from '../src/render/genvo.js';
+const sim=new Simulation('BURROW-INTEGRATION'),a=sim.player(),w=sim.world,d=new FounderDesign('sandbox');
+for(const socket of ['limb.1','limb.7'])assert.ok(place(d.draft,'digging-forelimb','root',socket).ok);a.bodyPlan=d.draft.plan;a.energy=90;a.health=100;a.age=40;
+let site=null;for(let y=15;y<w.n-15&&!site;y++)for(let x=15;x<w.n-15;x++){const i=w.idx(x,y),s=excavationSite(w,i),n=excavationSite(w,i-w.n);if(s&&n&&Math.abs(s.floor-n.floor)<.2){site={i,x:x+.5,y:y+.5};break}}
+assert.ok(site);Object.assign(a,{x:site.x,y:site.y});const total=solidTerrainTotal(w),rng=sim.rng.state,stocks=structuredClone({plants:w.plants,water:w.water});
+assert.ok(actionCapabilities(sim).burrow);assert.ok(sim.burrowStatus().enabled);assert.ok(sim.playerBurrow().ok);assert.equal(a.underground,undefined,'excavation is not teleportation');
+stepBurrowWork(sim,a,.1);assert.ok(a.burrowWork.elapsed>0&&a.energy<90);assert.equal(sim.resourceAvailability('eat').enabled,false);assert.equal(sim.playerJump().ok,false);
+const saved=structuredClone(createSimulationSnapshot(sim)),restored=restoreSimulationSnapshot(structuredClone(saved));assert.deepEqual(restored.player(),a);stepBurrowWork(sim,a,.1);stepBurrowWork(restored,restored.player(),.1);assert.deepEqual(restored.player(),a,'exact partial excavation continuation');
+while(a.burrowWork)stepBurrowWork(sim,a,.1);assert.ok(a.underground);assert.ok(w.subsurface.passages.get(site.i).entry);assert.ok(Math.abs(solidTerrainTotal(w)-total)<1e-8,'excavated void exactly funds surface spoil');
+assert.equal(sameDepth(a,{diveDepth:0}),false,'surface bodies cannot contact the underground layer');assert.equal(sim.playerToggleFlight().ok,false);assert.equal(sim.playerToggleRoost().ok,false);assert.equal(sim.resourceAvailability('drink').enabled,false);
+a.diveAir=4;a.diveDepth=0;a.diveTarget=0;stepDiving(sim,a,.1);assert.equal(a.diveAir,4,'surface-water physiology cannot refill held air through an underground roof');delete a.diveAir;delete a.diveDepth;delete a.diveTarget;
+for(let i=0;i<20&&!a.burrowWork;i++)moveUnderground(sim,a,0,-1,.1);assert.ok(a.burrowWork,'walking into the wall starts real excavation');while(a.burrowWork)stepBurrowWork(sim,a,.1);
+assert.equal(w.subsurface.passages.size,2);for(let i=0;i<8;i++)moveUnderground(sim,a,0,-1,.1);assert.notEqual(w.idx(a.x,a.y),site.i);assert.ok(entranceRoute(w,a)?.length);assert.equal(toggleBurrow(sim,a).ok,false,'cannot surface through an arbitrary roof');
+assert.equal(sameDepth(a,{...a,x:a.x+1},w),false,'solid walls block contact between underground actors');assert.ok(sim.foraging.options(a).every(m=>['marshroot','dunebulb'].includes(m.kind)));
+sim.climate={...sim.climate,temp:.1,rain:1};assert.equal(sim.exposure.conditions(a).rainRaw,0,'an intact roof blocks actual rain exposure');
+assert.deepEqual({plants:w.plants,water:w.water},stocks,'excavation creates no food or water');assert.equal(sim.rng.state,rng);assert.ok(Math.abs(solidTerrainTotal(w)-total)<1e-8);validateSubsurface(w,true);
+const below=structuredClone(createSimulationSnapshot(sim)),loaded=restoreSimulationSnapshot(structuredClone(below));assert.deepEqual(loaded.world.subsurface,w.subsurface);assert.deepEqual(loaded.player(),a);
+const bad=structuredClone(below);bad.world.subsurface.excavated+=1;assert.throws(()=>restoreSimulationSnapshot(bad),/material receipt/);
+const badActor=structuredClone(below);badActor.animals.find(x=>x.id===a.id).x=2.5;assert.throws(()=>restoreSimulationSnapshot(badActor),/underground actor/);
+const occupied=loaded.world.idx(loaded.player().x,loaded.player().y);loaded.world.terrain.elevation[occupied]-=.02;const beforeCollapse=solidTerrainTotal(loaded.world);refreshPassages(loaded.world);assert.ok(loaded.world.subsurface.passages.get(occupied).closed);assert.ok(Math.abs(solidTerrainTotal(loaded.world)-beforeCollapse)<1e-7,'roof collapse retains displaced solid material');validateSubsurface(loaded.world,true);
+// Explicit inundation physiology fixture: blocked ventilation consumes held air.
+w.water[site.i]=1;
+for(let i=0;i<130;i++)stepUndergroundCondition(sim,a,.1);assert.ok(a.health<100,'a disconnected passage has finite held air');
+const legacy=structuredClone(saved);delete legacy.core.burrowingRules;delete legacy.world.subsurface;for(const actor of legacy.animals){delete actor.burrowWork;delete actor.underground;delete actor.burrowSince}
+const old=restoreSimulationSnapshot(legacy);assert.equal(old.burrowingRules,undefined);assert.equal(old.burrowStatus().enabled,false);
+const original=structuredClone(createSimulationSnapshot(old,{savedAt:'fixed'})),adoption=adoptBurrowingRules(old,{source:'old checkpoint',backupSlot:'world-00000001-burrow'});assert.equal(old.world.subsurface.passages.size,0);adoption.rollback();assert.deepEqual(createSimulationSnapshot(old,{savedAt:'fixed'}),original,'adoption rollback restores absent policy/geometry exactly');
+assert.notDeepEqual(genvoVisualPose({action:'dig',frame:2}).legs,genvoVisualPose({action:'dig',frame:6}).legs,'anchored excavation has real alternating forelimb strokes');
+const feeding=new Simulation('BURROW-FEED'),grazer=feeding.player(),fw=feeding.world;grazer.bodyPlan=d.draft.plan;grazer.energy=80;grazer.health=100;grazer.age=40;
+const root=fw.plants.marshroot.findIndex((v,i)=>v>.1&&excavationSite(fw,i));assert.ok(root>=0);grazer.x=root%fw.n+.5;grazer.y=(root/fw.n|0)+.5;
+assert.ok(feeding.playerBurrow().ok);while(grazer.burrowWork)stepBurrowWork(feeding,grazer,.1);const beforeRoot=fw.plants.marshroot[root],meal=feeding.playerEat({kind:'marshroot',i:root});assert.ok(meal.ok);assert.ok(fw.plants.marshroot[root]<beforeRoot,'underground feeding debits an actual generated root patch');
+console.log('Burrowing PASS: legal digging anatomy, real work, solid/void/spoil conservation, connected traversal, entry-only exit, layer contact, finite air, exact saves, corrupt receipts and legacy opt-out.');

@@ -331,7 +331,7 @@ export class PredatorEncounterController{
   }
 
   validPair(hunter,player){
-    return !!(hunter?.alive&&player?.alive&&sameDepth(hunter,player)&&canHunt(hunter)&&preyPreference(hunter,player)>0&&!this.sim.isOpeningProtected(player)&&this.sim.world.sameLand(hunter.x,hunter.y,player.x,player.y));
+    return !!(hunter?.alive&&player?.alive&&sameDepth(hunter,player,this.sim.world)&&canHunt(hunter)&&preyPreference(hunter,player)>0&&!this.sim.isOpeningProtected(player)&&this.sim.world.sameLand(hunter.x,hunter.y,player.x,player.y));
   }
   state(hunter,player){
     if(hunter.playerHunt?.targetId===player.id)return hunter.playerHunt;

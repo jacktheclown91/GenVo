@@ -21,6 +21,21 @@
       "consumers": ["src/ui/creature-context-tray.js", "src/ui/gameplay-actions.js"],
       "contract": "docs/ACTION-BAR-2026-10-20.md"
     },
+    "subsurfaceGeometryAndMaterial": {
+      "authority": "src/world/subsurface.js",
+      "consumers": ["src/lineage/burrowing.js", "src/persistence/save-manager.js", "src/render/subsurface.js", "src/world/terrain-sediment.js"],
+      "contract": "docs/BURROWING-2026-10-20.md",
+      "note": "For opted excavated-subsurface/1 worlds, physical solid terrain is surface elevation minus open cavity volume. Cavities are excluded space, not another inventory. Excavated material raises actual surface spoil; collapse subsides the roof. Cumulative excavation/collapse values are receipts. Existing runoff operators conserve their own surface-height deltas. Historical missing-policy worlds retain their recorded geometry."
+    },
+    "burrowingTraversal": {
+      "authority": "src/lineage/burrowing.js",
+      "consumers": ["src/sim/simulation.js", "src/lineage/lifestyle.js", "src/lineage/action-capabilities.js", "src/gameplay/foraging.js", "src/gameplay/weather-exposure.js"],
+      "contract": "docs/BURROWING-2026-10-20.md"
+    },
+    "burrowingRuleVersions": {
+      "authority": "src/lineage/burrowing-rules.js",
+      "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js"]
+    },
     "continuousCanopyTraversal": {
       "authority": "src/lineage/climbing.js",
       "consumers": ["src/sim/simulation.js", "src/persistence/save-manager.js", "src/gameplay/player-combat.js"],

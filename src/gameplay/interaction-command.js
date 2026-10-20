@@ -10,6 +10,7 @@ const targetKey=t=>t.kind+':'+(t.id??t.i??'')+':'+(t.food||'')+':'+(t.tissue||''
 const info=(id,label,target,status,extra={})=>({id,key:id+'|'+targetKey(target),label,target,enabled:!!status.enabled,state:status.state||(status.enabled?'available':'unavailable'),reason:status.reason||label,...extra});
 export function contextualInteractions(sim,target=null){
  const a=sim.player();if(!a?.alive||a.airborne)return[];
+ if(a.burrowWork)return[];if(a.underground&&target&&!['food','plant','corpse'].includes(target.kind))return[];
  if(a.perched){
   const site={kind:'canopy',x:a.x,y:a.y,i:sim.world.idx(a.x,a.y),label:'Woodspire crown'};
   const options=[];

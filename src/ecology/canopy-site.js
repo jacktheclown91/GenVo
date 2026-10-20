@@ -26,6 +26,7 @@ export function roostAnatomy(animal,{climbing=true}={}){
 }
 export function roostAvailability(animal,world,{climbing=false}={}){
  climbing=climbing&&hasClimbingAnatomy(animal);
+ if(animal?.underground||animal?.burrowWork)return{enabled:false,reason:'Return to the surface before climbing.'};
  if(!animal?.alive)return{enabled:false,reason:'No living creature.'};
  if(animal.aerialMode==='jump')return{enabled:false,reason:'Land from the jump before entering the canopy.'};
  if(animal.perched)return{enabled:false,reason:'Already in the canopy. Press 6 to take off or 7 to climb down.'};

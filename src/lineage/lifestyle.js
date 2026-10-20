@@ -1,3 +1,4 @@
+import {undergroundPosition,undergroundReach} from './burrowing.js';
 import {submerged,waterColumn,DIVING} from './diving.js';
 import {terrainTravel} from '../world/topography.js';
 import {snowFooting} from '../world/snowpack.js';
@@ -18,6 +19,7 @@ export function isWater(world,x,y){return !!world?.water?.[world.idx(x,y)]}
 export function canOccupy(animal,world,x,y){
   if(!world||!Number.isFinite(x)||!Number.isFinite(y))return false;
   if(!world.isPlayable(x,y))return false;
+  if(animal?.underground)return undergroundPosition(world,animal,x,y);
   if(submerged(animal))return !!world.water[world.idx(x,y)]&&waterColumn(world,x,y)+1e-6>=animal.diveDepth+DIVING.clearance;
   if(animal?.perched)return Math.floor(animal.x)===Math.floor(x)&&Math.floor(animal.y)===Math.floor(y);
   return !!animal?.airborne||!isWater(world,x,y)||canSwim(animal);
@@ -26,6 +28,7 @@ export function canOccupy(animal,world,x,y){
 export function canReach(animal,world,x,y){
   if(!animal||!world||!Number.isFinite(x)||!Number.isFinite(y))return false;
   if(!world.isPlayable(x,y))return false;
+  if(animal?.underground)return undergroundReach(world,animal,x,y);
   if(submerged(animal))return canOccupy(animal,world,x,y)&&wetSegment(world,animal.x,animal.y,x,y);
   if(animal.perched)return Math.floor(animal.x)===Math.floor(x)&&Math.floor(animal.y)===Math.floor(y);
   if(animal.airborne||canSwim(animal))return true;
@@ -33,6 +36,7 @@ export function canReach(animal,world,x,y){
 }
 
 export function movementProfile(animal,world,{fromX=animal?.x,fromY=animal?.y,toX=fromX,toY=fromY,sprint=false}={}){
+  if(animal?.underground||animal?.burrowWork)return{allowed:false,swimming:false,speed:0,energy:1,sprint:1};
   if(animal?.perched)return{allowed:false,perched:true,swimming:false,speed:0,energy:0,sprint:1};
   if(animal?.aerialMode==='jump')return{allowed:true,jumping:true,flying:false,swimming:false,swimmer:canSwim(animal),speed:0,energy:0,sprint:1,grade:0,grip:0,authority:'ballistic-jumping/1'};
   if(animal?.aerialMode==='glide')return{allowed:true,gliding:true,flying:false,swimming:false,swimmer:canSwim(animal),speed:0,energy:0,sprint:1,grade:0,grip:0,authority:'finite-height-gliding/1'};

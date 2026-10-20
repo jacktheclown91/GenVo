@@ -14,6 +14,9 @@ import {initializePlantResources,validatePlantResources} from '../ecology/plant-
 import {ancestralReproductiveGenome,validReproductiveGenome} from '../reproduction/reproductive-compatibility.js';
 import {matePreferencesFor} from '../reproduction/mate-preferences.js';
 import {CFG,PLANTS} from '../sim/config.js';
+import {restoreBurrowingRules,adoptBurrowingRules} from '../lineage/burrowing-rules.js';
+import {validateBurrowingState,BURROWING} from '../lineage/burrowing.js';
+import {validateSubsurface} from '../world/subsurface.js';
 import {restoreClimbingRules,adoptClimbingRules} from '../lineage/climbing-rules.js';
 import {validateClimbState} from '../lineage/climbing.js';
 import {restoreDivingRules,adoptDivingRules} from '../lineage/diving-rules.js';
@@ -89,6 +92,7 @@ function snapshotWorld(world){
   state.generator=world.generator;state.topology=structuredClone(world.topology);
   state.environment=world.environment?{...world.environment}:null;
   state.terrain=world.terrain?{schema:1,elevation:world.terrain.elevation.slice(),travelEnabled:world.terrain.travelEnabled??false}:null;
+  if(world.subsurface)state.subsurface=structuredClone(world.subsurface);
   if(world.divingBathymetry)state.divingBathymetry=world.divingBathymetry.slice();
   state.surfaceWater={schema:1,mask:world.water.slice()};
   return state;
@@ -134,6 +138,7 @@ function restoreWorld(world,state,{initializeMissingFreshwater=false,adoptOwnedW
       travelEnabled:state.terrain.travelEnabled??false};
   }else delete world.terrain;
   restoreSurfaceTopology(world,state);
+  if(state.subsurface!==undefined)world.subsurface=structuredClone(state.subsurface);else delete world.subsurface;
   if(state.divingBathymetry!==undefined){if(!(state.divingBathymetry instanceof Float32Array))throw Error('Invalid diving bathymetry.');world.divingBathymetry=adoptOwnedWorldBuffers?state.divingBathymetry:state.divingBathymetry.slice()}else delete world.divingBathymetry;
   if(world.terrain)deriveDrainage(world);
   world.buildLandRegions();world.buildHydrology();
@@ -324,6 +329,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   Object.assign(sim,snapshot.core||{});
   if(!Object.hasOwn(snapshot.core||{},'regionalReplayPolicy'))delete sim.regionalReplayPolicy;
   regionalReplayPolicy(sim);
+  restoreBurrowingRules(sim,snapshot.core||{});
   restoreClimbingRules(sim,snapshot.core||{});
   restoreDivingRules(sim,snapshot.core||{});
   restoreJumpingRules(sim,snapshot.core||{});
@@ -361,10 +367,11 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   }
   validatePageDayWork(sim.pageDayWork,sim.world);
   if(sim.pageDayWork&&sim.pageDayWork.lastDay>sim.day)throw Error('Vegetation page work day is in the future.');
+  validateSubsurface(sim.world,sim.burrowingRules===BURROWING.policy);
   validateDivingWorld(sim.world,sim.divingRules);
   sim.animals=snapshot.animals;
-  for(const a of sim.animals){validateClimbState(a,sim.climbingRules);validateDiveState(a,sim.divingRules,sim.world)}
-  for(const s of sim.planetaryTravel?.sessions||[]){const world={...s.snapshot.world,len:sim.world.len,n:sim.world.n,water:s.snapshot.world.surfaceWater.mask,idx:(x,y)=>sim.world.idx(x,y)};validateDivingWorld(world,sim.divingRules);for(const a of s.snapshot.animals){validateClimbState(a,sim.climbingRules);validateDiveState(a,sim.divingRules,world)}}
+  for(const a of sim.animals){validateBurrowingState(a,sim.burrowingRules,sim.world);validateClimbState(a,sim.climbingRules);validateDiveState(a,sim.divingRules,sim.world)}
+  for(const s of sim.planetaryTravel?.sessions||[]){const world={...s.snapshot.world,len:sim.world.len,n:sim.world.n,water:s.snapshot.world.surfaceWater.mask,idx:(x,y)=>sim.world.idx(x,y)};validateSubsurface(world,sim.burrowingRules===BURROWING.policy);validateDivingWorld(world,sim.divingRules);for(const a of s.snapshot.animals){validateBurrowingState(a,sim.burrowingRules,world);validateClimbState(a,sim.climbingRules);validateDiveState(a,sim.divingRules,world)}}
   for(const a of sim.animals){validateGlideState(a,sim.glidingRules);validateJumpState(a,sim.jumpingRules)}
   for(const session of sim.planetaryTravel?.sessions||[])for(const a of session.snapshot.animals){validateGlideState(a,sim.glidingRules);validateJumpState(a,sim.jumpingRules)}
   // Wetness is a persistent organism condition, not a new water reserve.
@@ -570,6 +577,7 @@ export class SaveManager{
       const movement=adoptMovementRules(sim,{source,backupSlot});rollback=movement.rollback;
       const diving=adoptDivingRules(sim,{source,backupSlot});rollback=()=>{diving.rollback();movement.rollback()};
       const climbing=adoptClimbingRules(sim,{source,backupSlot});rollback=()=>{climbing.rollback();diving.rollback();movement.rollback()};
+      const burrowing=adoptBurrowingRules(sim,{source,backupSlot});rollback=()=>{burrowing.rollback();climbing.rollback();diving.rollback();movement.rollback()};
       const snapshot=createSimulationSnapshot(sim,{reason:'movement-rule-continuation',savedAt});snapshot.meta.key=slotId;snapshot.meta.worldName=worldName;
       const backupMetadata={...sourceSnapshot.meta,key:backupSlot,worldName:('Backup · '+worldName).slice(0,40),savedAt,role:'movement-backup',backupFor:slotId};
       tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');done=transactionDone(tx);

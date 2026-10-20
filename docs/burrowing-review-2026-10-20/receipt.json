@@ -1,0 +1,39 @@
+{
+  "kind": "automated controls; legal imported anatomy and generated terrain, actor position staged only",
+  "start": {
+    "i": 2583,
+    "x": 23.5,
+    "y": 20.5,
+    "total": 6542.473687397316,
+    "energy": 107.26367008875647,
+    "policy": "excavated-subsurface/1"
+  },
+  "digging": {
+    "energy": 91.58730894954596,
+    "underground": true,
+    "passages": 13,
+    "incident": {
+      "ok": true,
+      "i": 2455,
+      "type": "burrow-dug",
+      "message": "Passage opened. Removed soil is now a surface mound.",
+      "tick": 54
+    },
+    "cell": 2455,
+    "x": 23.5,
+    "y": 19.90937499999994,
+    "id": 197
+  },
+  "restored": {
+    "id": 197,
+    "underground": true,
+    "passages": 17
+  },
+  "exit": {
+    "total": 6542.473687397316,
+    "energy": 91.44947838923032,
+    "underground": false,
+    "geometry": 0.9200000464916229
+  },
+  "errors": []
+}

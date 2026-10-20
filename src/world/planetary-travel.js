@@ -65,7 +65,7 @@ export function planetaryTravelAvailability(sim){
  if(sim.playerAutonomy)return unavailable('Take manual control to cross a planetary frontier.');
  if((animal.diveDepth||0)>.03)return unavailable('Surface before regional travel.');
  if(animal.aerialMode==='jump')return unavailable('Finish the jump before regional travel.');
- if(animal.perched||animal.torpor)return unavailable('Descend or wake before traveling.');
+ if(animal.underground||animal.burrowWork||animal.perched||animal.torpor)return unavailable('Descend or wake before traveling.');
  if(animal.pregnant)return unavailable('Complete the pregnancy before regional travel.');
  const cohort=familyTravelCohort(sim);
  if(!cohort.ok)return unavailable(cohort.reason);
@@ -208,8 +208,9 @@ export function crossPlanetaryBorder(sim){
  sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,memberIds),...(sim.offscreenBiologyEnabled?{biologicalMode:'canonical-ticks/1'}:{})});
  dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions,
   ...(prior.seamLedger?{seamLedger:structuredClone(prior.seamLedger)}:{})};
- for(const key of ['climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
+ for(const key of ['burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
  dest.travelFamilyGroup=!!sim.travelFamilyGroup;
+ if(sim.burrowingRules===undefined)delete dest.world.subsurface;
  dest.offscreenBiologyEnabled=!!sim.offscreenBiologyEnabled;
  if(Object.hasOwn(sim,'regionalReplayPolicy'))dest.regionalReplayPolicy=sim.regionalReplayPolicy;else delete dest.regionalReplayPolicy;
  // Keep the archived source and newly active destination from each importing

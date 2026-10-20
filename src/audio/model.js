@@ -74,6 +74,8 @@ export function cueForResult(result){
   if(type==='fight')return result.ok?(result.killed?'kill':'fight'):'miss';
   if(type==='hunt')return result.ok?'fight':'miss';
   if(type==='dive'||type==='surface')return result.ok?'splash':'deny';
+  if(type==='burrow'||type==='burrow-dug')return result.ok?'build':'deny';
+  if(type==='burrow-enter'||type==='burrow-exit')return'land';
   if(type==='climb')return result.ok?'confirm':'deny';
   if(type==='climb-top'||type==='climb-ground')return'land';
   if(type==='climb-fall')return'damage';

@@ -288,7 +288,7 @@ export function landSpeedFactor(animal){return partEffectFactors(animal)?.landSp
 // Paddle tail swimming, applied by lifestyle.movementProfile().
 export function paddleFactors(animal){return hasPart(animal,'paddle-tail')?PART_ABILITY.paddle:null}
 
-const ROOT_FOODS=Object.freeze(['marshroot','dunebulb']);
+export const ROOT_FOODS=Object.freeze(['marshroot','dunebulb']);
 // Runtime state for digging and venom. Saved as controller key 'partAbilities'.
 export class PartAbilityController{
   constructor(sim){this.sim=sim;this.dug={};this.digClock=0;this.poisoned=[];this.soilDisturbance=new Map()}

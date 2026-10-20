@@ -32,6 +32,8 @@ Two webbed legs enable **Dive / Surface** in water. Page Down selects a deeper t
 
 Climb/Descend (7) now moves gradually along a supporting living tree in new worlds. Food energy, body load, grips and the tree's remaining stock matter; mid-climb saves continue exactly. Historical worlds retain instant climbing unless explicitly adopted into a backed-up continuation. Natural canopy accessibility remains unproven; see [climbing evidence and limits](docs/CLIMBING-2026-10-20.md).
 
+Two digging forelimbs enable **Burrow** on suitable dry ground in new worlds. Excavation pays food energy and moves real soil into surface mounds. Underground movement can extend connected passages; return to an entrance to exit. Passages and work persist across saves and regional visits. Natural caves and deeper underground ecology remain unfinished; see [burrowing evidence and limits](docs/BURROWING-2026-10-20.md).
+
 For a saved, imported or bundled evolved world, **New World > Movement in this continuation > Enable new movement · save original backup** enables these rules in a separate continuation. The untouched checkpoint and the continuation commit together before play begins. **Worlds > New World from backup** recovers a playable copy with its original rules and recorded lineage. Ordinary Continue never opts a historical world in. See [movement adoption and recovery](docs/MOVEMENT-ADOPTION-2026-10-20.md).
 
 ## Verify

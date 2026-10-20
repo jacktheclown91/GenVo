@@ -1,5 +1,9 @@
+export {solidTerrainTotal} from './subsurface.js';
+// With modeled cavities, physical solid volume is elevation minus void geometry.
+// Excavation redistributes that material; runoff still conserves its own height deltas.
 // Flow-funded terrain erosion and deposition. The mutable Float32
-// World.terrain.elevation remains the ONLY terrain-material authority.
+// World.terrain.elevation owns surface height; opted-in subsurface geometry
+// excludes excavated void from the solid material bounded by that surface.
 // No extra sediment inventory or fabricated height is introduced.
 // Historical worlds lacking this explicit policy retain immutable elevations.
 export const TERRAIN_SEDIMENT=Object.freeze({
