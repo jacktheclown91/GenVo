@@ -108,11 +108,12 @@ export function advanceEnvironmentWater(w,climate,day){
  }
  const lost=next[i]*(1-Math.exp(-displaced/volume));
  next[i]-=lost;t.rainWater+=rain;t.displacedWater+=displaced;t.saltOutput+=lost;const reservoir=e.boundary[i];if(reservoir){
-   if(e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.policy){
+   if((e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.policy||e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.pairedPolicy)){
     // Equal external water replacement carries actual dissolved salt.
     // The local water volume remains unchanged; both sides of the exchange
     // appear in today's salt and water receipts.
     const exchange=boundaryWaterExchange(e,i,next[i],e.volume[i]);
+    if(exchange){
     next[i]=exchange.saltAfter;
     boundaryWaterInput+=exchange.waterInput;
     boundaryWaterOutput+=exchange.waterOutput;
@@ -124,6 +125,7 @@ export function advanceEnvironmentWater(w,climate,day){
     t.saltOutput+=exchange.saltOutput;
     t.boundaryInput+=exchange.saltInput;
     t.boundaryOutput+=exchange.saltOutput;
+    }
    }else if(e.schema>=2){
     // Equal volumes exchange with a geography-declared external body,
     // rather than resetting salinity to a target on every calendar day.
@@ -142,7 +144,7 @@ export function advanceEnvironmentWater(w,climate,day){
    }
   }}
  const internal=advanceInternalPlanetaryWater(w,next);
- if(e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.policy){
+ if((e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.policy||e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.pairedPolicy)){
   t.boundaryWaterInput+=boundaryWaterInput;
   t.boundaryWaterOutput+=boundaryWaterOutput;
   t.boundarySaltInput+=boundarySaltInput;
@@ -154,7 +156,7 @@ export function advanceEnvironmentWater(w,climate,day){
  }
  e.salt.set(next);e.day=day;const after=saltStorage(w),waterAfter=e.schema>=5?totalPlanetarySurfaceWater(w):waterBefore,input=t.saltInput-input0,output=t.saltOutput-output0,row={
  day,before,after,input,output,closure:input-output-(after-before),
- ...(e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.policy?{
+ ...((e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.policy||e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.pairedPolicy)?{
    boundaryWaterInput,boundaryWaterOutput,boundarySaltInput,boundarySaltOutput
  }:{}),
  ...(e.schema>=2?{boundaryInput,boundaryOutput}:{}),
