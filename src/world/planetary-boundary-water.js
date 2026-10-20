@@ -8,15 +8,27 @@
 // Historical planetary saves without the policy retain their original
 // salt-only boundary flux law.
 export const PLANETARY_BOUNDARY_WATER=Object.freeze({
- schema:1,policy:'geography-reservoir-water/1',dailyFraction:.08
+ schema:2,policy:'geography-reservoir-water/1',pairedPolicy:'geography-reservoir-water/2',dailyFraction:.08
 });
 
 export function validateBoundaryWaterPolicy(world,environment){
  const policy=environment?.boundaryWaterPolicy;
  if(policy===undefined)return;
- if(policy!==PLANETARY_BOUNDARY_WATER.policy||environment.schema<6||
+ if(![PLANETARY_BOUNDARY_WATER.policy,PLANETARY_BOUNDARY_WATER.pairedPolicy].includes(policy)||environment.schema<6||
    world.generator!=='planetary/1')
   throw Error('Invalid planetary boundary-water policy.');
+ if(policy===PLANETARY_BOUNDARY_WATER.pairedPolicy){
+  const mask=environment.blockedBoundaries,n=world.n;
+  if(!(mask instanceof Uint8Array)||mask.length!==world.len||
+    !(environment.boundary instanceof Uint8Array)||environment.boundary.length!==world.len||
+    !Number.isSafeInteger(n)||n*n!==world.len)
+   throw Error('Invalid paired boundary ownership mask.');
+  for(let i=0;i<world.len;i++)if(mask[i]){
+   const x=i%n,y=Math.floor(i/n);
+   if(mask[i]!==1||!(x===0||x===n-1||y===0||y===n-1)||!environment.boundary[i])
+    throw Error('Invalid paired boundary ownership mask.');
+  }
+ }
  const totals=environment.totals;
  for(const key of ['boundaryWaterInput','boundaryWaterOutput',
   'boundarySaltInput','boundarySaltOutput'])
@@ -25,8 +37,9 @@ export function validateBoundaryWaterPolicy(world,environment){
 }
 
 export function boundaryWaterExchange(environment,i,salt,volume){
- if(environment?.boundaryWaterPolicy!==PLANETARY_BOUNDARY_WATER.policy)
+ if(![PLANETARY_BOUNDARY_WATER.policy,PLANETARY_BOUNDARY_WATER.pairedPolicy].includes(environment?.boundaryWaterPolicy))
   return null;
+ if(environment.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.pairedPolicy&&environment.blockedBoundaries?.[i])return null;
  const boundary=environment.boundary[i];
  if(!boundary)return null;
  if(!Number.isSafeInteger(i)||i<0||i>=environment.boundary.length||
@@ -43,7 +56,7 @@ export function boundaryWaterExchange(environment,i,salt,volume){
 }
 
 export function validateBoundaryWaterReceipt(environment,row){
- if(environment.boundaryWaterPolicy!==PLANETARY_BOUNDARY_WATER.policy)
+ if(![PLANETARY_BOUNDARY_WATER.policy,PLANETARY_BOUNDARY_WATER.pairedPolicy].includes(environment.boundaryWaterPolicy))
   return;
  for(const key of ['boundaryWaterInput','boundaryWaterOutput',
   'boundarySaltInput','boundarySaltOutput'])
