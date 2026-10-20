@@ -40,7 +40,7 @@ const receipt=w.setSurfaceWater([
  {i:site,water:1,depth:.75,salinity:0,source:'overland'}
 ],{reason:'thawed-runoff'});
 assert.equal(w.water[site],1);
-assert.equal(e.overland[site],0);
+assert.equal(w.environment.overland[site],0);
 assert.equal(w.environment.volume[site],.75);
 assert.equal(receipt.waterInput,0);
 assert.equal(receipt.internalWater,.75);
