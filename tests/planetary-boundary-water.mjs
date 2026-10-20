@@ -24,7 +24,9 @@ assert.throws(()=>boundaryWaterExchange(e,0,5,1),/Invalid planetary boundary-wat
 const origin={x:0,y:2560},seed='GENVO8-TEST-A';
 const w=new World(seed,{generator:'planetary/1',planetOrigin:origin});
 assert.equal(w.environment.schema,6);
-assert.equal(w.environment.boundaryWaterPolicy,policy);
+assert.equal(w.environment.boundaryWaterPolicy,PLANETARY_BOUNDARY_WATER.pairedPolicy);
+assert.ok(w.environment.blockedBoundaries instanceof Uint8Array);
+assert.equal(w.environment.blockedBoundaries.length,w.len);
 const salinityBefore=saltStorage(w);
 const climate={temp:.6,rain:.48};
 let input=0,output=0;
