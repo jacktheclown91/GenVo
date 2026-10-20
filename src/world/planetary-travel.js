@@ -14,6 +14,7 @@ import {bodyMass} from '../organisms/body-mass.js';
 import {familyTravelCohort,familyArrivalPoint,FAMILY_PASSAGE} from './family-passage.js';
 import {advanceRemoteEnvironment,remoteEnvironmentDue,OFFSCREEN_ENVIRONMENT} from './planetary-offscreen-environment.js';
 import {advanceRemoteBiology,remoteBiologicalDebt,OFFSCREEN_BIOLOGY} from './planetary-offscreen-biology.js';
+import {syncPlanetaryBoundaryOwnership} from './planetary-seam-salt.js';
 
 const LIMIT=16,BOUNDARY=3.75,SIZE=128;
 const GLOBAL_AUTHORITIES=['lineage','evolution','evolutionTree','evolutionBudget','evolutionEditor','generationProgress'];
@@ -209,6 +210,9 @@ export function crossPlanetaryBorder(sim){
  dest.travelFamilyGroup=!!sim.travelFamilyGroup;
  dest.offscreenBiologyEnabled=!!sim.offscreenBiologyEnabled;
  if(Object.hasOwn(sim,'regionalReplayPolicy'))dest.regionalReplayPolicy=sim.regionalReplayPolicy;else delete dest.regionalReplayPolicy;
+ // Keep the archived source and newly active destination from each importing
+ // the other's known water as a second external geographic reservoir.
+ syncPlanetaryBoundaryOwnership(dest);
  dest.lastPlayerAction={type:'planet-travel',actorId:traveler.id,members:memberIds,from:sourceKey,to:destinationKey,tick:dest.tickCount};
  return{ok:true,type:'planet-travel',message:'Crossed '+status.direction+' into planetary region '+destinationKey+(memberIds.length>1?' with '+(memberIds.length-1)+' family members.':'.')+' Regional wildlife and resources are retained.',simulation:dest,from:sourceKey,to:destinationKey,id:traveler.id,members:memberIds};
 }
