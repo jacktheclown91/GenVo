@@ -67,6 +67,9 @@ forged.metadata.day+=1;
 assert.throws(()=>openScenarioSnapshot(forged),/Scenario metadata disagrees/);
 const empty=structuredClone(snapshot);
 empty.animals.forEach(a=>a.alive=false);
-assert.throws(()=>packageScenarioSnapshot(empty,{
- id:'unplayable-world',label:'No surviving creatures'}),/no surviving ecosystem animals/);
+const collapsed=packageScenarioSnapshot(empty,{
+ id:'unplayable-world',label:'No surviving creatures'});
+assert.equal(collapsed.metadata.liveAnimals,0);
+assert.equal(collapsed.metadata.playable,false,
+ 'ecological extinction remains testable but cannot masquerade as a playable world');
 console.log('Scenario checkpoints: structured state, real save restore, independent forks, unchanged RNG and tamper refusal PASS');
