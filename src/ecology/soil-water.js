@@ -17,17 +17,19 @@ import {exchangeTerrainGroundwater} from '../world/topography.js';
 import {routePlanetaryRunoff} from '../world/planetary-runoff.js';
 import {recordPageGroundwater,finishPageGroundwater,validatePageGroundwater} from '../world/page-groundwater-transfers.js';
 import {PLANETARY_SEAM_GROUNDWATER,validateSeamGroundwaterPolicy} from '../world/planetary-seam-groundwater.js';
+import {GROUNDWATER_SPRINGS,advanceGroundwaterSprings,validateGroundwaterSpringPolicy} from '../world/groundwater-springs.js';
 export const SOIL_WATER={enabled:true,rainScale:.06,potentialBase:.025,potentialTemp:.035,capacityBase:.3,capacityWet:.4,drain:.15,rise:.08,lateral:.5,deepDrain:.004,wiltingPoint:.03};
 const clamp01=v=>v<0?0:v>1?1:v;
 export function initializeSoilWater(w){
   const fieldCapacity=new Float32Array(w.len),groundwater=new Float32Array(w.len);
   for(let i=0;i<w.len;i++){fieldCapacity[i]=SOIL_WATER.capacityBase+SOIL_WATER.capacityWet*clamp01(w.moisture[i]);groundwater[i]=w.water[i]?1:clamp01(w.moisture[i])}
-  w.soilWater={schema:1,...(w.generator==='planetary/1'&&w.environment?.groundwaterSeamEligibility===PLANETARY_SEAM_GROUNDWATER.policy?{seamGroundwaterPolicy:PLANETARY_SEAM_GROUNDWATER.policy}:{}),fieldCapacity,groundwater,snowpack:new Float64Array(w.len),scratch:new Float32Array(w.len),totals:{rain:0,snowfall:0,snowmelt:0,infiltration:0,runoff:0,evaporation:0,percolation:0,capillary:0,lateral:0,deepDrainage:0,uptake:0,overflow:0},day:0};
+  w.soilWater={schema:1,...(w.generator==='planetary/1'&&w.environment?.groundwaterSeamEligibility===PLANETARY_SEAM_GROUNDWATER.policy?{seamGroundwaterPolicy:PLANETARY_SEAM_GROUNDWATER.policy}:{}),...(w.generator==='planetary/1'&&w.environment?.springEligibility===GROUNDWATER_SPRINGS.policy?{springPolicy:GROUNDWATER_SPRINGS.policy}:{}),fieldCapacity,groundwater,snowpack:new Float64Array(w.len),scratch:new Float32Array(w.len),totals:{rain:0,snowfall:0,snowmelt:0,infiltration:0,runoff:0,evaporation:0,percolation:0,capillary:0,lateral:0,deepDrainage:0,uptake:0,overflow:0,springDischarge:0},day:0};
   return w.soilWater;
 }
 export function validateSoilWater(w,s){
   if(s?.schema!==1)throw Error('Invalid soil water schema.');
   validateSeamGroundwaterPolicy(w,s);
+  validateGroundwaterSpringPolicy(w,s);
   for(const k of ['fieldCapacity','groundwater'])if(!(s[k] instanceof Float32Array)||s[k].length!==w.len||s[k].some(v=>!Number.isFinite(v)||v<0||v>1))throw Error('Invalid soil water store '+k+'.');
   if(s.snowpack!==undefined)validateSnowpack(w,s.snowpack);
   if(s.pageGroundwaterTransfers!==undefined)validatePageGroundwater(w,s.pageGroundwaterTransfers);
@@ -70,21 +72,24 @@ export function advanceSoilWater(w,climate,day,{runoffSink=null}={}){
 }
 // Land water storage: soil moisture plus groundwater over every land cell (open water is a fixed boundary).
 export function soilWaterStorage(w){const g=w.soilWater?.groundwater;let s=0;for(let i=0;i<w.len;i++)if(!w.water[i])s+=w.moisture[i]+(g?g[i]:0)+(w.soilWater?.snowpack?.[i]||0);return s}
-const FLOWS=['rain','snowfall','snowmelt','infiltration','runoff','evaporation','percolation','capillary','lateral','deepDrainage','uptake','overflow'];
+const FLOWS=['rain','snowfall','snowmelt','infiltration','runoff','evaporation','percolation','capillary','lateral','deepDrainage','uptake','overflow','springDischarge'];
 // One daily step: yesterday's producer withdrawals leave the soil, then the day's water processes run. Each day's
 // world totals are kept in s.lastDay and the bounded s.daily history:
 //   inputs  = rain + inflow from open water (lateral);  outputs = runoff + evaporation + deep drainage + plant uptake
 //   + overflow;  closure = inputs - outputs - storage change, which is zero up to float rounding.
 export function advanceSoilDay(w,climate,day){
   const r=w.plantResources,cap=2;// PLANT_RESOURCE_UNITS.waterCapacity
-  const s=w.soilWater||initializeSoilWater(w);s.snowpack||=new Float64Array(w.len);s.totals.snowfall??=0;s.totals.snowmelt??=0;
+  const s=w.soilWater||initializeSoilWater(w);s.snowpack||=new Float64Array(w.len);s.totals.snowfall??=0;s.totals.snowmelt??=0;s.totals.springDischarge??=0;
   const before=soilWaterStorage(w),t0=Object.fromEntries(FLOWS.map(k=>[k,s.totals[k]]));
   if(r?.soilWaterLinked){for(let i=0;i<w.len;i++)if(!w.water[i])withdrawPlantUptake(w,i,cap,r.water[i]);r.soilWaterLinked=false}
   // Runoff is temporary stage data only. The physical stocks and their
   // receipts are persistent, but no duplicate live runoff authority is saved.
   const runoff=w.environment?.schema>=5?new Float64Array(w.len):null;
   advanceSoilWater(w,climate,day,runoff?{runoffSink:(i,amount)=>runoff[i]=amount}:{});
-  const after=soilWaterStorage(w),f=Object.fromEntries(FLOWS.map(k=>[k,s.totals[k]-t0[k]])),inputs=f.rain+f.lateral,outputs=f.runoff+f.evaporation+f.deepDrainage+f.uptake+f.overflow;
+  // A spring moves already stored groundwater into this same finite runoff.
+  // No spring can discharge in historical worlds or outside planetary soil days.
+  if(runoff)advanceGroundwaterSprings(w,runoff,day);
+  const after=soilWaterStorage(w),f=Object.fromEntries(FLOWS.map(k=>[k,s.totals[k]-t0[k]])),inputs=f.rain+f.lateral,outputs=f.runoff+f.evaporation+f.deepDrainage+f.uptake+f.overflow+f.springDischarge;
   let land=0,moisture=0;for(let i=0;i<w.len;i++)if(!w.water[i]){land++;moisture+=w.moisture[i]}
   s.lastDay={day,climateRain:climate.rain,climateTemp:climate.temp,...f,inputs,outputs,storageBefore:before,storageAfter:after,storageChange:after-before,closure:inputs-outputs-(after-before),meanMoisture:land?moisture/land:0,...(s.pageGroundwaterTransfers?{pageGroundwaterTransfers:s.pageGroundwaterTransfers}:{})};
   (s.daily||(s.daily=[])).push(s.lastDay);if(s.daily.length>64)s.daily.shift();
