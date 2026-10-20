@@ -8,6 +8,7 @@ import {CFG} from '../src/sim/config.js';
 import {advanceEnvironmentWater,validateEnvironment} from '../src/world/environment.js';
 import {advanceSoilDay} from '../src/ecology/soil-water.js';
 import {totalPlanetarySurfaceWater} from '../src/world/planetary-runoff.js';
+import {simulateHistoricalPlanetaryEnvironment} from './helpers/historical-planetary-environment.mjs';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 
 const seed='GENVO8-TEST-A',origin={x:0,y:2560},climate={temp:.7,rain:.4};
@@ -79,16 +80,7 @@ assert.throws(()=>restoreSimulationSnapshot(bad),/Invalid planetary overland run
 // automatically, even with the exact same stock and regional geography.
 const old=new World(seed,{generator:'planetary/1',planetOrigin:origin});
 const oi=candidate(old);
-old.environment.schema=5;
-// A genuine saved schema-5 world predates these explicit schema-6 policies.
-// Do not fabricate a legacy world by keeping future eligibility markers
-// on an otherwise downgraded environment.
-for(const marker of ['groundwaterSeamEligibility','springEligibility',
-  'seamRunoffPolicy','mineralRunoffPolicy','terrainSedimentPolicy',
-  'wetbedSedimentPolicy','channelTopologyPolicy','coatMoisturePolicy',
-  'seasonalCoatPolicy','embryoClimatePolicy','youngClimatePolicy'])
- delete old.environment[marker];
-delete old.environment.floodOrigin;
+simulateHistoricalPlanetaryEnvironment(old,5);
 old.environment.overland[oi]=1.2;
 advanceEnvironmentWater(old,climate,1);advanceSoilDay(old,climate,1);
 assert.equal(old.water[oi],0,'existing schema-5 world retains previous non-flooding rules');
