@@ -209,6 +209,11 @@
           <label class="menu-field">World name<input id="newWorldName" maxlength="40" value="Untamed World" autocomplete="off" /></label>
           <label class="menu-field">World seed <small>Optional</small><input id="newWorldSeed" maxlength="64" placeholder="Leave blank for a new world" autocomplete="off" /></label>
           <label class="menu-field">Geography<select id="newWorldGeography"><option value="freshwater/1">Established local world</option><option value="planetary/1">Planetary river region (preview)</option></select><small>The preview samples a small region of planetary geography. Wider travel and cross-region water flow are still in development.</small></label>
+          <label class="menu-field">Starting point<select id="newWorldStartingPoint">
+            <option value="new">New ecology, Day 1</option>
+            <option value="import">Import a real evolved-world checkpoint...</option>
+          </select><small id="newWorldScenarioDetail">Recorded worlds can be forked without replaying their earlier days. Each new game receives a separate save.</small></label>
+          <label class="menu-field" id="newWorldScenarioFileLabel" hidden>Scenario package (.json)<input type="file" id="newWorldScenarioFile" accept=".json,application/json" /></label>
           <div class="menu-toolbar"><button data-action="create">Begin World</button><button class="menu-secondary" data-action="back">Back</button></div>
         </section>
         <section class="menu-view" data-screen="worlds" hidden aria-label="Saved worlds">
