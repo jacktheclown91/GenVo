@@ -151,9 +151,11 @@
       "authority": "src/world/planetary-boundary-water.js",
       "consumers": [
         "src/world/planet-world.js",
-        "src/world/environment.js"
+        "src/world/environment.js",
+        "src/world/planetary-seam-salt.js",
+        "src/world/planetary-travel.js"
       ],
-      "note": "New-world opt-in finite equal-volume ocean/freshwater boundary replacement, explicitly credited water and salt import/export. Historical absent-policy saves retain salt-only boundary flux. This is not shared mutable-ocean coupling between archived regions."
+      "note": "Versioned finite external ocean/freshwater reservoir exchange. Policy /2 gives physically synchronized visited wet regions exclusive paired ownership of each cardinal boundary, including partial corner exchange; policy /1 and absent-policy saves retain historical behavior. Worldwide unsimulated ocean resources are not globally conserved."
     },
     "planetaryGeography": {
       "authority": "src/world/planet-geography.js",
