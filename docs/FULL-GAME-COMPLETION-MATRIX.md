@@ -1,0 +1,133 @@
+# Full Creature-stage completion matrix
+
+Source audit: October 20, 2026, canonical `main`, starting from `2e07fb5`.
+Intent: the creator's full-game directive; current contracts and explicit save migrations remain authoritative implementation boundaries. This is a working inventory, not a release certificate. Each grouped row covers its listed requirements; unresolved subfeatures are stated explicitly. No numerical completion percentage is implied.
+
+States: **Complete and integrated** = demonstrated ordinary gameplay path; **Implemented but incomplete** = live functionality with listed gaps or unverified full coverage; **Disconnected** = existing implementation unavailable through the required path; **Placeholder** = label/data without corresponding required behavior; **Missing** = no meaningful implementation found; **Deferred** = outside the present phase. Automated checks, browser observation and creator acceptance are separate evidence.
+
+## Canonical source and evidence
+
+Gate A passed at `2e07fb565c9d1e93d9154d2434c18875dc44cdb4`: existing source `C:\Users\jackt\Desktop\Games\game jam october\genvo-toolkit`, branch `main`, exact GitHub main SHA verified by `git ls-remote`. All feature/work branch tips are ancestors of the consolidation tip. Five diagnostic branches remain preserved remotely: four contain only comparison workflows; P1's optional-loss code is byte-identical to its later accepted implementation. No diagnostic rollback is required. No history was rewritten. Two untracked terminal-help files remain untouched.
+
+Canonical source audit passed (284 reachable modules, 91 registered parts); all 15 focused `tools/check-playable.mjs` checks and public-export parity passed before development. A 658-file web export succeeded. This is build/contract evidence, not full playability acceptance.
+
+## Living Planet
+
+| Requirement | Actual state | Source and precise remaining work/dependency |
+|---|---|---|
+| Continents, oceans, connected neighboring regions | Implemented but incomplete | `src/world/planet-geography.js`, `planet-regions.js`, `planetary-travel.js`; discrete persistent regions, not seamless global simulation. |
+| Mountains, ranges, foothills, cliffs, valleys, plateaus | Implemented but incomplete | `src/world/topography.js`, `land-route.js`, `biomes.js`; elevation/route costs exist; audit distinct cliff and plateau traversal. |
+| Plains, grasslands, savannas, deserts, semiarid habitats | Implemented but incomplete | `src/world/biomes.js`, `src/ecology/resource-founding.js`, `cold-flora.js`; physical niches exist; full habitat variety and presentation require review. |
+| Forests, jungles, woodlands | Implemented but incomplete | `src/ecology/canopy-site.js`, `src/render/flora.js`; woodland canopy usable, dedicated jungle ecology unproven. |
+| Tundra, alpine, cold environments | Implemented but incomplete | `src/ecology/cold-flora.js`, `cold-wildlife.js`, `src/world/snowpack.js`; survival and snow costs wired; broader visual acceptance pending. |
+| Lakes, ponds, marshes, swamps, wetlands | Implemented but incomplete | `src/world/groundwater-springs.js`, `biomes.js`, `surface-topology.js`; finite waterlogged habitats; distinct swamp structure incomplete. |
+| Rivers, tributaries, watersheds, deltas | Implemented but incomplete | `src/world/planetary-runoff.js`, `planetary-channel-topology.js`; funded channels/runoff present; full delta/tributary geomorphology missing. |
+| Coastlines, beaches, estuaries, islands | Implemented but incomplete | `src/world/planet-geography.js`, `planetary-boundary-water.js`; coastal physical stocks and exchange; estuary niche/readability incomplete. |
+| Shallow seas, reefs, deep aquatic habitats | Implemented but incomplete | `src/lineage/aquatic.js`, `src/world/environment.js`; water depth/salt and aquatic food present; reefs/deep habitat ecology missing. |
+| Persistent caves and underground ecological layer | Missing | No cave topology, underground position/state, connected entrances or underground regional/save representation found. Depends on explicit spatial-layer contract. |
+| Surface/aquatic/underground connectivity | Implemented but incomplete | `src/ecology/movement-parity.js`, `src/lineage/aquatic.js`; surface/water shared movement exists; underground absent. |
+| Regional/seasonal temperature, humidity, precipitation | Implemented but incomplete | `src/ecology/weather.js`, `src/world/weather-fronts.js`, `environment.js`; region/altitude/season pressures exist; all climate differences not yet reviewed in play. |
+| Wind direction/strength and prevailing fronts | Implemented but incomplete | `src/world/weather-fronts.js`, `src/ecology/dispersal.js`; wind affects seed movement/pollination; flight/wind coupling incomplete. |
+| Rain, drizzle, intense rainfall, drought/wet spells | Implemented but incomplete | `src/ecology/weather.js`, `src/world/planetary-runoff.js`; persistent wet/dry anomalies drive finite hydrology; explicit intensity/readability needs review. |
+| Snowfall, snowpack, thaw, freezing and ice | Implemented but incomplete | `src/world/snowpack.js`, `src/render/renderer.js`; real snow storage/thaw; physical surface ice and frozen traversal not established. |
+| Thunderstorms/severe weather, heatwaves/cold snaps | Implemented but incomplete | `src/ecology/weather.js`, `src/gameplay/weather-exposure.js`; weather exposure exists; coherent thunderstorm/electrical disruption and temperature anomalies missing. |
+| Fog/clouds and sensory visibility effects | Missing | Renderer weather overlay does not establish a shared perception attenuation model. Depends on weather observation/perception authority. |
+| Flooding, runoff, water-level changes | Implemented but incomplete | `src/world/planetary-runoff.js`, `surface-topology.js`; finite inundation/recession and owned channels; gameplay and visual coverage pending. |
+| Weather-dependent plants/animals | Implemented but incomplete | `src/ecology/young-climate.js`, `src/reproduction/embryo-climate.js`, `src/lineage/coat-moisture.js`, `seasonal-coat.js`; inherited exposure wired; broader behavior coverage pending. |
+| Erosion, deposition, sediment, riverbed change | Implemented but incomplete | `src/world/terrain-sediment.js`, `planetary-wetbed-sediment.js`; finite terrain transfers and displaced water; long-term terrain transformation incomplete. |
+| Soil fertility/degradation, grazing, burrowing disturbance | Implemented but incomplete | `src/ecology/soil-water.js`, `soil-disturbance.js`, `organic-resource-cycle.js`; finite roots and disturbance; underground excavations absent. |
+| Uplift, volcanoes, earthquakes, meteor impacts | Missing | No coupled runtime geological/disaster authority found. Must preserve physical terrain/resource and regional persistence ownership. |
+| Travel, returning regions, regional ancestry/archives | Implemented but incomplete | `src/world/planetary-travel.js`, `planetary-offscreen-biology.js`; persistent canonical replay and families; mature-job responsiveness remains open. |
+| Seam water/resources and cross-region plant propagation | Implemented but incomplete | `src/world/planetary-seam-salt.js`, `planetary-seam-runoff.js`, `planetary-seam-groundwater.js`, `src/ecology/page-seed-transfers.js`; paired visited-region exchange exists; global plant crossing/migration not complete. |
+
+## Anatomy, evolution and creator
+
+| Requirement | Actual state | Source and precise remaining work/dependency |
+|---|---|---|
+| Skin, scales/thick scales, fur, feathers, armor, shells, spines | Implemented but incomplete | `src/lineage/part-registry.js`, `part-abilities.js`, `terrain-cover-physiology.js`; mounted costs/capabilities; density/length/down/waterproof specializations not fully represented. |
+| Pigmentation, camouflage and inherited appearance | Implemented but incomplete | `src/organisms/pigmentation.js`, `src/render/creature-palette.js`, `src/ecology/threat-perception.js`; pigmentation inherits; correspondence with concealment needs coverage. |
+| Variable limb numbers, walking, sprinting, heavy support | Implemented but incomplete | `src/lineage/body-plan.js`, `part-registry.js`, `src/ecology/movement-parity.js`; more than eight total parts supported; all arrangements need viability/visual review. |
+| Jumping, springing, landing | Implemented but incomplete | `src/render/locomotion-style.js`, `src/gameplay/exertion.js`; spring gait/pounce exists; dedicated controlled jump/airborne landing physics missing. |
+| Climbing, grasping, digging limbs | Implemented but incomplete | `src/lineage/terrain-cover-physiology.js`, `src/ecology/canopy-site.js`, `src/lineage/digging-rules.js`; slopes/perch/finite root foraging; arbitrary vertical surfaces and underground movement absent. |
+| Swimming limbs/fins/tails, amphibious movement | Implemented but incomplete | `src/lineage/aquatic.js`, `water-physiology.js`, `src/ecology/movement-parity.js`; actual aquatic capability and costs; all fin/tail functional combinations need audit. |
+| Gliding membrane and gliding controls | Placeholder | `src/lineage/part-abilities.js` gives relic membrane sprint/land multipliers; no genuine glide flight trajectory. |
+| Powered flight and flight control structures | Implemented but incomplete | `src/lineage/flight.js`, `src/sim/simulation.js`, `src/render/genvo-draw.js`; takeoff/landing/costed motion exists; wind/flight control structures incomplete. |
+| Grazing/browsing, jaws/teeth/beaks, crushing/tearing/piercing | Implemented but incomplete | `src/ecology/functional-diet.js`, `dietary-demand.js`, `src/lineage/physical-attack.js`; finite meals and attack biology; specialized tooth/jaw breadth not complete. |
+| Suction/aquatic/filter feeding and digestion | Implemented but incomplete | `src/lineage/part-registry.js`, `src/ecology/functional-diet.js`, `physiology.js`; catalog-to-food rules live; expanded digestion/niche viability not fully proven. |
+| Armor, shells, spines, horns, claws, toxins/venom | Implemented but incomplete | `src/lineage/part-abilities.js`, `physical-attack.js`, `src/gameplay/player-combat.js`; combat/protection exists; all defensive configurations and displays incomplete. |
+| Evasion, concealment, defensive reactions | Implemented but incomplete | `src/ecology/prey-risk.js`, `threat-appraisal.js`, `src/gameplay/predator-encounter.js`; shared reactions; unfamiliar-player feedback acceptance open. |
+| Vision arrangements and specialization | Implemented but incomplete | `src/ecology/threat-perception.js`, `src/lineage/part-registry.js`; anatomy-dependent sensing; full visual feedback/reach review needed. |
+| Hearing, scent, touch/vibration, aquatic senses | Implemented but incomplete | `src/cognition/cognition.js`, `src/gameplay/discovery.js`; trails/scent supported; hearing/vibration/aquatic dedicated perception breadth missing. |
+| Calls, ornamentation, social/courtship signals | Implemented but incomplete | `src/reproduction/courtship-performance.js`, `src/audio/creature-voice.js`; costed anatomy-enabled actions; complete visual/audio coverage pending. |
+| Air/aquatic/amphibious respiration | Implemented but incomplete | `src/lineage/water-physiology.js`, `aquatic.js`; physiological water gating; full respiration diversity incomplete. |
+| Thermoregulation, storage, water conservation, buoyancy, metabolism | Implemented but incomplete | `src/lineage/part-abilities.js`, `terrain-cover-physiology.js`, `src/ecology/physiology.js`; costs exist; full tissue/material closure remains unfinished. |
+| Reproductive organs, milk, parental adaptations | Implemented but incomplete | `src/reproduction/reproductive-anatomy.js`, `src/ecology/mammalian-care.js`; mounted reproduction and paid milk/warmth wired; full ordinary-player acceptance pending. |
+| Proportions, neck/torso/tail, joints, attachment, size/mass | Implemented but incomplete | `src/lineage/body-plan.js`, `head-plan.js`, `src/organisms/body-mass.js`, `src/render/socket-layout.js`; discrete shapes and mass; continuous proportions/neck diversity incomplete. |
+| Inheritance, precursors, mutation/development, maintenance costs | Implemented but incomplete | `src/lineage/heredity.js`, `body-inheritance.js`, `evolution-draft.js`, `optional-loss.js`; inherited paths exist; all viable lifecycle intermediates not proven. |
+| Mouse-first modular evolution editor, symmetry, previews/costs | Implemented but incomplete | `src/ui/creature-editor.js`, `src/lineage/evolution-editor.js`; live editor commits next-generation targets; expanded animation/proportion controls incomplete. |
+| Stable-parent editor gate, hybrids, reproductive inheritance | Implemented but incomplete | `src/lineage/body-inheritance.js`, `evolution-editor.js`, `src/reproduction/reproduction.js`; matching physical parents unlock editing, mixed parents recombine; broad player acceptance pending. |
+| Saveable creature designs for supported custom modes | Missing | Creature Lab drafts do not establish a playable custom-founder mode. Depends on shared viable-founder installation. |
+
+## Lifecycle and ecosystem
+
+| Requirement | Actual state | Source and precise remaining work/dependency |
+|---|---|---|
+| Egg laying, live birth, dual capability, pregnancy/gestation | Implemented but incomplete | `src/reproduction/reproductive-anatomy.js`, `src/ecology/gestation.js`, `src/sim/simulation.js`; funded lifecycles; full phenotype/mode coverage pending. |
+| Nests, incubation, infant survival, warmth and care | Implemented but incomplete | `src/reproduction/egg-ecology.js`, `embryo-climate.js`, `src/ecology/young-climate.js`, `mammalian-care.js`; environmental costs/benefits live; presentation pending. |
+| Offspring follow, family/care relationships | Implemented but incomplete | `src/family/family.js`, `src/world/family-passage.js`; actual caregivers/family crossings; all family movement modes not verified. |
+| Reproductive food/water, brood, maturity/lifespan, condition fertility | Implemented but incomplete | `src/ecology/birth-investment.js`, `juvenile-biology.js`, `src/reproduction/conception-availability.js`; live costs; breadth and game pacing later. |
+| Mate choice, reciprocal acceptance, inherited preferences | Implemented but incomplete | `src/reproduction/mate-preferences.js`, `reproductive-compatibility.js`, `partner-encounters.js`; reciprocal checks exist; sex-role assumptions require audit before completion. |
+| Competition, dominance, learned optional rituals/refusal feedback | Implemented but incomplete | `src/reproduction/courtship-performance.js`, `src/ui/courtship-tray.js`, `src/cognition/social.js`; rituals optional; expanded dominance/social coverage incomplete. |
+| Divergence, genetic compatibility, hybrids/fertility/isolation | Implemented but incomplete | `src/lineage/divergence.js`, `speciation.js`, `src/reproduction/reproductive-compatibility.js`; accumulated biological separation; broad evolved lifecycle evidence incomplete. |
+| Species naming, family ancestry/history, visible divergence | Implemented but incomplete | `src/lineage/taxon-name-generator.js`, `lineage.js`, `evolution-tree.js`, `src/ui/journal.js`; naming/history exist; complete legible ancestry UI pending. |
+| Differential survival/reproduction and natural selection | Implemented but incomplete | `src/sim/simulation.js`, `src/lineage/heredity.js`; real mortality/reproduction; minimal-origin open-ended diversification not fully proven. |
+| Grasses, groundcover, shrubs, trees, aquatic/wetland flora | Implemented but incomplete | `src/ecology/resource-founding.js`, `plant-resources.js`, `flora-genotype.js`; living finite producers; complete diversity and presentation pending. |
+| Desert/cold flora and seasonal dormancy | Implemented but incomplete | `src/ecology/cold-flora.js`, `flora-inheritance.js`, `botanical-reproduction.js`; climate-sensitive inherited plants; broader dormant forms incomplete. |
+| Fungi and decomposers | Implemented but incomplete | `src/ecology/organic-resource-cycle.js`; decomposition exists; inheritable fungal organisms/food web absent. |
+| Seeds, dispersal, pollination, compatibility/selfing/hybrids | Implemented but incomplete | `src/ecology/dispersal.js`, `botanical-genetics.js`, `botanical-reproduction.js`; inherited seeds and reproduction; all cross-region propagation incomplete. |
+| Water/light/soil/nutrient competition, climate/disturbance adaptation | Implemented but incomplete | `src/ecology/plant-resources.js`, `soil-water.js`, `flora-inheritance.js`; physical growth limits exist; long-range evolutionary variety unproven. |
+| Predation, specialized herbivory, scavenging, food chains | Implemented but incomplete | `src/ecology/functional-diet.js`, `src/gameplay/predator-encounter.js`, `carcass-rules.js`; real feeding/death-funded carrion; complete food/material closure unfinished. |
+| Aquatic food webs | Implemented but incomplete | `src/ecology/freshwater-food.js`, `plant-resources.js`, `src/lineage/aquatic.js`; finite aquatic foods; reef/deep ecosystems missing. |
+| Migration, territory, dispersal, specialization | Implemented but incomplete | `src/ecology/migration.js`, `src/cognition/territory.js`, `src/lineage/specialization.js`; local strategies exist; autonomous continental migration incomplete. |
+| Social groups/packs/cooperation | Implemented but incomplete | `src/cognition/social.js`, `src/family/family.js`; familiarity/actions shared with remote biology; coordinated pack hunting breadth incomplete. |
+| Nesting/multiple homes, torpor, storage/seasonal preparation | Implemented but incomplete | `src/habitat/shelter.js`, `src/ecology/cold-wildlife.js`, `src/family/learned-resource-target.js`; paid shelters/cache/torpor; full seasonal preparation acceptance pending. |
+| Local extinction/recolonization, habitat/family strategies | Implemented but incomplete | `src/ecology/regions.js`, `population-centers.js`, `src/family/sustainability.js`; declines/extinction legitimate; continental recolonization incomplete. |
+| Digging/grazing, seed movement, nests, persistent habitat engineering | Implemented but incomplete | `src/lineage/digging-rules.js`, `src/ecology/soil-disturbance.js`, `dispersal.js`, `src/habitat/shelter.js`; finite root action/traces exist; true tunnels/drainage engineering absent. |
+
+## Player, starts, presentation and acceptance
+
+| Requirement | Actual state | Source and precise remaining work/dependency |
+|---|---|---|
+| Land/running, feeding/drinking, hunting/combat/escape | Implemented but incomplete | `src/gameplay/player-combat.js`, `interaction-command.js`, `src/ecology/movement-parity.js`; live actions; all supported anatomies need in-browser acceptance. |
+| Swimming/diving, jumping/climbing/gliding/flight/burrowing | Implemented but incomplete | `src/lineage/aquatic.js`, `flight.js`, `src/sim/simulation.js`; swim/flight/perch and root digging live; depth diving, controlled jump, true glide/tunnel traversal missing. |
+| Rest/recovery, mating/nesting/care, family movement/exploration | Implemented but incomplete | `src/gameplay/injury-recovery.js`, `src/reproduction/reproduction.js`, `src/family/family.js`, `src/world/planetary-travel.js`; interconnected paths; complete mouse access and unfamiliar-player acceptance pending. |
+| Context selection, priority, radial menus, exact food/water/combat targets | Implemented but incomplete | `src/ui/creature-context-tray.js`, `context-radial.js`, `interaction-dock.js`, `src/gameplay/interaction-command.js`; focused contracts pass; extended ordinary use pending. |
+| Courtship/inspection/family/area/nest/world-object actions | Implemented but incomplete | `src/ui/courtship-tray.js`, `leadership-wheel.js`, `resource-inspector.js`; existing mouse actions; remaining keyboard-only pathways require audit. |
+| Footprints/tracks, trails/senses, food/exploration memory, warnings | Implemented but incomplete | `src/gameplay/discovery.js`, `src/cognition/cognition.js`, `src/render/world-traces.js`; persistent observations/marks; complete sense-driven discoveries pending. |
+| Primitive/established/mature/seeded/custom world selection | Implemented but incomplete | `src/ui/front-end.js`, `src/main.js`, `src/persistence/scenario-library.js`; Day 1 and real Day 31/101 checkpoints offered; minimal founder and custom world settings incomplete. |
+| Choose existing evolved lineage independent of world | Missing | Checkpoint restores its existing controlled lineage; no independent lineage chooser found. |
+| Guided custom creature and unrestricted sandbox, viable family | Missing | Requires shared anatomy/physiology viability, funded founder provenance and separate sandbox labeling; no live menu path. |
+| Genuine checkpoint history/RNG, independent slots, player restoration | Implemented but incomplete | `src/persistence/scenario-codec.js`, `scenario-library.js`, `save-manager.js`; exact recorded state and independent fork; mature browser memory/loading acceptance pending. |
+| Advanced-world assets in downloadable build | Complete and integrated | `tools/export-public.mjs`, `tests/public-export.mjs`; manifest-listed assets with exact SHA validation. Actual exported Day 31 and Day 101 worlds started, rendered and saved independently in Chromium; inspected screenshots and receipts in `test-runs/exported-day30-2026-10-20/` and `test-runs/exported-day100-2026-10-20/`. Creator acceptance remains separate. |
+| 32px modular detail, connected joints, readable silhouettes/trait/age variation | Implemented but incomplete | `src/render/runtime-part-art.js`, `creature-assembler.js`, `genvo-draw.js`, `assets/art/parts/`; 91 native packs; creator final art acceptance open. |
+| Walking/running/heavy/jump/swim/flight/climb/glide/dig/landing animation | Implemented but incomplete | `src/render/limb-articulation.js`, `locomotion-style.js`, `part-animation-catalog.js`; differentiated gaits; missing physical movement modes cannot claim completed animation. |
+| Feeding/drinking/attack/recoil/rest/courtship/mating/care/birth/death animation | Implemented but incomplete | `src/render/feeding-expression.js`, `behavior.js`, `activity-detail.js`, `part-expression.js`; action expressions exist; full state-specific animation audit pending. |
+| Flora/forest/ground/mountains/water/river/wetland presentation | Implemented but incomplete | `src/render/habitat.js`, `flora.js`, `landform.js`, `scene.js`; rich top-down layers; complete physical-state correspondence/visual review pending. |
+| Snow/ice/rain/storm/wind/seasons/light/atmosphere/traces | Implemented but incomplete | `src/render/renderer.js`, `world-traces.js`; snow/rain/traces visible; physical ice, clouds/fog, regional wind presentation incomplete. |
+| Fullscreen/HUD/creature info/editor/family/species/history | Implemented but incomplete | `src/ui/front-end.js`, `inspector.js`, `journal.js`, `creature-editor.js`; existing UI; progressive readability and all information views need player review. |
+| World map/region navigation/environment information | Implemented but incomplete | `src/ui/journal.js`, `src/world/planetary-travel.js`, `src/ui/resource-inspector.js`; border travel/info; full planetary map interface incomplete. |
+| Settings/controls/saves/main/pause/credits/onboarding | Implemented but incomplete | `src/ui/front-end.js`, `tutorial.js`, `index.html`, `src/persistence/save-manager.js`; live menus/contracts pass; first-time acceptance open. |
+| Biome/water/wind/rain/storm ambience | Implemented but incomplete | `src/audio/audio.js`, `assets.js`, `model.js`; climate/local-water audio; distinct biome/severe-weather breadth needs listening review. |
+| Movement/calls/feeding/combat/courtship/menu/editor/music | Implemented but incomplete | `src/audio/audio.js`, `creature-voice.js`, `model.js`; live reactive sound/music; complete action coverage and listening acceptance pending. |
+| Lightweight integration and essential CI on canonical main | Implemented but incomplete | `tools/check-playable.mjs`, `.github/workflows/playable-checkpoint.yml`; current pass enables main smoke trigger; full existing safety workflow preserved. |
+| Opt-in human observation, consent/start-stop/retention/logs/screens/video/errors | Deferred | Later acceptance phase per directive. Do not fabricate human actions from autonomous or automated events; gameplay completion precedes dedicated telemetry. |
+| Long regressions/ecology/speciation/performance/save/human stabilization | Deferred | Gate D follows substantial B/C coverage. Existing essential checks retained; long experiments are not the next implementation priority. |
+| Complete reproducible release, credits/provenance and full gameplay acceptance | Implemented but incomplete | `tools/export-public.mjs`, source-package inventory, credits; build exists; Gates B/C/D/E remain open. No full-game release claim. |
+
+## Execution queue
+
+1. Repair exported real-world starts, including exact assets, integrity and real-browser evidence. Keep fresh, established and mature history independent.
+2. Add independent playable-lineage selection in restored ecosystems through the existing canonical ownership/control authorities; then add creator-authored viable founder modes using shared anatomy rules.
+3. Complete connected movement modes and their anatomy/cost/control/animation/persistence paths; follow with weather perception and missing planetary environments. Keep the remaining rows visible and update only changed evidence.
+
+Source findings supersede stale statements in earlier reports; historical receipts remain untouched. Browser inspection is automated evidence, never creator acceptance. No new feature is marked fully complete solely from a module, catalog entry or passing unit test.

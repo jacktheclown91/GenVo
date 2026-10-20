@@ -5,6 +5,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {sourceGraph} from './source-graph.mjs';
+import {createHash} from 'node:crypto';
+import {validateScenarioCatalog} from '../src/persistence/scenario-library.js';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const out=process.argv[2]&&path.resolve(process.argv[2]);
 if(!out||out===root||out.startsWith(root+path.sep))throw Error('Supply a destination directory OUTSIDE the source tree.');
@@ -15,6 +17,18 @@ if(missing.length)throw Error(`Missing dependencies: ${missing.join('; ')}`);
 if(!reachable.has('src/main.js'))throw Error('Game entry module missing');
 if(fs.existsSync(out)&&fs.readdirSync(out).length)throw Error('Destination must be empty (no destructive overwrite)');
 const files=['index.html','styles.css',...reachable];
+// Fetch-loaded checkpoints are not ES-module dependencies. Ship only the
+// validated catalog and its exact recorded assets, never request files or
+// unrelated local snapshots. Verify all inputs before writing any output.
+const catalogPath='assets/scenarios/catalog.json';
+const scenarios=validateScenarioCatalog(JSON.parse(fs.readFileSync(path.join(root,catalogPath),'utf8')));
+files.push(catalogPath);
+for(const scenario of scenarios){
+ const bytes=fs.readFileSync(path.join(root,scenario.file));
+ if(createHash('sha256').update(bytes).digest('hex')!==scenario.sha256)
+  throw Error(`Scenario file integrity check failed: ${scenario.id}`);
+ files.push(scenario.file);
+}
 for(const dirname of ['assets/audio','assets/ui','assets/art','tools/creature-lab']){
  function walk(rel){for(const e of fs.readdirSync(path.join(root,rel),{withFileTypes:true})){const p=path.posix.join(rel,e.name);if(p==='assets/art/production-review')continue;if(e.isDirectory())walk(p);else if(e.isFile())files.push(p)}}
  walk(dirname);

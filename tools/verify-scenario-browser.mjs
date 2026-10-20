@@ -13,12 +13,14 @@ try{playwright=require('playwright')}
 catch{playwright=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'))}
 const output=process.argv[2]||'docs/test-runs/scenario-browser-ci';
 const scenarioId=process.argv[3]||'established-valley-d30';
-const catalog=JSON.parse(fs.readFileSync('assets/scenarios/catalog.json','utf8')).scenarios;
+// An optional static web root exercises the delivered build, including
+// fetch-loaded scenario assets, rather than accidentally using source files.
+const root=path.resolve(process.argv[4]||process.cwd());
+const catalog=JSON.parse(fs.readFileSync(path.join(root,'assets/scenarios/catalog.json'),'utf8')).scenarios;
 const scenario=catalog.find(row=>row.id===scenarioId);
 assert.ok(scenario?.playable,'Only genuine playable curated scenarios may enter the browser quick-start check.');
 assert.ok(Number.isSafeInteger(scenario.day)&&scenario.liveAnimals>0&&Number.isSafeInteger(scenario.continuedFrom?.toTick??1440));
 fs.mkdirSync(output,{recursive:true});
-const root=process.cwd();
 const mime={'.js':'text/javascript','.html':'text/html','.json':'application/json','.css':'text/css',
  '.png':'image/png','.svg':'image/svg+xml','.gz':'application/gzip','.wav':'audio/wav'};
 const server=http.createServer((req,res)=>{
@@ -91,7 +93,7 @@ try{
  assert.ok(report.newSlot.startsWith('world-'));
  assert.ok(report.originalHistoryRetained);
  assert.deepEqual(errors,[],'browser encountered a fatal gameplay script error');
- fs.writeFileSync(path.join(output,'report.json'),JSON.stringify({ok:true,...report,errors},null,2));
+ fs.writeFileSync(path.join(output,'report.json'),JSON.stringify({ok:true,servedRoot:root,...report,errors},null,2));
  console.log('Bundled '+scenario.label+' real-world New Game quick start and saved browser fork PASS',JSON.stringify(report));
 }finally{
  await browser.close();

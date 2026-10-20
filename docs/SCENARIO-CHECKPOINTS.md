@@ -31,7 +31,7 @@ The first command runs the actual canonical `Simulation.update` lifecycle for 30
 
 The second command accepts a file exported from the browser and registers it without replaying its entire past. The exporter records a factual `playable` flag: autonomous or extinct-player worlds remain available to developer replay even if they cannot currently be offered for direct player control. Only a real living player-lineage checkpoint appears as a bundled quick start. Regeneration of an existing id requires `--replace` so an accepted baseline is not overwritten silently. Commit both the scenario file and catalog together for a shareable browser quick start.
 
-**The repository's curated catalog starts empty.** No purported Day 30/100/300 fixture is fabricated or shipped before it has been generated, restored and checked.
+The curated catalog currently contains the established valley after 30 simulated days (calendar Day 31) and its genuine 70-day continuation (calendar Day 101). `tools/export-public.mjs` includes the exact catalog and listed checkpoint files, verifying each SHA-256 before copying. Request documents and unrelated snapshots are excluded. No purported advanced fixture is fabricated from an unadvanced seed.
 
 ## Optional one-time cloud generation
 

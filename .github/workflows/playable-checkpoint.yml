@@ -2,6 +2,7 @@ name: GenVo playable checkpoint smoke
 on:
   push:
     branches:
+      - main
       - codex/repository-consolidation
   workflow_dispatch:
 permissions:

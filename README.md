@@ -10,7 +10,7 @@ GenVo is a Living Planet survival game and open-ended evolutionary possibility e
 - [Scenario checkpoints](docs/SCENARIO-CHECKPOINTS.md): immutable advanced-world testing fixtures, exports and playable save forks.
 - [Cleanup manifest](docs/REPOSITORY-CLEANUP.md): integration provenance, retained evidence and archive policy.
 
-The canonical source is `src/`, with runtime artwork/audio in `assets/`. There are multiple development branches. This cleanup integrates a pinned set of commits on `codex/repository-consolidation`; check Git before starting new work.
+The canonical development source is this existing local project, on `main`, with runtime code in `src/` and artwork/audio in `assets/`. GitHub `main` contains the consolidated history. Preserved feature and diagnostic branches are provenance, not competing active sources. Check Git before starting new work. The [full-game completion matrix](docs/FULL-GAME-COMPLETION-MATRIX.md) tracks current gaps and implementation priorities.
 
 ## Run
 
@@ -20,7 +20,7 @@ From the repository root:
 python -m http.server 8000
 ```
 
-Open http://localhost:8000/ . **New World > Starting point** can now fork an existing saved ecosystem or import a recorded scenario without rerunning its earlier history. The catalog starts empty until real advanced-world snapshots are generated and checked. The optional Creature Lab is at http://localhost:8000/tools/creature-lab/index.html . Follow displayed contextual controls: E interacts, Q cycles choices, Shift+E drinks, Space attacks and J braces.
+Open http://localhost:8000/ . **New World > Starting point** can fork an existing saved ecosystem, import a recorded scenario, or start the bundled genuine established and mature valleys without rerunning their earlier history. Public web exports include the catalog and its integrity-checked checkpoint files. The optional Creature Lab is at http://localhost:8000/tools/creature-lab/index.html . Follow displayed contextual controls: E interacts, Q cycles choices, Shift+E drinks, Space attacks and J braces.
 
 ## Verify
 
