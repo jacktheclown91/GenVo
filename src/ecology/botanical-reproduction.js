@@ -35,6 +35,44 @@ export function botanicalRecipientAvailability(d,kind,i){if(!FLORA_TISSUES[kind]
 export function deliverBotanicalPollen(d,kind,i,packet,{route='animal-contact',actorId=null}={}){const status=botanicalRecipientAvailability(d,kind,i);if(!status.enabled||!(packet?.mass>0)||!Number.isFinite(packet.mass)||!Number.isSafeInteger(packet.createdEpoch)||!Number.isSafeInteger(packet.serial)||!validFloraGenome(packet.genome,packet.kind)||!botanicalStructure(packet.genome.botanical,'anther')||!validBotanicalGamete(packet.gamete,packet.genome)||packet.createdEpoch<0||packet.createdEpoch>d.botanical.epoch||packet.serial<1||packet.serial>d.botanical.serial||!validCell(d,packet.i)||typeof packet.producerId!=='string')return{delivered:false,stage:'delivery',reason:status.reason||'No pollen to deliver.'};const b=d.botanical,life=PLANTS[packet.kind].dispersal?.transitDays?.[1]||1;if(b.epoch-packet.createdEpoch>life)return{delivered:false,stage:'delivery',reason:'The carried pollen is no longer viable.'};const flower=status.flower,ovuleUnit=PLANTS[kind].dispersal.localRelease,pollenUnit=PLANTS[packet.kind].dispersal.localRelease,fertilizableMass=Math.min(flower.mass/ovuleUnit,packet.mass/pollenUnit)*ovuleUnit;b.stats.delivered++;note(d,{stage:'delivery',kind,i,donor:packet.producerId,recipient:flower.producerId,route,actorId});const recognition=recognizeBotanicalPollen(flower.genome,packet.gamete,{selfing:flower.producerId===packet.producerId});decay(d,packet,i);if(!recognition.accepted){b.stats.rejected++;note(d,{stage:'recognition',kind,i,accepted:false,reason:recognition.reason});return{delivered:true,...recognition}}b.stats.recognized++;const serial=++b.serial,maternalGamete=botanicalGamete(flower.genome,'ovule|'+serial+'|'+d.sim.world.seedHash,{mutate:(botanicalHash('ovule-mutation|'+serial+'|'+d.sim.world.seedHash)/4294967296)<CLONAL_MUTATION.rate}),child=registerFloraGenome(d,sexualFloraGenome(flower.genome,maternalGamete,packet.gamete));const selfing=flower.producerId===packet.producerId,embryo={kind,i,mass:fertilizableMass,genome:child,createdEpoch:b.epoch,producerId:flower.producerId,parentGenomeId:flower.genome.id,parentGenomeIds:[flower.genome.id,packet.genome.id],parentProducerIds:[flower.producerId,packet.producerId],selfing,homozygosity:botanicalHomozygosity(child),mode:'sexual'};b.embryos.push(embryo);const indexed=embryoIndexes.get(d);if(indexed&&indexed.epoch===b.epoch&&indexed.source===b.embryos){const k=key(kind,i);if(!indexed.index.has(k))indexed.index.set(k,[]);indexed.index.get(k).push(embryo)}flower.mass=Math.max(0,flower.mass-fertilizableMass);if(flower.mass<=0)b.flowers.delete(key(kind,i));b.stats.fertilized++;b.stats[selfing?'selfed':'crossed']++;note(d,{stage:'fertilization',kind,i,genomeId:child.id,parentGenomeIds:embryo.parentGenomeIds,selfing,homozygosity:embryo.homozygosity});return{delivered:true,accepted:true,stage:'fertilization',genomeId:child.id,selfing}}
 export function contactBotanicalFlower(d,a,kind,i){if(!a?.alive||!FLORA_TISSUES[kind])return;const b=d.botanical,k=key(kind,i);let result;if(a.pollenCargo){result=deliverBotanicalPollen(d,kind,i,a.pollenCargo,{route:'animal-contact',actorId:a.id});if(result.delivered)delete a.pollenCargo}const pollen=b.pollen.get(k);if(!a.pollenCargo&&pollen?.mass>0&&mature(d,kind,i,b.flowers.get(k)?.mass||0)){a.pollenCargo=pollen;b.pollen.delete(k);note(d,{stage:'pickup',kind,i,actorId:a.id,donor:pollen.producerId,mass:pollen.mass});}if(result?.delivered||a.pollenCargo)a.lastBotanicalContact={tick:d.sim.tickCount,kind,i,carrying:!!a.pollenCargo,result:result?.stage,accepted:result?.accepted,reason:result?.reason||null};}
 export function dropBotanicalPollen(d,a){if(a?.pollenCargo){decay(d,a.pollenCargo,d.sim.world.idx(a.x,a.y));delete a.pollenCargo}}
+// Existing funded pollen can travel into the next land cell on the actual
+// planetary wind. No additional pollen pool, weather RNG or fertilization
+// authority is introduced. The recipient's inherited receptors decide whether
+// the arriving pollen fertilizes an ovule or becomes local organic litter.
+// Old worlds without an explicit wind policy keep their exact former sequence.
+export function advanceWindPollination(d){
+ if(d.windSeedPolicy!==WIND_SEED_POLICIES.planetary)return 0;
+ const b=d.botanical,w=d.sim.world,n=w.n,targets=new Map();
+ // One index of already-funded receptive flowers. No new ovules are created.
+ for(const flower of b.flowers.values()){
+  if(!(flower.mass>0))continue;
+  let list=targets.get(flower.i);
+  if(!list){list=[];targets.set(flower.i,list)}
+  list.push(flower.kind);
+ }
+ let delivered=0;
+ for(const [sourceKey,pollen] of b.pollen){
+  // Newly produced pollen must survive until the next botanical day.
+  if(!(pollen.mass>0)||pollen.createdEpoch>=b.epoch)continue;
+  const hash=botanicalHash(pollen.genome.id+'|wind-pollen|'+pollen.serial+'|'+b.epoch);
+  const [dx,dy]=planetaryWindSeedOffset(w,d.sim.day,pollen.i,hash/4294967296);
+  const x=pollen.i%n+dx,y=Math.floor(pollen.i/n)+dy;
+  if(x<1||y<1||x>=n-1||y>=n-1)continue;
+  const i=y*n+x;
+  if(w.water[i])continue;
+  const kinds=targets.get(i);
+  if(!kinds?.length)continue;
+  // Pick a physical recipient without a fixed species priority. Different
+  // recognition genes can reject pollen; neither outcome is forced.
+  const kind=kinds[hash%kinds.length];
+  const result=deliverBotanicalPollen(d,kind,i,pollen,{route:'wind'});
+  if(!result.delivered)continue;
+  b.pollen.delete(sourceKey);
+  delivered++;
+ }
+ return delivered;
+}
+
 export function advanceBotanicalReproduction(d){const b=d.botanical,w=d.sim.world;b.epoch++;
  // Fertilization, developmental viability and dispersal are separate stages.
  // Advance only embryos that have reached their next real developmental day.
@@ -55,6 +93,9 @@ export function advanceBotanicalReproduction(d){const b=d.botanical,w=d.sim.worl
  embryoIndexes.delete(d);
  for(const a of d.sim.animals){const r=a.pollenCargo;if(r&&(!a.alive||b.epoch-r.createdEpoch>(PLANTS[r.kind].dispersal.transitDays?.[1]||1)))dropBotanicalPollen(d,a)}
  for(const [k,flower] of b.flowers)if(w.plants[flower.kind][flower.i]<=.002){decay(d,flower);b.flowers.delete(k)}
+ // Physical wind transport occurs before same-flower selfing on this day.
+// Only pollen that was already available at the preceding day can move.
+ advanceWindPollination(d);
  // Pollen within the same flower can contact its stigma after a prior phase.
  // Self-incompatibility remains a genetic recognition decision, not a success-rate penalty.
  for(const [k,pollen] of b.pollen){if(pollen.createdEpoch<b.epoch){const result=deliverBotanicalPollen(d,pollen.kind,pollen.i,pollen,{route:'within-flower'});if(result.delivered){b.pollen.delete(k);continue}}if(b.epoch-pollen.createdEpoch>(PLANTS[pollen.kind].dispersal.transitDays?.[1]||1)||w.plants[pollen.kind][pollen.i]<=.002){decay(d,pollen);b.pollen.delete(k)}}
