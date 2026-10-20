@@ -8,6 +8,7 @@
 import {PLANETARY_RUNOFF} from './planetary-runoff.js';
 import {stageRunoffMinerals} from './planetary-mineral-runoff.js';
 import {stageTerrainSediment} from './terrain-sediment.js';
+import {stageWetbedSediment} from './planetary-wetbed-sediment.js';
 
 export const PLANETARY_SEAM_RUNOFF=Object.freeze({
  policy:'paired-overland-runoff/1',schema:1
@@ -53,7 +54,7 @@ export function seamRunoffProposal(source,target,si,ti,overlandChanges,waterChan
  return Number.isFinite(amount)&&amount>1e-12?amount:0;
 }
 
-export function stagePlanetarySeamRunoff(left,right,i,j,overlandChanges,waterChanges,receipts,day,tick,mineralChanges=null,terrainChanges=null){
+export function stagePlanetarySeamRunoff(left,right,i,j,overlandChanges,waterChanges,receipts,day,tick,mineralChanges=null,terrainChanges=null,saltChanges=null){
  if(left.env?.seamRunoffPolicy!==PLANETARY_SEAM_RUNOFF.policy||
     right.env?.seamRunoffPolicy!==PLANETARY_SEAM_RUNOFF.policy)return 0;
  // True terrain adjacency includes dry-to-dry and dry-to-wet links.
@@ -78,6 +79,18 @@ export function stagePlanetarySeamRunoff(left,right,i,j,overlandChanges,waterCha
   if(sediment>0){
    if(a)row.sedimentAToB=(row.sedimentAToB||0)+sediment;
    else row.sedimentBToA=(row.sedimentBToA||0)+sediment;
+  }
+ }
+ if(terrainChanges&&saltChanges&&to.water[ti]){
+  const bed=stageWetbedSediment(from,to,fi,ti,amount,terrainChanges,waterChanges,saltChanges);
+  if(bed){
+   if(a){
+    row.sedimentAToB=(row.sedimentAToB||0)+bed.sediment;
+    row.bedSedimentAToB=(row.bedSedimentAToB||0)+bed.sediment;
+   }else{
+    row.sedimentBToA=(row.sedimentBToA||0)+bed.sediment;
+    row.bedSedimentBToA=(row.bedSedimentBToA||0)+bed.sediment;
+   }
   }
  }
  if(mineralChanges){
