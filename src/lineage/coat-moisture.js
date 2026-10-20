@@ -41,14 +41,14 @@ export function coatMoistureStatus(animal){
 // A life-step evolution, not a per-frame process. Wetness can persist across
 // swimming, rain, shelter and a saved World transition. Old worlds without
 // the saved policy retain the exact original instantaneous-wetness formula.
-export function advanceCoatMoisture(animal,{rain=0,temperature=.55,moisture=0,immersed=false,sheltered=false}={}){
+export function advanceCoatMoisture(animal,{rain=0,temperature=.55,moisture=0,immersed=false,sheltered=false,waterResistance=0}={}){
  const kind=coatType(animal);
  if(!kind){
   if(animal?.coatWetness!==undefined)animal.coatWetness=0;
   return 0;
  }
  validateCoatMoisture(animal);
- if(![rain,temperature,moisture].every(Number.isFinite))
+ if(![rain,temperature,moisture,waterResistance].every(Number.isFinite)||waterResistance<0||waterResistance>.8)
   throw Error('Invalid climate exposure at coat.');
  const coat=COAT_MOISTURE.types[kind],previous=animal.coatWetness??0;
  const precipitation=clamp((rain-.48)/.55)*clamp((moisture-.35)/.4);
@@ -57,7 +57,11 @@ export function advanceCoatMoisture(animal,{rain=0,temperature=.55,moisture=0,im
  // resting site offers protection without magically removing stored wetness.
  const drying=coat.dry*(.42+clamp((temperature+.05)/.9)*.9)*
   (1-.25*clamp(moisture));
- const exposure=immersed?coat.immersion:coat.rain*rainfall;
+ // Hydrophobic wax must be present as a physical inherited organ. The
+ // originating seasonal-coat authority supplies resistance; this controller
+ // cannot invent it from weather, rendered colors or a species label.
+ const exposure=(immersed?coat.immersion:coat.rain*rainfall)*(1-waterResistance);
+
  const next=clamp(previous+(1-previous)*exposure-(immersed?0:drying*previous));
  const result=next<1e-6?0:next;
  animal.coatWetness=result;
