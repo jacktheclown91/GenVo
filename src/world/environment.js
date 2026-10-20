@@ -19,10 +19,10 @@ export function initializeEnvironment(w){
  return w.environment;
 }
 export function validateEnvironment(w,e){
- if(e?.schema!==1&&e?.schema!==2&&e?.schema!==3&&e?.schema!==4&&e?.schema!==5)throw Error('Invalid environment schema.');
+ if(e?.schema!==1&&e?.schema!==2&&e?.schema!==3&&e?.schema!==4&&e?.schema!==5&&e?.schema!==6)throw Error('Invalid environment schema.');
  if(e.schema>=2&&w.generator!=='planetary/1')throw Error('Planetary boundary version requires planetary geography.');
  for(const [key,Type,lo,hi] of [['temperatureOffset',Float32Array,-1,1],['rainScale',Float32Array,0,3],['depth',Float32Array,0,2],['salt',Float64Array,0,4],['boundary',Uint8Array,0,e.schema>=2?3:2]])if(!(e[key] instanceof Type)||e[key].length!==w.len||e[key].some(v=>!Number.isFinite(v)||v<lo||v>hi))throw Error('Invalid environment field '+key+'.');
- if(e.schema===5&&(!(e.overland instanceof Float64Array)||e.overland.length!==w.len||
+ if(e.schema>=5&&(!(e.overland instanceof Float64Array)||e.overland.length!==w.len||
     e.overland.some((v,i)=>!Number.isFinite(v)||v<0||w.water[i]&&v!==0)))
   throw Error('Invalid planetary overland runoff field.');
  if(e.schema>=3&&(!(e.volume instanceof Float64Array)||e.volume.length!==w.len||
@@ -50,7 +50,7 @@ export function validateEnvironment(w,e){
  if(e.schema>=3&&['pairedWaterInput','pairedWaterOutput'].some(k=>e.totals?.[k]!==undefined&&
     (!Number.isFinite(e.totals[k])||e.totals[k]<0)))
   throw Error('Invalid paired water totals.');
- if(e.schema===5&&['surfaceRainInput','surfaceRainOutput','soilRunoffReceived','runoffDelivered','overlandMoved'].some(k=>e.totals?.[k]!==undefined&&
+ if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','soilRunoffReceived','runoffDelivered','overlandMoved'].some(k=>e.totals?.[k]!==undefined&&
     (!Number.isFinite(e.totals[k])||e.totals[k]<0)))
   throw Error('Invalid planetary surface-runoff totals.');
  if(!Number.isSafeInteger(e.day)||e.day<0||!e.totals||['saltInput','saltOutput','rainWater','displacedWater'].some(k=>!Number.isFinite(e.totals[k])||e.totals[k]<0)||!Array.isArray(e.daily)||e.daily.length>64)throw Error('Invalid environment history.');
@@ -64,7 +64,7 @@ export function validateEnvironment(w,e){
       (!Number.isFinite(row[k])||row[k]<0)))
    throw Error('Invalid paired planetary salt receipt.');
   if(e.schema>=3){
-   if(e.schema===5&&['surfaceRainInput','surfaceRainOutput','soilRunoffReceived','runoffDelivered','overlandMoved','overlandEdges'].some(k=>k in row&&
+   if(e.schema>=5&&['surfaceRainInput','surfaceRainOutput','soilRunoffReceived','runoffDelivered','overlandMoved','overlandEdges'].some(k=>k in row&&
       (!Number.isFinite(row[k])||row[k]<0)))
     throw Error('Invalid planetary rainfall or overland receipt.');
    if(e.schema>=4&&['internalWaterMoved','internalSaltMoved','internalWetEdges'].some(k=>k in row&&
@@ -80,7 +80,7 @@ export function validateEnvironment(w,e){
 }
 export function localTemperature(w,climate,i){return clamp(climate.temp+(w.environment?.temperatureOffset[i]||0),-.5,1.5)}
 export function localRain(w,climate,i){return regionalRainfall(w,climate,i)}
-export function salinityAt(w,i){const e=w.environment;const d=e?.schema===3||e?.schema===5?e.volume[i]:e?.depth[i];return d>0?e.salt[i]/d:0}
+export function salinityAt(w,i){const e=w.environment;const d=e?.schema>=3?e.volume[i]:e?.depth[i];return d>0?e.salt[i]/d:0}
 export function potableWater(w,i){return !!w.water[i]&&salinityAt(w,i)<=.05}
 export function salineMargin(w,i){if(!w.environment)return false;const x=i%w.n,y=(i/w.n)|0;for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++){const nx=x+dx,ny=y+dy;if(nx>=0&&ny>=0&&nx<w.n&&ny<w.n&&w.water[ny*w.n+nx]&&!potableWater(w,ny*w.n+nx))return true}return false}
 export function saltStorage(w){let total=0;for(const amount of w.environment?.salt||[])total+=amount;return total}
@@ -89,7 +89,7 @@ export function waterStorage(w){let total=0;for(const amount of w.environment?.v
 // conservatively; freshwater rain displaces an equal volume, exporting its dissolved salt.
 // Edge reservoirs restore freshwater (1) / seawater (2), with explicit salt input/output receipts.
 export function advanceEnvironmentWater(w,climate,day){
- const e=w.environment;if(!e)return;const atmospheric={...climate,frontDay:day};const before=saltStorage(w),waterBefore=e.schema===5?totalPlanetarySurfaceWater(w):e.schema>=3?waterStorage(w):0,next=new Float64Array(e.salt),n=w.n,t=e.totals,input0=t.saltInput,output0=t.saltOutput,pageLedger=new Map();
+ const e=w.environment;if(!e)return;const atmospheric={...climate,frontDay:day};const before=saltStorage(w),waterBefore=e.schema>=5?totalPlanetarySurfaceWater(w):e.schema>=3?waterStorage(w):0,next=new Float64Array(e.salt),n=w.n,t=e.totals,input0=t.saltInput,output0=t.saltOutput,pageLedger=new Map();
  let boundaryInput=0,boundaryOutput=0,surfaceRainInput=0,surfaceRainOutput=0;
  const pair=(i,j)=>{if(!w.water[i]||!w.water[j])return;const c=salinityAt(w,i)-salinityAt(w,j),from=c>0?i:j,to=c>0?j:i,flow=Math.min(Math.abs(c)*Math.min(e.schema>=3?e.volume[i]:e.depth[i],e.schema>=3?e.volume[j]:e.depth[j])*.08,e.salt[from]*.25);next[from]-=flow;next[to]+=flow;if(flow>0&&((j===i+1&&(i%n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)||(j===i+n&&Math.floor(i/n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)))recordPageSaltTransfer(pageLedger,n,i,j,from===i?flow:-flow)};
  for(let i=0;i<w.len;i++){if(i%n<n-1)pair(i,i+1);if(i+n<w.len)pair(i,i+n)}
@@ -97,9 +97,9 @@ export function advanceEnvironmentWater(w,climate,day){
  // V5 rain becomes physical freshwater. Full cells expel only their
  // unretained rain volume, carrying dissolved salt into a recorded export.
  // Historical schemas still use their original fixed-volume displacement.
- const accepted=e.schema===5?Math.min(rain,Math.max(0,2-volume)):0;
- const displaced=e.schema===5?rain-accepted:rain;
- if(e.schema===5){
+ const accepted=e.schema>=5?Math.min(rain,Math.max(0,2-volume)):0;
+ const displaced=e.schema>=5?rain-accepted:rain;
+ if(e.schema>=5){
   e.volume[i]+=accepted;surfaceRainInput+=rain;surfaceRainOutput+=displaced;
  }
  const lost=next[i]*(1-Math.exp(-displaced/volume));
@@ -122,14 +122,14 @@ export function advanceEnvironmentWater(w,climate,day){
    }
   }}
  const internal=advanceInternalPlanetaryWater(w,next);
- if(e.schema===5){
+ if(e.schema>=5){
   t.surfaceRainInput=(t.surfaceRainInput||0)+surfaceRainInput;
   t.surfaceRainOutput=(t.surfaceRainOutput||0)+surfaceRainOutput;
  }
  e.salt.set(next);e.day=day;const after=saltStorage(w),input=t.saltInput-input0,output=t.saltOutput-output0,row={
  day,before,after,input,output,closure:input-output-(after-before),
  ...(e.schema>=2?{boundaryInput,boundaryOutput}:{}),
- ...(e.schema>=3?(e.schema===5?{
+ ...(e.schema>=3?(e.schema>=5?{
   ...internal,waterBefore,waterAfter:totalPlanetarySurfaceWater(w),
   waterInput:surfaceRainInput,waterOutput:surfaceRainOutput,
   waterClosure:surfaceRainInput-surfaceRainOutput-(totalPlanetarySurfaceWater(w)-waterBefore),
