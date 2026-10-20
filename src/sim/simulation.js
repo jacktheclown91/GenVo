@@ -7,6 +7,7 @@ import {physicalAttackProfile} from '../lineage/physical-attack.js';
 import {thermalCoverFactor,aridityWaterFactor} from '../lineage/terrain-cover-physiology.js';
 import {COAT_MOISTURE,advanceCoatMoisture} from '../lineage/coat-moisture.js';
 import {SEASONAL_COAT,advanceSeasonalCoat} from '../lineage/seasonal-coat.js';
+import {EMBRYO_CLIMATE,advanceEmbryoClimate} from '../reproduction/embryo-climate.js';
 import {canLactate,thermoregulation,neonatalWarmthFactor,neonatalColdExposure} from '../ecology/mammalian-care.js';
 import {torporStatus,enterTorpor,wakeTorpor,maintainTorpor,torporMetabolism,torporPredationMultiplier,decideTorpor} from '../ecology/cold-wildlife.js';
 import {conceptionAvailability} from '../reproduction/conception-availability.js';
@@ -588,8 +589,13 @@ export class Simulation{
     const remaining=[];
     for(const egg of this.eggs){
       // Eggs cannot move or drink. Exposure over real days matters.
-      const quality=nestIncubationQuality(nestForEgg(this,egg),eggSiteQuality(this.world,egg.x,egg.y));
-      egg.condition-=quality>=.75?0:(1-quality)*.18+.015;
+      if(this.world.environment?.embryoClimatePolicy===EMBRYO_CLIMATE.policy){
+        const exposure=advanceEmbryoClimate(this.world,egg,nestForEgg(this,egg));
+        egg.condition-=exposure.conditionLoss;
+      }else{
+        const quality=nestIncubationQuality(nestForEgg(this,egg),eggSiteQuality(this.world,egg.x,egg.y));
+        egg.condition-=quality>=.75?0:(1-quality)*.18+.015;
+      }
       if(egg.condition<=0){this.family.pushEvent({type:'egg-loss',animalId:egg.motherId,eggId:egg.id});continue}
       egg.incubationDays--;
       if(egg.incubationDays>0){remaining.push(egg);continue}
