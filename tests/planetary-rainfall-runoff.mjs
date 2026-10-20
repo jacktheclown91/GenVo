@@ -9,6 +9,7 @@ import {CFG} from '../src/sim/config.js';
 import {advanceEnvironmentWater,validateEnvironment,waterStorage} from '../src/world/environment.js';
 import {advanceSoilDay,soilWaterStorage} from '../src/ecology/soil-water.js';
 import {routePlanetaryRunoff,totalPlanetarySurfaceWater} from '../src/world/planetary-runoff.js';
+import {simulateHistoricalPlanetaryEnvironment} from './helpers/historical-planetary-environment.mjs';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 const close=(a,b,eps=1e-7)=>assert.ok(Math.abs(a-b)<=eps,`difference ${a} vs ${b}`);
 const snap=s=>structuredClone(createSimulationSnapshot(s,{reason:'rainfall-runoff-parity',savedAt:'fixed'}));
@@ -17,7 +18,7 @@ const w=new World(seed,{generator:'planetary/1',planetOrigin:origin}),e=w.enviro
 assert.equal(e.schema,6,'newly generated planetary regions enable runoff-funded topology');
 // Preserve this established 12-day test as an exact reference for the
 // original v5 behavior, where no land mask ever changes.
-e.schema=5;
+simulateHistoricalPlanetaryEnvironment(w,5);
 assert.ok(e.overland instanceof Float64Array&&e.overland.length===w.len);
 assert.equal(totalPlanetarySurfaceWater(w),waterStorage(w));
 const land=w.water.slice(),bathymetry=e.depth.slice(),bed=w.terrain.elevation.slice();
@@ -56,7 +57,7 @@ assert.ok(e.totals.runoffDelivered>=delivered-1e-8);
 // Directly test a real downhill land -> wet mouth with a controlled runoff
 // pulse, independently of the soil process, including its persistent receipt.
 const mouth=new World(seed,{generator:'planetary/1',planetOrigin:origin});
-mouth.environment.schema=5;
+simulateHistoricalPlanetaryEnvironment(mouth,5);
 let source=-1,target=-1;
 for(let i=0;i<mouth.len;i++){
  const j=mouth.terrain.downstream[i];
@@ -78,8 +79,7 @@ validateEnvironment(mouth,mouth.environment);
 // V4 historical physics still cannot create overland water or retain the
 // newly introduced precipitation volume.
 const historical=new World(seed,{generator:'planetary/1',planetOrigin:origin});
-historical.environment.schema=4;
-delete historical.environment.overland;
+simulateHistoricalPlanetaryEnvironment(historical,4);
 advanceEnvironmentWater(historical,climate,1);
 const fixedVolume=historical.environment.volume.slice();
 advanceSoilDay(historical,climate,1);
