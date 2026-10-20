@@ -25,3 +25,36 @@ export function regionalRainfall(world,climate,index){
  const front=rainFrontFactor(world,climate.frontDay,index);
  return Math.max(0,staticRain*front);
 }
+
+// A spatial wind derived from the SAME moving rain-front phase. No second
+// weather clock, RNG stream or persistent atmosphere is introduced.
+// Absolute terrain coordinates keep neighboring planetary regions aligned.
+export const WIND_SEED_POLICIES=Object.freeze({
+ legacy:'legacy-local/1',planetary:'planetary-wind/1'
+});
+export function planetaryWindAt(world,day,index){
+ if(world?.generator!=='planetary/1')return null;
+ const n=world.n;
+ if(!Number.isSafeInteger(day)||day<0||!Number.isSafeInteger(index)||
+    index<0||index>=world.len||!Number.isSafeInteger(n)||n<=0)
+  throw Error('Invalid planetary wind observation.');
+ const x=(world.regionOrigin?.x||0)+(index%n)+.5;
+ const y=(world.regionOrigin?.y||0)+Math.floor(index/n)+.5;
+ const seedPhase=TAU*((world.seedHash>>>0)/4294967296);
+ const phase=TAU*(RAIN_FRONTS.cyclesAcrossWorld*x/n+.4*y/n)+seedPhase-day*RAIN_FRONTS.travelRadiansPerDay;
+ // A persistent zonal drift plus the moving wet/dry front, with a cross-front
+ // component. The field is deterministic and permits easterly/westerly gusts.
+ const latitude=world.planet?.descriptor?.anchor?.latitude-TAU*y/1048576||0;
+ const east=.38*Math.cos(latitude*3)+.72*Math.cos(phase);
+ const south=.22*Math.sin(latitude*4)+.60*Math.sin(phase+.6);
+ return{east,south,strength:Math.hypot(east,south)};
+}
+export function planetaryWindSeedOffset(world,day,index,variation=.5){
+ if(!Number.isFinite(variation)||variation<0||variation>=1)
+  throw Error('Invalid seed wind variation.');
+ const wind=planetaryWindAt(world,day,index);
+ if(!wind)return null;
+ const angle=Math.atan2(wind.south,wind.east)+(variation-.5)*.9;
+ const dx=Math.round(Math.cos(angle)),dy=Math.round(Math.sin(angle));
+ return[dx,dy];
+}
