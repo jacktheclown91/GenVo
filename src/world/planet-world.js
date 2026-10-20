@@ -43,7 +43,7 @@ export function initializePlanetWorld(w){
  // /2 replaces external imports with actual paired transfers when another
  // synchronized, archived region owns the wet neighboring edge.
  w.environment={schema:6,boundaryWaterPolicy:PLANETARY_BOUNDARY_WATER.pairedPolicy,blockedBoundaries:new Uint8Array(w.len),seamRunoffPolicy:PLANETARY_SEAM_RUNOFF.policy,temperatureOffset,rainScale,depth,volume,overland:new Float64Array(w.len),salt,boundary,day:0,totals:{
-  saltInput:0,saltOutput:0,rainWater:0,displacedWater:0,boundaryInput:0,boundaryOutput:0,boundaryWaterInput:0,boundaryWaterOutput:0,boundarySaltInput:0,boundarySaltOutput:0
+  saltInput:0,saltOutput:0,rainWater:0,displacedWater:0,boundaryInput:0,boundaryOutput:0,boundaryWaterInput:0,boundaryWaterOutput:0,boundarySaltInput:0,boundarySaltOutput:0,seamRunoffInput:0,seamRunoffOutput:0
  },daily:[]};
  w.buildLandRegions();w.buildHydrology();initializeColdFlora(w);initializeFreshwater(w);initializePlantResources(w);initializeOrganicResources(w);
 }
