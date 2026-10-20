@@ -147,6 +147,18 @@
         "src/world/world.js"
       ]
     },
+    "inheritedYoungClimate": {
+      "authority": "src/ecology/young-climate.js",
+      "consumers": [
+        "src/world/planet-world.js",
+        "src/world/environment.js",
+        "src/sim/simulation.js",
+        "src/ecology/mammalian-care.js",
+        "src/family/family.js",
+        "src/ui/creature-context-tray.js"
+      ],
+      "note": "New planetary worlds opt into inherited-young-climate/1 only alongside inherited embryo climate. Existing climate alleles, actual local temperature and humidity cause age-bounded cold energy and hot hydration expense in the canonical shared organism metabolism for live-born and hatched young. Nursing parents with endothermy and fur can counter neonatal exposure only through the previously funded maternal-warmth energy debit. No new young-life reserve, birth probability roll, named-taxon advantage or changes to older unmarked planetary saves; advanced warmth options do not change historical callers."
+    },
     "inheritedEmbryoClimate": {
       "authority": "src/reproduction/embryo-climate.js",
       "consumers": [
