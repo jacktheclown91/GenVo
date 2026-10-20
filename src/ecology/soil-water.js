@@ -16,16 +16,18 @@ import {coldSurfaceExchange,validateSnowpack} from '../world/snowpack.js';
 import {exchangeTerrainGroundwater} from '../world/topography.js';
 import {routePlanetaryRunoff} from '../world/planetary-runoff.js';
 import {recordPageGroundwater,finishPageGroundwater,validatePageGroundwater} from '../world/page-groundwater-transfers.js';
+import {PLANETARY_SEAM_GROUNDWATER,validateSeamGroundwaterPolicy} from '../world/planetary-seam-groundwater.js';
 export const SOIL_WATER={enabled:true,rainScale:.06,potentialBase:.025,potentialTemp:.035,capacityBase:.3,capacityWet:.4,drain:.15,rise:.08,lateral:.5,deepDrain:.004,wiltingPoint:.03};
 const clamp01=v=>v<0?0:v>1?1:v;
 export function initializeSoilWater(w){
   const fieldCapacity=new Float32Array(w.len),groundwater=new Float32Array(w.len);
   for(let i=0;i<w.len;i++){fieldCapacity[i]=SOIL_WATER.capacityBase+SOIL_WATER.capacityWet*clamp01(w.moisture[i]);groundwater[i]=w.water[i]?1:clamp01(w.moisture[i])}
-  w.soilWater={schema:1,fieldCapacity,groundwater,snowpack:new Float64Array(w.len),scratch:new Float32Array(w.len),totals:{rain:0,snowfall:0,snowmelt:0,infiltration:0,runoff:0,evaporation:0,percolation:0,capillary:0,lateral:0,deepDrainage:0,uptake:0,overflow:0},day:0};
+  w.soilWater={schema:1,...(w.generator==='planetary/1'?{seamGroundwaterPolicy:PLANETARY_SEAM_GROUNDWATER.policy}:{}),fieldCapacity,groundwater,snowpack:new Float64Array(w.len),scratch:new Float32Array(w.len),totals:{rain:0,snowfall:0,snowmelt:0,infiltration:0,runoff:0,evaporation:0,percolation:0,capillary:0,lateral:0,deepDrainage:0,uptake:0,overflow:0},day:0};
   return w.soilWater;
 }
 export function validateSoilWater(w,s){
   if(s?.schema!==1)throw Error('Invalid soil water schema.');
+  validateSeamGroundwaterPolicy(w,s);
   for(const k of ['fieldCapacity','groundwater'])if(!(s[k] instanceof Float32Array)||s[k].length!==w.len||s[k].some(v=>!Number.isFinite(v)||v<0||v>1))throw Error('Invalid soil water store '+k+'.');
   if(s.snowpack!==undefined)validateSnowpack(w,s.snowpack);
   if(s.pageGroundwaterTransfers!==undefined)validatePageGroundwater(w,s.pageGroundwaterTransfers);
