@@ -5,6 +5,7 @@ import {initializeFreshwater} from '../ecology/freshwater-food.js';
 import {initializePlantResources} from '../ecology/plant-resources.js';
 import {initializeOrganicResources} from '../ecology/organic-resource-cycle.js';
 import {initializeColdFlora} from '../ecology/cold-flora.js';
+import {PLANETARY_BOUNDARY_WATER} from './planetary-boundary-water.js';
 // Initial geography is immutable input. These World arrays are the sole live state.
 export function initializePlanetWorld(w){
  if(w.n!==128)throw Error('Planet preview currently supports the reviewed 128-tile extent only.');
@@ -34,12 +35,14 @@ export function initializePlanetWorld(w){
  // depth remains the immutable geographic baseline used by historical worlds.
  // Float64 volume preserves paired transfers without rounding away small flows.
  const volume=Float64Array.from(depth);
+ // New planetary worlds use an explicit equal-volume external-water exchange.
+ // Older schema-6 saves without the boundaryWaterPolicy retain salt-only flux.
  // V3: observed geography supplies fixed-composition OPEN boundary water.
  // No stock is silently reset: a bounded daily mass flux is audited. This
  // is NOT a paired exchange with an independently simulated neighbor's
  // mutable water inventory; that larger authority remains future work.
- w.environment={schema:6,temperatureOffset,rainScale,depth,volume,overland:new Float64Array(w.len),salt,boundary,day:0,totals:{
-  saltInput:0,saltOutput:0,rainWater:0,displacedWater:0,boundaryInput:0,boundaryOutput:0
+ w.environment={schema:6,boundaryWaterPolicy:PLANETARY_BOUNDARY_WATER.policy,temperatureOffset,rainScale,depth,volume,overland:new Float64Array(w.len),salt,boundary,day:0,totals:{
+  saltInput:0,saltOutput:0,rainWater:0,displacedWater:0,boundaryInput:0,boundaryOutput:0,boundaryWaterInput:0,boundaryWaterOutput:0,boundarySaltInput:0,boundarySaltOutput:0
  },daily:[]};
  w.buildLandRegions();w.buildHydrology();initializeColdFlora(w);initializeFreshwater(w);initializePlantResources(w);initializeOrganicResources(w);
 }
