@@ -38,9 +38,9 @@ export function initializePlanetWorld(w){
  // New planetary worlds use an explicit equal-volume external-water exchange.
  // Older schema-6 saves without the boundaryWaterPolicy retain salt-only flux.
  // V3: observed geography supplies fixed-composition OPEN boundary water.
- // No stock is silently reset: a bounded daily mass flux is audited. This
- // is NOT a paired exchange with an independently simulated neighbor's
- // mutable water inventory; that larger authority remains future work.
+ // No stock is silently reset: a bounded daily mass flux is audited.
+ // /2 replaces external imports with actual paired transfers when another
+ // synchronized, archived region owns the wet neighboring edge.
  w.environment={schema:6,boundaryWaterPolicy:PLANETARY_BOUNDARY_WATER.pairedPolicy,blockedBoundaries:new Uint8Array(w.len),temperatureOffset,rainScale,depth,volume,overland:new Float64Array(w.len),salt,boundary,day:0,totals:{
   saltInput:0,saltOutput:0,rainWater:0,displacedWater:0,boundaryInput:0,boundaryOutput:0,boundaryWaterInput:0,boundaryWaterOutput:0,boundarySaltInput:0,boundarySaltOutput:0
  },daily:[]};
