@@ -3,6 +3,8 @@
 // acquire spring rules through missing-controller initialization.
 import assert from 'node:assert/strict';
 import {World} from '../src/world/world.js';
+import {Simulation} from '../src/sim/simulation.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 import {initializeSoilWater,advanceSoilDay,soilWaterStorage,validateSoilWater} from '../src/ecology/soil-water.js';
 import {advanceEnvironmentWater,validateEnvironment} from '../src/world/environment.js';
 import {advanceGroundwaterSprings,GROUNDWATER_SPRINGS} from '../src/world/groundwater-springs.js';
@@ -99,4 +101,24 @@ const dried=biomeAt(real,biomeIndex,{temp:.7,rain:.7});
 assert.notEqual(dried.code,'wetland','wetland depends on present physical water');
 real.environment.overland[biomeIndex]=wet;
 soil.groundwater[biomeIndex]=ground;
+// The explicit generator marker and owned spring policy round-trip together.
+// Previously saved planetary worlds without either field remain opted out.
+const sim=new Simulation('GENVO8-TEST-A',{player:false,bootstrap:false,
+ worldGenerator:'planetary/1',planetOrigin:{x:0,y:2560}});
+sim.phaseClimate();sim.phaseSoil();
+const snapshot=structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'funded-springs'}));
+const restored=restoreSimulationSnapshot(structuredClone(snapshot));
+assert.deepEqual(createSimulationSnapshot(restored,{savedAt:'fixed',reason:'funded-springs'}),snapshot);
+const historical=structuredClone(snapshot);
+delete historical.world.environment.springEligibility;
+delete historical.world.soilWater.springPolicy;
+const oldSim=restoreSimulationSnapshot(historical);
+assert.equal(oldSim.world.soilWater.springPolicy,undefined);
+const corrupted=structuredClone(snapshot);
+corrupted.world.soilWater.springPolicy='unreviewed-springs/2';
+assert.throws(()=>restoreSimulationSnapshot(corrupted),/Invalid funded groundwater-spring policy/);
+const forged=structuredClone(snapshot);
+forged.world.soilWater.lastDay.springDischarge=forged.world.soilWater.lastDay.outputs+100;
+assert.throws(()=>restoreSimulationSnapshot(forged),/Invalid funded spring discharge receipt/);
+
 console.log('Funded groundwater springs: physical debit, routed discharge, frozen/closed refusal, budgets, emergent wetland and historical opt-out PASS');
