@@ -8,6 +8,7 @@ import {Simulation} from '../src/sim/simulation.js';
 import {CFG} from '../src/sim/config.js';
 import {advanceEnvironmentWater,saltStorage,waterStorage,validateEnvironment} from '../src/world/environment.js';
 import {advanceInternalPlanetaryWater} from '../src/world/planetary-internal-water.js';
+import {simulateHistoricalPlanetaryEnvironment} from './helpers/historical-planetary-environment.mjs';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 
 const seed='GENVO8-TEST-A',origin={x:0,y:2560};
@@ -52,8 +53,10 @@ for(let day=1;day<=10;day++){
  assert.ok(row.internalSaltMoved>=0);
  assert.ok(Math.abs(row.waterClosure)<1e-6);
  assert.ok(Math.abs(row.closure)<1e-6);
- assert.equal(row.waterInput,row.surfaceRainInput,'every surface rainfall input has a receipt');
- assert.equal(row.waterOutput,row.surfaceRainOutput,'only rejected full-capacity rain is exported');
+ assert.equal(row.waterInput,row.surfaceRainInput+row.boundaryWaterInput,
+  'every rainfall and real ocean-boundary input has an explicit receipt');
+ assert.equal(row.waterOutput,row.surfaceRainOutput+row.boundaryWaterOutput,
+  'unretained rainfall and real boundary-water replacement both have output receipts');
  retainedRain+=row.waterInput;exportedRain+=row.waterOutput;
  validateEnvironment(w,e);
 }
@@ -65,7 +68,7 @@ assert.ok(e.totals.internalWaterMoved>receipt.internalWaterMoved);
 assert.deepEqual(w.water,wet);
 
 const old=new World(seed,{generator:'planetary/1',planetOrigin:origin});
-old.environment.schema=3;
+simulateHistoricalPlanetaryEnvironment(old,3);
 const oldVolume=old.environment.volume.slice(),oldSalt=old.environment.salt.slice();
 assert.equal(advanceInternalPlanetaryWater(old,oldSalt),null);
 assert.deepEqual(old.environment.volume,oldVolume,'historical schema-3 interiors do not start flowing');
