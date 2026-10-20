@@ -6,7 +6,8 @@ export const COVER_PHYSICS=Object.freeze({
  'filament-tuft':{cold:.78,hot:1.04,wet:.85},
  'fur-mantle':{cold:.48,hot:1.24,wet:.55},
  'feather-mantle':{cold:.55,hot:1.12,wet:.82},
- 'proto-wing':{cold:.83,hot:1.13,wet:.74}
+ 'proto-wing':{cold:.83,hot:1.13,wet:.74},
+ 'flight-wing':{cold:.90,hot:1.11,wet:.76}
 });
 // Derived only from canonical immutable plans; never an actor-state authority.
 const COVER_ENTRIES=Object.entries(COVER_PHYSICS);
