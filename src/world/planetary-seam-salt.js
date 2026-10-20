@@ -79,10 +79,12 @@ export function syncPlanetaryBoundaryOwnership(sim){
    const left=regions[a],right=regions[b],dir=adjacent(left.origin,right.origin);
    if(!dir||!claimed.has(left.key)||!claimed.has(right.key))continue;
    const lhs=claimed.get(left.key),rhs=claimed.get(right.key);
+   const bits=dir==='east'?[2,1]:dir==='west'?[1,2]:dir==='south'?[8,4]:[4,8];
    for(const [i,j] of seams(left,right,dir)){
     if(!left.water[i]||!right.water[j]||!left.env.boundary[i]||!right.env.boundary[j])continue;
-    if(!lhs[i]){lhs[i]=1;cells++}
-    if(!rhs[j]){rhs[j]=1;cells++}
+    if(!lhs[i])cells++;
+    if(!rhs[j])cells++;
+    lhs[i]|=bits[0];rhs[j]|=bits[1];
    }
   }
  }
