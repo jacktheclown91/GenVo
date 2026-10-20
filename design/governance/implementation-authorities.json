@@ -147,6 +147,16 @@
         "src/world/world.js"
       ]
     },
+    "planetaryGroundwaterSprings": {
+      "authority": "src/world/groundwater-springs.js",
+      "consumers": [
+        "src/world/planet-world.js",
+        "src/ecology/soil-water.js",
+        "src/world/environment.js",
+        "src/world/biomes.js"
+      ],
+      "note": "New-world opt-in funded-groundwater-springs/1 converts Float32-rounded, terrain-exposed soilWater.groundwater into the existing Float64 planetary runoff sink. Soil spring discharge appears as an output; identical surface runoff appears as a credited input. Wetland observations require current waterlogged soil and nonzero overland water. Saved worlds without spring eligibility and springPolicy retain old hydrology."
+    },
     "planetarySeamGroundwater": {
       "authority": "src/world/planetary-seam-groundwater.js",
       "consumers": [
