@@ -11,6 +11,8 @@ Open **New World > Starting point**:
 - **Import a real evolved-world checkpoint:** choose an exported `.json` scenario package. The package is decoded and validated before any new slot is allocated.
 - **Evolved: ...:** appears only after verified catalog entries have been built into `assets/scenarios/catalog.json`. A bundled file's SHA-256 must match the manifest before it is restored.
 
+Bundled curated worlds are stored as **.json.gz** files, keeping a ~118 MB complete Day 30 simulation graph to roughly 15 MB for transfer without removing any organism or environmental stock. The New World importer accepts either .json or .json.gz scenario packages.
+
 The **Load World** screen has **Export Scenario** for each saved world. It produces a portable `recorded-*.json` with its real saved-day state. No free creature editor or ancestry rewrite is part of checkpoint loading. A source without a living controllable creature is still a legitimate **developer replay fixture**, but it will not appear as a player quick start. Use a saved world with an active lineage for the New World menu.
 
 ## Export a genuine advanced fixture once
@@ -24,7 +26,7 @@ node tools/create-world-scenario.mjs --id old-growth --label "Mature World" --in
 
 The first command runs the actual canonical `Simulation.update` lifecycle for 30 days **once**, captures the state, restores it once for validation, and writes:
 
-- `assets/scenarios/first-valley.json`: lossless typed-array/Map/Set/reference-preserving snapshot package.
+- `assets/scenarios/first-valley.json.gz`: gzip-compressed lossless typed-array/Map/Set/reference-preserving snapshot package. The browser decompresses it before using the canonical save restorer.
 - `assets/scenarios/catalog.json`: label, *actual* saved day, generation, seed, living-creature count, path and SHA-256.
 
 The second command accepts a file exported from the browser and registers it without replaying its entire past. The exporter records a factual `playable` flag: autonomous or extinct-player worlds remain available to developer replay even if they cannot currently be offered for direct player control. Only a real living player-lineage checkpoint appears as a bundled quick start. Regeneration of an existing id requires `--replace` so an accepted baseline is not overwritten silently. Commit both the scenario file and catalog together for a shareable browser quick start.
@@ -33,7 +35,7 @@ The second command accepts a file exported from the browser and registers it wit
 
 ## Optional one-time cloud generation
 
-`.github/workflows/generate-world-scenario.yml` adds a **manual** GitHub Actions workflow that runs the real ecological simulation once and uploads the resulting scenario package and SHA-256 catalog as a downloadable artifact. It is not triggered on every push. The workflow must be present on the repository's default branch before GitHub's Actions UI generally offers the manual Run workflow control; this development branch alone does not start it. The resulting artifact must be reviewed and deliberately incorporated into `assets/scenarios/` before it appears as a bundled game option.
+`.github/workflows/generate-world-scenario.yml` adds a **manual** GitHub Actions workflow that runs the real ecological simulation once and uploads the resulting scenario package and SHA-256 catalog as a downloadable artifact. It is not triggered on every push. The workflow must be present on the repository's default branch before GitHub's Actions UI generally offers the manual Run workflow control; this development branch alone does not start it. The dedicated one-time Day 30 workflow commits its SHA-256 verified compressed fixture to `assets/scenarios/` **only after** canonical restoration, snow-topology checks, and two matching replay tests pass. The general manual generator keeps upload-only behavior for other scenarios.
 
 For expensive ecosystem experiments, generate the checkpoint in this separate one-time job, then conduct rapid repeated tests against the resulting baseline.
 
