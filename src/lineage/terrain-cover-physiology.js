@@ -33,7 +33,7 @@ export function thermalCoverFactor(animal,temp,comfort,{wet=false,wetness=null}=
  // Historical instant wet/dry callers preserve the original cold multiplier.
  const saturation=wetness==null?(wet?1:0):Math.max(0,Math.min(1,wetness));
  let factor=coverage?(temp>=comfort
-  ?coverage.hot*(1-.12*saturation)
+  ?coverage.hot*(1-.12*(wetness==null?0:saturation))
   :coverage.cold+(1-coverage.cold)*(1-coverage.wet)*saturation):1;
  if(parts['heat-frill'])factor*=temp>=comfort?.72:1.14;
  if(parts['wax-plates']&&temp>=comfort)factor*=1.18;
