@@ -46,8 +46,8 @@ export function validatePlanetarySeamLedger(state){
     !finite(row.aToB)||!finite(row.bToA)||
     (row.waterAToB!==undefined&&!finite(row.waterAToB))||
     (row.waterBToA!==undefined&&!finite(row.waterBToA))||
-    (row.mineralsAToB!==undefined&&!finite(row.mineralsAToB))||
-    (row.mineralsBToA!==undefined&&!finite(row.mineralsBToA))||
+    (row.mineralsAToB!==undefined&&(!finite(row.mineralsAToB)||row.mineralsAToB>0&&!(row.runoffAToB>0)))||
+    (row.mineralsBToA!==undefined&&(!finite(row.mineralsBToA)||row.mineralsBToA>0&&!(row.runoffBToA>0)))||
     (row.groundwaterAToB!==undefined&&!finite(row.groundwaterAToB))||
     (row.groundwaterBToA!==undefined&&!finite(row.groundwaterBToA))||
     (row.runoffAToB!==undefined&&(!finite(row.runoffAToB)||row.runoffAToB>(row.waterAToB||0)+1e-9))||
@@ -318,6 +318,11 @@ export function reconcilePlanetarySaltSeams(sim){
    throw Error('Invalid cross-region salt conservation origin.');
   sums.set(r.key,{incoming,outgoing,water,runoff,groundwater,minerals});
  }
+ // All staged mineral mass must remain within the visited region set.
+ // No synthetic fertilizer enters through an unfinished seam or bad archive.
+ let mineralClosure=0;
+ for(const map of mineralChanges.values())for(const delta of map.values())mineralClosure+=delta;
+ if(Math.abs(mineralClosure)>1e-8)throw Error('Cross-region runoff-mineral conservation failed.');
  const nextHistory=[...(travel.seamLedger?.history||[]),...entries]
   .slice(-PLANETARY_SEAM_SALT.historyLimit);
  const nextLedger={schema:1,lastTick:sim.tickCount,history:nextHistory};
