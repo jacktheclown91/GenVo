@@ -59,7 +59,7 @@ function ownedActive(sim){
 }
 function validRegion(r,day){
  const e=r.env;
- return !!r.origin&&r.water?.length===128*128&&(e?.schema>=2&&e?.schema<=5)&&
+ return !!r.origin&&r.water?.length===128*128&&(e?.schema>=2&&e?.schema<=6)&&
   e.salt instanceof Float64Array&&e.salt.length===128*128&&
   (e.schema<3||(e.volume instanceof Float64Array&&e.volume.length===128*128))&&
   e.depth instanceof Float32Array&&e.depth.length===128*128&&
