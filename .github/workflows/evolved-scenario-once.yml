@@ -24,6 +24,7 @@ jobs:
           node --check tools/create-world-scenario.mjs
           node tests/world-restore-generation-parity.mjs
           node tests/scenario-checkpoints.mjs
+          node tests/snow-topology-funding.mjs
       - name: Run one real 30-day evolving ecology and export the checkpoint
         run: |
           node tools/create-world-scenario.mjs \
