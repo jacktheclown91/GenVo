@@ -7,6 +7,7 @@ GenVo is a Living Planet survival game and open-ended evolutionary possibility e
 - [Current design](design/CURRENT-DESIGN.md): governing intent and constraints.
 - [Current implementation](docs/CURRENT-IMPLEMENTATION.md): integrated source, evidence and unfinished work.
 - [Implementation authorities](design/governance/implementation-authorities.json): ownership of shared mechanisms.
+- [Natural caves](docs/NATURAL-CAVES-2026-10-20.md): connected shallow geology, shared entrances, conserved runoff erosion and remaining underground work.
 - [Scenario checkpoints](docs/SCENARIO-CHECKPOINTS.md): immutable advanced-world testing fixtures, exports and playable save forks.
 - [Cleanup manifest](docs/REPOSITORY-CLEANUP.md): integration provenance, retained evidence and archive policy.
 

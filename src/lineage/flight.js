@@ -16,7 +16,7 @@ export const FLIGHT=Object.freeze({
 export function winged(animal){return (planPartCounts(animal)['flight-wing']||0)>0}
 export function flightMass(animal){return adultBodyMass(animal)}
 export function flightAvailability(animal,world){
- if(animal?.underground||animal?.burrowWork)return{enabled:false,reason:'Leave the underground passages and finish excavation before flight.'};
+ if(animal?.underground||animal?.burrowWork||animal?.caveTransit)return{enabled:false,reason:'Leave the underground passages and finish the current movement before flight.'};
  if(animal?.climb)return{enabled:false,reason:'Finish climbing before taking off.'};
  if(!animal?.alive)return{enabled:false,reason:'No living creature.'};
  if((animal.diveDepth||0)>.03)return{enabled:false,reason:'Surface before takeoff.'};

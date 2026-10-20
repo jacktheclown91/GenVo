@@ -62,7 +62,7 @@ export class PlayerCombatController{
 
   braceAvailability(){
     const a=this.sim.player();
-    if(a?.burrowWork)return{enabled:false,reason:'Finish excavation first.'};
+    if(a?.burrowWork||a?.caveTransit)return{enabled:false,reason:'Finish excavation first.'};
     if(!a?.alive)return{enabled:false,reason:'No active creature.'};
     if(this.sim.paused)return{enabled:false,reason:'Resume the world first.'};
     if(a.airborne||a.perched||submerged(a))return{enabled:false,reason:'Land or surface before bracing.'};
@@ -85,7 +85,7 @@ export class PlayerCombatController{
   // the existing windup/recovery controller and hotkey pounce fallback is retained.
   attackAvailability({pounce=false,targetId=null}={}){
     const a=this.sim.player();
-    if(a?.burrowWork)return{enabled:false,reason:'Finish excavation first.'};
+    if(a?.burrowWork||a?.caveTransit)return{enabled:false,reason:'Finish excavation first.'};
     if(!a?.alive)return{enabled:false,reason:'No active creature.'};
     if(this.sim.paused)return{enabled:false,reason:'Resume the world first.'};
     if(a.airborne||a.perched)return{enabled:false,reason:'Land on the surface before using a ground attack.'};

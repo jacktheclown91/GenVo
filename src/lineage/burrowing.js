@@ -1,3 +1,5 @@
+import {CAVES} from '../world/cave-policy.js';
+import {startCaveTransit} from './cave-traversal.js';
 import {adultBodyMass} from '../organisms/body-mass.js';
 import {planPartCounts,ROOT_FOODS} from './part-abilities.js';
 import {SUBSURFACE,passageAt,excavationSite,excavatePassage} from '../world/subsurface.js';
@@ -21,6 +23,7 @@ export function undergroundContact(w,a,b){
 export function burrowingStatus(sim,a=sim.player()){
  const fail=reason=>({enabled:false,reason});if(!a?.alive)return fail('No living creature.');if(sim.paused)return fail('Resume the world first.');
  if(sim.burrowingRules!==BURROWING.policy)return fail('This world retains its recorded ground rules. Use an explicit backed-up movement continuation.');
+ if(a.caveTransit)return fail('Finish using the entrance first.');
  if(a.burrowWork)return{enabled:true,reason:'Cancel excavation. Already spent work is not refunded.'};
  if(a.underground){const p=passageAt(sim.world,a.x,a.y);return p?.entry&&!p.closed?{enabled:true,reason:'Leave through this actual entrance.'}:fail('Return through connected passages to an entrance.')}
  if(!burrowingAnatomy(a))return fail('Burrowing needs two actual digging forelimbs.');
@@ -32,8 +35,9 @@ export function burrowingStatus(sim,a=sim.player()){
 export function toggleBurrow(sim,a=sim.player()){
  const status=burrowingStatus(sim,a);if(!status.enabled)return{ok:false,type:'burrow',message:status.reason};
  if(a.burrowWork){delete a.burrowWork;return{ok:true,type:'burrow',message:'Excavation cancelled. Work already spent is retained.'}}
+ if(a.underground&&sim.caveRules===CAVES.policy)return startCaveTransit(sim,a);
  if(a.underground){delete a.underground;delete a.burrowSince;delete a.burrowAir;return{ok:true,type:'burrow-exit',message:'Returned to the surface through the entrance.'}}
- const p=passageAt(sim.world,a.x,a.y);if(p?.entry&&!p.closed){a.underground=true;a.burrowSince=sim.tickCount;return{ok:true,type:'burrow-enter',message:'Entered the existing passage.'}}
+ const p=passageAt(sim.world,a.x,a.y);if(p?.entry&&!p.closed){if(sim.caveRules===CAVES.policy)return startCaveTransit(sim,a);a.underground=true;a.burrowSince=sim.tickCount;return{ok:true,type:'burrow-enter',message:'Entered the existing passage.'}}
  startBurrowWork(sim,a,sim.world.idx(a.x,a.y),true);return{ok:true,type:'burrow',message:'Excavating an entrance. The surface remains exposed until the work finishes.'};
 }
 function startBurrowWork(sim,a,i,entry=false){
@@ -48,7 +52,7 @@ export function stepBurrowWork(sim,a,dt){
  return null;
 }
 export function moveUnderground(sim,a,dx,dy,dt){
- if(!a?.underground||a.burrowWork||!(dt>0&&dt<=.25))return false;
+ if(!a?.underground||a.burrowWork||a.caveTransit||!(dt>0&&dt<=.25))return false;
  const w=sim.world,len=Math.hypot(dx,dy);if(!len)return false;dx/=len;dy/=len;const nx=a.x+dx*BURROWING.moveSpeed*dt,ny=a.y+dy*BURROWING.moveSpeed*dt;
  if(undergroundPosition(w,a,nx,ny)){const ox=a.x,oy=a.y;a.x=nx;a.y=ny;a.energy-=Math.hypot(nx-ox,ny-oy)*adultBodyMass(a)*BURROWING.moveWork;a.dir=((Math.round(Math.atan2(dy,dx)/(Math.PI/4))+2)%8+8)%8;a.anim=(a.anim+dt*4)%8;a.movedTick=sim.tickCount;sim.regionalEcology?.notePageMove(a,ox,oy);return true}
  const cx=Math.floor(a.x),cy=Math.floor(a.y),tx=cx+(Math.abs(dx)>=Math.abs(dy)?Math.sign(dx):0),ty=cy+(Math.abs(dx)<Math.abs(dy)?Math.sign(dy):0),i=w.idx(tx+.5,ty+.5),site=excavationSite(w,i),from=passageAt(w,a.x,a.y);

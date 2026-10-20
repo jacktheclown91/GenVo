@@ -17,7 +17,7 @@ export function jumpKinematics(a){
 }
 export function jumpAvailability(sim,a=sim.player(),{pounce=false}={}){
  const fail=reason=>({enabled:false,reason});
- if(a?.underground||a?.burrowWork)return fail('Return to the surface and finish excavation before jumping.');
+ if(a?.underground||a?.burrowWork||a?.caveTransit)return fail('Return to the surface and finish the current underground movement before jumping.');
  if(!a?.alive)return fail('No living creature.');
  if(sim.jumpingRules!==JUMP.policy)return fail('This historical world retains its recorded movement rules. Jumping is available in newly generated worlds.');
  if((a.diveDepth||0)>.03)return fail('Surface before jumping.');

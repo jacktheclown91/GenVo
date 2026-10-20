@@ -4,7 +4,9 @@ import {plantHandling} from '../ecology/plant-handling.js';
 import {plantResourceView} from '../ecology/plant-resources.js';
 import {PLANTS,CFG} from '../sim/config.js';
 import {plantPreference} from '../ecology/functional-diet.js';
+import {CAVES} from '../world/cave-policy.js';
 export function worldResourceAt(sim,renderer,cx,cy){const p=renderer.screenToWorld(cx,cy);if(!p||!sim.world.isPlayable(p.x,p.y))return null;const w=sim.world,i=w.idx(p.x,p.y),x=Math.floor(p.x)+.5,y=Math.floor(p.y)+.5;
+ if(sim.caveRules===CAVES.policy&&w.subsurface?.passages.get(i)?.entry&&!w.subsurface.passages.get(i).closed)return{kind:'ground',cave:i,i,x,y,label:'Cave opening'};
  let hit=null,bestObject=Infinity;for(const [kind,objects] of [['egg',sim.eggs||[]],['nest',sim.nests||[]],['shelter',sim.shelter.activeShelters?.()||[]]])for(const object of objects){const d=Math.hypot(object.x-p.x,object.y-p.y);if(d<(kind==='egg'?.35:.7)&&d<bestObject){bestObject=d;hit={kind,id:object.id,x:object.x,y:object.y,label:kind==='shelter'?'Family shelter':kind==='egg'?'Egg':'Nest'}}}if(hit)return hit;
  for(const den of sim.stalkerTerritory?.activeSites?.()||[])if(Math.hypot(den.x-p.x,den.y-p.y)<.65)return{kind:'den',id:den.id,x:den.x,y:den.y,label:'Animal scrape'};
  for(const site of sim.discovery?.sites||[])if(!site.gone&&['relic','nest-ruin'].includes(site.kind)&&Math.hypot(site.x-p.x,site.y-p.y)<.65)return{kind:'site',id:site.id,x:site.x,y:site.y,label:site.kind==='relic'?'Relic':'Nest material'};
@@ -27,6 +29,7 @@ export function worldTargetScreen(renderer,target){const tile=CFG.tileSize*rende
 
 // Plain observations for ordinary play; numerical biology stays behind Inspect.
 export function resourceSummary(sim,target){
+ if(target.cave!==undefined){const p=sim.world.subsurface?.passages.get(target.cave);return{identity:p?.origin===CAVES.policy?'Natural cave opening':'Excavated entrance',features:['Connected underground passage','Only bodies that fit can pass'],consequence:'Approach the opening, then Interact to enter or return to the surface. You need digging anatomy only to excavate new passages.'}}
  if(target.kind==='seed-patch'){const o=sim.discovery.seedObservations?.find(o=>o.id===target.id);return{identity:o?.status==='established'?'New growth observed':o?.status==='gone'?'Previously observed plant is gone':'Seeds left here',features:[o?seedPatchDescription(o):'Observation unavailable'],consequence:'Read the patch to update your field observation. Journal keeps your last observed outcome.'}}
 
  if(target.kind==='plant'&&sim.dispersal.seedReserve[target.food]){

@@ -1,4 +1,5 @@
 import {CanvasRecorder} from './canvas-recorder.js';
+import {CAVES} from '../world/cave-policy.js';
 import {clampCameraToWorld} from './camera-bounds.js';
 import {beginTintFrame} from './indexed-part-renderer.js';
 import {attentionTarget,HeadAttentionPresentation} from './head-attention.js';
@@ -906,7 +907,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
       phase=(phase+social.memberIndex*.75)%8;
     }
     const feeding=(this.feeding||=new FeedingPresentation()).sample(this.sim,a,this.encounters?.time||0,{moving,phase});if(feeding&&!social?.alarm)action=feeding.mode==='crush'?'crack':'eat';
-    if(a.climb){action='climb';phase=a.anim}if(a.burrowWork){action='dig';phase=a.anim}
+    if(a.climb||a.caveTransit){action='climb';phase=a.anim}if(a.burrowWork){action='dig';phase=a.anim}
     const encounter=this.encounters?.sample(this.sim,a,phase)||{};
     // Brace receipts, stalled charges, carried wounds and retreats read from combat state.
     const reaction=(this.reactions||=new EncounterReactionPresentation()).sample(this.sim,a,this.encounters?.time||0),defense=this.reactions.sampleDefense(this.sim,a,this.encounters?.time||0),reactionAt=reactionAttention(reaction);if(reactionAt&&!encounter.attention&&!a.player)encounter.attention=reactionAt;
@@ -964,10 +965,12 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     if(a.airborne||a.perched){c.save();c.globalAlpha*=.22;c.fillStyle='#23303d';c.beginPath();c.ellipse(0,2*scale,6*scale,3*scale,0,0,Math.PI*2);c.fill();c.restore();c.translate(0,(a.climb?-a.climb.height*7/3:a.aerialMode==='jump'?-Math.max(0,Math.min(16,(a.jump.altitude-glideGround(this.sim.world,a.x,a.y))*7)):a.aerialMode==='glide'?-Math.max(1,Math.min(14,(a.glideAltitude-glideGround(this.sim.world,a.x,a.y))*3)):a.airborne?-9:-7)*scale)}
     const palette=creaturePalette(ph);
     if(a.hidden)c.globalAlpha*=.58;
+    if(a.caveTransit){const progress=Math.min(1,a.caveTransit.elapsed/CAVES.transitionSeconds),depth=a.caveTransit.entering?progress:1-progress;c.translate(0,depth*5*scale);c.globalAlpha*=1-depth*.55}
     if((a.diveDepth||0)>.03){c.globalAlpha*=.55;c.translate(0,Math.min(4,a.diveDepth*4)*scale)}
     drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:a.player?phase:cachePhase,moving,palette,pose,cacheKey:a.player||feeding||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,cachePhase,moving,pose,life)});
     if(a.pollenCargo?.mass>0){pixel(c,-3,-3,1,1,scale,'#dfba5b');pixel(c,2,-4,1,1,scale,'#e9d37d');pixel(c,4,-1,1,1,scale,'#cda64e')}
     this.drawLifeEffects(a,scale,frame,pose,palette);
+    if(a.caveTransit){c.globalAlpha=1;c.fillStyle='#d4ddc6';c.font='bold 11px sans-serif';c.textAlign='center';c.fillText((a.caveTransit.entering?'Descending ':'Surfacing ')+Math.round(a.caveTransit.elapsed/CAVES.transitionSeconds*100)+'%',0,-12*scale)}
     if(a.climb){c.fillStyle='#e4d4a8';c.font='bold 11px sans-serif';c.textAlign='center';c.fillText('Climb '+a.climb.height.toFixed(1),0,-10*scale)}
     if((a.diveDepth||0)>.03){c.globalAlpha=1;c.strokeStyle='#8acbd2';c.lineWidth=Math.max(1,scale*.35);c.beginPath();c.ellipse(0,-3*scale,7*scale,3*scale,0,0,Math.PI*2);c.stroke();c.fillStyle='#c5f1eb';c.font='bold 11px sans-serif';c.textAlign='center';c.fillText('↓ '+a.diveDepth.toFixed(2),0,-9*scale)}
     if(combatStatus)drawPlayerCombatFeedback(c,{animal:a,status:combatStatus,winded,scale,now:this.renderNow,dir:drawDir});else if(a.playerHunt)drawStalkerPursuitFeedback(c,{animal:a,scale,now:this.renderNow});

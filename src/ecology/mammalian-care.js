@@ -21,7 +21,7 @@ export function canLactate(parent){
    reproductiveMode(parent)!=='egg'&&hasPart(parent,'live-womb');
 }
 export function milkEligible(parent,child){
- if(parent?.underground||child?.underground||parent?.burrowWork||child?.burrowWork)return false;
+ if(parent?.underground||child?.underground||parent?.burrowWork||parent?.caveTransit||child?.burrowWork||child?.caveTransit)return false;
  if(!parent?.alive||!child?.alive||!canLactate(parent))return false;
  if(child.hatchedFromEggId!=null||child.lactationParentId!==parent.id)return false;
  const age=child.age/Math.max(1,SPECIES[child.species]?.maturity||1);

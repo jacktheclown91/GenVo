@@ -1,6 +1,7 @@
 import {PLANETARY_MINERAL_RUNOFF,stageRunoffMinerals} from './planetary-mineral-runoff.js';
 import {TERRAIN_SEDIMENT,stageTerrainSediment,validateSedimentDeltas} from './terrain-sediment.js';
 import {deriveDrainage} from './topography.js';
+import {CAVES,naturalErosionEligible,erodeNaturalCaves,validateCaves} from './natural-caves.js';
 import {PLANETARY_WETBED,stageWetbedSediment} from './planetary-wetbed-sediment.js';
 import {PLANETARY_CHANNEL_TOPOLOGY,planChannelRecession} from './planetary-channel-topology.js';
 // Version-5 planetary surface-water authority. Soil runoff and rejected
@@ -53,6 +54,8 @@ export function routePlanetaryRunoff(w,runoff,day){
    !(w.terrain?.downstream instanceof Int32Array)||
    !e.lastDay||e.lastDay.day!==day)
   throw Error('Invalid planetary soil runoff handoff.');
+ if(w.subsurface?.cavePolicy===CAVES.policy)validateCaves(w,CAVES.policy);
+ const caveEdges=[];
  const before=totalPlanetarySurfaceWater(w),overland=e.overland.slice(),
   volume=e.volume.slice(),downstream=w.terrain.downstream;
  let captured=0,delivered=0,moved=0,edges=0;
@@ -89,7 +92,8 @@ export function routePlanetaryRunoff(w,runoff,day){
   if(w.water[j])amount=Math.min(amount,Math.max(0,2-volume[j]));
   if(amount<=0)continue;
   if(mineralEnabled)mineralsMoved+=stageRunoffMinerals(owner,owner,i,j,amount,original[i],mineralChanges);
-  if(eroding)sedimentMoved+=stageTerrainSediment(terrainOwner,terrainOwner,i,j,amount,terrainChanges);
+  if(naturalErosionEligible(w,i,j))caveEdges.push([i,j,amount]);
+  else if(eroding)sedimentMoved+=stageTerrainSediment(terrainOwner,terrainOwner,i,j,amount,terrainChanges);
   overland[i]-=amount;
   if(w.water[j]){volume[j]+=amount;delivered+=amount;if(wetPolicy)wetEdges.push([i,j,amount]);}
   else overland[j]+=amount;
@@ -149,6 +153,7 @@ export function routePlanetaryRunoff(w,runoff,day){
  if(pendingSalt)e.salt.set(pendingSalt);
  if(mineralEnabled)for(const [i,delta] of mineralDelta)minerals[i]+=delta;
  if(eroding)for(const [i,delta] of terrainDelta)w.terrain.elevation[i]=Math.fround(w.terrain.elevation[i]+delta);
+ const caveErosion=erodeNaturalCaves(w,caveEdges);
  e.totals.soilRunoffReceived=(e.totals.soilRunoffReceived||0)+captured;
  e.totals.runoffDelivered=(e.totals.runoffDelivered||0)+delivered;
  e.totals.overlandMoved=(e.totals.overlandMoved||0)+moved;
@@ -159,6 +164,7 @@ export function routePlanetaryRunoff(w,runoff,day){
  row.runoffDelivered=delivered;
  row.overlandMoved=moved;
  row.overlandEdges=edges;
+ if(w.subsurface?.cavePolicy===CAVES.policy){row.naturalCaveErosion=caveErosion;e.totals.naturalCaveErosion=(e.totals.naturalCaveErosion||0)+caveErosion;}
  if(mineralEnabled){row.runoffMineralsMoved=mineralsMoved;
   e.totals.runoffMineralsMoved=(e.totals.runoffMineralsMoved||0)+mineralsMoved;
   w.plantResources.totals.runoffMineralsMoved=(w.plantResources.totals.runoffMineralsMoved||0)+mineralsMoved;}

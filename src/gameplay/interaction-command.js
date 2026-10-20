@@ -10,7 +10,7 @@ const targetKey=t=>t.kind+':'+(t.id??t.i??'')+':'+(t.food||'')+':'+(t.tissue||''
 const info=(id,label,target,status,extra={})=>({id,key:id+'|'+targetKey(target),label,target,enabled:!!status.enabled,state:status.state||(status.enabled?'available':'unavailable'),reason:status.reason||label,...extra});
 export function contextualInteractions(sim,target=null){
  const a=sim.player();if(!a?.alive||a.airborne)return[];
- if(a.burrowWork)return[];if(a.underground&&target&&!['food','plant','corpse'].includes(target.kind))return[];
+ if(a.caveTransit||a.burrowWork)return[];const caveIndex=target?.cave??sim.world.idx(a.x,a.y),cave=sim.caveStatus(a,caveIndex);if(target?.cave!==undefined)return[info('cave',a.underground?'Exit cave':'Enter cave',target,cave)];if(!target&&cave.enabled)return[info('cave',a.underground?'Exit cave':'Enter cave',{kind:'ground',cave:caveIndex,i:caveIndex,x:a.x,y:a.y,label:'Cave opening'},cave)];if(a.underground&&target&&!['food','plant','corpse'].includes(target.kind))return[];
  if(a.perched){
   const site={kind:'canopy',x:a.x,y:a.y,i:sim.world.idx(a.x,a.y),label:'Woodspire crown'};
   const options=[];
@@ -65,7 +65,8 @@ export function executeInteraction(sim,target=null,actionId=null){
  const option=actionId===null?available[0]:options.find(o=>o.id===actionId);
  if(!option?.enabled)return{ok:false,type:'interact',state:option?.state||options[0]?.state||'unavailable',message:option?.reason||options[0]?.reason||(target?'No valid interaction with this target.':sim.nearestPlayerCombatTarget(sim.player(),1.9)?'No world interaction nearby. Space attacks; hold J to brace.':'No usable object nearby.')};
  const a=sim.player(),t=option.target;let result;
- if(option.id==='feed-canopy')result=sim.playerCanopyFeed();
+ if(option.id==='cave')result=sim.playerCave(t.cave);
+ else if(option.id==='feed-canopy')result=sim.playerCanopyFeed();
  else if(option.id.startsWith('eat:')){const status=sim.resourceAction('eat',t);result=status.enabled?sim.playerEat(status.meal):{ok:false,type:'eat',message:status.reason}}
  else if(option.id==='drink')result=sim.playerDrink(t.kind==='water'?t:null);
  else if(option.id==='tend-egg'){const nest=(sim.nests||[]).find(n=>n.id===option.nestId),ok=careForNest(sim,a,nest);result={ok,type:'nest-care',message:ok?'Tended the clutch.':'The clutch cannot be tended now.'};if(ok)sim.lastPlayerAction={type:'nest-care',nestId:nest.id,tick:sim.tickCount}}

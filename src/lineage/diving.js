@@ -21,7 +21,7 @@ export function waterColumn(world,x,y){
 }
 export function divingAvailability(sim,a=sim.player()){
  const fail=reason=>({enabled:false,reason});
- if(a?.underground||a?.burrowWork)return fail('Return to the surface and finish excavation first.');
+ if(a?.underground||a?.burrowWork||a?.caveTransit)return fail('Return to the surface and finish the current underground movement first.');
  if(!a?.alive)return fail('No living creature.');
  if(sim.divingRules!==DIVING.policy)return fail('This world retains its recorded water rules. Enable diving in a backed-up New World continuation.');
  if(submerged(a)||(a.diveTarget||0)>0)return{enabled:true,reason:'Rise through the real water column to breathe at the surface.',surfacing:true};

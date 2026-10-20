@@ -65,7 +65,7 @@ export function planetaryTravelAvailability(sim){
  if(sim.playerAutonomy)return unavailable('Take manual control to cross a planetary frontier.');
  if((animal.diveDepth||0)>.03)return unavailable('Surface before regional travel.');
  if(animal.aerialMode==='jump')return unavailable('Finish the jump before regional travel.');
- if(animal.underground||animal.burrowWork||animal.perched||animal.torpor)return unavailable('Descend or wake before traveling.');
+ if(animal.underground||animal.burrowWork||animal.caveTransit||animal.perched||animal.torpor)return unavailable('Descend or wake before traveling.');
  if(animal.pregnant)return unavailable('Complete the pregnancy before regional travel.');
  const cohort=familyTravelCohort(sim);
  if(!cohort.ok)return unavailable(cohort.reason);
@@ -151,7 +151,7 @@ export function crossPlanetaryBorder(sim){
  const nextId=Math.max(prior.nextId,sim.nextId);
  // Construct destination and all receipts before modifying the active sim.
  const dest=archivedDestination?restoreDetachedSimulationSnapshot(archivedDestination.snapshot):
-  new Simulation(sim.seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:status.to,massRules:sim.massRules});
+  new Simulation(sim.seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:status.to,massRules:sim.massRules,naturalCaves:!!sim.caveRules});
  // Local seed-wind rules are a planetary-world policy. A newly entered
  // region follows the originating world's version; an old missing-policy
  // save must not silently adopt wind merely because its destination is new.
@@ -208,7 +208,7 @@ export function crossPlanetaryBorder(sim){
  sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,memberIds),...(sim.offscreenBiologyEnabled?{biologicalMode:'canonical-ticks/1'}:{})});
  dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions,
   ...(prior.seamLedger?{seamLedger:structuredClone(prior.seamLedger)}:{})};
- for(const key of ['burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
+ for(const key of ['caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
  dest.travelFamilyGroup=!!sim.travelFamilyGroup;
  if(sim.burrowingRules===undefined)delete dest.world.subsurface;
  dest.offscreenBiologyEnabled=!!sim.offscreenBiologyEnabled;

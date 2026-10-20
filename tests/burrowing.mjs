@@ -9,7 +9,7 @@ import {sameDepth,stepDiving} from '../src/lineage/diving.js';
 import {actionCapabilities} from '../src/lineage/action-capabilities.js';
 import {adoptBurrowingRules} from '../src/lineage/burrowing-rules.js';
 import {genvoVisualPose} from '../src/render/genvo.js';
-const sim=new Simulation('BURROW-INTEGRATION'),a=sim.player(),w=sim.world,d=new FounderDesign('sandbox');
+const sim=new Simulation('BURROW-INTEGRATION',{naturalCaves:false}),a=sim.player(),w=sim.world,d=new FounderDesign('sandbox');
 for(const socket of ['limb.1','limb.7'])assert.ok(place(d.draft,'digging-forelimb','root',socket).ok);a.bodyPlan=d.draft.plan;a.energy=90;a.health=100;a.age=40;
 let site=null;for(let y=15;y<w.n-15&&!site;y++)for(let x=15;x<w.n-15;x++){const i=w.idx(x,y),s=excavationSite(w,i),n=excavationSite(w,i-w.n);if(s&&n&&Math.abs(s.floor-n.floor)<.2){site={i,x:x+.5,y:y+.5};break}}
 assert.ok(site);Object.assign(a,{x:site.x,y:site.y});const total=solidTerrainTotal(w),rng=sim.rng.state,stocks=structuredClone({plants:w.plants,water:w.water});
@@ -35,7 +35,7 @@ const legacy=structuredClone(saved);delete legacy.core.burrowingRules;delete leg
 const old=restoreSimulationSnapshot(legacy);assert.equal(old.burrowingRules,undefined);assert.equal(old.burrowStatus().enabled,false);
 const original=structuredClone(createSimulationSnapshot(old,{savedAt:'fixed'})),adoption=adoptBurrowingRules(old,{source:'old checkpoint',backupSlot:'world-00000001-burrow'});assert.equal(old.world.subsurface.passages.size,0);adoption.rollback();assert.deepEqual(createSimulationSnapshot(old,{savedAt:'fixed'}),original,'adoption rollback restores absent policy/geometry exactly');
 assert.notDeepEqual(genvoVisualPose({action:'dig',frame:2}).legs,genvoVisualPose({action:'dig',frame:6}).legs,'anchored excavation has real alternating forelimb strokes');
-const feeding=new Simulation('BURROW-FEED'),grazer=feeding.player(),fw=feeding.world;grazer.bodyPlan=d.draft.plan;grazer.energy=80;grazer.health=100;grazer.age=40;
+const feeding=new Simulation('BURROW-FEED',{naturalCaves:false}),grazer=feeding.player(),fw=feeding.world;grazer.bodyPlan=d.draft.plan;grazer.energy=80;grazer.health=100;grazer.age=40;
 const root=fw.plants.marshroot.findIndex((v,i)=>v>.1&&excavationSite(fw,i));assert.ok(root>=0);grazer.x=root%fw.n+.5;grazer.y=(root/fw.n|0)+.5;
 assert.ok(feeding.playerBurrow().ok);while(grazer.burrowWork)stepBurrowWork(feeding,grazer,.1);const beforeRoot=fw.plants.marshroot[root],meal=feeding.playerEat({kind:'marshroot',i:root});assert.ok(meal.ok);assert.ok(fw.plants.marshroot[root]<beforeRoot,'underground feeding debits an actual generated root patch');
 console.log('Burrowing PASS: legal digging anatomy, real work, solid/void/spoil conservation, connected traversal, entry-only exit, layer contact, finite air, exact saves, corrupt receipts and legacy opt-out.');

@@ -36,6 +36,20 @@
       "authority": "src/lineage/burrowing-rules.js",
       "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js"]
     },
+    "naturalCaveFormation": {
+      "authority": "src/world/natural-caves.js",
+      "consumers": ["src/sim/simulation.js", "src/world/planetary-runoff.js", "src/persistence/save-manager.js"],
+      "contract": "docs/NATURAL-CAVES-2026-10-20.md"
+    },
+    "caveEntranceTraversal": {
+      "authority": "src/lineage/cave-traversal.js",
+      "consumers": ["src/sim/simulation.js", "src/lineage/burrowing.js", "src/persistence/save-manager.js"],
+      "contract": "docs/NATURAL-CAVES-2026-10-20.md"
+    },
+    "caveRuleVersions": {
+      "authority": "src/lineage/cave-rules.js",
+      "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js"]
+    },
     "continuousCanopyTraversal": {
       "authority": "src/lineage/climbing.js",
       "consumers": ["src/sim/simulation.js", "src/persistence/save-manager.js", "src/gameplay/player-combat.js"],
