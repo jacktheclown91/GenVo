@@ -212,7 +212,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const waterRatio=p.hydration/spec.maxHydration,energyRatio=p.energy/spec.maxEnergy;
     if(waterRatio<.72){const water=this.sim.world.nearestDrinkable(p.x,p.y,6*(partEffectFactors(p)?.cue??1));if(water)this.drawWorldCue(water.x,water.y,tile,'water','WATER')}
     if(energyRatio<.72){const food=nearbyFood(this.sim,p,6*(partEffectFactors(p)?.cue??1));if(food)this.drawWorldCue(food.x,food.y,tile,'food',food.label)}
-    const threat=nearestThreat(this.sim,p,10*(partEffectFactors(p)?.threatSense??1));if(threat){
+    const threat=nearestThreat(this.sim,p,10*(partEffectFactors(p)?.threatSense??1));if(threat&&visuallyObservable(this.sim,p,threat.animal)){
       const x=Math.round((threat.animal.x-this.camera.x)*tile+this.w/2),y=Math.round((threat.animal.y-this.camera.y)*tile+this.h/2),safe=this.sim.isOpeningProtected?.(p);
       c.save();c.strokeStyle=safe?'rgba(236,191,109,.90)':'rgba(239,105,94,.98)';c.lineWidth=2;c.beginPath();c.moveTo(x,y-18);c.lineTo(x-6,y-10);c.lineTo(x+6,y-10);c.closePath();c.stroke();
       c.restore();
