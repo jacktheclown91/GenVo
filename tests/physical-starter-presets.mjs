@@ -5,25 +5,23 @@ import {validateFounderDesign} from '../src/lineage/founder-design.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 import {jumpAvailability,launchJump} from '../src/lineage/jumping.js';
 import {burrowingStatus,toggleBurrow} from '../src/lineage/burrowing.js';
-import {roostAvailability} from '../src/ecology/canopy-site.js';
-import {startClimb} from '../src/lineage/climbing.js';
+import {flightAvailability,takeoff} from '../src/lineage/flight.js';
 import {divingAvailability,setDiveTarget} from '../src/lineage/diving.js';
 import {canOccupy} from '../src/lineage/lifestyle.js';
 import {SPECIES} from '../src/organisms/species.js';
 
-assert.deepEqual(physicalStarterIds,['jump','burrow','climb','dive']);
+assert.deepEqual(physicalStarterIds,['jump','burrow','flight','dive']);
 assert.throws(()=>physicalStarterDesign('flight'),/Unknown physical starter/);
 for(const id of physicalStarterIds){
  const design=physicalStarterDesign(id),plan=validateFounderDesign(design);
  assert.equal(design.mode,'guided','every body has traced ancestry and ordinary paid costs');
- assert.equal(design.steps.length,id==='climb'?2:1,'complex grips genuinely require an intermediate precursor step');
- assert.equal(plan.nodes.filter(n=>n.partId===PHYSICAL_STARTERS[id].part).length,2);
+ assert.equal(design.steps.length,id==='flight'?4:1,'complex grips genuinely require an intermediate precursor step');
+ assert.equal(plan.nodes.filter(n=>n.partId===PHYSICAL_STARTERS[id].part).length,id==='flight'?1:2);
  assert.ok(plan.nodes.some(n=>n.partId==='grazing-mouth')&&plan.nodes.filter(n=>n.partId==='simple-eye').length===2,'viable mouths and eyes remain mounted');
  assert.equal(design.plan,design.steps.at(-1).to);
  const seed='GENVO-PHYSICAL-START-'+id;
  const sim=new Simulation(seed,{player:true}),original=sim.world;
  const water=original.water.slice(),drinkSpots=original.drinkSpots.map(w=>({...w})),terrain=original.terrain.elevation.slice();
- if(id==='climb')console.log('Climb diagnostic: max natural Woodspire '+Math.max(...original.plants.woodspire).toFixed(4));
  const births=sim.stats.births,day=sim.day;
  const r=installPhysicalStarter(sim,id),p=sim.player(),mate=r.members[1];
  assert.equal(r.receipt.mode,'guided');
@@ -44,7 +42,7 @@ for(const id of physicalStarterIds){
  const stamina=p.energy;
  if(id==='jump'){assert.ok(jumpAvailability(sim,p).enabled);assert.ok(launchJump(sim,p).ok,'real spring jump starts, costs energy and changes physical state');assert.ok(p.airborne&&p.jump&&p.energy<stamina);}
  if(id==='burrow'){assert.ok(burrowingStatus(sim,p).enabled);assert.ok(toggleBurrow(sim,p).ok,'real excavation work starts at proven substrate');assert.ok(p.burrowWork&&p.burrowWork.i===original.idx(p.x,p.y));}
- if(id==='climb'){assert.ok(roostAvailability(p,original,{climbing:true}).enabled);assert.ok(startClimb(sim,p).ok,'true physical canopy climb begins');assert.ok(p.climb&&p.climb.target>0);}
+ if(id==='flight'){assert.ok(flightAvailability(p,original).enabled);assert.ok(takeoff(p,original).ok,'true powered flight begins using real mounted wing');assert.ok(p.airborne&&p.energy<stamina);}
  if(id==='dive'){const {water:w}=r.opportunity;assert.ok(w);assert.equal(original.water[original.idx(w.x,w.y)],1);p.x=w.x;p.y=w.y;assert.ok(divingAvailability(sim,p).enabled);assert.ok(setDiveTarget(sim,p).ok,'real finite-air dive begins in supported water');assert.ok(p.diveTarget>0);}
  const saved=structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'physical-starter'}));
  const resumed=restoreSimulationSnapshot(structuredClone(saved));
