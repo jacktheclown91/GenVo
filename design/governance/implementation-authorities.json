@@ -200,7 +200,7 @@
     },
     "localMateAssortment": {
       "authority": "src/reproduction/mate-preferences.js",
-      "consumers": ["src/reproduction/reproduction.js", "src/reproduction/courtship-performance.js", "src/sim/simulation.js", "src/persistence/save-manager.js"],
+      "consumers": ["src/reproduction/reproduction.js", "src/reproduction/courtship-performance.js", "src/ui/inspector.js", "src/sim/simulation.js", "src/persistence/save-manager.js"],
       "contract": "docs/LOCAL-LINEAGE-ASSORTMENT-2026-10-21.md"
     },
     "costedCourtshipPerformance": {
