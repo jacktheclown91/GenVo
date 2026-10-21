@@ -52,7 +52,7 @@ export class TutorialController{
     this.briefingProgress=document.querySelector('#briefingProgress');
     this.briefingNext=document.querySelector('#briefingNext');
     this.tutorial=document.querySelector('#tutorial');
-    this.toastEl=document.querySelector('#toast');this.notifications=new NotificationCenter(this.toastEl);
+    this.toastEl=document.querySelector('#toast');this.notifications=new NotificationCenter(this.toastEl,{renderer});
     this.transition=document.querySelector('#transition');
     this.transitionKicker=document.querySelector('#transitionKicker');
     this.transitionTitle=document.querySelector('#transitionTitle');
