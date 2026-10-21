@@ -1,3 +1,4 @@
+import {drawThunderstorms} from './thunderstorms.js';
 import {drawSurfaceIce} from './surface-ice.js';
 import {liquidContact} from '../lineage/ice-locomotion.js';
 import {CanvasRecorder} from './canvas-recorder.js';
@@ -180,7 +181,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
 
   drawWeatherOverlay(){
     const atmosphereDrawn=drawAtmosphere(this);
-    drawThermalWeather(this);
+    drawThermalWeather(this);drawThunderstorms(this);
     if(atmosphereDrawn)return;
     const climate=this.sim.climate;if(!climate)return;const c=this.ctx,rain=Math.max(0,Math.min(1,(climate.rain-.30)/.42)),cold=Math.max(0,Math.min(1,(.43-climate.temp)/.18));
     if(rain>.02){

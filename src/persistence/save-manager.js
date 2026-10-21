@@ -1,3 +1,4 @@
+import {restoreThunderstorms} from '../ecology/thunderstorms.js';
 import {restoreStratumSenseRules,adoptStratumSenseRules} from '../ecology/stratum-sense-rules.js';
 import {validateIceImmersion} from '../lineage/ice-locomotion.js';
 import {restoreSurfaceIceRules,validateIceWorld,adoptSurfaceIceRules} from '../world/surface-ice-rules.js';
@@ -233,7 +234,7 @@ export function createSimulationSnapshot(sim,{reason='autosave',savedAt=new Date
   const core={};
   for(const [key,value] of Object.entries(sim)){
     if(STRUCTURAL_KEYS.has(key)||(regionalDeparture&&key==='planetaryTravel')||typeof value==='function')continue;
-    core[key]=value;
+    core[key]=key==='thunderstorms'&&value?{...value,events:value.events.map(event=>({...event}))}:value;
   }
   return{
     key:SAVE_KEY,
@@ -340,7 +341,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   regionalReplayPolicy(sim);
   restoreSurfaceIceRules(sim,snapshot.core||{});
   restoreThermalRefugeRules(sim,snapshot.core||{});
-  restoreThermalRules(sim,snapshot.core||{});
+  restoreThermalRules(sim,snapshot.core||{});restoreThunderstorms(sim,snapshot.core||{});
   restoreVisibilityRules(sim,snapshot.core||{});
   if(!Object.hasOwn(snapshot.core||{},'sensoryFogEnabled'))delete sim.sensoryFogEnabled;
   if(sim.sensoryFogEnabled!==undefined&&typeof sim.sensoryFogEnabled!=='boolean')throw Error('Invalid saved sensory fog policy.');

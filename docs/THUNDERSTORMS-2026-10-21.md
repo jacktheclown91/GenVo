@@ -1,0 +1,16 @@
+# Convective thunderstorms
+
+New worlds record `convective-thunderstorms/1`. The shared regional rainfall, local temperature, planetary wind, elevation and actual tree stock determine local intensity and deterministic strike proposals. Geographic proposals never select creatures or advance the biological RNG. The probability and exposure coefficients are explicit game-unit hazard proxies, not a calibrated electrical or atmospheric energy solver.
+
+Actual nearby bodies receive health damage through existing injury, mortality and carcass handling. Injury attribution records lightning rather than inventing a predator. Intact underground roofs shield bodies; open shafts do not. Existing shelter quality reduces exposure. Local wildlife can choose visible, reachable, less exposed ground after urgent threats, needs and family weather care; manual player control is preserved. The query neither changes resources nor samples biological RNG.
+
+Rendering uses actual visible strike cells behind sensory fog. Thunder uses anatomical hearing and existing medium routing, with a distance-dependent delay. The existing WebAudio graph synthesizes the cue. Strike history is bounded to 16 events and belongs to its physical region. Crossing transfers policy, not foreign strike coordinates. Snapshots copy the small mutable storm record so a later tick cannot change an earlier captured clock. Restore rejects unknown rules, missing state, invalid events and future clocks, including archives. Historical saves without the rule retain their original behavior; a historical adoption UI is not implemented.
+
+## Evidence
+
+- `tests/thunderstorms.mjs`: actual impact/injury, intact cave shielding, duplicate guard, finite mortality/carrion, pure local refuge query, anatomical delayed hearing, one cue per event, malformed-save rejection and exact ordinary-tick continuation.
+- `tests/thunderstorm-regions.mjs`: ordinary-clock controlled warm/wet events, local event ownership across real frontier travel, exact active/archive continuation and historical opt-out.
+- `tools/verify-thunderstorm-browser.mjs`: exported Chromium, native mouse New World and Save/Continue. Explicit controlled warm/wet forcing and observer placement at a deterministic proposed strike; biological and hydrology ticks advance normally. No forced event or health/resource edit. At tick 64, a real strike reduced health from 100 to 64.5971 and created a wounded injury. The native WebAudio context ran and dispatched one thunder cue. Exact saved state restored at tick 66, with no browser errors.
+- Browser receipt and inspected frames: external evidence root `thunderstorms-browser-final/receipt.json`, `lightning-impact.png`, `restored-storm.png` under the October 20 session evidence directory. This proves controlled browser integration, not human listening, natural storm frequency, long-term survival, sustained performance or creator visual acceptance.
+
+No wildfire, tree ignition, electrical water propagation, atmospheric charge conservation, severe-disaster system or multiple-level shielding is claimed. Natural lifetime ecology and the broader full-game acceptance remain unfinished. No population settings, biological budgets or historical receipts were changed.

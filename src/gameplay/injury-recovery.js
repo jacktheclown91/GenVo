@@ -16,7 +16,7 @@ export class InjuryRecoveryController{
     if(!animal.injuryCare)animal.injuryCare={active:false,level:'none',label:'',remaining:0,initial:0,restToday:0,strainToday:0,lastMode:'none',lastHitTick:-Infinity,recoveredDay:0,attackerSpecies:null};
     return animal.injuryCare;
   }
-  onDamage(animal,{damage=0,attacker=null}={}){
+  onDamage(animal,{damage=0,attacker=null,cause=null}={}){
     if(!this.enabled(animal)||damage<=0||animal.health<=0)return null;
     const s=this.ensure(animal),score=damage+Math.max(0,60-animal.health)*.55;
     let level='sore',label='Sore',days=1.6;
@@ -25,8 +25,8 @@ export class InjuryRecoveryController{
     const rank={none:0,sore:1,wounded:2,severe:3};
     if(!s.active||rank[level]>=rank[s.level]){s.level=level;s.label=label;s.initial=Math.max(days,s.initial||0);s.remaining=Math.max(days,s.remaining||0)}
     else s.remaining=Math.min(Math.max(s.initial,days)+1.25,s.remaining+Math.max(.45,damage/55));
-    s.active=true;s.restToday=0;s.strainToday=Math.min(1.2,s.strainToday+.12);s.lastHitTick=this.sim.tickCount;s.attackerSpecies=attacker?.species||s.attackerSpecies||null;s.recoveredDay=0;
-    if(animal.lineage)this.sim.cognition?.recordOnce?.(animal,`wounded:${this.sim.year}:${this.sim.day}:${animal.id}`,`${label} after a predator attack`,{damage:Math.round(damage),health:Math.round(animal.health),attacker:s.attackerSpecies});
+    s.active=true;s.restToday=0;s.strainToday=Math.min(1.2,s.strainToday+.12);s.lastHitTick=this.sim.tickCount;s.attackerSpecies=cause?null:attacker?.species||s.attackerSpecies||null;if(cause)s.damageCause=cause;else delete s.damageCause;s.recoveredDay=0;
+    if(animal.lineage)this.sim.cognition?.recordOnce?.(animal,`wounded:${this.sim.year}:${this.sim.day}:${animal.id}`,`${label} after ${cause||'a predator attack'}`,{damage:Math.round(damage),health:Math.round(animal.health),attacker:s.attackerSpecies});
     return this.snapshot(animal);
   }
   mode(animal){

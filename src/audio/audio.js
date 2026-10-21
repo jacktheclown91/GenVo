@@ -1,3 +1,4 @@
+import {audibleThunder} from '../ecology/thunderstorms.js';
 import {AUDIO_SCENES,activeStrategyBranch,cueForResult,handoffTheme,musicPattern,musicSceneFor,semitone,stalkerDangerBand,themeStageForGeneration} from './model.js';
 import {AUTHORED_AUDIO} from './assets.js';
 import {creatureVoiceProfile} from './creature-voice.js';
@@ -16,7 +17,7 @@ export class AudioDirector{
     this.enabled=true;this.unlocked=false;
     this.masterLevel=.72;this.musicLevel=.30;this.sfxLevel=.68;this.ambienceLevel=.32;
     this.nextMusicTime=0;this.musicStep=0;this.lastScene=AUDIO_SCENES.CALM;
-    this.courtshipAudio=new WeakMap();this.lastActionTick=-1;this.lastDamageTick=-1;this.lastLineageRecords=sim?.lineage?.records?.size||0;this.lastHandoffs=sim?.lineage?.handoffs?.length||0;
+    this.thunderAudio=new WeakMap();this.courtshipAudio=new WeakMap();this.lastActionTick=-1;this.lastDamageTick=-1;this.lastLineageRecords=sim?.lineage?.records?.size||0;this.lastHandoffs=sim?.lineage?.handoffs?.length||0;
     this.moveClock=0;this.sceneClock=0;this.currentScene=musicSceneFor(sim);
     this.wildlifeClock=1.4;this.stalkerClock=.45;this.lastThreatId=null;this.lastThreatBand=0;this.lastMixDanger=0;this.handoffDuckUntil=0;
     this.seed=hashString(sim?.seed||'GENVO8-AUDIO')||1;this.lastInteractiveAudioAt=0;
@@ -129,6 +130,7 @@ export class AudioDirector{
   }
   pollSimulationEvents(){
     const sim=this.sim;
+    this.pollThunder();
     if(sim.lastPlayerDamage&&sim.lastPlayerDamage.tick!==this.lastDamageTick){
       this.lastDamageTick=sim.lastPlayerDamage.tick;const attacker=sim.animals?.find(a=>a.id===sim.lastPlayerDamage.attackerId);
       if(attacker)this.playSample('stalker-lunge',{x:attacker.x,y:attacker.y,radius:11,volume:.84,rate:.96+this.rand()*.08});
@@ -138,6 +140,12 @@ export class AudioDirector{
     this.pollCourtshipAudio();
     const records=sim.lineage?.records?.size||0;if(records>this.lastLineageRecords){const n=records-this.lastLineageRecords;this.lastLineageRecords=records;for(let i=0;i<Math.min(3,n);i++)this.playCue('birth',{index:i})}
     const count=sim.lineage?.handoffs?.length||0;if(count>this.lastHandoffs){const h=sim.lineage.handoffs.at(-1);this.lastHandoffs=count;this.playHandoff(h)}
+  }
+  pollThunder(){
+    const s=this.sim,state=s?.thunderstorms,p=s?.player?.();if(!state||!p||!this.unlocked||!this.enabled)return;
+    let seen=this.thunderAudio.get(state);if(!seen){seen=new Set();this.thunderAudio.set(state,seen)}
+    for(const e of state.events){if(seen.has(e.id))continue;const sound=audibleThunder(s,p,e);if(sound){seen.add(e.id);this.playCue('thunder',sound)}}
+    const oldest=state.events[0]?.id||0;for(const id of seen)if(id<oldest)seen.delete(id);
   }
   updateMovement(dt,input){
     const p=this.sim.player?.();if(!p||p.hidden||p.airborne||p.perched||(p.diveDepth||0)>.03||this.sim.paused)return;const moving=!!(input.up||input.down||input.left||input.right);if(!moving){this.moveClock=0;return}
@@ -209,6 +217,7 @@ export class AudioDirector{
     const foodSamples={'eat-moss':'food-moss','eat-berries':'food-berries','eat-reeds':'food-reeds','eat-mushroom':'food-mushroom','eat-seed':'food-seed','eat-carrion':'food-carrion'};
     if(foodSamples[name]){if(this.playSample(foodSamples[name],{volume:name==='eat-carrion'?.62:.54,rate:.96+this.rand()*.08}))return;name='eat'}
     switch(name){
+      case'thunder':{const volume=data.volume??1;this.noise(t,1.2,.18*volume,180);this.tone(48,26,t,.8,.07*volume,'sine');break;}
       case'jump':this.noise(t,.10,.035,1800);this.tone(140,360,t,.13,.035,'triangle');break;
       case'land':this.noise(t,.08,.045,650);this.tone(115,65,t,.09,.035,'triangle');break;
       case'splash':this.noise(t,.22,.075,1200);this.tone(420,110,t,.20,.03,'sine');break;
