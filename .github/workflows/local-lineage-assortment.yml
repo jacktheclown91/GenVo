@@ -1,0 +1,34 @@
+name: GenVo local visual assortment regression
+on:
+  push:
+    branches:
+      - dev/local-lineage-assortment-2026-10-21
+  pull_request:
+    paths:
+      - 'src/reproduction/mate-preferences.js'
+      - 'src/reproduction/reproduction.js'
+      - 'src/reproduction/courtship-performance.js'
+      - 'src/sim/simulation.js'
+      - 'src/persistence/save-manager.js'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Founder, phenotype and reproductive choice contracts
+        run: |
+          node tests/local-lineage-assortment.mjs
+          node tests/heritable-mate-choice.mjs
+          node tests/multi-partner-sexual-selection.mjs
+          node tests/courtship-performance.mjs
+      - name: Save persistence and canonical web export
+        run: |
+          node tests/save-persistence.mjs
+          node tests/public-export.mjs

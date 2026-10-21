@@ -2,7 +2,7 @@ import {processingCapacity,processingCapacityMessage} from '../sim/processing-ca
 import {creatureIdentity} from './creature-identity.js';
 import {escapePanel,knowledgeFold,updateKnowledgeHTML} from './knowledge-panel.js';
 import {reproductiveCompatibility,reproductiveGenomeFor} from '../reproduction/reproductive-compatibility.js';
-import {reciprocalMateChoice,preferenceSummary,mateOptionAssessment} from '../reproduction/mate-preferences.js';
+import {reciprocalMateChoice,preferenceSummary,mateOptionAssessment,LOCAL_ASSORTMENT} from '../reproduction/mate-preferences.js';
 import {availableCourtshipMoves} from '../reproduction/courtship-performance.js';
 import {reproductiveMode,conceptionMode} from '../reproduction/reproductive-anatomy.js';
 import {samePhysicalBuild} from '../lineage/body-inheritance.js';
@@ -370,13 +370,14 @@ function updateMate(el,sim,open){
   if(!selected){el._rawKnowledge=`NEARBY MATES\n${maturityLabel(active).toUpperCase()} #${active.id} · ${active.sex}\nNo ready, unrelated compatible partners nearby.\n\nMove around and check again.\nM: close`;return}
   const dist=Math.hypot(active.x-selected.x,active.y-selected.y),mid=traitMidpoint(active,selected),contrast=geneticContrast(active,selected),taxon=sim.reproduction.taxonRelation?.(active,selected)||{same:true,from:'GenVo',to:'GenVo'};
   const tendency=compareGenes(mid,active.genes,{limit:4,threshold:.009});
-  const choice=reciprocalMateChoice(active,selected,sim.seed);
+  const assortment={assortment:sim.mateAssortmentRules===LOCAL_ASSORTMENT};
+  const choice=reciprocalMateChoice(active,selected,sim.seed,assortment);
   const court=sim.reproduction.courtTargetId===selected.id?'COURTSHIP ACTIVE':'C: begin courtship';
   // A short, actionable comparison. Values are qualitative preferences, not
   // reproductive probabilities or guaranteed offspring outcomes.
   const mateOptions=candidates.slice(0,6).map(a=>{
     const d=Math.hypot(active.x-a.x,active.y-a.y);
-    const fit=mateOptionAssessment(active,a,sim.seed,d,Math.max(12,24*active.genes.senses));
+    const fit=mateOptionAssessment(active,a,sim.seed,d,Math.max(12,24*active.genes.senses),assortment);
     const body=comparePhysicalBuilds(active,a);
     const bodyLabel=body?(body.exact?'matching body':`${body.different} different sockets`):'body unknown';
     return `${a.id===selected.id?'▸':' '} #${a.id} · ${d.toFixed(1)} tiles · ${fit.label} · ${bodyLabel}`;

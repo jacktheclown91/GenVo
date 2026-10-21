@@ -7,7 +7,7 @@ import {SPECIES} from '../organisms/species.js';
 import {RNG} from '../core/rng.js';
 import {PARTS} from '../lineage/part-registry.js';
 import {planPartCounts} from '../lineage/part-abilities.js';
-import {matePreferencesFor,individualMateChoice,expressedMateTraits} from './mate-preferences.js';
+import {matePreferencesFor,individualMateChoice,expressedMateTraits,LOCAL_ASSORTMENT} from './mate-preferences.js';
 
 export const COURTSHIP_PERFORMANCE=Object.freeze({radius:.9,contestRadius:1.2,beats:3,minHealth:55,baseCost:.24,signalCost:.28});
 export const COURTSHIP_MOVES=Object.freeze(['dance','call','flare','scent','gesture']);
@@ -62,7 +62,7 @@ export function courtshipContest(sim,target){
   const contenders=sim.animals.filter(a=>a.alive&&a.id!==target.id&&a.intent==='mate'&&
     a.target?.id===target.id&&dist(a,target)<=COURTSHIP_PERFORMANCE.contestRadius&&
     sim.canMatePair(a,target,{ready:true})&&a.energy>=courtshipCost(a));
-  const score=a=>individualMateChoice(target,a,sim.seed).score+
+  const score=a=>individualMateChoice(target,a,sim.seed,{assortment:sim.mateAssortmentRules===LOCAL_ASSORTMENT}).score+
     ritualAppeal(sim,target,a,a.courtshipPerformance||a.completedCourtship)*.25;
   contenders.sort((a,b)=>score(b)-score(a)||dist(a,target)-dist(b,target)||a.id-b.id);
   return {winner:contenders[0]||null,contenders:contenders.map(a=>a.id)};
@@ -111,7 +111,8 @@ export function performedMateChoice(sim,actor,target){
   const competing=contenders.contenders.length>1;
   const rivalPenalty=competing&&contenders.winner?.id!==actor.id?.12:0;
   const appeal=ritualAppeal(sim,target,actor,performance);
-  const tastes=[individualMateChoice(actor,target,sim.seed),individualMateChoice(target,actor,sim.seed)];
+  const options={assortment:sim.mateAssortmentRules===LOCAL_ASSORTMENT};
+  const tastes=[individualMateChoice(actor,target,sim.seed,options),individualMateChoice(target,actor,sim.seed,options)];
   const chances=tastes.map((choice,i)=>{
     const soft=clamp(.08,.92,.39+choice.score*.80);
     const bonus=i===1?appeal*(competing?.28:.08)-rivalPenalty:0;

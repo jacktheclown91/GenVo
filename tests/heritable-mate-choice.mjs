@@ -8,7 +8,7 @@ const seed='HERITABLE-MATE-CHOICE';
 const sim=new Simulation(seed,{player:true}),active=sim.player();
 const partner=sim.animals.find(a=>a.alive&&a.species===active.species&&a.id!==active.id&&a.sex!==active.sex);
 assert.ok(partner,'a founder mate exists');
-assert.deepEqual(active.matePreferences,founderMatePreferences(seed,active.id),'founder genotype uses own deterministic stream');
+assert.deepEqual(active.matePreferences,founderMatePreferences(seed,active.id,{assortment:sim.mateAssortmentRules==='local-visual-assortment/1'}),'founder genotype uses the recorded policy and its own deterministic stream');
 const twin=new Simulation(seed,{player:true});
 assert.deepEqual(twin.player().matePreferences,active.matePreferences,'seed produces the same starting allele profile');
 assert.notDeepEqual(new Simulation('UNRELATED-WORLD',{player:true}).player().matePreferences,active.matePreferences,'distinct seeds can start with different preferences');

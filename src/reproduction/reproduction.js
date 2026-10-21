@@ -1,5 +1,5 @@
 import {SPECIES} from '../organisms/species.js';
-import {compareMateOptions,SAME_TAXON_AFFINITY} from './mate-preferences.js';
+import {compareMateOptions,SAME_TAXON_AFFINITY,LOCAL_ASSORTMENT} from './mate-preferences.js';
 import {availableCourtshipMoves,courtshipCost,COURTSHIP_PERFORMANCE,activeCourtship,upcomingMoveAvailability,changeUpcomingMove} from './courtship-performance.js';
 import {reproductiveMode} from './reproductive-anatomy.js';
 
@@ -23,7 +23,7 @@ export class ReproductionController{
     });
     // Same-taxon search tendency, weighed with inherited preference (docs/HERITABLE_MATE_CHOICE.md).
     const tree=this.sim.evolutionTree,affinity=tree?.sameTaxon?b=>tree.sameTaxon(active,b)?SAME_TAXON_AFFINITY:0:null;
-    return out.sort((a,b)=>compareMateOptions(active,a.animal,b.animal,this.sim.seed,senseRadius,{affinity})).map(x=>x.animal);
+    return out.sort((a,b)=>compareMateOptions(active,a.animal,b.animal,this.sim.seed,senseRadius,{affinity,assortment:this.sim.mateAssortmentRules===LOCAL_ASSORTMENT})).map(x=>x.animal);
   }
   taxonRelation(a,b){const tree=this.sim.evolutionTree;if(!a||!b||!tree)return{same:true,kind:'same',from:'GenVo',to:'GenVo'};const from=tree.taxonLabel(a),to=tree.taxonLabel(b),same=tree.sameTaxon(a,b);return{same,kind:same?'same':'gene-flow',from,to,label:same?`same taxon · ${to}`:`gene flow · ${from} × ${to}`}}
   selectedMate(){
