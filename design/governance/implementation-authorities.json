@@ -3,6 +3,11 @@
   "principle": "One live authority for each mechanism. Multiple states, species, art drafts and measured outcomes are permitted; competing runtime definitions are not.",
   "gameEntrypoint": "src/main.js",
   "systems": {
+    "finiteCaveOxygen": {
+      "authority": "src/world/cave-air.js",
+      "consumers": ["src/world/subsurface.js", "src/world/natural-caves.js", "src/lineage/burrowing.js", "src/sim/simulation.js", "src/render/subsurface.js"],
+      "contract": "docs/CAVE-AIR-2026-10-20.md"
+    },
     "caveRoofSupport": {
       "authority": "src/world/cave-roof.js",
       "consumers": ["src/world/subsurface.js", "src/render/subsurface.js"],

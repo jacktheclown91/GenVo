@@ -1,3 +1,4 @@
+import {CAVE_AIR,caveAirAt} from '../world/cave-air.js';
 import {CAVES} from '../world/cave-policy.js';
 import {startCaveTransit} from './cave-traversal.js';
 import {adultBodyMass} from '../organisms/body-mass.js';
@@ -58,9 +59,10 @@ export function moveUnderground(sim,a,dx,dy,dt){
  const cx=Math.floor(a.x),cy=Math.floor(a.y),tx=cx+(Math.abs(dx)>=Math.abs(dy)?Math.sign(dx):0),ty=cy+(Math.abs(dx)<Math.abs(dy)?Math.sign(dy):0),i=w.idx(tx+.5,ty+.5),site=excavationSite(w,i),from=passageAt(w,a.x,a.y);
  if(site&&Math.abs(site.floor-(from?.floor??site.floor))<=.6)startBurrowWork(sim,a,i);return false;
 }
-export function stepUndergroundCondition(sim,a,dt){
+export function* undergroundRespirators(sim,dt){for(const a of sim.animals)if(a.alive&&a.underground)yield{id:a.id,i:sim.world.idx(a.x,a.y),demand:adultBodyMass(a)*CAVE_AIR.consumption*dt*(a.burrowWork?1.6:a.intent==='rest'?.65:1)}}
+export function stepUndergroundCondition(sim,a,dt,supplied=undefined){
  if(!a?.underground)return;const p=passageAt(sim.world,a.x,a.y),flooded=!!sim.world.water[sim.world.idx(a.x,a.y)];
- if(!p||p.closed||flooded||!entranceRoute(sim.world,a)){a.burrowAir=Math.max(0,(a.burrowAir??BURROWING.airSeconds)-dt);if(a.burrowAir===0)a.health=Math.max(0,a.health-4*dt)}else delete a.burrowAir;
+ if(!p||p.closed||flooded||(sim.world.subsurface?.air?(supplied===undefined?!caveAirAt(sim.world,p.i).breathable:supplied<.99):!entranceRoute(sim.world,a))){a.burrowAir=Math.max(0,(a.burrowAir??BURROWING.airSeconds)-dt);if(a.burrowAir===0)a.health=Math.max(0,a.health-4*dt)}else delete a.burrowAir;
 }
 export function undergroundFood(a,i,kind,w){return !a?.underground||ROOT_FOODS.includes(kind)&&i===w.idx(a.x,a.y)}
 export function validateBurrowingState(a,rule,w){

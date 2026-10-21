@@ -1,3 +1,4 @@
+import {syncCaveAir} from './cave-air.js';
 import {coordNoise} from '../core/rng.js';
 import {deriveDrainage} from './topography.js';
 import {CAVES} from './cave-policy.js';
@@ -62,7 +63,7 @@ export function initializeCaves(w,{generate=false}={}){
   growGeologicalChamber(w,i);
 
  }
- refreshPassages(w);
+ refreshPassages(w);syncCaveAir(w,{initial:true});
  });
 }
 // Deterministic, material-funded multi-front geology. Each accepted chamber
@@ -122,7 +123,7 @@ export function erodeNaturalCaves(w,flows){
   if(next>=CAVES.passageVolume-1e-6){s.passages.set(i,{i,floor,void:next,entry:next>=target-1e-6,closed:false,origin:CAVES.policy});s.caveErosion.delete(i)}else s.caveErosion.set(i,{i,floor,void:next});
   s.revision++;
  }
- if(moved){deriveDrainage(w);w.buildHydrology()}return moved;
+ if(moved){syncCaveAir(w);deriveDrainage(w);w.buildHydrology()}return moved;
 }
 export function validateCaves(w,rule){
  const s=w.subsurface;if(s?.formation!==undefined&&s.formation!=='fracture-chambers/2')throw Error('Unknown cave formation version.');if(rule!==undefined&&rule!==CAVES.policy)throw Error('Unknown saved natural-cave rules.');

@@ -1,3 +1,5 @@
+import {undergroundRespirators} from '../lineage/burrowing.js';
+import {advanceCaveAir} from '../world/cave-air.js';
 import {STRATUM_SENSES} from '../ecology/stratum-senses.js';
 import {advanceIceSupport,iceEscapeTarget,liquidContact} from '../lineage/ice-locomotion.js';
 import {SURFACE_ICE,initializeSurfaceIce,advanceSurfaceIce} from '../world/surface-ice.js';
@@ -219,7 +221,7 @@ export class Simulation{
     this.tickCount++;
     if(this.sensoryFogEnabled!==false&&this.tickCount%(CFG.simHz*2)===0)recordSensoryMemory(this);
     for(const a of this.animals)if(a.alive&&a.caveTransit){const r=stepCaveTransit(this,a,1/CFG.simHz);if(r){a.lastCaveIncident={...r,tick:this.tickCount};if(a.player)this.playerCombat.queue(r)}}
-    if(this.burrowingRules===BURROWING.policy){const collapsed=refreshPassages(this.world);for(const a of this.animals)if(a.alive){if(a.underground&&collapsed?.has(this.world.idx(a.x,a.y))){const incident={ok:false,type:'burrow-collapse',message:'The roof collapsed here. Find an open passage before your air runs out.',tick:this.tickCount};a.lastBurrowIncident=incident;if(a.player)this.playerCombat.queue(incident)}stepUndergroundCondition(this,a,1/CFG.simHz);const r=stepBurrowWork(this,a,1/CFG.simHz);if(r){a.lastBurrowIncident={...r,tick:this.tickCount};if(a.player)this.playerCombat.queue(r)}}}
+    if(this.burrowingRules===BURROWING.policy){const collapsed=refreshPassages(this.world),breathing=advanceCaveAir(this.world,1/CFG.simHz,undergroundRespirators(this,1/CFG.simHz));for(const a of this.animals)if(a.alive){if(a.underground&&collapsed?.has(this.world.idx(a.x,a.y))){const incident={ok:false,type:'burrow-collapse',message:'The roof collapsed here. Find an open passage before your air runs out.',tick:this.tickCount};a.lastBurrowIncident=incident;if(a.player)this.playerCombat.queue(incident)}stepUndergroundCondition(this,a,1/CFG.simHz,breathing?.get(a.id));const r=stepBurrowWork(this,a,1/CFG.simHz);if(r){a.lastBurrowIncident={...r,tick:this.tickCount};if(a.player)this.playerCombat.queue(r)}}}
     for(const a of this.animals)if(a.alive&&a.climb){const r=stepClimb(this,a,1/CFG.simHz);if(r){a.lastClimbIncident={...r,tick:this.tickCount};if(a.player)this.playerCombat.queue(r)}}
     advanceIceSupport(this,1/CFG.simHz);
     if(this.divingRules===DIVING.policy)for(const a of this.animals){if(!a.alive)continue;if(!a.player||this.playerAutonomy){const food=FRESHWATER_FOOD[a.target?.kind];if(submerged(a)&&a.intent!=='escape'&&(!food||food.surface))a.diveTarget=0;else if(!submerged(a)&&!a.diveTarget&&(a.intent==='escape'||food&&!food.surface)&&divingAvailability(this,a).enabled)setDiveTarget(this,a);}const r=stepDiving(this,a,1/CFG.simHz);if(r){a.lastDiveIncident={...r,tick:this.tickCount};if(a.player)this.playerCombat.queue(r)}}

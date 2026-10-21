@@ -140,3 +140,5 @@ October 20 sensory reconciliation: anatomical FOV, cave daylight/rock occlusion,
 Physical cave geometry pass: `CAVE-CHAMBERS-2026-10-20.md` records real multi-cell chamber widths, shared traversability/optics, conserved formation and historical layout preservation. Multi-level geometry, span-dependent roof mechanics and coupled cave environment/ecology remain incomplete.
 
 Cave support pass: `CAVE-ROOF-2026-10-20.md` records span/thickness/material/moisture support, conserved simultaneous collapse, shared stress presentation and finite-air occupant consequences. It partially implements span-dependent support within existing cells. Multi-level geometry, calibrated lithology/elasticity, water/air transport and complete cave ecology remain unfinished.
+
+Finite cave oxygen pass: `CAVE-AIR-2026-10-20.md` records physically bounded gas capacity, connected diffusion/entrance ventilation, conserved oxygen receipts, anatomical-load/activity uptake, fair sharing and native hypoxia feedback. Historical regions preserve recorded behavior. Full air circulation/chemistry, coupled cave water, multi-level geometry and underground ecology remain incomplete.

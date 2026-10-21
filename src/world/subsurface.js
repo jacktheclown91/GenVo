@@ -1,8 +1,9 @@
+import {emptyCaveAir,syncCaveAir,validateCaveAir} from './cave-air.js';
 import {CAVE_ROOF,caveRoofSupport} from './cave-roof.js';
 import {deriveDrainage} from './topography.js';
 import {CAVES} from './cave-policy.js';
 export const SUBSURFACE=Object.freeze({policy:'excavated-subsurface/1',voidHeight:.04,minimumRoof:.012,minimumColumn:.07,maxLoad:2.6});
-export function emptySubsurface(){return{schema:1,roofPolicy:CAVE_ROOF.policy,passages:new Map(),excavated:0,collapsed:0,roundoff:0,revision:0}}
+export function emptySubsurface(){return{schema:1,roofPolicy:CAVE_ROOF.policy,air:emptyCaveAir(),passages:new Map(),excavated:0,collapsed:0,roundoff:0,revision:0}}
 export function passageAt(w,x,y){return w.subsurface?.passages?.get(w.idx(x,y))||null}
 export function excavationSite(w,i){
  const x=i%w.n,y=i/w.n|0,h=w.terrain?.elevation?.[i];
@@ -31,7 +32,7 @@ export function excavatePassage(w,i,{entry=false,origin=undefined,receiver=undef
  const sink=receiver??site.spoil,heights=w.terrain.elevation;if(!Number.isSafeInteger(sink)||sink<0||sink>=w.len||w.water[sink]||!w.isPlayable(sink%w.n+.5,(sink/w.n|0)+.5)||sink===i)return null;
  const before=heights[sink];if(before+wanted>=.99)return null;heights[sink]=before+wanted;const volume=heights[sink]-before;
  const source=origin??prior?.origin;const passage={i,floor,void:priorVoid+volume,entry:!!entry,closed:false,...(source?{origin:source}:{})};w.subsurface.passages.set(i,passage);w.subsurface.caveErosion?.delete(i);w.subsurface.excavated+=volume;w.subsurface.revision++;
- const batch=excavationBatches.get(w);if(batch)batch.changed=true;else{deriveDrainage(w);w.buildHydrology()}return passage;
+ syncCaveAir(w);const batch=excavationBatches.get(w);if(batch)batch.changed=true;else{deriveDrainage(w);w.buildHydrology()}return passage;
 }
 export function refreshPassages(w){
  const s=w.subsurface;if(!s)return;
@@ -49,11 +50,12 @@ export function refreshPassages(w){
   s.roundoff+=w.terrain.elevation[i]-before+p.void;s.collapsed+=p.void;s.caveErosion.delete(i);s.revision++;changed=true;
  }
  if(changed){const batch=excavationBatches.get(w);if(batch)batch.changed=true;else{deriveDrainage(w);w.buildHydrology()}}
- return failures.length?new Set(failures.map(p=>p.i)):null;
+ syncCaveAir(w);return failures.length?new Set(failures.map(p=>p.i)):null;
 }
 export function validateSubsurface(w,required=false){
  const s=w.subsurface;if(s?.roofPolicy!==undefined&&s.roofPolicy!==CAVE_ROOF.policy)throw Error('Unknown saved cave roof policy.');if(s===undefined){if(required)throw Error('Missing saved subsurface geometry.');return}
  if(s?.schema!==1||!(s.passages instanceof Map)||!['excavated','collapsed','roundoff','revision'].every(k=>Number.isFinite(s[k]))||s.excavated<0||s.collapsed<0||!Number.isSafeInteger(s.revision)||s.revision<0)throw Error('Invalid saved subsurface geometry.');
+ validateCaveAir(w);
  let volume=0;for(const [i,p] of s.passages){const natural=p?.origin===CAVES.policy;if(p?.origin!==undefined&&!natural||i!==p?.i||!Number.isSafeInteger(i)||i<0||i>=w.len||typeof p.entry!=='boolean'||typeof p.closed!=='boolean'||!Number.isFinite(p.floor)||p.floor<-.01||p.floor>20||!Number.isFinite(p.void)||p.void<0||p.void>(p.entry||natural?.12:.05)||p.closed&&p.void!==0||!p.closed&&p.void<(p.entry&&!natural?.059:.039))throw Error('Invalid saved underground passage.');volume+=p.void}
  for(const p of s.caveErosion?.values()||[])volume+=p.void;
  if(Math.abs(s.excavated-s.collapsed-volume)>1e-6||Math.abs(s.roundoff)>Math.max(1,s.passages.size)*1e-6)throw Error('Invalid saved excavation material receipt.');
