@@ -1,3 +1,4 @@
+import {caveDrinkAvailability,drinkCaveWater} from '../ecology/cave-drinking.js';
 import {undergroundRespirators} from '../lineage/burrowing.js';
 import {advanceCaveAir} from '../world/cave-air.js';
 import {STRATUM_SENSES} from '../ecology/stratum-senses.js';
@@ -266,7 +267,7 @@ export class Simulation{
   burrowStatus(a=this.player()){return burrowingStatus(this,a)}
   playerBurrow(){return toggleBurrow(this)}
   playerToggleRoost(){if(this.paused)return{ok:false,type:'roost',message:'Resume the world first.'};const a=this.player();if(!a)return{ok:false,type:'roost',message:'No active creature.'};if(this.playerCombat.attackActive(a))return{ok:false,type:'roost',message:'Finish the attack first.'};const result=a.perched?this.leaveCanopy(a):this.enterCanopy(a);if(result.ok){a.intent='idle';a.target=null;this.lastPlayerAction={type:a.perched?'roost':'descend',actorId:a.id,tick:this.tickCount}}return result}
-  undergroundDecisionStep(a){const p=this.world.subsurface.passages.get(this.world.idx(a.x,a.y));if(p?.entry&&this.tickCount-(a.burrowSince||0)>CFG.simHz*8){toggleBurrow(this,a);return}if(a.energy<SPECIES[a.species].maxEnergy*.7){const meal=this.foraging.selected(a);if(meal)this.foraging.consume(a,meal)}const route=entranceRoute(this.world,a);if(route?.length&&this.tickCount-(a.burrowSince||0)>CFG.simHz*8){const i=route[0];moveUnderground(this,a,i%this.world.n+.5-a.x,(i/this.world.n|0)+.5-a.y,1/CFG.simHz);return}const d=((a.id+Math.floor(this.tickCount/16))%4);moveUnderground(this,a,[1,0,-1,0][d],[0,1,0,-1][d],1/CFG.simHz)}
+  undergroundDecisionStep(a){if(this.tickCount%CFG.lifeStride===0&&a.hydration<SPECIES[a.species].maxHydration*.28&&!a.burrowAir&&caveDrinkAvailability(this,a).enabled){drinkCaveWater(this,a,{gain:5.2});a.intent='drink';return}const p=this.world.subsurface.passages.get(this.world.idx(a.x,a.y));if(p?.entry&&this.tickCount-(a.burrowSince||0)>CFG.simHz*8){toggleBurrow(this,a);return}if(a.energy<SPECIES[a.species].maxEnergy*.7){const meal=this.foraging.selected(a);if(meal)this.foraging.consume(a,meal)}const route=entranceRoute(this.world,a);if(route?.length&&this.tickCount-(a.burrowSince||0)>CFG.simHz*8){const i=route[0];moveUnderground(this,a,i%this.world.n+.5-a.x,(i/this.world.n|0)+.5-a.y,1/CFG.simHz);return}const d=((a.id+Math.floor(this.tickCount/16))%4);moveUnderground(this,a,[1,0,-1,0][d],[0,1,0,-1][d],1/CFG.simHz)}
   enterCanopy(a){return this.climbingRules===CLIMBING.policy&&!a.airborne?startClimb(this,a):perch(a,this.world,{climbing:canTreeClimb(this,a)})}
   leaveCanopy(a){return this.climbingRules===CLIMBING.policy?startClimb(this,a,{descending:true}):descend(a,this.world)}
   canopyFoodAvailability(animal=this.player()){
@@ -703,7 +704,8 @@ export class Simulation{
     if(this.paused)return{enabled:false,reason:'Resume the world first.'};
     if(a.burrowWork||a.caveTransit)return{enabled:false,reason:'Finish the current underground movement first.'};
     if(a.airborne||a.perched)return{enabled:false,reason:'Use a surface position for ground food and water; canopy feeding has its own action.'};
-    if(type==='drink'&&(a.underground||submerged(a)))return{enabled:false,reason:'Rise to the surface before drinking.'};
+    if(type==='drink'&&a.underground)return caveDrinkAvailability(this,a);
+    if(type==='drink'&&submerged(a))return{enabled:false,reason:'Rise to the surface before drinking.'};
     if(type==='drink'){if(!this.world.isDrinkable(a.x,a.y))return{enabled:false,reason:'Move beside drinkable water.'};const spec=SPECIES[a.species],limit=Math.min((this.discovery?.poolBonus?.(a)||0)+(partEffectFactors(a)?.mouthFood?.drinkEnergy||0),spec.maxEnergy-a.energy);if(a.hydration>=spec.maxHydration-.05&&!freshwaterHarvestCandidate(this,a,limit))return{enabled:false,reason:'Already hydrated; no usable filter food here.'};return{enabled:true,reason:''}}
     if(type==='eat')return this.foraging.availability(a);
     return{enabled:false,reason:'Unknown resource action.'};
@@ -715,6 +717,7 @@ export class Simulation{
     if(!target)return{...base,state:base.enabled?'available':'unavailable'};
     const w=this.world;
     if(type==='drink'){
+      if(a.underground||target.kind==='cave-water')return caveDrinkAvailability(this,a,target);
       if(target.kind!=='water'||!w.water[target.i])return fail('That water source is no longer present.');
       const spec=SPECIES[a.species],limit=Math.min((this.discovery?.poolBonus?.(a)||0)+(partEffectFactors(a)?.mouthFood?.drinkEnergy||0),spec.maxEnergy-a.energy);if(a.hydration>=spec.maxHydration-.05&&!freshwaterHarvestCandidate(this,a,limit,target))return fail('Already hydrated; no usable filter food at this source.');
       const adjacent=Math.abs(Math.floor(a.x)-Math.floor(target.x))<=1&&Math.abs(Math.floor(a.y)-Math.floor(target.y))<=1;
@@ -734,6 +737,7 @@ export class Simulation{
   playerDrink(target=null){
     const status=this.resourceAction('drink',target);if(!status.enabled)return{ok:false,type:'drink',message:status.reason};
     const a=this.player(),s=SPECIES[a.species];
+    if(a.underground)return drinkCaveWater(this,a,{target});
 
     if(a.hidden)a.hidden=false;
     const before=a.hydration;a.hydration=Math.min(s.maxHydration,a.hydration+Math.max(18,s.maxHydration*.22));this.cognition.onDrink(a);const pool=this.discovery?.poolBonus?.(a)||0,filter=partEffectFactors(a)?.mouthFood?.drinkEnergy||0;const meal=harvestFreshwater(this,a,Math.min(pool+filter,s.maxEnergy-a.energy),target);if(meal){a.energy+=meal.energyGain;this.cognition.onFeed(a,meal.kind);this.foraging.rememberPatch(a,meal.kind,a.x,a.y,{meal:true});this.family.notePracticeInteraction(a,'food',{x:(a.lastFreshwaterMeal.i%this.world.n)+.5,y:Math.floor(a.lastFreshwaterMeal.i/this.world.n)+.5,kind:meal.kind,amount:meal.amount});this.lastPlayerAction={type:'drink',actorId:a.id,kind:meal.kind,energyGain:meal.energyGain,tick:this.tickCount};return{ok:true,type:'drink',message:`Drank and ate ${meal.kind} · +${meal.energyGain.toFixed(1)} energy.`}}

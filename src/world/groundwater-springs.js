@@ -1,3 +1,4 @@
+import {boundedFloat32Debit} from '../core/float32-transfer.js';
 import {syncCaveAir} from './cave-air.js';
 // Spring outlets are paid for from the existing World-owned groundwater
 // inventory. The outgoing water enters the SAME land runoff handoff that
@@ -11,14 +12,6 @@ export const GROUNDWATER_SPRINGS=Object.freeze({
  dischargeFraction:.15,maxDischargePerCell:.022,
  maxSpringCellsPerDay:256,freezingTemperature:.30
 });
-const floatBits=new DataView(new ArrayBuffer(4));
-function debitAtMost(before,desired){
- let after=Math.fround(before-desired);
- // Rounding a Float32 donor down must not exceed the declared water budget.
- if(before-after>desired){floatBits.setFloat32(0,after);floatBits.setUint32(0,floatBits.getUint32(0)+1);after=floatBits.getFloat32(0)}
- return after;
-}
-
 export function validateGroundwaterSpringPolicy(w,soil){
  if(soil?.springPolicy===undefined)return;
  if(soil.springPolicy!==GROUNDWATER_SPRINGS.policy||
@@ -59,7 +52,7 @@ export function advanceGroundwaterSprings(w,runoff,day){
   if(before<=rule.waterTableThreshold)continue;
   const desired=Math.min(rule.maxDischargePerCell,
    (before-rule.waterTableThreshold)*rule.dischargeFraction);
-  const after=debitAtMost(before,desired),amount=before-after;
+  const {remaining:after,amount}=boundedFloat32Debit(before,desired);
   if(!(amount>0))continue;
   if(!Number.isFinite(runoff[i])||runoff[i]<0)
    throw Error('Invalid runoff stock at spring outlet.');

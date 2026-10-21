@@ -3,6 +3,15 @@
   "principle": "One live authority for each mechanism. Multiple states, species, art drafts and measured outcomes are permitted; competing runtime definitions are not.",
   "gameEntrypoint": "src/main.js",
   "systems": {
+    "finiteCaveDrinking": {
+      "authority": "src/ecology/cave-drinking.js",
+      "consumers": ["src/sim/simulation.js", "src/gameplay/interaction-command.js", "src/ui/world-resource-target.js"],
+      "contract": "docs/CAVE-DRINKING-2026-10-21.md"
+    },
+    "boundedFloat32Debits": {
+      "authority": "src/core/float32-transfer.js",
+      "consumers": ["src/ecology/cave-drinking.js", "src/world/groundwater-springs.js"]
+    },
     "exposedCaveGroundwater": {
       "authority": "src/world/cave-water.js",
       "consumers": ["src/world/topography.js", "src/world/cave-air.js", "src/world/subsurface.js", "src/lineage/burrowing.js", "src/lineage/cave-traversal.js", "src/ecology/stratum-senses.js", "src/render/cave-surface.js", "src/render/subsurface.js"],

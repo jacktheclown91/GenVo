@@ -28,6 +28,9 @@ export function initializeSoilWater(w){
   syncCaveAir(w);return w.soilWater;
 }
 export function validateSoilWater(w,s){
+  if(s?.totals?.caveDrinking!==undefined&&(!Number.isFinite(s.totals.caveDrinking)||s.totals.caveDrinking<0))throw Error('Invalid cave drinking total.');
+  for(const row of [...(s?.daily||[]),...(s?.lastDay?[s.lastDay]:[])])if(row.caveDrinking!==undefined&&(!Number.isFinite(row.caveDrinking)||row.caveDrinking<0||row.caveDrinking>row.outputs+1e-6))throw Error('Invalid cave drinking output.');
+  if(s?.pendingCaveDrinking!==undefined&&(!Number.isFinite(s.pendingCaveDrinking)||s.pendingCaveDrinking<0||s.pendingCaveDrinking>(s.totals?.caveDrinking??0)))throw Error('Invalid pending cave drinking output.');
   if(s?.schema!==1)throw Error('Invalid soil water schema.');
   validateSeamGroundwaterPolicy(w,s);
   validateGroundwaterSpringPolicy(w,s);
@@ -81,7 +84,7 @@ const FLOWS=['rain','snowfall','snowmelt','infiltration','runoff','evaporation',
 export function advanceSoilDay(w,climate,day){
   const r=w.plantResources,cap=2;// PLANT_RESOURCE_UNITS.waterCapacity
   const s=w.soilWater||initializeSoilWater(w);s.snowpack||=new Float64Array(w.len);s.totals.snowfall??=0;s.totals.snowmelt??=0;s.totals.springDischarge??=0;
-  const before=soilWaterStorage(w),t0=Object.fromEntries(FLOWS.map(k=>[k,s.totals[k]]));
+  const caveDrinking=s.pendingCaveDrinking||0,before=soilWaterStorage(w)+caveDrinking,t0=Object.fromEntries(FLOWS.map(k=>[k,s.totals[k]]));
   if(r?.soilWaterLinked){for(let i=0;i<w.len;i++)if(!w.water[i])withdrawPlantUptake(w,i,cap,r.water[i]);r.soilWaterLinked=false}
   // Runoff is temporary stage data only. The physical stocks and their
   // receipts are persistent, but no duplicate live runoff authority is saved.
@@ -93,9 +96,10 @@ export function advanceSoilDay(w,climate,day){
   // Runoff validates cave geometry before applying erosion/topology changes.
   // Publish the gas displacement from this already committed groundwater step.
   syncCaveAir(w);
-  const after=soilWaterStorage(w),f=Object.fromEntries(FLOWS.map(k=>[k,s.totals[k]-t0[k]])),inputs=f.rain+f.lateral,outputs=f.runoff+f.evaporation+f.deepDrainage+f.uptake+f.overflow+f.springDischarge;
+  const after=soilWaterStorage(w),f=Object.fromEntries(FLOWS.map(k=>[k,s.totals[k]-t0[k]])),inputs=f.rain+f.lateral,outputs=f.runoff+f.evaporation+f.deepDrainage+f.uptake+f.overflow+f.springDischarge+caveDrinking;
   let land=0,moisture=0;for(let i=0;i<w.len;i++)if(!w.water[i]){land++;moisture+=w.moisture[i]}
-  s.lastDay={day,climateRain:climate.rain,climateTemp:climate.temp,...f,inputs,outputs,storageBefore:before,storageAfter:after,storageChange:after-before,closure:inputs-outputs-(after-before),meanMoisture:land?moisture/land:0,...(s.pageGroundwaterTransfers?{pageGroundwaterTransfers:s.pageGroundwaterTransfers}:{})};
+  s.lastDay={day,...(caveDrinking?{caveDrinking}:{}),climateRain:climate.rain,climateTemp:climate.temp,...f,inputs,outputs,storageBefore:before,storageAfter:after,storageChange:after-before,closure:inputs-outputs-(after-before),meanMoisture:land?moisture/land:0,...(s.pageGroundwaterTransfers?{pageGroundwaterTransfers:s.pageGroundwaterTransfers}:{})};
+  if(Object.hasOwn(s,'pendingCaveDrinking'))s.pendingCaveDrinking=0;
   (s.daily||(s.daily=[])).push(s.lastDay);if(s.daily.length>64)s.daily.shift();
   if(runoff){
     const routed=routePlanetaryRunoff(w,runoff,day);

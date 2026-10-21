@@ -10,7 +10,7 @@ const targetKey=t=>t.kind+':'+(t.id??t.i??'')+':'+(t.food||'')+':'+(t.tissue||''
 const info=(id,label,target,status,extra={})=>({id,key:id+'|'+targetKey(target),label,target,enabled:!!status.enabled,state:status.state||(status.enabled?'available':'unavailable'),reason:status.reason||label,...extra});
 export function contextualInteractions(sim,target=null){
  const a=sim.player();if(!a?.alive||a.airborne)return[];
- if(a.caveTransit||a.burrowWork)return[];const caveIndex=target?.cave??sim.world.idx(a.x,a.y),cave=sim.caveStatus(a,caveIndex);if(target?.cave!==undefined)return[info('cave',a.underground?'Exit cave':'Enter cave',target,cave)];if(!target&&cave.enabled)return[info('cave',a.underground?'Exit cave':'Enter cave',{kind:'ground',cave:caveIndex,i:caveIndex,x:a.x,y:a.y,label:'Cave opening'},cave)];if(a.underground&&target&&!['food','plant','corpse'].includes(target.kind))return[];
+ if(a.caveTransit||a.burrowWork)return[];const caveIndex=target?.cave??sim.world.idx(a.x,a.y),cave=sim.caveStatus(a,caveIndex);if(target?.cave!==undefined)return[info('cave',a.underground?'Exit cave':'Enter cave',target,cave)];if(!target&&cave.enabled)return[info('cave',a.underground?'Exit cave':'Enter cave',{kind:'ground',cave:caveIndex,i:caveIndex,x:a.x,y:a.y,label:'Cave opening'},cave)];if(a.underground&&target&&!['food','plant','corpse','cave-water'].includes(target.kind))return[];
  if(a.perched){
   const site={kind:'canopy',x:a.x,y:a.y,i:sim.world.idx(a.x,a.y),label:'Woodspire crown'};
   const options=[];
@@ -21,7 +21,8 @@ export function contextualInteractions(sim,target=null){
  if(submerged(a)){if(target&&!['food','water'].includes(target.kind))return[];if(target?.kind==='food'&&!FRESHWATER_FOOD[target.food])return[];if(!target)return sim.foraging.options(a).filter(m=>FRESHWATER_FOOD[m.kind]).flatMap(m=>contextualInteractions(sim,{kind:'food',food:m.kind,i:m.i,x:m.x,y:m.y}));}
  if(!target){
   const candidates=[];const manual=sim.foraging.states.get(a.id);for(const meal of sim.foraging.options(a)){if(manual?.manual&&meal.kind!==manual.selectedKind)continue;candidates.push({kind:'food',food:meal.kind,i:meal.i,x:meal.i%sim.world.n+.5,y:Math.floor(meal.i/sim.world.n)+.5,label:foodLabel(meal.kind),tissue:meal.tissue})}
-  if(sim.resourceAvailability('drink').enabled){const w=sim.world;let source=null,best=Infinity;for(let y=-1;y<=1;y++)for(let x=-1;x<=1;x++){const i=w.idx(a.x+x,a.y+y);if(!w.water[i])continue;const t={kind:'water',i,x:i%w.n+.5,y:Math.floor(i/w.n)+.5,label:'Water'},d=Math.hypot(t.x-a.x,t.y-a.y);if(d<best){best=d;source=t}}candidates.push(source||{kind:'drinkable-ground',x:a.x,y:a.y,i:w.idx(a.x,a.y),label:'Drinkable ground'})}
+  if(a.underground&&sim.resourceAvailability('drink').enabled)candidates.push({kind:'cave-water',underground:true,i:sim.world.idx(a.x,a.y),x:a.x,y:a.y,label:'Cave water'});
+  if(!a.underground&&sim.resourceAvailability('drink').enabled){const w=sim.world;let source=null,best=Infinity;for(let y=-1;y<=1;y++)for(let x=-1;x<=1;x++){const i=w.idx(a.x+x,a.y+y);if(!w.water[i])continue;const t={kind:'water',i,x:i%w.n+.5,y:Math.floor(i/w.n)+.5,label:'Water'},d=Math.hypot(t.x-a.x,t.y-a.y);if(d<best){best=d;source=t}}candidates.push(source||{kind:'drinkable-ground',x:a.x,y:a.y,i:w.idx(a.x,a.y),label:'Drinkable ground'})}
   for(const site of sim.discovery?.sites||[])if(!site.gone&&Math.hypot(site.x-a.x,site.y-a.y)<=1.4&&['relic','nest-ruin'].includes(site.kind))candidates.push({kind:'site',id:site.id,x:site.x,y:site.y,label:site.kind==='relic'?'Relic':'Nest material'});
   const care=sim.family.careTarget(a,{radius:1.75,urgentOnly:true}),sick=sim.familyIllness?.sickCareTarget?.(a,{radius:1.8}),storm=sim.familyWeather?.aftercareTarget?.(a,{radius:1.8});for(const c of [care?.child,sick?.child,storm?.child])if(c)candidates.push({kind:'creature',id:c.id,x:c.x,y:c.y});
   const nest=chooseCareNest(sim,a);if(nest&&Math.hypot(nest.x-a.x,nest.y-a.y)<=1.4)candidates.push({kind:'nest',id:nest.id,x:nest.x,y:nest.y,label:'Clutch'});
@@ -35,6 +36,7 @@ export function contextualInteractions(sim,target=null){
  }
  let options=[];
  if(['plant','corpse','food'].includes(target.kind)){if(FLORA_TISSUES[target.food]){const tissues=target.tissue?[target.tissue]:['crop','kernel'];options=tissues.map(tissue=>{const t={...target,tissue},status=sim.resourceAction('eat',t);return info('eat:'+target.food+':'+target.i+(tissue==='kernel'?':kernel':''),tissue==='kernel'?'Crush seeds':target.food==='bramble'?'Eat fruit':'Eat pods',t,status)})}else{const status=sim.resourceAction('eat',target);options=[info('eat:'+target.food+':'+target.i,'Eat '+foodLabel(target.food),target,status)]}}
+ else if(target.kind==='cave-water')options.push(info('drink','Drink cave water',target,sim.resourceAction('drink',target)));
  else if(target.kind==='water'||target.kind==='drinkable-ground'){
   const status=target.kind==='water'?sim.resourceAction('drink',target):{...sim.resourceAvailability('drink'),state:sim.world.isDrinkable(target.x,target.y)&&Math.hypot(target.x-a.x,target.y-a.y)<=1.5?'available':'unavailable'};status.enabled=!!status.enabled&&status.state!=='unavailable';options.push(info('drink','Drink',target,status));
   if(target.kind==='water')for(const kind of Object.keys(FRESHWATER_FOOD)){if(!(freshwaterField(sim.world,kind)?.[target.i]>.01))continue;const food={...target,kind:'food',food:kind,label:foodLabel(kind)};const edible=sim.resourceAction('eat',food);if(edible.state!=='unavailable')options.push(info('eat:'+kind+':'+target.i,'Eat '+foodLabel(kind),food,edible))}
@@ -68,7 +70,7 @@ export function executeInteraction(sim,target=null,actionId=null){
  if(option.id==='cave')result=sim.playerCave(t.cave);
  else if(option.id==='feed-canopy')result=sim.playerCanopyFeed();
  else if(option.id.startsWith('eat:')){const status=sim.resourceAction('eat',t);result=status.enabled?sim.playerEat(status.meal):{ok:false,type:'eat',message:status.reason}}
- else if(option.id==='drink')result=sim.playerDrink(t.kind==='water'?t:null);
+ else if(option.id==='drink')result=sim.playerDrink(t.kind==='water'||t.kind==='cave-water'?t:null);
  else if(option.id==='tend-egg'){const nest=(sim.nests||[]).find(n=>n.id===option.nestId),ok=careForNest(sim,a,nest);result={ok,type:'nest-care',message:ok?'Tended the clutch.':'The clutch cannot be tended now.'};if(ok)sim.lastPlayerAction={type:'nest-care',nestId:nest.id,tick:sim.tickCount}}
  else if(option.id==='raid-egg'){const egg=sim.eggs.find(e=>e.id===t.id),nest=nestForEgg(sim,egg),before=nest?.integrity,ate=eatEgg(sim,a,egg),broken=nest&&nest.integrity<before;result={ok:!!ate||!!broken,type:'egg-raid',message:ate?'Ate the egg.':broken?'Broke some nest cover.':'The egg cannot be reached or consumed now.'}}
  else if(option.id==='maintain'){result=sim.shelter.constructOrRepair(a,t.id);result={...result,type:'shelter',message:result.ok?(result.action==='repair'?'Shelter repaired.':'Shelter reinforced.'):result.reason}}

@@ -31,6 +31,7 @@ const runtime=[
   'tests/cave-roof.mjs',
   'tests/cave-air.mjs',
   'tests/cave-water.mjs',
+  'tests/cave-drinking.mjs',
   'tests/burrowing.mjs',
   'tests/climbing.mjs',
   'tests/action-capabilities.mjs',
