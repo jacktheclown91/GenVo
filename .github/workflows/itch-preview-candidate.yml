@@ -1,0 +1,63 @@
+name: GenVo itch preview export
+
+on:
+  push:
+    branches:
+      - release/itch-preview-2026-10-20
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: genvo-itch-preview-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout pinned release branch
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Confirm source baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE=$(git merge-base HEAD e486b359f30343d8c47efb5b4326cf877884d5e2)
+          test "$BASE" = "e486b359f30343d8c47efb5b4326cf877884d5e2"
+          echo "Release source baseline: $BASE"
+
+      - name: Focused playable gate
+        run: node tools/check-playable.mjs
+
+      - name: Verify exact canonical public export
+        run: node tests/public-export.mjs
+
+      - name: Build itch HTML5 web ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$RUNNER_TEMP/genvo-itch-export"
+          node tools/export-public.mjs "$RUNNER_TEMP/genvo-itch-export"
+          python3 tools/package-itch-preview.py \
+            "$RUNNER_TEMP/genvo-itch-export" \
+            "$RUNNER_TEMP/GenVo_Itch_Preview_e486b35.zip" \
+            "$RUNNER_TEMP/GenVo_Itch_Preview_e486b35-report.json"
+          sha256sum "$RUNNER_TEMP/GenVo_Itch_Preview_e486b35.zip"
+
+      - name: Upload release-candidate artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: GenVo_Itch_Preview_e486b35
+          path: |
+            ${{ runner.temp }}/GenVo_Itch_Preview_e486b35.zip
+            ${{ runner.temp }}/GenVo_Itch_Preview_e486b35-report.json
+          if-no-files-found: error
+          retention-days: 14
