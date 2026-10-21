@@ -46,7 +46,7 @@ export function detects(sim,a,b,d,R){
   :(watching(sim,a,b)||inView(a,b))&&d<R&&atmosphericSight(sim,a,b,R).detected;
  // Recently identified threats retain attention across an ordinary turn, but
  // can only be followed through the real medium's connected hearing route.
- const attentive=watching(sim,a,b)&&d<R&&stratumHearing(sim,a,b,R);
+ const attentive=watching(sim,a,b)&&d<R&&atmosphericSight(sim,a,b,R).detected&&stratumHearing(sim,a,b,R);
  return visible||attentive||stratumHearing(sim,a,b,R*(still(sim,b)?QUIET:HEARING))||!!groundVibrationCue(sim,a,b);
 }
 // Stage 2: how threatening `b` looks to `a` (0..1).

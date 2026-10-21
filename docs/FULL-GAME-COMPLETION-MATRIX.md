@@ -11,11 +11,15 @@ Gate A passed at `2e07fb565c9d1e93d9154d2434c18875dc44cdb4`: existing source `C:
 
 Canonical source audit passed (284 reachable modules, 91 registered parts); all 15 focused `tools/check-playable.mjs` checks and public-export parity passed before development. A 658-file web export succeeded. This is build/contract evidence, not full playability acceptance.
 
+## Immediate priority after October 21 reconciliation
+
+Implement independently indexed regional persistence with atomic commit/recovery, bounded nearby simulation/render residency, neighbor preload, continuous keyboard/mouse traversal and seam rendering/navigation. Existing 16 inactive archives, 17 materialized Worlds, finite projection and whole-region scene replacement remain technical limits, not biological boundaries. Do not raise caps or discard ecology to claim scale. PR40 automatic keyboard crossing is integrated groundwork only.
+
 ## Living Planet
 
 | Requirement | Actual state | Source and precise remaining work/dependency |
 |---|---|---|
-| Continents, oceans, connected neighboring regions | Implemented but incomplete | `src/world/planet-geography.js`, `planet-regions.js`, `planetary-travel.js`; discrete persistent regions, not seamless global simulation. |
+| Continents, oceans, connected neighboring regions | Implemented but incomplete | `src/world/planet-geography.js`, `planet-regions.js`, `planetary-travel.js`; new worlds default to planetary generation and held-key automatic crossing. Existing discrete persistent regions still replace the active Simulation, with 16 archives/17 Worlds and a finite projection; indexed streaming, visible neighbors, continuous mouse/navigation/camera seams and scalable remote ecology remain unfinished. |
 | Mountains, ranges, foothills, cliffs, valleys, plateaus | Implemented but incomplete | `src/world/topography.js`, `land-route.js`, `biomes.js`; elevation/route costs exist; audit distinct cliff and plateau traversal. |
 | Plains, grasslands, savannas, deserts, semiarid habitats | Implemented but incomplete | `src/world/biomes.js`, `src/ecology/resource-founding.js`, `cold-flora.js`; physical niches exist; full habitat variety and presentation require review. |
 | Forests, jungles, woodlands | Implemented but incomplete | `src/ecology/canopy-site.js`, `src/render/flora.js`; woodland canopy usable, dedicated jungle ecology unproven. |
