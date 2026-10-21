@@ -5,7 +5,7 @@ import {drawAtmosphere} from './atmosphere.js';
 import {drawSensoryFog} from './sensory-fog.js';
 import {drawThermalWeather} from './thermal-weather.js';
 import {THERMAL_WEATHER} from '../ecology/thermal-weather.js';
-import {VISIBILITY,visuallyObservable} from '../ecology/atmospheric-visibility.js';
+import {VISIBILITY,visuallyObservable,creatureView} from '../ecology/atmospheric-visibility.js';
 import {CAVES} from '../world/cave-policy.js';
 import {clampCameraToWorld} from './camera-bounds.js';
 import {beginTintFrame} from './indexed-part-renderer.js';
@@ -134,7 +134,14 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     this.drawSites(tile,cols,rows);
     this.drawEggs(tile);drawWorldTraces(this,tile);
     drawSubsurface(this,tile);this.screenPos=new Map();
-    const visible=this.sim.animals.filter(a=>a.alive&&!!a.underground===!!this.sim.player()?.underground&&visuallyObservable(this.sim,this.sim.player(),a)&&Math.abs(a.x-this.camera.x)<cols/2+2&&Math.abs(a.y-this.camera.y)<rows/2+2).sort((a,b)=>a.y-b.y);this.visibleAnimals=visible;
+    const observer=this.sim.player(),playerView=observer&&this.sim.sensoryFogEnabled===true?creatureView(this.sim,observer):null;
+     // Cull geographically first, then apply the same biological sight model
+     // used by the fog and pointer targets. Do not recalculate anatomy for each
+     // distant creature in a large living ecosystem.
+     const visible=this.sim.animals.filter(a=>a.alive&&
+       !!a.underground===!!observer?.underground&&
+       Math.abs(a.x-this.camera.x)<cols/2+2&&Math.abs(a.y-this.camera.y)<rows/2+2&&
+       visuallyObservable(this.sim,observer,a,8,playerView)).sort((a,b)=>a.y-b.y);this.visibleAnimals=visible;
     if(!this.lowDetail&&!this.sim.player()?.underground){this.drawForegroundHabitat(tile,startX,startY,cols,rows);this.drawHabitatSceneForeground(tile);this.drawRegionalFocalForeground(tile);this.drawSceneDepthForeground(tile)}
     // Phase 3L: creatures are prepared through a recording context and composed afterwards in the same order, so
     // freshly drawn sprites are staged together (genvo-draw.js SPRITE_BATCH). frameStats are timing only.
