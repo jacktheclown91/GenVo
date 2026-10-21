@@ -50,6 +50,8 @@ for(const id of physicalStarterIds){
  assert.equal(resumed.authoredIntroductions.at(-1).starterFocus,id);
  assert.deepEqual(resumed.player().bodyPlan,plan);
  assert.equal(resumed.player().id,p.id);
+ const tampered=structuredClone(saved);tampered.core.creatureStart.starterFocus='climb';
+ assert.throws(()=>restoreSimulationSnapshot(tampered),/starter focus|starter focus receipt|entry disagrees/i,'preserved starter identity cannot be forged in saved entry');
  console.log(id+': guided precursor plan, supported ecology, real action, unchanged habitat and save PASS');
 }
 console.log('Physical starter menu builds: FOUR actual biology starts PASS');
