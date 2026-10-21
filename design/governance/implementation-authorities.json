@@ -5,168 +5,87 @@
   "systems": {
     "physicalHabitatHazards": {
       "authority": "src/ecology/habitat-hazards.js",
-      "consumers": [
-        "src/sim/simulation.js",
-        "src/persistence/save-manager.js",
-        "src/world/planetary-travel.js"
-      ],
+      "consumers": ["src/sim/simulation.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js"],
       "contract": "docs/HABITAT-HAZARDS-2026-10-21.md"
     },
     "finiteVegetationFire": {
       "authority": "src/ecology/wildfire.js",
-      "consumers": [
-        "src/sim/simulation.js",
-        "src/persistence/save-manager.js",
-        "src/world/planetary-travel.js",
-        "src/render/wildfire.js",
-        "src/audio/audio.js"
-      ],
+      "consumers": ["src/sim/simulation.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js", "src/render/wildfire.js", "src/audio/audio.js"],
       "contract": "docs/WILDFIRE-2026-10-21.md"
     },
     "convectiveThunderstorms": {
       "authority": "src/ecology/thunderstorms.js",
-      "consumers": [
-        "src/sim/simulation.js",
-        "src/persistence/save-manager.js",
-        "src/world/planetary-travel.js",
-        "src/render/thunderstorms.js",
-        "src/audio/audio.js"
-      ],
+      "consumers": ["src/sim/simulation.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js", "src/render/thunderstorms.js", "src/audio/audio.js"],
       "contract": "docs/THUNDERSTORMS-2026-10-21.md"
     },
     "finiteCaveDrinking": {
       "authority": "src/ecology/cave-drinking.js",
-      "consumers": [
-        "src/sim/simulation.js",
-        "src/gameplay/interaction-command.js",
-        "src/ui/world-resource-target.js"
-      ],
+      "consumers": ["src/sim/simulation.js", "src/gameplay/interaction-command.js", "src/ui/world-resource-target.js"],
       "contract": "docs/CAVE-DRINKING-2026-10-21.md"
     },
     "boundedFloat32Debits": {
       "authority": "src/core/float32-transfer.js",
-      "consumers": [
-        "src/ecology/cave-drinking.js",
-        "src/world/groundwater-springs.js"
-      ]
+      "consumers": ["src/ecology/cave-drinking.js", "src/world/groundwater-springs.js"]
     },
     "exposedCaveGroundwater": {
       "authority": "src/world/cave-water.js",
-      "consumers": [
-        "src/world/topography.js",
-        "src/world/cave-air.js",
-        "src/world/subsurface.js",
-        "src/lineage/burrowing.js",
-        "src/lineage/cave-traversal.js",
-        "src/ecology/stratum-senses.js",
-        "src/render/cave-surface.js",
-        "src/render/subsurface.js"
-      ],
+      "consumers": ["src/world/topography.js", "src/world/cave-air.js", "src/world/subsurface.js", "src/lineage/burrowing.js", "src/lineage/cave-traversal.js", "src/ecology/stratum-senses.js", "src/render/cave-surface.js", "src/render/subsurface.js"],
       "contract": "docs/CAVE-GROUNDWATER-2026-10-21.md"
     },
     "finiteCaveOxygen": {
       "authority": "src/world/cave-air.js",
-      "consumers": [
-        "src/world/subsurface.js",
-        "src/world/natural-caves.js",
-        "src/lineage/burrowing.js",
-        "src/sim/simulation.js",
-        "src/render/subsurface.js"
-      ],
+      "consumers": ["src/world/subsurface.js", "src/world/natural-caves.js", "src/lineage/burrowing.js", "src/sim/simulation.js", "src/render/subsurface.js"],
       "contract": "docs/CAVE-AIR-2026-10-20.md"
     },
     "caveRoofSupport": {
       "authority": "src/world/cave-roof.js",
-      "consumers": [
-        "src/world/subsurface.js",
-        "src/render/subsurface.js"
-      ],
+      "consumers": ["src/world/subsurface.js", "src/render/subsurface.js"],
       "contract": "docs/CAVE-ROOF-2026-10-20.md"
     },
     "physicalMediumPerception": {
       "authority": "src/ecology/stratum-senses.js",
-      "consumers": [
-        "src/ecology/atmospheric-visibility.js",
-        "src/ecology/threat-perception.js",
-        "src/ecology/sensory-world.js"
-      ],
+      "consumers": ["src/ecology/atmospheric-visibility.js", "src/ecology/threat-perception.js", "src/ecology/sensory-world.js"],
       "contract": "docs/SENSORY-RECONCILIATION-2026-10-20.md"
     },
     "groundVibrationPerception": {
       "authority": "src/ecology/sensory-world.js",
-      "consumers": [
-        "src/ecology/stratum-senses.js",
-        "src/ecology/threat-perception.js",
-        "src/render/sensory-fog.js",
-        "src/persistence/save-manager.js"
-      ],
+      "consumers": ["src/ecology/stratum-senses.js", "src/ecology/threat-perception.js", "src/render/sensory-fog.js", "src/persistence/save-manager.js"],
       "contract": "docs/GROUND-VIBRATIONS-2026-10-21.md"
     },
     "caveOpticalGeometry": {
       "authority": "src/world/cave-optics.js",
-      "consumers": [
-        "src/ecology/stratum-senses.js",
-        "src/ecology/atmospheric-visibility.js"
-      ]
+      "consumers": ["src/ecology/stratum-senses.js", "src/ecology/atmospheric-visibility.js"]
     },
     "stratumSenseRuleVersions": {
       "authority": "src/ecology/stratum-sense-rules.js",
-      "consumers": [
-        "src/persistence/save-manager.js",
-        "src/world/planetary-travel.js"
-      ]
+      "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js"]
     },
     "metabolicThermalDemand": {
       "authority": "src/ecology/thermal-demand.js",
-      "consumers": [
-        "src/sim/simulation.js",
-        "src/ecology/thermal-refuge.js"
-      ],
+      "consumers": ["src/sim/simulation.js", "src/ecology/thermal-refuge.js"],
       "contract": "docs/THERMAL-REFUGE-2026-10-20.md"
     },
     "thermalRefugeDecisions": {
       "authority": "src/ecology/thermal-refuge.js",
-      "consumers": [
-        "src/sim/simulation.js",
-        "src/ecology/thermal-refuge-rules.js"
-      ],
+      "consumers": ["src/sim/simulation.js", "src/ecology/thermal-refuge-rules.js"],
       "contract": "docs/THERMAL-REFUGE-2026-10-20.md"
     },
     "thermalRefugeRuleVersions": {
       "authority": "src/ecology/thermal-refuge-rules.js",
-      "consumers": [
-        "src/persistence/save-manager.js",
-        "src/world/planetary-travel.js"
-      ]
+      "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js"]
     },
     "persistentTemperature": {
       "authority": "src/ecology/thermal-weather.js",
-      "consumers": [
-        "src/sim/simulation.js",
-        "src/render/thermal-weather.js",
-        "src/ecology/thermal-weather-rules.js"
-      ],
+      "consumers": ["src/sim/simulation.js", "src/render/thermal-weather.js", "src/ecology/thermal-weather-rules.js"],
       "contract": "docs/THERMAL-WEATHER-2026-10-20.md"
     },
     "thermalWeatherRuleVersions": {
       "authority": "src/ecology/thermal-weather-rules.js",
-      "consumers": [
-        "src/persistence/save-manager.js",
-        "src/world/planetary-travel.js"
-      ]
+      "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js"]
     },
     "atmosphericVisibility": {
       "authority": "src/ecology/atmospheric-visibility.js",
-      "consumers": [
-        "src/ecology/threat-perception.js",
-        "src/sim/simulation.js",
-        "src/gameplay/predator-encounter.js",
-        "src/gameplay/discovery.js",
-        "src/render/renderer.js",
-        "src/render/atmosphere.js",
-        "src/audio/model.js",
-        "src/persistence/save-manager.js"
-      ],
+      "consumers": ["src/ecology/threat-perception.js", "src/sim/simulation.js", "src/gameplay/predator-encounter.js", "src/gameplay/discovery.js", "src/render/renderer.js", "src/render/atmosphere.js", "src/audio/model.js", "src/persistence/save-manager.js"],
       "contract": "docs/ATMOSPHERE-2026-10-20.md"
     },
     "partIdsAndSockets": {
@@ -184,81 +103,46 @@
     },
     "actionPossession": {
       "authority": "src/lineage/action-capabilities.js",
-      "consumers": [
-        "src/ui/creature-context-tray.js",
-        "src/ui/gameplay-actions.js"
-      ],
+      "consumers": ["src/ui/creature-context-tray.js", "src/ui/gameplay-actions.js"],
       "contract": "docs/ACTION-BAR-2026-10-20.md"
     },
     "subsurfaceGeometryAndMaterial": {
       "authority": "src/world/subsurface.js",
-      "consumers": [
-        "src/lineage/burrowing.js",
-        "src/persistence/save-manager.js",
-        "src/render/subsurface.js",
-        "src/world/terrain-sediment.js"
-      ],
+      "consumers": ["src/lineage/burrowing.js", "src/persistence/save-manager.js", "src/render/subsurface.js", "src/world/terrain-sediment.js"],
       "contract": "docs/BURROWING-2026-10-20.md",
       "note": "For opted excavated-subsurface/1 worlds, physical solid terrain is surface elevation minus open cavity volume. Cavities are excluded space, not another inventory. Excavated material raises actual surface spoil; collapse subsides the roof. Cumulative excavation/collapse values are receipts. Existing runoff operators conserve their own surface-height deltas. Historical missing-policy worlds retain their recorded geometry."
     },
     "burrowingTraversal": {
       "authority": "src/lineage/burrowing.js",
-      "consumers": [
-        "src/sim/simulation.js",
-        "src/lineage/lifestyle.js",
-        "src/lineage/action-capabilities.js",
-        "src/gameplay/foraging.js",
-        "src/gameplay/weather-exposure.js"
-      ],
+      "consumers": ["src/sim/simulation.js", "src/lineage/lifestyle.js", "src/lineage/action-capabilities.js", "src/gameplay/foraging.js", "src/gameplay/weather-exposure.js"],
       "contract": "docs/BURROWING-2026-10-20.md"
     },
     "burrowingRuleVersions": {
       "authority": "src/lineage/burrowing-rules.js",
-      "consumers": [
-        "src/persistence/save-manager.js",
-        "src/world/planetary-travel.js"
-      ]
+      "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js"]
     },
     "naturalCaveFormation": {
       "authority": "src/world/natural-caves.js",
-      "consumers": [
-        "src/sim/simulation.js",
-        "src/world/planetary-runoff.js",
-        "src/persistence/save-manager.js"
-      ],
+      "consumers": ["src/sim/simulation.js", "src/world/planetary-runoff.js", "src/persistence/save-manager.js"],
       "contract": "docs/NATURAL-CAVES-2026-10-20.md"
     },
     "caveEntranceTraversal": {
       "authority": "src/lineage/cave-traversal.js",
-      "consumers": [
-        "src/sim/simulation.js",
-        "src/lineage/burrowing.js",
-        "src/persistence/save-manager.js"
-      ],
+      "consumers": ["src/sim/simulation.js", "src/lineage/burrowing.js", "src/persistence/save-manager.js"],
       "contract": "docs/NATURAL-CAVES-2026-10-20.md"
     },
     "caveRuleVersions": {
       "authority": "src/lineage/cave-rules.js",
-      "consumers": [
-        "src/persistence/save-manager.js",
-        "src/world/planetary-travel.js"
-      ]
+      "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js"]
     },
     "continuousCanopyTraversal": {
       "authority": "src/lineage/climbing.js",
-      "consumers": [
-        "src/sim/simulation.js",
-        "src/persistence/save-manager.js",
-        "src/gameplay/player-combat.js"
-      ],
+      "consumers": ["src/sim/simulation.js", "src/persistence/save-manager.js", "src/gameplay/player-combat.js"],
       "contract": "docs/CLIMBING-2026-10-20.md"
     },
     "climbingRuleVersions": {
       "authority": "src/lineage/climbing-rules.js",
-      "consumers": [
-        "src/persistence/save-manager.js",
-        "src/world/planetary-travel.js"
-      ]
+      "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js"]
     },
     "currentPartPixels": {
       "authority": "src/render/part-sprites.js",
@@ -559,88 +443,42 @@
     },
     "authoredFounderStart": {
       "authority": "src/persistence/authored-founders.js",
-      "consumers": [
-        "src/ui/founder-start.js",
-        "src/main.js",
-        "src/persistence/save-manager.js",
-        "src/world/planetary-travel.js"
-      ],
+      "consumers": ["src/ui/founder-start.js", "src/main.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js"],
       "note": "Explicit creator-authored founder pair enters an independent chosen ecosystem through canonical spawning, anatomy, resources, reproduction and persistence. External introduction receipts record initial mass/energy/hydration; no fabricated ancestors, biological births or backdated existence. Guided design traces are authored precursors, sandbox unlocks ancestry without bypassing shared structure/viability."
     },
     "authoredPrecursorDesign": {
       "authority": "src/lineage/founder-design.js",
-      "consumers": [
-        "src/ui/founder-start.js",
-        "src/persistence/authored-founders.js"
-      ],
+      "consumers": ["src/ui/founder-start.js", "src/persistence/authored-founders.js"],
       "note": "Replay-validates complete authored body-design sequences using the existing draft authorities. Saved design packages preserve mode and precursor trace. This is not a simulated evolutionary lineage."
     },
     "existingResidentStart": {
       "authority": "src/persistence/resident-start.js",
-      "consumers": [
-        "src/main.js",
-        "src/ui/resident-start.js",
-        "src/persistence/save-manager.js"
-      ],
+      "consumers": ["src/main.js", "src/ui/resident-start.js", "src/persistence/save-manager.js"],
       "note": "Explicit creator choice of an actual living regional resident on an independent world fork. Preserves biological stocks, RNG, body, age, generation and real ancestry; records player-entry provenance, updates playable descendants and carries entry identity through regional saves. Never fabricates simulated evolution or custom anatomy."
     },
     "movementRuleAdoption": {
       "authority": "src/lineage/movement-rule-migration.js",
-      "consumers": [
-        "src/persistence/save-manager.js",
-        "src/world/planetary-travel.js",
-        "src/main.js",
-        "src/ui/front-end.js"
-      ],
+      "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js", "src/main.js", "src/ui/front-end.js"],
       "note": "Explicit future movement policy adoption on an isolated validated checkpoint continuation. Source/clock/backup receipts and canonical synchronized regional agreement are validated; bodies, resources, RNG and past events are preserved. SaveManager owns atomic untouched-source backup plus continuation storage, readonly backup guards and activation ordering. Ordinary restoration never adopts policies. Failed commits roll candidate metadata back; unsupported environmental-only regional clocks require explicit conversion."
     },
     "finiteSurfaceIce": {
       "authority": "src/world/surface-ice.js",
-      "consumers": [
-        "src/world/environment.js",
-        "src/sim/simulation.js",
-        "src/lineage/ice-locomotion.js",
-        "src/lineage/diving.js",
-        "src/world/surface-ice-rules.js",
-        "src/render/surface-ice.js"
-      ],
+      "consumers": ["src/world/environment.js", "src/sim/simulation.js", "src/lineage/ice-locomotion.js", "src/lineage/diving.js", "src/world/surface-ice-rules.js", "src/render/surface-ice.js"],
       "note": "New finite planetary worlds record finite-surface-ice/1; historical adoption requires the existing atomic source backup. Frozen water is a subset of existing environment.volume, never an added stock. Phase, brine capacity, liquid-only transport and fracture preserve the same owners. Growth-scaled body load, shared support/routes and summed occupants cause real fracture and costed escape/drowning; liquid contact governs coats, gills, drinking and food. Historical worlds remain unchanged. Aerial landing impacts, bounded liquid-clearance breathing routes and exact regional persistence share the same owners. Fixed-reservoir maps and final thermodynamic/snow/art coverage remain open. See docs/SURFACE-ICE-2026-10-20.md."
     },
     "ballisticJumping": {
       "authority": "src/lineage/jumping.js",
-      "consumers": [
-        "src/sim/simulation.js",
-        "src/gameplay/player-combat.js",
-        "src/persistence/save-manager.js",
-        "src/world/planetary-travel.js",
-        "src/ui/creature-context-tray.js",
-        "src/render/renderer.js"
-      ],
+      "consumers": ["src/sim/simulation.js", "src/gameplay/player-combat.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js", "src/ui/creature-context-tray.js", "src/render/renderer.js"],
       "note": "New worlds record ballistic-jumping/1. Actual spring legs, anatomical load and existing food/breath fund a committed analytic arc shared by player, wildlife and modern pounce. Existing terrain supplies the vertical datum through gliding.js. Terrain/water impact, recovery, native articulation and saved state are connected. Historical absent-policy worlds retain the older pounce controller. No automatic migration, midair impulse stacking, free landing rescue or fabricated evolutionary evidence."
     },
     "finiteHeightGliding": {
       "authority": "src/lineage/gliding.js",
-      "consumers": [
-        "src/sim/simulation.js",
-        "src/ecology/canopy-site.js",
-        "src/lineage/flight.js",
-        "src/lineage/body-inheritance.js",
-        "src/persistence/save-manager.js",
-        "src/world/planetary-travel.js",
-        "src/ui/creature-context-tray.js",
-        "src/render/renderer.js"
-      ],
+      "consumers": ["src/sim/simulation.js", "src/ecology/canopy-site.js", "src/lineage/flight.js", "src/lineage/body-inheritance.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js", "src/ui/creature-context-tray.js", "src/render/renderer.js"],
       "note": "New worlds record finite-height-gliding/1. Bilateral inherited flank membranes use real terrain/canopy launch height, finite descent and movement energy, bounded steering and terrain/water landings. Player and wildlife share physics. Canopy support and costed climbing remain owned by canopy-site.js; powered flight has a separate metabolism. Historical absent-policy saves preserve movement and mutation choices. No automatic migration or fabricated natural evolution."
     },
     "directionalFlightWind": {
       "authority": "src/lineage/flight-wind.js",
-      "consumers": [
-        "src/lineage/lifestyle.js",
-        "src/lineage/flight.js",
-        "src/render/flight-wind.js",
-        "src/world/planet-world.js",
-        "src/world/environment.js"
-      ],
+      "consumers": ["src/lineage/lifestyle.js", "src/lineage/flight.js", "src/render/flight-wind.js", "src/world/planet-world.js", "src/world/environment.js"],
       "note": "New planetary worlds record directional-flight-wind/1. Shared airborne movement samples the existing absolute wind field and physical day for heading-dependent speed and finite movement energy costs. No RNG, atmosphere inventory, automatic historical adoption or player-only physics. Renderer and action tooltip display the same observed wind."
     },
     "inheritedPigmentation": {
@@ -672,21 +510,12 @@
     },
     "depthDivingAndRespiration": {
       "authority": "src/lineage/diving.js",
-      "consumers": [
-        "src/sim/simulation.js",
-        "src/lineage/lifestyle.js",
-        "src/ecology/freshwater-food.js",
-        "src/gameplay/foraging.js",
-        "src/persistence/save-manager.js"
-      ],
+      "consumers": ["src/sim/simulation.js", "src/lineage/lifestyle.js", "src/ecology/freshwater-food.js", "src/gameplay/foraging.js", "src/persistence/save-manager.js"],
       "contract": "docs/DIVING-2026-10-20.md"
     },
     "divingRuleVersions": {
       "authority": "src/lineage/diving-rules.js",
-      "consumers": [
-        "src/persistence/save-manager.js",
-        "src/world/planetary-travel.js"
-      ]
+      "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js"]
     },
     "carcassRuleVersions": {
       "authority": "src/gameplay/carcass-rules.js",
