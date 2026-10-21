@@ -1,0 +1,38 @@
+name: GenVo physical starter checks
+on:
+  push:
+    branches:
+      - dev/first-generation-physical-starts-2026-10-21
+  pull_request:
+    paths:
+      - 'src/ui/physical-starter-presets.js'
+      - 'src/persistence/authored-founders.js'
+      - 'src/ui/front-end.js'
+      - 'src/main.js'
+      - 'index.html'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 24
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validated starter bodies and real physical action routes
+        run: |
+          node --check src/main.js
+          node --check src/ui/front-end.js
+          node tests/physical-starter-presets.mjs
+          node tests/authored-founders.mjs
+      - name: Historical menu, physics and export parity
+        run: |
+          node tests/menu-task-usability.mjs
+          node tests/jumping.mjs
+          node tests/burrowing.mjs
+          node tests/climbing.mjs
+          node tests/save-persistence.mjs
+          node tests/public-export.mjs
