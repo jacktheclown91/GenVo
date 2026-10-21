@@ -18,7 +18,7 @@ function drawSignals(renderer,signals,tile){
 export function drawSensoryFog(renderer,{tile,cols,rows,startX,startY}){
  const sim=renderer.sim,animal=sim.player?.();
  if(!animal||sim.sensoryFogEnabled!==true||typeof document==='undefined')return false;
- const view=creatureView(sim,animal),memory=rememberedCells(sim,animal),now=renderer.renderNow||performance.now();
+ const now=renderer.renderNow||performance.now();
  const w=renderer.w,h=renderer.h,pad=Math.ceil(tile*3);
  const last=renderer.sensoryFogCache;
  const stale=!last||last.sim!==sim||last.world!==sim.world||last.id!==animal.id||
@@ -26,6 +26,7 @@ export function drawSensoryFog(renderer,{tile,cols,rows,startX,startY}){
   now-last.time>240||Math.hypot(last.x-animal.x,last.y-animal.y)>.35||
   Math.hypot(last.cameraX-renderer.camera.x,last.cameraY-renderer.camera.y)>2;
  if(stale){
+  const view=creatureView(sim,animal),memory=rememberedCells(sim,animal);
   const canvas=last?.canvas&&last.w===w&&last.h===h&&last.tile===tile?last.canvas:document.createElement('canvas');
   canvas.width=w+pad*2;canvas.height=h+pad*2;
   const c=canvas.getContext('2d');if(!c)return false;
