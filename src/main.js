@@ -4,6 +4,7 @@ import {birthRuleMigrationMessage} from './lineage/birth-rules.js';
 import {FrameStepper} from './sim/frame-stepper.js';
 import {setProcessingLoad} from './sim/processing-capacity.js';
 import {planetaryTravelAvailability,crossPlanetaryBorder} from './world/planetary-travel.js';
+import {planetaryWalkIntent,planetaryPositionLabel} from './world/planetary-walkthrough.js';
 import {PointerApproach} from './ui/pointer-approach.js';
 import {approachGoal} from './ui/world-resource-target.js';
 import {CourtshipTray} from './ui/courtship-tray.js';
@@ -187,7 +188,7 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
   return true;
 }
 const frontEnd=new FrontEnd({saveManager,audio,
-  getWorldInfo:()=>`Generation ${sim.player()?.generation||sim.lineage?.highestGeneration||1} · Year ${sim.year||1}, Day ${sim.day||1}${sim.creatureStart?.kind==='authored-founder'?' · Authored '+sim.creatureStart.mode+' start':''}`,
+  getWorldInfo:()=>`Generation ${sim.player()?.generation||sim.lineage?.highestGeneration||1} · Year ${sim.year||1}, Day ${sim.day||1}${sim.creatureStart?.kind==='authored-founder'?' · Authored '+sim.creatureStart.mode+' start':''}${planetaryPositionLabel(sim)?' · '+planetaryPositionLabel(sim):''}`,
   onContinue:loadWorldFromMenu,onLoad:loadWorldFromMenu,onCreate:createWorldFromMenu,onExportScenario:exportScenarioFromMenu,
   onSave:async()=>{const checkpoint=await saveManager.saveNow('manual');if(!checkpoint)throw Error('Unable to save this world.');return checkpoint},
   onResume:()=>closeGameMenus(),
@@ -237,17 +238,17 @@ function toggleFamilyPassage(){
   tutorial.showToast(sim.travelFamilyGroup?'Family passage on. Gather relatives and dependents close to the border.':'Family passage off. Cross alone if no young depend on you.',2600,'safe');
   audio.note('confirm');
 }
-function travelPlanetaryRegion(){
+function travelPlanetaryRegion({automatic=false}={}){
   if(tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||succession.open)return;
   try{
     const result=crossPlanetaryBorder(sim);
     if(!result.ok){tutorial.showToast(result.message,2600,'warn');audio.note('deny');return}
-    installSimulation(result.simulation,{resume:true});closeDetailPanels();clearMovementKeys();
+    installSimulation(result.simulation,{resume:true,keepMovement:automatic});closeDetailPanels();if(!automatic)clearMovementKeys();
     tutorial.showToast(result.message,3500,'success');audio.note('confirm');
   }catch(error){console.error('Regional crossing failed:',error);tutorial.showToast('Regional passage could not be completed. Current world remains active.',3500,'warn');audio.note('deny')}
 }
-function installSimulation(next,{fresh=false,resume=false}={}){
-  seed=next.seed;sim=next;renderer.sim=sim;observer.reset();succession.close();editor.close();syncSpeedButton();frameStepper.reset();last=performance.now();hudTimer=0;clearMovementKeys();
+function installSimulation(next,{fresh=false,resume=false,keepMovement=false}={}){
+  seed=next.seed;sim=next;renderer.sim=sim;observer.reset();succession.close();editor.close();syncSpeedButton();frameStepper.reset();last=performance.now();hudTimer=0;if(!keepMovement)clearMovementKeys();
   manualPause=resume?!!sim.paused:false;if(!resume)sim.paused=false;if(pauseNotice)pauseNotice.hidden=!manualPause;
   leadershipWheel.resetDiscovery();tutorial.setSimulation(sim,{fresh,resume});effectFeedback.setSimulation(sim);journal.setSimulation(sim);audio.setSimulation(sim);
   mateOpen=false;mindOpen=false;territoryOpen=false;shelterOpen=false;migrationOpen=false;ecologyOpen=false;helpOpen=false;guideOpen=false;leadershipWheel.setCommandMode(false);saveManager.resetObservation(sim);renderer.beginScenePreparation();
@@ -347,12 +348,20 @@ addEventListener('blur',clearMovementKeys);
 
 function input(){const manual={up:keys.KeyW||keys.ArrowUp,down:keys.KeyS||keys.ArrowDown,left:keys.KeyA||keys.ArrowLeft,right:keys.KeyD||keys.ArrowRight,sprint:keys.ShiftLeft||keys.ShiftRight,brace:braceInput.read()||!!keys.KeyJ};return pointerApproach?pointerApproach.read(manual):manual}
 const frameStepper=new FrameStepper({controlHz:CFG.controlHz,simHz:CFG.simHz});
-let last=performance.now(),hudTimer=0;
+let last=performance.now(),hudTimer=0,lastFrontierWarning=-Infinity;
 function frame(now){
   const frameWorkStart=performance.now();
   const dt=Math.max(0,Math.min(.1,(now-last)/1000));last=now;const controls=input();
   const processing=frameStepper.advance(dt,observer.speed,hz=>sim.playerControlStep(controls,hz),()=>sim.update(controls,{externalPlayerControl:true}),{paused:sim.paused||!renderer.sceneShown,beforeStep:()=>!prepareRegionalBiology(sim)});
   setProcessingLoad(sim,processing);
+  // Walking farther keeps expanding the SAME procedurally generated planet.
+  // A real region swap still uses canonical family, physics and save authorities.
+  const outward=planetaryWalkIntent(sim,{up:keys.KeyW||keys.ArrowUp,down:keys.KeyS||keys.ArrowDown,left:keys.KeyA||keys.ArrowLeft,right:keys.KeyD||keys.ArrowRight});
+  if(outward&&!frontEnd.isOpen&&!tutorial.worldInputBlocked?.()&&!editor.open&&!succession.open){
+    const status=planetaryTravelAvailability(sim);
+    if(status.enabled&&status.direction===outward)travelPlanetaryRegion({automatic:true});
+    else if(performance.now()-lastFrontierWarning>3600){lastFrontierWarning=performance.now();tutorial.showToast(status.reason||'No traversable crossing here.',2800,'warn')}
+  }
   const combatResult=sim.playerCombat.consumeResult();if(combatResult){if(!combatResult.quiet||combatResult.type!=='attack')tutorial.onInteraction(combatResult);audio.noteResult(combatResult)}
   sim.cognition.showOverlay=mindOpen;sim.territory.showOverlay=territoryOpen;sim.shelter.showOverlay=shelterOpen;sim.migration.showOverlay=migrationOpen;
   renderer.setPlayerPresentation(controls,frameStepper.presentationAhead);
@@ -360,6 +369,8 @@ function frame(now){
   if(!frontEnd.isOpen&&!editor.open&&!succession.open&&sim.evolutionEditor?.pending?.()&&editor.request())clearMovementKeys();
   if(!frontEnd.isOpen)tutorial.update();if(!frontEnd.isOpen)audio.update(dt,controls);renderer.renderOrPrepare();contextTray.update();courtshipTray.update();tutorial.notifications.layout();fpsMeter.frame();hudTimer+=dt;fieldGuide.refresh(dt);
   if(hudTimer>.12){sim.lineage.refreshSelection();sim.reproduction.refreshSelection();leadershipWheel.sync();updateHUD(sim,{renderer,mateOpen,mindOpen,territoryOpen,shelterOpen,migrationOpen,ecologyOpen,helpOpen,guideOpen,journalOpen:journal.open,commandMode:leadershipWheel.commandMode});journal.update();const tendencyNotice=sim.tendency?.consumeNotice?.();if(tendencyNotice)tutorial.showToast(tendencyNotice.message,2600,'safe');const centerNotice=sim.populationEcology?.consumeNotice?.();if(centerNotice)tutorial.showToast(centerNotice.message,3200,centerNotice.tone||'warn');const memoryNotice=tutorial.toastEl?.hidden?sim.populationMemory?.consumeNotice?.():null;if(memoryNotice)tutorial.showToast(memoryNotice.message,3400,memoryNotice.tone||'safe');const protoNotice=tutorial.toastEl?.hidden?sim.protoSpeciation?.consumeNotice?.():null;if(protoNotice)tutorial.showToast(protoNotice.message,3600,protoNotice.tone||'success');const speciesNotice=tutorial.toastEl?.hidden?sim.speciation?.consumeNotice?.():null;if(speciesNotice)tutorial.showToast(speciesNotice.message,4000,speciesNotice.tone||'success');const coexistNotice=tutorial.toastEl?.hidden?sim.speciesCoexistence?.consumeNotice?.():null;if(coexistNotice)tutorial.showToast(coexistNotice.message,3600,coexistNotice.tone||'warn');const lifestyleNotice=tutorial.toastEl?.hidden?sim.speciesLifestyle?.consumeNotice?.():null;if(lifestyleNotice)tutorial.showToast(lifestyleNotice.message,3600,lifestyleNotice.tone||'success');const effectNotice=tutorial.toastEl?.hidden?effectFeedback.observe():null;if(effectNotice)tutorial.showToast(effectNotice.message,3000,effectNotice.tone||'safe');const controlStatus=sim.familyControlStatus?.();if(controlStatus?.unlocked&&!sim.familyControlExplained&&!tutorial.worldInputBlocked?.()&&tutorial.toastEl?.hidden){sim.familyControlExplained=true;tutorial.showToast('Family control unlocked · TAB switches relatives · AUTO lets the selected creature act on its own.',3600,'success')}saveManager.observe({eligible:!frontEnd.isOpen&&!sim.paused&&!tutorial.worldInputBlocked?.()});applyObserverResult(observer.observe());hudTimer=0}
+  const label=planetaryPositionLabel(sim),chip=document.querySelector('#planetLocation');
+  if(chip){chip.hidden=!label;if(label&&chip.textContent!==label)chip.textContent=label}
   fpsMeter.recordWork(performance.now()-frameWorkStart);
   requestAnimationFrame(frame)
 }
