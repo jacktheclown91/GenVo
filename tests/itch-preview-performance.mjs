@@ -43,3 +43,38 @@ try{
  assert.equal(started[0].at,1,'the first field loop starts before a second fetch');
 }finally{globalThis.fetch=previousFetch}
 console.log('itch preview performance/audio contracts PASS');
+
+// Incremental construction must never publish half-painted terrain and may
+// resume across any number of frames without losing its render context.
+{
+ const oldDocument=globalThis.document;
+ const made=[];
+ globalThis.document={createElement:()=>{const context={imageSmoothingEnabled:true,scale(){},drawImage(){},fillRect(){}};const canvas={width:0,height:0,getContext(){return context}};made.push(canvas);return canvas}};
+ try{
+  const staged=Object.create(Renderer.prototype),world={n:128,water:new Uint8Array(128*128).fill(1),idx:(x,y)=>y*128+x};
+  staged.sim={world};staged.ctx={};staged.terrainChunkCache=new Map();
+  // Start directly with water-only vegetation phase to keep the tiny fake
+  // browser environment independent of real canvas and habitat generation.
+  const job=staged.createTerrainChunkWork(1,1,2,99);
+  assert.ok(job);job.phase=1;
+  for(let i=0;i<4;i++){
+    assert.equal(staged.stepTerrainChunkWork(job,Infinity,2),false);
+    assert.equal(staged.terrainChunkCache.size,0,'partial chunk not visible');
+    assert.equal(staged.ctx===job.cc,false,'restore drawing context after yielding');
+  }
+  let completed=false;
+  for(let i=0;i<15&&!completed;i++)completed=staged.stepTerrainChunkWork(job,Infinity,2);
+  assert.equal(completed,true,'finite tile tasks eventually publish complete art');
+  assert.equal(staged.terrainChunkCache.get(job.key).canvas,job.chunk);
+  assert.equal(staged.terrainChunkCache.get(job.key).vegetation,job.vegetation);
+  // An invalidated job must not publish art with an obsolete epoch/signature.
+  staged.terrainChunkWork=staged.createTerrainChunkWork(2,2,2,2);
+  staged.terrainRefreshQueued=new Set();staged.terrainRefreshQueue=[];
+  staged.terrainChunkSignature=()=>3;
+  staged.processTerrainRefreshQueue();
+  assert.equal(staged.terrainChunkWork,null,'discard obsolete in-flight work');
+  assert.equal(staged.terrainRefreshQueue.length,1,'requeue updated chunk');
+  assert.equal(staged.terrainChunkCache.has('2,2,2'),false);
+ }finally{globalThis.document=oldDocument}
+}
+console.log('incremental cached terrain scheduling contracts PASS');
