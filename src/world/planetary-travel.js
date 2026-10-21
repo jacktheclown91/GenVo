@@ -1,5 +1,6 @@
 import {SURFACE_ICE,initializeSurfaceIce} from './surface-ice.js';
 import {POPULATION_MODE} from './regional-replay-order.js';
+import {PLANET_PROJECTIONS} from './planet-geography.js';
 import {REGIONAL_FOUNDING,foundRegionalPopulations} from '../ecology/regional-founding.js';
 import {assignRegionalBiologyModes} from './planetary-demography.js';
 import {REGIONAL_RESIDENCY,residencyEnabled,crossingResidency} from './regional-residency.js';
@@ -27,11 +28,11 @@ const LIMIT=16,BOUNDARY=3.75,SIZE=128;
 // number of explored regions is not limited here.
 const residentLimit=sim=>residencyEnabled(sim)?REGIONAL_RESIDENCY.maxResident:LIMIT;
 const GLOBAL_AUTHORITIES=['lineage','evolution','evolutionTree','evolutionBudget','evolutionEditor','generationProgress'];
-export function planetaryPreparationKey(sim,origin){return JSON.stringify([sim.seed,regionKey(origin),sim.massRules,sim.caveRules??null,sim.surfaceIceRules??null,sim.mateAssortmentRules??null]);}
+export function planetaryPreparationKey(sim,origin){return JSON.stringify([sim.seed,sim.world.planet?.descriptor?.projection??null,regionKey(origin),sim.massRules,sim.caveRules??null,sim.surfaceIceRules??null,sim.mateAssortmentRules??null]);}
 export function preparePlanetaryDestination(sim,origin){
  const planet=sim.world.planet;if(!planet)throw Error('Planetary preparation requires a planetary source.');
  for(const x of [origin.x-1,origin.x+SIZE+1])for(const y of [origin.y-1,origin.y+SIZE+1])planet.localToGeo(x,y);
- const destination=new Simulation(sim.seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:origin,massRules:sim.massRules,localAssortment:sim.mateAssortmentRules!==undefined,naturalCaves:!!sim.caveRules,surfaceIce:sim.surfaceIceRules===SURFACE_ICE.policy});
+ const destination=new Simulation(sim.seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:origin,planetDescriptor:planet.descriptor,massRules:sim.massRules,localAssortment:sim.mateAssortmentRules!==undefined,naturalCaves:!!sim.caveRules,surfaceIce:sim.surfaceIceRules===SURFACE_ICE.policy});
  Object.defineProperty(destination,'preparedPlanetaryKey',{value:planetaryPreparationKey(sim,origin)});return destination;
 }
 const dirs=[
@@ -97,7 +98,7 @@ export function planetaryTravelAvailability(sim){
   const planet=sim.world.planet;
   for(const x of [nextOrigin.x-1,nextOrigin.x+SIZE+1])
    for(const y of [nextOrigin.y-1,nextOrigin.y+SIZE+1])planet.localToGeo(x,y);
- }catch{return unavailable('The current planetary projection ends here. This build has not yet implemented continent-scale projection paging or pole traversal.');}
+ }catch{return unavailable(sim.world.planet.descriptor.projection===PLANET_PROJECTIONS.continental?'The polar ice limit or the far side of the world map is ahead; the planet continues no further in this direction.':'This historical world was created with the original regional map, which ends here.');}
  const point=approach(sim,closest,animal);
  const sessions=stored(sim),found=sessions.sessions.find(s=>s.key===regionKey(nextOrigin));
  const biological=found&&(found.biologicalMode==='canonical-ticks/1'||found.biologicalMode===POPULATION_MODE);
@@ -230,7 +231,7 @@ export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
  dest.regionalEcology.resetPageResidency();dest.rebuildSpatial();
  // Keep all pre-surveyed Worlds in the same atlas and replace the activated
  // region with its exact saved World rather than a re-generated approximation.
- const atlas=new PlanetRegionAtlas(dest.world,origin=>new World(sim.seed,{generator:'planetary/1',planetOrigin:origin}));
+ const atlas=new PlanetRegionAtlas(dest.world,origin=>new World(sim.seed,{generator:'planetary/1',planetOrigin:origin,planetDescriptor:sim.world.planet.descriptor}));
  const archivedKeys=new Set([...sessions.map(s=>s.key),sourceKey]);
  for(const {world} of sim.planetaryRegions.entries()){
   if(regionKey(world.regionOrigin)===destinationKey||archivedKeys.has(regionKey(world.regionOrigin)))continue;

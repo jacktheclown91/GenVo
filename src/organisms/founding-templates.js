@@ -29,8 +29,8 @@ const FOUR=[1,3,5,7];
 // Habitat descriptors are tolerance claims over the World's own physical
 // fields (temperature and moisture, 0..1) and medium (land, shore within
 // three cells of water, or water). Food is never read from these ranges.
-const T={cold:[0,.34],cool:[0,.42],temperate:[.28,.5],warm:[.4,1],any:[0,1]};
-const M={dry:[0,.42],mid:[.3,.62],wet:[.5,1],any:[0,1]};
+const T={cold:[0,.34],cool:[0,.42],temperate:[.28,.5],warm:[.4,1],hot:[.48,1],any:[0,1]};
+const M={dry:[0,.42],mid:[.3,.62],wet:[.5,1],humid:[.42,1],any:[0,1]};
 
 export const FOUNDING_TEMPLATES=Object.freeze([
  // The original valley bodies remain available wherever their habitat exists.
@@ -74,6 +74,18 @@ export const FOUNDING_TEMPLATES=Object.freeze([
  {id:'highland-genvo',label:'Highland GenVo',carrier:'genvo',group:[4,8],habitat:{medium:'land',temp:T.cool,moisture:M.any},
   placements:[...FOUNDER_PLACEMENTS,at('filament-tuft','dorsal')]},
 
+ // Warm humid lowlands, reachable since the continental projection.
+ {id:'jungle-browser',label:'Jungle browser',carrier:'mosskip',group:[5,10],habitat:{medium:'land',temp:T.hot,moisture:M.humid},
+  placements:[torso('soft-torso'),...legs('climber-leg',[1,7]),...legs('walking-leg',[3,5]),at('nibbler-mouth','mouth'),...eyes('wide-field-eye'),at('prehensile-tail','tail')]},
+ {id:'mire-wallower',label:'Mire wallower',carrier:'rootling',group:[4,8],habitat:{medium:'land',temp:T.hot,moisture:M.humid},
+  placements:[torso('stout-torso'),...legs('padded-leg',FOUR),at('grazing-mouth','mouth'),...eyes('simple-eye'),at('heat-frill','dorsal'),at('fat-tail','tail')]},
+ {id:'fruit-pecker',label:'Fruit pecker',carrier:'podshell',group:[4,8],habitat:{medium:'land',temp:T.hot,moisture:M.humid},
+  placements:[torso('light-torso'),...legs('walking-leg',FOUR),at('beak-mouth','mouth'),...eyes('display-eye'),at('display-frill','dorsal'),at('balance-tail','tail')]},
+ {id:'humid-forager',label:'Humid forager',carrier:'genvo',group:[4,8],habitat:{medium:'land',temp:T.hot,moisture:M.humid},
+  placements:[...FOUNDER_PLACEMENTS,at('heat-frill','dorsal')]},
+ {id:'leaf-rotter',label:'Leaf rotter',carrier:'mirelick',group:[3,6],habitat:{medium:'land',temp:T.hot,moisture:M.humid},
+  placements:[torso('small-torso'),...legs('padded-leg',FOUR),at('sucker-mouth','mouth'),...eyes('tracker-eye'),at('fat-tail','tail')]},
+
  // Freshwater.
  {id:'pond-sifter',label:'Pond sifter',carrier:'rillsifter',group:[4,9],habitat:{medium:'water',temp:T.any,moisture:M.any},
   placements:[torso('small-torso'),...legs('webbed-leg',FOUR),at('filter-mouth','mouth'),...eyes('simple-eye'),at('paddle-tail','tail'),at('gill-slits','flank.left')]},
@@ -97,6 +109,10 @@ export const FOUNDING_TEMPLATES=Object.freeze([
   placements:[torso('sleek-torso'),...legs('runner-leg',FOUR),at('tearing-jaw','mouth'),...eyes('hunter-eye'),at('flag-tail','tail'),at('signal-crest','dorsal')]},
  {id:'shell-crusher',label:'Shell crusher',carrier:'needlejaw',group:[2,3],predator:true,habitat:{medium:'land',temp:T.temperate,moisture:M.any},
   placements:[torso('reinforced-torso'),...legs('sturdy-leg',FOUR),at('crushing-jaw','mouth'),...eyes('tracker-eye'),at('club-tail','tail'),at('armor-plate','dorsal')]},
+ {id:'canopy-stalker',label:'Canopy stalker',carrier:'needlejaw',group:[2,3],predator:true,habitat:{medium:'land',temp:T.hot,moisture:M.humid},
+  placements:[torso('sleek-torso'),...legs('climber-leg',[1,7]),...legs('walking-leg',[3,5]),at('tearing-jaw','mouth'),...eyes('hunter-eye'),at('prehensile-tail','tail')]},
+ {id:'swamp-gaper',label:'Swamp gaper',carrier:'bankjaw',group:[2,3],predator:true,habitat:{medium:'shore',temp:T.hot,moisture:M.humid},
+  placements:[torso('stout-torso'),...legs('webbed-leg',FOUR),at('gape-mouth','mouth'),...eyes('stalk-eye'),at('paddle-tail','tail'),at('heat-frill','dorsal')]},
  {id:'marsh-gaper',label:'Marsh gaper',carrier:'bankjaw',group:[2,3],predator:true,habitat:{medium:'shore',temp:T.temperate,moisture:M.wet},
   placements:[torso('stout-torso'),...legs('webbed-leg',FOUR),at('gape-mouth','mouth'),...eyes('stalk-eye'),at('paddle-tail','tail')]}
 ].map(t=>Object.freeze({...t,group:Object.freeze([...t.group]),placements:Object.freeze(t.placements.map(p=>Object.freeze({...p}))),variants:Object.freeze((t.variants||[]).map(v=>Object.freeze({...v,parts:Object.freeze([...v.parts])})))})));

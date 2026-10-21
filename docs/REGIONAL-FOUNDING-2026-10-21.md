@@ -4,7 +4,7 @@ New planetary worlds record `regional-founding-templates/1`. When the player fir
 
 ## Templates
 
-32 templates (`founding-templates/1`): the seven original wildlife bodies, the GenVo founder body, and 24 further land, shore and freshwater bodies covering grazers, browsers, seed specialists, climbers, burrowers, cold- and dry-adapted forms, filter feeders, scavengers and predators. Each is a modular body plan from the shared part registry placed on a legacy life-history carrier (`SPECIES` maturity, lifespan, litter, gestation, social mode). The carrier grants no diet or ability: feeding, hunting, swimming, digging, climbing and thermal physiology follow the mounted parts through the existing authorities. Predator templates use hunter carriers so that existing prey-gated breeding applies.
+39 templates (`founding-templates/1`): the seven original wildlife bodies, the GenVo founder body, and 31 further land, shore and freshwater bodies covering grazers, browsers, seed specialists, climbers, burrowers, cold-, dry- and warm-humid-adapted forms, filter feeders, scavengers and predators. The seven warm-humid templates were added once the continental projection made tropical regions reachable; before that, such regions founded nothing because no authored tolerance covered them. Each is a modular body plan from the shared part registry placed on a legacy life-history carrier (`SPECIES` maturity, lifespan, litter, gestation, social mode). The carrier grants no diet or ability: feeding, hunting, swimming, digging, climbing and thermal physiology follow the mounted parts through the existing authorities. Predator templates use hunter carriers so that existing prey-gated breeding applies.
 
 Catalog validation runs at import and fails visibly:
 
@@ -34,4 +34,4 @@ Every founder is generation 1 with no parents and carries `foundingOrigin {schem
 
 ## Limits
 
-The planetary generator's regions are climatically similar (mean temperature roughly 0.31–0.50), so founded communities overlap more than a final world should; this is a geography limit, not a founding rule. Ranking and group sizes are authored proposals pending ecological review. No long-run outcome is claimed. The distant-ecology population model is a separate pass.
+Within the original ±15° projection, regions were climatically similar (mean temperature roughly 0.31–0.50). The continental projection now reaches subpolar (≈0.22) and equatorial (≈0.55–0.61) climates with distinct founded communities. Open ocean still founds nothing: there is no marine food web. Ranking and group sizes are authored proposals pending ecological review. No long-run outcome is claimed. The distant-ecology population model is a separate pass.

@@ -488,8 +488,12 @@
     "planetaryGeography": {
       "authority": "src/world/planet-geography.js",
       "consumers": [
-        "src/world/planet-world.js"
-      ]
+        "src/world/planet-world.js",
+        "src/world/world.js",
+        "src/world/planetary-travel.js",
+        "src/render/border-terrain.js"
+      ],
+      "projectionContract": "docs/CONTINENTAL-PROJECTION-2026-10-21.md"
     },
     "planetaryRegions": {
       "authority": "src/world/planet-regions.js",

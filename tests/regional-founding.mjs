@@ -10,7 +10,7 @@ import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persist
 import {SPECIES} from '../src/organisms/species.js';
 
 // Catalog: ~30 bodies, every one a valid, bounded, non-culminating anatomy.
-assert.ok(FOUNDING_TEMPLATES.length>=28&&FOUNDING_TEMPLATES.length<=34,'approximately thirty founding templates');
+assert.ok(FOUNDING_TEMPLATES.length>=28&&FOUNDING_TEMPLATES.length<=40,'approximately thirty founding templates');
 assert.equal(new Set(FOUNDING_TEMPLATES.map(t=>t.id)).size,FOUNDING_TEMPLATES.length);
 for(const t of FOUNDING_TEMPLATES){
  for(const p of t.placements){assert.ok(developmentalDepth(p.partId)<=FOUNDING_MAX_DEPTH,t.id);assert.ok(!PARTS[p.partId].tags.some(x=>FOUNDING_EXCLUDED_TAGS.includes(x)),t.id+' introduces '+p.partId)}

@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {CFG} from '../src/sim/config.js';
 import {SPECIES} from '../src/organisms/species.js';
+import {createPlanetDescriptor,PLANET_PROJECTIONS} from '../src/world/planet-geography.js';
 import {BorderTerrain,BORDER_TERRAIN} from '../src/render/border-terrain.js';
 import {restorePresentationWorld,createSimulationSnapshot} from '../src/persistence/save-manager.js';
 import {creatureView,viewReachesBeyond} from '../src/ecology/atmospheric-visibility.js';
@@ -15,7 +16,7 @@ assert.equal(border.neighbours(sim).filter(near).length,0,'the interior needs no
 p.x=124.5;p.y=3;assert.deepEqual(border.neighbours(sim).filter(near).map(n=>n.key).sort(),['0,-128','128,-128','128,0'].sort(),'a corner needs its three neighbours');
 for(const n of border.neighbours(sim))assert.equal(Math.abs(n.ox)%128+Math.abs(n.oy)%128,0);
 // The finite projection: regions beyond its edge are never offered.
-const edge=new Simulation('PLANET-B0-A',{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:{x:-34176,y:0}});
+const edge=new Simulation('PLANET-B0-A',{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:{x:-34176,y:0},planetDescriptor:createPlanetDescriptor('PLANET-B0-A',{projection:PLANET_PROJECTIONS.regional})});
 assert.ok(new BorderTerrain(class{}).neighbours(edge).length<8,'no terrain is invented beyond the projection edge');
 
 // Unvisited neighbours use their generated World; nothing is shared with a simulation.

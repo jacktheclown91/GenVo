@@ -35,7 +35,7 @@ export class BorderTerrain{
   const session=sim.planetaryTravel?.sessions?.find(s=>s.key===n.key);
   if(session){const day=session.snapshot.core.day;return{kind:'resident',stamp:'resident|'+Math.floor(day/BORDER_TERRAIN.refreshDays),build:()=>restorePresentationWorld(sim.seed,session.snapshot.world,session.snapshot.schema)}}
   if(sim.planetaryTravel?.unloaded?.some(e=>e.key===n.key))return null;
-  return{kind:'generated',stamp:'generated',build:()=>new World(sim.seed,{generator:'planetary/1',planetOrigin:n.origin})};
+  return{kind:'generated',stamp:'generated',build:()=>new World(sim.seed,{generator:'planetary/1',planetOrigin:n.origin,planetDescriptor:sim.world.planet.descriptor})};
  }
  // At most one World build per call; call from idle time.
  prepareNext(sim){

@@ -24,15 +24,23 @@ function landing(m){let best=null;for(let i=0;i<m.down.length;i++){const j=m.dow
  if(!best)throw Error('Planet has no supported inland river landing.');return best;
 }
 function freezeDescriptor(d){return Object.freeze({...d,anchor:Object.freeze({...d.anchor})})}
-export function createPlanetDescriptor(seed){seed=String(seed);const site=landing(macroFor(seed)),latitude=site.latitude+TAU*64/C,longitude=site.longitude-TAU*64/(C*Math.cos(latitude));return freezeDescriptor({schema:1,generator:'planetary/1',planetId:'planet:'+seed,seed,coordinateUnits:'terrain-tiles',equatorialCircumferenceTiles:C,macroWidth:W,macroHeight:H,pageSizeTiles:PAGE,projection:'regional-equirectangular/1',anchor:{latitude,longitude},landingEdge:site.edge})}
+// Versioned projections share one formula, so terrain inside the regional
+// range is identical; only the explorable extent differs. /1 is the original
+// +-15 degree window around the landing site. /2 (new worlds) spans every
+// latitude up to the polar limit and every longitude up to the landing site's
+// antimeridian, without wrapping, so no terrain is ever repeated.
+export const PLANET_PROJECTIONS=Object.freeze({regional:'regional-equirectangular/1',continental:'regional-equirectangular/2'});
+export const CONTINENTAL_LIMITS=Object.freeze({polarLatitude:80*Math.PI/180,antimeridianMargin:Math.PI/2048});
+export function createPlanetDescriptor(seed,{projection=PLANET_PROJECTIONS.continental}={}){if(!Object.values(PLANET_PROJECTIONS).includes(projection))throw Error('Unknown planetary projection.');seed=String(seed);const site=landing(macroFor(seed)),latitude=site.latitude+TAU*64/C,longitude=site.longitude-TAU*64/(C*Math.cos(latitude));return freezeDescriptor({schema:1,generator:'planetary/1',planetId:'planet:'+seed,seed,coordinateUnits:'terrain-tiles',equatorialCircumferenceTiles:C,macroWidth:W,macroHeight:H,pageSizeTiles:PAGE,projection,anchor:{latitude,longitude},landingEdge:site.edge})}
 export function validatePlanetDescriptor(seed,d){
- const expected=createPlanetDescriptor(seed);
+ if(!Object.values(PLANET_PROJECTIONS).includes(d?.projection))throw Error('Invalid or unsupported planet descriptor.');
+ const expected=createPlanetDescriptor(seed,{projection:d.projection});
  if(!d||Object.keys(d).length!==Object.keys(expected).length||Object.keys(expected).some(k=>k==='anchor'?(!d.anchor||Object.keys(d.anchor).length!==2||d.anchor.latitude!==expected.anchor.latitude||d.anchor.longitude!==expected.anchor.longitude):d[k]!==expected[k]))throw Error('Invalid or unsupported planet descriptor.');return freezeDescriptor(d);
 }
 export class PlanetGeography{
  #m;
  constructor(seed,descriptor=null){this.descriptor=descriptor?validatePlanetDescriptor(seed,descriptor):createPlanetDescriptor(seed);this.#m=macroFor(String(seed));Object.freeze(this)}
- localToGeo(x,y){if(!Number.isFinite(x)||!Number.isFinite(y))throw Error('Invalid planetary coordinate.');const a=this.descriptor.anchor,latitude=a.latitude-TAU*y/C,delta=TAU*x/(C*Math.cos(a.latitude));if(Math.abs(latitude)>Math.PI/3||Math.abs(latitude-a.latitude)>Math.PI/12||Math.abs(delta)>Math.PI/12)throw Error('Coordinate outside supported regional projection.');return {latitude,longitude:wrap(a.longitude+delta+Math.PI,TAU)-Math.PI}}
+ localToGeo(x,y){if(!Number.isFinite(x)||!Number.isFinite(y))throw Error('Invalid planetary coordinate.');const a=this.descriptor.anchor,latitude=a.latitude-TAU*y/C,delta=TAU*x/(C*Math.cos(a.latitude));if(this.descriptor.projection===PLANET_PROJECTIONS.continental?Math.abs(latitude)>CONTINENTAL_LIMITS.polarLatitude||Math.abs(delta)>Math.PI-CONTINENTAL_LIMITS.antimeridianMargin:Math.abs(latitude)>Math.PI/3||Math.abs(latitude-a.latitude)>Math.PI/12||Math.abs(delta)>Math.PI/12)throw Error('Coordinate outside supported regional projection.');return {latitude,longitude:wrap(a.longitude+delta+Math.PI,TAU)-Math.PI}}
  #worldPoint(i){const g=geoCell(i),a=this.descriptor.anchor,delta=wrap(g.longitude-a.longitude+Math.PI,TAU)-Math.PI;return{x:delta*C*Math.cos(a.latitude)/TAU,y:(a.latitude-g.latitude)*C/TAU}}
  macroCell(x,y){if(!Number.isSafeInteger(x)||!Number.isSafeInteger(y)||y<0||y>=H)throw Error('Invalid macro coordinate.');const i=y*W+wrap(x,W),m=this.#m;return Object.freeze({id:i,...geoCell(i),elevation:m.height[i],rain:m.rain[i],substrate:m.substrate[i],downstream:m.down[i],watershed:m.basin[i],flow:m.flow[i],ocean:m.height[i]<=SEA})}
  #grid(g){return {u:wrap((g.longitude+Math.PI)/TAU*W-.5,W),v:clamp((Math.PI/2-g.latitude)/Math.PI*H-.5,0,H-1)}}

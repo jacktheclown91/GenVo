@@ -4,8 +4,8 @@
 export const PLANET_REGION_SIZE=128;
 export function planetRegionOrigin(value,{size=PLANET_REGION_SIZE}={}){
  if(!value||!Number.isSafeInteger(value.x)||!Number.isSafeInteger(value.y)||
-    value.x%size!==0||value.y%size!==0||Math.abs(value.x)>100000||
-    Math.abs(value.y)>100000)throw Error('Invalid aligned planetary region origin.');
+    value.x%size!==0||value.y%size!==0||Math.abs(value.x)>1048576||
+    Math.abs(value.y)>1048576)throw Error('Invalid aligned planetary region origin.');
  return Object.freeze({x:value.x||0,y:value.y||0});
 }
 export function regionKey({x,y}){return x+','+y}
@@ -80,12 +80,12 @@ export function validatePlanetAnimalOwnership(activeAnimals,travelState){
 export class PlanetRegionAtlas{
  constructor(current,createWorld){
   if(!current?.planet||typeof createWorld!=='function')throw Error('Region atlas requires a planetary World factory.');
-  this.seed=current.seed;this.planetId=current.planet.descriptor.planetId;
+  this.seed=current.seed;this.planetId=current.planet.descriptor.planetId;this.projection=current.planet.descriptor.projection;
   this.createWorld=createWorld;this.regions=new Map();
   this.install(current);
  }
  install(world){
-  if(world.seed!==this.seed||world.planet?.descriptor?.planetId!==this.planetId)
+  if(world.seed!==this.seed||world.planet?.descriptor?.planetId!==this.planetId||world.planet.descriptor.projection!==this.projection)
    throw Error('Cannot mix worlds from different planets.');
   const origin=planetRegionOrigin(world.regionOrigin),key=regionKey(origin);
   if(this.regions.has(key)&&this.regions.get(key)!==world)throw Error('Regional world already owns this physical territory.');
