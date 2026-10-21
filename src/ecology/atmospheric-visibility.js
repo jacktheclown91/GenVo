@@ -63,6 +63,9 @@ export function visuallyObservable(sim,observer,target,base=8,preparedView=null)
  if(!observer||observer.id===target.id)return true;
  if(sim.sensoryFogEnabled===true){
    if((target.id!==undefined||target.underground!==undefined)&&!!observer.underground!==!!target.underground)return false;
+   // Touch-range clearance of the fog can show an adjacent cave wall, but
+   // must not disclose an organism standing behind that solid wall.
+   if(observer.underground&&!undergroundLineOfSight(sim.world,observer.x,observer.y,target.x,target.y))return false;
    if(!viewCanSee(preparedView||creatureView(sim,observer,base),target.x,target.y))return false;
  }
  if(sim.visibilityRules!==VISIBILITY.policy||observer.underground)return true;
