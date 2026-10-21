@@ -33,7 +33,7 @@ export function viewCanSee(view,x,y){
 }
 export function visuallyObservable(sim,observer,target,base=8){
  if(!observer||observer.id===target.id)return true;
- if(sim.sensoryFogEnabled!==false){
+ if(sim.sensoryFogEnabled===true){
    if(!!observer.underground!==!!target.underground)return false;
    if(!viewCanSee(creatureView(sim,observer,base),target.x,target.y))return false;
  }
