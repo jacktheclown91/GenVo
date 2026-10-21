@@ -8,10 +8,10 @@ function drawSignals(renderer,signals,tile){
   // A consistent near-player bearing, never the exact source coordinate.
   const d=tile*2.45,px=x+Math.cos(s.angle)*d,py=y+Math.sin(s.angle)*d;
   const radius=Math.max(11,tile*(.24+s.uncertainty*.2));
-  c.strokeStyle=s.kind==='heard'?'rgba(171,205,235,.66)':'rgba(216,192,115,.60)';
+  c.strokeStyle=s.kind==='heard'?'rgba(171,205,235,.66)':s.kind==='vibration'?'rgba(164,208,180,.72)':'rgba(216,192,115,.60)';
   c.lineWidth=2;c.beginPath();c.arc(px,py,radius,s.angle-.6-s.uncertainty,s.angle+.6+s.uncertainty);c.stroke();
-  c.fillStyle=s.kind==='heard'?'#b7d9ef':'#e2cc91';
-  c.fillText(s.kind==='heard'?'♪':'≈',px,py);
+  c.fillStyle=s.kind==='heard'?'#b7d9ef':s.kind==='vibration'?'#a4d0b4':'#e2cc91';
+  c.fillText(s.kind==='heard'?'♪':s.kind==='vibration'?'∿':'≈',px,py);
  }
  c.restore();
 }

@@ -1,4 +1,4 @@
-import {stratumHearing,sensoryMedium} from './stratum-senses.js';
+import {GROUND_VIBRATIONS,stratumHearing,sensoryMedium,vibrationPath} from './stratum-senses.js';
 import {CFG,PLANTS} from '../sim/config.js';
 import {groundDiet} from './functional-diet.js';
 import {creatureView,viewCanSee,atmosphereAt,visuallyObservable,undergroundLineOfSight} from './atmospheric-visibility.js';
@@ -13,11 +13,14 @@ export function sensoryRegionKey(world,animal=null){
  return String(world.seedHash||world.seed||0)+':'+origin.x+','+origin.y+':'+(animal?.underground?'under':(animal?.diveDepth||0)>.03?'water':'surface');
 }
 export function sensoryProfile(animal){
- const parts=new Set((animal?.bodyPlan?.nodes||[]).map(n=>n.partId));
+ const nodes=animal?.bodyPlan?.nodes||[],parts=new Set(nodes.map(n=>n.partId));
+ const bristles=nodes.filter(n=>n.partId==='sensory-bristle').length,quills=nodes.filter(n=>n.partId==='sensory-quills').length;
  const scale=clamp(animal?.genes?.senses||1,.3,2.5),effect=partEffectFactors(animal)||{};
  const hearing=clamp(4.2*scale*(parts.has('echo-crest')?1.6:1)*(parts.has('sensory-bristle')?1.2:1),1.5,16);
  const scent=clamp(3.7*scale*(parts.has('sensory-quills')?1.4:1)*(parts.has('sensory-bristle')?1.2:1)*(effect.cue||1),1.4,16);
- return{hearing,scent,echo:parts.has('echo-crest'),vibration:parts.has('sensory-quills')};
+ // Inherited attachments enhance actual ground contact. Upkeep/mass is already charged by the part authority.
+ const vibrationRange=bristles+quills?clamp(scale*(1.7+Math.sqrt(bristles)*.85+Math.sqrt(quills)*3),.5,12):0;
+ return{hearing,scent,echo:parts.has('echo-crest'),vibration:bristles+quills>0,vibrationRange};
 }
 function ensureMemory(animal){
  if(!animal.sensoryMemory||animal.sensoryMemory.schema!==1||!animal.sensoryMemory.regions||
@@ -64,6 +67,8 @@ export function sensorySignals(sim,animal=sim.player?.(),maxSignals=3){
   const dx=other.x-animal.x,dy=other.y-animal.y,d=Math.hypot(dx,dy);
   if(d<1.6||d>Math.max(profile.hearing,profile.scent))continue;
   if(visuallyObservable(sim,animal,other))continue;
+  const vibration=groundVibrationCue(sim,animal,other,profile);
+  if(vibration)candidate.push(vibration);
   const active=other.intent==='attack'||other.intent==='mate'||other.intent==='flee'||other.intent==='hunt'||other.intent==='escape';
   const audible=active?profile.hearing:profile.hearing*.55;
   if(d<audible&&stratumHearing(sim,animal,other,audible))candidate.push({kind:'heard',angle:Math.atan2(dy,dx),score:(audible-d)/audible+(active?.4:0),uncertainty:active?.32:.55});
@@ -100,3 +105,19 @@ export function sensorySignals(sim,animal=sim.player?.(),maxSignals=3){
  });
 }
 export const sensoryMemoryCellSize=CELL;
+// Transient pulses derive from already recorded physical activity, not intents or invented events.
+const recentPulse=(t,now,window)=>Number.isSafeInteger(t)&&t<=now&&now-t<=window;
+export function groundVibrationCue(sim,listener,source,profile=sensoryProfile(listener)){
+ if(sim?.vibrationRules!==GROUND_VIBRATIONS.policy||!source?.alive||!listener?.alive||source.id===listener.id||!profile.vibrationRange)return null;
+ const window=Math.max(1,Math.round(CFG.simHz*1.25));
+ const footfall=recentPulse(source.movedTick,sim.tickCount,window);
+ const dig=source.burrowWork?.schema===1;
+ const impact=recentPulse(source.jumpLanding?.tick,sim.tickCount,window);
+ if(!footfall&&!dig&&!impact)return null;
+ const w=sim.world,i=w.idx(listener.x,listener.y),weather=atmosphereAt(sim,listener.x,listener.y);
+ const moisture=clamp(w.moisture?.[i]||0,0,1);
+ const range=profile.vibrationRange*(1-.28*moisture)*(1-.12*clamp(weather.liquid||0,0,1))*(impact?1.35:dig?1.18:1);
+ if(!vibrationPath(sim,listener,source,range))return null;
+ const dx=source.x-listener.x,dy=source.y-listener.y,d=Math.hypot(dx,dy);
+ return{kind:'vibration',angle:Math.atan2(dy,dx),score:(range-d)/range+(impact?.22:dig?.12:0),uncertainty:impact?.46:.62};
+}

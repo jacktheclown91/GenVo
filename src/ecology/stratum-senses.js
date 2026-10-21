@@ -5,6 +5,16 @@ import {waterColumn} from '../lineage/diving.js';
 import {surfaceIceCovered} from '../world/surface-ice.js';
 import {wetSegment} from '../world/water-route.js';
 export const STRATUM_SENSES=Object.freeze({policy:'physical-stratum-senses/1',daylightSteps:6,daylightDecay:.62});
+export const GROUND_VIBRATIONS=Object.freeze({policy:'physical-ground-vibrations/1'});
+// Ground signals use existing land connectivity and connected cave hearing paths.
+export function vibrationPath(sim,a,b,range){
+ const w=sim?.world;if(!(range>0)||!w||!a||!b)return false;
+ if(!!a.underground!==!!b.underground||a.airborne||b.airborne||a.perched||b.perched)return false;
+ if(sensoryMedium(a)==='water'||sensoryMedium(b)==='water'||Math.hypot(b.x-a.x,b.y-a.y)>=range)return false;
+ if(a.underground)return sim.stratumSenseRules===STRATUM_SENSES.policy&&stratumHearing(sim,a,b,range);
+ const i=w.idx(a.x,a.y),j=w.idx(b.x,b.y);
+ return !w.water?.[i]&&!w.water?.[j]&&(!w.sameLand||w.sameLand(a.x,a.y,b.x,b.y));
+}
 export const sensoryMedium=a=>a?.underground?'cave':(a?.diveDepth||0)>.03?'water':'surface';
 const sees=a=>!a?.bodyPlan?.nodes||a.bodyPlan.nodes.some(n=>PARTS[n.partId]?.actionCapabilities.includes('see'));
 const openPassage=(w,i)=>{const p=w.subsurface?.passages.get(i);return p&&!p.closed&&!caveFlooded(w,i)?p:null};
