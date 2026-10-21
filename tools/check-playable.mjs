@@ -62,6 +62,7 @@ const runtime=[
   'tests/overlay-placement.mjs',
   'tests/regional-founding.mjs',
   'tests/regional-demography.mjs',
+  'tests/regional-residency.mjs',
   'tests/save-storage.mjs',
   'tests/menu-world-slots.mjs',
   'tests/quick-interaction-default.mjs',

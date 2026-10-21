@@ -2,7 +2,7 @@
 // retain all biological/resource ownership. No regeneration or catch-up here.
 import {planetRegionOrigin,regionKey} from '../world/planet-regions.js';
 import {REGIONAL_IDENTITIES,regionalIdentity,verifyRegionalIdentity,regionalIdentityWatermark} from '../world/regional-identities.js';
-import {REGIONAL_REPLAY} from '../world/regional-replay-order.js';
+import {REGIONAL_REPLAY,POPULATION_MODE} from '../world/regional-replay-order.js';
 export const REGION_STORE='regions';
 export const LEGACY_REGIONAL_STORAGE='indexed-regions/1';
 export const REGIONAL_STORAGE='indexed-regions/2';
@@ -31,6 +31,7 @@ export function validateRegionalIndex(root,slot){
  if(index.active?.kind!=='active'||index.active.key!==active||!validReference(index,index.active,slot)||regionKey(planetRegionOrigin(index.active.origin))!==active)throw Error('Invalid active regional record.');
  for(const e of index.entries){
   if(!['session','survey'].includes(e?.kind)||e.key!==regionKey(planetRegionOrigin(e.origin))||!validReference(index,e,slot)||seen.has(e.key)||e.key===active)throw Error('Invalid or duplicate regional persistence entry.');
+  if(e.unloaded!==undefined&&(e.unloaded!==true||e.kind!=='session'||!index.identityPolicy||e.life?.mode!==POPULATION_MODE))throw Error('Invalid unloaded regional entry.');
   seen.add(e.key);
  }
  if(index.entries.some(e=>e.kind==='session')&&!Array.isArray(root.core?.planetaryTravel?.sessions)||index.entries.some(e=>e.kind==='survey')&&!index.hadSurvey)throw Error('Regional index has no owning collection.');
@@ -48,13 +49,58 @@ export function partitionRegionalSnapshot(snapshot,slot){
  const root={key:snapshot.key,schema:snapshot.schema,gameVersion:snapshot.gameVersion,savedAt:snapshot.savedAt,reason:snapshot.reason,seed:snapshot.seed,rngState:snapshot.rngState,meta:snapshot.meta,world:{generator:'planetary/1',regionOrigin:snapshot.world.regionOrigin},core:{tickCount:snapshot.core.tickCount}};
  const entries=[],records=[];
  const add=(kind,payload)=>{const {key,origin}=identity(kind,payload),id=recordID(slot,kind,key);entries.push({kind,key,origin,id,capture,...(kind==='session'?{life:regionalIdentity(payload.snapshot,{mode:payload.biologicalMode??null})}:{})});records.push({id,value:{schema:1,slot,capture,kind,key,payload}})};
- if(snapshot.core.planetaryTravel){active.core.planetaryTravel={...snapshot.core.planetaryTravel,sessions:[]};root.core.planetaryTravel={sessions:[]};for(const session of snapshot.core.planetaryTravel.sessions)add('session',session)}
+ if(snapshot.core.planetaryTravel){
+  active.core.planetaryTravel={...snapshot.core.planetaryTravel,sessions:[]};delete active.core.planetaryTravel.unloaded;root.core.planetaryTravel={sessions:[]};
+  for(const session of snapshot.core.planetaryTravel.sessions)add('session',session);
+  // Unloaded regions keep the exact committed record they were released from.
+  for(const stub of snapshot.core.planetaryTravel.unloaded||[])entries.push(retainedEntry(stub));
+ }
  for(const survey of snapshot.regionalWorlds||[])add('survey',survey);
  const current=identity('active',snapshot),id=recordID(slot,'active',current.key);delete active.regionalWorlds;
  records.push({id,value:{schema:1,slot,capture,kind:'active',key:current.key,payload:active}});
  const life=regionalIdentity(snapshot),nextId=Math.max(snapshot.core.planetaryTravel?.nextId||1,regionalIdentityWatermark([...entries.filter(e=>e.kind==='session').map(e=>e.life),life]));
- root.regionalPersistence={schema:REGIONAL_STORAGE,slot,capture,hadSurvey:Object.hasOwn(snapshot,'regionalWorlds'),active:{kind:'active',...current,id,life,capture},entries,identityPolicy:REGIONAL_IDENTITIES,nextId,replayPolicy:replayPolicyOf(snapshot.core)};
+ root.regionalPersistence={schema:entries.some(e=>e.storage)?STAGED_REGIONAL_STORAGE:REGIONAL_STORAGE,slot,capture,hadSurvey:Object.hasOwn(snapshot,'regionalWorlds'),active:{kind:'active',...current,id,life,capture},entries,identityPolicy:REGIONAL_IDENTITIES,nextId,replayPolicy:replayPolicyOf(snapshot.core)};
  validateRegionalIndex(root,slot);return{root,records};
+}
+const retainedEntry=e=>{
+ if(e?.kind!=='session'||e.unloaded!==true||typeof e.id!=='string'||typeof e.capture!=='string')throw Error('Invalid unloaded regional reference.');
+ return{kind:'session',key:e.key,origin:planetRegionOrigin(e.origin),id:e.id,capture:e.capture,...(e.storage?{storage:e.storage}:{}),life:structuredClone(e.life),unloaded:true};
+};
+const sameReference=(a,b)=>a&&b&&a.kind===b.kind&&a.key===b.key&&a.id===b.id&&a.capture===b.capture&&(a.storage??null)===(b.storage??null)&&JSON.stringify(a.life??null)===JSON.stringify(b.life??null);
+// General owner journal (regional-residency/1). `owners` lists every resident
+// session, unloaded session and survey in simulation order; each is either
+// written from its payload or retained by reference to the identical entry of
+// the previous committed root. Membership and the active region may change.
+export function partitionRegionalJournal(active,slot,previous,owners){
+ const old=validateRegionalIndex(previous,slot);
+ if(!old?.identityPolicy)throw Error('Journal updates require an indexed identity directory.');
+ if(active.seed!==previous.seed||active.core?.planetaryTravel?.sessions?.length||active.regionalWorlds!==undefined)throw Error('Journal update requires an active record without nested regional payloads.');
+ const base={...active,core:{...active.core}};if(base.core.planetaryTravel){base.core.planetaryTravel={...base.core.planetaryTravel};delete base.core.planetaryTravel.unloaded}
+ if(owners.some(o=>o.kind==='survey'))base.regionalWorlds=[];
+ const plan=partitionRegionalSnapshot(base,slot),index=plan.root.regionalPersistence,capture=index.capture,seen=new Set();
+ index.schema=STAGED_REGIONAL_STORAGE;index.entries=[];
+ for(const o of owners){
+  if(!['session','survey'].includes(o?.kind)||seen.has(o.key))throw Error('Invalid or duplicate journal owner.');seen.add(o.key);
+  if(o.retain){
+   const prior=[...old.entries].find(e=>e.kind===o.kind&&e.key===o.key);
+   if(!prior)throw Error('Retained regional owner is missing from the previous checkpoint: '+o.key);
+   if(o.unloaded?!sameReference({...prior,capture:captureFor(old,prior)},o.retain):prior.unloaded)throw Error('Retained regional owner differs from the previous checkpoint: '+o.key);
+   const entry={...structuredClone(prior),capture:captureFor(old,prior)};if(o.unloaded)entry.unloaded=true;else delete entry.unloaded;index.entries.push(entry);continue;
+  }
+  if(o.unloaded)throw Error('An unloaded region cannot be written without its payload.');
+  const {key,origin}=identity(o.kind,o.payload),id=recordID(slot,o.kind,key);if(key!==o.key)throw Error('Journal owner has conflicting coordinates.');
+  index.entries.push({kind:o.kind,key,origin,id,capture,...(o.kind==='session'?{life:regionalIdentity(o.payload.snapshot,{mode:o.payload.biologicalMode??null})}:{})});
+  plan.records.unshift({id,value:{schema:1,slot,capture,kind:o.kind,key,payload:o.payload}});
+ }
+ index.hadSurvey=owners.some(o=>o.kind==='survey');
+ if(index.entries.some(e=>e.kind==='session'))plan.root.core.planetaryTravel={sessions:[]};
+ index.nextId=Math.max(active.core.planetaryTravel?.nextId||1,regionalIdentityWatermark([...index.entries.filter(e=>e.kind==='session').map(e=>e.life),index.active.life]));
+ if(active.core.nextId<index.nextId||index.entries.some(e=>e.kind==='session')&&!(active.core.planetaryTravel?.nextId>=index.nextId))throw Error('Active allocator does not cover retained regional identities.');
+ if(active.core.tickCount<previous.core.tickCount)throw Error('Regional update cannot rewind the active checkpoint.');
+ validateRegionalIndex(plan.root,slot);return plan;
+}
+export async function commitRegionalJournal(db,active,slot,previous,owners){
+ return commitRegionalPlan(db,partitionRegionalJournal(active,slot,previous,owners),slot,previous);
 }
 function verifyDirectoryPayload(index,entry,payload){
  if(!index.identityPolicy||entry.kind==='survey')return;
@@ -62,24 +108,28 @@ function verifyDirectoryPayload(index,entry,payload){
  verifyRegionalIdentity(entry.life,entry.kind==='session'?payload.snapshot:payload,entry.kind==='session'?{mode:payload.biologicalMode??null}:undefined);
  if(entry.kind==='active'&&(index.replayPolicy!==replayPolicyOf(payload.core)||index.nextId!==Math.max(payload.core.planetaryTravel?.nextId||1,regionalIdentityWatermark([...index.entries.filter(e=>e.kind==='session').map(e=>e.life),index.active.life]))))throw Error('Regional directory does not match its active authority.');
 }
-export function assembleRegionalSnapshot(root,slot,records){
+// `residentOnly` leaves unloaded sessions on disk and returns their exact
+// directory entries in core.planetaryTravel.unloaded; complete reads (export,
+// fork, backup) hydrate every record.
+export function assembleRegionalSnapshot(root,slot,records,{residentOnly=false}={}){
  const index=validateRegionalIndex(root,slot);if(!index)return root;
- if(records.length!==index.entries.length+1)throw Error('Incomplete regional checkpoint.');
+ const kept=residentOnly?index.entries.filter(e=>!e.unloaded):index.entries,skipped=residentOnly?index.entries.filter(e=>e.unloaded):[];
+ if(records.length!==kept.length+1)throw Error('Incomplete regional checkpoint.');
  const active=records.at(-1);if(active?.schema!==1||active.slot!==slot||active.capture!==captureFor(index,index.active)||active.kind!=='active'||active.key!==index.active.key||identity('active',active.payload).key!==index.active.key||active.payload.core?.tickCount!==root.core.tickCount||active.payload.seed!==root.seed||active.payload.core?.planetaryTravel?.sessions?.length||active.payload.regionalWorlds!==undefined)throw Error('Missing or stale active regional record.');
  verifyDirectoryPayload(index,index.active,active.payload);
  const result={...active.payload,core:{...active.payload.core}},sessions=[],survey=[];
- for(let n=0;n<index.entries.length;n++){
-  const e=index.entries[n],r=records[n];if(r?.schema!==1||r.slot!==slot||r.capture!==captureFor(index,e)||r.kind!==e.kind||r.key!==e.key)throw Error('Missing or stale regional record: '+e.key);
+ for(let n=0;n<kept.length;n++){
+  const e=kept[n],r=records[n];if(r?.schema!==1||r.slot!==slot||r.capture!==captureFor(index,e)||r.kind!==e.kind||r.key!==e.key)throw Error('Missing or stale regional record: '+e.key);
   if(identity(e.kind,r.payload).key!==e.key)throw Error('Regional record identity mismatch.');
   verifyDirectoryPayload(index,e,r.payload);
   (e.kind==='session'?sessions:survey).push(r.payload);
  }
- if(result.core.planetaryTravel)result.core.planetaryTravel={...result.core.planetaryTravel,sessions};
+ if(result.core.planetaryTravel){result.core.planetaryTravel={...result.core.planetaryTravel,sessions};if(skipped.length)result.core.planetaryTravel.unloaded=skipped.map(e=>({kind:'session',key:e.key,origin:{x:e.origin.x,y:e.origin.y},id:e.id,capture:captureFor(index,e),...(e.storage?{storage:e.storage}:{}),life:structuredClone(e.life),unloaded:true}))}
  if(index.hadSurvey)result.regionalWorlds=survey;delete result.regionalPersistence;return result;
 }
 // Queue all dependent reads within the root request callback. One readonly
 // transaction prevents a concurrent save from mixing two committed captures.
-export function readRegionalCheckpoint(db,slot,{region=null,kind='session',manifestOnly=false,expectedCapture=null}={}){
+export function readRegionalCheckpoint(db,slot,{region=null,kind='session',manifestOnly=false,expectedCapture=null,residentOnly=false}={}){
  if(!slotOK(slot))return Promise.reject(Error('Invalid world slot.'));
  return new Promise((resolve,reject)=>{
   const tx=db.transaction(['saves',REGION_STORE],'readonly'),saves=tx.objectStore('saves'),regions=tx.objectStore(REGION_STORE);let root,result,problem;
@@ -97,11 +147,11 @@ export function readRegionalCheckpoint(db,slot,{region=null,kind='session',manif
     const entry=[...index.entries,index.active].find(e=>e.kind===kind&&e.key===region);if(!entry){result=null;return}
     const req=regions.get(entry.id);req.onerror=()=>fail(req.error||Error('Region read failed.'));req.onsuccess=()=>{try{const r=req.result;if(r?.schema!==1||r.capture!==captureFor(index,entry)||r.slot!==slot||r.kind!==kind||r.key!==entry.key||identity(kind,r.payload).key!==entry.key)throw Error('Missing or stale regional record: '+entry.key);verifyDirectoryPayload(index,entry,r.payload);result=r.payload}catch(error){fail(error)}};return;
    }
-   if(!index){result=root;return}const entries=[...index.entries,index.active],records=new Array(entries.length);let pending=records.length;
+   if(!index){result=root;return}const entries=[...(residentOnly?index.entries.filter(e=>!e.unloaded):index.entries),index.active],records=new Array(entries.length);let pending=records.length;
    // Keep one payload request in flight. Queue the next inside onsuccess so
    // IndexedDB keeps this SAME snapshot transaction alive between pages.
    // Compatibility full loads still retain all returned payloads for restore.
-   const next=n=>{const entry=entries[n],req=regions.get(entry.id);req.onerror=()=>fail(req.error||Error('Region read failed.'));req.onsuccess=()=>{try{records[n]=req.result;if(--pending===0)result=assembleRegionalSnapshot(root,slot,records);else next(n+1)}catch(error){fail(error)}}};next(0);
+   const next=n=>{const entry=entries[n],req=regions.get(entry.id);req.onerror=()=>fail(req.error||Error('Region read failed.'));req.onsuccess=()=>{try{records[n]=req.result;if(--pending===0)result=assembleRegionalSnapshot(root,slot,records,{residentOnly});else next(n+1)}catch(error){fail(error)}}};next(0);
   }catch(error){fail(error)}};
  });
 }
@@ -140,6 +190,7 @@ export async function commitRegionalCheckpoint(db,snapshot,slot,previous){
 }
 async function commitRegionalPlan(db,{root,records},slot,previous){
  const old=validateRegionalIndex(previous,slot),index=validateRegionalIndex(root,slot),keep=new Set([...index.entries,index.active].map(e=>e.id));
+ for(const e of index.entries)if(e.unloaded){const prior=old?.entries.find(p=>p.kind==='session'&&p.key===e.key);if(!prior||!sameReference({...prior,capture:captureFor(old,prior),unloaded:true},e))throw Error('Unloaded regional record is missing from the previous checkpoint: '+e.key)}
  const tx=db.transaction(['saves','meta',REGION_STORE],'readwrite'),done=completed(tx);let conflict;
  try{
   const metadata=tx.objectStore('meta'),regions=tx.objectStore(REGION_STORE),saves=tx.objectStore('saves');

@@ -79,6 +79,10 @@ try{
   // canonical remote replay, not an edited synthetic animal/resource array.
   s.planetaryRegions.neighbor(s.world.regionOrigin,'east',{create:true});await m.saveNow('incremental-baseline');
   const {createActiveRegionalSnapshot,createSimulationSnapshot,restoreSimulationSnapshot}=await import('/src/persistence/save-manager.js'),{commitRegionalUpdate}=await import('/src/persistence/regional-records.js'),{prepareRegionalBiology}=await import('/src/world/planetary-offscreen-biology.js');
+  // A genuine indexed-regions/1 world wrote every record under one capture. Ordinary
+  // saves now retain unchanged records by reference, so build that uniform
+  // complete checkpoint before rewriting its root in the historical format.
+  {const uniform=createSimulationSnapshot(s,{reason:'uniform-legacy-fixture',savedAt:new Date().toISOString()});uniform.meta.key=slot;uniform.meta.worldName=(await readRegionalCheckpoint(db,slot,{manifestOnly:true})).meta.worldName;await commitRegionalCheckpoint(db,uniform,slot,await readRegionalCheckpoint(db,slot,{manifestOnly:true}))}
   const legacyIndexed=await readRegionalCheckpoint(db,slot,{manifestOnly:true});legacyIndexed.regionalPersistence.schema='indexed-regions/1';for(const e of [...legacyIndexed.regionalPersistence.entries,legacyIndexed.regionalPersistence.active])delete e.capture;await replaceRoot(legacyIndexed);
   const patchPrevious=await readRegionalCheckpoint(db,slot,{manifestOnly:true}),patchBaseline=encode(await m.loadSnapshot()),due= pendingRegionalBiology(s)[0];if(!due)throw Error('No real pending region for changed-page commit');const replayResult=prepareRegionalBiology(s);if(!replayResult?.ticks)throw Error('Canonical replay did not advance a stored page');
   const captureOptions={reason:'changed-page-replay',savedAt:new Date().toISOString()},activeCapture=createActiveRegionalSnapshot(s,captureOptions),expectedCapture=createSimulationSnapshot(s,captureOptions);for(const x of [activeCapture,expectedCapture]){x.meta.key=slot;x.meta.worldName=patchPrevious.meta.worldName}

@@ -2,6 +2,7 @@ import {SURFACE_ICE,initializeSurfaceIce} from './surface-ice.js';
 import {POPULATION_MODE} from './regional-replay-order.js';
 import {REGIONAL_FOUNDING,foundRegionalPopulations} from '../ecology/regional-founding.js';
 import {assignRegionalBiologyModes} from './planetary-demography.js';
+import {REGIONAL_RESIDENCY,residencyEnabled,crossingResidency} from './regional-residency.js';
 // E15: explicit, gated, on-foot planetary frontier traversal.
 // Departing populations and their controller states are checkpointed as a
 // non-active region. The SAME traveling animal ID/body/genotype moves into
@@ -21,6 +22,10 @@ import {advanceRemoteBiology,remoteBiologicalDebt,OFFSCREEN_BIOLOGY} from './pla
 import {syncPlanetaryBoundaryOwnership} from './planetary-seam-salt.js';
 
 const LIMIT=16,BOUNDARY=3.75,SIZE=128;
+// Worlds recording regional-residency/1 bound resident archives by the loaded
+// neighbourhood instead; farther regions are unloaded to storage, so the
+// number of explored regions is not limited here.
+const residentLimit=sim=>residencyEnabled(sim)?REGIONAL_RESIDENCY.maxResident:LIMIT;
 const GLOBAL_AUTHORITIES=['lineage','evolution','evolutionTree','evolutionBudget','evolutionEditor','generationProgress'];
 export function planetaryPreparationKey(sim,origin){return JSON.stringify([sim.seed,regionKey(origin),sim.massRules,sim.caveRules??null,sim.surfaceIceRules??null,sim.mateAssortmentRules??null]);}
 export function preparePlanetaryDestination(sim,origin){
@@ -37,7 +42,7 @@ const dirs=[
 ];
 const limit=(v,lo,hi)=>Math.max(lo,Math.min(hi,v));
 const validSession=store=>store?.schema===1&&Number.isSafeInteger(store.nextId)&&store.nextId>=1&&
- Array.isArray(store.sessions)&&store.sessions.length<=LIMIT&&store.sessions.every(s=>typeof s.key==='string'&&s.snapshot?.world?.generator==='planetary/1');
+ Array.isArray(store.sessions)&&store.sessions.length<=REGIONAL_RESIDENCY.maxResident&&store.sessions.every(s=>typeof s.key==='string'&&s.snapshot?.world?.generator==='planetary/1');
 function stored(sim){const st=sim.planetaryTravel||{schema:1,nextId:sim.nextId,sessions:[]};if(!validSession(st))throw Error('Invalid planetary travel state.');return st}
 function approach(sim,dir,animal){
  const c=limit(dir.coordinate(animal),2.5,SIZE-2.5),far=SIZE-2.5,near=2.5;
@@ -100,7 +105,8 @@ export function planetaryTravelAvailability(sim){
   return unavailable('Remote biology has more than '+OFFSCREEN_BIOLOGY.maxEntryTicks+' ticks to reconcile. Continue the current world for living ecology catchup.');
  if(found&&!biological&&remoteEnvironmentDue(sim,found)>OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays)
   return unavailable('This region has more than '+OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays+' days of physical weather to reconcile. Continue the current world to advance its environmental archive.');
- if(!found&&sessions.sessions.length>=LIMIT)return unavailable('Regional archive full. Return to an explored region.');
+ if(!found&&sessions.sessions.length>=residentLimit(sim))return unavailable(residencyEnabled(sim)?'Distant regions are still being stored. Wait a moment before exploring further.':'Regional archive full. Return to an explored region.');
+ const residency=crossingResidency(sim,nextOrigin);if(!residency.ready)return unavailable(residency.reason);
  const archivedWorld=found?.snapshot?.world;
  const surveyed=archivedWorld?{regionOrigin:nextOrigin,n:SIZE,idx:(x,y)=>sim.world.idx(x,y),isPlayable:(x,y)=>sim.world.isPlayable(x,y),water:archivedWorld.surfaceWater.mask}:sim.planetaryRegions.get(nextOrigin,{create:false});
  const dest=surveyed||{
@@ -232,9 +238,9 @@ export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
  }
  dest.planetaryRegions=atlas;
  sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,memberIds),...(sim.offscreenBiologyEnabled?{biologicalMode:'canonical-ticks/1'}:{})});
- dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions,
+ dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions,...(prior.unloaded?.length?{unloaded:prior.unloaded.map(e=>structuredClone(e))}:{}),
   ...(prior.seamLedger?{seamLedger:structuredClone(prior.seamLedger)}:{})};
- for(const key of ['habitatHazardRules','fireRules','thunderRules','stratumSenseRules','stratumSenseRuleMigrations','vibrationRules','mateAssortmentRules','sensoryFogEnabled','surfaceIceRules','surfaceIceRuleMigrations','thermalRefugeRules','thermalRefugeRuleMigrations','thermalRules','thermalPattern','thermalRuleMigrations','visibilityRules','visibilityRuleMigrations','caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions','regionalFoundingRules','regionalDemographyRules']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
+ for(const key of ['habitatHazardRules','fireRules','thunderRules','stratumSenseRules','stratumSenseRuleMigrations','vibrationRules','mateAssortmentRules','sensoryFogEnabled','surfaceIceRules','surfaceIceRuleMigrations','thermalRefugeRules','thermalRefugeRuleMigrations','thermalRules','thermalPattern','thermalRuleMigrations','visibilityRules','visibilityRuleMigrations','caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions','regionalFoundingRules','regionalDemographyRules','regionalResidencyRules']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
  if(!dest.habitatHazardRules)delete dest.habitatHazards;
  if(!dest.fireRules)delete dest.wildfire;
  if(!dest.thunderRules)delete dest.thunderstorms;

@@ -1,4 +1,4 @@
-import {REGION_STORE,readRegionalCheckpoint,commitRegionalCheckpoint,commitRegionalUpdate,deleteRegionalCheckpoint,inspectRegionalStorage,recoverRegionalStages} from './regional-records.js';
+import {REGION_STORE,readRegionalCheckpoint,commitRegionalCheckpoint,commitRegionalUpdate,commitRegionalJournal,deleteRegionalCheckpoint,inspectRegionalStorage,recoverRegionalStages} from './regional-records.js';
 import {RegionalDirtyJournal} from './regional-dirty.js';
 import {openRegionalCheckpointReader} from './regional-reader.js';
 import {restoreHabitatHazards} from '../ecology/habitat-hazards.js';
@@ -63,6 +63,9 @@ import {SEASONAL_COAT,validateSeasonalCoat} from '../lineage/seasonal-coat.js';
 import {EMBRYO_CLIMATE,validateEmbryoClimate} from '../reproduction/embryo-climate.js';
 import {validateRegionalFounding} from '../ecology/regional-founding.js';
 import {validateRegionalDemographyRules} from '../world/planetary-demography.js';
+import {REGIONAL_RESIDENCY,validateRegionalResidency,residencyEnabled,unloadCandidates,reloadCandidates,rotationCandidate,parkRegion,unloadRegion,reloadRegion} from '../world/regional-residency.js';
+import {POPULATION_MODE} from '../world/regional-replay-order.js';
+import {advanceRemoteBiology,remoteBiologicalDebt} from '../world/planetary-offscreen-biology.js';
 
 // Schema 9 (v1.39.0): the new creature bodies. Creator decision 2026-10-09: start fresh, so older
 // saves before schema 9 are not carried over.
@@ -387,6 +390,8 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   if(!Object.hasOwn(snapshot.core||{},'regionalFoundingRules'))delete sim.regionalFoundingRules;
   if(!Object.hasOwn(snapshot.core||{},'regionalDemographyRules'))delete sim.regionalDemographyRules;
   validateRegionalDemographyRules(sim);
+  if(!Object.hasOwn(snapshot.core||{},'regionalResidencyRules'))delete sim.regionalResidencyRules;
+  validateRegionalResidency(sim);
   sim.seed=snapshot.seed;
   sim.rng.state=snapshot.rngState>>>0;
   restoreBirthRules(sim,snapshot.core||{});
@@ -536,13 +541,55 @@ export class SaveManager{
     if(this.activeSave)await this.activeSave;
     return readRegionalCheckpoint(await this.db(),slot,{region,kind});
   }
+  // Bounded residency (regional-residency/1): one action per call, serialized
+  // with saves. Reloads nearby unloaded regions, catches resident regions up
+  // through their genuine elapsed ticks, unloads far parked regions only when
+  // their committed record is the live state, and rotates the unloaded region
+  // furthest behind through a capacity-one regional reader.
+  async maintainRegionalResidency(sim){
+    if(!this.available||!residencyEnabled(sim)||this.residencyBusy||sim!==this.getSim?.())return null;
+    this.residencyBusy=true;
+    try{
+      if(this.activeSave)await this.activeSave;
+      const slot=this.activeSlotId,db=await this.db(),live=()=>this.getSim?.()===sim;
+      const needed=reloadCandidates(sim)[0];
+      if(needed)return await this.#reloadRegion(db,slot,sim,needed,'reload');
+      const lagging=(sim.planetaryTravel?.sessions||[]).filter(s=>s.biologicalMode===POPULATION_MODE&&!s.parked&&remoteBiologicalDebt(sim,s)>CFG.lifeStride).sort((a,b)=>a.snapshot.core.tickCount-b.snapshot.core.tickCount||a.key.localeCompare(b.key))[0];
+      if(lagging){advanceRemoteBiology(sim,lagging,{maxTicks:CFG.dayTicks});return{action:'catch-up',key:lagging.key,remaining:remoteBiologicalDebt(sim,lagging)}}
+      const far=unloadCandidates(sim)[0];
+      if(far){
+        if(!far.parked){if(remoteBiologicalDebt(sim,far)>CFG.lifeStride)return null;parkRegion(sim,far)}
+        const root=await readRegionalCheckpoint(db,slot,{manifestOnly:true}),index=root?.regionalPersistence;
+        if(!live()||!sim.planetaryTravel.sessions.includes(far))return null;
+        const entry=index?.entries.find(e=>e.kind==='session'&&e.key===far.key&&!e.unloaded);
+        if(entry&&this.regionalJournal.clean(sim,slot,root,far)){unloadRegion(sim,far,{...entry,capture:entry.capture??index.capture});return{action:'unload',key:far.key}}
+        await this.saveNow('regional-unload');return{action:'save-before-unload',key:far.key};
+      }
+      const behind=rotationCandidate(sim);
+      if(behind&&sim.planetaryTravel.sessions.length<REGIONAL_RESIDENCY.maxResident)return await this.#reloadRegion(db,slot,sim,behind,'rotate');
+      return null;
+    }finally{this.residencyBusy=false}
+  }
+  async #reloadRegion(db,slot,sim,entry,action){
+    const reader=await openRegionalCheckpointReader(db,slot,{capacity:1});
+    if(!reader)return null;
+    try{
+      const lease=await reader.acquire('session',entry.key);
+      try{
+        if(this.getSim?.()!==sim||!(sim.planetaryTravel?.unloaded||[]).includes(entry))return null;
+        reloadRegion(sim,entry,lease.payload);
+      }finally{lease.release()}
+    }finally{reader.close()}
+    return{action,key:entry.key};
+  }
   async load(id=this.activeSlotId){
     if(!safeSlot(id))throw Error('Invalid world slot.');
     // Continue from the most recent committed checkpoint, not a stale read
     // taken while an in-flight autosave is finishing.
     if(this.activeSave)await this.activeSave;
     if((await this.metadata(id,{strict:true}))?.role==='movement-backup')throw Error('Backups are read-only. Use New World to play an independent copy.');
-    const snapshot=await this.loadSnapshot(id);
+    // Live play loads the resident neighbourhood; unloaded regions stay on disk.
+    const snapshot=await readRegionalCheckpoint(await this.db(),id,{residentOnly:true});
     if(!snapshot)return null;
     const sim=restoreSimulationSnapshot(snapshot);this.setActiveSlot(id);this.worldNames.set(id,snapshot.meta?.worldName||'');this.lastSavedAt=Date.now();this.lastSavedTick=sim.tickCount;this.lastObservedSignature=this.signature(sim);return sim;
   }
@@ -595,12 +642,15 @@ export class SaveManager{
       const indexed=sim.world.generator==='planetary/1',previous=indexed?await readRegionalCheckpoint(db,slotId,{manifestOnly:true}):null;
       // Capture and enqueue transport in one turn: nested state may still be live.
       const ticket=indexed?this.regionalJournal.capture(sim,slotId,previous):null;
-      const capturedSignature=this.signature(sim),snapshot=ticket?.incremental?createActiveRegionalSnapshot(sim,{reason}):createSimulationSnapshot(sim,{reason});
+      const capturedSignature=this.signature(sim),snapshot=ticket?.incremental||ticket?.plan?createActiveRegionalSnapshot(sim,{reason}):createSimulationSnapshot(sim,{reason});
       snapshot.meta.key=slotId;
       snapshot.meta.worldName=worldName;
       if(indexed){
        const changes=ticket.incremental?ticket.changed.map(entry=>({kind:entry.kind,payload:entry.kind==='session'?entry.owner:{origin:entry.origin,world:snapshotWorld(entry.owner)}})):null;
-       const result=changes?await commitRegionalUpdate(db,snapshot,slotId,previous,changes):await commitRegionalCheckpoint(db,snapshot,slotId,previous);
+       // Membership or active-region changes publish only new/changed owners;
+       // clean and unloaded owners are retained by reference.
+       const owners=!changes&&ticket.plan?ticket.plan.map(o=>o.payload&&o.kind==='survey'?{...o,payload:{origin:o.payload.origin,world:snapshotWorld(o.payload.world)}}:o):null;
+       const result=changes?await commitRegionalUpdate(db,snapshot,slotId,previous,changes):owners?await commitRegionalJournal(db,snapshot,slotId,previous,owners):await commitRegionalCheckpoint(db,snapshot,slotId,previous);
        this.regionalJournal.acknowledge(ticket,result.root.regionalPersistence.capture);
       }else{
       const tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');

@@ -26,7 +26,7 @@ export function planetaryCell(world,localX,localY){
 export function validatePlanetaryTravelState(state,activeKey=null){
  if(state===undefined)return;
  if(state?.schema!==1||!Number.isSafeInteger(state.nextId)||state.nextId<1||
-   !Array.isArray(state.sessions)||state.sessions.length>16)throw Error('Invalid planetary travel archive.');
+   !Array.isArray(state.sessions)||state.sessions.length>25)throw Error('Invalid planetary travel archive.');
  const keys=new Set();
  for(const item of state.sessions){
   if(!item||typeof item.key!=='string'||!item.snapshot?.world?.regionOrigin||item.snapshot.world.generator!=='planetary/1')
@@ -55,6 +55,8 @@ export function validatePlanetAnimalOwnership(activeAnimals,travelState){
  inspect(activeAnimals,'active');
  if(!travelState)return;
  validatePlanetaryTravelState(travelState);
+ // Unloaded regions own the identities recorded in their committed headers.
+ for(const entry of travelState.unloaded||[])for(const id of entry.life?.ids||[]){if(!Number.isSafeInteger(id)||id<1||ids.has(id))throw Error('Duplicate or invalid planetary animal identity.');ids.add(id)}
  for(const session of travelState.sessions){
   inspect(session.snapshot.animals,'regional');
   const holders=new Set(session.snapshot.animals.map(a=>a.id));

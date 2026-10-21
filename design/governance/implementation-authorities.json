@@ -3,6 +3,13 @@
   "principle": "One live authority for each mechanism. Multiple states, species, art drafts and measured outcomes are permitted; competing runtime definitions are not.",
   "gameEntrypoint": "src/main.js",
   "systems": {
+    "regionalResidency": {
+      "authority": "src/world/regional-residency.js",
+      "storage": "src/persistence/regional-records.js",
+      "driver": "src/persistence/save-manager.js",
+      "consumers": ["src/main.js", "src/world/planetary-travel.js", "src/persistence/regional-dirty.js", "src/world/planet-regions.js", "src/world/planetary-offscreen-biology.js"],
+      "contract": "docs/REGIONAL-RESIDENCY-2026-10-21.md"
+    },
     "regionalDemography": {
       "authority": "src/world/planetary-demography.js",
       "behavior": "src/ecology/regional-demography.js",

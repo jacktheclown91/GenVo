@@ -68,6 +68,8 @@ export function highId(sim){
   highest=Math.max(highest,session.snapshot.core?.nextId-1||0);
   for(const a of session.snapshot.animals||[])highest=Math.max(highest,a.id);
  }
+ // Unloaded regions reserve their committed identity watermark.
+ for(const entry of sim.planetaryTravel?.unloaded||[])highest=Math.max(highest,entry.life.nextId-1);
  return Math.max(highest+1,sim.planetaryTravel?.nextId||1);
 }
 // A transactional offscreen stride: if canonical simulation or conservation

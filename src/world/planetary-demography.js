@@ -33,7 +33,7 @@ export function validateRegionalDemographyRules(sim){
 // by Simulation.update at stride boundaries, after the synchronized near set.
 export function advanceDemographicRegions(sim,{ticks=REGIONAL_DEMOGRAPHY.ticksPerPass}={}){
  if(!enabled(sim)||!sim.planetaryTravel?.sessions?.length)return[];
- const due=sim.planetaryTravel.sessions.filter(s=>s.biologicalMode===POPULATION_MODE&&remoteBiologicalDebt(sim,s)>0)
+ const due=sim.planetaryTravel.sessions.filter(s=>s.biologicalMode===POPULATION_MODE&&!s.parked&&remoteBiologicalDebt(sim,s)>0)
   .sort((a,b)=>a.snapshot.core.tickCount-b.snapshot.core.tickCount||a.key.localeCompare(b.key));
  return due.map(s=>advanceRemoteBiology(sim,s,{maxTicks:Math.min(ticks,OFFSCREEN_BIOLOGY.maxEntryTicks)}));
 }
@@ -54,7 +54,7 @@ export function assignRegionalBiologyModes(sim){
  for(const s of sim.planetaryTravel.sessions){
   if(s.biologicalMode!==CANONICAL&&s.biologicalMode!==POPULATION_MODE)continue;
   const close=regionDistance(here,s.snapshot.world.regionOrigin)<=REGIONAL_DEMOGRAPHY.nearRadius;
-  if(close){near++;if(s.biologicalMode===POPULATION_MODE){promote(sim,s);changed.push({key:s.key,mode:CANONICAL})}}
+  if(close){near++;if(s.biologicalMode===POPULATION_MODE){delete s.parked;promote(sim,s);changed.push({key:s.key,mode:CANONICAL})}}
   else{far++;if(s.biologicalMode===CANONICAL){markRegionalOwnerDirty(s);s.biologicalMode=POPULATION_MODE;changed.push({key:s.key,mode:POPULATION_MODE})}}
  }
  return{near,far,changed};
