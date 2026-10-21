@@ -76,7 +76,7 @@ export class Renderer{
   // v1.32.5: a new or loaded world replaces the title-screen world. Every cache keyed only by
   // tile position belongs to the old world: without this, tiles that were land there drew as
   // flat land with a stepped bank in the new world's water, and the reverse showed phantom water.
-  resetWorldCaches(){this.visibleWorldPages=[];this.visiblePlantTargets=new Map();this.plantTargetWorld=this.sim.world;this.partExpressions.reset();this.feeding?.reset();this.headAttention?.reset();this.turnState?.clear();this.vegLayerCache?.clear?.();this.staticGroundTileCache?.clear?.();this.waterToneCache?.clear?.();this.habitatField=null;this.habitatFieldDay=-1;this.pendingHabitatDay=null;this.pendingHabitatFrames=0;this.macroHabitatSeed=null;this.habitatScenesKey='';this.terrainChunkCache.clear();this.terrainRefreshQueue.length=0;this.terrainRefreshQueued.clear();this.terrainRefreshFrame=0;this.landformMaskCache.clear();this.habitatMaskCache.clear();this.landBaseTileCache.clear();this.waterBaseTileCache.clear();this.staticLandTileCache.clear()}
+  resetWorldCaches(){this.visibleWorldPages=[];this.visiblePlantTargets=new Map();this.plantTargetWorld=this.sim.world;this.partExpressions.reset();this.feeding?.reset();this.headAttention?.reset();this.turnState?.clear();this.vegLayerCache?.clear?.();this.staticGroundTileCache?.clear?.();this.waterToneCache?.clear?.();this.habitatField=null;this.habitatFieldDay=-1;this.pendingHabitatDay=null;this.pendingHabitatFrames=0;this.macroHabitatSeed=null;this.habitatScenesKey='';this.terrainChunkCache.clear();this.terrainRefreshQueue.length=0;this.terrainRefreshQueued.clear();this.terrainRefreshFrame=0;this.terrainChunkWork=null;this.landformMaskCache.clear();this.habitatMaskCache.clear();this.landBaseTileCache.clear();this.waterBaseTileCache.clear();this.staticLandTileCache.clear()}
   resize(){const dpr=1,w=innerWidth,h=innerHeight; // Pixel-art canvas renders at CSS-pixel resolution; DOM UI stays device-sharp and high-DPI screens avoid 2-4x canvas fill cost.
 this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.canvas.style.width=w+'px';this.canvas.style.height=h+'px';this.ctx.setTransform(dpr,0,0,dpr,0,0);this.w=w;this.h=h;this.ctx.imageSmoothingEnabled=false}
   setPlayerPresentation(input,aheadSeconds=0){this.playerPresentation={input:input?{...input}:null,aheadSeconds:Math.max(0,Number(aheadSeconds)||0)}}
@@ -431,7 +431,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   drawLiveVegetationWindow(tile){const b=this.liveVegetationBounds(),w=this.sim.world,c=this.ctx;for(let y=b.y0;y<b.y1;y++)for(let x=b.x0;x<b.x1;x++){const i=w.idx(x,y);if(w.water[i])continue;const px=Math.round((x-this.camera.x)*tile+this.w/2),py=Math.round((y-this.camera.y)*tile+this.h/2),h=visualHierarchyAt(w,x,y,{focusX:this.sim.player()?.x,focusY:this.sim.player()?.y,habitatField:this.habitatField}),v=this.vegetationLayer(i,x,y,h);if(v)c.drawImage(v,px-VEG_PAD*this.zoom,py-VEG_PAD*this.zoom,(16+2*VEG_PAD)*this.zoom,(16+2*VEG_PAD)*this.zoom);else this.drawVegetation(i,px,py,this.zoom,x,y,h)}}
 
   queueTerrainRefresh(cx,cy,size=TERRAIN_CHUNK,sig=null){
-    if(cx<0||cy<0||cx*size>=CFG.worldSize||cy*size>=CFG.worldSize)return;const key=`${cx},${cy},${size}`;if(this.terrainRefreshQueued.has(key))return;this.terrainRefreshQueued.add(key);this.terrainRefreshQueue.push({cx,cy,size,sig});
+    if(cx<0||cy<0||cx*size>=CFG.worldSize||cy*size>=CFG.worldSize)return;const key=`${cx},${cy},${size}`;if(this.terrainRefreshQueued.has(key)||this.terrainChunkWork?.key===key)return;this.terrainRefreshQueued.add(key);this.terrainRefreshQueue.push({cx,cy,size,sig});
   }
 
   queueTerrainWarmRing(startX,startY,cols,rows){
@@ -441,9 +441,39 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     }
   }
 
-  // Off-screen chunks are built one every other frame, the one nearest where the camera is heading first (Phase 3L).
+
+  // Live refresh performs a bounded number of ground/vegetation tile tasks per
+  // frame. It never publishes a partial chunk; until complete, drawing retains
+  // the old detailed chunk or uses the small land/water fallback. This avoids
+  // the multi-hundred-ms atomic work observed in the native FPS overlay.
   processTerrainRefreshQueue(){
-    if(!this.terrainRefreshQueue.length)return;this.terrainRefreshFrame=(this.terrainRefreshFrame+1)%2;if(this.terrainRefreshFrame)return;const q=this.terrainRefreshQueue,cam=this.camera,last=cam?this.queueCamera||{x:cam.x,y:cam.y}:null,ax=cam?cam.x+(cam.x-last.x)*30:0,ay=cam?cam.y+(cam.y-last.y)*30:0;if(cam)this.queueCamera={x:cam.x,y:cam.y};let bi=0,bd=Infinity;for(let k=0;cam&&k<q.length;k++){const j=q[k],d=Math.hypot((j.cx+.5)*j.size-ax,(j.cy+.5)*j.size-ay);if(d<bd){bd=d;bi=k}}const job=q.splice(bi,1)[0],key=`${job.cx},${job.cy},${job.size}`;this.terrainRefreshQueued.delete(key);const sig=this.terrainChunkSignature(job.cx,job.cy,job.size),entry=this.terrainChunkCache.get(key);if(entry?.sig===sig)return;this.buildTerrainChunk(job.cx,job.cy,job.size,sig)
+    const current=this.terrainChunkWork;
+    if(current){
+      if(this.terrainChunkSignature(current.cx,current.cy,current.size)!==current.sig){
+        this.terrainChunkWork=null;
+        this.queueTerrainRefresh(current.cx,current.cy,current.size);
+      }else if(this.stepTerrainChunkWork(current,4,8))this.terrainChunkWork=null;
+      return;
+    }
+    if(!this.terrainRefreshQueue.length)return;
+    this.terrainRefreshFrame=(this.terrainRefreshFrame+1)%2;
+    if(this.terrainRefreshFrame)return;
+    const q=this.terrainRefreshQueue,cam=this.camera,last=cam?this.queueCamera||{x:cam.x,y:cam.y}:null;
+    const ax=cam?cam.x+(cam.x-last.x)*30:0,ay=cam?cam.y+(cam.y-last.y)*30:0;
+    if(cam)this.queueCamera={x:cam.x,y:cam.y};
+    let bi=0,bd=Infinity;
+    for(let k=0;cam&&k<q.length;k++){
+      const j=q[k],d=Math.hypot((j.cx+.5)*j.size-ax,(j.cy+.5)*j.size-ay);
+      if(d<bd){bd=d;bi=k}
+    }
+    const job=q.splice(bi,1)[0],key=`${job.cx},${job.cy},${job.size}`;
+    this.terrainRefreshQueued.delete(key);
+    const sig=this.terrainChunkSignature(job.cx,job.cy,job.size),entry=this.terrainChunkCache.get(key);
+    if(entry?.sig===sig)return;
+    const work=this.createTerrainChunkWork(job.cx,job.cy,job.size,sig);
+    if(!work)return;
+    this.terrainChunkWork=work;
+    if(this.stepTerrainChunkWork(work,4,8))this.terrainChunkWork=null;
   }
 
   terrainChunk(cx,cy,size=TERRAIN_CHUNK){
@@ -452,24 +482,66 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     return this.buildTerrainChunk(cx,cy,size,sig)
   }
 
+
+  // The synchronous variant remains for pre-game scene preparation and
+  // legacy authored tools. Live refresh uses the *same* tile operations below,
+  // but spreads them over bounded requestAnimationFrame opportunities.
   buildTerrainChunk(cx,cy,size=TERRAIN_CHUNK,sig=this.terrainChunkSignature(cx,cy,size)){
-    if(typeof document==='undefined')return null;const key=`${cx},${cy},${size}`,chunk=document.createElement('canvas'),logical=size*16*TILE_ART;chunk.width=logical;chunk.height=logical;const cc=chunk.getContext('2d');if(!cc)return null;cc.imageSmoothingEnabled=false;cc.scale(TILE_ART,TILE_ART);
-    const vegetation=document.createElement('canvas');vegetation.width=vegetation.height=logical;const vc=vegetation.getContext('2d');vc.imageSmoothingEnabled=false;vc.scale(TILE_ART,TILE_ART);
-    const old=this.ctx;this.ctx=cc;
+    const work=this.createTerrainChunkWork(cx,cy,size,sig);
+    if(!work)return null;
+    while(!this.stepTerrainChunkWork(work,Infinity,Infinity)){}
+    return work.chunk;
+  }
+
+  createTerrainChunkWork(cx,cy,size,sig){
+    if(typeof document==='undefined')return null;
+    const logical=size*16*TILE_ART,chunk=document.createElement('canvas'),vegetation=document.createElement('canvas');
+    chunk.width=chunk.height=vegetation.width=vegetation.height=logical;
+    const cc=chunk.getContext('2d'),vc=vegetation.getContext('2d');if(!cc||!vc)return null;
+    cc.imageSmoothingEnabled=vc.imageSmoothingEnabled=false;
+    cc.scale(TILE_ART,TILE_ART);vc.scale(TILE_ART,TILE_ART);
+    return{cx,cy,size,sig,key:`${cx},${cy},${size}`,chunk,vegetation,cc,vc,phase:0,index:0};
+  }
+
+  stepTerrainChunkWork(work,budgetMs=4,maxOperations=8){
+    const {cx,cy,size,cc,vc}=work,start=performance.now(),old=this.ctx,P=VEG_PAD;
+    this.ctx=cc;
+    let operations=0;
     try{
-      for(let ly=0;ly<size;ly++)for(let lx=0;lx<size;lx++){
-        const x=cx*size+lx,y=cy*size+ly;if(x<0||y<0||x>=CFG.worldSize||y>=CFG.worldSize)continue;const i=this.sim.world.idx(x,y),px=lx*16,py=ly*16,simWater=!!this.sim.world.water[i],hash=hash2(x,y,11),identity=habitatIdentityAt(this.sim.world,x,y,this.habitatField),mask=this.visualWaterMask(x,y);
-        if(!simWater){const land=this.staticLandTile(i,x,y,identity,false);if(land)cc.drawImage(land,px,py,16,16)}else{
-          this.drawOrganicLandBase(px,py,1,x,y,this.sim.season,hash,identity);
-          if(!mask.full&&!mask.empty){cc.fillStyle='rgba(74,79,53,.16)';cc.fillRect(px+2,py+11,12,2)}
+      while(operations<maxOperations && (operations===0||performance.now()-start<budgetMs)){
+        if(work.phase===0){
+          if(work.index>=size*size){work.phase=1;work.index=0;continue}
+          const lx=work.index%size,ly=Math.floor(work.index/size);work.index++;
+          const x=cx*size+lx,y=cy*size+ly;
+          if(x>=0&&y>=0&&x<CFG.worldSize&&y<CFG.worldSize){
+            const i=this.sim.world.idx(x,y),px=lx*16,py=ly*16,simWater=!!this.sim.world.water[i];
+            const hash=hash2(x,y,11),identity=habitatIdentityAt(this.sim.world,x,y,this.habitatField),mask=this.visualWaterMask(x,y);
+            if(!simWater){const land=this.staticLandTile(i,x,y,identity,false);if(land)cc.drawImage(land,px,py,16,16)}
+            else{this.drawOrganicLandBase(px,py,1,x,y,this.sim.season,hash,identity);
+              if(!mask.full&&!mask.empty){cc.fillStyle='rgba(74,79,53,.16)';cc.fillRect(px+2,py+11,12,2)}}
+            if(!mask.empty){const water=this.waterBaseTile(x,y,mask,hash);if(water)cc.drawImage(water,px,py,16,16);
+              if(!mask.full)this.drawOrganicBankAccents(px,py,1,x,y,mask)}
+          }
+        }else{
+          const width=size+2;
+          if(work.index>=width*width){
+            this.terrainChunkCache.set(work.key,{sig:work.sig,canvas:work.chunk,vegetation:work.vegetation});
+            return true;
+          }
+          const lx=(work.index%width)-1,ly=Math.floor(work.index/width)-1;work.index++;
+          const x=cx*size+lx,y=cy*size+ly;
+          if(x>=0&&y>=0&&x<CFG.worldSize&&y<CFG.worldSize){
+            const i=this.sim.world.idx(x,y);
+            if(!this.sim.world.water[i]){
+              const v=this.vegetationLayer(i,x,y,visualHierarchyAt(this.sim.world,x,y,{habitatField:this.habitatField}));
+              if(v)vc.drawImage(v,lx*16-P,ly*16-P,16+2*P,16+2*P);
+            }
+          }
         }
-        if(!mask.empty){const water=this.waterBaseTile(x,y,mask,hash);if(water)cc.drawImage(water,px,py,16,16);if(!mask.full)this.drawOrganicBankAccents(px,py,1,x,y,mask)}
+        operations++;
       }
-      // World art pass: plants are drawn after all ground, from this chunk and the ring around it, so a
-      // plant can spread past its own tile without being cut off or covered by the next tile.
-      const P=VEG_PAD;for(let ly=-1;ly<=size;ly++)for(let lx=-1;lx<=size;lx++){const x=cx*size+lx,y=cy*size+ly;if(x<0||y<0||x>=CFG.worldSize||y>=CFG.worldSize)continue;const i=this.sim.world.idx(x,y);if(this.sim.world.water[i])continue;const v=this.vegetationLayer(i,x,y,visualHierarchyAt(this.sim.world,x,y,{habitatField:this.habitatField}));if(v)vc.drawImage(v,lx*16-P,ly*16-P,16+2*P,16+2*P)}
+      return false;
     }finally{this.ctx=old}
-    this.terrainChunkCache.set(key,{sig,canvas:chunk,vegetation});return chunk;
   }
 
   terrainChunkSignature(cx,cy,size=TERRAIN_CHUNK){return Math.imul((this.habitatFieldDay+1)^Math.imul(cx+257,73856093)^Math.imul(cy+263,19349663)^Math.imul(size,83492791),16777619)>>>0}
