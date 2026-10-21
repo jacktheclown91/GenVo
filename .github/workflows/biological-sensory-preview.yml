@@ -69,7 +69,7 @@ jobs:
         with:
           name: GenVo_Sensory_Fog_Candidate
           path: |
-            ${{ runner.temp }}/GenVo_Itch_PerfAudio_Candidate.zip
-            ${{ runner.temp }}/GenVo_Itch_PerfAudio_Candidate-report.json
+            ${{ runner.temp }}/GenVo_Sensory_Fog_Candidate.zip
+            ${{ runner.temp }}/GenVo_Sensory_Fog_Candidate-report.json
           if-no-files-found: error
           retention-days: 14
