@@ -1,6 +1,6 @@
 import {traitListText,visualChanges} from '../lineage/adaptation.js';
 
-export function buildGenerationReveal({bringsText='',handoff,fromRecord,toRecord,pressureText='No one pressure dominated.',causeText='',strategyText='',careText='',divergenceText='',divergenceChip='',progressionText='',progressionChip='',populationHistoryText='',populationHistoryChip='',protoText='',protoChip='',speciesText='',speciesChip='',lifestyleText='',lifestyleChip='' }={}){
+export function buildGenerationReveal({bringsText='',handoff,fromRecord,toRecord,pressureText='No one pressure dominated.',causeText='',strategyText='',careText='',divergenceText='',divergenceChip='',progressionText='',progressionChip='',populationHistoryText='',populationHistoryChip='',protoText='',inheritedMovement=null,protoChip='',speciesText='',speciesChip='',lifestyleText='',lifestyleChip='' }={}){
   if(!handoff||!toRecord)return null;
   const fromGen=fromRecord?.generation??Math.max(1,(toRecord.generation||handoff.generation)-1),toGen=toRecord.generation??handoff.generation;
   const visible=visualChanges(toRecord.genes,fromRecord?.genes,{limit:4});
@@ -18,6 +18,13 @@ export function buildGenerationReveal({bringsText='',handoff,fromRecord,toRecord
     ['Since the founder',founder],
     ['Last generation faced',pressureText]
   ];
+  // Genuine functional thresholds are visible at a glance on the new body.
+  // Terrain, energy and conditions still decide when those actions can execute.
+  if(inheritedMovement?.gained?.length){
+    chips.unshift(...inheritedMovement.gained.slice(0,2).map(v=>`BODY CAN ${v.label.toUpperCase()}`));
+    details.unshift(['Inherited movement',`This descendant has the body structure to ${inheritedMovement.gained.map(v=>v.label).join(' and ')} when conditions allow.`]);
+  }
+  if(inheritedMovement?.lost?.length)details.push(['Movement no longer available',inheritedMovement.lost.map(v=>v.label).join(' · ')]);
   if(handoff.bornAdaptations?.length){details.unshift(['Born with',`${handoff.bornAdaptations.join(' · ')}, a new adaptation its parents did not have`]);chips.unshift(`born with ${handoff.bornAdaptations[0].toLowerCase()}`)}
   if(divergenceText){details.push(['Lineage form',divergenceText]);if(!handoff.newlyEstablished&&handoff.reason!=='death')lead='You take over as a grown descendant. How the family lived has begun shaping this body.'}
   if(progressionText)details.push(['New ecological test',progressionText]);
