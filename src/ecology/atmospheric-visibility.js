@@ -6,7 +6,40 @@ import {partEffectFactors} from '../lineage/part-abilities.js';
 // a humidity/condensation proxy, not an additional liquid-water inventory.
 export const VISIBILITY=Object.freeze({policy:'atmospheric-visibility/1'});
 export function visualSurveyRange(animal,base=8){return base*(animal.genes?.senses||1)*(partEffectFactors(animal)?.threatSense??1)}
-export function visuallyObservable(sim,observer,target,base=8){return sim.visibilityRules!==VISIBILITY.policy||!observer||observer.id===target.id||observer.underground||atmosphericSight(sim,observer,target,visualSurveyRange(observer,base)).detected}
+// The same anatomical vision contract drives actor visibility, mouse target
+// availability and the player-facing fog. The physical environment is never
+// simulated differently when a creature cannot see it.
+const FACINGS=[[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];
+export function creatureView(sim,observer,base=8){
+ if(!observer)return null;
+ const nodes=observer.bodyPlan?.nodes||[],eyes=nodes.filter(n=>n.socket?.startsWith('eye')).length;
+ const effects=partEffectFactors(observer)||{};
+ const sight=visualSurveyRange(observer,base);
+ const range=eyes===0?1.55:sight;
+ const limit=observer.underground?Math.min(range,4):observer.diveDepth>.03?Math.min(range,3.5):range;
+ const air=!observer.underground&&!(observer.diveDepth>.03)&&sim.visibilityRules===VISIBILITY.policy?atmosphereAt(sim,observer.x,observer.y):null;
+ const adjusted=limit*Math.exp(-(air?.extinction||0)*Math.min(10,limit)*.5);
+ return{observer,range:Math.max(1.55,Math.min(24,adjusted)),eyes,
+   rearLimit:eyes>0&&effects.wideField?-.98:eyes>=2?-.62:eyes===1?-.12:1,
+   touch:1.55,level:!!observer.underground?'underground':'surface',
+   facing:FACINGS[((observer.dir||0)%8+8)%8]||FACINGS[0]};
+}
+export function viewCanSee(view,x,y){
+ if(!view||!Number.isFinite(x)||!Number.isFinite(y))return false;
+ const dx=x-view.observer.x,dy=y-view.observer.y,d=Math.hypot(dx,dy);
+ if(d<=view.touch)return true;
+ if(d>view.range||view.eyes===0)return false;
+ return(dx*view.facing[0]+dy*view.facing[1])/(d*Math.hypot(...view.facing))>=view.rearLimit;
+}
+export function visuallyObservable(sim,observer,target,base=8){
+ if(!observer||observer.id===target.id)return true;
+ if(sim.sensoryFogEnabled!==false){
+   if(!!observer.underground!==!!target.underground)return false;
+   if(!viewCanSee(creatureView(sim,observer,base),target.x,target.y))return false;
+ }
+ if(sim.visibilityRules!==VISIBILITY.policy||observer.underground)return true;
+ return atmosphericSight(sim,observer,target,visualSurveyRange(observer,base)).detected;
+}
 const clamp=v=>Math.max(0,Math.min(1,v));
 export function atmosphereAt(sim,x,y){
  const w=sim.world,i=w.idx(x,y),climate=sim.climate||{temp:w.temperature[i],rain:0};
