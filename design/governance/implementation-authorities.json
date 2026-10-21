@@ -18,6 +18,16 @@
       "consumers": ["src/persistence/save-manager.js"],
       "contract": "docs/REGIONAL-READER-2026-10-21.md"
     },
+    "regionalIdentityDirectory": {
+      "authority": "src/world/regional-identities.js",
+      "consumers": ["src/persistence/regional-records.js", "src/persistence/regional-reader.js"],
+      "contract": "docs/REGIONAL-DIRECTORY-2026-10-21.md"
+    },
+    "regionalReplayOrdering": {
+      "authority": "src/world/regional-replay-order.js",
+      "consumers": ["src/world/planetary-offscreen-biology.js", "src/persistence/regional-records.js", "src/persistence/regional-reader.js"],
+      "contract": "docs/REGIONAL-DIRECTORY-2026-10-21.md"
+    },
     "physicalHabitatHazards": {
       "authority": "src/ecology/habitat-hazards.js",
       "consumers": ["src/sim/simulation.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js"],

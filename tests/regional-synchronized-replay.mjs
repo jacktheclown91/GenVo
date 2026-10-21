@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import {isDeepStrictEqual} from 'node:util';
 import {Simulation} from '../src/sim/simulation.js';
+import {partitionRegionalSnapshot} from '../src/persistence/regional-records.js';
+import {RegionalCheckpointReader} from '../src/persistence/regional-reader.js';
 import {CFG} from '../src/sim/config.js';
 import {FrameStepper} from '../src/sim/frame-stepper.js';
 import {planetaryTravelAvailability,crossPlanetaryBorder} from '../src/world/planetary-travel.js';
@@ -40,6 +42,9 @@ const advance=dt=>stepper.advance(dt,1,()=>{count++;clock+=.01;paced.playerContr
 advance(seconds);while(stepper.pendingSeconds>=stepper.stepSeconds){advance(0);assert.ok(++frames<1000)}
 assert.equal(count,seconds*CFG.controlHz);assert.ok(jobs>2);same(snapshot(paced),snapshot(sim),'frame-yielded and synchronous ordering match whole saved state exactly');
 assert.equal(pendingRegionalBiology(sim).length,2);
+const directory=partitionRegionalSnapshot(snapshot(sim),'world-directory-replay-test'),reader=new RegionalCheckpointReader(null,'world-directory-replay-test',directory.root);
+assert.deepEqual(reader.pendingBiology().map(row=>row.key),pendingRegionalBiology(sim).map(session=>session.key),'persisted clocks select the same ordered real replay jobs without loading any payload');
+assert.ok(reader.identityWatermark>=sim.nextId);assert.equal(reader.resident,0);reader.close();
 const first=prepareRegionalBiology(sim);assert.equal(first.remaining,0);const halfway=snapshot(sim),resumed=restoreSimulationSnapshot(structuredClone(halfway));
 while(prepareRegionalBiology(sim)){}while(prepareRegionalBiology(resumed)){}
 same(snapshot(sim),snapshot(resumed),'resumption between regional jobs preserves deterministic remainder');

@@ -4,6 +4,8 @@
 // silently accelerated by a UI call; remote work is bounded by the active
 // life stride and return trips refuse excessive time debt.
 import {CFG} from '../sim/config.js';
+import {REGIONAL_REPLAY,regionalBiologyOrder} from './regional-replay-order.js';
+export {REGIONAL_REPLAY} from './regional-replay-order.js';
 import {createSimulationSnapshot,restoreDetachedSimulationSnapshot} from '../persistence/save-manager.js';
 import {OFFSCREEN_ENVIRONMENT,validateRemoteEnvironmentalLedger} from './planetary-offscreen-environment.js';
 import {validatePlanetAnimalOwnership} from './planet-regions.js';
@@ -155,16 +157,14 @@ export function advanceOffscreenBiology(sim,{
 }
 
 // Saved policy: historic worlds retain the E18 single-region stride schedule.
-export const REGIONAL_REPLAY=Object.freeze({legacy:'bounded-strides/1',synchronized:'synchronized-strides/1'});
 export function regionalReplayPolicy(sim){
  const policy=sim.regionalReplayPolicy===undefined?REGIONAL_REPLAY.legacy:sim.regionalReplayPolicy;
  if(!Object.values(REGIONAL_REPLAY).includes(policy))throw Error('Unknown regional replay policy.');
  return policy;
 }
 export function pendingRegionalBiology(sim){
- if(regionalReplayPolicy(sim)!==REGIONAL_REPLAY.synchronized||sim.tickCount%CFG.lifeStride!==0)return [];
- return (sim.planetaryTravel?.sessions||[]).filter(s=>s.biologicalMode==='canonical-ticks/1'&&remoteBiologicalDebt(sim,s)>0)
-  .sort((a,b)=>a.snapshot.core.tickCount-b.snapshot.core.tickCount||a.key.localeCompare(b.key));
+ const policy=regionalReplayPolicy(sim);if(policy!==REGIONAL_REPLAY.synchronized||sim.tickCount%CFG.lifeStride!==0)return[];
+ return regionalBiologyOrder(sim.tickCount,(sim.planetaryTravel?.sessions||[]).map(session=>({key:session.key,mode:session.biologicalMode,tick:session.biologicalMode==='canonical-ticks/1'?remoteState(session).tickCount:undefined,session})),policy).map(row=>row.session);
 }
 // One transaction per caller admission. Browser callers yield after each job;
 // direct simulation callers complete the same ordered jobs before their next tick.

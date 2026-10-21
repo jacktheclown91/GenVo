@@ -2,6 +2,8 @@
 // clock advancement or regeneration lives here; persisted records remain owned
 // by the checkpoint even after a decoded lease is released.
 import {readRegionalCheckpoint,validateRegionalIndex} from './regional-records.js';
+import {REGIONAL_IDENTITIES} from '../world/regional-identities.js';
+import {regionalBiologyOrder} from '../world/regional-replay-order.js';
 export class RegionalCheckpointReader{
  #db;#slot;#root;#entries;#leases=new Set();#closed=false;#capacity;
  constructor(db,slot,root,{capacity=2}={}){
@@ -13,6 +15,15 @@ export class RegionalCheckpointReader{
  get resident(){return this.#leases.size}
  get closed(){return this.#closed}
  get capacity(){return this.#capacity}
+ get identityWatermark(){this.#directory();return this.#root.regionalPersistence.nextId}
+ #directory(){
+  if(this.#closed)throw Error('Regional reader is closed.');
+  if(this.#root.regionalPersistence.identityPolicy!==REGIONAL_IDENTITIES)throw Error('Checkpoint lacks regional identity metadata; save it through the canonical codec first.');
+ }
+ pendingBiology(){
+  this.#directory();const index=this.#root.regionalPersistence,tick=this.#root.core.tickCount;
+  return regionalBiologyOrder(tick,index.entries.filter(e=>e.kind==='session').map(e=>({key:e.key,tick:e.life.tick,mode:e.life.mode})),index.replayPolicy).map(row=>({key:row.key,tick:row.tick,debt:tick-row.tick}));
+ }
  async acquire(kind,key){
   if(this.#closed)throw Error('Regional reader is closed.');
   if(!this.#entries.some(e=>e.kind===kind&&e.key===key))throw Error('Region does not belong to this checkpoint.');
