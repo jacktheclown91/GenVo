@@ -1,15 +1,51 @@
 import {coordNoise} from '../core/rng.js';
 import {deriveDrainage} from './topography.js';
 import {CAVES} from './cave-policy.js';
-import {excavatePassage,validateSubsurface} from './subsurface.js';
+import {excavatePassage,validateSubsurface,batchExcavation} from './subsurface.js';
 import {TERRAIN_SEDIMENT} from './terrain-sediment.js';
 export {CAVES};
 export function caveFracture(w,i){const x=i%w.n+(w.regionOrigin?.x||0),y=(i/w.n|0)+(w.regionOrigin?.y||0);return coordNoise(w.seedHash^0x63617665,Math.floor(x/3),Math.floor(y/3))}
+// Coherent geological cavities have real multi-cell widths. The candidate
+// field is used only during formation; saved passages remain the sole spatial
+// authority. Material is deposited on the nearby exterior talus ring so spoil
+// does not raise the very floor subsequently being opened into a chamber.
+export function growGeologicalChamber(w,entrance){
+ const root=w.subsurface?.passages.get(entrance);if(!root||root.closed||root.origin!==CAVES.policy)return 0;
+ return batchExcavation(w,()=>{
+  const n=w.n,cx=entrance%n,cy=entrance/n|0,seed=w.seedHash^entrance;
+  const rx=3+coordNoise(seed,cx,cy)*3,ry=2+coordNoise(seed^719,cy,cx)*3,r=Math.ceil(Math.max(rx,ry))+1;
+  const field=new Set(),sinks=[];
+  for(let y=Math.max(1,cy-r);y<Math.min(n-1,cy+r+1);y++)for(let x=Math.max(1,cx-r);x<Math.min(n-1,cx+r+1);x++){
+   const i=y*n+x;if(w.water[i]||!w.isPlayable(x+.5,y+.5))continue;
+   const bend=(coordNoise(seed,Math.floor(y/2),1)-.5)*1.8;
+   const d=((x-cx-bend)/rx)**2+((y-cy)/ry)**2;
+   if(d<.72+coordNoise(seed,Math.floor(x/2),Math.floor(y/2))*.5&&w.moisture[i]>.23&&caveFracture(w,i)>.35)field.add(i);
+   else if(d>=1.25&&d<2.6&&!w.subsurface.passages.has(i))sinks.push(i);
+  }
+  const frontier=[entrance],seen=new Set(frontier);let created=0;
+  for(let k=0;k<frontier.length;k++){
+   const i=frontier[k],p=w.subsurface.passages.get(i),x=i%n,y=i/n|0;
+   for(const j of [x>0?i-1:-1,x<n-1?i+1:-1,y>0?i-n:-1,y<n-1?i+n:-1]){
+    if(!field.has(j)||seen.has(j))continue;
+    seen.add(j);const existing=w.subsurface.passages.get(j);
+    if(existing){if(!existing.closed&&Math.abs(existing.floor-p.floor)<=.6)frontier.push(j);continue}
+    if(Math.abs(w.terrain.elevation[j]*20-1.2-p.floor)>.6)continue;
+    const receiver=sinks.filter(q=>w.terrain.elevation[q]+.04<.99).sort((a,b)=>w.terrain.elevation[a]-w.terrain.elevation[b]||a-b)[0];
+    if(receiver===undefined)continue;
+    const opened=excavatePassage(w,j,{origin:CAVES.policy,receiver});
+    if(opened){frontier.push(j);created++}
+   }
+  }
+  return created;
+ });
+}
 export function initializeCaves(w,{generate=false}={}){
  w.subsurface={...w.subsurface,cavePolicy:CAVES.policy,caveErosion:new Map(),naturalEroded:0,initialCaves:0};
  if(!generate)return;
+ w.subsurface.formation='fracture-chambers/2';
+ return batchExcavation(w,()=>{
  // Initial geological conditions, not a claim of elapsed ecological history.
- // Existing drainage and material heterogeneity place small connected cavities.
+ // Existing drainage and material heterogeneity place connected cavities.
  for(let y=5;y<w.n-5;y++)for(let x=5;x<w.n-5;x++){
   const i=y*w.n+x;if(w.water[i]||w.terrain.elevation[i]<.09||w.moisture[i]<.45||caveFracture(w,i)<.992||w.subsurface.passages.has(i))continue;
   // Strong local fracture concentrations make fewer, better connected natural caverns.
@@ -23,9 +59,10 @@ export function initializeCaves(w,{generate=false}={}){
   // drawing a straight one-cell dungeon corridor. The entire open structure is
   // still made of real, individually financed excavations; failure to find a
   // valid spoil receiver or roof clearance ends growth without phantom space.
-  growNaturalCavern(w,i,8+Math.floor(caveFracture(w,i)*4));
+  growGeologicalChamber(w,i);
 
  }
+ });
 }
 // Deterministic, material-funded multi-front geology. Each accepted chamber
 // or branch is an actual open passage with the same roof/load, slope, spoil,
@@ -87,7 +124,7 @@ export function erodeNaturalCaves(w,flows){
  if(moved){deriveDrainage(w);w.buildHydrology()}return moved;
 }
 export function validateCaves(w,rule){
- const s=w.subsurface;if(rule!==undefined&&rule!==CAVES.policy)throw Error('Unknown saved natural-cave rules.');
+ const s=w.subsurface;if(s?.formation!==undefined&&s.formation!=='fracture-chambers/2')throw Error('Unknown cave formation version.');if(rule!==undefined&&rule!==CAVES.policy)throw Error('Unknown saved natural-cave rules.');
  if(rule===undefined){if(s?.cavePolicy!==undefined||s?.caveErosion!==undefined||s?.naturalEroded!==undefined||s?.initialCaves!==undefined||[...(s?.passages?.values()||[])].some(p=>p.origin===CAVES.policy))throw Error('Natural cave geometry requires its recorded policy.');return}
  if(s?.cavePolicy!==CAVES.policy||!(s.caveErosion instanceof Map)||!Number.isFinite(s.naturalEroded)||s.naturalEroded<0||s.naturalEroded>s.excavated+1e-6||!Number.isSafeInteger(s.initialCaves)||s.initialCaves<0)throw Error('Invalid saved natural-cave state.');
  for(const [i,p] of s.caveErosion)if(i!==p?.i||!Number.isSafeInteger(i)||i<0||i>=w.len||!Number.isFinite(p.floor)||p.floor<0||p.floor>20||!Number.isFinite(p.void)||p.void<=0||p.void>=CAVES.passageVolume||s.passages.has(i))throw Error('Invalid saved partial cave.');

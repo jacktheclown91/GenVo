@@ -12,6 +12,14 @@ export function excavationSite(w,i){
 // Surface elevation bounds the original solid column. Excavated void is negative
 // space, not another material reserve. Spoil raises another real surface cell.
 export function solidTerrainTotal(w){let sum=0;for(const h of w.terrain.elevation)sum+=h;for(const p of w.subsurface?.passages?.values()||[])sum-=p.void;for(const p of w.subsurface?.caveErosion?.values()||[])sum-=p.void;return sum}
+const excavationBatches=new WeakMap();
+// Synchronous initial geology can publish derived drainage once after all real
+// material transfers. Exceptions still refresh derived state; no stock is staged.
+export function batchExcavation(w,work){
+ if(excavationBatches.has(w))return work();
+ const batch={changed:false};excavationBatches.set(w,batch);
+ try{return work()}finally{excavationBatches.delete(w);if(batch.changed){deriveDrainage(w);w.buildHydrology()}}
+}
 export function excavatePassage(w,i,{entry=false,origin=undefined,receiver=undefined}={}){
  const prior=w.subsurface?.passages.get(i);if(prior&&!prior.closed&&(!entry||prior.entry))return prior;
  const site=excavationSite(w,i);if(!site||!w.subsurface)return null;
@@ -22,7 +30,7 @@ export function excavatePassage(w,i,{entry=false,origin=undefined,receiver=undef
  const sink=receiver??site.spoil,heights=w.terrain.elevation;if(!Number.isSafeInteger(sink)||sink<0||sink>=w.len||w.water[sink]||!w.isPlayable(sink%w.n+.5,(sink/w.n|0)+.5)||sink===i)return null;
  const before=heights[sink];if(before+wanted>=.99)return null;heights[sink]=before+wanted;const volume=heights[sink]-before;
  const source=origin??prior?.origin;const passage={i,floor,void:priorVoid+volume,entry:!!entry,closed:false,...(source?{origin:source}:{})};w.subsurface.passages.set(i,passage);w.subsurface.caveErosion?.delete(i);w.subsurface.excavated+=volume;w.subsurface.revision++;
- deriveDrainage(w);w.buildHydrology();return passage;
+ const batch=excavationBatches.get(w);if(batch)batch.changed=true;else{deriveDrainage(w);w.buildHydrology()}return passage;
 }
 export function refreshPassages(w){
  const s=w.subsurface;if(!s)return;
