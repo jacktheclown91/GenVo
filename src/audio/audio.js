@@ -14,7 +14,7 @@ export class AudioDirector{
     this.noiseBuffer=null;this.ambienceSource=null;
     this.assetBuffers=new Map();this.authoredLoops=new Map();this.assetLoadPromise=null;this.authoredReady=false;this.deferredInitPromise=null;this.deferredInitTimer=null;
     this.enabled=true;this.unlocked=false;
-    this.masterLevel=.72;this.musicLevel=.24;this.sfxLevel=.68;this.ambienceLevel=.08;
+    this.masterLevel=.72;this.musicLevel=.30;this.sfxLevel=.68;this.ambienceLevel=.32;
     this.nextMusicTime=0;this.musicStep=0;this.lastScene=AUDIO_SCENES.CALM;
     this.courtshipAudio=new WeakMap();this.lastActionTick=-1;this.lastDamageTick=-1;this.lastLineageRecords=sim?.lineage?.records?.size||0;this.lastHandoffs=sim?.lineage?.handoffs?.length||0;
     this.moveClock=0;this.sceneClock=0;this.currentScene=musicSceneFor(sim);
@@ -42,7 +42,7 @@ export class AudioDirector{
   scheduleDeferredAudio(){
     if(this.deferredInitPromise||this.deferredInitTimer)return;
     const start=()=>{this.deferredInitTimer=null;if(this.deferredInitPromise)return;const run=()=>{if(!this.deferredInitPromise)this.deferredInitPromise=this.startDeferredAudio()};if(typeof requestIdleCallback==='function')requestIdleCallback(run,{timeout:1200});else setTimeout(run,0)};
-    this.deferredInitTimer=setTimeout(start,650);
+    this.deferredInitTimer=setTimeout(start,150);
   }
   async startDeferredAudio(){
     if(!this.ctx)return false;
@@ -58,10 +58,13 @@ export class AudioDirector{
   }
   async loadAssetPack(){
     const c=this.ctx;if(!c||typeof fetch!=='function'||typeof c.decodeAudioData!=='function')return false;
-    const loaded=[],entries=Object.entries(AUTHORED_AUDIO).sort((a,b)=>(a[1].kind==='loop')-(b[1].kind==='loop'));
+    // Establish the field, water and music beds before optional one-shot
+    // samples. Each decoded loop becomes audible immediately, rather than
+    // waiting for the entire cue library to finish loading.
+    const loaded=[],entries=Object.entries(AUTHORED_AUDIO).sort((a,b)=>Number(b[1].kind==='loop')-Number(a[1].kind==='loop'));
     for(const [id,def] of entries){
       // v1.58.0: each sound is tried in its formats in order (Ogg Opus, then AAC) until one decodes.
-      for(const url of def.urls||[def.url]){try{const res=await fetch(url);if(!res.ok)throw new Error(`HTTP ${res.status}`);const bytes=await res.arrayBuffer();if(typeof document!=='undefined'&&(def.kind==='loop'||bytes.byteLength>32000))await this.waitForDecodeIdle(700);const buf=await this.decodeAudio(bytes);if(buf){this.assetBuffers.set(id,buf);loaded.push(id);break}}catch{}}
+      for(const url of def.urls||[def.url]){try{const res=await fetch(url);if(!res.ok)throw new Error(`HTTP ${res.status}`);const bytes=await res.arrayBuffer();if(typeof document!=='undefined'&&def.kind!=='loop'&&bytes.byteLength>32000)await this.waitForDecodeIdle(250,500);const buf=await this.decodeAudio(bytes);if(buf){this.assetBuffers.set(id,buf);loaded.push(id);if(def.kind==='loop'){this.authoredReady=true;this.startAuthoredLoops()}break}}catch{}}
       if(typeof document!=='undefined')await this.yieldAudioDecode();
     }
     if(!loaded.length)return false;
@@ -69,8 +72,10 @@ export class AudioDirector{
   }
   audioClock(){return typeof performance!=='undefined'&&performance.now?performance.now():Date.now()}
   markInteractiveAudio(){this.lastInteractiveAudioAt=this.audioClock()}
-  async waitForDecodeIdle(minIdle=700){
-    while(this.audioClock()-this.lastInteractiveAudioAt<minIdle)await new Promise(resolve=>setTimeout(resolve,120));
+  async waitForDecodeIdle(minIdle=250,maxWait=500){
+    const deadline=this.audioClock()+maxWait;
+    while(this.audioClock()-this.lastInteractiveAudioAt<minIdle&&this.audioClock()<deadline)
+      await new Promise(resolve=>setTimeout(resolve,80));
   }
   async yieldAudioDecode(){
     if(typeof requestAnimationFrame==='function')return await new Promise(resolve=>requestAnimationFrame(()=>resolve()));
