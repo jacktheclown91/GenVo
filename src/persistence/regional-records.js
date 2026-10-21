@@ -6,9 +6,12 @@ import {REGIONAL_REPLAY} from '../world/regional-replay-order.js';
 export const REGION_STORE='regions';
 export const LEGACY_REGIONAL_STORAGE='indexed-regions/1';
 export const REGIONAL_STORAGE='indexed-regions/2';
-const captureFor=(index,entry)=>index.schema===REGIONAL_STORAGE?entry.capture:index.capture;
+export const STAGED_REGIONAL_STORAGE='indexed-regions/3';
+const captureFor=(index,entry)=>index.schema===LEGACY_REGIONAL_STORAGE?index.capture:entry.capture;
 const slotOK=id=>typeof id==='string'&&(id==='autosave'||/^world-[A-Za-z0-9-]{8,72}$/.test(id));
 const recordID=(slot,kind,key)=>slot+'|'+kind+'|'+key;
+const stagedID=(slot,kind,key,capture)=>recordID(slot,kind,key)+'|'+capture;
+const validReference=(index,entry,slot)=>entry?.storage===undefined?entry?.id===recordID(slot,entry?.kind,entry?.key):index.schema===STAGED_REGIONAL_STORAGE&&entry.storage==='capture-key/1'&&entry.id===stagedID(slot,entry.kind,entry.key,entry.capture);
 const replayPolicyOf=core=>core.regionalReplayPolicy===undefined?REGIONAL_REPLAY.legacy:core.regionalReplayPolicy;
 let captureSerial=0;
 function identity(kind,payload){
@@ -20,13 +23,13 @@ function identity(kind,payload){
 }
 export function validateRegionalIndex(root,slot){
  const index=root?.regionalPersistence;if(index===undefined)return null;
- if(!slotOK(slot)||![LEGACY_REGIONAL_STORAGE,REGIONAL_STORAGE].includes(index?.schema)||index.slot!==slot||typeof index.capture!=='string'||!index.capture||!Array.isArray(index.entries)||typeof index.hadSurvey!=='boolean')throw Error('Invalid regional persistence index.');
- for(const entry of [...index.entries,index.active])if(!entry||(index.schema===REGIONAL_STORAGE?(typeof entry.capture!=='string'||!entry.capture):(entry.capture!==undefined&&entry.capture!==index.capture)))throw Error('Invalid regional record capture reference.');
+ if(!slotOK(slot)||![LEGACY_REGIONAL_STORAGE,REGIONAL_STORAGE,STAGED_REGIONAL_STORAGE].includes(index?.schema)||index.slot!==slot||typeof index.capture!=='string'||!index.capture||!Array.isArray(index.entries)||typeof index.hadSurvey!=='boolean')throw Error('Invalid regional persistence index.');
+ for(const entry of [...index.entries,index.active])if(!entry||(index.schema!==LEGACY_REGIONAL_STORAGE?(typeof entry.capture!=='string'||!entry.capture):(entry.capture!==undefined&&entry.capture!==index.capture)))throw Error('Invalid regional record capture reference.');
  const seen=new Set(),active=root.world?.generator==='planetary/1'?regionKey(planetRegionOrigin(root.world.regionOrigin)):null;
  if(!active||root.core?.planetaryTravel?.sessions?.length||root.regionalWorlds!==undefined||root.animals!==undefined||root.controllers!==undefined)throw Error('Indexed root contains duplicate regional payloads.');
- if(index.active?.kind!=='active'||index.active.key!==active||index.active.id!==recordID(slot,'active',active)||regionKey(planetRegionOrigin(index.active.origin))!==active)throw Error('Invalid active regional record.');
+ if(index.active?.kind!=='active'||index.active.key!==active||!validReference(index,index.active,slot)||regionKey(planetRegionOrigin(index.active.origin))!==active)throw Error('Invalid active regional record.');
  for(const e of index.entries){
-  if(!['session','survey'].includes(e?.kind)||e.key!==regionKey(planetRegionOrigin(e.origin))||e.id!==recordID(slot,e.kind,e.key)||seen.has(e.key)||e.key===active)throw Error('Invalid or duplicate regional persistence entry.');
+  if(!['session','survey'].includes(e?.kind)||e.key!==regionKey(planetRegionOrigin(e.origin))||!validReference(index,e,slot)||seen.has(e.key)||e.key===active)throw Error('Invalid or duplicate regional persistence entry.');
   seen.add(e.key);
  }
  if(index.entries.some(e=>e.kind==='session')&&!Array.isArray(root.core?.planetaryTravel?.sessions)||index.entries.some(e=>e.kind==='survey')&&!index.hadSurvey)throw Error('Regional index has no owning collection.');
@@ -54,6 +57,7 @@ export function partitionRegionalSnapshot(snapshot,slot){
 }
 function verifyDirectoryPayload(index,entry,payload){
  if(!index.identityPolicy||entry.kind==='survey')return;
+ if(entry.kind==='active'&&index.entries.some(e=>e.kind==='session')&&!Array.isArray(payload.core?.planetaryTravel?.sessions))throw Error('Active record lacks its regional owning collection.');
  verifyRegionalIdentity(entry.life,entry.kind==='session'?payload.snapshot:payload,entry.kind==='session'?{mode:payload.biologicalMode??null}:undefined);
  if(entry.kind==='active'&&(index.replayPolicy!==replayPolicyOf(payload.core)||index.nextId!==Math.max(payload.core.planetaryTravel?.nextId||1,regionalIdentityWatermark([...index.entries.filter(e=>e.kind==='session').map(e=>e.life),index.active.life]))))throw Error('Regional directory does not match its active authority.');
 }
@@ -108,14 +112,16 @@ export function partitionRegionalUpdate(active,slot,previous,changes=[]){
  const old=validateRegionalIndex(previous,slot);
  if(!old?.identityPolicy)throw Error('Regional updates require an indexed identity directory.');
  if(active.seed!==previous.seed||identity('active',active).key!==old.active.key||active.core?.planetaryTravel?.sessions?.length||active.regionalWorlds!==undefined)throw Error('Regional update requires the same active owner without nested regional payloads.');
+ if(old.entries.some(e=>e.kind==='session')&&!Array.isArray(active.core?.planetaryTravel?.sessions))throw Error('Active record lacks its regional owning collection.');
  const plan=partitionRegionalSnapshot(active,slot),index=plan.root.regionalPersistence;
+ if(old.schema===STAGED_REGIONAL_STORAGE)index.schema=STAGED_REGIONAL_STORAGE;
  index.entries=old.entries.map(entry=>({...structuredClone(entry),capture:captureFor(old,entry)}));index.hadSurvey=old.hadSurvey;
  const replaced=new Set();
  for(const change of changes){
   if(!['session','survey'].includes(change?.kind))throw Error('Invalid changed regional owner.');
   const {key}=identity(change.kind,change.payload),entry=index.entries.find(e=>e.kind===change.kind&&e.key===key);
-  if(!entry||replaced.has(entry.id))throw Error('Missing or duplicate changed regional owner.');replaced.add(entry.id);
-  entry.capture=index.capture;
+  if(!entry||replaced.has(change.kind+'|'+key))throw Error('Missing or duplicate changed regional owner.');replaced.add(change.kind+'|'+key);
+  entry.capture=index.capture;entry.id=recordID(slot,change.kind,key);delete entry.storage;
   if(change.kind==='session')entry.life=regionalIdentity(change.payload.snapshot,{mode:change.payload.biologicalMode??null});
   plan.records.unshift({id:entry.id,value:{schema:1,slot,capture:index.capture,kind:change.kind,key,payload:change.payload}});
  }
@@ -144,6 +150,75 @@ async function commitRegionalPlan(db,{root,records},slot,previous){
   for(const r of records)regions.put(r.value,r.id);for(const e of old?[...old.entries,old.active]:[])if(!keep.has(e.id))regions.delete(e.id);
   saves.put(root,slot);await done;return{root,written:records.length,retained:keep.size-records.length};
  }catch(error){try{tx.abort()}catch{}await done.catch(()=>{});throw conflict||error}
+}
+// Unpublished capture keys permit one-page-at-a-time staging without touching
+// any record referenced by the old root. This object retains metadata only.
+export class RegionalCheckpointStage{
+ #db;#slot;#previous;#root;#entries;#capture;#activeInfo=null;#ids=new Set();#busy=false;#state='open';
+ constructor(db,slot,previous){
+  const index=validateRegionalIndex(previous,slot);if(!index?.identityPolicy)throw Error('Regional staging requires an indexed identity directory.');
+  this.#db=db;this.#slot=slot;this.#previous=structuredClone(previous);
+  this.#capture=globalThis.crypto?.randomUUID?.()||'stage@'+Date.now()+'@'+(++captureSerial);
+  this.#entries=index.entries.map(e=>({...structuredClone(e),capture:captureFor(index,e)}));
+ }
+ get state(){return this.#state}
+ get pendingRecords(){return this.#ids.size}
+ #admit(){if(this.#state!=='open'||this.#busy)throw Error('Regional stage is closed or busy.');}
+ async stage(kind,payload){
+  this.#admit();if(!['active','session','survey'].includes(kind))throw Error('Invalid staged regional kind.');
+  const {key,origin}=identity(kind,payload),old=this.#previous.regionalPersistence;
+  const prior=kind==='active'?old.active:this.#entries.find(e=>e.kind===kind&&e.key===key);
+  if(!prior||prior.key!==key)throw Error('Staged page does not belong to this checkpoint.');
+  let activePlan,info;
+  if(kind==='active'){
+   if(payload.seed!==this.#previous.seed||payload.core?.planetaryTravel?.sessions?.length||payload.regionalWorlds!==undefined)throw Error('Staged active record contains foreign or nested regional ownership.');
+   if(old.entries.some(e=>e.kind==='session')&&!Array.isArray(payload.core?.planetaryTravel?.sessions))throw Error('Active record lacks its regional owning collection.');
+   activePlan=partitionRegionalSnapshot(payload,this.#slot);
+   info={nextId:payload.core.nextId,travelNextId:payload.core.planetaryTravel?.nextId||1};
+  }
+  const entry={kind,key,origin,id:stagedID(this.#slot,kind,key,this.#capture),capture:this.#capture,storage:'capture-key/1',...(kind==='survey'?{}:{life:regionalIdentity(kind==='active'?payload:payload.snapshot,{mode:kind==='session'?payload.biologicalMode??null:null})})};
+  const record={schema:1,slot:this.#slot,capture:this.#capture,kind,key,payload};
+  const tx=this.#db.transaction(REGION_STORE,'readwrite'),done=completed(tx);this.#busy=true;
+  try{
+   tx.objectStore(REGION_STORE).put(record,entry.id);await done;
+   this.#ids.add(entry.id);
+   if(kind==='active'){
+    this.#root=activePlan.root;this.#activeInfo=info;
+    this.#root.regionalPersistence={...this.#root.regionalPersistence,schema:STAGED_REGIONAL_STORAGE,capture:this.#capture,active:entry};
+   }else this.#entries[this.#entries.findIndex(e=>e.kind===kind&&e.key===key)]=entry;
+   return structuredClone(entry);
+  }catch(error){try{tx.abort()}catch{}await done.catch(()=>{});throw error}
+  finally{this.#busy=false}
+ }
+ async publish(){
+  this.#admit();if(!this.#root||!this.#activeInfo)throw Error('Stage the active allocation/transaction record before publishing.');
+  const root=structuredClone(this.#root),index=root.regionalPersistence,old=validateRegionalIndex(this.#previous,this.#slot);
+  index.entries=structuredClone(this.#entries);index.hadSurvey=old.hadSurvey;
+  if(index.entries.some(e=>e.kind==='session'))root.core.planetaryTravel={sessions:[]};
+  index.nextId=Math.max(this.#activeInfo.travelNextId,regionalIdentityWatermark([...index.entries.filter(e=>e.kind==='session').map(e=>e.life),index.active.life]));
+  if(this.#activeInfo.nextId<index.nextId||index.entries.some(e=>e.kind==='session')&&this.#activeInfo.travelNextId<index.nextId)throw Error('Staged active allocator does not cover regional identities.');
+  if(root.core.tickCount<this.#previous.core.tickCount)throw Error('Staged checkpoint cannot rewind active time.');
+  validateRegionalIndex(root,this.#slot);
+  const keep=new Set([...index.entries,index.active].map(e=>e.id));
+  const tx=this.#db.transaction(['saves','meta',REGION_STORE],'readwrite'),done=completed(tx);this.#busy=true;let problem;
+  try{
+   const saves=tx.objectStore('saves'),regions=tx.objectStore(REGION_STORE),meta=tx.objectStore('meta'),guard=saves.get(this.#slot);
+   guard.onsuccess=()=>{if(checkpointStamp(guard.result)!==checkpointStamp(this.#previous)){problem=Error('World slot changed during staged publication; reopen the checkpoint.');tx.abort()}};
+   for(const id of this.#ids){const request=regions.getKey(id);request.onsuccess=()=>{if(request.result===undefined){problem=Error('Missing staged regional record.');tx.abort()}};}
+   meta.put(root.meta,this.#slot);saves.put(root,this.#slot);
+   for(const entry of [...old.entries,old.active])if(!keep.has(entry.id))regions.delete(entry.id);
+   await done;this.#state='published';return{root,written:this.#ids.size,retained:keep.size-this.#ids.size};
+  }catch(error){try{tx.abort()}catch{}await done.catch(()=>{});throw problem||error}
+  finally{this.#busy=false}
+ }
+ async abort(){
+  if(this.#state==='published'||this.#state==='aborted')return{deleted:0};this.#admit();
+  if(!this.#ids.size){this.#state='aborted';return{deleted:0}}
+  const tx=this.#db.transaction(REGION_STORE,'readwrite'),done=completed(tx);this.#busy=true;
+  try{const store=tx.objectStore(REGION_STORE);for(const id of this.#ids)store.delete(id);await done;const deleted=this.#ids.size;this.#ids.clear();this.#state='aborted';return{deleted}}
+  catch(error){try{tx.abort()}catch{}await done.catch(()=>{});throw error}
+  finally{this.#busy=false}
+ }
 }
 export async function deleteRegionalCheckpoint(db,slot){
  if(!slotOK(slot))throw Error('Invalid world slot.');

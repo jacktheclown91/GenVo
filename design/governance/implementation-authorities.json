@@ -12,7 +12,8 @@
       "authority": "src/persistence/regional-records.js",
       "consumers": ["src/persistence/save-manager.js", "src/persistence/regional-reader.js"],
       "contract": "docs/INDEXED-REGIONAL-STORAGE-2026-10-21.md",
-      "incrementalPublicationContract": "docs/REGIONAL-UPDATES-2026-10-21.md"
+      "incrementalPublicationContract": "docs/REGIONAL-UPDATES-2026-10-21.md",
+      "stagedPublicationContract": "docs/REGIONAL-STAGING-2026-10-21.md"
     },
     "regionalDecodedPageLeases": {
       "authority": "src/persistence/regional-reader.js",

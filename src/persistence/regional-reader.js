@@ -1,7 +1,7 @@
 // Bounded decoded-page ownership over one committed checkpoint. No simulation,
 // clock advancement or regeneration lives here; persisted records remain owned
 // by the checkpoint even after a decoded lease is released.
-import {readRegionalCheckpoint,validateRegionalIndex,commitRegionalUpdate} from './regional-records.js';
+import {readRegionalCheckpoint,validateRegionalIndex,RegionalCheckpointStage} from './regional-records.js';
 import {stageRemoteBiology} from '../world/planetary-offscreen-biology.js';
 import {REGIONAL_IDENTITIES} from '../world/regional-identities.js';
 import {regionalBiologyOrder} from '../world/regional-replay-order.js';
@@ -25,6 +25,7 @@ export class RegionalCheckpointReader{
   this.#directory();const index=this.#root.regionalPersistence,tick=this.#root.core.tickCount;
   return regionalBiologyOrder(tick,index.entries.filter(e=>e.kind==='session').map(e=>({key:e.key,tick:e.life.tick,mode:e.life.mode})),index.replayPolicy).map(row=>({key:row.key,tick:row.tick,debt:tick-row.tick}));
  }
+ beginStage(){this.#directory();if(this.#replaying)throw Error('Regional reader is publishing replay.');return new RegionalCheckpointStage(this.#db,this.#slot,this.manifest)}
  acquire(kind,key){
   if(this.#replaying)return Promise.reject(Error('Regional reader is publishing replay.'));
   return this.#acquire(kind,key);
@@ -44,20 +45,22 @@ export class RegionalCheckpointReader{
  }
  async replayNext(){
   this.#directory();if(this.#replaying||this.resident)throw Error('Replay requires an exclusive regional reader.');
-  if(this.capacity<2)throw Error('Replay requires two regional lease slots.');
   const due=this.pendingBiology()[0];if(!due)return null;
   this.#replaying=true;const db=this.#db,previous=this.manifest,index=previous.regionalPersistence;
+  const writer=new RegionalCheckpointStage(db,this.#slot,previous);
   try{
-   const active=await this.#acquire('active',index.active.key),remote=await this.#acquire('session',due.key);
-   const staged=stageRemoteBiology(remote.payload,{tickCount:previous.core.tickCount,reservedNextId:index.nextId});
+   let remote=await this.#acquire('session',due.key),staged=stageRemoteBiology(remote.payload,{tickCount:previous.core.tickCount,reservedNextId:index.nextId});
    if(!staged.candidate||!staged.result.ticks)throw Error('Due persisted replay made no progress.');
-   if(this.#closed)throw Error('Regional reader closed before replay publication.');
-   const payload=active.payload;
-   payload.core.nextId=Math.max(payload.core.nextId,staged.nextId);
+   const result=staged.result,nextId=staged.nextId;
+   await writer.stage('session',staged.candidate);staged=null;remote.release();remote=null;
+   let active=await this.#acquire('active',index.active.key),payload=active.payload;
+   payload.core.nextId=Math.max(payload.core.nextId,nextId);
    payload.core.planetaryTravel.nextId=Math.max(payload.core.planetaryTravel.nextId,payload.core.nextId);
-   const committed=await commitRegionalUpdate(db,payload,this.#slot,previous,[{kind:'session',payload:staged.candidate}]);
-   return{...staged.result,written:committed.written,retained:committed.retained,capture:committed.root.regionalPersistence.capture,decodedRegions:2};
-  }finally{this.close()}
+   await writer.stage('active',payload);payload=null;active.release();active=null;
+   if(this.#closed)throw Error('Regional reader closed before replay publication.');
+   const committed=await writer.publish();
+   return{...result,written:committed.written,retained:committed.retained,capture:committed.root.regionalPersistence.capture,decodedRegions:1};
+  }finally{this.close();if(writer.state==='open')await writer.abort()}
  }
  close(){this.#closed=true;this.#replaying=false;for(const lease of this.#leases)lease.payload=null;this.#leases.clear();this.#db=null}
 }
