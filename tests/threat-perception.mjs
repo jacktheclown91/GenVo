@@ -17,9 +17,13 @@ const put=(b,a,dx,dir,intent,target=null)=>Object.assign(b,{x:a.x+dx,y:a.y,dir,i
 moss.dir=2;/* facing right */put(nj,moss,4,6,'explore');nj.movedTick=-1e9;
 assert.equal(detects(sim,moss,nj,4,R),true,'a predator in view is detected across the radius');
 moss.dir=6;/* facing away */assert.equal(detects(sim,moss,nj,4,R),false,'a still predator behind it, 4 tiles away, is not');
+put(nj,moss,R*QUIET-.1,6,'explore');
 assert.equal(detects(sim,moss,nj,R*QUIET-.1,R),true,'but one right behind it is');
-nj.movedTick=sim.tickCount;assert.equal(detects(sim,moss,nj,R*HEARING-.1,R),true,'a moving predator behind it is heard');
+nj.movedTick=sim.tickCount;put(nj,moss,R*HEARING-.1,6,'explore');
+assert.equal(detects(sim,moss,nj,R*HEARING-.1,R),true,'a moving predator behind it is heard');
+put(nj,moss,R*HEARING+.1,6,'explore');
 assert.equal(detects(sim,moss,nj,R*HEARING+.1,R),false,'within hearing range only');
+put(nj,moss,4.5,6,'explore');
 moss.vigilance={id:nj.id,untilTick:sim.tickCount+10};assert.equal(detects(sim,moss,nj,4.5,R),true,'a predator it is watching is tracked across the radius');moss.vigilance=null;
 // Assessment: what the predator is doing and how close it is.
 const lvl=(dx,dir,intent,target=null)=>{put(nj,moss,dx,dir,intent,target);return threatLevel(moss,nj,Math.abs(dx),R)};
