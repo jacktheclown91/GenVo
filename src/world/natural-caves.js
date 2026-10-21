@@ -11,7 +11,8 @@ export function initializeCaves(w,{generate=false}={}){
  // Initial geological conditions, not a claim of elapsed ecological history.
  // Existing drainage and material heterogeneity place small connected cavities.
  for(let y=5;y<w.n-5;y++)for(let x=5;x<w.n-5;x++){
-  const i=y*w.n+x;if(w.water[i]||w.terrain.elevation[i]<.09||w.moisture[i]<.45||caveFracture(w,i)<.97||w.subsurface.passages.has(i))continue;
+  const i=y*w.n+x;if(w.water[i]||w.terrain.elevation[i]<.09||w.moisture[i]<.45||caveFracture(w,i)<.992||w.subsurface.passages.has(i))continue;
+  // Strong local fracture concentrations make fewer, better connected natural caverns.
   // Adjacent fractures extend one cavity rather than opening a shaft in every
   // cell of the same rock patch. This is geometry, not a population quota.
   let nearbyOpening=false;for(let dy=-3;dy<=3&&!nearbyOpening;dy++)for(let dx=-3;dx<=3;dx++)if(Math.abs(dx)+Math.abs(dy)<=3&&w.subsurface.passages.get((y+dy)*w.n+x+dx)?.entry){nearbyOpening=true;break}
