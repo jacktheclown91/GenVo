@@ -96,13 +96,14 @@ export function sensorySignals(sim,animal=sim.player?.(),maxSignals=3){
  }
  candidate.sort((a,b)=>b.score-a.score);
  const seen=new Set();
- return candidate.filter(x=>{if(seen.has(x.kind))return false;seen.add(x.kind);return true}).slice(0,maxSignals).map(x=>{
-  // Detecting an external cue never grants pixel-perfect localization.
-  // We report only a coarse bearing, with less directional certainty for
-  // diffuse scent than a clear nearby call. No hidden position is returned.
-  const sectors=x.kind==='heard'?12:8,step=2*Math.PI/sectors;
-  return{kind:x.kind,angle:Math.round(x.angle/step)*step,uncertainty:x.uncertainty};
- });
+ return candidate.filter(x=>{if(seen.has(x.kind))return false;seen.add(x.kind);return true}).slice(0,maxSignals).map(coarseSensoryBearing);
+}
+// Information disclosed to gameplay stays a coarse angular sector. This
+// transformation is pure, so sorting, candidate scoring and RNG are unchanged.
+function coarseSensoryBearing(signal){
+ const sectors=signal.kind==='heard'?12:8;
+ const step=2*Math.PI/sectors;
+ return{kind:signal.kind,angle:Math.round(signal.angle/step)*step,uncertainty:signal.uncertainty};
 }
 export const sensoryMemoryCellSize=CELL;
 // Transient pulses derive from already recorded physical activity, not intents or invented events.
