@@ -7,9 +7,9 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const CELL=2,MAX_CELLS=800,MAX_REGIONS=4;
 // This is remembered, observed information, not a copy of live world state.
 // A creature's own survey is stored on its animal record and saved normally.
-export function sensoryRegionKey(world){
+export function sensoryRegionKey(world,animal=null){
  const origin=world.regionOrigin||{x:0,y:0};
- return String(world.seedHash||world.seed||0)+':'+origin.x+','+origin.y;
+ return String(world.seedHash||world.seed||0)+':'+origin.x+','+origin.y+':'+(animal?.underground?'under':'surface');
 }
 export function sensoryProfile(animal){
  const parts=new Set((animal?.bodyPlan?.nodes||[]).map(n=>n.partId));
@@ -27,7 +27,7 @@ function ensureMemory(animal){
 }
 export function recordSensoryMemory(sim,animal=sim.player?.()){
  if(!animal||sim.sensoryFogEnabled===false||!sim.world)return 0;
- const world=sim.world,view=creatureView(sim,animal),memory=ensureMemory(animal),key=sensoryRegionKey(world);
+ const world=sim.world,view=creatureView(sim,animal),memory=ensureMemory(animal),key=sensoryRegionKey(world,animal);
  if(!view)return 0;
  const regions=memory.regions;
  if(!Object.hasOwn(regions,key)){
@@ -42,7 +42,7 @@ export function recordSensoryMemory(sim,animal=sim.player?.()){
   for(let x=Math.max(0,cx-r);x<=Math.min(Math.ceil(world.n/CELL)-1,cx+r);x++){
    const wx=Math.min(world.n-.5,x*CELL+CELL/2),wy=Math.min(world.n-.5,y*CELL+CELL/2);
    if(!viewCanSee(view,wx,wy))continue;
-   const kind=world.water[world.idx(wx,wy)]?1:0,k=x+','+y;
+   const i=world.idx(wx,wy),kind=animal.underground?(world.subsurface?.passages?.has(i)?2:3):(world.water[i]?1:0),k=x+','+y;
    if(known.has(k)){const row=known.get(k);row[2]=kind;row[3]=sim.tickCount}
    else {known.set(k,[x,y,kind,sim.tickCount]);added++}
   }
@@ -51,7 +51,7 @@ export function recordSensoryMemory(sim,animal=sim.player?.()){
  return added;
 }
 export function rememberedCells(sim,animal){
- const rows=animal?.sensoryMemory?.regions?.[sensoryRegionKey(sim.world)]||[];
+ const rows=animal?.sensoryMemory?.regions?.[sensoryRegionKey(sim.world,animal)]||[];
  return new Map(rows.map(row=>[row[0]+','+row[1],row]));
 }
 export function sensorySignals(sim,animal=sim.player?.(),maxSignals=3){
