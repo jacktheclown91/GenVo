@@ -13,6 +13,7 @@ const syntax=[
 ];
 const runtime=[
   'tests/itch-preview-performance.mjs',
+  'tests/sensory-perception.mjs',
   'tests/surface-ice.mjs',
   'tests/surface-ice-coupling.mjs',
   'tests/surface-ice-continuity.mjs',
