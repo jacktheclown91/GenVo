@@ -13,6 +13,7 @@
     <section id="hud" aria-live="polite">
       <div id="clock"></div>
       <div id="playerStats"></div>
+      <div id="planetLocation" hidden aria-label="Global planetary coordinates"></div>
     </section>
 
     <section id="tutorial" class="objective" aria-live="polite"></section>
@@ -208,7 +209,7 @@
           <h2>New World</h2><p class="menu-subline">A new place, a new beginning.</p>
           <label class="menu-field">World name<input id="newWorldName" maxlength="40" value="Untamed World" autocomplete="off" /></label>
           <label class="menu-field">World seed <small>Optional</small><input id="newWorldSeed" maxlength="64" placeholder="Leave blank for a new world" autocomplete="off" /></label>
-          <label class="menu-field">Geography<select id="newWorldGeography"><option value="freshwater/1">Established local world</option><option value="planetary/1">Planetary river region (preview)</option></select><small>The preview samples a small region of planetary geography. Wider travel and cross-region water flow are still in development.</small></label>
+          <label class="menu-field">Geography<select id="newWorldGeography"><option value="planetary/1" selected>Procedural planet · connected regions</option><option value="freshwater/1">Legacy local world (128×128)</option></select><small>Planetary mode generates new neighboring terrain from one seeded planet as you explore. Keep walking through a physically traversable border to enter a new region. Planet travel still has finite archive/projection limits and brief region transitions; it is not yet infinite or seamless.</small></label>
           <label class="menu-field">Starting point<select id="newWorldStartingPoint">
             <option value="new">New ecology, Day 1</option>
             <option value="import">Import a real evolved-world checkpoint...</option>
