@@ -65,7 +65,7 @@ export function sensorySignals(sim,animal=sim.player?.(),maxSignals=3){
  for(const other of sim.animals||[]){
   if(!other.alive||other.id===animal.id||!!other.underground!==!!animal.underground)continue;
   const dx=other.x-animal.x,dy=other.y-animal.y,d=Math.hypot(dx,dy);
-  if(d<1.6||d>Math.max(profile.hearing,profile.scent))continue;
+  if(d<1.6||d>Math.max(profile.hearing,profile.scent,profile.vibrationRange*1.35))continue;
   if(visuallyObservable(sim,animal,other))continue;
   const vibration=groundVibrationCue(sim,animal,other,profile);
   if(vibration)candidate.push(vibration);
