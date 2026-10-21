@@ -1,3 +1,4 @@
+import {captureSeamReadset,seamReadsetUnchanged} from './planetary-seam-readset.js';
 import {syncCaveAir} from './cave-air.js';
 import {SURFACE_ICE,iceAmount,liquidVolume,validateSurfaceIce} from './surface-ice.js';
 // Genuine paired dissolved-salt transport between two independently owned
@@ -262,7 +263,8 @@ function summarize(receipts,region){
 // Called immediately before the active clock begins another tick, after all
 // synchronous canonical region jobs have finished. Transactional staging
 // ensures malformed archives cannot cause a one-sided stock publication.
-export function reconcilePlanetarySaltSeams(sim){
+export const SEAM_RESTART=Symbol('seam-restart');
+export function* planetarySeamTransaction(sim){
  if(!sim?.world?.planet||sim.regionalReplayPolicy!==REGIONAL_REPLAY.synchronized||
     sim.tickCount<=0||sim.tickCount%CFG.dayTicks!==0||
     !sim.planetaryTravel?.sessions?.length)return[];
@@ -278,7 +280,9 @@ export function reconcilePlanetarySaltSeams(sim){
   regions.push(region);
  }
  if(regions.some(r=>!validRegion(r,day)))return[];
- for(const r of regions)validateSurfaceIce({generator:'planetary/1',len:r.water.length,water:r.water},r.env);
+ const tick=sim.tickCount,calendar=sim.day,priorLedger=travel.seamLedger,sessionOwners=[...travel.sessions],readsets=[];
+ const sameClock=()=>sim.tickCount===tick&&sim.day===calendar&&sim.planetaryTravel===travel&&travel.seamLedger===priorLedger&&travel.sessions.length===sessionOwners.length&&travel.sessions.every((s,i)=>s===sessionOwners[i]);
+ for(const r of regions){validateSurfaceIce({generator:'planetary/1',len:r.water.length,water:r.water},r.env);readsets.push(captureSeamReadset(sim,r));yield{phase:'region-validation',key:r.key}}
  regions.sort((a,b)=>a.key<b.key?-1:a.key>b.key?1:0);
  const changes=new Map(regions.map(r=>[r.key,new Map()]));
  const waterChanges=new Map(regions.map(r=>[r.key,new Map()]));
@@ -287,9 +291,12 @@ export function reconcilePlanetarySaltSeams(sim){
  const mineralChanges=new Map(regions.map(r=>[r.key,new Map()]));
  const terrainChanges=new Map(regions.map(r=>[r.key,new Map()]));
  const receipts=new Map();
- for(let a=0;a<regions.length;a++)for(let b=a+1;b<regions.length;b++){
-  const left=regions[a],right=regions[b],direction=adjacent(left.origin,right.origin);
-  if(!direction)continue;
+ // Match the original lexicographic pair order with four coordinate lookups
+ // per region, rather than scanning every possible pair of visited regions.
+ const readsByKey=new Map(readsets.map(read=>[read.region.key,read]));
+ const byOrigin=new Map(regions.map((r,index)=>[r.origin.x+','+r.origin.y,{r,index}])),pairs=[];
+ for(let a=0;a<regions.length;a++){const left=regions[a],found=[];for(const [dx,dy] of [[128,0],[-128,0],[0,128],[0,-128]]){const hit=byOrigin.get((left.origin.x+dx)+','+(left.origin.y+dy));if(hit&&hit.index>a)found.push(hit)}found.sort((a,b)=>a.index-b.index);for(const hit of found)pairs.push([left,hit.r]);}
+ for(const [left,right] of pairs){if(!sameClock()||!seamReadsetUnchanged(sim,readsByKey.get(left.key))||!seamReadsetUnchanged(sim,readsByKey.get(right.key)))return SEAM_RESTART;const direction=adjacent(left.origin,right.origin);
   const bits=direction==='east'?[2,1]:direction==='west'?[1,2]:direction==='south'?[8,4]:[4,8];
   for(const [i,j] of seams(left,right,direction)){
    if(left.env.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.pairedPolicy&&
@@ -304,12 +311,14 @@ export function reconcilePlanetarySaltSeams(sim){
    stagePlanetarySeamRunoff(left,right,i,j,overlandChanges,waterChanges,receipts,day,sim.tickCount,mineralChanges,terrainChanges,changes);
    stagePlanetarySeamGroundwater(left,right,i,j,groundwaterChanges,receipts,day,sim.tickCount);
   }
+  yield{phase:'pair-staging',a:left.key,b:right.key};
  }
  const entries=[...receipts.values()].filter(r=>r.aToB+r.bToA+(r.waterAToB||0)+(r.waterBToA||0)+(r.groundwaterAToB||0)+(r.groundwaterBToA||0)>0);
  // Verify every staged quantity, closure and archived last-day receipt
  // BEFORE editing any independently owned World or snapshot.
  const sums=new Map();
  for(const r of regions){
+  if(!sameClock()||!seamReadsetUnchanged(sim,readsByKey.get(r.key)))return SEAM_RESTART;
   const amounts=changes.get(r.key),{incoming,outgoing}=summarize(entries,r),
    water=summarizeWater(entries,r),runoff=summarizeRunoff(entries,r),groundwater=summarizeGroundwater(entries,r),minerals=summarizeMinerals(entries,r),sediment=summarizeSediment(entries,r),wetbed=summarizeWetbed(entries,r);
   for(const [i,delta] of amounts){
@@ -344,7 +353,9 @@ export function reconcilePlanetarySaltSeams(sim){
     !finite(r.env.totals.saltInput)||!finite(r.env.totals.saltOutput))
    throw Error('Invalid cross-region salt conservation origin.');
   sums.set(r.key,{incoming,outgoing,water,runoff,groundwater,minerals,sediment,wetbed});
+  yield{phase:'region-closure',key:r.key};
  }
+ if(!sameClock()||readsets.some(read=>!seamReadsetUnchanged(sim,read)))return SEAM_RESTART;
  // All staged mineral mass must remain within the visited region set.
  // No synthetic fertilizer enters through an unfinished seam or bad archive.
  let mineralClosure=0;
@@ -363,6 +374,7 @@ export function reconcilePlanetarySaltSeams(sim){
   .slice(-PLANETARY_SEAM_SALT.historyLimit);
  const nextLedger={schema:1,lastTick:sim.tickCount,history:nextHistory};
  validatePlanetarySeamLedger(nextLedger);
+
  for(const r of regions){
   const {incoming,outgoing,water,runoff,groundwater,minerals,sediment,wetbed}=sums.get(r.key),e=r.env;
   for(const [i,delta] of changes.get(r.key))e.salt[i]+=delta;
@@ -455,4 +467,9 @@ export function reconcilePlanetarySaltSeams(sim){
  }
  travel.seamLedger=nextLedger;
  return entries;
+}
+
+// Direct callers drain the SAME transaction. No second flux law or schedule.
+export function reconcilePlanetarySaltSeams(sim){
+ let value;do{const work=planetarySeamTransaction(sim);let step;do{step=work.next()}while(!step.done);value=step.value}while(value===SEAM_RESTART);return value;
 }

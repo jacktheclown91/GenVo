@@ -503,6 +503,12 @@
         "src/render/creature-palette.js"
       ]
     },
+    "planetarySeamScheduling": {
+      "authority": "src/world/planetary-seam-salt.js",
+      "consumers": ["src/world/planetary-seam-work.js", "src/world/planetary-seam-readset.js", "src/main.js", "src/sim/simulation.js"],
+      "contract": "docs/PLANETARY-SEAM-WORK-2026-10-21.md",
+      "note": "Browser staging and synchronous drains share the same conservative transaction; optimistic read guards restart stale proposals before atomic publication."
+    },
     "regionalReplay": {
       "authority": "src/world/planetary-offscreen-biology.js",
       "consumers": [

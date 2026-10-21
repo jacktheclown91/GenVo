@@ -1,3 +1,4 @@
+import {preparePlanetarySeams,cancelPlanetarySeams} from './world/planetary-seam-work.js';
 import {PlanetaryPreparation} from './world/planetary-preparation.js';
 import {prepareRegionalBiology} from './world/planetary-offscreen-biology.js';
 import {ecologyRuleMigrationMessage} from './ecology/rule-policy.js';
@@ -264,7 +265,7 @@ async function travelPlanetaryRegion({automatic=false}={}){
   }catch(error){console.error('Regional crossing failed:',error);tutorial.showToast('Regional passage could not be completed. Current world remains active.',3500,'warn');audio.note('deny')}finally{planetaryTravelPending=false}
 }
 function installSimulation(next,{fresh=false,resume=false,keepMovement=false}={}){
-  planetaryPreparation.clear();seed=next.seed;sim=next;renderer.sim=sim;observer.reset();succession.close();editor.close();syncSpeedButton();frameStepper.reset();last=performance.now();hudTimer=0;if(!keepMovement)clearMovementKeys();
+  cancelPlanetarySeams(sim);planetaryPreparation.clear();seed=next.seed;sim=next;renderer.sim=sim;observer.reset();succession.close();editor.close();syncSpeedButton();frameStepper.reset();last=performance.now();hudTimer=0;if(!keepMovement)clearMovementKeys();
   manualPause=resume?!!sim.paused:false;if(!resume)sim.paused=false;if(pauseNotice)pauseNotice.hidden=!manualPause;
   leadershipWheel.resetDiscovery();tutorial.setSimulation(sim,{fresh,resume});effectFeedback.setSimulation(sim);journal.setSimulation(sim);audio.setSimulation(sim);
   mateOpen=false;mindOpen=false;territoryOpen=false;shelterOpen=false;migrationOpen=false;ecologyOpen=false;helpOpen=false;guideOpen=false;leadershipWheel.setCommandMode(false);saveManager.resetObservation(sim);renderer.beginScenePreparation();
@@ -370,7 +371,7 @@ let last=performance.now(),hudTimer=0,lastFrontierWarning=-Infinity;
 function frame(now){
   const frameWorkStart=performance.now();
   const dt=Math.max(0,Math.min(.1,(now-last)/1000));last=now;const controls=input();
-  const processing=frameStepper.advance(dt,observer.speed,hz=>sim.playerControlStep(controls,hz),()=>sim.update(controls,{externalPlayerControl:true}),{paused:sim.paused||!renderer.sceneShown,beforeStep:()=>!prepareRegionalBiology(sim)});
+  const processing=frameStepper.advance(dt,observer.speed,hz=>sim.playerControlStep(controls,hz),()=>sim.update(controls,{externalPlayerControl:true}),{paused:sim.paused||!renderer.sceneShown,beforeStep:()=>!prepareRegionalBiology(sim)&&!preparePlanetarySeams(sim)});
   setProcessingLoad(sim,processing);
   if(!frontEnd.isOpen&&!sim.paused)planetaryPreparation.observe(sim);
   // Walking farther keeps expanding the SAME procedurally generated planet.

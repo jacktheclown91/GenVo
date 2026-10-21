@@ -22,6 +22,7 @@ const runtime=[
   'tests/physical-starter-presets.mjs',
   'tests/planetary-walkthrough.mjs',
   'tests/planetary-preparation.mjs',
+  'tests/planetary-seam-work.mjs',
   'tests/stratum-senses.mjs',
   'tests/surface-ice.mjs',
   'tests/surface-ice-coupling.mjs',
