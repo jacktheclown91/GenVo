@@ -47,7 +47,8 @@ export class FrontEnd{
         for(const c of this.catalog.filter(c=>c.playable||resident&&c.liveAnimals>0||creature==='guided'||creature==='sandbox'))el.add(new Option('Evolved: '+c.label+' · Day '+c.day,'catalog:'+c.id));
       }
     }catch(error){console.warn('Curated scenarios are unavailable:',error)}
-    if(Array.from(el.options).some(option=>option.value===previous))el.value=previous;
+    if(creature.startsWith('starter-')){for(const option of [...el.options])if(option.value!=='new')option.remove();el.value='new';}
+    else if(Array.from(el.options).some(option=>option.value===previous))el.value=previous;
     this.syncStartingPoint();
   }
   syncStartingPoint(){
