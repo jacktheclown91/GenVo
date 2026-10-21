@@ -33,3 +33,7 @@ jobs:
         run: |
           node tests/save-persistence.mjs
           node tests/public-export.mjs
+      - name: Bounded positive-cohort parity and botanical identity
+        run: |
+          node tools/benchmark-seed-daily-hotpath.mjs
+          node tests/botanical-identity-parity.mjs
