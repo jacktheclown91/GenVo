@@ -1,7 +1,7 @@
 // Four explicit, authored G1 starting bodies built through the canonical
 // guided precursor editor. They are not evolved ancestors or free mutations.
 import {FounderDesign} from '../lineage/founder-design.js';
-import {place} from '../lineage/evolution-draft.js';
+import {place,replaceRoot} from '../lineage/evolution-draft.js';
 import {prepareAuthoredFounders,installAuthoredFounders} from '../persistence/authored-founders.js';
 import {jumpAvailability} from '../lineage/jumping.js';
 import {burrowingStatus} from '../lineage/burrowing.js';
@@ -28,6 +28,9 @@ export function physicalStarterDesign(id){
  if(!preset)throw Error('Unknown physical starter: '+id);
  const design=new FounderDesign('guided');
  if(id==='climb'){
+  // A light torso is real load-bearing anatomy, not a bypass of canopy limits.
+  const light=replaceRoot(design.draft,'light-torso');
+  if(!light.ok)throw Error('Cannot form legitimate light climbing torso: '+light.reason);
   // Climber legs require expressed grasper ancestors, not a forged unlocked flag.
   mountedPair(design,'grasper');
   const ancestor=design.advance();
