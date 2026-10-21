@@ -18,13 +18,53 @@ export function initializeCaves(w,{generate=false}={}){
   if(nearbyOpening)continue;
   const receiver=w.terrain.downstream[i];if(receiver<0||w.water[receiver]||w.terrain.elevation[receiver]+.1>=.98)continue;
   const opened=excavatePassage(w,i,{entry:true,origin:CAVES.policy,receiver});if(!opened)continue;w.subsurface.initialCaves++;
-  let at=i;const extent=2+Math.floor(caveFracture(w,i)*4);
-  for(let k=0;k<extent;k++){
-   const ax=at%w.n,ay=at/w.n|0,candidates=[at-w.n,at+1,at+w.n,at-1].filter(j=>j>=0&&j<w.len&&Math.abs(j%w.n-ax)+Math.abs((j/w.n|0)-ay)===1&&!w.water[j]&&!w.subsurface.passages.has(j)&&w.isPlayable(j%w.n+.5,(j/w.n|0)+.5)&&Math.abs((w.terrain.elevation[j]*20-1.2)-w.subsurface.passages.get(at).floor)<=.6&&caveFracture(w,j)>.65);
-   candidates.sort((a,b)=>caveFracture(w,b)-caveFracture(w,a));const next=candidates[0];if(next===undefined||!excavatePassage(w,next,{origin:CAVES.policy}))break;at=next;
-  }
+  // Spread each conserved cavity across local geological fractures instead of
+  // drawing a straight one-cell dungeon corridor. The entire open structure is
+  // still made of real, individually financed excavations; failure to find a
+  // valid spoil receiver or roof clearance ends growth without phantom space.
+  growNaturalCavern(w,i,8+Math.floor(caveFracture(w,i)*4));
+
  }
 }
+// Deterministic, material-funded multi-front geology. Each accepted chamber
+// or branch is an actual open passage with the same roof/load, slope, spoil,
+// collapse, and save contracts as animal excavation. No biological RNG draws.
+export function growNaturalCavern(w,entrance,limit=10){
+ const opened=w.subsurface?.passages?.get(entrance);
+ if(!opened||opened.closed||opened.origin!==CAVES.policy||!Number.isSafeInteger(limit)||limit<0||limit>24)return 0;
+ const roots=[entrance],seen=new Set(roots),n=w.n,ex=entrance%n,ey=entrance/n|0;
+ let created=0;
+ for(let count=0;count<limit;count++){
+  const candidates=new Map();
+  for(const at of roots){
+   const p=w.subsurface.passages.get(at);if(!p||p.closed)continue;
+   const x=at%n,y=at/n|0;
+   for(const j of [x>0?at-1:-1,x<n-1?at+1:-1,y>0?at-n:-1,y<n-1?at+n:-1]){
+    if(j<0||seen.has(j)||w.water[j]||w.subsurface.passages.has(j))continue;
+    const jx=j%n,jy=j/n|0;
+    if(!w.isPlayable(jx+.5,jy+.5)||Math.abs(w.terrain.elevation[j]*20-1.2-p.floor)>.6)continue;
+    const fracture=caveFracture(w,j),moisture=w.moisture[j];
+    if(fracture<.48||moisture<.23)continue;
+    const adjacent=[jx>0?j-1:-1,jx<n-1?j+1:-1,jy>0?j-n:-1,jy<n-1?j+n:-1]
+      .filter(q=>w.subsurface.passages.get(q)&&!w.subsurface.passages.get(q).closed).length;
+    const travel=Math.hypot(jx-ex,jy-ey);
+    const score=fracture*.7+Math.min(3,adjacent)*.13+moisture*.1-travel*.012;
+    if(!candidates.has(j)||score>candidates.get(j))candidates.set(j,score);
+   }
+  }
+  if(!candidates.size)break;
+  let gained=false;
+  for(const [j] of [...candidates].sort((a,b)=>b[1]-a[1]||a[0]-b[0])){
+   seen.add(j);
+   const p=excavatePassage(w,j,{origin:CAVES.policy});
+   if(!p)continue;
+   roots.push(j);created++;gained=true;break;
+  }
+  if(!gained)break;
+ }
+ return created;
+}
+
 export function naturalErosionEligible(w,i,j){
  return w.subsurface?.cavePolicy===CAVES.policy&&!w.water[i]&&!w.water[j]&&w.isPlayable(i%w.n+.5,(i/w.n|0)+.5)&&w.isPlayable(j%w.n+.5,(j/w.n|0)+.5)&&w.terrain.elevation[i]>=CAVES.minimumColumn&&caveFracture(w,i)>.65&&(!w.subsurface.passages.has(i)||w.subsurface.passages.get(i).origin===CAVES.policy&&!w.subsurface.passages.get(i).entry&&!w.subsurface.passages.get(i).closed);
 }
