@@ -1,0 +1,36 @@
+name: GenVo first-generation heir stakes
+on:
+  push:
+    branches:
+      - dev/first-generation-heir-stakes-2026-10-21
+  pull_request:
+    paths:
+      - 'src/ui/lineage-stakes.js'
+      - 'src/ui/tutorial.js'
+      - 'src/ui/generation-reveal.js'
+      - 'tests/first-generation-heir-stakes.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  focused:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Living heir, inheritance and opening progression
+        run: |
+          node --check src/ui/tutorial.js
+          node --check src/ui/generation-reveal.js
+          node tests/first-generation-heir-stakes.mjs
+          node tests/opening-goals.mjs
+          node tests/generation-reveal.mjs
+          node tests/lineage-purpose.mjs
+          node tests/handoff-transition.mjs
+      - name: Historical source and save checks
+        run: |
+          node tests/save-persistence.mjs
+          node tests/public-export.mjs
