@@ -17,7 +17,8 @@
     "regionalDecodedPageLeases": {
       "authority": "src/persistence/regional-reader.js",
       "consumers": ["src/persistence/save-manager.js"],
-      "contract": "docs/REGIONAL-READER-2026-10-21.md"
+      "contract": "docs/REGIONAL-READER-2026-10-21.md",
+      "replayContract": "docs/REGIONAL-LEASED-REPLAY-2026-10-21.md"
     },
     "regionalDirtyCapture": {
       "authority": "src/persistence/regional-dirty.js",

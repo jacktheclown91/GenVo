@@ -72,12 +72,14 @@ function highId(sim){
 }
 // A transactional offscreen stride: if canonical simulation or conservation
 // fails, no archived organism or plant/food array is changed.
-export function advanceRemoteBiology(active,session,{maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass}={}){
+export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass}={}){
+ const active={tickCount};
+ if(!Number.isSafeInteger(reservedNextId)||reservedNextId<1)throw Error('Invalid reserved regional identity watermark.');
  if(!safe(maxTicks)||maxTicks>OFFSCREEN_BIOLOGY.maxEntryTicks)
   throw Error('Unbounded remote biological work.');
  if(session?.biologicalMode!=='canonical-ticks/1')throw Error('Archived region has no biological replay authority.');
  const debt=remoteBiologicalDebt(active,session),steps=Math.min(debt,maxTicks);
- if(!steps)return{ticks:0,remaining:debt,key:session.key};
+ if(!steps)return{candidate:null,nextId:reservedNextId,result:{ticks:0,remaining:debt,key:session.key}};
  validateRemoteBiologyLedger(session);
  validateRemoteEnvironmentalLedger(session);
  const temp=restoreDetachedSimulationSnapshot(session.snapshot);
@@ -88,7 +90,6 @@ export function advanceRemoteBiology(active,session,{maxTicks=OFFSCREEN_BIOLOGY.
  const startTick=temp.tickCount,initialDay=temp.day;
  // Always reserve an identity watermark above every regional animal. A new
  // offspring in a remote region may not reuse any living or archived ID.
- const reservedNextId=highId(active);
  temp.nextId=Math.max(temp.nextId,reservedNextId);
  const ledger=session.biologicalLedger
   ? {...session.biologicalLedger}
@@ -130,20 +131,21 @@ export function advanceRemoteBiology(active,session,{maxTicks=OFFSCREEN_BIOLOGY.
   ...(physical.days?{environmentalLedger:physical}:{})};
  validateRemoteBiologyLedger(candidate);
  validateRemoteEnvironmentalLedger(candidate);
- const nextSessions=active.planetaryTravel.sessions.map(s=>s===session?candidate:s);
- // The active owner and its archived snapshots have not changed since the
- // identity watermark was checked above. Reuse it rather than walking every
- // remote animal a second time for each synchronized replay transaction.
- validatePlanetAnimalOwnership(active.animals,{schema:1,nextId:Math.max(reservedNextId,temp.nextId),sessions:nextSessions});
- // Atomic publish after completing all duplicate and material checks.
- markRegionalOwnerDirty(session);session.snapshot=copy;
- session.biologicalLedger=ledger;
- if(physical.days)session.environmentalLedger=physical;
- active.nextId=Math.max(active.nextId,temp.nextId);
- active.planetaryTravel.nextId=Math.max(active.planetaryTravel.nextId,active.nextId);
- return{ticks:steps,remaining:remoteBiologicalDebt(active,session),key:session.key,
+ validatePlanetAnimalOwnership([],{schema:1,nextId:Math.max(reservedNextId,temp.nextId),sessions:[candidate]});
+ return{candidate,nextId:temp.nextId,result:{ticks:steps,remaining:remoteBiologicalDebt(active,candidate),key:session.key,
   births:(temp.stats.births||0)-atBirths,deaths:(temp.stats.deaths||0)-atDeaths,
-  fullDays:temp.day-initialDay,organisms:temp.animals.length};
+  fullDays:temp.day-initialDay,organisms:temp.animals.length}};
+}
+export function advanceRemoteBiology(active,session,{maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass}={}){
+ const reservedNextId=highId(active),staged=stageRemoteBiology(session,{tickCount:active.tickCount,reservedNextId,maxTicks});
+ if(!staged.candidate)return staged.result;
+ const nextSessions=active.planetaryTravel.sessions.map(s=>s===session?staged.candidate:s);
+ validatePlanetAnimalOwnership(active.animals,{schema:1,nextId:Math.max(reservedNextId,staged.nextId),sessions:nextSessions});
+ // Publish only after the shared staged tick/material/ownership checks pass.
+ markRegionalOwnerDirty(session);Object.assign(session,staged.candidate);
+ active.nextId=Math.max(active.nextId,staged.nextId);
+ active.planetaryTravel.nextId=Math.max(active.planetaryTravel.nextId,active.nextId);
+ return staged.result;
 }
 export function advanceOffscreenBiology(sim,{
  regionsPerPass=OFFSCREEN_BIOLOGY.regionsPerPass,ticksPerPass=OFFSCREEN_BIOLOGY.ticksPerPass
