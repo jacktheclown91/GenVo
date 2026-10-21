@@ -51,6 +51,7 @@ assert.ok(model.details.some(([k,v])=>k==='Inherited movement'&&v.includes('when
  'no promise that anatomy ignores costs, ecology, terrain or breath');
 
 // Exercise the actual first-generation tutorial branch, not just its text formatter.
+parent.age=SPECIES.genvo.maturity+4;
 child.age=SPECIES.genvo.maturity+1;
 const controller=Object.create(TutorialController.prototype);
 controller.sim=sim;controller.renderer={guideTarget:null};controller.render=(title,body,opts={})=>{controller.shown={title,body,opts}};
