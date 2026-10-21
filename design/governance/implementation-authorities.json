@@ -3,6 +3,11 @@
   "principle": "One live authority for each mechanism. Multiple states, species, art drafts and measured outcomes are permitted; competing runtime definitions are not.",
   "gameEntrypoint": "src/main.js",
   "systems": {
+    "gameplayOverlayPlacement": {
+      "authority": "src/ui/overlay-placement.js",
+      "consumers": ["src/ui/notification-center.js", "src/ui/context-radial.js", "src/ui/creature-context-tray.js"],
+      "contract": "docs/OVERLAY-VISIBILITY-2026-10-21.md"
+    },
     "nearbyPlanetaryPreparation": {
       "authority": "src/world/planetary-preparation.js",
       "consumers": ["src/main.js", "src/world/planetary-travel.js"],
@@ -13,7 +18,9 @@
       "consumers": ["src/persistence/save-manager.js", "src/persistence/regional-reader.js"],
       "contract": "docs/INDEXED-REGIONAL-STORAGE-2026-10-21.md",
       "incrementalPublicationContract": "docs/REGIONAL-UPDATES-2026-10-21.md",
-      "stagedPublicationContract": "docs/REGIONAL-STAGING-2026-10-21.md"
+      "stagedPublicationContract": "docs/REGIONAL-STAGING-2026-10-21.md",
+      "inventoryContract": "docs/REGIONAL-INVENTORY-2026-10-21.md",
+      "stageRecoveryContract": "docs/REGIONAL-STAGE-RECOVERY-2026-10-21.md"
     },
     "regionalDecodedPageLeases": {
       "authority": "src/persistence/regional-reader.js",

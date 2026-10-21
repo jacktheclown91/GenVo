@@ -1,4 +1,4 @@
-import {REGION_STORE,readRegionalCheckpoint,commitRegionalCheckpoint,commitRegionalUpdate,deleteRegionalCheckpoint} from './regional-records.js';
+import {REGION_STORE,readRegionalCheckpoint,commitRegionalCheckpoint,commitRegionalUpdate,deleteRegionalCheckpoint,inspectRegionalStorage,recoverRegionalStages} from './regional-records.js';
 import {RegionalDirtyJournal} from './regional-dirty.js';
 import {openRegionalCheckpointReader} from './regional-reader.js';
 import {restoreHabitatHazards} from '../ecology/habitat-hazards.js';
@@ -489,6 +489,7 @@ export class SaveManager{
     const current=await requestToPromise(store.get(id));if(!current)throw Error('World not found.');
     store.put({...current,worldName:name},id);await transactionDone(tx);this.worldNames.set(id,name);
   }
+  async inspectRegionalStorage(){return inspectRegionalStorage(await this.db())}
   async deleteWorld(id){
     if(!safeSlot(id))throw Error('Invalid world slot.');
     // Never delete a slot while an earlier write could recreate it.
@@ -512,6 +513,7 @@ export class SaveManager{
       req.onblocked=()=>{blocked=true;this.dbPromise=null;reject(Error('Close other GenVo tabs to upgrade regional storage.'))};
       req.onerror=()=>{this.dbPromise=null;reject(req.error||new Error('Could not open save storage.'))};
     });
+    this.dbPromise=this.dbPromise.then(async db=>{try{this.regionalRecovery=await recoverRegionalStages(db);return db}catch(error){db.close();this.dbPromise=null;throw error}});
     return this.dbPromise;
   }
   async metadata(id=this.activeSlotId,{strict=false}={}){

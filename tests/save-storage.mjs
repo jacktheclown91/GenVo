@@ -14,12 +14,14 @@ function fakeIndexedDB(){
             created=true;const stores=new Map();
             db={
               objectStoreNames:{contains:key=>stores.has(key)},
+              close(){},
               createObjectStore:key=>{if(!stores.has(key))stores.set(key,new Map());return{}},
               transaction(names){
                 const tx={oncomplete:null,onabort:null,onerror:null,error:null,objectStore:key=>({
                   get(id){const req={result:undefined,error:null,onsuccess:null,onerror:null};queueMicrotask(()=>{req.result=stores.get(key)?.has(id)?structuredClone(stores.get(key).get(id)):undefined;req.onsuccess?.()});return req},
                   put(value,id){stores.get(key).set(id,structuredClone(value));return{}},
-                  delete(id){stores.get(key).delete(id);return{}}
+                  delete(id){stores.get(key).delete(id);return{}},
+                  openKeyCursor(){const keys=[...(stores.get(key)?.keys()||[])],req={result:null,onsuccess:null};let i=0;const next=()=>queueMicrotask(()=>{req.result=i<keys.length?{key:keys[i++],continue:next}:null;req.onsuccess?.()});next();return req}
                 })};
                 setTimeout(()=>tx.oncomplete?.(),0);return tx;
               }

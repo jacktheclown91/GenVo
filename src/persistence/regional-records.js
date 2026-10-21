@@ -14,6 +14,7 @@ const stagedID=(slot,kind,key,capture)=>recordID(slot,kind,key)+'|'+capture;
 const validReference=(index,entry,slot)=>entry?.storage===undefined?entry?.id===recordID(slot,entry?.kind,entry?.key):index.schema===STAGED_REGIONAL_STORAGE&&entry.storage==='capture-key/1'&&entry.id===stagedID(slot,entry.kind,entry.key,entry.capture);
 const replayPolicyOf=core=>core.regionalReplayPolicy===undefined?REGIONAL_REPLAY.legacy:core.regionalReplayPolicy;
 let captureSerial=0;
+const stageLockName=(db,slot,capture)=>'genvo-regional-stage|'+db.name+'|'+slot+'|'+capture;
 function identity(kind,payload){
  const world=kind==='session'?payload?.snapshot?.world:payload?.world;
  if(world?.generator!=='planetary/1')throw Error('Regional record lacks its planetary World.');
@@ -154,13 +155,18 @@ async function commitRegionalPlan(db,{root,records},slot,previous){
 // Unpublished capture keys permit one-page-at-a-time staging without touching
 // any record referenced by the old root. This object retains metadata only.
 export class RegionalCheckpointStage{
- #db;#slot;#previous;#root;#entries;#capture;#activeInfo=null;#ids=new Set();#busy=false;#state='open';
+ #db;#slot;#previous;#root;#entries;#capture;#activeInfo=null;#ids=new Set();#busy=false;#state='open';#releaseLock=null;
  constructor(db,slot,previous){
   const index=validateRegionalIndex(previous,slot);if(!index?.identityPolicy)throw Error('Regional staging requires an indexed identity directory.');
   this.#db=db;this.#slot=slot;this.#previous=structuredClone(previous);
-  this.#capture=globalThis.crypto?.randomUUID?.()||'stage@'+Date.now()+'@'+(++captureSerial);
+  this.#capture=(globalThis.navigator?.locks?'locked@':'')+(globalThis.crypto?.randomUUID?.()||'stage@'+Date.now()+'@'+Math.random()+'@'+(++captureSerial));
   this.#entries=index.entries.map(e=>({...structuredClone(e),capture:captureFor(index,e)}));
  }
+ async #protect(){
+  if(this.#releaseLock||!this.#capture.startsWith('locked@'))return;
+  await new Promise((resolve,reject)=>{navigator.locks.request(stageLockName(this.#db,this.#slot,this.#capture),async()=>{const held=new Promise(release=>{this.#releaseLock=release});resolve();await held}).catch(reject)});
+ }
+ #unlock(){this.#releaseLock?.();this.#releaseLock=null}
  get state(){return this.#state}
  get pendingRecords(){return this.#ids.size}
  #admit(){if(this.#state!=='open'||this.#busy)throw Error('Regional stage is closed or busy.');}
@@ -178,8 +184,9 @@ export class RegionalCheckpointStage{
   }
   const entry={kind,key,origin,id:stagedID(this.#slot,kind,key,this.#capture),capture:this.#capture,storage:'capture-key/1',...(kind==='survey'?{}:{life:regionalIdentity(kind==='active'?payload:payload.snapshot,{mode:kind==='session'?payload.biologicalMode??null:null})})};
   const record={schema:1,slot:this.#slot,capture:this.#capture,kind,key,payload};
-  const tx=this.#db.transaction(REGION_STORE,'readwrite'),done=completed(tx);this.#busy=true;
+  let tx,done;this.#busy=true;
   try{
+   await this.#protect();tx=this.#db.transaction(REGION_STORE,'readwrite');done=completed(tx);
    tx.objectStore(REGION_STORE).put(record,entry.id);await done;
    this.#ids.add(entry.id);
    if(kind==='active'){
@@ -187,7 +194,7 @@ export class RegionalCheckpointStage{
     this.#root.regionalPersistence={...this.#root.regionalPersistence,schema:STAGED_REGIONAL_STORAGE,capture:this.#capture,active:entry};
    }else this.#entries[this.#entries.findIndex(e=>e.kind===kind&&e.key===key)]=entry;
    return structuredClone(entry);
-  }catch(error){try{tx.abort()}catch{}await done.catch(()=>{});throw error}
+  }catch(error){try{tx?.abort()}catch{}await done?.catch(()=>{});throw error}
   finally{this.#busy=false}
  }
  async publish(){
@@ -207,22 +214,52 @@ export class RegionalCheckpointStage{
    for(const id of this.#ids){const request=regions.getKey(id);request.onsuccess=()=>{if(request.result===undefined){problem=Error('Missing staged regional record.');tx.abort()}};}
    meta.put(root.meta,this.#slot);saves.put(root,this.#slot);
    for(const entry of [...old.entries,old.active])if(!keep.has(entry.id))regions.delete(entry.id);
-   await done;this.#state='published';return{root,written:this.#ids.size,retained:keep.size-this.#ids.size};
+   await done;this.#state='published';this.#unlock();return{root,written:this.#ids.size,retained:keep.size-this.#ids.size};
   }catch(error){try{tx.abort()}catch{}await done.catch(()=>{});throw problem||error}
   finally{this.#busy=false}
  }
  async abort(){
   if(this.#state==='published'||this.#state==='aborted')return{deleted:0};this.#admit();
-  if(!this.#ids.size){this.#state='aborted';return{deleted:0}}
+  if(!this.#ids.size){this.#state='aborted';this.#unlock();return{deleted:0}}
   const tx=this.#db.transaction(REGION_STORE,'readwrite'),done=completed(tx);this.#busy=true;
-  try{const store=tx.objectStore(REGION_STORE);for(const id of this.#ids)store.delete(id);await done;const deleted=this.#ids.size;this.#ids.clear();this.#state='aborted';return{deleted}}
+  try{const store=tx.objectStore(REGION_STORE);for(const id of this.#ids)store.delete(id);await done;const deleted=this.#ids.size;this.#ids.clear();this.#state='aborted';this.#unlock();return{deleted}}
   catch(error){try{tx.abort()}catch{}await done.catch(()=>{});throw error}
   finally{this.#busy=false}
  }
+}
+// Review only: an unreferenced candidate can still belong to a live stage.
+// One readonly transaction observes roots and keys consistently without
+// decoding any regional payload or authorizing reclamation.
+export async function inspectRegionalStorage(db){
+ const tx=db.transaction(['saves',REGION_STORE],'readonly'),done=completed(tx),owned=new Map(),missing=new Set(),unreferenced=[],unrecognized=[];
+ let roots=0,records=0,referenced=0,problem;
+ const fail=error=>{problem=error;tx.abort()},request=tx.objectStore('saves').openCursor();
+ request.onsuccess=()=>{try{const cursor=request.result;if(cursor){const index=validateRegionalIndex(cursor.value,cursor.key);roots++;for(const e of index?[...index.entries,index.active]:[]){owned.set(e.id,{slot:cursor.key,kind:e.kind,key:e.key});missing.add(e.id)}cursor.continue();return}
+  const keys=tx.objectStore(REGION_STORE).openKeyCursor();keys.onsuccess=()=>{try{const row=keys.result;if(!row)return;const id=row.key;records++;if(owned.has(id)){referenced++;missing.delete(id)}else if(typeof id==='string'){const parts=id.split('|');if((parts.length===3||parts.length===4)&&slotOK(parts[0])&&['active','session','survey'].includes(parts[1]))unreferenced.push({id,slot:parts[0],kind:parts[1],key:parts[2],capture:parts[3]??null,storage:parts.length===4?'capture-key/1':'fixed-key/1'});else unrecognized.push(id)}else unrecognized.push(id);row.continue()}catch(error){fail(error)}};
+ }catch(error){fail(error)}};
+ try{await done}catch(error){throw problem||error}
+ return{schema:'regional-storage-inventory/1',roots,records,referenced,unreferenced,unrecognized,missing:[...missing].map(id=>({id,...owned.get(id)})),reclamationAuthorized:false};
 }
 export async function deleteRegionalCheckpoint(db,slot){
  if(!slotOK(slot))throw Error('Invalid world slot.');
  const tx=db.transaction(['saves','meta',REGION_STORE],'readwrite'),done=completed(tx),saves=tx.objectStore('saves'),regions=tx.objectStore(REGION_STORE),metadata=tx.objectStore('meta');let problem;
  const req=saves.get(slot);req.onsuccess=()=>{try{const index=validateRegionalIndex(req.result,slot);for(const e of index?[...index.entries,index.active]:[])regions.delete(e.id);saves.delete(slot);metadata.delete(slot)}catch(error){problem=error;tx.abort()}};
  try{await done}catch(error){throw problem||error}
+}
+
+// Older captures lack cross-tab lifetime protection and remain untouched.
+// New lock-marked stages are reclaimable only after their owner releases or
+// its browser context dies. Root ownership is rechecked under the write lock.
+export async function recoverRegionalStages(db){
+ if(!globalThis.navigator?.locks)return{deleted:0,live:0,unsupported:true};
+ const scan=db.transaction(REGION_STORE,'readonly'),scanned=completed(scan),groups=new Map(),request=scan.objectStore(REGION_STORE).openKeyCursor();
+ request.onsuccess=()=>{const cursor=request.result;if(!cursor)return;const id=cursor.key;if(typeof id==='string'){const parts=id.split('|');if(parts.length===4&&slotOK(parts[0])&&['active','session','survey'].includes(parts[1])&&parts[3].startsWith('locked@')){const key=parts[0]+'|'+parts[3];if(!groups.has(key))groups.set(key,{slot:parts[0],capture:parts[3],ids:[]});groups.get(key).ids.push(id)}}cursor.continue()};await scanned;
+ let deleted=0,live=0;
+ for(const group of groups.values())await navigator.locks.request(stageLockName(db,group.slot,group.capture),{ifAvailable:true},async lock=>{
+  if(!lock){live++;return}
+  const tx=db.transaction(['saves',REGION_STORE],'readwrite'),done=completed(tx),store=tx.objectStore(REGION_STORE);let problem,count=0;
+  const guard=tx.objectStore('saves').get(group.slot);guard.onsuccess=()=>{try{const index=validateRegionalIndex(guard.result,group.slot),keep=new Set(index?[...index.entries,index.active].map(e=>e.id):[]);for(const id of group.ids)if(!keep.has(id)){const found=store.getKey(id);found.onsuccess=()=>{try{if(found.result!==undefined){store.delete(id);count++}}catch(error){problem=error;tx.abort()}}}}catch(error){problem=error;tx.abort()}};
+  try{await done;deleted+=count}catch(error){throw problem||error}
+ });
+ return{deleted,live,unsupported:false};
 }

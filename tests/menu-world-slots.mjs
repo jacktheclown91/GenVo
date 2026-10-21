@@ -5,12 +5,13 @@ import {SaveManager} from '../src/persistence/save-manager.js';
 function fakeIndexedDB(){
  const dbs=new Map();return{open(name){const request={result:null,error:null};queueMicrotask(()=>{
   let db=dbs.get(name),created=false;
-  if(!db){created=true;const stores=new Map();db={objectStoreNames:{contains:key=>stores.has(key)},
+  if(!db){created=true;const stores=new Map();db={objectStoreNames:{contains:key=>stores.has(key)},close(){},
     createObjectStore:key=>{stores.set(key,new Map())},transaction(){
      const tx={error:null,oncomplete:null,onerror:null,onabort:null,objectStore:key=>({
       get(id){const r={result:null};queueMicrotask(()=>{r.result=structuredClone(stores.get(key).get(id));r.onsuccess?.()});return r},
       getAll(){const r={result:null};queueMicrotask(()=>{r.result=structuredClone([...stores.get(key).values()]);r.onsuccess?.()});return r},
-      put(v,id){stores.get(key).set(id,structuredClone(v));return{}},delete(id){stores.get(key).delete(id);return{}}
+      put(v,id){stores.get(key).set(id,structuredClone(v));return{}},delete(id){stores.get(key).delete(id);return{}},
+      openKeyCursor(){const keys=[...(stores.get(key)?.keys()||[])],r={result:null};let i=0;const next=()=>queueMicrotask(()=>{r.result=i<keys.length?{key:keys[i++],continue:next}:null;r.onsuccess?.()});next();return r}
      })};setTimeout(()=>tx.oncomplete?.(),5);return tx;
     }};dbs.set(name,db)}request.result=db;if(created)request.onupgradeneeded?.();request.onsuccess?.();});return request}}
 }
