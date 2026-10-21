@@ -419,11 +419,19 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   // the existing full-resolution construction path.
   drawPendingTerrainChunk(cx,cy,size,tile,px,py){
     const c=this.ctx,w=this.sim.world;
-    c.fillStyle='#536a4b';c.fillRect(px,py,size*tile,size*tile);
-    c.fillStyle='#416f76';
+    // A cheap temporary indication of terrain type while its authored native
+    // chunk is prepared. Variation prevents huge single-color rectangles on
+    // camera movement; no biome assets are rewritten or approximated here.
+    const land=['#536a4b','#52674a','#586d4e','#50664a'],water=['#416f76','#47757b','#436e79','#417179'];
     for(let ly=0;ly<size;ly++)for(let lx=0;lx<size;lx++){
       const x=cx*size+lx,y=cy*size+ly;
-      if(x>=0&&y>=0&&x<w.n&&y<w.n&&w.water[w.idx(x,y)])c.fillRect(px+lx*tile,py+ly*tile,tile,tile);
+      if(x<0||y<0||x>=w.n||y>=w.n)continue;
+      const wet=!!w.water[w.idx(x,y)],h=hash2(x,y,103),ix=px+lx*tile,iy=py+ly*tile;
+      c.fillStyle=(wet?water:land)[h%4];c.fillRect(ix,iy,tile,tile);
+      c.fillStyle=wet?'rgba(170,202,190,.11)':'rgba(182,194,144,.12)';
+      const q=Math.max(1,Math.round(tile/16));
+      c.fillRect(ix+((h>>>5)%11+2)*tile/16,iy+((h>>>9)%11+2)*tile/16,q*2,q);
+      if((h&3)===0)c.fillRect(ix+((h>>>12)%9+3)*tile/16,iy+((h>>>16)%9+3)*tile/16,q,q);
     }
   }
 
@@ -452,7 +460,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
       if(this.terrainChunkSignature(current.cx,current.cy,current.size)!==current.sig){
         this.terrainChunkWork=null;
         this.queueTerrainRefresh(current.cx,current.cy,current.size);
-      }else if(this.stepTerrainChunkWork(current,4,8))this.terrainChunkWork=null;
+      }else if(this.stepTerrainChunkWork(current,4,16))this.terrainChunkWork=null;
       return;
     }
     if(!this.terrainRefreshQueue.length)return;
@@ -473,7 +481,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const work=this.createTerrainChunkWork(job.cx,job.cy,job.size,sig);
     if(!work)return;
     this.terrainChunkWork=work;
-    if(this.stepTerrainChunkWork(work,4,8))this.terrainChunkWork=null;
+    if(this.stepTerrainChunkWork(work,4,16))this.terrainChunkWork=null;
   }
 
   terrainChunk(cx,cy,size=TERRAIN_CHUNK){
@@ -503,7 +511,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     return{cx,cy,size,sig,key:`${cx},${cy},${size}`,chunk,vegetation,cc,vc,phase:0,index:0};
   }
 
-  stepTerrainChunkWork(work,budgetMs=4,maxOperations=8){
+  stepTerrainChunkWork(work,budgetMs=4,maxOperations=16){
     const {cx,cy,size,cc,vc}=work,start=performance.now(),old=this.ctx,P=VEG_PAD;
     this.ctx=cc;
     let operations=0;
