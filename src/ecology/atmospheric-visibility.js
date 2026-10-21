@@ -1,3 +1,4 @@
+import {STRATUM_SENSES,stratumSight} from './stratum-senses.js';
 import {regionalRainfall,planetaryWindAt} from '../world/weather-fronts.js';
 import {snowFraction} from '../world/snowpack.js';
 import {localTemperature} from '../world/environment.js';
@@ -6,7 +7,7 @@ import {partEffectFactors} from '../lineage/part-abilities.js';
 // a humidity/condensation proxy, not an additional liquid-water inventory.
 export const VISIBILITY=Object.freeze({policy:'atmospheric-visibility/1'});
 export function visualSurveyRange(animal,base=8){return base*(animal.genes?.senses||1)*(partEffectFactors(animal)?.threatSense??1)}
-export function visuallyObservable(sim,observer,target,base=8){return sim.visibilityRules!==VISIBILITY.policy||!observer||observer.id===target.id||observer.underground||atmosphericSight(sim,observer,target,visualSurveyRange(observer,base)).detected}
+export function visuallyObservable(sim,observer,target,base=8){return sim.visibilityRules!==VISIBILITY.policy||!observer||observer.id===target.id||observer.underground&&sim.stratumSenseRules!==STRATUM_SENSES.policy||atmosphericSight(sim,observer,target,visualSurveyRange(observer,base)).detected}
 const clamp=v=>Math.max(0,Math.min(1,v));
 export function atmosphereAt(sim,x,y){
  const w=sim.world,i=w.idx(x,y),climate=sim.climate||{temp:w.temperature[i],rain:0};
@@ -20,6 +21,7 @@ export function atmosphereAt(sim,x,y){
 export function atmosphericSight(sim,observer,target,range){
  const distance=Math.hypot(target.x-observer.x,target.y-observer.y);
  if(!Number.isFinite(distance)||!Number.isFinite(range)||range<0)throw Error('Invalid atmospheric sight query.');
+ const stratum=stratumSight(sim,observer,target,range);if(stratum)return stratum;
  let opticalDepth=0;
  if(sim.visibilityRules===VISIBILITY.policy&&!observer.underground&&!(observer.diveDepth>.03)){
   const samples=Math.min(8,Math.max(1,Math.ceil(distance/4)));
