@@ -3,6 +3,8 @@ import {Simulation} from '../src/sim/simulation.js';
 import {founderMatePreferences,inheritMatePreferences,LOCAL_ASSORTMENT,perceivedAppearance,appearanceDistance,individualMateChoice,mateOptionAssessment,reciprocalMateChoice} from '../src/reproduction/mate-preferences.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 import {phenotypeFor} from '../src/organisms/species.js';
+import {FOUNDER_PLACEMENTS} from '../src/lineage/body-inheritance.js';
+import {makePlan,validatePlan} from '../src/lineage/body-plan.js';
 
 const seed='LOCAL-VISUAL-ASSORTMENT';
 const sim=new Simulation(seed,{player:true,bootstrap:false});
@@ -27,6 +29,11 @@ assert.equal(perceivedAppearance(same,{assortment:true}).hue,hue(same));
 assert.equal(perceivedAppearance(contrast,{assortment:true}).hue,hue(contrast));
 assert.ok(appearanceDistance(same,contrast,{assortment:true})>.2);
 assert.equal(appearanceDistance(same,contrast),0,'historical preference used non-pigment fallback');
+const legVariation=makePlan(FOUNDER_PLACEMENTS.map(p=>p.socket==='limb.1'?{...p,partId:'runner-leg'}:p));
+assert.equal(validatePlan(legVariation).ok,true,'test uses a physically valid body');
+const differentBody={...same,id:810,bodyPlan:legVariation};
+assert.ok(appearanceDistance(same,differentBody,{assortment:true})>appearanceDistance(same,same,{assortment:true}),
+ 'a real limb-layout change increases visible silhouette distance');
 
 const neutral=Object.fromEntries(Object.keys(a.matePreferences.weights).map(k=>[k,0]));
 const chooser={...same,matePreferences:{...a.matePreferences,weights:neutral,similarity:1}};
