@@ -10,7 +10,7 @@ const world={n,len,seedHash:517,regionOrigin:{x:0,y:0},water:new Uint8Array(len)
 const put=(x,y,origin=CAVES.policy)=>{const p={i:idx(x,y),entry:false,closed:false,floor:6,void:.04,origin};world.subsurface.passages.set(p.i,p);return p};
 const p=put(3,3),east=put(4,3),south=put(3,4);
 assert.equal(openPassage(world,3,3),p,'only true physical passage returns as open');
-assert.equal(openPassage(world,2,2),false,'solid geology remains impassable');
+assert.equal(openPassage(world,2,2),null,'solid geology remains impassable');
 assert.equal(caveNeighborOpen(world,p,1,0),true);
 assert.equal(caveNeighborOpen(world,p,0,1),true);
 assert.equal(caveNeighborOpen(world,p,-1,0),false);
@@ -36,7 +36,7 @@ world.water[p.i]=1;
 const flooded=caveTileData(world,p);
 assert.equal(flooded.wet,true);assert.notDeepEqual(flooded.pixels,natural.pixels,'water art requires actual world water');
 world.water[p.i]=0;
-p.closed=true;assert.equal(openPassage(world,3,3),false);
+p.closed=true;assert.equal(openPassage(world,3,3),null);
 assert.throws(()=>caveTileData(world,p),/real open passage/);
 p.closed=false;
 const priorDocument=globalThis.document;
