@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
-import {creatureView,viewCanSee,visuallyObservable} from '../src/ecology/atmospheric-visibility.js';
+import {creatureView,viewCanSee,visuallyObservable,undergroundLineOfSight} from '../src/ecology/atmospheric-visibility.js';
 import {sensoryRegionKey,recordSensoryMemory,rememberedCells,sensoryProfile,sensorySignals} from '../src/ecology/sensory-world.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 
@@ -49,4 +49,35 @@ if(others.length){
  assert.equal(other.sensoryMemory?.regions?.[createdRegionKey]?.length||0,0,'survey knowledge belongs to the individual');
  p.sensoryMemory=prior;
 }
+
+// Optical contact below ground follows actual persistent excavated/cave
+// passages. Solid rock blocks rays, including diagonal corner peeking.
+// This does not modify geology, RNG, or the world being simulated.
+const rock={n:8,subsurface:{passages:new Map()}};
+const open=(x,y)=>rock.subsurface.passages.set(y*rock.n+x,{closed:false,entry:false});
+open(1,1);open(2,1);open(3,1);
+assert.equal(undergroundLineOfSight(rock,1.5,1.5,3.5,1.5),true,'light travels along opened passages');
+rock.subsurface.passages.get(rock.n+2).closed=true;
+assert.equal(undergroundLineOfSight(rock,1.5,1.5,3.5,1.5),false,'solid rock blocks underground sight');
+rock.subsurface.passages.get(rock.n+2).closed=false;
+open(2,2);
+assert.equal(undergroundLineOfSight(rock,1.5,1.5,2.5,2.5),false,'diagonal wall corners cannot be peered through');
+open(1,2);
+assert.equal(undergroundLineOfSight(rock,1.5,1.5,2.5,2.5),true,'wide open tunnel junction is visually connected');
+const prepared={observer:{x:1.5,y:1.5},world:rock,level:'underground',touch:1.55,range:4,eyes:1,facing:[1,0],rearLimit:-.2};
+assert.equal(viewCanSee(prepared,3.5,1.5),true,'shared field-of-view uses cave paths');
+rock.subsurface.passages.get(rock.n+2).closed=true;
+assert.equal(viewCanSee(prepared,3.5,1.5),false,'rendered underground area obeys cave occlusion');
+const undergroundObserver={...p,id:8001,x:1.5,y:1.5,dir:2,underground:true};
+const undergroundTarget={id:8002,x:2.5,y:1.5,underground:true};
+const caveSim={world:rock,sensoryFogEnabled:true};
+assert.equal(visuallyObservable(caveSim,undergroundObserver,undergroundTarget),false,'touch-distance actor behind rock is not a target');
+rock.subsurface.passages.get(rock.n+2).closed=false;
+assert.equal(visuallyObservable(caveSim,undergroundObserver,undergroundTarget),true,'near creature in connected cave is selectable');
+
+const blind={...p,bodyPlan:{...p.bodyPlan,nodes:p.bodyPlan.nodes.filter(n=>!n.socket?.startsWith('eye'))}};
+const blindedView=creatureView(sim,blind);
+assert.equal(blindedView.eyes,0);
+assert.ok(blindedView.range<view.range,'missing functional eyes remove distant vision without hiding touch');
+
 console.log('sensory fog, evolutionary sight, uncertain signals and save continuity PASS');
