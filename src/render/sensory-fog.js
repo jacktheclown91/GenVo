@@ -42,10 +42,10 @@ export function drawSensoryFog(renderer,{tile,cols,rows,startX,startY}){
     const remembered=memory.get(Math.floor(x/sensoryMemoryCellSize)+','+Math.floor(y/sensoryMemoryCellSize));
     if(remembered){
       // Solid remembered terrain class, never live hidden plants/creatures.
-      const wet=remembered[2]===1;
-      c.fillStyle=wet?'#1c353b':'#26362b';
+      const wet=remembered[2]===1,underground=remembered[2]>=2;
+      c.fillStyle=underground?(remembered[2]===2?'#292d22':'#151c18'):wet?'#1c353b':'#26362b';
       c.fillRect(px,py,Math.ceil(tile)+1,Math.ceil(tile)+1);
-      c.fillStyle=wet?'#2d4b52':'#334736';
+      c.fillStyle=underground?'#384036':wet?'#2d4b52':'#334736';
       if((x+y)%3===0)c.fillRect(px+tile*.4,py+tile*.6,Math.max(1,tile*.12),Math.max(1,tile*.08));
     }
    }
