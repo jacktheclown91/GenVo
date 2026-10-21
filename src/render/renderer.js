@@ -2,6 +2,7 @@ import {drawSurfaceIce} from './surface-ice.js';
 import {liquidContact} from '../lineage/ice-locomotion.js';
 import {CanvasRecorder} from './canvas-recorder.js';
 import {drawAtmosphere} from './atmosphere.js';
+import {drawSensoryFog} from './sensory-fog.js';
 import {drawThermalWeather} from './thermal-weather.js';
 import {THERMAL_WEATHER} from '../ecology/thermal-weather.js';
 import {VISIBILITY,visuallyObservable} from '../ecology/atmospheric-visibility.js';
@@ -76,7 +77,7 @@ export class Renderer{
   // v1.32.5: a new or loaded world replaces the title-screen world. Every cache keyed only by
   // tile position belongs to the old world: without this, tiles that were land there drew as
   // flat land with a stepped bank in the new world's water, and the reverse showed phantom water.
-  resetWorldCaches(){this.visibleWorldPages=[];this.visiblePlantTargets=new Map();this.plantTargetWorld=this.sim.world;this.partExpressions.reset();this.feeding?.reset();this.headAttention?.reset();this.turnState?.clear();this.vegLayerCache?.clear?.();this.staticGroundTileCache?.clear?.();this.waterToneCache?.clear?.();this.habitatField=null;this.habitatFieldDay=-1;this.pendingHabitatDay=null;this.pendingHabitatFrames=0;this.macroHabitatSeed=null;this.habitatScenesKey='';this.terrainChunkCache.clear();this.terrainRefreshQueue.length=0;this.terrainRefreshQueued.clear();this.terrainRefreshFrame=0;this.terrainChunkWork=null;this.landformMaskCache.clear();this.habitatMaskCache.clear();this.landBaseTileCache.clear();this.waterBaseTileCache.clear();this.staticLandTileCache.clear()}
+  resetWorldCaches(){this.visibleWorldPages=[];this.visiblePlantTargets=new Map();this.plantTargetWorld=this.sim.world;this.partExpressions.reset();this.feeding?.reset();this.headAttention?.reset();this.turnState?.clear();this.vegLayerCache?.clear?.();this.staticGroundTileCache?.clear?.();this.waterToneCache?.clear?.();this.habitatField=null;this.habitatFieldDay=-1;this.pendingHabitatDay=null;this.pendingHabitatFrames=0;this.macroHabitatSeed=null;this.habitatScenesKey='';this.terrainChunkCache.clear();this.sensoryFogCache=null;this.terrainRefreshQueue.length=0;this.terrainRefreshQueued.clear();this.terrainRefreshFrame=0;this.terrainChunkWork=null;this.landformMaskCache.clear();this.habitatMaskCache.clear();this.landBaseTileCache.clear();this.waterBaseTileCache.clear();this.staticLandTileCache.clear()}
   resize(){const dpr=1,w=innerWidth,h=innerHeight; // Pixel-art canvas renders at CSS-pixel resolution; DOM UI stays device-sharp and high-DPI screens avoid 2-4x canvas fill cost.
 this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.canvas.style.width=w+'px';this.canvas.style.height=h+'px';this.ctx.setTransform(dpr,0,0,dpr,0,0);this.w=w;this.h=h;this.ctx.imageSmoothingEnabled=false}
   setPlayerPresentation(input,aheadSeconds=0){this.playerPresentation={input:input?{...input}:null,aheadSeconds:Math.max(0,Number(aheadSeconds)||0)}}
@@ -143,6 +144,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
      else{for(const a of visible)this.drawAnimal(a,tile);fs.creaturePrep=performance.now()-t0;fs.creatureCompose=0}}
     // Weather and interaction cues remain above creatures; ground decoration does not.
     if((!this.lowDetail||this.sim.visibilityRules===VISIBILITY.policy||this.sim.thermalRules===THERMAL_WEATHER.policy)&&!this.sim.player()?.underground)this.drawWeatherOverlay();
+    drawSensoryFog(this,{tile,cols,rows,startX,startY});
     this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId));this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.processTerrainRefreshQueue();}
 
 
