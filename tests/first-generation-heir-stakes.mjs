@@ -18,7 +18,7 @@ assert.ok(validatePlan(sprinter).ok,'demonstration uses a real validated mounted
 // Controlled offspring fixture represents a naturally reachable inherited mutation,
 // not a new editor privilege or a fabricated ability awarded by this feature.
 child.bodyPlan=sprinter;
-const before=sim.rng.state;
+
 const difference=inheritedMovementDifference(sim,parent,child);
 assert.ok(difference.gained.some(a=>a.id==='jump'),'G2 has both real spring legs and current jumping rules');
 assert.equal(difference.lost.length,0,'a single new verb does not invent a loss');
@@ -56,9 +56,10 @@ child.age=SPECIES.genvo.maturity+1;
 const controller=Object.create(TutorialController.prototype);
 controller.sim=sim;controller.renderer={guideTarget:null};controller.render=(title,body,opts={})=>{controller.shown={title,body,opts}};
 for(const name of ['renderPredatorAlert','renderStalkerDenWarning','renderTerritoryShift','renderSuccession','renderGenerationChallenge','renderIllness','renderFamilyIllness','renderExposure','renderFamilyWeather','renderStormAftermath','renderInjury','renderKnownWater','renderForagePatch','renderSpeciesGoal','renderLifestyleGoal'])controller[name]=()=>false;
+const beforeGuidance=sim.rng.state;
 controller.renderDynamicGoal(parent);
 assert.match(controller.shown.body,/living descendant/i,'first heir changes the early-game purpose');
 assert.match(controller.shown.body,/jump/i,'the actual new inherited verb matters before handoff');
 assert.match(controller.shown.body,/H compares living heirs/i,'player retains a voluntary handoff');
-assert.equal(sim.rng.state,before,'read-only on-screen guidance does not consume ecological RNG');
+assert.equal(sim.rng.state,beforeGuidance,'read-only on-screen guidance does not consume ecological RNG');
 console.log('First-generation heir: anatomical threshold, observed relative, inherited movement reveal and real guide PASS');
