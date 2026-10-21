@@ -2,6 +2,7 @@ import {restoreHabitatHazards} from '../ecology/habitat-hazards.js';
 import {restoreWildfire} from '../ecology/wildfire.js';
 import {restoreThunderstorms} from '../ecology/thunderstorms.js';
 import {restoreStratumSenseRules,adoptStratumSenseRules} from '../ecology/stratum-sense-rules.js';
+import {LOCAL_ASSORTMENT} from '../reproduction/mate-preferences.js';
 import {validateIceImmersion} from '../lineage/ice-locomotion.js';
 import {restoreSurfaceIceRules,validateIceWorld,adoptSurfaceIceRules} from '../world/surface-ice-rules.js';
 import {restoreThermalRefugeRules,adoptThermalRefugeRules} from '../ecology/thermal-refuge-rules.js';
@@ -348,6 +349,9 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   if(!Object.hasOwn(snapshot.core||{},'sensoryFogEnabled'))delete sim.sensoryFogEnabled;
   if(sim.sensoryFogEnabled!==undefined&&typeof sim.sensoryFogEnabled!=='boolean')throw Error('Invalid saved sensory fog policy.');
   restoreStratumSenseRules(sim,snapshot.core||{});
+  if(!Object.hasOwn(snapshot.core||{},'mateAssortmentRules'))delete sim.mateAssortmentRules;
+  else if(sim.mateAssortmentRules!==LOCAL_ASSORTMENT)throw Error('Unknown saved mate assortment policy.');
+  for(const session of sim.planetaryTravel?.sessions||[])if(session.snapshot.core.mateAssortmentRules!==sim.mateAssortmentRules)throw Error('Inconsistent regional mate assortment policy.');
   restoreCaveRules(sim,snapshot.core||{});
   restoreBurrowingRules(sim,snapshot.core||{});
   restoreClimbingRules(sim,snapshot.core||{});
