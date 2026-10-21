@@ -1,6 +1,6 @@
 import {CFG,PLANTS} from '../sim/config.js';
 import {groundDiet} from './functional-diet.js';
-import {creatureView,viewCanSee,atmosphereAt,visuallyObservable} from './atmospheric-visibility.js';
+import {creatureView,viewCanSee,atmosphereAt,visuallyObservable,undergroundLineOfSight} from './atmospheric-visibility.js';
 import {partEffectFactors} from '../lineage/part-abilities.js';
 
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -66,7 +66,7 @@ export function sensorySignals(sim,animal=sim.player?.(),maxSignals=3){
   const active=other.intent==='attack'||other.intent==='mate'||other.intent==='flee'||other.intent==='hunt'||other.intent==='escape';
   const audible=active?profile.hearing:profile.hearing*.55;
   if(d<audible)candidate.push({kind:'heard',angle:Math.atan2(dy,dx),score:(audible-d)/audible+(active?.4:0),uncertainty:active?.32:.55});
-  if(d<profile.scent){
+  if(d<profile.scent&&(!animal.underground||undergroundLineOfSight(w,animal.x,animal.y,other.x,other.y))){
    const wind=weather.wind||{},moved=(animal.x-other.x)*(wind.east||0)+(animal.y-other.y)*(wind.south||0);
    const scentRange=profile.scent*(moved<-.1?.55:1)*(1-clamp(weather.liquid||0,0,.7)*.35);
    if(d<scentRange)candidate.push({kind:'scent',angle:Math.atan2(dy,dx),score:(scentRange-d)/scentRange,uncertainty:.65});
@@ -74,7 +74,7 @@ export function sensorySignals(sim,animal=sim.player?.(),maxSignals=3){
  }
  // Plant odors originate from edible biomass, not synthetic quest markers.
  const diet=groundDiet(animal),edible=Object.keys(diet).filter(kind=>diet[kind]>0&&PLANTS[kind]&&w.plants?.[kind]);
- if(edible.length&&profile.scent>2){
+ if(!animal.underground&&edible.length&&profile.scent>2){
   const radius=Math.min(8,Math.ceil(profile.scent));
   let best=null;
   for(let y=Math.max(0,Math.floor(animal.y-radius));y<=Math.min(w.n-1,Math.ceil(animal.y+radius));y+=2)
@@ -90,6 +90,12 @@ export function sensorySignals(sim,animal=sim.player?.(),maxSignals=3){
  }
  candidate.sort((a,b)=>b.score-a.score);
  const seen=new Set();
- return candidate.filter(x=>{if(seen.has(x.kind))return false;seen.add(x.kind);return true}).slice(0,maxSignals);
+ return candidate.filter(x=>{if(seen.has(x.kind))return false;seen.add(x.kind);return true}).slice(0,maxSignals).map(x=>{
+  // Detecting an external cue never grants pixel-perfect localization.
+  // We report only a coarse bearing, with less directional certainty for
+  // diffuse scent than a clear nearby call. No hidden position is returned.
+  const sectors=x.kind==='heard'?12:8,step=2*Math.PI/sectors;
+  return{kind:x.kind,angle:Math.round(x.angle/step)*step,uncertainty:x.uncertainty};
+ });
 }
 export const sensoryMemoryCellSize=CELL;
