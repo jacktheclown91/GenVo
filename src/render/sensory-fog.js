@@ -23,6 +23,8 @@ export function drawSensoryFog(renderer,{tile,cols,rows,startX,startY}){
  const last=renderer.sensoryFogCache;
  const stale=!last||last.sim!==sim||last.world!==sim.world||last.id!==animal.id||
   last.w!==w||last.h!==h||last.tile!==tile||last.dir!==animal.dir||last.day!==sim.day||
+  last.underground!==!!animal.underground||last.subsurfaceRevision!==(sim.world.subsurface?.revision||0)||
+  last.depthBucket!==Math.floor((animal.diveDepth||0)*4)||
   now-last.time>240||Math.hypot(last.x-animal.x,last.y-animal.y)>.35||
   Math.hypot(last.cameraX-renderer.camera.x,last.cameraY-renderer.camera.y)>2;
  if(stale){
@@ -52,7 +54,9 @@ export function drawSensoryFog(renderer,{tile,cols,rows,startX,startY}){
    }
   }
   renderer.sensoryFogCache={sim,world:sim.world,id:animal.id,canvas,w,h,tile,pad,dir:animal.dir,day:sim.day,time:now,
-   x:animal.x,y:animal.y,cameraX:renderer.camera.x,cameraY:renderer.camera.y,signals:sensorySignals(sim,animal)};
+   x:animal.x,y:animal.y,cameraX:renderer.camera.x,cameraY:renderer.camera.y,
+   underground:!!animal.underground,subsurfaceRevision:sim.world.subsurface?.revision||0,
+   depthBucket:Math.floor((animal.diveDepth||0)*4),signals:sensorySignals(sim,animal)};
  }
  const cache=renderer.sensoryFogCache,c=renderer.ctx;
  const dx=Math.round((cache.cameraX-renderer.camera.x)*tile)-cache.pad;
