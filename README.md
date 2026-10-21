@@ -5,6 +5,7 @@ GenVo is a Living Planet survival game and open-ended evolutionary possibility e
 ## Start here
 
 - [Current design](design/CURRENT-DESIGN.md): governing intent and constraints.
+- [UI readability rules](design/UI-READABILITY.md): player visibility, compact information, unobstructed notifications and responsive mouse-first layouts.
 - [Current implementation](docs/CURRENT-IMPLEMENTATION.md): integrated source, evidence and unfinished work.
 - [Implementation authorities](design/governance/implementation-authorities.json): ownership of shared mechanisms.
 - [Architecture guide](docs/ARCHITECTURE.md): entry points, simulation phases, module placement, persistence and regression checks.

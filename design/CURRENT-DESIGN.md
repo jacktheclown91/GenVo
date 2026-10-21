@@ -29,6 +29,10 @@ Anatomical complexity must remain legible in gameplay. Flight changes movement, 
 
 The action bar shows possessed biological capabilities and hides absent ones. Temporarily unavailable abilities remain visible with an explanation from the shared execution authority. Common survival commands remain accessible, specialized actions compact automatically, and anatomy, inheritance, load and control changes refresh the presentation without UI-specific biological rules.
 
+## Gameplay visibility and interface
+
+The player character must remain clearly visible during normal play. Essential information stays compact; detailed panels open only when requested. Temporary notifications must avoid the character and important action. Context menus reposition intelligently to preserve gameplay visibility and accessible controls. Review layouts at multiple resolutions and smaller browser windows. Preserve the approachable mouse-first interface, with developer statistics confined to explicitly requested tools. These are governing requirements; use the [UI readability rules and acceptance checks](UI-READABILITY.md) for layout work.
+
 ## First 100 Days milestone
 
 Demonstrate functioning mechanisms and a readable, engaging early-life experience, with causal observations around days 1, 10, 30, 60 and 100. Use a normally initialized young world and a separate established-world fixture with genuine ancestry. Do not demand a biodiversity, population, advanced-organ or survival quota within 100 days. Targeted ancestry experiments can establish accessibility without waiting for rare traits in every ordinary run.
