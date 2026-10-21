@@ -1,4 +1,5 @@
 import {captureSeamReadset,seamReadsetUnchanged} from './planetary-seam-readset.js';
+import {POPULATION_MODE} from './regional-replay-order.js';
 import {markRegionalOwnerDirty} from './regional-revision.js';
 import {syncCaveAir} from './cave-air.js';
 import {SURFACE_ICE,iceAmount,liquidVolume,validateSurfaceIce} from './surface-ice.js';
@@ -277,6 +278,9 @@ export function* planetarySeamTransaction(sim){
   throw Error('Planetary seam ledger is ahead of the biological clock.');
  const regions=[ownedActive(sim)];
  for(const session of travel.sessions){
+  // Under regional-demography/1, far population-model regions face their
+  // boundary reservoirs; only canonical neighbors exchange across seams.
+  if(session.biologicalMode===POPULATION_MODE&&sim.regionalDemographyRules)continue;
   if(session.biologicalMode!=='canonical-ticks/1'||remoteBiologicalDebt(sim,session)!==0)return[];
   const region=regionOf(sim,session);if(!region)return[];
   regions.push(region);

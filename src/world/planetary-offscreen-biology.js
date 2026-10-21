@@ -5,8 +5,8 @@
 // life stride and return trips refuse excessive time debt.
 import {CFG} from '../sim/config.js';
 import {markRegionalOwnerDirty} from './regional-revision.js';
-import {REGIONAL_REPLAY,regionalBiologyOrder} from './regional-replay-order.js';
-export {REGIONAL_REPLAY} from './regional-replay-order.js';
+import {REGIONAL_REPLAY,regionalBiologyOrder,POPULATION_MODE} from './regional-replay-order.js';
+export {REGIONAL_REPLAY,POPULATION_MODE} from './regional-replay-order.js';
 import {createSimulationSnapshot,restoreDetachedSimulationSnapshot} from '../persistence/save-manager.js';
 import {OFFSCREEN_ENVIRONMENT,validateRemoteEnvironmentalLedger} from './planetary-offscreen-environment.js';
 import {validatePlanetAnimalOwnership} from './planet-regions.js';
@@ -61,7 +61,7 @@ function recordPhysicalDay(ledger,sim,day){
  ledger.soilMaxAbsClosure=Math.max(ledger.soilMaxAbsClosure,Math.abs(soil.closure));
  ledger.saltMaxAbsClosure=Math.max(ledger.saltMaxAbsClosure,Math.abs(salt.closure));
 }
-function highId(sim){
+export function highId(sim){
  let highest=sim.nextId-1;
  for(const a of sim.animals)highest=Math.max(highest,a.id);
  for(const session of sim.planetaryTravel?.sessions||[]){
@@ -77,7 +77,10 @@ export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OF
  if(!Number.isSafeInteger(reservedNextId)||reservedNextId<1)throw Error('Invalid reserved regional identity watermark.');
  if(!safe(maxTicks)||maxTicks>OFFSCREEN_BIOLOGY.maxEntryTicks)
   throw Error('Unbounded remote biological work.');
- if(session?.biologicalMode!=='canonical-ticks/1')throw Error('Archived region has no biological replay authority.');
+ // Distant regions under regional-demography/1 run the same kernel and
+ // ledgers; only per-individual behavior is replaced by the population model.
+ const populationModel=session?.biologicalMode===POPULATION_MODE;
+ if(session?.biologicalMode!=='canonical-ticks/1'&&!populationModel)throw Error('Archived region has no biological replay authority.');
  const debt=remoteBiologicalDebt(active,session),steps=Math.min(debt,maxTicks);
  if(!steps)return{candidate:null,nextId:reservedNextId,result:{ticks:0,remaining:debt,key:session.key}};
  validateRemoteBiologyLedger(session);
@@ -100,7 +103,7 @@ export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OF
  const atBirths=temp.stats.births||0,atDeaths=temp.stats.deaths||0;
  for(let tick=0;tick<steps;tick++){
   const beforeDay=temp.day;
-  temp.update(null,{externalPlayerControl:true});
+  temp.update(null,{externalPlayerControl:true,populationModel});
   if(temp.day!==beforeDay){
    if(temp.day!==beforeDay+1)throw Error('Remote calendar advanced without a real ecological day.');
    recordPhysicalDay(physical,temp,beforeDay);

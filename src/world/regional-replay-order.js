@@ -1,5 +1,7 @@
 import {CFG} from '../sim/config.js';
 export const REGIONAL_REPLAY=Object.freeze({legacy:'bounded-strides/1',synchronized:'synchronized-strides/1'});
+// Far visited regions under regional-demography/1 (see planetary-demography.js).
+export const POPULATION_MODE='regional-demography/1';
 // Shared ordering for resident replay and the persisted directory. Inputs are
 // clock/identity descriptors only; no biology or time is advanced here.
 export function regionalBiologyOrder(tick,regions,policy){

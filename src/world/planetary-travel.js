@@ -1,5 +1,7 @@
 import {SURFACE_ICE,initializeSurfaceIce} from './surface-ice.js';
+import {POPULATION_MODE} from './regional-replay-order.js';
 import {REGIONAL_FOUNDING,foundRegionalPopulations} from '../ecology/regional-founding.js';
+import {assignRegionalBiologyModes} from './planetary-demography.js';
 // E15: explicit, gated, on-foot planetary frontier traversal.
 // Departing populations and their controller states are checkpointed as a
 // non-active region. The SAME traveling animal ID/body/genotype moves into
@@ -93,9 +95,10 @@ export function planetaryTravelAvailability(sim){
  }catch{return unavailable('The current planetary projection ends here. This build has not yet implemented continent-scale projection paging or pole traversal.');}
  const point=approach(sim,closest,animal);
  const sessions=stored(sim),found=sessions.sessions.find(s=>s.key===regionKey(nextOrigin));
- if(found&&found.biologicalMode==='canonical-ticks/1'&&remoteBiologicalDebt(sim,found)>OFFSCREEN_BIOLOGY.maxEntryTicks)
+ const biological=found&&(found.biologicalMode==='canonical-ticks/1'||found.biologicalMode===POPULATION_MODE);
+ if(biological&&remoteBiologicalDebt(sim,found)>OFFSCREEN_BIOLOGY.maxEntryTicks)
   return unavailable('Remote biology has more than '+OFFSCREEN_BIOLOGY.maxEntryTicks+' ticks to reconcile. Continue the current world for living ecology catchup.');
- if(found&&found.biologicalMode!=='canonical-ticks/1'&&remoteEnvironmentDue(sim,found)>OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays)
+ if(found&&!biological&&remoteEnvironmentDue(sim,found)>OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays)
   return unavailable('This region has more than '+OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays+' days of physical weather to reconcile. Continue the current world to advance its environmental archive.');
  if(!found&&sessions.sessions.length>=LIMIT)return unavailable('Regional archive full. Return to an explored region.');
  const archivedWorld=found?.snapshot?.world;
@@ -165,7 +168,7 @@ export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
  // replay assigns a NEW snapshot and ledger only after successful validation.
  const archivedDestination=oldDestination?{...oldDestination}:null;
  if(archivedDestination){
-  if(archivedDestination.biologicalMode==='canonical-ticks/1')advanceRemoteBiology(sim,archivedDestination,{maxTicks:OFFSCREEN_BIOLOGY.maxEntryTicks});
+  if(archivedDestination.biologicalMode==='canonical-ticks/1'||archivedDestination.biologicalMode===POPULATION_MODE)advanceRemoteBiology(sim,archivedDestination,{maxTicks:OFFSCREEN_BIOLOGY.maxEntryTicks});
   else advanceRemoteEnvironment(sim,archivedDestination,{maxDays:OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays});
  }
  const nextId=Math.max(prior.nextId,sim.nextId);
@@ -231,7 +234,7 @@ export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
  sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,memberIds),...(sim.offscreenBiologyEnabled?{biologicalMode:'canonical-ticks/1'}:{})});
  dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions,
   ...(prior.seamLedger?{seamLedger:structuredClone(prior.seamLedger)}:{})};
- for(const key of ['habitatHazardRules','fireRules','thunderRules','stratumSenseRules','stratumSenseRuleMigrations','vibrationRules','mateAssortmentRules','sensoryFogEnabled','surfaceIceRules','surfaceIceRuleMigrations','thermalRefugeRules','thermalRefugeRuleMigrations','thermalRules','thermalPattern','thermalRuleMigrations','visibilityRules','visibilityRuleMigrations','caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions','regionalFoundingRules']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
+ for(const key of ['habitatHazardRules','fireRules','thunderRules','stratumSenseRules','stratumSenseRuleMigrations','vibrationRules','mateAssortmentRules','sensoryFogEnabled','surfaceIceRules','surfaceIceRuleMigrations','thermalRefugeRules','thermalRefugeRuleMigrations','thermalRules','thermalPattern','thermalRuleMigrations','visibilityRules','visibilityRuleMigrations','caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions','regionalFoundingRules','regionalDemographyRules']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
  if(!dest.habitatHazardRules)delete dest.habitatHazards;
  if(!dest.fireRules)delete dest.wildfire;
  if(!dest.thunderRules)delete dest.thunderstorms;
@@ -241,6 +244,8 @@ export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
  if(Object.hasOwn(sim,'regionalReplayPolicy'))dest.regionalReplayPolicy=sim.regionalReplayPolicy;else delete dest.regionalReplayPolicy;
  // Keep the archived source and newly active destination from each importing
  // the other's known water as a second external geographic reservoir.
+ // Full individual simulation near the new position; population model beyond.
+ assignRegionalBiologyModes(dest);
  syncPlanetaryBoundaryOwnership(dest);
  dest.lastPlayerAction={type:'planet-travel',actorId:traveler.id,members:memberIds,from:sourceKey,to:destinationKey,tick:dest.tickCount};
  return{ok:true,type:'planet-travel',message:'Crossed '+status.direction+' into planetary region '+destinationKey+(memberIds.length>1?' with '+(memberIds.length-1)+' family members.':'.')+' Regional wildlife and resources are retained.',simulation:dest,from:sourceKey,to:destinationKey,id:traveler.id,members:memberIds};

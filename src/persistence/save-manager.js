@@ -62,6 +62,7 @@ import {COAT_MOISTURE,validateCoatMoisture} from '../lineage/coat-moisture.js';
 import {SEASONAL_COAT,validateSeasonalCoat} from '../lineage/seasonal-coat.js';
 import {EMBRYO_CLIMATE,validateEmbryoClimate} from '../reproduction/embryo-climate.js';
 import {validateRegionalFounding} from '../ecology/regional-founding.js';
+import {validateRegionalDemographyRules} from '../world/planetary-demography.js';
 
 // Schema 9 (v1.39.0): the new creature bodies. Creator decision 2026-10-09: start fresh, so older
 // saves before schema 9 are not carried over.
@@ -384,6 +385,8 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   validateResidentStart(sim);
   validateAuthoredIntroductions(sim);
   if(!Object.hasOwn(snapshot.core||{},'regionalFoundingRules'))delete sim.regionalFoundingRules;
+  if(!Object.hasOwn(snapshot.core||{},'regionalDemographyRules'))delete sim.regionalDemographyRules;
+  validateRegionalDemographyRules(sim);
   sim.seed=snapshot.seed;
   sim.rng.state=snapshot.rngState>>>0;
   restoreBirthRules(sim,snapshot.core||{});
