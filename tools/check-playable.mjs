@@ -21,6 +21,7 @@ const runtime=[
   'tests/first-generation-heir-stakes.mjs',
   'tests/physical-starter-presets.mjs',
   'tests/planetary-walkthrough.mjs',
+  'tests/planetary-preparation.mjs',
   'tests/stratum-senses.mjs',
   'tests/surface-ice.mjs',
   'tests/surface-ice-coupling.mjs',

@@ -19,6 +19,13 @@ import {syncPlanetaryBoundaryOwnership} from './planetary-seam-salt.js';
 
 const LIMIT=16,BOUNDARY=3.75,SIZE=128;
 const GLOBAL_AUTHORITIES=['lineage','evolution','evolutionTree','evolutionBudget','evolutionEditor','generationProgress'];
+export function planetaryPreparationKey(sim,origin){return JSON.stringify([sim.seed,regionKey(origin),sim.massRules,sim.caveRules??null,sim.surfaceIceRules??null,sim.mateAssortmentRules??null]);}
+export function preparePlanetaryDestination(sim,origin){
+ const planet=sim.world.planet;if(!planet)throw Error('Planetary preparation requires a planetary source.');
+ for(const x of [origin.x-1,origin.x+SIZE+1])for(const y of [origin.y-1,origin.y+SIZE+1])planet.localToGeo(x,y);
+ const destination=new Simulation(sim.seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:origin,massRules:sim.massRules,localAssortment:sim.mateAssortmentRules!==undefined,naturalCaves:!!sim.caveRules,surfaceIce:sim.surfaceIceRules===SURFACE_ICE.policy});
+ Object.defineProperty(destination,'preparedPlanetaryKey',{value:planetaryPreparationKey(sim,origin)});return destination;
+}
 const dirs=[
  {name:'west',distance:a=>a.x-1.5,coordinate:a=>a.y},
  {name:'east',distance:a=>SIZE-1.5-a.x,coordinate:a=>a.y},
@@ -90,7 +97,8 @@ export function planetaryTravelAvailability(sim){
  if(found&&found.biologicalMode!=='canonical-ticks/1'&&remoteEnvironmentDue(sim,found)>OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays)
   return unavailable('This region has more than '+OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays+' days of physical weather to reconcile. Continue the current world to advance its environmental archive.');
  if(!found&&sessions.sessions.length>=LIMIT)return unavailable('Regional archive full. Return to an explored region.');
- const surveyed=sim.planetaryRegions.get(nextOrigin,{create:false});
+ const archivedWorld=found?.snapshot?.world;
+ const surveyed=archivedWorld?{regionOrigin:nextOrigin,n:SIZE,idx:(x,y)=>sim.world.idx(x,y),isPlayable:(x,y)=>sim.world.isPlayable(x,y),water:archivedWorld.surfaceWater.mask}:sim.planetaryRegions.get(nextOrigin,{create:false});
  const dest=surveyed||{
   regionOrigin:nextOrigin,
   n:SIZE,
@@ -144,12 +152,13 @@ function transferGlobals(from,to){
   controller.sim=to;
  }
 }
-export function crossPlanetaryBorder(sim){
+export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
  const status=planetaryTravelAvailability(sim);
  if(!status.enabled)return{ok:false,type:'planet-travel',message:status.reason};
  const traveler=sim.player(),memberIds=status.members,cohort=memberIds.map(id=>sim.animals.find(a=>a.id===id)),sourceKey=regionKey(sim.world.regionOrigin),destinationKey=regionKey(status.to),prior=stored(sim);
  const sessions=prior.sessions.filter(s=>s.key!==destinationKey&&s.key!==sourceKey).map(s=>({...s}));
  const oldDestination=prior.sessions.find(s=>s.key===destinationKey);
+ if(preparedDestination&&(oldDestination||preparedDestination.preparedPlanetaryKey!==planetaryPreparationKey(sim,status.to)||preparedDestination.tickCount!==0||preparedDestination.animals.length||preparedDestination.playerEnabled||preparedDestination.nextId!==1||regionKey(preparedDestination.world.regionOrigin)!==destinationKey))throw Error('Invalid or already owned prepared destination.');
  // Archived snapshots are immutable input until their replacement is
  // atomically published. A shallow session shell is enough for catchup:
  // replay assigns a NEW snapshot and ledger only after successful validation.
@@ -160,8 +169,7 @@ export function crossPlanetaryBorder(sim){
  }
  const nextId=Math.max(prior.nextId,sim.nextId);
  // Construct destination and all receipts before modifying the active sim.
- const dest=archivedDestination?restoreDetachedSimulationSnapshot(archivedDestination.snapshot):
-  new Simulation(sim.seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:status.to,massRules:sim.massRules,naturalCaves:!!sim.caveRules,surfaceIce:sim.surfaceIceRules===SURFACE_ICE.policy});
+ const dest=archivedDestination?restoreDetachedSimulationSnapshot(archivedDestination.snapshot):preparedDestination||preparePlanetaryDestination(sim,status.to);
  // Local seed-wind rules are a planetary-world policy. A newly entered
  // region follows the originating world's version; an old missing-policy
  // save must not silently adopt wind merely because its destination is new.
@@ -211,8 +219,9 @@ export function crossPlanetaryBorder(sim){
  // Keep all pre-surveyed Worlds in the same atlas and replace the activated
  // region with its exact saved World rather than a re-generated approximation.
  const atlas=new PlanetRegionAtlas(dest.world,origin=>new World(sim.seed,{generator:'planetary/1',planetOrigin:origin}));
+ const archivedKeys=new Set([...sessions.map(s=>s.key),sourceKey]);
  for(const {world} of sim.planetaryRegions.entries()){
-  if(regionKey(world.regionOrigin)===destinationKey)continue;
+  if(regionKey(world.regionOrigin)===destinationKey||archivedKeys.has(regionKey(world.regionOrigin)))continue;
   atlas.install(world);
  }
  dest.planetaryRegions=atlas;

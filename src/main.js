@@ -1,3 +1,4 @@
+import {PlanetaryPreparation} from './world/planetary-preparation.js';
 import {prepareRegionalBiology} from './world/planetary-offscreen-biology.js';
 import {ecologyRuleMigrationMessage} from './ecology/rule-policy.js';
 import {birthRuleMigrationMessage} from './lineage/birth-rules.js';
@@ -242,17 +243,28 @@ function toggleFamilyPassage(){
   tutorial.showToast(sim.travelFamilyGroup?'Family passage on. Gather relatives and dependents close to the border.':'Family passage off. Cross alone if no young depend on you.',2600,'safe');
   audio.note('confirm');
 }
-function travelPlanetaryRegion({automatic=false}={}){
-  if(tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||succession.open)return;
+let planetaryTravelPending=false;
+async function travelPlanetaryRegion({automatic=false}={}){
+  if(planetaryTravelPending||tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||succession.open)return;
+  planetaryTravelPending=true;
   try{
-    const result=crossPlanetaryBorder(sim);
+    const source=sim,status=planetaryTravelAvailability(source);if(!status.enabled){tutorial.showToast(status.reason,2600,'warn');return}
+    let preparedDestination=null;
+    if(!source.planetaryTravel?.sessions?.some(s=>s.key===status.to.x+','+status.to.y)&&!source.planetaryRegions.get(status.to,{create:false})){
+      const ready=await planetaryPreparation.request(source,status.to);
+      if(sim!==source||source.paused||frontEnd.isOpen||editor.open||succession.open)return;
+      if(automatic&&planetaryWalkIntent(source,{up:keys.KeyW||keys.ArrowUp,down:keys.KeyS||keys.ArrowDown,left:keys.KeyA||keys.ArrowLeft,right:keys.KeyD||keys.ArrowRight})!==status.direction)return;
+      if(!ready)throw Error('Neighbor preparation could not finish.');preparedDestination=planetaryPreparation.take(source,status.to);
+      if(!preparedDestination)return;
+    }
+    const result=crossPlanetaryBorder(sim,{preparedDestination});
     if(!result.ok){tutorial.showToast(result.message,2600,'warn');audio.note('deny');return}
     installSimulation(result.simulation,{resume:true,keepMovement:automatic});closeDetailPanels();if(!automatic)clearMovementKeys();
     tutorial.showToast(result.message,3500,'success');audio.note('confirm');
-  }catch(error){console.error('Regional crossing failed:',error);tutorial.showToast('Regional passage could not be completed. Current world remains active.',3500,'warn');audio.note('deny')}
+  }catch(error){console.error('Regional crossing failed:',error);tutorial.showToast('Regional passage could not be completed. Current world remains active.',3500,'warn');audio.note('deny')}finally{planetaryTravelPending=false}
 }
 function installSimulation(next,{fresh=false,resume=false,keepMovement=false}={}){
-  seed=next.seed;sim=next;renderer.sim=sim;observer.reset();succession.close();editor.close();syncSpeedButton();frameStepper.reset();last=performance.now();hudTimer=0;if(!keepMovement)clearMovementKeys();
+  planetaryPreparation.clear();seed=next.seed;sim=next;renderer.sim=sim;observer.reset();succession.close();editor.close();syncSpeedButton();frameStepper.reset();last=performance.now();hudTimer=0;if(!keepMovement)clearMovementKeys();
   manualPause=resume?!!sim.paused:false;if(!resume)sim.paused=false;if(pauseNotice)pauseNotice.hidden=!manualPause;
   leadershipWheel.resetDiscovery();tutorial.setSimulation(sim,{fresh,resume});effectFeedback.setSimulation(sim);journal.setSimulation(sim);audio.setSimulation(sim);
   mateOpen=false;mindOpen=false;territoryOpen=false;shelterOpen=false;migrationOpen=false;ecologyOpen=false;helpOpen=false;guideOpen=false;leadershipWheel.setCommandMode(false);saveManager.resetObservation(sim);renderer.beginScenePreparation();
@@ -351,6 +363,7 @@ addEventListener('keyup',e=>{if(MOVE_CODES.has(e.code)){keys[e.code]=false;if(!a
 addEventListener('blur',clearMovementKeys);
 
 function input(){const manual={up:keys.KeyW||keys.ArrowUp,down:keys.KeyS||keys.ArrowDown,left:keys.KeyA||keys.ArrowLeft,right:keys.KeyD||keys.ArrowRight,sprint:keys.ShiftLeft||keys.ShiftRight,brace:braceInput.read()||!!keys.KeyJ};return pointerApproach?pointerApproach.read(manual):manual}
+const planetaryPreparation=new PlanetaryPreparation();
 const frameStepper=new FrameStepper({controlHz:CFG.controlHz,simHz:CFG.simHz});
 const planetLocation=document.querySelector('#planetLocation');
 let last=performance.now(),hudTimer=0,lastFrontierWarning=-Infinity;
@@ -359,6 +372,7 @@ function frame(now){
   const dt=Math.max(0,Math.min(.1,(now-last)/1000));last=now;const controls=input();
   const processing=frameStepper.advance(dt,observer.speed,hz=>sim.playerControlStep(controls,hz),()=>sim.update(controls,{externalPlayerControl:true}),{paused:sim.paused||!renderer.sceneShown,beforeStep:()=>!prepareRegionalBiology(sim)});
   setProcessingLoad(sim,processing);
+  if(!frontEnd.isOpen&&!sim.paused)planetaryPreparation.observe(sim);
   // Walking farther keeps expanding the SAME procedurally generated planet.
   // A real region swap still uses canonical family, physics and save authorities.
   const outward=planetaryWalkIntent(sim,{up:keys.KeyW||keys.ArrowUp,down:keys.KeyS||keys.ArrowDown,left:keys.KeyA||keys.ArrowLeft,right:keys.KeyD||keys.ArrowRight});
@@ -422,4 +436,4 @@ const contextTray=new CreatureContextTray({canvas,renderer,braceInput,getSim:()=
 setInteractPromptSource(()=>{try{const c=contextTray.directChoice?.();return c?.enabled?c.label:null}catch{return null}});
 journal.onRevisit=id=>{const o=sim.discovery.seedObservations?.find(o=>o.id===id);if(!o)return;journal.setOpen(false);const target=sim.discovery.seedPatchTarget(o);if(!contextTray.selectResource(target))return;const choice=contextTray.directChoice();if(choice?.enabled)contextTray.interact();else tutorial.showToast(choice?.reason||'This body cannot revisit the patch.',1800,'warn')};
 
-window.__GENVO8__={frameStepper,get pointerApproach(){return pointerApproach},nativeArtStatus,courtshipTray,braceInput,contextTray,combatActions:()=>combatActions(sim),get sim(){return sim},CFG,setForm,formReading,tutorial,renderer,journal,audio,leadershipWheel,saveManager,loadSavedLineage,observer,editor,fieldGuide};
+window.__GENVO8__={frameStepper,planetaryPreparation,get pointerApproach(){return pointerApproach},nativeArtStatus,courtshipTray,braceInput,contextTray,combatActions:()=>combatActions(sim),get sim(){return sim},CFG,setForm,formReading,tutorial,renderer,journal,audio,leadershipWheel,saveManager,loadSavedLineage,observer,editor,fieldGuide};

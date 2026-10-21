@@ -3,6 +3,11 @@
   "principle": "One live authority for each mechanism. Multiple states, species, art drafts and measured outcomes are permitted; competing runtime definitions are not.",
   "gameEntrypoint": "src/main.js",
   "systems": {
+    "nearbyPlanetaryPreparation": {
+      "authority": "src/world/planetary-preparation.js",
+      "consumers": ["src/main.js", "src/world/planetary-travel.js"],
+      "contract": "docs/PLANETARY-PREPARATION-2026-10-21.md"
+    },
     "indexedRegionalPersistence": {
       "authority": "src/persistence/regional-records.js",
       "consumers": ["src/persistence/save-manager.js"],

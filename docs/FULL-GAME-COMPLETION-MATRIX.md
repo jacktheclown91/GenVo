@@ -17,6 +17,8 @@ Implement independently indexed regional persistence with atomic commit/recovery
 
 Indexed storage dependency is now integrated: `src/persistence/regional-records.js` and SaveManager write lightweight roots plus separate active/archive/survey records atomically, with one-region reads, rollback/retry, legacy upgrade and cleanup. Full loads still hydrate all regions and the live Atlas limits remain. Next connect selective reads to residency/eviction and neighbor preload; see `INDEXED-REGIONAL-STORAGE-2026-10-21.md`.
 
+Nearby preparation is now integrated: `src/world/planetary-preparation.js` bounds never-stepped canonical destination scaffolds, preloads them before frontier arrival and promotes one at crossing. Travel drops redundant Atlas Worlds only when complete biological snapshots already own the region. The snapshots themselves remain resident for synchronized biology and paired water; out-of-core scheduling and continuous visual/navigation seams are still required. See `PLANETARY-PREPARATION-2026-10-21.md`.
+
 ## Living Planet
 
 | Requirement | Actual state | Source and precise remaining work/dependency |

@@ -1,0 +1,25 @@
+# Bounded planetary destination preparation
+
+The browser now prepares real nearby destinations before crossing, using the same canonical Simulation constructor and destination factory as ordinary travel. It does not create a preview biome, replacement engine or extra living population. Prepared destinations have zero ticks and no animals. Fauna enters once, through the existing regional-fauna seed and normal `spawnInitial` call at successful first entry. Existing resources, geology, cave/ice policies and anatomy remain authoritative.
+
+`src/world/planetary-preparation.js` owns at most four never-stepped destination scaffolds. Within 24 local cells of a frontier, it queues the two nearest candidates, deduplicates requests and admits one generation job per idle callback. Queue cancellation drops source-Simulation references; replacing a world clears pending and unused scaffolds. This bound applies to preparation work, not births, biodiversity or explored history. Generation is still an atomic main-thread job; idle admission is not a worker or proof of stall-free rendering.
+
+Browser travel awaits a prepared destination, then rechecks the active source, input direction and all canonical crossing rules. Turning inland, pausing or switching worlds while preparation is pending cannot trigger an unwanted automatic crossing. A prepared destination must match seed, absolute region, mass/geology/ice and founder mate policy, remain unstepped and have no population. It is promoted once as the actual destination Simulation; it is not generated again. Archived regions always use their complete canonical snapshot instead. Historical absent mate-assortment policy now also governs newly seeded regional founders before their generation, rather than stripping the flag only after generating modern preferences.
+
+## Redundant World residency
+
+Successful travel no longer carries an additional Atlas World for each region already owned by a complete biological archive. The archive retains its real wildlife, controllers, resources, inheritance, clocks and conservation ledgers. A separate non-visited surveyed World is retained because it has no equivalent archive owner. Frontier checks for returning regions read the actual archived water mask, rather than a stale Atlas World or pristine geography approximation.
+
+This releases redundant Atlas references; it does not page biological archive payloads out of RAM or establish a measured heap reduction. The current synchronized scheduler and paired daily water transactions still consume all visited archive snapshots. Removing those payloads without a coordinated scheduler/seam policy would break ecology or conservation, so this pass does not pretend to do that.
+
+## Verification
+
+`tests/planetary-preparation.mjs` verifies bounded/deduplicated admission, cancellation, no source stock/clock/RNG change, one-time promotion, complete exact prepared-versus-ordinary crossing, actual inactive population ownership after dropping duplicate Worlds, retained unvisited survey identity, exact saves, invalid destination rejection and historical founder mate policy. Existing E14/E15 geography/travel, regional storms, indexed records, mate-choice and save checks pass. The focused playable gate passes 57 checks. Source/public-export audits remain required publication checks.
+
+`tools/verify-planetary-preparation-browser.mjs` uses exported Chromium, native guided-jumper creation, real held-D crossing and native Save/Continue. The observer is explicitly placed on actual accessible ground 16 cells before the frontier, waits for a ready destination, then is staged at the actual crossing. The receipt records readiness before crossing, exactly one cached consumption, one Atlas World and 197 actual archived organisms. Inspected frames and receipt are external session evidence under `planetary-preparation-browser/`. This is controlled integration, not a natural journey, human test, frame-time improvement or seamless visual acceptance.
+
+A separately run `tests/planetary-water-seam-ownership.mjs` fails at its boundary-water-input expectation (line 65). It constructs Worlds and calls water authorities directly, without exercising the changed travel/preparation code; that test and its physical authorities are unchanged in this pass. This result is reported separately, not hidden by weakening assertions or calling the broad water suite green. The previously documented missing-terrain topography failure remains open too.
+
+## Remaining architectural work
+
+Indexed payload paging must next be connected to a versioned distant-work scheduler and physically consistent paired seam transactions; duplicate World eviction alone does not satisfy it. The 16 inactive archives, finite projection, whole-Simulation scene replacement, atomic generation/replay stalls, invisible neighboring terrain and missing continuous mouse/group navigation remain. Dirty-only storage, distant canonical work, renderer/camera seams and geographically correct large-planet traversal still require implementation. No technical limit was raised, no distant ecology removed and no full planetary completion is claimed.
