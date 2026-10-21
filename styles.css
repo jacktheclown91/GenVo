@@ -10,6 +10,7 @@
 
 /* Normal play: information floats over the world instead of living in cards. */
 #hud{position:absolute;left:10px;top:9px;width:292px;padding:10px 19px 12px 10px;background:rgba(4,10,6,.62);clip-path:polygon(0 0,100% 0,96% 100%,0 100%);pointer-events:none;filter:drop-shadow(3px 4px 0 rgba(0,0,0,.52));text-shadow:1px 2px 0 rgba(0,0,0,.86)}
+#planetLocation{margin:8px 0 0 22px;color:#a9cdb9;font:11px/1.35 Verdana,Arial,sans-serif;letter-spacing:.1px;opacity:.82;max-width:260px}
 #clock{display:flex;align-items:baseline;gap:8px;margin:0 0 9px 1px;color:#d5dccb;font-size:13px;letter-spacing:.2px}
 #clock strong{font-size:15px;color:#f0e6ba}#clock span{color:#aeb8a6}#clock em{font-style:normal;color:var(--gold);font-weight:700}
 .lineage-head{display:grid;grid-template-columns:37px 1fr auto;align-items:center;gap:8px;margin-bottom:6px}

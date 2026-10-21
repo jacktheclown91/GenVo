@@ -74,7 +74,16 @@ export function planetaryTravelAvailability(sim){
  if(sim.playerCombat?.attackActive?.(animal)||animal.pursuitEngaged)return unavailable('Leave combat before crossing.');
  if(animal.energy<1||animal.hydration<1)return unavailable('Too exhausted or dehydrated for a regional journey.');
  if(closest.distance(animal)>BOUNDARY)return unavailable('Approach the edge of the planetary map to continue walking.');
- const nextOrigin=neighboringRegion(sim.world.regionOrigin,closest.name),point=approach(sim,closest,animal);
+ let nextOrigin;
+ try{
+  nextOrigin=neighboringRegion(sim.world.regionOrigin,closest.name);
+  // The current globe projection is finite. Reject an impossible far frontier
+  // *before* its lazy World constructor or 128-cell seam sampler can throw.
+  const planet=sim.world.planet;
+  for(const x of [nextOrigin.x-1,nextOrigin.x+SIZE+1])
+   for(const y of [nextOrigin.y-1,nextOrigin.y+SIZE+1])planet.localToGeo(x,y);
+ }catch{return unavailable('The current planetary projection ends here. This build has not yet implemented continent-scale projection paging or pole traversal.');}
+ const point=approach(sim,closest,animal);
  const sessions=stored(sim),found=sessions.sessions.find(s=>s.key===regionKey(nextOrigin));
  if(found&&found.biologicalMode==='canonical-ticks/1'&&remoteBiologicalDebt(sim,found)>OFFSCREEN_BIOLOGY.maxEntryTicks)
   return unavailable('Remote biology has more than '+OFFSCREEN_BIOLOGY.maxEntryTicks+' ticks to reconcile. Continue the current world for living ecology catchup.');
