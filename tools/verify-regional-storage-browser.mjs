@@ -19,7 +19,18 @@ try{
  const storage=await page.evaluate(async()=>{
   const g=window.__GENVO8__,m=g.saveManager,s=g.sim,{readRegionalCheckpoint,commitRegionalCheckpoint,REGION_STORE}=await import('/src/persistence/regional-records.js'),db=await m.db(),slot=m.activeSlotId;
   if(m.pendingTimer)clearTimeout(m.pendingTimer);if(m.idleHandle){globalThis.cancelIdleCallback?.(m.idleHandle);clearTimeout(m.idleHandle)}m.pendingReason=null;
-  const encode=v=>JSON.stringify(v,(_,x)=>x instanceof Map?{map:[...x]}:ArrayBuffer.isView(x)?{type:x.constructor.name,values:[...x]}:x instanceof Set?{set:[...x]}:x);
+  // Canonical snapshots support cyclic animal targets through structured clone.
+  // Compare every value, preserving ancestor-cycle paths rather than dropping
+  // circular fields; sort object keys so insertion order is not physical state.
+  const encode=value=>{const walk=(x,ancestors=new Map(),where='$')=>{
+   if(x===undefined)return{undefined:true};if(typeof x==='number'&&!Number.isFinite(x))return{number:String(x)};if(!x||typeof x!=='object')return x;
+   if(ancestors.has(x))return{cycle:ancestors.get(x)};const next=new Map(ancestors);next.set(x,where);
+   if(ArrayBuffer.isView(x))return{type:x.constructor.name,values:[...x]};
+   if(x instanceof Map)return{map:[...x].map(([k,v],i)=>[walk(k,next,where+'.key'+i),walk(v,next,where+'.value'+i)])};
+   if(x instanceof Set)return{set:[...x].map((v,i)=>walk(v,next,where+'.set'+i))};
+   if(Array.isArray(x))return x.map((v,i)=>walk(v,next,where+'['+i+']'));
+   return Object.fromEntries(Object.keys(x).sort().map(k=>[k,walk(x[k],next,where+'.'+k)]));
+  };return JSON.stringify(walk(value))};
   const full=await m.loadSnapshot(),before=encode(full),raw=await readRegionalCheckpoint(db,slot,{manifestOnly:true});if(raw.animals!==undefined||raw.controllers!==undefined||raw.world.terrain!==undefined||!raw.regionalPersistence.active||raw.core.planetaryTravel.sessions.length!==0||!raw.regionalPersistence.entries.length)throw Error('Regions still nested in stored root');
   const entry=raw.regionalPersistence.entries.find(x=>x.kind==='session'),reads=[],get=IDBObjectStore.prototype.get;IDBObjectStore.prototype.get=function(key){reads.push({store:this.name,key});return get.call(this,key)};let one;
   try{one=await m.loadRegionSnapshot(entry.key)}finally{IDBObjectStore.prototype.get=get}
@@ -64,6 +75,24 @@ try{
   const replaceRoot=value=>new Promise((resolve,reject)=>{const tx=db.transaction('saves','readwrite');tx.oncomplete=resolve;tx.onabort=()=>reject(tx.error);tx.objectStore('saves').put(value,slot)});
   let badHeaderRejected=false;try{await replaceRoot(badDirectory);try{await m.loadRegionSnapshot(badEntry.key)}catch(error){badHeaderRejected=/header does not match/.test(error.message)}}finally{await replaceRoot(validDirectory)}
   if(!badHeaderRejected)throw Error('Selective read trusted corrupt derived identity metadata');
+  // Retain a real independently generated survey while publishing an actual
+  // canonical remote replay, not an edited synthetic animal/resource array.
+  s.planetaryRegions.neighbor(s.world.regionOrigin,'east',{create:true});await m.saveNow('incremental-baseline');
+  const {createActiveRegionalSnapshot,createSimulationSnapshot,restoreSimulationSnapshot}=await import('/src/persistence/save-manager.js'),{commitRegionalUpdate}=await import('/src/persistence/regional-records.js'),{prepareRegionalBiology}=await import('/src/world/planetary-offscreen-biology.js');
+  const legacyIndexed=await readRegionalCheckpoint(db,slot,{manifestOnly:true});legacyIndexed.regionalPersistence.schema='indexed-regions/1';for(const e of [...legacyIndexed.regionalPersistence.entries,legacyIndexed.regionalPersistence.active])delete e.capture;await replaceRoot(legacyIndexed);
+  const patchPrevious=await readRegionalCheckpoint(db,slot,{manifestOnly:true}),patchBaseline=encode(await m.loadSnapshot()),due= pendingRegionalBiology(s)[0];if(!due)throw Error('No real pending region for changed-page commit');const replayResult=prepareRegionalBiology(s);if(!replayResult?.ticks)throw Error('Canonical replay did not advance a stored page');
+  const captureOptions={reason:'changed-page-replay',savedAt:new Date().toISOString()},activeCapture=createActiveRegionalSnapshot(s,captureOptions),expectedCapture=createSimulationSnapshot(s,captureOptions);for(const x of [activeCapture,expectedCapture]){x.meta.key=slot;x.meta.worldName=patchPrevious.meta.worldName}
+  const changes=[{kind:'session',payload:due}],priorPut=IDBObjectStore.prototype.put;let patchAborted=false;
+  IDBObjectStore.prototype.put=function(value,key){if(this.name==='saves')throw new DOMException('Controlled page-root failure','DataCloneError');return priorPut.call(this,value,key)};
+  try{await commitRegionalUpdate(db,activeCapture,slot,patchPrevious,changes)}catch(error){patchAborted=/Controlled page-root/.test(error.message)}finally{IDBObjectStore.prototype.put=priorPut}
+  if(!patchAborted||encode(await m.loadSnapshot())!==patchBaseline)throw Error('Aborted changed-page publication altered the checkpoint');
+  const pageWrites=[],pageReads=[],pageGet=IDBObjectStore.prototype.get;IDBObjectStore.prototype.put=function(value,key){if(this.name===REGION_STORE)pageWrites.push(key);return priorPut.call(this,value,key)};IDBObjectStore.prototype.get=function(key){if(this.name===REGION_STORE)pageReads.push(key);return pageGet.call(this,key)};
+  let published;try{published=await commitRegionalUpdate(db,activeCapture,slot,patchPrevious,changes)}finally{IDBObjectStore.prototype.put=priorPut;IDBObjectStore.prototype.get=pageGet}
+  const actualCapture=await m.loadSnapshot();if(encode(actualCapture)!==encode(expectedCapture)||published.written!==2||published.retained<1||pageWrites.length!==2||pageReads.length!==0)throw Error('Changed-page commit rewrote/read retained biology or changed complete state');
+  const retainedSurvey=published.root.regionalPersistence.entries.find(e=>e.kind==='survey');if(pageWrites.includes(retainedSurvey.id)||retainedSurvey.capture!==patchPrevious.regionalPersistence.capture)throw Error('Unchanged survey lost its original record ownership');
+  const survey=await m.loadRegionSnapshot(retainedSurvey.key,{kind:'survey'});if(!survey?.world?.terrain)throw Error('Mixed-capture selective read lost retained physical geography');
+  let patchStaleRejected=false;try{await commitRegionalUpdate(db,activeCapture,slot,patchPrevious,changes)}catch(error){patchStaleRejected=/changed during regional save/.test(error.message)}if(!patchStaleRejected||encode(await m.loadSnapshot())!==encode(expectedCapture))throw Error('Stale changed-page writer replaced a newer capture');
+  const mixedRestored=restoreSimulationSnapshot(actualCapture);if(mixedRestored.player().id!==s.player().id||mixedRestored.tickCount!==s.tickCount)throw Error('Mixed-capture actual ecology failed canonical restore');
   const request=req=>new Promise((resolve,reject)=>{req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)});
   // Simulate a v1 monolithic checkpoint in another slot; ordinary load must
   // preserve it exactly before any explicit subsequent save changes storage.
@@ -75,7 +104,7 @@ try{
   const oldDB=await new Promise((resolve,reject)=>{const req=indexedDB.open('genvo8-saves',1);req.onupgradeneeded=()=>{req.result.createObjectStore('saves');req.result.createObjectStore('meta')};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)});
   const oldTx=oldDB.transaction(['saves','meta'],'readwrite'),oldDone=new Promise((r,j)=>{oldTx.oncomplete=r;oldTx.onabort=()=>j(oldTx.error)});oldTx.objectStore('meta').put(full.meta,'autosave');oldTx.objectStore('saves').put(full,'autosave');await oldDone;oldDB.close();
   const upgraded=await m.db();if(upgraded.version!==2||!upgraded.objectStoreNames.contains(REGION_STORE)||encode(await m.loadSnapshot('autosave'))!==before)throw Error('Version 1 upgrade lost the original checkpoint');const upgradedSim=await m.load('autosave');if(upgradedSim.player().id!==full.core.playerId||upgradedSim.tickCount!==full.core.tickCount)throw Error('Upgraded legacy checkpoint did not restore actual simulation');await m.clear();
-  return{dbVersion:db.version,regionalRecords:raw.regionalPersistence.entries.length+1,identityDirectory:{directoryPayloadReads,directoryJobs,identityWatermark,badHeaderRejected},boundedReader:{capacityRejected,captureRejected,closedRejected,closeDuringRead,maxInFlight,releasedMutationIsolated:true},activePayloadSeparate:true,version1UpgradeExact:true,staleWriterRejected:true,rootNestedArchives:raw.core.planetaryTravel.sessions.length,selectiveReads:reads,atomicAbortPreservedExactCheckpoint:true,retryTick:later,legacyExact:true,recordsDeleted:countBefore-countAfter};
+  return{dbVersion:db.version,regionalRecords:raw.regionalPersistence.entries.length+1,changedPages:{written:published.written,retained:published.retained,pageWrites,pageReads,patchAborted,patchStaleRejected,legacyIndexedUpgradeExact:true,mixedRestoreExact:true},identityDirectory:{directoryPayloadReads,directoryJobs,identityWatermark,badHeaderRejected},boundedReader:{capacityRejected,captureRejected,closedRejected,closeDuringRead,maxInFlight,releasedMutationIsolated:true},activePayloadSeparate:true,version1UpgradeExact:true,staleWriterRejected:true,rootNestedArchives:raw.core.planetaryTravel.sessions.length,selectiveReads:reads,atomicAbortPreservedExactCheckpoint:true,retryTick:later,legacyExact:true,recordsDeleted:countBefore-countAfter};
  });assert.deepEqual(errors,[]);
  fs.writeFileSync(path.join(output,'receipt.json'),JSON.stringify({stage,crossing,saved,storage,errors,scope:'Native menu/held-D automatic frontier and Save/Continue with a valid authored jumper. Explicit observer placement at an actual accessible frontier. This is a regional simulation replacement, not seamless streaming or natural full-journey acceptance.'},null,2));console.log('Regional storage Chromium PASS: actual crossed ecology, indexed layout, selective read, native Save/Continue, atomic abort/retry, legacy read and complete slot cleanup.');
 }finally{await browser.close();await new Promise(r=>server.close(r))}

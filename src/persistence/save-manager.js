@@ -292,6 +292,14 @@ export function migrateSaveSnapshot(snapshot){
   return snapshot;
 }
 
+// Capture only the active record and global travel headers. The caller must
+// publish it with an indexed directory, never present it as a complete export.
+export function createActiveRegionalSnapshot(sim,options={}){
+ const active=createSimulationSnapshot(sim,{...options,regionalDeparture:true});
+ if(sim.planetaryTravel)active.core.planetaryTravel={...sim.planetaryTravel,sessions:[]};
+ return active;
+}
+
 function remapKinds(obj,{peak=false}={}){
   if(!obj||typeof obj!=='object')return obj;
   for(const [old,to] of Object.entries(LEGACY_PRESSURE_KINDS)){
