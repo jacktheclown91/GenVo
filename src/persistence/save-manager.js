@@ -1,4 +1,5 @@
-import {REGION_STORE,readRegionalCheckpoint,commitRegionalCheckpoint,deleteRegionalCheckpoint} from './regional-records.js';
+import {REGION_STORE,readRegionalCheckpoint,commitRegionalCheckpoint,commitRegionalUpdate,deleteRegionalCheckpoint} from './regional-records.js';
+import {RegionalDirtyJournal} from './regional-dirty.js';
 import {openRegionalCheckpointReader} from './regional-reader.js';
 import {restoreHabitatHazards} from '../ecology/habitat-hazards.js';
 import {restoreWildfire} from '../ecology/wildfire.js';
@@ -461,7 +462,7 @@ export class SaveManager{
     this.onStatus=onStatus;
     this.autosaveMs=autosaveMs;
     this.dbPromise=null;
-    this.busy=false;
+    this.busy=false;this.regionalJournal=new RegionalDirtyJournal();
     // Save and world-switch requests wait for an in-flight autosave.
     this.activeSave=null;
     this.pendingReason=null;
@@ -475,7 +476,7 @@ export class SaveManager{
   }
   status(kind,message,meta=null){this.onStatus?.({kind,message,meta})}
   restoreActiveSlot(){try{const id=localStorage.getItem(ACTIVE_WORLD_KEY);return safeSlot(id)?id:SAVE_KEY}catch{return SAVE_KEY}}
-  setActiveSlot(id){if(!safeSlot(id))throw Error('Invalid world slot.');this.activeSlotId=id;try{localStorage.setItem(ACTIVE_WORLD_KEY,id)}catch{};this.lastSavedAt=0;this.lastSavedTick=-1;this.lastObservedSignature=''}
+  setActiveSlot(id){if(!safeSlot(id))throw Error('Invalid world slot.');this.regionalJournal.clear();this.activeSlotId=id;try{localStorage.setItem(ACTIVE_WORLD_KEY,id)}catch{};this.lastSavedAt=0;this.lastSavedTick=-1;this.lastObservedSignature=''}
   async listWorlds(){
     if(!this.available)return [];
     const db=await this.db(),tx=db.transaction(META_STORE,'readonly'),store=tx.objectStore(META_STORE);
@@ -585,10 +586,15 @@ export class SaveManager{
       const db=await this.db();
       const indexed=sim.world.generator==='planetary/1',previous=indexed?await readRegionalCheckpoint(db,slotId,{manifestOnly:true}):null;
       // Capture and enqueue transport in one turn: nested state may still be live.
-      const capturedSignature=this.signature(sim),snapshot=createSimulationSnapshot(sim,{reason});
+      const ticket=indexed?this.regionalJournal.capture(sim,slotId,previous):null;
+      const capturedSignature=this.signature(sim),snapshot=ticket?.incremental?createActiveRegionalSnapshot(sim,{reason}):createSimulationSnapshot(sim,{reason});
       snapshot.meta.key=slotId;
       snapshot.meta.worldName=worldName;
-      if(indexed){await commitRegionalCheckpoint(db,snapshot,slotId,previous)}else{
+      if(indexed){
+       const changes=ticket.incremental?ticket.changed.map(entry=>({kind:entry.kind,payload:entry.kind==='session'?entry.owner:{origin:entry.origin,world:snapshotWorld(entry.owner)}})):null;
+       const result=changes?await commitRegionalUpdate(db,snapshot,slotId,previous,changes):await commitRegionalCheckpoint(db,snapshot,slotId,previous);
+       this.regionalJournal.acknowledge(ticket,result.root.regionalPersistence.capture);
+      }else{
       const tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');
       // Acquire both stores while the transaction is active. Serializing a
       // genuine mature world may take long enough for IndexedDB to auto-close
@@ -648,9 +654,10 @@ export class SaveManager{
     if(this.activeSave)await this.activeSave;
     if((await this.metadata(this.activeSlotId,{strict:true}))?.role==='movement-backup')throw Error('Cannot clear a read-only movement backup.');
     const db=await this.db();await deleteRegionalCheckpoint(db,this.activeSlotId);
-    this.lastSavedAt=0;this.lastSavedTick=-1;this.lastObservedSignature='';this.status('cleared','Save cleared');
+    this.regionalJournal.clear();this.lastSavedAt=0;this.lastSavedTick=-1;this.lastObservedSignature='';this.status('cleared','Save cleared');
   }
   resetObservation(sim=this.getSim?.()){
+    this.regionalJournal.clear();
     this.lastObservedSignature=sim?this.signature(sim):'';
     this.lastSavedTick=-1;
   }

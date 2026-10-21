@@ -1,4 +1,5 @@
 import {captureSeamReadset,seamReadsetUnchanged} from './planetary-seam-readset.js';
+import {markRegionalOwnerDirty} from './regional-revision.js';
 import {syncCaveAir} from './cave-air.js';
 import {SURFACE_ICE,iceAmount,liquidVolume,validateSurfaceIce} from './surface-ice.js';
 // Genuine paired dissolved-salt transport between two independently owned
@@ -116,6 +117,7 @@ export function syncPlanetaryBoundaryOwnership(sim){
   if(current.length===mask.length&&current.every((v,i)=>v===mask[i]))continue;
   if(r.session){
    const snap=r.session.snapshot;
+   markRegionalOwnerDirty(r.session);
    r.session.snapshot={...snap,world:{...snap.world,
     environment:{...r.env,blockedBoundaries:mask}}};
   }else r.env.blockedBoundaries=mask;
@@ -377,6 +379,7 @@ export function* planetarySeamTransaction(sim){
 
  for(const r of regions){
   const {incoming,outgoing,water,runoff,groundwater,minerals,sediment,wetbed}=sums.get(r.key),e=r.env;
+  if(r.session)markRegionalOwnerDirty(r.session);
   for(const [i,delta] of changes.get(r.key))e.salt[i]+=delta;
   for(const [i,delta] of waterChanges.get(r.key))e.volume[i]+=delta;
   for(const [i,delta] of overlandChanges.get(r.key))e.overland[i]+=delta;

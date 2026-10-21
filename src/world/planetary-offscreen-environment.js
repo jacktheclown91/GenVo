@@ -4,6 +4,7 @@
 // soil/snow and salt transports as the active World, one historical day at a
 // time, with a ledger retained in the unique region session archive.
 import {CFG} from '../sim/config.js';
+import {markRegionalOwnerDirty} from './regional-revision.js';
 import {createWeatherState,advanceWeatherTo,validWeatherState} from '../ecology/weather.js';
 import {advanceEnvironmentWater,localTemperature} from './environment.js';
 import {advanceSoilDay} from '../ecology/soil-water.js';
@@ -103,7 +104,7 @@ export function advanceRemoteEnvironment(active,session,{maxDays=OFFSCREEN_ENVIR
  if(after.core.planetaryTravel)throw Error('Recursive offscreen archive.');
  const copy={...session,snapshot:after,environmentalLedger:ledger};
  validateRemoteEnvironmentalLedger(copy);
- session.snapshot=after;session.environmentalLedger=ledger;
+ markRegionalOwnerDirty(session);session.snapshot=after;session.environmentalLedger=ledger;
  return{days:steps,remaining:remoteEnvironmentDue(active,session),key:session.key,
   soilMaxAbsClosure:ledger.soilMaxAbsClosure,saltMaxAbsClosure:ledger.saltMaxAbsClosure};
 }

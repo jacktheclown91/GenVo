@@ -19,6 +19,16 @@
       "consumers": ["src/persistence/save-manager.js"],
       "contract": "docs/REGIONAL-READER-2026-10-21.md"
     },
+    "regionalDirtyCapture": {
+      "authority": "src/persistence/regional-dirty.js",
+      "consumers": ["src/persistence/save-manager.js"],
+      "contract": "docs/REGIONAL-JOURNAL-2026-10-21.md"
+    },
+    "regionalPublicationGeneration": {
+      "authority": "src/world/regional-revision.js",
+      "consumers": ["src/world/planetary-offscreen-biology.js", "src/world/planetary-offscreen-environment.js", "src/world/planetary-seam-salt.js", "src/persistence/regional-dirty.js"],
+      "contract": "docs/REGIONAL-JOURNAL-2026-10-21.md"
+    },
     "regionalIdentityDirectory": {
       "authority": "src/world/regional-identities.js",
       "consumers": ["src/persistence/regional-records.js", "src/persistence/regional-reader.js"],

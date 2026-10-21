@@ -4,6 +4,7 @@
 // silently accelerated by a UI call; remote work is bounded by the active
 // life stride and return trips refuse excessive time debt.
 import {CFG} from '../sim/config.js';
+import {markRegionalOwnerDirty} from './regional-revision.js';
 import {REGIONAL_REPLAY,regionalBiologyOrder} from './regional-replay-order.js';
 export {REGIONAL_REPLAY} from './regional-replay-order.js';
 import {createSimulationSnapshot,restoreDetachedSimulationSnapshot} from '../persistence/save-manager.js';
@@ -135,7 +136,7 @@ export function advanceRemoteBiology(active,session,{maxTicks=OFFSCREEN_BIOLOGY.
  // remote animal a second time for each synchronized replay transaction.
  validatePlanetAnimalOwnership(active.animals,{schema:1,nextId:Math.max(reservedNextId,temp.nextId),sessions:nextSessions});
  // Atomic publish after completing all duplicate and material checks.
- session.snapshot=copy;
+ markRegionalOwnerDirty(session);session.snapshot=copy;
  session.biologicalLedger=ledger;
  if(physical.days)session.environmentalLedger=physical;
  active.nextId=Math.max(active.nextId,temp.nextId);
