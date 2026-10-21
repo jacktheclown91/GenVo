@@ -23,6 +23,7 @@ for(const id of physicalStarterIds){
  const seed='GENVO-PHYSICAL-START-'+id;
  const sim=new Simulation(seed,{player:true}),original=sim.world;
  const water=original.water.slice(),drinkSpots=original.drinkSpots.map(w=>({...w})),terrain=original.terrain.elevation.slice();
+ if(id==='climb')console.log('Climb diagnostic: max natural Woodspire '+Math.max(...original.plants.woodspire).toFixed(4));
  const births=sim.stats.births,day=sim.day;
  const r=installPhysicalStarter(sim,id),p=sim.player(),mate=r.members[1];
  assert.equal(r.receipt.mode,'guided');
