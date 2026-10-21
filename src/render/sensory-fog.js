@@ -17,7 +17,7 @@ function drawSignals(renderer,signals,tile){
 }
 export function drawSensoryFog(renderer,{tile,cols,rows,startX,startY}){
  const sim=renderer.sim,animal=sim.player?.();
- if(!animal||sim.sensoryFogEnabled===false||typeof document==='undefined')return false;
+ if(!animal||sim.sensoryFogEnabled!==true||typeof document==='undefined')return false;
  const view=creatureView(sim,animal),memory=rememberedCells(sim,animal),now=renderer.renderNow||performance.now();
  const w=renderer.w,h=renderer.h,pad=Math.ceil(tile*3);
  const last=renderer.sensoryFogCache;
