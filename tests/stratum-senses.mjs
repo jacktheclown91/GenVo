@@ -1,0 +1,78 @@
+import assert from 'node:assert/strict';
+import {STRATUM_SENSES,caveDaylight,stratumSight,stratumHearing,waterExtinction} from '../src/ecology/stratum-senses.js';
+import {undergroundLineOfSight} from '../src/world/cave-optics.js';
+import {Simulation} from '../src/sim/simulation.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {adoptStratumSenseRules} from '../src/ecology/stratum-sense-rules.js';
+import {sensoryRegionKey} from '../src/ecology/sensory-world.js';
+import {SURFACE_ICE} from '../src/world/surface-ice.js';
+
+// Controlled geometry isolates optical and acoustic paths; it is not a claim
+// about generated habitat frequency or naturally evolved specialist anatomy.
+const n=12,w={n,len:n*n,water:new Uint8Array(n*n),subsurface:{revision:1,passages:new Map()},
+ idx:(x,y)=>Math.floor(y)*n+Math.floor(x),isPlayable:(x,y)=>x>=0&&y>=0&&x<n&&y<n};
+const open=(x,y,entry=false)=>w.subsurface.passages.set(w.idx(x,y),{i:w.idx(x,y),floor:0,entry});
+for(let x=1;x<=8;x++)open(x,1,x===1);
+open(3,2);open(3,3);open(4,3);
+const sim={world:w,stratumSenseRules:STRATUM_SENSES.policy};
+const a={x:1.5,y:1.5,underground:true},b={x:3.5,y:1.5,underground:true};
+assert.equal(caveDaylight(w,w.idx(1,1)),1);
+assert.equal(caveDaylight(w,w.idx(8,1)),0,'daylight has finite reach');
+assert.ok(caveDaylight(w,w.idx(3,1))<1);
+assert.equal(stratumSight(sim,a,b,8).detected,true);
+assert.equal(stratumSight(sim,a,{...b,x:8.5},8).detected,false);
+assert.equal(stratumSight(sim,{...a,bodyPlan:{nodes:[]}},b,8).detected,false);
+const bent={...b,x:4.5,y:3.5};
+assert.equal(undergroundLineOfSight(w,a.x,a.y,bent.x,bent.y),false);
+assert.equal(stratumHearing(sim,a,bent,8),true,'sound follows an open bend');
+assert.equal(stratumHearing(sim,a,bent,4),false,'routed distance costs range');
+w.subsurface.passages.get(w.idx(3,2)).closed=true;w.subsurface.revision++;
+assert.equal(stratumHearing(sim,a,bent,8),false,'rock disconnects sound');
+w.subsurface.passages.get(w.idx(2,1)).floor=1;w.subsurface.revision++;
+assert.equal(undergroundLineOfSight(w,a.x,a.y,b.x,b.y),false,'unconnected floors block light');
+assert.equal(caveDaylight(w,w.idx(3,1)),0,'topology revisions invalidate derived daylight');
+
+w.water.fill(1);w.divingBathymetry=new Float32Array(w.len).fill(2);
+w.freshwaterFood={algae:new Float32Array(w.len)};w.organicResources={litter:new Float32Array(w.len)};
+const swimmer={x:2.5,y:6.5,diveDepth:.2},target={x:4.5,y:6.5,diveDepth:.2};
+const clear=stratumSight(sim,swimmer,target,8);
+w.freshwaterFood.algae.fill(1);w.organicResources.litter.fill(1);
+assert.ok(waterExtinction(w,0)>.09);
+assert.ok(stratumSight(sim,swimmer,target,8).effectiveRange<clear.effectiveRange,'actual stocks attenuate water sight');
+const stocks=structuredClone(w.organicResources.litter);
+stratumSight(sim,swimmer,target,8);stratumHearing(sim,swimmer,target,8);
+assert.deepEqual(w.organicResources.litter,stocks,'perception does not consume material');
+w.water[w.idx(3,6)]=0;
+assert.equal(stratumSight(sim,swimmer,target,8).detected,false,'liquid rays cannot cross a bank');
+w.environment={schema:3,volume:new Float64Array(w.len).fill(2),icePolicy:SURFACE_ICE.policy,ice:new Float64Array(w.len).fill(.1),iceBroken:new Uint8Array(w.len)};
+assert.equal(stratumSight(sim,swimmer,{...swimmer,diveDepth:0},8).detected,false,'intact surface ice blocks a cross-medium visual interface');
+w.environment.iceBroken[w.idx(swimmer.x,swimmer.y)]=1;
+assert.equal(stratumSight(sim,swimmer,{...swimmer,diveDepth:0},8).detected,true,'a real opening restores the interface without melting ice');
+assert.notEqual(sensoryRegionKey(w,swimmer),sensoryRegionKey(w,a),'water and cave memories are distinct');
+assert.notEqual(sensoryRegionKey(w,swimmer),sensoryRegionKey(w,{}),'surface survey does not reveal submerged terrain');
+
+const live=new Simulation('STRATUM-CONTINUITY',{player:true});
+const snapshot=createSimulationSnapshot(live,{reason:'stratum-contract'});
+assert.equal(snapshot.core.stratumSenseRules,STRATUM_SENSES.policy);
+const restored=restoreSimulationSnapshot(structuredClone(snapshot));
+assert.equal(restored.stratumSenseRules,STRATUM_SENSES.policy);
+assert.equal(restored.rng.state,live.rng.state);
+live.update(null);restored.update(null);
+assert.deepEqual(createSimulationSnapshot(restored,{savedAt:'fixed'}),createSimulationSnapshot(live,{savedAt:'fixed'}),'next biological tick is exact after sensory restore');
+const historical=structuredClone(snapshot);delete historical.core.stratumSenseRules;delete historical.core.sensoryFogEnabled;
+const old=restoreSimulationSnapshot(historical);
+assert.equal(Object.hasOwn(old,'stratumSenseRules'),false);
+assert.equal(Object.hasOwn(old,'sensoryFogEnabled'),false,'ordinary restore never silently enables sensory fog');
+const adoption=adoptStratumSenseRules(old,{source:'test:historical',backupSlot:'world-stratum-backup'});
+assert.equal(old.sensoryFogEnabled,true);assert.equal(old.stratumSenseRules,STRATUM_SENSES.policy);
+adoption.rollback();assert.equal(Object.hasOwn(old,'stratumSenseRules'),false);assert.equal(Object.hasOwn(old,'sensoryFogEnabled'),false);
+const archive={tickCount:10,planetaryTravel:{sessions:[{biologicalMode:'canonical-ticks/1',snapshot:{core:{tickCount:10}}}]}};
+const archiveBefore=structuredClone(archive),regional=adoptStratumSenseRules(archive,{source:'test:regional',backupSlot:'world-regional-backup'});
+assert.equal(archive.planetaryTravel.sessions[0].snapshot.core.stratumSenseRules,STRATUM_SENSES.policy);
+assert.equal(archive.planetaryTravel.sessions[0].snapshot.core.sensoryFogEnabled,true);
+regional.rollback();assert.deepEqual(archive,archiveBefore,'regional adoption rollback preserves missing historical fields');
+archive.planetaryTravel.sessions[0].snapshot.core.tickCount=9;
+assert.throws(()=>adoptStratumSenseRules(archive,{source:'test:debt',backupSlot:'world-regional-backup'}),/catchup/);
+const unknown=structuredClone(snapshot);unknown.core.stratumSenseRules='physical-stratum-senses/999';
+assert.throws(()=>restoreSimulationSnapshot(unknown),/Unknown stratum/);
+console.log('Shared cave/water optics, routed hearing, separate memories and explicit save policy PASS');

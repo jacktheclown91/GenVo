@@ -3,6 +3,19 @@
   "principle": "One live authority for each mechanism. Multiple states, species, art drafts and measured outcomes are permitted; competing runtime definitions are not.",
   "gameEntrypoint": "src/main.js",
   "systems": {
+    "physicalMediumPerception": {
+      "authority": "src/ecology/stratum-senses.js",
+      "consumers": ["src/ecology/atmospheric-visibility.js", "src/ecology/threat-perception.js", "src/ecology/sensory-world.js"],
+      "contract": "docs/SENSORY-RECONCILIATION-2026-10-20.md"
+    },
+    "caveOpticalGeometry": {
+      "authority": "src/world/cave-optics.js",
+      "consumers": ["src/ecology/stratum-senses.js", "src/ecology/atmospheric-visibility.js"]
+    },
+    "stratumSenseRuleVersions": {
+      "authority": "src/ecology/stratum-sense-rules.js",
+      "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js"]
+    },
     "metabolicThermalDemand": {
       "authority": "src/ecology/thermal-demand.js",
       "consumers": ["src/sim/simulation.js", "src/ecology/thermal-refuge.js"],

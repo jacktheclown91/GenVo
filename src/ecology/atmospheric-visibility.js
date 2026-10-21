@@ -1,3 +1,5 @@
+import {undergroundLineOfSight} from '../world/cave-optics.js';
+import {STRATUM_SENSES,stratumSight} from './stratum-senses.js';
 import {regionalRainfall,planetaryWindAt} from '../world/weather-fronts.js';
 import {snowFraction} from '../world/snowpack.js';
 import {localTemperature} from '../world/environment.js';
@@ -12,30 +14,7 @@ export function visualSurveyRange(animal,base=8){return base*(animal.genes?.sens
 const FACINGS=[[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];
 // Below ground, light and direct vision cannot travel through unexcavated
 // material. A ray moves only through connected, physically open passages.
-function openUndergroundCell(world,x,y){
- if(!world||x<0||y<0||x>=world.n||y>=world.n)return false;
- const passage=world.subsurface?.passages?.get(y*world.n+x);
- return !!passage&&!passage.closed;
-}
-export function undergroundLineOfSight(world,fromX,fromY,toX,toY){
- const ax=Math.floor(fromX),ay=Math.floor(fromY),bx=Math.floor(toX),by=Math.floor(toY);
- if(!openUndergroundCell(world,ax,ay)||!openUndergroundCell(world,bx,by))return false;
- const dx=Math.abs(bx-ax),dy=Math.abs(by-ay);
- let x=ax,y=ay,err=dx-dy;
- const sx=ax<bx?1:-1,sy=ay<by?1:-1;
- for(let steps=0;steps<dx+dy+1;steps++){
-  if(x===bx&&y===by)return true;
-  const twice=2*err;
-  const moveX=twice>-dy,moveY=twice<dx;
-  const nx=x+(moveX?sx:0),ny=y+(moveY?sy:0);
-  // Diagonal gaps between two solid walls are not optical doorways.
-  if(moveX&&moveY&&(!openUndergroundCell(world,nx,y)||!openUndergroundCell(world,x,ny)))return false;
-  if(!openUndergroundCell(world,nx,ny))return false;
-  if(moveX)err-=dy;if(moveY)err+=dx;
-  x=nx;y=ny;
- }
- return false;
-}
+export {undergroundLineOfSight};
 
 export function creatureView(sim,observer,base=8){
  if(!observer)return null;
@@ -46,7 +25,7 @@ export function creatureView(sim,observer,base=8){
  const limit=observer.underground?Math.min(range,4):observer.diveDepth>.03?Math.min(range,3.5):range;
  const air=!observer.underground&&!(observer.diveDepth>.03)&&sim.visibilityRules===VISIBILITY.policy?atmosphereAt(sim,observer.x,observer.y):null;
  const adjusted=limit*Math.exp(-(air?.extinction||0)*Math.min(10,limit)*.5);
- return{observer,world:sim.world,range:Math.max(1.55,Math.min(24,adjusted)),eyes,
+ return{sim,observer,world:sim.world,range:Math.max(1.55,Math.min(24,adjusted)),eyes,
    rearLimit:eyes>0&&effects.wideField?-.98:eyes>=2?-.62:eyes===1?-.12:1,
    touch:1.55,level:!!observer.underground?'underground':'surface',
    facing:FACINGS[((observer.dir||0)%8+8)%8]||FACINGS[0]};
@@ -57,6 +36,7 @@ export function viewCanSee(view,x,y){
  if(d<=view.touch)return true;
  if(d>view.range||view.eyes===0)return false;
  if(view.level==='underground'&&!undergroundLineOfSight(view.world,view.observer.x,view.observer.y,x,y))return false;
+ if(view.sim?.stratumSenseRules===STRATUM_SENSES.policy){const target={x,y,underground:!!view.observer.underground,diveDepth:view.observer.diveDepth||0};const medium=stratumSight(view.sim,view.observer,target,view.range);if(medium&&!medium.detected)return false;}
  return(dx*view.facing[0]+dy*view.facing[1])/(d*Math.hypot(...view.facing))>=view.rearLimit;
 }
 export function visuallyObservable(sim,observer,target,base=8,preparedView=null){
@@ -68,7 +48,7 @@ export function visuallyObservable(sim,observer,target,base=8,preparedView=null)
    if(observer.underground&&!undergroundLineOfSight(sim.world,observer.x,observer.y,target.x,target.y))return false;
    if(!viewCanSee(preparedView||creatureView(sim,observer,base),target.x,target.y))return false;
  }
- if(sim.visibilityRules!==VISIBILITY.policy||observer.underground)return true;
+ if(sim.visibilityRules!==VISIBILITY.policy&&sim.stratumSenseRules!==STRATUM_SENSES.policy||observer.underground&&sim.stratumSenseRules!==STRATUM_SENSES.policy)return true;
  return atmosphericSight(sim,observer,target,visualSurveyRange(observer,base)).detected;
 }
 const clamp=v=>Math.max(0,Math.min(1,v));
@@ -84,6 +64,7 @@ export function atmosphereAt(sim,x,y){
 export function atmosphericSight(sim,observer,target,range){
  const distance=Math.hypot(target.x-observer.x,target.y-observer.y);
  if(!Number.isFinite(distance)||!Number.isFinite(range)||range<0)throw Error('Invalid atmospheric sight query.');
+ const medium=stratumSight(sim,observer,target,range);if(medium)return medium;
  let opticalDepth=0;
  if(sim.visibilityRules===VISIBILITY.policy&&!observer.underground&&!(observer.diveDepth>.03)){
   const samples=Math.min(8,Math.max(1,Math.ceil(distance/4)));

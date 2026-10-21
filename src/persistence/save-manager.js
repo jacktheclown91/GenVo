@@ -1,3 +1,4 @@
+import {restoreStratumSenseRules,adoptStratumSenseRules} from '../ecology/stratum-sense-rules.js';
 import {validateIceImmersion} from '../lineage/ice-locomotion.js';
 import {restoreSurfaceIceRules,validateIceWorld,adoptSurfaceIceRules} from '../world/surface-ice-rules.js';
 import {restoreThermalRefugeRules,adoptThermalRefugeRules} from '../ecology/thermal-refuge-rules.js';
@@ -341,6 +342,9 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   restoreThermalRefugeRules(sim,snapshot.core||{});
   restoreThermalRules(sim,snapshot.core||{});
   restoreVisibilityRules(sim,snapshot.core||{});
+  if(!Object.hasOwn(snapshot.core||{},'sensoryFogEnabled'))delete sim.sensoryFogEnabled;
+  if(sim.sensoryFogEnabled!==undefined&&typeof sim.sensoryFogEnabled!=='boolean')throw Error('Invalid saved sensory fog policy.');
+  restoreStratumSenseRules(sim,snapshot.core||{});
   restoreCaveRules(sim,snapshot.core||{});
   restoreBurrowingRules(sim,snapshot.core||{});
   restoreClimbingRules(sim,snapshot.core||{});
@@ -598,6 +602,7 @@ export class SaveManager{
       const thermal=adoptThermalRules(sim,{source,backupSlot});const priorRollback=rollback;rollback=()=>{thermal.rollback();priorRollback()};
       const refuge=adoptThermalRefugeRules(sim,{source,backupSlot});const thermalRollback=rollback;rollback=()=>{refuge.rollback();thermalRollback()};
       const ice=adoptSurfaceIceRules(sim,{source,backupSlot});const refugeRollback=rollback;rollback=()=>{ice.rollback();refugeRollback()};
+      const senses=adoptStratumSenseRules(sim,{source,backupSlot});const iceRollback=rollback;rollback=()=>{senses.rollback();iceRollback()};
       const snapshot=createSimulationSnapshot(sim,{reason:'movement-rule-continuation',savedAt});snapshot.meta.key=slotId;snapshot.meta.worldName=worldName;
       const backupMetadata={...sourceSnapshot.meta,key:backupSlot,worldName:('Backup · '+worldName).slice(0,40),savedAt,role:'movement-backup',backupFor:slotId};
       tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');done=transactionDone(tx);

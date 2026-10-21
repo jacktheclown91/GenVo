@@ -1,3 +1,4 @@
+import {STRATUM_SENSES,stratumHearing} from './stratum-senses.js';
 // Staged threat perception (Phase 3K Priority 3, creator decision 2026-10-16: "recognizing a potential
 // predator is not the same as deciding to flee"). The behaviour-based appraisal (threat-appraisal.js) answered
 // one yes/no question and any "yes" meant full flight. With this on, a would-be predator inside the flight
@@ -26,7 +27,7 @@
 // exemptions are as in threat-appraisal.js. ?threatStages=0 restores the yes/no appraisal.
 // All numbers below are PROPOSALS for creator review.
 import {CFG} from '../sim/config.js';
-import {atmosphericSight} from './atmospheric-visibility.js';
+import {atmosphericSight,visuallyObservable,visualSurveyRange} from './atmospheric-visibility.js';
 import {SPECIES} from '../organisms/species.js';
 import {still} from './refuges.js';
 import {courtingMe,facing,CLOSE_ALARM,FLEEING,HUNTING} from './threat-appraisal.js';
@@ -38,7 +39,7 @@ const FACE=[[0,-1],[.7071,-.7071],[1,0],[.7071,.7071],[0,1],[-.7071,.7071],[-1,0
 function inView(a,b){const f=FACE[(a.dir??0)&7],dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1;return (f[0]*dx+f[1]*dy)/d>=VIEW_CONE}
 export function watching(sim,a,b){return a.vigilance?.id===b.id&&a.vigilance.untilTick>sim.tickCount}
 // Stage 1: can `a` sense `b` at distance d, given its flight radius R?
-export function detects(sim,a,b,d,R){const visible=(watching(sim,a,b)||inView(a,b))&&d<R&&atmosphericSight(sim,a,b,R).detected;return visible||d<R*(still(sim,b)?QUIET:HEARING)}
+export function detects(sim,a,b,d,R){const visible=sim.stratumSenseRules===STRATUM_SENSES.policy?d<R&&visuallyObservable(sim,a,b,R/visualSurveyRange(a,1)):(watching(sim,a,b)||inView(a,b))&&d<R&&atmosphericSight(sim,a,b,R).detected;return visible||stratumHearing(sim,a,b,R*(still(sim,b)?QUIET:HEARING))}
 // Stage 2: how threatening `b` looks to `a` (0..1).
 export function threatLevel(a,b,d,R){
   if(courtingMe(b,a)||courtingMe(a,b))return 0;

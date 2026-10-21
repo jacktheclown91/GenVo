@@ -1,4 +1,5 @@
 import {canHunt,preyPreference} from '../ecology/functional-diet.js';
+import {STRATUM_SENSES} from '../ecology/stratum-senses.js';
 import {VISIBILITY} from '../ecology/atmospheric-visibility.js';
 import {detects} from '../ecology/threat-perception.js';
 import {ADAPTATIONS} from '../lineage/evolution.js';
@@ -18,7 +19,7 @@ export function nearestHunter(sim,animal,radius=10){
     if(!other?.alive||other===animal||other.id===animal.id||!canHunt(other)||preyPreference(other,animal)<=0)continue;
     if(sim.world?.sameLand&&!sim.world.sameLand(animal.x,animal.y,other.x,other.y))continue;
     const d=Math.hypot(other.x-animal.x,other.y-animal.y);
-    if(sim.visibilityRules===VISIBILITY.policy&&!detects(sim,animal,other,d,radius))continue;
+    if((sim.visibilityRules===VISIBILITY.policy||sim.stratumSenseRules===STRATUM_SENSES.policy)&&!detects(sim,animal,other,d,radius))continue;
     if(d<bestD){best=other;bestD=d}
   }
   return best?{animal:best,distance:bestD}:null;

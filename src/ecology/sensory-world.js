@@ -1,3 +1,4 @@
+import {stratumHearing,sensoryMedium} from './stratum-senses.js';
 import {CFG,PLANTS} from '../sim/config.js';
 import {groundDiet} from './functional-diet.js';
 import {creatureView,viewCanSee,atmosphereAt,visuallyObservable,undergroundLineOfSight} from './atmospheric-visibility.js';
@@ -9,7 +10,7 @@ const CELL=2,MAX_CELLS=800,MAX_REGIONS=4;
 // A creature's own survey is stored on its animal record and saved normally.
 export function sensoryRegionKey(world,animal=null){
  const origin=world.regionOrigin||{x:0,y:0};
- return String(world.seedHash||world.seed||0)+':'+origin.x+','+origin.y+':'+(animal?.underground?'under':'surface');
+ return String(world.seedHash||world.seed||0)+':'+origin.x+','+origin.y+':'+(animal?.underground?'under':(animal?.diveDepth||0)>.03?'water':'surface');
 }
 export function sensoryProfile(animal){
  const parts=new Set((animal?.bodyPlan?.nodes||[]).map(n=>n.partId));
@@ -26,7 +27,7 @@ function ensureMemory(animal){
  return animal.sensoryMemory;
 }
 export function recordSensoryMemory(sim,animal=sim.player?.()){
- if(!animal||sim.sensoryFogEnabled===false||!sim.world)return 0;
+ if(!animal||sim.sensoryFogEnabled!==true||!sim.world)return 0;
  const world=sim.world,view=creatureView(sim,animal),memory=ensureMemory(animal),key=sensoryRegionKey(world,animal);
  if(!view)return 0;
  const regions=memory.regions;
@@ -65,8 +66,8 @@ export function sensorySignals(sim,animal=sim.player?.(),maxSignals=3){
   if(visuallyObservable(sim,animal,other))continue;
   const active=other.intent==='attack'||other.intent==='mate'||other.intent==='flee'||other.intent==='hunt'||other.intent==='escape';
   const audible=active?profile.hearing:profile.hearing*.55;
-  if(d<audible)candidate.push({kind:'heard',angle:Math.atan2(dy,dx),score:(audible-d)/audible+(active?.4:0),uncertainty:active?.32:.55});
-  if(d<profile.scent&&(!animal.underground||undergroundLineOfSight(w,animal.x,animal.y,other.x,other.y))){
+  if(d<audible&&stratumHearing(sim,animal,other,audible))candidate.push({kind:'heard',angle:Math.atan2(dy,dx),score:(audible-d)/audible+(active?.4:0),uncertainty:active?.32:.55});
+  if(sensoryMedium(animal)!=='water'&&sensoryMedium(other)!=='water'&&d<profile.scent&&(!animal.underground||undergroundLineOfSight(w,animal.x,animal.y,other.x,other.y))){
    const wind=weather.wind||{},moved=(animal.x-other.x)*(wind.east||0)+(animal.y-other.y)*(wind.south||0);
    const scentRange=profile.scent*(moved<-.1?.55:1)*(1-clamp(weather.liquid||0,0,.7)*.35);
    if(d<scentRange)candidate.push({kind:'scent',angle:Math.atan2(dy,dx),score:(scentRange-d)/scentRange,uncertainty:.65});
@@ -74,7 +75,7 @@ export function sensorySignals(sim,animal=sim.player?.(),maxSignals=3){
  }
  // Plant odors originate from edible biomass, not synthetic quest markers.
  const diet=groundDiet(animal),edible=Object.keys(diet).filter(kind=>diet[kind]>0&&PLANTS[kind]&&w.plants?.[kind]);
- if(!animal.underground&&edible.length&&profile.scent>2){
+ if(sensoryMedium(animal)==='surface'&&edible.length&&profile.scent>2){
   const radius=Math.min(8,Math.ceil(profile.scent));
   let best=null;
   for(let y=Math.max(0,Math.floor(animal.y-radius));y<=Math.min(w.n-1,Math.ceil(animal.y+radius));y+=2)
