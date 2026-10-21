@@ -3,6 +3,11 @@
   "principle": "One live authority for each mechanism. Multiple states, species, art drafts and measured outcomes are permitted; competing runtime definitions are not.",
   "gameEntrypoint": "src/main.js",
   "systems": {
+    "caveRoofSupport": {
+      "authority": "src/world/cave-roof.js",
+      "consumers": ["src/world/subsurface.js", "src/render/subsurface.js"],
+      "contract": "docs/CAVE-ROOF-2026-10-20.md"
+    },
     "physicalMediumPerception": {
       "authority": "src/ecology/stratum-senses.js",
       "consumers": ["src/ecology/atmospheric-visibility.js", "src/ecology/threat-perception.js", "src/ecology/sensory-world.js"],

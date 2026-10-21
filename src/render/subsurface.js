@@ -1,5 +1,6 @@
 import {CAVES} from '../world/cave-policy.js';
 import {caveArtwork,openPassage} from './cave-surface.js';
+import {caveRoofSupport} from '../world/cave-roof.js';
 
 function opening(c,px,py,tile,p,natural,below){
  // Real mapped entrance with broken geological rim and falloff, not a
@@ -46,6 +47,15 @@ export function drawSubsurface(renderer,tile){
   if(below){
    const art=caveArtwork(renderer,p);
    if(art){c.imageSmoothingEnabled=false;c.drawImage(art,px,py,tile,tile)}
+   const support=caveRoofSupport(w,p);
+   if(support&&!support.legacy&&support.utilization>.65){
+    // Live structural stress uses the simulation's query, not an art-only
+    // danger roll. Fog still hides stress the creature cannot observe.
+    c.strokeStyle=support.unstable?'#d6a075':'#a99c7d';c.lineWidth=Math.max(1,tile/40);
+    c.beginPath();c.moveTo(px+tile*.22,py+tile*.14);c.lineTo(px+tile*.46,py+tile*.4);c.lineTo(px+tile*.39,py+tile*.64);c.lineTo(px+tile*.65,py+tile*.85);c.moveTo(px+tile*.46,py+tile*.4);c.lineTo(px+tile*.72,py+tile*.3);c.stroke();
+    const observer=renderer.sim.player();
+    if(w.idx(observer.x,observer.y)===p.i){c.save();c.font='11px sans-serif';c.textAlign='center';c.fillStyle='#241c17dd';c.fillRect(px+tile/2-63,py-22,126,18);c.fillStyle='#e2bf92';c.fillText('Roof under strain',px+tile/2,py-9);c.restore()}
+   }
    if(p.entry)opening(c,px,py,tile,p,natural,true);
   }else if(p.entry)opening(c,px,py,tile,p,natural,false);
  }

@@ -1,7 +1,7 @@
 import {coordNoise} from '../core/rng.js';
 import {deriveDrainage} from './topography.js';
 import {CAVES} from './cave-policy.js';
-import {excavatePassage,validateSubsurface,batchExcavation} from './subsurface.js';
+import {excavatePassage,validateSubsurface,batchExcavation,refreshPassages} from './subsurface.js';
 import {TERRAIN_SEDIMENT} from './terrain-sediment.js';
 export {CAVES};
 export function caveFracture(w,i){const x=i%w.n+(w.regionOrigin?.x||0),y=(i/w.n|0)+(w.regionOrigin?.y||0);return coordNoise(w.seedHash^0x63617665,Math.floor(x/3),Math.floor(y/3))}
@@ -62,6 +62,7 @@ export function initializeCaves(w,{generate=false}={}){
   growGeologicalChamber(w,i);
 
  }
+ refreshPassages(w);
  });
 }
 // Deterministic, material-funded multi-front geology. Each accepted chamber

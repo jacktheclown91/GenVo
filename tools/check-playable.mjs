@@ -27,6 +27,7 @@ const runtime=[
   'tests/atmospheric-visibility.mjs',
   'tests/natural-caves.mjs',
   'tests/cave-chambers.mjs',
+  'tests/cave-roof.mjs',
   'tests/burrowing.mjs',
   'tests/climbing.mjs',
   'tests/action-capabilities.mjs',

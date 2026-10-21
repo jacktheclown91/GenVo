@@ -81,6 +81,7 @@ export function cueForResult(result){
   if(type==='ice-escape')return'land';
   if(type==='dive'||type==='surface')return result.ok?'splash':'deny';
   if(type==='burrow'||type==='burrow-dug')return result.ok?'build':'deny';
+  if(type==='burrow-collapse')return'land';
   if(type==='burrow-enter'||type==='burrow-exit')return'land';
   if(type==='climb')return result.ok?'confirm':'deny';
   if(type==='climb-top'||type==='climb-ground')return'land';
