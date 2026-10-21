@@ -1,3 +1,4 @@
+import {syncCaveAir} from '../world/cave-air.js';
 // Soil-water cycle (roadmap stage W). The previous rule changed moisture each day by
 // rain*0.06 - (0.025 + 0.035*temp): evaporation did not depend on how much water the soil held, so the daily
 // change was negative in every season for almost every rain draw and land moisture could only fall to its floor.
@@ -24,7 +25,7 @@ export function initializeSoilWater(w){
   const fieldCapacity=new Float32Array(w.len),groundwater=new Float32Array(w.len);
   for(let i=0;i<w.len;i++){fieldCapacity[i]=SOIL_WATER.capacityBase+SOIL_WATER.capacityWet*clamp01(w.moisture[i]);groundwater[i]=w.water[i]?1:clamp01(w.moisture[i])}
   w.soilWater={schema:1,...(w.generator==='planetary/1'&&w.environment?.groundwaterSeamEligibility===PLANETARY_SEAM_GROUNDWATER.policy?{seamGroundwaterPolicy:PLANETARY_SEAM_GROUNDWATER.policy}:{}),...(w.generator==='planetary/1'&&w.environment?.schema===6&&w.environment?.springEligibility===GROUNDWATER_SPRINGS.policy?{springPolicy:GROUNDWATER_SPRINGS.policy}:{}),fieldCapacity,groundwater,snowpack:new Float64Array(w.len),scratch:new Float32Array(w.len),totals:{rain:0,snowfall:0,snowmelt:0,infiltration:0,runoff:0,evaporation:0,percolation:0,capillary:0,lateral:0,deepDrainage:0,uptake:0,overflow:0,springDischarge:0},day:0};
-  return w.soilWater;
+  syncCaveAir(w);return w.soilWater;
 }
 export function validateSoilWater(w,s){
   if(s?.schema!==1)throw Error('Invalid soil water schema.');
@@ -68,7 +69,7 @@ export function advanceSoilWater(w,climate,day,{runoffSink=null}={}){
     // that outgoing stock to its own overland inventory later this day.
     if(runoffSink)runoffSink(i,liquid-infiltration+overflow);
     t.rain+=cellRain;t.snowfall=(t.snowfall||0)+snow.snowfall;t.snowmelt=(t.snowmelt||0)+snow.melt;t.infiltration+=infiltration;t.runoff+=liquid-infiltration;t.evaporation+=evaporation;t.percolation+=percolation;t.capillary+=capillary;t.deepDrainage+=deep}
-  s.day=day;return s;
+  s.day=day;syncCaveAir(w);return s;
 }
 // Land water storage: soil moisture plus groundwater over every land cell (open water is a fixed boundary).
 export function soilWaterStorage(w){const g=w.soilWater?.groundwater;let s=0;for(let i=0;i<w.len;i++)if(!w.water[i])s+=w.moisture[i]+(g?g[i]:0)+(w.soilWater?.snowpack?.[i]||0);return s}
@@ -89,6 +90,9 @@ export function advanceSoilDay(w,climate,day){
   // A spring moves already stored groundwater into this same finite runoff.
   // No spring can discharge in historical worlds or outside planetary soil days.
   if(runoff)advanceGroundwaterSprings(w,runoff,day);
+  // Runoff validates cave geometry before applying erosion/topology changes.
+  // Publish the gas displacement from this already committed groundwater step.
+  syncCaveAir(w);
   const after=soilWaterStorage(w),f=Object.fromEntries(FLOWS.map(k=>[k,s.totals[k]-t0[k]])),inputs=f.rain+f.lateral,outputs=f.runoff+f.evaporation+f.deepDrainage+f.uptake+f.overflow+f.springDischarge;
   let land=0,moisture=0;for(let i=0;i<w.len;i++)if(!w.water[i]){land++;moisture+=w.moisture[i]}
   s.lastDay={day,climateRain:climate.rain,climateTemp:climate.temp,...f,inputs,outputs,storageBefore:before,storageAfter:after,storageChange:after-before,closure:inputs-outputs-(after-before),meanMoisture:land?moisture/land:0,...(s.pageGroundwaterTransfers?{pageGroundwaterTransfers:s.pageGroundwaterTransfers}:{})};
@@ -100,5 +104,5 @@ export function advanceSoilDay(w,climate,day){
     s.lastDay.overlandMoved=routed.moved;
     s.lastDay.overlandStored=routed.stored;
   }
-  return s;
+  syncCaveAir(w);return s;
 }

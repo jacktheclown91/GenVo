@@ -1,3 +1,4 @@
+import {caveFlooded,exposedCaveWater} from '../world/cave-water.js';
 import {CAVE_AIR,caveAirAt} from '../world/cave-air.js';
 import {CAVES} from '../world/cave-policy.js';
 import {startCaveTransit} from './cave-traversal.js';
@@ -8,10 +9,10 @@ export const BURROWING=Object.freeze({policy:SUBSURFACE.policy,seconds:2.5,work:
 export function burrowingAnatomy(a){return(planPartCounts(a)['digging-forelimb']||0)>=2}
 export function undergroundRoof(w,a){const p=a?.underground?passageAt(w,a.x,a.y):null;return !!p&&!p.closed&&!p.entry}
 export function burrowTemperature(w,a,temp){return undergroundRoof(w,a) ? .55+(temp-.55)*.25 : temp}
-export function undergroundPosition(w,a,x=a.x,y=a.y){const p=passageAt(w,x,y),from=passageAt(w,a.x,a.y),cx=Math.floor(a.x),cy=Math.floor(a.y),tx=Math.floor(x),ty=Math.floor(y);if(cx!==tx&&cy!==ty){const sideX=passageAt(w,tx+.5,cy+.5),sideY=passageAt(w,cx+.5,ty+.5);if(!sideX||sideX.closed||!sideY||sideY.closed)return false}return !!p&&!p.closed&&adultBodyMass(a)<=SUBSURFACE.maxLoad&&(!from||Math.abs(p.floor-from.floor)<=.6)}
+export function undergroundPosition(w,a,x=a.x,y=a.y){const p=passageAt(w,x,y),from=passageAt(w,a.x,a.y),cx=Math.floor(a.x),cy=Math.floor(a.y),tx=Math.floor(x),ty=Math.floor(y);if(cx!==tx&&cy!==ty){const sideX=passageAt(w,tx+.5,cy+.5),sideY=passageAt(w,cx+.5,ty+.5);if(!sideX||sideX.closed||!sideY||sideY.closed)return false}return !!p&&!p.closed&&!caveFlooded(w,p.i)&&adultBodyMass(a)<=SUBSURFACE.maxLoad&&(!from||Math.abs(p.floor-from.floor)<=.6)}
 function passageRoute(w,a,accept){
  const start=w.idx(a.x,a.y),seen=new Map([[start,null]]),queue=[start];let found=null;
- for(let k=0;k<queue.length;k++){const i=queue[k],p=w.subsurface?.passages.get(i);if(p&&!p.closed&&accept(p,i)){found=i;break}const x=i%w.n,y=i/w.n|0;for(const j of [x>0?i-1:-1,x<w.n-1?i+1:-1,y>0?i-w.n:-1,y<w.n-1?i+w.n:-1]){const q=w.subsurface?.passages.get(j);if(q&&!q.closed&&!seen.has(j)&&Math.abs(q.floor-(p?.floor??q.floor))<=.6){seen.set(j,i);queue.push(j)}}}
+ for(let k=0;k<queue.length;k++){const i=queue[k],p=w.subsurface?.passages.get(i);if(p&&!p.closed&&accept(p,i)){found=i;break}const x=i%w.n,y=i/w.n|0;for(const j of [x>0?i-1:-1,x<w.n-1?i+1:-1,y>0?i-w.n:-1,y<w.n-1?i+w.n:-1]){const q=w.subsurface?.passages.get(j);if(q&&!q.closed&&!caveFlooded(w,j)&&!seen.has(j)&&Math.abs(q.floor-(p?.floor??q.floor))<=.6){seen.set(j,i);queue.push(j)}}}
  if(found===null)return null;const route=[];while(found!==start){route.unshift(found);found=seen.get(found)}return route;
 }
 export function entranceRoute(w,a){return passageRoute(w,a,(p,i)=>p.entry&&!w.water[i])}
@@ -54,14 +55,14 @@ export function stepBurrowWork(sim,a,dt){
 }
 export function moveUnderground(sim,a,dx,dy,dt){
  if(!a?.underground||a.burrowWork||a.caveTransit||!(dt>0&&dt<=.25))return false;
- const w=sim.world,len=Math.hypot(dx,dy);if(!len)return false;dx/=len;dy/=len;const nx=a.x+dx*BURROWING.moveSpeed*dt,ny=a.y+dy*BURROWING.moveSpeed*dt;
+ const w=sim.world,len=Math.hypot(dx,dy);if(!len)return false;dx/=len;dy/=len;const wading=1/(1+exposedCaveWater(w,w.idx(a.x,a.y))*60);const nx=a.x+dx*BURROWING.moveSpeed*wading*dt,ny=a.y+dy*BURROWING.moveSpeed*wading*dt;
  if(undergroundPosition(w,a,nx,ny)){const ox=a.x,oy=a.y;a.x=nx;a.y=ny;a.energy-=Math.hypot(nx-ox,ny-oy)*adultBodyMass(a)*BURROWING.moveWork;a.dir=((Math.round(Math.atan2(dy,dx)/(Math.PI/4))+2)%8+8)%8;a.anim=(a.anim+dt*4)%8;a.movedTick=sim.tickCount;sim.regionalEcology?.notePageMove(a,ox,oy);return true}
  const cx=Math.floor(a.x),cy=Math.floor(a.y),tx=cx+(Math.abs(dx)>=Math.abs(dy)?Math.sign(dx):0),ty=cy+(Math.abs(dx)<Math.abs(dy)?Math.sign(dy):0),i=w.idx(tx+.5,ty+.5),site=excavationSite(w,i),from=passageAt(w,a.x,a.y);
  if(site&&Math.abs(site.floor-(from?.floor??site.floor))<=.6)startBurrowWork(sim,a,i);return false;
 }
 export function* undergroundRespirators(sim,dt){for(const a of sim.animals)if(a.alive&&a.underground)yield{id:a.id,i:sim.world.idx(a.x,a.y),demand:adultBodyMass(a)*CAVE_AIR.consumption*dt*(a.burrowWork?1.6:a.intent==='rest'?.65:1)}}
 export function stepUndergroundCondition(sim,a,dt,supplied=undefined){
- if(!a?.underground)return;const p=passageAt(sim.world,a.x,a.y),flooded=!!sim.world.water[sim.world.idx(a.x,a.y)];
+ if(!a?.underground)return;const p=passageAt(sim.world,a.x,a.y),flooded=caveFlooded(sim.world,sim.world.idx(a.x,a.y));
  if(!p||p.closed||flooded||(sim.world.subsurface?.air?(supplied===undefined?!caveAirAt(sim.world,p.i).breathable:supplied<.99):!entranceRoute(sim.world,a))){a.burrowAir=Math.max(0,(a.burrowAir??BURROWING.airSeconds)-dt);if(a.burrowAir===0)a.health=Math.max(0,a.health-4*dt)}else delete a.burrowAir;
 }
 export function undergroundFood(a,i,kind,w){return !a?.underground||ROOT_FOODS.includes(kind)&&i===w.idx(a.x,a.y)}

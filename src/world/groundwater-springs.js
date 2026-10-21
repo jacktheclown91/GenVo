@@ -1,3 +1,4 @@
+import {syncCaveAir} from './cave-air.js';
 // Spring outlets are paid for from the existing World-owned groundwater
 // inventory. The outgoing water enters the SAME land runoff handoff that
 // already routes rainfall, snowmelt and saturated-soil overflow.
@@ -10,6 +11,13 @@ export const GROUNDWATER_SPRINGS=Object.freeze({
  dischargeFraction:.15,maxDischargePerCell:.022,
  maxSpringCellsPerDay:256,freezingTemperature:.30
 });
+const floatBits=new DataView(new ArrayBuffer(4));
+function debitAtMost(before,desired){
+ let after=Math.fround(before-desired);
+ // Rounding a Float32 donor down must not exceed the declared water budget.
+ if(before-after>desired){floatBits.setFloat32(0,after);floatBits.setUint32(0,floatBits.getUint32(0)+1);after=floatBits.getFloat32(0)}
+ return after;
+}
 
 export function validateGroundwaterSpringPolicy(w,soil){
  if(soil?.springPolicy===undefined)return;
@@ -51,13 +59,13 @@ export function advanceGroundwaterSprings(w,runoff,day){
   if(before<=rule.waterTableThreshold)continue;
   const desired=Math.min(rule.maxDischargePerCell,
    (before-rule.waterTableThreshold)*rule.dischargeFraction);
-  const after=Math.fround(before-desired),amount=before-after;
+  const after=debitAtMost(before,desired),amount=before-after;
   if(!(amount>0))continue;
   if(!Number.isFinite(runoff[i])||runoff[i]<0)
    throw Error('Invalid runoff stock at spring outlet.');
   g[i]=after;
   runoff[i]+=amount;discharged+=amount;sites++;
  }
- s.totals.springDischarge+=discharged;
+ syncCaveAir(w);s.totals.springDischarge+=discharged;
  return{discharged,sites};
 }

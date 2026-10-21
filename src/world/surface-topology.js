@@ -1,3 +1,4 @@
+import {syncCaveAir} from './cave-air.js';
 import {iceAmount} from './surface-ice.js';
 // One World-owned topology boundary. Runtime transitions are accounted; saved corruption is not repaired.
 import {coordNoise} from '../core/rng.js';
@@ -67,7 +68,7 @@ export function synchronizeSurfaceWater(w,previous,{reason='legacy-mask-edit',ad
  if(next){next.totals.saltInput+=row.saltInput;next.totals.saltOutput+=row.saltOutput;validateEnvironment(w,next);}
  const totals={...state,revision:row.revision,events:[...state.events,row].slice(-64)};for(const k of ['waterInput','waterOutput','saltInput','saltOutput'])totals[k]+=row[k];validateTopologyState(totals);
  if(bathymetry)w.divingBathymetry=bathymetry;
- if(next)w.environment=next;w.topology=totals;w._topologyMask=w.water.slice();deriveDrainage(w);return row;
+ if(next)w.environment=next;w.topology=totals;w._topologyMask=w.water.slice();deriveDrainage(w);syncCaveAir(w);return row;
 }
 // No saved mask is a documented migration, not permission to repair inconsistent supplied masks.
 export function restoreSurfaceTopology(w,state){

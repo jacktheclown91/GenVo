@@ -1,3 +1,4 @@
+import {exposedCaveWater} from '../world/cave-water.js';
 import {CAVES} from '../world/cave-policy.js';
 import {caveFracture} from '../world/natural-caves.js';
 
@@ -26,7 +27,7 @@ export function caveTileData(w,p){
  const x=p.i%w.n,y=p.i/w.n|0,natural=p.origin===CAVES.policy;
  const neighbors=[caveNeighborOpen(w,p,0,-1),caveNeighborOpen(w,p,1,0),caveNeighborOpen(w,p,0,1),caveNeighborOpen(w,p,-1,0)];
  const data=new Uint8ClampedArray(S*S*4),root=(w.plants?.woodspire?.[p.i]||0)+(w.plants?.bramble?.[p.i]||0)*.3;
- const wet=!!w.water[p.i],damp=clamp(w.moisture?.[p.i]||0,0,1),height=clamp(w.terrain?.elevation?.[p.i]||0,0,1);
+ const liquid=exposedCaveWater(w,p.i),wet=!!w.water[p.i]||liquid>.001,damp=clamp(w.moisture?.[p.i]||0,0,1),height=clamp(w.terrain?.elevation?.[p.i]||0,0,1);
  const fracture=natural?caveFracture(w,p.i):.45;
  let floorPixels=0,wallPixels=0;
  for(let py=0;py<S;py++)for(let px=0;px<S;px++){
@@ -37,7 +38,7 @@ export function caveTileData(w,p){
     wallLeft=!neighbors[3]&&px<thickness+wiggle;
   const wall=wallTop||wallRight||wallBottom||wallLeft;
   if(wall)wallPixels++;else floorPixels++;
-  const palette=wall?(natural?ROCK:SOIL):wet?WATER:(natural?FLOOR:EARTH);
+  const palette=wall?(natural?ROCK:SOIL):wet&&(w.water[p.i]||(grit%100)<Math.min(100,liquid/p.void*150))?WATER:(natural?FLOOR:EARTH);
   const base=palette[grit%palette.length],brightness=wall?(wallTop?8:wallBottom?-10:0):Math.round((damp-.5)*-7+(fracture-.6)*9-height*3);
   const fine=(grit>>>6)%13===0?10:(grit>>>5)%11===0?-7:0;
   const sediment=!wall&&(grit&31)===1?8:0;
@@ -51,8 +52,8 @@ export function caveTileData(w,p){
 }
 export function caveArtwork(renderer,p){
  const world=renderer.sim.world,revision=world.subsurface?.revision||0;
- if(!renderer.caveArtworkCache||renderer.caveArtworkWorld!==world||renderer.caveArtworkRevision!==revision){
-  renderer.caveArtworkWorld=world;renderer.caveArtworkRevision=revision;renderer.caveArtworkCache=new Map();
+ if(!renderer.caveArtworkCache||renderer.caveArtworkWorld!==world||renderer.caveArtworkRevision!==revision||renderer.caveArtworkWaterDay!==world.soilWater?.day){
+  renderer.caveArtworkWorld=world;renderer.caveArtworkRevision=revision;renderer.caveArtworkWaterDay=world.soilWater?.day;renderer.caveArtworkCache=new Map();
  }
  const cache=renderer.caveArtworkCache;
  let art=cache.get(p.i);

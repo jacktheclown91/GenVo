@@ -3,6 +3,11 @@
   "principle": "One live authority for each mechanism. Multiple states, species, art drafts and measured outcomes are permitted; competing runtime definitions are not.",
   "gameEntrypoint": "src/main.js",
   "systems": {
+    "exposedCaveGroundwater": {
+      "authority": "src/world/cave-water.js",
+      "consumers": ["src/world/topography.js", "src/world/cave-air.js", "src/world/subsurface.js", "src/lineage/burrowing.js", "src/lineage/cave-traversal.js", "src/ecology/stratum-senses.js", "src/render/cave-surface.js", "src/render/subsurface.js"],
+      "contract": "docs/CAVE-GROUNDWATER-2026-10-21.md"
+    },
     "finiteCaveOxygen": {
       "authority": "src/world/cave-air.js",
       "consumers": ["src/world/subsurface.js", "src/world/natural-caves.js", "src/lineage/burrowing.js", "src/sim/simulation.js", "src/render/subsurface.js"],

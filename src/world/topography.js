@@ -1,3 +1,4 @@
+import {caveGroundwaterFlow} from './cave-water.js';
 // Dimensionless elevation above the existing freshwater datum. No biome bonuses or RNG draws.
 import {coordNoise} from '../core/rng.js';
 import {WORLD_PAGE_SIZE} from './pages.js';
@@ -24,7 +25,7 @@ export function terrainTravel(w,fromX,fromY,toX,toY){const distance=Math.hypot(t
 // Open water is the existing fixed reservoir; only its NET exchange crosses the land budget.
 export function exchangeTerrainGroundwater(w,g,next,lateral,onLandTransfer=null){
  const e=w.terrain.elevation,n=w.n;next.set(g);let boundary=0;
- const pair=(i,j)=>{if(w.water[i]&&w.water[j])return;const gi=w.water[i]?1:g[i],gj=w.water[j]?1:g[j],head=(e[i]+gi)-(e[j]+gj);if(!head)return;const from=head>0?i:j,to=head>0?j:i,available=w.water[from]?1:g[from],flow=Math.min(Math.abs(head)*lateral*.25,available*.25);if(!w.water[from])next[from]-=flow;if(!w.water[to])next[to]+=flow;if(w.water[from])boundary+=flow;else if(w.water[to])boundary-=flow;else if(flow>0&&onLandTransfer&&((j===i+1&&(i%n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)||(j===i+n&&Math.floor(i/n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)))onLandTransfer(i,j,from===i?flow:-flow);};
+ const pair=(i,j)=>{const cave=caveGroundwaterFlow(w,i,j,g[i],g[j],lateral);if(cave){const {from,to,flow}=cave;next[from]-=flow;next[to]+=flow;if(flow>0&&onLandTransfer&&((j===i+1&&(i%n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)||(j===i+n&&Math.floor(i/n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)))onLandTransfer(i,j,from===i?flow:-flow);return}if(w.water[i]&&w.water[j])return;const gi=w.water[i]?1:g[i],gj=w.water[j]?1:g[j],head=(e[i]+gi)-(e[j]+gj);if(!head)return;const from=head>0?i:j,to=head>0?j:i,available=w.water[from]?1:g[from],flow=Math.min(Math.abs(head)*lateral*.25,available*.25);if(!w.water[from])next[from]-=flow;if(!w.water[to])next[to]+=flow;if(w.water[from])boundary+=flow;else if(w.water[to])boundary-=flow;else if(flow>0&&onLandTransfer&&((j===i+1&&(i%n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)||(j===i+n&&Math.floor(i/n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)))onLandTransfer(i,j,from===i?flow:-flow);};
  for(let i=0;i<w.len;i++){if(i%n<n-1)pair(i,i+1);if(i+n<w.len)pair(i,i+n)}
  for(let i=0;i<w.len;i++)if(w.water[i])next[i]=1;
  return boundary;

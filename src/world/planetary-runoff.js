@@ -1,3 +1,4 @@
+import {syncCaveAir} from './cave-air.js';
 import {liquidVolume} from './surface-ice.js';
 import {PLANETARY_MINERAL_RUNOFF,stageRunoffMinerals} from './planetary-mineral-runoff.js';
 import {TERRAIN_SEDIMENT,stageTerrainSediment,validateSedimentDeltas} from './terrain-sediment.js';
@@ -154,6 +155,7 @@ export function routePlanetaryRunoff(w,runoff,day){
  if(pendingSalt)e.salt.set(pendingSalt);
  if(mineralEnabled)for(const [i,delta] of mineralDelta)minerals[i]+=delta;
  if(eroding)for(const [i,delta] of terrainDelta)w.terrain.elevation[i]=Math.fround(w.terrain.elevation[i]+delta);
+ syncCaveAir(w);
  const caveErosion=erodeNaturalCaves(w,caveEdges);
  e.totals.soilRunoffReceived=(e.totals.soilRunoffReceived||0)+captured;
  e.totals.runoffDelivered=(e.totals.runoffDelivered||0)+delivered;

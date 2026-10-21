@@ -1,3 +1,4 @@
+import {caveFlooded} from '../world/cave-water.js';
 import {CAVES} from '../world/cave-policy.js';
 import {caveArtwork,openPassage} from './cave-surface.js';
 import {caveRoofSupport} from '../world/cave-roof.js';
@@ -64,7 +65,7 @@ export function drawSubsurface(renderer,tile){
   const observer=renderer.sim.player();
   if(s.air?.policy===CAVE_AIR.policy){
    const air=caveAirAt(w,w.idx(observer.x,observer.y)),danger=!air.breathable;
-   const message=danger?'Air depleted · '+Math.ceil(observer.burrowAir??12)+'s':air.fraction<.15?'Air thinning · find an opening':'Fresh cave air';
+   const message=caveFlooded(w,w.idx(observer.x,observer.y))?'Flooded - air '+Math.ceil(observer.burrowAir??12)+'s':danger?'Air depleted · '+Math.ceil(observer.burrowAir??12)+'s':air.fraction<.15?'Air thinning · find an opening':'Fresh cave air';
    c.save();c.font='11px sans-serif';c.textAlign='center';const width=c.measureText(message).width+14,x=renderer.w/2,y=renderer.h/2+tile*.8;
    c.fillStyle='#111b18df';c.fillRect(x-width/2,y-13,width,18);c.fillStyle=danger?'#efb28c':air.fraction<.15?'#ddca98':'#a2b9ac';c.fillText(message,x,y);c.restore();
   }

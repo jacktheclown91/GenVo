@@ -20,7 +20,7 @@ export function adoptCaveRules(sim,{source,backupSlot}={}){
  if(typeof source!=='string'||!source.trim()||source.length>512||!validId(backupSlot))throw Error('Cave adoption requires a source and backup.');
  restoreCaveRules(sim,sim);const sessions=sim.planetaryTravel?.sessions||[];
  for(const s of sessions)if(s.biologicalMode!=='canonical-ticks/1'||s.snapshot.core.tickCount!==sim.tickCount)throw Error('Finish canonical regional catchup before cave adoption.');
- const worlds=[sim.world,...sessions.map(s=>s.snapshot.world)],prior=worlds.map(w=>({w,value:w.subsurface}));for(const w of worlds)validateCaves({...w,len:sim.world.len},sim.caveRules);
+ const worlds=[sim.world,...sessions.map(s=>s.snapshot.world)],prior=worlds.map(w=>({w,value:w.subsurface}));for(const w of worlds)validateCaves({...w,water:w.water||w.surfaceWater?.mask,len:sim.world.len},sim.caveRules);
  const cores=[sim,...sessions.map(s=>s.snapshot.core)],record={schema:1,source:source.trim(),backupSlot,tick:sim.tickCount,from:sim.caveRules??null,to:CAVES.policy};
  const plans=cores.map(core=>{const history=[...(core.caveRuleMigrations||[]),structuredClone(record)];validateCaveHistory({...core,caveRules:CAVES.policy,caveRuleMigrations:history});return{core,history,rule:core.caveRules,ruleOwn:Object.hasOwn(core,'caveRules'),prior:core.caveRuleMigrations,priorOwn:Object.hasOwn(core,'caveRuleMigrations')}});
  for(const w of worlds)if(w.subsurface?.cavePolicy!==CAVES.policy)initializeCaves(w);

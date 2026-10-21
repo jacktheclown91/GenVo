@@ -19,7 +19,7 @@ export function adoptBurrowingRules(sim,{source,backupSlot}={}){
  restoreBurrowingRules(sim,sim);const sessions=sim.planetaryTravel?.sessions||[];
  for(const s of sessions)if(s.biologicalMode!=='canonical-ticks/1'||s.snapshot.core.tickCount!==sim.tickCount)throw Error('Finish canonical regional catchup before burrowing adoption.');
  const worlds=[sim.world,...sessions.map(s=>s.snapshot.world)],priorWorlds=worlds.map(w=>({w,own:Object.hasOwn(w,'subsurface'),value:w.subsurface}));
- for(const w of worlds)validateSubsurface({subsurface:w.subsurface,len:sim.world.len},sim.burrowingRules===BURROWING.policy);
+ for(const w of worlds)validateSubsurface({...w,water:w.water||w.surfaceWater?.mask,len:sim.world.len},sim.burrowingRules===BURROWING.policy);
  const cores=[sim,...sessions.map(s=>s.snapshot.core)],record={schema:1,source:source.trim(),backupSlot,tick:sim.tickCount,from:sim.burrowingRules??null,to:BURROWING.policy};
  const plans=cores.map(core=>{const history=[...(core.burrowingRuleMigrations||[]),structuredClone(record)];validateBurrowingHistory({...core,burrowingRules:BURROWING.policy,burrowingRuleMigrations:history});return{core,history,rule:core.burrowingRules,ruleOwn:Object.hasOwn(core,'burrowingRules'),prior:core.burrowingRuleMigrations,priorOwn:Object.hasOwn(core,'burrowingRuleMigrations')}});
  for(const w of worlds)w.subsurface??=emptySubsurface();

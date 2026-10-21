@@ -1,3 +1,4 @@
+import {syncCaveAir} from './cave-air.js';
 import {SURFACE_ICE,iceAmount,liquidVolume,validateSurfaceIce} from './surface-ice.js';
 // Genuine paired dissolved-salt transport between two independently owned
 // planetary Worlds at the SAME completed biological day. Every source debit
@@ -68,11 +69,11 @@ export function validatePlanetarySeamLedger(state){
 function regionOf(sim,session){
  const w=session?.snapshot?.world;
  if(!w?.environment||!(w.surfaceWater?.mask instanceof Uint8Array))return null;
- return{key:session.key,origin:w.regionOrigin,water:w.surfaceWater.mask,env:w.environment,terrain:w.terrain,soil:w.soilWater,minerals:w.plantResources?.minerals,session};
+ return{key:session.key,origin:w.regionOrigin,water:w.surfaceWater.mask,env:w.environment,terrain:w.terrain,soil:w.soilWater,subsurface:w.subsurface,minerals:w.plantResources?.minerals,session};
 }
 function ownedActive(sim){
  return{key:regionKey(sim.world.regionOrigin),origin:sim.world.regionOrigin,
- water:sim.world.water,env:sim.world.environment,terrain:sim.world.terrain,soil:sim.world.soilWater,minerals:sim.world.plantResources?.minerals,session:null};
+ water:sim.world.water,env:sim.world.environment,terrain:sim.world.terrain,soil:sim.world.soilWater,subsurface:sim.world.subsurface,minerals:sim.world.plantResources?.minerals,session:null};
 }
 // Assign one source of water for each known, wet inter-region edge. New
 // policy/2 worlds exchange across their shared simulated border instead of
@@ -373,6 +374,7 @@ export function reconcilePlanetarySaltSeams(sim){
   for(const [i,delta] of groundwaterChanges.get(r.key)){
    const store=r.soil.groundwater,old=store[i];store[i]=Math.fround(old+delta);actualGroundwater+=store[i]-old;
   }
+  syncCaveAir({subsurface:r.subsurface,terrain:r.terrain,soilWater:r.soil,water:r.water});
   if(groundwater.incoming||groundwater.outgoing){
    const soil=r.soil,upd=record=>{
     record.inputs+=groundwater.incoming;

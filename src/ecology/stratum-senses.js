@@ -1,3 +1,4 @@
+import {caveFlooded} from '../world/cave-water.js';
 import {undergroundLineOfSight} from '../world/cave-optics.js';
 import {PARTS} from '../lineage/part-registry.js';
 import {waterColumn} from '../lineage/diving.js';
@@ -6,17 +7,17 @@ import {wetSegment} from '../world/water-route.js';
 export const STRATUM_SENSES=Object.freeze({policy:'physical-stratum-senses/1',daylightSteps:6,daylightDecay:.62});
 export const sensoryMedium=a=>a?.underground?'cave':(a?.diveDepth||0)>.03?'water':'surface';
 const sees=a=>!a?.bodyPlan?.nodes||a.bodyPlan.nodes.some(n=>PARTS[n.partId]?.actionCapabilities.includes('see'));
-const openPassage=(w,i)=>{const p=w.subsurface?.passages.get(i);return p&&!p.closed&&!w.water[i]?p:null};
+const openPassage=(w,i)=>{const p=w.subsurface?.passages.get(i);return p&&!p.closed&&!caveFlooded(w,i)?p:null};
 const neighbors=(w,i)=>{const x=i%w.n,y=i/w.n|0;return[x>0?i-1:-1,x<w.n-1?i+1:-1,y>0?i-w.n:-1,y<w.n-1?i+w.n:-1]};
 function caveEdge(w,i,j){const p=openPassage(w,i),q=openPassage(w,j);return !!p&&!!q&&Math.abs(p.floor-q.floor)<=.6}
 const lightCaches=new WeakMap();
 export function caveDaylight(w,i){
  const s=w.subsurface;if(!s||!openPassage(w,i))return 0;
- let hit=lightCaches.get(w);if(!hit||hit.revision!==s.revision||hit.topology!==w.topology?.revision){
+ let hit=lightCaches.get(w);if(!hit||hit.revision!==s.revision||hit.topology!==w.topology?.revision||hit.waterDay!==w.soilWater?.day){
   const distance=new Uint8Array(w.len).fill(255),queue=new Int32Array(w.len);let head=0,tail=0;
   for(const p of s.passages.values())if(p.entry&&openPassage(w,p.i)){distance[p.i]=0;queue[tail++]=p.i}
   while(head<tail){const j=queue[head++];if(distance[j]>=STRATUM_SENSES.daylightSteps)continue;for(const k of neighbors(w,j))if(k>=0&&distance[k]>distance[j]+1&&caveEdge(w,j,k)){distance[k]=distance[j]+1;queue[tail++]=k}}
-  hit={revision:s.revision,topology:w.topology?.revision,distance};lightCaches.set(w,hit);
+  hit={revision:s.revision,topology:w.topology?.revision,waterDay:w.soilWater?.day,distance};lightCaches.set(w,hit);
  }
  return hit.distance[i]===255?0:STRATUM_SENSES.daylightDecay**hit.distance[i];
 }
