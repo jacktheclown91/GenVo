@@ -10,6 +10,33 @@ export function visualSurveyRange(animal,base=8){return base*(animal.genes?.sens
 // availability and the player-facing fog. The physical environment is never
 // simulated differently when a creature cannot see it.
 const FACINGS=[[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];
+// Below ground, light and direct vision cannot travel through unexcavated
+// material. A ray moves only through connected, physically open passages.
+function openUndergroundCell(world,x,y){
+ if(!world||x<0||y<0||x>=world.n||y>=world.n)return false;
+ const passage=world.subsurface?.passages?.get(y*world.n+x);
+ return !!passage&&!passage.closed;
+}
+export function undergroundLineOfSight(world,fromX,fromY,toX,toY){
+ const ax=Math.floor(fromX),ay=Math.floor(fromY),bx=Math.floor(toX),by=Math.floor(toY);
+ if(!openUndergroundCell(world,ax,ay)||!openUndergroundCell(world,bx,by))return false;
+ const dx=Math.abs(bx-ax),dy=Math.abs(by-ay);
+ let x=ax,y=ay,err=dx-dy;
+ const sx=ax<bx?1:-1,sy=ay<by?1:-1;
+ for(let steps=0;steps<dx+dy+1;steps++){
+  if(x===bx&&y===by)return true;
+  const twice=2*err;
+  const moveX=twice>-dy,moveY=twice<dx;
+  const nx=x+(moveX?sx:0),ny=y+(moveY?sy:0);
+  // Diagonal gaps between two solid walls are not optical doorways.
+  if(moveX&&moveY&&(!openUndergroundCell(world,nx,y)||!openUndergroundCell(world,x,ny)))return false;
+  if(!openUndergroundCell(world,nx,ny))return false;
+  if(moveX)err-=dy;if(moveY)err+=dx;
+  x=nx;y=ny;
+ }
+ return false;
+}
+
 export function creatureView(sim,observer,base=8){
  if(!observer)return null;
  const nodes=observer.bodyPlan?.nodes||[],eyes=nodes.filter(n=>n.socket?.startsWith('eye')).length;
@@ -19,7 +46,7 @@ export function creatureView(sim,observer,base=8){
  const limit=observer.underground?Math.min(range,4):observer.diveDepth>.03?Math.min(range,3.5):range;
  const air=!observer.underground&&!(observer.diveDepth>.03)&&sim.visibilityRules===VISIBILITY.policy?atmosphereAt(sim,observer.x,observer.y):null;
  const adjusted=limit*Math.exp(-(air?.extinction||0)*Math.min(10,limit)*.5);
- return{observer,range:Math.max(1.55,Math.min(24,adjusted)),eyes,
+ return{observer,world:sim.world,range:Math.max(1.55,Math.min(24,adjusted)),eyes,
    rearLimit:eyes>0&&effects.wideField?-.98:eyes>=2?-.62:eyes===1?-.12:1,
    touch:1.55,level:!!observer.underground?'underground':'surface',
    facing:FACINGS[((observer.dir||0)%8+8)%8]||FACINGS[0]};
@@ -29,13 +56,14 @@ export function viewCanSee(view,x,y){
  const dx=x-view.observer.x,dy=y-view.observer.y,d=Math.hypot(dx,dy);
  if(d<=view.touch)return true;
  if(d>view.range||view.eyes===0)return false;
+ if(view.level==='underground'&&!undergroundLineOfSight(view.world,view.observer.x,view.observer.y,x,y))return false;
  return(dx*view.facing[0]+dy*view.facing[1])/(d*Math.hypot(...view.facing))>=view.rearLimit;
 }
-export function visuallyObservable(sim,observer,target,base=8){
+export function visuallyObservable(sim,observer,target,base=8,preparedView=null){
  if(!observer||observer.id===target.id)return true;
  if(sim.sensoryFogEnabled===true){
    if((target.id!==undefined||target.underground!==undefined)&&!!observer.underground!==!!target.underground)return false;
-   if(!viewCanSee(creatureView(sim,observer,base),target.x,target.y))return false;
+   if(!viewCanSee(preparedView||creatureView(sim,observer,base),target.x,target.y))return false;
  }
  if(sim.visibilityRules!==VISIBILITY.policy||observer.underground)return true;
  return atmosphericSight(sim,observer,target,visualSurveyRange(observer,base)).detected;
