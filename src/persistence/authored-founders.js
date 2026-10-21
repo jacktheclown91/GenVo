@@ -47,7 +47,9 @@ export function installAuthoredFounders(sim,members,design,{sitePreference=null,
  const receipt={schema:1,source:'explicit-authored-introduction',day:sim.day,tick:sim.tickCount,
   mode:design.mode,actors:introduced,design:structuredClone(design),...(starterFocus?{starterFocus}:{})};
  sim.authoredIntroductions=[...(sim.authoredIntroductions||[]),receipt];
- sim.creatureStart={...sim.creatureStart,kind:'authored-founder',mode:design.mode,actorIds:members.map(a=>a.id),introductionIndex:sim.authoredIntroductions.length-1,...(starterFocus?{starterFocus}:{})};
+ sim.creatureStart={...sim.creatureStart,kind:'authored-founder',mode:design.mode,actorIds:members.map(a=>a.id),introductionIndex:sim.authoredIntroductions.length-1};
+ if(starterFocus)sim.creatureStart.starterFocus=starterFocus;
+ else delete sim.creatureStart.starterFocus;
  for(const session of sim.planetaryTravel?.sessions||[]){session.snapshot.core.creatureStart=structuredClone(sim.creatureStart);session.snapshot.core.authoredIntroductions=structuredClone(sim.authoredIntroductions);}
  sim.stats.authoredIntroductions=(sim.stats.authoredIntroductions||0)+members.length;
  sim.paused=false;sim.rebuildSpatial();sim.regionalEcology.resetPageResidency();sim.reproduction.refreshSelection();
@@ -63,6 +65,7 @@ export function validateAuthoredIntroductions(sim){
    !Number.isSafeInteger(r.day)||r.day<1||!Number.isSafeInteger(r.tick)||r.tick<0||!Array.isArray(r.actors)||r.actors.length!==2||r.mode!==r.design?.mode)
    throw Error('Invalid authored introduction receipt.');
   validateFounderDesign(r.design);
+  if(r.starterFocus!==undefined&&(!['jump','burrow','flight','dive'].includes(r.starterFocus)||r.mode!=='guided'))throw Error('Invalid authored starter focus receipt.');
   for(const a of r.actors){if(!Number.isSafeInteger(a.id)||a.id<1||ids.has(a.id)||a.body!==r.design.plan||
     ['mass','energy','hydration','age'].some(k=>!Number.isFinite(a[k])||a[k]<0)||a.mass===0)throw Error('Invalid authored founder resource receipt.');ids.add(a.id);}
  }
@@ -70,7 +73,7 @@ export function validateAuthoredIntroductions(sim){
  if(entry?.kind==='authored-founder'){
   const row=rows[entry.introductionIndex];
   if(!Number.isSafeInteger(entry.introductionIndex)||entry.introductionIndex<0||!row||entry.mode!==row.mode||!row.actors.some(a=>a.id===entry.actorId)||
-    !Array.isArray(entry.actorIds)||entry.actorIds.length!==2||entry.actorIds.some((id,i)=>id!==row.actors[i].id))
+    !Array.isArray(entry.actorIds)||entry.actorIds.length!==2||entry.actorIds.some((id,i)=>id!==row.actors[i].id)||entry.starterFocus!==row.starterFocus)
    throw Error('Authored founder entry disagrees with its introduction receipt.');
  }
 }
