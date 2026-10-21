@@ -137,6 +137,14 @@ function restoreOwnedTyped(target,source,label,adopt){
   restoreTyped(target,source,label);
   return target;
 }
+// Presentation only: an independent copy of a saved regional World for
+// drawing terrain across a region border. It owns copied buffers and is never
+// installed into, or written back to, any simulation.
+export function restorePresentationWorld(seed,state,schema=SAVE_SCHEMA){
+ if(state?.generator!=='planetary/1'||!state.regionOrigin)throw Error('Presentation World requires a planetary regional World.');
+ const world=new World(seed,{generator:'planetary/1',planetOrigin:planetRegionOrigin(state.regionOrigin),restoreOnly:completeWorldForDirectRestore({schema,world:state})});
+ restoreWorld(world,state);return world;
+}
 function restoreWorld(world,state,{initializeMissingFreshwater=false,adoptOwnedWorldBuffers=false}={}){
   if(!state)throw new Error('Save has no world state.');
   if(state.generator==='planetary/1'){

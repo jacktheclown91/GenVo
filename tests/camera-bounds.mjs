@@ -7,4 +7,5 @@ for(const tile of [16,32,48])for(const [x,y] of [[0,0],[128,0],[0,128],[128,128]
  if(x===64&&y===64)assert.deepEqual(camera,{x,y},'interior following stays centered');
 }
 assert.deepEqual(clampCameraToWorld({x:0,y:0},10,1100,760,16),{x:5,y:5},'oversized viewport centers the entire available region');
-console.log('Finite regional camera: all borders, zoom levels, interior following and oversized viewports PASS');
+for(const [x,y] of [[1.5,40],[126.5,3],[64,64]])assert.deepEqual(clampCameraToWorld({x,y},128,1100,760,32,{open:true}),{x,y},'planetary worlds keep the player centred at borders');
+console.log('Finite regional camera: all borders, zoom levels, interior following, oversized viewports and open planetary centring PASS');

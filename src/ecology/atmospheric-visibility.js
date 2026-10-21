@@ -39,6 +39,16 @@ export function viewCanSee(view,x,y){
  if(view.sim?.stratumSenseRules===STRATUM_SENSES.policy){const target={x,y,underground:!!view.observer.underground,diveDepth:view.observer.diveDepth||0};const medium=stratumSight(view.sim,view.observer,target,view.range);if(medium&&!medium.detected)return false;}
  return(dx*view.facing[0]+dy*view.facing[1])/(d*Math.hypot(...view.facing))>=view.rearLimit;
 }
+// Presentation only: whether a surface observer's eyes reach a point beyond
+// its region border (distance and facing). Underground or eyeless observers
+// see nothing across a border; no creature or resource there is revealed.
+export function viewReachesBeyond(view,x,y){
+ if(!view||view.level!=='surface'||!Number.isFinite(x)||!Number.isFinite(y))return false;
+ const dx=x-view.observer.x,dy=y-view.observer.y,d=Math.hypot(dx,dy);
+ if(d<=view.touch)return true;
+ if(d>view.range||view.eyes===0)return false;
+ return(dx*view.facing[0]+dy*view.facing[1])/(d*Math.hypot(...view.facing))>=view.rearLimit;
+}
 export function visuallyObservable(sim,observer,target,base=8,preparedView=null){
  if(!observer||observer.id===target.id)return true;
  if(sim.sensoryFogEnabled===true){

@@ -1,4 +1,4 @@
-import {creatureView,viewCanSee} from '../ecology/atmospheric-visibility.js';
+import {creatureView,viewCanSee,viewReachesBeyond} from '../ecology/atmospheric-visibility.js';
 import {rememberedCells,sensoryMemoryCellSize,sensorySignals} from '../ecology/sensory-world.js';
 
 function drawSignals(renderer,signals,tile){
@@ -27,7 +27,7 @@ export function drawSensoryFog(renderer,{tile,cols,rows,startX,startY}){
  const stale=!last||last.sim!==sim||last.world!==sim.world||last.id!==animal.id||
   last.w!==w||last.h!==h||last.tile!==tile||last.dir!==animal.dir||last.day!==sim.day||
   last.underground!==!!animal.underground||last.subsurfaceRevision!==(sim.world.subsurface?.revision||0)||
-  last.depthBucket!==Math.floor((animal.diveDepth||0)*4)||
+  last.depthBucket!==Math.floor((animal.diveDepth||0)*4)||last.borderViews!==(renderer.borderTerrain?.views.size||0)||
   now-last.time>240||Math.hypot(last.x-animal.x,last.y-animal.y)>.35||
   Math.hypot(last.cameraX-renderer.camera.x,last.cameraY-renderer.camera.y)>2;
  if(stale){
@@ -40,8 +40,12 @@ export function drawSensoryFog(renderer,{tile,cols,rows,startX,startY}){
   const left=startX-3,top=startY-3,right=startX+cols+3,bottom=startY+rows+3;
   const world=sim.world;
   for(let y=top;y<bottom;y++)for(let x=left;x<right;x++){
-   if(x<0||y<0||x>=world.n||y>=world.n)continue;
    const px=Math.floor((x-renderer.camera.x)*tile+w/2+pad),py=Math.floor((y-renderer.camera.y)*tile+h/2+pad);
+   if(x<0||y<0||x>=world.n||y>=world.n){
+    // Neighbouring terrain is shown only where it is drawn and actually seen.
+    if(renderer.borderTerrain?.cellWorld(x,y)&&viewReachesBeyond(view,x+.5,y+.5))c.clearRect(px-1,py-1,Math.ceil(tile)+2,Math.ceil(tile)+2);
+    continue;
+   }
    if(viewCanSee(view,x+.5,y+.5)){
     c.clearRect(px-1,py-1,Math.ceil(tile)+2,Math.ceil(tile)+2);
    }else{
@@ -59,7 +63,7 @@ export function drawSensoryFog(renderer,{tile,cols,rows,startX,startY}){
   renderer.sensoryFogCache={sim,world:sim.world,id:animal.id,canvas,w,h,tile,pad,dir:animal.dir,day:sim.day,time:now,
    x:animal.x,y:animal.y,cameraX:renderer.camera.x,cameraY:renderer.camera.y,
    underground:!!animal.underground,subsurfaceRevision:sim.world.subsurface?.revision||0,
-   depthBucket:Math.floor((animal.diveDepth||0)*4),signals:sensorySignals(sim,animal)};
+   depthBucket:Math.floor((animal.diveDepth||0)*4),borderViews:renderer.borderTerrain?.views.size||0,signals:sensorySignals(sim,animal)};
  }
  const cache=renderer.sensoryFogCache,c=renderer.ctx;
  const dx=Math.round((cache.cameraX-renderer.camera.x)*tile)-cache.pad;

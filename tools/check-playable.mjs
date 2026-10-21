@@ -63,6 +63,7 @@ const runtime=[
   'tests/regional-founding.mjs',
   'tests/regional-demography.mjs',
   'tests/regional-residency.mjs',
+  'tests/border-terrain.mjs',
   'tests/save-storage.mjs',
   'tests/menu-world-slots.mjs',
   'tests/quick-interaction-default.mjs',
