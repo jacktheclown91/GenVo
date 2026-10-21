@@ -5,7 +5,7 @@ import {Simulation} from '../src/sim/simulation.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 const n=12,w={n,len:n*n,water:new Uint8Array(n*n),moisture:new Float32Array(n*n),
  idx:(x,y)=>Math.floor(y)*n+Math.floor(x),sameLand:()=>true};
-const sim={world:w,tickCount:40,vibrationRules:GROUND_VIBRATIONS.policy,stratumSenseRules:STRATUM_SENSES.policy};
+const sim={world:w,climate:{temp:.5,rain:0},tickCount:40,vibrationRules:GROUND_VIBRATIONS.policy,stratumSenseRules:STRATUM_SENSES.policy};
 const listener={id:1,alive:true,species:'genvo',x:2.5,y:3.5,genes:{senses:1},bodyPlan:{nodes:[{partId:'sensory-quills'}]}};
 const blind={...listener,id:3,bodyPlan:{nodes:[]}};
 const source={id:2,alive:true,x:6.5,y:3.5,movedTick:40};
