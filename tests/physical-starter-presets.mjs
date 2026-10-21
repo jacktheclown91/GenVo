@@ -11,7 +11,7 @@ import {canOccupy} from '../src/lineage/lifestyle.js';
 import {SPECIES} from '../src/organisms/species.js';
 
 assert.deepEqual(physicalStarterIds,['jump','burrow','flight','dive']);
-assert.throws(()=>physicalStarterDesign('flight'),/Unknown physical starter/);
+assert.throws(()=>physicalStarterDesign('rocket'),/Unknown physical starter/);
 for(const id of physicalStarterIds){
  const design=physicalStarterDesign(id),plan=validateFounderDesign(design);
  assert.equal(design.mode,'guided','every body has traced ancestry and ordinary paid costs');
