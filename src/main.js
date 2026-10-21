@@ -348,6 +348,7 @@ addEventListener('blur',clearMovementKeys);
 
 function input(){const manual={up:keys.KeyW||keys.ArrowUp,down:keys.KeyS||keys.ArrowDown,left:keys.KeyA||keys.ArrowLeft,right:keys.KeyD||keys.ArrowRight,sprint:keys.ShiftLeft||keys.ShiftRight,brace:braceInput.read()||!!keys.KeyJ};return pointerApproach?pointerApproach.read(manual):manual}
 const frameStepper=new FrameStepper({controlHz:CFG.controlHz,simHz:CFG.simHz});
+const planetLocation=document.querySelector('#planetLocation');
 let last=performance.now(),hudTimer=0,lastFrontierWarning=-Infinity;
 function frame(now){
   const frameWorkStart=performance.now();
@@ -369,8 +370,8 @@ function frame(now){
   if(!frontEnd.isOpen&&!editor.open&&!succession.open&&sim.evolutionEditor?.pending?.()&&editor.request())clearMovementKeys();
   if(!frontEnd.isOpen)tutorial.update();if(!frontEnd.isOpen)audio.update(dt,controls);renderer.renderOrPrepare();contextTray.update();courtshipTray.update();tutorial.notifications.layout();fpsMeter.frame();hudTimer+=dt;fieldGuide.refresh(dt);
   if(hudTimer>.12){sim.lineage.refreshSelection();sim.reproduction.refreshSelection();leadershipWheel.sync();updateHUD(sim,{renderer,mateOpen,mindOpen,territoryOpen,shelterOpen,migrationOpen,ecologyOpen,helpOpen,guideOpen,journalOpen:journal.open,commandMode:leadershipWheel.commandMode});journal.update();const tendencyNotice=sim.tendency?.consumeNotice?.();if(tendencyNotice)tutorial.showToast(tendencyNotice.message,2600,'safe');const centerNotice=sim.populationEcology?.consumeNotice?.();if(centerNotice)tutorial.showToast(centerNotice.message,3200,centerNotice.tone||'warn');const memoryNotice=tutorial.toastEl?.hidden?sim.populationMemory?.consumeNotice?.():null;if(memoryNotice)tutorial.showToast(memoryNotice.message,3400,memoryNotice.tone||'safe');const protoNotice=tutorial.toastEl?.hidden?sim.protoSpeciation?.consumeNotice?.():null;if(protoNotice)tutorial.showToast(protoNotice.message,3600,protoNotice.tone||'success');const speciesNotice=tutorial.toastEl?.hidden?sim.speciation?.consumeNotice?.():null;if(speciesNotice)tutorial.showToast(speciesNotice.message,4000,speciesNotice.tone||'success');const coexistNotice=tutorial.toastEl?.hidden?sim.speciesCoexistence?.consumeNotice?.():null;if(coexistNotice)tutorial.showToast(coexistNotice.message,3600,coexistNotice.tone||'warn');const lifestyleNotice=tutorial.toastEl?.hidden?sim.speciesLifestyle?.consumeNotice?.():null;if(lifestyleNotice)tutorial.showToast(lifestyleNotice.message,3600,lifestyleNotice.tone||'success');const effectNotice=tutorial.toastEl?.hidden?effectFeedback.observe():null;if(effectNotice)tutorial.showToast(effectNotice.message,3000,effectNotice.tone||'safe');const controlStatus=sim.familyControlStatus?.();if(controlStatus?.unlocked&&!sim.familyControlExplained&&!tutorial.worldInputBlocked?.()&&tutorial.toastEl?.hidden){sim.familyControlExplained=true;tutorial.showToast('Family control unlocked · TAB switches relatives · AUTO lets the selected creature act on its own.',3600,'success')}saveManager.observe({eligible:!frontEnd.isOpen&&!sim.paused&&!tutorial.worldInputBlocked?.()});applyObserverResult(observer.observe());hudTimer=0}
-  const label=planetaryPositionLabel(sim),chip=document.querySelector('#planetLocation');
-  if(chip){chip.hidden=!label;if(label&&chip.textContent!==label)chip.textContent=label}
+  const label=planetaryPositionLabel(sim);
+  if(planetLocation){planetLocation.hidden=!label;if(label&&planetLocation.textContent!==label)planetLocation.textContent=label}
   fpsMeter.recordWork(performance.now()-frameWorkStart);
   requestAnimationFrame(frame)
 }
