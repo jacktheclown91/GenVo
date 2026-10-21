@@ -1,18 +1,56 @@
 import {CAVES} from '../world/cave-policy.js';
-export function drawSubsurface(renderer,tile){
- const w=renderer.sim.world,s=w.subsurface;if(!s)return;const c=renderer.ctx,below=!!renderer.sim.player()?.underground;
- if(below){c.fillStyle='#111513';c.fillRect(0,0,renderer.w,renderer.h)}
- for(const p of s.passages.values()){
-  if(!below&&!p.entry)continue;const x=p.i%w.n,y=p.i/w.n|0,px=(x-renderer.camera.x)*tile+renderer.w/2,py=(y-renderer.camera.y)*tile+renderer.h/2;
-  if(px<-tile||py<-tile||px>renderer.w||py>renderer.h)continue;
-  const natural=p.origin===CAVES.policy,u=tile/32;
-  if(below){
-   c.fillStyle=p.closed?'#30332d':natural?'#515c50':'#66513a';c.fillRect(px,py,tile,tile);
-   for(let k=0;k<5;k++){const n=(Math.imul(p.i+1,7919+k*137)>>>0);c.fillStyle=k%2?'#ffffff0b':'#090e1640';c.fillRect(px+(n%26+2)*u,py+((n>>>8)%26+2)*u,(2+k%3)*u,u)}
-   if(!p.closed)for(const [dx,dy] of [[0,-1],[1,0],[0,1],[-1,0]]){const q=s.passages.get((y+dy)*w.n+x+dx);if(q&&!q.closed&&Math.abs(q.floor-p.floor)<=.6)continue;c.fillStyle=natural?'#929783':'#9b8057';c.fillRect(px+(dx>0?28:0)*u,py+(dy>0?28:0)*u,(dx?4:32)*u,(dy?4:32)*u);c.fillStyle='#141b1955';c.fillRect(px+(dx>0?25:dx<0?4:0)*u,py+(dy>0?25:dy<0?4:0)*u,(dx?3:32)*u,(dy?3:32)*u)}
-   if(w.water[p.i]){c.fillStyle='#255568aa';c.fillRect(px+2,py+2,tile-4,tile-4)}
-  }
-  if(p.entry&&!p.closed){c.fillStyle=natural?'#8b917f':'#9e8057';c.fillRect(px+7*u,py+11*u,18*u,9*u);c.fillRect(px+10*u,py+9*u,12*u,13*u);c.fillStyle='#131810';c.fillRect(px+9*u,py+12*u,14*u,7*u);c.fillRect(px+12*u,py+11*u,8*u,9*u);c.fillStyle='#b5baa0';c.fillRect(px+10*u,py+10*u,5*u,2*u);c.fillStyle='#eadfb9';c.font='11px sans-serif';c.textAlign='center';c.fillText(below?'EXIT':natural?'CAVE':'BURROW',px+tile/2,py+tile*.2)}
+import {caveArtwork,openPassage} from './cave-surface.js';
+
+function opening(c,px,py,tile,p,natural,below){
+ // Real mapped entrance with broken geological rim and falloff, not a
+ // square room doorway or a painted CAVE/EXIT label.
+ const u=tile/32,x=px+tile/2,y=py+tile/2;
+ const hash=(v)=>Math.imul(p.i+v*113,2246822519)>>>0;
+ c.save();
+ c.translate(x,y);
+ c.fillStyle=natural?'#4c5b50':'#65513b';
+ c.beginPath();
+ for(let k=0;k<12;k++){
+  const a=k/12*Math.PI*2,depth=10+(hash(k)%6);
+  k?c.lineTo(Math.cos(a)*depth*u,Math.sin(a)*depth*u):c.moveTo(Math.cos(a)*depth*u,Math.sin(a)*depth*u);
  }
- if(below){c.fillStyle='#d4ddc6';c.font='bold 14px sans-serif';c.textAlign='left';c.fillText('UNDERGROUND · follow connected passages · use an opening to surface',14,renderer.h-150)}
+ c.closePath();c.fill();
+ c.fillStyle='#0c1516';
+ c.beginPath();
+ for(let k=0;k<12;k++){
+  const a=k/12*Math.PI*2,depth=7+(hash(k+16)%4);
+  k?c.lineTo(Math.cos(a)*depth*u,Math.sin(a)*depth*u):c.moveTo(Math.cos(a)*depth*u,Math.sin(a)*depth*u);
+ }
+ c.closePath();c.fill();
+ c.strokeStyle=below?'#aeb79a':'#84947a';c.lineWidth=Math.max(1,u*1.1);
+ c.beginPath();c.arc(-2*u,-2*u,8*u,Math.PI*1.10,Math.PI*1.72);c.stroke();
+ // This highlight describes a skylight from an actually recorded opening.
+ if(below){c.fillStyle='#d2cba144';c.beginPath();c.ellipse(0,-4*u,7*u,3*u,0,0,Math.PI*2);c.fill()}
+ c.restore();
+}
+export function drawSubsurface(renderer,tile){
+ const w=renderer.sim.world,s=w.subsurface;
+ if(!s)return;
+ const c=renderer.ctx,below=!!renderer.sim.player()?.underground;
+ const camera=renderer.camera,cols=Math.ceil(renderer.w/tile)+2,rows=Math.ceil(renderer.h/tile)+2;
+ const startX=Math.max(0,Math.floor(camera.x-cols/2)),startY=Math.max(0,Math.floor(camera.y-rows/2));
+ const endX=Math.min(w.n,Math.ceil(camera.x+cols/2)),endY=Math.min(w.n,Math.ceil(camera.y+rows/2));
+ if(below){c.fillStyle='#121a19';c.fillRect(0,0,renderer.w,renderer.h)}
+ // Geographic viewport lookup avoids iterating all underground cells every
+ // frame in a mature planet. Passage connectivity and artwork share the
+ // actual saved subsurface, never an invented floor-plan.
+ for(let y=startY;y<endY;y++)for(let x=startX;x<endX;x++){
+  const p=openPassage(w,x,y);if(!p||!below&&!p.entry)continue;
+  const px=Math.round((x-camera.x)*tile+renderer.w/2),py=Math.round((y-camera.y)*tile+renderer.h/2);
+  const natural=p.origin===CAVES.policy;
+  if(below){
+   const art=caveArtwork(renderer,p);
+   if(art){c.imageSmoothingEnabled=false;c.drawImage(art,px,py,tile,tile)}
+   if(p.entry)opening(c,px,py,tile,p,natural,true);
+  }else if(p.entry)opening(c,px,py,tile,p,natural,false);
+ }
+ if(below){
+  c.fillStyle='#c0cdbb';c.font='12px sans-serif';c.textAlign='left';
+  c.fillText('UNDERGROUND · follow natural openings to return to the surface',14,renderer.h-150);
+ }
 }
