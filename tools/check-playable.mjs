@@ -25,6 +25,7 @@ const runtime=[
   'tests/surface-ice-regional.mjs',
   'tests/thermal-refuge.mjs',
   'tests/thermal-weather.mjs',
+  'tests/wildfire.mjs',
   'tests/thunderstorms.mjs',
   'tests/thunderstorm-regions.mjs',
   'tests/atmospheric-visibility.mjs',
