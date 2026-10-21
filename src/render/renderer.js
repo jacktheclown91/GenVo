@@ -1,3 +1,5 @@
+import {drawSurfaceIce} from './surface-ice.js';
+import {liquidContact} from '../lineage/ice-locomotion.js';
 import {CanvasRecorder} from './canvas-recorder.js';
 import {drawAtmosphere} from './atmosphere.js';
 import {drawThermalWeather} from './thermal-weather.js';
@@ -117,6 +119,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // living flora; never freeze snow art into old seasonal chunk caches.
     this.drawSnowWindow(tile,startX,startY,cols,rows);
     this.drawTerrainChunks(tile,startX,startY,cols,rows,true);this.drawLiveVegetationWindow(tile);
+    this.iceDrawCount=drawSurfaceIce(this,{tile,startX,startY,cols,rows});
     // Organic remains are an actual selectable resource, above floor and vegetation.
     for(let sy=0;sy<rows;sy++)for(let sx=0;sx<cols;sx++){const x=startX+sx,y=startY+sy;if(x<0||y<0||x>=this.sim.world.n||y>=this.sim.world.n)continue;const i=this.sim.world.idx(x,y);if(!this.sim.world.water[i]&&this.sim.world.carrion[i]>.08)this.drawCarrion(Math.round((x-this.camera.x)*tile+this.w/2),Math.round((y-this.camera.y)*tile+this.h/2),this.zoom,this.sim.world.carrion[i])}
     if(this.sim.cognition?.showOverlay)this.drawMemoryOverlay(tile);
@@ -949,7 +952,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // Whole-body carriage from mounted legs and build; a plain walker keeps exactly the shared bob.
     const carriage=(a.airborne||alert||['drink','eat','hunt'].includes(action))?null:locomotionOffsets(locomotionStyle(a),{phase,moving,action,baseBob:bob,propulsion:action==='swim'?(movementProfile(a,this.sim.world).speed||0)/.66:1});
     const visualGrowth=a.player?dev.growth:Math.round(dev.growth*32)/32;ph.bodyScale*=visualGrowth;ph.limbScale*=.72+.28*visualGrowth;ph.sensoryScale*=.78+.22*visualGrowth;if(dev.maturity<.55){ph.stripe=false;ph.spot=false}
-    const inWater=!!this.sim.world.water[this.sim.world.idx(a.x,a.y)];if(a.airborne)action=a.aerialMode==='jump'?'jump':a.aerialMode==='glide'?'glide':'fly';else if(a.jumpLanding&&this.sim.tickCount-a.jumpLanding.tick>=0&&this.sim.tickCount-a.jumpLanding.tick<3)action='land';else if(inWater&&this.sim.canSwim?.(a)&&!['eat','drink','crack'].includes(action))action='swim';
+    const inWater=liquidContact(this.sim.world,a);if(a.airborne)action=a.aerialMode==='jump'?'jump':a.aerialMode==='glide'?'glide':'fly';else if(a.jumpLanding&&this.sim.tickCount-a.jumpLanding.tick>=0&&this.sim.tickCount-a.jumpLanding.tick<3)action='land';else if(inWater&&(this.sim.canSwim?.(a)||a.iceImmersion)&&!['eat','drink','crack'].includes(action))action='swim';
     const life=visualLifeState(this.sim,a,{frame,moving,action,development:dev,social,timeSeconds:this.encounters?.time});life.growth=visualGrowth;if(a.torpor){life.breath*=.28;life.settle=Math.max(life.settle,.72)}if(!a.player){life.breath=Math.round(life.breath*8)/8;life.settle=Math.round(life.settle*8)/8;}
     const behavior=behaviorVisualState({bodyPlan:a.bodyPlan,id:a.id,action,phase,moving,life,social});
     // Body and joints yield above support; contact shadows/toes stay on the ground.

@@ -76,6 +76,8 @@ export function cueForResult(result){
   if(type==='eat')return result.ok?foodCueFor(result.kind):'deny';
   if(type==='fight')return result.ok?(result.killed?'kill':'fight'):'miss';
   if(type==='hunt')return result.ok?'fight':'miss';
+  if(type==='ice-break')return'splash';
+  if(type==='ice-escape')return'land';
   if(type==='dive'||type==='surface')return result.ok?'splash':'deny';
   if(type==='burrow'||type==='burrow-dug')return result.ok?'build':'deny';
   if(type==='burrow-enter'||type==='burrow-exit')return'land';

@@ -1,3 +1,4 @@
+import {surfaceIceCovered} from './surface-ice.js';
 import {PlanetGeography} from './planet-geography.js';
 import {planetRegionOrigin} from './planet-regions.js';
 import {initializePlanetWorld} from './planet-world.js';
@@ -97,14 +98,14 @@ export class World{
     this.drinkSpots.length=0;this.drinkable.fill(0);this.seepage.fill(0);
     for(let y=0;y<this.n;y++)for(let x=0;x<this.n;x++){
       const i=this.idx(x,y);if(this.water[i]){this.seepage[i]=1;continue}
-      let near1=false,near2=false;
+      let near1=false,near2=false,drinkNear=false;
       for(let oy=-2;oy<=2;oy++)for(let ox=-2;ox<=2;ox++){
         if(!ox&&!oy)continue;const d=Math.max(Math.abs(ox),Math.abs(oy));
         const nx=x+ox,ny=y+oy;if(nx<0||ny<0||nx>=this.n||ny>=this.n)continue;
-        if(potableWater(this,this.idx(nx,ny))){if(d<=1)near1=true;else near2=true}
+        if(potableWater(this,this.idx(nx,ny))){if(d<=1){near1=true;if(!surfaceIceCovered(this.environment,this.idx(nx,ny)))drinkNear=true}else near2=true}
       }
       this.seepage[i]=near1?.74:near2?.46:0;
-      if(near1&&this.isPlayable(x+.5,y+.5)){this.drinkable[i]=1;this.drinkSpots.push({x:x+.5,y:y+.5})}
+      if(drinkNear&&this.isPlayable(x+.5,y+.5)){this.drinkable[i]=1;this.drinkSpots.push({x:x+.5,y:y+.5})}
     }
     this.buildWaterDistance();
   }
@@ -114,7 +115,7 @@ export class World{
     const dirs=[-1,0,1];
     while(head<tail){const i=q[head++],x=i%n,y=(i/n)|0,next=dist[i]+1;for(const oy of dirs)for(const ox of dirs){if(!ox&&!oy)continue;const nx=x+ox,ny=y+oy;if(!this.isPlayable(nx+.5,ny+.5))continue;const ni=ny*n+nx;if(this.water[ni]||dist[ni]<=next)continue;dist[ni]=next;q[tail++]=ni}}
   }
-  isDrinkable(x,y){if(!this.isPlayable(x,y))return false;const i=this.idx(x,y);return potableWater(this,i)||(!this.water[i]&&(this.drinkable[i]===1||(this.moisture[i]>=.72&&!salineMargin(this,i))))}
+  isDrinkable(x,y){if(!this.isPlayable(x,y))return false;const i=this.idx(x,y);return potableWater(this,i)&&!surfaceIceCovered(this.environment,i)||(!this.water[i]&&(this.drinkable[i]===1||(this.moisture[i]>=.72&&!salineMargin(this,i))))}
   nextDrinkStep(x,y){
     const cx=Math.max(0,Math.min(this.n-1,Math.floor(x))),cy=Math.max(0,Math.min(this.n-1,Math.floor(y))),ci=this.idx(cx,cy);if(this.isDrinkable(x,y))return{x,y,score:1,drinkable:true};let bestI=ci,bestD=this.waterDistance[ci];
     for(let oy=-1;oy<=1;oy++)for(let ox=-1;ox<=1;ox++){if(!ox&&!oy)continue;const nx=cx+ox,ny=cy+oy;if(nx<0||ny<0||nx>=this.n||ny>=this.n)continue;const ni=this.idx(nx,ny);if(this.water[ni]||!this.isPlayable(nx+.5,ny+.5))continue;const d=this.waterDistance[ni];if(d<bestD){bestD=d;bestI=ni}}

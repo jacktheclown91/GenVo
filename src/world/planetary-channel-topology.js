@@ -1,3 +1,4 @@
+import {iceAmount} from './surface-ice.js';
 // Versioned temporary-channel ownership for schema-6 planetary worlds.
 // Existing wet geography cannot become land through this rule. Only cells
 // funded by physical overland runoff and tagged at their creation may recede.
@@ -48,7 +49,7 @@ export function planChannelRecession(world,day){
  validateChannelTopologyPolicy(world,e);
  const changes=[],n=world.n;
  for(let i=n;i<world.len-n&&changes.length<policy.maxRecededPerDay;i++){
-  if(e.floodOrigin[i]!==1||!world.water[i])continue;
+  if(e.floodOrigin[i]!==1||!world.water[i]||iceAmount(e,i)>0)continue;
   const x=i%n;
   if(x===0||x===n-1)continue;
   const volume=e.volume[i],salt=e.salt[i];

@@ -1,0 +1,55 @@
+{
+  "generated": {
+    "policy": "finite-surface-ice/1",
+    "frozen": 22.96835703902773,
+    "observedIce": 0.020251708975754543,
+    "day": 5,
+    "tick": 198,
+    "observation": {
+      "x": 42.5,
+      "y": 41.5,
+      "ice": 5291
+    },
+    "stagedInitialPosition": {
+      "x": 107.5,
+      "y": 105.49121836339494
+    },
+    "scope": "Normal planetary New World, accelerated actual ticks with untouched generated climate/biological stocks; observation position staged at a generated ice shore."
+  },
+  "saved": {
+    "policy": "finite-surface-ice/1",
+    "day": 5,
+    "tick": 198,
+    "rng": 597224323,
+    "iceDay": 4,
+    "iceRevision": 41,
+    "totals": {
+      "frozen": 22.96835703902773,
+      "thawed": 11.740607049791654,
+      "breaks": 38
+    },
+    "volume": "456d602a62f8b0ae9afb866817feb030a1bc3e55e4a7e9d744f9672745b80f69",
+    "salt": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+    "ice": "33e69956c95a2e3b45065ea6d7f93c4521bfc1e0f01ed3fb7eb126962089f2b2",
+    "broken": "950d075ac5c672722e1afd1a6dd355aa5deb5453e8427a11f82dcdf726860958"
+  },
+  "restored": {
+    "policy": "finite-surface-ice/1",
+    "day": 5,
+    "tick": 198,
+    "rng": 597224323,
+    "iceDay": 4,
+    "iceRevision": 41,
+    "totals": {
+      "frozen": 22.96835703902773,
+      "thawed": 11.740607049791654,
+      "breaks": 38
+    },
+    "volume": "456d602a62f8b0ae9afb866817feb030a1bc3e55e4a7e9d744f9672745b80f69",
+    "salt": "fa43239bcee7b97ca62f007cc68487560a39e19f74f3dde7486db3f98df8e471",
+    "ice": "33e69956c95a2e3b45065ea6d7f93c4521bfc1e0f01ed3fb7eb126962089f2b2",
+    "broken": "950d075ac5c672722e1afd1a6dd355aa5deb5453e8427a11f82dcdf726860958"
+  },
+  "errors": [],
+  "scope": "Normal mouse New World/Save World/Continue and native IndexedDB; generated ice without imported water or forced weather. Accelerated canonical ticks and explicitly staged shore observation; not creator acceptance or lifetime validation."
+}

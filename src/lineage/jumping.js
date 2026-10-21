@@ -1,3 +1,4 @@
+import {iceSupports,settleIceLoad} from './ice-locomotion.js';
 import {adultBodyMass} from '../organisms/body-mass.js';
 import {SPECIES} from '../organisms/species.js';
 import {CFG} from '../sim/config.js';
@@ -32,7 +33,7 @@ export function jumpAvailability(sim,a=sim.player(),{pounce=false}={}){
  if(!pounce&&sim.playerCombat?.attackActive(a))return fail('Finish the attack before jumping.');
  if(a.energy<JUMP.foodPerMass*mass+3)return fail('Need more food energy for this body load.');
  if(!pounce&&(a.exertionWinded||(a.exertion??CFG.exertion.max)<JUMP.breath))return fail('Catch your breath before jumping.');
- if(!sim.world.isPlayable(a.x,a.y)||sim.world.water[sim.world.idx(a.x,a.y)])return fail('Push off from firm ground.');
+ if(!sim.world.isPlayable(a.x,a.y)||sim.world.water[sim.world.idx(a.x,a.y)]&&!iceSupports(sim.world,a))return fail('Push off from firm ground.');
  return{enabled:true,reason:'Spring forward along your facing. The arc is committed; water, hard falls and rising terrain can injure.',mass,food:JUMP.foodPerMass*mass};
 }
 export function launchJump(sim,a=sim.player(),{dx,dy,range=null,pounce=false}={}){
@@ -45,12 +46,12 @@ export function launchJump(sim,a=sim.player(),{dx,dy,range=null,pounce=false}={}
  // Pounce has already paid the existing combat breath cost during windup.
  sim.exertion.ensure(a);if(!pounce)sim.exertion.spend(a,JUMP.breath);a.energy-=status.food;
  sim.history?.noteStep(a);a.airborne=true;a.hidden=false;a.bracing=false;a.aerialMode='jump';a.target=null;
- a.jump={schema:1,altitude:glideGround(sim.world,a.x,a.y)+.03,verticalVelocity:lift,vx:dx/length*horizontal,vy:dy/length*horizontal,elapsed:0,purpose:pounce?'pounce':'travel'};
+ delete a.iceImmersion;a.jump={schema:1,altitude:glideGround(sim.world,a.x,a.y)+.03,verticalVelocity:lift,vx:dx/length*horizontal,vy:dy/length*horizontal,elapsed:0,purpose:pounce?'pounce':'travel'};
  a.dir=((Math.round(Math.atan2(dy,dx)/(Math.PI/4))+2)%8+8)%8;
  return{ok:true,type:'jump',message:'Jumping. The spring-powered arc is committed; land before using surface actions.'};
 }
 export function finishJump(a,world,{tick=0,swimmer=false,collision=false}={}){
- const j=a.jump,impact=Math.abs(j?.verticalVelocity||0),water=!!world.water[world.idx(a.x,a.y)],
+ const j=a.jump,impact=Math.abs(j?.verticalVelocity||0),water=!settleIceLoad(world,a,Math.max(1,impact/JUMP.safeImpact)),
   damage=(collision?JUMP.collisionDamage:Math.max(0,impact-JUMP.safeImpact)*JUMP.impactDamage)+(water&&!swimmer?JUMP.waterDamage:0);
  a.airborne=false;delete a.aerialMode;delete a.jump;
  a.health=Math.max(0,a.health-damage);a.jumpReadyTick=tick+Math.ceil(JUMP.cooldownSeconds*CFG.simHz);

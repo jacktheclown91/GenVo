@@ -1,3 +1,5 @@
+import {validateIceImmersion} from '../lineage/ice-locomotion.js';
+import {restoreSurfaceIceRules,validateIceWorld,adoptSurfaceIceRules} from '../world/surface-ice-rules.js';
 import {restoreThermalRefugeRules,adoptThermalRefugeRules} from '../ecology/thermal-refuge-rules.js';
 import {restoreCarcassRules,validateCarcassSnapshot} from '../gameplay/carcass-rules.js';
 import {restoreDiggingRules,validateDiggingSnapshot} from '../lineage/digging-rules.js';
@@ -335,6 +337,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   Object.assign(sim,snapshot.core||{});
   if(!Object.hasOwn(snapshot.core||{},'regionalReplayPolicy'))delete sim.regionalReplayPolicy;
   regionalReplayPolicy(sim);
+  restoreSurfaceIceRules(sim,snapshot.core||{});
   restoreThermalRefugeRules(sim,snapshot.core||{});
   restoreThermalRules(sim,snapshot.core||{});
   restoreVisibilityRules(sim,snapshot.core||{});
@@ -377,12 +380,13 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   }
   validatePageDayWork(sim.pageDayWork,sim.world);
   if(sim.pageDayWork&&sim.pageDayWork.lastDay>sim.day)throw Error('Vegetation page work day is in the future.');
+  validateIceWorld(sim.world,sim.surfaceIceRules);
   validateCaves(sim.world,sim.caveRules);
   validateSubsurface(sim.world,sim.burrowingRules===BURROWING.policy);
   validateDivingWorld(sim.world,sim.divingRules);
   sim.animals=snapshot.animals;
-  for(const a of sim.animals){validateCaveTransit(a,sim.caveRules,sim.world);validateBurrowingState(a,sim.burrowingRules,sim.world);validateClimbState(a,sim.climbingRules);validateDiveState(a,sim.divingRules,sim.world)}
-  for(const s of sim.planetaryTravel?.sessions||[]){const world={...s.snapshot.world,len:sim.world.len,n:sim.world.n,water:s.snapshot.world.surfaceWater.mask,idx:(x,y)=>sim.world.idx(x,y)};validateCaves(world,sim.caveRules);validateSubsurface(world,sim.burrowingRules===BURROWING.policy);validateDivingWorld(world,sim.divingRules);for(const a of s.snapshot.animals){validateCaveTransit(a,sim.caveRules,world);validateBurrowingState(a,sim.burrowingRules,world);validateClimbState(a,sim.climbingRules);validateDiveState(a,sim.divingRules,world)}}
+  for(const a of sim.animals){validateCaveTransit(a,sim.caveRules,sim.world);validateBurrowingState(a,sim.burrowingRules,sim.world);validateClimbState(a,sim.climbingRules);validateDiveState(a,sim.divingRules,sim.world);validateIceImmersion(a,sim.surfaceIceRules)}
+  for(const s of sim.planetaryTravel?.sessions||[]){const world={...s.snapshot.world,len:sim.world.len,n:sim.world.n,water:s.snapshot.world.surfaceWater.mask,idx:(x,y)=>sim.world.idx(x,y)};validateIceWorld(world,sim.surfaceIceRules);validateCaves(world,sim.caveRules);validateSubsurface(world,sim.burrowingRules===BURROWING.policy);validateDivingWorld(world,sim.divingRules);for(const a of s.snapshot.animals){validateCaveTransit(a,sim.caveRules,world);validateBurrowingState(a,sim.burrowingRules,world);validateClimbState(a,sim.climbingRules);validateDiveState(a,sim.divingRules,world);validateIceImmersion(a,sim.surfaceIceRules)}}
   for(const a of sim.animals){validateGlideState(a,sim.glidingRules);validateJumpState(a,sim.jumpingRules)}
   for(const session of sim.planetaryTravel?.sessions||[])for(const a of session.snapshot.animals){validateGlideState(a,sim.glidingRules);validateJumpState(a,sim.jumpingRules)}
   // Wetness is a persistent organism condition, not a new water reserve.
@@ -593,6 +597,7 @@ export class SaveManager{
       const visibility=adoptVisibilityRules(sim,{source,backupSlot});rollback=()=>{visibility.rollback();caves.rollback();burrowing.rollback();climbing.rollback();diving.rollback();movement.rollback()};
       const thermal=adoptThermalRules(sim,{source,backupSlot});const priorRollback=rollback;rollback=()=>{thermal.rollback();priorRollback()};
       const refuge=adoptThermalRefugeRules(sim,{source,backupSlot});const thermalRollback=rollback;rollback=()=>{refuge.rollback();thermalRollback()};
+      const ice=adoptSurfaceIceRules(sim,{source,backupSlot});const refugeRollback=rollback;rollback=()=>{ice.rollback();refugeRollback()};
       const snapshot=createSimulationSnapshot(sim,{reason:'movement-rule-continuation',savedAt});snapshot.meta.key=slotId;snapshot.meta.worldName=worldName;
       const backupMetadata={...sourceSnapshot.meta,key:backupSlot,worldName:('Backup · '+worldName).slice(0,40),savedAt,role:'movement-backup',backupFor:slotId};
       tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');done=transactionDone(tx);

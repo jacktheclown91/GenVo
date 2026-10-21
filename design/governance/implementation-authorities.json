@@ -404,6 +404,11 @@
       "consumers": ["src/persistence/save-manager.js", "src/world/planetary-travel.js", "src/main.js", "src/ui/front-end.js"],
       "note": "Explicit future movement policy adoption on an isolated validated checkpoint continuation. Source/clock/backup receipts and canonical synchronized regional agreement are validated; bodies, resources, RNG and past events are preserved. SaveManager owns atomic untouched-source backup plus continuation storage, readonly backup guards and activation ordering. Ordinary restoration never adopts policies. Failed commits roll candidate metadata back; unsupported environmental-only regional clocks require explicit conversion."
     },
+    "finiteSurfaceIce": {
+      "authority": "src/world/surface-ice.js",
+      "consumers": ["src/world/environment.js", "src/sim/simulation.js", "src/lineage/ice-locomotion.js", "src/lineage/diving.js", "src/world/surface-ice-rules.js", "src/render/surface-ice.js"],
+      "note": "New finite planetary worlds record finite-surface-ice/1; historical adoption requires the existing atomic source backup. Frozen water is a subset of existing environment.volume, never an added stock. Phase, brine capacity, liquid-only transport and fracture preserve the same owners. Growth-scaled body load, shared support/routes and summed occupants cause real fracture and costed escape/drowning; liquid contact governs coats, gills, drinking and food. Historical worlds remain unchanged. Aerial landing impacts, bounded liquid-clearance breathing routes and exact regional persistence share the same owners. Fixed-reservoir maps and final thermodynamic/snow/art coverage remain open. See docs/SURFACE-ICE-2026-10-20.md."
+    },
     "ballisticJumping": {
       "authority": "src/lineage/jumping.js",
       "consumers": ["src/sim/simulation.js", "src/gameplay/player-combat.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js", "src/ui/creature-context-tray.js", "src/render/renderer.js"],

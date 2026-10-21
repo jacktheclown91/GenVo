@@ -1,3 +1,4 @@
+import {liquidVolume} from './surface-ice.js';
 // Water-funded sediment entering a live river/lake bed. Actual material
 // stays in the existing Float32 terrain.elevation. Raising a submerged bed
 // displaces an equal physical water volume and its dissolved salt into a
@@ -73,7 +74,7 @@ export function stageWetbedSediment(source,target,si,ti,runoff,
     dissolved=stock(target.env.salt,sb,ti);
  if(![donor,bed,depth,dissolved].every(Number.isFinite)||
    donor<0||donor>1||bed<0||bed>1||depth<=0||depth>2||
-   dissolved<0||dissolved>depth*2+1e-9)
+   dissolved<0||dissolved>liquidVolume(target.env,ti,depth)*2+1e-9)
   throw Error('Invalid wetbed sediment or water stock.');
  const slope=donor-bed;
  if(slope<=rule.minHead||depth<=rule.minWet)return null;
@@ -90,7 +91,7 @@ export function stageWetbedSediment(source,target,si,ti,runoff,
     nextSalt=stock(target.env.salt,sb,k);
   if(![nextDepth,nextBed,nextSalt].every(Number.isFinite)||
      nextDepth<=0||nextDepth>2||nextBed<0||nextBed>1||
-     nextSalt<0||nextSalt>nextDepth*2+1e-9)
+     nextSalt<0||nextSalt>liquidVolume(target.env,k,nextDepth)*2+1e-9)
    throw Error('Invalid wetbed downstream capacity.');
   const head=(bed+depth)-(nextBed+nextDepth);
   const capacity=Math.min(Math.max(0,2-nextDepth),Math.max(0,head*.25));
@@ -99,12 +100,12 @@ export function stageWetbedSediment(source,target,si,ti,runoff,
  if(chosen<0||available<=1e-10)return null;
  const amount=Math.min(rule.maxDeposit,runoff*rule.waterFraction,
   (donor-bed)*.25,donor-.001,rule.maxElevation-bed,
-  depth-rule.minWet,available);
+  liquidVolume(target.env,ti,depth)-rule.minWet,available);
  if(!(amount>1e-10))return null;
  // The water column shrinks by exactly the new sediment height; the displaced
  // liquid moves to another wet cell, carrying actual dissolved salt.
- const transferSalt=Math.min(dissolved,dissolved/depth*amount,
-  Math.max(0,2*(stock(target.env.volume,wb,chosen)+amount)-
+ const transferSalt=Math.min(dissolved,dissolved/liquidVolume(target.env,ti,depth)*amount,
+  Math.max(0,2*(liquidVolume(target.env,chosen,stock(target.env.volume,wb,chosen))+amount)-
      stock(target.env.salt,sb,chosen)));
  if(!Number.isFinite(transferSalt)||transferSalt<0)
   throw Error('Invalid wetbed dissolved salt.');

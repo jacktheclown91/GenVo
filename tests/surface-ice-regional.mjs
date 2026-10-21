@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import {isDeepStrictEqual} from 'node:util';
+import {Simulation} from '../src/sim/simulation.js';
+import {CFG} from '../src/sim/config.js';
+import {planetaryTravelAvailability,crossPlanetaryBorder} from '../src/world/planetary-travel.js';
+import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {SURFACE_ICE,validateSurfaceIce} from '../src/world/surface-ice.js';
+const initial=new Simulation('THERMAL-REVIEW-3',{surfaceIce:true,worldGenerator:'planetary/1'});
+for(let k=0;k<CFG.dayTicks*2;k++)initial.update(null);validateSurfaceIce(initial.world);assert.ok(initial.world.environment.iceTotals.frozen>0,'actual weather creates frozen water before travel');
+const frontier=(s,x,direction)=>{const p=s.player();for(let y=10.5;y<118.5;y++){p.x=x;p.y=y;const status=planetaryTravelAvailability(s);if(status.enabled&&status.direction===direction)return true}return false};
+// Border positioning is explicitly staged. Travel, regional ownership and clocks are canonical.
+assert.ok(frontier(initial,125.2,'east'));const crossing=crossPlanetaryBorder(initial);assert.ok(crossing.ok,crossing.message);const s=crossing.simulation;
+assert.equal(s.surfaceIceRules,SURFACE_ICE.policy);assert.equal(s.world.environment.icePolicy,SURFACE_ICE.policy,'new/surveyed destination has the same recorded phase policy');
+assert.ok(s.planetaryTravel.sessions.some(r=>r.snapshot.world.environment.iceTotals.frozen>0),'departure freezes stay owned by the archived source region');
+for(let k=0;k<CFG.dayTicks;k++)s.update(null);validateSurfaceIce(s.world);
+const saved=structuredClone(createSimulationSnapshot(s,{savedAt:'regional-ice'})),restored=restoreSimulationSnapshot(structuredClone(saved));s.update(null);restored.update(null);
+assert.ok(isDeepStrictEqual(createSimulationSnapshot(s,{savedAt:'same'}),createSimulationSnapshot(restored,{savedAt:'same'})),'next-tick active and archived ice continue exactly');
+assert.ok(frontier(restored,2.8,'west'));const back=crossPlanetaryBorder(restored);assert.ok(back.ok,back.message);validateSurfaceIce(back.simulation.world);assert.equal(back.simulation.surfaceIceRules,SURFACE_ICE.policy);assert.ok(back.simulation.world.environment.iceTotals.frozen>0,'return restores phase history rather than pristine water');
+const corrupt=structuredClone(saved);delete corrupt.core.surfaceIceRules;assert.throws(()=>restoreSimulationSnapshot(corrupt),/surface-ice|Surface-ice/);
+console.log('Regional ice PASS: real cold daily phase, canonical departure/archive ownership, new destination policy, exact active+offscreen next-tick restore and return to persisted frozen history.');

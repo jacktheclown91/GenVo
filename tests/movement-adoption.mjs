@@ -97,3 +97,16 @@ assert.equal(returned.caveRules,CAVES.policy);assert.deepEqual(returned.caveRule
 assert.equal(returned.burrowingRules,BURROWING.policy);assert.deepEqual(returned.burrowingRuleMigrations,regional.burrowingRuleMigrations);
 assert.ok(frontier(returned,125.2,'east'));const revisit=crossPlanetaryBorder(returned);assert.ok(revisit.ok,revisit.message);assert.deepEqual(revisit.simulation.world.subsurface,regionalGeometry,'actual excavated geometry survives leaving and revisiting the region');
 console.log('Movement adoption PASS: whole-state preservation, exact read-only backup, atomic failure/rollback/retry, no premature activation, future policy receipts, regional agreement and clock/pounce refusal.');
+
+// Ice adoption uses the same real atomic backup boundary and never freezes history.
+let iceSource=new Simulation('ICE-CONTINUATION-STORAGE',{worldGenerator:'planetary/1',surfaceIce:false});
+const iceManager=new SaveManager({getSim:()=>iceSource});iceManager.available=true;iceManager.db=async()=>db;await iceManager.saveNow('ice-historical-source');
+const iceOriginal=await iceManager.loadSnapshot(),iceCandidate=restoreSimulationSnapshot(structuredClone(iceOriginal)),iceBefore=structuredClone(createSimulationSnapshot(iceCandidate,{savedAt:'ice-before'}));
+failAdd=4;await assert.rejects(()=>iceManager.storeMovementContinuation(iceCandidate,iceOriginal,{name:'Ice failure',source:'physical historical fixture'}),/Injected/);
+assert.deepEqual(createSimulationSnapshot(iceCandidate,{savedAt:'ice-before'}),iceBefore,'failed ice transport rolls all policy and environment metadata back');
+failAdd=0;const iceResult=await iceManager.storeMovementContinuation(iceCandidate,iceOriginal,{name:'Ice continuation',source:'physical historical fixture'});
+assert.deepEqual(await iceManager.loadSnapshot(iceResult.backupSlot),iceOriginal,'actual ice backup is the untouched complete historical source');
+assert.equal(iceCandidate.world.environment.icePolicy,'finite-surface-ice/1');assert.equal(iceCandidate.world.environment.ice.reduce((a,b)=>a+b,0),0,'adoption cannot invent past freezing');
+assert.deepEqual(iceCandidate.world.environment.volume,iceBefore.world.environment.volume);assert.deepEqual(iceCandidate.world.environment.salt,iceBefore.world.environment.salt);assert.deepEqual(iceCandidate.animals,iceBefore.animals);assert.equal(iceCandidate.rng.state,iceBefore.rngState);
+const iceStored=restoreSimulationSnapshot(await iceManager.loadSnapshot(iceResult.slotId));assert.deepEqual(iceStored.surfaceIceRuleMigrations,iceCandidate.surfaceIceRuleMigrations);
+console.log('Ice continuation storage PASS: zero invented phase, unchanged biological/water/salt stocks, actual untouched backup and exact atomic failure rollback.');

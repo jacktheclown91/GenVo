@@ -1,3 +1,5 @@
+import {surfaceIceCovered,iceAmount} from '../world/surface-ice.js';
+import {iceSupports} from '../lineage/ice-locomotion.js';
 import {botanicalPlantView} from '../ecology/botanical-reproduction.js';
 import {seedPatchDescription} from '../gameplay/seed-observations.js';
 import {plantHandling} from '../ecology/plant-handling.js';
@@ -29,6 +31,8 @@ export function worldTargetScreen(renderer,target){const tile=CFG.tileSize*rende
 
 // Plain observations for ordinary play; numerical biology stays behind Inspect.
 export function resourceSummary(sim,target){
+ if(target.kind==='water'&&iceAmount(sim.world.environment,target.i)>.003){const covered=surfaceIceCovered(sim.world.environment,target.i),support=covered&&iceSupports(sim.world,sim.player(),target.x,target.y);return{identity:covered?'Frozen water':'Fractured ice',features:[covered?'Ice seals the water below':'Open water between broken ice',covered?support?'Supports your current body':'Too weak for your current body':'Swimming anatomy is needed away from the bank'],consequence:covered?'More weight or thaw can break the sheet. Water and surface food are inaccessible through intact ice.':'The opening exposes water and air. A non-swimmer must stay near supporting ground.'}}
+
  if(target.cave!==undefined){const p=sim.world.subsurface?.passages.get(target.cave);return{identity:p?.origin===CAVES.policy?'Natural cave opening':'Excavated entrance',features:['Connected underground passage','Only bodies that fit can pass'],consequence:'Approach the opening, then Interact to enter or return to the surface. You need digging anatomy only to excavate new passages.'}}
  if(target.kind==='seed-patch'){const o=sim.discovery.seedObservations?.find(o=>o.id===target.id);return{identity:o?.status==='established'?'New growth observed':o?.status==='gone'?'Previously observed plant is gone':'Seeds left here',features:[o?seedPatchDescription(o):'Observation unavailable'],consequence:'Read the patch to update your field observation. Journal keeps your last observed outcome.'}}
 

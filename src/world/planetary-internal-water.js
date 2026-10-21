@@ -5,6 +5,7 @@
 // Paired regional seams have their own later same-day transfer authority.
 // This module changes neither coastal land masks nor the external ocean
 // reservoir, and never invents rainfall water.
+import {liquidVolume} from './surface-ice.js';
 export const PLANETARY_INTERNAL_WATER=Object.freeze({
  schema:1,headResponse:.04,maxDonorFraction:.08,minWet:.01,maxVolume:2
 });
@@ -28,15 +29,15 @@ export function advanceInternalPlanetaryWater(w,salt){
   const gradient=(bed[i]+e.volume[i])-(bed[j]+e.volume[j]);
   if(!Number.isFinite(gradient)||Math.abs(gradient)<1e-12)return;
   const from=gradient>0?i:j,to=gradient>0?j:i;
-  const available=volume[from],receiving=volume[to];
+  const available=volume[from],receiving=volume[to],liquid=liquidVolume(e,from,available);
   const flow=Math.min(Math.abs(gradient)*PLANETARY_INTERNAL_WATER.headResponse,
-   e.volume[from]*PLANETARY_INTERNAL_WATER.maxDonorFraction,
-   Math.max(0,available-PLANETARY_INTERNAL_WATER.minWet),
+   liquidVolume(e,from)*PLANETARY_INTERNAL_WATER.maxDonorFraction,
+   Math.max(0,liquid-PLANETARY_INTERNAL_WATER.minWet),
    Math.max(0,PLANETARY_INTERNAL_WATER.maxVolume-receiving));
   if(flow<=1e-12)return;
-  const concentration=Math.min(2,Math.max(0,salt[from]/available));
+  const concentration=Math.min(2,Math.max(0,salt[from]/liquid));
   const transferSalt=Math.min(flow*concentration,Math.max(0,salt[from]),
-   Math.max(0,(receiving+flow)*2-salt[to]));
+   Math.max(0,(liquidVolume(e,to,receiving)+flow)*2-salt[to]));
   if(!Number.isFinite(transferSalt)||transferSalt<0)
    throw Error('Invalid internal planetary dissolved-salt transfer.');
   volume[from]-=flow;volume[to]+=flow;
@@ -55,7 +56,7 @@ export function advanceInternalPlanetaryWater(w,salt){
   throw Error('Internal planetary water-volume conservation failed.');
  for(let i=0;i<w.len;i++)if(w.water[i]&&
   (!Number.isFinite(volume[i])||volume[i]<=0||volume[i]>2+1e-12||
-   !Number.isFinite(salt[i])||salt[i]<-1e-12||salt[i]>volume[i]*2+1e-10))
+   !Number.isFinite(salt[i])||salt[i]<-1e-12||salt[i]>liquidVolume(e,i,volume[i])*2+1e-10))
   throw Error('Internal planetary water or dissolved salt exceeded capacity.');
  // All validation is complete. No partial publication of a bad volume field.
  e.volume.set(volume);

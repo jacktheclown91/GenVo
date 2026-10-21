@@ -1,3 +1,4 @@
+import {SURFACE_ICE,initializeSurfaceIce} from './surface-ice.js';
 // E15: explicit, gated, on-foot planetary frontier traversal.
 // Departing populations and their controller states are checkpointed as a
 // non-active region. The SAME traveling animal ID/body/genotype moves into
@@ -151,7 +152,7 @@ export function crossPlanetaryBorder(sim){
  const nextId=Math.max(prior.nextId,sim.nextId);
  // Construct destination and all receipts before modifying the active sim.
  const dest=archivedDestination?restoreDetachedSimulationSnapshot(archivedDestination.snapshot):
-  new Simulation(sim.seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:status.to,massRules:sim.massRules,naturalCaves:!!sim.caveRules});
+  new Simulation(sim.seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:status.to,massRules:sim.massRules,naturalCaves:!!sim.caveRules,surfaceIce:sim.surfaceIceRules===SURFACE_ICE.policy});
  // Local seed-wind rules are a planetary-world policy. A newly entered
  // region follows the originating world's version; an old missing-policy
  // save must not silently adopt wind merely because its destination is new.
@@ -161,6 +162,7 @@ export function crossPlanetaryBorder(sim){
  if(!archivedDestination){
   const surveyed=sim.planetaryRegions.get(status.to,{create:false});
   if(surveyed)dest.world=surveyed;
+  if(sim.surfaceIceRules===SURFACE_ICE.policy)initializeSurfaceIce(dest.world);
   dest.rng=new RNG(sim.seed+'|regional-fauna|'+destinationKey);
   dest.nextId=nextId+1;
   dest.spawnInitial(); // Only ONCE for a newly entered region.
@@ -208,7 +210,7 @@ export function crossPlanetaryBorder(sim){
  sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,memberIds),...(sim.offscreenBiologyEnabled?{biologicalMode:'canonical-ticks/1'}:{})});
  dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions,
   ...(prior.seamLedger?{seamLedger:structuredClone(prior.seamLedger)}:{})};
- for(const key of ['thermalRefugeRules','thermalRefugeRuleMigrations','thermalRules','thermalPattern','thermalRuleMigrations','visibilityRules','visibilityRuleMigrations','caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
+ for(const key of ['surfaceIceRules','surfaceIceRuleMigrations','thermalRefugeRules','thermalRefugeRuleMigrations','thermalRules','thermalPattern','thermalRuleMigrations','visibilityRules','visibilityRuleMigrations','caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
  dest.travelFamilyGroup=!!sim.travelFamilyGroup;
  if(sim.burrowingRules===undefined)delete dest.world.subsurface;
  dest.offscreenBiologyEnabled=!!sim.offscreenBiologyEnabled;

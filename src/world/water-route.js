@@ -1,8 +1,8 @@
 // Check every crossed cell, including both sides of a corner. A wet endpoint
 // alone cannot establish a wet roaming trip through an irregular shoreline.
-export function wetSegment(world,fromX,fromY,toX,toY){
+export function wetSegment(world,fromX,fromY,toX,toY,{cellAccessible=null}={}){
   if(![fromX,fromY,toX,toY].every(Number.isFinite)||!world.isPlayable(fromX,fromY)||!world.isPlayable(toX,toY))return false;
-  const wet=(x,y)=>world.isPlayable(x+.5,y+.5)&&!!world.water[world.idx(x,y)];
+  const wet=(x,y)=>world.isPlayable(x+.5,y+.5)&&!!world.water[world.idx(x,y)]&&(!cellAccessible||cellAccessible(x+.5,y+.5));
   let x=Math.floor(fromX),y=Math.floor(fromY);const endX=Math.floor(toX),endY=Math.floor(toY);
   if(!wet(x,y)||!wet(endX,endY))return false;
   const dx=toX-fromX,dy=toY-fromY,sx=Math.sign(dx),sy=Math.sign(dy);

@@ -1,5 +1,6 @@
 // Physical fields for new worlds. Normalized model units, not biome membership bonuses.
 import {coordNoise} from '../core/rng.js';
+import {SURFACE_ICE,liquidVolume,validateSurfaceIce} from './surface-ice.js';
 import {recordPageSaltTransfer,finishPageSaltTransfers,validatePageSaltTransfers} from './page-salt-transfers.js';
 import {WORLD_PAGE_SIZE} from './pages.js';
 import {regionalRainfall} from './weather-fronts.js';
@@ -32,6 +33,7 @@ export function initializeEnvironment(w){
  return w.environment;
 }
 export function validateEnvironment(w,e){
+ validateSurfaceIce(w,e);
  if(e?.schema!==1&&e?.schema!==2&&e?.schema!==3&&e?.schema!==4&&e?.schema!==5&&e?.schema!==6)throw Error('Invalid environment schema.');
  if(e.schema>=2&&w.generator!=='planetary/1')throw Error('Planetary boundary version requires planetary geography.');
  validateBoundaryWaterPolicy(w,e);
@@ -113,7 +115,7 @@ export function validateEnvironment(w,e){
 }
 export function localTemperature(w,climate,i){return clamp(climate.temp+(w.environment?.temperatureOffset[i]||0),-.5,1.5)}
 export function localRain(w,climate,i){return regionalRainfall(w,climate,i)}
-export function salinityAt(w,i){const e=w.environment;const d=e?.schema>=3?e.volume[i]:e?.depth[i];return d>0?e.salt[i]/d:0}
+export function salinityAt(w,i){const e=w.environment;const d=e?liquidVolume(e,i,e.schema>=3?e.volume[i]:e.depth[i]):0;return d>0?e.salt[i]/d:0}
 export function potableWater(w,i){return !!w.water[i]&&salinityAt(w,i)<=.05}
 export function salineMargin(w,i){if(!w.environment)return false;const x=i%w.n,y=(i/w.n)|0;for(let dy=-2;dy<=2;dy++)for(let dx=-2;dx<=2;dx++){const nx=x+dx,ny=y+dy;if(nx>=0&&ny>=0&&nx<w.n&&ny<w.n&&w.water[ny*w.n+nx]&&!potableWater(w,ny*w.n+nx))return true}return false}
 export function saltStorage(w){let total=0;for(const amount of w.environment?.salt||[])total+=amount;return total}
@@ -122,9 +124,9 @@ export function waterStorage(w){let total=0;for(const amount of w.environment?.v
 // conservatively; freshwater rain displaces an equal volume, exporting its dissolved salt.
 // Edge reservoirs restore freshwater (1) / seawater (2), with explicit salt input/output receipts.
 export function advanceEnvironmentWater(w,climate,day){
- const e=w.environment;if(!e)return;const atmospheric={...climate,frontDay:day};const before=saltStorage(w),waterBefore=e.schema>=5?totalPlanetarySurfaceWater(w):e.schema>=3?waterStorage(w):0,next=new Float64Array(e.salt),n=w.n,t=e.totals,input0=t.saltInput,output0=t.saltOutput,pageLedger=new Map();
+ const e=w.environment;if(!e)return;validateSurfaceIce(w,e);const atmospheric={...climate,frontDay:day};const before=saltStorage(w),waterBefore=e.schema>=5?totalPlanetarySurfaceWater(w):e.schema>=3?waterStorage(w):0,next=new Float64Array(e.salt),n=w.n,t=e.totals,input0=t.saltInput,output0=t.saltOutput,pageLedger=new Map();
  let boundaryInput=0,boundaryOutput=0,surfaceRainInput=0,surfaceRainOutput=0,boundaryWaterInput=0,boundaryWaterOutput=0,boundarySaltInput=0,boundarySaltOutput=0;
- const pair=(i,j)=>{if(!w.water[i]||!w.water[j])return;const c=salinityAt(w,i)-salinityAt(w,j),from=c>0?i:j,to=c>0?j:i,flow=Math.min(Math.abs(c)*Math.min(e.schema>=3?e.volume[i]:e.depth[i],e.schema>=3?e.volume[j]:e.depth[j])*.08,e.salt[from]*.25);next[from]-=flow;next[to]+=flow;if(flow>0&&((j===i+1&&(i%n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)||(j===i+n&&Math.floor(i/n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)))recordPageSaltTransfer(pageLedger,n,i,j,from===i?flow:-flow)};
+ const pair=(i,j)=>{if(!w.water[i]||!w.water[j])return;const c=salinityAt(w,i)-salinityAt(w,j),from=c>0?i:j,to=c>0?j:i,flow=Math.min(Math.abs(c)*Math.min(liquidVolume(e,i,e.schema>=3?e.volume[i]:e.depth[i]),liquidVolume(e,j,e.schema>=3?e.volume[j]:e.depth[j]))*.08,e.salt[from]*.25);const actual=e.icePolicy===SURFACE_ICE.policy?Math.min(flow,Math.max(0,next[from]),Math.max(0,liquidVolume(e,to)*2-next[to])):flow;next[from]-=actual;next[to]+=actual;if(actual>0&&((j===i+1&&(i%n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)||(j===i+n&&Math.floor(i/n)%WORLD_PAGE_SIZE===WORLD_PAGE_SIZE-1)))recordPageSaltTransfer(pageLedger,n,i,j,from===i?actual:-actual)};
  for(let i=0;i<w.len;i++){if(i%n<n-1)pair(i,i+1);if(i+n<w.len)pair(i,i+n)}
  for(let i=0;i<w.len;i++)if(w.water[i]){const rain=localRain(w,atmospheric,i)*.06,volume=e.schema>=3?e.volume[i]:e.depth[i];
  // V5 rain becomes physical freshwater. Full cells expel only their
@@ -135,7 +137,7 @@ export function advanceEnvironmentWater(w,climate,day){
  if(e.schema>=5){
   e.volume[i]+=accepted;surfaceRainInput+=rain;surfaceRainOutput+=displaced;
  }
- const lost=next[i]*(1-Math.exp(-displaced/volume));
+ const lost=next[i]*(1-Math.exp(-displaced/liquidVolume(e,i,volume)));
  next[i]-=lost;t.rainWater+=rain;t.displacedWater+=displaced;t.saltOutput+=lost;const reservoir=e.boundary[i];if(reservoir){
    if((e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.policy||e.boundaryWaterPolicy===PLANETARY_BOUNDARY_WATER.pairedPolicy)){
     // Equal external water replacement carries actual dissolved salt.
@@ -161,8 +163,8 @@ export function advanceEnvironmentWater(w,climate,day){
     // The outside ocean/freshwater is a declared reservoir. Every finite
     // salt flux is credited to an external input or output receipt.
     const target=reservoir===2?1:reservoir===3?.5:0;
-    const delta=(target-next[i]/volume)*volume*.08;
-    const updated=clamp(next[i]+delta,0,volume*2);
+    const liquid=liquidVolume(e,i,volume),delta=(target-next[i]/liquid)*liquid*.08;
+    const updated=clamp(next[i]+delta,0,liquid*2);
     const transferred=updated-next[i];next[i]=updated;
     if(transferred>0){t.saltInput+=transferred;t.boundaryInput+=transferred;boundaryInput+=transferred;}
     else if(transferred<0){t.saltOutput-=transferred;t.boundaryOutput-=transferred;boundaryOutput-=transferred;}

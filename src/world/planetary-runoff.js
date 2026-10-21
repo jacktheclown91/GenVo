@@ -1,3 +1,4 @@
+import {liquidVolume} from './surface-ice.js';
 import {PLANETARY_MINERAL_RUNOFF,stageRunoffMinerals} from './planetary-mineral-runoff.js';
 import {TERRAIN_SEDIMENT,stageTerrainSediment,validateSedimentDeltas} from './terrain-sediment.js';
 import {deriveDrainage} from './topography.js';
@@ -115,7 +116,7 @@ export function routePlanetaryRunoff(w,runoff,day){
    throw Error('Wetbed water and salt displacement not conserved.');
   if(wetbedMoved){
    for(let i=0;i<w.len;i++)if(w.water[i]&&
-    (!Number.isFinite(wetSalt[i])||wetSalt[i]<0||wetSalt[i]>volume[i]*2+1e-9))
+    (!Number.isFinite(wetSalt[i])||wetSalt[i]<0||wetSalt[i]>liquidVolume(e,i,volume[i])*2+1e-9))
      throw Error('Invalid deposited wetbed salinity.');
    pendingSalt=wetSalt;
   }

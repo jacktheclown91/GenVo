@@ -1,3 +1,5 @@
+import {iceSupports,iceSurfaceReach,iceEscapeStep} from './ice-locomotion.js';
+import {SURFACE_ICE,surfaceIceCovered} from '../world/surface-ice.js';
 import {undergroundPosition,undergroundReach} from './burrowing.js';
 import {submerged,waterColumn,DIVING} from './diving.js';
 import {terrainTravel} from '../world/topography.js';
@@ -22,16 +24,19 @@ export function canOccupy(animal,world,x,y){
   if(animal?.underground)return undergroundPosition(world,animal,x,y);
   if(submerged(animal))return !!world.water[world.idx(x,y)]&&waterColumn(world,x,y)+1e-6>=animal.diveDepth+DIVING.clearance;
   if(animal?.perched)return Math.floor(animal.x)===Math.floor(x)&&Math.floor(animal.y)===Math.floor(y);
-  return !!animal?.airborne||!isWater(world,x,y)||canSwim(animal);
+  return !!animal?.airborne||!isWater(world,x,y)||iceSupports(world,animal,x,y)||iceEscapeStep(world,animal,x,y)||canSwim(animal)&&!surfaceIceCovered(world.environment,world.idx(x,y));
 }
 
 export function canReach(animal,world,x,y){
   if(!animal||!world||!Number.isFinite(x)||!Number.isFinite(y))return false;
   if(!world.isPlayable(x,y))return false;
   if(animal?.underground)return undergroundReach(world,animal,x,y);
-  if(submerged(animal))return canOccupy(animal,world,x,y)&&wetSegment(world,animal.x,animal.y,x,y);
+  if(submerged(animal))return canOccupy(animal,world,x,y)&&wetSegment(world,animal.x,animal.y,x,y,world.environment?.icePolicy===SURFACE_ICE.policy?{cellAccessible:(cx,cy)=>canOccupy(animal,world,cx,cy)}:{});
   if(animal.perched)return Math.floor(animal.x)===Math.floor(x)&&Math.floor(animal.y)===Math.floor(y);
-  if(animal.airborne||canSwim(animal))return true;
+  if(animal.airborne)return true;
+  if(canSwim(animal))return canOccupy(animal,world,x,y);
+  if(animal.iceImmersion)return iceEscapeStep(world,animal,x,y);
+  if(world.environment?.icePolicy===SURFACE_ICE.policy)return iceSurfaceReach(world,animal,x,y);
   return world.sameLand(animal.x,animal.y,x,y);
 }
 
@@ -41,7 +46,11 @@ export function movementProfile(animal,world,{fromX=animal?.x,fromY=animal?.y,to
   if(animal?.aerialMode==='jump')return{allowed:true,jumping:true,flying:false,swimming:false,swimmer:canSwim(animal),speed:0,energy:0,sprint:1,grade:0,grip:0,authority:'ballistic-jumping/1'};
   if(animal?.aerialMode==='glide')return{allowed:true,gliding:true,flying:false,swimming:false,swimmer:canSwim(animal),speed:0,energy:0,sprint:1,grade:0,grip:0,authority:'finite-height-gliding/1'};
   if(animal?.airborne){const wind=flightWindFactors(animal,world,{fromX,fromY,toX,toY});return{allowed:true,flying:true,swimming:false,swimmer:canSwim(animal),speed:1.48*wind.speed,energy:1.85*wind.energy,sprint:1.12,grade:0,grip:0};}
-  const swimming=isWater(world,fromX,fromY)||isWater(world,toX,toY),swimmer=canSwim(animal);
+  if(world.environment?.icePolicy===SURFACE_ICE.policy&&submerged(animal)&&(!canOccupy(animal,world,toX,toY)||!wetSegment(world,fromX,fromY,toX,toY,{cellAccessible:(x,y)=>canOccupy(animal,world,x,y)})))return{allowed:false,swimming:true,swimmer:canSwim(animal),speed:0,energy:1,sprint:1};
+  if(animal.iceImmersion&&!canSwim(animal))return{allowed:iceEscapeStep(world,animal,toX,toY),struggling:true,swimming:true,swimmer:false,speed:.22,energy:2.4,sprint:1};
+  const onIce=!submerged(animal)&&iceSupports(world,animal,toX,toY);
+  const swimming=submerged(animal)||isWater(world,fromX,fromY)&&!iceSupports(world,animal,fromX,fromY)||isWater(world,toX,toY)&&!onIce,swimmer=canSwim(animal);
+  if(onIce&&!swimming)return{allowed:true,onIce:true,swimming:false,swimmer,speed:.78*landSpeedFactor(animal),energy:1.2,sprint:1};
   if(swimming&&!swimmer)return{allowed:false,swimming:true,swimmer:false,speed:0,energy:1,sprint:1};
   const pad=paddleFactors(animal);
   const aq=aquaticMovement(animal);

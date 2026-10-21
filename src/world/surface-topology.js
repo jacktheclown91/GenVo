@@ -1,3 +1,4 @@
+import {iceAmount} from './surface-ice.js';
 // One World-owned topology boundary. Runtime transitions are accounted; saved corruption is not repaired.
 import {coordNoise} from '../core/rng.js';
 import {coastlineX,validateEnvironment} from './environment.js';
@@ -20,11 +21,15 @@ export function synchronizeSurfaceWater(w,previous,{reason='legacy-mask-edit',ad
   ...(old.schema>=6?{overland:old.overland.slice()}:{}),
   ...(old.schema>=7||old.channelTopologyPolicy===PLANETARY_CHANNEL_TOPOLOGY.policy?{floodOrigin:old.floodOrigin.slice()}:{}),
   salt:old.salt.slice(),boundary:old.boundary.slice(),totals:{...old.totals}}:null;
- for(const i of changed){if(w.water[i]){
+ // Local-map bathymetry is bed geometry, never an added water stock. Stage it
+ // with the same topology transaction so dry cells cannot retain diving depth.
+ const bathymetry=w.divingBathymetry?.slice();
+ for(const i of changed){if(bathymetry)bathymetry[i]=0;if(w.water[i]){
   const options=additions?.get(i)||{depth:.15,salinity:0};
   if(!(Number.isFinite(options.depth)&&options.depth>0&&options.depth<=2&&
        Number.isFinite(options.salinity)&&options.salinity>=0&&options.salinity<=2))
    throw Error('Invalid topology water import.');
+  if(bathymetry)bathymetry[i]=options.depth;
   const internal=options.source==='overland';
   if(internal&&(!next||next.schema<6||options.salinity!==0||
        !Number.isFinite(next.overland?.[i])||next.overland[i]+1e-12<options.depth))
@@ -40,6 +45,7 @@ export function synchronizeSurfaceWater(w,previous,{reason='legacy-mask-edit',ad
   if(next){next.depth[i]=Math.fround(volume);if(next.schema>=3)next.volume[i]=volume;
    next.salt[i]=volume*options.salinity;next.boundary[i]=0;}
  }else if(next){
+  if(iceAmount(next,i)>0)throw Error('Thaw owned surface ice before removing its water cell.');
   const transfer=additions?.get(i)?.destination==='overland';
   if(transfer){
    if(!(next.schema===7||next.channelTopologyPolicy===PLANETARY_CHANNEL_TOPOLOGY.policy)||next.floodOrigin[i]!==1||next.overland[i]!==0||
@@ -60,6 +66,7 @@ export function synchronizeSurfaceWater(w,previous,{reason='legacy-mask-edit',ad
  }}
  if(next){next.totals.saltInput+=row.saltInput;next.totals.saltOutput+=row.saltOutput;validateEnvironment(w,next);}
  const totals={...state,revision:row.revision,events:[...state.events,row].slice(-64)};for(const k of ['waterInput','waterOutput','saltInput','saltOutput'])totals[k]+=row[k];validateTopologyState(totals);
+ if(bathymetry)w.divingBathymetry=bathymetry;
  if(next)w.environment=next;w.topology=totals;w._topologyMask=w.water.slice();deriveDrainage(w);return row;
 }
 // No saved mask is a documented migration, not permission to repair inconsistent supplied masks.

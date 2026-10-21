@@ -1,3 +1,4 @@
+import {settleIceLoad} from './ice-locomotion.js';
 import {adultBodyMass} from '../organisms/body-mass.js';
 import {SPECIES} from '../organisms/species.js';
 import {flightWindFactors} from './flight-wind.js';
@@ -45,13 +46,13 @@ export function glidingAvailability(sim,a=sim.player()){
 }
 export function launchGlide(sim,a=sim.player()){
  const status=glidingAvailability(sim,a);if(!status.enabled||a.aerialMode==='glide')return{ok:false,type:'glide',message:status.reason};
- a.energy-=GLIDING.launchCost;a.airborne=true;a.perched=false;a.aerialMode='glide';
+ delete a.iceImmersion;a.energy-=GLIDING.launchCost;a.airborne=true;a.perched=false;a.aerialMode='glide';
  a.glideAltitude=status.altitude;a.glideHeading=((a.dir||0)-2)*Math.PI/4;a.hidden=false;a.target=null;
  return{ok:true,type:'glide',message:'Gliding. Steer toward lower ground; height and food energy are finite.'};
 }
 export function endGlide(a,world,{collision=false,swimmer=false,fold=false}={}){
  collision||=fold&&a.glideAltitude-glideGround(world,a.x,a.y)>1;
- const water=!!world.water[world.idx(a.x,a.y)];
+ const water=!settleIceLoad(world,a,collision?2:1);
  a.airborne=false;delete a.aerialMode;delete a.glideAltitude;delete a.glideHeading;
  const damage=collision?GLIDING.collisionDamage:water&&!swimmer?GLIDING.waterDamage:0;
  if(damage)a.health=Math.max(0,a.health-damage);

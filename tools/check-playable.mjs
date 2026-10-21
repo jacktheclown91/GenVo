@@ -12,6 +12,13 @@ const syntax=[
   'tests/save-concurrent-requests.mjs'
 ];
 const runtime=[
+  'tests/surface-ice.mjs',
+  'tests/surface-ice-coupling.mjs',
+  'tests/surface-ice-continuity.mjs',
+  'tests/surface-ice-access.mjs',
+  'tests/ice-locomotion.mjs',
+  'tests/ice-aerial-breathing.mjs',
+  'tests/surface-ice-regional.mjs',
   'tests/thermal-refuge.mjs',
   'tests/thermal-weather.mjs',
   'tests/atmospheric-visibility.mjs',

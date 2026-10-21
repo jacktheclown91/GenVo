@@ -8,6 +8,7 @@
 // Policy /2 marks owned neighboring region sides, including shared corners.
 // Historical /1 saves preserve the original all-external replacement;
 // historical missing-policy saves preserve their salt-only flux law.
+import {liquidVolume} from './surface-ice.js';
 export const PLANETARY_BOUNDARY_WATER=Object.freeze({
  schema:2,policy:'geography-reservoir-water/1',pairedPolicy:'geography-reservoir-water/2',dailyFraction:.08
 });
@@ -73,8 +74,9 @@ export function boundaryWaterExchange(environment,i,salt,volume,world=null){
   fraction=open.length/outside.length;
   reservoirSalinity=open.reduce((sum,side)=>sum+side.salinity,0)/open.length;
  }
- const water=volume*PLANETARY_BOUNDARY_WATER.dailyFraction*fraction;
- const saltOutput=Math.min(salt,salt*water/volume);
+ const liquid=liquidVolume(environment,i,volume);if(!(liquid>0)||salt>liquid*2+1e-10)throw Error('Invalid boundary liquid-water stock.');
+ const water=liquid*PLANETARY_BOUNDARY_WATER.dailyFraction*fraction;
+ const saltOutput=Math.min(salt,salt*water/liquid);
  const saltInput=water*reservoirSalinity;
  return{saltAfter:salt-saltOutput+saltInput,
   saltInput,saltOutput,waterInput:water,waterOutput:water};

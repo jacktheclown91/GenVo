@@ -1,3 +1,4 @@
+import {SURFACE_ICE,iceAmount,liquidVolume,validateSurfaceIce} from './surface-ice.js';
 // Genuine paired dissolved-salt transport between two independently owned
 // planetary Worlds at the SAME completed biological day. Every source debit
 // has a recipient credit. The outer geography reservoir is a separate,
@@ -132,15 +133,15 @@ function validRegion(r,day){
 function boundedFlux(source,target,i,j){
  const a=source.env,b=target.env;
  if(!source.water[i]||!target.water[j]||!a.boundary[i]||!b.boundary[j])return 0;
- const ai=a.salt[i]/(a.schema>=3?a.volume[i]:a.depth[i]),
-  bj=b.salt[j]/(b.schema>=3?b.volume[j]:b.depth[j]);
+ const ai=a.salt[i]/liquidVolume(a,i,a.schema>=3?a.volume[i]:a.depth[i]),
+  bj=b.salt[j]/liquidVolume(b,j,b.schema>=3?b.volume[j]:b.depth[j]);
  // Use old-day stocks for every decision. A source's maximum available salt
  // is enforced separately while staging transfers across all four seams.
  const difference=ai-bj;
- return Number.isFinite(difference)?difference*Math.min(a.schema>=3?a.volume[i]:a.depth[i],b.schema>=3?b.volume[j]:b.depth[j])*
+ return Number.isFinite(difference)?difference*Math.min(liquidVolume(a,i,a.schema>=3?a.volume[i]:a.depth[i]),liquidVolume(b,j,b.schema>=3?b.volume[j]:b.depth[j]))*
   PLANETARY_SEAM_SALT.dailyFraction:0;
 }
-function stageTransfer(owner,other,index,opposite,proposal,changes,receipts,day,tick){
+function stageTransfer(owner,other,index,opposite,proposal,changes,receipts,day,tick,waterChanges){
  const key=owner.key+'|'+other.key;
  let pair=receipts.get(key);
  if(!pair){
@@ -154,7 +155,8 @@ function stageTransfer(owner,other,index,opposite,proposal,changes,receipts,day,
  const fi=proposal>0?index:opposite,ti=proposal>0?opposite:index;
  const debit=changes.get(from.key).get(fi)||0;
  const available=from.env.salt[fi]+debit;
- const capacity=(to.env.schema>=3?to.env.volume[ti]:to.env.depth[ti])*2-to.env.salt[ti]-(changes.get(to.key).get(ti)||0);
+ const dynamic=to.env.schema>=3?to.env.volume[ti]+(to.env.icePolicy===SURFACE_ICE.policy?(waterChanges.get(to.key).get(ti)||0):0):to.env.depth[ti];
+ const capacity=liquidVolume(to.env,ti,dynamic)*2-to.env.salt[ti]-(changes.get(to.key).get(ti)||0);
  const amount=Math.min(Math.abs(proposal),Math.max(0,available*.25),Math.max(0,capacity));
  if(amount<=0)return;
  changes.get(from.key).set(fi,debit-amount);
@@ -180,15 +182,15 @@ function stageWater(owner,other,i,j,saltChanges,waterChanges,pairs,day,tick){
  // Permanent water topology remains wet: an exchange cannot dry a coast or
  // inundate a land tile. Topology edits have their own explicit receipt law.
  const minWet=.01;
- const amount=Math.min(Math.abs(proposed),liveFrom*.1,Math.max(0,liveFrom-minWet),
+ const liquidFrom=liquidVolume(from.env,fi,liveFrom),amount=Math.min(Math.abs(proposed),liquidFrom*.1,Math.max(0,liquidFrom-minWet),
   Math.max(0,2-liveTo));
  if(amount<=1e-12)return;
  const fSalt=saltChanges.get(from.key).get(fi)||0;
  const tSalt=saltChanges.get(to.key).get(ti)||0;
  const liveSalt=from.env.salt[fi]+fSalt;
- const concentration=Math.max(0,liveSalt/liveFrom);
+ const concentration=Math.max(0,liveSalt/liquidFrom);
  const moveSalt=Math.min(amount*concentration,Math.max(0,liveSalt),
-  Math.max(0,(liveTo+amount)*2-(to.env.salt[ti]+tSalt)));
+  Math.max(0,(liquidVolume(to.env,ti,liveTo)+amount)*2-(to.env.salt[ti]+tSalt)));
  if(moveSalt<0||!Number.isFinite(moveSalt))throw Error('Invalid paired saline-water advection.');
  waterChanges.get(from.key).set(fi,fromDelta-amount);
  waterChanges.get(to.key).set(ti,toDelta+amount);
@@ -275,6 +277,7 @@ export function reconcilePlanetarySaltSeams(sim){
   regions.push(region);
  }
  if(regions.some(r=>!validRegion(r,day)))return[];
+ for(const r of regions)validateSurfaceIce({generator:'planetary/1',len:r.water.length,water:r.water},r.env);
  regions.sort((a,b)=>a.key<b.key?-1:a.key>b.key?1:0);
  const changes=new Map(regions.map(r=>[r.key,new Map()]));
  const waterChanges=new Map(regions.map(r=>[r.key,new Map()]));
@@ -294,7 +297,7 @@ export function reconcilePlanetarySaltSeams(sim){
       (!(left.env.blockedBoundaries[i]&bits[0])||!(right.env.blockedBoundaries[j]&bits[1])))
     throw Error('Unsynchronized planetary seam water ownership.');
    const transfer=boundedFlux(left,right,i,j);
-   if(transfer)stageTransfer(left,right,i,j,transfer,changes,receipts,day,sim.tickCount);
+   if(transfer)stageTransfer(left,right,i,j,transfer,changes,receipts,day,sim.tickCount,waterChanges);
    if(left.water[i]&&right.water[j]&&left.env.boundary[i]&&right.env.boundary[j])
     stageWater(left,right,i,j,changes,waterChanges,receipts,day,sim.tickCount);
    stagePlanetarySeamRunoff(left,right,i,j,overlandChanges,waterChanges,receipts,day,sim.tickCount,mineralChanges,terrainChanges,changes);
@@ -311,12 +314,12 @@ export function reconcilePlanetarySaltSeams(sim){
   for(const [i,delta] of amounts){
    const final=r.env.salt[i]+delta;
    const dynamic=r.env.schema>=3?r.env.volume[i]+(waterChanges.get(r.key).get(i)||0):r.env.depth[i];
-   if(!Number.isFinite(final)||final<-1e-12||final>dynamic*2+1e-10)
+   if(!Number.isFinite(final)||final<-1e-12||final>liquidVolume(r.env,i,dynamic)*2+1e-10)
     throw Error('Invalid cross-region salt stock.');
   }
   for(const [i,delta] of waterChanges.get(r.key)){
    const final=r.env.volume?.[i]+delta;
-   if(!Number.isFinite(final)||final<=0||final>2+1e-10)
+   if(!Number.isFinite(final)||final<=0||final>2+1e-10||iceAmount(r.env,i)>0&&liquidVolume(r.env,i,final)<.01-1e-10)
     throw Error('Invalid cross-region water stock.');
   }
   for(const [i,delta] of overlandChanges.get(r.key)){

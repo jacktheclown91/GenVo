@@ -1,0 +1,85 @@
+{
+  "fixture": {
+    "scope": "Authored pond, cold forcing, initial position and age; native exported renderer, not ordinary player progression or natural evolution",
+    "i": 2580,
+    "day": 2,
+    "imports": [
+      {
+        "i": 2451,
+        "water": 1,
+        "depth": 1.5,
+        "salinity": 0
+      },
+      {
+        "i": 2452,
+        "water": 1,
+        "depth": 1.5,
+        "salinity": 0
+      },
+      {
+        "i": 2453,
+        "water": 1,
+        "depth": 1.5,
+        "salinity": 0
+      },
+      {
+        "i": 2579,
+        "water": 1,
+        "depth": 1.5,
+        "salinity": 0
+      },
+      {
+        "i": 2580,
+        "water": 1,
+        "depth": 1.5,
+        "salinity": 0
+      },
+      {
+        "i": 2581,
+        "water": 1,
+        "depth": 1.5,
+        "salinity": 0
+      },
+      {
+        "i": 2707,
+        "water": 1,
+        "depth": 1.5,
+        "salinity": 0
+      },
+      {
+        "i": 2708,
+        "water": 1,
+        "depth": 1.5,
+        "salinity": 0
+      },
+      {
+        "i": 2709,
+        "water": 1,
+        "depth": 1.5,
+        "salinity": 0
+      }
+    ],
+    "drawn": 9,
+    "camera": {
+      "x": 20.5,
+      "y": 20.5
+    },
+    "load": 1.45,
+    "capacity": 2.165031051231863
+  },
+  "fracture": {
+    "drawn": 9,
+    "broken": 1,
+    "immersion": {
+      "air": 23.9,
+      "seconds": 0.1
+    },
+    "ice": 0.08580320738735861
+  },
+  "escape": {
+    "playerCell": 2582,
+    "immersion": null,
+    "broken": 1
+  },
+  "errors": []
+}
