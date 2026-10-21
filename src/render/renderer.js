@@ -405,9 +405,26 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     if(vegetation){const b=this.liveVegetationBounds(),left=(b.x0-this.camera.x)*tile+this.w/2,top=(b.y0-this.camera.y)*tile+this.h/2;c.save();if(b.active){c.beginPath();c.rect(0,0,this.w,this.h);c.rect(left,top,(b.x1-b.x0)*tile,(b.y1-b.y0)*tile);c.clip('evenodd')}}
     for(let cy=minCy;cy<=maxCy;cy++)for(let cx=minCx;cx<=maxCx;cx++){
       if(cx<0||cy<0||cx*size>=CFG.worldSize||cy*size>=CFG.worldSize)continue;
-      const chunk=this.terrainChunk(cx,cy,size);if(!chunk)continue;const wx=cx*size,wy=cy*size,px=Math.round((wx-this.camera.x)*tile+this.w/2),py=Math.round((wy-this.camera.y)*tile+this.h/2);c.drawImage(vegetation?this.terrainChunkCache.get(`${cx},${cy},${size}`).vegetation:chunk,px,py,size*tile,size*tile)
+      const chunk=this.terrainChunk(cx,cy,size);const wx=cx*size,wy=cy*size,px=Math.round((wx-this.camera.x)*tile+this.w/2),py=Math.round((wy-this.camera.y)*tile+this.h/2);
+      if(!chunk){if(!vegetation)this.drawPendingTerrainChunk(cx,cy,size,tile,px,py);continue}
+      c.drawImage(vegetation?this.terrainChunkCache.get(`${cx},${cy},${size}`).vegetation:chunk,px,py,size*tile,size*tile)
     }
     if(vegetation)c.restore();
+  }
+
+  // A cold chunk should never compile its full native ground and plant art in
+  // the middle of ordinary play. This brief fallback preserves land/water
+  // readability until the bounded refresh queue installs the real chunk.
+  // Prepared opening frames and direct (non-gameplay) render callers retain
+  // the existing full-resolution construction path.
+  drawPendingTerrainChunk(cx,cy,size,tile,px,py){
+    const c=this.ctx,w=this.sim.world;
+    c.fillStyle='#536a4b';c.fillRect(px,py,size*tile,size*tile);
+    c.fillStyle='#416f76';
+    for(let ly=0;ly<size;ly++)for(let lx=0;lx<size;lx++){
+      const x=cx*size+lx,y=cy*size+ly;
+      if(x>=0&&y>=0&&x<w.n&&y<w.n&&w.water[w.idx(x,y)])c.fillRect(px+lx*tile,py+ly*tile,tile,tile);
+    }
   }
 
   liveVegetationBounds(){const p=this.sim.player();return p?{active:true,x0:Math.max(0,Math.floor(p.x-4)),y0:Math.max(0,Math.floor(p.y-4)),x1:Math.min(this.sim.world.n,Math.ceil(p.x+4)),y1:Math.min(this.sim.world.n,Math.ceil(p.y+4))}:{active:false,x0:0,y0:0,x1:0,y1:0}}
@@ -430,7 +447,9 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   }
 
   terrainChunk(cx,cy,size=TERRAIN_CHUNK){
-    const key=`${cx},${cy},${size}`,sig=this.terrainChunkSignature(cx,cy,size),entry=this.terrainChunkCache.get(key);if(entry?.sig===sig)return entry.canvas;if(entry){this.queueTerrainRefresh(cx,cy,size,sig);return entry.canvas}if(typeof document==='undefined')return null;return this.buildTerrainChunk(cx,cy,size,sig)
+    const key=`${cx},${cy},${size}`,sig=this.terrainChunkSignature(cx,cy,size),entry=this.terrainChunkCache.get(key);if(entry?.sig===sig)return entry.canvas;if(entry){this.queueTerrainRefresh(cx,cy,size,sig);return entry.canvas}if(typeof document==='undefined')return null;
+    if(this.sceneShown){this.queueTerrainRefresh(cx,cy,size,sig);return null}
+    return this.buildTerrainChunk(cx,cy,size,sig)
   }
 
   buildTerrainChunk(cx,cy,size=TERRAIN_CHUNK,sig=this.terrainChunkSignature(cx,cy,size)){
