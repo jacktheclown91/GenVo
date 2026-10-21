@@ -192,8 +192,9 @@ export class TutorialController{
       if(caregiver)this.renderer.guideTarget={x:caregiver.x,y:caregiver.y,label:'Caregiver'};
       this.render('Grow into your body',`${developmentFor(p).stage} · about ${remaining} days to maturity. Stay fed, watered and safe${caregiver?'; your caregiver is marked nearby':''}. Courtship becomes available when your body matures.`,{compact:true});return;
     }
-    if(this.renderSpeciesGoal(p))return;
-    if(this.renderLifestyleGoal(p))return;
+    // For G1, an actual grown successor is the immediate stake. Secondary
+    // species/lifestyle projects yield only after the real handoff opportunity.
+    if(p.generation!==1){if(this.renderSpeciesGoal(p))return;if(this.renderLifestyleGoal(p))return}
     if(this.sim.lineage.established){this.render('Lineage established','Generation 8 is the milestone, not the ending · descendants and adaptations can continue.',{compact:true});return}
     if(heirs.length){
       const h=heirs[0],practice=this.sim.family.practiceProfile(h),prep=practice&&!practice.ready?` · ${practice.completed}/2 solo routes`:' · field-ready';
@@ -207,6 +208,7 @@ export class TutorialController{
       }
       this.render(heirs.length>1?`${heirs.length} grown descendants ready`:`G${h.generation} successor ready`,heirs.length>1?`They differ in body, adaptations and habits · H compares them and you choose who continues the line${prep}`:`This is how the lineage advances · H takes over · L shows the family${prep}`,{compact:true});return
     }
+    if(p.generation===1){if(this.renderSpeciesGoal(p))return;if(this.renderLifestyleGoal(p))return}
     if(children.length){
       // Do not reveal the position of a descendant outside the embodied view.
       // Urgent family care and known-danger guidance above retain priority.
