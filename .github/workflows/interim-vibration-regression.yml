@@ -1,0 +1,39 @@
+name: GenVo interim sensory regression
+on:
+  push:
+    branches:
+      - dev/interim-vibration-sensing-2026-10-21
+  pull_request:
+    paths:
+      - 'src/ecology/sensory-world.js'
+      - 'src/ecology/stratum-senses.js'
+      - 'src/ecology/threat-perception.js'
+      - 'tests/vibration-sensing.mjs'
+      - 'src/persistence/save-manager.js'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  focused-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Ground contact and stratum sensing
+        run: |
+          node tests/vibration-sensing.mjs
+          node tests/sensory-perception.mjs
+          node tests/stratum-senses.mjs
+          node tests/threat-perception.mjs
+          node tests/cave-exploration-feedback.mjs
+      - name: Persistence and native export
+        run: |
+          node tests/save-persistence.mjs
+          node tests/public-export.mjs
+      - name: Bounded positive-cohort parity and botanical identity
+        run: |
+          node tools/benchmark-seed-daily-hotpath.mjs
+          node tests/botanical-identity-parity.mjs

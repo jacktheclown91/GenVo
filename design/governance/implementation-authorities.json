@@ -47,6 +47,11 @@
       "consumers": ["src/ecology/atmospheric-visibility.js", "src/ecology/threat-perception.js", "src/ecology/sensory-world.js"],
       "contract": "docs/SENSORY-RECONCILIATION-2026-10-20.md"
     },
+    "groundVibrationPerception": {
+      "authority": "src/ecology/sensory-world.js",
+      "consumers": ["src/ecology/stratum-senses.js", "src/ecology/threat-perception.js", "src/render/sensory-fog.js", "src/persistence/save-manager.js"],
+      "contract": "docs/GROUND-VIBRATIONS-2026-10-21.md"
+    },
     "caveOpticalGeometry": {
       "authority": "src/world/cave-optics.js",
       "consumers": ["src/ecology/stratum-senses.js", "src/ecology/atmospheric-visibility.js"]

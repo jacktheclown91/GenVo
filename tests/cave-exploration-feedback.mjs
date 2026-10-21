@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {worldResourceAt,resourceTargetView,resourceSummary} from '../src/ui/world-resource-target.js';
+import {contextualInteractions} from '../src/gameplay/interaction-command.js';
+
+// Controlled positioning tests the actual generated cave, not a fabricated marker.
+const sim=new Simulation('CAVES-GEOLOGY',{player:true});
+const w=sim.world,a=sim.player();
+const entrance=[...w.subsurface.passages.values()].find(p=>p.entry&&!p.closed);
+assert.ok(entrance,'this seeded world exposes a real natural entrance');
+const x=entrance.i%w.n+.5,y=Math.floor(entrance.i/w.n)+.5;
+a.x=x;a.y=y;
+const renderer={screenToWorld:()=>({x,y})};
+const target=worldResourceAt(sim,renderer,0,0);
+assert.equal(target?.cave,entrance.i,'mouse target uses the actual saved opening');
+const view=resourceTargetView(sim,target),status=sim.caveStatus(a,entrance.i);
+assert.equal(view.live,true);
+assert.equal(view.near,true);
+assert.equal(view.action.enabled,status.enabled,'same cave authority powers selection and action');
+assert.equal(view.action.state,status.state);
+assert.equal(view.description,status.reason,'player sees the true biological access requirement');
+assert.ok(resourceSummary(sim,target).consequence.includes('Interact'));
+const choices=contextualInteractions(sim,target);
+assert.equal(choices[0]?.id,'cave');
+assert.equal(choices[0]?.enabled,status.enabled);
+a.x=Math.min(w.n-2,x+25);a.y=Math.min(w.n-2,y+25);
+const hidden=worldResourceAt(sim,renderer,0,0);
+assert.equal(hidden.cave,undefined,'distant unobserved cave does not appear as an exact mouse target');
+const hint=resourceTargetView(sim,target);
+assert.equal(hint.live,false);
+assert.equal(hint.action,undefined,'a selected but now hidden opening leaks no new action status');
+console.log('Mouse cave recognition, biological access feedback, and hidden-information boundaries PASS');
