@@ -1,4 +1,5 @@
 import {SURFACE_ICE,initializeSurfaceIce} from './surface-ice.js';
+import {REGIONAL_FOUNDING,foundRegionalPopulations} from '../ecology/regional-founding.js';
 // E15: explicit, gated, on-foot planetary frontier traversal.
 // Departing populations and their controller states are checkpointed as a
 // non-active region. The SAME traveling animal ID/body/genotype moves into
@@ -182,7 +183,9 @@ export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
   if(sim.surfaceIceRules===SURFACE_ICE.policy)initializeSurfaceIce(dest.world);
   dest.rng=new RNG(sim.seed+'|regional-fauna|'+destinationKey);
   dest.nextId=nextId+1;
-  dest.spawnInitial(); // Only ONCE for a newly entered region.
+  // Only ONCE for a newly entered region; archived regions never re-found.
+  if(sim.regionalFoundingRules===REGIONAL_FOUNDING.policy)foundRegionalPopulations(dest,{region:destinationKey});
+  else dest.spawnInitial();
   dest.regionalEcology.resetPageResidency();
  }
  const placements=new Map(status.placements.map(p=>[p.id,p.point]));
@@ -228,7 +231,7 @@ export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
  sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,memberIds),...(sim.offscreenBiologyEnabled?{biologicalMode:'canonical-ticks/1'}:{})});
  dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions,
   ...(prior.seamLedger?{seamLedger:structuredClone(prior.seamLedger)}:{})};
- for(const key of ['habitatHazardRules','fireRules','thunderRules','stratumSenseRules','stratumSenseRuleMigrations','vibrationRules','mateAssortmentRules','sensoryFogEnabled','surfaceIceRules','surfaceIceRuleMigrations','thermalRefugeRules','thermalRefugeRuleMigrations','thermalRules','thermalPattern','thermalRuleMigrations','visibilityRules','visibilityRuleMigrations','caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
+ for(const key of ['habitatHazardRules','fireRules','thunderRules','stratumSenseRules','stratumSenseRuleMigrations','vibrationRules','mateAssortmentRules','sensoryFogEnabled','surfaceIceRules','surfaceIceRuleMigrations','thermalRefugeRules','thermalRefugeRuleMigrations','thermalRules','thermalPattern','thermalRuleMigrations','visibilityRules','visibilityRuleMigrations','caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions','regionalFoundingRules']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
  if(!dest.habitatHazardRules)delete dest.habitatHazards;
  if(!dest.fireRules)delete dest.wildfire;
  if(!dest.thunderRules)delete dest.thunderstorms;

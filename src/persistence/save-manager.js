@@ -61,6 +61,7 @@ import {validatePageFaunaWork} from '../ecology/page-fauna-work.js';
 import {COAT_MOISTURE,validateCoatMoisture} from '../lineage/coat-moisture.js';
 import {SEASONAL_COAT,validateSeasonalCoat} from '../lineage/seasonal-coat.js';
 import {EMBRYO_CLIMATE,validateEmbryoClimate} from '../reproduction/embryo-climate.js';
+import {validateRegionalFounding} from '../ecology/regional-founding.js';
 
 // Schema 9 (v1.39.0): the new creature bodies. Creator decision 2026-10-09: start fresh, so older
 // saves before schema 9 are not carried over.
@@ -382,6 +383,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   delete sim._player; // Runtime lookup cache is rebuilt from canonical playerId/animals.
   validateResidentStart(sim);
   validateAuthoredIntroductions(sim);
+  if(!Object.hasOwn(snapshot.core||{},'regionalFoundingRules'))delete sim.regionalFoundingRules;
   sim.seed=snapshot.seed;
   sim.rng.state=snapshot.rngState>>>0;
   restoreBirthRules(sim,snapshot.core||{});
@@ -414,6 +416,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   for(const a of sim.animals){validateCaveTransit(a,sim.caveRules,sim.world);validateBurrowingState(a,sim.burrowingRules,sim.world);validateClimbState(a,sim.climbingRules);validateDiveState(a,sim.divingRules,sim.world);validateIceImmersion(a,sim.surfaceIceRules)}
   for(const s of sim.planetaryTravel?.sessions||[]){const world={...s.snapshot.world,len:sim.world.len,n:sim.world.n,water:s.snapshot.world.surfaceWater.mask,idx:(x,y)=>sim.world.idx(x,y)};validateIceWorld(world,sim.surfaceIceRules);validateCaves(world,sim.caveRules);validateSubsurface(world,sim.burrowingRules===BURROWING.policy);validateDivingWorld(world,sim.divingRules);for(const a of s.snapshot.animals){validateCaveTransit(a,sim.caveRules,world);validateBurrowingState(a,sim.burrowingRules,world);validateClimbState(a,sim.climbingRules);validateDiveState(a,sim.divingRules,world);validateIceImmersion(a,sim.surfaceIceRules)}}
   for(const a of sim.animals){validateGlideState(a,sim.glidingRules);validateJumpState(a,sim.jumpingRules)}
+  validateRegionalFounding(sim,sim.world.regionOrigin?regionKey(sim.world.regionOrigin):'local');
   for(const session of sim.planetaryTravel?.sessions||[])for(const a of session.snapshot.animals){validateGlideState(a,sim.glidingRules);validateJumpState(a,sim.jumpingRules)}
   // Wetness is a persistent organism condition, not a new water reserve.
   // Reject corrupt values without changing historical missing-field saves.
