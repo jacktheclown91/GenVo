@@ -22,8 +22,10 @@ assert.equal(builds,1);
 const rects=[];r.ctx={set fillStyle(v){this.color=v},fillRect(...args){rects.push([this.color,...args])}};
 r.sim={world:{n:16,water:Uint8Array.from({length:256},(_,i)=>i===4*16+5?1:0),idx:(x,y)=>y*16+x}};
 r.drawPendingTerrainChunk(1,1,4,32,128,128);
-assert.equal(rects.length,2,'pending ground stays readable without native draw work');
-assert.deepEqual(rects[1].slice(1),[160,128,32,32]);
+const largeTiles=rects.filter(([color,x,y,w,h])=>w===32&&h===32);
+assert.equal(largeTiles.length,16,'every pending ground tile has immediate readable backing');
+assert.ok(largeTiles.some(([color,x,y])=>/^#4[0-9a-f]{5}$/i.test(color)&&x===160&&y===128),'pending water tile is visibly distinct');
+assert.ok(rects.length>16,'pending terrain has modest visual variation until native art arrives');
 globalThis.document=priorDocument;
 
 const audio=new AudioDirector(null);
