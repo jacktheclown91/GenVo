@@ -28,6 +28,7 @@ jobs:
           node tests/sensory-perception.mjs
           node tests/stratum-senses.mjs
           node tests/threat-perception.mjs
+          node tests/cave-exploration-feedback.mjs
       - name: Persistence and native export
         run: |
           node tests/save-persistence.mjs

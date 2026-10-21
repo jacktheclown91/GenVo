@@ -12,6 +12,9 @@ function drawSignals(renderer,signals,tile){
   c.lineWidth=2;c.beginPath();c.arc(px,py,radius,s.angle-.6-s.uncertainty,s.angle+.6+s.uncertainty);c.stroke();
   c.fillStyle=s.kind==='heard'?'#b7d9ef':s.kind==='vibration'?'#a4d0b4':'#e2cc91';
   c.fillText(s.kind==='heard'?'♪':s.kind==='vibration'?'∿':'≈',px,py);
+  c.font='10px sans-serif';
+  c.fillText(s.kind==='heard'?'sound':s.kind==='vibration'?'ground':'scent',px,py+radius+10);
+  c.font='12px sans-serif';
  }
  c.restore();
 }
