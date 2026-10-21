@@ -372,14 +372,18 @@ updateHUD(sim,{renderer,mateOpen,mindOpen,territoryOpen,shelterOpen,migrationOpe
 // frame spent in each part of drawing and in the simulation, so a slow machine can show what is slow.
 // Performance mode (decorative foreground and weather layers off) turns on by itself after three
 // slow seconds; Shift+backquote switches it by hand.
-const fpsMeter=(()=>{const el=document.createElement('div');el.id='fpsMeter';el.hidden=true;document.querySelector('#app')?.appendChild(el);let n=0,worst=0,last=performance.now(),acc=0,slow=0,totalJS=0,worstJS=0;const parts={};
-  const wrap=(o,name,label)=>{const f=o?.[name];if(typeof f!=='function')return;o[name]=function(...a){if(el.hidden)return f.apply(this,a);const t=performance.now();try{return f.apply(this,a)}finally{parts[label]=(parts[label]||0)+performance.now()-t}}};
+const fpsMeter=(()=>{const el=document.createElement('div');el.id='fpsMeter';el.hidden=true;document.querySelector('#app')?.appendChild(el);let n=0,worst=0,last=performance.now(),acc=0,slow=0,totalJS=0,worstJS=0;const parts={},phases={};
+  const wrap=(o,name,label,bucket=parts)=>{const f=o?.[name];if(typeof f!=='function')return;o[name]=function(...a){if(el.hidden)return f.apply(this,a);const t=performance.now();try{return f.apply(this,a)}finally{bucket[label]=(bucket[label]||0)+performance.now()-t}}};
   for(const [m,l] of [['drawTerrainChunks','terrain'],['drawTile','tiles'],['drawTileDynamic','tiles'],['drawHabitatScenes','scenes'],['drawHabitatTransitions','scenes'],['drawRegionalFocals','scenes'],['drawSites','places'],['drawAnimal','creatures'],['drawForegroundHabitat','fringe'],['drawHabitatSceneForeground','fringe'],['drawSceneDepthForeground','fringe'],['drawWeatherOverlay','weather'],['processTerrainRefreshQueue','builds'],['syncScene','setup'],['drawLiveVegetationWindow','livePlants'],['stepTerrainChunkWork','chunkTasks'],['buildTerrainChunk','chunkSync'],['renderOrPrepare','renderTotal']])wrap(renderer,m,l);
   wrap(frameStepper,'advance','stepper');
-  wrap(Object.getPrototypeOf(sim),'update','sim');
+  const simMethods=Object.getPrototypeOf(sim);
+  wrap(simMethods,'update','sim');
+  for(const name of ['phaseClimate','phaseSoil','phaseVegetation','phasePerception','phaseDecision','phaseMovement','phaseMetabolism','phaseLifecycle','advanceDay']){
+    wrap(simMethods,name,name.replace('phase','').toLowerCase(),phases);
+  }
   return{recordWork(ms){totalJS+=ms;worstJS=Math.max(worstJS,ms)},toggle(){el.hidden=!el.hidden},setLow(v){renderer.lowDetail=v},toggleLow(){renderer.lowDetail=!renderer.lowDetail},frame(){const t=performance.now(),dt=t-last;last=t;n++;acc+=dt;if(dt>worst)worst=dt;if(acc>=1000){const fps=Math.round(n*1000/acc);slow=fps<40?slow+1:0;if(slow>=3&&!renderer.lowDetail)renderer.lowDetail=true;
-    if(!el.hidden){const top=Object.entries(parts).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`${k} ${(v/n).toFixed(1)}`).join(' · ');el.textContent=`${fps} FPS · slowest ${Math.round(worst)} ms · JS ${Math.round(totalJS/n)} avg / ${Math.round(worstJS)} peak · ${innerWidth}×${innerHeight}${renderer.lowDetail?' · performance mode':''}\nms per frame: ${top}`}
-    for(const k in parts)parts[k]=0;n=0;acc=0;worst=0;totalJS=0;worstJS=0}}}})();
+    if(!el.hidden){const top=Object.entries(parts).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`${k} ${(v/n).toFixed(1)}`).join(' · ');const phaseTop=Object.entries(phases).sort((a,b)=>b[1]-a[1]).slice(0,9).map(([k,v])=>`${k} ${(v/n).toFixed(1)}`).join(' · ');const queue=frameStepper.pendingSeconds.toFixed(2),ticks=frameStepper.last.steps;el.textContent=`${fps} FPS · slowest ${Math.round(worst)} ms · JS ${Math.round(totalJS/n)} avg / ${Math.round(worstJS)} peak · ${innerWidth}×${innerHeight}${renderer.lowDetail?' · performance mode':''}\nms per frame: ${top}\nSim phases: ${phaseTop||'none'} · queued ${queue}s · steps ${ticks} · speed ${observer.speed}x`}
+    for(const k in parts)parts[k]=0;for(const k in phases)phases[k]=0;n=0;acc=0;worst=0;totalJS=0;worstJS=0}}}})();
 const courtshipTray=new CourtshipTray({getSim:()=>sim,blocked:()=>frontEnd.isOpen||editor.open||succession.open||journal.open||fieldGuide.open||mateOpen,
  onManual:()=>{takeManualControl();applyObserverResult(observer.onManualInput())},
  onFeedback:r=>{if(r.message||!r.ok&&r.reason)tutorial.showToast(r.message||r.reason,2400,r.ok?'success':'warn','action');audio.note(r.ok?'confirm':'deny')},
