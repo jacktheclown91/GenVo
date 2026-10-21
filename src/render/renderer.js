@@ -426,7 +426,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     for(let ly=0;ly<size;ly++)for(let lx=0;lx<size;lx++){
       const x=cx*size+lx,y=cy*size+ly;
       if(x<0||y<0||x>=w.n||y>=w.n)continue;
-      const wet=!!w.water[w.idx(x,y)],h=hash2(x,y,103),ix=px+lx*tile,iy=py+ly*tile;
+      const wet=!!w.water[w.idx(x,y)],h=(hash2(x,y,103)*4294967295)>>>0,ix=px+lx*tile,iy=py+ly*tile;
       c.fillStyle=(wet?water:land)[h%4];c.fillRect(ix,iy,tile,tile);
       c.fillStyle=wet?'rgba(170,202,190,.11)':'rgba(182,194,144,.12)';
       const q=Math.max(1,Math.round(tile/16));
