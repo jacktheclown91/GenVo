@@ -55,6 +55,7 @@ const runtime=[
   'tests/save-concurrent-requests.mjs',
   'tests/save-async-coherence.mjs',
   'tests/save-persistence.mjs',
+  'tests/regional-records.mjs',
   'tests/save-storage.mjs',
   'tests/menu-world-slots.mjs',
   'tests/quick-interaction-default.mjs',

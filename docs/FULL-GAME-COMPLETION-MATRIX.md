@@ -15,6 +15,8 @@ Canonical source audit passed (284 reachable modules, 91 registered parts); all 
 
 Implement independently indexed regional persistence with atomic commit/recovery, bounded nearby simulation/render residency, neighbor preload, continuous keyboard/mouse traversal and seam rendering/navigation. Existing 16 inactive archives, 17 materialized Worlds, finite projection and whole-region scene replacement remain technical limits, not biological boundaries. Do not raise caps or discard ecology to claim scale. PR40 automatic keyboard crossing is integrated groundwork only.
 
+Indexed storage dependency is now integrated: `src/persistence/regional-records.js` and SaveManager write lightweight roots plus separate active/archive/survey records atomically, with one-region reads, rollback/retry, legacy upgrade and cleanup. Full loads still hydrate all regions and the live Atlas limits remain. Next connect selective reads to residency/eviction and neighbor preload; see `INDEXED-REGIONAL-STORAGE-2026-10-21.md`.
+
 ## Living Planet
 
 | Requirement | Actual state | Source and precise remaining work/dependency |

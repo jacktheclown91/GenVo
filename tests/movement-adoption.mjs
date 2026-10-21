@@ -21,7 +21,7 @@ import {planetaryTravelAvailability,crossPlanetaryBorder} from '../src/world/pla
 
 // Small atomic IndexedDB adapter: writes are staged, cloning occurs at add/put,
 // and an abort publishes none of a transaction's pending store operations.
-const stores=new Map([['saves',new Map()],['meta',new Map()]]);let failAdd=0;
+const stores=new Map([['saves',new Map()],['meta',new Map()],['regions',new Map()]]);let failAdd=0;
 const db={transaction(){let ended=false,adds=0;const pending=[];
  const tx={oncomplete:null,onabort:null,onerror:null,error:null,
   abort(){if(ended)return;ended=true;queueMicrotask(()=>tx.onabort?.())},

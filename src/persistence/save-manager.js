@@ -1,3 +1,4 @@
+import {REGION_STORE,readRegionalCheckpoint,commitRegionalCheckpoint,deleteRegionalCheckpoint} from './regional-records.js';
 import {restoreHabitatHazards} from '../ecology/habitat-hazards.js';
 import {restoreWildfire} from '../ecology/wildfire.js';
 import {restoreThunderstorms} from '../ecology/thunderstorms.js';
@@ -482,8 +483,7 @@ export class SaveManager{
     if(!safeSlot(id))throw Error('Invalid world slot.');
     // Never delete a slot while an earlier write could recreate it.
     if(this.activeSave)await this.activeSave;
-    const db=await this.db(),tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');
-    tx.objectStore(SAVE_STORE).delete(id);tx.objectStore(META_STORE).delete(id);await transactionDone(tx);
+    const db=await this.db();await deleteRegionalCheckpoint(db,id);
     if(id===this.activeSlotId)this.setActiveSlot(SAVE_KEY);this.worldNames.delete(id);
   }
   async allocateWorld(name){
@@ -496,10 +496,11 @@ export class SaveManager{
     if(!this.available)throw new Error('Browser storage is unavailable.');
     if(this.dbPromise)return this.dbPromise;
     this.dbPromise=new Promise((resolve,reject)=>{
-      const req=indexedDB.open(SAVE_DB,1);
-      req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains(SAVE_STORE))db.createObjectStore(SAVE_STORE);if(!db.objectStoreNames.contains(META_STORE))db.createObjectStore(META_STORE)};
-      req.onsuccess=()=>resolve(req.result);
-      req.onerror=()=>reject(req.error||new Error('Could not open save storage.'));
+      const req=indexedDB.open(SAVE_DB,2);let blocked=false;
+      req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains(SAVE_STORE))db.createObjectStore(SAVE_STORE);if(!db.objectStoreNames.contains(META_STORE))db.createObjectStore(META_STORE);if(!db.objectStoreNames.contains(REGION_STORE))db.createObjectStore(REGION_STORE)};
+      req.onsuccess=()=>{const db=req.result;if(blocked){db.close?.();return}db.onversionchange=()=>{db.close?.();this.dbPromise=null};resolve(db)};
+      req.onblocked=()=>{blocked=true;this.dbPromise=null;reject(Error('Close other GenVo tabs to upgrade regional storage.'))};
+      req.onerror=()=>{this.dbPromise=null;reject(req.error||new Error('Could not open save storage.'))};
     });
     return this.dbPromise;
   }
@@ -508,8 +509,11 @@ export class SaveManager{
     try{const db=await this.db(),tx=db.transaction(META_STORE,'readonly');return await requestToPromise(tx.objectStore(META_STORE).get(id))||null}catch(error){if(strict)throw error;return null}
   }
   async loadSnapshot(id=this.activeSlotId){
-    const db=await this.db(),tx=db.transaction(SAVE_STORE,'readonly');
-    return await requestToPromise(tx.objectStore(SAVE_STORE).get(id))||null;
+    return readRegionalCheckpoint(await this.db(),id);
+  }
+  async loadRegionSnapshot(region,{slot=this.activeSlotId,kind='session'}={}){
+    if(this.activeSave)await this.activeSave;
+    return readRegionalCheckpoint(await this.db(),slot,{region,kind});
   }
   async load(id=this.activeSlotId){
     if(!safeSlot(id))throw Error('Invalid world slot.');
@@ -567,10 +571,12 @@ export class SaveManager{
       if(slotMetadata?.role==='movement-backup')throw Error('Cannot overwrite a read-only movement backup.');
       const worldName=this.worldNames.get(slotId)||slotMetadata?.worldName||(slotId===SAVE_KEY?'First Lineage':'New World');
       const db=await this.db();
+      const indexed=sim.world.generator==='planetary/1',previous=indexed?await readRegionalCheckpoint(db,slotId,{manifestOnly:true}):null;
       // Capture and enqueue transport in one turn: nested state may still be live.
       const capturedSignature=this.signature(sim),snapshot=createSimulationSnapshot(sim,{reason});
       snapshot.meta.key=slotId;
       snapshot.meta.worldName=worldName;
+      if(indexed){await commitRegionalCheckpoint(db,snapshot,slotId,previous)}else{
       const tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');
       // Acquire both stores while the transaction is active. Serializing a
       // genuine mature world may take long enough for IndexedDB to auto-close
@@ -581,7 +587,7 @@ export class SaveManager{
       const metadataStore=tx.objectStore(META_STORE),saveStore=tx.objectStore(SAVE_STORE);
       metadataStore.put(snapshot.meta,slotId);
       saveStore.put(snapshot,slotId);
-      await transactionDone(tx);
+      await transactionDone(tx);}
       this.lastSavedAt=Date.now();this.lastSavedTick=snapshot.core.tickCount;this.lastObservedSignature=capturedSignature;
       this.status('saved','Saved',snapshot.meta);
       return snapshot.meta;
@@ -629,8 +635,7 @@ export class SaveManager{
     if(!this.available)return;
     if(this.activeSave)await this.activeSave;
     if((await this.metadata(this.activeSlotId,{strict:true}))?.role==='movement-backup')throw Error('Cannot clear a read-only movement backup.');
-    const db=await this.db(),tx=db.transaction([SAVE_STORE,META_STORE],'readwrite');
-    tx.objectStore(SAVE_STORE).delete(this.activeSlotId);tx.objectStore(META_STORE).delete(this.activeSlotId);await transactionDone(tx);
+    const db=await this.db();await deleteRegionalCheckpoint(db,this.activeSlotId);
     this.lastSavedAt=0;this.lastSavedTick=-1;this.lastObservedSignature='';this.status('cleared','Save cleared');
   }
   resetObservation(sim=this.getSim?.()){
