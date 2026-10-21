@@ -30,6 +30,26 @@ try{
   if(!aborted||encode(await m.loadSnapshot())!==before)throw Error('Aborted regional transaction changed committed ecology');
   await m.saveNow('regional-retry');const retry=await m.loadSnapshot();if(retry.core.tickCount!==later)throw Error('Retry did not commit latest actual tick');
   const afterRetry=encode(retry);let staleRejected=false;try{await commitRegionalCheckpoint(db,full,slot,raw)}catch(error){staleRejected=/changed during regional save/.test(error.message)}if(!staleRejected||encode(await m.loadSnapshot())!==afterRetry)throw Error('Stale writer overwrote a newer capture');
+  // Exercise native bounded page ownership without materializing the checkpoint.
+  const reader=await m.openRegionalReader(slot,{capacity:1}),manifest=reader.manifest;
+  const archived=manifest.regionalPersistence.entries.find(e=>e.kind==='session'),active=manifest.regionalPersistence.active;
+  manifest.regionalPersistence.capture='caller-mutated-copy';
+  const pendingLease=reader.acquire(archived.kind,archived.key);let capacityRejected=false;
+  try{await reader.acquire(active.kind,active.key)}catch(error){capacityRejected=/capacity exhausted/.test(error.message)}
+  const lease=await pendingLease;if(!capacityRejected||reader.resident!==1||encode(lease.payload)!==encode(retry.core.planetaryTravel.sessions.find(x=>x.key===archived.key)))throw Error('Bounded archive lease changed actual ecology or exceeded capacity');
+  // Mutating a decoded page is not a write to its persisted biological owner.
+  lease.payload.snapshot.core.tickCount=-100;lease.release();lease.release();if(reader.resident!==0||lease.payload!==null)throw Error('Lease release retained decoded ownership');
+  const clean=await reader.acquire(archived.kind,archived.key);if(clean.payload.snapshot.core.tickCount<0)throw Error('Released page mutation escaped into persisted ecology');clean.release();
+  await m.saveNow('reader-capture-change');let captureRejected=false;
+  try{await reader.acquire(active.kind,active.key)}catch(error){captureRejected=/checkpoint changed/.test(error.message)}
+  if(!captureRejected||reader.resident!==0)throw Error('Reader mixed checkpoint versions or retained failed reservation');reader.close();
+  const freshReader=await m.openRegionalReader(slot,{capacity:2}),held=await freshReader.acquire(active.kind,active.key);freshReader.close();if(held.payload!==null||freshReader.resident!==0)throw Error('Reader close retained decoded payload');
+  let closedRejected=false;try{await freshReader.acquire(active.kind,active.key)}catch(error){closedRejected=/closed/.test(error.message)}if(!closedRejected)throw Error('Closed reader admitted work');
+  const closing=await m.openRegionalReader(slot,{capacity:1}),loading=closing.acquire(active.kind,active.key);closing.close();let closeDuringRead=false;try{await loading}catch(error){closeDuringRead=/closed during/.test(error.message)}if(!closeDuringRead||closing.resident)throw Error('Closed pending reader leaked a page');
+  let inFlight=0,maxInFlight=0;const originalGet=IDBObjectStore.prototype.get;
+  IDBObjectStore.prototype.get=function(key){const req=originalGet.call(this,key);if(this.name===REGION_STORE){inFlight++;maxInFlight=Math.max(maxInFlight,inFlight);const finish=()=>inFlight--;req.addEventListener('success',finish,{once:true});req.addEventListener('error',finish,{once:true})}return req};
+  let sequential;try{sequential=await m.loadSnapshot()}finally{IDBObjectStore.prototype.get=originalGet}
+  if(maxInFlight!==1||inFlight!==0||sequential.core.tickCount!==later||encode(sequential.core.planetaryTravel.sessions)!==encode(retry.core.planetaryTravel.sessions))throw Error('Sequential compatibility read changed ecology or queued multiple payloads');
   const request=req=>new Promise((resolve,reject)=>{req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)});
   // Simulate a v1 monolithic checkpoint in another slot; ordinary load must
   // preserve it exactly before any explicit subsequent save changes storage.
@@ -41,7 +61,7 @@ try{
   const oldDB=await new Promise((resolve,reject)=>{const req=indexedDB.open('genvo8-saves',1);req.onupgradeneeded=()=>{req.result.createObjectStore('saves');req.result.createObjectStore('meta')};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)});
   const oldTx=oldDB.transaction(['saves','meta'],'readwrite'),oldDone=new Promise((r,j)=>{oldTx.oncomplete=r;oldTx.onabort=()=>j(oldTx.error)});oldTx.objectStore('meta').put(full.meta,'autosave');oldTx.objectStore('saves').put(full,'autosave');await oldDone;oldDB.close();
   const upgraded=await m.db();if(upgraded.version!==2||!upgraded.objectStoreNames.contains(REGION_STORE)||encode(await m.loadSnapshot('autosave'))!==before)throw Error('Version 1 upgrade lost the original checkpoint');const upgradedSim=await m.load('autosave');if(upgradedSim.player().id!==full.core.playerId||upgradedSim.tickCount!==full.core.tickCount)throw Error('Upgraded legacy checkpoint did not restore actual simulation');await m.clear();
-  return{dbVersion:db.version,regionalRecords:raw.regionalPersistence.entries.length+1,activePayloadSeparate:true,version1UpgradeExact:true,staleWriterRejected:true,rootNestedArchives:raw.core.planetaryTravel.sessions.length,selectiveReads:reads,atomicAbortPreservedExactCheckpoint:true,retryTick:later,legacyExact:true,recordsDeleted:countBefore-countAfter};
+  return{dbVersion:db.version,regionalRecords:raw.regionalPersistence.entries.length+1,boundedReader:{capacityRejected,captureRejected,closedRejected,closeDuringRead,maxInFlight,releasedMutationIsolated:true},activePayloadSeparate:true,version1UpgradeExact:true,staleWriterRejected:true,rootNestedArchives:raw.core.planetaryTravel.sessions.length,selectiveReads:reads,atomicAbortPreservedExactCheckpoint:true,retryTick:later,legacyExact:true,recordsDeleted:countBefore-countAfter};
  });assert.deepEqual(errors,[]);
  fs.writeFileSync(path.join(output,'receipt.json'),JSON.stringify({stage,crossing,saved,storage,errors,scope:'Native menu/held-D automatic frontier and Save/Continue with a valid authored jumper. Explicit observer placement at an actual accessible frontier. This is a regional simulation replacement, not seamless streaming or natural full-journey acceptance.'},null,2));console.log('Regional storage Chromium PASS: actual crossed ecology, indexed layout, selective read, native Save/Continue, atomic abort/retry, legacy read and complete slot cleanup.');
 }finally{await browser.close();await new Promise(r=>server.close(r))}

@@ -54,7 +54,7 @@ export function assembleRegionalSnapshot(root,slot,records){
 }
 // Queue all dependent reads within the root request callback. One readonly
 // transaction prevents a concurrent save from mixing two committed captures.
-export function readRegionalCheckpoint(db,slot,{region=null,kind='session',manifestOnly=false}={}){
+export function readRegionalCheckpoint(db,slot,{region=null,kind='session',manifestOnly=false,expectedCapture=null}={}){
  if(!slotOK(slot))return Promise.reject(Error('Invalid world slot.'));
  return new Promise((resolve,reject)=>{
   const tx=db.transaction(['saves',REGION_STORE],'readonly'),saves=tx.objectStore('saves'),regions=tx.objectStore(REGION_STORE);let root,result,problem;
@@ -63,7 +63,8 @@ export function readRegionalCheckpoint(db,slot,{region=null,kind='session',manif
   const fail=error=>{problem=error;try{tx.abort()}catch{reject(error)}};
   const request=saves.get(slot);request.onerror=()=>fail(request.error||Error('Checkpoint read failed.'));
   request.onsuccess=()=>{try{
-   root=request.result||null;if(!root){result=null;return}const index=validateRegionalIndex(root,slot);
+   root=request.result||null;if(!root){if(expectedCapture!==null)throw Error('Regional checkpoint changed; reopen the reader.');result=null;return}const index=validateRegionalIndex(root,slot);
+   if(expectedCapture!==null&&index?.capture!==expectedCapture)throw Error('Regional checkpoint changed; reopen the reader.');
    if(manifestOnly){result=root;return}
    if(region!==null){
     if(!['session','survey','active'].includes(kind))throw Error('Invalid region record kind.');
@@ -72,7 +73,10 @@ export function readRegionalCheckpoint(db,slot,{region=null,kind='session',manif
     const req=regions.get(entry.id);req.onerror=()=>fail(req.error||Error('Region read failed.'));req.onsuccess=()=>{try{const r=req.result;if(r?.schema!==1||r.capture!==index.capture||r.slot!==slot||r.kind!==kind||r.key!==entry.key||identity(kind,r.payload).key!==entry.key)throw Error('Missing or stale regional record: '+entry.key);result=r.payload}catch(error){fail(error)}};return;
    }
    if(!index){result=root;return}const entries=[...index.entries,index.active],records=new Array(entries.length);let pending=records.length;
-   entries.forEach((entry,n)=>{const req=regions.get(entry.id);req.onerror=()=>fail(req.error||Error('Region read failed.'));req.onsuccess=()=>{try{records[n]=req.result;if(--pending===0)result=assembleRegionalSnapshot(root,slot,records)}catch(error){fail(error)}}});
+   // Keep one payload request in flight. Queue the next inside onsuccess so
+   // IndexedDB keeps this SAME snapshot transaction alive between pages.
+   // Compatibility full loads still retain all returned payloads for restore.
+   const next=n=>{const entry=entries[n],req=regions.get(entry.id);req.onerror=()=>fail(req.error||Error('Region read failed.'));req.onsuccess=()=>{try{records[n]=req.result;if(--pending===0)result=assembleRegionalSnapshot(root,slot,records);else next(n+1)}catch(error){fail(error)}}};next(0);
   }catch(error){fail(error)}};
  });
 }

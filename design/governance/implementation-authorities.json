@@ -10,8 +10,13 @@
     },
     "indexedRegionalPersistence": {
       "authority": "src/persistence/regional-records.js",
-      "consumers": ["src/persistence/save-manager.js"],
+      "consumers": ["src/persistence/save-manager.js", "src/persistence/regional-reader.js"],
       "contract": "docs/INDEXED-REGIONAL-STORAGE-2026-10-21.md"
+    },
+    "regionalDecodedPageLeases": {
+      "authority": "src/persistence/regional-reader.js",
+      "consumers": ["src/persistence/save-manager.js"],
+      "contract": "docs/REGIONAL-READER-2026-10-21.md"
     },
     "physicalHabitatHazards": {
       "authority": "src/ecology/habitat-hazards.js",

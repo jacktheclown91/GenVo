@@ -1,4 +1,5 @@
 import {REGION_STORE,readRegionalCheckpoint,commitRegionalCheckpoint,deleteRegionalCheckpoint} from './regional-records.js';
+import {openRegionalCheckpointReader} from './regional-reader.js';
 import {restoreHabitatHazards} from '../ecology/habitat-hazards.js';
 import {restoreWildfire} from '../ecology/wildfire.js';
 import {restoreThunderstorms} from '../ecology/thunderstorms.js';
@@ -510,6 +511,9 @@ export class SaveManager{
   }
   async loadSnapshot(id=this.activeSlotId){
     return readRegionalCheckpoint(await this.db(),id);
+  }
+  async openRegionalReader(id=this.activeSlotId,options){
+    return openRegionalCheckpointReader(await this.db(),id,options);
   }
   async loadRegionSnapshot(region,{slot=this.activeSlotId,kind='session'}={}){
     if(this.activeSave)await this.activeSave;
