@@ -40,7 +40,15 @@ const FACE=[[0,-1],[.7071,-.7071],[1,0],[.7071,.7071],[0,1],[-.7071,.7071],[-1,0
 function inView(a,b){const f=FACE[(a.dir??0)&7],dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1;return (f[0]*dx+f[1]*dy)/d>=VIEW_CONE}
 export function watching(sim,a,b){return a.vigilance?.id===b.id&&a.vigilance.untilTick>sim.tickCount}
 // Stage 1: can `a` sense `b` at distance d, given its flight radius R?
-export function detects(sim,a,b,d,R){const visible=sim.stratumSenseRules===STRATUM_SENSES.policy?d<R&&visuallyObservable(sim,a,b,R/visualSurveyRange(a,1)):(watching(sim,a,b)||inView(a,b))&&d<R&&atmosphericSight(sim,a,b,R).detected;return visible||stratumHearing(sim,a,b,R*(still(sim,b)?QUIET:HEARING))||!!groundVibrationCue(sim,a,b)}
+export function detects(sim,a,b,d,R){
+ const visible=sim.stratumSenseRules===STRATUM_SENSES.policy
+  ?d<R&&visuallyObservable(sim,a,b,R/visualSurveyRange(a,1))
+  :(watching(sim,a,b)||inView(a,b))&&d<R&&atmosphericSight(sim,a,b,R).detected;
+ // Recently identified threats retain attention across an ordinary turn, but
+ // can only be followed through the real medium's connected hearing route.
+ const attentive=watching(sim,a,b)&&d<R&&stratumHearing(sim,a,b,R);
+ return visible||attentive||stratumHearing(sim,a,b,R*(still(sim,b)?QUIET:HEARING))||!!groundVibrationCue(sim,a,b);
+}
 // Stage 2: how threatening `b` looks to `a` (0..1).
 export function threatLevel(a,b,d,R){
   if(courtingMe(b,a)||courtingMe(a,b))return 0;
