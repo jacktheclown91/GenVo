@@ -12,6 +12,7 @@ const syntax=[
   'tests/save-concurrent-requests.mjs'
 ];
 const runtime=[
+  'tests/itch-preview-performance.mjs',
   'tests/surface-ice.mjs',
   'tests/surface-ice-coupling.mjs',
   'tests/surface-ice-continuity.mjs',
