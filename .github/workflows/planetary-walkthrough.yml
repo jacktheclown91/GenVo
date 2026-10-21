@@ -1,0 +1,39 @@
+name: GenVo planetary walkthrough
+on:
+  push:
+    branches:
+      - dev/planetary-walkthrough-default-2026-10-21
+  pull_request:
+    paths:
+      - 'src/world/planetary-walkthrough.js'
+      - 'src/main.js'
+      - 'index.html'
+      - 'styles.css'
+      - 'tests/planetary-walkthrough.mjs'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  continuity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 26
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Procedural-world walking contracts
+        run: |
+          node --check src/main.js
+          node --check src/world/planetary-walkthrough.js
+          node tests/planetary-walkthrough.mjs
+          node tests/e14-planetary-regions.mjs
+          node tests/e15-planetary-travel.mjs
+          node tests/e16-family-travel.mjs
+      - name: World-menu and save/export continuity
+        run: |
+          node tests/menu-world-slots.mjs
+          node tests/planet-geography.mjs
+          node tests/world-generators.mjs
+          node tests/save-persistence.mjs
+          node tests/public-export.mjs
