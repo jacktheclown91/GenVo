@@ -13,6 +13,7 @@ import {combatActions} from './ui/gameplay-actions.js';
 import {FrontEnd} from './ui/front-end.js';
 import {chooseResidentStart} from './ui/resident-start.js';
 import {chooseAuthoredFounder} from './ui/founder-start.js';
+import {installPhysicalStarter,physicalStarterIds,PHYSICAL_STARTERS} from './ui/physical-starter-presets.js';
 import {selectResidentStart} from './persistence/resident-start.js';
 import {loadNativePartCatalog,nativeArtStatus} from './render/runtime-part-art.js';
 import {Simulation} from './sim/simulation.js';
@@ -133,7 +134,8 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
  start='new',scenarioFile=null,catalogEntry=null,creature='recorded',movementRules='recorded'}){
   if(!['recorded','current'].includes(movementRules))throw Error('Unsupported movement continuation mode.');
   if(start==='new'&&movementRules==='current')throw Error('New ecology already uses current movement rules.');
-  if(!['recorded','resident','guided','sandbox'].includes(creature))throw Error('Unsupported starting creature mode.');
+  if(!['recorded','resident','guided','sandbox',...physicalStarterIds.map(id=>'starter-'+id)].includes(creature))throw Error('Unsupported starting creature mode.');
+  if(creature.startsWith('starter-')&&start!=='new')throw Error('Physical starting bodies require a fresh Day 1 world.');
   if(start==='new'&&!['freshwater/1','planetary/1'].includes(geography))
     throw Error('Unsupported new-world geography.');
   if(inGameplay){const checkpoint=await saveManager.saveNow('before-world-switch');
@@ -174,12 +176,14 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
   if(creature==='guided'||creature==='sandbox'){
     const authored=await chooseAuthoredFounder(next,creature);if(!authored)return false;
   }
+  if(creature.startsWith('starter-'))installPhysicalStarter(next,creature.slice('starter-'.length));
   let adoptedSlot=null;
   if(movementRules==='current')adoptedSlot=await saveManager.storeMovementContinuation(next,sourceSnapshot,{name,source:start==='import'?'import:'+scenarioFile.name:start});
   else await saveManager.allocateWorld(name);
   installSimulation(next,start==='new'?{fresh:true}:{resume:true});
   if(adoptedSlot)saveManager.setActiveSlot(adoptedSlot.slotId);
   if(start==='new'||creature==='guided'||creature==='sandbox')tutorial.beginInWorld();
+  if(next.creatureStart?.starterFocus)tutorial.showToast(PHYSICAL_STARTERS[next.creatureStart.starterFocus].hint,7200,'safe','action');
   closeGameMenus();await renderer.sceneReady();await nextPaint();
   try{const saved=await saveManager.saveNow(start==='new'?'world-start':'world-scenario-fork');
     if(!saved)showSaveStatus(adoptedSlot?'The continuation and original backup are saved; recent play could not be saved.':'Storage unavailable. This world is not saved.',{error:true,duration:6500});
