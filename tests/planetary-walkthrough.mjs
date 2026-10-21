@@ -48,7 +48,7 @@ assert.equal(traveler.id,animal.id);
 assert.deepEqual(traveler.bodyPlan,animal.bodyPlan);
 assert.deepEqual(traveler.genes,animal.genes);
 assert.equal(next.animals.filter(a=>a.id===traveler.id).length,1);
-assert.notEqual(next.world.plants.bramble[100],sim.world.plants.bramble[100],'new region is not a disguised copy of initial map');
+assert.notDeepEqual(next.world.moisture,sim.world.moisture,'new region samples a different stretch of global planetary geography');
 const global=planetaryPosition(next);
 assert.equal(global.regionX,128);assert.equal(global.regionY,0);
 assert.equal(global.worldX,128+traveler.x);
