@@ -1,3 +1,4 @@
+import {caveRockArt} from '../../assets/art/environment/cave-rock.js';
 import {exposedCaveWater} from '../world/cave-water.js';
 import {CAVES} from '../world/cave-policy.js';
 import {caveFracture} from '../world/natural-caves.js';
@@ -39,8 +40,12 @@ export function caveTileData(w,p){
   const wall=wallTop||wallRight||wallBottom||wallLeft;
   if(wall)wallPixels++;else floorPixels++;
   const palette=wall?(natural?ROCK:SOIL):wet&&(w.water[p.i]||(grit%100)<Math.min(100,liquid/p.void*150))?WATER:(natural?FLOOR:EARTH);
-  const base=palette[grit%palette.length],brightness=wall?(wallTop?8:wallBottom?-10:0):Math.round((damp-.5)*-7+(fracture-.6)*9-height*3);
-  const fine=(grit>>>6)%13===0?10:(grit>>>5)%11===0?-7:0;
+  // Native paint replaces noise only on real natural rock/floor. Physical water,
+  // earth and living-root masks retain their original owners and exact footprint.
+  const frame=caveRockArt.frames[((y&1)*2)+(x&1)],tone=frame[py*S+px];
+  const native=natural&&(palette===ROCK||palette===FLOOR);
+  const base=palette[native?tone:grit%palette.length],brightness=wall?(wallTop?8:wallBottom?-10:0):Math.round((damp-.5)*-7+(fracture-.6)*9-height*3);
+  const fine=native?0:(grit>>>6)%13===0?10:(grit>>>5)%11===0?-7:0;
   const sediment=!wall&&(grit&31)===1?8:0;
   // Roots are a silhouette only where surface plants physically exist.
   const rooted=wall&&root>.12&&((grit>>>10)&127)<Math.min(18,root*9)&&py<17;
