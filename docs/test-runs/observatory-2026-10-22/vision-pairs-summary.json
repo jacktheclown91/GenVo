@@ -1,0 +1,547 @@
+{
+ "PLANET-B0-A|control": {
+  "seed": "PLANET-B0-A",
+  "mode": "control",
+  "policy": null,
+  "complete": true,
+  "lastDay": 1001,
+  "seconds": 9947.9,
+  "population": {
+   "start": 196,
+   "final": 91,
+   "min": 75,
+   "max": 633,
+   "mean": 389.8
+  },
+  "speciesFinal": {
+   "genvo": 68,
+   "mirelick": 8,
+   "podshell": 3,
+   "mosskip": 12
+  },
+  "births": 1114,
+  "deaths": 1219,
+  "byCause": {
+   "predation": 88,
+   "health": 13,
+   "drowning": 125,
+   "starvation": 133,
+   "age": 795,
+   "dehydration": 65
+  },
+  "threatStages": {
+   "vigilance": 15873,
+   "alarm": 6959,
+   "flight": 6624,
+   "wary": 1064
+  },
+  "sightRange": {
+   "start": {
+    "mean": 8.41,
+    "max": 14.2
+   },
+   "final": {
+    "mean": 7.83,
+    "max": 10.5
+   }
+  },
+  "fieldOfView": {
+   "start": {
+    "mean": 257.33,
+    "max": 301
+   },
+   "final": {
+    "mean": 262.21,
+    "max": 301
+   }
+  },
+  "eyeCarriers": {
+   "start": {
+    "wide-field-eye": 100,
+    "eyespot": 32,
+    "hunter-eye": 20,
+    "simple-eye": 24,
+    "tracker-eye": 20
+   },
+   "final": {
+    "simple-eye": 30,
+    "tracker-eye": 4,
+    "wide-field-eye": 46,
+    "eyespot": 11
+   }
+  },
+  "secondPairFinal": 0,
+  "advancedEverBorn": {
+   "telescopic-eye": 0,
+   "raptor-eye": 0,
+   "panoramic-eye": 0,
+   "sentinel-eye": 0,
+   "second-pair": 0
+  },
+  "advancedFirstBorn": {
+   "telescopic-eye": null,
+   "raptor-eye": null,
+   "panoramic-eye": null,
+   "sentinel-eye": null,
+   "second-pair": null
+  },
+  "everBorn": {
+   "wide-field-eye": 660,
+   "simple-eye": 363,
+   "hunter-eye": 4,
+   "eyespot": 43,
+   "tracker-eye": 38,
+   "compound-eye": 3,
+   "stalk-eye": 3
+  },
+  "newbornsObserved": 1310
+ },
+ "PLANET-B0-A|vision": {
+  "seed": "PLANET-B0-A",
+  "mode": "vision",
+  "policy": "anatomical-vision/1",
+  "complete": true,
+  "lastDay": 1001,
+  "seconds": 9579.1,
+  "population": {
+   "start": 196,
+   "final": 110,
+   "min": 110,
+   "max": 568,
+   "mean": 371.6
+  },
+  "speciesFinal": {
+   "genvo": 98,
+   "needlejaw": 1,
+   "podshell": 2,
+   "mosskip": 6,
+   "mirelick": 3
+  },
+  "births": 1063,
+  "deaths": 1149,
+  "byCause": {
+   "predation": 135,
+   "drowning": 106,
+   "starvation": 110,
+   "health": 19,
+   "age": 732,
+   "disease": 5,
+   "dehydration": 42
+  },
+  "threatStages": {
+   "vigilance": 30950,
+   "alarm": 11461,
+   "flight": 10257,
+   "wary": 2684
+  },
+  "sightRange": {
+   "start": {
+    "mean": 8.41,
+    "max": 14.2
+   },
+   "final": {
+    "mean": 8.81,
+    "max": 12.4
+   }
+  },
+  "fieldOfView": {
+   "start": {
+    "mean": 257.33,
+    "max": 301
+   },
+   "final": {
+    "mean": 261.55,
+    "max": 321
+   }
+  },
+  "eyeCarriers": {
+   "start": {
+    "wide-field-eye": 100,
+    "eyespot": 32,
+    "hunter-eye": 20,
+    "simple-eye": 24,
+    "tracker-eye": 20
+   },
+   "final": {
+    "tracker-eye": 3,
+    "simple-eye": 46,
+    "wide-field-eye": 57,
+    "hunter-eye": 1,
+    "eyespot": 2,
+    "compound-eye": 1
+   }
+  },
+  "secondPairFinal": 0,
+  "advancedEverBorn": {
+   "telescopic-eye": 0,
+   "raptor-eye": 0,
+   "panoramic-eye": 0,
+   "sentinel-eye": 0,
+   "second-pair": 0
+  },
+  "advancedFirstBorn": {
+   "telescopic-eye": null,
+   "raptor-eye": null,
+   "panoramic-eye": null,
+   "sentinel-eye": null,
+   "second-pair": null
+  },
+  "everBorn": {
+   "simple-eye": 404,
+   "eyespot": 17,
+   "tracker-eye": 63,
+   "wide-field-eye": 568,
+   "hunter-eye": 7,
+   "compound-eye": 4
+  },
+  "newbornsObserved": 1259
+ },
+ "PLANET-VISION-B|control": {
+  "seed": "PLANET-VISION-B",
+  "mode": "control",
+  "policy": null,
+  "complete": true,
+  "lastDay": 661,
+  "seconds": 1147.9,
+  "population": {
+   "start": 196,
+   "final": 0,
+   "min": 0,
+   "max": 252,
+   "mean": 57.9
+  },
+  "speciesFinal": {},
+  "births": 180,
+  "deaths": 376,
+  "byCause": {
+   "predation": 52,
+   "health": 14,
+   "drowning": 33,
+   "starvation": 25,
+   "wildfire": 225,
+   "age": 27
+  },
+  "threatStages": {
+   "vigilance": 4692,
+   "alarm": 4592,
+   "flight": 2005,
+   "wary": 474
+  },
+  "sightRange": {
+   "start": {
+    "mean": 8.37,
+    "max": 14
+   },
+   "final": {
+    "mean": 0,
+    "max": 0
+   }
+  },
+  "fieldOfView": {
+   "start": {
+    "mean": 257.33,
+    "max": 301
+   },
+   "final": {
+    "mean": 0,
+    "max": 0
+   }
+  },
+  "eyeCarriers": {
+   "start": {
+    "wide-field-eye": 100,
+    "eyespot": 32,
+    "hunter-eye": 20,
+    "simple-eye": 24,
+    "tracker-eye": 20
+   },
+   "final": {}
+  },
+  "secondPairFinal": 0,
+  "advancedEverBorn": {
+   "telescopic-eye": 0,
+   "raptor-eye": 0,
+   "panoramic-eye": 0,
+   "sentinel-eye": 0,
+   "second-pair": 0
+  },
+  "advancedFirstBorn": {
+   "telescopic-eye": null,
+   "raptor-eye": null,
+   "panoramic-eye": null,
+   "sentinel-eye": null,
+   "second-pair": null
+  },
+  "everBorn": {
+   "wide-field-eye": 98,
+   "eyespot": 8,
+   "simple-eye": 61,
+   "compound-eye": 2,
+   "tracker-eye": 8,
+   "display-eye": 1,
+   "hunter-eye": 2
+  },
+  "newbornsObserved": 376
+ },
+ "PLANET-VISION-B|vision": {
+  "seed": "PLANET-VISION-B",
+  "mode": "vision",
+  "policy": "anatomical-vision/1",
+  "complete": true,
+  "lastDay": 671,
+  "seconds": 1187.6,
+  "population": {
+   "start": 196,
+   "final": 0,
+   "min": 0,
+   "max": 247,
+   "mean": 59.6
+  },
+  "speciesFinal": {},
+  "births": 164,
+  "deaths": 360,
+  "byCause": {
+   "predation": 51,
+   "health": 11,
+   "drowning": 45,
+   "starvation": 29,
+   "disease": 1,
+   "wildfire": 197,
+   "age": 26
+  },
+  "threatStages": {
+   "vigilance": 3200,
+   "alarm": 2796,
+   "flight": 2064,
+   "wary": 271
+  },
+  "sightRange": {
+   "start": {
+    "mean": 8.37,
+    "max": 14
+   },
+   "final": {
+    "mean": 0,
+    "max": 0
+   }
+  },
+  "fieldOfView": {
+   "start": {
+    "mean": 257.33,
+    "max": 301
+   },
+   "final": {
+    "mean": 0,
+    "max": 0
+   }
+  },
+  "eyeCarriers": {
+   "start": {
+    "wide-field-eye": 100,
+    "eyespot": 32,
+    "hunter-eye": 20,
+    "simple-eye": 24,
+    "tracker-eye": 20
+   },
+   "final": {}
+  },
+  "secondPairFinal": 0,
+  "advancedEverBorn": {
+   "telescopic-eye": 0,
+   "raptor-eye": 0,
+   "panoramic-eye": 0,
+   "sentinel-eye": 0,
+   "second-pair": 0
+  },
+  "advancedFirstBorn": {
+   "telescopic-eye": null,
+   "raptor-eye": null,
+   "panoramic-eye": null,
+   "sentinel-eye": null,
+   "second-pair": null
+  },
+  "everBorn": {
+   "wide-field-eye": 103,
+   "simple-eye": 40,
+   "eyespot": 14,
+   "tracker-eye": 5,
+   "hunter-eye": 1,
+   "compound-eye": 1
+  },
+  "newbornsObserved": 360
+ },
+ "PLANET-VISION-C|control": {
+  "seed": "PLANET-VISION-C",
+  "mode": "control",
+  "policy": null,
+  "complete": true,
+  "lastDay": 821,
+  "seconds": 4192.8,
+  "population": {
+   "start": 191,
+   "final": 0,
+   "min": 0,
+   "max": 357,
+   "mean": 85
+  },
+  "speciesFinal": {},
+  "births": 259,
+  "deaths": 450,
+  "byCause": {
+   "predation": 34,
+   "drowning": 17,
+   "starvation": 36,
+   "health": 3,
+   "age": 51,
+   "wildfire": 308,
+   "disease": 1
+  },
+  "threatStages": {
+   "vigilance": 5016,
+   "alarm": 2266,
+   "flight": 2044,
+   "wary": 301
+  },
+  "sightRange": {
+   "start": {
+    "mean": 8.25,
+    "max": 14.3
+   },
+   "final": {
+    "mean": 0,
+    "max": 0
+   }
+  },
+  "fieldOfView": {
+   "start": {
+    "mean": 259.59,
+    "max": 301
+   },
+   "final": {
+    "mean": 0,
+    "max": 0
+   }
+  },
+  "eyeCarriers": {
+   "start": {
+    "wide-field-eye": 100,
+    "eyespot": 32,
+    "hunter-eye": 15,
+    "simple-eye": 24,
+    "tracker-eye": 20
+   },
+   "final": {}
+  },
+  "secondPairFinal": 0,
+  "advancedEverBorn": {
+   "telescopic-eye": 0,
+   "raptor-eye": 0,
+   "panoramic-eye": 0,
+   "sentinel-eye": 0,
+   "second-pair": 0
+  },
+  "advancedFirstBorn": {
+   "telescopic-eye": null,
+   "raptor-eye": null,
+   "panoramic-eye": null,
+   "sentinel-eye": null,
+   "second-pair": null
+  },
+  "everBorn": {
+   "wide-field-eye": 166,
+   "eyespot": 10,
+   "simple-eye": 75,
+   "tracker-eye": 8
+  },
+  "newbornsObserved": 450
+ },
+ "PLANET-VISION-C|vision": {
+  "seed": "PLANET-VISION-C",
+  "mode": "vision",
+  "policy": "anatomical-vision/1",
+  "complete": false,
+  "lastDay": 911,
+  "seconds": 7870.1,
+  "population": {
+   "start": 191,
+   "final": 1,
+   "min": 1,
+   "max": 373,
+   "mean": 75.9
+  },
+  "speciesFinal": {
+   "genvo": 1
+  },
+  "births": 268,
+  "deaths": 458,
+  "byCause": {
+   "predation": 47,
+   "drowning": 17,
+   "starvation": 74,
+   "health": 7,
+   "age": 38,
+   "wildfire": 273,
+   "disease": 2
+  },
+  "threatStages": {
+   "vigilance": 7150,
+   "alarm": 2906,
+   "flight": 2070,
+   "wary": 597
+  },
+  "sightRange": {
+   "start": {
+    "mean": 8.25,
+    "max": 14.3
+   },
+   "final": {
+    "mean": 8.6,
+    "max": 8.6
+   }
+  },
+  "fieldOfView": {
+   "start": {
+    "mean": 259.59,
+    "max": 301
+   },
+   "final": {
+    "mean": 221,
+    "max": 221
+   }
+  },
+  "eyeCarriers": {
+   "start": {
+    "wide-field-eye": 100,
+    "eyespot": 32,
+    "hunter-eye": 15,
+    "simple-eye": 24,
+    "tracker-eye": 20
+   },
+   "final": {
+    "simple-eye": 1
+   }
+  },
+  "secondPairFinal": 0,
+  "advancedEverBorn": {
+   "telescopic-eye": 0,
+   "raptor-eye": 0,
+   "panoramic-eye": 0,
+   "sentinel-eye": 0,
+   "second-pair": 0
+  },
+  "advancedFirstBorn": {
+   "telescopic-eye": null,
+   "raptor-eye": null,
+   "panoramic-eye": null,
+   "sentinel-eye": null,
+   "second-pair": null
+  },
+  "everBorn": {
+   "wide-field-eye": 188,
+   "eyespot": 11,
+   "simple-eye": 61,
+   "tracker-eye": 6,
+   "compound-eye": 2
+  }
+ }
+}

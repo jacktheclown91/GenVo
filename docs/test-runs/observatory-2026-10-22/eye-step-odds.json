@@ -1,0 +1,54 @@
+{
+ "policy": "anatomical-vision/1",
+ "mutationChance": 0.25,
+ "rows": [
+  {
+   "step": "hunter -> telescopic",
+   "species": "needlejaw",
+   "births": 20000,
+   "hits": 82,
+   "perBirth": 0.0041,
+   "expectedBirths": 244
+  },
+  {
+   "step": "telescopic -> raptor",
+   "species": "needlejaw",
+   "births": 20000,
+   "hits": 72,
+   "perBirth": 0.0036,
+   "expectedBirths": 278
+  },
+  {
+   "step": "wide-field -> compound",
+   "species": "mosskip",
+   "births": 20000,
+   "hits": 67,
+   "perBirth": 0.00335,
+   "expectedBirths": 299
+  },
+  {
+   "step": "compound -> panoramic",
+   "species": "mosskip",
+   "births": 20000,
+   "hits": 80,
+   "perBirth": 0.004,
+   "expectedBirths": 250
+  },
+  {
+   "step": "panoramic -> sentinel",
+   "species": "mosskip",
+   "births": 20000,
+   "hits": 60,
+   "perBirth": 0.003,
+   "expectedBirths": 333
+  },
+  {
+   "step": "second pair (barrel torso)",
+   "species": "mosskip",
+   "births": 20000,
+   "hits": 71,
+   "perBirth": 0.00355,
+   "expectedBirths": 282
+  }
+ ]
+}
