@@ -1,0 +1,15 @@
+node:v8:456
+  ser.writeValue(value);
+      ^
+
+Error: Data cannot be cloned, out of memory.
+    at serialize (node:v8:456:7)
+    at daily (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tools/observatory.mjs:73:169)
+    at Object.onDay (file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tools/observatory.mjs:79:55)
+    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tools/run-observatory.mjs:13:77
+    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v24.14.0
+exit 1
