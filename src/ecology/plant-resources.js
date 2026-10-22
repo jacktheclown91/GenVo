@@ -61,7 +61,7 @@ export function growLandProducers(s,i,entries,{m,f,temp,scar,grow}){
     if(PLANT_TURNOVER.enabled&&current>0){const shed=current*PLANT_TURNOVER.rate;current-=shed;returnPlantLoss(s,kind,i,shed);w.plantResources.totals.senescence=(w.plantResources.totals.senescence||0)+shed}
     const genome=dispersal.genomeAt(kind,i),phenotype=genome?.schema===4?{...p,growth:genome.traits.growth,waterNeed:genome.traits.waterNeed}:p;
     // plant-lifecycle/1: drought stress and senescence return tissue to litter.
-    if(lifecycle&&current>0){const loss=lifecycleLosses(current,phenotype,m),dead=Math.min(current,loss.stress+loss.senescence);if(dead>0){current-=dead;returnPlantLoss(s,kind,i,dead);r.totals.senescence=(r.totals.senescence||0)+loss.senescence;r.totals.droughtStress=(r.totals.droughtStress||0)+loss.stress}}
+    if(lifecycle&&current>0){const loss=lifecycleLosses(current,phenotype,m,kind,temp),dead=Math.min(current,loss.stress+loss.senescence);if(dead>0){current-=dead;returnPlantLoss(s,kind,i,dead);r.totals.senescence=(r.totals.senescence||0)+loss.senescence;r.totals.droughtStress=(r.totals.droughtStress||0)+loss.stress}}
     let desired=grow(current,phenotype,m,f,temp,{seedLimited:!!d?.seedLimited&&!dispersal.isEstablished(kind,i)});if(scar>0&&desired>current)desired=current+(desired-current)*(1-scar);
     if(desired>current)desired=current+(desired-current)*snowGrowthFactor(w,i);
     desired=Math.min(p.carry,desired*seasonBoost);

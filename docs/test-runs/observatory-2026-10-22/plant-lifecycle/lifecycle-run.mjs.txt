@@ -1,0 +1,14 @@
+// node lifecycle-run.mjs <seed> <arm> <days> <out.ndjson>; arm: baseline|base|dormancy|chronic|combined
+import fs from 'node:fs';
+const R='file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/';
+const {Simulation}=await import(R+'sim/simulation.js');const {CFG,PLANTS}=await import(R+'sim/config.js');const L=await import(R+'ecology/plant-lifecycle.js');
+const [seed,arm,daysArg,out]=process.argv.slice(2);const on=arm!=='baseline';if(on)L.setLifecycleVariant(arm);
+const sim=new Simulation(seed,{player:false,worldGenerator:'planetary/1',plantLifecycle:on});fs.writeFileSync(out,'');const t0=Date.now();
+const kinds=Object.keys(PLANTS).filter(k=>k!=='rotcap');
+function row(){const w=sim.world,d=sim.dispersal,plants={};let total=0,poor=0,fitW=0;
+ for(const k of kinds){const f=w.plants[k];let b=0,pb=0,fw=0;for(let i=0;i<w.len;i++){const v=f[i];if(!(v>.002))continue;const need=d.genomeAt(k,i)?.traits?.waterNeed??PLANTS[k].waterNeed,fit=L.moistureFit(need,w.moisture[i]);b+=v;fw+=v*fit;if(fit<.25)pb+=v}
+  plants[k]={b:Math.round(b),poorPct:b?+(pb/b*100).toFixed(1):0,meanFit:b?+(fw/b).toFixed(3):0};total+=b;poor+=pb;fitW+=fw}
+ const r=w.plantResources.totals,live=sim.animals.filter(a=>a.alive),by={};for(const a of live)by[a.species]=(by[a.species]||0)+1;
+ return{day:sim.day,season:sim.season,plantTotal:Math.round(total),poorPct:+(poor/Math.max(total,1e-9)*100).toFixed(2),meanFit:+(fitW/Math.max(total,1e-9)).toFixed(3),plants,litterCum:Math.round(r.plantLitter||0),senescenceCum:Math.round(r.senescence||0),stressCum:Math.round(r.droughtStress||0),rotcap:Math.round([...w.plants.rotcap].reduce((a,b)=>a+b,0)),animals:live.length,bySpecies:by,births:sim.stats.births,byCause:{...sim.stats.byCause},sec:Math.round((Date.now()-t0)/1000)}}
+fs.appendFileSync(out,JSON.stringify({arm,seed,...row()})+'\n');
+for(let day=1;day<=Number(daysArg);day++){for(let i=0;i<CFG.dayTicks;i++)sim.update(null);if(day%30===0||day===Number(daysArg))fs.appendFileSync(out,JSON.stringify({arm,seed,...row()})+'\n');if(!sim.animals.some(a=>a.alive)&&day%30===0){}}
