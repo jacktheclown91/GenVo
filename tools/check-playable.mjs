@@ -81,6 +81,7 @@ const runtime=[
   'tests/anatomical-vision.mjs',
   'tests/observatory-neutrality.mjs',
   'tests/aquatic-foraging.mjs',
+  'tests/seed-viability.mjs',
   'tests/regional-multi-hop-biology.mjs',
   'tests/regional-synchronized-replay.mjs',
   'tests/aquatic.mjs',
