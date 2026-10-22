@@ -1,0 +1,241 @@
+{
+  "baseline": "983a95a",
+  "matchedFailingSuites": 18,
+  "timeoutsIndependentlyDiagnosed": false,
+  "rows": [
+    {
+      "name": "consolidation-demand-parity",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/consolidation-demand-parity.mjs:45",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/consolidation-demand-parity.mjs:45",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\r"
+      }
+    },
+    {
+      "name": "decisions-under-pressure",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/decisions-under-pressure.mjs:107",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/decisions-under-pressure.mjs:107",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r"
+      }
+    },
+    {
+      "name": "dietary-scan-parity",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/dietary-scan-parity.mjs:20",
+        "error": "AssertionError [ERR_ASSERTION]: complete natural saved state differs at day 2\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/dietary-scan-parity.mjs:20",
+        "error": "AssertionError [ERR_ASSERTION]: complete natural saved state differs at day 2\r"
+      }
+    },
+    {
+      "name": "forage-season-competition",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/forage-season-competition.mjs:52",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/forage-season-competition.mjs:52",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r"
+      }
+    },
+    {
+      "name": "observer-play",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/observer-play.mjs:59",
+        "error": "AssertionError [ERR_ASSERTION]: 4x with 560+ animals costs 1757 ms per real second of play\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/observer-play.mjs:59",
+        "error": "AssertionError [ERR_ASSERTION]: 4x with 560+ animals costs 1548 ms per real second of play\r"
+      }
+    },
+    {
+      "name": "perceived-threat-escape",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/perceived-threat-escape.mjs:26",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/perceived-threat-escape.mjs:26",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r"
+      }
+    },
+    {
+      "name": "persistent-coat-moisture",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/persistent-coat-moisture.mjs:113",
+        "error": "Error: Invalid planetary seasonal-coat policy.\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/persistent-coat-moisture.mjs:113",
+        "error": "Error: Invalid planetary seasonal-coat policy.\r"
+      }
+    },
+    {
+      "name": "planetary-boundary-exchange",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/planetary-boundary-exchange.mjs:92",
+        "error": "Error: Invalid finite surface-ice state.\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/planetary-boundary-exchange.mjs:92",
+        "error": "Error: Invalid finite surface-ice state.\r"
+      }
+    },
+    {
+      "name": "planetary-internal-water",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/planetary-internal-water.mjs:90",
+        "error": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Invalid planetary water-volume field/. Input:\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/planetary-internal-water.mjs:90",
+        "error": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Invalid planetary water-volume field/. Input:\r"
+      }
+    },
+    {
+      "name": "planetary-paired-seam-salt",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/planetary-paired-seam-salt.mjs:136",
+        "error": "Error: Invalid finite surface-ice state.\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/planetary-paired-seam-salt.mjs:136",
+        "error": "Error: Invalid finite surface-ice state.\r"
+      }
+    },
+    {
+      "name": "planetary-runoff-inundation",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/planetary-runoff-inundation.mjs:67",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/planetary-runoff-inundation.mjs:67",
+        "error": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\r"
+      }
+    },
+    {
+      "name": "planetary-terrain-sediment",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/planetary-terrain-sediment.mjs:111",
+        "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/planetary-terrain-sediment.mjs:111",
+        "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\r"
+      }
+    },
+    {
+      "name": "planetary-water-seam-ownership",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/planetary-water-seam-ownership.mjs:65",
+        "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/planetary-water-seam-ownership.mjs:65",
+        "error": "AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\r"
+      }
+    },
+    {
+      "name": "planetary-wind-pollination",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/planetary-wind-pollination.mjs:15",
+        "error": "AssertionError [ERR_ASSERTION]: existing flora has funded gametes\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/planetary-wind-pollination.mjs:15",
+        "error": "AssertionError [ERR_ASSERTION]: existing flora has funded gametes\r"
+      }
+    },
+    {
+      "name": "regional-environment",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/regional-environment.mjs:28",
+        "error": "Error: Saved diving bathymetry is missing.\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/regional-environment.mjs:28",
+        "error": "Error: Saved diving bathymetry is missing.\r"
+      }
+    },
+    {
+      "name": "restore-deferred-flora",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/restore-deferred-flora.mjs:13",
+        "error": "AssertionError [ERR_ASSERTION]: freshwater/1 current entire restored state\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/restore-deferred-flora.mjs:13",
+        "error": "AssertionError [ERR_ASSERTION]: freshwater/1 current entire restored state\r"
+      }
+    },
+    {
+      "name": "topography",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/topography.mjs:26",
+        "error": "TypeError: Cannot read properties of undefined (reading 'elevation')\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/topography.mjs:26",
+        "error": "TypeError: Cannot read properties of undefined (reading 'elevation')\r"
+      }
+    },
+    {
+      "name": "world-restore-base-cache",
+      "candidate": {
+        "status": "fail",
+        "at": "tests/world-restore-base-cache.mjs:10",
+        "error": "AssertionError [ERR_ASSERTION]: complete restore freshwater/1\r"
+      },
+      "baseline": {
+        "status": "fail",
+        "at": "tests/world-restore-base-cache.mjs:10",
+        "error": "AssertionError [ERR_ASSERTION]: complete restore freshwater/1\r"
+      }
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+ "schema": "genvo.test-run/3",
+ "validationCode": {
+  "scope": "src, tools and tests code/configuration; not a release seal",
+  "start": "dbd5ebbd26aafe73d1195972fdadfadd7f007792d6fee39eb481f053e74033b2",
+  "end": "dbd5ebbd26aafe73d1195972fdadfadd7f007792d6fee39eb481f053e74033b2",
+  "inputDrift": false
+ },
+ "classificationNote": "byKind counts overlap for mixed suites; unclassified means not yet audited",
+ "mode": "fast",
+ "date": "2026-10-22T07:45:38.823Z",
+ "seconds": 2,
+ "artifacts": "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-art-baseline-20261022\\reports\\art-baseline-planetary-internal-water.artifacts",
+ "total": 1,
+ "pass": 0,
+ "knownFail": 0,
+ "fail": 1,
+ "timeout": 0,
+ "stale": 0,
+ "deferred": 0,
+ "byKind": {
+  "biological-invariant": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "mechanism": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "ecological-observation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "performance": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "historical-expectation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "release-gate": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "unclassified": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 1,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  }
+ },
+ "byFailureKind": {
+  "biological-invariant": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "mechanism": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "ecological-observation": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "performance": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "historical-expectation": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "release-gate": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "unclassified": {
+   "known-fail": 0,
+   "fail": 1,
+   "timeout": 0,
+   "stale": 0
+  }
+ },
+ "results": [
+  {
+   "name": "planetary-internal-water",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": "unclassified",
+   "tier": "fast",
+   "seconds": 1.6,
+   "timeoutSeconds": 120,
+   "status": "fail",
+   "at": "tests/planetary-internal-water.mjs:90",
+   "error": "AssertionError [ERR_ASSERTION]: The input did not match the regular expression /Invalid planetary water-volume field/. Input:\r",
+   "logPath": "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-art-baseline-20261022\\reports\\art-baseline-planetary-internal-water.artifacts\\planetary-internal-water.log"
+  }
+ ]
+}

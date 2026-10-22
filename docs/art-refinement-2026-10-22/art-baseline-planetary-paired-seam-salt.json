@@ -1,0 +1,139 @@
+{
+ "schema": "genvo.test-run/3",
+ "validationCode": {
+  "scope": "src, tools and tests code/configuration; not a release seal",
+  "start": "dbd5ebbd26aafe73d1195972fdadfadd7f007792d6fee39eb481f053e74033b2",
+  "end": "dbd5ebbd26aafe73d1195972fdadfadd7f007792d6fee39eb481f053e74033b2",
+  "inputDrift": false
+ },
+ "classificationNote": "byKind counts overlap for mixed suites; unclassified means not yet audited",
+ "mode": "fast",
+ "date": "2026-10-22T07:45:41.449Z",
+ "seconds": 2,
+ "artifacts": "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-art-baseline-20261022\\reports\\art-baseline-planetary-paired-seam-salt.artifacts",
+ "total": 1,
+ "pass": 0,
+ "knownFail": 0,
+ "fail": 1,
+ "timeout": 0,
+ "stale": 0,
+ "deferred": 0,
+ "byKind": {
+  "biological-invariant": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "mechanism": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "ecological-observation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "performance": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "historical-expectation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "release-gate": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "unclassified": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 1,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  }
+ },
+ "byFailureKind": {
+  "biological-invariant": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "mechanism": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "ecological-observation": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "performance": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "historical-expectation": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "release-gate": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "unclassified": {
+   "known-fail": 0,
+   "fail": 1,
+   "timeout": 0,
+   "stale": 0
+  }
+ },
+ "results": [
+  {
+   "name": "planetary-paired-seam-salt",
+   "kinds": [
+    "unclassified"
+   ],
+   "failureKind": "unclassified",
+   "tier": "fast",
+   "seconds": 2.1,
+   "timeoutSeconds": 120,
+   "status": "fail",
+   "at": "tests/planetary-paired-seam-salt.mjs:136",
+   "error": "Error: Invalid finite surface-ice state.\r",
+   "logPath": "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-art-baseline-20261022\\reports\\art-baseline-planetary-paired-seam-salt.artifacts\\planetary-paired-seam-salt.log"
+  }
+ ]
+}

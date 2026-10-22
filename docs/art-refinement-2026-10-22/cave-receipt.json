@@ -1,0 +1,24 @@
+{
+  "setup": {
+    "passage": 2350,
+    "passages": 331,
+    "zoom": 2,
+    "scope": "Controlled player relocation into an existing saved natural cave, underground flag for observation only; no generated geometry, resources, action or evolutionary claim."
+  },
+  "exactCanonicalState": true,
+  "errors": [],
+  "timingScope": "Paused CPU renderer commands, not GPU or full-world performance",
+  "reports": [
+    {
+      "stage": "before",
+      "meanMs": 9.732499998807906,
+      "p95Ms": 25.5
+    },
+    {
+      "stage": "after",
+      "meanMs": 6.174999997019768,
+      "p95Ms": 18.699999928474426
+    }
+  ],
+  "creatorAcceptance": false
+}
