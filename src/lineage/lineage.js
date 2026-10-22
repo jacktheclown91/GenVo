@@ -1,4 +1,5 @@
 import {SPECIES} from '../organisms/species.js';
+import {recordLegacyHandoff} from '../gameplay/legacy-milestones.js';
 import {CFG} from '../sim/config.js';
 import {compareGenes} from './adaptation.js';
 import {formReading,protoReading} from './readings.js';
@@ -184,6 +185,7 @@ export class LineageTracker{
     this.sim.cognition?.onHandoff(current,next,reason);
     this.sim.evolution?.onHandoff(current,next,handoff);
     this.sim.generationProgress?.onHandoff?.(current,next,handoff);handoff.mutationBudget=this.sim.evolutionBudget?{budget:this.sim.evolutionBudget.budget(),bonus:this.sim.evolutionBudget.earnedBonus()}:null;
+    recordLegacyHandoff(this.sim,current,next,handoff);
     this.beginSuccession(current,next,handoff);
     return true;
   }
@@ -212,6 +214,7 @@ export class LineageTracker{
     this.sim.cognition?.onHandoff(dead,heir,'death');
     this.sim.evolution?.onHandoff(dead,heir,handoff);
     this.sim.generationProgress?.onHandoff?.(dead,heir,handoff);handoff.mutationBudget=this.sim.evolutionBudget?{budget:this.sim.evolutionBudget.budget(),bonus:this.sim.evolutionBudget.earnedBonus()}:null;
+    recordLegacyHandoff(this.sim,dead,heir,handoff);
     this.beginSuccession(dead,heir,handoff);
     return true;
   }

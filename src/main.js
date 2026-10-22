@@ -60,6 +60,7 @@ import {SaveManager,restoreSimulationSnapshot} from './persistence/save-manager.
 import {packageScenarioSnapshot,openScenarioSnapshot,loadBundledScenario,sha256Hex,parseScenarioDocument} from './persistence/scenario-library.js';
 import {ObserverController} from './ui/observer.js';
 import {SuccessionChooser} from './ui/succession-chooser.js';
+import {LegacySummary} from './ui/legacy-summary.js';
 import {CreatureEditor} from './ui/creature-editor.js';
 import {FieldGuide} from './ui/field-guide.js';
 import {setForm,formReading} from './lineage/readings.js';
@@ -86,6 +87,8 @@ const observer=new ObserverController(()=>sim);
 const editor=new CreatureEditor({getSim:()=>sim,onDone:r=>{if(r.ok)audio.note('confirm');else tutorial.showToast('Design cancelled · the litter inherits normally · nothing was spent',2600,'safe')}});
 const fieldGuide=new FieldGuide({getSim:()=>sim});
 const succession=new SuccessionChooser({getSim:()=>sim,onDone:r=>{if(!r.ok){tutorial.showToast('That descendant cannot take over yet.',1800,'warn');audio.note('deny')}else audio.note('confirm')}});
+// Legacy milestones follow the generation reveal; the world continues afterwards.
+const legacySummary=new LegacySummary({getSim:()=>sim,onNewWorld:()=>{clearMovementKeys();sim.paused=true;frontEnd.show('new')}});tutorial.onLegacy=kind=>{if(legacySummary.show(kind))audio.note('confirm')};
 const speedButton=document.querySelector('#quickMenu button[data-action="speed"]');
 function syncSpeedButton(){if(!speedButton)return;const s=observer.speed;speedButton.classList.toggle('active',s>1);speedButton.setAttribute('aria-pressed',s>1?'true':'false');speedButton.title=`Speed: ${s}x`;const label=speedButton.querySelector('.quick-speed-label');if(label)label.textContent=`${s}x`}
 function applyObserverResult(r){if(!r)return;if(r.summary)tutorial.showToast(r.summary.text,5200,r.summary.danger?'warn':'safe');else if(r.message)tutorial.showToast(r.message,r.ok?1800:2200,r.ok?'safe':'warn');syncSpeedButton()}
@@ -296,6 +299,7 @@ addEventListener('keydown',e=>{
   if(e.target.closest?.('#interactionDock,.context-radial,#stageUtilities')&&['Tab','Enter','Space'].includes(e.code))return;
   if(!MOVE_CODES.has(e.code)&&(!e.repeat||!audio.unlocked))audio.unlock();
   if(frontEnd.handleKey(e))return;
+  if(legacySummary.open){if(!e.repeat&&(e.code==='Escape'||e.code==='Enter')){e.preventDefault();legacySummary.close()}return}
   if(!e.repeat&&e.code==='Escape'&&(fieldGuide.open||journal.open)){e.preventDefault();fieldGuide.setOpen(false);journal.setOpen(false);return}
   if(!e.repeat&&e.code==='Escape'&&(guideOpen||helpOpen||mateOpen||mindOpen||territoryOpen||shelterOpen||migrationOpen||ecologyOpen)){e.preventDefault();closeDetailPanels();return}
   if(!e.repeat&&(e.code==='Escape'||e.code==='KeyP')&&!tutorial.worldInputBlocked?.()&&!editor.open&&!succession.open){e.preventDefault();closeDetailPanels();journal.setOpen(false);sim.paused=true;clearMovementKeys();frontEnd.show('pause');return}

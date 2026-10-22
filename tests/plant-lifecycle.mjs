@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {CFG,PLANTS} from '../src/sim/config.js';
-import {PLANT_LIFECYCLE,lifecycleLosses,canFlower} from '../src/ecology/plant-lifecycle.js';
+import {PLANT_LIFECYCLE,lifecycleLosses,canFlower,setLifecycleVariant,lifecycleVariant,LIFECYCLE_VARIANTS} from '../src/ecology/plant-lifecycle.js';
 import {checkEcologicalIntegrity} from '../tools/ecological-integrity.mjs';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 
@@ -17,6 +17,11 @@ const p=PLANTS.marshroot;
 assert.equal(lifecycleLosses(1,p,p.waterNeed).stress,0,'a plant in its own moisture is not stressed');
 assert.ok(lifecycleLosses(1,p,p.waterNeed-.5).stress>lifecycleLosses(1,p,p.waterNeed-.2).stress,'stress grows with mismatch');
 assert.ok(lifecycleLosses(1,PLANTS.sunmoss,.5).senescence>lifecycleLosses(1,PLANTS.woodspire,.5).senescence,'fast groundcover turns over faster than woody tissue');
+// Evaluation variants are a runtime switch only; the default is plant-lifecycle/1.
+assert.equal(lifecycleVariant(),LIFECYCLE_VARIANTS.base);assert.throws(()=>setLifecycleVariant('immortal'),/Unknown lifecycle variant/);
+{const winter=lifecycleLosses(1,PLANTS.sunmoss,.5,'sunmoss',.05).senescence,activeBase=lifecycleLosses(1,PLANTS.sunmoss,.5,'sunmoss',.58).senescence;setLifecycleVariant('dormancy');assert.ok(lifecycleLosses(1,PLANTS.sunmoss,.5,'sunmoss',.05).senescence<winter,'dormant tissue turns over more slowly');
+ setLifecycleVariant('chronic');assert.equal(lifecycleLosses(1,p,p.waterNeed-.2).stress,0,'marginal-but-viable sites are not stressed under chronic');assert.ok(lifecycleLosses(1,p,p.waterNeed-.5).stress>0);
+ setLifecycleVariant('lean');assert.ok(lifecycleLosses(1,PLANTS.sunmoss,.5,'sunmoss',.58).senescence<activeBase,'lean counts only turnover beyond the existing maintenance loss');setLifecycleVariant('base')}
 assert.equal(canFlower('marshroot',p.waterNeed,p.waterNeed,.58),true);assert.equal(canFlower('marshroot',p.waterNeed,.05,.58),false,'no flowering on the wrong ground');
 
 // Natural run: integrity holds; tissue turnover reaches litter.
