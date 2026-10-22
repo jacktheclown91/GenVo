@@ -1,0 +1,211 @@
+{
+  "reports": [
+    {
+      "setup": {
+        "kind": "dry",
+        "seed": "NATIVE-SUBSTRATE-20261022",
+        "origin": {
+          "x": -120064,
+          "y": 211968
+        },
+        "x": 119.5,
+        "y": 75.5,
+        "score": 0.05606349945068362,
+        "temperature": 0.4800918400287628,
+        "moisture": 0.2839365005493164,
+        "elevation": 0.008944227360188961,
+        "observation": {
+          "x": 119.5,
+          "y": 75.5
+        },
+        "biome": {
+          "code": "steppe",
+          "label": "Dry steppe",
+          "temperature": 0.6479636372507784,
+          "rain": 0.1420183480925721,
+          "moisture": 0.2839365005493164,
+          "elevation": 0.008944227360188961,
+          "snowDepth": 0,
+          "fertility": 0.4551253318786621,
+          "salinity": 0
+        },
+        "zoom": 2,
+        "scope": "Unmodified generated planetary region and canonical founder population. Only player observation position is staged; no terrain, climate, anatomy, reserves or resource editing."
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "stage": "before",
+          "coldMs": 117.69999992847443,
+          "coldSamples": [
+            117.69999992847443,
+            105.5,
+            99.10000002384186,
+            103.20000004768372,
+            99.89999997615814
+          ],
+          "coldMedianMs": 103.20000004768372,
+          "meanMs": 5.56599999944369,
+          "medianMs": 3.5999999046325684,
+          "p95Ms": 13.800000071525574,
+          "warmSamples": 300
+        },
+        {
+          "stage": "after",
+          "coldMs": 102.60000002384186,
+          "coldSamples": [
+            102.60000002384186,
+            90,
+            89.5,
+            93.5,
+            88.60000002384186
+          ],
+          "coldMedianMs": 90,
+          "meanMs": 6.121333333651225,
+          "medianMs": 4.399999976158142,
+          "p95Ms": 16.600000023841858,
+          "warmSamples": 300
+        }
+      ]
+    },
+    {
+      "setup": {
+        "kind": "cold",
+        "seed": "NATIVE-SUBSTRATE-20261022",
+        "origin": {
+          "x": 349824,
+          "y": -128000
+        },
+        "x": 76.5,
+        "y": 52.5,
+        "score": 0.18909896045923236,
+        "temperature": 0.09090103954076767,
+        "moisture": 0.46407267451286316,
+        "elevation": 0.5043135285377502,
+        "observation": {
+          "x": 76.5,
+          "y": 52.5
+        },
+        "biome": {
+          "code": "grassland",
+          "label": "Grassland",
+          "temperature": 0.2587728591145251,
+          "rain": 0.29014538216677627,
+          "moisture": 0.46407267451286316,
+          "elevation": 0.5043135285377502,
+          "snowDepth": 0,
+          "fertility": 0.597683310508728,
+          "salinity": 0
+        },
+        "zoom": 2,
+        "scope": "Unmodified generated planetary region and canonical founder population. Only player observation position is staged; no terrain, climate, anatomy, reserves or resource editing."
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "stage": "before",
+          "coldMs": 120.29999995231628,
+          "coldSamples": [
+            120.29999995231628,
+            115.39999997615814,
+            110.5,
+            128.79999995231628,
+            109.70000004768372
+          ],
+          "coldMedianMs": 115.39999997615814,
+          "meanMs": 6.295333333412806,
+          "medianMs": 3.5,
+          "p95Ms": 14.899999976158142,
+          "warmSamples": 300
+        },
+        {
+          "stage": "after",
+          "coldMs": 109.5,
+          "coldSamples": [
+            109.5,
+            109.89999997615814,
+            123.80000007152557,
+            121.59999990463257,
+            122.30000007152557
+          ],
+          "coldMedianMs": 121.59999990463257,
+          "meanMs": 5.922999999920527,
+          "medianMs": 3.4000000953674316,
+          "p95Ms": 16.399999976158142,
+          "warmSamples": 300
+        }
+      ]
+    },
+    {
+      "setup": {
+        "kind": "rock",
+        "seed": "NATIVE-SUBSTRATE-20261022",
+        "origin": {
+          "x": 378752,
+          "y": 87040
+        },
+        "x": 110.5,
+        "y": 75.5,
+        "score": 0.786579430103302,
+        "temperature": 0.4783118963241577,
+        "moisture": 0.39822083711624146,
+        "elevation": 0.786579430103302,
+        "observation": {
+          "x": 110.5,
+          "y": 75.5
+        },
+        "biome": {
+          "code": "grassland",
+          "label": "Grassland",
+          "temperature": 0.6461836935461733,
+          "rain": 0.39871063520072375,
+          "moisture": 0.39822083711624146,
+          "elevation": 0.786579430103302,
+          "snowDepth": 0,
+          "fertility": 0.5990639925003052,
+          "salinity": 0
+        },
+        "zoom": 2,
+        "scope": "Unmodified generated planetary region and canonical founder population. Only player observation position is staged; no terrain, climate, anatomy, reserves or resource editing."
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "stage": "before",
+          "coldMs": 114.20000004768372,
+          "coldSamples": [
+            114.20000004768372,
+            113.29999995231628,
+            108.60000002384186,
+            117.89999997615814,
+            109.20000004768372
+          ],
+          "coldMedianMs": 113.29999995231628,
+          "meanMs": 4.936000000238419,
+          "medianMs": 3,
+          "p95Ms": 13.899999976158142,
+          "warmSamples": 300
+        },
+        {
+          "stage": "after",
+          "coldMs": 119.20000004768372,
+          "coldSamples": [
+            119.20000004768372,
+            115,
+            109.09999990463257,
+            115.20000004768372,
+            106.39999997615814
+          ],
+          "coldMedianMs": 115,
+          "meanMs": 5.209333332777024,
+          "medianMs": 3.100000023841858,
+          "p95Ms": 15,
+          "warmSamples": 300
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "Paused renderer CPU command timing, not GPU completion"
+}

@@ -26,8 +26,8 @@ const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtime
    await page.waitForTimeout(1250);const stages=[];
    for(const stage of baselineOnly?['before']:['before','after']){
     const receipt=await page.evaluate(async stage=>{
-     const g=window.__GENVO8__,r=g.renderer;window.__substrateReviewBefore=stage==='before';r.resetWorldCaches();const coldStart=performance.now();r.render();const coldMs=performance.now()-coldStart,times=[];for(let k=0;k<50;k++){const t=performance.now();r.render();times.push(performance.now()-t)}times.sort((a,b)=>a-b);
-     const {createSimulationSnapshot}=await import('/src/persistence/save-manager.js');return{stage,coldMs,meanMs:times.reduce((a,b)=>a+b)/times.length,p95Ms:times[46],state:JSON.stringify(createSimulationSnapshot(g.sim,{savedAt:'substrate-review'}),(_k,v)=>v instanceof Map?[...v]:v instanceof Set?[...v]:ArrayBuffer.isView(v)?Array.from(v):v)};
+     const g=window.__GENVO8__,r=g.renderer;window.__substrateReviewBefore=stage==='before';r.resetWorldCaches();const coldStart=performance.now();r.render();const coldMs=performance.now()-coldStart,coldSamples=[coldMs],times=[];for(let k=0;k<4;k++){r.resetWorldCaches();const t=performance.now();r.render();coldSamples.push(performance.now()-t)}for(let k=0;k<300;k++){const t=performance.now();r.render();times.push(performance.now()-t)}times.sort((a,b)=>a-b);
+     const {createSimulationSnapshot}=await import('/src/persistence/save-manager.js');return{stage,coldMs,coldSamples,coldMedianMs:[...coldSamples].sort((a,b)=>a-b)[2],meanMs:times.reduce((a,b)=>a+b)/times.length,medianMs:times[149],p95Ms:times[284],warmSamples:times.length,state:JSON.stringify(createSimulationSnapshot(g.sim,{savedAt:'substrate-review'}),(_k,v)=>v instanceof Map?[...v]:v instanceof Set?[...v]:ArrayBuffer.isView(v)?Array.from(v):v)};
     },stage);stages.push(receipt);await page.screenshot({path:out+'/'+stage+'-'+site.kind+'-gameplay.png'});
    }
    if(!baselineOnly&&stages[0].state!==stages[1].state){for(const s of stages)fs.writeFileSync(out+'/'+site.kind+'-'+s.stage+'-state.json',s.state);throw Error('Substrate changed canonical state: '+site.kind)}

@@ -1,0 +1,9 @@
+native biome substrates: PASS (12 indexed native32 frames, state-driven weights, water exclusion, continuity, immutable sampling, bounded cache invalidation)
+terrain cohesion checks: PASS {
+  maxHue: 0.9442706901525515,
+  maxLight: 0.3892144978954706,
+  maxSat: 0.14476409607119578,
+  motifs: 19
+}
+habitat identity + seasonal presentation checks: PASS { meadow: 41, 'river-meadow': 10, 'open-meadow': 6, 'deep-thicket': 5 }
+habitat contour checks: PASS

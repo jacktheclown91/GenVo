@@ -1,0 +1,258 @@
+{
+  "seed": "NATIVE-SUBSTRATE-20261022",
+  "descriptor": {
+    "schema": 1,
+    "generator": "planetary/1",
+    "planetId": "planet:NATIVE-SUBSTRATE-20261022",
+    "seed": "NATIVE-SUBSTRATE-20261022",
+    "coordinateUnits": "terrain-tiles",
+    "equatorialCircumferenceTiles": 1048576,
+    "macroWidth": 512,
+    "macroHeight": 256,
+    "pageSizeTiles": 64,
+    "projection": "regional-equirectangular/2",
+    "anchor": {
+      "latitude": 0.5894321177450577,
+      "longitude": 0.42905327660602405
+    },
+    "landingEdge": 40739
+  },
+  "best": {
+    "dry": null,
+    "cold": null,
+    "rock": null
+  },
+  "regions": [
+    {
+      "origin": {
+        "x": -160000,
+        "y": 98432
+      },
+      "latitude": 0,
+      "land": 16384,
+      "minTemp": 0.7808460593223572,
+      "maxHeight": 0.12130706012248993,
+      "minMoisture": 0.461778849363327
+    },
+    {
+      "origin": {
+        "x": 0,
+        "y": 98432
+      },
+      "latitude": 0,
+      "land": 16384,
+      "minTemp": 0.744009256362915,
+      "maxHeight": 0.21380940079689026,
+      "minMoisture": 0.5225872993469238
+    },
+    {
+      "origin": {
+        "x": 160000,
+        "y": 98432
+      },
+      "latitude": 0,
+      "land": 0,
+      "minTemp": null,
+      "maxHeight": null,
+      "minMoisture": null
+    },
+    {
+      "origin": {
+        "x": -160000,
+        "y": 25600
+      },
+      "latitude": 25,
+      "land": 0,
+      "minTemp": null,
+      "maxHeight": null,
+      "minMoisture": null
+    },
+    {
+      "origin": {
+        "x": 0,
+        "y": 25600
+      },
+      "latitude": 25,
+      "land": 16384,
+      "minTemp": 0.5504000782966614,
+      "maxHeight": 0.11922384798526764,
+      "minMoisture": 0.4822719395160675
+    },
+    {
+      "origin": {
+        "x": 160000,
+        "y": 25600
+      },
+      "latitude": 25,
+      "land": 0,
+      "minTemp": null,
+      "maxHeight": null,
+      "minMoisture": null
+    },
+    {
+      "origin": {
+        "x": -160000,
+        "y": 171136
+      },
+      "latitude": -25,
+      "land": 0,
+      "minTemp": null,
+      "maxHeight": null,
+      "minMoisture": null
+    },
+    {
+      "origin": {
+        "x": 0,
+        "y": 171136
+      },
+      "latitude": -25,
+      "land": 16384,
+      "minTemp": 0.5784688591957092,
+      "maxHeight": 0.047966234385967255,
+      "minMoisture": 0.43167856335639954
+    },
+    {
+      "origin": {
+        "x": 160000,
+        "y": 171136
+      },
+      "latitude": -25,
+      "land": 16384,
+      "minTemp": 0.5882886052131653,
+      "maxHeight": 0.022598018869757652,
+      "minMoisture": 0.4051387906074524
+    },
+    {
+      "origin": {
+        "x": -160000,
+        "y": -32640
+      },
+      "latitude": 45,
+      "land": 0,
+      "minTemp": null,
+      "maxHeight": null,
+      "minMoisture": null
+    },
+    {
+      "origin": {
+        "x": 0,
+        "y": -32640
+      },
+      "latitude": 45,
+      "land": 0,
+      "minTemp": null,
+      "maxHeight": null,
+      "minMoisture": null
+    },
+    {
+      "origin": {
+        "x": 160000,
+        "y": -32640
+      },
+      "latitude": 45,
+      "land": 0,
+      "minTemp": null,
+      "maxHeight": null,
+      "minMoisture": null
+    },
+    {
+      "origin": {
+        "x": -160000,
+        "y": 229504
+      },
+      "latitude": -45,
+      "land": 0,
+      "minTemp": null,
+      "maxHeight": null,
+      "minMoisture": null
+    },
+    {
+      "origin": {
+        "x": 0,
+        "y": 229504
+      },
+      "latitude": -45,
+      "land": 13680,
+      "minTemp": 0.43823155760765076,
+      "maxHeight": 0.006034276448190212,
+      "minMoisture": 0.4457927346229553
+    },
+    {
+      "origin": {
+        "x": 160000,
+        "y": 229504
+      },
+      "latitude": -45,
+      "land": 0,
+      "minTemp": null,
+      "maxHeight": null,
+      "minMoisture": null
+    },
+    {
+      "origin": {
+        "x": -160000,
+        "y": -91008
+      },
+      "latitude": 65,
+      "land": 0,
+      "minTemp": null,
+      "maxHeight": null,
+      "minMoisture": null
+    },
+    {
+      "origin": {
+        "x": 0,
+        "y": -91008
+      },
+      "latitude": 65,
+      "land": 0,
+      "minTemp": null,
+      "maxHeight": null,
+      "minMoisture": null
+    },
+    {
+      "origin": {
+        "x": 160000,
+        "y": -91008
+      },
+      "latitude": 65,
+      "land": 0,
+      "minTemp": null,
+      "maxHeight": null,
+      "minMoisture": null
+    },
+    {
+      "origin": {
+        "x": -160000,
+        "y": 287744
+      },
+      "latitude": -65,
+      "land": 0,
+      "minTemp": null,
+      "maxHeight": null,
+      "minMoisture": null
+    },
+    {
+      "origin": {
+        "x": 0,
+        "y": 287744
+      },
+      "latitude": -65,
+      "land": 0,
+      "minTemp": null,
+      "maxHeight": null,
+      "minMoisture": null
+    },
+    {
+      "origin": {
+        "x": 160000,
+        "y": 287744
+      },
+      "latitude": -65,
+      "land": 0,
+      "minTemp": null,
+      "maxHeight": null,
+      "minMoisture": null
+    }
+  ]
+}

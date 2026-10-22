@@ -1,0 +1,211 @@
+{
+  "seed": "NATIVE-SUBSTRATE-20261022",
+  "descriptor": {
+    "schema": 1,
+    "generator": "planetary/1",
+    "planetId": "planet:NATIVE-SUBSTRATE-20261022",
+    "seed": "NATIVE-SUBSTRATE-20261022",
+    "coordinateUnits": "terrain-tiles",
+    "equatorialCircumferenceTiles": 1048576,
+    "macroWidth": 512,
+    "macroHeight": 256,
+    "pageSizeTiles": 64,
+    "projection": "regional-equirectangular/2",
+    "anchor": {
+      "latitude": 0.5894321177450577,
+      "longitude": 0.42905327660602405
+    },
+    "landingEdge": 40739
+  },
+  "maxMacro": 0.8945873975753784,
+  "best": {
+    "dry": {
+      "kind": "dry",
+      "seed": "NATIVE-SUBSTRATE-20261022",
+      "origin": {
+        "x": -120064,
+        "y": 211968
+      },
+      "x": 119.5,
+      "y": 75.5,
+      "score": 0.05606349945068362,
+      "temperature": 0.4800918400287628,
+      "moisture": 0.2839365005493164,
+      "elevation": 0.008944227360188961
+    },
+    "cold": {
+      "kind": "cold",
+      "seed": "NATIVE-SUBSTRATE-20261022",
+      "origin": {
+        "x": 349824,
+        "y": -128000
+      },
+      "x": 76.5,
+      "y": 52.5,
+      "score": 0.18909896045923236,
+      "temperature": 0.09090103954076767,
+      "moisture": 0.46407267451286316,
+      "elevation": 0.5043135285377502
+    },
+    "rock": {
+      "kind": "rock",
+      "seed": "NATIVE-SUBSTRATE-20261022",
+      "origin": {
+        "x": 378752,
+        "y": 87040
+      },
+      "x": 110.5,
+      "y": 75.5,
+      "score": 0.786579430103302,
+      "temperature": 0.4783118963241577,
+      "moisture": 0.39822083711624146,
+      "elevation": 0.786579430103302
+    }
+  },
+  "examined": [
+    {
+      "kind": "dry",
+      "origin": {
+        "x": -116736,
+        "y": 211968
+      },
+      "point": {
+        "temperature": 0.480909201209774,
+        "moisture": 0.2834599978677809,
+        "elevation": 0.006974418467540037
+      }
+    },
+    {
+      "kind": "dry",
+      "origin": {
+        "x": -118400,
+        "y": 211968
+      },
+      "point": {
+        "temperature": 0.4788342078141787,
+        "moisture": 0.28356315056009895,
+        "elevation": 0.012161901956528385
+      }
+    },
+    {
+      "kind": "dry",
+      "origin": {
+        "x": -120064,
+        "y": 211968
+      },
+      "point": {
+        "temperature": 0.48037218014602545,
+        "moisture": 0.2839436269752562,
+        "elevation": 0.00831697112691139
+      }
+    },
+    {
+      "kind": "cold",
+      "origin": {
+        "x": 346368,
+        "y": -128000
+      },
+      "point": {
+        "temperature": 0.09169542464416819,
+        "moisture": 0.46413221309109337,
+        "elevation": 0.502347742235167
+      }
+    },
+    {
+      "kind": "cold",
+      "origin": {
+        "x": 344704,
+        "y": -128000
+      },
+      "point": {
+        "temperature": 0.09213092121550087,
+        "moisture": 0.4641817481271804,
+        "elevation": 0.5012590008068353
+      }
+    },
+    {
+      "kind": "cold",
+      "origin": {
+        "x": 348032,
+        "y": -128000
+      },
+      "point": {
+        "temperature": 0.09100691219298551,
+        "moisture": 0.46407531688137654,
+        "elevation": 0.5040690233631236
+      }
+    },
+    {
+      "kind": "cold",
+      "origin": {
+        "x": 349824,
+        "y": -128000
+      },
+      "point": {
+        "temperature": 0.0910804850813908,
+        "moisture": 0.4640210480444014,
+        "elevation": 0.5038850911421104
+      }
+    },
+    {
+      "kind": "rock",
+      "origin": {
+        "x": 376960,
+        "y": 87040
+      },
+      "point": {
+        "temperature": 0.4748881692148035,
+        "moisture": 0.3962846834413588,
+        "elevation": 0.7950441875629533
+      }
+    },
+    {
+      "kind": "rock",
+      "origin": {
+        "x": 376960,
+        "y": 84992
+      },
+      "point": {
+        "temperature": 0.46944961003338526,
+        "moisture": 0.3942909831754744,
+        "elevation": 0.7918126227058202
+      }
+    },
+    {
+      "kind": "rock",
+      "origin": {
+        "x": 375296,
+        "y": 87040
+      },
+      "point": {
+        "temperature": 0.4755559290319359,
+        "moisture": 0.3961061126939833,
+        "elevation": 0.7933747880201222
+      }
+    },
+    {
+      "kind": "rock",
+      "origin": {
+        "x": 375296,
+        "y": 84992
+      },
+      "point": {
+        "temperature": 0.46847756796498025,
+        "moisture": 0.39414883325024247,
+        "elevation": 0.7942427278768328
+      }
+    },
+    {
+      "kind": "rock",
+      "origin": {
+        "x": 378752,
+        "y": 87040
+      },
+      "point": {
+        "temperature": 0.4784400598683112,
+        "moisture": 0.3981859500162184,
+        "elevation": 0.786164460929184
+      }
+    }
+  ]
+}

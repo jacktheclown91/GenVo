@@ -1,0 +1,151 @@
+{
+  "reports": [
+    {
+      "setup": {
+        "kind": "dry",
+        "seed": "NATIVE-SUBSTRATE-20261022",
+        "origin": {
+          "x": -120064,
+          "y": 211968
+        },
+        "x": 119.5,
+        "y": 75.5,
+        "score": 0.05606349945068362,
+        "temperature": 0.4800918400287628,
+        "moisture": 0.2839365005493164,
+        "elevation": 0.008944227360188961,
+        "observation": {
+          "x": 119.5,
+          "y": 75.5
+        },
+        "biome": {
+          "code": "steppe",
+          "label": "Dry steppe",
+          "temperature": 0.6479636372507784,
+          "rain": 0.1420183480925721,
+          "moisture": 0.2839365005493164,
+          "elevation": 0.008944227360188961,
+          "snowDepth": 0,
+          "fertility": 0.4551253318786621,
+          "salinity": 0
+        },
+        "zoom": 2,
+        "scope": "Unmodified generated planetary region and canonical founder population. Only player observation position is staged; no terrain, climate, anatomy, reserves or resource editing."
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "stage": "before",
+          "coldMs": 112.09999990463257,
+          "meanMs": 6.868000001907348,
+          "p95Ms": 16.200000047683716
+        },
+        {
+          "stage": "after",
+          "coldMs": 106.90000009536743,
+          "meanMs": 5.79,
+          "p95Ms": 13.799999952316284
+        }
+      ]
+    },
+    {
+      "setup": {
+        "kind": "cold",
+        "seed": "NATIVE-SUBSTRATE-20261022",
+        "origin": {
+          "x": 349824,
+          "y": -128000
+        },
+        "x": 76.5,
+        "y": 52.5,
+        "score": 0.18909896045923236,
+        "temperature": 0.09090103954076767,
+        "moisture": 0.46407267451286316,
+        "elevation": 0.5043135285377502,
+        "observation": {
+          "x": 76.5,
+          "y": 52.5
+        },
+        "biome": {
+          "code": "grassland",
+          "label": "Grassland",
+          "temperature": 0.2587728591145251,
+          "rain": 0.29014538216677627,
+          "moisture": 0.46407267451286316,
+          "elevation": 0.5043135285377502,
+          "snowDepth": 0,
+          "fertility": 0.597683310508728,
+          "salinity": 0
+        },
+        "zoom": 2,
+        "scope": "Unmodified generated planetary region and canonical founder population. Only player observation position is staged; no terrain, climate, anatomy, reserves or resource editing."
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "stage": "before",
+          "coldMs": 120.19999992847443,
+          "meanMs": 6.246000001430511,
+          "p95Ms": 16.800000071525574
+        },
+        {
+          "stage": "after",
+          "coldMs": 152.79999995231628,
+          "meanMs": 6.162000000476837,
+          "p95Ms": 16.199999928474426
+        }
+      ]
+    },
+    {
+      "setup": {
+        "kind": "rock",
+        "seed": "NATIVE-SUBSTRATE-20261022",
+        "origin": {
+          "x": 378752,
+          "y": 87040
+        },
+        "x": 110.5,
+        "y": 75.5,
+        "score": 0.786579430103302,
+        "temperature": 0.4783118963241577,
+        "moisture": 0.39822083711624146,
+        "elevation": 0.786579430103302,
+        "observation": {
+          "x": 110.5,
+          "y": 75.5
+        },
+        "biome": {
+          "code": "grassland",
+          "label": "Grassland",
+          "temperature": 0.6461836935461733,
+          "rain": 0.39871063520072375,
+          "moisture": 0.39822083711624146,
+          "elevation": 0.786579430103302,
+          "snowDepth": 0,
+          "fertility": 0.5990639925003052,
+          "salinity": 0
+        },
+        "zoom": 2,
+        "scope": "Unmodified generated planetary region and canonical founder population. Only player observation position is staged; no terrain, climate, anatomy, reserves or resource editing."
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "stage": "before",
+          "coldMs": 116.29999995231628,
+          "meanMs": 5.594000000953674,
+          "p95Ms": 15.100000023841858
+        },
+        {
+          "stage": "after",
+          "coldMs": 124.89999997615814,
+          "meanMs": 5.364000000953674,
+          "p95Ms": 14.700000047683716
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "Paused renderer CPU command timing, not GPU completion"
+}
