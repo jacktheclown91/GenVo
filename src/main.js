@@ -1,5 +1,7 @@
 import {preparePlanetarySeams,cancelPlanetarySeams} from './world/planetary-seam-work.js';
 import {PlanetaryPreparation} from './world/planetary-preparation.js';
+import {advanceNextDemographicRegion} from './world/planetary-demography.js';
+import {clearWarmRegions} from './world/regional-warm-cache.js';
 import {prepareRegionalBiology} from './world/planetary-offscreen-biology.js';
 import {ecologyRuleMigrationMessage} from './ecology/rule-policy.js';
 import {birthRuleMigrationMessage} from './lineage/birth-rules.js';
@@ -264,7 +266,7 @@ async function travelPlanetaryRegion({automatic=false}={}){
     tutorial.showToast(result.message,3500,'success');audio.note('confirm');
   }catch(error){console.error('Regional crossing failed:',error);tutorial.showToast('Regional passage could not be completed. Current world remains active.',3500,'warn');audio.note('deny')}finally{planetaryTravelPending=false}
 }
-function installSimulation(next,{fresh=false,resume=false,keepMovement=false}={}){
+function installSimulation(next,{fresh=false,resume=false,keepMovement=false}={}){clearWarmRegions();
   cancelPlanetarySeams(sim);planetaryPreparation.clear();seed=next.seed;sim=next;renderer.sim=sim;observer.reset();succession.close();editor.close();syncSpeedButton();frameStepper.reset();last=performance.now();hudTimer=0;if(!keepMovement)clearMovementKeys();
   manualPause=resume?!!sim.paused:false;if(!resume)sim.paused=false;if(pauseNotice)pauseNotice.hidden=!manualPause;
   leadershipWheel.resetDiscovery();tutorial.setSimulation(sim,{fresh,resume});effectFeedback.setSimulation(sim);journal.setSimulation(sim);audio.setSimulation(sim);
@@ -365,6 +367,8 @@ addEventListener('blur',clearMovementKeys);
 
 function input(){const manual={up:keys.KeyW||keys.ArrowUp,down:keys.KeyS||keys.ArrowDown,left:keys.KeyA||keys.ArrowLeft,right:keys.KeyD||keys.ArrowRight,sprint:keys.ShiftLeft||keys.ShiftRight,brace:braceInput.read()||!!keys.KeyJ};return pointerApproach?pointerApproach.read(manual):manual}
 const planetaryPreparation=new PlanetaryPreparation();
+// Far population-model regions advance one life stride per idle callback, not inside player frames.
+const farRegions={running:false,jobs:0,observe(target){if(this.running||!target.regionalDemographyRules)return;if(!target.farRegionDriver)Object.defineProperty(target,'farRegionDriver',{value:true,configurable:true});this.running=true;const run=()=>{try{if(advanceNextDemographicRegion(target))this.jobs++}catch(error){console.warn('Far regions:',error)}finally{this.running=false}};if(typeof requestIdleCallback==='function')requestIdleCallback(run,{timeout:1000});else setTimeout(run,0)}};
 // Presentation Worlds for neighbouring regions, one build per idle callback.
 const borderPreparation={running:false,observe(target){if(this.running||!target.world.planet||!renderer.borderTerrain)return;this.running=true;const run=()=>{try{renderer.borderTerrain.prepareNext(target)}catch(error){console.warn('Border terrain:',error)}finally{this.running=false}};if(typeof requestIdleCallback==='function')requestIdleCallback(run,{timeout:1000});else setTimeout(run,0)}};
 // One bounded storage-residency action per idle callback (regional-residency/1).
@@ -380,6 +384,7 @@ function frame(now){
   if(!frontEnd.isOpen&&!sim.paused)planetaryPreparation.observe(sim);
   if(!frontEnd.isOpen&&!sim.paused)regionalResidency.observe(sim);
   if(!frontEnd.isOpen)borderPreparation.observe(sim);
+  if(!frontEnd.isOpen&&!sim.paused)farRegions.observe(sim);
   // Walking farther keeps expanding the SAME procedurally generated planet.
   // A real region swap still uses canonical family, physics and save authorities.
   const outward=planetaryWalkIntent(sim,{up:keys.KeyW||keys.ArrowUp,down:keys.KeyS||keys.ArrowDown,left:keys.KeyA||keys.ArrowLeft,right:keys.KeyD||keys.ArrowRight});
@@ -443,4 +448,4 @@ const contextTray=new CreatureContextTray({canvas,renderer,braceInput,getSim:()=
 setInteractPromptSource(()=>{try{const c=contextTray.directChoice?.();return c?.enabled?c.label:null}catch{return null}});
 journal.onRevisit=id=>{const o=sim.discovery.seedObservations?.find(o=>o.id===id);if(!o)return;journal.setOpen(false);const target=sim.discovery.seedPatchTarget(o);if(!contextTray.selectResource(target))return;const choice=contextTray.directChoice();if(choice?.enabled)contextTray.interact();else tutorial.showToast(choice?.reason||'This body cannot revisit the patch.',1800,'warn')};
 
-window.__GENVO8__={frameStepper,planetaryPreparation,regionalResidency,borderPreparation,get pointerApproach(){return pointerApproach},nativeArtStatus,courtshipTray,braceInput,contextTray,combatActions:()=>combatActions(sim),get sim(){return sim},CFG,setForm,formReading,tutorial,renderer,journal,audio,leadershipWheel,saveManager,loadSavedLineage,observer,editor,fieldGuide};
+window.__GENVO8__={frameStepper,planetaryPreparation,regionalResidency,borderPreparation,farRegions,get pointerApproach(){return pointerApproach},nativeArtStatus,courtshipTray,braceInput,contextTray,combatActions:()=>combatActions(sim),get sim(){return sim},CFG,setForm,formReading,tutorial,renderer,journal,audio,leadershipWheel,saveManager,loadSavedLineage,observer,editor,fieldGuide};

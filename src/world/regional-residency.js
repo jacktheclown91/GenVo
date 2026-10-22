@@ -3,6 +3,7 @@ import {POPULATION_MODE} from './regional-replay-order.js';
 import {planetRegionOrigin,regionKey,PLANET_REGION_SIZE} from './planet-regions.js';
 import {regionalIdentity,validateRegionalIdentity} from './regional-identities.js';
 import {markRegionalOwnerDirty} from './regional-revision.js';
+import {forgetWarmRegion} from './regional-warm-cache.js';
 
 // Bounded residency for visited planetary regions (regional-residency/1).
 // Regions within `residentRadius` of the player stay in memory; farther
@@ -82,7 +83,7 @@ export function unloadRegion(sim,session,entry){
  if(entry?.key!==session.key||JSON.stringify(entry.life)!==JSON.stringify(life))throw Error('Committed regional record does not match the resident region.');
  const stub={kind:'session',key:entry.key,origin:{x:entry.origin.x,y:entry.origin.y},id:entry.id,capture:entry.capture,life:structuredClone(entry.life),unloaded:true,...(entry.storage?{storage:entry.storage}:{})};
  validateUnloadedEntry(stub);
- travel.sessions.splice(i,1);travel.unloaded=[...unloadedRegions(sim),stub];
+ travel.sessions.splice(i,1);forgetWarmRegion(session);travel.unloaded=[...unloadedRegions(sim),stub];
  return stub;
 }
 // Reinstall a committed payload read for an unloaded entry. It resumes as a

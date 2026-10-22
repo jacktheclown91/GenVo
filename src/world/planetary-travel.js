@@ -1,5 +1,6 @@
 import {SURFACE_ICE,initializeSurfaceIce} from './surface-ice.js';
 import {POPULATION_MODE} from './regional-replay-order.js';
+import {clearWarmRegions} from './regional-warm-cache.js';
 import {PLANET_PROJECTIONS} from './planet-geography.js';
 import {REGIONAL_FOUNDING,foundRegionalPopulations} from '../ecology/regional-founding.js';
 import {assignRegionalBiologyModes} from './planetary-demography.js';
@@ -254,6 +255,8 @@ export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
  // Full individual simulation near the new position; population model beyond.
  assignRegionalBiologyModes(dest);
  syncPlanetaryBoundaryOwnership(dest);
+ // Session objects are replaced by travel; warm replay Simulations restart.
+ clearWarmRegions();
  dest.lastPlayerAction={type:'planet-travel',actorId:traveler.id,members:memberIds,from:sourceKey,to:destinationKey,tick:dest.tickCount};
  return{ok:true,type:'planet-travel',message:'Crossed '+status.direction+' into planetary region '+destinationKey+(memberIds.length>1?' with '+(memberIds.length-1)+' family members.':'.')+' Regional wildlife and resources are retained.',simulation:dest,from:sourceKey,to:destinationKey,id:traveler.id,members:memberIds};
 }

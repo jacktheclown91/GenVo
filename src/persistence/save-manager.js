@@ -563,7 +563,7 @@ export class SaveManager{
       const needed=reloadCandidates(sim)[0];
       if(needed)return await this.#reloadRegion(db,slot,sim,needed,'reload');
       const lagging=(sim.planetaryTravel?.sessions||[]).filter(s=>s.biologicalMode===POPULATION_MODE&&!s.parked&&remoteBiologicalDebt(sim,s)>CFG.lifeStride).sort((a,b)=>a.snapshot.core.tickCount-b.snapshot.core.tickCount||a.key.localeCompare(b.key))[0];
-      if(lagging){advanceRemoteBiology(sim,lagging,{maxTicks:CFG.dayTicks});return{action:'catch-up',key:lagging.key,remaining:remoteBiologicalDebt(sim,lagging)}}
+      if(lagging){advanceRemoteBiology(sim,lagging,{maxTicks:CFG.lifeStride});return{action:'catch-up',key:lagging.key,remaining:remoteBiologicalDebt(sim,lagging)}}
       const far=unloadCandidates(sim)[0];
       if(far){
         if(!far.parked){if(remoteBiologicalDebt(sim,far)>CFG.lifeStride)return null;parkRegion(sim,far)}

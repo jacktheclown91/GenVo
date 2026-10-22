@@ -5,6 +5,7 @@
 // life stride and return trips refuse excessive time debt.
 import {CFG} from '../sim/config.js';
 import {markRegionalOwnerDirty} from './regional-revision.js';
+import {takeWarmRegion,warmCandidate,keepWarmRegion} from './regional-warm-cache.js';
 import {REGIONAL_REPLAY,regionalBiologyOrder,POPULATION_MODE} from './regional-replay-order.js';
 export {REGIONAL_REPLAY,POPULATION_MODE} from './regional-replay-order.js';
 import {createSimulationSnapshot,restoreDetachedSimulationSnapshot} from '../persistence/save-manager.js';
@@ -74,7 +75,7 @@ export function highId(sim){
 }
 // A transactional offscreen stride: if canonical simulation or conservation
 // fails, no archived organism or plant/food array is changed.
-export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass}={}){
+export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass,warm=false}={}){
  const active={tickCount};
  if(!Number.isSafeInteger(reservedNextId)||reservedNextId<1)throw Error('Invalid reserved regional identity watermark.');
  if(!safe(maxTicks)||maxTicks>OFFSCREEN_BIOLOGY.maxEntryTicks)
@@ -87,7 +88,10 @@ export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OF
  if(!steps)return{candidate:null,nextId:reservedNextId,result:{ticks:0,remaining:debt,key:session.key}};
  validateRemoteBiologyLedger(session);
  validateRemoteEnvironmentalLedger(session);
- const temp=restoreDetachedSimulationSnapshot(session.snapshot);
+ // Resident replay may continue the Simulation its previous stride published
+ // (regional-warm-cache.js); otherwise restore it from the snapshot.
+ const reused=warm?takeWarmRegion(session):null,keep=warm&&warmCandidate(session);
+ const temp=reused||restoreDetachedSimulationSnapshot(session.snapshot);
  if(temp.planetaryTravel)throw Error('Recursive dormant ecology authority.');
  if(temp.animals.length>OFFSCREEN_BIOLOGY.maxAnimals)
   throw Error('Too many archived creatures for bounded biological replay.');
@@ -124,7 +128,9 @@ export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OF
  ledger.lastPopulation=temp.animals.length;
  // The snapshot builder owns food/seed/soil/genomes; never synthesize a copy
  // of one selected field and discard its corresponding conservation account.
- const copy=createSimulationSnapshot(temp,{
+ // A Simulation kept warm continues after publication, so its checkpoint is
+ // an independent deep copy; otherwise the restored region is discarded.
+ const copy=keep?structuredClone(createSimulationSnapshot(temp,{reason:session.snapshot.reason,savedAt:session.snapshot.savedAt})):createSimulationSnapshot(temp,{
   reason:session.snapshot.reason,savedAt:session.snapshot.savedAt,
   // The restored region is exclusively owned and discarded after publication.
   // Transfer immutable checkpoint metadata instead of cloning all cohort
@@ -137,17 +143,18 @@ export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OF
  validateRemoteBiologyLedger(candidate);
  validateRemoteEnvironmentalLedger(candidate);
  validatePlanetAnimalOwnership([],{schema:1,nextId:Math.max(reservedNextId,temp.nextId),sessions:[candidate]});
- return{candidate,nextId:temp.nextId,result:{ticks:steps,remaining:remoteBiologicalDebt(active,candidate),key:session.key,
+ return{candidate,nextId:temp.nextId,warmSim:keep?temp:null,result:{ticks:steps,remaining:remoteBiologicalDebt(active,candidate),key:session.key,
   births:(temp.stats.births||0)-atBirths,deaths:(temp.stats.deaths||0)-atDeaths,
   fullDays:temp.day-initialDay,organisms:temp.animals.length}};
 }
 export function advanceRemoteBiology(active,session,{maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass}={}){
- const reservedNextId=highId(active),staged=stageRemoteBiology(session,{tickCount:active.tickCount,reservedNextId,maxTicks});
+ const reservedNextId=highId(active),staged=stageRemoteBiology(session,{tickCount:active.tickCount,reservedNextId,maxTicks,warm:true});
  if(!staged.candidate)return staged.result;
  const nextSessions=active.planetaryTravel.sessions.map(s=>s===session?staged.candidate:s);
  validatePlanetAnimalOwnership(active.animals,{schema:1,nextId:Math.max(reservedNextId,staged.nextId),sessions:nextSessions});
  // Publish only after the shared staged tick/material/ownership checks pass.
  markRegionalOwnerDirty(session);Object.assign(session,staged.candidate);
+ if(staged.warmSim)keepWarmRegion(session,staged.warmSim);
  active.nextId=Math.max(active.nextId,staged.nextId);
  active.planetaryTravel.nextId=Math.max(active.planetaryTravel.nextId,active.nextId);
  return staged.result;

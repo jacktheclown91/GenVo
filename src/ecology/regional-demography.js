@@ -73,9 +73,11 @@ function pair(sim,female,males){
  const s=SPECIES[female.species];
  if(inCanonicalTransition(female)||female.infected||female.pregnant||female.reproCooldown>0||female.age<s.maturity||female.energy<s.maxEnergy*(s.reproduction?.energy??.72))return false;
  if(s.reproduction?.minPrey){let prey=0;for(const b of sim.animals)if(b.alive&&Math.hypot(b.x-female.x,b.y-female.y)<=(s.reproduction.preyRadius||B.huntRadius)&&preyPreference(female,b)>0)prey++;if(prey<s.reproduction.minPrey)return false}
- const options=males.filter(m=>m.alive&&!inCanonicalTransition(m)&&!m.infected&&m.species===female.species&&m.reproCooldown<=0&&m.energy>=SPECIES[m.species].maxEnergy*(s.reproduction?.energy??.72)&&Math.hypot(m.x-female.x,m.y-female.y)<=B.mateRadius&&sim.conceptionAvailability(female,m).enabled)
+ const nearby=males.filter(m=>m.alive&&!inCanonicalTransition(m)&&!m.infected&&m.species===female.species&&m.reproCooldown<=0&&m.energy>=SPECIES[m.species].maxEnergy*(s.reproduction?.energy??.72)&&Math.hypot(m.x-female.x,m.y-female.y)<=B.mateRadius)
   .sort((a,b)=>Math.hypot(a.x-female.x,a.y-female.y)-Math.hypot(b.x-female.x,b.y-female.y)||a.id-b.id);
- for(const m of options.slice(0,B.mateTries))if(sim.tryMate(female,m))return true;
+ // The two nearest partners canonical conception allows, checked lazily.
+ let tried=0;
+ for(const m of nearby){if(tried>=B.mateTries)break;if(!sim.conceptionAvailability(female,m).enabled)continue;tried++;if(sim.tryMate(female,m))return true}
  return false;
 }
 // One life stride of population-level behavior. Called by Simulation.update

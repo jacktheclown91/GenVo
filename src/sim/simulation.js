@@ -233,7 +233,7 @@ export class Simulation{
     for(const a of this.animals)if(a.alive&&a.climb){const r=stepClimb(this,a,1/CFG.simHz);if(r){a.lastClimbIncident={...r,tick:this.tickCount};if(a.player)this.playerCombat.queue(r)}}
     advanceIceSupport(this,1/CFG.simHz);
     if(this.divingRules===DIVING.policy)for(const a of this.animals){if(!a.alive)continue;if(!a.player||this.playerAutonomy){const food=FRESHWATER_FOOD[a.target?.kind];if(submerged(a)&&a.intent!=='escape'&&(!food||food.surface))a.diveTarget=0;else if(!submerged(a)&&!a.diveTarget&&(a.intent==='escape'||food&&!food.surface)&&divingAvailability(this,a).enabled)setDiveTarget(this,a);}const r=stepDiving(this,a,1/CFG.simHz);if(r){a.lastDiveIncident={...r,tick:this.tickCount};if(a.player)this.playerCombat.queue(r)}}
-    if(this.tickCount%CFG.lifeStride===0){advanceOffscreenEnvironments(this);if(regionalReplayPolicy(this)===REGIONAL_REPLAY.legacy)advanceOffscreenBiology(this);advanceDemographicRegions(this)};
+    if(this.tickCount%CFG.lifeStride===0){advanceOffscreenEnvironments(this);if(regionalReplayPolicy(this)===REGIONAL_REPLAY.legacy)advanceOffscreenBiology(this);if(!this.farRegionDriver)advanceDemographicRegions(this)};
     const manualMoved=externalPlayerControl?this.playerInputActive(input):this.phasePlayerMovement(input);
     // Player-facing Stalker pursuit runs on real time (every tick for decisions, every
     // control step for movement) instead of the slower ambient life stride.

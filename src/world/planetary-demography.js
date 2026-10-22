@@ -37,6 +37,17 @@ export function advanceDemographicRegions(sim,{ticks=REGIONAL_DEMOGRAPHY.ticksPe
   .sort((a,b)=>a.snapshot.core.tickCount-b.snapshot.core.tickCount||a.key.localeCompare(b.key));
  return due.map(s=>advanceRemoteBiology(sim,s,{maxTicks:Math.min(ticks,OFFSCREEN_BIOLOGY.maxEntryTicks)}));
 }
+// Browser runtime: far regions advance in idle time instead of inside the
+// player's frame. One genuine life stride of the most-lagging due region per
+// call; its clock may trail the player and catches up on later calls, during
+// residency maintenance, or before it is needed nearby.
+export function advanceNextDemographicRegion(sim){
+ if(!enabled(sim)||!sim.planetaryTravel?.sessions?.length)return null;
+ // Whole strides only: a region trails the player by at most one stride.
+ const due=sim.planetaryTravel.sessions.filter(s=>s.biologicalMode===POPULATION_MODE&&!s.parked&&remoteBiologicalDebt(sim,s)>=REGIONAL_DEMOGRAPHY.ticksPerPass)
+  .sort((a,b)=>a.snapshot.core.tickCount-b.snapshot.core.tickCount||a.key.localeCompare(b.key))[0];
+ return due?advanceRemoteBiology(sim,due,{maxTicks:REGIONAL_DEMOGRAPHY.ticksPerPass}):null;
+}
 // Brings a far region level with the active clock, then hands it back to full
 // individual simulation. The work is the region's genuine elapsed ticks.
 function promote(sim,session){
