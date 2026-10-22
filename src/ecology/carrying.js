@@ -1,4 +1,5 @@
 import {reproductionFor} from './breeding-calibration.js';
+import {scoresWaterOnly} from './aquatic-foraging.js';
 import {dietaryDemand} from './dietary-demand.js';
 import {preyNormalization,localPreyOpportunity} from './prey-normalization.js';
 import {FRESHWATER_FOOD,freshwaterPreference,freshwaterField,canAccessFreshwater} from './freshwater-food.js';
@@ -38,7 +39,7 @@ export class CarryingPressureController{
     // unless the animal is capable of swimming. Read the resident's region
     // exactly once rather than re-querying both coordinates for 121 survey
     // samples. We still check the same playable coordinates and same water.
-    const swimmer=canSwim(a),originRegion=swimmer?0:w.regionAt(a.x,a.y);
+    const swimmer=canSwim(a),originRegion=swimmer?0:w.regionAt(a.x,a.y),waterOnly=scoresWaterOnly(this.sim,a);
     const seenWater=new Set();let food=0,land=0,waterEnergy=0;
     for(const {x,y,i} of cells){
       if(w.water[i]){
@@ -51,6 +52,8 @@ export class CarryingPressureController{
         }
         if(accessible)land++;continue;
       }
+      // aquatic-foraging/1: a water dweller's forage is scored over usable water only.
+      if(waterOnly)continue;
       if(!w.isPlayable(x,y)||!(swimmer||(originRegion!==0&&w.landRegion[i]===originRegion)))continue;land++;
       for(const [kind,eff] of foods){
         const stock=w.plants[kind]?.[i]||0;if(stock<=0)continue;

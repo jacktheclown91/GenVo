@@ -7,7 +7,7 @@
 // summarised across seeds by sign consistency; single-seed differences include
 // chaotic divergence and are not causal evidence on their own.
 import fs from 'node:fs';import path from 'node:path';
-const [dir,out]=process.argv.slice(2);
+const [dir,out,focusArg='bankjaw,rillsifter']=process.argv.slice(2),FOCUS=focusArg.split(','),PAIRS=[['vision','control'],['foraging','current']];
 const read=f=>fs.readFileSync(f,'utf8').trim().split('\n').filter(Boolean).map(l=>JSON.parse(l));
 const mean=v=>v.length?v.reduce((a,b)=>a+b,0)/v.length:0,r=(v,d=3)=>Number.isFinite(v)?+v.toFixed(d):null;
 const slope=(xs,ys)=>{const mx=mean(xs),my=mean(ys);let n=0,d=0;for(let i=0;i<xs.length;i++){n+=(xs[i]-mx)*(ys[i]-my);d+=(xs[i]-mx)**2}return d?n/d:0};
@@ -47,17 +47,22 @@ function analyse(rows){
   biodiversity:{species:div('species'),branches:div('branches'),bodyPlans:div('bodyPlans'),partsPresent:div('partsPresent'),lineagesAlive:div('lineagesAlive')},
   performance:{msPerDay:{mean:r(mean(busy.map(d=>d.ms)),0),max:r(Math.max(0,...busy.map(d=>d.ms)),0)},msPerAnimalDay:r(mean(busy.map(d=>d.ms/d.population)),2),heapMBFinal:last.heapMB,rssMBMax:Math.max(0,...days.map(d=>d.rssMB||0)),
    phaseShare:Object.fromEntries(Object.entries(phaseTotals).map(([k,p])=>[k,r(p.ms/phaseMs)])),checkpoints:cps.map(c=>({day:c.day,animals:c.animals,snapshotMs:c.snapshotMs,serializeMs:c.serializeMs,MB:r(c.bytes/1048576,2)}))},
-  _days:days};
+  _days:days,_lineages:final?.lineages||[]};
 }
 const runs=fs.readdirSync(dir).filter(f=>f.endsWith('.ndjson')).map(f=>analyse(read(path.join(dir,f)))).filter(x=>x.seed);
 // Matched within-seed comparison.
 const bySeed={};for(const x of runs)(bySeed[x.seed]??={})[x.arm]=x;
 const comparisons=[];
-for(const [seed,arms] of Object.entries(bySeed)){const v=arms.vision,c=arms.control;if(!v||!c)continue;
+// Species-focused outcomes for the matched window.
+const focusOf=(run,rows)=>Object.fromEntries(FOCUS.map(sp=>{const series=rows.map(d=>d.bySpecies?.[sp]||0),alive=series.map((n,i)=>n?rows[i].day:null).filter(Boolean),deaths={};
+ for(const d of rows)for(const [k,n] of Object.entries(d.deaths||{}))if(k.startsWith(sp+':'))deaths[k.split(':')[1]]=(deaths[k.split(':')[1]]||0)+n;
+ const births=(run._lineages||[]).filter(l=>l.species===sp).reduce((n,l)=>n+l.births,0);
+ return[sp,{start:series[0],mean:r(mean(series),1),final:series.at(-1),lastAliveDay:alive.at(-1)??null,births,deaths}]}));
+for(const [seed,arms] of Object.entries(bySeed))for(const [treated,untreated] of PAIRS){const v=arms[treated],c=arms[untreated];if(!v||!c)continue;
  const cd=new Map(c._days.map(d=>[d.day,d])),matched=v._days.filter(d=>cd.has(d.day));
  const per=(rows,f)=>{const ad=rows.reduce((n,d)=>n+d.population,0)||1;return rows.reduce((n,d)=>n+f(d),0)/ad*1000};
  const cm=matched.map(d=>cd.get(d.day)),pred=d=>Object.entries(d.deaths||{}).filter(([k])=>k.endsWith(':predation')).reduce((n,[,x])=>n+x,0),alarm=d=>(d.threat?.alarm||0)+(d.threat?.flight||0);
- comparisons.push({seed,matchedDays:matched.length,lastMatchedDay:matched.at(-1)?.day,
+ comparisons.push({seed,pair:treated+' vs '+untreated,focus:{[treated]:focusOf(v,matched),[untreated]:focusOf(c,cm)},matchedDays:matched.length,lastMatchedDay:matched.at(-1)?.day,
   populationMean:{vision:r(mean(matched.map(d=>d.population)),1),control:r(mean(cm.map(d=>d.population)),1)},
   predationPer1000AnimalDays:{vision:r(per(matched,pred),2),control:r(per(cm,pred),2)},
   alarmAndFlightPer1000AnimalDays:{vision:r(per(matched,alarm),1),control:r(per(cm,alarm),1)},
@@ -65,8 +70,9 @@ for(const [seed,arms] of Object.entries(bySeed)){const v=arms.vision,c=arms.cont
   meanSightRange:{vision:r(mean(matched.map(d=>d.sight?.range||0)),2),control:r(mean(cm.map(d=>d.sight?.range||0)),2)},
   speciesFinal:{vision:matched.at(-1)?.diversity?.species,control:cm.at(-1)?.diversity?.species}});
 }
-const sign=k=>{const s=comparisons.map(c=>Math.sign((c[k].vision??0)-(c[k].control??0)));return{higherWithVision:s.filter(x=>x>0).length,lowerWithVision:s.filter(x=>x<0).length,equal:s.filter(x=>x===0).length,replicates:s.length}};
-const result={schema:'genvo.observatory-analysis/1',runs:runs.map(({_days,...x})=>x),comparisons,consistency:{populationMean:sign('populationMean'),predation:sign('predationPer1000AnimalDays'),alarmAndFlight:sign('alarmAndFlightPer1000AnimalDays'),births:sign('birthsPer1000AnimalDays')},
+const sign=(k,pair)=>{const s=comparisons.filter(c=>!pair||c.pair===pair).map(c=>Math.sign((c[k].vision??0)-(c[k].control??0)));return{higherWithTreatment:s.filter(x=>x>0).length,lowerWithTreatment:s.filter(x=>x<0).length,equal:s.filter(x=>x===0).length,replicates:s.length}};
+const consistency=Object.fromEntries([...new Set(comparisons.map(c=>c.pair))].map(pair=>[pair,{populationMean:sign('populationMean',pair),predation:sign('predationPer1000AnimalDays',pair),alarmAndFlight:sign('alarmAndFlightPer1000AnimalDays',pair),births:sign('birthsPer1000AnimalDays',pair)}]));
+const result={schema:'genvo.observatory-analysis/2',runs:runs.map(({_days,_lineages,...x})=>x),comparisons,consistency,
  interpretation:'Arms share seed, region and days and differ only in anatomical-vision/1; they diverge chaotically from the first differing random draw, so a single-seed difference is not causal. Treat an effect as supported only when its sign is consistent across replicates and has a mechanism.'};
 fs.writeFileSync(out,JSON.stringify(result,null,1));
 console.log(JSON.stringify({runs:runs.length,comparisons:comparisons.length,consistency:result.consistency}));

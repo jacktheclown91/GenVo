@@ -3,6 +3,11 @@
   "principle": "One live authority for each mechanism. Multiple states, species, art drafts and measured outcomes are permitted; competing runtime definitions are not.",
   "gameEntrypoint": "src/main.js",
   "systems": {
+    "aquaticForaging": {
+      "authority": "src/ecology/aquatic-foraging.js",
+      "consumers": ["src/sim/simulation.js", "src/ecology/carrying.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js"],
+      "contract": "docs/AQUATIC-FORAGING-2026-10-22.md"
+    },
     "anatomicalVision": {
       "authority": "src/lineage/vision.js",
       "perception": "src/ecology/atmospheric-visibility.js",
