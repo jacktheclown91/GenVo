@@ -23,3 +23,5 @@ The 100-draw paused CPU samples exclude GPU completion. Ground mean changed 5.62
 The first attempted capture crossed world startup and was rejected. The replacement waits for the requested seed and same simulation object, asserts pause state at every capture/snapshot boundary, and clears heading easing before directional inspection. [Diagnostic](rejected-startup-run.json).
 
 Broader creature, biome, action and effect completion remains active. This packet proves only this powered-wing candidate; natural inheritance, creator acceptance and canonical integration remain open.
+
+Exact native phase labels are superseded by the [explicit-phase correction](phase-correction/README.md). The first wrapper assignment was ignored on frozen renderer objects; action/state evidence remains valid.

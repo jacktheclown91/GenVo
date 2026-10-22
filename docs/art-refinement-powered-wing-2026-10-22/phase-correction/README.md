@@ -1,0 +1,7 @@
+# Explicit paint-phase capture correction
+
+The earlier helper attempted to assign a draw wrapper to a frozen native renderer. JavaScript silently ignored that assignment. The earlier paid takeoff, live movement, landing, full snapshot comparisons and eight heading checks remain valid, but its screenshot frame labels did not prove explicit paint-phase selection. Those historical receipts are retained.
+
+This corrected run serves a narrowly instrumented artForPart accessor over the local observation HTTP server. The accessor returns a new forwarding object; the original frozen renderer receives the explicit frame index and the helper asserts the index selected by its actual frameAt method, including its idle-state fallback. Source asset bytes and simulation modules are unchanged. Inspection is disabled before ordinary live flight and landing. These sheets supersede the earlier sheets for exact native paint-phase evidence.
+
+Both native phases and all eight headings passed in grounded and actual airborne states. Complete graph-encoded canonical snapshots match across each art swap and the actual landing. The receipt records funded takeoff, real movement, energy drain and advancing airborne maintenance; no page errors. Fixture anatomy/age/placement remain controlled, with no natural inheritance or creator acceptance claim. The concurrent shell paint candidate was present in the catalog but is absent from this player body.
