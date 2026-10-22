@@ -82,6 +82,10 @@ export const WAVE1={
     'tracker-eye':{forage:1.15,cue:1.5,metabolism:1.03},
     'display-eye':{courtship:.5,metabolism:1.04,threatSense:.92},
     'eyespot':{threatSense:.8,metabolism:.97},
+    'telescopic-eye':{huntBonus:.06,threatSense:.9,metabolism:1.04},
+    'raptor-eye':{huntBonus:.08,threatSense:.88,metabolism:1.06},
+    'panoramic-eye':{threatSense:1.2,wideField:true,metabolism:1.05},
+    'sentinel-eye':{threatSense:1.25,wideField:true,metabolism:1.08},
     // Relic eye (Ghost GenVo8): finds food and water farther away, and threats a little sooner.
     'glow-eye':{forage:1.3,cue:1.4,threatSense:1.1,metabolism:1.03}
   },
@@ -111,6 +115,10 @@ export const WAVE1_TEXT=Object.freeze({
   'hunter-eye':{gain:'Hunts and pounces land more often',cost:'Narrower view: threats noticed a little later.'},
   'stalk-eye':{gain:'Finds food farther away, through plant cover',cost:'More food upkeep.'},
   'compound-eye':{gain:'Spots threats farther and from behind',cost:'More food upkeep.'},
+  'telescopic-eye':{gain:'Sees about 24 tiles straight ahead; hunts land more often',cost:'Narrow forward view; heavier and costs more food.'},
+  'raptor-eye':{gain:'Sees about 40 tiles ahead, across the whole screen in clear air',cost:'Very narrow view to the sides and none behind; heavy, costly upkeep.'},
+  'panoramic-eye':{gain:'Sees almost all the way around (about 15 tiles)',cost:'Short reach; more food upkeep.'},
+  'sentinel-eye':{gain:'Raised eyes see far all around (about 34 tiles) and over low ground',cost:'The heaviest eyes, with the highest food upkeep.'},
   'tracker-eye':{gain:'Food and water shown and found farther away',cost:'More food upkeep.'},
   'display-eye':{gain:'Courts and mates at lower energy',cost:'More food upkeep; threats noticed a little later.'},
   'eyespot':{gain:'Almost no upkeep',cost:'Threats noticed much later.'},

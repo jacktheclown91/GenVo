@@ -6,7 +6,7 @@ import {creatureView,viewReachesBeyond} from '../ecology/atmospheric-visibility.
 const originAt=(x,y)=>({x:Math.floor(x/PLANET_REGION_SIZE)*PLANET_REGION_SIZE,y:Math.floor(y/PLANET_REGION_SIZE)*PLANET_REGION_SIZE});
 export function regionalGroundTarget(sim,renderer,x,y){
  const observer=sim.player(),border=renderer.borderTerrain;
- if(!observer?.alive||!sim.world.planet||border?.sim!==sim||!viewReachesBeyond(creatureView(sim,observer),x,y))return null;
+ if(!observer?.alive||!sim.world.planet||border?.sim!==sim||!viewReachesBeyond(creatureView(sim,observer,8,{beyond:(px,py)=>border.cellWorld(px,py)}),x,y))return null;
  const cell=border.cellWorld(x,y);if(!cell)return null;
  const localX=Math.floor(cell.lx)+.5,localY=Math.floor(cell.ly)+.5,origin=cell.view.world.regionOrigin;
  return{kind:'regional-ground',label:'Neighbouring ground',seed:sim.seed,x:cell.view.ox+localX,y:cell.view.oy+localY,planetX:origin.x+localX,planetY:origin.y+localY};

@@ -9,7 +9,7 @@ const groups={
   core:['head-base','small-torso','soft-torso','reinforced-torso','sleek-torso','light-torso','stout-torso','barrel-torso','dome-torso','long-torso'],
   limb:['walking-leg','spring-leg','grasper','runner-leg','sturdy-leg','webbed-leg','padded-leg','digging-forelimb','climber-leg','arid-pad'],
   feeding:['grazing-mouth','tearing-jaw','crushing-jaw','beak-mouth','kernel-beak','filter-mouth','reed-sieve-mouth','nibbler-mouth','sucker-mouth','gape-mouth','tusk-jaw'],
-  sensory:['simple-eye','wide-field-eye','hunter-eye','stalk-eye','compound-eye','tracker-eye','display-eye','eyespot','glow-eye','echo-crest','sensory-quills','sensory-bristle'],
+  sensory:['simple-eye','wide-field-eye','hunter-eye','stalk-eye','compound-eye','tracker-eye','display-eye','eyespot','glow-eye','telescopic-eye','raptor-eye','panoramic-eye','sentinel-eye','echo-crest','sensory-quills','sensory-bristle'],
   protective:['armor-plate','barb','claw','horn-crest','shell-back','armored-hide','spine-ridge','thorn-carapace','spine-cluster','hook-spur','dew-claw','heel-spike','kick-spur'],
   gland:['venom-gland','scent-gland','mammary-gland'], 
   integument:['filament-tuft','fur-mantle','feather-mantle','wax-plates'],

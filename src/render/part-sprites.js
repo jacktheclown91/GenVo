@@ -48,10 +48,11 @@ export const PART_SPRITES=Object.freeze({
   'hook-spur':{layer:'front'},'dew-claw':{layer:'front'},'heel-spike':{layer:'front'},'sensory-bristle':{layer:'front'},'grip-pad':{layer:'front'},'kick-spur':{layer:'front'},
   'horn-crest':{layer:'body'},'tusk-jaw':{layer:'face'},
   'patagium':{layer:'body'},'gliding-membrane':{layer:'body'},'luminous-tail':{layer:'rear'},'shell-back':{layer:'body'},'armored-hide':{layer:'body'},'glow-eye':{layer:'face'},'echo-crest':{layer:'body'},
-  'hunter-eye':{layer:'face'},'stalk-eye':{layer:'face'},'compound-eye':{layer:'face'},'tracker-eye':{layer:'face'},'display-eye':{layer:'face'},'eyespot':{layer:'face'}
+  'hunter-eye':{layer:'face'},'stalk-eye':{layer:'face'},'compound-eye':{layer:'face'},'tracker-eye':{layer:'face'},'display-eye':{layer:'face'},'eyespot':{layer:'face'},
+  'telescopic-eye':{layer:'face'},'raptor-eye':{layer:'face'},'panoramic-eye':{layer:'face'},'sentinel-eye':{layer:'face'}
 });
 // Eyes drawn entirely by their own component (the base eye is not drawn under them).
-export const OWN_EYES=new Set(['stalk-eye','compound-eye','eyespot','glow-eye']);
+export const OWN_EYES=new Set(['stalk-eye','compound-eye','eyespot','glow-eye','panoramic-eye','sentinel-eye']);
 // Shared metadata for every component (GDD 10): eight facings, eight-frame animation convention,
 // procedural pixels, provenance.
 export const PART_SPRITE_META=Object.freeze({facings:8,frames:8,procedural:true,provenance:'Procedural pixel components drawn in code in the GenVo8 style; AI-assisted implementation; no external art assets.'});
@@ -190,6 +191,14 @@ Object.assign(DRAW,{
   'compound-eye'(c,k){pixel(c,k.eye.x-1.5,k.eye.y-1.5,3,3,k.s,'#3f7f4f');pixel(c,k.eye.x-1.5,k.eye.y-1.5,1,1,k.s,'#b7e3a0');pixel(c,k.eye.x,k.eye.y-.5,.5,.5,k.s,'#b7e3a0');pixel(c,k.eye.x-.5,k.eye.y+.5,1,.5,k.s,'#1f4a2a')},
   // Eyespot: a tiny dark light-sensing spot.
   'eyespot'(c,k){pixel(c,k.eye.x-.5,k.eye.y-.5,1.5,1.5,k.s,'#1b2433');pixel(c,k.eye.x-.5,k.eye.y-.5,.5,.5,k.s,'#8aa0c0')},
+  // Telescopic eye: a deep tubular lens with a gold iris under a heavy brow.
+  'telescopic-eye'(c,k){pixel(c,k.eye.x-1,k.eye.y-.5,2,1.5,k.s,'#d9a43a');pixel(c,k.eye.x-.5,k.eye.y,.75,.75,k.s,'#1a1410');pixel(c,k.eye.x-1.5,k.eye.y-1.25,3,.5,k.s,'#2b1a24')},
+  // Raptor eye: a large gold eye with a black pupil and a sharp brow ridge.
+  'raptor-eye'(c,k){pixel(c,k.eye.x-1.5,k.eye.y-1,2.5,2,k.s,'#f0b832');pixel(c,k.eye.x-.75,k.eye.y-.25,1,1,k.s,'#0f0a08');pixel(c,k.eye.x-2,k.eye.y-1.75,3.5,.5,k.s,'#2b1a24');pixel(c,k.eye.x-1.25,k.eye.y-.75,.5,.5,k.s,'#fff3c8')},
+  // Panoramic eye: a broad faceted band wrapping the side of the head.
+  'panoramic-eye'(c,k){pixel(c,k.eye.x-2,k.eye.y-1,4,2,k.s,'#2f6b6a');for(const dx of [-1.5,-.5,.5,1.5])pixel(c,k.eye.x+dx-.25,k.eye.y-.75,.5,.5,k.s,'#a8e6d8');pixel(c,k.eye.x-2,k.eye.y+.75,4,.5,k.s,'#1c3e3c')},
+  // Sentinel eye: a raised faceted dome on a short stalk.
+  'sentinel-eye'(c,k){const top=k.eye.y-2;pixelLine(c,k.eye.x,k.eye.y,k.eye.x,top+1,k.s,k.p.shade);pixel(c,k.eye.x-1.5,top-1.5,3,2.5,k.s,'#2f6b6a');pixel(c,k.eye.x-1,top-1,.75,.75,k.s,'#c6f0e2');pixel(c,k.eye.x+.25,top-.5,.75,.75,k.s,'#a8e6d8');pixel(c,k.eye.x-.5,top+.5,1,.5,k.s,'#1c3e3c')},
 });
 
 // Wave 2 components (tails, backs, flanks, spurs), drawn on the 32-pixel grid.

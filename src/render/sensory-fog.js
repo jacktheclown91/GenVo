@@ -31,7 +31,7 @@ export function drawSensoryFog(renderer,{tile,cols,rows,startX,startY}){
   now-last.time>240||Math.hypot(last.x-animal.x,last.y-animal.y)>.35||
   Math.hypot(last.cameraX-renderer.camera.x,last.cameraY-renderer.camera.y)>2;
  if(stale){
-  const view=creatureView(sim,animal),memory=rememberedCells(sim,animal);
+  const view=creatureView(sim,animal,8,{beyond:(x,y)=>renderer.borderTerrain?.cellWorld(x,y)}),memory=rememberedCells(sim,animal);
   const canvas=last?.canvas&&last.w===w&&last.h===h&&last.tile===tile?last.canvas:document.createElement('canvas');
   canvas.width=w+pad*2;canvas.height=h+pad*2;
   const c=canvas.getContext('2d');if(!c)return false;

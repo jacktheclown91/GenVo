@@ -3,6 +3,12 @@
   "principle": "One live authority for each mechanism. Multiple states, species, art drafts and measured outcomes are permitted; competing runtime definitions are not.",
   "gameEntrypoint": "src/main.js",
   "systems": {
+    "anatomicalVision": {
+      "authority": "src/lineage/vision.js",
+      "perception": "src/ecology/atmospheric-visibility.js",
+      "consumers": ["src/render/sensory-fog.js", "src/ecology/sensory-world.js", "src/ecology/threat-perception.js", "src/sim/simulation.js", "src/world/regional-fauna.js", "src/ui/regional-pointer-route.js", "src/ui/world-resource-target.js", "src/lineage/body-inheritance.js", "src/ui/creature-editor.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js"],
+      "contract": "docs/ANATOMICAL-VISION-2026-10-22.md"
+    },
     "residentFaunaViews": {
       "authority": "src/world/regional-fauna.js",
       "consumers": ["src/render/renderer.js", "src/render/regional-fauna.js", "src/ui/world-resource-target.js", "src/ui/creature-context-tray.js", "src/main.js"],

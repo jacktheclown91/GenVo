@@ -32,7 +32,7 @@ export function giveFounderBody(animal){if(isWildSpecies(animal?.species)){anima
 // all-or-nothing (a failed mirror fails the mutation); otherwise the first side stands alone, as before.
 function placePair(d,part,parent,socket,{mirrorWhen=()=>true}={}){const a=place(d,part,parent,socket);if(!a.ok)return a;const m=mirrorSocket(socket);if(m===socket||!mirrorWhen(m))return a;const b=place(d,part,parent,m);return DEVELOPMENTAL_SYMMETRY.enabled&&!b.ok?{ok:false,reason:'mirror failed'}:a}
 // The small changes a body can make in one generation, in a fixed order (so a seed replays).
-function mutationOptions(plan,{gliding=true,marine=true}={}){
+function mutationOptions(plan,{gliding=true,marine=true,vision=true}={}){
   // v1.61.0 (creator direction 2026-10-10: "all creatures should have more evolutionary traits"): any leg
   // can become a variant leg, not only a walking leg, so a runner-legged Stalker can evolve webbed,
   // padded or digging legs the way a Hopper can.
@@ -44,16 +44,20 @@ function mutationOptions(plan,{gliding=true,marine=true}={}){
   for(const n of plan.nodes.filter(n=>/^root\/limb\.\d+$/.test(n.id)))for(const v of legVariants)if(v.id!==n.partId&&v.developmentalPrerequisites.every(q=>present.has(q)||(q==='walking-leg'&&PARTS[n.partId]?.tags.includes('leg'))))out.push(d=>placePair(d,v.id,'root',n.socket,{mirrorWhen:m=>d.plan.nodes.some(x=>x.id===`root/${m}`)}));
   // The next body, mouth or eye in the lineage's reach.
   for(const p of Object.values(PARTS)){
-    if(p.tags.includes('exclusive')||(!gliding&&p.id==='patagium')||(!marine&&p.id==='salt-gland'))continue;
+    if(p.tags.includes('exclusive')||(!gliding&&p.id==='patagium')||(!marine&&p.id==='salt-gland')||(!vision&&p.tags.includes('advanced-vision')))continue;
     if(!p.developmentalPrerequisites.every(q=>present.has(q))||present.has(p.id))continue;
     if(p.tags.includes('head')&&hasImplicitHead(plan)){const conversion=d=>place(d,p.id,'root','head');conversion.headStructure=true;out.push(conversion)}
     else if(p.tags.includes('torso'))out.push(d=>replaceRoot(d,p.id));
     else if(p.tags.includes('mouth'))out.push(d=>place(d,p.id,facialHostId(d.plan),'mouth'));
     else if(p.tags.includes('eye'))out.push(d=>placePair(d,p.id,facialHostId(d.plan),'eye.left'));
   }
+  // A second eye pair on a head that provides one (anatomical-vision/1).
+  if(vision){const host=plan.nodes.find(n=>n.id===facialHostId(plan)),sockets=host?partDef(host.partId).providedSockets:[];
+   if(sockets.some(x=>x.id==='eye.left.2'))for(const p of Object.values(PARTS)){if(!p.tags.includes('eye')||p.tags.includes('exclusive')||!(present.has(p.id)||p.developmentalPrerequisites.every(q=>present.has(q))))continue;
+    const current=plan.nodes.find(n=>n.parent===host.id&&n.socket==='eye.left.2')?.partId;if(current!==p.id&&(present.has(p.id)||current))out.push(d=>placePair(d,p.id,facialHostId(d.plan),'eye.left.2'))}}
   // A flank, back, tail or spur part.
   for(const p of Object.values(PARTS)){
-    if(p.tags.includes('exclusive')||(!gliding&&p.id==='patagium')||(!marine&&p.id==='salt-gland'))continue;
+    if(p.tags.includes('exclusive')||(!gliding&&p.id==='patagium')||(!marine&&p.id==='salt-gland')||(!vision&&p.tags.includes('advanced-vision')))continue;
     if(!p.developmentalPrerequisites.every(q=>present.has(q)))continue;
     if(p.compatibleSocketTypes.includes('flank'))out.push(d=>placePair(d,p.id,'root','flank.left'));
     if(p.compatibleSocketTypes.includes('dorsal')&&!present.has(p.id))out.push(d=>place(d,p.id,'root','dorsal'));
@@ -74,9 +78,9 @@ function asymmetricOptions(plan){const out=[],present=new Set(plan.nodes.map(n=>
   for(const p of Object.values(PARTS))if(!p.tags.includes('exclusive')&&p.compatibleSocketTypes.includes('spur')&&p.developmentalPrerequisites.every(q=>present.has(q)))for(const n of paired)if(!plan.nodes.some(x=>x.parent===n.id))out.push(d=>place(d,p.id,n.id,'spur'));
   return out}
 // One reachable mutation of a plan, or the plan unchanged when none is viable.
-export function mutatePlan(rng,plan,{onMutation=null,gliding=true,marine=true}={}){
+export function mutatePlan(rng,plan,{onMutation=null,gliding=true,marine=true,vision=true}={}){
   const oneSided=DEVELOPMENTAL_SYMMETRY.enabled&&rng.chance(ASYMMETRIC_SHARE);
-  const options=oneSided?asymmetricOptions(plan):mutationOptions(plan,{gliding,marine});
+  const options=oneSided?asymmetricOptions(plan):mutationOptions(plan,{gliding,marine,vision});
   for(const loss of optionalLossChoices(plan,{asymmetric:oneSided})){const fn=d=>{d.plan=loss.plan;return{ok:true}};fn.loss=loss;options.push(fn)}
   if(!options.length)return plan;
   const ancestry=plan.nodes.map(n=>n.partId);if(ancestry.some(id=>PARTS[id]?.tags.includes('leg')))ancestry.push('walking-leg');
@@ -178,7 +182,7 @@ export function inheritBody(sim,child,mother,father){
   if(!recombined)recombined=recombinationReceipt(plan,inherited,singlePlanSelections(plan,[0]),'single-parent');
   child.bodyInheritance={schema:RECOMBINATION_RECEIPT,parents:parents.map((p,i)=>({id:p.id,bodyId:p.bodyPlan.id,recombinationBodyId:inherited[i].id,filteredExclusiveParts:!!p.elder})),recombined};
   let variation={policy:'neutral-head-structure/1',operator:'inherit',attempted:false,accepted:true,from:plan.id,to:plan.id,targets:[],removed:[],moved:[]};
-  if(sim.rng.chance(sim.bodyVariationChance??BODY_VARIATION.mutationChance))plan=mutatePlan(sim.rng,plan,{gliding:sim.glidingRules==='finite-height-gliding/1',marine:sim.marineFoodRules==='marine-food-web/1',onMutation:event=>{variation=event}});
+  if(sim.rng.chance(sim.bodyVariationChance??BODY_VARIATION.mutationChance))plan=mutatePlan(sim.rng,plan,{gliding:sim.glidingRules==='finite-height-gliding/1',marine:sim.marineFoodRules==='marine-food-web/1',vision:sim.visionRules==='anatomical-vision/1',onMutation:event=>{variation=event}});
   const lostTraits=[...new Set(variation.removed.map(n=>PARTS[n.partId]?.legacy?.adaptation).filter(Boolean))];
   child.bodyVariation={...variation,parentBodies:parents.map(p=>({id:p.id,bodyId:p.bodyPlan.id})),finalBody:null};
   syncAnatomy(child);

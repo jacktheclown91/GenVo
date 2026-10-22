@@ -124,6 +124,13 @@ export const PARTS=Object.freeze(Object.fromEntries([
   part('compound-eye','senses',{tags:['eye','vision','motion'],prereq:['wide-field-eye'],sockets:['eye'],mass:.09,upkeep:.08,cost:3,actions:['see','glance'],niche:['prey-vigilance']}),
   part('tracker-eye','senses',{tags:['eye','vision','forage'],prereq:['simple-eye'],sockets:['eye'],mass:.06,upkeep:.05,cost:2,actions:['see','track'],niche:['foraging']}),
   part('display-eye','senses',{tags:['eye','vision','social'],prereq:['simple-eye'],sockets:['eye'],mass:.06,upkeep:.05,cost:2,actions:['see','display','flare'],niche:['courtship']}),
+  // Advanced vision (anatomical-vision/1): long-range lines narrow the view,
+  // panoramic lines shorten it; both cost mass and upkeep. Evolve only in
+  // worlds recording the policy.
+  part('telescopic-eye','senses',{tags:['eye','vision','forward','advanced-vision'],prereq:['hunter-eye'],sockets:['eye'],mass:.1,upkeep:.09,cost:3,actions:['see','aim','spot'],niche:['prey','open-ground']}),
+  part('raptor-eye','senses',{tags:['eye','vision','forward','advanced-vision'],prereq:['telescopic-eye'],sockets:['eye'],mass:.15,upkeep:.14,cost:4,actions:['see','aim','spot'],niche:['prey','open-ground']}),
+  part('panoramic-eye','senses',{tags:['eye','vision','peripheral','motion','advanced-vision'],prereq:['compound-eye'],sockets:['eye'],mass:.12,upkeep:.1,cost:3,actions:['see','see-wide','glance'],niche:['prey-vigilance']}),
+  part('sentinel-eye','senses',{tags:['eye','vision','peripheral','raised','advanced-vision'],prereq:['panoramic-eye'],sockets:['eye'],mass:.2,upkeep:.18,cost:4,actions:['see','see-wide','spot'],niche:['prey-vigilance','open-ground']}),
   part('eyespot','senses',{tags:['eye','light','cheap'],sockets:['eye'],mass:.02,upkeep:.01,cost:1,actions:['see'],niche:['scarcity']}),
   part('armor-plate','defense',{tags:['plate','protect'],sockets:['flank','dorsal'],mass:.6,upkeep:.12,cost:2,actions:['armor'],niche:['predator-pressure'],legacy:{axis:'armor',threshold:.5,adaptation:'hardened-mantle'}}),
   // Dryland barrier derived from protective plating. Trades insulation/food for reduced dehydration.

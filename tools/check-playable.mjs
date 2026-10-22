@@ -78,6 +78,7 @@ const runtime=[
   'tests/evolved-library-store.mjs',
   'tests/regional-dispersal.mjs',
   'tests/marine-food-web.mjs',
+  'tests/anatomical-vision.mjs',
   'tests/regional-multi-hop-biology.mjs',
   'tests/regional-synchronized-replay.mjs',
   'tests/aquatic.mjs',

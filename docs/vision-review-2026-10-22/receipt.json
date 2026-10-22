@@ -1,0 +1,178 @@
+{
+  "placed": {
+    "x": 116.5,
+    "y": 40.5,
+    "policy": "anatomical-vision/1"
+  },
+  "primitive": {
+    "clearShare": 0.057,
+    "range": 7.7,
+    "fieldOfView": 221,
+    "eyes": [
+      "simple-eye",
+      "simple-eye"
+    ],
+    "extinction": 0.006,
+    "beyondCleared": 0,
+    "beyondDrawn": 684,
+    "occludedInReach": 72,
+    "farVisibleCreatures": [],
+    "zoom": 2
+  },
+  "evolved": {
+    "clearShare": 0.926,
+    "range": 38.5,
+    "fieldOfView": 360,
+    "eyes": [
+      "raptor-eye",
+      "sentinel-eye",
+      "raptor-eye",
+      "sentinel-eye"
+    ],
+    "extinction": 0.006,
+    "beyondCleared": 656,
+    "beyondDrawn": 684,
+    "occludedInReach": 208,
+    "farVisibleCreatures": [],
+    "zoom": 2
+  },
+  "spot": {
+    "target": 6,
+    "distance": 31.6
+  },
+  "distantEvolved": {
+    "clearShare": 0.978,
+    "range": 38.5,
+    "fieldOfView": 360,
+    "eyes": [
+      "raptor-eye",
+      "sentinel-eye",
+      "raptor-eye",
+      "sentinel-eye"
+    ],
+    "extinction": 0.002,
+    "beyondCleared": 0,
+    "beyondDrawn": 0,
+    "occludedInReach": 106,
+    "farVisibleCreatures": [
+      {
+        "id": 11,
+        "distance": 27.3
+      },
+      {
+        "id": 23,
+        "distance": 26
+      },
+      {
+        "id": 6,
+        "distance": 31.6
+      },
+      {
+        "id": 92,
+        "distance": 25.6
+      },
+      {
+        "id": 45,
+        "distance": 30.7
+      },
+      {
+        "id": 52,
+        "distance": 30
+      },
+      {
+        "id": 105,
+        "distance": 24.1
+      },
+      {
+        "id": 2,
+        "distance": 28.1
+      },
+      {
+        "id": 157,
+        "distance": 24.5
+      },
+      {
+        "id": 49,
+        "distance": 26.7
+      },
+      {
+        "id": 96,
+        "distance": 27.3
+      },
+      {
+        "id": 87,
+        "distance": 25.9
+      },
+      {
+        "id": 94,
+        "distance": 26
+      },
+      {
+        "id": 3,
+        "distance": 25
+      },
+      {
+        "id": 104,
+        "distance": 26.7
+      },
+      {
+        "id": 170,
+        "distance": 28.2
+      },
+      {
+        "id": 48,
+        "distance": 24.5
+      },
+      {
+        "id": 51,
+        "distance": 25.2
+      },
+      {
+        "id": 195,
+        "distance": 24.3
+      },
+      {
+        "id": 167,
+        "distance": 25.8
+      },
+      {
+        "id": 36,
+        "distance": 28
+      },
+      {
+        "id": 88,
+        "distance": 25.9
+      },
+      {
+        "id": 57,
+        "distance": 25.7
+      },
+      {
+        "id": 85,
+        "distance": 25.9
+      },
+      {
+        "id": 161,
+        "distance": 24.2
+      }
+    ],
+    "zoom": 2
+  },
+  "distantPrimitive": {
+    "clearShare": 0.057,
+    "range": 7.7,
+    "fieldOfView": 221,
+    "eyes": [
+      "simple-eye",
+      "simple-eye"
+    ],
+    "extinction": 0.002,
+    "beyondCleared": 0,
+    "beyondDrawn": 0,
+    "occludedInReach": 78,
+    "farVisibleCreatures": [],
+    "zoom": 2
+  },
+  "errors": [],
+  "scope": "Exported native New World at 1920x1080, normal 2x zoom, game paused. Staged: observer placed on legal ground near the east border, and the evolved eye anatomy applied through the lineage authority (not grown by natural evolution in this trial). Fog shares are measured from the actual rendered sensory-fog layer; remaining fog marks physically occluded or out-of-arc cells and atmospheric loss."
+}

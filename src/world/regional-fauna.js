@@ -27,7 +27,7 @@ export function regionalFaunaOwners(sim,border){
 }
 export function regionalCreatureVisible(sim,owner,actor,preparedView=null){
  const observer=sim.player();if(!observer?.alive||observer.underground||(observer.diveDepth||0)>.03||!actor?.alive||actor.underground||(actor.diveDepth||0)>.03)return false;
- const x=actor.x+owner.ox,y=actor.y+owner.oy,view=preparedView||creatureView(sim,observer);
+ const x=actor.x+owner.ox,y=actor.y+owner.oy,view=preparedView||creatureView(sim,observer,8,{beyond:(px,py)=>{const lx=px-owner.ox,ly=py-owner.oy;return owner.view?.world&&lx>=0&&ly>=0&&lx<owner.view.world.n&&ly<owner.view.world.n?{view:owner.view,lx,ly}:null}});
  if(!viewReachesBeyond(view,x,y))return false;
  // Sample each side's actual physical atmosphere. Never clamp a remote ray
  // onto the active world's last tile or borrow its water/underground optics.
@@ -45,7 +45,7 @@ export function regionalCreatureVisible(sim,owner,actor,preparedView=null){
 }
 export function visibleRegionalFauna(sim,border){
  const owners=regionalFaunaOwners(sim,border);if(!owners.length)return[];
- const result=[],ids=new Set(sim.animals.map(a=>a.id)),view=creatureView(sim,sim.player());
+ const result=[],ids=new Set(sim.animals.map(a=>a.id)),view=creatureView(sim,sim.player(),8,{beyond:(x,y)=>border?.cellWorld?.(x,y)});
  for(const owner of owners)for(const actor of owner.snapshot.animals){
   if(ids.has(actor.id)||actor.player||!regionalCreatureVisible(sim,owner,actor,view))continue;
   ids.add(actor.id);result.push({actor,owner,x:actor.x+owner.ox,y:actor.y+owner.oy});
