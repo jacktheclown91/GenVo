@@ -1,0 +1,16 @@
+{
+  "scope": "Four samples per label in ABBA BAAB order, 30 warmup + 100 paused whole-game CPU draws each. GPU completion excluded. Other integration work may run concurrently.",
+  "averages": {
+    "before": {
+      "meanMs": 9.835249999761581,
+      "medianMs": 6.150000035762787,
+      "p95Ms": 22.200000017881393
+    },
+    "after": {
+      "meanMs": 9.802749999463558,
+      "medianMs": 6.22500005364418,
+      "p95Ms": 21.849999964237213
+    }
+  },
+  "exactCanonicalState": true
+}

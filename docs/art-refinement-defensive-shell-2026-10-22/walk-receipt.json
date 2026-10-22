@@ -1,0 +1,192 @@
+{
+  "setup": {
+    "seed": "DEFENSIVE-ART-20261022",
+    "body": "bp0-fd59344f",
+    "observation": {
+      "x": 102.5,
+      "y": 113.5,
+      "score": 13.62127468176186
+    },
+    "scope": "Controlled legal adult founder plus shell; actual terrain, genes and resources retained. HTTP-only inspection wrapper forwards explicit paint frame to original renderer; no simulation action fabricated."
+  },
+  "live": [
+    {
+      "x": 101.65493806783752,
+      "y": 113.5,
+      "energy": 113.86360653657466,
+      "tick": 17,
+      "moving": true
+    },
+    {
+      "x": 100.95071540414037,
+      "y": 113.5,
+      "energy": 113.70998133700968,
+      "tick": 19,
+      "moving": true
+    },
+    {
+      "x": 100.17606617823412,
+      "y": 113.5,
+      "energy": 113.61332279900483,
+      "tick": 22,
+      "moving": true
+    },
+    {
+      "x": 99.4014119053967,
+      "y": 113.5,
+      "energy": 113.4509105317303,
+      "tick": 25,
+      "moving": true
+    }
+  ],
+  "stages": [
+    {
+      "label": "before",
+      "captures": [
+        {
+          "dir": 0,
+          "frame": 0
+        },
+        {
+          "dir": 1,
+          "frame": 0
+        },
+        {
+          "dir": 2,
+          "frame": 0
+        },
+        {
+          "dir": 3,
+          "frame": 0
+        },
+        {
+          "dir": 4,
+          "frame": 0
+        },
+        {
+          "dir": 5,
+          "frame": 0
+        },
+        {
+          "dir": 6,
+          "frame": 0
+        },
+        {
+          "dir": 7,
+          "frame": 0
+        },
+        {
+          "dir": 0,
+          "frame": 1
+        },
+        {
+          "dir": 1,
+          "frame": 1
+        },
+        {
+          "dir": 2,
+          "frame": 1
+        },
+        {
+          "dir": 3,
+          "frame": 1
+        },
+        {
+          "dir": 4,
+          "frame": 1
+        },
+        {
+          "dir": 5,
+          "frame": 1
+        },
+        {
+          "dir": 6,
+          "frame": 1
+        },
+        {
+          "dir": 7,
+          "frame": 1
+        }
+      ],
+      "meanMs": 9.195999999046325,
+      "medianMs": 5.899999976158142,
+      "p95Ms": 17.799999952316284
+    },
+    {
+      "label": "after",
+      "captures": [
+        {
+          "dir": 0,
+          "frame": 0
+        },
+        {
+          "dir": 1,
+          "frame": 0
+        },
+        {
+          "dir": 2,
+          "frame": 0
+        },
+        {
+          "dir": 3,
+          "frame": 0
+        },
+        {
+          "dir": 4,
+          "frame": 0
+        },
+        {
+          "dir": 5,
+          "frame": 0
+        },
+        {
+          "dir": 6,
+          "frame": 0
+        },
+        {
+          "dir": 7,
+          "frame": 0
+        },
+        {
+          "dir": 0,
+          "frame": 1
+        },
+        {
+          "dir": 1,
+          "frame": 1
+        },
+        {
+          "dir": 2,
+          "frame": 1
+        },
+        {
+          "dir": 3,
+          "frame": 1
+        },
+        {
+          "dir": 4,
+          "frame": 1
+        },
+        {
+          "dir": 5,
+          "frame": 1
+        },
+        {
+          "dir": 6,
+          "frame": 1
+        },
+        {
+          "dir": 7,
+          "frame": 1
+        }
+      ],
+      "meanMs": 9.779999998807908,
+      "medianMs": 6.700000047683716,
+      "p95Ms": 20.199999928474426
+    }
+  ],
+  "exactCanonicalState": true,
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "100 paused CPU draws; excludes GPU completion"
+}
