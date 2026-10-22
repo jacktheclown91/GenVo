@@ -8,6 +8,11 @@
       "consumers": ["src/render/renderer.js", "src/render/sensory-fog.js", "src/render/camera-bounds.js", "src/main.js"],
       "contract": "docs/BORDER-PRESENTATION-2026-10-21.md"
     },
+    "evolvedLineageLibrary": {
+      "authority": "src/lineage/evolved-library.js",
+      "consumers": ["src/sim/simulation.js", "src/ecology/regional-founding.js", "src/ecology/gestation.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js", "src/main.js"],
+      "contract": "docs/EVOLVED-LIBRARY-2026-10-21.md"
+    },
     "regionalWarmReplay": {
       "authority": "src/world/regional-warm-cache.js",
       "consumers": ["src/world/planetary-offscreen-biology.js", "src/world/planetary-travel.js", "src/world/regional-residency.js", "src/main.js"],

@@ -1,6 +1,7 @@
 import {RNG} from '../core/rng.js';
 import {isWildSpecies} from '../organisms/wild-bodies.js';
 import {FOUNDING_TEMPLATES,FOUNDING_TEMPLATES_VERSION,foundingTemplate,foundingTemplatePlan} from '../organisms/founding-templates.js';
+import {libraryFoundingTemplates} from '../lineage/evolved-library.js';
 import {serializePlan,deserializePlan} from '../lineage/body-plan.js';
 import {applyLineageTarget} from '../lineage/reproduction-bridge.js';
 import {canOccupy} from '../lineage/lifestyle.js';
@@ -28,7 +29,12 @@ export const REGIONAL_FOUNDING=Object.freeze({
 });
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 const inRange=(v,[lo,hi])=>v>=lo&&v<=hi;
-const mouthPart=t=>t.placements.find(p=>p.socket==='mouth').partId;
+const mouthPart=t=>t.plan?t.plan.nodes.find(n=>n.socket==='mouth')?.partId:t.placements.find(p=>p.socket==='mouth').partId;
+const templatePlan=t=>t.plan||foundingTemplatePlan(t);
+// Authored templates plus, in worlds created with a frozen copy of the living
+// evolutionary library, its naturally evolved configurations.
+const catalogFor=sim=>[...FOUNDING_TEMPLATES,...libraryFoundingTemplates(sim)];
+const templateIn=(sim,id)=>foundingTemplate(id)||libraryFoundingTemplates(sim).find(t=>t.id===id)||null;
 const role=t=>t.predator?'predator':t.carrier==='mirelick'?'scavenger':'primary';
 const cellPoint=(w,i)=>({x:i%w.n+.5,y:Math.floor(i/w.n)+.5});
 
@@ -65,7 +71,7 @@ function withProbe(sim,template,measure){
  const state=sim.rng.state,nextId=sim.nextId,count=sim.animals.length,ecology=sim.regionalEcology;
  let probe;sim.regionalEcology=null;
  try{probe=sim.spawnAnimal(template.carrier,64,64)}finally{sim.regionalEcology=ecology;sim.animals.length=count;sim.rng.state=state;sim.nextId=nextId}
- bodyFor(probe,foundingTemplatePlan(template));return measure(probe);
+ bodyFor(probe,templatePlan(template));return measure(probe);
 }
 // Daily support at a point: renewable food the body's own mouth/medium reaches
 // over the daily need of its basal physiology plus its thermal load there.
@@ -75,7 +81,7 @@ function supportAt(sim,a,point){
 }
 function rankRole(sim,profile,rng,kind,absent){
  const rows=[];
- for(const t of FOUNDING_TEMPLATES){
+ for(const t of catalogFor(sim)){
   if(role(t)!==kind)continue;
   const cells=suitableCells(profile,t),total=t.habitat.medium==='water'?profile.waterCells:profile.landCells;
   if(cells.length<REGIONAL_FOUNDING.minSuitableCells||!total){absent.push({template:t.id,reason:'insufficient suitable habitat'});continue}
@@ -95,6 +101,7 @@ function pickSites(row){
  return sites;
 }
 function variantPlan(template,rng){
+ if(template.plan)return template.plan;
  let placements=template.placements;
  for(const v of template.variants)if(rng.chance(v.chance)){const part=rng.pick(v.parts);placements=placements.map(p=>p.parent==='root'&&p.socket===v.socket?{...p,partId:part}:p)}
  return foundingTemplatePlan(template,placements);
@@ -115,7 +122,7 @@ function foundGroup(sim,row,rng,origin){
  for(let k=0;k<want;k++){
   const site=sites[k%sites.length],a=sim.spawnAnimal(t.carrier,site.x,site.y);bodyFor(a,variantPlan(t,rng));
   if(!place(sim,a,site,rng,isWaterDweller(a))){sim.animals.splice(sim.animals.indexOf(a),1);continue}
-  a.foundingOrigin={schema:1,policy:REGIONAL_FOUNDING.policy,template:t.id,region:origin,day:sim.day,tick:sim.tickCount};
+  a.foundingOrigin={schema:1,policy:REGIONAL_FOUNDING.policy,template:t.id,region:origin,day:sim.day,tick:sim.tickCount,...(t.library?{library:t.library}:{})};
   members.push(a);
  }
  balanceSexes(members);
@@ -145,12 +152,12 @@ export function foundRegionalPopulations(sim,{region}){
   let count=0;
   for(const r of rankRole(sim,profile,rng,kind,absent)){
    if(count>=limits[kind]){absent.push({template:r.template.id,reason:'regional '+kind+' founding slots filled'});continue}
-   if(introduced.filter(g=>mouthPart(foundingTemplate(g.template))===mouthPart(r.template)).length>=REGIONAL_FOUNDING.maxPerMouth){absent.push({template:r.template.id,reason:'feeding niche already founded twice'});continue}
+   if(introduced.filter(g=>mouthPart(templateIn(sim,g.template))===mouthPart(r.template)).length>=REGIONAL_FOUNDING.maxPerMouth){absent.push({template:r.template.id,reason:'feeding niche already founded twice'});continue}
    const out=foundGroup(sim,r,rng,region);
    if(out.absent)absent.push({template:r.template.id,reason:out.absent,...(out.summary?{measured:out.summary}:{})});else{introduced.push(out.summary);count++}
   }
  }
- sim.regionalFounding={schema:1,policy:REGIONAL_FOUNDING.policy,catalog:FOUNDING_TEMPLATES_VERSION,source:'deterministic-regional-founding',region,day:sim.day,tick:sim.tickCount,
+ sim.regionalFounding={schema:1,policy:REGIONAL_FOUNDING.policy,catalog:FOUNDING_TEMPLATES_VERSION,...(sim.foundingLibrary?.length?{library:sim.foundingLibrary.map(e=>e.id)}:{}),source:'deterministic-regional-founding',region,day:sim.day,tick:sim.tickCount,
   profile:{landCells:profile.landCells,waterCells:profile.waterCells,meanTemperature:+profile.meanTemperature.toFixed(4),meanMoisture:+profile.meanMoisture.toFixed(4)},
   introduced,absent};
  // Trimmed founders were registered at birth; rebuild residency from survivors.
@@ -162,7 +169,7 @@ export function foundRegionalPopulations(sim,{region}){
 // of the region that introduced it, when this simulation owns that region.
 export function validateRegionalFounding(sim,region){
  const r=sim.regionalFounding;
- for(const a of sim.animals){const o=a.foundingOrigin;if(o!==undefined&&(o?.schema!==1||o.policy!==REGIONAL_FOUNDING.policy||!foundingTemplate(o.template)||typeof o.region!=='string'||a.parentIds?.length))throw Error('Invalid regional founder provenance.')}
+ for(const a of sim.animals){const o=a.foundingOrigin;if(o!==undefined&&(o?.schema!==1||o.policy!==REGIONAL_FOUNDING.policy||!templateIn(sim,o.template)||typeof o.region!=='string'||a.parentIds?.length))throw Error('Invalid regional founder provenance.')}
  const marked=sim.animals.filter(a=>a.foundingOrigin?.region===region);
  if(r===undefined){if(marked.length)throw Error('Founded creatures lack a regional founding receipt.');return}
  if(r.region!==region)throw Error('Regional founding receipt belongs to another region.');
@@ -171,7 +178,7 @@ export function validateRegionalFounding(sim,region){
   throw Error('Invalid regional founding receipt.');
  const ids=new Map();
  for(const g of r.introduced){
-  const t=foundingTemplate(g?.template);
+  const t=templateIn(sim,g?.template);
   if(!t||g.carrier!==t.carrier||!Array.isArray(g.ids)||g.ids.length!==g.supportable||g.supportable<2||g.supportable>g.configured)throw Error('Invalid regional founding group.');
   for(const id of g.ids){if(!Number.isSafeInteger(id)||ids.has(id))throw Error('Duplicate regional founder identity.');ids.set(id,g.template)}
  }

@@ -64,6 +64,7 @@ import {EMBRYO_CLIMATE,validateEmbryoClimate} from '../reproduction/embryo-clima
 import {validateRegionalFounding} from '../ecology/regional-founding.js';
 import {validateRegionalDemographyRules} from '../world/planetary-demography.js';
 import {REGIONAL_RESIDENCY,validateRegionalResidency,residencyEnabled,unloadCandidates,reloadCandidates,rotationCandidate,parkRegion,unloadRegion,reloadRegion} from '../world/regional-residency.js';
+import {validateEvolvedLibraryState,validateEvolvedEntry} from '../lineage/evolved-library.js';
 import {POPULATION_MODE} from '../world/regional-replay-order.js';
 import {advanceRemoteBiology,remoteBiologicalDebt} from '../world/planetary-offscreen-biology.js';
 
@@ -77,7 +78,8 @@ export const SAVE_DB='genvo8-saves';
 export const SAVE_KEY='autosave';
 const ACTIVE_WORLD_KEY='genvo-active-world-v1';
 const safeSlot=id=>typeof id==='string'&&(id==='autosave'||/^world-[A-Za-z0-9-]{8,72}$/.test(id));
-const SAVE_STORE='saves';
+const SAVE_STORE='saves'
+const LIBRARY_DB='genvo8-library',LIBRARY_STORE='entries';
 const META_STORE='meta';
 
 const CONTROLLER_KEYS=[
@@ -400,6 +402,8 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   validateRegionalDemographyRules(sim);
   if(!Object.hasOwn(snapshot.core||{},'regionalResidencyRules'))delete sim.regionalResidencyRules;
   validateRegionalResidency(sim);
+  if(!Object.hasOwn(snapshot.core||{},'evolvedLibraryRules'))delete sim.evolvedLibraryRules;
+  validateEvolvedLibraryState(sim);
   sim.seed=snapshot.seed;
   sim.rng.state=snapshot.rngState>>>0;
   restoreBirthRules(sim,snapshot.core||{});
@@ -590,6 +594,30 @@ export class SaveManager{
     }finally{reader.close()}
     return{action,key:entry.key};
   }
+  // Living evolutionary library: a separate database shared by all worlds, so
+  // the saves database needs no migration. Entries are naturally evolved
+  // configurations registered inside worlds; sightings record where.
+  libraryDb(){
+    if(!this.libraryDbPromise)this.libraryDbPromise=new Promise((resolve,reject)=>{const req=indexedDB.open(LIBRARY_DB,1);req.onupgradeneeded=()=>{if(!req.result.objectStoreNames.contains(LIBRARY_STORE))req.result.createObjectStore(LIBRARY_STORE)};req.onsuccess=()=>resolve(req.result);req.onerror=()=>{this.libraryDbPromise=null;reject(req.error||Error('Could not open the evolutionary library.'))}});
+    return this.libraryDbPromise;
+  }
+  async listEvolvedLibrary(){
+    if(!this.available||typeof indexedDB==='undefined')return[];
+    const db=await this.libraryDb(),rows=await requestToPromise(db.transaction(LIBRARY_STORE,'readonly').objectStore(LIBRARY_STORE).getAll());
+    const out=[];for(const row of rows||[]){try{out.push(validateEvolvedEntry(row))}catch(error){console.warn('Skipping invalid evolved library entry',error)}}
+    return out.sort((a,b)=>a.id.localeCompare(b.id));
+  }
+  // Merge registrations from the active region and resident regional records.
+  async recordEvolvedRegistrations(sim){
+    if(!this.available||typeof indexedDB==='undefined'||!sim?.evolvedLibraryRules)return 0;
+    const found=[...(sim.evolvedRegistrations||[]),...(sim.planetaryTravel?.sessions||[]).flatMap(s=>s.snapshot?.core?.evolvedRegistrations||[])];
+    if(!found.length)return 0;
+    const db=await this.libraryDb(),tx=db.transaction(LIBRARY_STORE,'readwrite'),store=tx.objectStore(LIBRARY_STORE),done=transactionDone(tx);let added=0;
+    for(const entry of found){validateEvolvedEntry(entry);const sighting={seed:entry.history.seed,region:entry.habitat.region,day:entry.history.registeredDay},req=store.get(entry.id);
+      req.onsuccess=()=>{const prior=req.result;if(!prior){store.put({...structuredClone(entry),sightings:[sighting]},entry.id);added++;return}
+        if(!(prior.sightings||[]).some(s=>s.seed===sighting.seed&&s.region===sighting.region))store.put({...prior,sightings:[...(prior.sightings||[]),sighting]},entry.id)}}
+    await done;return added;
+  }
   async load(id=this.activeSlotId){
     if(!safeSlot(id))throw Error('Invalid world slot.');
     // Continue from the most recent committed checkpoint, not a stale read
@@ -674,6 +702,7 @@ export class SaveManager{
       await transactionDone(tx);}
       this.lastSavedAt=Date.now();this.lastSavedTick=snapshot.core.tickCount;this.lastObservedSignature=capturedSignature;
       this.status('saved','Saved',snapshot.meta);
+      this.recordEvolvedRegistrations(sim).catch(error=>console.warn('Evolutionary library update failed',error));
       return snapshot.meta;
     }catch(error){this.status('error','Save failed');throw error}
     finally{

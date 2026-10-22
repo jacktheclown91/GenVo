@@ -151,6 +151,9 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
   if(start==='new'){
     const nextSeed=chosenSeed||'GENVO-'+Math.random().toString(16).slice(2,10).toUpperCase();
     next=new Simulation(nextSeed,{player:true,worldGenerator:geography});
+    // Freeze this world's copy of the living library; later registrations from
+    // other worlds never change how this world founds its regions.
+    if(next.evolvedLibraryRules){try{const entries=await saveManager.listEvolvedLibrary();if(entries.length)next.foundingLibrary=entries.map(({sightings,...e})=>e)}catch(error){console.warn('Evolutionary library unavailable',error)}}
   }else{
     let snapshot;
     if(start.startsWith('fork:')){

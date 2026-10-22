@@ -66,6 +66,8 @@ const runtime=[
   'tests/border-terrain.mjs',
   'tests/continental-projection.mjs',
   'tests/regional-warm-cache.mjs',
+  'tests/evolved-library.mjs',
+  'tests/evolved-library-store.mjs',
   'tests/save-storage.mjs',
   'tests/menu-world-slots.mjs',
   'tests/quick-interaction-default.mjs',

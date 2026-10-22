@@ -14,7 +14,9 @@ import {validatePlanetAnimalOwnership} from './planet-regions.js';
 
 export const OFFSCREEN_BIOLOGY=Object.freeze({
  schema:1,ticksPerPass:CFG.lifeStride,regionsPerPass:1,
- maxEntryTicks:CFG.dayTicks,maxAnimals:600
+ // No population ceiling: a regional population is bounded only by its real
+ // ecology. Replay work grows with it and is scheduled, never culled.
+ maxEntryTicks:CFG.dayTicks
 });
 const safe=n=>Number.isSafeInteger(n)&&n>=0;
 const round=v=>Number.isFinite(v)?v:0;
@@ -93,8 +95,6 @@ export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OF
  const reused=warm?takeWarmRegion(session):null,keep=warm&&warmCandidate(session);
  const temp=reused||restoreDetachedSimulationSnapshot(session.snapshot);
  if(temp.planetaryTravel)throw Error('Recursive dormant ecology authority.');
- if(temp.animals.length>OFFSCREEN_BIOLOGY.maxAnimals)
-  throw Error('Too many archived creatures for bounded biological replay.');
  const before=temp.stats;
  const startTick=temp.tickCount,initialDay=temp.day;
  // Always reserve an identity watermark above every regional animal. A new
@@ -115,8 +115,6 @@ export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OF
    recordPhysicalDay(physical,temp,beforeDay);
    ledger.fullDays++;
   }
-  if(temp.animals.length>OFFSCREEN_BIOLOGY.maxAnimals)
-   throw Error('Offscreen fauna exceeded bounded population size; stop instead of synthesizing a cull.');
  }
  if(temp.tickCount!==startTick+steps)
   throw Error('Offscreen biology must consume exactly the recorded real ticks.');
