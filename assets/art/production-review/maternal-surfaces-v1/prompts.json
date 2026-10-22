@@ -1,0 +1,26 @@
+[
+  {
+    "id": "egg-chamber",
+    "prompt": "Use case: native modular game anatomy pixel-art. One isolated anatomical PART only on a truly transparent background. Near-vertical orthographic TOP-DOWN view, NEVER a side elevation or cutaway. It will be mechanically prepared as a 32x32 pixel source mounted at the same center on a creature's flank; no whole creature, limbs, eyes, face, symbols, labels, border or environment. Chunky clean pixel clusters with five tones: dark green-grey outline #172b30, green-grey shadow #375b59, muted sage skin #609288, pale sage highlight #9dc3aa, very sparse ivory-green glint #d9e4c9. The primary tissue must be skin, not colored icons. Center the small organic shape on the square, surrounding transparent space, consistent upper-left ambient highlights, low clutter. No eggs, embryos, babies, nipples, genitals, blood, exposed viscera or biological events. No antialiasing, 3D rendering, perspective or glossy plastic. Subject: external skin covering of an EGG-CHAMBER organ, a compact asymmetrical oval flank pad whose gently scalloped outer contour and two soft skin ridges suggest enclosed follicular capacity. Three shallow rounded subcutaneous lobes join into one continuous broad attached base. Entirely closed opaque sage skin. No visible contents or egg shapes painted on top. Silhouette slightly wider than tall, rounded tapered attachment at the left, soft rounded lobes at the right. Native shape about 19 pixels wide and 15 pixels tall on a 32 pixel canvas.",
+    "mode": "built-in imagegen",
+    "master": "egg-chamber-master.png",
+    "preparation": "tools/prepare-maternal-surfaces.py",
+    "creatorApproval": false
+  },
+  {
+    "id": "live-womb",
+    "prompt": "Use case: native modular game anatomy pixel-art. One isolated anatomical PART only on a truly transparent background. Near-vertical orthographic TOP-DOWN view, NEVER a side elevation or cutaway. It will be mechanically prepared as a 32x32 pixel source mounted at the same center on a creature's flank; no whole creature, limbs, eyes, face, symbols, labels, border or environment. Chunky clean pixel clusters with five tones: dark green-grey outline #172b30, green-grey shadow #375b59, muted sage skin #609288, pale sage highlight #9dc3aa, very sparse ivory-green glint #d9e4c9. The primary tissue must be skin, not colored icons. Center the small organic shape on the square, surrounding transparent space, consistent upper-left ambient highlights, low clutter. No eggs, embryos, babies, nipples, genitals, blood, exposed viscera or biological events. No antialiasing, 3D rendering, perspective or glossy plastic. Subject: external opaque skin contour over a LIVE-BEARING organ, a soft elongated teardrop-shaped flank swelling with one long smooth domed skin plane and a subtle oblique lower fold. It must be clearly different from a scalloped egg chamber: one continuous unsegmented cushion, tapering attachment, gentle S-shaped crease, asymmetrical broad rear end. It is an ordinary empty-capacity anatomical organ, not pregnancy imagery. No contents or cross section. Native shape about 17 pixels wide and 18 pixels tall centered on a 32 pixel canvas.",
+    "mode": "built-in imagegen",
+    "master": "live-womb-master.png",
+    "preparation": "tools/prepare-maternal-surfaces.py",
+    "creatorApproval": false
+  },
+  {
+    "id": "brood-pouch",
+    "prompt": "Use case: native modular game anatomy pixel-art. One isolated anatomical PART only on a truly transparent background. Near-vertical orthographic TOP-DOWN view, NEVER a side elevation or cutaway. It will be mechanically prepared as a 32x32 pixel source mounted at the same center on a creature's flank; no whole creature, limbs, eyes, face, symbols, labels, border or environment. Chunky clean pixel clusters with five tones: dark green-grey outline #172b30, green-grey shadow #375b59, muted sage skin #609288, pale sage highlight #9dc3aa, very sparse ivory-green glint #d9e4c9. The primary tissue must be skin, not colored icons. Center the small organic shape on the square, surrounding transparent space, consistent upper-left ambient highlights, low clutter. No eggs, embryos, babies, nipples, genitals, blood, exposed viscera or biological events. No antialiasing, 3D rendering, perspective or glossy plastic. Subject: external empty BROOD POUCH skin organ, a shallow crescent-shaped muscular skin fold with a clearly curled raised rim surrounding a narrow dark EMPTY slit. The slit is not a mouth: no teeth, tongue, eyes, face or smile. A broad skin base attaches continuously to the creature under the fold, with two short tapering skin creases. Rounded rectangular purse-like organic contour viewed from directly above; no handles, straps or manufactured object. Native shape about 20 pixels wide and 15 pixels tall centered on a 32 pixel canvas.",
+    "mode": "built-in imagegen",
+    "master": "brood-pouch-master.png",
+    "preparation": "tools/prepare-maternal-surfaces.py",
+    "creatorApproval": false
+  }
+]
