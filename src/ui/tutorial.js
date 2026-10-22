@@ -1,4 +1,5 @@
 import {bestFreshwaterFood} from '../ecology/freshwater-food.js';
+import {firstLegacyProgress} from '../gameplay/legacy-milestones.js';
 import {NotificationCenter} from './notification-center.js';
 import {groundDiet,canHunt,preyPreference} from '../ecology/functional-diet.js';
 import {CFG,PLANTS} from '../sim/config.js';
@@ -161,6 +162,9 @@ export class TutorialController{
     const next=!g.needs?(g.watered?'Find food':g.fed?'Find water':'Eat and drink'):!g.paired?'Find a mate':!g.home?'Make a home':'';
     this.render('Your first goals',`${list}${tip?' · next: '+tip:''}`,{step:`${(g.needs?1:0)+(g.paired?1:0)+(g.home?1:0)}/3`,compact:true,next});return true;
   }
+  // The First Legacy progress for the goal pill: shown after the opening goals,
+  // until the milestone is earned (life, family, then continuing the line).
+  legacyStep(){if(this.stage!=='done'||this.sim.legacyMilestones?.firstLegacy)return'';const p=this.sim.player();if(!p)return'';const g=firstLegacyProgress(this.sim,p,{fedAndWatered:true});return`Legacy ${g.steps}/3`}
   preferredBirthShelter(p){return this.sim.shelter?.broodShelterFor?.(p)||this.sim.shelter?.nearest?.(p,{radius:Infinity,familyOnly:true})||null}
   shouldFoundBroodHome(p){
     if(!p?.lastMate||(p.generation||1)<2||this.sim.shelter?.broodShelterFor?.(p))return false;
@@ -387,6 +391,8 @@ export class TutorialController{
       const inheritedMovement=previous&&heir?inheritedMovementDifference(this.sim,previous,heir):null;
       const reveal=buildGenerationReveal({bringsText,handoff:h,fromRecord:fromRec,toRecord:toRec,inheritedMovement,pressureText:pressures,causeText:cause,strategyText:strategy,careText,divergenceText,divergenceChip,progressionText,progressionChip,populationHistoryText,populationHistoryChip,protoText,protoChip,speciesText,speciesChip,lifestyleText,lifestyleChip});
       this.showGenerationReveal(reveal);
+      // Legacy milestones earned by this handoff follow the reveal.
+      if(h.legacy?.length)this.pendingLegacy=[...(this.pendingLegacy||[]),...h.legacy];
       this.lastHandoffCount=count;
     }
     const p=this.sim.player();if(p&&p.id!==this.lastActiveId)this.lastActiveId=p.id;
@@ -409,7 +415,7 @@ export class TutorialController{
     if(!this.transition)return;this.transitionWasPaused=this.sim.paused;this.sim.paused=true;this.transitionKicker.textContent='NOTICE';this.transitionTitle.textContent=title;this.transitionLead.textContent='';this.transitionBody.textContent=body;this.transitionReveal.hidden=true;this.transitionChanges.hidden=true;if(this.transitionEvolution)this.transitionEvolution.hidden=true;this.transitionDetails.hidden=true;this.transitionDetails.open=false;this.transitionContinue.textContent=button;this.transition.dataset.keepPaused=keepPaused?'1':'0';this.transition.hidden=false;
   }
   continueTransition(){
-    if(!this.transition||this.transition.hidden)return;const offer=this.sim.evolution?.offerFor?.();if(offer&&!offer.chosen){this.showToast('Choose one adaptation first.',1600,'warn');return}const keep=this.transition.dataset.keepPaused==='1';this.transition.hidden=true;if(!keep)this.sim.paused=this.transitionWasPaused;this.transition.dataset.keepPaused='0';this.sim.evolution?.clearChosen?.();
+    if(!this.transition||this.transition.hidden)return;const offer=this.sim.evolution?.offerFor?.();if(offer&&!offer.chosen){this.showToast('Choose one adaptation first.',1600,'warn');return}const keep=this.transition.dataset.keepPaused==='1';this.transition.hidden=true;if(!keep)this.sim.paused=this.transitionWasPaused;this.transition.dataset.keepPaused='0';this.sim.evolution?.clearChosen?.();if(this.pendingLegacy?.length&&this.onLegacy)this.onLegacy(this.pendingLegacy.shift());
   }
   renderEvolutionChoices(){
     if(!this.transitionEvolution||!this.transitionEvolutionChoices)return;const offer=this.sim.evolution?.offerFor?.();if(!offer?.offers?.length){this.transitionEvolution.hidden=true;this.transitionContinue.disabled=false;return}this.transitionEvolution.hidden=false;this.transitionEvolutionChoices.replaceChildren(...offer.offers.map((o,i)=>{const b=document.createElement('button');b.type='button';b.className='evolution-choice';b.dataset.adaptation=o.id;b.innerHTML=`<i>${i+1}</i><span><strong>${o.name}</strong><small>${o.tier===2?`Second-stage ${o.branch} branch · `:''}${o.summary}</small><em>${o.tradeoff}</em></span>`;b.addEventListener('click',()=>this.chooseEvolution(o.id));return b}));this.transitionContinue.disabled=!offer.chosen;if(offer.chosen)this.markEvolutionChoice(offer.chosen)
@@ -419,7 +425,7 @@ export class TutorialController{
   }
   markEvolutionChoice(id){for(const b of this.transitionEvolutionChoices?.querySelectorAll?.('.evolution-choice')||[]){const selected=b.dataset.adaptation===id;b.classList.toggle('selected',selected);b.disabled=!selected}}
 
-  render(title,body,{step='',compact=false,next=''}={}){if(!this.tutorial)return;if(this.sim?.playerAutonomy&&/((press|·)\s+([A-Z]|Space|Shift)\b|^([A-Z]|Space|Shift) ·)/.test(body)&&!/take over/.test(body))body+=' · take over to do this';this.tutorial.hidden=false;this.tutorial.className=`objective${compact?' compact':''}`;this.tutorial.dataset.guideTitle=title;this.tutorial.dataset.guideBody=body;this.tutorial.dataset.guideCompact=compact?'1':'0';const p=this.sim.player?.(),progress=compact&&p?`G${Math.min(8,p.generation||1)}/8`:'·';this.tutorial.dataset.guideStep=step||progress;this.tutorial.title=compact?'Open task steps':'';this.tutorial.setAttribute('role',compact?'button':'region');this.tutorial.tabIndex=compact?0:-1;this.tutorial.setAttribute('aria-label',compact?title+' - open task steps':title);this.tutorial.innerHTML=`<div class="objective-step">${step||progress}</div><div><strong>${title}${compact&&next?`<b class="objective-next">· ${next}</b>`:''}</strong><span>${body}</span></div>`}
+  render(title,body,{step='',compact=false,next=''}={}){if(!this.tutorial)return;if(!step&&compact)step=this.legacyStep();if(this.sim?.playerAutonomy&&/((press|·)\s+([A-Z]|Space|Shift)\b|^([A-Z]|Space|Shift) ·)/.test(body)&&!/take over/.test(body))body+=' · take over to do this';this.tutorial.hidden=false;this.tutorial.className=`objective${compact?' compact':''}`;this.tutorial.dataset.guideTitle=title;this.tutorial.dataset.guideBody=body;this.tutorial.dataset.guideCompact=compact?'1':'0';const p=this.sim.player?.(),progress=compact&&p?`G${Math.min(8,p.generation||1)}/8`:'·';this.tutorial.dataset.guideStep=step||progress;this.tutorial.title=compact?'Open task steps':'';this.tutorial.setAttribute('role',compact?'button':'region');this.tutorial.tabIndex=compact?0:-1;this.tutorial.setAttribute('aria-label',compact?title+' - open task steps':title);this.tutorial.innerHTML=`<div class="objective-step">${step||progress}</div><div><strong>${title}${compact&&next?`<b class="objective-next">· ${next}</b>`:''}</strong><span>${body}</span></div>`}
   showToast(text,ms=3500,tone='info',channel=tone==='warn'?'critical':'action'){this.notifications.post(text,ms,tone,channel)}
 }
 function friendlyCause(c){return c==='predation'?'predation':c==='starvation'?'starvation':c==='age'?'old age':c||'health collapse'}

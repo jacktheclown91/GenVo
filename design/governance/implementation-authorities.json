@@ -3,6 +3,11 @@
   "principle": "One live authority for each mechanism. Multiple states, species, art drafts and measured outcomes are permitted; competing runtime definitions are not.",
   "gameEntrypoint": "src/main.js",
   "systems": {
+    "legacyMilestones": {
+      "authority": "src/gameplay/legacy-milestones.js",
+      "consumers": ["src/lineage/lineage.js", "src/ui/tutorial.js", "src/ui/legacy-summary.js", "src/main.js", "src/persistence/save-manager.js"],
+      "contract": "docs/FIRST-LEGACY-2026-10-22.md"
+    },
     "breedingSupport": {
       "authority": "src/ecology/breeding-support.js",
       "consumers": ["src/ecology/carrying.js", "src/sim/simulation.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js"],

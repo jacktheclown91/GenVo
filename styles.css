@@ -572,3 +572,16 @@ button{min-height:34px;padding:6px 16px;border:7px solid transparent;border-imag
 .resident-start{width:min(390px,calc(100vw - 48px));max-height:85vh;overflow:auto;padding:24px;color:#e8e5ca;background:#10241c;border:1px solid #a0b17e;border-radius:14px;font:14px/1.5 Verdana,sans-serif}.resident-start::backdrop{background:rgba(2,10,7,.82)}.resident-start h2{font:28px Georgia,serif;margin:0 0 12px}.resident-start select{width:100%;padding:10px;color:#f1e6c2;background:#1c3529;border:1px solid #778967}.resident-start canvas{display:block;margin:8px auto}.resident-start button{padding:10px;margin:8px 8px 0 0;background:#314d35;color:#f4e9c5;border:1px solid #a0b17e;border-radius:6px;cursor:pointer}
 .ed-mount-choices{display:flex;flex-wrap:wrap;justify-content:center;gap:4px}.ed-mount-choices button{padding:4px 8px;border:1px solid #a07a48;background:#2f2216;color:#efe0b8;font:12px Georgia,serif}
 .creature-editor .ed-actions{flex-wrap:wrap;row-gap:6px}
+/* Legacy milestone summary (creator direction 2026-10-22): shares the generation-reveal backdrop. */
+.legacy-summary .legacy-card{width:min(640px,calc(100vw - 32px));max-height:calc(100% - 32px);overflow:auto;padding:22px 26px;background:rgba(14,22,16,.94);border:1px solid #5c6b52;border-radius:10px;text-shadow:2px 3px 0 rgba(0,0,0,.72)}
+.legacy-summary h2{margin:6px 0 2px;font-size:28px;color:#f0dfa0}
+.legacy-summary .legacy-motto{margin:0 0 10px;color:#d4c27c;font-style:italic}
+.legacy-summary .legacy-grid{margin:12px 0}
+.legacy-summary .legacy-grid span{color:#dfe6d6;font-size:13px}
+.legacy-summary .legacy-note{color:#aab4a1;font-size:12px;margin:8px 0 14px}
+.legacy-summary .legacy-actions{display:flex;gap:12px;justify-content:flex-end;flex-wrap:wrap}
+.legacy-summary .legacy-actions button{font:700 14px Verdana,sans-serif;padding:10px 18px;border-radius:8px;border:1px solid #6d7c62;background:#1c2a1f;color:#e7ecdf;cursor:pointer}
+.legacy-summary .legacy-actions button.primary{background:#c7a64a;border-color:#e3c76c;color:#1a1408}
+.legacy-summary .legacy-actions button:focus-visible{outline:2px solid #f0dfa0;outline-offset:2px}
+/* The legacy step ("Legacy 2/3") is wider than the G1/8 badge column. */
+.objective.compact[data-guide-step^="Legacy"]{grid-template-columns:auto auto;max-width:min(360px,calc(100vw - 16px))}.objective.compact[data-guide-step^="Legacy"] .objective-step{white-space:nowrap;padding-right:8px}

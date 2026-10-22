@@ -1,0 +1,144 @@
+{
+ "attempts": [
+  {
+   "seed": "PLANET-B0-A",
+   "founder": 109,
+   "labKept": 1,
+   "birth": 19,
+   "heir": 56,
+   "paused": false,
+   "overlays": [],
+   "simulations": 1,
+   "day": 56,
+   "founderAlive": true,
+   "children": 4
+  }
+ ],
+ "start": {
+  "day": 1,
+  "pill": "Legacy 1/3",
+  "legacy": null
+ },
+ "run": {
+  "seed": "PLANET-B0-A",
+  "founder": 109,
+  "labKept": 1,
+  "birth": 19,
+  "heir": 56,
+  "paused": false,
+  "overlays": [],
+  "simulations": 1,
+  "day": 56,
+  "founderAlive": true,
+  "children": 4
+ },
+ "pill": "Legacy 2/3",
+ "handoff": {
+  "reason": "handoff",
+  "legacy": [
+   "firstLegacy"
+  ],
+  "record": {
+   "day": 56,
+   "year": 2,
+   "tick": 2672,
+   "reason": "handoff",
+   "from": {
+    "id": 109,
+    "generation": 1,
+    "sex": "M",
+    "species": "genvo",
+    "age": 87,
+    "parts": [
+     "grazing-mouth",
+     "simple-eye",
+     "small-torso",
+     "walking-leg"
+    ],
+    "adaptations": []
+   },
+   "to": {
+    "id": 198,
+    "generation": 2,
+    "sex": "M",
+    "species": "genvo",
+    "age": 30,
+    "parts": [
+     "grazing-mouth",
+     "simple-eye",
+     "small-torso",
+     "walking-leg"
+    ],
+    "adaptations": []
+   },
+   "inheritedParts": [
+    "grazing-mouth",
+    "simple-eye",
+    "small-torso",
+    "walking-leg"
+   ],
+   "newParts": [],
+   "lostParts": [],
+   "offspringBorn": 4,
+   "offspringAlive": 4,
+   "lineageAlive": 5
+  }
+ },
+ "summary": {
+  "title": "Your Legacy Begins",
+  "kicker": "THE FIRST LEGACY",
+  "rows": [
+   [
+    "Ancestor",
+    "Generation 1 GenVo · male · 87 days"
+   ],
+   [
+    "Descendant",
+    "Generation 2 GenVo · 30 days old"
+   ],
+   [
+    "Inherited anatomy",
+    "grazing mouth, simple eye, small torso, walking leg"
+   ],
+   [
+    "New in this body",
+    "no new parts"
+   ],
+   [
+    "No longer present",
+    "nothing lost"
+   ],
+   [
+    "Offspring",
+    "4 born · 4 still alive"
+   ],
+   [
+    "Living lineage",
+    "5 members"
+   ],
+   [
+    "Reached",
+    "Day 56 · year 2"
+   ]
+  ],
+  "buttons": [
+   "Continue Evolving",
+   "Begin a New World"
+  ],
+  "focused": "Continue Evolving",
+  "paused": true
+ },
+ "after": {
+  "hidden": true,
+  "paused": false,
+  "day": 56,
+  "player": 198,
+  "generation": 2,
+  "pill": "G2/8"
+ },
+ "newWorld": {
+  "frontEnd": true,
+  "newScreen": true
+ },
+ "errors": []
+}
