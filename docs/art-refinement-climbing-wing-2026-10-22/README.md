@@ -1,0 +1,25 @@
+# Native climbing components and early feather fans
+
+Artwork `964749c`; current canonical seed-policy merge `86495a9` includes `30f04fe`. Candidate implementation and evidence remain isolated. Creator acceptance and integration onto main are open.
+
+| Component | Before normal gameplay | After normal gameplay |
+|---|---|---|
+| Four climbing legs | [East](before-climber-leg-2.png), [west](before-climber-leg-6.png) | [East](after-climber-leg-2.png), [west](after-climber-leg-6.png) |
+| Terminal hook pads | [East](before-hook-pad-2.png), [west](before-hook-pad-6.png) | [East](after-hook-pad-2.png), [west](after-hook-pad-6.png) |
+| Early feather fans | [East](before-proto-wing-2.png), [west](before-proto-wing-6.png) | [East](after-proto-wing-2.png), [west](after-proto-wing-6.png) |
+
+[All directions before](before-normal-pixel-contact-sheet.png) / [after](after-normal-pixel-contact-sheet.png) use unscaled crops from actual 1000x750 gameplay, zoom 2. Full local capture sets contain all 48 before and 48 after frames. Each explicit facing fixture clears only the renderer's turn interpolation and asserts its rendered heading. Frames 0/1 are selected directly for art inspection; this is not a biological action claim.
+
+Climbing legs previously fell through to generic limb drawing plus an unrigged miniature overlay. Their new thigh/shin/hip/knee paint uses the existing two-bone atlas registration. No existing rig is overwritten: the old climber pack had none. Actual assembly hip, knee and foot positions, reach, gait, body plan, mass and physiology are unchanged. Hook pads retain their original terminal socket; the proto-wing retains its dorsal root and remains display anatomy, not powered flight. Root, display scale, pigment-region definitions, protected keratin, inherited skin/feathers, eight facing keys and original timing remain. Explicit root-coverage and diagonal-margin tests rejected misaligned/clipped feather crops before the final registration.
+
+[Masters, original baseline sources, exact prompts and native previews](../../assets/art/production-review/climbing-wing-v1/prompts.json) are retained. [Preparation](../../tools/prepare-climbing-wing-art.py) is crop/nearest/alpha-cutoff/palette mapping, followed by the established indexed compiler. Retained original sources make authoring repeatable without unpublished Git history. [Published baseline identity](published-baseline-identity.json) proves these inputs and before-art indexed packs equal public `30f04fe` originals.
+
+[Live walking 0](live-walking-0.png), [1](live-walking-1.png), [2](live-walking-2.png), [3](live-walking-3.png) show actual keyboard movement before pausing. Native movement is asserted active at every capture. The [receipt](motion-receipt.json) records motion from x=23.5 to 27.13, energy 114.08 to 113.50 and changing gait. [Paired before](paused-after-motion-before.png) / [after](paused-after-motion-after.png) images are subsequent resting states, not frozen active-gait claims. Every paused pair preserves the complete canonical saved state; no fields are omitted. This fixture controls body, age and placement, retains all organisms, genes, reserves and vegetation, then uses actual keys and ordinary clocks.
+
+[Component receipt](receipt.json) also preserves complete canonical state across the directional review. Browser errors: zero. Current-code [native contract](postmerge-art-contract.txt), [full art/render integration](post-padding-art-integration.log), [canonical source audit](source-audit-postmerge.json), [climbing physics contract](climbing-contract.txt) and [prior-art/care compatibility](prior-art-postmerge.txt) pass. The catalog still contains 97 packs and 1552 exact source/indexed RGBA frames. No shared renderer or biological authority was independently changed.
+
+Current-code paused CPU command samples (60 draws, excluding GPU completion) changed from mean 7.95 / p95 21.2 ms to 7.08 / 19.6 ms. These small concurrent-machine samples are not a general performance guarantee.
+
+The first gate reached its unchanged 120-second aquatic limit; [failure retained](pre-root-playable-timeout.log). A rerun [passed 84 checks](playable-84-before-padding.log), then only the [documented final feather-padding delta](final-padding-delta.json) changed native RGBA and derived checksums. Final art/render/browser checks were rerun. The current seed-policy merge adds one integration case; the [final fixed-art/current-code gate](playable-85-postmerge.log) passes all 85 checks on `86495a9`. No test or budget was weakened.
+
+Natural-canopy action acceptance is NOT YET PROVEN. The [read-only availability survey](natural-canopy-limit.json) found maximum tree stocks below 0.85 in the young world and both genuine bundled valleys. No tree was enlarged or invented to force a climbing frame. Controlled mechanics tests remain separate from natural-canopy browser proof. The comprehensive mission also retains other weak anatomy, remaining biome/action/effect review and creator acceptance; this packet is not whole-game completion or a release.

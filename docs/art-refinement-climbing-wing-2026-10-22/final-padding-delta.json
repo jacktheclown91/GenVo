@@ -1,0 +1,34 @@
+{
+  "scope": "After the passing 84-case gate: proto-wing RGBA footprint/padding only, derived PNG/indexed asset and catalog checksums. All source metadata, frame contracts, other parts and runtime code unchanged. Final native/render and browser checks rerun separately.",
+  "changedFiles": [
+    "assets/art/catalog.json",
+    "assets/art/parts/proto-wing.json",
+    "assets/art/parts/proto-wing.indexed.json",
+    "assets/art/parts/proto-wing.png"
+  ],
+  "beforeHashes": {
+    "assets/art/catalog.json": "49d9336c0e75dae5d27a10982812d828840eaaa9a5b6d2c77b18d204c5c40cd1",
+    "assets/art/parts/climber-leg.json": "492f0ac03486c2d77209bb2ca9b15438b9d07315ab80392d3ea688a31435071e",
+    "assets/art/parts/climber-leg.indexed.json": "93fcf8eeb2c54f21de291b20e0c53a9758141490ce869db56b06beb5b9124434",
+    "assets/art/parts/climber-leg.png": "8f0d3c3184cf172a3a218beb2f0483125a20af0545b7622c7e88c01fc014583d",
+    "assets/art/parts/hook-pad.json": "bc3bd071717a96491d70f7357bd704989a17868e50aebdfc757086ef54e932f9",
+    "assets/art/parts/hook-pad.indexed.json": "df6504a456f4f23ac3db93f1f27074d5fc113ea76eef009c57dc2c4033f4fd88",
+    "assets/art/parts/hook-pad.png": "2af858573b2b0b7eff406515a8ade61695bace48f675641270dddde72faf06fe",
+    "assets/art/parts/proto-wing.json": "03f7825e501aec0d12d6f6529c83d0665acc225cb2637f85253dc9f3604bfdc3",
+    "assets/art/parts/proto-wing.indexed.json": "538616464e06ed408cd4c937733c591caad4ca5948e6edae2adbb4e757db902e",
+    "assets/art/parts/proto-wing.png": "9718bfe563fab93e6268af0f7f501c3a45d3e3106d2deeebf28d34ac7c2a0ae4"
+  },
+  "afterHashes": {
+    "assets/art/catalog.json": "caeeab03ec089d3b3562cc94d87926689ac9b08221a439c5bb0e5ab5a64234a0",
+    "assets/art/parts/climber-leg.json": "492f0ac03486c2d77209bb2ca9b15438b9d07315ab80392d3ea688a31435071e",
+    "assets/art/parts/climber-leg.indexed.json": "93fcf8eeb2c54f21de291b20e0c53a9758141490ce869db56b06beb5b9124434",
+    "assets/art/parts/climber-leg.png": "8f0d3c3184cf172a3a218beb2f0483125a20af0545b7622c7e88c01fc014583d",
+    "assets/art/parts/hook-pad.json": "bc3bd071717a96491d70f7357bd704989a17868e50aebdfc757086ef54e932f9",
+    "assets/art/parts/hook-pad.indexed.json": "df6504a456f4f23ac3db93f1f27074d5fc113ea76eef009c57dc2c4033f4fd88",
+    "assets/art/parts/hook-pad.png": "2af858573b2b0b7eff406515a8ade61695bace48f675641270dddde72faf06fe",
+    "assets/art/parts/proto-wing.json": "70950d04f4a8439a2da7350d37d9f569324aedb90ef97e4d0364330862cfb58b",
+    "assets/art/parts/proto-wing.indexed.json": "8b73dd2f7bc83513df6b0e0369fc3e90d4530fe0e4cf20f54ebd50a48e7012ef",
+    "assets/art/parts/proto-wing.png": "217cbbe7892e5dbdd848583af9173eb090b72d710a8316dd793b111d2b3bbca0"
+  },
+  "unchangedMetadata": true
+}

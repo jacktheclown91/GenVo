@@ -1,0 +1,161 @@
+{
+  "setup": {
+    "plan": "bp0-1a4c9511",
+    "zoom": 2,
+    "scope": "Controlled legal adult aquatic body at existing player location on unchanged terrain; not a natural birth or action trial."
+  },
+  "settledDirections": true,
+  "exactCanonicalState": true,
+  "errors": [],
+  "reports": [
+    {
+      "stage": "before",
+      "frames": [
+        {
+          "mouth": "reed-sieve-mouth",
+          "dir": 0
+        },
+        {
+          "mouth": "reed-sieve-mouth",
+          "dir": 1
+        },
+        {
+          "mouth": "reed-sieve-mouth",
+          "dir": 2
+        },
+        {
+          "mouth": "reed-sieve-mouth",
+          "dir": 3
+        },
+        {
+          "mouth": "reed-sieve-mouth",
+          "dir": 4
+        },
+        {
+          "mouth": "reed-sieve-mouth",
+          "dir": 5
+        },
+        {
+          "mouth": "reed-sieve-mouth",
+          "dir": 6
+        },
+        {
+          "mouth": "reed-sieve-mouth",
+          "dir": 7
+        },
+        {
+          "mouth": "filter-mouth",
+          "dir": 0
+        },
+        {
+          "mouth": "filter-mouth",
+          "dir": 1
+        },
+        {
+          "mouth": "filter-mouth",
+          "dir": 2
+        },
+        {
+          "mouth": "filter-mouth",
+          "dir": 3
+        },
+        {
+          "mouth": "filter-mouth",
+          "dir": 4
+        },
+        {
+          "mouth": "filter-mouth",
+          "dir": 5
+        },
+        {
+          "mouth": "filter-mouth",
+          "dir": 6
+        },
+        {
+          "mouth": "filter-mouth",
+          "dir": 7
+        }
+      ],
+      "timing": {
+        "meanMs": 8.227499997615814,
+        "p95Ms": 31.600000023841858,
+        "scope": "Paused renderer CPU command timing; excludes GPU completion and ecology."
+      }
+    },
+    {
+      "stage": "after",
+      "frames": [
+        {
+          "mouth": "reed-sieve-mouth",
+          "dir": 0
+        },
+        {
+          "mouth": "reed-sieve-mouth",
+          "dir": 1
+        },
+        {
+          "mouth": "reed-sieve-mouth",
+          "dir": 2
+        },
+        {
+          "mouth": "reed-sieve-mouth",
+          "dir": 3
+        },
+        {
+          "mouth": "reed-sieve-mouth",
+          "dir": 4
+        },
+        {
+          "mouth": "reed-sieve-mouth",
+          "dir": 5
+        },
+        {
+          "mouth": "reed-sieve-mouth",
+          "dir": 6
+        },
+        {
+          "mouth": "reed-sieve-mouth",
+          "dir": 7
+        },
+        {
+          "mouth": "filter-mouth",
+          "dir": 0
+        },
+        {
+          "mouth": "filter-mouth",
+          "dir": 1
+        },
+        {
+          "mouth": "filter-mouth",
+          "dir": 2
+        },
+        {
+          "mouth": "filter-mouth",
+          "dir": 3
+        },
+        {
+          "mouth": "filter-mouth",
+          "dir": 4
+        },
+        {
+          "mouth": "filter-mouth",
+          "dir": 5
+        },
+        {
+          "mouth": "filter-mouth",
+          "dir": 6
+        },
+        {
+          "mouth": "filter-mouth",
+          "dir": 7
+        }
+      ],
+      "timing": {
+        "meanMs": 8.372499999403953,
+        "p95Ms": 34.60000002384186,
+        "scope": "Paused renderer CPU command timing; excludes GPU completion and ecology."
+      }
+    }
+  ],
+  "acceptance": "Automated paired gameplay captures; creator acceptance open"
+}

@@ -1,12 +1,12 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {compileSourceRgbaPart,recolorIndexedFrame} from '../src/render/indexed-part-art.js';
 import {prepareIndexedPartRenderer} from '../src/render/indexed-part-renderer.js';
 const ids=['climber-leg','hook-pad','proto-wing'];
 for(const id of ids){
- const path='assets/art/parts/'+id+'.json',old=JSON.parse(execFileSync('git',['show','3ccfa61:'+path])),now=JSON.parse(fs.readFileSync(path));
+ const path='assets/art/parts/'+id+'.json',old=JSON.parse(fs.readFileSync('assets/art/production-review/climbing-wing-v1/'+id+'-baseline.json')),now=JSON.parse(fs.readFileSync(path));
+ assert.equal(createHash('sha256').update(fs.readFileSync('assets/art/production-review/climbing-wing-v1/'+id+'-baseline.json')).digest('hex'),now.climbingWingArt.previousSourceSha256,'retained original input provenance');
  const metadata=s=>Object.fromEntries(Object.entries(s).filter(([k])=>!['frames','version','authorship','climbingWingArt','rig'].includes(k)));assert.deepEqual(metadata(now),metadata(old),'original root/display/palette/source metadata');assert.equal(now.version,old.version+1);assert.equal(now.frames.length,16);
  if(id==='climber-leg'){assert.equal(old.rig,undefined,'new registration must not overwrite an existing rig');assert.deepEqual(now.rig,JSON.parse(fs.readFileSync('assets/art/parts/walking-leg.json')).rig,'uses the established native two-bone registration')}
  else assert.deepEqual(now.rig,old.rig,'existing hook/proto-wing mounting contracts unchanged');

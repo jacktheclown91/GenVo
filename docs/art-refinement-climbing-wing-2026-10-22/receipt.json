@@ -1,0 +1,703 @@
+{
+  "setup": {
+    "zoom": 2,
+    "observation": {
+      "x": 40.5,
+      "y": 112.5,
+      "score": 5.89666640898213
+    },
+    "scope": "Controlled valid adult stout body with four climbing legs, four terminal hook pads, or one paired dorsal proto-wing, on unchanged natural land. Indexed idle frames 0/1 are explicitly selected for visual review only. No natural inheritance, climbing or flight action claim."
+  },
+  "exactCanonicalState": true,
+  "errors": [],
+  "timingScope": "Paused renderer CPU commands; excludes GPU completion",
+  "reports": [
+    {
+      "label": "before",
+      "captures": [
+        {
+          "id": "climber-leg",
+          "dir": 0,
+          "frame": 0,
+          "body": "bp0-bc2afc85",
+          "file": "before-climber-leg-0-0.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 1,
+          "frame": 0,
+          "body": "bp0-bc2afc85",
+          "file": "before-climber-leg-1-0.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 2,
+          "frame": 0,
+          "body": "bp0-bc2afc85",
+          "file": "before-climber-leg-2-0.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 3,
+          "frame": 0,
+          "body": "bp0-bc2afc85",
+          "file": "before-climber-leg-3-0.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 4,
+          "frame": 0,
+          "body": "bp0-bc2afc85",
+          "file": "before-climber-leg-4-0.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 5,
+          "frame": 0,
+          "body": "bp0-bc2afc85",
+          "file": "before-climber-leg-5-0.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 6,
+          "frame": 0,
+          "body": "bp0-bc2afc85",
+          "file": "before-climber-leg-6-0.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 7,
+          "frame": 0,
+          "body": "bp0-bc2afc85",
+          "file": "before-climber-leg-7-0.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 0,
+          "frame": 1,
+          "body": "bp0-bc2afc85",
+          "file": "before-climber-leg-0-1.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 1,
+          "frame": 1,
+          "body": "bp0-bc2afc85",
+          "file": "before-climber-leg-1-1.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 2,
+          "frame": 1,
+          "body": "bp0-bc2afc85",
+          "file": "before-climber-leg-2-1.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 3,
+          "frame": 1,
+          "body": "bp0-bc2afc85",
+          "file": "before-climber-leg-3-1.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 4,
+          "frame": 1,
+          "body": "bp0-bc2afc85",
+          "file": "before-climber-leg-4-1.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 5,
+          "frame": 1,
+          "body": "bp0-bc2afc85",
+          "file": "before-climber-leg-5-1.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 6,
+          "frame": 1,
+          "body": "bp0-bc2afc85",
+          "file": "before-climber-leg-6-1.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 7,
+          "frame": 1,
+          "body": "bp0-bc2afc85",
+          "file": "before-climber-leg-7-1.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 0,
+          "frame": 0,
+          "body": "bp0-890e2b2d",
+          "file": "before-hook-pad-0-0.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 1,
+          "frame": 0,
+          "body": "bp0-890e2b2d",
+          "file": "before-hook-pad-1-0.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 2,
+          "frame": 0,
+          "body": "bp0-890e2b2d",
+          "file": "before-hook-pad-2-0.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 3,
+          "frame": 0,
+          "body": "bp0-890e2b2d",
+          "file": "before-hook-pad-3-0.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 4,
+          "frame": 0,
+          "body": "bp0-890e2b2d",
+          "file": "before-hook-pad-4-0.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 5,
+          "frame": 0,
+          "body": "bp0-890e2b2d",
+          "file": "before-hook-pad-5-0.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 6,
+          "frame": 0,
+          "body": "bp0-890e2b2d",
+          "file": "before-hook-pad-6-0.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 7,
+          "frame": 0,
+          "body": "bp0-890e2b2d",
+          "file": "before-hook-pad-7-0.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 0,
+          "frame": 1,
+          "body": "bp0-890e2b2d",
+          "file": "before-hook-pad-0-1.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 1,
+          "frame": 1,
+          "body": "bp0-890e2b2d",
+          "file": "before-hook-pad-1-1.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 2,
+          "frame": 1,
+          "body": "bp0-890e2b2d",
+          "file": "before-hook-pad-2-1.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 3,
+          "frame": 1,
+          "body": "bp0-890e2b2d",
+          "file": "before-hook-pad-3-1.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 4,
+          "frame": 1,
+          "body": "bp0-890e2b2d",
+          "file": "before-hook-pad-4-1.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 5,
+          "frame": 1,
+          "body": "bp0-890e2b2d",
+          "file": "before-hook-pad-5-1.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 6,
+          "frame": 1,
+          "body": "bp0-890e2b2d",
+          "file": "before-hook-pad-6-1.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 7,
+          "frame": 1,
+          "body": "bp0-890e2b2d",
+          "file": "before-hook-pad-7-1.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 0,
+          "frame": 0,
+          "body": "bp0-5717f4e1",
+          "file": "before-proto-wing-0-0.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 1,
+          "frame": 0,
+          "body": "bp0-5717f4e1",
+          "file": "before-proto-wing-1-0.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 2,
+          "frame": 0,
+          "body": "bp0-5717f4e1",
+          "file": "before-proto-wing-2-0.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 3,
+          "frame": 0,
+          "body": "bp0-5717f4e1",
+          "file": "before-proto-wing-3-0.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 4,
+          "frame": 0,
+          "body": "bp0-5717f4e1",
+          "file": "before-proto-wing-4-0.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 5,
+          "frame": 0,
+          "body": "bp0-5717f4e1",
+          "file": "before-proto-wing-5-0.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 6,
+          "frame": 0,
+          "body": "bp0-5717f4e1",
+          "file": "before-proto-wing-6-0.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 7,
+          "frame": 0,
+          "body": "bp0-5717f4e1",
+          "file": "before-proto-wing-7-0.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 0,
+          "frame": 1,
+          "body": "bp0-5717f4e1",
+          "file": "before-proto-wing-0-1.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 1,
+          "frame": 1,
+          "body": "bp0-5717f4e1",
+          "file": "before-proto-wing-1-1.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 2,
+          "frame": 1,
+          "body": "bp0-5717f4e1",
+          "file": "before-proto-wing-2-1.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 3,
+          "frame": 1,
+          "body": "bp0-5717f4e1",
+          "file": "before-proto-wing-3-1.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 4,
+          "frame": 1,
+          "body": "bp0-5717f4e1",
+          "file": "before-proto-wing-4-1.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 5,
+          "frame": 1,
+          "body": "bp0-5717f4e1",
+          "file": "before-proto-wing-5-1.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 6,
+          "frame": 1,
+          "body": "bp0-5717f4e1",
+          "file": "before-proto-wing-6-1.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 7,
+          "frame": 1,
+          "body": "bp0-5717f4e1",
+          "file": "before-proto-wing-7-1.png"
+        }
+      ],
+      "meanMs": 7.953333334128062,
+      "p95Ms": 21.200000047683716
+    },
+    {
+      "label": "after",
+      "captures": [
+        {
+          "id": "climber-leg",
+          "dir": 0,
+          "frame": 0,
+          "body": "bp0-bc2afc85",
+          "file": "after-climber-leg-0-0.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 1,
+          "frame": 0,
+          "body": "bp0-bc2afc85",
+          "file": "after-climber-leg-1-0.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 2,
+          "frame": 0,
+          "body": "bp0-bc2afc85",
+          "file": "after-climber-leg-2-0.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 3,
+          "frame": 0,
+          "body": "bp0-bc2afc85",
+          "file": "after-climber-leg-3-0.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 4,
+          "frame": 0,
+          "body": "bp0-bc2afc85",
+          "file": "after-climber-leg-4-0.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 5,
+          "frame": 0,
+          "body": "bp0-bc2afc85",
+          "file": "after-climber-leg-5-0.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 6,
+          "frame": 0,
+          "body": "bp0-bc2afc85",
+          "file": "after-climber-leg-6-0.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 7,
+          "frame": 0,
+          "body": "bp0-bc2afc85",
+          "file": "after-climber-leg-7-0.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 0,
+          "frame": 1,
+          "body": "bp0-bc2afc85",
+          "file": "after-climber-leg-0-1.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 1,
+          "frame": 1,
+          "body": "bp0-bc2afc85",
+          "file": "after-climber-leg-1-1.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 2,
+          "frame": 1,
+          "body": "bp0-bc2afc85",
+          "file": "after-climber-leg-2-1.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 3,
+          "frame": 1,
+          "body": "bp0-bc2afc85",
+          "file": "after-climber-leg-3-1.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 4,
+          "frame": 1,
+          "body": "bp0-bc2afc85",
+          "file": "after-climber-leg-4-1.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 5,
+          "frame": 1,
+          "body": "bp0-bc2afc85",
+          "file": "after-climber-leg-5-1.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 6,
+          "frame": 1,
+          "body": "bp0-bc2afc85",
+          "file": "after-climber-leg-6-1.png"
+        },
+        {
+          "id": "climber-leg",
+          "dir": 7,
+          "frame": 1,
+          "body": "bp0-bc2afc85",
+          "file": "after-climber-leg-7-1.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 0,
+          "frame": 0,
+          "body": "bp0-890e2b2d",
+          "file": "after-hook-pad-0-0.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 1,
+          "frame": 0,
+          "body": "bp0-890e2b2d",
+          "file": "after-hook-pad-1-0.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 2,
+          "frame": 0,
+          "body": "bp0-890e2b2d",
+          "file": "after-hook-pad-2-0.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 3,
+          "frame": 0,
+          "body": "bp0-890e2b2d",
+          "file": "after-hook-pad-3-0.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 4,
+          "frame": 0,
+          "body": "bp0-890e2b2d",
+          "file": "after-hook-pad-4-0.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 5,
+          "frame": 0,
+          "body": "bp0-890e2b2d",
+          "file": "after-hook-pad-5-0.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 6,
+          "frame": 0,
+          "body": "bp0-890e2b2d",
+          "file": "after-hook-pad-6-0.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 7,
+          "frame": 0,
+          "body": "bp0-890e2b2d",
+          "file": "after-hook-pad-7-0.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 0,
+          "frame": 1,
+          "body": "bp0-890e2b2d",
+          "file": "after-hook-pad-0-1.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 1,
+          "frame": 1,
+          "body": "bp0-890e2b2d",
+          "file": "after-hook-pad-1-1.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 2,
+          "frame": 1,
+          "body": "bp0-890e2b2d",
+          "file": "after-hook-pad-2-1.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 3,
+          "frame": 1,
+          "body": "bp0-890e2b2d",
+          "file": "after-hook-pad-3-1.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 4,
+          "frame": 1,
+          "body": "bp0-890e2b2d",
+          "file": "after-hook-pad-4-1.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 5,
+          "frame": 1,
+          "body": "bp0-890e2b2d",
+          "file": "after-hook-pad-5-1.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 6,
+          "frame": 1,
+          "body": "bp0-890e2b2d",
+          "file": "after-hook-pad-6-1.png"
+        },
+        {
+          "id": "hook-pad",
+          "dir": 7,
+          "frame": 1,
+          "body": "bp0-890e2b2d",
+          "file": "after-hook-pad-7-1.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 0,
+          "frame": 0,
+          "body": "bp0-5717f4e1",
+          "file": "after-proto-wing-0-0.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 1,
+          "frame": 0,
+          "body": "bp0-5717f4e1",
+          "file": "after-proto-wing-1-0.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 2,
+          "frame": 0,
+          "body": "bp0-5717f4e1",
+          "file": "after-proto-wing-2-0.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 3,
+          "frame": 0,
+          "body": "bp0-5717f4e1",
+          "file": "after-proto-wing-3-0.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 4,
+          "frame": 0,
+          "body": "bp0-5717f4e1",
+          "file": "after-proto-wing-4-0.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 5,
+          "frame": 0,
+          "body": "bp0-5717f4e1",
+          "file": "after-proto-wing-5-0.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 6,
+          "frame": 0,
+          "body": "bp0-5717f4e1",
+          "file": "after-proto-wing-6-0.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 7,
+          "frame": 0,
+          "body": "bp0-5717f4e1",
+          "file": "after-proto-wing-7-0.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 0,
+          "frame": 1,
+          "body": "bp0-5717f4e1",
+          "file": "after-proto-wing-0-1.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 1,
+          "frame": 1,
+          "body": "bp0-5717f4e1",
+          "file": "after-proto-wing-1-1.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 2,
+          "frame": 1,
+          "body": "bp0-5717f4e1",
+          "file": "after-proto-wing-2-1.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 3,
+          "frame": 1,
+          "body": "bp0-5717f4e1",
+          "file": "after-proto-wing-3-1.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 4,
+          "frame": 1,
+          "body": "bp0-5717f4e1",
+          "file": "after-proto-wing-4-1.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 5,
+          "frame": 1,
+          "body": "bp0-5717f4e1",
+          "file": "after-proto-wing-5-1.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 6,
+          "frame": 1,
+          "body": "bp0-5717f4e1",
+          "file": "after-proto-wing-6-1.png"
+        },
+        {
+          "id": "proto-wing",
+          "dir": 7,
+          "frame": 1,
+          "body": "bp0-5717f4e1",
+          "file": "after-proto-wing-7-1.png"
+        }
+      ],
+      "meanMs": 7.0750000019868216,
+      "p95Ms": 19.600000023841858
+    }
+  ],
+  "creatorAcceptance": false
+}

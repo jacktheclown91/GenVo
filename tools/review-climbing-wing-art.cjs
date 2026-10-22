@@ -3,9 +3,9 @@ const fs=require('node:fs'),http=require('node:http'),path=require('node:path'),
 const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
 (async()=>{
  const root=process.cwd(),out='reports/climbing-wing-review',ids=['climber-leg','hook-pad','proto-wing'];fs.mkdirSync(out,{recursive:true});let stage='before';
- const current=JSON.parse(fs.readFileSync('assets/art/catalog.json')),previous=JSON.parse(execFileSync('git',['show','3ccfa61:assets/art/catalog.json']));
+ const current=JSON.parse(fs.readFileSync('assets/art/catalog.json')),previous=JSON.parse(execFileSync('git',['show','30f04fe:assets/art/catalog.json']));
  const beforeCatalog={...current,parts:current.parts.map(p=>ids.includes(p.partId)?previous.parts.find(q=>q.partId===p.partId):p)},before=new Map([['/assets/art/catalog.json',Buffer.from(JSON.stringify(beforeCatalog))]]);
- for(const id of ids)before.set('/assets/art/parts/'+id+'.indexed.json',execFileSync('git',['show','3ccfa61:assets/art/parts/'+id+'.indexed.json'],{maxBuffer:8e6}));
+ for(const id of ids)before.set('/assets/art/parts/'+id+'.indexed.json',execFileSync('git',['show','30f04fe:assets/art/parts/'+id+'.indexed.json'],{maxBuffer:8e6}));
  const server=http.createServer((req,res)=>{
   const url=new URL(req.url,'http://localhost'),file=path.resolve(root,'.'+decodeURIComponent(url.pathname));if(!file.startsWith(root+path.sep))return res.writeHead(403).end();
   res.setHeader('Cache-Control','no-store');res.setHeader('Content-Type',({'.js':'text/javascript','.json':'application/json','.html':'text/html','.css':'text/css'})[path.extname(file)]||'application/octet-stream');

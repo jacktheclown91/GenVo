@@ -1,0 +1,8 @@
+Native climbing/wing art PASS: exact root/display/material/frame contracts, 48 source/indexed frames, protected keratin and inherited feathers, new registered limb paint at unchanged real joints, all facings/contact phases.
+native-part-catalog: 97 indexed assets, 1552 exact RGBA frames, eight facings, 0 missing native art packs PASS
+native-anatomy-rig: 9 body silhouettes + 8 two-bone limbs / 16 bone transforms + 8 native knee surfaces, negative rig validation PASS
+Mirrored and facing-relative knees, immutable contacts, and finite/supporting 1024 walking poses PASS
+indexed renderer timed boundaries, missing facing, pivot, joint clamp and allocation-free drawing PASS
+source RGBA ingestion: sixteen-frame exact round trip, transparent detail, explicit shared pigments, protected substitution and fail-closed mapping PASS
+registered immutable part-owned responses compile into independent bounded node rigs PASS
+world swap render caches ok
