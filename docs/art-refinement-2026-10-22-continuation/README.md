@@ -33,3 +33,5 @@ Browser scope is deliberately explicit: ice uses four controlled cold-forcing up
 Paired CPU command timings are in the JSON receipts, excluding GPU completion and long-world performance. No substantial regression was observed in these small paused samples. Care queries also measured below 0.6 ms for a full synthetic 1000-actor all-maternal/no-receipt scan on this machine; this is a diagnostic observation, not a broadened budget.
 
 Remaining scope includes the complete normal-play biome survey and identity pass, remaining weak anatomy and action/effect coverage, and creator review/integration. No temporary art worktree will be removed before its commits are safely incorporated.
+
+Canonical synchronization after verification: merged e67d953 (read-only extinction diagnostics). The merge changes no runtime source, assets, tests or playability-gate definition. Claude's uncommitted biological work remains in the canonical working directory and was not copied or modified.
