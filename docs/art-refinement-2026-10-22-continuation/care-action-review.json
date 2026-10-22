@@ -1,0 +1,702 @@
+{
+  "errors": [],
+  "reports": [
+    {
+      "setup": {
+        "kind": "nursing",
+        "motherId": 109,
+        "subjectId": 197,
+        "actualConception": true,
+        "delivered": 3,
+        "paidMilk": 0.8472117326082879,
+        "zoom": 2,
+        "scope": "Explicit adult anatomy/reserve/role fixture, actual first-attempt conception, direct canonical paid delivery and incubation operations. Real open land and sibling observation positions explicitly staged without removing organisms/vegetation. Three seconds of ordinary updates follow conception; gestation/incubation timeline otherwise accelerated by direct authority calls, not natural evolution or elapsed-gestation proof. Only the presentation clock is sampled while paused."
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "stage": "before",
+          "captures": [
+            {
+              "frame": 0,
+              "file": "before-nursing-0.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                },
+                {
+                  "id": 197,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 1,
+              "file": "before-nursing-1.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                },
+                {
+                  "id": 197,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 2,
+              "file": "before-nursing-2.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                },
+                {
+                  "id": 197,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 3,
+              "file": "before-nursing-3.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                },
+                {
+                  "id": 197,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 4,
+              "file": "before-nursing-4.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                },
+                {
+                  "id": 197,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 5,
+              "file": "before-nursing-5.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                },
+                {
+                  "id": 197,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 6,
+              "file": "before-nursing-6.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                },
+                {
+                  "id": 197,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 7,
+              "file": "before-nursing-7.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                },
+                {
+                  "id": 197,
+                  "action": "idle"
+                }
+              ]
+            }
+          ],
+          "meanMs": 6.0380000042915345,
+          "p95Ms": 17.09999990463257
+        },
+        {
+          "stage": "after",
+          "captures": [
+            {
+              "frame": 0,
+              "file": "after-nursing-0.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "nurse"
+                },
+                {
+                  "id": 197,
+                  "action": "suckle"
+                }
+              ]
+            },
+            {
+              "frame": 1,
+              "file": "after-nursing-1.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "nurse"
+                },
+                {
+                  "id": 197,
+                  "action": "suckle"
+                }
+              ]
+            },
+            {
+              "frame": 2,
+              "file": "after-nursing-2.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "nurse"
+                },
+                {
+                  "id": 197,
+                  "action": "suckle"
+                }
+              ]
+            },
+            {
+              "frame": 3,
+              "file": "after-nursing-3.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "nurse"
+                },
+                {
+                  "id": 197,
+                  "action": "suckle"
+                }
+              ]
+            },
+            {
+              "frame": 4,
+              "file": "after-nursing-4.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "nurse"
+                },
+                {
+                  "id": 197,
+                  "action": "suckle"
+                }
+              ]
+            },
+            {
+              "frame": 5,
+              "file": "after-nursing-5.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "nurse"
+                },
+                {
+                  "id": 197,
+                  "action": "suckle"
+                }
+              ]
+            },
+            {
+              "frame": 6,
+              "file": "after-nursing-6.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "nurse"
+                },
+                {
+                  "id": 197,
+                  "action": "suckle"
+                }
+              ]
+            },
+            {
+              "frame": 7,
+              "file": "after-nursing-7.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "nurse"
+                },
+                {
+                  "id": 197,
+                  "action": "suckle"
+                }
+              ]
+            }
+          ],
+          "meanMs": 5.996000001430511,
+          "p95Ms": 16.600000023841858
+        }
+      ]
+    },
+    {
+      "setup": {
+        "kind": "laying",
+        "motherId": 109,
+        "subjectId": 109,
+        "actualConception": true,
+        "delivered": 3,
+        "paidMilk": null,
+        "zoom": 2,
+        "scope": "Explicit adult anatomy/reserve/role fixture, actual first-attempt conception, direct canonical paid delivery and incubation operations. Real open land and sibling observation positions explicitly staged without removing organisms/vegetation. Three seconds of ordinary updates follow conception; gestation/incubation timeline otherwise accelerated by direct authority calls, not natural evolution or elapsed-gestation proof. Only the presentation clock is sampled while paused."
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "stage": "before",
+          "captures": [
+            {
+              "frame": 0,
+              "file": "before-laying-0.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 1,
+              "file": "before-laying-1.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 2,
+              "file": "before-laying-2.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 3,
+              "file": "before-laying-3.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 4,
+              "file": "before-laying-4.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 5,
+              "file": "before-laying-5.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 6,
+              "file": "before-laying-6.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 7,
+              "file": "before-laying-7.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                }
+              ]
+            }
+          ],
+          "meanMs": 9.548000001907349,
+          "p95Ms": 23.899999976158142
+        },
+        {
+          "stage": "after",
+          "captures": [
+            {
+              "frame": 0,
+              "file": "after-laying-0.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "lay-settle"
+                }
+              ]
+            },
+            {
+              "frame": 1,
+              "file": "after-laying-1.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "lay-settle"
+                }
+              ]
+            },
+            {
+              "frame": 2,
+              "file": "after-laying-2.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "lay-settle"
+                }
+              ]
+            },
+            {
+              "frame": 3,
+              "file": "after-laying-3.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "lay-settle"
+                }
+              ]
+            },
+            {
+              "frame": 4,
+              "file": "after-laying-4.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "lay-settle"
+                }
+              ]
+            },
+            {
+              "frame": 5,
+              "file": "after-laying-5.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "lay-settle"
+                }
+              ]
+            },
+            {
+              "frame": 6,
+              "file": "after-laying-6.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "lay-settle"
+                }
+              ]
+            },
+            {
+              "frame": 7,
+              "file": "after-laying-7.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "lay-settle"
+                }
+              ]
+            }
+          ],
+          "meanMs": 5.927999999523163,
+          "p95Ms": 17
+        }
+      ]
+    },
+    {
+      "setup": {
+        "kind": "hatching",
+        "motherId": 109,
+        "subjectId": 197,
+        "actualConception": true,
+        "delivered": 3,
+        "paidMilk": null,
+        "zoom": 2,
+        "scope": "Explicit adult anatomy/reserve/role fixture, actual first-attempt conception, direct canonical paid delivery and incubation operations. Real open land and sibling observation positions explicitly staged without removing organisms/vegetation. Three seconds of ordinary updates follow conception; gestation/incubation timeline otherwise accelerated by direct authority calls, not natural evolution or elapsed-gestation proof. Only the presentation clock is sampled while paused."
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "stage": "before",
+          "captures": [
+            {
+              "frame": 0,
+              "file": "before-hatching-0.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                },
+                {
+                  "id": 197,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 1,
+              "file": "before-hatching-1.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                },
+                {
+                  "id": 197,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 2,
+              "file": "before-hatching-2.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                },
+                {
+                  "id": 197,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 3,
+              "file": "before-hatching-3.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                },
+                {
+                  "id": 197,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 4,
+              "file": "before-hatching-4.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                },
+                {
+                  "id": 197,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 5,
+              "file": "before-hatching-5.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                },
+                {
+                  "id": 197,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 6,
+              "file": "before-hatching-6.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                },
+                {
+                  "id": 197,
+                  "action": "idle"
+                }
+              ]
+            },
+            {
+              "frame": 7,
+              "file": "before-hatching-7.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "idle"
+                },
+                {
+                  "id": 197,
+                  "action": "idle"
+                }
+              ]
+            }
+          ],
+          "meanMs": 7.688000001907349,
+          "p95Ms": 18.300000071525574
+        },
+        {
+          "stage": "after",
+          "captures": [
+            {
+              "frame": 0,
+              "file": "after-hatching-0.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "lay-settle"
+                },
+                {
+                  "id": 197,
+                  "action": "hatch-settle"
+                }
+              ]
+            },
+            {
+              "frame": 1,
+              "file": "after-hatching-1.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "lay-settle"
+                },
+                {
+                  "id": 197,
+                  "action": "hatch-settle"
+                }
+              ]
+            },
+            {
+              "frame": 2,
+              "file": "after-hatching-2.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "lay-settle"
+                },
+                {
+                  "id": 197,
+                  "action": "hatch-settle"
+                }
+              ]
+            },
+            {
+              "frame": 3,
+              "file": "after-hatching-3.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "lay-settle"
+                },
+                {
+                  "id": 197,
+                  "action": "hatch-settle"
+                }
+              ]
+            },
+            {
+              "frame": 4,
+              "file": "after-hatching-4.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "lay-settle"
+                },
+                {
+                  "id": 197,
+                  "action": "hatch-settle"
+                }
+              ]
+            },
+            {
+              "frame": 5,
+              "file": "after-hatching-5.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "lay-settle"
+                },
+                {
+                  "id": 197,
+                  "action": "hatch-settle"
+                }
+              ]
+            },
+            {
+              "frame": 6,
+              "file": "after-hatching-6.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "lay-settle"
+                },
+                {
+                  "id": 197,
+                  "action": "hatch-settle"
+                }
+              ]
+            },
+            {
+              "frame": 7,
+              "file": "after-hatching-7.png",
+              "actions": [
+                {
+                  "id": 109,
+                  "action": "lay-settle"
+                },
+                {
+                  "id": 197,
+                  "action": "hatch-settle"
+                }
+              ]
+            }
+          ],
+          "meanMs": 6.667999999523163,
+          "p95Ms": 20.90000009536743
+        }
+      ]
+    }
+  ],
+  "timingScope": "Paused renderer CPU commands only",
+  "creatorAcceptance": false
+}

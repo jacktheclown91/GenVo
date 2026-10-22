@@ -1,0 +1,28 @@
+{
+  "setup": {
+    "target": 2588,
+    "bank": 2716,
+    "fractured": true,
+    "zoom": 2,
+    "scope": "Four explicit cold-forcing phase updates on generated water and one canonical load fracture; player placed on a real nearby dry bank. Not natural weather or a biological action trial.",
+    "unchangedWaterSaltRng": true
+  },
+  "exactCanonicalState": true,
+  "errors": [],
+  "timingScope": "Paused renderer CPU command timing; excludes GPU completion",
+  "reports": [
+    {
+      "stage": "before",
+      "iceTiles": 109,
+      "meanMs": 9.79833333293597,
+      "p95Ms": 26.100000023841858
+    },
+    {
+      "stage": "after",
+      "iceTiles": 109,
+      "meanMs": 10.059999998410543,
+      "p95Ms": 29.300000071525574
+    }
+  ],
+  "creatorAcceptance": false
+}
