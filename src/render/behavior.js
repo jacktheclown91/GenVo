@@ -1,6 +1,7 @@
 // Shared renderer-only action/body-language interpretation.
 // This module never changes simulation intent, targets, movement, RNG, ecology, or saves.
 import {CFG} from '../sim/config.js';
+import {careVisualAction} from './care-expression.js';
 const TAU=Math.PI*2;
 
 export function behaviorVisualState({bodyPlan=null,id=0,action='idle',phase=0,moving=false,life={},social=null}={}){
@@ -43,6 +44,14 @@ export function behaviorVisualState({bodyPlan=null,id=0,action='idle',phase=0,mo
     Object.assign(state,{bodyRise:.18,bodyLean:.12,stanceSpread:.18,feelerForward:1.24,feelerSweep:.25,eyeWide:beat>.78,attention:'mate'});
   }else if(action==='court'){
     Object.assign(state,{bodyRise:.42,stanceSpread:.35,compress:-.08,feelerForward:1.32,feelerSweep:.65,eyeWide:true,mouthPulse:.15,attention:'mate'});
+  }else if(action==='nurse'){
+    Object.assign(state,{bodyDrop:.52,stanceSpread:.7,compress:.06,bodyLean:-.12,headDrop:.4,feelerForward:.72,relaxed:true,attention:'offspring'});
+  }else if(action==='suckle'){
+    Object.assign(state,{bodyDrop:.36,headDrop:.7,headReach:.25+beat*.18,mouthPulse:.2+beat*.25,stanceSpread:.24,feelerForward:.7,relaxed:true,attention:'caregiver'});
+  }else if(action==='lay-settle'){
+    Object.assign(state,{bodyDrop:.5+beat*.22,stanceSpread:.8,compress:.16,headDrop:.24,bodyLean:-.3,feelerForward:.78,attention:'ground',groundEmphasis:.3});
+  }else if(action==='hatch-settle'){
+    Object.assign(state,{bodyDrop:.25,stanceSpread:.15+beat*.25,compress:.08,headDrop:.35,feelerForward:.75,eyeWide:beat>.7,relaxed:true,attention:'ambient'});
   }else if(action==='hide'){
     Object.assign(state,{bodyDrop:1.05,stanceSpread:.10,compress:.22,feelerForward:.52,feelerPin:1.15,eyeNarrow:true,attention:'ambient',groundEmphasis:.12});
   }else if(action==='guard'){
@@ -92,6 +101,7 @@ export function visualActionFromIntent(sim,a,{moving=false}={}){
   const receipt=sim?.lastPlayerAction,age=(sim?.tickCount??0)-(receipt?.tick??-Infinity);
   if(a.player&&!moving&&!a.bracing&&!a.attackAction&&!a.courtshipPerformance&&['idle','player','rest','explore'].includes(a.intent)&&receipt?.actorId===a.id&&age>=0&&age<CFG.simHz*(.9+Math.min(.9,receipt.processingCost||0))&&['eat','drink','trace-study'].includes(receipt.type))return receipt.type==='trace-study'?'forage':receipt.type==='eat'&&receipt.tissue==='kernel'?'crack':receipt.type;
   const plantMeal=a.lastPlantMeal,mealAge=(sim?.tickCount??0)-(plantMeal?.tick??-Infinity);if(!moving&&!a.bracing&&!a.attackAction&&!a.courtshipPerformance&&plantMeal?.actorId===a.id&&plantMeal.tissue==='kernel'&&mealAge>=0&&mealAge<CFG.simHz*.9&&['idle','rest','feed','explore'].includes(a.intent))return'crack';
+  const care=careVisualAction(sim,a,{moving});if(care)return care;
   const d=a.target&&Number.isFinite(a.target.x)&&Number.isFinite(a.target.y)?Math.hypot(a.target.x-a.x,a.target.y-a.y):999;
   if(a.intent==='escape'||a.intent==='group-alarm'||a.intent==='avoid-intruder'||a.intent==='shelter')return'flee';
   if(a.intent==='guardian-hold'||a.intent==='burrow-return'||a.intent==='aquatic-range'||a.intent==='wary')return'move';
