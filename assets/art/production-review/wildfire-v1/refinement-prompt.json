@@ -1,0 +1,9 @@
+{
+  "tool": "image_gen.imagegen",
+  "date": "2026-10-22",
+  "prompt": "Edit this transparent 2x2 four-phase overhead fire sprite sheet. Preserve the four equal-cell phase arrangement, transparent background, straight-down view, warm copper/orange/gold palette, and overall patch footprints. Make a targeted game-readability refinement: remove almost all detached tiny ember flecks and thin filigree. Replace the busy little curls with just THREE to FOUR broader connected chunky flame tongues per patch, with substantial contiguous orange midtone areas and a few broad gold/hot-core clusters. Each patch should read instantly as a single irregular burning patch at only 32x32 pixels, without looking like confetti, a flower, a star icon, or an upright campfire. Keep big transparent gaps between the broad tongues, and no painted ground, smoke, ash, logs, vegetation, text, border or badge. Four phases should feel like a gentle coherent flicker of the same patch. More broad flat pixel clusters, less internal detail and less disconnected debris. Crisp pixel art, no glow bloom, blur, smooth vector edges or photorealism.",
+  "reference": "fire-master.png",
+  "transparent_background": true,
+  "reason": "First normal-zoom candidate had excessive detached ember flecks.",
+  "creatorAcceptance": false
+}
