@@ -71,6 +71,7 @@ import {VISION} from '../lineage/vision.js';
 import {validateAquaticForagingRules} from '../ecology/aquatic-foraging.js';
 import {validateSeedViabilityRules} from '../ecology/seed-viability.js';
 import {validateBreedingSupportRules} from '../ecology/breeding-support.js';
+import {validatePlantLifecycleRules} from '../ecology/plant-lifecycle.js';
 import {MARINE_FOOD,MARINE_KEYS,validateMarineFood,removeMarineFood} from '../ecology/marine-food.js';
 import {POPULATION_MODE} from '../world/regional-replay-order.js';
 import {advanceRemoteBiology,remoteBiologicalDebt} from '../world/planetary-offscreen-biology.js';
@@ -426,6 +427,8 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   validateSeedViabilityRules(sim);
   if(!Object.hasOwn(snapshot.core||{},'breedingSupportRules'))delete sim.breedingSupportRules;
   validateBreedingSupportRules(sim);
+  if(!Object.hasOwn(snapshot.core||{},'plantLifecycleRules'))delete sim.plantLifecycleRules;
+  validatePlantLifecycleRules(sim);
   if(!Object.hasOwn(snapshot.core||{},'marineFoodRules'))delete sim.marineFoodRules;
   if(sim.marineFoodRules!==undefined&&sim.marineFoodRules!==MARINE_FOOD.policy)throw Error('Unknown marine food policy.');
   // Validate the checkpoint, never the constructor's temporary restore scaffold.

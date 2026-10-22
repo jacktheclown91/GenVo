@@ -2,6 +2,7 @@
 // Existing vegetation schedules and biomass remain authoritative; no second plant simulation.
 import {localRain} from '../world/environment.js';
 import {coldFloraDieback} from './cold-flora.js';
+import {plantLifecycleEnabled,lifecycleLosses,canFlower} from './plant-lifecycle.js';
 import {snowLightFactor,snowGrowthFactor} from '../world/snowpack.js';
 import {PLANTS} from '../sim/config.js';
 import {SOIL_WATER,plantAvailableWater} from './soil-water.js';
@@ -50,7 +51,7 @@ export const PLANT_TURNOVER={enabled:false,rate:1/120};
 // All local producers submit demand before any shared soil input is withdrawn.
 // Energy remains producer-owned; scarce water/minerals are allocated proportionally.
 export function growLandProducers(s,i,entries,{m,f,temp,scar,grow}){
-  const w=s.world,r=w.plantResources,u=PLANT_RESOURCE_UNITS,dispersal=s.dispersal,requests=[];
+  const w=s.world,r=w.plantResources,u=PLANT_RESOURCE_UNITS,dispersal=s.dispersal,requests=[],lifecycle=plantLifecycleEnabled(s);
   for(const e of entries){const {kind,p,d,plants,bank,seasonBoost}=e,initial=plants[i];let current=initial;
     if(d?.seedLimited&&current<=.002&&!dispersal.isEstablished(kind,i)){returnPlantLoss(s,kind,i,current);current=current<=.0005&&(!bank||bank[i]<.012)?0:dispersal.germinate(kind,i,m,f,temp);}
     // Real warm spells kill specialist tissue; it becomes ordinary decomposer
@@ -58,7 +59,10 @@ export function growLandProducers(s,i,entries,{m,f,temp,scar,grow}){
     const heatLoss=current*coldFloraDieback(kind,temp);
     if(heatLoss>0){current-=heatLoss;returnPlantLoss(s,kind,i,heatLoss)}
     if(PLANT_TURNOVER.enabled&&current>0){const shed=current*PLANT_TURNOVER.rate;current-=shed;returnPlantLoss(s,kind,i,shed);w.plantResources.totals.senescence=(w.plantResources.totals.senescence||0)+shed}
-    const genome=dispersal.genomeAt(kind,i),phenotype=genome?.schema===4?{...p,growth:genome.traits.growth,waterNeed:genome.traits.waterNeed}:p;let desired=grow(current,phenotype,m,f,temp,{seedLimited:!!d?.seedLimited&&!dispersal.isEstablished(kind,i)});if(scar>0&&desired>current)desired=current+(desired-current)*(1-scar);
+    const genome=dispersal.genomeAt(kind,i),phenotype=genome?.schema===4?{...p,growth:genome.traits.growth,waterNeed:genome.traits.waterNeed}:p;
+    // plant-lifecycle/1: drought stress and senescence return tissue to litter.
+    if(lifecycle&&current>0){const loss=lifecycleLosses(current,phenotype,m),dead=Math.min(current,loss.stress+loss.senescence);if(dead>0){current-=dead;returnPlantLoss(s,kind,i,dead);r.totals.senescence=(r.totals.senescence||0)+loss.senescence;r.totals.droughtStress=(r.totals.droughtStress||0)+loss.stress}}
+    let desired=grow(current,phenotype,m,f,temp,{seedLimited:!!d?.seedLimited&&!dispersal.isEstablished(kind,i)});if(scar>0&&desired>current)desired=current+(desired-current)*(1-scar);
     if(desired>current)desired=current+(desired-current)*snowGrowthFactor(w,i);
     desired=Math.min(p.carry,desired*seasonBoost);
     requests.push({e,initial,current,desired,wanted:Math.max(0,desired-current),demand:Math.min(Math.max(0,desired-current),r.energy[kind][i]/u.energyPerBiomass)});
@@ -66,6 +70,6 @@ export function growLandProducers(s,i,entries,{m,f,temp,scar,grow}){
   const total=requests.reduce((a,b)=>a+b.demand,0),waterScale=total>0?r.water[i]/(total*u.waterPerBiomass):1,mineralScale=total>0?r.minerals[i]/(total*u.mineralPerBiomass):1,scale=Math.min(1,waterScale,mineralScale),sharedLimit=scale<1?(waterScale<=mineralScale?2:3):0;
   for(const q of requests){const {e,initial,current,desired,demand}=q,{kind,p,d,plants}=e;let next=desired;
     if(next>current)next=fundPlantGrowth(s,kind,i,current,desired,{cap:demand*scale,sharedLimit});else{r.limits[kind][i]=0;if(next<current)returnPlantLoss(s,kind,i,current-next);}
-    dispersal.noteGrowth(kind,i,initial,next);plants[i]=next;if(d?.localRelease&&next>=(d.mature??p.carry*.45))dispersal.releaseLocal(kind,i,next);
+    dispersal.noteGrowth(kind,i,initial,next);plants[i]=next;if(d?.localRelease&&next>=(d.mature??p.carry*.45)&&(!lifecycle||canFlower(kind,dispersal.genomeAt(kind,i)?.traits?.waterNeed??p.waterNeed,m,temp)))dispersal.releaseLocal(kind,i,next);
   }
 }
