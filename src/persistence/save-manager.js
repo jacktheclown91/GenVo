@@ -66,6 +66,7 @@ import {validateRegionalDemographyRules} from '../world/planetary-demography.js'
 import {REGIONAL_RESIDENCY,validateRegionalResidency,residencyEnabled,unloadCandidates,reloadCandidates,rotationCandidate,parkRegion,unloadRegion,reloadRegion} from '../world/regional-residency.js';
 import {validateEvolvedLibraryState,validateEvolvedEntry} from '../lineage/evolved-library.js';
 import {REGIONAL_DISPERSAL} from '../world/planetary-dispersal.js';
+import {MARINE_FOOD,MARINE_KEYS,validateMarineFood,removeMarineFood} from '../ecology/marine-food.js';
 import {POPULATION_MODE} from '../world/regional-replay-order.js';
 import {advanceRemoteBiology,remoteBiologicalDebt} from '../world/planetary-offscreen-biology.js';
 
@@ -112,6 +113,7 @@ function snapshotWorld(world){
   state.plants={...world.plants};
   state.seedBank={...world.seedBank};
   state.freshwaterFood={...world.freshwaterFood};
+  if(world.marineFood)state.marineFood={...world.marineFood};
   state.pageLayout=world.pages.layout();
   if(world.planet){state.planet=world.planet.descriptor;state.regionOrigin=planetRegionOrigin(world.regionOrigin);}
   state.generator=world.generator;state.topology=structuredClone(world.topology);
@@ -197,7 +199,9 @@ function restoreWorld(world,state,{initializeMissingFreshwater=false,adoptOwnedW
       if(!Object.hasOwn(state.plantResources.limits||{},kind))state.plantResources.limits[kind]=new Uint8Array(world.len);
     }
     validatePlantResources(world,state.plantResources);world.plantResources=state.plantResources;
-  }else initializePlantResources(world);if(state.organicResources){validateOrganicResources(world,state.organicResources);world.organicResources=state.organicResources;}else initializeOrganicResources(world);if(state.soilWater){validateSoilWater(world,state.soilWater);
+  }else initializePlantResources(world);if(state.organicResources){validateOrganicResources(world,state.organicResources);world.organicResources=state.organicResources;}else initializeOrganicResources(world);
+  // Marine fields exist only when the saved World recorded them.
+  if(state.marineFood){world.marineProducerKinds=MARINE_KEYS.filter(k=>!FRESHWATER_FOOD[k].source);world.marineFood=Object.fromEntries(MARINE_KEYS.map(k=>[k,restoreOwnedTyped(new Float32Array(world.len),state.marineFood[k],`world.marineFood.${k}`,adoptOwnedWorldBuffers)]));validateMarineFood(world)}else if(world.marineFood)removeMarineFood(world);if(state.soilWater){validateSoilWater(world,state.soilWater);
     // Earlier worlds never accumulated snow. Initialize only absent historical
     // fields to zero, never reconstruct invented past snowfall from the biome.
     const snowpack=state.soilWater.snowpack??new Float64Array(world.len);validateSnowpack(world,snowpack);
@@ -352,7 +356,7 @@ export function completeWorldForDirectRestore(snapshot){
      !w.plants||!w.seedBank)return false;
   return Object.keys(PLANTS).every(k=>w.plants[k] instanceof Float32Array &&
     (!PLANTS[k].dispersal||w.seedBank[k] instanceof Float32Array))&&
-    Object.keys(FRESHWATER_FOOD).filter(k=>k!=='detritus').every(k=>w.freshwaterFood[k] instanceof Float32Array);
+    Object.keys(FRESHWATER_FOOD).filter(k=>k!=='detritus'&&!FRESHWATER_FOOD[k].marine).every(k=>w.freshwaterFood[k] instanceof Float32Array);
 }
 export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED_DETACHED_BUFFERS]:adoptOwnedWorldBuffers=false}={}){
   if(!snapshot||typeof snapshot!=='object')throw new Error('Save data is missing.');
@@ -406,6 +410,9 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   if(!Object.hasOwn(snapshot.core||{},'evolvedLibraryRules'))delete sim.evolvedLibraryRules;
   validateEvolvedLibraryState(sim);
   if(!Object.hasOwn(snapshot.core||{},'regionalDispersalRules'))delete sim.regionalDispersalRules;
+  if(!Object.hasOwn(snapshot.core||{},'marineFoodRules'))delete sim.marineFoodRules;
+  if(sim.marineFoodRules!==undefined&&sim.marineFoodRules!==MARINE_FOOD.policy)throw Error('Unknown marine food policy.');
+  if(!!sim.marineFoodRules!==!!sim.world.marineFood)throw Error('Marine food fields disagree with their recorded policy.');
   if(sim.regionalDispersalRules!==undefined&&sim.regionalDispersalRules!==REGIONAL_DISPERSAL.policy)throw Error('Unknown regional dispersal policy.');
   sim.seed=snapshot.seed;
   sim.rng.state=snapshot.rngState>>>0;

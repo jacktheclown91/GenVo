@@ -16,7 +16,9 @@ import {FOUNDER_PLACEMENTS} from '../lineage/body-inheritance.js';
 // Founding anatomy stays within a bounded developmental depth and never uses
 // relic, powered-flight, gliding-membrane or lactation parts: those capabilities
 // must arise through inheritance in the world, not through introduction.
-export const FOUNDING_TEMPLATES_VERSION='founding-templates/1';
+// /2 adds salinity-aware water habitats and marine templates; /1 receipts stay valid.
+export const FOUNDING_TEMPLATES_VERSION='founding-templates/2';
+export const FOUNDING_TEMPLATE_VERSIONS=Object.freeze(['founding-templates/1','founding-templates/2']);
 export const FOUNDING_MAX_DEPTH=3;
 export const FOUNDING_EXCLUDED_TAGS=Object.freeze(['exclusive','powered-flight','milk','membrane']);
 
@@ -93,6 +95,21 @@ export const FOUNDING_TEMPLATES=Object.freeze([
   placements:[torso('soft-torso'),...legs('webbed-leg',FOUR),at('nibbler-mouth','mouth'),...eyes('wide-field-eye'),at('paddle-tail','tail'),at('silt-fin','dorsal'),at('gill-slits','flank.left')]},
  {id:'shoal-sifter',label:'Shoal sifter',carrier:'rillsifter',group:[5,9],habitat:{medium:'water',temp:T.warm,moisture:M.any},
   placements:[torso('light-torso'),...legs('webbed-leg',FOUR),at('reed-sieve-mouth','mouth'),...eyes('compound-eye'),at('paddle-tail','tail'),at('gill-slits','flank.left'),at('gill-slits','flank.right')]},
+
+ // Open sea (marine-food-web/1): gills with a salt gland keep these bodies
+ // watered in seawater; their mouths reach the marine biomass web.
+ {id:'plankton-sifter',label:'Plankton sifter',carrier:'rillsifter',group:[5,10],habitat:{medium:'water',salinity:'marine',temp:T.any,moisture:M.any},
+  placements:[torso('light-torso'),...legs('webbed-leg',FOUR),at('filter-mouth','mouth'),...eyes('simple-eye'),at('paddle-tail','tail'),at('gill-slits','flank.left'),at('salt-gland','flank.right')]},
+ {id:'krill-sieve',label:'Krill sieve',carrier:'rillsifter',group:[5,10],habitat:{medium:'water',salinity:'marine',temp:T.any,moisture:M.any},
+  placements:[torso('soft-torso'),...legs('webbed-leg',FOUR),at('reed-sieve-mouth','mouth'),...eyes('compound-eye'),at('paddle-tail','tail'),at('silt-fin','dorsal'),at('gill-slits','flank.left'),at('salt-gland','flank.right')]},
+ {id:'kelp-browser',label:'Kelp browser',carrier:'rillsifter',group:[4,8],habitat:{medium:'water',salinity:'marine',temp:T.any,moisture:M.any},
+  placements:[torso('stout-torso'),...legs('webbed-leg',FOUR),at('grazing-mouth','mouth'),...eyes('wide-field-eye'),at('paddle-tail','tail'),at('gill-slits','flank.left'),at('salt-gland','flank.right')]},
+ {id:'tide-scavenger',label:'Tide scavenger',carrier:'rillsifter',group:[3,6],habitat:{medium:'water',salinity:'marine',temp:T.any,moisture:M.any},
+  placements:[torso('small-torso'),...legs('webbed-leg',FOUR),at('sucker-mouth','mouth'),...eyes('tracker-eye'),at('paddle-tail','tail'),at('gill-slits','flank.left')/*small torso: one flank each side*/,at('salt-gland','flank.right')]},
+ {id:'shell-cruncher',label:'Shell cruncher',carrier:'bankjaw',group:[2,4],predator:true,habitat:{medium:'water',salinity:'marine',temp:T.any,moisture:M.any},
+  placements:[torso('reinforced-torso'),...legs('webbed-leg',FOUR),at('crushing-jaw','mouth'),...eyes('tracker-eye'),at('paddle-tail','tail'),at('armor-plate','dorsal'),at('gill-slits','flank.left'),at('salt-gland','flank.right')]},
+ {id:'sea-gaper',label:'Sea gaper',carrier:'bankjaw',group:[2,3],predator:true,habitat:{medium:'water',salinity:'marine',temp:T.any,moisture:M.any},
+  placements:[torso('sleek-torso'),...legs('webbed-leg',FOUR),at('gape-mouth','mouth'),...eyes('hunter-eye'),at('paddle-tail','tail'),at('gill-slits','flank.left'),at('salt-gland','flank.right')]},
 
  // Scavengers.
  {id:'carrion-strider',label:'Carrion strider',carrier:'mirelick',group:[3,6],habitat:{medium:'land',temp:T.warm,moisture:M.dry},

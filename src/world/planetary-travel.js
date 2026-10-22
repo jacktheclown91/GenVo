@@ -1,5 +1,6 @@
 import {SURFACE_ICE,initializeSurfaceIce} from './surface-ice.js';
 import {POPULATION_MODE} from './regional-replay-order.js';
+import {MARINE_FOOD} from '../ecology/marine-food.js';
 import {clearWarmRegions} from './regional-warm-cache.js';
 import {PLANET_PROJECTIONS} from './planet-geography.js';
 import {REGIONAL_FOUNDING,foundRegionalPopulations} from '../ecology/regional-founding.js';
@@ -33,7 +34,7 @@ export function planetaryPreparationKey(sim,origin){return JSON.stringify([sim.s
 export function preparePlanetaryDestination(sim,origin){
  const planet=sim.world.planet;if(!planet)throw Error('Planetary preparation requires a planetary source.');
  for(const x of [origin.x-1,origin.x+SIZE+1])for(const y of [origin.y-1,origin.y+SIZE+1])planet.localToGeo(x,y);
- const destination=new Simulation(sim.seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:origin,planetDescriptor:planet.descriptor,massRules:sim.massRules,localAssortment:sim.mateAssortmentRules!==undefined,naturalCaves:!!sim.caveRules,surfaceIce:sim.surfaceIceRules===SURFACE_ICE.policy});
+ const destination=new Simulation(sim.seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:origin,planetDescriptor:planet.descriptor,marineFood:sim.marineFoodRules===MARINE_FOOD.policy,massRules:sim.massRules,localAssortment:sim.mateAssortmentRules!==undefined,naturalCaves:!!sim.caveRules,surfaceIce:sim.surfaceIceRules===SURFACE_ICE.policy});
  Object.defineProperty(destination,'preparedPlanetaryKey',{value:planetaryPreparationKey(sim,origin)});return destination;
 }
 const dirs=[
@@ -242,7 +243,7 @@ export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
  sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,memberIds),...(sim.offscreenBiologyEnabled?{biologicalMode:'canonical-ticks/1'}:{})});
  dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions,...(prior.unloaded?.length?{unloaded:prior.unloaded.map(e=>structuredClone(e))}:{}),
   ...(prior.seamLedger?{seamLedger:structuredClone(prior.seamLedger)}:{})};
- for(const key of ['habitatHazardRules','fireRules','thunderRules','stratumSenseRules','stratumSenseRuleMigrations','vibrationRules','mateAssortmentRules','sensoryFogEnabled','surfaceIceRules','surfaceIceRuleMigrations','thermalRefugeRules','thermalRefugeRuleMigrations','thermalRules','thermalPattern','thermalRuleMigrations','visibilityRules','visibilityRuleMigrations','caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions','regionalFoundingRules','regionalDemographyRules','regionalResidencyRules','evolvedLibraryRules','foundingLibrary','regionalDispersalRules']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
+ for(const key of ['habitatHazardRules','fireRules','thunderRules','stratumSenseRules','stratumSenseRuleMigrations','vibrationRules','mateAssortmentRules','sensoryFogEnabled','surfaceIceRules','surfaceIceRuleMigrations','thermalRefugeRules','thermalRefugeRuleMigrations','thermalRules','thermalPattern','thermalRuleMigrations','visibilityRules','visibilityRuleMigrations','caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions','regionalFoundingRules','regionalDemographyRules','regionalResidencyRules','evolvedLibraryRules','foundingLibrary','regionalDispersalRules','marineFoodRules']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
  if(!dest.habitatHazardRules)delete dest.habitatHazards;
  if(!dest.fireRules)delete dest.wildfire;
  if(!dest.thunderRules)delete dest.thunderstorms;

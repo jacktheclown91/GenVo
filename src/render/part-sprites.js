@@ -44,7 +44,7 @@ export const PART_SPRITES=Object.freeze({
   // Wave 2 components.
   'balance-tail':{layer:'rear'},'club-tail':{layer:'rear'},'spined-tail':{layer:'rear'},'whip-tail':{layer:'rear'},'prehensile-tail':{layer:'rear'},'fat-tail':{layer:'rear'},'flag-tail':{layer:'rear'},
   'sail-fin':{layer:'body'},'spine-ridge':{layer:'body'},'water-hump':{layer:'body'},'display-frill':{layer:'body'},'moss-back':{layer:'body'},'sensory-quills':{layer:'body'},
-  'fat-pad':{layer:'body'},'gill-slits':{layer:'body'},'scent-gland':{layer:'body'},'spine-cluster':{layer:'body'},'brood-pouch':{layer:'body'},'egg-chamber':{layer:'body'},'live-womb':{layer:'body'},'endothermic-core':{layer:'body'},'mammary-gland':{layer:'body'}, 
+  'fat-pad':{layer:'body'},'gill-slits':{layer:'body'},'salt-gland':{layer:'body'},'scent-gland':{layer:'body'},'spine-cluster':{layer:'body'},'brood-pouch':{layer:'body'},'egg-chamber':{layer:'body'},'live-womb':{layer:'body'},'endothermic-core':{layer:'body'},'mammary-gland':{layer:'body'},
   'hook-spur':{layer:'front'},'dew-claw':{layer:'front'},'heel-spike':{layer:'front'},'sensory-bristle':{layer:'front'},'grip-pad':{layer:'front'},'kick-spur':{layer:'front'},
   'horn-crest':{layer:'body'},'tusk-jaw':{layer:'face'},
   'patagium':{layer:'body'},'gliding-membrane':{layer:'body'},'luminous-tail':{layer:'rear'},'shell-back':{layer:'body'},'armored-hide':{layer:'body'},'glow-eye':{layer:'face'},'echo-crest':{layer:'body'},
@@ -217,6 +217,7 @@ Object.assign(DRAW,{
   'moss-back'(c,k){const b=backTop(k);pixel(c,b.x-2,b.y-.5,2,1.5,k.s,'#5f8a4a');pixel(c,b.x,b.y-1,1.5,1.5,k.s,'#7aa05a');pixel(c,b.x-.5,b.y+.5,1.5,1,k.s,'#4a7038');pixel(c,b.x+1,b.y,1,1,k.s,'#8fbf62')},
   'sensory-quills'(c,k){const b=backTop(k);for(const i of [-1,0,1]){const x=b.x-k.fx*i*1.4,y=b.y,ex=x-k.fx*1.6+i*.5,ey=y-3.4;pixelLine(c,x,y,ex,ey,k.s,'#e6e2c8',.5);pixel(c,ex-.25,ey-.25,1,1,k.s,'#2b3f66')}},
   'fat-pad'(c,k){const f=flankAt(k);pixel(c,f.x-1,f.y-.5,2,1.5,k.s,k.p.light);pixel(c,f.x-.5,f.y,.5,.5,k.s,'#eef7ff')},
+  'salt-gland'(c,k){const f=flankAt(k);pixel(c,f.x-.5,f.y-.5,1.5,1.5,k.s,'#4f8a86');pixel(c,f.x+k.fx*.9,f.y+.6,.5,.5,k.s,'#eef3ee')},
   'gill-slits'(c,k){const f=flankAt(k);for(const i of [-1,0,1])pixel(c,f.x+k.fx*i*.8,f.y-.5,.5,1.5,k.s,'#1f3550')},
   'scent-gland'(c,k){const f=flankAt(k);pixel(c,f.x-.5,f.y-.5,1.5,1.5,k.s,'#c79a3a');pixel(c,f.x,f.y,.5,.5,k.s,'#f2d68a')},
   'spine-cluster'(c,k){const f=flankAt(k);for(const i of [-1,0,1]){const x=f.x+k.fx*i*.9,y=f.y;pixelLine(c,x,y,x+k.perp.x*k.sign*1.6,y+k.perp.y*k.sign*1.6,k.s,'#f1e8cf',.5)}},

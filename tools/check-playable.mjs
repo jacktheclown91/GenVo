@@ -69,6 +69,7 @@ const runtime=[
   'tests/evolved-library.mjs',
   'tests/evolved-library-store.mjs',
   'tests/regional-dispersal.mjs',
+  'tests/marine-food-web.mjs',
   'tests/save-storage.mjs',
   'tests/menu-world-slots.mjs',
   'tests/quick-interaction-default.mjs',

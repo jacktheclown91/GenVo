@@ -1,6 +1,7 @@
 import {RNG} from '../core/rng.js';
+import {salinityAt} from '../world/environment.js';
 import {isWildSpecies} from '../organisms/wild-bodies.js';
-import {FOUNDING_TEMPLATES,FOUNDING_TEMPLATES_VERSION,foundingTemplate,foundingTemplatePlan} from '../organisms/founding-templates.js';
+import {FOUNDING_TEMPLATES,FOUNDING_TEMPLATES_VERSION,FOUNDING_TEMPLATE_VERSIONS,foundingTemplate,foundingTemplatePlan} from '../organisms/founding-templates.js';
 import {libraryFoundingTemplates} from '../lineage/evolved-library.js';
 import {serializePlan,deserializePlan} from '../lineage/body-plan.js';
 import {applyLineageTarget} from '../lineage/reproduction-bridge.js';
@@ -48,7 +49,7 @@ function shoreMask(w,range){
 export function regionalHabitatProfile(world){
  const w=world,shore=shoreMask(w,REGIONAL_FOUNDING.shoreRange);let land=0,water=0,temp=0,moist=0;
  for(let i=0;i<w.len;i++){if(w.water[i]){water++;continue}land++;temp+=w.temperature[i];moist+=w.moisture[i]}
- return{world:w,shore,landCells:land,waterCells:water,meanTemperature:land?temp/land:0,meanMoisture:land?moist/land:0};
+ return{world:w,shore,landCells:land,waterCells:water,meanTemperature:land?temp/land:0,meanMoisture:land?moist/land:0,catalog2:true};
 }
 function suitableCells(profile,template){
  const w=profile.world,h=template.habitat,cells=[];
@@ -57,6 +58,8 @@ function suitableCells(profile,template){
   if(h.medium==='water'?!wet:wet)continue;
   if(h.medium==='shore'&&!profile.shore[i])continue;
   if(!wet&&(!inRange(w.temperature[i],h.temp)||!inRange(w.moisture[i],h.moisture)))continue;
+  // Water habitats are fresh unless the template is marine (founding-templates/2).
+  if(wet&&profile.catalog2&&(h.salinity==='marine'?salinityAt(w,i)<=.1:salinityAt(w,i)>.05))continue;
   cells.push(i);
  }
  return cells;
@@ -173,7 +176,7 @@ export function validateRegionalFounding(sim,region){
  const marked=sim.animals.filter(a=>a.foundingOrigin?.region===region);
  if(r===undefined){if(marked.length)throw Error('Founded creatures lack a regional founding receipt.');return}
  if(r.region!==region)throw Error('Regional founding receipt belongs to another region.');
- if(r?.schema!==1||r.policy!==REGIONAL_FOUNDING.policy||r.catalog!==FOUNDING_TEMPLATES_VERSION||
+ if(r?.schema!==1||r.policy!==REGIONAL_FOUNDING.policy||!FOUNDING_TEMPLATE_VERSIONS.includes(r.catalog)||
   !Number.isSafeInteger(r.day)||r.day<1||!Number.isSafeInteger(r.tick)||r.tick<0||!Array.isArray(r.introduced)||!Array.isArray(r.absent))
   throw Error('Invalid regional founding receipt.');
  const ids=new Map();

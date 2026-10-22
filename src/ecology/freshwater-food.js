@@ -10,9 +10,16 @@ export const FRESHWATER_FOOD=Object.freeze({
   waterweed:{label:'Waterweed',carry:.9,nutrition:11,growth:.018,minPatch:.35,surface:false},
   larvae:{label:'Aquatic larvae',carry:.4,nutrition:28,growth:.025,source:'algae',otherSources:['detritus'],upkeep:.008,efficiency:.2,surface:false},
   fry:{label:'Small aquatic prey',carry:.35,nutrition:34,growth:.012,source:'larvae',upkeep:.004,efficiency:.2,surface:false},
-  detritus:{label:'Aquatic carrion / detritus',nutrition:34,surface:false}
+  detritus:{label:'Aquatic carrion / detritus',nutrition:34,surface:false},
+  // Marine web (marine-food-web/1). Same biomass-field mechanics; these fields
+  // live in world.marineFood and exist only in worlds recording the policy.
+  phytoplankton:{label:'Phytoplankton',carry:1,nutrition:8,growth:.09,surface:true,marine:true},
+  kelp:{label:'Kelp and seagrass',carry:1.2,nutrition:12,growth:.02,minPatch:.45,surface:false,marine:true},
+  zooplankton:{label:'Zooplankton',carry:.5,nutrition:26,growth:.03,source:'phytoplankton',otherSources:['detritus'],upkeep:.008,efficiency:.2,surface:false,marine:true},
+  shellfish:{label:'Shellfish beds',carry:.6,nutrition:30,growth:.012,source:'phytoplankton',otherSources:['detritus'],upkeep:.003,efficiency:.2,surface:false,marine:true},
+  'forage-fish':{label:'Small marine fish',carry:.4,nutrition:36,growth:.02,source:'zooplankton',upkeep:.004,efficiency:.2,surface:false,marine:true}
 });
-const KEYS=Object.keys(FRESHWATER_FOOD).filter(k=>k!=='detritus');
+const KEYS=Object.keys(FRESHWATER_FOOD).filter(k=>k!=='detritus'&&!FRESHWATER_FOOD[k].marine);
 // Aquatic food-web corrections (Phase 3F diagnosis).
 // Diagnosis (docs/GenVo-Phase3F-Report.md): consumer tiers grow only in proportion to their own
 // biomass, founded at 2% of their source. Fry's best net rate is ~0.8%/day (growth .012, upkeep .004),
@@ -44,7 +51,7 @@ export function initializeFreshwater(world){
     const fry=larvae*share;fields.larvae[i]-=fry/.2;fields.fry[i]=fry;
   }
 }
-export function freshwaterField(world,kind){return kind==='detritus'?world.carrion:world.freshwaterFood?.[kind]}
+export function freshwaterField(world,kind){return kind==='detritus'?world.carrion:FRESHWATER_FOOD[kind]?.marine?world.marineFood?.[kind]:world.freshwaterFood?.[kind]}
 // A resource survey may count floating food from a reachable bank, without
 // granting underwater occupation or access to submerged prey.
 export function canAccessFreshwater(sim,animal,x,y,food){
@@ -89,11 +96,14 @@ export function advanceFreshwater(world){
 }
 export function freshwaterPreference(animal,kind){
   const mouth=animal?.bodyPlan?.nodes?.find(n=>n.socket==='mouth')?.partId;
-  if(mouth==='reed-sieve-mouth')return ({algae:.8,larvae:1.25,detritus:.75})[kind]||0;
-  if(mouth==='filter-mouth')return ({algae:1,larvae:.8,detritus:.35})[kind]||0;
-  if(['grazing-mouth','nibbler-mouth','beak-mouth'].includes(mouth))return ['algae','duckweed','waterweed'].includes(kind)?1:0;
-  if(mouth==='sucker-mouth')return kind==='detritus'?1:kind==='larvae'?.8:0;
-  if(['tearing-jaw','crushing-jaw','gape-mouth','tusk-jaw'].includes(mouth))return kind==='fry'?1:kind==='detritus'?.8:0;
+  // Marine kinds follow the same mouth functions: sieves strain plankton,
+  // grazers crop kelp, crushing jaws open shellfish and jaws take fish.
+  if(mouth==='reed-sieve-mouth')return ({algae:.8,larvae:1.25,detritus:.75,phytoplankton:.7,zooplankton:1.25})[kind]||0;
+  if(mouth==='filter-mouth')return ({algae:1,larvae:.8,detritus:.35,phytoplankton:1,zooplankton:.8})[kind]||0;
+  if(['grazing-mouth','nibbler-mouth','beak-mouth'].includes(mouth))return ['algae','duckweed','waterweed','kelp'].includes(kind)?1:0;
+  if(mouth==='sucker-mouth')return kind==='detritus'?1:kind==='larvae'||kind==='zooplankton'?.8:0;
+  if(mouth==='crushing-jaw'&&kind==='shellfish')return 1.2;
+  if(['tearing-jaw','crushing-jaw','gape-mouth','tusk-jaw'].includes(mouth))return kind==='fry'||kind==='forage-fish'?1:kind==='detritus'?.8:0;
   return 0;
 }
 export function freshwaterHarvestCandidate(sim,animal,energyLimit,target=null){

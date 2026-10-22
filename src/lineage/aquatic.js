@@ -30,6 +30,8 @@ export function aquaticScore(animal){
   return W.legs*webbedLegCount(animal)/legs.length+((c['paddle-tail']||0)>0?W.tail:0)+((c['gill-slits']||0)>0?W.gills:0);
 }
 export function hasGills(animal){return (planPartCounts(animal)['gill-slits']||0)>0}
+// Salt excretion lets gills keep the body watered in seawater (marine-food-web/1).
+export function hasSaltGland(animal){return (planPartCounts(animal)['salt-gland']||0)>0}
 export function isWaterDweller(animal){return swimsByBody(animal)&&aquaticScore(animal)>=.999}
 // Movement multipliers from the aquatic score (applied by lifestyle.movementProfile).
 export function aquaticMovement(animal){const s=swimsByBody(animal)?aquaticScore(animal):0;return{swimSpeed:1+AQUATIC.swimSpeed*s,swimEnergy:1-AQUATIC.swimEnergy*s,land:1-AQUATIC.landCost*s*s}}

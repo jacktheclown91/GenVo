@@ -52,8 +52,8 @@ export class World{
       // Restore-world migration checks use the canonical producer-key registry.
       // No stocks are created here; the saved resource fields are authoritative.
       this.plantResources={energy:Object.fromEntries(Object.keys(PLANTS).filter(k=>k!=='rotcap').map(k=>[k,null]))};
-      this.freshwaterProducerKinds=Object.keys(FRESHWATER_FOOD).filter(k=>!FRESHWATER_FOOD[k].source&&k!=='detritus');
-      this.freshwaterFood=Object.fromEntries(Object.keys(FRESHWATER_FOOD).filter(k=>k!=='detritus').map(k=>[k,new Float32Array(this.len)]));
+      this.freshwaterProducerKinds=Object.keys(FRESHWATER_FOOD).filter(k=>!FRESHWATER_FOOD[k].source&&k!=='detritus'&&!FRESHWATER_FOOD[k].marine);
+      this.freshwaterFood=Object.fromEntries(Object.keys(FRESHWATER_FOOD).filter(k=>k!=='detritus'&&!FRESHWATER_FOOD[k].marine).map(k=>[k,new Float32Array(this.len)]));
     }else this.generate();
     this._topologyMask=this.water.slice();this.pages=new WorldPages(this);}
   idx(x,y){x=Math.max(0,Math.min(this.n-1,x|0));y=Math.max(0,Math.min(this.n-1,y|0));return y*this.n+x}

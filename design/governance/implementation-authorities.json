@@ -8,6 +8,12 @@
       "consumers": ["src/render/renderer.js", "src/render/sensory-fog.js", "src/render/camera-bounds.js", "src/main.js"],
       "contract": "docs/BORDER-PRESENTATION-2026-10-21.md"
     },
+    "marineFoodWeb": {
+      "authority": "src/ecology/marine-food.js",
+      "registry": "src/ecology/freshwater-food.js",
+      "consumers": ["src/sim/simulation.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js", "src/ecology/regional-founding.js", "src/ecology/regions.js", "src/lineage/body-inheritance.js", "src/ui/world-resource-target.js"],
+      "contract": "docs/MARINE-FOOD-WEB-2026-10-21.md"
+    },
     "regionalDispersal": {
       "authority": "src/world/planetary-dispersal.js",
       "consumers": ["src/ecology/migration.js", "src/ecology/regional-demography.js", "src/sim/simulation.js", "src/world/planetary-offscreen-biology.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js"],

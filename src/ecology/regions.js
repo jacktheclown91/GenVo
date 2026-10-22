@@ -117,7 +117,7 @@ export class RegionalEcologyController{
   }
   habitat(key){
     const world=this.sim.world,b=this.bounds(key),resources={},connectivity=new Set();let cells=0,waterCells=0,drinkableCells=0,temperature=0,moisture=0,fertility=0,disturbedSoilCells=0,soilDisturbance=0;
-    const fields={...world.plants,...world.freshwaterFood,carrion:world.carrion};for(const kind of Object.keys(fields))resources[kind]=0;
+    const fields={...world.plants,...world.freshwaterFood,...world.marineFood,carrion:world.carrion};for(const kind of Object.keys(fields))resources[kind]=0;
     for(let y=b.y0;y<b.y1;y++)for(let x=b.x0;x<b.x1;x++){const i=world.idx(x,y),disturbance=this.sim.partAbilities?.disturbedSoilAt(x,y)||0;soilDisturbance+=disturbance;if(disturbance>0)disturbedSoilCells++;cells++;waterCells+=world.water[i]?1:0;drinkableCells+=world.drinkable[i]?1:0;temperature+=world.temperature[i];moisture+=world.moisture[i];fertility+=world.fertility[i];if(world.landRegion[i])connectivity.add(world.landRegion[i]);for(const [kind,field] of Object.entries(fields))resources[kind]+=field[i];}
     return{key,bounds:b,observedDay:this.sim.day,observedTick:this.sim.tickCount,cells,waterCells,drinkableCells,habitatModifiers:{disturbedSoilCells,soilDisturbance},climate:{temperature:temperature/cells,moisture:moisture/cells,fertility:fertility/cells},landConnectivityIds:[...connectivity].sort((a,b)=>a-b),resources,inventoryOnly:true};
   }

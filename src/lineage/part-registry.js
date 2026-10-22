@@ -176,6 +176,8 @@ export const PARTS=Object.freeze(Object.fromEntries([
   part('sensory-quills','senses',{tags:['back'],prereq:["spine-ridge"],sockets:['dorsal'],mass:.3,upkeep:0.07,cost:2,actions:["glance"],niche:["prey-vigilance"],symmetry:'single'}),
   part('fat-pad','metabolism',{tags:['flank'],prereq:[],sockets:['flank'],mass:.3,upkeep:0.03,cost:2,actions:["store"],niche:["scarcity"]}),
   part('gill-slits','locomotion',{tags:['flank'],prereq:["storage-sac"],sockets:['flank'],mass:.3,upkeep:0.08,cost:3,actions:["swim"],niche:["wet-margin"]}),
+  // Excretes salt so gills can keep a body watered in seawater (marine-food-web/1).
+  part('salt-gland','locomotion',{tags:['flank','marine'],prereq:["gill-slits"],sockets:['flank'],mass:.2,upkeep:0.06,cost:3,actions:[],niche:["marine"]}),
   part('scent-gland','social',{tags:['flank'],prereq:[],sockets:['flank'],mass:.3,upkeep:0.05,cost:2,actions:["display","scent"],niche:["courtship"]}),
   part('spine-cluster','defense',{tags:['flank'],prereq:["armor-plate"],sockets:['flank'],mass:.3,upkeep:0.08,cost:3,actions:["retaliate"],niche:["predator-pressure"]}),
   part('brood-pouch','metabolism',{tags:['flank'],prereq:["storage-sac"],sockets:['flank'],mass:.3,upkeep:0.05,cost:2,actions:["carry"],niche:["family"]}),

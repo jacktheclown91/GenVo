@@ -10,7 +10,10 @@ import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persist
 import {SPECIES} from '../src/organisms/species.js';
 
 // Catalog: ~30 bodies, every one a valid, bounded, non-culminating anatomy.
-assert.ok(FOUNDING_TEMPLATES.length>=28&&FOUNDING_TEMPLATES.length<=40,'approximately thirty founding templates');
+// founding-templates/2 adds a separate open-sea set (marine-food-web/1).
+const landAndFresh=FOUNDING_TEMPLATES.filter(t=>t.habitat.salinity!=='marine');
+assert.ok(landAndFresh.length>=28&&landAndFresh.length<=40,'approximately thirty land, shore and freshwater founding templates');
+assert.ok(FOUNDING_TEMPLATES.length-landAndFresh.length>=4,'an open-sea founding set');
 assert.equal(new Set(FOUNDING_TEMPLATES.map(t=>t.id)).size,FOUNDING_TEMPLATES.length);
 for(const t of FOUNDING_TEMPLATES){
  for(const p of t.placements){assert.ok(developmentalDepth(p.partId)<=FOUNDING_MAX_DEPTH,t.id);assert.ok(!PARTS[p.partId].tags.some(x=>FOUNDING_EXCLUDED_TAGS.includes(x)),t.id+' introduces '+p.partId)}
