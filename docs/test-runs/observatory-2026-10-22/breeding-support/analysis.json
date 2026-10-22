@@ -1,0 +1,3506 @@
+{
+ "schema": "genvo.observatory-analysis/2",
+ "runs": [
+  {
+   "seed": "PLANET-OBS-1",
+   "arm": "legacy",
+   "policies": {
+    "vision": "anatomical-vision/1",
+    "marine": "marine-food-web/1",
+    "founding": "regional-founding-templates/1",
+    "dispersal": "regional-dispersal/1"
+   },
+   "lastDay": 301,
+   "complete": true,
+   "evolution": {
+    "births": 300,
+    "variedBirths": 79,
+    "variationRate": 0.263,
+    "newParts": [
+     {
+      "part": "grip-pad",
+      "firstDay": 22,
+      "species": "mosskip",
+      "born": 9,
+      "finalCarriers": 6,
+      "fate": "spread"
+     },
+     {
+      "part": "armor-plate",
+      "firstDay": 31,
+      "species": "mosskip",
+      "born": 5,
+      "finalCarriers": 3,
+      "fate": "persisted"
+     },
+     {
+      "part": "sensory-bristle",
+      "firstDay": 33,
+      "species": "rillsifter",
+      "born": 1,
+      "finalCarriers": 0,
+      "fate": "disappeared"
+     },
+     {
+      "part": "barrel-torso",
+      "firstDay": 36,
+      "species": "rootling",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "filter-mouth",
+      "firstDay": 37,
+      "species": "genvo",
+      "born": 2,
+      "finalCarriers": 0,
+      "fate": "disappeared"
+     },
+     {
+      "part": "compound-eye",
+      "firstDay": 44,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "filament-tuft",
+      "firstDay": 45,
+      "species": "podshell",
+      "born": 1,
+      "finalCarriers": 0,
+      "fate": "disappeared"
+     },
+     {
+      "part": "grasper",
+      "firstDay": 47,
+      "species": "podshell",
+      "born": 11,
+      "finalCarriers": 11,
+      "fate": "spread"
+     },
+     {
+      "part": "scent-gland",
+      "firstDay": 51,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 0,
+      "fate": "disappeared"
+     },
+     {
+      "part": "spined-tail",
+      "firstDay": 103,
+      "species": "podshell",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "fat-pad",
+      "firstDay": 148,
+      "species": "mosskip",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "sail-fin",
+      "firstDay": 161,
+      "species": "mosskip",
+      "born": 2,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "signal-crest",
+      "firstDay": 163,
+      "species": "mosskip",
+      "born": 2,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "dew-claw",
+      "firstDay": 176,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "storage-sac",
+      "firstDay": 183,
+      "species": "rootling",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "claw",
+      "firstDay": 195,
+      "species": "mosskip",
+      "born": 2,
+      "finalCarriers": 2,
+      "fate": "persisted"
+     },
+     {
+      "part": "egg-chamber",
+      "firstDay": 280,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "head-base",
+      "firstDay": 281,
+      "species": "mosskip",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     }
+    ],
+    "partsLost": [
+     {
+      "part": "filter-mouth",
+      "day": 41
+     },
+     {
+      "part": "filter-mouth",
+      "day": 89
+     },
+     {
+      "part": "grip-pad",
+      "day": 93
+     },
+     {
+      "part": "scent-gland",
+      "day": 94
+     },
+     {
+      "part": "filament-tuft",
+      "day": 125
+     },
+     {
+      "part": "silt-fin",
+      "day": 171
+     },
+     {
+      "part": "gill-slits",
+      "day": 171
+     },
+     {
+      "part": "reed-sieve-mouth",
+      "day": 171
+     },
+     {
+      "part": "sensory-bristle",
+      "day": 171
+     }
+    ]
+   },
+   "lineages": {
+    "founders": 192,
+    "tracked": 192,
+    "reproduced": 53,
+    "surviving": 79,
+    "topByBirths": [
+     {
+      "root": 122,
+      "species": "genvo",
+      "births": 23,
+      "peak": 22,
+      "alive": 21,
+      "extinctDay": null
+     },
+     {
+      "root": 7,
+      "species": "mosskip",
+      "births": 18,
+      "peak": 18,
+      "alive": 18,
+      "extinctDay": null
+     },
+     {
+      "root": 126,
+      "species": "genvo",
+      "births": 18,
+      "peak": 19,
+      "alive": 18,
+      "extinctDay": null
+     },
+     {
+      "root": 31,
+      "species": "mosskip",
+      "births": 16,
+      "peak": 15,
+      "alive": 13,
+      "extinctDay": null
+     },
+     {
+      "root": 117,
+      "species": "genvo",
+      "births": 14,
+      "peak": 15,
+      "alive": 15,
+      "extinctDay": null
+     },
+     {
+      "root": 124,
+      "species": "genvo",
+      "births": 14,
+      "peak": 14,
+      "alive": 12,
+      "extinctDay": null
+     },
+     {
+      "root": 119,
+      "species": "genvo",
+      "births": 13,
+      "peak": 12,
+      "alive": 12,
+      "extinctDay": null
+     },
+     {
+      "root": 129,
+      "species": "genvo",
+      "births": 11,
+      "peak": 11,
+      "alive": 9,
+      "extinctDay": null
+     }
+    ]
+   },
+   "species": {
+    "start": {
+     "mosskip": 64,
+     "rootling": 32,
+     "needlejaw": 12,
+     "genvo": 24,
+     "rillsifter": 18,
+     "mirelick": 20,
+     "podshell": 18,
+     "bankjaw": 4
+    },
+    "final": {
+     "mosskip": 113,
+     "rootling": 32,
+     "needlejaw": 1,
+     "genvo": 114,
+     "mirelick": 5,
+     "podshell": 18,
+     "bankjaw": 3
+    },
+    "extinctions": [
+     {
+      "species": "rillsifter",
+      "day": 171,
+      "causesLast60Days": {
+       "starvation": 4,
+       "predation": 1
+      }
+     }
+    ],
+    "deathCausesBySpecies": {
+     "mosskip": {
+      "drowning": 10,
+      "predation": 21,
+      "wildfire": 17,
+      "starvation": 7,
+      "age": 36
+     },
+     "needlejaw": {
+      "predation": 8,
+      "wildfire": 2,
+      "starvation": 1
+     },
+     "mirelick": {
+      "predation": 5,
+      "wildfire": 9,
+      "age": 2
+     },
+     "genvo": {
+      "predation": 8,
+      "wildfire": 15,
+      "drowning": 3,
+      "starvation": 3,
+      "age": 1
+     },
+     "bankjaw": {
+      "starvation": 1,
+      "predation": 1
+     },
+     "rootling": {
+      "predation": 6,
+      "wildfire": 5,
+      "drowning": 2,
+      "age": 6,
+      "starvation": 1
+     },
+     "podshell": {
+      "predation": 4,
+      "wildfire": 8,
+      "drowning": 2,
+      "starvation": 2
+     },
+     "rillsifter": {
+      "starvation": 18,
+      "predation": 2
+     }
+    }
+   },
+   "population": {
+    "start": 192,
+    "peak": 309,
+    "final": 286,
+    "finalTrendPerDay": 0.23,
+    "crashes": 0,
+    "totalExtinctionDay": null
+   },
+   "food": {
+    "sunmoss": {
+     "start": 11216.2,
+     "final": 4781.1,
+     "ratio": 0.426
+    },
+    "bramble": {
+     "start": 2582.4,
+     "final": 2158.4,
+     "ratio": 0.836
+    },
+    "marshroot": {
+     "start": 487.5,
+     "final": 216.6,
+     "ratio": 0.444
+    },
+    "rotcap": {
+     "start": 848.3,
+     "final": 1673.9,
+     "ratio": 1.973
+    },
+    "woodspire": {
+     "start": 1194.2,
+     "final": 873.1,
+     "ratio": 0.731
+    },
+    "thistlepod": {
+     "start": 1695,
+     "final": 1695.1,
+     "ratio": 1
+    },
+    "dunebulb": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "dustsage": {
+     "start": 1272.9,
+     "final": 1454.7,
+     "ratio": 1.143
+    },
+    "frostlichen": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "snowberry": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "algae": {
+     "start": 121.4,
+     "final": 106.2,
+     "ratio": 0.875
+    },
+    "duckweed": {
+     "start": 56.9,
+     "final": 105.2,
+     "ratio": 1.848
+    },
+    "waterweed": {
+     "start": 96.4,
+     "final": 223.7,
+     "ratio": 2.32
+    },
+    "larvae": {
+     "start": 9.1,
+     "final": 38.6,
+     "ratio": 4.235
+    },
+    "fry": {
+     "start": 2.1,
+     "final": 2.1,
+     "ratio": 0.981
+    },
+    "carrion": {
+     "start": 1.1,
+     "final": 40.3,
+     "ratio": 37.566
+    }
+   },
+   "pressures": {
+    "deathCauses": {
+     "drowning": 17,
+     "predation": 55,
+     "starvation": 33,
+     "wildfire": 56,
+     "age": 45
+    },
+    "deathsPer1000AnimalDays": {
+     "drowning": 0.23,
+     "predation": 0.73,
+     "starvation": 0.44,
+     "wildfire": 0.75,
+     "age": 0.6
+    },
+    "threatPer1000AnimalDays": {
+     "vigilance": 158.4,
+     "alarm": 73.7,
+     "flight": 54.5,
+     "wary": 37
+    },
+    "hunterShare": 0.039,
+    "meanSight": {
+     "range": 8.11,
+     "fov": 264
+    },
+    "genesFinal": {
+     "body": 1.009,
+     "motion": 1.012,
+     "metabolism": 0.994,
+     "senses": 1.005,
+     "climate": 0.993
+    }
+   },
+   "biodiversity": {
+    "species": {
+     "start": 8,
+     "peak": 8,
+     "final": 7
+    },
+    "branches": {
+     "start": 2,
+     "peak": 14,
+     "final": 13
+    },
+    "bodyPlans": {
+     "start": 8,
+     "peak": 99,
+     "final": 95
+    },
+    "partsPresent": {
+     "start": 34,
+     "peak": 45,
+     "final": 45
+    },
+    "lineagesAlive": {
+     "start": 192,
+     "peak": 192,
+     "final": 79
+    }
+   },
+   "performance": {
+    "msPerDay": {
+     "mean": 1573,
+     "max": 2137
+    },
+    "msPerAnimalDay": 6.29,
+    "heapMBFinal": 276.4,
+    "rssMBMax": 943.8,
+    "phaseShare": {
+     "phaseClimate": 0,
+     "phaseSoil": 0.009,
+     "phaseVegetation": 0.275,
+     "phasePerception": 0.222,
+     "phaseDecision": 0.367,
+     "phaseMovement": 0.107,
+     "phaseMetabolism": 0.018,
+     "phaseLifecycle": 0.002
+    },
+    "checkpoints": [
+     {
+      "day": 100,
+      "animals": 210,
+      "snapshotMs": 72.1,
+      "serializeMs": 140.9,
+      "MB": 30.66
+     },
+     {
+      "day": 200,
+      "animals": 262,
+      "snapshotMs": 70,
+      "serializeMs": 149.6,
+      "MB": 32.36
+     },
+     {
+      "day": 300,
+      "animals": 288,
+      "snapshotMs": 67.6,
+      "serializeMs": 196,
+      "MB": 35.45
+     }
+    ]
+   }
+  },
+  {
+   "seed": "PLANET-OBS-1",
+   "arm": "shared",
+   "policies": {
+    "vision": "anatomical-vision/1",
+    "marine": "marine-food-web/1",
+    "founding": "regional-founding-templates/1",
+    "dispersal": "regional-dispersal/1"
+   },
+   "lastDay": 301,
+   "complete": true,
+   "evolution": {
+    "births": 698,
+    "variedBirths": 156,
+    "variationRate": 0.223,
+    "newParts": [
+     {
+      "part": "fat-pad",
+      "firstDay": 19,
+      "species": "mosskip",
+      "born": 11,
+      "finalCarriers": 10,
+      "fate": "spread"
+     },
+     {
+      "part": "dew-claw",
+      "firstDay": 20,
+      "species": "mosskip",
+      "born": 11,
+      "finalCarriers": 10,
+      "fate": "spread"
+     },
+     {
+      "part": "grip-pad",
+      "firstDay": 26,
+      "species": "mosskip",
+      "born": 10,
+      "finalCarriers": 8,
+      "fate": "spread"
+     },
+     {
+      "part": "grasper",
+      "firstDay": 31,
+      "species": "mosskip",
+      "born": 12,
+      "finalCarriers": 10,
+      "fate": "spread"
+     },
+     {
+      "part": "flag-tail",
+      "firstDay": 31,
+      "species": "mosskip",
+      "born": 1,
+      "finalCarriers": 0,
+      "fate": "disappeared"
+     },
+     {
+      "part": "filament-tuft",
+      "firstDay": 31,
+      "species": "podshell",
+      "born": 5,
+      "finalCarriers": 5,
+      "fate": "spread"
+     },
+     {
+      "part": "barb",
+      "firstDay": 33,
+      "species": "rootling",
+      "born": 3,
+      "finalCarriers": 3,
+      "fate": "persisted"
+     },
+     {
+      "part": "soft-torso",
+      "firstDay": 35,
+      "species": "genvo",
+      "born": 7,
+      "finalCarriers": 5,
+      "fate": "spread"
+     },
+     {
+      "part": "armor-plate",
+      "firstDay": 40,
+      "species": "genvo",
+      "born": 7,
+      "finalCarriers": 5,
+      "fate": "spread"
+     },
+     {
+      "part": "display-eye",
+      "firstDay": 42,
+      "species": "genvo",
+      "born": 8,
+      "finalCarriers": 8,
+      "fate": "spread"
+     },
+     {
+      "part": "beak-mouth",
+      "firstDay": 84,
+      "species": "mosskip",
+      "born": 2,
+      "finalCarriers": 2,
+      "fate": "persisted"
+     },
+     {
+      "part": "compound-eye",
+      "firstDay": 91,
+      "species": "rillsifter",
+      "born": 3,
+      "finalCarriers": 2,
+      "fate": "persisted"
+     },
+     {
+      "part": "sensory-bristle",
+      "firstDay": 118,
+      "species": "rillsifter",
+      "born": 4,
+      "finalCarriers": 4,
+      "fate": "persisted"
+     },
+     {
+      "part": "egg-chamber",
+      "firstDay": 143,
+      "species": "genvo",
+      "born": 7,
+      "finalCarriers": 7,
+      "fate": "spread"
+     },
+     {
+      "part": "signal-crest",
+      "firstDay": 144,
+      "species": "genvo",
+      "born": 9,
+      "finalCarriers": 9,
+      "fate": "spread"
+     },
+     {
+      "part": "claw",
+      "firstDay": 170,
+      "species": "genvo",
+      "born": 14,
+      "finalCarriers": 14,
+      "fate": "spread"
+     },
+     {
+      "part": "storage-sac",
+      "firstDay": 171,
+      "species": "mosskip",
+      "born": 5,
+      "finalCarriers": 4,
+      "fate": "persisted"
+     },
+     {
+      "part": "scent-gland",
+      "firstDay": 183,
+      "species": "mosskip",
+      "born": 2,
+      "finalCarriers": 2,
+      "fate": "persisted"
+     },
+     {
+      "part": "sail-fin",
+      "firstDay": 233,
+      "species": "genvo",
+      "born": 5,
+      "finalCarriers": 5,
+      "fate": "spread"
+     },
+     {
+      "part": "head-base",
+      "firstDay": 246,
+      "species": "genvo",
+      "born": 2,
+      "finalCarriers": 2,
+      "fate": "persisted"
+     },
+     {
+      "part": "prehensile-tail",
+      "firstDay": 270,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     }
+    ],
+    "partsLost": [
+     {
+      "part": "armor-plate",
+      "day": 61
+     },
+     {
+      "part": "flag-tail",
+      "day": 156
+     },
+     {
+      "part": "silt-fin",
+      "day": 175
+     }
+    ]
+   },
+   "lineages": {
+    "founders": 192,
+    "tracked": 192,
+    "reproduced": 54,
+    "surviving": 77,
+    "topByBirths": [
+     {
+      "root": 126,
+      "species": "genvo",
+      "births": 82,
+      "peak": 78,
+      "alive": 78,
+      "extinctDay": null
+     },
+     {
+      "root": 122,
+      "species": "genvo",
+      "births": 59,
+      "peak": 57,
+      "alive": 57,
+      "extinctDay": null
+     },
+     {
+      "root": 124,
+      "species": "genvo",
+      "births": 49,
+      "peak": 49,
+      "alive": 49,
+      "extinctDay": null
+     },
+     {
+      "root": 109,
+      "species": "genvo",
+      "births": 46,
+      "peak": 46,
+      "alive": 46,
+      "extinctDay": null
+     },
+     {
+      "root": 132,
+      "species": "genvo",
+      "births": 43,
+      "peak": 37,
+      "alive": 37,
+      "extinctDay": null
+     },
+     {
+      "root": 129,
+      "species": "genvo",
+      "births": 29,
+      "peak": 27,
+      "alive": 27,
+      "extinctDay": null
+     },
+     {
+      "root": 41,
+      "species": "mosskip",
+      "births": 27,
+      "peak": 27,
+      "alive": 26,
+      "extinctDay": null
+     },
+     {
+      "root": 117,
+      "species": "genvo",
+      "births": 23,
+      "peak": 23,
+      "alive": 22,
+      "extinctDay": null
+     }
+    ]
+   },
+   "species": {
+    "start": {
+     "mosskip": 64,
+     "rootling": 32,
+     "needlejaw": 12,
+     "genvo": 24,
+     "rillsifter": 18,
+     "mirelick": 20,
+     "podshell": 18,
+     "bankjaw": 4
+    },
+    "final": {
+     "mosskip": 209,
+     "rootling": 44,
+     "needlejaw": 4,
+     "genvo": 329,
+     "mirelick": 27,
+     "podshell": 15,
+     "bankjaw": 1,
+     "rillsifter": 9
+    },
+    "extinctions": [],
+    "deathCausesBySpecies": {
+     "mosskip": {
+      "drowning": 25,
+      "predation": 18,
+      "wildfire": 20,
+      "age": 37,
+      "starvation": 4
+     },
+     "mirelick": {
+      "predation": 5,
+      "wildfire": 9,
+      "drowning": 4,
+      "age": 2
+     },
+     "needlejaw": {
+      "predation": 5,
+      "starvation": 2,
+      "wildfire": 1
+     },
+     "rootling": {
+      "predation": 2,
+      "wildfire": 3,
+      "drowning": 1,
+      "age": 10
+     },
+     "rillsifter": {
+      "starvation": 20,
+      "predation": 1,
+      "drowning": 2
+     },
+     "genvo": {
+      "wildfire": 34,
+      "drowning": 5,
+      "predation": 8,
+      "dehydration": 2,
+      "starvation": 2,
+      "age": 1
+     },
+     "podshell": {
+      "wildfire": 7,
+      "predation": 3,
+      "drowning": 2,
+      "starvation": 12,
+      "age": 2
+     },
+     "bankjaw": {
+      "wildfire": 2,
+      "starvation": 1
+     }
+    }
+   },
+   "population": {
+    "start": 192,
+    "peak": 638,
+    "final": 638,
+    "finalTrendPerDay": 2.6,
+    "crashes": 0,
+    "totalExtinctionDay": null
+   },
+   "food": {
+    "sunmoss": {
+     "start": 11222.6,
+     "final": 3408.2,
+     "ratio": 0.304
+    },
+    "bramble": {
+     "start": 2582.4,
+     "final": 1962.6,
+     "ratio": 0.76
+    },
+    "marshroot": {
+     "start": 487.6,
+     "final": 140.3,
+     "ratio": 0.288
+    },
+    "rotcap": {
+     "start": 848.4,
+     "final": 1639.8,
+     "ratio": 1.933
+    },
+    "woodspire": {
+     "start": 1194.2,
+     "final": 864.6,
+     "ratio": 0.724
+    },
+    "thistlepod": {
+     "start": 1695.1,
+     "final": 1574.5,
+     "ratio": 0.929
+    },
+    "dunebulb": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "dustsage": {
+     "start": 1272.8,
+     "final": 1425.4,
+     "ratio": 1.12
+    },
+    "frostlichen": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "snowberry": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "algae": {
+     "start": 98.2,
+     "final": 111.1,
+     "ratio": 1.131
+    },
+    "duckweed": {
+     "start": 56.9,
+     "final": 73,
+     "ratio": 1.283
+    },
+    "waterweed": {
+     "start": 96.4,
+     "final": 173.4,
+     "ratio": 1.799
+    },
+    "larvae": {
+     "start": 8.9,
+     "final": 38.1,
+     "ratio": 4.288
+    },
+    "fry": {
+     "start": 2.1,
+     "final": 2.2,
+     "ratio": 1.046
+    },
+    "carrion": {
+     "start": 2.9,
+     "final": 65.5,
+     "ratio": 22.266
+    }
+   },
+   "pressures": {
+    "deathCauses": {
+     "drowning": 39,
+     "predation": 42,
+     "starvation": 41,
+     "wildfire": 76,
+     "age": 52,
+     "dehydration": 2
+    },
+    "deathsPer1000AnimalDays": {
+     "drowning": 0.37,
+     "predation": 0.4,
+     "starvation": 0.39,
+     "wildfire": 0.72,
+     "age": 0.5,
+     "dehydration": 0.02
+    },
+    "threatPer1000AnimalDays": {
+     "vigilance": 134.3,
+     "alarm": 52.7,
+     "flight": 48.1,
+     "wary": 17.4
+    },
+    "hunterShare": 0.032,
+    "meanSight": {
+     "range": 8.24,
+     "fov": 265.9
+    },
+    "genesFinal": {
+     "body": 1,
+     "motion": 1.012,
+     "metabolism": 0.996,
+     "senses": 0.99,
+     "climate": 0.995
+    }
+   },
+   "biodiversity": {
+    "species": {
+     "start": 8,
+     "peak": 8,
+     "final": 8
+    },
+    "branches": {
+     "start": 2,
+     "peak": 26,
+     "final": 26
+    },
+    "bodyPlans": {
+     "start": 8,
+     "peak": 203,
+     "final": 203
+    },
+    "partsPresent": {
+     "start": 34,
+     "peak": 53,
+     "final": 53
+    },
+    "lineagesAlive": {
+     "start": 192,
+     "peak": 192,
+     "final": 77
+    }
+   },
+   "performance": {
+    "msPerDay": {
+     "mean": 2591,
+     "max": 5381
+    },
+    "msPerAnimalDay": 7.39,
+    "heapMBFinal": 275.2,
+    "rssMBMax": 957.3,
+    "phaseShare": {
+     "phaseClimate": 0,
+     "phaseSoil": 0.005,
+     "phaseVegetation": 0.158,
+     "phasePerception": 0.181,
+     "phaseDecision": 0.548,
+     "phaseMovement": 0.09,
+     "phaseMetabolism": 0.015,
+     "phaseLifecycle": 0.002
+    },
+    "checkpoints": [
+     {
+      "day": 100,
+      "animals": 227,
+      "snapshotMs": 74.9,
+      "serializeMs": 136.3,
+      "MB": 30.52
+     },
+     {
+      "day": 200,
+      "animals": 383,
+      "snapshotMs": 64.8,
+      "serializeMs": 159.6,
+      "MB": 32.65
+     },
+     {
+      "day": 300,
+      "animals": 637,
+      "snapshotMs": 60,
+      "serializeMs": 151.1,
+      "MB": 37.96
+     }
+    ]
+   }
+  },
+  {
+   "seed": "PLANET-OBS-2",
+   "arm": "legacy",
+   "policies": {
+    "vision": "anatomical-vision/1",
+    "marine": "marine-food-web/1",
+    "founding": "regional-founding-templates/1",
+    "dispersal": "regional-dispersal/1"
+   },
+   "lastDay": 301,
+   "complete": true,
+   "evolution": {
+    "births": 309,
+    "variedBirths": 87,
+    "variationRate": 0.282,
+    "newParts": [
+     {
+      "part": "sensory-bristle",
+      "firstDay": 22,
+      "species": "mosskip",
+      "born": 4,
+      "finalCarriers": 3,
+      "fate": "persisted"
+     },
+     {
+      "part": "grasper",
+      "firstDay": 24,
+      "species": "mosskip",
+      "born": 15,
+      "finalCarriers": 14,
+      "fate": "spread"
+     },
+     {
+      "part": "beak-mouth",
+      "firstDay": 26,
+      "species": "mosskip",
+      "born": 4,
+      "finalCarriers": 3,
+      "fate": "persisted"
+     },
+     {
+      "part": "barb",
+      "firstDay": 32,
+      "species": "mosskip",
+      "born": 7,
+      "finalCarriers": 6,
+      "fate": "spread"
+     },
+     {
+      "part": "scent-gland",
+      "firstDay": 35,
+      "species": "mosskip",
+      "born": 2,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "flag-tail",
+      "firstDay": 49,
+      "species": "mosskip",
+      "born": 2,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "filament-tuft",
+      "firstDay": 57,
+      "species": "mosskip",
+      "born": 6,
+      "finalCarriers": 6,
+      "fate": "spread"
+     },
+     {
+      "part": "head-base",
+      "firstDay": 98,
+      "species": "mosskip",
+      "born": 4,
+      "finalCarriers": 3,
+      "fate": "persisted"
+     },
+     {
+      "part": "grip-pad",
+      "firstDay": 116,
+      "species": "genvo",
+      "born": 3,
+      "finalCarriers": 3,
+      "fate": "persisted"
+     },
+     {
+      "part": "display-eye",
+      "firstDay": 167,
+      "species": "mirelick",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "signal-crest",
+      "firstDay": 175,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "soft-torso",
+      "firstDay": 198,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "armor-plate",
+      "firstDay": 206,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "sail-fin",
+      "firstDay": 252,
+      "species": "mosskip",
+      "born": 2,
+      "finalCarriers": 2,
+      "fate": "persisted"
+     },
+     {
+      "part": "storage-sac",
+      "firstDay": 258,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "prehensile-tail",
+      "firstDay": 265,
+      "species": "mosskip",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "spined-tail",
+      "firstDay": 270,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "egg-chamber",
+      "firstDay": 300,
+      "species": "mosskip",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     }
+    ],
+    "partsLost": [
+     {
+      "part": "sensory-bristle",
+      "day": 27
+     },
+     {
+      "part": "silt-fin",
+      "day": 249
+     },
+     {
+      "part": "gill-slits",
+      "day": 249
+     },
+     {
+      "part": "reed-sieve-mouth",
+      "day": 249
+     }
+    ]
+   },
+   "lineages": {
+    "founders": 191,
+    "tracked": 191,
+    "reproduced": 57,
+    "surviving": 100,
+    "topByBirths": [
+     {
+      "root": 126,
+      "species": "genvo",
+      "births": 30,
+      "peak": 30,
+      "alive": 30,
+      "extinctDay": null
+     },
+     {
+      "root": 114,
+      "species": "genvo",
+      "births": 23,
+      "peak": 22,
+      "alive": 22,
+      "extinctDay": null
+     },
+     {
+      "root": 130,
+      "species": "genvo",
+      "births": 18,
+      "peak": 17,
+      "alive": 17,
+      "extinctDay": null
+     },
+     {
+      "root": 128,
+      "species": "genvo",
+      "births": 16,
+      "peak": 16,
+      "alive": 16,
+      "extinctDay": null
+     },
+     {
+      "root": 12,
+      "species": "mosskip",
+      "births": 14,
+      "peak": 14,
+      "alive": 14,
+      "extinctDay": null
+     },
+     {
+      "root": 113,
+      "species": "genvo",
+      "births": 13,
+      "peak": 13,
+      "alive": 13,
+      "extinctDay": null
+     },
+     {
+      "root": 27,
+      "species": "mosskip",
+      "births": 12,
+      "peak": 11,
+      "alive": 9,
+      "extinctDay": null
+     },
+     {
+      "root": 8,
+      "species": "mosskip",
+      "births": 11,
+      "peak": 11,
+      "alive": 11,
+      "extinctDay": null
+     }
+    ]
+   },
+   "species": {
+    "start": {
+     "mosskip": 64,
+     "rootling": 32,
+     "needlejaw": 12,
+     "genvo": 24,
+     "rillsifter": 18,
+     "mirelick": 20,
+     "podshell": 18,
+     "bankjaw": 3
+    },
+    "final": {
+     "mosskip": 115,
+     "rootling": 18,
+     "needlejaw": 6,
+     "genvo": 132,
+     "mirelick": 35,
+     "podshell": 32,
+     "bankjaw": 1
+    },
+    "extinctions": [
+     {
+      "species": "rillsifter",
+      "day": 249,
+      "causesLast60Days": {
+       "starvation": 1,
+       "age": 1
+      }
+     }
+    ],
+    "deathCausesBySpecies": {
+     "rootling": {
+      "health": 15,
+      "starvation": 4,
+      "drowning": 1,
+      "disease": 1,
+      "age": 2
+     },
+     "mosskip": {
+      "predation": 13,
+      "drowning": 18,
+      "disease": 2,
+      "starvation": 6,
+      "age": 38
+     },
+     "mirelick": {
+      "predation": 2,
+      "drowning": 2,
+      "age": 7
+     },
+     "genvo": {
+      "predation": 8,
+      "drowning": 2,
+      "starvation": 2,
+      "age": 1
+     },
+     "needlejaw": {
+      "predation": 6,
+      "starvation": 2
+     },
+     "bankjaw": {
+      "predation": 1,
+      "starvation": 1
+     },
+     "rillsifter": {
+      "starvation": 17,
+      "predation": 3,
+      "disease": 1,
+      "age": 1
+     },
+     "podshell": {
+      "predation": 3,
+      "age": 2
+     }
+    }
+   },
+   "population": {
+    "start": 191,
+    "peak": 340,
+    "final": 339,
+    "finalTrendPerDay": 0.23,
+    "crashes": 0,
+    "totalExtinctionDay": null
+   },
+   "food": {
+    "sunmoss": {
+     "start": 12125.2,
+     "final": 12694.2,
+     "ratio": 1.047
+    },
+    "bramble": {
+     "start": 2506.7,
+     "final": 4530.5,
+     "ratio": 1.807
+    },
+    "marshroot": {
+     "start": 260.6,
+     "final": 369.2,
+     "ratio": 1.416
+    },
+    "rotcap": {
+     "start": 850.8,
+     "final": 3014.7,
+     "ratio": 3.543
+    },
+    "woodspire": {
+     "start": 1165.6,
+     "final": 1877.5,
+     "ratio": 1.611
+    },
+    "thistlepod": {
+     "start": 1793.2,
+     "final": 4302.1,
+     "ratio": 2.399
+    },
+    "dunebulb": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "dustsage": {
+     "start": 1459.1,
+     "final": 3309,
+     "ratio": 2.268
+    },
+    "frostlichen": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "snowberry": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "algae": {
+     "start": 162.1,
+     "final": 0,
+     "ratio": 0
+    },
+    "duckweed": {
+     "start": 59.9,
+     "final": 122.8,
+     "ratio": 2.049
+    },
+    "waterweed": {
+     "start": 105.1,
+     "final": 246.8,
+     "ratio": 2.349
+    },
+    "larvae": {
+     "start": 12.4,
+     "final": 0,
+     "ratio": 0.003
+    },
+    "fry": {
+     "start": 2.5,
+     "final": 0.8,
+     "ratio": 0.315
+    },
+    "carrion": {
+     "start": 1.7,
+     "final": 20.8,
+     "ratio": 12.016
+    }
+   },
+   "pressures": {
+    "deathCauses": {
+     "health": 15,
+     "predation": 36,
+     "drowning": 23,
+     "disease": 4,
+     "starvation": 32,
+     "age": 51
+    },
+    "deathsPer1000AnimalDays": {
+     "health": 0.19,
+     "predation": 0.46,
+     "drowning": 0.29,
+     "disease": 0.05,
+     "starvation": 0.41,
+     "age": 0.65
+    },
+    "threatPer1000AnimalDays": {
+     "vigilance": 192.3,
+     "alarm": 66,
+     "flight": 58.4,
+     "wary": 25.3
+    },
+    "hunterShare": 0.034,
+    "meanSight": {
+     "range": 8.57,
+     "fov": 264.5
+    },
+    "genesFinal": {
+     "body": 0.984,
+     "motion": 0.993,
+     "metabolism": 0.994,
+     "senses": 1.004,
+     "climate": 0.993
+    }
+   },
+   "biodiversity": {
+    "species": {
+     "start": 8,
+     "peak": 8,
+     "final": 7
+    },
+    "branches": {
+     "start": 2,
+     "peak": 19,
+     "final": 19
+    },
+    "bodyPlans": {
+     "start": 8,
+     "peak": 134,
+     "final": 134
+    },
+    "partsPresent": {
+     "start": 34,
+     "peak": 49,
+     "final": 49
+    },
+    "lineagesAlive": {
+     "start": 191,
+     "peak": 191,
+     "final": 100
+    }
+   },
+   "performance": {
+    "msPerDay": {
+     "mean": 2145,
+     "max": 4340
+    },
+    "msPerAnimalDay": 8.05,
+    "heapMBFinal": 315.2,
+    "rssMBMax": 1142,
+    "phaseShare": {
+     "phaseClimate": 0,
+     "phaseSoil": 0.008,
+     "phaseVegetation": 0.375,
+     "phasePerception": 0.215,
+     "phaseDecision": 0.303,
+     "phaseMovement": 0.083,
+     "phaseMetabolism": 0.014,
+     "phaseLifecycle": 0.002
+    },
+    "checkpoints": [
+     {
+      "day": 100,
+      "animals": 245,
+      "snapshotMs": 174.5,
+      "serializeMs": 219.5,
+      "MB": 44.74
+     },
+     {
+      "day": 200,
+      "animals": 302,
+      "snapshotMs": 179.6,
+      "serializeMs": 250.3,
+      "MB": 50.84
+     },
+     {
+      "day": 300,
+      "animals": 340,
+      "snapshotMs": 256,
+      "serializeMs": 303.9,
+      "MB": 56
+     }
+    ]
+   }
+  },
+  {
+   "seed": "PLANET-OBS-2",
+   "arm": "shared",
+   "policies": {
+    "vision": "anatomical-vision/1",
+    "marine": "marine-food-web/1",
+    "founding": "regional-founding-templates/1",
+    "dispersal": "regional-dispersal/1"
+   },
+   "lastDay": 301,
+   "complete": true,
+   "evolution": {
+    "births": 579,
+    "variedBirths": 137,
+    "variationRate": 0.237,
+    "newParts": [
+     {
+      "part": "signal-crest",
+      "firstDay": 23,
+      "species": "mosskip",
+      "born": 7,
+      "finalCarriers": 6,
+      "fate": "spread"
+     },
+     {
+      "part": "live-womb",
+      "firstDay": 23,
+      "species": "mosskip",
+      "born": 1,
+      "finalCarriers": 0,
+      "fate": "disappeared"
+     },
+     {
+      "part": "barb",
+      "firstDay": 25,
+      "species": "mosskip",
+      "born": 6,
+      "finalCarriers": 0,
+      "fate": "disappeared"
+     },
+     {
+      "part": "grasper",
+      "firstDay": 27,
+      "species": "rillsifter",
+      "born": 31,
+      "finalCarriers": 28,
+      "fate": "spread"
+     },
+     {
+      "part": "prehensile-tail",
+      "firstDay": 32,
+      "species": "mosskip",
+      "born": 7,
+      "finalCarriers": 5,
+      "fate": "spread"
+     },
+     {
+      "part": "storage-sac",
+      "firstDay": 33,
+      "species": "mosskip",
+      "born": 2,
+      "finalCarriers": 2,
+      "fate": "persisted"
+     },
+     {
+      "part": "fat-pad",
+      "firstDay": 33,
+      "species": "genvo",
+      "born": 7,
+      "finalCarriers": 6,
+      "fate": "spread"
+     },
+     {
+      "part": "filament-tuft",
+      "firstDay": 112,
+      "species": "genvo",
+      "born": 7,
+      "finalCarriers": 5,
+      "fate": "spread"
+     },
+     {
+      "part": "compound-eye",
+      "firstDay": 123,
+      "species": "genvo",
+      "born": 4,
+      "finalCarriers": 3,
+      "fate": "persisted"
+     },
+     {
+      "part": "scent-gland",
+      "firstDay": 129,
+      "species": "genvo",
+      "born": 3,
+      "finalCarriers": 2,
+      "fate": "persisted"
+     },
+     {
+      "part": "armor-plate",
+      "firstDay": 141,
+      "species": "genvo",
+      "born": 11,
+      "finalCarriers": 10,
+      "fate": "spread"
+     },
+     {
+      "part": "display-eye",
+      "firstDay": 141,
+      "species": "genvo",
+      "born": 7,
+      "finalCarriers": 7,
+      "fate": "spread"
+     },
+     {
+      "part": "arid-pad",
+      "firstDay": 143,
+      "species": "mirelick",
+      "born": 2,
+      "finalCarriers": 2,
+      "fate": "persisted"
+     },
+     {
+      "part": "stalk-eye",
+      "firstDay": 175,
+      "species": "genvo",
+      "born": 2,
+      "finalCarriers": 2,
+      "fate": "persisted"
+     },
+     {
+      "part": "sensory-bristle",
+      "firstDay": 176,
+      "species": "podshell",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "climber-leg",
+      "firstDay": 190,
+      "species": "mirelick",
+      "born": 1,
+      "finalCarriers": 0,
+      "fate": "disappeared"
+     },
+     {
+      "part": "filter-mouth",
+      "firstDay": 194,
+      "species": "genvo",
+      "born": 4,
+      "finalCarriers": 4,
+      "fate": "persisted"
+     },
+     {
+      "part": "flag-tail",
+      "firstDay": 210,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "dew-claw",
+      "firstDay": 211,
+      "species": "podshell",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "head-base",
+      "firstDay": 236,
+      "species": "mosskip",
+      "born": 3,
+      "finalCarriers": 2,
+      "fate": "persisted"
+     },
+     {
+      "part": "soft-torso",
+      "firstDay": 238,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 0,
+      "fate": "disappeared"
+     },
+     {
+      "part": "egg-chamber",
+      "firstDay": 266,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "sail-fin",
+      "firstDay": 271,
+      "species": "genvo",
+      "born": 2,
+      "finalCarriers": 2,
+      "fate": "persisted"
+     },
+     {
+      "part": "grip-pad",
+      "firstDay": 271,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     }
+    ],
+    "partsLost": [
+     {
+      "part": "live-womb",
+      "day": 31
+     },
+     {
+      "part": "head-base",
+      "day": 247
+     },
+     {
+      "part": "climber-leg",
+      "day": 267
+     },
+     {
+      "part": "barb",
+      "day": 293
+     },
+     {
+      "part": "soft-torso",
+      "day": 294
+     }
+    ]
+   },
+   "lineages": {
+    "founders": 191,
+    "tracked": 191,
+    "reproduced": 65,
+    "surviving": 104,
+    "topByBirths": [
+     {
+      "root": 130,
+      "species": "genvo",
+      "births": 60,
+      "peak": 59,
+      "alive": 57,
+      "extinctDay": null
+     },
+     {
+      "root": 128,
+      "species": "genvo",
+      "births": 57,
+      "peak": 51,
+      "alive": 51,
+      "extinctDay": null
+     },
+     {
+      "root": 113,
+      "species": "genvo",
+      "births": 41,
+      "peak": 39,
+      "alive": 39,
+      "extinctDay": null
+     },
+     {
+      "root": 114,
+      "species": "genvo",
+      "births": 40,
+      "peak": 38,
+      "alive": 38,
+      "extinctDay": null
+     },
+     {
+      "root": 117,
+      "species": "genvo",
+      "births": 40,
+      "peak": 36,
+      "alive": 36,
+      "extinctDay": null
+     },
+     {
+      "root": 131,
+      "species": "genvo",
+      "births": 30,
+      "peak": 22,
+      "alive": 21,
+      "extinctDay": null
+     },
+     {
+      "root": 120,
+      "species": "genvo",
+      "births": 28,
+      "peak": 27,
+      "alive": 27,
+      "extinctDay": null
+     },
+     {
+      "root": 115,
+      "species": "genvo",
+      "births": 26,
+      "peak": 24,
+      "alive": 24,
+      "extinctDay": null
+     }
+    ]
+   },
+   "species": {
+    "start": {
+     "mosskip": 64,
+     "rootling": 32,
+     "needlejaw": 12,
+     "genvo": 24,
+     "rillsifter": 18,
+     "mirelick": 20,
+     "podshell": 18,
+     "bankjaw": 3
+    },
+    "final": {
+     "mosskip": 106,
+     "rootling": 15,
+     "needlejaw": 13,
+     "genvo": 325,
+     "rillsifter": 10,
+     "mirelick": 26,
+     "podshell": 37,
+     "bankjaw": 2
+    },
+    "extinctions": [],
+    "deathCausesBySpecies": {
+     "rootling": {
+      "predation": 3,
+      "health": 11,
+      "drowning": 2,
+      "starvation": 9,
+      "disease": 2,
+      "age": 2
+     },
+     "mirelick": {
+      "predation": 15,
+      "drowning": 1,
+      "starvation": 4,
+      "age": 2
+     },
+     "mosskip": {
+      "drowning": 18,
+      "predation": 39,
+      "starvation": 21,
+      "age": 32,
+      "health": 1
+     },
+     "genvo": {
+      "predation": 28,
+      "drowning": 9,
+      "starvation": 7,
+      "age": 1
+     },
+     "rillsifter": {
+      "starvation": 17,
+      "predation": 3,
+      "age": 1
+     },
+     "bankjaw": {
+      "starvation": 1
+     },
+     "needlejaw": {
+      "starvation": 1,
+      "predation": 1
+     },
+     "podshell": {
+      "starvation": 3,
+      "age": 2
+     }
+    }
+   },
+   "population": {
+    "start": 191,
+    "peak": 534,
+    "final": 534,
+    "finalTrendPerDay": 1.45,
+    "crashes": 0,
+    "totalExtinctionDay": null
+   },
+   "food": {
+    "sunmoss": {
+     "start": 12110.8,
+     "final": 11922.9,
+     "ratio": 0.984
+    },
+    "bramble": {
+     "start": 2506.7,
+     "final": 4473.7,
+     "ratio": 1.785
+    },
+    "marshroot": {
+     "start": 262.9,
+     "final": 325.8,
+     "ratio": 1.239
+    },
+    "rotcap": {
+     "start": 850.5,
+     "final": 3018,
+     "ratio": 3.549
+    },
+    "woodspire": {
+     "start": 1165.6,
+     "final": 1874.2,
+     "ratio": 1.608
+    },
+    "thistlepod": {
+     "start": 1792.6,
+     "final": 4305.4,
+     "ratio": 2.402
+    },
+    "dunebulb": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "dustsage": {
+     "start": 1459.1,
+     "final": 3305.3,
+     "ratio": 2.265
+    },
+    "frostlichen": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "snowberry": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "algae": {
+     "start": 162.5,
+     "final": 0.5,
+     "ratio": 0.003
+    },
+    "duckweed": {
+     "start": 59.9,
+     "final": 76.2,
+     "ratio": 1.272
+    },
+    "waterweed": {
+     "start": 105.1,
+     "final": 145.8,
+     "ratio": 1.388
+    },
+    "larvae": {
+     "start": 12.4,
+     "final": 0,
+     "ratio": 0.001
+    },
+    "fry": {
+     "start": 2.5,
+     "final": 0.8,
+     "ratio": 0.319
+    },
+    "carrion": {
+     "start": 0,
+     "final": 30,
+     "ratio": null
+    }
+   },
+   "pressures": {
+    "deathCauses": {
+     "predation": 89,
+     "health": 12,
+     "drowning": 30,
+     "starvation": 63,
+     "disease": 2,
+     "age": 40
+    },
+    "deathsPer1000AnimalDays": {
+     "predation": 0.88,
+     "health": 0.12,
+     "drowning": 0.3,
+     "starvation": 0.62,
+     "disease": 0.02,
+     "age": 0.4
+    },
+    "threatPer1000AnimalDays": {
+     "vigilance": 377.7,
+     "alarm": 172.2,
+     "flight": 86.2,
+     "wary": 69.9
+    },
+    "hunterShare": 0.048,
+    "meanSight": {
+     "range": 8.44,
+     "fov": 259.8
+    },
+    "genesFinal": {
+     "body": 0.992,
+     "motion": 1.003,
+     "metabolism": 1.006,
+     "senses": 0.996,
+     "climate": 0.995
+    }
+   },
+   "biodiversity": {
+    "species": {
+     "start": 8,
+     "peak": 8,
+     "final": 8
+    },
+    "branches": {
+     "start": 2,
+     "peak": 20,
+     "final": 19
+    },
+    "bodyPlans": {
+     "start": 8,
+     "peak": 178,
+     "final": 177
+    },
+    "partsPresent": {
+     "start": 34,
+     "peak": 56,
+     "final": 54
+    },
+    "lineagesAlive": {
+     "start": 191,
+     "peak": 191,
+     "final": 104
+    }
+   },
+   "performance": {
+    "msPerDay": {
+     "mean": 2858,
+     "max": 5602
+    },
+    "msPerAnimalDay": 8.41,
+    "heapMBFinal": 283.9,
+    "rssMBMax": 1113.7,
+    "phaseShare": {
+     "phaseClimate": 0,
+     "phaseSoil": 0.006,
+     "phaseVegetation": 0.273,
+     "phasePerception": 0.245,
+     "phaseDecision": 0.379,
+     "phaseMovement": 0.081,
+     "phaseMetabolism": 0.013,
+     "phaseLifecycle": 0.002
+    },
+    "checkpoints": [
+     {
+      "day": 100,
+      "animals": 275,
+      "snapshotMs": 181.4,
+      "serializeMs": 215.2,
+      "MB": 44.88
+     },
+     {
+      "day": 200,
+      "animals": 386,
+      "snapshotMs": 176.8,
+      "serializeMs": 243.3,
+      "MB": 51.24
+     },
+     {
+      "day": 300,
+      "animals": 528,
+      "snapshotMs": 184.2,
+      "serializeMs": 262.3,
+      "MB": 57.45
+     }
+    ]
+   }
+  },
+  {
+   "seed": "PLANET-OBS-3",
+   "arm": "legacy",
+   "policies": {
+    "vision": "anatomical-vision/1",
+    "marine": "marine-food-web/1",
+    "founding": "regional-founding-templates/1",
+    "dispersal": "regional-dispersal/1"
+   },
+   "lastDay": 301,
+   "complete": true,
+   "evolution": {
+    "births": 316,
+    "variedBirths": 92,
+    "variationRate": 0.291,
+    "newParts": [
+     {
+      "part": "egg-chamber",
+      "firstDay": 22,
+      "species": "mosskip",
+      "born": 2,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "scent-gland",
+      "firstDay": 27,
+      "species": "mosskip",
+      "born": 7,
+      "finalCarriers": 5,
+      "fate": "spread"
+     },
+     {
+      "part": "barb",
+      "firstDay": 28,
+      "species": "mosskip",
+      "born": 3,
+      "finalCarriers": 3,
+      "fate": "persisted"
+     },
+     {
+      "part": "grasper",
+      "firstDay": 31,
+      "species": "genvo",
+      "born": 9,
+      "finalCarriers": 8,
+      "fate": "spread"
+     },
+     {
+      "part": "stalk-eye",
+      "firstDay": 35,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "filter-mouth",
+      "firstDay": 35,
+      "species": "genvo",
+      "born": 3,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "live-womb",
+      "firstDay": 61,
+      "species": "podshell",
+      "born": 1,
+      "finalCarriers": 0,
+      "fate": "disappeared"
+     },
+     {
+      "part": "sail-fin",
+      "firstDay": 65,
+      "species": "genvo",
+      "born": 13,
+      "finalCarriers": 12,
+      "fate": "spread"
+     },
+     {
+      "part": "prehensile-tail",
+      "firstDay": 68,
+      "species": "mosskip",
+      "born": 2,
+      "finalCarriers": 2,
+      "fate": "persisted"
+     },
+     {
+      "part": "display-eye",
+      "firstDay": 68,
+      "species": "mosskip",
+      "born": 2,
+      "finalCarriers": 2,
+      "fate": "persisted"
+     },
+     {
+      "part": "fat-pad",
+      "firstDay": 74,
+      "species": "mosskip",
+      "born": 2,
+      "finalCarriers": 2,
+      "fate": "persisted"
+     },
+     {
+      "part": "storage-sac",
+      "firstDay": 104,
+      "species": "mosskip",
+      "born": 8,
+      "finalCarriers": 8,
+      "fate": "spread"
+     },
+     {
+      "part": "filament-tuft",
+      "firstDay": 140,
+      "species": "genvo",
+      "born": 3,
+      "finalCarriers": 3,
+      "fate": "persisted"
+     },
+     {
+      "part": "dew-claw",
+      "firstDay": 208,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "claw",
+      "firstDay": 230,
+      "species": "mosskip",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "signal-crest",
+      "firstDay": 259,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "flag-tail",
+      "firstDay": 260,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "beak-mouth",
+      "firstDay": 273,
+      "species": "mosskip",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "armor-plate",
+      "firstDay": 287,
+      "species": "mosskip",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     }
+    ],
+    "partsLost": [
+     {
+      "part": "live-womb",
+      "day": 113
+     }
+    ]
+   },
+   "lineages": {
+    "founders": 190,
+    "tracked": 190,
+    "reproduced": 59,
+    "surviving": 83,
+    "topByBirths": [
+     {
+      "root": 119,
+      "species": "genvo",
+      "births": 26,
+      "peak": 26,
+      "alive": 26,
+      "extinctDay": null
+     },
+     {
+      "root": 110,
+      "species": "genvo",
+      "births": 20,
+      "peak": 19,
+      "alive": 18,
+      "extinctDay": null
+     },
+     {
+      "root": 130,
+      "species": "genvo",
+      "births": 19,
+      "peak": 17,
+      "alive": 16,
+      "extinctDay": null
+     },
+     {
+      "root": 127,
+      "species": "genvo",
+      "births": 17,
+      "peak": 15,
+      "alive": 15,
+      "extinctDay": null
+     },
+     {
+      "root": 129,
+      "species": "genvo",
+      "births": 14,
+      "peak": 11,
+      "alive": 10,
+      "extinctDay": null
+     },
+     {
+      "root": 48,
+      "species": "mosskip",
+      "births": 12,
+      "peak": 12,
+      "alive": 11,
+      "extinctDay": null
+     },
+     {
+      "root": 56,
+      "species": "mosskip",
+      "births": 12,
+      "peak": 13,
+      "alive": 12,
+      "extinctDay": null
+     },
+     {
+      "root": 126,
+      "species": "genvo",
+      "births": 12,
+      "peak": 12,
+      "alive": 12,
+      "extinctDay": null
+     }
+    ]
+   },
+   "species": {
+    "start": {
+     "mosskip": 64,
+     "rootling": 32,
+     "needlejaw": 10,
+     "genvo": 24,
+     "rillsifter": 18,
+     "mirelick": 20,
+     "podshell": 18,
+     "bankjaw": 4
+    },
+    "final": {
+     "mosskip": 117,
+     "rootling": 23,
+     "needlejaw": 3,
+     "genvo": 125,
+     "mirelick": 11,
+     "podshell": 17
+    },
+    "extinctions": [
+     {
+      "species": "bankjaw",
+      "day": 104,
+      "causesLast60Days": {
+       "predation": 1,
+       "starvation": 3
+      }
+     },
+     {
+      "species": "rillsifter",
+      "day": 287,
+      "causesLast60Days": {
+       "starvation": 1
+      }
+     }
+    ],
+    "deathCausesBySpecies": {
+     "mosskip": {
+      "predation": 11,
+      "drowning": 3,
+      "wildfire": 33,
+      "starvation": 5,
+      "age": 40,
+      "disease": 2
+     },
+     "genvo": {
+      "predation": 7,
+      "wildfire": 15,
+      "drowning": 1,
+      "starvation": 2,
+      "disease": 1,
+      "dehydration": 3,
+      "age": 1
+     },
+     "rootling": {
+      "health": 7,
+      "wildfire": 9,
+      "drowning": 1,
+      "starvation": 1,
+      "age": 2
+     },
+     "needlejaw": {
+      "predation": 6,
+      "starvation": 2
+     },
+     "mirelick": {
+      "predation": 5,
+      "drowning": 4,
+      "wildfire": 5,
+      "health": 1,
+      "age": 5
+     },
+     "rillsifter": {
+      "starvation": 18
+     },
+     "bankjaw": {
+      "predation": 1,
+      "starvation": 3
+     },
+     "podshell": {
+      "wildfire": 7,
+      "starvation": 3,
+      "drowning": 1,
+      "predation": 3,
+      "age": 2
+     }
+    }
+   },
+   "population": {
+    "start": 190,
+    "peak": 300,
+    "final": 296,
+    "finalTrendPerDay": 0.76,
+    "crashes": 0,
+    "totalExtinctionDay": null
+   },
+   "food": {
+    "sunmoss": {
+     "start": 11987.8,
+     "final": 5743.2,
+     "ratio": 0.479
+    },
+    "bramble": {
+     "start": 2596.4,
+     "final": 2338.3,
+     "ratio": 0.901
+    },
+    "marshroot": {
+     "start": 320.1,
+     "final": 184.7,
+     "ratio": 0.577
+    },
+    "rotcap": {
+     "start": 852.8,
+     "final": 1904.9,
+     "ratio": 2.234
+    },
+    "woodspire": {
+     "start": 1196.1,
+     "final": 954.9,
+     "ratio": 0.798
+    },
+    "thistlepod": {
+     "start": 1796.8,
+     "final": 2023.2,
+     "ratio": 1.126
+    },
+    "dunebulb": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "dustsage": {
+     "start": 1490.3,
+     "final": 1674.5,
+     "ratio": 1.124
+    },
+    "frostlichen": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "snowberry": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "algae": {
+     "start": 92.2,
+     "final": 0,
+     "ratio": 0
+    },
+    "duckweed": {
+     "start": 59.9,
+     "final": 108.8,
+     "ratio": 1.817
+    },
+    "waterweed": {
+     "start": 95.5,
+     "final": 270.1,
+     "ratio": 2.829
+    },
+    "larvae": {
+     "start": 10.9,
+     "final": 0,
+     "ratio": 0.002
+    },
+    "fry": {
+     "start": 2.3,
+     "final": 0.7,
+     "ratio": 0.319
+    },
+    "carrion": {
+     "start": 0,
+     "final": 40.1,
+     "ratio": null
+    }
+   },
+   "pressures": {
+    "deathCauses": {
+     "predation": 33,
+     "health": 8,
+     "starvation": 34,
+     "drowning": 10,
+     "wildfire": 69,
+     "age": 50,
+     "disease": 3,
+     "dehydration": 3
+    },
+    "deathsPer1000AnimalDays": {
+     "predation": 0.45,
+     "health": 0.11,
+     "starvation": 0.47,
+     "drowning": 0.14,
+     "wildfire": 0.95,
+     "age": 0.69,
+     "disease": 0.04,
+     "dehydration": 0.04
+    },
+    "threatPer1000AnimalDays": {
+     "vigilance": 70.5,
+     "alarm": 29.6,
+     "flight": 24.8,
+     "wary": 13
+    },
+    "hunterShare": 0.027,
+    "meanSight": {
+     "range": 8.15,
+     "fov": 263.5
+    },
+    "genesFinal": {
+     "body": 1.002,
+     "motion": 0.992,
+     "metabolism": 0.999,
+     "senses": 1.003,
+     "climate": 0.997
+    }
+   },
+   "biodiversity": {
+    "species": {
+     "start": 8,
+     "peak": 8,
+     "final": 6
+    },
+    "branches": {
+     "start": 2,
+     "peak": 17,
+     "final": 17
+    },
+    "bodyPlans": {
+     "start": 8,
+     "peak": 118,
+     "final": 117
+    },
+    "partsPresent": {
+     "start": 34,
+     "peak": 50,
+     "final": 48
+    },
+    "lineagesAlive": {
+     "start": 190,
+     "peak": 190,
+     "final": 83
+    }
+   },
+   "performance": {
+    "msPerDay": {
+     "mean": 1614,
+     "max": 2480
+    },
+    "msPerAnimalDay": 6.65,
+    "heapMBFinal": 333.7,
+    "rssMBMax": 1053.2,
+    "phaseShare": {
+     "phaseClimate": 0,
+     "phaseSoil": 0.011,
+     "phaseVegetation": 0.322,
+     "phasePerception": 0.185,
+     "phaseDecision": 0.359,
+     "phaseMovement": 0.102,
+     "phaseMetabolism": 0.018,
+     "phaseLifecycle": 0.002
+    },
+    "checkpoints": [
+     {
+      "day": 100,
+      "animals": 256,
+      "snapshotMs": 107.4,
+      "serializeMs": 165.3,
+      "MB": 36.63
+     },
+     {
+      "day": 200,
+      "animals": 234,
+      "snapshotMs": 90.9,
+      "serializeMs": 154.6,
+      "MB": 36.25
+     },
+     {
+      "day": 300,
+      "animals": 298,
+      "snapshotMs": 101.4,
+      "serializeMs": 221.4,
+      "MB": 38.24
+     }
+    ]
+   }
+  },
+  {
+   "seed": "PLANET-OBS-3",
+   "arm": "shared",
+   "policies": {
+    "vision": "anatomical-vision/1",
+    "marine": "marine-food-web/1",
+    "founding": "regional-founding-templates/1",
+    "dispersal": "regional-dispersal/1"
+   },
+   "lastDay": 301,
+   "complete": true,
+   "evolution": {
+    "births": 540,
+    "variedBirths": 127,
+    "variationRate": 0.235,
+    "newParts": [
+     {
+      "part": "dew-claw",
+      "firstDay": 22,
+      "species": "genvo",
+      "born": 7,
+      "finalCarriers": 5,
+      "fate": "spread"
+     },
+     {
+      "part": "grasper",
+      "firstDay": 22,
+      "species": "genvo",
+      "born": 28,
+      "finalCarriers": 25,
+      "fate": "spread"
+     },
+     {
+      "part": "armor-plate",
+      "firstDay": 26,
+      "species": "mosskip",
+      "born": 22,
+      "finalCarriers": 16,
+      "fate": "spread"
+     },
+     {
+      "part": "fat-pad",
+      "firstDay": 33,
+      "species": "mosskip",
+      "born": 10,
+      "finalCarriers": 8,
+      "fate": "spread"
+     },
+     {
+      "part": "head-base",
+      "firstDay": 33,
+      "species": "mosskip",
+      "born": 2,
+      "finalCarriers": 0,
+      "fate": "disappeared"
+     },
+     {
+      "part": "grip-pad",
+      "firstDay": 48,
+      "species": "mirelick",
+      "born": 14,
+      "finalCarriers": 13,
+      "fate": "spread"
+     },
+     {
+      "part": "sensory-bristle",
+      "firstDay": 91,
+      "species": "genvo",
+      "born": 6,
+      "finalCarriers": 6,
+      "fate": "spread"
+     },
+     {
+      "part": "filament-tuft",
+      "firstDay": 147,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "storage-sac",
+      "firstDay": 155,
+      "species": "mosskip",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "compound-eye",
+      "firstDay": 184,
+      "species": "mosskip",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "barb",
+      "firstDay": 192,
+      "species": "genvo",
+      "born": 7,
+      "finalCarriers": 6,
+      "fate": "spread"
+     },
+     {
+      "part": "flag-tail",
+      "firstDay": 230,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "scent-gland",
+      "firstDay": 274,
+      "species": "mosskip",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "stalk-eye",
+      "firstDay": 275,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     },
+     {
+      "part": "soft-torso",
+      "firstDay": 298,
+      "species": "genvo",
+      "born": 1,
+      "finalCarriers": 1,
+      "fate": "persisted"
+     }
+    ],
+    "partsLost": [
+     {
+      "part": "head-base",
+      "day": 116
+     },
+     {
+      "part": "silt-fin",
+      "day": 165
+     },
+     {
+      "part": "gill-slits",
+      "day": 165
+     },
+     {
+      "part": "reed-sieve-mouth",
+      "day": 165
+     }
+    ]
+   },
+   "lineages": {
+    "founders": 190,
+    "tracked": 190,
+    "reproduced": 66,
+    "surviving": 76,
+    "topByBirths": [
+     {
+      "root": 110,
+      "species": "genvo",
+      "births": 73,
+      "peak": 71,
+      "alive": 71,
+      "extinctDay": null
+     },
+     {
+      "root": 126,
+      "species": "genvo",
+      "births": 52,
+      "peak": 49,
+      "alive": 49,
+      "extinctDay": null
+     },
+     {
+      "root": 109,
+      "species": "genvo",
+      "births": 42,
+      "peak": 40,
+      "alive": 40,
+      "extinctDay": null
+     },
+     {
+      "root": 47,
+      "species": "mosskip",
+      "births": 32,
+      "peak": 26,
+      "alive": 26,
+      "extinctDay": null
+     },
+     {
+      "root": 130,
+      "species": "genvo",
+      "births": 24,
+      "peak": 17,
+      "alive": 17,
+      "extinctDay": null
+     },
+     {
+      "root": 129,
+      "species": "genvo",
+      "births": 19,
+      "peak": 14,
+      "alive": 14,
+      "extinctDay": null
+     },
+     {
+      "root": 27,
+      "species": "mosskip",
+      "births": 15,
+      "peak": 14,
+      "alive": 12,
+      "extinctDay": null
+     },
+     {
+      "root": 127,
+      "species": "genvo",
+      "births": 15,
+      "peak": 16,
+      "alive": 16,
+      "extinctDay": null
+     }
+    ]
+   },
+   "species": {
+    "start": {
+     "mosskip": 64,
+     "rootling": 32,
+     "needlejaw": 10,
+     "genvo": 24,
+     "rillsifter": 18,
+     "mirelick": 20,
+     "podshell": 18,
+     "bankjaw": 4
+    },
+    "final": {
+     "mosskip": 159,
+     "rootling": 5,
+     "needlejaw": 3,
+     "genvo": 233,
+     "mirelick": 30,
+     "podshell": 28,
+     "bankjaw": 1
+    },
+    "extinctions": [
+     {
+      "species": "rillsifter",
+      "day": 165,
+      "causesLast60Days": {
+       "predation": 1,
+       "starvation": 5
+      }
+     }
+    ],
+    "deathCausesBySpecies": {
+     "needlejaw": {
+      "predation": 4,
+      "starvation": 1,
+      "wildfire": 1,
+      "drowning": 2
+     },
+     "rootling": {
+      "starvation": 4,
+      "health": 12,
+      "predation": 5,
+      "wildfire": 13,
+      "drowning": 2,
+      "disease": 1
+     },
+     "mosskip": {
+      "drowning": 7,
+      "predation": 10,
+      "wildfire": 36,
+      "starvation": 18,
+      "health": 3,
+      "age": 26,
+      "disease": 3
+     },
+     "mirelick": {
+      "predation": 10,
+      "drowning": 3,
+      "wildfire": 1,
+      "starvation": 1,
+      "age": 6,
+      "health": 1,
+      "disease": 4
+     },
+     "genvo": {
+      "predation": 14,
+      "wildfire": 30,
+      "starvation": 4,
+      "drowning": 1,
+      "dehydration": 1,
+      "health": 4,
+      "disease": 6
+     },
+     "rillsifter": {
+      "starvation": 16,
+      "predation": 3
+     },
+     "bankjaw": {
+      "starvation": 2,
+      "wildfire": 1
+     },
+     "podshell": {
+      "wildfire": 2,
+      "predation": 3,
+      "starvation": 10
+     }
+    }
+   },
+   "population": {
+    "start": 190,
+    "peak": 459,
+    "final": 459,
+    "finalTrendPerDay": 2.1,
+    "crashes": 0,
+    "totalExtinctionDay": null
+   },
+   "food": {
+    "sunmoss": {
+     "start": 11986,
+     "final": 5328.7,
+     "ratio": 0.445
+    },
+    "bramble": {
+     "start": 2596.3,
+     "final": 2292,
+     "ratio": 0.883
+    },
+    "marshroot": {
+     "start": 317.9,
+     "final": 184.7,
+     "ratio": 0.581
+    },
+    "rotcap": {
+     "start": 852.9,
+     "final": 1815.4,
+     "ratio": 2.128
+    },
+    "woodspire": {
+     "start": 1196.1,
+     "final": 952.6,
+     "ratio": 0.796
+    },
+    "thistlepod": {
+     "start": 1796.3,
+     "final": 1986.6,
+     "ratio": 1.106
+    },
+    "dunebulb": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "dustsage": {
+     "start": 1490.3,
+     "final": 1688,
+     "ratio": 1.133
+    },
+    "frostlichen": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "snowberry": {
+     "start": 0,
+     "final": 0,
+     "ratio": null
+    },
+    "algae": {
+     "start": 93.5,
+     "final": 7.1,
+     "ratio": 0.076
+    },
+    "duckweed": {
+     "start": 59.9,
+     "final": 119.5,
+     "ratio": 1.996
+    },
+    "waterweed": {
+     "start": 95.5,
+     "final": 254.8,
+     "ratio": 2.668
+    },
+    "larvae": {
+     "start": 11.1,
+     "final": 0.5,
+     "ratio": 0.042
+    },
+    "fry": {
+     "start": 2.3,
+     "final": 0.6,
+     "ratio": 0.278
+    },
+    "carrion": {
+     "start": 0,
+     "final": 51.7,
+     "ratio": null
+    }
+   },
+   "pressures": {
+    "deathCauses": {
+     "predation": 49,
+     "starvation": 56,
+     "health": 20,
+     "drowning": 15,
+     "wildfire": 84,
+     "age": 32,
+     "dehydration": 1,
+     "disease": 14
+    },
+    "deathsPer1000AnimalDays": {
+     "predation": 0.59,
+     "starvation": 0.68,
+     "health": 0.24,
+     "drowning": 0.18,
+     "wildfire": 1.02,
+     "age": 0.39,
+     "dehydration": 0.01,
+     "disease": 0.17
+    },
+    "threatPer1000AnimalDays": {
+     "vigilance": 199.7,
+     "alarm": 101.7,
+     "flight": 40.7,
+     "wary": 51
+    },
+    "hunterShare": 0.032,
+    "meanSight": {
+     "range": 8.62,
+     "fov": 267.2
+    },
+    "genesFinal": {
+     "body": 0.996,
+     "motion": 0.991,
+     "metabolism": 1.006,
+     "senses": 1.001,
+     "climate": 0.997
+    }
+   },
+   "biodiversity": {
+    "species": {
+     "start": 8,
+     "peak": 8,
+     "final": 7
+    },
+    "branches": {
+     "start": 2,
+     "peak": 17,
+     "final": 16
+    },
+    "bodyPlans": {
+     "start": 8,
+     "peak": 153,
+     "final": 153
+    },
+    "partsPresent": {
+     "start": 34,
+     "peak": 45,
+     "final": 45
+    },
+    "lineagesAlive": {
+     "start": 190,
+     "peak": 190,
+     "final": 76
+    }
+   },
+   "performance": {
+    "msPerDay": {
+     "mean": 1832,
+     "max": 4874
+    },
+    "msPerAnimalDay": 6.71,
+    "heapMBFinal": 211.4,
+    "rssMBMax": 979.8,
+    "phaseShare": {
+     "phaseClimate": 0,
+     "phaseSoil": 0.01,
+     "phaseVegetation": 0.278,
+     "phasePerception": 0.201,
+     "phaseDecision": 0.388,
+     "phaseMovement": 0.104,
+     "phaseMetabolism": 0.017,
+     "phaseLifecycle": 0.002
+    },
+    "checkpoints": [
+     {
+      "day": 100,
+      "animals": 281,
+      "snapshotMs": 117.3,
+      "serializeMs": 188.6,
+      "MB": 36.53
+     },
+     {
+      "day": 200,
+      "animals": 236,
+      "snapshotMs": 93.3,
+      "serializeMs": 167.5,
+      "MB": 36.05
+     },
+     {
+      "day": 300,
+      "animals": 453,
+      "snapshotMs": 80.2,
+      "serializeMs": 192.2,
+      "MB": 38.79
+     }
+    ]
+   }
+  }
+ ],
+ "comparisons": [
+  {
+   "seed": "PLANET-OBS-1",
+   "pair": "shared vs legacy",
+   "focus": {
+    "shared": {
+     "bankjaw": {
+      "start": 4,
+      "mean": 2.1,
+      "final": 1,
+      "lastAliveDay": 301,
+      "births": 0,
+      "deaths": {
+       "wildfire": 2,
+       "starvation": 1
+      }
+     },
+     "rillsifter": {
+      "start": 18,
+      "mean": 8.8,
+      "final": 9,
+      "lastAliveDay": 301,
+      "births": 14,
+      "deaths": {
+       "starvation": 20,
+       "predation": 1,
+       "drowning": 2
+      }
+     }
+    },
+    "legacy": {
+     "bankjaw": {
+      "start": 4,
+      "mean": 3.3,
+      "final": 3,
+      "lastAliveDay": 301,
+      "births": 1,
+      "deaths": {
+       "starvation": 1,
+       "predation": 1
+      }
+     },
+     "rillsifter": {
+      "start": 18,
+      "mean": 5.8,
+      "final": 0,
+      "lastAliveDay": 170,
+      "births": 2,
+      "deaths": {
+       "starvation": 18,
+       "predation": 2
+      }
+     }
+    }
+   },
+   "matchedDays": 300,
+   "lastMatchedDay": 301,
+   "populationMean": {
+    "vision": 350.1,
+    "control": 250
+   },
+   "predationPer1000AnimalDays": {
+    "vision": 0.4,
+    "control": 0.73
+   },
+   "alarmAndFlightPer1000AnimalDays": {
+    "vision": 100.8,
+    "control": 128.2
+   },
+   "birthsPer1000AnimalDays": {
+    "vision": 6.65,
+    "control": 4
+   },
+   "meanSightRange": {
+    "vision": 8.24,
+    "control": 8.11
+   },
+   "speciesFinal": {
+    "vision": 8,
+    "control": 7
+   }
+  },
+  {
+   "seed": "PLANET-OBS-2",
+   "pair": "shared vs legacy",
+   "focus": {
+    "shared": {
+     "bankjaw": {
+      "start": 3,
+      "mean": 2.2,
+      "final": 2,
+      "lastAliveDay": 301,
+      "births": 0,
+      "deaths": {
+       "starvation": 1
+      }
+     },
+     "rillsifter": {
+      "start": 18,
+      "mean": 11.2,
+      "final": 10,
+      "lastAliveDay": 301,
+      "births": 13,
+      "deaths": {
+       "starvation": 17,
+       "predation": 3,
+       "age": 1
+      }
+     }
+    },
+    "legacy": {
+     "bankjaw": {
+      "start": 3,
+      "mean": 1.3,
+      "final": 1,
+      "lastAliveDay": 301,
+      "births": 0,
+      "deaths": {
+       "predation": 1,
+       "starvation": 1
+      }
+     },
+     "rillsifter": {
+      "start": 18,
+      "mean": 9.2,
+      "final": 0,
+      "lastAliveDay": 248,
+      "births": 4,
+      "deaths": {
+       "starvation": 17,
+       "predation": 3,
+       "disease": 1,
+       "age": 1
+      }
+     }
+    }
+   },
+   "matchedDays": 300,
+   "lastMatchedDay": 301,
+   "populationMean": {
+    "vision": 336.6,
+    "control": 263.3
+   },
+   "predationPer1000AnimalDays": {
+    "vision": 0.88,
+    "control": 0.46
+   },
+   "alarmAndFlightPer1000AnimalDays": {
+    "vision": 258.4,
+    "control": 124.4
+   },
+   "birthsPer1000AnimalDays": {
+    "vision": 5.73,
+    "control": 3.91
+   },
+   "meanSightRange": {
+    "vision": 8.44,
+    "control": 8.57
+   },
+   "speciesFinal": {
+    "vision": 8,
+    "control": 7
+   }
+  },
+  {
+   "seed": "PLANET-OBS-3",
+   "pair": "shared vs legacy",
+   "focus": {
+    "shared": {
+     "bankjaw": {
+      "start": 4,
+      "mean": 2.3,
+      "final": 1,
+      "lastAliveDay": 301,
+      "births": 0,
+      "deaths": {
+       "starvation": 2,
+       "wildfire": 1
+      }
+     },
+     "rillsifter": {
+      "start": 18,
+      "mean": 6.1,
+      "final": 0,
+      "lastAliveDay": 164,
+      "births": 1,
+      "deaths": {
+       "starvation": 16,
+       "predation": 3
+      }
+     }
+    },
+    "legacy": {
+     "bankjaw": {
+      "start": 4,
+      "mean": 1,
+      "final": 0,
+      "lastAliveDay": 103,
+      "births": 0,
+      "deaths": {
+       "predation": 1,
+       "starvation": 3
+      }
+     },
+     "rillsifter": {
+      "start": 18,
+      "mean": 7.2,
+      "final": 0,
+      "lastAliveDay": 286,
+      "births": 0,
+      "deaths": {
+       "starvation": 18
+      }
+     }
+    }
+   },
+   "matchedDays": 300,
+   "lastMatchedDay": 301,
+   "populationMean": {
+    "vision": 275,
+    "control": 242.3
+   },
+   "predationPer1000AnimalDays": {
+    "vision": 0.59,
+    "control": 0.45
+   },
+   "alarmAndFlightPer1000AnimalDays": {
+    "vision": 142.4,
+    "control": 54.4
+   },
+   "birthsPer1000AnimalDays": {
+    "vision": 6.55,
+    "control": 4.35
+   },
+   "meanSightRange": {
+    "vision": 8.62,
+    "control": 8.15
+   },
+   "speciesFinal": {
+    "vision": 7,
+    "control": 6
+   }
+  }
+ ],
+ "consistency": {
+  "shared vs legacy": {
+   "populationMean": {
+    "higherWithTreatment": 3,
+    "lowerWithTreatment": 0,
+    "equal": 0,
+    "replicates": 3
+   },
+   "predation": {
+    "higherWithTreatment": 2,
+    "lowerWithTreatment": 1,
+    "equal": 0,
+    "replicates": 3
+   },
+   "alarmAndFlight": {
+    "higherWithTreatment": 2,
+    "lowerWithTreatment": 1,
+    "equal": 0,
+    "replicates": 3
+   },
+   "births": {
+    "higherWithTreatment": 3,
+    "lowerWithTreatment": 0,
+    "equal": 0,
+    "replicates": 3
+   }
+  }
+ },
+ "interpretation": "Arms share seed, region and days and differ only in anatomical-vision/1; they diverge chaotically from the first differing random draw, so a single-seed difference is not causal. Treat an effect as supported only when its sign is consistent across replicates and has a mechanism."
+}

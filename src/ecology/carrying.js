@@ -1,5 +1,6 @@
 import {reproductionFor} from './breeding-calibration.js';
 import {scoresWaterOnly} from './aquatic-foraging.js';
+import {BREEDING_SUPPORT,breedingSupportEnabled,breedingSupport,renewableSupply,breedingNeed} from './breeding-support.js';
 import {dietaryDemand} from './dietary-demand.js';
 import {preyNormalization,localPreyOpportunity} from './prey-normalization.js';
 import {FRESHWATER_FOOD,freshwaterPreference,freshwaterField,canAccessFreshwater} from './freshwater-food.js';
@@ -48,7 +49,7 @@ export class CarryingPressureController{
           if(!canAccessFreshwater(this.sim,a,x,y,p,{planning:true}))continue;accessible=true;
           const energy=(freshwaterField(w,kind)?.[i]||0)*p.nutrition;
           food+=energy*preference;waterEnergy+=energy*preference;
-          if(energy>0)rows.push({kind,x,y,wet:true,preference,energy});
+          if(energy>0)rows.push({kind,x,y,wet:true,preference,energy,stock:freshwaterField(w,kind)?.[i]||0});
         }
         if(accessible)land++;continue;
       }
@@ -59,7 +60,7 @@ export class CarryingPressureController{
         const stock=w.plants[kind]?.[i]||0;if(stock<=0)continue;
         const nutrition=this.sim.dispersal.genomeAt(kind,i)?.traits.nutrition??PLANTS[kind].nutrition,energy=stock*nutrition;
         const edible=this.sim.dispersal.seedReserve[kind]?this.sim.dispersal.cropYield(a,kind,i)*nutrition:energy*eff;
-        food+=edible;rows.push({kind,x,y,wet:false,preference:edible/energy,energy});
+        food+=edible;rows.push({kind,x,y,wet:false,preference:edible/energy,energy,stock});
       }
       {const pref=plantPreference(a,'carrion'),stock=w.carrion?.[i]||0;if(pref>0&&stock>0){const energy=stock*34;food+=energy*pref;rows.push({kind:'carrion',x,y,wet:false,preference:pref,energy})}}
     }
@@ -82,9 +83,12 @@ export class CarryingPressureController{
     const resident=a;if(at)a={...a,x:at.x,y:at.y};
     const s=SPECIES[a.species],density=s?.density||{radius:4,softCap:10},repro=reproductionFor(a.species);
     const supply=this.surveyFor(a,surveyMemo);
-    if(onlyIfAllowed&&!canHunt(a)&&this.sim.speciesLifestyle?.feedingMode?.(a)!=='hunter'){const min=repro.minForage??0,opt=Math.max(min+.01,repro.optimalForage??Math.max(1,min*1.6));if(!(clamp(0,1.08,(supply.value-min)/(opt-min))>.04))return{allowed:false}}
+    // breeding-support/1: one anatomy- and resource-based rule for every body.
+    const shared=breedingSupportEnabled(this.sim);
+    if(shared&&onlyIfAllowed&&!(renewableSupply(this.sim,a,supply)>breedingNeed(a)))return{allowed:false};
+    if(!shared&&onlyIfAllowed&&!canHunt(a)&&this.sim.speciesLifestyle?.feedingMode?.(a)!=='hunter'){const min=repro.minForage??0,opt=Math.max(min+.01,repro.optimalForage??Math.max(1,min*1.6));if(!(clamp(0,1.08,(supply.value-min)/(opt-min))>.04))return{allowed:false}}
     const overlaps=surveyMemo?(surveyMemo.overlaps??=new WeakMap()):null;let overlapMemo=overlaps?.get(supply)||null;if(overlaps&&!overlapMemo){overlapMemo=new Map();overlaps.set(supply,overlapMemo)}
-    const demand=dietaryDemand(this.sim,a,supply,density.radius,{residentId:resident.id,overlapMemo});
+    const demand=dietaryDemand(this.sim,a,supply,shared?BREEDING_SUPPORT.radius:density.radius,{residentId:resident.id,overlapMemo});
     // Nearby is a habitat headcount, not a family or species population. Only
     // accessible finite-food overlap contributes consumer-equivalent demand.
     const local=demand.nearby,competitors=demand.demand;
@@ -101,6 +105,7 @@ export class CarryingPressureController{
       const surveyedFood=supply.totalEnergy/preyReference.energyPerUnit;
       resourceValue=prey.foodUnits+surveyedFood;resource=clamp(0,1.12,resourceValue/need);
     }else{const forage=supply.value,min=repro.minForage??0,opt=Math.max(min+.01,repro.optimalForage??Math.max(1,min*1.6));resourceValue=forage;resource=clamp(0,1.08,(forage-min)/(opt-min))}
+    if(shared){const support=breedingSupport(this.sim,a,supply,competitors);return{allowed:support.resource>.04,local,competitors,ratio:support.supportRatio>0?1/support.supportRatio:Infinity,crowd:1,resource:support.resource,resourceValue:support.share,driveRate:.20*Math.max(.05,support.resource),preyReference:null,support}}
     const recoveryBoost=this.sim.recovery?.driveBoost(a.species)??1;
     const driveRate=.20*(repro.driveScale??1)*recoveryBoost*crowd*Math.max(.05,resource);
     return{allowed:ratio<1.18&&resource>.04,local,competitors,ratio,crowd,resource,resourceValue,driveRate,preyReference};

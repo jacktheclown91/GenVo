@@ -2,13 +2,14 @@
 // Usage: node tools/run-observatory.mjs <seed> <arm> <days> <out.ndjson> [originX originY]
 // Arms: vision|control differ only in anatomical-vision/1; foraging|current
 // differ only in aquatic-foraging/1; seeds|unbounded differ only in
-// seed-viability/1 (all with today's other defaults). Seeds,
+// seed-viability/1; shared|legacy differ only in breeding-support/1 (all with
+// today's other defaults). Seeds,
 // regions and days are matched by the caller. No staging, selection or tuning.
 import {Simulation} from '../src/sim/simulation.js';
 import {CFG} from '../src/sim/config.js';
 import {createObservatory} from './observatory.mjs';
 const [seed,arm,daysArg,out,ox='0',oy='0']=process.argv.slice(2);
-const ARMS={vision:{anatomicalVision:true},control:{anatomicalVision:false},foraging:{aquaticForaging:true},current:{aquaticForaging:false},seeds:{seedViability:true},unbounded:{seedViability:false}};
+const ARMS={vision:{anatomicalVision:true},control:{anatomicalVision:false},foraging:{aquaticForaging:true},current:{aquaticForaging:false},seeds:{seedViability:true},unbounded:{seedViability:false},shared:{breedingSupport:true},legacy:{breedingSupport:false}};
 if(!seed||!ARMS[arm]||!out)throw Error('usage: <seed> <'+Object.keys(ARMS).join('|')+'> <days> <out> [ox oy]');
 const days=Number(daysArg);
 const sim=new Simulation(seed,{player:false,worldGenerator:'planetary/1',planetOrigin:{x:Number(ox),y:Number(oy)},...ARMS[arm]});
