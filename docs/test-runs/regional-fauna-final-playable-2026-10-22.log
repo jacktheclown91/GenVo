@@ -1,0 +1,249 @@
+
+[GenVo syntax] src/main.js
+
+[GenVo syntax] src/ui/front-end.js
+
+[GenVo syntax] src/persistence/save-manager.js
+
+[GenVo syntax] src/sim/frame-stepper.js
+
+[GenVo syntax] tests/save-concurrent-requests.mjs
+
+[GenVo playable] tests/itch-preview-performance.mjs
+itch preview performance/audio contracts PASS
+incremental cached terrain scheduling contracts PASS
+
+[GenVo playable] tests/botanical-identity-parity.mjs
+Botanical identity PASS: 512 historical content/identity comparisons, Unicode hashing, immutable founders and forged-ID rejection.
+
+[GenVo playable] tests/flora-genome-lifetime.mjs
+Flora genome lifetime PASS: reference parity, positive rare cohorts, parents, reproductive stocks, history and carried provenance, zero removal without iterator skips.
+
+[GenVo playable] tests/sensory-perception.mjs
+sensory fog, evolutionary sight, uncertain signals and save continuity PASS
+
+[GenVo playable] tests/vibration-sensing.mjs
+Ground contact sensing, physical sources, rock routing, and save policy PASS
+
+[GenVo playable] tests/cave-exploration-feedback.mjs
+Mouse cave recognition, biological access feedback, and hidden-information boundaries PASS
+
+[GenVo playable] tests/local-lineage-assortment.mjs
+local-lineage-assortment: actual pigment, inherited form, locality, reciprocal consent, historical continuation PASS
+
+[GenVo playable] tests/first-generation-heir-stakes.mjs
+First-generation heir: anatomical threshold, observed relative, inherited movement reveal and real guide PASS
+
+[GenVo playable] tests/physical-starter-presets.mjs
+jump: guided precursor plan, supported ecology, real action, unchanged habitat and save PASS
+burrow: guided precursor plan, supported ecology, real action, unchanged habitat and save PASS
+flight: guided precursor plan, supported ecology, real action, unchanged habitat and save PASS
+dive: guided precursor plan, supported ecology, real action, unchanged habitat and save PASS
+Physical starter menu builds: FOUR actual biology starts PASS
+
+[GenVo playable] tests/planetary-walkthrough.mjs
+Procedural planet New World default, held-direction frontier, real adjacent ecology, identity and save/return: PASS
+
+[GenVo playable] tests/regional-frontier.mjs
+Regional frontier PASS: genuine paid cardinal mouse routes, exact physical line and zero-distance identity transfer, no waiting movement cost, clipped-step cost parity, source page ownership, exact boundary/regenerated saves, policy corruption refusal and corner intents.
+
+[GenVo playable] tests/regional-fauna.mjs
+Regional fauna PASS: genuine resident bodies and identity, canonical-clock/surface/sight guards, read-only rendering with owner-world inputs, restored renderer on failure, precise hit testing, observed anatomy/save continuity, paid approach/crossing to the same owned animal and death cancellation.
+
+[GenVo playable] tests/planetary-preparation.mjs
+Planetary preparation PASS: bounded/deduplicated canonical scaffolds, no source mutation, exact prepared/direct crossing, one-time promotion, archive-owned World eviction, retained survey/save identity and marine-policy isolation.
+
+[GenVo playable] tests/planetary-work-queue.mjs
+Planetary work queue PASS: one admission per paint, fair jobs, pause recheck, async exclusion, world replacement, stale cancellation, failure recovery and residency save/database lifecycle guards.
+
+[GenVo playable] tests/planetary-seam-work.mjs
+Incremental seam work PASS: genuine three-region day, one pair per unit, atomic no-write staging, exact direct parity, resume/cancel, changed-stock restart and malformed-source rejection.
+
+[GenVo playable] tests/stratum-senses.mjs
+Shared cave/water optics, routed hearing, separate memories and explicit save policy PASS
+
+[GenVo playable] tests/surface-ice.mjs
+Surface ice kernel PASS: finite phase partition, salinity depression, unchanged water/salt, load fracture without melt, atomic invalid forcing and funded thaw.
+
+[GenVo playable] tests/surface-ice-coupling.mjs
+Surface ice coupling PASS: actual paired liquid/salt transfers, unchanged frozen subsets, funded wetbed displacement and atomic rejection of frozen topology export.
+
+[GenVo playable] tests/surface-ice-continuity.mjs
+Surface ice continuity PASS: real cold daily hydrology, water/salt closure, exact whole-state save/next day, corrupt-state rejection and future-only reversible metadata adoption.
+
+[GenVo playable] tests/surface-ice-access.mjs
+Surface ice access PASS: liquid depth, sealed drinking/food, blocked ascent and finite air, exact save continuation and fracture breathing without melt.
+
+[GenVo playable] tests/ice-locomotion.mjs
+Ice locomotion PASS: real body support, shared crossing route, aggregate load fracture, unchanged water/salt/ice, finite struggle, paid manual bank escape, drowning, route invalidation and exact validated saves.
+
+[GenVo playable] tests/ice-aerial-breathing.mjs
+Ice aerial/breathing PASS: shared supported landings, impact fracture without melt, read-only bounded breathing waypoint, saved target and normal paid AUTO route to exposed air.
+
+[GenVo playable] tests/surface-ice-regional.mjs
+Regional ice PASS: real cold daily phase, canonical departure/archive ownership, new destination policy, exact active+offscreen next-tick restore and return to persisted frozen history.
+
+[GenVo playable] tests/thermal-refuge.mjs
+Thermal refuge PASS: shared read-only physiology, anatomy-dependent choice, urgent/manual priorities, normal decision and charged movement, actual metabolic relief, exact saved target and historical opt-out.
+
+[GenVo playable] tests/thermal-weather.mjs
+Thermal weather PASS: deterministic signed spells, unchanged rain/biological RNG, canonical temperature coupling, funded snow/thaw, real-tick save continuation and corrupt/legacy guards.
+
+[GenVo playable] tests/habitat-hazards.mjs
+Habitat hazards PASS: paid shelter/nest/cache, finite distinct reserve losses, physical flooding, irreversible attributed clutch loss, duplicate guards and exact policy/save continuation.
+
+[GenVo playable] tests/wildfire.mjs
+Wildfire PASS: finite plant debit/mineral-export closure, real injury, duplicate guards, rain extinction, escape queries and exact versioned saves.
+
+[GenVo playable] tests/thunderstorms.mjs
+Thunderstorms PASS: deterministic real weather, injury/roof shielding, bounded delayed audio, refuge read-only queries and exact historical/new persistence.
+
+[GenVo playable] tests/thunderstorm-regions.mjs
+Regional thunderstorms PASS: actual controlled-weather ticks, independent local events, exact archive/save continuation and historical opt-out.
+
+[GenVo playable] tests/atmospheric-visibility.mjs
+Atmospheric visibility PASS: shared snow phase, optical loss, hearing and vigilance, sense advantage, stratum isolation, read-only queries, legacy policy and exact save observation.
+
+[GenVo playable] tests/natural-caves.mjs
+Natural caves PASS: seeded connected geology, material/water/RNG conservation, bounded erosion and collapse, partial-void digging, ordinary non-digger entry/exit, transition restrictions and exact mid-entry saves.
+
+[GenVo playable] tests/cave-chambers.mjs
+Geological chambers PASS: actual broad traversable voids, deterministic conserved formation, one derived refresh and exact historical/new save geometry.
+
+[GenVo playable] tests/cave-roof.mjs
+Cave roof PASS: actual span/thickness/wetness, simultaneous conserved collapse, finite trapped air and exact versioned historical/new continuation.
+
+[GenVo playable] tests/cave-air.mjs
+Finite cave air PASS: oxygen closure, connected ventilation, real uptake, scarce-air sharing, collapse displacement, empty excavation and exact historical/new saves.
+
+[GenVo playable] tests/cave-water.mjs
+Cave groundwater PASS: single owned aquifer, physical exposure, conservative drainage, gas displacement, shared flooded movement/art and exact daily continuation.
+
+[GenVo playable] tests/cave-drinking.mjs
+Cave drinking PASS: exact finite water/hydration debit, soil receipts, shared mouse/E/wildlife authority, stale/depleted guards and exact save continuation.
+
+[GenVo playable] tests/burrowing.mjs
+Burrowing PASS: legal digging anatomy, real work, solid/void/spoil conservation, connected traversal, entry-only exit, layer contact, finite air, exact saves, corrupt receipts and legacy opt-out.
+
+[GenVo playable] tests/climbing.mjs
+Climbing PASS: continuous height/load costs, anchored movement, canopy access timing, falls/reversal, shared wildlife physics, exact saves, native grips, legacy policy and reversible adoption.
+
+[GenVo playable] tests/action-capabilities.mjs
+Action capabilities PASS: exact anatomy thresholds, bilateral support, temporary unavailability, read-only queries, save/control refresh, exit actions and common-action priority.
+
+[GenVo playable] tests/diving.mjs
+Diving PASS: real water columns, gradual submersion/ascent, finite air and energy, gill respiration, depth access/contact, exact continuation, legacy opt-out and reversible adoption.
+
+[GenVo playable] tests/movement-adoption.mjs
+Movement adoption PASS: whole-state preservation, exact read-only backup, atomic failure/rollback/retry, no premature activation, future policy receipts, regional agreement and clock/pounce refusal.
+Ice continuation storage PASS: zero invented phase, unchanged biological/water/salt stocks, actual untouched backup and exact atomic failure rollback.
+
+[GenVo playable] tests/gliding.mjs
+Gliding PASS: precursor/mutation/inheritance, costed tree climb, shared continuous descent, player/wild parity, finite landing, water/collision costs, exact continuation, legacy policy and corrupt-save rejection.
+
+[GenVo playable] tests/jumping.mjs
+Jumping PASS: inherited spring anatomy, funded analytic arc, player/wild cadence, airborne restrictions, modern pounce, real landing costs/recovery, exact saves, corrupt/legacy guards, ground contact and audio cues.
+
+[GenVo playable] tests/authored-founders.mjs
+Authored founders: legal precursor trace, explicit sandbox, shared biology/compatibility, external resource receipts, source isolation, exact save and regional provenance PASS
+
+[GenVo playable] tests/resident-start.mjs
+Resident starts: real wild body selection, exact biology/stocks/RNG, retained ancestry, independent fork, future births and provenance refusal PASS
+
+[GenVo playable] tests/camera-bounds.mjs
+Finite regional camera: all borders, zoom levels, interior following, oversized viewports and open planetary centring PASS
+
+[GenVo playable] tests/save-concurrent-requests.mjs
+concurrent save requests: delayed autosave, retained manual intent and current-state capture PASS
+
+[GenVo playable] tests/save-async-coherence.mjs
+async save coherence: delayed setup, exact transported state/restore and post-capture biological events PASS
+
+[GenVo playable] tests/save-persistence.mjs
+save persistence roundtrip: PASS
+
+[GenVo playable] tests/bundled-scenario-restore.mjs
+Checking established-valley-d30
+established-valley-d30 PASS: authentic historical planetary restore, no marine adoption, unchanged organisms/stocks/RNG, exact roundtrip, continuation and regeneration parity
+Checking mature-valley-d100
+mature-valley-d100 PASS: authentic historical planetary restore, no marine adoption, unchanged organisms/stocks/RNG, exact roundtrip, continuation and regeneration parity
+
+[GenVo playable] tests/regional-records.mjs
+Regional records PASS: real frontier archive partition, complete exact reassembly/continuation, single traveler ownership, stale/missing/duplicate rejection and legacy snapshots.
+
+[GenVo playable] tests/regional-dirty.mjs
+Regional dirty journal PASS: actual crossing/replay, retained survey, transport-time publication, failed-save retention, adoption/rollback and lifecycle/external invalidation.
+
+[GenVo playable] tests/overlay-placement.mjs
+Overlay placement PASS: player/target avoidance and complete bounds at desktop, laptop and 800x600 edge/centre cases.
+
+[GenVo playable] tests/regional-founding.mjs
+Regional founding PASS: 45 bounded templates, 17 founded across three regions, food-supported breeding groups, prey-before-predator, provenance, determinism, save validation, crossing and historical policy.
+
+[GenVo playable] tests/regional-demography.mjs
+Regional demography PASS: canonical births under the population model, near/far assignment by real crossings, level far clocks with one continuous ledger, live seams, exact save/continuation, promotion on return without re-founding, and historical policy.
+
+[GenVo playable] tests/regional-residency.mjs
+Regional residency PASS: far regions unload to committed records, saves retain them by reference, resident-only and complete reads, gated reload with genuine catch-up, rotation choice and 20 explored regions beyond the former sixteen-region ceiling.
+
+[GenVo playable] tests/border-terrain.mjs
+Border terrain PASS: proximity-limited neighbours, projection edge, generated and resident sources, independent copies of real saved terrain and border visibility rules.
+
+[GenVo playable] tests/regional-scene.mjs
+Regional scene PASS: exact ownership handoff, prepared native cache promotion, independent departing terrain, rebased neighbours, no blank preparation, cold frontier, interaction invalidation, bounded terrain-only surfaces and no biology/RNG changes.
+
+[GenVo playable] tests/regional-pointer-route.mjs
+Regional pointer PASS: read-only physical planning, paid real movement/canonical transfer, planetary endpoint, no duplicate IDs, exactly-once arrival, cancel/pause/forgery safety and visible navigation-only neighbour targets.
+
+[GenVo playable] tests/pointer-route-availability.mjs
+Read-only route availability, execution parity, authoritative early reach, pause and manual-cancel safety PASS
+
+[GenVo playable] tests/continental-projection.mjs
+Continental projection PASS: versioned descriptors, identical terrain in the original window, polar and antimeridian limits, distinct reachable climates {"landing":0.353,"equatorial":0.549,"subpolar":0.216}, and historical worlds keeping their projection.
+
+[GenVo playable] tests/regional-warm-cache.mjs
+Regional warm cache PASS: canonical-priority capacity, invalidation on publication/policy/replacement, value-identical three-region replay and independent published checkpoints.
+
+[GenVo playable] tests/evolved-library.mjs
+Evolved library PASS: registration of a naturally evolved, true-breeding, sustained configuration (Hopper, 15 living, emergence add-or-replace), recorded ancestry and founding lineage, 9 run-time births with a carrier parent (1 carried the configuration, 8 did not), no authored or duplicate entries, save validation, new-world founding with library provenance, and no population ceiling.
+
+[GenVo playable] tests/evolved-library-store.mjs
+Evolved library store PASS: cross-world store, no duplicates, sightings per world and validation on write and read.
+
+[GenVo playable] tests/regional-dispersal.mjs
+Regional dispersal PASS: 5 natural crossings in 10 days (4 animals), only into existing regions, unique identities and intact genomes, recorded histories, no immediate return, consistent ledgers (2), exact save/continuation and historical policy.
+
+[GenVo playable] tests/marine-food-web.mjs
+Marine food web PASS: seawater-only biomass funded by shared accounts, cycling tiers over 900 days, die-back in fresh water, mouth access, plankton-sifter:10 shell-cruncher:4 founded only in seawater, salt-gland hydration, policy-gated evolution, exact save/continuation and historical policy.
+
+[GenVo playable] tests/regional-multi-hop-biology.mjs
+Multi-hop biology PASS: three real regions, preserved archive authorities/ledgers, real continued ticks, honest debt and exact save/continuation
+
+[GenVo playable] tests/regional-synchronized-replay.mjs
+Synchronized regions PASS: three visited worlds, bounded debt, frame-held local time, exact synchronous/yielded control and biology parity, mid-barrier saves, historical fallback and unknown policy rejection
+
+[GenVo playable] tests/aquatic.mjs
+aquatic ok
+
+[GenVo playable] tests/save-storage.mjs
+IndexedDB save manager contract: PASS
+
+[GenVo playable] tests/menu-world-slots.mjs
+menu multi-world slots and legacy compatibility: PASS
+
+[GenVo playable] tests/quick-interaction-default.mjs
+plain E acts on the shown default; explicit Q selection keeps its documented stickiness PASS
+
+[GenVo playable] tests/gameplay-actions.mjs
+Canonical combat availability, read-only descriptors, stale state and repeat-click guards PASS
+
+[GenVo playable] tests/contextual-interactions.mjs
+Four dietary anatomies, read-only queries, exact-target/no-fallback, ambiguity, stale feeding descriptors, keyed collection and attack fallback PASS
+
+[GenVo playable] tests/world-swap-render.mjs
+world swap render caches ok
+
+[GenVo playable] tests/menu-task-usability.mjs
+menu clarity + teachable Stalker flee response: PASS
+
+GenVo playable checkpoint: 81 focused checks passed. Browser acceptance is still required.

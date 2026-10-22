@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import {createHash} from 'node:crypto';
+import {pruneUnusedFloraGenomes} from '../src/ecology/flora-genome-lifetime.js';
+import {founderFloraGenome} from '../src/ecology/flora-genotype.js';
+const source=fs.readFileSync(new URL('../docs/performance/flora-genome-lifetime-before-2026-10-21.txt',import.meta.url),'utf8');
+assert.equal(createHash('sha256').update(source).digest('hex'),'f09e87f5b78f3c9a448e9eee87d5551fe1bc92c016c9119013707126a3eca264','preserved original collection source');
+const historical=source.replace("'./flora-genotype.js'",JSON.stringify(new URL('../src/ecology/flora-genotype.js',import.meta.url).href));
+const {pruneUnusedFloraGenomes:before}=await import('data:text/javascript;base64,'+Buffer.from(historical).toString('base64'));
+const ids=['adult','rare','parent','mother','father','bank','origin','birth','event','receipt','flower','pollen','embryo','cargo','meal','carried','cohort-parent'];
+const genomes=new Map([founderFloraGenome('bramble').id,...ids,'zero','negative','unused'].map(id=>[id,{id}]));
+const rows=new Map([['zero',{amount:0}],['rare',{amount:1e-300,parentGenomeId:'parent',parentGenomeIds:['mother','father']}],['negative',{amount:-1}]]);
+const fixture={floraState:{genomes,adults:{bramble:new Map([[3,'adult']])},seeds:{bramble:new Map([[3,rows]])},births:[{genomeId:'birth'}]},bankGenomes:{bramble:new Map([[3,{genomeId:'bank'}]])},producerOrigins:{bramble:new Map([[3,{genomeId:'origin'}]])},events:[{genomeId:'event'}],botanical:{receipts:[{genomeId:'receipt'}],flowers:new Map([[3,{genome:{id:'flower'}}]]),pollen:new Map([[3,{genome:{id:'pollen'}}]]),embryos:[{genomeId:'embryo'}]},sim:{animals:[{pollenCargo:{genomeId:'cargo'},lastPlantMeal:{genomeId:'meal'},seedCargo:{bramble:{genomeId:'carried',cohorts:new Map([[1,{parentGenomeId:'cohort-parent'}]])}}}]}};
+const expected=structuredClone(fixture),actual=structuredClone(fixture);
+assert.deepEqual(pruneUnusedFloraGenomes(actual),before(expected));assert.deepEqual(actual,expected,'same full record graph and ordered deletion');
+assert.equal(actual.floraState.seeds.bramble.get(3).size,1);assert.equal(actual.floraState.seeds.bramble.get(3).get('rare').amount,1e-300,'positive rare cohorts are never thresholded');
+for(const id of ids)assert.ok(actual.floraState.genomes.has(id),'retain referenced genotype '+id);
+for(const id of ['zero','negative','unused'])assert.equal(actual.floraState.genomes.has(id),false);
+assert.equal(pruneUnusedFloraGenomes(actual).removed,0,'repeated collection is stable');
+console.log('Flora genome lifetime PASS: reference parity, positive rare cohorts, parents, reproductive stocks, history and carried provenance, zero removal without iterator skips.');

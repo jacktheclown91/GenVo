@@ -1,3 +1,4 @@
+import {physicalFrontier} from '../world/regional-frontier.js';
 // Page residency is an identity ledger, NOT another copy of the organisms.
 // Simulation.animals remains the only live creature owner. Page views may be
 // unloaded without removing actors, their ancestry, or their material reserves.
@@ -11,7 +12,7 @@ export function residencyPage(w,x,y){
  if(!grid||!Number.isFinite(x)||!Number.isFinite(y))throw Error('Invalid resident coordinates.');
  // The existing simulation can temporarily position test/scripted creatures outside
  // the playable map. Those have no page owner; observation must not change biology.
- if(x<0||y<0||x>=w.n||y>=w.n)return null;
+ if(physicalFrontier(w)){if(x===w.n)x=w.n-1;if(y===w.n)y=w.n-1}if(x<0||y<0||x>=w.n||y>=w.n)return null;
  return Math.floor(x/WORLD_PAGE_SIZE)+','+Math.floor(y/WORLD_PAGE_SIZE);
 }
 function validKey(key,grid){

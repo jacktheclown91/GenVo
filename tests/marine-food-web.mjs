@@ -87,4 +87,5 @@ assert.deepEqual(structuredClone(createSimulationSnapshot(back,{savedAt:'t',reas
 // whose fields and policy disagree is refused.
 {const s=structuredClone(createSimulationSnapshot(classic,{savedAt:'t',reason:'t'}));const old=restoreSimulationSnapshot(s);assert.equal(old.marineFoodRules,undefined);assert.equal(old.world.marineFood,undefined)}
 {const s=structuredClone(snap);delete s.core.marineFoodRules;assert.throws(()=>restoreSimulationSnapshot(s),/disagree/)}
+{const s=structuredClone(snap);delete s.world.marineFood;assert.throws(()=>restoreSimulationSnapshot(s),/disagree/)}
 console.log('Marine food web PASS: seawater-only biomass funded by shared accounts, cycling tiers over 900 days, die-back in fresh water, mouth access, '+marineGroups.map(g=>g.template+':'+g.supportable).join(' ')+' founded only in seawater, salt-gland hydration, policy-gated evolution, exact save/continuation and historical policy.');

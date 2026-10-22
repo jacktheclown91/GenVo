@@ -1,0 +1,30 @@
+{
+  "scope": "Actual mature bundled checkpoint, unchanged retained cohorts and provenance; isolated collection scan only, not browser frame acceptance",
+  "sourceHashes": {
+    "src/ecology/flora-genome-lifetime.js": "5db564ead0745c8639cfaabc5fe867101ea7f6b891a8dd4d03065ff27ad84e35",
+    "reports/flora-genome-lifetime-before-2026-10-21.mjs": "3fe26ecf68ac0faf16e5d88efec8672c5953e4b0b487790511fa70edcc7ddc5e"
+  },
+  "inputSha256": "c95c8909e8ab3adeddf03a14dadf0ad3936bfc4948295c642349dc4d7e7f53d6",
+  "cohorts": 859096,
+  "positive": 859096,
+  "retained": 41691,
+  "samplesMs": {
+    "before": [
+      168.51929999999993,
+      179.1999999999989,
+      165.76339999999982,
+      167.02589999999873
+    ],
+    "after": [
+      134.86269999999968,
+      161.54689999999937,
+      153.41420000000107,
+      161.240600000001
+    ]
+  },
+  "meanMs": {
+    "before": 170.12714999999935,
+    "after": 152.76610000000028
+  },
+  "exactWholeState": true
+}

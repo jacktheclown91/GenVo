@@ -42,6 +42,8 @@ Two digging forelimbs enable **Burrow** on suitable dry ground in new worlds. Ex
 
 For a saved, imported or bundled evolved world, **New World > Movement in this continuation > Enable new movement · save original backup** enables these rules in a separate continuation. The untouched checkpoint and the continuation commit together before play begins. **Worlds > New World from backup** recovers a playable copy with its original rules and recorded lineage. Ordinary Continue never opts a historical world in. See [movement adoption and recovery](docs/MOVEMENT-ADOPTION-2026-10-20.md).
 
+Fresh procedural planets now record full-region movement bounds. Solo walking reaches the actual regional line and transfers ownership without changing planetary position; historical saves keep their recorded bounds. Family-group passage and neighbouring wildlife remain unfinished. See [physical-frontier evidence and limits](docs/REGIONAL-FRONTIER-2026-10-21.md).
+
 ## Verify
 
 Node.js and Python are required for the development tools. Browser checks also require Playwright/Chromium.

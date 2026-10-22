@@ -1,0 +1,1255 @@
+{
+  "target": {
+    "id": 176,
+    "bodyPlan": {
+      "schema": "genvo8.bodyplan/0",
+      "registryVersion": 0,
+      "nodes": [
+        {
+          "id": "root",
+          "partId": "dome-torso",
+          "partVersion": 1,
+          "parent": null,
+          "socket": null
+        },
+        {
+          "id": "root/dorsal",
+          "partId": "thorn-carapace",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "dorsal"
+        },
+        {
+          "id": "root/eye.left",
+          "partId": "wide-field-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.left"
+        },
+        {
+          "id": "root/eye.right",
+          "partId": "wide-field-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.right"
+        },
+        {
+          "id": "root/limb.1",
+          "partId": "sturdy-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.1"
+        },
+        {
+          "id": "root/limb.3",
+          "partId": "sturdy-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.3"
+        },
+        {
+          "id": "root/limb.5",
+          "partId": "sturdy-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.5"
+        },
+        {
+          "id": "root/limb.7",
+          "partId": "sturdy-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.7"
+        },
+        {
+          "id": "root/mouth",
+          "partId": "kernel-beak",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "mouth"
+        },
+        {
+          "id": "root/tail",
+          "partId": "club-tail",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "tail"
+        }
+      ],
+      "id": "bp0-f2c1ac4e"
+    },
+    "genes": {
+      "body": 1.007215393567458,
+      "motion": 1.0355997620616109,
+      "metabolism": 1.0584191034547985,
+      "digestion": 0.9690603046678007,
+      "senses": 1.0975411016959697,
+      "climate": 0.9087319646496326,
+      "immunity": 0.9132410899735988,
+      "temperament": 1.0443361383397134
+    }
+  },
+  "readOnly": {
+    "before": "f5d191837ffdb0c63786b3873a5c943e86ddece76051d20dc723862c829aa75b",
+    "after": "f5d191837ffdb0c63786b3873a5c943e86ddece76051d20dc723862c829aa75b"
+  },
+  "viewports": [
+    {
+      "width": 800,
+      "height": 600,
+      "items": [
+        {
+          "label": "Neighbouring creature",
+          "left": 472,
+          "top": 276.28125,
+          "right": 544,
+          "bottom": 318.28125
+        },
+        {
+          "label": "Observe",
+          "left": 470,
+          "top": 199.78125,
+          "right": 546,
+          "bottom": 254.78125
+        },
+        {
+          "label": "Approach creature",
+          "left": 470,
+          "top": 333.28125,
+          "right": 546,
+          "bottom": 401.28125
+        }
+      ],
+      "playerOverlap": 0
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "items": [
+        {
+          "label": "Neighbouring creature",
+          "left": 584,
+          "top": 353.53125,
+          "right": 656,
+          "bottom": 395.53125
+        },
+        {
+          "label": "Observe",
+          "left": 582,
+          "top": 277.03125,
+          "right": 658,
+          "bottom": 332.03125
+        },
+        {
+          "label": "Approach creature",
+          "left": 582,
+          "top": 410.53125,
+          "right": 658,
+          "bottom": 478.53125
+        }
+      ],
+      "playerOverlap": 0
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "items": [
+        {
+          "label": "Neighbouring creature",
+          "left": 1032,
+          "top": 469.03125,
+          "right": 1104,
+          "bottom": 511.03125
+        },
+        {
+          "label": "Observe",
+          "left": 1030,
+          "top": 392.53125,
+          "right": 1106,
+          "bottom": 447.53125
+        },
+        {
+          "label": "Approach creature",
+          "left": 1030,
+          "top": 526.03125,
+          "right": 1106,
+          "bottom": 594.03125
+        }
+      ],
+      "playerOverlap": 0
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "items": [
+        {
+          "label": "Neighbouring creature",
+          "left": 755,
+          "top": 272.546875,
+          "right": 827,
+          "bottom": 314.546875
+        },
+        {
+          "label": "Observe",
+          "left": 753,
+          "top": 196.046875,
+          "right": 829,
+          "bottom": 251.046875
+        },
+        {
+          "label": "Approach creature",
+          "left": 753,
+          "top": 329.546875,
+          "right": 829,
+          "bottom": 397.546875
+        }
+      ],
+      "playerOverlap": 0
+    }
+  ],
+  "observation": {
+    "record": {
+      "id": 176,
+      "species": "podshell",
+      "name": "Observed creature 176",
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "dome-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/dorsal",
+            "partId": "thorn-carapace",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "dorsal"
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "wide-field-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "wide-field-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "sturdy-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "sturdy-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "sturdy-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "sturdy-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "kernel-beak",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          },
+          {
+            "id": "root/tail",
+            "partId": "club-tail",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "tail"
+          }
+        ],
+        "id": "bp0-f2c1ac4e"
+      },
+      "genes": {
+        "body": 1.007215393567458,
+        "motion": 1.0355997620616109,
+        "metabolism": 1.0584191034547985,
+        "digestion": 0.9690603046678007,
+        "senses": 1.0975411016959697,
+        "climate": 0.9087319646496326,
+        "immunity": 0.9132410899735988,
+        "temperament": 1.0443361383397134
+      },
+      "adaptations": [],
+      "anatomy": {},
+      "phenotype": {
+        "bodyScale": 1.0187600232753906,
+        "limbScale": 1.0996793337725104,
+        "sensoryScale": 1.2828691949183122,
+        "eyeScale": 1.1950822033919395,
+        "feelerScale": 1.238975699155126,
+        "temperamentScale": 1.059853786758613,
+        "bodyWidthScale": 1,
+        "bodyHeightScale": 1,
+        "lineageForm": null,
+        "protoTrait": null,
+        "protoTraitStrength": 0,
+        "protoMixedTrait": null,
+        "protoGeneFlow": 0,
+        "speciesBranch": null,
+        "speciesLifestyle": null,
+        "lineageFormStrength": 0,
+        "hueShift": 80,
+        "lightShift": 9,
+        "pigmentChroma": 0.32,
+        "patternBands": 2,
+        "patternSpots": 2,
+        "patternPolarity": 1,
+        "stripe": false,
+        "spot": true,
+        "compact": false,
+        "energetic": true,
+        "adaptations": {
+          "hardened": false,
+          "barbed": false,
+          "bitter": false,
+          "spring": false,
+          "waterSacs": false,
+          "efficientGut": false,
+          "fastHealing": false,
+          "alarmPulse": false,
+          "camouflage": false,
+          "heavyJaw": false,
+          "mobbing": false,
+          "grasping": false,
+          "adaptiveChromatophores": false,
+          "crushingJaw": false,
+          "coordinatedDefense": false,
+          "provisioningPouches": false,
+          "webbedLimbs": false
+        }
+      },
+      "day": 1
+    },
+    "remoteId": 176,
+    "remoteBody": {
+      "schema": "genvo8.bodyplan/0",
+      "registryVersion": 0,
+      "nodes": [
+        {
+          "id": "root",
+          "partId": "dome-torso",
+          "partVersion": 1,
+          "parent": null,
+          "socket": null
+        },
+        {
+          "id": "root/dorsal",
+          "partId": "thorn-carapace",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "dorsal"
+        },
+        {
+          "id": "root/eye.left",
+          "partId": "wide-field-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.left"
+        },
+        {
+          "id": "root/eye.right",
+          "partId": "wide-field-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.right"
+        },
+        {
+          "id": "root/limb.1",
+          "partId": "sturdy-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.1"
+        },
+        {
+          "id": "root/limb.3",
+          "partId": "sturdy-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.3"
+        },
+        {
+          "id": "root/limb.5",
+          "partId": "sturdy-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.5"
+        },
+        {
+          "id": "root/limb.7",
+          "partId": "sturdy-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.7"
+        },
+        {
+          "id": "root/mouth",
+          "partId": "kernel-beak",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "mouth"
+        },
+        {
+          "id": "root/tail",
+          "partId": "club-tail",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "tail"
+        }
+      ],
+      "id": "bp0-f2c1ac4e"
+    },
+    "activeOwns": false
+  },
+  "arrived": {
+    "targetId": 176,
+    "bodyPlan": {
+      "schema": "genvo8.bodyplan/0",
+      "registryVersion": 0,
+      "nodes": [
+        {
+          "id": "root",
+          "partId": "dome-torso",
+          "partVersion": 1,
+          "parent": null,
+          "socket": null
+        },
+        {
+          "id": "root/dorsal",
+          "partId": "thorn-carapace",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "dorsal"
+        },
+        {
+          "id": "root/eye.left",
+          "partId": "wide-field-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.left"
+        },
+        {
+          "id": "root/eye.right",
+          "partId": "wide-field-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.right"
+        },
+        {
+          "id": "root/limb.1",
+          "partId": "sturdy-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.1"
+        },
+        {
+          "id": "root/limb.3",
+          "partId": "sturdy-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.3"
+        },
+        {
+          "id": "root/limb.5",
+          "partId": "sturdy-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.5"
+        },
+        {
+          "id": "root/limb.7",
+          "partId": "sturdy-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.7"
+        },
+        {
+          "id": "root/mouth",
+          "partId": "kernel-beak",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "mouth"
+        },
+        {
+          "id": "root/tail",
+          "partId": "club-tail",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "tail"
+        }
+      ],
+      "id": "bp0-f2c1ac4e"
+    },
+    "genes": {
+      "body": 1.007215393567458,
+      "motion": 1.0355997620616109,
+      "metabolism": 1.0584191034547985,
+      "digestion": 0.9690603046678007,
+      "senses": 1.0975411016959697,
+      "climate": 0.9087319646496326,
+      "immunity": 0.9132410899735988,
+      "temperament": 1.0443361383397134
+    },
+    "distance": 1.3661542762640548,
+    "selected": 176,
+    "unique": true,
+    "last": {
+      "type": "planet-travel",
+      "actorId": 197,
+      "members": [
+        197
+      ],
+      "from": "128,0",
+      "to": "0,0",
+      "tick": 85
+    },
+    "observed": [
+      "bp0-f2c1ac4e"
+    ]
+  },
+  "saved": {
+    "origin": {
+      "x": 0,
+      "y": 0
+    },
+    "target": {
+      "id": 176,
+      "species": "podshell",
+      "x": 124.81084621410804,
+      "y": 76.45406098283026,
+      "vx": 0,
+      "vy": 0,
+      "dir": 4,
+      "age": 37.26522694001906,
+      "energy": 84.86640966005898,
+      "hydration": 85.62358319102385,
+      "health": 100,
+      "genes": {
+        "body": 1.007215393567458,
+        "motion": 1.0355997620616109,
+        "metabolism": 1.0584191034547985,
+        "digestion": 0.9690603046678007,
+        "senses": 1.0975411016959697,
+        "climate": 0.9087319646496326,
+        "immunity": 0.9132410899735988,
+        "temperament": 1.0443361383397134
+      },
+      "pigmentGenome": {
+        "schema": "genvo.pigment-genome/1",
+        "hue": 15,
+        "chroma": 1,
+        "tone": 3,
+        "marking": 2,
+        "density": 1,
+        "accent": 1
+      },
+      "reproductiveGenome": {
+        "schema": 1,
+        "loci": {
+          "gamete": [
+            1.04212,
+            1.05639
+          ],
+          "development": [
+            0.95108,
+            0.95108
+          ]
+        },
+        "origin": "founding-lineage",
+        "lineage": "podshell"
+      },
+      "matePreferences": {
+        "weights": {
+          "size": -0.08642,
+          "strength": 0.35068,
+          "ornament": 0.38927,
+          "display": -0.27165,
+          "behavior": 0.2299
+        },
+        "selectivity": 0.46393,
+        "ritualTastes": {
+          "dance": 0.85888,
+          "call": -0.73489,
+          "flare": -0.46252,
+          "scent": 0.26895,
+          "gesture": 0.04248
+        },
+        "tempo": -0.16006,
+        "similarity": 0.11894
+      },
+      "inbreeding": 0,
+      "sex": "F",
+      "pregnant": null,
+      "reproCooldown": 4.998279325198382,
+      "intent": "pod-watch",
+      "target": null,
+      "alive": true,
+      "infected": false,
+      "infection": null,
+      "immune": false,
+      "immuneUntilDay": 0,
+      "player": false,
+      "lineage": false,
+      "parentIds": [],
+      "grandparentIds": [],
+      "generation": 1,
+      "lastMate": null,
+      "reproDrive": 0,
+      "caregiverId": null,
+      "birthTick": 0,
+      "birthDay": 1,
+      "birthYear": 1,
+      "anim": 7,
+      "adaptations": [],
+      "massPolicy": "relative-anatomical-load/1",
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "dome-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/dorsal",
+            "partId": "thorn-carapace",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "dorsal"
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "wide-field-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "wide-field-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "sturdy-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "sturdy-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "sturdy-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "sturdy-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "kernel-beak",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          },
+          {
+            "id": "root/tail",
+            "partId": "club-tail",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "tail"
+          }
+        ],
+        "id": "bp0-f2c1ac4e"
+      },
+      "movedTick": 95,
+      "lastPlantMeal": {
+        "kind": "thistlepod",
+        "i": 10749,
+        "tissue": "kernel",
+        "removed": 0.15,
+        "coat": 0.0375,
+        "edible": 0.11249999999999999,
+        "viableSeeds": 0,
+        "destroyedSeeds": 0.03000000118206225,
+        "discarded": 0.0375,
+        "genome": {
+          "schema": 1,
+          "id": "flora1-thistlepod",
+          "resourceAlias": "thistlepod",
+          "traits": {
+            "growth": 0.026,
+            "waterNeed": 0.25,
+            "nutrition": 11,
+            "seedAllocation": 0.2,
+            "coatAllocation": 0.25
+          },
+          "reproduction": "propagule",
+          "mutationEnabled": false
+        },
+        "producerId": "thistlepod:10749:founder",
+        "originCell": 10749,
+        "processingCost": 0.15,
+        "specializedHandling": true,
+        "actorId": 176,
+        "tick": 24,
+        "parentGenomeId": "flora1-thistlepod",
+        "seedTransferComplete": true
+      },
+      "dietRecent": [
+        "seed"
+      ]
+    },
+    "tick": 96,
+    "rng": 2945655385,
+    "observed": [
+      {
+        "id": 176,
+        "species": "podshell",
+        "name": "Observed creature 176",
+        "bodyPlan": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "dome-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/dorsal",
+              "partId": "thorn-carapace",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "dorsal"
+            },
+            {
+              "id": "root/eye.left",
+              "partId": "wide-field-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/eye.right",
+              "partId": "wide-field-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "sturdy-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "sturdy-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "sturdy-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "sturdy-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            },
+            {
+              "id": "root/mouth",
+              "partId": "kernel-beak",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "mouth"
+            },
+            {
+              "id": "root/tail",
+              "partId": "club-tail",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "tail"
+            }
+          ],
+          "id": "bp0-f2c1ac4e"
+        },
+        "genes": {
+          "body": 1.007215393567458,
+          "motion": 1.0355997620616109,
+          "metabolism": 1.0584191034547985,
+          "digestion": 0.9690603046678007,
+          "senses": 1.0975411016959697,
+          "climate": 0.9087319646496326,
+          "immunity": 0.9132410899735988,
+          "temperament": 1.0443361383397134
+        },
+        "adaptations": [],
+        "anatomy": {},
+        "phenotype": {
+          "bodyScale": 1.0187600232753906,
+          "limbScale": 1.0996793337725104,
+          "sensoryScale": 1.2828691949183122,
+          "eyeScale": 1.1950822033919395,
+          "feelerScale": 1.238975699155126,
+          "temperamentScale": 1.059853786758613,
+          "bodyWidthScale": 1,
+          "bodyHeightScale": 1,
+          "lineageForm": null,
+          "protoTrait": null,
+          "protoTraitStrength": 0,
+          "protoMixedTrait": null,
+          "protoGeneFlow": 0,
+          "speciesBranch": null,
+          "speciesLifestyle": null,
+          "lineageFormStrength": 0,
+          "hueShift": 80,
+          "lightShift": 9,
+          "pigmentChroma": 0.32,
+          "patternBands": 2,
+          "patternSpots": 2,
+          "patternPolarity": 1,
+          "stripe": false,
+          "spot": true,
+          "compact": false,
+          "energetic": true,
+          "adaptations": {
+            "hardened": false,
+            "barbed": false,
+            "bitter": false,
+            "spring": false,
+            "waterSacs": false,
+            "efficientGut": false,
+            "fastHealing": false,
+            "alarmPulse": false,
+            "camouflage": false,
+            "heavyJaw": false,
+            "mobbing": false,
+            "grasping": false,
+            "adaptiveChromatophores": false,
+            "crushingJaw": false,
+            "coordinatedDefense": false,
+            "provisioningPouches": false,
+            "webbedLimbs": false
+          }
+        },
+        "day": 1
+      }
+    ]
+  },
+  "continued": {
+    "origin": {
+      "x": 0,
+      "y": 0
+    },
+    "target": {
+      "id": 176,
+      "species": "podshell",
+      "x": 124.81084621410804,
+      "y": 76.45406098283026,
+      "vx": 0,
+      "vy": 0,
+      "dir": 4,
+      "age": 37.26522694001906,
+      "energy": 84.86640966005898,
+      "hydration": 85.62358319102385,
+      "health": 100,
+      "genes": {
+        "body": 1.007215393567458,
+        "motion": 1.0355997620616109,
+        "metabolism": 1.0584191034547985,
+        "digestion": 0.9690603046678007,
+        "senses": 1.0975411016959697,
+        "climate": 0.9087319646496326,
+        "immunity": 0.9132410899735988,
+        "temperament": 1.0443361383397134
+      },
+      "pigmentGenome": {
+        "schema": "genvo.pigment-genome/1",
+        "hue": 15,
+        "chroma": 1,
+        "tone": 3,
+        "marking": 2,
+        "density": 1,
+        "accent": 1
+      },
+      "reproductiveGenome": {
+        "schema": 1,
+        "loci": {
+          "gamete": [
+            1.04212,
+            1.05639
+          ],
+          "development": [
+            0.95108,
+            0.95108
+          ]
+        },
+        "origin": "founding-lineage",
+        "lineage": "podshell"
+      },
+      "matePreferences": {
+        "weights": {
+          "size": -0.08642,
+          "strength": 0.35068,
+          "ornament": 0.38927,
+          "display": -0.27165,
+          "behavior": 0.2299
+        },
+        "selectivity": 0.46393,
+        "ritualTastes": {
+          "dance": 0.85888,
+          "call": -0.73489,
+          "flare": -0.46252,
+          "scent": 0.26895,
+          "gesture": 0.04248
+        },
+        "tempo": -0.16006,
+        "similarity": 0.11894
+      },
+      "inbreeding": 0,
+      "sex": "F",
+      "pregnant": null,
+      "reproCooldown": 4.998279325198382,
+      "intent": "pod-watch",
+      "target": null,
+      "alive": true,
+      "infected": false,
+      "infection": null,
+      "immune": false,
+      "immuneUntilDay": 0,
+      "player": false,
+      "lineage": false,
+      "parentIds": [],
+      "grandparentIds": [],
+      "generation": 1,
+      "lastMate": null,
+      "reproDrive": 0,
+      "caregiverId": null,
+      "birthTick": 0,
+      "birthDay": 1,
+      "birthYear": 1,
+      "anim": 7,
+      "adaptations": [],
+      "massPolicy": "relative-anatomical-load/1",
+      "bodyPlan": {
+        "schema": "genvo8.bodyplan/0",
+        "registryVersion": 0,
+        "nodes": [
+          {
+            "id": "root",
+            "partId": "dome-torso",
+            "partVersion": 1,
+            "parent": null,
+            "socket": null
+          },
+          {
+            "id": "root/dorsal",
+            "partId": "thorn-carapace",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "dorsal"
+          },
+          {
+            "id": "root/eye.left",
+            "partId": "wide-field-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.left"
+          },
+          {
+            "id": "root/eye.right",
+            "partId": "wide-field-eye",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "eye.right"
+          },
+          {
+            "id": "root/limb.1",
+            "partId": "sturdy-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.1"
+          },
+          {
+            "id": "root/limb.3",
+            "partId": "sturdy-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.3"
+          },
+          {
+            "id": "root/limb.5",
+            "partId": "sturdy-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.5"
+          },
+          {
+            "id": "root/limb.7",
+            "partId": "sturdy-leg",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "limb.7"
+          },
+          {
+            "id": "root/mouth",
+            "partId": "kernel-beak",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "mouth"
+          },
+          {
+            "id": "root/tail",
+            "partId": "club-tail",
+            "partVersion": 1,
+            "parent": "root",
+            "socket": "tail"
+          }
+        ],
+        "id": "bp0-f2c1ac4e"
+      },
+      "movedTick": 95,
+      "lastPlantMeal": {
+        "kind": "thistlepod",
+        "i": 10749,
+        "tissue": "kernel",
+        "removed": 0.15,
+        "coat": 0.0375,
+        "edible": 0.11249999999999999,
+        "viableSeeds": 0,
+        "destroyedSeeds": 0.03000000118206225,
+        "discarded": 0.0375,
+        "genome": {
+          "schema": 1,
+          "id": "flora1-thistlepod",
+          "resourceAlias": "thistlepod",
+          "traits": {
+            "growth": 0.026,
+            "waterNeed": 0.25,
+            "nutrition": 11,
+            "seedAllocation": 0.2,
+            "coatAllocation": 0.25
+          },
+          "reproduction": "propagule",
+          "mutationEnabled": false
+        },
+        "producerId": "thistlepod:10749:founder",
+        "originCell": 10749,
+        "processingCost": 0.15,
+        "specializedHandling": true,
+        "actorId": 176,
+        "tick": 24,
+        "parentGenomeId": "flora1-thistlepod",
+        "seedTransferComplete": true
+      },
+      "dietRecent": [
+        "seed"
+      ]
+    },
+    "tick": 96,
+    "rng": 2945655385,
+    "observed": [
+      {
+        "id": 176,
+        "species": "podshell",
+        "name": "Observed creature 176",
+        "bodyPlan": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "dome-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/dorsal",
+              "partId": "thorn-carapace",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "dorsal"
+            },
+            {
+              "id": "root/eye.left",
+              "partId": "wide-field-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/eye.right",
+              "partId": "wide-field-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "sturdy-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "sturdy-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "sturdy-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "sturdy-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            },
+            {
+              "id": "root/mouth",
+              "partId": "kernel-beak",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "mouth"
+            },
+            {
+              "id": "root/tail",
+              "partId": "club-tail",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "tail"
+            }
+          ],
+          "id": "bp0-f2c1ac4e"
+        },
+        "genes": {
+          "body": 1.007215393567458,
+          "motion": 1.0355997620616109,
+          "metabolism": 1.0584191034547985,
+          "digestion": 0.9690603046678007,
+          "senses": 1.0975411016959697,
+          "climate": 0.9087319646496326,
+          "immunity": 0.9132410899735988,
+          "temperament": 1.0443361383397134
+        },
+        "adaptations": [],
+        "anatomy": {},
+        "phenotype": {
+          "bodyScale": 1.0187600232753906,
+          "limbScale": 1.0996793337725104,
+          "sensoryScale": 1.2828691949183122,
+          "eyeScale": 1.1950822033919395,
+          "feelerScale": 1.238975699155126,
+          "temperamentScale": 1.059853786758613,
+          "bodyWidthScale": 1,
+          "bodyHeightScale": 1,
+          "lineageForm": null,
+          "protoTrait": null,
+          "protoTraitStrength": 0,
+          "protoMixedTrait": null,
+          "protoGeneFlow": 0,
+          "speciesBranch": null,
+          "speciesLifestyle": null,
+          "lineageFormStrength": 0,
+          "hueShift": 80,
+          "lightShift": 9,
+          "pigmentChroma": 0.32,
+          "patternBands": 2,
+          "patternSpots": 2,
+          "patternPolarity": 1,
+          "stripe": false,
+          "spot": true,
+          "compact": false,
+          "energetic": true,
+          "adaptations": {
+            "hardened": false,
+            "barbed": false,
+            "bitter": false,
+            "spring": false,
+            "waterSacs": false,
+            "efficientGut": false,
+            "fastHealing": false,
+            "alarmPulse": false,
+            "camouflage": false,
+            "heavyJaw": false,
+            "mobbing": false,
+            "grasping": false,
+            "adaptiveChromatophores": false,
+            "crushingJaw": false,
+            "coordinatedDefense": false,
+            "provisioningPouches": false,
+            "webbedLimbs": false
+          }
+        },
+        "day": 1
+      }
+    ]
+  },
+  "errors": [],
+  "scope": "Exported native New World; only player frontier placement/facing is staged. Target is an untouched genuine initial founder, never spawned or relocated by the harness. Actual held-key outward crossing, read-only inherited remote rendering, native Observe and Approach creature across a canonical return, same body/ID/genes, local selection, attack-fallback guard, native Save/Continue and four viewport bounds. Resident populations only; no claim of unknown-region wildlife, cross-owner damage or natural continental gameplay."
+}

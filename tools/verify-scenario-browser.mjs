@@ -143,23 +143,27 @@ try{
  if(residentMode){assert.equal(report.playerId,chosenResident);assert.equal(report.storedPlayerId,chosenResident);assert.equal(report.creatureStart?.actorId,chosenResident);assert.equal(report.creatureStart?.kind,'existing-resident');}
  if(founderMode){assert.equal(report.creatureStart?.kind,'authored-founder');assert.equal(report.creatureStart.mode,founderMode);assert.equal(report.creatureStart.generation,1);assert.ok(report.authoredIntroductions?.at(-1)?.actors?.length===2);assert.ok(report.playerParts.includes(founderMode==='guided'?'feather-mantle':'flight-wing'));assert.equal(report.storedPlayerId,report.playerId);}
  let browserReload=null;
- if(founderMode){
-  if(founderMode==='sandbox'){
-   await page.locator('[data-command="flight"]').click();
-   await page.waitForFunction(()=>window.__GENVO8__.sim.player()?.airborne);
-   await page.screenshot({path:path.join(output,'authored-wing-flight.png')});
-  }
-  await page.evaluate(async()=>{window.__GENVO8__.sim.paused=true;await window.__GENVO8__.saveManager.saveNow('authored-browser-reload')});
-  await page.reload({waitUntil:'domcontentloaded'});
-  await page.waitForFunction(()=>!!window.__GENVO8__?.saveManager);
-  await page.locator('.menu-view[data-screen="home"] [data-action="continue"]').click();
-  await page.waitForFunction(id=>window.__GENVO8__?.sim?.playerId===id&&document.querySelector('#frontEnd')?.hidden,report.playerId,{timeout:120000});
-  await page.evaluate(()=>window.__GENVO8__.renderer.sceneReady());
-  browserReload=await page.evaluate(()=>({playerId:window.__GENVO8__.sim.playerId,mode:window.__GENVO8__.sim.creatureStart?.mode,receipts:window.__GENVO8__.sim.authoredIntroductions?.length,airborne:!!window.__GENVO8__.sim.player()?.airborne}));
-  assert.equal(browserReload.mode,founderMode);assert.ok(browserReload.receipts>0);
-  if(founderMode==='sandbox')assert.ok(browserReload.airborne,'authored wings and midflight state survive actual browser reload');
-  await page.screenshot({path:path.join(output,'authored-world-restored.png')});
+ if(founderMode==='sandbox'){
+  await page.locator('[data-command="flight"]').click();
+  await page.waitForFunction(()=>window.__GENVO8__.sim.player()?.airborne);
+  await page.screenshot({path:path.join(output,'authored-wing-flight.png')});
  }
+ // Every advanced-world path must survive actual native Save and Continue,
+ // including recorded historical worlds rather than only authored founders.
+ await page.keyboard.press('Escape');
+ await page.locator('.menu-view[data-screen="pause"] [data-action="save"]').click();
+ await page.waitForFunction(()=>document.querySelector('#menuMessage')?.textContent==='World saved.',{}, {timeout:120000});
+ const expectedReload=await page.evaluate(()=>{const s=window.__GENVO8__.sim;return{seed:s.seed,day:s.day,tick:s.tickCount,rng:s.rng.state,playerId:s.playerId,marinePolicy:s.marineFoodRules??null,marineFields:!!s.world.marineFood,population:s.animals.filter(a=>a.alive).length}});
+ await page.reload({waitUntil:'domcontentloaded'});
+ await page.waitForFunction(()=>!!window.__GENVO8__?.saveManager);
+ await page.locator('.menu-view[data-screen="home"] [data-action="continue"]').click();
+ await page.waitForFunction(id=>window.__GENVO8__?.sim?.playerId===id&&document.querySelector('#frontEnd')?.hidden,report.playerId,{timeout:120000});
+ await page.evaluate(()=>window.__GENVO8__.renderer.sceneReady());
+ browserReload=await page.evaluate(()=>{const s=window.__GENVO8__.sim;return{seed:s.seed,day:s.day,tick:s.tickCount,rng:s.rng.state,playerId:s.playerId,marinePolicy:s.marineFoodRules??null,marineFields:!!s.world.marineFood,population:s.animals.filter(a=>a.alive).length,mode:s.creatureStart?.mode??null,receipts:s.authoredIntroductions?.length??0,airborne:!!s.player()?.airborne}});
+ for(const key of Object.keys(expectedReload))assert.deepEqual(browserReload[key],expectedReload[key],'native Continue preserves '+key);
+ if(founderMode){assert.equal(browserReload.mode,founderMode);assert.ok(browserReload.receipts>0)}
+ if(founderMode==='sandbox')assert.ok(browserReload.airborne,'authored wings and midflight state survive actual browser reload');
+ await page.screenshot({path:path.join(output,founderMode?'authored-world-restored.png':'advanced-world-restored.png')});
  assert.deepEqual(errors,[],'browser encountered a fatal gameplay script error');
  fs.writeFileSync(path.join(output,'report.json'),JSON.stringify({ok:true,servedRoot:root,residentMode,founderMode,cancelPreservedSlots,browserReload,...report,errors},null,2));
  console.log('Bundled '+scenario.label+' '+(founderMode?'authored '+founderMode+' founder':residentMode?'existing resident':'recorded lineage')+' start and saved browser fork PASS',JSON.stringify({seed:report.seed,day:report.day,playerId:report.playerId,storedPlayerId:report.storedPlayerId,kind:report.creatureStart?.kind||'recorded',introduced:report.authoredIntroductions?.at(-1)?.actors?.length||0,sceneShown:report.sceneShown,storedPresent:report.storedPresent}));

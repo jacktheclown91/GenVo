@@ -1,0 +1,18 @@
+{
+  "recordedAt": "2026-10-22T04:15:18.052781+00:00",
+  "baseCommit": "2b2059713eac8851d2db4c1efc6b6835ba7eed19",
+  "checks": {
+    "node tests/planetary-preparation.mjs": "PASS; rerun against final source",
+    "node tools/canonical-source-audit.mjs": "PASS; 370 source modules, 362 runtime reachable",
+    "node tools/check-playable.mjs": "PASS; 79 focused checks",
+    "git -c core.whitespace=cr-at-eol diff --check": "PASS for changed preparation source, tests and documents"
+  },
+  "sha256": {
+    "src/world/planetary-preparation.js": "b19b1cf3c928dcb361611f0ab259e87cd349a955f63f841f64b26175c0c87b9c",
+    "src/world/planetary-travel.js": "ec0afb16465389415a81c8a0dcf137b2011ed0f65190adecd07272355e437147",
+    "tests/planetary-preparation.mjs": "aec929736e0ca142c8b13672e14389d4af9127aac9ee8e1b74238804ffe7c47a"
+  },
+  "browserObservation": "Not rerun for this policy-key change",
+  "creatorAcceptance": "Not established",
+  "scope": "Preparation marine-policy identity and stale queued authority guard; physical border gaps remain open"
+}

@@ -40,7 +40,8 @@ export function visitLivingFaunaByPage(sim,visitor){
   const owner=noteFaunaPageOwner(sim,animal);
   const x=animal.x,y=animal.y;
   if(owner!==null){
-   const index=Math.floor(y/WORLD_PAGE_SIZE)*grid+Math.floor(x/WORLD_PAGE_SIZE);
+   // A policy-owned exact boundary belongs to the last source page.
+   const index=Math.min(grid-1,Math.floor(animal.y/WORLD_PAGE_SIZE))*grid+Math.min(grid-1,Math.floor(animal.x/WORLD_PAGE_SIZE));
    counts[index]++;
   }else outside++;
   processed++;

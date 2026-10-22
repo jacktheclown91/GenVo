@@ -1,3 +1,4 @@
+import {resolveRegionalCreature} from './world/regional-fauna.js';
 import {preparePlanetarySeams,cancelPlanetarySeams} from './world/planetary-seam-work.js';
 import {PlanetaryPreparation} from './world/planetary-preparation.js';
 import {advanceNextDemographicRegion} from './world/planetary-demography.js';
@@ -6,6 +7,7 @@ import {prepareRegionalBiology} from './world/planetary-offscreen-biology.js';
 import {ecologyRuleMigrationMessage} from './ecology/rule-policy.js';
 import {birthRuleMigrationMessage} from './lineage/birth-rules.js';
 import {FrameStepper} from './sim/frame-stepper.js';
+import {PlanetaryWorkQueue} from './sim/planetary-work-queue.js';
 import {setProcessingLoad} from './sim/processing-capacity.js';
 import {planetaryTravelAvailability,crossPlanetaryBorder} from './world/planetary-travel.js';
 import {planetaryWalkIntent,planetaryPositionLabel} from './world/planetary-walkthrough.js';
@@ -150,7 +152,7 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
   let next,sourceSnapshot;
   if(start==='new'){
     const nextSeed=chosenSeed||'GENVO-'+Math.random().toString(16).slice(2,10).toUpperCase();
-    next=new Simulation(nextSeed,{player:true,worldGenerator:geography});
+    next=new Simulation(nextSeed,{player:true,worldGenerator:geography,regionalFrontier:geography==='planetary/1'});
     // Freeze this world's copy of the living library; later registrations from
     // other worlds never change how this world founds its regions.
     if(next.evolvedLibraryRules){try{const entries=await saveManager.listEvolvedLibrary();if(entries.length)next.foundingLibrary=entries.map(({sightings,...e})=>e)}catch(error){console.warn('Evolutionary library unavailable',error)}}
@@ -259,26 +261,26 @@ async function travelPlanetaryRegion({automatic=false}={}){
     if(!source.planetaryTravel?.sessions?.some(s=>s.key===status.to.x+','+status.to.y)&&!source.planetaryRegions.get(status.to,{create:false})){
       const ready=await planetaryPreparation.request(source,status.to);
       if(sim!==source||source.paused||frontEnd.isOpen||editor.open||succession.open)return;
-      if(automatic&&planetaryWalkIntent(source,{up:keys.KeyW||keys.ArrowUp,down:keys.KeyS||keys.ArrowDown,left:keys.KeyA||keys.ArrowLeft,right:keys.KeyD||keys.ArrowRight})!==status.direction)return;
+      if(automatic&&(planetaryWalkIntent(source,{up:keys.KeyW||keys.ArrowUp,down:keys.KeyS||keys.ArrowDown,left:keys.KeyA||keys.ArrowLeft,right:keys.KeyD||keys.ArrowRight})||pointerApproach?.regionalIntent(source))!==status.direction)return;
       if(!ready)throw Error('Neighbor preparation could not finish.');preparedDestination=planetaryPreparation.take(source,status.to);
       if(!preparedDestination)return;
     }
     const result=crossPlanetaryBorder(sim,{preparedDestination});
     if(!result.ok){tutorial.showToast(result.message,2600,'warn');audio.note('deny');return}
-    installSimulation(result.simulation,{resume:true,keepMovement:automatic});closeDetailPanels();if(!automatic)clearMovementKeys();
+    installSimulation(result.simulation,{resume:true,keepMovement:automatic,regionalCrossing:true});closeDetailPanels();if(!automatic)clearMovementKeys();
     tutorial.showToast(result.message,3500,'success');audio.note('confirm');
   }catch(error){console.error('Regional crossing failed:',error);tutorial.showToast('Regional passage could not be completed. Current world remains active.',3500,'warn');audio.note('deny')}finally{planetaryTravelPending=false}
 }
-function installSimulation(next,{fresh=false,resume=false,keepMovement=false}={}){clearWarmRegions();
-  cancelPlanetarySeams(sim);planetaryPreparation.clear();seed=next.seed;sim=next;renderer.sim=sim;observer.reset();succession.close();editor.close();syncSpeedButton();frameStepper.reset();last=performance.now();hudTimer=0;if(!keepMovement)clearMovementKeys();
+function installSimulation(next,{fresh=false,resume=false,keepMovement=false,regionalCrossing=false}={}){const previous=sim;clearWarmRegions();
+  cancelPlanetarySeams(sim);planetaryWork.clear();planetaryPreparation.clear();const continuedScene=regionalCrossing&&renderer.continueRegionalScene(previous,next);seed=next.seed;sim=next;renderer.sim=sim;observer.reset();succession.close();editor.close();syncSpeedButton();frameStepper.reset();last=performance.now();hudTimer=0;if(!keepMovement)clearMovementKeys();
   manualPause=resume?!!sim.paused:false;if(!resume)sim.paused=false;if(pauseNotice)pauseNotice.hidden=!manualPause;
-  leadershipWheel.resetDiscovery();tutorial.setSimulation(sim,{fresh,resume});effectFeedback.setSimulation(sim);journal.setSimulation(sim);audio.setSimulation(sim);
-  mateOpen=false;mindOpen=false;territoryOpen=false;shelterOpen=false;migrationOpen=false;ecologyOpen=false;helpOpen=false;guideOpen=false;leadershipWheel.setCommandMode(false);saveManager.resetObservation(sim);renderer.beginScenePreparation();
+  leadershipWheel.resetDiscovery();tutorial.setSimulation(sim,{fresh,resume:resume||regionalCrossing});effectFeedback.setSimulation(sim);journal.setSimulation(sim);audio.setSimulation(sim);
+  mateOpen=false;mindOpen=false;territoryOpen=false;shelterOpen=false;migrationOpen=false;ecologyOpen=false;helpOpen=false;guideOpen=false;leadershipWheel.setCommandMode(false);saveManager.resetObservation(sim);if(!continuedScene)renderer.beginScenePreparation();if(regionalCrossing&&keepMovement)pointerApproach?.continueRegional(previous,next);
   updateHUD(sim,{renderer,mateOpen,mindOpen,territoryOpen,shelterOpen,migrationOpen,ecologyOpen,helpOpen,guideOpen,journalOpen:journal.open,commandMode:false});journal.update();
 }
 function resetRun(){
   const nextSeed='GENVO8-'+Math.random().toString(16).slice(2,8).toUpperCase();
-  installSimulation(new Simulation(nextSeed,{player:true,worldGenerator:sim.world.generator}),{fresh:true});
+  installSimulation(new Simulation(nextSeed,{player:true,worldGenerator:sim.world.generator,regionalFrontier:sim.world.generator==='planetary/1'}),{fresh:true});
 }
 async function loadSavedLineage(){
   try{
@@ -369,13 +371,23 @@ addEventListener('keyup',e=>{if(MOVE_CODES.has(e.code)){keys[e.code]=false;if(!a
 addEventListener('blur',clearMovementKeys);
 
 function input(){const manual={up:keys.KeyW||keys.ArrowUp,down:keys.KeyS||keys.ArrowDown,left:keys.KeyA||keys.ArrowLeft,right:keys.KeyD||keys.ArrowRight,sprint:keys.ShiftLeft||keys.ShiftRight,brace:braceInput.read()||!!keys.KeyJ};return pointerApproach?pointerApproach.read(manual):manual}
-const planetaryPreparation=new PlanetaryPreparation();
-// Far population-model regions advance one life stride per idle callback, not inside player frames.
-const farRegions={running:false,jobs:0,observe(target){if(this.running||!target.regionalDemographyRules)return;if(!target.farRegionDriver)Object.defineProperty(target,'farRegionDriver',{value:true,configurable:true});this.running=true;const run=()=>{try{if(advanceNextDemographicRegion(target))this.jobs++}catch(error){console.warn('Far regions:',error)}finally{this.running=false}};if(typeof requestIdleCallback==='function')requestIdleCallback(run,{timeout:1000});else setTimeout(run,0)}};
-// Presentation Worlds for neighbouring regions, one build per idle callback.
-const borderPreparation={running:false,observe(target){if(this.running||!target.world.planet||!renderer.borderTerrain)return;this.running=true;const run=()=>{try{renderer.borderTerrain.prepareNext(target)}catch(error){console.warn('Border terrain:',error)}finally{this.running=false}};if(typeof requestIdleCallback==='function')requestIdleCallback(run,{timeout:1000});else setTimeout(run,0)}};
-// One bounded storage-residency action per idle callback (regional-residency/1).
-const regionalResidency={running:false,last:null,observe(target){if(this.running||!saveManager.available||!target.regionalResidencyRules)return;this.running=true;const run=()=>saveManager.maintainRegionalResidency(target).then(result=>{if(result)this.last=result}).catch(error=>{this.last={action:'error',message:error.message};console.warn('Regional residency:',error)}).finally(()=>{this.running=false});if(typeof requestIdleCallback==='function')requestIdleCallback(run,{timeout:1500});else setTimeout(run,0)}};
+// One fair background admission per rendered frame; canonical ticks remain atomic.
+const planetaryWork=new PlanetaryWorkQueue({isCurrent:target=>target===sim});
+const playing=target=>target===sim&&!frontEnd.isOpen&&!target.paused&&renderer.sceneShown;
+const planetaryPreparation=new PlanetaryPreparation({schedule:run=>planetaryWork.enqueue('destination',sim,run,{ready:playing})});
+const farRegions={jobs:0,observe(target){
+ if(!target.regionalDemographyRules)return;
+ if(!target.farRegionDriver)Object.defineProperty(target,'farRegionDriver',{value:true,configurable:true});
+ planetaryWork.enqueue('biology',target,()=>{if(advanceNextDemographicRegion(target))this.jobs++},{ready:playing});
+}};
+const borderPreparation={observe(target){
+ if(!target.world.planet||!renderer.borderTerrain)return;
+ planetaryWork.enqueue('border',target,()=>renderer.borderTerrain.prepareNext(target),{ready:()=>!frontEnd.isOpen&&renderer.sceneShown});
+}};
+const regionalResidency={last:null,observe(target){
+ if(!saveManager.available||!target.regionalResidencyRules)return;
+ planetaryWork.enqueue('residency',target,async()=>{try{const result=await saveManager.maintainRegionalResidency(target);if(result&&target===sim)this.last=result}catch(error){if(target===sim)this.last={action:'error',message:error.message};throw error}},{ready:playing});
+}};
 const frameStepper=new FrameStepper({controlHz:CFG.controlHz,simHz:CFG.simHz});
 const planetLocation=document.querySelector('#planetLocation');
 let last=performance.now(),hudTimer=0,lastFrontierWarning=-Infinity;
@@ -388,13 +400,14 @@ function frame(now){
   if(!frontEnd.isOpen&&!sim.paused)regionalResidency.observe(sim);
   if(!frontEnd.isOpen)borderPreparation.observe(sim);
   if(!frontEnd.isOpen&&!sim.paused)farRegions.observe(sim);
+  planetaryWork.frame();
   // Walking farther keeps expanding the SAME procedurally generated planet.
   // A real region swap still uses canonical family, physics and save authorities.
-  const outward=planetaryWalkIntent(sim,{up:keys.KeyW||keys.ArrowUp,down:keys.KeyS||keys.ArrowDown,left:keys.KeyA||keys.ArrowLeft,right:keys.KeyD||keys.ArrowRight});
+  const outward=planetaryWalkIntent(sim,{up:keys.KeyW||keys.ArrowUp,down:keys.KeyS||keys.ArrowDown,left:keys.KeyA||keys.ArrowLeft,right:keys.KeyD||keys.ArrowRight})||pointerApproach?.regionalIntent(sim);
   if(outward&&!frontEnd.isOpen&&!tutorial.worldInputBlocked?.()&&!editor.open&&!succession.open){
     const status=planetaryTravelAvailability(sim);
     if(status.enabled&&status.direction===outward)travelPlanetaryRegion({automatic:true});
-    else if(performance.now()-lastFrontierWarning>3600){lastFrontierWarning=performance.now();tutorial.showToast(status.reason||'No traversable crossing here.',2800,'warn')}
+    else if(pointerApproach?.regionalStep&&!status.retryable){const reason=status.reason||'No traversable crossing here.';pointerApproach.interrupt(reason);tutorial.showToast(reason,2800,'warn')}else if(performance.now()-lastFrontierWarning>3600){lastFrontierWarning=performance.now();tutorial.showToast(status.reason||'No traversable crossing here.',2800,'warn')}
   }
   const combatResult=sim.playerCombat.consumeResult();if(combatResult){if(!combatResult.quiet||combatResult.type!=='attack')tutorial.onInteraction(combatResult);audio.noteResult(combatResult)}
   sim.cognition.showOverlay=mindOpen;sim.territory.showOverlay=territoryOpen;sim.shelter.showOverlay=shelterOpen;sim.migration.showOverlay=migrationOpen;
@@ -434,7 +447,7 @@ const courtshipTray=new CourtshipTray({getSim:()=>sim,blocked:()=>frontEnd.isOpe
  onFeedback:r=>{if(r.message||!r.ok&&r.reason)tutorial.showToast(r.message||r.reason,2400,r.ok?'success':'warn','action');audio.note(r.ok?'confirm':'deny')},
  onObserve:a=>{sim.discovery.noteCreatureAppearance(a);fieldGuide.setOpen(true)},onDetails:()=>{mateOpen=true;courtshipTray.close()}
 });
-pointerApproach=new PointerApproach({getSim:()=>sim,blocked:()=>frontEnd.isOpen||editor.open||succession.open||journal.open||fieldGuide.open||guideOpen||helpOpen||mateOpen||courtshipTray.isOpen});
+pointerApproach=new PointerApproach({getSim:()=>sim,getRegionalCreature:target=>resolveRegionalCreature(sim,renderer.borderTerrain,target),getRegionWorld:origin=>renderer.borderTerrain?.sim===sim?renderer.borderTerrain.views.get(origin.x+','+origin.y)?.world:null,blocked:()=>frontEnd.isOpen||editor.open||succession.open||journal.open||fieldGuide.open||guideOpen||helpOpen||mateOpen||courtshipTray.isOpen});
 const contextTray=new CreatureContextTray({canvas,renderer,braceInput,getSim:()=>sim,
  onSelect:()=>{sim.discovery.cancelTraceFollow();pointerApproach?.cancel();takeManualControl();if(courtshipTray.isOpen){sim.reproduction.cancelCourtship();courtshipTray.close()}},
  onClear:()=>{sim.discovery.cancelTraceFollow();pointerApproach?.cancel();sim.reproduction.cancelCourtship();courtshipTray.close()},
@@ -451,4 +464,4 @@ const contextTray=new CreatureContextTray({canvas,renderer,braceInput,getSim:()=
 setInteractPromptSource(()=>{try{const c=contextTray.directChoice?.();return c?.enabled?c.label:null}catch{return null}});
 journal.onRevisit=id=>{const o=sim.discovery.seedObservations?.find(o=>o.id===id);if(!o)return;journal.setOpen(false);const target=sim.discovery.seedPatchTarget(o);if(!contextTray.selectResource(target))return;const choice=contextTray.directChoice();if(choice?.enabled)contextTray.interact();else tutorial.showToast(choice?.reason||'This body cannot revisit the patch.',1800,'warn')};
 
-window.__GENVO8__={frameStepper,planetaryPreparation,regionalResidency,borderPreparation,farRegions,get pointerApproach(){return pointerApproach},nativeArtStatus,courtshipTray,braceInput,contextTray,combatActions:()=>combatActions(sim),get sim(){return sim},CFG,setForm,formReading,tutorial,renderer,journal,audio,leadershipWheel,saveManager,loadSavedLineage,observer,editor,fieldGuide};
+window.__GENVO8__={frameStepper,planetaryWork,planetaryPreparation,regionalResidency,borderPreparation,farRegions,get pointerApproach(){return pointerApproach},nativeArtStatus,courtshipTray,braceInput,contextTray,combatActions:()=>combatActions(sim),get sim(){return sim},CFG,setForm,formReading,tutorial,renderer,journal,audio,leadershipWheel,saveManager,loadSavedLineage,observer,editor,fieldGuide};

@@ -1,0 +1,150 @@
+{
+  "outwardAdmission": {
+    "frames": 254,
+    "maxBetweenPaints": 1,
+    "started": 66
+  },
+  "returnAdmission": {
+    "frames": 113,
+    "maxBetweenPaints": 1,
+    "started": 6
+  },
+  "path": [
+    128,
+    256,
+    384,
+    512
+  ],
+  "far": {
+    "at": 512,
+    "resident": [
+      {
+        "key": "256,0",
+        "mode": "regional-demography/1",
+        "parked": false,
+        "debt": 4
+      },
+      {
+        "key": "384,0",
+        "mode": "canonical-ticks/1",
+        "parked": false,
+        "debt": 4
+      }
+    ],
+    "unloaded": [
+      "0,0",
+      "128,0"
+    ],
+    "last": {
+      "action": "unload",
+      "key": "128,0"
+    }
+  },
+  "stored": [
+    {
+      "key": "128,0",
+      "unloaded": false,
+      "ids": 70
+    },
+    {
+      "key": "256,0",
+      "unloaded": false,
+      "ids": 66
+    },
+    {
+      "key": "384,0",
+      "unloaded": false,
+      "ids": 70
+    },
+    {
+      "key": "0,0",
+      "unloaded": true,
+      "ids": 197
+    }
+  ],
+  "continued": {
+    "at": 512,
+    "resident": [
+      {
+        "key": "256,0",
+        "mode": "regional-demography/1",
+        "parked": false,
+        "debt": 5
+      },
+      {
+        "key": "384,0",
+        "mode": "canonical-ticks/1",
+        "parked": false,
+        "debt": 5
+      }
+    ],
+    "unloaded": [
+      "0,0",
+      "128,0"
+    ],
+    "last": null
+  },
+  "reloadedAt384": {
+    "at": 384,
+    "resident": [
+      {
+        "key": "128,0",
+        "mode": "regional-demography/1",
+        "parked": false,
+        "debt": 9
+      },
+      {
+        "key": "256,0",
+        "mode": "canonical-ticks/1",
+        "parked": false,
+        "debt": 3
+      },
+      {
+        "key": "512,0",
+        "mode": "canonical-ticks/1",
+        "parked": false,
+        "debt": 3
+      }
+    ],
+    "unloaded": [
+      "0,0"
+    ],
+    "last": {
+      "action": "reload",
+      "key": "128,0"
+    }
+  },
+  "back": {
+    "at": 256,
+    "resident": [
+      {
+        "key": "128,0",
+        "mode": "canonical-ticks/1",
+        "parked": false,
+        "debt": 0
+      },
+      {
+        "key": "384,0",
+        "mode": "canonical-ticks/1",
+        "parked": false,
+        "debt": 0
+      },
+      {
+        "key": "512,0",
+        "mode": "regional-demography/1",
+        "parked": false,
+        "debt": 6
+      }
+    ],
+    "unloaded": [
+      "0,0"
+    ],
+    "last": {
+      "action": "reload",
+      "key": "128,0"
+    }
+  },
+  "survivorsChecked": 70,
+  "errors": [],
+  "scope": "Exported build, native New World, held-key crossings with explicit frontier placement and energy top-up, the runtime residency driver against real IndexedDB, native Save/Continue and return. Not a natural journey or long-run ecology acceptance."
+}

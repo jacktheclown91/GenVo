@@ -1,3 +1,5 @@
+import {visibleRegionalFauna} from '../world/regional-fauna.js';
+import {drawRegionalAnimal} from './regional-fauna.js';
 import {drawWildfire} from './wildfire.js';
 import {drawThunderstorms} from './thunderstorms.js';
 import {drawSurfaceIce} from './surface-ice.js';
@@ -11,6 +13,7 @@ import {VISIBILITY,visuallyObservable,creatureView} from '../ecology/atmospheric
 import {CAVES} from '../world/cave-policy.js';
 import {clampCameraToWorld} from './camera-bounds.js';
 import {BorderTerrain} from './border-terrain.js';
+import {continueRegionalScene} from './regional-scene.js';
 import {beginTintFrame} from './indexed-part-renderer.js';
 import {attentionTarget,HeadAttentionPresentation} from './head-attention.js';
 import {gaitTravelFor} from './genvo.js';
@@ -76,20 +79,21 @@ const SWAY=[-1,0,1,1,0,-1,-1,0];
 const TERRAIN_POOL_MAX=4096;// spare terrain tile canvases kept for reuse (32x32, 4 KB each)
 export const TERRAIN_POOL={enabled:true};// ?tilePool=0 allocates a new canvas per tile, as before
 export class Renderer{
-  constructor(canvas,sim){this.partExpressions=new PartExpressionTracker();this.landformMaskCache=new Map();this.habitatField=null;this.habitatFieldDay=-1;this.pendingHabitatDay=null;this.pendingHabitatFrames=0;this.habitatMaskCache=new Map();this.landBaseTileCache=new Map();this.waterBaseTileCache=new Map();this.staticLandTileCache=new Map();this.terrainChunkCache=new Map();this.terrainRefreshQueue=[];this.terrainRefreshQueued=new Set();this.terrainRefreshFrame=0;this.macroHabitatSeed=null;this.macroHabitatSeason=-1;this.habitatScenesKey='';this.guideTarget=null;this.canvas=canvas;this.ctx=canvas.getContext('2d');this.ctx.imageSmoothingEnabled=false;this.sim=sim;this.motionSim=sim;this.motion=new VisualMotionTracker({simHz:CFG.simHz});this.renderNow=performance.now();this.lastRenderNow=this.renderNow;this.zoom=2;this.camera={x:64,y:64};this.playerPresentation={input:null,aheadSeconds:0};this.playerVisual=null;this.cameraReady=false;this.habitatScenes=[];this.regionalFocals=[];this.habitatTransitions=[];this.focalApproaches=new Map();this.resize();addEventListener('resize',()=>this.resize())}
+  constructor(canvas,sim,{terrainOnly=false}={}){this.partExpressions=new PartExpressionTracker();this.landformMaskCache=new Map();this.habitatField=null;this.habitatFieldDay=-1;this.pendingHabitatDay=null;this.pendingHabitatFrames=0;this.habitatMaskCache=new Map();this.landBaseTileCache=new Map();this.waterBaseTileCache=new Map();this.staticLandTileCache=new Map();this.terrainChunkCache=new Map();this.terrainRefreshQueue=[];this.terrainRefreshQueued=new Set();this.terrainRefreshFrame=0;this.macroHabitatSeed=null;this.macroHabitatSeason=-1;this.habitatScenesKey='';this.guideTarget=null;this.canvas=canvas;this.ctx=canvas.getContext('2d');this.ctx.imageSmoothingEnabled=false;this.sim=sim;this.motionSim=sim;this.motion=new VisualMotionTracker({simHz:CFG.simHz});this.renderNow=performance.now();this.lastRenderNow=this.renderNow;this.zoom=2;this.camera={x:64,y:64};this.playerPresentation={input:null,aheadSeconds:0};this.playerVisual=null;this.cameraReady=false;this.habitatScenes=[];this.regionalFocals=[];this.habitatTransitions=[];this.focalApproaches=new Map();if(terrainOnly){canvas.width=canvas.height=this.w=this.h=1;this.ctx.imageSmoothingEnabled=false}else{this.resize();addEventListener('resize',()=>this.resize())}}
   // v1.32.5: a new or loaded world replaces the title-screen world. Every cache keyed only by
   // tile position belongs to the old world: without this, tiles that were land there drew as
   // flat land with a stepped bank in the new world's water, and the reverse showed phantom water.
   // A terrain-only renderer for a neighbouring region's presentation World.
   prepareTerrainOnly(){this.habitatField=buildSmoothedHabitatField(this.sim.world);this.habitatFieldDay=this.sim.day;this.terrainSeason=this.sim.seasonIndex;this.sceneShown=true;this.motionSim=this.sim}
-  resetWorldCaches(){this.visibleWorldPages=[];this.visiblePlantTargets=new Map();this.plantTargetWorld=this.sim.world;this.partExpressions.reset();this.feeding?.reset();this.headAttention?.reset();this.turnState?.clear();this.vegLayerCache?.clear?.();this.staticGroundTileCache?.clear?.();this.waterToneCache?.clear?.();this.habitatField=null;this.habitatFieldDay=-1;this.pendingHabitatDay=null;this.pendingHabitatFrames=0;this.macroHabitatSeed=null;this.habitatScenesKey='';this.terrainChunkCache.clear();this.sensoryFogCache=null;this.terrainRefreshQueue.length=0;this.terrainRefreshQueued.clear();this.terrainRefreshFrame=0;this.terrainChunkWork=null;this.landformMaskCache.clear();this.habitatMaskCache.clear();this.landBaseTileCache.clear();this.waterBaseTileCache.clear();this.staticLandTileCache.clear()}
+  continueRegionalScene(previous,next){return continueRegionalScene(this,previous,next,Renderer)}
+  resetWorldCaches({keepTerrain=false}={}){this.visibleWorldPages=[];this.visiblePlantTargets=new Map();this.plantTargetWorld=this.sim.world;this.partExpressions.reset();this.feeding?.reset();this.headAttention?.reset();this.turnState?.clear();this.vegLayerCache?.clear?.();this.staticGroundTileCache?.clear?.();this.waterToneCache?.clear?.();this.habitatField=null;this.habitatFieldDay=-1;this.pendingHabitatDay=null;this.pendingHabitatFrames=0;this.macroHabitatSeed=null;this.habitatScenesKey='';if(!keepTerrain)this.terrainChunkCache.clear();this.sensoryFogCache=null;this.terrainRefreshQueue.length=0;this.terrainRefreshQueued.clear();this.terrainRefreshFrame=0;this.terrainChunkWork=null;this.landformMaskCache.clear();this.habitatMaskCache.clear();this.landBaseTileCache.clear();this.waterBaseTileCache.clear();this.staticLandTileCache.clear()}
   resize(){const dpr=1,w=innerWidth,h=innerHeight; // Pixel-art canvas renders at CSS-pixel resolution; DOM UI stays device-sharp and high-DPI screens avoid 2-4x canvas fill cost.
 this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.canvas.style.width=w+'px';this.canvas.style.height=h+'px';this.ctx.setTransform(dpr,0,0,dpr,0,0);this.w=w;this.h=h;this.ctx.imageSmoothingEnabled=false}
   setPlayerPresentation(input,aheadSeconds=0){this.playerPresentation={input:input?{...input}:null,aheadSeconds:Math.max(0,Number(aheadSeconds)||0)}}
   screenToWorld(clientX,clientY){const rect=this.canvas.getBoundingClientRect();if(!rect.width||!rect.height)return null;const sx=(clientX-rect.left)*(this.w/rect.width),sy=(clientY-rect.top)*(this.h/rect.height),tile=CFG.tileSize*this.zoom;return{x:this.camera.x+(sx-this.w/2)/tile,y:this.camera.y+(sy-this.h/2)/tile}}
   // Phase 3L: the start of every frame (world switch, habitat field, macro habitat, camera, view range), shared by
   // render() and prepareScene() so preparation sees exactly the state the first frame will draw. Moved verbatim.
-  syncScene(renderDt){if(this.subsurfaceRevision!==this.sim.world.subsurface?.revision){this.subsurfaceRevision=this.sim.world.subsurface?.revision;this.resetWorldCaches()}if(this.motionSim!==this.sim){this.motion.clear();this.borderTerrain?.reset();this.motionSim=this.sim;this.cameraReady=false;this.resetWorldCaches()}if(this.habitatFieldDay!==this.sim.day){const initial=!this.habitatField;if(initial){this.terrainSeason=this.sim.seasonIndex;this.terrainRefreshAt=this.renderNow;this.habitatField=buildSmoothedHabitatField(this.sim.world);this.habitatMaskCache.clear();this.recycleTileCache(this.landBaseTileCache);this.recycleTileCache(this.staticLandTileCache);this.habitatScenesKey='';this.habitatFieldDay=this.sim.day;this.pendingHabitatDay=null;this.pendingHabitatFrames=0}else if(this.pendingHabitatDay!==this.sim.day){this.pendingHabitatDay=this.sim.day;this.pendingHabitatFrames=4}else if(this.pendingHabitatFrames>0)this.pendingHabitatFrames--;
+  syncScene(renderDt){if(this.subsurfaceRevision!==this.sim.world.subsurface?.revision){this.subsurfaceRevision=this.sim.world.subsurface?.revision;this.resetWorldCaches({keepTerrain:this.motionSim===this.sim})}if(this.motionSim!==this.sim){this.motion.clear();this.borderTerrain?.reset();this.motionSim=this.sim;this.cameraReady=false;this.resetWorldCaches()}if(this.habitatFieldDay!==this.sim.day){const initial=!this.habitatField;if(initial){this.terrainSeason=this.sim.seasonIndex;this.terrainRefreshAt=this.renderNow;this.habitatField=buildSmoothedHabitatField(this.sim.world);this.habitatMaskCache.clear();this.recycleTileCache(this.landBaseTileCache);this.recycleTileCache(this.staticLandTileCache);this.habitatScenesKey='';this.habitatFieldDay=this.sim.day;this.pendingHabitatDay=null;this.pendingHabitatFrames=0}else if(this.pendingHabitatDay!==this.sim.day){this.pendingHabitatDay=this.sim.day;this.pendingHabitatFrames=4}else if(this.pendingHabitatFrames>0)this.pendingHabitatFrames--;
       // v1.57.2: the whole visible terrain is repainted at most every 20 seconds or when the season turns,
       // not every in-game day (a day is a few seconds, so wide windows were repainting constantly). Plants
       // next to the active creature are drawn live every frame, so nearby food is always current.
@@ -112,7 +116,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   // sceneReady() resolves once that first complete frame has been drawn.
   beginScenePreparation(){this.scenePending=true;this.preparingScene=false;this.sceneShown=false;this.sceneReadyPromise=new Promise(r=>{this.resolveSceneReady=r})}
   sceneReady(){return this.sceneReadyPromise||Promise.resolve()}
-  renderOrPrepare(budgetMs=24){if(this.scenePending){if(this.prepareScene(budgetMs))this.scenePending=false;return}this.render();if(!this.sceneShown){this.sceneShown=true;this.resolveSceneReady?.()}}
+  renderOrPrepare(budgetMs=24){if(this.scenePending){if(this.prepareScene(budgetMs))this.scenePending=false;return}this.render();if(!this.sceneShown)this.sceneShown=true;if(this.resolveSceneReady){const resolve=this.resolveSceneReady;this.resolveSceneReady=null;resolve()}}
   render(){beginTintFrame();this.renderNow=performance.now();(this.encounters||=new EncounterPresentation()).beginFrame(this.sim,this.renderNow);const renderDt=Math.min(.05,Math.max(0,(this.renderNow-this.lastRenderNow)/1000));this.lastRenderNow=this.renderNow;const c=this.ctx,{tile,cols,rows,startX,startY}=this.syncScene(renderDt);c.fillStyle='#09140e';c.fillRect(0,0,this.w,this.h);
     this.drawTerrainChunks(tile,startX,startY,cols,rows);this.queueTerrainWarmRing(startX,startY,cols,rows);
     if(this.sim.world.planet)(this.borderTerrain||=new BorderTerrain(Renderer)).draw(this,tile,startX,startY,cols,rows);
@@ -139,7 +143,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // Phase G: places in the world, under the creatures.
     this.drawSites(tile,cols,rows);
     this.drawEggs(tile);drawWorldTraces(this,tile);
-    drawSubsurface(this,tile);this.screenPos=new Map();this.screenBounds=new Map();this.screenBoundsWorld=this.sim.world;
+    drawSubsurface(this,tile);this.screenPos=new Map();this.screenBounds=new Map();this.screenBoundsWorld=this.sim.world;this.regionalScreenPos=new Map();
     const observer=this.sim.player(),playerView=observer&&this.sim.sensoryFogEnabled===true?creatureView(this.sim,observer):null;
      // Cull geographically first, then apply the same biological sight model
      // used by the fog and pointer targets. Do not recalculate anatomy for each
@@ -148,13 +152,15 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
        !!a.underground===!!observer?.underground&&
        Math.abs(a.x-this.camera.x)<cols/2+2&&Math.abs(a.y-this.camera.y)<rows/2+2&&
        visuallyObservable(this.sim,observer,a,8,playerView)).sort((a,b)=>a.y-b.y);this.visibleAnimals=visible;
+    const regional=visibleRegionalFauna(this.sim,this.borderTerrain);this.regionalFauna=regional;
+    const actors=regional.length?[...visible.map(actor=>({actor,y:actor.y})),...regional].sort((a,b)=>a.y-b.y):visible,draw=regional.length?(entry=>entry.owner?drawRegionalAnimal(this,entry,tile):this.drawAnimal(entry.actor,tile)):(actor=>this.drawAnimal(actor,tile));
     if(!this.lowDetail&&!this.sim.player()?.underground){this.drawForegroundHabitat(tile,startX,startY,cols,rows);this.drawHabitatSceneForeground(tile);this.drawRegionalFocalForeground(tile);this.drawSceneDepthForeground(tile)}
     // Phase 3L: creatures are prepared through a recording context and composed afterwards in the same order, so
     // freshly drawn sprites are staged together (genvo-draw.js SPRITE_BATCH). frameStats are timing only.
-    {const t0=performance.now(),fs=this.frameStats||={};fs.creatures=visible.length;
+    {const t0=performance.now(),fs=this.frameStats||={};fs.creatures=actors.length;
      if(SPRITE_BATCH.enabled){const rec=this.creatureRecorder||=new CanvasRecorder();rec.onFlush=spriteBatchBeforeFlush;rec.afterFlush=spriteBatchAfterFlush;const real=this.ctx;this.ctx=rec.begin(real);beginSpriteBatch(()=>rec.flush());let t1=t0;
-       try{for(const a of visible)this.drawAnimal(a,tile)}finally{this.ctx=real;t1=performance.now();try{rec.flush()}finally{endSpriteBatch()}}fs.creaturePrep=t1-t0;fs.creatureCompose=performance.now()-t1;fs.recorderFlushes=rec.stats.flushes}
-     else{for(const a of visible)this.drawAnimal(a,tile);fs.creaturePrep=performance.now()-t0;fs.creatureCompose=0}}
+       try{for(const entry of actors)draw(entry)}finally{this.ctx=real;t1=performance.now();try{rec.flush()}finally{endSpriteBatch()}}fs.creaturePrep=t1-t0;fs.creatureCompose=performance.now()-t1;fs.recorderFlushes=rec.stats.flushes}
+     else{for(const entry of actors)draw(entry);fs.creaturePrep=performance.now()-t0;fs.creatureCompose=0}}
     // Weather and interaction cues remain above creatures; ground decoration does not.
     if((!this.lowDetail||this.sim.visibilityRules===VISIBILITY.policy||this.sim.thermalRules===THERMAL_WEATHER.policy)&&!this.sim.player()?.underground)this.drawWeatherOverlay();
     drawSensoryFog(this,{tile,cols,rows,startX,startY});
@@ -567,7 +573,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     }finally{this.ctx=old}
   }
 
-  terrainChunkSignature(cx,cy,size=TERRAIN_CHUNK){return Math.imul((this.habitatFieldDay+1)^Math.imul(cx+257,73856093)^Math.imul(cy+263,19349663)^Math.imul(size,83492791),16777619)>>>0}
+  terrainChunkSignature(cx,cy,size=TERRAIN_CHUNK){return Math.imul((this.habitatFieldDay+1)^Math.imul(this.subsurfaceRevision||0,2654435761)^Math.imul(cx+257,73856093)^Math.imul(cy+263,19349663)^Math.imul(size,83492791),16777619)>>>0}
 
   drawTileDynamic(px,py,s,i,x,y){
     const w=this.sim.world,u=this.zoom,hash=hash2(x,y,11),mask=this.visualWaterMask(x,y),simWater=!!w.water[i];

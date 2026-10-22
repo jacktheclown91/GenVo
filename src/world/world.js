@@ -1,3 +1,4 @@
+import {physicalFrontier,validateFrontierRules} from './regional-frontier.js';
 import {surfaceIceCovered} from './surface-ice.js';
 import {PlanetGeography} from './planet-geography.js';
 import {planetRegionOrigin} from './planet-regions.js';
@@ -27,7 +28,7 @@ export function worldForRestore(seed,options={}){
  const givenOrigin=options.planetOrigin===undefined?{x:0,y:0}:options.planetOrigin;
  const origin=generator===WORLD_GENERATORS.planet?planetRegionOrigin(givenOrigin):null;
  if(!origin&&(givenOrigin?.x||givenOrigin?.y))throw Error('Only planetary worlds accept a regional origin.');
- let key;try{key=JSON.stringify([String(seed),generator,origin,CFG,PLANTS,AQUATIC_REVIEW,FRESHWATER_FOOD],(_,v)=>{if(typeof v==='function'||typeof v==='symbol'||typeof v==='bigint'||typeof v==='number'&&!Number.isFinite(v))throw Error('Uncacheable generation configuration');return v})}catch{return new World(seed,options)}
+ let key;try{key=JSON.stringify([String(seed),generator,origin,options.frontierRules??null,CFG,PLANTS,AQUATIC_REVIEW,FRESHWATER_FOOD],(_,v)=>{if(typeof v==='function'||typeof v==='symbol'||typeof v==='bigint'||typeof v==='number'&&!Number.isFinite(v))throw Error('Uncacheable generation configuration');return v})}catch{return new World(seed,options)}
  const methods=Object.values(Object.getOwnPropertyDescriptors(World.prototype)).map(d=>d.value).filter(v=>typeof v==='function');
  let entry=restoreBases.get(key);
  if(entry&&entry.methods.length===methods.length&&entry.methods.every((fn,i)=>fn===methods[i])){
@@ -43,7 +44,7 @@ export function worldForRestore(seed,options={}){
  return world;
 }
 export class World{
-  constructor(seed,{generator=WORLD_GENERATORS.legacy,planetOrigin={x:0,y:0},restoreOnly=false,planetDescriptor=null}={}){this.seed=String(seed);this.seedHash=hashString(this.seed);this.n=CFG.worldSize;this.len=this.n*this.n;this.generator=generatorForState({generator});if(this.generator===WORLD_GENERATORS.planet){this.regionOrigin=planetRegionOrigin(planetOrigin);this.planet=new PlanetGeography(this.seed,planetDescriptor)}else if(planetOrigin?.x||planetOrigin?.y)throw Error('Only planetary worlds accept a regional origin.');this.topology=newTopologyState();
+  constructor(seed,{generator=WORLD_GENERATORS.legacy,planetOrigin={x:0,y:0},restoreOnly=false,planetDescriptor=null,frontierRules=undefined}={}){this.seed=String(seed);this.seedHash=hashString(this.seed);this.n=CFG.worldSize;this.len=this.n*this.n;this.generator=generatorForState({generator});if(this.generator===WORLD_GENERATORS.planet){this.regionOrigin=planetRegionOrigin(planetOrigin);this.planet=new PlanetGeography(this.seed,planetDescriptor)}else if(planetOrigin?.x||planetOrigin?.y)throw Error('Only planetary worlds accept a regional origin.');if(frontierRules!==undefined){validateFrontierRules(frontierRules,{generator:this.generator,frontierRules});this.frontierRules=frontierRules}this.topology=newTopologyState();
     this.moisture=new Float32Array(this.len);this.fertility=new Float32Array(this.len);this.temperature=new Float32Array(this.len);this.water=new Uint8Array(this.len);this.landRegion=new Uint16Array(this.len);this.seepage=new Float32Array(this.len);this.drinkable=new Uint8Array(this.len);this.waterDistance=new Uint16Array(this.len);this.drinkSpots=[];this.carrion=new Float32Array(this.len);
     this.plants={};this.seedBank={};for(const [kind,p] of Object.entries(PLANTS)){const field=new Float32Array(this.len);this.plants[kind]=field;this[kind]=field;if(p.dispersal)this.seedBank[kind]=new Float32Array(this.len)}
     if(restoreOnly){
@@ -58,9 +59,9 @@ export class World{
     this._topologyMask=this.water.slice();this.pages=new WorldPages(this);}
   idx(x,y){x=Math.max(0,Math.min(this.n-1,x|0));y=Math.max(0,Math.min(this.n-1,y|0));return y*this.n+x}
   biomeClimate(climate){return this.environment&&climate?.frontDay===undefined?{...climate,frontDay:this.soilWater?.day??this.environment.day??0}:climate}
-  biomeAt(x,y,climate){if(!Number.isFinite(x)||!Number.isFinite(y)||x<0||y<0||x>=this.n||y>=this.n)throw Error('Biome query outside world.');return biomeAt(this,this.idx(x,y),this.biomeClimate(climate))}
+  biomeAt(x,y,climate){if(!Number.isFinite(x)||!Number.isFinite(y)||x<0||y<0||(physicalFrontier(this)?x>this.n||y>this.n:x>=this.n||y>=this.n))throw Error('Biome query outside world.');return biomeAt(this,this.idx(x,y),this.biomeClimate(climate))}
   biomeCounts(climate){return countBiomes(this,this.biomeClimate(climate))}
-  isPlayable(x,y){return x>1&&y>1&&x<this.n-2&&y<this.n-2}
+  isPlayable(x,y){return physicalFrontier(this)?Number.isFinite(x)&&Number.isFinite(y)&&x>=0&&y>=0&&x<=this.n&&y<=this.n:x>1&&y>1&&x<this.n-2&&y<this.n-2}
   generate(){if(this.planet)return initializePlanetWorld(this);const n=this.n;for(let y=0;y<n;y++)for(let x=0;x<n;x++){const i=y*n+x;const broad=(coordNoise(this.seedHash,x>>3,y>>3)+coordNoise(this.seedHash^0x915f,x>>4,y>>4))*.5;const fine=coordNoise(this.seedHash^0x51ac,x,y);const river=Math.abs((y/n)-(.5+.18*Math.sin((x+this.seedHash%97)*.055)))<.025;const wet=Math.min(1,.18+broad*.68+(river?.55:0));this.moisture[i]=wet;this.water[i]=generatedWaterAt(this,x,y,this.generator);this.fertility[i]=Math.min(1,.22+.58*coordNoise(this.seedHash^0x8191,x>>2,y>>2)+.2*wet);this.temperature[i]=.62-.28*(y/n)+.08*(fine-.5);
       for(const [kind,p] of Object.entries(PLANTS))this.plants[kind][i]=this.water[i]?0:this.initialPlant(p.init,{wet,fine,fertility:this.fertility[i],x,y,kind});
     }

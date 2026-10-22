@@ -1,0 +1,35 @@
+{
+  "scope": "Entire active saved state after 48 canonical ticks of the authentic Day-100 checkpoint; genotype retention optimization only, not long-run or browser performance acceptance",
+  "inputSha256": "c95c8909e8ab3adeddf03a14dadf0ad3936bfc4948295c642349dc4d7e7f53d6",
+  "exactCompleteState": true,
+  "fromTick": 4800,
+  "toTick": 4848,
+  "live": 292,
+  "inputs": [
+    {
+      "file": "reports/mature-work-before-2026-10-21.v8",
+      "sha256": "a5ed40788e21629140a7c2012c6b187905b0531e886d6f1ba84089e8b41ab63e"
+    },
+    {
+      "file": "reports/mature-work-final-2026-10-21.v8",
+      "sha256": "a5ed40788e21629140a7c2012c6b187905b0531e886d6f1ba84089e8b41ab63e"
+    }
+  ],
+  "sourceFingerprints": {
+    "before": "e601945b5ce0a1e36bb295cef64e707b831067a3a12c715fef09f1e843c3ddf2",
+    "after": "2acfac0d5ba0351e5b0fdf50d741a78c21f2589ecd271b1eb93c588f5ab87723"
+  },
+  "observedMs": {
+    "before": {
+      "total": 2150.8614,
+      "maxTick": 1314.6471000000001,
+      "vegetation": 1197.7879000000003
+    },
+    "after": {
+      "total": 2065.1605999999947,
+      "maxTick": 1268.0416999999998,
+      "vegetation": 1145.2864
+    }
+  },
+  "timingLimit": "One inspector-sampled full-day run per candidate, no broad speedup claim."
+}

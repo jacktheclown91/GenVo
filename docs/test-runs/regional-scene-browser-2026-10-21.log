@@ -1,0 +1,15 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: departing region retains its ground
+    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tools/verify-border-presentation-browser.mjs:41:567 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.14.0

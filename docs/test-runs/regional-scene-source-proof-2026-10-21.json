@@ -1,0 +1,12 @@
+{
+  "schema": "genvo.regional-scene-source-proof/1",
+  "export": "C:\\Users\\jackt\\.codex\\visualizations\\2026\\10\\22\\01a16167-7d80-7663-842d-3bdcde9c5149\\regional-scene-ready-web",
+  "scope": "Changed rendering mechanisms in the actual exported browser root match the current canonical source; not a release seal",
+  "sha256": {
+    "src/main.js": "58f8ed762488598d5c84418d8e763d66f270c7ef32f50c2ccf35587dbfcb9e9b",
+    "src/render/renderer.js": "9d10eb0fdc74bd7991a5bad3d5583891320044de46193a2c9d8f2aea1d8d69f6",
+    "src/render/regional-scene.js": "249cbaf262141e1af7e706d5a2490e54523287229da73fb74b52e959ffbba382",
+    "src/render/border-terrain.js": "3ba8f35ab3fdc4677e923a25efe58be0a9700d8cc10decd4a6cc234cd241d980"
+  },
+  "firstFrame": "reports/regional-scene-first-frame-browser-2026-10-21/first-crossing-frame.png"
+}

@@ -1,3 +1,4 @@
+import {continuousSoloFrontier,frontierDistance,nearestFrontier} from './regional-frontier.js';
 // E20: keyboard-driven continuation at a *real* planetary border.
 // Only the explicit control intent is new. The canonical crossing authority
 // still validates water, organism anatomy, dependents, energy and remote state.
@@ -20,9 +21,10 @@ export function planetaryWalkIntent(sim,controls,{margin=WALK_FRONTIER_MARGIN}={
  if(!player?.alive||!Number.isFinite(player.x)||!Number.isFinite(player.y))return null;
  // Same nearest frontier tie-breaking as planetaryTravelAvailability. Avoid
  // diagonal corner requests selecting a different coast from the intent.
+ if(continuousSoloFrontier(sim)){const edge=nearestFrontier(sim.world,player,controls);return edge.distance===0&&directions.find(d=>d.name===edge.name).pressed(controls)?edge.name:null}
  let nearest=null,dist=Infinity;
- for(const edge of directions){const d=edge.distance(player);if(d<dist){nearest=edge;dist=d}}
- return nearest&&dist>=0&&dist<=margin&&nearest.pressed(controls)?nearest.name:null;
+ for(const edge of directions){const d=continuousSoloFrontier(sim)?frontierDistance(sim.world,edge.name,player):edge.distance(player);if(d<dist){nearest=edge;dist=d}}
+ return nearest&&dist>=0&&dist<=(continuousSoloFrontier(sim)?0:margin)&&nearest.pressed(controls)?nearest.name:null;
 }
 
 export function planetaryPosition(sim){

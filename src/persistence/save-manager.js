@@ -1,3 +1,4 @@
+import {REGIONAL_FRONTIER,validateFrontierRules} from '../world/regional-frontier.js';
 import {REGION_STORE,readRegionalCheckpoint,commitRegionalCheckpoint,commitRegionalUpdate,commitRegionalJournal,deleteRegionalCheckpoint,inspectRegionalStorage,recoverRegionalStages} from './regional-records.js';
 import {RegionalDirtyJournal} from './regional-dirty.js';
 import {openRegionalCheckpointReader} from './regional-reader.js';
@@ -116,6 +117,7 @@ function snapshotWorld(world){
   if(world.marineFood)state.marineFood={...world.marineFood};
   state.pageLayout=world.pages.layout();
   if(world.planet){state.planet=world.planet.descriptor;state.regionOrigin=planetRegionOrigin(world.regionOrigin);}
+  if(Object.hasOwn(world,'frontierRules'))state.frontierRules=world.frontierRules;
   state.generator=world.generator;state.topology=structuredClone(world.topology);
   state.environment=world.environment?{...world.environment}:null;
   state.terrain=world.terrain?{schema:1,elevation:world.terrain.elevation.slice(),travelEnabled:world.terrain.travelEnabled??false}:null;
@@ -152,6 +154,8 @@ export function restorePresentationWorld(seed,state,schema=SAVE_SCHEMA){
 }
 function restoreWorld(world,state,{initializeMissingFreshwater=false,adoptOwnedWorldBuffers=false}={}){
   if(!state)throw new Error('Save has no world state.');
+  validateFrontierRules(state.frontierRules,state);
+  if(state.frontierRules!==undefined)world.frontierRules=state.frontierRules;else delete world.frontierRules;
   if(state.generator==='planetary/1'){
     const expected=planetRegionOrigin(world.regionOrigin),actual=planetRegionOrigin(state.regionOrigin||{x:0,y:0});
     if(expected.x!==actual.x||expected.y!==actual.y)throw Error('Saved planet region does not match its physical World.');
@@ -370,7 +374,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   validateCarcassSnapshot(snapshot);
 
   const planetOrigin=snapshot.world?.generator==='planetary/1'?planetRegionOrigin(snapshot.world.regionOrigin||{x:0,y:0}):{x:0,y:0};
-  const sim=new Simulation(snapshot.seed,{player:snapshot.core?.playerEnabled!==false,bootstrap:false,worldGenerator:snapshot.world?.generator==='planetary/1'?'planetary/1':undefined,planetOrigin,reuseGeneratedBase:true,restoreOnlyWorld:!regenerateWorld&&completeWorldForDirectRestore(snapshot),deferDispersalInitialization:!!snapshot.controllers?.dispersal});
+  const sim=new Simulation(snapshot.seed,{player:snapshot.core?.playerEnabled!==false,bootstrap:false,worldGenerator:snapshot.world?.generator==='planetary/1'?'planetary/1':undefined,planetOrigin,marineFood:snapshot.core?.marineFoodRules===MARINE_FOOD.policy,regionalFrontier:snapshot.core?.regionalFrontierRules===REGIONAL_FRONTIER.policy,reuseGeneratedBase:true,restoreOnlyWorld:!regenerateWorld&&completeWorldForDirectRestore(snapshot),deferDispersalInitialization:!!snapshot.controllers?.dispersal});
   Object.assign(sim,snapshot.core||{});
   if(!Object.hasOwn(snapshot.core||{},'regionalReplayPolicy'))delete sim.regionalReplayPolicy;
   regionalReplayPolicy(sim);
@@ -412,7 +416,11 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   if(!Object.hasOwn(snapshot.core||{},'regionalDispersalRules'))delete sim.regionalDispersalRules;
   if(!Object.hasOwn(snapshot.core||{},'marineFoodRules'))delete sim.marineFoodRules;
   if(sim.marineFoodRules!==undefined&&sim.marineFoodRules!==MARINE_FOOD.policy)throw Error('Unknown marine food policy.');
-  if(!!sim.marineFoodRules!==!!sim.world.marineFood)throw Error('Marine food fields disagree with their recorded policy.');
+  // Validate the checkpoint, never the constructor's temporary restore scaffold.
+  if(!!sim.marineFoodRules!==!!snapshot.world?.marineFood)throw Error('Marine food fields disagree with their recorded policy.');
+  validateFrontierRules(sim.regionalFrontierRules,snapshot.world);
+  for(const entry of snapshot.regionalWorlds||[])validateFrontierRules(sim.regionalFrontierRules,entry.world);
+  for(const entry of sim.planetaryTravel?.sessions||[]){validateFrontierRules(sim.regionalFrontierRules,entry.snapshot.world);if(entry.snapshot.core?.regionalFrontierRules!==sim.regionalFrontierRules)throw Error('Regional frontier policy differs between owners.')}
   if(sim.regionalDispersalRules!==undefined&&sim.regionalDispersalRules!==REGIONAL_DISPERSAL.policy)throw Error('Unknown regional dispersal policy.');
   sim.seed=snapshot.seed;
   sim.rng.state=snapshot.rngState>>>0;
@@ -571,9 +579,12 @@ export class SaveManager{
   async maintainRegionalResidency(sim){
     if(!this.available||!residencyEnabled(sim)||this.residencyBusy||sim!==this.getSim?.())return null;
     this.residencyBusy=true;
+    const slot=this.activeSlotId,live=()=>this.getSim?.()===sim&&this.activeSlotId===slot;
     try{
       if(this.activeSave)await this.activeSave;
-      const slot=this.activeSlotId,db=await this.db(),live=()=>this.getSim?.()===sim;
+      if(!live())return null;
+      const db=await this.db();
+      if(!live())return null;
       const needed=reloadCandidates(sim)[0];
       if(needed)return await this.#reloadRegion(db,slot,sim,needed,'reload');
       const lagging=(sim.planetaryTravel?.sessions||[]).filter(s=>s.biologicalMode===POPULATION_MODE&&!s.parked&&remoteBiologicalDebt(sim,s)>CFG.lifeStride).sort((a,b)=>a.snapshot.core.tickCount-b.snapshot.core.tickCount||a.key.localeCompare(b.key))[0];
@@ -598,7 +609,7 @@ export class SaveManager{
     try{
       const lease=await reader.acquire('session',entry.key);
       try{
-        if(this.getSim?.()!==sim||!(sim.planetaryTravel?.unloaded||[]).includes(entry))return null;
+        if(this.getSim?.()!==sim||this.activeSlotId!==slot||!(sim.planetaryTravel?.unloaded||[]).includes(entry))return null;
         reloadRegion(sim,entry,lease.payload);
       }finally{lease.release()}
     }finally{reader.close()}

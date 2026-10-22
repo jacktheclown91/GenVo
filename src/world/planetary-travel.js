@@ -1,3 +1,4 @@
+import {physicalFrontier,continuousSoloFrontier,frontierDistance,nearestFrontier} from './regional-frontier.js';
 import {SURFACE_ICE,initializeSurfaceIce} from './surface-ice.js';
 import {POPULATION_MODE} from './regional-replay-order.js';
 import {MARINE_FOOD} from '../ecology/marine-food.js';
@@ -16,7 +17,7 @@ import {PlanetRegionAtlas,neighboringRegion,regionKey} from './planet-regions.js
 import {World} from './world.js';
 import {RNG} from '../core/rng.js';
 import {SPECIES} from '../organisms/species.js';
-import {canSwim} from '../lineage/lifestyle.js';
+import {canOccupy,canSwim} from '../lineage/lifestyle.js';
 import {createSimulationSnapshot,restoreDetachedSimulationSnapshot} from '../persistence/save-manager.js';
 import {bodyMass} from '../organisms/body-mass.js';
 import {familyTravelCohort,familyArrivalPoint,FAMILY_PASSAGE} from './family-passage.js';
@@ -30,11 +31,11 @@ const LIMIT=16,BOUNDARY=3.75,SIZE=128;
 // number of explored regions is not limited here.
 const residentLimit=sim=>residencyEnabled(sim)?REGIONAL_RESIDENCY.maxResident:LIMIT;
 const GLOBAL_AUTHORITIES=['lineage','evolution','evolutionTree','evolutionBudget','evolutionEditor','generationProgress'];
-export function planetaryPreparationKey(sim,origin){return JSON.stringify([sim.seed,sim.world.planet?.descriptor?.projection??null,regionKey(origin),sim.massRules,sim.caveRules??null,sim.surfaceIceRules??null,sim.mateAssortmentRules??null]);}
+export function planetaryPreparationKey(sim,origin){return JSON.stringify([sim.seed,sim.world.planet?.descriptor?.projection??null,regionKey(origin),sim.massRules,sim.caveRules??null,sim.surfaceIceRules??null,sim.mateAssortmentRules??null,sim.marineFoodRules??null,sim.regionalFrontierRules??null]);}
 export function preparePlanetaryDestination(sim,origin){
  const planet=sim.world.planet;if(!planet)throw Error('Planetary preparation requires a planetary source.');
  for(const x of [origin.x-1,origin.x+SIZE+1])for(const y of [origin.y-1,origin.y+SIZE+1])planet.localToGeo(x,y);
- const destination=new Simulation(sim.seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:origin,planetDescriptor:planet.descriptor,marineFood:sim.marineFoodRules===MARINE_FOOD.policy,massRules:sim.massRules,localAssortment:sim.mateAssortmentRules!==undefined,naturalCaves:!!sim.caveRules,surfaceIce:sim.surfaceIceRules===SURFACE_ICE.policy});
+ const destination=new Simulation(sim.seed,{player:false,bootstrap:false,worldGenerator:'planetary/1',planetOrigin:origin,planetDescriptor:planet.descriptor,marineFood:sim.marineFoodRules===MARINE_FOOD.policy,regionalFrontier:physicalFrontier(sim.world),massRules:sim.massRules,localAssortment:sim.mateAssortmentRules!==undefined,naturalCaves:!!sim.caveRules,surfaceIce:sim.surfaceIceRules===SURFACE_ICE.policy});
  Object.defineProperty(destination,'preparedPlanetaryKey',{value:planetaryPreparationKey(sim,origin)});return destination;
 }
 const dirs=[
@@ -48,7 +49,7 @@ const validSession=store=>store?.schema===1&&Number.isSafeInteger(store.nextId)&
  Array.isArray(store.sessions)&&store.sessions.length<=REGIONAL_RESIDENCY.maxResident&&store.sessions.every(s=>typeof s.key==='string'&&s.snapshot?.world?.generator==='planetary/1');
 function stored(sim){const st=sim.planetaryTravel||{schema:1,nextId:sim.nextId,sessions:[]};if(!validSession(st))throw Error('Invalid planetary travel state.');return st}
 function approach(sim,dir,animal){
- const c=limit(dir.coordinate(animal),2.5,SIZE-2.5),far=SIZE-2.5,near=2.5;
+ const continuous=continuousSoloFrontier(sim),c=continuous?dir.coordinate(animal):limit(dir.coordinate(animal),2.5,SIZE-2.5),far=continuous?SIZE:SIZE-2.5,near=continuous?0:2.5;
  const dest=dir.name==='west'?{x:far,y:c}:dir.name==='east'?{x:near,y:c}:
   dir.name==='north'?{x:c,y:far}:{x:c,y:near};
  return dest;
@@ -72,14 +73,23 @@ function continuousBorder(sim,dir,animal,destination,point){
  const idx=destination.idx(point.x,point.y);
  return destination.isPlayable(point.x,point.y)&&(!destination.water[idx]||flying||swimmer);
 }
+// Read-only route planning reuses the actual border transect and body rules.
+// It never moves the actor or grants execution: live travel still validates
+// the whole family, clocks, stocks, action state and current position.
+export function canPlanPlanetaryPassage(sim,direction,x,y,destination){
+ const actor=sim.player(),dir=dirs.find(d=>d.name===direction);
+ if(!actor?.alive||!dir||!destination||actor.underground||actor.perched||actor.torpor||actor.caveTransit||actor.burrowWork||(actor.diveDepth||0)>.03||actor.aerialMode==='jump')return false;
+ const projected={...actor,x,y};
+ return sim.canOccupy(projected,x,y)&&continuousBorder(sim,dir,projected,destination,approach(sim,dir,projected));
+}
 export function planetaryTravelAvailability(sim){
  let proximity=null;
- const unavailable=reason=>({enabled:false,reason,...(proximity||{})});
+ const unavailable=(reason,extra={})=>({enabled:false,reason,...(proximity||{}),...extra});
  if(!sim?.planetaryRegions||sim.world.generator!=='planetary/1')return unavailable('Regional travel requires a planetary world.');
  const animal=sim.player();
  if(!animal?.alive)return unavailable('No living traveler.');
- const closest=[...dirs].sort((a,b)=>a.distance(animal)-b.distance(animal))[0];
- proximity={distance:closest.distance(animal),direction:closest.name};
+ const distance=dir=>continuousSoloFrontier(sim)?frontierDistance(sim.world,dir.name,animal):dir.distance(animal),closest=continuousSoloFrontier(sim)?dirs.find(d=>d.name===nearestFrontier(sim.world,animal).name):[...dirs].sort((a,b)=>distance(a)-distance(b))[0];
+ proximity={distance:distance(closest),direction:closest.name};
  if(sim.paused)return unavailable('Resume the world first.');
  if(sim.playerAutonomy)return unavailable('Take manual control to cross a planetary frontier.');
  if((animal.diveDepth||0)>.03)return unavailable('Surface before regional travel.');
@@ -91,7 +101,7 @@ export function planetaryTravelAvailability(sim){
  if(animal.courtshipPerformance||animal.courtshipSession)return unavailable('Finish courtship before leaving the region.');
  if(sim.playerCombat?.attackActive?.(animal)||animal.pursuitEngaged)return unavailable('Leave combat before crossing.');
  if(animal.energy<1||animal.hydration<1)return unavailable('Too exhausted or dehydrated for a regional journey.');
- if(closest.distance(animal)>BOUNDARY)return unavailable('Approach the edge of the planetary map to continue walking.');
+ if(continuousSoloFrontier(sim)?distance(closest)!==0:distance(closest)>BOUNDARY)return unavailable('Approach the edge of the planetary map to continue walking.');
  let nextOrigin;
  try{
   nextOrigin=neighboringRegion(sim.world.regionOrigin,closest.name);
@@ -105,25 +115,25 @@ export function planetaryTravelAvailability(sim){
  const sessions=stored(sim),found=sessions.sessions.find(s=>s.key===regionKey(nextOrigin));
  const biological=found&&(found.biologicalMode==='canonical-ticks/1'||found.biologicalMode===POPULATION_MODE);
  if(biological&&remoteBiologicalDebt(sim,found)>OFFSCREEN_BIOLOGY.maxEntryTicks)
-  return unavailable('Remote biology has more than '+OFFSCREEN_BIOLOGY.maxEntryTicks+' ticks to reconcile. Continue the current world for living ecology catchup.');
+  return unavailable('Remote biology has more than '+OFFSCREEN_BIOLOGY.maxEntryTicks+' ticks to reconcile. Continue the current world for living ecology catchup.',{retryable:true});
  if(found&&!biological&&remoteEnvironmentDue(sim,found)>OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays)
-  return unavailable('This region has more than '+OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays+' days of physical weather to reconcile. Continue the current world to advance its environmental archive.');
- if(!found&&sessions.sessions.length>=residentLimit(sim))return unavailable(residencyEnabled(sim)?'Distant regions are still being stored. Wait a moment before exploring further.':'Regional archive full. Return to an explored region.');
- const residency=crossingResidency(sim,nextOrigin);if(!residency.ready)return unavailable(residency.reason);
+  return unavailable('This region has more than '+OFFSCREEN_ENVIRONMENT.maxEntryBacklogDays+' days of physical weather to reconcile. Continue the current world to advance its environmental archive.',{retryable:true});
+ if(!found&&sessions.sessions.length>=residentLimit(sim))return unavailable(residencyEnabled(sim)?'Distant regions are still being stored. Wait a moment before exploring further.':'Regional archive full. Return to an explored region.',{retryable:residencyEnabled(sim)});
+ const residency=crossingResidency(sim,nextOrigin);if(!residency.ready)return unavailable(residency.reason,{retryable:true});
  const archivedWorld=found?.snapshot?.world;
  const surveyed=archivedWorld?{regionOrigin:nextOrigin,n:SIZE,idx:(x,y)=>sim.world.idx(x,y),isPlayable:(x,y)=>sim.world.isPlayable(x,y),water:archivedWorld.surfaceWater.mask}:sim.planetaryRegions.get(nextOrigin,{create:false});
  const dest=surveyed||{
   regionOrigin:nextOrigin,
   n:SIZE,
   idx(x,y){return limit(Math.floor(y),0,SIZE-1)*SIZE+limit(Math.floor(x),0,SIZE-1)},
-  isPlayable(x,y){return x>1&&y>1&&x<SIZE-2&&y<SIZE-2},
+  isPlayable:(x,y)=>sim.world.isPlayable(x,y),
   water:new Proxy({}, {get(_,key){const i=Number(key);if(!Number.isSafeInteger(i))return undefined;return sim.world.planet.sample(nextOrigin.x+(i%SIZE)+.5,nextOrigin.y+Math.floor(i/SIZE)+.5).water}})
  };
  const placements=cohort.members.map((member,index)=>({member,point:familyArrivalPoint(animal,point,member,closest.name,index)}));
  for(const item of placements)if(!continuousBorder(sim,closest,item.member,dest,item.point))
   return unavailable('A family member cannot physically cross this border. Reposition the group or evolve suitable movement anatomy.');
  return{enabled:true,reason:cohort.members.length>1?'Cross '+closest.name+' together with '+(cohort.members.length-1)+' nearby family members.':'Cross the '+closest.name+' planetary region while preserving your creature and local ecology.',
-  direction:closest.name,to:nextOrigin,point,distance:closest.distance(animal),members:cohort.members.map(m=>m.id),
+  direction:closest.name,to:nextOrigin,point,distance:distance(closest),members:cohort.members.map(m=>m.id),
   dependentCount:cohort.dependentCount,adultCount:cohort.adultCount,placements:placements.map(({member,point})=>({id:member.id,point}))};
 }
 function strippedRegionSnapshot(sim,ids){
@@ -206,7 +216,7 @@ export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
   if(!point)throw Error('Cohort arrival missing physically validated crossing.');
   Object.assign(copy,{x:point.x,y:point.y,player:member.id===traveler.id,
    target:null,navigationRoute:null,pursuitEngaged:false,hidden:false,movedTick:sim.tickCount});
-  copy.energy=Math.max(0,copy.energy-FAMILY_PASSAGE.energyCost*bodyMass(copy));
+  if(continuousSoloFrontier(sim)){if(!canOccupy(copy,dest.world,point.x,point.y))throw Error('The destination frontier no longer supports this creature.')}else copy.energy=Math.max(0,copy.energy-FAMILY_PASSAGE.energyCost*bodyMass(copy));
   return copy;
  });
  const arrivalsById=new Map(arrivals.map(a=>[a.id,a]));
@@ -233,7 +243,7 @@ export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
  dest.regionalEcology.resetPageResidency();dest.rebuildSpatial();
  // Keep all pre-surveyed Worlds in the same atlas and replace the activated
  // region with its exact saved World rather than a re-generated approximation.
- const atlas=new PlanetRegionAtlas(dest.world,origin=>new World(sim.seed,{generator:'planetary/1',planetOrigin:origin,planetDescriptor:sim.world.planet.descriptor}));
+ const atlas=new PlanetRegionAtlas(dest.world,origin=>new World(sim.seed,{generator:'planetary/1',planetOrigin:origin,planetDescriptor:sim.world.planet.descriptor,frontierRules:sim.regionalFrontierRules}));
  const archivedKeys=new Set([...sessions.map(s=>s.key),sourceKey]);
  for(const {world} of sim.planetaryRegions.entries()){
   if(regionKey(world.regionOrigin)===destinationKey||archivedKeys.has(regionKey(world.regionOrigin)))continue;
@@ -243,7 +253,7 @@ export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
  sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,memberIds),...(sim.offscreenBiologyEnabled?{biologicalMode:'canonical-ticks/1'}:{})});
  dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions,...(prior.unloaded?.length?{unloaded:prior.unloaded.map(e=>structuredClone(e))}:{}),
   ...(prior.seamLedger?{seamLedger:structuredClone(prior.seamLedger)}:{})};
- for(const key of ['habitatHazardRules','fireRules','thunderRules','stratumSenseRules','stratumSenseRuleMigrations','vibrationRules','mateAssortmentRules','sensoryFogEnabled','surfaceIceRules','surfaceIceRuleMigrations','thermalRefugeRules','thermalRefugeRuleMigrations','thermalRules','thermalPattern','thermalRuleMigrations','visibilityRules','visibilityRuleMigrations','caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions','regionalFoundingRules','regionalDemographyRules','regionalResidencyRules','evolvedLibraryRules','foundingLibrary','regionalDispersalRules','marineFoodRules']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
+ for(const key of ['habitatHazardRules','fireRules','thunderRules','stratumSenseRules','stratumSenseRuleMigrations','vibrationRules','mateAssortmentRules','sensoryFogEnabled','surfaceIceRules','surfaceIceRuleMigrations','thermalRefugeRules','thermalRefugeRuleMigrations','thermalRules','thermalPattern','thermalRuleMigrations','visibilityRules','visibilityRuleMigrations','caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions','regionalFoundingRules','regionalDemographyRules','regionalResidencyRules','evolvedLibraryRules','foundingLibrary','regionalDispersalRules','marineFoodRules','regionalFrontierRules','uiTutorialStage','openingGraceUntilDay','openingGraceEnded']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
  if(!dest.habitatHazardRules)delete dest.habitatHazards;
  if(!dest.fireRules)delete dest.wildfire;
  if(!dest.thunderRules)delete dest.thunderstorms;

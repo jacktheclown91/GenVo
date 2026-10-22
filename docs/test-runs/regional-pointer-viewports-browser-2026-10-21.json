@@ -1,0 +1,174 @@
+{
+  "placed": {
+    "x": 124.5,
+    "y": 40.5
+  },
+  "target": {
+    "kind": "regional-ground",
+    "label": "Neighbouring ground",
+    "seed": "PLANET-B0-A",
+    "x": 131.5,
+    "y": 40.5,
+    "planetX": 131.5,
+    "planetY": 40.5,
+    "cx": 907,
+    "cy": 384,
+    "playerId": 197,
+    "energy": 91.02714767061084,
+    "from": {
+      "x": 0,
+      "y": 0
+    }
+  },
+  "viewports": [
+    {
+      "width": 800,
+      "height": 600,
+      "items": [
+        {
+          "label": "Neighbouring ground",
+          "left": 428,
+          "top": 188,
+          "right": 500,
+          "bottom": 230,
+          "width": 72,
+          "height": 42
+        },
+        {
+          "label": "Move here",
+          "left": 426,
+          "top": 105,
+          "right": 502,
+          "bottom": 173,
+          "width": 76,
+          "height": 68
+        }
+      ],
+      "playerOverlap": 0
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "items": [
+        {
+          "label": "Neighbouring ground",
+          "left": 540,
+          "top": 272,
+          "right": 612,
+          "bottom": 314,
+          "width": 72,
+          "height": 42
+        },
+        {
+          "label": "Move here",
+          "left": 538,
+          "top": 189,
+          "right": 614,
+          "bottom": 257,
+          "width": 76,
+          "height": 68
+        }
+      ],
+      "playerOverlap": 0
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "items": [
+        {
+          "label": "Neighbouring ground",
+          "left": 988,
+          "top": 428,
+          "right": 1060,
+          "bottom": 470,
+          "width": 72,
+          "height": 42
+        },
+        {
+          "label": "Move here",
+          "left": 986,
+          "top": 345,
+          "right": 1062,
+          "bottom": 413,
+          "width": 76,
+          "height": 68
+        }
+      ],
+      "playerOverlap": 0
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "items": [
+        {
+          "label": "Neighbouring ground",
+          "left": 711,
+          "top": 272,
+          "right": 783,
+          "bottom": 314,
+          "width": 72,
+          "height": 42
+        },
+        {
+          "label": "Move here",
+          "left": 709,
+          "top": 189,
+          "right": 785,
+          "bottom": 257,
+          "width": 76,
+          "height": 68
+        }
+      ],
+      "playerOverlap": 0
+    }
+  ],
+  "arrived": {
+    "origin": {
+      "x": 128,
+      "y": 0
+    },
+    "x": 131.28688202993413,
+    "y": 40.5,
+    "playerId": 197,
+    "energy": 90.63152404460925,
+    "lastAction": {
+      "type": "planet-travel",
+      "actorId": 197,
+      "members": [
+        197
+      ],
+      "from": "0,0",
+      "to": "128,0",
+      "tick": 32
+    },
+    "unique": true,
+    "movementKeys": [],
+    "sceneShown": true,
+    "scenePending": false
+  },
+  "saved": {
+    "origin": {
+      "x": 128,
+      "y": 0
+    },
+    "x": 3.2868820299341386,
+    "y": 40.5,
+    "playerId": 197,
+    "tick": 35,
+    "rng": 2050255202
+  },
+  "continued": {
+    "origin": {
+      "x": 128,
+      "y": 0
+    },
+    "x": 3.2868820299341386,
+    "y": 40.5,
+    "playerId": 197,
+    "tick": 35,
+    "rng": 2050255202
+  },
+  "manualCancel": true,
+  "errors": [],
+  "scope": "Final exported build, native New World, explicit legal frontier placement only; actual right-click Move here to visible neighbouring ground, no keyboard movement for the crossing, paid canonical transfer and final planetary arrival, native manual cancellation, Save/Continue. No body/stock editing; not natural continental-scale travel or creator acceptance."
+}

@@ -1,0 +1,157 @@
+{
+  "continuity": {
+    "startupPreparations": 0,
+    "crossings": [
+      {
+        "from": "{\"x\":0,\"y\":0}",
+        "to": "{\"x\":128,\"y\":0}",
+        "sceneShown": true,
+        "scenePending": false,
+        "terrainPixels": 14338,
+        "stats": {
+          "handoffs": 1,
+          "promotedChunks": 42,
+          "last": {
+            "from": "0,0",
+            "to": "128,0",
+            "promotedChunks": 42,
+            "departingChunks": 136
+          }
+        }
+      }
+    ]
+  },
+  "placed": {
+    "x": 124.5,
+    "y": 40.5
+  },
+  "across": {
+    "rgb": [
+      72,
+      98,
+      55
+    ],
+    "cam": {
+      "x": 124.5,
+      "y": 40.5
+    },
+    "player": {
+      "x": 124.5,
+      "y": 40.5
+    },
+    "w": 1366,
+    "h": 768
+  },
+  "inside": {
+    "rgb": [
+      57,
+      82,
+      76
+    ],
+    "cam": {
+      "x": 124.5,
+      "y": 40.5
+    },
+    "player": {
+      "x": 124.5,
+      "y": 40.5
+    },
+    "w": 1366,
+    "h": 768
+  },
+  "views": [
+    {
+      "key": "128,0",
+      "kind": "generated",
+      "chunks": 38,
+      "surface": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "0,-128",
+      "kind": "generated",
+      "chunks": 0,
+      "surface": [
+        1,
+        1
+      ]
+    },
+    {
+      "key": "128,-128",
+      "kind": "generated",
+      "chunks": 0,
+      "surface": [
+        1,
+        1
+      ]
+    }
+  ],
+  "arrived": {
+    "cam": {
+      "x": 2.5,
+      "y": 40.5
+    },
+    "player": {
+      "x": 2.5,
+      "y": 40.5
+    }
+  },
+  "behind": {
+    "rgb": [
+      71,
+      96,
+      54
+    ],
+    "cam": {
+      "x": 2.5,
+      "y": 40.5
+    },
+    "player": {
+      "x": 2.5,
+      "y": 40.5
+    },
+    "w": 1366,
+    "h": 768
+  },
+  "sizes": [
+    {
+      "w": 800,
+      "h": 600,
+      "rgb": [
+        71,
+        96,
+        54
+      ]
+    },
+    {
+      "w": 1024,
+      "h": 768,
+      "rgb": [
+        71,
+        96,
+        54
+      ]
+    },
+    {
+      "w": 1920,
+      "h": 1080,
+      "rgb": [
+        71,
+        96,
+        54
+      ]
+    }
+  ],
+  "maxFrameGapMs": 1233,
+  "frameGapsByPhase": {
+    "start": 0,
+    "borderViews": 83,
+    "crossing": 217,
+    "afterCrossingViews": 367,
+    "resizes": 1233
+  },
+  "errors": [],
+  "scope": "Exported build, native New World, explicit legal frontier placement, held-key crossing with first-frame pixel checks and no startup preparation, real neighbouring terrain at three sizes. Presentation continuity only: canonical travel still transfers to a different active Simulation and the physical margin gap and neighbouring wildlife interaction remain unfinished. Not creator acceptance."
+}

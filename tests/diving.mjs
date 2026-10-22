@@ -5,7 +5,7 @@ import {place} from '../src/lineage/evolution-draft.js';
 import {DIVING,waterColumn,submerged,setDiveTarget,stepDiving,aquaticFoodAccessible} from '../src/lineage/diving.js';
 import {adoptDivingRules} from '../src/lineage/diving-rules.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
-import {FRESHWATER_FOOD,harvestFreshwater} from '../src/ecology/freshwater-food.js';
+import {FRESHWATER_FOOD,harvestFreshwater,canAccessFreshwater} from '../src/ecology/freshwater-food.js';
 import {planetaryTravelAvailability,crossPlanetaryBorder} from '../src/world/planetary-travel.js';
 
 const design=new FounderDesign('sandbox');
@@ -18,6 +18,10 @@ assert.ok(index>=0,'real generated lake has a water column');a.x=index%w.n+.5;a.
 const stocks=structuredClone({water:w.water,food:w.freshwaterFood,carrion:w.carrion}),rng=sim.rng.state;
 assert.ok(sim.diveStatus().enabled);assert.equal(sim.rng.state,rng);
 assert.equal(aquaticFoodAccessible(sim,a,a.x,a.y,FRESHWATER_FOOD.waterweed),false,'surface swimmer cannot eat below water');
+assert.equal(canAccessFreshwater(sim,a,a.x,a.y,FRESHWATER_FOOD.waterweed,{planning:true}),true,'a surface swimmer may plan a future submerged meal');
+assert.equal(canAccessFreshwater(sim,a,a.x,a.y,FRESHWATER_FOOD.waterweed),false,'planning never grants immediate depth access');
+assert.deepEqual({water:w.water,food:w.freshwaterFood,carrion:w.carrion},stocks,'resource planning does not consume or create stocks');
+assert.equal(sim.rng.state,rng,'resource planning consumes no randomness');
 const target={kind:'waterweed',x:a.x,y:a.y};assert.equal(harvestFreshwater(sim,a,1,target),null);
 assert.ok(sim.playerDive().ok);assert.equal(a.diveDepth,0,'choosing a depth does not teleport');
 for(let i=0;i<30;i++)stepDiving(sim,a,.1);

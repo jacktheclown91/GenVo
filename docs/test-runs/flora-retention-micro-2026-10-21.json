@@ -1,0 +1,26 @@
+{
+  "scope": "Actual mature bundled checkpoint, unchanged retained cohorts and provenance; isolated collection scan only, not browser frame acceptance",
+  "inputSha256": "c95c8909e8ab3adeddf03a14dadf0ad3936bfc4948295c642349dc4d7e7f53d6",
+  "cohorts": 859096,
+  "positive": 859096,
+  "retained": 41691,
+  "samplesMs": {
+    "before": [
+      166.01209999999992,
+      174.0113999999994,
+      166.01999999999862,
+      173.24469999999928
+    ],
+    "after": [
+      138.46589999999924,
+      159.83840000000055,
+      152.34499999999935,
+      167.51289999999972
+    ]
+  },
+  "meanMs": {
+    "before": 169.8220499999993,
+    "after": 154.5405499999997
+  },
+  "exactWholeState": true
+}

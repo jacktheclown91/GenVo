@@ -6,6 +6,9 @@
 
 - `src/main.js` is the browser game entry. It starts the native UI, input, current Simulation, renderer, saving, user selection and source-built scenarios. The optional Creature Lab remains a separate authoring tool.
 - `src/sim/frame-stepper.js` admits ordered control steps and simulation ticks under a frame-work budget. One simulation step remains atomic. A slow botanical operation is **not** solved merely by lowering simulation frequency.
+- `src/sim/planetary-work-queue.js` admits at most one destination, border, residency or far-biology background operation per animation frame. Async operations hold admission until settlement; world replacement clears queued work. Canonical tick and publication owners remain unchanged.
+- `src/render/regional-scene.js` promotes native neighbouring terrain and retains an archived departing view during canonical border transfer. It keeps the existing canvas visible, invalidates actor/interaction state and adds no biology owner. Same-world geology uses revision-aware bounded terrain refresh; ordinary unrelated loads still clear caches.
+- `src/ui/regional-pointer-route.js` keeps an explicitly selected neighbouring-ground point in planetary coordinates. PointerApproach emits ordinary controls and resumes only across the actual canonical travel receipt; shared movement/travel authorities retain all physical execution and resource costs. Neighbour selection is navigation-only.
 - `src/sim/simulation.js` owns the gameplay orchestration and one active animal/world set. Controllers live in specific biological, ecological, player and lineage modules. Do not add a second Simulation engine or use this file as the only home for new mechanics.
 - `src/world/world.js` owns active physical fields and the regional grid. `src/world/planetary-travel.js` manages active/archived region crossing; `src/world/planetary-offscreen-biology.js` and the frame stepper preserve synchronized background work. The planetary atlas is not a single giant actively simulated map.
 
@@ -75,3 +78,5 @@ Run affected contract tests **before** expensive long-horizon ecology. A green f
 ## Safe development and handoff
 
 Feature branches must start from a verified `main` commit, preserve unrelated local files and retained history, and contain reviewable behavior + tests together. Keep `main` untouched until integration is approved. The interim vibration branch is intentionally not a replacement for the local canonical source that Codex may resume from; evaluate ancestry/overlap and merge only completed, green changes in dependency order.
+
+Physical regional bounds and first-line step clipping are owned by `src/world/regional-frontier.js`. Fresh starts enable the version explicitly; persistence, page residency, canonical travel, pointer routing and scene handoff retain that same recorded authority. See [physical frontier](REGIONAL-FRONTIER-2026-10-21.md).

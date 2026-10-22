@@ -1,3 +1,5 @@
+import {regionalCreatureAt} from '../world/regional-fauna.js';
+import {regionalGroundTarget} from './regional-pointer-route.js';
 import {exposedCaveWater} from '../world/cave-water.js';
 import {surfaceIceCovered,iceAmount} from '../world/surface-ice.js';
 import {iceSupports} from '../lineage/ice-locomotion.js';
@@ -9,7 +11,7 @@ import {PLANTS,CFG} from '../sim/config.js';
 import {plantPreference} from '../ecology/functional-diet.js';
 import {CAVES} from '../world/cave-policy.js';
 import {visuallyObservable} from '../ecology/atmospheric-visibility.js';
-export function worldResourceAt(sim,renderer,cx,cy){const p=renderer.screenToWorld(cx,cy);if(!p||!sim.world.isPlayable(p.x,p.y))return null;const w=sim.world,i=w.idx(p.x,p.y),x=Math.floor(p.x)+.5,y=Math.floor(p.y)+.5;
+export function worldResourceAt(sim,renderer,cx,cy){const p=renderer.screenToWorld(cx,cy);if(!p)return null;const tile=CFG.tileSize*renderer.zoom,remote=renderer.regionalScreenPos?.size?regionalCreatureAt(sim,renderer,renderer.w/2+(p.x-renderer.camera.x)*tile,renderer.h/2+(p.y-renderer.camera.y)*tile):null;if(remote)return remote;if(!sim.world.isPlayable(p.x,p.y)||p.x>=sim.world.n||p.y>=sim.world.n)return regionalGroundTarget(sim,renderer,p.x,p.y);const w=sim.world,i=w.idx(p.x,p.y),x=Math.floor(p.x)+.5,y=Math.floor(p.y)+.5;
  // The player may walk toward unexplored space, but cannot inspect precise
  // resources, eggs or actors that its selected body has not perceived.
  const observer=sim.player();if(sim.sensoryFogEnabled===true&&observer&&!visuallyObservable(sim,observer,{x,y,underground:!!observer.underground}))return{kind:'ground',i,x,y,label:'Unexplored ground'};
@@ -27,7 +29,7 @@ export function worldResourceAt(sim,renderer,cx,cy){const p=renderer.screenToWor
  if(w.water[i])return{kind:'water',i,x,y,label:'Water'};
  return{kind:'ground',i,x,y,label:'Open ground'};
 }
-export function approachGoal(sim,target){const a=sim.player();if(!a)return null;if(target.kind==='cave-water')return sim.canOccupy(a,target.x,target.y)?{x:target.x,y:target.y}:null;if(target.kind==='ground'||target.kind==='trace'||target.kind==='seed-patch')return sim.canOccupy(a,target.x,target.y)?{x:target.x,y:target.y}:null;const choices=[];for(let y=-1;y<=1;y++)for(let x=-1;x<=1;x++){const p={x:target.x+x,y:target.y+y};if(sim.canOccupy(a,p.x,p.y)&&(target.kind!=='water'||sim.world.isDrinkable(p.x,p.y)))choices.push(p)}return choices.sort((p,q)=>Math.hypot(p.x-a.x,p.y-a.y)-Math.hypot(q.x-a.x,q.y-a.y))[0]||null}
+export function approachGoal(sim,target){const a=sim.player();if(!a)return null;if(['regional-ground','regional-creature'].includes(target?.kind))return{...target};if(target.kind==='cave-water')return sim.canOccupy(a,target.x,target.y)?{x:target.x,y:target.y}:null;if(target.kind==='ground'||target.kind==='trace'||target.kind==='seed-patch')return sim.canOccupy(a,target.x,target.y)?{x:target.x,y:target.y}:null;const choices=[];for(let y=-1;y<=1;y++)for(let x=-1;x<=1;x++){const p={x:target.x+x,y:target.y+y};if(sim.canOccupy(a,p.x,p.y)&&(target.kind!=='water'||sim.world.isDrinkable(p.x,p.y)))choices.push(p)}return choices.sort((p,q)=>Math.hypot(p.x-a.x,p.y-a.y)-Math.hypot(q.x-a.x,q.y-a.y))[0]||null}
 export function resourceTargetView(sim,target){const a=sim.player();if(!a)return null;if(target.kind==='cave-water'){if(sim.sensoryFogEnabled===true&&!visuallyObservable(sim,a,target))return{live:false,near:false,reason:'Beyond this creature'+String.fromCharCode(39)+'s present senses.'};const status=sim.resourceAction('drink',target);return{live:!!a.underground&&exposedCaveWater(sim.world,target.i)>1e-8,near:sim.world.idx(a.x,a.y)===target.i,edible:false,action:status,goal:approachGoal(sim,target),description:'Finite groundwater exposed inside this actual passage. Drinking lowers the owned aquifer and can dry this seep.'}}if(sim.sensoryFogEnabled===true&&Number.isFinite(target.x)&&Number.isFinite(target.y)&&!visuallyObservable(sim,a,{x:target.x,y:target.y,underground:!!a.underground}))return{live:false,near:false,reason:'Beyond this creature\'s present senses.'};
  if(target.cave!==undefined){
   // The same physical entrance check powers mouse feedback and execution.

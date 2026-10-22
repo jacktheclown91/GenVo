@@ -15,8 +15,52 @@ const saved=structuredClone(createSimulationSnapshot(next,{savedAt:'resume'}));a
 const beforeInvalid=structuredClone(createSimulationSnapshot(s,{savedAt:'invalid'}));assert.throws(()=>crossPlanetaryBorder(s,{preparedDestination:ready}),/Invalid or already owned/);assert.deepEqual(createSimulationSnapshot(s,{savedAt:'invalid'}),beforeInvalid,'invalid reuse does not alter source ownership');
 const other=preparePlanetaryDestination(s,{x:0,y:128});assert.throws(()=>crossPlanetaryBorder(s,{preparedDestination:other}),/Invalid/);
 const pending=[],bounded=new PlanetaryPreparation({schedule:job=>pending.push(job),capacity:2});const a=bounded.request(s,{x:0,y:128}),b=bounded.request(s,{x:-128,y:0}),c=bounded.request(s,{x:0,y:-128});assert.equal(await a,false);assert.equal(bounded.size,2);bounded.clear();while(pending.length)pending.shift()();assert.equal(await b,false);assert.equal(await c,false);assert.equal(bounded.stats.generated,0);assert.equal(bounded.size,0,'cancelled queued jobs release their source and scaffolds');
+// Replacing a world may cancel an already scheduled callback, then immediately
+// request a destination for the new owner. The old callback cannot drain it.
+const lifecycleJobs=[],lifecycle=new PlanetaryPreparation({schedule:job=>lifecycleJobs.push(job)});
+const obsolete=lifecycle.request(s,{x:0,y:128});const staleJob=lifecycleJobs.shift();lifecycle.clear();
+assert.equal(await obsolete,false);const fresh=lifecycle.request(s,{x:0,y:-128});
+staleJob();assert.equal(lifecycle.stats.generated,0);assert.equal(lifecycleJobs.length,1);
+lifecycleJobs.shift()();assert.equal(await fresh,true);assert.equal(lifecycle.stats.generated,1);
 // A non-visited survey remains a real owner and cannot be discarded just
 // because a different visited World has an equivalent archived owner.
 const source=restoreSimulationSnapshot(structuredClone(snapshot)),survey=source.planetaryRegions.neighbor(source.world.regionOrigin,'north',{create:true}),crossed=crossPlanetaryBorder(source);assert.ok(crossed.ok);assert.equal(crossed.simulation.planetaryRegions.get(survey.regionOrigin),survey);
 const historical=restoreSimulationSnapshot(structuredClone(snapshot));delete historical.mateAssortmentRules;const oldDestination=preparePlanetaryDestination(historical,status.to);assert.equal(Object.hasOwn(oldDestination,'mateAssortmentRules'),false);const historicalCross=crossPlanetaryBorder(historical,{preparedDestination:oldDestination});assert.ok(historicalCross.ok);for(const animal of historicalCross.simulation.animals)if(animal.id!==historical.playerId)assert.deepEqual(animal.matePreferences,founderMatePreferences(historical.seed,animal.id),'new regional founders preserve the historical mate-policy distribution');
-console.log('Planetary preparation PASS: bounded/deduplicated canonical scaffolds, no source mutation, exact prepared/direct crossing, one-time promotion, archive-owned World eviction and retained survey/save identity.');
+
+// Historical and modern worlds cannot share a destination scaffold: marine
+// stocks are generated before promotion, and rules copied afterward cannot
+// repair a scaffold generated under a different policy.
+const noMarine=new Simulation(s.seed,{worldGenerator:'planetary/1',marineFood:false});
+noMarine.player().x=p.x;noMarine.player().y=p.y;
+const marineJobs=[],policyCache=new PlanetaryPreparation({schedule:job=>marineJobs.push(job)});
+const marineRequest=policyCache.request(s,status.to),legacyRequest=policyCache.request(noMarine,status.to);
+assert.notEqual(marineRequest,legacyRequest,'marine policy participates in preparation identity');
+while(marineJobs.length)marineJobs.shift()();
+assert.equal(await marineRequest,true);assert.equal(await legacyRequest,true);
+const marineReady=policyCache.take(s,status.to),legacyReady=policyCache.take(noMarine,status.to);
+assert.ok(marineReady.world.marineFood);assert.equal(Object.hasOwn(legacyReady,'marineFoodRules'),false);
+const untouched=structuredClone(createSimulationSnapshot(noMarine,{savedAt:'wrong-policy'}));
+assert.throws(()=>crossPlanetaryBorder(noMarine,{preparedDestination:marineReady}),/Invalid/);
+assert.deepEqual(createSimulationSnapshot(noMarine,{savedAt:'wrong-policy'}),untouched);
+const modernUntouched=structuredClone(createSimulationSnapshot(s,{savedAt:'modern-policy'}));
+assert.throws(()=>crossPlanetaryBorder(s,{preparedDestination:legacyReady}),/Invalid/);
+assert.deepEqual(createSimulationSnapshot(s,{savedAt:'modern-policy'}),modernUntouched);
+const legacyDirect=crossPlanetaryBorder(restoreSimulationSnapshot(structuredClone(untouched)));
+const legacyPrepared=crossPlanetaryBorder(noMarine,{preparedDestination:legacyReady});
+assert.ok(legacyDirect.ok);assert.ok(legacyPrepared.ok);
+assert.equal(Object.hasOwn(legacyPrepared.simulation,'marineFoodRules'),false);
+assert.deepEqual(createSimulationSnapshot(legacyPrepared.simulation,{savedAt:'legacy-parity'}),createSimulationSnapshot(legacyDirect.simulation,{savedAt:'legacy-parity'}));
+// A pending request captures its authority key, not permission to prepare
+// under whatever rules the mutable source happens to have at execution time.
+const driftSource=restoreSimulationSnapshot(structuredClone(snapshot)),driftJobs=[];
+const driftCache=new PlanetaryPreparation({schedule:job=>driftJobs.push(job)});
+const obsoletePolicy=driftCache.request(driftSource,status.to);
+delete driftSource.marineFoodRules;
+driftJobs.shift()();
+assert.equal(await obsoletePolicy,false);assert.equal(driftCache.size,0);
+assert.equal(driftCache.stats.generated,0);assert.equal(driftCache.stats.discarded,1);
+const currentPolicy=driftCache.request(driftSource,status.to);
+driftJobs.shift()();assert.equal(await currentPolicy,true);
+assert.equal(Object.hasOwn(driftCache.take(driftSource,status.to),'marineFoodRules'),false);
+
+console.log('Planetary preparation PASS: bounded/deduplicated canonical scaffolds, no source mutation, exact prepared/direct crossing, one-time promotion, archive-owned World eviction, retained survey/save identity and marine-policy isolation.');

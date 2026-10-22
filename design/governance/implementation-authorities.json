@@ -3,6 +3,41 @@
   "principle": "One live authority for each mechanism. Multiple states, species, art drafts and measured outcomes are permitted; competing runtime definitions are not.",
   "gameEntrypoint": "src/main.js",
   "systems": {
+    "residentFaunaViews": {
+      "authority": "src/world/regional-fauna.js",
+      "consumers": ["src/render/renderer.js", "src/render/regional-fauna.js", "src/ui/world-resource-target.js", "src/ui/creature-context-tray.js", "src/main.js"],
+      "contract": "docs/REGIONAL-FAUNA-2026-10-21.md",
+      "note": "Read-only surface views of actual canonical resident snapshots, bounded by the synchronized life stride and real anatomical/physical sight. No rendering-created animals, duplicate biological engines, remote damage, source RNG advances or unvisited population founding. Creator-selected approach retains real ID and revalidates ownership/visibility before and after canonical movement."
+    },
+    "regionalPhysicalFrontier": {
+      "authority": "src/world/regional-frontier.js",
+      "consumers": ["src/world/world.js", "src/world/pages.js", "src/ecology/page-residency.js", "src/world/planetary-travel.js", "src/world/planetary-walkthrough.js", "src/world/planetary-preparation.js", "src/sim/simulation.js", "src/persistence/save-manager.js", "src/ui/pointer-approach.js", "src/ui/regional-pointer-route.js"],
+      "contract": "docs/REGIONAL-FRONTIER-2026-10-21.md"
+    },
+    "regionalPointerNavigation": {
+      "authority": "src/ui/regional-pointer-route.js",
+      "consumers": ["src/ui/pointer-approach.js", "src/ui/world-resource-target.js", "src/ui/creature-context-tray.js", "src/main.js"],
+      "contract": "docs/REGIONAL-POINTER-2026-10-21.md",
+      "note": "A creator-selected visible neighbouring ground point remains an ephemeral planetary-coordinate route across actual canonical transfer receipts. Planning reuses the shared physical transect and body occupancy, while playerControlStep and planetary-travel.js alone execute movement/costs/transfer. No remote feeding, inspection, fauna ownership or saved biology policy is granted."
+    },
+    "regionalSceneHandoff": {
+      "authority": "src/render/regional-scene.js",
+      "consumers": ["src/render/renderer.js", "src/main.js"],
+      "contract": "docs/REGIONAL-SCENE-2026-10-21.md",
+      "note": "Region-aware native terrain cache promotion and archived departing terrain keep the existing canvas scene visible across canonical regional transfer. Actor/input/sensing targets are invalidated. This is presentation ownership only: planetary-travel.js still owns all organism transfer, clocks, stocks and costs; no saved movement or biology policy changes."
+    },
+    "floraGenotypeRetention": {
+      "authority": "src/ecology/flora-genome-lifetime.js",
+      "consumers": ["src/ecology/botanical-reproduction.js"],
+      "contract": "docs/performance/MATURE-RETENTION-2026-10-21.md",
+      "note": "Retain every genotype referenced by positive seed cohorts, adults, ancestry, reproductive stocks, receipts and carried records. Only nonpositive seed rows and unreferenced definitions may be collected; allocation optimizations do not change biology or saved policy."
+    },
+    "planetaryBrowserWork": {
+      "authority": "src/sim/planetary-work-queue.js",
+      "consumers": ["src/main.js"],
+      "contract": "docs/PLANETARY-WORK-2026-10-21.md",
+      "note": "Browser-only fair admission of destination, border, residency and far-biology jobs, one per animation frame with asynchronous exclusion and obsolete-owner rejection. Canonical replay, physical resources and save publication remain owned by existing authorities; no ecological ticks are skipped or clocks advanced by this scheduler."
+    },
     "borderPresentation": {
       "authority": "src/render/border-terrain.js",
       "consumers": ["src/render/renderer.js", "src/render/sensory-fog.js", "src/render/camera-bounds.js", "src/main.js"],
@@ -525,7 +560,7 @@
     "planetaryTravel": {
       "authority": "src/world/planetary-travel.js",
       "consumers": [
-        "src/main.js"
+        "src/main.js", "src/ui/regional-pointer-route.js"
       ]
     },
     "offscreenEnvironmentReplay": {

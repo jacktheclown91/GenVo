@@ -35,7 +35,7 @@ export class BorderTerrain{
   const session=sim.planetaryTravel?.sessions?.find(s=>s.key===n.key);
   if(session){const day=session.snapshot.core.day;return{kind:'resident',stamp:'resident|'+Math.floor(day/BORDER_TERRAIN.refreshDays),build:()=>restorePresentationWorld(sim.seed,session.snapshot.world,session.snapshot.schema)}}
   if(sim.planetaryTravel?.unloaded?.some(e=>e.key===n.key))return null;
-  return{kind:'generated',stamp:'generated',build:()=>new World(sim.seed,{generator:'planetary/1',planetOrigin:n.origin,planetDescriptor:sim.world.planet.descriptor})};
+  return{kind:'generated',stamp:'generated',build:()=>new World(sim.seed,{generator:'planetary/1',planetOrigin:n.origin,planetDescriptor:sim.world.planet.descriptor,frontierRules:sim.regionalFrontierRules})};
  }
  // At most one World build per call; call from idle time.
  prepareNext(sim){
@@ -47,19 +47,42 @@ export class BorderTerrain{
   for(const key of [...this.views.keys()])if(!keys.has(key))this.views.delete(key);
   for(const n of wanted){
    const src=this.source(sim,n);if(!src)continue;
-   const view=this.views.get(n.key);if(view?.stamp===src.stamp&&view.world)continue;
+   const cached=this.views.get(n.key);if(cached?.stamp===src.stamp&&cached.world)continue;
    const world=src.build();
-   const facade={world,seed:sim.seed,day:sim.day,seasonIndex:sim.seasonIndex,get season(){return sim.season},climate:sim.climate,tickCount:sim.tickCount,planetaryTravel:null,animals:[],player:()=>null,
-    // No live flora controller exists for a neighbour: plants draw with their
-    // default trait appearance and no leaf litter, never invented genomes.
-    dispersal:{genomeAt:()=>null,litter:new Float32Array(world.len)},history:null};
-   const canvas=typeof document!=='undefined'?document.createElement('canvas'):null;
-   if(!canvas)return false;
-   const renderer=new this.RendererClass(canvas,facade);renderer.w=renderer.h=1;renderer.prepareTerrainOnly();
-   this.views.set(n.key,{...n,world,renderer,stamp:src.stamp,kind:src.kind});
+   const view=this.createView(sim,n,world,src);
+   if(!view)return false;
+   this.views.set(n.key,view);
    return true;
   }
   return false;
+ }
+ // A detached terrain renderer owns no resize listener or viewport surface.
+ createView(sim,n,world,src,terrainState=null){
+  const facade={world,seed:sim.seed,day:sim.day,seasonIndex:sim.seasonIndex,get season(){return sim.season},climate:sim.climate,tickCount:sim.tickCount,planetaryTravel:null,animals:[],player:()=>null,
+   dispersal:{genomeAt:()=>null,litter:new Float32Array(world.len)},history:null};
+  const canvas=typeof document!=='undefined'?document.createElement('canvas'):null;
+  if(!canvas)return null;
+  const renderer=new this.RendererClass(canvas,facade,{terrainOnly:true});
+  if(terrainState){Object.assign(renderer,terrainState);renderer.sceneShown=true;renderer.motionSim=facade}
+  else renderer.prepareTerrainOnly();
+  return{...n,world,renderer,stamp:src.stamp,kind:src.kind};
+ }
+ // Rebase the existing neighbouring scene around a newly active region.
+ // The departed view comes from its actual canonical archive, never a second
+ // biological Simulation or a regenerated replacement of visited ecology.
+ rebase(previous,next,terrainState){
+  const neighbours=this.neighbours(next),wanted=new Map(neighbours.map(n=>[n.key,n]));
+  const sourceKey=regionKey(previous.world.regionOrigin),source=wanted.get(sourceKey);
+  const session=next.planetaryTravel?.sessions?.find(s=>s.key===sourceKey);
+  if(!source||!session)return false;
+  const world=restorePresentationWorld(next.seed,session.snapshot.world,session.snapshot.schema);
+  const departing=this.createView(next,source,world,{kind:'resident',stamp:'resident|'+Math.floor(session.snapshot.core.day/BORDER_TERRAIN.refreshDays)},terrainState);
+  if(!departing)return false;
+  const rebased=new Map();
+  if(this.sim===previous)for(const [key,view] of this.views){const n=wanted.get(key);if(n&&key!==sourceKey){Object.assign(view,n);rebased.set(key,view)}}
+  rebased.set(sourceKey,departing);
+  this.views=rebased;this.work=null;this.pending=null;this.sim=next;
+  return true;
  }
  // The real World owning an absolute active-region cell outside the region.
  cellWorld(x,y){

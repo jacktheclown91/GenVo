@@ -75,7 +75,7 @@ sim=cross(sim,2.6);save(sim);settle(sim);
 assert.deepEqual(sim.world.regionOrigin,{x:384,y:0});
 assert.deepEqual(reloadCandidates(sim).map(e=>e.key),['128,0']);
 let status=cross(sim,2.6);
-assert.equal(status.enabled,false);assert.match(status.reason,/128,0 is still loading/);
+assert.equal(status.enabled,false);assert.match(status.reason,/128,0 is still loading/);assert.equal(status.retryable,true,'mouse journeys may wait for real required storage loading');
 const entry=reloadCandidates(sim)[0],payload=store.get(entry.id).payload;
 assert.throws(()=>reloadRegion(sim,entry,{...structuredClone(payload),key:'0,0'}),/does not belong/);
 const back=reloadRegion(sim,entry,structuredClone(payload));
