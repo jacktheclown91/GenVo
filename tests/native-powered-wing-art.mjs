@@ -1,0 +1,19 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {createHash} from 'node:crypto';
+import {compileSourceRgbaPart,recolorIndexedFrame} from '../src/render/indexed-part-art.js';
+import {prepareIndexedPartRenderer} from '../src/render/indexed-part-renderer.js';
+const D='assets/art/production-review/powered-wing-v1/',bytes=fs.readFileSync(D+'flight-wing-baseline.json'),old=JSON.parse(bytes),now=JSON.parse(fs.readFileSync('assets/art/parts/flight-wing.json'));
+assert.equal(createHash('sha256').update(bytes).digest('hex'),now.poweredWingArt.previousSourceSha256);assert.equal(createHash('sha256').update(fs.readFileSync(D+'wing-master.png')).digest('hex'),now.poweredWingArt.masterSha256);
+const metadata=s=>Object.fromEntries(Object.entries(s).filter(([k])=>!['frames','version','authorship','poweredWingArt'].includes(k)));assert.deepEqual(metadata(now),metadata(old),'exact original root/rig/display/material contracts');assert.equal(now.version,old.version+1);assert.equal(now.frames.length,16);
+const compiled=await compileSourceRgbaPart({...now,frames:now.frames.map(f=>({...f,rgba:Buffer.from(f.rgbaBase64,'base64')}))});let protectedCount=0;
+for(let f=0;f<16;f++){const {rgbaBase64:a,...ma}=old.frames[f],{rgbaBase64:b,...mb}=now.frames[f];assert.deepEqual(mb,ma);const rgba=Buffer.from(b,'base64');assert.ok(Buffer.from(recolorIndexedFrame(compiled,compiled.frames[f].key)).equals(rgba));assert.equal(rgba[(16*32+16)*4+3],255,'paint covers unchanged root');
+ const tinted=recolorIndexedFrame(compiled,compiled.frames[f].key,{skin:[[10,30,20],[30,60,40],[70,110,80],[120,170,130],[200,230,210]]});let quills=0;
+ for(let k=0;k<1024;k++){const x=k%32,y=k/32|0;assert.equal(tinted[k*4+3],rgba[k*4+3]);if(x===0||x===31||y===0||y===31)assert.equal(rgba[k*4+3],0,'native diagonal margin');if(compiled.frames[f].indices[k]>=5&&rgba[k*4+3]){assert.deepEqual([...tinted.slice(k*4,k*4+4)],[...rgba.slice(k*4,k*4+4)]);quills++}}
+ assert.ok(quills>0,'every direction/contact phase retains protected quill material');protectedCount+=quills;
+}
+for(let dir=0;dir<8;dir++)assert.notDeepEqual(recolorIndexedFrame(compiled,'idle:'+dir+':0'),recolorIndexedFrame(compiled,'idle:'+dir+':1'));
+let allocations=0;const renderer=prepareIndexedPartRenderer(compiled,{createCanvas(){allocations++;const canvas={};canvas.getContext=()=>({createImageData(){return{data:new Uint8ClampedArray(4096)}},putImageData(image){canvas.rgba=Uint8ClampedArray.from(image.data)}});return canvas}});
+for(let facing=0;facing<8;facing++)for(let frame=0;frame<2;frame++){let priorRoot=null;for(const deployment of [0,.5,1]){const calls=[],scales=[];let depth=0;const c={save(){depth++},restore(){depth--},translate(x,y){assert.ok(Number.isFinite(x+y))},rotate(a){assert.ok(Number.isFinite(a))},scale(x,y){assert.ok(x>0&&y>0);scales.push([x,y])},drawImage(...args){calls.push(args)}};const args={x:7,y:11,scale:2,headingRadians:facing*Math.PI/4,deployment,facing,frameIndex:frame},before=JSON.stringify(args);assert.equal(renderer.drawDorsal(c,args),true);assert.equal(calls.length,3);assert.equal(depth,0);assert.equal(JSON.stringify(args),before);assert.ok(scales.some(([x,y])=>x===1&&Math.abs(y-(.3+.7*deployment))<1e-9));const root=calls[2];assert.deepEqual(root.slice(1),[-16,-16]);if(priorRoot)assert.equal(root[0],priorRoot,'fixed root paint cannot change with folding');priorRoot=root[0]}}
+const prepared=allocations;for(let k=0;k<100;k++)renderer.drawDorsal({save(){},restore(){},translate(){},rotate(){},scale(){},drawImage(){}},{facing:2,deployment:k%2,frameIndex:k%2});assert.equal(allocations,prepared,'native panels reused without draw-time allocation');
+console.log('Powered-wing native art PASS: 16 exact source/indexed frames, unchanged hinge/root/material/timing metadata, protected quills, diagonal margins, all facings/rest phases/fold extents and allocation-free panel reuse.',{protectedCount});
