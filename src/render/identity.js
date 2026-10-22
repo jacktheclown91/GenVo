@@ -1,5 +1,6 @@
 import {visualCompositionAt} from './composition.js';
 import {visualHabitatAt} from './habitat.js';
+import {substrateWeightsAt,drawNativeSubstrate} from './biome-substrates.js';
 
 const WATER_CONTEXT_CACHE=new WeakMap();
 const RIVER_ID_CACHE=new WeakMap();
@@ -34,10 +35,11 @@ export function terrainPaletteAt(world,wx,wy,moisture=null,fertility=null){
   const x=Math.floor(wx),y=Math.floor(wy),u=wx-x,v=wy-y;
   const sampleHeight=(ox,oy)=>(height(x+ox,y+oy)*(1-u)+height(x+ox+1,y+oy)*u)*(1-v)+(height(x+ox,y+oy+1)*(1-u)+height(x+ox+1,y+oy+1)*u)*v;
   const relief=e?Math.max(-3,Math.min(3,(sampleHeight(-1,-1)-sampleHeight(1,1))*24)):0;
+  const material=substrateWeightsAt(world,wx,wy,{moisture:sample.moisture});
   return {
-    hue:(broad-.5)*3.2+(sub-.5)*1.4+wet*1.8-dry*5.4+rich*.9,
-    sat:(broad-.5)*1.1+wet*1.5-dry*1.7+rich*1.8,
-    light:(sub-.5)*1.0+dry*1.5-rich*.8-wet*.35+relief
+    hue:(broad-.5)*3.2+(sub-.5)*1.4+wet*1.8-dry*5.4+rich*.9-material.dry*44+material.cold*4-material.rock*5,
+    sat:(broad-.5)*1.1+wet*1.5-dry*1.7+rich*1.8+material.dry*3-material.cold*7-material.rock*10,
+    light:(sub-.5)*1.0+dry*1.5-rich*.8-wet*.35+relief+material.dry*3+material.cold+material.rock*2
   };
 }
 
@@ -57,6 +59,7 @@ export function seasonalGroundProfile(season,identity){
 }
 
 export function drawSeasonalGround(ctx,{world,habitatField,season,px,py,u,x,y,identity=null}){
+  drawNativeSubstrate(ctx,{world,px,py,u,x,y});
   const id=identity||habitatIdentityAt(world,x,y,habitatField),p=seasonalGroundProfile(season,id),h=hash(world.seedHash,x,y,4517);ctx.save();
   if(p.shoots>.20&&h>.57){ctx.fillStyle='rgba(170,204,103,.28)';const n=p.shoots>.48?2:1;for(let q=0;q<n;q++){const qh=hash(world.seedHash^0x17,x+q*5,y-q*3,4523),ox=(3+Math.floor(qh*10))*u,oy=(10+Math.floor(hash(world.seedHash,y+q,x,4529)*3))*u;ctx.fillRect(px+ox,py+oy,u,2*u);ctx.fillRect(px+ox+u,py+oy,u,u)}}
   if(p.dry>.20&&h<.48){ctx.fillStyle='rgba(194,160,91,.20)';for(let q=0;q<(p.dry>.5?2:1);q++){const qh=hash(world.seedHash^0x31,x+q*7,y-q,4547);ctx.fillRect(px+(3+Math.floor(qh*9))*u,py+(5+Math.floor(hash(world.seedHash,y,x+q,4553)*7))*u,(2+(qh>.72?1:0))*u,u)}}
