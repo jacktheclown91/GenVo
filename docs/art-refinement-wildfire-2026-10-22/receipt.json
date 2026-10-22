@@ -1,0 +1,314 @@
+{
+  "setup": {
+    "seed": "NATIVE-FIRE-20261022",
+    "site": {
+      "i": 11379,
+      "x": 115,
+      "y": 88,
+      "score": 0.8393231618054451
+    },
+    "observation": {
+      "x": 115.5,
+      "y": 88.82544955068501
+    },
+    "ignited": [
+      11378,
+      11379,
+      11380,
+      11506,
+      11507,
+      11508
+    ],
+    "cells": [
+      [
+        11378,
+        {
+          "since": 6,
+          "intensity": 1
+        }
+      ],
+      [
+        11379,
+        {
+          "since": 6,
+          "intensity": 1
+        }
+      ],
+      [
+        11380,
+        {
+          "since": 6,
+          "intensity": 0.9837223089415185
+        }
+      ],
+      [
+        11506,
+        {
+          "since": 6,
+          "intensity": 1
+        }
+      ],
+      [
+        11507,
+        {
+          "since": 6,
+          "intensity": 0.9846611783116826
+        }
+      ],
+      [
+        11508,
+        {
+          "since": 6,
+          "intensity": 1
+        }
+      ]
+    ],
+    "fuelBefore": 1.6675775349140167,
+    "fuelAfter": 1.6071797311306,
+    "burned": 0.36238574981689453,
+    "mineralReturn": 0.036238574981689434,
+    "atmosphericExport": 0.3261471748352051,
+    "tick": 18,
+    "zoom": 2,
+    "scope": "Canonical ignition API on actual dry fueled generated ground; ordinary update count is recorded explicitly. Only observation position and phase-review facing are staged; no weather, plants, anatomy, reserves or fire intensity edits. Controlled ignition is not a claim of natural lightning occurrence.",
+    "ordinaryUpdates": 12
+  },
+  "phases": [
+    {
+      "tick": 21,
+      "cells": [
+        [
+          11378,
+          {
+            "since": 6,
+            "intensity": 1
+          }
+        ],
+        [
+          11379,
+          {
+            "since": 6,
+            "intensity": 1
+          }
+        ],
+        [
+          11380,
+          {
+            "since": 6,
+            "intensity": 0.9685227231918633
+          }
+        ],
+        [
+          11506,
+          {
+            "since": 6,
+            "intensity": 1
+          }
+        ],
+        [
+          11507,
+          {
+            "since": 6,
+            "intensity": 0.9694615475618179
+          }
+        ],
+        [
+          11508,
+          {
+            "since": 6,
+            "intensity": 1
+          }
+        ]
+      ],
+      "burned": 0.45298218727111816,
+      "observation": {
+        "x": 115.5,
+        "y": 88.12361590648682,
+        "dir": 4
+      },
+      "visibleBurningCells": [
+        11378,
+        11379,
+        11380,
+        11506,
+        11507,
+        11508
+      ],
+      "exactCanonicalState": true
+    },
+    {
+      "tick": 24,
+      "cells": [
+        [
+          11378,
+          {
+            "since": 6,
+            "intensity": 1
+          }
+        ],
+        [
+          11379,
+          {
+            "since": 6,
+            "intensity": 1
+          }
+        ],
+        [
+          11380,
+          {
+            "since": 6,
+            "intensity": 0.953323137442208
+          }
+        ],
+        [
+          11506,
+          {
+            "since": 6,
+            "intensity": 1
+          }
+        ],
+        [
+          11507,
+          {
+            "since": 6,
+            "intensity": 0.9542619168119532
+          }
+        ],
+        [
+          11508,
+          {
+            "since": 6,
+            "intensity": 0.9849942548620572
+          }
+        ],
+        [
+          11381,
+          {
+            "since": 24,
+            "intensity": 0.25
+          }
+        ],
+        [
+          11505,
+          {
+            "since": 24,
+            "intensity": 0.25
+          }
+        ]
+      ],
+      "burned": 0.5435786247253418,
+      "observation": {
+        "x": 115.5,
+        "y": 87.42178226228863,
+        "dir": 4
+      },
+      "visibleBurningCells": [
+        11378,
+        11379,
+        11380,
+        11506,
+        11507,
+        11508,
+        11381,
+        11505
+      ],
+      "exactCanonicalState": true
+    },
+    {
+      "tick": 27,
+      "cells": [
+        [
+          11378,
+          {
+            "since": 6,
+            "intensity": 1
+          }
+        ],
+        [
+          11379,
+          {
+            "since": 6,
+            "intensity": 1
+          }
+        ],
+        [
+          11380,
+          {
+            "since": 6,
+            "intensity": 0.9381235516925527
+          }
+        ],
+        [
+          11506,
+          {
+            "since": 6,
+            "intensity": 1
+          }
+        ],
+        [
+          11507,
+          {
+            "since": 6,
+            "intensity": 0.9390622860620884
+          }
+        ],
+        [
+          11508,
+          {
+            "since": 6,
+            "intensity": 0.969794579111983
+          }
+        ],
+        [
+          11381,
+          {
+            "since": 24,
+            "intensity": 1
+          }
+        ],
+        [
+          11505,
+          {
+            "since": 24,
+            "intensity": 0.9303495555068593
+          }
+        ]
+      ],
+      "burned": 0.6643739193677902,
+      "observation": {
+        "x": 115.5,
+        "y": 86.71994861809044,
+        "dir": 4
+      },
+      "visibleBurningCells": [
+        11378,
+        11379,
+        11380,
+        11506,
+        11507,
+        11508,
+        11381,
+        11505
+      ],
+      "exactCanonicalState": true
+    }
+  ],
+  "stages": [
+    {
+      "stage": "before",
+      "meanMs": 10.837000000476838,
+      "medianMs": 6,
+      "p95Ms": 31.5
+    },
+    {
+      "stage": "after",
+      "meanMs": 9.185,
+      "medianMs": 5.100000023841858,
+      "p95Ms": 28.09999990463257
+    }
+  ],
+  "exactCanonicalState": true,
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "200 paused renderer CPU command draws; excludes GPU completion"
+}

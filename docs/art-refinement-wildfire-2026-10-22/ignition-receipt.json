@@ -1,0 +1,95 @@
+{
+  "setup": {
+    "seed": "NATIVE-FIRE-20261022",
+    "site": {
+      "i": 11379,
+      "x": 115,
+      "y": 88,
+      "score": 0.8393231618054451
+    },
+    "observation": {
+      "x": 115.5,
+      "y": 90.5
+    },
+    "ignited": [
+      11378,
+      11379,
+      11380,
+      11506,
+      11507,
+      11508
+    ],
+    "cells": [
+      [
+        11378,
+        {
+          "since": 6,
+          "intensity": 0.25
+        }
+      ],
+      [
+        11379,
+        {
+          "since": 6,
+          "intensity": 0.25
+        }
+      ],
+      [
+        11380,
+        {
+          "since": 6,
+          "intensity": 0.25
+        }
+      ],
+      [
+        11506,
+        {
+          "since": 6,
+          "intensity": 0.25
+        }
+      ],
+      [
+        11507,
+        {
+          "since": 6,
+          "intensity": 0.25
+        }
+      ],
+      [
+        11508,
+        {
+          "since": 6,
+          "intensity": 0.25
+        }
+      ]
+    ],
+    "fuelBefore": 1.6675775349140167,
+    "fuelAfter": 1.6675775349140167,
+    "burned": 0,
+    "mineralReturn": 0,
+    "atmosphericExport": 0,
+    "tick": 6,
+    "zoom": 2,
+    "scope": "Canonical ignition API on actual dry fueled generated ground; ordinary update count is recorded explicitly. Only observation position is staged; no weather, plants, anatomy, reserves or fire intensity edits. Controlled ignition is not a claim of natural lightning occurrence.",
+    "ordinaryUpdates": 0
+  },
+  "phases": [],
+  "stages": [
+    {
+      "stage": "before",
+      "meanMs": 11.019999999403954,
+      "medianMs": 6.899999976158142,
+      "p95Ms": 31.799999952316284
+    },
+    {
+      "stage": "after",
+      "meanMs": 10.073500000238418,
+      "medianMs": 5.5,
+      "p95Ms": 31.09999990463257
+    }
+  ],
+  "exactCanonicalState": true,
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "200 paused renderer CPU command draws; excludes GPU completion"
+}
