@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
+import {DIVING,waterColumn} from '../src/lineage/diving.js';
 import {SPECIES} from '../src/organisms/species.js';
 import {PARTS,registryProblems} from '../src/lineage/part-registry.js';
 import {PART_SPRITES,hasComponent} from '../src/render/part-sprites.js';
@@ -23,7 +24,10 @@ assert.ok(freshwaterPreference(r[0],'larvae')>freshwaterPreference(r[0],'duckwee
 const fx=partEffectFactors(r[0]);assert.ok(Math.abs(fx.swimSpeed-1)<1e-8,'founders normalized to baseline');
 const b=sim.world.idx(r[0].x,r[0].y),fields=sim.world.freshwaterFood;fields.larvae[b]=.4;
 r[0].energy=SPECIES.rillsifter.maxEnergy*.45;
-const before=fields.larvae[b];const meal=harvestFreshwater(sim,r[0],12,{kind:'larvae',x:r[0].x,y:r[0].y});
+// Underwater food is eaten at depth (depth-respiration/1): the sieve feeds
+// submerged in its own generated water column, then surfaces.
+const column=waterColumn(sim.world,r[0].x,r[0].y);assert.ok(column>DIVING.minDepth,'the founder lives in diveable water');const surfaced=r[0].diveDepth;r[0].diveDepth=column-DIVING.clearance;
+const before=fields.larvae[b];const meal=harvestFreshwater(sim,r[0],12,{kind:'larvae',x:r[0].x,y:r[0].y});if(surfaced===undefined)delete r[0].diveDepth;else r[0].diveDepth=surfaced;
 assert.ok(meal&&meal.energyGain>0&&fields.larvae[b]<before,'sieve transfers finite underwater larvae biomass');
 // Route all additional wildlife through the standard inheritance authority and persistence.
 const original=new Set(r[0].bodyPlan.nodes.map(n=>n.partId));

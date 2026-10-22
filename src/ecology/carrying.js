@@ -44,7 +44,7 @@ export class CarryingPressureController{
       if(w.water[i]){
         if(seenWater.has(i))continue;seenWater.add(i);
         let accessible=false;for(const {kind,p,preference} of wetFoods){
-          if(!canAccessFreshwater(this.sim,a,x,y,p))continue;accessible=true;
+          if(!canAccessFreshwater(this.sim,a,x,y,p,{planning:true}))continue;accessible=true;
           const energy=(freshwaterField(w,kind)?.[i]||0)*p.nutrition;
           food+=energy*preference;waterEnergy+=energy*preference;
           if(energy>0)rows.push({kind,x,y,wet:true,preference,energy});

@@ -54,8 +54,10 @@ export function initializeFreshwater(world){
 export function freshwaterField(world,kind){return kind==='detritus'?world.carrion:FRESHWATER_FOOD[kind]?.marine?world.marineFood?.[kind]:world.freshwaterFood?.[kind]}
 // A resource survey may count floating food from a reachable bank, without
 // granting underwater occupation or access to submerged prey.
-export function canAccessFreshwater(sim,animal,x,y,food){
-  if(!aquaticFoodAccessible(sim,animal,x,y,food))return false;
+// planning: whether this body could reach the food (capacity, demand and
+// remembered targets), rather than whether it can eat it at its current depth.
+export function canAccessFreshwater(sim,animal,x,y,food,{planning=false}={}){
+  if(!aquaticFoodAccessible(sim,animal,x,y,food,{planning}))return false;
   if(sim.canOccupy(animal,x,y)&&sim.canReach(animal,x,y))return true;
   return !!food.surface&&[[0,-1],[-1,0],[1,0],[0,1]].some(([dx,dy])=>sim.canOccupy(animal,x+dx,y+dy)&&sim.canReach(animal,x+dx,y+dy));
 }

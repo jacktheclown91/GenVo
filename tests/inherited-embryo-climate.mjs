@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {World} from '../src/world/world.js';
 import {Simulation} from '../src/sim/simulation.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {wildStartPlan} from '../src/organisms/wild-bodies.js';
 import {SPECIES} from '../src/organisms/species.js';
 import {conceptionMode} from '../src/reproduction/reproductive-anatomy.js';
 import {EMBRYO_CLIMATE,embryoThermalPreference,embryoClimateReading,
@@ -83,6 +84,8 @@ assert.equal(live.world.water[i],0);
 live.world.temperature[i]=.35;live.world.moisture[i]=.7;
 const real={...egg(.75,.8),x:spot.x,y:spot.y,id:17,motherId:7,
  fatherId:8,species:'genvo',condition:1,incubationDays:20};
+// Planetary worlds use anatomical mass: inheritance carries a real body.
+for(const side of ['maternalInheritance','paternalInheritance'])Object.assign(real[side],{species:'mosskip',massPolicy:live.massRules,bodyPlan:wildStartPlan('mosskip')});
 live.eggs=[real];live.nextEggId=18;
 live.advanceEggs();
 assert.equal(live.eggs.length,1);
@@ -105,6 +108,7 @@ assert.throws(()=>restoreSimulationSnapshot(untrusted),
  /Invalid inherited embryo-climate policy/);
 const old=structuredClone(saved);
 delete old.world.environment.embryoClimatePolicy;
+delete old.world.environment.youngClimatePolicy; // later policy built on embryo climate
 delete old.core.eggs[0].climateDays;
 delete old.core.eggs[0].climateWaterSpent;
 const historic=restoreSimulationSnapshot(old);

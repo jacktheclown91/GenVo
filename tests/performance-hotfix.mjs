@@ -10,7 +10,8 @@ import {Renderer} from '../src/render/renderer.js';
   r.terrainRefreshQueue=[];r.terrainRefreshQueued=new Set();r.terrainRefreshFrame=0;
   r.terrainChunkSignature=()=>2;
   let builds=0;
-  r.buildTerrainChunk=()=>{builds++;return{tag:'fresh'}};
+  // Refreshes are incremental work units; count each started rebuild.
+  r.buildTerrainChunk=()=>{builds++;return{tag:'fresh'}};r.createTerrainChunkWork=()=>{builds++;return{tag:'fresh-work'}};r.stepTerrainChunkWork=()=>true;
   assert.strictEqual(r.terrainChunk(2,3,4),oldCanvas,'stale terrain remains drawable while refresh is queued');
   assert.equal(builds,0,'movement/render path does not synchronously rebuild a stale chunk');
   assert.equal(r.terrainRefreshQueue.length,1,'stale chunk is queued exactly once');

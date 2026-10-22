@@ -140,7 +140,7 @@ export const WAVE2={
   'sensory-quills':{threatSense:1.12,metabolism:1.03},
   'fat-pad':{metabolism:.94,sprint:.97},
   'gill-slits':{swimSpeed:1.1,swimEnergy:.85,waterUse:1.03},
-  'salt-gland':{waterUse:1.02},
+  'salt-gland':{waterUse:1.02,metabolism:1.02},
   'scent-gland':{courtship:.55,visibility:1.08},
   'spine-cluster':{repel:.2,carry:.9},
   'brood-pouch':{carry:1.2,sprint:.97},

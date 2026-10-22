@@ -9,6 +9,9 @@ mouth(b,'grazing-mouth');const shared=s.carrying.breedingState(a);assert.equal(s
 b.species='rootling';assert.equal(s.carrying.breedingState(a).competitors,1,'Different founding label with identical diet contributes the same full consumer');
 const rng=s.rng.state,stock=w.plants.sunmoss[w.idx(59,54)];s.carrying.breedingState(a);assert.equal(w.plants.sunmoss[w.idx(59,54)],stock);assert.equal(s.rng.state,rng);
 w.plants.sunmoss.fill(0);assert.equal(s.carrying.breedingState(a).competitors,0,'Depleted food creates no imaginary shared resource');assert.equal(s.carrying.breedingState(a).allowed,false);
-w.water.fill(1);w.buildLandRegions();w.buildHydrology();for(const v of [a,b]){v.adaptations.push('webbed-limbs');mouth(v,'tearing-jaw')}w.freshwaterFood.fry[w.idx(59,54)]=.35;
-const aquatic=s.carrying.breedingState(a);assert.ok(aquatic.competitors>0&&aquatic.resource>0);b.adaptations=b.adaptations.filter(v=>v!=='webbed-limbs');assert.equal(s.carrying.breedingState(a).competitors,0,'Anatomically inaccessible aquatic prey cannot create competitor demand');
+// Flooded fixture with a real bed depth; underwater prey is reached by webbed
+// legs (depth-respiration/1), not by a trait label.
+const legs=v=>v.bodyPlan.nodes.filter(n=>/^root\/limb\.\d+$/.test(n.id)),dryLegs=legs(b).map(n=>n.partId);
+w.water.fill(1);w.divingBathymetry?.fill(.5);w.buildLandRegions();w.buildHydrology();for(const v of [a,b]){v.adaptations.push('webbed-limbs');for(const n of legs(v))n.partId='webbed-leg';mouth(v,'tearing-jaw')}w.freshwaterFood.fry[w.idx(59,54)]=.35;
+const aquatic=s.carrying.breedingState(a);assert.ok(aquatic.competitors>0&&aquatic.resource>0);b.adaptations=b.adaptations.filter(v=>v!=='webbed-limbs');legs(b).forEach((n,k)=>n.partId=dryLegs[k]);assert.equal(s.carrying.breedingState(a).competitors,0,'Anatomically inaccessible aquatic prey cannot create competitor demand');
 console.log('Same-label divergent diets, cross-label identical diets, finite depleted stocks, aquatic-only overlap and inaccessible consumers PASS');

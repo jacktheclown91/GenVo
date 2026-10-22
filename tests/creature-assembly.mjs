@@ -57,7 +57,10 @@ function ops(animal,dir,frame,moving){const out=[];const c={set fillStyle(v){thi
 // Rendering never grants abilities: a drawn paddle tail does not swim, and Pounce comes from anatomy.
 {
   const sim=new Simulation('GENVO8-ASSEMBLY',{player:true}),p=sim.player();p.adaptations=['spring-tendons'];p.anatomy={...(p.anatomy||{}),spring:.95};
-  const before=sim.playerCombat.pounceReach(p);p.bodyPlan=full;assert.equal(sim.playerCombat.pounceReach(p),before,'a plan drawn on the creature does not change its abilities');
+  // The body plan is the creature's anatomy (jumping policy): Pounce follows its
+  // actual spring legs, never the trait label.
+  p.bodyPlan=makePlan(full.nodes.map(n=>({partId:n.partId==='spring-leg'?'walking-leg':n.partId,parent:n.parent,socket:n.socket})));assert.equal(sim.playerCombat.pounceReach(p),0,'a spring-tendons label without spring legs cannot Pounce');
+  p.bodyPlan=full;assert.ok(sim.playerCombat.pounceReach(p)>0,'developed spring legs give Pounce reach');
   assert.equal(sim.canSwim(p),false,'drawing a paddle tail grants no open-water travel');
   assert.equal(resolvePhenotype(full).canSwim,false);
 }
