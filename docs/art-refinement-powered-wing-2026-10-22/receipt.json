@@ -1,0 +1,446 @@
+{
+  "setup": {
+    "seed": "POWERED-WING-20261022",
+    "body": "bp0-96101c59",
+    "mass": 1.7167999999999999,
+    "observation": {
+      "x": 68.5,
+      "y": 43.5,
+      "score": 4.3385211391374465
+    },
+    "zoom": 2,
+    "scope": "Controlled legal adult founder body with one paired flight-wing and observation placement. Genes, energy, health, all organisms and natural terrain retained. Real canonical takeoff and ordinary updates; no airborne/intensity fabrication or natural inheritance claim."
+  },
+  "modes": [
+    {
+      "mode": "ground",
+      "takeoff": null,
+      "exactCanonicalState": true,
+      "reports": [
+        {
+          "label": "before",
+          "captures": [
+            {
+              "dir": 0,
+              "frame": 0,
+              "file": "before-ground-0-0.png"
+            },
+            {
+              "dir": 1,
+              "frame": 0,
+              "file": "before-ground-1-0.png"
+            },
+            {
+              "dir": 2,
+              "frame": 0,
+              "file": "before-ground-2-0.png"
+            },
+            {
+              "dir": 3,
+              "frame": 0,
+              "file": "before-ground-3-0.png"
+            },
+            {
+              "dir": 4,
+              "frame": 0,
+              "file": "before-ground-4-0.png"
+            },
+            {
+              "dir": 5,
+              "frame": 0,
+              "file": "before-ground-5-0.png"
+            },
+            {
+              "dir": 6,
+              "frame": 0,
+              "file": "before-ground-6-0.png"
+            },
+            {
+              "dir": 7,
+              "frame": 0,
+              "file": "before-ground-7-0.png"
+            },
+            {
+              "dir": 0,
+              "frame": 1,
+              "file": "before-ground-0-1.png"
+            },
+            {
+              "dir": 1,
+              "frame": 1,
+              "file": "before-ground-1-1.png"
+            },
+            {
+              "dir": 2,
+              "frame": 1,
+              "file": "before-ground-2-1.png"
+            },
+            {
+              "dir": 3,
+              "frame": 1,
+              "file": "before-ground-3-1.png"
+            },
+            {
+              "dir": 4,
+              "frame": 1,
+              "file": "before-ground-4-1.png"
+            },
+            {
+              "dir": 5,
+              "frame": 1,
+              "file": "before-ground-5-1.png"
+            },
+            {
+              "dir": 6,
+              "frame": 1,
+              "file": "before-ground-6-1.png"
+            },
+            {
+              "dir": 7,
+              "frame": 1,
+              "file": "before-ground-7-1.png"
+            }
+          ],
+          "meanMs": 5.6260000002384185,
+          "medianMs": 3.5,
+          "p95Ms": 15.399999976158142
+        },
+        {
+          "label": "after",
+          "captures": [
+            {
+              "dir": 0,
+              "frame": 0,
+              "file": "after-ground-0-0.png"
+            },
+            {
+              "dir": 1,
+              "frame": 0,
+              "file": "after-ground-1-0.png"
+            },
+            {
+              "dir": 2,
+              "frame": 0,
+              "file": "after-ground-2-0.png"
+            },
+            {
+              "dir": 3,
+              "frame": 0,
+              "file": "after-ground-3-0.png"
+            },
+            {
+              "dir": 4,
+              "frame": 0,
+              "file": "after-ground-4-0.png"
+            },
+            {
+              "dir": 5,
+              "frame": 0,
+              "file": "after-ground-5-0.png"
+            },
+            {
+              "dir": 6,
+              "frame": 0,
+              "file": "after-ground-6-0.png"
+            },
+            {
+              "dir": 7,
+              "frame": 0,
+              "file": "after-ground-7-0.png"
+            },
+            {
+              "dir": 0,
+              "frame": 1,
+              "file": "after-ground-0-1.png"
+            },
+            {
+              "dir": 1,
+              "frame": 1,
+              "file": "after-ground-1-1.png"
+            },
+            {
+              "dir": 2,
+              "frame": 1,
+              "file": "after-ground-2-1.png"
+            },
+            {
+              "dir": 3,
+              "frame": 1,
+              "file": "after-ground-3-1.png"
+            },
+            {
+              "dir": 4,
+              "frame": 1,
+              "file": "after-ground-4-1.png"
+            },
+            {
+              "dir": 5,
+              "frame": 1,
+              "file": "after-ground-5-1.png"
+            },
+            {
+              "dir": 6,
+              "frame": 1,
+              "file": "after-ground-6-1.png"
+            },
+            {
+              "dir": 7,
+              "frame": 1,
+              "file": "after-ground-7-1.png"
+            }
+          ],
+          "meanMs": 5.203000000715256,
+          "medianMs": 3.200000047683716,
+          "p95Ms": 14
+        }
+      ]
+    },
+    {
+      "mode": "airborne",
+      "takeoff": {
+        "result": {
+          "ok": true,
+          "type": "flight",
+          "message": "Airborne. Movement crosses water and slopes. Land on solid ground to recover."
+        },
+        "energyBefore": 114.08,
+        "energyAfter": 108.08,
+        "flightSeconds": 0,
+        "tick": 3
+      },
+      "exactCanonicalState": true,
+      "reports": [
+        {
+          "label": "before",
+          "captures": [
+            {
+              "dir": 0,
+              "frame": 0,
+              "file": "before-airborne-0-0.png"
+            },
+            {
+              "dir": 1,
+              "frame": 0,
+              "file": "before-airborne-1-0.png"
+            },
+            {
+              "dir": 2,
+              "frame": 0,
+              "file": "before-airborne-2-0.png"
+            },
+            {
+              "dir": 3,
+              "frame": 0,
+              "file": "before-airborne-3-0.png"
+            },
+            {
+              "dir": 4,
+              "frame": 0,
+              "file": "before-airborne-4-0.png"
+            },
+            {
+              "dir": 5,
+              "frame": 0,
+              "file": "before-airborne-5-0.png"
+            },
+            {
+              "dir": 6,
+              "frame": 0,
+              "file": "before-airborne-6-0.png"
+            },
+            {
+              "dir": 7,
+              "frame": 0,
+              "file": "before-airborne-7-0.png"
+            },
+            {
+              "dir": 0,
+              "frame": 1,
+              "file": "before-airborne-0-1.png"
+            },
+            {
+              "dir": 1,
+              "frame": 1,
+              "file": "before-airborne-1-1.png"
+            },
+            {
+              "dir": 2,
+              "frame": 1,
+              "file": "before-airborne-2-1.png"
+            },
+            {
+              "dir": 3,
+              "frame": 1,
+              "file": "before-airborne-3-1.png"
+            },
+            {
+              "dir": 4,
+              "frame": 1,
+              "file": "before-airborne-4-1.png"
+            },
+            {
+              "dir": 5,
+              "frame": 1,
+              "file": "before-airborne-5-1.png"
+            },
+            {
+              "dir": 6,
+              "frame": 1,
+              "file": "before-airborne-6-1.png"
+            },
+            {
+              "dir": 7,
+              "frame": 1,
+              "file": "before-airborne-7-1.png"
+            }
+          ],
+          "meanMs": 5.308000000715256,
+          "medianMs": 3.200000047683716,
+          "p95Ms": 14.299999952316284
+        },
+        {
+          "label": "after",
+          "captures": [
+            {
+              "dir": 0,
+              "frame": 0,
+              "file": "after-airborne-0-0.png"
+            },
+            {
+              "dir": 1,
+              "frame": 0,
+              "file": "after-airborne-1-0.png"
+            },
+            {
+              "dir": 2,
+              "frame": 0,
+              "file": "after-airborne-2-0.png"
+            },
+            {
+              "dir": 3,
+              "frame": 0,
+              "file": "after-airborne-3-0.png"
+            },
+            {
+              "dir": 4,
+              "frame": 0,
+              "file": "after-airborne-4-0.png"
+            },
+            {
+              "dir": 5,
+              "frame": 0,
+              "file": "after-airborne-5-0.png"
+            },
+            {
+              "dir": 6,
+              "frame": 0,
+              "file": "after-airborne-6-0.png"
+            },
+            {
+              "dir": 7,
+              "frame": 0,
+              "file": "after-airborne-7-0.png"
+            },
+            {
+              "dir": 0,
+              "frame": 1,
+              "file": "after-airborne-0-1.png"
+            },
+            {
+              "dir": 1,
+              "frame": 1,
+              "file": "after-airborne-1-1.png"
+            },
+            {
+              "dir": 2,
+              "frame": 1,
+              "file": "after-airborne-2-1.png"
+            },
+            {
+              "dir": 3,
+              "frame": 1,
+              "file": "after-airborne-3-1.png"
+            },
+            {
+              "dir": 4,
+              "frame": 1,
+              "file": "after-airborne-4-1.png"
+            },
+            {
+              "dir": 5,
+              "frame": 1,
+              "file": "after-airborne-5-1.png"
+            },
+            {
+              "dir": 6,
+              "frame": 1,
+              "file": "after-airborne-6-1.png"
+            },
+            {
+              "dir": 7,
+              "frame": 1,
+              "file": "after-airborne-7-1.png"
+            }
+          ],
+          "meanMs": 5.158000000715256,
+          "medianMs": 3.100000023841858,
+          "p95Ms": 14.5
+        }
+      ]
+    }
+  ],
+  "live": [
+    {
+      "x": 69.68961485719919,
+      "y": 43.5,
+      "energy": 107.24597383455504,
+      "airborne": true,
+      "flightSeconds": 0.75,
+      "tick": 7,
+      "moving": true
+    },
+    {
+      "x": 70.47230353107547,
+      "y": 43.5,
+      "energy": 106.99969897882696,
+      "airborne": true,
+      "flightSeconds": 0.75,
+      "tick": 10,
+      "moving": true
+    },
+    {
+      "x": 71.2572613803832,
+      "y": 43.5,
+      "energy": 106.29299248902701,
+      "airborne": true,
+      "flightSeconds": 1.5,
+      "tick": 12,
+      "moving": true
+    },
+    {
+      "x": 72.04535217747595,
+      "y": 43.5,
+      "energy": 106.04563649159763,
+      "airborne": true,
+      "flightSeconds": 1.5,
+      "tick": 15,
+      "moving": true
+    }
+  ],
+  "landing": {
+    "result": {
+      "ok": true,
+      "type": "flight",
+      "message": "Landed. Ground interactions are available again."
+    },
+    "x": 72.04535217747595,
+    "y": 43.5,
+    "energy": 106.04563649159763,
+    "tick": 15,
+    "airborne": false,
+    "exactCanonicalState": true
+  },
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "100 paused CPU command draws per mode/stage; excludes GPU completion"
+}
