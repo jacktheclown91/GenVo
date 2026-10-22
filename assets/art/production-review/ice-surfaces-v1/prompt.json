@@ -1,0 +1,7 @@
+{
+  "prompt": "Use case: game native surface texture. Create one square seamless TOP-DOWN pixel-art texture of freshwater lake ice, viewed vertically overhead. Quiet pale desaturated blue-grey ice with broad cloudy mineral-free frost planes, a few delicate branching hairline cracks under the surface, and restrained translucent darker blue patches. The texture will be reduced to native 32x32 pixel tiles and overlaid ONLY inside existing physical ice masks in a top-down survival game. Make a deliberately chunky coherent pixel composition, not photographic, not noisy, no anti-aliasing, no crystal objects, no snow piles, no stars, no sparkles, no shore, no holes, no plants, no side-view standing objects, no perspective, no shadows, no text or borders. Limited palette of dark slate blue #507f91, muted ice blue #9ebfc9, pale ice #c9e2e7, soft frost #e0edf0. Fill the whole square. Details stay low contrast so small creatures remain clearly visible. Actual breakage holes and world coverage will be applied by the game, do not paint any navigable openings.",
+  "mode": "built-in imagegen",
+  "master": "ice-master.png",
+  "preparation": "tools/prepare-ice-surfaces.py",
+  "creatorApproval": false
+}
