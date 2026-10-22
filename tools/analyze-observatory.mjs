@@ -7,7 +7,7 @@
 // summarised across seeds by sign consistency; single-seed differences include
 // chaotic divergence and are not causal evidence on their own.
 import fs from 'node:fs';import path from 'node:path';
-const [dir,out,focusArg='bankjaw,rillsifter']=process.argv.slice(2),FOCUS=focusArg.split(','),PAIRS=[['vision','control'],['foraging','current'],['seeds','unbounded']];
+const [dir,out,focusArg='bankjaw,rillsifter']=process.argv.slice(2),FOCUS=focusArg.split(','),PAIRS=[['vision','control'],['foraging','current'],['seeds','unbounded'],['shared','legacy']];
 const read=f=>fs.readFileSync(f,'utf8').trim().split('\n').filter(Boolean).map(l=>JSON.parse(l));
 const mean=v=>v.length?v.reduce((a,b)=>a+b,0)/v.length:0,r=(v,d=3)=>Number.isFinite(v)?+v.toFixed(d):null;
 const slope=(xs,ys)=>{const mx=mean(xs),my=mean(ys);let n=0,d=0;for(let i=0;i<xs.length;i++){n+=(xs[i]-mx)*(ys[i]-my);d+=(xs[i]-mx)**2}return d?n/d:0};

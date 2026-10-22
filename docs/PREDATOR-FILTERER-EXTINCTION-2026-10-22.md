@@ -1,5 +1,7 @@
 # Why bankjaw and rillsifter go extinct — October 22, 2026
 
+**Correction (October 22):** rillsifter's effective breeding minimum was 2.9 (optimum 3.7), set by the provisional override in `src/ecology/breeding-calibration.js`, not the 4 recorded in `species.js`. Statements below that cite 4 overstate the gap. The creator subsequently directed that no species-specific threshold be retuned. New worlds now use [shared breeding support](BREEDING-SUPPORT-2026-10-22.md) instead.
+
 Bankjaw (shore hunter) and rillsifter (gilled filter feeder) went extinct in all six 400-day observatory runs. This happened in both the vision and control arms, so anatomical vision is not the cause.
 
 This investigation is read-only. Its sources:

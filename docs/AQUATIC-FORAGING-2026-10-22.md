@@ -1,5 +1,7 @@
 # Aquatic foraging — October 22, 2026
 
+**Correction (October 22):** rillsifter's effective breeding minimum was 2.9 (optimum 3.7), set by the provisional override in `src/ecology/breeding-calibration.js`, not the 4 recorded in `species.js`. Statements below that cite 4 overstate the gap. The creator subsequently directed that no species-specific threshold be retuned. New worlds now use [shared breeding support](BREEDING-SUPPORT-2026-10-22.md) instead.
+
 New planetary worlds record `aquatic-foraging/1`. It implements fixes 1–3 from the [bankjaw and rillsifter extinction diagnosis](PREDATOR-FILTERER-EXTINCTION-2026-10-22.md). Historical worlds keep their behaviour exactly: with the policy absent, the three matched seeds reproduce the earlier observatory runs to the animal at day 15.
 
 The recalibration of rillsifter's `minForage` is left for the creator and is unchanged.

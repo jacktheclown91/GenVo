@@ -28,6 +28,12 @@ Prioritize existing evolutionary possibilities over increasing the part count. C
 
 Acceptance: player or autonomous lineages develop, inherit and visibly benefit or suffer from meaningfully different bodies through actual generations. Successful simple organisms remain equally valid.
 
+**Explicit future task: remove the legacy species-carrier dependency (creator direction 2026-10-22).** No creature may be able or unable to do something merely because of its species name. Founding templates are starting bodies, not permanent species definitions. Named species should describe evolved outcomes.
+
+- **Done so far:** shared breeding support (`breeding-support/1`) replaces species forage minimums, prey counts, crowding caps and drive scales in new worlds.
+- **Remaining:** about 79 source files still read species records. These records supply maturity and growth (the most-read field), lifespan, litter, gestation, postpartum, reproductive cost and the breeding energy gate; max energy and hydration; legacy mass and `WILD_SCALE` body size; diets for legacy bodies; social mode and family care; the hunter flag; and the prey species' predation vulnerability and lifespan used in capture and prey turnover.
+- **Approach:** derive each from inherited anatomy, physiology and development, one versioned policy at a time, keeping prior behaviour for comparison and preserving saves. Do not attempt a wholesale rewrite before the jam build.
+
 ## 5. Living ecosystems
 
 Expand plant functional diversity, natural evolution, regional divergence, pollination, hybridization and dispersal; inheritable fungal/decomposition food webs; habitat-specific predation/evasion/group defence; marine migration, schooling, underwater reproduction and deep adaptation; multiple homes, storage, seasonal preparation, dependent movement and protection; persistent grazing/digging/burrowing/seed/nest engineering.

@@ -8,7 +8,10 @@ import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persist
 import {REGIONAL_DISPERSAL,dispersalContextFor} from '../src/world/planetary-dispersal.js';
 
 const cross=(sim,x)=>{const p=sim.player();p.energy=SPECIES[p.species].maxEnergy*.94;p.hydration=SPECIES[p.species].maxHydration*.95;for(let y=8.5;y<118.5;y++){p.x=x;p.y=y;sim.rebuildSpatial();if(planetaryTravelAvailability(sim).enabled)return crossPlanetaryBorder(sim).simulation}throw Error('no border')};
-let sim=new Simulation('PLANET-B0-A',{player:true,worldGenerator:'planetary/1'});
+// Emigration is triggered by refused breeding. This mechanics test keeps the
+// legacy breeding calibration so its trigger does not depend on breeding-support/1,
+// under which early abundant food refuses fewer breeders.
+let sim=new Simulation('PLANET-B0-A',{player:true,worldGenerator:'planetary/1',breedingSupport:false});
 assert.equal(sim.regionalDispersalRules,REGIONAL_DISPERSAL.policy);
 sim=cross(sim,125.2);for(let i=0;i<CFG.lifeStride*2;i++)sim.update();sim=cross(sim,125.2);
 assert.deepEqual(sim.world.regionOrigin,{x:256,y:0});
