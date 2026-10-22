@@ -80,6 +80,7 @@ const runtime=[
   'tests/marine-food-web.mjs',
   'tests/anatomical-vision.mjs',
   'tests/observatory-neutrality.mjs',
+  'tests/aquatic-foraging.mjs',
   'tests/regional-multi-hop-biology.mjs',
   'tests/regional-synchronized-replay.mjs',
   'tests/aquatic.mjs',
