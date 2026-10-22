@@ -1,5 +1,6 @@
 import {CFG} from '../sim/config.js';
 import {SPECIES,canPreyOn} from '../organisms/species.js';
+import {isWaterDweller} from '../lineage/aquatic.js';
 
 export class SocialController{
   constructor(sim){this.sim=sim;this.states=new Map();this.contacts=new Map();this.lastContactDay=-Infinity;this.lastObserveTick=-Infinity;this.stats={alarms:0,cohesionMoves:0,spacingMoves:0}}
@@ -144,9 +145,13 @@ export class SocialController{
   spacingTarget(animal){
     if(this.sim.isManualPlayer?.(animal)||!this.behaviorEnabled(animal))return null;const s=this.state(animal),p=this.profile(animal);if(!s||s.size<2||!Number.isFinite(s.nearestDistance)||s.nearestDistance>=(p.separation||1))return null;
     const other=this.sim.animals.find(a=>a.id===s.nearestId&&a.alive);if(!other)return null;
-    const dx=animal.x-other.x,dy=animal.y-other.y,len=Math.hypot(dx,dy)||1;this.stats.spacingMoves++;
-    return{x:animal.x+dx/len*1.8,y:animal.y+dy/len*1.8};
+    const dx=animal.x-other.x,dy=animal.y-other.y,len=Math.hypot(dx,dy)||1,target={x:animal.x+dx/len*1.8,y:animal.y+dy/len*1.8};
+    if(!this.reachableHabitat(animal,target))return null;this.stats.spacingMoves++;
+    return target;
   }
+  // Group movement never draws a water dweller ashore: a gilled body keeps to
+  // water rather than following land-living group mates onto the bank.
+  reachableHabitat(animal,p){if(!isWaterDweller(animal))return true;const w=this.sim.world;return w.isPlayable(p.x,p.y)&&!!w.water[w.idx(p.x,p.y)]}
   cohesionTarget(animal){
     if(this.sim.isManualPlayer?.(animal)||!this.behaviorEnabled(animal))return null;const s=this.state(animal),p=this.profile(animal);if(!s||s.size<3)return null;
     const spec=SPECIES[animal.species];if(animal.energy/spec.maxEnergy<.58||animal.hydration/spec.maxHydration<.58)return null;
@@ -154,7 +159,7 @@ export class SocialController{
       ?this.sim.animals.find(a=>a.id===s.guideId&&a.alive):null;
     const destination=guide||s.center;
     const d=Math.hypot(destination.x-animal.x,destination.y-animal.y),limit=this.cohesionRadius(animal,p);
-    if(d<=limit)return null;this.stats.cohesionMoves++;
+    if(d<=limit||!this.reachableHabitat(animal,destination))return null;this.stats.cohesionMoves++;
     return{x:destination.x,y:destination.y};
   }
   noteAlarm(animal){const s=this.state(animal);if(s?.alarm)this.stats.alarms++}

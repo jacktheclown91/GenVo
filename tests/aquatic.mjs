@@ -9,6 +9,8 @@ import {wildBranch,wildStartPlan} from '../src/organisms/wild-bodies.js';
 import {mutatePlan} from '../src/lineage/body-inheritance.js';
 import {RNG} from '../src/core/rng.js';
 import {FRESHWATER_FOOD,freshwaterPreference} from '../src/ecology/freshwater-food.js';
+// Escape responses are the canonical fleeing intents (escape, refuge, shelter, group alarm, wary).
+import {FLEEING} from '../src/ecology/threat-appraisal.js';
 
 // v1.61.0 (creator direction 2026-10-10): "a purely aquatic stalker or hopper should be able to evolve".
 const sim=new Simulation('GENVO8-AQUATIC',{player:false});sim.update(null);
@@ -36,13 +38,17 @@ assert.ok(land.speed<movementProfile(plainSwimmer,w,{fromX:hop.x,fromY:hop.y,toX
  const ashore=!s.world.water[s.world.idx(h.x,h.y)];let wet=0,steps=0,reached=false;const ashoreWhy={};let bankMeals=0;const startDay=s.day;
  while(s.day<startDay+12&&h.alive){s.update(null);steps++;if(s.world.water[s.world.idx(h.x,h.y)]){wet++;reached=true}else if(reached){ashoreWhy[h.intent]=(ashoreWhy[h.intent]||0)+1;const m=h.lastFreshwaterMeal;if(h.intent==='feed'&&m?.tick===s.tickCount&&m.amount>0&&Number.isFinite(m.amount)&&FRESHWATER_FOOD[m.kind]?.surface&&freshwaterPreference(h,m.kind)>0){let adjacent=false;for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++){const x=Math.floor(h.x)+dx+.5,y=Math.floor(h.y)+dy+.5;if(s.world.water[s.world.idx(x,y)]&&Math.hypot(x-h.x,y-h.y)<=1.5)adjacent=true}if(adjacent)bankMeals++}}}
  assert.equal(h.alive,true,'an aquatic filter feeder survives 12 days');assert.ok(reached&&wet/steps>.4,`it reaches water and spends much of its time there (${(wet/steps*100).toFixed(0)}%, started ${ashore?'ashore':'in water'})`);
- for(const why of Object.keys(ashoreWhy))assert.ok(['to-water','mate','swim','escape','flee'].includes(why)||(why==='feed'&&bankMeals===ashoreWhy.feed),`shore actions require return, mating, escape or a verified compatible freshwater bank meal (${why})`);
+ for(const why of Object.keys(ashoreWhy))assert.ok((['to-water','mate','swim','flee'].includes(why)||FLEEING.has(why))||(why==='feed'&&bankMeals===ashoreWhy.feed),`shore actions require return, mating, escape or a verified compatible freshwater bank meal (${why})`);
  assert.ok(h.hydration/SPECIES.mosskip.maxHydration>.5&&h.energy/SPECIES.mosskip.maxEnergy>.4,'water and food come from where it lives')}
 
 // An aquatic Stalker hunts from the water: it can reach prey a land-bound Stalker cannot.
 {const s=new Simulation('GENVO8-AQUATIC-HUNT',{player:false});s.update(null);const st=s.animals.find(a=>a.alive&&a.species==='needlejaw');aquatic(st);assert.equal(wildBranch(st).label,'Aquatic Stalker');
- const wt=nearestWater(s.world,st.x,st.y,64);st.x=wt.x;st.y=wt.y;const prey=s.animals.find(a=>a.alive&&a.species==='mosskip');prey.x=wt.x+2;prey.y=wt.y;s.rebuildSpatial?.();st.energy=SPECIES.needlejaw.maxEnergy*.4;
- assert.ok(s.bestPrey(st,26),'a swimming hunter finds prey across the water line')}
+ const wt=nearestWater(s.world,st.x,st.y,64);st.x=wt.x;st.y=wt.y;const prey=s.animals.find(a=>a.alive&&a.species==='mosskip');
+ // Prey stands on the most open bank across the water line, so vegetation cover (a separate concealment rule) is not what is measured.
+ let bank=null;for(const d of [2,3])for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1],[1,1],[-1,-1],[1,-1],[-1,1]]){const x=wt.x+dx*d,y=wt.y+dy*d;if(!s.world.isPlayable(x,y)||s.world.water[s.world.idx(x,y)])continue;const cover=s.coverAt({...prey,x,y});if(!bank||cover<bank.cover)bank={x,y,cover}}
+ assert.ok(bank,'a bank beside the water');prey.x=bank.x;prey.y=bank.y;s.rebuildSpatial?.();st.energy=SPECIES.needlejaw.maxEnergy*.4;
+ assert.ok(s.bestPrey(st,26),'a swimming hunter finds prey across the water line');
+ assert.equal(s.bestPrey({...st,id:-9,bodyPlan:wildStartPlan('needlejaw')},26),null,'a land-bound Stalker in the same place cannot')}
 
 // It can evolve: random mutation reaches a water-dwelling body from both starting bodies.
 for(const sp of ['mosskip','needlejaw']){let reached=0;const rng=new RNG('aquatic-reach-'+sp);

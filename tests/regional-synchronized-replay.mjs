@@ -41,7 +41,10 @@ const beforeStep=()=>{if(!pendingRegionalBiology(paced).length)return true;const
 const advance=dt=>stepper.advance(dt,1,()=>{count++;clock+=.01;paced.playerControlStep(controls,CFG.controlHz)},()=>paced.update(controls,{externalPlayerControl:true}),{beforeStep});
 advance(seconds);while(stepper.pendingSeconds>=stepper.stepSeconds){advance(0);assert.ok(++frames<1000)}
 assert.equal(count,seconds*CFG.controlHz);assert.ok(jobs>2);same(snapshot(paced),snapshot(sim),'frame-yielded and synchronous ordering match whole saved state exactly');
-assert.equal(pendingRegionalBiology(sim).length,2);
+// regional-demography/1: the first region is two hops away, so it runs the
+// population model and only the adjacent region is a canonical replay job.
+assert.deepEqual(sim.planetaryTravel.sessions.map(s=>s.biologicalMode).sort(),['canonical-ticks/1','regional-demography/1']);
+assert.deepEqual(pendingRegionalBiology(sim).map(s=>s.biologicalMode),['canonical-ticks/1']);
 const directory=partitionRegionalSnapshot(snapshot(sim),'world-directory-replay-test'),reader=new RegionalCheckpointReader(null,'world-directory-replay-test',directory.root);
 assert.deepEqual(reader.pendingBiology().map(row=>row.key),pendingRegionalBiology(sim).map(session=>session.key),'persisted clocks select the same ordered real replay jobs without loading any payload');
 assert.ok(reader.identityWatermark>=sim.nextId);assert.equal(reader.resident,0);reader.close();

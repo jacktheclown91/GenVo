@@ -8,7 +8,10 @@ import {validateRemoteEnvironmentalLedger} from '../src/world/planetary-offscree
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 const snap=s=>structuredClone(createSimulationSnapshot(s,{savedAt:'fixed',reason:'multi-hop'}));
 const same=(a,b,label)=>assert.ok(isDeepStrictEqual(a,b),label);
-let sim=new Simulation('PLANET-B0-A',{player:true,worldGenerator:'planetary/1',regionalReplayPolicy:'bounded-strides/1'});
+// Historical canonical replay: every visited region stays individually
+// simulated. Under regional-demography/1 a crossing deliberately reassigns far
+// regions to the population model (tests/regional-demography.mjs).
+let sim=new Simulation('PLANET-B0-A',{player:true,worldGenerator:'planetary/1',regionalReplayPolicy:'bounded-strides/1',regionalDemography:false});
 function frontier(s,excluded){
  const a=s.player();
  for(const direction of ['east','south','north','west'])for(let c=8.5;c<118.5;c++){
