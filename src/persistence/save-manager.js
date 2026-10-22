@@ -65,6 +65,7 @@ import {validateRegionalFounding} from '../ecology/regional-founding.js';
 import {validateRegionalDemographyRules} from '../world/planetary-demography.js';
 import {REGIONAL_RESIDENCY,validateRegionalResidency,residencyEnabled,unloadCandidates,reloadCandidates,rotationCandidate,parkRegion,unloadRegion,reloadRegion} from '../world/regional-residency.js';
 import {validateEvolvedLibraryState,validateEvolvedEntry} from '../lineage/evolved-library.js';
+import {REGIONAL_DISPERSAL} from '../world/planetary-dispersal.js';
 import {POPULATION_MODE} from '../world/regional-replay-order.js';
 import {advanceRemoteBiology,remoteBiologicalDebt} from '../world/planetary-offscreen-biology.js';
 
@@ -404,6 +405,8 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   validateRegionalResidency(sim);
   if(!Object.hasOwn(snapshot.core||{},'evolvedLibraryRules'))delete sim.evolvedLibraryRules;
   validateEvolvedLibraryState(sim);
+  if(!Object.hasOwn(snapshot.core||{},'regionalDispersalRules'))delete sim.regionalDispersalRules;
+  if(sim.regionalDispersalRules!==undefined&&sim.regionalDispersalRules!==REGIONAL_DISPERSAL.policy)throw Error('Unknown regional dispersal policy.');
   sim.seed=snapshot.seed;
   sim.rng.state=snapshot.rngState>>>0;
   restoreBirthRules(sim,snapshot.core||{});

@@ -7,6 +7,7 @@ import {canSwim,canOccupy} from '../lineage/lifestyle.js';
 import {bodyMass} from '../organisms/body-mass.js';
 import {isWaterDweller} from '../lineage/aquatic.js';
 import {FOOD_PROFILES} from '../gameplay/foraging.js';
+import {emigrate} from '../world/planetary-dispersal.js';
 
 // Population-level behavior for distant regions (regional-demography/1).
 // It replaces ONLY the per-individual perception, decision and movement
@@ -26,7 +27,8 @@ export const REGIONAL_DEMOGRAPHY_BEHAVIOR=Object.freeze({forageRadius:6,huntRadi
  hungry:.72,thirsty:.8,drink:5.2,carrionBite:.09,carrionEnergy:34,maxBite:.16,freshwaterMeal:5,
  // Canonical wildlife steps cost .009 x speed x mass / metabolism per step of
  // speed/simHz cells: .009 x simHz per cell travelled.
- moveEnergyPerCell:.009*CFG.simHz});
+ moveEnergyPerCell:.009*CFG.simHz,
+ migrationEveryDays:4,migrationSampleStep:4});
 const B=REGIONAL_DEMOGRAPHY_BEHAVIOR;
 const near=(sim,a,r,visit)=>{const w=sim.world,x0=Math.max(0,Math.floor(a.x-r)),x1=Math.min(w.n-1,Math.floor(a.x+r)),y0=Math.max(0,Math.floor(a.y-r)),y1=Math.min(w.n-1,Math.floor(a.y+r));
  for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){const px=x+.5,py=y+.5;if(Math.hypot(px-a.x,py-a.y)<=r)visit(px,py,w.idx(px,py))}};
@@ -92,6 +94,17 @@ export function phaseRegionalDemography(sim){
   if(isWaterDweller(a)&&filterFeed(sim,a))continue;
   if(canHunt(a)&&hunt(sim,a))continue;
   graze(sim,a);
+ }
+ // regional-dispersal/1: once a day, the canonical migration decision moves
+ // refused breeders within the region or, failing that, across an open border.
+ if(sim.regionalDispersalRules&&sim.tickCount%CFG.dayTicks===CFG.lifeStride*2&&sim.migration?.recommendWild){
+  // Each animal reconsiders every few days (staggered by identity), a
+  // population-level schedule for the canonical decision.
+  for(const a of living){if(!a.alive||inCanonicalTransition(a)||a.lineage||(a.id+sim.day)%B.migrationEveryDays||sim.family?.isDependent?.(a))continue;
+   // recommendWild migrates only ready animals; test readiness before its survey.
+   {const sp=SPECIES[a.species];if(a.age<sp.maturity||a.energy/sp.maxEnergy<.72||a.hydration/sp.maxHydration<.58||a.infected)continue}
+   const rec=sim.migration.recommendWild(a,{step:B.migrationSampleStep});if(!rec?.shouldMigrate||rec.reason==='cold-season refuge'&&!rec.target)continue;
+   travel(sim,a,rec.target.x,rec.target.y);if(rec.target.purpose==='emigration')emigrate(sim,a,rec.target.direction)}
  }
  if(sim.tickCount%CFG.dayTicks===CFG.lifeStride){
   const males=living.filter(a=>a.alive&&a.sex==='M');

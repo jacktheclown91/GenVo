@@ -68,6 +68,7 @@ const runtime=[
   'tests/regional-warm-cache.mjs',
   'tests/evolved-library.mjs',
   'tests/evolved-library-store.mjs',
+  'tests/regional-dispersal.mjs',
   'tests/save-storage.mjs',
   'tests/menu-world-slots.mjs',
   'tests/quick-interaction-default.mjs',
