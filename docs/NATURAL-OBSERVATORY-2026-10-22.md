@@ -129,3 +129,24 @@ The arms share seed, region and days. They diverge chaotically from the first di
 - **Weaker instrumentation on long runs:** the earlier long runs used the narrower vision observer, so their analysis covers populations, causes, threats and eye births only.
 - **One region:** all runs are a single planetary start region without travel or neighbouring regions.
 - **Selection not measured directly:** statements about it are correlational.
+
+## Seed viability re-measurement
+
+After [`seed-viability/1`](SEED-VIABILITY-2026-10-22.md), the same three seeds were run for 400 days with discrete seeds (`seeds`) against the continuous bank (`unbounded`). Every other default was identical, including `aquatic-foraging/1` ([datasets and analysis](test-runs/observatory-2026-10-22/seed-viability/)).
+
+| Day 400 | seeds (OBS-1 / 2 / 3) | unbounded (OBS-1 / 2 / 3) |
+|---|---|---|
+| Plant genomes | 5,984 / 11,588 / 11,593 | 201,769 / 326,166 / 313,296 |
+| Seed cohorts | 3,901 / 17,079 / 17,646 | 1.84 M / 3.86 M / 2.79 M |
+| Heap | 223 / 300 / 335 MB | 2,270 / 3,563 / 2,797 MB |
+| Snapshot | 27–56 MB, under 1 s | 6–56 s; size could not be measured past day 100 (heap above the safe serialisation ceiling) |
+| Median day time, days 300+ | 0.6 / 2.7 / 2.2 s | 3.0 / 9.3 / 5.9 s |
+| Mean animal population | 209 / 267 / 260 | 175 / 247 / 211 |
+| New parts / spread | 18/0, 18/2, 19/5 | 16/0, 17/2, 18/4 |
+| Plant biomass, day 400 | 3,747 / 18,086 / 16,214 | 7,451 / 19,453 / 23,186 |
+
+**Sustainable:** memory, save size and day time now level off instead of growing with world age. For example, OBS-3's median day time was 2.18 s before day 100 and 2.16 s after day 300. Evolution and species counts are comparable.
+
+**Ecological effect:** by day 400, plant biomass was lower in all three seeds (−50%, −7% and −30%), mostly in the seed-spreading bramble, thistlepod, dustsage and marshroot. Starvation deaths were also higher (99/47/45 against 40/33/31), although mean animal population was higher.
+
+**Likely mechanism:** under the continuous bank, a cell holding less than one seed could still reach the 0.012 establishment threshold for plants whose seed unit is above it, so fractional seed mass recolonised ground. Discrete seeds remove that, so seed-driven recovery after disturbance is slower. The plant release, germination and bank-decay parameters were calibrated against the continuous bank, so their recalibration, or seed dormancy and age, belongs to the creator-directed plant-lifecycle pass. They were not tuned here.

@@ -6,6 +6,7 @@ import {initializeFloraInheritance,adultFloraGenome,makeClonalPropagule,register
 import {exportPlantReserve,producerBoundary} from './plant-resources.js';
 import {FLORA_TISSUES,founderFloraGenome,floraMealChannels,validFloraGenome} from './flora-genotype.js';
 import {PLANTS} from '../sim/config.js';
+import {seedViabilityEnabled,settleSeedCell} from './seed-viability.js';
 import {recordPageSeedDeposit} from './page-seed-transfers.js';
 import {WIND_SEED_POLICIES,planetaryWindSeedOffset} from '../world/weather-fronts.js';
 
@@ -132,7 +133,7 @@ export class PlantDispersalController{
   }
   advanceDay(){
     this.advanceAnimalCargo();
-    for(const [kind,set] of Object.entries(this.active)){const bank=this.seedBank(kind),decay=PLANTS[kind]?.dispersal?.bankDecay??.98;for(const i of set){const before=bank[i],next=before*decay;scaleSeedCohorts(this,kind,i,next);bank[i]=next;if(bank[i]<=0){set.delete(i);this.bankGenomes[kind].delete(i);this.floraState.seeds[kind].delete(i)}const lost=before-bank[i];this.litter[i]+=lost;this.sim.world.plantResources.totals.seedLitter+=lost;}}
+    const viable=seedViabilityEnabled(this.sim);for(const [kind,set] of Object.entries(this.active)){const bank=this.seedBank(kind),decay=PLANTS[kind]?.dispersal?.bankDecay??.98;for(const i of set){const before=bank[i],next=before*decay;scaleSeedCohorts(this,kind,i,next);bank[i]=next;if(viable){const dead=settleSeedCell(this,kind,i);if(dead>0)bank[i]=this.floraState.seeds[kind].get(i)?.size?Math.max(0,next-dead):0}if(bank[i]<=0){set.delete(i);this.bankGenomes[kind].delete(i);this.floraState.seeds[kind].delete(i)}const lost=before-bank[i];this.litter[i]+=lost;this.sim.world.plantResources.totals.seedLitter+=lost;}}
   }
 }
 function hashKind(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
