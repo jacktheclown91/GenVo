@@ -3,7 +3,6 @@ import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
 import {TISSUE_ENERGY,tissueEnergy,meatEnergy,killMealLimit} from '../src/ecology/tissue-energy.js';
 import {remainingPreyBiomass} from '../src/ecology/prey-biomass.js';
-import {growthCostForDay} from '../src/ecology/juvenile-biology.js';
 import {bodyMass} from '../src/organisms/body-mass.js';
 import {canHunt} from '../src/ecology/functional-diet.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
@@ -16,7 +15,7 @@ const make=(tissueEnergy=true)=>new Simulation('GENVO8-TEST-A',{player:true,dayC
 
 // 1. The derivation: a resting animal needs about 4–7% of its body mass in meat a day.
 {
- const sim=make();for(const [k,s] of Object.entries(SPECIES)){const a={species:k},perDay=s.maxEnergy/15/meatEnergy(sim,a)/s.mass;assert.ok(perDay>.035&&perDay<.075,k+' needs '+(perDay*100).toFixed(1)+'% of body mass in meat a day at rest');assert.ok(Math.abs(meatEnergy(sim,a)-tissueEnergy(sim,a)*TISSUE_ENERGY.assimilation)<1e-9)}
+ const sim=make();for(const [k,s] of Object.entries(SPECIES)){const a={species:k},perDay=s.maxEnergy/15/meatEnergy(sim,a)/s.mass;assert.ok(perDay>.035&&perDay<.075,k+' needs '+(perDay*100).toFixed(1)+'% of body mass in meat a day at rest')}
  const old=make(false);assert.equal(meatEnergy(old,{species:'needlejaw'}),34,'recorded worlds keep 34');assert.equal(killMealLimit(old,{species:'needlejaw'},34),Infinity);
 }
 // 2. A kill: the hunter eats what fits, at most a gorge; the rest stays on the carcass as carrion
@@ -30,14 +29,15 @@ const make=(tissueEnergy=true)=>new Simulation('GENVO8-TEST-A',{player:true,dayC
  assert.ok(Math.abs(killMealLimit(sim,pred,per)-bodyMass(pred)*TISSUE_ENERGY.gorgeShare)<1e-9,'a hungry hunter is limited by its gorge');
  pred.energy=P.maxEnergy*.95;assert.ok(Math.abs(killMealLimit(sim,pred,per)-P.maxEnergy*.05/per)<1e-9,'a nearly full one by its reserves');
 }
-// 3. Growing tissue costs what tissue holds; recorded worlds keep the old cost.
+// 3. Growth and repair keep the recorded cost (creator decision 2026-10-23); the measurement switch
+// applies the physical one.
 {
- const sim=make(),young=sim.animals.find(a=>a.alive&&a.age<SPECIES[a.species].maturity);
- if(young){const slow=growthCostForDay(young),real=growthCostForDay(young,tissueEnergy(sim,young));assert.ok(real>slow*2,'growth costs the tissue energy: '+slow.toFixed(3)+' -> '+real.toFixed(3))}
+ const sim=make(),young={species:'mosskip'};assert.equal(tissueEnergy(sim,young),TISSUE_ENERGY.recorded,'growth keeps the recorded cost');
+ sim.correctionExperiment={tissueGrowth:true};assert.ok(tissueEnergy(sim,young)>TISSUE_ENERGY.recorded*3,'the switch applies the physical cost');
 }
 // 4. Saves keep the policy; planetary crossings copy it.
 {
  const sim=make(),back=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim,{savedAt:'t',reason:'t'})));assert.equal(back.tissueEnergyRules,TISSUE_ENERGY.policy);
  const old=make(false);assert.equal(restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(old,{savedAt:'t',reason:'t'}))).tissueEnergyRules,undefined);
 }
-console.log('Tissue energy PASS: meat energy from carcass energy and resting needs, gorge-limited kills leave carrion, growth costs the same energy, saved, recorded worlds keep 34.');
+console.log('Tissue energy PASS: meat energy from carcass energy and resting needs, gorge-limited kills leave carrion, growth at the recorded cost, saved, recorded worlds keep 34.');

@@ -13,16 +13,18 @@ import {METABOLISM,metabolismActive} from './metabolism-policy.js';
 //    assimilated.
 // One kill meal is at most what fills the eater's reserves and at most a gorge of 20% of its body
 // mass; the rest stays on the carcass as carrion (recorded worlds consume the whole body at once and
-// lose what does not fit). Wildlife and the player follow the same rules: kills, wound bites,
-// carrion, and the cost of regrowing wounded tissue.
+// lose what does not fit). Wildlife and the player follow the same rules: kills, wound bites and
+// carrion. Growing and repairing tissue keep the recorded cost for now (tissueEnergy below).
 export const TISSUE_ENERGY=Object.freeze({policy:'tissue-energy/1',recorded:34,
  kleiberKcal:70,carcassKcalPerMass:1500,assimilation:.85,gorgeShare:.2});
 export function tissueEnergyActive(sim){return sim?.tissueEnergyRules===TISSUE_ENERGY.policy&&metabolismActive(sim)}
 function unitsPerKcal(a){const s=SPECIES[a.species];return s.maxEnergy/METABOLISM.reserveDaysFood/(TISSUE_ENERGY.kleiberKcal*s.mass**.75)}
 const physical=a=>TISSUE_ENERGY.carcassKcalPerMass*unitsPerKcal(a);
-// Energy one unit of this animal's tissue mass costs it to grow or repair. sim.correctionExperiment
-// .tissueGrowth=false (development measurement only) keeps the recorded cost for comparison runs.
-export function tissueEnergy(sim,a){return tissueEnergyActive(sim)&&SPECIES[a?.species]&&sim.correctionExperiment?.tissueGrowth!==false?physical(a):TISSUE_ENERGY.recorded}
+// Energy one unit of this animal's tissue mass costs it to grow or repair. Creator decision
+// 2026-10-23: the recorded cost for now, because development is time-compressed (a mosskip matures in
+// 20 days) and the physical cost starved the young (docs/YIELDS-2026-10-23.md).
+// sim.correctionExperiment.tissueGrowth=true (development measurement only) applies the physical cost.
+export function tissueEnergy(sim,a){return tissueEnergyActive(sim)&&SPECIES[a?.species]&&sim.correctionExperiment?.tissueGrowth===true?physical(a):TISSUE_ENERGY.recorded}
 // Energy an eater gains per unit of tissue eaten (before diet preference and digestion).
 export function meatEnergy(sim,eater){return tissueEnergyActive(sim)&&SPECIES[eater?.species]?physical(eater)*TISSUE_ENERGY.assimilation:TISSUE_ENERGY.recorded}
 // Most tissue an eater takes at one kill, given the energy it gains per unit mass. Unlimited on

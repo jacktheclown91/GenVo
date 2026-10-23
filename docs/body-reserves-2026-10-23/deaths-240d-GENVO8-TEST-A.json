@@ -1,0 +1,4437 @@
+{
+ "rules": "v1fw+e+t",
+ "seed": "GENVO8-TEST-A",
+ "days": 240,
+ "byCause": {
+  "starvation": 249,
+  "predation": 97,
+  "dehydration": 17,
+  "drowning": 6,
+  "faded": 4,
+  "age": 4,
+  "health": 3,
+  "disease": 1
+ },
+ "byCauseSpecies": {
+  "starvation mosskip": 98,
+  "starvation genvo": 81,
+  "starvation rootling": 35,
+  "predation mosskip": 32,
+  "predation genvo": 22,
+  "predation mirelick": 15,
+  "starvation rillsifter": 12,
+  "starvation podshell": 11,
+  "predation rootling": 10,
+  "predation podshell": 7,
+  "predation rillsifter": 5,
+  "dehydration podshell": 5,
+  "starvation bankjaw": 5,
+  "predation needlejaw": 4,
+  "dehydration rootling": 4,
+  "starvation needlejaw": 4,
+  "faded genvo": 4,
+  "drowning mirelick": 4,
+  "dehydration mosskip": 3,
+  "starvation mirelick": 3,
+  "dehydration genvo": 3,
+  "age mosskip": 3,
+  "predation bankjaw": 2,
+  "dehydration mirelick": 1,
+  "dehydration rillsifter": 1,
+  "health bankjaw": 1,
+  "drowning mosskip": 1,
+  "disease rootling": 1,
+  "health mosskip": 1,
+  "drowning genvo": 1,
+  "health genvo": 1,
+  "age mirelick": 1
+ },
+ "byCauseIntent": {
+  "starvation @explore": 100,
+  "predation @escape": 73,
+  "starvation @feed": 70,
+  "starvation @drink": 54,
+  "dehydration @drink": 17,
+  "predation @drink": 12,
+  "predation @refuge": 9,
+  "starvation @to-water": 6,
+  "drowning @escape": 6,
+  "starvation @escape": 4,
+  "starvation @hunt": 4,
+  "starvation @wary": 4,
+  "starvation @group-space": 4,
+  "starvation @shelter": 3,
+  "health @drink": 2,
+  "age @herd-rest": 2,
+  "predation @to-water": 1,
+  "predation @guard": 1,
+  "predation @shelter": 1,
+  "faded @drink": 1,
+  "faded @explore": 1,
+  "disease @feed": 1,
+  "health @feed": 1,
+  "faded @feed": 1,
+  "faded @band-watch": 1,
+  "age @mire-prowl": 1,
+  "age @pod-watch": 1
+ },
+ "predationHunters": {
+  "-": 284,
+  "needlejaw": 87,
+  "bankjaw": 9,
+  "unknown": 1
+ },
+ "preyReservesAtPredation": [
+  "rootling e0.81 w0.76 h-4 young @escape",
+  "rillsifter e0.72 w0.91 h-2 young @escape",
+  "bankjaw e0.37 w0.98 h-28 young @escape",
+  "needlejaw e0.82 w0.96 h-9 young @escape",
+  "mirelick e0.55 w0.56 h-34 @escape",
+  "mirelick e0.67 w0.63 h-1 young @refuge",
+  "needlejaw e0.39 w0.89 h-7 young @escape",
+  "needlejaw e0.81 w0.38 h-11 @escape",
+  "bankjaw e0.37 w0.91 h-50 young @escape",
+  "mosskip e0.7 w0.01 h-22 @drink",
+  "mirelick e0.67 w0.82 h-30 @escape",
+  "genvo e0.87 w0.04 h-10 @drink",
+  "podshell e0.41 w0.48 h-4 young @escape",
+  "mirelick e0.67 w0.61 h-9 @escape",
+  "rillsifter e0.1 w0.96 h-46 @escape",
+  "rillsifter e-0.15 w0.99 h-36 @escape",
+  "mosskip e0.99 w0.58 h-20 young @escape",
+  "mosskip e0.52 w0.38 h-13 @drink",
+  "rillsifter e-0.15 w0.95 h-23 @escape",
+  "rillsifter e-0.08 w0.79 h-56 @to-water",
+  "genvo e0.08 w0.72 h-20 @guard",
+  "mirelick e0.65 w0.5 h-32 @escape",
+  "genvo e-0.1 w0.34 h-32 young @shelter",
+  "rootling e0.77 w0.59 h-5 @escape",
+  "mirelick e0.59 w0.35 h-19 @escape",
+  "mirelick e0.63 w0.9 h-19 @escape",
+  "mosskip e0.05 w0.45 h-20 @escape",
+  "mosskip e-0.01 w0.24 h-19 @drink",
+  "rootling e0.54 w0.42 h-26 @escape",
+  "mosskip e0.08 w0.46 h-20 @drink",
+  "rootling e0.43 w0.55 h-23 @escape",
+  "rootling e0.6 w0.39 h-5 @escape",
+  "mosskip e0.03 w1 h-20 @drink",
+  "podshell e0.7 w0.88 h-58 young @escape",
+  "rootling e0.7 w0.72 h-19 @escape",
+  "rootling e0.41 w0.75 h-35 @escape",
+  "rootling e0.78 w0.63 h-9 @escape",
+  "needlejaw e0.64 w0.74 h-3 @escape",
+  "rootling e0.57 w0.26 h-9 young @drink",
+  "podshell e0.69 w0.93 h-37 young @escape",
+  "genvo e0.68 w0.68 h-16 young @escape",
+  "rootling e0.51 w0.56 h-9 @escape",
+  "mosskip e-0.1 w0.75 h-49 @escape",
+  "mosskip e-0.13 w0.95 h-18 @drink",
+  "mosskip e0.05 w0.89 h-9 @escape",
+  "mosskip e0.01 w0.69 h-35 young @refuge",
+  "podshell e0.69 w0.65 h-58 young @escape",
+  "podshell e0.73 w0.68 h-16 young @escape",
+  "mosskip e-0.25 w0.74 h-31 @escape",
+  "mosskip e-0.12 w0.37 h-24 @escape",
+  "genvo e-0.19 w0.62 h-25 @escape",
+  "genvo e-0.18 w0.6 h-48 @escape",
+  "mirelick e0.69 w0.89 h-5 @escape",
+  "mosskip e-0.23 w0.69 h-26 @escape",
+  "mirelick e0.71 w0.6 h-24 @escape",
+  "genvo e0.64 w0.46 h-3 young @refuge",
+  "genvo e0.24 w0.73 h-16 young @escape",
+  "mosskip e0.05 w0.24 h-5 @drink",
+  "genvo e0.41 w0.49 h-29 young @escape",
+  "mosskip e-0.19 w0.55 h-39 @escape",
+  "genvo e0.08 w0.96 h-38 young @escape",
+  "podshell e0.11 w0.8 h-37 young @refuge",
+  "genvo e0.08 w0.95 h-29 @escape",
+  "mosskip e-0.01 w0.68 h-14 @drink",
+  "genvo e-0.2 w0.65 h-65 young @drink",
+  "mosskip e-0.28 w0.5 h-56 @escape",
+  "mosskip e0.1 w0.8 h-23 @escape",
+  "mosskip e-0.03 w0.64 h-48 @escape",
+  "genvo e0.64 w0.48 h-20 @escape",
+  "mosskip e0.73 w0.68 h-12 @escape",
+  "mosskip e0.09 w0.5 h-10 @escape",
+  "mosskip e-0.18 w0.65 h-9 @escape",
+  "mosskip e0.09 w0.81 h-4 @escape",
+  "mosskip e-0.26 w0.83 h-39 @escape",
+  "mosskip e0.06 w0.86 h-17 @escape",
+  "genvo e0.16 w0.94 h-18 @escape",
+  "mosskip e0.14 w0.51 h-10 @escape",
+  "mosskip e0.04 w0.71 h0 @escape",
+  "mirelick e0.02 w0.68 h-10 @escape",
+  "mirelick e0.27 w0.81 h-6 @escape",
+  "genvo e-0.09 w0.94 h-38 @escape",
+  "mirelick e0.68 w0.59 h-37 young @refuge",
+  "mosskip e0.54 w0.23 h-50 @drink",
+  "mirelick e0.78 w0.64 h-26 @escape",
+  "mirelick e0.5 w0.93 h-12 @refuge",
+  "genvo e0.25 w0.73 h-38 @escape",
+  "genvo e0.04 w0.69 h-24 @escape",
+  "mosskip e0.58 w0.72 h-14 @escape",
+  "podshell e0.63 w0.9 h-27 @escape",
+  "genvo e0.59 w0.87 h-20 @escape",
+  "genvo e0.16 w0.5 h-20 @refuge",
+  "genvo e0.24 w0.82 h-18 @refuge",
+  "mosskip e-0.09 w0.84 h-27 @escape",
+  "genvo e-0.06 w0.95 h-22 @refuge",
+  "genvo e0.51 w0.92 h-1 young @escape",
+  "mirelick e0.4 w0.82 h-5 @escape",
+  "mosskip e0.34 w0.86 h-11 @escape"
+ ],
+ "drowning": [
+  "81 mosskip swimmer:false inWater:true e0.38 w-0.05 @escape | feed:902 drink:612 herd-hop:362 herd-browse:287",
+  "102 mirelick swimmer:false inWater:true e0.41 w-0.06 @escape | feed:1414 mire-prowl:669 drink:522 migrate:385",
+  "136 genvo swimmer:false inWater:true e0.43 w0.35 @escape | drink:806 feed:718 band-wander:500 band-watch:249",
+  "165 mirelick swimmer:false inWater:true e0.55 w0.26 @escape | feed:1991 drink:1195 idle:621 mire-prowl:570",
+  "165 mirelick swimmer:false inWater:true e0.59 w0.27 @escape | feed:1958 drink:1108 idle:920 migrate:709",
+  "165 mirelick swimmer:false inWater:true e0.5 w0.32 @escape | feed:472 drink:426 mire-prowl:363 idle:180"
+ ],
+ "dehydration": [
+  "14 mosskip young e0.47 @drink target:spot@0 waterDist:0 drinkableHere:true | feed:173 drink:94 herd-browse:84 herd-hop:65",
+  "15 podshell young e0.55 @drink target:spot@0 waterDist:0 drinkableHere:true | feed:229 drink:100 pod-wander:90 pod-browse:57",
+  "16 podshell e0.61 @drink target:other@1.4 waterDist:2 drinkableHere:false | feed:278 pod-wander:100 drink:74 pod-watch:53",
+  "17 podshell young e0.45 @drink target:other@1.5 waterDist:12 drinkableHere:false | feed:252 drink:89 pod-wander:87 pod-browse:85",
+  "20 mosskip young e0.01 @drink target:other@0.9 waterDist:5 drinkableHere:false | drink:54 explore:1",
+  "22 mosskip e0.58 @drink target:other@0.8 waterDist:11 drinkableHere:false | drink:189 feed:188 mate:127 group-alarm:108",
+  "24 mirelick e0.26 @drink target:other@0.8 waterDist:6 drinkableHere:false | feed:427 drink:172 mire-prowl:76 escape:55",
+  "29 rillsifter e0.03 @drink target:none@null waterDist:65535 drinkableHere:false | feed:410 to-water:280 drink:87 migrate:84",
+  "51 rootling e0.69 @drink target:other@0.7 waterDist:16 drinkableHere:false | feed:741 ground-probe:375 drink:285 root-roam:262",
+  "80 podshell e0.62 @drink target:other@1.6 waterDist:6 drinkableHere:false | feed:1042 drink:488 pod-wander:454 pod-browse:325",
+  "100 rootling young e0 @drink target:other@1.8 waterDist:22 drinkableHere:false | drink:54 explore:1",
+  "120 rootling e0.73 @drink target:other@1.9 waterDist:16 drinkableHere:false | feed:1903 drink:823 ground-probe:794 root-roam:555",
+  "138 podshell e0.4 @drink target:other@1.7 waterDist:3 drinkableHere:false | feed:1559 drink:1415 pod-browse:493 pod-wander:492",
+  "144 rootling e0.82 @drink target:other@0.8 waterDist:17 drinkableHere:false | feed:2386 drink:1484 ground-probe:601 root-roam:383",
+  "165 genvo young e0.01 @drink target:none@null waterDist:14 drinkableHere:false | drink:54 explore:1",
+  "165 genvo young e0.01 @drink target:none@null waterDist:12 drinkableHere:false | drink:54 explore:1",
+  "165 genvo young e0.02 @drink target:snow@2.7 waterDist:12 drinkableHere:false | drink:54 explore:1"
+ ],
+ "starvation": [
+  "20 mosskip young w-0.33 @drink | drink:54 explore:1",
+  "22 rillsifter w0.92 @escape | feed:292 shoal-glide:154 to-water:102 drink:70",
+  "22 mosskip w-0.12 @drink | feed:299 drink:151 herd-hop:93 herd-listen:78",
+  "22 rillsifter w0.9 @feed | feed:289 shoal-glide:137 drink:93 to-water:76",
+  "27 rillsifter w0.66 @to-water | feed:362 to-water:167 shoal-glide:161 drink:87",
+  "28 rillsifter w0.25 @to-water | feed:313 to-water:228 shoal-glide:174 swim:90",
+  "28 rillsifter w0.28 @to-water | feed:307 shoal-glide:249 to-water:249 shoal-rest:83",
+  "28 rillsifter w0.68 @to-water | feed:392 to-water:310 shoal-glide:94 drink:71",
+  "28 rillsifter w0.92 @to-water | feed:344 to-water:175 shoal-glide:146 group-alarm:103",
+  "29 rillsifter w-0.04 @drink | to-water:398 feed:346 shoal-glide:140 drink:73",
+  "29 rillsifter w0.71 @escape | feed:271 to-water:244 shoal-glide:205 swim:88",
+  "29 rillsifter w-0.08 @drink | shoal-glide:289 to-water:241 feed:240 shoal-rest:100",
+  "29 rillsifter w0.92 @to-water | to-water:279 feed:269 shoal-glide:213 shoal-rest:130",
+  "31 rillsifter w0.76 @feed | feed:355 shoal-glide:261 to-water:212 shoal-rest:106",
+  "33 genvo young w0.32 @shelter | storm-refuge:194 drink:96 follow:81 feed:72",
+  "35 bankjaw w0.6 @explore | explore:361 bank-patrol:233 bank-watch:173 migrate:172",
+  "36 genvo young w0.55 @shelter | storm-refuge:203 drink:135 feed:107 follow:81",
+  "37 genvo young w0.62 @shelter | storm-refuge:182 drink:151 feed:102 follow:86",
+  "38 bankjaw w0.88 @feed | hunt:280 drink:218 idle:206 bank-patrol:147",
+  "55 needlejaw w0.88 @hunt | hunt:637 drink:474 shadow-patrol:327 explore:189",
+  "55 mosskip w0.2 @drink | feed:702 drink:498 group-alarm:222 herd-browse:176",
+  "66 bankjaw w0.65 @hunt | hunt:462 drink:454 explore:302 idle:272",
+  "70 bankjaw w0.88 @hunt | hunt:545 drink:495 feed:458 idle:333",
+  "71 mosskip w-0.1 @drink | feed:587 herd-hop:520 drink:489 herd-browse:340",
+  "77 needlejaw young w0.36 @drink | hunt:79 drink:69 explore:52",
+  "82 mosskip young w0.89 @explore | drink:273 feed:210 herd-hop:117 herd-browse:75",
+  "85 mosskip w0.89 @feed | drink:1036 feed:916 herd-hop:260 herd-browse:233",
+  "85 mosskip w0.75 @feed | herd-hop:665 feed:599 drink:599 herd-browse:583",
+  "87 needlejaw w0.91 @explore | explore:947 drink:632 shadow-patrol:372 hunt:303",
+  "88 rootling w0.94 @feed | feed:1197 drink:1050 ground-probe:429 root-roam:317",
+  "88 rootling young w0.76 @feed | feed:533 drink:512 explore:76 ground-probe:52",
+  "89 genvo w-0.26 @drink | band-wander:1011 feed:1009 drink:629 band-watch:326",
+  "89 genvo young w-0.32 @drink | drink:54 explore:1",
+  "89 mosskip w0.76 @feed | drink:397 feed:397 pod-wander:172 pod-browse:161",
+  "89 genvo young w0.76 @drink | drink:59 explore:1",
+  "89 genvo young w0.92 @explore | drink:64 explore:1",
+  "89 genvo young w0.9 @feed | drink:63 explore:1 group-space:1",
+  "90 mosskip w0.95 @feed | feed:780 drink:741 herd-hop:553 herd-browse:484",
+  "90 mosskip w0.9 @explore | herd-hop:819 feed:668 drink:583 herd-browse:575",
+  "91 genvo w0.78 @feed | drink:788 feed:609 band-wander:235 explore:132",
+  "91 mosskip w0.64 @explore | feed:883 drink:779 herd-hop:550 herd-browse:415",
+  "101 rootling young w-0.05 @drink | drink:89 explore:1",
+  "105 genvo young w0.9 @feed | feed:123 drink:38 wary:3 explore:1",
+  "105 mosskip w-0.07 @drink | drink:833 feed:828 herd-hop:699 herd-browse:593",
+  "105 bankjaw w0.95 @feed | hunt:799 drink:715 idle:515 bank-watch:411",
+  "107 mosskip young w0.87 @explore | drink:268 idle:248 feed:217 explore:160",
+  "108 rootling w0.68 @explore | feed:1305 drink:1007 ground-probe:566 root-roam:375",
+  "109 mosskip w0.7 @feed | drink:938 feed:860 herd-browse:537 herd-hop:537",
+  "109 mosskip w0.89 @explore | drink:672 feed:588 herd-hop:299 herd-browse:259",
+  "109 genvo young w0.73 @explore | drink:510 feed:425 explore:163 band-wander:126",
+  "109 genvo w0.32 @drink | drink:613 feed:578 band-wander:413 explore:184",
+  "110 mosskip w0.87 @feed | feed:1189 drink:928 herd-hop:541 herd-browse:399",
+  "110 rootling w0.83 @feed | feed:1279 drink:879 ground-probe:743 root-roam:572",
+  "110 genvo w0.68 @feed | feed:1179 band-wander:862 drink:852 band-watch:316",
+  "110 mosskip w0.93 @explore | feed:1029 drink:819 herd-browse:617 herd-hop:570",
+  "110 mosskip w0.64 @drink | drink:992 feed:709 herd-hop:260 explore:233",
+  "110 mosskip w0.77 @explore | feed:656 drink:651 herd-hop:341 herd-listen:227",
+  "111 mosskip w0.72 @feed | feed:1166 drink:844 herd-hop:584 herd-browse:509",
+  "111 genvo young w0.94 @explore | drink:72 feed:49 explore:44 group-space:10",
+  "111 mosskip w0.68 @explore | drink:838 feed:761 herd-hop:404 herd-browse:370",
+  "111 rootling w0.9 @drink | feed:930 drink:599 explore:201 ground-probe:180",
+  "111 genvo w0.35 @drink | drink:527 feed:453 band-wander:379 band-watch:124",
+  "111 genvo young w0.49 @drink | explore:73 drink:55 feed:53 group-space:18",
+  "112 genvo w0.86 @feed | feed:1292 drink:999 band-wander:879 band-watch:289",
+  "112 mosskip w0.72 @explore | feed:1382 drink:880 herd-hop:585 herd-browse:465",
+  "112 rootling w0.94 @explore | drink:950 feed:861 group-alarm:216 ground-probe:205",
+  "113 genvo w0.87 @feed | feed:1178 band-wander:1094 drink:975 band-watch:336",
+  "113 mosskip w0.85 @explore | drink:713 feed:502 herd-hop:242 herd-browse:181",
+  "113 genvo w0.87 @drink | drink:546 feed:485 band-wander:243 explore:202",
+  "113 mosskip w0.86 @feed | drink:850 feed:742 herd-hop:377 herd-browse:322",
+  "114 genvo w0.82 @feed | feed:713 drink:623 ground-probe:160 root-roam:97",
+  "114 genvo w0.49 @drink | drink:1291 feed:1121 band-wander:663 idle:370",
+  "114 genvo w0.85 @explore | feed:1388 band-wander:1145 drink:835 band-watch:386",
+  "114 genvo young w0.64 @feed | drink:575 feed:478 band-wander:159 explore:139",
+  "115 genvo w0.91 @explore | drink:971 feed:946 band-wander:339 explore:291",
+  "115 mosskip w0.45 @drink | drink:627 feed:549 explore:175 ground-probe:126",
+  "116 mosskip w0.44 @drink | drink:590 feed:430 explore:131 herd-rest:104",
+  "117 mirelick w0.96 @explore | drink:959 feed:819 explore:303 herd-hop:203",
+  "117 genvo w0.59 @drink | drink:1295 feed:1237 band-wander:653 idle:296",
+  "117 genvo w0.89 @wary | drink:652 feed:553 band-wander:308 explore:204",
+  "117 genvo young w0.42 @drink | feed:479 drink:348 band-wander:133 explore:72",
+  "118 mosskip w0.82 @explore | drink:781 feed:653 explore:262 idle:124",
+  "118 mosskip w0.92 @feed | drink:1070 feed:1015 herd-hop:564 herd-browse:496",
+  "118 genvo young w0.87 @feed | explore:89 feed:48 drink:24 group-space:10",
+  "118 podshell w0.74 @explore | feed:1260 drink:835 pod-wander:500 pod-browse:477",
+  "118 mosskip w0.62 @feed | drink:472 feed:371 explore:209 herd-hop:116",
+  "118 genvo young w0.64 @feed | explore:81 drink:48 feed:42 wary:14",
+  "118 mosskip young w0.82 @explore | drink:52 explore:38 group-space:14 feed:9",
+  "119 rootling w0.96 @feed | feed:1773 drink:1082 ground-probe:510 root-roam:396",
+  "119 mosskip w0.88 @explore | feed:634 drink:574 explore:204 idle:158",
+  "119 mosskip w0.82 @explore | drink:599 feed:565 explore:177 herd-browse:170",
+  "119 mosskip w0.93 @explore | feed:442 drink:396 herd-hop:177 explore:134",
+  "119 genvo young w0.4 @drink | drink:344 feed:238 explore:139 idle:32",
+  "120 mosskip w0.95 @group-space | drink:667 feed:515 herd-browse:173 herd-hop:173",
+  "120 genvo w0.78 @wary | drink:638 feed:584 band-wander:232 explore:140",
+  "120 genvo w0.87 @explore | feed:826 drink:688 band-wander:558 band-watch:201",
+  "120 rootling w0.84 @explore | feed:676 drink:612 ground-probe:217 root-roam:159",
+  "120 mosskip w0.74 @explore | drink:514 feed:383 herd-hop:140 herd-listen:105",
+  "121 podshell w0.91 @explore | feed:1449 drink:1051 pod-wander:468 pod-browse:454",
+  "121 mosskip young w0.76 @feed | explore:183 drink:151 feed:128 group-alarm:23",
+  "121 genvo young w0.95 @group-space | drink:229 feed:205 explore:145 group-space:13",
+  "121 genvo w0.64 @explore | drink:1087 feed:983 band-wander:586 explore:285",
+  "121 genvo w0.92 @explore | feed:973 drink:821 band-wander:444 band-watch:221",
+  "121 rootling w0.41 @feed | feed:717 drink:596 ground-probe:133 root-roam:64",
+  "122 rootling young w0.92 @feed | explore:148 feed:88 drink:85 wary:5",
+  "123 genvo w0.71 @explore | drink:1055 feed:973 band-wander:713 explore:274",
+  "123 genvo w0.6 @feed | drink:1185 feed:1086 band-wander:675 band-watch:212",
+  "124 genvo w0.96 @explore | feed:1399 drink:1132 band-wander:1018 band-social:290",
+  "124 genvo w0.69 @explore | feed:1221 drink:972 band-wander:659 band-watch:281",
+  "126 rootling w0.59 @feed | feed:1745 drink:1156 ground-probe:462 idle:340",
+  "127 podshell w0.91 @explore | feed:1679 drink:1185 pod-wander:462 pod-browse:394",
+  "137 mosskip w0.86 @explore | feed:1479 drink:1477 herd-hop:397 herd-browse:369",
+  "142 mosskip w0.78 @explore | drink:1279 feed:1159 herd-hop:812 herd-browse:713",
+  "142 rootling w0.64 @drink | feed:2206 drink:1412 idle:508 ground-probe:280",
+  "142 genvo young w0.38 @drink | drink:439 feed:432 band-wander:195 explore:164",
+  "142 genvo young w0.85 @explore | feed:540 explore:359 drink:305 group-alarm:96",
+  "143 mosskip w0.88 @feed | drink:1479 feed:1386 herd-hop:746 herd-browse:609",
+  "143 genvo young w0.7 @feed | explore:47 feed:27 drink:21 wary:4",
+  "144 rootling w0.94 @explore | feed:2417 drink:1351 ground-probe:437 root-roam:302",
+  "144 genvo w0.44 @drink | drink:672 feed:586 band-wander:362 explore:190",
+  "144 mosskip w0.81 @feed | drink:470 feed:332 explore:186 herd-hop:84",
+  "144 podshell w0.62 @wary | feed:1022 drink:886 pod-wander:333 pod-browse:239",
+  "145 rootling w0.86 @explore | feed:2011 drink:1387 ground-probe:757 root-roam:579",
+  "145 mosskip w0.88 @explore | drink:888 feed:727 explore:282 mate:142",
+  "146 podshell w0.9 @explore | feed:1838 drink:1393 pod-wander:494 pod-browse:411",
+  "146 mosskip w0.89 @feed | feed:1311 drink:1132 herd-hop:876 herd-browse:703",
+  "146 mosskip w0.89 @explore | drink:982 feed:704 mate:277 herd-browse:207",
+  "147 mosskip w0.57 @drink | feed:1514 drink:1283 herd-hop:772 herd-browse:698",
+  "148 rootling w0.67 @feed | feed:2322 drink:1472 ground-probe:580 root-roam:480",
+  "148 rootling w0.89 @drink | feed:1127 drink:852 ground-probe:242 explore:142",
+  "148 mosskip young w0.87 @explore | explore:81 feed:65 drink:30 group-space:9",
+  "149 rootling w0.9 @feed | feed:2062 drink:1567 ground-probe:598 root-roam:400",
+  "149 rootling w0.22 @drink | feed:1793 drink:1653 ground-probe:279 root-roam:189",
+  "149 genvo young w0.88 @explore | drink:396 feed:323 band-wander:138 explore:88",
+  "150 genvo w0.91 @feed | drink:1505 feed:1314 band-wander:641 explore:258",
+  "150 genvo w0.86 @explore | feed:1682 band-wander:1525 drink:1183 band-watch:536",
+  "150 mosskip w0.93 @explore | drink:1037 feed:980 herd-browse:586 herd-hop:541",
+  "152 genvo w0.87 @feed | feed:637 drink:546 band-wander:338 explore:113",
+  "152 genvo w0.9 @explore | drink:625 feed:549 explore:295 band-wander:98",
+  "152 genvo w0.9 @explore | drink:653 feed:545 explore:157 band-wander:154",
+  "152 mosskip w0.62 @explore | drink:763 feed:596 pod-wander:417 pod-browse:407",
+  "153 genvo w0.58 @feed | drink:1067 feed:985 band-wander:376 band-watch:149",
+  "153 podshell w0.52 @drink | feed:1768 drink:1559 pod-wander:613 pod-browse:463",
+  "155 genvo w0.83 @feed | feed:1724 band-wander:1305 drink:1301 band-watch:460",
+  "155 genvo w0.62 @explore | drink:947 feed:824 band-wander:321 explore:182",
+  "156 rootling w0.63 @explore | feed:2436 drink:1235 ground-probe:892 root-roam:583",
+  "157 mosskip w0.58 @explore | drink:1266 feed:1154 herd-hop:692 herd-browse:632",
+  "164 genvo w0.94 @feed | band-wander:1220 feed:1134 drink:512 band-watch:344",
+  "169 mosskip young w0.61 @feed | drink:266 feed:204 explore:177 idle:118",
+  "173 mosskip w0.71 @feed | drink:523 feed:414 herd-listen:125 herd-hop:114",
+  "173 mosskip w0.78 @feed | drink:1530 feed:1440 herd-hop:983 herd-browse:853",
+  "173 mosskip w0.86 @feed | drink:987 feed:958 herd-hop:385 herd-browse:351",
+  "175 rootling w0.75 @explore | feed:2233 drink:1751 ground-probe:611 root-roam:456",
+  "175 mosskip w0.75 @feed | drink:1774 feed:1745 herd-hop:797 herd-browse:747",
+  "176 mosskip w0.75 @explore | drink:1664 feed:1493 herd-hop:981 herd-browse:819",
+  "176 rootling w0.82 @explore | feed:2003 drink:1409 ground-probe:798 root-roam:549",
+  "176 genvo w0.81 @explore | drink:1222 feed:1050 band-wander:792 explore:374",
+  "176 rootling w0.78 @explore | feed:1745 drink:1617 pod-wander:427 explore:365",
+  "176 mosskip young w0.93 @feed | drink:300 feed:216 explore:118 idle:93",
+  "177 mosskip w0.74 @explore | feed:1915 drink:1900 herd-hop:682 herd-browse:580",
+  "177 mosskip w0.93 @explore | drink:1644 feed:1585 herd-hop:834 herd-browse:720",
+  "177 podshell w0.69 @drink | feed:2102 drink:1703 pod-wander:803 pod-browse:643",
+  "177 genvo w0.82 @feed | drink:1677 feed:1523 band-wander:1029 band-watch:417",
+  "177 mosskip w0.58 @drink | drink:1308 feed:1203 pod-wander:736 pod-browse:685",
+  "177 mosskip w0.86 @explore | drink:912 feed:583 idle:336 explore:320",
+  "177 genvo w0.87 @explore | drink:901 feed:889 band-wander:422 band-watch:104",
+  "177 genvo young w0.46 @drink | drink:524 feed:471 band-wander:200 explore:114",
+  "178 genvo w0.64 @explore | drink:640 feed:581 band-wander:389 explore:298",
+  "178 mosskip young w0.71 @feed | drink:253 feed:237 explore:118 herd-browse:99",
+  "178 mosskip w0.57 @drink | feed:1668 drink:1652 herd-hop:1103 herd-browse:889",
+  "178 mosskip w0.89 @group-space | drink:689 feed:527 herd-browse:272 herd-hop:266",
+  "178 rootling w0.91 @group-space | feed:616 drink:610 herd-hop:173 explore:155",
+  "178 rootling w0.84 @explore | feed:2584 drink:1606 ground-probe:912 root-roam:669",
+  "178 genvo w0.89 @explore | drink:1329 feed:1288 band-wander:627 explore:340",
+  "178 rootling w0.44 @drink | feed:2216 drink:1838 ground-probe:745 idle:601",
+  "178 genvo w0.52 @drink | feed:1357 drink:1300 band-wander:639 explore:274",
+  "179 mosskip w0.87 @explore | drink:1827 feed:1463 herd-hop:962 herd-browse:857",
+  "179 genvo w0.68 @explore | drink:1000 feed:989 explore:414 band-wander:288",
+  "179 mosskip w0.87 @explore | drink:927 feed:736 herd-hop:425 herd-browse:314",
+  "179 rootling young w0.93 @explore | feed:556 drink:472 ground-probe:149 root-roam:96",
+  "179 rootling w0.91 @feed | feed:2043 drink:1517 ground-probe:658 root-roam:460",
+  "179 mosskip w0.64 @feed | feed:476 drink:408 explore:248 herd-browse:141",
+  "179 mosskip w0.72 @explore | drink:812 feed:731 explore:403 idle:155",
+  "179 genvo w0.77 @feed | drink:1193 feed:1143 band-wander:727 band-watch:286",
+  "180 rootling w0.94 @feed | feed:1660 drink:934 explore:362 idle:264",
+  "180 genvo w0.74 @feed | drink:909 band-wander:850 feed:757 band-watch:290",
+  "181 mosskip young w0.92 @explore | feed:324 drink:267 explore:159 herd-hop:104",
+  "181 mosskip w0.83 @escape | drink:1550 herd-hop:1238 feed:1210 herd-browse:1166",
+  "181 genvo w0.86 @feed | drink:1529 feed:1369 explore:511 idle:456",
+  "181 rootling w0.62 @drink | feed:2379 drink:1874 ground-probe:697 root-roam:535",
+  "181 podshell w0.89 @explore | feed:1885 drink:1767 pod-wander:586 pod-browse:554",
+  "181 mosskip w0.81 @feed | drink:1327 feed:1175 explore:458 idle:344",
+  "181 mosskip w0.74 @feed | drink:1922 feed:1557 herd-hop:530 herd-browse:462",
+  "182 mosskip w0.93 @explore | drink:1636 feed:1397 herd-hop:869 herd-browse:660",
+  "182 rootling w0.82 @drink | feed:2249 drink:1433 ground-probe:1089 root-roam:742",
+  "182 rootling w0.71 @feed | feed:2457 drink:1547 ground-probe:913 root-roam:544",
+  "183 genvo w0.92 @explore | drink:595 feed:551 band-wander:180 explore:177",
+  "183 mosskip w0.92 @explore | drink:1808 feed:1795 herd-hop:993 herd-browse:827",
+  "183 genvo young w0.85 @feed | feed:514 drink:448 explore:316 band-wander:165",
+  "183 genvo young w0.92 @feed | drink:344 feed:319 band-wander:246 explore:198",
+  "184 genvo w0.47 @drink | feed:538 drink:508 explore:196 band-wander:195",
+  "185 mosskip w0.93 @explore | drink:1597 feed:1369 herd-hop:1134 herd-browse:1072",
+  "185 mosskip w0.65 @explore | drink:517 feed:455 explore:240 pod-wander:220",
+  "186 genvo young w0.78 @explore | drink:385 feed:355 band-wander:236 explore:205",
+  "187 mosskip w0.72 @explore | feed:1965 drink:1831 herd-hop:993 herd-browse:772",
+  "188 mosskip w0.83 @explore | drink:518 feed:486 pod-wander:264 pod-browse:194",
+  "188 mosskip w0.86 @feed | drink:1765 feed:1607 herd-hop:697 herd-browse:659",
+  "189 genvo w0.91 @explore | drink:554 feed:442 explore:276 band-wander:247",
+  "192 needlejaw w0.89 @hunt | explore:569 drink:513 hunt:447 idle:390",
+  "200 mosskip w0.88 @explore | drink:1336 feed:1129 herd-hop:849 herd-browse:646",
+  "202 mosskip w0.94 @explore | drink:905 feed:875 explore:408 herd-hop:304",
+  "203 genvo w0.91 @explore | drink:1701 feed:1528 band-wander:817 explore:544",
+  "204 mosskip w0.87 @feed | feed:1797 drink:1695 herd-hop:1120 herd-browse:952",
+  "207 rootling w0.23 @drink | feed:1730 drink:1569 herd-hop:486 herd-browse:388",
+  "207 mosskip w0.24 @drink | drink:1733 feed:1347 herd-hop:676 herd-browse:513",
+  "208 genvo w0.58 @drink | drink:784 feed:675 explore:325 band-wander:277",
+  "208 mirelick w0.9 @feed | feed:1688 drink:1532 mire-prowl:1193 migrate:918",
+  "209 mosskip w0.54 @drink | drink:1331 feed:1151 explore:629 idle:226",
+  "209 mirelick w0.83 @explore | feed:778 drink:543 explore:321 mire-prowl:308",
+  "211 genvo w0.66 @explore | band-wander:2133 feed:1808 drink:1797 band-watch:773",
+  "211 podshell w0.68 @feed | feed:2394 drink:1834 pod-browse:856 pod-wander:854",
+  "211 mosskip w0.91 @explore | drink:2259 feed:2163 herd-hop:734 herd-browse:705",
+  "211 genvo young w0.63 @explore | explore:131 drink:29 feed:16 group-space:9",
+  "211 mosskip w0.79 @wary | feed:2136 drink:1945 herd-hop:1189 herd-browse:1110",
+  "223 mosskip w0.83 @explore | feed:885 drink:735 explore:400 mire-prowl:330",
+  "233 mosskip w0.91 @drink | drink:2540 feed:2221 herd-hop:1077 herd-browse:888",
+  "233 mosskip w0.71 @explore | feed:2322 drink:2280 herd-hop:894 herd-browse:735",
+  "233 mosskip w0.77 @explore | drink:856 feed:763 explore:292 herd-hop:207",
+  "234 mosskip w0.73 @explore | feed:2346 drink:2205 herd-hop:1044 herd-browse:853",
+  "234 mosskip w0.92 @explore | drink:2239 feed:1955 herd-hop:844 herd-browse:760",
+  "235 mosskip w0.95 @explore | drink:2310 feed:2040 herd-hop:1237 herd-browse:1143",
+  "236 genvo w0.92 @explore | drink:1597 feed:1519 band-wander:1122 band-watch:381",
+  "236 mosskip w0.95 @drink | drink:1892 feed:1712 herd-hop:679 explore:616",
+  "236 mosskip w0.46 @drink | feed:1683 drink:1676 ground-probe:786 root-roam:660",
+  "237 rootling w0.85 @escape | feed:3729 drink:2159 ground-probe:1030 root-roam:633",
+  "237 mosskip w0.56 @drink | feed:1707 drink:1689 herd-hop:770 herd-browse:619",
+  "237 mosskip w0.71 @feed | feed:385 drink:343 explore:244 idle:98",
+  "237 genvo w0.8 @feed | drink:1680 feed:1568 band-wander:1050 band-watch:418",
+  "237 mosskip w0.89 @drink | drink:2031 feed:1556 herd-hop:782 herd-browse:717",
+  "237 genvo w0.58 @drink | drink:1929 feed:1849 explore:468 pod-wander:465",
+  "237 genvo w0.72 @explore | drink:1893 feed:1527 band-wander:1159 explore:529",
+  "238 mosskip w0.88 @feed | drink:2333 feed:2248 explore:666 herd-hop:660",
+  "238 genvo w0.62 @drink | feed:1972 drink:1917 band-wander:1173 band-watch:434",
+  "239 podshell w0.45 @drink | feed:2692 drink:2283 pod-wander:849 pod-browse:817",
+  "239 genvo w0.88 @explore | band-wander:2523 feed:2154 drink:1896 band-watch:1062",
+  "239 genvo w0.56 @drink | feed:2560 drink:2540 band-wander:1666 band-watch:551",
+  "239 podshell w0.77 @explore | feed:2889 drink:2293 pod-wander:875 pod-browse:870",
+  "240 mosskip w0.9 @explore | drink:2244 feed:2185 herd-hop:1064 herd-browse:868",
+  "240 rootling w0.81 @drink | feed:2574 drink:2168 pod-wander:766 pod-browse:602"
+ ],
+ "daily": [
+  {
+   "day": 2,
+   "temp": 0.39,
+   "alive": 195,
+   "meanEnergy": 0.79,
+   "meanWater": 0.71,
+   "births": 0,
+   "census": {
+    "mosskip": 64,
+    "rootling": 32,
+    "needlejaw": 12,
+    "genvo": 24,
+    "rillsifter": 18,
+    "mirelick": 20,
+    "podshell": 18,
+    "bankjaw": 8
+   }
+  },
+  {
+   "day": 3,
+   "temp": 0.45,
+   "alive": 195,
+   "meanEnergy": 0.84,
+   "meanWater": 0.71,
+   "births": 0,
+   "census": {
+    "mosskip": 64,
+    "rootling": 32,
+    "needlejaw": 12,
+    "genvo": 24,
+    "rillsifter": 18,
+    "mirelick": 20,
+    "podshell": 18,
+    "bankjaw": 8
+   }
+  },
+  {
+   "day": 4,
+   "temp": 0.46,
+   "alive": 195,
+   "meanEnergy": 0.84,
+   "meanWater": 0.72,
+   "births": 0,
+   "census": {
+    "mosskip": 64,
+    "rootling": 32,
+    "needlejaw": 12,
+    "genvo": 24,
+    "rillsifter": 18,
+    "mirelick": 20,
+    "podshell": 18,
+    "bankjaw": 8
+   }
+  },
+  {
+   "day": 5,
+   "temp": 0.6,
+   "alive": 195,
+   "meanEnergy": 0.83,
+   "meanWater": 0.75,
+   "births": 0,
+   "census": {
+    "mosskip": 64,
+    "rootling": 32,
+    "needlejaw": 12,
+    "genvo": 24,
+    "rillsifter": 18,
+    "mirelick": 20,
+    "podshell": 18,
+    "bankjaw": 8
+   }
+  },
+  {
+   "day": 6,
+   "temp": 0.52,
+   "alive": 194,
+   "meanEnergy": 0.82,
+   "meanWater": 0.73,
+   "births": 0,
+   "census": {
+    "mosskip": 64,
+    "rootling": 31,
+    "needlejaw": 12,
+    "genvo": 24,
+    "rillsifter": 18,
+    "mirelick": 20,
+    "podshell": 18,
+    "bankjaw": 8
+   }
+  },
+  {
+   "day": 7,
+   "temp": 0.65,
+   "alive": 193,
+   "meanEnergy": 0.83,
+   "meanWater": 0.72,
+   "births": 0,
+   "census": {
+    "mosskip": 64,
+    "rootling": 31,
+    "needlejaw": 12,
+    "genvo": 24,
+    "rillsifter": 17,
+    "mirelick": 20,
+    "podshell": 18,
+    "bankjaw": 8
+   }
+  },
+  {
+   "day": 8,
+   "temp": 0.59,
+   "alive": 192,
+   "meanEnergy": 0.83,
+   "meanWater": 0.74,
+   "births": 0,
+   "census": {
+    "mosskip": 64,
+    "rootling": 31,
+    "needlejaw": 12,
+    "genvo": 24,
+    "rillsifter": 17,
+    "mirelick": 20,
+    "podshell": 18,
+    "bankjaw": 7
+   }
+  },
+  {
+   "day": 9,
+   "temp": 0.57,
+   "alive": 189,
+   "meanEnergy": 0.84,
+   "meanWater": 0.73,
+   "births": 0,
+   "census": {
+    "mosskip": 64,
+    "rootling": 31,
+    "needlejaw": 11,
+    "genvo": 24,
+    "rillsifter": 17,
+    "mirelick": 18,
+    "podshell": 18,
+    "bankjaw": 7
+   }
+  },
+  {
+   "day": 10,
+   "temp": 0.86,
+   "alive": 188,
+   "meanEnergy": 0.85,
+   "meanWater": 0.76,
+   "births": 0,
+   "census": {
+    "mosskip": 64,
+    "rootling": 31,
+    "needlejaw": 10,
+    "genvo": 24,
+    "rillsifter": 17,
+    "mirelick": 18,
+    "podshell": 18,
+    "bankjaw": 7
+   }
+  },
+  {
+   "day": 11,
+   "temp": 0.91,
+   "alive": 188,
+   "meanEnergy": 0.86,
+   "meanWater": 0.77,
+   "births": 0,
+   "census": {
+    "mosskip": 64,
+    "rootling": 31,
+    "needlejaw": 10,
+    "genvo": 24,
+    "rillsifter": 17,
+    "mirelick": 18,
+    "podshell": 18,
+    "bankjaw": 7
+   }
+  },
+  {
+   "day": 12,
+   "temp": 0.89,
+   "alive": 188,
+   "meanEnergy": 0.84,
+   "meanWater": 0.75,
+   "births": 0,
+   "census": {
+    "mosskip": 64,
+    "rootling": 31,
+    "needlejaw": 10,
+    "genvo": 24,
+    "rillsifter": 17,
+    "mirelick": 18,
+    "podshell": 18,
+    "bankjaw": 7
+   }
+  },
+  {
+   "day": 13,
+   "temp": 0.92,
+   "alive": 187,
+   "meanEnergy": 0.84,
+   "meanWater": 0.72,
+   "births": 0,
+   "census": {
+    "mosskip": 64,
+    "rootling": 31,
+    "needlejaw": 9,
+    "genvo": 24,
+    "rillsifter": 17,
+    "mirelick": 18,
+    "podshell": 18,
+    "bankjaw": 7
+   }
+  },
+  {
+   "day": 14,
+   "temp": 0.87,
+   "alive": 185,
+   "meanEnergy": 0.84,
+   "meanWater": 0.76,
+   "births": 0,
+   "census": {
+    "mosskip": 63,
+    "rootling": 31,
+    "needlejaw": 9,
+    "genvo": 24,
+    "rillsifter": 17,
+    "mirelick": 18,
+    "podshell": 18,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 15,
+   "temp": 0.87,
+   "alive": 184,
+   "meanEnergy": 0.84,
+   "meanWater": 0.75,
+   "births": 0,
+   "census": {
+    "mosskip": 62,
+    "rootling": 31,
+    "needlejaw": 9,
+    "genvo": 24,
+    "rillsifter": 17,
+    "mirelick": 18,
+    "podshell": 18,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 16,
+   "temp": 0.78,
+   "alive": 183,
+   "meanEnergy": 0.84,
+   "meanWater": 0.75,
+   "births": 0,
+   "census": {
+    "mosskip": 62,
+    "rootling": 31,
+    "needlejaw": 9,
+    "genvo": 24,
+    "rillsifter": 17,
+    "mirelick": 18,
+    "podshell": 17,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 17,
+   "temp": 0.73,
+   "alive": 182,
+   "meanEnergy": 0.82,
+   "meanWater": 0.75,
+   "births": 0,
+   "census": {
+    "mosskip": 62,
+    "rootling": 31,
+    "needlejaw": 9,
+    "genvo": 24,
+    "rillsifter": 17,
+    "mirelick": 18,
+    "podshell": 16,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 18,
+   "temp": 0.59,
+   "alive": 182,
+   "meanEnergy": 0.81,
+   "meanWater": 0.74,
+   "births": 4,
+   "census": {
+    "mosskip": 62,
+    "rootling": 31,
+    "needlejaw": 9,
+    "genvo": 27,
+    "rillsifter": 17,
+    "mirelick": 17,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 19,
+   "temp": 0.61,
+   "alive": 183,
+   "meanEnergy": 0.79,
+   "meanWater": 0.76,
+   "births": 6,
+   "census": {
+    "mosskip": 64,
+    "rootling": 31,
+    "needlejaw": 9,
+    "genvo": 27,
+    "rillsifter": 17,
+    "mirelick": 16,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 20,
+   "temp": 0.6,
+   "alive": 184,
+   "meanEnergy": 0.78,
+   "meanWater": 0.73,
+   "births": 7,
+   "census": {
+    "mosskip": 65,
+    "rootling": 31,
+    "needlejaw": 9,
+    "genvo": 27,
+    "rillsifter": 17,
+    "mirelick": 16,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 21,
+   "temp": 0.51,
+   "alive": 183,
+   "meanEnergy": 0.78,
+   "meanWater": 0.76,
+   "births": 8,
+   "census": {
+    "mosskip": 64,
+    "rootling": 31,
+    "needlejaw": 9,
+    "genvo": 27,
+    "rillsifter": 17,
+    "mirelick": 16,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 22,
+   "temp": 0.54,
+   "alive": 182,
+   "meanEnergy": 0.78,
+   "meanWater": 0.73,
+   "births": 8,
+   "census": {
+    "mosskip": 64,
+    "rootling": 31,
+    "needlejaw": 9,
+    "genvo": 27,
+    "rillsifter": 16,
+    "mirelick": 16,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 23,
+   "temp": 0.45,
+   "alive": 179,
+   "meanEnergy": 0.78,
+   "meanWater": 0.75,
+   "births": 9,
+   "census": {
+    "mosskip": 62,
+    "rootling": 31,
+    "needlejaw": 9,
+    "genvo": 27,
+    "rillsifter": 14,
+    "mirelick": 17,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 24,
+   "temp": 0.48,
+   "alive": 179,
+   "meanEnergy": 0.76,
+   "meanWater": 0.73,
+   "births": 9,
+   "census": {
+    "mosskip": 62,
+    "rootling": 31,
+    "needlejaw": 9,
+    "genvo": 27,
+    "rillsifter": 14,
+    "mirelick": 17,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 25,
+   "temp": 0.46,
+   "alive": 177,
+   "meanEnergy": 0.74,
+   "meanWater": 0.7,
+   "births": 10,
+   "census": {
+    "mosskip": 62,
+    "rootling": 31,
+    "needlejaw": 9,
+    "genvo": 27,
+    "rillsifter": 13,
+    "mirelick": 16,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 26,
+   "temp": 0.23,
+   "alive": 177,
+   "meanEnergy": 0.72,
+   "meanWater": 0.73,
+   "births": 12,
+   "census": {
+    "mosskip": 61,
+    "rootling": 31,
+    "needlejaw": 9,
+    "genvo": 29,
+    "rillsifter": 12,
+    "mirelick": 16,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 27,
+   "temp": 0.26,
+   "alive": 182,
+   "meanEnergy": 0.72,
+   "meanWater": 0.63,
+   "births": 17,
+   "census": {
+    "mosskip": 63,
+    "rootling": 31,
+    "needlejaw": 9,
+    "genvo": 32,
+    "rillsifter": 12,
+    "mirelick": 16,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 28,
+   "temp": 0.21,
+   "alive": 184,
+   "meanEnergy": 0.71,
+   "meanWater": 0.64,
+   "births": 21,
+   "census": {
+    "mosskip": 63,
+    "rootling": 32,
+    "needlejaw": 9,
+    "genvo": 35,
+    "rillsifter": 10,
+    "mirelick": 16,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 29,
+   "temp": 0.2,
+   "alive": 183,
+   "meanEnergy": 0.7,
+   "meanWater": 0.67,
+   "births": 24,
+   "census": {
+    "mosskip": 66,
+    "rootling": 32,
+    "needlejaw": 9,
+    "genvo": 35,
+    "rillsifter": 6,
+    "mirelick": 16,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 30,
+   "temp": 0.21,
+   "alive": 180,
+   "meanEnergy": 0.72,
+   "meanWater": 0.67,
+   "births": 26,
+   "census": {
+    "mosskip": 68,
+    "rootling": 32,
+    "needlejaw": 9,
+    "genvo": 35,
+    "rillsifter": 1,
+    "mirelick": 16,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 31,
+   "temp": 0.26,
+   "alive": 183,
+   "meanEnergy": 0.69,
+   "meanWater": 0.65,
+   "births": 30,
+   "census": {
+    "mosskip": 71,
+    "rootling": 33,
+    "needlejaw": 9,
+    "genvo": 34,
+    "rillsifter": 1,
+    "mirelick": 16,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 32,
+   "temp": 0.22,
+   "alive": 182,
+   "meanEnergy": 0.71,
+   "meanWater": 0.65,
+   "births": 30,
+   "census": {
+    "mosskip": 71,
+    "rootling": 33,
+    "needlejaw": 9,
+    "genvo": 34,
+    "mirelick": 16,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 33,
+   "temp": 0.21,
+   "alive": 182,
+   "meanEnergy": 0.7,
+   "meanWater": 0.65,
+   "births": 30,
+   "census": {
+    "mosskip": 71,
+    "rootling": 33,
+    "needlejaw": 9,
+    "genvo": 34,
+    "mirelick": 16,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 34,
+   "temp": 0.42,
+   "alive": 181,
+   "meanEnergy": 0.7,
+   "meanWater": 0.68,
+   "births": 30,
+   "census": {
+    "mosskip": 71,
+    "rootling": 33,
+    "needlejaw": 9,
+    "genvo": 33,
+    "mirelick": 16,
+    "podshell": 14,
+    "bankjaw": 6
+   }
+  },
+  {
+   "day": 35,
+   "temp": 0.38,
+   "alive": 179,
+   "meanEnergy": 0.71,
+   "meanWater": 0.69,
+   "births": 30,
+   "census": {
+    "mosskip": 71,
+    "rootling": 33,
+    "needlejaw": 9,
+    "genvo": 33,
+    "mirelick": 15,
+    "podshell": 14,
+    "bankjaw": 5
+   }
+  },
+  {
+   "day": 36,
+   "temp": 0.35,
+   "alive": 178,
+   "meanEnergy": 0.71,
+   "meanWater": 0.68,
+   "births": 31,
+   "census": {
+    "mosskip": 71,
+    "rootling": 34,
+    "needlejaw": 9,
+    "genvo": 32,
+    "mirelick": 15,
+    "podshell": 14,
+    "bankjaw": 4
+   }
+  },
+  {
+   "day": 37,
+   "temp": 0.47,
+   "alive": 178,
+   "meanEnergy": 0.71,
+   "meanWater": 0.68,
+   "births": 32,
+   "census": {
+    "mosskip": 71,
+    "rootling": 34,
+    "needlejaw": 9,
+    "genvo": 31,
+    "mirelick": 15,
+    "podshell": 15,
+    "bankjaw": 4
+   }
+  },
+  {
+   "day": 38,
+   "temp": 0.48,
+   "alive": 180,
+   "meanEnergy": 0.7,
+   "meanWater": 0.68,
+   "births": 34,
+   "census": {
+    "mosskip": 71,
+    "rootling": 36,
+    "needlejaw": 9,
+    "genvo": 30,
+    "mirelick": 15,
+    "podshell": 15,
+    "bankjaw": 4
+   }
+  },
+  {
+   "day": 39,
+   "temp": 0.48,
+   "alive": 178,
+   "meanEnergy": 0.72,
+   "meanWater": 0.68,
+   "births": 35,
+   "census": {
+    "mosskip": 71,
+    "rootling": 36,
+    "needlejaw": 9,
+    "genvo": 30,
+    "mirelick": 14,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 40,
+   "temp": 0.44,
+   "alive": 182,
+   "meanEnergy": 0.68,
+   "meanWater": 0.67,
+   "births": 39,
+   "census": {
+    "mosskip": 72,
+    "rootling": 36,
+    "needlejaw": 9,
+    "genvo": 33,
+    "mirelick": 14,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 41,
+   "temp": 0.48,
+   "alive": 186,
+   "meanEnergy": 0.66,
+   "meanWater": 0.66,
+   "births": 43,
+   "census": {
+    "mosskip": 75,
+    "rootling": 37,
+    "needlejaw": 9,
+    "genvo": 33,
+    "mirelick": 14,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 42,
+   "temp": 0.83,
+   "alive": 186,
+   "meanEnergy": 0.61,
+   "meanWater": 0.62,
+   "births": 43,
+   "census": {
+    "mosskip": 75,
+    "rootling": 37,
+    "needlejaw": 9,
+    "genvo": 33,
+    "mirelick": 14,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 43,
+   "temp": 0.85,
+   "alive": 186,
+   "meanEnergy": 0.67,
+   "meanWater": 0.75,
+   "births": 43,
+   "census": {
+    "mosskip": 75,
+    "rootling": 37,
+    "needlejaw": 9,
+    "genvo": 33,
+    "mirelick": 14,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 44,
+   "temp": 0.85,
+   "alive": 186,
+   "meanEnergy": 0.66,
+   "meanWater": 0.74,
+   "births": 45,
+   "census": {
+    "mosskip": 74,
+    "rootling": 37,
+    "needlejaw": 9,
+    "genvo": 33,
+    "mirelick": 15,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 45,
+   "temp": 0.74,
+   "alive": 188,
+   "meanEnergy": 0.65,
+   "meanWater": 0.76,
+   "births": 47,
+   "census": {
+    "mosskip": 76,
+    "rootling": 37,
+    "needlejaw": 9,
+    "genvo": 33,
+    "mirelick": 15,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 46,
+   "temp": 0.71,
+   "alive": 189,
+   "meanEnergy": 0.68,
+   "meanWater": 0.71,
+   "births": 49,
+   "census": {
+    "mosskip": 77,
+    "rootling": 37,
+    "needlejaw": 9,
+    "genvo": 33,
+    "mirelick": 15,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 47,
+   "temp": 0.82,
+   "alive": 187,
+   "meanEnergy": 0.67,
+   "meanWater": 0.72,
+   "births": 49,
+   "census": {
+    "mosskip": 76,
+    "rootling": 36,
+    "needlejaw": 9,
+    "genvo": 33,
+    "mirelick": 15,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 48,
+   "temp": 0.85,
+   "alive": 189,
+   "meanEnergy": 0.68,
+   "meanWater": 0.73,
+   "births": 51,
+   "census": {
+    "mosskip": 76,
+    "rootling": 36,
+    "needlejaw": 9,
+    "genvo": 35,
+    "mirelick": 15,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 49,
+   "temp": 0.81,
+   "alive": 189,
+   "meanEnergy": 0.68,
+   "meanWater": 0.73,
+   "births": 52,
+   "census": {
+    "mosskip": 77,
+    "rootling": 35,
+    "needlejaw": 9,
+    "genvo": 35,
+    "mirelick": 15,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 50,
+   "temp": 0.61,
+   "alive": 191,
+   "meanEnergy": 0.67,
+   "meanWater": 0.71,
+   "births": 55,
+   "census": {
+    "mosskip": 80,
+    "rootling": 34,
+    "needlejaw": 9,
+    "genvo": 35,
+    "mirelick": 15,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 51,
+   "temp": 0.69,
+   "alive": 191,
+   "meanEnergy": 0.66,
+   "meanWater": 0.69,
+   "births": 56,
+   "census": {
+    "mosskip": 79,
+    "rootling": 34,
+    "needlejaw": 9,
+    "genvo": 35,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 52,
+   "temp": 0.55,
+   "alive": 190,
+   "meanEnergy": 0.67,
+   "meanWater": 0.72,
+   "births": 56,
+   "census": {
+    "mosskip": 79,
+    "rootling": 33,
+    "needlejaw": 9,
+    "genvo": 35,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 53,
+   "temp": 0.41,
+   "alive": 190,
+   "meanEnergy": 0.68,
+   "meanWater": 0.7,
+   "births": 56,
+   "census": {
+    "mosskip": 79,
+    "rootling": 33,
+    "needlejaw": 9,
+    "genvo": 35,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 54,
+   "temp": 0.46,
+   "alive": 194,
+   "meanEnergy": 0.7,
+   "meanWater": 0.66,
+   "births": 60,
+   "census": {
+    "mosskip": 79,
+    "rootling": 33,
+    "needlejaw": 9,
+    "genvo": 39,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 55,
+   "temp": 0.45,
+   "alive": 195,
+   "meanEnergy": 0.64,
+   "meanWater": 0.65,
+   "births": 61,
+   "census": {
+    "mosskip": 79,
+    "rootling": 33,
+    "needlejaw": 9,
+    "genvo": 39,
+    "mirelick": 16,
+    "podshell": 16,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 56,
+   "temp": 0.38,
+   "alive": 193,
+   "meanEnergy": 0.65,
+   "meanWater": 0.65,
+   "births": 63,
+   "census": {
+    "mosskip": 78,
+    "rootling": 34,
+    "needlejaw": 8,
+    "genvo": 39,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 57,
+   "temp": 0.49,
+   "alive": 193,
+   "meanEnergy": 0.7,
+   "meanWater": 0.67,
+   "births": 64,
+   "census": {
+    "mosskip": 79,
+    "rootling": 33,
+    "needlejaw": 8,
+    "genvo": 39,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 58,
+   "temp": 0.17,
+   "alive": 193,
+   "meanEnergy": 0.67,
+   "meanWater": 0.63,
+   "births": 64,
+   "census": {
+    "mosskip": 79,
+    "rootling": 33,
+    "needlejaw": 8,
+    "genvo": 39,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 59,
+   "temp": 0.27,
+   "alive": 193,
+   "meanEnergy": 0.68,
+   "meanWater": 0.66,
+   "births": 64,
+   "census": {
+    "mosskip": 79,
+    "rootling": 33,
+    "needlejaw": 8,
+    "genvo": 39,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 60,
+   "temp": 0.32,
+   "alive": 196,
+   "meanEnergy": 0.71,
+   "meanWater": 0.65,
+   "births": 67,
+   "census": {
+    "mosskip": 82,
+    "rootling": 33,
+    "needlejaw": 8,
+    "genvo": 39,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 61,
+   "temp": 0.32,
+   "alive": 196,
+   "meanEnergy": 0.73,
+   "meanWater": 0.64,
+   "births": 67,
+   "census": {
+    "mosskip": 82,
+    "rootling": 33,
+    "needlejaw": 8,
+    "genvo": 39,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 62,
+   "temp": 0.26,
+   "alive": 196,
+   "meanEnergy": 0.74,
+   "meanWater": 0.66,
+   "births": 67,
+   "census": {
+    "mosskip": 82,
+    "rootling": 33,
+    "needlejaw": 8,
+    "genvo": 39,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 63,
+   "temp": 0.29,
+   "alive": 196,
+   "meanEnergy": 0.73,
+   "meanWater": 0.64,
+   "births": 67,
+   "census": {
+    "mosskip": 82,
+    "rootling": 33,
+    "needlejaw": 8,
+    "genvo": 39,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 64,
+   "temp": 0.28,
+   "alive": 196,
+   "meanEnergy": 0.73,
+   "meanWater": 0.65,
+   "births": 67,
+   "census": {
+    "mosskip": 82,
+    "rootling": 33,
+    "needlejaw": 8,
+    "genvo": 39,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 65,
+   "temp": 0.2,
+   "alive": 198,
+   "meanEnergy": 0.71,
+   "meanWater": 0.63,
+   "births": 69,
+   "census": {
+    "mosskip": 84,
+    "rootling": 33,
+    "needlejaw": 8,
+    "genvo": 39,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 66,
+   "temp": 0.42,
+   "alive": 206,
+   "meanEnergy": 0.7,
+   "meanWater": 0.64,
+   "births": 77,
+   "census": {
+    "mosskip": 84,
+    "rootling": 33,
+    "needlejaw": 8,
+    "genvo": 47,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 67,
+   "temp": 0.49,
+   "alive": 207,
+   "meanEnergy": 0.71,
+   "meanWater": 0.66,
+   "births": 79,
+   "census": {
+    "mosskip": 86,
+    "rootling": 33,
+    "needlejaw": 8,
+    "genvo": 47,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 2
+   }
+  },
+  {
+   "day": 68,
+   "temp": 0.58,
+   "alive": 208,
+   "meanEnergy": 0.72,
+   "meanWater": 0.67,
+   "births": 81,
+   "census": {
+    "mosskip": 88,
+    "rootling": 32,
+    "needlejaw": 8,
+    "genvo": 47,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 2
+   }
+  },
+  {
+   "day": 69,
+   "temp": 0.59,
+   "alive": 210,
+   "meanEnergy": 0.7,
+   "meanWater": 0.66,
+   "births": 84,
+   "census": {
+    "mosskip": 88,
+    "rootling": 32,
+    "needlejaw": 7,
+    "genvo": 50,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 2
+   }
+  },
+  {
+   "day": 70,
+   "temp": 0.53,
+   "alive": 213,
+   "meanEnergy": 0.61,
+   "meanWater": 0.58,
+   "births": 87,
+   "census": {
+    "mosskip": 88,
+    "rootling": 32,
+    "needlejaw": 7,
+    "genvo": 53,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 2
+   }
+  },
+  {
+   "day": 71,
+   "temp": 0.46,
+   "alive": 218,
+   "meanEnergy": 0.66,
+   "meanWater": 0.64,
+   "births": 93,
+   "census": {
+    "mosskip": 88,
+    "rootling": 32,
+    "needlejaw": 7,
+    "genvo": 57,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 72,
+   "temp": 0.4,
+   "alive": 224,
+   "meanEnergy": 0.65,
+   "meanWater": 0.72,
+   "births": 100,
+   "census": {
+    "mosskip": 92,
+    "rootling": 34,
+    "needlejaw": 7,
+    "genvo": 57,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 73,
+   "temp": 0.54,
+   "alive": 227,
+   "meanEnergy": 0.7,
+   "meanWater": 0.68,
+   "births": 103,
+   "census": {
+    "mosskip": 94,
+    "rootling": 34,
+    "needlejaw": 8,
+    "genvo": 57,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 74,
+   "temp": 0.74,
+   "alive": 228,
+   "meanEnergy": 0.68,
+   "meanWater": 0.76,
+   "births": 104,
+   "census": {
+    "mosskip": 95,
+    "rootling": 34,
+    "needlejaw": 8,
+    "genvo": 57,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 75,
+   "temp": 0.82,
+   "alive": 234,
+   "meanEnergy": 0.67,
+   "meanWater": 0.72,
+   "births": 110,
+   "census": {
+    "mosskip": 95,
+    "rootling": 34,
+    "needlejaw": 8,
+    "genvo": 63,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 76,
+   "temp": 0.86,
+   "alive": 234,
+   "meanEnergy": 0.67,
+   "meanWater": 0.75,
+   "births": 111,
+   "census": {
+    "mosskip": 96,
+    "rootling": 33,
+    "needlejaw": 8,
+    "genvo": 63,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 77,
+   "temp": 0.76,
+   "alive": 233,
+   "meanEnergy": 0.67,
+   "meanWater": 0.75,
+   "births": 111,
+   "census": {
+    "mosskip": 96,
+    "rootling": 33,
+    "needlejaw": 8,
+    "genvo": 63,
+    "mirelick": 16,
+    "podshell": 16,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 78,
+   "temp": 0.74,
+   "alive": 233,
+   "meanEnergy": 0.67,
+   "meanWater": 0.73,
+   "births": 113,
+   "census": {
+    "mosskip": 96,
+    "rootling": 33,
+    "needlejaw": 7,
+    "genvo": 62,
+    "mirelick": 16,
+    "podshell": 18,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 79,
+   "temp": 0.69,
+   "alive": 235,
+   "meanEnergy": 0.65,
+   "meanWater": 0.74,
+   "births": 116,
+   "census": {
+    "mosskip": 96,
+    "rootling": 32,
+    "needlejaw": 7,
+    "genvo": 65,
+    "mirelick": 16,
+    "podshell": 18,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 80,
+   "temp": 0.6,
+   "alive": 237,
+   "meanEnergy": 0.65,
+   "meanWater": 0.7,
+   "births": 119,
+   "census": {
+    "mosskip": 95,
+    "rootling": 35,
+    "needlejaw": 7,
+    "genvo": 65,
+    "mirelick": 16,
+    "podshell": 18,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 81,
+   "temp": 0.61,
+   "alive": 235,
+   "meanEnergy": 0.65,
+   "meanWater": 0.7,
+   "births": 119,
+   "census": {
+    "mosskip": 95,
+    "rootling": 35,
+    "needlejaw": 7,
+    "genvo": 64,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 82,
+   "temp": 0.51,
+   "alive": 236,
+   "meanEnergy": 0.64,
+   "meanWater": 0.7,
+   "births": 121,
+   "census": {
+    "mosskip": 96,
+    "rootling": 35,
+    "needlejaw": 7,
+    "genvo": 64,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 83,
+   "temp": 0.52,
+   "alive": 238,
+   "meanEnergy": 0.64,
+   "meanWater": 0.72,
+   "births": 124,
+   "census": {
+    "mosskip": 97,
+    "rootling": 36,
+    "needlejaw": 7,
+    "genvo": 64,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 84,
+   "temp": 0.58,
+   "alive": 240,
+   "meanEnergy": 0.62,
+   "meanWater": 0.68,
+   "births": 126,
+   "census": {
+    "mosskip": 98,
+    "rootling": 37,
+    "needlejaw": 7,
+    "genvo": 64,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 85,
+   "temp": 0.52,
+   "alive": 242,
+   "meanEnergy": 0.61,
+   "meanWater": 0.69,
+   "births": 128,
+   "census": {
+    "mosskip": 100,
+    "rootling": 37,
+    "needlejaw": 7,
+    "genvo": 64,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 86,
+   "temp": 0.48,
+   "alive": 240,
+   "meanEnergy": 0.61,
+   "meanWater": 0.71,
+   "births": 128,
+   "census": {
+    "mosskip": 98,
+    "rootling": 37,
+    "needlejaw": 7,
+    "genvo": 64,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 87,
+   "temp": 0.46,
+   "alive": 241,
+   "meanEnergy": 0.61,
+   "meanWater": 0.69,
+   "births": 130,
+   "census": {
+    "mosskip": 99,
+    "rootling": 37,
+    "needlejaw": 7,
+    "genvo": 64,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 88,
+   "temp": 0.44,
+   "alive": 246,
+   "meanEnergy": 0.58,
+   "meanWater": 0.7,
+   "births": 137,
+   "census": {
+    "mosskip": 98,
+    "rootling": 37,
+    "needlejaw": 6,
+    "genvo": 71,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 89,
+   "temp": 0.46,
+   "alive": 243,
+   "meanEnergy": 0.59,
+   "meanWater": 0.69,
+   "births": 137,
+   "census": {
+    "mosskip": 97,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 71,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 90,
+   "temp": 0.28,
+   "alive": 240,
+   "meanEnergy": 0.63,
+   "meanWater": 0.68,
+   "births": 140,
+   "census": {
+    "mosskip": 96,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 69,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 91,
+   "temp": 0.19,
+   "alive": 239,
+   "meanEnergy": 0.66,
+   "meanWater": 0.65,
+   "births": 141,
+   "census": {
+    "mosskip": 95,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 69,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 92,
+   "temp": 0.21,
+   "alive": 238,
+   "meanEnergy": 0.7,
+   "meanWater": 0.63,
+   "births": 142,
+   "census": {
+    "mosskip": 95,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 68,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 93,
+   "temp": 0.26,
+   "alive": 240,
+   "meanEnergy": 0.72,
+   "meanWater": 0.64,
+   "births": 144,
+   "census": {
+    "mosskip": 97,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 68,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 94,
+   "temp": 0.21,
+   "alive": 240,
+   "meanEnergy": 0.72,
+   "meanWater": 0.63,
+   "births": 144,
+   "census": {
+    "mosskip": 97,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 68,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 95,
+   "temp": 0.17,
+   "alive": 241,
+   "meanEnergy": 0.73,
+   "meanWater": 0.62,
+   "births": 145,
+   "census": {
+    "mosskip": 98,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 68,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 96,
+   "temp": 0.2,
+   "alive": 241,
+   "meanEnergy": 0.73,
+   "meanWater": 0.61,
+   "births": 145,
+   "census": {
+    "mosskip": 98,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 68,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 97,
+   "temp": 0.26,
+   "alive": 241,
+   "meanEnergy": 0.73,
+   "meanWater": 0.63,
+   "births": 145,
+   "census": {
+    "mosskip": 98,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 68,
+    "mirelick": 16,
+    "podshell": 17,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 98,
+   "temp": 0.45,
+   "alive": 241,
+   "meanEnergy": 0.73,
+   "meanWater": 0.67,
+   "births": 146,
+   "census": {
+    "mosskip": 99,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 68,
+    "mirelick": 16,
+    "podshell": 16,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 99,
+   "temp": 0.43,
+   "alive": 245,
+   "meanEnergy": 0.71,
+   "meanWater": 0.65,
+   "births": 151,
+   "census": {
+    "mosskip": 99,
+    "rootling": 37,
+    "needlejaw": 6,
+    "genvo": 71,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 100,
+   "temp": 0.48,
+   "alive": 245,
+   "meanEnergy": 0.7,
+   "meanWater": 0.63,
+   "births": 151,
+   "census": {
+    "mosskip": 99,
+    "rootling": 37,
+    "needlejaw": 6,
+    "genvo": 71,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 101,
+   "temp": 0.53,
+   "alive": 247,
+   "meanEnergy": 0.62,
+   "meanWater": 0.52,
+   "births": 154,
+   "census": {
+    "mosskip": 99,
+    "rootling": 36,
+    "needlejaw": 6,
+    "genvo": 74,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 102,
+   "temp": 0.46,
+   "alive": 248,
+   "meanEnergy": 0.59,
+   "meanWater": 0.59,
+   "births": 156,
+   "census": {
+    "mosskip": 101,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 74,
+    "mirelick": 16,
+    "podshell": 15,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 103,
+   "temp": 0.48,
+   "alive": 247,
+   "meanEnergy": 0.62,
+   "meanWater": 0.7,
+   "births": 156,
+   "census": {
+    "mosskip": 101,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 74,
+    "mirelick": 15,
+    "podshell": 15,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 104,
+   "temp": 0.58,
+   "alive": 247,
+   "meanEnergy": 0.64,
+   "meanWater": 0.69,
+   "births": 156,
+   "census": {
+    "mosskip": 101,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 74,
+    "mirelick": 15,
+    "podshell": 15,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 105,
+   "temp": 0.64,
+   "alive": 248,
+   "meanEnergy": 0.62,
+   "meanWater": 0.7,
+   "births": 157,
+   "census": {
+    "mosskip": 102,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 74,
+    "mirelick": 15,
+    "podshell": 15,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 106,
+   "temp": 0.85,
+   "alive": 248,
+   "meanEnergy": 0.6,
+   "meanWater": 0.75,
+   "births": 160,
+   "census": {
+    "mosskip": 101,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 76,
+    "mirelick": 15,
+    "podshell": 15
+   }
+  },
+  {
+   "day": 107,
+   "temp": 0.85,
+   "alive": 250,
+   "meanEnergy": 0.57,
+   "meanWater": 0.74,
+   "births": 162,
+   "census": {
+    "mosskip": 101,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 78,
+    "mirelick": 15,
+    "podshell": 15
+   }
+  },
+  {
+   "day": 108,
+   "temp": 0.77,
+   "alive": 250,
+   "meanEnergy": 0.57,
+   "meanWater": 0.74,
+   "births": 164,
+   "census": {
+    "mosskip": 100,
+    "rootling": 35,
+    "needlejaw": 6,
+    "genvo": 78,
+    "mirelick": 16,
+    "podshell": 15
+   }
+  },
+  {
+   "day": 109,
+   "temp": 0.76,
+   "alive": 253,
+   "meanEnergy": 0.56,
+   "meanWater": 0.69,
+   "births": 168,
+   "census": {
+    "mosskip": 100,
+    "rootling": 34,
+    "needlejaw": 6,
+    "genvo": 82,
+    "mirelick": 16,
+    "podshell": 15
+   }
+  },
+  {
+   "day": 110,
+   "temp": 0.74,
+   "alive": 249,
+   "meanEnergy": 0.56,
+   "meanWater": 0.76,
+   "births": 168,
+   "census": {
+    "mosskip": 98,
+    "rootling": 34,
+    "needlejaw": 6,
+    "genvo": 80,
+    "mirelick": 16,
+    "podshell": 15
+   }
+  },
+  {
+   "day": 111,
+   "temp": 0.77,
+   "alive": 243,
+   "meanEnergy": 0.58,
+   "meanWater": 0.71,
+   "births": 169,
+   "census": {
+    "mosskip": 94,
+    "rootling": 33,
+    "needlejaw": 6,
+    "genvo": 79,
+    "mirelick": 16,
+    "podshell": 15
+   }
+  },
+  {
+   "day": 112,
+   "temp": 0.67,
+   "alive": 237,
+   "meanEnergy": 0.58,
+   "meanWater": 0.75,
+   "births": 169,
+   "census": {
+    "mosskip": 92,
+    "rootling": 32,
+    "needlejaw": 6,
+    "genvo": 76,
+    "mirelick": 16,
+    "podshell": 15
+   }
+  },
+  {
+   "day": 113,
+   "temp": 0.7,
+   "alive": 234,
+   "meanEnergy": 0.59,
+   "meanWater": 0.71,
+   "births": 169,
+   "census": {
+    "mosskip": 91,
+    "rootling": 31,
+    "needlejaw": 6,
+    "genvo": 75,
+    "mirelick": 16,
+    "podshell": 15
+   }
+  },
+  {
+   "day": 114,
+   "temp": 0.51,
+   "alive": 236,
+   "meanEnergy": 0.58,
+   "meanWater": 0.71,
+   "births": 175,
+   "census": {
+    "mosskip": 90,
+    "rootling": 32,
+    "needlejaw": 6,
+    "genvo": 77,
+    "mirelick": 16,
+    "podshell": 15
+   }
+  },
+  {
+   "day": 115,
+   "temp": 0.57,
+   "alive": 232,
+   "meanEnergy": 0.58,
+   "meanWater": 0.72,
+   "births": 175,
+   "census": {
+    "mosskip": 90,
+    "rootling": 32,
+    "needlejaw": 6,
+    "genvo": 73,
+    "mirelick": 16,
+    "podshell": 15
+   }
+  },
+  {
+   "day": 116,
+   "temp": 0.56,
+   "alive": 231,
+   "meanEnergy": 0.57,
+   "meanWater": 0.65,
+   "births": 176,
+   "census": {
+    "mosskip": 90,
+    "rootling": 32,
+    "needlejaw": 6,
+    "genvo": 72,
+    "mirelick": 16,
+    "podshell": 15
+   }
+  },
+  {
+   "day": 117,
+   "temp": 0.6,
+   "alive": 232,
+   "meanEnergy": 0.53,
+   "meanWater": 0.73,
+   "births": 178,
+   "census": {
+    "mosskip": 91,
+    "rootling": 32,
+    "needlejaw": 6,
+    "genvo": 72,
+    "mirelick": 16,
+    "podshell": 15
+   }
+  },
+  {
+   "day": 118,
+   "temp": 0.43,
+   "alive": 227,
+   "meanEnergy": 0.54,
+   "meanWater": 0.72,
+   "births": 178,
+   "census": {
+    "mosskip": 91,
+    "rootling": 32,
+    "needlejaw": 6,
+    "genvo": 68,
+    "mirelick": 15,
+    "podshell": 15
+   }
+  },
+  {
+   "day": 119,
+   "temp": 0.47,
+   "alive": 222,
+   "meanEnergy": 0.57,
+   "meanWater": 0.67,
+   "births": 180,
+   "census": {
+    "mosskip": 89,
+    "rootling": 32,
+    "needlejaw": 6,
+    "genvo": 66,
+    "mirelick": 15,
+    "podshell": 14
+   }
+  },
+  {
+   "day": 120,
+   "temp": 0.53,
+   "alive": 217,
+   "meanEnergy": 0.55,
+   "meanWater": 0.7,
+   "births": 180,
+   "census": {
+    "mosskip": 86,
+    "rootling": 31,
+    "needlejaw": 6,
+    "genvo": 65,
+    "mirelick": 15,
+    "podshell": 14
+   }
+  },
+  {
+   "day": 121,
+   "temp": 0.51,
+   "alive": 214,
+   "meanEnergy": 0.56,
+   "meanWater": 0.71,
+   "births": 184,
+   "census": {
+    "mosskip": 84,
+    "rootling": 29,
+    "needlejaw": 6,
+    "genvo": 66,
+    "mirelick": 15,
+    "podshell": 14
+   }
+  },
+  {
+   "day": 122,
+   "temp": 0.29,
+   "alive": 208,
+   "meanEnergy": 0.58,
+   "meanWater": 0.67,
+   "births": 184,
+   "census": {
+    "mosskip": 83,
+    "rootling": 28,
+    "needlejaw": 6,
+    "genvo": 63,
+    "mirelick": 15,
+    "podshell": 13
+   }
+  },
+  {
+   "day": 123,
+   "temp": 0.32,
+   "alive": 207,
+   "meanEnergy": 0.56,
+   "meanWater": 0.68,
+   "births": 184,
+   "census": {
+    "mosskip": 83,
+    "rootling": 27,
+    "needlejaw": 6,
+    "genvo": 63,
+    "mirelick": 15,
+    "podshell": 13
+   }
+  },
+  {
+   "day": 124,
+   "temp": 0.39,
+   "alive": 204,
+   "meanEnergy": 0.61,
+   "meanWater": 0.65,
+   "births": 184,
+   "census": {
+    "mosskip": 83,
+    "rootling": 27,
+    "needlejaw": 6,
+    "genvo": 60,
+    "mirelick": 15,
+    "podshell": 13
+   }
+  },
+  {
+   "day": 125,
+   "temp": 0.26,
+   "alive": 201,
+   "meanEnergy": 0.66,
+   "meanWater": 0.65,
+   "births": 184,
+   "census": {
+    "mosskip": 83,
+    "rootling": 26,
+    "needlejaw": 6,
+    "genvo": 58,
+    "mirelick": 15,
+    "podshell": 13
+   }
+  },
+  {
+   "day": 126,
+   "temp": 0.2,
+   "alive": 199,
+   "meanEnergy": 0.71,
+   "meanWater": 0.63,
+   "births": 184,
+   "census": {
+    "mosskip": 82,
+    "rootling": 26,
+    "needlejaw": 6,
+    "genvo": 58,
+    "mirelick": 14,
+    "podshell": 13
+   }
+  },
+  {
+   "day": 127,
+   "temp": 0.19,
+   "alive": 197,
+   "meanEnergy": 0.73,
+   "meanWater": 0.62,
+   "births": 184,
+   "census": {
+    "mosskip": 81,
+    "rootling": 25,
+    "needlejaw": 6,
+    "genvo": 58,
+    "mirelick": 14,
+    "podshell": 13
+   }
+  },
+  {
+   "day": 128,
+   "temp": 0.08,
+   "alive": 196,
+   "meanEnergy": 0.73,
+   "meanWater": 0.63,
+   "births": 184,
+   "census": {
+    "mosskip": 81,
+    "rootling": 25,
+    "needlejaw": 6,
+    "genvo": 58,
+    "mirelick": 14,
+    "podshell": 12
+   }
+  },
+  {
+   "day": 129,
+   "temp": 0.15,
+   "alive": 195,
+   "meanEnergy": 0.74,
+   "meanWater": 0.61,
+   "births": 184,
+   "census": {
+    "mosskip": 81,
+    "rootling": 25,
+    "needlejaw": 6,
+    "genvo": 58,
+    "mirelick": 13,
+    "podshell": 12
+   }
+  },
+  {
+   "day": 130,
+   "temp": 0.41,
+   "alive": 196,
+   "meanEnergy": 0.73,
+   "meanWater": 0.65,
+   "births": 185,
+   "census": {
+    "mosskip": 81,
+    "rootling": 25,
+    "needlejaw": 7,
+    "genvo": 58,
+    "mirelick": 13,
+    "podshell": 12
+   }
+  },
+  {
+   "day": 131,
+   "temp": 0.43,
+   "alive": 198,
+   "meanEnergy": 0.73,
+   "meanWater": 0.65,
+   "births": 187,
+   "census": {
+    "mosskip": 81,
+    "rootling": 27,
+    "needlejaw": 7,
+    "genvo": 58,
+    "mirelick": 13,
+    "podshell": 12
+   }
+  },
+  {
+   "day": 132,
+   "temp": 0.46,
+   "alive": 198,
+   "meanEnergy": 0.72,
+   "meanWater": 0.67,
+   "births": 187,
+   "census": {
+    "mosskip": 81,
+    "rootling": 27,
+    "needlejaw": 7,
+    "genvo": 58,
+    "mirelick": 13,
+    "podshell": 12
+   }
+  },
+  {
+   "day": 133,
+   "temp": 0.43,
+   "alive": 198,
+   "meanEnergy": 0.73,
+   "meanWater": 0.65,
+   "births": 187,
+   "census": {
+    "mosskip": 81,
+    "rootling": 27,
+    "needlejaw": 7,
+    "genvo": 58,
+    "mirelick": 13,
+    "podshell": 12
+   }
+  },
+  {
+   "day": 134,
+   "temp": 0.49,
+   "alive": 200,
+   "meanEnergy": 0.69,
+   "meanWater": 0.6,
+   "births": 189,
+   "census": {
+    "mosskip": 83,
+    "rootling": 27,
+    "needlejaw": 7,
+    "genvo": 58,
+    "mirelick": 13,
+    "podshell": 12
+   }
+  },
+  {
+   "day": 135,
+   "temp": 0.49,
+   "alive": 199,
+   "meanEnergy": 0.6,
+   "meanWater": 0.55,
+   "births": 189,
+   "census": {
+    "mosskip": 83,
+    "rootling": 27,
+    "needlejaw": 7,
+    "genvo": 57,
+    "mirelick": 13,
+    "podshell": 12
+   }
+  },
+  {
+   "day": 136,
+   "temp": 0.48,
+   "alive": 201,
+   "meanEnergy": 0.62,
+   "meanWater": 0.73,
+   "births": 191,
+   "census": {
+    "mosskip": 85,
+    "rootling": 27,
+    "needlejaw": 7,
+    "genvo": 57,
+    "mirelick": 13,
+    "podshell": 12
+   }
+  },
+  {
+   "day": 137,
+   "temp": 0.5,
+   "alive": 201,
+   "meanEnergy": 0.63,
+   "meanWater": 0.66,
+   "births": 193,
+   "census": {
+    "mosskip": 87,
+    "rootling": 27,
+    "needlejaw": 7,
+    "genvo": 55,
+    "mirelick": 13,
+    "podshell": 12
+   }
+  },
+  {
+   "day": 138,
+   "temp": 0.7,
+   "alive": 200,
+   "meanEnergy": 0.63,
+   "meanWater": 0.73,
+   "births": 193,
+   "census": {
+    "mosskip": 86,
+    "rootling": 27,
+    "needlejaw": 7,
+    "genvo": 55,
+    "mirelick": 13,
+    "podshell": 12
+   }
+  },
+  {
+   "day": 139,
+   "temp": 0.8,
+   "alive": 198,
+   "meanEnergy": 0.63,
+   "meanWater": 0.74,
+   "births": 193,
+   "census": {
+    "mosskip": 85,
+    "rootling": 27,
+    "needlejaw": 7,
+    "genvo": 55,
+    "mirelick": 13,
+    "podshell": 11
+   }
+  },
+  {
+   "day": 140,
+   "temp": 0.69,
+   "alive": 197,
+   "meanEnergy": 0.62,
+   "meanWater": 0.73,
+   "births": 193,
+   "census": {
+    "mosskip": 85,
+    "rootling": 27,
+    "needlejaw": 7,
+    "genvo": 54,
+    "mirelick": 13,
+    "podshell": 11
+   }
+  },
+  {
+   "day": 141,
+   "temp": 0.71,
+   "alive": 200,
+   "meanEnergy": 0.6,
+   "meanWater": 0.71,
+   "births": 197,
+   "census": {
+    "mosskip": 84,
+    "rootling": 27,
+    "needlejaw": 7,
+    "genvo": 58,
+    "mirelick": 13,
+    "podshell": 11
+   }
+  },
+  {
+   "day": 142,
+   "temp": 0.75,
+   "alive": 201,
+   "meanEnergy": 0.6,
+   "meanWater": 0.73,
+   "births": 199,
+   "census": {
+    "mosskip": 84,
+    "rootling": 27,
+    "needlejaw": 7,
+    "genvo": 57,
+    "mirelick": 15,
+    "podshell": 11
+   }
+  },
+  {
+   "day": 143,
+   "temp": 0.63,
+   "alive": 199,
+   "meanEnergy": 0.6,
+   "meanWater": 0.73,
+   "births": 201,
+   "census": {
+    "mosskip": 83,
+    "rootling": 26,
+    "needlejaw": 7,
+    "genvo": 57,
+    "mirelick": 15,
+    "podshell": 11
+   }
+  },
+  {
+   "day": 144,
+   "temp": 0.66,
+   "alive": 205,
+   "meanEnergy": 0.57,
+   "meanWater": 0.7,
+   "births": 209,
+   "census": {
+    "mosskip": 84,
+    "rootling": 26,
+    "needlejaw": 7,
+    "genvo": 60,
+    "mirelick": 15,
+    "podshell": 13
+   }
+  },
+  {
+   "day": 145,
+   "temp": 0.69,
+   "alive": 200,
+   "meanEnergy": 0.58,
+   "meanWater": 0.72,
+   "births": 210,
+   "census": {
+    "mosskip": 83,
+    "rootling": 25,
+    "needlejaw": 7,
+    "genvo": 59,
+    "mirelick": 15,
+    "podshell": 11
+   }
+  },
+  {
+   "day": 146,
+   "temp": 0.6,
+   "alive": 196,
+   "meanEnergy": 0.61,
+   "meanWater": 0.71,
+   "births": 210,
+   "census": {
+    "mosskip": 81,
+    "rootling": 24,
+    "needlejaw": 7,
+    "genvo": 58,
+    "mirelick": 15,
+    "podshell": 11
+   }
+  },
+  {
+   "day": 147,
+   "temp": 0.59,
+   "alive": 193,
+   "meanEnergy": 0.61,
+   "meanWater": 0.73,
+   "births": 210,
+   "census": {
+    "mosskip": 79,
+    "rootling": 24,
+    "needlejaw": 7,
+    "genvo": 58,
+    "mirelick": 15,
+    "podshell": 10
+   }
+  },
+  {
+   "day": 148,
+   "temp": 0.55,
+   "alive": 191,
+   "meanEnergy": 0.59,
+   "meanWater": 0.72,
+   "births": 210,
+   "census": {
+    "mosskip": 78,
+    "rootling": 24,
+    "needlejaw": 7,
+    "genvo": 57,
+    "mirelick": 15,
+    "podshell": 10
+   }
+  },
+  {
+   "day": 149,
+   "temp": 0.57,
+   "alive": 188,
+   "meanEnergy": 0.6,
+   "meanWater": 0.69,
+   "births": 210,
+   "census": {
+    "mosskip": 77,
+    "rootling": 22,
+    "needlejaw": 7,
+    "genvo": 57,
+    "mirelick": 15,
+    "podshell": 10
+   }
+  },
+  {
+   "day": 150,
+   "temp": 0.51,
+   "alive": 186,
+   "meanEnergy": 0.58,
+   "meanWater": 0.7,
+   "births": 212,
+   "census": {
+    "mosskip": 78,
+    "rootling": 20,
+    "needlejaw": 7,
+    "genvo": 56,
+    "mirelick": 15,
+    "podshell": 10
+   }
+  },
+  {
+   "day": 151,
+   "temp": 0.43,
+   "alive": 188,
+   "meanEnergy": 0.57,
+   "meanWater": 0.71,
+   "births": 217,
+   "census": {
+    "mosskip": 77,
+    "rootling": 20,
+    "needlejaw": 7,
+    "genvo": 59,
+    "mirelick": 15,
+    "podshell": 10
+   }
+  },
+  {
+   "day": 152,
+   "temp": 0.43,
+   "alive": 188,
+   "meanEnergy": 0.57,
+   "meanWater": 0.69,
+   "births": 217,
+   "census": {
+    "mosskip": 77,
+    "rootling": 20,
+    "needlejaw": 7,
+    "genvo": 59,
+    "mirelick": 15,
+    "podshell": 10
+   }
+  },
+  {
+   "day": 153,
+   "temp": 0.45,
+   "alive": 184,
+   "meanEnergy": 0.63,
+   "meanWater": 0.66,
+   "births": 217,
+   "census": {
+    "mosskip": 76,
+    "rootling": 20,
+    "needlejaw": 7,
+    "genvo": 56,
+    "mirelick": 15,
+    "podshell": 10
+   }
+  },
+  {
+   "day": 154,
+   "temp": 0.15,
+   "alive": 184,
+   "meanEnergy": 0.64,
+   "meanWater": 0.62,
+   "births": 219,
+   "census": {
+    "mosskip": 78,
+    "rootling": 20,
+    "needlejaw": 7,
+    "genvo": 55,
+    "mirelick": 15,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 155,
+   "temp": 0.18,
+   "alive": 184,
+   "meanEnergy": 0.68,
+   "meanWater": 0.65,
+   "births": 219,
+   "census": {
+    "mosskip": 78,
+    "rootling": 20,
+    "needlejaw": 7,
+    "genvo": 55,
+    "mirelick": 15,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 156,
+   "temp": 0.21,
+   "alive": 182,
+   "meanEnergy": 0.71,
+   "meanWater": 0.64,
+   "births": 219,
+   "census": {
+    "mosskip": 78,
+    "rootling": 20,
+    "needlejaw": 7,
+    "genvo": 53,
+    "mirelick": 15,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 157,
+   "temp": 0.28,
+   "alive": 180,
+   "meanEnergy": 0.73,
+   "meanWater": 0.64,
+   "births": 219,
+   "census": {
+    "mosskip": 77,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 53,
+    "mirelick": 15,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 158,
+   "temp": 0.23,
+   "alive": 178,
+   "meanEnergy": 0.73,
+   "meanWater": 0.64,
+   "births": 219,
+   "census": {
+    "mosskip": 75,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 53,
+    "mirelick": 15,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 159,
+   "temp": 0.29,
+   "alive": 178,
+   "meanEnergy": 0.73,
+   "meanWater": 0.64,
+   "births": 219,
+   "census": {
+    "mosskip": 75,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 53,
+    "mirelick": 15,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 160,
+   "temp": 0.27,
+   "alive": 177,
+   "meanEnergy": 0.74,
+   "meanWater": 0.64,
+   "births": 219,
+   "census": {
+    "mosskip": 75,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 52,
+    "mirelick": 15,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 161,
+   "temp": 0.21,
+   "alive": 175,
+   "meanEnergy": 0.73,
+   "meanWater": 0.64,
+   "births": 219,
+   "census": {
+    "mosskip": 75,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 50,
+    "mirelick": 15,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 162,
+   "temp": 0.51,
+   "alive": 175,
+   "meanEnergy": 0.73,
+   "meanWater": 0.66,
+   "births": 219,
+   "census": {
+    "mosskip": 75,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 50,
+    "mirelick": 15,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 163,
+   "temp": 0.45,
+   "alive": 175,
+   "meanEnergy": 0.72,
+   "meanWater": 0.68,
+   "births": 219,
+   "census": {
+    "mosskip": 75,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 50,
+    "mirelick": 15,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 164,
+   "temp": 0.56,
+   "alive": 178,
+   "meanEnergy": 0.71,
+   "meanWater": 0.66,
+   "births": 222,
+   "census": {
+    "mosskip": 75,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 53,
+    "mirelick": 15,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 165,
+   "temp": 0.45,
+   "alive": 177,
+   "meanEnergy": 0.67,
+   "meanWater": 0.61,
+   "births": 222,
+   "census": {
+    "mosskip": 75,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 52,
+    "mirelick": 15,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 166,
+   "temp": 0.45,
+   "alive": 173,
+   "meanEnergy": 0.66,
+   "meanWater": 0.63,
+   "births": 224,
+   "census": {
+    "mosskip": 77,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 49,
+    "mirelick": 12,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 167,
+   "temp": 0.41,
+   "alive": 173,
+   "meanEnergy": 0.63,
+   "meanWater": 0.65,
+   "births": 224,
+   "census": {
+    "mosskip": 77,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 49,
+    "mirelick": 12,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 168,
+   "temp": 0.45,
+   "alive": 172,
+   "meanEnergy": 0.66,
+   "meanWater": 0.68,
+   "births": 224,
+   "census": {
+    "mosskip": 76,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 49,
+    "mirelick": 12,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 169,
+   "temp": 0.49,
+   "alive": 173,
+   "meanEnergy": 0.63,
+   "meanWater": 0.64,
+   "births": 225,
+   "census": {
+    "mosskip": 77,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 49,
+    "mirelick": 12,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 170,
+   "temp": 0.64,
+   "alive": 172,
+   "meanEnergy": 0.56,
+   "meanWater": 0.69,
+   "births": 225,
+   "census": {
+    "mosskip": 76,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 49,
+    "mirelick": 12,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 171,
+   "temp": 0.72,
+   "alive": 171,
+   "meanEnergy": 0.55,
+   "meanWater": 0.72,
+   "births": 225,
+   "census": {
+    "mosskip": 75,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 49,
+    "mirelick": 12,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 172,
+   "temp": 0.8,
+   "alive": 171,
+   "meanEnergy": 0.55,
+   "meanWater": 0.71,
+   "births": 225,
+   "census": {
+    "mosskip": 75,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 49,
+    "mirelick": 12,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 173,
+   "temp": 0.81,
+   "alive": 171,
+   "meanEnergy": 0.53,
+   "meanWater": 0.76,
+   "births": 225,
+   "census": {
+    "mosskip": 75,
+    "rootling": 19,
+    "needlejaw": 7,
+    "genvo": 49,
+    "mirelick": 12,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 174,
+   "temp": 0.79,
+   "alive": 169,
+   "meanEnergy": 0.51,
+   "meanWater": 0.74,
+   "births": 226,
+   "census": {
+    "mosskip": 72,
+    "rootling": 19,
+    "needlejaw": 8,
+    "genvo": 49,
+    "mirelick": 12,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 175,
+   "temp": 0.85,
+   "alive": 169,
+   "meanEnergy": 0.49,
+   "meanWater": 0.73,
+   "births": 226,
+   "census": {
+    "mosskip": 72,
+    "rootling": 19,
+    "needlejaw": 8,
+    "genvo": 49,
+    "mirelick": 12,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 176,
+   "temp": 0.87,
+   "alive": 166,
+   "meanEnergy": 0.46,
+   "meanWater": 0.76,
+   "births": 226,
+   "census": {
+    "mosskip": 70,
+    "rootling": 18,
+    "needlejaw": 8,
+    "genvo": 49,
+    "mirelick": 12,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 177,
+   "temp": 0.86,
+   "alive": 159,
+   "meanEnergy": 0.44,
+   "meanWater": 0.78,
+   "births": 226,
+   "census": {
+    "mosskip": 66,
+    "rootling": 16,
+    "needlejaw": 8,
+    "genvo": 48,
+    "mirelick": 12,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 178,
+   "temp": 0.6,
+   "alive": 151,
+   "meanEnergy": 0.48,
+   "meanWater": 0.75,
+   "births": 226,
+   "census": {
+    "mosskip": 62,
+    "rootling": 16,
+    "needlejaw": 8,
+    "genvo": 45,
+    "mirelick": 12,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 179,
+   "temp": 0.54,
+   "alive": 142,
+   "meanEnergy": 0.49,
+   "meanWater": 0.75,
+   "births": 226,
+   "census": {
+    "mosskip": 59,
+    "rootling": 13,
+    "needlejaw": 8,
+    "genvo": 42,
+    "mirelick": 12,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 180,
+   "temp": 0.62,
+   "alive": 133,
+   "meanEnergy": 0.53,
+   "meanWater": 0.73,
+   "births": 226,
+   "census": {
+    "mosskip": 54,
+    "rootling": 11,
+    "needlejaw": 8,
+    "genvo": 40,
+    "mirelick": 12,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 181,
+   "temp": 0.67,
+   "alive": 130,
+   "meanEnergy": 0.53,
+   "meanWater": 0.7,
+   "births": 226,
+   "census": {
+    "mosskip": 54,
+    "rootling": 10,
+    "needlejaw": 8,
+    "genvo": 38,
+    "mirelick": 12,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 182,
+   "temp": 0.58,
+   "alive": 123,
+   "meanEnergy": 0.55,
+   "meanWater": 0.76,
+   "births": 226,
+   "census": {
+    "mosskip": 50,
+    "rootling": 9,
+    "needlejaw": 8,
+    "genvo": 37,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 183,
+   "temp": 0.58,
+   "alive": 120,
+   "meanEnergy": 0.55,
+   "meanWater": 0.74,
+   "births": 226,
+   "census": {
+    "mosskip": 49,
+    "rootling": 7,
+    "needlejaw": 8,
+    "genvo": 37,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 184,
+   "temp": 0.54,
+   "alive": 116,
+   "meanEnergy": 0.57,
+   "meanWater": 0.74,
+   "births": 226,
+   "census": {
+    "mosskip": 48,
+    "rootling": 7,
+    "needlejaw": 8,
+    "genvo": 34,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 185,
+   "temp": 0.57,
+   "alive": 115,
+   "meanEnergy": 0.57,
+   "meanWater": 0.75,
+   "births": 226,
+   "census": {
+    "mosskip": 48,
+    "rootling": 7,
+    "needlejaw": 8,
+    "genvo": 33,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 186,
+   "temp": 0.32,
+   "alive": 113,
+   "meanEnergy": 0.56,
+   "meanWater": 0.71,
+   "births": 226,
+   "census": {
+    "mosskip": 46,
+    "rootling": 7,
+    "needlejaw": 8,
+    "genvo": 33,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 187,
+   "temp": 0.38,
+   "alive": 111,
+   "meanEnergy": 0.6,
+   "meanWater": 0.72,
+   "births": 226,
+   "census": {
+    "mosskip": 45,
+    "rootling": 7,
+    "needlejaw": 8,
+    "genvo": 32,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 188,
+   "temp": 0.36,
+   "alive": 110,
+   "meanEnergy": 0.66,
+   "meanWater": 0.68,
+   "births": 226,
+   "census": {
+    "mosskip": 44,
+    "rootling": 7,
+    "needlejaw": 8,
+    "genvo": 32,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 189,
+   "temp": 0.28,
+   "alive": 108,
+   "meanEnergy": 0.7,
+   "meanWater": 0.67,
+   "births": 226,
+   "census": {
+    "mosskip": 42,
+    "rootling": 7,
+    "needlejaw": 8,
+    "genvo": 32,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 190,
+   "temp": 0.23,
+   "alive": 107,
+   "meanEnergy": 0.71,
+   "meanWater": 0.65,
+   "births": 226,
+   "census": {
+    "mosskip": 42,
+    "rootling": 7,
+    "needlejaw": 8,
+    "genvo": 31,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 191,
+   "temp": 0.28,
+   "alive": 106,
+   "meanEnergy": 0.72,
+   "meanWater": 0.64,
+   "births": 226,
+   "census": {
+    "mosskip": 41,
+    "rootling": 7,
+    "needlejaw": 8,
+    "genvo": 31,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 192,
+   "temp": 0.28,
+   "alive": 105,
+   "meanEnergy": 0.72,
+   "meanWater": 0.65,
+   "births": 226,
+   "census": {
+    "mosskip": 40,
+    "rootling": 7,
+    "needlejaw": 8,
+    "genvo": 31,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 193,
+   "temp": 0.33,
+   "alive": 104,
+   "meanEnergy": 0.74,
+   "meanWater": 0.65,
+   "births": 226,
+   "census": {
+    "mosskip": 40,
+    "rootling": 7,
+    "needlejaw": 7,
+    "genvo": 31,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 194,
+   "temp": 0.58,
+   "alive": 104,
+   "meanEnergy": 0.76,
+   "meanWater": 0.68,
+   "births": 226,
+   "census": {
+    "mosskip": 40,
+    "rootling": 7,
+    "needlejaw": 7,
+    "genvo": 31,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 195,
+   "temp": 0.54,
+   "alive": 104,
+   "meanEnergy": 0.74,
+   "meanWater": 0.69,
+   "births": 226,
+   "census": {
+    "mosskip": 40,
+    "rootling": 7,
+    "needlejaw": 7,
+    "genvo": 31,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 196,
+   "temp": 0.55,
+   "alive": 104,
+   "meanEnergy": 0.66,
+   "meanWater": 0.53,
+   "births": 226,
+   "census": {
+    "mosskip": 40,
+    "rootling": 7,
+    "needlejaw": 7,
+    "genvo": 31,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 197,
+   "temp": 0.45,
+   "alive": 104,
+   "meanEnergy": 0.6,
+   "meanWater": 0.8,
+   "births": 226,
+   "census": {
+    "mosskip": 40,
+    "rootling": 7,
+    "needlejaw": 7,
+    "genvo": 31,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 198,
+   "temp": 0.5,
+   "alive": 104,
+   "meanEnergy": 0.63,
+   "meanWater": 0.68,
+   "births": 226,
+   "census": {
+    "mosskip": 40,
+    "rootling": 7,
+    "needlejaw": 7,
+    "genvo": 31,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 199,
+   "temp": 0.33,
+   "alive": 104,
+   "meanEnergy": 0.61,
+   "meanWater": 0.74,
+   "births": 226,
+   "census": {
+    "mosskip": 40,
+    "rootling": 7,
+    "needlejaw": 7,
+    "genvo": 31,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 200,
+   "temp": 0.27,
+   "alive": 104,
+   "meanEnergy": 0.66,
+   "meanWater": 0.71,
+   "births": 226,
+   "census": {
+    "mosskip": 40,
+    "rootling": 7,
+    "needlejaw": 7,
+    "genvo": 31,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 201,
+   "temp": 0.24,
+   "alive": 102,
+   "meanEnergy": 0.69,
+   "meanWater": 0.66,
+   "births": 226,
+   "census": {
+    "mosskip": 39,
+    "rootling": 7,
+    "needlejaw": 7,
+    "genvo": 30,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 202,
+   "temp": 0.54,
+   "alive": 101,
+   "meanEnergy": 0.7,
+   "meanWater": 0.7,
+   "births": 226,
+   "census": {
+    "mosskip": 38,
+    "rootling": 7,
+    "needlejaw": 7,
+    "genvo": 30,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 203,
+   "temp": 0.57,
+   "alive": 100,
+   "meanEnergy": 0.63,
+   "meanWater": 0.66,
+   "births": 226,
+   "census": {
+    "mosskip": 37,
+    "rootling": 7,
+    "needlejaw": 7,
+    "genvo": 30,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 204,
+   "temp": 0.53,
+   "alive": 100,
+   "meanEnergy": 0.6,
+   "meanWater": 0.74,
+   "births": 227,
+   "census": {
+    "mosskip": 38,
+    "rootling": 7,
+    "needlejaw": 7,
+    "genvo": 29,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 205,
+   "temp": 0.44,
+   "alive": 99,
+   "meanEnergy": 0.59,
+   "meanWater": 0.72,
+   "births": 227,
+   "census": {
+    "mosskip": 37,
+    "rootling": 7,
+    "needlejaw": 7,
+    "genvo": 29,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 206,
+   "temp": 0.5,
+   "alive": 98,
+   "meanEnergy": 0.6,
+   "meanWater": 0.68,
+   "births": 227,
+   "census": {
+    "mosskip": 37,
+    "rootling": 7,
+    "needlejaw": 7,
+    "genvo": 29,
+    "mirelick": 11,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 207,
+   "temp": 0.47,
+   "alive": 102,
+   "meanEnergy": 0.51,
+   "meanWater": 0.66,
+   "births": 231,
+   "census": {
+    "mosskip": 37,
+    "rootling": 7,
+    "needlejaw": 7,
+    "genvo": 31,
+    "mirelick": 13,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 208,
+   "temp": 0.46,
+   "alive": 99,
+   "meanEnergy": 0.51,
+   "meanWater": 0.72,
+   "births": 231,
+   "census": {
+    "mosskip": 36,
+    "rootling": 6,
+    "needlejaw": 7,
+    "genvo": 31,
+    "mirelick": 12,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 209,
+   "temp": 0.52,
+   "alive": 96,
+   "meanEnergy": 0.51,
+   "meanWater": 0.76,
+   "births": 231,
+   "census": {
+    "mosskip": 36,
+    "rootling": 6,
+    "needlejaw": 7,
+    "genvo": 30,
+    "mirelick": 10,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 210,
+   "temp": 0.35,
+   "alive": 94,
+   "meanEnergy": 0.54,
+   "meanWater": 0.74,
+   "births": 231,
+   "census": {
+    "mosskip": 35,
+    "rootling": 6,
+    "needlejaw": 7,
+    "genvo": 30,
+    "mirelick": 9,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 211,
+   "temp": 0.37,
+   "alive": 96,
+   "meanEnergy": 0.58,
+   "meanWater": 0.68,
+   "births": 233,
+   "census": {
+    "mosskip": 35,
+    "rootling": 6,
+    "needlejaw": 7,
+    "genvo": 30,
+    "mirelick": 9,
+    "podshell": 9
+   }
+  },
+  {
+   "day": 212,
+   "temp": 0.32,
+   "alive": 91,
+   "meanEnergy": 0.69,
+   "meanWater": 0.67,
+   "births": 233,
+   "census": {
+    "mosskip": 33,
+    "rootling": 6,
+    "needlejaw": 7,
+    "genvo": 28,
+    "mirelick": 9,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 213,
+   "temp": 0.44,
+   "alive": 91,
+   "meanEnergy": 0.71,
+   "meanWater": 0.66,
+   "births": 233,
+   "census": {
+    "mosskip": 33,
+    "rootling": 6,
+    "needlejaw": 7,
+    "genvo": 28,
+    "mirelick": 9,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 214,
+   "temp": 0.37,
+   "alive": 90,
+   "meanEnergy": 0.73,
+   "meanWater": 0.65,
+   "births": 233,
+   "census": {
+    "mosskip": 33,
+    "rootling": 6,
+    "needlejaw": 7,
+    "genvo": 27,
+    "mirelick": 9,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 215,
+   "temp": 0.45,
+   "alive": 89,
+   "meanEnergy": 0.74,
+   "meanWater": 0.64,
+   "births": 233,
+   "census": {
+    "mosskip": 32,
+    "rootling": 6,
+    "needlejaw": 7,
+    "genvo": 27,
+    "mirelick": 9,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 216,
+   "temp": 0.54,
+   "alive": 88,
+   "meanEnergy": 0.74,
+   "meanWater": 0.66,
+   "births": 233,
+   "census": {
+    "mosskip": 32,
+    "rootling": 6,
+    "needlejaw": 7,
+    "genvo": 27,
+    "mirelick": 8,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 217,
+   "temp": 0.62,
+   "alive": 88,
+   "meanEnergy": 0.66,
+   "meanWater": 0.54,
+   "births": 233,
+   "census": {
+    "mosskip": 32,
+    "rootling": 6,
+    "needlejaw": 7,
+    "genvo": 27,
+    "mirelick": 8,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 218,
+   "temp": 0.36,
+   "alive": 87,
+   "meanEnergy": 0.63,
+   "meanWater": 0.76,
+   "births": 234,
+   "census": {
+    "mosskip": 31,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 27,
+    "mirelick": 7,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 219,
+   "temp": 0.47,
+   "alive": 87,
+   "meanEnergy": 0.67,
+   "meanWater": 0.67,
+   "births": 234,
+   "census": {
+    "mosskip": 31,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 27,
+    "mirelick": 7,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 220,
+   "temp": 0.43,
+   "alive": 87,
+   "meanEnergy": 0.6,
+   "meanWater": 0.64,
+   "births": 234,
+   "census": {
+    "mosskip": 31,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 27,
+    "mirelick": 7,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 221,
+   "temp": 0.34,
+   "alive": 86,
+   "meanEnergy": 0.58,
+   "meanWater": 0.68,
+   "births": 234,
+   "census": {
+    "mosskip": 31,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 27,
+    "mirelick": 6,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 222,
+   "temp": 0.31,
+   "alive": 86,
+   "meanEnergy": 0.64,
+   "meanWater": 0.68,
+   "births": 234,
+   "census": {
+    "mosskip": 31,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 27,
+    "mirelick": 6,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 223,
+   "temp": 0.23,
+   "alive": 86,
+   "meanEnergy": 0.65,
+   "meanWater": 0.67,
+   "births": 234,
+   "census": {
+    "mosskip": 31,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 27,
+    "mirelick": 6,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 224,
+   "temp": 0.28,
+   "alive": 85,
+   "meanEnergy": 0.7,
+   "meanWater": 0.65,
+   "births": 234,
+   "census": {
+    "mosskip": 30,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 27,
+    "mirelick": 6,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 225,
+   "temp": 0.31,
+   "alive": 85,
+   "meanEnergy": 0.72,
+   "meanWater": 0.65,
+   "births": 234,
+   "census": {
+    "mosskip": 30,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 27,
+    "mirelick": 6,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 226,
+   "temp": 0.59,
+   "alive": 84,
+   "meanEnergy": 0.73,
+   "meanWater": 0.68,
+   "births": 234,
+   "census": {
+    "mosskip": 30,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 26,
+    "mirelick": 6,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 227,
+   "temp": 0.72,
+   "alive": 83,
+   "meanEnergy": 0.74,
+   "meanWater": 0.67,
+   "births": 234,
+   "census": {
+    "mosskip": 30,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 25,
+    "mirelick": 6,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 228,
+   "temp": 0.65,
+   "alive": 83,
+   "meanEnergy": 0.65,
+   "meanWater": 0.56,
+   "births": 234,
+   "census": {
+    "mosskip": 30,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 25,
+    "mirelick": 6,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 229,
+   "temp": 0.67,
+   "alive": 82,
+   "meanEnergy": 0.6,
+   "meanWater": 0.79,
+   "births": 234,
+   "census": {
+    "mosskip": 29,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 25,
+    "mirelick": 6,
+    "podshell": 8
+   }
+  },
+  {
+   "day": 230,
+   "temp": 0.6,
+   "alive": 81,
+   "meanEnergy": 0.58,
+   "meanWater": 0.72,
+   "births": 234,
+   "census": {
+    "mosskip": 29,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 25,
+    "mirelick": 6,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 231,
+   "temp": 0.58,
+   "alive": 80,
+   "meanEnergy": 0.57,
+   "meanWater": 0.74,
+   "births": 234,
+   "census": {
+    "mosskip": 29,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 24,
+    "mirelick": 6,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 232,
+   "temp": 0.71,
+   "alive": 80,
+   "meanEnergy": 0.54,
+   "meanWater": 0.7,
+   "births": 234,
+   "census": {
+    "mosskip": 29,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 24,
+    "mirelick": 6,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 233,
+   "temp": 0.66,
+   "alive": 79,
+   "meanEnergy": 0.5,
+   "meanWater": 0.76,
+   "births": 234,
+   "census": {
+    "mosskip": 29,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 23,
+    "mirelick": 6,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 234,
+   "temp": 0.9,
+   "alive": 74,
+   "meanEnergy": 0.49,
+   "meanWater": 0.74,
+   "births": 234,
+   "census": {
+    "mosskip": 25,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 22,
+    "mirelick": 6,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 235,
+   "temp": 0.88,
+   "alive": 72,
+   "meanEnergy": 0.46,
+   "meanWater": 0.76,
+   "births": 234,
+   "census": {
+    "mosskip": 23,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 22,
+    "mirelick": 6,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 236,
+   "temp": 0.87,
+   "alive": 70,
+   "meanEnergy": 0.45,
+   "meanWater": 0.8,
+   "births": 234,
+   "census": {
+    "mosskip": 22,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 21,
+    "mirelick": 6,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 237,
+   "temp": 0.82,
+   "alive": 66,
+   "meanEnergy": 0.45,
+   "meanWater": 0.81,
+   "births": 234,
+   "census": {
+    "mosskip": 20,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 19,
+    "mirelick": 6,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 238,
+   "temp": 0.76,
+   "alive": 59,
+   "meanEnergy": 0.5,
+   "meanWater": 0.77,
+   "births": 236,
+   "census": {
+    "mosskip": 16,
+    "rootling": 7,
+    "needlejaw": 8,
+    "genvo": 16,
+    "mirelick": 5,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 239,
+   "temp": 0.69,
+   "alive": 57,
+   "meanEnergy": 0.51,
+   "meanWater": 0.74,
+   "births": 236,
+   "census": {
+    "mosskip": 15,
+    "rootling": 7,
+    "needlejaw": 8,
+    "genvo": 15,
+    "mirelick": 5,
+    "podshell": 7
+   }
+  },
+  {
+   "day": 240,
+   "temp": 0.63,
+   "alive": 53,
+   "meanEnergy": 0.56,
+   "meanWater": 0.75,
+   "births": 236,
+   "census": {
+    "mosskip": 15,
+    "rootling": 7,
+    "needlejaw": 8,
+    "genvo": 13,
+    "mirelick": 5,
+    "podshell": 5
+   }
+  },
+  {
+   "day": 241,
+   "temp": 0.63,
+   "alive": 51,
+   "meanEnergy": 0.57,
+   "meanWater": 0.7,
+   "births": 236,
+   "census": {
+    "mosskip": 14,
+    "rootling": 6,
+    "needlejaw": 8,
+    "genvo": 13,
+    "mirelick": 5,
+    "podshell": 5
+   }
+  }
+ ]
+}
