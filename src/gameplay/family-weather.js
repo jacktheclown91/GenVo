@@ -2,7 +2,8 @@ import {SPECIES} from '../organisms/species.js';
 import {CFG} from '../sim/config.js';
 
 const clamp01=v=>Math.max(0,Math.min(1,Number(v)||0));
-const AFTERMATH_TICKS=CFG.dayTicks*1.5;
+// Read live: the day length is a per-world policy (sim/day-clock.js).
+const aftermathTicks=()=>CFG.dayTicks*1.5;
 
 // Founder-line family weather behavior. This controller reads the already-authoritative
 // climate + shelter state and only alters live player-run family decisions. It never
@@ -78,7 +79,7 @@ export class FamilyWeatherController{
     const shelter=this.sim.shelter?.shelters?.find?.(s=>s.id===episode.shelterId)||null;
     const family=shelter?this.familyAt(shelter):[];
     const checkIds=family.filter(a=>this.sim.family.isDependent(a)).map(a=>a.id);
-    this.aftermath={shelterId:episode.shelterId,startedTick:this.sim.tickCount,endedTick:this.sim.tickCount,untilTick:this.sim.tickCount+AFTERMATH_TICKS,peakRain:episode.peakRain||0,peakPressure:episode.peakPressure||0,label:episode.label||'rough weather',checkIds:new Set(checkIds),checkedIds:new Set(),resumedIds:new Set(),familyIds:new Set(family.map(a=>a.id)),recorded:false};
+    this.aftermath={shelterId:episode.shelterId,startedTick:this.sim.tickCount,endedTick:this.sim.tickCount,untilTick:this.sim.tickCount+aftermathTicks(),peakRain:episode.peakRain||0,peakPressure:episode.peakPressure||0,label:episode.label||'rough weather',checkIds:new Set(checkIds),checkedIds:new Set(),resumedIds:new Set(),familyIds:new Set(family.map(a=>a.id)),recorded:false};
     if(checkIds.length||this.interrupted.size){const p=this.sim.player();if(p)this.sim.cognition?.recordOnce?.(p,`storm-passed:${episode.shelterId}:${this.sim.year}:${this.sim.day}`,'Storm passed; family regrouped before ranging out again',{shelterId:episode.shelterId,young:checkIds.length,interrupted:this.interrupted.size})}
   }
   aftermathStatus(animal=this.sim.player()){
@@ -102,7 +103,7 @@ export class FamilyWeatherController{
   }
   postRainBoost(kind){
     const a=this.aftermathStatus();if(!a?.recentRain)return 0;
-    const age=clamp01(1-a.ageTicks/AFTERMATH_TICKS),base=kind==='marshroot'?.24:kind==='rotcap'?.18:kind==='bramble'?.07:kind==='sunmoss'?.05:0;
+    const age=clamp01(1-a.ageTicks/aftermathTicks()),base=kind==='marshroot'?.24:kind==='rotcap'?.18:kind==='bramble'?.07:kind==='sunmoss'?.05:0;
     return base*age;
   }
   phase(){

@@ -1,4 +1,5 @@
 import {CFG} from '../sim/config.js';
+import {conditionRecovery} from '../ecology/metabolism-policy.js';
 
 // Short-term exertion for the directly controlled creature.
 // This is breath, not food: sprinting, bracing and attacking spend it, walking and
@@ -33,7 +34,8 @@ export class ExertionController{
     if(sprinting)this.spend(a,E.sprintDrain*dt);
     else if(bracing)this.spend(a,E.braceDrain*dt);
     else if(a.exertionDelay>0)a.exertionDelay=Math.max(0,a.exertionDelay-dt);
-    else if(a.exertion<E.max)a.exertion=Math.min(E.max,a.exertion+(moving?E.walkRecover:E.idleRecover)*dt);
+    // A hungry or thirsty body recovers its breath more slowly (ecology/metabolism-policy.js).
+    else if(a.exertion<E.max)a.exertion=Math.min(E.max,a.exertion+(moving?E.walkRecover:E.idleRecover)*dt*conditionRecovery(this.sim,a));
     if(a.exertionWinded&&a.exertion>=E.windedRecoverTo)a.exertionWinded=false;
   }
 

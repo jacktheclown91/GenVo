@@ -120,3 +120,11 @@ Dates follow the creator's allocation and are targets, not reasons to ship unfin
   - Passive AUTO and idle play die only to predators.
   - The cause is shared physiology with tiny daily needs, not player protection.
   - Decisions needed: day length, and target starvation and dehydration timescales for a versioned metabolism policy.
+- **2026-10-23, Phase 1 day clock** (`docs/DAY-CLOCK-2026-10-23.md`):
+  - The 30-second clock is built and saved per world. Recorded worlds are unchanged (gate 99 of 99), and daily biology is preserved.
+  - It is opt-in with `?day=30` until the longer day's ecology is balanced. On the longer day wild animals walk 4–5× more, which brought fewer births and more predation.
+- **2026-10-23, Phase 1 continued:**
+  - **Rest when sated** on 30-second days. Ambient travel is held to the recorded clock's daily amount, and 360-day populations are compared (`docs/DAY-CLOCK-2026-10-23.md`).
+  - **Metabolism policy:** a resting adult starves in 16.3 days and dies of thirst in 3.6, with penalties before death and shared by all (`docs/METABOLISM-2026-10-23.md`).
+  - Both are opt-in with `?day=30`.
+  - Under real needs AUTO dies within 4–15 days, because water seeking, alarm flights and intake were sized for tiny needs. Behaviour calibration and the food-property stage come next.

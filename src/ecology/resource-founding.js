@@ -1,6 +1,7 @@
 import {basalResourceCosts,ANATOMICAL_MASS,massPolicy} from '../organisms/body-mass.js';
 import {SPECIES} from '../organisms/species.js';
 import {PLANTS,CFG} from '../sim/config.js';
+import {BIO_STEPS_PER_DAY} from '../sim/day-clock.js';
 import {groundDiet,preyPreference} from './functional-diet.js';
 import {FRESHWATER_FOOD,freshwaterField,freshwaterPreference,growthOf} from './freshwater-food.js';
 import {preyBodyMass} from './prey-biomass.js';
@@ -23,7 +24,8 @@ import {captureLikelihood} from './juvenile-biology.js';
 // need overstated 6x by counting ticks instead of metabolism steps, and a minimum of one pair.)
 export const RESOURCE_FOUNDING={enabled:true};
 export const FOUNDING_RANGE=12,FOUNDING_ACTIVITY=2,TISSUE_ENERGY=FRESHWATER_FOOD.detritus.nutrition;
-const STEPS_PER_DAY=CFG.dayTicks/CFG.lifeStride;
+// Metabolism steps per day: constant under every day clock (sim/day-clock.js).
+const STEPS_PER_DAY=BIO_STEPS_PER_DAY;
 export function founderDailyNeed(species,animal=null){if(animal&&massPolicy(animal)===ANATOMICAL_MASS)return basalResourceCosts(animal).energy/animal.genes.metabolism*STEPS_PER_DAY*FOUNDING_ACTIVITY;const s=SPECIES[species];return s.baseMetabolism*(s.mass||1)*STEPS_PER_DAY*FOUNDING_ACTIVITY}
 
 export function renewableFood(sim,a){

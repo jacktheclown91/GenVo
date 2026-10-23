@@ -17,7 +17,8 @@ export const OFFSCREEN_BIOLOGY=Object.freeze({
  schema:1,ticksPerPass:CFG.lifeStride,regionsPerPass:1,
  // No population ceiling: a regional population is bounded only by its real
  // ecology. Replay work grows with it and is scheduled, never culled.
- maxEntryTicks:CFG.dayTicks
+ // One world day, read live: the day length is a per-world policy (sim/day-clock.js).
+ get maxEntryTicks(){return CFG.dayTicks}
 });
 const safe=n=>Number.isSafeInteger(n)&&n>=0;
 const round=v=>Number.isFinite(v)?v:0;

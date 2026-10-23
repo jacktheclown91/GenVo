@@ -1,4 +1,5 @@
 import {CFG} from '../sim/config.js';
+import {DAY_CLOCK} from '../sim/day-clock.js';
 import {nearestWater,isWaterDweller} from '../lineage/aquatic.js';
 import {canHunt,ecologicalCapabilities,plantPreference} from './functional-diet.js';
 import {hasPart} from '../lineage/part-abilities.js';
@@ -19,7 +20,9 @@ export class WildlifeRhythmController{
 
   decision(a,{energy=1,hydration=1}={}){
     if(!this.sim.playerEnabled||!a?.alive||a.player||a.lineage||a.infected||a.health<82||energy<.72||hydration<.60)return null;
-    const step=Math.floor(this.sim.tickCount/Math.max(1,CFG.lifeStride));
+    // On 30-second days the ambient cycle runs on the biological stride, so its windows (and the
+    // ground they cover) per day match the recorded 6-second day (sim/day-clock.js).
+    const step=Math.floor(this.sim.tickCount/Math.max(1,this.dayClock()?CFG.bioStride:CFG.lifeStride));
     // A newly inherited mouth, claw, or aquatic body changes ambient behavior
     // immediately even when its ancestry label is unchanged.
     const role=ecologicalCapabilities(a);
@@ -116,11 +119,16 @@ export class WildlifeRhythmController{
     return{intent:'band-wander',target:this.localTarget(a,3.8,step,2),mode:'travel'};
   }
 
+  dayClock(){return this.sim.dayClockRules===DAY_CLOCK.policy}
   localTarget(a,distance,step,salt=0){
-    const world=this.sim.world,size=CFG.worldSize,base=(a.id*5+Math.floor(step/3)+salt)&7;
+    const world=this.sim.world,size=CFG.worldSize,window=Math.floor(step/3),base=(a.id*5+window+salt)&7;
+    // 30-second days: the target is anchored where the animal stood when this window began, so it
+    // walks there and then stays (browsing, watching) instead of keeping a moving target ahead of
+    // itself for the whole, now longer, window. Recorded worlds keep the moving target.
+    let ox=a.x,oy=a.y;if(this.dayClock()){if(a.rhythmAnchor?.window!==window)a.rhythmAnchor={window,x:a.x,y:a.y};ox=a.rhythmAnchor.x;oy=a.rhythmAnchor.y}
     for(let turn=0;turn<8;turn++){
       const dir=DIRS[(base+turn)&7],scale=turn<4?distance:distance*.65;
-      const x=a.x+dir[0]*scale,y=a.y+dir[1]*scale;
+      const x=ox+dir[0]*scale,y=oy+dir[1]*scale;
       if(x<=2||y<=2||x>=size-2||y>=size-2)continue;
       if(world.water[world.idx(x,y)])continue;
       if(!world.sameLand(a.x,a.y,x,y))continue;

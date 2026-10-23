@@ -19,7 +19,7 @@ export const REGIONAL_RESIDENCY=Object.freeze({policy:'regional-residency/1',res
  maxResident:25,
  // Crossing waits until every region it will need nearby is loaded and no
  // more than this far behind the player.
- maxNearDebt:2*CFG.dayTicks});
+ get maxNearDebt(){return 2*CFG.dayTicks}});
 const distance=(a,b)=>{const p=planetRegionOrigin(a),q=planetRegionOrigin(b);return Math.max(Math.abs(p.x-q.x),Math.abs(p.y-q.y))/PLANET_REGION_SIZE};
 export const residencyEnabled=sim=>sim?.regionalResidencyRules===REGIONAL_RESIDENCY.policy;
 export const unloadedRegions=sim=>sim?.planetaryTravel?.unloaded||[];

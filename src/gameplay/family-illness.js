@@ -1,7 +1,8 @@
 import {SPECIES} from '../organisms/species.js';
 import {CFG} from '../sim/config.js';
 
-const REGROUP_TICKS=Math.round(CFG.dayTicks*.65);
+// Read live: the day length is a per-world policy (sim/day-clock.js).
+const regroupTicks=()=>Math.round(CFG.dayTicks*.65);
 const CONTACT_BUFFER=3.15;
 
 // Live founder-line response to Marsh fever. This controller changes only family
@@ -122,7 +123,7 @@ export class FamilyIllnessController{
   onRecovered(animal){
     if(!this.enabled()||!this.isFamilyAnimal(animal))return;
     const still=this.sickFamily().filter(a=>a.id!==animal.id);if(still.length)return;
-    const shelter=this.sim.shelter?.nearest?.(animal,{radius:Infinity,familyOnly:true})||null;this.aftermath={recoveredId:animal.id,startedTick:this.sim.tickCount,untilTick:this.sim.tickCount+REGROUP_TICKS,shelterId:shelter?.id??null};this.episode=null;
+    const shelter=this.sim.shelter?.nearest?.(animal,{radius:Infinity,familyOnly:true})||null;this.aftermath={recoveredId:animal.id,startedTick:this.sim.tickCount,untilTick:this.sim.tickCount+regroupTicks(),shelterId:shelter?.id??null};this.episode=null;
     const p=this.sim.player();if(p)this.sim.cognition?.recordOnce?.(p,`family-fever-cleared:${this.sim.year}:${this.sim.day}`,'Marsh fever cleared from the family; relatives regrouped',{recoveredId:animal.id});
   }
   aftermathStatus(){
