@@ -1,11 +1,13 @@
 import {VISIBILITY,atmosphereAt} from '../ecology/atmospheric-visibility.js';
 import {drawMistWisps} from './weather-art.js';
 import {drawPrecipitation} from './precipitation-art.js';
+import {drawCloudShadows} from './cloud-shade-art.js';
 export function drawAtmosphere(renderer){
  const sim=renderer.sim;if(sim.visibilityRules!==VISIBILITY.policy)return false;
  const a=sim.player();if(!a||a.underground||(a.diveDepth||0)>.03)return true;
  const sample=atmosphereAt(sim,a.x,a.y),c=renderer.ctx,w=renderer.w,h=renderer.h;
  c.save();
+ drawCloudShadows(renderer,sample);
  if(sample.fog>.01){
   const p=renderer.screenPos?.get(a.id)||{x:w/2,y:h/2},radius=Math.max(w,h)*.7;
   const veil=c.createRadialGradient(p.x,p.y,24*renderer.zoom,p.x,p.y,radius);
