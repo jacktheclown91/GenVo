@@ -1,0 +1,242 @@
+{
+  "setup": {
+    "startTick": 1,
+    "tick": 48,
+    "event": {
+      "i": 15082,
+      "tick": 48,
+      "intensity": 0.7339402137946883,
+      "id": 1,
+      "hits": 0
+    },
+    "source": {
+      "x": 106.5,
+      "y": 117.5,
+      "underground": false
+    },
+    "observation": {
+      "x": 104.5,
+      "y": 117.5,
+      "dx": -2,
+      "dy": 0
+    },
+    "climate": {
+      "temp": 0.6725167787165477,
+      "rain": 0.8256345195134364,
+      "weatherFactor": 1.4235077922645456,
+      "temperatureAnomaly": 0.13251677871654766
+    },
+    "scope": "Generated climate and normal ticks; only observation position/facing staged after real event; no climate, stocks, event or health edits"
+  },
+  "warming": {
+    "initial": {
+      "chunks": 153,
+      "queued": 105,
+      "working": false
+    },
+    "final": {
+      "chunks": 216,
+      "queued": 0,
+      "working": false
+    },
+    "draws": 546,
+    "stable": 100,
+    "exactCanonicalState": true
+  },
+  "phases": [
+    {
+      "visible": true,
+      "observerFacing": 2,
+      "offset": 1,
+      "tick": 49,
+      "event": {
+        "i": 15082,
+        "tick": 48,
+        "intensity": 0.7339402137946883,
+        "id": 1,
+        "hits": 0
+      },
+      "age": 0.125,
+      "nativePaint": {
+        "calls": 1,
+        "last": {
+          "tick": 49,
+          "phase": 0,
+          "x": 564,
+          "y": 375,
+          "eventId": 1
+        }
+      },
+      "timings": [],
+      "exactCanonicalState": true
+    },
+    {
+      "visible": true,
+      "observerFacing": 2,
+      "offset": 2,
+      "tick": 50,
+      "event": {
+        "i": 15082,
+        "tick": 48,
+        "intensity": 0.7339402137946883,
+        "id": 1,
+        "hits": 0
+      },
+      "age": 0.25,
+      "nativePaint": {
+        "calls": 1,
+        "last": {
+          "tick": 50,
+          "phase": 1,
+          "x": 564,
+          "y": 375,
+          "eventId": 1
+        }
+      },
+      "timings": [
+        {
+          "original": true,
+          "meanOverlayMs": 0.024799999952316285
+        },
+        {
+          "original": false,
+          "meanOverlayMs": 0.040799999952316285
+        },
+        {
+          "original": false,
+          "meanOverlayMs": 0.040799999952316285
+        },
+        {
+          "original": true,
+          "meanOverlayMs": 0.030799999952316283
+        }
+      ],
+      "exactCanonicalState": true
+    },
+    {
+      "visible": true,
+      "observerFacing": 2,
+      "offset": 3,
+      "tick": 51,
+      "event": {
+        "i": 15082,
+        "tick": 48,
+        "intensity": 0.7339402137946883,
+        "id": 1,
+        "hits": 0
+      },
+      "age": 0.375,
+      "nativePaint": {
+        "calls": 1,
+        "last": {
+          "tick": 51,
+          "phase": 2,
+          "x": 564,
+          "y": 375,
+          "eventId": 1
+        }
+      },
+      "timings": [],
+      "exactCanonicalState": true
+    },
+    {
+      "visible": true,
+      "observerFacing": 2,
+      "offset": 4,
+      "tick": 52,
+      "event": {
+        "i": 15082,
+        "tick": 48,
+        "intensity": 0.7339402137946883,
+        "id": 1,
+        "hits": 0
+      },
+      "age": 0.5,
+      "nativePaint": {
+        "calls": 1,
+        "last": {
+          "tick": 52,
+          "phase": 3,
+          "x": 564,
+          "y": 375,
+          "eventId": 1
+        }
+      },
+      "timings": [],
+      "exactCanonicalState": true
+    },
+    {
+      "visible": true,
+      "observerFacing": 2,
+      "offset": 5,
+      "tick": 53,
+      "event": {
+        "i": 15082,
+        "tick": 48,
+        "intensity": 0.7339402137946883,
+        "id": 1,
+        "hits": 0
+      },
+      "age": 0.625,
+      "nativePaint": {
+        "calls": 0,
+        "last": null
+      },
+      "timings": [],
+      "exactCanonicalState": true
+    }
+  ],
+  "records": [
+    {
+      "original": true,
+      "meanMs": 7.558000000715256,
+      "medianMs": 3.600000023841858,
+      "p95Ms": 34.299999952316284
+    },
+    {
+      "original": false,
+      "meanMs": 7.96,
+      "medianMs": 3.8000000715255737,
+      "p95Ms": 35.200000047683716
+    },
+    {
+      "original": false,
+      "meanMs": 8.408999999761582,
+      "medianMs": 4.299999952316284,
+      "p95Ms": 35.59999990463257
+    },
+    {
+      "original": true,
+      "meanMs": 7.675,
+      "medianMs": 3.700000047683716,
+      "p95Ms": 34.799999952316284
+    },
+    {
+      "original": false,
+      "meanMs": 8.463999999761581,
+      "medianMs": 4.200000047683716,
+      "p95Ms": 35.299999952316284
+    },
+    {
+      "original": true,
+      "meanMs": 8.140999999046326,
+      "medianMs": 4,
+      "p95Ms": 35.299999952316284
+    },
+    {
+      "original": true,
+      "meanMs": 7.785,
+      "medianMs": 3.5,
+      "p95Ms": 35.699999928474426
+    },
+    {
+      "original": false,
+      "meanMs": 6.986000000238419,
+      "medianMs": 3.200000047683716,
+      "p95Ms": 32.10000002384186
+    }
+  ],
+  "exactCanonicalState": true,
+  "creatorAcceptance": false,
+  "errors": []
+}
