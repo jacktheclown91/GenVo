@@ -1,4 +1,5 @@
 import {undergroundFood} from '../lineage/burrowing.js';
+import {waterFromCarrion} from '../ecology/tissue-water.js';
 import {plantHandling} from '../ecology/plant-handling.js';
 import {exportAquaticReserve} from '../ecology/organic-resource-cycle.js';
 import {FLORA_TISSUES,floraMealChannels} from '../ecology/flora-genotype.js';
@@ -111,7 +112,7 @@ export class ForagingController{
     if(beforeEnergy>=spec.maxEnergy-.05&&beforeWater>=spec.maxHydration-.05)return{ok:false,type:'eat',kind:target.kind,message:'Already full and hydrated.'};
     const beforePatch=(PLANTS[target.kind]||FRESHWATER_FOOD[target.kind])?this.surveyPatch(target.kind,target.x,target.y):null;
     if(FRESHWATER_FOOD[target.kind]){const before=arr[target.i];arr[target.i]-=got;exportAquaticReserve(w,target.kind,target.i,before-arr[target.i],before);w.organicResources.totals.foodExported+=before-arr[target.i];if(target.kind==='detritus')this.sim.disease.onCarrionFeed(animal,target.i,got)}
-    else if(target.kind==='carrion'){arr[target.i]-=got;this.sim.disease.onCarrionFeed(animal,target.i,got)}
+    else if(target.kind==='carrion'){const carrionBefore=arr[target.i];arr[target.i]-=got;waterFromCarrion(this.sim,animal,target.i,got,carrionBefore);this.sim.disease.onCarrionFeed(animal,target.i,got)}
     else{if(target.tissue){const receipt=this.sim.dispersal.harvestMeal(animal,target.kind,target.i,got,target.tissue);if(!receipt)return{ok:false,type:'eat',message:'That crop tissue is no longer available.'}}else{w.consume(target.kind,target.i%w.n+.5,Math.floor(target.i/w.n)+.5,got);this.sim.dispersal.onFeed(animal,target.kind,got)}this.sim.history.notePlantConsumption(target.kind,target.x,target.y,got)}
     animal.energy=Math.min(spec.maxEnergy,animal.energy+gross);if(target.tissue&&animal.lastPlantMeal){animal.lastPlantMeal.processingCost=target.handling.energyCost;animal.lastPlantMeal.specializedHandling=target.handling.specialized;}
     animal.hydration=Math.min(spec.maxHydration,animal.hydration+potentialWater);
