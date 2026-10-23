@@ -1,0 +1,21 @@
+{
+  "sourceCommit": "feaebaf28dec50ab0927f65ab619c862acc6d744",
+  "tests": [
+    "tests/indexed-part-art.mjs",
+    "tests/indexed-part-renderer.mjs",
+    "tests/source-rgba-part-art.mjs",
+    "tests/native-part-catalog.mjs",
+    "tests/native-inherited-pigment.mjs",
+    "tests/inherited-pigmentation.mjs",
+    "tests/creature-assembly.mjs",
+    "tests/creature-lab-assembly.mjs",
+    "tests/part-abilities.mjs",
+    "tests/founder-body.mjs",
+    "tests/part-animation-catalog.mjs",
+    "tests/motion-render.mjs",
+    "tests/physicality-render.mjs",
+    "tests/native-defensive-thorn-spine-art.mjs"
+  ],
+  "passed": 14,
+  "scope": "Final native source, indexed compiler/materials, inheritance, sockets, assemblies and ordinary renderer motion; no ecological-balance or creator-acceptance claim."
+}

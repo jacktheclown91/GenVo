@@ -1,0 +1,29 @@
+{
+  "scope": "Four before/four after samples in ABBA BAAB order, 30 warmup + 100 paused CPU draws each; excludes GPU completion, concurrent integration load possible.",
+  "averages": {
+    "thorn-carapace": {
+      "before": {
+        "meanMs": 8.75425000011921,
+        "medianMs": 5.099999964237213,
+        "p95Ms": 19.375
+      },
+      "after": {
+        "meanMs": 8.884749999940396,
+        "medianMs": 5.10000005364418,
+        "p95Ms": 19.624999970197678
+      }
+    },
+    "spine-ridge": {
+      "before": {
+        "meanMs": 9.693499999940396,
+        "medianMs": 5.900000035762787,
+        "p95Ms": 22.275000005960464
+      },
+      "after": {
+        "meanMs": 9.391750000715255,
+        "medianMs": 6.0250000059604645,
+        "p95Ms": 21.099999994039536
+      }
+    }
+  }
+}
