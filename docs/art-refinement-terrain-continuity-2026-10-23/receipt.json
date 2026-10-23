@@ -1,0 +1,174 @@
+{
+  "reports": [
+    {
+      "setup": {
+        "kind": "meadow",
+        "seed": "CAVES-GEOLOGY",
+        "origin": {
+          "x": 0,
+          "y": 0
+        },
+        "x": 64.5,
+        "y": 64.5,
+        "observation": {
+          "x": 65.5,
+          "y": 65.5
+        },
+        "temperature": 0.43885037302970886,
+        "moisture": 0.8285295963287354,
+        "elevation": 0.18614791333675385,
+        "biome": {
+          "code": "wetland",
+          "label": "Wetland",
+          "temperature": 0.4088056970988041,
+          "rain": 0.5009143627428945,
+          "moisture": 0.8285295963287354,
+          "elevation": 0.18614791333675385,
+          "snowDepth": 0,
+          "fertility": 0.5702387094497681,
+          "salinity": 0
+        },
+        "zoom": 2,
+        "scope": "Unmodified generated planetary region and canonical founder population. Only player observation position is staged; no terrain, climate, anatomy, reserves or resource editing."
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "stage": "before",
+          "coldMs": 674.6000000238419,
+          "coldSamples": [
+            674.6000000238419
+          ],
+          "coldMedianMs": 674.6000000238419,
+          "meanMs": 11.517000000476838,
+          "medianMs": 3.799999952316284,
+          "p95Ms": 43.10000002384186,
+          "warmSamples": 100
+        },
+        {
+          "stage": "after",
+          "coldMs": 714.5,
+          "coldSamples": [
+            714.5
+          ],
+          "coldMedianMs": 714.5,
+          "meanMs": 11.498999999761581,
+          "medianMs": 3.8000000715255737,
+          "p95Ms": 42.89999997615814,
+          "warmSamples": 100
+        },
+        {
+          "stage": "after",
+          "coldMs": 667.1000000238419,
+          "coldSamples": [
+            667.1000000238419
+          ],
+          "coldMedianMs": 667.1000000238419,
+          "meanMs": 14.698000000715256,
+          "medianMs": 5.100000023841858,
+          "p95Ms": 58.300000071525574,
+          "warmSamples": 100
+        },
+        {
+          "stage": "before",
+          "coldMs": 932.2000000476837,
+          "coldSamples": [
+            932.2000000476837
+          ],
+          "coldMedianMs": 932.2000000476837,
+          "meanMs": 11.654000000953674,
+          "medianMs": 3.9000000953674316,
+          "p95Ms": 43.299999952316284,
+          "warmSamples": 100
+        }
+      ]
+    },
+    {
+      "setup": {
+        "kind": "rock",
+        "seed": "NATIVE-SUBSTRATE-20261022",
+        "origin": {
+          "x": 378752,
+          "y": 87040
+        },
+        "x": 110.5,
+        "y": 75.5,
+        "score": 0.786579430103302,
+        "temperature": 0.4783118963241577,
+        "moisture": 0.39822083711624146,
+        "elevation": 0.786579430103302,
+        "observation": {
+          "x": 110.5,
+          "y": 75.5
+        },
+        "biome": {
+          "code": "grassland",
+          "label": "Grassland",
+          "temperature": 0.6461836935461733,
+          "rain": 0.39871063520072375,
+          "moisture": 0.39822083711624146,
+          "elevation": 0.786579430103302,
+          "snowDepth": 0,
+          "fertility": 0.5990639925003052,
+          "salinity": 0
+        },
+        "zoom": 2,
+        "scope": "Unmodified generated planetary region and canonical founder population. Only player observation position is staged; no terrain, climate, anatomy, reserves or resource editing."
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "stage": "before",
+          "coldMs": 659.6000000238419,
+          "coldSamples": [
+            659.6000000238419
+          ],
+          "coldMedianMs": 659.6000000238419,
+          "meanMs": 7.903999999761582,
+          "medianMs": 3.299999952316284,
+          "p95Ms": 27.59999990463257,
+          "warmSamples": 100
+        },
+        {
+          "stage": "after",
+          "coldMs": 668.3999999761581,
+          "coldSamples": [
+            668.3999999761581
+          ],
+          "coldMedianMs": 668.3999999761581,
+          "meanMs": 8.652999999523162,
+          "medianMs": 2.799999952316284,
+          "p95Ms": 25.40000009536743,
+          "warmSamples": 100
+        },
+        {
+          "stage": "after",
+          "coldMs": 624.7000000476837,
+          "coldSamples": [
+            624.7000000476837
+          ],
+          "coldMedianMs": 624.7000000476837,
+          "meanMs": 7.290999999046326,
+          "medianMs": 2.799999952316284,
+          "p95Ms": 25.5,
+          "warmSamples": 100
+        },
+        {
+          "stage": "before",
+          "coldMs": 655.3000000715256,
+          "coldSamples": [
+            655.3000000715256
+          ],
+          "coldMedianMs": 655.3000000715256,
+          "meanMs": 7.260999999046326,
+          "medianMs": 2.799999952316284,
+          "p95Ms": 25.40000009536743,
+          "warmSamples": 100
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "Paused renderer CPU command timing, not GPU completion"
+}

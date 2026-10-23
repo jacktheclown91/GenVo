@@ -1,0 +1,68 @@
+{
+  "base": "291c6156f37c2622aa3cbbf33d54858e04792c86",
+  "results": [
+    {
+      "test": "terrain-continuity",
+      "exitCode": 0,
+      "seconds": 0.064,
+      "stdout": "Terrain continuity PASS: removed two-tile source repeat, absolute coordinate continuity, smooth category transitions, bounded authored addresses, immutable world.\n",
+      "stderr": ""
+    },
+    {
+      "test": "native-biome-substrates",
+      "exitCode": 0,
+      "seconds": 0.286,
+      "stdout": "native biome substrates: PASS (12 indexed native32 frames, state-driven weights, water exclusion, continuity, immutable sampling, bounded cache invalidation)\n",
+      "stderr": ""
+    },
+    {
+      "test": "identity",
+      "exitCode": 0,
+      "seconds": 0.496,
+      "stdout": "habitat identity + seasonal presentation checks: PASS { meadow: 41, 'river-meadow': 10, 'open-meadow': 6, 'deep-thicket': 5 }\n",
+      "stderr": ""
+    },
+    {
+      "test": "habitat-render",
+      "exitCode": 0,
+      "seconds": 19.407,
+      "stdout": "habitat contour checks: PASS\n",
+      "stderr": ""
+    },
+    {
+      "test": "composition",
+      "exitCode": 0,
+      "seconds": 0.567,
+      "stdout": "world composition checks: PASS {\n  glade: 144,\n  mixed: 2385,\n  'wet-pocket': 220,\n  thicket: 437,\n  corridor: 414\n}\n",
+      "stderr": ""
+    },
+    {
+      "test": "overhead-flora-art",
+      "exitCode": 0,
+      "seconds": 0.116,
+      "stdout": "60 biomass/season plant cases, inherited coats/seed colors, registered foliage, shared shore anchor, honest seedlings and readback-free cached paint PASS\n",
+      "stderr": ""
+    },
+    {
+      "test": "habitat-ground-art",
+      "exitCode": 0,
+      "seconds": 0.115,
+      "stdout": "Four distinct bounded native substrates, habitat mapping, seasonal cache reuse and zero GPU readback PASS\n",
+      "stderr": ""
+    },
+    {
+      "test": "view-modes",
+      "exitCode": 0,
+      "seconds": 0.047,
+      "stdout": "View modes PASS: Comfort default, ordered fog levels, Sandbox-only vegetation, browser-stored preference, live layers clipped to the senses.\n",
+      "stderr": ""
+    },
+    {
+      "test": "public-export",
+      "exitCode": 0,
+      "seconds": 1.229,
+      "stdout": "public-export: exact reachable modules and runtime assets only PASS\n",
+      "stderr": ""
+    }
+  ]
+}

@@ -8,6 +8,8 @@ Existing canonical working tree: `genvo-toolkit`, original GenVo repository. Liv
 
 Codex owns presentation assets, styling, visual/audio design and rendering-specific modules. Claude owns biological/gameplay mechanisms, pacing, persistence, migration, technical playback/event wiring and test organization. Shared renderer, menu and UI integration requires coordination. The creator selected checked-in handoffs and patches as the coordination channel. Leave shared integration changes there for Claude; continue independently in presentation modules.
 
+Claude has also prepared `design/GENVO-V1-PLAN-2026-10-23.md` in the canonical working copy. This presentation sequence complements that milestone plan; it does not change its technical phases or ownership.
+
 ## Dependency order
 
 1. Resolve creator's concrete terrain repetition feedback. Remove duplicate procedural plant accents; retain canonical native plants, food anchors and biological clipping. Vary retained substrate atlas sampling and minor plant placement. Verify actual gameplay before/after and state parity. Keep shared renderer edits as a narrow patch until coordinated.
