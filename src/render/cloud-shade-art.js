@@ -34,7 +34,7 @@ function buildLayer(renderer,phase,key,old){
  }
  let nonzero=0;for(let i=0;i<alpha.length;i++){alpha[i]=Math.round(alpha[i]/3)*3;if(alpha[i])nonzero++}
  const smallCanvas=old?.smallCanvas||((nonzero&&typeof document!=='undefined')?document.createElement('canvas'):null),canvas=old?.canvas||((nonzero&&typeof document!=='undefined')?document.createElement('canvas'):null);
- if(nonzero&&canvas&&smallCanvas){smallCanvas.width=width;smallCanvas.height=height;const small=smallCanvas.getContext('2d'),image=small.createImageData(width,height);for(let i=0;i<alpha.length;i++)image.data[i*4+3]=alpha[i];small.putImageData(image,0,0);canvas.width=width*layerScale;canvas.height=height*layerScale;const c=canvas.getContext('2d');c.globalAlpha=1;c.globalCompositeOperation='copy';c.imageSmoothingEnabled=false;c.drawImage(smallCanvas,0,0,canvas.width,canvas.height)}
+ if(nonzero&&canvas&&smallCanvas){if(smallCanvas.width!==width)smallCanvas.width=width;if(smallCanvas.height!==height)smallCanvas.height=height;const small=smallCanvas.getContext('2d'),image=small.createImageData(width,height);for(let i=0;i<alpha.length;i++)image.data[i*4+3]=alpha[i];small.putImageData(image,0,0);if(canvas.width!==width*layerScale)canvas.width=width*layerScale;if(canvas.height!==height*layerScale)canvas.height=height*layerScale;const c=canvas.getContext('2d');c.globalAlpha=1;c.globalCompositeOperation='copy';c.imageSmoothingEnabled=false;c.drawImage(smallCanvas,0,0,canvas.width,canvas.height)}
  return{canvas,smallCanvas,world:renderer.sim.world,rainScale:renderer.sim.world.environment?.rainScale,key,count:nonzero?layout.length:0,width,height,nonzero,cameraX:renderer.camera.x,cameraY:renderer.camera.y,phaseX:phase.x,phaseY:phase.y};
 }
 
