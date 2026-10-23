@@ -1,0 +1,37 @@
+[
+  {
+    "test": "journal",
+    "exitCode": 0,
+    "seconds": 0.564,
+    "stdout": "field journal checks: PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "lineage-comparison",
+    "exitCode": 0,
+    "seconds": 0.623,
+    "stdout": "Actual descendant body, both conception phenotype records, wild-parent identity, immutable observations, save parity and honest older-record fallback PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "knowledge",
+    "exitCode": 0,
+    "seconds": 0.749,
+    "stdout": "knowledge ok\n",
+    "stderr": ""
+  },
+  {
+    "test": "quick-access",
+    "exitCode": 0,
+    "seconds": 0.047,
+    "stdout": "quick access + task guide checks: PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "public-export",
+    "exitCode": 0,
+    "seconds": 1.159,
+    "stdout": "public-export: exact reachable modules and runtime assets only PASS\n",
+    "stderr": ""
+  }
+]

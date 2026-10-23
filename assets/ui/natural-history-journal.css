@@ -80,3 +80,6 @@
 #journal .kin-children{flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#a5ad7a #102017;padding-bottom:12px}
 #journal .kin-children .kin-record{flex:0 0 104px}
 #journal .kin-children:focus-visible{outline:2px solid #e8d487;outline-offset:-2px}
+
+#journal .journal-body-comparison>div{grid-template-columns:repeat(var(--comparison-count,3),minmax(0,1fr))}
+@media(max-width:560px){#journal .journal-body-comparison>div{grid-template-columns:1fr}}

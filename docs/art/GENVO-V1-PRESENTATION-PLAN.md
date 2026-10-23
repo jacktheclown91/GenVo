@@ -27,3 +27,11 @@ No artificial biological events, survival tuning, time-policy changes or invente
 `assets/art/production-review/terrain-continuity-v1/renderer-integration.patch` is against the original renderer at `d7e50c0` (also unchanged in `96d9f96`). It imports `terrainGrainAt`, replaces per-block random brightness with a continuous world-space signal and removes two redundant rectangular static-ground overlays. Actual isolated runtime candidate frames were captured with this patch; committed-module evidence is separately labeled and uses the untouched shared renderer. Apply only after checking current renderer ownership and source, then run the focused checks and actual-runtime capture again.
 
 The main presentation-module fix is independently usable. `drawHabitatClusterAccents` retains its public hook but no longer duplicates canonical plants with unsensed tiled combs/rectangles. Native vegetation remains the plant-display authority. Source artwork and physical stocks are preserved.
+
+## Presentation milestone status, October 23
+
+- Terrain continuity: committed and shared renderer patch picked up by Claude in d9c2e97. [Evidence](../art-refinement-terrain-continuity-2026-10-23/README.md).
+- Menu/New World: asset and responsive presentation candidate verified in five sizes and an actual exported-world start; shared activation remains in [the menu handoff](menu-v1-handoff/README.md).
+- Creature Lab: candidate verified in five sizes, exact native editing, genuine inherited opportunity and an exported authored start; shared activation remains in [the Lab handoff](lab-v1-handoff/README.md).
+- Family Journal: immediate-family native portrait plate, actual four-child birth, five sizes and exact-state proof; source activation remains in [the journal handoff](journal-v1-handoff/README.md). Whole-population interactive genealogy and full UI acceptance are not established.
+- Inspector, map, evolution-summary/HUD consolidation, the full behavior-expression review and audio identity remain unfinished. These milestones do not narrow the creator's v1 goal or authorize migration/release before their gates.

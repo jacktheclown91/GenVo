@@ -19,3 +19,5 @@ At most twelve children are illustrated at once; an explicit count/continuation 
 `node tools/stage-journal-presentation.cjs <empty-directory-outside-source>` exports the public app with these presentation changes in an isolated build. `node tools/review-natural-history-journal.cjs <new-output> --fresh --candidate-only --exported <build-directory>` then serves that build without source overlays or inspection hooks. Native exposed state is read to verify relationship IDs and exact snapshot parity; all gameplay and journal changes use public controls.
 
 Selected evidence and limits: [review packet](../../art-refinement-journal-v1-2026-10-23/README.md). Canonical activation, creator acceptance, multi-generation interaction, full HUD visibility acceptance and full v1 completion remain unproven.
+
+The final isolated review build is `C:\Users\jackt\AppData\Local\Temp\genvo-journal-v1-web-20261023-reviewed`. Its hashes are retained in the review packet. The exact-state probe refreshes only the journal presentation cache and stylesheet; it does not set biological fields.
