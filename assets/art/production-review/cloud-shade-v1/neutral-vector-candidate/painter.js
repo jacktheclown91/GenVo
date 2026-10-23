@@ -1,0 +1,47 @@
+// Rainfall-front lighting only. No cloud inventory or weather/vision writes.
+import {CFG} from '../sim/config.js';
+import {atmosphereAt} from '../ecology/atmospheric-visibility.js';
+import {cloudShadeArt as art} from '../../assets/art/environment/cloud-shade.js';
+const wrap=(v,n)=>((v%n)+n)%n;
+export function advanceCloudShade(previous,sample,now,seed){
+ if(!previous||previous.seed!==seed)return{seed,last:now,x:0,y:0};
+ const dt=Math.max(0,Math.min(.1,(now-previous.last)/1000));
+ return{seed,last:now,x:wrap(previous.x+(sample.wind?.east||0)*dt*.18,32),y:wrap(previous.y+(sample.wind?.south||0)*dt*.18,24)};
+}
+export function cloudShadeLayout(renderer,phase,readSample=(x,y)=>atmosphereAt(renderer.sim,x,y)){
+ const w=renderer.sim.world,tile=CFG.tileSize*renderer.zoom,ox=w.regionOrigin?.x||0,oy=w.regionOrigin?.y||0,cx=renderer.camera.x+ox,cy=renderer.camera.y+oy,result=[];
+ const left=Math.floor((cx-renderer.w/2/tile-phase.x-10)/16),right=Math.ceil((cx+renderer.w/2/tile-phase.x+10)/16),top=Math.floor((cy-renderer.h/2/tile-phase.y-5)/12),bottom=Math.ceil((cy+renderer.h/2/tile-phase.y+5)/12);
+ for(let gy=top;gy<=bottom;gy++)for(let gx=left;gx<=right;gx++){
+  if(renderer.lowDetail&&((gx+gy)&1))continue;
+  const x=gx*16+8+phase.x-ox,y=gy*12+6+phase.y-oy,px=(x-renderer.camera.x)*tile+renderer.w/2-10*tile,py=(y-renderer.camera.y)*tile+renderer.h/2-5*tile;
+  if(px>=renderer.w||py>=renderer.h||px+20*tile<=0||py+10*tile<=0)continue;
+  // Edge fragments sample the nearest owned cell; geometry remains absolute.
+  const sample=readSample(Math.max(.5,Math.min(w.n-.5,x)),Math.max(.5,Math.min(w.n-.5,y))),coverage=Math.max(0,Math.min(1,(sample.rain-.42)/.85));if(coverage<=.01)continue;
+  result.push({x:Math.round(px),y:Math.round(py),width:20*tile,height:10*tile,frame:((gx+(w.seedHash&1))&1)|(((gy+((w.seedHash>>>1)&1))&1)<<1),alpha:coverage*.24});
+ }
+ return result;
+}
+const layerScale=4,margin=64;
+const nearestDelta=(value,period)=>wrap(value+period/2,period)-period/2;
+// Build a bounded light-opacity raster from the authored masks, then merge
+// adjacent equal-opacity runs once into an unscaled cached opacity image.
+// Black source-over paint can only dim existing light.
+function buildLayer(renderer,phase,key,oldCanvas){
+ const width=Math.ceil((renderer.w+margin*2)/layerScale),height=Math.ceil((renderer.h+margin*2)/layerScale),alpha=new Uint8Array(width*height),layout=cloudShadeLayout({...renderer,w:renderer.w+margin*2,h:renderer.h+margin*2},phase);
+ for(const p of layout){const frame=art.frames[p.frame],left=p.x/layerScale,top=p.y/layerScale,pw=p.width/layerScale,ph=p.height/layerScale;
+  for(let y=Math.max(0,Math.ceil(top-.5));y<Math.min(height,Math.ceil(top+ph-.5));y++){const sy=Math.floor((y+.5-top)/ph*art.height);
+   for(let x=Math.max(0,Math.ceil(left-.5));x<Math.min(width,Math.ceil(left+pw-.5));x++){const sx=Math.floor((x+.5-left)/pw*art.width),a=frame[sy*art.width+sx]/art.alphaSteps*p.alpha;if(!a)continue;const i=y*width+x;alpha[i]=Math.round(a*255+alpha[i]*(1-a))}}
+ }
+ const groups=new Map();let previous=new Map(),rectangles=0;
+ for(let y=0;y<height;y++){const active=new Map();for(let x=0;x<width;){const value=Math.round(alpha[y*width+x]/3);let end=x+1;while(end<width&&Math.round(alpha[y*width+end]/3)===value)end++;if(value){const k=value+':'+x+':'+end,old=previous.get(k);let rect;if(old){rect=old;rect[3]++}else{rect=[x,y,end-x,1];if(!groups.has(value))groups.set(value,{runs:[]});groups.get(value).runs.push(rect);rectangles++}active.set(k,rect)}x=end}previous=active}
+ const canvas=oldCanvas||((groups.size&&typeof document!=='undefined')?document.createElement('canvas'):null);
+ if(canvas){canvas.width=width*layerScale;canvas.height=height*layerScale;const c=canvas.getContext('2d');c.globalAlpha=1;c.globalCompositeOperation='source-over';c.scale(layerScale,layerScale);for(const [value,group] of groups){c.fillStyle='rgba(0,0,0,'+value*3/255+')';c.beginPath();for(const run of group.runs)c.rect(...run);c.fill()}}
+ return{canvas,world:renderer.sim.world,rainScale:renderer.sim.world.environment?.rainScale,key,count:groups.size?layout.length:0,width,height,rectangles,cameraX:renderer.camera.x,cameraY:renderer.camera.y,phaseX:phase.x,phaseY:phase.y};
+}
+function cloudLayer(renderer,phase){
+ const s=renderer.sim,world=s.world,tile=CFG.tileSize*renderer.zoom,old=renderer.cloudShadeLayer,key=[s.day,s.climate?.rain,renderer.w,renderer.h,renderer.zoom,!!renderer.lowDetail,world.regionOrigin?.x||0,world.regionOrigin?.y||0,world.seedHash].join(':');
+ const dx=old?((old.cameraX-renderer.camera.x)+nearestDelta(phase.x-old.phaseX,32))*tile:0,dy=old?((old.cameraY-renderer.camera.y)+nearestDelta(phase.y-old.phaseY,24))*tile:0;
+ if(old&&old.world===world&&old.rainScale===world.environment?.rainScale&&old.key===key&&Math.abs(dx)<margin/2&&Math.abs(dy)<margin/2)return{layer:old,dx,dy};
+ const layer=renderer.cloudShadeLayer=buildLayer(renderer,phase,key,old?.canvas);return{layer,dx:0,dy:0};
+}
+export function drawCloudShadows(renderer,sample){const phase=renderer.cloudShadePhase=advanceCloudShade(renderer.cloudShadePhase,sample,renderer.renderNow,renderer.sim.seed),entry=cloudLayer(renderer,phase);if(!entry.layer.count||!entry.layer.canvas)return 0;const c=renderer.ctx;c.save();c.globalAlpha=1;c.globalCompositeOperation='source-over';c.shadowBlur=0;c.shadowColor='rgba(0,0,0,0)';c.imageSmoothingEnabled=false;c.drawImage(entry.layer.canvas,Math.round(entry.dx-margin),Math.round(entry.dy-margin));c.restore();return entry.layer.count}
