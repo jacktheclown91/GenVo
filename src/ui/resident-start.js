@@ -19,7 +19,7 @@ export function chooseResidentStart(sim){
   const finish=id=>{dialog.close();dialog.remove();resolve(id)};
   const update=()=>{const a=candidates.find(a=>a.id===Number(select.value)),s=SPECIES[a.species],identity=creatureIdentity(sim,a);
    detail.textContent=`${identity.stage} · health ${Math.round(a.health)}% · food ${Math.round(a.energy/s.maxEnergy*100)}% · water ${Math.round(a.hydration/s.maxHydration*100)}%. ${identity.description}.`;
-   drawLineagePortrait(canvas,a.genes,{bodyPlan:a.bodyPlan,anatomy:a.anatomy,adaptations:a.adaptations});
+   drawLineagePortrait(canvas,a.genes,{pigmentGenome:a.pigmentGenome||null,lifestyle:a.ecoLifestyle||null,bodyPlan:a.bodyPlan,anatomy:a.anatomy,adaptations:a.adaptations});
   };
   select.addEventListener('change',update);confirm.onclick=()=>finish(Number(select.value));cancel.onclick=()=>finish(null);
   dialog.addEventListener('cancel',event=>{event.preventDefault();finish(null)});

@@ -1,3 +1,4 @@
+import {deserializePlan} from '../lineage/body-plan.js';
 import {recordedInheritanceSummary} from '../lineage/recombination-receipt.js';
 import {bodyCostReading} from './body-cost-reading.js';
 import {lineageComparisonModels,drawLineageComparison} from './lineage-comparison.js';
@@ -40,7 +41,8 @@ export class FieldJournal{
     if(signature===this.lastSignature)return;this.lastSignature=signature;
     updateKnowledgeHTML(this.el,journalMarkup(model,this.canTakeOver(record)));
     drawLineageComparison(this.el,this.sim,record.id);
-    const canvas=this.el.querySelector('#journalPortrait');drawLineagePortrait(canvas,record.genes,{frame:2,dir:2,bodyPlan:this.sim.animals.find(a=>a.id===record.id)?.bodyPlan||record.bodyPlan,emphasis:record.id===this.sim.lineage.activeId,adaptations:record.adaptations||[]});
+    drawRecordedKin(this.el,this.sim);
+    const canvas=this.el.querySelector('#journalPortrait');drawLineagePortrait(canvas,record.genes,{pigmentGenome:record.pigmentGenome||null,frame:2,dir:2,bodyPlan:this.sim.animals.find(a=>a.id===record.id)?.bodyPlan||record.bodyPlan,emphasis:record.id===this.sim.lineage.activeId,adaptations:record.adaptations||[]});
   }
 }
 
@@ -83,6 +85,12 @@ export function buildJournalEntry(sim,recordId){
   };
 }
 
+
+// Retained individual anatomy only. Missing bodies never fall back to a founder.
+function kinHasBody(record){try{const plan=deserializePlan(record.bodyPlan);return !!record.genes&&Array.isArray(plan?.nodes)&&plan.nodes.length>0}catch{return false}}
+function kinMarkup(record,relation){return '<figure class="kin-record '+(record.alive?'':'kin-dead')+'" data-kin-id="'+record.id+'">'+(kinHasBody(record)?'<canvas width="160" height="120" aria-label="'+relation+' '+record.id+' recorded anatomy"></canvas>':'<p class="kin-missing">Anatomy not retained</p>')+'<figcaption><b>G'+record.generation+' · #'+record.id+'</b><span>'+relation+' · '+(record.alive?'Living':'Died')+'</span></figcaption></figure>'}
+function drawRecordedKin(el,sim){for(const figure of el.querySelectorAll('[data-kin-id]')){const record=sim.lineage.records.get(Number(figure.dataset.kinId)),canvas=figure.querySelector('canvas');if(canvas&&record&&kinHasBody(record))drawLineagePortrait(canvas,record.genes,{pigmentGenome:record.pigmentGenome||null,frame:2,dir:2,bodyPlan:record.bodyPlan,adaptations:record.adaptations||[]})}}
+
 function journalMarkup(m,canTakeOver){
   const ancestry=m.ancestry.map(r=>`<span class="journal-node ${r.id===m.id?'selected':''} ${r.alive?'':'dead'}"><i></i><b>G${r.generation}</b><small>#${r.id}</small></span>`).join('');
   const parents=m.parents.length?m.parents.map(r=>`G${r.generation} #${r.id}`).join(' · '):'founder';
@@ -93,11 +101,12 @@ function journalMarkup(m,canTakeOver){
     <div class="journal-scroll" data-focus-key="family-scroll" tabindex="0" aria-label="Scrollable family record"><div class="journal-stitch"></div>
     <div class="journal-grid">
       <aside class="journal-spine" aria-label="Ancestry path">${ancestry}</aside>
-      <section class="journal-specimen">
+      <section class="journal-family-plate" aria-label="Recorded immediate family"><h3>Recorded parents</h3><p class="kin-context">Individual records; conception anatomy is compared below.</p><div class="kin-row kin-parents">${m.parents.length?m.parents.map(r=>kinMarkup(r,'Parent')).join(''):'<p class="kin-empty">No parent records retained</p>'}</div><div class="kin-subject"><h3>Selected family member</h3><p class="kin-scale-note">Anatomy shown at adult scale; age is recorded below.</p><section class="journal-specimen">
         <canvas id="journalPortrait" width="240" height="158" aria-label="Generation ${m.generation} family member"></canvas>
         <div class="specimen-caption"><b>${m.stage}</b><span>${m.sex} · ${m.ageDays} days · ${escapeHtml(m.taxon)}</span></div>
         <p>${escapeHtml(m.looks)}</p>
       </section>
+      </div><h3>Recorded children <span>${m.children.length}</span></h3><div class="kin-row kin-children" tabindex="0" aria-label="Recorded children; scroll horizontally for more">${m.children.length?m.children.slice(0,12).map(r=>kinMarkup(r,'Child')).join(''):'<p class="kin-empty">No children recorded</p>'}</div>${m.children.length>12?'<p class="kin-context">First 12 shown. Previous and Next browse every retained family record.</p>':''}</section>
       <section class="journal-notes">
         ${m.taxonExplanation?`<h3>Where the species name came from</h3><p>${escapeHtml(m.taxonExplanation)}</p>`:''}
         <h3>Habits</h3><p>${escapeHtml(m.habits)}</p>

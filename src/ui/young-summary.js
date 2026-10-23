@@ -1,3 +1,4 @@
+import {createConceptionPlate,mountBirthCapacity} from '../../assets/ui/birth-comparison.js';
 import {SPECIES} from '../organisms/species.js';
 import {ADAPTATIONS} from '../lineage/evolution.js';
 import {drawLineagePortrait} from '../render/lineage-portrait.js';
@@ -89,15 +90,16 @@ export class YoungSummary{
   const kicker=document.createElement('div');kicker.className='transition-kicker';kicker.textContent=model.kicker;
   const h=document.createElement('h2');h.id='youngTitle';h.textContent=model.title;
   const lead=document.createElement('p');lead.className='transition-lead';lead.textContent=model.lead;
+  const comparison=createConceptionPlate(sim,model.young.map(y=>y.id));
   const grid=document.createElement('div');grid.className='young-grid';
   for(const y of model.young.slice(0,4)){const cell=document.createElement('div');cell.className='young-cell';const canvas=document.createElement('canvas');canvas.width=144;canvas.height=112;
-   const child=sim.animals.find(a=>a.id===y.id);if(child)drawLineagePortrait(canvas,child.genes,{bodyPlan:child.bodyPlan,anatomy:child.anatomy,adaptations:child.adaptations,frame:2,dir:2});
+   const child=sim.animals.find(a=>a.id===y.id);if(child)drawLineagePortrait(canvas,child.genes,{pigmentGenome:child.pigmentGenome||null,lifestyle:child.ecoLifestyle||null,bodyPlan:child.bodyPlan,anatomy:child.anatomy,adaptations:child.adaptations,frame:2,dir:2,fitScale:comparison.fitScale});
    const head=document.createElement('b');head.textContent=`#${y.id}${y.sex?' · '+y.sex:''}`;const ul=document.createElement('ul');for(const l of y.lines){const li=document.createElement('li');li.textContent=l;ul.append(li)}
    cell.append(canvas,head,ul);grid.append(cell)}
   const knowledge=document.createElement('p');knowledge.className='legacy-note';knowledge.textContent=model.knowledge;
   const stakes=document.createElement('p');stakes.className='legacy-note';stakes.textContent=model.stakes;
   const actions=document.createElement('div');actions.className='legacy-actions';const b=document.createElement('button');b.type='button';b.dataset.young='continue';b.className='primary';b.textContent='Raise them';actions.append(b);
-  card.append(kicker,h,lead,grid,knowledge,stakes,actions);this.el.append(card);this.el.hidden=false;b.focus?.();
+  const content=document.createElement('div');content.className='birth-scroll';content.append(comparison.element,grid,knowledge,stakes);card.append(kicker,h,lead,content,actions);this.el.append(card);this.el.hidden=false;this.restoreCapacity=mountBirthCapacity(card);b.focus?.();
  }
- close(){if(!this.open)return;const sim=this.getSim();if(sim)sim.paused=this.wasPaused;this.open=false;this.el.hidden=true}
+ close(){if(!this.open)return;this.restoreCapacity?.();this.restoreCapacity=null;const sim=this.getSim();if(sim)sim.paused=this.wasPaused;this.open=false;this.el.hidden=true}
 }

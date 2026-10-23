@@ -18,7 +18,7 @@ export function buildSuccessorChoices(sim,limit=4){
       body:traitListText(compareGenes(h.genes,current.genes,{limit:3,threshold:.02}),{empty:'built much like you'}),
       adaptations,lost,developing:nearThreshold(h).slice(0,2).map(n=>n.name),habits:sim.habits?.summary?.(h)||'no settled habits yet',readiness:readiness.label,selected:sim.lineage.selectedHeirId===h.id,
       // v1.33.4: each card shows the body itself, so body variation reads at a glance.
-      portrait:{genes:{...h.genes},bodyPlan:h.bodyPlan||null,adaptations:[...(h.adaptations||[])],divergence:formReading(h),protoTrait:protoReading(h),lifestyle:h.ecoLifestyle||null}};
+      portrait:{genes:{...h.genes},pigmentGenome:h.pigmentGenome?structuredClone(h.pigmentGenome):null,bodyPlan:h.bodyPlan||null,adaptations:[...(h.adaptations||[])],divergence:formReading(h),protoTrait:protoReading(h),lifestyle:h.ecoLifestyle||null}};
   });
 }
 
@@ -65,6 +65,6 @@ export class SuccessionChooser{
       <p class="succession-lead">Each descendant carries a different body, different inherited adaptations and the habits it picked up. The one you choose is the lineage from here.</p>
       <div class="heir-grid">${cards}</div>
       <footer class="panel-foot">1-${this.choices.length} or arrows · pick · H or Enter · continue as this one</footer>`;
-    for(const canvas of this.el.querySelectorAll('canvas[data-portrait]')){const c=this.choices[Number(canvas.dataset.portrait)];if(c?.portrait)drawLineagePortrait(canvas,c.portrait.genes,{bodyPlan:c.portrait.bodyPlan,frame:2,dir:2,emphasis:Number(canvas.dataset.portrait)===this.index,adaptations:c.portrait.adaptations,divergence:c.portrait.divergence,protoTrait:c.portrait.protoTrait,lifestyle:c.portrait.lifestyle})}
+    for(const canvas of this.el.querySelectorAll('canvas[data-portrait]')){const c=this.choices[Number(canvas.dataset.portrait)];if(c?.portrait)drawLineagePortrait(canvas,c.portrait.genes,{pigmentGenome:c.portrait.pigmentGenome||null,bodyPlan:c.portrait.bodyPlan,frame:2,dir:2,emphasis:Number(canvas.dataset.portrait)===this.index,adaptations:c.portrait.adaptations,divergence:c.portrait.divergence,protoTrait:c.portrait.protoTrait,lifestyle:c.portrait.lifestyle})}
   }
 }
