@@ -23,3 +23,5 @@ Eight counterbalanced paused-draw samples show no substantial local CPU regressi
 [Original masters, exact prompts, old editable sources and native crops](../../assets/art/production-review/defensive-thorn-spine-v1/) are retained. Preparation is mechanical crop/nearest native sampling, original indexed-palette mapping, a majority-coverage protected-keratin mask and root-centred directional rotations. No whole-creature sprite, invented event or additional biological authority is introduced.
 
 These are detached candidate assets for creator inspection. Canonical integration and creator acceptance remain open. Armor plates and the rest of the comprehensive creature/environment/action/effect pass remain active.
+
+Published update 4928dd3 was subsequently merged into this detached candidate as 219d586. The captured assets/art and src/render trees remain exactly identical, recorded in postmerge-identity.json. The optional plant-lifecycle contract, final native material/root contract and complete catalog checks pass after the merge. No canonical working files were changed.
