@@ -66,7 +66,7 @@ import {drawHabitatDepth,creatureShadowFor,drawCreatureDepthShadow,drawSceneDept
 import {drawFloraPlant,drawFloraSeedling,floraSeedlingAnchor,floraTraceAnchor,drawFloraTrace,floraVisualAnchor} from './flora.js';
 import {drawSceneLandmarkBackdrop,drawSceneLandmarkForeground} from './landmarks.js';
 import {drawTerrainMotifBackdrop,drawTerrainMotifForeground} from './terrain-motifs.js';
-import {habitatIdentityAt,riverIdentityAt,drawSeasonalGround,terrainPaletteAt} from './identity.js';
+import {habitatIdentityAt,riverIdentityAt,drawSeasonalGround,terrainPaletteAt,terrainGrainAt} from './identity.js';
 import {collectRegionalFocals,drawRegionalFocalBackdrop,drawRegionalFocalForeground} from './regional-focal.js';
 import {collectHabitatTransitions,focalApproachFor,drawHabitatTransition,drawFocalApproach} from './wayfinding.js';
 import {visualHierarchyAt,foregroundAlphaFor} from './hierarchy.js';
@@ -657,8 +657,6 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
       const w=this.sim.world,season=this.sim.season,f=w.fertility[i],m=w.moisture[i],patch=hash2(x>>1,y>>1,53),micro=hash2(x,y,67);
       this.drawOrganicLandBase(0,0,1,x,y,season,hash,identity);
       tc.save();tc.globalAlpha*=hierarchy.microAlpha;
-      if(m>.54&&patch>.42){tc.fillStyle='rgba(31,67,45,.22)';tc.fillRect((micro>.5?1:7),9+Math.floor(patch*3),5+Math.floor(micro*4),2)}
-      if(f<.38&&patch>.54){tc.fillStyle='rgba(112,88,52,.25)';tc.fillRect(3+Math.floor(micro*8),2+Math.floor(hash2(x,y,71)*8),2+Math.floor(patch*3),1+Math.floor(micro*2))}
       for(let k=0;k<2;k++){const h=hash2(x+k*17,y-k*13,79+k);if(h<.34){tc.fillStyle=h<.17?'rgba(197,194,126,.16)':'rgba(24,53,36,.20)';tc.fillRect(2+Math.floor(hash2(x,y,83+k)*12),2+Math.floor(hash2(y,x,89+k)*12),1,1)}}
       this.drawWorldComposition(0,0,1,x,y);tc.restore();
       this.drawOrganicHabitat(0,0,1,x,y);
@@ -724,7 +722,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // Base colour per 2x2 unit block (the original 8x8 colour grid); habitat edges come from the finer zone layer.
     const mask=this.visualHabitatMask(x,y),res=mask.res,block=Math.max(1,res/8),cells=res/block,step=16/cells;
     for(let cy=0;cy<cells;cy++)for(let cx=0;cx<cells;cx++){
-      const sx=cx*block,sy=cy*block,idx=sy*res+sx,h=hash2(x*cells+cx,y*cells+cy,1399),wx=x+(cx+.5)/cells,wy=y+(cy+.5)/cells,palette=terrainPaletteAt(this.sim.world,wx,wy,mask.moisture[idx],mask.fertility[idx]),color=terrainColor(mask.moisture[idx],mask.fertility[idx],season,(hash*.20+h*.80),palette);
+      const sx=cx*block,sy=cy*block,idx=sy*res+sx,wx=x+(cx+.5)/cells,wy=y+(cy+.5)/cells,palette=terrainPaletteAt(this.sim.world,wx,wy,mask.moisture[idx],mask.fertility[idx]),color=terrainColor(mask.moisture[idx],mask.fertility[idx],season,terrainGrainAt(this.sim.world,wx,wy),palette);
       c.fillStyle=color;c.fillRect(px+cx*step*u,py+cy*step*u,step*u+.2,step*u+.2);
     }
     // v1.41.0: fine ground grain, one art pixel each, so open ground reads as 32-pixel texture.

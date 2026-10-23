@@ -1,0 +1,197 @@
+[
+ {
+  "seed": "PLANET-OBS-3",
+  "mode": "idle",
+  "daysRun": 40,
+  "ended": {
+   "day": 40,
+   "reason": "no controlled creature"
+  },
+  "deaths": [
+   {
+    "day": 40,
+    "id": 109,
+    "cause": "predation",
+    "age": 71,
+    "generation": 1,
+    "energy": 0.74,
+    "water": 0.76
+   }
+  ],
+  "controlledCreatures": 1,
+  "lineageAlive": 0,
+  "energyMin": {
+   "p05": 0.77,
+   "p50": 0.84
+  },
+  "waterMin": {
+   "p05": 0.76,
+   "p50": 0.82
+  },
+  "healthMin": {
+   "p05": 100,
+   "p50": 100
+  },
+  "tilesPerDay": {
+   "p50": 0,
+   "p90": 0
+  },
+  "daysWithDamage": 1,
+  "bySeason": {
+   "SPRING": {
+    "days": 16,
+    "minE": 0.75,
+    "minW": 0.76,
+    "tiles": 0
+   },
+   "SUMMER": {
+    "days": 8,
+    "minE": 0.85,
+    "minW": 0.84,
+    "tiles": 0
+   },
+   "AUTUMN": {
+    "days": 8,
+    "minE": 0.82,
+    "minW": 0.81,
+    "tiles": 0
+   },
+   "WINTER": {
+    "days": 8,
+    "minE": 0.79,
+    "minW": 0.78,
+    "tiles": 0
+   }
+  }
+ },
+ {
+  "seed": "PLANET-OBS-2",
+  "mode": "idle",
+  "daysRun": 12,
+  "ended": {
+   "day": 12,
+   "reason": "no controlled creature"
+  },
+  "deaths": [
+   {
+    "day": 12,
+    "id": 109,
+    "cause": "predation",
+    "age": 43,
+    "generation": 1,
+    "energy": 0.7,
+    "water": 0.86
+   }
+  ],
+  "controlledCreatures": 1,
+  "lineageAlive": 0,
+  "energyMin": {
+   "p05": 0.7,
+   "p50": 0.82
+  },
+  "waterMin": {
+   "p05": 0.86,
+   "p50": 0.88
+  },
+  "healthMin": {
+   "p05": 9,
+   "p50": 45
+  },
+  "tilesPerDay": {
+   "p50": 0,
+   "p90": 1.05
+  },
+  "daysWithDamage": 2,
+  "bySeason": {
+   "SPRING": {
+    "days": 8,
+    "minE": 0.77,
+    "minW": 0.87,
+    "tiles": 0
+   },
+   "SUMMER": {
+    "days": 4,
+    "minE": 0.7,
+    "minW": 0.86,
+    "tiles": 0
+   },
+   "AUTUMN": {
+    "days": 0,
+    "minE": null,
+    "minW": null,
+    "tiles": null
+   },
+   "WINTER": {
+    "days": 0,
+    "minE": null,
+    "minW": null,
+    "tiles": null
+   }
+  }
+ },
+ {
+  "seed": "GENVO8-TEST-A",
+  "mode": "idle",
+  "daysRun": 78,
+  "ended": {
+   "day": 78,
+   "reason": "no controlled creature"
+  },
+  "deaths": [
+   {
+    "day": 78,
+    "id": 109,
+    "cause": "predation",
+    "age": 109,
+    "generation": 1,
+    "energy": 0.61,
+    "water": 0.54
+   }
+  ],
+  "controlledCreatures": 1,
+  "lineageAlive": 0,
+  "energyMin": {
+   "p05": 0.62,
+   "p50": 0.77
+  },
+  "waterMin": {
+   "p05": 0.55,
+   "p50": 0.72
+  },
+  "healthMin": {
+   "p05": 100,
+   "p50": 100
+  },
+  "tilesPerDay": {
+   "p50": 0,
+   "p90": 0
+  },
+  "daysWithDamage": 1,
+  "bySeason": {
+   "SPRING": {
+    "days": 24,
+    "minE": 0.64,
+    "minW": 0.58,
+    "tiles": 0
+   },
+   "SUMMER": {
+    "days": 22,
+    "minE": 0.62,
+    "minW": 0.54,
+    "tiles": 0
+   },
+   "AUTUMN": {
+    "days": 16,
+    "minE": 0.71,
+    "minW": 0.63,
+    "tiles": 0
+   },
+   "WINTER": {
+    "days": 16,
+    "minE": 0.67,
+    "minW": 0.61,
+    "tiles": 0
+   }
+  }
+ }
+]
