@@ -1,5 +1,5 @@
 import {SPECIES} from '../organisms/species.js';
-import {REFERENCE_MASS,massPolicy,ANATOMICAL_MASS} from '../organisms/body-mass.js';
+import {REFERENCE_MASS,massPolicy,ANATOMICAL_MASS,basalResourceCosts} from '../organisms/body-mass.js';
 import {BIO_STEPS_PER_DAY} from '../sim/day-clock.js';
 
 // Real daily needs (creator decision 2026-10-23, GenVo v1 survival rebalance). Before this policy a
@@ -16,7 +16,12 @@ import {BIO_STEPS_PER_DAY} from '../sim/day-clock.js';
 // and breeding is already gated by condition. Worlds recorded before this policy are unchanged.
 export const METABOLISM=Object.freeze({policy:'metabolism/fasting-1',
  reserveDaysFood:15,reserveDaysWater:3.5,starveDays:3,thirstDays:1,
- weakEnergy:.25,weakWater:.2,weakSpeed:.8,tiredEnergy:.4,tiredWater:.35,tiredRecovery:.5});
+ weakEnergy:.25,weakWater:.2,weakSpeed:.8,tiredEnergy:.4,tiredWater:.35,tiredRecovery:.5,
+ // Behaviour under real needs: seek water with this many days of it left at the animal's own resting
+ // rate (body size, anatomy, heat), and top up at drinkable water below this share.
+ seekWaterDays:2,topUpWater:.9,
+ // A sip is a share of the body's water capacity, so a day's water takes minutes, not most of the day.
+ sipShare:.1});
 export function metabolismActive(sim){return sim?.metabolismRules===METABOLISM.policy}
 // Resting cost per biological step of a species' reference adult under the recorded rules.
 function referenceBasal(a){
@@ -48,3 +53,14 @@ export function restoreMetabolismRules(sim,core){
  if(core.metabolismRules!==undefined&&core.metabolismRules!==METABOLISM.policy)throw Error('Unknown saved metabolism rules.');
  if(core.metabolismRules===undefined)delete sim.metabolismRules;
 }
+// Share of maximum water at which an animal starts to seek water: METABOLISM.seekWaterDays of its own
+// resting water use in the present heat. Recorded worlds keep the fixed 0.58.
+export function waterSeekShare(sim,a){
+ if(!metabolismActive(sim))return .58;const s=SPECIES[a.species],temp=sim.climate?.temp??.5;
+ const daily=basalResourceCosts(a).water*basalScale(sim,a).water*BIO_STEPS_PER_DAY*(1+temp*.3);
+ return Math.min(.9,METABOLISM.seekWaterDays*daily/s.maxHydration);
+}
+// An animal standing at drinkable water tops up instead of walking away thirsty.
+export function topUpHere(sim,a,share){return metabolismActive(sim)&&share<METABOLISM.topUpWater&&!!sim.world?.isDrinkable?.(a.x,a.y)}
+// Water taken in one drinking action. Recorded worlds keep the fixed 5.2.
+export function sipFor(sim,a){return metabolismActive(sim)?(SPECIES[a.species]?.maxHydration||100)*METABOLISM.sipShare:5.2}

@@ -1,0 +1,242 @@
+[
+ {
+  "seed": "PLANET-OBS-3",
+  "mode": "auto",
+  "daysRun": 36,
+  "ended": {
+   "day": 36,
+   "reason": "no controlled creature"
+  },
+  "deaths": [
+   {
+    "day": 33,
+    "id": 109,
+    "cause": "dehydration",
+    "age": 64,
+    "generation": 1,
+    "energy": 0.2,
+    "water": 0
+   },
+   {
+    "day": 35,
+    "id": 197,
+    "cause": "dehydration",
+    "age": 17,
+    "generation": 2,
+    "energy": 0.45,
+    "water": 0
+   },
+   {
+    "day": 36,
+    "id": 198,
+    "cause": "dehydration",
+    "age": 18,
+    "generation": 2,
+    "energy": 0.41,
+    "water": 0
+   },
+   {
+    "day": 36,
+    "id": 199,
+    "cause": "dehydration",
+    "age": 18,
+    "generation": 2,
+    "energy": 0.43,
+    "water": -0.18
+   }
+  ],
+  "controlledCreatures": 3,
+  "lineageAlive": 0,
+  "energyMin": {
+   "p05": 0.17,
+   "p50": 0.51
+  },
+  "waterMin": {
+   "p05": 0,
+   "p50": 0.53
+  },
+  "healthMin": {
+   "p05": 13,
+   "p50": 100
+  },
+  "tilesPerDay": {
+   "p50": 46.89,
+   "p90": 55.18
+  },
+  "daysWithDamage": 5,
+  "bySeason": {
+   "SPRING": {
+    "days": 12,
+    "minE": 0.41,
+    "minW": 0,
+    "tiles": 45.36
+   },
+   "SUMMER": {
+    "days": 8,
+    "minE": 0.66,
+    "minW": 0.54,
+    "tiles": 44.28
+   },
+   "AUTUMN": {
+    "days": 8,
+    "minE": 0.15,
+    "minW": 0.28,
+    "tiles": 45.9
+   },
+   "WINTER": {
+    "days": 8,
+    "minE": 0.27,
+    "minW": 0,
+    "tiles": 53.04
+   }
+  }
+ },
+ {
+  "seed": "PLANET-OBS-2",
+  "mode": "auto",
+  "daysRun": 4,
+  "ended": {
+   "day": 4,
+   "reason": "no controlled creature"
+  },
+  "deaths": [
+   {
+    "day": 4,
+    "id": 109,
+    "cause": "dehydration",
+    "age": 35,
+    "generation": 1,
+    "energy": 0.49,
+    "water": 0
+   }
+  ],
+  "controlledCreatures": 1,
+  "lineageAlive": 0,
+  "energyMin": {
+   "p05": 0.5,
+   "p50": 0.71
+  },
+  "waterMin": {
+   "p05": 0,
+   "p50": 0.29
+  },
+  "healthMin": {
+   "p05": 13,
+   "p50": 100
+  },
+  "tilesPerDay": {
+   "p50": 57.36,
+   "p90": 57.43
+  },
+  "daysWithDamage": 2,
+  "bySeason": {
+   "SPRING": {
+    "days": 4,
+    "minE": 0.5,
+    "minW": 0,
+    "tiles": 57.36
+   },
+   "SUMMER": {
+    "days": 0,
+    "minE": null,
+    "minW": null,
+    "tiles": null
+   },
+   "AUTUMN": {
+    "days": 0,
+    "minE": null,
+    "minW": null,
+    "tiles": null
+   },
+   "WINTER": {
+    "days": 0,
+    "minE": null,
+    "minW": null,
+    "tiles": null
+   }
+  }
+ },
+ {
+  "seed": "GENVO8-TEST-A",
+  "mode": "auto",
+  "daysRun": 31,
+  "ended": {
+   "day": 31,
+   "reason": "no controlled creature"
+  },
+  "deaths": [
+   {
+    "day": 27,
+    "id": 109,
+    "cause": "dehydration",
+    "age": 58,
+    "generation": 1,
+    "energy": 0.09,
+    "water": 0
+   },
+   {
+    "day": 29,
+    "id": 198,
+    "cause": "dehydration",
+    "age": 11,
+    "generation": 2,
+    "energy": 0.29,
+    "water": 0
+   },
+   {
+    "day": 30,
+    "id": 197,
+    "cause": "dehydration",
+    "age": 11,
+    "generation": 2,
+    "energy": 0.23,
+    "water": 0
+   }
+  ],
+  "controlledCreatures": 4,
+  "lineageAlive": 0,
+  "energyMin": {
+   "p05": 0.17,
+   "p50": 0.49
+  },
+  "waterMin": {
+   "p05": 0,
+   "p50": 0.45
+  },
+  "healthMin": {
+   "p05": 10,
+   "p50": 56
+  },
+  "tilesPerDay": {
+   "p50": 49.08,
+   "p90": 57
+  },
+  "daysWithDamage": 5,
+  "bySeason": {
+   "SPRING": {
+    "days": 8,
+    "minE": 0.64,
+    "minW": 0.56,
+    "tiles": 49.08
+   },
+   "SUMMER": {
+    "days": 8,
+    "minE": 0.48,
+    "minW": 0.19,
+    "tiles": 50.46
+   },
+   "AUTUMN": {
+    "days": 8,
+    "minE": 0.17,
+    "minW": 0.21,
+    "tiles": 47.02
+   },
+   "WINTER": {
+    "days": 6,
+    "minE": 0.1,
+    "minW": 0,
+    "tiles": 53.74
+   }
+  }
+ }
+]

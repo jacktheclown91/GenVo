@@ -53,6 +53,64 @@ In each case its family died out.
 
 These are calibration problems in behaviour and intake, which were all sized for the old, tiny needs. They are not reasons to loosen the needs.
 
+## Stage 2: behaviour under real needs (creator decision)
+
+Every rule below applies on metabolism-policy worlds only, the same for every organism.
+
+- **Seek water by days.** An animal seeks water when about 2 days of it are left at its own resting rate, which depends on body size, anatomy and heat.
+- **Top up opportunistically.** At drinkable water, an animal below 90% drinks.
+- **Sips scale with the body.** One sip is 10% of maximum water, about 11.4 for a GenVo instead of 5.2. A day's water then takes minutes, not most of the day.
+- **Stale drinking places are skipped.** The world's list of drinking places is built at creation, and banks can later turn salty or freeze, so only places still drinkable count. A thirsty animal with no known fresh water searches by holding one heading 12–20 tiles out, instead of resting or circling.
+- **Alarm flights end when danger passes.** A herd flees together only from a predator that looks dangerous now (hunting and facing, or too close to judge), the same appraisal an animal already made alone. Before, a resting or passing predator set the whole herd running.
+
+**Found while tracing:**
+- **No fresh water on PLANET-OBS-2.** All 750 drinkable cells in the region turn salty within the first day. Under real needs that world cannot be lived in on fresh water.
+- **Water-distance field and drinkability disagree.** The field can read 0 (water adjacent) on a bank where drinking is not allowed, and then gives no step toward water.
+
+**Measured with the player's creature on AUTO, 64 days, three seeds** ([data](metabolism-2026-10-23/v1e-auto.json)): it still died of thirst, around days 27–36 on two seeds and on day 4 on PLANET-OBS-2.
+
+**360 days** ([data](metabolism-2026-10-23/pop-v1-behaviour.json), an earlier snapshot without the larger sips): the whole ecosystem died out by day 61.
+
+| Cause of death | Count |
+|---|---|
+| Starvation | 98 |
+| Predation | 59 |
+| Drowning | 24 |
+| Dehydration | 18 |
+
+## Stage 3: food properties (creator decision)
+
+`food-properties/1` in `src/ecology/physiology.js`, saved with each world.
+
+- **Food's own properties.** Every organism eats each food's own bite size and handling and gets water from juicy food: marshroot 9, bramble 5, rotcap 3, sunmoss 1, seed kernels 0. This was previously a global switch; it is now a per-world policy.
+- **Juicy food as water.** A thirsty animal now takes water from the nearer of fresh water (by the water-distance field) and the nearest juicy plant patch within 8 tiles.
+
+**Measured with the player's creature on AUTO, 64 days, three seeds** ([data](metabolism-2026-10-23/v1g-auto.json)): it survived on every seed.
+
+| Seed | Deaths | Lineage alive at day 64 |
+|---|---|---|
+| PLANET-OBS-3 | founder to predation, day 22; an heir took over | 3 |
+| PLANET-OBS-2 | founder drowned, day 42; an heir took over | 3 |
+| GENVO8-TEST-A | none | 3 |
+
+Daily lows were 31–49% energy and 20–34% water: real pressure, not comfort.
+
+**Wild herbivores** (`tools/probe-wild-intake.mjs`): before the nearest-source rule they spent 120–240 ticks a day walking to water and starved within a week. With it, mosskip and podshell hold steady at 96–98% energy, and mirelick still declines slowly.
+
+**360 days** ([before the nearest-source rule](metabolism-2026-10-23/pop-v1f.json), [with it](metabolism-2026-10-23/pop-v1f2.json)): the ecosystem still collapses.
+
+| | Before the rule | With the rule |
+|---|---|---|
+| Wildlife | died out in the first month | died out in the first month |
+| GenVo by day 181 | 71 (24 by day 361) | 0 |
+| Main causes of death | starvation 98, predation 52 | dehydration 63 in the first month, starvation 37, predation 53 |
+
+The deaths fall on animals without a juicy-plant diet: hunters can only drink, and fresh water on these worlds is sparse and can turn salty.
+
+**Recorded worlds are unchanged** by all three stages. The day-clock, metabolism and food tests pass. The world-story and reaction-expression outputs are identical from `96d9f96` (before the clock) to `9ab4adc` (metabolism) when run on worktrees at each commit.
+
+**An open question outside these stages:** those two tests already differed from their first runs at `96d9f96`. Something between `423ead1` and `96d9f96` changed recorded-world outcomes; not yet traced.
+
 ## Next steps
 
 1. **Behaviour under real needs**, the same rules for every organism:

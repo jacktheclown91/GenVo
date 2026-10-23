@@ -1,4 +1,6 @@
 import {CFG} from '../sim/config.js';
+import {appearsThreatening} from '../ecology/threat-appraisal.js';
+import {metabolismActive} from '../ecology/metabolism-policy.js';
 import {SPECIES,canPreyOn} from '../organisms/species.js';
 import {isWaterDweller} from '../lineage/aquatic.js';
 
@@ -44,7 +46,11 @@ export class SocialController{
     for(const animal of this.sim.animals){
       if(!this.enabled(animal))continue;socialAnimals.push(animal);const profile=this.profile(animal);
       const threat=this.sim.findNearest(animal,b=>this.sim.isPredatorTo?.(b,animal)??(b.alive&&SPECIES[b.species]?.hunter&&canPreyOn(b.species,animal.species)),profile.alarmRadius||6);
-      if(threat)directAlarms.set(animal.id,{threat,distance:Math.hypot(threat.x-animal.x,threat.y-animal.y),sourceId:animal.id});
+      // Under real daily needs a group flees only a predator that looks dangerous now (hunting and facing
+      // the animal, or too close to judge), the same appraisal an animal makes alone; a resting or
+      // passing predator no longer sends the whole group running all day.
+      const distance=threat?Math.hypot(threat.x-animal.x,threat.y-animal.y):0;
+      if(threat&&(!metabolismActive(this.sim)||appearsThreatening(threat,animal,distance)))directAlarms.set(animal.id,{threat,distance,sourceId:animal.id});
     }
     for(const animal of socialAnimals){
       const profile=this.profile(animal),members=[animal],candidates=[];

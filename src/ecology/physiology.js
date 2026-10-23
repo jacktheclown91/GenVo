@@ -15,8 +15,17 @@
 // mealBite:'food', foodWater:true. ?physiologyParity=0 restores the old split (player food rule, wild cap).
 export const PHYSIOLOGY_PARITY={enabled:true,mealBite:'wild',foodWater:false};
 export const WILD_PLANT_BITE=.16;
-export function mealBiteFor(profile){return !PHYSIOLOGY_PARITY.enabled||PHYSIOLOGY_PARITY.mealBite==='food'?profile.bite:Math.min(WILD_PLANT_BITE,profile.bite)}
-export function plantMealWater(){return !PHYSIOLOGY_PARITY.enabled||PHYSIOLOGY_PARITY.foodWater}
+// Food properties (creator decision 2026-10-23, GenVo v1): on worlds with this policy every organism
+// eats each food's own bite size and handling and gets water from juicy food (dry seed kernels give
+// none), the alternative above. Worlds recorded before it keep the rule they were calibrated on.
+export const FOOD_PROPERTIES=Object.freeze({policy:'food-properties/1'});
+export function foodPropertiesActive(sim){return sim?.foodRules===FOOD_PROPERTIES.policy}
+export function mealBiteFor(profile,sim=null){return !PHYSIOLOGY_PARITY.enabled||PHYSIOLOGY_PARITY.mealBite==='food'||foodPropertiesActive(sim)?profile.bite:Math.min(WILD_PLANT_BITE,profile.bite)}
+export function plantMealWater(sim=null){return !PHYSIOLOGY_PARITY.enabled||PHYSIOLOGY_PARITY.foodWater||foodPropertiesActive(sim)}
+export function restoreFoodRules(sim,core){
+ if(core.foodRules!==undefined&&core.foodRules!==FOOD_PROPERTIES.policy)throw Error('Unknown saved food rules.');
+ if(core.foodRules===undefined)delete sim.foodRules;
+}
 const GROUP_MEMORY=4;
 // Diet variety for any animal: the same projected-breadth bonus the player's foraging state gives.
 export function noteFoodGroup(a,group){if(!a)return;const r=(a.dietRecent??=[]);r.push(group);if(r.length>GROUP_MEMORY)r.shift()}

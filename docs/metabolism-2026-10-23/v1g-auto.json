@@ -1,0 +1,178 @@
+[
+ {
+  "seed": "PLANET-OBS-3",
+  "mode": "auto",
+  "daysRun": 64,
+  "ended": null,
+  "deaths": [
+   {
+    "day": 22,
+    "id": 109,
+    "cause": "predation",
+    "age": 53,
+    "generation": 1,
+    "energy": 0.68,
+    "water": 0.95
+   }
+  ],
+  "controlledCreatures": 2,
+  "lineageAlive": 3,
+  "energyMin": {
+   "p05": 0.44,
+   "p50": 0.7
+  },
+  "waterMin": {
+   "p05": 0.31,
+   "p50": 0.57
+  },
+  "healthMin": {
+   "p05": 44,
+   "p50": 100
+  },
+  "tilesPerDay": {
+   "p50": 48.97,
+   "p90": 60.24
+  },
+  "daysWithDamage": 4,
+  "bySeason": {
+   "SPRING": {
+    "days": 16,
+    "minE": 0.64,
+    "minW": 0.35,
+    "tiles": 44.1
+   },
+   "SUMMER": {
+    "days": 16,
+    "minE": 0.61,
+    "minW": 0.44,
+    "tiles": 48.12
+   },
+   "AUTUMN": {
+    "days": 16,
+    "minE": 0.21,
+    "minW": 0.17,
+    "tiles": 52.77
+   },
+   "WINTER": {
+    "days": 16,
+    "minE": 0.58,
+    "minW": 0.42,
+    "tiles": 58.72
+   }
+  }
+ },
+ {
+  "seed": "PLANET-OBS-2",
+  "mode": "auto",
+  "daysRun": 64,
+  "ended": null,
+  "deaths": [
+   {
+    "day": 42,
+    "id": 109,
+    "cause": "drowning",
+    "age": 73,
+    "generation": 1,
+    "energy": 0.52,
+    "water": 0.34
+   }
+  ],
+  "controlledCreatures": 2,
+  "lineageAlive": 3,
+  "energyMin": {
+   "p05": 0.49,
+   "p50": 0.73
+  },
+  "waterMin": {
+   "p05": 0.34,
+   "p50": 0.58
+  },
+  "healthMin": {
+   "p05": 100,
+   "p50": 100
+  },
+  "tilesPerDay": {
+   "p50": 52.88,
+   "p90": 58.85
+  },
+  "daysWithDamage": 2,
+  "bySeason": {
+   "SPRING": {
+    "days": 16,
+    "minE": 0.62,
+    "minW": 0.15,
+    "tiles": 47.28
+   },
+   "SUMMER": {
+    "days": 16,
+    "minE": 0.52,
+    "minW": 0.43,
+    "tiles": 50.37
+   },
+   "AUTUMN": {
+    "days": 16,
+    "minE": 0.17,
+    "minW": 0.46,
+    "tiles": 54.26
+   },
+   "WINTER": {
+    "days": 16,
+    "minE": 0.49,
+    "minW": 0.5,
+    "tiles": 54.33
+   }
+  }
+ },
+ {
+  "seed": "GENVO8-TEST-A",
+  "mode": "auto",
+  "daysRun": 64,
+  "ended": null,
+  "deaths": [],
+  "controlledCreatures": 1,
+  "lineageAlive": 3,
+  "energyMin": {
+   "p05": 0.31,
+   "p50": 0.71
+  },
+  "waterMin": {
+   "p05": 0.2,
+   "p50": 0.58
+  },
+  "healthMin": {
+   "p05": 100,
+   "p50": 100
+  },
+  "tilesPerDay": {
+   "p50": 55.49,
+   "p90": 62.82
+  },
+  "daysWithDamage": 0,
+  "bySeason": {
+   "SPRING": {
+    "days": 16,
+    "minE": 0.65,
+    "minW": 0.35,
+    "tiles": 52.91
+   },
+   "SUMMER": {
+    "days": 16,
+    "minE": 0.57,
+    "minW": 0.21,
+    "tiles": 58.5
+   },
+   "AUTUMN": {
+    "days": 16,
+    "minE": 0.31,
+    "minW": 0.15,
+    "tiles": 59.37
+   },
+   "WINTER": {
+    "days": 16,
+    "minE": 0.31,
+    "minW": 0.3,
+    "tiles": 54.14
+   }
+  }
+ }
+]

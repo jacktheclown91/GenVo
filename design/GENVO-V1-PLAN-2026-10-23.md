@@ -128,3 +128,7 @@ Dates follow the creator's allocation and are targets, not reasons to ship unfin
   - **Metabolism policy:** a resting adult starves in 16.3 days and dies of thirst in 3.6, with penalties before death and shared by all (`docs/METABOLISM-2026-10-23.md`).
   - Both are opt-in with `?day=30`.
   - Under real needs AUTO dies within 4–15 days, because water seeking, alarm flights and intake were sized for tiny needs. Behaviour calibration and the food-property stage come next.
+- **2026-10-23, behaviour and food stages** (`docs/METABOLISM-2026-10-23.md`):
+  - The player's family now survives 64 days on all three seeds under real needs.
+  - The ecosystem still collapses within a month in 360-day runs: animals that cannot eat juicy plants die of thirst, because fresh water is sparse and can turn salty.
+  - Decision pending: water from prey and/or a 5-day water reserve.
