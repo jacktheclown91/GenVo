@@ -16,6 +16,11 @@ Support abundance through funded reproduction and resources, evolutionary stasis
 
 Founding templates are starting possibilities. Library growth must come from actual successful organisms rather than permanent hardcoded species.
 
+**Post-jam botanical task (creator decision 2026-10-22):** finish botanical competition and lifecycles together before enabling any `plant-lifecycle` policy. Option C (`turnover`, see docs/PLANT-LIFECYCLE-2026-10-22.md) stays opt-in and off for the jam build.
+- Plant mortality, tissue turnover, flowering and regrowth must follow inherited traits and environmental conditions. Fast groundcover and slow woody vegetation should differ for biological reasons, never through per-plant-name tuning.
+- Verify recovery after grazing, drought and wildfire: no permanent collapse and no unrealistic regeneration.
+- Re-measure the food-web response (animals, starvation, decomposers) with matched observatory runs. Changes in animal survival must come from consistently applied rules, not from unfinished interactions.
+
 ## 3. Physical Living Planet
 
 Implement coupled uplift/tectonics, earthquakes, volcanoes and rare meteor impacts. Expand marine depths, reefs, estuaries, coastal food chains and animal interactions. Complete natural multi-depth caves, connected groundwater, underground food webs/wildlife and regional underground travel. Extend long-term erosion, sedimentation, river channels/deltas, cross-region wildfire, storms/clouds, jungles/swamps and animal habitat engineering.

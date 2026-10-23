@@ -82,6 +82,8 @@ Variants are a runtime experiment switch (`setLifecycleVariant`) that is never s
 
 **Recommendation:** do not enable any variant for the jam build. If decomposer support matters before then, option C is now the measured best candidate (see below). Adopting it is the creator's decision.
 
+**Creator decision (October 22):** keep option C (`turnover`) available as an experimental, opt-in evaluation variant and leave every lifecycle variant disabled for the jam build. The rules add biological costs before plants have the mechanisms to respond to them: habitat use, energy allocation, competition and tissue replacement. A modest biomass loss already produces much larger animal and starvation changes. Lifecycle work resumes after the jam with the botanical competition pass (see the full-game plan, section 2).
+
 Habitat differentiation is not achieved by moisture stress. It belongs to the creator's planned competition pass (root, light and nutrient competition with inherited traits), probably with a better wetland-water signal than `moisture`.
 
 ### Open decisions
