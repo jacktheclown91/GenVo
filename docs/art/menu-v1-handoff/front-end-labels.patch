@@ -1,5 +1,5 @@
 diff --git a/src/ui/front-end.js b/src/ui/front-end.js
-index f4153cb..351eb68 100644
+index f4153cb..4dfb8ee 100644
 --- a/src/ui/front-end.js
 +++ b/src/ui/front-end.js
 @@ -66,11 +66,15 @@ export class FrontEnd{
@@ -9,7 +9,7 @@ index f4153cb..351eb68 100644
 +    // Presentation labels follow the selected existing world, not a new founder.
 +    const recorded=this.el.querySelector('#newWorldCreatureCards [data-creature="recorded"]'),fresh=start?.value==='new';
 +    if(recorded){recorded.querySelector('b').textContent=fresh?'Walker':'Recorded lineage';recorded.querySelector('span').textContent=fresh?'A plain four-legged founder. Learn the land, then evolve it your way.':'Continue the living lineage recorded in this world.';}
-+ 
++
      const box=this.el.querySelector('#newWorldStartCards');if(!box||!start)return;
      for(const b of box.querySelectorAll('[data-start]'))b.remove();
      for(const o of start.options){if(o.value!=='new'&&!o.value.startsWith('catalog:'))continue;

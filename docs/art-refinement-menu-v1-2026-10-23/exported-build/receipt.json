@@ -1,0 +1,35 @@
+{
+  "start": {
+    "x": 42.5,
+    "y": 66.5,
+    "tick": 0,
+    "key": "KeyD",
+    "sceneShown": true,
+    "scenePending": false
+  },
+  "finish": {
+    "x": 44.13116092471598,
+    "y": 66.5,
+    "tick": 12,
+    "frontEndHidden": true,
+    "themeLoaded": true
+  },
+  "errors": [],
+  "misses": [],
+  "build": {
+    "schema": "genvo.menu-presentation-review/1",
+    "sourceCommit": "de23d747521b9f43674192a40ea9479929fc6372",
+    "status": "Review candidate. Shared index and front-end label changes are not yet integrated into canonical source.",
+    "sourceHashes": {
+      "index": "14495a6ec57890d7903fd86c5068cdcaeb2f06769f6ed3ae827f95c490ede389",
+      "frontEnd": "11363edecb33cc214ee157de26a8a788619fd523f1dfd955198ba8fb8871d5a0"
+    },
+    "candidateHashes": {
+      "index": "df8683cbf0976abce743b5f3db9bc906e9ac8c96dc656cd2d69d5b413b187434",
+      "frontEnd": "45a7be223be3aab7d684579b1ba16837d92ffa41ad5b236419f59a10db35c183",
+      "stylesheet": "6d72933f42b6b9c20def1dec10caf5a91b49f00579ad450fe46d311831686365"
+    }
+  },
+  "scope": "Exported candidate, actual New World, Space selects card, native Begin World, public Enter onboarding and held WASD. Application loop unmodified. No staged actor/action/world state.",
+  "creatorAcceptance": false
+}

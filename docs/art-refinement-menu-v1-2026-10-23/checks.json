@@ -1,0 +1,32 @@
+{
+  "base": "de23d747521b9f43674192a40ea9479929fc6372",
+  "results": [
+    {
+      "test": "menu-task-usability",
+      "exitCode": 0,
+      "seconds": 0.681,
+      "stdout": "menu clarity + teachable Stalker flee response: PASS\n",
+      "stderr": ""
+    },
+    {
+      "test": "menu-world-slots",
+      "exitCode": 0,
+      "seconds": 1.215,
+      "stdout": "menu multi-world slots and legacy compatibility: PASS\n",
+      "stderr": ""
+    },
+    {
+      "test": "public-export",
+      "exitCode": 0,
+      "seconds": 1.51,
+      "stdout": "public-export: exact reachable modules and runtime assets only PASS\n",
+      "stderr": ""
+    },
+    {
+      "test": "menu-presentation-assets",
+      "exitCode": 0,
+      "stdout": "Menu assets PASS: five exact canonical starting plans, distinct hash-verified native portraits and local stylesheet dependencies.\n",
+      "stderr": ""
+    }
+  ]
+}
