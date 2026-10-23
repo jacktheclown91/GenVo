@@ -63,6 +63,7 @@ import {SuccessionChooser} from './ui/succession-chooser.js';
 import {LegacySummary} from './ui/legacy-summary.js';
 import {YoungSummary} from './ui/young-summary.js';
 import {WorldStory} from './gameplay/world-story.js';
+import {cameraZoom,stepCameraZoom} from './render/camera-zoom.js';
 import {verdictText} from './gameplay/threat-display.js';
 import {CreatureEditor} from './ui/creature-editor.js';
 import {FieldGuide} from './ui/field-guide.js';
@@ -76,6 +77,10 @@ let seed=new URLSearchParams(location.search).get('seed')||'GENVO8-8FOLD';
 {const q=new URLSearchParams(location.search);if(q.get('lodInteraction')==='0')ACTIVITY_REVIEW.continuousInteraction=false;if(q.get('healing')==='0')HEALING_REVIEW.enabled=false;if(q.get('predationParity')==='0')PREDATION_PARITY.enabled=false;if(q.get('refuges')==='0')REFUGE_PARITY.enabled=false;if(q.get('physiologyParity')==='0')PHYSIOLOGY_PARITY.enabled=false;if(q.get('rarityReview')==='0')RARITY_REVIEW.enabled=false;if(q.get('trophicRecognition')==='0')TROPHIC_RECOGNITION.enabled=false;if(q.get('huntCommitment')==='1')HUNT_COMMITMENT.enabled=true;if(q.get('motionReveals')==='1')MOTION_REVEALS.enabled=true;if(q.get('plantTurnover')==='1')PLANT_TURNOVER.enabled=true;if(q.get('modularHead')==='1')MODULAR_HEAD.enabled=true;if(q.get('threatAppraisal')==='0')THREAT_APPRAISAL.enabled=false;if(q.get('movementParity')==='0')MOVEMENT_PARITY.enabled=false;if(q.get('soilWater')==='0')SOIL_WATER.enabled=false;if(q.get('weatherPatterns')==='0')WEATHER_PATTERNS.enabled=false;if(q.get('threatStages')==='0')THREAT_STAGES.enabled=false;if(q.get('preyRisk')==='0')PREY_RISK.enabled=false;if(q.get('developmentalSymmetry')==='0')DEVELOPMENTAL_SYMMETRY.enabled=false;if(q.get('spriteCacheMoving')==='1')SPRITE_CACHE.skipMoving=false;if(q.get('spriteBatch')==='0')SPRITE_BATCH.enabled=false;if(q.get('tilePool')==='0')TERRAIN_POOL.enabled=false;if(q.get('batchMode'))SPRITE_BATCH.mode=q.get('batchMode');if(q.get('batchPage'))SPRITE_BATCH.pageSize=Number(q.get('batchPage'))||1024;if(q.get('batchPages'))SPRITE_BATCH.maxPages=Number(q.get('batchPages'))||4;if(q.get('scratchPool'))SPRITE_CACHE.scratchPool=Number(q.get('scratchPool'))||1;if(q.get('ecologyReview')==='0')ECOLOGY_REVIEW.amphibiousForage=ECOLOGY_REVIEW.shoreHabitat=false;if(q.get('aquaticReview')==='0')AQUATIC_REVIEW.fryGrowth=AQUATIC_REVIEW.founding=false;if(q.get('foundingGenetics')==='0')FOUNDING_GENETICS.enabled=false;if(q.get('juvenileBiology')==='0')JUVENILE_SWITCH.growthCost=JUVENILE_SWITCH.preyAppraisal=false;if(q.get('resourceFounding')==='0')RESOURCE_FOUNDING.enabled=false;if(q.get('lifeHistory')==='1')LIFE_HISTORY.fundedGate=LIFE_HISTORY.conditionRecovery=true}
 let sim=new Simulation(seed,{player:true});
 const canvas=document.querySelector('#game'),renderer=new Renderer(canvas,sim),keys={},pauseNotice=document.querySelector('#pauseNotice');
+renderer.zoom=cameraZoom();
+// Camera zoom: mouse wheel over the world, or - and = (presentation only).
+function zoomCamera(dir){const before=renderer.zoom;renderer.zoom=stepCameraZoom(dir);if(renderer.zoom!==before)tutorial.showToast(`Zoom ${renderer.zoom}×`,900,'safe','action');frontEnd.syncSettings?.()}
+canvas.addEventListener('wheel',e=>{if(frontEnd.isOpen||editor.open||!e.deltaY)return;e.preventDefault();zoomCamera(e.deltaY<0?1:-1)},{passive:false});
 let mateOpen=false,mindOpen=false,territoryOpen=false,shelterOpen=false,migrationOpen=false,ecologyOpen=false,helpOpen=false,guideOpen=false,manualPause=false;
 let pointerApproach=null;
 const MOVE_CODES=new Set(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight','KeyJ']);
@@ -221,6 +226,7 @@ const frontEnd=new FrontEnd({saveManager,audio,
     if(pauseNotice)pauseNotice.hidden=true;return true;
   }
 });
+frontEnd.onZoom=z=>{renderer.zoom=z};
 sim.paused=true;
 // Progressive load: procedural fallback remains playable if native art is absent or invalid.
 loadNativePartCatalog().then(result=>{if(result.errors.length)console.warn('GenVo art fallback:',result.errors)});
@@ -360,6 +366,7 @@ addEventListener('keydown',e=>{
   if(e.code==='KeyX'&&!e.repeat){const r=sim.playerAlarm();tutorial.onInteraction(r);audio.noteResult(r)}
   if(e.code==='KeyV'&&!e.repeat){if(mateOpen){const r=sim.reproduction.cycleBroodStrategy();tutorial.showToast(r.ok?`Brood strategy: ${r.strategy}`:r.reason,1800,r.ok?'safe':'warn');audio.note(r.ok?'confirm':'deny')}else{const r=sim.playerHide();tutorial.onInteraction(r);audio.noteResult(r)}}
   if(e.code==='KeyZ'&&!e.repeat){const r=sim.playerCarry();tutorial.onInteraction(r);audio.noteResult(r)}
+  if(['Minus','NumpadSubtract','Equal','NumpadAdd'].includes(e.code)&&!e.repeat){e.preventDefault();zoomCamera(e.code==='Minus'||e.code==='NumpadSubtract'?-1:1)}
   if(e.code==='Semicolon'&&!e.repeat){const r=sim.playerThreatDisplay();tutorial.onInteraction(r);audio.noteResult(r)}
   if(e.code==='KeyQ'&&!e.repeat){if(mateOpen)sim.reproduction.cycleMate(-1);else if(journal.open)journal.cycle(-1);else contextTray.cycleInteract()}
   if(e.code==='KeyE'&&!e.repeat){
