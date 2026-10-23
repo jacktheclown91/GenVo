@@ -1,0 +1,10396 @@
+{
+ "seed": "PLANET-OBS-3",
+ "seconds": 120,
+ "samples": [
+  {
+   "t": 18,
+   "day": 1,
+   "near": [
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": false
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 159,
+     "species": "mirelick",
+     "temperament": 0.966,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "migrate",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 162,
+     "species": "mirelick",
+     "temperament": 1.086,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 164,
+     "species": "mirelick",
+     "temperament": 1.069,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 165,
+     "species": "mirelick",
+     "temperament": 1.091,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": false
+    },
+    {
+     "id": 191,
+     "species": "bankjaw",
+     "temperament": 0.903,
+     "intent": "scent-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 194,
+     "species": "bankjaw",
+     "temperament": 0.928,
+     "intent": "bank-rest",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "hunt",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 33,
+   "day": 1,
+   "near": [
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "group-space",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "migrate",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 159,
+     "species": "mirelick",
+     "temperament": 0.966,
+     "intent": "migrate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": true
+    },
+    {
+     "id": 162,
+     "species": "mirelick",
+     "temperament": 1.086,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 164,
+     "species": "mirelick",
+     "temperament": 1.069,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 165,
+     "species": "mirelick",
+     "temperament": 1.091,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "stranger-avoid",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 194,
+     "species": "bankjaw",
+     "temperament": 0.928,
+     "intent": "bank-rest",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "stalk-player",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 47,
+   "day": 1,
+   "near": [
+    {
+     "id": 73,
+     "species": "rootling",
+     "temperament": 1.022,
+     "intent": "group-space",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": false
+    },
+    {
+     "id": 162,
+     "species": "mirelick",
+     "temperament": 1.086,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": false
+    },
+    {
+     "id": 164,
+     "species": "mirelick",
+     "temperament": 1.069,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 165,
+     "species": "mirelick",
+     "temperament": 1.091,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "mire-rest",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 191,
+     "species": "bankjaw",
+     "temperament": 0.903,
+     "intent": "scent-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 194,
+     "species": "bankjaw",
+     "temperament": 0.928,
+     "intent": "bank-rest",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "search-player",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 61,
+   "day": 2,
+   "near": [
+    {
+     "id": 110,
+     "species": "genvo",
+     "temperament": 1.071,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 162,
+     "species": "mirelick",
+     "temperament": 1.086,
+     "intent": "group-space",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-prowl",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 164,
+     "species": "mirelick",
+     "temperament": 1.069,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 165,
+     "species": "mirelick",
+     "temperament": 1.091,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "migrate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 194,
+     "species": "bankjaw",
+     "temperament": 0.928,
+     "intent": "bank-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 74,
+   "day": 2,
+   "near": [
+    {
+     "id": 110,
+     "species": "genvo",
+     "temperament": 1.071,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "migrate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 162,
+     "species": "mirelick",
+     "temperament": 1.086,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 164,
+     "species": "mirelick",
+     "temperament": 1.069,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "migrate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 194,
+     "species": "bankjaw",
+     "temperament": 0.928,
+     "intent": "bank-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 89,
+   "day": 2,
+   "near": [
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "mate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "migrate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 162,
+     "species": "mirelick",
+     "temperament": 1.086,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 164,
+     "species": "mirelick",
+     "temperament": 1.069,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "hunt",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 104,
+   "day": 3,
+   "near": [
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "mate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "shoal-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "escape",
+     "stage": "flee",
+     "seen": false
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 162,
+     "species": "mirelick",
+     "temperament": 1.086,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 164,
+     "species": "mirelick",
+     "temperament": 1.069,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "hunt",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 114,
+   "day": 3,
+   "near": [
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "mate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "shoal-signal",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 162,
+     "species": "mirelick",
+     "temperament": 1.086,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 164,
+     "species": "mirelick",
+     "temperament": 1.069,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "group",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 117,
+   "day": 3,
+   "near": [
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "mate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "shoal-signal",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 162,
+     "species": "mirelick",
+     "temperament": 1.086,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 164,
+     "species": "mirelick",
+     "temperament": 1.069,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 130,
+   "day": 3,
+   "near": [
+    {
+     "id": 110,
+     "species": "genvo",
+     "temperament": 1.071,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 120,
+     "species": "genvo",
+     "temperament": 1.083,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "shoal-signal",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "group",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 162,
+     "species": "mirelick",
+     "temperament": 1.086,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 164,
+     "species": "mirelick",
+     "temperament": 1.069,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 143,
+   "day": 3,
+   "near": [
+    {
+     "id": 110,
+     "species": "genvo",
+     "temperament": 1.071,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 111,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 120,
+     "species": "genvo",
+     "temperament": 1.083,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "stranger-investigate",
+     "stage": "investigate",
+     "seen": true
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "shoal-signal",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 162,
+     "species": "mirelick",
+     "temperament": 1.086,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "group",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 159,
+   "day": 4,
+   "near": [
+    {
+     "id": 110,
+     "species": "genvo",
+     "temperament": 1.071,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 111,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 120,
+     "species": "genvo",
+     "temperament": 1.083,
+     "intent": "stranger-watch",
+     "stage": "curious",
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "group",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 162,
+     "species": "mirelick",
+     "temperament": 1.086,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "migrate",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 170,
+   "day": 4,
+   "near": [
+    {
+     "id": 110,
+     "species": "genvo",
+     "temperament": 1.071,
+     "intent": "stranger-avoid",
+     "stage": "avoid",
+     "seen": false
+    },
+    {
+     "id": 111,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 120,
+     "species": "genvo",
+     "temperament": 1.083,
+     "intent": "stranger-watch",
+     "stage": "curious",
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 162,
+     "species": "mirelick",
+     "temperament": 1.086,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "stranger-watch",
+     "stage": "curious",
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 185,
+   "day": 4,
+   "near": [
+    {
+     "id": 110,
+     "species": "genvo",
+     "temperament": 1.071,
+     "intent": "band-social",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 111,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "stranger-watch",
+     "stage": "curious",
+     "seen": false
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 120,
+     "species": "genvo",
+     "temperament": 1.083,
+     "intent": "stranger-watch",
+     "stage": "curious",
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "group-space",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 162,
+     "species": "mirelick",
+     "temperament": 1.086,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 164,
+     "species": "mirelick",
+     "temperament": 1.069,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 198,
+   "day": 5,
+   "near": [
+    {
+     "id": 110,
+     "species": "genvo",
+     "temperament": 1.071,
+     "intent": "band-social",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 111,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "stranger-investigate",
+     "stage": "investigate",
+     "seen": true
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 120,
+     "species": "genvo",
+     "temperament": 1.083,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "group",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "shoal-glide",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 162,
+     "species": "mirelick",
+     "temperament": 1.086,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 164,
+     "species": "mirelick",
+     "temperament": 1.069,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 210,
+   "day": 5,
+   "near": [
+    {
+     "id": 110,
+     "species": "genvo",
+     "temperament": 1.071,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 111,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "stranger-investigate",
+     "stage": "investigate",
+     "seen": true
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 120,
+     "species": "genvo",
+     "temperament": 1.083,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 162,
+     "species": "mirelick",
+     "temperament": 1.086,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 164,
+     "species": "mirelick",
+     "temperament": 1.069,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 218,
+   "day": 5,
+   "near": [
+    {
+     "id": 111,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "stranger-investigate",
+     "stage": "investigate",
+     "seen": true
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "group",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "shoal-signal",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 230,
+   "day": 5,
+   "near": [
+    {
+     "id": 111,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "band-social",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "shoal-glide",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 243,
+   "day": 6,
+   "near": [
+    {
+     "id": 111,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "band-social",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "band-social",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 250,
+   "day": 6,
+   "near": [
+    {
+     "id": 111,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "band-social",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "shoal-glide",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "migrate",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 262,
+   "day": 6,
+   "near": [
+    {
+     "id": 111,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "shoal-glide",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "migrate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 273,
+   "day": 6,
+   "near": [
+    {
+     "id": 111,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-social",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 120,
+     "species": "genvo",
+     "temperament": 1.083,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "group",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "migrate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 285,
+   "day": 6,
+   "near": [
+    {
+     "id": 111,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 120,
+     "species": "genvo",
+     "temperament": 1.083,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "shoal-glide",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "migrate",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 301,
+   "day": 7,
+   "near": [
+    {
+     "id": 120,
+     "species": "genvo",
+     "temperament": 1.083,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "shoal-glide",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 314,
+   "day": 7,
+   "near": [
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "shoal-glide",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 327,
+   "day": 7,
+   "near": [
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "stranger-investigate",
+     "stage": "investigate",
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "group-space",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 341,
+   "day": 8,
+   "near": [
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "stranger-investigate",
+     "stage": "investigate",
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 352,
+   "day": 8,
+   "near": [
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "migrate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 365,
+   "day": 8,
+   "near": [
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "stranger-investigate",
+     "stage": "investigate",
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "migrate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 376,
+   "day": 8,
+   "near": [
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 391,
+   "day": 9,
+   "near": [
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "shoal-glide",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "migrate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 405,
+   "day": 9,
+   "near": [
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "shoal-glide",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "migrate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 417,
+   "day": 9,
+   "near": [
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "shoal-glide",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 430,
+   "day": 9,
+   "near": [
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "stranger-investigate",
+     "stage": "investigate",
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "feed",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 440,
+   "day": 10,
+   "near": [
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "stranger-watch",
+     "stage": "curious",
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 452,
+   "day": 10,
+   "near": [
+    {
+     "id": 22,
+     "species": "mosskip",
+     "temperament": 1.012,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 104,
+     "species": "needlejaw",
+     "temperament": 1.028,
+     "intent": "hunt",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "stranger-watch",
+     "stage": "curious",
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 462,
+   "day": 10,
+   "near": [
+    {
+     "id": 104,
+     "species": "needlejaw",
+     "temperament": 1.028,
+     "intent": "hunt",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "stranger-watch",
+     "stage": "curious",
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 154,
+     "species": "mirelick",
+     "temperament": 1.08,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 473,
+   "day": 10,
+   "near": [
+    {
+     "id": 104,
+     "species": "needlejaw",
+     "temperament": 1.028,
+     "intent": "hunt",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 166,
+     "species": "mirelick",
+     "temperament": 1.06,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": "watch",
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 484,
+   "day": 11,
+   "near": [
+    {
+     "id": 104,
+     "species": "needlejaw",
+     "temperament": 1.028,
+     "intent": "hunt",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 157,
+     "species": "mirelick",
+     "temperament": 1.036,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 497,
+   "day": 11,
+   "near": [
+    {
+     "id": 104,
+     "species": "needlejaw",
+     "temperament": 1.028,
+     "intent": "shadow-patrol",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "mate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 508,
+   "day": 11,
+   "near": [
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 519,
+   "day": 11,
+   "near": [
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "group-space",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 532,
+   "day": 12,
+   "near": [
+    {
+     "id": 82,
+     "species": "rootling",
+     "temperament": 1.071,
+     "intent": "burrow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 544,
+   "day": 12,
+   "near": [
+    {
+     "id": 82,
+     "species": "rootling",
+     "temperament": 1.071,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 556,
+   "day": 12,
+   "near": [
+    {
+     "id": 47,
+     "species": "mosskip",
+     "temperament": 0.979,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 90,
+     "species": "rootling",
+     "temperament": 0.954,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "shoal-glide",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 567,
+   "day": 12,
+   "near": [
+    {
+     "id": 47,
+     "species": "mosskip",
+     "temperament": 0.979,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 90,
+     "species": "rootling",
+     "temperament": 0.954,
+     "intent": "ground-probe",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 575,
+   "day": 12,
+   "near": [
+    {
+     "id": 47,
+     "species": "mosskip",
+     "temperament": 0.979,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 90,
+     "species": "rootling",
+     "temperament": 0.954,
+     "intent": "ground-probe",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 587,
+   "day": 13,
+   "near": [
+    {
+     "id": 47,
+     "species": "mosskip",
+     "temperament": 0.979,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 90,
+     "species": "rootling",
+     "temperament": 0.954,
+     "intent": "ground-probe",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 598,
+   "day": 13,
+   "near": [
+    {
+     "id": 90,
+     "species": "rootling",
+     "temperament": 0.954,
+     "intent": "burrow-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "feed",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 609,
+   "day": 13,
+   "near": [
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "group-space",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 618,
+   "day": 13,
+   "near": [
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "group-space",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 628,
+   "day": 14,
+   "near": [
+    {
+     "id": 64,
+     "species": "mosskip",
+     "temperament": 1.014,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "shoal-signal",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 638,
+   "day": 14,
+   "near": [
+    {
+     "id": 64,
+     "species": "mosskip",
+     "temperament": 1.014,
+     "intent": "herd-browse",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 650,
+   "day": 14,
+   "near": [
+    {
+     "id": 64,
+     "species": "mosskip",
+     "temperament": 1.014,
+     "intent": "herd-rest",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 658,
+   "day": 14,
+   "near": [
+    {
+     "id": 64,
+     "species": "mosskip",
+     "temperament": 1.014,
+     "intent": "herd-rest",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": false
+    },
+    {
+     "id": 155,
+     "species": "mirelick",
+     "temperament": 0.971,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 669,
+   "day": 14,
+   "near": [
+    {
+     "id": 64,
+     "species": "mosskip",
+     "temperament": 1.014,
+     "intent": "herd-rest",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 160,
+     "species": "mirelick",
+     "temperament": 0.905,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 681,
+   "day": 15,
+   "near": [
+    {
+     "id": 64,
+     "species": "mosskip",
+     "temperament": 1.014,
+     "intent": "herd-hop",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 693,
+   "day": 15,
+   "near": [
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 156,
+     "species": "mirelick",
+     "temperament": 0.976,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "hunt",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 701,
+   "day": 15,
+   "near": [
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "hunt",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 714,
+   "day": 15,
+   "near": [
+    {
+     "id": 54,
+     "species": "mosskip",
+     "temperament": 0.922,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 728,
+   "day": 16,
+   "near": [
+    {
+     "id": 54,
+     "species": "mosskip",
+     "temperament": 0.922,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "mate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 124,
+     "species": "genvo",
+     "temperament": 0.901,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 739,
+   "day": 16,
+   "near": [
+    {
+     "id": 54,
+     "species": "mosskip",
+     "temperament": 0.922,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "root-roam",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 124,
+     "species": "genvo",
+     "temperament": 0.901,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 125,
+     "species": "genvo",
+     "temperament": 1.091,
+     "intent": "mate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "band-social",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 751,
+   "day": 16,
+   "near": [
+    {
+     "id": 54,
+     "species": "mosskip",
+     "temperament": 0.922,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "ground-probe",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "mate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 124,
+     "species": "genvo",
+     "temperament": 0.901,
+     "intent": "mate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 125,
+     "species": "genvo",
+     "temperament": 1.091,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "band-social",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 764,
+   "day": 16,
+   "near": [
+    {
+     "id": 54,
+     "species": "mosskip",
+     "temperament": 0.922,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "ground-probe",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 124,
+     "species": "genvo",
+     "temperament": 0.901,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 125,
+     "species": "genvo",
+     "temperament": 1.091,
+     "intent": "mate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 778,
+   "day": 17,
+   "near": [
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "mate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 124,
+     "species": "genvo",
+     "temperament": 0.901,
+     "intent": "mate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 125,
+     "species": "genvo",
+     "temperament": 1.091,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "stranger-investigate",
+     "stage": "investigate",
+     "seen": true
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 158,
+     "species": "mirelick",
+     "temperament": 0.922,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 790,
+   "day": 17,
+   "near": [
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 124,
+     "species": "genvo",
+     "temperament": 0.901,
+     "intent": "group-space",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 125,
+     "species": "genvo",
+     "temperament": 1.091,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "stranger-investigate",
+     "stage": "investigate",
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 803,
+   "day": 17,
+   "near": [
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "ground-probe",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 115,
+     "species": "genvo",
+     "temperament": 1.056,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 124,
+     "species": "genvo",
+     "temperament": 0.901,
+     "intent": "group-space",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "stranger-watch",
+     "stage": "curious",
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 815,
+   "day": 17,
+   "near": [
+    {
+     "id": 54,
+     "species": "mosskip",
+     "temperament": 0.922,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "ground-probe",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 114,
+     "species": "genvo",
+     "temperament": 1.006,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 125,
+     "species": "genvo",
+     "temperament": 1.091,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "stranger-investigate",
+     "stage": "investigate",
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 830,
+   "day": 18,
+   "near": [
+    {
+     "id": 54,
+     "species": "mosskip",
+     "temperament": 0.922,
+     "intent": "mate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 88,
+     "species": "rootling",
+     "temperament": 1.093,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 125,
+     "species": "genvo",
+     "temperament": 1.091,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 161,
+     "species": "mirelick",
+     "temperament": 0.988,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 167,
+     "species": "mirelick",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 843,
+   "day": 18,
+   "near": [
+    {
+     "id": 54,
+     "species": "mosskip",
+     "temperament": 0.922,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "burrow-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 88,
+     "species": "rootling",
+     "temperament": 1.093,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 857,
+   "day": 18,
+   "near": [
+    {
+     "id": 54,
+     "species": "mosskip",
+     "temperament": 0.922,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 88,
+     "species": "rootling",
+     "temperament": 1.093,
+     "intent": "burrow-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 151,
+     "species": "mirelick",
+     "temperament": 0.931,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 864,
+   "day": 19,
+   "near": [
+    {
+     "id": 88,
+     "species": "rootling",
+     "temperament": 1.093,
+     "intent": "root-roam",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 194,
+     "species": "bankjaw",
+     "temperament": 0.928,
+     "intent": "hunt",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "explore",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "explore",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "explore",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "explore",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "explore",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 876,
+   "day": 19,
+   "near": [
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "to-water",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "migrate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 194,
+     "species": "bankjaw",
+     "temperament": 0.928,
+     "intent": "hunt",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "explore",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "drink",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "drink",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 891,
+   "day": 19,
+   "near": [
+    {
+     "id": 95,
+     "species": "rootling",
+     "temperament": 1.099,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "migrate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 194,
+     "species": "bankjaw",
+     "temperament": 0.928,
+     "intent": "hunt",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "explore",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "drink",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "drink",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "drink",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "drink",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 904,
+   "day": 19,
+   "near": [
+    {
+     "id": 14,
+     "species": "mosskip",
+     "temperament": 0.956,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 95,
+     "species": "rootling",
+     "temperament": 1.099,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 194,
+     "species": "bankjaw",
+     "temperament": 0.928,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "drink",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "drink",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "drink",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "drink",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 918,
+   "day": 20,
+   "near": [
+    {
+     "id": 14,
+     "species": "mosskip",
+     "temperament": 0.956,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 95,
+     "species": "rootling",
+     "temperament": 1.099,
+     "intent": "drink",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "group",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "migrate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 194,
+     "species": "bankjaw",
+     "temperament": 0.928,
+     "intent": "explore",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "explore",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "drink",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "drink",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "drink",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "drink",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 931,
+   "day": 20,
+   "near": [
+    {
+     "id": 14,
+     "species": "mosskip",
+     "temperament": 0.956,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 95,
+     "species": "rootling",
+     "temperament": 1.099,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "feed",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 194,
+     "species": "bankjaw",
+     "temperament": 0.928,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "hunt",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 944,
+   "day": 20,
+   "near": [
+    {
+     "id": 14,
+     "species": "mosskip",
+     "temperament": 0.956,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": true
+    },
+    {
+     "id": 95,
+     "species": "rootling",
+     "temperament": 1.099,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": true
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "guard",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 194,
+     "species": "bankjaw",
+     "temperament": 0.928,
+     "intent": "explore",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "hunt",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "follow",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "wary",
+     "stage": "wary",
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "shelter",
+     "stage": "flee",
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "follow",
+     "stage": "watch",
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 958,
+   "day": 20,
+   "near": [
+    {
+     "id": 95,
+     "species": "rootling",
+     "temperament": 1.099,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 194,
+     "species": "bankjaw",
+     "temperament": 0.928,
+     "intent": "hunt",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "hunt-windup",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "shelter",
+     "stage": "flee",
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "wary",
+     "stage": "wary",
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "drink",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": "watch",
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 970,
+   "day": 21,
+   "near": [
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 95,
+     "species": "rootling",
+     "temperament": 1.099,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": true
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "charge-player",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "wary",
+     "stage": "wary",
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "drink",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "wary",
+     "stage": "wary",
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": "watch",
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 981,
+   "day": 21,
+   "near": [
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "hunt-recover",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "follow",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "wary",
+     "stage": "wary",
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "follow",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "explore",
+     "stage": "watch",
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 992,
+   "day": 21,
+   "near": [
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "ground-probe",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 143,
+     "species": "rillsifter",
+     "temperament": 0.916,
+     "intent": "mate",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "stalk-player",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "follow",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "wary",
+     "stage": "wary",
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "explore",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "follow",
+     "stage": "watch",
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1004,
+   "day": 21,
+   "near": [
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "search-player",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "follow",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": "watch",
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1013,
+   "day": 22,
+   "near": [
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 127,
+     "species": "genvo",
+     "temperament": 1.01,
+     "intent": "guard",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "feed",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "escape",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "follow",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "follow",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1021,
+   "day": 22,
+   "near": [
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "mate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "stranger-avoid",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "escape",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "explore",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1032,
+   "day": 22,
+   "near": [
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "mate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 195,
+     "species": "bankjaw",
+     "temperament": 1.019,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "social",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1044,
+   "day": 22,
+   "near": [
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "root-roam",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 153,
+     "species": "mirelick",
+     "temperament": 0.904,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "stranger-avoid",
+     "stage": "avoid",
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1055,
+   "day": 22,
+   "near": [
+    {
+     "id": 76,
+     "species": "rootling",
+     "temperament": 1.064,
+     "intent": "root-roam",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "social",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1067,
+   "day": 23,
+   "near": [
+    {
+     "id": 47,
+     "species": "mosskip",
+     "temperament": 0.979,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "social",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "follow",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1075,
+   "day": 23,
+   "near": [
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "group-space",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1083,
+   "day": 23,
+   "near": [
+    {
+     "id": 47,
+     "species": "mosskip",
+     "temperament": 0.979,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "group",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "explore",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1094,
+   "day": 23,
+   "near": [
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "explore",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1102,
+   "day": 23,
+   "near": [
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "follow",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1115,
+   "day": 24,
+   "near": [
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 163,
+     "species": "mirelick",
+     "temperament": 0.963,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "explore",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1125,
+   "day": 24,
+   "near": [
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "follow",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "follow",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1137,
+   "day": 24,
+   "near": [
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1149,
+   "day": 24,
+   "near": [
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "explore",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "social",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1163,
+   "day": 25,
+   "near": [
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "social",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1176,
+   "day": 25,
+   "near": [
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "explore",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1189,
+   "day": 25,
+   "near": [
+    {
+     "id": 119,
+     "species": "genvo",
+     "temperament": 0.963,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "explore",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "social",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1200,
+   "day": 25,
+   "near": [
+    {
+     "id": 119,
+     "species": "genvo",
+     "temperament": 0.963,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "follow",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "social",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "follow",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1218,
+   "day": 26,
+   "near": [
+    {
+     "id": 119,
+     "species": "genvo",
+     "temperament": 0.963,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 144,
+     "species": "rillsifter",
+     "temperament": 0.969,
+     "intent": "to-water",
+     "stage": "watch",
+     "seen": false
+    },
+    {
+     "id": 152,
+     "species": "mirelick",
+     "temperament": 1.078,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 221,
+     "species": "mosskip",
+     "temperament": 0.919,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1234,
+   "day": 26,
+   "near": [
+    {
+     "id": 119,
+     "species": "genvo",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 139,
+     "species": "rillsifter",
+     "temperament": 0.939,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": true
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "to-water",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 144,
+     "species": "rillsifter",
+     "temperament": 0.969,
+     "intent": "to-water",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 221,
+     "species": "mosskip",
+     "temperament": 0.919,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 222,
+     "species": "mosskip",
+     "temperament": 0.942,
+     "intent": "escape",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1248,
+   "day": 26,
+   "near": [
+    {
+     "id": 98,
+     "species": "needlejaw",
+     "temperament": 1.027,
+     "intent": "explore",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 119,
+     "species": "genvo",
+     "temperament": 0.963,
+     "intent": "band-watch",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 138,
+     "species": "rillsifter",
+     "temperament": 1.026,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 139,
+     "species": "rillsifter",
+     "temperament": 0.939,
+     "intent": "to-water",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "to-water",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 144,
+     "species": "rillsifter",
+     "temperament": 0.969,
+     "intent": "to-water",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 168,
+     "species": "mirelick",
+     "temperament": 0.947,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 221,
+     "species": "mosskip",
+     "temperament": 0.919,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 222,
+     "species": "mosskip",
+     "temperament": 0.942,
+     "intent": "escape",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1264,
+   "day": 27,
+   "near": [
+    {
+     "id": 1,
+     "species": "mosskip",
+     "temperament": 0.937,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 98,
+     "species": "needlejaw",
+     "temperament": 1.027,
+     "intent": "explore",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 138,
+     "species": "rillsifter",
+     "temperament": 1.026,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 139,
+     "species": "rillsifter",
+     "temperament": 0.939,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 144,
+     "species": "rillsifter",
+     "temperament": 0.969,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 221,
+     "species": "mosskip",
+     "temperament": 0.919,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 222,
+     "species": "mosskip",
+     "temperament": 0.942,
+     "intent": "escape",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1277,
+   "day": 27,
+   "near": [
+    {
+     "id": 98,
+     "species": "needlejaw",
+     "temperament": 1.027,
+     "intent": "explore",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 138,
+     "species": "rillsifter",
+     "temperament": 1.026,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 139,
+     "species": "rillsifter",
+     "temperament": 0.939,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 144,
+     "species": "rillsifter",
+     "temperament": 0.969,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 221,
+     "species": "mosskip",
+     "temperament": 0.919,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 222,
+     "species": "mosskip",
+     "temperament": 0.942,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1290,
+   "day": 27,
+   "near": [
+    {
+     "id": 138,
+     "species": "rillsifter",
+     "temperament": 1.026,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 139,
+     "species": "rillsifter",
+     "temperament": 0.939,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 144,
+     "species": "rillsifter",
+     "temperament": 0.969,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 159,
+     "species": "mirelick",
+     "temperament": 0.966,
+     "intent": "explore",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 221,
+     "species": "mosskip",
+     "temperament": 0.919,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 222,
+     "species": "mosskip",
+     "temperament": 0.942,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1296,
+   "day": 27,
+   "near": [
+    {
+     "id": 138,
+     "species": "rillsifter",
+     "temperament": 1.026,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 139,
+     "species": "rillsifter",
+     "temperament": 0.939,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 144,
+     "species": "rillsifter",
+     "temperament": 0.969,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 159,
+     "species": "mirelick",
+     "temperament": 0.966,
+     "intent": "explore",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 221,
+     "species": "mosskip",
+     "temperament": 0.919,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1316,
+   "day": 28,
+   "near": [
+    {
+     "id": 138,
+     "species": "rillsifter",
+     "temperament": 1.026,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 139,
+     "species": "rillsifter",
+     "temperament": 0.939,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 144,
+     "species": "rillsifter",
+     "temperament": 0.969,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 159,
+     "species": "mirelick",
+     "temperament": 0.966,
+     "intent": "explore",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 221,
+     "species": "mosskip",
+     "temperament": 0.919,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1329,
+   "day": 28,
+   "near": [
+    {
+     "id": 159,
+     "species": "mirelick",
+     "temperament": 0.966,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "mire-sniff",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "return-home",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 221,
+     "species": "mosskip",
+     "temperament": 0.919,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1339,
+   "day": 28,
+   "near": [
+    {
+     "id": 159,
+     "species": "mirelick",
+     "temperament": 0.966,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 221,
+     "species": "mosskip",
+     "temperament": 0.919,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1344,
+   "day": 28,
+   "near": [
+    {
+     "id": 159,
+     "species": "mirelick",
+     "temperament": 0.966,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 221,
+     "species": "mosskip",
+     "temperament": 0.919,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1367,
+   "day": 29,
+   "near": [
+    {
+     "id": 119,
+     "species": "genvo",
+     "temperament": 0.963,
+     "intent": "band-wander",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "learn-food",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "social",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "learn-food",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 221,
+     "species": "mosskip",
+     "temperament": 0.919,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1379,
+   "day": 29,
+   "near": [
+    {
+     "id": 119,
+     "species": "genvo",
+     "temperament": 0.963,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 138,
+     "species": "rillsifter",
+     "temperament": 1.026,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 159,
+     "species": "mirelick",
+     "temperament": 0.966,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "learn-food",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "social",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "learn-food",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 221,
+     "species": "mosskip",
+     "temperament": 0.919,
+     "intent": "explore",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1390,
+   "day": 29,
+   "near": [
+    {
+     "id": 119,
+     "species": "genvo",
+     "temperament": 0.963,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 138,
+     "species": "rillsifter",
+     "temperament": 1.026,
+     "intent": "to-water",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 159,
+     "species": "mirelick",
+     "temperament": 0.966,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "mire-rest",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "social",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 221,
+     "species": "mosskip",
+     "temperament": 0.919,
+     "intent": "drink",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1397,
+   "day": 30,
+   "near": [
+    {
+     "id": 119,
+     "species": "genvo",
+     "temperament": 0.963,
+     "intent": "group",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 138,
+     "species": "rillsifter",
+     "temperament": 1.026,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 159,
+     "species": "mirelick",
+     "temperament": 0.966,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "mire-prowl",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 213,
+     "species": "mosskip",
+     "temperament": 1.086,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 221,
+     "species": "mosskip",
+     "temperament": 0.919,
+     "intent": "drink",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1419,
+   "day": 30,
+   "near": [
+    {
+     "id": 119,
+     "species": "genvo",
+     "temperament": 0.963,
+     "intent": "group",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 138,
+     "species": "rillsifter",
+     "temperament": 1.026,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 139,
+     "species": "rillsifter",
+     "temperament": 0.939,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": true
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "migrate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "social",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 221,
+     "species": "mosskip",
+     "temperament": 0.919,
+     "intent": "herd-browse",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 222,
+     "species": "mosskip",
+     "temperament": 0.942,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    }
+   ]
+  },
+  {
+   "t": 1432,
+   "day": 30,
+   "near": [
+    {
+     "id": 98,
+     "species": "needlejaw",
+     "temperament": 1.027,
+     "intent": "explore",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 119,
+     "species": "genvo",
+     "temperament": 0.963,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 138,
+     "species": "rillsifter",
+     "temperament": 1.026,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 139,
+     "species": "rillsifter",
+     "temperament": 0.939,
+     "intent": "feed",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 144,
+     "species": "rillsifter",
+     "temperament": 0.969,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": "watch",
+     "seen": true
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "migrate",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 222,
+     "species": "mosskip",
+     "temperament": 0.942,
+     "intent": "escape",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 239,
+     "species": "genvo",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 240,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1440,
+   "day": 30,
+   "near": [
+    {
+     "id": 98,
+     "species": "needlejaw",
+     "temperament": 1.027,
+     "intent": "explore",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 138,
+     "species": "rillsifter",
+     "temperament": 1.026,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 139,
+     "species": "rillsifter",
+     "temperament": 0.939,
+     "intent": "group-alarm",
+     "stage": "flee",
+     "seen": true
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 144,
+     "species": "rillsifter",
+     "temperament": 0.969,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "group-alarm",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "follow",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 222,
+     "species": "mosskip",
+     "temperament": 0.942,
+     "intent": "escape",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 239,
+     "species": "genvo",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    },
+    {
+     "id": 240,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  },
+  {
+   "t": 1463,
+   "day": 31,
+   "near": [
+    {
+     "id": 126,
+     "species": "genvo",
+     "temperament": 1.075,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 139,
+     "species": "rillsifter",
+     "temperament": 0.939,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 142,
+     "species": "rillsifter",
+     "temperament": 1.07,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 144,
+     "species": "rillsifter",
+     "temperament": 0.969,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 147,
+     "species": "rillsifter",
+     "temperament": 1.049,
+     "intent": "to-water",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 169,
+     "species": "mirelick",
+     "temperament": 0.991,
+     "intent": "migrate",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 199,
+     "species": "genvo",
+     "temperament": 1.037,
+     "intent": "storm-shelter",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 200,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "storm-shelter",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 201,
+     "species": "genvo",
+     "temperament": 1.011,
+     "intent": "storm-shelter",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 202,
+     "species": "genvo",
+     "temperament": 1.031,
+     "intent": "storm-shelter",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 239,
+     "species": "genvo",
+     "temperament": 1.017,
+     "intent": "feed",
+     "stage": null,
+     "seen": false
+    },
+    {
+     "id": 240,
+     "species": "genvo",
+     "temperament": 1.014,
+     "intent": "feed",
+     "stage": null,
+     "seen": true
+    }
+   ]
+  }
+ ],
+ "stages": {
+  "watch": 25,
+  "flee": 13,
+  "investigate": 6,
+  "curious": 4,
+  "wary": 2,
+  "avoid": 1
+ },
+ "creatures": {
+  "1": {
+   "species": "mosskip",
+   "temperament": 0.937,
+   "stages": {}
+  },
+  "14": {
+   "species": "mosskip",
+   "temperament": 0.956,
+   "stages": {
+    "flee": 1
+   }
+  },
+  "22": {
+   "species": "mosskip",
+   "temperament": 1.012,
+   "stages": {}
+  },
+  "47": {
+   "species": "mosskip",
+   "temperament": 0.979,
+   "stages": {}
+  },
+  "54": {
+   "species": "mosskip",
+   "temperament": 0.922,
+   "stages": {}
+  },
+  "64": {
+   "species": "mosskip",
+   "temperament": 1.014,
+   "stages": {}
+  },
+  "73": {
+   "species": "rootling",
+   "temperament": 1.022,
+   "stages": {}
+  },
+  "76": {
+   "species": "rootling",
+   "temperament": 1.064,
+   "stages": {}
+  },
+  "82": {
+   "species": "rootling",
+   "temperament": 1.071,
+   "stages": {}
+  },
+  "88": {
+   "species": "rootling",
+   "temperament": 1.093,
+   "stages": {}
+  },
+  "90": {
+   "species": "rootling",
+   "temperament": 0.954,
+   "stages": {}
+  },
+  "95": {
+   "species": "rootling",
+   "temperament": 1.099,
+   "stages": {
+    "flee": 1
+   }
+  },
+  "98": {
+   "species": "needlejaw",
+   "temperament": 1.027,
+   "stages": {}
+  },
+  "104": {
+   "species": "needlejaw",
+   "temperament": 1.028,
+   "stages": {}
+  },
+  "110": {
+   "species": "genvo",
+   "temperament": 1.071,
+   "stages": {}
+  },
+  "111": {
+   "species": "genvo",
+   "temperament": 1.075,
+   "stages": {
+    "investigate": 3
+   }
+  },
+  "114": {
+   "species": "genvo",
+   "temperament": 1.006,
+   "stages": {}
+  },
+  "115": {
+   "species": "genvo",
+   "temperament": 1.056,
+   "stages": {}
+  },
+  "119": {
+   "species": "genvo",
+   "temperament": 0.963,
+   "stages": {}
+  },
+  "120": {
+   "species": "genvo",
+   "temperament": 1.083,
+   "stages": {}
+  },
+  "124": {
+   "species": "genvo",
+   "temperament": 0.901,
+   "stages": {}
+  },
+  "125": {
+   "species": "genvo",
+   "temperament": 1.091,
+   "stages": {}
+  },
+  "126": {
+   "species": "genvo",
+   "temperament": 1.075,
+   "stages": {
+    "investigate": 2
+   }
+  },
+  "127": {
+   "species": "genvo",
+   "temperament": 1.01,
+   "stages": {
+    "watch": 1
+   }
+  },
+  "138": {
+   "species": "rillsifter",
+   "temperament": 1.026,
+   "stages": {}
+  },
+  "139": {
+   "species": "rillsifter",
+   "temperament": 0.939,
+   "stages": {
+    "flee": 3,
+    "watch": 1
+   }
+  },
+  "142": {
+   "species": "rillsifter",
+   "temperament": 1.07,
+   "stages": {
+    "watch": 1
+   }
+  },
+  "143": {
+   "species": "rillsifter",
+   "temperament": 0.916,
+   "stages": {}
+  },
+  "144": {
+   "species": "rillsifter",
+   "temperament": 0.969,
+   "stages": {}
+  },
+  "147": {
+   "species": "rillsifter",
+   "temperament": 1.049,
+   "stages": {
+    "watch": 2
+   }
+  },
+  "151": {
+   "species": "mirelick",
+   "temperament": 0.931,
+   "stages": {}
+  },
+  "152": {
+   "species": "mirelick",
+   "temperament": 1.078,
+   "stages": {
+    "investigate": 1,
+    "curious": 3
+   }
+  },
+  "153": {
+   "species": "mirelick",
+   "temperament": 0.904,
+   "stages": {
+    "flee": 2,
+    "watch": 3
+   }
+  },
+  "154": {
+   "species": "mirelick",
+   "temperament": 1.08,
+   "stages": {}
+  },
+  "155": {
+   "species": "mirelick",
+   "temperament": 0.971,
+   "stages": {}
+  },
+  "156": {
+   "species": "mirelick",
+   "temperament": 0.976,
+   "stages": {}
+  },
+  "157": {
+   "species": "mirelick",
+   "temperament": 1.036,
+   "stages": {}
+  },
+  "158": {
+   "species": "mirelick",
+   "temperament": 0.922,
+   "stages": {}
+  },
+  "159": {
+   "species": "mirelick",
+   "temperament": 0.966,
+   "stages": {}
+  },
+  "160": {
+   "species": "mirelick",
+   "temperament": 0.905,
+   "stages": {
+    "watch": 1
+   }
+  },
+  "161": {
+   "species": "mirelick",
+   "temperament": 0.988,
+   "stages": {
+    "flee": 1
+   }
+  },
+  "162": {
+   "species": "mirelick",
+   "temperament": 1.086,
+   "stages": {}
+  },
+  "163": {
+   "species": "mirelick",
+   "temperament": 0.963,
+   "stages": {
+    "flee": 1,
+    "avoid": 1
+   }
+  },
+  "164": {
+   "species": "mirelick",
+   "temperament": 1.069,
+   "stages": {}
+  },
+  "165": {
+   "species": "mirelick",
+   "temperament": 1.091,
+   "stages": {}
+  },
+  "166": {
+   "species": "mirelick",
+   "temperament": 1.06,
+   "stages": {}
+  },
+  "167": {
+   "species": "mirelick",
+   "temperament": 1.017,
+   "stages": {
+    "curious": 1,
+    "flee": 3
+   }
+  },
+  "168": {
+   "species": "mirelick",
+   "temperament": 0.947,
+   "stages": {
+    "watch": 1
+   }
+  },
+  "169": {
+   "species": "mirelick",
+   "temperament": 0.991,
+   "stages": {}
+  },
+  "191": {
+   "species": "bankjaw",
+   "temperament": 0.903,
+   "stages": {}
+  },
+  "194": {
+   "species": "bankjaw",
+   "temperament": 0.928,
+   "stages": {}
+  },
+  "195": {
+   "species": "bankjaw",
+   "temperament": 1.019,
+   "stages": {}
+  },
+  "199": {
+   "species": "genvo",
+   "temperament": 1.037,
+   "stages": {
+    "watch": 4
+   }
+  },
+  "200": {
+   "species": "genvo",
+   "temperament": 1.014,
+   "stages": {
+    "wary": 2,
+    "watch": 4
+   }
+  },
+  "201": {
+   "species": "genvo",
+   "temperament": 1.011,
+   "stages": {
+    "flee": 1,
+    "watch": 2
+   }
+  },
+  "202": {
+   "species": "genvo",
+   "temperament": 1.031,
+   "stages": {
+    "watch": 5
+   }
+  },
+  "213": {
+   "species": "mosskip",
+   "temperament": 1.086,
+   "stages": {}
+  },
+  "221": {
+   "species": "mosskip",
+   "temperament": 0.919,
+   "stages": {}
+  },
+  "222": {
+   "species": "mosskip",
+   "temperament": 0.942,
+   "stages": {}
+  },
+  "239": {
+   "species": "genvo",
+   "temperament": 1.017,
+   "stages": {}
+  },
+  "240": {
+   "species": "genvo",
+   "temperament": 1.014,
+   "stages": {}
+  }
+ },
+ "errors": [],
+ "video": "page@5533695381301fca69c3fd96e8b5f37b.webm",
+ "summary": {
+  "nearbyCreatures": 61,
+  "responders": 19,
+  "stages": {
+   "watch": 25,
+   "flee": 13,
+   "investigate": 6,
+   "curious": 4,
+   "wary": 2,
+   "avoid": 1
+  },
+  "byStage": {
+   "watch": [
+    "genvo 1.01",
+    "rillsifter 0.939",
+    "rillsifter 1.07",
+    "rillsifter 1.049",
+    "mirelick 0.904",
+    "mirelick 0.905",
+    "mirelick 0.947",
+    "genvo 1.037",
+    "genvo 1.014",
+    "genvo 1.011",
+    "genvo 1.031"
+   ],
+   "flee": [
+    "mosskip 0.956",
+    "rootling 1.099",
+    "rillsifter 0.939",
+    "mirelick 0.904",
+    "mirelick 0.988",
+    "mirelick 0.963",
+    "mirelick 1.017",
+    "genvo 1.011"
+   ],
+   "investigate": [
+    "genvo 1.075",
+    "genvo 1.075",
+    "mirelick 1.078"
+   ],
+   "curious": [
+    "mirelick 1.078",
+    "mirelick 1.017"
+   ],
+   "wary": [
+    "genvo 1.014"
+   ],
+   "avoid": [
+    "mirelick 0.963"
+   ]
+  }
+ }
+}

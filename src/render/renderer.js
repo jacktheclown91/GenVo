@@ -16,6 +16,7 @@ import {BorderTerrain} from './border-terrain.js';
 import {continueRegionalScene} from './regional-scene.js';
 import {beginTintFrame} from './indexed-part-renderer.js';
 import {attentionTarget,HeadAttentionPresentation} from './head-attention.js';
+import {reactionExpression,applyReactionPose} from './reaction-expression.js';
 import {gaitTravelFor} from './genvo.js';
 import {assemblyFor} from './creature-assembler.js';
 import {locomotionStyle,locomotionOffsets} from './locomotion-style.js';
@@ -1049,6 +1050,8 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const encounter=this.encounters?.sample(this.sim,a,phase)||{};
     // Brace receipts, stalled charges, carried wounds and retreats read from combat state.
     const reaction=(this.reactions||=new EncounterReactionPresentation()).sample(this.sim,a,this.encounters?.time||0),defense=this.reactions.sampleDefense(this.sim,a,this.encounters?.time||0),reactionAt=reactionAttention(reaction);if(reactionAt&&!encounter.attention&&!a.player)encounter.attention=reactionAt;
+    // Each animal's own threat stage (watching, backing away) from staged perception.
+    const fright=reaction||a.player?null:reactionExpression(this.sim,a,{moving,time:this.encounters?.time||0});if(fright?.attention&&!encounter.attention)encounter.attention=fright.attention;
     const frame=Math.floor(phase)&7,gait=cycle8(GAIT,phase),alert=!!social?.alarm;
     // v1.59.0: cached creatures animate in quarter frames while moving (32 poses a stride), so their
     // bodies move smoothly instead of jumping between eight whole poses; idle creatures use whole frames.
@@ -1085,13 +1088,13 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // Body and joints yield above support; contact shadows/toes stay on the ground.
     if(carriage){behavior.bodyRise+=carriage.rise;behavior.bodySway=(behavior.bodySway||0)+carriage.sway;behavior.torsoTwist=carriage.twist;behavior.dorsalRoll=carriage.roll;behavior.bodyLean=(behavior.bodyLean||0)+carriage.lean}
     if(!social?.alarm)applyFeedingExpression(behavior,feeding);
-    applyEncounterPose(behavior,encounter);applyEncounterReaction(behavior,reaction);applyDefenseReaction(behavior,defense);
+    applyEncounterPose(behavior,encounter);applyEncounterReaction(behavior,reaction);applyDefenseReaction(behavior,defense);applyReactionPose(behavior,fright);
     const attackTarget=a.player&&a.attackAction?.targetId!==undefined?this.sim.animals.find(t=>t.id===a.attackAction.targetId&&t.alive):null;
     const looking=attentionTarget(a,{social,encounter,feeding,committedAim,attackTarget,action});
     behavior.headTurn=(this.headAttention||=new HeadAttentionPresentation()).sample(this.sim,a,looking,drawDir,this.encounters?.time||0);
     const combatStatus=a.player?this.sim.playerCombat?.status?.(a):null,winded=a.player?!!this.sim.exertion?.isWinded?.(a):false;if(combatStatus)applyPlayerCombatPose(behavior,combatStatus,winded,a);
     const impact=this.sim.lastPlayerCombatImpact?.targetId===a.id&&this.sim.tickCount-this.sim.lastPlayerCombatImpact.tick<=2?this.sim.lastPlayerCombatImpact:null;
-    const pose={growth:visualGrowth,encounter,social,alert,sharedAlert:!!social?.sharedAlarm,dependent:dev.stage==='newborn'||dev.stage==='juvenile',stage:dev.stage,dir:drawDir,action,life,behavior,hidden:!!a.hidden,carry:a.carryingFood||null,combatImpact:impact,partExpression:this.partExpressions.sample(this.sim,a,action)};
+    const pose={reactionStage:fright?.stage||null,growth:visualGrowth,encounter,social,alert,sharedAlert:!!social?.sharedAlarm,dependent:dev.stage==='newborn'||dev.stage==='juvenile',stage:dev.stage,dir:drawDir,action,life,behavior,hidden:!!a.hidden,carry:a.carryingFood||null,combatImpact:impact,partExpression:this.partExpressions.sample(this.sim,a,action)};
     const contact=environmentContactFor(this.sim.world,a,{action,phase,moving});
     this.drawPredatorChargeTell(a,tile,px,py);
     let recoilX=0,recoilY=0;if(impact&&impact.kind!=='miss'){const p=this.sim.player(),dx=a.x-(p?.x??a.x),dy=a.y-(p?.y??a.y),len=Math.hypot(dx,dy)||1,k=(3-Math.max(0,this.sim.tickCount-impact.tick))*.32;recoilX=dx/len*k;recoilY=dy/len*k}
@@ -1189,7 +1192,7 @@ function vectorDir(dx,dy,fallback=0){if(Math.abs(dx)<.001&&Math.abs(dy)<.001)ret
 function hash2(x,y,salt=0){let n=(x*374761393+y*668265263+salt*1442695041)>>>0;n=(n^(n>>13))*1274126177>>>0;return((n^(n>>16))>>>0)/4294967295}
 // v1.57.0: what a creature's finished sprite depends on, so a pose seen before is one canvas copy.
 // The active creature is never cached (its pose reacts continuously to input and combat).
-function spriteKey(a,pal,dir,phase,moving,pose,life){return a.id+'|'+(a.bodyPlan?.id||'')+'|'+pal.body+'|'+dir+'|'+(Math.round(phase*4)&31)+'|'+(moving?1:0)+'|'+pose.action+'|'+pose.stage+'|'+(pose.alert?1:0)+(pose.dependent?1:0)+(pose.hidden?1:0)+(life?.hurt?1:0)+(life?.exhausted?1:0)+(life?.sick?1:0)+(life?.blink?1:0)+(pose.carry?1:0)+'|growth'+(pose.growth??1)+'|breath'+(life?.breath??0)+'|settle'+(life?.settle??0)+':'+((life?.settleIndex??0)%Math.max(1,a.bodyPlan?.nodes.filter(n=>n.socket?.startsWith('limb.')).length||8))+'|'+(a.genVersion||0)}
+function spriteKey(a,pal,dir,phase,moving,pose,life){return a.id+'|'+(a.bodyPlan?.id||'')+'|'+pal.body+'|'+dir+'|'+(Math.round(phase*4)&31)+'|'+(moving?1:0)+'|'+pose.action+'|'+pose.stage+'|'+(pose.alert?1:0)+(pose.dependent?1:0)+(pose.hidden?1:0)+(life?.hurt?1:0)+(life?.exhausted?1:0)+(life?.sick?1:0)+(life?.blink?1:0)+(pose.carry?1:0)+'|growth'+(pose.growth??1)+'|breath'+(life?.breath??0)+'|settle'+(life?.settle??0)+':'+((life?.settleIndex??0)%Math.max(1,a.bodyPlan?.nodes.filter(n=>n.socket?.startsWith('limb.')).length||8))+'|'+(a.genVersion||0)+(pose.reactionStage?'|r'+pose.reactionStage+(pose.behavior?.headTurn??0):'')}
 function smoothNoise2(x,y,cell=8,salt=0){
   const gx=Math.floor(x/cell),gy=Math.floor(y/cell),fx=(x-gx*cell)/cell,fy=(y-gy*cell)/cell;
   const sx=fx*fx*(3-2*fx),sy=fy*fy*(3-2*fy),a=hash2(gx,gy,salt),b=hash2(gx+1,gy,salt),c=hash2(gx,gy+1,salt),d=hash2(gx+1,gy+1,salt);
