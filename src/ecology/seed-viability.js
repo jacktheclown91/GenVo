@@ -4,7 +4,7 @@ import {PLANTS} from '../sim/config.js';
 // discrete propagule: the existing ovule unit (`dispersal.localRelease`, the
 // mass of one fertilizable ovule) is the provision of one seed. Continuous bank
 // decay used to leave every cohort as an ever-shrinking positive fraction, so
-// cohorts holding a hundredth of one seed — which can never germinate — kept
+// cohorts holding a hundredth of one seed, which can never germinate, kept
 // their genomes alive indefinitely.
 // Each day, within one cell, the cohorts holding less than one whole seed pool
 // their mass. That pool funds a whole number of discrete seeds (stochastically

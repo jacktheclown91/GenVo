@@ -12,7 +12,7 @@ import {coldFloraTemperatureFactor} from './cold-flora.js';
 //    dead tissue becomes litter and regrowth stays funded by water, minerals
 //    and stored energy.
 //  - Flowering conditions: flowering and seed release need suitable local
-//    conditions — the same moisture x temperature fit seed germination uses.
+//    conditions, the same moisture x temperature fit seed germination uses.
 // All losses go to the existing plant-litter route; nothing is created.
 export const PLANT_LIFECYCLE=Object.freeze({policy:'plant-lifecycle/1',droughtLoss:.02,turnoverPerGrowth:.25,floweringFit:.5});
 export const plantLifecycleEnabled=sim=>sim?.plantLifecycleRules===PLANT_LIFECYCLE.policy;
@@ -22,7 +22,7 @@ export const moistureFit=(waterNeed,moisture)=>Math.max(0,1-Math.abs(moisture-wa
 export function siteFit(kind,waterNeed,moisture,temp){return moistureFit(waterNeed,moisture)*coldFloraTemperatureFactor(kind,temp)}
 // Evaluation variants (runtime experiment switch, never saved). `base`
 // reproduces plant-lifecycle/1 exactly and is the default.
-//  dormancy: tissue turns over only while metabolically active — senescence is
+//  dormancy: tissue turns over only while metabolically active, senescence is
 //    scaled by the kind's temperature response, so winter-dormant tissue holds.
 //  chronic: drought stress only below a moisture fit of chronicFit, scaled to
 //    zero at that fit, so marginal-but-viable sites are not taxed.

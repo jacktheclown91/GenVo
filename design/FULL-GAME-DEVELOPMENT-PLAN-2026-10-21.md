@@ -77,6 +77,23 @@ Run sustained browser journeys at continental scale; natural stable/divergent li
 
 Use targeted regression and browser checks throughout construction. Reserve expensive comprehensive acceptance for substantial integration. Automated evidence, browser observation and creator acceptance remain separate. Commit, push and release only within current creator authorization.
 
+## Pre-jam priorities (creator direction 2026-10-23)
+
+| Priority | Status |
+|---|---|
+| 1. Creature personality and behaviour: organisms that feel different in how they move, hunt, forage and respond (build on inherited temperament and anatomy-directed routines in `wildlife-rhythm.js`) | not started |
+| 2. Evolution feedback: inherited changes, new abilities and generational differences made noticeable | first slice done: the first-generation arc, see `docs/FIRST-GENERATION-ARC-2026-10-23.md` |
+| 3. Player interactions: animation and feedback for feeding, combat, courtship and raising young | not started |
+| 4. World exploration: distant regions, unusual habitats and discoveries rewarding | not started |
+| 5. Performance polish without sacrificing the ecological simulation | sliced day-boundary ticks done; remaining long frames are rendering and need real-GPU measurement |
+
+**Further direction:**
+- Sharpen the first generation (started).
+- Make anatomy change verbs rather than numbers.
+- Stage visible ecological drama early (seasonal pressure, territory shifts, resource scars) from real state.
+- Continue the Creature Lab and scenario export path.
+- Assess important missing original-design features for safe completion before the jam.
+
 ## Dependency order
 
 1. Responsive reliable traversal and distant processing.

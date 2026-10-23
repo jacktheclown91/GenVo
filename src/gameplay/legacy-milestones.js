@@ -2,11 +2,11 @@
 // arise from GenVo's existing biological rules, not a campaign or a fixed final
 // creature. Nothing here creates offspring, protects a family, forces a
 // mutation or ends the simulation; the world continues after every milestone.
-//  The First Legacy — survive, reproduce, and continue the line: awarded at the
+//  The First Legacy, survive, reproduce, and continue the line: awarded at the
 //    first real handoff of control to a living DESCENDANT of the creature you
 //    were (chosen with H, or after its death). A relative who is not a
 //    descendant continues the run but does not earn it.
-//  Eight-Generation Legacy — the existing generation-8 "lineage established"
+//  Eight-Generation Legacy, the existing generation-8 "lineage established"
 //    milestone, recorded with the same summary.
 // The record is created only when a milestone is earned, so saves without one
 // are unchanged. Summaries describe actual organisms at the moment of handoff.
