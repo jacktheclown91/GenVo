@@ -264,6 +264,9 @@ export function saveMetadata(sim,{savedAt=new Date().toISOString(),reason='autos
 }
 
 export function createSimulationSnapshot(sim,{reason='autosave',savedAt=new Date().toISOString(),regionalDeparture=false,ownedRegionalSeedMetadata=false}={}){
+  // A tick running across frames completes first, exactly as the atomic tick
+  // would have, so no save, travel copy or residency write sees half a tick.
+  sim.finishTick?.();
   // A departed region owns only its local world and fauna. Its caller holds
   // the other archived sessions and surveyed Worlds separately. Do not
   // materialize either only to throw it away before a deep clone.
@@ -674,7 +677,7 @@ export class SaveManager{
     if(this.pendingTimer)clearTimeout(this.pendingTimer);
     this.pendingTimer=setTimeout(()=>{
       this.pendingTimer=null;
-      const run=()=>{this.idleHandle=null;const nextReason=this.pendingReason||reason;this.pendingReason=null;this.saveNow(nextReason).catch(()=>{})};
+      const run=()=>{this.idleHandle=null;if(this.getSim?.()?.tickInProgress){this.schedule(this.pendingReason||reason,120);return}const nextReason=this.pendingReason||reason;this.pendingReason=null;this.saveNow(nextReason).catch(()=>{})};
       if(typeof requestIdleCallback==='function')this.idleHandle=requestIdleCallback(run,{timeout:1800});else this.idleHandle=setTimeout(run,0);
     },Math.max(0,delay));
   }

@@ -3,6 +3,13 @@
   "principle": "One live authority for each mechanism. Multiple states, species, art drafts and measured outcomes are permitted; competing runtime definitions are not.",
   "gameEntrypoint": "src/main.js",
   "systems": {
+    "slicedTicks": {
+      "authority": "src/sim/simulation.js",
+      "resumable": "src/sim/resumable.js",
+      "pacing": "src/sim/frame-stepper.js",
+      "consumers": ["src/main.js", "src/world/page-vegetation-work.js", "src/ecology/botanical-reproduction.js", "src/ecology/dispersal.js", "src/ecology/migration.js", "src/persistence/save-manager.js"],
+      "contract": "docs/SLICED-TICKS-2026-10-22.md"
+    },
     "legacyMilestones": {
       "authority": "src/gameplay/legacy-milestones.js",
       "consumers": ["src/lineage/lineage.js", "src/ui/tutorial.js", "src/ui/legacy-summary.js", "src/main.js", "src/persistence/save-manager.js"],

@@ -256,7 +256,7 @@ function toggleFamilyPassage(){
 }
 let planetaryTravelPending=false;
 async function travelPlanetaryRegion({automatic=false}={}){
-  if(planetaryTravelPending||tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||succession.open)return;
+  if(planetaryTravelPending||sim.tickInProgress||tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||succession.open)return;
   planetaryTravelPending=true;
   try{
     const source=sim,status=planetaryTravelAvailability(source);if(!status.enabled){tutorial.showToast(status.reason,2600,'warn');return}
@@ -274,7 +274,7 @@ async function travelPlanetaryRegion({automatic=false}={}){
     tutorial.showToast(result.message,3500,'success');audio.note('confirm');
   }catch(error){console.error('Regional crossing failed:',error);tutorial.showToast('Regional passage could not be completed. Current world remains active.',3500,'warn');audio.note('deny')}finally{planetaryTravelPending=false}
 }
-function installSimulation(next,{fresh=false,resume=false,keepMovement=false,regionalCrossing=false}={}){const previous=sim;clearWarmRegions();
+function installSimulation(next,{fresh=false,resume=false,keepMovement=false,regionalCrossing=false}={}){const previous=sim;previous?.finishTick?.();clearWarmRegions();
   cancelPlanetarySeams(sim);planetaryWork.clear();planetaryPreparation.clear();const continuedScene=regionalCrossing&&renderer.continueRegionalScene(previous,next);seed=next.seed;sim=next;renderer.sim=sim;observer.reset();succession.close();editor.close();syncSpeedButton();frameStepper.reset();last=performance.now();hudTimer=0;if(!keepMovement)clearMovementKeys();
   manualPause=resume?!!sim.paused:false;if(!resume)sim.paused=false;if(pauseNotice)pauseNotice.hidden=!manualPause;
   leadershipWheel.resetDiscovery();tutorial.setSimulation(sim,{fresh,resume:resume||regionalCrossing});effectFeedback.setSimulation(sim);journal.setSimulation(sim);audio.setSimulation(sim);
@@ -294,6 +294,13 @@ async function loadSavedLineage(){
 }
 saveNowButton?.addEventListener('click',()=>saveManager.saveNow('manual').catch(error=>console.error(error)));
 loadSaveButton?.addEventListener('click',()=>{if(confirm('Load the last saved lineage? Unsaved progress since that save will be lost.'))loadSavedLineage()});
+// Day-boundary slicing: input that arrives while a tick is running across frames
+// is held and replayed in order once it completes, so no command acts on a
+// half-advanced world. Text fields and browser shortcuts are never held.
+const heldInput={queue:[],replaying:new WeakSet(),
+  hold(e){if(!sim.tickInProgress||this.replaying.has(e)||e.ctrlKey||e.metaKey||e.target?.closest?.('input,textarea,select,[contenteditable="true"]'))return;e.preventDefault();e.stopImmediatePropagation();this.queue.push(e)},
+  replay(){const queue=this.queue;this.queue=[];for(const e of queue){const init={bubbles:e.bubbles,cancelable:e.cancelable,composed:e.composed};for(const k of ['key','code','location','repeat','shiftKey','altKey','ctrlKey','metaKey','clientX','clientY','screenX','screenY','button','buttons','detail','pointerId','pointerType','isPrimary','width','height','pressure'])if(k in e)init[k]=e[k];const copy=new e.constructor(e.type,init);this.replaying.add(copy);(e.target?.isConnected?e.target:window).dispatchEvent(copy)}}};
+for(const type of ['keydown','keyup','pointerdown','pointerup','mousedown','mouseup','click','dblclick','contextmenu'])addEventListener(type,e=>heldInput.hold(e),{capture:true});
 addEventListener('pointerdown',()=>{audio.unlock()},{passive:true});
 addEventListener('keydown',e=>{
   if(e.target.closest?.('#interactionDock,.context-radial,#stageUtilities')&&['Tab','Enter','Space'].includes(e.code))return;
@@ -377,7 +384,7 @@ addEventListener('blur',clearMovementKeys);
 function input(){const manual={up:keys.KeyW||keys.ArrowUp,down:keys.KeyS||keys.ArrowDown,left:keys.KeyA||keys.ArrowLeft,right:keys.KeyD||keys.ArrowRight,sprint:keys.ShiftLeft||keys.ShiftRight,brace:braceInput.read()||!!keys.KeyJ};return pointerApproach?pointerApproach.read(manual):manual}
 // One fair background admission per rendered frame; canonical ticks remain atomic.
 const planetaryWork=new PlanetaryWorkQueue({isCurrent:target=>target===sim});
-const playing=target=>target===sim&&!frontEnd.isOpen&&!target.paused&&renderer.sceneShown;
+const playing=target=>target===sim&&!frontEnd.isOpen&&!target.paused&&!target.tickInProgress&&renderer.sceneShown;
 const planetaryPreparation=new PlanetaryPreparation({schedule:run=>planetaryWork.enqueue('destination',sim,run,{ready:playing})});
 const farRegions={jobs:0,observe(target){
  if(!target.regionalDemographyRules)return;
@@ -386,7 +393,7 @@ const farRegions={jobs:0,observe(target){
 }};
 const borderPreparation={observe(target){
  if(!target.world.planet||!renderer.borderTerrain)return;
- planetaryWork.enqueue('border',target,()=>renderer.borderTerrain.prepareNext(target),{ready:()=>!frontEnd.isOpen&&renderer.sceneShown});
+ planetaryWork.enqueue('border',target,()=>renderer.borderTerrain.prepareNext(target),{ready:()=>!frontEnd.isOpen&&!sim.tickInProgress&&renderer.sceneShown});
 }};
 const regionalResidency={last:null,observe(target){
  if(!saveManager.available||!target.regionalResidencyRules)return;
@@ -398,7 +405,11 @@ let last=performance.now(),hudTimer=0,lastFrontierWarning=-Infinity;
 function frame(now){
   const frameWorkStart=performance.now();
   const dt=Math.max(0,Math.min(.1,(now-last)/1000));last=now;const controls=input();
-  const processing=frameStepper.advance(dt,observer.speed,hz=>sim.playerControlStep(controls,hz),()=>sim.update(controls,{externalPlayerControl:true}),{paused:sim.paused||!renderer.sceneShown,beforeStep:()=>!prepareRegionalBiology(sim)&&!preparePlanetarySeams(sim)});
+  const processing=frameStepper.advance(dt,observer.speed,hz=>sim.playerControlStep(controls,hz),deadline=>sim.beginTick(controls,{externalPlayerControl:true},deadline),{paused:sim.paused||!renderer.sceneShown,beforeStep:()=>!prepareRegionalBiology(sim)&&!preparePlanetarySeams(sim),
+    resume:deadline=>{const done=sim.continueTick(deadline);if(done)heldInput.replay();return done}});
+  // While a tick runs across frames only the scene is drawn: no travel, regional
+  // work, tutorial, editor, notices or HUD reads that act on a half-advanced world.
+  if(processing.tickPending){renderer.renderOrPrepare();fpsMeter.frame();fpsMeter.recordWork(performance.now()-frameWorkStart);requestAnimationFrame(frame);return}
   setProcessingLoad(sim,processing);
   if(!frontEnd.isOpen&&!sim.paused)planetaryPreparation.observe(sim);
   if(!frontEnd.isOpen&&!sim.paused)regionalResidency.observe(sim);
@@ -468,4 +479,4 @@ const contextTray=new CreatureContextTray({canvas,renderer,braceInput,getSim:()=
 setInteractPromptSource(()=>{try{const c=contextTray.directChoice?.();return c?.enabled?c.label:null}catch{return null}});
 journal.onRevisit=id=>{const o=sim.discovery.seedObservations?.find(o=>o.id===id);if(!o)return;journal.setOpen(false);const target=sim.discovery.seedPatchTarget(o);if(!contextTray.selectResource(target))return;const choice=contextTray.directChoice();if(choice?.enabled)contextTray.interact();else tutorial.showToast(choice?.reason||'This body cannot revisit the patch.',1800,'warn')};
 
-window.__GENVO8__={frameStepper,planetaryWork,planetaryPreparation,regionalResidency,borderPreparation,farRegions,get pointerApproach(){return pointerApproach},nativeArtStatus,courtshipTray,braceInput,contextTray,combatActions:()=>combatActions(sim),get sim(){return sim},CFG,setForm,formReading,tutorial,renderer,journal,audio,leadershipWheel,saveManager,loadSavedLineage,observer,editor,fieldGuide};
+window.__GENVO8__={frameStepper,heldInput,planetaryWork,planetaryPreparation,regionalResidency,borderPreparation,farRegions,get pointerApproach(){return pointerApproach},nativeArtStatus,courtshipTray,braceInput,contextTray,combatActions:()=>combatActions(sim),get sim(){return sim},CFG,setForm,formReading,tutorial,renderer,journal,audio,leadershipWheel,saveManager,loadSavedLineage,observer,editor,fieldGuide};

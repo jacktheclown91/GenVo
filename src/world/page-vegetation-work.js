@@ -2,6 +2,7 @@
 // retaining the original global row-major cell order and one canonical World.
 // No virtual flora, offscreen budget, skipped cells, asynchronous task or RNG.
 import {WORLD_PAGE_SIZE} from './pages.js';
+import {drain} from '../sim/resumable.js';
 export const PAGE_VEGETATION_WORK_SCHEMA=1;
 const safe=n=>Number.isSafeInteger(n)&&n>=0;
 function geometry(w){
@@ -22,7 +23,9 @@ export function beginPageVegetationDay(sim){
 // Called only by the producer phase. Traversal is still exact i=0,1,...,len-1
 // so all legacy random draws, resource allocation and dispersal effects are
 // deterministic and in the same order regardless of page cache/window.
-export function visitLandByWorldPage(w,visitor){
+export function visitLandByWorldPage(w,visitor){return drain(visitLandByWorldPageSteps(w,visitor))}
+// The same traversal as resumable steps: it may pause only between rows.
+export function* visitLandByWorldPageSteps(w,visitor,rowsPerStep=16){
  const grid=geometry(w),counts=new Uint32Array(grid*grid),n=w.n;
  if(typeof visitor!=='function')throw Error('Vegetation page work requires a visitor.');
  for(let y=0;y<n;y++){
@@ -31,6 +34,7 @@ export function visitLandByWorldPage(w,visitor){
    const x0=px*WORLD_PAGE_SIZE,x1=Math.min(n,x0+WORLD_PAGE_SIZE),page=pageRow+px;
    for(let x=x0;x<x1;x++){const i=row+x;if(w.water[i])continue;visitor(i);counts[page]++;}
   }
+  if((y+1)%rowsPerStep===0)yield;
  }
  return counts;
 }

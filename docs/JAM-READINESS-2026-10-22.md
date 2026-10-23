@@ -76,7 +76,9 @@ In Chromium at 1x over the same journey ([before](jam-readiness-2026-10-22/befor
 
 Each run's single largest task (2,286 ms before, 1,156 ms after) was at world creation.
 
-**Remaining.** The day-boundary tick still costs about 500–600 ms in Node and up to about 700 ms in headless Chromium, once per simulated day (6 s at 1x). What remains is spread across about 25 botanical and producer functions with no single hotspot.
+**Update (later on October 22):** the day-boundary tick now runs across frames with identical results. See [SLICED-TICKS-2026-10-22.md](SLICED-TICKS-2026-10-22.md). The paragraph below describes the state before that change.
+
+**Remaining (before slicing).** The day-boundary tick still costs about 500–600 ms in Node and up to about 700 ms in headless Chromium, once per simulated day (6 s at 1x). What remains is spread across about 25 botanical and producer functions with no single hotspot.
 
 `FrameStepper` deliberately treats a tick as atomic. Removing this hitch therefore means one of two things, which is a design decision:
 - spreading the day-boundary work across frames, which would break that contract and requires deferring saves, crossings and input while a tick is partly done;
@@ -107,6 +109,6 @@ At each point the save round-trips exactly, and the reloaded world continues ide
 
 - Manual play by a person at 1x.
 - A real GPU or other browsers.
-- The day-boundary hitch, described above.
+- The day-boundary hitch, since sliced; the remaining long frames are rendering.
 - Browser-level save and reload through IndexedDB during these moments. The Node snapshot path is what is tested.
 - Release packaging.
