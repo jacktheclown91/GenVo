@@ -26,16 +26,17 @@ export const JUVENILE_SWITCH={growthCost:true,preyAppraisal:true};
 export const GROWTH_EFFICIENCY=.75,GROWTH_RESERVE_FLOOR=.25,TISSUE_ENERGY_PER_MASS=FRESHWATER_FOOD.detritus.nutrition;
 
 const massAt=(animal,age)=>bodyMass({...animal,age});
-export function growthCostForDay(animal){
+// energyPerMass: the energy one unit of the animal's tissue holds (ecology/tissue-energy.js).
+export function growthCostForDay(animal,energyPerMass=TISSUE_ENERGY_PER_MASS){
   const s=SPECIES[animal?.species];if(!s||animal.age>=s.maturity)return 0;
   const gain=Math.max(0,massAt(animal,animal.age+1)-massAt(animal,animal.age));
-  return gain*TISSUE_ENERGY_PER_MASS/GROWTH_EFFICIENCY/Math.max(.5,animal.genes?.metabolism??1);
+  return gain*energyPerMass/GROWTH_EFFICIENCY/Math.max(.5,animal.genes?.metabolism??1);
 }
 // Called once per animal at each day boundary in place of a plain age++.
-export function advanceAgeDay(animal,stats=null){
+export function advanceAgeDay(animal,stats=null,energyPerMass=TISSUE_ENERGY_PER_MASS){
   const s=SPECIES[animal.species];
   if(!JUVENILE_SWITCH.growthCost||!s||animal.age>=s.maturity){animal.age++;return}
-  const cost=growthCostForDay(animal),floor=s.maxEnergy*GROWTH_RESERVE_FLOOR;
+  const cost=growthCostForDay(animal,energyPerMass),floor=s.maxEnergy*GROWTH_RESERVE_FLOOR;
   if(animal.energy-cost>=floor){animal.energy-=cost;animal.age++;animal.growthPaid=(animal.growthPaid||0)+cost;if(stats)stats.growthEnergy=(stats.growthEnergy||0)+cost}
   else{animal.growthDelayDays=(animal.growthDelayDays||0)+1;if(stats)stats.growthDelays=(stats.growthDelays||0)+1}
 }

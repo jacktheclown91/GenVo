@@ -4,9 +4,9 @@ import {SPECIES} from '../organisms/species.js';
 
 // Read the living animal's own authority. Never reconstruct missing historical
 // tissue or treat the family's next-generation design as already grown mass.
-export function bodyCostReading(animal){
+export function bodyCostReading(animal,energyPerMass=undefined){
   if(!animal?.alive)return null;
-  const currentMass=bodyMass(animal),adultMass=adultBodyMass(animal),cost=growthCostForDay(animal),floor=SPECIES[animal.species].maxEnergy*GROWTH_RESERVE_FLOOR;
+  const currentMass=bodyMass(animal),adultMass=adultBodyMass(animal),cost=growthCostForDay(animal,energyPerMass),floor=SPECIES[animal.species].maxEnergy*GROWTH_RESERVE_FLOOR;
   const growing=animal.age<SPECIES[animal.species].maturity,paidGrowth=JUVENILE_SWITCH.growthCost;
   const canPay=growing&&paidGrowth&&animal.energy-cost>=floor;
   const next=growing?(paidGrowth?`Next growth needs ${cost.toFixed(2)} energy. ${canPay?'Reserves can cover it.':'Growth waits until enough energy remains after payment.'}`:'Growth payment is disabled.'): 'Fully grown.';

@@ -12,6 +12,7 @@ import {compareGenes,traitListText,visualChangeText,strongestTraitText} from '..
 import {drawLineagePortrait} from '../render/lineage-portrait.js';
 import {ADAPTATIONS,nearThreshold} from '../lineage/evolution.js';
 import {comparePhysicalBuilds,offspringPartOrigins,originSummary} from '../lineage/breeding-guidance.js';
+import {tissueEnergy} from '../ecology/tissue-energy.js';
 
 export class FieldJournal{
   constructor(sim){
@@ -71,7 +72,7 @@ export function buildJournalEntry(sim,recordId){
     trait:animal?strongestTraitText(animal):traitListText(compareGenes(record.genes,founder?.genes||record.genes,{limit:2}),{empty:'close to the family baseline'}),
     changes:traitListText(changes,{empty:'close to the founder'}),looks,
     adaptations:(record.adaptations||[]).map(id=>ADAPTATIONS[id]?.name).filter(Boolean),
-    bodyCost:bodyCostReading(animal),
+    bodyCost:bodyCostReading(animal,animal?tissueEnergy(sim,animal):undefined),
     bodyComparison:lineageComparisonModels(sim,record.id).map(m=>({label:m.label,id:m.id})),
     seedPatches:(sim.discovery.seedObservations||[]).filter(o=>o.actorId===record.id).slice(-8).map(o=>({id:o.id,text:seedPatchDescription(o),when:'Last observed day '+o.observedDay})),
     habits:sim.habits?.summary?.(animal||{habits:record.habits})||'no settled habits yet',

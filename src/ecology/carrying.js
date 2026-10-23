@@ -8,6 +8,7 @@ import {CFG,PLANTS} from '../sim/config.js';
 import {SPECIES} from '../organisms/species.js';
 import {groundDiet,canHunt,plantPreference} from './functional-diet.js';
 import {DEMAND_REVIEW} from './demand-review.js';
+import {meatEnergy} from './tissue-energy.js';
 import {canSwim} from '../lineage/lifestyle.js';
 
 const clamp=(min,max,v)=>Math.max(min,Math.min(max,v));
@@ -62,7 +63,7 @@ export class CarryingPressureController{
         const edible=this.sim.dispersal.seedReserve[kind]?this.sim.dispersal.cropYield(a,kind,i)*nutrition:energy*eff;
         food+=edible;rows.push({kind,x,y,wet:false,preference:edible/energy,energy,stock});
       }
-      {const pref=plantPreference(a,'carrion'),stock=w.carrion?.[i]||0;if(pref>0&&stock>0){const energy=stock*34;food+=energy*pref;rows.push({kind:'carrion',x,y,wet:false,preference:pref,energy})}}
+      {const pref=plantPreference(a,'carrion'),stock=w.carrion?.[i]||0;if(pref>0&&stock>0){const energy=stock*meatEnergy(this.sim,a);food+=energy*pref;rows.push({kind:'carrion',x,y,wet:false,preference:pref,energy})}}
     }
     return{value:land?food/land:0,rows,waterEnergy,totalEnergy:food};
   }

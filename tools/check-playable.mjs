@@ -100,6 +100,7 @@ const runtime=[
   'tests/tissue-water.mjs',
   'tests/winter-water.mjs',
   'tests/wildlife-needs.mjs',
+  'tests/tissue-energy.mjs',
   'tests/regional-multi-hop-biology.mjs',
   'tests/regional-synchronized-replay.mjs',
   'tests/aquatic.mjs',
