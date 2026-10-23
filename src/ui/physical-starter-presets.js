@@ -10,10 +10,10 @@ import {flightAvailability} from '../lineage/flight.js';
 import {canOccupy} from '../lineage/lifestyle.js';
 
 export const PHYSICAL_STARTERS=Object.freeze({
- jump:{label:'Spring jumper',part:'spring-leg',action:'Jump from dry ground using your paired spring legs.',hint:'Your spring legs can launch a real jump. Use Jump on firm ground; the arc consumes breath and food energy.'},
- burrow:{label:'Ground burrower',part:'digging-forelimb',action:'Excavate suitable dry soil with both digging forelimbs.',hint:'Your digging forelimbs can excavate on this suitable ground. Burrowing uses real work and moves real soil.'},
- flight:{label:'Winged flier',part:'flight-wing',action:'Take off from solid ground with an inherited wing.',hint:'Your winged body can take off from firm ground. Fly to cross water or slopes, then Land. Powered flight consumes real energy.'},
- dive:{label:'Shore swimmer',part:'webbed-leg',action:'Enter nearby deep enough water and submerge with paired webbed legs.',hint:'Your webbed legs let you swim. Enter the nearby real water, then Dive. Held air is finite.'}
+ jump:{label:'Spring jumper',part:'spring-leg',action:'Jump from dry ground using your paired spring legs.',hint:'Spring legs: press Enter (or Jump) on firm ground to leap. Leap clear when a hunter charges. Each jump costs breath.'},
+ burrow:{label:'Ground burrower',part:'digging-forelimb',action:'Excavate suitable dry soil with both digging forelimbs.',hint:'Digging forelimbs: use Burrow on dry soil to dig a shelter, and go underground when hunters come close. Digging takes time and food.'},
+ flight:{label:'Winged flier',part:'flight-wing',action:'Take off from solid ground with an inherited wing.',hint:'Wings: press 6 (or Take off) on firm ground to fly over water and slopes, then Land to rest. Flying burns food fast.'},
+ dive:{label:'Shore swimmer',part:'webbed-leg',action:'Enter nearby deep enough water and submerge with paired webbed legs.',hint:'Webbed legs: walk into the nearby water, then press PgDn (or Dive) to swim under for food. Surface before your air runs out.'}
 });
 export const physicalStarterIds=Object.freeze(Object.keys(PHYSICAL_STARTERS));
 

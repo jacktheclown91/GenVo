@@ -15,6 +15,12 @@ export class FrontEnd{
     this.el.querySelector('#menuZoom')?.addEventListener('change',e=>{setCameraZoom(Number(e.target.value));this.onZoom?.(cameraZoom());this.syncSettings()});
     this.el.querySelector('#newWorldStartingPoint')?.addEventListener('change',()=>this.syncStartingPoint());
     this.el.querySelector('#newWorldCreature')?.addEventListener('change',()=>{this.startingPointsReady=this.refreshStartingPoints()});
+    // Simple choices (creature and where to begin) drive the same selects as Advanced options.
+    const choose=(id,value)=>{const s=this.el.querySelector(id);if(!s||![...s.options].some(o=>o.value===value))return;s.value=value;s.dispatchEvent(new Event('change',{bubbles:true}))};
+    this.el.querySelector('#newWorldCreatureCards')?.addEventListener('click',e=>{const b=e.target.closest('[data-creature]');if(b)choose('#newWorldCreature',b.dataset.creature)});
+    this.el.querySelector('#newWorldStartCards')?.addEventListener('click',e=>{const b=e.target.closest('[data-start]');if(b)choose('#newWorldStartingPoint',b.dataset.start)});
+    // Automated browser checks set the advanced fields directly, so they start expanded there.
+    const advanced=this.el.querySelector('#newWorldAdvanced');if(advanced&&globalThis.navigator?.webdriver)advanced.open=true;
     try{document.body.classList.toggle('reduced-menu-motion',localStorage.getItem('genvo-menu-reduced-motion')==='1')}catch{}
     this.syncSettings();this.show('home');
   }
@@ -36,7 +42,7 @@ export class FrontEnd{
   async refreshStartingPoints(){
     const el=this.el.querySelector('#newWorldStartingPoint');
     const previous=el.value,creature=this.el.querySelector('#newWorldCreature')?.value||'recorded',resident=creature==='resident';
-    el.replaceChildren(new Option('New ecology, Day 1','new'),new Option('Import a real evolved-world checkpoint...','import'));
+    el.replaceChildren(new Option('New ecology, Day 1','new'),new Option('Import a saved world file...','import'));
     let worlds=[];
     try{worlds=await this.saveManager.listWorlds()}catch{this.setMessage('Saved worlds could not be listed.',true)}
     for(const w of worlds){
@@ -56,6 +62,17 @@ export class FrontEnd{
     else if(Array.from(el.options).some(option=>option.value===previous))el.value=previous;
     this.syncStartingPoint();
   }
+  // Mirror the selects into the simple choice cards.
+  syncStartCards(){
+    const creature=this.el.querySelector('#newWorldCreature')?.value,start=this.el.querySelector('#newWorldStartingPoint');
+    for(const b of this.el.querySelectorAll('#newWorldCreatureCards [data-creature]'))b.setAttribute('aria-checked',String(b.dataset.creature===creature));
+    const box=this.el.querySelector('#newWorldStartCards');if(!box||!start)return;
+    for(const b of box.querySelectorAll('[data-start]'))b.remove();
+    for(const o of start.options){if(o.value!=='new'&&!o.value.startsWith('catalog:'))continue;
+     const b=document.createElement('button'),title=document.createElement('b'),line=document.createElement('span');b.type='button';b.setAttribute('role','radio');b.dataset.start=o.value;
+     if(o.value==='new'){title.textContent='A new world · Day 1';line.textContent='Watch life spread from the very start.'}else{title.textContent=o.textContent.replace(/^Evolved: /,'').replace(/ · Day \d+$/,'');line.textContent='Join a world already full of evolved life.'}
+     b.append(title,line);b.setAttribute('aria-checked',String(o.value===start.value));box.append(b)}
+  }
   syncStartingPoint(){
     const start=this.el.querySelector('#newWorldStartingPoint')?.value||'new',
       file=this.el.querySelector('#newWorldScenarioFileLabel'),
@@ -71,10 +88,11 @@ export class FrontEnd{
     if(note)note.textContent=start==='new'
       ?'Begin the complete evolutionary journey from the initial ecology.'
       :start==='import'
-        ?'Select a GenVo .json scenario package exported from a real saved world.'
+        ?'Choose a world file exported from GenVo.'
         :start.startsWith('fork:')
           ?'Fork a real saved world at its recorded day. Your original save will not change.'
-          :'Load a SHA-256 verified simulation checkpoint as an independent world.';
+          :'Start from this evolved world as a new, separate game.';
+    this.syncStartCards();
   }
   close(){this.open=false;this.el.hidden=true;this.setMessage()}
   async refreshHome(){

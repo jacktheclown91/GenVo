@@ -1,4 +1,4 @@
-// Usage: node tools/capture-first-minutes.mjs <exported build> <evidence dir>
+// Usage: node tools/capture-first-minutes.mjs <exported build> <evidence dir> [creature card, e.g. starter-jump]
 // First-impression capture: what a new player sees with default choices, no setup.
 import fs from 'node:fs';import path from 'node:path';import http from 'node:http';import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url);const pw=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
@@ -12,7 +12,10 @@ const shot=async n=>{await page.screenshot({path:path.join(out,n+'.png')});log.p
 const text=async()=>page.evaluate(()=>({toasts:[...document.querySelectorAll('#notificationStack *')].filter(e=>!e.hidden&&e.children.length===0&&e.textContent.trim()).map(e=>e.textContent.trim()).slice(0,6),objective:document.querySelector('.objective, #objective, .legacy-objective')?.textContent?.trim()||null,dialogs:[...document.querySelectorAll('[role="dialog"]:not([hidden]), .transition:not([hidden])')].map(d=>d.id||d.className).slice(0,4)}));
 await page.goto('http://127.0.0.1:'+server.address().port+'/');await page.waitForTimeout(400);await shot('00-title-0.4s');
 await page.waitForFunction(()=>!!window.__GENVO8__?.saveManager);log.push(stamp()+' title ready');await page.waitForTimeout(2500);await shot('01-title-ready');
-await page.locator('.menu-view[data-screen="home"] [data-screen-target="new"]').click();await page.waitForTimeout(500);await shot('02-new-world');
+await page.locator('.menu-view[data-screen="home"] [data-screen-target="new"]').click();await page.waitForTimeout(500);
+// Automation opens Advanced options; close it to show what a player sees.
+await page.evaluate(()=>{const d=document.querySelector('#newWorldAdvanced');if(d)d.open=false});await page.waitForTimeout(200);await shot('02-new-world');
+const card=process.argv[4];if(card){await page.locator(`#newWorldCreatureCards [data-creature="${card}"]`).click();await page.waitForTimeout(400);await shot('02b-new-world-chosen')}
 log.push('new-world text: '+(await page.locator('.menu-view[data-screen="new"]').innerText()).replace(/\s+/g,' ').slice(0,900));
 const begin=Date.now();await page.locator('.menu-view[data-screen="new"] [data-action="create"]').click();
 await page.waitForTimeout(800);await shot('03-loading');

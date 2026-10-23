@@ -119,7 +119,7 @@ export class TutorialController{
   historyHas(typePrefix){const p=this.sim.player(),state=p?this.sim.cognition.state(p):null;if(!state)return false;const match=k=>k===typePrefix||String(k).startsWith(typePrefix);if(state.seen)for(const k of state.seen)if(match(k))return true;return !!state.history?.some(h=>match(h.type))}
   update(force=false){
     if(this.briefing&&!this.briefing.hidden)return;
-    const p=this.sim.player();this.detectHandoff();const milestone=this.sim.generationProgress?.takeNotice?.();if(milestone)this.showToast(milestone.text,5200,milestone.tone||'success','progress');const lostKnowledge=this.sim.cognition?.takeKnowledgeNotice?.();if(lostKnowledge)this.showToast(lostKnowledge.text,5200,lostKnowledge.tone||'warn');const fear=this.sim.cognition?.takeFearNotice?.();if(fear)this.showToast(fear.text,4200,fear.tone||'warn');const designed=this.sim.evolutionEditor?.takeNotice?.();if(designed)this.showToast(designed.text,4200,designed.tone||'success','progress');const found=!designed&&this.sim.discovery?.takeNotice?.();if(found)this.showToast(found.text,4200,found.tone||'safe','progress');const autoHome=this.sim.autoHomeNotice;if(autoHome){this.sim.autoHomeNotice=null;this.showToast(autoHome.text,5200,autoHome.tone||'warn')}
+    const p=this.sim.player();this.detectHandoff();const milestone=this.sim.generationProgress?.takeNotice?.();if(milestone)this.showToast(milestone.text,5200,milestone.tone||'success','progress');const lostKnowledge=this.sim.cognition?.takeKnowledgeNotice?.();if(lostKnowledge)this.showToast(lostKnowledge.text,5200,lostKnowledge.tone||'warn');const fear=this.sim.cognition?.takeFearNotice?.();if(fear)this.showToast(fear.text,4200,fear.tone||'warn');const designed=this.sim.evolutionEditor?.takeNotice?.();if(designed)this.showToast(designed.text,4200,designed.tone||'success','progress');const found=!designed&&this.sim.discovery?.takeNotice?.();if(found)this.showDiscovery(found);const autoHome=this.sim.autoHomeNotice;if(autoHome){this.sim.autoHomeNotice=null;this.showToast(autoHome.text,5200,autoHome.tone||'warn')}
     if(!p){this.renderer.guideTarget=null;this.render('Your family line ended.','Press R to start again.');if(!this.lineageEndedShown&&this.sim.lineage?.founderId){this.lineageEndedShown=true;this.showTransition('The family line ended','No grown descendant survived to take over. Press R to start a new run.','Close',true)}return}
     this.noteEnergyBalance(p);
     if(this.stage==='goals'){if(this.renderOpeningGoals(p))return}
@@ -430,6 +430,19 @@ export class TutorialController{
   markEvolutionChoice(id){for(const b of this.transitionEvolutionChoices?.querySelectorAll?.('.evolution-choice')||[]){const selected=b.dataset.adaptation===id;b.classList.toggle('selected',selected);b.disabled=!selected}}
 
   render(title,body,{step='',compact=false,next=''}={}){if(!this.tutorial)return;if(!step&&compact)step=this.legacyStep();if(this.sim?.playerAutonomy&&/((press|·)\s+([A-Z]|Space|Shift)\b|^([A-Z]|Space|Shift) ·)/.test(body)&&!/take over/.test(body))body+=' · take over to do this';this.tutorial.hidden=false;this.tutorial.className=`objective${compact?' compact':''}`;this.tutorial.dataset.guideTitle=title;this.tutorial.dataset.guideBody=body;this.tutorial.dataset.guideCompact=compact?'1':'0';const p=this.sim.player?.(),progress=compact&&p?`G${Math.min(8,p.generation||1)}/8`:'·';this.tutorial.dataset.guideStep=step||progress;this.tutorial.title=compact?'Open task steps':'';this.tutorial.setAttribute('role',compact?'button':'region');this.tutorial.tabIndex=compact?0:-1;this.tutorial.setAttribute('aria-label',compact?title+' - open task steps':title);this.tutorial.innerHTML=`<div class="objective-step">${step||progress}</div><div><strong>${title}${compact&&next?`<b class="objective-next">· ${next}</b>`:''}</strong><span>${body}</span></div>`}
+  // First-session clarity (creator direction 2026-10-23): field-guide sightings and trial
+  // completions stay recorded in the field guide (Y), but on screen the first sighting is
+  // explained once and later ones are summarised at most once a minute; trials wait until
+  // the line has evolved once and the player has met evolution points.
+  showDiscovery(found){
+   const spotted=/^Field guide: spotted /.test(found.text)&&!/relic/.test(found.text),trial=/^Trial complete: /.test(found.text);
+   const p=this.sim.player(),evolved=(p?.generation||1)>1||(this.sim.lineage?.highestGeneration||1)>1,now=performance.now(),d=this.discoveryDigest||={count:0,shownAt:-Infinity,explained:!!this.sim.uiFieldGuideExplained};
+   if(trial&&!evolved)return;
+   if(!spotted){this.showToast(found.text,4200,found.tone||'safe','progress');return}
+   const parts=(found.text.match(/spotted (?:an? )?(.*) on a wild creature/)?.[1]||'').split(/, | and /).filter(Boolean).length||1;d.count+=parts;
+   if(!d.explained){d.explained=true;this.sim.uiFieldGuideExplained=true;d.count=0;d.shownAt=now;this.showToast('Field guide (Y): your creature notes the bodies of wild creatures. Parts it has seen are cheaper when your line evolves.',6000,'safe','progress');return}
+   if(now-d.shownAt>=60000){this.showToast(`Field guide: ${d.count} new body part${d.count===1?'':'s'} noted · Y to look`,3200,'safe','progress');d.count=0;d.shownAt=now}
+  }
   showToast(text,ms=3500,tone='info',channel=tone==='warn'?'critical':'action'){this.notifications.post(text,ms,tone,channel)}
 }
 function friendlyCause(c){return c==='predation'?'predation':c==='starvation'?'starvation':c==='age'?'old age':c||'health collapse'}
