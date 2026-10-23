@@ -1,0 +1,90 @@
+{
+  "seed": "BANK-ART-20261022",
+  "reports": [
+    {
+      "site": {
+        "name": "drier-bank",
+        "x": 21.5,
+        "y": 14.5,
+        "moisture": 0.816641628742218,
+        "adjacent": 1,
+        "bandPixels": 121
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "label": "before",
+          "coldMs": 120.60000002384186,
+          "meanMs": 8.842000000476837,
+          "medianMs": 4.100000023841858,
+          "p95Ms": 30.899999976158142
+        },
+        {
+          "label": "after",
+          "coldMs": 114,
+          "meanMs": 8.308999999761582,
+          "medianMs": 3.700000047683716,
+          "p95Ms": 27.899999976158142
+        }
+      ]
+    },
+    {
+      "site": {
+        "name": "moister-bank",
+        "x": 70.5,
+        "y": 69.5,
+        "moisture": 0.8467503190040588,
+        "adjacent": 2,
+        "bandPixels": 252
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "label": "before",
+          "coldMs": 104.69999992847443,
+          "meanMs": 8.665,
+          "medianMs": 4.100000023841858,
+          "p95Ms": 29.5
+        },
+        {
+          "label": "after",
+          "coldMs": 112.69999992847443,
+          "meanMs": 9.548999999761582,
+          "medianMs": 4.200000047683716,
+          "p95Ms": 33.60000002384186
+        }
+      ]
+    },
+    {
+      "site": {
+        "name": "bank-turn",
+        "x": 32.5,
+        "y": 21.5,
+        "moisture": 0.8407846093177795,
+        "adjacent": 2,
+        "bandPixels": 252
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "label": "before",
+          "coldMs": 111.70000004768372,
+          "meanMs": 7.949000000953674,
+          "medianMs": 3.5,
+          "p95Ms": 29.5
+        },
+        {
+          "label": "after",
+          "coldMs": 131.79999995231628,
+          "meanMs": 9.402000000476837,
+          "medianMs": 5,
+          "p95Ms": 30.09999990463257
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "creatorAcceptance": false,
+  "scope": "Unmodified generated world and bodies, only observation relocation. Native bank color toggled by HTTP-only inspection. Exact original physical shoreline coverage and opacity retained.",
+  "timingScope": "Paused CPU draws, excludes GPU completion"
+}

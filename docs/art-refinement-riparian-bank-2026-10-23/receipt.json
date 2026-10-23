@@ -1,0 +1,195 @@
+{
+  "seed": "BANK-ART-20261022",
+  "reports": [
+    {
+      "site": {
+        "name": "drier-bank",
+        "x": 21.5,
+        "y": 14.5,
+        "moisture": 0.816641628742218,
+        "adjacent": 1,
+        "bandPixels": 121
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "label": "before",
+          "paintProbe": {
+            "calls": 0,
+            "colors": []
+          },
+          "coldMs": 152.10000002384186,
+          "coldSamples": [
+            152.10000002384186,
+            123.70000004768372,
+            112.09999990463257,
+            146.5
+          ],
+          "coldMedianMs": 123.70000004768372,
+          "meanMs": 10.336999999284744,
+          "medianMs": 5.100000023841858,
+          "p95Ms": 34.199999928474426
+        },
+        {
+          "label": "after",
+          "paintProbe": {
+            "calls": 1024,
+            "colors": [
+              "rgba(119,146,96,0.22)",
+              "rgba(145,169,112,0.22)",
+              "rgba(93,123,79,0.22)",
+              "rgba(53,49,35,0.32)",
+              "rgba(102,88,57,0.32)",
+              "rgba(76,67,45,0.32)",
+              "rgba(129,111,70,0.32)",
+              "rgba(17,29,21,0.31)",
+              "rgba(66,77,50,0.31)",
+              "rgba(46,59,39,0.31)",
+              "rgba(70,101,65,0.22)",
+              "rgba(30,42,29,0.31)"
+            ]
+          },
+          "coldMs": 142.30000007152557,
+          "coldSamples": [
+            142.30000007152557,
+            111.59999990463257,
+            118.30000007152557,
+            125.69999992847443
+          ],
+          "coldMedianMs": 118.30000007152557,
+          "meanMs": 8.895999999046326,
+          "medianMs": 4.399999976158142,
+          "p95Ms": 28.5
+        }
+      ]
+    },
+    {
+      "site": {
+        "name": "moister-bank",
+        "x": 70.5,
+        "y": 69.5,
+        "moisture": 0.8467503190040588,
+        "adjacent": 2,
+        "bandPixels": 252
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "label": "before",
+          "paintProbe": {
+            "calls": 0,
+            "colors": []
+          },
+          "coldMs": 113,
+          "coldSamples": [
+            113,
+            132.39999997615814,
+            114.39999997615814,
+            122.29999995231628
+          ],
+          "coldMedianMs": 114.39999997615814,
+          "meanMs": 11.973999999761581,
+          "medianMs": 6.200000047683716,
+          "p95Ms": 41.39999997615814
+        },
+        {
+          "label": "after",
+          "paintProbe": {
+            "calls": 1024,
+            "colors": [
+              "rgba(93,123,79,0.22)",
+              "rgba(119,146,96,0.22)",
+              "rgba(145,169,112,0.22)",
+              "rgba(70,101,65,0.22)",
+              "rgba(102,88,57,0.32)",
+              "rgba(129,111,70,0.32)",
+              "rgba(76,67,45,0.32)",
+              "rgba(66,77,50,0.31)",
+              "rgba(30,42,29,0.31)",
+              "rgba(46,59,39,0.31)",
+              "rgba(53,49,35,0.32)",
+              "rgba(17,29,21,0.31)"
+            ]
+          },
+          "coldMs": 128.59999990463257,
+          "coldSamples": [
+            128.59999990463257,
+            107.80000007152557,
+            112.60000002384186,
+            126.09999990463257
+          ],
+          "coldMedianMs": 112.60000002384186,
+          "meanMs": 10.068999999761582,
+          "medianMs": 4.399999976158142,
+          "p95Ms": 28.600000023841858
+        }
+      ]
+    },
+    {
+      "site": {
+        "name": "bank-turn",
+        "x": 32.5,
+        "y": 21.5,
+        "moisture": 0.8407846093177795,
+        "adjacent": 2,
+        "bandPixels": 252
+      },
+      "exactCanonicalState": true,
+      "stages": [
+        {
+          "label": "before",
+          "paintProbe": {
+            "calls": 0,
+            "colors": []
+          },
+          "coldMs": 136.60000002384186,
+          "coldSamples": [
+            136.60000002384186,
+            108.60000002384186,
+            110.5,
+            122.10000002384186
+          ],
+          "coldMedianMs": 110.5,
+          "meanMs": 9.867999999523162,
+          "medianMs": 4.399999976158142,
+          "p95Ms": 31.5
+        },
+        {
+          "label": "after",
+          "paintProbe": {
+            "calls": 1024,
+            "colors": [
+              "rgba(93,123,79,0.22)",
+              "rgba(119,146,96,0.22)",
+              "rgba(145,169,112,0.22)",
+              "rgba(70,101,65,0.22)",
+              "rgba(102,88,57,0.32)",
+              "rgba(129,111,70,0.32)",
+              "rgba(76,67,45,0.32)",
+              "rgba(66,77,50,0.31)",
+              "rgba(30,42,29,0.31)",
+              "rgba(46,59,39,0.31)",
+              "rgba(53,49,35,0.32)",
+              "rgba(17,29,21,0.31)"
+            ]
+          },
+          "coldMs": 114.20000004768372,
+          "coldSamples": [
+            114.20000004768372,
+            108,
+            109.19999992847443,
+            136.89999997615814
+          ],
+          "coldMedianMs": 109.19999992847443,
+          "meanMs": 8.813999999761581,
+          "medianMs": 4,
+          "p95Ms": 28.5
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "creatorAcceptance": false,
+  "scope": "Unmodified generated world and bodies, only observation relocation. Native bank color toggled by HTTP-only inspection. Exact original physical shoreline coverage and opacity retained.",
+  "timingScope": "Paused CPU draws, excludes GPU completion"
+}

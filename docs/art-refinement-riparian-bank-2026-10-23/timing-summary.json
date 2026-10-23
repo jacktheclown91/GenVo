@@ -1,0 +1,35 @@
+[
+  {
+    "site": "drier-bank",
+    "before": {
+      "warmMeanMs": 9.255250000059604,
+      "coldMedianMs": 113.64999997615814
+    },
+    "after": {
+      "warmMeanMs": 9.383750000596047,
+      "coldMedianMs": 114.75
+    }
+  },
+  {
+    "site": "moister-bank",
+    "before": {
+      "warmMeanMs": 9.03050000011921,
+      "coldMedianMs": 107.55000001192093
+    },
+    "after": {
+      "warmMeanMs": 9.003999999761582,
+      "coldMedianMs": 110.95000004768372
+    }
+  },
+  {
+    "site": "bank-turn",
+    "before": {
+      "warmMeanMs": 8.75550000011921,
+      "coldMedianMs": 105.20000004768372
+    },
+    "after": {
+      "warmMeanMs": 8.556000000238418,
+      "coldMedianMs": 109.29999995231628
+    }
+  }
+]
