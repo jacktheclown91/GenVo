@@ -1,4 +1,4 @@
-import assert from 'node:assert/strict';import {Simulation} from '../src/sim/simulation.js';import {makePlan} from '../src/lineage/body-plan.js';import {FeedingPresentation,feedingExpression} from '../src/render/feeding-expression.js';import {EncounterPresentation} from '../src/render/encounter-expression.js';
+import assert from 'node:assert/strict';import {Simulation} from '../src/sim/simulation.js';import {makePlan} from '../src/lineage/body-plan.js';import {FeedingPresentation,feedingExpression,feedingReceipt} from '../src/render/feeding-expression.js';import {EncounterPresentation} from '../src/render/encounter-expression.js';
 const s=new Simulation('FUNDED-FEEDING-PERFORMANCE',{player:true}),a=s.player();a.intent='idle';const i=s.world.idx(a.x,a.y);a.lastPlantMeal={actorId:a.id,tick:s.tickCount,i,removed:.15,edible:.09,processingCost:.6,viableSeeds:.03};const saved=JSON.stringify(a),rng=s.rng.state,t=new FeedingPresentation();
 assert.equal(t.sample(s,a,0,{moving:true}),null);assert.equal(t.sample(s,a,.1).stage,'reach','Visual movement may finish before the funded bite');assert.equal(t.sample(s,a,.7).stage,'process');assert.equal(t.sample(s,a,1.5).stage,'settle');assert.equal(t.sample(s,a,1.8),null);assert.equal(JSON.stringify(a),saved);assert.equal(s.rng.state,rng);
 t.reset();assert.ok(t.sample(s,a,0));assert.equal(t.sample(s,a,.2,{moving:true}),null);assert.equal(t.sample(s,a,.3),null,'Movement interrupts this receipt without replay');
@@ -9,3 +9,18 @@ a.lastPlantMeal.edible=.09;a.lastPlantMeal.tick=s.tickCount;t.reset();const cloc
 console.log('Funded receipt stages, real source attention, anatomy modes, movement/stance interruption, pause, edible tissue requirement and read-only actor/RNG PASS');
 
 a.lastFreshwaterMeal=null;a.lastPlantMeal=null;s.lastPlayerAction={type:'eat',actorId:a.id,kind:'algae',tick:s.tickCount,energyGain:1};assert.equal(feedingExpression(s,a).mode,'filter','Manual finite-water food receipts use the same performance');s.lastPlayerAction.actorId=-1;assert.equal(feedingExpression(s,a),null,'A handoff cannot inherit the last player meal');
+
+// Legacy plant extraction has an actual successful player-action record, not a tissue receipt.
+a.lastPlantMeal=null;a.lastFreshwaterMeal=null;a.bracing=false;a.attackAction=null;a.courtshipPerformance=null;a.intent='idle';
+const legacy=Object.freeze({type:'eat',actorId:a.id,kind:'sunmoss',tick:s.tickCount,energyGain:1.4,waterGain:0,processingCost:0});s.lastPlayerAction=legacy;
+assert.equal(feedingReceipt(s,a),legacy,'read the canonical action itself without manufacturing a meal');
+const beforeLegacy=JSON.stringify({actor:a,event:s.lastPlayerAction}),beforeRng=s.rng.state;
+assert.equal(feedingExpression(s,a,{elapsedSeconds:.5}).stage,'process');assert.equal(feedingExpression(s,a,{elapsedSeconds:.5}).mode,'graze','no kernel crushing inferred without a kernel receipt');assert.equal(feedingExpression(s,a,{elapsedSeconds:.5}).seedFate,'none');assert.equal(JSON.stringify({actor:a,event:s.lastPlayerAction}),beforeLegacy);assert.equal(s.rng.state,beforeRng);
+for(const patch of [{actorId:-1},{type:'drink'},{kind:'invented-food'},{energyGain:0},{energyGain:-1},{tick:s.tickCount-1000}]){s.lastPlayerAction={...legacy,...patch};assert.equal(feedingExpression(s,a),null,'reject non-authoritative, empty or stale legacy action '+JSON.stringify(patch))}
+s.lastPlayerAction=legacy;assert.equal(feedingExpression(s,a,{moving:true}),null);a.bracing=true;assert.equal(feedingExpression(s,a),null);a.bracing=false;
+console.log('Canonical successful legacy plant events animate read-only; missing tissue is not invented and original mode, age, actor and interruption gates remain PASS');
+
+const tissue=Object.freeze({actorId:a.id,tick:s.tickCount,i,removed:.16,edible:.032,tissue:'kernel',destroyedSeeds:.032,viableSeeds:0,processingCost:0});a.lastPlantMeal=tissue;s.lastPlayerAction={...legacy,kind:'bramble',tissue:'kernel'};
+assert.equal(feedingReceipt(s,a),tissue,'same-tick structured plant receipt retains its seed and source details');assert.equal(feedingExpression(s,a,{elapsedSeconds:.5}).seedFate,'crushed');assert.deepEqual(feedingExpression(s,a,{elapsedSeconds:.5}).attention,{x:i%s.world.n+.5,y:(i/s.world.n|0)+.5});
+s.lastPlayerAction={...legacy,tick:s.tickCount+1};s.tickCount++;assert.equal(feedingReceipt(s,a),s.lastPlayerAction,'a genuinely newer legacy meal supersedes an older tissue meal');
+console.log('Rich tissue receipts keep same-tick priority and actual seed fate; newer legacy meals remain visible PASS');

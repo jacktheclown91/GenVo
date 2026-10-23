@@ -1,14 +1,16 @@
 // Receipt-driven body language. No extraction, costs or simulation intent change.
-import {CFG} from '../sim/config.js';
+import {CFG,PLANTS} from '../sim/config.js';
 import {mouthOf} from '../ecology/functional-diet.js';
 import {FRESHWATER_FOOD} from '../ecology/freshwater-food.js';
 import {PARTS} from '../lineage/part-registry.js';
-export function feedingReceipt(sim,a){const plant=a?.lastPlantMeal,wet=a?.lastFreshwaterMeal,last=sim?.lastPlayerAction;const p=plant?.actorId===a?.id&&plant.removed>0&&plant.edible>0?plant:null,w=wet?.amount>0?wet:null,manual=a?.player&&last?.actorId===a.id&&['eat','drink'].includes(last.type)&&FRESHWATER_FOOD[last.kind]&&(last.energyGain>0||last.waterGain>0)?last:null;if(manual&&(!p||manual.tick>=p.tick)&&(!w||manual.tick>=w.tick))return w?.tick===manual.tick&&w.kind===manual.kind?w:manual;return w&&(!p||w.tick>p.tick)?w:p}
+// Legacy plant meals publish successful actor/gain-stamped player actions.
+// Observe that existing record; preserve richer same-tick tissue receipts.
+export function feedingReceipt(sim,a){const plant=a?.lastPlantMeal,wet=a?.lastFreshwaterMeal,last=sim?.lastPlayerAction;const p=plant?.actorId===a?.id&&plant.removed>0&&plant.edible>0?plant:null,w=wet?.amount>0?wet:null,manual=a?.player&&last?.actorId===a.id&&['eat','drink'].includes(last.type)&&(FRESHWATER_FOOD[last.kind]||last.type==='eat'&&PLANTS[last.kind])&&(last.energyGain>0||last.waterGain>0)?last:null;if(manual&&(!p||manual.tick>p.tick||manual.tick===p.tick&&!PLANTS[manual.kind])&&(!w||manual.tick>=w.tick))return w?.tick===manual.tick&&w.kind===manual.kind?w:manual;return w&&(!p||w.tick>p.tick)?w:p}
 export function feedingExpression(sim,a,{moving=false,phase=0,elapsedSeconds=null}={}){
- const r=feedingReceipt(sim,a),age=(sim?.tickCount??0)-(r?.tick??-Infinity),duration=r?.removed?1.05+Math.min(.9,r.processingCost||0):.9;
+ const r=feedingReceipt(sim,a),plantMeal=!!(r?.removed||r?.type==='eat'&&PLANTS[r.kind]),age=(sim?.tickCount??0)-(r?.tick??-Infinity),duration=plantMeal?1.05+Math.min(.9,r.processingCost||0):.9;
  if(!r||age<0||age>=CFG.simHz*duration||moving||a.bracing||a.attackAction||a.courtshipPerformance||!['idle','player','rest','feed','explore','herd-browse','forage','stealth-forage','tendency-forage'].includes(a.intent))return null;
  const elapsed=Number.isFinite(elapsedSeconds)?Math.max(0,elapsedSeconds):age/CFG.simHz;if(elapsed>=duration)return null;
- const caps=PARTS[mouthOf(a)]?.actionCapabilities||[],mode=!r.removed?'filter':r.tissue==='kernel'?'crush':r.processingCost>0?(caps.includes('crush')?'crush':caps.includes('peck')?'peck':'pull'):'graze',progress=elapsed/duration;
+ const caps=PARTS[mouthOf(a)]?.actionCapabilities||[],mode=!plantMeal?'filter':r.tissue==='kernel'?'crush':r.processingCost>0?(caps.includes('crush')?'crush':caps.includes('peck')?'peck':'pull'):'graze',progress=elapsed/duration;
  // One actual meal: reach toward it, process with the mounted mouth, then settle.
  // The waveform follows receipt age, never the animal's arbitrary idle phase.
  const contact=Math.sin(Math.PI*Math.min(1,progress/.32)),work=Math.max(0,Math.min(1,(progress-.12)/.18))*Math.max(0,Math.min(1,(.86-progress)/.18)),beat=(1-Math.cos(elapsed*Math.PI*2*(mode==='peck'?3.6:2.7)))/2,strength=Math.min(1,(1-progress)/.22);
