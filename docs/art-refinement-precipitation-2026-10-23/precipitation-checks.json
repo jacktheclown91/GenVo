@@ -1,0 +1,59 @@
+{
+  "sourceCompiledDeterministic": true,
+  "checks": [
+    {
+      "test": "native-precipitation-art",
+      "exitCode": 0,
+      "stdout": "Native precipitation PASS: master hash, eight bounded indexed sprites, deterministic count/detail, full wind heading, read-only layout and legacy/stratum exclusions.\n",
+      "stderr": ""
+    },
+    {
+      "test": "atmospheric-visibility",
+      "exitCode": 0,
+      "stdout": "Atmospheric visibility PASS: shared snow phase, optical loss, hearing and vigilance, sense advantage, stratum isolation, read-only queries, legacy policy and exact save observation.\n",
+      "stderr": ""
+    },
+    {
+      "test": "sensory-perception",
+      "exitCode": 0,
+      "stdout": "sensory fog, evolutionary sight, uncertain signals and save continuity PASS\n",
+      "stderr": ""
+    },
+    {
+      "test": "view-modes",
+      "exitCode": 0,
+      "stdout": "View modes PASS: Comfort default, ordered fog levels, Sandbox-only vegetation, browser-stored preference, live layers clipped to the senses.\n",
+      "stderr": ""
+    },
+    {
+      "test": "weather-patterns",
+      "exitCode": 0,
+      "stdout": "weather-patterns: ok\n",
+      "stderr": ""
+    },
+    {
+      "test": "weather-exposure",
+      "exitCode": 0,
+      "stdout": "weather exposure + shelter protection checks: PASS\n",
+      "stderr": ""
+    },
+    {
+      "test": "thermal-weather",
+      "exitCode": 0,
+      "stdout": "Thermal weather PASS: deterministic signed spells, unchanged rain/biological RNG, canonical temperature coupling, funded snow/thaw, real-tick save continuation and corrupt/legacy guards.\n",
+      "stderr": ""
+    },
+    {
+      "test": "thunderstorms",
+      "exitCode": 0,
+      "stdout": "Thunderstorms PASS: deterministic real weather, injury/roof shielding, bounded delayed audio, refuge read-only queries and exact historical/new persistence.\n",
+      "stderr": ""
+    },
+    {
+      "test": "public-export",
+      "exitCode": 0,
+      "stdout": "public-export: exact reachable modules and runtime assets only PASS\n",
+      "stderr": ""
+    }
+  ]
+}

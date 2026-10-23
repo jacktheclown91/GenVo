@@ -1,0 +1,223 @@
+{
+  "samples": {
+    "thick": {
+      "x": 34.5,
+      "y": 112.5,
+      "rain": 0.6251680769493958,
+      "temperature": 0.10470290498044066,
+      "wind": {
+        "east": -0.09995339396976347,
+        "south": 0.6354722243995852,
+        "strength": 0.6432850293217086
+      },
+      "fog": 0,
+      "snow": 0.5002585799221474,
+      "liquid": 0,
+      "extinction": 0.042521979293382535
+    },
+    "clear": {
+      "x": 78.5,
+      "y": 12.5,
+      "rain": 0.29396975317346524,
+      "temperature": 0.10474731044079832,
+      "wind": {
+        "east": -0.6115685102584045,
+        "south": -0.4501949883156783,
+        "strength": 0.7594021136685346
+      },
+      "fog": 0,
+      "snow": 0,
+      "liquid": 0,
+      "extinction": 0
+    },
+    "policy": "atmospheric-visibility/1",
+    "probe": {
+      "detected": true,
+      "distance": 6,
+      "opticalDepth": 0.24474412563239503,
+      "transmission": 0.7829048378952931,
+      "effectiveRange": 6.263238703162345
+    },
+    "climate": {
+      "temp": 0.23698820189740233,
+      "rain": 0.6093202095064872,
+      "weatherFactor": 1.0505520853560126,
+      "temperatureAnomaly": -0.3030117981025977
+    },
+    "day": 1
+  },
+  "presentation": [
+    {
+      "name": "phase-0",
+      "time": 16000,
+      "lowDetail": false,
+      "counts": {
+        "rain": 0,
+        "snow": 55
+      }
+    },
+    {
+      "name": "phase-1",
+      "time": 16320,
+      "lowDetail": false,
+      "counts": {
+        "rain": 0,
+        "snow": 55
+      }
+    },
+    {
+      "name": "phase-2",
+      "time": 16640,
+      "lowDetail": false,
+      "counts": {
+        "rain": 0,
+        "snow": 55
+      }
+    },
+    {
+      "name": "low-detail",
+      "time": 16000,
+      "lowDetail": true,
+      "counts": {
+        "rain": 0,
+        "snow": 19
+      }
+    }
+  ],
+  "overlay": [
+    {
+      "original": true,
+      "meanMs": 0.026400000095367433
+    },
+    {
+      "original": false,
+      "meanMs": 0.14359999990463257
+    },
+    {
+      "original": false,
+      "meanMs": 0.23799999976158143
+    },
+    {
+      "original": true,
+      "meanMs": 0.033799999952316286
+    }
+  ],
+  "records": [
+    {
+      "site": "snow",
+      "original": true,
+      "meanMs": 10.945999999046325,
+      "medianMs": 6.299999952316284,
+      "p95Ms": 41.10000002384186
+    },
+    {
+      "site": "snow",
+      "original": false,
+      "meanMs": 8.372999999523163,
+      "medianMs": 3.5999999046325684,
+      "p95Ms": 35.89999997615814
+    },
+    {
+      "site": "snow",
+      "original": false,
+      "meanMs": 7.488999999761582,
+      "medianMs": 3.1999999284744263,
+      "p95Ms": 33.300000071525574
+    },
+    {
+      "site": "snow",
+      "original": true,
+      "meanMs": 7.646000000238419,
+      "medianMs": 3.100000023841858,
+      "p95Ms": 33.10000002384186
+    },
+    {
+      "site": "snow",
+      "original": false,
+      "meanMs": 6.277999999523163,
+      "medianMs": 2.5,
+      "p95Ms": 29.5
+    },
+    {
+      "site": "snow",
+      "original": true,
+      "meanMs": 9.19,
+      "medianMs": 4.099999904632568,
+      "p95Ms": 43.699999928474426
+    },
+    {
+      "site": "snow",
+      "original": true,
+      "meanMs": 7.816000000238419,
+      "medianMs": 3.100000023841858,
+      "p95Ms": 35.799999952316284
+    },
+    {
+      "site": "snow",
+      "original": false,
+      "meanMs": 8.003000001907349,
+      "medianMs": 3.200000047683716,
+      "p95Ms": 37.89999997615814
+    },
+    {
+      "site": "clear",
+      "original": true,
+      "meanMs": 9.679999998807908,
+      "medianMs": 4.299999952316284,
+      "p95Ms": 39.10000002384186
+    },
+    {
+      "site": "clear",
+      "original": false,
+      "meanMs": 10.350999999046326,
+      "medianMs": 5.100000023841858,
+      "p95Ms": 42.5
+    },
+    {
+      "site": "clear",
+      "original": false,
+      "meanMs": 9,
+      "medianMs": 4.200000047683716,
+      "p95Ms": 33.300000071525574
+    },
+    {
+      "site": "clear",
+      "original": true,
+      "meanMs": 8.565,
+      "medianMs": 4,
+      "p95Ms": 30.700000047683716
+    },
+    {
+      "site": "clear",
+      "original": false,
+      "meanMs": 7.845,
+      "medianMs": 3.100000023841858,
+      "p95Ms": 35.09999990463257
+    },
+    {
+      "site": "clear",
+      "original": true,
+      "meanMs": 7.271000000238419,
+      "medianMs": 2.700000047683716,
+      "p95Ms": 29.300000071525574
+    },
+    {
+      "site": "clear",
+      "original": true,
+      "meanMs": 6.553000000715255,
+      "medianMs": 2.5999999046325684,
+      "p95Ms": 27.600000023841858
+    },
+    {
+      "site": "clear",
+      "original": false,
+      "meanMs": 7.317000000476837,
+      "medianMs": 2.799999952316284,
+      "p95Ms": 29.700000047683716
+    }
+  ],
+  "exactCanonicalState": true,
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "Paused CPU draws, GPU completion excluded; ABBA BAAB, 30 warmup + 100 each"
+}

@@ -1,0 +1,223 @@
+{
+  "samples": {
+    "thick": {
+      "x": 55.5,
+      "y": 12.5,
+      "rain": 0.8398063362748869,
+      "temperature": 0.3478091711147154,
+      "wind": {
+        "east": 0.01005378246894973,
+        "south": 0.6896034178008603,
+        "strength": 0.6896767013496692
+      },
+      "fog": 0.034258117401070966,
+      "snow": 0.43342984811869273,
+      "liquid": 0.39704143845805623,
+      "extinction": 0.05881937590882992
+    },
+    "clear": {
+      "x": 86.5,
+      "y": 17.5,
+      "rain": 0.31847985239497406,
+      "temperature": 0.34819775242045764,
+      "wind": {
+        "east": 0.00792830686048509,
+        "south": -0.3018019286244815,
+        "strength": 0.3019060485832151
+      },
+      "fog": 0,
+      "snow": 0.014727659830736088,
+      "liquid": 0.01370288231537787,
+      "extinction": 0.0018684807898045716
+    },
+    "policy": "atmospheric-visibility/1",
+    "probe": {
+      "detected": false,
+      "distance": 6,
+      "opticalDepth": 0.4173103197498758,
+      "transmission": 0.6588164444651113,
+      "effectiveRange": 5.270531555720891
+    },
+    "climate": {
+      "temp": 0.36082163154766206,
+      "rain": 0.9132726725994587,
+      "weatherFactor": 1.5746080562059632,
+      "temperatureAnomaly": -0.17917836845233798
+    },
+    "day": 1
+  },
+  "presentation": [
+    {
+      "name": "phase-0",
+      "time": 16000,
+      "lowDetail": false,
+      "counts": {
+        "rain": 40,
+        "snow": 48
+      }
+    },
+    {
+      "name": "phase-1",
+      "time": 16320,
+      "lowDetail": false,
+      "counts": {
+        "rain": 40,
+        "snow": 48
+      }
+    },
+    {
+      "name": "phase-2",
+      "time": 16640,
+      "lowDetail": false,
+      "counts": {
+        "rain": 40,
+        "snow": 48
+      }
+    },
+    {
+      "name": "low-detail",
+      "time": 16000,
+      "lowDetail": true,
+      "counts": {
+        "rain": 14,
+        "snow": 17
+      }
+    }
+  ],
+  "overlay": [
+    {
+      "original": true,
+      "meanMs": 3.0254000000953676
+    },
+    {
+      "original": false,
+      "meanMs": 3.332799999952316
+    },
+    {
+      "original": false,
+      "meanMs": 2.999
+    },
+    {
+      "original": true,
+      "meanMs": 2.603400000333786
+    }
+  ],
+  "records": [
+    {
+      "site": "mixed",
+      "original": true,
+      "meanMs": 13.940999999046326,
+      "medianMs": 5.699999928474426,
+      "p95Ms": 56.90000009536743
+    },
+    {
+      "site": "mixed",
+      "original": false,
+      "meanMs": 11.86899999976158,
+      "medianMs": 3.700000047683716,
+      "p95Ms": 54.60000002384186
+    },
+    {
+      "site": "mixed",
+      "original": false,
+      "meanMs": 10.078000000715257,
+      "medianMs": 3.100000023841858,
+      "p95Ms": 45.60000002384186
+    },
+    {
+      "site": "mixed",
+      "original": true,
+      "meanMs": 10.092999999523164,
+      "medianMs": 3.200000047683716,
+      "p95Ms": 45.90000009536743
+    },
+    {
+      "site": "mixed",
+      "original": false,
+      "meanMs": 10.486000001430511,
+      "medianMs": 3.100000023841858,
+      "p95Ms": 45.199999928474426
+    },
+    {
+      "site": "mixed",
+      "original": true,
+      "meanMs": 9.918000000715256,
+      "medianMs": 2.9000000953674316,
+      "p95Ms": 45.10000002384186
+    },
+    {
+      "site": "mixed",
+      "original": true,
+      "meanMs": 9.803999999761581,
+      "medianMs": 3,
+      "p95Ms": 45.90000009536743
+    },
+    {
+      "site": "mixed",
+      "original": false,
+      "meanMs": 9.606000000238419,
+      "medianMs": 2.9000000953674316,
+      "p95Ms": 44.59999990463257
+    },
+    {
+      "site": "clear",
+      "original": true,
+      "meanMs": 9.127999999523162,
+      "medianMs": 4.599999904632568,
+      "p95Ms": 36
+    },
+    {
+      "site": "clear",
+      "original": false,
+      "meanMs": 9.620000001192093,
+      "medianMs": 4.600000023841858,
+      "p95Ms": 32.5
+    },
+    {
+      "site": "clear",
+      "original": false,
+      "meanMs": 8.725,
+      "medianMs": 3.3000000715255737,
+      "p95Ms": 34.10000002384186
+    },
+    {
+      "site": "clear",
+      "original": true,
+      "meanMs": 8.85800000190735,
+      "medianMs": 4,
+      "p95Ms": 37.89999997615814
+    },
+    {
+      "site": "clear",
+      "original": false,
+      "meanMs": 7.307000000476837,
+      "medianMs": 3,
+      "p95Ms": 29.899999976158142
+    },
+    {
+      "site": "clear",
+      "original": true,
+      "meanMs": 7.621000000238419,
+      "medianMs": 3.0999999046325684,
+      "p95Ms": 30.09999990463257
+    },
+    {
+      "site": "clear",
+      "original": true,
+      "meanMs": 7.525999999046325,
+      "medianMs": 3,
+      "p95Ms": 29.90000009536743
+    },
+    {
+      "site": "clear",
+      "original": false,
+      "meanMs": 7.512000000476837,
+      "medianMs": 2.9000000953674316,
+      "p95Ms": 30.90000009536743
+    }
+  ],
+  "exactCanonicalState": true,
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "Paused CPU draws, GPU completion excluded; ABBA BAAB, 30 warmup + 100 each"
+}
