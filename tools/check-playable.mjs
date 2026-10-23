@@ -90,6 +90,8 @@ const runtime=[
   'tests/player-suitors.mjs',
   'tests/view-modes.mjs',
   'tests/young-summary.mjs',
+  'tests/world-story.mjs',
+  'tests/threat-display.mjs',
   'tests/regional-multi-hop-biology.mjs',
   'tests/regional-synchronized-replay.mjs',
   'tests/aquatic.mjs',

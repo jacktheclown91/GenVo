@@ -8,6 +8,8 @@ import {swimsByBody} from './aquatic.js';
 import {roostAnatomy} from '../ecology/canopy-site.js';
 import {winterFatAnatomy} from '../ecology/cold-wildlife.js';
 import {physicalAttackProfile} from './physical-attack.js';
+import {hasAdaptation} from './evolution.js';
+import {displayAnatomy} from '../gameplay/threat-display.js';
 
 export function actionCapabilities(sim,animal=sim.player()){
  const a=animal,flight=winged(a),glide=hasGlidingSurfaces(a);
@@ -17,7 +19,9 @@ export function actionCapabilities(sim,animal=sim.player()){
   pounce:!!a&&sim.playerCombat.pounceReach(a)>0,
   dive:swimsByBody(a),jump:hasJumpingAnatomy(a),glide,flight,
   burrow:burrowingAnatomy(a),roost:roostAnatomy(a),
-  torpor:winterFatAnatomy(a),
+  torpor:winterFatAnatomy(a),display:displayAnatomy(a),
+  carry:hasAdaptation(a,'grasping-limbs'),hide:hasAdaptation(a,'camouflage-mantle'),
+  alarm:hasAdaptation(a,'alarm-pulse')||hasAdaptation(a,'mobbing-instinct'),
   'planet-travel':!!sim.planetaryRegions,'family-travel':!!sim.planetaryRegions
  };
 }
@@ -25,5 +29,5 @@ export function actionCapabilities(sim,animal=sim.player()){
 export function activeAction(a,type){
  return type==='burrow'?!!a?.underground||!!a?.burrowWork:type==='flight'?!!a?.airborne&&!a?.aerialMode:
   type==='glide'?a?.aerialMode==='glide':type==='dive'?(a?.diveDepth||0)>.03||a?.diveTarget>0:
-  type==='roost'?!!a?.perched:type==='torpor'?!!a?.torpor:false;
+  type==='roost'?!!a?.perched:type==='torpor'?!!a?.torpor:type==='hide'?!!a?.hidden:type==='carry'?!!a?.carryingFood:false;
 }

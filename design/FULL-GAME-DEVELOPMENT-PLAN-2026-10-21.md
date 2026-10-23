@@ -89,8 +89,8 @@ Use targeted regression and browser checks throughout construction. Reserve expe
 
 **Further direction:**
 - Sharpen the first generation (started).
-- Make anatomy change verbs rather than numbers.
-- Stage visible ecological drama early (seasonal pressure, territory shifts, resource scars) from real state.
+- Make anatomy change verbs rather than numbers (first slice done: threat display, hidden verbs on screen, Lab verb list, see `docs/ANATOMY-VERBS-2026-10-23.md`).
+- Stage visible ecological drama early (seasonal pressure, territory shifts, resource scars) from real state (first slice done: story beats from the home range, see `docs/ECOLOGICAL-DRAMA-2026-10-23.md`).
 - Continue the Creature Lab and scenario export path.
 - Assess important missing original-design features for safe completion before the jam.
 

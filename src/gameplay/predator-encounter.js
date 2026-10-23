@@ -10,6 +10,7 @@ import {stalkerProfileFor} from '../organisms/stalker-profile.js';
 import {hasAdaptation} from '../lineage/evolution.js';
 import {PREDATION_PARITY} from './predation-parity.js';
 import {REFUGE_PARITY,refugeAgainst,coverHides} from '../ecology/refuges.js';
+import {THREAT_DISPLAY,displayActive,judgeDisplay} from './threat-display.js';
 
 // Player-facing predator encounter authority.
 // Background predator/prey ecology remains on the canonical hunt/tryKill() path.
@@ -79,6 +80,8 @@ export class PredatorEncounterController{
     const P=CFG.stalkerPursuit,dt=this.pursuitDelta(state);if(!Number.isFinite(state.stamina))state.stamina=P.stamina*wildTraits(hunter).stamina;
     const senses=hunter.genes?.senses||1,maxRange=10.5*senses;
     if(distance>maxRange){if(state.pursuit==='chase')return this.giveUp(hunter,player,'outrun',P.outrunAversion);this.clear(hunter);return null}
+    // A committed charge is past judging; before it, a seen threat display is appraised once.
+    if(state.phase!=='charge'&&displayActive(this.sim,player)&&this.canSee(hunter,player,distance)&&judgeDisplay(this.sim,hunter,player,state)?.deterred)return this.giveUp(hunter,player,'deterred',THREAT_DISPLAY.aversion);
 
     if(state.phase==='recover'){
       // A missed/blocked charge now creates a real decision: punish the opening or make

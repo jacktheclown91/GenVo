@@ -34,7 +34,7 @@ export class HabitController{
   noteDanger(a,outcome){
     if(!this.applies(a))return;this.sim.evolutionBudget?.noteDanger?.(a,outcome);
     if(outcome==='escaped'||outcome==='outrun'||outcome==='lost'||outcome==='evaded')this.reinforce(a,'caution',.1);
-    else if(outcome==='driven-off'||outcome==='braced'||outcome==='countered')this.reinforce(a,'boldness',.12);
+    else if(outcome==='driven-off'||outcome==='deterred'||outcome==='braced'||outcome==='countered')this.reinforce(a,'boldness',.12);
     else if(outcome==='hit')this.reinforce(a,'caution',.04);
   }
   noteHide(a){this.reinforce(a,'caution',.05)}
