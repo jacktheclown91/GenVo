@@ -138,3 +138,7 @@ Dates follow the creator's allocation and are targets, not reasons to ship unfin
   - 360 days: thirst deaths 75 to 45, births 3 to 167, and the player's lineage survives and grows.
   - Wild species still collapse in the first 60 days, now mainly from predation, starvation and pre-winter thirst behaviour. Not adopted as the default; opt-in.
   - Next proposed step: the first-month wildlife collapse under real needs.
+- **2026-10-23, first-month wildlife** (`docs/WILDLIFE-NEEDS-2026-10-23.md`):
+  - Three defects corrected: escape jumps into water (new opt-in `escape-landing/1`), the rest allowance holding hungry animals in place (day clock), and juicy food chosen over a reachable drink when badly dehydrated (metabolism).
+  - Each removes its target failure, but deaths shift to starvation: the founding populations exceed what the land yields under real needs (energy turnover up about five-fold, scarce foods and prey stripped, meat energy set for tiny needs).
+  - Decision needed on calibration: yields from physical basis, per-day activity on 30-second days, accepting a founding die-off, or founding densities.
