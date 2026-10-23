@@ -562,7 +562,11 @@ export class Simulation{
   autonomousMateTarget(a,{far=false}={}){
     if(!a?.alive)return null;
     const support=new WeakMap(),supported=b=>{if(!support.has(b))support.set(b,this.carrying.breedingState(b).allowed);return support.get(b)};
-    const baseMate=b=>b.alive&&SPECIES[b.species]&&trophicallyMateable(a,b)&&reproductiveCompatibility(a,b).enabled&&b.sex!==a.sex&&b.age>SPECIES[b.species].maturity&&
+    // A manually controlled player conceives only with the creature it chose to
+    // court, so others cannot win it by pursuit: only that chosen partner, the
+    // player's own lineage and the founding partner approach it unasked.
+    const playerMayReceive=b=>!this.isManualPlayer(b)||this.reproduction.courtTargetId===a.id||!!a.lineage||a.id===this.starterMateId;
+    const baseMate=b=>b.alive&&SPECIES[b.species]&&playerMayReceive(b)&&trophicallyMateable(a,b)&&reproductiveCompatibility(a,b).enabled&&b.sex!==a.sex&&b.age>SPECIES[b.species].maturity&&
       b.reproCooldown<=0&&(!engineeringCourtshipSpecies(a)||!b.pregnant)&&supported(b);
     const unrelated=b=>baseMate(b)&&this.recovery.kinship(a,b)==='none';
     const nearRadius=this.recovery.mateRadius(a.species)*a.genes.senses;
