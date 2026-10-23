@@ -1,0 +1,9 @@
+# Art refinement integration checkpoint - 22 October 2026
+
+Completed candidate groups cover aquatic skin/feeding surfaces, limestone caves, physical surface ice, maternal skin and care expression, dry/cold/highland substrates, state-driven wildfire, climbing and early wings, powered wings and wind-label clearance, shell/thorn/spine defenses, armor, gland surfaces, storage anatomy and thermal anatomy. Their individual art-refinement packets retain normal-game before/after images, applicable directions/phases, masters and exact prompts, editable sources, runtime receipts and performance limits.
+
+Final focused integration: all 27 checks in [the exact test/output record](art-final-integration-2026-10-22.json) pass, including every new test in this pass and existing indexed, source-RGBA, pigment, catalog, assembly, ability and motion checks. The full catalog contains 97 packs and 1,552 source-identical compiled frames. This is art integration evidence, not a full-game release gate or creator approval. Earlier broad-gate failures remain separately documented in the individual packets.
+
+Published and local main were both f82f032 before integration and ancestors of the candidate. Integration is a normal local fast-forward preserving published history. Shared simulation, world, lineage, persistence, main entry and renderer source files were not independently edited by this art pass. Unrelated untracked canonical files are preserved. No push or release is included.
+
+The comprehensive visual objective remains incomplete: advanced sensory anatomy and remaining weak creature parts, additional biome identities, and remaining action/effect coverage still require actual-game assessment and implementation. Existing proof does not establish natural inheritance/evolution, all reproductive events, every weather state, or creator acceptance. This checkpoint closes the completed work for commit; it does not relabel the whole art assignment complete.

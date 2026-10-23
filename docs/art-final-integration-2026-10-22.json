@@ -1,0 +1,137 @@
+[
+  {
+    "test": "tests/indexed-part-art.mjs",
+    "exitCode": 0,
+    "output": "indexed native art identity, all-frame alpha/detail, protected pigment, timing/anchor invariance and cache keys: PASS\n"
+  },
+  {
+    "test": "tests/indexed-part-renderer.mjs",
+    "exitCode": 0,
+    "output": "indexed renderer timed boundaries, missing facing, pivot, joint clamp and allocation-free drawing PASS\n"
+  },
+  {
+    "test": "tests/source-rgba-part-art.mjs",
+    "exitCode": 0,
+    "output": "source RGBA ingestion: sixteen-frame exact round trip, transparent detail, explicit shared pigments, protected substitution and fail-closed mapping PASS\n"
+  },
+  {
+    "test": "tests/native-part-catalog.mjs",
+    "exitCode": 0,
+    "output": "native-part-catalog: 97 indexed assets, 1552 exact RGBA frames, eight facings, 0 missing native art packs PASS\n"
+  },
+  {
+    "test": "tests/native-inherited-pigment.mjs",
+    "exitCode": 0,
+    "output": "native inherited-pigment and anatomical socket mounting PASS\n"
+  },
+  {
+    "test": "tests/inherited-pigmentation.mjs",
+    "exitCode": 0,
+    "output": "independent inherited pigmentation: OK\n"
+  },
+  {
+    "test": "tests/creature-assembly.mjs",
+    "exitCode": 0,
+    "output": "creature assembly ok\n"
+  },
+  {
+    "test": "tests/creature-lab-assembly.mjs",
+    "exitCode": 0,
+    "output": "lab assembly uses canonical socket rules, immutable transactions and native body-plan round trip PASS\n"
+  },
+  {
+    "test": "tests/part-abilities.mjs",
+    "exitCode": 0,
+    "output": "part abilities ok\n"
+  },
+  {
+    "test": "tests/founder-body.mjs",
+    "exitCode": 0,
+    "output": "founder body ok\n"
+  },
+  {
+    "test": "tests/part-animation-catalog.mjs",
+    "exitCode": 0,
+    "output": "registered immutable part-owned responses compile into independent bounded node rigs PASS\n"
+  },
+  {
+    "test": "tests/motion-render.mjs",
+    "exitCode": 0,
+    "output": "render motion bridge checks: PASS\n"
+  },
+  {
+    "test": "tests/physicality-render.mjs",
+    "exitCode": 0,
+    "output": "environment physicality checks: PASS\n"
+  },
+  {
+    "test": "tests/native-thermal-anatomy-art.mjs",
+    "exitCode": 0,
+    "output": "Native thermal anatomy PASS: 48 source/compiled-identical frames, exact original roots/metadata/material definitions/timing, protected structural accents and inherited skin across all headings/phases, transparent margins. [\n  { id: 'wax-plates', fixed: 1621, skin: 1049 },\n  { id: 'heat-frill', fixed: 2308, skin: 1552 },\n  { id: 'endothermic-core', fixed: 203, skin: 3008 }\n]\nExisting flare mount transform PASS: both native phases, eight directions, 0/half/full spread with fixed pivot and no draw-time canvas allocation.\n"
+  },
+  {
+    "test": "tests/care-expression.mjs",
+    "exitCode": 0,
+    "output": "Care receipts PASS: actual conception, funded birth and paid milk transfer; matching parent/child poses, immutable complete snapshot, expiry, separation, actor ownership, movement and combat precedence.\nLaying/hatching receipts PASS: successful canonical conception, paid egg creation, complete incubation operations, exact actor/egg identity, no pregnancy-only pose and no snapshot writes.\n256 care action/facing/phase assemblies preserve finite native joints PASS\n"
+  },
+  {
+    "test": "tests/flight-wind-label.mjs",
+    "exitCode": 0,
+    "output": "Flight wind cue PASS: unchanged anchor input, raised-wing/body clearance and bounded label at normal/small viewports and centre/corners.\n"
+  },
+  {
+    "test": "tests/maternal-native-art.mjs",
+    "exitCode": 0,
+    "output": "Maternal native art PASS: unchanged mounts, rigs, pigment regions, all directional/timing metadata, inherited opaque skin, distinct rest frames and source/compiled identity.\n"
+  },
+  {
+    "test": "tests/native-armor-art.mjs",
+    "exitCode": 0,
+    "output": "Native armor PASS: 32 source/compiled-identical frames, exact original roots/metadata/material definitions/timing, protected mineral/keratin and inherited skin across all headings/phases, transparent margins. [\n  { id: 'armor-plate', fixed: 176, skin: 3133 },\n  { id: 'armored-hide', fixed: 734, skin: 2172 }\n]\n"
+  },
+  {
+    "test": "tests/native-biome-substrates.mjs",
+    "exitCode": 0,
+    "output": "native biome substrates: PASS (12 indexed native32 frames, state-driven weights, water exclusion, continuity, immutable sampling, bounded cache invalidation)\n"
+  },
+  {
+    "test": "tests/native-climbing-wing-art.mjs",
+    "exitCode": 0,
+    "output": "Native climbing/wing art PASS: exact root/display/material/frame contracts, 48 source/indexed frames, protected keratin and inherited feathers, new registered limb paint at unchanged real joints, all facings/contact phases.\n"
+  },
+  {
+    "test": "tests/native-defensive-shell-art.mjs",
+    "exitCode": 0,
+    "output": "Native shell scutes PASS: 16 exact compiled frames, unchanged source metadata/material roles/timings/roots and all original alpha masks; inherited recoloring alpha retained. { changed: 2749 }\n"
+  },
+  {
+    "test": "tests/native-defensive-thorn-spine-art.mjs",
+    "exitCode": 0,
+    "output": "Native dorsal defenses PASS: 32 source/compiled-identical frames, exact original roots/metadata/material definitions/timing, protected keratin and inherited skin across all headings/phases, transparent margins. [\n  { id: 'thorn-carapace', fixed: 748, skin: 3772 },\n  { id: 'spine-ridge', fixed: 1493, skin: 998 }\n]\n"
+  },
+  {
+    "test": "tests/native-gland-surfaces-art.mjs",
+    "exitCode": 0,
+    "output": "Native gland surfaces PASS: 48 source/compiled-identical frames, exact original roots/metadata/material definitions/timing, protected duct materials and inherited skin across all headings/phases, transparent margins. [\n  { id: 'venom-gland', fixed: 67, skin: 3248 },\n  { id: 'scent-gland', fixed: 830, skin: 1964 },\n  { id: 'salt-gland', fixed: 252, skin: 2990 }\n]\n"
+  },
+  {
+    "test": "tests/native-powered-wing-art.mjs",
+    "exitCode": 0,
+    "output": "Powered-wing native art PASS: 16 exact source/indexed frames, unchanged hinge/root/material/timing metadata, protected quills, diagonal margins, all facings/rest phases/fold extents and allocation-free panel reuse. { protectedCount: 160 }\n"
+  },
+  {
+    "test": "tests/native-storage-anatomy-art.mjs",
+    "exitCode": 0,
+    "output": "Native storage anatomy PASS: 48 source/compiled-identical frames, exact original roots/metadata/material definitions/timing, protected structural accents and inherited skin across all headings/phases, transparent margins. [\n  { id: 'storage-sac', fixed: 52, skin: 3851 },\n  { id: 'fat-pad', fixed: 239, skin: 2406 },\n  { id: 'water-hump', fixed: 124, skin: 3888 }\n]\n"
+  },
+  {
+    "test": "tests/native-surface-ice-art.mjs",
+    "exitCode": 0,
+    "output": "Native ice art PASS: preserved master, distinct native32 paint, exact intact/broken masks, physical wet-cell eligibility, no state writes and bounded cache reuse.\n"
+  },
+  {
+    "test": "tests/native-wildfire-art.mjs",
+    "exitCode": 0,
+    "output": "Native wildfire art PASS: master hash, four transparent indexed native32 phases, exact alpha/palette, canonical clock/intensity, bounded cache, context restoration, real burning-cell gates and full snapshot immutability.\n"
+  }
+]
