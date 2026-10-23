@@ -1,0 +1,6 @@
+// Paint at the observed real event coordinate. No world or event writes.
+import {lightningContactArt as art} from '../../assets/art/environment/lightning-contact.js';
+let cache=null;
+function frames(){if(cache)return cache;if(typeof document==='undefined')return null;cache=art.frames.map(frame=>{const canvas=document.createElement('canvas');canvas.width=art.width;canvas.height=art.height;const c=canvas.getContext('2d'),img=c.createImageData(art.width,art.height);for(let i=0;i<frame.length;i++){const v=frame[i],rgb=art.palette[v>>3],k=i*4;img.data[k]=rgb[0];img.data[k+1]=rgb[1];img.data[k+2]=rgb[2];img.data[k+3]=Math.round((v&7)/art.alphaSteps*255)}c.putImageData(img,0,0);return canvas});return cache}
+export function lightningContactPhase(age){return !Number.isFinite(age)||age<0||age>.55?-1:Math.min(3,Math.floor(age/.55*4))}
+export function drawLightningContact(renderer,{x,y,event,age,alpha}){const phase=lightningContactPhase(age);if(phase<0)return;const native=frames();if(!native)return;const c=renderer.ctx,s=renderer.zoom*2;c.save();c.imageSmoothingEnabled=false;c.globalAlpha=Math.sqrt(Math.max(0,Math.min(1,alpha)));c.translate(Math.round(x),Math.round(y));c.rotate((event.i%4)*Math.PI/2);c.drawImage(native[phase],-art.root[0]*s,-art.root[1]*s,art.width*s,art.height*s);c.restore()}

@@ -1,0 +1,18 @@
+import assert from 'node:assert/strict';import fs from 'node:fs';import {createHash} from 'node:crypto';
+import {lightningContactArt as art} from '../assets/art/environment/lightning-contact.js';
+import {lightningContactPhase,drawLightningContact} from '../src/render/lightning-contact-art.js';
+import {drawThunderstorms} from '../src/render/thunderstorms.js';
+import {THUNDERSTORMS} from '../src/ecology/thunderstorms.js';
+assert.equal(createHash('sha256').update(fs.readFileSync(new URL('../assets/art/production-review/storm-v1/master.png',import.meta.url))).digest('hex'),art.sourceSha256);assert.deepEqual([art.width,art.height,art.root],[32,32,[16,16]]);assert.equal(art.frames.length,4);
+for(const frame of art.frames){assert.equal(frame.length,1024);assert.ok(frame.every(v=>Number.isInteger(v)&&v>=0&&v<32));assert.ok(frame.some(v=>v%8));for(let i=0;i<1024;i++)if(i%32===0||i%32===31||i<32||i>=992)assert.equal(frame[i],0);assert.ok(frame[16*32+16]>=24,'bright contact exactly at registered root')}
+assert.equal(new Set(art.frames.map(f=>JSON.stringify(f))).size,4);const occupied=art.frames.map(f=>f.filter(v=>v%8).length);assert.ok(occupied[1]>occupied[0]&&occupied[1]>occupied[2]&&occupied[2]>occupied[3],'expanded discharge then receding paint');
+for(const [age,phase] of [[-.01,-1],[0,0],[.125,0],[.25,1],[.375,2],[.5,3],[.55,3],[.551,-1],[NaN,-1],[Infinity,-1]])assert.equal(lightningContactPhase(age),phase);
+globalThis.document={createElement(){return{width:0,height:0,getContext(){return{createImageData(w,h){return{data:new Uint8ClampedArray(w*h*4)}},putImageData(){}}}}}};
+const calls=[],c=new Proxy({save(){calls.push(['save'])},restore(){calls.push(['restore'])},translate(...args){calls.push(['translate',...args])},rotate(...args){calls.push(['rotate',...args])},drawImage(...args){calls.push(['drawImage',...args.slice(1)])},fillRect(...args){calls.push(['fillRect',...args])}},{set(o,k,v){o[k]=v;return true}});
+for(let i=0;i<4;i++){calls.length=0;const e=Object.freeze({i,id:1,tick:16,intensity:.5}),r=Object.freeze({ctx:c,zoom:2});drawLightningContact(r,{x:123.3,y:44.8,event:e,age:.25,alpha:.4});assert.deepEqual(calls.find(c=>c[0]==='translate'),['translate',123,45]);assert.deepEqual(calls.find(c=>c[0]==='rotate'),['rotate',i*Math.PI/2]);assert.deepEqual(calls.find(c=>c[0]==='drawImage'),['drawImage',-64,-64,128,128]);assert.equal(calls.filter(c=>c[0]==='save').length,calls.filter(c=>c[0]==='restore').length)}
+const e=Object.freeze({i:128*20+20,id:1,tick:16,intensity:.5}),player=Object.freeze({id:9,x:18.5,y:20.5}),sim={player:()=>player,thunderRules:THUNDERSTORMS.policy,climate:null,world:{n:128,idx:(x,y)=>Math.floor(y)*128+Math.floor(x)},thunderstorms:{events:[e]},tickCount:16},r={sim,ctx:c,zoom:2,w:1000,h:750,camera:{x:18.5,y:20.5}};
+calls.length=0;const before=JSON.stringify(sim);drawThunderstorms(r);assert.equal(JSON.stringify(sim),before);assert.equal(calls.filter(c=>c[0]==='drawImage').length,1);assert.ok(calls.some(c=>c[0]==='fillRect'));
+for(const tick of [15,21]){calls.length=0;sim.tickCount=tick;drawThunderstorms(r);assert.equal(calls.filter(c=>c[0]==='drawImage').length,0)}
+calls.length=0;sim.tickCount=16;sim.sensoryFogEnabled=true;drawThunderstorms(r);assert.equal(calls.filter(c=>c[0]==='drawImage'||c[0]==='fillRect').length,0,'unseen event paints no flash or contact');delete sim.sensoryFogEnabled;
+for(const p of [null,{underground:true},{diveDepth:.04}]){calls.length=0;drawThunderstorms({...r,sim:{...sim,player:()=>p}});assert.equal(calls.length,0)}
+console.log('Native lightning contact PASS: retained indexed phases, central root, bounded native silhouettes, truthful lifetime, four stable rotations, balanced context, read-only event and stratum exclusions.');
