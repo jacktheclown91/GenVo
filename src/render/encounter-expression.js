@@ -1,4 +1,5 @@
 import {CFG} from '../sim/config.js';
+import {displayActive} from '../gameplay/threat-display.js';
 import {currentCourtshipMove,COURTSHIP_PERFORMANCE,availableCourtshipMoves} from '../reproduction/courtship-performance.js';
 // Renderer-owned transient state. No preference reads, controller calls or simulation writes.
 export class EncounterPresentation{
@@ -20,6 +21,8 @@ export class EncounterPresentation{
   if(pose.move==='dance')Object.assign(pose,{bodySway:wave*1.6*intensity,bodyRise:.4+beat*.65,displayStride:1.8*intensity,displayLift:1.1,stanceSpread:.4,feelerSweep:.8});
   if(pose.move==='call')Object.assign(pose,{bodyRise:.45,headDrop:-1.3*beat,mouthPulse:.25+.75*beat,compress:-.25*beat,feelerForward:1.5});
   if(pose.move==='flare')Object.assign(pose,{bodyRise:.7,stanceSpread:1.2,crestSpread:.3+.4*beat,eyeWide:true,compress:-.2});
+  // A threat display spreads everything fully and holds the body tall and wide.
+  else if(!pose.move&&displayActive(sim,a))Object.assign(pose,{move:'flare',bodyRise:1,stanceSpread:1.5,crestSpread:.9+.1*beat,eyeWide:true,compress:-.3});
   // Presentation-only settling uses the existing paused encounter clock.
   // It changes no paid move, preference, energy, physiology or simulation state.
   const displayDt=Math.max(0,this.time-(e.displayAt??this.time));e.displayAt=this.time;

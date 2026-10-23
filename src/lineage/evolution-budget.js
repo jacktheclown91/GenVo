@@ -20,7 +20,7 @@ export const BUDGET=Object.freeze({
   dailyCaps:{stalkerSurvived:2,hunt:3,pressureEndured:1,birth:2,taught:1,discovery:3},
   pressureEndured:.45
 });
-const SURVIVED=new Set(['escaped','outrun','lost','evaded','driven-off','braced','countered']);
+const SURVIVED=new Set(['escaped','outrun','lost','evaded','driven-off','deterred','braced','countered']);
 
 export class EvolutionBudgetController{
   constructor(sim){this.sim=sim;this.sinceHandoff=0;this.total=0;this.log=[];this.daily={day:-1,counts:{}};this.matured=[];this.firstHomeCredited=false}

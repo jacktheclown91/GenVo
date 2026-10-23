@@ -1,0 +1,70 @@
+{
+ "seed": "PLANET-OBS-3",
+ "creature": "starter-jump",
+ "lab": {
+  "opened": true,
+  "day": 4,
+  "part": "signal-crest",
+  "before": [
+   "Attack",
+   "Pounce",
+   "Jump"
+  ],
+  "after": [
+   {
+    "text": "Attack",
+    "cls": "ed-verb kept"
+   },
+   {
+    "text": "Pounce",
+    "cls": "ed-verb kept"
+   },
+   {
+    "text": "+ Threat display",
+    "cls": "ed-verb new"
+   },
+   {
+    "text": "Jump",
+    "cls": "ed-verb kept"
+   },
+   {
+    "text": "+ Warn family",
+    "cls": "ed-verb new"
+   }
+  ]
+ },
+ "setup": {
+  "fedId": 199,
+  "starvingId": 200
+ },
+ "button": {
+  "visible": true,
+  "disabled": false,
+  "title": "Spread your display (outline +25%). Hunters that see it judge whether you are worth the risk. Moving ends it."
+ },
+ "playerScreen": {
+  "x": 640,
+  "y": 360
+ },
+ "field": {
+  "fed": {
+   "aversion": "deterred",
+   "intent": "escape",
+   "habit": {
+    "targetId": 197,
+    "count": 1
+   }
+  },
+  "starving": {
+   "hunting": true,
+   "intent": "stalk-player"
+  },
+  "exertion": 100
+ },
+ "toasts": [
+  "✓ Threat display: hold still while hunters judge you.",
+  "The stalker sees a bigger creature than it hoped for, and backs off.",
+  "The stalker is too hungry to be bluffed: it keeps coming."
+ ],
+ "errors": []
+}

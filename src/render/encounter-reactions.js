@@ -10,7 +10,7 @@ const FACING=[[0,-1],[.7071,-.7071],[1,0],[.7071,.7071],[0,1],[-.7071,.7071],[-1
 export const REACTION_SECONDS=Object.freeze({brace:.7,stagger:.9,overrun:.75,flinch:.55,settle:.6});
 // Whole-body displacement away from the force, in sprite pixels (same units as impact recoil).
 const SHOVE={'brace-frontal':.9,'brace-side':1.6,'brace-rear':2.2,stagger:2.8,flinch:1.8};
-const RETREAT_COWED=new Set(['driven-off','repelled',undefined]);
+const RETREAT_COWED=new Set(['driven-off','deterred','repelled',undefined]);
 const RETREAT_INTENTS=new Set(['escape','return-den']);
 const clamp01=v=>Math.max(0,Math.min(1,v));
 // Sharp onset, then a long ease out: an impact should land before it fades.
