@@ -1,0 +1,83 @@
+{
+  "target": {
+    "i": 4702,
+    "kind": "sunmoss",
+    "tissue": null
+  },
+  "control": {
+    "autonomyBefore": false,
+    "autonomyAfter": false
+  },
+  "before": {
+    "amount": 0.5415454506874084,
+    "energy": 113.96905221439813,
+    "hydration": 102.49680908386539,
+    "tick": 14
+  },
+  "result": {
+    "ok": true,
+    "type": "eat",
+    "kind": "sunmoss",
+    "processingCost": 0,
+    "energyGain": 1.4379336027399319,
+    "waterGain": 0,
+    "breadth": 1,
+    "role": "steady bulk",
+    "patch": {
+      "id": "sunmoss:189:73",
+      "kind": "sunmoss",
+      "x": 94.5,
+      "y": 36.5,
+      "firstSeenTick": 14,
+      "lastSeenTick": 14,
+      "bestSeen": 15.638517200946808,
+      "lastAmount": 15.478517204523087,
+      "lastRatio": 0.9897688512045097,
+      "status": "abundant",
+      "visits": 1,
+      "meals": 1,
+      "depletedTick": null,
+      "lastEvent": null,
+      "seasonSamples": {
+        "SPRING": {
+          "visits": 1,
+          "meanRatio": 1,
+          "lastTick": 14
+        }
+      },
+      "competition": {
+        "family": 0,
+        "wildlife": 0,
+        "pressure": 0,
+        "tick": 14
+      },
+      "lastVisitTick": 14,
+      "distance": 0,
+      "ageDays": 0,
+      "estimatedRatio": 0.9897688512045097,
+      "estimatedStatus": "abundant",
+      "readyInDays": 0,
+      "confidence": 0.9186000000000001,
+      "label": "Moss",
+      "season": "SPRING",
+      "seasonFactor": 1.1,
+      "seasonLabel": "strong this spring",
+      "seasonObserved": true,
+      "seasonMeanRatio": 1,
+      "competitionPressure": 0,
+      "competitionLabel": "quiet",
+      "competitionAgeDays": 0,
+      "familyUse": 0,
+      "wildlifeUse": 0
+    },
+    "tissue": null,
+    "plantReceipt": null,
+    "message": "Moss · +1 energy"
+  },
+  "after": {
+    "amount": 0.38154545426368713,
+    "energy": 115.40698581713806,
+    "hydration": 102.49680908386539,
+    "tick": 14
+  }
+}

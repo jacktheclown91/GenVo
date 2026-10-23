@@ -1,0 +1,400 @@
+{
+  "setup": {
+    "seed": "DEFENSIVE-ART-20261022",
+    "body": "bp0-0bc8b246",
+    "mount": "mouth",
+    "observation": {
+      "x": 94.5,
+      "y": 36.5,
+      "score": 0.562930952757597
+    },
+    "scope": "Controlled legal adult founder with original mouth socket replaced by kernel-beak; actual terrain, genes and resources retained. HTTP-only inspection wrapper forwards explicit paint frame to original renderer; no simulation action fabricated."
+  },
+  "defense": null,
+  "court": null,
+  "live": [],
+  "feeding": {
+    "target": {
+      "i": 4830,
+      "kind": "bramble",
+      "tissue": "kernel"
+    },
+    "control": {
+      "autonomyBefore": false,
+      "autonomyAfter": false
+    },
+    "before": {
+      "amount": 0.2746048867702484,
+      "energy": 114.02452610719907,
+      "hydration": 102.5484045419327,
+      "tick": 9
+    },
+    "result": {
+      "ok": true,
+      "type": "eat",
+      "kind": "bramble",
+      "processingCost": 0,
+      "energyGain": 2.170565990872447,
+      "waterGain": 0,
+      "breadth": 1,
+      "role": "rich + juicy",
+      "patch": {
+        "id": "bramble:189:75",
+        "kind": "bramble",
+        "x": 94.5,
+        "y": 37.5,
+        "firstSeenTick": 9,
+        "lastSeenTick": 9,
+        "bestSeen": 3.625351145863533,
+        "lastAmount": 3.4653511494398117,
+        "lastRatio": 0.9558663450832126,
+        "status": "abundant",
+        "visits": 1,
+        "meals": 1,
+        "depletedTick": null,
+        "lastEvent": null,
+        "seasonSamples": {
+          "SPRING": {
+            "visits": 1,
+            "meanRatio": 1,
+            "lastTick": 9
+          }
+        },
+        "competition": {
+          "family": 0,
+          "wildlife": 0,
+          "pressure": 0,
+          "tick": 9
+        },
+        "lastVisitTick": 9,
+        "distance": 1,
+        "ageDays": 0,
+        "estimatedRatio": 0.9558663450832126,
+        "estimatedStatus": "abundant",
+        "readyInDays": 0,
+        "confidence": 0.9186000000000001,
+        "label": "Berries",
+        "season": "SPRING",
+        "seasonFactor": 0.92,
+        "seasonLabel": "steady this spring",
+        "seasonObserved": true,
+        "seasonMeanRatio": 1,
+        "competitionPressure": 0,
+        "competitionLabel": "quiet",
+        "competitionAgeDays": 0,
+        "familyUse": 0,
+        "wildlifeUse": 0
+      },
+      "tissue": "kernel",
+      "plantReceipt": {
+        "kind": "bramble",
+        "i": 4830,
+        "tissue": "kernel",
+        "removed": 0.16,
+        "coat": 0,
+        "edible": 0.03200000086822409,
+        "viableSeeds": 0,
+        "destroyedSeeds": 0.03200000086822409,
+        "discarded": 0.1279999991317759,
+        "genome": {
+          "schema": 1,
+          "id": "flora1-bramble",
+          "resourceAlias": "bramble",
+          "traits": {
+            "growth": 0.032,
+            "waterNeed": 0.42,
+            "nutrition": 16,
+            "seedAllocation": 0.2,
+            "coatAllocation": 0
+          },
+          "reproduction": "propagule",
+          "mutationEnabled": false
+        },
+        "producerId": "bramble:4830:founder",
+        "originCell": 4830,
+        "processingCost": 0,
+        "specializedHandling": true,
+        "actorId": 109,
+        "tick": 9,
+        "parentGenomeId": "flora1-bramble",
+        "seedTransferComplete": true
+      },
+      "message": "Crush seeds · +2 energy · kernels consumed; seeds destroyed"
+    },
+    "after": {
+      "amount": 0.1146048903465271,
+      "energy": 116.19509209807151,
+      "hydration": 102.5484045419327,
+      "tick": 9
+    },
+    "observed": {
+      "pose": {
+        "mode": "crush",
+        "stage": "process",
+        "strength": 1,
+        "progress": 0.22152380954651593,
+        "seedFate": "crushed",
+        "mouthPulse": 0.7279650298293137,
+        "headReach": 0.7209380616470489,
+        "headDrop": 0.6249742742737179,
+        "bodyDrop": 0.35,
+        "feelerForward": 0.842074074038753,
+        "compress": 0.16716091920811,
+        "stanceSpread": 0.75,
+        "bodyLean": -0.1910410505235543,
+        "eyeNarrow": true,
+        "attention": {
+          "x": 94.5,
+          "y": 37.5
+        }
+      },
+      "receipt": {
+        "actorId": 109,
+        "tick": 9,
+        "removed": 0.16,
+        "edible": 0.03200000086822409,
+        "tissue": "kernel",
+        "processingCost": 0,
+        "viableSeeds": 0,
+        "destroyedSeeds": 0.03200000086822409,
+        "kind": "bramble",
+        "i": 4830
+      }
+    },
+    "exactCanonicalState": true,
+    "actualPresentationClockPreservedAcrossArtSwap": true,
+    "presentation": {
+      "stages": [
+        {
+          "original": true,
+          "pose": {
+            "mode": "crush",
+            "stage": "process",
+            "strength": 1,
+            "progress": 0.22152380954651593,
+            "seedFate": "crushed",
+            "mouthPulse": 0.7279650298293137,
+            "headReach": 0.7209380616470489,
+            "headDrop": 0.6249742742737179,
+            "bodyDrop": 0.35,
+            "feelerForward": 0.842074074038753,
+            "compress": 0.16716091920811,
+            "stanceSpread": 0.75,
+            "bodyLean": -0.1910410505235543,
+            "eyeNarrow": true,
+            "attention": {
+              "x": 94.5,
+              "y": 37.5
+            }
+          },
+          "meanMs": 9.94,
+          "medianMs": 4.799999952316284,
+          "p95Ms": 30.40000009536743
+        },
+        {
+          "original": false,
+          "pose": {
+            "mode": "crush",
+            "stage": "process",
+            "strength": 1,
+            "progress": 0.22152380954651593,
+            "seedFate": "crushed",
+            "mouthPulse": 0.7279650298293137,
+            "headReach": 0.7209380616470489,
+            "headDrop": 0.6249742742737179,
+            "bodyDrop": 0.35,
+            "feelerForward": 0.842074074038753,
+            "compress": 0.16716091920811,
+            "stanceSpread": 0.75,
+            "bodyLean": -0.1910410505235543,
+            "eyeNarrow": true,
+            "attention": {
+              "x": 94.5,
+              "y": 37.5
+            }
+          },
+          "meanMs": 9.952000000476836,
+          "medianMs": 5.799999952316284,
+          "p95Ms": 37.10000002384186
+        },
+        {
+          "original": false,
+          "pose": {
+            "mode": "crush",
+            "stage": "process",
+            "strength": 1,
+            "progress": 0.22152380954651593,
+            "seedFate": "crushed",
+            "mouthPulse": 0.7279650298293137,
+            "headReach": 0.7209380616470489,
+            "headDrop": 0.6249742742737179,
+            "bodyDrop": 0.35,
+            "feelerForward": 0.842074074038753,
+            "compress": 0.16716091920811,
+            "stanceSpread": 0.75,
+            "bodyLean": -0.1910410505235543,
+            "eyeNarrow": true,
+            "attention": {
+              "x": 94.5,
+              "y": 37.5
+            }
+          },
+          "meanMs": 8.880999999046326,
+          "medianMs": 4.399999976158142,
+          "p95Ms": 30.199999928474426
+        },
+        {
+          "original": true,
+          "pose": {
+            "mode": "crush",
+            "stage": "process",
+            "strength": 1,
+            "progress": 0.22152380954651593,
+            "seedFate": "crushed",
+            "mouthPulse": 0.7279650298293137,
+            "headReach": 0.7209380616470489,
+            "headDrop": 0.6249742742737179,
+            "bodyDrop": 0.35,
+            "feelerForward": 0.842074074038753,
+            "compress": 0.16716091920811,
+            "stanceSpread": 0.75,
+            "bodyLean": -0.1910410505235543,
+            "eyeNarrow": true,
+            "attention": {
+              "x": 94.5,
+              "y": 37.5
+            }
+          },
+          "meanMs": 8.17600000023842,
+          "medianMs": 4.400000095367432,
+          "p95Ms": 29.899999976158142
+        },
+        {
+          "original": false,
+          "pose": {
+            "mode": "crush",
+            "stage": "process",
+            "strength": 1,
+            "progress": 0.22152380954651593,
+            "seedFate": "crushed",
+            "mouthPulse": 0.7279650298293137,
+            "headReach": 0.7209380616470489,
+            "headDrop": 0.6249742742737179,
+            "bodyDrop": 0.35,
+            "feelerForward": 0.842074074038753,
+            "compress": 0.16716091920811,
+            "stanceSpread": 0.75,
+            "bodyLean": -0.1910410505235543,
+            "eyeNarrow": true,
+            "attention": {
+              "x": 94.5,
+              "y": 37.5
+            }
+          },
+          "meanMs": 7.316000000238419,
+          "medianMs": 3.899999976158142,
+          "p95Ms": 27.600000023841858
+        },
+        {
+          "original": true,
+          "pose": {
+            "mode": "crush",
+            "stage": "process",
+            "strength": 1,
+            "progress": 0.22152380954651593,
+            "seedFate": "crushed",
+            "mouthPulse": 0.7279650298293137,
+            "headReach": 0.7209380616470489,
+            "headDrop": 0.6249742742737179,
+            "bodyDrop": 0.35,
+            "feelerForward": 0.842074074038753,
+            "compress": 0.16716091920811,
+            "stanceSpread": 0.75,
+            "bodyLean": -0.1910410505235543,
+            "eyeNarrow": true,
+            "attention": {
+              "x": 94.5,
+              "y": 37.5
+            }
+          },
+          "meanMs": 7.358000001907349,
+          "medianMs": 4,
+          "p95Ms": 27
+        },
+        {
+          "original": true,
+          "pose": {
+            "mode": "crush",
+            "stage": "process",
+            "strength": 1,
+            "progress": 0.22152380954651593,
+            "seedFate": "crushed",
+            "mouthPulse": 0.7279650298293137,
+            "headReach": 0.7209380616470489,
+            "headDrop": 0.6249742742737179,
+            "bodyDrop": 0.35,
+            "feelerForward": 0.842074074038753,
+            "compress": 0.16716091920811,
+            "stanceSpread": 0.75,
+            "bodyLean": -0.1910410505235543,
+            "eyeNarrow": true,
+            "attention": {
+              "x": 94.5,
+              "y": 37.5
+            }
+          },
+          "meanMs": 7.252000000476837,
+          "medianMs": 3.700000047683716,
+          "p95Ms": 27.100000023841858
+        },
+        {
+          "original": false,
+          "pose": {
+            "mode": "crush",
+            "stage": "process",
+            "strength": 1,
+            "progress": 0.22152380954651593,
+            "seedFate": "crushed",
+            "mouthPulse": 0.7279650298293137,
+            "headReach": 0.7209380616470489,
+            "headDrop": 0.6249742742737179,
+            "bodyDrop": 0.35,
+            "feelerForward": 0.842074074038753,
+            "compress": 0.16716091920811,
+            "stanceSpread": 0.75,
+            "bodyLean": -0.1910410505235543,
+            "eyeNarrow": true,
+            "attention": {
+              "x": 94.5,
+              "y": 37.5
+            }
+          },
+          "meanMs": 7.31,
+          "medianMs": 3.899999976158142,
+          "p95Ms": 27.40000009536743
+        }
+      ],
+      "exactCanonicalState": true
+    }
+  },
+  "stages": [
+    {
+      "label": "before",
+      "captures": [],
+      "meanMs": 8.710000001192093,
+      "medianMs": 4.399999976158142,
+      "p95Ms": 27.59999990463257
+    },
+    {
+      "label": "after",
+      "captures": [],
+      "meanMs": 6.645000001192093,
+      "medianMs": 3.299999952316284,
+      "p95Ms": 25.800000071525574
+    }
+  ],
+  "exactCanonicalState": true,
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "100 paused CPU draws; excludes GPU completion"
+}

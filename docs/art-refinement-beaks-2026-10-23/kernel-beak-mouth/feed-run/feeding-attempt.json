@@ -1,0 +1,115 @@
+{
+  "target": {
+    "i": 4830,
+    "kind": "bramble",
+    "tissue": "kernel"
+  },
+  "control": {
+    "autonomyBefore": false,
+    "autonomyAfter": false
+  },
+  "before": {
+    "amount": 0.2746048867702484,
+    "energy": 114.02452610719907,
+    "hydration": 102.5484045419327,
+    "tick": 11
+  },
+  "result": {
+    "ok": true,
+    "type": "eat",
+    "kind": "bramble",
+    "processingCost": 0,
+    "energyGain": 2.170565990872447,
+    "waterGain": 0,
+    "breadth": 1,
+    "role": "rich + juicy",
+    "patch": {
+      "id": "bramble:189:75",
+      "kind": "bramble",
+      "x": 94.5,
+      "y": 37.5,
+      "firstSeenTick": 11,
+      "lastSeenTick": 11,
+      "bestSeen": 3.625351145863533,
+      "lastAmount": 3.4653511494398117,
+      "lastRatio": 0.9558663450832126,
+      "status": "abundant",
+      "visits": 1,
+      "meals": 1,
+      "depletedTick": null,
+      "lastEvent": null,
+      "seasonSamples": {
+        "SPRING": {
+          "visits": 1,
+          "meanRatio": 1,
+          "lastTick": 11
+        }
+      },
+      "competition": {
+        "family": 0,
+        "wildlife": 0,
+        "pressure": 0,
+        "tick": 11
+      },
+      "lastVisitTick": 11,
+      "distance": 1,
+      "ageDays": 0,
+      "estimatedRatio": 0.9558663450832126,
+      "estimatedStatus": "abundant",
+      "readyInDays": 0,
+      "confidence": 0.9186000000000001,
+      "label": "Berries",
+      "season": "SPRING",
+      "seasonFactor": 0.92,
+      "seasonLabel": "steady this spring",
+      "seasonObserved": true,
+      "seasonMeanRatio": 1,
+      "competitionPressure": 0,
+      "competitionLabel": "quiet",
+      "competitionAgeDays": 0,
+      "familyUse": 0,
+      "wildlifeUse": 0
+    },
+    "tissue": "kernel",
+    "plantReceipt": {
+      "kind": "bramble",
+      "i": 4830,
+      "tissue": "kernel",
+      "removed": 0.16,
+      "coat": 0,
+      "edible": 0.03200000086822409,
+      "viableSeeds": 0,
+      "destroyedSeeds": 0.03200000086822409,
+      "discarded": 0.1279999991317759,
+      "genome": {
+        "schema": 1,
+        "id": "flora1-bramble",
+        "resourceAlias": "bramble",
+        "traits": {
+          "growth": 0.032,
+          "waterNeed": 0.42,
+          "nutrition": 16,
+          "seedAllocation": 0.2,
+          "coatAllocation": 0
+        },
+        "reproduction": "propagule",
+        "mutationEnabled": false
+      },
+      "producerId": "bramble:4830:founder",
+      "originCell": 4830,
+      "processingCost": 0,
+      "specializedHandling": true,
+      "actorId": 109,
+      "tick": 11,
+      "parentGenomeId": "flora1-bramble",
+      "seedTransferComplete": true
+    },
+    "message": "Crush seeds · +2 energy · kernels consumed; seeds destroyed"
+  },
+  "after": {
+    "amount": 0.1146048903465271,
+    "energy": 116.19509209807151,
+    "hydration": 102.5484045419327,
+    "tick": 11
+  }
+}

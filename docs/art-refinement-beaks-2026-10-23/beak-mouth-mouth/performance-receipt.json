@@ -1,0 +1,79 @@
+{
+  "setup": {
+    "seed": "DEFENSIVE-ART-20261022",
+    "body": "bp0-9442d1dc",
+    "mount": "mouth",
+    "observation": {
+      "x": 102.5,
+      "y": 113.5,
+      "score": 13.62127468176186
+    },
+    "scope": "Controlled legal adult founder with original mouth socket replaced by beak-mouth; actual terrain, genes and resources retained. HTTP-only inspection wrapper forwards explicit paint frame to original renderer; no simulation action fabricated."
+  },
+  "defense": null,
+  "court": null,
+  "live": [],
+  "feeding": null,
+  "stages": [
+    {
+      "label": "before",
+      "captures": [],
+      "meanMs": 10.107999999523162,
+      "medianMs": 4.799999952316284,
+      "p95Ms": 26.899999976158142
+    },
+    {
+      "label": "after",
+      "captures": [],
+      "meanMs": 10.548000000715255,
+      "medianMs": 4.700000047683716,
+      "p95Ms": 28
+    },
+    {
+      "label": "after",
+      "captures": [],
+      "meanMs": 10.144000000953675,
+      "medianMs": 4.700000047683716,
+      "p95Ms": 28.100000023841858
+    },
+    {
+      "label": "before",
+      "captures": [],
+      "meanMs": 10.736000000238418,
+      "medianMs": 5.400000095367432,
+      "p95Ms": 27.399999976158142
+    },
+    {
+      "label": "after",
+      "captures": [],
+      "meanMs": 10.530000001192093,
+      "medianMs": 4.700000047683716,
+      "p95Ms": 28.399999976158142
+    },
+    {
+      "label": "before",
+      "captures": [],
+      "meanMs": 10.35,
+      "medianMs": 4.800000071525574,
+      "p95Ms": 28.300000071525574
+    },
+    {
+      "label": "before",
+      "captures": [],
+      "meanMs": 10.845,
+      "medianMs": 5.300000071525574,
+      "p95Ms": 30.399999976158142
+    },
+    {
+      "label": "after",
+      "captures": [],
+      "meanMs": 10.336999999284744,
+      "medianMs": 4.800000071525574,
+      "p95Ms": 27.299999952316284
+    }
+  ],
+  "exactCanonicalState": true,
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "100 paused CPU draws; excludes GPU completion"
+}

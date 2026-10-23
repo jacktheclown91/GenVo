@@ -1,0 +1,82 @@
+[
+  {
+    "test": "tests/indexed-part-art.mjs",
+    "exitCode": 0,
+    "output": "indexed native art identity, all-frame alpha/detail, protected pigment, timing/anchor invariance and cache keys: PASS\n"
+  },
+  {
+    "test": "tests/indexed-part-renderer.mjs",
+    "exitCode": 0,
+    "output": "indexed renderer timed boundaries, missing facing, pivot, joint clamp and allocation-free drawing PASS\n"
+  },
+  {
+    "test": "tests/source-rgba-part-art.mjs",
+    "exitCode": 0,
+    "output": "source RGBA ingestion: sixteen-frame exact round trip, transparent detail, explicit shared pigments, protected substitution and fail-closed mapping PASS\n"
+  },
+  {
+    "test": "tests/native-part-catalog.mjs",
+    "exitCode": 0,
+    "output": "native-part-catalog: 97 indexed assets, 1552 exact RGBA frames, eight facings, 0 missing native art packs PASS\n"
+  },
+  {
+    "test": "tests/native-inherited-pigment.mjs",
+    "exitCode": 0,
+    "output": "native inherited-pigment and anatomical socket mounting PASS\n"
+  },
+  {
+    "test": "tests/inherited-pigmentation.mjs",
+    "exitCode": 0,
+    "output": "independent inherited pigmentation: OK\n"
+  },
+  {
+    "test": "tests/creature-assembly.mjs",
+    "exitCode": 0,
+    "output": "creature assembly ok\n"
+  },
+  {
+    "test": "tests/creature-lab-assembly.mjs",
+    "exitCode": 0,
+    "output": "lab assembly uses canonical socket rules, immutable transactions and native body-plan round trip PASS\n"
+  },
+  {
+    "test": "tests/part-abilities.mjs",
+    "exitCode": 0,
+    "output": "part abilities ok\n"
+  },
+  {
+    "test": "tests/founder-body.mjs",
+    "exitCode": 0,
+    "output": "founder body ok\n"
+  },
+  {
+    "test": "tests/part-animation-catalog.mjs",
+    "exitCode": 0,
+    "output": "registered immutable part-owned responses compile into independent bounded node rigs PASS\n"
+  },
+  {
+    "test": "tests/motion-render.mjs",
+    "exitCode": 0,
+    "output": "render motion bridge checks: PASS\n"
+  },
+  {
+    "test": "tests/physicality-render.mjs",
+    "exitCode": 0,
+    "output": "environment physicality checks: PASS\n"
+  },
+  {
+    "test": "tests/native-beak-art.mjs",
+    "exitCode": 0,
+    "output": "Native beak anatomy PASS: 32 source/compiled-identical frames, exact original roots/metadata/material definitions/timing, protected structural accents and inherited skin across all headings/phases, transparent margins. [\n  { id: 'beak-mouth', fixed: 1500, skin: 1130 },\n  { id: 'kernel-beak', fixed: 4482, skin: 644 }\n]\n"
+  },
+  {
+    "test": "tests/feeding-performance.mjs",
+    "exitCode": 0,
+    "output": "Funded receipt stages, real source attention, anatomy modes, movement/stance interruption, pause, edible tissue requirement and read-only actor/RNG PASS\nCanonical successful legacy plant events animate read-only; missing tissue is not invented and original mode, age, actor and interruption gates remain PASS\nRich tissue receipts keep same-tick priority and actual seed fate; newer legacy meals remain visible PASS\n"
+  },
+  {
+    "test": "tests/targeted-feeding.mjs",
+    "exitCode": 0,
+    "output": "autonomous feeding consumes the selected resource cell: PASS\n"
+  }
+]

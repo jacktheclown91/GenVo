@@ -1,0 +1,250 @@
+{
+  "setup": {
+    "seed": "DEFENSIVE-ART-20261022",
+    "body": "bp0-9442d1dc",
+    "mount": "mouth",
+    "observation": {
+      "x": 94.5,
+      "y": 36.5,
+      "score": 0.562930952757597
+    },
+    "scope": "Controlled legal adult founder with original mouth socket replaced by beak-mouth; actual terrain, genes and resources retained. HTTP-only inspection wrapper forwards explicit paint frame to original renderer; no simulation action fabricated."
+  },
+  "defense": null,
+  "court": null,
+  "live": [],
+  "feeding": {
+    "target": {
+      "i": 4702,
+      "kind": "sunmoss",
+      "tissue": null
+    },
+    "control": {
+      "autonomyBefore": false,
+      "autonomyAfter": false
+    },
+    "before": {
+      "amount": 0.5415454506874084,
+      "energy": 113.96905221439813,
+      "hydration": 102.49680908386539,
+      "tick": 13
+    },
+    "result": {
+      "ok": true,
+      "type": "eat",
+      "kind": "sunmoss",
+      "processingCost": 0,
+      "energyGain": 1.4379336027399319,
+      "waterGain": 0,
+      "breadth": 1,
+      "role": "steady bulk",
+      "patch": {
+        "id": "sunmoss:189:73",
+        "kind": "sunmoss",
+        "x": 94.5,
+        "y": 36.5,
+        "firstSeenTick": 13,
+        "lastSeenTick": 13,
+        "bestSeen": 15.638517200946808,
+        "lastAmount": 15.478517204523087,
+        "lastRatio": 0.9897688512045097,
+        "status": "abundant",
+        "visits": 1,
+        "meals": 1,
+        "depletedTick": null,
+        "lastEvent": null,
+        "seasonSamples": {
+          "SPRING": {
+            "visits": 1,
+            "meanRatio": 1,
+            "lastTick": 13
+          }
+        },
+        "competition": {
+          "family": 0,
+          "wildlife": 0,
+          "pressure": 0,
+          "tick": 13
+        },
+        "lastVisitTick": 13,
+        "distance": 0,
+        "ageDays": 0,
+        "estimatedRatio": 0.9897688512045097,
+        "estimatedStatus": "abundant",
+        "readyInDays": 0,
+        "confidence": 0.9186000000000001,
+        "label": "Moss",
+        "season": "SPRING",
+        "seasonFactor": 1.1,
+        "seasonLabel": "strong this spring",
+        "seasonObserved": true,
+        "seasonMeanRatio": 1,
+        "competitionPressure": 0,
+        "competitionLabel": "quiet",
+        "competitionAgeDays": 0,
+        "familyUse": 0,
+        "wildlifeUse": 0
+      },
+      "tissue": null,
+      "plantReceipt": null,
+      "message": "Moss · +1 energy"
+    },
+    "after": {
+      "amount": 0.38154545426368713,
+      "energy": 115.40698581713806,
+      "hydration": 102.49680908386539,
+      "tick": 13
+    },
+    "observed": {
+      "pose": {
+        "mode": "graze",
+        "stage": "process",
+        "strength": 1,
+        "progress": 0.2209523809523807,
+        "seedFate": "none",
+        "mouthPulse": 0.6171722318560616,
+        "headReach": 0.7244625355384697,
+        "headDrop": 0.7476504069554583,
+        "bodyDrop": 0.35,
+        "feelerForward": 0.8429629629629634
+      },
+      "receipt": {
+        "actorId": 109,
+        "tick": 13,
+        "tissue": null,
+        "processingCost": 0,
+        "kind": "sunmoss",
+        "type": "eat",
+        "energyGain": 1.4379336027399319,
+        "waterGain": 0
+      }
+    },
+    "exactCanonicalState": true,
+    "actualPresentationClockPreservedAcrossArtSwap": true,
+    "presentation": {
+      "stages": [
+        {
+          "original": true,
+          "pose": null,
+          "meanMs": 9.669999998807906,
+          "medianMs": 4.699999928474426,
+          "p95Ms": 30.5
+        },
+        {
+          "original": false,
+          "pose": {
+            "mode": "graze",
+            "stage": "process",
+            "strength": 1,
+            "progress": 0.2209523809523807,
+            "seedFate": "none",
+            "mouthPulse": 0.6171722318560616,
+            "headReach": 0.7244625355384697,
+            "headDrop": 0.7476504069554583,
+            "bodyDrop": 0.35,
+            "feelerForward": 0.8429629629629634
+          },
+          "meanMs": 8.418999998569488,
+          "medianMs": 4.600000023841858,
+          "p95Ms": 30.300000071525574
+        },
+        {
+          "original": false,
+          "pose": {
+            "mode": "graze",
+            "stage": "process",
+            "strength": 1,
+            "progress": 0.2209523809523807,
+            "seedFate": "none",
+            "mouthPulse": 0.6171722318560616,
+            "headReach": 0.7244625355384697,
+            "headDrop": 0.7476504069554583,
+            "bodyDrop": 0.35,
+            "feelerForward": 0.8429629629629634
+          },
+          "meanMs": 7.371000000238419,
+          "medianMs": 3.4000000953674316,
+          "p95Ms": 26.100000023841858
+        },
+        {
+          "original": true,
+          "pose": null,
+          "meanMs": 6.418999999761581,
+          "medianMs": 3.1999999284744263,
+          "p95Ms": 25.199999928474426
+        },
+        {
+          "original": false,
+          "pose": {
+            "mode": "graze",
+            "stage": "process",
+            "strength": 1,
+            "progress": 0.2209523809523807,
+            "seedFate": "none",
+            "mouthPulse": 0.6171722318560616,
+            "headReach": 0.7244625355384697,
+            "headDrop": 0.7476504069554583,
+            "bodyDrop": 0.35,
+            "feelerForward": 0.8429629629629634
+          },
+          "meanMs": 6.615,
+          "medianMs": 3.299999952316284,
+          "p95Ms": 25.100000023841858
+        },
+        {
+          "original": true,
+          "pose": null,
+          "meanMs": 6.64,
+          "medianMs": 3.4000000953674316,
+          "p95Ms": 25.5
+        },
+        {
+          "original": true,
+          "pose": null,
+          "meanMs": 6.671000001430511,
+          "medianMs": 3.3000000715255737,
+          "p95Ms": 25.299999952316284
+        },
+        {
+          "original": false,
+          "pose": {
+            "mode": "graze",
+            "stage": "process",
+            "strength": 1,
+            "progress": 0.2209523809523807,
+            "seedFate": "none",
+            "mouthPulse": 0.6171722318560616,
+            "headReach": 0.7244625355384697,
+            "headDrop": 0.7476504069554583,
+            "bodyDrop": 0.35,
+            "feelerForward": 0.8429629629629634
+          },
+          "meanMs": 6.831999999284744,
+          "medianMs": 3.399999976158142,
+          "p95Ms": 27.399999976158142
+        }
+      ],
+      "exactCanonicalState": true
+    }
+  },
+  "stages": [
+    {
+      "label": "before",
+      "captures": [],
+      "meanMs": 11.031000000238418,
+      "medianMs": 5.800000071525574,
+      "p95Ms": 30.399999976158142
+    },
+    {
+      "label": "after",
+      "captures": [],
+      "meanMs": 7.181999999284744,
+      "medianMs": 3.6999999284744263,
+      "p95Ms": 27.59999990463257
+    }
+  ],
+  "exactCanonicalState": true,
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "100 paused CPU draws; excludes GPU completion"
+}
