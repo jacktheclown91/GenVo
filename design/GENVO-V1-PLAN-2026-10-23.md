@@ -132,3 +132,9 @@ Dates follow the creator's allocation and are targets, not reasons to ship unfin
   - The player's family now survives 64 days on all three seeds under real needs.
   - The ecosystem still collapses within a month in 360-day runs: animals that cannot eat juicy plants die of thirst, because fresh water is sparse and can turn salty.
   - Decision pending: water from prey and/or a 5-day water reserve.
+- **2026-10-23, tissue water** (`docs/TISSUE-WATER-2026-10-23.md`): water from prey and carrion, conserved and opt-in. It did not resolve access: the binding constraint was a 12-day winter freeze of all water on GENVO8-TEST-A. Not adopted as the default.
+- **2026-10-23, winter water** (`docs/WINTER-WATER-2026-10-23.md`):
+  - Thirsty animals break thin ice (body load, anatomy, energy cost) or eat snow from the finite snowpack (melting energy, booked in the soil-water ledger). Torpor and migration are unchanged.
+  - 360 days: thirst deaths 75 to 45, births 3 to 167, and the player's lineage survives and grows.
+  - Wild species still collapse in the first 60 days, now mainly from predation, starvation and pre-winter thirst behaviour. Not adopted as the default; opt-in.
+  - Next proposed step: the first-month wildlife collapse under real needs.

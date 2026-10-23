@@ -98,6 +98,7 @@ const runtime=[
   'tests/day-clock.mjs',
   'tests/metabolism-policy.mjs',
   'tests/tissue-water.mjs',
+  'tests/winter-water.mjs',
   'tests/regional-multi-hop-biology.mjs',
   'tests/regional-synchronized-replay.mjs',
   'tests/aquatic.mjs',
