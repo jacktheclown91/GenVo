@@ -1,0 +1,72 @@
+[
+  {
+    "test": "tests/indexed-part-art.mjs",
+    "exitCode": 0,
+    "output": "indexed native art identity, all-frame alpha/detail, protected pigment, timing/anchor invariance and cache keys: PASS\n"
+  },
+  {
+    "test": "tests/indexed-part-renderer.mjs",
+    "exitCode": 0,
+    "output": "indexed renderer timed boundaries, missing facing, pivot, joint clamp and allocation-free drawing PASS\n"
+  },
+  {
+    "test": "tests/source-rgba-part-art.mjs",
+    "exitCode": 0,
+    "output": "source RGBA ingestion: sixteen-frame exact round trip, transparent detail, explicit shared pigments, protected substitution and fail-closed mapping PASS\n"
+  },
+  {
+    "test": "tests/native-part-catalog.mjs",
+    "exitCode": 0,
+    "output": "native-part-catalog: 97 indexed assets, 1552 exact RGBA frames, eight facings, 0 missing native art packs PASS\n"
+  },
+  {
+    "test": "tests/native-inherited-pigment.mjs",
+    "exitCode": 0,
+    "output": "native inherited-pigment and anatomical socket mounting PASS\n"
+  },
+  {
+    "test": "tests/inherited-pigmentation.mjs",
+    "exitCode": 0,
+    "output": "independent inherited pigmentation: OK\n"
+  },
+  {
+    "test": "tests/creature-assembly.mjs",
+    "exitCode": 0,
+    "output": "creature assembly ok\n"
+  },
+  {
+    "test": "tests/creature-lab-assembly.mjs",
+    "exitCode": 0,
+    "output": "lab assembly uses canonical socket rules, immutable transactions and native body-plan round trip PASS\n"
+  },
+  {
+    "test": "tests/part-abilities.mjs",
+    "exitCode": 0,
+    "output": "part abilities ok\n"
+  },
+  {
+    "test": "tests/founder-body.mjs",
+    "exitCode": 0,
+    "output": "founder body ok\n"
+  },
+  {
+    "test": "tests/part-animation-catalog.mjs",
+    "exitCode": 0,
+    "output": "registered immutable part-owned responses compile into independent bounded node rigs PASS\n"
+  },
+  {
+    "test": "tests/motion-render.mjs",
+    "exitCode": 0,
+    "output": "render motion bridge checks: PASS\n"
+  },
+  {
+    "test": "tests/physicality-render.mjs",
+    "exitCode": 0,
+    "output": "environment physicality checks: PASS\n"
+  },
+  {
+    "test": "tests/native-sensory-dorsal-art.mjs",
+    "exitCode": 0,
+    "output": "Native sensory anatomy PASS: 32 source/compiled-identical frames, exact original roots/metadata/material definitions/timing, protected structural accents and inherited skin across all headings/phases, transparent margins. [\n  { id: 'echo-crest', fixed: 3370, skin: 752 },\n  { id: 'sensory-quills', fixed: 1197, skin: 1019 }\n]\n"
+  }
+]
