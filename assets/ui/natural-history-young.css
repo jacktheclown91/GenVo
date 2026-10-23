@@ -1,0 +1,33 @@
+/* Genuine newborn milestone only; native pause/trigger/dismissal remain authoritative. */
+#youngSummary{background:#06110be6;display:grid;place-items:center;padding:12px;box-sizing:border-box}
+#youngSummary[hidden]{display:none}
+#youngSummary .legacy-card{box-sizing:border-box;width:min(1100px,calc(100vw - 24px));max-height:calc(100vh - 24px);overflow:auto;background:#102017;color:#d9dec6;border:1px solid #879268;border-radius:2px;box-shadow:0 4px 18px #06110b99;padding:20px 24px;font:13px/1.5 Verdana,sans-serif;scrollbar-width:thin;scrollbar-color:#a5ad7a #102017}
+#youngSummary .transition-kicker{font:700 10px/1.5 Verdana,sans-serif;color:#bdc8a2;letter-spacing:1.5px}
+#youngSummary h2{font:700 30px/1.15 Georgia,serif;color:#eee3bd;margin:5px 0 8px;text-shadow:none}
+#youngSummary .transition-lead{font:13px/1.6 Verdana,sans-serif;color:#d1d9bd;margin:0 0 14px}
+#youngSummary .birth-conception{border-top:1px solid #596447;border-bottom:1px solid #596447;padding:12px 0;margin-bottom:14px}
+#youngSummary .birth-conception h3{font:700 18px/1.35 Georgia,serif;color:#e4d7aa;margin:0 0 4px}
+#youngSummary .birth-conception p{font:12px/1.5 Verdana,sans-serif;color:#bdc8a2;margin:5px 0}
+#youngSummary .birth-parent-row{display:flex;justify-content:center;flex-wrap:wrap;gap:18px;margin-top:8px}
+#youngSummary .birth-parent-row figure{margin:0;flex:0 1 220px;min-width:0;text-align:center;background:#1b2c1e;border-top:1px solid #626f4e;padding:8px}
+#youngSummary .birth-parent-row canvas{display:block;width:144px;max-width:100%;height:auto;image-rendering:pixelated;margin:0 auto}
+#youngSummary .birth-parent-row figcaption{font:700 11px/1.5 Verdana,sans-serif;color:#e4d7aa}
+#youngSummary .young-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:12px 0 16px}
+#youngSummary .young-cell{min-width:0;background:#e5dcb7;border:0;border-radius:2px;padding:10px;color:#283c2a}
+#youngSummary .young-cell canvas{width:144px;max-width:100%;height:auto;display:block;margin:0 auto 6px;image-rendering:pixelated}
+#youngSummary .young-cell b{font:700 14px/1.4 Georgia,serif;color:#253a28;margin-bottom:8px}
+#youngSummary .young-cell ul{font:12px/1.6 Verdana,sans-serif;color:#334932;padding-left:16px;margin:0}
+#youngSummary .young-cell li+li{margin-top:5px}
+#youngSummary .legacy-note{font:12px/1.6 Verdana,sans-serif;color:#c2cbaa;margin:10px 0}
+#youngSummary .legacy-actions{position:sticky;bottom:-20px;background:#102017;padding:12px 0 0;margin:14px 0 0;border-top:1px solid #596447;z-index:2}
+#youngSummary .legacy-actions button{min-height:44px;border:1px solid #b0a46b;border-radius:2px;background:#394625;color:#f2df9d;font:700 12px/1.5 Verdana,sans-serif;padding:9px 18px}
+#youngSummary .legacy-actions button:focus-visible{outline:2px solid #e8d487;outline-offset:2px}
+@media(max-width:900px){#youngSummary .young-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){#youngSummary{padding:6px}#youngSummary .legacy-card{width:calc(100vw - 12px);max-height:calc(100vh - 12px);padding:16px}#youngSummary .young-grid{grid-template-columns:1fr}#youngSummary h2{font-size:25px}#youngSummary .birth-parent-row{gap:8px}#youngSummary .birth-parent-row figure{flex-basis:125px;padding:6px}#youngSummary .legacy-actions{bottom:-16px}}
+
+#youngSummary .legacy-card{display:flex;flex-direction:column;overflow:hidden}
+#youngSummary .birth-scroll{flex:1 1 auto;min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#a5ad7a #102017;padding-right:6px}
+#youngSummary .legacy-actions{position:static;flex:0 0 auto}
+#youngSummary .transition-kicker,#youngSummary h2,#youngSummary .transition-lead{flex:0 0 auto}
+
+#youngSummary,#youngSummary *{text-shadow:none}
