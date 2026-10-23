@@ -19,6 +19,14 @@ Native 32px creature assembly, isolated native part thumbnails, intrinsic 560×4
 
 `node tools/review-inherited-lab.cjs <new-evidence-folder>` observes the genuine inherited editor. It starts a normal world, uses public AUTO/native speed controls, honors any native speed refusal, and waits for an actual pending litter. It never creates a pregnancy or editor opportunity. In that genuinely paused editor, before/after styling must preserve the complete canonical snapshot graph. It records real parent comparison. A bounded run without an opportunity is reported as unproven rather than manufactured.
 
-Both tools will also test the official opt-in 30-second clock path when `--modern` is selected once its committed implementation is merged. No clock or metabolism mechanism is implemented by these presentation tools.
+Both tools test the committed official opt-in 30-second clock and fasting path when `--modern` is selected. Add `--profile` to the inherited tool for paired ABBA native walk-preview timing. No clock or metabolism mechanism is implemented by these presentation tools.
 
 Original failed/exploratory probes remain in the raw original-repository archive. This candidate is not a claim of full Creature Lab completion, canonical activation, v1 release readiness or creator approval. The standalone asset Artwork Studio and broader action previews remain separate work.
+
+## Selected proof and clean review build
+
+See [the five-size, real inherited-session and exported-build evidence](../../art-refinement-lab-v1-2026-10-23/README.md).
+
+`node tools/stage-lab-presentation.cjs <empty-directory-outside-source>` prepares an isolated public export with the two narrow candidate patches. `node tools/verify-lab-presentation.cjs <build-directory> <new-evidence-directory>` checks that exported app through public controls without inspection hooks. The final review build is `C:\Users\jackt\AppData\Local\Temp\genvo-lab-v1-web-20261023-final`.
+
+After coordinated activation and review, consolidate superseded editor styling through the shared-file owner; the overlay is a review/integration seam, not an intended permanent second styling authority. Preserve unrelated styles and native mechanisms during that audit.

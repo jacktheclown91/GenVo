@@ -1,0 +1,1377 @@
+{
+  "cases": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "candidate": false,
+      "root": {
+        "x": 10,
+        "y": 10,
+        "width": 1900,
+        "height": 1060,
+        "right": 1910,
+        "bottom": 1070
+      },
+      "main": {
+        "x": 31,
+        "y": 117.984375,
+        "width": 1858,
+        "height": 876.015625,
+        "right": 1889,
+        "bottom": 994
+      },
+      "stage": {
+        "x": 341,
+        "y": 117.984375,
+        "width": 1266,
+        "height": 876.015625,
+        "right": 1607,
+        "bottom": 994
+      },
+      "canvas": {
+        "x": 691,
+        "y": 321.53125,
+        "width": 565.984375,
+        "height": 464.921875,
+        "right": 1256.984375,
+        "bottom": 786.453125
+      },
+      "dayClockRules": "day-clock/30s",
+      "metabolismRules": "metabolism/fasting-1",
+      "side": {
+        "x": 1619,
+        "y": 117.984375,
+        "width": 270,
+        "height": 876.015625,
+        "right": 1889,
+        "bottom": 994
+      },
+      "footer": {
+        "x": 31,
+        "y": 1004,
+        "width": 1858,
+        "height": 49,
+        "right": 1889,
+        "bottom": 1053
+      },
+      "footerButtons": [
+        {
+          "x": 31,
+          "y": 1013,
+          "width": 119.640625,
+          "height": 40,
+          "right": 150.640625,
+          "bottom": 1053
+        },
+        {
+          "x": 158.640625,
+          "y": 1013,
+          "width": 118.078125,
+          "height": 40,
+          "right": 276.71875,
+          "bottom": 1053
+        },
+        {
+          "x": 284.71875,
+          "y": 1013,
+          "width": 168.65625,
+          "height": 40,
+          "right": 453.375,
+          "bottom": 1053
+        },
+        {
+          "x": 461.375,
+          "y": 1013,
+          "width": 66.453125,
+          "height": 40,
+          "right": 527.828125,
+          "bottom": 1053
+        },
+        {
+          "x": 535.828125,
+          "y": 1013,
+          "width": 64.1875,
+          "height": 40,
+          "right": 600.015625,
+          "bottom": 1053
+        },
+        {
+          "x": 608.015625,
+          "y": 1013,
+          "width": 92.703125,
+          "height": 40,
+          "right": 700.71875,
+          "bottom": 1053
+        },
+        {
+          "x": 1517.375,
+          "y": 1013,
+          "width": 153.890625,
+          "height": 40,
+          "right": 1671.265625,
+          "bottom": 1053
+        },
+        {
+          "x": 1679.265625,
+          "y": 1013,
+          "width": 209.734375,
+          "height": 40,
+          "right": 1889,
+          "bottom": 1053
+        }
+      ],
+      "sideScroll": {
+        "scrollWidth": 255,
+        "clientWidth": 255
+      },
+      "columns": "86px 200px 1266px 270px",
+      "rows": "876.016px",
+      "workspaceFraction": 0.6813778256189451,
+      "plan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"id\":\"bp0-4134709b\"}",
+      "points": "8",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "candidate": true,
+      "root": {
+        "x": 12,
+        "y": 12,
+        "width": 1896,
+        "height": 1056,
+        "right": 1908,
+        "bottom": 1068
+      },
+      "main": {
+        "x": 29,
+        "y": 130.875,
+        "width": 1862,
+        "height": 855.125,
+        "right": 1891,
+        "bottom": 986
+      },
+      "stage": {
+        "x": 445.359375,
+        "y": 130.875,
+        "width": 1029.265625,
+        "height": 855.125,
+        "right": 1474.625,
+        "bottom": 986
+      },
+      "canvas": {
+        "x": 508.875,
+        "y": 185.875,
+        "width": 902.234375,
+        "height": 741.109375,
+        "right": 1411.109375,
+        "bottom": 926.984375
+      },
+      "dayClockRules": "day-clock/30s",
+      "metabolismRules": "metabolism/fasting-1",
+      "side": {
+        "x": 1486.625,
+        "y": 130.875,
+        "width": 404.359375,
+        "height": 855.125,
+        "right": 1890.984375,
+        "bottom": 986
+      },
+      "footer": {
+        "x": 29,
+        "y": 998,
+        "width": 1862,
+        "height": 53,
+        "right": 1891,
+        "bottom": 1051
+      },
+      "footerButtons": [
+        {
+          "x": 29,
+          "y": 1009,
+          "width": 110.796875,
+          "height": 42,
+          "right": 139.796875,
+          "bottom": 1051
+        },
+        {
+          "x": 145.796875,
+          "y": 1009,
+          "width": 108.765625,
+          "height": 42,
+          "right": 254.5625,
+          "bottom": 1051
+        },
+        {
+          "x": 260.5625,
+          "y": 1009,
+          "width": 158.75,
+          "height": 42,
+          "right": 419.3125,
+          "bottom": 1051
+        },
+        {
+          "x": 425.3125,
+          "y": 1009,
+          "width": 57.140625,
+          "height": 42,
+          "right": 482.453125,
+          "bottom": 1051
+        },
+        {
+          "x": 488.453125,
+          "y": 1009,
+          "width": 55.96875,
+          "height": 42,
+          "right": 544.421875,
+          "bottom": 1051
+        },
+        {
+          "x": 550.421875,
+          "y": 1009,
+          "width": 86.671875,
+          "height": 42,
+          "right": 637.09375,
+          "bottom": 1051
+        },
+        {
+          "x": 1559.359375,
+          "y": 1009,
+          "width": 146.140625,
+          "height": 42,
+          "right": 1705.5,
+          "bottom": 1051
+        },
+        {
+          "x": 1711.5,
+          "y": 1009,
+          "width": 179.5,
+          "height": 42,
+          "right": 1891,
+          "bottom": 1051
+        }
+      ],
+      "sideScroll": {
+        "scrollWidth": 389,
+        "clientWidth": 389
+      },
+      "columns": "404.359px 1029.27px 404.359px",
+      "rows": "140px 703.125px",
+      "workspaceFraction": 0.5527742346938775,
+      "plan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"id\":\"bp0-4134709b\"}",
+      "points": "8",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "candidate": false,
+      "root": {
+        "x": 10,
+        "y": 10,
+        "width": 1346,
+        "height": 748,
+        "right": 1356,
+        "bottom": 758
+      },
+      "main": {
+        "x": 31,
+        "y": 117.984375,
+        "width": 1304,
+        "height": 564.015625,
+        "right": 1335,
+        "bottom": 682
+      },
+      "stage": {
+        "x": 341,
+        "y": 117.984375,
+        "width": 712,
+        "height": 564.015625,
+        "right": 1053,
+        "bottom": 682
+      },
+      "canvas": {
+        "x": 414,
+        "y": 165.53125,
+        "width": 565.984375,
+        "height": 464.921875,
+        "right": 979.984375,
+        "bottom": 630.453125
+      },
+      "dayClockRules": "day-clock/30s",
+      "metabolismRules": "metabolism/fasting-1",
+      "side": {
+        "x": 1065,
+        "y": 117.984375,
+        "width": 270,
+        "height": 564.015625,
+        "right": 1335,
+        "bottom": 682
+      },
+      "footer": {
+        "x": 31,
+        "y": 692,
+        "width": 1304,
+        "height": 49,
+        "right": 1335,
+        "bottom": 741
+      },
+      "footerButtons": [
+        {
+          "x": 31,
+          "y": 701,
+          "width": 119.640625,
+          "height": 40,
+          "right": 150.640625,
+          "bottom": 741
+        },
+        {
+          "x": 158.640625,
+          "y": 701,
+          "width": 118.078125,
+          "height": 40,
+          "right": 276.71875,
+          "bottom": 741
+        },
+        {
+          "x": 284.71875,
+          "y": 701,
+          "width": 168.65625,
+          "height": 40,
+          "right": 453.375,
+          "bottom": 741
+        },
+        {
+          "x": 461.375,
+          "y": 701,
+          "width": 66.453125,
+          "height": 40,
+          "right": 527.828125,
+          "bottom": 741
+        },
+        {
+          "x": 535.828125,
+          "y": 701,
+          "width": 64.1875,
+          "height": 40,
+          "right": 600.015625,
+          "bottom": 741
+        },
+        {
+          "x": 608.015625,
+          "y": 701,
+          "width": 92.703125,
+          "height": 40,
+          "right": 700.71875,
+          "bottom": 741
+        },
+        {
+          "x": 963.375,
+          "y": 701,
+          "width": 153.890625,
+          "height": 40,
+          "right": 1117.265625,
+          "bottom": 741
+        },
+        {
+          "x": 1125.265625,
+          "y": 701,
+          "width": 209.734375,
+          "height": 40,
+          "right": 1335,
+          "bottom": 741
+        }
+      ],
+      "sideScroll": {
+        "scrollWidth": 255,
+        "clientWidth": 255
+      },
+      "columns": "86px 200px 712px 270px",
+      "rows": "564.016px",
+      "workspaceFraction": 0.5460122699386503,
+      "plan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"id\":\"bp0-4134709b\"}",
+      "points": "8",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "candidate": true,
+      "root": {
+        "x": 12,
+        "y": 12,
+        "width": 1342,
+        "height": 744,
+        "right": 1354,
+        "bottom": 756
+      },
+      "main": {
+        "x": 29,
+        "y": 130.875,
+        "width": 1308,
+        "height": 543.125,
+        "right": 1337,
+        "bottom": 674
+      },
+      "stage": {
+        "x": 323.46875,
+        "y": 130.875,
+        "width": 719.046875,
+        "height": 543.125,
+        "right": 1042.515625,
+        "bottom": 674
+      },
+      "canvas": {
+        "x": 421.78125,
+        "y": 185.875,
+        "width": 522.40625,
+        "height": 429.109375,
+        "right": 944.1875,
+        "bottom": 614.984375
+      },
+      "dayClockRules": "day-clock/30s",
+      "metabolismRules": "metabolism/fasting-1",
+      "side": {
+        "x": 1054.515625,
+        "y": 130.875,
+        "width": 282.484375,
+        "height": 543.125,
+        "right": 1337,
+        "bottom": 674
+      },
+      "footer": {
+        "x": 29,
+        "y": 686,
+        "width": 1308,
+        "height": 53,
+        "right": 1337,
+        "bottom": 739
+      },
+      "footerButtons": [
+        {
+          "x": 29,
+          "y": 697,
+          "width": 110.796875,
+          "height": 42,
+          "right": 139.796875,
+          "bottom": 739
+        },
+        {
+          "x": 145.796875,
+          "y": 697,
+          "width": 108.765625,
+          "height": 42,
+          "right": 254.5625,
+          "bottom": 739
+        },
+        {
+          "x": 260.5625,
+          "y": 697,
+          "width": 158.75,
+          "height": 42,
+          "right": 419.3125,
+          "bottom": 739
+        },
+        {
+          "x": 425.3125,
+          "y": 697,
+          "width": 57.140625,
+          "height": 42,
+          "right": 482.453125,
+          "bottom": 739
+        },
+        {
+          "x": 488.453125,
+          "y": 697,
+          "width": 55.96875,
+          "height": 42,
+          "right": 544.421875,
+          "bottom": 739
+        },
+        {
+          "x": 550.421875,
+          "y": 697,
+          "width": 86.671875,
+          "height": 42,
+          "right": 637.09375,
+          "bottom": 739
+        },
+        {
+          "x": 1005.359375,
+          "y": 697,
+          "width": 146.140625,
+          "height": 42,
+          "right": 1151.5,
+          "bottom": 739
+        },
+        {
+          "x": 1157.5,
+          "y": 697,
+          "width": 179.5,
+          "height": 42,
+          "right": 1337,
+          "bottom": 739
+        }
+      ],
+      "sideScroll": {
+        "scrollWidth": 267,
+        "clientWidth": 267
+      },
+      "columns": "282.469px 719.047px 282.484px",
+      "rows": "140px 391.125px",
+      "workspaceFraction": 0.5497300267584098,
+      "plan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"id\":\"bp0-4134709b\"}",
+      "points": "8",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "candidate": false,
+      "root": {
+        "x": 10,
+        "y": 10,
+        "width": 1004,
+        "height": 748,
+        "right": 1014,
+        "bottom": 758
+      },
+      "main": {
+        "x": 31,
+        "y": 113.78125,
+        "width": 962,
+        "height": 572.21875,
+        "right": 993,
+        "bottom": 686
+      },
+      "stage": {
+        "x": 193,
+        "y": 161.78125,
+        "width": 572,
+        "height": 524.21875,
+        "right": 765,
+        "bottom": 686
+      },
+      "canvas": {
+        "x": 226.859375,
+        "y": 207.78125,
+        "width": 504.265625,
+        "height": 414.21875,
+        "right": 731.125,
+        "bottom": 622
+      },
+      "dayClockRules": "day-clock/30s",
+      "metabolismRules": "metabolism/fasting-1",
+      "side": {
+        "x": 773,
+        "y": 161.78125,
+        "width": 220,
+        "height": 524.21875,
+        "right": 993,
+        "bottom": 686
+      },
+      "footer": {
+        "x": 31,
+        "y": 696,
+        "width": 962,
+        "height": 45,
+        "right": 993,
+        "bottom": 741
+      },
+      "footerButtons": [
+        {
+          "x": 31,
+          "y": 705,
+          "width": 97.125,
+          "height": 36,
+          "right": 128.125,
+          "bottom": 741
+        },
+        {
+          "x": 136.125,
+          "y": 705,
+          "width": 95.78125,
+          "height": 36,
+          "right": 231.90625,
+          "bottom": 741
+        },
+        {
+          "x": 239.90625,
+          "y": 705,
+          "width": 139.140625,
+          "height": 36,
+          "right": 379.046875,
+          "bottom": 741
+        },
+        {
+          "x": 387.046875,
+          "y": 705,
+          "width": 51.53125,
+          "height": 36,
+          "right": 438.578125,
+          "bottom": 741
+        },
+        {
+          "x": 446.578125,
+          "y": 705,
+          "width": 49.59375,
+          "height": 36,
+          "right": 496.171875,
+          "bottom": 741
+        },
+        {
+          "x": 504.171875,
+          "y": 705,
+          "width": 74.03125,
+          "height": 36,
+          "right": 578.203125,
+          "bottom": 741
+        },
+        {
+          "x": 679.703125,
+          "y": 705,
+          "width": 126.46875,
+          "height": 36,
+          "right": 806.171875,
+          "bottom": 741
+        },
+        {
+          "x": 814.171875,
+          "y": 705,
+          "width": 178.828125,
+          "height": 36,
+          "right": 993,
+          "bottom": 741
+        }
+      ],
+      "sideScroll": {
+        "scrollWidth": 205,
+        "clientWidth": 205
+      },
+      "columns": "154px 572px 220px",
+      "rows": "40px 524.219px",
+      "workspaceFraction": 0.5945945945945946,
+      "plan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"id\":\"bp0-4134709b\"}",
+      "points": "8",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "candidate": true,
+      "root": {
+        "x": 8,
+        "y": 8,
+        "width": 1008,
+        "height": 752,
+        "right": 1016,
+        "bottom": 760
+      },
+      "main": {
+        "x": 21,
+        "y": 114.484375,
+        "width": 982,
+        "height": 569.515625,
+        "right": 1003,
+        "bottom": 684
+      },
+      "stage": {
+        "x": 231.859375,
+        "y": 114.484375,
+        "width": 540.953125,
+        "height": 569.515625,
+        "right": 772.8125,
+        "bottom": 684
+      },
+      "canvas": {
+        "x": 239.859375,
+        "y": 181.640625,
+        "width": 524.953125,
+        "height": 431.203125,
+        "right": 764.8125,
+        "bottom": 612.84375
+      },
+      "dayClockRules": "day-clock/30s",
+      "metabolismRules": "metabolism/fasting-1",
+      "side": {
+        "x": 780.8125,
+        "y": 114.484375,
+        "width": 222.171875,
+        "height": 569.515625,
+        "right": 1002.984375,
+        "bottom": 684
+      },
+      "footer": {
+        "x": 21,
+        "y": 692,
+        "width": 982,
+        "height": 55,
+        "right": 1003,
+        "bottom": 747
+      },
+      "footerButtons": [
+        {
+          "x": 21,
+          "y": 703,
+          "width": 113.046875,
+          "height": 44,
+          "right": 134.046875,
+          "bottom": 747
+        },
+        {
+          "x": 138.046875,
+          "y": 703,
+          "width": 113.0625,
+          "height": 44,
+          "right": 251.109375,
+          "bottom": 747
+        },
+        {
+          "x": 255.109375,
+          "y": 703,
+          "width": 113.046875,
+          "height": 44,
+          "right": 368.15625,
+          "bottom": 747
+        },
+        {
+          "x": 372.15625,
+          "y": 703,
+          "width": 113.0625,
+          "height": 44,
+          "right": 485.21875,
+          "bottom": 747
+        },
+        {
+          "x": 489.21875,
+          "y": 703,
+          "width": 113.0625,
+          "height": 44,
+          "right": 602.28125,
+          "bottom": 747
+        },
+        {
+          "x": 606.28125,
+          "y": 703,
+          "width": 113.0625,
+          "height": 44,
+          "right": 719.34375,
+          "bottom": 747
+        },
+        {
+          "x": 723.34375,
+          "y": 703,
+          "width": 122.96875,
+          "height": 44,
+          "right": 846.3125,
+          "bottom": 747
+        },
+        {
+          "x": 850.3125,
+          "y": 703,
+          "width": 152.6875,
+          "height": 44,
+          "right": 1003,
+          "bottom": 747
+        }
+      ],
+      "sideScroll": {
+        "scrollWidth": 207,
+        "clientWidth": 207
+      },
+      "columns": "202.859px 540.953px 222.172px",
+      "rows": "140px 421.516px",
+      "workspaceFraction": 0.5508687627291242,
+      "plan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"id\":\"bp0-4134709b\"}",
+      "points": "8",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      }
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "candidate": false,
+      "root": {
+        "x": 10,
+        "y": 10,
+        "width": 780,
+        "height": 580,
+        "right": 790,
+        "bottom": 590
+      },
+      "main": {
+        "x": 31,
+        "y": 130.578125,
+        "width": 738,
+        "height": 345.421875,
+        "right": 769,
+        "bottom": 476
+      },
+      "stage": {
+        "x": 193,
+        "y": 178.578125,
+        "width": 348,
+        "height": 297.421875,
+        "right": 541,
+        "bottom": 476
+      },
+      "canvas": {
+        "x": 252.921875,
+        "y": 224.578125,
+        "width": 228.15625,
+        "height": 187.421875,
+        "right": 481.078125,
+        "bottom": 412
+      },
+      "dayClockRules": "day-clock/30s",
+      "metabolismRules": "metabolism/fasting-1",
+      "side": {
+        "x": 549,
+        "y": 178.578125,
+        "width": 220,
+        "height": 297.421875,
+        "right": 769,
+        "bottom": 476
+      },
+      "footer": {
+        "x": 31,
+        "y": 486,
+        "width": 738,
+        "height": 87,
+        "right": 769,
+        "bottom": 573
+      },
+      "footerButtons": [
+        {
+          "x": 31,
+          "y": 495,
+          "width": 97.125,
+          "height": 36,
+          "right": 128.125,
+          "bottom": 531
+        },
+        {
+          "x": 136.125,
+          "y": 494,
+          "width": 95.78125,
+          "height": 36,
+          "right": 231.90625,
+          "bottom": 530
+        },
+        {
+          "x": 239.90625,
+          "y": 495,
+          "width": 139.140625,
+          "height": 36,
+          "right": 379.046875,
+          "bottom": 531
+        },
+        {
+          "x": 387.046875,
+          "y": 495,
+          "width": 51.53125,
+          "height": 36,
+          "right": 438.578125,
+          "bottom": 531
+        },
+        {
+          "x": 446.578125,
+          "y": 495,
+          "width": 49.59375,
+          "height": 36,
+          "right": 496.171875,
+          "bottom": 531
+        },
+        {
+          "x": 504.171875,
+          "y": 495,
+          "width": 74.03125,
+          "height": 36,
+          "right": 578.203125,
+          "bottom": 531
+        },
+        {
+          "x": 642.53125,
+          "y": 495,
+          "width": 126.46875,
+          "height": 36,
+          "right": 769,
+          "bottom": 531
+        },
+        {
+          "x": 31,
+          "y": 537,
+          "width": 178.828125,
+          "height": 36,
+          "right": 209.828125,
+          "bottom": 573
+        }
+      ],
+      "sideScroll": {
+        "scrollWidth": 205,
+        "clientWidth": 205
+      },
+      "columns": "154px 348px 220px",
+      "rows": "40px 297.422px",
+      "workspaceFraction": 0.4715447154471545,
+      "plan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"id\":\"bp0-4134709b\"}",
+      "points": "8",
+      "viewport": {
+        "width": 800,
+        "height": 600
+      }
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "candidate": true,
+      "root": {
+        "x": 8,
+        "y": 8,
+        "width": 784,
+        "height": 584,
+        "right": 792,
+        "bottom": 592
+      },
+      "main": {
+        "x": 21,
+        "y": 131.28125,
+        "width": 758,
+        "height": 371.828125,
+        "right": 779,
+        "bottom": 503.109375
+      },
+      "stage": {
+        "x": 179.53125,
+        "y": 131.28125,
+        "width": 401.46875,
+        "height": 371.828125,
+        "right": 581,
+        "bottom": 503.109375
+      },
+      "canvas": {
+        "x": 219.671875,
+        "y": 183.28125,
+        "width": 321.171875,
+        "height": 263.8125,
+        "right": 540.84375,
+        "bottom": 447.09375
+      },
+      "dayClockRules": "day-clock/30s",
+      "metabolismRules": "metabolism/fasting-1",
+      "side": {
+        "x": 589,
+        "y": 131.28125,
+        "width": 190,
+        "height": 371.828125,
+        "right": 779,
+        "bottom": 503.109375
+      },
+      "footer": {
+        "x": 21,
+        "y": 511.109375,
+        "width": 758,
+        "height": 67.890625,
+        "right": 779,
+        "bottom": 579
+      },
+      "footerButtons": [
+        {
+          "x": 21,
+          "y": 528.546875,
+          "width": 83.328125,
+          "height": 44,
+          "right": 104.328125,
+          "bottom": 572.546875
+        },
+        {
+          "x": 108.328125,
+          "y": 528.546875,
+          "width": 83.34375,
+          "height": 44,
+          "right": 191.671875,
+          "bottom": 572.546875
+        },
+        {
+          "x": 195.671875,
+          "y": 522.109375,
+          "width": 83.328125,
+          "height": 56.890625,
+          "right": 279,
+          "bottom": 579
+        },
+        {
+          "x": 283,
+          "y": 528.546875,
+          "width": 83.34375,
+          "height": 44,
+          "right": 366.34375,
+          "bottom": 572.546875
+        },
+        {
+          "x": 370.34375,
+          "y": 528.546875,
+          "width": 83.328125,
+          "height": 44,
+          "right": 453.671875,
+          "bottom": 572.546875
+        },
+        {
+          "x": 457.671875,
+          "y": 528.546875,
+          "width": 83.328125,
+          "height": 44,
+          "right": 541,
+          "bottom": 572.546875
+        },
+        {
+          "x": 545,
+          "y": 528.546875,
+          "width": 105,
+          "height": 44,
+          "right": 650,
+          "bottom": 572.546875
+        },
+        {
+          "x": 654,
+          "y": 525.546875,
+          "width": 125,
+          "height": 50,
+          "right": 779,
+          "bottom": 575.546875
+        }
+      ],
+      "sideScroll": {
+        "scrollWidth": 175,
+        "clientWidth": 175
+      },
+      "columns": "150.531px 401.469px 190px",
+      "rows": "140px 223.828px",
+      "workspaceFraction": 0.5296421503957783,
+      "plan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"id\":\"bp0-4134709b\"}",
+      "points": "8",
+      "viewport": {
+        "width": 800,
+        "height": 600
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "candidate": false,
+      "root": {
+        "x": 4,
+        "y": 4,
+        "width": 382,
+        "height": 836,
+        "right": 386,
+        "bottom": 840
+      },
+      "main": {
+        "x": 19,
+        "y": 219.984375,
+        "width": 352,
+        "height": 1286.5625,
+        "right": 371,
+        "bottom": 1506.546875
+      },
+      "stage": {
+        "x": 19,
+        "y": 219.984375,
+        "width": 352,
+        "height": 437.140625,
+        "right": 371,
+        "bottom": 657.125
+      },
+      "canvas": {
+        "x": 19,
+        "y": 267.984375,
+        "width": 352,
+        "height": 289.140625,
+        "right": 371,
+        "bottom": 557.125
+      },
+      "dayClockRules": "day-clock/30s",
+      "metabolismRules": "metabolism/fasting-1",
+      "side": {
+        "x": 19,
+        "y": 1207,
+        "width": 352,
+        "height": 299.546875,
+        "right": 371,
+        "bottom": 1506.546875
+      },
+      "footer": {
+        "x": 19,
+        "y": 1516.546875,
+        "width": 352,
+        "height": 187,
+        "right": 371,
+        "bottom": 1703.546875
+      },
+      "footerButtons": [
+        {
+          "x": 72.140625,
+          "y": 1525.546875,
+          "width": 119.640625,
+          "height": 40,
+          "right": 191.78125,
+          "bottom": 1565.546875
+        },
+        {
+          "x": 199.78125,
+          "y": 1525.546875,
+          "width": 118.078125,
+          "height": 40,
+          "right": 317.859375,
+          "bottom": 1565.546875
+        },
+        {
+          "x": 37.34375,
+          "y": 1571.546875,
+          "width": 168.65625,
+          "height": 40,
+          "right": 206,
+          "bottom": 1611.546875
+        },
+        {
+          "x": 214,
+          "y": 1571.546875,
+          "width": 66.453125,
+          "height": 40,
+          "right": 280.453125,
+          "bottom": 1611.546875
+        },
+        {
+          "x": 288.453125,
+          "y": 1571.546875,
+          "width": 64.1875,
+          "height": 40,
+          "right": 352.640625,
+          "bottom": 1611.546875
+        },
+        {
+          "x": 67.703125,
+          "y": 1617.546875,
+          "width": 92.703125,
+          "height": 40,
+          "right": 160.40625,
+          "bottom": 1657.546875
+        },
+        {
+          "x": 168.40625,
+          "y": 1617.546875,
+          "width": 153.890625,
+          "height": 40,
+          "right": 322.296875,
+          "bottom": 1657.546875
+        },
+        {
+          "x": 90.125,
+          "y": 1663.546875,
+          "width": 209.734375,
+          "height": 40,
+          "right": 299.859375,
+          "bottom": 1703.546875
+        }
+      ],
+      "sideScroll": {
+        "scrollWidth": 352,
+        "clientWidth": 352
+      },
+      "columns": "90px 1fr",
+      "rows": "none",
+      "workspaceFraction": 1,
+      "plan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"id\":\"bp0-4134709b\"}",
+      "points": "8",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "candidate": true,
+      "root": {
+        "x": 5,
+        "y": 5,
+        "width": 380,
+        "height": 834,
+        "right": 385,
+        "bottom": 839
+      },
+      "main": {
+        "x": 16,
+        "y": 194.4375,
+        "width": 358,
+        "height": 490.5625,
+        "right": 374,
+        "bottom": 685
+      },
+      "stage": {
+        "x": 16,
+        "y": 194.4375,
+        "width": 358,
+        "height": 420,
+        "right": 374,
+        "bottom": 614.4375
+      },
+      "canvas": {
+        "x": 44.046875,
+        "y": 255.9375,
+        "width": 301.90625,
+        "height": 247.984375,
+        "right": 345.953125,
+        "bottom": 503.921875
+      },
+      "dayClockRules": "day-clock/30s",
+      "metabolismRules": "metabolism/fasting-1",
+      "side": {
+        "x": 16,
+        "y": 1279.125,
+        "width": 358,
+        "height": 313.09375,
+        "right": 374,
+        "bottom": 1592.21875
+      },
+      "footer": {
+        "x": 16,
+        "y": 693,
+        "width": 358,
+        "height": 135,
+        "right": 374,
+        "bottom": 828
+      },
+      "footerButtons": [
+        {
+          "x": 37.859375,
+          "y": 704,
+          "width": 88.671875,
+          "height": 38,
+          "right": 126.53125,
+          "bottom": 742
+        },
+        {
+          "x": 131.53125,
+          "y": 704,
+          "width": 86.96875,
+          "height": 38,
+          "right": 218.5,
+          "bottom": 742
+        },
+        {
+          "x": 223.5,
+          "y": 704,
+          "width": 128.625,
+          "height": 38,
+          "right": 352.125,
+          "bottom": 742
+        },
+        {
+          "x": 50.703125,
+          "y": 747,
+          "width": 43.953125,
+          "height": 38,
+          "right": 94.65625,
+          "bottom": 785
+        },
+        {
+          "x": 99.65625,
+          "y": 746,
+          "width": 42.96875,
+          "height": 38,
+          "right": 142.625,
+          "bottom": 784
+        },
+        {
+          "x": 147.625,
+          "y": 747,
+          "width": 68.5625,
+          "height": 38,
+          "right": 216.1875,
+          "bottom": 785
+        },
+        {
+          "x": 221.1875,
+          "y": 747,
+          "width": 118.109375,
+          "height": 38,
+          "right": 339.296875,
+          "bottom": 785
+        },
+        {
+          "x": 16,
+          "y": 790,
+          "width": 358,
+          "height": 38,
+          "right": 374,
+          "bottom": 828
+        }
+      ],
+      "sideScroll": {
+        "scrollWidth": 358,
+        "clientWidth": 358
+      },
+      "columns": "minmax(170px, 22fr) minmax(0px, 56fr) minmax(210px, 22fr)",
+      "rows": "auto minmax(0px, 1fr)",
+      "workspaceFraction": 1,
+      "plan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"id\":\"bp0-4134709b\"}",
+      "points": "8",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      }
+    }
+  ],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Actual founder-design UI. Candidate CSS and the one-selector heading fix; common HTTP-only read inspector for native geometry/state. No direct draft, actor, simulation, physiology or history edits.",
+  "interactions": {
+    "pointerMount": true,
+    "pairedSpringLegs": true,
+    "undoRedoExact": true,
+    "facings": [
+      4,
+      5,
+      6,
+      7,
+      0,
+      1,
+      2,
+      3
+    ],
+    "nativeWalk": true,
+    "exportImportPlanExact": true,
+    "lockedAncestryPreserved": true,
+    "installedAuthoredBody": {
+      "plan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"id\":\"bp0-1f74b4b7\",\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"spring-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"spring-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"legacyAnatomy\":null}",
+      "authoredOrigin": {
+        "schema": 1,
+        "mode": "guided",
+        "introducedDay": 1,
+        "introducedTick": 0,
+        "authoredAge": 30
+      },
+      "seed": "LAB-V1-REVIEW-20261023"
+    }
+  }
+}

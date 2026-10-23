@@ -1,0 +1,32 @@
+{
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Uninstrumented exported candidate with official ?day=30. Public guided founder selection, legal mount buttons, export and actual authored-world confirmation.",
+  "installed": {
+    "dayClockRules": "day-clock/30s",
+    "metabolismRules": "metabolism/fasting-1",
+    "authoredOrigin": {
+      "schema": 1,
+      "mode": "guided",
+      "introducedDay": 1,
+      "introducedTick": 0,
+      "authoredAge": 30
+    },
+    "plan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"id\":\"bp0-1f74b4b7\",\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"spring-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"spring-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"legacyAnatomy\":null}"
+  },
+  "build": {
+    "schema": "genvo.lab-presentation-review/1",
+    "sourceCommit": "08da9e0032e9b0879585661c699cd266a62721f7",
+    "status": "Review candidate. Lab stylesheet link and heading-selector fix await shared-file integration.",
+    "sourceHashes": {
+      "index": "14495a6ec57890d7903fd86c5068cdcaeb2f06769f6ed3ae827f95c490ede389",
+      "editor": "f875eb55d1e1fc91d4f2a6faebcd713ccfdcd7ff1d5a7c8c379442dd741746ed"
+    },
+    "candidateHashes": {
+      "index": "b0b09632bbd66b22d7dbede80c3aa33258dd88026f6c4dc12c947a835ed35a6a",
+      "editor": "a25014ff23ddb8e4408e6fae0ac28bd67f8054ea37d886858ca4150574b869fb",
+      "stylesheet": "879d637930d069fc96125c482996e3491bcbe3d8b7d16175013aafe91fe75454"
+    }
+  }
+}
