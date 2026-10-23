@@ -1,0 +1,167 @@
+{
+  "schema": "genvo.authored-starter-portrait/1",
+  "seed": "GENVO-V1-MENU-PORTRAITS",
+  "scope": "Representative pigment from deterministic founder; actual canonical guided starter body plans. Static selection illustration, not a live founder or evolutionary history. No simulation installation or persistence.",
+  "size": [
+    112,
+    112
+  ],
+  "dir": 3,
+  "portraits": [
+    {
+      "id": "walker",
+      "bodyPlan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"id\":\"bp0-4134709b\",\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"legacyAnatomy\":null}",
+      "genes": {
+        "body": 1.0601714164018632,
+        "motion": 1.0110445428639652,
+        "metabolism": 0.9824303363449872,
+        "digestion": 0.9116161124315113,
+        "senses": 1.0354576950892806,
+        "climate": 0.9125459623523057,
+        "immunity": 0.9596113201230765,
+        "temperament": 0.9229424853343516
+      },
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "sha256": "0e0e056067833631d456374b54c97d91e4f44cdea785d8b46190fe4b32e19507"
+    },
+    {
+      "id": "jump",
+      "bodyPlan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"id\":\"bp0-1f74b4b7\",\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"spring-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"spring-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"legacyAnatomy\":null}",
+      "genes": {
+        "body": 1.0601714164018632,
+        "motion": 1.0110445428639652,
+        "metabolism": 0.9824303363449872,
+        "digestion": 0.9116161124315113,
+        "senses": 1.0354576950892806,
+        "climate": 0.9125459623523057,
+        "immunity": 0.9596113201230765,
+        "temperament": 0.9229424853343516
+      },
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0.65,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "sha256": "06197ac7117125129a799968d0404502f751cb28169469bdaa3f78f94664d801"
+    },
+    {
+      "id": "dive",
+      "bodyPlan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"id\":\"bp0-6d3db393\",\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"webbed-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"webbed-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"legacyAnatomy\":null}",
+      "genes": {
+        "body": 1.0601714164018632,
+        "motion": 1.0110445428639652,
+        "metabolism": 0.9824303363449872,
+        "digestion": 0.9116161124315113,
+        "senses": 1.0354576950892806,
+        "climate": 0.9125459623523057,
+        "immunity": 0.9596113201230765,
+        "temperament": 0.9229424853343516
+      },
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0.9
+      },
+      "sha256": "3a717c76067d936e06f1147a12fac07a7a12d43eb06534a3a83faa9dc03e8e05"
+    },
+    {
+      "id": "burrow",
+      "bodyPlan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"id\":\"bp0-9e3d78d3\",\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"digging-forelimb\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"digging-forelimb\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"legacyAnatomy\":null}",
+      "genes": {
+        "body": 1.0601714164018632,
+        "motion": 1.0110445428639652,
+        "metabolism": 0.9824303363449872,
+        "digestion": 0.9116161124315113,
+        "senses": 1.0354576950892806,
+        "climate": 0.9125459623523057,
+        "immunity": 0.9596113201230765,
+        "temperament": 0.9229424853343516
+      },
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "sha256": "dac3d439ccb793c23762690aff4cc39fa286e39c92fff50d814f3c4f9ae62081"
+    },
+    {
+      "id": "flight",
+      "bodyPlan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"id\":\"bp0-96101c59\",\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/dorsal\",\"partId\":\"flight-wing\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"dorsal\"},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"legacyAnatomy\":null}",
+      "genes": {
+        "body": 1.0601714164018632,
+        "motion": 1.0110445428639652,
+        "metabolism": 0.9824303363449872,
+        "digestion": 0.9116161124315113,
+        "senses": 1.0354576950892806,
+        "climate": 0.9125459623523057,
+        "immunity": 0.9596113201230765,
+        "temperament": 0.9229424853343516
+      },
+      "anatomy": {
+        "armor": 0,
+        "barbs": 0,
+        "glands": 0,
+        "spring": 0,
+        "waterBody": 0,
+        "gut": 0,
+        "repair": 0,
+        "signal": 0,
+        "rally": 0,
+        "skin": 0,
+        "jaw": 0,
+        "forelimb": 0,
+        "waterStorage": 0,
+        "webbing": 0
+      },
+      "sha256": "b29cb9ae24200de49a45ec475941db42a53b83ad6766e04a18643589c1ef5a6f"
+    }
+  ]
+}
