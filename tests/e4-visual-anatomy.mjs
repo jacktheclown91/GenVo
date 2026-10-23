@@ -5,6 +5,7 @@ import {PARTS} from '../src/lineage/part-registry.js';
 import {PART_SPRITES,hasComponent,drawPartAlone} from '../src/render/part-sprites.js';
 import {LEG_GAIT,LEG_REACH} from '../src/render/creature-assembler.js';
 import {compileSourceRgbaPart,recolorIndexedFrame} from '../src/render/indexed-part-art.js';
+import {prepareIndexedPartRenderer} from '../src/render/indexed-part-renderer.js';
 import {bodyPlanFromLegacy,validatePlan} from '../src/lineage/body-plan.js';
 import {createDraft,place} from '../src/lineage/evolution-draft.js';
 
@@ -52,7 +53,17 @@ for(const id of ids){
   assert.notEqual(frames[0],frames[1],id+' animation must not be an inert two-frame duplicate');
   images.push(frames[0]);
  }
- assert.ok(new Set(images).size>=4,id+' has genuine multi-directional silhouettes');
+ if(id==='climber-leg'){
+  // This canonical atlas supplies two bones; actual joint transforms establish direction.
+  assert.equal(native.rig?.kind,'two-bone');assert.deepEqual(native.rig,src.rig);
+  const renderer=prepareIndexedPartRenderer(native,{createCanvas:()=>({getContext:()=>({createImageData:()=>({data:new Uint8ClampedArray(4096)}),putImageData(){}})})}),projections=new Set();
+  for(let dir=0;dir<8;dir++)for(let phase=0;phase<2;phase++){
+   const angle=dir*Math.PI/4,rotate=(x,y)=>({x:x*Math.cos(angle)-y*Math.sin(angle),y:x*Math.sin(angle)+y*Math.cos(angle)}),root={x:0,y:0},knee=rotate(2,phase?1:2),foot=rotate(5,phase?3:1),before=JSON.stringify({root,knee,foot}),angles=[],translations=[];let depth=0,draws=0;
+   const c={save(){depth++},restore(){depth--},translate(x,y){translations.push({x,y})},rotate(a){assert.ok(Number.isFinite(a));angles.push(a)},scale(x,y){assert.ok(x>0&&y>0)},drawImage(){draws++}};
+   assert.equal(renderer.drawLimb(c,{root,knee,foot,scale:4,facing:dir,frameIndex:phase}),true);assert.equal(draws,4);assert.equal(depth,0);assert.deepEqual(translations,[root,knee,root,knee]);assert.ok(Math.abs(angles[0]-Math.atan2(knee.y,knee.x))<1e-12);assert.ok(Math.abs(angles[1]-Math.atan2(foot.y-knee.y,foot.x-knee.x))<1e-12);assert.equal(JSON.stringify({root,knee,foot}),before);projections.add(JSON.stringify(angles.map(a=>Math.round(a*1e6))));
+  }
+  assert.equal(projections.size,16,'all eight directions and two articulated poses remain genuinely distinct');
+ }else assert.ok(new Set(images).size>=4,id+' has genuine multi-directional silhouettes');
  const png=fs.readFileSync(new URL('../assets/art/'+entry.png.slice(2),import.meta.url));
  assert.equal(png.subarray(0,8).toString('hex'),'89504e470d0a1a0a','native thumbnail is a real PNG');
 }
