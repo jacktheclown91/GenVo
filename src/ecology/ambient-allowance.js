@@ -1,4 +1,5 @@
 import {DAY_CLOCK} from '../sim/day-clock.js';
+import {SPECIES} from '../organisms/species.js';
 
 // Rest when nothing is pressing (creator decision 2026-10-23, 30-second days). On the longer day an
 // animal with no pressing need (food, water, safety, a mate, young) mostly rests, watches or
@@ -8,6 +9,9 @@ import {DAY_CLOCK} from '../sim/day-clock.js';
 // its energy cost. Needs are decided before ambient routines and are never limited. Every
 // non-manual animal follows the same rule, the player's creature on AUTO included. Recorded worlds
 // are unaffected. The day's count (a.ambientWalk) is saved with the animal.
+// A hungry animal (below the 72% reserve at which animals forage) that sees no food is searching, not
+// wandering: the allowance never holds it in place (correction 2026-10-23: rillsifters starved
+// beside exhausted feeding grounds, measured in docs/WILDLIFE-NEEDS-2026-10-23.md).
 export const AMBIENT_ALLOWANCE=Object.freeze({
  // Tiles per day walked on ambient intents with energy >= 0.6 and water >= 0.5, recorded clock,
  // three seeds, 8 days each (2026-10-23).
@@ -22,6 +26,10 @@ export function noteAmbientMove(sim,a,distance){
  if(!ambientLimited(sim)||!AMBIENT_ALLOWANCE.intents.has(a.intent)||!(distance>0))return;
  const w=a.ambientWalk;if(w?.day!==sim.day)a.ambientWalk={day:sim.day,tiles:distance};else w.tiles+=distance;
 }
+export const HUNGRY_SEARCH=.72;
 export function ambientSpent(sim,a){
+ // sim.correctionExperiment (development measurement only, never set by the game) can switch the
+ // correction off for comparison runs.
+ const s=SPECIES[a.species];if(s&&a.energy<s.maxEnergy*HUNGRY_SEARCH&&sim.correctionExperiment?.hungrySearch!==false)return false;
  return ambientLimited(sim)&&a.ambientWalk?.day===sim.day&&a.ambientWalk.tiles>=ambientAllowance(a);
 }
