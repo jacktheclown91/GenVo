@@ -21,6 +21,8 @@ The new model test uses explicit automated fixtures to protect immutability, abs
 
 `node tools/review-natural-history-specimen.cjs <new-output> --modern` reviews the original and candidate app through an inspection-server source overlay. It never writes shared source or simulation/discovery fields. Its exact-state probe refreshes only presentation cache/style and compares the complete canonical snapshot graph.
 
-`node tools/stage-specimen-presentation.cjs <empty-directory-outside-source>` makes an isolated public export with the proposed patches. `node tools/review-natural-history-specimen.cjs <new-output> --candidate-only --modern --exported <build>` serves those build files without overlays or inspection hooks. The selected build is `C:\Users\jackt\AppData\Local\Temp\genvo-specimen-v1-web-20261023-reviewed`.
+`node tools/stage-specimen-presentation.cjs <empty-directory-outside-source>` makes an isolated public export with the proposed patches. `node tools/review-natural-history-specimen.cjs <new-output> --candidate-only --modern --exported <build>` serves those build files without overlays or inspection hooks. The selected build is `C:\Users\jackt\AppData\Local\Temp\genvo-specimen-v1-web-20261023-current`.
 
 [Selected evidence and limits](../../art-refinement-specimen-v1-2026-10-23/README.md). Shared activation and creator acceptance remain pending. Dense 256-body collection performance, full individual live telemetry, the separate resource inspector and overall HUD/notification acceptance remain unfinished; this bounded pass does not establish full v1 completion.
+
+The model test uses the canonical FieldGuide once the specimen import is integrated; before activation it evaluates the strict candidate source in memory. Its same-body live/recorded distinction is checked in both cases. Original exploratory captures and the full Git-backed inventory remain in the raw review archive.

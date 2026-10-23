@@ -1,0 +1,47 @@
+{
+  "sourceCommit": "28e50a70838d4905df5e4b40266302620be7adb6",
+  "results": [
+    {
+      "test": "specimen-sheet",
+      "exitCode": 0,
+      "seconds": 0.518,
+      "stdout": "Specimen model PASS: retained anatomy, no invented current state, escaping, no fallback and exact canonical graph parity.\n",
+      "stderr": ""
+    },
+    {
+      "test": "plate-protection-reading",
+      "exitCode": 0,
+      "seconds": 4.414,
+      "stdout": "Plate protection readout matches the damage authority (evolved mantle, bare plates, wild relative, lab projection, old observations, save/load, real mixed-parent births): PASS\n",
+      "stderr": ""
+    },
+    {
+      "test": "knowledge",
+      "exitCode": 0,
+      "seconds": 0.699,
+      "stdout": "knowledge ok\n",
+      "stderr": ""
+    },
+    {
+      "test": "contextual-interactions",
+      "exitCode": 0,
+      "seconds": 0.455,
+      "stdout": "Four dietary anatomies, read-only queries, exact-target/no-fallback, ambiguity, stale feeding descriptors, keyed collection and attack fallback PASS\n",
+      "stderr": ""
+    },
+    {
+      "test": "quick-access",
+      "exitCode": 0,
+      "seconds": 0.041,
+      "stdout": "quick access + task guide checks: PASS\n",
+      "stderr": ""
+    },
+    {
+      "test": "public-export",
+      "exitCode": 0,
+      "seconds": 1.027,
+      "stdout": "public-export: exact reachable modules and runtime assets only PASS\n",
+      "stderr": ""
+    }
+  ]
+}
