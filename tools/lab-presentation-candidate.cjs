@@ -1,0 +1,2 @@
+// Presentation-only shared-file proposal, not a new biological authority.
+exports.candidateEditor=function(source){const before="this.el.querySelector('.ed-stats h3').textContent='Compared with the previous design';",after="this.el.querySelector('.ed-stats > h3').textContent='Compared with the previous design';";if(!source.includes(before))throw Error('Shared editor source changed; review label integration.');return source.replace(before,after)};

@@ -1,0 +1,13 @@
+diff --git a/src/ui/creature-editor.js b/src/ui/creature-editor.js
+index ae897b8..00c5a48 100644
+--- a/src/ui/creature-editor.js
++++ b/src/ui/creature-editor.js
+@@ -302,7 +302,7 @@ export class CreatureEditor{
+       this.el.querySelector('.ed-specimen-heading strong').textContent='Authored founder body';
+       this.el.querySelector('.ed-specimen-heading strong').title='An introduced founder, not an evolved descendant of this world.';
+       this.el.querySelector('.ed-parent figcaption').textContent='Previous design step';
+-      this.el.querySelector('.ed-stats h3').textContent='Compared with the previous design';
++      this.el.querySelector('.ed-stats > h3').textContent='Compared with the previous design';
+       this.el.querySelector('.ed-stats small').textContent='Shared adult body load and basal needs in relative game units. These values describe the authored founder.';
+       const summary=this.el.querySelector('.ed-change-summary');if(summary?.textContent==='Current parts match the parent.')summary.textContent='Current parts match the recorded design.';
+       this.el.querySelector('[data-act="compare"]').textContent='Compare design';
