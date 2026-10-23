@@ -1,4 +1,5 @@
 import {CFG,PLANTS} from '../sim/config.js';
+import {drain} from '../sim/resumable.js';
 import {SPECIES} from '../organisms/species.js';
 import {groundDiet,canHunt,preyPreference} from './functional-diet.js';
 import {forageRangeEffect} from '../lineage/effects.js';
@@ -18,9 +19,13 @@ export class MigrationController{
     return state;
   }
   state(animal){return this.states.get(animal?.id)||this.ensure(animal)}
-  observe(){
+  observe(){drain(this.observeSteps())}
+  // Resumable form (day-boundary slicing): pauses between groups of animals.
+  *observeSteps(){
     const living=new Set(this.sim.animals.filter(a=>a.alive).map(a=>a.id));for(const id of this.states.keys())if(!living.has(id))this.states.delete(id);
+    let visited=0;
     for(const animal of this.sim.animals){
+      if(++visited%4===0)yield;
       if(!this.enabled(animal))continue;
       const state=this.ensure(animal);
       if(state.lastEvalDay===this.sim.day)continue;

@@ -1,4 +1,5 @@
 import {pruneUnusedFloraGenomes} from './flora-genome-lifetime.js';
+import {drain} from '../sim/resumable.js';
 import {plantLifecycleEnabled,canFlower} from './plant-lifecycle.js';
 import {WIND_SEED_POLICIES,planetaryWindSeedOffset} from '../world/weather-fronts.js';
 // Staged botanical reproduction, owned by the existing dispersal/vegetation phase.
@@ -41,7 +42,9 @@ export function dropBotanicalPollen(d,a){if(a?.pollenCargo){decay(d,a.pollenCarg
 // authority is introduced. The recipient's inherited receptors decide whether
 // the arriving pollen fertilizes an ovule or becomes local organic litter.
 // Old worlds without an explicit wind policy keep their exact former sequence.
-export function advanceWindPollination(d){
+export function advanceWindPollination(d){return drain(advanceWindPollinationSteps(d))}
+// Resumable form (day-boundary slicing): pauses only between pollen packets.
+export function* advanceWindPollinationSteps(d){
  if(d.windSeedPolicy!==WIND_SEED_POLICIES.planetary)return 0;
  const b=d.botanical,w=d.sim.world,n=w.n,targets=new Map();
  // One index of already-funded receptive flowers. No new ovules are created.
@@ -51,8 +54,9 @@ export function advanceWindPollination(d){
   if(!list){list=[];targets.set(flower.i,list)}
   list.push(flower.kind);
  }
- let delivered=0;
+ let delivered=0,visited=0;
  for(const [sourceKey,pollen] of b.pollen){
+  if(++visited%64===0)yield;
   // Newly produced pollen must survive until the next botanical day.
   if(!(pollen.mass>0)||pollen.createdEpoch>=b.epoch)continue;
   const hash=botanicalHash(pollen.genome.id+'|wind-pollen|'+pollen.serial+'|'+b.epoch);
@@ -74,7 +78,9 @@ export function advanceWindPollination(d){
  return delivered;
 }
 
-export function advanceBotanicalReproduction(d){const b=d.botanical,w=d.sim.world;b.epoch++;
+export function advanceBotanicalReproduction(d){return drain(advanceBotanicalReproductionSteps(d))}
+// Resumable form: pauses between embryo batches, stages and plant kinds only.
+export function* advanceBotanicalReproductionSteps(d){const b=d.botanical,w=d.sim.world;b.epoch++;
  // Fertilization, developmental viability and dispersal are separate stages.
  // Advance only embryos that have reached their next real developmental day.
  // Compact the same array in place after ordered biological receipts. This
@@ -83,6 +89,7 @@ export function advanceBotanicalReproduction(d){const b=d.botanical,w=d.sim.worl
  const embryos=b.embryos,initialEmbryos=embryos.length;
  let retained=0;
  for(let read=0;read<initialEmbryos;read++){
+  if(read&&read%64===0)yield;
   const embryo=embryos[read];
   if(embryo.createdEpoch>=b.epoch){embryos[retained++]=embryo;continue;}const viability=botanicalSeedViability(embryo.genome),supported=w.plants[embryo.kind][embryo.i]>.002;b.stats[viability.viable&&supported?'viable':'nonviable']++;note(d,{stage:'seed-viability',kind:embryo.kind,i:embryo.i,genomeId:embryo.genome.id,viable:viability.viable&&supported,reason:!supported?'The supporting parent tissue is gone.':viability.reason});if(viability.viable&&supported){const destination=botanicalSeedDestination(d,embryo),added=destination?d.deposit(embryo.kind,destination.x,destination.y,embryo.mass,{payload:{...embryo,originCell:embryo.i},route:'sexual-release'}):0;b.stats.released+=added;d.floraState.stats.sexualProduced=(d.floraState.stats.sexualProduced||0)+1;d.litter[embryo.i]+=embryo.mass-added;note(d,{stage:'seed-release',kind:embryo.kind,i:embryo.i,genomeId:embryo.genome.id,mass:added,selfing:embryo.selfing});d.floraState.births.push({serial:++d.floraState.serial,kind:embryo.kind,amount:added,genomeId:embryo.genome.id,parentGenomeIds:embryo.parentGenomeIds,parentProducerIds:embryo.parentProducerIds,mode:'sexual',selfing:embryo.selfing,homozygosity:embryo.homozygosity,day:d.sim.day,tick:d.sim.tickCount});if(d.floraState.births.length>128)d.floraState.births.shift();}else decay(d,embryo); }
  // Any embryos created during this phase would have been outside the old
@@ -96,16 +103,16 @@ export function advanceBotanicalReproduction(d){const b=d.botanical,w=d.sim.worl
  for(const [k,flower] of b.flowers)if(w.plants[flower.kind][flower.i]<=.002){decay(d,flower);b.flowers.delete(k)}
  // Physical wind transport occurs before same-flower selfing on this day.
 // Only pollen that was already available at the preceding day can move.
- advanceWindPollination(d);
+ yield;yield* advanceWindPollinationSteps(d);
  // Pollen within the same flower can contact its stigma after a prior phase.
  // Self-incompatibility remains a genetic recognition decision, not a success-rate penalty.
- for(const [k,pollen] of b.pollen){if(pollen.createdEpoch<b.epoch){const result=deliverBotanicalPollen(d,pollen.kind,pollen.i,pollen,{route:'within-flower'});if(result.delivered){b.pollen.delete(k);continue}}if(b.epoch-pollen.createdEpoch>(PLANTS[pollen.kind].dispersal.transitDays?.[1]||1)||w.plants[pollen.kind][pollen.i]<=.002){decay(d,pollen);b.pollen.delete(k)}}
+ let within=0;for(const [k,pollen] of b.pollen){if(++within%64===0)yield;if(pollen.createdEpoch<b.epoch){const result=deliverBotanicalPollen(d,pollen.kind,pollen.i,pollen,{route:'within-flower'});if(result.delivered){b.pollen.delete(k);continue}}if(b.epoch-pollen.createdEpoch>(PLANTS[pollen.kind].dispersal.transitDays?.[1]||1)||w.plants[pollen.kind][pollen.i]<=.002){decay(d,pollen);b.pollen.delete(k)}}
  // Read-side acceleration with identical decisions: a cell holding no flower,
  // pollen or embryo is mature exactly when it is land and its stock alone
  // reaches the threshold, so only those cells skip key/map construction.
- const flowering=plantLifecycleEnabled(d.sim),occupied=new Map();for(const r of [...b.flowers.values(),...b.pollen.values(),...b.embryos]){if(!occupied.has(r.kind))occupied.set(r.kind,new Set());occupied.get(r.kind).add(r.i)}
- for(const kind of Object.keys(FLORA_TISSUES)){const profile=PLANTS[kind],budget=profile.dispersal.localRelease,stocks=w.plants[kind],threshold=profile.dispersal?.mature??Infinity,held=occupied.get(kind);for(let i=0;i<w.len;i++){if(!held?.has(i)&&(w.water[i]||!(stocks[i]+1e-7>=threshold)))continue;const k=key(kind,i);if(!mature(d,kind,i,b.flowers.get(k)?.mass||0))continue;if(flowering&&!canFlower(kind,d.genomeAt(kind,i)?.traits?.waterNeed??profile.waterNeed,w.moisture[i],w.environment?w.temperature[i]:d.sim.climate.temp))continue;const genome=botanicalAdultGenome(d,kind,i);const r=genome.botanical,producerId=d.producerOrigins[kind]?.get(i)?.producerId||kind+':'+i+':founder';if(!b.flowers.has(k)&&botanicalStructure(r,'stigma')&&botanicalStructure(r,'ovule')){const mass=invest(d,kind,i,budget);if(mass>0){b.flowers.set(k,{kind,i,mass,genome,createdEpoch:b.epoch,producerId});b.stats.ovulesInvested+=mass;note(d,{stage:'ovule-investment',kind,i,mass})}}if(!b.pollen.has(k)&&botanicalStructure(r,'anther')){const mass=invest(d,kind,i,budget);if(mass>0){const serial=++b.serial,gamete=botanicalGamete(genome,'pollen|'+serial+'|'+d.sim.world.seedHash,{mutate:(botanicalHash('pollen-mutation|'+serial+'|'+d.sim.world.seedHash)/4294967296)<CLONAL_MUTATION.rate});b.pollen.set(k,{kind,i,mass,genome,gamete,producerId,createdEpoch:b.epoch,serial});b.stats.pollenProduced+=mass;note(d,{stage:'pollen-production',kind,i,mass,serial,mutation:gamete.mutation})}}}}
- b.genomeCollection=pruneUnusedFloraGenomes(d);
+ yield;const flowering=plantLifecycleEnabled(d.sim),occupied=new Map();for(const r of [...b.flowers.values(),...b.pollen.values(),...b.embryos]){if(!occupied.has(r.kind))occupied.set(r.kind,new Set());occupied.get(r.kind).add(r.i)}
+ for(const kind of Object.keys(FLORA_TISSUES)){yield;const profile=PLANTS[kind],budget=profile.dispersal.localRelease,stocks=w.plants[kind],threshold=profile.dispersal?.mature??Infinity,held=occupied.get(kind);for(let i=0;i<w.len;i++){if(i&&(i&2047)===0)yield;if(!held?.has(i)&&(w.water[i]||!(stocks[i]+1e-7>=threshold)))continue;const k=key(kind,i);if(!mature(d,kind,i,b.flowers.get(k)?.mass||0))continue;if(flowering&&!canFlower(kind,d.genomeAt(kind,i)?.traits?.waterNeed??profile.waterNeed,w.moisture[i],w.environment?w.temperature[i]:d.sim.climate.temp))continue;const genome=botanicalAdultGenome(d,kind,i);const r=genome.botanical,producerId=d.producerOrigins[kind]?.get(i)?.producerId||kind+':'+i+':founder';if(!b.flowers.has(k)&&botanicalStructure(r,'stigma')&&botanicalStructure(r,'ovule')){const mass=invest(d,kind,i,budget);if(mass>0){b.flowers.set(k,{kind,i,mass,genome,createdEpoch:b.epoch,producerId});b.stats.ovulesInvested+=mass;note(d,{stage:'ovule-investment',kind,i,mass})}}if(!b.pollen.has(k)&&botanicalStructure(r,'anther')){const mass=invest(d,kind,i,budget);if(mass>0){const serial=++b.serial,gamete=botanicalGamete(genome,'pollen|'+serial+'|'+d.sim.world.seedHash,{mutate:(botanicalHash('pollen-mutation|'+serial+'|'+d.sim.world.seedHash)/4294967296)<CLONAL_MUTATION.rate});b.pollen.set(k,{kind,i,mass,genome,gamete,producerId,createdEpoch:b.epoch,serial});b.stats.pollenProduced+=mass;note(d,{stage:'pollen-production',kind,i,mass,serial,mutation:gamete.mutation})}}}}
+ yield;b.genomeCollection=pruneUnusedFloraGenomes(d);
 }
 export function botanicalResourceMass(d){return[...d.botanical.flowers.values(),...d.botanical.pollen.values(),...d.botanical.embryos,...d.sim.animals.map(a=>a.pollenCargo).filter(Boolean)].reduce((sum,r)=>sum+r.mass,0)}
 export function botanicalPlantView(d,kind,i){const k=key(kind,i),flower=d.botanical?.flowers.get(k),pollen=d.botanical?.pollen.get(k),embryos=embryosAt(d,k),genome=d.genomeAt(kind,i),r=genome?.botanical||d.botanical?.adultGenomes.get(k);return r?{reproductiveGenome:r,receptive:!!flower?.mass,pollen:!!pollen?.mass,developing:embryos.length>0,selfCompatible:r.selfCompatible.some(Boolean),mass:(flower?.mass||0)+(pollen?.mass||0)+embryos.reduce((n,e)=>n+e.mass,0)}:null}

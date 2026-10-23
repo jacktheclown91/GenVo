@@ -1,4 +1,4 @@
-import {initializeBotanicalReproduction,advanceBotanicalReproduction,contactBotanicalFlower,dropBotanicalPollen} from './botanical-reproduction.js';
+import {initializeBotanicalReproduction,advanceBotanicalReproduction,advanceBotanicalReproductionSteps,contactBotanicalFlower,dropBotanicalPollen} from './botanical-reproduction.js';
 import {mouthOf} from './functional-diet.js';
 import {plantHandling,plantHandlingAffordable,plantHandlingEnergyCost,plantHandlingCostAffordable} from './plant-handling.js';
 import {coldFloraTemperatureFactor} from './cold-flora.js';
@@ -103,6 +103,7 @@ export class PlantDispersalController{
     for(const a of this.sim.animals){if(!a.alive||!a.seedCargo)continue;for(const [kind,c] of Object.entries(a.seedCargo)){c.days-=1;if(c.days<=0){const added=this.deposit(kind,a.x,a.y,c.load,{dung:true,payload:c,actorId:a.id});this.stats.lost+=c.load-added;producerBoundary(this.sim,kind,this.sim.world.idx(a.x,a.y),c.load-added,'in','rejected-cargo-litter');this.litter[this.sim.world.idx(a.x,a.y)]+=c.load-added;if(added>0){const t=this.sim.discovery.addTrace(a,'seed',a.x,a.y,kind);t.depositId=this.events.at(-1)?.id;t.genomeId=c.genome?.id;t.genomeIds=[...(c.cohorts?.keys()||[c.genome?.id])];t.amount=added;t.originCell=c.originCell;t.producerId=c.producerId;}if(added>0&&a.player&&this.lastSeedNoticeTick!==this.sim.tickCount){this.lastSeedNoticeTick=this.sim.tickCount;this.sim.discovery.notice('Seeds from your meal were left here. Click the marks to remember this patch.','safe');}delete a.seedCargo[kind]}}}
   }
   advanceBotanicalReproduction(){advanceBotanicalReproduction(this)}
+  *advanceBotanicalReproductionSteps(){yield* advanceBotanicalReproductionSteps(this)}
   releaseLocal(kind,i,biomass){
     const p=PLANTS[kind],d=p?.dispersal;if(!d||!(d.localRelease>0)||biomass<(d.mature??p.carry*.45))return;
     // Sparse deterministic pulses keep local spread gradual; animal gut passage is the long-range pathway.

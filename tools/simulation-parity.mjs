@@ -3,9 +3,11 @@
 // regional frontier, AUTO founder) and prints a canonical digest of every day's
 // full snapshot plus tick timing. Run it against an unmodified copy of src/
 // (git archive HEAD src | tar -x -C <dir>) and the working tree; equal digests
-// mean identical simulation state on every day.
+// mean identical simulation state on every day. A fifth argument `sliced`
+// advances every tick one resumable step at a time (beginTick/continueTick),
+// the most fragmented schedule the browser can produce.
 import {createHash} from 'node:crypto';import {pathToFileURL} from 'node:url';import path from 'node:path';
-const root=pathToFileURL(path.resolve(process.argv[2])+'/src/').href,seed=process.argv[3],days=Number(process.argv[4]);
+const root=pathToFileURL(path.resolve(process.argv[2])+'/src/').href,seed=process.argv[3],days=Number(process.argv[4]),sliced=process.argv[5]==='sliced';
 const {Simulation}=await import(root+'sim/simulation.js');const {CFG}=await import(root+'sim/config.js');const {createSimulationSnapshot}=await import(root+'persistence/save-manager.js');
 const sim=new Simulation(seed,{player:true,worldGenerator:'planetary/1',regionalFrontier:true});sim.setPlayerAutonomy(true);
 const h=createHash('sha256');
@@ -22,6 +24,6 @@ function canon(h,v,seen=new Map(),path='$'){
 }
 const one=o=>{const h=createHash('sha1');canon(h,o);return h.digest('hex')};
 const digest=s=>one(s).slice(0,16);
-const slow=[];let total=0;const t0=performance.now();
-for(let d=0;d<days;d++){for(let i=0;i<CFG.dayTicks;i++){const t=performance.now();sim.update(null);const dt=performance.now()-t;total+=dt;if(d>=days-10)slow.push(dt)}h.update(digest(createSimulationSnapshot(sim,{savedAt:'p',reason:'p'})))}
-slow.sort((a,b)=>b-a);console.log(JSON.stringify({seed,days,digest:h.digest('hex').slice(0,24),day:sim.day,animals:sim.animals.filter(a=>a.alive).length,tickMs:+total.toFixed(0),last10DaysTop:slow.slice(0,6).map(x=>+x.toFixed(0)),last10DaysSum:+slow.reduce((s,x)=>s+x,0).toFixed(0)}));
+const slow=[];let maxPauses=0;let total=0;const t0=performance.now();
+for(let d=0;d<days;d++){for(let i=0;i<CFG.dayTicks;i++){const t=performance.now();let pauses=0;if(sliced){if(!sim.beginTick(null,{},-Infinity))while(++pauses&&!sim.continueTick(-Infinity));}else sim.update(null);maxPauses=Math.max(maxPauses,pauses);const dt=performance.now()-t;total+=dt;if(d>=days-10)slow.push(dt)}h.update(digest(createSimulationSnapshot(sim,{savedAt:'p',reason:'p'})))}
+slow.sort((a,b)=>b-a);console.log(JSON.stringify({seed,days,sliced,maxPauses,digest:h.digest('hex').slice(0,24),day:sim.day,animals:sim.animals.filter(a=>a.alive).length,tickMs:+total.toFixed(0),last10DaysTop:slow.slice(0,6).map(x=>+x.toFixed(0)),last10DaysSum:+slow.reduce((s,x)=>s+x,0).toFixed(0)}));
