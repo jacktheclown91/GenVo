@@ -92,4 +92,10 @@ The 15–30 minute target holds for three of the four seeds; the fastest seed is
   - No page errors.
 - **Found and fixed during the browser pass:** `Legacy n/3` overflowed the 30 px step badge and overlapped the objective title. A CSS rule now widens only the legacy step.
 
+**Real-time 1x run (later on October 22):** the exported game in Chromium, opening played, AUTO, no acceleration. The milestone is reached in 5.7 minutes. That run exposed and fixed two defects:
+- the opening never completed under AUTO, which hid `Legacy n/3`;
+- the legacy record was not carried across a regional crossing.
+
+See [JAM-READINESS-2026-10-22.md](JAM-READINESS-2026-10-22.md).
+
 The creator has not yet accepted this. It has not been played by hand at 1x.

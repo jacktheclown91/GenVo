@@ -41,6 +41,10 @@ const OPENING_BRIEFINGS=[
 // a fixed six-step chore list. Older saves that stopped mid-sequence resume here.
 const LEGACY_OPENING_STAGES=new Set(['move','food','drink','mate','home','shelter']);
 
+// Under AUTO a creature can meet its whole water need from moist food and never
+// drink; the opening counts that as watered once it has eaten and its water is
+// actually high. A player in manual control still learns to drink.
+const autoWatered=(sim,p,fed)=>!!(sim.playerAutonomy&&fed&&p&&p.hydration>=SPECIES[p.species].maxHydration*.6);
 export class TutorialController{
   constructor(sim,renderer){
     this.renderer=renderer;
@@ -134,7 +138,7 @@ export class TutorialController{
   }
   // The three opening goals, read from real state so any order works.
   openingGoals(p){
-    const fed=this.historyHas('first-meal:'),watered=this.historyHas('first-drink'),paired=!!p.lastMate||!!p.pregnant||this.sim.family.livingChildren(p).length>0;
+    const fed=this.historyHas('first-meal:'),watered=this.historyHas('first-drink')||autoWatered(this.sim,p,fed),paired=!!p.lastMate||!!p.pregnant||this.sim.family.livingChildren(p).length>0;
     const shelter=this.sim.shelter.nearest(p,{radius:Infinity,familyOnly:true}),home=this.sim.territory.state(p);
     return{fed,watered,needs:fed&&watered,paired,home:!!shelter,homeSettled:!!home?.established,familiarity:Math.min(100,Math.round((home?.totalFamiliarity||0)/2.5*100)),shelter};
   }
