@@ -1,0 +1,17 @@
+"""Mechanical native32 preparation of imagegen armor surfaces; original sockets/material/frame contracts retained."""
+from pathlib import Path
+from PIL import Image
+import json,base64,hashlib
+R=Path(__file__).resolve().parents[1];A=R/'assets/art';D=A/'production-review/native-armor-v1';catalog=json.loads((A/'catalog.json').read_text())
+for id,name,size,offset in [('armor-plate','armor',(20,18),(6,7)),('armored-hide','hide',(24,12),(4,10))]:
+ baseline=(D/(id+'-baseline.json')).read_bytes();source=json.loads(baseline);entry=next(p for p in catalog['parts'] if p['partId']==id);current=(A/entry['path']).read_bytes();assert hashlib.sha256(current).hexdigest()==entry['checksumSha256'];assert json.loads(current)['version'] in [source['version'],source['version']+1]
+ master=D/(name+'-master.png');im=Image.open(master).convert('RGBA');alpha=im.getchannel('A').point(lambda a:255 if a>=128 else 0);im.putalpha(alpha);box=alpha.getbbox();assert box
+ is_fixed=lambda r,g,b:(g>110 and b-r>18 and g-r>18 and b>=g-3) if id=='armor-plate' else (r-b>25 and r-g>5)
+ keratin=im.copy();keratin.putdata([(r,g,b,a) if a and is_fixed(r,g,b) else (0,0,0,0) for r,g,b,a in im.get_flattened_data()]);quills=keratin.crop(box).resize(size,Image.Resampling.BOX);im=im.crop(box).resize(size,Image.Resampling.NEAREST);skin=source['regions'][0]['colors'];fixed=source['regions'][1]['colors'];mapped=[]
+ for (r,g,b,a),(kr,kg,kb,coverage) in zip(im.get_flattened_data(),quills.get_flattened_data()):
+  protected=(is_fixed(r,g,b)) or coverage>=128;palette=fixed if protected else skin;rgb=(kr,kg,kb) if protected and coverage>=128 else (r,g,b);color=min(palette,key=lambda c:sum((x-y)**2 for x,y in zip(c,rgb))) if a else skin[0];mapped.append((*color,a))
+ im.putdata(mapped);fill=tuple(skin[0])+(0,);base=Image.new('RGBA',(32,32),fill);base.paste(im,offset);quiet=base.transform((32,32),Image.Transform.AFFINE,(1,0,0,0,1,-1),resample=Image.Resampling.NEAREST,fillcolor=fill)
+ for f in source['frames']:
+  art=(base if f['index']==0 else quiet).rotate((2-f['facing'])*45,resample=Image.Resampling.NEAREST,center=(16,16),fillcolor=fill);assert art.getpixel((16,16))[3]==255,id+' root';assert all(art.getpixel((x,y))[3]==0 for y in range(32) for x in range(32) if x in (0,31) or y in (0,31)),id+' clipping';assert any(p[3] and list(p[:3])==fixed[-1] for p in art.get_flattened_data()),id+' missing protected material';f['rgbaBase64']=base64.b64encode(art.tobytes()).decode()
+ source['version']+=1;source['authorship']='Built-in imagegen overhead armor component; mechanical crop/nearest native32 sampling and original indexed skin plus area-sampled original protected mineral/keratin accents. Exact original root, metadata, palette roles and frame timing retained. Creator acceptance pending.';source['nativeArmorArt']={'revision':'native-armor/1','masterSha256':hashlib.sha256(master.read_bytes()).hexdigest(),'previousSourceSha256':hashlib.sha256(baseline).hexdigest(),'scope':'Overhead organic shape and paint only; unchanged mount/material/frame/biology authority.'};raw=json.dumps(source,separators=(',',':')).encode();(A/entry['path']).write_bytes(raw);entry['checksumSha256']=hashlib.sha256(raw).hexdigest();entry['status']='native-armor-review';base.save(A/entry['png']);base.save(D/(name+'-native.png'));quiet.save(D/(name+'-rest-native.png'));print(id,'16 native roots/margins/protected-material checks passed')
+(A/'catalog.json').write_bytes((json.dumps(catalog,indent=2)+'\n').encode())
