@@ -9,6 +9,7 @@ import {restoreStrangerRules} from '../ecology/stranger-response.js';
 import {restoreDayClock} from '../sim/day-clock.js';
 import {restoreMetabolismRules} from '../ecology/metabolism-policy.js';
 import {restoreFoodRules} from '../ecology/physiology.js';
+import {restoreTissueWater} from '../ecology/tissue-water.js';
 import {restoreStratumSenseRules,adoptStratumSenseRules} from '../ecology/stratum-sense-rules.js';
 import {GROUND_VIBRATIONS} from '../ecology/stratum-senses.js';
 import {LOCAL_ASSORTMENT} from '../reproduction/mate-preferences.js';
@@ -120,6 +121,8 @@ function ownState(object,{skip=[]}={}){
 function snapshotWorld(world){
   const state={};
   for(const key of WORLD_MUTABLE_FIELDS)state[key]=world[key];
+  // Carrion water exists only on tissue-water worlds (ecology/tissue-water.js).
+  if(world.carrionWater)state.carrionWater=world.carrionWater;
   state.organicResources=world.organicResources;state.plantResources=world.plantResources;if(world.soilWater){const {scratch,...soil}=world.soilWater;state.soilWater=soil;}
   state.plants={...world.plants};
   state.seedBank={...world.seedBank};
@@ -192,6 +195,7 @@ function restoreWorld(world,state,{initializeMissingFreshwater=false,adoptOwnedW
   if(world.terrain)deriveDrainage(world);
   world.buildLandRegions();world.buildHydrology();
   for(const key of WORLD_MUTABLE_FIELDS)world[key]=restoreOwnedTyped(world[key],state[key],`world.${key}`,adoptOwnedWorldBuffers);
+  if(state.carrionWater)world.carrionWater=restoreOwnedTyped(world.carrionWater||new Float32Array(world.len),state.carrionWater,'world.carrionWater',adoptOwnedWorldBuffers);else delete world.carrionWater;
   if(!state.freshwaterFood&&initializeMissingFreshwater)initializeFreshwater(world);
   else for(const [kind,target] of Object.entries(world.freshwaterFood))
     world.freshwaterFood[kind]=restoreOwnedTyped(target,state.freshwaterFood?.[kind],`world.freshwaterFood.${kind}`,adoptOwnedWorldBuffers);
@@ -393,7 +397,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   regionalReplayPolicy(sim);
   restoreSurfaceIceRules(sim,snapshot.core||{});
   restoreThermalRefugeRules(sim,snapshot.core||{});
-  restoreThermalRules(sim,snapshot.core||{});restoreThunderstorms(sim,snapshot.core||{});restoreStrangerRules(sim,snapshot.core||{});restoreDayClock(sim,snapshot.core||{});restoreMetabolismRules(sim,snapshot.core||{});restoreFoodRules(sim,snapshot.core||{});restoreWildfire(sim,snapshot.core||{});restoreHabitatHazards(sim,snapshot.core||{});
+  restoreThermalRules(sim,snapshot.core||{});restoreThunderstorms(sim,snapshot.core||{});restoreStrangerRules(sim,snapshot.core||{});restoreDayClock(sim,snapshot.core||{});restoreMetabolismRules(sim,snapshot.core||{});restoreFoodRules(sim,snapshot.core||{});restoreTissueWater(sim,snapshot.core||{});restoreWildfire(sim,snapshot.core||{});restoreHabitatHazards(sim,snapshot.core||{});
   restoreVisibilityRules(sim,snapshot.core||{});
   if(!Object.hasOwn(snapshot.core||{},'sensoryFogEnabled'))delete sim.sensoryFogEnabled;
   if(sim.sensoryFogEnabled!==undefined&&typeof sim.sensoryFogEnabled!=='boolean')throw Error('Invalid saved sensory fog policy.');

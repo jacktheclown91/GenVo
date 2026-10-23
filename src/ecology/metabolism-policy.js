@@ -31,7 +31,10 @@ function referenceBasal(a){
 // Multipliers on basalResourceCosts(a): exactly 1 on recorded worlds.
 export function basalScale(sim,a){
  if(!metabolismActive(sim))return ONE;const s=SPECIES[a.species],ref=referenceBasal(a);
- return{energy:s.maxEnergy/(METABOLISM.reserveDaysFood*BIO_STEPS_PER_DAY*ref.energy),water:s.maxHydration/(METABOLISM.reserveDaysWater*BIO_STEPS_PER_DAY*ref.water)};
+ // sim.metabolismExperiment (development measurement only, never set by the game) can vary the
+ // water reserve for comparison runs.
+ const waterDays=sim.metabolismExperiment?.waterDays??METABOLISM.reserveDaysWater;
+ return{energy:s.maxEnergy/(METABOLISM.reserveDaysFood*BIO_STEPS_PER_DAY*ref.energy),water:s.maxHydration/(waterDays*BIO_STEPS_PER_DAY*ref.water)};
 }
 const ONE=Object.freeze({energy:1,water:1});
 // Health lost per biological step with no energy, or no water, left.
