@@ -1,0 +1,47 @@
+{
+  "scope": "Original protected palette definitions remain exact. Require each organ-specific duct material in every frame, with inherited tissue retained.",
+  "preparationGuardCorrection": "The reused armor guard initially assumed the last palette entry (ivory). Before any gland source was written, it was corrected to each gland existing duct palette; the native material test explicitly enforces these colors. No numerical check was lowered.",
+  "requiredExistingColors": {
+    "venom-gland": [
+      [
+        165,
+        207,
+        100
+      ]
+    ],
+    "scent-gland": [
+      [
+        171,
+        111,
+        103
+      ],
+      [
+        217,
+        182,
+        110
+      ],
+      [
+        247,
+        236,
+        207
+      ]
+    ],
+    "salt-gland": [
+      [
+        103,
+        199,
+        208
+      ],
+      [
+        201,
+        221,
+        224
+      ],
+      [
+        242,
+        245,
+        238
+      ]
+    ]
+  }
+}

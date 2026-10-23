@@ -1,0 +1,41 @@
+{
+  "scope": "Four before/four after samples in ABBA BAAB order; 30 warmup + 100 paused CPU draws each, GPU completion excluded.",
+  "averages": {
+    "venom-gland": {
+      "before": {
+        "meanMs": 9.440249999761582,
+        "medianMs": 5.500000029802322,
+        "p95Ms": 20.200000017881393
+      },
+      "after": {
+        "meanMs": 8.810750000178814,
+        "medianMs": 4.949999988079071,
+        "p95Ms": 19.624999970197678
+      }
+    },
+    "scent-gland": {
+      "before": {
+        "meanMs": 8.882749999761582,
+        "medianMs": 5.149999976158142,
+        "p95Ms": 19.275000005960464
+      },
+      "after": {
+        "meanMs": 8.939750000536442,
+        "medianMs": 5.3499999940395355,
+        "p95Ms": 20.025000035762787
+      }
+    },
+    "salt-gland": {
+      "before": {
+        "meanMs": 9.019250000119209,
+        "medianMs": 5.150000035762787,
+        "p95Ms": 19.94999998807907
+      },
+      "after": {
+        "meanMs": 9.180499999523164,
+        "medianMs": 5.350000023841858,
+        "p95Ms": 20.025000005960464
+      }
+    }
+  }
+}
