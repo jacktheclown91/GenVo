@@ -29,12 +29,15 @@ export function siteFit(kind,waterNeed,moisture,temp){return moistureFit(waterNe
 //  lean: dormancy and chronic, and senescence counts only turnover beyond the
 //    0.4%/day maintenance loss the growth rule already returns to litter
 //    (simulation.js grow), instead of stacking a second full turnover.
+//  turnover: lean without drought stress (option C): niche failure is left
+//    to competition rather than a moisture penalty.
 export const LIFECYCLE_VARIANTS=Object.freeze({
  base:Object.freeze({dormancy:false,chronicFit:1}),
  dormancy:Object.freeze({dormancy:true,chronicFit:1}),
  chronic:Object.freeze({dormancy:false,chronicFit:.5}),
  combined:Object.freeze({dormancy:true,chronicFit:.5}),
- lean:Object.freeze({dormancy:true,chronicFit:.5,existingLoss:.004})});
+ lean:Object.freeze({dormancy:true,chronicFit:.5,existingLoss:.004}),
+ turnover:Object.freeze({dormancy:true,chronicFit:.5,existingLoss:.004,noStress:true})});
 let variant=LIFECYCLE_VARIANTS.base;
 export function setLifecycleVariant(name){if(!LIFECYCLE_VARIANTS[name])throw Error('Unknown lifecycle variant: '+name);variant=LIFECYCLE_VARIANTS[name];return name}
 export const lifecycleVariant=()=>variant;
@@ -43,7 +46,7 @@ export const lifecycleVariant=()=>variant;
 export function lifecycleLosses(current,p,moisture,kind=null,temp=null){
  if(!(current>0))return{stress:0,senescence:0};
  const fit=moistureFit(p.waterNeed,moisture),c=variant.chronicFit,mismatch=c>=1?1-fit:Math.max(0,(c-fit)/c);
- const stress=current*PLANT_LIFECYCLE.droughtLoss*mismatch;
+ const stress=variant.noStress?0:current*PLANT_LIFECYCLE.droughtLoss*mismatch;
  const activity=variant.dormancy&&kind!==null&&temp!==null?coldFloraTemperatureFactor(kind,temp):1;
  const senescence=current*Math.max(0,Math.min(.05,p.growth*PLANT_LIFECYCLE.turnoverPerGrowth)-(variant.existingLoss||0))*activity;
  return{stress,senescence};
