@@ -1,5 +1,5 @@
 export const CFG={
-  version:'1.65.0', worldSize:128, tileSize:16, simHz:8, controlHz:64, cameraFollowHz:42, dayTicks:48, legacyDayTicks:8, lifeStride:6, manualMoveCostScale:1/6, seasonDays:8, seasons:['SPRING','SUMMER','AUTUMN','WINTER'],
+  version:'1.65.0', worldSize:128, tileSize:16, simHz:8, controlHz:64, cameraFollowHz:42, dayTicks:48, legacyDayTicks:8, lifeStride:6, bioStride:6, manualMoveCostScale:1/6, seasonDays:8, seasons:['SPRING','SUMMER','AUTUMN','WINTER'],
   maxAnimals:900, performanceTarget:560, nearAmbientDecisionStride:2, backgroundDecisionDistance:30, farDecisionDistance:52, backgroundDecisionStride:4, farDecisionStride:8, backgroundMovementStride:2, farMovementStride:4,
   initial:{mosskip:64,rootling:32,needlejaw:12,genvo:24,rillsifter:18,mirelick:20,podshell:18,bankjaw:8},
   playerChallenge:{energyScale:6,waterScale:8},

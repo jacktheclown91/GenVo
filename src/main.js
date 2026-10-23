@@ -75,7 +75,10 @@ let seed=new URLSearchParams(location.search).get('seed')||'GENVO8-8FOLD';
 // Creator review of the aquatic/marsh breeding calibration candidate (?breedingReview=1). Off by default.
 {const breeding=new URLSearchParams(location.search).get('breedingReview');if(breeding==='0')BREEDING_REVIEW.enabled=false;else if(breeding==='1')BREEDING_REVIEW.enabled=true}
 {const q=new URLSearchParams(location.search);if(q.get('lodInteraction')==='0')ACTIVITY_REVIEW.continuousInteraction=false;if(q.get('healing')==='0')HEALING_REVIEW.enabled=false;if(q.get('predationParity')==='0')PREDATION_PARITY.enabled=false;if(q.get('refuges')==='0')REFUGE_PARITY.enabled=false;if(q.get('physiologyParity')==='0')PHYSIOLOGY_PARITY.enabled=false;if(q.get('rarityReview')==='0')RARITY_REVIEW.enabled=false;if(q.get('trophicRecognition')==='0')TROPHIC_RECOGNITION.enabled=false;if(q.get('huntCommitment')==='1')HUNT_COMMITMENT.enabled=true;if(q.get('motionReveals')==='1')MOTION_REVEALS.enabled=true;if(q.get('plantTurnover')==='1')PLANT_TURNOVER.enabled=true;if(q.get('modularHead')==='1')MODULAR_HEAD.enabled=true;if(q.get('threatAppraisal')==='0')THREAT_APPRAISAL.enabled=false;if(q.get('movementParity')==='0')MOVEMENT_PARITY.enabled=false;if(q.get('soilWater')==='0')SOIL_WATER.enabled=false;if(q.get('weatherPatterns')==='0')WEATHER_PATTERNS.enabled=false;if(q.get('threatStages')==='0')THREAT_STAGES.enabled=false;if(q.get('preyRisk')==='0')PREY_RISK.enabled=false;if(q.get('developmentalSymmetry')==='0')DEVELOPMENTAL_SYMMETRY.enabled=false;if(q.get('spriteCacheMoving')==='1')SPRITE_CACHE.skipMoving=false;if(q.get('spriteBatch')==='0')SPRITE_BATCH.enabled=false;if(q.get('tilePool')==='0')TERRAIN_POOL.enabled=false;if(q.get('batchMode'))SPRITE_BATCH.mode=q.get('batchMode');if(q.get('batchPage'))SPRITE_BATCH.pageSize=Number(q.get('batchPage'))||1024;if(q.get('batchPages'))SPRITE_BATCH.maxPages=Number(q.get('batchPages'))||4;if(q.get('scratchPool'))SPRITE_CACHE.scratchPool=Number(q.get('scratchPool'))||1;if(q.get('ecologyReview')==='0')ECOLOGY_REVIEW.amphibiousForage=ECOLOGY_REVIEW.shoreHabitat=false;if(q.get('aquaticReview')==='0')AQUATIC_REVIEW.fryGrowth=AQUATIC_REVIEW.founding=false;if(q.get('foundingGenetics')==='0')FOUNDING_GENETICS.enabled=false;if(q.get('juvenileBiology')==='0')JUVENILE_SWITCH.growthCost=JUVENILE_SWITCH.preyAppraisal=false;if(q.get('resourceFounding')==='0')RESOURCE_FOUNDING.enabled=false;if(q.get('lifeHistory')==='1')LIFE_HISTORY.fundedGate=LIFE_HISTORY.conditionRecovery=true}
-let sim=new Simulation(seed,{player:true});
+// 30-second days (sim/day-clock.js) are opt-in with ?day=30 until the ecology under the longer
+// day has been balanced and measured; new worlds otherwise keep the recorded 6-second day.
+const DAY_CLOCK_OPT_IN=new URLSearchParams(globalThis.location?.search||'').get('day')==='30';
+let sim=new Simulation(seed,{player:true,dayClock:DAY_CLOCK_OPT_IN});
 const canvas=document.querySelector('#game'),renderer=new Renderer(canvas,sim),keys={},pauseNotice=document.querySelector('#pauseNotice');
 renderer.zoom=cameraZoom();
 // Camera zoom: mouse wheel over the world, or - and = (presentation only).
@@ -167,7 +170,7 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
   let next,sourceSnapshot;
   if(start==='new'){
     const nextSeed=chosenSeed||'GENVO-'+Math.random().toString(16).slice(2,10).toUpperCase();
-    next=new Simulation(nextSeed,{player:true,worldGenerator:geography,regionalFrontier:geography==='planetary/1'});
+    next=new Simulation(nextSeed,{player:true,dayClock:DAY_CLOCK_OPT_IN,worldGenerator:geography,regionalFrontier:geography==='planetary/1'});
     // Freeze this world's copy of the living library; later registrations from
     // other worlds never change how this world founds its regions.
     if(next.evolvedLibraryRules){try{const entries=await saveManager.listEvolvedLibrary();if(entries.length)next.foundingLibrary=entries.map(({sightings,...e})=>e)}catch(error){console.warn('Evolutionary library unavailable',error)}}
@@ -296,7 +299,7 @@ function installSimulation(next,{fresh=false,resume=false,keepMovement=false,reg
 }
 function resetRun(){
   const nextSeed='GENVO8-'+Math.random().toString(16).slice(2,8).toUpperCase();
-  installSimulation(new Simulation(nextSeed,{player:true,worldGenerator:sim.world.generator,regionalFrontier:sim.world.generator==='planetary/1'}),{fresh:true});
+  installSimulation(new Simulation(nextSeed,{player:true,dayClock:DAY_CLOCK_OPT_IN,worldGenerator:sim.world.generator,regionalFrontier:sim.world.generator==='planetary/1'}),{fresh:true});
 }
 async function loadSavedLineage(){
   try{

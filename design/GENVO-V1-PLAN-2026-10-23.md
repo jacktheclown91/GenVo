@@ -120,3 +120,6 @@ Dates follow the creator's allocation and are targets, not reasons to ship unfin
   - Passive AUTO and idle play die only to predators.
   - The cause is shared physiology with tiny daily needs, not player protection.
   - Decisions needed: day length, and target starvation and dehydration timescales for a versioned metabolism policy.
+- **2026-10-23, Phase 1 day clock** (`docs/DAY-CLOCK-2026-10-23.md`):
+  - The 30-second clock is built and saved per world. Recorded worlds are unchanged (gate 99 of 99), and daily biology is preserved.
+  - It is opt-in with `?day=30` until the longer day's ecology is balanced. On the longer day wild animals walk 4–5× more, which brought fewer births and more predation.
