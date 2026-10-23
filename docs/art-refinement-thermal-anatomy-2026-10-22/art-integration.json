@@ -1,0 +1,20 @@
+{
+  "tests": [
+    "tests/indexed-part-art.mjs",
+    "tests/indexed-part-renderer.mjs",
+    "tests/source-rgba-part-art.mjs",
+    "tests/native-part-catalog.mjs",
+    "tests/native-inherited-pigment.mjs",
+    "tests/inherited-pigmentation.mjs",
+    "tests/creature-assembly.mjs",
+    "tests/creature-lab-assembly.mjs",
+    "tests/part-abilities.mjs",
+    "tests/founder-body.mjs",
+    "tests/part-animation-catalog.mjs",
+    "tests/motion-render.mjs",
+    "tests/physicality-render.mjs",
+    "tests/native-thermal-anatomy-art.mjs"
+  ],
+  "passed": 14,
+  "scope": "Native source/material/socket/assembly/motion integration, including fixed-pivot flare geometry. Not a thermal-physiology or creator-acceptance claim."
+}
