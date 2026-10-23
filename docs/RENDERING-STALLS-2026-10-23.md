@@ -49,10 +49,11 @@ Frames over 100 ms fell by more than half, and p99 fell from 169–192 ms to 98 
 - every shortcut tile across three worlds is byte-identical to the sampled contour (19,044 compared);
 - through the real `syncScene`, an underground change keeps the water masks and focals, and a full reset still clears them.
 
+**Gate:** 98 of 98 checks pass with the new test, including the camera zoom and pose rhythm work committed just before.
+
 ## Remaining work
 
 - **Simulation ticks:** on this world the perception phase spikes to 134 ms and the decision phase averages 24 ms. The cost is spread over survey and dispersal helpers (crop yield, carrying surveys, habitat quality, reachability). Slicing ticks thinner would make walking stutter, because player movement waits while a tick is pending. The fix is making those helpers cheaper with outcome parity (`tools/simulation-parity.mjs`). That is the next performance step.
 - **Shoreline water masks** still cost about 30 ms when many new shoreline tiles enter view at once. They could be warmed ahead of the view.
 - **One-off spike:** in one run, a single `drawEnvironmentalHistory` call reached 173 ms; it was not reproduced.
 - **Coverage:** only the RTX 3050 was measured, plus one seed for the comparison.
-- **Gate:** 98 of 98 checks pass with the new test, including the camera zoom and pose rhythm work committed just before.

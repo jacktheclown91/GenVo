@@ -1,4 +1,5 @@
 import {processingCapacity,processingCapacityMessage} from '../sim/processing-capacity.js';
+import {actionCapabilities} from '../lineage/action-capabilities.js';
 import {creatureIdentity} from './creature-identity.js';
 import {escapePanel,knowledgeFold,updateKnowledgeHTML} from './knowledge-panel.js';
 import {reproductiveCompatibility,reproductiveGenomeFor} from '../reproduction/reproductive-compatibility.js';
@@ -211,13 +212,13 @@ function updateContext(context,sim,p,renderer,commandMode=false){
     else if(stance?.bracing)prompt='BRACING · face the charge · release your hold to move freely';
     else if(p.hidden)prompt=threat&&sim.camouflageConceals?.(p,threat.animal,threat.distance)?'HIDDEN · stay still · V emerge':'HIDDEN · something is very close · V emerge';
     else if(threat&&!sim.isOpeningProtected?.(p)&&threat.distance<7){
-      const encounter=sim.predator?.playerStatus?.(p)||null,multi=encounter?.threatCount>1?` · ${encounter.threatCount} STALKERS`:'';
-      if(encounter?.hunterId===threat.animal.id&&encounter.phase==='windup')prompt=`SIDESTEP MARKED LANE${multi} · J BRACE FACING IT · SPACE COUNTER IF CLOSE${hasAdaptation(p,'mobbing-instinct')?' · X RALLY':hasAdaptation(p,'alarm-pulse')?' · X ALARM':''}`;
-      else if(encounter?.hunterId===threat.animal.id&&encounter.phase==='charge')prompt=`CROSS THE CHARGE LANE${multi} · OR J BRACE FACING IT${hasAdaptation(p,'mobbing-instinct')?' · X RALLY':''}`;
+      const encounter=sim.predator?.playerStatus?.(p)||null,multi=encounter?.threatCount>1?` · ${encounter.threatCount} STALKERS`:'',escape=bodyEscapes(sim,p);
+      if(encounter?.hunterId===threat.animal.id&&encounter.phase==='windup')prompt=`SIDESTEP MARKED LANE${multi}${escape} · J BRACE FACING IT · SPACE COUNTER IF CLOSE${hasAdaptation(p,'mobbing-instinct')?' · X RALLY':hasAdaptation(p,'alarm-pulse')?' · X ALARM':''}`;
+      else if(encounter?.hunterId===threat.animal.id&&encounter.phase==='charge')prompt=`CROSS THE CHARGE LANE${multi}${escape} · OR J BRACE FACING IT${hasAdaptation(p,'mobbing-instinct')?' · X RALLY':''}`;
       else if(encounter?.hunterId===threat.animal.id&&encounter.phase==='recover')prompt=threat.distance<1.9?`OPENING${multi} · SPACE BITE OR RUN`:`MAKE DISTANCE${multi} · BREAK PURSUIT`;
       else if(encounter?.hunterId===threat.animal.id&&encounter.pursuit==='search')prompt=`IT LOST SIGHT OF YOU${multi} · STAY QUIET IN COVER OR SLIP AWAY`;
       else if(encounter?.hunterId===threat.animal.id&&encounter.pursuit==='chase'&&threat.distance>=1.9)prompt=winded?`STALKER CHASING${multi} · WINDED · REACH DENSE PLANTS`:`STALKER CHASING${multi} · SHIFT SPRINT · DENSE PLANTS BREAK SIGHT`;
-      else prompt=threat.distance<1.9?`${threat.label.toUpperCase()} CLOSE${multi} · SPACE BITE · J BRACE · SHIFT RUN${hasAdaptation(p,'mobbing-instinct')?' · X RALLY':hasAdaptation(p,'alarm-pulse')?' · X ALARM':''}`:`${threat.label.toUpperCase()} ${directionWord(p,threat.animal).toUpperCase()}${multi} · RUN · SHIFT${hasAdaptation(p,'mobbing-instinct')?' · X RALLY':hasAdaptation(p,'alarm-pulse')?' · X ALARM':hasAdaptation(p,'camouflage-mantle')?' · V HIDE':''}`
+      else prompt=threat.distance<1.9?`${threat.label.toUpperCase()} CLOSE${multi}${escape} · SPACE BITE · J BRACE · SHIFT RUN${hasAdaptation(p,'mobbing-instinct')?' · X RALLY':hasAdaptation(p,'alarm-pulse')?' · X ALARM':''}`:`${threat.label.toUpperCase()} ${directionWord(p,threat.animal).toUpperCase()}${multi} · RUN · SHIFT${hasAdaptation(p,'mobbing-instinct')?' · X RALLY':hasAdaptation(p,'alarm-pulse')?' · X ALARM':hasAdaptation(p,'camouflage-mantle')?' · V HIDE':''}`
     }
     else if(winded&&!prompt)prompt='WINDED · walk to catch your breath';
     else if(swimming&&!prompt)prompt=sim.speciesLifestyle?.lifestyleFor?.(p)?.id==='aquatic'?'AQUATIC · water travel is efficient · long dry-land travel costs more':'SWIMMING · slower travel · reach dry ground before energy runs low';
@@ -544,3 +545,14 @@ function eventText(e){if(e.type==='birth')return`BIRTH · G${e.generation} #${e.
 function bar(v){v=Math.max(0,Math.min(1,v));const n=Math.round(v*8);return '█'.repeat(n)+'░'.repeat(8-n)}
 function pad(n){return String(n).padStart(3,' ')}
 function gene(v){const n=Math.round((v-1)*100);return `${n>=0?'+':''}${n}%`}
+// Escape and defence verbs this body has and can use right now, for danger prompts
+// (first-session clarity, 2026-10-23): the same authorities as the action buttons.
+function bodyEscapes(sim,p){
+ const caps=actionCapabilities(sim,p),ok=s=>!!s?.enabled,out=[];
+ if(caps.jump&&ok(sim.jumpStatus?.()))out.push('ENTER JUMP CLEAR');
+ if(caps.flight&&ok(sim.flightStatus?.()))out.push('6 FLY');
+ if(caps.dive&&ok(sim.diveStatus?.()))out.push('PGDN DIVE');
+ if(caps.burrow&&ok(sim.burrowStatus?.()))out.push('BURROW');
+ if(caps.display&&ok(sim.threatDisplayStatus?.()))out.push('; DISPLAY');
+ return out.length?' · '+out.join(' · '):'';
+}
