@@ -21,7 +21,7 @@ assert.ok(lifecycleLosses(1,PLANTS.sunmoss,.5).senescence>lifecycleLosses(1,PLAN
 assert.equal(lifecycleVariant(),LIFECYCLE_VARIANTS.base);assert.throws(()=>setLifecycleVariant('immortal'),/Unknown lifecycle variant/);
 {const winter=lifecycleLosses(1,PLANTS.sunmoss,.5,'sunmoss',.05).senescence,activeBase=lifecycleLosses(1,PLANTS.sunmoss,.5,'sunmoss',.58).senescence;setLifecycleVariant('dormancy');assert.ok(lifecycleLosses(1,PLANTS.sunmoss,.5,'sunmoss',.05).senescence<winter,'dormant tissue turns over more slowly');
  setLifecycleVariant('chronic');assert.equal(lifecycleLosses(1,p,p.waterNeed-.2).stress,0,'marginal-but-viable sites are not stressed under chronic');assert.ok(lifecycleLosses(1,p,p.waterNeed-.5).stress>0);
- setLifecycleVariant('lean');assert.ok(lifecycleLosses(1,PLANTS.sunmoss,.5,'sunmoss',.58).senescence<activeBase,'lean counts only turnover beyond the existing maintenance loss');setLifecycleVariant('base')}
+ setLifecycleVariant('turnover');assert.equal(lifecycleLosses(1,p,p.waterNeed-.5).stress,0,'option C has no drought stress');setLifecycleVariant('lean');assert.ok(lifecycleLosses(1,PLANTS.sunmoss,.5,'sunmoss',.58).senescence<activeBase,'lean counts only turnover beyond the existing maintenance loss');setLifecycleVariant('base')}
 assert.equal(canFlower('marshroot',p.waterNeed,p.waterNeed,.58),true);assert.equal(canFlower('marshroot',p.waterNeed,.05,.58),false,'no flowering on the wrong ground');
 
 // Natural run: integrity holds; tissue turnover reaches litter.
