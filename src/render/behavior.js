@@ -35,15 +35,19 @@ export function behaviorVisualState({bodyPlan=null,id=0,action='idle',phase=0,mo
   }else if(action==='forage'){
     Object.assign(state,{bodyLean:.18,bodyDrop:.38,headDrop:.55,feelerForward:1.15,feelerSweep:1.0,attention:'ground'});
   }else if(action==='eat'){
-    Object.assign(state,{bodyDrop:.92,headDrop:1.05,stanceSpread:.18,compress:.16,feelerForward:.78,feelerSweep:.15,mouthPulse:beat,attention:'ground',groundEmphasis:.45});
+    // Between actual bites (whose receipts drive feeding-expression.js) the head keeps a grazing
+    // rhythm: dip, chew, lift a little to look about.
+    Object.assign(state,{bodyDrop:.8+.2*beat,headDrop:.6+.65*beat,stanceSpread:.18,compress:.16,feelerForward:.78,feelerSweep:.15+.25*(1-beat),mouthPulse:beat,attention:'ground',groundEmphasis:.45});
   }else if(action==='crack'){
     Object.assign(state,{bodyDrop:.98,headDrop:1.1,stanceSpread:.42,compress:.2,feelerForward:.7,mouthPulse:Math.pow(beat,2)*1.4,eyeNarrow:true,attention:'ground',groundEmphasis:.6});
   }else if(action==='drink'){
-    Object.assign(state,{bodyDrop:1.14,headDrop:1.22,stanceSpread:.12,compress:.12,feelerForward:.72,mouthPulse:.65+.35*beat,attention:'ground',groundEmphasis:.55});
+    // Lapping: the head dips to the water on each beat.
+    Object.assign(state,{bodyDrop:1.08+.12*beat,headDrop:.95+.45*beat,headReach:.2*beat,stanceSpread:.12,compress:.12,feelerForward:.72,mouthPulse:.65+.35*beat,attention:'ground',groundEmphasis:.55});
   }else if(action==='approach'){
     Object.assign(state,{bodyRise:.18,bodyLean:.12,stanceSpread:.18,feelerForward:1.24,feelerSweep:.25,eyeWide:beat>.78,attention:'mate'});
   }else if(action==='court'){
-    Object.assign(state,{bodyRise:.42,stanceSpread:.35,compress:-.08,feelerForward:1.32,feelerSweep:.65,eyeWide:true,mouthPulse:.15,attention:'mate'});
+    // Between performed courtship moves the suitor keeps a display bob and sway.
+    Object.assign(state,{bodyRise:.3+.35*beat,bodySway:.5*wave,stanceSpread:.35,compress:-.08,feelerForward:1.32,feelerSweep:.65,eyeWide:true,mouthPulse:.15,attention:'mate'});
   }else if(action==='nurse'){
     Object.assign(state,{bodyDrop:.52,stanceSpread:.7,compress:.06,bodyLean:-.12,headDrop:.4,feelerForward:.72,relaxed:true,attention:'offspring'});
   }else if(action==='suckle'){

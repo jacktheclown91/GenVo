@@ -1,4 +1,5 @@
 import {VIEW_MODES,viewMode,setViewMode} from '../render/view-modes.js';
+import {cameraZoom,setCameraZoom} from '../render/camera-zoom.js';
 // GenVo player-facing navigation. Menus never advance the ecosystem; existing renderer owns the world backdrop.
 export class FrontEnd{
   constructor({saveManager,audio,onContinue,onCreate,onLoad,onResume,onReturn,onSave,onExportScenario,getWorldInfo}){
@@ -11,6 +12,7 @@ export class FrontEnd{
     this.el.querySelector('#menuReduceMotion')?.addEventListener('change',e=>this.updateMotion(e.target.checked));
     // Viewing mode is a presentation preference kept in this browser, not in saves.
     this.el.querySelector('#menuViewMode')?.addEventListener('change',e=>{setViewMode(e.target.value);this.syncSettings()});
+    this.el.querySelector('#menuZoom')?.addEventListener('change',e=>{setCameraZoom(Number(e.target.value));this.onZoom?.(cameraZoom());this.syncSettings()});
     this.el.querySelector('#newWorldStartingPoint')?.addEventListener('change',()=>this.syncStartingPoint());
     this.el.querySelector('#newWorldCreature')?.addEventListener('change',()=>{this.startingPointsReady=this.refreshStartingPoints()});
     try{document.body.classList.toggle('reduced-menu-motion',localStorage.getItem('genvo-menu-reduced-motion')==='1')}catch{}
@@ -106,6 +108,7 @@ export class FrontEnd{
     const vol=this.el.querySelector('#menuVolume'),label=this.el.querySelector('#menuVolumeValue'),mute=this.el.querySelector('#menuMute'),motion=this.el.querySelector('#menuReduceMotion');
     vol.value=Math.round(this.audio.masterLevel*100);label.value=`${vol.value}%`;label.textContent=`${vol.value}%`;
     mute.checked=!this.audio.enabled;motion.checked=document.body.classList.contains('reduced-menu-motion');
+    const zoom=this.el.querySelector('#menuZoom');if(zoom)zoom.value=String(cameraZoom());
     const view=this.el.querySelector('#menuViewMode'),note=this.el.querySelector('#menuViewNote');if(view){view.value=viewMode();if(note)note.textContent=VIEW_MODES[viewMode()].note}
   }
   updateVolume(n){
