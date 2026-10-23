@@ -1,0 +1,376 @@
+{
+ "start": "new",
+ "gpu": {
+  "devices": [
+   "NVIDIA GeForce RTX 3050",
+   "Intel(R) UHD Graphics 770",
+   "NVIDIA GeForce RTX 3050",
+   "Microsoft Basic Render Driver"
+  ],
+  "features": {
+   "canvas": "enabled",
+   "raster": "enabled",
+   "gpu_compositing": "enabled"
+  }
+ },
+ "runs": {
+  "walking": {
+   "frames": 1565,
+   "fps": 52.2,
+   "p50": 13.4,
+   "p95": 40,
+   "p99": 160.1,
+   "max": 226.7,
+   "over33": 92,
+   "over50": 47,
+   "over100": 35,
+   "workP95": 22.2,
+   "days": 5,
+   "animals": 196,
+   "longFrames": [
+    [
+     213,
+     0,
+     false
+    ],
+    [
+     53,
+     0,
+     false
+    ],
+    [
+     213,
+     3,
+     false
+    ],
+    [
+     160,
+     0,
+     false
+    ],
+    [
+     227,
+     25,
+     true
+    ],
+    [
+     173,
+     18,
+     false
+    ],
+    [
+     160,
+     3,
+     false
+    ],
+    [
+     160,
+     0,
+     false
+    ],
+    [
+     160,
+     0,
+     false
+    ],
+    [
+     160,
+     34,
+     true
+    ],
+    [
+     53,
+     24,
+     true
+    ],
+    [
+     160,
+     3,
+     false
+    ],
+    [
+     147,
+     0,
+     false
+    ],
+    [
+     80,
+     25,
+     false
+    ],
+    [
+     147,
+     0,
+     false
+    ],
+    [
+     160,
+     0,
+     false
+    ],
+    [
+     147,
+     0,
+     false
+    ],
+    [
+     67,
+     3,
+     false
+    ],
+    [
+     147,
+     16,
+     false
+    ],
+    [
+     147,
+     0,
+     false
+    ],
+    [
+     147,
+     0,
+     false
+    ],
+    [
+     147,
+     0,
+     false
+    ],
+    [
+     187,
+     29,
+     true
+    ],
+    [
+     147,
+     0,
+     false
+    ],
+    [
+     80,
+     26,
+     true
+    ],
+    [
+     160,
+     13,
+     false
+    ],
+    [
+     160,
+     0,
+     false
+    ],
+    [
+     147,
+     0,
+     false
+    ],
+    [
+     67,
+     2,
+     false
+    ],
+    [
+     173,
+     26,
+     true
+    ],
+    [
+     53,
+     26,
+     true
+    ],
+    [
+     147,
+     0,
+     false
+    ],
+    [
+     53,
+     0,
+     false
+    ],
+    [
+     173,
+     0,
+     false
+    ],
+    [
+     133,
+     0,
+     false
+    ],
+    [
+     147,
+     0,
+     false
+    ],
+    [
+     173,
+     28,
+     true
+    ],
+    [
+     200,
+     0,
+     false
+    ],
+    [
+     53,
+     25,
+     true
+    ],
+    [
+     80,
+     38,
+     true
+    ]
+   ]
+  },
+  "auto": {
+   "frames": 1629,
+   "fps": 54.3,
+   "p50": 13.4,
+   "p95": 40,
+   "p99": 146.8,
+   "max": 266.8,
+   "over33": 99,
+   "over50": 25,
+   "over100": 18,
+   "workP95": 24,
+   "days": 4,
+   "animals": 195,
+   "longFrames": [
+    [
+     93,
+     4,
+     false
+    ],
+    [
+     200,
+     0,
+     false
+    ],
+    [
+     253,
+     33,
+     true
+    ],
+    [
+     53,
+     26,
+     true
+    ],
+    [
+     160,
+     5,
+     false
+    ],
+    [
+     187,
+     0,
+     false
+    ],
+    [
+     187,
+     0,
+     false
+    ],
+    [
+     120,
+     4,
+     false
+    ],
+    [
+     173,
+     31,
+     true
+    ],
+    [
+     53,
+     4,
+     false
+    ],
+    [
+     54,
+     0,
+     false
+    ],
+    [
+     147,
+     0,
+     false
+    ],
+    [
+     80,
+     0,
+     false
+    ],
+    [
+     213,
+     30,
+     true
+    ],
+    [
+     53,
+     17,
+     false
+    ],
+    [
+     160,
+     0,
+     false
+    ],
+    [
+     147,
+     0,
+     false
+    ],
+    [
+     240,
+     25,
+     true
+    ],
+    [
+     187,
+     25,
+     true
+    ],
+    [
+     240,
+     0,
+     false
+    ],
+    [
+     200,
+     23,
+     false
+    ],
+    [
+     213,
+     0,
+     false
+    ],
+    [
+     213,
+     0,
+     false
+    ],
+    [
+     267,
+     32,
+     true
+    ],
+    [
+     53,
+     31,
+     true
+    ]
+   ]
+  }
+ },
+ "errors": []
+}
