@@ -1,0 +1,77 @@
+{
+  "setup": {
+    "seed": "DEFENSIVE-ART-20261022",
+    "body": "bp0-97cf16dc",
+    "mount": "flanks",
+    "observation": {
+      "x": 102.5,
+      "y": 113.5,
+      "score": 13.62127468176186
+    },
+    "scope": "Controlled legal adult founder plus armored-hide; actual terrain, genes and resources retained. HTTP-only inspection wrapper forwards explicit paint frame to original renderer; no simulation action fabricated."
+  },
+  "defense": null,
+  "live": [],
+  "stages": [
+    {
+      "label": "before",
+      "captures": [],
+      "meanMs": 9.676999999284744,
+      "medianMs": 6.100000023841858,
+      "p95Ms": 20.5
+    },
+    {
+      "label": "after",
+      "captures": [],
+      "meanMs": 8.658999999761582,
+      "medianMs": 4.700000047683716,
+      "p95Ms": 18.899999976158142
+    },
+    {
+      "label": "after",
+      "captures": [],
+      "meanMs": 8.956000000238419,
+      "medianMs": 5.299999952316284,
+      "p95Ms": 19.5
+    },
+    {
+      "label": "before",
+      "captures": [],
+      "meanMs": 9.59,
+      "medianMs": 6.600000023841858,
+      "p95Ms": 20.90000009536743
+    },
+    {
+      "label": "after",
+      "captures": [],
+      "meanMs": 8.750999999046325,
+      "medianMs": 4.700000047683716,
+      "p95Ms": 19.799999952316284
+    },
+    {
+      "label": "before",
+      "captures": [],
+      "meanMs": 8.608999999761581,
+      "medianMs": 4.699999928474426,
+      "p95Ms": 19
+    },
+    {
+      "label": "before",
+      "captures": [],
+      "meanMs": 8.941999999284745,
+      "medianMs": 5.799999952316284,
+      "p95Ms": 19.300000071525574
+    },
+    {
+      "label": "after",
+      "captures": [],
+      "meanMs": 8.717999999523164,
+      "medianMs": 4.700000047683716,
+      "p95Ms": 19.299999952316284
+    }
+  ],
+  "exactCanonicalState": true,
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "100 paused CPU draws; excludes GPU completion"
+}

@@ -1,0 +1,92 @@
+{
+  "armor-plate-dorsal": {
+    "body": "bp0-03640465",
+    "mount": "dorsal",
+    "brace": {
+      "before": {
+        "exertion": 100,
+        "tick": 10
+      },
+      "after": {
+        "bracing": true,
+        "exertion": 96.203125,
+        "tick": 14
+      },
+      "exactCanonicalState": true
+    },
+    "walkFirst": {
+      "x": 101.79578172319793,
+      "y": 113.5,
+      "energy": 113.87517941547223,
+      "tick": 16,
+      "moving": true
+    },
+    "walkLast": {
+      "x": 99.57747043933693,
+      "y": 113.5,
+      "energy": 113.47720692536677,
+      "tick": 24,
+      "moving": true
+    }
+  },
+  "armor-plate-flanks": {
+    "body": "bp0-cfd726ce",
+    "mount": "flanks",
+    "brace": {
+      "before": {
+        "exertion": 100,
+        "tick": 8
+      },
+      "after": {
+        "bracing": true,
+        "exertion": 96.484375,
+        "tick": 11
+      },
+      "exactCanonicalState": true
+    },
+    "walkFirst": {
+      "x": 101.76057080935783,
+      "y": 113.5,
+      "energy": 113.85340860591876,
+      "tick": 14,
+      "moving": true
+    },
+    "walkLast": {
+      "x": 99.64789346744249,
+      "y": 113.5,
+      "energy": 113.49591133629802,
+      "tick": 21,
+      "moving": true
+    }
+  },
+  "armored-hide-flanks": {
+    "body": "bp0-97cf16dc",
+    "mount": "flanks",
+    "brace": {
+      "before": {
+        "exertion": 100,
+        "tick": 9
+      },
+      "after": {
+        "bracing": true,
+        "exertion": 95.640625,
+        "tick": 13
+      },
+      "exactCanonicalState": true
+    },
+    "walkFirst": {
+      "x": 101.76057080935783,
+      "y": 113.5,
+      "energy": 113.8509215825946,
+      "tick": 16,
+      "moving": true
+    },
+    "walkLast": {
+      "x": 99.33098818891692,
+      "y": 113.5,
+      "energy": 113.37468050515663,
+      "tick": 24,
+      "moving": true
+    }
+  }
+}

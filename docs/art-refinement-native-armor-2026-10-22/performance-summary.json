@@ -1,0 +1,41 @@
+{
+  "scope": "Four before/four after samples in ABBA BAAB order, 30 warmup + 100 paused CPU draws each, GPU completion excluded.",
+  "averages": {
+    "armor-plate-dorsal": {
+      "before": {
+        "meanMs": 8.592750000059604,
+        "medianMs": 4.9000000059604645,
+        "p95Ms": 18.750000029802322
+      },
+      "after": {
+        "meanMs": 8.775250000059604,
+        "medianMs": 5.100000023841858,
+        "p95Ms": 19.474999994039536
+      }
+    },
+    "armor-plate-flanks": {
+      "before": {
+        "meanMs": 10.497000000476838,
+        "medianMs": 6.200000047683716,
+        "p95Ms": 23.475000023841858
+      },
+      "after": {
+        "meanMs": 9.753749999701977,
+        "medianMs": 5.449999988079071,
+        "p95Ms": 20.825000017881393
+      }
+    },
+    "armored-hide-flanks": {
+      "before": {
+        "meanMs": 9.204499999582767,
+        "medianMs": 5.799999982118607,
+        "p95Ms": 19.92500004172325
+      },
+      "after": {
+        "meanMs": 8.770999999642372,
+        "medianMs": 4.850000023841858,
+        "p95Ms": 19.374999970197678
+      }
+    }
+  }
+}
