@@ -1,0 +1,78 @@
+{
+  "setup": {
+    "seed": "DEFENSIVE-ART-20261022",
+    "body": "bp0-3dd1dd67",
+    "mount": "eye-pair",
+    "observation": {
+      "x": 102.5,
+      "y": 113.5,
+      "score": 13.62127468176186
+    },
+    "scope": "Controlled legal adult founder with original eye sockets replaced by raptor-eye; actual terrain, genes and resources retained. HTTP-only inspection wrapper forwards explicit paint frame to original renderer; no simulation action fabricated."
+  },
+  "defense": null,
+  "court": null,
+  "live": [],
+  "stages": [
+    {
+      "label": "before",
+      "captures": [],
+      "meanMs": 15.93,
+      "medianMs": 9.399999976158142,
+      "p95Ms": 38.700000047683716
+    },
+    {
+      "label": "after",
+      "captures": [],
+      "meanMs": 16.535,
+      "medianMs": 10.699999928474426,
+      "p95Ms": 39.799999952316284
+    },
+    {
+      "label": "after",
+      "captures": [],
+      "meanMs": 14.107999999523162,
+      "medianMs": 9.100000023841858,
+      "p95Ms": 36
+    },
+    {
+      "label": "before",
+      "captures": [],
+      "meanMs": 11.638999999761582,
+      "medianMs": 7.5,
+      "p95Ms": 27.300000071525574
+    },
+    {
+      "label": "after",
+      "captures": [],
+      "meanMs": 15.09600000023842,
+      "medianMs": 9.699999928474426,
+      "p95Ms": 38.800000071525574
+    },
+    {
+      "label": "before",
+      "captures": [],
+      "meanMs": 15.071999999284744,
+      "medianMs": 9.199999928474426,
+      "p95Ms": 35.300000071525574
+    },
+    {
+      "label": "before",
+      "captures": [],
+      "meanMs": 12.285000001192094,
+      "medianMs": 8.5,
+      "p95Ms": 34.200000047683716
+    },
+    {
+      "label": "after",
+      "captures": [],
+      "meanMs": 14.749000000953675,
+      "medianMs": 9.899999976158142,
+      "p95Ms": 38.89999997615814
+    }
+  ],
+  "exactCanonicalState": true,
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "100 paused CPU draws; excludes GPU completion"
+}

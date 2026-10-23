@@ -1,0 +1,17 @@
+[
+  {
+    "test": "tests/native-advanced-eye-art.mjs",
+    "exitCode": 0,
+    "output": "Native advanced eyes PASS: 32 source/compiled-identical frames, exact original roots/metadata/material definitions/timing, protected structural accents and inherited skin across all headings/phases, transparent margins. [\n  { id: 'telescopic-eye', fixed: 450, skin: 2910 },\n  { id: 'raptor-eye', fixed: 298, skin: 2560 }\n]\n"
+  },
+  {
+    "test": "tests/native-part-catalog.mjs",
+    "exitCode": 0,
+    "output": "native-part-catalog: 97 indexed assets, 1552 exact RGBA frames, eight facings, 0 missing native art packs PASS\n"
+  },
+  {
+    "test": "tests/sliced-ticks.mjs",
+    "exitCode": 0,
+    "output": "Sliced ticks PASS: any pause schedule equals the atomic tick, mid-tick saves and update() complete it first, it never enters saves, and the stepper keeps order and holds control steps.\n"
+  }
+]
