@@ -42,6 +42,9 @@ export function installAuthoredFounders(sim,members,design,{sitePreference=null,
  }
  selectResidentStart(sim,members[0].id);
  const companion=members[1];companion.lineage=true;sim.lineage.register(companion,[]);
+ // The introduced companion is the founding partner (opening protection and
+ // courtship), not the default starter mate the world was generated with.
+ sim.starterMateId=companion.id;
  for(const a of members){const r=sim.lineage.records.get(a.id);r.authoredOrigin=structuredClone(a.authoredOrigin);r.bornDay=null;r.bornYear=null;}
  const introduced=members.map(a=>({id:a.id,mass:bodyMass(a),energy:a.energy,hydration:a.hydration,age:a.age,body:design.plan}));
  const receipt={schema:1,source:'explicit-authored-introduction',day:sim.day,tick:sim.tickCount,
