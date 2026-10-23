@@ -7,7 +7,7 @@ import {preyBodyMass,regrowPreyBiomass} from './prey-biomass.js';
 //  - nourishment: the lower of energy and water fractions; full at >= .60, .55 at >= .38, .20 at >= .20,
 //    none below (a starving or parched body does not repair);
 //  - activity: resting (not moved for half a second) 1.5, resting in cover 1.6, under a family shelter 1.8;
-//    moving 1; straining (fleeing, chasing, sprinting) .4 — the same modes the injury model already uses;
+//    moving 1; straining (fleeing, chasing, sprinting) .4, the same modes the injury model already uses;
 //  - infection .5; juveniles (still growing) 1.25.
 // Repair costs energy: restoring 100 health rebuilds REPAIR_SHARE of body mass at tissue energy (34 per
 // unit mass, as prey and growth) over growth efficiency .75. Tissue a hunter actually ate is charged by

@@ -1,0 +1,366 @@
+{
+ "seed": "PLANET-B0-A",
+ "checkpoints": [
+  {
+   "label": "1-pregnancy",
+   "before": {
+    "tick": 396,
+    "day": 9,
+    "player": 197,
+    "generation": 1,
+    "parts": [
+     "grazing-mouth",
+     "simple-eye",
+     "small-torso",
+     "spring-leg",
+     "walking-leg"
+    ],
+    "carrying": [
+     "197<198"
+    ],
+    "children": [],
+    "lineageRecords": 3,
+    "handoffs": 0,
+    "legacy": null,
+    "region": [
+     0,
+     0
+    ],
+    "alive": 197,
+    "stage": "done"
+   },
+   "saved": {
+    "tick": 397,
+    "day": 9,
+    "player": 197,
+    "generation": 1,
+    "parts": [
+     "grazing-mouth",
+     "simple-eye",
+     "small-torso",
+     "spring-leg",
+     "walking-leg"
+    ],
+    "carrying": [
+     "197<198"
+    ],
+    "children": [],
+    "lineageRecords": 3,
+    "handoffs": 0,
+    "legacy": null,
+    "region": [
+     0,
+     0
+    ],
+    "alive": 197,
+    "stage": "done"
+   },
+   "loaded": {
+    "tick": 397,
+    "day": 9,
+    "player": 197,
+    "generation": 1,
+    "parts": [
+     "grazing-mouth",
+     "simple-eye",
+     "small-torso",
+     "spring-leg",
+     "walking-leg"
+    ],
+    "carrying": [
+     "197<198"
+    ],
+    "children": [],
+    "lineageRecords": 3,
+    "handoffs": 0,
+    "legacy": null,
+    "region": [
+     0,
+     0
+    ],
+    "alive": 197,
+    "stage": "done"
+   },
+   "mismatches": [],
+   "tickDrift": 0
+  },
+  {
+   "label": "2-birth",
+   "before": {
+    "tick": 1117,
+    "day": 24,
+    "player": 197,
+    "generation": 1,
+    "parts": [
+     "grazing-mouth",
+     "simple-eye",
+     "small-torso",
+     "spring-leg",
+     "walking-leg"
+    ],
+    "carrying": [],
+    "children": [
+     215,
+     216
+    ],
+    "lineageRecords": 5,
+    "handoffs": 0,
+    "legacy": null,
+    "region": [
+     0,
+     0
+    ],
+    "alive": 203,
+    "stage": "done"
+   },
+   "saved": {
+    "tick": 1117,
+    "day": 24,
+    "player": 197,
+    "generation": 1,
+    "parts": [
+     "grazing-mouth",
+     "simple-eye",
+     "small-torso",
+     "spring-leg",
+     "walking-leg"
+    ],
+    "carrying": [],
+    "children": [
+     215,
+     216
+    ],
+    "lineageRecords": 5,
+    "handoffs": 0,
+    "legacy": null,
+    "region": [
+     0,
+     0
+    ],
+    "alive": 203,
+    "stage": "done"
+   },
+   "loaded": {
+    "tick": 1117,
+    "day": 24,
+    "player": 197,
+    "generation": 1,
+    "parts": [
+     "grazing-mouth",
+     "simple-eye",
+     "small-torso",
+     "spring-leg",
+     "walking-leg"
+    ],
+    "carrying": [],
+    "children": [
+     215,
+     216
+    ],
+    "lineageRecords": 5,
+    "handoffs": 0,
+    "legacy": null,
+    "region": [
+     0,
+     0
+    ],
+    "alive": 203,
+    "stage": "done"
+   },
+   "mismatches": [],
+   "tickDrift": 0
+  },
+  {
+   "label": "3-succession",
+   "before": {
+    "tick": 2894,
+    "day": 61,
+    "player": 215,
+    "generation": 2,
+    "parts": [
+     "grazing-mouth",
+     "simple-eye",
+     "small-torso",
+     "spring-leg"
+    ],
+    "carrying": [],
+    "children": [
+     215,
+     216
+    ],
+    "lineageRecords": 7,
+    "handoffs": 1,
+    "legacy": {
+     "from": 197,
+     "to": 215
+    },
+    "region": [
+     0,
+     0
+    ],
+    "alive": 265,
+    "stage": "done"
+   },
+   "saved": {
+    "tick": 2895,
+    "day": 61,
+    "player": 215,
+    "generation": 2,
+    "parts": [
+     "grazing-mouth",
+     "simple-eye",
+     "small-torso",
+     "spring-leg"
+    ],
+    "carrying": [],
+    "children": [
+     215,
+     216
+    ],
+    "lineageRecords": 7,
+    "handoffs": 1,
+    "legacy": {
+     "from": 197,
+     "to": 215
+    },
+    "region": [
+     0,
+     0
+    ],
+    "alive": 265,
+    "stage": "done"
+   },
+   "loaded": {
+    "tick": 2895,
+    "day": 61,
+    "player": 215,
+    "generation": 2,
+    "parts": [
+     "grazing-mouth",
+     "simple-eye",
+     "small-torso",
+     "spring-leg"
+    ],
+    "carrying": [],
+    "children": [
+     215,
+     216
+    ],
+    "lineageRecords": 7,
+    "handoffs": 1,
+    "legacy": {
+     "from": 197,
+     "to": 215
+    },
+    "region": [
+     0,
+     0
+    ],
+    "alive": 265,
+    "stage": "done"
+   },
+   "mismatches": [],
+   "tickDrift": 0
+  },
+  {
+   "label": "4-after-crossing",
+   "before": {
+    "tick": 2905,
+    "day": 61,
+    "player": 215,
+    "generation": 2,
+    "parts": [
+     "grazing-mouth",
+     "simple-eye",
+     "small-torso",
+     "spring-leg"
+    ],
+    "carrying": [],
+    "children": [
+     215
+    ],
+    "lineageRecords": 7,
+    "handoffs": 1,
+    "legacy": {
+     "from": 197,
+     "to": 215
+    },
+    "region": [
+     128,
+     0
+    ],
+    "alive": 71,
+    "stage": "done"
+   },
+   "saved": {
+    "tick": 2905,
+    "day": 61,
+    "player": 215,
+    "generation": 2,
+    "parts": [
+     "grazing-mouth",
+     "simple-eye",
+     "small-torso",
+     "spring-leg"
+    ],
+    "carrying": [],
+    "children": [
+     215
+    ],
+    "lineageRecords": 7,
+    "handoffs": 1,
+    "legacy": {
+     "from": 197,
+     "to": 215
+    },
+    "region": [
+     128,
+     0
+    ],
+    "alive": 71,
+    "stage": "done"
+   },
+   "loaded": {
+    "tick": 2905,
+    "day": 61,
+    "player": 215,
+    "generation": 2,
+    "parts": [
+     "grazing-mouth",
+     "simple-eye",
+     "small-torso",
+     "spring-leg"
+    ],
+    "carrying": [],
+    "children": [
+     215
+    ],
+    "lineageRecords": 7,
+    "handoffs": 1,
+    "legacy": {
+     "from": 197,
+     "to": 215
+    },
+    "region": [
+     128,
+     0
+    ],
+    "alive": 71,
+    "stage": "done"
+   },
+   "mismatches": [],
+   "tickDrift": 0
+  }
+ ],
+ "crossing": {
+  "from": [
+   0,
+   0
+  ],
+  "to": [
+   128,
+   0
+  ]
+ },
+ "errors": []
+}

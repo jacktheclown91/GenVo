@@ -1,0 +1,54 @@
+{
+ "seed": "PLANET-OBS-3",
+ "creature": "starter-jump",
+ "birth": {
+  "day": 19,
+  "young": [
+   201,
+   202
+  ]
+ },
+ "card": {
+  "title": "Your First Young",
+  "kicker": "GENERATION 2 · INHERITANCE",
+  "lead": "2 young were born to you and #198. Each body is a real mixture of its parents'.",
+  "young": [
+   {
+    "head": "#201 · male",
+    "lines": [
+     "Both of you carried: grazing mouth, simple eye, small torso, spring leg",
+     "New in this body: digging forelimb",
+     "Developed from inherited traits: walking leg → spring leg ×2",
+     "Compared with you: lower energy use, better digestion, lower disease resistance"
+    ],
+    "portrait": 2557
+   },
+   {
+    "head": "#202 · male",
+    "lines": [
+     "Both of you carried: grazing mouth, simple eye, small torso, spring leg",
+     "New in this body: storage sac",
+     "Developed from inherited traits: walking leg → spring leg ×2",
+     "Compared with you: better digestion, prefers warmth, smaller body",
+     "Born with: Water Sacs"
+    ],
+    "portrait": 2543
+   }
+  ],
+  "notes": [
+   "Bodies are inherited. Knowledge is not: young that stay near you learn water, food, shelter and danger from what they see you do.",
+   "They depend on you while they grow. In about 30 days of growth one can be ready to carry the line on: press H to continue as them."
+  ],
+  "paused": true
+ },
+ "after": {
+  "hidden": true,
+  "paused": false,
+  "flag": true
+ },
+ "reloaded": {
+  "cardHidden": true,
+  "flag": true
+ },
+ "errors": []
+}

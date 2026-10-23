@@ -105,10 +105,22 @@ At each point the save round-trips exactly, and the reloaded world continues ide
 
 **Bug found and fixed:** the First Legacy record was not carried across a regional crossing. The destination world lost the achievement and could award it a second time. `legacyMilestones` is now in the crossing copy list (`src/world/planetary-travel.js`). It is copied only when present.
 
+**Browser saves (added October 23).** `tools/verify-journey-saves-browser.mjs` runs on the exported `bdb8127` release through the real UI and IndexedDB: Esc → Save World, page reload, Continue. It checks four moments:
+
+| Moment | Day | Region |
+|---|---|---|
+| A natural pregnancy (founder's mate carrying) | 9 | 0,0 |
+| The first birth | 24 | 0,0 |
+| A real H handoff to the grown heir, with The First Legacy recorded | 61 | 0,0 |
+| After walking across the east border | 61 | 128,0 |
+
+Each time, Continue resumed at the exact saved tick. The creature, body, pregnancies, children, lineage records, handoffs, legacy record and region all matched, with no page errors.
+
+Two steps were staged: whole days were advanced in the page under AUTO, and the heir was placed on the east edge before walking across.
+
 ## Not covered
 
 - Manual play by a person at 1x.
 - A real GPU or other browsers.
 - The day-boundary hitch, since sliced; the remaining long frames are rendering.
-- Browser-level save and reload through IndexedDB during these moments. The Node snapshot path is what is tested.
 - Release packaging.

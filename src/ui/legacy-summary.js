@@ -1,8 +1,8 @@
 import {SPECIES} from '../organisms/species.js';
 
 // Legacy milestone summary (creator direction 2026-10-22). Presents what
-// actually happened — the real parent and descendant, inherited and changed
-// anatomy, offspring and how the line was continued — then lets the player keep
+// actually happened, the real parent and descendant, inherited and changed
+// anatomy, offspring and how the line was continued, then lets the player keep
 // evolving in the same world or begin a new one. The world never ends here.
 const name=id=>String(id).replace(/-/g,' ');
 const list=(ids,empty)=>ids.length?ids.map(name).join(', '):empty;

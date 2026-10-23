@@ -7,9 +7,9 @@ import {captureLikelihood} from './juvenile-biology.js';
 import {founderDailyNeed,FOUNDING_RANGE,TISSUE_ENERGY} from './resource-founding.js';
 
 // Shared breeding support (breeding-support/1, creator direction 2026-10-22).
-// One rule for every living body — founders, evolved descendants, hybrids and
-// new lineages — with no species-named thresholds:
-//   production: food this body's anatomy can renew each day around it — the
+// One rule for every living body, founders, evolved descendants, hybrids and
+// new lineages, with no species-named thresholds:
+//   production: food this body's anatomy can renew each day around it, the
 //     regrowth of plants and water food its mouth reaches (from the same
 //     accessible-food survey the breeding check already performs), carrion
 //     inflow, and, for bodies that can hunt, prey turnover weighted by actual

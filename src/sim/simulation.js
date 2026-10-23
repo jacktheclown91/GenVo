@@ -245,7 +245,8 @@ export class Simulation{
   finishTick(){if(pendingTicks.has(this))this.continueTick(Infinity)}
   get tickInProgress(){return pendingTicks.has(this)}
   // The tick body. It pauses only between phases and inside the daily vegetation
-  // work; a pause reads and writes nothing.
+  // work; a pause reads and writes nothing. A phase method overridden on the
+  // instance (observers, profilers) is called whole so the wrapper sees it.
   *updateSteps(input=null,{externalPlayerControl=false,populationModel=false}={}){
     if(this.paused)return;
     // The active region opens its borders to resident neighbours each tick.
@@ -271,7 +272,7 @@ export class Simulation{
     this.predator.tickEngaged();this.partAbilities.tick();this.discovery.tick();if(!externalPlayerControl)this.predator.moveEngaged(1/CFG.simHz);
     this.lineage.updateSuccession?.();this.generationProgress?.update?.();this.autoFounderHome();
     if(this.tickCount%CFG.lifeStride!==0){if(MOVEMENT_PARITY.enabled&&!populationModel)this.phaseMovement({skipManualPlayer:manualMoved,locomotionOnly:true});return}
-    this.phase=0;this.phaseClimate();this.phase=1;this.phaseSoil();this.phase=2;if(this.tickCount%CFG.dayTicks===0){yield;yield* this.phaseVegetationSteps({once:true})}yield;if(populationModel){this.phase=3;phaseRegionalDemography(this)}else{this.phase=3;yield* this.phasePerceptionSteps();yield;this.phase=4;yield* this.phaseDecisionSteps(input);yield;this.phase=5;this.phaseMovement({skipManualPlayer:manualMoved})}yield;this.phase=6;this.phaseMetabolism();this.phase=7;this.phaseLifecycle({once:true});if(this.tickCount%CFG.dayTicks===0){this.disease.advanceDay();this.injury.advanceDay();this.advanceDay()}if(this.planetaryTravel&&this.pendingEmigrants?.length)deliverEmigrants(this,this.regionalDispersalContext,takeEmigrants(this));
+    this.phase=0;this.phaseClimate();this.phase=1;this.phaseSoil();this.phase=2;if(this.tickCount%CFG.dayTicks===0){yield;if(Object.hasOwn(this,'phaseVegetation'))this.phaseVegetation({once:true});else yield* this.phaseVegetationSteps({once:true})}yield;if(populationModel){this.phase=3;phaseRegionalDemography(this)}else{this.phase=3;if(Object.hasOwn(this,'phasePerception'))this.phasePerception();else yield* this.phasePerceptionSteps();yield;this.phase=4;if(Object.hasOwn(this,'phaseDecision'))this.phaseDecision(input);else yield* this.phaseDecisionSteps(input);yield;this.phase=5;this.phaseMovement({skipManualPlayer:manualMoved})}yield;this.phase=6;this.phaseMetabolism();this.phase=7;this.phaseLifecycle({once:true});if(this.tickCount%CFG.dayTicks===0){this.disease.advanceDay();this.injury.advanceDay();this.advanceDay()}if(this.planetaryTravel&&this.pendingEmigrants?.length)deliverEmigrants(this,this.regionalDispersalContext,takeEmigrants(this));
   }
   playerInputActive(input){if(['glide','jump'].includes(this.player()?.aerialMode))return true;if(!input)return false;const [dx,dy]=inputVector(input);return !!(dx||dy)}
   isManualPlayer(animal){return !!(animal?.player&&!this.playerAutonomy)}
