@@ -21,3 +21,5 @@ At most twelve children are illustrated at once; an explicit count/continuation 
 Selected evidence and limits: [review packet](../../art-refinement-journal-v1-2026-10-23/README.md). Canonical activation, creator acceptance, multi-generation interaction, full HUD visibility acceptance and full v1 completion remain unproven.
 
 The final isolated review build is `C:\Users\jackt\AppData\Local\Temp\genvo-journal-v1-web-20261023-reviewed`. Its hashes are retained in the review packet. The exact-state probe refreshes only the journal presentation cache and stylesheet; it does not set biological fields.
+
+Latest integration path: [the coordinated portrait/journal/young source patch](../portrait-v1-handoff/README.md) includes this layout and retained-pigment forwarding. Prefer it over applying the older journal source patch separately.

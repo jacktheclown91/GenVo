@@ -27,3 +27,5 @@ The existing shared portrait helper supplies HSL palette strings while the index
 The reviewed export is `C:\Users\jackt\AppData\Local\Temp\genvo-young-v1-web-20261023-current`. A final checked export is identified in the evidence packet if later fixes supersede it.
 
 The native processing-capacity node is temporarily moved into a reserved, non-scrolling status slot. A scoped observer handles a notice created after the dialog opens. Close disconnects the observer and restores the original DOM position before native pause restoration. Its text, hidden state and authority are never duplicated or suppressed. This prevents the native backlog message from obstructing inheritance text.
+
+Latest integration path: [the coordinated portrait/journal/young source patch](../portrait-v1-handoff/README.md) includes this layout plus retained-pigment and bounds reuse fixes. Prefer that coordinated patch over applying these older source hunks separately. Original evidence above remains the evidence for this earlier layout milestone.

@@ -12,7 +12,7 @@ The renderer takes the already-retained pigment genome and uses canonical phenot
 
 Known retained pigment is forwarded for conception parents, offspring, family records, resident starts, successor choices and generation reveals. Missing pigment stays on the established legacy-gene expression path; no living parent's current genome is substituted for a missing conception field. Existing body-plan compatibility fallbacks remain unchanged and are not proof of unknown historical anatomy.
 
-A bounded 128-entry cache shares the same reconstructed reading and full-gait bounds between comparison fitting and portrait drawing. Cache keys include every supplied visual input and the native-art revision, preventing stale pre-load extents. Returned bounds are frozen; private cache entries never expose source-state references. Read-only cache statistics support verification. The actual game/simulation is not cached or skipped.
+A bounded 128-entry cache shares the same reconstructed reading and full-gait bounds between comparison fitting and portrait drawing. Cache keys include every supplied anatomy/pigment input and the native-art revision; full-gait bounds are reused across animation frames, while canvas scale and emphasis remain per-draw, preventing stale pre-load extents. Returned bounds are frozen; private cache entries never expose source-state references. Read-only cache statistics support verification. The actual game/simulation is not cached or skipped.
 
 ## Reproduce
 
@@ -20,4 +20,6 @@ A bounded 128-entry cache shares the same reconstructed reading and full-gait bo
 
 `node tools/review-natural-history-young.cjs <new-evidence> --exported <build> --portrait` starts an ordinary PLANET-B0-A world, uses public AUTO/native speed and Keep old body, and waits for a genuine litter. It matches actual opaque skin pixels against the live newborn/retained conception genome palettes, checks full canonical snapshot parity, cached bounds reuse, native dismissal and the real Family Journal. Baseline review adds `--expect-old` and records the defect without pretending it passed the new color contract.
 
-The selected review build is `C:\Users\jackt\AppData\Local\Temp\genvo-portrait-v1-web-20261023-candidate`. [Evidence and limits](../../art-refinement-portrait-v1-2026-10-23/README.md). Shared activation, all-body visual acceptance, complete performance review and full v1 completion remain pending. Review assets/templates and historical evidence belong in the original development archive until the clean-source owner classifies them.
+The selected review build is `C:\Users\jackt\AppData\Local\Temp\genvo-portrait-v1-web-20261023-final`. [Evidence and limits](../../art-refinement-portrait-v1-2026-10-23/README.md). Shared activation, all-body visual acceptance, complete performance review and full v1 completion remain pending. Review assets/templates and historical evidence belong in the original development archive until the clean-source owner classifies them.
+
+A live body with no pigment genome remains on its live legacy-expression path instead of borrowing a modern genome from its birth record. A retained conception field that is absent/null stays absent/null. The model regression explicitly checks both cases. The renderer source guard permits newline normalization but rejects other source drift.
