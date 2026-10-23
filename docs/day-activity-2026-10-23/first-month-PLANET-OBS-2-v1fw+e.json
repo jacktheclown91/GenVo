@@ -1,0 +1,868 @@
+{
+ "rules": "v1fw+e",
+ "seed": "PLANET-OBS-2",
+ "days": 40,
+ "byCause": {
+  "starvation": 71,
+  "predation": 34,
+  "dehydration": 33,
+  "health": 22,
+  "drowning": 2
+ },
+ "byCauseSpecies": {
+  "starvation mosskip": 40,
+  "health rootling": 21,
+  "dehydration rillsifter": 18,
+  "predation mosskip": 14,
+  "starvation mirelick": 11,
+  "predation mirelick": 8,
+  "starvation rootling": 7,
+  "dehydration podshell": 7,
+  "starvation podshell": 7,
+  "dehydration mosskip": 6,
+  "predation genvo": 5,
+  "predation needlejaw": 5,
+  "starvation needlejaw": 4,
+  "drowning mosskip": 2,
+  "starvation bankjaw": 2,
+  "predation rootling": 2,
+  "health needlejaw": 1,
+  "dehydration needlejaw": 1,
+  "dehydration mirelick": 1
+ },
+ "byCauseIntent": {
+  "starvation @feed": 42,
+  "predation @escape": 26,
+  "dehydration @drink": 21,
+  "health @burrow": 19,
+  "starvation @drink": 18,
+  "dehydration @feed": 11,
+  "predation @drink": 5,
+  "starvation @burrow": 4,
+  "health @drink": 3,
+  "starvation @wary": 3,
+  "drowning @escape": 2,
+  "predation @refuge": 2,
+  "starvation @explore": 2,
+  "dehydration @to-water": 1,
+  "predation @group-alarm": 1,
+  "starvation @escape": 1,
+  "starvation @refuge": 1
+ },
+ "predationHunters": {
+  "-": 128,
+  "needlejaw": 30,
+  "bankjaw": 4
+ },
+ "preyReservesAtPredation": [
+  "mirelick e0.46 w0.48 h-19 young @escape",
+  "mosskip e0.19 w0.41 h-49 @escape",
+  "mosskip e1 w0.55 h-27 young @escape",
+  "mirelick e0.71 w0.7 h-35 young @escape",
+  "genvo e0.96 w0.48 h-41 @escape",
+  "mirelick e0.54 w0.66 h-15 @escape",
+  "mirelick e0.24 w0.35 h-8 young @escape",
+  "mirelick e0.8 w0.31 h-38 young @escape",
+  "genvo e0.98 w0.42 h-20 young @escape",
+  "mosskip e-0.07 w0.92 h-45 young @escape",
+  "mirelick e0.04 w0.93 h-38 young @escape",
+  "mirelick e0.16 w0.83 h-20 young @escape",
+  "mosskip e0.46 w0.33 h-35 @group-alarm",
+  "mosskip e-0.03 w-0.03 h-6 @drink",
+  "mosskip e0.02 w0.21 h-26 @drink",
+  "mosskip e0.07 w0.81 h-9 @escape",
+  "mosskip e0.06 w0.86 h-19 young @drink",
+  "needlejaw e0.59 w0.87 h-6 young @escape",
+  "mirelick e0.15 w0.54 h-15 @escape",
+  "mosskip e-0.19 w0.72 h-29 @drink",
+  "mosskip e0.44 w0.22 h-26 @drink",
+  "needlejaw e0.7 w0.78 h-3 @escape",
+  "mosskip e-0.29 w0.84 h-18 @escape",
+  "mosskip e-0.23 w0.96 h-58 @refuge",
+  "genvo e0.64 w0.69 h-27 @escape",
+  "rootling e0.62 w0.52 h-33 @escape",
+  "mosskip e-0.35 w0.86 h-33 @escape",
+  "mosskip e0.07 w0.83 h-18 @refuge",
+  "needlejaw e0.42 w0.3 h-9 @escape",
+  "needlejaw e0.7 w0.86 h-10 @escape",
+  "genvo e0.66 w0.46 h-20 @escape",
+  "needlejaw e0.66 w0.93 h-17 @escape",
+  "rootling e0.22 w0.92 h-37 @escape",
+  "genvo e0.69 w0.78 h-20 @escape"
+ ],
+ "drowning": [
+  "3 mosskip swimmer:false inWater:true e0.43 w0.27 @escape | escape:63 feed:11 herd-browse:3 group-alarm:2",
+  "11 mosskip swimmer:false inWater:true e0.42 w0.2 @escape | feed:118 escape:65 herd-browse:61 herd-hop:50"
+ ],
+ "dehydration": [
+  "3 rillsifter e0.34 @to-water target:none@null waterDist:67 drinkableHere:false | to-water:92 migrate:17 drink:5 explore:1",
+  "3 rillsifter e0.16 @feed target:larvae@0.3 waterDist:65535 drinkableHere:false | feed:95 shoal-glide:16 drink:8 explore:1",
+  "4 rillsifter e0.2 @feed target:larvae@0 waterDist:65535 drinkableHere:false | feed:81 shoal-glide:35 drink:6 explore:1",
+  "4 rillsifter e0.22 @feed target:detritus@0.3 waterDist:65535 drinkableHere:false | feed:84 shoal-glide:18 shoal-signal:14 drink:8",
+  "4 rillsifter e0.21 @drink target:none@null waterDist:65535 drinkableHere:false | drink:87 to-water:20 migrate:10 feed:6",
+  "4 rillsifter e0.11 @feed target:detritus@0.1 waterDist:65535 drinkableHere:false | feed:84 shoal-rest:23 shoal-signal:10 drink:8",
+  "4 rillsifter young e0.2 @drink target:none@null waterDist:65535 drinkableHere:false | drink:90 shoal-signal:19 shoal-rest:16 feed:4",
+  "4 rillsifter young e0.16 @feed target:larvae@0.2 waterDist:65535 drinkableHere:false | feed:99 shoal-glide:35 drink:4 explore:1",
+  "4 rillsifter young e0.19 @drink target:none@null waterDist:65535 drinkableHere:false | drink:107 shoal-glide:19 shoal-rest:10 feed:6",
+  "4 rillsifter young e0.21 @drink target:other@1.1 waterDist:65535 drinkableHere:false | feed:72 shoal-glide:52 drink:17 shoal-signal:3",
+  "4 rillsifter young e0.1 @feed target:detritus@0.1 waterDist:65535 drinkableHere:false | feed:120 shoal-glide:21 drink:5 shoal-rest:3",
+  "4 rillsifter young e0.11 @feed target:detritus@0.1 waterDist:65535 drinkableHere:false | feed:111 shoal-signal:19 drink:7 shoal-glide:4",
+  "4 rillsifter young e0.11 @drink target:other@1.5 waterDist:65535 drinkableHere:false | feed:93 drink:27 shoal-signal:22 shoal-rest:7",
+  "4 rillsifter young e0.22 @feed target:detritus@0.2 waterDist:65535 drinkableHere:false | drink:75 feed:44 shoal-glide:30 shoal-rest:6",
+  "5 rillsifter young e0.17 @feed target:detritus@0.2 waterDist:65535 drinkableHere:false | feed:88 drink:59 shoal-glide:32 explore:1",
+  "5 rillsifter young e0.22 @drink target:none@null waterDist:65535 drinkableHere:false | drink:114 feed:29 shoal-glide:16 shoal-rest:14",
+  "5 rillsifter young e0.17 @feed target:detritus@0.1 waterDist:65535 drinkableHere:false | feed:144 shoal-glide:36 drink:3 explore:1",
+  "5 rillsifter young e0.08 @feed target:detritus@0.3 waterDist:65535 drinkableHere:false | feed:157 shoal-rest:25 shoal-glide:8 drink:3",
+  "12 mosskip e0.35 @drink target:other@0.7 waterDist:2 drinkableHere:false | feed:272 drink:73 herd-hop:51 herd-rest:19",
+  "13 mosskip e0.38 @drink target:spot@0 waterDist:0 drinkableHere:true | feed:271 drink:103 herd-browse:36 herd-rest:21",
+  "14 podshell young e0.44 @drink target:spot@0 waterDist:0 drinkableHere:true | feed:290 drink:88 pod-rest:57 pod-wander:52",
+  "14 mosskip e0.19 @drink target:other@0.7 waterDist:3 drinkableHere:false | feed:284 drink:112 herd-browse:31 idle:25",
+  "14 mosskip e0.11 @drink target:other@1.4 waterDist:8 drinkableHere:false | feed:362 drink:113 herd-hop:17 group-alarm:15",
+  "14 needlejaw young e0 @drink target:spot@0 waterDist:0 drinkableHere:true | explore:201 drink:163 hunt:77 idle:35",
+  "15 mosskip e0.08 @drink target:spot@0 waterDist:0 drinkableHere:true | feed:233 drink:128 herd-hop:62 group-alarm:54",
+  "15 podshell e0.28 @drink target:spot@0 waterDist:0 drinkableHere:true | feed:364 drink:118 pod-wander:22 pod-browse:16",
+  "15 mosskip e0.23 @drink target:spot@0 waterDist:0 drinkableHere:true | feed:247 drink:126 herd-hop:72 herd-browse:48",
+  "15 podshell e0.23 @drink target:spot@0 waterDist:0 drinkableHere:true | feed:395 drink:134 pod-wander:14 pod-watch:13",
+  "15 podshell e0.64 @drink target:other@1.3 waterDist:26 drinkableHere:false | feed:420 drink:59 pod-browse:44 pod-wander:39",
+  "16 mirelick e0.61 @drink target:other@1.4 waterDist:22 drinkableHere:false | feed:452 drink:69 mire-prowl:38 group-alarm:17",
+  "17 podshell e0.62 @drink target:other@1 waterDist:9 drinkableHere:false | feed:485 drink:59 pod-browse:44 pod-wander:29",
+  "19 podshell e0.64 @drink target:other@1.3 waterDist:23 drinkableHere:false | feed:534 drink:59 pod-browse:51 pod-wander:45",
+  "25 podshell e0.61 @drink target:other@0.4 waterDist:13 drinkableHere:false | feed:725 pod-browse:77 pod-wander:63 drink:59"
+ ],
+ "starvation": [
+  "5 rootling young w0.31 @burrow | burrow:82 ground-probe:43 feed:29 drink:8",
+  "7 mirelick w0.85 @feed | feed:122 drink:101 group-alarm:20 escape:14",
+  "7 mirelick young w0.85 @feed | feed:161 drink:64 escape:25 group-alarm:14",
+  "8 mirelick w0.83 @feed | feed:151 drink:69 migrate:56 escape:22",
+  "10 rootling young w0.28 @burrow | idle:128 burrow:88 feed:70 explore:37",
+  "11 mirelick w0.69 @feed | feed:337 drink:34 group-alarm:11 escape:10",
+  "11 mirelick w0.45 @feed | feed:334 drink:55 migrate:24 mire-sniff:7",
+  "12 mirelick w0.79 @feed | feed:308 drink:55 mire-prowl:41 group-alarm:22",
+  "12 mirelick young w0.78 @feed | feed:298 drink:42 escape:31 mire-prowl:25",
+  "12 rootling young w0.32 @burrow | feed:158 root-roam:87 drink:68 burrow-rest:58",
+  "12 mirelick young w0.77 @drink | feed:373 drink:52 mire-prowl:29 mire-sniff:9",
+  "12 mosskip w-0.26 @drink | feed:264 drink:72 herd-hop:47 group-alarm:36",
+  "13 needlejaw young w0.29 @drink | explore:328 idle:71 drink:55 scent-watch:23",
+  "13 mirelick young w0.92 @feed | feed:361 drink:80 mire-prowl:51 group-alarm:8",
+  "13 mosskip w0.22 @drink | feed:274 drink:53 herd-browse:51 escape:37",
+  "14 mosskip w-0.34 @drink | feed:202 drink:84 herd-browse:61 group-alarm:52",
+  "15 podshell young w0.3 @drink | feed:348 drink:110 pod-wander:43 pod-browse:25",
+  "16 mirelick w0.85 @feed | feed:335 drink:111 mire-prowl:60 mire-sniff:29",
+  "17 mosskip w0.83 @feed | feed:287 drink:167 herd-browse:52 herd-hop:46",
+  "17 mosskip w0.86 @feed | feed:348 drink:185 herd-hop:32 herd-browse:16",
+  "17 podshell young w0.9 @feed | feed:347 drink:156 pod-browse:49 pod-watch:37",
+  "17 mosskip w0.92 @feed | feed:333 drink:167 group-alarm:35 escape:24",
+  "17 bankjaw young w0.89 @feed | feed:198 explore:136 drink:118 hunt:106",
+  "17 mosskip w0.91 @feed | feed:307 drink:171 herd-hop:36 herd-browse:35",
+  "17 mosskip w0.74 @wary | feed:280 drink:173 herd-browse:69 herd-hop:46",
+  "17 mosskip w0.68 @escape | feed:271 drink:181 group-alarm:54 herd-browse:51",
+  "17 bankjaw w0.86 @feed | feed:201 drink:148 hunt:130 escape:56",
+  "18 mirelick w0.88 @feed | feed:351 drink:115 escape:53 mire-prowl:49",
+  "18 mosskip w0.75 @refuge | feed:295 drink:178 herd-hop:59 herd-browse:51",
+  "18 mosskip w0.85 @feed | feed:313 drink:204 herd-browse:55 herd-hop:50",
+  "19 mosskip w0.71 @drink | feed:297 drink:188 herd-hop:65 herd-browse:39",
+  "19 podshell w0.91 @feed | feed:489 drink:157 pod-browse:31 pod-watch:18",
+  "19 mosskip w0.87 @feed | feed:274 drink:216 group-alarm:46 herd-listen:46",
+  "19 mosskip w0.86 @feed | feed:394 drink:217 group:27 group-alarm:20",
+  "19 rootling w-0.21 @burrow | feed:312 burrow:203 drink:86 root-roam:48",
+  "19 podshell young w0.91 @feed | feed:398 drink:186 pod-browse:46 pod-wander:35",
+  "19 mosskip w0.74 @drink | feed:358 drink:192 herd-hop:46 migrate:44",
+  "19 mosskip w0.91 @feed | feed:390 drink:185 herd-hop:63 group-alarm:32",
+  "19 podshell w0.89 @feed | feed:342 drink:204 pod-wander:50 pod-browse:41",
+  "19 mosskip w0.83 @feed | feed:307 drink:228 herd-hop:54 herd-browse:43",
+  "20 mosskip w0.76 @drink | feed:412 drink:208 herd-browse:26 group-alarm:22",
+  "20 mosskip w0.91 @feed | feed:352 drink:234 herd-hop:45 group-alarm:33",
+  "20 mosskip w0.75 @drink | feed:386 drink:254 herd-hop:34 herd-browse:26",
+  "20 mosskip w0.86 @wary | feed:282 drink:234 herd-browse:51 group-alarm:49",
+  "20 mosskip w0.89 @feed | feed:416 drink:159 herd-hop:46 herd-browse:45",
+  "20 mosskip w0.92 @feed | feed:372 drink:203 herd-listen:47 group-alarm:46",
+  "21 rootling w0.84 @feed | feed:361 drink:243 burrow:61 root-roam:48",
+  "21 mosskip w0.75 @drink | feed:340 drink:243 group-alarm:59 group-space:25",
+  "21 mosskip w0.77 @drink | feed:410 drink:202 group-alarm:50 herd-hop:39",
+  "22 mosskip w0.77 @feed | feed:376 drink:262 group-alarm:45 herd-hop:41",
+  "22 mosskip w0.75 @drink | feed:417 drink:272 herd-hop:39 group-alarm:34",
+  "22 rootling w0.79 @drink | feed:394 drink:242 root-roam:56 group-alarm:46",
+  "22 mosskip w0.91 @feed | feed:304 drink:274 group-alarm:57 idle:48",
+  "22 mosskip w0.77 @drink | feed:421 drink:274 group-alarm:40 idle:36",
+  "23 mosskip w0.85 @wary | feed:398 drink:194 herd-browse:52 herd-hop:44",
+  "23 mosskip w0.77 @drink | feed:364 drink:286 group-alarm:78 herd-browse:30",
+  "23 mosskip w0.9 @feed | feed:403 drink:282 group-alarm:47 herd-hop:32",
+  "23 podshell w0.87 @feed | feed:518 drink:285 pod-watch:28 pod-wander:20",
+  "24 rootling w0.91 @drink | feed:351 drink:220 ground-probe:191 burrow-rest:40",
+  "24 mosskip w0.9 @feed | feed:429 drink:229 idle:106 group-alarm:60",
+  "24 mosskip w0.87 @feed | feed:443 drink:305 group-alarm:66 escape:21",
+  "24 mosskip w0.84 @feed | feed:409 drink:309 herd-hop:36 herd-browse:35",
+  "24 mosskip w0.58 @drink | feed:431 drink:275 mate:63 herd-hop:45",
+  "25 mosskip w0.85 @feed | feed:398 drink:295 group-alarm:102 herd-browse:39",
+  "25 podshell w0.87 @feed | feed:431 drink:388 pod-wander:49 pod-rest:30",
+  "25 mosskip w0.85 @feed | feed:447 drink:260 herd-hop:68 herd-browse:66",
+  "25 mosskip w0.86 @feed | feed:441 drink:309 group-alarm:69 herd-browse:34",
+  "26 mosskip w0.84 @feed | feed:427 drink:277 group-alarm:78 herd-hop:60",
+  "32 needlejaw w0.5 @feed | drink:275 explore:262 shadow-patrol:176 idle:148",
+  "36 needlejaw w0.57 @explore | drink:459 explore:452 hunt:209 return-den:101",
+  "39 needlejaw w0.52 @explore | explore:568 scent-watch:162 drink:156 shadow-patrol:146"
+ ],
+ "daily": [
+  {
+   "day": 2,
+   "temp": 0.21,
+   "alive": 190,
+   "meanEnergy": 0.79,
+   "meanWater": 0.78,
+   "births": 0,
+   "census": {
+    "mosskip": 64,
+    "rootling": 32,
+    "needlejaw": 12,
+    "genvo": 24,
+    "rillsifter": 18,
+    "mirelick": 20,
+    "podshell": 18,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 3,
+   "temp": 0.32,
+   "alive": 188,
+   "meanEnergy": 0.81,
+   "meanWater": 0.69,
+   "births": 0,
+   "census": {
+    "mosskip": 63,
+    "rootling": 32,
+    "needlejaw": 12,
+    "genvo": 24,
+    "rillsifter": 18,
+    "mirelick": 19,
+    "podshell": 18,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 4,
+   "temp": 0.34,
+   "alive": 179,
+   "meanEnergy": 0.81,
+   "meanWater": 0.63,
+   "births": 0,
+   "census": {
+    "mosskip": 62,
+    "rootling": 27,
+    "needlejaw": 11,
+    "genvo": 24,
+    "rillsifter": 16,
+    "mirelick": 19,
+    "podshell": 18,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 5,
+   "temp": 0.41,
+   "alive": 163,
+   "meanEnergy": 0.85,
+   "meanWater": 0.67,
+   "births": 0,
+   "census": {
+    "mosskip": 61,
+    "rootling": 24,
+    "needlejaw": 11,
+    "genvo": 24,
+    "rillsifter": 4,
+    "mirelick": 19,
+    "podshell": 18,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 6,
+   "temp": 0.34,
+   "alive": 155,
+   "meanEnergy": 0.87,
+   "meanWater": 0.71,
+   "births": 0,
+   "census": {
+    "mosskip": 61,
+    "rootling": 21,
+    "needlejaw": 11,
+    "genvo": 24,
+    "mirelick": 18,
+    "podshell": 18,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 7,
+   "temp": 0.25,
+   "alive": 152,
+   "meanEnergy": 0.86,
+   "meanWater": 0.7,
+   "births": 0,
+   "census": {
+    "mosskip": 61,
+    "rootling": 20,
+    "needlejaw": 11,
+    "genvo": 23,
+    "mirelick": 17,
+    "podshell": 18,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 8,
+   "temp": 0.31,
+   "alive": 148,
+   "meanEnergy": 0.84,
+   "meanWater": 0.68,
+   "births": 0,
+   "census": {
+    "mosskip": 61,
+    "rootling": 19,
+    "needlejaw": 11,
+    "genvo": 23,
+    "mirelick": 14,
+    "podshell": 18,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 9,
+   "temp": 0.36,
+   "alive": 146,
+   "meanEnergy": 0.81,
+   "meanWater": 0.66,
+   "births": 0,
+   "census": {
+    "mosskip": 61,
+    "rootling": 19,
+    "needlejaw": 11,
+    "genvo": 23,
+    "mirelick": 12,
+    "podshell": 18,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 10,
+   "temp": 0.69,
+   "alive": 146,
+   "meanEnergy": 0.77,
+   "meanWater": 0.63,
+   "births": 0,
+   "census": {
+    "mosskip": 61,
+    "rootling": 19,
+    "needlejaw": 11,
+    "genvo": 23,
+    "mirelick": 12,
+    "podshell": 18,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 11,
+   "temp": 0.71,
+   "alive": 145,
+   "meanEnergy": 0.73,
+   "meanWater": 0.72,
+   "births": 0,
+   "census": {
+    "mosskip": 61,
+    "rootling": 18,
+    "needlejaw": 11,
+    "genvo": 23,
+    "mirelick": 12,
+    "podshell": 18,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 12,
+   "temp": 0.69,
+   "alive": 139,
+   "meanEnergy": 0.7,
+   "meanWater": 0.75,
+   "births": 0,
+   "census": {
+    "mosskip": 60,
+    "rootling": 16,
+    "needlejaw": 11,
+    "genvo": 22,
+    "mirelick": 10,
+    "podshell": 18,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 13,
+   "temp": 0.75,
+   "alive": 131,
+   "meanEnergy": 0.7,
+   "meanWater": 0.72,
+   "births": 0,
+   "census": {
+    "mosskip": 57,
+    "rootling": 15,
+    "needlejaw": 11,
+    "genvo": 22,
+    "mirelick": 6,
+    "podshell": 18,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 14,
+   "temp": 0.76,
+   "alive": 124,
+   "meanEnergy": 0.65,
+   "meanWater": 0.51,
+   "births": 0,
+   "census": {
+    "mosskip": 53,
+    "rootling": 15,
+    "needlejaw": 10,
+    "genvo": 22,
+    "mirelick": 4,
+    "podshell": 18,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 15,
+   "temp": 0.78,
+   "alive": 117,
+   "meanEnergy": 0.59,
+   "meanWater": 0.64,
+   "births": 0,
+   "census": {
+    "mosskip": 50,
+    "rootling": 13,
+    "needlejaw": 9,
+    "genvo": 22,
+    "mirelick": 4,
+    "podshell": 17,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 16,
+   "temp": 0.77,
+   "alive": 110,
+   "meanEnergy": 0.58,
+   "meanWater": 0.72,
+   "births": 0,
+   "census": {
+    "mosskip": 47,
+    "rootling": 13,
+    "needlejaw": 9,
+    "genvo": 22,
+    "mirelick": 4,
+    "podshell": 13,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 17,
+   "temp": 0.91,
+   "alive": 105,
+   "meanEnergy": 0.55,
+   "meanWater": 0.75,
+   "births": 0,
+   "census": {
+    "mosskip": 45,
+    "rootling": 12,
+    "needlejaw": 9,
+    "genvo": 22,
+    "mirelick": 2,
+    "podshell": 13,
+    "bankjaw": 3
+   }
+  },
+  {
+   "day": 18,
+   "temp": 0.66,
+   "alive": 94,
+   "meanEnergy": 0.52,
+   "meanWater": 0.7,
+   "births": 0,
+   "census": {
+    "mosskip": 39,
+    "rootling": 12,
+    "needlejaw": 8,
+    "genvo": 22,
+    "mirelick": 2,
+    "podshell": 11,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 19,
+   "temp": 0.63,
+   "alive": 85,
+   "meanEnergy": 0.5,
+   "meanWater": 0.73,
+   "births": 0,
+   "census": {
+    "mosskip": 35,
+    "rootling": 9,
+    "needlejaw": 8,
+    "genvo": 22,
+    "podshell": 11,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 20,
+   "temp": 0.65,
+   "alive": 73,
+   "meanEnergy": 0.53,
+   "meanWater": 0.72,
+   "births": 0,
+   "census": {
+    "mosskip": 29,
+    "rootling": 8,
+    "needlejaw": 7,
+    "genvo": 22,
+    "podshell": 7,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 21,
+   "temp": 0.65,
+   "alive": 65,
+   "meanEnergy": 0.55,
+   "meanWater": 0.73,
+   "births": 0,
+   "census": {
+    "mosskip": 21,
+    "rootling": 8,
+    "needlejaw": 7,
+    "genvo": 22,
+    "podshell": 7,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 22,
+   "temp": 0.63,
+   "alive": 62,
+   "meanEnergy": 0.54,
+   "meanWater": 0.76,
+   "births": 0,
+   "census": {
+    "mosskip": 19,
+    "rootling": 7,
+    "needlejaw": 7,
+    "genvo": 22,
+    "podshell": 7,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 23,
+   "temp": 0.59,
+   "alive": 55,
+   "meanEnergy": 0.57,
+   "meanWater": 0.76,
+   "births": 0,
+   "census": {
+    "mosskip": 15,
+    "rootling": 5,
+    "needlejaw": 7,
+    "genvo": 21,
+    "podshell": 7,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 24,
+   "temp": 0.6,
+   "alive": 51,
+   "meanEnergy": 0.59,
+   "meanWater": 0.75,
+   "births": 0,
+   "census": {
+    "mosskip": 12,
+    "rootling": 5,
+    "needlejaw": 7,
+    "genvo": 21,
+    "podshell": 6,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 25,
+   "temp": 0.54,
+   "alive": 44,
+   "meanEnergy": 0.68,
+   "meanWater": 0.69,
+   "births": 0,
+   "census": {
+    "mosskip": 6,
+    "rootling": 4,
+    "needlejaw": 7,
+    "genvo": 21,
+    "podshell": 6,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 26,
+   "temp": 0.29,
+   "alive": 39,
+   "meanEnergy": 0.78,
+   "meanWater": 0.74,
+   "births": 0,
+   "census": {
+    "mosskip": 3,
+    "rootling": 4,
+    "needlejaw": 7,
+    "genvo": 21,
+    "podshell": 4,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 27,
+   "temp": 0.35,
+   "alive": 38,
+   "meanEnergy": 0.83,
+   "meanWater": 0.69,
+   "births": 0,
+   "census": {
+    "mosskip": 2,
+    "rootling": 4,
+    "needlejaw": 7,
+    "genvo": 21,
+    "podshell": 4,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 28,
+   "temp": 0.41,
+   "alive": 38,
+   "meanEnergy": 0.83,
+   "meanWater": 0.69,
+   "births": 0,
+   "census": {
+    "mosskip": 2,
+    "rootling": 4,
+    "needlejaw": 7,
+    "genvo": 21,
+    "podshell": 4,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 29,
+   "temp": 0.46,
+   "alive": 40,
+   "meanEnergy": 0.75,
+   "meanWater": 0.67,
+   "births": 2,
+   "census": {
+    "mosskip": 2,
+    "rootling": 4,
+    "needlejaw": 7,
+    "genvo": 23,
+    "podshell": 4,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 30,
+   "temp": 0.42,
+   "alive": 41,
+   "meanEnergy": 0.69,
+   "meanWater": 0.66,
+   "births": 5,
+   "census": {
+    "mosskip": 2,
+    "rootling": 4,
+    "needlejaw": 5,
+    "genvo": 26,
+    "podshell": 4,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 31,
+   "temp": 0.28,
+   "alive": 40,
+   "meanEnergy": 0.73,
+   "meanWater": 0.63,
+   "births": 5,
+   "census": {
+    "mosskip": 2,
+    "rootling": 3,
+    "needlejaw": 5,
+    "genvo": 26,
+    "podshell": 4,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 32,
+   "temp": 0.23,
+   "alive": 40,
+   "meanEnergy": 0.72,
+   "meanWater": 0.68,
+   "births": 5,
+   "census": {
+    "mosskip": 2,
+    "rootling": 3,
+    "needlejaw": 5,
+    "genvo": 26,
+    "podshell": 4,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 33,
+   "temp": 0.08,
+   "alive": 39,
+   "meanEnergy": 0.75,
+   "meanWater": 0.64,
+   "births": 5,
+   "census": {
+    "mosskip": 2,
+    "rootling": 3,
+    "needlejaw": 4,
+    "genvo": 26,
+    "podshell": 4,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 34,
+   "temp": 0.41,
+   "alive": 39,
+   "meanEnergy": 0.73,
+   "meanWater": 0.66,
+   "births": 5,
+   "census": {
+    "mosskip": 2,
+    "rootling": 3,
+    "needlejaw": 4,
+    "genvo": 26,
+    "podshell": 4,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 35,
+   "temp": 0.43,
+   "alive": 38,
+   "meanEnergy": 0.73,
+   "meanWater": 0.7,
+   "births": 5,
+   "census": {
+    "mosskip": 2,
+    "rootling": 3,
+    "needlejaw": 4,
+    "genvo": 25,
+    "podshell": 4,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 36,
+   "temp": 0.36,
+   "alive": 38,
+   "meanEnergy": 0.7,
+   "meanWater": 0.67,
+   "births": 5,
+   "census": {
+    "mosskip": 2,
+    "rootling": 3,
+    "needlejaw": 4,
+    "genvo": 25,
+    "podshell": 4,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 37,
+   "temp": 0.36,
+   "alive": 37,
+   "meanEnergy": 0.71,
+   "meanWater": 0.7,
+   "births": 5,
+   "census": {
+    "mosskip": 2,
+    "rootling": 3,
+    "needlejaw": 3,
+    "genvo": 25,
+    "podshell": 4,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 38,
+   "temp": 0.36,
+   "alive": 36,
+   "meanEnergy": 0.68,
+   "meanWater": 0.68,
+   "births": 5,
+   "census": {
+    "mosskip": 2,
+    "rootling": 3,
+    "needlejaw": 2,
+    "genvo": 25,
+    "podshell": 4,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 39,
+   "temp": 0.4,
+   "alive": 39,
+   "meanEnergy": 0.62,
+   "meanWater": 0.6,
+   "births": 9,
+   "census": {
+    "mosskip": 2,
+    "rootling": 2,
+    "needlejaw": 2,
+    "genvo": 29,
+    "podshell": 4,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 40,
+   "temp": 0.34,
+   "alive": 38,
+   "meanEnergy": 0.66,
+   "meanWater": 0.66,
+   "births": 9,
+   "census": {
+    "mosskip": 2,
+    "rootling": 2,
+    "needlejaw": 1,
+    "genvo": 29,
+    "podshell": 4,
+    "bankjaw": 1
+   }
+  },
+  {
+   "day": 41,
+   "temp": 0.45,
+   "alive": 41,
+   "meanEnergy": 0.62,
+   "meanWater": 0.6,
+   "births": 13,
+   "census": {
+    "mosskip": 2,
+    "rootling": 2,
+    "needlejaw": 1,
+    "genvo": 32,
+    "podshell": 4,
+    "bankjaw": 1
+   }
+  }
+ ]
+}

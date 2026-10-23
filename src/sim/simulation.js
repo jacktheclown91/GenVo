@@ -489,8 +489,10 @@ export class Simulation{
       const intrusion=a.lineage?this.territory.intrusionResponse(a):null;if(intrusion){a.intent=intrusion.intent;a.target=intrusion.target;continue}
       const familySocial=a.lineage?this.cognition.socialTarget(a):null;if(familySocial){a.intent='social';a.target=familySocial;continue}
       const stranger=strangerResponse(this,a,{energy:e,hydration:h});if(stranger){a.intent=stranger.intent;a.target=stranger.target;continue}
-      const spacing=this.social.spacingTarget(a);if(spacing){a.intent='group-space';a.target=spacing;continue}
-      const cohesion=this.social.cohesionTarget(a);if(cohesion){a.intent='group';a.target=cohesion;continue}
+      // 30-second days: herd cohesion and spacing count against the rest allowance like other ambient travel.
+      const herdRest=this.correctionExperiment?.socialAllowance!==false&&ambientSpent(this,a);
+      const spacing=herdRest?null:this.social.spacingTarget(a);if(spacing){a.intent='group-space';a.target=spacing;continue}
+      const cohesion=herdRest?null:this.social.cohesionTarget(a);if(cohesion){a.intent='group';a.target=cohesion;continue}
       const rhythm=this.wildlifeRhythm.decision(a,{energy:e,hydration:h});if(rhythm){a.intent=rhythm.intent;a.target=rhythm.target&&ambientSpent(this,a)?null:rhythm.target;continue}
       const migration=a.lineage?this.migration.targetFor(a):null;if(migration){a.intent=migration.status==='returning'?'migration-return':'migrate';a.target=migration;continue}
       const home=(a.lineage&&!this.migration.isAway(a))?this.territory.returnTarget(a):null;if(home){a.intent='return-home';a.target=home;continue}

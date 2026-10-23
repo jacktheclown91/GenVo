@@ -3,7 +3,7 @@ import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
 import {ESCAPE_LANDING,escapeJumpDirection} from '../src/ecology/escape-landing.js';
 import {jumpKinematics,hasJumpingAnatomy} from '../src/lineage/jumping.js';
-import {ambientSpent,ambientAllowance} from '../src/ecology/ambient-allowance.js';
+import {ambientSpent,ambientAllowance,noteAmbientMove} from '../src/ecology/ambient-allowance.js';
 import {waterSeekShare} from '../src/ecology/metabolism-policy.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 
@@ -40,4 +40,14 @@ const make=(o={})=>new Simulation('GENVO8-TEST-A',{player:true,dayClock:true,met
  a.hydration=s.maxHydration*waterSeekShare(sim,a)*.3;const route=sim.waterRoute(a);assert.ok(!route.kind,'badly dehydrated, it heads for the water');
  sim.correctionExperiment={urgentWater:false};assert.ok(sim.waterRoute(a).kind,'the measurement switch restores the previous choice');
 }
-console.log('Wildlife needs PASS: escape jumps land on ground, hungry animals keep searching, dehydrated animals drink.');
+// 4. Herd cohesion and spacing count against the rest allowance; a sated animal that has spent it stays put.
+{
+ const sim=make(),a=sim.animals.find(x=>x.alive&&!x.player),s=SPECIES[a.species];a.energy=s.maxEnergy*.9;a.hydration=s.maxHydration*.9;delete a.ambientWalk;
+ a.intent='group';noteAmbientMove(sim,a,1.5);assert.equal(a.ambientWalk?.tiles,1.5,'herd moves are counted');
+ a.ambientWalk={day:sim.day,tiles:ambientAllowance(a)+1};sim.social.spacingTarget=()=>({x:a.x+1,y:a.y});sim.social.cohesionTarget=()=>({x:a.x+2,y:a.y});
+ a.intent='idle';a.target=null;const seen=new Set();for(let t=0;t<20;t++){sim.update(null);a.ambientWalk={day:sim.day,tiles:ambientAllowance(a)+1};seen.add(a.intent)}
+ assert.ok(!seen.has('group')&&!seen.has('group-space'),'a sated animal that has spent its allowance does not keep re-forming the herd: '+[...seen]);
+ sim.correctionExperiment={socialAllowance:false};for(let t=0;t<20;t++){sim.update(null);seen.add(a.intent)}assert.ok(seen.has('group')||seen.has('group-space'),'with the correction off it does');
+ const old=new Simulation('GENVO8-TEST-A',{player:true,worldGenerator:'planetary/1'}),b=old.animals.find(x=>x.alive&&!x.player);b.intent='group';noteAmbientMove(old,b,2);assert.equal(b.ambientWalk,undefined,'recorded worlds keep no allowance');
+}
+console.log('Wildlife needs PASS: escape jumps land on ground, hungry animals keep searching, dehydrated animals drink, herd moves count against the rest allowance.');
