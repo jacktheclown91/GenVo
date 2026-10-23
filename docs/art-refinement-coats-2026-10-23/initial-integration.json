@@ -1,0 +1,87 @@
+[
+  {
+    "test": "tests/indexed-part-art.mjs",
+    "exitCode": 0,
+    "output": "indexed native art identity, all-frame alpha/detail, protected pigment, timing/anchor invariance and cache keys: PASS\n"
+  },
+  {
+    "test": "tests/indexed-part-renderer.mjs",
+    "exitCode": 0,
+    "output": "indexed renderer timed boundaries, missing facing, pivot, joint clamp and allocation-free drawing PASS\n"
+  },
+  {
+    "test": "tests/source-rgba-part-art.mjs",
+    "exitCode": 0,
+    "output": "source RGBA ingestion: sixteen-frame exact round trip, transparent detail, explicit shared pigments, protected substitution and fail-closed mapping PASS\n"
+  },
+  {
+    "test": "tests/native-part-catalog.mjs",
+    "exitCode": 0,
+    "output": "native-part-catalog: 97 indexed assets, 1552 exact RGBA frames, eight facings, 0 missing native art packs PASS\n"
+  },
+  {
+    "test": "tests/native-inherited-pigment.mjs",
+    "exitCode": 0,
+    "output": "native inherited-pigment and anatomical socket mounting PASS\n"
+  },
+  {
+    "test": "tests/inherited-pigmentation.mjs",
+    "exitCode": 0,
+    "output": "independent inherited pigmentation: OK\n"
+  },
+  {
+    "test": "tests/creature-assembly.mjs",
+    "exitCode": 0,
+    "output": "creature assembly ok\n"
+  },
+  {
+    "test": "tests/creature-lab-assembly.mjs",
+    "exitCode": 0,
+    "output": "lab assembly uses canonical socket rules, immutable transactions and native body-plan round trip PASS\n"
+  },
+  {
+    "test": "tests/part-abilities.mjs",
+    "exitCode": 0,
+    "output": "part abilities ok\n"
+  },
+  {
+    "test": "tests/founder-body.mjs",
+    "exitCode": 0,
+    "output": "founder body ok\n"
+  },
+  {
+    "test": "tests/part-animation-catalog.mjs",
+    "exitCode": 0,
+    "output": "registered immutable part-owned responses compile into independent bounded node rigs PASS\n"
+  },
+  {
+    "test": "tests/motion-render.mjs",
+    "exitCode": 0,
+    "output": "render motion bridge checks: PASS\n"
+  },
+  {
+    "test": "tests/physicality-render.mjs",
+    "exitCode": 0,
+    "output": "environment physicality checks: PASS\n"
+  },
+  {
+    "test": "tests/native-coat-surfaces-art.mjs",
+    "exitCode": 0,
+    "output": "Native coat surfaces PASS: 32 source/compiled frames, original metadata, clear body apertures and margins, inherited fur/feather pigment, protected accents and 48 original density/mount cases. [\n  { id: 'fur-mantle', skin: 4797, fixed: 63 },\n  { id: 'feather-mantle', skin: 3356, fixed: 32 }\n]\n"
+  },
+  {
+    "test": "tests/e5-coat-readability.mjs",
+    "exitCode": 0,
+    "output": "E5 differentiated native source and mounted art: {\"filament-tuft\":69,\"fur-mantle\":297,\"feather-mantle\":213} pixels, source RGBA exact, unchanged biological thermal costs PASS\n"
+  },
+  {
+    "test": "tests/e4-visual-anatomy.mjs",
+    "exitCode": 1,
+    "output": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: climber-leg has genuine multi-directional silhouettes\n    at file:///C:/Users/jackt/AppData/Local/Temp/genvo-coat-art-20261023/tests/e4-visual-anatomy.mjs:55:9 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n"
+  },
+  {
+    "test": "tests/anatomical-climate-precursors.mjs",
+    "exitCode": 0,
+    "output": "E3 filament/fur/feather precursors, true thermal energy, paired uphill grip, cost/prereqs and exact save PASS\n"
+  }
+]

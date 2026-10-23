@@ -1,0 +1,6 @@
+{
+  "baselineCommit": "216f9eab0b365802330f49b4d7d54eac1437a652",
+  "command": "node tests/e4-visual-anatomy.mjs",
+  "exitCode": 1,
+  "output": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: climber-leg has genuine multi-directional silhouettes\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/e4-visual-anatomy.mjs:55:9 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n"
+}

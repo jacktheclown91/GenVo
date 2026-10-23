@@ -1,0 +1,20 @@
+# Native coat surface candidates - 23 October 2026
+
+Fur now has layered inherited-color locks with sparse protected guard-hair tips; feather mantle has separate overlapping vanes with protected quill accents. Art implementation: f1f875f. Existing roots, sockets, display scale, frame keys/timing, palette definitions, thermal costs and seasonal fullness authority remain unchanged. The sparse filament precursor stays byte-identical. No production runtime source was edited.
+
+[Normal-scale fur comparison](fur-mantle-dorsal/normal-directions.png) and [feather comparison](feather-mantle-dorsal/normal-directions.png) show 1:1 crops from actual 1000x750 gameplay at zoom 2, eight headings and both native phases. Whole east/west views and clear ordinary walking frames accompany them. Custom adult founder anatomy and observation position are controlled; genes, terrain, resources and other organisms remain actual simulation state. Fur no longer appears as a fixed white ring, and both mantles retain visible torso space.
+
+All 32 source/indexed frames match exactly, including inherited skin recoloring and fixed accent preservation. All original transparent inner-body samples within six native pixels of the root stay clear in each facing/phase. Outer margins remain clear. The actual source mount passes 48 direction/density combinations. Original silhouette distinction, precursor/full-coat proportions, root/socket and thermal-cost assertions pass. Source revisions advance explicitly from 3 to 4; the E5 test's exact version/status expectations follow that artwork revision while retaining every original geometric/biological assertion.
+
+All 17 applicable integration checks pass: indexed source/rendering, complete catalog, pigment, body/part/socket assemblies, abilities, motion/physicality, coat clearance, E5 readability, E4 anatomy and climate precursors. Repeated preparation/compilation reproduces all 292 catalog/part files byte for byte, with preview PNGs matching actual facing-2/phase-0 source frames. [Original editable sources/PNGs, masters, exact prompts and native crops](../../assets/art/production-review/coats-v1/) retain provenance. Sampling uses the existing native32 pipeline and original pigment roles.
+
+E4's initial run failed for the unchanged climber atlas; the same failure was reproduced on canonical baseline 216f9ea before coat integration. Its prior bitmap-orientation assertion did not represent the existing two-bone rig, which projects paint at real joints. Commit 58f149b replaces that rig-specific assertion with 16 distinct eight-direction/two-pose projections, exact thigh/shin angles and real-joint anchors, four native draws, balanced context and unchanged input joints. Original source, phase, color and nonrigged direction checks remain. Both failed diagnostics and the final passing suite are retained; no test budget or geometric floor was lowered.
+
+Complete graph-encoded saved simulation state matches across every art swap without field filtering. The HTTP-only paint-phase wrapper changes no production runtime sources. Ordinary walking advances position/time and consumes energy with native animation. No page errors occurred. Counterbalanced ABBA BAAB samples use 30 warmup plus 100 paused whole-game CPU draws per sample; the bounded measurements show no substantial local regression. They exclude GPU completion and general hardware performance.
+
+| Part | Before mean ms | After mean ms |
+| --- | ---: | ---: |
+| fur-mantle | 9.907 | 9.256 |
+| feather-mantle | 9.226 | 8.992 |
+
+These fixtures establish the stated coat presentation, directions/phases and walking context. Natural inheritance/evolution and live seasonal density transitions are not established by these captures; density geometry and existing biological rules are separately checked. Concurrent canonical renderer/view-mode work remains preserved and outside the captured source identity. Creator acceptance and the comprehensive art objective remain open. No prolonged ecology trial was added.
