@@ -92,6 +92,8 @@ const runtime=[
   'tests/young-summary.mjs',
   'tests/world-story.mjs',
   'tests/threat-display.mjs',
+  'tests/reaction-expression.mjs',
+  'tests/stranger-response.mjs',
   'tests/regional-multi-hop-biology.mjs',
   'tests/regional-synchronized-replay.mjs',
   'tests/aquatic.mjs',

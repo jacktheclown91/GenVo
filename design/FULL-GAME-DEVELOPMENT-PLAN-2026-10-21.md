@@ -81,7 +81,7 @@ Use targeted regression and browser checks throughout construction. Reserve expe
 
 | Priority | Status |
 |---|---|
-| 1. Creature personality and behaviour: organisms that feel different in how they move, hunt, forage and respond (build on inherited temperament and anatomy-directed routines in `wildlife-rhythm.js`) | not started |
+| 1. Creature personality and behaviour: organisms that feel different in how they move, hunt, forage and respond (build on inherited temperament and anatomy-directed routines in `wildlife-rhythm.js`) | Living Creature Pass slice 1 done: visible threat stages and responses to the player's creature, see `docs/LIVING-CREATURE-PASS-2026-10-23.md` |
 | 2. Evolution feedback: inherited changes, new abilities and generational differences made noticeable | first slice done: the first-generation arc, see `docs/FIRST-GENERATION-ARC-2026-10-23.md` |
 | 3. Player interactions: animation and feedback for feeding, combat, courtship and raising young | not started |
 | 4. World exploration: distant regions, unusual habitats and discoveries rewarding | not started |

@@ -105,6 +105,10 @@ export function visualActionFromIntent(sim,a,{moving=false}={}){
   const d=a.target&&Number.isFinite(a.target.x)&&Number.isFinite(a.target.y)?Math.hypot(a.target.x-a.x,a.target.y-a.y):999;
   if(a.intent==='escape'||a.intent==='group-alarm'||a.intent==='avoid-intruder'||a.intent==='shelter')return'flee';
   if(a.intent==='guardian-hold'||a.intent==='burrow-return'||a.intent==='aquatic-range'||a.intent==='wary')return'move';
+  if(a.intent==='stranger-investigate')return moving?'approach':'listen';
+  if(a.intent==='stranger-watch')return'listen';
+  if(a.intent==='stranger-avoid')return'move';
+  if(a.intent==='stranger-posture')return'guard';
   if(a.intent==='storm-shelter')return'move';
   if(a.intent==='storm-refuge')return'social';
   if(a.intent==='storm-resume')return'move';
