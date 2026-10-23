@@ -1,0 +1,103 @@
+{
+  "base": "90fe95027954c9f9321b9fa1654be0d53fb2c536",
+  "results": [
+    {
+      "test": "native-cloud-shade-art",
+      "exitCode": 0,
+      "seconds": 0.261,
+      "stdout": "Native cloud shade PASS: master hash, four transparent indexed masks, bounded rain-driven layout, absolute texture/wrap continuity, both observed wind axes, read-only bounded cache reuse/invalidation, dry-weather removal and legacy/stratum exclusions.\n",
+      "stderr": ""
+    },
+    {
+      "test": "native-weather-mist",
+      "exitCode": 0,
+      "seconds": 0.06,
+      "stdout": "Native weather mist PASS: retained master hash, four distinct indexed transparent silhouettes, native bounds and alpha levels.\n",
+      "stderr": ""
+    },
+    {
+      "test": "native-precipitation-art",
+      "exitCode": 0,
+      "seconds": 0.121,
+      "stdout": "Native precipitation PASS: master hash, eight bounded indexed sprites, deterministic count/detail, full wind heading, read-only layout and legacy/stratum exclusions.\n",
+      "stderr": ""
+    },
+    {
+      "test": "native-lightning-contact-art",
+      "exitCode": 0,
+      "seconds": 0.112,
+      "stdout": "Native lightning contact PASS: retained indexed phases, central root, bounded native silhouettes, truthful lifetime, four stable rotations, exact authored-pixel parity, balanced context, read-only event and stratum exclusions.\n",
+      "stderr": ""
+    },
+    {
+      "test": "atmospheric-visibility",
+      "exitCode": 0,
+      "seconds": 0.756,
+      "stdout": "Atmospheric visibility PASS: shared snow phase, optical loss, hearing and vigilance, sense advantage, stratum isolation, read-only queries, legacy policy and exact save observation.\n",
+      "stderr": ""
+    },
+    {
+      "test": "sensory-perception",
+      "exitCode": 0,
+      "seconds": 0.688,
+      "stdout": "sensory fog, evolutionary sight, uncertain signals and save continuity PASS\n",
+      "stderr": ""
+    },
+    {
+      "test": "view-modes",
+      "exitCode": 0,
+      "seconds": 0.048,
+      "stdout": "View modes PASS: Comfort default, ordered fog levels, Sandbox-only vegetation, browser-stored preference, live layers clipped to the senses.\n",
+      "stderr": ""
+    },
+    {
+      "test": "weather-patterns",
+      "exitCode": 0,
+      "seconds": 0.574,
+      "stdout": "weather-patterns: ok\n",
+      "stderr": ""
+    },
+    {
+      "test": "weather-exposure",
+      "exitCode": 0,
+      "seconds": 1.797,
+      "stdout": "weather exposure + shelter protection checks: PASS\n",
+      "stderr": ""
+    },
+    {
+      "test": "thunderstorms",
+      "exitCode": 0,
+      "seconds": 2.653,
+      "stdout": "Thunderstorms PASS: deterministic real weather, injury/roof shielding, bounded delayed audio, refuge read-only queries and exact historical/new persistence.\n",
+      "stderr": ""
+    },
+    {
+      "test": "thunderstorm-regions",
+      "exitCode": 0,
+      "seconds": 2.737,
+      "stdout": "Regional thunderstorms PASS: actual controlled-weather ticks, independent local events, exact archive/save continuation and historical opt-out.\n",
+      "stderr": ""
+    },
+    {
+      "test": "public-export",
+      "exitCode": 0,
+      "seconds": 1.33,
+      "stdout": "public-export: exact reachable modules and runtime assets only PASS\n",
+      "stderr": ""
+    },
+    {
+      "test": "reaction-expression",
+      "exitCode": 0,
+      "seconds": 5.275,
+      "stdout": "Reaction expression PASS: stages from real perception, boldness shapes body language, 19 mixed-stage groups in 3 days ({\"watch\":74,\"wary\":0,\"flee\":208,\"investigate\":null}), read-only.\n",
+      "stderr": ""
+    },
+    {
+      "test": "landform-uniform-mask",
+      "exitCode": 0,
+      "seconds": 4.593,
+      "stdout": "Landform uniform mask PASS: 19044 shortcut tiles identical to sampled contours (918 shoreline tiles still sampled).\nUnderground changes keep water masks and regional focals; full resets still clear them.\n",
+      "stderr": ""
+    }
+  ]
+}
