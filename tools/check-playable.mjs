@@ -94,6 +94,7 @@ const runtime=[
   'tests/threat-display.mjs',
   'tests/reaction-expression.mjs',
   'tests/stranger-response.mjs',
+  'tests/landform-uniform-mask.mjs',
   'tests/regional-multi-hop-biology.mjs',
   'tests/regional-synchronized-replay.mjs',
   'tests/aquatic.mjs',

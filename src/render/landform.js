@@ -4,7 +4,31 @@
 // v1.41.0: 32 samples per tile edge, one per art pixel, for smooth 32-pixel shorelines.
 export const LANDFORM_RESOLUTION=32;
 
+// Every sample inside tile (tileX,tileY) reads only cells tileX-2..tileX+1 and tileY-2..tileY+1
+// (smoothedWaterScore's radius 1.28 around a point offset half a cell). When all of them are
+// land every score is 0, and when all are water every score is 1, above any threshold. Such tiles
+// get one shared, read-only mask, identical to the sampled result, without 1024 samples each
+// (measured: first-visit mask building was a main cost of walking stalls, 2026-10-23).
+const UNIFORM=new Map();
+function uniformMask(full,res){
+  const key=res*2+(full?1:0);let mask=UNIFORM.get(key);if(mask)return mask;
+  mask=new Uint8Array(res*res).fill(full?1:0);const depth=new Uint8Array(res*res).fill(full?255:0);
+  mask.depth=depth;mask.wetCount=full?res*res:0;mask.full=full;mask.empty=!full;
+  UNIFORM.set(key,mask);return mask;
+}
+function uniformWater(world,tileX,tileY){
+  const n=world.n,x0=Math.max(0,tileX-2),x1=Math.min(n-1,tileX+1),y0=Math.max(0,tileY-2),y1=Math.min(n-1,tileY+1);
+  const first=!!world.water[world.idx(x0,y0)];
+  for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++)if(!!world.water[world.idx(x,y)]!==first)return null;
+  return first;
+}
+
 export function buildVisualWaterMask(world,tileX,tileY,res=LANDFORM_RESOLUTION){
+  const uniform=uniformWater(world,tileX,tileY);if(uniform!==null)return uniformMask(uniform,res);
+  return sampleVisualWaterMask(world,tileX,tileY,res);
+}
+// The full per-sample contour (also the reference the uniform shortcut is tested against).
+export function sampleVisualWaterMask(world,tileX,tileY,res=LANDFORM_RESOLUTION){
   // depth: the smoothed water score per sample (0 to 255), for depth bands that follow the shore.
   const mask=new Uint8Array(res*res),depth=new Uint8Array(res*res);
   let wet=0;
