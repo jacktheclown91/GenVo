@@ -1,0 +1,26 @@
+{
+  "postmergeCommit": "0b301c2bc7d9ff26ff9302b575374df873ad70cb",
+  "publishedUpdate": "f82f032",
+  "trees": {
+    "assets/art": {
+      "captured": "1dbcb739ff097d5a42c3a09e3146cfe83b73d40e",
+      "postmerge": "1dbcb739ff097d5a42c3a09e3146cfe83b73d40e",
+      "exactIdentity": true
+    },
+    "src/render": {
+      "captured": "27a03835750d00be1b1904dce84dce27f3046cef",
+      "postmerge": "27a03835750d00be1b1904dce84dce27f3046cef",
+      "exactIdentity": true
+    }
+  },
+  "checks": [
+    "journey-continuity",
+    "opening-goals",
+    "native-storage-anatomy-art",
+    "native-part-catalog",
+    "botanical-genetics",
+    "ice-locomotion"
+  ],
+  "passed": 6,
+  "performanceScope": "The recorded render samples preceded this published runtime optimization; no new performance gain is attributed to the art."
+}
