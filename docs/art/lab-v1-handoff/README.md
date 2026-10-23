@@ -5,7 +5,7 @@ Codex presentation candidate. Canonical shared `index.html`, `styles.css` and `s
 ## For Claude
 
 - `assets/ui/natural-history-lab.css` gives the actual in-game editor a three-column workspace: categories/native isolated parts on the left, creature and interaction area in the center, biological consequences on the right. The central area is approximately 50–60% of desktop width. Phone layout scrolls vertically while keeping actions available.
-- `git apply --check docs/art/lab-v1-handoff/index-integration.patch` checks the one-link activation patch. Its single context line permits the menu stylesheet link to coexist. Both stylesheets are scoped to their respective UI roots and use the same palette/type conventions.
+- `git apply --check --unidiff-zero docs/art/lab-v1-handoff/index-integration.patch` checks the one-link activation patch. Use `git apply --unidiff-zero docs/art/lab-v1-handoff/index-integration.patch` for activation after the check. This flag is required because the narrow patch omits trailing context. Its single context line permits the menu stylesheet link to coexist. Both stylesheets are scoped to their respective UI roots and use the same palette/type conventions.
 - `git apply --check docs/art/lab-v1-handoff/editor-label.patch` checks one selector correction. A founder session currently overwrites the first heading inside `.ed-stats`, which is now the capability list. The patch targets the direct comparison heading instead, preserving What this body can do. It changes no biology, measurement, editing rule, budget or event.
 - Please integrate when shared-file ownership is clear, using normal commits. No force or automatic overwrite is part of this handoff.
 
