@@ -23,7 +23,7 @@ export function drawFloraPlant(ctx,{shape,color,amount,px,py,u,x,y,kind,seedAllo
   const at=visualAnchor||floraVisualAnchor(shape,x,y,isWater),{jx,jy}=at;
   ctx.save();ctx.translate(px+jx*u,py+jy*u);
   const seasonal=seasonalBase(color,season,kind),body=tintHex(seasonal,(seed-.5)*10,(cluster-.5)*8),light=tintHex(seasonal,(cluster-.5)*8,10),shade=tintHex(seasonal,0,-14),deep=tintHex(seasonal,0,-22);
-  const authored=drawAuthoredFlora(ctx,{shape,u,density,amount,season,seedAllocation,coatAllocation,body,light,shade,deep,center:{x:at.cx,y:at.cy},turn:shape==='tuft'?0:Math.floor(seed*4)*Math.PI/2});
+  const authored=drawAuthoredFlora(ctx,{shape,u,density,amount,season,seedAllocation,coatAllocation,body,light,shade,deep,center:{x:at.cx,y:at.cy},turn:Math.floor(seed*4)*Math.PI/2});
   if(!authored){
   if(shape==='tuft')drawMoss(ctx,{x,y,u,density,body,light,shade,seed,amount,season});
   else if(shape==='shrub')drawBerryShrub(ctx,{x,y,u,density,body,light,shade,deep,seed,cluster,amount,season,seedAllocation});
@@ -41,11 +41,14 @@ export function drawFloraPlant(ctx,{shape,color,amount,px,py,u,x,y,kind,seedAllo
   ctx.restore();
 }
 
-export function floraTraceAnchor(kind,x,y){return{ox:3+Math.floor(hash2(x,y,kind.length*337)*10),oy:11+Math.floor(hash2(y,x,341)*3)}}
+// Minor plants use the full cell interior rather than a shared bottom row.
+// The same anchor is used by food hit targets in the renderer.
+export function floraTraceAnchor(kind,x,y){const salt=[...kind].reduce((v,c)=>Math.imul(v^c.charCodeAt(0),16777619),2166136261);return{ox:3+Math.floor(placementHash(x,y,salt)*10),oy:5+Math.floor(placementHash(y,x,salt^0x4b31)*10)}}
+function placementHash(x,y,salt){let n=(Math.imul(x,374761393)^Math.imul(y,668265263)^salt)>>>0;n=Math.imul(n^(n>>>13),1274126177);return((n^(n>>>16))>>>0)/4294967295}
 export function drawFloraTrace(ctx,{shape,color,px,py,u,x,y,kind,amount,season='SPRING',seedAllocation=.2,coatAllocation=.25}){
   if(amount!==undefined&&!(amount>0))return;
   const h=hash2(x,y,kind.length*337),{ox,oy}=floraTraceAnchor(kind,x,y),seasonal=seasonalBase(color,season,kind),body=tintHex(seasonal,0,-2),light=tintHex(seasonal,0,9),shade=tintHex(seasonal,0,-14);ctx.save();ctx.translate(px,py);
-  if(drawAuthoredFlora(ctx,{shape,u,amount,season,seedAllocation,coatAllocation,body,light,shade,deep:tintHex(seasonal,0,-22),center:{x:ox+.5,y:oy-2},turn:shape==='tuft'?0:Math.floor(h*4)*Math.PI/2,mini:true})){ctx.restore();return}
+  if(drawAuthoredFlora(ctx,{shape,u,amount,season,seedAllocation,coatAllocation,body,light,shade,deep:tintHex(seasonal,0,-22),center:{x:ox+.5,y:oy-2},turn:Math.floor(placementHash(x,y,kind.length*619)*4)*Math.PI/2,mini:true})){ctx.restore();return}
   if(shape==='tuft'){pixel(ctx,ox,oy-1,1,2,u,body);if(h>.55)pixel(ctx,ox+1,oy-2,1,2,u,light)}
   else if(shape==='shrub'){pixel(ctx,ox,oy-2,1,3,u,'#5b452c');pixel(ctx,ox-1,oy-3,3,2,u,body)}
   else if(shape==='reed'){pixel(ctx,ox,oy-3,1,4,u,body);if(h>.6)pixel(ctx,ox+2,oy-4,1,5,u,light)}

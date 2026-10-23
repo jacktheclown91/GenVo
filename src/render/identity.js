@@ -36,10 +36,15 @@ export function terrainPaletteAt(world,wx,wy,moisture=null,fertility=null){
   const sampleHeight=(ox,oy)=>(height(x+ox,y+oy)*(1-u)+height(x+ox+1,y+oy)*u)*(1-v)+(height(x+ox,y+oy+1)*(1-u)+height(x+ox+1,y+oy+1)*u)*v;
   const relief=e?Math.max(-3,Math.min(3,(sampleHeight(-1,-1)-sampleHeight(1,1))*24)):0;
   const material=substrateWeightsAt(world,wx,wy,{moisture:sample.moisture});
+  // Match the caller's legacy category offsets, then replace their hard steps
+  // with gradual blends of the same physical moisture/fertility fields.
+  const m=sample.moisture,f=sample.fertility,old=m>.68?[130,29,27]:f>.64?[102,30,30]:f<.34?[75,20,29]:[96,25,29];
+  const lush=smoothstep(.48,.80,f),poor=1-smoothstep(.20,.48,f),damp=smoothstep(.52,.84,m);
+  const baseHue=96+lush*6-poor*21,baseSat=25+lush*5-poor*5,baseLight=29+lush;
   return {
-    hue:(broad-.5)*3.2+(sub-.5)*1.4+wet*1.8-dry*5.4+rich*.9-material.dry*44+material.cold*4-material.rock*5,
-    sat:(broad-.5)*1.1+wet*1.5-dry*1.7+rich*1.8+material.dry*3-material.cold*7-material.rock*10,
-    light:(sub-.5)*1.0+dry*1.5-rich*.8-wet*.35+relief+material.dry*3+material.cold+material.rock*2
+    hue:(baseHue*(1-damp)+130*damp-old[0])+(broad-.5)*3.2+(sub-.5)*1.4+wet*1.8-dry*5.4+rich*.9-material.dry*44+material.cold*4-material.rock*5,
+    sat:(baseSat*(1-damp)+29*damp-old[1])+(broad-.5)*1.1+wet*1.5-dry*1.7+rich*1.8+material.dry*3-material.cold*7-material.rock*10,
+    light:(baseLight*(1-damp)+27*damp-old[2])+(sub-.5)*1.0+dry*1.5-rich*.8-wet*.35+relief+material.dry*3+material.cold+material.rock*2
   };
 }
 
@@ -86,3 +91,6 @@ function hash(seed,x,y,salt=0){let n=(seed^Math.imul((x|0)+374761393,668265263)^
 function smoothstep(a,b,v){const t=clamp01((v-a)/(b-a));return t*t*(3-2*t)}
 function clampI(v,n){return Math.max(0,Math.min(n-1,v|0))}
 function clamp01(v){return Math.max(0,Math.min(1,v))}
+
+// Presentation grain crosses cache/tile boundaries. No random stream is consumed.
+export function terrainGrainAt(world,wx,wy){const x=wx+(world.regionOrigin?.x||0),y=wy+(world.regionOrigin?.y||0);return .5+(smoothNoise(world.seedHash^0x3719,x,y,3.7)-.5)*.8+(smoothNoise(world.seedHash^0x238f,x,y,.43)-.5)*.12}

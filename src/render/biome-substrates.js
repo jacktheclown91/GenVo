@@ -15,16 +15,31 @@ export function substrateWeightsAt(world,wx,wy,{moisture=null}={}){
  const dry=(1-smooth(.14,.38,m))*smooth(.2,.42,t),cold=1-smooth(.15,.33,t),rock=smooth(.58,.83,h),sum=Math.max(1,dry+cold+rock);
  return{dry:dry/sum,cold:cold/sum,rock:rock/sum};
 }
+// Sample the retained 2x2 source atlas through one continuous world-space map.
+// Slow, smooth offsets break the old two-tile repeat without independent tile
+// rotations, edge seams, invented material, or additional texture allocations.
+const wrap=(v,n)=>((v%n)+n)%n;
+function lattice(seed,x,y){let n=(seed^Math.imul(x,374761393)^Math.imul(y,668265263))>>>0;n=Math.imul(n^(n>>>13),1274126177);return((n^(n>>>16))>>>0)/4294967295}
+function noise(seed,x,y,span){const gx=Math.floor(x/span),gy=Math.floor(y/span),fx=x/span-gx,fy=y/span-gy,u=fx*fx*(3-2*fx),v=fy*fy*(3-2*fy);return mix(lattice(seed,gx,gy),lattice(seed,gx+1,gy),lattice(seed,gx,gy+1),lattice(seed,gx+1,gy+1),u,v)}
+function artMap(world,x,y){
+ const ax=x+(world.regionOrigin?.x||0),ay=y+(world.regionOrigin?.y||0),seed=world.seedHash||0;
+ return[[ax,ay],[ax+1,ay],[ax,ay+1],[ax+1,ay+1]].map(([xx,yy])=>[xx+(noise(seed^0x48af,xx,yy,7.3)-.5)*5.2,yy+(noise(seed^0xa145,xx,yy,8.7)-.5)*5.2]);
+}
+function artAddress(map,u,v){
+ const sx=mix(map[0][0],map[1][0],map[2][0],map[3][0],u,v),sy=mix(map[0][1],map[1][1],map[2][1],map[3][1],u,v),ix=wrap(Math.floor(sx*32),64),iy=wrap(Math.floor(sy*32),64);
+ return{frame:(ix>=32?1:0)+(iy>=32?2:0),pixel:(iy%32)*32+ix%32};
+}
+export function substrateArtAddress(world,wx,wy){const x=Math.floor(wx),y=Math.floor(wy);return artAddress(artMap(world,x,y),wx-x,wy-y)}
 function corners(w,x,y){return[[x,y],[x+1,y],[x,y+1],[x+1,y+1]].map(([wx,wy])=>substrateWeightsAt(w,wx,wy))}
 const mix=(a,b,c,d,u,v)=>(a*(1-u)+b*u)*(1-v)+(c*(1-u)+d*u)*v;
 export function substrateTileData(world,x,y){
  if(!world?.water||world.water[world.idx(x,y)])return null;
  const points=corners(world,x,y);if(!points.some(p=>p.dry+p.cold+p.rock>.005))return null;
  const origin=world.regionOrigin||{x:0,y:0},variant=(((y+origin.y)&1)*2)+((x+origin.x)&1),materials=biomeSubstrateArt.materials;
- const entries=[['dry','dry-earth'],['cold','cold-earth'],['rock','highland-rock']],pixels=new Uint8ClampedArray(4096);
+ const entries=[['dry','dry-earth'],['cold','cold-earth'],['rock','highland-rock']],map=artMap(world,x,y),pixels=new Uint8ClampedArray(4096);
  for(let py=0;py<32;py++)for(let px=0;px<32;px++){
-  const u=(px+.5)/32,v=(py+.5)/32,i=py*32+px;let r=0,g=0,b=0,total=0;
-  for(const [key,name] of entries){const weight=mix(points[0][key],points[1][key],points[2][key],points[3][key],u,v);if(weight<=0)continue;const art=materials[name],rgb=art.palette[art.frames[variant][i]];r+=rgb[0]*weight;g+=rgb[1]*weight;b+=rgb[2]*weight;total+=weight}
+  const u=(px+.5)/32,v=(py+.5)/32,i=py*32+px,address=artAddress(map,u,v);let r=0,g=0,b=0,total=0;
+  for(const [key,name] of entries){const weight=mix(points[0][key],points[1][key],points[2][key],points[3][key],u,v);if(weight<=0)continue;const art=materials[name],rgb=art.palette[art.frames[address.frame][address.pixel]];r+=rgb[0]*weight;g+=rgb[1]*weight;b+=rgb[2]*weight;total+=weight}
   if(total>.005){pixels[i*4]=Math.round(r/total);pixels[i*4+1]=Math.round(g/total);pixels[i*4+2]=Math.round(b/total);pixels[i*4+3]=Math.round(Math.min(1,total)*.25*255)}
  }
  return{pixels,width:32,height:32,variant,signature:points.map(p=>[p.dry,p.cold,p.rock].map(v=>Math.round(v*1024)).join(',')).join('|')};
