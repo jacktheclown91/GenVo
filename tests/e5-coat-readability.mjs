@@ -14,11 +14,12 @@ assert.equal(catalog.parts.length,Object.keys(PARTS).length,'no missing, duplica
 const masks=new Map(),opaque=new Map();
 for(const id of ids){
  const entry=catalog.parts.find(p=>p.partId===id);
- assert.equal(entry?.status,'e5-native-coat-open-body-review');
+ assert.equal(entry?.status,id==='filament-tuft'?'e5-native-coat-open-body-review':'native-coat-surface-review');
  const content=fs.readFileSync(new URL('../assets/art/'+entry.path.slice(2),import.meta.url));
  assert.equal(crypto.createHash('sha256').update(content).digest('hex'),entry.checksumSha256);
  const source=JSON.parse(content),native=JSON.parse(fs.readFileSync(new URL('../assets/art/'+entry.indexed.slice(2),import.meta.url)));
- assert.equal(source.version,3);
+ assert.equal(source.version,id==='filament-tuft'?3:4);
+ if(id!=='filament-tuft')assert.equal(source.nativeCoatArt?.revision,'native-coat-surface/1');
  assert.equal(source.frames.length,16);
  assert.equal(source.regions.length,2);
  const built=await compileSourceRgbaPart({...source,frames:source.frames.map(f=>({...f,rgba:Buffer.from(f.rgbaBase64,'base64')}))});
