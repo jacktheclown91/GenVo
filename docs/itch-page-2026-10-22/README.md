@@ -2,7 +2,18 @@
 
 **Status:** prepared, not published. The creator chose to upload it themselves. The upload kit and checklist are in `../GenVo-itch-upload-2026-10-22/`, outside the repository.
 
-## Release
+## Current release (refreshed October 23)
+
+- **Source:** `bdb81274b80bfc859eadf7a9b31e6f250431b400`, built the same way (`git archive`, `export-public.mjs`, `package-itch-preview.py`).
+- **ZIP:** `GenVo-web-bdb8127.zip`, SHA-256 `b7be1f9dee0673906b0da7f9e5eb1f84f1d5bf16027b01d5696598b8c9651e3d`. It has 776 files and 78.1 MB unpacked (55.2 MB zipped).
+- **Copies:** `builds/GenVo-itch-2026-10-23-bdb8127/` and `../GenVo-web-2026-10-23-bdb8127.zip`.
+- **Verification:**
+  - release suite on the pinned source: gate 92/92, plus render cache, habitat art, scene, frame stepper, audio, public export and view modes;
+  - `verify-release-browser.mjs` on the ZIP: all checks pass, with no missing resources, page errors or console errors;
+  - First Legacy at 1x: heir on day 56 (6.0 min), summary shown, play continues, no errors.
+- **Page assets:** screenshots, cover and backgrounds re-captured from this build with the same tools and sources. The planetary shots now use the default Comfort View, and creature art reflects the latest native passes. `cover/af020f9-vs-bdb8127.png` compares the two covers.
+
+## Earlier release (October 22)
 
 - **Source:** commit `af020f9971edbcd6548cb83494b7d29af770763e`, exported with `tools/export-public.mjs` from a `git archive` of that commit and packaged with `tools/package-itch-preview.py`.
 - **HTML5 ZIP:** `GenVo-web-af020f9.zip`, SHA-256 `114b5c5943962dd1b06aca369cd9c457181d4979ea4f9a415476eb7a696cc4f5`. It has 773 files and 78.1 MB unpacked (55.2 MB zipped), within itch.io's limits, and includes the scenario checkpoints `established-valley-d30` and `mature-valley-d100`.
