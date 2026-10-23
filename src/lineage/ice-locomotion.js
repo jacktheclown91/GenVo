@@ -16,8 +16,14 @@ const reachCaches=new WeakMap();
 export function iceSurfaceReach(world,a,x,y){
  if(world.sameLand(a.x,a.y,x,y))return true;
  const e=world.environment;if(e?.icePolicy!==SURFACE_ICE.policy)return false;
- const load=bodyMass(a),key=load,revision=e.iceRevision,topology=world.topology?.revision;
- let cache=reachCaches.get(world);if(!cache||cache.revision!==revision||cache.topology!==topology){cache={revision,topology,loads:new Map()};reachCaches.set(world,cache)}
+ const load=bodyMass(a),revision=e.iceRevision,topology=world.topology?.revision;
+ let cache=reachCaches.get(world);if(!cache||cache.revision!==revision||cache.topology!==topology){cache={revision,topology,loads:new Map(),capacities:null};reachCaches.set(world,cache)}
+ // Loads between two neighbouring ice capacities allow exactly the same cells
+ // (capacity >= load), so they share one component map: key by the smallest
+ // covered-ice capacity at or above the load. Same answers, far fewer floods.
+ if(!cache.capacities){const c=[];for(let i=0;i<world.len;i++)if(world.water[i]&&surfaceIceCovered(e,i))c.push(iceCapacity(e,i));cache.capacities=Float64Array.from(new Set(c)).sort()}
+ const caps=cache.capacities;let lo=0,hi=caps.length;while(lo<hi){const mid=(lo+hi)>>1;if(caps[mid]>=load)hi=mid;else lo=mid+1}
+ const key=lo<caps.length?caps[lo]:Infinity;
  let groups=cache.loads.get(key);
  if(!groups){
   groups=new Uint32Array(world.len);let group=0;const queue=new Int32Array(world.len),allowed=i=>world.isPlayable(i%world.n+.5,(i/world.n|0)+.5)&&(!world.water[i]||surfaceIceCovered(e,i)&&iceCapacity(e,i)>=load);
@@ -25,7 +31,7 @@ export function iceSurfaceReach(world,a,x,y){
    group++;let head=0,tail=0;groups[start]=group;queue[tail++]=start;
    while(head<tail){const i=queue[head++],cx=i%world.n,cy=i/world.n|0;for(const j of [cx>0?i-1:-1,cx<world.n-1?i+1:-1,cy>0?i-world.n:-1,cy<world.n-1?i+world.n:-1])if(j>=0&&!groups[j]&&allowed(j)){groups[j]=group;queue[tail++]=j}}
   }
-  cache.loads.set(key,groups);if(cache.loads.size>8)cache.loads.delete(cache.loads.keys().next().value);
+  cache.loads.set(key,groups);if(cache.loads.size>32)cache.loads.delete(cache.loads.keys().next().value);
  }
  const from=groups[world.idx(a.x,a.y)];return from!==0&&from===groups[world.idx(x,y)];
 }

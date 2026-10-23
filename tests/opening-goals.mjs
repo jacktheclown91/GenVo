@@ -37,6 +37,15 @@ const fresh=()=>{const sim=new Simulation('GENVO8-OPENING-GOALS',{player:true});
   assert.equal(c.renderOpeningGoals(p),false);assert.equal(c.stage,'done');assert.equal(sim.openingGraceEnded,true,'safe start ends once the goals are done');
 }
 
+// Under AUTO, moist food can meet the whole water need: fed with water actually
+// high counts as watered. In manual control a drink is still required.
+{
+  const {sim,p,c}=fresh();sim.cognition.recordOnce(p,'first-meal:bramble','First ate Berries',{kind:'bramble'});
+  c.renderOpeningGoals(p);assert.match(c.shown.body,/◐ Fed · now drink/,'manual control still asks for a drink');
+  sim.setPlayerAutonomy(true);c.renderOpeningGoals(p);assert.match(c.shown.body,/✓ Fed and watered/);
+  p.hydration=p.hydration*.3;c.renderOpeningGoals(p);assert.match(c.shown.body,/◐ Fed · now drink/,'AUTO does not count low water as watered');
+}
+
 // Old saves stopped mid-sequence resume on the new goals.
 {
   const sim=new Simulation('GENVO8-OPENING-LEGACY',{player:true});sim.uiTutorialStage='drink';
