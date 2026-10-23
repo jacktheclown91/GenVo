@@ -1,0 +1,202 @@
+diff --git a/src/render/lineage-portrait.js b/src/render/lineage-portrait.js
+--- a/src/render/lineage-portrait.js
++++ b/src/render/lineage-portrait.js
+@@ -1,24 +1,22 @@
+-import {creatureFootprint} from './creature-footprint.js';
+-import {migrateLegacyReadings} from '../lineage/readings.js';
+-import {SPECIES,phenotypeFor} from '../organisms/species.js';
+-import {drawGenvoSprite} from './genvo-draw.js';
+-import {deserializePlan} from '../lineage/body-plan.js';
+-import {founderPlan} from '../lineage/body-inheritance.js';
+-
+-// v1.57.0: portraits draw the creature's real body (its body plan), never the old gene-based body.
+-export function drawLineagePortrait(canvas,genes,{frame=1,dir=2,emphasis=false,adaptations=[],divergence=null,protoTrait=null,speciesBranch=null,lifestyle=null,bodyPlan=null,anatomy=null,fitScale=null}={}){
+-  if(!canvas?.getContext||!genes)return;
+-  const c=canvas.getContext('2d'),w=canvas.width,h=canvas.height;c.imageSmoothingEnabled=false;c.clearRect(0,0,w,h);
+-  // Portraits intentionally stay transparent so a generation handoff reads as a scene, not a card.
+-  c.fillStyle=emphasis?'rgba(221,197,111,.28)':'rgba(116,136,102,.16)';c.fillRect(18,h-25,w-36,1);
+-  c.fillStyle=emphasis?'rgba(170,154,91,.34)':'rgba(78,96,71,.26)';for(let x=25;x<w-22;x+=17)c.fillRect(x,h-21-(x%4),1,2);
+-  const animal=migrateLegacyReadings({id:1,dir,genes,anatomy:anatomy?{...anatomy}:undefined,adaptations:[...adaptations],lineageForm:divergence?{...divergence}:null,populationTrait:protoTrait?{...protoTrait}:null,speciesBranch:speciesBranch?{...speciesBranch}:null,ecoLifestyle:lifestyle?{...lifestyle}:null});let plan=bodyPlan;if(typeof plan==='string')try{plan=deserializePlan(plan)}catch{plan=null}animal.bodyPlan=plan||founderPlan();const ph=phenotypeFor(animal),base=SPECIES.genvo.color,palette={body:tintHex(base,ph.hueShift,ph.lightShift),shade:tintHex(base,ph.hueShift,ph.lightShift-16),light:tintHex(base,ph.hueShift,ph.lightShift+12)};
+-  const bounds=portraitFootprint(animal),scale=Math.min(fitScale??Infinity,(w-36)/bounds.w,(h-36)/bounds.h,8);
+-  c.save();c.translate(Math.round(w/2-bounds.x*scale),Math.round(h/2-bounds.y*scale));c.fillStyle='rgba(0,0,0,.22)';c.fillRect(-14*scale/2,6*scale,14*scale,2*scale);drawGenvoSprite(c,{animal,phenotype:ph,scale,frame,moving:false,palette,pose:{dir,action:'idle',life:{breath:.5}}});c.restore();
+-}
+-
+-function tintHex(hex,hueShift=0,lightShift=0){const raw=hex.replace('#',''),n=parseInt(raw,16),r=(n>>16)&255,g=(n>>8)&255,b=n&255,[h,s,l]=rgbToHsl(r/255,g/255,b/255);return`hsl(${(h+hueShift+360)%360} ${Math.max(18,Math.min(86,s))}% ${Math.max(28,Math.min(78,l+lightShift))}%)`}
+-function rgbToHsl(r,g,b){const max=Math.max(r,g,b),min=Math.min(r,g,b),d=max-min,l=(max+min)/2;let h=0,s=0;if(d){s=d/(1-Math.abs(2*l-1));if(max===r)h=60*(((g-b)/d)%6);else if(max===g)h=60*((b-r)/d+2);else h=60*((r-g)/d+4)}if(h<0)h+=360;return[h,s*100,l*100]}
+-
+-const footprintCache=new Map();
+-function portraitFootprint(animal){const key=(animal.bodyPlan?.id||'legacy')+'|'+animal.dir+'|'+JSON.stringify(animal.genes)+'|'+JSON.stringify(animal.adaptations)+'|'+JSON.stringify(animal.anatomy);if(!footprintCache.has(key)){if(footprintCache.size>=128)footprintCache.delete(footprintCache.keys().next().value);footprintCache.set(key,creatureFootprint(animal,animal.dir))}return footprintCache.get(key)}
++// Proposed shared renderer. Staged at src/render/lineage-portrait.js for review.
++import {creatureFootprint} from './creature-footprint.js';
++import {migrateLegacyReadings} from '../lineage/readings.js';
++import {phenotypeFor} from '../organisms/species.js';
++import {creaturePalette} from './creature-palette.js';
++import {drawGenvoSprite} from './genvo-draw.js';
++import {deserializePlan} from '../lineage/body-plan.js';
++import {founderPlan} from '../lineage/body-inheritance.js';
++import {nativeArtStatus} from './runtime-part-art.js';
++// Pure read adapter. Missing pigment stays on the established legacy-gene appearance path.
++export function lineagePortraitReading(genes,{dir=2,adaptations=[],divergence=null,protoTrait=null,speciesBranch=null,lifestyle=null,bodyPlan=null,anatomy=null,pigmentGenome=null}={}){
++ const animal=migrateLegacyReadings({id:1,dir,genes:{...genes},pigmentGenome:pigmentGenome?structuredClone(pigmentGenome):null,anatomy:anatomy?{...anatomy}:undefined,adaptations:[...adaptations],lineageForm:divergence?{...divergence}:null,populationTrait:protoTrait?{...protoTrait}:null,speciesBranch:speciesBranch?{...speciesBranch}:null,ecoLifestyle:lifestyle?{...lifestyle}:null});let plan;try{plan=bodyPlan?deserializePlan(bodyPlan):null}catch{plan=null}animal.bodyPlan=plan||founderPlan();const phenotype=phenotypeFor(animal);return{animal,phenotype,palette:creaturePalette(phenotype)};
++}
++const cache=new Map();let boundsMeasurements=0;
++export function lineagePortraitCacheStats(){return{entries:cache.size,boundsMeasurements}}
++function dataFor(genes,options){const {dir=2,adaptations=[],divergence=null,protoTrait=null,speciesBranch=null,lifestyle=null,bodyPlan=null,anatomy=null,pigmentGenome=null}=options,key=JSON.stringify([nativeArtStatus().revision,genes,dir,adaptations,divergence,protoTrait,speciesBranch,lifestyle,bodyPlan,anatomy,pigmentGenome]);if(!cache.has(key)){if(cache.size>=128)cache.delete(cache.keys().next().value);cache.set(key,lineagePortraitReading(genes,options))}return cache.get(key)}
++export function lineagePortraitBounds(genes,options={}){const data=dataFor(genes,options);if(!data.bounds){boundsMeasurements++;data.bounds=Object.freeze(creatureFootprint(data.animal,options.dir??2))}return data.bounds}
++export function drawLineagePortrait(canvas,genes,options={}){
++ if(!canvas?.getContext||!genes)return;const{frame=1,dir=2,emphasis=false,fitScale=null}=options,data=dataFor(genes,options),bounds=lineagePortraitBounds(genes,options),c=canvas.getContext('2d'),w=canvas.width,h=canvas.height;c.imageSmoothingEnabled=false;c.clearRect(0,0,w,h);
++ c.fillStyle=emphasis?'rgba(221,197,111,.28)':'rgba(116,136,102,.16)';c.fillRect(18,h-25,w-36,1);c.fillStyle=emphasis?'rgba(170,154,91,.34)':'rgba(78,96,71,.26)';for(let x=25;x<w-22;x+=17)c.fillRect(x,h-21-(x%4),1,2);
++ const scale=Math.min(fitScale??Infinity,(w-36)/bounds.w,(h-36)/bounds.h,8);c.save();c.translate(Math.round(w/2-bounds.x*scale),Math.round(h/2-bounds.y*scale));c.fillStyle='rgba(0,0,0,.22)';c.fillRect(-14*scale/2,6*scale,14*scale,2*scale);drawGenvoSprite(c,{animal:data.animal,phenotype:data.phenotype,scale,frame,moving:false,palette:data.palette,pose:{dir,action:'idle',life:{breath:.5}}});c.restore();
++}
+diff --git a/src/ui/lineage-comparison.js b/src/ui/lineage-comparison.js
+--- a/src/ui/lineage-comparison.js
++++ b/src/ui/lineage-comparison.js
+@@ -1,7 +1,7 @@
+ // Read-only comparison of actual recorded conception anatomy and descendant anatomy.
+ import {deserializePlan} from '../lineage/body-plan.js';
+-import {migrateLegacyReadings} from '../lineage/readings.js';
+-import {creatureFootprint} from '../render/creature-footprint.js';
+-import {drawLineagePortrait} from '../render/lineage-portrait.js';
+-export function lineageComparisonModels(sim,id){const record=sim.lineage.records.get(id);if(!record)return[];const parse=p=>{const body=typeof p==='string'?deserializePlan(p):p;if(!body?.nodes?.length)throw Error('Missing recorded anatomy');return body},parents=(record.parentIds||[]).map((pid,i)=>{const stored=record.parentPhenotypes?.[i],parent=stored?.id===pid?stored:sim.lineage.records.get(pid),body=record.parentBodyPlans?.[i];if(!parent||!body)return null;try{return{label:'Parent '+(i+1)+' · conception anatomy',bodyPlan:parse(body),genes:parent.genes,adaptations:parent.adaptations||[],anatomy:parent.anatomy||null,id:pid}}catch{return null}}).filter(Boolean);if(!parents.length)return[];const animal=sim.animals.find(a=>a.id===id);try{return[...parents,{label:'Offspring · inherited anatomy',bodyPlan:parse(animal?.bodyPlan||record.bodyPlan),genes:animal?.genes||record.genes,adaptations:record.adaptations||[],anatomy:animal?.anatomy||null,id}]}catch{return[]}}
+-export function drawLineageComparison(el,sim,id){const section=el.querySelector('[data-section="body-comparison"]');if(!section?.open)return;const models=lineageComparisonModels(sim,id),canvases=section.querySelectorAll('canvas'),bounds=models.map(m=>creatureFootprint(migrateLegacyReadings({id:m.id,genes:m.genes,adaptations:m.adaptations,anatomy:m.anatomy||{},bodyPlan:m.bodyPlan}),2)),scale=Math.min(8,...bounds.map(b=>Math.min((240-36)/b.w,(180-36)/b.h)));models.forEach((m,i)=>drawLineagePortrait(canvases[i],m.genes,{bodyPlan:m.bodyPlan,adaptations:m.adaptations,anatomy:m.anatomy,dir:2,frame:2,fitScale:scale}));}
++
++
++import {drawLineagePortrait,lineagePortraitBounds} from '../render/lineage-portrait.js';
++export function lineageComparisonModels(sim,id){const record=sim.lineage.records.get(id);if(!record)return[];const parse=p=>{const body=typeof p==='string'?deserializePlan(p):p;if(!body?.nodes?.length)throw Error('Missing recorded anatomy');return body},parents=(record.parentIds||[]).map((pid,i)=>{const stored=record.parentPhenotypes?.[i],parent=stored?.id===pid?stored:sim.lineage.records.get(pid),body=record.parentBodyPlans?.[i];if(!parent||!body)return null;try{return{label:'Parent '+(i+1)+' · conception anatomy',bodyPlan:parse(body),genes:parent.genes,pigmentGenome:parent.pigmentGenome||null,lifestyle:parent.ecoLifestyle||null,adaptations:parent.adaptations||[],anatomy:parent.anatomy||null,id:pid}}catch{return null}}).filter(Boolean);if(!parents.length)return[];const animal=sim.animals.find(a=>a.id===id);try{return[...parents,{label:'Offspring · inherited anatomy',bodyPlan:parse(animal?.bodyPlan||record.bodyPlan),genes:animal?.genes||record.genes,pigmentGenome:animal?.pigmentGenome||record.pigmentGenome||null,lifestyle:animal?.ecoLifestyle||null,adaptations:record.adaptations||[],anatomy:animal?.anatomy||null,id}]}catch{return[]}}
++export function drawLineageComparison(el,sim,id){const section=el.querySelector('[data-section="body-comparison"]');if(!section?.open)return;const models=lineageComparisonModels(sim,id),canvases=section.querySelectorAll('canvas'),bounds=models.map(m=>lineagePortraitBounds(m.genes,{bodyPlan:m.bodyPlan,adaptations:m.adaptations,anatomy:m.anatomy,pigmentGenome:m.pigmentGenome,lifestyle:m.lifestyle,dir:2})),scale=Math.min(8,...bounds.map(b=>Math.min((240-36)/b.w,(180-36)/b.h)));models.forEach((m,i)=>drawLineagePortrait(canvases[i],m.genes,{bodyPlan:m.bodyPlan,adaptations:m.adaptations,anatomy:m.anatomy,pigmentGenome:m.pigmentGenome,lifestyle:m.lifestyle,dir:2,frame:2,fitScale:scale}));}
+diff --git a/src/ui/journal.js b/src/ui/journal.js
+--- a/src/ui/journal.js
++++ b/src/ui/journal.js
+@@ -1,3 +1,4 @@
++import {deserializePlan} from '../lineage/body-plan.js';
+ import {recordedInheritanceSummary} from '../lineage/recombination-receipt.js';
+ import {bodyCostReading} from './body-cost-reading.js';
+ import {lineageComparisonModels,drawLineageComparison} from './lineage-comparison.js';
+@@ -40,7 +41,8 @@
+     if(signature===this.lastSignature)return;this.lastSignature=signature;
+     updateKnowledgeHTML(this.el,journalMarkup(model,this.canTakeOver(record)));
+     drawLineageComparison(this.el,this.sim,record.id);
+-    const canvas=this.el.querySelector('#journalPortrait');drawLineagePortrait(canvas,record.genes,{frame:2,dir:2,bodyPlan:this.sim.animals.find(a=>a.id===record.id)?.bodyPlan||record.bodyPlan,emphasis:record.id===this.sim.lineage.activeId,adaptations:record.adaptations||[]});
++    drawRecordedKin(this.el,this.sim);
++    const canvas=this.el.querySelector('#journalPortrait');drawLineagePortrait(canvas,record.genes,{pigmentGenome:record.pigmentGenome||null,frame:2,dir:2,bodyPlan:this.sim.animals.find(a=>a.id===record.id)?.bodyPlan||record.bodyPlan,emphasis:record.id===this.sim.lineage.activeId,adaptations:record.adaptations||[]});
+   }
+ }
+ 
+@@ -83,6 +85,12 @@
+   };
+ }
+ 
++
++// Retained individual anatomy only. Missing bodies never fall back to a founder.
++function kinHasBody(record){try{const plan=deserializePlan(record.bodyPlan);return !!record.genes&&Array.isArray(plan?.nodes)&&plan.nodes.length>0}catch{return false}}
++function kinMarkup(record,relation){return '<figure class="kin-record '+(record.alive?'':'kin-dead')+'" data-kin-id="'+record.id+'">'+(kinHasBody(record)?'<canvas width="160" height="120" aria-label="'+relation+' '+record.id+' recorded anatomy"></canvas>':'<p class="kin-missing">Anatomy not retained</p>')+'<figcaption><b>G'+record.generation+' · #'+record.id+'</b><span>'+relation+' · '+(record.alive?'Living':'Died')+'</span></figcaption></figure>'}
++function drawRecordedKin(el,sim){for(const figure of el.querySelectorAll('[data-kin-id]')){const record=sim.lineage.records.get(Number(figure.dataset.kinId)),canvas=figure.querySelector('canvas');if(canvas&&record&&kinHasBody(record))drawLineagePortrait(canvas,record.genes,{pigmentGenome:record.pigmentGenome||null,frame:2,dir:2,bodyPlan:record.bodyPlan,adaptations:record.adaptations||[]})}}
++
+ function journalMarkup(m,canTakeOver){
+   const ancestry=m.ancestry.map(r=>`<span class="journal-node ${r.id===m.id?'selected':''} ${r.alive?'':'dead'}"><i></i><b>G${r.generation}</b><small>#${r.id}</small></span>`).join('');
+   const parents=m.parents.length?m.parents.map(r=>`G${r.generation} #${r.id}`).join(' · '):'founder';
+@@ -93,11 +101,12 @@
+     <div class="journal-scroll" data-focus-key="family-scroll" tabindex="0" aria-label="Scrollable family record"><div class="journal-stitch"></div>
+     <div class="journal-grid">
+       <aside class="journal-spine" aria-label="Ancestry path">${ancestry}</aside>
+-      <section class="journal-specimen">
++      <section class="journal-family-plate" aria-label="Recorded immediate family"><h3>Recorded parents</h3><p class="kin-context">Individual records; conception anatomy is compared below.</p><div class="kin-row kin-parents">${m.parents.length?m.parents.map(r=>kinMarkup(r,'Parent')).join(''):'<p class="kin-empty">No parent records retained</p>'}</div><div class="kin-subject"><h3>Selected family member</h3><p class="kin-scale-note">Anatomy shown at adult scale; age is recorded below.</p><section class="journal-specimen">
+         <canvas id="journalPortrait" width="240" height="158" aria-label="Generation ${m.generation} family member"></canvas>
+         <div class="specimen-caption"><b>${m.stage}</b><span>${m.sex} · ${m.ageDays} days · ${escapeHtml(m.taxon)}</span></div>
+         <p>${escapeHtml(m.looks)}</p>
+       </section>
++      </div><h3>Recorded children <span>${m.children.length}</span></h3><div class="kin-row kin-children" tabindex="0" aria-label="Recorded children; scroll horizontally for more">${m.children.length?m.children.slice(0,12).map(r=>kinMarkup(r,'Child')).join(''):'<p class="kin-empty">No children recorded</p>'}</div>${m.children.length>12?'<p class="kin-context">First 12 shown. Previous and Next browse every retained family record.</p>':''}</section>
+       <section class="journal-notes">
+         ${m.taxonExplanation?`<h3>Where the species name came from</h3><p>${escapeHtml(m.taxonExplanation)}</p>`:''}
+         <h3>Habits</h3><p>${escapeHtml(m.habits)}</p>
+diff --git a/src/ui/young-summary.js b/src/ui/young-summary.js
+--- a/src/ui/young-summary.js
++++ b/src/ui/young-summary.js
+@@ -1,3 +1,4 @@
++import {createConceptionPlate,mountBirthCapacity} from '../../assets/ui/birth-comparison.js';
+ import {SPECIES} from '../organisms/species.js';
+ import {ADAPTATIONS} from '../lineage/evolution.js';
+ import {drawLineagePortrait} from '../render/lineage-portrait.js';
+@@ -89,15 +90,16 @@
+   const kicker=document.createElement('div');kicker.className='transition-kicker';kicker.textContent=model.kicker;
+   const h=document.createElement('h2');h.id='youngTitle';h.textContent=model.title;
+   const lead=document.createElement('p');lead.className='transition-lead';lead.textContent=model.lead;
++  const comparison=createConceptionPlate(sim,model.young.map(y=>y.id));
+   const grid=document.createElement('div');grid.className='young-grid';
+   for(const y of model.young.slice(0,4)){const cell=document.createElement('div');cell.className='young-cell';const canvas=document.createElement('canvas');canvas.width=144;canvas.height=112;
+-   const child=sim.animals.find(a=>a.id===y.id);if(child)drawLineagePortrait(canvas,child.genes,{bodyPlan:child.bodyPlan,anatomy:child.anatomy,adaptations:child.adaptations,frame:2,dir:2});
++   const child=sim.animals.find(a=>a.id===y.id);if(child)drawLineagePortrait(canvas,child.genes,{pigmentGenome:child.pigmentGenome||null,lifestyle:child.ecoLifestyle||null,bodyPlan:child.bodyPlan,anatomy:child.anatomy,adaptations:child.adaptations,frame:2,dir:2,fitScale:comparison.fitScale});
+    const head=document.createElement('b');head.textContent=`#${y.id}${y.sex?' · '+y.sex:''}`;const ul=document.createElement('ul');for(const l of y.lines){const li=document.createElement('li');li.textContent=l;ul.append(li)}
+    cell.append(canvas,head,ul);grid.append(cell)}
+   const knowledge=document.createElement('p');knowledge.className='legacy-note';knowledge.textContent=model.knowledge;
+   const stakes=document.createElement('p');stakes.className='legacy-note';stakes.textContent=model.stakes;
+   const actions=document.createElement('div');actions.className='legacy-actions';const b=document.createElement('button');b.type='button';b.dataset.young='continue';b.className='primary';b.textContent='Raise them';actions.append(b);
+-  card.append(kicker,h,lead,grid,knowledge,stakes,actions);this.el.append(card);this.el.hidden=false;b.focus?.();
++  const content=document.createElement('div');content.className='birth-scroll';content.append(comparison.element,grid,knowledge,stakes);card.append(kicker,h,lead,content,actions);this.el.append(card);this.el.hidden=false;this.restoreCapacity=mountBirthCapacity(card);b.focus?.();
+  }
+- close(){if(!this.open)return;const sim=this.getSim();if(sim)sim.paused=this.wasPaused;this.open=false;this.el.hidden=true}
++ close(){if(!this.open)return;this.restoreCapacity?.();this.restoreCapacity=null;const sim=this.getSim();if(sim)sim.paused=this.wasPaused;this.open=false;this.el.hidden=true}
+ }
+diff --git a/src/ui/resident-start.js b/src/ui/resident-start.js
+--- a/src/ui/resident-start.js
++++ b/src/ui/resident-start.js
+@@ -19,7 +19,7 @@
+   const finish=id=>{dialog.close();dialog.remove();resolve(id)};
+   const update=()=>{const a=candidates.find(a=>a.id===Number(select.value)),s=SPECIES[a.species],identity=creatureIdentity(sim,a);
+    detail.textContent=`${identity.stage} · health ${Math.round(a.health)}% · food ${Math.round(a.energy/s.maxEnergy*100)}% · water ${Math.round(a.hydration/s.maxHydration*100)}%. ${identity.description}.`;
+-   drawLineagePortrait(canvas,a.genes,{bodyPlan:a.bodyPlan,anatomy:a.anatomy,adaptations:a.adaptations});
++   drawLineagePortrait(canvas,a.genes,{pigmentGenome:a.pigmentGenome||null,lifestyle:a.ecoLifestyle||null,bodyPlan:a.bodyPlan,anatomy:a.anatomy,adaptations:a.adaptations});
+   };
+   select.addEventListener('change',update);confirm.onclick=()=>finish(Number(select.value));cancel.onclick=()=>finish(null);
+   dialog.addEventListener('cancel',event=>{event.preventDefault();finish(null)});
+diff --git a/src/ui/succession-chooser.js b/src/ui/succession-chooser.js
+--- a/src/ui/succession-chooser.js
++++ b/src/ui/succession-chooser.js
+@@ -18,7 +18,7 @@
+       body:traitListText(compareGenes(h.genes,current.genes,{limit:3,threshold:.02}),{empty:'built much like you'}),
+       adaptations,lost,developing:nearThreshold(h).slice(0,2).map(n=>n.name),habits:sim.habits?.summary?.(h)||'no settled habits yet',readiness:readiness.label,selected:sim.lineage.selectedHeirId===h.id,
+       // v1.33.4: each card shows the body itself, so body variation reads at a glance.
+-      portrait:{genes:{...h.genes},bodyPlan:h.bodyPlan||null,adaptations:[...(h.adaptations||[])],divergence:formReading(h),protoTrait:protoReading(h),lifestyle:h.ecoLifestyle||null}};
++      portrait:{genes:{...h.genes},pigmentGenome:h.pigmentGenome?structuredClone(h.pigmentGenome):null,bodyPlan:h.bodyPlan||null,adaptations:[...(h.adaptations||[])],divergence:formReading(h),protoTrait:protoReading(h),lifestyle:h.ecoLifestyle||null}};
+   });
+ }
+ 
+@@ -65,6 +65,6 @@
+       <p class="succession-lead">Each descendant carries a different body, different inherited adaptations and the habits it picked up. The one you choose is the lineage from here.</p>
+       <div class="heir-grid">${cards}</div>
+       <footer class="panel-foot">1-${this.choices.length} or arrows · pick · H or Enter · continue as this one</footer>`;
+-    for(const canvas of this.el.querySelectorAll('canvas[data-portrait]')){const c=this.choices[Number(canvas.dataset.portrait)];if(c?.portrait)drawLineagePortrait(canvas,c.portrait.genes,{bodyPlan:c.portrait.bodyPlan,frame:2,dir:2,emphasis:Number(canvas.dataset.portrait)===this.index,adaptations:c.portrait.adaptations,divergence:c.portrait.divergence,protoTrait:c.portrait.protoTrait,lifestyle:c.portrait.lifestyle})}
++    for(const canvas of this.el.querySelectorAll('canvas[data-portrait]')){const c=this.choices[Number(canvas.dataset.portrait)];if(c?.portrait)drawLineagePortrait(canvas,c.portrait.genes,{pigmentGenome:c.portrait.pigmentGenome||null,bodyPlan:c.portrait.bodyPlan,frame:2,dir:2,emphasis:Number(canvas.dataset.portrait)===this.index,adaptations:c.portrait.adaptations,divergence:c.portrait.divergence,protoTrait:c.portrait.protoTrait,lifestyle:c.portrait.lifestyle})}
+   }
+ }
+diff --git a/src/ui/generation-reveal.js b/src/ui/generation-reveal.js
+--- a/src/ui/generation-reveal.js
++++ b/src/ui/generation-reveal.js
+@@ -39,5 +39,5 @@
+   // v1.33.5: one line on what this creature brings beyond its body: its habits and what it knows.
+   if(bringsText){details.unshift(['What it brings',bringsText]);lead=`${lead} What it brings: ${bringsText}.`}
+   if(handoff.reason==='death'&&causeText)details.unshift(['Cause of death',causeText]);
+-  return{generation:toGen,kicker,title,lead,button,fromLabel:`Generation ${fromGen}`,toLabel:`Generation ${toGen}`,chips,details,fromGenes:fromRecord?.genes||toRecord.genes,toGenes:toRecord.genes,fromPlan:fromRecord?.bodyPlan||null,toPlan:toRecord.bodyPlan||null,fromAdaptations:[...(fromRecord?.adaptations||[])],toAdaptations:[...(toRecord.adaptations||[])],fromDivergence:fromRecord?.divergence||null,toDivergence:toRecord?.divergence||null,fromProtoTrait:fromRecord?.protoTrait||null,toProtoTrait:toRecord?.protoTrait||null,fromSpeciesBranch:fromRecord?.speciesBranch||null,toSpeciesBranch:toRecord?.speciesBranch||null,fromLifestyle:fromRecord?.speciesLifestyle||null,toLifestyle:toRecord?.speciesLifestyle||null,established:!!handoff.newlyEstablished};
++  return{generation:toGen,kicker,title,lead,button,fromLabel:`Generation ${fromGen}`,toLabel:`Generation ${toGen}`,chips,details,fromGenes:fromRecord?.genes||toRecord.genes,toGenes:toRecord.genes,fromPigmentGenome:fromRecord?.pigmentGenome?structuredClone(fromRecord.pigmentGenome):null,toPigmentGenome:toRecord.pigmentGenome?structuredClone(toRecord.pigmentGenome):null,fromPlan:fromRecord?.bodyPlan||null,toPlan:toRecord.bodyPlan||null,fromAdaptations:[...(fromRecord?.adaptations||[])],toAdaptations:[...(toRecord.adaptations||[])],fromDivergence:fromRecord?.divergence||null,toDivergence:toRecord?.divergence||null,fromProtoTrait:fromRecord?.protoTrait||null,toProtoTrait:toRecord?.protoTrait||null,fromSpeciesBranch:fromRecord?.speciesBranch||null,toSpeciesBranch:toRecord?.speciesBranch||null,fromLifestyle:fromRecord?.speciesLifestyle||null,toLifestyle:toRecord?.speciesLifestyle||null,established:!!handoff.newlyEstablished};
+ }
+diff --git a/src/ui/tutorial.js b/src/ui/tutorial.js
+--- a/src/ui/tutorial.js
++++ b/src/ui/tutorial.js
+@@ -407,7 +407,7 @@
+     if(!this.transition||!model)return;this.transitionWasPaused=this.sim.paused;this.sim.paused=true;
+     this.transitionKicker.textContent=model.kicker;this.transitionTitle.textContent=model.title;this.transitionLead.textContent=model.lead;this.transitionBody.textContent='';
+     this.transitionParentLabel.textContent=model.fromLabel;this.transitionChildLabel.textContent=model.toLabel;this.transitionReveal.hidden=false;
+-    this.currentReveal=model;drawLineagePortrait(this.transitionParent,model.fromGenes,{frame:1,dir:2,bodyPlan:model.fromPlan,adaptations:model.fromAdaptations,divergence:model.fromDivergence,protoTrait:model.fromProtoTrait,speciesBranch:model.fromSpeciesBranch,lifestyle:model.fromLifestyle});drawLineagePortrait(this.transitionChild,model.toGenes,{frame:1,dir:2,emphasis:true,bodyPlan:model.toPlan,adaptations:model.toAdaptations,divergence:model.toDivergence,protoTrait:model.toProtoTrait,speciesBranch:model.toSpeciesBranch,lifestyle:model.toLifestyle});
++    this.currentReveal=model;drawLineagePortrait(this.transitionParent,model.fromGenes,{frame:1,dir:2,pigmentGenome:model.fromPigmentGenome||null,bodyPlan:model.fromPlan,adaptations:model.fromAdaptations,divergence:model.fromDivergence,protoTrait:model.fromProtoTrait,speciesBranch:model.fromSpeciesBranch,lifestyle:model.fromLifestyle});drawLineagePortrait(this.transitionChild,model.toGenes,{frame:1,dir:2,emphasis:true,pigmentGenome:model.toPigmentGenome||null,bodyPlan:model.toPlan,adaptations:model.toAdaptations,divergence:model.toDivergence,protoTrait:model.toProtoTrait,speciesBranch:model.toSpeciesBranch,lifestyle:model.toLifestyle});
+     this.transitionChanges.replaceChildren(...model.chips.map(text=>{const el=document.createElement('span');el.textContent=text;return el}));this.transitionChanges.hidden=false;
+     this.transitionDetailsBody.replaceChildren();const grid=document.createElement('div');grid.className='transition-detail-grid';for(const [label,value] of model.details){const row=document.createElement('div'),b=document.createElement('b'),span=document.createElement('span');b.textContent=label;span.textContent=value;row.append(b,span);grid.append(row)}this.transitionDetailsBody.append(grid);this.transitionDetails.hidden=false;this.transitionDetails.open=false;
+     this.renderEvolutionChoices();
+@@ -425,7 +425,7 @@
+     if(!this.transitionEvolution||!this.transitionEvolutionChoices)return;const offer=this.sim.evolution?.offerFor?.();if(!offer?.offers?.length){this.transitionEvolution.hidden=true;this.transitionContinue.disabled=false;return}this.transitionEvolution.hidden=false;this.transitionEvolutionChoices.replaceChildren(...offer.offers.map((o,i)=>{const b=document.createElement('button');b.type='button';b.className='evolution-choice';b.dataset.adaptation=o.id;b.innerHTML=`<i>${i+1}</i><span><strong>${o.name}</strong><small>${o.tier===2?`Second-stage ${o.branch} branch · `:''}${o.summary}</small><em>${o.tradeoff}</em></span>`;b.addEventListener('click',()=>this.chooseEvolution(o.id));return b}));this.transitionContinue.disabled=!offer.chosen;if(offer.chosen)this.markEvolutionChoice(offer.chosen)
+   }
+   chooseEvolution(id){
+-    const chosen=this.sim.evolution?.choose?.(id);if(!chosen)return false;const p=this.sim.player(),rec=p?this.sim.lineage.records.get(p.id):null;this.markEvolutionChoice(id);this.transitionContinue.disabled=false;if(this.currentReveal&&p){this.currentReveal.toAdaptations=[...(p.adaptations||[])];drawLineagePortrait(this.transitionChild,this.currentReveal.toGenes,{frame:1,dir:2,emphasis:true,bodyPlan:this.currentReveal.toPlan,adaptations:this.currentReveal.toAdaptations,divergence:this.currentReveal.toDivergence,protoTrait:this.currentReveal.toProtoTrait,speciesBranch:this.currentReveal.toSpeciesBranch,lifestyle:this.currentReveal.toLifestyle})}this.showToast(`${chosen.name} emerged.`,2200,'success');return true
++    const chosen=this.sim.evolution?.choose?.(id);if(!chosen)return false;const p=this.sim.player(),rec=p?this.sim.lineage.records.get(p.id):null;this.markEvolutionChoice(id);this.transitionContinue.disabled=false;if(this.currentReveal&&p){this.currentReveal.toAdaptations=[...(p.adaptations||[])];drawLineagePortrait(this.transitionChild,this.currentReveal.toGenes,{frame:1,dir:2,emphasis:true,pigmentGenome:this.currentReveal.toPigmentGenome||null,bodyPlan:this.currentReveal.toPlan,adaptations:this.currentReveal.toAdaptations,divergence:this.currentReveal.toDivergence,protoTrait:this.currentReveal.toProtoTrait,speciesBranch:this.currentReveal.toSpeciesBranch,lifestyle:this.currentReveal.toLifestyle})}this.showToast(`${chosen.name} emerged.`,2200,'success');return true
+   }
+   markEvolutionChoice(id){for(const b of this.transitionEvolutionChoices?.querySelectorAll?.('.evolution-choice')||[]){const selected=b.dataset.adaptation===id;b.classList.toggle('selected',selected);b.disabled=!selected}}
+ 

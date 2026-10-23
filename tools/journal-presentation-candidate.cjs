@@ -13,6 +13,6 @@ const helpers=String.raw`
 // Retained individual anatomy only. Missing bodies never fall back to a founder.
 function kinHasBody(record){try{const plan=deserializePlan(record.bodyPlan);return !!record.genes&&Array.isArray(plan?.nodes)&&plan.nodes.length>0}catch{return false}}
 function kinMarkup(record,relation){return '<figure class="kin-record '+(record.alive?'':'kin-dead')+'" data-kin-id="'+record.id+'">'+(kinHasBody(record)?'<canvas width="160" height="120" aria-label="'+relation+' '+record.id+' recorded anatomy"></canvas>':'<p class="kin-missing">Anatomy not retained</p>')+'<figcaption><b>G'+record.generation+' · #'+record.id+'</b><span>'+relation+' · '+(record.alive?'Living':'Died')+'</span></figcaption></figure>'}
-function drawRecordedKin(el,sim){for(const figure of el.querySelectorAll('[data-kin-id]')){const record=sim.lineage.records.get(Number(figure.dataset.kinId)),canvas=figure.querySelector('canvas');if(canvas&&record&&kinHasBody(record))drawLineagePortrait(canvas,record.genes,{frame:2,dir:2,bodyPlan:record.bodyPlan,adaptations:record.adaptations||[]})}}
+function drawRecordedKin(el,sim){for(const figure of el.querySelectorAll('[data-kin-id]')){const record=sim.lineage.records.get(Number(figure.dataset.kinId)),canvas=figure.querySelector('canvas');if(canvas&&record&&kinHasBody(record))drawLineagePortrait(canvas,record.genes,{pigmentGenome:record.pigmentGenome||null,frame:2,dir:2,bodyPlan:record.bodyPlan,adaptations:record.adaptations||[]})}}
 `;
 module.exports={candidateJournal};
