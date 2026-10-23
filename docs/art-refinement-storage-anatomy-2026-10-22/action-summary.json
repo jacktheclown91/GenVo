@@ -1,0 +1,121 @@
+{
+  "storage-sac-flanks": {
+    "body": "bp0-e081f284",
+    "mount": "flanks",
+    "walkFirst": {
+      "x": 101.79578172319793,
+      "y": 113.5,
+      "energy": 113.79731317698388,
+      "tick": 20,
+      "moving": true
+    },
+    "walkLast": {
+      "x": 99.26056447243714,
+      "y": 113.5,
+      "energy": 113.39696855276397,
+      "tick": 29,
+      "moving": true
+    },
+    "drinking": {
+      "before": {
+        "hydration": 102.50382606616255,
+        "energy": 113.95716774640002,
+        "tick": 17,
+        "x": 102.5,
+        "y": 113.5
+      },
+      "status": {
+        "enabled": true,
+        "reason": "",
+        "state": "available"
+      },
+      "result": {
+        "ok": true,
+        "type": "drink",
+        "message": "Drank water."
+      },
+      "after": {
+        "hydration": 114,
+        "energy": 113.95716774640002,
+        "tick": 17,
+        "x": 102.5,
+        "y": 113.5
+      },
+      "lastAction": {
+        "type": "drink",
+        "actorId": 109,
+        "tick": 17
+      },
+      "exactCanonicalState": true
+    }
+  },
+  "fat-pad-flanks": {
+    "body": "bp0-c4b29b8c",
+    "mount": "flanks",
+    "walkFirst": {
+      "x": 101.90141446471824,
+      "y": 113.5,
+      "energy": 113.94780423526653,
+      "tick": 7,
+      "moving": true
+    },
+    "walkLast": {
+      "x": 99.61268195338971,
+      "y": 113.5,
+      "energy": 113.60841703972082,
+      "tick": 15,
+      "moving": true
+    },
+    "drinking": null
+  },
+  "water-hump-dorsal": {
+    "body": "bp0-12cd18bd",
+    "mount": "dorsal",
+    "walkFirst": {
+      "x": 101.74859909865211,
+      "y": 113.5,
+      "energy": 113.81891154401889,
+      "tick": 21,
+      "moving": true
+    },
+    "walkLast": {
+      "x": 99.28943818037577,
+      "y": 113.5,
+      "energy": 113.415162541746,
+      "tick": 30,
+      "moving": true
+    },
+    "drinking": {
+      "before": {
+        "hydration": 102.45542952649542,
+        "energy": 113.90609076224418,
+        "tick": 19,
+        "x": 102.5,
+        "y": 113.5
+      },
+      "status": {
+        "enabled": true,
+        "reason": "",
+        "state": "available"
+      },
+      "result": {
+        "ok": true,
+        "type": "drink",
+        "message": "Drank water."
+      },
+      "after": {
+        "hydration": 114,
+        "energy": 113.90609076224418,
+        "tick": 19,
+        "x": 102.5,
+        "y": 113.5
+      },
+      "lastAction": {
+        "type": "drink",
+        "actorId": 109,
+        "tick": 19
+      },
+      "exactCanonicalState": true
+    }
+  }
+}

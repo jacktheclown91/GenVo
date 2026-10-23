@@ -1,0 +1,221 @@
+{
+  "setup": {
+    "seed": "DEFENSIVE-ART-20261022",
+    "body": "bp0-12cd18bd",
+    "mount": "dorsal",
+    "observation": {
+      "x": 102.5,
+      "y": 113.5,
+      "score": 13.62127468176186
+    },
+    "scope": "Controlled legal adult founder plus water-hump; actual terrain, genes and resources retained. HTTP-only inspection wrapper forwards explicit paint frame to original renderer; no simulation action fabricated."
+  },
+  "defense": null,
+  "drinking": {
+    "before": {
+      "hydration": 102.45542952649542,
+      "energy": 113.58890022753087,
+      "tick": 21,
+      "x": 102.5,
+      "y": 116.2287611248612
+    },
+    "status": {
+      "enabled": false,
+      "reason": "Move beside drinkable water.",
+      "state": "unavailable"
+    },
+    "result": {
+      "ok": false,
+      "type": "drink",
+      "message": "Move beside drinkable water."
+    },
+    "after": {
+      "hydration": 102.45542952649542,
+      "energy": 113.58890022753087,
+      "tick": 21,
+      "x": 102.5,
+      "y": 116.2287611248612
+    },
+    "lastAction": null
+  },
+  "live": [
+    {
+      "x": 101.6461142046468,
+      "y": 116.2287611248612,
+      "energy": 113.43061476976952,
+      "tick": 24,
+      "moving": true
+    },
+    {
+      "x": 100.62144672765264,
+      "y": 116.2287611248612,
+      "energy": 113.31173401764414,
+      "tick": 28,
+      "moving": true
+    },
+    {
+      "x": 99.73339677487198,
+      "y": 116.2287611248612,
+      "energy": 113.1494858872946,
+      "tick": 31,
+      "moving": true
+    },
+    {
+      "x": 98.98196626275832,
+      "y": 116.2287611248612,
+      "energy": 113.06230666906932,
+      "tick": 34,
+      "moving": true
+    }
+  ],
+  "stages": [
+    {
+      "label": "before",
+      "captures": [
+        {
+          "dir": 0,
+          "frame": 0
+        },
+        {
+          "dir": 1,
+          "frame": 0
+        },
+        {
+          "dir": 2,
+          "frame": 0
+        },
+        {
+          "dir": 3,
+          "frame": 0
+        },
+        {
+          "dir": 4,
+          "frame": 0
+        },
+        {
+          "dir": 5,
+          "frame": 0
+        },
+        {
+          "dir": 6,
+          "frame": 0
+        },
+        {
+          "dir": 7,
+          "frame": 0
+        },
+        {
+          "dir": 0,
+          "frame": 1
+        },
+        {
+          "dir": 1,
+          "frame": 1
+        },
+        {
+          "dir": 2,
+          "frame": 1
+        },
+        {
+          "dir": 3,
+          "frame": 1
+        },
+        {
+          "dir": 4,
+          "frame": 1
+        },
+        {
+          "dir": 5,
+          "frame": 1
+        },
+        {
+          "dir": 6,
+          "frame": 1
+        },
+        {
+          "dir": 7,
+          "frame": 1
+        }
+      ],
+      "meanMs": 9.142000000476838,
+      "medianMs": 5.100000023841858,
+      "p95Ms": 19
+    },
+    {
+      "label": "after",
+      "captures": [
+        {
+          "dir": 0,
+          "frame": 0
+        },
+        {
+          "dir": 1,
+          "frame": 0
+        },
+        {
+          "dir": 2,
+          "frame": 0
+        },
+        {
+          "dir": 3,
+          "frame": 0
+        },
+        {
+          "dir": 4,
+          "frame": 0
+        },
+        {
+          "dir": 5,
+          "frame": 0
+        },
+        {
+          "dir": 6,
+          "frame": 0
+        },
+        {
+          "dir": 7,
+          "frame": 0
+        },
+        {
+          "dir": 0,
+          "frame": 1
+        },
+        {
+          "dir": 1,
+          "frame": 1
+        },
+        {
+          "dir": 2,
+          "frame": 1
+        },
+        {
+          "dir": 3,
+          "frame": 1
+        },
+        {
+          "dir": 4,
+          "frame": 1
+        },
+        {
+          "dir": 5,
+          "frame": 1
+        },
+        {
+          "dir": 6,
+          "frame": 1
+        },
+        {
+          "dir": 7,
+          "frame": 1
+        }
+      ],
+      "meanMs": 9.129000000953674,
+      "medianMs": 6.100000023841858,
+      "p95Ms": 19.699999928474426
+    }
+  ],
+  "exactCanonicalState": true,
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "100 paused CPU draws; excludes GPU completion"
+}

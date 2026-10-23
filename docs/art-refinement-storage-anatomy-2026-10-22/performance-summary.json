@@ -1,0 +1,41 @@
+{
+  "scope": "Four before/four after samples in ABBA BAAB order; 30 warmup + 100 paused CPU draws each. GPU completion excluded.",
+  "averages": {
+    "storage-sac-flanks": {
+      "before": {
+        "meanMs": 10.039250000417233,
+        "medianMs": 6.074999988079071,
+        "p95Ms": 22.900000005960464
+      },
+      "after": {
+        "meanMs": 9.097999999821186,
+        "medianMs": 5.425000011920929,
+        "p95Ms": 19.94999998807907
+      }
+    },
+    "fat-pad-flanks": {
+      "before": {
+        "meanMs": 10.28875,
+        "medianMs": 6.625,
+        "p95Ms": 21.349999994039536
+      },
+      "after": {
+        "meanMs": 10.26149999976158,
+        "medianMs": 6.449999988079071,
+        "p95Ms": 21.899999976158142
+      }
+    },
+    "water-hump-dorsal": {
+      "before": {
+        "meanMs": 9.681999999582768,
+        "medianMs": 5.9000000059604645,
+        "p95Ms": 21.674999982118607
+      },
+      "after": {
+        "meanMs": 9.322500000298023,
+        "medianMs": 5.449999988079071,
+        "p95Ms": 20.85000005364418
+      }
+    }
+  }
+}

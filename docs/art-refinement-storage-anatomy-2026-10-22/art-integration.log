@@ -1,0 +1,48 @@
+
+[Native storage integration] tests/indexed-part-art.mjs
+indexed native art identity, all-frame alpha/detail, protected pigment, timing/anchor invariance and cache keys: PASS
+
+[Native storage integration] tests/indexed-part-renderer.mjs
+indexed renderer timed boundaries, missing facing, pivot, joint clamp and allocation-free drawing PASS
+
+[Native storage integration] tests/source-rgba-part-art.mjs
+source RGBA ingestion: sixteen-frame exact round trip, transparent detail, explicit shared pigments, protected substitution and fail-closed mapping PASS
+
+[Native storage integration] tests/native-part-catalog.mjs
+native-part-catalog: 97 indexed assets, 1552 exact RGBA frames, eight facings, 0 missing native art packs PASS
+
+[Native storage integration] tests/native-inherited-pigment.mjs
+native inherited-pigment and anatomical socket mounting PASS
+
+[Native storage integration] tests/inherited-pigmentation.mjs
+independent inherited pigmentation: OK
+
+[Native storage integration] tests/creature-assembly.mjs
+creature assembly ok
+
+[Native storage integration] tests/creature-lab-assembly.mjs
+lab assembly uses canonical socket rules, immutable transactions and native body-plan round trip PASS
+
+[Native storage integration] tests/part-abilities.mjs
+part abilities ok
+
+[Native storage integration] tests/founder-body.mjs
+founder body ok
+
+[Native storage integration] tests/part-animation-catalog.mjs
+registered immutable part-owned responses compile into independent bounded node rigs PASS
+
+[Native storage integration] tests/motion-render.mjs
+render motion bridge checks: PASS
+
+[Native storage integration] tests/physicality-render.mjs
+environment physicality checks: PASS
+
+[Native storage integration] tests/native-storage-anatomy-art.mjs
+Native storage anatomy PASS: 48 source/compiled-identical frames, exact original roots/metadata/material definitions/timing, protected structural accents and inherited skin across all headings/phases, transparent margins. [
+  { id: 'storage-sac', fixed: 52, skin: 3851 },
+  { id: 'fat-pad', fixed: 239, skin: 2406 },
+  { id: 'water-hump', fixed: 124, skin: 3888 }
+]
+
+Native storage integration: 14 checks passed.
