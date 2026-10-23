@@ -1,0 +1,206 @@
+{
+  "setup": {
+    "seed": "DEFENSIVE-ART-20261022",
+    "body": "bp0-3ae9f103",
+    "mount": "four-spurs",
+    "observation": {
+      "x": 102.5,
+      "y": 113.5,
+      "score": 13.62127468176186
+    },
+    "scope": "Controlled legal adult founder with four original limb spur sockets bearing claw; actual terrain, genes and resources retained. HTTP-only inspection wrapper forwards explicit paint frame to original renderer; no simulation action fabricated."
+  },
+  "defense": null,
+  "court": null,
+  "live": [],
+  "attack": {
+    "before": {
+      "exertion": 100,
+      "tick": 12,
+      "clock": 1.59375
+    },
+    "phases": [
+      {
+        "phase": "windup",
+        "observed": {
+          "action": {
+            "phase": "windup",
+            "startedAt": 1.609375,
+            "until": 1.7413750000000001,
+            "slow": false
+          },
+          "exertion": 84,
+          "tick": 12,
+          "clock": 1.609375
+        },
+        "exactCanonicalState": true
+      },
+      {
+        "phase": "recover",
+        "observed": {
+          "action": {
+            "phase": "recover",
+            "startedAt": 1.75,
+            "until": 2.11,
+            "slow": false,
+            "outcome": "miss"
+          },
+          "exertion": 84,
+          "tick": 14,
+          "clock": 1.796875
+        },
+        "exactCanonicalState": true
+      }
+    ]
+  },
+  "stages": [
+    {
+      "label": "before",
+      "captures": [
+        {
+          "dir": 0,
+          "frame": 0
+        },
+        {
+          "dir": 1,
+          "frame": 0
+        },
+        {
+          "dir": 2,
+          "frame": 0
+        },
+        {
+          "dir": 3,
+          "frame": 0
+        },
+        {
+          "dir": 4,
+          "frame": 0
+        },
+        {
+          "dir": 5,
+          "frame": 0
+        },
+        {
+          "dir": 6,
+          "frame": 0
+        },
+        {
+          "dir": 7,
+          "frame": 0
+        },
+        {
+          "dir": 0,
+          "frame": 1
+        },
+        {
+          "dir": 1,
+          "frame": 1
+        },
+        {
+          "dir": 2,
+          "frame": 1
+        },
+        {
+          "dir": 3,
+          "frame": 1
+        },
+        {
+          "dir": 4,
+          "frame": 1
+        },
+        {
+          "dir": 5,
+          "frame": 1
+        },
+        {
+          "dir": 6,
+          "frame": 1
+        },
+        {
+          "dir": 7,
+          "frame": 1
+        }
+      ],
+      "meanMs": 9.688999999761581,
+      "medianMs": 5.900000095367432,
+      "p95Ms": 20.300000071525574
+    },
+    {
+      "label": "after",
+      "captures": [
+        {
+          "dir": 0,
+          "frame": 0
+        },
+        {
+          "dir": 1,
+          "frame": 0
+        },
+        {
+          "dir": 2,
+          "frame": 0
+        },
+        {
+          "dir": 3,
+          "frame": 0
+        },
+        {
+          "dir": 4,
+          "frame": 0
+        },
+        {
+          "dir": 5,
+          "frame": 0
+        },
+        {
+          "dir": 6,
+          "frame": 0
+        },
+        {
+          "dir": 7,
+          "frame": 0
+        },
+        {
+          "dir": 0,
+          "frame": 1
+        },
+        {
+          "dir": 1,
+          "frame": 1
+        },
+        {
+          "dir": 2,
+          "frame": 1
+        },
+        {
+          "dir": 3,
+          "frame": 1
+        },
+        {
+          "dir": 4,
+          "frame": 1
+        },
+        {
+          "dir": 5,
+          "frame": 1
+        },
+        {
+          "dir": 6,
+          "frame": 1
+        },
+        {
+          "dir": 7,
+          "frame": 1
+        }
+      ],
+      "meanMs": 9.633999999761581,
+      "medianMs": 5.799999952316284,
+      "p95Ms": 20.700000047683716
+    }
+  ],
+  "exactCanonicalState": true,
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "100 paused CPU draws; excludes GPU completion"
+}

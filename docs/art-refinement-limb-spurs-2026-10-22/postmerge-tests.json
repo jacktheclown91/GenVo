@@ -1,0 +1,17 @@
+[
+  {
+    "test": "tests/native-limb-spur-art.mjs",
+    "exitCode": 0,
+    "output": "Native limb spur anatomy PASS: 48 source/compiled-identical frames, exact original roots/metadata/material definitions/timing, protected structural accents and inherited skin across all headings/phases, transparent margins. [\n  { id: 'claw', fixed: 150, skin: 2795 },\n  { id: 'barb', fixed: 275, skin: 2780 },\n  { id: 'hook-spur', fixed: 294, skin: 2976 }\n]\nExisting articulated spur mounts PASS: 144 foot/knee, mirrored-side and changing-reach cases.\n"
+  },
+  {
+    "test": "tests/native-part-catalog.mjs",
+    "exitCode": 0,
+    "output": "native-part-catalog: 97 indexed assets, 1552 exact RGBA frames, eight facings, 0 missing native art packs PASS\n"
+  },
+  {
+    "test": "tests/player-suitors.mjs",
+    "exitCode": 0,
+    "output": "Player suitors PASS: quick-start companion is the starter mate, unchosen wild suitors never pursue a manual player, AUTO unchanged.\n"
+  }
+]
