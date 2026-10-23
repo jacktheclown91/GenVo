@@ -1,0 +1,58 @@
+{
+ "seed": "PLANET-OBS-2",
+ "creature": "starter-dive",
+ "defaultMode": "comfort",
+ "optionsNote": "Only what your creature senses; everything else stays dark.",
+ "modes": {
+  "biological": {
+   "mode": "biological",
+   "drawnCreatures": 8,
+   "cells": {
+    "unknown": 1803,
+    "remembered": 86,
+    "seen": 109
+   },
+   "probe": {
+    "seenPainted": 29,
+    "seen": 29,
+    "otherPainted": 0,
+    "other": 211
+   },
+   "note": "Only what your creature senses; everything else stays dark."
+  },
+  "comfort": {
+   "mode": "comfort",
+   "drawnCreatures": 8,
+   "cells": {
+    "unknown": 1803,
+    "remembered": 86,
+    "seen": 109
+   },
+   "probe": {
+    "seenPainted": 29,
+    "seen": 29,
+    "otherPainted": 0,
+    "other": 211
+   },
+   "note": "The land stays readable around you; plants, carcasses and creatures appear only when your creature senses them."
+  },
+  "sandbox": {
+   "mode": "sandbox",
+   "drawnCreatures": 8,
+   "cells": {
+    "unknown": 1803,
+    "remembered": 86,
+    "seen": 109
+   },
+   "probe": {
+    "seenPainted": 29,
+    "seen": 29,
+    "otherPainted": 0,
+    "other": 211
+   },
+   "note": "Shows the whole landscape and its plants for viewing. Creatures, carcasses and dens still need your senses."
+  }
+ },
+ "turnStart": 1792731480678,
+ "errors": []
+}

@@ -3,6 +3,12 @@
   "principle": "One live authority for each mechanism. Multiple states, species, art drafts and measured outcomes are permitted; competing runtime definitions are not.",
   "gameEntrypoint": "src/main.js",
   "systems": {
+    "viewModes": {
+      "authority": "src/render/view-modes.js",
+      "presentation": "src/render/sensory-fog.js",
+      "consumers": ["src/render/renderer.js", "src/ui/front-end.js", "index.html"],
+      "contract": "docs/PLAYTEST-CORRECTIONS-2026-10-23.md"
+    },
     "slicedTicks": {
       "authority": "src/sim/simulation.js",
       "resumable": "src/sim/resumable.js",

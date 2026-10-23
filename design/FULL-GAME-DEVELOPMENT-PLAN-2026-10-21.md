@@ -35,6 +35,16 @@ Acceptance: player or autonomous lineages develop, inherit and visibly benefit o
 
 **Explicit future task: remove the legacy species-carrier dependency (creator direction 2026-10-22).** No creature may be able or unable to do something merely because of its species name. Founding templates are starting bodies, not permanent species definitions. Named species should describe evolved outcomes.
 
+**Post-jam: replace implicit legacy live birth with inherited ancestral reproductive physiology and genuinely evolved reproductive specializations (creator direction 2026-10-22).**
+- Today `reproductiveMode` (`src/reproduction/reproductive-anatomy.js`) treats a body with neither an egg chamber nor a live womb as live-bearing by default. Conception then uses the species-carrier gestation duration. Live birth therefore does not depend on a live-birth organ, and evolving a womb adds nothing a founder lacked.
+- Intended progression, with none universally superior:
+  - ancestral reproductive tissue in every founding lineage (simple external spawning with finite reproductive material, fertilization and vulnerable developing offspring);
+  - protected egg reproduction (egg chamber, provisions, incubation, possible parental protection);
+  - internal gestation (live-bearing anatomy, higher parental investment, offspring born directly);
+  - combinations only where biologically compatible.
+- Ancestral tissue may be foundational physiology rather than a visible starter part.
+- Not before the jam: the change affects every founding population, reproduction timing, offspring survival, The First Legacy, save compatibility and long-term stability. It needs a versioned policy and matched runs.
+
 - **Done so far:** shared breeding support (`breeding-support/1`) replaces species forage minimums, prey counts, crowding caps and drive scales in new worlds.
 - **Remaining:** about 79 source files still read species records. These records supply maturity and growth (the most-read field), lifespan, litter, gestation, postpartum, reproductive cost and the breeding energy gate; max energy and hydration; legacy mass and `WILD_SCALE` body size; diets for legacy bodies; social mode and family care; the hunter flag; and the prey species' predation vulnerability and lifespan used in capture and prey turnover.
 - **Approach:** derive each from inherited anatomy, physiology and development, one versioned policy at a time, keeping prior behaviour for comparison and preserving saves. Do not attempt a wholesale rewrite before the jam build.

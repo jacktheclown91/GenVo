@@ -88,6 +88,7 @@ const runtime=[
   'tests/journey-continuity.mjs',
   'tests/sliced-ticks.mjs',
   'tests/player-suitors.mjs',
+  'tests/view-modes.mjs',
   'tests/regional-multi-hop-biology.mjs',
   'tests/regional-synchronized-replay.mjs',
   'tests/aquatic.mjs',

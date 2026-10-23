@@ -6,7 +6,7 @@ import {drawSurfaceIce} from './surface-ice.js';
 import {liquidContact} from '../lineage/ice-locomotion.js';
 import {CanvasRecorder} from './canvas-recorder.js';
 import {drawAtmosphere} from './atmosphere.js';
-import {drawSensoryFog} from './sensory-fog.js';
+import {drawSensoryFog,prepareSensoryFog,clipToSensed} from './sensory-fog.js';
 import {drawThermalWeather} from './thermal-weather.js';
 import {THERMAL_WEATHER} from '../ecology/thermal-weather.js';
 import {VISIBILITY,visuallyObservable,creatureView} from '../ecology/atmospheric-visibility.js';
@@ -98,7 +98,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
       // not every in-game day (a day is a few seconds, so wide windows were repainting constantly). Plants
       // next to the active creature are drawn live every frame, so nearby food is always current.
       else if(this.sim.seasonIndex===this.terrainSeason&&this.renderNow-(this.terrainRefreshAt||0)<20000)this.pendingHabitatFrames=30;
-      else{this.terrainSeason=this.sim.seasonIndex;this.terrainRefreshAt=this.renderNow;this.habitatField=buildSmoothedHabitatField(this.sim.world);this.habitatMaskCache.clear();this.recycleTileCache(this.landBaseTileCache);this.recycleTileCache(this.staticLandTileCache);this.habitatScenesKey='';this.habitatFieldDay=this.sim.day;this.pendingHabitatDay=null}}const macroSeed=this.sim.world?.seedHash;if(this.macroHabitatSeed!==macroSeed){this.regionalFocals=collectRegionalFocals(this.sim,this.habitatField);this.habitatTransitions=collectHabitatTransitions(this.sim.world,this.habitatField);this.focalApproaches=new Map(this.regionalFocals.map(f=>[`${f.regionX},${f.regionY}`,focalApproachFor(this.sim.world,f,this.habitatField)]));this.macroHabitatSeed=macroSeed;this.macroHabitatSeason=this.sim.seasonIndex;this.waterBaseTileCache.clear()}else if(this.macroHabitatSeason!==this.sim.seasonIndex){this.macroHabitatSeason=this.sim.seasonIndex;this.waterBaseTileCache.clear()}const p=this.sim.player();if(p){const predicted=predictPlayerPose(this.sim,this.playerPresentation.input,this.playerPresentation.aheadSeconds),vp=predicted||this.motion.sample(p,this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear'});this.playerVisual=vp;if(!this.cameraReady){this.camera.x=vp.x;this.camera.y=vp.y;this.cameraReady=true}else{const follow=1-Math.exp(-CFG.cameraFollowHz*renderDt);this.camera.x+=(vp.x-this.camera.x)*follow;this.camera.y+=(vp.y-this.camera.y)*follow;const maxLag=.055,dx=vp.x-this.camera.x,dy=vp.y-this.camera.y,d=Math.hypot(dx,dy);if(d>maxLag){this.camera.x=vp.x-dx/d*maxLag;this.camera.y=vp.y-dy/d*maxLag}}}else this.playerVisual=null;const tile=CFG.tileSize*this.zoom;clampCameraToWorld(this.camera,this.sim.world.n,this.w,this.h,tile,{open:!!this.sim.world.planet});const cols=Math.ceil(this.w/tile)+2,rows=Math.ceil(this.h/tile)+2,startX=Math.floor(this.camera.x-cols/2),startY=Math.floor(this.camera.y-rows/2);return{tile,cols,rows,startX,startY}}
+      else{this.terrainSeason=this.sim.seasonIndex;this.terrainRefreshAt=this.renderNow;this.habitatField=buildSmoothedHabitatField(this.sim.world);this.habitatMaskCache.clear();this.recycleTileCache(this.landBaseTileCache);this.recycleTileCache(this.staticLandTileCache);this.habitatScenesKey='';this.habitatFieldDay=this.sim.day;this.pendingHabitatDay=null}}const macroSeed=this.sim.world?.seedHash;if(this.macroHabitatSeed!==macroSeed){this.regionalFocals=collectRegionalFocals(this.sim,this.habitatField);this.habitatTransitions=collectHabitatTransitions(this.sim.world,this.habitatField);this.focalApproaches=new Map(this.regionalFocals.map(f=>[`${f.regionX},${f.regionY}`,focalApproachFor(this.sim.world,f,this.habitatField)]));this.macroHabitatSeed=macroSeed;this.macroHabitatSeason=this.sim.seasonIndex;this.waterBaseTileCache.clear()}else if(this.macroHabitatSeason!==this.sim.seasonIndex){this.macroHabitatSeason=this.sim.seasonIndex;this.waterBaseTileCache.clear()}const p=this.sim.player();if(p){const predicted=predictPlayerPose(this.sim,this.playerPresentation.input,this.playerPresentation.aheadSeconds),eased=this.motion.sample(p,this.sim.tickCount,this.renderNow,{hz:this.sim.playerAutonomy?CFG.simHz:CFG.controlHz,response:'linear',snap:!!predicted?.moving}),vp=predicted?.moving?predicted:eased;this.playerVisual=vp;if(!this.cameraReady){this.camera.x=vp.x;this.camera.y=vp.y;this.cameraReady=true}else{const follow=1-Math.exp(-CFG.cameraFollowHz*renderDt);this.camera.x+=(vp.x-this.camera.x)*follow;this.camera.y+=(vp.y-this.camera.y)*follow;const maxLag=.055,dx=vp.x-this.camera.x,dy=vp.y-this.camera.y,d=Math.hypot(dx,dy);if(d>maxLag){this.camera.x=vp.x-dx/d*maxLag;this.camera.y=vp.y-dy/d*maxLag}}}else this.playerVisual=null;const tile=CFG.tileSize*this.zoom;clampCameraToWorld(this.camera,this.sim.world.n,this.w,this.h,tile,{open:!!this.sim.world.planet});const cols=Math.ceil(this.w/tile)+2,rows=Math.ceil(this.h/tile)+2,startX=Math.floor(this.camera.x-cols/2),startY=Math.floor(this.camera.y-rows/2);return{tile,cols,rows,startX,startY}}
   // Phase 3L start-up: prepare the first visible scene before it is shown. Building every visible terrain chunk in
   // the first frame blocked the page for 1.0-1.3 s. Each call builds missing visible chunks, nearest first, until
   // budgetMs is spent, through the same cache render() uses (buildTerrainChunk), and returns true once the next
@@ -118,6 +118,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   sceneReady(){return this.sceneReadyPromise||Promise.resolve()}
   renderOrPrepare(budgetMs=24){if(this.scenePending){if(this.prepareScene(budgetMs))this.scenePending=false;return}this.render();if(!this.sceneShown)this.sceneShown=true;if(this.resolveSceneReady){const resolve=this.resolveSceneReady;this.resolveSceneReady=null;resolve()}}
   render(){beginTintFrame();this.renderNow=performance.now();(this.encounters||=new EncounterPresentation()).beginFrame(this.sim,this.renderNow);const renderDt=Math.min(.05,Math.max(0,(this.renderNow-this.lastRenderNow)/1000));this.lastRenderNow=this.renderNow;const c=this.ctx,{tile,cols,rows,startX,startY}=this.syncScene(renderDt);c.fillStyle='#09140e';c.fillRect(0,0,this.w,this.h);
+    prepareSensoryFog(this,{tile,cols,rows,startX,startY});
     this.drawTerrainChunks(tile,startX,startY,cols,rows);this.queueTerrainWarmRing(startX,startY,cols,rows);
     if(this.sim.world.planet)(this.borderTerrain||=new BorderTerrain(Renderer)).draw(this,tile,startX,startY,cols,rows);
     this.groundPassOnly=true;try{
@@ -125,24 +126,26 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     }finally{this.groundPassOnly=false}
     // Multi-tile habitat scenes summarize real ecology (water, biomass, use history) without creating game state.
     const sceneEpoch=Math.floor(this.sim.tickCount/Math.max(1,CFG.simHz)),sceneKey=`${startX},${startY},${cols},${rows},${sceneEpoch}`;if(sceneKey!==this.habitatScenesKey){this.habitatScenes=collectHabitatScenes(this.sim,this.habitatField,{startX,startY,cols,rows,block:8});this.habitatScenesKey=sceneKey}
-    this.drawHabitatTransitions(tile,startX,startY,cols,rows);this.drawHabitatScenes(tile);this.drawRegionalFocalApproaches(tile);this.drawRegionalFocals(tile);
+    // Live layers are drawn only where the creature senses (view-modes.js);
+    // the fog then shows plain terrain, dimmed, everywhere else.
+    {const clipped=clipToSensed(this,tile,{vegetation:true});this.drawHabitatTransitions(tile,startX,startY,cols,rows);this.drawHabitatScenes(tile);this.drawRegionalFocalApproaches(tile);this.drawRegionalFocals(tile);if(clipped)this.ctx.restore()}
     // Snow is daily climate state. Composite over cached terrain, beneath
     // living flora; never freeze snow art into old seasonal chunk caches.
     this.drawSnowWindow(tile,startX,startY,cols,rows);
-    this.drawTerrainChunks(tile,startX,startY,cols,rows,true);this.borderTerrain?.draw(this,tile,startX,startY,cols,rows,true);this.drawLiveVegetationWindow(tile);
+    {const clipped=clipToSensed(this,tile,{vegetation:true});this.drawTerrainChunks(tile,startX,startY,cols,rows,true);this.borderTerrain?.draw(this,tile,startX,startY,cols,rows,true);this.drawLiveVegetationWindow(tile);if(clipped)this.ctx.restore()}
     this.iceDrawCount=drawSurfaceIce(this,{tile,startX,startY,cols,rows});
     // Organic remains are an actual selectable resource, above floor and vegetation.
-    for(let sy=0;sy<rows;sy++)for(let sx=0;sx<cols;sx++){const x=startX+sx,y=startY+sy;if(x<0||y<0||x>=this.sim.world.n||y>=this.sim.world.n)continue;const i=this.sim.world.idx(x,y);if(!this.sim.world.water[i]&&this.sim.world.carrion[i]>.08)this.drawCarrion(Math.round((x-this.camera.x)*tile+this.w/2),Math.round((y-this.camera.y)*tile+this.h/2),this.zoom,this.sim.world.carrion[i])}
+    {const carrionClip=clipToSensed(this,tile);for(let sy=0;sy<rows;sy++)for(let sx=0;sx<cols;sx++){const x=startX+sx,y=startY+sy;if(x<0||y<0||x>=this.sim.world.n||y>=this.sim.world.n)continue;const i=this.sim.world.idx(x,y);if(!this.sim.world.water[i]&&this.sim.world.carrion[i]>.08)this.drawCarrion(Math.round((x-this.camera.x)*tile+this.w/2),Math.round((y-this.camera.y)*tile+this.h/2),this.zoom,this.sim.world.carrion[i])}if(carrionClip)this.ctx.restore()}
     if(this.sim.cognition?.showOverlay)this.drawMemoryOverlay(tile);
     if(this.sim.territory?.showOverlay)this.drawTerritoryOverlay(tile);
     if(this.sim.migration?.showOverlay)this.drawMigrationOverlay(tile);
     if(this.guideTarget)this.drawGuide(tile);
-    this.drawStalkerDens(tile);
+    {const clipped=clipToSensed(this,tile);this.drawStalkerDens(tile);if(clipped)this.ctx.restore()}
     this.drawShelters(tile);
     this.drawFamilyGuidance(tile);
     // Phase G: places in the world, under the creatures.
-    this.drawSites(tile,cols,rows);
-    this.drawEggs(tile);drawWorldTraces(this,tile);
+    {const clipped=clipToSensed(this,tile);this.drawSites(tile,cols,rows);
+    this.drawEggs(tile);drawWorldTraces(this,tile);if(clipped)this.ctx.restore()}
     drawSubsurface(this,tile);this.screenPos=new Map();this.screenBounds=new Map();this.screenBoundsWorld=this.sim.world;this.regionalScreenPos=new Map();
     const observer=this.sim.player(),playerView=observer&&this.sim.sensoryFogEnabled===true?creatureView(this.sim,observer):null;
      // Cull geographically first, then apply the same biological sight model
@@ -208,7 +211,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
 
 
   drawPlayerAnchor(tile){
-    const p=this.sim.player();if(!p)return;const c=this.ctx,visual=this.playerVisual||this.motion.sample(p,this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear'}),x=Math.round((visual.x-this.camera.x)*tile+this.w/2),y=Math.round((visual.y-this.camera.y)*tile+this.h/2),pulse=(Math.sin(this.renderNow/180)+1)*.5;
+    const p=this.sim.player();if(!p)return;const c=this.ctx,visual=this.playerVisual||this.motion.sample(p,this.sim.tickCount,this.renderNow,{hz:this.sim.playerAutonomy?CFG.simHz:CFG.controlHz,response:'linear'}),x=Math.round((visual.x-this.camera.x)*tile+this.w/2),y=Math.round((visual.y-this.camera.y)*tile+this.h/2),pulse=(Math.sin(this.renderNow/180)+1)*.5;
     c.save();
     // Dark backing keeps the same gold identity readable on land and water.
     const radius=Math.max(12,10*this.zoom)+pulse;
@@ -1025,10 +1028,14 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     drawFloraPlant(this.ctx,{shape,color,amount,px,py,u,x,y,kind,visualAnchor,seedAllocation:this.sim.dispersal.genomeAt(kind,i)?.traits.seedAllocation??.2,coatAllocation:this.sim.dispersal.genomeAt(kind,i)?.traits.coatAllocation??.25,reproduction:botanicalPlantView(this.sim.dispersal,kind,i),season:this.sim.season,isWater:(tx,ty)=>this.isWater(tx,ty)});
   }
   drawCarrion(px,py,u,amount){const c=this.ctx;c.save();c.translate(px,py);pixel(c,4,11,8,2,u,'rgba(48,29,26,.42)');pixel(c,5,8,6,3,u,'#8b554d');pixel(c,4,9,2,2,u,'#6f443f');if(amount>.7){pixel(c,10,7,1,4,u,'#d2c7a9');pixel(c,9,8,3,1,u,'#d2c7a9')}c.restore()}
+  // The player's gait follows its actual drawn displacement whoever moves it
+  // (keys, click-to-move or AUTO), on its own motion state so it never disturbs
+  // the position easing. Leg anatomy still sets stride, lift and cadence.
+  playerGaitVisual(a,gaitPerTile){const g=this.motion.sample({...a,id:'gait:'+a.id,x:this.playerVisual.x,y:this.playerVisual.y},this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear',snap:true,gaitPerTile});return{...this.playerVisual,gaitPhase:g.gaitPhase,recentlyMoving:g.recentlyMoving}}
   drawAnimal(a,tile){
     const c=this.ctx;
-    const scale=this.zoom,ph=phenotypeFor(a),dev=developmentFor(a),social=this.sim.social?.visualState?.(a)||null,gaitPerTile=8*CFG.tileSize/gaitTravelFor(ph.limbScale*(.72+.28*(a.player?dev.growth:Math.round(dev.growth*32)/32)),assemblyFor(a)?.legSlots),visual=a.player&&this.playerVisual?{...this.playerVisual,gaitPhase:this.motion.sample({...a,x:this.playerVisual.x,y:this.playerVisual.y},this.sim.tickCount,this.renderNow,{hz:CFG.controlHz,response:'linear',snap:true,gaitPerTile}).gaitPhase}:this.motion.sample(a,this.sim.tickCount,this.renderNow,{hz:(a.player||a.pursuitEngaged)?CFG.controlHz:CFG.simHz,response:'linear',gaitPerTile}),px=Math.round((visual.x-this.camera.x)*tile+this.w/2),py=Math.round((visual.y-this.camera.y)*tile+this.h/2);(this.screenPos||=new Map()).set(a.id,{x:px,y:py});let action=a.torpor?'rest':this.actionPose(a,!!visual.moving);
-    const targetTravel=!!(a.target&&!['eat','drink','court'].includes(action)),moving=!!a.climb||!!visual.moving||(!a.player&&!!visual.recentlyMoving&&targetTravel);
+    const scale=this.zoom,ph=phenotypeFor(a),dev=developmentFor(a),social=this.sim.social?.visualState?.(a)||null,gaitPerTile=8*CFG.tileSize/gaitTravelFor(ph.limbScale*(.72+.28*(a.player?dev.growth:Math.round(dev.growth*32)/32)),assemblyFor(a)?.legSlots),visual=a.player&&this.playerVisual?this.playerGaitVisual(a,gaitPerTile):this.motion.sample(a,this.sim.tickCount,this.renderNow,{hz:(a.player||a.pursuitEngaged)?CFG.controlHz:CFG.simHz,response:'linear',gaitPerTile}),px=Math.round((visual.x-this.camera.x)*tile+this.w/2),py=Math.round((visual.y-this.camera.y)*tile+this.h/2);(this.screenPos||=new Map()).set(a.id,{x:px,y:py});let action=a.torpor?'rest':this.actionPose(a,!!visual.moving);
+    const targetTravel=!!(a.target&&!['eat','drink','court'].includes(action)),moving=!!a.climb||!!visual.moving||(a.player?!!visual.recentlyMoving:!!visual.recentlyMoving&&targetTravel);if(a.player)this.lastPlayerDrawMoving=moving;
     let phase=moving?(visual.gaitPhase??visual.phase):(((this.encounters?.time||0)/.22)+a.id)%8;
     // Autonomous gait phases are ID-offset in presentation so unrelated wildlife does not
     // hit the same footfall on every shared ecology beat. Simulation animation stays canonical.
