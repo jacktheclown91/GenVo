@@ -1,4 +1,5 @@
 import {VISIBILITY,atmosphereAt} from '../ecology/atmospheric-visibility.js';
+import {drawMistWisps} from './weather-art.js';
 export function drawAtmosphere(renderer){
  const sim=renderer.sim;if(sim.visibilityRules!==VISIBILITY.policy)return false;
  const a=sim.player();if(!a||a.underground||(a.diveDepth||0)>.03)return true;
@@ -8,9 +9,7 @@ export function drawAtmosphere(renderer){
   const p=renderer.screenPos?.get(a.id)||{x:w/2,y:h/2},radius=Math.max(w,h)*.7;
   const veil=c.createRadialGradient(p.x,p.y,24*renderer.zoom,p.x,p.y,radius);
   veil.addColorStop(0,`rgba(183,198,187,${sample.fog*.06})`);veil.addColorStop(.4,`rgba(183,198,187,${sample.fog*.36})`);veil.addColorStop(1,`rgba(183,198,187,${sample.fog*.78})`);c.fillStyle=veil;c.fillRect(0,0,w,h);
-  // Broad drifting wisps follow the same local wind, never a weather RNG.
-  c.fillStyle=`rgba(206,215,204,${sample.fog*.065})`;
-  for(let k=0;k<5;k++){const x=((k*317+t*(sample.wind?.east??.2)*16)%(w+360)+w+360)%(w+360)-180,y=((k*139+t*(sample.wind?.south??.05)*10)%(h+140)+h+140)%(h+140)-70;c.beginPath();c.ellipse(x,y,180,30,Math.sin(k)*.2,0,Math.PI*2);c.fill()}
+  drawMistWisps(renderer,sample);
  }
  const quality=renderer.lowDetail?.35:1;
  for(const [snow,intensity] of [[false,sample.liquid],[true,sample.snow]]){

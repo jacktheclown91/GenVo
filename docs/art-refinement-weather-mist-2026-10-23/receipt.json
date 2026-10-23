@@ -1,0 +1,167 @@
+{
+  "samples": {
+    "thick": {
+      "x": 87.5,
+      "y": 38.5,
+      "rain": 0.6135756374936339,
+      "temperature": 0.4082214747224575,
+      "wind": {
+        "east": -0.21543418677155468,
+        "south": 0.5748253735908269,
+        "strength": 0.6138697736114352
+      },
+      "fog": 0.28090488962599314,
+      "snow": 0,
+      "liquid": 0.4824240576825136,
+      "extinction": 0.05541766935083228
+    },
+    "clear": {
+      "x": 50.5,
+      "y": 12.5,
+      "rain": 0.29765372474401103,
+      "temperature": 0.40713897241694985,
+      "wind": {
+        "east": -0.6390322278453793,
+        "south": -0.4430880446219142,
+        "strength": 0.7776176460908666
+      },
+      "fog": 0,
+      "snow": 0,
+      "liquid": 0,
+      "extinction": 0
+    },
+    "policy": "atmospheric-visibility/1",
+    "probe": {
+      "detected": true,
+      "distance": 6,
+      "opticalDepth": 0.2607465733696701,
+      "transmission": 0.7704761540507022,
+      "effectiveRange": 6.163809232405618
+    },
+    "climate": {
+      "temp": 0.5099553306256062,
+      "rain": 0.5023445273271792,
+      "weatherFactor": 0.866111254012378,
+      "temperatureAnomaly": -0.030044669374393873
+    },
+    "day": 1
+  },
+  "records": [
+    {
+      "site": "mist",
+      "original": true,
+      "meanMs": 15.367999999523162,
+      "medianMs": 7,
+      "p95Ms": 64.79999995231628
+    },
+    {
+      "site": "mist",
+      "original": false,
+      "meanMs": 17.718999999761582,
+      "medianMs": 7.700000047683716,
+      "p95Ms": 100.19999992847443
+    },
+    {
+      "site": "mist",
+      "original": false,
+      "meanMs": 15.02899999976158,
+      "medianMs": 6,
+      "p95Ms": 75.40000009536743
+    },
+    {
+      "site": "mist",
+      "original": true,
+      "meanMs": 13.443999998569488,
+      "medianMs": 4.100000023841858,
+      "p95Ms": 68.40000009536743
+    },
+    {
+      "site": "mist",
+      "original": false,
+      "meanMs": 13.314000000953675,
+      "medianMs": 4,
+      "p95Ms": 68.10000002384186
+    },
+    {
+      "site": "mist",
+      "original": true,
+      "meanMs": 21.545000001192093,
+      "medianMs": 7,
+      "p95Ms": 116.10000002384186
+    },
+    {
+      "site": "mist",
+      "original": true,
+      "meanMs": 19.25899999976158,
+      "medianMs": 6.399999976158142,
+      "p95Ms": 105.70000004768372
+    },
+    {
+      "site": "mist",
+      "original": false,
+      "meanMs": 16.76100000023842,
+      "medianMs": 5.600000023841858,
+      "p95Ms": 87.80000007152557
+    },
+    {
+      "site": "clear",
+      "original": true,
+      "meanMs": 14.409999998807907,
+      "medianMs": 7.899999976158142,
+      "p95Ms": 60.90000009536743
+    },
+    {
+      "site": "clear",
+      "original": false,
+      "meanMs": 14.678999999761581,
+      "medianMs": 8.300000071525574,
+      "p95Ms": 61.799999952316284
+    },
+    {
+      "site": "clear",
+      "original": false,
+      "meanMs": 13.588000000715256,
+      "medianMs": 7.099999904632568,
+      "p95Ms": 50.800000071525574
+    },
+    {
+      "site": "clear",
+      "original": true,
+      "meanMs": 12.283999999761582,
+      "medianMs": 5.199999928474426,
+      "p95Ms": 50.89999997615814
+    },
+    {
+      "site": "clear",
+      "original": false,
+      "meanMs": 11.595,
+      "medianMs": 5.200000047683716,
+      "p95Ms": 50.700000047683716
+    },
+    {
+      "site": "clear",
+      "original": true,
+      "meanMs": 10.971999999284744,
+      "medianMs": 4.800000071525574,
+      "p95Ms": 49
+    },
+    {
+      "site": "clear",
+      "original": true,
+      "meanMs": 11.237999999523163,
+      "medianMs": 5.099999904632568,
+      "p95Ms": 50.199999928474426
+    },
+    {
+      "site": "clear",
+      "original": false,
+      "meanMs": 12.145999999046326,
+      "medianMs": 5.399999976158142,
+      "p95Ms": 50.89999997615814
+    }
+  ],
+  "exactCanonicalState": true,
+  "errors": [],
+  "creatorAcceptance": false,
+  "timingScope": "Paused CPU draws, GPU completion excluded; ABBA BAAB, 30 warmup + 100 each"
+}
