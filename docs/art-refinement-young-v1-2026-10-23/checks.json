@@ -1,0 +1,37 @@
+[
+  {
+    "test": "birth-comparison",
+    "exitCode": 0,
+    "seconds": 0.581,
+    "stdout": "Birth comparison model PASS: actual conception groups, immutable records, no fabricated missing parents and complete snapshot parity.\n",
+    "stderr": ""
+  },
+  {
+    "test": "young-summary",
+    "exitCode": 0,
+    "seconds": 16.69,
+    "stdout": "Young summary PASS: natural litter, every inherited part attributed to you, the other parent, both or development, no state change, shown once per world.\n",
+    "stderr": ""
+  },
+  {
+    "test": "lineage-comparison",
+    "exitCode": 0,
+    "seconds": 0.617,
+    "stdout": "Actual descendant body, both conception phenotype records, wild-parent identity, immutable observations, save parity and honest older-record fallback PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "inherited-young-climate",
+    "exitCode": 0,
+    "seconds": 0.714,
+    "stdout": "Young climate: inherited juvenile cold/heat stress, finite hydration, paid maternal warmth, real life metabolism and historical opt-out PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "public-export",
+    "exitCode": 0,
+    "seconds": 1.234,
+    "stdout": "public-export: exact reachable modules and runtime assets only PASS\n",
+    "stderr": ""
+  }
+]

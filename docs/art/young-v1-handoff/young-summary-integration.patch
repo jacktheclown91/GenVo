@@ -2,7 +2,7 @@ diff --git a/src/ui/young-summary.js b/src/ui/young-summary.js
 --- a/src/ui/young-summary.js
 +++ b/src/ui/young-summary.js
 @@ -1,3 +1,4 @@
-+import {createConceptionPlate} from '../../assets/ui/birth-comparison.js';
++import {createConceptionPlate,mountBirthCapacity} from '../../assets/ui/birth-comparison.js';
  import {SPECIES} from '../organisms/species.js';
  import {ADAPTATIONS} from '../lineage/evolution.js';
  import {drawLineagePortrait} from '../render/lineage-portrait.js';
@@ -21,7 +21,8 @@ diff --git a/src/ui/young-summary.js b/src/ui/young-summary.js
    const stakes=document.createElement('p');stakes.className='legacy-note';stakes.textContent=model.stakes;
    const actions=document.createElement('div');actions.className='legacy-actions';const b=document.createElement('button');b.type='button';b.dataset.young='continue';b.className='primary';b.textContent='Raise them';actions.append(b);
 -  card.append(kicker,h,lead,grid,knowledge,stakes,actions);this.el.append(card);this.el.hidden=false;b.focus?.();
-+  const content=document.createElement('div');content.className='birth-scroll';content.append(comparison.element,grid,knowledge,stakes);card.append(kicker,h,lead,content,actions);this.el.append(card);this.el.hidden=false;b.focus?.();
++  const content=document.createElement('div');content.className='birth-scroll';content.append(comparison.element,grid,knowledge,stakes);card.append(kicker,h,lead,content,actions);this.el.append(card);this.el.hidden=false;this.restoreCapacity=mountBirthCapacity(card);b.focus?.();
   }
-  close(){if(!this.open)return;const sim=this.getSim();if(sim)sim.paused=this.wasPaused;this.open=false;this.el.hidden=true}
+- close(){if(!this.open)return;const sim=this.getSim();if(sim)sim.paused=this.wasPaused;this.open=false;this.el.hidden=true}
++ close(){if(!this.open)return;this.restoreCapacity?.();this.restoreCapacity=null;const sim=this.getSim();if(sim)sim.paused=this.wasPaused;this.open=false;this.el.hidden=true}
  }

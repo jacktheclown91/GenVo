@@ -31,3 +31,6 @@
 #youngSummary .transition-kicker,#youngSummary h2,#youngSummary .transition-lead{flex:0 0 auto}
 
 #youngSummary,#youngSummary *{text-shadow:none}
+
+#youngSummary .birth-capacity-host{flex:0 0 auto}
+#youngSummary .birth-capacity-host #processingCapacity{position:static!important;inset:auto!important;transform:none!important;max-width:none!important;width:auto!important;box-sizing:border-box;margin:0 0 10px;padding:8px 10px!important;font:11px/1.5 Verdana,sans-serif!important;border-radius:2px!important}
