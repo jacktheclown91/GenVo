@@ -145,3 +145,5 @@
  #app[data-notice-rail] #notificationStack .notice-lane:not([hidden]){display:block!important}
  #app[data-notice-rail]>.detail-panel:not([hidden]),#app[data-notice-rail] #fieldGuide:not([hidden]),#app[data-notice-rail] .journal-page{top:var(--notice-rail-top)!important;bottom:10px!important;height:auto!important;max-height:calc(100vh - var(--notice-rail-top) - 10px)!important}
 }
+
+#notificationStack[data-notice-scroll]:focus-visible{outline:2px solid #e2c987;outline-offset:2px}

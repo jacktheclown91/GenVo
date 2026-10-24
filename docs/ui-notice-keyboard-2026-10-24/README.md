@@ -1,0 +1,11 @@
+# Keyboard access to overflowing world feedback
+
+Follow-up to 01b42242. Only an overflowing narrow notice rail gains a tab stop, scrolling instructions and a visible focus outline. Native arrows, Page Up/Down, Home and End keep their browser behavior. Keyboard events on this focused UI surface stay out of world-action bubbling; Escape retains the existing close-panel path. The heldInput capture exemption recognizes only the data-notice-scroll surface. The marker, tabindex and description are removed when overflow/rail ends. No notice message, queue, timer, world control outside this surface, simulation or save rule changed. Ownership heads-up is recorded in docs/art/notice-rail-v1-handoff/README.md.
+
+Native Chromium public New World plus separately authored three-channel UI burst: Tab leaves the rail, Shift+Tab returns. Trusted Home/ArrowDown/PageDown/End/Home inputs produce scroll positions 0, 40, 197, 388, 0 in the first run; final receipt records the repeat. No tested scrolling key reached the window bubbling observer or was default-prevented. Escape closed Help. Focus-ring screenshot inspected. This is DOM/native-browser evidence; no screen-reader session or creator approval is claimed. Recorded key events were between ticks, so pending-tick native scrolling remains unproven.
+
+Input-responsiveness integration (100ms, 350ms, sliced tick, reversal, modal/pause and save/continue), notification-lane, overlay-placement, canonical audit, UI art direction and exact public export passed.
+
+First combined browser run failed its expiry assertion: after fixture expiry, a progress lane remained visible, with rail height about 52px rather than the 180px fixture rail. Exact message content was not captured then, so a newly arriving natural notice is plausible but not proven. This failure is retained verbatim in first-run-expiry-failure.json. A diagnostic rerun with message content and final Tab-round-trip rerun both passed the original expiry assertions. No assertion, expected value, budget or ledger was weakened. The combined live-world expiry check remains timing-sensitive and its first-run cause is unresolved; full-interface acceptance remains open.
+
+Reproduce: node tools/review-ui-panels-current.cjs reports/ui-notice-keyboard-new --notice-fixture.

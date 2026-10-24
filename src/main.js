@@ -321,7 +321,7 @@ loadSaveButton?.addEventListener('click',()=>{if(confirm('Load the last saved li
 // half-advanced world. Text fields and browser shortcuts are never held.
 const heldInput={queue:[],replaying:new WeakSet(),
   hold(e){
-    if(!sim.tickInProgress||this.replaying.has(e)||e.ctrlKey||e.metaKey||e.target?.closest?.('input,textarea,select,[contenteditable="true"],[data-knowledge-close]'))return;
+    if(!sim.tickInProgress||this.replaying.has(e)||e.ctrlKey||e.metaKey||e.target?.closest?.('input,textarea,select,[contenteditable="true"],[data-knowledge-close],[data-notice-scroll]'))return;
     if(MOVE_CODES.has(e.code))return;
     if(e.repeat){e.preventDefault();e.stopImmediatePropagation();return}
     if(this.queue.some(q=>q.type===e.type&&q.code===e.code)){e.preventDefault();e.stopImmediatePropagation();return}

@@ -1,3 +1,5 @@
 # Narrow information-panel notice rail
 
 Presentation integration heads-up: preserve NotificationCenter queues, messages, timers and biological event producers. When an open information panel occupies most of a narrow viewport, reserve a bounded, scrollable notice strip above it rather than accepting overlap. Use DOM-only layout state on #app; clear it when the panel closes, notices finish, the screen widens or notifications clear. Existing wide-screen placement remains owned by chooseOverlayPlacement. Verify panel closing, resizing and exact non-overlap in actual browser scenes; authored multi-lane fixtures are separate from natural feedback observations.
+
+Keyboard follow-up: only an overflowing active rail gets a native tab stop and scrolling instructions. Its keyboard events remain within the UI (Escape continues to the existing close-panel handler), with a narrow data-notice-scroll capture exemption in main. Do not prevent native arrow/Page/Home/End scrolling or change world input rules outside this focused surface.
