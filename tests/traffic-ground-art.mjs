@@ -1,0 +1,7 @@
+import assert from 'node:assert/strict';
+import {drawTrafficGround} from '../src/render/traffic-ground-art.js';
+const world={n:8,idx:(x,y)=>y*8+x},traffic=new Float32Array(64),read=()=>JSON.stringify([...traffic]);
+function draw(x=3,y=3,u=1){const calls=[];const c={fillStyle:'',save(){},restore(){},fillRect(...r){calls.push([this.fillStyle,...r]);assert.ok(r.every(Number.isFinite));assert.ok(r[0]>=10&&r[1]>=20&&r[0]+r[2]<=10+16*u&&r[1]+r[3]<=20+16*u)}};const before=read(),result=drawTrafficGround(c,{world,traffic,x,y,px:10,py:20,u});assert.equal(read(),before);return{calls,result}}
+assert.equal(draw().result,false);traffic.fill(.12);assert.equal(draw().result,false);traffic.fill(1);const uniform=draw();assert.ok(uniform.calls.length>=3&&uniform.calls.length<=6);assert.ok(uniform.calls.every(r=>r[3]<=3.5&&r[4]<=.5));assert.deepEqual(draw(),uniform);assert.notDeepEqual(draw(4,3),uniform);
+traffic.fill(0);traffic[world.idx(3,3)]=1;traffic[world.idx(2,3)]=1;traffic[world.idx(4,3)]=1;const lane=draw();assert.ok(lane.calls.length>uniform.calls.length);assert.ok(lane.calls.some(r=>r[1]===10));assert.ok(lane.calls.some(r=>r[1]+r[3]===26));draw(3,3,.5);draw(3,3,4);traffic.fill(1);draw(0,0);draw(7,7);
+console.log('Traffic artwork PASS: no empty-history marks, diffuse uniform wear without crossbars, supported directional joins, deterministic varied geometry, in-cell bounds and unchanged finite history. Synthetic presentation fixtures only.');

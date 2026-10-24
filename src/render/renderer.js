@@ -67,6 +67,7 @@ import {drawHabitatDepth,creatureShadowFor,drawCreatureDepthShadow,drawSceneDept
 import {drawFloraPlant,drawFloraSeedling,floraSeedlingAnchor,floraTraceAnchor,drawFloraTrace,floraVisualAnchor} from './flora.js';
 import {drawSceneLandmarkBackdrop,drawSceneLandmarkForeground} from './landmarks.js';
 import {drawTerrainMotifBackdrop,drawTerrainMotifForeground} from './terrain-motifs.js';
+import {drawTrafficGround} from './traffic-ground-art.js';
 import {habitatIdentityAt,riverIdentityAt,drawSeasonalGround,terrainPaletteAt,terrainGrainAt} from './identity.js';
 import {collectRegionalFocals,drawRegionalFocalBackdrop,drawRegionalFocalForeground} from './regional-focal.js';
 import {collectHabitatTransitions,focalApproachFor,drawHabitatTransition,drawFocalApproach} from './wayfinding.js';
@@ -940,21 +941,8 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const h={traffic:hist.traffic[i]||0,grazing:hist.grazing[i]||0,nutrient:hist.nutrientLegacy[i]||0,recovery:hist.recovery[i]||0};
     if(!(h.traffic>.12||h.grazing>.13||h.nutrient>.10||h.recovery>.035))return;const seed=hash2(x,y,311);
     c.save();
-    // Repeated travel compacts connected paths into the soil. Direction follows actual neighboring
-    // traffic, so years of movement produce routes instead of unrelated per-tile stripes.
-    if(h.traffic>.12){
-      const hist=this.sim.history,w=this.sim.world,traffic=(tx,ty)=>{if(tx<0||ty<0||tx>=w.n||ty>=w.n)return 0;return hist?.traffic?.[w.idx(tx,ty)]||0};
-      const n=traffic(x,y-1),so=traffic(x,y+1),we=traffic(x-1,y),e=traffic(x+1,y),horizontal=we+e>=n+so,a=Math.min(.44,(h.traffic-.12)*.56),cross=Math.max(n,so,we,e)>.16;
-      c.fillStyle=`rgba(113,84,51,${a})`;
-      if(horizontal){
-        const yy=7+Math.floor(seed*3),x0=we>.08?0:3,x1=e>.08?16:13;c.fillRect(px+x0*u,py+yy*u,(x1-x0)*u,2*u);
-        if(cross&&(n>.08||so>.08)){const xx=7+Math.floor(hash2(y,x,315)*3),y0=n>.08?0:yy,y1=so>.08?16:yy+2;c.fillRect(px+xx*u,py+y0*u,2*u,(y1-y0)*u)}
-      }else{
-        const xx=7+Math.floor(seed*3),y0=n>.08?0:3,y1=so>.08?16:13;c.fillRect(px+xx*u,py+y0*u,2*u,(y1-y0)*u);
-        if(cross&&(we>.08||e>.08)){const yy=7+Math.floor(hash2(y,x,315)*3),x0=we>.08?0:xx,x1=e>.08?16:xx+2;c.fillRect(px+x0*u,py+yy*u,(x1-x0)*u,2*u)}
-      }
-      if(h.traffic>.38){c.fillStyle=`rgba(167,137,82,${Math.min(.28,a*.7)})`;if(horizontal)c.fillRect(px+(4+Math.floor(seed*4))*u,py+(7+Math.floor(seed*3))*u,7*u,u);else c.fillRect(px+(7+Math.floor(seed*3))*u,py+(4+Math.floor(seed*4))*u,u,7*u)}
-    }
+    // Existing local traffic supports worn ground, not an invented orthogonal route network.
+    drawTrafficGround(c,{world:this.sim.world,traffic:hist.traffic,x,y,px,py,u});
     // Heavy feeding/harvest leaves bare soil and cut stubble until vegetation recovers.
     if(h.grazing>.13){const a=Math.min(.48,(h.grazing-.13)*.62);c.fillStyle=`rgba(116,86,49,${a})`;const ox=(2+Math.floor(hash2(x,y,317)*8))*u,oy=(4+Math.floor(hash2(y,x,319)*7))*u;c.fillRect(px+ox,py+oy,(4+Math.floor(seed*3))*u,(2+Math.floor(seed*2))*u);c.fillStyle=`rgba(202,177,103,${Math.min(.46,a+.06)})`;for(let k=0;k<2;k++){const sx=(3+Math.floor(hash2(x+k,y-k,331)*10))*u,sy=(7+Math.floor(hash2(y+k,x-k,337)*6))*u;c.fillRect(px+sx,py+sy,u,2*u)}}
     // Decomposition persists after the carcass itself is gone as dark, rich soil and fungal flecks.
