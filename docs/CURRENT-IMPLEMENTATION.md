@@ -251,3 +251,8 @@ Renderer.drawEggs now delegates original native-grid nest/egg artwork to src/ren
 ### Protected thunderstorm readout (2026-10-24)
 
 The existing local thunderstorm warning shares the protected weather plaque above sensory fog, preserving canonical storm policy, intensity > .4 and surface/depth guards. Lightning world effects remain in their original layer. Compact phone view retains full warning/fonts and omits the decorative bolt only. Fixed runtime6b895746 passes106 playable checks and three focused checks; genuine public storm source/export viewport and panel observations preserve exact redraw state. Full phone Journal/Map/Help panels may cover the underlying canvas. Local isolated painter median stays approximately .08ms; GPU/sustained performance and creator acceptance remain open. See docs/art-refinement-storm-readout-v1-2026-10-24/README.md.
+
+
+### Seasonal ground repetition refinement (2026-10-24)
+
+Decorative seasonal surface marks now use original fine-grid variants distributed across cell interiors instead of repeated lower-row L glyphs. Existing seasonalGroundProfile and eligibility remain unchanged; real flora, biomass, hit anchors, substrate, senses, timing and RNG are untouched. Fixed runtimec001f3f passes106 playable checks and five focused checks. Native/full exported old-new-old scenes preserve full saved state and exact baseline, with6550 changed pixels. Four-season fixtures are authored paint states, not natural seasonal history. Local warm-cache painter median old/new .0009/.0010ms per cell; creator/GPU/full v1 acceptance remain open. See docs/art-refinement-seasonal-ground-v1-2026-10-24/README.md.
