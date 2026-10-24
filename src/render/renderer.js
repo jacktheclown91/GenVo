@@ -3,6 +3,7 @@ import {drawRegionalAnimal} from './regional-fauna.js';
 import {drawWildfire} from './wildfire.js';
 import {drawThunderstorms} from './thunderstorms.js';
 import {drawSurfaceIce} from './surface-ice.js';
+import {drawWaterSurfaceMarks} from './water-surface-art.js';
 import {liquidContact} from '../lineage/ice-locomotion.js';
 import {CanvasRecorder} from './canvas-recorder.js';
 import {drawAtmosphere} from './atmosphere.js';
@@ -772,7 +773,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   }
 
   drawOrganicWaterMotion(px,py,u,x,y,mask,hash){
-    const c=this.ctx,res=LANDFORM_RESOLUTION,shore=!mask.full,reach=riverIdentityAt(this.sim.world,x,y),phase=(this.sim.tickCount+Math.floor(hash*8))&7;if(phase<5){const sx=1+Math.floor(hash2(x,y,23)*6),sy=2+Math.floor(hash2(x,y,29)*4);if(maskWaterAt(mask,Math.floor(sx*2*res/16),Math.floor(sy*2*res/16),res)){c.fillStyle=shore?'rgba(139,207,197,.42)':'rgba(91,158,173,.44)';c.fillRect(px+(sx*2)*u,py+(sy*2)*u,(2+Math.floor(hash*3))*u,u)}}drawRiverReachMarks(c,{reach,mask,px,py,u,x,y,phase})
+    drawWaterSurfaceMarks(this.ctx,{world:this.sim.world,x,y,mask,px,py,u,seconds:this.sim.tickCount/CFG.simHz})
   }
 
   paintOrganicWaterBase(c,px,py,u,x,y,mask,hash,reach){
@@ -802,7 +803,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
         if(edge&&hash2(x*res+sx,y*res+sy,1319)>.30)c.fillRect(px+sx*step*u,py+sy*step*u,step*u,Math.max(u,step*.34*u));
       }
     }
-    if(mask.full&&hash>.36){c.fillStyle=reach.kind==='pool'?'rgba(5,38,57,.28)':'rgba(8,47,66,.20)';c.fillRect(px+(2+Math.floor(hash*8))*u,py+(3+Math.floor(hash2(x,y,41)*8))*u,(3+Math.floor(hash*3))*u,u)}
+
   }
 
   drawOrganicBankAccents(px,py,u,x,y,mask){
@@ -1210,7 +1211,6 @@ function waterToneBase(reach,season){let h=195,s=43,l=24;if(reach.kind==='pool')
 // Depth bands as offsets from the base tone: deep, base, shore, shallow.
 const WATER_BANDS=[[2,3,-3],[0,0,0],[-3,-2,7],[-5,-4,11]];
 function waterTones(reach,season){const {h,s,l}=waterToneBase(reach,season);const c=(dh,ds,dl)=>`hsl(${h+dh} ${Math.max(18,s+ds)}% ${Math.max(14,l+dl)}%)`;return{base:c(0,0,0),deep:c(2,3,-3),shore:c(-3,-2,7),shallow:c(-5,-4,11)}}
-function drawRiverReachMarks(c,{reach,mask,px,py,u,x,y,phase}){if(mask.empty)return;const h=hash2(x,y,1583);c.save();if(reach.kind==='narrows'&&phase<6){c.fillStyle='rgba(139,211,199,.24)';if(reach.axis==='vertical')c.fillRect(px+(6+Math.floor(h*4))*u,py+3*u,u,7*u);else c.fillRect(px+3*u,py+(6+Math.floor(h*4))*u,7*u,u)}else if(reach.kind==='pool'&&h>.48){c.fillStyle='rgba(4,31,49,.18)';c.fillRect(px+(3+Math.floor(h*5))*u,py+(5+Math.floor(hash2(y,x,1591)*4))*u,6*u,2*u)}else if(reach.kind==='bend'&&h>.42){c.strokeStyle='rgba(132,198,190,.20)';c.lineWidth=Math.max(1,u);c.beginPath();c.arc(px+8*u,py+8*u,4*u,.1*Math.PI,.72*Math.PI);c.stroke()}c.restore()}
 
 function renderThreshold(shape){if(shape==='tuft')return .34;if(shape==='shrub')return .22;if(shape==='reed')return .24;if(shape==='fungus')return .16;if(shape==='pod')return .18;return .15}
 function tintHex(hex,hueShift=0,lightShift=0){

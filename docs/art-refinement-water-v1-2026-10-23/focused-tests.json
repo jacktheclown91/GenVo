@@ -1,0 +1,62 @@
+[
+  {
+    "test": "water-surface-art",
+    "exitCode": 0,
+    "stdout": "Water surface art PASS: cross-tile crests, absolute coordinates, native mask clipping, nonrepeated placement, pause-stable clock, actual ice, canvas restoration and full saved-state parity.\n",
+    "stderr": ""
+  },
+  {
+    "test": "landform",
+    "exitCode": 0,
+    "stdout": "landform checks: PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "landform-uniform-mask",
+    "exitCode": 0,
+    "stdout": "Landform uniform mask PASS: 19044 shortcut tiles identical to sampled contours (918 shoreline tiles still sampled).\nUnderground changes keep water masks and regional focals; full resets still clear them.\n",
+    "stderr": ""
+  },
+  {
+    "test": "terrain-continuity",
+    "exitCode": 0,
+    "stdout": "Terrain continuity PASS: removed two-tile source repeat, absolute coordinate continuity, smooth category transitions, bounded authored addresses, immutable world.\n",
+    "stderr": ""
+  },
+  {
+    "test": "native-biome-substrates",
+    "exitCode": 0,
+    "stdout": "native biome substrates: PASS (12 indexed native32 frames, state-driven weights, water exclusion, continuity, immutable sampling, bounded cache invalidation)\n",
+    "stderr": ""
+  },
+  {
+    "test": "surface-ice",
+    "exitCode": 0,
+    "stdout": "Surface ice kernel PASS: finite phase partition, salinity depression, unchanged water/salt, load fracture without melt, atomic invalid forcing and funded thaw.\n",
+    "stderr": ""
+  },
+  {
+    "test": "surface-ice-access",
+    "exitCode": 0,
+    "stdout": "Surface ice access PASS: liquid depth, sealed drinking/food, blocked ascent and finite air, exact save continuation and fracture breathing without melt.\n",
+    "stderr": ""
+  },
+  {
+    "test": "world-swap-render",
+    "exitCode": 0,
+    "stdout": "world swap render caches ok\n",
+    "stderr": ""
+  },
+  {
+    "test": "view-modes",
+    "exitCode": 0,
+    "stdout": "View modes PASS: Comfort default, ordered fog levels, Sandbox-only vegetation, browser-stored preference, live layers clipped to the senses.\n",
+    "stderr": ""
+  },
+  {
+    "test": "public-export",
+    "exitCode": 0,
+    "stdout": "public-export: exact reachable modules and runtime assets only PASS\n",
+    "stderr": ""
+  }
+]

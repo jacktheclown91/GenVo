@@ -1,0 +1,144 @@
+{
+  "cases": [
+    {
+      "prep": {
+        "seed": "PLANET-B0-A",
+        "tick": 1,
+        "player": {
+          "id": 109,
+          "x": 117.5,
+          "y": 66.5
+        },
+        "cold": {
+          "before": 470.3000000715256,
+          "after": 462.5
+        },
+        "zoom": 2,
+        "world": "planetary/1"
+      },
+      "stages": [
+        {
+          "label": "before",
+          "mean": 11.78125,
+          "median": 4.100000023841858,
+          "p95": 53.10000002384186
+        },
+        {
+          "label": "after",
+          "mean": 11.288750000298023,
+          "median": 4.199999928474426,
+          "p95": 54.10000002384186
+        },
+        {
+          "label": "after",
+          "mean": 10.620000000298024,
+          "median": 3.299999952316284,
+          "p95": 51.799999952316284
+        },
+        {
+          "label": "before",
+          "mean": 10.1125,
+          "median": 3,
+          "p95": 50.40000009536743
+        },
+        {
+          "label": "after",
+          "mean": 9.011249999701977,
+          "median": 2.799999952316284,
+          "p95": 48.700000047683716
+        },
+        {
+          "label": "before",
+          "mean": 9.298749999701977,
+          "median": 2.5,
+          "p95": 48.199999928474426
+        },
+        {
+          "label": "before",
+          "mean": 8.817499999701976,
+          "median": 2.5999999046325684,
+          "p95": 48.40000009536743
+        },
+        {
+          "label": "after",
+          "mean": 8.965000000596046,
+          "median": 2.700000047683716,
+          "p95": 48.39999997615814
+        }
+      ],
+      "stateParity": true
+    },
+    {
+      "prep": {
+        "seed": "AUDIO-RAIN-3",
+        "tick": 1,
+        "player": {
+          "id": 109,
+          "x": 47.5,
+          "y": 48.5
+        },
+        "cold": {
+          "before": 716.1999999284744,
+          "after": 569
+        },
+        "zoom": 2,
+        "world": "planetary/1"
+      },
+      "stages": [
+        {
+          "label": "before",
+          "mean": 11.077500000596046,
+          "median": 4.200000047683716,
+          "p95": 49
+        },
+        {
+          "label": "after",
+          "mean": 11.5875,
+          "median": 4.399999976158142,
+          "p95": 49.10000002384186
+        },
+        {
+          "label": "after",
+          "mean": 11.032499998807907,
+          "median": 4.399999976158142,
+          "p95": 49
+        },
+        {
+          "label": "before",
+          "mean": 11.323749999701977,
+          "median": 4,
+          "p95": 50.39999997615814
+        },
+        {
+          "label": "after",
+          "mean": 10.24375,
+          "median": 3.3000000715255737,
+          "p95": 48.60000002384186
+        },
+        {
+          "label": "before",
+          "mean": 9.97875000089407,
+          "median": 2.9000000953674316,
+          "p95": 47.60000002384186
+        },
+        {
+          "label": "before",
+          "mean": 9.45375000089407,
+          "median": 2.9000000953674316,
+          "p95": 49.10000002384186
+        },
+        {
+          "label": "after",
+          "mean": 10.336249999701977,
+          "median": 3.299999952316284,
+          "p95": 48.59999990463257
+        }
+      ],
+      "stateParity": true
+    }
+  ],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Actual exported New Worlds; retained original/candidate renderer comparison on identical ordinary generated world state. RAF and paint time are frozen for paired observation only. No positions, hydrology, weather, organisms, stocks or events are edited. Warm CPU draw timing excludes GPU completion."
+}
