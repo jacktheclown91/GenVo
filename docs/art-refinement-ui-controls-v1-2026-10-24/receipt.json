@@ -1,0 +1,198 @@
+{
+  "events": [],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Actual public New World, opening dismissal, main command roster, held-key movement and utility-menu opening. Source handler and capability audit complements this browser smoke; not every biological action or family border crossing is re-enacted.",
+  "commands": [
+    {
+      "command": "interact",
+      "label": "Interact",
+      "visible": true,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "eat",
+      "label": "Eat",
+      "visible": true,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "drink",
+      "label": "Drink",
+      "visible": true,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "rest",
+      "label": "Rest",
+      "visible": true,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "attack",
+      "label": "Attack",
+      "visible": true,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "brace",
+      "label": "Brace",
+      "visible": true,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "carry",
+      "label": "Carry",
+      "visible": false,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "hide",
+      "label": "Hide",
+      "visible": false,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "alarm",
+      "label": "Alarm",
+      "visible": false,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "family-travel",
+      "label": "Family: solo",
+      "visible": true,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "pounce",
+      "label": "Pounce",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    },
+    {
+      "command": "display",
+      "label": "Display",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    },
+    {
+      "command": "burrow",
+      "label": "Burrow",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    },
+    {
+      "command": "dive",
+      "label": "Dive",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    },
+    {
+      "command": "jump",
+      "label": "Jump",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    },
+    {
+      "command": "glide",
+      "label": "Glide",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    },
+    {
+      "command": "flight",
+      "label": "Take off",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    },
+    {
+      "command": "roost",
+      "label": "Climb",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    },
+    {
+      "command": "torpor",
+      "label": "Torpor",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    }
+  ],
+  "initial": {
+    "x": 103.5,
+    "y": 66.5,
+    "world": "GENVO-7DFC65AD"
+  },
+  "moved": {
+    "x": 104.50315674381005,
+    "y": 66.5
+  },
+  "utilityButtons": [
+    {
+      "label": "Current task guide",
+      "panel": "guide",
+      "action": null
+    },
+    {
+      "label": "Family guidance",
+      "panel": null,
+      "action": "leadership"
+    },
+    {
+      "label": "Selected creature automation",
+      "panel": null,
+      "action": "autonomy"
+    },
+    {
+      "label": "Simulation speed",
+      "panel": null,
+      "action": "speed"
+    },
+    {
+      "label": "Family journal",
+      "panel": "journal",
+      "action": null
+    },
+    {
+      "label": "Exploration map",
+      "panel": "map",
+      "action": null
+    },
+    {
+      "label": "Home range",
+      "panel": "territory",
+      "action": null
+    },
+    {
+      "label": "Population",
+      "panel": "population",
+      "action": null
+    },
+    {
+      "label": "Help and controls",
+      "panel": "help",
+      "action": null
+    }
+  ]
+}
