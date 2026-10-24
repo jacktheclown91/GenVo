@@ -1,0 +1,3283 @@
+{
+  "cases": [
+    {
+      "phase": "native-default",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "dock": {
+        "left": 560,
+        "top": 953.40625,
+        "right": 1360,
+        "bottom": 1072,
+        "width": 800,
+        "height": 118.59375
+      },
+      "notice": {
+        "left": 10,
+        "top": 10,
+        "right": 270,
+        "bottom": 78.390625,
+        "width": 260,
+        "height": 68.390625
+      },
+      "radial": [],
+      "protectedRects": [
+        {
+          "left": 900,
+          "top": 480,
+          "right": 1020,
+          "bottom": 600,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 626,
+            "top": 994,
+            "right": 719,
+            "bottom": 1014,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 92% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 726,
+            "top": 994,
+            "right": 819,
+            "bottom": 1014,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 90% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 626,
+            "top": 1017,
+            "right": 719,
+            "bottom": 1037,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 726,
+            "top": 1017,
+            "right": 819,
+            "bottom": 1037,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "explicit-ui-burst-and-actual-target",
+      "target": {
+        "x": 960,
+        "y": 476,
+        "kind": "water",
+        "world": {
+          "x": 118.5,
+          "y": 64.5
+        },
+        "label": "Water"
+      },
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "dock": {
+        "left": 560,
+        "top": 916.0625,
+        "right": 1360,
+        "bottom": 1072,
+        "width": 800,
+        "height": 155.9375
+      },
+      "notice": {
+        "left": 10,
+        "top": 10,
+        "right": 270,
+        "bottom": 174.78125,
+        "width": 260,
+        "height": 164.78125
+      },
+      "radial": [
+        {
+          "left": 1117.859375,
+          "top": 455,
+          "right": 1189.859375,
+          "bottom": 497,
+          "width": 72,
+          "height": 42
+        },
+        {
+          "left": 1115.859375,
+          "top": 379.8515625,
+          "right": 1191.859375,
+          "bottom": 432.1484375,
+          "width": 76,
+          "height": 52.296875
+        },
+        {
+          "left": 1185.859375,
+          "top": 442.703125,
+          "right": 1261.859375,
+          "bottom": 509.296875,
+          "width": 76,
+          "height": 66.59375
+        },
+        {
+          "left": 1115.859375,
+          "top": 497.40625,
+          "right": 1191.859375,
+          "bottom": 594.59375,
+          "width": 76,
+          "height": 97.1875
+        },
+        {
+          "left": 1045.859375,
+          "top": 449.8515625,
+          "right": 1121.859375,
+          "bottom": 502.1484375,
+          "width": 76,
+          "height": 52.296875
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 900,
+          "top": 480,
+          "right": 1020,
+          "bottom": 600,
+          "width": 120,
+          "height": 120
+        },
+        {
+          "left": 871.859375,
+          "top": 410,
+          "right": 1035.859375,
+          "bottom": 554,
+          "width": 164,
+          "height": 144
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 626,
+            "top": 975.328125,
+            "right": 719,
+            "bottom": 995.328125,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 92% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 726,
+            "top": 975.328125,
+            "right": 819,
+            "bottom": 995.328125,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 90% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 626,
+            "top": 998.328125,
+            "right": 719,
+            "bottom": 1018.328125,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 726,
+            "top": 998.328125,
+            "right": 819,
+            "bottom": 1018.328125,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "native-labels-clock-and-disclosure",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "clockVisible": true,
+      "labels": [
+        {
+          "text": "Health",
+          "width": 75,
+          "height": 12
+        },
+        {
+          "text": "Energy",
+          "width": 75,
+          "height": 12
+        },
+        {
+          "text": "Water",
+          "width": 75,
+          "height": 12
+        },
+        {
+          "text": "Breath",
+          "width": 75,
+          "height": 12
+        }
+      ],
+      "coordinateCount": 1,
+      "locationClosed": true,
+      "coordinatesVisible": false
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "left",
+      "point": {
+        "x": 4,
+        "y": 432
+      },
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "dock": {
+        "left": 560,
+        "top": 953.40625,
+        "right": 1360,
+        "bottom": 1072,
+        "width": 800,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 128,
+          "top": 411,
+          "right": 200,
+          "bottom": 453,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 900,
+          "top": 480,
+          "right": 1020,
+          "bottom": 600,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 626,
+            "top": 994,
+            "right": 719,
+            "bottom": 1014,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 92% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 726,
+            "top": 994,
+            "right": 819,
+            "bottom": 1014,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 90% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 626,
+            "top": 1017,
+            "right": 719,
+            "bottom": 1037,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 726,
+            "top": 1017,
+            "right": 819,
+            "bottom": 1037,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "right",
+      "point": {
+        "x": 1916,
+        "y": 432
+      },
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "dock": {
+        "left": 560,
+        "top": 953.40625,
+        "right": 1360,
+        "bottom": 1072,
+        "width": 800,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 1720,
+          "top": 411,
+          "right": 1792,
+          "bottom": 453,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 900,
+          "top": 480,
+          "right": 1020,
+          "bottom": 600,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 626,
+            "top": 994,
+            "right": 719,
+            "bottom": 1014,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 92% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 726,
+            "top": 994,
+            "right": 819,
+            "bottom": 1014,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 90% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 626,
+            "top": 1017,
+            "right": 719,
+            "bottom": 1037,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 726,
+            "top": 1017,
+            "right": 819,
+            "bottom": 1037,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "top",
+      "point": {
+        "x": 10,
+        "y": 4
+      },
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "dock": {
+        "left": 560,
+        "top": 953.40625,
+        "right": 1360,
+        "bottom": 1072,
+        "width": 800,
+        "height": 118.59375
+      },
+      "notice": {
+        "left": 10,
+        "top": 62,
+        "right": 270,
+        "bottom": 147.1875,
+        "width": 260,
+        "height": 85.1875
+      },
+      "radial": [
+        {
+          "left": 134,
+          "top": 10,
+          "right": 206,
+          "bottom": 52,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 900,
+          "top": 480,
+          "right": 1020,
+          "bottom": 600,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 626,
+            "top": 994,
+            "right": 719,
+            "bottom": 1014,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 91% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 726,
+            "top": 994,
+            "right": 819,
+            "bottom": 1014,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 86% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 626,
+            "top": 1017,
+            "right": 719,
+            "bottom": 1037,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 726,
+            "top": 1017,
+            "right": 819,
+            "bottom": 1037,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "bottom",
+      "point": {
+        "x": 4,
+        "y": 1077
+      },
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "dock": {
+        "left": 560,
+        "top": 953.40625,
+        "right": 1360,
+        "bottom": 1072,
+        "width": 800,
+        "height": 118.59375
+      },
+      "notice": {
+        "left": 10,
+        "top": 10,
+        "right": 270,
+        "bottom": 95.1875,
+        "width": 260,
+        "height": 85.1875
+      },
+      "radial": [
+        {
+          "left": 128,
+          "top": 893.40625,
+          "right": 200,
+          "bottom": 935.40625,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 900,
+          "top": 480,
+          "right": 1020,
+          "bottom": 600,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 626,
+            "top": 994,
+            "right": 719,
+            "bottom": 1014,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 91% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 726,
+            "top": 994,
+            "right": 819,
+            "bottom": 1014,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 86% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 626,
+            "top": 1017,
+            "right": 719,
+            "bottom": 1037,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 726,
+            "top": 1017,
+            "right": 819,
+            "bottom": 1037,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "native-default",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "dock": {
+        "left": 283,
+        "top": 641.40625,
+        "right": 1083,
+        "bottom": 760,
+        "width": 800,
+        "height": 118.59375
+      },
+      "notice": {
+        "left": 10,
+        "top": 10,
+        "right": 270,
+        "bottom": 95.1875,
+        "width": 260,
+        "height": 85.1875
+      },
+      "radial": [],
+      "protectedRects": [
+        {
+          "left": 623,
+          "top": 324,
+          "right": 743,
+          "bottom": 444,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 349,
+            "top": 682,
+            "right": 442,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 91% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 449,
+            "top": 682,
+            "right": 542,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 86% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 349,
+            "top": 705,
+            "right": 442,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 449,
+            "top": 705,
+            "right": 542,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "explicit-ui-burst-and-actual-target",
+      "target": {
+        "x": 683,
+        "y": 320,
+        "kind": "water",
+        "world": {
+          "x": 118.5,
+          "y": 64.5
+        },
+        "label": "Water"
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "dock": {
+        "left": 283,
+        "top": 604.0625,
+        "right": 1083,
+        "bottom": 760,
+        "width": 800,
+        "height": 155.9375
+      },
+      "notice": {
+        "left": 10,
+        "top": 10,
+        "right": 270,
+        "bottom": 174.78125,
+        "width": 260,
+        "height": 164.78125
+      },
+      "radial": [
+        {
+          "left": 840.859375,
+          "top": 299,
+          "right": 912.859375,
+          "bottom": 341,
+          "width": 72,
+          "height": 42
+        },
+        {
+          "left": 838.859375,
+          "top": 223.8515625,
+          "right": 914.859375,
+          "bottom": 276.1484375,
+          "width": 76,
+          "height": 52.296875
+        },
+        {
+          "left": 908.859375,
+          "top": 286.703125,
+          "right": 984.859375,
+          "bottom": 353.296875,
+          "width": 76,
+          "height": 66.59375
+        },
+        {
+          "left": 838.859375,
+          "top": 341.40625,
+          "right": 914.859375,
+          "bottom": 438.59375,
+          "width": 76,
+          "height": 97.1875
+        },
+        {
+          "left": 768.859375,
+          "top": 293.8515625,
+          "right": 844.859375,
+          "bottom": 346.1484375,
+          "width": 76,
+          "height": 52.296875
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 623,
+          "top": 324,
+          "right": 743,
+          "bottom": 444,
+          "width": 120,
+          "height": 120
+        },
+        {
+          "left": 594.859375,
+          "top": 254,
+          "right": 758.859375,
+          "bottom": 398,
+          "width": 164,
+          "height": 144
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 349,
+            "top": 663.328125,
+            "right": 442,
+            "bottom": 683.328125,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 91% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 449,
+            "top": 663.328125,
+            "right": 542,
+            "bottom": 683.328125,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 86% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 349,
+            "top": 686.328125,
+            "right": 442,
+            "bottom": 706.328125,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 449,
+            "top": 686.328125,
+            "right": 542,
+            "bottom": 706.328125,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "native-labels-clock-and-disclosure",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "clockVisible": true,
+      "labels": [
+        {
+          "text": "Health",
+          "width": 75,
+          "height": 12
+        },
+        {
+          "text": "Energy",
+          "width": 75,
+          "height": 12
+        },
+        {
+          "text": "Water",
+          "width": 75,
+          "height": 12
+        },
+        {
+          "text": "Breath",
+          "width": 75,
+          "height": 12
+        }
+      ],
+      "coordinateCount": 1,
+      "locationClosed": true,
+      "coordinatesVisible": false
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "left",
+      "point": {
+        "x": 4,
+        "y": 307.20000000000005
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "dock": {
+        "left": 283,
+        "top": 641.40625,
+        "right": 1083,
+        "bottom": 760,
+        "width": 800,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 128,
+          "top": 286,
+          "right": 200,
+          "bottom": 328,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 623,
+          "top": 324,
+          "right": 743,
+          "bottom": 444,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 349,
+            "top": 682,
+            "right": 442,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 90% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 449,
+            "top": 682,
+            "right": 542,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 82% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 349,
+            "top": 705,
+            "right": 442,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 449,
+            "top": 705,
+            "right": 542,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "right",
+      "point": {
+        "x": 1362,
+        "y": 307.20000000000005
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "dock": {
+        "left": 283,
+        "top": 641.40625,
+        "right": 1083,
+        "bottom": 760,
+        "width": 800,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 1166,
+          "top": 286,
+          "right": 1238,
+          "bottom": 328,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 623,
+          "top": 324,
+          "right": 743,
+          "bottom": 444,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 349,
+            "top": 682,
+            "right": 442,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 90% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 449,
+            "top": 682,
+            "right": 542,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 82% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 349,
+            "top": 705,
+            "right": 442,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 449,
+            "top": 705,
+            "right": 542,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "top",
+      "point": {
+        "x": 10,
+        "y": 4
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "dock": {
+        "left": 283,
+        "top": 641.40625,
+        "right": 1083,
+        "bottom": 760,
+        "width": 800,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 134,
+          "top": 10,
+          "right": 206,
+          "bottom": 52,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 623,
+          "top": 324,
+          "right": 743,
+          "bottom": 444,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 349,
+            "top": 682,
+            "right": 442,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 90% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 449,
+            "top": 682,
+            "right": 542,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 82% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 349,
+            "top": 705,
+            "right": 442,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 449,
+            "top": 705,
+            "right": 542,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "bottom",
+      "point": {
+        "x": 4,
+        "y": 765
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "dock": {
+        "left": 283,
+        "top": 641.40625,
+        "right": 1083,
+        "bottom": 760,
+        "width": 800,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 128,
+          "top": 581.40625,
+          "right": 200,
+          "bottom": 623.40625,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 623,
+          "top": 324,
+          "right": 743,
+          "bottom": 444,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 349,
+            "top": 682,
+            "right": 442,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 90% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 449,
+            "top": 682,
+            "right": 542,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 82% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 349,
+            "top": 705,
+            "right": 442,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 449,
+            "top": 705,
+            "right": 542,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "native-default",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "dock": {
+        "left": 112,
+        "top": 641.40625,
+        "right": 912,
+        "bottom": 760,
+        "width": 800,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [],
+      "protectedRects": [
+        {
+          "left": 452,
+          "top": 324,
+          "right": 572,
+          "bottom": 444,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 178,
+            "top": 682,
+            "right": 271,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 90% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 278,
+            "top": 682,
+            "right": 371,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 82% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 178,
+            "top": 705,
+            "right": 271,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 278,
+            "top": 705,
+            "right": 371,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "explicit-ui-burst-and-actual-target",
+      "target": {
+        "x": 512,
+        "y": 320,
+        "kind": "water",
+        "world": {
+          "x": 118.5,
+          "y": 64.5
+        },
+        "label": "Water"
+      },
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "dock": {
+        "left": 112,
+        "top": 604.0625,
+        "right": 912,
+        "bottom": 760,
+        "width": 800,
+        "height": 155.9375
+      },
+      "notice": {
+        "left": 10,
+        "top": 10,
+        "right": 270,
+        "bottom": 141.1875,
+        "width": 260,
+        "height": 131.1875
+      },
+      "radial": [
+        {
+          "left": 669.859375,
+          "top": 299,
+          "right": 741.859375,
+          "bottom": 341,
+          "width": 72,
+          "height": 42
+        },
+        {
+          "left": 667.859375,
+          "top": 223.8515625,
+          "right": 743.859375,
+          "bottom": 276.1484375,
+          "width": 76,
+          "height": 52.296875
+        },
+        {
+          "left": 737.859375,
+          "top": 286.703125,
+          "right": 813.859375,
+          "bottom": 353.296875,
+          "width": 76,
+          "height": 66.59375
+        },
+        {
+          "left": 667.859375,
+          "top": 341.40625,
+          "right": 743.859375,
+          "bottom": 438.59375,
+          "width": 76,
+          "height": 97.1875
+        },
+        {
+          "left": 597.859375,
+          "top": 293.8515625,
+          "right": 673.859375,
+          "bottom": 346.1484375,
+          "width": 76,
+          "height": 52.296875
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 452,
+          "top": 324,
+          "right": 572,
+          "bottom": 444,
+          "width": 120,
+          "height": 120
+        },
+        {
+          "left": 423.859375,
+          "top": 254,
+          "right": 587.859375,
+          "bottom": 398,
+          "width": 164,
+          "height": 144
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 178,
+            "top": 663.328125,
+            "right": 271,
+            "bottom": 683.328125,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 90% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 278,
+            "top": 663.328125,
+            "right": 371,
+            "bottom": 683.328125,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 82% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 178,
+            "top": 686.328125,
+            "right": 271,
+            "bottom": 706.328125,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 278,
+            "top": 686.328125,
+            "right": 371,
+            "bottom": 706.328125,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "native-labels-clock-and-disclosure",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "clockVisible": true,
+      "labels": [
+        {
+          "text": "Health",
+          "width": 75,
+          "height": 12
+        },
+        {
+          "text": "Energy",
+          "width": 75,
+          "height": 12
+        },
+        {
+          "text": "Water",
+          "width": 75,
+          "height": 12
+        },
+        {
+          "text": "Breath",
+          "width": 75,
+          "height": 12
+        }
+      ],
+      "coordinateCount": 1,
+      "locationClosed": true,
+      "coordinatesVisible": false
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "left",
+      "point": {
+        "x": 4,
+        "y": 307.20000000000005
+      },
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "dock": {
+        "left": 112,
+        "top": 641.40625,
+        "right": 912,
+        "bottom": 760,
+        "width": 800,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 128,
+          "top": 286,
+          "right": 200,
+          "bottom": 328,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 452,
+          "top": 324,
+          "right": 572,
+          "bottom": 444,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 178,
+            "top": 682,
+            "right": 271,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 90% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 278,
+            "top": 682,
+            "right": 371,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 82% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 178,
+            "top": 705,
+            "right": 271,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 278,
+            "top": 705,
+            "right": 371,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "right",
+      "point": {
+        "x": 1020,
+        "y": 307.20000000000005
+      },
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "dock": {
+        "left": 112,
+        "top": 641.40625,
+        "right": 912,
+        "bottom": 760,
+        "width": 800,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 824,
+          "top": 286,
+          "right": 896,
+          "bottom": 328,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 452,
+          "top": 324,
+          "right": 572,
+          "bottom": 444,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 178,
+            "top": 682,
+            "right": 271,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 90% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 278,
+            "top": 682,
+            "right": 371,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 82% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 178,
+            "top": 705,
+            "right": 271,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 278,
+            "top": 705,
+            "right": 371,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "top",
+      "point": {
+        "x": 10,
+        "y": 4
+      },
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "dock": {
+        "left": 112,
+        "top": 641.40625,
+        "right": 912,
+        "bottom": 760,
+        "width": 800,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 134,
+          "top": 10,
+          "right": 206,
+          "bottom": 52,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 452,
+          "top": 324,
+          "right": 572,
+          "bottom": 444,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 178,
+            "top": 682,
+            "right": 271,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 90% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 278,
+            "top": 682,
+            "right": 371,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 82% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 178,
+            "top": 705,
+            "right": 271,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 278,
+            "top": 705,
+            "right": 371,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "bottom",
+      "point": {
+        "x": 4,
+        "y": 765
+      },
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "dock": {
+        "left": 112,
+        "top": 641.40625,
+        "right": 912,
+        "bottom": 760,
+        "width": 800,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 128,
+          "top": 581.40625,
+          "right": 200,
+          "bottom": 623.40625,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 452,
+          "top": 324,
+          "right": 572,
+          "bottom": 444,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 178,
+            "top": 682,
+            "right": 271,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 89% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 278,
+            "top": 682,
+            "right": 371,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 77% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 178,
+            "top": 705,
+            "right": 271,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 278,
+            "top": 705,
+            "right": 371,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "native-default",
+      "viewport": {
+        "width": 800,
+        "height": 600
+      },
+      "dock": {
+        "left": 8,
+        "top": 473.40625,
+        "right": 792,
+        "bottom": 592,
+        "width": 784,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [],
+      "protectedRects": [
+        {
+          "left": 340,
+          "top": 240,
+          "right": 460,
+          "bottom": 360,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 74,
+            "top": 514,
+            "right": 167,
+            "bottom": 534,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 89% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 174,
+            "top": 514,
+            "right": 267,
+            "bottom": 534,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 77% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 74,
+            "top": 537,
+            "right": 167,
+            "bottom": 557,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 174,
+            "top": 537,
+            "right": 267,
+            "bottom": 557,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "explicit-ui-burst-and-actual-target",
+      "target": {
+        "x": 400,
+        "y": 236,
+        "kind": "water",
+        "world": {
+          "x": 118.5,
+          "y": 64.5
+        },
+        "label": "Water"
+      },
+      "viewport": {
+        "width": 800,
+        "height": 600
+      },
+      "dock": {
+        "left": 8,
+        "top": 436.0625,
+        "right": 792,
+        "bottom": 592,
+        "width": 784,
+        "height": 155.9375
+      },
+      "notice": {
+        "left": 10,
+        "top": 10,
+        "right": 270,
+        "bottom": 141.1875,
+        "width": 260,
+        "height": 131.1875
+      },
+      "radial": [
+        {
+          "left": 557.859375,
+          "top": 215,
+          "right": 629.859375,
+          "bottom": 257,
+          "width": 72,
+          "height": 42
+        },
+        {
+          "left": 555.859375,
+          "top": 139.8515625,
+          "right": 631.859375,
+          "bottom": 192.1484375,
+          "width": 76,
+          "height": 52.296875
+        },
+        {
+          "left": 625.859375,
+          "top": 202.703125,
+          "right": 701.859375,
+          "bottom": 269.296875,
+          "width": 76,
+          "height": 66.59375
+        },
+        {
+          "left": 555.859375,
+          "top": 257.40625,
+          "right": 631.859375,
+          "bottom": 354.59375,
+          "width": 76,
+          "height": 97.1875
+        },
+        {
+          "left": 485.859375,
+          "top": 209.8515625,
+          "right": 561.859375,
+          "bottom": 262.1484375,
+          "width": 76,
+          "height": 52.296875
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 340,
+          "top": 240,
+          "right": 460,
+          "bottom": 360,
+          "width": 120,
+          "height": 120
+        },
+        {
+          "left": 311.859375,
+          "top": 170,
+          "right": 475.859375,
+          "bottom": 314,
+          "width": 164,
+          "height": 144
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 74,
+            "top": 495.328125,
+            "right": 167,
+            "bottom": 515.328125,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 89% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 174,
+            "top": 495.328125,
+            "right": 267,
+            "bottom": 515.328125,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 77% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 74,
+            "top": 518.328125,
+            "right": 167,
+            "bottom": 538.328125,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 174,
+            "top": 518.328125,
+            "right": 267,
+            "bottom": 538.328125,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "native-labels-clock-and-disclosure",
+      "viewport": {
+        "width": 800,
+        "height": 600
+      },
+      "clockVisible": true,
+      "labels": [
+        {
+          "text": "Health",
+          "width": 75,
+          "height": 12
+        },
+        {
+          "text": "Energy",
+          "width": 75,
+          "height": 12
+        },
+        {
+          "text": "Water",
+          "width": 75,
+          "height": 12
+        },
+        {
+          "text": "Breath",
+          "width": 75,
+          "height": 12
+        }
+      ],
+      "coordinateCount": 1,
+      "locationClosed": true,
+      "coordinatesVisible": false
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "left",
+      "point": {
+        "x": 4,
+        "y": 240
+      },
+      "viewport": {
+        "width": 800,
+        "height": 600
+      },
+      "dock": {
+        "left": 8,
+        "top": 473.40625,
+        "right": 792,
+        "bottom": 592,
+        "width": 784,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 128,
+          "top": 219,
+          "right": 200,
+          "bottom": 261,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 340,
+          "top": 240,
+          "right": 460,
+          "bottom": 360,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 74,
+            "top": 514,
+            "right": 167,
+            "bottom": 534,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 89% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 174,
+            "top": 514,
+            "right": 267,
+            "bottom": 534,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 77% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 74,
+            "top": 537,
+            "right": 167,
+            "bottom": 557,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 174,
+            "top": 537,
+            "right": 267,
+            "bottom": 557,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "right",
+      "point": {
+        "x": 796,
+        "y": 240
+      },
+      "viewport": {
+        "width": 800,
+        "height": 600
+      },
+      "dock": {
+        "left": 8,
+        "top": 473.40625,
+        "right": 792,
+        "bottom": 592,
+        "width": 784,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 600,
+          "top": 219,
+          "right": 672,
+          "bottom": 261,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 340,
+          "top": 240,
+          "right": 460,
+          "bottom": 360,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 74,
+            "top": 514,
+            "right": 167,
+            "bottom": 534,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 89% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 174,
+            "top": 514,
+            "right": 267,
+            "bottom": 534,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 77% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 74,
+            "top": 537,
+            "right": 167,
+            "bottom": 557,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 174,
+            "top": 537,
+            "right": 267,
+            "bottom": 557,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "top",
+      "point": {
+        "x": 10,
+        "y": 4
+      },
+      "viewport": {
+        "width": 800,
+        "height": 600
+      },
+      "dock": {
+        "left": 8,
+        "top": 473.40625,
+        "right": 792,
+        "bottom": 592,
+        "width": 784,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 134,
+          "top": 10,
+          "right": 206,
+          "bottom": 52,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 340,
+          "top": 240,
+          "right": 460,
+          "bottom": 360,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 74,
+            "top": 514,
+            "right": 167,
+            "bottom": 534,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 89% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 174,
+            "top": 514,
+            "right": 267,
+            "bottom": 534,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 77% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 74,
+            "top": 537,
+            "right": 167,
+            "bottom": 557,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 174,
+            "top": 537,
+            "right": 267,
+            "bottom": 557,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "bottom",
+      "point": {
+        "x": 4,
+        "y": 597
+      },
+      "viewport": {
+        "width": 800,
+        "height": 600
+      },
+      "dock": {
+        "left": 8,
+        "top": 473.40625,
+        "right": 792,
+        "bottom": 592,
+        "width": 784,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 128,
+          "top": 413.40625,
+          "right": 200,
+          "bottom": 455.40625,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 340,
+          "top": 240,
+          "right": 460,
+          "bottom": 360,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 74,
+            "top": 514,
+            "right": 167,
+            "bottom": 534,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 89% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 174,
+            "top": 514,
+            "right": 267,
+            "bottom": 534,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 77% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 74,
+            "top": 537,
+            "right": 167,
+            "bottom": 557,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 174,
+            "top": 537,
+            "right": 267,
+            "bottom": 557,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "public-open-context-resize",
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "dock": {
+        "left": 112,
+        "top": 641.40625,
+        "right": 912,
+        "bottom": 760,
+        "width": 800,
+        "height": 118.59375
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 128,
+          "top": 413.40625,
+          "right": 200,
+          "bottom": 455.40625,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 452,
+          "top": 324,
+          "right": 572,
+          "bottom": 444,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 178,
+            "top": 682,
+            "right": 271,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 89% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 278,
+            "top": 682,
+            "right": 371,
+            "bottom": 702,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 77% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 178,
+            "top": 705,
+            "right": 271,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 278,
+            "top": 705,
+            "right": 371,
+            "bottom": 725,
+            "width": 93,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "native-default",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dock": {
+        "left": 8,
+        "top": 677,
+        "right": 382,
+        "bottom": 836,
+        "width": 374,
+        "height": 159
+      },
+      "notice": null,
+      "radial": [],
+      "protectedRects": [
+        {
+          "left": 135,
+          "top": 362,
+          "right": 255,
+          "bottom": 482,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 189.1875,
+            "top": 701,
+            "right": 278.09375,
+            "bottom": 721,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 89% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 285.09375,
+            "top": 701,
+            "right": 374,
+            "bottom": 721,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 77% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 189.1875,
+            "top": 724,
+            "right": 278.09375,
+            "bottom": 744,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 285.09375,
+            "top": 724,
+            "right": 374,
+            "bottom": 744,
+            "width": 88.90625,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "explicit-ui-burst-and-actual-target",
+      "target": {
+        "x": 195,
+        "y": 358,
+        "kind": "water",
+        "world": {
+          "x": 118.5,
+          "y": 64.5
+        },
+        "label": "Water"
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dock": {
+        "left": 8,
+        "top": 618.0625,
+        "right": 382,
+        "bottom": 836,
+        "width": 374,
+        "height": 217.9375
+      },
+      "notice": {
+        "left": 10,
+        "top": 150.8125,
+        "right": 270,
+        "bottom": 282,
+        "width": 260,
+        "height": 131.1875
+      },
+      "radial": [
+        {
+          "left": 82,
+          "top": 85.140625,
+          "right": 154,
+          "bottom": 127.140625,
+          "width": 72,
+          "height": 42
+        },
+        {
+          "left": 80,
+          "top": 9.9921875,
+          "right": 156,
+          "bottom": 62.2890625,
+          "width": 76,
+          "height": 52.296875
+        },
+        {
+          "left": 150,
+          "top": 72.84375,
+          "right": 226,
+          "bottom": 139.4375,
+          "width": 76,
+          "height": 66.59375
+        },
+        {
+          "left": 80,
+          "top": 127.546875,
+          "right": 156,
+          "bottom": 224.734375,
+          "width": 76,
+          "height": 97.1875
+        },
+        {
+          "left": 10,
+          "top": 79.9921875,
+          "right": 86,
+          "bottom": 132.2890625,
+          "width": 76,
+          "height": 52.296875
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 135,
+          "top": 362,
+          "right": 255,
+          "bottom": 482,
+          "width": 120,
+          "height": 120
+        },
+        {
+          "left": 106.859375,
+          "top": 292,
+          "right": 270.859375,
+          "bottom": 436,
+          "width": 164,
+          "height": 144
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 189.1875,
+            "top": 642.0625,
+            "right": 278.09375,
+            "bottom": 662.0625,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 89% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 285.09375,
+            "top": 642.0625,
+            "right": 374,
+            "bottom": 662.0625,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 77% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 189.1875,
+            "top": 665.0625,
+            "right": 278.09375,
+            "bottom": 685.0625,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 285.09375,
+            "top": 665.0625,
+            "right": 374,
+            "bottom": 685.0625,
+            "width": 88.90625,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "native-labels-clock-and-disclosure",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "clockVisible": true,
+      "labels": [
+        {
+          "text": "Health",
+          "width": 75.90625,
+          "height": 12
+        },
+        {
+          "text": "Energy",
+          "width": 75.90625,
+          "height": 12
+        },
+        {
+          "text": "Water",
+          "width": 75.90625,
+          "height": 12
+        },
+        {
+          "text": "Breath",
+          "width": 75.90625,
+          "height": 12
+        }
+      ],
+      "coordinateCount": 1,
+      "locationClosed": true,
+      "coordinatesVisible": false
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "left",
+      "point": {
+        "x": 4,
+        "y": 337.6
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dock": {
+        "left": 8,
+        "top": 677,
+        "right": 382,
+        "bottom": 836,
+        "width": 374,
+        "height": 159
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 128,
+          "top": 316,
+          "right": 200,
+          "bottom": 358,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 135,
+          "top": 362,
+          "right": 255,
+          "bottom": 482,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 189.1875,
+            "top": 701,
+            "right": 278.09375,
+            "bottom": 721,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 89% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 285.09375,
+            "top": 701,
+            "right": 374,
+            "bottom": 721,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 77% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 189.1875,
+            "top": 724,
+            "right": 278.09375,
+            "bottom": 744,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 285.09375,
+            "top": 724,
+            "right": 374,
+            "bottom": 744,
+            "width": 88.90625,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "right",
+      "point": {
+        "x": 386,
+        "y": 337.6
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dock": {
+        "left": 8,
+        "top": 677,
+        "right": 382,
+        "bottom": 836,
+        "width": 374,
+        "height": 159
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 190,
+          "top": 316,
+          "right": 262,
+          "bottom": 358,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 135,
+          "top": 362,
+          "right": 255,
+          "bottom": 482,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 189.1875,
+            "top": 701,
+            "right": 278.09375,
+            "bottom": 721,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 88% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 285.09375,
+            "top": 701,
+            "right": 374,
+            "bottom": 721,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 73% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 189.1875,
+            "top": 724,
+            "right": 278.09375,
+            "bottom": 744,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 285.09375,
+            "top": 724,
+            "right": 374,
+            "bottom": 744,
+            "width": 88.90625,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "top",
+      "point": {
+        "x": 10,
+        "y": 4
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dock": {
+        "left": 8,
+        "top": 677,
+        "right": 382,
+        "bottom": 836,
+        "width": 374,
+        "height": 159
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 134,
+          "top": 10,
+          "right": 206,
+          "bottom": 52,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 135,
+          "top": 362,
+          "right": 255,
+          "bottom": 482,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 189.1875,
+            "top": 701,
+            "right": 278.09375,
+            "bottom": 721,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 88% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 285.09375,
+            "top": 701,
+            "right": 374,
+            "bottom": 721,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 73% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 189.1875,
+            "top": 724,
+            "right": 278.09375,
+            "bottom": 744,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 285.09375,
+            "top": 724,
+            "right": 374,
+            "bottom": 744,
+            "width": 88.90625,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    },
+    {
+      "phase": "public-edge-context",
+      "edge": "bottom",
+      "point": {
+        "x": 4,
+        "y": 841
+      },
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "dock": {
+        "left": 8,
+        "top": 677,
+        "right": 382,
+        "bottom": 836,
+        "width": 374,
+        "height": 159
+      },
+      "notice": null,
+      "radial": [
+        {
+          "left": 128,
+          "top": 617,
+          "right": 200,
+          "bottom": 659,
+          "width": 72,
+          "height": 42
+        }
+      ],
+      "protectedRects": [
+        {
+          "left": 135,
+          "top": 362,
+          "right": 255,
+          "bottom": 482,
+          "width": 120,
+          "height": 120
+        }
+      ],
+      "edgePixels": 0,
+      "needs": [
+        {
+          "label": "Health",
+          "title": "Health 100% · Injury lowers health; wounds need time and recovery.",
+          "rect": {
+            "left": 189.1875,
+            "top": 701,
+            "right": 278.09375,
+            "bottom": 721,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Energy",
+          "title": "Energy 88% · Eat compatible food to restore energy.",
+          "rect": {
+            "left": 285.09375,
+            "top": 701,
+            "right": 374,
+            "bottom": 721,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Water",
+          "title": "Water 73% · Drink beside water to restore hydration.",
+          "rect": {
+            "left": 189.1875,
+            "top": 724,
+            "right": 278.09375,
+            "bottom": 744,
+            "width": 88.90625,
+            "height": 20
+          }
+        },
+        {
+          "label": "Breath",
+          "title": "Breath 100% · Rest while still to regain breath; fighting and sprinting spend it.",
+          "rect": {
+            "left": 285.09375,
+            "top": 724,
+            "right": 374,
+            "bottom": 744,
+            "width": 88.90625,
+            "height": 20
+          }
+        }
+      ],
+      "violations": []
+    }
+  ],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Actual public New World, native onboarding, held WASD, actual rendered-target context menu and Field Guide. Burst messages are explicitly UI layout fixtures, not ecological events.",
+  "movement": {
+    "start": {
+      "x": 117.5,
+      "y": 66.5
+    },
+    "finish": {
+      "x": 118.69166499014766,
+      "y": 66.5
+    },
+    "distance": 1.1916649901476575
+  },
+  "locationText": "Planet 118, 66 · Region 0, 0",
+  "snapshotParity": true,
+  "requestedDetailsDismissed": true
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "test": "overlay-placement",
+    "exitCode": 0,
+    "stdout": "Overlay placement PASS: player/target avoidance and complete bounds at desktop, laptop and 800x600 edge/centre cases.\n",
+    "stderr": ""
+  },
+  {
+    "test": "notification-lane",
+    "exitCode": 0,
+    "stdout": "notification lane checks: PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "ui-presentation",
+    "exitCode": 0,
+    "stdout": "UI presentation checks: PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "quick-access",
+    "exitCode": 0,
+    "stdout": "quick access + task guide checks: PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "quick-interaction",
+    "exitCode": 0,
+    "stdout": "Deterministic quick-action cycling, exact selection, unavailable reasons and actor/world reset PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "quick-interaction-default",
+    "exitCode": 0,
+    "stdout": "plain E acts on the shown default; explicit Q selection keeps its documented stickiness PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "contextual-interactions",
+    "exitCode": 0,
+    "stdout": "Four dietary anatomies, read-only queries, exact-target/no-fallback, ambiguity, stale feeding descriptors, keyed collection and attack fallback PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "readability",
+    "exitCode": 0,
+    "stdout": "readability checks passed\n",
+    "stderr": ""
+  },
+  {
+    "test": "body-cost-readability",
+    "exitCode": 0,
+    "stdout": "Body cost readability: previews agree with actual mass/basal spending; old/new policies, paid-growth affordability edges, real journal authority, pure reads and unavailable dead records PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "world-swap-render",
+    "exitCode": 0,
+    "stdout": "world swap render caches ok\n",
+    "stderr": ""
+  },
+  {
+    "test": "public-export",
+    "exitCode": 0,
+    "stdout": "public-export: exact reachable modules and runtime assets only PASS\n",
+    "stderr": ""
+  }
+]
