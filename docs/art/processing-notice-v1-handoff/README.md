@@ -1,0 +1,7 @@
+# Plain-language processing notice candidate
+
+Codex presentation-only candidate and exact patch against committed2becde61. Live src/ui/inspector.js has Claude-owned uncommitted changes and is deliberately untouched. The candidate stays in this review directory, outside runtime, until that owner reconciles integration.
+
+Consume the existing processingCapacity status and unmodified processingCapacityMessage string. That canonical string remains the sole visibility eligibility; no duplicate timing/population thresholds. Plain-language title/body replace ordinary debug prose; native Update details exposes the full original string, including counts, queued seconds and All offspring are retained. Existing node identity, role=status, outside positioning and modal reservation stay with the inspector. Preserve disclosure open state through updates; pointer events are enabled only on the disclosure because the existing notice is pointer-events:none. No controls-resume promise is made given the recorded input issue.
+
+No simulation, clock, replay, retention, resource or save authority changes. Require immutable status/model checks, native disclosure behavior and repeated-update preservation, responsive/keyboard review and genuine busy-state integration before acceptance. Authored notice fixtures are not naturally observed backlog or a gameplay/performance fix. Current source node placement may need coordinated clearance review after insertion; no live integration or creator acceptance is claimed.
