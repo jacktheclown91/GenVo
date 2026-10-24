@@ -14,6 +14,8 @@ Courtship presentation now displays the actual performer and partner with shared
 
 World-object inspector presentation adds labelled object symbols to previously blank headers, keeps native plant/seed drawings and protects the actor and survival controls. Nine combined focused checks, exact public export, source audit and 18 six-size native browser cases pass; [scope and limits](art-refinement-resource-v1-2026-10-23/README.md). Full v1 and creator acceptance remain open.
 
+Water surface continuity replaces repeated per-tile dots/pool rectangles with sparse native-32 world-space crests, clipped to existing wet masks and suppressed by canonical coherent ice. The original water commit passes 106 checks; merged aquatic/breeding source passes 14 relevant checks, fresh export/audit and public world switches. [Paired runtime evidence and exact scope](art-refinement-water-v1-2026-10-23/README.md) retain performance and natural-ice limits; full v1/creator acceptance remain open.
+
 ## Source and ownership
 
 The sole active source is `C:\Users\jackt\Desktop\Games\game jam october\genvo-toolkit`, on `main`. Gate A established October 20: fetched the newer consolidation tip `2e07fb5`, reconciled all feature/work tips by ancestry and preserved diagnostic branches, fast-forwarded main without rewriting history, and verified GitHub main at the exact local SHA. Runtime repairs, artwork, hydrology and genuine Day 30/100 scenarios are committed in that history. Two unrelated untracked terminal-help files remain preserved. This establishes source synchronization, not full-game completion. Inspect Git before editing; preserve concurrent work and historical test fixtures.

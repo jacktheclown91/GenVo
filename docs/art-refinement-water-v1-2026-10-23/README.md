@@ -20,4 +20,12 @@ The old renderer is retained byte-for-byte at assets/art/production-review/water
 
 Run node tools/export-public.mjs <new-output>, then node tools/review-water-continuity.cjs <export> <new-report> from the source checkout. The normal review export is C:\Users\jackt\AppData\Local\Temp\genvo-water-v1-web-20261023-review. The review tool needs the retained original file; ordinary gameplay does not.
 
-This removes another identified repetition source. It does not establish complete ocean/river art, all weather/ice/extremes, underwater/subterranean presentation, full performance, creator approval, migration/release or completed GenVo v1. Existing simulation and save authorities are unchanged. The full shared-renderer integration gate is pending; focused/browser evidence above is already established.
+This removes another identified repetition source. It does not establish complete ocean/river art, all weather/ice/extremes, underwater/subterranean presentation, full performance, creator approval, migration/release or completed GenVo v1. Existing simulation and save authorities are unchanged. The full shared-renderer gate completed on the original water commit; combined-source follow-up is recorded below.
+
+## Final integration, October 24
+
+The full playable gate passes 106/106 checks, exit 0, in 684.6 seconds at da359082. Main then advanced to Claude's 7878d96b aquatic winter/gill/breeding changes and 8c916558 documentation. Those commits are merged without changing their policies. All 14 relevant combined checks pass (the original ten plus aquatic-foraging, breeding-support, metabolism-policy and regional-founding). The fresh source audit, exact 838-file public export and three ordinary public New Worlds also pass on combined source. The 106-check receipt remains explicitly evidence on its recorded original commit, not a claim of a full rerun after the merged biology. Current combined export: C:\Users\jackt\AppData\Local\Temp\genvo-water-v1-web-20261024-current.
+
+A separate short generated-world diagnostic (AUDIO-RAIN-4, planetary/1, dayClock true, 250 ordinary update(null) calls) reached day 2/tick 250 with no coherent ice cells; no climate, season, reserves, position or water fields were staged. It does not prove a naturally frozen browser encounter. The ice exclusion remains canonical-rule/unit evidence, with natural winter visual acceptance still open. Its observed stdout was transcribed in the raw archive with that attribution.
+
+Approval review temporarily exhausted its quota before the negative-probe recording command ran. No action was executed through that failed review. After the stated reset, the normal approval path succeeded; no approval bypass was used.
