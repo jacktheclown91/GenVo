@@ -1,0 +1,7 @@
+# Environmental audio refinement coordination
+
+Codex sound-design pass on 5d5aa173. Existing field/wet beds embed scheduled bird, cricket and frog phrases; the wet bed also contains rain although its runtime level follows soil moisture. Replace those three backgrounds with nonvocal wind/vegetation/water textures. Preserve the existing native fauna/voice, courtship, thunder and action cues and all original asset bounds. Retain old masters and source in the development evidence/archive.
+
+Shared audio integration heads-up: add one 12-second rain stem using the existing loop/decoder/bus system. Its mix reads only canonical atmosphereAt(...).liquid at the actual player position; it is quiet for dry/snow-only air, missing observers, underground and submerged listeners. No climate, water, organisms, RNG, simulation timing, event or save state changes. This is an audio presentation binding to the already-exposed atmosphere authority, not a new weather model. Technical audio/event architecture remains Claude's authority.
+
+Keep Opus/AAC compatibility, current sample rate, exact loop lengths, original master/shipped-size and headroom budgets. The authoring generator must preserve the unrelated sound pack: maintain its existing build-only RNG draw schedule and verify unaffected master/asset hashes. Use original deterministic synthesis; no external samples/models or new licenses. Prepare quantitative/decoder/runtime proof and genuine-weather review captures. Subjective listening and creator sonic acceptance remain separate requirements.
