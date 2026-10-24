@@ -22,7 +22,7 @@ import {gaitTravelFor} from './genvo.js';
 import {assemblyFor} from './creature-assembler.js';
 import {locomotionStyle,locomotionOffsets} from './locomotion-style.js';
 import {movementProfile} from '../lineage/lifestyle.js';
-import {drawSnowGround} from './snow-ground-art.js';
+import {drawSnowGround,beginSnowWindow} from './snow-ground-art.js';
 import {botanicalPlantView} from '../ecology/botanical-reproduction.js';
 import {FeedingPresentation,applyFeedingExpression} from './feeding-expression.js';
 import {drawSubsurface} from './subsurface.js';
@@ -409,6 +409,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   }
   drawSnowWindow(tile,startX,startY,cols,rows){
     const w=this.sim.world,depth=w.soilWater?.snowpack;
+    beginSnowWindow(w,depth?Math.max(0,Math.min(w.n,startX+cols)-Math.max(0,startX))*Math.max(0,Math.min(w.n,startY+rows)-Math.max(0,startY)):0);
     if(!depth)return;const c=this.ctx;let drawn=0;
     for(let y=Math.max(0,startY);y<Math.min(w.n,startY+rows);y++)
       for(let x=Math.max(0,startX);x<Math.min(w.n,startX+cols);x++){
