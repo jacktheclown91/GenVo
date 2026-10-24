@@ -2,6 +2,10 @@
 
 Reviewed October 20, 2026. Governing intent: [current design](../design/CURRENT-DESIGN.md) and the creator's full Creature-stage directive. Code ownership: [implementation authorities](../design/governance/implementation-authorities.json). Full scope and remaining gaps: [completion matrix](FULL-GAME-COMPLETION-MATRIX.md). Earlier checkpoint prose is [historical evidence](history/IMPLEMENTATION-before-live-refresh-2026-10-19.md), not current instructions.
 
+## Stored-snow ground presentation, October 24
+
+Ground snow now uses original native-32 contours driven solely by stored snowpack and the shared coverage authority, with visual shoreline clipping and no season tint. Paired genuine winter/spring worlds retain exact state. A wide-screen cache regression in the first candidate was rejected; corrected visible-window ownership and verification are documented separately. [Evidence, measured costs and remaining acceptance](art-refinement-snow-ground-v1-2026-10-24/README.md). Full environment, performance, v1 and creator acceptance remain open.
+
 ## Mature terrain traffic presentation, October 24
 
 Canonical accumulated traffic now paints diffuse trampled ground and direction-supported broken wear instead of tile-spanning crossbars. Same-state original/candidate Day31/101 frames show the mature lattice removed without changing biology/history; [paired evidence, CPU costs and inherited terrain-cohesion failure](art-refinement-traffic-ground-v1-2026-10-24/README.md). Full integration gate status and art/performance acceptance are recorded separately.

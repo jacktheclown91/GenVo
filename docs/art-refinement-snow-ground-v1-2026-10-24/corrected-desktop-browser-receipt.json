@@ -1,0 +1,186 @@
+{
+  "cases": [
+    {
+      "prep": {
+        "seed": "GENVO-VALLEY-REPLAY-30",
+        "tick": 1442,
+        "day": 31,
+        "snowCells": 15870,
+        "snowMax": 0.08219828339634734,
+        "snowTotal": 905.7997964033946,
+        "player": {
+          "id": 109,
+          "x": 18.04942546190287,
+          "y": 60.6112835666868
+        },
+        "cold": {
+          "before": 998.3000000715256,
+          "after": 1029.8000000715256
+        },
+        "zoom": 2,
+        "world": "planetary/1"
+      },
+      "stages": [
+        {
+          "label": "before",
+          "mean": 18.653749999403953,
+          "median": 17.699999928474426,
+          "p95": 34
+        },
+        {
+          "label": "after",
+          "mean": 20.884999999403952,
+          "median": 19.200000047683716,
+          "p95": 33.40000009536743
+        },
+        {
+          "label": "after",
+          "mean": 21.75,
+          "median": 19.09999990463257,
+          "p95": 35.39999997615814
+        },
+        {
+          "label": "before",
+          "mean": 16.652500002086164,
+          "median": 16.59999990463257,
+          "p95": 31.399999976158142
+        },
+        {
+          "label": "after",
+          "mean": 22.20250000208616,
+          "median": 18.399999976158142,
+          "p95": 31.800000071525574
+        },
+        {
+          "label": "before",
+          "mean": 16.422499999403954,
+          "median": 16,
+          "p95": 30.09999990463257
+        },
+        {
+          "label": "before",
+          "mean": 15.948750001192092,
+          "median": 16.399999976158142,
+          "p95": 28
+        },
+        {
+          "label": "after",
+          "mean": 19.676250000298023,
+          "median": 17.5,
+          "p95": 32.39999997615814
+        }
+      ],
+      "stateParity": true,
+      "cache": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "before": {
+          "entries": 879,
+          "capacity": 1040,
+          "builds": 1014
+        },
+        "after": {
+          "entries": 879,
+          "capacity": 1040,
+          "builds": 1014
+        },
+        "warmRebuilds": 0
+      }
+    },
+    {
+      "prep": {
+        "seed": "GENVO-VALLEY-REPLAY-30",
+        "tick": 4803,
+        "day": 101,
+        "snowCells": 0,
+        "snowMax": 0,
+        "snowTotal": 0,
+        "player": {
+          "id": 109,
+          "x": 16.72909113208531,
+          "y": 61.270908867914656
+        },
+        "cold": {
+          "before": 1198.7000000476837,
+          "after": 1185.5999999046326
+        },
+        "zoom": 2,
+        "world": "planetary/1"
+      },
+      "stages": [
+        {
+          "label": "before",
+          "mean": 24.751250000298022,
+          "median": 23.100000023841858,
+          "p95": 38.39999997615814
+        },
+        {
+          "label": "after",
+          "mean": 23.60625,
+          "median": 22.300000071525574,
+          "p95": 38.5
+        },
+        {
+          "label": "after",
+          "mean": 22.866249999403955,
+          "median": 21.299999952316284,
+          "p95": 37.10000002384186
+        },
+        {
+          "label": "before",
+          "mean": 21.341249999403953,
+          "median": 20.600000023841858,
+          "p95": 34.799999952316284
+        },
+        {
+          "label": "after",
+          "mean": 22.88500000089407,
+          "median": 21.299999952316284,
+          "p95": 37.89999997615814
+        },
+        {
+          "label": "before",
+          "mean": 21.93125,
+          "median": 20,
+          "p95": 37.10000002384186
+        },
+        {
+          "label": "before",
+          "mean": 19.340000000596046,
+          "median": 19.300000071525574,
+          "p95": 31.59999990463257
+        },
+        {
+          "label": "after",
+          "mean": 20.167499999701977,
+          "median": 19,
+          "p95": 34.60000002384186
+        }
+      ],
+      "stateParity": true,
+      "cache": {
+        "viewport": {
+          "width": 1366,
+          "height": 768
+        },
+        "before": {
+          "entries": 0,
+          "capacity": 1014,
+          "builds": 0
+        },
+        "after": {
+          "entries": 0,
+          "capacity": 1014,
+          "builds": 0
+        },
+        "warmRebuilds": 0
+      }
+    }
+  ],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Actual public catalogue Day31/101 starts; retained original/candidate renderer comparison on identical ordinary generated world state. RAF and paint time are frozen for paired observation only. No positions, hydrology, weather, organisms, stocks or events are edited. Warm CPU draw timing excludes GPU completion."
+}

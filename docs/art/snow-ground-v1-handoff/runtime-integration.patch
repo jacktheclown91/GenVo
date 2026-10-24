@@ -1,0 +1,72 @@
+diff --git a/src/render/renderer.js b/src/render/renderer.js
+index 24de1a12..95a7b0ea 100644
+--- a/src/render/renderer.js
++++ b/src/render/renderer.js
+@@ -22,7 +22,7 @@ import {gaitTravelFor} from './genvo.js';
+ import {assemblyFor} from './creature-assembler.js';
+ import {locomotionStyle,locomotionOffsets} from './locomotion-style.js';
+ import {movementProfile} from '../lineage/lifestyle.js';
+-import {snowCover} from '../world/snowpack.js';
++import {drawSnowGround,beginSnowWindow} from './snow-ground-art.js';
+ import {botanicalPlantView} from '../ecology/botanical-reproduction.js';
+ import {FeedingPresentation,applyFeedingExpression} from './feeding-expression.js';
+ import {drawSubsurface} from './subsurface.js';
+@@ -409,23 +409,13 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
+   }
+   drawSnowWindow(tile,startX,startY,cols,rows){
+     const w=this.sim.world,depth=w.soilWater?.snowpack;
++    beginSnowWindow(w,depth?Math.max(0,Math.min(w.n,startX+cols)-Math.max(0,startX))*Math.max(0,Math.min(w.n,startY+rows)-Math.max(0,startY)):0);
+     if(!depth)return;const c=this.ctx;let drawn=0;
+     for(let y=Math.max(0,startY);y<Math.min(w.n,startY+rows);y++)
+       for(let x=Math.max(0,startX);x<Math.min(w.n,startX+cols);x++){
+         const i=y*w.n+x;if(w.water[i]||depth[i]<.012)continue;
+-        const cover=snowCover(w,i),px=Math.round((x-this.camera.x)*tile+this.w/2),py=Math.round((y-this.camera.y)*tile+this.h/2),
+-          q=hash2(x,y,5531),r=hash2(x,y,5537);
+-        // Irregular 32-grid top-down snow drifts and exposed gravel. This is
+-        // surface coverage from real stored snowfall, not a winter season tint.
+-        c.save();c.globalAlpha*=Math.min(.91,.22+cover*.72);
+-        c.fillStyle='#dce9e7';
+-        if(cover>.54){c.fillRect(px+tile*.06,py+tile*.06,tile*.82,tile*.68);
+-          c.fillRect(px+tile*.15,py+tile*.69,tile*.66,tile*.22)}
+-        else{c.fillRect(px+tile*(q>.5?.18:.04),py+tile*.20,tile*(.21+cover*.36),tile*(.15+cover*.24));
+-          c.fillRect(px+tile*.51,py+tile*(r>.5?.62:.45),tile*(.15+cover*.28),tile*.15)}
+-        c.fillStyle='#f1f7f3';
+-        c.fillRect(px+tile*(.24+q*.17),py+tile*.14,tile*.18,tile*.06);
+-        c.restore();drawn++;
++        const px=Math.round((x-this.camera.x)*tile+this.w/2),py=Math.round((y-this.camera.y)*tile+this.h/2);
++        if(drawSnowGround(c,{world:w,x,y,px,py,tile,waterMask:this.visualWaterMask?.(x,y)}))drawn++;
+       }
+     return drawn;
+   }
+diff --git a/src/render/snow-ground-art.js b/src/render/snow-ground-art.js
+new file mode 100644
+index 00000000..7654b94a
+--- /dev/null
++++ b/src/render/snow-ground-art.js
+@@ -0,0 +1,26 @@
++import {snowCover} from '../world/snowpack.js';
++const clamp=v=>Math.max(0,Math.min(1,v)),hash=(x,y,seed)=>{let n=(Math.imul(x,374761393)^Math.imul(y,668265263)^seed)>>>0;n=Math.imul(n^(n>>>13),1274126177);return((n^(n>>>16))>>>0)/4294967295};
++function field(x,y,seed,pitch){x/=pitch;y/=pitch;const ix=Math.floor(x),iy=Math.floor(y),fx=x-ix,fy=y-iy,u=fx*fx*(3-2*fx),v=fy*fy*(3-2*fy),a=hash(ix,iy,seed),b=hash(ix+1,iy,seed),c=hash(ix,iy+1,seed),d=hash(ix+1,iy+1,seed);return(a+(b-a)*u)*(1-v)+(c+(d-c)*u)*v}
++// Absolute coordinates make the drift contour independent of tile/cache boundaries.
++// This geometry is presentation only. A caller must supply actual stored snow cover.
++export function snowGroundPixels({seed=0,x,y,originX=0,originY=0,cover,waterMask}){
++ const pixels=new Uint8Array(1024);if(!(cover>0))return pixels;const threshold=1-clamp(cover),ox=(originX+x)*32,oy=(originY+y)*32;
++ for(let by=0;by<16;by++)for(let bx=0;bx<16;bx++){const wx=ox+bx*2+1,wy=oy+by*2+1,broad=field(wx,wy,seed^0x5a31,43),fine=field(wx,wy,seed^0x7319,9),level=clamp(.5+(broad-.5)*1.6+(fine-.5)*.8);
++  for(let dy=0;dy<2;dy++)for(let dx=0;dx<2;dx++){const sx=bx*2+dx,sy=by*2+dy,i=sy*32+sx;if(waterMask?.[i])continue;const n=clamp(level+(hash(ox+sx,oy+sy,seed^0x1523)-.5)*.055);if(n<threshold)continue;pixels[i]=n<threshold+.06?1:n<threshold+.23?2:3}
++ }return pixels;
++}
++const palette=['','#bdced1','#dce9e7','#f1f7f3'],worlds=new WeakMap();let activeOwner=null;
++const release=entry=>{if(entry?.canvas)entry.canvas.width=entry.canvas.height=0};
++function store(world){let s=worlds.get(world);if(!s){s={entries:new Map(),capacity:1024,builds:0};worlds.set(world,s)}return s}
++// The native texture working set is bounded by the actual visible local window.
++// Keep one active World's artwork, without retaining that World through a strong owner.
++export function beginSnowWindow(world,capacity){const previous=activeOwner?.deref();if(previous!==world){if(previous){const old=worlds.get(previous);if(old)for(const entry of old.entries.values())release(entry);worlds.delete(previous)}activeOwner=new WeakRef(world)}const s=store(world);s.capacity=Math.max(0,Math.min(world.n*world.n,Math.ceil(Number.isFinite(capacity)?capacity:0)));while(s.entries.size>s.capacity){const key=s.entries.keys().next().value;release(s.entries.get(key));s.entries.delete(key)}}
++// Read-only diagnostics for developer review tools; no World or texture references escape.
++export function snowGroundArtStats(world){const s=worlds.get(world);return s?{entries:s.entries.size,capacity:s.capacity,builds:s.builds}:{entries:0,capacity:0,builds:0}}
++function cached(world,x,y,cover,waterMask){const state=store(world),entries=state.entries,key=y*world.n+x;let entry=entries.get(key);if(entry&&entry.cover===cover&&entry.waterMask===waterMask){entries.delete(key);entries.set(key,entry);return entry}state.builds++;
++ const pixels=snowGroundPixels({seed:world.seedHash,x,y,originX:world.regionOrigin?.x||0,originY:world.regionOrigin?.y||0,cover,waterMask}),canvas=entry?.canvas||(typeof document!=='undefined'?document.createElement('canvas'):null);if(canvas){canvas.width=canvas.height=32;const ctx=canvas.getContext('2d');if(ctx){const data=ctx.createImageData(32,32),rgb=[[0,0,0],[189,206,209],[220,233,231],[241,247,243]];for(let i=0;i<1024;i++){const p=pixels[i];if(p){const q=i*4;data.data[q]=rgb[p][0];data.data[q+1]=rgb[p][1];data.data[q+2]=rgb[p][2];data.data[q+3]=255}}ctx.putImageData(data,0,0)}}entry={cover,waterMask,pixels,canvas};if(!entries.has(key)&&entries.size>=state.capacity){const old=entries.keys().next().value;release(entries.get(old));entries.delete(old)}entries.set(key,entry);return entry;
++}
++export function drawSnowGround(ctx,{world,x,y,px,py,tile,waterMask}){
++ const i=world.idx(x,y);if(world.water[i]||!(world.soilWater?.snowpack?.[i]>=.012))return false;const cover=snowCover(world,i),entry=cached(world,x,y,cover,waterMask);
++ ctx.save();try{ctx.globalAlpha*=Math.min(.91,.22+cover*.72);if(entry.canvas&&typeof ctx.drawImage==='function'){ctx.imageSmoothingEnabled=false;ctx.drawImage(entry.canvas,px,py,tile,tile)}else{for(let y=0;y<32;y++){let x=0;while(x<32){const p=entry.pixels[y*32+x],start=x++;while(x<32&&entry.pixels[y*32+x]===p)x++;if(p){ctx.fillStyle=palette[p];ctx.fillRect(px+start*tile/32,py+y*tile/32,(x-start)*tile/32,tile/32)}}}}}finally{ctx.restore()}return true;
++}

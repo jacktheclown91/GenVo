@@ -1,0 +1,56 @@
+{
+  "cases": [
+    {
+      "prep": {
+        "seed": "GENVO-VALLEY-REPLAY-30",
+        "tick": 1444,
+        "day": 31,
+        "snowCells": 15870,
+        "snowMax": 0.08219828339634734,
+        "snowTotal": 905.7997964033946,
+        "player": {
+          "id": 109,
+          "x": 18.04942546190287,
+          "y": 60.6112835666868
+        },
+        "cold": {
+          "before": 1640.0999999046326,
+          "after": 1786.6000000238419
+        },
+        "zoom": 2,
+        "world": "planetary/1"
+      },
+      "stages": [
+        {
+          "label": "before",
+          "mean": 29.087499991059303,
+          "median": 30.899999976158142,
+          "p95": 35
+        },
+        {
+          "label": "after",
+          "mean": 117.34999999403954,
+          "median": 125.19999992847443,
+          "p95": 153.70000004768372
+        },
+        {
+          "label": "after",
+          "mean": 126.47499999403954,
+          "median": 126.39999997615814,
+          "p95": 163.39999997615814
+        },
+        {
+          "label": "before",
+          "mean": 24.162500008940697,
+          "median": 23.199999928474426,
+          "p95": 29.399999976158142
+        }
+      ],
+      "stateParity": true
+    }
+  ],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Actual public catalogue Day31/101 starts; retained original/candidate renderer comparison on identical ordinary generated world state. RAF and paint time are frozen for paired observation only. No positions, hydrology, weather, organisms, stocks or events are edited. Warm CPU draw timing excludes GPU completion."
+}

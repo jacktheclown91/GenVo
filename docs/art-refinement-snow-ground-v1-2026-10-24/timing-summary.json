@@ -1,0 +1,30 @@
+[
+  {
+    "day": 31,
+    "snowCells": 15870,
+    "snowMax": 0.08219828339634734,
+    "snowTotal": 905.7997964033946,
+    "coldPreparationMs": {
+      "before": 1132.3999999761581,
+      "after": 1086.5
+    },
+    "beforeMedianMs": 17.44999998807907,
+    "afterMedianMs": 18.25,
+    "beforeP95Ms": 31.80000001192093,
+    "afterP95Ms": 32.64999997615814
+  },
+  {
+    "day": 101,
+    "snowCells": 0,
+    "snowMax": 0,
+    "snowTotal": 0,
+    "coldPreparationMs": {
+      "before": 1251.8999999761581,
+      "after": 1141.1999999284744
+    },
+    "beforeMedianMs": 18.75,
+    "afterMedianMs": 18.94999998807907,
+    "beforeP95Ms": 33.0,
+    "afterP95Ms": 34.55000001192093
+  }
+]

@@ -1,0 +1,152 @@
+{
+  "cases": [
+    {
+      "prep": {
+        "seed": "GENVO-VALLEY-REPLAY-30",
+        "tick": 1442,
+        "day": 31,
+        "snowCells": 15870,
+        "snowMax": 0.08219828339634734,
+        "snowTotal": 905.7997964033946,
+        "player": {
+          "id": 109,
+          "x": 18.04942546190287,
+          "y": 60.6112835666868
+        },
+        "cold": {
+          "before": 1132.3999999761581,
+          "after": 1086.5
+        },
+        "zoom": 2,
+        "world": "planetary/1"
+      },
+      "stages": [
+        {
+          "label": "before",
+          "mean": 19.274999998509884,
+          "median": 17.800000071525574,
+          "p95": 35
+        },
+        {
+          "label": "after",
+          "mean": 20.09375,
+          "median": 18.399999976158142,
+          "p95": 33
+        },
+        {
+          "label": "after",
+          "mean": 23.284999999403954,
+          "median": 21.200000047683716,
+          "p95": 33.700000047683716
+        },
+        {
+          "label": "before",
+          "mean": 18.1,
+          "median": 17.399999976158142,
+          "p95": 31.799999952316284
+        },
+        {
+          "label": "after",
+          "mean": 21.604999999701977,
+          "median": 18.100000023841858,
+          "p95": 32.299999952316284
+        },
+        {
+          "label": "before",
+          "mean": 16.303749999403955,
+          "median": 16.300000071525574,
+          "p95": 27.299999952316284
+        },
+        {
+          "label": "before",
+          "mean": 18.536250001192094,
+          "median": 17.5,
+          "p95": 31.800000071525574
+        },
+        {
+          "label": "after",
+          "mean": 20.161250001192094,
+          "median": 17.699999928474426,
+          "p95": 32
+        }
+      ],
+      "stateParity": true
+    },
+    {
+      "prep": {
+        "seed": "GENVO-VALLEY-REPLAY-30",
+        "tick": 4804,
+        "day": 101,
+        "snowCells": 0,
+        "snowMax": 0,
+        "snowTotal": 0,
+        "player": {
+          "id": 109,
+          "x": 16.52307167646415,
+          "y": 61.476928323535844
+        },
+        "cold": {
+          "before": 1251.8999999761581,
+          "after": 1141.1999999284744
+        },
+        "zoom": 2,
+        "world": "planetary/1"
+      },
+      "stages": [
+        {
+          "label": "before",
+          "mean": 23.727500000596045,
+          "median": 23.5,
+          "p95": 38.200000047683716
+        },
+        {
+          "label": "after",
+          "mean": 21.95375000089407,
+          "median": 21.299999952316284,
+          "p95": 37.199999928474426
+        },
+        {
+          "label": "after",
+          "mean": 20.473749999701976,
+          "median": 19.09999990463257,
+          "p95": 36.10000002384186
+        },
+        {
+          "label": "before",
+          "mean": 19.248749999701978,
+          "median": 18.600000023841858,
+          "p95": 32.60000002384186
+        },
+        {
+          "label": "after",
+          "mean": 18.352500000596045,
+          "median": 18.600000023841858,
+          "p95": 28
+        },
+        {
+          "label": "before",
+          "mean": 20.486249999701975,
+          "median": 18.899999976158142,
+          "p95": 33.39999997615814
+        },
+        {
+          "label": "before",
+          "mean": 18.467499999701978,
+          "median": 18.100000023841858,
+          "p95": 30.700000047683716
+        },
+        {
+          "label": "after",
+          "mean": 18.811249999701978,
+          "median": 18.800000071525574,
+          "p95": 33
+        }
+      ],
+      "stateParity": true
+    }
+  ],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Actual public catalogue Day31/101 starts; retained original/candidate renderer comparison on identical ordinary generated world state. RAF and paint time are frozen for paired observation only. No positions, hydrology, weather, organisms, stocks or events are edited. Warm CPU draw timing excludes GPU completion."
+}

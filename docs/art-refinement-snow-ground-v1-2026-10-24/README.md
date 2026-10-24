@@ -1,0 +1,37 @@
+# Continuous stored-snow ground artwork
+
+The earlier ground-snow overlay stamped two repeated rectangles on every snowy tile and a nearly full-tile box at higher cover. The actual Day31 winter scene exposed the repeating diagonal texture. It now uses original native-32 snow contours crossing tile boundaries, with thin blue-grey edges, pale bodies and broken exposed ground. The existing real plants, water, weather and substrate remain visible.
+
+## Authority and bounds
+
+Stored world.soilWater.snowpack and the shared snowCover function alone determine snow presence and amount. No season-based snow tint is introduced. Dry cells and permanent water are skipped, and the existing native visual-water mask clips shoreline pixels. Absolute geographic coordinates and the recorded world seed drive only the shape of coverage; they do not generate snowfall, snow water, melt, ice, climate, traction, resources or events. Rendering never writes to the World, RNG or save graph.
+
+Artwork uses a 32x32 indexed mask and native texture per eligible tile. A weak active World owner retains a recent working set sized to the actual visible local window, bounded by its clipped cell count. Changing World releases the previous textures; shrinking the viewport releases excess entries. The working set does not grow with planetary travel or biology. The exact current physical cover and immutable water-mask identity determine reuse. Melt or water conversion immediately suppresses old cached snow. Existing textures are repainted when the actual amount changes. No parallel climate owner or new scheduling system is introduced.
+
+## Established evidence
+
+The public Day31 winter catalogue and Day101 spring catalogue are opened with their real organisms, camera, hydrology, stocks, weather and history. Original and candidate renderers then paint the identical Simulation, with RAF and presentation time frozen only for paired capture. No observer, weather, snowpack or event is staged. Complete canonical graph parity holds through scene preparation, screenshots and alternating warm timings. Both pairs were inspected. Day31 has 15,870 snow-bearing cells and a maximum stored snow depth of about .0822. Day101 has zero stored snow and remains snow-free. These are actual automated Chromium observations, not creator/GPU acceptance or a fabricated high-snow scenario.
+
+Nine focused checks pass: snow-ground-art, e13-mountain-snowpack, winter-water, native-surface-ice-art, surface-ice-continuity, terrain-continuity, world-swap-render, view-modes and public-export. The artwork fixtures cover native resolution, spatial variation, monotonic increasing coverage, absolute regional-coordinate continuity, water clipping, dry/water absence, live melt despite caching and unchanged world data. E13 retains its existing cold mountain, finite rain/snow/melt ledger, altitude, shading, anatomical traversal and save/migration checks, including the original overhead-render assertion. No tests, biological thresholds or budgets are weakened. Canonical source audit passes after generating its required local reference sprite sheets.
+
+The initial 1366x768 candidate's warm median-of-medians was 17.45ms before / 18.25ms after in winter, and 18.75ms / 18.95ms in snow-free spring. P95 group medians are 31.8 / 32.65ms and 33 / 34.55ms. Cold preparation totals are retained, but their ordering/global artwork reuse make them unsuitable for a speedup claim. These CPU figures exclude GPU completion and are not full-game frame-budget approval. Heavy-snow fields, mass daily thaw/repaint, long-distance cache churn and creator acceptance remain open.
+
+The first candidate's 1024-entry cache thrashed at 1920x1080: its abbreviated real Day31 comparison measured about 125ms warm draws. That candidate was rejected, and its gate was intentionally stopped (exit 4294967295), with the reason retained. No passing or completed initial gate is claimed. The corrected working set is tested with 1600 snowy cells, unchanged second-frame rebuild count zero, viewport shrink and previous-World release. The corrected native browser review also asserts zero unchanged-window rebuilds. The corrected shared gate passed 106/106 on committed runtime 319791f680117244882963410501098ad54bfb4f, exit 0 in 712.7 seconds. Runtime source is unchanged from that closed gate. Full GenVo v1, whole-environment/performance acceptance and repository migration remain incomplete.
+
+## Reproduce and retain
+
+Run node tests/snow-ground-art.mjs and node tests/e13-mountain-snowpack.mjs. Export with node tools/export-public.mjs <fresh-external-directory>, then node tools/review-snow-ground.cjs <export> <report> [width height]. The corrected comparisons include 1920x1080 and 1366x768. Current standalone build: C:\Users\jackt\AppData\Local\Temp\genvo-snow-web-20261024-b.
+
+The before renderer in assets/art/production-review/snow-ground-v1/renderer.js.before is imported by the local comparison server at its original relative module path. Retain this source while the review tool uses it; production-review is excluded from public web exports. All new artwork is code-native canvas, without external images, models, libraries or new licences. The checked-in shared-renderer heads-up and applied runtime patch are in ../art/snow-ground-v1-handoff/. Do not reapply that historical patch to integrated code. Claude retains snow/climate physics, saves, gameplay, performance architecture and test organization ownership.
+
+The abbreviated pre-fix wide harness and receipt are preserved in the raw archive. Its inherited prose title mentions two catalogue starts, but it actually runs only the single Day31 case shown in its cases array; no Day101 result is inferred from that experiment. Corrected reviews use the two-start tool. Heavy-snow and large daily thaw/repaint remain honest acceptance gaps even after unchanged-window warmth is verified.
+
+## Corrected working-set review
+
+At 1920x1080 the actual snowy scene retains 1567 textures within a 1764-cell visible-window budget; the unchanged draw rebuilds zero. At 1366x768 it retains 879 within 1040, also with zero rebuilds. Both Day101 snow-free worlds retain zero textures. The complete graph remains identical in all four cases. Dense-window, shrink and old-World-release tests cover the working-set lifecycle separately from real frame observation.
+
+Corrected alternating median-of-medians is 19.35ms before / 24.75ms after for wide winter and 36.85 / 40.20ms for wide snow-free spring; desktop is 16.50 / 18.75ms and 20.30 / 21.30ms. These runs overlap other local checks and include order/renderer effects even in the snow-free control. They prove the specific repeated-rebuild defect is absent, not that its entire measured cost is attributable to snow or that the whole-game frame budget is cleared. No timing limit is raised or waived.
+
+Committed proof is based on the isolated source plus original main e39e2332; concurrent uncommitted main.js/preparation-probe work is excluded from these receipts and must be preserved during integration. Its owner's technical work does not become verified by these artwork checks.
+
+Receipt index: unprefixed native-browser/timing files describe the initial narrow candidate; corrected-desktop/corrected-wide receipts and corrected-integration-gate describe the final runtime. Rejected-candidate/rejected-wide files preserve the failed performance experiment and intentional gate interruption. Their read-state assertions are not performance acceptance.

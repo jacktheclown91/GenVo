@@ -1,0 +1,114 @@
+[
+  {
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "day": 31,
+    "cache": {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "before": {
+        "entries": 1567,
+        "capacity": 1764,
+        "builds": 1729
+      },
+      "after": {
+        "entries": 1567,
+        "capacity": 1764,
+        "builds": 1729
+      },
+      "warmRebuilds": 0
+    },
+    "beforeMedianMs": 19.350000023841858,
+    "afterMedianMs": 24.75,
+    "beforeP95Ms": 33.34999996423721,
+    "afterP95Ms": 40.75
+  },
+  {
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    },
+    "day": 101,
+    "cache": {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "before": {
+        "entries": 0,
+        "capacity": 1692,
+        "builds": 0
+      },
+      "after": {
+        "entries": 0,
+        "capacity": 1692,
+        "builds": 0
+      },
+      "warmRebuilds": 0
+    },
+    "beforeMedianMs": 36.85000002384186,
+    "afterMedianMs": 40.19999998807907,
+    "beforeP95Ms": 56.05000001192093,
+    "afterP95Ms": 61.69999998807907
+  },
+  {
+    "viewport": {
+      "width": 1366,
+      "height": 768
+    },
+    "day": 31,
+    "cache": {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "before": {
+        "entries": 879,
+        "capacity": 1040,
+        "builds": 1014
+      },
+      "after": {
+        "entries": 879,
+        "capacity": 1040,
+        "builds": 1014
+      },
+      "warmRebuilds": 0
+    },
+    "beforeMedianMs": 16.499999940395355,
+    "afterMedianMs": 18.749999940395355,
+    "beforeP95Ms": 30.749999940395355,
+    "afterP95Ms": 32.90000003576279
+  },
+  {
+    "viewport": {
+      "width": 1366,
+      "height": 768
+    },
+    "day": 101,
+    "cache": {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "before": {
+        "entries": 0,
+        "capacity": 1014,
+        "builds": 0
+      },
+      "after": {
+        "entries": 0,
+        "capacity": 1014,
+        "builds": 0
+      },
+      "warmRebuilds": 0
+    },
+    "beforeMedianMs": 20.30000001192093,
+    "afterMedianMs": 21.299999952316284,
+    "beforeP95Ms": 35.94999998807907,
+    "afterP95Ms": 37.5
+  }
+]
