@@ -25,3 +25,7 @@ The unchanged portrait-pigment-reading check also passes: retained conception/of
 ## Public keyboard entry
 
 A separate ordinary exported-world run uses the native C shortcut after six genuine canonical updates expose ready partner 117. The existing controller chooses that partner, sets the actual mate approach and opens the refined tray. Back Off returns the actor to idle with no active performance. No organism, reserve, position, eligibility or event fields are authored by the verifier. See public-entry-receipt.json and public-entry.png. This establishes public keyboard entry/cancellation, not completed performance, conception or public mouse selection. Reproduce with node tools/verify-courtship-public-entry.cjs <export> <new-report>.
+
+## Required large-desktop layout
+
+The additional 1920x1080 case passes in the same application as all five earlier sizes. The complete six-size browser receipt is six-size-browser-receipt.json; the large-desktop frame was inspected. Native pigment, zero portrait edge pixels, visible captions, no horizontal overflow, protected-player clearance, full redraw-state parity and actual queue/undo/clear/back-off controls all pass. Older five-size receipts remain unchanged. Broader notification extremes and mouse approach/completed-performance acceptance remain open.

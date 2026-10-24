@@ -10,7 +10,7 @@ Survival presentation follow-up: native condition labels and season/day clock ar
 
 Environmental audio follow-up: original nonvocal field, damp-ground and water beds plus a separate rain stem consume native liquid precipitation. Asset budgets, unaffected audio hashes, focused checks and public-export WebAudio evidence are recorded in [audio integration](art-refinement-audio-v1-2026-10-23/README.md). Subjective listening and full-game acceptance remain open.
 
-Courtship presentation now displays the actual performer and partner with shared fitted native portraits, visible labels and coherent controls. Nine focused checks, five-size exported-browser layout/pigment/state parity and native queue controls pass; [evidence and limits](art-refinement-courtship-v1-2026-10-23/README.md). Live performance and creator acceptance remain open.
+Courtship presentation now displays the actual performer and partner with shared fitted native portraits, visible labels and coherent controls. Nine focused checks, six-size exported-browser layout/pigment/state parity and native queue controls pass; [evidence and limits](art-refinement-courtship-v1-2026-10-23/README.md). Live performance and creator acceptance remain open.
 
 ## Source and ownership
 
