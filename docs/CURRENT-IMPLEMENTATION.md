@@ -2,6 +2,10 @@
 
 Reviewed October 20, 2026. Governing intent: [current design](../design/CURRENT-DESIGN.md) and the creator's full Creature-stage directive. Code ownership: [implementation authorities](../design/governance/implementation-authorities.json). Full scope and remaining gaps: [completion matrix](FULL-GAME-COMPLETION-MATRIX.md). Earlier checkpoint prose is [historical evidence](history/IMPLEMENTATION-before-live-refresh-2026-10-19.md), not current instructions.
 
+## Latest presentation integration, October 23
+
+Natural-history menu, Lab, specimen sheet, Journal and first-young presentation are integrated into runtime source. Existing starts/controls remain authoritative; seed is under Advanced, native retained pigmentation is forwarded, and late native-art arrival refreshes Lab canvases/caches without editing the draft. Actual exported UI, exact state and regression evidence: [interface integration](art-refinement-interface-v1-2026-10-23/README.md), [inherited portraits](art-refinement-portrait-v1-2026-10-23/INTEGRATED.md). This is bounded presentation implementation; broader UI, map, audio, performance, migration and creator acceptance remain incomplete.
+
 ## Source and ownership
 
 The sole active source is `C:\Users\jackt\Desktop\Games\game jam october\genvo-toolkit`, on `main`. Gate A established October 20: fetched the newer consolidation tip `2e07fb5`, reconciled all feature/work tips by ancestry and preserved diagnostic branches, fast-forwarded main without rewriting history, and verified GitHub main at the exact local SHA. Runtime repairs, artwork, hydrology and genuine Day 30/100 scenarios are committed in that history. Two unrelated untracked terminal-help files remain preserved. This establishes source synchronization, not full-game completion. Inspect Git before editing; preserve concurrent work and historical test fixtures.

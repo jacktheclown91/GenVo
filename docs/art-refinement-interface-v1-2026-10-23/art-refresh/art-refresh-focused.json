@@ -1,0 +1,56 @@
+[
+  {
+    "test": "editor-pass",
+    "exitCode": 0,
+    "stdout": "editor pass ok (88 parts with standalone art)\n",
+    "stderr": ""
+  },
+  {
+    "test": "evolution-editor",
+    "exitCode": 0,
+    "stdout": "evolution editor ok\n",
+    "stderr": ""
+  },
+  {
+    "test": "workshop-projection",
+    "exitCode": 0,
+    "stdout": "Canonical projection cost, overspend warning, anatomical restrictions and no draft mutations PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "native-catalog-loading",
+    "exitCode": 0,
+    "stdout": "Bounded native loading, atomic install, preserved live art and stale-load supersession PASS\nDuplicate error reporting and failed-reload live-art retention PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "native-part-catalog",
+    "exitCode": 0,
+    "stdout": "native-part-catalog: 97 indexed assets, 1552 exact RGBA frames, eight facings, 0 missing native art packs PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "native-lab-hidden-pixels",
+    "exitCode": 0,
+    "stdout": "native-lab-hidden-pixels: edit, erased pixel, and transparent-source RGB recovery PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "native-inherited-pigment",
+    "exitCode": 0,
+    "stdout": "native inherited-pigment and anatomical socket mounting PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "portrait-pigment-reading",
+    "exitCode": 0,
+    "stdout": "Portrait pigment [integrated] PASS: native ramp, retained conception/offspring genomes, legacy path, no live-parent borrowing and complete snapshot parity.\n",
+    "stderr": ""
+  },
+  {
+    "test": "public-export",
+    "exitCode": 0,
+    "stdout": "public-export: exact reachable modules and runtime assets only PASS\n",
+    "stderr": ""
+  }
+]

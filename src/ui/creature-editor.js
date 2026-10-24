@@ -1,3 +1,4 @@
+import {nativeArtRevision} from '../render/runtime-part-art.js';
 import {visionProfile} from '../lineage/vision.js';
 import {adultBodyMass,massPolicy,ANATOMICAL_MASS,REFERENCE_MASS} from '../organisms/body-mass.js';
 import {projectMount,mountedChanges} from './workshop-projection.js';
@@ -94,7 +95,7 @@ const STAGE_SCALE=18,THUMB_SCALE=4,STAGE_W=560,STAGE_H=460,ZOOMS=Object.freeze([
 
 // Part art for the tray: each part's own standalone drawing (part-sprites drawPartAlone), outlined
 // the way creatures are, then cropped. Bodies are drawn on their own (a body with nothing attached).
-const isoCache=new Map();
+const isoCache=new Map();let isoArtRevision=-1;
 function drawRef(plan,dir){
   const n=40*THUMB_SCALE,cv=document.createElement('canvas');cv.width=n;cv.height=n;const c=cv.getContext('2d');if(!c)return null;c.imageSmoothingEnabled=false;
   const a={id:-3,species:'genvo',dir,bodyPlan:plan,adaptations:[],anatomy:{},genes:{}};c.translate(n/2,n/2);drawGenvoSprite(c,{animal:a,phenotype:phenotypeFor(a),scale:THUMB_SCALE,frame:2,moving:false,palette:PALETTE,pose:{dir}});return cv;
@@ -106,6 +107,7 @@ function drawAlone(partId,type){
   for(const [dx,dy] of [[o,0],[-o,0],[0,o],[0,-o]])c.drawImage(art,dx,dy);c.globalCompositeOperation='source-in';c.fillStyle=outlineColor(PALETTE);c.fillRect(0,0,n,n);c.globalCompositeOperation='source-over';c.drawImage(art,0,0);return cv;
 }
 export function isolatedPart(partId){
+  const revision=nativeArtRevision();if(isoArtRevision!==revision){isoCache.clear();isoArtRevision=revision}
   if(isoCache.has(partId))return isoCache.get(partId);if(typeof document==='undefined')return null;const def=partDef(partId);if(!def)return null;
   const full=def.tags.includes('root')?drawRef(makePlan([{partId,parent:null,socket:null}]),3):drawAlone(partId,def.compatibleSocketTypes[0]);
   if(!full)return null;const n=full.width,A=full.getContext('2d',{willReadFrequently:true}).getImageData(0,0,n,n).data;let x0=n,y0=n,x1=-1,y1=-1;
@@ -154,7 +156,7 @@ export class CreatureEditor{
     return anchors;
   }
   // Zoom keeps the creature's middle (body plus legs) at the middle of the stage.
-  stageGeom(){const cv=this.el.querySelector('.ed-stage');if(!cv||!this.draft)return null;const b=this.body(),key=this.draft.plan.id+'|'+this.facing+'|'+JSON.stringify(b.genes);if(this.boundsKey!==key){this.boundsKey=key;this.bounds=workshopBounds(b,this.facing)}const box=this.bounds,S=Math.min((cv.width-100)/box.w,(cv.height-90)/box.h)*ZOOMS[this.zoom];return{cv,cx:cv.width/2-box.x*S,cy:cv.height/2-box.y*S,S}}
+  stageGeom(){const cv=this.el.querySelector('.ed-stage');if(!cv||!this.draft)return null;const b=this.body(),key=nativeArtRevision()+'|'+this.draft.plan.id+'|'+this.facing+'|'+JSON.stringify(b.genes);if(this.boundsKey!==key){this.boundsKey=key;this.bounds=workshopBounds(b,this.facing)}const box=this.bounds,S=Math.min((cv.width-100)/box.w,(cv.height-90)/box.h)*ZOOMS[this.zoom];return{cv,cx:cv.width/2-box.x*S,cy:cv.height/2-box.y*S,S}}
   hitRadius(){const g=this.stageGeom(),r=g?.cv.getBoundingClientRect();return r?.width?22*g.cv.width/r.width/g.S:2.6}
   mountTargets(a){const targets=[{parent:a.parent,socket:a.socket}];if(this.symmetry){const m=this.mirrorOf(a);if(m)targets.push(m)}return targets}
   projection(partId,a){return projectMount(this.draft,partId,PARTS[partId]?.tags.includes('root')?[{parent:null,socket:null}]:a?this.mountTargets(a):[])}
@@ -293,8 +295,8 @@ export class CreatureEditor{
         <aside class="ed-side"><figure class="ed-parent" ${this.compare?'':'hidden'}><canvas width="140" height="96" aria-label="Parent body comparison"></canvas><figcaption>Parent · before your changes</figcaption></figure><div class="ed-card"></div>${problems.length?`<ul class="ed-problems">${problems.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>`:''}${this.message?`<p class="ed-message">${esc(this.message)}</p>`:''}<div class="ed-stats"></div></aside>
       </div>
       <footer class="ed-actions"><button type="button" data-act="undo">Undo</button><button type="button" data-act="redo">Redo</button><button type="button" data-act="revert">Start over</button><span class="ed-gap"></span>${this.confirming?'<button type="button" data-act="edit">Keep editing</button>':''}<button type="button" data-act="cancel">Keep the old body</button><button type="button" data-act="commit" class="commit" ${problems.length?'disabled':''}>${this.confirming?'Confirm evolution':'Evolve'}</button></footer>`;
-    this.el.querySelectorAll('.ed-tile').forEach(b=>{const c=b.querySelector('canvas').getContext('2d');if(c)this.drawThumb(c,b.dataset.part,84,70,!b.classList.contains('locked'))});
-    this.renderCard();this.renderStats();this.drawStage();const parentCanvas=this.el.querySelector('.ed-parent canvas'),pc=parentCanvas.getContext('2d');pc.imageSmoothingEnabled=false;pc.translate(70,48);const parentBody=this.body(d.base);drawGenvoSprite(pc,{animal:parentBody,phenotype:phenotypeFor(parentBody),scale:4,frame:2,palette:creaturePalette(phenotypeFor(parentBody)),pose:{dir:this.facing}});
+
+    this.renderCard();this.renderStats();this.refreshArtwork();
     if(this.session){
       this.el.querySelector('.knowledge-kicker').textContent=this.session.kicker;
       this.el.querySelector('h2').textContent=this.session.title;
@@ -347,6 +349,13 @@ export class CreatureEditor{
     const fit=Math.min(4,(w-8)/art.width,(h-8)/art.height),k=fit>=1?Math.floor(fit):fit,dw=art.width*k,dh=art.height*k;
     c.save();if(!usable)c.globalAlpha=.45;c.drawImage(art,Math.round((w-dw)/2),Math.round((h-dh)/2),dw,dh);c.restore();
   }
+  // Repaint existing canvases after asynchronous artwork arrives; retain all controls/draft state.
+  refreshArtwork(){
+    if(!this.draft)return;this.artRevision=nativeArtRevision();this.boundsKey=null;
+    this.el.querySelectorAll('.ed-tile').forEach(b=>{const c=b.querySelector('canvas').getContext('2d');if(c)this.drawThumb(c,b.dataset.part,84,70,!b.classList.contains('locked'))});
+    const canvas=this.el.querySelector('.ed-parent canvas'),c=canvas?.getContext('2d');if(c){c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,canvas.width,canvas.height);c.imageSmoothingEnabled=false;c.save();c.translate(70,48);const body=this.body(this.draft.base);drawGenvoSprite(c,{animal:body,phenotype:phenotypeFor(body),scale:4,frame:2,palette:creaturePalette(phenotypeFor(body)),pose:{dir:this.facing}});c.restore()}
+    this.drawStage();
+  }
   drawStage(){
     const g=this.stageGeom();if(!g?.cv.getContext||!this.draft)return;const {cv,cx,cy,S}=g,c=cv.getContext('2d');c.imageSmoothingEnabled=false;
     // A small patch of ground under a soft light: the creature stands in its world, not on a grid.
@@ -367,7 +376,7 @@ export class CreatureEditor{
   }
   // v1.59.0: the walk preview runs on the display's frame rate with fractional animation frames (one
   // stride every 0.9 s), so it moves as smoothly as the game instead of stepping every 90 ms.
-  startLoop(){this.stopLoop();if(typeof requestAnimationFrame!=='function'){this.timer=setInterval(()=>{if(this.open&&(this.testing||this.selected||this.drag))this.drawStage()},90);return}
-    let lastPulse=0;const tick=t=>{if(!this.open){this.raf=null;return}if(this.testing){this.frame=(t/112.5)%8;this.drawStage()}else if((this.selected||this.drag)&&t-lastPulse>90){lastPulse=t;this.drawStage()}this.raf=requestAnimationFrame(tick)};this.raf=requestAnimationFrame(tick)}
+  startLoop(){this.stopLoop();if(typeof requestAnimationFrame!=='function'){this.timer=setInterval(()=>{if(this.open){if(this.artRevision!==nativeArtRevision())this.refreshArtwork();else if(this.testing||this.selected||this.drag)this.drawStage()}},90);return}
+    let lastPulse=0;const tick=t=>{if(!this.open){this.raf=null;return}if(this.artRevision!==nativeArtRevision())this.refreshArtwork();else if(this.testing){this.frame=(t/112.5)%8;this.drawStage()}else if((this.selected||this.drag)&&t-lastPulse>90){lastPulse=t;this.drawStage()}this.raf=requestAnimationFrame(tick)};this.raf=requestAnimationFrame(tick)}
   stopLoop(){if(this.timer)clearInterval(this.timer);this.timer=null;if(this.raf&&typeof cancelAnimationFrame==='function')cancelAnimationFrame(this.raf);this.raf=null}
 }

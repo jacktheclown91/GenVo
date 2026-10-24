@@ -41,3 +41,5 @@ The main presentation-module fix is independently usable. `drawHabitatClusterAcc
 - Portrait fidelity: confirmed and corrected the old HSL/native-RGB mismatch and omitted retained pigment. Genuine parent/newborn and journal pixels match their stored genomes in the independent proposed build. Nine proposed-code checks and the proposed canonical audit passed. Full natural succession/resident and dense-body/GPU acceptance remain unproven.
 
 Current portrait integration: canonical RGB pigmentation, retained-genome forwarding and cached full-gait bounds are active runtime source. See [integrated evidence](../art-refinement-portrait-v1-2026-10-23/INTEGRATED.md). No migration or public release is implied.
+
+Interface activation follow-up: menu, Lab and specimen source are active, including the original input moved into Advanced and exact checkpoint-day labels. Lab native-art revisions now invalidate fallback thumbnails and preview extents without replacing controls or editing drafts. [Integrated and merged evidence](../art-refinement-interface-v1-2026-10-23/README.md) separates the original and combined biology checkpoints and preserves unsuccessful harness runs.

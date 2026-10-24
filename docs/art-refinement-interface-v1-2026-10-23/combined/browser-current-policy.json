@@ -1,0 +1,29 @@
+[
+  {
+    "command": [
+      "node",
+      "tools/review-natural-history-specimen.cjs",
+      "reports/specimen-combined-current",
+      "--candidate-only",
+      "--modern",
+      "--exported",
+      "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-interface-v1-web-20261023-combined"
+    ],
+    "exitCode": 0,
+    "stdout": "Specimen candidate PASS: native retained anatomy, five viewports, exact state parity, eight facings, tabs and dismissal.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "node",
+      "tools/review-natural-history-young.cjs",
+      "reports/young-combined-current",
+      "--exported",
+      "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-interface-v1-web-20261023-combined",
+      "--portrait"
+    ],
+    "exitCode": 0,
+    "stdout": "First-young candidate PASS: genuine litter, recorded conception parents, five sizes, native pause/dismiss and exact state parity.\n",
+    "stderr": ""
+  }
+]

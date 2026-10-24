@@ -1,0 +1,36 @@
+[
+  {
+    "command": [
+      "node",
+      "tools/review-natural-history-menu.cjs",
+      "reports/menu-combined",
+      "--exported",
+      "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-interface-v1-web-20261023-combined"
+    ],
+    "exitCode": 0,
+    "stdout": "Natural-history menu comparison PASS: 5 viewport sizes, public selection controls, reachable scrolling, loaded assets and no page errors.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "node",
+      "tools/verify-menu-presentation.cjs",
+      "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-interface-v1-web-20261023-combined",
+      "reports/menu-play-combined"
+    ],
+    "exitCode": 0,
+    "stdout": "Menu review build PASS: keyboard selection, genuine new world, normal onboarding and real keyboard movement.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "node",
+      "tools/verify-lab-presentation.cjs",
+      "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-interface-v1-web-20261023-combined",
+      "reports/lab-combined"
+    ],
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'metabolism/fasting-2'\n- 'metabolism/fasting-1'\n                      ^\n\n    at C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-menu-lab-integration-20261023\\tools\\verify-lab-presentation.cjs:3:4207 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 'metabolism/fasting-2',\n  expected: 'metabolism/fasting-1',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n"
+  }
+]

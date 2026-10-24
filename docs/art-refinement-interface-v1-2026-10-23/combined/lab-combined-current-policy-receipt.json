@@ -1,0 +1,89 @@
+{
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Uninstrumented public export with official ?day=30. Public guided founder selection, legal mount buttons, export and actual authored-world confirmation.",
+  "layouts": [
+    {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      },
+      "left": 12,
+      "right": 1908,
+      "width": 1896,
+      "canvasWidth": 1029.265625,
+      "canvasHeight": 855.125,
+      "overflow": 0,
+      "themeLoaded": true
+    },
+    {
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "left": 12,
+      "right": 1354,
+      "width": 1342,
+      "canvasWidth": 719.046875,
+      "canvasHeight": 543.125,
+      "overflow": 0,
+      "themeLoaded": true
+    },
+    {
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "left": 8,
+      "right": 1016,
+      "width": 1008,
+      "canvasWidth": 540.953125,
+      "canvasHeight": 569.515625,
+      "overflow": 0,
+      "themeLoaded": true
+    },
+    {
+      "viewport": {
+        "width": 800,
+        "height": 600
+      },
+      "left": 8,
+      "right": 792,
+      "width": 784,
+      "canvasWidth": 401.46875,
+      "canvasHeight": 371.828125,
+      "overflow": 0,
+      "themeLoaded": true
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "left": 5,
+      "right": 385,
+      "width": 380,
+      "canvasWidth": 358,
+      "canvasHeight": 420,
+      "overflow": 0,
+      "themeLoaded": true
+    }
+  ],
+  "installed": {
+    "dayClockRules": "day-clock/30s",
+    "metabolismRules": "metabolism/fasting-2",
+    "authoredOrigin": {
+      "schema": 1,
+      "mode": "guided",
+      "introducedDay": 1,
+      "introducedTick": 0,
+      "authoredAge": 30
+    },
+    "plan": "{\"schema\":\"genvo8.bodyplan/0\",\"registryVersion\":0,\"id\":\"bp0-1f74b4b7\",\"nodes\":[{\"id\":\"root\",\"partId\":\"small-torso\",\"partVersion\":1,\"parent\":null,\"socket\":null},{\"id\":\"root/eye.left\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.left\"},{\"id\":\"root/eye.right\",\"partId\":\"simple-eye\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"eye.right\"},{\"id\":\"root/limb.1\",\"partId\":\"spring-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.1\"},{\"id\":\"root/limb.3\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.3\"},{\"id\":\"root/limb.5\",\"partId\":\"walking-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.5\"},{\"id\":\"root/limb.7\",\"partId\":\"spring-leg\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"limb.7\"},{\"id\":\"root/mouth\",\"partId\":\"grazing-mouth\",\"partVersion\":1,\"parent\":\"root\",\"socket\":\"mouth\"}],\"legacyAnatomy\":null}"
+  },
+  "build": {
+    "mode": "integrated public export",
+    "indexSha256": "2033f04e31659a613246628f706985ec636d7b2d0c53859bdfe32b87d1ab6cf7"
+  }
+}

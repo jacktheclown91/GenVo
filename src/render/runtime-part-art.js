@@ -7,6 +7,8 @@ let latestLoad=0;
 const states={status:'not loaded',installed:0,revision:0,errors:[]};
 export function artForPart(id){return installed.get(id)||null}
 export function nativeArtStatus(){return {...states,errors:[...states.errors]}}
+// Numeric read for display-loop cache invalidation without allocating status snapshots.
+export function nativeArtRevision(){return states.revision}
 export async function loadNativePartCatalog(url=new URL('../../assets/art/catalog.json',import.meta.url)){
  // Build the new catalog offscreen. Parallel requests must not corrupt counts or overwrite
  // a newer version, nor clear live artwork during a reload.
