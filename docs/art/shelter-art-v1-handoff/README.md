@@ -1,0 +1,7 @@
+# Native shelter art coordination
+
+Codex will replace the existing side-facing shelter blocks with original overhead native-grid shelter artwork. Read only actual denStyle/kind, integrity, controller weatherSeal and foodStore/capacity. Preserve projects, completed shelter identity/coordinates, overlays, target interaction and every gameplay/cost/save authority. Claude currently owns active shelter/cache/interaction changes; those files are excluded. Shared renderer change is a presentation import and painter call only.
+
+Confirmed current-source issue: low-seal shelters paint water drips from sim.climate.rain > .5, a regional/seasonal wetness probability rather than actual local liquid precipitation. The candidate uses the same canonical atmosphereAt liquid reading as weather art; dry/snow-only or unsupported historical atmosphere readings cannot invent drips. A cue illustrates existing weak weather protection, not a new quantified interior water transfer. Stored-reserve bundles communicate normalized actual stock, not an invented food species or diet.
+
+Required evidence: finite native pixels, immutable state/RNG, actual controller readings and dry/rain/snow separation; labelled native condition sheet, then genuine paid gameplay shelter/build/cache/wear observations through public controls and exact export. Staged art fixtures are not shelter gameplay acceptance. Source integration gate and creator/performance/anatomy scope remain separate.
