@@ -4,6 +4,7 @@
 const src=path=>{const base=new URL('../../assets/audio/'+path,import.meta.url).href;return{url:base+'.ogg',urls:[base+'.ogg',base+'.m4a'],master:'assets/audio-source/'+path+'.wav'}};
 export const AUTHORED_AUDIO=Object.freeze({
   field:{...src('ambience/field-loop'),kind:'loop',seconds:12,bus:'ambience',gain:.68},
+  rain:{...src('ambience/rain-loop'),kind:'loop',seconds:12,bus:'ambience'},
   wet:{...src('ambience/wet-loop'),kind:'loop',seconds:12,bus:'ambience',gain:.52},
   'water-edge':{...src('ambience/water-edge-loop'),kind:'loop',seconds:12,bus:'ambience',gain:.46},
   lineage:{...src('music/lineage-loop'),kind:'loop',seconds:12,bus:'music',gain:.46},

@@ -1,6 +1,6 @@
 import {canHunt,preyPreference} from '../ecology/functional-diet.js';
 import {STRATUM_SENSES} from '../ecology/stratum-senses.js';
-import {VISIBILITY} from '../ecology/atmospheric-visibility.js';
+import {VISIBILITY,atmosphereAt} from '../ecology/atmospheric-visibility.js';
 import {detects} from '../ecology/threat-perception.js';
 import {ADAPTATIONS} from '../lineage/evolution.js';
 
@@ -55,9 +55,15 @@ export function stalkerDangerBand(scene){
   const d=scene?.danger||0;if(!scene?.threatId||d<.08)return 0;if(d<.34)return 1;if(d<.66)return 2;return 3;
 }
 
+// Consume canonical local liquid precipitation; no independent weather rule.
+export function localRainIntensity(sim,animal=sim?.player?.()){
+  if(!animal||animal.underground||animal.diveDepth>.03||!sim?.climate||!sim.world?.temperature)return 0;
+  return Math.max(0,Math.min(1,atmosphereAt(sim,animal.x,animal.y).liquid||0));
+}
+
 export function musicSceneFor(sim){
   const p=sim?.player?.();
-  if(!p)return{scene:AUDIO_SCENES.ENDED,danger:0,shelter:false,hidden:false,generation:sim?.lineage?.highestGeneration||1,seasonIndex:sim?.seasonIndex||0,wetness:0,waterEdge:0,branch:null};
+  if(!p)return{scene:AUDIO_SCENES.ENDED,danger:0,shelter:false,hidden:false,generation:sim?.lineage?.highestGeneration||1,seasonIndex:sim?.seasonIndex||0,wetness:0,waterEdge:0,rain:0,branch:null};
   const encounter=sim.predator?.playerStatus?.(p)||null,nearest=nearestHunter(sim,p,10),encounterAnimal=encounter?sim.animals?.find?.(a=>a.id===encounter.hunterId&&a.alive):null;
   const threat=encounterAnimal?{animal:encounterAnimal,distance:encounter.distance}:nearest,protectedStart=!!sim.isOpeningProtected?.(p),hidden=!!p.hidden;
   const shelter=sim.shelter?.nearest?.(p,{radius:2.25,familyOnly:true})||null;
@@ -67,7 +73,7 @@ export function musicSceneFor(sim){
   const concealed=!!(hidden&&threat&&sim.camouflageConceals?.(p,threat.animal,threat.distance));
   const danger=concealed?rawDanger*.38:rawDanger;
   const scene=danger>.16?AUDIO_SCENES.DANGER:hidden?AUDIO_SCENES.HIDDEN:shelter?AUDIO_SCENES.SHELTER:AUDIO_SCENES.CALM;
-  return{scene,danger,shelter:!!shelter,hidden,generation:p.generation||1,seasonIndex:sim.seasonIndex||0,threatDistance:threat?.distance??Infinity,threatId:threat?.animal?.id??null,threatX:threat?.animal?.x??null,threatY:threat?.animal?.y??null,huntPhase:encounter?.phase||null,concealed,wetness:localWetness(sim,p),waterEdge:localWaterEdge(sim,p),branch:activeStrategyBranch(p)};
+  return{scene,danger,shelter:!!shelter,hidden,generation:p.generation||1,seasonIndex:sim.seasonIndex||0,threatDistance:threat?.distance??Infinity,threatId:threat?.animal?.id??null,threatX:threat?.animal?.x??null,threatY:threat?.animal?.y??null,huntPhase:encounter?.phase||null,concealed,wetness:localWetness(sim,p),waterEdge:localWaterEdge(sim,p),rain:localRainIntensity(sim,p),branch:activeStrategyBranch(p)};
 }
 
 export function cueForResult(result){

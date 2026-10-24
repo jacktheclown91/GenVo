@@ -37,7 +37,7 @@ assert.ok(audio.ctx instanceof FakeAudioContext);
 assert.ok(audio.ambienceSource,'ambience starts after unlock');
 assert.equal(await audio.assetLoadPromise,true,'authored WAV pack decodes when browser facilities exist');
 assert.equal(audio.authoredReady,true);
-assert.equal(audio.authoredLoops.size,7,'the lineage theme joins three adaptive music textures plus field, wetland and water-edge ambience beds');
+assert.deepEqual([...audio.authoredLoops.keys()].sort(),['danger','field','lineage','rain','shelter','theme','water-edge','wet'],'the exact authored loop contract includes the new independent native-rain bed');
 const starts=audio.ctx.starts;
 audio.noteResult({ok:true,type:'drink'});
 assert.ok(audio.ctx.starts>starts,'interaction cue schedules WebAudio nodes');

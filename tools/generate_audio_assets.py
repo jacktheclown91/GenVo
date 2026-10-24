@@ -100,6 +100,8 @@ def normalize(x: np.ndarray, peak: float = 0.72) -> np.ndarray:
     return np.clip(x / p * peak, -0.999, 0.999)
 
 def write_wav(rel: str, x: np.ndarray, peak: float = 0.72) -> None:
+    if not np.isfinite(x).all():
+        raise ValueError('Non-finite authored audio: ' + rel)
     path = ROOT / rel; path.parent.mkdir(parents=True, exist_ok=True)
     data = (normalize(x, peak) * 32767).astype('<i2')
     with wave.open(str(path), 'wb') as wf:
@@ -267,14 +269,19 @@ def bird(dur: float, f_lo: float, f_hi: float, notes: int, trill: float = 0.0) -
     return out
 
 def build_field_loop() -> np.ndarray:
-    d = 12.0; n = int(d * SR); t = np.arange(n) / SR
-    wind = looped(lambda x: one_pole_lp(one_pole_lp(x, 420), 600), noise(n)) * gusts(n, 4.0, .6) * 2.6
-    grass = looped(lambda x: biquad(x, 'hp', 2400, .7), noise(n)) * gusts(n, 3.0, .85, 2.0) ** 2 * .05
-    crickets = np.sin(2 * np.pi * 4300 * t) * np.clip((np.sin(2 * np.pi * 30 * t) - .2) * 3, 0, 1) * gusts(n, 6, .9, 4.1) * .05
-    out = wind + grass + crickets
-    for start, lo, hi, notes, tr in ((1.4, 2600, 3600, 3, 0), (5.2, 2100, 3200, 5, .04), (8.6, 3000, 4200, 2, 0), (10.9, 2400, 3000, 4, .06)):
-        place(out, bird(.55 + notes * .05, lo, hi, notes, tr) * .16, start, wrap=True)
-    return reverb(out, 1.4, 4500, .18, loop=True)
+    # Nonvocal habitat bed; actual creatures use the native positional voice path.
+    d = 12.0; n = int(d * SR)
+    wind = looped(lambda x: one_pole_lp(one_pole_lp(x, 420), 600), noise(n)) * gusts(n, 5.0, .62) * 2.6
+    grass = looped(lambda x: biquad(one_pole_hp(x, 900), 'lp', 4800, .6), noise(n)) * gusts(n, 3.0, .85, 2.0) ** 2 * .07
+    return reverb(wind + grass, 1.4, 4500, .18, loop=True)
+
+
+def pool_rustle(pool: np.ndarray, start: float, dur: float, centre: float) -> np.ndarray:
+    # Reuse the bed's noise pool without new global authoring RNG draws.
+    n = int(dur * SR); idx = (np.arange(n) + int(start * SR)) % len(pool)
+    x = biquad(pool[idx], 'bp', centre, .55)
+    return x * np.clip(np.sin(np.pi * np.arange(n) / max(1, n - 1)), 0, 1) ** 1.6
+
 
 def plop(f: float, dur: float = .18) -> np.ndarray:
     n = int(dur * SR); t = np.arange(n) / SR
@@ -285,24 +292,44 @@ def croak(f0: float, dur: float = .32) -> np.ndarray:
     return fade(voice(contour((0, f0), (dur, f0 * .82)), dur, ((480, 4, 1.0), (1150, 5, .5)), .05) * (np.sin(np.pi * np.arange(int(dur * SR)) / int(dur * SR)) ** .8), .01, .05)
 
 def build_wet_loop() -> np.ndarray:
-    d = 12.0; n = int(d * SR)
-    rain = looped(lambda x: biquad(biquad(one_pole_hp(x, 700), 'lp', 4200, .7), 'lp', 4200, .7), noise(n)) * .12 * gusts(n, 6, .3, 1.0)
-    out = rain
+    # Soil moisture selects this texture, not rainfall or a fabricated frog population.
+    d = 12.0; n = int(d * SR); raw = noise(n)
+    out = looped(lambda x: biquad(one_pole_hp(x, 170), 'lp', 2100, .6), raw) * .08 * gusts(n, 6, .3, 1.0)
     for k in range(26):
-        place(out, plop(RNG.uniform(700, 1500)) * RNG.uniform(.08, .2), RNG.uniform(0, d), wrap=True)
+        f, level, start = RNG.uniform(700, 1500), RNG.uniform(.08, .2), RNG.uniform(0, d)
+        place(out, pool_rustle(raw, start, .18, f) * level * .22, start, wrap=True)
     for start in (2.0, 2.45, 7.1, 7.5, 7.9):
-        place(out, croak(RNG.uniform(95, 125)) * .5, start, wrap=True)
+        colour = RNG.uniform(95, 125)
+        # Same draw count as the former croak, now a broad unvoiced texture.
+        airy = biquad(noise(int(.32 * SR)), 'bp', 600 + colour * 3, .55)
+        envelope = np.clip(np.sin(np.pi * np.arange(len(airy)) / (len(airy) - 1)), 0, 1) ** 1.8
+        place(out, airy * envelope * .035, (start + (colour - 95) * .27) % d, wrap=True)
     return reverb(out, 1.3, 3000, .22, loop=True)
 
+
 def build_water_edge_loop() -> np.ndarray:
-    d = 12.0; n = int(d * SR); t = np.arange(n) / SR
-    swell = .25 + .75 * (.5 + .5 * np.sin(2 * np.pi * 4 * t / d - 1.2)) ** 3          # four waves per loop
-    lap = looped(lambda x: biquad(x, 'bp', 650, .8), noise(n)) * swell * .5
+    d = 12.0; n = int(d * SR)
+    swell = .22 + .78 * gusts(n, 4, .9, 1.2) * gusts(n, 7, .65, .4)
+    raw = noise(n)
+    lap = looped(lambda x: biquad(x, 'bp', 650, .8), raw) * swell * .5
     murmur = looped(lambda x: one_pole_lp(x, 180), noise(n)) * 1.2
     out = lap + murmur
     for k in range(18):
-        place(out, plop(RNG.uniform(500, 1100), .12) * RNG.uniform(.05, .14), RNG.uniform(0, d), wrap=True)
+        f, level, start = RNG.uniform(500, 1100), RNG.uniform(.05, .14), RNG.uniform(0, d)
+        place(out, pool_rustle(raw, start, .12, f) * level * .35, start, wrap=True)
     return reverb(out, 1.0, 3500, .2, loop=True)
+
+
+def build_rain_loop() -> np.ndarray:
+    # Independent authoring RNG; no change to existing voice/action/music masters.
+    rng = np.random.default_rng(20261023); d = 12.0; n = int(d * SR)
+    raw = rng.standard_normal(n)
+    veil = looped(lambda x: biquad(one_pole_hp(x, 700), 'lp', 6200, .6), raw)
+    out = veil * (.16 + .08 * gusts(n, 5, .5, .8))
+    for k in range(64):
+        start = rng.uniform(0, d)
+        place(out, pool_rustle(raw, start, rng.uniform(.035, .09), rng.uniform(1800, 4900)) * rng.uniform(.035, .09), start, wrap=True)
+    return out
 
 
 # ---------------------------------------------------------------- creature voices
@@ -432,11 +459,14 @@ def build_shelter_store() -> np.ndarray:  # a soft thud and settling
     return soft(out)
 
 
-def main() -> None:
+def main(ambience_only: bool = False) -> None:
     ROOT.mkdir(parents=True, exist_ok=True)
     write_wav('ambience/field-loop.wav', build_field_loop(), .52)
     write_wav('ambience/wet-loop.wav', build_wet_loop(), .46)
     write_wav('ambience/water-edge-loop.wav', build_water_edge_loop(), .44)
+    if ambience_only:
+        write_wav('ambience/rain-loop.wav', build_rain_loop(), .44)
+        return
     write_wav('music/theme-loop.wav', build_theme_loop(), .48)
     write_wav('music/lineage-loop.wav', build_lineage_loop(), .42)
     write_wav('music/shelter-loop.wav', build_shelter_loop(), .44)
@@ -464,9 +494,10 @@ def main() -> None:
     write_wav('actions/shelter-build.wav', build_shelter_build(), .64)
     write_wav('actions/shelter-repair.wav', build_shelter_repair(), .60)
     write_wav('actions/shelter-store.wav', build_shelter_store(), .58)
+    write_wav('ambience/rain-loop.wav', build_rain_loop(), .44)
 
 
-def encode_all() -> None:
+def encode_all(ambience_only: bool = False) -> None:
     """Compress every master with ffmpeg: Opus 48 kbit/s in Ogg, and AAC 64 kbit/s in M4A."""
     import shutil, subprocess
     ff = shutil.which('ffmpeg')
@@ -474,6 +505,8 @@ def encode_all() -> None:
         print('ffmpeg not found: masters written, compressed copies not updated'); return
     for wav in sorted(ROOT.rglob('*.wav')):
         rel = wav.relative_to(ROOT).with_suffix('')
+        if ambience_only and rel.parts[0] != 'ambience':
+            continue
         for ext, args in (('.ogg', ['-c:a', 'libopus', '-b:a', '48k', '-application', 'audio']),
                           ('.m4a', ['-c:a', 'aac', '-b:a', '64k', '-movflags', '+faststart'])):
             dst = OUT / rel.with_suffix(ext); dst.parent.mkdir(parents=True, exist_ok=True)
@@ -483,5 +516,9 @@ def encode_all() -> None:
 
 
 if __name__ == '__main__':
-    main()
-    encode_all()
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--ambience-only', action='store_true', help='Rebuild ambience only; preserve other authored assets.')
+    args = parser.parse_args()
+    main(ambience_only=args.ambience_only)
+    encode_all(ambience_only=args.ambience_only)

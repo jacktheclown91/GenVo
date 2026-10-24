@@ -1,0 +1,6 @@
+{
+  "exitCode": 1,
+  "stdout": "",
+  "stderr": "node:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: water-edge has useful but headroom-safe peak level\n    at file:///C:/Users/jackt/AppData/Local/Temp/genvo-audio-v1-20261023/tests/audio-assets.mjs:26:10 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v24.14.0\n",
+  "cause": "A fractional-power envelope received tiny negative endpoint roundoff. The existing normalizer converted propagated NaNs to silence. Fix the envelope domain and reject non-finite generator inputs."
+}

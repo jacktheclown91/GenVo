@@ -99,6 +99,7 @@ export class AudioDirector{
   setLoopGain(id,value,time=.7){const loop=this.authoredLoops.get(id);if(!loop||!this.ctx)return;loop.gain.gain.setTargetAtTime(Math.max(.0001,value),this.ctx.currentTime,time)}
   updateAuthoredMix(scene){
     if(!this.ctx||!scene)return;const wet=clamp(scene.wetness||0),water=clamp(scene.waterEdge||0),danger=clamp(scene.danger||0),rising=danger>this.lastMixDanger+.025;
+    this.setLoopGain('rain',.48*Math.sqrt(clamp(scene.rain||0)),.75);
     this.setLoopGain('field',.30+.34*(1-wet)*(1-water*.34),1.05);this.setLoopGain('wet',.05+.52*wet*(1-water*.18),1.05);this.setLoopGain('water-edge',.0001+.54*water,water>0.3?.65:1.25);
     const stage=themeStageForGeneration(scene.generation||1),lineage=scene.scene===AUDIO_SCENES.ENDED?.12:scene.scene===AUDIO_SCENES.DANGER?.25:scene.scene===AUDIO_SCENES.HIDDEN?.28:.40;
     const themeGain=(.07+stage*.055)*(scene.scene===AUDIO_SCENES.DANGER?.58:scene.scene===AUDIO_SCENES.HIDDEN?.72:1)*(scene.shelter?1.08:1);

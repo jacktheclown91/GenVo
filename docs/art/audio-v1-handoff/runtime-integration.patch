@@ -1,0 +1,62 @@
+diff --git a/src/audio/assets.js b/src/audio/assets.js
+index 49920bfe..bb42f5c7 100644
+--- a/src/audio/assets.js
++++ b/src/audio/assets.js
+@@ -4,6 +4,7 @@
+ const src=path=>{const base=new URL('../../assets/audio/'+path,import.meta.url).href;return{url:base+'.ogg',urls:[base+'.ogg',base+'.m4a'],master:'assets/audio-source/'+path+'.wav'}};
+ export const AUTHORED_AUDIO=Object.freeze({
+   field:{...src('ambience/field-loop'),kind:'loop',seconds:12,bus:'ambience',gain:.68},
++  rain:{...src('ambience/rain-loop'),kind:'loop',seconds:12,bus:'ambience'},
+   wet:{...src('ambience/wet-loop'),kind:'loop',seconds:12,bus:'ambience',gain:.52},
+   'water-edge':{...src('ambience/water-edge-loop'),kind:'loop',seconds:12,bus:'ambience',gain:.46},
+   lineage:{...src('music/lineage-loop'),kind:'loop',seconds:12,bus:'music',gain:.46},
+diff --git a/src/audio/audio.js b/src/audio/audio.js
+index 92a5454a..da5c94c0 100644
+--- a/src/audio/audio.js
++++ b/src/audio/audio.js
+@@ -99,6 +99,7 @@ export class AudioDirector{
+   setLoopGain(id,value,time=.7){const loop=this.authoredLoops.get(id);if(!loop||!this.ctx)return;loop.gain.gain.setTargetAtTime(Math.max(.0001,value),this.ctx.currentTime,time)}
+   updateAuthoredMix(scene){
+     if(!this.ctx||!scene)return;const wet=clamp(scene.wetness||0),water=clamp(scene.waterEdge||0),danger=clamp(scene.danger||0),rising=danger>this.lastMixDanger+.025;
++    this.setLoopGain('rain',.48*Math.sqrt(clamp(scene.rain||0)),.75);
+     this.setLoopGain('field',.30+.34*(1-wet)*(1-water*.34),1.05);this.setLoopGain('wet',.05+.52*wet*(1-water*.18),1.05);this.setLoopGain('water-edge',.0001+.54*water,water>0.3?.65:1.25);
+     const stage=themeStageForGeneration(scene.generation||1),lineage=scene.scene===AUDIO_SCENES.ENDED?.12:scene.scene===AUDIO_SCENES.DANGER?.25:scene.scene===AUDIO_SCENES.HIDDEN?.28:.40;
+     const themeGain=(.07+stage*.055)*(scene.scene===AUDIO_SCENES.DANGER?.58:scene.scene===AUDIO_SCENES.HIDDEN?.72:1)*(scene.shelter?1.08:1);
+diff --git a/src/audio/model.js b/src/audio/model.js
+index 414f4331..8e2bc446 100644
+--- a/src/audio/model.js
++++ b/src/audio/model.js
+@@ -1,6 +1,6 @@
+ import {canHunt,preyPreference} from '../ecology/functional-diet.js';
+ import {STRATUM_SENSES} from '../ecology/stratum-senses.js';
+-import {VISIBILITY} from '../ecology/atmospheric-visibility.js';
++import {VISIBILITY,atmosphereAt} from '../ecology/atmospheric-visibility.js';
+ import {detects} from '../ecology/threat-perception.js';
+ import {ADAPTATIONS} from '../lineage/evolution.js';
+ 
+@@ -55,9 +55,15 @@ export function stalkerDangerBand(scene){
+   const d=scene?.danger||0;if(!scene?.threatId||d<.08)return 0;if(d<.34)return 1;if(d<.66)return 2;return 3;
+ }
+ 
++// Consume canonical local liquid precipitation; no independent weather rule.
++export function localRainIntensity(sim,animal=sim?.player?.()){
++  if(!animal||animal.underground||animal.diveDepth>.03||!sim?.climate||!sim.world?.temperature)return 0;
++  return Math.max(0,Math.min(1,atmosphereAt(sim,animal.x,animal.y).liquid||0));
++}
++
+ export function musicSceneFor(sim){
+   const p=sim?.player?.();
+-  if(!p)return{scene:AUDIO_SCENES.ENDED,danger:0,shelter:false,hidden:false,generation:sim?.lineage?.highestGeneration||1,seasonIndex:sim?.seasonIndex||0,wetness:0,waterEdge:0,branch:null};
++  if(!p)return{scene:AUDIO_SCENES.ENDED,danger:0,shelter:false,hidden:false,generation:sim?.lineage?.highestGeneration||1,seasonIndex:sim?.seasonIndex||0,wetness:0,waterEdge:0,rain:0,branch:null};
+   const encounter=sim.predator?.playerStatus?.(p)||null,nearest=nearestHunter(sim,p,10),encounterAnimal=encounter?sim.animals?.find?.(a=>a.id===encounter.hunterId&&a.alive):null;
+   const threat=encounterAnimal?{animal:encounterAnimal,distance:encounter.distance}:nearest,protectedStart=!!sim.isOpeningProtected?.(p),hidden=!!p.hidden;
+   const shelter=sim.shelter?.nearest?.(p,{radius:2.25,familyOnly:true})||null;
+@@ -67,7 +73,7 @@ export function musicSceneFor(sim){
+   const concealed=!!(hidden&&threat&&sim.camouflageConceals?.(p,threat.animal,threat.distance));
+   const danger=concealed?rawDanger*.38:rawDanger;
+   const scene=danger>.16?AUDIO_SCENES.DANGER:hidden?AUDIO_SCENES.HIDDEN:shelter?AUDIO_SCENES.SHELTER:AUDIO_SCENES.CALM;
+-  return{scene,danger,shelter:!!shelter,hidden,generation:p.generation||1,seasonIndex:sim.seasonIndex||0,threatDistance:threat?.distance??Infinity,threatId:threat?.animal?.id??null,threatX:threat?.animal?.x??null,threatY:threat?.animal?.y??null,huntPhase:encounter?.phase||null,concealed,wetness:localWetness(sim,p),waterEdge:localWaterEdge(sim,p),branch:activeStrategyBranch(p)};
++  return{scene,danger,shelter:!!shelter,hidden,generation:p.generation||1,seasonIndex:sim.seasonIndex||0,threatDistance:threat?.distance??Infinity,threatId:threat?.animal?.id??null,threatX:threat?.animal?.x??null,threatY:threat?.animal?.y??null,huntPhase:encounter?.phase||null,concealed,wetness:localWetness(sim,p),waterEdge:localWaterEdge(sim,p),rain:localRainIntensity(sim,p),branch:activeStrategyBranch(p)};
+ }
+ 
+ export function cueForResult(result){
