@@ -1,0 +1,303 @@
+{
+  "cases": [
+    {
+      "seed": "AUDIO-RAIN-3",
+      "state": {
+        "day": 1,
+        "tick": 41,
+        "air": {
+          "rain": 0.413905322577351,
+          "temperature": 0.40820381161298397,
+          "wind": {
+            "east": 0.618181026712047,
+            "south": 0.46232715327962726,
+            "strength": 0.7719418232265981
+          },
+          "fog": 0.17595523430691054,
+          "snow": 0,
+          "liquid": 0.17523895781130927,
+          "extinction": 0.02900038121833818
+        },
+        "stateParity": true,
+        "clock": "day-clock/30s",
+        "buffers": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger",
+          "branch-stealth",
+          "branch-offense",
+          "branch-social",
+          "branch-utility",
+          "genvo-call",
+          "genvo-hurt",
+          "genvo-alarm",
+          "genvo-rally",
+          "genvo-court",
+          "genvo-birth",
+          "hopper",
+          "digger",
+          "stalker",
+          "stalker-stalk",
+          "stalker-charge",
+          "stalker-lunge",
+          "food-moss",
+          "food-berries",
+          "food-reeds",
+          "food-mushroom",
+          "food-seed",
+          "food-carrion",
+          "shelter-build",
+          "shelter-repair",
+          "shelter-store"
+        ],
+        "loops": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger"
+        ]
+      },
+      "metric": {
+        "seconds": 8.234666666666667,
+        "rate": 192000,
+        "channels": 2,
+        "peak": 0.08467621356248856,
+        "rms": 0.016650234924510378
+      },
+      "sceneRain": 0.17523895781130927,
+      "rainGain": 0.20066723227500916
+    },
+    {
+      "seed": "GENVO8-TEST-A",
+      "state": {
+        "day": 1,
+        "tick": 1,
+        "air": {
+          "rain": 0,
+          "temperature": 0.4744112491607666,
+          "wind": {
+            "east": -0.7199405726244947,
+            "south": -0.46880271087057024,
+            "strength": 0.859121882988951
+          },
+          "fog": 0.08287674448338124,
+          "snow": 0,
+          "liquid": 0,
+          "extinction": 0.009945209338005748
+        },
+        "stateParity": true,
+        "clock": "day-clock/30s",
+        "buffers": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger",
+          "branch-stealth",
+          "branch-offense",
+          "branch-social",
+          "branch-utility",
+          "genvo-call",
+          "genvo-hurt",
+          "genvo-alarm",
+          "genvo-rally",
+          "genvo-court",
+          "genvo-birth",
+          "hopper",
+          "digger",
+          "stalker",
+          "stalker-stalk",
+          "stalker-charge",
+          "stalker-lunge",
+          "food-moss",
+          "food-berries",
+          "food-reeds",
+          "food-mushroom",
+          "food-seed",
+          "food-carrion",
+          "shelter-build",
+          "shelter-repair",
+          "shelter-store"
+        ],
+        "loops": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger"
+        ]
+      },
+      "metric": {
+        "seconds": 8.245333333333333,
+        "rate": 192000,
+        "channels": 2,
+        "peak": 0.077986940741539,
+        "rms": 0.016397851102576706
+      },
+      "sceneRain": 0,
+      "rainGain": 0.00010045763337984681
+    },
+    {
+      "seed": "AUDIO-RAIN-4",
+      "state": {
+        "day": 1,
+        "tick": 4,
+        "air": {
+          "rain": 0,
+          "temperature": 0.37525445222854614,
+          "wind": {
+            "east": 0.1597642265034343,
+            "south": 0.7292504153449352,
+            "strength": 0.7465458970157167
+          },
+          "fog": 0.20568755515828752,
+          "snow": 0,
+          "liquid": 0,
+          "extinction": 0.0246825066189945
+        },
+        "stateParity": true,
+        "clock": "day-clock/30s",
+        "buffers": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger",
+          "branch-stealth",
+          "branch-offense",
+          "branch-social",
+          "branch-utility",
+          "genvo-call",
+          "genvo-hurt",
+          "genvo-alarm",
+          "genvo-rally",
+          "genvo-court",
+          "genvo-birth",
+          "hopper",
+          "digger",
+          "stalker",
+          "stalker-stalk",
+          "stalker-charge",
+          "stalker-lunge",
+          "food-moss",
+          "food-berries",
+          "food-reeds",
+          "food-mushroom",
+          "food-seed",
+          "food-carrion",
+          "shelter-build",
+          "shelter-repair",
+          "shelter-store"
+        ],
+        "loops": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger"
+        ]
+      },
+      "metric": {
+        "seconds": 8.170666666666667,
+        "rate": 192000,
+        "channels": 2,
+        "peak": 0.07975450903177261,
+        "rms": 0.015459887232953266
+      },
+      "sceneRain": 0,
+      "rainGain": 0.00010013096471084282
+    }
+  ],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Same exported app, three ordinary seeded New Worlds, public onboarding/Return controls, native 1x clock. Zero-output diagnostic tap records the existing master bus; no sound/event/organism/weather fields are injected.",
+  "decoders": [
+    {
+      "stem": "field-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "field-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "wet-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "wet-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "water-edge-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "water-edge-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "rain-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "rain-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    }
+  ],
+  "mute": {
+    "enabled": false,
+    "gain": 0
+  },
+  "unmute": {
+    "enabled": true,
+    "gain": 0.7200000286102295,
+    "masterLevel": 0.72
+  }
+}

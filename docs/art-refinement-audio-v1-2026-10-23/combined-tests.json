@@ -1,0 +1,44 @@
+[
+  {
+    "test": "audio-assets",
+    "exitCode": 0,
+    "stdout": "audio asset checks: PASS (33 assets, masters 4674284 bytes, shipped 1545682 bytes)\n",
+    "stderr": ""
+  },
+  {
+    "test": "audio",
+    "exitCode": 0,
+    "stdout": "audio checks: PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "audio-runtime",
+    "exitCode": 0,
+    "stdout": "audio runtime checks: PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "audio-phenotype",
+    "exitCode": 0,
+    "stdout": "Label-independent mounted voices, canonical predation threats, funded courtship beat deduplication, pause and RNG neutrality PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "audio-weather-reading",
+    "exitCode": 0,
+    "stdout": "Weather audio PASS: native generated rain/dry/snow, explicit listener limits, exact mixing target and complete state/RNG parity.\n",
+    "stderr": ""
+  },
+  {
+    "test": "public-export",
+    "exitCode": 0,
+    "stdout": "public-export: exact reachable modules and runtime assets only PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "day-clock",
+    "exitCode": 0,
+    "stdout": "  rest per day 0.493 -> 0.493 energy; walk per day 9.9 -> 66.3 tiles\nDay clock PASS: recorded worlds keep 48 ticks a day; 30-second days keep daily biology, cover more ground, and survive saves.\n",
+    "stderr": ""
+  }
+]

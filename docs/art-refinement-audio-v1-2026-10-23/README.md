@@ -27,3 +27,7 @@ These are genuine game mixes, not isolated demonstration events. Numerical/decod
 Use the ordinary public exporter, then `node tools/review-environment-audio.cjs <export> <new-report>`. The checked-in runtime patch is an integration record, not something to reapply to active source. The first edit attempt stopped on CRLF mismatch and inadvertently launched the old generator; all 96 original hashes were restored before refinement. An invalid fractional envelope endpoint was caught by the unchanged asset test, corrected by clipping its mathematical domain, and the writer now rejects non-finite source audio rather than hiding it as silence. Original failures are retained.
 
 This pass does not migrate, push, release or certify the complete game.
+
+## Combined source verification
+
+Merged Claude weather-clock commit 227039ac. All seven focused checks (including day-clock), canonical audit and the ordinary 836-file export pass. A fresh three-world native WebAudio review on that combined source again passes both codecs, natural rain/dry/snow, master headroom, mute/unmute and exact saved-state parity. See combined-tests.json and combined-native-browser-receipt.json. Review build: C:\Users\jackt\AppData\Local\Temp\genvo-audio-v1-web-20261023-current.
