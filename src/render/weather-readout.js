@@ -1,10 +1,13 @@
+import {THUNDERSTORMS,thunderstormAt} from '../ecology/thunderstorms.js';
 import {thermalWeatherReading} from '../ecology/thermal-weather.js';
 import {atmosphereReadout} from './atmosphere.js';
 import {chooseOverlayPlacement,gameplayProtectedRects} from '../ui/overlay-placement.js';
 // One explanatory label above fog; atmospheric artwork stays in its weather layer.
 export function weatherReadoutModel(sim){
  const a=sim.player();if(!a||a.underground||(a.diveDepth||0)>.03)return null;
- const t=thermalWeatherReading(sim,a.x,a.y),thermal=t?.active?t:null,air=atmosphereReadout(sim,a);if(!thermal&&!air)return null;
+ const t=thermalWeatherReading(sim,a.x,a.y),thermal=t?.active?t:null,air=atmosphereReadout(sim,a),storm=sim.thunderRules===THUNDERSTORMS.policy&&thunderstormAt(sim,sim.world.idx(a.x,a.y)).intensity>.4;if(!thermal&&!air&&!storm)return null;
+ const conditions=[thermal?.label,air?.text].filter(Boolean);
+ if(storm)return{title:'Thunderstorm',detail:'Avoid exposed high ground'+(conditions.length?' · '+conditions.join(' · '):''),storm:true,thermal:false,warm:false};
  return{title:thermal?.label||air.text,detail:air?(thermal?air.text+' · reduced sight':'Reduced sight'):(thermal.delta>0?'Above':'Below')+' seasonal temperature',thermal:!!thermal,warm:!!thermal&&thermal.delta>0};
 }
 export function wrapWeatherText(text,maxWidth,measure){
@@ -22,6 +25,6 @@ export function drawWeatherReadout(renderer){
  c.save();const measureTitle=t=>{c.font='bold 13px Georgia';return c.measureText(t).width},measureDetail=t=>{c.font='11px sans-serif';return c.measureText(t).width};
  const box=weatherReadoutPlacement({width:renderer.w,height:renderer.h,protectedRects,obstacles,model,measureTitle,measureDetail}),x=Math.round(box.left),y=Math.round(box.top),accent=model.warm?'#e5b67c':'#abd2df';
  c.fillStyle='#17291ff2';c.fillRect(x,y,box.width,box.height);c.fillStyle=accent;c.fillRect(x,y,2,box.height);
- if(model.thermal){c.fillRect(x+12,y+9,2,15);c.fillRect(x+10,y+23,6,5);c.fillStyle='#edf0d4';c.fillRect(x+12,y+10,1,5)}else{for(let k=0;k<3;k++)c.fillRect(x+8+(k%2)*2,y+12+k*5,9-(k%2)*2,1)}
+ if(model.storm){for(const [xx,yy,w] of [[13,10,5],[11,13,5],[9,16,9],[14,19,3],[12,22,3]])c.fillRect(x+xx,y+yy,w,3)}else if(model.thermal){c.fillRect(x+12,y+9,2,15);c.fillRect(x+10,y+23,6,5);c.fillStyle='#edf0d4';c.fillRect(x+12,y+10,1,5)}else{for(let k=0;k<3;k++)c.fillRect(x+8+(k%2)*2,y+12+k*5,9-(k%2)*2,1)}
  c.textAlign='left';c.textBaseline='alphabetic';c.fillStyle=accent;c.font='bold 13px Georgia';for(const [i,line] of box.titleLines.entries())c.fillText(line,x+25,y+15+i*14);c.fillStyle='#e5dfbd';c.font='11px sans-serif';for(const [i,line] of box.detailLines.entries())c.fillText(line,x+25,y+16+box.titleLines.length*14+i*13);c.restore();
 }

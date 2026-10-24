@@ -1,5 +1,5 @@
 import {CFG} from '../sim/config.js';
-import {THUNDERSTORMS,thunderstormAt} from '../ecology/thunderstorms.js';
+import {THUNDERSTORMS} from '../ecology/thunderstorms.js';
 import {visuallyObservable} from '../ecology/atmospheric-visibility.js';
 import {drawLightningContact} from './lightning-contact-art.js';
 export function drawThunderstorms(renderer){
@@ -11,6 +11,6 @@ export function drawThunderstorms(renderer){
   c.fillStyle=`rgba(209,225,241,${alpha*.16})`;c.fillRect(0,0,renderer.w,renderer.h);
   drawLightningContact(renderer,{x,y,event:e,age,alpha});
  }
- if(thunderstormAt(sim,sim.world.idx(p.x,p.y)).intensity>.4){const text='Thunderstorm - avoid exposed high ground';c.font='11px sans-serif';c.textAlign='center';const width=c.measureText(text).width+16,x=renderer.w/2,y=renderer.h/2+tile*.85;c.fillStyle='#14232ddd';c.fillRect(x-width/2,y-13,width,18);c.fillStyle='#c7d9e9';c.fillText(text,x,y)}
+
  c.restore();
 }
