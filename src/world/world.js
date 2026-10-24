@@ -116,7 +116,7 @@ export class World{
     const dirs=[-1,0,1];
     while(head<tail){const i=q[head++],x=i%n,y=(i/n)|0,next=dist[i]+1;for(const oy of dirs)for(const ox of dirs){if(!ox&&!oy)continue;const nx=x+ox,ny=y+oy;if(!this.isPlayable(nx+.5,ny+.5))continue;const ni=ny*n+nx;if(this.water[ni]||dist[ni]<=next)continue;dist[ni]=next;q[tail++]=ni}}
   }
-  isDrinkable(x,y){if(!this.isPlayable(x,y))return false;const i=this.idx(x,y);return potableWater(this,i)&&!surfaceIceCovered(this.environment,i)||(!this.water[i]&&(this.drinkable[i]===1||(this.moisture[i]>=.72&&!salineMargin(this,i))))}
+  isDrinkable(x,y){if(!this.isPlayable(x,y))return false;const i=this.idx(x,y);return potableWater(this,i)&&!surfaceIceCovered(this.environment,i)||(!this.water[i]&&this.drinkable[i]===1)}
   nextDrinkStep(x,y){
     const cx=Math.max(0,Math.min(this.n-1,Math.floor(x))),cy=Math.max(0,Math.min(this.n-1,Math.floor(y))),ci=this.idx(cx,cy);if(this.isDrinkable(x,y))return{x,y,score:1,drinkable:true};let bestI=ci,bestD=this.waterDistance[ci];
     for(let oy=-1;oy<=1;oy++)for(let ox=-1;ox<=1;ox++){if(!ox&&!oy)continue;const nx=cx+ox,ny=cy+oy;if(nx<0||ny<0||nx>=this.n||ny>=this.n)continue;const ni=this.idx(nx,ny);if(this.water[ni]||!this.isPlayable(nx+.5,ny+.5))continue;const d=this.waterDistance[ni];if(d<bestD){bestD=d;bestI=ni}}

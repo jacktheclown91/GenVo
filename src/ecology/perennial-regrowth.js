@@ -12,9 +12,9 @@
 // sim.correctionExperiment.rootReserve / .seedRain = false (development measurement only) switch either
 // part off. Worlds recorded before this policy are unchanged.
 export const PERENNIAL_REGROWTH=Object.freeze({policy:'perennial-regrowth/1',rootShare:.6,seedRain:.002,bare:.0005,noReserve:1e-4});
-export function perennialRegrowthActive(sim){return sim?.perennialRegrowthRules===PERENNIAL_REGROWTH.policy}
+export function perennialRegrowthActive(sim){return sim?.perennialRegrowthRules===PERENNIAL_REGROWTH.policy||sim?.world?.perennialRegrowthRules===PERENNIAL_REGROWTH.policy||sim?.sim?.perennialRegrowthRules===PERENNIAL_REGROWTH.policy}
 // Share of a plant's stored reserve that stays with it when standing tissue is removed.
-export function retainedReserveShare(sim){return perennialRegrowthActive(sim)&&sim.correctionExperiment?.rootReserve!==false?PERENNIAL_REGROWTH.rootShare:0}
+export function retainedReserveShare(sim){const exp=sim?.correctionExperiment??sim?.sim?.correctionExperiment;return perennialRegrowthActive(sim)&&exp?.rootReserve!==false?PERENNIAL_REGROWTH.rootShare:0}
 const N8=[[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]];
 // Recolonise a bare tile of a non-seed-limited producer; returns the new standing biomass.
 export function seedRain(sim,kind,i,current){
@@ -28,7 +28,22 @@ export function seedRain(sim,kind,i,current){
  energy[i]+=reserve;const r=w.plantResources;r.totals.seedRain=(r.totals.seedRain||0)+propagule;
  return current+propagule;
 }
+// Recolonise a bare water tile of an aquatic producer; returns the new standing biomass.
+export function aquaticSporeRain(sim,kind,i,current){
+ const P=PERENNIAL_REGROWTH;const exp=sim?.correctionExperiment??sim?.sim?.correctionExperiment;
+ if(!perennialRegrowthActive(sim)||exp?.seedRain===false||current>P.bare)return current;
+ const w=sim.world??sim,food=w.freshwaterFood?.[kind],energy=w.organicResources?.energy?.[kind];
+ if(!food||!energy||energy[i]>P.noReserve)return current;
+ const x=i%w.n,y=i/w.n|0,donors=[];let sum=0;
+ for(const [dx,dy] of N8){const nx=x+dx,ny=y+dy;if(nx<0||ny<0||nx>=w.n||ny>=w.n)continue;const j=w.idx(nx,ny);if(!w.water[j]||!(food[j]>0))continue;donors.push(j);sum+=food[j]}
+ if(!donors.length)return current;const propagule=P.seedRain*sum/8;if(!(propagule>0))return current;
+ let reserve=0;for(const j of donors){const share=propagule/sum;reserve+=energy[j]*share;energy[j]-=energy[j]*share;food[j]-=food[j]*share}
+ energy[i]+=reserve;food[i]+=propagule;
+ if(w.organicResources?.totals)w.organicResources.totals.aquaticGrowth=(w.organicResources.totals.aquaticGrowth||0)+propagule;
+ return current+propagule;
+}
 export function restorePerennialRegrowth(sim,core){
  if(core.perennialRegrowthRules!==undefined&&core.perennialRegrowthRules!==PERENNIAL_REGROWTH.policy)throw Error('Unknown saved perennial-regrowth rules.');
- if(core.perennialRegrowthRules===undefined)delete sim.perennialRegrowthRules;
+ if(core.perennialRegrowthRules===undefined){delete sim.perennialRegrowthRules;if(sim.world)delete sim.world.perennialRegrowthRules;}
+ else if(sim.world)sim.world.perennialRegrowthRules=sim.perennialRegrowthRules;
 }

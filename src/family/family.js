@@ -434,13 +434,17 @@ export class FamilyController{
       const childSpec=SPECIES[child.species],parentSpec=SPECIES[caregiver.species],independence=this.learningProfile(child)?.independence??0;
       const nurseTarget=(care.nurseTarget??.78)-independence*.14;
       const need=Math.max(0,childSpec.maxEnergy*nurseTarget-child.energy);
-      if(need<=0||caregiver.energy<parentSpec.maxEnergy*(care.parentReserve??.48))continue;
-      // Efficiency scales transfer speed; every unit gained is funded by the caregiver.
+      const waterNeed=Math.max(0,childSpec.maxHydration*nurseTarget-child.hydration);
+      if(need<=0&&waterNeed<=0)continue;
       const rate=(care.nurseRate??.055)*(1-independence*.68)*Math.max(0,care.nurseEfficiency??1.35);
-      const amount=Math.min(need,rate,Math.max(0,caregiver.energy-parentSpec.maxEnergy*(care.parentReserve??.48)));
-      if(amount<=0)continue;
-      child.energy=Math.min(childSpec.maxEnergy,child.energy+amount);
-      caregiver.energy-=amount;
+      if(need>0&&caregiver.energy>=parentSpec.maxEnergy*(care.parentReserve??.48)){
+        const amount=Math.min(need,rate,Math.max(0,caregiver.energy-parentSpec.maxEnergy*(care.parentReserve??.48)));
+        if(amount>0){child.energy=Math.min(childSpec.maxEnergy,child.energy+amount);caregiver.energy-=amount;}
+      }
+      if(waterNeed>0&&caregiver.hydration>=parentSpec.maxHydration*(care.parentReserve??.48)){
+        const waterAmount=Math.min(waterNeed,rate,Math.max(0,caregiver.hydration-parentSpec.maxHydration*(care.parentReserve??.48)));
+        if(waterAmount>0){child.hydration=Math.min(childSpec.maxHydration,child.hydration+waterAmount);caregiver.hydration-=waterAmount;}
+      }
     }
   }
   upbringingSummary(child){

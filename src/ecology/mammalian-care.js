@@ -43,6 +43,7 @@ export function transferMilk(parent,child,{maximum=MAMMAL.milkPerLifeStep}={}){
  parent.energy-=amount*MAMMAL.conversionEnergy;
  parent.hydration-=amount*MAMMAL.waterPerMilk;
  child.energy=Math.min(cs.maxEnergy,child.energy+amount);
+ child.hydration=Math.min(cs.maxHydration,child.hydration+amount*MAMMAL.waterPerMilk);
  child.milkMeals=(child.milkMeals||0)+1;
  child.milkTotal=(child.milkTotal||0)+amount;
  return{ok:true,type:'nursing',fed:amount,energyCost:amount*MAMMAL.conversionEnergy,waterCost:amount*MAMMAL.waterPerMilk};
