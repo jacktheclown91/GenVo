@@ -1,3 +1,6 @@
+import {liquidContact} from '../lineage/ice-locomotion.js';
+import {drawWaterContact} from './water-contact-art.js';
+
 // Renderer-only creature/environment contact. This module reads canonical habitat
 // state and derives visual resistance/contact without writing world state or RNG.
 const DIR4=[[0,-1],[1,0],[0,1],[-1,0]];
@@ -8,12 +11,12 @@ export function environmentContactFor(world,animal,{action='idle',phase=0,moving
   const cover=Math.max(moss*.72,berries,reeds,pods*.76),soil=moisture>.64?'mud':moisture<.29?'dry':'meadow';
   let waterDir=null,waterScore=-1;
   for(const [dx,dy] of DIR4){const nx=x+dx,ny=y+dy;if(nx<0||ny<0||nx>=world.n||ny>=world.n)continue;const ni=world.idx(nx,ny);if(world.water[ni]){const score=1-Math.hypot((x+.5+dx)-(animal.x||x+.5),(y+.5+dy)-(animal.y||y+.5))*.08;if(score>waterScore){waterScore=score;waterDir={x:dx,y:dy}}}}
-  return{tileX:x,tileY:y,inWater,moisture,cover:inWater?0:cover,moss,berries,reeds,pods,soil,atBank:!inWater&&(!!waterDir||!!world.drinkable?.[i]),waterDir,action,moving,phase:wrap8(phase)};
+  return{tileX:x,tileY:y,inWater,liquidSurface:inWater&&liquidContact(world,animal)&&!(animal.diveDepth>.03),moisture,cover:inWater?0:cover,moss,berries,reeds,pods,soil,atBank:!inWater&&(!!waterDir||!!world.drinkable?.[i]),waterDir,action,moving,phase:wrap8(phase)};
 }
 
 export function drawGroundContact(ctx,{contact,scale=1,bodyScale=1,dir=0}){
   if(!contact)return;const f=Math.floor(contact.phase)&7,footfall=f===0||f===4,s=Math.max(1,scale),w=Math.max(4,Math.round(5*bodyScale));ctx.save();
-  if(contact.inWater){const pulse=1+((f===1||f===5)?1:0);ctx.strokeStyle='rgba(164,225,226,.52)';ctx.lineWidth=Math.max(1,s*.45);ctx.beginPath();ctx.ellipse(0,5*s,(w+3+pulse)*s,2.2*s,0,0,Math.PI*2);ctx.stroke();if(contact.moving){ctx.strokeStyle='rgba(199,238,233,.30)';ctx.beginPath();ctx.ellipse(-dirVector(dir).x*5*s,(5-dirVector(dir).y*3)*s,(w+5)*s,2.8*s,0,0,Math.PI*2);ctx.stroke()}ctx.restore();return}
+  if(contact.inWater){if(contact.liquidSurface)drawWaterContact(ctx,{scale:s,bodyWidth:w,phase:contact.phase,moving:contact.moving,dir});ctx.restore();return}
   if(contact.cover>.42){ctx.fillStyle=`rgba(31,52,34,${Math.min(.22,.07+contact.cover*.14)})`;ctx.fillRect(-w*s,4*s,w*2*s,2*s)}
   if(contact.soil==='mud'){
     ctx.fillStyle='rgba(54,49,34,.24)';ctx.fillRect(-Math.round(w*.9)*s,5*s,Math.round(w*1.8)*s,2*s);
@@ -21,7 +24,7 @@ export function drawGroundContact(ctx,{contact,scale=1,bodyScale=1,dir=0}){
   }else if(contact.soil==='dry'&&contact.moving&&footfall){
     ctx.fillStyle='rgba(185,154,93,.26)';const side=f===0?-1:1;ctx.fillRect(side*5*s,5*s,2*s,s);ctx.fillRect(side*7*s,3*s,s,s);
   }
-  if(contact.action==='drink'&&contact.atBank){const v=contact.waterDir||dirVector(dir),cx=(v.x||0)*8*s,cy=(v.y||0)*8*s+4*s;ctx.strokeStyle='rgba(139,211,213,.58)';ctx.lineWidth=Math.max(1,s*.5);ctx.beginPath();ctx.ellipse(cx,cy,4*s,1.5*s,0,0,Math.PI*2);ctx.stroke();if(f%2===0){ctx.strokeStyle='rgba(191,233,223,.34)';ctx.beginPath();ctx.ellipse(cx,cy,6*s,2.25*s,0,0,Math.PI*2);ctx.stroke()}}
+
   ctx.restore();
 }
 

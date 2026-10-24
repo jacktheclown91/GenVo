@@ -1129,7 +1129,6 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const c=this.ctx,v=DIR8[pose.dir??a.dir]||DIR8[0],perp={x:-v.y,y:v.x},action=pose.action||'idle',life=pose.life||{};
     if((action==='eat'||action==='crack')&&frame%2===0){for(const sign of [-1,1])pixel(c,Math.round(v.x*7+perp.x*sign*2),Math.round(v.y*7+perp.y*sign*2+2),1,1,s,sign>0?'#99a75c':'#6f7c48')}
     if(life.sick&&!pose.dependent&&(frame===1||frame===5)){pixel(c,-5,-7,1,1,s,'rgba(203,129,169,.62)');pixel(c,5,-6,1,1,s,'rgba(203,129,169,.42)')}
-    if(action==='drink'&&frame%2===0){c.save();c.strokeStyle='rgba(137,215,226,.50)';c.lineWidth=Math.max(1,s*.45);c.beginPath();c.arc(Math.round(v.x*5*s),Math.round(v.y*5*s),1.8*s,0,Math.PI*2);c.stroke();c.restore()}
     // A real, energy-funded performance, not merely standing near a mate. Its
     // intensity is inherited anatomy expressed through the existing court pose.
     if(action==='court'&&a.courtshipPerformance&&this.sim.tickCount<=a.courtshipPerformance.endsAt){

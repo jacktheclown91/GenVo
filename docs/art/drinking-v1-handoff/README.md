@@ -21,3 +21,9 @@ Codex source audit and heads-up, October 24, 2026. Baseline de5cdf46. This is th
 Inspect exact current owners before implementation. Test real positive and zero-gain surface actions, AUTO sips, finite cave water, snow/ice medium separation, actor/world replacement, pause/speed, interruption, source direction and full canonical state/RNG parity during drawing. Render native eight-facing body/contact examples, explicitly label staged pose fixtures, then observe real public gameplay water interactions in an exported build. Do not count intent-only poses or a fixture as proof of a successful drink. Applicable integration gate follows shared renderer changes; creator/anatomy/GPU acceptance stays separate.
 
 No shared source change is installed by this handoff. Existing surface drinking receipts are insufficient for a universal successful-sip animation; presentation can proceed on verified physical-contact artwork while Claude owns the shared transfer record. No ecology, costs, save policy, population or action semantics should be altered to obtain screenshots.
+
+## Surface-contact candidate
+
+Codex shared-source heads-up applies to src/render/physicality.js and the removal of the intent-only ring in renderer.js. New water-contact-art.js paints original native-grid fragmented wakes. Physicality reads shared liquidContact/iceSupports and excludes submerged, airborne, perched and underground bodies; supported sheet ice does not displace liquid. A nearby water cell or drinkable flag alone no longer paints a bank ripple. No successful-sip body sequence is claimed or installed pending the authoritative positive-transfer observation.
+
+Four focused checks pass: water-contact-art, physicality-render, birth-settlement, world-swap-render. The contact check uses synthetic water/ice geometry and must not be described as observed winter gameplay. Native artwork inspection and the full playable integration gate are pending on this candidate.
