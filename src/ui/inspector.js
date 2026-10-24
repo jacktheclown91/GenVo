@@ -1,3 +1,4 @@
+import {renderProcessingNotice} from './processing-notice-view.js';
 import {processingCapacity,processingCapacityMessage} from '../sim/processing-capacity.js';
 import {actionCapabilities} from '../lineage/action-capabilities.js';
 import {creatureIdentity} from './creature-identity.js';
@@ -31,8 +32,8 @@ export function updateHUD(sim,{renderer=null,mateOpen=false,mindOpen=false,terri
   let capacityNotice=document.querySelector('#processingCapacity');
   const capacity=processingCapacity(sim);
   const capacityMessage=processingCapacityMessage(capacity);
-  if(capacityMessage&&!capacityNotice){capacityNotice=document.createElement('div');capacityNotice.id='processingCapacity';capacityNotice.setAttribute('role','status');capacityNotice.style.cssText='position:fixed;bottom:90px;left:50%;transform:translateX(-50%);max-width:min(620px,90vw);padding:10px 14px;border:1px solid #bf9a55;border-radius:8px;background:#25251ff2;color:#ffe4ae;font:13px/1.4 sans-serif;z-index:90;pointer-events:none';document.querySelector('#app')?.appendChild(capacityNotice)}
-  if(capacityNotice){capacityNotice.hidden=!capacityMessage;capacityNotice.textContent=capacityMessage}
+  if(capacityMessage&&!capacityNotice){capacityNotice=document.createElement('div');capacityNotice.id='processingCapacity';capacityNotice.setAttribute('role','status');(document.querySelector('#notificationStack')||document.querySelector('#app'))?.appendChild(capacityNotice)}
+  if(capacityNotice)renderProcessingNotice(capacityNotice,capacity,capacityMessage);
   const p=sim.player(),counts=sim.population(),day=((sim.day-1)%CFG.seasonDays)+1;
   if(clock)clock.innerHTML=`<span class="season-mark">${titleCase(sim.season)}</span><strong>Day ${day}</strong><span>Y${sim.year}</span>${sim.paused?'<em>Paused</em>':''}`;
   if(p){

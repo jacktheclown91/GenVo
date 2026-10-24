@@ -147,3 +147,7 @@
 }
 
 #notificationStack[data-notice-scroll]:focus-visible{outline:2px solid #e2c987;outline-offset:2px}
+
+#processingCapacity{padding:8px 10px;border:1px solid #a89564;border-radius:3px;background:#30291ff5;color:#eee4c6;font:12px/1.4 Verdana,sans-serif;pointer-events:none;overflow-wrap:anywhere}
+#processingCapacity[hidden]{display:none}
+#processingCapacity summary:focus-visible{outline:2px solid #e2c987;outline-offset:2px}

@@ -1,0 +1,15 @@
+# Integrated processing notice
+
+The staged plain-language view now consumes the existing processingCapacityMessage in the live inspector. It mounts as a persistent child of NotificationCenter rather than the previous fixed overlay over the lower gameplay/HUD. NotificationCenter remains visible for this canonical persistent message even when its three transient lanes are empty. Existing actor-aware placement and narrow-panel notice rail apply.
+
+Ordinary text says The world is busy (or Life beyond this view for regional replay). Native Update details exposes the complete unchanged canonical diagnostic string, including counts, retained offspring and queued seconds. Visibility still follows only that original string. The view does not alter thresholds, population, clocks, load, biology or saves. Disclosure open state and node identity survive text refresh. Its native summary has a narrow heldInput capture exemption, and UI keyboard containment preserves native Enter/Space.
+
+Ownership heads-up and the earlier patch remain in docs/art/processing-notice-v1-handoff. The old candidate receipts remain historical evidence; current authored fixtures import src/ui/processing-notice-view.js directly.
+
+Current automated evidence: processing-capacity funded birth/hatch/accounting/resume checks; input-responsiveness integration; notification-lane; overlay-placement; UI art direction/presentation; canonical source audit and exact public export passed. Live-module authored content fixtures verify frozen input, full original details, two sizes, native mouse/keyboard, twenty refreshes, retained open state and reparenting. They are not natural backlog evidence.
+
+Public runtime observation first detected an actual queue during ordinary public 4x AUTO without CPU emulation. That notice recovered before the interaction sequence; its blank screenshot was rejected, and the failed receipt is retained. A controlled 20x browser CPU run captured visible desktop and phone notices and reached final closing input, then timed out in Playwright post-click navigation waiting. This is retained as a harness failure, not a clean pass or an ordinary-performance/GPU verdict. A subsequent run uses direct native mouse input at measured visible summary coordinates, retains all state/visibility assertions and uses 12x CPU emulation for sustained interactive observation. See its separate receipt for final status.
+
+No creator approval, broad performance acceptance, all-weather/all-panels UI acceptance or completed v1 is claimed.
+
+Final runtime run PASSED. Initial actual notice was observed at ordinary CPU rate 1; sustained interaction used browser CPU rate 12. Both 1024x768 and 390x844 captures were inspected with visible original diagnostic details and clear actor/HUD. Mouse, native Space and Enter assertions passed. These are integration observations under controlled CPU load, not ordinary responsiveness or GPU acceptance. Pending-tick keyboard timing was not separately recorded.

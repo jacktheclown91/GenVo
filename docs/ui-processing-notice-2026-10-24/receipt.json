@@ -1,0 +1,60 @@
+{
+  "scope": "Public fresh New World at public 4x AUTO; actual runtime processing status. If cpuRate > 1, browser CPU emulation is a controlled low-performance fixture, not ordinary performance or GPU acceptance. No authored simulation state, processing load or counts.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [
+    {
+      "width": 1024,
+      "rect": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 170.25,
+        "top": 10,
+        "right": 270,
+        "bottom": 180.25,
+        "left": 10
+      },
+      "parent": "notificationStack",
+      "open": true,
+      "detail": "Processing load - 190 living organisms, 0 eggs. All offspring are retained. Simulation is running behind; 7.1 simulation seconds queued. Updates continue in order.",
+      "role": "status"
+    },
+    {
+      "width": 390,
+      "rect": {
+        "x": 10,
+        "y": 113.78125,
+        "width": 260,
+        "height": 170.25,
+        "top": 113.78125,
+        "right": 270,
+        "bottom": 284.03125,
+        "left": 10
+      },
+      "parent": "notificationStack",
+      "open": true,
+      "detail": "Processing load - 190 living organisms, 0 eggs. All offspring are retained. Simulation is running behind; 24.2 simulation seconds queued. Updates continue in order.",
+      "role": "status"
+    }
+  ],
+  "observations": [
+    {
+      "rate": 1,
+      "visible": false,
+      "pending": false,
+      "stackHidden": false
+    },
+    {
+      "rate": 1,
+      "visible": true,
+      "title": "The world is busy",
+      "text": "The world is busyResponses may be slower while updates finish.Update detailsProcessing load - 190 living organisms, 0 eggs. All offspring are retained. Simulation is running behind; 1.8 simulation seconds queued. Updates continue in order.",
+      "pending": false,
+      "stackHidden": false
+    }
+  ],
+  "cpuRate": 1,
+  "initialObservedCpuRate": 1,
+  "interactionCpuRate": 12
+}

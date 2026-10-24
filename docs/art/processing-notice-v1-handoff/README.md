@@ -1,3 +1,5 @@
+Current status: the view is now integrated in the live feedback stack; see docs/ui-processing-notice-2026-10-24/README.md. The original candidate notes and patch below are preserved as historical review context.
+
 # Plain-language processing notice candidate
 
 Codex presentation-only candidate and exact patch against committed2becde61. Live src/ui/inspector.js has Claude-owned uncommitted changes and is deliberately untouched. The candidate stays in this review directory, outside runtime, until that owner reconciles integration.
@@ -7,3 +9,5 @@ Consume the existing processingCapacity status and unmodified processingCapacity
 No simulation, clock, replay, retention, resource or save authority changes. Require immutable status/model checks, native disclosure behavior and repeated-update preservation, responsive/keyboard review and genuine busy-state integration before acceptance. Authored notice fixtures are not naturally observed backlog or a gameplay/performance fix. Current source node placement may need coordinated clearance review after insertion; no live integration or creator acceptance is claimed.
 
 Integration input boundary: the disclosure contains Space/Enter keydown/keyup so those keys cannot bubble into combat or editor commands. Native fixture verifies this with an outer hotkey listener. main.js heldInput capture runs before child handlers and currently queues non-form controls during sliced ticks; Claude must reconcile notice-summary UI capture on integration. This candidate does not alter that controller. Keyboard behavior during a real pending tick and actual in-game body/dock clearance remain open.
+
+Integration follow-up against 28eecf0d: tracked inspector is now clean. Mount the canonical persistent capacity notice inside the existing NotificationCenter root, preserving its exact visibility/message authority. Reuse native disclosure and feedback placement/rail rather than a separate fixed overlay. The summary receives a narrow capture exemption; root keyboard containment preserves native disclosure keys. Verify live public backlog plus authored content fixtures separately. Prior patch and receipts remain historical candidate evidence.
