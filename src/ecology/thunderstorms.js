@@ -1,4 +1,5 @@
 import {CFG} from '../sim/config.js';
+import {LEGACY_DAY_TICKS,dayTicksFor} from '../sim/day-clock.js';
 import {coordNoise} from '../core/rng.js';
 import {regionalRainfall,planetaryWindAt} from '../world/weather-fronts.js';
 import {localTemperature} from '../world/environment.js';
@@ -8,6 +9,7 @@ import {stratumHearing} from './stratum-senses.js';
 import {creatureView,viewCanSee} from './atmospheric-visibility.js';
 import {SPECIES} from '../organisms/species.js';
 export const THUNDERSTORMS=Object.freeze({policy:'convective-thunderstorms/1',interval:16,radius:1.35,history:16,soundSpeed:20});
+export function thunderstormInterval(sim){const ticks=dayTicksFor(sim);return Math.round(THUNDERSTORMS.interval*(ticks/LEGACY_DAY_TICKS));}
 const clamp=x=>Math.max(0,Math.min(1,x));
 export const createThunderstorms=()=>({schema:1,lastTick:0,serial:0,strikes:0,hits:0,events:[]});
 export function thunderstormAt(sim,i){
@@ -21,8 +23,9 @@ export function stormExposure(sim,a,x=a.x,y=a.y){
  return(1+clamp(w.terrain?.elevation[i]||0)*.35+clamp((w.plants?.woodspire?.[i]||0)/3)*.5)*(1-quality*.6);
 }
 export function lightningProposal(sim,tick=sim.tickCount){
- if(sim.thunderRules!==THUNDERSTORMS.policy||!sim.climate||tick%THUNDERSTORMS.interval)return null;
- const w=sim.world,slot=tick/THUNDERSTORMS.interval,ox=w.regionOrigin?.x||0,oy=w.regionOrigin?.y||0,seed=w.seedHash^0x7468756e;
+ const interval=thunderstormInterval(sim);
+ if(sim.thunderRules!==THUNDERSTORMS.policy||!sim.climate||tick%interval)return null;
+ const w=sim.world,slot=Math.floor(tick/interval),ox=w.regionOrigin?.x||0,oy=w.regionOrigin?.y||0,seed=w.seedHash^0x7468756e;
  let best=null,score=-1;
  for(let k=0;k<16;k++){
   const x=2+Math.floor(coordNoise(seed,slot*17+k,ox)*(w.n-4)),y=2+Math.floor(coordNoise(seed^719,slot*19+k,oy)*(w.n-4)),i=w.idx(x,y);
@@ -65,9 +68,9 @@ export function audibleThunder(sim,animal,event){
 }
 export function validateThunderstorms(core,n,timeline=core.tickCount){
  if(core.thunderRules===undefined){if(core.thunderstorms!==undefined)throw Error('Thunderstorm state requires its saved rules.');return}
- const s=core.thunderstorms;if(core.thunderRules!==THUNDERSTORMS.policy||s?.schema!==1||!['lastTick','serial','strikes','hits'].every(k=>Number.isSafeInteger(s[k])&&s[k]>=0)||s.lastTick>core.tickCount||s.lastTick>timeline||s.serial!==s.strikes||!Array.isArray(s.events)||s.events.length>THUNDERSTORMS.history)throw Error('Invalid thunderstorm policy or clock.');
+ const s=core.thunderstorms,interval=thunderstormInterval(core);if(core.thunderRules!==THUNDERSTORMS.policy||s?.schema!==1||!['lastTick','serial','strikes','hits'].every(k=>Number.isSafeInteger(s[k])&&s[k]>=0)||s.lastTick>core.tickCount||s.lastTick>timeline||s.serial!==s.strikes||!Array.isArray(s.events)||s.events.length>THUNDERSTORMS.history)throw Error('Invalid thunderstorm policy or clock.');
  if(s.events.length!==Math.min(s.strikes,THUNDERSTORMS.history))throw Error('Invalid lightning history length.');
- let prior=0,priorTick=-1;for(const e of s.events){if(!Number.isSafeInteger(e.id)||e.id<=prior||e.id>s.serial||!Number.isSafeInteger(e.tick)||e.tick<=priorTick||e.tick>s.lastTick||e.tick%THUNDERSTORMS.interval||!Number.isSafeInteger(e.i)||e.i<0||e.i>=n*n||!Number.isFinite(e.intensity)||e.intensity<=0||e.intensity>1||!Number.isSafeInteger(e.hits)||e.hits<0||e.hits>s.hits)throw Error('Invalid saved lightning event.');prior=e.id;priorTick=e.tick}
+ let prior=0,priorTick=-1;for(const e of s.events){if(!Number.isSafeInteger(e.id)||e.id<=prior||e.id>s.serial||!Number.isSafeInteger(e.tick)||e.tick<=priorTick||e.tick>s.lastTick||e.tick%interval||!Number.isSafeInteger(e.i)||e.i<0||e.i>=n*n||!Number.isFinite(e.intensity)||e.intensity<=0||e.intensity>1||!Number.isSafeInteger(e.hits)||e.hits<0||e.hits>s.hits)throw Error('Invalid saved lightning event.');prior=e.id;priorTick=e.tick}
  if(s.events.length&&s.events.at(-1).id!==s.serial)throw Error('Incomplete lightning history.');
 }
 export function restoreThunderstorms(sim,core){
