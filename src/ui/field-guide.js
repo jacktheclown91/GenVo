@@ -17,13 +17,13 @@ const esc=v=>String(v??'').replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&
 const nice=id=>id.split('-').map((w,i)=>i?w:w[0].toUpperCase()+w.slice(1)).join(' ');
 
 export class FieldGuide{
-  constructor({getSim,root=document.querySelector('#app')}={}){
-    this.getSim=getSim;this.explorationMap=new ExplorationMap(getSim);this.open=false;this.el=document.createElement('section');this.el.id='fieldGuide';this.el.className='field-guide';this.el.hidden=true;this.el.setAttribute('aria-label','Field guide');root?.appendChild(this.el);
+  constructor({getSim,getRenderer=()=>null,root=document.querySelector('#app')}={}){
+    this.getSim=getSim;this.explorationMap=new ExplorationMap(getSim,getRenderer);this.open=false;this.el=document.createElement('section');this.el.id='fieldGuide';this.el.className='field-guide';this.el.hidden=true;this.el.setAttribute('aria-label','Field guide');root?.appendChild(this.el);
     this.catalogOpen=false;this.el.addEventListener('toggle',e=>{if(e.target.matches?.('.specimen-catalog'))this.catalogOpen=e.target.open},{capture:true});this.specimenId=null;this.specimenDir=3;this.page='creatures';this.el.addEventListener('click',e=>{if(e.target.closest('[data-act="close"]'))this.setOpen(false);const turn=e.target.closest('[data-specimen-turn]');if(turn){this.specimenDir=(this.specimenDir+Number(turn.dataset.specimenTurn)+8)%8;this.key=null;this.render()}const specimen=e.target.closest('[data-specimen]');if(specimen){this.catalogOpen=false;this.specimenId=specimen.dataset.specimen;this.specimenDir=3;this.key=null;this.render()}const t=e.target.closest('[data-page]');if(t){this.page=t.dataset.page;this.key=null;this.render()}});
   }
   toggle(){this.setOpen(!this.open)}
   // Refreshed every two seconds while open (drawings are redrawn only when what is known changes).
-  refresh(dt){if(!this.open)return;this.wait=(this.wait||0)+dt;if(this.wait>=2){this.wait=0;this.render()}}
+  refresh(dt){if(!this.open)return;if(this.page==='map')this.explorationMap.position();this.wait=(this.wait||0)+dt;if(this.wait>=2){this.wait=0;this.render()}}
   setOpen(v){this.open=!!v;this.el.hidden=!this.open;if(this.open){this.key=null;this.render()}}
   creatures(D){
     const list=[],seen=new Set(),player=this.getSim()?.player?.();

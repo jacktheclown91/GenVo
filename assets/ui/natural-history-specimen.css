@@ -82,3 +82,24 @@
 #fieldGuide .map-records>summary{cursor:pointer;padding:12px 0;color:#e6d8ac;font:11px/1.4 Verdana,sans-serif}
 #fieldGuide .map-records p,#fieldGuide .map-records li{font:11px/1.6 Verdana,sans-serif;color:#bdc8a2;overflow-wrap:anywhere}
 @media(max-width:600px){#fieldGuide .map-plate canvas{height:270px}#fieldGuide .map-controls{align-items:stretch}#fieldGuide .map-controls label{width:100%}#fieldGuide .map-controls [role=group]{width:100%}#fieldGuide .map-controls button{flex:1}}
+
+/* The default Map leaves the actual creature visible; enlargement is deliberate. */
+@media(min-width:601px){#fieldGuide:has(.fg-body[data-show=map]){width:min(780px,calc(50vw - 84px))}}
+#fieldGuide.map-expanded:has(.fg-body[data-show=map]){inset:12px;width:calc(100vw - 24px);max-width:none;height:calc(100vh - 24px)}
+@media(max-width:600px){
+ #fieldGuide:has(.fg-body[data-show=map]):not(.map-expanded){inset:6px 6px auto auto;width:calc(100vw - 12px);height:calc(50vh - 76px);max-height:calc(50vh - 76px);padding:10px 12px}
+ #fieldGuide:has(.fg-body[data-show=map]):not(.map-expanded) .fg-head p{display:none}
+ #fieldGuide:has(.fg-body[data-show=map]):not(.map-expanded) .fg-head h2{font-size:22px}
+ #fieldGuide:has(.fg-body[data-show=map]):not(.map-expanded) .fg-head{padding-bottom:6px}
+ #fieldGuide:has(.fg-body[data-show=map]):not(.map-expanded) .fg-tabs{padding:6px 0;gap:4px}
+ #fieldGuide:has(.fg-body[data-show=map]):not(.map-expanded) .fg-tabs button{min-height:36px;padding:5px 7px;font-size:10px}
+ #fieldGuide:not(.map-expanded) .map-heading{display:none}
+ #fieldGuide:not(.map-expanded) .map-controls{display:grid;grid-template-columns:minmax(0,1fr) 116px 62px;gap:5px;align-items:end;margin:2px 0 6px}
+ #fieldGuide:not(.map-expanded) .map-controls label{width:auto;min-width:0}
+ #fieldGuide:not(.map-expanded) .map-controls label>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+ #fieldGuide:not(.map-expanded) .map-controls select{width:100%;padding:5px 2px;font-size:10px}
+ #fieldGuide:not(.map-expanded) .map-controls [role=group]{width:auto;gap:4px;flex-wrap:nowrap}
+ #fieldGuide:not(.map-expanded) .map-controls button{padding:4px;min-width:0;min-height:40px;font-size:10px}
+ #fieldGuide:not(.map-expanded) .map-plate canvas{height:180px}
+ #fieldGuide.map-expanded:has(.fg-body[data-show=map]){inset:6px;width:calc(100vw - 12px);height:calc(100vh - 12px);max-height:calc(100vh - 12px)}
+}

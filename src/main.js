@@ -97,7 +97,7 @@ const braceInput=new HeldBraceInput({getSim:()=>sim,blocked:()=>sim.paused||!!tu
 const tutorial=new TutorialController(sim,renderer);
 const observer=new ObserverController(()=>sim);
 const editor=new CreatureEditor({getSim:()=>sim,onDone:r=>{if(r.ok)audio.note('confirm');else tutorial.showToast('Design cancelled · the litter inherits normally · nothing was spent',2600,'safe')}});
-const fieldGuide=new FieldGuide({getSim:()=>sim});
+const fieldGuide=new FieldGuide({getSim:()=>sim,getRenderer:()=>renderer});
 const succession=new SuccessionChooser({getSim:()=>sim,onDone:r=>{if(!r.ok){tutorial.showToast('That descendant cannot take over yet.',1800,'warn');audio.note('deny')}else audio.note('confirm')}});
 // Legacy milestones follow the generation reveal; the world continues afterwards.
 const legacySummary=new LegacySummary({getSim:()=>sim,onNewWorld:()=>{clearMovementKeys();sim.paused=true;frontEnd.show('new')}});tutorial.onLegacy=kind=>{if(legacySummary.show(kind))audio.note('confirm')};
