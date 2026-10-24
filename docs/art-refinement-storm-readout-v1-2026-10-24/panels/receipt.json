@@ -1,0 +1,464 @@
+{
+  "events": [],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Actual public naturally generated storm start, native Menu/Journal/Map/Help entry and close, resize, then held manual movement. Instrumented painted bounds only; no observer, climate, organism, resources or events injected. DOM overlap means an intentionally requested panel occludes an underlying canvas label; it is not automatic acceptance. Full graph equality is checked only during synchronous repaint.",
+  "cases": [
+    {
+      "seed": "STORM-READOUT-26",
+      "width": 1366,
+      "height": 768,
+      "state": "menu",
+      "model": {
+        "title": "Thunderstorm",
+        "detail": "Avoid exposed high ground · Warm spell · Rain",
+        "storm": true,
+        "thermal": false,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Thunderstorm"
+        ],
+        "detail": [
+          "Avoid exposed high ground · Warm spell ·",
+          "Rain"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 556,
+        "bottom": 607
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 14,
+      "day": 1
+    },
+    {
+      "seed": "STORM-READOUT-26",
+      "width": 1366,
+      "height": 768,
+      "state": "journal",
+      "model": {
+        "title": "Thunderstorm",
+        "detail": "Avoid exposed high ground · Warm spell · Rain",
+        "storm": true,
+        "thermal": false,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Thunderstorm"
+        ],
+        "detail": [
+          "Avoid exposed high ground · Warm spell ·",
+          "Rain"
+        ]
+      },
+      "box": {
+        "left": 678,
+        "right": 928,
+        "top": 556,
+        "bottom": 607
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 28,
+      "day": 1
+    },
+    {
+      "seed": "STORM-READOUT-26",
+      "width": 1366,
+      "height": 768,
+      "state": "map",
+      "model": {
+        "title": "Thunderstorm",
+        "detail": "Avoid exposed high ground · Warm spell · Rain",
+        "storm": true,
+        "thermal": false,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Thunderstorm"
+        ],
+        "detail": [
+          "Avoid exposed high ground · Warm spell ·",
+          "Rain"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 556,
+        "bottom": 607
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 39,
+      "day": 1
+    },
+    {
+      "seed": "STORM-READOUT-26",
+      "width": 1366,
+      "height": 768,
+      "state": "help",
+      "model": {
+        "title": "Thunderstorm",
+        "detail": "Avoid exposed high ground · Warm spell · Rain",
+        "storm": true,
+        "thermal": false,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Thunderstorm"
+        ],
+        "detail": [
+          "Avoid exposed high ground · Warm spell ·",
+          "Rain"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 556,
+        "bottom": 607
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 47,
+      "day": 1
+    },
+    {
+      "seed": "STORM-READOUT-26",
+      "width": 1366,
+      "height": 768,
+      "state": "closed-panels-manual-movement",
+      "before": {
+        "x": 66.5,
+        "y": 35.5
+      },
+      "after": {
+        "x": 67.34934580075473,
+        "y": 35.5
+      }
+    },
+    {
+      "seed": "STORM-READOUT-26",
+      "width": 800,
+      "height": 600,
+      "state": "menu",
+      "model": {
+        "title": "Thunderstorm",
+        "detail": "Avoid exposed high ground · Warm spell · Rain",
+        "storm": true,
+        "thermal": false,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Thunderstorm"
+        ],
+        "detail": [
+          "Avoid exposed high ground · Warm spell ·",
+          "Rain"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 388,
+        "bottom": 439
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 13,
+      "day": 1
+    },
+    {
+      "seed": "STORM-READOUT-26",
+      "width": 800,
+      "height": 600,
+      "state": "journal",
+      "model": {
+        "title": "Thunderstorm",
+        "detail": "Avoid exposed high ground · Warm spell · Rain",
+        "storm": true,
+        "thermal": false,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Thunderstorm"
+        ],
+        "detail": [
+          "Avoid exposed high ground · Warm spell ·",
+          "Rain"
+        ]
+      },
+      "box": {
+        "left": 502,
+        "right": 752,
+        "top": 388,
+        "bottom": 439
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 19,
+      "day": 1
+    },
+    {
+      "seed": "STORM-READOUT-26",
+      "width": 800,
+      "height": 600,
+      "state": "map",
+      "model": {
+        "title": "Thunderstorm",
+        "detail": "Avoid exposed high ground · Warm spell · Rain",
+        "storm": true,
+        "thermal": false,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Thunderstorm"
+        ],
+        "detail": [
+          "Avoid exposed high ground · Warm spell ·",
+          "Rain"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 388,
+        "bottom": 439
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 24,
+      "day": 1
+    },
+    {
+      "seed": "STORM-READOUT-26",
+      "width": 800,
+      "height": 600,
+      "state": "help",
+      "model": {
+        "title": "Thunderstorm",
+        "detail": "Avoid exposed high ground · Warm spell · Rain",
+        "storm": true,
+        "thermal": false,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Thunderstorm"
+        ],
+        "detail": [
+          "Avoid exposed high ground · Warm spell ·",
+          "Rain"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 388,
+        "bottom": 439
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 35,
+      "day": 1
+    },
+    {
+      "seed": "STORM-READOUT-26",
+      "width": 800,
+      "height": 600,
+      "state": "closed-panels-manual-movement",
+      "before": {
+        "x": 66.5,
+        "y": 35.5
+      },
+      "after": {
+        "x": 67.20163344576251,
+        "y": 35.5
+      }
+    },
+    {
+      "seed": "STORM-READOUT-26",
+      "width": 390,
+      "height": 540,
+      "state": "menu",
+      "model": {
+        "title": "Thunderstorm",
+        "detail": "Avoid exposed high ground · Warm spell · Rain",
+        "storm": true,
+        "thermal": false,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Thunderstorm"
+        ],
+        "detail": [
+          "Avoid exposed high",
+          "ground · Warm spell",
+          "· Rain"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 132,
+        "top": 307,
+        "bottom": 371
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 11,
+      "day": 1
+    },
+    {
+      "seed": "STORM-READOUT-26",
+      "width": 390,
+      "height": 540,
+      "state": "journal",
+      "model": {
+        "title": "Thunderstorm",
+        "detail": "Avoid exposed high ground · Warm spell · Rain",
+        "storm": true,
+        "thermal": false,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Thunderstorm"
+        ],
+        "detail": [
+          "Avoid exposed high",
+          "ground · Warm spell",
+          "· Rain"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 132,
+        "top": 328,
+        "bottom": 392
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [
+        {
+          "id": "journal-page knowledge-panel",
+          "area": 7680
+        }
+      ],
+      "stateParity": true,
+      "tick": 17,
+      "day": 1
+    },
+    {
+      "seed": "STORM-READOUT-26",
+      "width": 390,
+      "height": 540,
+      "state": "map",
+      "model": {
+        "title": "Thunderstorm",
+        "detail": "Avoid exposed high ground · Warm spell · Rain",
+        "storm": true,
+        "thermal": false,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Thunderstorm"
+        ],
+        "detail": [
+          "Avoid exposed high ground · Warm spell ·",
+          "Rain"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 149,
+        "bottom": 200
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [
+        {
+          "id": "fieldGuide",
+          "area": 12750
+        }
+      ],
+      "stateParity": true,
+      "tick": 29,
+      "day": 1
+    },
+    {
+      "seed": "STORM-READOUT-26",
+      "width": 390,
+      "height": 540,
+      "state": "help",
+      "model": {
+        "title": "Thunderstorm",
+        "detail": "Avoid exposed high ground · Warm spell · Rain",
+        "storm": true,
+        "thermal": false,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Thunderstorm"
+        ],
+        "detail": [
+          "Avoid exposed high ground · Warm spell ·",
+          "Rain"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 340,
+        "bottom": 391
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [
+        {
+          "id": "help",
+          "area": 12750
+        }
+      ],
+      "stateParity": true,
+      "tick": 38,
+      "day": 1
+    },
+    {
+      "seed": "STORM-READOUT-26",
+      "width": 390,
+      "height": 540,
+      "state": "closed-panels-manual-movement",
+      "before": {
+        "x": 66.5,
+        "y": 35.5
+      },
+      "after": {
+        "x": 67.23856152185527,
+        "y": 35.5
+      }
+    }
+  ]
+}
