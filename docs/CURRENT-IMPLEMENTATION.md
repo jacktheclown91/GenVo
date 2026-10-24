@@ -2,6 +2,10 @@
 
 Reviewed October 20, 2026. Governing intent: [current design](../design/CURRENT-DESIGN.md) and the creator's full Creature-stage directive. Code ownership: [implementation authorities](../design/governance/implementation-authorities.json). Full scope and remaining gaps: [completion matrix](FULL-GAME-COMPLETION-MATRIX.md). Earlier checkpoint prose is [historical evidence](history/IMPLEMENTATION-before-live-refresh-2026-10-19.md), not current instructions.
 
+## Native shelter condition artwork, October 24
+
+Overhead native-grid roofs and burrow mounds read actual integrity, controller seal and normalized stored reserves. Weak-roof water cues consume local liquid precipitation, avoiding seasonal/snow-only false drips. Fixed source passes 106 playable and six focused checks; actual paid public construction/storage, exact native A/B/A and exported saved-house import pass. [Evidence and unsuccessful guided-body observations](art-refinement-shelter-v1-2026-10-24/README.md). Genuine burrow/damage/winter/rain cases, GPU/performance and creator/full-v1 acceptance remain open.
+
 ## Fog-safe weather readout, October 24
 
 Actual temperature and reduced-sight weather share a compact label above sensory fog, using protected gameplay/DOM placement and narrow wrapping beside crowded controls. Atmospheric world art and canonical weather/senses stay unchanged. Initial runtime passes 106 checks; final typography/placement passes nine focused checks, thirty public panel/movement cases and ten exported viewport cases. [Evidence, rejected drafts and acceptance limits](art-refinement-weather-readout-v1-2026-10-24/README.md). Requested full-height modal coverage, complete performance and creator/full-v1 acceptance remain open.
