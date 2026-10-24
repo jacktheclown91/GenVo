@@ -201,6 +201,47 @@ export class ShelterController{
     this.sim.cognition.recordOnce(animal,`cache:${shelter.id}:${this.sim.day}:${best.kind}`,`Stored ${PLANTS[best.kind]?.label||best.kind} at shelter #${shelter.id}`,{shelterId:shelter.id,kind:best.kind});
     return{ok:true,action:'cache',shelter,kind:best.kind,stored};
   }
+  cacheAvailability(animal,id=null){
+    if(animal?.underground||animal?.burrowWork||animal?.caveTransit||(animal?.diveDepth||0)>.03)return{enabled:false,state:'unavailable',reason:'Surface before storing food.'};
+    const shelter=id===null?this.nearest(animal,{radius:2.0,familyOnly:true}):this.activeShelters().find(s=>s.id===id);
+    if(!shelter||!this.enabled(animal)||!this.familyCanUse(animal,shelter))return{enabled:false,state:'unavailable',reason:'Stand beside your shelter to store food.'};
+    if(shelter.foodStore>=shelter.capacity-.05)return{enabled:false,state:'unavailable',reason:'The shelter is full of food.'};
+    const w=this.sim.world;let best=null;
+    for(const [kind,eff] of Object.entries(groundDiet(animal))){
+      if(eff<=0)continue;
+      for(let yy=Math.max(0,Math.floor(shelter.y-2));yy<=Math.min(CFG.worldSize-1,Math.ceil(shelter.y+2));yy++)for(let xx=Math.max(0,Math.floor(shelter.x-2));xx<=Math.min(CFG.worldSize-1,Math.ceil(shelter.x+2));xx++){
+        if(Math.hypot(xx-shelter.x,yy-shelter.y)>2.2)continue;const i=w.idx(xx,yy);
+        const biomass=kind==='carrion'?w.carrion[i]:(PLANTS[kind]?w.plants[kind][i]:0);if(!biomass)continue;
+        const nutrition=kind==='carrion'?34:(PLANTS[kind]?.nutrition||0)*3.6,score=biomass*eff*nutrition;
+        if(!best||score>best.score)best={kind,x:xx,y:yy,i,score,eff,nutrition};
+      }
+    }
+    if(!best||best.score<.2)return{enabled:false,state:'unavailable',reason:'No food is close enough to store.'};
+    const arr=best.kind==='carrion'?w.carrion:w.plants[best.kind],minimum=best.kind==='carrion'?0:.06;
+    if(Math.max(0,arr[best.i]-minimum)<=0)return{enabled:false,state:'unavailable',reason:'There is not enough food here to store.'};
+    if(Math.hypot(shelter.x-animal.x,shelter.y-animal.y)>2.0)return{enabled:false,state:'approachable',reason:'Approach this shelter to store food.',label:'Store food'};
+    return{enabled:true,state:'available',reason:`Store nearby ${PLANTS[best.kind]?.label||best.kind} · 0.55 energy.`,label:'Store food'};
+  }
+  eatStoredAvailability(animal,id=null){
+    if(animal?.underground||animal?.burrowWork||animal?.caveTransit||(animal?.diveDepth||0)>.03)return{enabled:false,state:'unavailable',reason:'Surface before eating from a shelter.'};
+    const shelter=id===null?this.nearest(animal,{radius:2.0,familyOnly:true}):this.activeShelters().find(s=>s.id===id);
+    if(!shelter||!this.enabled(animal)||!this.familyCanUse(animal,shelter))return{enabled:false,state:'unavailable',reason:'Move beside a family shelter with stored food.'};
+    if(!(shelter.foodStore>.05))return{enabled:false,state:'unavailable',reason:'No food is stored in this shelter.'};
+    const spec=SPECIES[animal.species];
+    if(animal.energy>=spec.maxEnergy-.5)return{enabled:false,state:'unavailable',reason:'Already well fed.'};
+    if(Math.hypot(shelter.x-animal.x,shelter.y-animal.y)>2.0)return{enabled:false,state:'approachable',reason:'Approach this shelter to eat stored food.',label:'Eat stored food'};
+    return{enabled:true,state:'available',reason:`Eat stored shelter food (${shelter.foodStore.toFixed(1)} stored).`,label:'Eat stored food',shelter};
+  }
+  eatStoredFood(animal,id=null){
+    const status=this.eatStoredAvailability(animal,id);if(!status.enabled)return{ok:false,type:'eat',reason:status.reason,message:status.reason};
+    const shelter=id===null?this.nearest(animal,{radius:2.0,familyOnly:true}):this.activeShelters().find(s=>s.id===id);
+    const spec=SPECIES[animal.species],need=Math.max(0,spec.maxEnergy-animal.energy),draw=Math.min(shelter.foodStore,need/1.05,5.5);
+    if(!(draw>0))return{ok:false,type:'eat',reason:'No stored food drawn.',message:'No stored food drawn.'};
+    shelter.foodStore=Math.max(0,shelter.foodStore-draw);const gain=Math.min(need,draw*1.05);animal.energy=Math.min(spec.maxEnergy,animal.energy+gain);shelter.lastUsedTick=this.sim.tickCount;
+    this.sim.cognition?.recordOnce?.(animal,`eat-cache:${shelter.id}:${this.sim.day}`,`Ate stored food at shelter #${shelter.id}`,{shelterId:shelter.id,gain});
+    this.sim.lastPlayerAction={type:'eat',action:'eat-cache',actorId:animal.id,shelterId:shelter.id,energyGain:gain,tick:this.sim.tickCount};
+    return{ok:true,type:'eat',action:'eat-cache',shelter,energyGain:gain,waterGain:0,message:`Ate stored shelter food · +${gain.toFixed(1)} energy (${shelter.foodStore.toFixed(1)} left)`};
+  }
   phaseSupport(){
     this.phaseNestProjects();
     for(const animal of this.sim.animals){

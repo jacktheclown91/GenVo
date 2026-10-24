@@ -230,6 +230,10 @@ function updateContext(context,sim,p,renderer,commandMode=false){
     // During the opening goals, verbs appear contextually near the creature instead of being gated by a step.
     if(tutorialStage==='welcome'||tutorialStage==='briefing')prompt='';
     else if(tutorialStage==='goals'&&!prompt&&sim.territory?.state?.(p)?.established&&!sim.shelter?.nearest?.(p,{radius:Infinity,familyOnly:true})&&sim.shelter?.canBuildHere?.(p)?.ok)prompt='N · BUILD FAMILY SHELTER';
+    else if(tutorialStage!=='welcome'&&tutorialStage!=='briefing'&&prompt&&/^E · /.test(prompt)){
+      if(sim.territory?.state?.(p)?.established&&!sim.shelter?.nearest?.(p,{radius:Infinity,familyOnly:true})&&sim.shelter?.canBuildHere?.(p)?.ok)prompt+=' · N build shelter';
+      else if((sim.shelter?.nearest?.(p,{radius:2.0,familyOnly:true})?.foodStore??99)<6&&sim.shelter?.cacheAvailability?.(p)?.enabled)prompt+=' · F store food';
+    }
   }
   context.hidden=!prompt;
   if(!prompt)return;
@@ -390,7 +394,7 @@ function updateMate(el,sim,open){
   const actionNames=['dance','call','flare','scent','gesture'];
   const actionHint=actionNames.map((m,i)=>`${i+1} ${m}${moves.includes(m)?'':' (unavailable)'}`).join(' · ');
   const queuedRitual=sim.reproduction.ritualQueue?.join(' → ')||'explore from experience';
-  const recentRefusal=active.lastCourtshipRefusal?.otherId===selected.id?'\nLast approach was declined.': ''; 
+  const recentRefusal=active.lastCourtshipRefusal?.otherId===selected.id?'\nLast approach was declined.': '';
   const display=active.courtshipPerformance?.partnerId===selected.id?active.courtshipPerformance:null;
   const performanceLine=display?`\nRITUAL: ${(display.sequence||['approach']).join(' → ')} · energy ${display.energySpent.toFixed(2)}`:'';
   const contestLine=active.lastCourtshipCompetition?.partnerId===selected.id?`\nLast contest: #${active.lastCourtshipCompetition.winnerId} favored by this mate`:'';

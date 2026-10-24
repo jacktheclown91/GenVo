@@ -2,6 +2,14 @@
 
 Reviewed October 20, 2026. Governing intent: [current design](../design/CURRENT-DESIGN.md) and the creator's full Creature-stage directive. Code ownership: [implementation authorities](../design/governance/implementation-authorities.json). Full scope and remaining gaps: [completion matrix](FULL-GAME-COMPLETION-MATRIX.md). Earlier checkpoint prose is [historical evidence](history/IMPLEMENTATION-before-live-refresh-2026-10-19.md), not current instructions.
 
+## First-generation gameplay integration & genuine browser acceptance, October 24
+
+Complete first-generation gameplay journey verified in the exported web game (`tools/verify-genuine-gameplay-journeys.mjs`) using the native browser event loop (`requestAnimationFrame`), with zero direct simulation updates, zero creature teleportation, zero resource injection, and discoverable native UI controls.
+- **Journey 1 (First 15 Minutes at 1x)**: Native WASD manual movement, interaction dock feedback, mouse-first canvas targeting, courtship, and 1x frame performance verified (`medianMs: 16.7ms`, `p95Ms: 50.0ms`, 0 long tasks > 250ms).
+- **Journey 2 (First Generation)**: Natural conception on Day 1, gestation under versioned 30s clock, litter birth on Day 17 (`#youngSummary`), manual parental nursing (`KeyE`), winter snow hydration (`Shift+KeyE`), offspring growth to Day 47 maturity (age 30), voluntary succession chooser (`#successionChooser` via `KeyH`), Generation 2 Reveal (`#transition`), The First Legacy (`#legacySummary`), manual control of G2 descendant, and bit-for-bit Save & Continue parity.
+- **Journey 3 (Seasonal Survival & Winter Preparation)**: Shelter construction (`KeyN`), weather seal reinforcement (`0.99` "Reinforced"), food caching (`KeyF`), and active thermal refuge (`0.422` multiplier, 57.8% reduction in thermal energy loss) verified against uninsulated control (`1.0`).
+- **Persistence & Restore Performance**: `packFloraSeedBanks` 3.17x faster, `unpackFloraSeedBanks` 2.03x faster, `mature-valley-d100` restore runtime reduced from 77.1s to 48.2s (-37.5%, saving 28.9s). 106/106 checks in `tools/check-playable.mjs` green. [Full report](FIRST-GENERATION-ACCEPTANCE-2026-10-24.md).
+
 ## Native shelter condition artwork, October 24
 
 Overhead native-grid roofs and burrow mounds read actual integrity, controller seal and normalized stored reserves. Weak-roof water cues consume local liquid precipitation, avoiding seasonal/snow-only false drips. Fixed source passes 106 playable and six focused checks; actual paid public construction/storage, exact native A/B/A and exported saved-house import pass. [Evidence and unsuccessful guided-body observations](art-refinement-shelter-v1-2026-10-24/README.md). Genuine burrow/damage/winter/rain cases, GPU/performance and creator/full-v1 acceptance remain open.

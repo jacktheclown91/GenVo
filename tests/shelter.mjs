@@ -58,4 +58,29 @@ function prep(seed){
   assert.equal(sim.shelter.shelters.length,0,'player-off baseline creates no hidden founder shelters');
 }
 
+{
+  const {sim,p}=prep('GENVO8-SHELTER-MOUSE-INTERACT');sim.shelter.constructOrRepair(p);const sh=sim.shelter.shelters[0];
+  const target={kind:'shelter',id:sh.id,x:sh.x,y:sh.y,label:'Family shelter'};
+  const opts1=sim.interactionOptions(target);
+  assert.ok(opts1.some(o=>o.id==='maintain'&&o.enabled),'clicked shelter exposes maintain');
+  assert.ok(opts1.some(o=>o.id==='cache-food'&&o.enabled),'clicked shelter exposes Store food when nearby food exists');
+  const cacheRes=sim.playerInteract(target,'cache-food');
+  assert.equal(cacheRes.ok,true,'clicking Store food on shelter caches nearby biomass');
+  assert.ok(sh.foodStore>0,'shelter foodStore increased');
+  p.energy=SPECIES.genvo.maxEnergy*.45;
+  const opts2=sim.interactionOptions(target);
+  assert.ok(opts2.some(o=>o.id==='eat-cache'&&o.enabled),'clicked stocked shelter exposes Eat stored food when hungry');
+  const eBefore=p.energy,storeBefore=sh.foodStore;
+  const eatRes=sim.playerInteract(target,'eat-cache');
+  assert.equal(eatRes.ok,true,'clicking Eat stored food consumes shelter cache');
+  assert.ok(p.energy>eBefore&&sh.foodStore<storeBefore,'player energy increased and shelter cache decreased');
+  // When local ground plants are depleted (as in winter), plain E / Shift+E eats from nearby stocked shelter
+  for(const k of Object.keys(sim.world.plants))sim.world.plants[k].fill(0);
+  sh.foodStore=6;p.energy=SPECIES.genvo.maxEnergy*.5;
+  const eBefore2=p.energy;
+  const directEat=sim.playerEat();
+  assert.equal(directEat.ok,true,'playerEat falls back to nearby stocked shelter when ground plants are depleted');
+  assert.ok(p.energy>eBefore2&&sh.foodStore<6,'playerEat drew energy from shelter cache');
+}
+
 console.log('shelter + habitat modification checks: PASS');

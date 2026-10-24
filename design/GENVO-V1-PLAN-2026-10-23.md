@@ -113,6 +113,14 @@ Dates follow the creator's allocation and are targets, not reasons to ship unfin
 
 ## Status log
 
+- **2026-10-24, First-Generation Acceptance & Full Gameplay Integration** (`docs/FIRST-GENERATION-ACCEPTANCE-2026-10-24.md`):
+  - **Priority A (Genuine Browser Gameplay)**: 3/3 journeys verified in exported web build using native `requestAnimationFrame` loop with zero direct `sim.update()` calls, zero creature teleportation, zero resource injection.
+  - **Journey 1 (First 15 Min at 1x)**: Native WASD movement, contextual inspection dock, mouse-first canvas targeting, courtship display, and 1x frame times verified (`medianMs: 16.7ms`, `p95Ms: 50.0ms`, 0 long tasks > 250ms).
+  - **Journey 2 (Complete First Generation)**: Conception on Day 1, natural litter birth on Day 17 (`#youngSummary`), manual parental care (`KeyE`), winter snow hydration (`Shift+KeyE`), offspring growth to Day 47 maturity (age 30), voluntary succession chooser (`#successionChooser` via `KeyH`), Generation 2 Reveal (`#transition`), The First Legacy (`#legacySummary`), manual control of G2 descendant, and bit-for-bit Save & Continue parity.
+  - **Journey 3 (Seasonal Preparation)**: Shelter construction (`KeyN`), weather seal reinforcement (`0.99` "Reinforced"), food caching (`KeyF`), and active thermal refuge (`0.422` thermal multiplier, 57.8% reduction in thermal energy drain) verified against uninsulated control (`1.0` multiplier).
+  - **Priority D (Performance & Codec)**: Packed flora seed codec optimized in `src/persistence/flora-seed-codec.js` and `src/ecology/flora-inheritance.js`. `packFloraSeedBanks` 3.17x faster, `unpackFloraSeedBanks` 2.03x faster, `tests/bundled-scenario-restore.mjs` runtime reduced from 77.1s to 48.2s (-37.5%, saving 28.9s). Multi-seed 360-day ecological continuity verified across `GENVO8-TEST-A`, `PLANET-OBS-2`, `PLANET-OBS-3`.
+  - **Release Gate**: 106/106 checks passing in `tools/check-playable.mjs`.
+
 - **2026-10-23:** plan written; baseline verified (gate 98 of 98 on HEAD including Codex's cloud work); GenVo-v1 inspected (empty).
 - **2026-10-23, Phase 1 first findings** (`docs/SURVIVAL-EVIDENCE-2026-10-23.md`):
   - A resting adult loses 0.34% of its energy and 0.35% of its water per day (summer water 1.05%), so it would take about 290 days to starve, its whole lifespan.

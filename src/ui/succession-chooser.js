@@ -15,7 +15,7 @@ export function buildSuccessorChoices(sim,limit=4){
     const lost=(current.adaptations||[]).filter(id=>!(h.adaptations||[]).includes(id)).map(id=>ADAPTATIONS[id]?.name||id);
     const readiness=sim.lineage.readinessFor?.(h)||{label:''};
     return{id:h.id,generation:h.generation,sex:h.sex,stage:developmentFor(h).stage,age:Math.round(h.age),health:Math.round(h.health),
-      body:traitListText(compareGenes(h.genes,current.genes,{limit:3,threshold:.02}),{empty:'built much like you'}),
+      body:(()=>{const base=traitListText(compareGenes(h.genes,current.genes,{limit:3,threshold:.02}),{empty:'built much like you'}),parentParts=new Set((current.bodyPlan?.nodes||[]).map(n=>n.partId)),newParts=[...new Set((h.bodyPlan?.nodes||[]).map(n=>n.partId))].filter(p=>!parentParts.has(p)).map(p=>p.replace(/-/g,' '));return newParts.length?`${base} · new: ${newParts.slice(0,2).join(', ')}`:base})(),
       adaptations,lost,developing:nearThreshold(h).slice(0,2).map(n=>n.name),habits:sim.habits?.summary?.(h)||'no settled habits yet',readiness:readiness.label,selected:sim.lineage.selectedHeirId===h.id,
       // v1.33.4: each card shows the body itself, so body variation reads at a glance.
       portrait:{genes:{...h.genes},pigmentGenome:h.pigmentGenome?structuredClone(h.pigmentGenome):null,bodyPlan:h.bodyPlan||null,adaptations:[...(h.adaptations||[])],divergence:formReading(h),protoTrait:protoReading(h),lifestyle:h.ecoLifestyle||null}};

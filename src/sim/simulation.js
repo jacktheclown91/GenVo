@@ -825,7 +825,7 @@ export class Simulation{
       if(a.hydration>=spec.maxHydration-.05&&!freshwaterHarvestCandidate(this,a,limit))return{enabled:false,reason:'Already hydrated; no usable filter food here.'};
       return{enabled:true,reason:''};
     }
-    if(type==='eat')return this.foraging.availability(a);
+    if(type==='eat'){const f=this.foraging.availability(a);if(f.enabled)return f;const st=this.shelter?.eatStoredAvailability?.(a);return st?.enabled?st:f}
     return{enabled:false,reason:'Unknown resource action.'};
   }
   resourceAction(type,target=null){
@@ -840,7 +840,7 @@ export class Simulation{
         const wt=target.winterTarget||target;
         const d=Math.hypot(wt.x-a.x,wt.y-a.y);
         const enabled=d<=1.2&&base.enabled;
-        return{state:enabled?'available':d<=3.0?'approachable':'unavailable',enabled,reason:base.reason||(wt.snow?'Eat snow · melts for water (costs food)':'Break surface ice for water'),winterTarget:wt};
+        return{state:enabled?'available':(d<=8.0&&winterWaterActive(this)&&a.hydration<SPECIES[a.species].maxHydration-.05)?'approachable':'unavailable',enabled,reason:base.reason||(wt.snow?'Eat snow · melts for water (costs food)':'Break surface ice for water'),winterTarget:wt};
       }
       if(base.winterTarget){
         return{state:'available',enabled:true,reason:base.reason,winterTarget:base.winterTarget};
@@ -882,7 +882,7 @@ export class Simulation{
   }
   playerEat(target=null){
     const status=this.resourceAvailability('eat');if(!status.enabled)return{ok:false,type:'eat',message:status.reason};
-    const a=this.player(),best=target?this.foraging.options(a,{index:target.i,kind:target.kind,tissue:target.tissue??null})[0]:this.playerFoodTarget(a);if(!best)return{ok:false,type:'eat',message:target?'The selected food is unreachable or incompatible with this body.':'No edible food nearby.'};
+    const a=this.player(),best=target?this.foraging.options(a,{index:target.i,kind:target.kind,tissue:target.tissue??null})[0]:this.playerFoodTarget(a);if(!best){if(!target&&this.shelter?.eatStoredAvailability?.(a)?.enabled)return this.shelter.eatStoredFood(a);return{ok:false,type:'eat',message:target?'The selected food is unreachable or incompatible with this body.':'No edible food nearby.'};}
     const result=this.foraging.consume(a,best);if(!result.ok&&this.nearestPlayerCombatTarget(a,1.9))return{ok:false,type:'none',message:'E does not attack. Space attacks, hold J to brace.'};if(result.ok)this.lastPlayerAction={type:'eat',actorId:a.id,kind:best.kind,tissue:result.tissue,processingCost:result.processingCost,producerGenomeId:result.plantReceipt?.genome?.id,energyGain:result.energyGain,waterGain:result.waterGain,tick:this.tickCount};return this.specialization.notePlayerAction(a,result,{hidden:a.hidden})
   }
   interactionOptions(target=null){return contextualInteractions(this,target)}
@@ -909,7 +909,7 @@ export class Simulation{
     const food=this.playerFoodTarget(a);
     if(a.hidden)return food?`E · Eat ${PLANTS[food.kind]?.label||food.kind}${food.count>1?' · Q switch':''} · V emerge`:'V · Leave cover';
     if(a.carryingFood)return`Z · ${this.shelter.nearest(a,{radius:2.0,familyOnly:true})?'Store':'Drop'} ${a.carryingFood.label}`;
-    return food?`E · Eat ${this.foraging.hint(food)}`:(this.partAbilities.digAvailability(a).enabled?'E · Dig for roots':'');
+    return food?`E · Eat ${this.foraging.hint(food)}`:(this.shelter?.eatStoredAvailability?.(a)?.enabled?'E · Eat stored shelter food':this.partAbilities.digAvailability(a).enabled?'E · Dig for roots':'');
   }
   nearestPlayerCombatTarget(a=this.player(),radius=1.6){if(!a||a.airborne||a.perched)return null;let best=null,bestD=radius;for(const other of this.animals){if(!other.alive||other.id===a.id||!canopyContact(a,other)||!canHunt(other))continue;const d=Math.hypot(other.x-a.x,other.y-a.y);if(d<bestD){best=other;bestD=d}}return best}
   notePlayerCombatImpact(target,kind='hit',damage=0,detail=null){this.lastPlayerCombatImpact={tick:this.tickCount,targetId:target?.id??null,kind,damage:Number(damage)||0,...(detail||{})};return this.lastPlayerCombatImpact}
