@@ -1,0 +1,9 @@
+# Utility menu clarity
+
+Presentation refinement against committed b99760bc, following the creator priority of UI clarity. Existing Family, Home and World utility captions now read Guidance, Home range and Population. Three columns of 76px controls replace four columns of 52px controls; the nine command bindings, availability and accessible names remain unchanged. Rectangular controls follow the natural-history skin without the inherited clipped corners. No biological, input-controller, save or resource changes.
+
+Native Chromium public New World observations: inspected 1280x800 and 390x844 screenshots. Menu bounds and all three captions checked at 1920x1080, 1366x768, 1024x768, 800x600 and 390x844. Browser smoke retains the original movement assertion, verifies 19 bound commands, absence of directional crossing control and menu toggling. UI presentation, gameplay-action contracts, canonical audit and public-export checks are separate automated evidence. No creator acceptance or complete UI acceptance is claimed; notification bursts, all edge menus and every detailed panel remain outside this pass.
+
+The first capture attempt failed its existing held-key movement assertion before screenshots. A second attempt added a utility open/close and screenshot before the same unchanged assertion and passed; the final source capture also passed. Startup timing remains unresolved by this evidence. Automatic review rejected replacing that assertion with a recorded flag; that edit was not performed. No test or budget was weakened.
+
+Reproduce: `node tools/review-ui-clarity-current.cjs`. Screenshots are actual public gameplay, with ordinary initial biology and no authored state. The processing-notice candidate remains a separate checked-in handoff pending input-boundary and clearance integration. This checked-in note serves as the Claude presentation handoff; no shared execution semantics changed.

@@ -1,0 +1,433 @@
+{
+  "events": [],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Actual public New World, opening dismissal, main command roster, held-key movement and utility-menu opening. Source handler and capability audit complements this browser smoke; not every biological action or family border crossing is re-enacted.",
+  "commands": [
+    {
+      "command": "interact",
+      "label": "Interact",
+      "visible": true,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "eat",
+      "label": "Eat",
+      "visible": true,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "drink",
+      "label": "Drink",
+      "visible": true,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "rest",
+      "label": "Rest",
+      "visible": true,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "attack",
+      "label": "Attack",
+      "visible": true,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "brace",
+      "label": "Brace",
+      "visible": true,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "carry",
+      "label": "Carry",
+      "visible": false,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "hide",
+      "label": "Hide",
+      "visible": false,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "alarm",
+      "label": "Alarm",
+      "visible": false,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "family-travel",
+      "label": "Family: solo",
+      "visible": true,
+      "disabled": false,
+      "hasClick": true
+    },
+    {
+      "command": "pounce",
+      "label": "Pounce",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    },
+    {
+      "command": "display",
+      "label": "Display",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    },
+    {
+      "command": "burrow",
+      "label": "Burrow",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    },
+    {
+      "command": "dive",
+      "label": "Dive",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    },
+    {
+      "command": "jump",
+      "label": "Jump",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    },
+    {
+      "command": "glide",
+      "label": "Glide",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    },
+    {
+      "command": "flight",
+      "label": "Take off",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    },
+    {
+      "command": "roost",
+      "label": "Climb",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    },
+    {
+      "command": "torpor",
+      "label": "Torpor",
+      "visible": false,
+      "disabled": true,
+      "hasClick": true
+    }
+  ],
+  "initial": {
+    "x": 44.5,
+    "y": 35.5,
+    "world": "GENVO-BAAFDAB4"
+  },
+  "moved": {
+    "x": 46.916654562373985,
+    "y": 35.5
+  },
+  "utilityButtons": [
+    {
+      "label": "Current task guide",
+      "panel": "guide",
+      "action": null
+    },
+    {
+      "label": "Family guidance",
+      "panel": null,
+      "action": "leadership"
+    },
+    {
+      "label": "Selected creature automation",
+      "panel": null,
+      "action": "autonomy"
+    },
+    {
+      "label": "Simulation speed",
+      "panel": null,
+      "action": "speed"
+    },
+    {
+      "label": "Family journal",
+      "panel": "journal",
+      "action": null
+    },
+    {
+      "label": "Exploration map",
+      "panel": "map",
+      "action": null
+    },
+    {
+      "label": "Home range",
+      "panel": "territory",
+      "action": null
+    },
+    {
+      "label": "Population",
+      "panel": "population",
+      "action": null
+    },
+    {
+      "label": "Help and controls",
+      "panel": "help",
+      "action": null
+    }
+  ],
+  "utilityBounds": [
+    {
+      "text": "Tasks",
+      "clip": "none",
+      "rect": {
+        "x": 133,
+        "y": 69,
+        "width": 76,
+        "height": 52,
+        "top": 69,
+        "right": 209,
+        "bottom": 121,
+        "left": 133
+      }
+    },
+    {
+      "text": "Guidance",
+      "clip": "none",
+      "rect": {
+        "x": 214,
+        "y": 69,
+        "width": 76,
+        "height": 52,
+        "top": 69,
+        "right": 290,
+        "bottom": 121,
+        "left": 214
+      }
+    },
+    {
+      "text": "Auto",
+      "clip": "none",
+      "rect": {
+        "x": 295,
+        "y": 69,
+        "width": 76,
+        "height": 52,
+        "top": 69,
+        "right": 371,
+        "bottom": 121,
+        "left": 295
+      }
+    },
+    {
+      "text": "1x\nSpeed",
+      "clip": "none",
+      "rect": {
+        "x": 133,
+        "y": 126,
+        "width": 76,
+        "height": 52,
+        "top": 126,
+        "right": 209,
+        "bottom": 178,
+        "left": 133
+      }
+    },
+    {
+      "text": "Journal",
+      "clip": "none",
+      "rect": {
+        "x": 214,
+        "y": 126,
+        "width": 76,
+        "height": 52,
+        "top": 126,
+        "right": 290,
+        "bottom": 178,
+        "left": 214
+      }
+    },
+    {
+      "text": "Map",
+      "clip": "none",
+      "rect": {
+        "x": 295,
+        "y": 126,
+        "width": 76,
+        "height": 52,
+        "top": 126,
+        "right": 371,
+        "bottom": 178,
+        "left": 295
+      }
+    },
+    {
+      "text": "Home range",
+      "clip": "none",
+      "rect": {
+        "x": 133,
+        "y": 183,
+        "width": 76,
+        "height": 52,
+        "top": 183,
+        "right": 209,
+        "bottom": 235,
+        "left": 133
+      }
+    },
+    {
+      "text": "Population",
+      "clip": "none",
+      "rect": {
+        "x": 214,
+        "y": 183,
+        "width": 76,
+        "height": 52,
+        "top": 183,
+        "right": 290,
+        "bottom": 235,
+        "left": 214
+      }
+    },
+    {
+      "text": "Help",
+      "clip": "none",
+      "rect": {
+        "x": 295,
+        "y": 183,
+        "width": 76,
+        "height": 52,
+        "top": 183,
+        "right": 371,
+        "bottom": 235,
+        "left": 295
+      }
+    }
+  ],
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "bounds": {
+        "x": 1654,
+        "y": 60,
+        "width": 256,
+        "height": 184
+      },
+      "labels": [
+        "Tasks",
+        "Guidance",
+        "Auto",
+        "Speed",
+        "Journal",
+        "Map",
+        "Home range",
+        "Population",
+        "Help"
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "bounds": {
+        "x": 1100,
+        "y": 60,
+        "width": 256,
+        "height": 184
+      },
+      "labels": [
+        "Tasks",
+        "Guidance",
+        "Auto",
+        "Speed",
+        "Journal",
+        "Map",
+        "Home range",
+        "Population",
+        "Help"
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "bounds": {
+        "x": 758,
+        "y": 60,
+        "width": 256,
+        "height": 184
+      },
+      "labels": [
+        "Tasks",
+        "Guidance",
+        "Auto",
+        "Speed",
+        "Journal",
+        "Map",
+        "Home range",
+        "Population",
+        "Help"
+      ]
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "bounds": {
+        "x": 534,
+        "y": 60,
+        "width": 256,
+        "height": 184
+      },
+      "labels": [
+        "Tasks",
+        "Guidance",
+        "Auto",
+        "Speed",
+        "Journal",
+        "Map",
+        "Home range",
+        "Population",
+        "Help"
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "bounds": {
+        "x": 124,
+        "y": 60,
+        "width": 256,
+        "height": 184
+      },
+      "labels": [
+        "Tasks",
+        "Guidance",
+        "Auto",
+        "Speed",
+        "Journal",
+        "Map",
+        "Home range",
+        "Population",
+        "Help"
+      ]
+    }
+  ]
+}

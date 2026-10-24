@@ -124,3 +124,8 @@
 
 @media(min-width:601px){.resource-inspector.knowledge-panel{max-height:calc(100vh - 245px)}}
 .resource-inspector .knowledge-head>canvas{box-sizing:border-box;border:1px solid #596447;border-radius:2px;background:#1b2c1e}
+
+/* Named utility controls remain readable without hover-only tooltips. */
+#stageUtilities #quickMenu{grid-template-columns:repeat(3,76px);clip-path:none}
+#stageUtilities #quickMenu button{width:76px;clip-path:none}
+#stageUtilities .dock-tool-label{max-width:100%;white-space:normal;text-align:center;line-height:1.2}
