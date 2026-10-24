@@ -39,17 +39,19 @@
 .context-radial .radial-caption,.context-radial .radial-explanation{border-radius:3px;border-color:#8d936c;background:#102219f5;color:#e6dfc3;font:11px/1.4 Verdana,sans-serif;box-shadow:none}
 #saveStatus{border:1px solid #7b8058;border-radius:2px;background:#102219ee;color:#d8dfbf;font:11px/1.4 Verdana,sans-serif;box-shadow:none}
 #app>#processingCapacity{border-radius:3px!important;background:#30291ff5!important;font:12px/1.4 Verdana,sans-serif!important}
-@media(max-width:600px){#interactionDock,#interactionDock.is-compact{padding:7px;gap:6px}#interactionDock .dock-player>strong,#interactionDock.is-compact .dock-player>strong{font-size:11px}#interactionDock #hud .need{grid-template-columns:11px minmax(0,1fr);column-gap:2px}#interactionDock #hud .need:before{width:11px;height:11px;background-size:11px 11px}#interactionDock #hud .need>span{font-size:9px}#interactionDock #hud .need>b{gap:1px}#interactionDock #hud #clock{gap:3px;font-size:9px}#interactionDock #hud #clock strong{font-size:9px}}
-
 @media(max-width:600px){
- #interactionDock,#interactionDock.is-compact{grid-template-columns:minmax(0,1fr);gap:6px}
+ #interactionDock,#interactionDock.is-compact{grid-template-columns:minmax(0,1fr);padding:7px;gap:6px}
  #interactionDock .dock-player,#interactionDock.is-compact .dock-player{grid-template-columns:34px minmax(70px,.8fr) minmax(130px,1.2fr);grid-template-rows:auto auto;gap:0 8px;align-content:start}
  #interactionDock .dock-player>canvas,#interactionDock.is-compact .dock-player canvas{grid-column:1;grid-row:1/3;width:34px;height:28px}
- #interactionDock .dock-player>strong,#interactionDock.is-compact .dock-player>strong{grid-column:2;grid-row:1}
+ #interactionDock .dock-player>strong,#interactionDock.is-compact .dock-player>strong{grid-column:2;grid-row:1;font-size:11px}
  #interactionDock .dock-player #hud{grid-column:3;grid-row:1/3}
  #interactionDock .dock-location{grid-column:2;grid-row:2;margin:0}
+ #interactionDock #hud .need{grid-template-columns:11px minmax(0,1fr);column-gap:2px}
+ #interactionDock #hud .need:before{width:11px;height:11px;background-size:11px 11px}
  #interactionDock #hud .need>span{font-size:10px}
- #interactionDock #hud #clock,#interactionDock #hud #clock strong{font-size:10px}
+ #interactionDock #hud .need>b{gap:1px}
+ #interactionDock #hud #clock{gap:3px;font-size:10px}
+ #interactionDock #hud #clock strong{font-size:10px}
  #interactionDock .creature-stage-resources{justify-content:flex-start;gap:3px}
  #interactionDock .creature-stage-resources button{padding:4px 3px;gap:2px}
 }

@@ -29,3 +29,13 @@ Notification bursts explicitly say UI layout fixture; they are not claimed as ec
 ## Reproduce
 
 Use the ordinary public exporter. Run `node tools/review-survival-presentation.cjs <export> <new-report> --strict --edges` and `node tools/verify-survival-world-switch.cjs <export> <new-report>` sequentially. These are presentation integration checks, not replacement biological gates. The preserved source patch is an integration record; do not reapply it to active source. The original repository remains the fallback, and no migration, push or release is performed.
+
+## Current combined source
+
+Committed perennial-regrowth biology through c68b63b was merged intact in f412bff. Twelve focused checks, including perennial-regrowth and public export, and the canonical audit pass on combined source (405 source modules, 397 runtime-reachable source modules). The current normal public export has 834 files and 411 module/dependency entries. The UI integration gate passes all 36 cases again, plus all three same-app seeded-world switches. Exact graph parity remains true. A held-movement screenshot is captured while the public D input is still down. Loaded-art desktop, phone, context and movement frames were inspected.
+
+Phone rules in the owned stylesheet were consolidated before the final export; its 159px default dock retains all controls. No broad biological gate was rerun for the styling change: existing domain rules remain Claude's committed implementation, and this pass uses targeted UI/placement/action tests, the newly merged policy's focused check and actual browser integration. It is not a whole-game acceptance claim.
+
+Selected review build: `C:\Users\jackt\AppData\Local\Temp\genvo-hud-v1-web-20261023-current`. Full original/failing/raw outputs are archived under `reports/art-session-20261023-hud-v1-raw` in the original repository.
+
+![Current movement frame](combined/hud-current-actual-held-movement.png)

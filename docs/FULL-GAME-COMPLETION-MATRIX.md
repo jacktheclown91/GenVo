@@ -19,6 +19,8 @@ Current focused checkpoint: 93 registered parts, 363 runtime-reachable modules, 
 
 These bounded passes do not establish full UI acceptance. Style consolidation, richer behavioral previews, dense body collections/live individual telemetry, map, HUD/notification visibility, audio review, GPU performance and unfamiliar-player/creator acceptance remain unfinished. The new canonical repository migration and release remain separate gates.
 
+HUD/feedback follow-up: native condition labels/time are restored to the compact HUD, coordinates are optional, and world-switch portrait pigmentation is correct. The presentation gate covers default/burst/edge/resize states at five sizes, complete graph parity and three genuine seeded-world switches; [evidence and open limits](art-refinement-hud-v1-2026-10-23/README.md). The broad UI row remains implemented but incomplete.
+
 ## Immediate priority after October 21 reconciliation
 
 The creator's [remaining full-game development direction](../design/FULL-GAME-DEVELOPMENT-PLAN-2026-10-21.md) prioritizes closing connected capabilities: responsive planetary travel and distant ecology, cross-border interaction and colonization, ecological continuity, anatomy and inheritance, missing physical systems, the player journey, presentation, then comprehensive acceptance. Existing broken player features remain part of each relevant pass.

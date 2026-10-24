@@ -1,0 +1,26 @@
+[
+  {
+    "command": [
+      "node",
+      "tools/review-survival-presentation.cjs",
+      "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-hud-v1-web-20261023-current",
+      "reports/hud-current",
+      "--strict",
+      "--edges"
+    ],
+    "exitCode": 0,
+    "stdout": "Survival presentation observation complete: 36 cases; strict=true\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "node",
+      "tools/verify-survival-world-switch.cjs",
+      "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-hud-v1-web-20261023-current",
+      "reports/hud-world-switch-current"
+    ],
+    "exitCode": 0,
+    "stdout": "Survival world switch PASS: actual current pigmentation and closed location details in three ordinary worlds.\n",
+    "stderr": ""
+  }
+]
