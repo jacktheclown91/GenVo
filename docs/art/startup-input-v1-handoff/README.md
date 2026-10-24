@@ -1,0 +1,7 @@
+# Startup short-tap responsiveness: Claude handoff
+
+Observed on unchanged exact public review export0775782c, via real New World and KeyD controls. Requested350ms holds moved8/8 but native down-to-replay delay was138–252ms. Requested100ms taps lost displacement7/8 after a200ms recovery and completed tick. Four misses have game-generated down/up replay separated by<1ms; the successful short tap entered without a pending tick. Other three misses replayed down before native up, so investigate frame/control capture as well. Original isolated350ms miss remains unproven.
+
+Relevant source: main.js heldInput.hold/replay around319; frame reads const controls=input() before FrameStepper.advance around427, then resume calls heldInput.replay after continueTick. FrameStepper owns ordered atomic control and sliced biology. Queued event order alone does not prove a physically meaningful held interval reaches control steps. This is a diagnosis request, not authority to bypass atomic biology or inject free movement.
+
+Evidence: docs/startup-input-observation-2026-10-24/summary.json and unmodified native traces. Tools/observe-startup-input.cjs can repeat default350 or explicit100ms against the clean review bundle; capture overhead declared. No runtime/controller/physics/save/timing edits made. Claude owns repair and focused replay/cost/pause/transition tests. Preserve concurrent simulation and input work; coordinate before touching shared main.js.

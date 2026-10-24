@@ -1,0 +1,9 @@
+# Startup input observation
+
+Read-only native Chromium traces on the unchanged clean review export0775782c, public fresh planetary GENVO-65994D8F with native day30. Eight independent starts per requested hold duration; real trusted KeyD events, actual positions, frame/stepper/tick states and game-generated replay events. No synthetic tick/position/physiology/climate changes, CPU throttling, forced pending tick or command patching. A200ms recovery window follows release. No canonical snapshot is taken during tracing, because snapshot admission may finish a sliced tick. Recording adds overhead; this is not a GPU benchmark.
+
+Requested350ms:8/8 moved. All eight key-downs arrived during an unfinished tick, then were replayed138–252ms later. Requested100ms:7/8 produced zero displacement even after recovery, with tick completed. Four of those replayed both down/up less than1ms apart after the tick. Three other misses replayed down shortly before native up and need further frame/control review. The one moving short tap arrived without a pending tick. Actual native hold durations are recorded separately from requested Playwright waits.
+
+This proves a bounded short-tap responsiveness defect and startup delay, not the original isolated350ms miss root cause or general movement failure. Initial350ms receipt microtask afterHandlers samples may precede later listeners; do not treat their empty queue as proof input was not held. The later100ms probe uses after-event-task samples. Raw receipts are retained unchanged.
+
+Claude owns control/stepper/performance mechanisms. Keep the biological tick atomic and preserve trusted input ordering/costs; do not change ecology, timing or outcomes to get a green UI test. Codex has changed no runtime module. A checked-in technical handoff accompanies these traces.
