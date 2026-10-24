@@ -321,7 +321,7 @@ loadSaveButton?.addEventListener('click',()=>{if(confirm('Load the last saved li
 // half-advanced world. Text fields and browser shortcuts are never held.
 const heldInput={queue:[],replaying:new WeakSet(),
   hold(e){
-    if(!sim.tickInProgress||this.replaying.has(e)||e.ctrlKey||e.metaKey||e.target?.closest?.('input,textarea,select,[contenteditable="true"]'))return;
+    if(!sim.tickInProgress||this.replaying.has(e)||e.ctrlKey||e.metaKey||e.target?.closest?.('input,textarea,select,[contenteditable="true"],[data-knowledge-close]'))return;
     if(MOVE_CODES.has(e.code))return;
     if(e.repeat){e.preventDefault();e.stopImmediatePropagation();return}
     if(this.queue.some(q=>q.type===e.type&&q.code===e.code)){e.preventDefault();e.stopImmediatePropagation();return}
@@ -331,7 +331,7 @@ const heldInput={queue:[],replaying:new WeakSet(),
 for(const type of ['keydown','keyup','pointerdown','pointerup','mousedown','mouseup','click','dblclick','contextmenu'])addEventListener(type,e=>heldInput.hold(e),{capture:true});
 addEventListener('pointerdown',()=>{audio.unlock()},{passive:true});
 addEventListener('keydown',e=>{
-  if(e.target.closest?.('#interactionDock,.context-radial,#stageUtilities')&&['Tab','Enter','Space'].includes(e.code))return;
+  if(e.target.closest?.('#interactionDock,.context-radial,#stageUtilities,[data-knowledge-close]')&&['Tab','Enter','Space'].includes(e.code))return;
   if(!MOVE_CODES.has(e.code)&&(!e.repeat||!audio.unlocked))audio.unlock();
   if(frontEnd.handleKey(e))return;
   if(legacySummary.open){if(!e.repeat&&(e.code==='Escape'||e.code==='Enter')){e.preventDefault();legacySummary.close()}return}

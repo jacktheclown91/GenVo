@@ -1,0 +1,3 @@
+# Help close integration
+
+Presentation handoff before shared UI integration: Help needs an actual Close button using the existing data-knowledge-close handler. That same control must retain native Tab/Enter/Space activation. The existing heldInput capture will recognize data-knowledge-close as a UI target, and the existing main keyboard guard will include this same established selector for native activation keys. This is a narrow UI event-boundary change; no input buffering, simulation timing, movement or action rules are changed. Applies to existing information-panel close buttons too. Verify actual native closure and no attack/jump invocation while activating the close control.
