@@ -246,3 +246,8 @@ Day-clock wildfire correction, ecological recovery, and player winter-water pari
 ### Native clutch artwork (2026-10-24)
 
 Renderer.drawEggs now delegates original native-grid nest/egg artwork to src/render/clutch-art.js. Existing coordinates, canopy lift, culling, counts and sensory clipping remain canonical. Nest material/integrity and egg condition are read only; no invented pipping/hatching state. Fixed candidate passes 106 playable checks and six focused checks. Genuine Day23 simulated paid marshroot nest/three-egg clutch follows explicitly authored public sandbox founders. Exact standalone witness import and same-renderer old/new/old comparison preserve complete state and baseline, with 1,342 changed focus pixels in an inspected clear public 4x view. Other conditions/canopy, performance/GPU and creator acceptance remain open; see docs/art-refinement-clutch-v1-2026-10-24/README.md.
+
+
+### Protected thunderstorm readout (2026-10-24)
+
+The existing local thunderstorm warning shares the protected weather plaque above sensory fog, preserving canonical storm policy, intensity > .4 and surface/depth guards. Lightning world effects remain in their original layer. Compact phone view retains full warning/fonts and omits the decorative bolt only. Fixed runtime6b895746 passes106 playable checks and three focused checks; genuine public storm source/export viewport and panel observations preserve exact redraw state. Full phone Journal/Map/Help panels may cover the underlying canvas. Local isolated painter median stays approximately .08ms; GPU/sustained performance and creator acceptance remain open. See docs/art-refinement-storm-readout-v1-2026-10-24/README.md.
