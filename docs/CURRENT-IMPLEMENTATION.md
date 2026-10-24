@@ -10,6 +10,8 @@ Survival presentation follow-up: native condition labels and season/day clock ar
 
 Environmental audio follow-up: original nonvocal field, damp-ground and water beds plus a separate rain stem consume native liquid precipitation. Asset budgets, unaffected audio hashes, focused checks and public-export WebAudio evidence are recorded in [audio integration](art-refinement-audio-v1-2026-10-23/README.md). Subjective listening and full-game acceptance remain open.
 
+Courtship presentation now displays the actual performer and partner with shared fitted native portraits, visible labels and coherent controls. Nine focused checks, five-size exported-browser layout/pigment/state parity and native queue controls pass; [evidence and limits](art-refinement-courtship-v1-2026-10-23/README.md). Live performance and creator acceptance remain open.
+
 ## Source and ownership
 
 The sole active source is `C:\Users\jackt\Desktop\Games\game jam october\genvo-toolkit`, on `main`. Gate A established October 20: fetched the newer consolidation tip `2e07fb5`, reconciled all feature/work tips by ancestry and preserved diagnostic branches, fast-forwarded main without rewriting history, and verified GitHub main at the exact local SHA. Runtime repairs, artwork, hydrology and genuine Day 30/100 scenarios are committed in that history. Two unrelated untracked terminal-help files remain preserved. This establishes source synchronization, not full-game completion. Inspect Git before editing; preserve concurrent work and historical test fixtures.

@@ -3,7 +3,8 @@ import {courtshipObservation} from './courtship-observation.js';
 import {appendActionSymbol} from './action-symbols.js';
 import {interactionDock} from './interaction-dock.js';
 import {courtshipView} from './courtship-view.js';
-import {drawGenvoSprite} from '../render/genvo-draw.js';
+import {drawLineagePortrait,lineagePortraitBounds} from '../render/lineage-portrait.js';
+import {nativeArtRevision} from '../render/runtime-part-art.js';
 import {drawPartAlone} from '../render/part-sprites.js';
 import {phenotypeFor} from '../organisms/species.js';
 import {creaturePalette} from '../render/creature-palette.js';
@@ -27,10 +28,12 @@ export class CourtshipTray{
  update(){if(!this.isOpen)return;if(!this.valid()){this.close();return}const now=performance.now();if(this.signature&&now-(this.lastUpdate||0)<100)return;this.lastUpdate=now;
   const sim=this.getSim(),v=courtshipView(sim,this.targetId);if(!v.target){this.close();return}if(v.busy)this.sawBusy=true;else if(this.sawBusy){const outcome=courtshipObservation(sim,v.actor,v.target,this.baseline);this.onFeedback?.({ok:outcome.kind==='accepted',message:outcome.kind==='nearby'||outcome.kind==='facing'?'Courtship ended.':outcome.text});this.close();return}
   const refusal=v.actor.lastCourtshipRefusal,failed=v.actor.lastCourtshipFailure;
-  const key=JSON.stringify([v.actor.bodyPlan?.id,v.target.bodyPlan?.id,v.queue,v.active?.sequence,this.futureSlot,v.busy,v.move,v.step,v.active?.startedAt,v.availability,courtshipObservation(sim,v.actor,v.target,this.baseline),refusal,failed,v.actor.lastMate]);if(key===this.signature)return;this.signature=key;
+  const key=JSON.stringify([nativeArtRevision(),v.actor.bodyPlan?.id,v.target.bodyPlan?.id,v.queue,v.active?.sequence,this.futureSlot,v.busy,v.move,v.step,v.active?.startedAt,v.availability,courtshipObservation(sim,v.actor,v.target,this.baseline),refusal,failed,v.actor.lastMate]);if(key===this.signature)return;this.signature=key;
   this.el.hidden=false;this.title.textContent='Courtship · '+creatureIdentity(sim,v.target).label;
   interactionDock().heading.textContent=this.title.textContent;
-  this.portraits.replaceChildren();for(const [a,label] of [[v.actor,'Your performer'],[v.target,'Selected partner']]){const box=document.createElement('figure'),cv=document.createElement('canvas'),caption=document.createElement('figcaption');cv.width=72;cv.height=72;caption.textContent=label;box.append(cv,caption);this.portraits.append(box);const c=cv.getContext('2d');c.imageSmoothingEnabled=false;c.translate(36,36);drawGenvoSprite(c,{animal:a,phenotype:phenotypeFor(a),scale:3.4,frame:0,palette:creaturePalette(phenotypeFor(a)),pose:{dir:3,life:{blink:false}}})}
+  const portraitOptions=a=>({bodyPlan:a.bodyPlan,adaptations:a.adaptations||[],anatomy:a.anatomy,pigmentGenome:a.pigmentGenome,divergence:a.lineageForm,protoTrait:a.populationTrait,speciesBranch:a.speciesBranch,lifestyle:a.ecoLifestyle,dir:3});
+  const subjects=[[v.actor,'Your performer'],[v.target,'Selected partner']],fitScale=Math.min(...subjects.map(([a])=>{const b=lineagePortraitBounds(a.genes,portraitOptions(a));return Math.min(60/b.w,44/b.h,8)}));
+  this.portraits.replaceChildren();for(const [a,label] of subjects){const box=document.createElement('figure'),cv=document.createElement('canvas'),caption=document.createElement('figcaption');cv.width=96;cv.height=80;cv.setAttribute('aria-label',label+' · adult anatomy');caption.textContent=label;box.append(cv,caption);this.portraits.append(box);drawLineagePortrait(cv,a.genes,{...portraitOptions(a),fitScale})}
   const add=(root,label,enabled,reason,fn)=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.disabled=!enabled;b.title=reason||label;b.onclick=()=>{if(!this.valid())return;fn();this.signature=null;this.update()};root.append(b);return b};
   this.cards.replaceChildren();for(const move of v.moves){const live=v.active?sim.reproduction.liveMoveAvailability(move.id,{index:this.futureSlot??undefined}):null;const b=add(this.cards,move.label,live?live.enabled:!sim.paused&&!v.busy&&v.queue.length<3,live?.reason||(move.source?'Uses '+move.source.replace(/-/g,' '):'Basic approach'),()=>this.queue(move.id));b.dataset.move=move.id;
    if(move.source){const cv=document.createElement('canvas');cv.width=64;cv.height=64;cv.setAttribute('aria-hidden','true');const c=cv.getContext('2d');c.imageSmoothingEnabled=false;c.translate(32,32);drawPartAlone(c,move.source,{type:PARTS[move.source].compatibleSocketTypes[0],s:6,p:creaturePalette(phenotypeFor(v.actor))});b.prepend(cv)}

@@ -1,0 +1,72 @@
+diff --git a/assets/ui/natural-history-survival.css b/assets/ui/natural-history-survival.css
+index 865ab42a..babc727d 100644
+--- a/assets/ui/natural-history-survival.css
++++ b/assets/ui/natural-history-survival.css
+@@ -55,3 +55,38 @@
+  #interactionDock .creature-stage-resources{justify-content:flex-start;gap:3px}
+  #interactionDock .creature-stage-resources button{padding:4px 3px;gap:2px}
+ }
++
++/* Courtship retains native controls, sequence, availability and outcome text. */
++#interactionDock .courtship-tray{display:grid;grid-template-columns:168px minmax(0,1fr);gap:5px 12px;max-height:min(260px,40vh);overflow:auto;padding:4px 1px;scrollbar-width:thin;scrollbar-color:#8c9870 #102219}
++#interactionDock .courtship-tray[hidden]{display:none}
++#interactionDock .courtship-portraits{display:flex;grid-column:1;grid-row:1/5;align-self:start;gap:4px;min-width:0;border-right:1px solid #596448;padding-right:8px}
++#interactionDock .courtship-portraits figure{display:flex;flex-direction:column;align-items:center;flex:1;min-width:0;margin:0;background:#1b2c1e;border:1px solid #596448;border-radius:2px;padding:2px}
++#interactionDock .courtship-portraits canvas{display:block;width:72px;height:60px;max-width:100%;image-rendering:pixelated}
++#interactionDock .courtship-portraits figcaption{font:10px/1.3 Verdana,sans-serif;color:#d6dcbf;text-align:center;overflow-wrap:anywhere}
++#interactionDock .courtship-cards{grid-column:2;grid-row:1;gap:5px;align-items:stretch}
++#interactionDock .courtship-cards button{padding:5px 8px;min-height:40px}
++#interactionDock .courtship-cards canvas{width:24px;height:24px;image-rendering:pixelated}
++#interactionDock .courtship-tray button:disabled{opacity:1;background:#1b2c1d;border-color:#596448;color:#a5ad92;cursor:default}
++#interactionDock .courtship-sequence{grid-column:2;grid-row:2;flex-wrap:wrap;gap:4px;min-width:0}
++#interactionDock .courtship-sequence li{font:11px/1.4 Verdana,sans-serif;border:1px solid #78845b;border-radius:2px;background:#23351f;color:#e8dfbb;padding:4px 6px;overflow-wrap:anywhere}
++#interactionDock .courtship-sequence .current{border-color:#dac584;background:#4b5331;color:#fff0bc}
++#interactionDock .courtship-tray>p{grid-column:2;font:11px/1.45 Verdana,sans-serif;color:#c6d0b0;margin:0;overflow-wrap:anywhere}
++#interactionDock .courtship-tray>.courtship-reaction{color:#e2cf95}
++#interactionDock .courtship-tools{grid-column:1/-1;gap:5px;padding-top:5px;border-top:1px solid #596448}
++#interactionDock .courtship-tools button{min-height:36px;padding:6px 10px}
++#interactionDock .courtship-tools button:first-child{background:#394625;border-color:#b8ac79;color:#f0e1ac}
++@media(max-width:600px){
++ #interactionDock .courtship-tray{grid-template-columns:112px minmax(0,1fr);gap:4px 8px;max-height:min(270px,43vh)}
++ #interactionDock .courtship-portraits{gap:2px;padding-right:5px}
++ #interactionDock .courtship-portraits canvas{width:48px;height:40px}
++ #interactionDock .courtship-portraits figcaption{font-size:9px}
++ #interactionDock .courtship-cards button{min-height:40px;padding:4px 6px}
++ #interactionDock .courtship-cards canvas{width:20px;height:20px}
++ #interactionDock .courtship-tools button{min-height:40px;padding:6px 9px}
++}
++
++/* Leave the centered organism visible on short and narrow viewports. */
++@media(max-height:680px) and (min-width:601px){#interactionDock .courtship-tray{max-height:max(80px,calc(50vh - 200px))}}
++@media(max-width:600px){#interactionDock .courtship-tray{max-height:min(160px,calc(50vh - 110px))}}
++
++#interactionDock .courtship-portraits figcaption{display:block}
+diff --git a/src/ui/courtship-tray.js b/src/ui/courtship-tray.js
+index 7564b60e..bf1069ab 100644
+--- a/src/ui/courtship-tray.js
++++ b/src/ui/courtship-tray.js
+@@ -3,7 +3,8 @@ import {courtshipObservation} from './courtship-observation.js';
+ import {appendActionSymbol} from './action-symbols.js';
+ import {interactionDock} from './interaction-dock.js';
+ import {courtshipView} from './courtship-view.js';
+-import {drawGenvoSprite} from '../render/genvo-draw.js';
++import {drawLineagePortrait,lineagePortraitBounds} from '../render/lineage-portrait.js';
++import {nativeArtRevision} from '../render/runtime-part-art.js';
+ import {drawPartAlone} from '../render/part-sprites.js';
+ import {phenotypeFor} from '../organisms/species.js';
+ import {creaturePalette} from '../render/creature-palette.js';
+@@ -27,10 +28,12 @@ export class CourtshipTray{
+  update(){if(!this.isOpen)return;if(!this.valid()){this.close();return}const now=performance.now();if(this.signature&&now-(this.lastUpdate||0)<100)return;this.lastUpdate=now;
+   const sim=this.getSim(),v=courtshipView(sim,this.targetId);if(!v.target){this.close();return}if(v.busy)this.sawBusy=true;else if(this.sawBusy){const outcome=courtshipObservation(sim,v.actor,v.target,this.baseline);this.onFeedback?.({ok:outcome.kind==='accepted',message:outcome.kind==='nearby'||outcome.kind==='facing'?'Courtship ended.':outcome.text});this.close();return}
+   const refusal=v.actor.lastCourtshipRefusal,failed=v.actor.lastCourtshipFailure;
+-  const key=JSON.stringify([v.actor.bodyPlan?.id,v.target.bodyPlan?.id,v.queue,v.active?.sequence,this.futureSlot,v.busy,v.move,v.step,v.active?.startedAt,v.availability,courtshipObservation(sim,v.actor,v.target,this.baseline),refusal,failed,v.actor.lastMate]);if(key===this.signature)return;this.signature=key;
++  const key=JSON.stringify([nativeArtRevision(),v.actor.bodyPlan?.id,v.target.bodyPlan?.id,v.queue,v.active?.sequence,this.futureSlot,v.busy,v.move,v.step,v.active?.startedAt,v.availability,courtshipObservation(sim,v.actor,v.target,this.baseline),refusal,failed,v.actor.lastMate]);if(key===this.signature)return;this.signature=key;
+   this.el.hidden=false;this.title.textContent='Courtship · '+creatureIdentity(sim,v.target).label;
+   interactionDock().heading.textContent=this.title.textContent;
+-  this.portraits.replaceChildren();for(const [a,label] of [[v.actor,'Your performer'],[v.target,'Selected partner']]){const box=document.createElement('figure'),cv=document.createElement('canvas'),caption=document.createElement('figcaption');cv.width=72;cv.height=72;caption.textContent=label;box.append(cv,caption);this.portraits.append(box);const c=cv.getContext('2d');c.imageSmoothingEnabled=false;c.translate(36,36);drawGenvoSprite(c,{animal:a,phenotype:phenotypeFor(a),scale:3.4,frame:0,palette:creaturePalette(phenotypeFor(a)),pose:{dir:3,life:{blink:false}}})}
++  const portraitOptions=a=>({bodyPlan:a.bodyPlan,adaptations:a.adaptations||[],anatomy:a.anatomy,pigmentGenome:a.pigmentGenome,divergence:a.lineageForm,protoTrait:a.populationTrait,speciesBranch:a.speciesBranch,lifestyle:a.ecoLifestyle,dir:3});
++  const subjects=[[v.actor,'Your performer'],[v.target,'Selected partner']],fitScale=Math.min(...subjects.map(([a])=>{const b=lineagePortraitBounds(a.genes,portraitOptions(a));return Math.min(60/b.w,44/b.h,8)}));
++  this.portraits.replaceChildren();for(const [a,label] of subjects){const box=document.createElement('figure'),cv=document.createElement('canvas'),caption=document.createElement('figcaption');cv.width=96;cv.height=80;cv.setAttribute('aria-label',label+' · adult anatomy');caption.textContent=label;box.append(cv,caption);this.portraits.append(box);drawLineagePortrait(cv,a.genes,{...portraitOptions(a),fitScale})}
+   const add=(root,label,enabled,reason,fn)=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.disabled=!enabled;b.title=reason||label;b.onclick=()=>{if(!this.valid())return;fn();this.signature=null;this.update()};root.append(b);return b};
+   this.cards.replaceChildren();for(const move of v.moves){const live=v.active?sim.reproduction.liveMoveAvailability(move.id,{index:this.futureSlot??undefined}):null;const b=add(this.cards,move.label,live?live.enabled:!sim.paused&&!v.busy&&v.queue.length<3,live?.reason||(move.source?'Uses '+move.source.replace(/-/g,' '):'Basic approach'),()=>this.queue(move.id));b.dataset.move=move.id;
+    if(move.source){const cv=document.createElement('canvas');cv.width=64;cv.height=64;cv.setAttribute('aria-hidden','true');const c=cv.getContext('2d');c.imageSmoothingEnabled=false;c.translate(32,32);drawPartAlone(c,move.source,{type:PARTS[move.source].compatibleSocketTypes[0],s:6,p:creaturePalette(phenotypeFor(v.actor))});b.prepend(cv)}

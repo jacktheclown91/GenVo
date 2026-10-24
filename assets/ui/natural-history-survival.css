@@ -55,3 +55,38 @@
  #interactionDock .creature-stage-resources{justify-content:flex-start;gap:3px}
  #interactionDock .creature-stage-resources button{padding:4px 3px;gap:2px}
 }
+
+/* Courtship retains native controls, sequence, availability and outcome text. */
+#interactionDock .courtship-tray{display:grid;grid-template-columns:168px minmax(0,1fr);gap:5px 12px;max-height:min(260px,40vh);overflow:auto;padding:4px 1px;scrollbar-width:thin;scrollbar-color:#8c9870 #102219}
+#interactionDock .courtship-tray[hidden]{display:none}
+#interactionDock .courtship-portraits{display:flex;grid-column:1;grid-row:1/5;align-self:start;gap:4px;min-width:0;border-right:1px solid #596448;padding-right:8px}
+#interactionDock .courtship-portraits figure{display:flex;flex-direction:column;align-items:center;flex:1;min-width:0;margin:0;background:#1b2c1e;border:1px solid #596448;border-radius:2px;padding:2px}
+#interactionDock .courtship-portraits canvas{display:block;width:72px;height:60px;max-width:100%;image-rendering:pixelated}
+#interactionDock .courtship-portraits figcaption{font:10px/1.3 Verdana,sans-serif;color:#d6dcbf;text-align:center;overflow-wrap:anywhere}
+#interactionDock .courtship-cards{grid-column:2;grid-row:1;gap:5px;align-items:stretch}
+#interactionDock .courtship-cards button{padding:5px 8px;min-height:40px}
+#interactionDock .courtship-cards canvas{width:24px;height:24px;image-rendering:pixelated}
+#interactionDock .courtship-tray button:disabled{opacity:1;background:#1b2c1d;border-color:#596448;color:#a5ad92;cursor:default}
+#interactionDock .courtship-sequence{grid-column:2;grid-row:2;flex-wrap:wrap;gap:4px;min-width:0}
+#interactionDock .courtship-sequence li{font:11px/1.4 Verdana,sans-serif;border:1px solid #78845b;border-radius:2px;background:#23351f;color:#e8dfbb;padding:4px 6px;overflow-wrap:anywhere}
+#interactionDock .courtship-sequence .current{border-color:#dac584;background:#4b5331;color:#fff0bc}
+#interactionDock .courtship-tray>p{grid-column:2;font:11px/1.45 Verdana,sans-serif;color:#c6d0b0;margin:0;overflow-wrap:anywhere}
+#interactionDock .courtship-tray>.courtship-reaction{color:#e2cf95}
+#interactionDock .courtship-tools{grid-column:1/-1;gap:5px;padding-top:5px;border-top:1px solid #596448}
+#interactionDock .courtship-tools button{min-height:36px;padding:6px 10px}
+#interactionDock .courtship-tools button:first-child{background:#394625;border-color:#b8ac79;color:#f0e1ac}
+@media(max-width:600px){
+ #interactionDock .courtship-tray{grid-template-columns:112px minmax(0,1fr);gap:4px 8px;max-height:min(270px,43vh)}
+ #interactionDock .courtship-portraits{gap:2px;padding-right:5px}
+ #interactionDock .courtship-portraits canvas{width:48px;height:40px}
+ #interactionDock .courtship-portraits figcaption{font-size:9px}
+ #interactionDock .courtship-cards button{min-height:40px;padding:4px 6px}
+ #interactionDock .courtship-cards canvas{width:20px;height:20px}
+ #interactionDock .courtship-tools button{min-height:40px;padding:6px 9px}
+}
+
+/* Leave the centered organism visible on short and narrow viewports. */
+@media(max-height:680px) and (min-width:601px){#interactionDock .courtship-tray{max-height:max(80px,calc(50vh - 200px))}}
+@media(max-width:600px){#interactionDock .courtship-tray{max-height:min(160px,calc(50vh - 110px))}}
+
+#interactionDock .courtship-portraits figcaption{display:block}
