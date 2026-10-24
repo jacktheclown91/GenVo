@@ -1,0 +1,5 @@
+{
+  "rejected": true,
+  "reason": "Prepared terrain but separate staticGroundTileCache remained cached; restored frame differed by7280pixels. Full state parity alone cannot establish visually stable layer comparison.",
+  "next": "Invalidate both ground caches and compare isolated prepared ground layer, requiring exact baseline restoration. No runtime artwork changes."
+}
