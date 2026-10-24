@@ -1,0 +1,28 @@
+{
+  "scope": "Native Chromium Canvas2D isolated old/new warning+weather painters on identical genuine storm state. AB/BA alternating batches; milliseconds per combined paint. Not full-frame/GPU or sustained responsiveness acceptance.",
+  "seed": "STORM-READOUT-26",
+  "day": 1,
+  "tick": 6,
+  "model": {
+    "title": "Thunderstorm",
+    "detail": "Avoid exposed high ground · Warm spell · Rain",
+    "storm": true,
+    "thermal": false,
+    "warm": false
+  },
+  "old": {
+    "samples": 40,
+    "callsPerSample": 10,
+    "p50": 0.07999999523162842,
+    "p95": 0.09000000953674317,
+    "p99": 0.1
+  },
+  "candidate": {
+    "samples": 40,
+    "callsPerSample": 10,
+    "p50": 0.08000000715255737,
+    "p95": 0.1100000023841858,
+    "p99": 0.2
+  },
+  "stateParity": true
+}
