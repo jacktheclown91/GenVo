@@ -33,3 +33,7 @@ See [the five-size, real inherited-session and exported-build evidence](../../ar
 `node tools/stage-lab-presentation.cjs <empty-directory-outside-source>` prepares an isolated public export with the two narrow candidate patches. `node tools/verify-lab-presentation.cjs <build-directory> <new-evidence-directory>` checks that exported app through public controls without inspection hooks. The final review build is `C:\Users\jackt\AppData\Local\Temp\genvo-lab-v1-web-20261023-final`.
 
 After coordinated activation and review, consolidate superseded editor styling through the shared-file owner; the overlay is a review/integration seam, not an intended permanent second styling authority. Preserve unrelated styles and native mechanisms during that audit.
+
+## Native-art loading correction coordination
+
+Runtime review exposed stale fallback thumbnails and preview extents when the Lab opens before asynchronous native artwork finishes. Codex will invalidate only presentation caches on native-art revision and repaint existing canvases without rebuilding controls or editing the draft. A read-only numeric revision getter avoids per-frame object allocation. A delayed-network browser case will compare exact draft/simulation state before and after genuine asset arrival. This is drawing/cache ownership, not a new loading gate, biological rule or editor constraint.
