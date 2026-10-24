@@ -1,3 +1,4 @@
+import {drawNestArt,drawEggArt} from './clutch-art.js';
 import {visibleRegionalFauna} from '../world/regional-fauna.js';
 import {drawRegionalAnimal} from './regional-fauna.js';
 import {drawWildfire} from './wildfire.js';
@@ -300,22 +301,12 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     for(const nest of this.sim.nests||[]){
       const x=Math.round((nest.x-this.camera.x)*tile+this.w/2),y=Math.round((nest.y-this.camera.y)*tile+this.h/2)-(nest.layer==='canopy'?7*s:0);
       if(x<-tile||y<-tile||x>this.w+tile||y>this.h+tile)continue;
-      const spread=6*s,fade=Math.max(.2,Math.min(1,nest.integrity||0));
-      c.fillStyle=`rgba(67,49,29,${(.5*fade).toFixed(3)})`;c.fillRect(x-spread,y-2*s,spread*2,5*s);
-      c.fillStyle=`rgba(147,120,72,${(.8*fade).toFixed(3)})`;
-      c.fillRect(x-6*s,y-3*s,3*s,2*s);c.fillRect(x+3*s,y-3*s,3*s,2*s);
-      c.fillRect(x-5*s,y+2*s,10*s,2*s);
-      c.fillStyle=`rgba(94,109,62,${(.75*fade).toFixed(3)})`;
-      c.fillRect(x-6*s,y-4*s,3*s,s);c.fillRect(x+4*s,y+s,3*s,s);
+      c.save();c.translate(x,y);drawNestArt(c,nest,{scale:s});c.restore();
     }
     for(const egg of this.sim.eggs||[]){
       const x=Math.round((egg.x-this.camera.x)*tile+this.w/2),y=Math.round((egg.y-this.camera.y)*tile+this.h/2)-(this.sim.nests?.find(n=>n.id===egg.nestId)?.layer==='canopy'?7*s:0);
       if(x<-tile||y<-tile||x>this.w+tile||y>this.h+tile)continue;
-      c.fillStyle='rgba(18,21,15,.4)';c.fillRect(x-3*s,y+2*s,6*s,2*s);
-      c.fillStyle='#a78353';c.fillRect(x-3*s,y-2*s,6*s,5*s);
-      c.fillStyle=egg.condition<.45?'#b29b80':'#e6d6aa';c.fillRect(x-2*s,y-3*s,4*s,5*s);
-      c.fillStyle='#fcf0d2';c.fillRect(x-s,y-3*s,2*s,s);
-      if(egg.condition<.5){c.fillStyle='#765848';c.fillRect(x+s,y,2*s,s)}
+      c.save();c.translate(x,y);drawEggArt(c,egg,{scale:s});c.restore();
     }
   }
   drawShelters(tile){
