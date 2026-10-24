@@ -30,7 +30,7 @@ export const METABOLISM=Object.freeze({policy:'metabolism/fasting-2',
  sipShare:.1});
 export function metabolismActive(sim){return sim?.metabolismRules===METABOLISM.policy||sim?.metabolismRules===METABOLISM_REFERENCE_BODY}
 // Resting cost per biological step of a species' reference adult under the recorded rules.
-function referenceBasal(a){
+export function referenceBasal(a){
  const s=SPECIES[a.species],anatomical=massPolicy(a)===ANATOMICAL_MASS;
  return anatomical?{energy:.052/REFERENCE_MASS*s.mass,water:.044/REFERENCE_MASS*s.mass}:{energy:s.baseMetabolism,water:s.waterUse};
 }

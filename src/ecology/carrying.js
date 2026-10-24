@@ -86,7 +86,7 @@ export class CarryingPressureController{
     const supply=this.surveyFor(a,surveyMemo);
     // breeding-support/1: one anatomy- and resource-based rule for every body.
     const shared=breedingSupportEnabled(this.sim);
-    if(shared&&onlyIfAllowed&&!(renewableSupply(this.sim,a,supply)>breedingNeed(a)))return{allowed:false};
+    if(shared&&onlyIfAllowed&&!(renewableSupply(this.sim,a,supply)>breedingNeed(a,this.sim)))return{allowed:false};
     if(!shared&&onlyIfAllowed&&!canHunt(a)&&this.sim.speciesLifestyle?.feedingMode?.(a)!=='hunter'){const min=repro.minForage??0,opt=Math.max(min+.01,repro.optimalForage??Math.max(1,min*1.6));if(!(clamp(0,1.08,(supply.value-min)/(opt-min))>.04))return{allowed:false}}
     const overlaps=surveyMemo?(surveyMemo.overlaps??=new WeakMap()):null;let overlapMemo=overlaps?.get(supply)||null;if(overlaps&&!overlapMemo){overlapMemo=new Map();overlaps.set(supply,overlapMemo)}
     const demand=dietaryDemand(this.sim,a,supply,shared?BREEDING_SUPPORT.radius:density.radius,{residentId:resident.id,overlapMemo});

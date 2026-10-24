@@ -4,7 +4,7 @@ import {FRESHWATER_FOOD,growthOf} from './freshwater-food.js';
 import {canHunt,preyPreference} from './functional-diet.js';
 import {preyBodyMass} from './prey-biomass.js';
 import {captureLikelihood} from './juvenile-biology.js';
-import {founderDailyNeed,FOUNDING_RANGE,TISSUE_ENERGY} from './resource-founding.js';
+import {founderDailyNeed,dailyMetabolicNeed,FOUNDING_RANGE,TISSUE_ENERGY} from './resource-founding.js';
 
 // Shared breeding support (breeding-support/1, creator direction 2026-10-22).
 // One rule for every living body, founders, evolved descendants, hybrids and
@@ -35,9 +35,9 @@ export function renewableSupply(sim,a,supply){
  if(canHunt(a))sim.forEachNearby(a,FOUNDING_RANGE,b=>{if(b===a||!b.alive||Math.hypot(b.x-a.x,b.y-a.y)>FOUNDING_RANGE)return;const p=preyPreference(a,b);if(p>0)production+=preyBodyMass(b)*TISSUE_ENERGY*p*captureLikelihood(a,b)/Math.max(1,SPECIES[b.species]?.lifespan||365)});
  return production;
 }
-export const breedingNeed=a=>founderDailyNeed(a.species,a)*BREEDING_SUPPORT.reproductiveMargin;
+export const breedingNeed=(a,sim=null)=>dailyMetabolicNeed(a.species,a,sim)*BREEDING_SUPPORT.reproductiveMargin;
 export function breedingSupport(sim,a,supply,competitors){
- const production=renewableSupply(sim,a,supply),share=production/(1+Math.max(0,competitors)),need=breedingNeed(a);
+ const production=renewableSupply(sim,a,supply),share=production/(1+Math.max(0,competitors)),need=breedingNeed(a,sim);
  const ratio=need>0?share/need:0,resource=Math.max(0,Math.min(1.12,ratio-1));
  return{production,share,need,supportRatio:ratio,resource};
 }

@@ -6,6 +6,7 @@ import {groundDiet,preyPreference} from './functional-diet.js';
 import {FRESHWATER_FOOD,freshwaterField,freshwaterPreference,growthOf} from './freshwater-food.js';
 import {preyBodyMass} from './prey-biomass.js';
 import {captureLikelihood} from './juvenile-biology.js';
+import {metabolismActive,basalScale,referenceBasal} from './metabolism-policy.js';
 
 // Resource-informed founding (Phase 3H; renewable food since Phase 3I, creator decision 2026-10-15).
 // After every founder has been placed by the ordinary rules (so the RNG sequence and everyone's positions
@@ -26,7 +27,21 @@ export const RESOURCE_FOUNDING={enabled:true};
 export const FOUNDING_RANGE=12,FOUNDING_ACTIVITY=2,TISSUE_ENERGY=FRESHWATER_FOOD.detritus.nutrition;
 // Metabolism steps per day: constant under every day clock (sim/day-clock.js).
 const STEPS_PER_DAY=BIO_STEPS_PER_DAY;
-export function founderDailyNeed(species,animal=null){if(animal&&massPolicy(animal)===ANATOMICAL_MASS)return basalResourceCosts(animal).energy/animal.genes.metabolism*STEPS_PER_DAY*FOUNDING_ACTIVITY;const s=SPECIES[species];return s.baseMetabolism*(s.mass||1)*STEPS_PER_DAY*FOUNDING_ACTIVITY}
+export function founderDailyNeed(species,animal=null){
+ if(animal&&massPolicy(animal)===ANATOMICAL_MASS)return basalResourceCosts(animal).energy/animal.genes.metabolism*STEPS_PER_DAY*FOUNDING_ACTIVITY;
+ const s=SPECIES[species];
+ return s.baseMetabolism*(s.mass||1)*STEPS_PER_DAY*FOUNDING_ACTIVITY;
+}
+export function dailyMetabolicNeed(species,animal=null,sim=null){
+ if(sim&&metabolismActive(sim)){
+  const s=SPECIES[species],a=animal||{species};
+  const scale=basalScale(sim,a);
+  const basal=animal&&massPolicy(animal)===ANATOMICAL_MASS?basalResourceCosts(animal):referenceBasal({species});
+  const genesMetabolism=animal?.genes?.metabolism||1;
+  return basal.energy*scale.energy*STEPS_PER_DAY/genesMetabolism*FOUNDING_ACTIVITY;
+ }
+ return founderDailyNeed(species,animal);
+}
 
 export function renewableFood(sim,a){
   const w=sim.world,diet=Object.entries(groundDiet(a)).filter(([k,e])=>PLANTS[k]&&e>0),wet=Object.keys(FRESHWATER_FOOD).filter(k=>k!=='detritus').map(k=>[k,freshwaterPreference(a,k)]).filter(([,p])=>p>0);let energy=0;
