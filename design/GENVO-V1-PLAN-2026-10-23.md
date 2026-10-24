@@ -153,3 +153,7 @@ Dates follow the creator's allocation and are targets, not reasons to ship unfin
   - Alive at day 41 rises from 58/72/57 to 186/164/149 on three seeds.
   - Over a year the population overshoots to 248 and then starves: grazers strip the belt within reach of water (64% bare within 6 tiles by day 151), and logistic regrowth leaves it bare.
   - Next candidates: regrowth from grazed ground, breeding estimates on real needs, rillsifter food.
+- **2026-10-23, regrowth from grazed ground** (`docs/REGROWTH-2026-10-23.md`):
+  - Grazing removed a plant's stored reserve with its tissue, so grazed-out tiles could never regrow. New opt-in `perennial-regrowth/1` keeps a 60% root reserve and adds conserved seed and spore rain.
+  - On GENVO8-TEST-A year starvation falls from 263 to 98 and 30 animals survive the year against 4; neutral on PLANET-OBS-2.
+  - On PLANET-OBS-3 a wildfire burns 3.6 times more on the 30-second day than on the 6-second day (fire runs per tick); next to fix.
