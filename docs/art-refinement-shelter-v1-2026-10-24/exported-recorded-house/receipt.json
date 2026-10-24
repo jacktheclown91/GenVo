@@ -1,0 +1,79 @@
+{
+  "events": [],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Actual recorded paid-house witness restored through public New World gzip import. No new construction, food storage or biological continuation is inferred. Canonical current World and existing renderer provide original/candidate/original art controls; no observer, organism, climate, reserve or event is authored.",
+  "recordedHouseBefore": {
+    "day": 4,
+    "tick": 750,
+    "playerId": 109,
+    "energy": 114.72033790840463,
+    "shelters": [
+      {
+        "id": 1,
+        "ownerId": 109,
+        "x": 109.5,
+        "y": 61.5,
+        "integrity": 100,
+        "weatherSeal": 0.78,
+        "foodStore": 2.3385599999999998,
+        "capacity": 28,
+        "kind": "family",
+        "pairKey": null,
+        "foundingGeneration": 1,
+        "denStyle": null,
+        "constructedDay": 4,
+        "constructedYear": 1,
+        "lastUsedTick": 738
+      }
+    ]
+  },
+  "recordedHouseAfter": {
+    "day": 4,
+    "tick": 750,
+    "energy": 114.72033790840463,
+    "shelters": [
+      {
+        "id": 1,
+        "ownerId": 109,
+        "x": 109.5,
+        "y": 61.5,
+        "integrity": 100,
+        "weatherSeal": 0.78,
+        "foodStore": 2.3385599999999998,
+        "capacity": 28,
+        "kind": "family",
+        "pairKey": null,
+        "foundingGeneration": 1,
+        "denStyle": null,
+        "constructedDay": 4,
+        "constructedYear": 1,
+        "lastUsedTick": 738
+      }
+    ]
+  },
+  "paint": {
+    "stateParity": true,
+    "day": 4,
+    "tick": 750,
+    "player": {
+      "x": 111.22796576619297,
+      "y": 61.5
+    }
+  },
+  "comparison": {
+    "scope": "Same actual existing renderer; original/candidate/original shelter painter at identical display time after canonical snapshot admission. No simulation state authored; all visible shelters switch together.",
+    "tick": 751,
+    "day": 4,
+    "stateParity": true,
+    "baselineStable": true,
+    "changedPixels": 734
+  },
+  "witness": {
+    "file": "paid-shelter-witness.scenario.json.gz",
+    "bytes": 2283737,
+    "sha256": "37f107cad029859285e9a18af53664a2e07166a0e4119d4850b4d2b8366959a4",
+    "source": "canonical saveNow/loadSnapshot/packageScenarioSnapshot after the observed funded house and A/B/A"
+  }
+}
