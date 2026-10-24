@@ -12,6 +12,8 @@ Environmental audio follow-up: original nonvocal field, damp-ground and water be
 
 Courtship presentation now displays the actual performer and partner with shared fitted native portraits, visible labels and coherent controls. Nine focused checks, six-size exported-browser layout/pigment/state parity and native queue controls pass; [evidence and limits](art-refinement-courtship-v1-2026-10-23/README.md). Live performance and creator acceptance remain open.
 
+World-object inspector presentation adds labelled object symbols to previously blank headers, keeps native plant/seed drawings and protects the actor and survival controls. Eight focused checks, exact public export, source audit and 18 six-size native browser cases pass; [scope and limits](art-refinement-resource-v1-2026-10-23/README.md). Full v1 and creator acceptance remain open.
+
 ## Source and ownership
 
 The sole active source is `C:\Users\jackt\Desktop\Games\game jam october\genvo-toolkit`, on `main`. Gate A established October 20: fetched the newer consolidation tip `2e07fb5`, reconciled all feature/work tips by ancestry and preserved diagnostic branches, fast-forwarded main without rewriting history, and verified GitHub main at the exact local SHA. Runtime repairs, artwork, hydrology and genuine Day 30/100 scenarios are committed in that history. Two unrelated untracked terminal-help files remain preserved. This establishes source synchronization, not full-game completion. Inspect Git before editing; preserve concurrent work and historical test fixtures.

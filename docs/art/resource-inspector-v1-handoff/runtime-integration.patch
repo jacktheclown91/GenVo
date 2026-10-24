@@ -1,0 +1,84 @@
+diff --git a/assets/ui/natural-history-survival.css b/assets/ui/natural-history-survival.css
+index babc727d..856bf555 100644
+--- a/assets/ui/natural-history-survival.css
++++ b/assets/ui/natural-history-survival.css
+@@ -90,3 +90,37 @@
+ @media(max-width:600px){#interactionDock .courtship-tray{max-height:min(160px,calc(50vh - 110px))}}
+ 
+ #interactionDock .courtship-portraits figcaption{display:block}
++
++/* Requested world-object observations share the specimen-sheet design system. */
++.resource-inspector.knowledge-panel{box-sizing:border-box;right:12px;top:64px;width:380px;max-width:calc(100vw - 24px);max-height:calc(100vh - 84px);padding:14px;border:1px solid #879268;border-radius:2px;background:#102017;background-image:none;box-shadow:0 4px 18px #06110b99;color:#d9dec6;font:12px/1.5 Verdana,sans-serif;text-shadow:none}
++.resource-inspector.knowledge-panel[hidden]{display:none}
++.resource-inspector.knowledge-panel>.knowledge-head{display:grid;grid-template-columns:70px minmax(0,1fr) auto;align-items:start;gap:8px;padding:0 0 12px;margin:0;background:transparent;border-bottom:1px solid #596447}
++.resource-inspector .knowledge-head>div{min-width:0;grid-column:2}
++.resource-inspector .knowledge-head h2{font:normal 23px/1.2 Georgia,serif;color:#eee3bd;margin:2px 0;overflow-wrap:anywhere}
++.resource-inspector .knowledge-head small{font:10px/1.4 Verdana,sans-serif;letter-spacing:1px;color:#bdc8a2}
++.resource-inspector .knowledge-head span{font:11px/1.4 Verdana,sans-serif;color:#bdc8a2;overflow-wrap:anywhere}
++.resource-inspector .knowledge-head>canvas{width:70px;height:63px;grid-row:1/3;image-rendering:pixelated}
++.resource-inspector .knowledge-resource-symbol{grid-column:1;grid-row:1/3;display:flex;align-items:center;width:70px;height:63px;background:#1b2c1e;border:1px solid #596447;box-sizing:border-box}
++.resource-inspector .knowledge-resource-symbol svg{display:block;width:100%;height:auto;fill:none;stroke:#d6c68b;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
++.resource-inspector.knowledge-panel button{border:1px solid #72815a;border-radius:2px;background:#20351f;color:#e8dfb7;font:11px/1.4 Verdana,sans-serif;min-height:40px;padding:6px 9px;box-shadow:none;filter:none}
++.resource-inspector .knowledge-head>button{grid-column:3;white-space:nowrap}
++.resource-inspector .knowledge-head>[data-knowledge-size]{grid-row:2;min-width:0;margin:0;font:11px/1.4 Verdana,sans-serif}
++.resource-inspector .knowledge-scroll{min-height:0;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#a5ad7a #102017;padding-right:6px}
++.resource-inspector .knowledge-summary{margin:12px 0;padding:9px 10px;border:1px solid #596447;border-radius:2px;background:#1b2c1e;color:#e8dfb7;font:12px/1.5 Verdana,sans-serif}
++.resource-inspector.knowledge-panel h3{font:normal 17px/1.3 Georgia,serif;color:#e4d7aa;margin:14px 0 7px}
++.resource-inspector .knowledge-actions li{border-radius:2px;border-color:#596447;background:#1b2c1e;padding:8px;gap:8px}
++.resource-inspector .knowledge-actions li strong{font:700 11px/1.5 Verdana,sans-serif;color:#e6dfbd}
++.resource-inspector .knowledge-actions li span{font:11px/1.5 Verdana,sans-serif;color:#bdc8a2}
++.resource-inspector .knowledge-fold{border:1px solid #596447;border-radius:2px;background:#15251b;padding:0 9px}
++.resource-inspector .knowledge-fold>summary{cursor:pointer;padding:10px 0;min-height:40px;box-sizing:border-box;color:#e6d8ac;font:11px/1.5 Verdana,sans-serif}
++.resource-inspector .knowledge-data{font:11px/1.6 Verdana,sans-serif;color:#c6d0b0;overflow-wrap:anywhere}
++.resource-inspector .knowledge-hint{font:11px/1.5 Verdana,sans-serif;color:#bdc8a2}
++.resource-inspector.knowledge-panel>.knowledge-foot{background:transparent;border-color:#596447;color:#bdc8a2;font:10px/1.4 Verdana,sans-serif}
++.resource-inspector button:focus-visible,.resource-inspector summary:focus-visible{outline:2px solid #e8d487;outline-offset:2px}
++@media(max-width:600px){.resource-inspector.knowledge-panel{right:8px;top:60px;max-width:calc(100vw - 16px);max-height:calc(100vh - 76px);padding:12px}.resource-inspector .knowledge-head h2{font-size:20px}}
++
++@media(min-width:601px){.resource-inspector.knowledge-panel{width:min(380px,calc(50vw - 84px))}}
++@media(max-width:600px){.resource-inspector.knowledge-panel{width:380px;max-height:max(150px,calc(50vh - 130px));top:60px}}
++
++@media(min-width:601px){.resource-inspector.knowledge-panel{max-height:calc(100vh - 245px)}}
++.resource-inspector .knowledge-head>canvas{box-sizing:border-box;border:1px solid #596447;border-radius:2px;background:#1b2c1e}
+diff --git a/src/ui/resource-inspector.js b/src/ui/resource-inspector.js
+index 510f6efe..491c6e6f 100644
+--- a/src/ui/resource-inspector.js
++++ b/src/ui/resource-inspector.js
+@@ -3,6 +3,7 @@ import {resourceInspection,resourceSummary} from './world-resource-target.js';
+ import {PLANTS} from '../sim/config.js';
+ import {drawFloraPlant} from '../render/flora.js';
+ import {appendActionSymbol} from './action-symbols.js';
++import {appendResourceSymbol} from './resource-symbols.js';
+ import {escapePanel as esc,updateKnowledgeHTML} from './knowledge-panel.js';
+ // Read-only observations of authoritative actions. Execution remains in the radial menu.
+ export class ResourceInspector{
+@@ -14,6 +15,6 @@ export class ResourceInspector{
+  const advanced=view.sections.filter(v=>v.title!=='Observation');
+  updateKnowledgeHTML(this.el,`<header class="knowledge-head"><canvas width="80" height="72" aria-label="${esc(view.label)} specimen"></canvas><div><small>FIELD OBSERVATION</small><h2>${esc(view.label)}</h2><span>${esc(summary.identity)}</span></div><button type="button" data-focus-key="close" aria-label="Close object inspector">Close</button></header><div class="knowledge-summary">${esc(summary.features.join(' · ')||view.sections[0]?.text||summary.identity)}</div>${summary.consequence?`<section class="knowledge-effects"><h3>Likely outcomes</h3><p>${esc(summary.consequence)}</p></section>`:''}<section><h3>Interactions for your creature</h3><ul class="knowledge-actions">${rows||'<li>Use the radial menu to approach this object.</li>'}</ul><p class="knowledge-hint">Choose actions in the world radial menu.</p></section><details class="knowledge-fold" data-section="biology"><summary data-focus-key="biology">Biological details</summary>${advanced.map(v=>`<section><h3>${esc(v.title)}</h3><p class="knowledge-data">${esc(v.text)}</p></section>`).join('')||`<p class="knowledge-data">${esc(view.sections[0]?.text)}</p>`}</details><footer class="knowledge-foot">Field observation · live</footer>`);
+  const fold=this.el.querySelector('.knowledge-fold'),actions=this.el.querySelector('.knowledge-actions')?.closest('section');if(fold&&actions)actions.before(fold);this.el.querySelector('button').onclick=()=>this.close();this.el.querySelectorAll('[data-icon]').forEach(n=>appendActionSymbol(n,n.dataset.icon));
+- const cv=this.el.querySelector('canvas'),c=cv.getContext('2d'),observation=this.target.kind==='seed-patch'?s.discovery.seedObservations?.find(o=>o.id===this.target.id):null,p=this.target.kind==='seed-patch'?null:PLANTS[this.target.food];c.imageSmoothingEnabled=false;if(observation){c.strokeStyle=observation.status==='established'?'#a5ce80':'#d3bc74';c.lineWidth=3;c.beginPath();c.arc(40,36,23,0,Math.PI*2);c.moveTo(40,50);c.lineTo(40,24);c.lineTo(28,18);c.moveTo(40,32);c.lineTo(52,22);c.stroke();}if(p){const source=document.createElement('canvas');source.width=128;source.height=128;const sc=source.getContext('2d');sc.imageSmoothingEnabled=false;drawFloraPlant(sc,{shape:p.render,color:p.color,amount:s.world.plants[this.target.food][this.target.i],kind:this.target.food,px:40,py:40,u:3,x:Math.floor(this.target.x),y:Math.floor(this.target.y),season:s.season,seedAllocation:s.dispersal.genomeAt(this.target.food,this.target.i)?.traits.seedAllocation??.2,coatAllocation:s.dispersal.genomeAt(this.target.food,this.target.i)?.traits.coatAllocation??.25,reproduction:botanicalPlantView(s.dispersal,this.target.food,this.target.i)});const pixels=sc.getImageData(0,0,128,128).data;let x0=128,y0=128,x1=-1,y1=-1;for(let y=0;y<128;y++)for(let x=0;x<128;x++)if(pixels[(y*128+x)*4+3]){x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y)}if(x1>=0){const w=x1-x0+1,h=y1-y0+1,k=Math.min(66/w,60/h);c.drawImage(source,x0,y0,w,h,(80-w*k)/2,(72-h*k)/2,w*k,h*k)}}
++ const cv=this.el.querySelector('canvas');if(this.target.kind!=='plant'&&this.target.kind!=='seed-patch'){const symbol=this.el.querySelector('.knowledge-resource-symbol')||document.createElement('span');symbol.className='knowledge-resource-symbol';symbol.replaceChildren();appendResourceSymbol(symbol,this.target);cv?.replaceWith(symbol);return}if(!cv)return;const c=cv.getContext('2d'),observation=this.target.kind==='seed-patch'?s.discovery.seedObservations?.find(o=>o.id===this.target.id):null,p=this.target.kind==='seed-patch'?null:PLANTS[this.target.food];c.imageSmoothingEnabled=false;if(observation){c.strokeStyle=observation.status==='established'?'#a5ce80':'#d3bc74';c.lineWidth=3;c.beginPath();c.arc(40,36,23,0,Math.PI*2);c.moveTo(40,50);c.lineTo(40,24);c.lineTo(28,18);c.moveTo(40,32);c.lineTo(52,22);c.stroke();}if(p){const source=document.createElement('canvas');source.width=128;source.height=128;const sc=source.getContext('2d');sc.imageSmoothingEnabled=false;drawFloraPlant(sc,{shape:p.render,color:p.color,amount:s.world.plants[this.target.food][this.target.i],kind:this.target.food,px:40,py:40,u:3,x:Math.floor(this.target.x),y:Math.floor(this.target.y),season:s.season,seedAllocation:s.dispersal.genomeAt(this.target.food,this.target.i)?.traits.seedAllocation??.2,coatAllocation:s.dispersal.genomeAt(this.target.food,this.target.i)?.traits.coatAllocation??.25,reproduction:botanicalPlantView(s.dispersal,this.target.food,this.target.i)});const pixels=sc.getImageData(0,0,128,128).data;let x0=128,y0=128,x1=-1,y1=-1;for(let y=0;y<128;y++)for(let x=0;x<128;x++)if(pixels[(y*128+x)*4+3]){x0=Math.min(x0,x);y0=Math.min(y0,y);x1=Math.max(x1,x);y1=Math.max(y1,y)}if(x1>=0){const w=x1-x0+1,h=y1-y0+1,k=Math.min(66/w,60/h);c.drawImage(source,x0,y0,w,h,(80-w*k)/2,(72-h*k)/2,w*k,h*k)}}
+  }
+ }
+diff --git a/src/ui/resource-symbols.js b/src/ui/resource-symbols.js
+new file mode 100644
+index 00000000..209fc375
+--- /dev/null
++++ b/src/ui/resource-symbols.js
+@@ -0,0 +1,16 @@
++// Original field-guide symbols: object classes, never fabricated specimens or events.
++const symbols={
++ object:['World object','M35 7L61 29L35 51L9 29ZM35 20a9 9 0 1 0 0 18a9 9 0 1 0 0-18'],
++ water:['Water','M6 35Q13 29 20 35T34 35T48 35T62 35M6 45Q13 39 20 45T34 45T48 45T62 45M35 5C29 15 24 20 24 25a11 11 0 0 0 22 0C46 20 41 15 35 5Z'],
++ ground:['Ground','M6 29L22 21L38 25L53 16L64 24M6 35L20 32L35 36L49 30L64 34M6 44L19 41L34 45L50 39L64 43M17 22l2-9m-2 5l-5-4m7 3l5-5'],
++ cave:['Cave opening','M6 48L12 25L25 10L41 7L57 23L64 48ZM23 48V35Q23 22 35 22Q47 22 47 35V48M12 25l10 4m20-18l-2 7'],
++ shelter:['Shelter','M7 45L14 22L35 10L56 22L63 45M13 22L35 28L57 22M35 28v20M14 35l21 6l21-6M20 17l5 8m20-8l-5 8'],
++ nest:['Nest','M9 31Q35 20 61 31Q58 49 35 51Q12 49 9 31ZM9 31Q35 42 61 31M13 40l12 7m32-7l-12 7M17 24l11 7m24-7l-11 7M21 35l4 11m24-11l-4 11'],
++ egg:['Egg','M35 7C25 7 18 26 18 37a17 17 0 0 0 34 0C52 26 45 7 35 7ZM26 25q-5 9-3 15'],
++ trace:['Trail','M13 48Q34 45 28 28T53 7M12 37l5-4m-4-2l4 1M43 20l6-2m-5-5l4 2'],
++ corpse:['Organic remains','M8 35Q9 22 21 20Q32 17 34 28Q36 39 24 45Q10 49 8 35ZM42 17Q49 12 58 20L62 29Q56 34 48 29Q39 26 42 17ZM43 40Q48 35 55 40L58 48Q47 53 41 47ZM16 29q8-5 12 3M48 20l6 3'],
++ site:['World site','M12 46L17 26L28 16L42 13L56 26L60 46ZM17 26l17 6l22-6M34 32v14M22 20l7 9'],
++ den:['Animal scrape','M9 33Q35 20 61 33Q58 47 35 49Q12 47 9 33ZM20 25l-5-6m16 2l-2-8m14 8l3-8m8 12l5-6'],
++};
++export function resourceSymbolKind(target){return target.cave!==undefined?'cave':target.kind==='cave-water'?'water':target.kind==='drinkable-ground'?'water':target.kind==='food'&&target.food==='carrion'?'corpse':symbols[target.kind]?target.kind:'object'}
++export function appendResourceSymbol(container,target){const kind=resourceSymbolKind(target),[label,path]=symbols[kind],svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 70 58');svg.setAttribute('role','img');svg.setAttribute('aria-label',label+' symbol');svg.dataset.resourceSymbol=kind;const line=document.createElementNS('http://www.w3.org/2000/svg','path');line.setAttribute('d',path);svg.append(line);container.append(svg);return svg}

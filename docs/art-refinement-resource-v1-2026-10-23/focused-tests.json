@@ -1,0 +1,50 @@
+[
+  {
+    "test": "knowledge",
+    "exitCode": 0,
+    "stdout": "knowledge ok\n",
+    "stderr": ""
+  },
+  {
+    "test": "mouse-resources",
+    "exitCode": 0,
+    "stdout": "Explicit resource/key parity, natural food consumption, drink physiology, read-only availability and pause safety PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "manual-resource-pose",
+    "exitCode": 0,
+    "stdout": "Actual manual meal receipt, read-only pose, actor ownership, expiry and movement/combat precedence PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "world-resource-selection",
+    "exitCode": 0,
+    "stdout": "Visible plant selection, bare ground, depletion, stale-world and read-only checks PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "target-resource-states",
+    "exitCode": 0,
+    "stdout": "Target drink states, canonical parity, pause and depletion PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "contextual-interactions",
+    "exitCode": 0,
+    "stdout": "Four dietary anatomies, read-only queries, exact-target/no-fallback, ambiguity, stale feeding descriptors, keyed collection and attack fallback PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "overlay-placement",
+    "exitCode": 0,
+    "stdout": "Overlay placement PASS: player/target avoidance and complete bounds at desktop, laptop and 800x600 edge/centre cases.\n",
+    "stderr": ""
+  },
+  {
+    "test": "public-export",
+    "exitCode": 0,
+    "stdout": "public-export: exact reachable modules and runtime assets only PASS\n",
+    "stderr": ""
+  }
+]
