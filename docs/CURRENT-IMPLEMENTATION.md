@@ -4,7 +4,7 @@ Reviewed October 20, 2026. Governing intent: [current design](../design/CURRENT-
 
 ## Live-birth settlement presentation, October 24
 
-Read-only exact live-birth records drive brief parent/newborn body settlement with weak ownership, interruption and native anatomy. The 106-check gate passes; a genuine Day40 newborn A/B comparison preserves exact state. Maternal visual acceptance and a pre-existing nursing-expression failure remain separate. [Evidence, rejected comparisons and remaining scope](art-refinement-live-birth-v1-2026-10-24/README.md). Full action animation, performance, creator and v1 acceptance remain open.
+Read-only exact live-birth records drive brief parent/newborn body settlement with weak ownership, interruption and native anatomy. The 106-check gate passes; a genuine Day40 newborn A/B comparison preserves exact state. Merged-runtime actor-only newborn and recorded-state maternal A/B/A checks preserve exact state; uninterrupted AUTO maternal and new manual birth acceptance remain open. A pre-existing nursing-expression failure remains separate. [Evidence, rejected comparisons and remaining scope](art-refinement-live-birth-v1-2026-10-24/README.md). Full action animation, performance, creator and v1 acceptance remain open.
 
 ## Stored-snow ground presentation, October 24
 

@@ -1,0 +1,82 @@
+{
+  "events": [
+    {
+      "day": 49,
+      "tick": 2310,
+      "alive": true,
+      "editor": false,
+      "young": false
+    },
+    {
+      "day": 49,
+      "tick": 2310,
+      "alive": true,
+      "editor": false,
+      "young": false,
+      "capture": {
+        "id": 37,
+        "species": "mosskip",
+        "player": true,
+        "role": "parent",
+        "childId": 256,
+        "tick": 2310,
+        "eventTick": 2304,
+        "day": 49,
+        "progress": 0.47288888891537983,
+        "auto": false
+      }
+    }
+  ],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Ordinary public New World/AUTO/speed. Freeze after at least three naturally displayed settlement samples spanning 0.1 presentation seconds. No pregnancy, age, energy, offspring, receipt or physical clock is authored. Paired frames disable/enable the birth effect on the existing actual renderer at identical display time, preserving its feeding/movement history; no additional biological continuation is inferred.",
+  "recordedResidentView": 37,
+  "catalogue": null,
+  "import": {
+    "file": "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-birth-art-20261024\\reports\\live-birth-parent-timeline\\observed-world.scenario.json.gz",
+    "sha256": "b02fabe16d92b67f9e8363830d5ff7750f54dabeac86b68893c60b81c4667a32"
+  },
+  "expectedRole": "parent",
+  "start": {
+    "tick": 2310,
+    "day": 49,
+    "seed": "GENVO-VALLEY-REPLAY-30",
+    "player": 37,
+    "auto": false
+  },
+  "recordedStateScope": "Native import and existing-resident selection of the actual saved mother. The original birth preceded this manual-view trial; no new manual birth is claimed.",
+  "capture": {
+    "id": 37,
+    "species": "mosskip",
+    "player": true,
+    "role": "parent",
+    "childId": 256,
+    "tick": 2310,
+    "eventTick": 2304,
+    "day": 49,
+    "progress": 0.47288888891537983,
+    "auto": false
+  },
+  "pair": {
+    "stateParity": true,
+    "seed": "GENVO-VALLEY-REPLAY-30",
+    "tick": 2310,
+    "day": 49,
+    "method": "Existing actual renderer, identical motion/feeding/encounter history, captured actor birth effect only disabled/enabled/disabled; all other actors retain their birth effects",
+    "baselineStable": true,
+    "afterPose": {
+      "role": "parent",
+      "progress": 0.47288888891537983,
+      "childId": 256,
+      "bodyDrop": 0.8469187938833479,
+      "stanceSpread": 0.6974625361392276,
+      "compress": 0.13949250722784554,
+      "headDrop": 0.3487312680696138,
+      "bodyLean": -0.29891251548824044,
+      "headReach": 0,
+      "feelerForward": 0.8840355555613836
+    },
+    "changedFocusPixels": 290
+  }
+}
