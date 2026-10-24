@@ -15,7 +15,12 @@ export function drawAtmosphere(renderer){
   drawMistWisps(renderer,sample);
  }
  drawPrecipitation(renderer,sample);
- const labels=[];if(sample.fog>.2)labels.push(sample.fog>.6?'Dense fog':'Mist');if(sample.snow>.2)labels.push('Snowfall');if(sample.liquid>.2)labels.push('Rain');
- if(labels.length){c.fillStyle='#152a23d9';c.fillRect(12,h-184,220,24);c.fillStyle='#dfe8de';c.font='12px sans-serif';c.textAlign='left';c.fillText(labels.join(' · ')+' · reduced sight',20,h-168)}
  c.restore();return true;
+}
+
+// Presentation thresholds are unchanged; the shared readout owns their label.
+export function atmosphereReadout(sim,a=sim.player()){
+ if(sim.visibilityRules!==VISIBILITY.policy||!a||a.underground||(a.diveDepth||0)>.03)return null;
+ const sample=atmosphereAt(sim,a.x,a.y),labels=[];if(sample.fog>.2)labels.push(sample.fog>.6?'Dense fog':'Mist');if(sample.snow>.2)labels.push('Snowfall');if(sample.liquid>.2)labels.push('Rain');
+ return labels.length?{labels,text:labels.join(' · '),reducedSight:true}:null;
 }

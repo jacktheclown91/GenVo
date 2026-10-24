@@ -1,0 +1,259 @@
+{
+  "events": [],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Baseline thermal canvas-label layout in genuine generated heat/cold worlds. Seed selection uses independent native thermal stream only; no climate, creature, view position, resources or biological history is injected. Actual public starts and viewport resizes. No creator acceptance.",
+  "cases": [
+    {
+      "kind": "cold",
+      "seed": "THERMAL-REVIEW-3",
+      "width": 1920,
+      "height": 1080,
+      "reading": {
+        "delta": -0.3030117981025977,
+        "temperature": 0.10488894597794585,
+        "active": true,
+        "label": "Cold snap"
+      },
+      "actualSeed": "THERMAL-REVIEW-3",
+      "thermalRules": "persistent-temperature/1",
+      "box": {
+        "left": 12,
+        "top": 868,
+        "right": 256,
+        "bottom": 892
+      },
+      "textWidth": 223.11328125,
+      "bodyOverlap": 0,
+      "uiOverlaps": [],
+      "day": 1,
+      "tick": 12
+    },
+    {
+      "kind": "cold",
+      "seed": "THERMAL-REVIEW-3",
+      "width": 1366,
+      "height": 768,
+      "reading": {
+        "delta": -0.3030117981025977,
+        "temperature": 0.10488894597794585,
+        "active": true,
+        "label": "Cold snap"
+      },
+      "actualSeed": "THERMAL-REVIEW-3",
+      "thermalRules": "persistent-temperature/1",
+      "box": {
+        "left": 12,
+        "top": 556,
+        "right": 256,
+        "bottom": 580
+      },
+      "textWidth": 223.11328125,
+      "bodyOverlap": 0,
+      "uiOverlaps": [],
+      "day": 1,
+      "tick": 20
+    },
+    {
+      "kind": "cold",
+      "seed": "THERMAL-REVIEW-3",
+      "width": 1024,
+      "height": 768,
+      "reading": {
+        "delta": -0.3030117981025977,
+        "temperature": 0.10488894597794585,
+        "active": true,
+        "label": "Cold snap"
+      },
+      "actualSeed": "THERMAL-REVIEW-3",
+      "thermalRules": "persistent-temperature/1",
+      "box": {
+        "left": 12,
+        "top": 556,
+        "right": 256,
+        "bottom": 580
+      },
+      "textWidth": 223.11328125,
+      "bodyOverlap": 0,
+      "uiOverlaps": [],
+      "day": 1,
+      "tick": 24
+    },
+    {
+      "kind": "cold",
+      "seed": "THERMAL-REVIEW-3",
+      "width": 800,
+      "height": 600,
+      "reading": {
+        "delta": -0.3030117981025977,
+        "temperature": 0.10488894597794585,
+        "active": true,
+        "label": "Cold snap"
+      },
+      "actualSeed": "THERMAL-REVIEW-3",
+      "thermalRules": "persistent-temperature/1",
+      "box": {
+        "left": 12,
+        "top": 388,
+        "right": 256,
+        "bottom": 412
+      },
+      "textWidth": 223.11328125,
+      "bodyOverlap": 0,
+      "uiOverlaps": [],
+      "day": 1,
+      "tick": 28
+    },
+    {
+      "kind": "cold",
+      "seed": "THERMAL-REVIEW-3",
+      "width": 390,
+      "height": 540,
+      "reading": {
+        "delta": -0.3030117981025977,
+        "temperature": 0.10488894597794585,
+        "active": true,
+        "label": "Cold snap"
+      },
+      "actualSeed": "THERMAL-REVIEW-3",
+      "thermalRules": "persistent-temperature/1",
+      "box": {
+        "left": 12,
+        "top": 328,
+        "right": 256,
+        "bottom": 352
+      },
+      "textWidth": 223.11328125,
+      "bodyOverlap": 240,
+      "uiOverlaps": [],
+      "day": 1,
+      "tick": 32
+    },
+    {
+      "kind": "heat",
+      "seed": "THERMAL-REVIEW-41",
+      "width": 1920,
+      "height": 1080,
+      "reading": {
+        "delta": 0.3083581607139235,
+        "temperature": 0.7963789579367763,
+        "active": true,
+        "label": "Heatwave"
+      },
+      "actualSeed": "THERMAL-REVIEW-41",
+      "thermalRules": "persistent-temperature/1",
+      "box": {
+        "left": 12,
+        "top": 868,
+        "right": 256,
+        "bottom": 892
+      },
+      "textWidth": 223.78125,
+      "bodyOverlap": 0,
+      "uiOverlaps": [],
+      "day": 1,
+      "tick": 11
+    },
+    {
+      "kind": "heat",
+      "seed": "THERMAL-REVIEW-41",
+      "width": 1366,
+      "height": 768,
+      "reading": {
+        "delta": 0.3083581607139235,
+        "temperature": 0.7963789579367763,
+        "active": true,
+        "label": "Heatwave"
+      },
+      "actualSeed": "THERMAL-REVIEW-41",
+      "thermalRules": "persistent-temperature/1",
+      "box": {
+        "left": 12,
+        "top": 556,
+        "right": 256,
+        "bottom": 580
+      },
+      "textWidth": 223.78125,
+      "bodyOverlap": 0,
+      "uiOverlaps": [],
+      "day": 1,
+      "tick": 15
+    },
+    {
+      "kind": "heat",
+      "seed": "THERMAL-REVIEW-41",
+      "width": 1024,
+      "height": 768,
+      "reading": {
+        "delta": 0.3083581607139235,
+        "temperature": 0.7963789579367763,
+        "active": true,
+        "label": "Heatwave"
+      },
+      "actualSeed": "THERMAL-REVIEW-41",
+      "thermalRules": "persistent-temperature/1",
+      "box": {
+        "left": 12,
+        "top": 556,
+        "right": 256,
+        "bottom": 580
+      },
+      "textWidth": 223.78125,
+      "bodyOverlap": 0,
+      "uiOverlaps": [],
+      "day": 1,
+      "tick": 19
+    },
+    {
+      "kind": "heat",
+      "seed": "THERMAL-REVIEW-41",
+      "width": 800,
+      "height": 600,
+      "reading": {
+        "delta": 0.3083581607139235,
+        "temperature": 0.7963789579367763,
+        "active": true,
+        "label": "Heatwave"
+      },
+      "actualSeed": "THERMAL-REVIEW-41",
+      "thermalRules": "persistent-temperature/1",
+      "box": {
+        "left": 12,
+        "top": 388,
+        "right": 256,
+        "bottom": 412
+      },
+      "textWidth": 223.78125,
+      "bodyOverlap": 0,
+      "uiOverlaps": [],
+      "day": 1,
+      "tick": 22
+    },
+    {
+      "kind": "heat",
+      "seed": "THERMAL-REVIEW-41",
+      "width": 390,
+      "height": 540,
+      "reading": {
+        "delta": 0.3083581607139235,
+        "temperature": 0.7963789579367763,
+        "active": true,
+        "label": "Heatwave"
+      },
+      "actualSeed": "THERMAL-REVIEW-41",
+      "thermalRules": "persistent-temperature/1",
+      "box": {
+        "left": 12,
+        "top": 328,
+        "right": 256,
+        "bottom": 352
+      },
+      "textWidth": 223.78125,
+      "bodyOverlap": 240,
+      "uiOverlaps": [],
+      "day": 1,
+      "tick": 25
+    }
+  ]
+}

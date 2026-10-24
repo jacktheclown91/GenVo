@@ -9,6 +9,7 @@ import {CanvasRecorder} from './canvas-recorder.js';
 import {drawAtmosphere} from './atmosphere.js';
 import {drawSensoryFog,prepareSensoryFog,clipToSensed} from './sensory-fog.js';
 import {drawThermalWeather} from './thermal-weather.js';
+import {drawWeatherReadout} from './weather-readout.js';
 import {THERMAL_WEATHER} from '../ecology/thermal-weather.js';
 import {VISIBILITY,visuallyObservable,creatureView} from '../ecology/atmospheric-visibility.js';
 import {CAVES} from '../world/cave-policy.js';
@@ -174,6 +175,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // Weather and interaction cues remain above creatures; ground decoration does not.
     if((!this.lowDetail||this.sim.visibilityRules===VISIBILITY.policy||this.sim.thermalRules===THERMAL_WEATHER.policy)&&!this.sim.player()?.underground)this.drawWeatherOverlay();
     drawSensoryFog(this,{tile,cols,rows,startX,startY});
+    drawWeatherReadout(this);
     this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId));this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.processTerrainRefreshQueue();}
 
 
