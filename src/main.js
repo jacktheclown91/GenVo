@@ -14,6 +14,7 @@ import {planetaryWalkIntent,planetaryPositionLabel} from './world/planetary-walk
 import {PointerApproach} from './ui/pointer-approach.js';
 import {approachGoal} from './ui/world-resource-target.js';
 import {CourtshipTray} from './ui/courtship-tray.js';
+import {MovementInputBuffer} from './ui/movement-input-buffer.js';
 import {HeldBraceInput} from './ui/held-brace-input.js';
 import {CreatureContextTray} from './ui/creature-context-tray.js';
 import {combatActions} from './ui/gameplay-actions.js';
@@ -78,7 +79,8 @@ let seed=new URLSearchParams(location.search).get('seed')||'GENVO8-8FOLD';
 // 30-second days (sim/day-clock.js) and real daily needs (ecology/metabolism-policy.js) are opt-in
 // with ?day=30 until the ecology under them has been balanced and measured; new worlds otherwise
 // keep the recorded 6-second day and resting costs.
-const DAY_CLOCK_OPT_IN=new URLSearchParams(globalThis.location?.search||'').get('day')==='30';
+const dayParam=new URLSearchParams(globalThis.location?.search||'').get('day');
+const DAY_CLOCK_OPT_IN=dayParam!=='legacy'&&dayParam!=='6';
 const SURVIVAL_OPT_IN={dayClock:DAY_CLOCK_OPT_IN,metabolism:DAY_CLOCK_OPT_IN,foodProperties:DAY_CLOCK_OPT_IN,tissueWater:DAY_CLOCK_OPT_IN,winterWater:DAY_CLOCK_OPT_IN,escapeLanding:DAY_CLOCK_OPT_IN,tissueEnergy:DAY_CLOCK_OPT_IN,perennialRegrowth:DAY_CLOCK_OPT_IN};
 let sim=new Simulation(seed,{player:true,...SURVIVAL_OPT_IN});
 const canvas=document.querySelector('#game'),renderer=new Renderer(canvas,sim),keys={},pauseNotice=document.querySelector('#pauseNotice');
@@ -88,10 +90,11 @@ function zoomCamera(dir){const before=renderer.zoom;renderer.zoom=stepCameraZoom
 canvas.addEventListener('wheel',e=>{if(frontEnd.isOpen||editor.open||!e.deltaY)return;e.preventDefault();zoomCamera(e.deltaY<0?1:-1)},{passive:false});
 let mateOpen=false,mindOpen=false,territoryOpen=false,shelterOpen=false,migrationOpen=false,ecologyOpen=false,helpOpen=false,guideOpen=false,manualPause=false;
 let pointerApproach=null;
+const movementInputBuffer=new MovementInputBuffer({controlHz:CFG.controlHz});
 const MOVE_CODES=new Set(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight','KeyJ']);
 const WORLD_ACTION_CODES=new Set(['PageDown','PageUp','Enter','Space','KeyE','KeyQ','KeyN','KeyF','KeyX','KeyV','KeyZ','KeyC','KeyG','KeyH','Digit1','Digit2','Digit3','Digit4','Digit5','Digit0','Digit6','Digit7','Digit8','Digit9','Semicolon']);
 const MANUAL_TAKEOVER_CODES=new Set(['PageDown','PageUp','Enter','Space','KeyE','KeyQ','KeyN','KeyF','KeyX','KeyV','KeyZ','KeyC','KeyG','Digit0','Digit6','Digit7','Digit8','Digit9','Semicolon']);
-function clearMovementKeys(){pointerApproach?.cancel();braceInput?.release();sim.playerCombat?.releaseBrace(sim.player());for(const code of MOVE_CODES)keys[code]=false}
+function clearMovementKeys(){pointerApproach?.cancel();braceInput?.release();sim.playerCombat?.releaseBrace(sim.player());movementInputBuffer.clear();for(const code of MOVE_CODES)keys[code]=false}
 function takeManualControl(){if(!sim.playerAutonomy)return false;sim.setPlayerAutonomy(false);tutorial?.showToast?.('Manual control',900,'safe');return true}
 function setManualPause(value){if(tutorial.worldInputBlocked?.())return false;manualPause=!!value;sim.paused=manualPause;clearMovementKeys();if(pauseNotice)pauseNotice.hidden=!manualPause;audio.note('confirm');return true}
 const braceInput=new HeldBraceInput({getSim:()=>sim,blocked:()=>sim.paused||!!tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||succession.open,onBegin:()=>{sim.discovery.cancelTraceFollow();pointerApproach?.cancel();takeManualControl();applyObserverResult(observer.onManualInput());if(courtshipTray.isOpen){sim.reproduction.cancelCourtship();courtshipTray.close()}}});
@@ -317,7 +320,13 @@ loadSaveButton?.addEventListener('click',()=>{if(confirm('Load the last saved li
 // is held and replayed in order once it completes, so no command acts on a
 // half-advanced world. Text fields and browser shortcuts are never held.
 const heldInput={queue:[],replaying:new WeakSet(),
-  hold(e){if(!sim.tickInProgress||this.replaying.has(e)||e.ctrlKey||e.metaKey||e.target?.closest?.('input,textarea,select,[contenteditable="true"]'))return;e.preventDefault();e.stopImmediatePropagation();this.queue.push(e)},
+  hold(e){
+    if(!sim.tickInProgress||this.replaying.has(e)||e.ctrlKey||e.metaKey||e.target?.closest?.('input,textarea,select,[contenteditable="true"]'))return;
+    if(MOVE_CODES.has(e.code))return;
+    if(e.repeat){e.preventDefault();e.stopImmediatePropagation();return}
+    if(this.queue.some(q=>q.type===e.type&&q.code===e.code)){e.preventDefault();e.stopImmediatePropagation();return}
+    e.preventDefault();e.stopImmediatePropagation();this.queue.push(e);
+  },
   replay(){const queue=this.queue;this.queue=[];for(const e of queue){const init={bubbles:e.bubbles,cancelable:e.cancelable,composed:e.composed};for(const k of ['key','code','location','repeat','shiftKey','altKey','ctrlKey','metaKey','clientX','clientY','screenX','screenY','button','buttons','detail','pointerId','pointerType','isPrimary','width','height','pressure'])if(k in e)init[k]=e[k];const copy=new e.constructor(e.type,init);this.replaying.add(copy);(e.target?.isConnected?e.target:window).dispatchEvent(copy)}}};
 for(const type of ['keydown','keyup','pointerdown','pointerup','mousedown','mouseup','click','dblclick','contextmenu'])addEventListener(type,e=>heldInput.hold(e),{capture:true});
 addEventListener('pointerdown',()=>{audio.unlock()},{passive:true});
@@ -342,7 +351,7 @@ addEventListener('keydown',e=>{
   // P and Escape are handled by the authored pause navigator above.
   if(sim.paused&&WORLD_ACTION_CODES.has(e.code)){e.preventDefault();if(manualPause)tutorial.showToast('Paused · press P to resume.',1200,'safe');return}
   if(sim.paused&&MOVE_CODES.has(e.code)){e.preventDefault();return}
-  if(MOVE_CODES.has(e.code)){sim.discovery.cancelTraceFollow();pointerApproach?.cancel();keys[e.code]=true;}if(e.code==='KeyJ'&&!e.repeat&&courtshipTray.isOpen){sim.reproduction.cancelCourtship();courtshipTray.close()}
+  if(MOVE_CODES.has(e.code)){sim.discovery.cancelTraceFollow();pointerApproach?.cancel();keys[e.code]=true;movementInputBuffer.onKeyDown(e.code,e.timeStamp||performance.now());}if(e.code==='KeyJ'&&!e.repeat&&courtshipTray.isOpen){sim.reproduction.cancelCourtship();courtshipTray.close()}
   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();
   // Space is the dedicated attack: a short wind-up, then the strike resolves on its own.
   if(e.code==='Space'&&!e.repeat){if(document.activeElement?.tagName==='BUTTON')document.activeElement.blur();contextTray.attack({pounce:!!(keys.ShiftLeft||keys.ShiftRight)})}
@@ -400,10 +409,10 @@ addEventListener('keydown',e=>{
   if(e.code==='Escape'&&!e.repeat&&fieldGuide.open){fieldGuide.setOpen(false);return}
   if(e.code==='Escape'&&!e.repeat){leadershipWheel.setCommandMode(false);journal.setOpen(false);mateOpen=false;mindOpen=false;territoryOpen=false;shelterOpen=false;migrationOpen=false;ecologyOpen=false;helpOpen=false;guideOpen=false}
 });
-addEventListener('keyup',e=>{if(MOVE_CODES.has(e.code)){keys[e.code]=false;if(!audio.unlocked)audio.unlock()}});
+addEventListener('keyup',e=>{if(MOVE_CODES.has(e.code)){keys[e.code]=false;movementInputBuffer.onKeyUp(e.code,e.timeStamp||performance.now());if(!audio.unlocked)audio.unlock()}});
 addEventListener('blur',clearMovementKeys);
 
-function input(){const manual={up:keys.KeyW||keys.ArrowUp,down:keys.KeyS||keys.ArrowDown,left:keys.KeyA||keys.ArrowLeft,right:keys.KeyD||keys.ArrowRight,sprint:keys.ShiftLeft||keys.ShiftRight,brace:braceInput.read()||!!keys.KeyJ};return pointerApproach?pointerApproach.read(manual):manual}
+function input(consume=false){const manual=movementInputBuffer.read({...keys,brace:braceInput.read()||!!keys.KeyJ},consume);return pointerApproach?pointerApproach.read(manual):manual}
 // One fair background admission per rendered frame; canonical ticks remain atomic.
 const planetaryWork=new PlanetaryWorkQueue({isCurrent:target=>target===sim});
 const playing=target=>target===sim&&!frontEnd.isOpen&&!target.paused&&!target.tickInProgress&&renderer.sceneShown;
@@ -426,8 +435,9 @@ const planetLocation=document.querySelector('#planetLocation');
 let last=performance.now(),hudTimer=0,lastFrontierWarning=-Infinity;
 function frame(now){
   const frameWorkStart=performance.now();
-  const dt=Math.max(0,Math.min(.1,(now-last)/1000));last=now;const controls=input();
-  const processing=frameStepper.advance(dt,observer.speed,hz=>sim.playerControlStep(controls,hz),deadline=>sim.beginTick(controls,{externalPlayerControl:true},deadline),{paused:sim.paused||!renderer.sceneShown,beforeStep:()=>!prepareRegionalBiology(sim)&&!preparePlanetarySeams(sim),
+  const dt=Math.max(0,Math.min(.1,(now-last)/1000));last=now;
+  const controls=input(false);
+  const processing=frameStepper.advance(dt,observer.speed,hz=>sim.playerControlStep(input(true),hz),deadline=>sim.beginTick(input(false),{externalPlayerControl:true},deadline),{paused:sim.paused||!renderer.sceneShown,beforeStep:()=>!prepareRegionalBiology(sim)&&!preparePlanetarySeams(sim),
     resume:deadline=>{const done=sim.continueTick(deadline);if(done)heldInput.replay();return done}});
   // While a tick runs across frames only the scene is drawn: no travel, regional
   // work, tutorial, editor, notices or HUD reads that act on a half-advanced world.
@@ -501,4 +511,4 @@ const contextTray=new CreatureContextTray({canvas,renderer,braceInput,getSim:()=
 setInteractPromptSource(()=>{try{const c=contextTray.directChoice?.();return c?.enabled?c.label:null}catch{return null}});
 journal.onRevisit=id=>{const o=sim.discovery.seedObservations?.find(o=>o.id===id);if(!o)return;journal.setOpen(false);const target=sim.discovery.seedPatchTarget(o);if(!contextTray.selectResource(target))return;const choice=contextTray.directChoice();if(choice?.enabled)contextTray.interact();else tutorial.showToast(choice?.reason||'This body cannot revisit the patch.',1800,'warn')};
 
-window.__GENVO8__={frameStepper,heldInput,youngSummary,worldStory,planetaryWork,planetaryPreparation,regionalResidency,borderPreparation,farRegions,get pointerApproach(){return pointerApproach},nativeArtStatus,courtshipTray,braceInput,contextTray,combatActions:()=>combatActions(sim),get sim(){return sim},CFG,setForm,formReading,tutorial,renderer,journal,audio,leadershipWheel,saveManager,loadSavedLineage,observer,editor,fieldGuide};
+window.__GENVO8__={movementInputBuffer,frameStepper,heldInput,youngSummary,worldStory,planetaryWork,planetaryPreparation,regionalResidency,borderPreparation,farRegions,get pointerApproach(){return pointerApproach},nativeArtStatus,courtshipTray,braceInput,contextTray,combatActions:()=>combatActions(sim),get sim(){return sim},CFG,setForm,formReading,tutorial,renderer,journal,audio,leadershipWheel,saveManager,loadSavedLineage,observer,editor,fieldGuide};

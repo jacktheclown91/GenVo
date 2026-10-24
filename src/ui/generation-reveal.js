@@ -8,7 +8,17 @@ export function buildGenerationReveal({bringsText='',handoff,fromRecord,toRecord
   const founder=traitListText(handoff.founderChanges,{empty:'still close to the founder'});
   let kicker='NEXT GENERATION',title=`Generation ${toGen} begins`,lead='You take over as a grown descendant.',button=`Play Generation ${toGen}`;
   if(handoff.newlyEstablished){kicker='LINE ESTABLISHED';title='Generation 8 reached';lead='Eight generations survived. The jam milestone is complete, but the lineage is not: this descendant carries the family forward.';button='Keep going'}
-  else if(handoff.reason==='death'){kicker='THE FAMILY CONTINUES';title=`Generation ${fromGen} → ${toGen}`;lead=`Generation ${fromGen} died${causeText?` from ${causeText}`:''}. A descendant takes over.`}
+  else if(handoff.reason==='death'){
+    kicker='THE FAMILY CONTINUES';
+    if(fromGen===toGen){
+      title=`Generation ${toGen} continues`;
+      lead=`Generation ${fromGen} founder died${causeText?` from ${causeText}`:''}. A surviving relative carries the lineage forward.`;
+      button=`Continue Generation ${toGen}`;
+    }else{
+      title=`Generation ${fromGen} → ${toGen}`;
+      lead=`Generation ${fromGen} died${causeText?` from ${causeText}`:''}. A descendant takes over.`;
+    }
+  }
   const chips=visible.length?visible.map(v=>v.phrase):['little visible change'];
   // v1.57.0: body part changes (from the editor or from inheritance) lead the list.
   {const before=new Set(fromRecord?.bodyPlanParts||[]),now=toRecord.bodyPlanParts||[],gained=now.filter(id=>!before.has(id)),lost=[...before].filter(id=>!now.includes(id)),nice=id=>id.replace(/-/g,' ');

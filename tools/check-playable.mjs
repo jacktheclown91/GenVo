@@ -7,6 +7,7 @@ const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const syntax=[
   'src/main.js',
   'src/ui/front-end.js',
+  'src/ui/movement-input-buffer.js',
   'src/persistence/save-manager.js',
   'src/sim/frame-stepper.js',
   'tests/save-concurrent-requests.mjs'
@@ -112,7 +113,9 @@ const runtime=[
   'tests/gameplay-actions.mjs',
   'tests/contextual-interactions.mjs',
   'tests/world-swap-render.mjs',
-  'tests/menu-task-usability.mjs'
+  'tests/menu-task-usability.mjs',
+  'tests/movement-input-buffer.mjs',
+  'tests/input-responsiveness.mjs'
 ];
 let passed=0;
 for(const [mode,items] of [['syntax',syntax],['playable',runtime]]){

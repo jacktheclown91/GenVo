@@ -15,16 +15,36 @@ export function prepareAuthoredFounders(sim){
  sim.nextId=nextId;
  const members=[sim.spawnAnimal('genvo'),sim.spawnAnimal('genvo')];
  members[1].sex=members[0].sex==='F'?'M':'F';
- for(const a of members){a.age=SPECIES[a.species].maturity;a.reproCooldown=0;}
+ const s=SPECIES[members[0].species];
+ members[0].age=s.maturity;
+ members[0].energy=s.maxEnergy*.92;
+ members[0].hydration=s.maxHydration*.90;
+ members[0].health=100;
+ members[0].reproCooldown=0;
+ members[1].age=s.maturity;
+ members[1].energy=s.maxEnergy*.88;
+ members[1].hydration=s.maxHydration*.88;
+ members[1].health=100;
+ members[1].reproCooldown=0;
  return members;
 }
 function founderSite(sim,body,origin,{accept=null}={}){
- const w=sim.world,waterRequired=isWaterDweller(body);let best=null,score=Infinity;
+ const w=sim.world,waterRequired=isWaterDweller(body);let best=null,bestScore=-Infinity;
  for(let y=2;y<w.n-2;y++)for(let x=2;x<w.n-2;x++){
   const px=x+.5,py=y+.5,i=w.idx(px,py);
   if(waterRequired&&!w.water[i]||!canOccupy(body,w,px,py)||accept&&!accept(body,px,py))continue;
-  const d=(px-origin.x)**2+(py-origin.y)**2;
-  if(d<score){best={x:px,y:py};score=d;}
+  let score=0;
+  if(!waterRequired){
+   const food=(w.plants.bramble?.[i]||0)*2+(w.plants.sunmoss?.[i]||0)+(w.plants.thistlepod?.[i]||0)*.7;
+   let drinkDist=30;
+   for(const spot of w.drinkSpots){const d=Math.hypot(spot.x-px,spot.y-py);if(d<drinkDist)drinkDist=d;}
+   score+=food+(drinkDist>16?-(drinkDist-16)*.15:Math.min(.25,(16-drinkDist)*.02));
+  }
+  let nearestPred=30;
+  for(const b of sim.animals){if(!b.alive||b.species==='genvo')continue;const d=Math.hypot(b.x-px,b.y-py);if(d<nearestPred)nearestPred=d;}
+  score+=(nearestPred<8?-(8-nearestPred)*.35:Math.min(.15,(nearestPred-8)*.01));
+  score-=Math.hypot(px-origin.x,py-origin.y)*.025;
+  if(score>bestScore){best={x:px,y:py};bestScore=score;}
  }
  return best;
 }
