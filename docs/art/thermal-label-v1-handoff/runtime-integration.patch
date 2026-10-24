@@ -1,0 +1,85 @@
+diff --git a/src/render/atmosphere.js b/src/render/atmosphere.js
+index 239e2c24..fd9ce0ce 100644
+--- a/src/render/atmosphere.js
++++ b/src/render/atmosphere.js
+@@ -15,7 +15,12 @@ export function drawAtmosphere(renderer){
+   drawMistWisps(renderer,sample);
+  }
+  drawPrecipitation(renderer,sample);
+- const labels=[];if(sample.fog>.2)labels.push(sample.fog>.6?'Dense fog':'Mist');if(sample.snow>.2)labels.push('Snowfall');if(sample.liquid>.2)labels.push('Rain');
+- if(labels.length){c.fillStyle='#152a23d9';c.fillRect(12,h-184,220,24);c.fillStyle='#dfe8de';c.font='12px sans-serif';c.textAlign='left';c.fillText(labels.join(' · ')+' · reduced sight',20,h-168)}
+  c.restore();return true;
+ }
++
++// Presentation thresholds are unchanged; the shared readout owns their label.
++export function atmosphereReadout(sim,a=sim.player()){
++ if(sim.visibilityRules!==VISIBILITY.policy||!a||a.underground||(a.diveDepth||0)>.03)return null;
++ const sample=atmosphereAt(sim,a.x,a.y),labels=[];if(sample.fog>.2)labels.push(sample.fog>.6?'Dense fog':'Mist');if(sample.snow>.2)labels.push('Snowfall');if(sample.liquid>.2)labels.push('Rain');
++ return labels.length?{labels,text:labels.join(' · '),reducedSight:true}:null;
++}
+diff --git a/src/render/renderer.js b/src/render/renderer.js
+index 56a6ffef..7f2772f3 100644
+--- a/src/render/renderer.js
++++ b/src/render/renderer.js
+@@ -8,7 +8,8 @@ import {liquidContact} from '../lineage/ice-locomotion.js';
+ import {CanvasRecorder} from './canvas-recorder.js';
+ import {drawAtmosphere} from './atmosphere.js';
+ import {drawSensoryFog,prepareSensoryFog,clipToSensed} from './sensory-fog.js';
+-import {drawThermalWeather} from './thermal-weather.js';
++import {drawThermalWeather} from './thermal-weather.js';
++import {drawWeatherReadout} from './weather-readout.js';
+ import {THERMAL_WEATHER} from '../ecology/thermal-weather.js';
+ import {VISIBILITY,visuallyObservable,creatureView} from '../ecology/atmospheric-visibility.js';
+ import {CAVES} from '../world/cave-policy.js';
+@@ -174,6 +175,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
+     // Weather and interaction cues remain above creatures; ground decoration does not.
+     if((!this.lowDetail||this.sim.visibilityRules===VISIBILITY.policy||this.sim.thermalRules===THERMAL_WEATHER.policy)&&!this.sim.player()?.underground)this.drawWeatherOverlay();
+     drawSensoryFog(this,{tile,cols,rows,startX,startY});
++    drawWeatherReadout(this);
+     this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId));this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.processTerrainRefreshQueue();}
+ 
+ 
+diff --git a/src/render/thermal-weather.js b/src/render/thermal-weather.js
+index f06fb07d..14b775b6 100644
+--- a/src/render/thermal-weather.js
++++ b/src/render/thermal-weather.js
+@@ -5,5 +5,5 @@ export function drawThermalWeather(renderer){
+  const c=renderer.ctx,w=renderer.w,h=renderer.h,warm=reading.delta>0,intensity=Math.min(1,Math.abs(reading.delta)/.3),t=renderer.renderNow/1000;
+  c.save();c.fillStyle=warm?`rgba(194,115,46,${intensity*.045})`:`rgba(107,159,193,${intensity*.065})`;c.fillRect(0,0,w,h);
+  if(warm&&reading.temperature>=.78){c.strokeStyle=`rgba(243,205,138,${intensity*.12})`;c.lineWidth=1;for(let k=0;k<4;k++){const y=(k*173+t*9)%h;c.beginPath();for(let x=0;x<w;x+=16){const py=y+Math.sin(x/60+t+k)*3;if(x===0)c.moveTo(x,py);else c.lineTo(x,py)}c.stroke()}}
+- c.fillStyle='#182923de';c.fillRect(12,h-212,244,24);c.fillStyle=warm?'#f2d09e':'#c4dfea';c.font='12px sans-serif';c.textAlign='left';c.fillText(reading.label+' · '+(warm?'above':'below')+' seasonal temperature',20,h-196);c.restore();
++ c.restore();
+ }
+diff --git a/src/render/weather-readout.js b/src/render/weather-readout.js
+new file mode 100644
+index 00000000..c5ced7a2
+--- /dev/null
++++ b/src/render/weather-readout.js
+@@ -0,0 +1,27 @@
++import {thermalWeatherReading} from '../ecology/thermal-weather.js';
++import {atmosphereReadout} from './atmosphere.js';
++import {chooseOverlayPlacement,gameplayProtectedRects} from '../ui/overlay-placement.js';
++// One explanatory label above fog; atmospheric artwork stays in its weather layer.
++export function weatherReadoutModel(sim){
++ const a=sim.player();if(!a||a.underground||(a.diveDepth||0)>.03)return null;
++ const t=thermalWeatherReading(sim,a.x,a.y),thermal=t?.active?t:null,air=atmosphereReadout(sim,a);if(!thermal&&!air)return null;
++ return{title:thermal?.label||air.text,detail:air?(thermal?air.text+' · reduced sight':'Reduced sight'):(thermal.delta>0?'Above':'Below')+' seasonal temperature',thermal:!!thermal,warm:!!thermal&&thermal.delta>0};
++}
++export function wrapWeatherText(text,maxWidth,measure){
++ const lines=[];let line='';for(const word of String(text).split(/\s+/)){const next=line?line+' '+word:word;if(line&&measure(next)>maxWidth){lines.push(line);line=word}else line=next}if(line)lines.push(line);return lines;
++}
++export function weatherReadoutPlacement({width,height,protectedRects=[],obstacles=[],model=null,measureTitle=t=>t.length*7,measureDetail=t=>t.length*6}){
++ const widths=width<=480?[250,120]:[250],candidates=widths.map(requested=>{const labelWidth=Math.min(requested,Math.max(1,width-20)),titleLines=model?wrapWeatherText(model.title,labelWidth-35,measureTitle):[],detailLines=model?wrapWeatherText(model.detail,labelWidth-35,measureDetail):[],labelHeight=model?14*titleLines.length+13*Math.max(0,detailLines.length-1)+24:38;
++ return{...chooseOverlayPlacement({width:labelWidth,height:labelHeight,viewport:{left:0,top:0,right:width,bottom:height},preferred:{left:12,top:height-212},protectedRects,obstacles,gap:10}),titleLines,detailLines};});
++ candidates.sort((a,b)=>a.score[0]-b.score[0]||a.score[1]-b.score[1]||b.width-a.width||a.score[2]-b.score[2]);return candidates[0];
++}
++export function drawWeatherReadout(renderer){
++ const model=weatherReadoutModel(renderer.sim);if(!model)return;
++ const c=renderer.ctx,bounds=renderer.canvas.getBoundingClientRect(),sx=renderer.w/bounds.width,sy=renderer.h/bounds.height,convert=r=>({left:(r.left-bounds.left)*sx,top:(r.top-bounds.top)*sy,right:(r.right-bounds.left)*sx,bottom:(r.bottom-bounds.top)*sy});
++ const protectedRects=gameplayProtectedRects(renderer).map(convert),obstacles=[...document.querySelectorAll('#hud,#tutorial:not([hidden]),#interactionDock:not([hidden]),#notificationStack:not([hidden]),#stageUtilities:not([hidden]),#stageUtilities #quickMenu:not([hidden]),.knowledge-panel:not([hidden]),.journal-page,.context-radial:not([hidden])>*:not([hidden])')].filter(e=>e.getClientRects().length).map(e=>convert(e.getBoundingClientRect()));
++ c.save();const measureTitle=t=>{c.font='bold 13px Georgia';return c.measureText(t).width},measureDetail=t=>{c.font='11px sans-serif';return c.measureText(t).width};
++ const box=weatherReadoutPlacement({width:renderer.w,height:renderer.h,protectedRects,obstacles,model,measureTitle,measureDetail}),x=Math.round(box.left),y=Math.round(box.top),accent=model.warm?'#e5b67c':'#abd2df';
++ c.fillStyle='#17291ff2';c.fillRect(x,y,box.width,box.height);c.fillStyle=accent;c.fillRect(x,y,2,box.height);
++ if(model.thermal){c.fillRect(x+12,y+9,2,15);c.fillRect(x+10,y+23,6,5);c.fillStyle='#edf0d4';c.fillRect(x+12,y+10,1,5)}else{for(let k=0;k<3;k++)c.fillRect(x+8+(k%2)*2,y+12+k*5,9-(k%2)*2,1)}
++ c.textAlign='left';c.textBaseline='alphabetic';c.fillStyle=accent;c.font='bold 13px Georgia';for(const [i,line] of box.titleLines.entries())c.fillText(line,x+25,y+15+i*14);c.fillStyle='#e5dfbd';c.font='11px sans-serif';for(const [i,line] of box.detailLines.entries())c.fillText(line,x+25,y+16+box.titleLines.length*14+i*13);c.restore();
++}

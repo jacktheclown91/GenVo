@@ -1,0 +1,861 @@
+{
+  "events": [],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Actual public fresh heat/cold starts, native Menu/Journal/Map/Help entry and close, resize, then held manual movement. Instrumented painted bounds only; no observer, climate, organism, resources or events injected. DOM overlap means an intentionally requested panel occludes an underlying canvas label; it is not automatic acceptance. Full graph equality is checked only during synchronous repaint.",
+  "cases": [
+    {
+      "seed": "THERMAL-REVIEW-3",
+      "width": 1366,
+      "height": 768,
+      "state": "menu",
+      "model": {
+        "title": "Cold snap",
+        "detail": "Mist · Snowfall · reduced sight",
+        "thermal": true,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Cold snap"
+        ],
+        "detail": [
+          "Mist · Snowfall · reduced sight"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 556,
+        "bottom": 594
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 15,
+      "day": 1
+    },
+    {
+      "seed": "THERMAL-REVIEW-3",
+      "width": 1366,
+      "height": 768,
+      "state": "journal",
+      "model": {
+        "title": "Cold snap",
+        "detail": "Mist · Snowfall · reduced sight",
+        "thermal": true,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Cold snap"
+        ],
+        "detail": [
+          "Mist · Snowfall · reduced sight"
+        ]
+      },
+      "box": {
+        "left": 678,
+        "right": 928,
+        "top": 556,
+        "bottom": 594
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 25,
+      "day": 1
+    },
+    {
+      "seed": "THERMAL-REVIEW-3",
+      "width": 1366,
+      "height": 768,
+      "state": "map",
+      "model": {
+        "title": "Cold snap",
+        "detail": "Mist · Snowfall · reduced sight",
+        "thermal": true,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Cold snap"
+        ],
+        "detail": [
+          "Mist · Snowfall · reduced sight"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 556,
+        "bottom": 594
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 39,
+      "day": 1
+    },
+    {
+      "seed": "THERMAL-REVIEW-3",
+      "width": 1366,
+      "height": 768,
+      "state": "help",
+      "model": {
+        "title": "Cold snap",
+        "detail": "Mist · Snowfall · reduced sight",
+        "thermal": true,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Cold snap"
+        ],
+        "detail": [
+          "Mist · Snowfall · reduced sight"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 556,
+        "bottom": 594
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 51,
+      "day": 2
+    },
+    {
+      "seed": "THERMAL-REVIEW-3",
+      "width": 1366,
+      "height": 768,
+      "state": "closed-panels-manual-movement",
+      "before": {
+        "x": 107.5,
+        "y": 112.5
+      },
+      "after": {
+        "x": 108.13008309804205,
+        "y": 112.5
+      }
+    },
+    {
+      "seed": "THERMAL-REVIEW-3",
+      "width": 800,
+      "height": 600,
+      "state": "menu",
+      "model": {
+        "title": "Cold snap",
+        "detail": "Mist · Snowfall · reduced sight",
+        "thermal": true,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Cold snap"
+        ],
+        "detail": [
+          "Mist · Snowfall · reduced sight"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 388,
+        "bottom": 426
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 65,
+      "day": 2
+    },
+    {
+      "seed": "THERMAL-REVIEW-3",
+      "width": 800,
+      "height": 600,
+      "state": "journal",
+      "model": {
+        "title": "Cold snap",
+        "detail": "Mist · Snowfall · reduced sight",
+        "thermal": true,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Cold snap"
+        ],
+        "detail": [
+          "Mist · Snowfall · reduced sight"
+        ]
+      },
+      "box": {
+        "left": 502,
+        "right": 752,
+        "top": 388,
+        "bottom": 426
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 71,
+      "day": 2
+    },
+    {
+      "seed": "THERMAL-REVIEW-3",
+      "width": 800,
+      "height": 600,
+      "state": "map",
+      "model": {
+        "title": "Cold snap",
+        "detail": "Mist · Snowfall · reduced sight",
+        "thermal": true,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Cold snap"
+        ],
+        "detail": [
+          "Mist · Snowfall · reduced sight"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 388,
+        "bottom": 426
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 76,
+      "day": 2
+    },
+    {
+      "seed": "THERMAL-REVIEW-3",
+      "width": 800,
+      "height": 600,
+      "state": "help",
+      "model": {
+        "title": "Cold snap",
+        "detail": "Mist · Snowfall · reduced sight",
+        "thermal": true,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Cold snap"
+        ],
+        "detail": [
+          "Mist · Snowfall · reduced sight"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 388,
+        "bottom": 426
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 82,
+      "day": 2
+    },
+    {
+      "seed": "THERMAL-REVIEW-3",
+      "width": 800,
+      "height": 600,
+      "state": "closed-panels-manual-movement",
+      "before": {
+        "x": 108.13008309804205,
+        "y": 112.5
+      },
+      "after": {
+        "x": 108.79422099822655,
+        "y": 112.5
+      }
+    },
+    {
+      "seed": "THERMAL-REVIEW-3",
+      "width": 390,
+      "height": 540,
+      "state": "menu",
+      "model": {
+        "title": "Cold snap",
+        "detail": "Mist · Snowfall · reduced sight",
+        "thermal": true,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Cold snap"
+        ],
+        "detail": [
+          "Mist · Snowfall ·",
+          "reduced sight"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 132,
+        "top": 300,
+        "bottom": 351
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 92,
+      "day": 2
+    },
+    {
+      "seed": "THERMAL-REVIEW-3",
+      "width": 390,
+      "height": 540,
+      "state": "journal",
+      "model": {
+        "title": "Cold snap",
+        "detail": "Snowfall · reduced sight",
+        "thermal": true,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Cold snap"
+        ],
+        "detail": [
+          "Snowfall ·",
+          "reduced sight"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 132,
+        "top": 328,
+        "bottom": 379
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [
+        {
+          "id": "journal-page knowledge-panel",
+          "area": 6120
+        }
+      ],
+      "stateParity": true,
+      "tick": 98,
+      "day": 3
+    },
+    {
+      "seed": "THERMAL-REVIEW-3",
+      "width": 390,
+      "height": 540,
+      "state": "map",
+      "model": {
+        "title": "Cold snap",
+        "detail": "Snowfall · reduced sight",
+        "thermal": true,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Cold snap"
+        ],
+        "detail": [
+          "Snowfall · reduced sight"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 340,
+        "bottom": 378
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 103,
+      "day": 3
+    },
+    {
+      "seed": "THERMAL-REVIEW-3",
+      "width": 390,
+      "height": 540,
+      "state": "help",
+      "model": {
+        "title": "Cold snap",
+        "detail": "Snowfall · reduced sight",
+        "thermal": true,
+        "warm": false
+      },
+      "lines": {
+        "title": [
+          "Cold snap"
+        ],
+        "detail": [
+          "Snowfall · reduced sight"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 340,
+        "bottom": 378
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [
+        {
+          "id": "help",
+          "area": 9500
+        }
+      ],
+      "stateParity": true,
+      "tick": 109,
+      "day": 3
+    },
+    {
+      "seed": "THERMAL-REVIEW-3",
+      "width": 390,
+      "height": 540,
+      "state": "closed-panels-manual-movement",
+      "before": {
+        "x": 108.79422099822655,
+        "y": 112.5
+      },
+      "after": {
+        "x": 109.41911892944138,
+        "y": 112.5
+      }
+    },
+    {
+      "seed": "THERMAL-REVIEW-41",
+      "width": 1366,
+      "height": 768,
+      "state": "menu",
+      "model": {
+        "title": "Heatwave",
+        "detail": "Above seasonal temperature",
+        "thermal": true,
+        "warm": true
+      },
+      "lines": {
+        "title": [
+          "Heatwave"
+        ],
+        "detail": [
+          "Above seasonal temperature"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 556,
+        "bottom": 594
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 11,
+      "day": 1
+    },
+    {
+      "seed": "THERMAL-REVIEW-41",
+      "width": 1366,
+      "height": 768,
+      "state": "journal",
+      "model": {
+        "title": "Heatwave",
+        "detail": "Above seasonal temperature",
+        "thermal": true,
+        "warm": true
+      },
+      "lines": {
+        "title": [
+          "Heatwave"
+        ],
+        "detail": [
+          "Above seasonal temperature"
+        ]
+      },
+      "box": {
+        "left": 678,
+        "right": 928,
+        "top": 556,
+        "bottom": 594
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 21,
+      "day": 1
+    },
+    {
+      "seed": "THERMAL-REVIEW-41",
+      "width": 1366,
+      "height": 768,
+      "state": "map",
+      "model": {
+        "title": "Heatwave",
+        "detail": "Above seasonal temperature",
+        "thermal": true,
+        "warm": true
+      },
+      "lines": {
+        "title": [
+          "Heatwave"
+        ],
+        "detail": [
+          "Above seasonal temperature"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 556,
+        "bottom": 594
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 31,
+      "day": 1
+    },
+    {
+      "seed": "THERMAL-REVIEW-41",
+      "width": 1366,
+      "height": 768,
+      "state": "help",
+      "model": {
+        "title": "Heatwave",
+        "detail": "Above seasonal temperature",
+        "thermal": true,
+        "warm": true
+      },
+      "lines": {
+        "title": [
+          "Heatwave"
+        ],
+        "detail": [
+          "Above seasonal temperature"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 556,
+        "bottom": 594
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 39,
+      "day": 1
+    },
+    {
+      "seed": "THERMAL-REVIEW-41",
+      "width": 1366,
+      "height": 768,
+      "state": "closed-panels-manual-movement",
+      "before": {
+        "x": 63.5,
+        "y": 69.5
+      },
+      "after": {
+        "x": 64.12468784206732,
+        "y": 69.5
+      }
+    },
+    {
+      "seed": "THERMAL-REVIEW-41",
+      "width": 800,
+      "height": 600,
+      "state": "menu",
+      "model": {
+        "title": "Heatwave",
+        "detail": "Above seasonal temperature",
+        "thermal": true,
+        "warm": true
+      },
+      "lines": {
+        "title": [
+          "Heatwave"
+        ],
+        "detail": [
+          "Above seasonal temperature"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 388,
+        "bottom": 426
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 47,
+      "day": 1
+    },
+    {
+      "seed": "THERMAL-REVIEW-41",
+      "width": 800,
+      "height": 600,
+      "state": "journal",
+      "model": {
+        "title": "Warm spell",
+        "detail": "Above seasonal temperature",
+        "thermal": true,
+        "warm": true
+      },
+      "lines": {
+        "title": [
+          "Warm spell"
+        ],
+        "detail": [
+          "Above seasonal temperature"
+        ]
+      },
+      "box": {
+        "left": 502,
+        "right": 752,
+        "top": 388,
+        "bottom": 426
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 53,
+      "day": 2
+    },
+    {
+      "seed": "THERMAL-REVIEW-41",
+      "width": 800,
+      "height": 600,
+      "state": "map",
+      "model": {
+        "title": "Warm spell",
+        "detail": "Above seasonal temperature",
+        "thermal": true,
+        "warm": true
+      },
+      "lines": {
+        "title": [
+          "Warm spell"
+        ],
+        "detail": [
+          "Above seasonal temperature"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 388,
+        "bottom": 426
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 61,
+      "day": 2
+    },
+    {
+      "seed": "THERMAL-REVIEW-41",
+      "width": 800,
+      "height": 600,
+      "state": "help",
+      "model": {
+        "title": "Warm spell",
+        "detail": "Above seasonal temperature",
+        "thermal": true,
+        "warm": true
+      },
+      "lines": {
+        "title": [
+          "Warm spell"
+        ],
+        "detail": [
+          "Above seasonal temperature"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 388,
+        "bottom": 426
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 66,
+      "day": 2
+    },
+    {
+      "seed": "THERMAL-REVIEW-41",
+      "width": 800,
+      "height": 600,
+      "state": "closed-panels-manual-movement",
+      "before": {
+        "x": 64.12468784206732,
+        "y": 69.5
+      },
+      "after": {
+        "x": 64.78225649838056,
+        "y": 69.5
+      }
+    },
+    {
+      "seed": "THERMAL-REVIEW-41",
+      "width": 390,
+      "height": 540,
+      "state": "menu",
+      "model": {
+        "title": "Warm spell",
+        "detail": "Above seasonal temperature",
+        "thermal": true,
+        "warm": true
+      },
+      "lines": {
+        "title": [
+          "Warm spell"
+        ],
+        "detail": [
+          "Above seasonal",
+          "temperature"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 132,
+        "top": 300,
+        "bottom": 351
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 74,
+      "day": 2
+    },
+    {
+      "seed": "THERMAL-REVIEW-41",
+      "width": 390,
+      "height": 540,
+      "state": "journal",
+      "model": {
+        "title": "Warm spell",
+        "detail": "Above seasonal temperature",
+        "thermal": true,
+        "warm": true
+      },
+      "lines": {
+        "title": [
+          "Warm spell"
+        ],
+        "detail": [
+          "Above seasonal",
+          "temperature"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 132,
+        "top": 328,
+        "bottom": 379
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [
+        {
+          "id": "journal-page knowledge-panel",
+          "area": 6120
+        }
+      ],
+      "stateParity": true,
+      "tick": 78,
+      "day": 2
+    },
+    {
+      "seed": "THERMAL-REVIEW-41",
+      "width": 390,
+      "height": 540,
+      "state": "map",
+      "model": {
+        "title": "Warm spell",
+        "detail": "Above seasonal temperature",
+        "thermal": true,
+        "warm": true
+      },
+      "lines": {
+        "title": [
+          "Warm spell"
+        ],
+        "detail": [
+          "Above seasonal temperature"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 340,
+        "bottom": 378
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [],
+      "stateParity": true,
+      "tick": 82,
+      "day": 2
+    },
+    {
+      "seed": "THERMAL-REVIEW-41",
+      "width": 390,
+      "height": 540,
+      "state": "help",
+      "model": {
+        "title": "Warm spell",
+        "detail": "Above seasonal temperature",
+        "thermal": true,
+        "warm": true
+      },
+      "lines": {
+        "title": [
+          "Warm spell"
+        ],
+        "detail": [
+          "Above seasonal temperature"
+        ]
+      },
+      "box": {
+        "left": 12,
+        "right": 262,
+        "top": 340,
+        "bottom": 378
+      },
+      "bodyOverlap": 0,
+      "occludingPanels": [
+        {
+          "id": "help",
+          "area": 9500
+        }
+      ],
+      "stateParity": true,
+      "tick": 88,
+      "day": 2
+    },
+    {
+      "seed": "THERMAL-REVIEW-41",
+      "width": 390,
+      "height": 540,
+      "state": "closed-panels-manual-movement",
+      "before": {
+        "x": 64.78225649838056,
+        "y": 69.5
+      },
+      "after": {
+        "x": 65.4398286442562,
+        "y": 69.5
+      }
+    }
+  ]
+}

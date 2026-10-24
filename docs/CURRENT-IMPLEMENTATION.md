@@ -2,6 +2,10 @@
 
 Reviewed October 20, 2026. Governing intent: [current design](../design/CURRENT-DESIGN.md) and the creator's full Creature-stage directive. Code ownership: [implementation authorities](../design/governance/implementation-authorities.json). Full scope and remaining gaps: [completion matrix](FULL-GAME-COMPLETION-MATRIX.md). Earlier checkpoint prose is [historical evidence](history/IMPLEMENTATION-before-live-refresh-2026-10-19.md), not current instructions.
 
+## Fog-safe weather readout, October 24
+
+Actual temperature and reduced-sight weather share a compact label above sensory fog, using protected gameplay/DOM placement and narrow wrapping beside crowded controls. Atmospheric world art and canonical weather/senses stay unchanged. Initial runtime passes 106 checks; final typography/placement passes nine focused checks, thirty public panel/movement cases and ten exported viewport cases. [Evidence, rejected drafts and acceptance limits](art-refinement-weather-readout-v1-2026-10-24/README.md). Requested full-height modal coverage, complete performance and creator/full-v1 acceptance remain open.
+
 ## Native exposed-water contact, October 24
 
 Native pixel crests replace smooth water-contact ellipses. Shared liquid/ice support suppresses surface wakes on supporting ice and incompatible depth/traversal. Intent-only drinking rings are removed. Fixed merged runtime passes 106 playable checks; actual-world and standalone-export A/B/A preserve the complete graph. [Evidence, measured painter cost and open limits](art-refinement-water-contact-v1-2026-10-24/README.md). Natural winter/ice art, positive-transfer drinking animation, full performance and creator acceptance remain open.
