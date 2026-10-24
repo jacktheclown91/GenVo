@@ -1,0 +1,3 @@
+# Resource inspector presentation handoff
+
+Codex will refine the existing resource inspector drawing and scoped survival stylesheet. Preserve native plant/seed drawings; replace otherwise blank header canvases with explicitly labelled object symbols (water, ground, cave, shelter, nest, egg, trace, remains and site). Symbols denote object classes, not fabricated specimens or ecological events. Keep all visibility, availability, observation text, actions, close/expand/scroll/focus and save owners intact. Claude retains gameplay/perception authority. Exact applied patch and exported-browser evidence follow.
