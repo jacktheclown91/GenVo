@@ -13,6 +13,7 @@ function contour(c,cx,cy,rx,ry,s,color,phase){
  for(let side=-1;side<=1;side+=2)for(let k=0;k<=12;k++){
   if((k+phase+(side>0?2:0))%7===0)continue;
   const x=-rx+2*rx*k/12,y=side*ry*Math.sqrt(Math.max(0,1-(x/rx)**2));
-  pixel(c,cx+x,cy+y,.5,.5,s,color);
+  const nextX=-rx+2*rx*Math.min(12,k+1)/12,nextY=side*ry*Math.sqrt(Math.max(0,1-(nextX/rx)**2));
+  pixel(c,cx+x,cy+Math.min(y,nextY),Math.max(.5,nextX-x),Math.abs(nextY-y)+.5,s,color);
  }
 }
