@@ -1,0 +1,23 @@
+# Mature ground traffic artwork
+
+The repeated brown terrain lattice in the actual mature-world screenshot came from drawEnvironmentalHistory: each sufficiently travelled tile drew a full horizontal or vertical strip and often a second cross strip. As travel spread, those strips described an orthogonal network unsupported by the scalar history.
+
+The replacement paints original native-32 uneven detached soil scuffs for broad trampled ground. Only a clear difference between the current four-neighbor traffic axes supports a broken directional trace, with agreeing shared-edge anchors. Existing finite traffic controls visibility and strength on every draw; geometry alone is cached. No paths, footfall positions, collision, food, biome, history, events, simulation clocks, saved state or RNG are authored. Nutrient, grazing, recovery and excavation art remain in their existing code. Geometry uses weak World ownership and a 1024-entry local bound; eviction regenerates identical geometry.
+
+## Evidence
+
+The public catalogue Day31 and Day101 worlds are opened normally. Each original/candidate renderer paints exactly the same retained Simulation, with RAF and paint-time frozen solely for comparison. No observer, terrain, weather, resources, organisms, history or events are staged. The complete canonical snapshot graph matches before/after scene preparation, paired captures and alternating warm timing runs. Both world frames were inspected. Before/after images show the mature lattice removed; this is automated Chromium observation, not creator or GPU acceptance.
+
+The first version showed unnecessary warm CPU overhead. Repeated per-cell geometry and color work was removed through the bounded artwork cache and a shared scuff fill. Timings are warm CPU draw measurements only, exclude GPU completion and may reflect concurrent local workloads; they do not establish whole-game frame budgets. Across the four alternating groups, median-of-medians was 15.9ms before / 17.85ms after on Day31 and 20.8ms / 21.2ms on Day101. The remaining measured added cost is explicit; this pass does not claim a performance-budget clearance.
+
+Traffic artwork checks cover empty/removed history, uniform wear without long bars, genuinely directional joins, deterministic coordinate variation, multiple scales, world-edge bounds, unchanged finite history, live history changes despite cache reuse, eviction/regeneration and no vegetation reads. These are explicitly synthetic presentation fixtures. Neighboring history, habitat-render, habitat-ground-art, physicality-render, view-modes, terrain-motifs, terrain-continuity, world-swap-render, exploration-map and public-export checks pass.
+
+One additional terrain-cohesion check fails with the identical hue-delta assertion (33.76500227723697) on unchanged main fb046391 and this branch. It samples terrainPaletteAt's compensating bias directly; the current bias subtracts legacy category steps before the renderer adds them. This pass changes neither identity.js nor that test; the failure is retained rather than reclassified as a passing visual check. Canonical source audit passes after generating its required local sprite-reference sheets; the initially absent derived manifest is retained as a setup failure, not a runtime result.
+
+The full shared-interface gate passed 106/106 on runtime implementation ef8bb21b1eaab5e4ef2633e0c1200b3afe52a791, exit 0 in 730.8 seconds. The later test-only addition also checks live-history refresh and cache eviction/regeneration; runtime source is unchanged from that gate. The extra standalone terrain-cohesion failure above remains separate and has not been suppressed. Full GenVo v1, broad seasonal/terrain acceptance, subjective art approval, performance and repository migration remain incomplete.
+
+## Reproduce and ownership
+
+Run node tests/traffic-ground-art.mjs. Export to a fresh external directory with node tools/export-public.mjs <output>, then node tools/review-traffic-ground.cjs <output> <report>. The review server serves the retained original renderer at its original module-relative path, so both versions resolve the same current dependencies. Its historical source is necessary evidence, not runtime art or a second live renderer; retain it while the comparison tool imports it. All artwork is original code-native canvas, with no external images, models, libraries or licences.
+
+The shared-renderer heads-up and applied patch are in ../art/traffic-ground-v1-handoff. Do not reapply the historical patch to integrated source. Claude retains biology, history/pathing, performance architecture and integration/test organization ownership. Current standalone build: C:\Users\jackt\AppData\Local\Temp\genvo-traffic-web-20261024-b.

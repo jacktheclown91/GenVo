@@ -2,6 +2,10 @@
 
 Reviewed October 20, 2026. Governing intent: [current design](../design/CURRENT-DESIGN.md) and the creator's full Creature-stage directive. Code ownership: [implementation authorities](../design/governance/implementation-authorities.json). Full scope and remaining gaps: [completion matrix](FULL-GAME-COMPLETION-MATRIX.md). Earlier checkpoint prose is [historical evidence](history/IMPLEMENTATION-before-live-refresh-2026-10-19.md), not current instructions.
 
+## Mature terrain traffic presentation, October 24
+
+Canonical accumulated traffic now paints diffuse trampled ground and direction-supported broken wear instead of tile-spanning crossbars. Same-state original/candidate Day31/101 frames show the mature lattice removed without changing biology/history; [paired evidence, CPU costs and inherited terrain-cohesion failure](art-refinement-traffic-ground-v1-2026-10-24/README.md). Full integration gate status and art/performance acceptance are recorded separately.
+
 ## Exploration map presentation, October 24
 
 Field Guide Map and Game utilities Map display the controlled creature's retained native observations, with separate regions/layers, historical family place markers, compact actor-aware placement and explicit expansion. Native memory limits and biological rules are unchanged. The original map gate passed 106 checks; merged placement/recorded-world follow-up has separate focused and browser evidence. [Evidence, applied handoff and remaining scope](art-refinement-map-v1-2026-10-24/README.md). Full planetary navigation/history, creator acceptance and v1 migration remain open.
