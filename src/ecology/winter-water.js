@@ -36,17 +36,17 @@ export function iceBreakLoad(a){
 }
 function ledger(sim){return sim.stats.winterWater??={snowWater:0,snowMeltEnergy:0,iceAttempts:0,iceBreaks:0}}
 // A target for a thirsty animal with no open water, or null.
-export function winterWaterTarget(sim,a){
+export function winterWaterTarget(sim,a,{edgeRadius=WINTER_WATER.edgeRadius,snowRadius=WINTER_WATER.snowRadius,maxDistance=Infinity}={}){
  if(!winterWaterActive(sim))return null;const w=sim.world,e=w.environment,cx=Math.floor(a.x),cy=Math.floor(a.y);
  // The nearest frozen water cell with land beside it: stand on that land and work the edge. A sheet
  // that held today marks ice of that thickness as too thick until tomorrow.
- let edge=null,bestD=Infinity;const R=WINTER_WATER.edgeRadius;
+ let edge=null,bestD=Math.min(Infinity,maxDistance);const R=edgeRadius;
  for(let dy=-R;dy<=R;dy++)for(let dx=-R;dx<=R;dx++){const x=cx+dx,y=cy+dy;if(x<1||y<1||x>=w.n-1||y>=w.n-1)continue;const i=w.idx(x,y);if(!w.water[i]||!surfaceIceCovered(e,i))continue;
-  for(const [ox,oy] of [[1,0],[-1,0],[0,1],[0,-1]]){const lx=x+ox,ly=y+oy,j=w.idx(lx,ly);if(w.water[j]||!w.isPlayable(lx+.5,ly+.5)||!w.sameLand(a.x,a.y,lx+.5,ly+.5))continue;const d=Math.hypot(lx+.5-a.x,ly+.5-a.y);if(d<bestD&&!(a.iceRefused?.day===sim.day&&iceAmount(e,i)>=a.iceRefused.thickness*.9)){bestD=d;edge={x:lx+.5,y:ly+.5,breakIce:i}}}}
+  for(const [ox,oy] of [[1,0],[-1,0],[0,1],[0,-1]]){const lx=x+ox,ly=y+oy,j=w.idx(lx,ly);if(w.water[j]||!w.isPlayable(lx+.5,ly+.5)||!w.sameLand(a.x,a.y,lx+.5,ly+.5))continue;const d=Math.hypot(lx+.5-a.x,ly+.5-a.y);if(d<=bestD&&!(a.iceRefused?.day===sim.day&&iceAmount(e,i)>=a.iceRefused.thickness*.9)){bestD=d;edge={x:lx+.5,y:ly+.5,breakIce:i}}}}
  if(edge)return edge;
  // Snow nearby.
- const snow=w.soilWater?.snowpack;if(!snow)return null;let best=null,bestS=WINTER_WATER.minimumSnow;const S=WINTER_WATER.snowRadius;
- for(let dy=-S;dy<=S;dy++)for(let dx=-S;dx<=S;dx++){const x=cx+dx,y=cy+dy;if(x<0||y<0||x>=w.n||y>=w.n)continue;const i=w.idx(x,y);if(w.water[i])continue;const v=snow[i]/(1+Math.hypot(dx,dy)*.3);if(v>bestS&&w.sameLand(a.x,a.y,x+.5,y+.5)){bestS=v;best={x:x+.5,y:y+.5,snow:true}}}
+ const snow=w.soilWater?.snowpack;if(!snow)return null;let best=null,bestS=WINTER_WATER.minimumSnow;const S=snowRadius;
+ for(let dy=-S;dy<=S;dy++)for(let dx=-S;dx<=S;dx++){const x=cx+dx,y=cy+dy;if(x<0||y<0||x>=w.n||y>=w.n)continue;const i=w.idx(x,y);if(w.water[i])continue;const d=Math.hypot(x+.5-a.x,y+.5-a.y);if(d>maxDistance)continue;const v=snow[i]/(1+Math.hypot(dx,dy)*.3);if(v>bestS&&w.sameLand(a.x,a.y,x+.5,y+.5)){bestS=v;best={x:x+.5,y:y+.5,snow:true}}}
  return best;
 }
 // Resolve a winter-water target the animal has reached. Returns true when it acted.
