@@ -4,6 +4,8 @@ import {CFG} from '../src/sim/config.js';
 import {DAY_CLOCK,LEGACY_DAY_TICKS,bioFactor,BIO_STEPS_PER_DAY} from '../src/sim/day-clock.js';
 import {OFFSCREEN_BIOLOGY} from '../src/world/planetary-offscreen-biology.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {thunderstormInterval} from '../src/ecology/thunderstorms.js';
+import {wildfireSpreadInterval,wildfireClockScale} from '../src/ecology/wildfire.js';
 
 // Day clock (creator decision 2026-10-23): 30-second days keep daily biology and real-time
 // movement; recorded worlds keep the 6-second day exactly.
@@ -43,5 +45,15 @@ function walkTiles(sim){
  const old=make(false);assert.equal(CFG.dayTicks,48);back.update(IDLE);assert.equal(CFG.dayTicks,240,'advancing a world applies its own clock');
  const legacySnap=structuredClone(createSimulationSnapshot(old,{savedAt:'t',reason:'t'}));assert.equal(legacySnap.core.dayClockRules,undefined);
  assert.equal(restoreSimulationSnapshot(legacySnap).dayClockRules,undefined);assert.equal(CFG.dayTicks,48,'recorded worlds restore with their own day');
+}
+// 4. Wildfire and thunderstorms scale with the day clock to preserve biological disturbance rates.
+{
+ const legacy=make(false),current=make(true);
+ assert.equal(thunderstormInterval(legacy),16,'legacy clock evaluates lightning 3 times per day');
+ assert.equal(thunderstormInterval(current),80,'30s clock evaluates lightning 3 times per day');
+ assert.equal(wildfireSpreadInterval(legacy),8,'legacy clock checks fire spread 6 times per day');
+ assert.equal(wildfireSpreadInterval(current),40,'30s clock checks fire spread 6 times per day');
+ assert.equal(wildfireClockScale(legacy),1);
+ assert.equal(wildfireClockScale(current),0.2);
 }
 console.log('Day clock PASS: recorded worlds keep 48 ticks a day; 30-second days keep daily biology, cover more ground, and survive saves.');

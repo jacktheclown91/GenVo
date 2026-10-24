@@ -1,4 +1,5 @@
 import {CFG} from '../sim/config.js';
+import {LEGACY_DAY_TICKS,dayTicksFor} from '../sim/day-clock.js';
 import {LAND_PRODUCERS,PLANT_RESOURCE_UNITS} from './plant-resources.js';
 import {boundedFloat32Debit} from '../core/float32-transfer.js';
 import {regionalRainfall,planetaryWindAt} from '../world/weather-fronts.js';
@@ -8,6 +9,8 @@ import {creatureView,viewCanSee} from './atmospheric-visibility.js';
 import {sensoryProfile} from './sensory-world.js';
 import {stratumHearing} from './stratum-senses.js';
 export const WILDFIRE=Object.freeze({policy:'finite-vegetation-fire/1',burnPerSecond:.08,spreadInterval:8});
+export function wildfireSpreadInterval(sim){const ticks=dayTicksFor(sim);return Math.round(WILDFIRE.spreadInterval*(ticks/LEGACY_DAY_TICKS));}
+export function wildfireClockScale(sim){const ticks=dayTicksFor(sim);return LEGACY_DAY_TICKS/ticks;}
 export const createWildfire=()=>({schema:1,lastTick:0,cells:new Map(),ignitions:0,burned:0,mineralReturn:0,atmosphericExport:0});
 export function fireFuel(sim,i){return LAND_PRODUCERS.reduce((sum,k)=>sum+(sim.world.plants[k]?.[i]||0),0)}
 export function fireDryness(sim,i){const w=sim.world;if(w.water[i]||!w.isPlayable(i%w.n+.5,(i/w.n|0)+.5))return 0;const rain=regionalRainfall(w,{...sim.climate,frontDay:sim.day},i);return Math.max(0,Math.min(1,1-(w.moisture[i]||0)-rain*.35));}
@@ -15,14 +18,14 @@ export function igniteWildfire(sim,i){const s=sim.wildfire;if(sim.fireRules!==WI
 export function fireDanger(sim,a){if(sim.fireRules!==WILDFIRE.policy||!sim.wildfire?.cells.size||undergroundRoof(sim.world,a)||a.airborne||(a.diveDepth||0)>.03)return 0;return sim.wildfire.cells.get(sim.world.idx(a.x,a.y))?.intensity||0;}
 export function advanceWildfire(sim){
  const s=sim.wildfire;if(sim.fireRules!==WILDFIRE.policy||!s||sim.tickCount<=s.lastTick)return;s.lastTick=sim.tickCount;
- const w=sim.world,dt=1/CFG.simHz,spread=new Set();
+ const w=sim.world,dt=1/CFG.simHz,spread=new Set(),clockScale=wildfireClockScale(sim),spreadInterval=wildfireSpreadInterval(sim);
  for(const [i,cell] of [...s.cells].sort((a,b)=>a[0]-b[0])){
   const dry=fireDryness(sim,i),fuel=fireFuel(sim,i);if(dry<.15||fuel<.0001){s.cells.delete(i);continue}
-  let consumed=0;const requested=WILDFIRE.burnPerSecond*dt*dry;
+  let consumed=0;const requested=WILDFIRE.burnPerSecond*dt*dry*clockScale;
   for(const kind of LAND_PRODUCERS){const field=w.plants[kind],before=field[i];if(!(before>0))continue;const debit=boundedFloat32Debit(before,requested*before/fuel);field[i]=debit.remaining;w.onCropConsumed?.(kind,i,before,field[i]);consumed+=debit.amount;}
   const mineral=consumed*PLANT_RESOURCE_UNITS.mineralPerBiomass;w.plantResources.minerals[i]+=mineral;s.burned+=consumed;s.mineralReturn+=mineral;s.atmosphericExport+=consumed-mineral;w.plantResources.totals.fireMineralReturn=(w.plantResources.totals.fireMineralReturn||0)+mineral;
   cell.intensity=Math.min(1,dry*Math.min(1,fuel)*2);if(!(consumed>0)){s.cells.delete(i);continue}
-  if(sim.tickCount%WILDFIRE.spreadInterval===0){const wind=planetaryWindAt(w,sim.day,i),x=i%w.n,y=i/w.n|0;for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){if(x+dx<0||x+dx>=w.n||y+dy<0||y+dy>=w.n)continue;const j=w.idx(x+dx,y+dy),bias=1+Math.max(-.75,Math.min(1,(wind?.east||0)*dx+(wind?.south||0)*dy)),chance=dry*cell.intensity*.3*bias;if(coordNoise(w.seedHash^0x66697265,sim.tickCount+i,j)<chance)spread.add(j)}}
+  if(sim.tickCount%spreadInterval===0){const wind=planetaryWindAt(w,sim.day,i),x=i%w.n,y=i/w.n|0,step=Math.round(sim.tickCount*clockScale);for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){if(x+dx<0||x+dx>=w.n||y+dy<0||y+dy>=w.n)continue;const j=w.idx(x+dx,y+dy),bias=1+Math.max(-.75,Math.min(1,(wind?.east||0)*dx+(wind?.south||0)*dy)),chance=dry*cell.intensity*.3*bias;if(coordNoise(w.seedHash^0x66697265,step+i,j)<chance)spread.add(j)}}
  }
  for(const i of [...spread].sort((a,b)=>a-b))igniteWildfire(sim,i);
  for(const a of sim.animals){if(!a.alive)continue;const danger=fireDanger(sim,a);if(!danger)continue;const damage=Math.min(a.health,12*danger*dt);a.health-=damage;a.lastFireIncident={tick:sim.tickCount,damage};if(a.player){a.hidden=false;sim.lastPlayerDamage={tick:sim.tickCount,amount:damage,source:'wildfire',attackerId:null};if(sim.tickCount%CFG.simHz===0)sim.playerCombat?.queue({ok:false,type:'wildfire-hit',message:'Burning vegetation! Leave the flames.'})}if(a.health<=0)sim.kill(a,'wildfire');else sim.injury?.onDamage(a,{damage,cause:'burning vegetation'});}

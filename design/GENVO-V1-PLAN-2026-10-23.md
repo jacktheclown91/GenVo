@@ -157,3 +157,7 @@ Dates follow the creator's allocation and are targets, not reasons to ship unfin
   - Grazing removed a plant's stored reserve with its tissue, so grazed-out tiles could never regrow. New opt-in `perennial-regrowth/1` keeps a 60% root reserve and adds conserved seed and spore rain.
   - On GENVO8-TEST-A year starvation falls from 263 to 98 and 30 animals survive the year against 4; neutral on PLANET-OBS-2.
   - On PLANET-OBS-3 a wildfire burns 3.6 times more on the 30-second day than on the 6-second day (fire runs per tick); next to fix.
+- **2026-10-23, wildfire and thunderstorm day clock correction** (`docs/WILDFIRE-CLOCK-2026-10-23.md`):
+  - Wildfire burn rate, spread interval, and thunderstorm lightning proposals now scale with the day clock (`CFG.dayTicks / 48`), preserving biological diurnal disturbance rates.
+  - On PLANET-OBS-3, strikes at day 90 match 1 vs 1 (previously 1 vs 8), ignitions match 4,179 vs 4,178 (previously 4,179 vs 14,763), and burned biomass matches 6,048 vs 5,946 (previously 6,048 vs 21,759), leaving 20,019 plants instead of collapsing to 2,762.
+  - Recorded worlds and existing contracts are bit-for-bit preserved.
