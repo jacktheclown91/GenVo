@@ -1,0 +1,12 @@
+{
+  "command": "node tools/check-playable.mjs",
+  "exitCode": 0,
+  "checksPassed": 106,
+  "runtimeCommit": "a532be23e875bccc17b5c60fac3d60168533aa60",
+  "runtimeUnchangedSince": true,
+  "runtimeSha256": {
+    "src/render/renderer.js": "05a976982b79fbee2c3ee604965920acd7591a284eaff9abc553c70049feb8ac",
+    "src/render/clutch-art.js": "c4d00866bcb743b9182bd42f96abeedc39de03caf2fcf2d8a014bb4d14734d05"
+  },
+  "scope": "Automated playability checkpoint; not genuine-clutch browser or creator acceptance."
+}
