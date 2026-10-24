@@ -1,0 +1,109 @@
+diff --git a/assets/ui/natural-history-specimen.css b/assets/ui/natural-history-specimen.css
+index c97eb1e9..febc9c0d 100644
+--- a/assets/ui/natural-history-specimen.css
++++ b/assets/ui/natural-history-specimen.css
+@@ -82,3 +82,24 @@
+ #fieldGuide .map-records>summary{cursor:pointer;padding:12px 0;color:#e6d8ac;font:11px/1.4 Verdana,sans-serif}
+ #fieldGuide .map-records p,#fieldGuide .map-records li{font:11px/1.6 Verdana,sans-serif;color:#bdc8a2;overflow-wrap:anywhere}
+ @media(max-width:600px){#fieldGuide .map-plate canvas{height:270px}#fieldGuide .map-controls{align-items:stretch}#fieldGuide .map-controls label{width:100%}#fieldGuide .map-controls [role=group]{width:100%}#fieldGuide .map-controls button{flex:1}}
++
++/* The default Map leaves the actual creature visible; enlargement is deliberate. */
++@media(min-width:601px){#fieldGuide:has(.fg-body[data-show=map]){width:min(780px,calc(50vw - 84px))}}
++#fieldGuide.map-expanded:has(.fg-body[data-show=map]){inset:12px;width:calc(100vw - 24px);max-width:none;height:calc(100vh - 24px)}
++@media(max-width:600px){
++ #fieldGuide:has(.fg-body[data-show=map]):not(.map-expanded){inset:6px 6px auto auto;width:calc(100vw - 12px);height:calc(50vh - 76px);max-height:calc(50vh - 76px);padding:10px 12px}
++ #fieldGuide:has(.fg-body[data-show=map]):not(.map-expanded) .fg-head p{display:none}
++ #fieldGuide:has(.fg-body[data-show=map]):not(.map-expanded) .fg-head h2{font-size:22px}
++ #fieldGuide:has(.fg-body[data-show=map]):not(.map-expanded) .fg-head{padding-bottom:6px}
++ #fieldGuide:has(.fg-body[data-show=map]):not(.map-expanded) .fg-tabs{padding:6px 0;gap:4px}
++ #fieldGuide:has(.fg-body[data-show=map]):not(.map-expanded) .fg-tabs button{min-height:36px;padding:5px 7px;font-size:10px}
++ #fieldGuide:not(.map-expanded) .map-heading{display:none}
++ #fieldGuide:not(.map-expanded) .map-controls{display:grid;grid-template-columns:minmax(0,1fr) 116px 62px;gap:5px;align-items:end;margin:2px 0 6px}
++ #fieldGuide:not(.map-expanded) .map-controls label{width:auto;min-width:0}
++ #fieldGuide:not(.map-expanded) .map-controls label>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
++ #fieldGuide:not(.map-expanded) .map-controls select{width:100%;padding:5px 2px;font-size:10px}
++ #fieldGuide:not(.map-expanded) .map-controls [role=group]{width:auto;gap:4px;flex-wrap:nowrap}
++ #fieldGuide:not(.map-expanded) .map-controls button{padding:4px;min-width:0;min-height:40px;font-size:10px}
++ #fieldGuide:not(.map-expanded) .map-plate canvas{height:180px}
++ #fieldGuide.map-expanded:has(.fg-body[data-show=map]){inset:6px;width:calc(100vw - 12px);height:calc(100vh - 12px);max-height:calc(100vh - 12px)}
++}
+diff --git a/src/main.js b/src/main.js
+index aede0c5f..e5fe9480 100644
+--- a/src/main.js
++++ b/src/main.js
+@@ -97,7 +97,7 @@ const braceInput=new HeldBraceInput({getSim:()=>sim,blocked:()=>sim.paused||!!tu
+ const tutorial=new TutorialController(sim,renderer);
+ const observer=new ObserverController(()=>sim);
+ const editor=new CreatureEditor({getSim:()=>sim,onDone:r=>{if(r.ok)audio.note('confirm');else tutorial.showToast('Design cancelled · the litter inherits normally · nothing was spent',2600,'safe')}});
+-const fieldGuide=new FieldGuide({getSim:()=>sim});
++const fieldGuide=new FieldGuide({getSim:()=>sim,getRenderer:()=>renderer});
+ const succession=new SuccessionChooser({getSim:()=>sim,onDone:r=>{if(!r.ok){tutorial.showToast('That descendant cannot take over yet.',1800,'warn');audio.note('deny')}else audio.note('confirm')}});
+ // Legacy milestones follow the generation reveal; the world continues afterwards.
+ const legacySummary=new LegacySummary({getSim:()=>sim,onNewWorld:()=>{clearMovementKeys();sim.paused=true;frontEnd.show('new')}});tutorial.onLegacy=kind=>{if(legacySummary.show(kind))audio.note('confirm')};
+diff --git a/src/render/exploration-map.js b/src/render/exploration-map.js
+index 3920210e..2757b0bd 100644
+--- a/src/render/exploration-map.js
++++ b/src/render/exploration-map.js
+@@ -9,10 +9,10 @@ export function drawExplorationMap(ctx,model,{width,height,overview=false}={}){
+  const b=explorationMapBounds(model,overview),margin=30,scale=Math.min((width-margin*2)/b.w,(height-margin*2)/b.h),ox=(width-b.w*scale)/2,oy=(height-b.h*scale)/2,at=(x,y)=>[ox+(x-b.x)*scale,oy+(y-b.y)*scale];
+  ctx.save();ctx.clearRect(0,0,width,height);ctx.fillStyle=MAP_COLORS.paper;ctx.fillRect(0,0,width,height);ctx.save();ctx.beginPath();ctx.rect(ox,oy,b.w*scale,b.h*scale);ctx.clip();ctx.strokeStyle=MAP_COLORS.unknown;ctx.lineWidth=1;
+  for(let x=-height;x<width+height;x+=22){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x+height,height);ctx.stroke()}
+- for(const cell of model.cells){const [x,y]=at(cell.x,cell.y);ctx.fillStyle=[MAP_COLORS.land,MAP_COLORS.water,MAP_COLORS.passage,MAP_COLORS.rock][cell.kind];ctx.fillRect(x,y,model.cellSize*scale,model.cellSize*scale)}
++ for(const cell of model.cells){const [x,y]=at(cell.x,cell.y);ctx.fillStyle=[MAP_COLORS.land,MAP_COLORS.water,MAP_COLORS.passage,MAP_COLORS.rock][cell.kind];const x0=Math.round(x),y0=Math.round(y);ctx.fillRect(x0,y0,Math.round(x+model.cellSize*scale)-x0,Math.round(y+model.cellSize*scale)-y0)}
+  ctx.strokeStyle='#bcae7466';ctx.lineWidth=1;for(let x=0;x<=model.size;x+=16){const p=at(x,0);ctx.beginPath();ctx.moveTo(p[0],oy);ctx.lineTo(p[0],oy+b.h*scale);ctx.stroke()}for(let y=0;y<=model.size;y+=16){const p=at(0,y);ctx.beginPath();ctx.moveTo(ox,p[1]);ctx.lineTo(ox+b.w*scale,p[1]);ctx.stroke()}
+- for(const site of model.sites){const [x,y]=at(site.x,site.y);ctx.fillStyle=MAP_COLORS.ink;ctx.strokeStyle='#102017';ctx.lineWidth=2;ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fill();ctx.stroke()}
+- if(model.player){const [x,y]=at(model.player.x,model.player.y);ctx.fillStyle=MAP_COLORS.marker;ctx.strokeStyle='#102017';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x,y-7);ctx.lineTo(x+6,y);ctx.lineTo(x,y+7);ctx.lineTo(x-6,y);ctx.closePath();ctx.fill();ctx.stroke()}
++ for(const site of model.sites){const [x,y]=at(site.x,site.y),radius=overview?Math.max(2,Math.min(4,scale)):4;ctx.fillStyle=MAP_COLORS.ink;ctx.strokeStyle='#102017';ctx.lineWidth=overview?1:2;ctx.beginPath();ctx.arc(x,y,radius,0,Math.PI*2);ctx.fill();ctx.stroke()}
++ if(model.player){const [x,y]=at(model.player.x,model.player.y),radius=overview?Math.max(3,Math.min(7,scale*2)):7;ctx.fillStyle=MAP_COLORS.marker;ctx.strokeStyle='#102017';ctx.lineWidth=overview?1:2;ctx.beginPath();ctx.moveTo(x,y-radius);ctx.lineTo(x+radius*.86,y);ctx.lineTo(x,y+radius);ctx.lineTo(x-radius*.86,y);ctx.closePath();ctx.fill();ctx.stroke()}
+  ctx.restore();ctx.strokeStyle='#879268';ctx.lineWidth=1;ctx.strokeRect(ox,oy,b.w*scale,b.h*scale);ctx.fillStyle=MAP_COLORS.ink;ctx.font='11px Verdana';ctx.textAlign='center';ctx.fillText('N',width/2,16);ctx.fillText('S',width/2,height-8);ctx.textAlign='left';ctx.fillText('W',6,height/2+4);ctx.textAlign='right';ctx.fillText('E',width-6,height/2+4);
+  const units=b.w>64?16:b.w>24?8:4,bar=units*scale;ctx.strokeStyle=MAP_COLORS.ink;ctx.beginPath();ctx.moveTo(ox,Math.min(height-18,oy+b.h*scale+8));ctx.lineTo(ox+bar,Math.min(height-18,oy+b.h*scale+8));ctx.stroke();ctx.font='10px Verdana';ctx.textAlign='left';ctx.fillText(units+' terrain cells',ox,Math.min(height-4,oy+b.h*scale+21));ctx.restore();return{bounds:b,scale,paintedCells:model.cells.length,siteCount:model.sites.length};
+ }
+diff --git a/src/ui/exploration-map.js b/src/ui/exploration-map.js
+index 9d96c5b3..9bf18cef 100644
+--- a/src/ui/exploration-map.js
++++ b/src/ui/exploration-map.js
+@@ -14,10 +14,11 @@ export function explorationMapReading(sim,selectedKey=null){
+  return{currentKey,key:view.key,size,cellSize,recordingEnabled:sim.sensoryFogEnabled===true,sitesAvailable:sameRegion&&view.layer==='surface',layer:view.layer,label:view.label,origin:{x:view.x,y:view.y},views,cells,sites,player,actorId:a.id};
+ }
+ export class ExplorationMap{
+- constructor(getSim){this.getSim=getSim;this.overview=false;this.selectedKey=null}
+- mount(root){if(this.root!==root){this.observer?.disconnect();this.root=root;root.innerHTML='<header class="map-heading"><small>FIELD CARTOGRAPHY</small><h3>Exploration map</h3><p>This creature remembers these surroundings. Dark hatching is unrecorded; remembered places may have changed.</p></header><div class="map-controls"><label>Recorded view <select aria-label="Recorded map view"></select></label><div role="group" aria-label="Map extent"><button type="button" data-map-mode="nearby">Nearby records</button><button type="button" data-map-mode="region">Whole region</button></div></div><figure class="map-plate"><canvas role="img" aria-label="Recorded exploration map"></canvas><figcaption></figcaption></figure><ul class="map-legend"><li data-map-key="land">Remembered land</li><li data-map-key="water">Remembered water</li><li data-map-key="passage">Remembered passage</li><li data-map-key="rock">Remembered rock</li><li data-map-key="player">Your creature</li><li data-map-key="site">Recorded place</li></ul><p class="map-status" role="status"></p><details class="map-records"><summary>Recorded places and map details</summary><p class="map-coordinate"></p><ul></ul></details><p class="map-note">This creature supplies the terrain observations, with separate surface, underwater and underground records. Place markers come from the family field guide. The map does not reveal live wildlife or food, load regions, or move your creature. Older observations can be forgotten.</p>';
+-  root.querySelector('select').onchange=e=>{this.selectedKey=e.target.value;this.update()};root.querySelectorAll('[data-map-mode]').forEach(b=>b.onclick=()=>{this.overview=b.dataset.mapMode==='region';this.update()});this.observer=new ResizeObserver(()=>{if(this.root?.getBoundingClientRect().width>0)this.update()});this.observer.observe(root)}this.update()}
+- update(){if(!this.root||!this.root.getClientRects().length)return;const sim=this.getSim(),world=ownerToken(sim?.world),actor=ownerToken(sim?.player?.());if(this.worldToken!==world||this.actorToken!==actor){this.worldToken=world;this.actorToken=actor;this.selectedKey=null;this.overview=false}const m=explorationMapReading(sim,this.selectedKey);if(!m)return;this.selectedKey=m.key;this.model=m;
++ constructor(getSim,getRenderer=()=>null){this.getSim=getSim;this.getRenderer=getRenderer;this.overview=false;this.expanded=false;this.selectedKey=null}
++ mount(root){if(this.root!==root){this.observer?.disconnect();this.root=root;root.innerHTML='<header class="map-heading"><small>FIELD CARTOGRAPHY</small><h3>Exploration map</h3><p>This creature remembers these surroundings. Dark hatching is unrecorded; remembered places may have changed.</p></header><div class="map-controls"><label><span>Recorded view</span><select aria-label="Recorded map view"></select></label><div role="group" aria-label="Map extent"><button type="button" data-map-mode="nearby">Nearby records</button><button type="button" data-map-mode="region">Whole region</button></div><button type="button" data-map-expand>Expand map</button></div><figure class="map-plate"><canvas role="img" aria-label="Recorded exploration map"></canvas><figcaption></figcaption></figure><ul class="map-legend"><li data-map-key="land">Remembered land</li><li data-map-key="water">Remembered water</li><li data-map-key="passage">Remembered passage</li><li data-map-key="rock">Remembered rock</li><li data-map-key="player">Your creature</li><li data-map-key="site">Recorded place</li></ul><p class="map-status" role="status"></p><details class="map-records"><summary>Recorded places and map details</summary><p class="map-coordinate"></p><ul></ul></details><p class="map-note">This creature supplies the terrain observations, with separate surface, underwater and underground records. Place markers come from the family field guide. The map does not reveal live wildlife or food, load regions, or move your creature. Older observations can be forgotten.</p>';
++  root.querySelector('select').onchange=e=>{this.selectedKey=e.target.value;this.update()};root.querySelectorAll('[data-map-mode]').forEach(b=>b.onclick=()=>{this.overview=b.dataset.mapMode==='region';this.update()});root.querySelector('[data-map-expand]').onclick=()=>{this.expanded=!this.expanded;this.update()};this.observer=new ResizeObserver(()=>{if(this.root?.getBoundingClientRect().width>0)this.update()});this.observer.observe(root)}this.update()}
++ position(){const host=this.root?.closest('#fieldGuide');if(!host||host.hidden)return;const r=this.getRenderer?.(),p=r?.screenPos?.get(this.getSim()?.player?.()?.id),narrow=innerWidth<=600,anchor=this.expanded?'expanded':narrow?(p&&p.y<r.h/2?'bottom':'top'):(p&&p.x>r.w/2?'left':'right');if(this.anchor===anchor)return;this.anchor=anchor;for(const k of ['left','right','top','bottom'])host.style[k]='';if(anchor==='left'){host.style.left='12px';host.style.right='auto'}else if(anchor==='right'){host.style.left='auto';host.style.right='12px'}else if(anchor==='bottom'){host.style.top='auto';host.style.bottom='6px'}else if(anchor==='top'){host.style.top='6px';host.style.bottom='auto'}}
++ update(){if(!this.root||!this.root.getClientRects().length)return;const sim=this.getSim(),world=ownerToken(sim?.world),actor=ownerToken(sim?.player?.());if(this.worldToken!==world||this.actorToken!==actor){this.worldToken=world;this.actorToken=actor;this.selectedKey=null;this.overview=false;this.expanded=false}const m=explorationMapReading(sim,this.selectedKey);if(!m)return;this.selectedKey=m.key;this.model=m;this.root.closest('#fieldGuide').classList.toggle('map-expanded',this.expanded);this.position();const expand=this.root.querySelector('[data-map-expand]');setText(expand,this.expanded?'Restore map':'Expand map');expand.setAttribute('aria-pressed',String(this.expanded));
+   const select=this.root.querySelector('select'),listKey=JSON.stringify(m.views.map(v=>[v.key,v.label]));if(this.listKey!==listKey||select.options.length!==m.views.length){select.replaceChildren(...m.views.map(v=>{const o=document.createElement('option');o.value=v.key;o.textContent=v.label;return o}));this.listKey=listKey}select.value=m.key;this.root.querySelectorAll('[data-map-mode]').forEach(b=>b.setAttribute('aria-pressed',String((b.dataset.mapMode==='region')===this.overview)));
+   const canvas=this.root.querySelector('canvas'),r=canvas.getBoundingClientRect(),width=Math.max(240,Math.round(r.width)),height=Math.max(180,Math.round(r.height));if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height}this.paint=drawExplorationMap(canvas.getContext('2d'),m,{width,height,overview:this.overview});canvas.setAttribute('aria-label',m.label+' exploration map: '+m.cells.length+' recorded areas, '+m.sites.length+' recorded places'+(m.player?', your creature marked.':', current creature is in another view.'));
+   setText(this.root.querySelector('figcaption'),m.label+' - '+(this.overview?'whole region':'fitted to remembered terrain'));setText(this.root.querySelector('.map-status'),m.cells.length?m.cells.length+' remembered areas. '+(m.player?'The gold diamond marks your creature.':'Your creature is in another recorded view.'):m.recordingEnabled?'No terrain observations retained in this view yet. Exploring with this creature records what its senses can perceive.':'Current world rules do not record new terrain observations. Existing observations are shown when available.');setText(this.root.querySelector('.map-coordinate'),'Recorded region origin '+m.origin.x+', '+m.origin.y+' - '+m.layer+' - each recorded area spans '+m.cellSize+' by '+m.cellSize+' terrain cells.');
+diff --git a/src/ui/field-guide.js b/src/ui/field-guide.js
+index 87af5d9a..39012156 100644
+--- a/src/ui/field-guide.js
++++ b/src/ui/field-guide.js
+@@ -17,13 +17,13 @@ const esc=v=>String(v??'').replace(/[&<>"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&
+ const nice=id=>id.split('-').map((w,i)=>i?w:w[0].toUpperCase()+w.slice(1)).join(' ');
+ 
+ export class FieldGuide{
+-  constructor({getSim,root=document.querySelector('#app')}={}){
+-    this.getSim=getSim;this.explorationMap=new ExplorationMap(getSim);this.open=false;this.el=document.createElement('section');this.el.id='fieldGuide';this.el.className='field-guide';this.el.hidden=true;this.el.setAttribute('aria-label','Field guide');root?.appendChild(this.el);
++  constructor({getSim,getRenderer=()=>null,root=document.querySelector('#app')}={}){
++    this.getSim=getSim;this.explorationMap=new ExplorationMap(getSim,getRenderer);this.open=false;this.el=document.createElement('section');this.el.id='fieldGuide';this.el.className='field-guide';this.el.hidden=true;this.el.setAttribute('aria-label','Field guide');root?.appendChild(this.el);
+     this.catalogOpen=false;this.el.addEventListener('toggle',e=>{if(e.target.matches?.('.specimen-catalog'))this.catalogOpen=e.target.open},{capture:true});this.specimenId=null;this.specimenDir=3;this.page='creatures';this.el.addEventListener('click',e=>{if(e.target.closest('[data-act="close"]'))this.setOpen(false);const turn=e.target.closest('[data-specimen-turn]');if(turn){this.specimenDir=(this.specimenDir+Number(turn.dataset.specimenTurn)+8)%8;this.key=null;this.render()}const specimen=e.target.closest('[data-specimen]');if(specimen){this.catalogOpen=false;this.specimenId=specimen.dataset.specimen;this.specimenDir=3;this.key=null;this.render()}const t=e.target.closest('[data-page]');if(t){this.page=t.dataset.page;this.key=null;this.render()}});
+   }
+   toggle(){this.setOpen(!this.open)}
+   // Refreshed every two seconds while open (drawings are redrawn only when what is known changes).
+-  refresh(dt){if(!this.open)return;this.wait=(this.wait||0)+dt;if(this.wait>=2){this.wait=0;this.render()}}
++  refresh(dt){if(!this.open)return;if(this.page==='map')this.explorationMap.position();this.wait=(this.wait||0)+dt;if(this.wait>=2){this.wait=0;this.render()}}
+   setOpen(v){this.open=!!v;this.el.hidden=!this.open;if(this.open){this.key=null;this.render()}}
+   creatures(D){
+     const list=[],seen=new Set(),player=this.getSim()?.player?.();
+@@ -32,6 +32,7 @@ export class FieldGuide{
+     return list;
+   }
+   render(){
++    if(this.page!=='map'){for(const k of ['left','right','top','bottom'])this.el.style[k]='';this.el.classList.remove('map-expanded');this.explorationMap.anchor=null}
+     const D=this.getSim()?.discovery;if(!D||!this.open)return;
+     // The active map retains its controls, focus and scroll while observations refresh.
+     if(this.page==='map'&&this.el.querySelector('.fg-body')?.dataset.show==='map'&&this.explorationMap.root?.isConnected){this.explorationMap.update();return}

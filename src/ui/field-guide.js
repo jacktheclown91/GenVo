@@ -32,6 +32,7 @@ export class FieldGuide{
     return list;
   }
   render(){
+    if(this.page!=='map'){for(const k of ['left','right','top','bottom'])this.el.style[k]='';this.el.classList.remove('map-expanded');this.explorationMap.anchor=null}
     const D=this.getSim()?.discovery;if(!D||!this.open)return;
     // The active map retains its controls, focus and scroll while observations refresh.
     if(this.page==='map'&&this.el.querySelector('.fg-body')?.dataset.show==='map'&&this.explorationMap.root?.isConnected){this.explorationMap.update();return}

@@ -2,6 +2,10 @@
 
 Reviewed October 20, 2026. Governing intent: [current design](../design/CURRENT-DESIGN.md) and the creator's full Creature-stage directive. Code ownership: [implementation authorities](../design/governance/implementation-authorities.json). Full scope and remaining gaps: [completion matrix](FULL-GAME-COMPLETION-MATRIX.md). Earlier checkpoint prose is [historical evidence](history/IMPLEMENTATION-before-live-refresh-2026-10-19.md), not current instructions.
 
+## Exploration map presentation, October 24
+
+Field Guide Map and Game utilities Map display the controlled creature's retained native observations, with separate regions/layers, historical family place markers, compact actor-aware placement and explicit expansion. Native memory limits and biological rules are unchanged. The original map gate passed 106 checks; merged placement/recorded-world follow-up has separate focused and browser evidence. [Evidence, applied handoff and remaining scope](art-refinement-map-v1-2026-10-24/README.md). Full planetary navigation/history, creator acceptance and v1 migration remain open.
+
 ## Latest presentation integration, October 23
 
 Natural-history menu, Lab, specimen sheet, Journal and first-young presentation are integrated into runtime source. Existing starts/controls remain authoritative; seed is under Advanced, native retained pigmentation is forwarded, and late native-art arrival refreshes Lab canvases/caches without editing the draft. Actual exported UI, exact state and regression evidence: [interface integration](art-refinement-interface-v1-2026-10-23/README.md), [inherited portraits](art-refinement-portrait-v1-2026-10-23/INTEGRATED.md). This is bounded presentation implementation; broader UI, map, audio, performance, migration and creator acceptance remain incomplete.

@@ -1,0 +1,56 @@
+{
+  "cases": [
+    {
+      "catalogue": {
+        "id": "established-valley-d30",
+        "day": 31
+      },
+      "seed": "GENVO-VALLEY-REPLAY-30",
+      "day": 31,
+      "actorId": 109,
+      "clock": null,
+      "metabolism": null,
+      "vision": null,
+      "cells": 0,
+      "ownedRows": 0,
+      "recordingEnabled": false,
+      "status": "Current world rules do not record new terrain observations. Existing observations are shown when available.",
+      "stateParity": true,
+      "overview": false,
+      "regionViews": 1
+    },
+    {
+      "catalogue": {
+        "id": "mature-valley-d100",
+        "day": 101
+      },
+      "seed": "GENVO-VALLEY-REPLAY-30",
+      "day": 101,
+      "actorId": 109,
+      "clock": null,
+      "metabolism": null,
+      "vision": null,
+      "cells": 0,
+      "ownedRows": 0,
+      "recordingEnabled": false,
+      "status": "Current world rules do not record new terrain observations. Existing observations are shown when available.",
+      "stateParity": true,
+      "overview": false,
+      "regionViews": 1
+    }
+  ],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Actual public catalogue Day 31/101 starts, native Game utilities Map, no continuation-policy edits, exact synchronous map-read state parity and native Save/Return/Continue. No observer, history, terrain, survey or organisms are staged.",
+  "continued": {
+    "seed": "GENVO-VALLEY-REPLAY-30",
+    "actorId": 109,
+    "clock": null,
+    "metabolism": null,
+    "vision": null,
+    "overview": false,
+    "cells": 0,
+    "ownedRows": 0
+  }
+}
