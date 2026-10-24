@@ -1,5 +1,5 @@
 import {CFG} from '../sim/config.js';
-import {planetRegionOrigin,regionKey,neighboringRegion} from './planet-regions.js';
+import {planetRegionOrigin,regionKey,neighboringRegion,compactRegionalTravelerPositions} from './planet-regions.js';
 import {canSwim} from '../lineage/lifestyle.js';
 import {isWaterDweller} from '../lineage/aquatic.js';
 import {markRegionalOwnerDirty} from './regional-revision.js';
@@ -104,7 +104,7 @@ export function nearestOpenExit(sim,animal,radius){
 // End of a step: detach the queued emigrants from the population.
 export function takeEmigrants(sim){
  const pending=sim.pendingEmigrants;if(!pending?.length)return[];
- const leaving=new Set(pending.map(e=>e.animal));sim.animals=sim.animals.filter(a=>!leaving.has(a));delete sim.pendingEmigrants;
+ const leaving=new Set(pending.map(e=>e.animal));compactRegionalTravelerPositions(sim,a=>leaving.has(a));sim.animals=sim.animals.filter(a=>!leaving.has(a));delete sim.pendingEmigrants;
  sim.stats.emigrants=(sim.stats.emigrants||0)+pending.length;sim.migration?.states?.forEach?.((_,id)=>{if([...leaving].some(a=>a.id===id))sim.migration.states.delete(id)});
  sim.rebuildSpatial();sim.regionalEcology?.resetPageResidency?.();
  return pending;

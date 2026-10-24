@@ -106,7 +106,7 @@ export class PlanetRegionAtlas{
 // Departed travelers occupy remembered positions in the complete animal order.
 // Removing earlier wildlife must shift those positions as well; births append
 // after existing slots. Keep the exact mortality predicate used by Simulation.
-export function compactRegionalTravelerPositions(sim){
+export function compactRegionalTravelerPositions(sim,isRemoved=a=>!a.alive&&!a.player){
  const cohort=sim.regionalTravelerSlots;
  const single=sim.regionalTravelerSlot;
  if(cohort===undefined&&single===undefined)return;
@@ -115,7 +115,7 @@ export function compactRegionalTravelerPositions(sim){
  for(let rank=0;rank<slots.length;rank++){
   const index=slots[rank].index,before=index-rank;
   if(!Number.isSafeInteger(index)||before<0||before>sim.animals.length)throw Error('Corrupt regional traveler position during mortality.');
-  let removed=0;for(let i=0;i<before;i++)if(!sim.animals[i].alive&&!sim.animals[i].player)removed++;
+  let removed=0;for(let i=0;i<before;i++)if(isRemoved(sim.animals[i]))removed++;
   shifts.set(index,index-removed);
  }
  if(cohort!==undefined)sim.regionalTravelerSlots=cohort.map(s=>({...s,index:shifts.get(s.index)}));

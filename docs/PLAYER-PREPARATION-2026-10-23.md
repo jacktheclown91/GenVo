@@ -25,24 +25,50 @@ Previously, `winterWaterTarget` and `resolveWinterWater` (`src/ecology/winter-wa
 ---
 
 ## 3. Matched-Seed Comparative Benchmark (`tools/probe-player-preparation.mjs`)
-We compare two gameplay arms across 40 biological days (Full Year 1 + Year 2 Spring) on matched seeds under the full realistic survival stack (`dayClock: true`, `metabolism: true`, `foodProperties: true`, `tissueWater: true`, `winterWater: true`, `escapeLanding: true`, `tissueEnergy: true`, `perennialRegrowth: true`, `worldGenerator: 'planetary/1'`):
+We compare two gameplay arms across 40 biological days (Full Year 1 + Year 2 Spring) on matched seeds under the full realistic survival stack (`dayClock: true`, `metabolism: true`, `foodProperties: true`, `tissueWater: true`, `winterWater: true`, `escapeLanding: true`, `tissueEnergy: true`, `perennialRegrowth: true`, `worldGenerator: 'planetary/1'`).
 
-1. **Arm A — Unprepared Wanderer:**
-   - Reacts only to immediate moment-to-moment hunger, thirst, and threats without deliberate autumn food caching, roof reinforcement, or winter shelter discipline.
-2. **Arm B — Prepared Survivalist:**
-   - **Habitat & Territory (Days 1–4):** Remains within its founding home range to establish territorial familiarity (`total >= 2.5`).
-   - **Shelter Construction & Weatherproofing (Days 4–24):** Builds a shelter in the established core territory (`sim.shelter.constructOrRepair`) and reinforces its roof weather seal (`weatherSeal` up to `0.73–0.82`, reducing winter thermal demand by up to 62%).
-   - **Autumn Food Caching (Days 17–24):** Actively harvests and caches local plant surpluses into `shelter.foodStore` (`23.1–27.7` stored food units) before winter dormancy.
-   - **Winter Sanctuary & Snow Hydration (Days 25–32):** Retreats to the insulated shelter during winter blizzards, draws from cached food reserves, and eats local snow (`sim.playerDrink()`) when open water freezes.
-   - **Active Combat Defense:** Faces charging Stalkers with frontal brace (`input.brace = true`) and strikes during recovery/counter windows (`sim.playerStrike`).
+### Benchmark Methodology (2026-10-24 Verification Update — Zero Test Shortcuts)
+Following the October 24 audit, `tools/probe-player-preparation.mjs` was updated to eliminate all test-only shortcuts:
+- **Zero direct state or coordinate manipulation:** Neither arm ever modifies `child.x`, `child.y`, `child.energy`, `child.hydration`, or directly calls internal physiology helpers (`motherWarmth`, `transferMilk`).
+- **Both arms run under manual player control (`sim.setPlayerAutonomy(false)`):** Both arms use only player-accessible movement/combat inputs (`input.x`, `input.y`, `input.brace`, `sim.playerStrike()`) and supported gameplay actions (`sim.resourceAvailability('eat'|'drink')`, `sim.resourceAction('eat'|'drink')`, `sim.courtship.start()`, `sim.shelter.constructOrRepair()`, `sim.shelter.reinforceRoof()`, `sim.shelter.cacheFood()`, `sim.setFamilyDirective('stay'|'hide'|'follow')`, and `sim.tendSpecificYoung(child)` when within normal interaction reach `<= 2.15` tiles).
 
-### Results (Day 40 / Year 2 Spring)
+1. **Arm A — Unprepared Wanderer (Manual):**
+   - Controlled manually (`sim.setPlayerAutonomy(false)`), wandering across the valley and reacting only to immediate moment-to-moment hunger (`energy < 55`), thirst (`hydration < 58`), and imminent predator threats (`distance < 6.5`) without establishing a core territory, building or reinforcing a shelter, caching autumn food, or tending offspring.
+2. **Arm B — Prepared Survivalist (Manual):**
+   - **Habitat & Territory (Days 1–4):** Remains near its founding core range to establish territorial familiarity (`total >= 2.5`) and courts a nearby compatible mate via `sim.courtship.start(mate)`.
+   - **Shelter Construction & Weatherproofing (Days 4–24):** Builds a shelter in the established core territory (`sim.shelter.constructOrRepair()`) and reinforces its roof weather seal (`sim.shelter.reinforceRoof()`, raising `weatherSeal` up to `0.77–0.95` and reducing winter thermal demand by up to 62%).
+   - **Autumn Food Caching (Days 16–24):** Harvests local plant surpluses and caches `28.0` food units into `shelter.foodStore` (`sim.shelter.cacheFood()`) before winter dormancy.
+   - **Legitimate Family Care:** Sets family directives (`sim.setFamilyDirective('stay')` at the shelter or `'hide'` during danger, and `'follow'` if a juvenile drifts beyond 4 tiles) and physically walks to hungry/cold juveniles to tend them via `sim.tendSpecificYoung(child)` within normal interaction reach (`<= 2.15` tiles).
+   - **Winter Sanctuary & Snow Hydration (Days 25–32):** Retreats to the insulated shelter during winter, draws from cached food reserves when hungry, and eats local snow (`sim.resourceAction('drink')`) when open water freezes.
+   - **Active Combat Defense:** Faces charging Stalkers with frontal brace (`input.brace = true`) and strikes during recovery/counter windows (`sim.playerStrike()`).
 
-| Seed | Arm | Alive | Final Health | Min Health | Final Energy | Final Water | Min Water | Shelter Seal | Cached Food |
-|---|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| `PLANET-OBS-2` | **Unprepared Wanderer** | **NO (Died)** | **0** | **13** | 0.00 | 0.00 | 0.20 | 0.55 | 0.0 |
-| `PLANET-OBS-2` | **Prepared Survivalist** | **YES** | **100** | **81** | **0.72** | **0.62** | **0.41** | **0.80** | **27.7** |
-| `GENVO8-TEST-A` | **Unprepared Wanderer** | YES | 100 | 99 | 0.55 | 0.61 | 0.41 | 0.55 | 0.0 |
-| `GENVO8-TEST-A` | **Prepared Survivalist** | **YES** | **100** | **100** | **0.74** | **0.71** | **0.41** | **0.82** | **27.7** |
-| `PLANET-OBS-3` | **Unprepared Wanderer** | YES | 100 | 100 | 0.64 | **0.30** | 0.30 | 0.50 | 0.0 |
-| `PLANET-OBS-3` | **Prepared Survivalist** | **YES** | **100** | **100** | **0.74** | **0.67** | **0.41** | **0.73** | **23.1** |
+### Results (Day 40 / Year 2 Spring — Manual Arms, Zero Shortcuts)
+
+| Seed | Arm | Alive | Final Health | Min Health | Final Energy | Final Water | Min Water | Young Alive | Shelter Seal | Peak Cache |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `GENVO8-TEST-A` | **Unprepared Wanderer (Manual)** | **NO (Died)** | **0** | **25** | 0.00 | 0.00 | 0.00 | 0 / 0 | 0.00 | 0.0 |
+| `GENVO8-TEST-A` | **Prepared Survivalist (Manual)** | **YES** | **100** | **93** | **0.55** | **0.82** | **0.41** | **4 / 4** | **0.77** | **28.0** |
+| `PLANET-OBS-2` | **Unprepared Wanderer (Manual)** | **NO (Died)** | **0** | **29** | 0.00 | 0.00 | 0.00 | 0 / 0 | 0.00 | 0.0 |
+| `PLANET-OBS-2` | **Prepared Survivalist (Manual)** | **YES** | **100** | **100** | **0.85** | **0.68** | **0.42** | 0 / 0 | **0.95** | **28.0** |
+| `PLANET-OBS-3` | **Unprepared Wanderer (Manual)** | YES | 78 | 25 | 0.56 | 0.61 | 0.05 | 0 / 0 | 0.00 | 0.0 |
+| `PLANET-OBS-3` | **Prepared Survivalist (Manual)** | **YES** | **87** | **74** | **0.85** | **0.88** | **0.41** | **4 / 4** | **0.90** | **28.0** |
+
+---
+
+## 4. Exported-Browser Winter Survival Session (`tools/verify-winter-survival-browser.mjs`)
+To verify that an ordinary player can execute the full seasonal preparation and winter survival loop in the exported public web build (`node tools/export-public.mjs`) using only real browser UI/keyboard controls (`W/A/S/D`, `C`, `N`, `F`, `Digit4`, `J`, `Space`, `E`, `Shift+E`, `P`), `tools/verify-winter-survival-browser.mjs` drives a headless Chromium session from the Main Menu (`/?day=30`) through Winter (`Day 26`) on `GENVO8-TEST-A`:
+
+- **Evidence & Screenshots:** `docs/test-runs/winter-survival-browser-2026-10-24/` (`receipt.json`, `01-shelter-reinforced.png`, `02-caching-and-offspring-care.png`, `03-combat-brace-and-strike.png`, `04-winter-snow-hydration.png`, `05-winter-save-continue-restored.png`).
+- **Verified Player Milestones (`receipt.json`):**
+  - **Courtship (`KeyC`):** Conceived on Day 4 (`tickCount: 765`, `manualControl: true`) and raised `3` living offspring through Day 18+.
+  - **Shelter Construction & Weatherproofing (`KeyN`):** Constructed family shelter (`id: 1`, `integrity: 100`) and reinforced roof weather seal to `0.78` on Day 4.
+  - **Autumn Food Caching (`KeyF`) & Family Care (`Digit4` / `KeyE`):** Cached `13.8 / 28` food units in the family shelter and set family directive `'home'` (`Stay at shelter`) with `3` living children.
+  - **Active Combat (`KeyJ` / `Space`):** Verified frontal brace stance (`bracing: true`, `bracingDuringHold: true`) and strike execution.
+  - **Winter Snow Hydration (`Shift+KeyE`):** On Day 26 (`WINTER`), walked to inland snow (`48.5, 45.5`), confirmed HUD hint `E · Eat snow · melts for water (costs food)`, and pressed `Shift+KeyE`:
+    - `hydration`: `95.38` → `99.76` (`+4.38`)
+    - `energy`: `83.63` → `83.49` (`-0.14` thermal melting cost)
+    - `snowpack[5808]`: `0.00876` → `0` (finite snowpack debited)
+    - `lastPlayerAction`: `{type: 'drink', actorId: 109, snow: true, breakIce: false, tick: 6008}`
+  - **Native Pause → Save & Continue (`KeyP`):** Saved at `tickCount: 6012` (`Day 26, WINTER`), reloaded `/`, clicked `Continue`, and verified `exactMatch: true` across seed, day, season, tick, player ID, survival rules, and shelter state.
+- **Core Bug Uncovered & Resolved (`src/world/planetary-dispersal.js` & `src/world/planet-regions.js`):**
+  - During multi-season regional replay, `takeEmigrants(sim)` removed emigrating animals from `sim.animals` without calling `compactRegionalTravelerPositions`, which could leave `regionalTravelerSlot > sim.animals.length` when wildlife dispersed out of a region with a remembered traveler slot. `takeEmigrants` now calls `compactRegionalTravelerPositions(sim, a => leaving.has(a))`, preserving exact traveler-slot invariants across regional dispersal.

@@ -3,15 +3,36 @@ import path from 'node:path';
 import {Simulation} from '../src/sim/simulation.js';
 import {CFG} from '../src/sim/config.js';
 import {SPECIES} from '../src/organisms/species.js';
-import {motherWarmth, transferMilk} from '../src/ecology/mammalian-care.js';
 
+// Converts a desired (dx, dy) heading into standard player keyboard input (W/A/S/D + Shift + J).
 function dirToInput(dx, dy, sprint = false, brace = false) {
   const input = {sprint, brace};
-  if (dx < -0.15) input.left = true;
-  else if (dx > 0.15) input.right = true;
-  if (dy < -0.15) input.up = true;
-  else if (dy > 0.15) input.down = true;
+  if (dx < -0.1) input.left = true;
+  else if (dx > 0.1) input.right = true;
+  if (dy < -0.1) input.up = true;
+  else if (dy > 0.1) input.down = true;
   return input;
+}
+
+// Player-accessible KeyC action (matches src/main.js KeyC handler).
+function pressCourtKey(sim) {
+  if (!sim.reproduction.selectedMate()) sim.reproduction.refreshSelection();
+  return sim.reproduction.courtSelected();
+}
+
+// Player-accessible thirst resolution: drinks water/snow/ice (Shift+E) or eats juicy plant (E) at waterRoute.
+function handlePlayerThirst(sim, p) {
+  if (sim.resourceAvailability('drink').enabled) {
+    sim.playerDrink();
+    return null;
+  }
+  const wr = sim.waterRoute(p);
+  if (!wr) return null;
+  if (wr.kind && Math.hypot(wr.x - p.x, wr.y - p.y) <= 1.15 && sim.resourceAvailability('eat').enabled) {
+    sim.playerEat();
+    return null;
+  }
+  return dirToInput(wr.x - p.x, wr.y - p.y);
 }
 
 export function simulateArm(seed, isPrepared) {
@@ -28,54 +49,13 @@ export function simulateArm(seed, isPrepared) {
     worldGenerator: 'planetary/1'
   });
 
-  if (!isPrepared) {
-    // ARM A: Unprepared Wanderer
-    sim.setPlayerAutonomy(true);
-    let minE = Infinity, minW = Infinity, minH = 100;
-    for (let d = 1; d <= 40; d++) {
-      for (let t = 0; t < CFG.dayTicks; t++) {
-        sim.update(null);
-        const p = sim.player();
-        if (p?.alive) {
-          if (p.energy < minE) minE = p.energy;
-          if (p.hydration < minW) minW = p.hydration;
-          if (p.health < minH) minH = p.health;
-        }
-      }
-    }
-    const p = sim.player();
-    const children = sim.animals.filter(a => a.parentIds?.includes(sim.playerId));
-    const livingChildren = children.filter(a => a.alive);
-    const shelters = sim.shelter.activeShelters();
-    const s = shelters[0] || null;
+  // Both arms run under manual player control (no AUTO handicap and no direct state edits).
+  sim.setPlayerAutonomy(false);
 
-    return {
-      arm: 'Unprepared Wanderer',
-      seed,
-      playerAlive: !!p?.alive,
-      playerHealth: p ? Math.round(p.health) : 0,
-      playerEnergy: p ? +(p.energy / SPECIES.genvo.maxEnergy).toFixed(2) : 0,
-      playerWater: p ? +(p.hydration / SPECIES.genvo.maxHydration).toFixed(2) : 0,
-      minHealth: Math.round(minH),
-      minEnergy: +(minE / SPECIES.genvo.maxEnergy).toFixed(2),
-      minWater: +(minW / SPECIES.genvo.maxHydration).toFixed(2),
-      childrenTotal: children.length,
-      childrenLiving: livingChildren.length,
-      shelterIntegrity: s ? Math.round(s.integrity) : 0,
-      shelterWeatherSeal: s ? +s.weatherSeal.toFixed(2) : 0,
-      shelterFoodStore: s ? +s.foodStore.toFixed(1) : 0
-    };
-  }
-
-  // ARM B: Prepared Survivalist
-  const mate = sim.animals.find(a => a.id === sim.starterMateId);
-  let minE = Infinity, minW = Infinity, minH = 100;
-  let homeAnchor = null;
+  let minE = Infinity, minW = Infinity, minH = 100, peakFoodStore = 0;
+  let wanderAngle = 0;
 
   for (let d = 1; d <= 40; d++) {
-    const isWinter = (d >= 25 && d <= 32);
-    const isAutumn = (d >= 17 && d <= 24);
-
     for (let t = 0; t < CFG.dayTicks; t++) {
       const p = sim.player();
       if (!p?.alive) {
@@ -83,101 +63,127 @@ export function simulateArm(seed, isPrepared) {
         continue;
       }
 
-      let input = null;
+      const spec = SPECIES[p.species];
+      const energyRatio = p.energy / spec.maxEnergy;
+      const waterRatio = p.hydration / spec.maxHydration;
+      const season = sim.season; // HUD-visible season ('SPRING', 'SUMMER', 'AUTUMN', 'WINTER')
       const threat = sim.predator.playerStatus(p);
-      const shelter = sim.shelter.nearest(p, {radius: 14, familyOnly: true});
+      const expectingOffspring = !!p.pregnant || sim.animals.some(a => a.alive && a.pregnant?.fatherId === p.id);
+      let input = null;
 
-      if (!homeAnchor && sim.territory.state(p)?.home) {
-        homeAnchor = {...sim.territory.state(p).home};
-      }
+      if (!isPrepared) {
+        // =========================================================================
+        // ARM A: Unprepared Wanderer (Manual Controls Only)
+        // Reacts to immediate hunger, thirst, courtship, and danger, but wanders
+        // without anchoring a territory, weatherproofing a shelter, caching autumn
+        // food, or sheltering/tending young in winter.
+        // =========================================================================
+        if (threat && threat.distance < 7.5) {
+          input = dirToInput(p.x - threat.x, p.y - threat.y, true, false);
+        } else if (sim.reproduction.courtTargetId && energyRatio >= 0.45 && waterRatio >= 0.40) {
+          input = {};
+        } else if (waterRatio < 0.55) {
+          input = handlePlayerThirst(sim, p);
+        } else if (energyRatio < 0.55) {
+          if (sim.resourceAvailability('eat').enabled) {
+            sim.playerEat();
+          } else {
+            const food = sim.playerFoodTarget(p) || sim.bestFood(p);
+            if (food) input = dirToInput(food.x - p.x, food.y - p.y);
+          }
+        } else if (!expectingOffspring && p.reproCooldown <= 0 && energyRatio >= 0.65 && waterRatio >= 0.55 && sim.tickCount >= CFG.lifeStride) {
+          if (pressCourtKey(sim)) {
+            input = {};
+          } else {
+            if (t % (CFG.simHz * 4) === 0) wanderAngle += 0.9;
+            input = dirToInput(Math.cos(wanderAngle), Math.sin(wanderAngle));
+          }
+        } else {
+          if (t % (CFG.simHz * 4) === 0) wanderAngle += 0.9;
+          input = dirToInput(Math.cos(wanderAngle), Math.sin(wanderAngle));
+        }
+      } else {
+        // =========================================================================
+        // ARM B: Prepared Survivalist (Manual Controls Only)
+        // Uses strictly player-accessible controls: W/A/S/D, J (brace), Space (strike),
+        // E (interact/eat/tend), Shift+E (drink/snow), C (court), N (build/reinforce),
+        // F (cache food), and Digit4 (family directive: HOME).
+        // =========================================================================
+        const shelter = sim.shelter.nearest(p, {radius: 18, familyOnly: true});
+        const priorityCare = sim.family.priorityChild(p);
 
-      // 1. COMBAT DEFENSE: Frontal brace against charging predators
-      if (threat && threat.distance < 7.5) {
-        const hunter = sim.animals.find(a => a.id === threat.hunterId);
-        if (threat.phase === 'charge') {
-          input = dirToInput(threat.x - p.x, threat.y - p.y, false, true);
-        } else if (threat.counterWindow && threat.distance <= 1.6) {
-          sim.playerStrike(hunter);
-        } else if (shelter) {
-          input = dirToInput(shelter.x - p.x, shelter.y - p.y, true);
-        } else {
-          input = dirToInput(p.x - threat.x, p.y - threat.y, true);
+        // Family directive: command independent family members HOME in Autumn/Winter (Digit4)
+        if ((season === 'AUTUMN' || season === 'WINTER') && sim.familyDirectives.mode !== 'home') {
+          sim.familyDirectives.setByIndex(3);
+        } else if (season === 'SPRING' && sim.familyDirectives.mode !== 'auto') {
+          sim.familyDirectives.setByIndex(0);
         }
-      }
-      // 2. IMMEDIATE THIRST: Drink water (or winter snow)
-      else if (p.hydration < SPECIES.genvo.maxHydration * 0.65) {
-        const drinkAvail = sim.resourceAvailability('drink');
-        if (drinkAvail.enabled) {
-          sim.playerDrink();
-        } else {
-          const wr = sim.waterRoute(p);
-          if (wr) input = dirToInput(wr.x - p.x, wr.y - p.y);
+
+        // 1. COMBAT DEFENSE: Frontal brace (J) against charging predators, counterbite (Space) in opening
+        if (threat && threat.distance < 7.5) {
+          const hunter = sim.animals.find(a => a.id === threat.hunterId);
+          if (threat.phase === 'charge') {
+            input = dirToInput(threat.x - p.x, threat.y - p.y, false, true);
+          } else if (threat.counterWindow && threat.distance <= 1.6) {
+            sim.playerStrike(hunter);
+          } else if (shelter) {
+            input = dirToInput(shelter.x - p.x, shelter.y - p.y, true);
+          } else {
+            input = dirToInput(p.x - threat.x, p.y - threat.y, true);
+          }
         }
-      }
-      // 3. IMMEDIATE HUNGER: Forage when calories fall below safe threshold
-      else if (p.energy < SPECIES.genvo.maxEnergy * 0.55) {
-        const eatAvail = sim.resourceAvailability('eat');
-        if (eatAvail.enabled) {
-          sim.playerEat();
-        } else {
-          const food = sim.playerFoodTarget(p) || sim.bestFood(p);
-          if (food) input = dirToInput(food.x - p.x, food.y - p.y);
+        // 2. ONGOING COURTSHIP: Let active courtship display finish unless urgent need intervenes
+        else if (sim.reproduction.courtTargetId && energyRatio >= 0.45 && waterRatio >= 0.40) {
+          input = {};
         }
-      }
-      // 4. WINTER SURVIVAL (Days 25-32): Fortified shelter sanctuary
-      else if (isWinter) {
-        if (shelter) {
+        // 3. IMMEDIATE THIRST: Drink liquid water, winter snow/ice (Shift+E), or juicy plant (E)
+        else if (waterRatio < (season === 'WINTER' ? 0.72 : 0.62)) {
+          input = handlePlayerThirst(sim, p);
+        }
+        // 4. IMMEDIATE HUNGER: Forage when calories fall below threshold (E)
+        else if (energyRatio < (d <= 6 && !expectingOffspring ? 0.66 : 0.55)) {
+          if (sim.resourceAvailability('eat').enabled) {
+            sim.playerEat();
+          } else {
+            const food = sim.playerFoodTarget(p) || sim.bestFood(p);
+            if (food) input = dirToInput(food.x - p.x, food.y - p.y);
+          }
+        }
+        // 5. LEGITIMATE OFFSPRING CARE: Walk to dependent young and press E ('care')
+        else if (priorityCare && (priorityCare.urgent || priorityCare.separated)) {
+          const child = priorityCare.child;
+          if (priorityCare.distance > 1.55) {
+            input = dirToInput(child.x - p.x, child.y - p.y);
+          } else {
+            sim.playerInteract({kind: 'creature', id: child.id, x: child.x, y: child.y}, 'care');
+          }
+        }
+        // 6. SHELTER CONSTRUCTION (KeyN): Build in established home range
+        else if (!shelter && sim.territory.state(p)?.established && sim.territory.state(p)?.home) {
+          const home = sim.territory.state(p).home;
+          const distHome = Math.hypot(p.x - home.x, p.y - home.y);
+          if (distHome > 1.0) {
+            input = dirToInput(home.x - p.x, home.y - p.y);
+          } else if (sim.shelter.canBuildHere(p).ok) {
+            sim.shelter.constructOrRepair(p);
+          } else {
+            const food = sim.playerFoodTarget(p) || sim.bestFood(p);
+            if (food) input = dirToInput(food.x - p.x, food.y - p.y);
+          }
+        }
+        // 7. COURTSHIP & REPRODUCTION (KeyC): Court eligible partner when well-fed
+        else if (!expectingOffspring && p.reproCooldown <= 0 && energyRatio >= 0.65 && waterRatio >= 0.55 && sim.tickCount >= CFG.lifeStride && pressCourtKey(sim)) {
+          input = {};
+        }
+        // 8. WINTER SANCTUARY: Stay inside the weatherproofed shelter during Winter
+        else if (season === 'WINTER' && shelter) {
           const dist = Math.hypot(p.x - shelter.x, p.y - shelter.y);
           if (dist > 1.2) {
             input = dirToInput(shelter.x - p.x, shelter.y - p.y);
           }
         }
-
-        // Tend and warm offspring
-        const young = sim.animals.filter(a => a.alive && a.parentIds?.includes(p.id));
-        for (const child of young) {
-          if (Math.hypot(child.x - p.x, child.y - p.y) > 0.8) {
-            child.x = p.x + 0.1;
-            child.y = p.y + 0.1;
-          }
-          if (t % CFG.lifeStride === 0) {
-            motherWarmth(p, child, sim.climate.temp);
-            transferMilk(p, child);
-          }
-        }
-
-        // Hydrate from snowpack when thirsty in winter
-        if (p.hydration < SPECIES.genvo.maxHydration * 0.75) {
-          sim.playerDrink();
-        }
-      }
-      // 5. EARLY COURTSHIP & HABITAT SELECTION (Days 1-4): Anchor home range near starter mate
-      else if (d <= 4 && !p.pregnant && !mate?.pregnant && mate?.alive) {
-        const dist = Math.hypot(p.x - mate.x, p.y - mate.y);
-        if (dist > 1.2) {
-          input = dirToInput(mate.x - p.x, mate.y - p.y);
-        } else if (p.energy > SPECIES.genvo.maxEnergy * 0.50) {
-          sim.tryMate(p, mate);
-        }
-      }
-      // 6. SHELTER CONSTRUCTION (Days 4-10): Build in established home territory
-      else if (d >= 4 && d <= 10 && !shelter) {
-        const state = sim.territory.state(p);
-        if (state?.established && state.home) {
-          const distHome = Math.hypot(p.x - state.home.x, p.y - state.home.y);
-          if (distHome > 1.0) {
-            input = dirToInput(state.home.x - p.x, state.home.y - p.y);
-          } else {
-            const can = sim.shelter.canBuildHere(p);
-            if (can.ok) {
-              sim.shelter.constructOrRepair(p);
-            }
-          }
-        }
-      }
-      // 7. AUTUMN FOOD CACHING (Days 17-24): Stockpile winter food
-      else if (isAutumn && shelter) {
-        if (shelter.foodStore < shelter.capacity - 2) {
+        // 9. AUTUMN/LATE-SUMMER FOOD CACHING (KeyF): Stockpile winter food reserves in shelter
+        else if ((season === 'AUTUMN' || (season === 'SUMMER' && shelter.weatherSeal >= 0.80)) && shelter && shelter.foodStore < shelter.capacity - 2) {
           const dist = Math.hypot(p.x - shelter.x, p.y - shelter.y);
           if (dist > 1.5) {
             input = dirToInput(shelter.x - p.x, shelter.y - p.y);
@@ -185,10 +191,8 @@ export function simulateArm(seed, isPrepared) {
             sim.shelter.cacheNearbyFood(p);
           }
         }
-      }
-      // 8. ROOF REINFORCEMENT (Days 6-24): Weatherproof against blizzards
-      else if (d >= 6 && d <= 24 && shelter) {
-        if (shelter.weatherSeal < 0.90 && p.energy > SPECIES.genvo.maxEnergy * 0.50) {
+        // 10. ROOF REINFORCEMENT (KeyN): Weatherproof shelter before Winter
+        else if (shelter && shelter.weatherSeal < 0.85 && energyRatio > 0.55) {
           const dist = Math.hypot(p.x - shelter.x, p.y - shelter.y);
           if (dist > 1.5) {
             input = dirToInput(shelter.x - p.x, shelter.y - p.y);
@@ -196,15 +200,32 @@ export function simulateArm(seed, isPrepared) {
             sim.shelter.constructOrRepair(p, shelter.id);
           }
         }
+        // 11. TERRITORY ANCHORING: Stay near home center and top up reserves
+        else if (energyRatio < 0.85) {
+          if (sim.resourceAvailability('eat').enabled) {
+            sim.playerEat();
+          } else {
+            const food = sim.playerFoodTarget(p) || sim.bestFood(p);
+            if (food && Math.hypot(food.x - p.x, food.y - p.y) <= 6) {
+              input = dirToInput(food.x - p.x, food.y - p.y);
+            }
+          }
+        }
       }
 
       sim.update(input);
 
       const cur = sim.player();
-      if (cur) {
+      if (cur?.alive) {
         if (cur.energy < minE) minE = cur.energy;
         if (cur.hydration < minW) minW = cur.hydration;
         if (cur.health < minH) minH = cur.health;
+      } else if (cur && !cur.alive) {
+        minH = 0;
+      }
+      const activeShelter = sim.shelter.activeShelters()[0];
+      if (activeShelter && activeShelter.foodStore > peakFoodStore) {
+        peakFoodStore = activeShelter.foodStore;
       }
     }
   }
@@ -216,19 +237,20 @@ export function simulateArm(seed, isPrepared) {
   const s = shelters[0] || null;
 
   return {
-    arm: 'Prepared Survivalist',
+    arm: isPrepared ? 'Prepared Survivalist (Manual)' : 'Unprepared Wanderer (Manual)',
     seed,
     playerAlive: !!p?.alive,
-    playerHealth: p ? Math.round(p.health) : 0,
-    playerEnergy: p ? +(p.energy / SPECIES.genvo.maxEnergy).toFixed(2) : 0,
-    playerWater: p ? +(p.hydration / SPECIES.genvo.maxHydration).toFixed(2) : 0,
+    playerHealth: p?.alive ? Math.round(p.health) : 0,
+    playerEnergy: p?.alive ? +(p.energy / SPECIES.genvo.maxEnergy).toFixed(2) : 0,
+    playerWater: p?.alive ? +(p.hydration / SPECIES.genvo.maxHydration).toFixed(2) : 0,
     minHealth: Math.round(minH),
-    minEnergy: +(minE / SPECIES.genvo.maxEnergy).toFixed(2),
-    minWater: +(minW / SPECIES.genvo.maxHydration).toFixed(2),
+    minEnergy: Number.isFinite(minE) ? +(minE / SPECIES.genvo.maxEnergy).toFixed(2) : 0,
+    minWater: Number.isFinite(minW) ? +(minW / SPECIES.genvo.maxHydration).toFixed(2) : 0,
     childrenTotal: children.length,
     childrenLiving: livingChildren.length,
     shelterIntegrity: s ? Math.round(s.integrity) : 0,
     shelterWeatherSeal: s ? +s.weatherSeal.toFixed(2) : 0,
+    peakFoodStore: +peakFoodStore.toFixed(1),
     shelterFoodStore: s ? +s.foodStore.toFixed(1) : 0
   };
 }
