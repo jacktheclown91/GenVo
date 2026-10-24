@@ -1,0 +1,47 @@
+{
+  "schema": "genvo.presentation-review-selection/1",
+  "items": [
+    {
+      "id": "terrain",
+      "title": "Seasonal ground repetition",
+      "revision": "c001f3f",
+      "scope": "Actual full-scene comparison. Plants, bodies and fog retained; unchanged saved state and exact restored baseline. Creator acceptance open.",
+      "before": "docs/art-refinement-seasonal-ground-v1-2026-10-24/gameplay-pair/baseline.png",
+      "after": "docs/art-refinement-seasonal-ground-v1-2026-10-24/gameplay-pair/candidate.png"
+    },
+    {
+      "id": "storm",
+      "title": "Storm warning on a phone",
+      "revision": "6b895746",
+      "scope": "Actual naturally generated storm and public phone viewport. This capture predates the later decorative ground refinement.",
+      "after": "docs/art-refinement-storm-readout-v1-2026-10-24/native/storm-390x540.png"
+    },
+    {
+      "id": "clutch",
+      "title": "Actual paid nest and eggs",
+      "revision": "20e5d5ec",
+      "scope": "Genuine simulated clutch after explicitly authored sandbox founders. Public saved-world import and manual movement; not naturally evolved founder ancestry.",
+      "before": "docs/art-refinement-clutch-v1-2026-10-24/clear-exported-clutch/before-focus.png",
+      "after": "docs/art-refinement-clutch-v1-2026-10-24/clear-exported-clutch/after-focus.png"
+    },
+    {
+      "id": "shelter",
+      "title": "Actual paid shelter",
+      "revision": "00c440ce",
+      "scope": "Public recorded-house import of genuine paid construction and storage. Not a second construction event; natural burrow-house review remains open.",
+      "before": "docs/art-refinement-shelter-v1-2026-10-24/exported-recorded-house/before-focus.png",
+      "after": "docs/art-refinement-shelter-v1-2026-10-24/exported-recorded-house/after-focus.png"
+    },
+    {
+      "id": "lab",
+      "title": "Creature Lab layout",
+      "revision": "52e5645a",
+      "scope": "Earlier integrated Lab presentation capture. Biological changes remain owned by the inherited draft and its constraints.",
+      "after": "docs/art-refinement-interface-v1-2026-10-23/combined/lab-combined-current-policy-1366x768-integrated-lab.png"
+    }
+  ],
+  "audio": {
+    "source": "docs/art-refinement-contact-audio-v1-2026-10-24/contact-review-reel.wav",
+    "scope": "Original contact-sound production candidates. Not integrated or shipped in game; playback/contact routing and creator listening acceptance remain open."
+  }
+}
