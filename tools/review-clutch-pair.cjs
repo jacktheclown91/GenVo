@@ -16,6 +16,6 @@ module.exports=async function compareClutch(page,out){
    await page.screenshot({path:path.join(out,label+'-world.png')});await page.screenshot({path:path.join(out,label+'-focus.png'),clip:frames[label].focus});
   }
   const a=frames.before.pixels,b=frames.after.pixels,z=frames.restored.pixels;let changedPixels=0;for(let i=0;i<a.length;i+=4)if(a.slice(i,i+4).some((v,k)=>v!==b[i+k]))changedPixels++;
-  const result={scope:'Same retained renderer original/candidate/original clutch painter, fixed presentation time and complete canonical graph parity. All visible clutches switch together; no biological state authored.',...setup,stateParity:true,baselineStable:a.every((v,i)=>v===z[i]),changedPixels};assert.ok(result.baselineStable&&changedPixels>0);fs.writeFileSync(path.join(out,'comparison.json'),JSON.stringify(result,null,2));return result;
+  const result={scope:'Same retained renderer original/candidate/original clutch painter, fixed presentation time and complete canonical graph parity. All visible clutches switch together; no biological state authored.',...setup,stateParity:true,baselineStable:a.every((v,i)=>v===z[i]),changedPixels};fs.writeFileSync(path.join(out,'comparison.json'),JSON.stringify(result,null,2));assert.ok(result.baselineStable&&changedPixels>0);return result;
  }finally{await page.evaluate(()=>{const p=window.__clutchPair;p.r.drawEggs=p.candidate;Object.defineProperty(performance,'now',{value:p.now,configurable:true})})}
 };
