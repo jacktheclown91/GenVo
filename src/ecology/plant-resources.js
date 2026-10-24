@@ -6,6 +6,7 @@ import {plantLifecycleEnabled,lifecycleLosses,canFlower} from './plant-lifecycle
 import {snowLightFactor,snowGrowthFactor} from '../world/snowpack.js';
 import {PLANTS} from '../sim/config.js';
 import {SOIL_WATER,plantAvailableWater} from './soil-water.js';
+import {retainedReserveShare,seedRain} from './perennial-regrowth.js';
 export const PLANT_RESOURCE_UNITS=Object.freeze({waterPerBiomass:.5,mineralPerBiomass:.1,energyPerBiomass:1,waterCapacity:2,energyCapacity:.25});
 export const LAND_PRODUCERS=Object.freeze(Object.keys(PLANTS).filter(k=>k!=='rotcap'));
 export function initializePlantResources(w){
@@ -19,7 +20,8 @@ export function validatePlantResources(w,r){
   for(const k of LAND_PRODUCERS)if(!(r.limits?.[k] instanceof Uint8Array)||r.limits[k].length!==w.len||r.limits[k].some(v=>v>4))throw Error('Invalid plant growth limits.');
 }
 export function producerBoundary(s,kind,i,amount,direction,reason){if(!(amount>0)||!PLANTS[kind])return;const r=s.world.plantResources,key=direction==='in'?'biomassImported':'biomassExported';r.totals[key]=(r.totals[key]||0)+amount;if(wNear(s.world,i,s.player?.()||{x:-1,y:-1}))record(s,{type:'transfer',kind,i,amount,direction,reason});}
-export function exportPlantReserve(s,kind,i,before,after){const r=s.world.plantResources,energy=r?.energy[kind];if(energy&&after<before&&before>0){const exported=energy[i]*(1-after/before);energy[i]-=exported;r.totals.reserveExport=(r.totals.reserveExport||0)+exported;}}
+// With perennial regrowth the root share of the reserve stays when standing tissue is removed.
+export function exportPlantReserve(s,kind,i,before,after){const r=s.world.plantResources,energy=r?.energy[kind];if(energy&&after<before&&before>0){const exported=energy[i]*(1-after/before)*(1-retainedReserveShare(s));energy[i]-=exported;r.totals.reserveExport=(r.totals.reserveExport||0)+exported;}}
 function record(s,entry){const r=s.world.plantResources;r.receipts.push({...entry,tick:s.tickCount,day:s.day});if(r.receipts.length>48)r.receipts.shift()}
 export function advancePlantInputs(s){const w=s.world,r=w.plantResources,u=PLANT_RESOURCE_UNITS;r.day=s.day;
   for(let i=0;i<w.len;i++){if(w.water[i])continue;if(SOIL_WATER.enabled){const before=r.water[i];r.water[i]=plantAvailableWater(w,i,u.waterCapacity);r.totals.soilExchange=(r.totals.soilExchange||0)+r.water[i]-before;}else{const before=r.water[i],rain=Math.max(0,s.climate.rain)*.06,shore=(w.seepage[i]||0)*.02,evap=Math.min(before+rain+shore,.025+.035*Math.max(0,s.climate.temp)),next=before+rain+shore-evap,runoff=Math.max(0,next-u.waterCapacity);r.water[i]=Math.min(u.waterCapacity,next);r.totals.rain+=rain;r.totals.shoreInflow+=shore;r.totals.evaporation+=evap;r.totals.runoff+=runoff;}
@@ -54,6 +56,7 @@ export function growLandProducers(s,i,entries,{m,f,temp,scar,grow}){
   const w=s.world,r=w.plantResources,u=PLANT_RESOURCE_UNITS,dispersal=s.dispersal,requests=[],lifecycle=plantLifecycleEnabled(s);
   for(const e of entries){const {kind,p,d,plants,bank,seasonBoost}=e,initial=plants[i];let current=initial;
     if(d?.seedLimited&&current<=.002&&!dispersal.isEstablished(kind,i)){returnPlantLoss(s,kind,i,current);current=current<=.0005&&(!bank||bank[i]<.012)?0:dispersal.germinate(kind,i,m,f,temp);}
+    if(!d?.seedLimited)current=seedRain(s,kind,i,current);
     // Real warm spells kill specialist tissue; it becomes ordinary decomposer
     // litter, not vanished biomass or a synthetic climate multiplier.
     const heatLoss=current*coldFloraDieback(kind,temp);
