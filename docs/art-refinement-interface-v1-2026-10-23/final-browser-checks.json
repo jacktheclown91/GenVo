@@ -1,0 +1,50 @@
+[
+  {
+    "command": [
+      "node",
+      "tools/review-natural-history-menu.cjs",
+      "reports/menu-final-sequential",
+      "--exported",
+      "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-interface-v1-web-20261023-final"
+    ],
+    "exitCode": 0,
+    "stdout": "Natural-history menu comparison PASS: 5 viewport sizes, public selection controls, reachable scrolling, loaded assets and no page errors.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "node",
+      "tools/verify-menu-presentation.cjs",
+      "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-interface-v1-web-20261023-final",
+      "reports/menu-play-final-sequential"
+    ],
+    "exitCode": 0,
+    "stdout": "Menu review build PASS: keyboard selection, genuine new world, normal onboarding and real keyboard movement.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "node",
+      "tools/verify-lab-presentation.cjs",
+      "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-interface-v1-web-20261023-final",
+      "reports/lab-final-sequential"
+    ],
+    "exitCode": 0,
+    "stdout": "Exported Lab PASS: public guided anatomy, exact exported/installed body, modern clock/needs and no inspection hook.\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "node",
+      "tools/review-natural-history-specimen.cjs",
+      "reports/specimen-final-sequential",
+      "--candidate-only",
+      "--modern",
+      "--exported",
+      "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-interface-v1-web-20261023-final"
+    ],
+    "exitCode": 0,
+    "stdout": "Specimen candidate PASS: native retained anatomy, five viewports, exact state parity, eight facings, tabs and dismissal.\n",
+    "stderr": ""
+  }
+]

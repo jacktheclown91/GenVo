@@ -480,7 +480,7 @@ const fpsMeter=(()=>{const el=document.createElement('div');el.id='fpsMeter';el.
 const courtshipTray=new CourtshipTray({getSim:()=>sim,blocked:()=>frontEnd.isOpen||editor.open||succession.open||journal.open||fieldGuide.open||mateOpen,
  onManual:()=>{takeManualControl();applyObserverResult(observer.onManualInput())},
  onFeedback:r=>{if(r.message||!r.ok&&r.reason)tutorial.showToast(r.message||r.reason,2400,r.ok?'success':'warn','action');audio.note(r.ok?'confirm':'deny')},
- onObserve:a=>{sim.discovery.noteCreatureAppearance(a);fieldGuide.setOpen(true)},onDetails:()=>{mateOpen=true;courtshipTray.close()}
+ onObserve:a=>{sim.discovery.noteCreatureAppearance(a);fieldGuide.specimenId=a.bodyPlan?.id?'observed:'+a.bodyPlan.id:null;fieldGuide.page='creatures';fieldGuide.catalogOpen=false;fieldGuide.setOpen(true)},onDetails:()=>{mateOpen=true;courtshipTray.close()}
 });
 pointerApproach=new PointerApproach({getSim:()=>sim,getRegionalCreature:target=>resolveRegionalCreature(sim,renderer.borderTerrain,target),getRegionWorld:origin=>renderer.borderTerrain?.sim===sim?renderer.borderTerrain.views.get(origin.x+','+origin.y)?.world:null,blocked:()=>frontEnd.isOpen||editor.open||succession.open||journal.open||fieldGuide.open||guideOpen||helpOpen||mateOpen||courtshipTray.isOpen});
 const contextTray=new CreatureContextTray({canvas,renderer,braceInput,getSim:()=>sim,
@@ -493,7 +493,7 @@ const contextTray=new CreatureContextTray({canvas,renderer,braceInput,getSim:()=
  onRest:()=>{sim.discovery.cancelTraceFollow();pointerApproach?.cancel();if(sim.paused||sim.playerCombat.attackActive(sim.player()))return;takeManualControl();clearMovementKeys();sim.reproduction.cancelCourtship();courtshipTray.close();const a=sim.player();if(a){a.intent='idle';a.target=null;tutorial.showToast('Resting · regain breath while still. Move to resume.',1800,'safe');audio.note('confirm')}},stageBlocked:()=>tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||fieldGuide.open||journal.open||guideOpen||helpOpen||mindOpen||territoryOpen||shelterOpen||migrationOpen||ecologyOpen||mateOpen||succession.open||leadershipWheel.commandMode,
  onMode:mode=>{if(mode==='combat'&&courtshipTray.isOpen){const id=courtshipTray.targetId;sim.reproduction.cancelCourtship();courtshipTray.close();contextTray.targetId=id;contextTray.world=sim}},blocked:()=>tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||fieldGuide.open||journal.open||guideOpen||helpOpen||mindOpen||territoryOpen||shelterOpen||migrationOpen||ecologyOpen||mateOpen||courtshipTray.isOpen||succession.open||leadershipWheel.commandMode,
  onResult:r=>{if(!(r.ok&&r.type==='trace-follow'))sim.discovery.cancelTraceFollow();pointerApproach?.cancel();takeManualControl();tutorial.onInteraction(r);audio.noteResult(r)},
- onObserve:a=>{sim.discovery.noteCreatureAppearance(a);fieldGuide.setOpen(true)},
+ onObserve:a=>{sim.discovery.noteCreatureAppearance(a);fieldGuide.specimenId=a.bodyPlan?.id?'observed:'+a.bodyPlan.id:null;fieldGuide.page='creatures';fieldGuide.catalogOpen=false;fieldGuide.setOpen(true)},
  onCourt:a=>{takeManualControl();if(!courtshipTray.show(a.id))tutorial.showToast('This creature is not currently an eligible mate.',1800,'warn')}
 });
 setInteractPromptSource(()=>{try{const c=contextTray.directChoice?.();return c?.enabled?c.label:null}catch{return null}});

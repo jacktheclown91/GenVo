@@ -1,5 +1,8 @@
 # Creature specimen presentation handoff
 
+**Current integration:** the prepared changes are applied in runtime source. The instructions and patches below preserve the pre-integration proposal; do not reapply them to active source. Build the current game with `node tools/export-public.mjs <new-empty-directory-outside-source>`. Proposal staging tools intentionally reject already-integrated source. See [integrated evidence and remaining limits](../../art-refinement-interface-v1-2026-10-23/README.md).
+
+
 Creator-selected coordination: checked-in handoff and patches. Shared FieldGuide, main callbacks, index and styles remain unchanged by Codex. Presentation assets live in `assets/ui/`; their imports reuse existing canonical anatomy/rendering/reading modules, which the public exporter already includes. No additional biological authority or asset-loader mechanism is introduced.
 
 ## For Claude

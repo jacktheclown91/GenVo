@@ -1,0 +1,24 @@
+{
+  "schema": "genvo8.canonical-audit/1",
+  "status": "FAIL",
+  "entrypoint": "src/main.js",
+  "totalSourceModules": 403,
+  "runtimeReachableModules": 395,
+  "runtimeDependencyFiles": 408,
+  "toolOrTestModules": [
+    "src/lineage/phenotype-resolver.js",
+    "src/lineage/swimming-review.js",
+    "src/organisms/tissue-construction.js",
+    "src/organisms/tissue-ledger.js",
+    "src/persistence/fauna-page-checkpoint.js",
+    "src/render/authored-draft-compiler.js",
+    "src/render/fauna.js",
+    "src/ui/food-choice-view.js"
+  ],
+  "registeredParts": 97,
+  "proceduralSpriteIds": 97,
+  "identicalSourceCopies": [],
+  "errors": [
+    "Expected derived sprite sheet reference manifest missing"
+  ]
+}

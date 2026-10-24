@@ -1,5 +1,8 @@
 # Creature Lab presentation handoff
 
+**Current integration:** the prepared changes are applied in runtime source. The instructions and patches below preserve the pre-integration proposal; do not reapply them to active source. Build the current game with `node tools/export-public.mjs <new-empty-directory-outside-source>`. Proposal staging tools intentionally reject already-integrated source. See [integrated evidence and remaining limits](../../art-refinement-interface-v1-2026-10-23/README.md).
+
+
 Codex presentation candidate. Canonical shared `index.html`, `styles.css` and `src/ui/creature-editor.js` remain unchanged by this work. The creator selected checked-in patches and handoffs for coordination.
 
 ## For Claude

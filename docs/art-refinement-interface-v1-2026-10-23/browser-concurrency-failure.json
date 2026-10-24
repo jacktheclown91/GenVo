@@ -1,0 +1,6 @@
+{
+  "terminalFailures": "Four parallel Chromium reviews exceeded the existing 30-second initial page-load timeout. All four processes terminated with exit 1; no game assertion was reached.",
+  "nextAction": "Re-run sequentially with unchanged product code, assertions and timeouts.",
+  "initialKeyboardFailure": "Menu verifier checked aria state before native asynchronous initialization. It now waits for native catalog readiness and the unchanged final selection assertion; public Space input remains required.",
+  "approvalDelay": "A subsequent command was not executed because automatic approval review reached its usage limit. Continued only after the stated reset time using the normal approval path."
+}

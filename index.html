@@ -5,6 +5,9 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <title>GenVo</title>
   <link rel="stylesheet" href="styles.css" />
+  <link id="specimenStyle" rel="stylesheet" href="assets/ui/natural-history-specimen.css" />
+  <link rel="stylesheet" href="assets/ui/natural-history-menu.css" />
+  <link rel="stylesheet" href="assets/ui/natural-history-lab.css" />
   <link id="youngCandidateStyle" rel="stylesheet" href="assets/ui/natural-history-young.css" />
   <link rel="stylesheet" href="assets/ui/natural-history-journal.css" />
 </head>
@@ -218,8 +221,8 @@
             <button type="button" role="radio" data-creature="starter-flight"><b>Winged flier</b><span>Takes off and flies over the land.</span></button>
           </div>
           <div class="start-cards" id="newWorldStartCards" role="radiogroup" aria-label="Where to begin"><p class="start-cards-title">Where to begin</p></div>
-          <label class="menu-field menu-field-compact">Seed <small>optional, to replay a world</small><input id="newWorldSeed" maxlength="64" placeholder="Leave blank for a new world" autocomplete="off" /></label>
           <details class="menu-advanced" id="newWorldAdvanced"><summary>Advanced options</summary>
+          <label class="menu-field">Seed <small>optional, to replay a world</small><input id="newWorldSeed" maxlength="64" placeholder="Leave blank for a new world" autocomplete="off" /></label>
           <label class="menu-field">World name<input id="newWorldName" maxlength="40" value="Untamed World" autocomplete="off" /></label>
           <label class="menu-field">Geography<select id="newWorldGeography"><option value="planetary/1" selected>Procedural planet · connected regions</option><option value="freshwater/1">Legacy local world (128×128)</option></select><small>Planet: walk past the edge of a region into new neighbouring land. Legacy: one fixed 128×128 world.</small></label>
           <label class="menu-field">Starting point<select id="newWorldStartingPoint">
