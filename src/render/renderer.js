@@ -25,6 +25,7 @@ import {movementProfile} from '../lineage/lifestyle.js';
 import {drawSnowGround,beginSnowWindow} from './snow-ground-art.js';
 import {botanicalPlantView} from '../ecology/botanical-reproduction.js';
 import {FeedingPresentation,applyFeedingExpression} from './feeding-expression.js';
+import {BirthSettlementPresentation,applyBirthSettlement} from './birth-settlement.js';
 import {drawSubsurface} from './subsurface.js';
 import {drawWorldTraces} from './world-traces.js';
 import {glideGround} from '../lineage/gliding.js';
@@ -1067,6 +1068,8 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const behavior=behaviorVisualState({bodyPlan:a.bodyPlan,id:a.id,action,phase,moving,life,social});
     // Body and joints yield above support; contact shadows/toes stay on the ground.
     if(carriage){behavior.bodyRise+=carriage.rise;behavior.bodySway=(behavior.bodySway||0)+carriage.sway;behavior.torsoTwist=carriage.twist;behavior.dorsalRoll=carriage.roll;behavior.bodyLean=(behavior.bodyLean||0)+carriage.lean}
+    const birth=(this.birthSettlement||=new BirthSettlementPresentation()).sample(this.sim,a,this.encounters?.time||0,{moving,blocked:!!feeding||!!social?.alarm||!!reaction||!!defense||!!fright||!!encounter.move||!!encounter.impact||!!encounter.outcome||!['idle','rest','move','social','forage','eat'].includes(action)});
+    applyBirthSettlement(behavior,birth);
     if(!social?.alarm)applyFeedingExpression(behavior,feeding);
     applyEncounterPose(behavior,encounter);applyEncounterReaction(behavior,reaction);applyDefenseReaction(behavior,defense);applyReactionPose(behavior,fright);
     const attackTarget=a.player&&a.attackAction?.targetId!==undefined?this.sim.animals.find(t=>t.id===a.attackAction.targetId&&t.alive):null;
@@ -1091,7 +1094,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // Record the actual translated sprite surface for DOM obstruction avoidance,
     // including aerial/climbing/depth offsets; UI does not reimplement those rules.
     if(a.player||a.id===this.overlayTargetId){const t=c.getTransform?.();if(t){const radius=Math.ceil(44*scale/2)+2,rx=radius*(Math.abs(t.a)+Math.abs(t.c)),ry=radius*(Math.abs(t.b)+Math.abs(t.d));this.screenBounds.set(a.id,{left:t.e-rx,top:t.f-ry,right:t.e+rx,bottom:t.f+ry,width:rx*2,height:ry*2});}}
-    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:a.player?phase:cachePhase,moving,palette,pose,cacheKey:a.player||feeding||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,cachePhase,moving,pose,life)});
+    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:a.player?phase:cachePhase,moving,palette,pose,cacheKey:a.player||feeding||birth||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,cachePhase,moving,pose,life)});
     if(a.pollenCargo?.mass>0){pixel(c,-3,-3,1,1,scale,'#dfba5b');pixel(c,2,-4,1,1,scale,'#e9d37d');pixel(c,4,-1,1,1,scale,'#cda64e')}
     this.drawLifeEffects(a,scale,frame,pose,palette);
     if(a.player&&['thermal-refuge','thermal-rest'].includes(a.intent)){c.fillStyle='#dce9c1';c.font='bold 11px sans-serif';c.textAlign='center';c.fillText(a.intent==='thermal-refuge'?'Seeking milder ground':'Resting on milder ground',0,-12*scale)}
