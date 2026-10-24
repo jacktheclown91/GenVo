@@ -1,6 +1,7 @@
 import {aquaticFoodAccessible} from '../lineage/diving.js';
 import {salinityAt} from '../world/environment.js';
 import {fundAquaticGrowth,mineralizeOrganic,exportAquaticReserve} from './organic-resource-cycle.js';
+import {aquaticSporeRain} from './perennial-regrowth.js';
 import {coordNoise} from '../core/rng.js';
 import {TISSUE_ENERGY,meatEnergy} from './tissue-energy.js';
 
@@ -71,7 +72,7 @@ export function advanceFreshwater(world){
   for(let i=0;i<world.len;i++){
     if(!world.water[i]||!world.isPlayable(i%world.n+.5,(i/world.n|0)+.5))continue;
     const fresh=Math.max(0,1-salinityAt(world,i)*10),light=Math.max(.15,1-Math.abs(world.temperature[i]-.58)*1.7),nutrients=Math.max(0,Math.min(1,world.fertility[i]));
-    const requests=world.freshwaterProducerKinds.map(kind=>{const p=FRESHWATER_FOOD[kind],field=freshwaterField(world,kind),eligible=!p.minPatch||coordNoise(world.seedHash^0x741ac,i%world.n,i/world.n|0)>p.minPatch;return{kind,field,wanted:eligible&&fresh>0?fresh*Math.min(Math.max(0,p.carry-field[i]),p.growth*light*nutrients*(.1+field[i]/p.carry)):0}});fundAquaticGrowth(world,i,requests,light);
+    const requests=world.freshwaterProducerKinds.map(kind=>{const p=FRESHWATER_FOOD[kind],field=freshwaterField(world,kind),eligible=!p.minPatch||coordNoise(world.seedHash^0x741ac,i%world.n,i/world.n|0)>p.minPatch;field[i]=aquaticSporeRain(world,kind,i,field[i]);return{kind,field,wanted:eligible&&fresh>0?fresh*Math.min(Math.max(0,p.carry-field[i]),p.growth*light*nutrients*(.1+field[i]/p.carry)):0}});fundAquaticGrowth(world,i,requests,light);
     for(const kind of KEYS){const p=FRESHWATER_FOOD[kind],field=freshwaterField(world,kind);
       if(p.minPatch&&coordNoise(world.seedHash^0x741ac,i%world.n,i/world.n|0)<=p.minPatch)continue;
       if(p.source){

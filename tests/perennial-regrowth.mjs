@@ -1,7 +1,8 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {CFG} from '../src/sim/config.js';
-import {PERENNIAL_REGROWTH,seedRain} from '../src/ecology/perennial-regrowth.js';
+import {PERENNIAL_REGROWTH,seedRain,aquaticSporeRain} from '../src/ecology/perennial-regrowth.js';
+import {exportAquaticReserve} from '../src/ecology/organic-resource-cycle.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 
 // Perennial regrowth (2026-10-23): grazing takes only the above-ground share of a plant's reserve, so a
@@ -33,5 +34,27 @@ for(const on of [true,false]){
 {
  const back=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(make(),{savedAt:'t',reason:'t'})));assert.equal(back.perennialRegrowthRules,PERENNIAL_REGROWTH.policy);
  assert.equal(restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(make(false),{savedAt:'t',reason:'t'}))).perennialRegrowthRules,undefined);
+}
+// 5. Aquatic producer reserve retention and spore rain:
+for(const on of [true,false]){
+ const sim=make(on),w=sim.world,wet=w.water.findIndex((v,j)=>v&&w.isPlayable(j%w.n+.5,(j/w.n|0)+.5)&&w.freshwaterFood.algae[j]>.1);
+ assert.ok(wet>=0);
+ const algaeBefore=w.freshwaterFood.algae[wet],energyBefore=w.organicResources.energy.algae[wet];
+ const got=algaeBefore;
+ w.freshwaterFood.algae[wet]=0;
+ exportAquaticReserve(w,'algae',wet,got,algaeBefore);
+ const energyAfter=w.organicResources.energy.algae[wet];
+ assert.ok(Math.abs(energyAfter-(on?energyBefore*PERENNIAL_REGROWTH.rootShare:0))<1e-9,'aquatic producer keeps benthic reserve: '+(on?energyAfter:0));
+}
+{
+ const sim=make(true),w=sim.world,wet=w.water.findIndex((v,j)=>v&&w.isPlayable(j%w.n+.5,(j/w.n|0)+.5)&&w.freshwaterFood.algae[j]>.1);
+ const a=w.freshwaterFood.algae,e=w.organicResources.energy.algae;
+ a[wet]=0;e[wet]=0;
+ const x=wet%w.n,y=wet/w.n|0,cells=[];for(let dy=-1;dy<=1;dy++)for(let dx=-1;dx<=1;dx++)cells.push(w.idx(x+dx,y+dy));
+ const sum=arr=>cells.reduce((t,j)=>t+arr[j],0),a0=sum(a),e0=sum(e);
+ a[wet]=aquaticSporeRain(sim,'algae',wet,0);
+ assert.ok(a[wet]>0,'an aquatic propagule arrives: '+a[wet].toFixed(5));
+ assert.ok(Math.abs(sum(a)-a0)<1e-6&&Math.abs(sum(e)-e0)<1e-12,'aquatic spore rain conserves biomass and reserve');
+ const old=make(false);assert.equal(aquaticSporeRain(old,'algae',wet,0),0,'recorded worlds get no aquatic spore rain');
 }
 console.log('Perennial regrowth PASS: grazing keeps the root reserve and grazed tiles regrow, seed rain conserves biomass and reserve, saved, recorded worlds unchanged.');

@@ -34,7 +34,7 @@ export function endForagingDive(a){delete a.forageDiveSince}
 export function submergeUnderIce(sim,a){
  if(!aquaticForagingEnabled(sim)||!a?.alive||a.player&&!sim.playerAutonomy||a.underground||a.airborne||submerged(a)||!hasGills(a)||!swimsByBody(a))return false;
  const w=sim.world,i=w.idx(a.x,a.y);if(!w.water[i]||!surfaceIceCovered(w.environment,i))return false;
- const column=waterColumn(w,a.x,a.y);if(column<DIVING.minDepth+DIVING.clearance)return false;
+ const column=waterColumn(w,a.x,a.y);if(column<AQUATIC_FORAGING.underIceDepth+DIVING.clearance)return false;
  a.diveAir??=DIVING.airSeconds;a.diveDepth=Math.min(column-DIVING.clearance,AQUATIC_FORAGING.underIceDepth);a.diveTarget=a.diveDepth;a.hidden=false;
  return true;
 }
