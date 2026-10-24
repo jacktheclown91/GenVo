@@ -29,3 +29,7 @@ A separate ordinary exported-world run uses the native C shortcut after six genu
 ## Required large-desktop layout
 
 The additional 1920x1080 case passes in the same application as all five earlier sizes. The complete six-size browser receipt is six-size-browser-receipt.json; the large-desktop frame was inspected. Native pigment, zero portrait edge pixels, visible captions, no horizontal overflow, protected-player clearance, full redraw-state parity and actual queue/undo/clear/back-off controls all pass. Older five-size receipts remain unchanged. Broader notification extremes and mouse approach/completed-performance acceptance remain open.
+
+## Final integration gate
+
+The full unchanged playable gate passes all 106 checks (exit 0) on committed biology b44df973 plus the courtship drawing/style implementation. Later commits add only review tools and documentation; both shipped runtime files match the reviewed export byte-for-byte. Claude's concurrent uncommitted ecology changes are not part of this gate or review and remain untouched. This is automated/browser evidence, not full v1, GPU, creator or release acceptance.
