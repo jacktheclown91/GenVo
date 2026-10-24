@@ -1,0 +1,5 @@
+# Temperature-spell label integration heads-up
+
+Codex baseline audit: genuine fresh THERMAL-REVIEW-3 and THERMAL-REVIEW-41 worlds expose Cold snap and Heatwave respectively. No thermal field/history was injected. The existing fixed canvas label is painted before sensory fog, visibly dimming its right-hand text; the 390x540 cases also overlap 240 square pixels of the shared protected action rectangle. Other four baseline sizes showed no body overlap. Native baseline screenshots and exact scope will be retained.
+
+Codex will separate the thermal atmospheric tint/shimmer from its explanatory label. Atmosphere keeps its current weather-layer order; only the label moves after sensory fog and uses the existing overlay placement authority to avoid actual creature/action bounds, HUD, dock, feedback and open panels. Shared renderer import/call is presentation only. The source reading remains thermalWeatherReading: absent, inactive, underground and submerged cases stay quiet. No weather, climate, fog/senses, physiology, time, movement, save or RNG rule changes. No extra action button is introduced. Concurrent main/UI/biology work remains outside the isolated branch.
