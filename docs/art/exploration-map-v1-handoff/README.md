@@ -1,0 +1,7 @@
+# Exploration map integration heads-up
+
+Codex will add an active read-only Map page to the existing Field Guide. Its only terrain source is the controlled creature's retained sensoryMemory schema-1 records, using sensoryRegionKey and sensoryMemoryCellSize from the shared sensory authority. No live terrain arrays, planet sampling, region restore/load, wildlife positions, food stocks or invented ecological events. Separate remembered region/layer views, current actor marker, discovered site locations labelled as historical records, and fitted/whole-region views use presentation-only controls. Existing Field Guide open/close/blocking and all navigation/gameplay remain authoritative.
+
+The existing four-region/800-cell biological memory policy is not raised, redefined or copied into a second persistent map. This component does not substitute for the remaining full planetary navigation, long-history/family map, streaming or storage architecture. Claude owns those mechanisms and any future exposure of indexed observations or route actions. A future indexed map model must provide observation ownership, region/layer identity, historical timestamps and revisions without loading complete regional simulations. This renderer should consume that authority when exposed.
+
+Shared UI touch: FieldGuide imports the presentation, adds one tab/root, mounts its view and updates that root on native refresh. Original pages, actions and progression remain intact. Scoped specimen CSS only. Exact applied patch and real exported-game evidence follow.
