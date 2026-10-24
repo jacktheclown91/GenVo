@@ -161,3 +161,9 @@ Dates follow the creator's allocation and are targets, not reasons to ship unfin
   - Wildfire burn rate, spread interval, and thunderstorm lightning proposals now scale with the day clock (`CFG.dayTicks / 48`), preserving biological diurnal disturbance rates.
   - On PLANET-OBS-3, strikes at day 90 match 1 vs 1 (previously 1 vs 8), ignitions match 4,179 vs 4,178 (previously 4,179 vs 14,763), and burned biomass matches 6,048 vs 5,946 (previously 6,048 vs 21,759), leaving 20,019 plants instead of collapsing to 2,762.
   - Recorded worlds and existing contracts are bit-for-bit preserved.
+- **2026-10-23, survival and ecosystem recovery** (`docs/ECOSYSTEM-RECOVERY-2026-10-23.md`):
+  - Causal defects resolved: thirst navigation inland traps (`waterRoute`), phantom moist ground oscillation traps (`isDrinkable`), newborn mass-fraction hydration starvation, milk hydration crediting, and aquatic producer reserve retention (60% benthic reserve) with spore rain.
+  - Freshwater grazing intake scaled by metabolic rate; small gilled aquatic creatures submerging beneath winter ice sheets with benthic dive targeting for underwater larvae/detritus; gill osmoregulatory refill scaled to metabolic rate.
+  - Breeding support recalibrated via `dailyMetabolicNeed` in `src/ecology/breeding-support.js` to true 15-day/3.5-day maintenance, eliminating the destructive 242-birth overshoot.
+  - Verification: 0 terrestrial starvation/dehydration deaths in the first 40 days across 3 seeds. Full 360-day run on GENVO8-TEST-A achieves year-round multi-species survival (Mosskip, Rootling, GenVo, Mirelick, Needlejaw all surviving at Day 361), standing plants holding at 19,007 units, and year starvation reduced by 74% (263 to 69).
+  - Playable gate passes 106 of 106 checks.
