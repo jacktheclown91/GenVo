@@ -1,0 +1,11 @@
+# Narrow information-panel notice clearance
+
+Fix for the phone overlap observed at 08dd3baf. When a visible information panel occupies more than three quarters of a viewport up to 650px wide, NotificationCenter reserves a notice area above that panel. Existing notice nodes, channels, message text, queues and expiry timers remain canonical. Wide-screen placement retains chooseOverlayPlacement. Layout state lives only on #app and clears after notices finish, clear(), panel closure or wider resizing. No simulation, save or biological event producers changed. Pre-integration handoff: docs/art/notice-rail-v1-handoff/README.md.
+
+Natural public New World browser observations: notices and requested Help, Population, Home range, Tasks, Journal and Map captured at 1024x768 and 390x844. The browser asserts non-overlap for observed panel bounds when the narrow rail is active. Help, Journal and Map phone captures inspected. Help mouse and native Enter/Space close checks remain in the harness. This closes the specific retained Help-content overlap from the prior pass; it is not complete UI or creator acceptance.
+
+Separately authored UI fixture: three long critical/progress/action notices posted through the actual notification API after ordinary public play. No simulation state was authored. The rail is 180px high, with overflow retained for native scrolling; native mouse wheel scrolling passed and its scrolled frame was inspected. Header and Close remain clear below it. Resizing to 1024 removes the rail; returning narrow restores it; closing Help removes it; all fixture notices expire through their existing timers and Help recovers its ordinary height. This fixture does not prove natural simultaneous critical events or keyboard-only overflow navigation.
+
+Targeted notification-lane, overlay-placement, UI art-direction and UI-presentation checks passed. Canonical source audit and exact public-export check passed. These do not establish a passing release gate; the existing known failures and stale ledger reported in the preceding keycap pass remain outside this change. No test or budget was weakened.
+
+Reproduce: node tools/review-ui-panels-current.cjs reports/ui-notice-rail-new --notice-fixture. The receipt distinguishes natural panel observations from authored burst, resize, closure and expiry observations.

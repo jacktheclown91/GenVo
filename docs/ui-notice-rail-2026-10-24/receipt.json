@@ -1,0 +1,724 @@
+{
+  "scope": "Public fresh-world panel readability observation. No authored simulation state.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [
+    {
+      "panel": "help",
+      "width": 1024,
+      "height": 768,
+      "observed": [
+        {
+          "id": "help",
+          "heading": "How the lineage works",
+          "rect": {
+            "x": 512,
+            "y": 54,
+            "width": 500,
+            "height": 700,
+            "top": 54,
+            "right": 1012,
+            "bottom": 754,
+            "left": 512
+          },
+          "buttons": [
+            {
+              "text": "Close",
+              "aria": "Close help"
+            },
+            {
+              "text": "Save now",
+              "aria": null
+            },
+            {
+              "text": "Load last save",
+              "aria": null
+            }
+          ]
+        }
+      ],
+      "notice": {
+        "rail": false,
+        "rect": {
+          "x": 10,
+          "y": 10,
+          "width": 260,
+          "height": 0,
+          "top": 10,
+          "right": 270,
+          "bottom": 10,
+          "left": 10
+        },
+        "hidden": false
+      },
+      "keyboard": [
+        {
+          "key": "Enter",
+          "events": [
+            {
+              "code": "Enter",
+              "prevented": false,
+              "trusted": true,
+              "pending": false
+            }
+          ]
+        },
+        {
+          "key": "Space",
+          "events": [
+            {
+              "code": "Space",
+              "prevented": false,
+              "trusted": true,
+              "pending": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "panel": "population",
+      "width": 1024,
+      "height": 768,
+      "observed": [
+        {
+          "id": "populations",
+          "heading": "Year 1",
+          "rect": {
+            "x": 472,
+            "y": 54,
+            "width": 540,
+            "height": 625.765625,
+            "top": 54,
+            "right": 1012,
+            "bottom": 679.765625,
+            "left": 472
+          },
+          "buttons": [
+            {
+              "text": "Close",
+              "aria": "Close populations panel"
+            },
+            {
+              "text": "Expand",
+              "aria": "Expand information window"
+            }
+          ]
+        }
+      ],
+      "notice": {
+        "rail": false,
+        "rect": {
+          "x": 10,
+          "y": 10,
+          "width": 260,
+          "height": 85.1875,
+          "top": 10,
+          "right": 270,
+          "bottom": 95.1875,
+          "left": 10
+        },
+        "hidden": false
+      }
+    },
+    {
+      "panel": "territory",
+      "width": 1024,
+      "height": 768,
+      "observed": [
+        {
+          "id": "territory",
+          "heading": "LEARNING",
+          "rect": {
+            "x": 12,
+            "y": 53.015625,
+            "width": 500,
+            "height": 702.984375,
+            "top": 53.015625,
+            "right": 512,
+            "bottom": 756,
+            "left": 12
+          },
+          "buttons": [
+            {
+              "text": "Close",
+              "aria": "Close territory panel"
+            },
+            {
+              "text": "Expand",
+              "aria": "Expand information window"
+            }
+          ]
+        }
+      ],
+      "notice": {
+        "rail": false,
+        "rect": {
+          "x": 650.46875,
+          "y": 10,
+          "width": 260,
+          "height": 85.1875,
+          "top": 10,
+          "right": 910.46875,
+          "bottom": 95.1875,
+          "left": 650.46875
+        },
+        "hidden": false
+      }
+    },
+    {
+      "panel": "guide",
+      "width": 1024,
+      "height": 768,
+      "observed": [
+        {
+          "id": "guide",
+          "heading": "Your first goals",
+          "rect": {
+            "x": 682,
+            "y": 54,
+            "width": 330,
+            "height": 258.75,
+            "top": 54,
+            "right": 1012,
+            "bottom": 312.75,
+            "left": 682
+          },
+          "buttons": []
+        }
+      ],
+      "notice": {
+        "rail": false,
+        "rect": {
+          "x": 10,
+          "y": 10,
+          "width": 260,
+          "height": 85.1875,
+          "top": 10,
+          "right": 270,
+          "bottom": 95.1875,
+          "left": 10
+        },
+        "hidden": false
+      }
+    },
+    {
+      "panel": "journal",
+      "width": 1024,
+      "height": 768,
+      "observed": [
+        {
+          "id": "",
+          "heading": "Genvo Kinwalker Generation 1",
+          "rect": {
+            "x": 12,
+            "y": 12,
+            "width": 600,
+            "height": 744,
+            "top": 12,
+            "right": 612,
+            "bottom": 756,
+            "left": 12
+          },
+          "buttons": [
+            {
+              "text": "Expand",
+              "aria": "Expand information window"
+            },
+            {
+              "text": "Previous",
+              "aria": null
+            },
+            {
+              "text": "Next",
+              "aria": null
+            },
+            {
+              "text": "Close · L",
+              "aria": null
+            }
+          ]
+        }
+      ],
+      "notice": {
+        "rail": false,
+        "rect": {
+          "x": 650.46875,
+          "y": 10,
+          "width": 260,
+          "height": 85.1875,
+          "top": 10,
+          "right": 910.46875,
+          "bottom": 95.1875,
+          "left": 650.46875
+        },
+        "hidden": false
+      }
+    },
+    {
+      "panel": "map",
+      "width": 1024,
+      "height": 768,
+      "observed": [],
+      "notice": {
+        "rail": false,
+        "rect": {
+          "x": 10,
+          "y": 10,
+          "width": 260,
+          "height": 158.578125,
+          "top": 10,
+          "right": 270,
+          "bottom": 168.578125,
+          "left": 10
+        },
+        "hidden": false
+      }
+    },
+    {
+      "panel": "help",
+      "width": 390,
+      "height": 844,
+      "observed": [
+        {
+          "id": "help",
+          "heading": "How the lineage works",
+          "rect": {
+            "x": 8,
+            "y": 141,
+            "width": 374,
+            "height": 693,
+            "top": 141,
+            "right": 382,
+            "bottom": 834,
+            "left": 8
+          },
+          "buttons": [
+            {
+              "text": "Close",
+              "aria": "Close help"
+            },
+            {
+              "text": "Save now",
+              "aria": null
+            },
+            {
+              "text": "Load last save",
+              "aria": null
+            }
+          ]
+        }
+      ],
+      "notice": {
+        "rail": true,
+        "rect": {
+          "x": 8,
+          "y": 8,
+          "width": 374,
+          "height": 124.984375,
+          "top": 8,
+          "right": 382,
+          "bottom": 132.984375,
+          "left": 8
+        },
+        "hidden": false
+      },
+      "keyboard": [
+        {
+          "key": "Enter",
+          "events": [
+            {
+              "code": "Enter",
+              "prevented": false,
+              "trusted": true,
+              "pending": false
+            }
+          ]
+        },
+        {
+          "key": "Space",
+          "events": [
+            {
+              "code": "Space",
+              "prevented": false,
+              "trusted": true,
+              "pending": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "panel": "population",
+      "width": 390,
+      "height": 844,
+      "observed": [
+        {
+          "id": "populations",
+          "heading": "Year 1",
+          "rect": {
+            "x": 8,
+            "y": 85,
+            "width": 374,
+            "height": 749,
+            "top": 85,
+            "right": 382,
+            "bottom": 834,
+            "left": 8
+          },
+          "buttons": [
+            {
+              "text": "Close",
+              "aria": "Close populations panel"
+            },
+            {
+              "text": "Expand",
+              "aria": "Expand information window"
+            }
+          ]
+        }
+      ],
+      "notice": {
+        "rail": true,
+        "rect": {
+          "x": 8,
+          "y": 8,
+          "width": 374,
+          "height": 68.390625,
+          "top": 8,
+          "right": 382,
+          "bottom": 76.390625,
+          "left": 8
+        },
+        "hidden": false
+      }
+    },
+    {
+      "panel": "territory",
+      "width": 390,
+      "height": 844,
+      "observed": [
+        {
+          "id": "territory",
+          "heading": "LEARNING",
+          "rect": {
+            "x": 8,
+            "y": 85,
+            "width": 374,
+            "height": 749,
+            "top": 85,
+            "right": 382,
+            "bottom": 834,
+            "left": 8
+          },
+          "buttons": [
+            {
+              "text": "Close",
+              "aria": "Close territory panel"
+            },
+            {
+              "text": "Expand",
+              "aria": "Expand information window"
+            }
+          ]
+        }
+      ],
+      "notice": {
+        "rail": true,
+        "rect": {
+          "x": 8,
+          "y": 8,
+          "width": 374,
+          "height": 68.390625,
+          "top": 8,
+          "right": 382,
+          "bottom": 76.390625,
+          "left": 8
+        },
+        "hidden": false
+      }
+    },
+    {
+      "panel": "guide",
+      "width": 390,
+      "height": 844,
+      "observed": [
+        {
+          "id": "guide",
+          "heading": "Your first goals",
+          "rect": {
+            "x": 8,
+            "y": 45,
+            "width": 374,
+            "height": 258.75,
+            "top": 45,
+            "right": 382,
+            "bottom": 303.75,
+            "left": 8
+          },
+          "buttons": []
+        }
+      ],
+      "notice": {
+        "rail": false,
+        "rect": {
+          "x": 10,
+          "y": 113.78125,
+          "width": 260,
+          "height": 85.1875,
+          "top": 113.78125,
+          "right": 270,
+          "bottom": 198.96875,
+          "left": 10
+        },
+        "hidden": false
+      }
+    },
+    {
+      "panel": "journal",
+      "width": 390,
+      "height": 844,
+      "observed": [
+        {
+          "id": "",
+          "heading": "Genvo Kinwalker Generation 1",
+          "rect": {
+            "x": 6,
+            "y": 85,
+            "width": 378,
+            "height": 749,
+            "top": 85,
+            "right": 384,
+            "bottom": 834,
+            "left": 6
+          },
+          "buttons": [
+            {
+              "text": "Expand",
+              "aria": "Expand information window"
+            },
+            {
+              "text": "Previous",
+              "aria": null
+            },
+            {
+              "text": "Next",
+              "aria": null
+            },
+            {
+              "text": "Close · L",
+              "aria": null
+            }
+          ]
+        }
+      ],
+      "notice": {
+        "rail": true,
+        "rect": {
+          "x": 8,
+          "y": 8,
+          "width": 374,
+          "height": 68.390625,
+          "top": 8,
+          "right": 382,
+          "bottom": 76.390625,
+          "left": 8
+        },
+        "hidden": false
+      }
+    },
+    {
+      "panel": "map",
+      "width": 390,
+      "height": 844,
+      "observed": [],
+      "notice": {
+        "rail": true,
+        "rect": {
+          "x": 8,
+          "y": 8,
+          "width": 374,
+          "height": 68.390625,
+          "top": 8,
+          "right": 382,
+          "bottom": 76.390625,
+          "left": 8
+        },
+        "hidden": false
+      }
+    }
+  ],
+  "authoredBurst": {
+    "rail": true,
+    "notice": {
+      "x": 8,
+      "y": 8,
+      "width": 374,
+      "height": 180,
+      "top": 8,
+      "right": 382,
+      "bottom": 188,
+      "left": 8
+    },
+    "panel": {
+      "x": 8,
+      "y": 196,
+      "width": 374,
+      "height": 638,
+      "top": 196,
+      "right": 382,
+      "bottom": 834,
+      "left": 8
+    },
+    "scrollHeight": 568,
+    "clientHeight": 180,
+    "lanes": [
+      {
+        "channel": "critical",
+        "hidden": false,
+        "display": "block"
+      },
+      {
+        "channel": "progress",
+        "hidden": false,
+        "display": "block"
+      },
+      {
+        "channel": "action",
+        "hidden": false,
+        "display": "block"
+      }
+    ],
+    "hidden": false
+  },
+  "nativeNoticeScroll": 388,
+  "resizeWide": {
+    "rail": false,
+    "notice": {
+      "x": 10,
+      "y": 10,
+      "width": 260,
+      "height": 719.078125,
+      "top": 10,
+      "right": 270,
+      "bottom": 729.078125,
+      "left": 10
+    },
+    "panel": {
+      "x": 512,
+      "y": 54,
+      "width": 500,
+      "height": 700,
+      "top": 54,
+      "right": 1012,
+      "bottom": 754,
+      "left": 512
+    },
+    "scrollHeight": 719,
+    "clientHeight": 719,
+    "lanes": [
+      {
+        "channel": "critical",
+        "hidden": false,
+        "display": "block"
+      },
+      {
+        "channel": "progress",
+        "hidden": false,
+        "display": "block"
+      },
+      {
+        "channel": "action",
+        "hidden": false,
+        "display": "block"
+      }
+    ],
+    "hidden": false
+  },
+  "closed": {
+    "rail": false,
+    "notice": {
+      "x": 10,
+      "y": 10,
+      "width": 260,
+      "height": 719.078125,
+      "top": 10,
+      "right": 270,
+      "bottom": 729.078125,
+      "left": 10
+    },
+    "panel": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    },
+    "scrollHeight": 719,
+    "clientHeight": 719,
+    "lanes": [
+      {
+        "channel": "critical",
+        "hidden": false,
+        "display": "block"
+      },
+      {
+        "channel": "progress",
+        "hidden": false,
+        "display": "block"
+      },
+      {
+        "channel": "action",
+        "hidden": false,
+        "display": "block"
+      }
+    ],
+    "hidden": false
+  },
+  "expired": {
+    "rail": false,
+    "notice": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0,
+      "top": 0,
+      "right": 0,
+      "bottom": 0,
+      "left": 0
+    },
+    "panel": {
+      "x": 8,
+      "y": 54,
+      "width": 374,
+      "height": 780,
+      "top": 54,
+      "right": 382,
+      "bottom": 834,
+      "left": 8
+    },
+    "scrollHeight": 0,
+    "clientHeight": 0,
+    "lanes": [
+      {
+        "channel": "critical",
+        "hidden": true,
+        "display": "none"
+      },
+      {
+        "channel": "progress",
+        "hidden": true,
+        "display": "none"
+      },
+      {
+        "channel": "action",
+        "hidden": true,
+        "display": "none"
+      }
+    ],
+    "hidden": true
+  }
+}
