@@ -1,0 +1,9 @@
+# Compact action shortcut clarity
+
+Presentation-only follow-up to 5f6083eb. Existing Interact, Drink, Attack, Brace and anatomy-dependent shortcuts receive distinct small keycap badges, separating the action name from E, Shift+E, Space and other actual shortcuts. Disabled controls retain muted badges. No command, key binding, availability rule or controller changed. This checked-in note is the presentation integration handoff.
+
+Actual native Chromium public New World captures were inspected at phone 390x844 and desktop 800x600; 1366x768 is retained too. The utility menu remains open in these captures; the action dock is the review subject. Assertions cover distinct label/key spacing and key containment at five viewports (1920, 1366, 1024, 800 and 390 wide). The existing 19 command bindings, absent directional-crossing control and movement assertion also passed. No biology or climate state was authored. These are browser observations, not creator approval or a full UI acceptance trial. Notification bursts, edge selections, complex anatomy rosters and all detailed panels still need broader review.
+
+Targeted UI presentation, UI art direction and gameplay-action contracts passed. Release-gate runner exited 1: canonical-source passed; ai-disclosure, evolution-contract and provenance matched existing known failures; player-copy-style passed but remains a stale known-failure ledger entry. Zero new failures and zero timeouts are reported, but this is not a passing release gate. The ledger and failure expectations were not edited. See the exact report, including validation input fingerprints.
+
+Reproduce browser review: `node tools/review-ui-clarity-current.cjs reports/ui-action-keycaps-new`. The optional output directory preserves prior capture receipts. The earlier startup movement assertion failure recorded in docs/ui-clarity-2026-10-24 remains unresolved; later passes do not erase it.

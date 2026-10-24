@@ -129,3 +129,9 @@
 #stageUtilities #quickMenu{grid-template-columns:repeat(3,76px);clip-path:none}
 #stageUtilities #quickMenu button{width:76px;clip-path:none}
 #stageUtilities .dock-tool-label{max-width:100%;white-space:normal;text-align:center;line-height:1.2}
+
+/* Separate the action name from its keyboard shortcut in the compact HUD. */
+#interactionDock .creature-stage-resources button{column-gap:5px}
+#interactionDock .creature-stage-resources kbd{display:inline-block;flex:0 0 auto;margin-left:2px;padding:2px 3px;border:1px solid #758063;border-bottom-width:2px;border-radius:2px;background:#15251b;color:#d4d7b6;font:9px/1.1 Verdana,sans-serif;white-space:nowrap}
+#interactionDock .creature-stage-resources button:disabled kbd{color:#a5ad92;border-color:#4e5e46;background:#19271c}
+@media(max-width:600px){#interactionDock .creature-stage-resources button{column-gap:3px}}

@@ -1,0 +1,199 @@
+{
+ "schema": "genvo.test-run/3",
+ "validationCode": {
+  "scope": "src, tools and tests code/configuration; not a release seal",
+  "start": "b8ad6bdf75f2ceac3b24cdf72fb306fb70d2c9d18eba1a9455e2d3043cf9a868",
+  "end": "b8ad6bdf75f2ceac3b24cdf72fb306fb70d2c9d18eba1a9455e2d3043cf9a868",
+  "inputDrift": false
+ },
+ "classificationNote": "byKind counts overlap for mixed suites; unclassified means not yet audited",
+ "mode": "fast",
+ "date": "2026-10-24T23:34:46.490Z",
+ "seconds": 48,
+ "artifacts": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\reports\\ui-action-keycaps-release-gate.artifacts",
+ "total": 5,
+ "pass": 1,
+ "knownFail": 3,
+ "fail": 0,
+ "timeout": 0,
+ "stale": 1,
+ "deferred": 0,
+ "byKind": {
+  "biological-invariant": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "mechanism": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "ecological-observation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "performance": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "historical-expectation": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  },
+  "release-gate": {
+   "pass": 1,
+   "known-fail": 3,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 1,
+   "deferred": 0
+  },
+  "unclassified": {
+   "pass": 0,
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0,
+   "deferred": 0
+  }
+ },
+ "byFailureKind": {
+  "biological-invariant": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "mechanism": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "ecological-observation": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "performance": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "historical-expectation": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 1
+  },
+  "release-gate": {
+   "known-fail": 3,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  },
+  "unclassified": {
+   "known-fail": 0,
+   "fail": 0,
+   "timeout": 0,
+   "stale": 0
+  }
+ },
+ "results": [
+  {
+   "name": "ai-disclosure",
+   "kinds": [
+    "release-gate"
+   ],
+   "failureKind": "release-gate",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/ai-disclosure.mjs:4",
+   "error": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\submission\\AI_DISCLOSURE.txt'\r",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\reports\\ui-action-keycaps-release-gate.artifacts\\ai-disclosure.log",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "canonical-source",
+   "kinds": [
+    "release-gate"
+   ],
+   "failureKind": null,
+   "tier": "fast",
+   "seconds": 0.4,
+   "timeoutSeconds": 120,
+   "status": "pass",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\reports\\ui-action-keycaps-release-gate.artifacts\\canonical-source.log"
+  },
+  {
+   "name": "evolution-contract",
+   "kinds": [
+    "release-gate"
+   ],
+   "failureKind": "release-gate",
+   "tier": "fast",
+   "seconds": 0.3,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/evolution-contract.mjs:15",
+   "error": "Error: ENOENT: no such file or directory, open 'C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\docs\\evolution-expansion\\baseline-v1.33.7\\creature-fixture.json'\r",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\reports\\ui-action-keycaps-release-gate.artifacts\\evolution-contract.log",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "player-copy-style",
+   "kinds": [
+    "release-gate"
+   ],
+   "failureKind": "historical-expectation",
+   "tier": "fast",
+   "seconds": 0.1,
+   "timeoutSeconds": 120,
+   "status": "stale",
+   "at": "",
+   "error": "",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\reports\\ui-action-keycaps-release-gate.artifacts\\player-copy-style.log",
+   "category": "release-bookkeeping"
+  },
+  {
+   "name": "provenance",
+   "kinds": [
+    "release-gate"
+   ],
+   "failureKind": "release-gate",
+   "tier": "fast",
+   "seconds": 47.1,
+   "timeoutSeconds": 120,
+   "status": "known-fail",
+   "at": "tests/provenance.mjs:22",
+   "error": "AssertionError [ERR_ASSERTION]: last ledger record must fingerprint current canonical source tree\r",
+   "logPath": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\genvo-toolkit\\reports\\ui-action-keycaps-release-gate.artifacts\\provenance.log",
+   "category": "release-bookkeeping"
+  }
+ ]
+}
