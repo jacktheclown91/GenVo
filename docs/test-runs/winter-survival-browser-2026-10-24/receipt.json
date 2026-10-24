@@ -1,0 +1,131 @@
+{
+  "servedRoot": "C:\\Users\\jackt\\.gemini\\antigravity\\brain\\dfd7682c-7bf3-477c-b227-5e616c176477\\scratch\\public-winter-session-v2",
+  "seed": "GENVO8-TEST-A",
+  "policies": {
+    "dayClockRules": "day-clock/30s",
+    "metabolismRules": "metabolism/fasting-2",
+    "tissueWaterRules": "tissue-water/1",
+    "winterWaterRules": "winter-water/1",
+    "escapeLandingRules": "escape-landing/1",
+    "tissueEnergyRules": "tissue-energy/1",
+    "perennialRegrowthRules": "perennial-regrowth/1"
+  },
+  "courtship": {
+    "playerAlive": true,
+    "pregnantOrParent": true,
+    "day": 4,
+    "tickCount": 765,
+    "manualControl": true
+  },
+  "shelter": {
+    "id": 1,
+    "integrity": 100,
+    "weatherSeal": 0.78,
+    "day": 4,
+    "lastAction": {
+      "type": "eat",
+      "actorId": 109,
+      "kind": "bramble",
+      "tissue": "crop",
+      "processingCost": 0,
+      "producerGenomeId": "flora4-e75c7f41-d13b7d08",
+      "energyGain": 4.618920576479894,
+      "waterGain": 3.5489064175635576,
+      "tick": 751
+    }
+  },
+  "caching": {
+    "foodStore": 13.8,
+    "capacity": 28,
+    "weatherSeal": 0.68
+  },
+  "offspringCare": {
+    "directiveMode": "home",
+    "livingChildren": 3,
+    "lastPlayerAction": {
+      "type": "eat",
+      "actorId": 109,
+      "kind": "sunmoss",
+      "tissue": null,
+      "processingCost": 0,
+      "energyGain": 4.265133942344271,
+      "waterGain": 0,
+      "tick": 4238
+    },
+    "day": 18
+  },
+  "combat": {
+    "bracing": true,
+    "bracingDuringHold": true,
+    "attackCooldown": 0,
+    "lastPlayerAction": {
+      "type": "eat",
+      "actorId": 109,
+      "kind": "sunmoss",
+      "tissue": null,
+      "processingCost": 0,
+      "energyGain": 4.265133942344271,
+      "waterGain": 0,
+      "tick": 4238
+    }
+  },
+  "winterSnowHydration": {
+    "day": 26,
+    "season": "WINTER",
+    "hydrationBefore": 95.38,
+    "energyBefore": 83.63,
+    "snowBefore": 0.00876,
+    "snowCellIndex": 5808,
+    "availability": {
+      "enabled": true,
+      "reason": "Eat snow · melts for water (costs food)",
+      "winterTarget": {
+        "x": 48.5,
+        "y": 45.5,
+        "snow": true
+      }
+    },
+    "hint": "E · Eat snow · melts for water (costs food)",
+    "hydrationAfter": 99.76,
+    "energyAfter": 83.49,
+    "snowAfter": 0,
+    "lastPlayerAction": {
+      "type": "drink",
+      "actorId": 109,
+      "snow": true,
+      "breakIce": false,
+      "tick": 6008
+    },
+    "winterWaterStats": {
+      "snowWater": 1025.9397676184444,
+      "snowMeltEnergy": 30.778193028553325,
+      "iceAttempts": 1,
+      "iceBreaks": 1
+    }
+  },
+  "saveContinue": {
+    "beforeReload": {
+      "seed": "GENVO8-TEST-A",
+      "day": 26,
+      "season": "WINTER",
+      "tickCount": 6012,
+      "playerId": 109,
+      "winterWaterRules": "winter-water/1",
+      "perennialRegrowthRules": "perennial-regrowth/1",
+      "shelterCount": 1
+    },
+    "afterReload": {
+      "seed": "GENVO8-TEST-A",
+      "day": 26,
+      "season": "WINTER",
+      "tickCount": 6012,
+      "playerId": 109,
+      "winterWaterRules": "winter-water/1",
+      "perennialRegrowthRules": "perennial-regrowth/1",
+      "shelterCount": 1
+    },
+    "exactMatch": true
+  },
+  "errors": [],
+  "misses": []
+}

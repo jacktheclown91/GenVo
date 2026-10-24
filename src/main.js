@@ -79,7 +79,8 @@ let seed=new URLSearchParams(location.search).get('seed')||'GENVO8-8FOLD';
 // with ?day=30 until the ecology under them has been balanced and measured; new worlds otherwise
 // keep the recorded 6-second day and resting costs.
 const DAY_CLOCK_OPT_IN=new URLSearchParams(globalThis.location?.search||'').get('day')==='30';
-let sim=new Simulation(seed,{player:true,dayClock:DAY_CLOCK_OPT_IN,metabolism:DAY_CLOCK_OPT_IN,foodProperties:DAY_CLOCK_OPT_IN});
+const SURVIVAL_OPT_IN={dayClock:DAY_CLOCK_OPT_IN,metabolism:DAY_CLOCK_OPT_IN,foodProperties:DAY_CLOCK_OPT_IN,tissueWater:DAY_CLOCK_OPT_IN,winterWater:DAY_CLOCK_OPT_IN,escapeLanding:DAY_CLOCK_OPT_IN,tissueEnergy:DAY_CLOCK_OPT_IN,perennialRegrowth:DAY_CLOCK_OPT_IN};
+let sim=new Simulation(seed,{player:true,...SURVIVAL_OPT_IN});
 const canvas=document.querySelector('#game'),renderer=new Renderer(canvas,sim),keys={},pauseNotice=document.querySelector('#pauseNotice');
 renderer.zoom=cameraZoom();
 // Camera zoom: mouse wheel over the world, or - and = (presentation only).
@@ -171,7 +172,7 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
   let next,sourceSnapshot;
   if(start==='new'){
     const nextSeed=chosenSeed||'GENVO-'+Math.random().toString(16).slice(2,10).toUpperCase();
-    next=new Simulation(nextSeed,{player:true,dayClock:DAY_CLOCK_OPT_IN,metabolism:DAY_CLOCK_OPT_IN,foodProperties:DAY_CLOCK_OPT_IN,worldGenerator:geography,regionalFrontier:geography==='planetary/1'});
+    next=new Simulation(nextSeed,{player:true,...SURVIVAL_OPT_IN,worldGenerator:geography,regionalFrontier:geography==='planetary/1'});
     // Freeze this world's copy of the living library; later registrations from
     // other worlds never change how this world founds its regions.
     if(next.evolvedLibraryRules){try{const entries=await saveManager.listEvolvedLibrary();if(entries.length)next.foundingLibrary=entries.map(({sightings,...e})=>e)}catch(error){console.warn('Evolutionary library unavailable',error)}}
@@ -301,7 +302,7 @@ function installSimulation(next,{fresh=false,resume=false,keepMovement=false,reg
 }
 function resetRun(){
   const nextSeed='GENVO8-'+Math.random().toString(16).slice(2,8).toUpperCase();
-  installSimulation(new Simulation(nextSeed,{player:true,dayClock:DAY_CLOCK_OPT_IN,metabolism:DAY_CLOCK_OPT_IN,foodProperties:DAY_CLOCK_OPT_IN,worldGenerator:sim.world.generator,regionalFrontier:sim.world.generator==='planetary/1'}),{fresh:true});
+  installSimulation(new Simulation(nextSeed,{player:true,...SURVIVAL_OPT_IN,worldGenerator:sim.world.generator,regionalFrontier:sim.world.generator==='planetary/1'}),{fresh:true});
 }
 async function loadSavedLineage(){
   try{
