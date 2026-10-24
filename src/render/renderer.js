@@ -1068,9 +1068,9 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const behavior=behaviorVisualState({bodyPlan:a.bodyPlan,id:a.id,action,phase,moving,life,social});
     // Body and joints yield above support; contact shadows/toes stay on the ground.
     if(carriage){behavior.bodyRise+=carriage.rise;behavior.bodySway=(behavior.bodySway||0)+carriage.sway;behavior.torsoTwist=carriage.twist;behavior.dorsalRoll=carriage.roll;behavior.bodyLean=(behavior.bodyLean||0)+carriage.lean}
-    const birth=(this.birthSettlement||=new BirthSettlementPresentation()).sample(this.sim,a,this.encounters?.time||0,{moving,blocked:!!feeding||!!social?.alarm||!!reaction||!!defense||!!fright||!!encounter.move||!!encounter.impact||!!encounter.outcome||!['idle','rest','move','social','forage','eat'].includes(action)});
-    applyBirthSettlement(behavior,birth);
+    const birth=(this.birthSettlement||=new BirthSettlementPresentation()).sample(this.sim,a,this.encounters?.time||0,{moving,blocked:!!social?.alarm||!!reaction||!!defense||!!fright||!!encounter.move||!!encounter.impact||!!encounter.outcome||!['idle','rest','move','social','forage','eat','crack'].includes(action)});
     if(!social?.alarm)applyFeedingExpression(behavior,feeding);
+    applyBirthSettlement(behavior,birth,{feeding:!!feeding});
     applyEncounterPose(behavior,encounter);applyEncounterReaction(behavior,reaction);applyDefenseReaction(behavior,defense);applyReactionPose(behavior,fright);
     const attackTarget=a.player&&a.attackAction?.targetId!==undefined?this.sim.animals.find(t=>t.id===a.attackAction.targetId&&t.alive):null;
     const looking=attentionTarget(a,{social,encounter,feeding,committedAim,attackTarget,action});
