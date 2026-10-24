@@ -21,3 +21,10 @@ for(const seed of ['THERMAL-REVIEW-3','THERMAL-REVIEW-41']){
 }
 
 console.log('Weather readout PASS: five viewport body/HUD/feedback clearances, exposure guards, native UTF-8 and real-tick exact canonical state/RNG parity.');
+
+// The open utility grid leaves a narrow side column beside the protected body.
+// Preserve text size and wrap content rather than hiding it behind the dock.
+const compact=thermalWeatherLabelPlacement({width:390,height:540,model:{title:'Cold snap',detail:'Mist - Snowfall - reduced sight'},protectedRects:[{left:155,right:235,top:239,bottom:310}],obstacles:[{left:8,right:382,top:354,bottom:532},{left:140,right:378,top:60,bottom:245},{left:10,right:270,top:10,bottom:94}]});
+for(const b of [{left:155,right:235,top:239,bottom:310},{left:8,right:382,top:354,bottom:532},{left:140,right:378,top:60,bottom:245},{left:10,right:270,top:10,bottom:94}])assert.equal(overlapArea(compact,b),0);
+
+assert.equal(compact.width,120);assert.equal(compact.titleLines.join(' '),'Cold snap');assert.equal(compact.detailLines.join(' '),'Mist - Snowfall - reduced sight');
