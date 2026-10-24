@@ -256,3 +256,8 @@ The existing local thunderstorm warning shares the protected weather plaque abov
 ### Seasonal ground repetition refinement (2026-10-24)
 
 Decorative seasonal surface marks now use original fine-grid variants distributed across cell interiors instead of repeated lower-row L glyphs. Existing seasonalGroundProfile and eligibility remain unchanged; real flora, biomass, hit anchors, substrate, senses, timing and RNG are untouched. Fixed runtimec001f3f passes106 playable checks and five focused checks. Native/full exported old-new-old scenes preserve full saved state and exact baseline, with6550 changed pixels. Four-season fixtures are authored paint states, not natural seasonal history. Local warm-cache painter median old/new .0009/.0010ms per cell; creator/GPU/full v1 acceptance remain open. See docs/art-refinement-seasonal-ground-v1-2026-10-24/README.md.
+
+
+### Open startup short-tap responsiveness observation (2026-10-24)
+
+Read-only public Chromium traces on exact export0775782c show138-252ms startup key-down replay delay during sliced ticks. Requested350ms holds moved8/8; requested100ms taps had zero displacement7/8 after200ms recovery with completed tick. Four misses replayed down/up less than1ms apart; three need additional frame/control investigation. No runtime edits or forced simulation state. This is bounded short-tap evidence, not proof of the original isolated350ms miss cause or a general performance verdict. Claude owns controller/stepper repair; preserve atomic biological ticks and costs. See docs/art/startup-input-v1-handoff/README.md and docs/startup-input-observation-2026-10-24/.
