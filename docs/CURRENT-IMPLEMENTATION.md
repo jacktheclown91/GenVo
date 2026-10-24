@@ -2,6 +2,10 @@
 
 Reviewed October 20, 2026. Governing intent: [current design](../design/CURRENT-DESIGN.md) and the creator's full Creature-stage directive. Code ownership: [implementation authorities](../design/governance/implementation-authorities.json). Full scope and remaining gaps: [completion matrix](FULL-GAME-COMPLETION-MATRIX.md). Earlier checkpoint prose is [historical evidence](history/IMPLEMENTATION-before-live-refresh-2026-10-19.md), not current instructions.
 
+## Live-birth settlement presentation, October 24
+
+Read-only exact live-birth records drive brief parent/newborn body settlement with weak ownership, interruption and native anatomy. The 106-check gate passes; a genuine Day40 newborn A/B comparison preserves exact state. Maternal visual acceptance and a pre-existing nursing-expression failure remain separate. [Evidence, rejected comparisons and remaining scope](art-refinement-live-birth-v1-2026-10-24/README.md). Full action animation, performance, creator and v1 acceptance remain open.
+
 ## Stored-snow ground presentation, October 24
 
 Ground snow now uses original native-32 contours driven solely by stored snowpack and the shared coverage authority, with visual shoreline clipping and no season tint. Paired genuine winter/spring worlds retain exact state. A wide-screen cache regression in the first candidate was rejected; corrected visible-window ownership and verification are documented separately. [Evidence, measured costs and remaining acceptance](art-refinement-snow-ground-v1-2026-10-24/README.md). Full environment, performance, v1 and creator acceptance remain open.

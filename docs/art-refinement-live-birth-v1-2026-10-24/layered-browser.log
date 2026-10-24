@@ -1,0 +1,9 @@
+AssertionError [ERR_ASSERTION]: A genuine rendered birth settlement is required; none is manufactured
+    at C:\Users\jackt\AppData\Local\Temp\genvo-birth-art-20261024\tools\review-live-birth.cjs:10:579 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
