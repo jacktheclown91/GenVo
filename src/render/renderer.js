@@ -22,7 +22,7 @@ import {gaitTravelFor} from './genvo.js';
 import {assemblyFor} from './creature-assembler.js';
 import {locomotionStyle,locomotionOffsets} from './locomotion-style.js';
 import {movementProfile} from '../lineage/lifestyle.js';
-import {snowCover} from '../world/snowpack.js';
+import {drawSnowGround} from './snow-ground-art.js';
 import {botanicalPlantView} from '../ecology/botanical-reproduction.js';
 import {FeedingPresentation,applyFeedingExpression} from './feeding-expression.js';
 import {drawSubsurface} from './subsurface.js';
@@ -413,19 +413,8 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     for(let y=Math.max(0,startY);y<Math.min(w.n,startY+rows);y++)
       for(let x=Math.max(0,startX);x<Math.min(w.n,startX+cols);x++){
         const i=y*w.n+x;if(w.water[i]||depth[i]<.012)continue;
-        const cover=snowCover(w,i),px=Math.round((x-this.camera.x)*tile+this.w/2),py=Math.round((y-this.camera.y)*tile+this.h/2),
-          q=hash2(x,y,5531),r=hash2(x,y,5537);
-        // Irregular 32-grid top-down snow drifts and exposed gravel. This is
-        // surface coverage from real stored snowfall, not a winter season tint.
-        c.save();c.globalAlpha*=Math.min(.91,.22+cover*.72);
-        c.fillStyle='#dce9e7';
-        if(cover>.54){c.fillRect(px+tile*.06,py+tile*.06,tile*.82,tile*.68);
-          c.fillRect(px+tile*.15,py+tile*.69,tile*.66,tile*.22)}
-        else{c.fillRect(px+tile*(q>.5?.18:.04),py+tile*.20,tile*(.21+cover*.36),tile*(.15+cover*.24));
-          c.fillRect(px+tile*.51,py+tile*(r>.5?.62:.45),tile*(.15+cover*.28),tile*.15)}
-        c.fillStyle='#f1f7f3';
-        c.fillRect(px+tile*(.24+q*.17),py+tile*.14,tile*.18,tile*.06);
-        c.restore();drawn++;
+        const px=Math.round((x-this.camera.x)*tile+this.w/2),py=Math.round((y-this.camera.y)*tile+this.h/2);
+        if(drawSnowGround(c,{world:w,x,y,px,py,tile,waterMask:this.visualWaterMask?.(x,y)}))drawn++;
       }
     return drawn;
   }
