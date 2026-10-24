@@ -1,0 +1,26 @@
+{
+  "scope": "Official scenario open with exact encoded-graph roundtrip; actual saved shelter identity and biological RNG restored. No continuation time or new physical outcome claimed.",
+  "day": 4,
+  "tick": 750,
+  "shelters": [
+    {
+      "id": 1,
+      "ownerId": 109,
+      "x": 109.5,
+      "y": 61.5,
+      "integrity": 100,
+      "weatherSeal": 0.78,
+      "foodStore": 2.3385599999999998,
+      "capacity": 28,
+      "kind": "family",
+      "pairKey": null,
+      "foundingGeneration": 1,
+      "denStyle": null,
+      "constructedDay": 4,
+      "constructedYear": 1,
+      "lastUsedTick": 738
+    }
+  ],
+  "rngParity": true,
+  "transportGraphParity": true
+}
