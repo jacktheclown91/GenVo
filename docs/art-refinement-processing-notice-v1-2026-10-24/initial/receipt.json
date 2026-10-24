@@ -1,0 +1,89 @@
+{
+  "scope": "Authored notice content fixtures. Native mouse/keyboard disclosure, stable node/open state and original canonical diagnostic strings. Not live integration/backlog, gameplay placement, simulation performance or creator acceptance.",
+  "cases": [
+    {
+      "width": 1024,
+      "first": [
+        {
+          "id": "delay",
+          "message": "Processing load - 195 living organisms, 0 eggs. All offspring are retained. Simulation is running behind; 0.8 simulation seconds queued. Updates continue in order.",
+          "hidden": false
+        },
+        {
+          "id": "crowded",
+          "message": "Processing capacity warning - 400 living organisms, 18 eggs. All offspring are retained. Simulation may run more slowly.",
+          "hidden": false
+        },
+        {
+          "id": "regional",
+          "message": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+          "hidden": false
+        },
+        {
+          "id": "quiet",
+          "message": "",
+          "hidden": true
+        }
+      ],
+      "retained": {
+        "sameNode": true,
+        "open": true,
+        "detail": "Processing load - 195 living organisms, 0 eggs. All offspring are retained. Simulation is running behind; 1.2 simulation seconds queued. Updates continue in order.",
+        "message": "Processing load - 195 living organisms, 0 eggs. All offspring are retained. Simulation is running behind; 1.2 simulation seconds queued. Updates continue in order.",
+        "outerStylePreserved": true
+      },
+      "bounds": {
+        "width": 1024,
+        "scrollWidth": 1024
+      },
+      "moved": {
+        "sameNode": true,
+        "open": true,
+        "parent": "reserved",
+        "role": "status"
+      }
+    },
+    {
+      "width": 390,
+      "first": [
+        {
+          "id": "delay",
+          "message": "Processing load - 195 living organisms, 0 eggs. All offspring are retained. Simulation is running behind; 0.8 simulation seconds queued. Updates continue in order.",
+          "hidden": false
+        },
+        {
+          "id": "crowded",
+          "message": "Processing capacity warning - 400 living organisms, 18 eggs. All offspring are retained. Simulation may run more slowly.",
+          "hidden": false
+        },
+        {
+          "id": "regional",
+          "message": "Simulating life in visited regions. Local time waits while all organisms continue in order.",
+          "hidden": false
+        },
+        {
+          "id": "quiet",
+          "message": "",
+          "hidden": true
+        }
+      ],
+      "retained": {
+        "sameNode": true,
+        "open": true,
+        "detail": "Processing load - 195 living organisms, 0 eggs. All offspring are retained. Simulation is running behind; 1.2 simulation seconds queued. Updates continue in order.",
+        "message": "Processing load - 195 living organisms, 0 eggs. All offspring are retained. Simulation is running behind; 1.2 simulation seconds queued. Updates continue in order.",
+        "outerStylePreserved": true
+      },
+      "bounds": {
+        "width": 390,
+        "scrollWidth": 390
+      },
+      "moved": {
+        "sameNode": true,
+        "open": true,
+        "parent": "reserved",
+        "role": "status"
+      }
+    }
+  ]
+}
