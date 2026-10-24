@@ -56,6 +56,7 @@ import {behaviorVisualState,visualActionFromIntent} from './behavior.js';
 import {drawGenvoSprite,SPRITE_BATCH,beginSpriteBatch,endSpriteBatch,spriteBatchAfterFlush,spriteBatchBeforeFlush} from './genvo-draw.js';
 import {creaturePalette} from './creature-palette.js';
 import {drawSite} from './sites.js';
+import {drawShelterArt,shelterLiquidRain} from './shelter-art.js';
 import {drawRiparianDepth,drawHabitatClusterAccents} from './habitat-detail.js';
 import {drawDisturbedSoil} from './soil-activity.js';
 import {VisualMotionTracker} from './motion.js';
@@ -325,28 +326,10 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     }
     for(const sh of this.sim.shelter?.shelters||[]){
       if(sh.integrity<=0)continue;
-      const px=Math.round((sh.x-this.camera.x)*tile+this.w/2),py=Math.round((sh.y-this.camera.y)*tile+this.h/2),satellite=sh.kind==='satellite';
+      const px=Math.round((sh.x-this.camera.x)*tile+this.w/2),py=Math.round((sh.y-this.camera.y)*tile+this.h/2);
       if(Math.abs(px)>this.w+tile||Math.abs(py)>this.h+tile)continue;
       c.save();
-      const burrow=sh.denStyle==='burrow';
-      c.fillStyle='rgba(0,0,0,.28)';c.fillRect(px-8*s,py+4*s,16*s,3*s);
-      if(burrow){
-        c.fillStyle='#4a3927';c.fillRect(px-9*s,py,18*s,5*s);c.fillRect(px-7*s,py-3*s,14*s,4*s);
-        c.fillStyle='#75603b';c.fillRect(px-6*s,py-5*s,12*s,3*s);c.fillStyle='#59633d';c.fillRect(px-8*s,py-4*s,4*s,2*s);c.fillRect(px+4*s,py-4*s,4*s,2*s);
-        c.fillStyle='#171812';c.fillRect(px-3*s,py,6*s,6*s);c.fillStyle='#9b7546';c.fillRect(px-9*s,py+1*s,3*s,2*s);c.fillRect(px+6*s,py+1*s,3*s,2*s);
-      }else{
-        c.fillStyle='#453526';c.fillRect(px-7*s,py-1*s,14*s,6*s);
-        c.fillStyle='#745b38';c.fillRect(px-6*s,py-4*s,12*s,5*s);
-        c.fillStyle=satellite?'#7c8450':'#879255';c.fillRect(px-5*s,py-6*s,10*s,3*s);
-        c.fillStyle=satellite?'#c1a566':'#a3a064';c.fillRect(px-3*s,py-7*s,6*s,2*s);
-        if(satellite){c.fillStyle='#d1b56e';c.fillRect(px-8*s,py-5*s,2*s,s);c.fillRect(px+6*s,py-5*s,2*s,s)}
-        c.fillStyle='#1d241b';c.fillRect(px-2*s,py,4*s,5*s);
-        c.fillStyle='#aa8250';c.fillRect(px-7*s,py-2*s,2*s,5*s);c.fillRect(px+5*s,py-2*s,2*s,5*s);
-      }
-      const wear=1-sh.integrity/100,seal=this.sim.shelter?.weatherSeal?.(sh)??.78;if(wear>.18){c.fillStyle='#392d22';c.fillRect(px+2*s,py-5*s,2*s,3*s);if(wear>.45)c.fillRect(px-5*s,py-4*s,3*s,2*s)}
-      if(seal>.86){c.fillStyle='#c2b174';c.fillRect(px-5*s,py-6*s,10*s,s);c.fillStyle='#5a4930';c.fillRect(px-4*s,py-7*s,s,3*s);c.fillRect(px+3*s,py-7*s,s,3*s)}
-      else if(seal<.52){c.fillStyle='#2d261f';c.fillRect(px-4*s,py-6*s,2*s,2*s);c.fillRect(px+2*s,py-5*s,2*s,2*s);if((this.sim.climate?.rain??0)>.5){c.fillStyle='rgba(91,137,150,.82)';c.fillRect(px-3*s,py-3*s,s,2*s);c.fillRect(px+3*s,py-2*s,s,2*s)}}
-      if(sh.foodStore>0.2){c.fillStyle='#c0ad62';c.fillRect(px-6*s,py+2*s,2*s,2*s);c.fillStyle='#6f7f47';c.fillRect(px-5*s,py+1*s,2*s,2*s)}
+      c.translate(px,py);drawShelterArt(c,sh,{scale:s,seal:this.sim.shelter?.weatherSeal?.(sh)??.78,rain:shelterLiquidRain(this.sim,sh)});c.translate(-px,-py);
       if(this.sim.shelter.showOverlay){
         c.strokeStyle='rgba(224,190,117,.86)';c.lineWidth=2;c.setLineDash([4,3]);c.beginPath();c.arc(px,py,1.55*tile,0,Math.PI*2);c.stroke();c.setLineDash([]);
         const active=this.sim.player();const snap=active?this.sim.shelter.snapshot(active):null;

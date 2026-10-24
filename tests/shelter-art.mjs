@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {drawShelterArt,shelterArtState,shelterLiquidRain} from '../src/render/shelter-art.js';
+import {VISIBILITY} from '../src/ecology/atmospheric-visibility.js';
+const calls=[],ctx={set fillStyle(v){},fillRect(...r){assert.ok(r.every(Number.isFinite));assert.ok(r[2]>=1&&r[3]>=1);calls.push(r)}};
+for(const denStyle of [null,'burrow'])for(const integrity of [100,75,35,0])for(const foodStore of [0,1,15,28]){const sh=Object.freeze({id:7,x:4,y:5,kind:'family',denStyle,integrity,foodStore,capacity:28}),before=JSON.stringify(sh);calls.length=0;drawShelterArt(ctx,sh,{scale:2,seal:.4,rain:.8});assert.ok(calls.every(([x,y,w,h])=>x>=-16&&y>=-16&&x+w<=16&&y+h<=16),'native shelter stays inside its 32px footprint');assert.equal(JSON.stringify(sh),before);assert.equal(calls.length>0,integrity>0);assert.ok(calls.every(r=>r.every(Number.isInteger)),'native scale2 draws integer art pixels');assert.equal(shelterArtState(sh).fill,foodStore/28)}
+const sh={id:1,x:0,y:0,integrity:100,foodStore:0,capacity:28};assert.equal(shelterArtState(sh,{seal:.4,rain:0}).dripping,false);assert.equal(shelterArtState(sh,{seal:.9,rain:1}).dripping,false);assert.equal(shelterArtState(sh,{seal:.4,rain:.5}).dripping,true);
+// Authored atmosphere fixture, not elapsed weather or shelter gameplay.
+const sim={visibilityRules:VISIBILITY.policy,day:1,world:{idx:()=>0,n:1,len:1,temperature:new Float32Array([.8]),moisture:new Float32Array([.8])},climate:{temp:.8,rain:0}};
+assert.equal(shelterLiquidRain(sim,sh),0);sim.climate.rain=.9;assert.ok(shelterLiquidRain(sim,sh)>.5);sim.climate.temp=-.1;assert.equal(shelterLiquidRain(sim,sh),0,'snow-only precipitation never makes liquid drips');delete sim.visibilityRules;assert.equal(shelterLiquidRain(sim,sh),0,'unsupported atmosphere does not manufacture a cue');
+console.log('Shelter art PASS: native finite condition/reserve states, input immutability, actual canonical liquid/snow split under labelled atmosphere fixtures; no gameplay acceptance.');
