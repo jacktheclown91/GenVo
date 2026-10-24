@@ -1,0 +1,3 @@
+# Main action-bar cleanup heads-up
+
+Creator request: remove unused/redundant UI buttons, specifically the main-UI directional Cross south control. Codex will remove the Cross Region quick-command button and its label/invocation branches from CreatureContextTray. Ordinary keyboard and pointer regional movement, the existing group-travel mode and the explicit keyboard group-crossing path retain their gameplay owners. No crossing mechanics, resources, costs, migration or save semantics change. Main source has concurrent flora inheritance/persistence changes; those are excluded and preserved. Other action-bar entries are audited for actual handlers and capability gating rather than removed merely because temporarily unavailable.
