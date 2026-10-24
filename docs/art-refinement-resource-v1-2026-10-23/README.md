@@ -19,3 +19,7 @@ The parent e2c2b35f passed the 106-check full playable gate. That full biology s
 Run node tools/export-public.mjs <new-output>, then node tools/review-resource-inspector.cjs <export> <new-report>. Current review export: C:\Users\jackt\AppData\Local\Temp\genvo-resource-v1-web-20261023-verified.
 
 The checked-in handoff and applied runtime patch are in ../art/resource-inspector-v1-handoff/. Do not reapply the historical patch to integrated source. Raw before/current screenshots and receipts are preserved with SHA verification in reports/art-session-20261023-resource-v1-raw in the canonical development checkout. All symbols are original code-native vector artwork with no external samples, images, models or new licences.
+
+## Combined source verification
+
+Before integration, main advanced to Claude's 0ab862ea (aquatic regrowth, newborn hydration and thirst navigation). That committed biology is merged normally, without changing its policies. All nine relevant checks now pass, including the expanded perennial-regrowth check. The combined source audit and exact 837-file public export pass. A fresh 18-case native browser review again passes actual perceived targets, complete redraw graph parity, protected player/action bar, native details/expand/close and public radial Inspect. Original evidence remains unchanged. The full 106-check suite is evidence on the earlier parent only; it is not claimed for the newly merged biology. Current combined review export: C:\Users\jackt\AppData\Local\Temp\genvo-resource-v1-web-20261023-combined.

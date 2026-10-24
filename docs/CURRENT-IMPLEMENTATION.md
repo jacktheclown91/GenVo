@@ -12,7 +12,7 @@ Environmental audio follow-up: original nonvocal field, damp-ground and water be
 
 Courtship presentation now displays the actual performer and partner with shared fitted native portraits, visible labels and coherent controls. Nine focused checks, six-size exported-browser layout/pigment/state parity and native queue controls pass; [evidence and limits](art-refinement-courtship-v1-2026-10-23/README.md). Live performance and creator acceptance remain open.
 
-World-object inspector presentation adds labelled object symbols to previously blank headers, keeps native plant/seed drawings and protects the actor and survival controls. Eight focused checks, exact public export, source audit and 18 six-size native browser cases pass; [scope and limits](art-refinement-resource-v1-2026-10-23/README.md). Full v1 and creator acceptance remain open.
+World-object inspector presentation adds labelled object symbols to previously blank headers, keeps native plant/seed drawings and protects the actor and survival controls. Nine combined focused checks, exact public export, source audit and 18 six-size native browser cases pass; [scope and limits](art-refinement-resource-v1-2026-10-23/README.md). Full v1 and creator acceptance remain open.
 
 ## Source and ownership
 
