@@ -66,4 +66,18 @@ const place=(a,x,y)=>{a.x=x;a.y=y};
  const old=make(false),a=old.animals.find(x=>x.alive&&!x.player);old.world.soilWater.snowpack[old.world.idx(a.x,a.y)]=.2;assert.equal(winterWaterTarget(old,a),null);
  assert.equal(restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(old,{savedAt:'t',reason:'t'}))).winterWaterRules,undefined);
 }
+// 6. Manual player parity: playerDrink and contextual interactions eat snow under the same winter-water authority.
+{
+ const sim=make(),w=sim.world,p=sim.player(),s=SPECIES[p.species];
+ for(let i=0;i<w.len;i++)if(w.water[i]&&w.environment.volume[i]>.04)freeze(sim,i,.3);
+ w.buildHydrology();
+ for(let y=6;y<w.n-6;y++)for(let x=6;x<w.n-6;x++)if(!w.water[w.idx(x,y)]&&w.isPlayable(x+.5,y+.5)&&!w.isDrinkable(x+.5,y+.5)){place(p,x+.5,y+.5);y=w.n;break}
+ const j=w.idx(p.x,p.y);w.soilWater.snowpack[j]=.08;
+ p.hydration=s.maxHydration*.3;
+ const avail=sim.resourceAvailability('drink');
+ assert.ok(avail.enabled&&avail.winterTarget?.snow,'manual player sees snow as drinkable when water is frozen');
+ const beforeWater=p.hydration,beforeEnergy=p.energy,beforeSnow=w.soilWater.snowpack[j];
+ const res=sim.playerDrink();
+ assert.ok(res.ok&&p.hydration>beforeWater&&p.energy<beforeEnergy&&w.soilWater.snowpack[j]<beforeSnow,'manual player melts and drinks snow at the real energy cost');
+}
 console.log('Winter water PASS: thin ice breaks at a cost, thick ice holds, snow water is finite and costs energy to melt, saved, recorded worlds unchanged.');

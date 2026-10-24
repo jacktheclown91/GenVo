@@ -139,7 +139,7 @@ import {PREDATION_PARITY} from '../gameplay/predation-parity.js';
 import {REFUGE_PARITY,refugeAgainst,coverHides,refugeTarget,still} from '../ecology/refuges.js';
 import {PHYSIOLOGY_PARITY,breadthBonusFor,noteFoodGroup,mealBiteFor,plantMealWater,FOOD_PROPERTIES} from '../ecology/physiology.js';
 import {TISSUE_WATER,waterFromPrey,depositCarcassWater,waterFromCarrion,dryCarrion} from '../ecology/tissue-water.js';
-import {WINTER_WATER,winterWaterTarget,resolveWinterWater} from '../ecology/winter-water.js';
+import {WINTER_WATER,winterWaterTarget,resolveWinterWater,winterWaterActive} from '../ecology/winter-water.js';
 import {ESCAPE_LANDING,escapeLandingActive,escapeJumpDirection} from '../ecology/escape-landing.js';
 import {PERENNIAL_REGROWTH} from '../ecology/perennial-regrowth.js';
 import {TISSUE_ENERGY,tissueEnergyActive,tissueEnergy,meatEnergy,killMealLimit} from '../ecology/tissue-energy.js';
@@ -809,7 +809,22 @@ export class Simulation{
     if(a.airborne||a.perched)return{enabled:false,reason:'Use a surface position for ground food and water; canopy feeding has its own action.'};
     if(type==='drink'&&a.underground)return caveDrinkAvailability(this,a);
     if(type==='drink'&&submerged(a))return{enabled:false,reason:'Rise to the surface before drinking.'};
-    if(type==='drink'){if(!this.world.isDrinkable(a.x,a.y))return{enabled:false,reason:'Move beside drinkable water.'};const spec=SPECIES[a.species],limit=Math.min((this.discovery?.poolBonus?.(a)||0)+(partEffectFactors(a)?.mouthFood?.drinkEnergy||0),spec.maxEnergy-a.energy);if(a.hydration>=spec.maxHydration-.05&&!freshwaterHarvestCandidate(this,a,limit))return{enabled:false,reason:'Already hydrated; no usable filter food here.'};return{enabled:true,reason:''}}
+    if(type==='drink'){
+      const spec=SPECIES[a.species];
+      if(!this.world.isDrinkable(a.x,a.y)){
+        if(winterWaterActive(this)){
+          const target=winterWaterTarget(this,a,{edgeRadius:1,snowRadius:1,maxDistance:.8});
+          if(target){
+            if(a.hydration>=spec.maxHydration-.05)return{enabled:false,reason:'Already hydrated.'};
+            return{enabled:true,reason:target.snow?'Eat snow · melts for water (costs food)':'Break surface ice for water',winterTarget:target};
+          }
+        }
+        return{enabled:false,reason:'Move beside drinkable water.'};
+      }
+      const limit=Math.min((this.discovery?.poolBonus?.(a)||0)+(partEffectFactors(a)?.mouthFood?.drinkEnergy||0),spec.maxEnergy-a.energy);
+      if(a.hydration>=spec.maxHydration-.05&&!freshwaterHarvestCandidate(this,a,limit))return{enabled:false,reason:'Already hydrated; no usable filter food here.'};
+      return{enabled:true,reason:''};
+    }
     if(type==='eat')return this.foraging.availability(a);
     return{enabled:false,reason:'Unknown resource action.'};
   }
@@ -820,7 +835,16 @@ export class Simulation{
     if(!target)return{...base,state:base.enabled?'available':'unavailable'};
     const w=this.world;
     if(type==='drink'){
-      if(a.underground||target.kind==='cave-water')return caveDrinkAvailability(this,a,target);
+      if(a.underground||target?.kind==='cave-water')return caveDrinkAvailability(this,a,target);
+      if(target?.snow||target?.breakIce!=null||target?.kind==='snow'||target?.winterTarget){
+        const wt=target.winterTarget||target;
+        const d=Math.hypot(wt.x-a.x,wt.y-a.y);
+        const enabled=d<=1.2&&base.enabled;
+        return{state:enabled?'available':d<=3.0?'approachable':'unavailable',enabled,reason:base.reason||(wt.snow?'Eat snow · melts for water (costs food)':'Break surface ice for water'),winterTarget:wt};
+      }
+      if(base.winterTarget){
+        return{state:'available',enabled:true,reason:base.reason,winterTarget:base.winterTarget};
+      }
       if(target.kind!=='water'||!w.water[target.i])return fail('That water source is no longer present.');
       const spec=SPECIES[a.species],limit=Math.min((this.discovery?.poolBonus?.(a)||0)+(partEffectFactors(a)?.mouthFood?.drinkEnergy||0),spec.maxEnergy-a.energy);if(a.hydration>=spec.maxHydration-.05&&!freshwaterHarvestCandidate(this,a,limit,target))return fail('Already hydrated; no usable filter food at this source.');
       const adjacent=Math.abs(Math.floor(a.x)-Math.floor(target.x))<=1&&Math.abs(Math.floor(a.y)-Math.floor(target.y))<=1;
@@ -841,6 +865,16 @@ export class Simulation{
     const status=this.resourceAction('drink',target);if(!status.enabled)return{ok:false,type:'drink',message:status.reason};
     const a=this.player(),s=SPECIES[a.species];
     if(a.underground)return drinkCaveWater(this,a,{target});
+    if(status.winterTarget||target?.snow||target?.breakIce!=null||(winterWaterActive(this)&&!this.world.isDrinkable(a.x,a.y))){
+      const wt=status.winterTarget||(target?.snow||target?.breakIce!=null?target:winterWaterTarget(this,a,{edgeRadius:1,snowRadius:1,maxDistance:.8}));
+      if(wt){
+        a.target=wt;
+        if(resolveWinterWater(this,a)){
+          this.lastPlayerAction={type:'drink',actorId:a.id,snow:!!wt.snow,breakIce:wt.breakIce!=null,tick:this.tickCount};
+          return{ok:true,type:'drink',message:wt.snow?'Melted and drank snow · costs food energy.':'Broke ice for drinking water.'};
+        }
+      }
+    }
 
     if(a.hidden)a.hidden=false;
     const before=a.hydration;a.hydration=Math.min(s.maxHydration,a.hydration+Math.max(18,s.maxHydration*.22));this.cognition.onDrink(a);const pool=this.discovery?.poolBonus?.(a)||0,filter=partEffectFactors(a)?.mouthFood?.drinkEnergy||0;const meal=harvestFreshwater(this,a,Math.min(pool+filter,s.maxEnergy-a.energy),target);if(meal){a.energy+=meal.energyGain;this.cognition.onFeed(a,meal.kind);this.foraging.rememberPatch(a,meal.kind,a.x,a.y,{meal:true});this.family.notePracticeInteraction(a,'food',{x:(a.lastFreshwaterMeal.i%this.world.n)+.5,y:Math.floor(a.lastFreshwaterMeal.i/this.world.n)+.5,kind:meal.kind,amount:meal.amount});this.lastPlayerAction={type:'drink',actorId:a.id,kind:meal.kind,energyGain:meal.energyGain,tick:this.tickCount};return{ok:true,type:'drink',message:`Drank and ate ${meal.kind} · +${meal.energyGain.toFixed(1)} energy.`}}
@@ -857,6 +891,12 @@ export class Simulation{
     const a=this.player();if(!a)return'';const s=SPECIES[a.species];
     const stalker=this.nearestPlayerCombatTarget(a,CFG.attack.stalkerReach);if(stalker){const phase=stalker.playerHunt?.phase,label=SPECIES[stalker.species].label;if(phase==='recover')return`Space · Opening bite ${label} · or retreat`;if(phase==='windup')return`Space · Counterbite ${label} · J brace · or sidestep`;return`Space · Bite ${label} · J brace`}
     if(this.world.isDrinkable(a.x,a.y))return a.hidden?'E · Drink water · reveals cover':'E · Drink water';
+    if(winterWaterActive(this)){
+      const wt=winterWaterTarget(this,a,{edgeRadius:1,snowRadius:1,maxDistance:.8});
+      if(wt){
+        return wt.snow?'E · Eat snow · melts for water (costs food)':'E · Break surface ice';
+      }
+    }
     const pounce=this.playerCombat?.pounceHint?.(a);if(pounce)return pounce;
     let prey=null,preyD=1.45;for(const other of this.animals){if(!other.alive||other.id===a.id||!(preyPreference(a,other)>0))continue;const d=Math.hypot(other.x-a.x,other.y-a.y);if(d<preyD){preyD=d;prey=other}}
     if(prey)return a.hidden?`Space · Hunt ${SPECIES[prey.species].label} · reveals cover`:`Space · Hunt ${SPECIES[prey.species].label}`;

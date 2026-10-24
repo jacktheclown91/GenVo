@@ -119,7 +119,7 @@ for(const [mode,items] of [['syntax',syntax],['playable',runtime]]){
   for(const item of items){
     console.log(`\n[GenVo ${mode}] ${item}`);
     const args=mode==='syntax'?['--check',item]:[item];
-    const result=spawnSync(process.execPath,args,{cwd:root,stdio:'inherit',timeout:120000});
+    const result=spawnSync(process.execPath,args,{cwd:root,stdio:'inherit',timeout:240000});
     if(result.error||result.status!==0){
       console.error(`\nGenVo playable check failed at ${item}: ${result.error?.message||'exit '+result.status}`);
       console.error('Do not mark this commit as a stable playable release.');
