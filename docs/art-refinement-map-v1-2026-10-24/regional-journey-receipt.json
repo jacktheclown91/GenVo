@@ -1,0 +1,67 @@
+{
+  "cases": [],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Public New World, native Y/Map and held eastward movement across the actual regional border. No observer position, world, memory, resource or events are staged. Old/current map selection, no actor ghost and native Save/Return/Continue are reviewed.",
+  "before": {
+    "key": "2132612890:0,0:surface",
+    "origin": {
+      "x": 0,
+      "y": 0
+    },
+    "player": {
+      "id": 109,
+      "x": 117.5,
+      "y": 66.5
+    },
+    "cells": 26
+  },
+  "after": {
+    "key": "2132612890:128,0:surface",
+    "origin": {
+      "x": 128,
+      "y": 0
+    },
+    "player": {
+      "id": 109,
+      "x": 0,
+      "y": 66.5
+    },
+    "cells": 19,
+    "views": [
+      {
+        "key": "2132612890:128,0:surface",
+        "label": "Current region - Surface"
+      },
+      {
+        "key": "2132612890:0,0:surface",
+        "label": "west region - Surface"
+      }
+    ]
+  },
+  "oldView": {
+    "key": "2132612890:0,0:surface",
+    "origin": {
+      "x": 0,
+      "y": 0
+    },
+    "player": null,
+    "cells": 57,
+    "sites": [],
+    "sitesAvailable": false,
+    "placeMessage": "Place markers are available on the current region surface map.",
+    "parity": true
+  },
+  "continue": {
+    "key": "2132612890:128,0:surface",
+    "origin": {
+      "x": 128,
+      "y": 0
+    },
+    "views": [
+      "2132612890:128,0:surface",
+      "2132612890:0,0:surface"
+    ]
+  }
+}

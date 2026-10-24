@@ -245,6 +245,7 @@ function toggleQuickPanel(name){
   audio.unlock();
   if(name==='guide'){const next=!guideOpen;closeDetailPanels('guide');guideOpen=next}
   else if(name==='journal'){const next=!journal.open;closeDetailPanels('journal');journal.setOpen(next)}
+  else if(name==='map'){const next=!(fieldGuide.open&&fieldGuide.page==='map');closeDetailPanels();fieldGuide.page='map';fieldGuide.setOpen(next);quickMenu.hidden=true;document.querySelector('#stageUtilities>button')?.setAttribute('aria-expanded','false')}
   else if(name==='territory'){const next=!territoryOpen;closeDetailPanels('territory');territoryOpen=next}
   else if(name==='population'){const next=!ecologyOpen;closeDetailPanels('population');ecologyOpen=next}
   else if(name==='help'){const next=!helpOpen;closeDetailPanels('help');helpOpen=next}

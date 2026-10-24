@@ -1,0 +1,50 @@
+[
+  {
+    "test": "exploration-map",
+    "exitCode": 0,
+    "stdout": "Exploration map PASS: real retained survey, no live terrain reads, separate world/region/layer ownership, known-site-only historical markers, no new memory, bounded extents, independent paint model and full saved-state parity.\n",
+    "stderr": ""
+  },
+  {
+    "test": "sensory-perception",
+    "exitCode": 0,
+    "stdout": "sensory fog, evolutionary sight, uncertain signals and save continuity PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "knowledge",
+    "exitCode": 0,
+    "stdout": "knowledge ok\n",
+    "stderr": ""
+  },
+  {
+    "test": "view-modes",
+    "exitCode": 0,
+    "stdout": "View modes PASS: Comfort default, ordered fog levels, Sandbox-only vegetation, browser-stored preference, live layers clipped to the senses.\n",
+    "stderr": ""
+  },
+  {
+    "test": "stratum-senses",
+    "exitCode": 0,
+    "stdout": "Shared cave/water optics, routed hearing, separate memories and explicit save policy PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "menu-task-usability",
+    "exitCode": 0,
+    "stdout": "menu clarity + teachable Stalker flee response: PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "public-export",
+    "exitCode": 0,
+    "stdout": "public-export: exact reachable modules and runtime assets only PASS\n",
+    "stderr": ""
+  },
+  {
+    "test": "world-swap-render",
+    "exitCode": 0,
+    "stdout": "world swap render caches ok\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,18 @@
+// Cartographic paint of retained observations only. This module never receives a Simulation.
+export const MAP_COLORS=Object.freeze({paper:'#142219',unknown:'#31422e',land:'#7c8c63',water:'#61939a',passage:'#c1a575',rock:'#52604b',ink:'#e8dfb7',marker:'#ead184'});
+export function explorationMapBounds(model,overview=false){
+ if(overview||!model.cells.length)return{x:0,y:0,w:model.size,h:model.size};
+ const points=model.cells.map(c=>[c.x,c.y]);if(model.player)points.push([model.player.x,model.player.y]);const pad=model.cellSize*2,minX=Math.min(...points.map(p=>p[0])),minY=Math.min(...points.map(p=>p[1])),maxX=Math.max(...points.map(p=>p[0]))+model.cellSize,maxY=Math.max(...points.map(p=>p[1]))+model.cellSize;
+ let x=Math.max(0,minX-pad),y=Math.max(0,minY-pad);const w=Math.min(model.size,Math.max(12,Math.min(model.size,maxX+pad)-x)),h=Math.min(model.size,Math.max(12,Math.min(model.size,maxY+pad)-y));x=Math.min(x,model.size-w);y=Math.min(y,model.size-h);return{x,y,w,h};
+}
+export function drawExplorationMap(ctx,model,{width,height,overview=false}={}){
+ const b=explorationMapBounds(model,overview),margin=30,scale=Math.min((width-margin*2)/b.w,(height-margin*2)/b.h),ox=(width-b.w*scale)/2,oy=(height-b.h*scale)/2,at=(x,y)=>[ox+(x-b.x)*scale,oy+(y-b.y)*scale];
+ ctx.save();ctx.clearRect(0,0,width,height);ctx.fillStyle=MAP_COLORS.paper;ctx.fillRect(0,0,width,height);ctx.save();ctx.beginPath();ctx.rect(ox,oy,b.w*scale,b.h*scale);ctx.clip();ctx.strokeStyle=MAP_COLORS.unknown;ctx.lineWidth=1;
+ for(let x=-height;x<width+height;x+=22){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x+height,height);ctx.stroke()}
+ for(const cell of model.cells){const [x,y]=at(cell.x,cell.y);ctx.fillStyle=[MAP_COLORS.land,MAP_COLORS.water,MAP_COLORS.passage,MAP_COLORS.rock][cell.kind];ctx.fillRect(x,y,model.cellSize*scale,model.cellSize*scale)}
+ ctx.strokeStyle='#bcae7466';ctx.lineWidth=1;for(let x=0;x<=model.size;x+=16){const p=at(x,0);ctx.beginPath();ctx.moveTo(p[0],oy);ctx.lineTo(p[0],oy+b.h*scale);ctx.stroke()}for(let y=0;y<=model.size;y+=16){const p=at(0,y);ctx.beginPath();ctx.moveTo(ox,p[1]);ctx.lineTo(ox+b.w*scale,p[1]);ctx.stroke()}
+ for(const site of model.sites){const [x,y]=at(site.x,site.y);ctx.fillStyle=MAP_COLORS.ink;ctx.strokeStyle='#102017';ctx.lineWidth=2;ctx.beginPath();ctx.arc(x,y,4,0,Math.PI*2);ctx.fill();ctx.stroke()}
+ if(model.player){const [x,y]=at(model.player.x,model.player.y);ctx.fillStyle=MAP_COLORS.marker;ctx.strokeStyle='#102017';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x,y-7);ctx.lineTo(x+6,y);ctx.lineTo(x,y+7);ctx.lineTo(x-6,y);ctx.closePath();ctx.fill();ctx.stroke()}
+ ctx.restore();ctx.strokeStyle='#879268';ctx.lineWidth=1;ctx.strokeRect(ox,oy,b.w*scale,b.h*scale);ctx.fillStyle=MAP_COLORS.ink;ctx.font='11px Verdana';ctx.textAlign='center';ctx.fillText('N',width/2,16);ctx.fillText('S',width/2,height-8);ctx.textAlign='left';ctx.fillText('W',6,height/2+4);ctx.textAlign='right';ctx.fillText('E',width-6,height/2+4);
+ const units=b.w>64?16:b.w>24?8:4,bar=units*scale;ctx.strokeStyle=MAP_COLORS.ink;ctx.beginPath();ctx.moveTo(ox,Math.min(height-18,oy+b.h*scale+8));ctx.lineTo(ox+bar,Math.min(height-18,oy+b.h*scale+8));ctx.stroke();ctx.font='10px Verdana';ctx.textAlign='left';ctx.fillText(units+' terrain cells',ox,Math.min(height-4,oy+b.h*scale+21));ctx.restore();return{bounds:b,scale,paintedCells:model.cells.length,siteCount:model.sites.length};
+}
