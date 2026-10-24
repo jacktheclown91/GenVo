@@ -1,0 +1,119 @@
+{
+  "scope": "Curated review companion browser/media and included game public-control smoke. Not creator, listening, performance or whole-game acceptance.",
+  "errors": [],
+  "sizes": [
+    {
+      "width": 1366,
+      "height": 900,
+      "scrollWidth": 1366,
+      "images": 8,
+      "links": [
+        {
+          "text": "Play checkpoint",
+          "href": "game/"
+        },
+        {
+          "text": "Play 30-second-day survival opt-in",
+          "href": "game/?day=30"
+        },
+        {
+          "text": "Evidence manifest",
+          "href": "review-manifest.json"
+        },
+        {
+          "text": "",
+          "href": "media/terrain-before.png"
+        },
+        {
+          "text": "",
+          "href": "media/terrain-after.png"
+        },
+        {
+          "text": "",
+          "href": "media/storm-after.png"
+        },
+        {
+          "text": "",
+          "href": "media/clutch-before.png"
+        },
+        {
+          "text": "",
+          "href": "media/clutch-after.png"
+        },
+        {
+          "text": "",
+          "href": "media/shelter-before.png"
+        },
+        {
+          "text": "",
+          "href": "media/shelter-after.png"
+        },
+        {
+          "text": "",
+          "href": "media/lab-after.png"
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "images": 8,
+      "links": [
+        {
+          "text": "Play checkpoint",
+          "href": "game/"
+        },
+        {
+          "text": "Play 30-second-day survival opt-in",
+          "href": "game/?day=30"
+        },
+        {
+          "text": "Evidence manifest",
+          "href": "review-manifest.json"
+        },
+        {
+          "text": "",
+          "href": "media/terrain-before.png"
+        },
+        {
+          "text": "",
+          "href": "media/terrain-after.png"
+        },
+        {
+          "text": "",
+          "href": "media/storm-after.png"
+        },
+        {
+          "text": "",
+          "href": "media/clutch-before.png"
+        },
+        {
+          "text": "",
+          "href": "media/clutch-after.png"
+        },
+        {
+          "text": "",
+          "href": "media/shelter-before.png"
+        },
+        {
+          "text": "",
+          "href": "media/shelter-after.png"
+        },
+        {
+          "text": "",
+          "href": "media/lab-after.png"
+        }
+      ]
+    }
+  ],
+  "audio": {
+    "duration": 10.08,
+    "currentTime": 0.011915,
+    "readyState": 4,
+    "controls": true
+  },
+  "mediaHashes": 9,
+  "regularLink": true,
+  "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#newWorldAdvanced summary')\u001b[22m\n\u001b[2m    - locator resolved to <summary>Advanced options</summary>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    46 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+}
