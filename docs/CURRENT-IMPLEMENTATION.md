@@ -2,6 +2,10 @@
 
 Reviewed October 20, 2026. Governing intent: [current design](../design/CURRENT-DESIGN.md) and the creator's full Creature-stage directive. Code ownership: [implementation authorities](../design/governance/implementation-authorities.json). Full scope and remaining gaps: [completion matrix](FULL-GAME-COMPLETION-MATRIX.md). Earlier checkpoint prose is [historical evidence](history/IMPLEMENTATION-before-live-refresh-2026-10-19.md), not current instructions.
 
+## Native exposed-water contact, October 24
+
+Native pixel crests replace smooth water-contact ellipses. Shared liquid/ice support suppresses surface wakes on supporting ice and incompatible depth/traversal. Intent-only drinking rings are removed. Fixed merged runtime passes 106 playable checks; actual-world and standalone-export A/B/A preserve the complete graph. [Evidence, measured painter cost and open limits](art-refinement-water-contact-v1-2026-10-24/README.md). Natural winter/ice art, positive-transfer drinking animation, full performance and creator acceptance remain open.
+
 ## Live-birth settlement presentation, October 24
 
 Read-only exact live-birth records drive brief parent/newborn body settlement with weak ownership, interruption and native anatomy. The 106-check gate passes; a genuine Day40 newborn A/B comparison preserves exact state. Merged-runtime actor-only newborn and recorded-state maternal A/B/A checks preserve exact state; uninterrupted AUTO maternal and new manual birth acceptance remain open. A pre-existing nursing-expression failure remains separate. [Evidence, rejected comparisons and remaining scope](art-refinement-live-birth-v1-2026-10-24/README.md). Full action animation, performance, creator and v1 acceptance remain open.
