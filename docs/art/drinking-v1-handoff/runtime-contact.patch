@@ -1,0 +1,72 @@
+diff --git a/src/render/physicality.js b/src/render/physicality.js
+index 6e1dfe03..f93c4f23 100644
+--- a/src/render/physicality.js
++++ b/src/render/physicality.js
+@@ -1,3 +1,6 @@
++import {liquidContact} from '../lineage/ice-locomotion.js';
++import {drawWaterContact} from './water-contact-art.js';
++
+ // Renderer-only creature/environment contact. This module reads canonical habitat
+ // state and derives visual resistance/contact without writing world state or RNG.
+ const DIR4=[[0,-1],[1,0],[0,1],[-1,0]];
+@@ -8,12 +11,12 @@ export function environmentContactFor(world,animal,{action='idle',phase=0,moving
+   const cover=Math.max(moss*.72,berries,reeds,pods*.76),soil=moisture>.64?'mud':moisture<.29?'dry':'meadow';
+   let waterDir=null,waterScore=-1;
+   for(const [dx,dy] of DIR4){const nx=x+dx,ny=y+dy;if(nx<0||ny<0||nx>=world.n||ny>=world.n)continue;const ni=world.idx(nx,ny);if(world.water[ni]){const score=1-Math.hypot((x+.5+dx)-(animal.x||x+.5),(y+.5+dy)-(animal.y||y+.5))*.08;if(score>waterScore){waterScore=score;waterDir={x:dx,y:dy}}}}
+-  return{tileX:x,tileY:y,inWater,moisture,cover:inWater?0:cover,moss,berries,reeds,pods,soil,atBank:!inWater&&(!!waterDir||!!world.drinkable?.[i]),waterDir,action,moving,phase:wrap8(phase)};
++  return{tileX:x,tileY:y,inWater,liquidSurface:inWater&&liquidContact(world,animal)&&!(animal.diveDepth>.03),moisture,cover:inWater?0:cover,moss,berries,reeds,pods,soil,atBank:!inWater&&(!!waterDir||!!world.drinkable?.[i]),waterDir,action,moving,phase:wrap8(phase)};
+ }
+ 
+ export function drawGroundContact(ctx,{contact,scale=1,bodyScale=1,dir=0}){
+   if(!contact)return;const f=Math.floor(contact.phase)&7,footfall=f===0||f===4,s=Math.max(1,scale),w=Math.max(4,Math.round(5*bodyScale));ctx.save();
+-  if(contact.inWater){const pulse=1+((f===1||f===5)?1:0);ctx.strokeStyle='rgba(164,225,226,.52)';ctx.lineWidth=Math.max(1,s*.45);ctx.beginPath();ctx.ellipse(0,5*s,(w+3+pulse)*s,2.2*s,0,0,Math.PI*2);ctx.stroke();if(contact.moving){ctx.strokeStyle='rgba(199,238,233,.30)';ctx.beginPath();ctx.ellipse(-dirVector(dir).x*5*s,(5-dirVector(dir).y*3)*s,(w+5)*s,2.8*s,0,0,Math.PI*2);ctx.stroke()}ctx.restore();return}
++  if(contact.inWater){if(contact.liquidSurface)drawWaterContact(ctx,{scale:s,bodyWidth:w,phase:contact.phase,moving:contact.moving,dir});ctx.restore();return}
+   if(contact.cover>.42){ctx.fillStyle=`rgba(31,52,34,${Math.min(.22,.07+contact.cover*.14)})`;ctx.fillRect(-w*s,4*s,w*2*s,2*s)}
+   if(contact.soil==='mud'){
+     ctx.fillStyle='rgba(54,49,34,.24)';ctx.fillRect(-Math.round(w*.9)*s,5*s,Math.round(w*1.8)*s,2*s);
+@@ -21,7 +24,7 @@ export function drawGroundContact(ctx,{contact,scale=1,bodyScale=1,dir=0}){
+   }else if(contact.soil==='dry'&&contact.moving&&footfall){
+     ctx.fillStyle='rgba(185,154,93,.26)';const side=f===0?-1:1;ctx.fillRect(side*5*s,5*s,2*s,s);ctx.fillRect(side*7*s,3*s,s,s);
+   }
+-  if(contact.action==='drink'&&contact.atBank){const v=contact.waterDir||dirVector(dir),cx=(v.x||0)*8*s,cy=(v.y||0)*8*s+4*s;ctx.strokeStyle='rgba(139,211,213,.58)';ctx.lineWidth=Math.max(1,s*.5);ctx.beginPath();ctx.ellipse(cx,cy,4*s,1.5*s,0,0,Math.PI*2);ctx.stroke();if(f%2===0){ctx.strokeStyle='rgba(191,233,223,.34)';ctx.beginPath();ctx.ellipse(cx,cy,6*s,2.25*s,0,0,Math.PI*2);ctx.stroke()}}
++
+   ctx.restore();
+ }
+ 
+diff --git a/src/render/renderer.js b/src/render/renderer.js
+index 090692a6..56a6ffef 100644
+--- a/src/render/renderer.js
++++ b/src/render/renderer.js
+@@ -1129,7 +1129,6 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
+     const c=this.ctx,v=DIR8[pose.dir??a.dir]||DIR8[0],perp={x:-v.y,y:v.x},action=pose.action||'idle',life=pose.life||{};
+     if((action==='eat'||action==='crack')&&frame%2===0){for(const sign of [-1,1])pixel(c,Math.round(v.x*7+perp.x*sign*2),Math.round(v.y*7+perp.y*sign*2+2),1,1,s,sign>0?'#99a75c':'#6f7c48')}
+     if(life.sick&&!pose.dependent&&(frame===1||frame===5)){pixel(c,-5,-7,1,1,s,'rgba(203,129,169,.62)');pixel(c,5,-6,1,1,s,'rgba(203,129,169,.42)')}
+-    if(action==='drink'&&frame%2===0){c.save();c.strokeStyle='rgba(137,215,226,.50)';c.lineWidth=Math.max(1,s*.45);c.beginPath();c.arc(Math.round(v.x*5*s),Math.round(v.y*5*s),1.8*s,0,Math.PI*2);c.stroke();c.restore()}
+     // A real, energy-funded performance, not merely standing near a mate. Its
+     // intensity is inherited anatomy expressed through the existing court pose.
+     if(action==='court'&&a.courtshipPerformance&&this.sim.tickCount<=a.courtshipPerformance.endsAt){
+diff --git a/src/render/water-contact-art.js b/src/render/water-contact-art.js
+new file mode 100644
+index 00000000..f1be6ca9
+--- /dev/null
++++ b/src/render/water-contact-art.js
+@@ -0,0 +1,19 @@
++// Original native-32 surface-contact art. Only a verified exposed surface may
++// call this painter; these contours assert displacement, never a hydration gain.
++import {pixel} from './pixel-art.js';
++const DIRS=[[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];
++export function drawWaterContact(ctx,{scale=1,bodyWidth=5,phase=0,moving=false,dir=0}={}){
++ const f=((Math.floor(phase)%8)+8)%8,v=DIRS[dir&7],pulse=f<4?f:7-f;
++ contour(ctx,0,5,Math.max(4,bodyWidth)+2+pulse*.25,1.5+pulse*.125,scale,'rgba(164,225,226,.48)',f);
++ if(moving)contour(ctx,-v[0]*4,5-v[1]*2,Math.max(4,bodyWidth)+4+pulse*.5,2.5,scale,'rgba(199,238,233,.28)',f+3);
++}
++function contour(c,cx,cy,rx,ry,s,color,phase){
++ // Disconnected upper/lower crests leave the body contact open. Half-unit
++ // steps are native art pixels, snapped by the shared creature pixel helper.
++ for(let side=-1;side<=1;side+=2)for(let k=0;k<=12;k++){
++  if((k+phase+(side>0?2:0))%7===0)continue;
++  const x=-rx+2*rx*k/12,y=side*ry*Math.sqrt(Math.max(0,1-(x/rx)**2));
++  const nextX=-rx+2*rx*Math.min(12,k+1)/12,nextY=side*ry*Math.sqrt(Math.max(0,1-(nextX/rx)**2));
++  pixel(c,cx+x,cy+Math.min(y,nextY),Math.max(.5,nextX-x),Math.abs(nextY-y)+.5,s,color);
++ }
++}
