@@ -9,6 +9,7 @@ import {FRESHWATER_FOOD,freshwaterField,freshwaterPreference} from '../ecology/f
 import {CFG,PLANTS} from '../sim/config.js';
 import {SPECIES} from '../organisms/species.js';
 import {adaptationEffects} from '../lineage/evolution.js';
+import {meatEnergy} from '../ecology/tissue-energy.js';
 import {PHYSIOLOGY_PARITY,noteFoodGroup,mealBiteFor,plantMealWater} from '../ecology/physiology.js';
 import {PLACE,taughtOffset} from '../cognition/cognition.js';
 
@@ -69,7 +70,7 @@ export class ForagingController{
         if(!undergroundFood(animal,i,kind,w))continue;if(submerged(animal)&&!FRESHWATER_FOOD[kind])continue;
         if(eff<=0||(onlyKind!==null&&kind!==onlyKind))continue;let amount=0,nutrition=0;
         if(FRESHWATER_FOOD[kind]){if(!aquaticFoodAccessible(this.sim,animal,x,y,FRESHWATER_FOOD[kind]))continue;if(!w.water[i]||!FRESHWATER_FOOD[kind].surface&&(!this.sim.canOccupy(animal,x,y)||!this.sim.canReach(animal,x,y)))continue;amount=freshwaterField(w,kind)?.[i]||0;nutrition=FRESHWATER_FOOD[kind].nutrition}
-        else if(kind==='carrion'){amount=w.carrion[i]||0;nutrition=34}
+        else if(kind==='carrion'){amount=w.carrion[i]||0;nutrition=meatEnergy(this.sim,animal)}
         else if(PLANTS[kind]){amount=w.plants[kind]?.[i]||0;nutrition=(this.sim.dispersal.genomeAt(kind,i)?.traits.nutrition??PLANTS[kind].nutrition)*3.6}
         else continue;
         if(amount<=(FRESHWATER_FOOD[kind]?0:.06))continue;

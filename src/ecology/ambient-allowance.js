@@ -13,17 +13,22 @@ import {SPECIES} from '../organisms/species.js';
 // wandering: the allowance never holds it in place (correction 2026-10-23: rillsifters starved
 // beside exhausted feeding grounds, measured in docs/WILDLIFE-NEEDS-2026-10-23.md).
 export const AMBIENT_ALLOWANCE=Object.freeze({
- // Tiles per day walked on ambient intents with energy >= 0.6 and water >= 0.5, recorded clock,
- // three seeds, 8 days each (2026-10-23).
- tilesPerDay:Object.freeze({mosskip:4.1,rootling:1.2,needlejaw:5.5,genvo:5.1,rillsifter:2.2,mirelick:1.6,podshell:4.8,bankjaw:2}),
+ // Tiles per day travelled on ambient intents, herd cohesion and spacing included, with energy >= 0.6
+ // and water >= 0.5 on the recorded clock: three seeds, 8 days each (tools/probe-ambient-allowance.mjs,
+ // docs/day-activity-2026-10-23/ambient-allowance-6s.json). Herd moves were first left outside the
+ // allowance and grew four- to twenty-five-fold per day on the longer day (docs/DAY-ACTIVITY-2026-10-23.md).
+ tilesPerDay:Object.freeze({mosskip:4.1,rootling:1.2,needlejaw:5.8,genvo:5.5,rillsifter:3,mirelick:2,podshell:4.9,bankjaw:2.2}),
+ socialIntents:new Set(['group','group-space']),
  fallback:3,
  intents:new Set(['explore','herd-hop','herd-browse','band-wander','root-roam','mire-prowl','shoal-glide','pod-wander','pod-browse','shadow-patrol','bank-patrol'])
 });
 export function ambientLimited(sim){return sim.dayClockRules===DAY_CLOCK.policy}
 export function ambientAllowance(a){return AMBIENT_ALLOWANCE.tilesPerDay[a.species]??AMBIENT_ALLOWANCE.fallback}
 // Called for every step an animal actually moves.
+// sim.correctionExperiment.socialAllowance=false (development measurement only) leaves herd moves out.
+const counted=(sim,intent)=>AMBIENT_ALLOWANCE.intents.has(intent)||sim.correctionExperiment?.socialAllowance!==false&&AMBIENT_ALLOWANCE.socialIntents.has(intent);
 export function noteAmbientMove(sim,a,distance){
- if(!ambientLimited(sim)||!AMBIENT_ALLOWANCE.intents.has(a.intent)||!(distance>0))return;
+ if(!ambientLimited(sim)||!counted(sim,a.intent)||!(distance>0))return;
  const w=a.ambientWalk;if(w?.day!==sim.day)a.ambientWalk={day:sim.day,tiles:distance};else w.tiles+=distance;
 }
 export const HUNGRY_SEARCH=.72;

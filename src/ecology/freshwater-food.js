@@ -2,6 +2,12 @@ import {aquaticFoodAccessible} from '../lineage/diving.js';
 import {salinityAt} from '../world/environment.js';
 import {fundAquaticGrowth,mineralizeOrganic,exportAquaticReserve} from './organic-resource-cycle.js';
 import {coordNoise} from '../core/rng.js';
+import {TISSUE_ENERGY,meatEnergy} from './tissue-energy.js';
+
+// Animal-tissue foods (larvae, fry, carcass detritus and their marine counterparts) count their energy
+// in carcass units, 34 per unit; with tissue energy (ecology/tissue-energy.js) they hold what animal
+// tissue holds for the eater. Plant-like foods are unchanged.
+function eaterNutrition(sim,animal,kind,p){return p.source||kind==='detritus'?p.nutrition*meatEnergy(sim,animal)/TISSUE_ENERGY.recorded:p.nutrition}
 
 // Biomass fields, not additional animal agents. Consumers transfer existing biomass.
 export const FRESHWATER_FOOD=Object.freeze({
@@ -119,7 +125,7 @@ export function freshwaterHarvestCandidate(sim,animal,energyLimit,target=null){
       if(!p.surface&&(!sim.canOccupy(animal,x,y)||!sim.canReach(animal,x,y)))continue;
       if(!aquaticFoodAccessible(sim,animal,x,y,p))continue;
       const preference=freshwaterPreference(animal,kind),field=freshwaterField(world,kind),available=field?.[i]||0;
-      const potential=available*p.nutrition*preference;if(potential>0&&(!best||potential>best.potential))best={kind,p,preference,field,i,potential};
+      const nutrition=eaterNutrition(sim,animal,kind,p),potential=available*nutrition*preference;if(potential>0&&(!best||potential>best.potential))best={kind,p,preference,field,i,potential,nutrition};
     }
   }
   return best;
@@ -127,7 +133,7 @@ export function freshwaterHarvestCandidate(sim,animal,energyLimit,target=null){
 
 export function harvestFreshwater(sim,animal,energyLimit,target=null){
   const world=sim.world,best=freshwaterHarvestCandidate(sim,animal,energyLimit,target);if(!best)return null;
-  const energyGain=Math.min(energyLimit,best.potential),amount=energyGain/(best.p.nutrition*best.preference);
+  const energyGain=Math.min(energyLimit,best.potential),amount=energyGain/(best.nutrition*best.preference);
   const before=best.field[best.i];best.field[best.i]=Math.max(0,before-amount);exportAquaticReserve(world,best.kind,best.i,before-best.field[best.i],before);world.organicResources.totals.foodExported+=before-best.field[best.i];
   animal.lastFreshwaterMeal={kind:best.kind,amount,i:best.i,tick:sim.tickCount};
   if(best.kind==='detritus')sim.disease?.onCarrionFeed?.(animal,best.i,amount);

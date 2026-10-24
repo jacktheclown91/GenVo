@@ -142,3 +142,14 @@ Dates follow the creator's allocation and are targets, not reasons to ship unfin
   - Three defects corrected: escape jumps into water (new opt-in `escape-landing/1`), the rest allowance holding hungry animals in place (day clock), and juicy food chosen over a reachable drink when badly dehydrated (metabolism).
   - Each removes its target failure, but deaths shift to starvation: the founding populations exceed what the land yields under real needs (energy turnover up about five-fold, scarce foods and prey stripped, meat energy set for tiny needs).
   - Decision needed on calibration: yields from physical basis, per-day activity on 30-second days, accepting a founding die-off, or founding densities.
+- **2026-10-23, day activity, option 2** (`docs/DAY-ACTIVITY-2026-10-23.md`): under real needs movement is about 15% of daily turnover and mostly genuine travel to food and water, so per-tick activity is not what drives the collapse. Herd cohesion and spacing now count against the rest allowance (allowance re-measured); population effect neutral. Patch grazing tried and removed.
+- **2026-10-23, yields, option 1** (`docs/YIELDS-2026-10-23.md`):
+  - Plants, plant growth and bites check out against physical figures; animal tissue (34) was three to four times too low.
+  - New opt-in `tissue-energy/1`: tissue energy from carcass energy and Kleiber-scaled resting needs, gorge-limited kills leaving carrion, aquatic tissue foods and growth/repair on the same basis. Predation halves and hunters persist through the year.
+  - Wild herbivores still die out, because founding bodies weigh 1.3–1.6 times their species reference while reserves do not scale: about 9 days of food at rest instead of the approved 14–21.
+  - Decisions needed: growth cost under compressed development, body size and reserves, founding estimates.
+- **2026-10-23, own-body reserves** (`docs/BODY-RESERVES-2026-10-23.md`, creator option (b)):
+  - `metabolism/fasting-2` calibrates every animal's resting cost to its own body, so every body lasts 15 days of food at rest; growth and repair keep the recorded tissue cost.
+  - Alive at day 41 rises from 58/72/57 to 186/164/149 on three seeds.
+  - Over a year the population overshoots to 248 and then starves: grazers strip the belt within reach of water (64% bare within 6 tiles by day 151), and logistic regrowth leaves it bare.
+  - Next candidates: regrowth from grazed ground, breeding estimates on real needs, rillsifter food.

@@ -18,11 +18,12 @@ export function consumePreyBiomass(animal,requested){
   animal.predationConsumedMass=(animal.predationConsumedMass||0)+got;
   return got;
 }
-// Regrown edible tissue is funded by the animal's food-energy reserves.
-export function regrowPreyBiomass(animal,healthGain){
+// Regrown edible tissue is funded by the animal's food-energy reserves, at the energy its tissue holds
+// (ecology/tissue-energy.js; 34 per unit of mass on recorded worlds).
+export function regrowPreyBiomass(animal,healthGain,energyPerMass=34){
   const missing=Math.max(0,animal.predationConsumedMass||0);
   const mass=preyBodyMass(animal);
-  const got=Math.min(missing,mass*Math.max(0,healthGain)/100*CFG.wildHunt.biteMeal,Math.max(0,animal.energy)/34);
-  if(got){animal.predationConsumedMass=missing-got;animal.energy-=got*34}
+  const got=Math.min(missing,mass*Math.max(0,healthGain)/100*CFG.wildHunt.biteMeal,Math.max(0,animal.energy)/energyPerMass);
+  if(got){animal.predationConsumedMass=missing-got;animal.energy-=got*energyPerMass}
   return got;
 }

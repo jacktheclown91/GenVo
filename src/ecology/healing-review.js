@@ -1,5 +1,6 @@
 import {SPECIES} from '../organisms/species.js';
 import {preyBodyMass,regrowPreyBiomass} from './prey-biomass.js';
+import {tissueEnergy} from './tissue-energy.js';
 
 // Healing physiology (Phase 3I, creator decision 2026-10-15; replaces the Phase 3H flat-rate candidate).
 // One rule for every animal, wild or player. Health is regained per metabolism step (8 a day) at
@@ -24,11 +25,11 @@ export function nourishmentFactor(a){
 // Health regained this step and its energy cost; mode comes from InjuryRecoveryController.mode().
 export function healingStep(sim,a,fx,mode='none'){
   const s=SPECIES[a.species];if(!s||a.health>=100)return 0;
-  if(!HEALING_REVIEW.enabled){if(a.energy/s.maxEnergy<=.65)return 0;const gain=Math.min(100-a.health,HEAL_PER_STEP*a.genes.immunity*fx.healing);a.health+=gain;regrowPreyBiomass(a,gain);return gain}
+  if(!HEALING_REVIEW.enabled){if(a.energy/s.maxEnergy<=.65)return 0;const gain=Math.min(100-a.health,HEAL_PER_STEP*a.genes.immunity*fx.healing);a.health+=gain;regrowPreyBiomass(a,gain,tissueEnergy(sim,a));return gain}
   const juvenile=a.age<s.maturity?1.25:1,rate=HEAL_BASE*nourishmentFactor(a)*(ACTIVITY_FACTOR[mode]??1)*(a.infected?.5:1)*juvenile*a.genes.immunity*fx.healing;
   if(!(rate>0))return 0;
-  const gain=Math.min(100-a.health,rate),before=a.energy;a.health+=gain;regrowPreyBiomass(a,gain);
-  const repair=gain/100*preyBodyMass(a)*REPAIR_SHARE*TISSUE_ENERGY/REPAIR_EFFICIENCY,already=Math.max(0,before-a.energy);
+  const gain=Math.min(100-a.health,rate),before=a.energy;a.health+=gain;regrowPreyBiomass(a,gain,tissueEnergy(sim,a));
+  const repair=gain/100*preyBodyMass(a)*REPAIR_SHARE*tissueEnergy(sim,a)/REPAIR_EFFICIENCY,already=Math.max(0,before-a.energy);
   a.energy=Math.max(0,a.energy-Math.max(0,repair-already));
   if(sim?.stats)sim.stats.healingEnergy=(sim.stats.healingEnergy||0)+Math.max(repair,already);
   return gain;

@@ -14,7 +14,13 @@ import {BIO_STEPS_PER_DAY} from '../sim/day-clock.js';
 // well before death: below WEAK reserves an animal moves more slowly, and below TIRED reserves the
 // controlled creature's breath recovers more slowly; healing already slows with poor nourishment
 // and breeding is already gated by condition. Worlds recorded before this policy are unchanged.
-export const METABOLISM=Object.freeze({policy:'metabolism/fasting-1',
+// fasting-2 (creator decision 2026-10-23, option (b) of docs/YIELDS-2026-10-23.md): each animal's
+// resting cost is calibrated to its own body, so every organism's full reserves last reserveDaysFood
+// of food and reserveDaysWater of water at rest whatever its size or anatomy. fasting-1 calibrated the
+// species' reference body, and founding wild bodies weigh 1.3-1.6 times that, so their reserves lasted
+// about 9 days. Worlds saved under fasting-1 keep it.
+export const METABOLISM_REFERENCE_BODY='metabolism/fasting-1';
+export const METABOLISM=Object.freeze({policy:'metabolism/fasting-2',
  reserveDaysFood:15,reserveDaysWater:3.5,starveDays:3,thirstDays:1,
  weakEnergy:.25,weakWater:.2,weakSpeed:.8,tiredEnergy:.4,tiredWater:.35,tiredRecovery:.5,
  // Behaviour under real needs: seek water with this many days of it left at the animal's own resting
@@ -22,7 +28,7 @@ export const METABOLISM=Object.freeze({policy:'metabolism/fasting-1',
  seekWaterDays:2,topUpWater:.9,
  // A sip is a share of the body's water capacity, so a day's water takes minutes, not most of the day.
  sipShare:.1});
-export function metabolismActive(sim){return sim?.metabolismRules===METABOLISM.policy}
+export function metabolismActive(sim){return sim?.metabolismRules===METABOLISM.policy||sim?.metabolismRules===METABOLISM_REFERENCE_BODY}
 // Resting cost per biological step of a species' reference adult under the recorded rules.
 function referenceBasal(a){
  const s=SPECIES[a.species],anatomical=massPolicy(a)===ANATOMICAL_MASS;
@@ -30,7 +36,7 @@ function referenceBasal(a){
 }
 // Multipliers on basalResourceCosts(a): exactly 1 on recorded worlds.
 export function basalScale(sim,a){
- if(!metabolismActive(sim))return ONE;const s=SPECIES[a.species],ref=referenceBasal(a);
+ if(!metabolismActive(sim))return ONE;const s=SPECIES[a.species],own=sim.metabolismRules===METABOLISM.policy?basalResourceCosts(a):null,ref=own&&own.energy>0&&own.water>0?own:referenceBasal(a);
  // sim.metabolismExperiment (development measurement only, never set by the game) can vary the
  // water reserve for comparison runs.
  const waterDays=sim.metabolismExperiment?.waterDays??METABOLISM.reserveDaysWater;
@@ -53,7 +59,7 @@ export function conditionRecovery(sim,a){
  return M.tiredRecovery+(1-M.tiredRecovery)*f;
 }
 export function restoreMetabolismRules(sim,core){
- if(core.metabolismRules!==undefined&&core.metabolismRules!==METABOLISM.policy)throw Error('Unknown saved metabolism rules.');
+ if(core.metabolismRules!==undefined&&core.metabolismRules!==METABOLISM.policy&&core.metabolismRules!==METABOLISM_REFERENCE_BODY)throw Error('Unknown saved metabolism rules.');
  if(core.metabolismRules===undefined)delete sim.metabolismRules;
 }
 // Share of maximum water at which an animal starts to seek water: METABOLISM.seekWaterDays of its own

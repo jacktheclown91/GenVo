@@ -1,5 +1,6 @@
 // Usage: node tools/probe-first-month.mjs <30s|v1f|v1fw>[+e][-h][-u] [days=40] [seed=GENVO8-TEST-A]
-// +e adds escape landing; -h and -u switch off the hungry-search and urgent-water corrections.
+// +e adds escape landing, +t tissue energy (+G applies the physical growth and repair cost), -B the reference-body metabolism (fasting-1); -h, -u and -s switch off the hungry-search, urgent-water and herd-allowance
+// corrections.
 // First-month mortality under one rule set, for comparing the 30-second clock with old physiology
 // (30s) against real needs (v1f, v1fw = plus winter water). Every death with cause, species, day,
 // reserves, health, age, the intent at death and the animal's most frequent recent intents; for
@@ -8,7 +9,7 @@
 const R=new URL('../src/',import.meta.url).href;
 const {Simulation}=await import(R+'sim/simulation.js');const {CFG}=await import(R+'sim/config.js');const {SPECIES}=await import(R+'organisms/species.js');const {canSwim}=await import(R+'lineage/lifestyle.js');
 const arg=process.argv[2]||'v1fw',rules=arg.match(/^[a-z0-9]+/)[0],days=Number(process.argv[3]||40),seed=process.argv[4]||'GENVO8-TEST-A';
-const s=new Simulation(seed,{player:true,dayClock:true,metabolism:rules.startsWith('v1'),foodProperties:rules.startsWith('v1f'),winterWater:rules.endsWith('w'),escapeLanding:arg.includes('+e'),worldGenerator:'planetary/1'});s.setPlayerAutonomy(true);s.correctionExperiment={hungrySearch:!arg.includes('-h'),urgentWater:!arg.includes('-u')};
+const s=new Simulation(seed,{player:true,dayClock:true,metabolism:rules.startsWith('v1')&&(arg.includes('-B')?'fasting-1':true),foodProperties:rules.startsWith('v1f'),winterWater:rules.endsWith('w'),escapeLanding:arg.includes('+e'),tissueEnergy:arg.includes('+t'),worldGenerator:'planetary/1'});s.setPlayerAutonomy(true);s.correctionExperiment={hungrySearch:!arg.includes('-h'),urgentWater:!arg.includes('-u'),socialAllowance:!arg.includes('-s'),tissueGrowth:arg.includes('+G')};
 const recent=new Map(),deaths=[],kill=s.kill.bind(s),r2=v=>Math.round(v*100)/100;
 const res=a=>{const sp=SPECIES[a.species];return{e:r2(a.energy/sp.maxEnergy),w:r2(a.hydration/sp.maxHydration)}};
 s.kill=(a,c)=>{if(a?.alive){const w=s.world,i=w.idx(a.x,a.y),sp=SPECIES[a.species],d={day:s.day,cause:c,species:a.species,player:!!a.player,...res(a),health:Math.round(a.health),young:a.age<sp.maturity,intent:a.intent,recent:Object.entries(recent.get(a.id)||{}).sort((x,y)=>y[1]-x[1]).slice(0,4).map(([k,v])=>k+':'+v).join(' ')};
