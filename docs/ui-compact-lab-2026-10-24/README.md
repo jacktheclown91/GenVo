@@ -1,0 +1,7 @@
+# Usable Creature Lab at short heights
+
+At568x320 the header/footer consumed nearly all height, collapsing the middle editor area and hiding specimen/catalog. Earlier outer-fit assertions passed; the actual screenshot rejected that as usable layout. Short-height CSS now retains a420px editing area and scrolls the outer editor. Narrow stacked layouts expand naturally inside that scroll surface. All controls remain; scrolling is required on short screens.
+
+Eight exported browser sizes including568x320,800x360,320x568 pass outer fit and minimum specimen dimensions. Scrolled specimen frames at568x320 and800x360 inspected. In568x320, native zoom-in/out changes/restores the displayed zoom, rotation controls activate, spring-leg selection and native socket attachment succeed, export contains the actual bilateral mount, and committing both founder stages installs the exact exported body in the normal world. Existing guided ancestry,30-second day and fasting-2 policies remain authoritative. No direct simulation edits.
+
+UI-art-direction, editor-pass and creature-lab-assembly tests plus canonical-source-audit pass. Shared-worktree public export succeeds (854copy entries,429modules). Export includes concurrent telemetry edits and is not a clean-commit package. No creator approval, every possible editor state, reproduction-triggered Lab transition, GPU performance or full v1 completion is claimed. Older ZIP predates this fix. Concurrent telemetry/reachability work excluded from this commit.

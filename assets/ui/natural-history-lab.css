@@ -61,3 +61,7 @@
 .creature-editor .ed-card .ed-mounts button{border-radius:2px;background:#34462b;border-color:#7d8b5c}
 
 @media(max-width:760px){.creature-editor .ed-stage{width:min(100cqw,calc((100cqh - 150px)*1.2173913))}.creature-editor .ed-stage-wrap:has(.ed-mount-choices) .ed-stage{width:min(100cqw,calc((100cqh - 230px)*1.2173913))}}
+
+/* Short windows must scroll the editor rather than collapse its specimen. */
+@media(max-height:500px){.creature-editor{overflow-y:auto;overscroll-behavior:contain}.creature-editor .ed-main{flex:none;min-height:420px;height:420px}}
+@media(max-height:500px) and (max-width:760px){.creature-editor .ed-main{height:auto;overflow:visible}}
