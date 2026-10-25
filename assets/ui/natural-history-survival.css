@@ -176,3 +176,14 @@
  #interactionDock .creature-stage-resources button{flex:none;min-height:36px}
  #interactionDock .creature-stage-resources kbd{display:none}
 }
+
+#stageUtilities #quickMenu button.active,#stageUtilities #quickMenu button[aria-pressed=true]{border-color:#c4b677;background:#3a4726;color:#f1e1ac}
+@media(max-height:420px) and (min-width:480px),(max-width:360px){
+ #stageUtilities #quickMenu{grid-template-columns:repeat(3,64px);padding:6px;gap:4px}
+ #stageUtilities #quickMenu button{width:64px;height:44px;min-height:44px;padding:2px;gap:1px}
+ #stageUtilities #quickMenu svg{width:18px;height:18px}
+ #app:has(#stageUtilities #quickMenu:not([hidden])) #tutorial.objective.compact{visibility:hidden}
+ #stageUtilities{z-index:31}
+ #stageUtilities #quickMenu{background:#102219}
+ #notificationStack:has([data-channel=critical]:not([hidden]),#saveStatus.error:not([hidden])){z-index:32}
+}
