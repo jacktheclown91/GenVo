@@ -1,0 +1,53 @@
+{
+  "scope": "Public fresh-world native information-panel keyboard navigation. No authored simulation state.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "scroll": [
+    {
+      "key": "PageDown",
+      "top": 628
+    },
+    {
+      "key": "End",
+      "top": 727
+    },
+    {
+      "key": "Home",
+      "top": 0
+    }
+  ],
+  "events": [
+    {
+      "code": "PageDown",
+      "trusted": true,
+      "prevented": false
+    },
+    {
+      "code": "End",
+      "trusted": true,
+      "prevented": false
+    },
+    {
+      "code": "Home",
+      "trusted": true,
+      "prevented": false
+    },
+    {
+      "code": "Space",
+      "trusted": true,
+      "prevented": false
+    },
+    {
+      "code": "Enter",
+      "trusted": true,
+      "prevented": false
+    }
+  ],
+  "disclosureNative": true,
+  "escapeCloses": true,
+  "movement": {
+    "x": 116.60009771410509,
+    "y": 61.5
+  }
+}

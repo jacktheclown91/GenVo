@@ -1,0 +1,37 @@
+{
+  "scope": "Public fresh-world native information-panel keyboard navigation. No authored simulation state.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "scroll": [
+    {
+      "key": "PageDown",
+      "top": 0
+    },
+    {
+      "key": "End",
+      "top": 711
+    },
+    {
+      "key": "Home",
+      "top": 711
+    }
+  ],
+  "events": [
+    {
+      "code": "PageDown",
+      "trusted": true,
+      "prevented": true
+    },
+    {
+      "code": "End",
+      "trusted": true,
+      "prevented": false
+    },
+    {
+      "code": "Home",
+      "trusted": false,
+      "prevented": false
+    }
+  ]
+}

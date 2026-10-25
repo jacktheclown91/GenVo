@@ -1,0 +1,9 @@
+import assert from 'node:assert/strict';
+import {informationNavigationEvent} from '../src/ui/information-input.js';
+const target=(...matches)=>({closest:selector=>selector.split(',').some(s=>matches.includes(s))?{}:null});
+const panel=target('.detail-panel'),field=target('.detail-panel','input'),world=target();
+for(const code of ['PageDown','ArrowDown','Home','End','Enter','Space','Tab'])assert.equal(informationNavigationEvent({type:'keydown',code,target:panel}),true);
+assert.equal(informationNavigationEvent({type:'keyup',code:'Space',target:panel}),true);
+assert.equal(informationNavigationEvent({type:'keydown',code:'KeyW',target:field}),true,'typing in a panel field stays native');
+for(const event of [{type:'click',code:'Enter',target:panel},{type:'pointerdown',code:'Space',target:panel},{type:'keydown',code:'Escape',target:panel},{type:'keydown',code:'KeyL',target:panel},{type:'keydown',code:'PageDown',target:world},{type:'keydown',code:'KeyW',target:world}])assert.equal(informationNavigationEvent(event),false,'preserve pointer barriers, Escape, letter shortcuts and world controls');
+console.log('Information input boundary PASS: native panel navigation/typing, retained pointer barriers and world shortcuts.');
