@@ -65,7 +65,7 @@ function suitableCells(profile,template){
  return cells;
 }
 function bodyFor(a,plan){
- if(isWildSpecies(a.species))a.bodyPlan=deserializePlan(serializePlan(plan));
+ if(isWildSpecies(a.species))a.bodyPlan=structuredClone(plan);
  else if(!applyLineageTarget(a,plan))throw Error('Founding anatomy could not be applied to '+a.species+'.');
 }
 // A detached measuring body built by the ordinary constructor. The region's
@@ -78,8 +78,8 @@ function withProbe(sim,template,measure){
 }
 // Daily support at a point: renewable food the body's own mouth/medium reaches
 // over the daily need of its basal physiology plus its thermal load there.
-function supportAt(sim,a,point){
- const at={...a,x:point.x,y:point.y},need=founderDailyNeed(a.species,a)*(1+Math.max(0,thermalSiteDemand(sim,a,point.x,point.y).load));
+function supportAt(sim,a,point,baseNeed=founderDailyNeed(a.species,a)){
+ const at={...a,x:point.x,y:point.y},need=baseNeed*(1+Math.max(0,thermalSiteDemand(sim,a,point.x,point.y).load));
  return{food:renewableFood(sim,at),need};
 }
 function rankRole(sim,profile,rng,kind,absent){
@@ -89,7 +89,10 @@ function rankRole(sim,profile,rng,kind,absent){
   const cells=suitableCells(profile,t),total=t.habitat.medium==='water'?profile.waterCells:profile.landCells;
   if(cells.length<REGIONAL_FOUNDING.minSuitableCells||!total){absent.push({template:t.id,reason:'insufficient suitable habitat'});continue}
   const samples=[];for(let k=0;k<REGIONAL_FOUNDING.siteSamples;k++)samples.push(cellPoint(profile.world,cells[Math.floor(rng.next()*cells.length)]));
-  const measured=withProbe(sim,t,probe=>samples.map(p=>({...p,...supportAt(sim,probe,p)})));
+  const measured=withProbe(sim,t,probe=>{
+   const baseNeed=founderDailyNeed(probe.species,probe);
+   return samples.map(p=>({...p,...supportAt(sim,probe,p,baseNeed)}));
+  });
   measured.sort((a,b)=>b.food/b.need-a.food/a.need||a.y-b.y||a.x-b.x);
   const best=measured.slice(0,REGIONAL_FOUNDING.probeSites),ratio=best.reduce((s,m)=>s+m.food/m.need,0)/best.length;
   const share=cells.length/total;

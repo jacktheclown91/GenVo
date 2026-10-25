@@ -3,6 +3,9 @@ import {SPECIES} from '../organisms/species.js';
 import {ADAPTATIONS} from '../lineage/evolution.js';
 import {drawLineagePortrait} from '../render/lineage-portrait.js';
 import {compareGenes} from '../lineage/adaptation.js';
+import {PART_ABILITY_TEXT as PHASE_D_TEXT,WAVE1_TEXT,WAVE2_TEXT} from '../lineage/part-abilities.js';
+
+const ALL_PART_TEXT={...PHASE_D_TEXT,...WAVE1_TEXT,...WAVE2_TEXT};
 
 // First-generation arc (creator direction 2026-10-23). When the player's young
 // are born, show what each one actually inherited: which body parts came from
@@ -46,11 +49,16 @@ export function buildYoungSummary(sim,parent,children,{first=false}={}){
    const fresh=new Set(from.new);for(const [k,n] of swaps){const result=k.startsWith('added ')?k.slice(6):k.includes(' → ')?k.split(' → ')[1]:null;if(result&&[...fresh].some(p=>name(p)===result))continue;guided.push(n>1?k+' ×'+n:k)}}
   const guidedBy=c.bodyVariation?.guidedOverride?'Shaped by your guided design':'Developed from inherited traits';
   const guidedParts=new Set(reshaped?lost.filter(x=>[...layoutAt.values()].includes(x)):[]);
-  return{id:c.id,sex:c.sex==='F'?'female':c.sex==='M'?'male':'',from,lost,lostInDevelopment:lost.filter(x=>removed.has(x)&&!guidedParts.has(x)),guided,guidedBy,guidedParts:[...guidedParts],traits:compareGenes(c.genes,parent.genes,{limit:3}).map(t=>t.phrase),bornWith:(c.bornWith||[]).map(id=>ADAPTATIONS[id]?.name||name(id)),
+  const novelParts=[...new Set([...from.new,...from.mate.filter(p=>!mine.has(p))])];
+  const advantages=novelParts.map(p=>{
+   const t=ALL_PART_TEXT[p];
+   return t?.gain?`${name(p)} (${t.gain})`:null;
+  }).filter(Boolean);
+  return{id:c.id,sex:c.sex==='F'?'female':c.sex==='M'?'male':'',from,lost,lostInDevelopment:lost.filter(x=>removed.has(x)&&!guidedParts.has(x)),guided,guidedBy,guidedParts:[...guidedParts],advantages,traits:compareGenes(c.genes,parent.genes,{limit:3}).map(t=>t.phrase),bornWith:(c.bornWith||[]).map(id=>ADAPTATIONS[id]?.name||name(id)),
    mutated:!!(c.bodyVariation?.accepted&&c.bodyVariation?.attempted&&(c.bodyVariation.targets?.length||c.bodyVariation.removed?.length||c.bodyVariation.moved?.length)),
    dependent:!!sim.family?.isDependent?.(c),stage:learning?.label||'newborn'}});
  const lines=y=>[y.from.you.length?'From you: '+list(y.from.you):'',y.from.mate.length?'From its other parent: '+list(y.from.mate):'',y.from.both.length?'Both of you carried: '+list(y.from.both):'',
-  y.from.new.length?'New in this body: '+list(y.from.new):'',y.lostInDevelopment.length?'Lost in development: '+list(y.lostInDevelopment):'',
+  y.from.new.length?'New in this body: '+list(y.from.new):'',y.advantages?.length?'Novel advantages: '+y.advantages.join(' · '):'',y.lostInDevelopment.length?'Lost in development: '+list(y.lostInDevelopment):'',
   y.guided.length?y.guidedBy+': '+y.guided.join(', '):'',
   y.lost.filter(x=>!y.lostInDevelopment.includes(x)&&!y.guidedParts.includes(x)).length?'Not inherited from you: '+list(y.lost.filter(x=>!y.lostInDevelopment.includes(x)&&!y.guidedParts.includes(x))):'',
   y.traits.length?'Compared with you: '+y.traits.join(', '):'',y.bornWith.length?'Born with: '+y.bornWith.join(', '):''].filter(Boolean);

@@ -138,24 +138,21 @@ export function planetaryTravelAvailability(sim){
   dependentCount:cohort.dependentCount,adultCount:cohort.adultCount,placements:placements.map(({member,point})=>({id:member.id,point}))};
 }
 function strippedRegionSnapshot(sim,ids){
- // The checkpoint is a newly built descriptor. Remove other regional
- // authorities BEFORE deep cloning: each belongs to the destination's
- // separate session ledger, never inside the region being archived.
- // Cloning first multiplied every archived seed bank and fauna store during
- // each border crossing, only to discard those copies immediately.
  const checkpoint=createSimulationSnapshot(sim,{reason:'regional-departure',savedAt:'regional-checkpoint',regionalDeparture:true});
- // Defense in depth: no other regional owner may be embedded in this archive.
  if(checkpoint.core.planetaryTravel||checkpoint.regionalWorlds)
   throw Error('Recursive regional departure authority.');
- const source=structuredClone(checkpoint);
- const departure=new Set(ids);
- const slots=source.animals.flatMap((a,index)=>departure.has(a.id)?[{id:a.id,index}]:[]);
+ const departure=new Set(ids),slots=[],remainingAnimals=[];
+ for(let i=0;i<checkpoint.animals.length;i++){
+  const a=checkpoint.animals[i];
+  if(departure.has(a.id))slots.push({id:a.id,index:i});
+  else remainingAnimals.push(structuredClone(a));
+ }
  if(slots.length!==departure.size)throw Error('Regional family cohort is not fully owned by departing territory.');
- if(slots.length===1)source.core.regionalTravelerSlot=slots[0].index;
- else source.core.regionalTravelerSlots=slots;
- source.animals=source.animals.filter(a=>!departure.has(a.id));
- source.core.playerId=null;source.core.playerEnabled=false;
- return source;
+ if(slots.length===1)checkpoint.core.regionalTravelerSlot=slots[0].index;
+ else checkpoint.core.regionalTravelerSlots=slots;
+ checkpoint.animals=remainingAnimals;
+ checkpoint.core.playerId=null;checkpoint.core.playerEnabled=false;
+ return checkpoint;
 }
 function transferGlobals(from,to){
  // Lineage progression/evolution budgets apply to a traveler globally, while
@@ -254,7 +251,7 @@ export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
  sessions.push({key:sourceKey,snapshot:strippedRegionSnapshot(sim,memberIds),...(sim.offscreenBiologyEnabled?{biologicalMode:'canonical-ticks/1'}:{})});
  dest.planetaryTravel={schema:1,nextId:dest.nextId,sessions,...(prior.unloaded?.length?{unloaded:prior.unloaded.map(e=>structuredClone(e))}:{}),
   ...(prior.seamLedger?{seamLedger:structuredClone(prior.seamLedger)}:{})};
- for(const key of ['visionRules','strangerRules','dayClockRules','metabolismRules','foodRules','tissueWaterRules','winterWaterRules','escapeLandingRules','tissueEnergyRules','perennialRegrowthRules','aquaticForagingRules','seedViabilityRules','breedingSupportRules','plantLifecycleRules','legacyMilestones','habitatHazardRules','fireRules','thunderRules','stratumSenseRules','stratumSenseRuleMigrations','vibrationRules','mateAssortmentRules','sensoryFogEnabled','surfaceIceRules','surfaceIceRuleMigrations','thermalRefugeRules','thermalRefugeRuleMigrations','thermalRules','thermalPattern','thermalRuleMigrations','visibilityRules','visibilityRuleMigrations','caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions','regionalFoundingRules','regionalDemographyRules','regionalResidencyRules','evolvedLibraryRules','foundingLibrary','regionalDispersalRules','marineFoodRules','regionalFrontierRules','uiTutorialStage','openingGraceUntilDay','openingGraceEnded']){if(Object.hasOwn(sim,key))dest[key]=structuredClone(sim[key]);else delete dest[key];}
+ for(const key of ['visionRules','strangerRules','dayClockRules','metabolismRules','foodRules','tissueWaterRules','winterWaterRules','escapeLandingRules','tissueEnergyRules','perennialRegrowthRules','aquaticForagingRules','seedViabilityRules','breedingSupportRules','plantLifecycleRules','legacyMilestones','habitatHazardRules','fireRules','thunderRules','stratumSenseRules','stratumSenseRuleMigrations','vibrationRules','mateAssortmentRules','sensoryFogEnabled','surfaceIceRules','surfaceIceRuleMigrations','thermalRefugeRules','thermalRefugeRuleMigrations','thermalRules','thermalPattern','thermalRuleMigrations','visibilityRules','visibilityRuleMigrations','caveRules','caveRuleMigrations','burrowingRules','burrowingRuleMigrations','climbingRules','climbingRuleMigrations','divingRules','divingRuleMigrations','movementRuleMigrations','jumpingRules','glidingRules','diggingRules','diggingRuleMigrations','carcassRules','carcassRuleMigrations','creatureStart','authoredIntroductions','regionalFoundingRules','regionalDemographyRules','regionalResidencyRules','evolvedLibraryRules','foundingLibrary','regionalDispersalRules','marineFoodRules','regionalFrontierRules','uiTutorialStage','openingGraceUntilDay','openingGraceEnded']){if(Object.hasOwn(sim,key))dest[key]=typeof sim[key]==='object'&&sim[key]!==null?structuredClone(sim[key]):sim[key];else delete dest[key];}
  if(!dest.habitatHazardRules)delete dest.habitatHazards;
  if(!dest.fireRules)delete dest.wildfire;
  if(!dest.thunderRules)delete dest.thunderstorms;
