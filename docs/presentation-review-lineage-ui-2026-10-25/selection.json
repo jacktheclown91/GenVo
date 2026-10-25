@@ -1,0 +1,157 @@
+{
+  "schema": "genvo.presentation-review-selection/1",
+  "items": [
+    {
+      "id": "generation-reveal",
+      "title": "Generation reveal stays reachable in short windows",
+      "revision": "2b63a80b",
+      "scope": "Same paused genuine Day47 G2 handoff, before/after short-height CSS. Real birth, growth, succession and subsequent desktop G2 Save/Continue. Native short wheel reachability verified separately in an isolated UI fixture.",
+      "before": "docs/ui-generation-reveal-2026-10-25/baseline-short.png",
+      "after": "docs/ui-generation-reveal-2026-10-25/reveal-short.png"
+    },
+    {
+      "id": "first-young",
+      "title": "Read the actual inherited anatomy",
+      "revision": "c22f37a9",
+      "scope": "Actual public birth dialogs from independent native runs; all recorded parents and offspring remain. Short viewport scrolls the complete content and keeps gameplay utilities behind it. Not exact-state A/B.",
+      "before": "docs/ui-compact-birth-2026-10-25/baseline-short.png",
+      "after": "docs/ui-compact-birth-2026-10-25/offspring-short.png",
+      "afterCaption": "Scrolled actual offspring and inherited-part details"
+    },
+    {
+      "id": "compact-lab",
+      "title": "Creature Lab retains a usable editing area",
+      "revision": "9e73763e",
+      "scope": "Public guided founder editor at short height. Native preview controls, socket attachment, export and exact installation verified. View shown after scrolling to specimen; no biological state authored.",
+      "before": "docs/ui-compact-lab-2026-10-24/baseline-short.png",
+      "after": "docs/ui-compact-lab-2026-10-24/specimen-short.png",
+      "afterCaption": "Short editor scrolled to its specimen"
+    },
+    {
+      "id": "menu-scroll",
+      "title": "Main menu stays reachable at short height",
+      "revision": "82936171",
+      "scope": "Native main menu before/after safe scroll alignment. Credits/Back, New World and public creation verified. Lower entries require scrolling.",
+      "before": "docs/ui-menu-scroll-2026-10-24/baseline-short.png",
+      "after": "docs/ui-menu-scroll-2026-10-24/menu-short.png"
+    },
+    {
+      "id": "legacy-fixture",
+      "title": "Legacy summary component review",
+      "revision": "7688e952",
+      "scope": "Explicit authored milestone fixture matching the recorded real G2 summary, using production LegacySummary and utilities components. Native scroll/dismissal verified; this frame is not a fresh live succession event.",
+      "after": "docs/ui-legacy-summary-2026-10-25/legacy-short.png"
+    },
+    {
+      "id": "compact-utilities",
+      "title": "Compact utilities and visible automation state",
+      "revision": "6654e885",
+      "scope": "Public gameplay at compact viewport sizes. Real Auto toggle; critical-alert priority separately verified with a labelled authored UI fixture.",
+      "before": "docs/ui-compact-utilities-2026-10-24/compact-short.png",
+      "beforeCaption": "Short landscape: controls clear of player and vitals",
+      "after": "docs/ui-compact-utilities-2026-10-24/automation-on.png",
+      "afterCaption": "Narrow portrait: actual Auto On state"
+    },
+    {
+      "id": "short-hud",
+      "title": "Short-screen survival controls and weather",
+      "revision": "9b080264",
+      "scope": "Actual public cold-weather gameplay at 568 by 320. Compact vital row and horizontally scrollable action strip preserve commands.",
+      "after": "docs/ui-short-hud-2026-10-24/compact-thermal-568x320.png"
+    },
+    {
+      "id": "flight-clearance",
+      "title": "Flight wind readout clears the creature",
+      "revision": "52f3dd33",
+      "scope": "Actual public guided flier after paid takeoff, phone viewport at 4x zoom. Uses projected body and UI bounds.",
+      "after": "docs/ui-flight-wind-clearance-2026-10-24/flight-390-4.png"
+    },
+    {
+      "id": "dive-hud",
+      "title": "Dive depth stays with its active control",
+      "revision": "9d7dc8b0",
+      "scope": "Public guided swimmer after native Dive in perceived deep water. Actual finite depth and breath; player floating duplicate removed, wildlife labels retained.",
+      "after": "docs/ui-dive-depth-2026-10-24/dive-phone-4.png"
+    },
+    {
+      "id": "hud-ui",
+      "title": "Readable HUD and shared save feedback",
+      "revision": "4b5e9ba3",
+      "scope": "Actual public manual save and expanded utilities at phone width. This capture predates the later Journal refinement; save text and timers remain canonical.",
+      "after": "docs/ui-save-feedback-2026-10-24/saved-390.png"
+    },
+    {
+      "id": "journal-ui",
+      "title": "Journal navigation follows retained family history",
+      "revision": "f5ffa990",
+      "scope": "Same refined UI in two real states: initially one retained record; then three records after public manual courtship and normal Day17 birth. No ancestry or biological outcome was authored.",
+      "before": "docs/ui-journal-navigation-2026-10-24/single-phone.png",
+      "beforeCaption": "One retained record: cycling controls omitted",
+      "after": "docs/ui-journal-navigation-2026-10-24/multiple-phone.png",
+      "afterCaption": "Three retained records: position and cycling controls"
+    },
+    {
+      "id": "help-ui",
+      "title": "Help with native scrolling and clear feedback",
+      "revision": "b7bd01b9",
+      "scope": "Actual public phone Help. Native PageDown/End/Home, disclosure Space/Enter, Escape and subsequent world movement were verified separately from visual approval.",
+      "after": "docs/ui-information-navigation-2026-10-24/help-keyboard-phone.png"
+    },
+    {
+      "id": "processing-ui",
+      "title": "Plain-language processing feedback",
+      "revision": "1bf2f306",
+      "scope": "Actual runtime queue during a controlled 12x browser-CPU slowdown. Full original diagnostics stay under Update details. This is not ordinary performance or GPU acceptance.",
+      "after": "docs/ui-processing-notice-2026-10-24/processing-open-390.png"
+    },
+    {
+      "id": "save-error-ui",
+      "title": "Save error styling fixture",
+      "revision": "021bea77",
+      "scope": "Isolated authored UI fixture using production markup, styles and notification layout. This does not demonstrate a real storage failure or recovery.",
+      "after": "docs/ui-save-error-2026-10-24/error-390.png"
+    },
+    {
+      "id": "terrain",
+      "title": "Seasonal ground repetition",
+      "revision": "c001f3f",
+      "scope": "Actual full-scene comparison. Plants, bodies and fog retained; unchanged saved state and exact restored baseline. Creator acceptance open.",
+      "before": "docs/art-refinement-seasonal-ground-v1-2026-10-24/gameplay-pair/baseline.png",
+      "after": "docs/art-refinement-seasonal-ground-v1-2026-10-24/gameplay-pair/candidate.png"
+    },
+    {
+      "id": "storm",
+      "title": "Storm warning on a phone",
+      "revision": "6b895746",
+      "scope": "Actual naturally generated storm and public phone viewport. This capture predates the later decorative ground refinement.",
+      "after": "docs/art-refinement-storm-readout-v1-2026-10-24/native/storm-390x540.png"
+    },
+    {
+      "id": "clutch",
+      "title": "Actual paid nest and eggs",
+      "revision": "20e5d5ec",
+      "scope": "Genuine simulated clutch after explicitly authored sandbox founders. Public saved-world import and manual movement; not naturally evolved founder ancestry.",
+      "before": "docs/art-refinement-clutch-v1-2026-10-24/clear-exported-clutch/before-focus.png",
+      "after": "docs/art-refinement-clutch-v1-2026-10-24/clear-exported-clutch/after-focus.png"
+    },
+    {
+      "id": "shelter",
+      "title": "Actual paid shelter",
+      "revision": "00c440ce",
+      "scope": "Public recorded-house import of genuine paid construction and storage. Not a second construction event; natural burrow-house review remains open.",
+      "before": "docs/art-refinement-shelter-v1-2026-10-24/exported-recorded-house/before-focus.png",
+      "after": "docs/art-refinement-shelter-v1-2026-10-24/exported-recorded-house/after-focus.png"
+    },
+    {
+      "id": "lab",
+      "title": "Creature Lab layout",
+      "revision": "52e5645a",
+      "scope": "Earlier integrated Lab presentation capture. Biological changes remain owned by the inherited draft and its constraints.",
+      "after": "docs/art-refinement-interface-v1-2026-10-23/combined/lab-combined-current-policy-1366x768-integrated-lab.png"
+    }
+  ],
+  "audio": {
+    "source": "docs/art-refinement-contact-audio-v1-2026-10-24/contact-review-reel.wav",
+    "scope": "Original contact-sound production candidates. Not integrated or shipped in game; playback/contact routing and creator listening acceptance remain open."
+  }
+}
