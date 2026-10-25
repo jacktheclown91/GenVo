@@ -1,0 +1,688 @@
+{
+  "scope": "Native Options, empty Load World and Credits layout, Back navigation and real preference toggles. No simulation state authored.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "sizes": [
+    {
+      "width": 1366,
+      "height": 768,
+      "screen": "settings",
+      "scrollWidth": 619,
+      "clientWidth": 619,
+      "controls": [
+        {
+          "id": "menuVolume",
+          "text": "",
+          "rect": {
+            "x": 97.609375,
+            "y": 296.640625,
+            "width": 352,
+            "height": 16,
+            "top": 296.640625,
+            "right": 449.609375,
+            "bottom": 312.640625,
+            "left": 97.609375
+          }
+        },
+        {
+          "id": "menuMute",
+          "text": "",
+          "rect": {
+            "x": 99.609375,
+            "y": 344.640625,
+            "width": 19,
+            "height": 19,
+            "top": 344.640625,
+            "right": 118.609375,
+            "bottom": 363.640625,
+            "left": 99.609375
+          }
+        },
+        {
+          "id": "menuReduceMotion",
+          "text": "",
+          "rect": {
+            "x": 99.609375,
+            "y": 383.640625,
+            "width": 19,
+            "height": 19,
+            "top": 383.640625,
+            "right": 118.609375,
+            "bottom": 402.640625,
+            "left": 99.609375
+          }
+        },
+        {
+          "id": "menuViewMode",
+          "text": "Comfort View (recommended)Biological VisionSandbox View",
+          "rect": {
+            "x": 95.609375,
+            "y": 436.4375,
+            "width": 352,
+            "height": 44,
+            "top": 436.4375,
+            "right": 447.609375,
+            "bottom": 480.4375,
+            "left": 95.609375
+          }
+        },
+        {
+          "id": "menuZoom",
+          "text": "2× · see more of the land3× · creatures larger4× · close-up",
+          "rect": {
+            "x": 95.609375,
+            "y": 559.015625,
+            "width": 352,
+            "height": 44,
+            "top": 559.015625,
+            "right": 447.609375,
+            "bottom": 603.015625,
+            "left": 95.609375
+          }
+        },
+        {
+          "id": "",
+          "text": "Fullscreen",
+          "rect": {
+            "x": 95.609375,
+            "y": 657.40625,
+            "width": 171.5,
+            "height": 44,
+            "top": 657.40625,
+            "right": 267.109375,
+            "bottom": 701.40625,
+            "left": 95.609375
+          }
+        },
+        {
+          "id": "",
+          "text": "Back",
+          "rect": {
+            "x": 276.109375,
+            "y": 657.40625,
+            "width": 171.5,
+            "height": 44,
+            "top": 657.40625,
+            "right": 447.609375,
+            "bottom": 701.40625,
+            "left": 276.109375
+          }
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "screen": "worlds",
+      "scrollWidth": 619,
+      "clientWidth": 619,
+      "controls": [
+        {
+          "id": "",
+          "text": "New World",
+          "rect": {
+            "x": 95.609375,
+            "y": 514.8125,
+            "width": 171.5,
+            "height": 44,
+            "top": 514.8125,
+            "right": 267.109375,
+            "bottom": 558.8125,
+            "left": 95.609375
+          }
+        },
+        {
+          "id": "",
+          "text": "Back",
+          "rect": {
+            "x": 276.109375,
+            "y": 514.8125,
+            "width": 171.5,
+            "height": 44,
+            "top": 514.8125,
+            "right": 447.609375,
+            "bottom": 558.8125,
+            "left": 276.109375
+          }
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "screen": "credits",
+      "scrollWidth": 619,
+      "clientWidth": 619,
+      "controls": [
+        {
+          "id": "",
+          "text": "Back",
+          "rect": {
+            "x": 95.609375,
+            "y": 563.3125,
+            "width": 352,
+            "height": 44,
+            "top": 563.3125,
+            "right": 447.609375,
+            "bottom": 607.3125,
+            "left": 95.609375
+          }
+        }
+      ]
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "screen": "settings",
+      "scrollWidth": 619,
+      "clientWidth": 619,
+      "controls": [
+        {
+          "id": "menuVolume",
+          "text": "",
+          "rect": {
+            "x": 58,
+            "y": 263.09375,
+            "width": 352,
+            "height": 16,
+            "top": 263.09375,
+            "right": 410,
+            "bottom": 279.09375,
+            "left": 58
+          }
+        },
+        {
+          "id": "menuMute",
+          "text": "",
+          "rect": {
+            "x": 60,
+            "y": 311.09375,
+            "width": 19,
+            "height": 19,
+            "top": 311.09375,
+            "right": 79,
+            "bottom": 330.09375,
+            "left": 60
+          }
+        },
+        {
+          "id": "menuReduceMotion",
+          "text": "",
+          "rect": {
+            "x": 60,
+            "y": 350.09375,
+            "width": 19,
+            "height": 19,
+            "top": 350.09375,
+            "right": 79,
+            "bottom": 369.09375,
+            "left": 60
+          }
+        },
+        {
+          "id": "menuViewMode",
+          "text": "Comfort View (recommended)Biological VisionSandbox View",
+          "rect": {
+            "x": 56,
+            "y": 402.890625,
+            "width": 352,
+            "height": 44,
+            "top": 402.890625,
+            "right": 408,
+            "bottom": 446.890625,
+            "left": 56
+          }
+        },
+        {
+          "id": "menuZoom",
+          "text": "2× · see more of the land3× · creatures larger4× · close-up",
+          "rect": {
+            "x": 56,
+            "y": 525.46875,
+            "width": 352,
+            "height": 44,
+            "top": 525.46875,
+            "right": 408,
+            "bottom": 569.46875,
+            "left": 56
+          }
+        },
+        {
+          "id": "",
+          "text": "Fullscreen",
+          "rect": {
+            "x": 56,
+            "y": 623.859375,
+            "width": 171.5,
+            "height": 44,
+            "top": 623.859375,
+            "right": 227.5,
+            "bottom": 667.859375,
+            "left": 56
+          }
+        },
+        {
+          "id": "",
+          "text": "Back",
+          "rect": {
+            "x": 236.5,
+            "y": 623.859375,
+            "width": 171.5,
+            "height": 44,
+            "top": 623.859375,
+            "right": 408,
+            "bottom": 667.859375,
+            "left": 236.5
+          }
+        }
+      ]
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "screen": "worlds",
+      "scrollWidth": 619,
+      "clientWidth": 619,
+      "controls": [
+        {
+          "id": "",
+          "text": "New World",
+          "rect": {
+            "x": 56,
+            "y": 414.046875,
+            "width": 171.5,
+            "height": 44,
+            "top": 414.046875,
+            "right": 227.5,
+            "bottom": 458.046875,
+            "left": 56
+          }
+        },
+        {
+          "id": "",
+          "text": "Back",
+          "rect": {
+            "x": 236.5,
+            "y": 414.046875,
+            "width": 171.5,
+            "height": 44,
+            "top": 414.046875,
+            "right": 408,
+            "bottom": 458.046875,
+            "left": 236.5
+          }
+        }
+      ]
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "screen": "credits",
+      "scrollWidth": 619,
+      "clientWidth": 619,
+      "controls": [
+        {
+          "id": "",
+          "text": "Back",
+          "rect": {
+            "x": 56,
+            "y": 462.546875,
+            "width": 352,
+            "height": 44,
+            "top": 462.546875,
+            "right": 408,
+            "bottom": 506.546875,
+            "left": 56
+          }
+        }
+      ]
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "screen": "settings",
+      "scrollWidth": 567,
+      "clientWidth": 567,
+      "controls": [
+        {
+          "id": "menuVolume",
+          "text": "",
+          "rect": {
+            "x": 26,
+            "y": 242.703125,
+            "width": 352,
+            "height": 16,
+            "top": 242.703125,
+            "right": 378,
+            "bottom": 258.703125,
+            "left": 26
+          }
+        },
+        {
+          "id": "menuMute",
+          "text": "",
+          "rect": {
+            "x": 28,
+            "y": 290.703125,
+            "width": 19,
+            "height": 19,
+            "top": 290.703125,
+            "right": 47,
+            "bottom": 309.703125,
+            "left": 28
+          }
+        },
+        {
+          "id": "menuReduceMotion",
+          "text": "",
+          "rect": {
+            "x": 28,
+            "y": 329.703125,
+            "width": 19,
+            "height": 19,
+            "top": 329.703125,
+            "right": 47,
+            "bottom": 348.703125,
+            "left": 28
+          }
+        },
+        {
+          "id": "menuViewMode",
+          "text": "Comfort View (recommended)Biological VisionSandbox View",
+          "rect": {
+            "x": 24,
+            "y": 382.5,
+            "width": 352,
+            "height": 44,
+            "top": 382.5,
+            "right": 376,
+            "bottom": 426.5,
+            "left": 24
+          }
+        },
+        {
+          "id": "menuZoom",
+          "text": "2× · see more of the land3× · creatures larger4× · close-up",
+          "rect": {
+            "x": 24,
+            "y": 505.078125,
+            "width": 352,
+            "height": 44,
+            "top": 505.078125,
+            "right": 376,
+            "bottom": 549.078125,
+            "left": 24
+          }
+        },
+        {
+          "id": "",
+          "text": "Fullscreen",
+          "rect": {
+            "x": 24,
+            "y": 603.46875,
+            "width": 171.5,
+            "height": 44,
+            "top": 603.46875,
+            "right": 195.5,
+            "bottom": 647.46875,
+            "left": 24
+          }
+        },
+        {
+          "id": "",
+          "text": "Back",
+          "rect": {
+            "x": 204.5,
+            "y": 603.46875,
+            "width": 171.5,
+            "height": 44,
+            "top": 603.46875,
+            "right": 376,
+            "bottom": 647.46875,
+            "left": 204.5
+          }
+        }
+      ]
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "screen": "worlds",
+      "scrollWidth": 567,
+      "clientWidth": 567,
+      "controls": [
+        {
+          "id": "",
+          "text": "New World",
+          "rect": {
+            "x": 24,
+            "y": 315.703125,
+            "width": 171.5,
+            "height": 44,
+            "top": 315.703125,
+            "right": 195.5,
+            "bottom": 359.703125,
+            "left": 24
+          }
+        },
+        {
+          "id": "",
+          "text": "Back",
+          "rect": {
+            "x": 204.5,
+            "y": 315.703125,
+            "width": 171.5,
+            "height": 44,
+            "top": 315.703125,
+            "right": 376,
+            "bottom": 359.703125,
+            "left": 204.5
+          }
+        }
+      ]
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "screen": "credits",
+      "scrollWidth": 567,
+      "clientWidth": 567,
+      "controls": [
+        {
+          "id": "",
+          "text": "Back",
+          "rect": {
+            "x": 24,
+            "y": 353.703125,
+            "width": 352,
+            "height": 44,
+            "top": 353.703125,
+            "right": 376,
+            "bottom": 397.703125,
+            "left": 24
+          }
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "screen": "settings",
+      "scrollWidth": 319,
+      "clientWidth": 319,
+      "controls": [
+        {
+          "id": "menuVolume",
+          "text": "",
+          "rect": {
+            "x": 26,
+            "y": 265.546875,
+            "width": 271,
+            "height": 16,
+            "top": 265.546875,
+            "right": 297,
+            "bottom": 281.546875,
+            "left": 26
+          }
+        },
+        {
+          "id": "menuMute",
+          "text": "",
+          "rect": {
+            "x": 28,
+            "y": 313.546875,
+            "width": 19,
+            "height": 19,
+            "top": 313.546875,
+            "right": 47,
+            "bottom": 332.546875,
+            "left": 28
+          }
+        },
+        {
+          "id": "menuReduceMotion",
+          "text": "",
+          "rect": {
+            "x": 28,
+            "y": 352.546875,
+            "width": 19,
+            "height": 19,
+            "top": 352.546875,
+            "right": 47,
+            "bottom": 371.546875,
+            "left": 28
+          }
+        },
+        {
+          "id": "menuViewMode",
+          "text": "Comfort View (recommended)Biological VisionSandbox View",
+          "rect": {
+            "x": 24,
+            "y": 405.34375,
+            "width": 271,
+            "height": 44,
+            "top": 405.34375,
+            "right": 295,
+            "bottom": 449.34375,
+            "left": 24
+          }
+        },
+        {
+          "id": "menuZoom",
+          "text": "2× · see more of the land3× · creatures larger4× · close-up",
+          "rect": {
+            "x": 24,
+            "y": 543.3125,
+            "width": 271,
+            "height": 44,
+            "top": 543.3125,
+            "right": 295,
+            "bottom": 587.3125,
+            "left": 24
+          }
+        },
+        {
+          "id": "",
+          "text": "Fullscreen",
+          "rect": {
+            "x": 24,
+            "y": 641.703125,
+            "width": 271,
+            "height": 44,
+            "top": 641.703125,
+            "right": 295,
+            "bottom": 685.703125,
+            "left": 24
+          }
+        },
+        {
+          "id": "",
+          "text": "Back",
+          "rect": {
+            "x": 24,
+            "y": 694.703125,
+            "width": 271,
+            "height": 44,
+            "top": 694.703125,
+            "right": 295,
+            "bottom": 738.703125,
+            "left": 24
+          }
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "screen": "worlds",
+      "scrollWidth": 319,
+      "clientWidth": 319,
+      "controls": [
+        {
+          "id": "",
+          "text": "New World",
+          "rect": {
+            "x": 24,
+            "y": 414,
+            "width": 271,
+            "height": 44,
+            "top": 414,
+            "right": 295,
+            "bottom": 458,
+            "left": 24
+          }
+        },
+        {
+          "id": "",
+          "text": "Back",
+          "rect": {
+            "x": 24,
+            "y": 467,
+            "width": 271,
+            "height": 44,
+            "top": 467,
+            "right": 295,
+            "bottom": 511,
+            "left": 24
+          }
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "screen": "credits",
+      "scrollWidth": 319,
+      "clientWidth": 319,
+      "controls": [
+        {
+          "id": "",
+          "text": "Back",
+          "rect": {
+            "x": 24,
+            "y": 467,
+            "width": 271,
+            "height": 44,
+            "top": 467,
+            "right": 295,
+            "bottom": 511,
+            "left": 24
+          }
+        }
+      ]
+    }
+  ],
+  "toggles": [
+    {
+      "id": "menuMute",
+      "before": false,
+      "restored": false
+    },
+    {
+      "id": "menuReduceMotion",
+      "before": false,
+      "restored": false
+    }
+  ]
+}

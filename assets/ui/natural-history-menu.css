@@ -46,3 +46,6 @@
 
 /* Keep overflowing menu content reachable from the top of its scroll area. */
 #frontEnd .front-frame{justify-content:safe center}
+
+/* Requested detail screens need a quiet reading surface over the live world. */
+#frontEnd .front-frame:has(.menu-view:is([data-screen="settings"],[data-screen="worlds"],[data-screen="credits"]):not([hidden])){background:#0c1912f5;border-right:1px solid #cbb57440}
