@@ -115,7 +115,9 @@ const runtime=[
   'tests/world-swap-render.mjs',
   'tests/menu-task-usability.mjs',
   'tests/movement-input-buffer.mjs',
-  'tests/input-responsiveness.mjs'
+  'tests/input-responsiveness.mjs',
+  'tests/multigenerational-lineage.mjs',
+  'tests/living-planet-extended.mjs'
 ];
 let passed=0;
 for(const [mode,items] of [['syntax',syntax],['playable',runtime]]){

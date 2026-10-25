@@ -58,6 +58,7 @@ import {FieldJournal} from './ui/journal.js';
 import {AudioDirector} from './audio/audio.js';
 import {LeadershipWheel} from './ui/leadership-wheel.js';
 import {EffectFeedbackController} from './ui/effect-feedback.js';
+import {PlaytestDiagnostics} from './diagnostics/playtest-telemetry.js';
 import {SaveManager,restoreSimulationSnapshot} from './persistence/save-manager.js';
 import {packageScenarioSnapshot,openScenarioSnapshot,loadBundledScenario,sha256Hex,parseScenarioDocument} from './persistence/scenario-library.js';
 import {ObserverController} from './ui/observer.js';
@@ -124,10 +125,11 @@ function showSaveStatus(message,{error=false,duration=1600}={}){
   if(!saveStatus)return;saveStatus.textContent=message;saveStatus.classList.toggle('error',!!error);saveStatus.hidden=false;
   if(saveStatusTimer)clearTimeout(saveStatusTimer);saveStatusTimer=setTimeout(()=>{saveStatus.hidden=true;saveStatus.classList.remove('error')},duration);
 }
+const diagnostics=new PlaytestDiagnostics({sim});
 const saveManager=new SaveManager({getSim:()=>sim,onStatus:({kind,message,meta})=>{
   if(kind==='saving')showSaveStatus(message,{duration:2200});
-  else if(kind==='saved'){showSaveStatus(message);if(saveDetails)saveDetails.textContent=`Last save: G${meta?.generation||1}, Year ${meta?.year||1} Day ${meta?.day||1}.`;}
-  else if(kind==='error')showSaveStatus(message,{error:true,duration:2600});
+  else if(kind==='saved'){showSaveStatus(message);diagnostics.recordSave({ok:true,day:meta?.day});if(saveDetails)saveDetails.textContent=`Last save: G${meta?.generation||1}, Year ${meta?.year||1} Day ${meta?.day||1}.`;}
+  else if(kind==='error'){showSaveStatus(message,{error:true,duration:2600});diagnostics.recordSave({ok:false,error:message});}
 }});
 let inGameplay=false;
 function closeGameMenus(){frontEnd.close();sim.paused=!!(tutorial.worldInputBlocked?.()||editor.open||succession.open);clearMovementKeys();if(pauseNotice)pauseNotice.hidden=true;inGameplay=true}
@@ -300,7 +302,7 @@ async function travelPlanetaryRegion({automatic=false}={}){
 function installSimulation(next,{fresh=false,resume=false,keepMovement=false,regionalCrossing=false}={}){const previous=sim;previous?.finishTick?.();clearWarmRegions();
   cancelPlanetarySeams(sim);planetaryWork.clear();planetaryPreparation.clear();const continuedScene=regionalCrossing&&renderer.continueRegionalScene(previous,next);seed=next.seed;sim=next;renderer.sim=sim;observer.reset();succession.close();editor.close();syncSpeedButton();frameStepper.reset();last=performance.now();hudTimer=0;if(!keepMovement)clearMovementKeys();
   manualPause=resume?!!sim.paused:false;if(!resume)sim.paused=false;if(pauseNotice)pauseNotice.hidden=!manualPause;
-  leadershipWheel.resetDiscovery();tutorial.setSimulation(sim,{fresh,resume:resume||regionalCrossing});effectFeedback.setSimulation(sim);journal.setSimulation(sim);audio.setSimulation(sim);
+  leadershipWheel.resetDiscovery();tutorial.setSimulation(sim,{fresh,resume:resume||regionalCrossing});effectFeedback.setSimulation(sim);journal.setSimulation(sim);audio.setSimulation(sim);diagnostics.setSim(sim);
   mateOpen=false;mindOpen=false;territoryOpen=false;shelterOpen=false;migrationOpen=false;ecologyOpen=false;helpOpen=false;guideOpen=false;leadershipWheel.setCommandMode(false);saveManager.resetObservation(sim);if(!continuedScene)renderer.beginScenePreparation();if(regionalCrossing&&keepMovement)pointerApproach?.continueRegional(previous,next);
   updateHUD(sim,{renderer,mateOpen,mindOpen,territoryOpen,shelterOpen,migrationOpen,ecologyOpen,helpOpen,guideOpen,journalOpen:journal.open,commandMode:false});journal.update();
 }
@@ -468,6 +470,7 @@ function frame(now){
   const label=planetaryPositionLabel(sim);
   if(planetLocation){planetLocation.hidden=!label;if(label&&planetLocation.textContent!==label)planetLocation.textContent=label}
   fpsMeter.recordWork(performance.now()-frameWorkStart);
+  diagnostics.recordFrame(performance.now()-frameWorkStart,dt*1000);
   requestAnimationFrame(frame)
 }
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'&&!frontEnd.isOpen&&!tutorial.worldInputBlocked?.())saveManager.saveNow('visibility').catch(()=>{})});
@@ -513,4 +516,4 @@ const contextTray=new CreatureContextTray({canvas,renderer,braceInput,getSim:()=
 setInteractPromptSource(()=>{try{const c=contextTray.directChoice?.();return c?.enabled?c.label:null}catch{return null}});
 journal.onRevisit=id=>{const o=sim.discovery.seedObservations?.find(o=>o.id===id);if(!o)return;journal.setOpen(false);const target=sim.discovery.seedPatchTarget(o);if(!contextTray.selectResource(target))return;const choice=contextTray.directChoice();if(choice?.enabled)contextTray.interact();else tutorial.showToast(choice?.reason||'This body cannot revisit the patch.',1800,'warn')};
 
-window.__GENVO8__={movementInputBuffer,frameStepper,heldInput,youngSummary,worldStory,planetaryWork,planetaryPreparation,regionalResidency,borderPreparation,farRegions,get pointerApproach(){return pointerApproach},nativeArtStatus,courtshipTray,braceInput,contextTray,combatActions:()=>combatActions(sim),get sim(){return sim},CFG,setForm,formReading,tutorial,renderer,journal,audio,leadershipWheel,saveManager,loadSavedLineage,observer,editor,fieldGuide};
+window.__GENVO8__={installSimulation,travelPlanetaryRegion,diagnostics,movementInputBuffer,frameStepper,heldInput,youngSummary,worldStory,planetaryWork,planetaryPreparation,regionalResidency,borderPreparation,farRegions,get pointerApproach(){return pointerApproach},nativeArtStatus,courtshipTray,braceInput,contextTray,combatActions:()=>combatActions(sim),get sim(){return sim},CFG,setForm,formReading,tutorial,renderer,journal,audio,leadershipWheel,saveManager,loadSavedLineage,observer,editor,fieldGuide};
