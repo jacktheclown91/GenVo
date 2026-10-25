@@ -1,0 +1,18 @@
+{
+  "schema": "genvo.creator-behavior-review/1",
+  "date": "2026-10-25",
+  "authority": "Direct human user response in current conversation",
+  "questionItemId": "[\"request_user_input_async\",\"call_9f3113786964472f8e82eb946eafca7a\",0]",
+  "question": "After watching the two-minute GenVo AUTO clip, how clearly can you recognize different creatures\u2019 purposes from their movements and expressions, without consulting the logs?",
+  "answer": "Clearly recognizable",
+  "artifact": "builds/behavior-review-20261025/genvo-two-minute-auto-review.mp4",
+  "sha256": "3e1f300ddc98fa22321206b44116573a8119ec2fb6f8f922f068f72a7440c4ee",
+  "acceptedScope": "Behavior recognition in this specific two-minute actual AUTO review clip",
+  "notEstablished": [
+    "All species and anatomies",
+    "All required actions and contexts",
+    "Audio or listening acceptance",
+    "GPU/performance acceptance",
+    "Full v1 or release acceptance"
+  ]
+}
