@@ -1,0 +1,29 @@
+diff --git a/src/ui/front-end.js b/src/ui/front-end.js
+index 4dfb8ee8..577943d3 100644
+--- a/src/ui/front-end.js
++++ b/src/ui/front-end.js
+@@ -161,9 +161,10 @@ export class FrontEnd{
+     if(a==='fullscreen'){
+       try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();this.setMessage(document.fullscreenElement?'Fullscreen enabled.':'Windowed mode.')}catch{this.setMessage('Fullscreen unavailable here. Try the browser or itch expand control.',true)}return;
+     }
++    const actionScreen=this.screen;
+     this.busy=true;
+     try{
+-      if(a==='continue'){if(await this.onContinue(button.dataset.slot))this.close()}
++      if(a==='continue'){if(await this.onContinue(button.dataset.slot)&&this.screen===actionScreen)this.close()}
+       else if(a==='create'){
+         await this.startingPointsReady;
+         const name=this.el.querySelector('#newWorldName').value.trim(),seed=this.el.querySelector('#newWorldSeed').value.trim();
+@@ -172,10 +173,10 @@ export class FrontEnd{
+         const scenarioFile=this.el.querySelector('#newWorldScenarioFile')?.files?.[0]||null;
+         const catalogEntry=start.startsWith('catalog:')?this.catalog.find(c=>c.id===start.slice(8)):null;
+         if(await this.onCreate({name,seed,geography:this.el.querySelector('#newWorldGeography')?.value||'freshwater/1',
+-          start,scenarioFile,catalogEntry,movementRules:this.el.querySelector('#newWorldMovementRules')?.value||'recorded',creature:this.el.querySelector('#newWorldCreature')?.value||'recorded'}))this.close();
++          start,scenarioFile,catalogEntry,movementRules:this.el.querySelector('#newWorldMovementRules')?.value||'recorded',creature:this.el.querySelector('#newWorldCreature')?.value||'recorded'})&&this.screen===actionScreen)this.close();
+       }
+       else if(a==='fork-backup'){const slot=button.dataset.slot;await this.show('new');this.el.querySelector('#newWorldStartingPoint').value='fork:'+slot;this.el.querySelector('#newWorldMovementRules').value='recorded';this.el.querySelector('#newWorldCreature').value='recorded';this.syncStartingPoint();}
+-      else if(a==='load-world'){if(await this.onLoad(button.dataset.slot))this.close()}
++      else if(a==='load-world'){if(await this.onLoad(button.dataset.slot)&&this.screen===actionScreen)this.close()}
+       else if(a==='export-scenario'){await this.onExportScenario(button.dataset.slot);this.setMessage('Scenario package exported.');}
+       else if(a==='rename-world'){
+         const current=button.closest('.world-entry')?.querySelector('strong')?.textContent||'';

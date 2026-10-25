@@ -1,0 +1,323 @@
+{
+  "scope": "Public New World, actual save-and-return, populated Load World layout and native Play continuation. No simulation state authored.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "before": {
+    "id": 109,
+    "seed": "SAVED-WORLD-UI-20261024"
+  },
+  "pause": {
+    "frontEnd": false,
+    "visible": [
+      "pause"
+    ],
+    "tutorial": "goals"
+  },
+  "layouts": [
+    {
+      "width": 1366,
+      "height": 768,
+      "list": {
+        "x": 95.609375,
+        "y": 369.328125,
+        "width": 352,
+        "height": 184.984375,
+        "top": 369.328125,
+        "right": 447.609375,
+        "bottom": 554.3125,
+        "left": 95.609375
+      },
+      "scrollWidth": 352,
+      "clientWidth": 352,
+      "entries": [
+        {
+          "name": "NaturalistFieldExpeditionAcrossTheValley",
+          "buttons": [
+            {
+              "text": "Play",
+              "rect": {
+                "x": 108.609375,
+                "y": 454.3125,
+                "width": 53.234375,
+                "height": 42,
+                "top": 454.3125,
+                "right": 161.84375,
+                "bottom": 496.3125,
+                "left": 108.609375
+              }
+            },
+            {
+              "text": "Export Scenario",
+              "rect": {
+                "x": 166.84375,
+                "y": 454.3125,
+                "width": 131.15625,
+                "height": 42,
+                "top": 454.3125,
+                "right": 298,
+                "bottom": 496.3125,
+                "left": 166.84375
+              }
+            },
+            {
+              "text": "Rename",
+              "rect": {
+                "x": 303,
+                "y": 454.3125,
+                "width": 79.515625,
+                "height": 42,
+                "top": 454.3125,
+                "right": 382.515625,
+                "bottom": 496.3125,
+                "left": 303
+              }
+            },
+            {
+              "text": "Delete",
+              "rect": {
+                "x": 108.609375,
+                "y": 501.3125,
+                "width": 68.578125,
+                "height": 42,
+                "top": 501.3125,
+                "right": 177.1875,
+                "bottom": 543.3125,
+                "left": 108.609375
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "list": {
+        "x": 56,
+        "y": 276.09375,
+        "width": 352,
+        "height": 184.984375,
+        "top": 276.09375,
+        "right": 408,
+        "bottom": 461.078125,
+        "left": 56
+      },
+      "scrollWidth": 352,
+      "clientWidth": 352,
+      "entries": [
+        {
+          "name": "NaturalistFieldExpeditionAcrossTheValley",
+          "buttons": [
+            {
+              "text": "Play",
+              "rect": {
+                "x": 69,
+                "y": 361.078125,
+                "width": 53.234375,
+                "height": 42,
+                "top": 361.078125,
+                "right": 122.234375,
+                "bottom": 403.078125,
+                "left": 69
+              }
+            },
+            {
+              "text": "Export Scenario",
+              "rect": {
+                "x": 127.234375,
+                "y": 361.078125,
+                "width": 131.15625,
+                "height": 42,
+                "top": 361.078125,
+                "right": 258.390625,
+                "bottom": 403.078125,
+                "left": 127.234375
+              }
+            },
+            {
+              "text": "Rename",
+              "rect": {
+                "x": 263.390625,
+                "y": 361.078125,
+                "width": 79.515625,
+                "height": 42,
+                "top": 361.078125,
+                "right": 342.90625,
+                "bottom": 403.078125,
+                "left": 263.390625
+              }
+            },
+            {
+              "text": "Delete",
+              "rect": {
+                "x": 69,
+                "y": 408.078125,
+                "width": 68.578125,
+                "height": 42,
+                "top": 408.078125,
+                "right": 137.578125,
+                "bottom": 450.078125,
+                "left": 69
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "list": {
+        "x": 24,
+        "y": 244.703125,
+        "width": 352,
+        "height": 137.59375,
+        "top": 244.703125,
+        "right": 376,
+        "bottom": 382.296875,
+        "left": 24
+      },
+      "scrollWidth": 352,
+      "clientWidth": 352,
+      "entries": [
+        {
+          "name": "NaturalistFieldExpeditionAcrossTheValley",
+          "buttons": [
+            {
+              "text": "Play",
+              "rect": {
+                "x": 37,
+                "y": 329.6875,
+                "width": 53.234375,
+                "height": 42,
+                "top": 329.6875,
+                "right": 90.234375,
+                "bottom": 371.6875,
+                "left": 37
+              }
+            },
+            {
+              "text": "Export Scenario",
+              "rect": {
+                "x": 95.234375,
+                "y": 329.6875,
+                "width": 131.15625,
+                "height": 42,
+                "top": 329.6875,
+                "right": 226.390625,
+                "bottom": 371.6875,
+                "left": 95.234375
+              }
+            },
+            {
+              "text": "Rename",
+              "rect": {
+                "x": 231.390625,
+                "y": 329.6875,
+                "width": 79.515625,
+                "height": 42,
+                "top": 329.6875,
+                "right": 310.90625,
+                "bottom": 371.6875,
+                "left": 231.390625
+              }
+            },
+            {
+              "text": "Delete",
+              "rect": {
+                "x": 37,
+                "y": 376.6875,
+                "width": 68.578125,
+                "height": 42,
+                "top": 376.6875,
+                "right": 105.578125,
+                "bottom": 418.6875,
+                "left": 37
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "list": {
+        "x": 24,
+        "y": 278.546875,
+        "width": 271,
+        "height": 184.984375,
+        "top": 278.546875,
+        "right": 295,
+        "bottom": 463.53125,
+        "left": 24
+      },
+      "scrollWidth": 271,
+      "clientWidth": 271,
+      "entries": [
+        {
+          "name": "NaturalistFieldExpeditionAcrossTheValley",
+          "buttons": [
+            {
+              "text": "Play",
+              "rect": {
+                "x": 37,
+                "y": 363.53125,
+                "width": 53.234375,
+                "height": 42,
+                "top": 363.53125,
+                "right": 90.234375,
+                "bottom": 405.53125,
+                "left": 37
+              }
+            },
+            {
+              "text": "Export Scenario",
+              "rect": {
+                "x": 95.234375,
+                "y": 363.53125,
+                "width": 131.15625,
+                "height": 42,
+                "top": 363.53125,
+                "right": 226.390625,
+                "bottom": 405.53125,
+                "left": 95.234375
+              }
+            },
+            {
+              "text": "Rename",
+              "rect": {
+                "x": 37,
+                "y": 410.53125,
+                "width": 79.515625,
+                "height": 42,
+                "top": 410.53125,
+                "right": 116.515625,
+                "bottom": 452.53125,
+                "left": 37
+              }
+            },
+            {
+              "text": "Delete",
+              "rect": {
+                "x": 121.515625,
+                "y": 410.53125,
+                "width": 68.578125,
+                "height": 42,
+                "top": 410.53125,
+                "right": 190.09375,
+                "bottom": 452.53125,
+                "left": 121.515625
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "after": {
+    "id": 109,
+    "seed": "SAVED-WORLD-UI-20261024"
+  }
+}

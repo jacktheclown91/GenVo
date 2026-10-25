@@ -1,0 +1,25 @@
+{
+  "scope": "Public New World, actual save-and-return, populated Load World layout and native Play continuation. No simulation state authored.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "before": {
+    "id": 109,
+    "seed": "SAVED-WORLD-UI-20261024"
+  },
+  "pause": {
+    "frontEnd": true,
+    "visible": [
+      "pause"
+    ],
+    "tutorial": "goals"
+  },
+  "failure": "locator.click: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByRole('button', { name: 'Return to Main Menu', exact: true })\u001b[22m\n",
+  "failureState": {
+    "frontEnd": true,
+    "visible": [
+      "pause"
+    ],
+    "tutorial": "goals"
+  }
+}
