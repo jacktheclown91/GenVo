@@ -1,0 +1,45 @@
+
+$ node tests/tutorial-start-targets.mjs
+Tutorial starting pair PASS: actual matching appearance, independent organisms/reproduction, unchanged RNG/stocks/wildlife, saved continuation and no retrospective matching.
+
+$ node tests/tutorial-target-presentation.mjs
+Tutorial target presentation PASS: Food/Water/Mate labels, body clearance, above-fog ordering and read-only state.
+
+$ node tests/mandatory-tutorial.mjs
+Mandatory simplified tutorial test suite: PASS
+
+$ node tests/resident-start.mjs
+Resident starts: real wild body selection, exact biology/stocks/RNG, retained ancestry, independent fork, future births and provenance refusal PASS
+
+$ node tests/authored-founders.mjs
+Authored founders: legal precursor trace, explicit sandbox, shared biology/compatibility, external resource receipts, source isolation, exact save and regional provenance PASS
+
+$ node tests/tutorial-diet-guide.mjs
+Carnivore tutorial guidance uses actual carrion without crashing or consuming RNG PASS
+
+$ node tests/public-export.mjs
+public-export: exact reachable modules and runtime assets only PASS
+
+$ node tools/canonical-source-audit.mjs
+{
+  "schema": "genvo8.canonical-audit/1",
+  "status": "PASS",
+  "entrypoint": "src/main.js",
+  "totalSourceModules": 425,
+  "runtimeReachableModules": 417,
+  "runtimeDependencyFiles": 430,
+  "toolOrTestModules": [
+    "src/lineage/phenotype-resolver.js",
+    "src/lineage/swimming-review.js",
+    "src/organisms/tissue-construction.js",
+    "src/organisms/tissue-ledger.js",
+    "src/persistence/fauna-page-checkpoint.js",
+    "src/render/authored-draft-compiler.js",
+    "src/render/fauna.js",
+    "src/ui/food-choice-view.js"
+  ],
+  "registeredParts": 97,
+  "proceduralSpriteIds": 97,
+  "identicalSourceCopies": [],
+  "errors": []
+}

@@ -1,0 +1,28 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: an existing-resident entry must not inherit an unrelated default founding partner
++ actual - expected
+
+  {
+    label: 'Mate',
++   x: 50.07488762225309,
++   y: 48.886787671918746
+-   x: 92.47072909493,
+-   y: 80.06762177776545
+  }
+
+    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/tests/tutorial-start-targets.mjs:15:675
+    at ModuleJob.run (node:internal/modules/esm/module_job:430:25)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:661:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: { x: 50.07488762225309, y: 48.886787671918746, label: 'Mate' },
+  expected: { x: 92.47072909493, y: 80.06762177776545, label: 'Mate' },
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v24.14.0

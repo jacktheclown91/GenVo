@@ -1,0 +1,36 @@
+diff --git a/src/ui/tutorial.js b/src/ui/tutorial.js
+index ce90d39b..473e40a0 100644
+--- a/src/ui/tutorial.js
++++ b/src/ui/tutorial.js
+@@ -146,7 +146,7 @@ export class TutorialController{
+     const fed=this.historyHas('first-meal:')||(p.lastMeal&&p.lastMeal.tick>=this.stepStartTick);
+     if(fed){this.showToast("✓ Nice! You've eaten.",3000,'success','action');this.advance('step-water');return}
+     const f=visibleTutorialResource(this.sim,this.renderer,p,'food')||(!this.renderer.camera?this.findFood(p,28):null);if(f)this.renderer.guideTarget={...f,label:'Food'};else this.renderer.guideTarget=null;
+-    if(!f){this.render('STEP 1/3 — FIND FOOD','Look around for food. Walk or turn until an edible plant comes into view and gets a Food marker.',{step:'1/3',compact:false});return}
++    if(!f){this.render('STEP 1/3 — FIND FOOD','Look around for food. Walk or turn until food this body can eat comes into view and gets a Food marker.',{step:'1/3',compact:false});return}
+     this.render('STEP 1/3 — FIND FOOD',"You're hungry! Find something edible. Click the highlighted food and choose Eat, or move close and press E.",{step:'1/3',compact:false});
+   }
+   renderStepWater(p){
+@@ -159,7 +159,7 @@ export class TutorialController{
+   renderStepMate(p){
+     const mated=!!p.lastMate||!!p.pregnant||this.sim.family.livingChildren(p).length>0;
+     if(mated){this.showToast("✓ You've found a mate!",3000,'success','action');this.showCompleteModal();return}
+-    this.sim.reproduction.refreshSelection();let mate=this.sim.starterMateId?this.sim.animals.find(a=>a.id===this.sim.starterMateId&&a.alive):null;
++    this.sim.reproduction.refreshSelection();let mate=this.sim.creatureStart?.kind!=='existing-resident'&&this.sim.starterMateId?this.sim.animals.find(a=>a.id===this.sim.starterMateId&&a.alive&&a.id!==p.id&&a.species===p.species&&a.sex!==p.sex):null;
+     if(!mate)mate=this.sim.reproduction.selectedMate();
+     if(!mate)mate=this.sim.animals.find(a=>a.alive&&a.species===p.species&&a.id!==p.id&&a.sex!==p.sex);
+     if(mate)this.renderer.guideTarget={x:mate.x,y:mate.y,label:'Mate'};else this.renderer.guideTarget=null;
+diff --git a/tests/tutorial-start-targets.mjs b/tests/tutorial-start-targets.mjs
+index 4253cd7f..b474d1cb 100644
+--- a/tests/tutorial-start-targets.mjs
++++ b/tests/tutorial-start-targets.mjs
+@@ -12,7 +12,8 @@ for(const key of ['body','motion','senses','temperament'])assert.equal(m.genes[k
+ for(const key of ['bodyScale','limbScale','sensoryScale','eyeScale','feelerScale','hueShift','lightShift','pigmentChroma','patternBands','patternSpots'])assert.deepEqual(phenotypeFor(m)[key],phenotypeFor(p)[key],key);
+ assert.deepEqual({rng:sim.rng.state,id:m.id,sex:m.sex,parents:m.parentIds,stocks:[m.energy,m.hydration,m.health],reproductiveGenome:m.reproductiveGenome,other:JSON.stringify(sim.animals.filter(a=>a!==m))},unchanged,'matching initial appearance does not change identity, independent reproduction, finite reserves, RNG or wildlife');
+ const saved=createSimulationSnapshot(sim),restored=restoreSimulationSnapshot(structuredClone(saved)),rm=restored.animals.find(a=>a.id===m.id);assert.deepEqual(rm.genes,m.genes);assert.deepEqual(rm.pigmentGenome,m.pigmentGenome);assert.deepEqual(rm.founderAppearance,m.founderAppearance);
+-const selected=sim.animals.find(a=>a.alive&&a.id!==p.id&&a.id!==m.id),view=Object.create(TutorialController.prototype),oldRefresh=sim.reproduction.refreshSelection,oldSelected=sim.reproduction.selectedMate;Object.assign(view,{sim,renderer:{},render(){},showToast(){},showCompleteModal(){throw Error('No mating was authored')}});sim.reproduction.refreshSelection=()=>{};sim.reproduction.selectedMate=()=>selected;try{view.renderStepMate(p);assert.deepEqual(view.renderer.guideTarget,{x:m.x,y:m.y,label:'Mate'},'opening lesson marks the actual starting partner rather than another compatible animal')}finally{sim.reproduction.refreshSelection=oldRefresh;sim.reproduction.selectedMate=oldSelected}
++const selected=sim.animals.find(a=>a.alive&&a.id!==p.id&&a.id!==m.id),view=Object.create(TutorialController.prototype),oldRefresh=sim.reproduction.refreshSelection,oldSelected=sim.reproduction.selectedMate;Object.assign(view,{sim,renderer:{},render(){},showToast(){},showCompleteModal(){throw Error('No mating was authored')}});sim.reproduction.refreshSelection=()=>{};sim.reproduction.selectedMate=()=>selected;try{view.renderStepMate(p);assert.deepEqual(view.renderer.guideTarget,{x:m.x,y:m.y,label:'Mate'},'opening lesson marks the actual starting partner rather than another compatible animal');sim.creatureStart={kind:'existing-resident'};view.renderStepMate(p);assert.deepEqual(view.renderer.guideTarget,{x:selected.x,y:selected.y,label:'Mate'},'an existing-resident entry must not inherit an unrelated default founding partner');delete sim.creatureStart}finally{sim.reproduction.refreshSelection=oldRefresh;sim.reproduction.selectedMate=oldSelected}
++const emptyView=Object.create(TutorialController.prototype);Object.assign(emptyView,{sim,renderer:{camera:{},visiblePlantTargets:new Map()},render(title,body){this.shown={title,body}},historyHas:()=>false,stepStartTick:sim.tickCount+1,showToast(){},advance(){throw Error('No meal occurred')}});emptyView.renderStepFood(p);assert.equal(emptyView.renderer.guideTarget,null);assert.match(emptyView.shown.body,/food this body can eat/,'missing visible targets ask for exploration rather than claiming a nonexistent highlight');
+ sim.day=2;const before=JSON.stringify(sim.animals);assert.equal(matchStartingFounderAppearance(sim),false);assert.equal(JSON.stringify(sim.animals),before,'ongoing worlds are never matched retroactively');sim.day=1;sim.creatureStart={kind:'existing-resident'};assert.equal(matchStartingFounderAppearance(sim),false,'resident selection never rewrites an existing organism');
+ const pair=prepareAuthoredFounders(sim);for(const key of ['body','motion','senses','temperament'])assert.equal(pair[0].genes[key],pair[1].genes[key]);assert.deepEqual(pair[0].pigmentGenome,pair[1].pigmentGenome);assert.notEqual(pair[0].id,pair[1].id);assert.notEqual(pair[0].sex,pair[1].sex);
+ console.log('Tutorial starting pair PASS: actual matching appearance, independent organisms/reproduction, unchanged RNG/stocks/wildlife, saved continuation and no retrospective matching.');

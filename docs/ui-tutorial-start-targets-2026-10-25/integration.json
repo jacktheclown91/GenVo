@@ -1,0 +1,10 @@
+{
+  "source": "682a6f3207313215142c56cc3336b8ce9bfd068d",
+  "gate": "node tools/check-playable.mjs",
+  "exitCode": 0,
+  "passed": 113,
+  "runtimeHashesMatchNativeReceipt": true,
+  "logSha256": "2e0a2792751e0a57fbb00a8b316982ad8d0a26033ad891f5873824acbaa8560a",
+  "worktreeNote": "Only an additional resident-target regression test was changed during the run; runtime files matched the source receipt at terminal completion.",
+  "scope": "Full gate before the subsequent resident-target guard. That guard receives separate targeted and native/export checks."
+}

@@ -146,7 +146,7 @@ export class TutorialController{
     const fed=this.historyHas('first-meal:')||(p.lastMeal&&p.lastMeal.tick>=this.stepStartTick);
     if(fed){this.showToast("✓ Nice! You've eaten.",3000,'success','action');this.advance('step-water');return}
     const f=visibleTutorialResource(this.sim,this.renderer,p,'food')||(!this.renderer.camera?this.findFood(p,28):null);if(f)this.renderer.guideTarget={...f,label:'Food'};else this.renderer.guideTarget=null;
-    if(!f){this.render('STEP 1/3 — FIND FOOD','Look around for food. Walk or turn until an edible plant comes into view and gets a Food marker.',{step:'1/3',compact:false});return}
+    if(!f){this.render('STEP 1/3 — FIND FOOD','Look around for food. Walk or turn until food this body can eat comes into view and gets a Food marker.',{step:'1/3',compact:false});return}
     this.render('STEP 1/3 — FIND FOOD',"You're hungry! Find something edible. Click the highlighted food and choose Eat, or move close and press E.",{step:'1/3',compact:false});
   }
   renderStepWater(p){
@@ -159,7 +159,7 @@ export class TutorialController{
   renderStepMate(p){
     const mated=!!p.lastMate||!!p.pregnant||this.sim.family.livingChildren(p).length>0;
     if(mated){this.showToast("✓ You've found a mate!",3000,'success','action');this.showCompleteModal();return}
-    this.sim.reproduction.refreshSelection();let mate=this.sim.starterMateId?this.sim.animals.find(a=>a.id===this.sim.starterMateId&&a.alive):null;
+    this.sim.reproduction.refreshSelection();let mate=this.sim.creatureStart?.kind!=='existing-resident'&&this.sim.starterMateId?this.sim.animals.find(a=>a.id===this.sim.starterMateId&&a.alive&&a.id!==p.id&&a.species===p.species&&a.sex!==p.sex):null;
     if(!mate)mate=this.sim.reproduction.selectedMate();
     if(!mate)mate=this.sim.animals.find(a=>a.alive&&a.species===p.species&&a.id!==p.id&&a.sex!==p.sex);
     if(mate)this.renderer.guideTarget={x:mate.x,y:mate.y,label:'Mate'};else this.renderer.guideTarget=null;

@@ -1,0 +1,883 @@
+{
+  "scope": "Public mandatory tutorial: native food/water targets and unchanged canonical stage progression; no authored simulation state.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "layouts": [
+    {
+      "width": 1024,
+      "height": 768,
+      "card": {
+        "x": 654,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 1014,
+        "bottom": 162.5625,
+        "left": 654
+      },
+      "body": {
+        "left": 466,
+        "top": 338,
+        "right": 558,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "card": {
+        "x": 10,
+        "y": 10,
+        "width": 472,
+        "height": 74.375,
+        "top": 10,
+        "right": 482,
+        "bottom": 84.375,
+        "left": 10
+      },
+      "body": {
+        "left": 238,
+        "top": 114,
+        "right": 330,
+        "bottom": 206,
+        "width": 92,
+        "height": 92
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "card": {
+        "x": 10,
+        "y": 64,
+        "width": 300,
+        "height": 98.5625,
+        "top": 64,
+        "right": 310,
+        "bottom": 162.5625,
+        "left": 10
+      },
+      "body": {
+        "left": 114,
+        "top": 238,
+        "right": 206,
+        "bottom": 330,
+        "width": 92,
+        "height": 92
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "kind": "plant",
+      "target": {
+        "x": 546,
+        "y": 312,
+        "kind": "plant",
+        "resource": {
+          "kind": "plant",
+          "i": 9164,
+          "food": "sunmoss",
+          "x": 76.5,
+          "y": 71.5,
+          "hitX": 76.5625,
+          "hitY": 71.25,
+          "label": "Moss"
+        },
+        "label": "Food"
+      },
+      "actions": [
+        "Approach",
+        "Approach & Eat Moss",
+        "Inspect"
+      ],
+      "before": {
+        "stage": "step-food",
+        "hydration": 102.60000000000001,
+        "energy": 114.08
+      },
+      "after": {
+        "stage": "step-water",
+        "hydration": 103.60000000000001,
+        "energy": 119.22186883142115,
+        "lastAction": {
+          "type": "eat",
+          "actorId": 109,
+          "kind": "sunmoss",
+          "tissue": null,
+          "processingCost": 0,
+          "energyGain": 5.196049977508935,
+          "waterGain": 1,
+          "tick": 19
+        }
+      }
+    },
+    {
+      "kind": "water",
+      "target": {
+        "x": 384,
+        "y": 304.2963400034787,
+        "kind": "water",
+        "resource": {
+          "kind": "water",
+          "i": 9031,
+          "x": 71.5,
+          "y": 70.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "actions": [
+        "Approach",
+        "Approach & Drink",
+        "Approach & Eat Algae / biofilm",
+        "Approach & Eat Duckweed",
+        "Inspect"
+      ],
+      "before": {
+        "stage": "step-water",
+        "hydration": 99.08241583769367,
+        "energy": 118.13515970523575
+      },
+      "after": {
+        "stage": "step-mate",
+        "hydration": 114,
+        "energy": 116.6619442990117,
+        "lastAction": {
+          "type": "drink",
+          "actorId": 109,
+          "tick": 67
+        }
+      }
+    }
+  ],
+  "feedbackScroll": [
+    {
+      "stage": "step-water",
+      "top": 35,
+      "client": 40,
+      "total": 75
+    },
+    {
+      "stage": "step-mate",
+      "top": 34,
+      "client": 40,
+      "total": 74
+    }
+  ],
+  "step-water": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 1550,
+        "y": 64,
+        "width": 360,
+        "height": 82.375,
+        "top": 64,
+        "right": 1910,
+        "bottom": 146.375,
+        "left": 1550
+      },
+      "body": {
+        "left": 914,
+        "top": 494,
+        "right": 1006,
+        "bottom": 586,
+        "width": 92,
+        "height": 92
+      },
+      "target": null,
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 91.390625,
+        "top": 10,
+        "right": 270,
+        "bottom": 101.390625,
+        "left": 10
+      }
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 996,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 1356,
+        "bottom": 162.5625,
+        "left": 996
+      },
+      "body": {
+        "left": 637,
+        "top": 338,
+        "right": 729,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 73.5,
+        "y": 73.5,
+        "resource": {
+          "kind": "water",
+          "i": 9417,
+          "x": 73.5,
+          "y": 73.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 91.390625,
+        "top": 10,
+        "right": 270,
+        "bottom": 101.390625,
+        "left": 10
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 654,
+        "y": 64,
+        "width": 360,
+        "height": 82.375,
+        "top": 64,
+        "right": 1014,
+        "bottom": 146.375,
+        "left": 654
+      },
+      "body": {
+        "left": 466,
+        "top": 338,
+        "right": 558,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "target": null,
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 91.390625,
+        "top": 10,
+        "right": 270,
+        "bottom": 101.390625,
+        "left": 10
+      }
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 430,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 790,
+        "bottom": 162.5625,
+        "left": 430
+      },
+      "body": {
+        "left": 354,
+        "top": 254,
+        "right": 446,
+        "bottom": 346,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 71.5,
+        "y": 70.5,
+        "resource": {
+          "kind": "water",
+          "i": 9031,
+          "x": 71.5,
+          "y": 70.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 91.390625,
+        "top": 10,
+        "right": 270,
+        "bottom": 101.390625,
+        "left": 10
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 10,
+        "y": 10,
+        "width": 472,
+        "height": 74.375,
+        "top": 10,
+        "right": 482,
+        "bottom": 84.375,
+        "left": 10
+      },
+      "body": {
+        "left": 238,
+        "top": 114,
+        "right": 330,
+        "bottom": 206,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 71.5,
+        "y": 70.5,
+        "resource": {
+          "kind": "water",
+          "i": 9031,
+          "x": 71.5,
+          "y": 70.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 94.375,
+        "width": 230,
+        "height": 40,
+        "top": 94.375,
+        "right": 240,
+        "bottom": 134.375,
+        "left": 10
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 10,
+        "y": 64,
+        "width": 300,
+        "height": 114.75,
+        "top": 64,
+        "right": 310,
+        "bottom": 178.75,
+        "left": 10
+      },
+      "body": {
+        "left": 114,
+        "top": 238,
+        "right": 206,
+        "bottom": 330,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 71.5,
+        "y": 70.5,
+        "resource": {
+          "kind": "water",
+          "i": 9031,
+          "x": 71.5,
+          "y": 70.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 230,
+        "height": 40,
+        "top": 10,
+        "right": 240,
+        "bottom": 50,
+        "left": 10
+      }
+    }
+  ],
+  "step-mate": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 1550,
+        "y": 64,
+        "width": 360,
+        "height": 114.75,
+        "top": 64,
+        "right": 1910,
+        "bottom": 178.75,
+        "left": 1550
+      },
+      "body": {
+        "left": 914,
+        "top": 494,
+        "right": 1006,
+        "bottom": 586,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.28292013156758,
+        "y": 55.04554826807208,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 124.984375,
+        "top": 10,
+        "right": 270,
+        "bottom": 134.984375,
+        "left": 10
+      }
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 996,
+        "y": 64,
+        "width": 360,
+        "height": 114.75,
+        "top": 64,
+        "right": 1356,
+        "bottom": 178.75,
+        "left": 996
+      },
+      "body": {
+        "left": 637,
+        "top": 338,
+        "right": 729,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.28261470539621,
+        "y": 55.045330106521114,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 124.984375,
+        "top": 10,
+        "right": 270,
+        "bottom": 134.984375,
+        "left": 10
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 654,
+        "y": 64,
+        "width": 360,
+        "height": 114.75,
+        "top": 64,
+        "right": 1014,
+        "bottom": 178.75,
+        "left": 654
+      },
+      "body": {
+        "left": 466,
+        "top": 338,
+        "right": 558,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.2824110865475,
+        "y": 55.045184664486314,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 124.984375,
+        "top": 10,
+        "right": 270,
+        "bottom": 134.984375,
+        "left": 10
+      }
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 430,
+        "y": 64,
+        "width": 360,
+        "height": 114.75,
+        "top": 64,
+        "right": 790,
+        "bottom": 178.75,
+        "left": 430
+      },
+      "body": {
+        "left": 354,
+        "top": 254,
+        "right": 446,
+        "bottom": 346,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.28220746657786,
+        "y": 55.04503922165086,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 124.984375,
+        "top": 10,
+        "right": 270,
+        "bottom": 134.984375,
+        "left": 10
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 10,
+        "y": 10,
+        "width": 472,
+        "height": 90.5625,
+        "top": 10,
+        "right": 482,
+        "bottom": 100.5625,
+        "left": 10
+      },
+      "body": {
+        "left": 238,
+        "top": 114,
+        "right": 330,
+        "bottom": 206,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.48918348782007,
+        "y": 55.19287923682393,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 328,
+        "y": 102.0625,
+        "width": 230,
+        "height": 40,
+        "top": 102.0625,
+        "right": 558,
+        "bottom": 142.0625,
+        "left": 328
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 10,
+        "y": 64,
+        "width": 300,
+        "height": 114.75,
+        "top": 64,
+        "right": 310,
+        "bottom": 178.75,
+        "left": 10
+      },
+      "body": {
+        "left": 114,
+        "top": 238,
+        "right": 206,
+        "bottom": 330,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.48887805387206,
+        "y": 55.1926610697182,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 230,
+        "height": 40,
+        "top": 10,
+        "right": 240,
+        "bottom": 50,
+        "left": 10
+      }
+    }
+  ],
+  "foundingTarget": {
+    "playerId": 109,
+    "mateId": 110,
+    "target": {
+      "x": 69.48877624199558,
+      "y": 55.1925883469493,
+      "label": "Mate"
+    },
+    "playerBody": {
+      "schema": "genvo8.bodyplan/0",
+      "registryVersion": 0,
+      "nodes": [
+        {
+          "id": "root",
+          "partId": "small-torso",
+          "partVersion": 1,
+          "parent": null,
+          "socket": null
+        },
+        {
+          "id": "root/eye.left",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.left"
+        },
+        {
+          "id": "root/eye.right",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.right"
+        },
+        {
+          "id": "root/limb.1",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.1"
+        },
+        {
+          "id": "root/limb.3",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.3"
+        },
+        {
+          "id": "root/limb.5",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.5"
+        },
+        {
+          "id": "root/limb.7",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.7"
+        },
+        {
+          "id": "root/mouth",
+          "partId": "grazing-mouth",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "mouth"
+        }
+      ],
+      "id": "bp0-4134709b"
+    },
+    "mateBody": {
+      "schema": "genvo8.bodyplan/0",
+      "registryVersion": 0,
+      "nodes": [
+        {
+          "id": "root",
+          "partId": "small-torso",
+          "partVersion": 1,
+          "parent": null,
+          "socket": null
+        },
+        {
+          "id": "root/eye.left",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.left"
+        },
+        {
+          "id": "root/eye.right",
+          "partId": "simple-eye",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "eye.right"
+        },
+        {
+          "id": "root/limb.1",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.1"
+        },
+        {
+          "id": "root/limb.3",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.3"
+        },
+        {
+          "id": "root/limb.5",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.5"
+        },
+        {
+          "id": "root/limb.7",
+          "partId": "walking-leg",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "limb.7"
+        },
+        {
+          "id": "root/mouth",
+          "partId": "grazing-mouth",
+          "partVersion": 1,
+          "parent": "root",
+          "socket": "mouth"
+        }
+      ],
+      "id": "bp0-4134709b"
+    },
+    "playerPigment": {
+      "schema": "genvo.pigment-genome/1",
+      "hue": 15,
+      "chroma": 1,
+      "tone": 3,
+      "marking": 2,
+      "density": 1,
+      "accent": 9
+    },
+    "matePigment": {
+      "schema": "genvo.pigment-genome/1",
+      "hue": 15,
+      "chroma": 1,
+      "tone": 3,
+      "marking": 2,
+      "density": 1,
+      "accent": 9
+    },
+    "playerGenes": {
+      "body": 1.0089175230823457,
+      "motion": 0.9474794736132026,
+      "metabolism": 0.9812972685322165,
+      "digestion": 0.9372384519316257,
+      "senses": 1.081252303114161,
+      "climate": 0.9946206919848919,
+      "immunity": 1.0699187784921378,
+      "temperament": 1.0094692976213993
+    },
+    "mateGenes": {
+      "body": 1.0089175230823457,
+      "motion": 0.9474794736132026,
+      "metabolism": 0.9309092556126416,
+      "digestion": 0.9364828303921968,
+      "senses": 1.081252303114161,
+      "climate": 0.976470049796626,
+      "immunity": 0.9458464236464352,
+      "temperament": 1.0094692976213993
+    }
+  },
+  "portraits": {
+    "identical": true,
+    "player": 109,
+    "mate": 110,
+    "phenotypeDifferences": [],
+    "options": {
+      "player": {
+        "anatomy": {
+          "armor": 0,
+          "barbs": 0,
+          "glands": 0,
+          "spring": 0,
+          "waterBody": 0,
+          "gut": 0,
+          "repair": 0,
+          "signal": 0,
+          "rally": 0,
+          "skin": 0,
+          "jaw": 0,
+          "forelimb": 0,
+          "waterStorage": 0,
+          "webbing": 0
+        },
+        "adaptations": []
+      },
+      "mate": {
+        "anatomy": {
+          "armor": 0,
+          "barbs": 0,
+          "glands": 0,
+          "spring": 0,
+          "waterBody": 0,
+          "gut": 0,
+          "repair": 0,
+          "signal": 0,
+          "rally": 0,
+          "skin": 0,
+          "jaw": 0,
+          "forelimb": 0,
+          "waterStorage": 0,
+          "webbing": 0
+        },
+        "adaptations": []
+      }
+    }
+  }
+}
