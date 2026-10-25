@@ -1,0 +1,65 @@
+{
+  "kind": "automated controls; explicit mature-tree physiology fixture, not natural maturation or creator acceptance",
+  "site": {
+    "i": 6540,
+    "x": 12.5,
+    "y": 51.5,
+    "before": 0.1833396553993225,
+    "fixtureStand": 1.6,
+    "energy": 114.08,
+    "policy": "continuous-canopy-climbing/1"
+  },
+  "middle": {
+    "climb": {
+      "schema": 1,
+      "height": 0.716860516822486,
+      "target": 3,
+      "x": 12.5,
+      "y": 51.5,
+      "elapsed": 1.375
+    },
+    "energy": 112.96571201265118,
+    "id": 197,
+    "x": 12.5,
+    "y": 51.5,
+    "canFeed": false
+  },
+  "restored": {
+    "id": 197,
+    "climb": {
+      "schema": 1,
+      "height": 0.716860516822486,
+      "target": 3,
+      "x": 12.5,
+      "y": 51.5,
+      "elapsed": 1.375
+    },
+    "policy": "continuous-canopy-climbing/1"
+  },
+  "top": {
+    "energy": 108.24850867372345,
+    "x": 12.5,
+    "y": 51.5,
+    "perched": true,
+    "incident": {
+      "ok": true,
+      "type": "climb-top",
+      "height": 3,
+      "message": "Reached the living canopy. Use supported canopy actions or climb down.",
+      "tick": 49
+    }
+  },
+  "ground": {
+    "energy": 105.68125734744672,
+    "x": 12.5,
+    "y": 51.5,
+    "incident": {
+      "ok": true,
+      "type": "climb-ground",
+      "height": 0,
+      "message": "Reached solid ground.",
+      "tick": 83
+    }
+  },
+  "errors": []
+}
