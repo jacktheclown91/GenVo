@@ -1,0 +1,11 @@
+diff --git a/assets/ui/natural-history-menu.css b/assets/ui/natural-history-menu.css
+index 0e36bb05..bdf1896e 100644
+--- a/assets/ui/natural-history-menu.css
++++ b/assets/ui/natural-history-menu.css
+@@ -43,3 +43,6 @@
+ #frontEnd:has(.menu-view[data-screen="new"]:not([hidden])) .front-footer{display:none}
+ 
+ #frontEnd .front-brand{filter:none}
++
++/* Keep overflowing menu content reachable from the top of its scroll area. */
++#frontEnd .front-frame{justify-content:safe center}
