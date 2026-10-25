@@ -1,0 +1,84 @@
+diff --git a/src/ecology/cave-drinking.js b/src/ecology/cave-drinking.js
+index d1a010e..52270de 100644
+--- a/src/ecology/cave-drinking.js
++++ b/src/ecology/cave-drinking.js
+@@ -1,3 +1,4 @@
++import {noteHydrationTransfer} from './hydration-observation.js';
+ import {SPECIES} from '../organisms/species.js';
+ import {exposedCaveWater} from '../world/cave-water.js';
+ import {boundedFloat32Debit} from '../core/float32-transfer.js';
+@@ -26,7 +27,7 @@ export function drinkCaveWater(sim,a=sim.player(),{target=null,gain=Math.max(18,
+  if(!(debit.amount>0))return{ok:false,type:'drink',message:'Only a trace of water remains.'};
+  s.groundwater[i]=debit.remaining;s.totals.caveDrinking=prior+debit.amount;
+  s.pendingCaveDrinking=pending+debit.amount;
+- const hydrationGain=debit.amount/CAVE_DRINK.waterPerHydration;a.hydration+=hydrationGain;syncCaveAir(w);
++ const beforeHydration=a.hydration;const hydrationGain=debit.amount/CAVE_DRINK.waterPerHydration;a.hydration+=hydrationGain;noteHydrationTransfer(sim,a,beforeHydration,{medium:'cave-groundwater',i,resolved:true});syncCaveAir(w);
+  a.lastCaveDrink={i,water:debit.amount,hydrationGain,day:sim.day,tick:sim.tickCount};if(a.hidden)a.hidden=false;
+  sim.cognition?.onDrink(a);sim.family?.notePracticeInteraction(a,'water',{x:a.x,y:a.y,amount:hydrationGain});
+  if(a.player)sim.lastPlayerAction={type:'drink',actorId:a.id,source:'cave-groundwater',...a.lastCaveDrink};
+diff --git a/src/ecology/hydration-observation.js b/src/ecology/hydration-observation.js
+new file mode 100644
+index 0000000..0ddb9d3
+--- /dev/null
++++ b/src/ecology/hydration-observation.js
+@@ -0,0 +1,15 @@
++// Proposed owner-side observation only. No second water or energy inventory.
++export function noteHydrationTransfer(sim,a,before,{medium,i=null,resolved=false}={}){
++ const gain=a?.hydration-before,w=sim?.world;
++ if(!a||!Number.isFinite(before)||!Number.isFinite(gain)||!(gain>0)||!Number.isSafeInteger(a.id)||!Number.isSafeInteger(sim?.tickCount)||!w||!['surface-water','surface-access','cave-groundwater','snow'].includes(medium))return null;
++ if(resolved&&(!Number.isSafeInteger(i)||i<0||i>=w.len))return null;
++ const record={actorId:a.id,tick:sim.tickCount,hydrationGain:gain,medium,sourceResolved:!!resolved,sourceIndex:resolved?i:null,worldSeed:w.seed,regionOrigin:w.regionOrigin?{x:w.regionOrigin.x,y:w.regionOrigin.y}:null,underground:!!a.underground};
++ // Preserve the prior successful record on failed/full requests; never retime it.
++ a.lastHydrationTransfer=record;return record;
++}
++export function surfaceHydrationSource(world,a){
++ const i=world.idx(a.x,a.y);
++ // The existing grant is authorized at the receiver's cell. A shore access mask
++ // does not identify which water cell supplied it. Do not guess from a target.
++ return world.water[i]?{medium:'surface-water',i,resolved:true}:{medium:'surface-access',resolved:false};
++}
+diff --git a/src/ecology/winter-water.js b/src/ecology/winter-water.js
+index c7ebcb3..12b9993 100644
+--- a/src/ecology/winter-water.js
++++ b/src/ecology/winter-water.js
+@@ -1,3 +1,4 @@
++import {noteHydrationTransfer} from './hydration-observation.js';
+ import {SPECIES} from '../organisms/species.js';
+ import {bodyMass} from '../organisms/body-mass.js';
+ import {PARTS} from '../lineage/part-registry.js';
+@@ -60,7 +61,7 @@ export function resolveWinterWater(sim,a){
+  if(t.snow){
+   if(Math.hypot(t.x-a.x,t.y-a.y)>.9)return false;const i=w.idx(t.x,t.y),snow=w.soilWater?.snowpack;if(!snow||!(snow[i]>0)){a.target=null;return false}
+   const want=Math.min(s.maxHydration-a.hydration,s.maxHydration*.1),take=Math.min(snow[i],want/WINTER_WATER.hydrationPerSnow);if(!(take>0))return false;
+-  const water=take*WINTER_WATER.hydrationPerSnow,cost=water*WINTER_WATER.meltEnergyPerWater;snow[i]-=take;w.soilWater.pendingSnowEaten=(w.soilWater.pendingSnowEaten||0)+take;a.hydration+=water;a.energy=Math.max(0,a.energy-cost);
++  const water=take*WINTER_WATER.hydrationPerSnow,cost=water*WINTER_WATER.meltEnergyPerWater;snow[i]-=take;w.soilWater.pendingSnowEaten=(w.soilWater.pendingSnowEaten||0)+take;const beforeHydration=a.hydration;a.hydration+=water;noteHydrationTransfer(sim,a,beforeHydration,{medium:'snow',i,resolved:true});a.energy=Math.max(0,a.energy-cost);
+   const l=ledger(sim);l.snowWater+=water;l.snowMeltEnergy+=cost;if(a.hydration/s.maxHydration>.82)a.target=null;return true;
+  }
+  return false;
+diff --git a/src/sim/simulation.js b/src/sim/simulation.js
+index e4ad679..78a22f8 100644
+--- a/src/sim/simulation.js
++++ b/src/sim/simulation.js
+@@ -1,3 +1,4 @@
++import {noteHydrationTransfer,surfaceHydrationSource} from '../ecology/hydration-observation.js';
+ import {REGIONAL_FRONTIER,physicalFrontier,frontierStep} from '../world/regional-frontier.js';
+ import {HABITAT_HAZARDS,createHabitatHazards,advanceHabitatHazards} from '../ecology/habitat-hazards.js';
+ import {WILDFIRE,createWildfire,advanceWildfire,fireEscapeDecision,igniteWildfire,fireDanger} from '../ecology/wildfire.js';
+@@ -539,7 +540,7 @@ export class Simulation{
+   }
+   resolveInteraction(a){if(a.underground&&isFeedingIntent(a.intent)&&!undergroundFood(a,this.world.idx(a.target?.x??a.x,a.target?.y??a.y),a.target?.kind,this.world))return;if(a.caveTransit||a.burrowWork||a.underground&&!isFeedingIntent(a.intent)&&a.intent!=='hunt'||a.airborne||submerged(a)&&!isFeedingIntent(a.intent)&&a.intent!=='hunt')return; if(a.perched&&a.intent!=='nest-care'&&a.intent!=='egg-hunt')return; if(a.intent==='refuge'&&a.target?.siteId!=null){if(Math.hypot(a.x-a.target.x,a.y-a.target.y)<1.1)a.refugeSiteId=a.target.siteId;return}if(a.intent==='egg-hunt'&&a.target?.eggId!=null){const egg=this.eggs.find(e=>e.id===a.target.eggId);if(egg&&Math.hypot(a.x-egg.x,a.y-egg.y)<1.1)eatEgg(this,a,egg);if(!egg||!this.eggs.includes(egg))a.target=null;return}
+     if(a.intent==='nest-care'&&a.target?.nestId!=null){const nest=this.nests.find(n=>n.id===a.target.nestId);if(nest)careForNest(this,a,nest);if(!nest||nest.lastCareDay===this.day)a.target=null;return}
+-    if(a.intent==='dig'&&a.target?.kind==='roots')return this.partAbilities.resolveDig(a);const s=SPECIES[a.species],w=this.world;if(a.intent==='drink'&&(a.target?.snow||a.target?.breakIce!=null)){resolveWinterWater(this,a);return}if(a.intent==='drink'&&w.isDrinkable(a.x,a.y)){const beforeWater=a.hydration;a.hydration=Math.min(s.maxHydration,a.hydration+sipFor(this,a));this.regionalEcology.noteEngineerDrink(a,a.hydration-beforeWater);{const filter=partEffectFactors(a)?.mouthFood?.drinkEnergyTick;if(filter){const meal=harvestFreshwater(this,a,Math.min(filter,s.maxEnergy-a.energy));if(meal)a.energy+=meal.energyGain}}this.cognition.onDrink(a);this.family.notePracticeInteraction(a,'water',{x:a.x,y:a.y,amount:a.hydration-beforeWater});if(a.hydration/s.maxHydration>.82)a.target=null}
++    if(a.intent==='dig'&&a.target?.kind==='roots')return this.partAbilities.resolveDig(a);const s=SPECIES[a.species],w=this.world;if(a.intent==='drink'&&(a.target?.snow||a.target?.breakIce!=null)){resolveWinterWater(this,a);return}if(a.intent==='drink'&&w.isDrinkable(a.x,a.y)){const beforeWater=a.hydration;a.hydration=Math.min(s.maxHydration,a.hydration+sipFor(this,a));noteHydrationTransfer(this,a,beforeWater,surfaceHydrationSource(w,a));this.regionalEcology.noteEngineerDrink(a,a.hydration-beforeWater);{const filter=partEffectFactors(a)?.mouthFood?.drinkEnergyTick;if(filter){const meal=harvestFreshwater(this,a,Math.min(filter,s.maxEnergy-a.energy));if(meal)a.energy+=meal.energyGain}}this.cognition.onDrink(a);this.family.notePracticeInteraction(a,'water',{x:a.x,y:a.y,amount:a.hydration-beforeWater});if(a.hydration/s.maxHydration>.82)a.target=null}
+     if(isFeedingIntent(a.intent)){if(a.target?.species){return this.tryKill(a,a.target)}const kind=a.target?.kind;if(kind&&Math.hypot(a.x-a.target.x,a.y-a.target.y)<1.1&&this.canReach(a,a.target.x,a.target.y)){const tx=a.target.x,ty=a.target.y,foodScale=this.speciesLifestyle?.foodEnergyMultiplier?.(a,{kind})||1;if(FRESHWATER_FOOD[kind]){const meal=harvestFreshwater(this,a,Math.min(5,s.maxEnergy-a.energy),a.target);if(!meal&&holdUnderwaterMeal(this,a,kind))return;if(meal){endForagingDive(a);a.energy+=meal.energyGain;this.cognition.onFeed(a,kind,{x:tx,y:ty});this.speciesLifestyle?.noteFeeding?.(a,{kind,amount:meal.amount,energyGain:meal.energyGain});if(a.player||a.lineage)this.foraging.rememberPatch(a,kind,a.target.foodX??tx,a.target.foodY??ty,{meal:true});this.family.notePracticeInteraction(a,'food',{x:a.target.foodX??tx,y:a.target.foodY??ty,kind,amount:meal.amount})}}else if(kind==='carrion'){if(plantPreference(a,'carrion')<=0){a.target=null;return}const i=w.idx(tx,ty),carrionBefore=w.carrion[i],got=Math.min(.09,w.carrion[i]);w.carrion[i]-=got;waterFromCarrion(this,a,i,got,carrionBefore);a.energy=Math.min(s.maxEnergy,a.energy+got*meatEnergy(this,a)*plantPreference(a,'carrion')*a.genes.digestion*adaptationEffects(a).foodGain*foodScale);if(got>0){this.disease.onCarrionFeed(a,i,got);this.cognition.onFeed(a,kind,{x:tx,y:ty});this.speciesLifestyle?.noteFeeding?.(a,{kind,amount:got});this.family.notePracticeInteraction(a,'food',{x:tx,y:ty,kind,amount:got})}}else if(PLANTS[kind]){const parity=PHYSIOLOGY_PARITY.enabled,prof=this.foraging.profile(kind),bite=parity?mealBiteFor(prof,this):.16,crop=this.dispersal.seedReserve[kind],meal=crop?this.foraging.options(a,{index:w.idx(tx,ty),kind,tissue:a.target.tissue??null}).sort((p,q)=>q.needScore-p.needScore)[0]:null,receipt=meal?this.dispersal.harvestMeal(a,kind,meal.i,parity?mealBiteFor(meal.profile,this):Math.min(.16,meal.profile.bite),meal.tissue):null,got=crop?(receipt?.removed||0):w.consume(kind,tx,ty,bite);this.history.notePlantConsumption(kind,tx,ty,got);if(!crop)this.dispersal.onFeed(a,kind,got);a.energy=Math.min(s.maxEnergy,a.energy+(receipt?.edible??got)*(receipt?this.dispersal.genomeAt(kind,meal.i).traits.nutrition:PLANTS[kind].nutrition)*(meal?.eff??plantPreference(a,kind))*a.genes.digestion*3.6*adaptationEffects(a).foodGain*foodScale*(parity?prof.energy*breadthBonusFor(a,prof.group):1));if(parity&&got>0){if(plantMealWater(this)&&meal?.tissue!=='kernel'){const water=prof.water*Math.min(1,got/prof.bite)*(receipt?receipt.edible/Math.max(.001,got):1);a.hydration=Math.min(s.maxHydration,a.hydration+water)}noteFoodGroup(a,prof.group)}if(got>0){this.cognition.onFeed(a,kind,{x:tx,y:ty});this.speciesLifestyle?.noteFeeding?.(a,{kind,amount:got});this.family.notePracticeInteraction(a,'food',{x:tx,y:ty,kind,amount:got})}}a.target=null}}
+     if(a.intent==='hunt'&&a.target?.alive&&Math.hypot(a.x-a.target.x,a.y-a.target.y)<.85)this.tryKill(a,a.target);
+     if(a.intent==='charge-player')this.predator.resolveCharge(a);
+@@ -877,7 +878,7 @@ export class Simulation{
+     }
+ 
+     if(a.hidden)a.hidden=false;
+-    const before=a.hydration;a.hydration=Math.min(s.maxHydration,a.hydration+Math.max(18,s.maxHydration*.22));this.cognition.onDrink(a);const pool=this.discovery?.poolBonus?.(a)||0,filter=partEffectFactors(a)?.mouthFood?.drinkEnergy||0;const meal=harvestFreshwater(this,a,Math.min(pool+filter,s.maxEnergy-a.energy),target);if(meal){a.energy+=meal.energyGain;this.cognition.onFeed(a,meal.kind);this.foraging.rememberPatch(a,meal.kind,a.x,a.y,{meal:true});this.family.notePracticeInteraction(a,'food',{x:(a.lastFreshwaterMeal.i%this.world.n)+.5,y:Math.floor(a.lastFreshwaterMeal.i/this.world.n)+.5,kind:meal.kind,amount:meal.amount});this.lastPlayerAction={type:'drink',actorId:a.id,kind:meal.kind,energyGain:meal.energyGain,tick:this.tickCount};return{ok:true,type:'drink',message:`Drank and ate ${meal.kind} · +${meal.energyGain.toFixed(1)} energy.`}}
++    const before=a.hydration;a.hydration=Math.min(s.maxHydration,a.hydration+Math.max(18,s.maxHydration*.22));noteHydrationTransfer(this,a,before,surfaceHydrationSource(this.world,a));this.cognition.onDrink(a);const pool=this.discovery?.poolBonus?.(a)||0,filter=partEffectFactors(a)?.mouthFood?.drinkEnergy||0;const meal=harvestFreshwater(this,a,Math.min(pool+filter,s.maxEnergy-a.energy),target);if(meal){a.energy+=meal.energyGain;this.cognition.onFeed(a,meal.kind);this.foraging.rememberPatch(a,meal.kind,a.x,a.y,{meal:true});this.family.notePracticeInteraction(a,'food',{x:(a.lastFreshwaterMeal.i%this.world.n)+.5,y:Math.floor(a.lastFreshwaterMeal.i/this.world.n)+.5,kind:meal.kind,amount:meal.amount});this.lastPlayerAction={type:'drink',actorId:a.id,kind:meal.kind,energyGain:meal.energyGain,tick:this.tickCount};return{ok:true,type:'drink',message:`Drank and ate ${meal.kind} · +${meal.energyGain.toFixed(1)} energy.`}}
+     this.lastPlayerAction={type:'drink',actorId:a.id,tick:this.tickCount};return{ok:a.hydration>before,type:'drink',message:'Drank water.'};
+   }
+   playerEat(target=null){
