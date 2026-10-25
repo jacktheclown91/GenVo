@@ -1,0 +1,1475 @@
+{
+  "scope": "Native portrait encounter close/recenter after desktop Court entry and real tutorial food/water. No Play, mating or completion claim.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "layouts": [
+    {
+      "width": 1024,
+      "height": 768,
+      "card": {
+        "x": 654,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 1014,
+        "bottom": 162.5625,
+        "left": 654
+      },
+      "body": {
+        "left": 466,
+        "top": 338,
+        "right": 558,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "card": {
+        "x": 10,
+        "y": 10,
+        "width": 472,
+        "height": 74.375,
+        "top": 10,
+        "right": 482,
+        "bottom": 84.375,
+        "left": 10
+      },
+      "body": {
+        "left": 238,
+        "top": 114,
+        "right": 330,
+        "bottom": 206,
+        "width": 92,
+        "height": 92
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "card": {
+        "x": 10,
+        "y": 64,
+        "width": 300,
+        "height": 98.5625,
+        "top": 64,
+        "right": 310,
+        "bottom": 162.5625,
+        "left": 10
+      },
+      "body": {
+        "left": 114,
+        "top": 238,
+        "right": 206,
+        "bottom": 330,
+        "width": 92,
+        "height": 92
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "kind": "plant",
+      "target": {
+        "x": 514,
+        "y": 370,
+        "label": "Reeds",
+        "food": "marshroot",
+        "distance": 14.142135623730951
+      },
+      "actions": [
+        "Approach",
+        "Eat Reeds",
+        "Inspect"
+      ],
+      "before": {
+        "stage": "step-food",
+        "hydration": 102.60000000000001,
+        "energy": 114.08
+      },
+      "after": {
+        "stage": "step-water",
+        "hydration": 111.60000000000001,
+        "energy": 116.94336094345012,
+        "lastAction": {
+          "type": "eat",
+          "actorId": 109,
+          "kind": "marshroot",
+          "tissue": null,
+          "processingCost": 0,
+          "energyGain": 2.863360943450118,
+          "waterGain": 9,
+          "tick": 15
+        }
+      }
+    },
+    {
+      "kind": "water",
+      "target": {
+        "x": 478,
+        "y": 406,
+        "label": "Water",
+        "food": null,
+        "distance": 40.496913462633174
+      },
+      "actions": [
+        "Approach",
+        "Drink",
+        "Eat Algae / biofilm",
+        "Eat Duckweed",
+        "Inspect"
+      ],
+      "before": {
+        "stage": "step-water",
+        "hydration": 107.08241583769367,
+        "energy": 115.85666946548386
+      },
+      "after": {
+        "stage": "step-mate",
+        "hydration": 114,
+        "energy": 115.85666946548386,
+        "lastAction": {
+          "type": "drink",
+          "actorId": 109,
+          "tick": 44
+        }
+      }
+    }
+  ],
+  "feedbackScroll": [
+    {
+      "stage": "step-water",
+      "top": 35,
+      "client": 40,
+      "total": 75
+    },
+    {
+      "stage": "step-mate",
+      "top": 66,
+      "client": 40,
+      "total": 106
+    }
+  ],
+  "step-water": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 1550,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 1910,
+        "bottom": 162.5625,
+        "left": 1550
+      },
+      "body": {
+        "left": 914,
+        "top": 494,
+        "right": 1006,
+        "bottom": 586,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 74.5,
+        "y": 74.5,
+        "resource": {
+          "kind": "water",
+          "i": 9546,
+          "x": 74.5,
+          "y": 74.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 123.78125,
+        "top": 10,
+        "right": 270,
+        "bottom": 133.78125,
+        "left": 10
+      }
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 996,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 1356,
+        "bottom": 162.5625,
+        "left": 996
+      },
+      "body": {
+        "left": 637,
+        "top": 338,
+        "right": 729,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 74.5,
+        "y": 74.5,
+        "resource": {
+          "kind": "water",
+          "i": 9546,
+          "x": 74.5,
+          "y": 74.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 91.390625,
+        "top": 10,
+        "right": 270,
+        "bottom": 101.390625,
+        "left": 10
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 654,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 1014,
+        "bottom": 162.5625,
+        "left": 654
+      },
+      "body": {
+        "left": 466,
+        "top": 338,
+        "right": 558,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 74.5,
+        "y": 74.5,
+        "resource": {
+          "kind": "water",
+          "i": 9546,
+          "x": 74.5,
+          "y": 74.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 91.390625,
+        "top": 10,
+        "right": 270,
+        "bottom": 101.390625,
+        "left": 10
+      }
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 430,
+        "y": 64,
+        "width": 360,
+        "height": 82.375,
+        "top": 64,
+        "right": 790,
+        "bottom": 146.375,
+        "left": 430
+      },
+      "body": {
+        "left": 354,
+        "top": 254,
+        "right": 446,
+        "bottom": 346,
+        "width": 92,
+        "height": 92
+      },
+      "target": null,
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 91.390625,
+        "top": 10,
+        "right": 270,
+        "bottom": 101.390625,
+        "left": 10
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 10,
+        "y": 10,
+        "width": 472,
+        "height": 74.375,
+        "top": 10,
+        "right": 482,
+        "bottom": 84.375,
+        "left": 10
+      },
+      "body": {
+        "left": 238,
+        "top": 114,
+        "right": 330,
+        "bottom": 206,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 74.5,
+        "y": 74.5,
+        "resource": {
+          "kind": "water",
+          "i": 9546,
+          "x": 74.5,
+          "y": 74.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 94.375,
+        "width": 230,
+        "height": 40,
+        "top": 94.375,
+        "right": 240,
+        "bottom": 134.375,
+        "left": 10
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 10,
+        "y": 64,
+        "width": 300,
+        "height": 114.75,
+        "top": 64,
+        "right": 310,
+        "bottom": 178.75,
+        "left": 10
+      },
+      "body": {
+        "left": 114,
+        "top": 238,
+        "right": 206,
+        "bottom": 330,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 71.5,
+        "y": 71.5,
+        "resource": {
+          "kind": "water",
+          "i": 9159,
+          "x": 71.5,
+          "y": 71.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 230,
+        "height": 40,
+        "top": 10,
+        "right": 240,
+        "bottom": 50,
+        "left": 10
+      }
+    }
+  ],
+  "step-mate": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 1550,
+        "y": 64,
+        "width": 360,
+        "height": 114.75,
+        "top": 64,
+        "right": 1910,
+        "bottom": 178.75,
+        "left": 1550
+      },
+      "body": {
+        "left": 914,
+        "top": 494,
+        "right": 1006,
+        "bottom": 586,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.4912196496877,
+        "y": 55.19433363815793,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 91.390625,
+        "top": 10,
+        "right": 270,
+        "bottom": 101.390625,
+        "left": 10
+      }
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 996,
+        "y": 64,
+        "width": 360,
+        "height": 114.75,
+        "top": 64,
+        "right": 1356,
+        "bottom": 178.75,
+        "left": 996
+      },
+      "body": {
+        "left": 637,
+        "top": 338,
+        "right": 729,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.28383639494959,
+        "y": 55.04620274191638,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 124.984375,
+        "top": 10,
+        "right": 270,
+        "bottom": 134.984375,
+        "left": 10
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 654,
+        "y": 64,
+        "width": 360,
+        "height": 114.75,
+        "top": 64,
+        "right": 1014,
+        "bottom": 178.75,
+        "left": 654
+      },
+      "body": {
+        "left": 466,
+        "top": 338,
+        "right": 558,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.28363278282625,
+        "y": 55.04605730468542,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 124.984375,
+        "top": 10,
+        "right": 270,
+        "bottom": 134.984375,
+        "left": 10
+      }
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 430,
+        "y": 64,
+        "width": 360,
+        "height": 114.75,
+        "top": 64,
+        "right": 790,
+        "bottom": 178.75,
+        "left": 430
+      },
+      "body": {
+        "left": 354,
+        "top": 254,
+        "right": 446,
+        "bottom": 346,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.28342916958202,
+        "y": 55.04591186665383,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 124.984375,
+        "top": 10,
+        "right": 270,
+        "bottom": 134.984375,
+        "left": 10
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 10,
+        "y": 10,
+        "width": 472,
+        "height": 90.5625,
+        "top": 10,
+        "right": 482,
+        "bottom": 100.5625,
+        "left": 10
+      },
+      "body": {
+        "left": 238,
+        "top": 114,
+        "right": 330,
+        "bottom": 206,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.28332736253958,
+        "y": 55.0458391473378,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 328,
+        "y": 102.0625,
+        "width": 230,
+        "height": 40,
+        "top": 102.0625,
+        "right": 558,
+        "bottom": 142.0625,
+        "left": 328
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 10,
+        "y": 64,
+        "width": 300,
+        "height": 114.75,
+        "top": 64,
+        "right": 310,
+        "bottom": 178.75,
+        "left": 10
+      },
+      "body": {
+        "left": 114,
+        "top": 238,
+        "right": 206,
+        "bottom": 330,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.28312374761403,
+        "y": 55.04569370810526,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 230,
+        "height": 40,
+        "top": 10,
+        "right": 240,
+        "bottom": 50,
+        "left": 10
+      }
+    }
+  ],
+  "emptyDockBeforeSelection": true,
+  "menuDwellMs": 1500,
+  "readingLayouts": [
+    {
+      "name": "layout",
+      "before": "left: 512px; top: 204px;",
+      "after": "left: 316px; top: 205px;",
+      "footprint": {
+        "left": -105,
+        "top": -97.1484375,
+        "width": 210,
+        "height": 263.3203125
+      },
+      "entered": false,
+      "tick": 138
+    }
+  ],
+  "open": {
+    "position": {
+      "x": 80,
+      "y": 284
+    },
+    "target": 110,
+    "stage": "step-mate",
+    "paused": false
+  },
+  "closed": {
+    "position": {
+      "x": 158,
+      "y": 284
+    },
+    "stage": "step-mate",
+    "paused": false,
+    "selected": null,
+    "courtship": false
+  },
+  "closeTrace": [
+    {
+      "name": "pointermove",
+      "x": 514,
+      "y": 370,
+      "target": "CANVAS",
+      "hidden": true,
+      "tick": 13
+    },
+    {
+      "name": "pointerdown",
+      "x": 514,
+      "y": 370,
+      "target": "CANVAS",
+      "hidden": true,
+      "tick": 13
+    },
+    {
+      "name": "pointerup",
+      "x": 514,
+      "y": 370,
+      "target": "CANVAS",
+      "hidden": true,
+      "tick": 13
+    },
+    {
+      "name": "click",
+      "x": 514,
+      "y": 370,
+      "target": "CANVAS",
+      "hidden": true,
+      "tick": 13
+    },
+    {
+      "name": "radial",
+      "stack": "Error\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:331)\n    at ContextRadial.show (http://127.0.0.1:63993/src/ui/context-radial.js:8:275)\n    at HTMLCanvasElement.<anonymous> (http://127.0.0.1:63993/src/ui/creature-context-tray.js:36:544)",
+      "tick": 13,
+      "target": null,
+      "point": {
+        "x": 514,
+        "y": 370
+      },
+      "hidden": true,
+      "entered": false,
+      "actor": {
+        "x": 75.5,
+        "y": 73.5,
+        "dir": 0
+      },
+      "selected": null,
+      "left": "",
+      "top": ""
+    },
+    {
+      "name": "layout",
+      "before": "left: 514px; top: 370px;",
+      "after": "left: 315px; top: 384px;",
+      "footprint": {
+        "left": -105,
+        "top": -96.1484375,
+        "width": 210,
+        "height": 246.9296875
+      },
+      "entered": false,
+      "tick": 13
+    },
+    {
+      "name": "radial",
+      "stack": "Error\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:331)\n    at CreatureContextTray.interact (http://127.0.0.1:63993/src/ui/creature-context-tray.js:105:106)\n    at http://127.0.0.1:63993/src/main.js:396:61",
+      "tick": 15,
+      "target": null,
+      "point": {
+        "x": 514,
+        "y": 370
+      },
+      "hidden": false,
+      "entered": false,
+      "footprint": {
+        "left": -105,
+        "top": -96.1484375,
+        "width": 210,
+        "height": 246.9296875
+      },
+      "actor": {
+        "x": 75.5,
+        "y": 73.5,
+        "dir": 0
+      },
+      "selected": null,
+      "left": "315px",
+      "top": "384px"
+    },
+    {
+      "name": "pointermove",
+      "x": 478,
+      "y": 406,
+      "target": "CANVAS",
+      "hidden": true,
+      "tick": 40
+    },
+    {
+      "name": "pointerdown",
+      "x": 478,
+      "y": 406,
+      "target": "CANVAS",
+      "hidden": true,
+      "tick": 40
+    },
+    {
+      "name": "pointerup",
+      "x": 478,
+      "y": 406,
+      "target": "CANVAS",
+      "hidden": true,
+      "tick": 40
+    },
+    {
+      "name": "click",
+      "x": 478,
+      "y": 406,
+      "target": "CANVAS",
+      "hidden": true,
+      "tick": 40
+    },
+    {
+      "name": "radial",
+      "stack": "Error\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:331)\n    at ContextRadial.show (http://127.0.0.1:63993/src/ui/context-radial.js:8:275)\n    at HTMLCanvasElement.<anonymous> (http://127.0.0.1:63993/src/ui/creature-context-tray.js:36:544)",
+      "tick": 40,
+      "target": null,
+      "point": {
+        "x": 478,
+        "y": 406
+      },
+      "hidden": true,
+      "entered": false,
+      "footprint": {
+        "left": -105,
+        "top": -96.1484375,
+        "width": 210,
+        "height": 246.9296875
+      },
+      "actor": {
+        "x": 75.5,
+        "y": 73.5,
+        "dir": 0
+      },
+      "selected": null,
+      "left": "315px",
+      "top": "384px"
+    },
+    {
+      "name": "layout",
+      "before": "left: 478px; top: 406px;",
+      "after": "left: 677px; top: 416px;",
+      "footprint": {
+        "left": -105,
+        "top": -96.1484375,
+        "width": 210,
+        "height": 246.9296875
+      },
+      "entered": false,
+      "tick": 40
+    },
+    {
+      "name": "pointermove",
+      "x": 743.5599975585938,
+      "y": 394.3699951171875,
+      "target": {},
+      "action": "drink|water:9546::",
+      "hidden": false,
+      "tick": 44
+    },
+    {
+      "name": "pointerdown",
+      "x": 743.5599975585938,
+      "y": 394.3699951171875,
+      "target": {},
+      "action": "drink|water:9546::",
+      "hidden": false,
+      "tick": 44
+    },
+    {
+      "name": "pointerup",
+      "x": 743.5599975585938,
+      "y": 394.3699951171875,
+      "target": {},
+      "action": "drink|water:9546::",
+      "hidden": false,
+      "tick": 44
+    },
+    {
+      "name": "click",
+      "x": 743,
+      "y": 394,
+      "target": {},
+      "action": "drink|water:9546::",
+      "hidden": false,
+      "tick": 44
+    },
+    {
+      "name": "radial",
+      "stack": "Error\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:331)\n    at ContextRadial.update (http://127.0.0.1:63993/src/ui/context-radial.js:35:113)\n    at CreatureContextTray.update (http://127.0.0.1:63993/src/ui/creature-context-tray.js:49:15)\n    at execute (http://127.0.0.1:63993/src/ui/creature-context-tray.js:102:574)\n    at CreatureContextTray.useOption (http://127.0.0.1:63993/src/ui/creature-context-tray.js:102:803)\n    at Object.invoke (http://127.0.0.1:63993/src/ui/creature-context-tray.js:101:633)\n    at b.onclick (http://127.0.0.1:63993/src/ui/context-radial.js:9:1584)",
+      "tick": 44,
+      "target": null,
+      "point": {
+        "x": 478,
+        "y": 406
+      },
+      "hidden": false,
+      "entered": true,
+      "footprint": {
+        "left": -105,
+        "top": -96.1484375,
+        "width": 210,
+        "height": 246.9296875
+      },
+      "actor": {
+        "x": 75.5,
+        "y": 73.5,
+        "dir": 0
+      },
+      "selected": null,
+      "left": "677px",
+      "top": "416px"
+    },
+    {
+      "name": "pointermove",
+      "x": 885,
+      "y": 629.0599975585938,
+      "target": "dock-clear",
+      "hidden": true,
+      "tick": 69
+    },
+    {
+      "name": "pointerdown",
+      "x": 885,
+      "y": 629.0599975585938,
+      "target": "dock-clear",
+      "hidden": true,
+      "tick": 69
+    },
+    {
+      "name": "radial",
+      "stack": "Error\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:331)\n    at HTMLDocument.<anonymous> (http://127.0.0.1:63993/src/ui/context-radial.js:6:734)",
+      "tick": 69,
+      "target": null,
+      "point": {
+        "x": 478,
+        "y": 406
+      },
+      "hidden": true,
+      "entered": true,
+      "footprint": {
+        "left": -105,
+        "top": -96.1484375,
+        "width": 210,
+        "height": 246.9296875
+      },
+      "actor": {
+        "x": 75.5,
+        "y": 73.5,
+        "dir": 0
+      },
+      "selected": null,
+      "left": "677px",
+      "top": "416px"
+    },
+    {
+      "name": "pointerup",
+      "x": 885,
+      "y": 629.0599975585938,
+      "target": "dock-clear",
+      "hidden": true,
+      "tick": 69
+    },
+    {
+      "name": "click",
+      "x": 885,
+      "y": 629,
+      "target": "dock-clear",
+      "hidden": true,
+      "tick": 69
+    },
+    {
+      "name": "tray",
+      "stack": "Error\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:331)\n    at CreatureContextTray.clear.onclick (http://127.0.0.1:63993/src/ui/creature-context-tray.js:31:545)",
+      "tick": 69,
+      "target": null,
+      "point": {
+        "x": 478,
+        "y": 406
+      },
+      "hidden": true,
+      "entered": true,
+      "footprint": {
+        "left": -105,
+        "top": -96.1484375,
+        "width": 210,
+        "height": 246.9296875
+      },
+      "actor": {
+        "x": 75.5,
+        "y": 73.5,
+        "dir": 0
+      },
+      "selected": null,
+      "left": "677px",
+      "top": "416px"
+    },
+    {
+      "name": "radial",
+      "stack": "Error\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:331)\n    at CreatureContextTray.close (http://127.0.0.1:63993/src/ui/creature-context-tray.js:44:76)\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:999)\n    at CreatureContextTray.clear.onclick (http://127.0.0.1:63993/src/ui/creature-context-tray.js:31:545)",
+      "tick": 69,
+      "target": null,
+      "point": {
+        "x": 478,
+        "y": 406
+      },
+      "hidden": true,
+      "entered": true,
+      "footprint": {
+        "left": -105,
+        "top": -96.1484375,
+        "width": 210,
+        "height": 246.9296875
+      },
+      "actor": {
+        "x": 75.5,
+        "y": 73.5,
+        "dir": 0
+      },
+      "selected": null,
+      "left": "677px",
+      "top": "416px"
+    },
+    {
+      "name": "pointermove",
+      "x": 512,
+      "y": 204,
+      "target": "CANVAS",
+      "hidden": true,
+      "tick": 138
+    },
+    {
+      "name": "pointerdown",
+      "x": 512,
+      "y": 204,
+      "target": "CANVAS",
+      "hidden": true,
+      "tick": 138
+    },
+    {
+      "name": "pointerup",
+      "x": 512,
+      "y": 204,
+      "target": "CANVAS",
+      "hidden": true,
+      "tick": 138
+    },
+    {
+      "name": "click",
+      "x": 512,
+      "y": 204,
+      "target": "CANVAS",
+      "hidden": true,
+      "tick": 138
+    },
+    {
+      "name": "radial",
+      "stack": "Error\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:331)\n    at ContextRadial.show (http://127.0.0.1:63993/src/ui/context-radial.js:8:275)\n    at HTMLCanvasElement.<anonymous> (http://127.0.0.1:63993/src/ui/creature-context-tray.js:36:544)",
+      "tick": 138,
+      "target": 110,
+      "point": {
+        "x": 512,
+        "y": 204
+      },
+      "rendered": {
+        "x": 513,
+        "y": 205
+      },
+      "hidden": true,
+      "entered": false,
+      "footprint": {
+        "left": -105,
+        "top": -96.1484375,
+        "width": 210,
+        "height": 246.9296875
+      },
+      "actor": {
+        "x": 69.38864147089008,
+        "y": 60.73742629276421,
+        "dir": 0
+      },
+      "selected": {
+        "id": 110,
+        "x": 69.48663812785396,
+        "y": 55.191061122562395,
+        "visible": true,
+        "range": 8.650018424913288
+      },
+      "left": "677px",
+      "top": "416px"
+    },
+    {
+      "name": "layout",
+      "before": "left: 512px; top: 204px;",
+      "after": "left: 316px; top: 205px;",
+      "footprint": {
+        "left": -105,
+        "top": -97.1484375,
+        "width": 210,
+        "height": 263.3203125
+      },
+      "entered": false,
+      "tick": 138
+    },
+    {
+      "name": "pointermove",
+      "x": 501.2135314941406,
+      "y": 202.28125,
+      "target": "CANVAS",
+      "hidden": false,
+      "tick": 152
+    },
+    {
+      "name": "pointermove",
+      "x": 490.4270935058594,
+      "y": 200.5625,
+      "target": "CANVAS",
+      "hidden": false,
+      "tick": 153
+    },
+    {
+      "name": "pointermove",
+      "x": 479.640625,
+      "y": 198.84375,
+      "target": "CANVAS",
+      "hidden": false,
+      "tick": 153
+    },
+    {
+      "name": "pointermove",
+      "x": 468.8541564941406,
+      "y": 197.125,
+      "target": "CANVAS",
+      "hidden": false,
+      "tick": 153
+    },
+    {
+      "name": "pointermove",
+      "x": 458.0677185058594,
+      "y": 195.40625,
+      "target": "CANVAS",
+      "hidden": false,
+      "tick": 153
+    },
+    {
+      "name": "pointermove",
+      "x": 447.28125,
+      "y": 193.6875,
+      "target": "CANVAS",
+      "hidden": false,
+      "tick": 153
+    },
+    {
+      "name": "pointermove",
+      "x": 436.4947814941406,
+      "y": 191.96875,
+      "target": "CANVAS",
+      "hidden": false,
+      "tick": 153
+    },
+    {
+      "name": "pointermove",
+      "x": 425.7083435058594,
+      "y": 190.25,
+      "target": "CANVAS",
+      "hidden": false,
+      "tick": 153
+    },
+    {
+      "name": "pointermove",
+      "x": 414.921875,
+      "y": 188.53125,
+      "target": "BUTTON",
+      "action": "Court",
+      "hidden": false,
+      "tick": 154
+    },
+    {
+      "name": "pointermove",
+      "x": 404.1354064941406,
+      "y": 186.8125,
+      "target": "BUTTON",
+      "action": "Court",
+      "hidden": false,
+      "tick": 154
+    },
+    {
+      "name": "pointermove",
+      "x": 393.3489685058594,
+      "y": 185.09375,
+      "target": "BUTTON",
+      "action": "Court",
+      "hidden": false,
+      "tick": 154
+    },
+    {
+      "name": "pointermove",
+      "x": 382.5625,
+      "y": 183.375,
+      "target": "BUTTON",
+      "action": "Court",
+      "hidden": false,
+      "tick": 154
+    },
+    {
+      "name": "pointermove",
+      "x": 382.5625,
+      "y": 183.375,
+      "target": "BUTTON",
+      "action": "Court",
+      "hidden": false,
+      "tick": 154
+    },
+    {
+      "name": "pointerdown",
+      "x": 382.5625,
+      "y": 183.375,
+      "target": "BUTTON",
+      "action": "Court",
+      "hidden": false,
+      "tick": 154
+    },
+    {
+      "name": "pointerup",
+      "x": 382.5625,
+      "y": 183.375,
+      "target": "BUTTON",
+      "action": "Court",
+      "hidden": false,
+      "tick": 154
+    },
+    {
+      "name": "click",
+      "x": 382,
+      "y": 183,
+      "target": "BUTTON",
+      "action": "Court",
+      "hidden": false,
+      "tick": 154
+    },
+    {
+      "name": "click",
+      "x": 0,
+      "y": 0,
+      "target": "BUTTON",
+      "hidden": false,
+      "tick": 154
+    },
+    {
+      "name": "radial",
+      "stack": "Error\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:331)\n    at http://127.0.0.1:63993/src/ui/creature-context-tray.js:88:111\n    at button.onclick (http://127.0.0.1:63993/src/ui/creature-context-tray.js:86:412)\n    at Object.invoke (http://127.0.0.1:63993/src/ui/creature-context-tray.js:86:1550)\n    at b.onclick (http://127.0.0.1:63993/src/ui/context-radial.js:9:1584)",
+      "tick": 154,
+      "target": 110,
+      "point": {
+        "x": 512,
+        "y": 204
+      },
+      "rendered": {
+        "x": 513,
+        "y": 205
+      },
+      "hidden": false,
+      "entered": true,
+      "footprint": {
+        "left": -105,
+        "top": -97.1484375,
+        "width": 210,
+        "height": 263.3203125
+      },
+      "actor": {
+        "x": 69.38864147089008,
+        "y": 60.73742629276421,
+        "dir": 0
+      },
+      "selected": {
+        "id": 110,
+        "x": 69.48582357567213,
+        "y": 55.190479299575394,
+        "visible": true,
+        "range": 8.650018424913288
+      },
+      "left": "316px",
+      "top": "205px"
+    },
+    {
+      "name": "tray",
+      "stack": "Error\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:331)\n    at CreatureContextTray.updateContents (http://127.0.0.1:63993/src/ui/creature-context-tray.js:61:54)\n    at CreatureContextTray.update (http://127.0.0.1:63993/src/ui/creature-context-tray.js:46:8)\n    at button.onclick (http://127.0.0.1:63993/src/ui/creature-context-tray.js:86:452)\n    at Object.invoke (http://127.0.0.1:63993/src/ui/creature-context-tray.js:86:1550)\n    at b.onclick (http://127.0.0.1:63993/src/ui/context-radial.js:9:1584)",
+      "tick": 154,
+      "target": 110,
+      "point": {
+        "x": 512,
+        "y": 204
+      },
+      "rendered": {
+        "x": 513,
+        "y": 205
+      },
+      "hidden": true,
+      "entered": true,
+      "footprint": {
+        "left": -105,
+        "top": -97.1484375,
+        "width": 210,
+        "height": 263.3203125
+      },
+      "actor": {
+        "x": 69.38864147089008,
+        "y": 60.73742629276421,
+        "dir": 0
+      },
+      "selected": {
+        "id": 110,
+        "x": 69.48582357567213,
+        "y": 55.190479299575394,
+        "visible": true,
+        "range": 8.650018424913288
+      },
+      "left": "316px",
+      "top": "205px"
+    },
+    {
+      "name": "radial",
+      "stack": "Error\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:331)\n    at CreatureContextTray.close (http://127.0.0.1:63993/src/ui/creature-context-tray.js:44:76)\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:999)\n    at CreatureContextTray.updateContents (http://127.0.0.1:63993/src/ui/creature-context-tray.js:61:54)\n    at CreatureContextTray.update (http://127.0.0.1:63993/src/ui/creature-context-tray.js:46:8)\n    at button.onclick (http://127.0.0.1:63993/src/ui/creature-context-tray.js:86:452)\n    at Object.invoke (http://127.0.0.1:63993/src/ui/creature-context-tray.js:86:1550)\n    at b.onclick (http://127.0.0.1:63993/src/ui/context-radial.js:9:1584)",
+      "tick": 154,
+      "target": 110,
+      "point": {
+        "x": 512,
+        "y": 204
+      },
+      "rendered": {
+        "x": 513,
+        "y": 205
+      },
+      "hidden": true,
+      "entered": true,
+      "footprint": {
+        "left": -105,
+        "top": -97.1484375,
+        "width": 210,
+        "height": 263.3203125
+      },
+      "actor": {
+        "x": 69.38864147089008,
+        "y": 60.73742629276421,
+        "dir": 0
+      },
+      "selected": {
+        "id": 110,
+        "x": 69.48582357567213,
+        "y": 55.190479299575394,
+        "visible": true,
+        "range": 8.650018424913288
+      },
+      "left": "316px",
+      "top": "205px"
+    },
+    {
+      "name": "pointermove",
+      "x": 291,
+      "y": 207,
+      "target": "dock-clear",
+      "hidden": true,
+      "tick": 157
+    },
+    {
+      "name": "pointerdown",
+      "x": 291,
+      "y": 207,
+      "target": "dock-clear",
+      "hidden": true,
+      "tick": 157
+    },
+    {
+      "name": "radial",
+      "stack": "Error\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:331)\n    at HTMLDocument.<anonymous> (http://127.0.0.1:63993/src/ui/context-radial.js:6:734)",
+      "tick": 157,
+      "target": null,
+      "point": {
+        "x": 512,
+        "y": 204
+      },
+      "hidden": true,
+      "entered": true,
+      "footprint": {
+        "left": -105,
+        "top": -97.1484375,
+        "width": 210,
+        "height": 263.3203125
+      },
+      "actor": {
+        "x": 69.38864147089008,
+        "y": 60.73742629276421,
+        "dir": 0
+      },
+      "selected": null,
+      "left": "316px",
+      "top": "205px"
+    },
+    {
+      "name": "pointerup",
+      "x": 291,
+      "y": 207,
+      "target": "dock-clear",
+      "hidden": true,
+      "tick": 157
+    },
+    {
+      "name": "click",
+      "x": 291,
+      "y": 207,
+      "target": "dock-clear",
+      "hidden": true,
+      "tick": 157
+    },
+    {
+      "name": "tray",
+      "stack": "Error\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:331)\n    at CreatureContextTray.clear.onclick (http://127.0.0.1:63993/src/ui/creature-context-tray.js:31:545)",
+      "tick": 157,
+      "target": null,
+      "point": {
+        "x": 512,
+        "y": 204
+      },
+      "hidden": true,
+      "entered": true,
+      "footprint": {
+        "left": -105,
+        "top": -97.1484375,
+        "width": 210,
+        "height": 263.3203125
+      },
+      "actor": {
+        "x": 69.38864147089008,
+        "y": 60.73742629276421,
+        "dir": 0
+      },
+      "selected": null,
+      "left": "316px",
+      "top": "205px"
+    },
+    {
+      "name": "radial",
+      "stack": "Error\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:331)\n    at CreatureContextTray.close (http://127.0.0.1:63993/src/ui/creature-context-tray.js:44:76)\n    at owner.close (eval at evaluate (:311:30), <anonymous>:1:999)\n    at CreatureContextTray.clear.onclick (http://127.0.0.1:63993/src/ui/creature-context-tray.js:31:545)",
+      "tick": 157,
+      "target": null,
+      "point": {
+        "x": 512,
+        "y": 204
+      },
+      "hidden": true,
+      "entered": true,
+      "footprint": {
+        "left": -105,
+        "top": -97.1484375,
+        "width": 210,
+        "height": 263.3203125
+      },
+      "actor": {
+        "x": 69.38864147089008,
+        "y": 60.73742629276421,
+        "dir": 0
+      },
+      "selected": null,
+      "left": "316px",
+      "top": "205px"
+    }
+  ]
+}
