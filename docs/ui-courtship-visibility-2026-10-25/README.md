@@ -14,8 +14,8 @@ The pure framing fixture checks two body envelopes at three portrait sizes witho
 
 Rejected receipts retain real dock/control overlaps and the disappearing Court event. A separate early harness incorrectly demanded desktop child trays be disjoint from their parent dock; the corrected contract requires containment on desktop and separation only for promoted side panels. No browser failure or receipt is rewritten.
 
-## Still in progress
+## Final marker follow-up and remaining limits
 
-The eight-size panel/controls pass is not complete visual acceptance: inspection also found a weather label covering the marked mate itself in one frame. The marker reservation follow-up remains; a strict marker/readout check will be added before packaging. Full playable integration is still running on this checkpoint. Broad anatomy/zoom/danger/performance coverage, native portrait-close recentering and creator/full-v1 acceptance remain open.
+The mate outline and rounded caption now both reserve their actual painted bounds. A failing regression reproduces the missing outline reservation; final focused checks pass. The strict final browser run requires every target/readout rectangle to clear every other readout and passes all eight layouts. The harness now waits for an actual rendered frame after resizing before reading creature screen positions; all Court visibility, click, tray and courtship time-budget assertions remain unchanged. The earlier pre-render-wait failure receipt is preserved. Screenshots at 600x450, 320x568 and 568x320 were inspected. The 113-check playable gate passed on d7d5d6f4 before the final marker-only painter change; integration.json and playable.log bind that result. Final marker, shared readout and camera checks pass separately. Broad anatomy/zoom/danger/performance coverage, native portrait-close recentering and creator/full-v1 acceptance remain open.
 
 Handoff: ../art/tutorial-courtship-v1-handoff/. Original candidate.css is preserved as a historical prototype; the live successor adds framing and collision-aware labels. Harness: ../../tools/review-tutorial-encounter-layout.cjs.
