@@ -1,0 +1,85 @@
+{
+  "schema": "genvo.presentation-review-selection/1",
+  "items": [
+    {
+      "id": "hud-ui",
+      "title": "Readable HUD and shared save feedback",
+      "revision": "4b5e9ba3",
+      "scope": "Actual public manual save and expanded utilities at phone width. This capture predates the later Journal refinement; save text and timers remain canonical.",
+      "after": "docs/ui-save-feedback-2026-10-24/saved-390.png"
+    },
+    {
+      "id": "journal-ui",
+      "title": "Journal navigation follows retained family history",
+      "revision": "f5ffa990",
+      "scope": "Same refined UI in two real states: initially one retained record; then three records after public manual courtship and normal Day17 birth. No ancestry or biological outcome was authored.",
+      "before": "docs/ui-journal-navigation-2026-10-24/single-phone.png",
+      "beforeCaption": "One retained record: cycling controls omitted",
+      "after": "docs/ui-journal-navigation-2026-10-24/multiple-phone.png",
+      "afterCaption": "Three retained records: position and cycling controls"
+    },
+    {
+      "id": "help-ui",
+      "title": "Help with native scrolling and clear feedback",
+      "revision": "b7bd01b9",
+      "scope": "Actual public phone Help. Native PageDown/End/Home, disclosure Space/Enter, Escape and subsequent world movement were verified separately from visual approval.",
+      "after": "docs/ui-information-navigation-2026-10-24/help-keyboard-phone.png"
+    },
+    {
+      "id": "processing-ui",
+      "title": "Plain-language processing feedback",
+      "revision": "1bf2f306",
+      "scope": "Actual runtime queue during a controlled 12x browser-CPU slowdown. Full original diagnostics stay under Update details. This is not ordinary performance or GPU acceptance.",
+      "after": "docs/ui-processing-notice-2026-10-24/processing-open-390.png"
+    },
+    {
+      "id": "save-error-ui",
+      "title": "Save error styling fixture",
+      "revision": "021bea77",
+      "scope": "Isolated authored UI fixture using production markup, styles and notification layout. This does not demonstrate a real storage failure or recovery.",
+      "after": "docs/ui-save-error-2026-10-24/error-390.png"
+    },
+    {
+      "id": "terrain",
+      "title": "Seasonal ground repetition",
+      "revision": "c001f3f",
+      "scope": "Actual full-scene comparison. Plants, bodies and fog retained; unchanged saved state and exact restored baseline. Creator acceptance open.",
+      "before": "docs/art-refinement-seasonal-ground-v1-2026-10-24/gameplay-pair/baseline.png",
+      "after": "docs/art-refinement-seasonal-ground-v1-2026-10-24/gameplay-pair/candidate.png"
+    },
+    {
+      "id": "storm",
+      "title": "Storm warning on a phone",
+      "revision": "6b895746",
+      "scope": "Actual naturally generated storm and public phone viewport. This capture predates the later decorative ground refinement.",
+      "after": "docs/art-refinement-storm-readout-v1-2026-10-24/native/storm-390x540.png"
+    },
+    {
+      "id": "clutch",
+      "title": "Actual paid nest and eggs",
+      "revision": "20e5d5ec",
+      "scope": "Genuine simulated clutch after explicitly authored sandbox founders. Public saved-world import and manual movement; not naturally evolved founder ancestry.",
+      "before": "docs/art-refinement-clutch-v1-2026-10-24/clear-exported-clutch/before-focus.png",
+      "after": "docs/art-refinement-clutch-v1-2026-10-24/clear-exported-clutch/after-focus.png"
+    },
+    {
+      "id": "shelter",
+      "title": "Actual paid shelter",
+      "revision": "00c440ce",
+      "scope": "Public recorded-house import of genuine paid construction and storage. Not a second construction event; natural burrow-house review remains open.",
+      "before": "docs/art-refinement-shelter-v1-2026-10-24/exported-recorded-house/before-focus.png",
+      "after": "docs/art-refinement-shelter-v1-2026-10-24/exported-recorded-house/after-focus.png"
+    },
+    {
+      "id": "lab",
+      "title": "Creature Lab layout",
+      "revision": "52e5645a",
+      "scope": "Earlier integrated Lab presentation capture. Biological changes remain owned by the inherited draft and its constraints.",
+      "after": "docs/art-refinement-interface-v1-2026-10-23/combined/lab-combined-current-policy-1366x768-integrated-lab.png"
+    }
+  ],
+  "audio": {
+    "source": "docs/art-refinement-contact-audio-v1-2026-10-24/contact-review-reel.wav",
+    "scope": "Original contact-sound production candidates. Not integrated or shipped in game; playback/contact routing and creator listening acceptance remain open."
+  }
+}
