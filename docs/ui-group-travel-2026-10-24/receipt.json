@@ -1,0 +1,128 @@
+{
+  "scope": "Public fresh-world group-travel preference toggle. No authored simulation state; not physical family-crossing acceptance.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "toggles": [
+    {
+      "width": 1024,
+      "expected": false,
+      "pressed": "false",
+      "label": "Group travel",
+      "state": "Off",
+      "reason": "Cross alone by default. Click to gather a nearby family cohort.",
+      "bound": true,
+      "rect": {
+        "x": 469.03125,
+        "y": 704.203125,
+        "width": 128.34375,
+        "height": 36,
+        "top": 704.203125,
+        "right": 597.375,
+        "bottom": 740.203125,
+        "left": 469.03125
+      },
+      "group": false
+    },
+    {
+      "width": 1024,
+      "expected": true,
+      "pressed": "true",
+      "label": "Group travel",
+      "state": "On",
+      "reason": "Group crossing selected. Gather nearby relatives and dependents; cross together using 9.",
+      "bound": true,
+      "rect": {
+        "x": 469.03125,
+        "y": 704.203125,
+        "width": 127.703125,
+        "height": 36,
+        "top": 704.203125,
+        "right": 596.734375,
+        "bottom": 740.203125,
+        "left": 469.03125
+      },
+      "group": true
+    },
+    {
+      "width": 1024,
+      "expected": false,
+      "pressed": "false",
+      "label": "Group travel",
+      "state": "Off",
+      "reason": "Cross alone by default. Click to gather a nearby family cohort.",
+      "bound": true,
+      "rect": {
+        "x": 469.03125,
+        "y": 704.203125,
+        "width": 128.34375,
+        "height": 36,
+        "top": 704.203125,
+        "right": 597.375,
+        "bottom": 740.203125,
+        "left": 469.03125
+      },
+      "group": false
+    },
+    {
+      "width": 390,
+      "expected": false,
+      "pressed": "false",
+      "label": "Group travel",
+      "state": "Off",
+      "reason": "Cross alone by default. Click to gather a nearby family cohort.",
+      "bound": true,
+      "rect": {
+        "x": 201.1875,
+        "y": 792,
+        "width": 118.34375,
+        "height": 36,
+        "top": 792,
+        "right": 319.53125,
+        "bottom": 828,
+        "left": 201.1875
+      },
+      "group": false
+    },
+    {
+      "width": 390,
+      "expected": true,
+      "pressed": "true",
+      "label": "Group travel",
+      "state": "On",
+      "reason": "Group crossing selected. Gather nearby relatives and dependents; cross together using 9.",
+      "bound": true,
+      "rect": {
+        "x": 201.1875,
+        "y": 792,
+        "width": 117.703125,
+        "height": 36,
+        "top": 792,
+        "right": 318.890625,
+        "bottom": 828,
+        "left": 201.1875
+      },
+      "group": true
+    },
+    {
+      "width": 390,
+      "expected": false,
+      "pressed": "false",
+      "label": "Group travel",
+      "state": "Off",
+      "reason": "Cross alone by default. Click to gather a nearby family cohort.",
+      "bound": true,
+      "rect": {
+        "x": 201.1875,
+        "y": 792,
+        "width": 118.34375,
+        "height": 36,
+        "top": 792,
+        "right": 319.53125,
+        "bottom": 828,
+        "left": 201.1875
+      },
+      "group": false
+    }
+  ]
+}

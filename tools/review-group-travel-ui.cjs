@@ -1,0 +1,17 @@
+const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
+const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
+(async()=>{
+ const root=process.cwd(),out=path.resolve(process.argv[2]||'reports/group-travel-ui-20261024');fs.mkdirSync(out,{recursive:true});
+ const receipt={scope:'Public fresh-world group-travel preference toggle. No authored simulation state; not physical family-crossing acceptance.',creatorAcceptance:false,errors:[],panels:[]};
+ const server=http.createServer((req,res)=>{const url=new URL(req.url,'http://local'),file=path.resolve(root,'.'+(url.pathname==='/'?'/index.html':decodeURIComponent(url.pathname)));if(!file.startsWith(root+path.sep))return res.writeHead(403).end();fs.readFile(file,(err,bytes)=>{if(err)return res.writeHead(404).end();res.setHeader('Content-Type',({'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json','.png':'image/png','.svg':'image/svg+xml'})[path.extname(file)]||'application/octet-stream');res.end(bytes)})});
+ await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));const browser=await chromium.launch({headless:true});
+ try{
+  const page=await browser.newPage({viewport:{width:1024,height:768}});page.on('pageerror',e=>receipt.errors.push(e.message));await page.goto('http://127.0.0.1:'+server.address().port);await page.waitForFunction(()=>!!window.__GENVO8__);await page.getByRole('button',{name:'New World',exact:true}).click();await page.getByRole('button',{name:'Begin World',exact:true}).click();await page.waitForFunction(()=>document.querySelector('#frontEnd').hidden,null,{timeout:90000});
+  for(let i=0;i<8;i++){if(!await page.evaluate(()=>{const t=window.__GENVO8__.tutorial;return t.worldInputBlocked()&&['welcome','briefing'].includes(t.stage)}))break;await page.keyboard.press('Enter')}
+  await page.locator('#interactionDock').waitFor({state:'visible'});
+  const button=page.locator('[data-command="family-travel"]');receipt.toggles=[];
+  for(const [width,height] of [[1024,768],[390,844]]){await page.setViewportSize({width,height});for(const expected of [false,true,false]){if(receipt.toggles.length%3!==0)await button.click();await page.waitForFunction(v=>window.__GENVO8__.sim.travelFamilyGroup===v||(!v&&!window.__GENVO8__.sim.travelFamilyGroup),expected);await page.waitForTimeout(180);const actual=await button.evaluate(b=>({pressed:b.getAttribute('aria-pressed'),label:b.querySelector('span').textContent,state:b.querySelector('small').textContent,reason:b.getAttribute('aria-description'),bound:typeof b.onclick==='function',rect:b.getBoundingClientRect().toJSON(),group:!!window.__GENVO8__.sim.travelFamilyGroup}));assert.equal(actual.pressed,String(expected));assert.equal(actual.group,expected);assert.equal(actual.label,'Group travel');assert.equal(actual.state,expected?'On':'Off');assert.ok(actual.bound);assert.ok(actual.rect.x>=0&&actual.rect.right<=width);receipt.toggles.push({width,expected,...actual});await page.screenshot({path:path.join(out,'travel-'+width+'-'+expected+'.png')})}}
+  assert.equal(receipt.errors.length,0);
+ }finally{fs.writeFileSync(path.join(out,'receipt.json'),JSON.stringify(receipt,null,2));await browser.close();await new Promise(r=>server.close(r))}
+ console.log('Public group-travel toggle PASS: source preference and rendered Off/On/Off at two widths. No crossing or cohort acceptance.');
+})().catch(e=>{console.error(e);process.exitCode=1});
