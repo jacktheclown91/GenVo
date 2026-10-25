@@ -7,6 +7,7 @@ const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const syntax=[
   'src/main.js',
   'src/ui/front-end.js',
+  'src/ui/tutorial.js',
   'src/ui/movement-input-buffer.js',
   'src/persistence/save-manager.js',
   'src/sim/frame-stepper.js',
@@ -116,6 +117,7 @@ const runtime=[
   'tests/menu-task-usability.mjs',
   'tests/movement-input-buffer.mjs',
   'tests/input-responsiveness.mjs',
+  'tests/mandatory-tutorial.mjs',
   'tests/multigenerational-lineage.mjs',
   'tests/living-planet-extended.mjs'
 ];

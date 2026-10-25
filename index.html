@@ -194,8 +194,35 @@
       </div>
     </section>
 
-    <!-- First lessons now occur in the world. The old opening and briefing logic is retained for saved-state compatibility only. -->
-    <section id="welcome" hidden></section>
+    <!-- Mandatory interactive onboarding tutorial -->
+    <section id="welcome" class="welcome" hidden aria-modal="true" role="dialog" aria-live="polite">
+      <div class="welcome-card floating-card">
+        <h2>WELCOME TO GENVO</h2>
+        <p class="welcome-sub">You're the creature with the gold ring!</p>
+        <ul class="welcome-controls">
+          <li><span class="control-glyph">🖱️</span> <span>Mouse — Move, select, and interact.</span></li>
+          <li><strong>E</strong> — Interact with most things</li>
+          <li><strong>SPACE</strong> — Attack</li>
+          <li><strong>SHIFT</strong> — Sprint</li>
+          <li><strong>WASD</strong> — Move</li>
+        </ul>
+        <div class="welcome-actions">
+          <button id="startGame" type="button" class="tutorial-btn">LET'S BEGIN</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="tutorialComplete" class="tutorial-modal" hidden aria-modal="true" role="dialog" aria-live="polite">
+      <div class="tutorial-complete-card floating-card">
+        <h2>YOU'RE READY!</h2>
+        <p class="complete-summary">You've eaten, drunk, and found a mate.</p>
+        <p class="complete-motto">Survive. Evolve. Leave a Legacy.</p>
+        <p class="complete-tail">The rest of your story is yours to discover.</p>
+        <div class="tutorial-actions">
+          <button id="tutorialContinue" type="button" class="tutorial-btn">CONTINUE PLAYING</button>
+        </div>
+      </div>
+    </section>
     <section id="frontEnd" class="front-end" role="dialog" aria-modal="true" aria-label="GenVo menu">
       <div class="menu-atmosphere" aria-hidden="true"><span class="mote mote-one"></span><span class="mote mote-two"></span><span class="mote mote-three"></span></div>
       <div class="front-frame">

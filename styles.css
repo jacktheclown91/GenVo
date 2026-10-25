@@ -27,6 +27,10 @@
 
 .objective{position:absolute;top:12px;left:50%;transform:translateX(-50%);display:grid;grid-template-columns:46px auto;gap:10px;align-items:start;width:min(540px,calc(100vw - 590px));min-width:320px;padding:8px 16px 10px 6px;background:rgba(4,10,6,.58);clip-path:polygon(2% 0,100% 0,97% 100%,0 100%);pointer-events:none;filter:drop-shadow(2px 3px 0 rgba(0,0,0,.42));text-shadow:1px 2px 0 rgba(0,0,0,.9)}
 .objective:after{content:"";grid-column:2;width:72px;height:4px;margin-top:3px;background:url('assets/ui/stitch.png') left center/32px 4px repeat-x;opacity:.65}.objective-step{font:700 13px/1 Georgia,serif;color:#e1c773;padding-top:2px;text-align:right}.objective strong{display:block;font:700 17px/1.15 Georgia,serif;color:#f4e9bd}.objective span{display:block;margin-top:4px;color:#e2e7de;font-size:13px;line-height:1.35}.objective.compact{opacity:.83}.objective.compact .objective-step{color:#9eac91}
+.objective:not(.compact){width:min(520px,calc(100vw - 40px));min-width:320px;background:rgba(10,24,16,.92);border:1px solid #788665;border-radius:12px;clip-path:none;padding:10px 18px 12px 14px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+.objective:not(.compact) .objective-step{font:700 15px/1 Georgia,serif;color:#dfc46f;padding-top:2px}
+.objective:not(.compact) strong{font:700 16px/1.2 Georgia,serif;color:#f4e9bd;letter-spacing:.5px}
+.objective:not(.compact) span{display:block;margin-top:6px;color:#dbe4d5;font-size:13px;line-height:1.4}
 .context{position:absolute;left:50%;top:auto;transform:translateX(-50%);min-height:21px;padding:2px 5px 2px 21px;background:rgba(4,10,6,.62) url('assets/ui/mark.png') 5px 50%/14px 12px no-repeat;color:#f0dda0;font:bold 13px/1.4 Verdana,sans-serif;pointer-events:none;text-shadow:1px 2px 0 rgba(0,0,0,.9),-1px 0 rgba(0,0,0,.5)}.context[data-tone="danger"]{color:#ee8b7f}.context[data-tone="need"]{color:#d5c178}
 .toast{position:absolute;left:50%;right:auto;top:auto;bottom:14px;transform:translateX(-50%);max-width:min(420px,calc(100vw - 28px));padding:6px 10px 7px 26px;background:rgba(6,12,8,.78) url('assets/ui/mark.png') 6px 50%/13px 11px no-repeat;border-top:1px solid rgba(100,113,89,.72);color:#e0e6dc;font-size:13px;line-height:1.3;pointer-events:none;text-align:left;text-shadow:1px 1px #000;z-index:18}.toast[data-tone="safe"],.toast[data-tone="success"]{color:#9fd1ad}.toast[data-tone="warn"]{color:#e19b82}
 
@@ -44,7 +48,23 @@
 @media(max-width:650px){.panel-summary{grid-template-columns:1fr}.ecology,.help,#territory{width:calc(100vw - 16px)!important;min-width:0!important;left:8px!important;right:8px!important}.readable-panel{max-height:calc(100vh - 64px)}}
 
 /* Opening screen: title composition over the world, no enclosing card. */
-.welcome{position:absolute;inset:0;background:rgba(2,6,3,.73);z-index:20;pointer-events:auto;display:flex;align-items:flex-end;justify-content:flex-start}
+.welcome{position:absolute;inset:0;background:rgba(2,6,3,.52);z-index:25;pointer-events:auto;display:flex;align-items:center;justify-content:center}
+.welcome-card{width:min(440px,calc(100vw - 32px));background:rgba(10,24,16,.94);border:1px solid #788665;border-radius:14px;padding:24px 28px;box-shadow:0 12px 36px rgba(0,0,0,.65);color:#dbe4d5;pointer-events:auto}
+.welcome-card h2{margin:0 0 6px;font:700 24px/1.1 Georgia,serif;color:#f4e9bd;letter-spacing:.5px}
+.welcome-card .welcome-sub{margin:0 0 16px;font-size:14px;color:#dfc46f;font-weight:600}
+.welcome-controls{list-style:none;margin:0 0 20px;padding:0;display:grid;gap:8px;font-size:13px;line-height:1.4;color:#cad3c4}
+.welcome-controls li{display:flex;align-items:center;gap:8px}
+.welcome-controls strong{display:inline-block;min-width:60px;color:#f4e9bd}
+.control-glyph{font-size:16px;line-height:1}
+.tutorial-btn{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:42px;padding:8px 18px;border:1px solid #c2b575;border-radius:8px;background:#3a5032;color:#f4e9bd;font:700 14px Georgia,serif;letter-spacing:.8px;cursor:pointer;transition:background .15s,border-color .15s,transform .1s}
+.tutorial-btn:hover{background:#4a6640;border-color:#efd695}
+.tutorial-btn:active{transform:scale(.98)}
+.tutorial-modal{position:absolute;inset:0;background:rgba(2,6,3,.52);z-index:25;pointer-events:auto;display:flex;align-items:center;justify-content:center}
+.tutorial-complete-card{width:min(440px,calc(100vw - 32px));background:rgba(10,24,16,.94);border:1px solid #788665;border-radius:14px;padding:24px 28px;box-shadow:0 12px 36px rgba(0,0,0,.65);color:#dbe4d5;text-align:center;pointer-events:auto}
+.tutorial-complete-card h2{margin:0 0 10px;font:700 26px/1.1 Georgia,serif;color:#dfc46f;letter-spacing:1px}
+.complete-summary{margin:0 0 10px;font-size:15px;color:#e8ede3}
+.complete-motto{margin:0 0 10px;font:700 16px/1.3 Georgia,serif;color:#f4e9bd;letter-spacing:.5px}
+.complete-tail{margin:0 0 20px;font-size:13px;color:#aebaa4}
 .welcome-stage{width:min(590px,calc(100vw - 44px));margin:0 0 8vh 7vw;padding:0;text-shadow:2px 3px 0 rgba(0,0,0,.72)}
 .logo{display:flex;align-items:baseline;gap:1px;font:900 38px/.95 Georgia,serif;letter-spacing:-2px;color:#e8e8d3}.logo span:nth-child(2){color:#9fb17e}.logo b{font-size:50px;color:#dfc46f;margin-left:3px}.welcome-rule{width:168px;height:4px;margin:10px 0 13px;background:url('assets/ui/stitch.png') left center/32px 4px repeat-x}
 .welcome h1{margin:0 0 8px;font:700 27px/1.1 Georgia,serif;color:#efe0a0}.welcome-lead{max-width:560px;color:#d2d8cc;font-size:14px;line-height:1.45;margin:0 0 14px}.welcome-goal{display:flex;align-items:center;gap:7px;margin:0 0 12px;font:700 14px Georgia,serif;color:#e5d083}.welcome-goal img{width:16px;height:16px;image-rendering:pixelated}.welcome-notes{list-style:none;margin:0 0 15px;padding:0;display:grid;gap:6px;color:#b4beb0;font-size:13px;line-height:1.35}.welcome-notes li:before{content:"·";display:inline-block;width:12px;color:#cfb867}.welcome-actions{display:flex;gap:10px;align-items:center;margin-top:16px}.welcome small{display:block;margin-top:9px;color:#818d80;font-size:11px}
@@ -65,7 +85,7 @@ button{min-height:34px;padding:6px 16px;border:7px solid transparent;border-imag
 @media(prefers-reduced-motion:reduce){.transition:not([hidden]) .lineage-portrait.descendant{animation:none}}
 
 /* Opening/handoff own the frame: keep only the living world behind them. */
-#app:has(#welcome:not([hidden]))>#hud,#app:has(#welcome:not([hidden]))>#tutorial,#app:has(#welcome:not([hidden]))>#context,#app:has(#welcome:not([hidden]))>#toast,#app:has(#transition:not([hidden]))>#hud,#app:has(#transition:not([hidden]))>#tutorial,#app:has(#transition:not([hidden]))>#context,#app:has(#transition:not([hidden]))>#toast{visibility:hidden}
+#app:has(#welcome:not([hidden]))>#hud,#app:has(#welcome:not([hidden]))>#tutorial,#app:has(#welcome:not([hidden]))>#context,#app:has(#welcome:not([hidden]))>#toast,#app:has(#tutorialComplete:not([hidden]))>#hud,#app:has(#tutorialComplete:not([hidden]))>#tutorial,#app:has(#tutorialComplete:not([hidden]))>#context,#app:has(#tutorialComplete:not([hidden]))>#toast,#app:has(#transition:not([hidden]))>#hud,#app:has(#transition:not([hidden]))>#tutorial,#app:has(#transition:not([hidden]))>#context,#app:has(#transition:not([hidden]))>#toast{visibility:hidden}
 
 /* v0.40 Family journal: a field leaf laid over the world, not another dashboard panel. */
 .journal{position:absolute;inset:0;z-index:18;background:rgba(2,6,3,.28);pointer-events:none;text-shadow:1px 2px 0 rgba(0,0,0,.68)}
@@ -158,7 +178,7 @@ button{min-height:34px;padding:6px 16px;border:7px solid transparent;border-imag
 .task-guide small{display:block;margin-top:8px;padding-top:7px;border-top:1px dotted rgba(137,151,130,.28);color:#869486;font:12px/1.35 Verdana,sans-serif}
 /* Top-right inspectors sit below the quick-access strip instead of colliding with it. */
 #mind,.ecology,.help{top:54px}
-#app:has(#welcome:not([hidden]))>#quickMenu,#app:has(#transition:not([hidden]))>#quickMenu,#app:has(#briefing:not([hidden]))>#quickMenu{visibility:hidden}
+#app:has(#welcome:not([hidden]))>#quickMenu,#app:has(#tutorialComplete:not([hidden]))>#quickMenu,#app:has(#transition:not([hidden]))>#quickMenu,#app:has(#briefing:not([hidden]))>#quickMenu{visibility:hidden}
 @media(max-width:760px){.quick-menu{right:8px;top:8px;gap:3px;padding:3px 4px}.quick-menu button{width:29px;height:27px}.quick-menu button[data-action="autonomy"]{width:48px}.quick-menu svg{width:16px;height:16px}.task-guide{right:8px;top:48px;width:300px}.objective.compact{right:184px;max-width:calc(100vw - 390px)}}
 @media(max-width:520px){.quick-menu{top:7px}.quick-menu button{width:28px;height:27px}.quick-menu button[data-action="autonomy"]{width:46px}.task-guide{left:8px;right:8px;top:45px;width:auto}.objective.compact{top:82px;right:8px;max-width:calc(100vw - 16px)}.quick-menu button::after{display:none!important}}
 .quick-menu button[data-panel="guide"]{color:#d8c574}

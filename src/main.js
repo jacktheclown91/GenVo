@@ -218,7 +218,7 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
   else await saveManager.allocateWorld(name);
   installSimulation(next,start==='new'?{fresh:true}:{resume:true});
   if(adoptedSlot)saveManager.setActiveSlot(adoptedSlot.slotId);
-  if(start==='new'||creature==='guided'||creature==='sandbox')tutorial.beginInWorld();
+  if(start==='new'||creature==='guided'||creature==='sandbox')tutorial.showWelcome();
   if(next.creatureStart?.starterFocus)tutorial.showToast(PHYSICAL_STARTERS[next.creatureStart.starterFocus].hint,7200,'safe','action');
   closeGameMenus();await renderer.sceneReady();await nextPaint();
   try{const saved=await saveManager.saveNow(start==='new'?'world-start':'world-scenario-fork');
