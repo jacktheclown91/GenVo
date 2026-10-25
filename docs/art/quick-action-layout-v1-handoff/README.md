@@ -1,0 +1,7 @@
+# Quick-action initial layout: shared UI heads-up
+
+Codex is addressing observed initial menu reflow in src/ui/creature-context-tray.js. Native traces from actual tutorial mate selection show initial wheel placement before the dock publishes its selected-context height, followed by another placement in the same simulation tick. One trace moves from (909,457.234) to (337,205). The intermittent earlier disappearance is not yet attributed conclusively; this is a separately measured stability defect that can interrupt a pointer trip.
+
+Presentation-only plan: populate the existing context contents, publish the dock visibility/height through its existing update method, then update the quick-action wheel against that finished geometry. Keep the same public update method, unchanged action authorities/callbacks/availability, world/actor/stage guards, brace handling, target-loss clearing, resources, costs, saves, clock and RNG. No rule or target is made available to satisfy this check.
+
+The native regression retains strict Court visibility/bounds/tray assertions and now observes a 1.5-second hands-off reading interval plus a 12-step pointer trip. It rejects a visible wheel that changes initial position by more than two pixels in this actual fresh-world scenario. Preserve baseline failures and traces; verify repeated genuine entry/cancel paths, existing input/target regressions and the full integration gate before acceptance. Exact patch and source-bound evidence follow here. Creator/GPU/full-v1 acceptance remain separate.
