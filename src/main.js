@@ -102,7 +102,7 @@ function setManualPause(value){if(tutorial.worldInputBlocked?.())return false;ma
 const braceInput=new HeldBraceInput({getSim:()=>sim,blocked:()=>sim.paused||!!tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||succession.open,onBegin:()=>{sim.discovery.cancelTraceFollow();pointerApproach?.cancel();takeManualControl();applyObserverResult(observer.onManualInput());if(courtshipTray.isOpen){sim.reproduction.cancelCourtship();courtshipTray.close()}}});
 const tutorial=new TutorialController(sim,renderer);
 const observer=new ObserverController(()=>sim);
-const editor=new CreatureEditor({getSim:()=>sim,onDone:r=>{if(r.ok)audio.note('confirm');else tutorial.showToast('Design cancelled · the litter inherits normally · nothing was spent',2600,'safe')}});
+const editor=new CreatureEditor({getSim:()=>sim,onDone:r=>{if(tutorial.worldInputBlocked?.())sim.paused=true;if(r.ok)audio.note('confirm');else tutorial.showToast('Design cancelled · the litter inherits normally · nothing was spent',2600,'safe')}});
 const fieldGuide=new FieldGuide({getSim:()=>sim,getRenderer:()=>renderer});
 const succession=new SuccessionChooser({getSim:()=>sim,onDone:r=>{if(!r.ok){tutorial.showToast('That descendant cannot take over yet.',1800,'warn');audio.note('deny')}else audio.note('confirm')}});
 // Legacy milestones follow the generation reveal; the world continues afterwards.

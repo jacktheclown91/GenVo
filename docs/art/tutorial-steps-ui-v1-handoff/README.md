@@ -1,0 +1,5 @@
+# Mandatory tutorial step presentation
+
+Native food step at568x320 overlaps Saved/Menu;320x568 card right330 exceedsviewport320. Codex presentation rules target only noncompact STEP-title guidance via existing data-guide-title. Keep exact titles/instructions, canonical flags, stage requirements and controller ownership. Hide duplicated visual step-number column because full heading already names STEP1/3 etc. Root source/controller/styles remain concurrent owner work.
+
+Native lifecycle finding: real courtship can open the tutorial completion modal while the coming-generation Lab is still open. Lab.close restores its earlier wasPaused=false, overriding the newer modal pause. Bounded shared integration fix in main editor onDone preserves paused=true when the existing tutorial.worldInputBlocked authority says a blocking modal remains. No scheduling, biological cost, editor commit/cancel or tutorial stage requirement changes. Browser regression will assert actual modal pause after native Keep old body.

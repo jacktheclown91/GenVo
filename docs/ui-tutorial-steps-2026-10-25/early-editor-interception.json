@@ -1,0 +1,285 @@
+{
+  "scope": "Public mandatory tutorial: native food/water targets and unchanged canonical stage progression; no authored simulation state.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "layouts": [
+    {
+      "width": 1024,
+      "height": 768,
+      "card": {
+        "x": 654,
+        "y": 64,
+        "width": 360,
+        "height": 88.5625,
+        "top": 64,
+        "right": 1014,
+        "bottom": 152.5625,
+        "left": 654
+      },
+      "body": {
+        "left": 466,
+        "top": 338,
+        "right": 558,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "card": {
+        "x": 354,
+        "y": 64,
+        "width": 204,
+        "height": 120.9375,
+        "top": 64,
+        "right": 558,
+        "bottom": 184.9375,
+        "left": 354
+      },
+      "body": {
+        "left": 238,
+        "top": 114,
+        "right": 330,
+        "bottom": 206,
+        "width": 92,
+        "height": 92
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "card": {
+        "x": 10,
+        "y": 64,
+        "width": 300,
+        "height": 88.5625,
+        "top": 64,
+        "right": 310,
+        "bottom": 152.5625,
+        "left": 10
+      },
+      "body": {
+        "left": 114,
+        "top": 238,
+        "right": 206,
+        "bottom": 330,
+        "width": 92,
+        "height": 92
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "kind": "plant",
+      "target": {
+        "x": 514,
+        "y": 370,
+        "label": "Reeds",
+        "food": "marshroot",
+        "distance": 14.142135623730951
+      },
+      "actions": [
+        "Approach",
+        "Eat Reeds",
+        "Inspect"
+      ],
+      "before": {
+        "stage": "step-food",
+        "hydration": 102.60000000000001,
+        "energy": 114.08
+      },
+      "after": {
+        "stage": "step-water",
+        "hydration": 111.60000000000001,
+        "energy": 116.94336094345012,
+        "lastAction": {
+          "type": "eat",
+          "actorId": 109,
+          "kind": "marshroot",
+          "tissue": null,
+          "processingCost": 0,
+          "energyGain": 2.863360943450118,
+          "waterGain": 9,
+          "tick": 11
+        }
+      }
+    },
+    {
+      "kind": "water",
+      "target": {
+        "x": 478,
+        "y": 406,
+        "label": "Water",
+        "food": null,
+        "distance": 40.496913462633174
+      },
+      "actions": [
+        "Approach",
+        "Drink",
+        "Eat Algae / biofilm",
+        "Eat Duckweed",
+        "Inspect"
+      ],
+      "before": {
+        "stage": "step-water",
+        "hydration": 111.60000000000001,
+        "energy": 116.94336094345012
+      },
+      "after": {
+        "stage": "step-mate",
+        "hydration": 114,
+        "energy": 116.94336094345012,
+        "lastAction": {
+          "type": "drink",
+          "actorId": 109,
+          "tick": 19
+        }
+      }
+    }
+  ],
+  "courtship": [
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": null,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "alive": true
+    },
+    {
+      "stage": "step-complete",
+      "complete": true,
+      "editor": true,
+      "courtTarget": null,
+      "alive": true
+    }
+  ],
+  "completed": {
+    "stage": "step-complete",
+    "paused": true,
+    "lastMate": 110,
+    "day": 1
+  },
+  "failure": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('#tutorialContinue')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" class=\"tutorial-btn\" id=\"tutorialContinue\">CONTINUE PLAYING</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <canvas width=\"560\" height=\"460\" class=\"ed-stage\" aria-label=\"Your creature: drop parts on the glowing sockets\"></canvas> from <section role=\"dialog\" id=\"creatureEditor\" class=\"creature-editor\" aria-label=\"Shape the coming generation\">…</section> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <canvas width=\"560\" height=\"460\" class=\"ed-stage\" aria-label=\"Your creature: drop parts on the glowing sockets\"></canvas> from <section role=\"dialog\" id=\"creatureEditor\" class=\"creature-editor\" aria-label=\"Shape the coming generation\">…</section> subtree intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    55 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is visible, enabled and stable\u001b[22m\n\u001b[2m       - scrolling into view if needed\u001b[22m\n\u001b[2m       - done scrolling\u001b[22m\n\u001b[2m       - <canvas width=\"560\" height=\"460\" class=\"ed-stage\" aria-label=\"Your creature: drop parts on the glowing sockets\"></canvas> from <section role=\"dialog\" id=\"creatureEditor\" class=\"creature-editor\" aria-label=\"Shape the coming generation\">…</section> subtree intercepts pointer events\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+}

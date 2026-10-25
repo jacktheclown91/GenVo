@@ -198,3 +198,10 @@
 #welcome button:focus-visible,#tutorialComplete button:focus-visible{outline:2px solid #e8d487;outline-offset:2px}
 
 #welcome *,#tutorialComplete *{text-shadow:none}
+
+/* Mandatory step headings already contain their step number. */
+#tutorial:not(.compact)[data-guide-title^="STEP "]{box-sizing:border-box;display:block;left:auto;right:10px;top:64px;transform:none;width:min(360px,calc(100% - 20px));min-width:0;padding:8px 10px;background:#102017f5;border:1px solid #879268;border-radius:2px;box-shadow:none;filter:none;text-shadow:none;clip-path:none}
+#tutorial:not(.compact)[data-guide-title^="STEP "] .objective-step,#tutorial:not(.compact)[data-guide-title^="STEP "]:after{display:none}
+#tutorial:not(.compact)[data-guide-title^="STEP "] strong{font:normal 15px/1.2 Georgia,serif;letter-spacing:0;color:#eee3bd}
+#tutorial:not(.compact)[data-guide-title^="STEP "] span{font:12px/1.35 Verdana,sans-serif;margin-top:4px;color:#d1d9bd}
+@media(max-height:420px) and (min-width:480px){#tutorial:not(.compact)[data-guide-title^="STEP "]{width:204px}}

@@ -1,0 +1,28 @@
+diff --git a/assets/ui/natural-history-survival.css b/assets/ui/natural-history-survival.css
+index 6f7e36bc..d8f034fa 100644
+--- a/assets/ui/natural-history-survival.css
++++ b/assets/ui/natural-history-survival.css
+@@ -198,3 +198,10 @@
+ #welcome button:focus-visible,#tutorialComplete button:focus-visible{outline:2px solid #e8d487;outline-offset:2px}
+ 
+ #welcome *,#tutorialComplete *{text-shadow:none}
++
++/* Mandatory step headings already contain their step number. */
++#tutorial:not(.compact)[data-guide-title^="STEP "]{box-sizing:border-box;display:block;left:auto;right:10px;top:64px;transform:none;width:min(360px,calc(100% - 20px));min-width:0;padding:8px 10px;background:#102017f5;border:1px solid #879268;border-radius:2px;box-shadow:none;filter:none;text-shadow:none;clip-path:none}
++#tutorial:not(.compact)[data-guide-title^="STEP "] .objective-step,#tutorial:not(.compact)[data-guide-title^="STEP "]:after{display:none}
++#tutorial:not(.compact)[data-guide-title^="STEP "] strong{font:normal 15px/1.2 Georgia,serif;letter-spacing:0;color:#eee3bd}
++#tutorial:not(.compact)[data-guide-title^="STEP "] span{font:12px/1.35 Verdana,sans-serif;margin-top:4px;color:#d1d9bd}
++@media(max-height:420px) and (min-width:480px){#tutorial:not(.compact)[data-guide-title^="STEP "]{width:204px}}
+diff --git a/src/main.js b/src/main.js
+index f81d1541..04e5e903 100644
+--- a/src/main.js
++++ b/src/main.js
+@@ -102,7 +102,7 @@ function setManualPause(value){if(tutorial.worldInputBlocked?.())return false;ma
+ const braceInput=new HeldBraceInput({getSim:()=>sim,blocked:()=>sim.paused||!!tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||succession.open,onBegin:()=>{sim.discovery.cancelTraceFollow();pointerApproach?.cancel();takeManualControl();applyObserverResult(observer.onManualInput());if(courtshipTray.isOpen){sim.reproduction.cancelCourtship();courtshipTray.close()}}});
+ const tutorial=new TutorialController(sim,renderer);
+ const observer=new ObserverController(()=>sim);
+-const editor=new CreatureEditor({getSim:()=>sim,onDone:r=>{if(r.ok)audio.note('confirm');else tutorial.showToast('Design cancelled · the litter inherits normally · nothing was spent',2600,'safe')}});
++const editor=new CreatureEditor({getSim:()=>sim,onDone:r=>{if(tutorial.worldInputBlocked?.())sim.paused=true;if(r.ok)audio.note('confirm');else tutorial.showToast('Design cancelled · the litter inherits normally · nothing was spent',2600,'safe')}});
+ const fieldGuide=new FieldGuide({getSim:()=>sim,getRenderer:()=>renderer});
+ const succession=new SuccessionChooser({getSim:()=>sim,onDone:r=>{if(!r.ok){tutorial.showToast('That descendant cannot take over yet.',1800,'warn');audio.note('deny')}else audio.note('confirm')}});
+ // Legacy milestones follow the generation reveal; the world continues afterwards.
