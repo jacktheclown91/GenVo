@@ -1,0 +1,17 @@
+{
+  "schema": "genvo.ui-clarity-integration/1",
+  "sourceHead": "9e73763e202d763c2ecf4713afac2be060384d96",
+  "scope": "Current shared worktree; concurrent telemetry edit retained. Not an immutable clean-source certification.",
+  "command": "node tools/check-playable.mjs",
+  "exitCode": 0,
+  "focusedChecks": 111,
+  "logSha256": "7fd4030c1c4987e2c6969225551559a79153195c5ed2fff5ddaf8c4d8381cae8",
+  "supplementalPassed": [
+    "node tests/menu-action-completion.mjs",
+    "node tests/readout-coordination.mjs",
+    "node tests/refuge-readout.mjs",
+    "node tests/information-input.mjs"
+  ],
+  "creatorAcceptance": false,
+  "fullV1Complete": false
+}
