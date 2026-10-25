@@ -1,7 +1,8 @@
 import {THUNDERSTORMS,thunderstormAt} from '../ecology/thunderstorms.js';
 import {thermalWeatherReading} from '../ecology/thermal-weather.js';
 import {atmosphereReadout} from './atmosphere.js';
-import {chooseOverlayPlacement,gameplayProtectedRects} from '../ui/overlay-placement.js';
+import {chooseOverlayPlacement} from '../ui/overlay-placement.js';
+import {readoutScreenConstraints} from './readout-layout.js';
 // One explanatory label above fog; atmospheric artwork stays in its weather layer.
 export function weatherReadoutModel(sim){
  const a=sim.player();if(!a||a.underground||(a.diveDepth||0)>.03)return null;
@@ -20,8 +21,7 @@ export function weatherReadoutPlacement({width,height,protectedRects=[],obstacle
 }
 export function drawWeatherReadout(renderer){
  const model=weatherReadoutModel(renderer.sim);if(!model)return;
- const c=renderer.ctx,bounds=renderer.canvas.getBoundingClientRect(),sx=renderer.w/bounds.width,sy=renderer.h/bounds.height,convert=r=>({left:(r.left-bounds.left)*sx,top:(r.top-bounds.top)*sy,right:(r.right-bounds.left)*sx,bottom:(r.bottom-bounds.top)*sy});
- const protectedRects=gameplayProtectedRects(renderer).map(convert),obstacles=[...document.querySelectorAll('#hud,#tutorial:not([hidden]),#interactionDock:not([hidden]),#notificationStack:not([hidden]),#stageUtilities:not([hidden]),#stageUtilities #quickMenu:not([hidden]),.knowledge-panel:not([hidden]),.journal-page,.context-radial:not([hidden])>*:not([hidden])')].filter(e=>e.getClientRects().length).map(e=>convert(e.getBoundingClientRect()));
+ const c=renderer.ctx,{protectedRects,obstacles}=readoutScreenConstraints(renderer);
  c.save();const measureTitle=t=>{c.font='bold 13px Georgia';return c.measureText(t).width},measureDetail=t=>{c.font='11px sans-serif';return c.measureText(t).width};
  const box=weatherReadoutPlacement({width:renderer.w,height:renderer.h,protectedRects,obstacles,model,measureTitle,measureDetail}),x=Math.round(box.left),y=Math.round(box.top),accent=model.warm?'#e5b67c':'#abd2df';
  c.fillStyle='#17291ff2';c.fillRect(x,y,box.width,box.height);c.fillStyle=accent;c.fillRect(x,y,2,box.height);
