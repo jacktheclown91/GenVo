@@ -155,3 +155,7 @@
 #interactionDock .travel-mode-state{font:9px/1.2 Verdana,sans-serif;color:#b8c5a1;border-left:1px solid #657455;padding-left:4px}
 #interactionDock [data-command=family-travel][aria-pressed=true]{border-color:#c4b677;background:#3a4726;color:#f1e1ac}
 #interactionDock [data-command=family-travel][aria-pressed=true] .travel-mode-state{color:#f1e1ac}
+
+/* SaveManager retains status text/timing; the feedback stack owns placement. */
+#notificationStack #saveStatus:not([hidden]){position:static;inset:auto;transform:none;margin:0;max-width:none;width:auto;display:block!important;visibility:inherit!important}
+#notificationStack #saveStatus[hidden]{display:none!important}

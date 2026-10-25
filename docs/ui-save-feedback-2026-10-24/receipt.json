@@ -1,0 +1,104 @@
+{
+  "scope": "Public fresh-world manual saves and existing save feedback placement. No authored simulation or save-status state.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "saves": [
+    {
+      "width": 1024,
+      "text": "Saved",
+      "hidden": false,
+      "parent": "notificationStack",
+      "role": "status",
+      "rect": {
+        "x": 10,
+        "y": 83.390625,
+        "width": 260,
+        "height": 27.390625,
+        "top": 83.390625,
+        "right": 270,
+        "bottom": 110.78125,
+        "left": 10
+      },
+      "root": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 100.78125,
+        "top": 10,
+        "right": 270,
+        "bottom": 110.78125,
+        "left": 10
+      },
+      "task": {
+        "x": 383.53125,
+        "y": 62,
+        "width": 256.9375,
+        "height": 32.890625,
+        "top": 62,
+        "right": 640.46875,
+        "bottom": 94.890625,
+        "left": 383.53125
+      },
+      "menu": {
+        "x": 947.546875,
+        "y": 10,
+        "width": 66.453125,
+        "height": 44,
+        "top": 10,
+        "right": 1014,
+        "bottom": 54,
+        "left": 947.546875
+      },
+      "saveDetails": "Last save: G1, Year 1 Day 1."
+    },
+    {
+      "width": 390,
+      "text": "Saved",
+      "hidden": false,
+      "parent": "notificationStack",
+      "role": "status",
+      "rect": {
+        "x": 10,
+        "y": 631.609375,
+        "width": 260,
+        "height": 27.390625,
+        "top": 631.609375,
+        "right": 270,
+        "bottom": 659,
+        "left": 10
+      },
+      "root": {
+        "x": 10,
+        "y": 484.828125,
+        "width": 260,
+        "height": 174.171875,
+        "top": 484.828125,
+        "right": 270,
+        "bottom": 659,
+        "left": 10
+      },
+      "task": {
+        "x": 166,
+        "y": 58,
+        "width": 216,
+        "height": 45.78125,
+        "top": 58,
+        "right": 382,
+        "bottom": 103.78125,
+        "left": 166
+      },
+      "menu": {
+        "x": 313.546875,
+        "y": 10,
+        "width": 66.453125,
+        "height": 44,
+        "top": 10,
+        "right": 380,
+        "bottom": 54,
+        "left": 313.546875
+      },
+      "saveDetails": "Last save: G1, Year 1 Day 1."
+    }
+  ]
+}
