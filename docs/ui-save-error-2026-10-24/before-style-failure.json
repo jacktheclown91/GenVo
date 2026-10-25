@@ -1,0 +1,38 @@
+{
+  "scope": "Authored save-error UI layout fixture within public fresh-world gameplay. No storage failure, save result or simulation state is authored or claimed.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "layouts": [
+    {
+      "normal": "rgb(216, 223, 191)",
+      "width": 1024,
+      "text": "Authored save-error layout fixture: could not save this checkpoint.",
+      "role": "status",
+      "color": "rgb(216, 223, 191)",
+      "border": "rgb(123, 128, 88)",
+      "visible": true,
+      "rect": {
+        "x": 10,
+        "y": 100.1875,
+        "width": 260,
+        "height": 42.78125,
+        "top": 100.1875,
+        "right": 270,
+        "bottom": 142.96875,
+        "left": 10
+      },
+      "panel": {
+        "x": 512,
+        "y": 54,
+        "width": 500,
+        "height": 700,
+        "top": 54,
+        "right": 1012,
+        "bottom": 754,
+        "left": 512
+      },
+      "parent": "notificationStack"
+    }
+  ]
+}

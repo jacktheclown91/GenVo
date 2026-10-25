@@ -1,0 +1,68 @@
+{
+  "scope": "Isolated authored UI layout fixture using production Help/save markup, stylesheet and NotificationCenter. No simulation, storage failure or recovery is present or claimed.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "layouts": [
+    {
+      "normal": "rgb(216, 223, 191)",
+      "width": 1024,
+      "text": "Authored save-error layout fixture: could not save this checkpoint.",
+      "role": "status",
+      "color": "rgb(241, 200, 170)",
+      "border": "rgb(189, 140, 114)",
+      "visible": true,
+      "rect": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 42.78125,
+        "top": 10,
+        "right": 270,
+        "bottom": 52.78125,
+        "left": 10
+      },
+      "panel": {
+        "x": 512,
+        "y": 54,
+        "width": 500,
+        "height": 700,
+        "top": 54,
+        "right": 1012,
+        "bottom": 754,
+        "left": 512
+      },
+      "parent": "notificationStack"
+    },
+    {
+      "normal": "rgb(216, 223, 191)",
+      "width": 390,
+      "text": "Authored save-error layout fixture: could not save this checkpoint.",
+      "role": "status",
+      "color": "rgb(241, 200, 170)",
+      "border": "rgb(189, 140, 114)",
+      "visible": true,
+      "rect": {
+        "x": 8,
+        "y": 8,
+        "width": 374,
+        "height": 42.78125,
+        "top": 8,
+        "right": 382,
+        "bottom": 50.78125,
+        "left": 8
+      },
+      "panel": {
+        "x": 8,
+        "y": 59,
+        "width": 374,
+        "height": 775,
+        "top": 59,
+        "right": 382,
+        "bottom": 834,
+        "left": 8
+      },
+      "parent": "notificationStack"
+    }
+  ]
+}

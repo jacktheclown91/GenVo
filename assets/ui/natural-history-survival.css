@@ -159,3 +159,5 @@
 /* SaveManager retains status text/timing; the feedback stack owns placement. */
 #notificationStack #saveStatus:not([hidden]){position:static;inset:auto;transform:none;margin:0;max-width:none;width:auto;display:block!important;visibility:inherit!important}
 #notificationStack #saveStatus[hidden]{display:none!important}
+
+#notificationStack #saveStatus.error{border-color:#bd8c72;border-left-width:3px;background:#31271f;color:#f1c8aa}
