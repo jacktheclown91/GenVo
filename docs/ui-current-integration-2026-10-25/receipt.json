@@ -1,0 +1,28 @@
+{
+  "schema": "genvo.presentation-integration/1",
+  "source": "29ca403636a9c6a2690d8b126f13e43890e913a0",
+  "sourceCleanBeforeAndAfterGate": true,
+  "gate": "node tools/check-playable.mjs",
+  "exitCode": 0,
+  "passed": 113,
+  "supplemental": [
+    "tools/canonical-source-audit.mjs",
+    "tests/ui-art-direction.mjs",
+    "tests/mandatory-tutorial.mjs",
+    "tests/cave-progress-readout.mjs",
+    "tests/readout-coordination.mjs",
+    "tests/public-export.mjs",
+    "tests/menu-action-completion.mjs",
+    "tests/information-input.mjs"
+  ],
+  "logs": {
+    "playable.log": "2e0a2792751e0a57fbb00a8b316982ad8d0a26033ad891f5873824acbaa8560a",
+    "supplemental.log": "6807c09ba2cfdb3aa0bc2231cec8eb1332eb3c54f706837c8a9d74809263c306"
+  },
+  "limits": [
+    "Automated integration only",
+    "No new browser/GPU evidence",
+    "No new creator art or listening acceptance",
+    "Full v1 and migration remain incomplete"
+  ]
+}

@@ -1,0 +1,45 @@
+
+$ node tools/canonical-source-audit.mjs
+{
+  "schema": "genvo8.canonical-audit/1",
+  "status": "PASS",
+  "entrypoint": "src/main.js",
+  "totalSourceModules": 424,
+  "runtimeReachableModules": 416,
+  "runtimeDependencyFiles": 429,
+  "toolOrTestModules": [
+    "src/lineage/phenotype-resolver.js",
+    "src/lineage/swimming-review.js",
+    "src/organisms/tissue-construction.js",
+    "src/organisms/tissue-ledger.js",
+    "src/persistence/fauna-page-checkpoint.js",
+    "src/render/authored-draft-compiler.js",
+    "src/render/fauna.js",
+    "src/ui/food-choice-view.js"
+  ],
+  "registeredParts": 97,
+  "proceduralSpriteIds": 97,
+  "identicalSourceCopies": [],
+  "errors": []
+}
+
+$ node tests/ui-art-direction.mjs
+UI art-direction checks: PASS
+
+$ node tests/mandatory-tutorial.mjs
+Mandatory simplified tutorial test suite: PASS
+
+$ node tests/cave-progress-readout.mjs
+Cave readout PASS: canonical progress text, no state/input changes and compact actor/notification/control clearance.
+
+$ node tests/readout-coordination.mjs
+Canvas readout coordination PASS: collision reproduced, weather/refuge/wind clearance, copied bounds and next-frame clearing.
+
+$ node tests/public-export.mjs
+public-export: exact reachable modules and runtime assets only PASS
+
+$ node tests/menu-action-completion.mjs
+Menu action completion PASS: continue/create/load close their original screen, preserve newer pause and do not close on unsuccessful callbacks.
+
+$ node tests/information-input.mjs
+Information input boundary PASS: native panel navigation/typing, retained pointer barriers and world shortcuts.
