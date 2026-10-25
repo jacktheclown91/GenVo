@@ -1,0 +1,39 @@
+node tests/tutorial-guide-direction.mjs
+Tutorial direction PASS: real-target UI occlusion, eight offscreen directions, native arrow paint, body/panel clearance and readonly copied bounds.
+node tests/tutorial-target-presentation.mjs
+Tutorial target presentation PASS: Food/Water/Mate labels, body clearance, above-fog ordering and read-only state.
+node tests/readout-coordination.mjs
+Canvas readout coordination PASS: collision reproduced, weather/refuge/wind clearance, copied bounds and next-frame clearing.
+node tests/courtship-camera.mjs
+Courtship camera PASS: read-only deterministic exposed-body framing, multiple portrait sizes and normal/short-view isolation.
+node tests/notification-lane.mjs
+notification lane checks: PASS
+node tests/tutorial-overlay-followthrough.mjs
+Tutorial overlay follow-through PASS: stale wheel dismissal, same-stage retention and dynamic lesson obstacle clearance.
+node tests/world-swap-render.mjs
+world swap render caches ok
+node tests/public-export.mjs
+public-export: exact reachable modules and runtime assets only PASS
+node tools/canonical-source-audit.mjs
+{
+  "schema": "genvo8.canonical-audit/1",
+  "status": "PASS",
+  "entrypoint": "src/main.js",
+  "totalSourceModules": 427,
+  "runtimeReachableModules": 419,
+  "runtimeDependencyFiles": 432,
+  "toolOrTestModules": [
+    "src/lineage/phenotype-resolver.js",
+    "src/lineage/swimming-review.js",
+    "src/organisms/tissue-construction.js",
+    "src/organisms/tissue-ledger.js",
+    "src/persistence/fauna-page-checkpoint.js",
+    "src/render/authored-draft-compiler.js",
+    "src/render/fauna.js",
+    "src/ui/food-choice-view.js"
+  ],
+  "registeredParts": 97,
+  "proceduralSpriteIds": 97,
+  "identicalSourceCopies": [],
+  "errors": []
+}

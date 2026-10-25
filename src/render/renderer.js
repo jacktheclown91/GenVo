@@ -1,4 +1,5 @@
 import {courtshipCameraTarget} from './courtship-camera.js';
+import {drawTutorialGuide} from './tutorial-guide-art.js';
 import {drawNestArt,drawEggArt} from './clutch-art.js';
 import {visibleRegionalFauna} from '../world/regional-fauna.js';
 import {drawRegionalAnimal} from './regional-fauna.js';
@@ -35,8 +36,7 @@ import {glideGround} from '../lineage/gliding.js';
 import {drawFlightWind} from './flight-wind.js';
 import {drawRefugeReadout} from './refuge-readout.js';
 import {drawCaveProgress} from './cave-progress-readout.js';
-import {chooseOverlayPlacement} from '../ui/overlay-placement.js';
-import {beginReadoutFrame,readoutScreenConstraints,reserveReadout} from './readout-layout.js';
+import {beginReadoutFrame} from './readout-layout.js';
 import {EncounterPresentation,applyEncounterPose} from './encounter-expression.js';
 import {EncounterReactionPresentation,applyEncounterReaction,reactionAttention,reactionShove,drawEncounterReactionMarks,applyDefenseReaction,defenseShove,drawDefenseMarks} from './encounter-reactions.js';
 import {canHunt} from '../ecology/functional-diet.js';
@@ -262,12 +262,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     c.save();c.strokeStyle='rgba(239,211,120,.72)';c.lineWidth=2;c.setLineDash([5,5]);c.beginPath();c.moveTo(ax,ay);c.lineTo(tx,ty);c.stroke();c.setLineDash([]);
     const pulse=8+Math.sin(performance.now()/180)*2;c.strokeStyle='rgba(245,225,150,.95)';c.beginPath();c.arc(tx,ty,pulse,0,Math.PI*2);c.stroke();
     c.fillStyle='rgba(245,225,150,.92)';c.fillRect(tx-2,ty-2,4,4);
-    if(this.sim.uiTutorialStage?.startsWith('step-')){
-      const water=t.label==='Water',ink=water?'#a7e7ed':'#f4dc85',r=Math.max(13,Math.round(tile*.6)),x=Math.round(tx),y=Math.round(ty);
-      c.strokeStyle='#07120c';c.lineWidth=5;c.strokeRect(x-r,y-r,r*2,r*2);c.strokeStyle=ink;c.lineWidth=2;c.strokeRect(x-r,y-r,r*2,r*2);
-      const text=t.label||'Target';c.font='bold 13px Verdana,sans-serif';const width=Math.ceil(c.measureText(text).width)+18,constraints=readoutScreenConstraints(this),placed=chooseOverlayPlacement({width,height:23,viewport:{left:0,top:0,right:this.w,bottom:this.h},preferred:{left:x-width/2,top:y-r-27},protectedRects:[...constraints.protectedRects,{left:x-r,top:y-r,right:x+r,bottom:y+r}],obstacles:constraints.obstacles}),left=placed.left,top=placed.top;reserveReadout(this,{left:Math.round(left),top:Math.round(top),right:Math.round(left)+width,bottom:Math.round(top)+23});reserveReadout(this,{left:x-r-3,top:y-r-3,right:x+r+3,bottom:y+r+3});
-      c.fillStyle='#102017';c.fillRect(Math.round(left),Math.round(top),width,23);c.strokeStyle=ink;c.lineWidth=1;c.strokeRect(Math.round(left)+.5,Math.round(top)+.5,width-1,22);c.fillStyle=ink;c.textAlign='center';c.textBaseline='middle';c.fillText(text,Math.round(left+width/2),Math.round(top+12));
-    }
+    if(this.sim.uiTutorialStage?.startsWith('step-'))drawTutorialGuide(this,{tile,player:{x:ax,y:ay},target:{x:tx,y:ty},label:t.label||'Target'});
     c.restore();
   }
 
