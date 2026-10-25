@@ -1,0 +1,40 @@
+{
+  "scope": "Public guided Shore swimmer start, manual movement into perceived water and actual dive. No authored depth, air or natural ancestry.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "initial": {
+    "x": 66.5,
+    "y": 52.5,
+    "water": 0,
+    "status": {
+      "enabled": false,
+      "reason": "Enter water with enough depth to submerge."
+    }
+  },
+  "waterTarget": {
+    "kind": "water",
+    "i": 6721,
+    "x": 65.5,
+    "y": 52.5,
+    "label": "Water",
+    "d": 24
+  },
+  "after": {
+    "depth": 0.16000000298023223,
+    "status": {
+      "enabled": true,
+      "reason": "Rise through the real water column to breathe at the surface.",
+      "surfacing": true
+    },
+    "body": {
+      "left": 466,
+      "top": 339.27999997138977,
+      "right": 558,
+      "bottom": 431.27999997138977,
+      "width": 92,
+      "height": 92
+    }
+  },
+  "hud": "Surface 0.16 · Air 98%\nPgDn"
+}

@@ -1,0 +1,39 @@
+{
+  "scope": "Public fresh-world panel readability observation. No authored simulation state.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "initial": {
+    "x": 38.5,
+    "y": 61.5,
+    "water": 0,
+    "status": {
+      "enabled": false,
+      "reason": "Enter water with enough depth to submerge."
+    }
+  },
+  "waterTarget": {
+    "kind": "water",
+    "i": 7974,
+    "x": 38.5,
+    "y": 62.5,
+    "label": "Water",
+    "d": 24
+  },
+  "after": {
+    "depth": 0.16000000298023223,
+    "status": {
+      "enabled": true,
+      "reason": "Rise through the real water column to breathe at the surface.",
+      "surfacing": true
+    },
+    "body": {
+      "left": 466,
+      "top": 339.27999997138977,
+      "right": 558,
+      "bottom": 431.27999997138977,
+      "width": 92,
+      "height": 92
+    }
+  }
+}
