@@ -1,0 +1,9 @@
+# Cave transit cue readability
+
+Player Descending/Surfacing percentage now paints in a backed screen-space cue with shared actor/DOM/canvas-readout constraints. Canonical elapsed and transition duration produce unchanged text. Wildlife floating text, transit offsets, animation, cave policy, costs, controller and persistence remain. Added side anchors after first candidate overlapped weather at short width; that rejected capture remains.
+
+Baseline/candidate use committed review export c6320599 plus only renderer/new readout source for candidate, excluding concurrent onboarding edits. Existing fixture imports a primitive sandbox founder and stages initial position at an existing generated connected entrance. No cave, energy, transit or successful action is fabricated. This proves that fixture, not natural cave discovery. Initial shared-tree harness timed out during founder completion while onboarding was changing; it is not accepted as successful evidence.
+
+Final native three-size descent captures1024x768,568x320,390x844 pass zero body/DOM/previous readout rectangle overlaps. Short frame inspected. Mouse entry, finite descent, exact mid-transit IndexedDB save/Continue, keyboard connected movement, exit and conserved solid material pass. Surface direction text has a focused canonical-model test, not a separately captured ascent frame. Inputs/state are not changed by placement.
+
+Cave-progress-readout, natural-caves and canvas-readout coordination checks pass. Shared UI-art-direction currently fails on concurrent welcome-card onboarding markup; no weakening or owner edits. An attempted cave-traversal test path did not exist; actual natural-caves suite ran successfully. Isolated committed source plus scoped edits exports successfully (856copy entries,430modules). No whole-game green gate, creator/GPU acceptance or full v1 completion claim. Concurrent onboarding/main/styles/test work excluded.

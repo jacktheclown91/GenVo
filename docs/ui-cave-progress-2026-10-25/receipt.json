@@ -1,0 +1,51 @@
+{
+  "kind": "automated real controls; sandbox primitive founder, generated caves; actor initial position staged only",
+  "start": {
+    "i": 3171,
+    "x": 99.5,
+    "y": 24.5,
+    "next": 3172,
+    "key": "ArrowRight",
+    "back": "ArrowLeft",
+    "total": 3051.264620512724,
+    "energy": 114.08,
+    "policy": "seepage-caves/1",
+    "initialCaves": 14,
+    "canDig": false
+  },
+  "descent": {
+    "schema": 1,
+    "i": 3171,
+    "x": 99.5,
+    "y": 24.5,
+    "elapsed": 0.25,
+    "entering": true
+  },
+  "stored": {
+    "schema": 1,
+    "i": 3171,
+    "x": 99.5,
+    "y": 24.5,
+    "elapsed": 0.25,
+    "entering": true
+  },
+  "restored": {
+    "schema": 1,
+    "i": 3171,
+    "x": 99.5,
+    "y": 24.5,
+    "elapsed": 0.25,
+    "entering": true
+  },
+  "below": {
+    "cell": 3172,
+    "underground": true,
+    "energy": 113.7610906250001
+  },
+  "exit": {
+    "total": 3051.264620512724,
+    "energy": 113.54923203125011,
+    "underground": false
+  },
+  "errors": []
+}

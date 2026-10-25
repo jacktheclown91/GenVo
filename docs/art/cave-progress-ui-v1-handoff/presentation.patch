@@ -1,0 +1,30 @@
+diff --git a/src/render/renderer.js b/src/render/renderer.js
+index ac1c19d9..13a0a7cf 100644
+--- a/src/render/renderer.js
++++ b/src/render/renderer.js
+@@ -33,6 +33,7 @@ import {drawWorldTraces} from './world-traces.js';
+ import {glideGround} from '../lineage/gliding.js';
+ import {drawFlightWind} from './flight-wind.js';
+ import {drawRefugeReadout} from './refuge-readout.js';
++import {drawCaveProgress} from './cave-progress-readout.js';
+ import {beginReadoutFrame} from './readout-layout.js';
+ import {EncounterPresentation,applyEncounterPose} from './encounter-expression.js';
+ import {EncounterReactionPresentation,applyEncounterReaction,reactionAttention,reactionShove,drawEncounterReactionMarks,applyDefenseReaction,defenseShove,drawDefenseMarks} from './encounter-reactions.js';
+@@ -179,7 +180,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
+     // Weather and interaction cues remain above creatures; ground decoration does not.
+     if((!this.lowDetail||this.sim.visibilityRules===VISIBILITY.policy||this.sim.thermalRules===THERMAL_WEATHER.policy)&&!this.sim.player()?.underground)this.drawWeatherOverlay();
+     drawSensoryFog(this,{tile,cols,rows,startX,startY});
+-    beginReadoutFrame(this);drawWeatherReadout(this);drawRefugeReadout(this);
++    beginReadoutFrame(this);drawWeatherReadout(this);drawRefugeReadout(this);drawCaveProgress(this);
+     this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId),{renderer:this});this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.processTerrainRefreshQueue();}
+ 
+ 
+@@ -1076,7 +1077,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
+     if(a.pollenCargo?.mass>0){pixel(c,-3,-3,1,1,scale,'#dfba5b');pixel(c,2,-4,1,1,scale,'#e9d37d');pixel(c,4,-1,1,1,scale,'#cda64e')}
+     this.drawLifeEffects(a,scale,frame,pose,palette);
+ 
+-    if(a.caveTransit){c.globalAlpha=1;c.fillStyle='#d4ddc6';c.font='bold 11px sans-serif';c.textAlign='center';c.fillText((a.caveTransit.entering?'Descending ':'Surfacing ')+Math.round(a.caveTransit.elapsed/CAVES.transitionSeconds*100)+'%',0,-12*scale)}
++    if(a.caveTransit&&!a.player){c.globalAlpha=1;c.fillStyle='#d4ddc6';c.font='bold 11px sans-serif';c.textAlign='center';c.fillText((a.caveTransit.entering?'Descending ':'Surfacing ')+Math.round(a.caveTransit.elapsed/CAVES.transitionSeconds*100)+'%',0,-12*scale)}
+     if(a.climb&&!a.player){c.fillStyle='#e4d4a8';c.font='bold 11px sans-serif';c.textAlign='center';c.fillText('Climb '+a.climb.height.toFixed(1),0,-10*scale)}
+     if((a.diveDepth||0)>.03){c.globalAlpha=1;c.strokeStyle='#8acbd2';c.lineWidth=Math.max(1,scale*.35);c.beginPath();c.ellipse(0,-3*scale,7*scale,3*scale,0,0,Math.PI*2);c.stroke();c.fillStyle='#c5f1eb';c.font='bold 11px sans-serif';c.textAlign='center';if(!a.player)c.fillText('↓ '+a.diveDepth.toFixed(2),0,-9*scale)}
+     if(combatStatus)drawPlayerCombatFeedback(c,{animal:a,status:combatStatus,winded,scale,now:this.renderNow,dir:drawDir});else if(a.playerHunt)drawStalkerPursuitFeedback(c,{animal:a,scale,now:this.renderNow});
