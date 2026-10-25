@@ -1,0 +1,75 @@
+diff --git a/assets/ui/natural-history-survival.css b/assets/ui/natural-history-survival.css
+index d8f034fa..3628441e 100644
+--- a/assets/ui/natural-history-survival.css
++++ b/assets/ui/natural-history-survival.css
+@@ -205,3 +205,9 @@
+ #tutorial:not(.compact)[data-guide-title^="STEP "] strong{font:normal 15px/1.2 Georgia,serif;letter-spacing:0;color:#eee3bd}
+ #tutorial:not(.compact)[data-guide-title^="STEP "] span{font:12px/1.35 Verdana,sans-serif;margin-top:4px;color:#d1d9bd}
+ @media(max-height:420px) and (min-width:480px){#tutorial:not(.compact)[data-guide-title^="STEP "]{width:204px}}
++
++/* Spacing for the native onboarding pages; surface ownership stays above. */
++#welcome h2{margin:0 0 6px}
++#welcome .welcome-sub{margin:0 0 16px;font-size:14px;color:#dfc46f;font-weight:600}
++#tutorialComplete>div{text-align:center}
++#tutorialComplete h2{margin:0 0 10px}
+diff --git a/index.html b/index.html
+index 83aa5b2e..9c4c24a6 100644
+--- a/index.html
++++ b/index.html
+@@ -196,7 +196,7 @@
+ 
+     <!-- Mandatory interactive onboarding tutorial -->
+     <section id="welcome" class="welcome" hidden aria-modal="true" role="dialog" aria-live="polite">
+-      <div class="welcome-card floating-card">
++      <div class="onboarding-page">
+         <h2>WELCOME TO GENVO</h2>
+         <p class="welcome-sub">You're the creature with the gold ring!</p>
+         <ul class="welcome-controls">
+@@ -213,7 +213,7 @@
+     </section>
+ 
+     <section id="tutorialComplete" class="tutorial-modal" hidden aria-modal="true" role="dialog" aria-live="polite">
+-      <div class="tutorial-complete-card floating-card">
++      <div class="onboarding-page">
+         <h2>YOU'RE READY!</h2>
+         <p class="complete-summary">You've eaten, drunk, and found a mate.</p>
+         <p class="complete-motto">Survive. Evolve. Leave a Legacy.</p>
+diff --git a/styles.css b/styles.css
+index e5298b90..8e5eac53 100644
+--- a/styles.css
++++ b/styles.css
+@@ -27,10 +27,6 @@
+ 
+ .objective{position:absolute;top:12px;left:50%;transform:translateX(-50%);display:grid;grid-template-columns:46px auto;gap:10px;align-items:start;width:min(540px,calc(100vw - 590px));min-width:320px;padding:8px 16px 10px 6px;background:rgba(4,10,6,.58);clip-path:polygon(2% 0,100% 0,97% 100%,0 100%);pointer-events:none;filter:drop-shadow(2px 3px 0 rgba(0,0,0,.42));text-shadow:1px 2px 0 rgba(0,0,0,.9)}
+ .objective:after{content:"";grid-column:2;width:72px;height:4px;margin-top:3px;background:url('assets/ui/stitch.png') left center/32px 4px repeat-x;opacity:.65}.objective-step{font:700 13px/1 Georgia,serif;color:#e1c773;padding-top:2px;text-align:right}.objective strong{display:block;font:700 17px/1.15 Georgia,serif;color:#f4e9bd}.objective span{display:block;margin-top:4px;color:#e2e7de;font-size:13px;line-height:1.35}.objective.compact{opacity:.83}.objective.compact .objective-step{color:#9eac91}
+-.objective:not(.compact){width:min(520px,calc(100vw - 40px));min-width:320px;background:rgba(10,24,16,.92);border:1px solid #788665;border-radius:12px;clip-path:none;padding:10px 18px 12px 14px;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+-.objective:not(.compact) .objective-step{font:700 15px/1 Georgia,serif;color:#dfc46f;padding-top:2px}
+-.objective:not(.compact) strong{font:700 16px/1.2 Georgia,serif;color:#f4e9bd;letter-spacing:.5px}
+-.objective:not(.compact) span{display:block;margin-top:6px;color:#dbe4d5;font-size:13px;line-height:1.4}
+ .context{position:absolute;left:50%;top:auto;transform:translateX(-50%);min-height:21px;padding:2px 5px 2px 21px;background:rgba(4,10,6,.62) url('assets/ui/mark.png') 5px 50%/14px 12px no-repeat;color:#f0dda0;font:bold 13px/1.4 Verdana,sans-serif;pointer-events:none;text-shadow:1px 2px 0 rgba(0,0,0,.9),-1px 0 rgba(0,0,0,.5)}.context[data-tone="danger"]{color:#ee8b7f}.context[data-tone="need"]{color:#d5c178}
+ .toast{position:absolute;left:50%;right:auto;top:auto;bottom:14px;transform:translateX(-50%);max-width:min(420px,calc(100vw - 28px));padding:6px 10px 7px 26px;background:rgba(6,12,8,.78) url('assets/ui/mark.png') 6px 50%/13px 11px no-repeat;border-top:1px solid rgba(100,113,89,.72);color:#e0e6dc;font-size:13px;line-height:1.3;pointer-events:none;text-align:left;text-shadow:1px 1px #000;z-index:18}.toast[data-tone="safe"],.toast[data-tone="success"]{color:#9fd1ad}.toast[data-tone="warn"]{color:#e19b82}
+ 
+@@ -47,21 +43,16 @@
+ .help-quick{margin-top:2px}.help details p{font-size:12px;line-height:1.45}.help details b{color:#e0d18f}.help details summary{font-size:12px}
+ @media(max-width:650px){.panel-summary{grid-template-columns:1fr}.ecology,.help,#territory{width:calc(100vw - 16px)!important;min-width:0!important;left:8px!important;right:8px!important}.readable-panel{max-height:calc(100vh - 64px)}}
+ 
+-/* Opening screen: title composition over the world, no enclosing card. */
++/* Native opening/completion layout; natural-history assets own their surfaces. */
+ .welcome{position:absolute;inset:0;background:rgba(2,6,3,.52);z-index:25;pointer-events:auto;display:flex;align-items:center;justify-content:center}
+-.welcome-card{width:min(440px,calc(100vw - 32px));background:rgba(10,24,16,.94);border:1px solid #788665;border-radius:14px;padding:24px 28px;box-shadow:0 12px 36px rgba(0,0,0,.65);color:#dbe4d5;pointer-events:auto}
+-.welcome-card h2{margin:0 0 6px;font:700 24px/1.1 Georgia,serif;color:#f4e9bd;letter-spacing:.5px}
+-.welcome-card .welcome-sub{margin:0 0 16px;font-size:14px;color:#dfc46f;font-weight:600}
+ .welcome-controls{list-style:none;margin:0 0 20px;padding:0;display:grid;gap:8px;font-size:13px;line-height:1.4;color:#cad3c4}
+ .welcome-controls li{display:flex;align-items:center;gap:8px}
+ .welcome-controls strong{display:inline-block;min-width:60px;color:#f4e9bd}
+ .control-glyph{font-size:16px;line-height:1}
+-.tutorial-btn{display:inline-flex;align-items:center;justify-content:center;width:100%;min-height:42px;padding:8px 18px;border:1px solid #c2b575;border-radius:8px;background:#3a5032;color:#f4e9bd;font:700 14px Georgia,serif;letter-spacing:.8px;cursor:pointer;transition:background .15s,border-color .15s,transform .1s}
++.tutorial-btn{display:inline-flex;align-items:center;justify-content:center;width:100%;letter-spacing:.8px;cursor:pointer;transition:background .15s,border-color .15s,transform .1s}
+ .tutorial-btn:hover{background:#4a6640;border-color:#efd695}
+ .tutorial-btn:active{transform:scale(.98)}
+ .tutorial-modal{position:absolute;inset:0;background:rgba(2,6,3,.52);z-index:25;pointer-events:auto;display:flex;align-items:center;justify-content:center}
+-.tutorial-complete-card{width:min(440px,calc(100vw - 32px));background:rgba(10,24,16,.94);border:1px solid #788665;border-radius:14px;padding:24px 28px;box-shadow:0 12px 36px rgba(0,0,0,.65);color:#dbe4d5;text-align:center;pointer-events:auto}
+-.tutorial-complete-card h2{margin:0 0 10px;font:700 26px/1.1 Georgia,serif;color:#dfc46f;letter-spacing:1px}
+ .complete-summary{margin:0 0 10px;font-size:15px;color:#e8ede3}
+ .complete-motto{margin:0 0 10px;font:700 16px/1.3 Georgia,serif;color:#f4e9bd;letter-spacing:.5px}
+ .complete-tail{margin:0 0 20px;font-size:13px;color:#aebaa4}

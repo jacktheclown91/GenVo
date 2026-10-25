@@ -205,3 +205,9 @@
 #tutorial:not(.compact)[data-guide-title^="STEP "] strong{font:normal 15px/1.2 Georgia,serif;letter-spacing:0;color:#eee3bd}
 #tutorial:not(.compact)[data-guide-title^="STEP "] span{font:12px/1.35 Verdana,sans-serif;margin-top:4px;color:#d1d9bd}
 @media(max-height:420px) and (min-width:480px){#tutorial:not(.compact)[data-guide-title^="STEP "]{width:204px}}
+
+/* Spacing for the native onboarding pages; surface ownership stays above. */
+#welcome h2{margin:0 0 6px}
+#welcome .welcome-sub{margin:0 0 16px;font-size:14px;color:#dfc46f;font-weight:600}
+#tutorialComplete>div{text-align:center}
+#tutorialComplete h2{margin:0 0 10px}

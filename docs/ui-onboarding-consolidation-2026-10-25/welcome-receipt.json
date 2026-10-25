@@ -1,0 +1,239 @@
+{
+  "scope": "Native public New World welcome screen, viewport review and real dismissal. No authored simulation state. Completion modal not exercised.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "baseline": [
+    {
+      "width": 1024,
+      "height": 768,
+      "card": {
+        "x": 292,
+        "y": 232.5,
+        "width": 440,
+        "height": 302.984375,
+        "top": 232.5,
+        "right": 732,
+        "bottom": 535.484375,
+        "left": 292
+      },
+      "button": {
+        "x": 315,
+        "y": 470.484375,
+        "width": 394,
+        "height": 44,
+        "top": 470.484375,
+        "right": 709,
+        "bottom": 514.484375,
+        "left": 315
+      },
+      "scrollHeight": 301,
+      "clientHeight": 301,
+      "paused": true,
+      "stage": "welcome"
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "card": {
+        "x": 180,
+        "y": 148.5,
+        "width": 440,
+        "height": 302.984375,
+        "top": 148.5,
+        "right": 620,
+        "bottom": 451.484375,
+        "left": 180
+      },
+      "button": {
+        "x": 203,
+        "y": 386.484375,
+        "width": 394,
+        "height": 44,
+        "top": 386.484375,
+        "right": 597,
+        "bottom": 430.484375,
+        "left": 203
+      },
+      "scrollHeight": 301,
+      "clientHeight": 301,
+      "paused": true,
+      "stage": "welcome"
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "card": {
+        "x": 64,
+        "y": 12,
+        "width": 440,
+        "height": 296,
+        "top": 12,
+        "right": 504,
+        "bottom": 308,
+        "left": 64
+      },
+      "button": {
+        "x": 87,
+        "y": 249.984375,
+        "width": 394,
+        "height": 44,
+        "top": 249.984375,
+        "right": 481,
+        "bottom": 293.984375,
+        "left": 87
+      },
+      "scrollHeight": 301,
+      "clientHeight": 294,
+      "paused": true,
+      "stage": "welcome"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "card": {
+        "x": 12,
+        "y": 88.296875,
+        "width": 296,
+        "height": 391.40625,
+        "top": 88.296875,
+        "right": 308,
+        "bottom": 479.703125,
+        "left": 12
+      },
+      "button": {
+        "x": 35,
+        "y": 414.703125,
+        "width": 250,
+        "height": 44,
+        "top": 414.703125,
+        "right": 285,
+        "bottom": 458.703125,
+        "left": 35
+      },
+      "scrollHeight": 389,
+      "clientHeight": 389,
+      "paused": true,
+      "stage": "welcome"
+    }
+  ],
+  "final": [
+    {
+      "width": 1024,
+      "height": 768,
+      "card": {
+        "x": 292,
+        "y": 232.5,
+        "width": 440,
+        "height": 302.984375,
+        "top": 232.5,
+        "right": 732,
+        "bottom": 535.484375,
+        "left": 292
+      },
+      "button": {
+        "x": 315,
+        "y": 470.484375,
+        "width": 394,
+        "height": 44,
+        "top": 470.484375,
+        "right": 709,
+        "bottom": 514.484375,
+        "left": 315
+      },
+      "scrollHeight": 301,
+      "clientHeight": 301,
+      "paused": true,
+      "stage": "welcome"
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "card": {
+        "x": 180,
+        "y": 148.5,
+        "width": 440,
+        "height": 302.984375,
+        "top": 148.5,
+        "right": 620,
+        "bottom": 451.484375,
+        "left": 180
+      },
+      "button": {
+        "x": 203,
+        "y": 386.484375,
+        "width": 394,
+        "height": 44,
+        "top": 386.484375,
+        "right": 597,
+        "bottom": 430.484375,
+        "left": 203
+      },
+      "scrollHeight": 301,
+      "clientHeight": 301,
+      "paused": true,
+      "stage": "welcome"
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "card": {
+        "x": 64,
+        "y": 12,
+        "width": 440,
+        "height": 296,
+        "top": 12,
+        "right": 504,
+        "bottom": 308,
+        "left": 64
+      },
+      "button": {
+        "x": 87,
+        "y": 249.984375,
+        "width": 394,
+        "height": 44,
+        "top": 249.984375,
+        "right": 481,
+        "bottom": 293.984375,
+        "left": 87
+      },
+      "scrollHeight": 301,
+      "clientHeight": 294,
+      "paused": true,
+      "stage": "welcome"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "card": {
+        "x": 12,
+        "y": 88.296875,
+        "width": 296,
+        "height": 391.40625,
+        "top": 88.296875,
+        "right": 308,
+        "bottom": 479.703125,
+        "left": 12
+      },
+      "button": {
+        "x": 35,
+        "y": 414.703125,
+        "width": 250,
+        "height": 44,
+        "top": 414.703125,
+        "right": 285,
+        "bottom": 458.703125,
+        "left": 35
+      },
+      "scrollHeight": 389,
+      "clientHeight": 389,
+      "paused": true,
+      "stage": "welcome"
+    }
+  ],
+  "dismissed": {
+    "blocked": false,
+    "stage": "step-food",
+    "paused": false
+  }
+}

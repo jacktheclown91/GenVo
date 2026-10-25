@@ -1,0 +1,7 @@
+# Consolidated onboarding style ownership
+
+Removed unused welcome-card/floating-card/tutorial-complete-card container hooks after checking active index/styles/src/assets references. Both containers now use the neutral onboarding-page hook; IDs and handlers remain. Removed overridden rounded/shadowed card and duplicate full-objective declarations from styles.css, rather than relocating those generic declarations to bypass the gate. Existing natural-history-survival.css retains actual surfaces; necessary title/subtitle spacing is expressed by root ID. Native control row layout, modal centering, every instruction/string and all tutorial semantics remain.
+
+Unchanged ui-art-direction now passes. Mandatory-tutorial contract and canonical-source-audit pass. Four-size native public welcome and dismissal into step-food passed; short frame inspected. Four-size static completion fixture layout/click passed, explicitly not real completion. Public export succeeds (856copy entries,430modules). No test changes or weakened thresholds.
+
+A full native repeat ate/drank successfully with positive recorded gains, but did not reach completion in its unchanged60-second courtship window. Recorded feedback: Both accepted; no pregnancy formed. Recover before trying again. The failed receipt is preserved. Biology was not changed or forced to obtain a pass. The preceding genuine full completion/pause/Continue proof at2807b7bf remains separate historical evidence; it is not relabelled as a successful rerun of this source. No full integration/creator/GPU/v1 acceptance claim.
