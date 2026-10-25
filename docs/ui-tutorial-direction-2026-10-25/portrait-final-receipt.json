@@ -1,0 +1,679 @@
+{
+  "scope": "Native portrait encounter close/recenter after real tutorial food/water. No Play, mating or completion claim.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "layouts": [
+    {
+      "width": 1024,
+      "height": 768,
+      "card": {
+        "x": 654,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 1014,
+        "bottom": 162.5625,
+        "left": 654
+      },
+      "body": {
+        "left": 466,
+        "top": 338,
+        "right": 558,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "card": {
+        "x": 10,
+        "y": 10,
+        "width": 472,
+        "height": 74.375,
+        "top": 10,
+        "right": 482,
+        "bottom": 84.375,
+        "left": 10
+      },
+      "body": {
+        "left": 238,
+        "top": 114,
+        "right": 330,
+        "bottom": 206,
+        "width": 92,
+        "height": 92
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "card": {
+        "x": 10,
+        "y": 64,
+        "width": 300,
+        "height": 98.5625,
+        "top": 64,
+        "right": 310,
+        "bottom": 162.5625,
+        "left": 10
+      },
+      "body": {
+        "left": 114,
+        "top": 238,
+        "right": 206,
+        "bottom": 330,
+        "width": 92,
+        "height": 92
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "kind": "plant",
+      "target": {
+        "x": 514,
+        "y": 370,
+        "label": "Reeds",
+        "food": "marshroot",
+        "distance": 14.142135623730951
+      },
+      "actions": [
+        "Approach",
+        "Eat Reeds",
+        "Inspect"
+      ],
+      "before": {
+        "stage": "step-food",
+        "hydration": 102.60000000000001,
+        "energy": 114.08
+      },
+      "after": {
+        "stage": "step-water",
+        "hydration": 111.60000000000001,
+        "energy": 116.94336094345012,
+        "lastAction": {
+          "type": "eat",
+          "actorId": 109,
+          "kind": "marshroot",
+          "tissue": null,
+          "processingCost": 0,
+          "energyGain": 2.863360943450118,
+          "waterGain": 9,
+          "tick": 17
+        }
+      }
+    },
+    {
+      "kind": "water",
+      "target": {
+        "x": 478,
+        "y": 406,
+        "label": "Water",
+        "food": null,
+        "distance": 40.496913462633174
+      },
+      "actions": [
+        "Approach",
+        "Drink",
+        "Eat Algae / biofilm",
+        "Eat Duckweed",
+        "Inspect"
+      ],
+      "before": {
+        "stage": "step-water",
+        "hydration": 107.08241583769367,
+        "energy": 115.85666946548386
+      },
+      "after": {
+        "stage": "step-mate",
+        "hydration": 114,
+        "energy": 115.85666946548386,
+        "lastAction": {
+          "type": "drink",
+          "actorId": 109,
+          "tick": 51
+        }
+      }
+    }
+  ],
+  "feedbackScroll": [
+    {
+      "stage": "step-water",
+      "top": 3,
+      "client": 40,
+      "total": 43
+    },
+    {
+      "stage": "step-mate",
+      "top": 34,
+      "client": 40,
+      "total": 74
+    }
+  ],
+  "step-water": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 1550,
+        "y": 64,
+        "width": 360,
+        "height": 82.375,
+        "top": 64,
+        "right": 1910,
+        "bottom": 146.375,
+        "left": 1550
+      },
+      "body": {
+        "left": 914,
+        "top": 494,
+        "right": 1006,
+        "bottom": 586,
+        "width": 92,
+        "height": 92
+      },
+      "target": null,
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 123.78125,
+        "top": 10,
+        "right": 270,
+        "bottom": 133.78125,
+        "left": 10
+      }
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 996,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 1356,
+        "bottom": 162.5625,
+        "left": 996
+      },
+      "body": {
+        "left": 637,
+        "top": 338,
+        "right": 729,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 74.5,
+        "y": 74.5,
+        "resource": {
+          "kind": "water",
+          "i": 9546,
+          "x": 74.5,
+          "y": 74.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 91.390625,
+        "top": 10,
+        "right": 270,
+        "bottom": 101.390625,
+        "left": 10
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 654,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 1014,
+        "bottom": 162.5625,
+        "left": 654
+      },
+      "body": {
+        "left": 466,
+        "top": 338,
+        "right": 558,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 74.5,
+        "y": 74.5,
+        "resource": {
+          "kind": "water",
+          "i": 9546,
+          "x": 74.5,
+          "y": 74.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 91.390625,
+        "top": 10,
+        "right": 270,
+        "bottom": 101.390625,
+        "left": 10
+      }
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 430,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 790,
+        "bottom": 162.5625,
+        "left": 430
+      },
+      "body": {
+        "left": 354,
+        "top": 254,
+        "right": 446,
+        "bottom": 346,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 71.5,
+        "y": 71.5,
+        "resource": {
+          "kind": "water",
+          "i": 9159,
+          "x": 71.5,
+          "y": 71.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 91.390625,
+        "top": 10,
+        "right": 270,
+        "bottom": 101.390625,
+        "left": 10
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 10,
+        "y": 10,
+        "width": 472,
+        "height": 74.375,
+        "top": 10,
+        "right": 482,
+        "bottom": 84.375,
+        "left": 10
+      },
+      "body": {
+        "left": 238,
+        "top": 114,
+        "right": 330,
+        "bottom": 206,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 74.5,
+        "y": 74.5,
+        "resource": {
+          "kind": "water",
+          "i": 9546,
+          "x": 74.5,
+          "y": 74.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 94.375,
+        "width": 230,
+        "height": 40,
+        "top": 94.375,
+        "right": 240,
+        "bottom": 134.375,
+        "left": 10
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "stage": "step-water",
+      "title": "STEP 2/3 — FIND WATER",
+      "card": {
+        "x": 10,
+        "y": 64,
+        "width": 300,
+        "height": 114.75,
+        "top": 64,
+        "right": 310,
+        "bottom": 178.75,
+        "left": 10
+      },
+      "body": {
+        "left": 114,
+        "top": 238,
+        "right": 206,
+        "bottom": 330,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 74.5,
+        "y": 74.5,
+        "resource": {
+          "kind": "water",
+          "i": 9546,
+          "x": 74.5,
+          "y": 74.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 230,
+        "height": 40,
+        "top": 10,
+        "right": 240,
+        "bottom": 50,
+        "left": 10
+      }
+    }
+  ],
+  "step-mate": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 1550,
+        "y": 64,
+        "width": 360,
+        "height": 114.75,
+        "top": 64,
+        "right": 1910,
+        "bottom": 178.75,
+        "left": 1550
+      },
+      "body": {
+        "left": 914,
+        "top": 494,
+        "right": 1006,
+        "bottom": 586,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.4908124262813,
+        "y": 55.194042764296256,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 124.984375,
+        "top": 10,
+        "right": 270,
+        "bottom": 134.984375,
+        "left": 10
+      }
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 996,
+        "y": 64,
+        "width": 360,
+        "height": 114.75,
+        "top": 64,
+        "right": 1356,
+        "bottom": 178.75,
+        "left": 996
+      },
+      "body": {
+        "left": 637,
+        "top": 338,
+        "right": 729,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.49050700578421,
+        "y": 55.19382460679832,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 124.984375,
+        "top": 10,
+        "right": 270,
+        "bottom": 134.984375,
+        "left": 10
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 654,
+        "y": 64,
+        "width": 360,
+        "height": 114.75,
+        "top": 64,
+        "right": 1014,
+        "bottom": 178.75,
+        "left": 654
+      },
+      "body": {
+        "left": 466,
+        "top": 338,
+        "right": 558,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.49030339071837,
+        "y": 55.19367916746558,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 124.984375,
+        "top": 10,
+        "right": 270,
+        "bottom": 134.984375,
+        "left": 10
+      }
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 430,
+        "y": 64,
+        "width": 360,
+        "height": 114.75,
+        "top": 64,
+        "right": 790,
+        "bottom": 178.75,
+        "left": 430
+      },
+      "body": {
+        "left": 354,
+        "top": 254,
+        "right": 446,
+        "bottom": 346,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.28292013156758,
+        "y": 55.04554826807208,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 124.984375,
+        "top": 10,
+        "right": 270,
+        "bottom": 134.984375,
+        "left": 10
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 10,
+        "y": 10,
+        "width": 472,
+        "height": 90.5625,
+        "top": 10,
+        "right": 482,
+        "bottom": 100.5625,
+        "left": 10
+      },
+      "body": {
+        "left": 238,
+        "top": 114,
+        "right": 330,
+        "bottom": 206,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.28271651440024,
+        "y": 55.04540282723826,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 328,
+        "y": 102.0625,
+        "width": 230,
+        "height": 40,
+        "top": 102.0625,
+        "right": 558,
+        "bottom": 142.0625,
+        "left": 328
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "stage": "step-mate",
+      "title": "STEP 3/3 — FIND A MATE",
+      "card": {
+        "x": 10,
+        "y": 64,
+        "width": 300,
+        "height": 114.75,
+        "top": 64,
+        "right": 310,
+        "bottom": 178.75,
+        "left": 10
+      },
+      "body": {
+        "left": 114,
+        "top": 238,
+        "right": 206,
+        "bottom": 330,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 69.28230927670279,
+        "y": 55.04511194316867,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 230,
+        "height": 40,
+        "top": 10,
+        "right": 240,
+        "bottom": 50,
+        "left": 10
+      }
+    }
+  ],
+  "open": {
+    "position": {
+      "x": 79,
+      "y": 284
+    },
+    "target": 110,
+    "stage": "step-mate",
+    "paused": false
+  },
+  "closed": {
+    "position": {
+      "x": 159,
+      "y": 284
+    },
+    "stage": "step-mate",
+    "paused": false,
+    "selected": null,
+    "courtship": false
+  }
+}
