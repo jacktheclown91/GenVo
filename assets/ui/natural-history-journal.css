@@ -83,3 +83,6 @@
 
 #journal .journal-body-comparison>div{grid-template-columns:repeat(var(--comparison-count,3),minmax(0,1fr))}
 @media(max-width:560px){#journal .journal-body-comparison>div{grid-template-columns:1fr}}
+
+#journal .journal-foot{flex-wrap:wrap}
+#journal .journal-record-position{align-self:center;margin-right:auto;color:#c4cba9;font:11px/1.4 Verdana,sans-serif}

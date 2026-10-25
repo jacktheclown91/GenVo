@@ -26,7 +26,7 @@ export class FieldJournal{
   setOpen(open){this.open=!!open;if(this.open&&!this.selectedId)this.selectedId=this.sim.lineage.activeId||this.sim.lineage.founderId;this.lastSignature='';this.update()}
   toggle(){this.setOpen(!this.open);return this.open}
   records(){return [...this.sim.lineage.records.values()].sort((a,b)=>a.generation-b.generation||a.bornDay-b.bornDay||a.id-b.id)}
-  selectedRecord(){const records=this.records();if(!records.length)return null;if(!records.some(r=>r.id===this.selectedId))this.selectedId=this.sim.lineage.activeId||records[0].id;return records.find(r=>r.id===this.selectedId)||records[0]}
+  selectedRecord(records=this.records()){if(!records.length)return null;if(!records.some(r=>r.id===this.selectedId))this.selectedId=this.sim.lineage.activeId||records[0].id;return records.find(r=>r.id===this.selectedId)||records[0]}
   cycle(delta=1){const records=this.records();if(!records.length)return null;let i=records.findIndex(r=>r.id===this.selectedId);if(i<0)i=0;else i=(i+delta+records.length)%records.length;this.selectedId=records[i].id;this.lastSignature='';this.update();return records[i]}
   canTakeOver(record=this.selectedRecord()){
     if(!record?.alive||record.id===this.sim.lineage.activeId)return false;
@@ -37,10 +37,10 @@ export class FieldJournal{
   update(){
     if(!this.el)return;
     this.el.hidden=!this.open;if(!this.open)return;
-    const record=this.selectedRecord();if(!record){this.el.innerHTML='<div class="journal-page"><p>No family history yet.</p></div>';return}
-    const model=buildJournalEntry(this.sim,record.id),signature=JSON.stringify([record.id,record.alive,record.children.length,(record.adaptations||[]).join(','),this.sim.day,this.sim.lineage.activeId,model.notes.length,model.home,model.lastFood,model.lastWater,model.seedPatches,model.bodyCost?.text]);
+    const records=this.records(),record=this.selectedRecord(records);if(!record){this.el.innerHTML='<div class="journal-page"><p>No family history yet.</p></div>';return}
+    const model=buildJournalEntry(this.sim,record.id),signature=JSON.stringify([records.length,records.findIndex(r=>r.id===record.id),record.id,record.alive,record.children.length,(record.adaptations||[]).join(','),this.sim.day,this.sim.lineage.activeId,model.notes.length,model.home,model.lastFood,model.lastWater,model.seedPatches,model.bodyCost?.text]);
     if(signature===this.lastSignature)return;this.lastSignature=signature;
-    updateKnowledgeHTML(this.el,journalMarkup(model,this.canTakeOver(record)));
+    updateKnowledgeHTML(this.el,journalMarkup(model,this.canTakeOver(record),records.length,records.findIndex(r=>r.id===record.id)+1));
     drawLineageComparison(this.el,this.sim,record.id);
     drawRecordedKin(this.el,this.sim);
     const canvas=this.el.querySelector('#journalPortrait');drawLineagePortrait(canvas,record.genes,{pigmentGenome:record.pigmentGenome||null,frame:2,dir:2,bodyPlan:this.sim.animals.find(a=>a.id===record.id)?.bodyPlan||record.bodyPlan,emphasis:record.id===this.sim.lineage.activeId,adaptations:record.adaptations||[]});
@@ -92,7 +92,7 @@ function kinHasBody(record){try{const plan=deserializePlan(record.bodyPlan);retu
 function kinMarkup(record,relation){return '<figure class="kin-record '+(record.alive?'':'kin-dead')+'" data-kin-id="'+record.id+'">'+(kinHasBody(record)?'<canvas width="160" height="120" aria-label="'+relation+' '+record.id+' recorded anatomy"></canvas>':'<p class="kin-missing">Anatomy not retained</p>')+'<figcaption><b>G'+record.generation+' · #'+record.id+'</b><span>'+relation+' · '+(record.alive?'Living':'Died')+'</span></figcaption></figure>'}
 function drawRecordedKin(el,sim){for(const figure of el.querySelectorAll('[data-kin-id]')){const record=sim.lineage.records.get(Number(figure.dataset.kinId)),canvas=figure.querySelector('canvas');if(canvas&&record&&kinHasBody(record))drawLineagePortrait(canvas,record.genes,{pigmentGenome:record.pigmentGenome||null,frame:2,dir:2,bodyPlan:record.bodyPlan,adaptations:record.adaptations||[]})}}
 
-function journalMarkup(m,canTakeOver){
+function journalMarkup(m,canTakeOver,recordCount,recordPosition){
   const ancestry=m.ancestry.map(r=>`<span class="journal-node ${r.id===m.id?'selected':''} ${r.alive?'':'dead'}"><i></i><b>G${r.generation}</b><small>#${r.id}</small></span>`).join('');
   const parents=m.parents.length?m.parents.map(r=>`G${r.generation} #${r.id}`).join(' · '):'founder';
   const children=m.children.length?m.children.slice(0,8).map(r=>`<span>${r.alive?'•':'×'} G${r.generation} #${r.id}</span>`).join(''):'<em>none recorded</em>';
@@ -125,7 +125,7 @@ function journalMarkup(m,canTakeOver){
     ${m.seedPatches.length?`<section class="journal-events journal-seed-patches"><h3>Seeds &amp; places observed</h3><ul>${m.seedPatches.map(o=>`<li><span>${escapeHtml(o.text)}<small>${escapeHtml(o.when)}</small></span><button type="button" data-journal="revisit" data-patch="${o.id}" data-focus-key="patch-${o.id}">Revisit patch</button></li>`).join('')}</ul></section>`:''}
     ${m.bodyComparison.length?`<details class="knowledge-fold journal-body-comparison" style="--comparison-count:${m.bodyComparison.length}" data-section="body-comparison"><summary data-focus-key="body-comparison">Compare parent &amp; offspring anatomy</summary><p>Recorded parent bodies at conception and this offspring's inherited body, shown at a shared adult scale. Juveniles are smaller in the world.${m.bodyComparison.length<3?' Some parent information is unavailable in this older record.':''}</p><div>${m.bodyComparison.map(m=>`<figure><figcaption>${escapeHtml(m.label)}</figcaption><canvas width="240" height="180" aria-label="${escapeHtml(m.label)}"></canvas></figure>`).join('')}</div></details>`:''}
     <section class="journal-events"><h3>Field notes</h3><ul>${notes}</ul></section>
-    </div><footer class="journal-foot"><button type="button" data-journal="prev" data-focus-key="prev">Previous</button><button type="button" data-journal="next" data-focus-key="next">Next</button>${canTakeOver?'<button type="button" data-journal="handoff">Continue as this one · H</button>':''}<button type="button" data-journal="close" data-focus-key="close">Close · L</button></footer>
+    </div><footer class="journal-foot"><span class="journal-record-position">${recordCount===1?'1 family record':`Record ${recordPosition} of ${recordCount}`}</span>${recordCount>1?'<button type="button" data-journal="prev" data-focus-key="prev">Previous</button><button type="button" data-journal="next" data-focus-key="next">Next</button>':''}${canTakeOver?'<button type="button" data-journal="handoff">Continue as this one · H</button>':''}<button type="button" data-journal="close" data-focus-key="close">Close · L</button></footer>
   </div>`;
 }
 
