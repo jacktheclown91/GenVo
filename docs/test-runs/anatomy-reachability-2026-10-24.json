@@ -1,0 +1,1266 @@
+{
+  "summary": {
+    "schema": "genvo.anatomy-reachability/1",
+    "registryParts": 97,
+    "founderParts": 4,
+    "naturalMutation": 84,
+    "traitExpressionOnly": 0,
+    "relicOnly": 8,
+    "notReached": [
+      {
+        "id": "mammary-gland",
+        "prereq": [
+          "endothermic-core",
+          "live-womb"
+        ],
+        "wild": null
+      }
+    ],
+    "search": {
+      "plansDiscovered": 169099,
+      "plansExpanded": 8054,
+      "depthReached": 12,
+      "maxPlans": 400000,
+      "maxDepth": 12,
+      "bounded": true
+    },
+    "caveat": "Reachable = a legal path exists through the shipping mutation rules. It is not a likelihood: each birth mutates with p=0.25 and one option is drawn uniformly, so deep paths are rare without selection."
+  },
+  "parts": [
+    {
+      "id": "head-base",
+      "family": "core",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "small-torso",
+      "family": "core",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "founder"
+      ],
+      "reached": true,
+      "minEvents": 0
+    },
+    {
+      "id": "soft-torso",
+      "family": "core",
+      "prereq": [
+        "small-torso"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "reinforced-torso",
+      "family": "core",
+      "prereq": [
+        "soft-torso"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "sleek-torso",
+      "family": "core",
+      "prereq": [
+        "soft-torso"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)",
+        "wild-start (needlejaw)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "light-torso",
+      "family": "core",
+      "prereq": [
+        "small-torso"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "wild-start (mosskip)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "stout-torso",
+      "family": "core",
+      "prereq": [
+        "soft-torso"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)",
+        "wild-start (mirelick)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "barrel-torso",
+      "family": "core",
+      "prereq": [
+        "stout-torso"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 3 events)"
+      ],
+      "reached": true,
+      "minEvents": 3
+    },
+    {
+      "id": "dome-torso",
+      "family": "core",
+      "prereq": [
+        "reinforced-torso"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 3 events)",
+        "wild-start (podshell)"
+      ],
+      "reached": true,
+      "minEvents": 3
+    },
+    {
+      "id": "long-torso",
+      "family": "core",
+      "prereq": [
+        "sleek-torso"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 3 events)"
+      ],
+      "reached": true,
+      "minEvents": 3
+    },
+    {
+      "id": "walking-leg",
+      "family": "limbs",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "founder",
+        "wild-start (mosskip)"
+      ],
+      "reached": true,
+      "minEvents": 0
+    },
+    {
+      "id": "spring-leg",
+      "family": "limbs",
+      "prereq": [
+        "walking-leg"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "trait-expression (spring-tendons)",
+        "wild-start (mosskip)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "grasper",
+      "family": "limbs",
+      "prereq": [
+        "walking-leg"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "trait-expression (grasping-limbs)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "runner-leg",
+      "family": "limbs",
+      "prereq": [
+        "walking-leg"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "wild-start (needlejaw)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "sturdy-leg",
+      "family": "limbs",
+      "prereq": [
+        "walking-leg"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "wild-start (podshell)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "webbed-leg",
+      "family": "limbs",
+      "prereq": [
+        "walking-leg"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "trait-expression (webbed-limbs)",
+        "wild-start (rillsifter)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "padded-leg",
+      "family": "limbs",
+      "prereq": [
+        "walking-leg"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "wild-start (mirelick)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "arid-pad",
+      "family": "limbs",
+      "prereq": [
+        "padded-leg"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "climber-leg",
+      "family": "limbs",
+      "prereq": [
+        "grasper"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "digging-forelimb",
+      "family": "limbs",
+      "prereq": [
+        "walking-leg"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "wild-start (rootling)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "grazing-mouth",
+      "family": "feeding",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "founder",
+        "wild-start (mosskip)"
+      ],
+      "reached": true,
+      "minEvents": 0
+    },
+    {
+      "id": "tearing-jaw",
+      "family": "feeding",
+      "prereq": [
+        "grazing-mouth"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "trait-expression (heavy-jaw)",
+        "wild-start (needlejaw)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "crushing-jaw",
+      "family": "feeding",
+      "prereq": [
+        "tearing-jaw"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)",
+        "trait-expression (crushing-jaw)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "beak-mouth",
+      "family": "feeding",
+      "prereq": [
+        "grazing-mouth"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "kernel-beak",
+      "family": "feeding",
+      "prereq": [
+        "beak-mouth"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)",
+        "wild-start (podshell)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "filter-mouth",
+      "family": "feeding",
+      "prereq": [
+        "grazing-mouth"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "reed-sieve-mouth",
+      "family": "feeding",
+      "prereq": [
+        "filter-mouth"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)",
+        "wild-start (rillsifter)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "nibbler-mouth",
+      "family": "feeding",
+      "prereq": [
+        "grazing-mouth"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "wild-start (rootling)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "sucker-mouth",
+      "family": "feeding",
+      "prereq": [
+        "tearing-jaw"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)",
+        "wild-start (mirelick)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "gape-mouth",
+      "family": "feeding",
+      "prereq": [
+        "tearing-jaw"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)",
+        "wild-start (bankjaw)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "simple-eye",
+      "family": "senses",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "founder"
+      ],
+      "reached": true,
+      "minEvents": 0
+    },
+    {
+      "id": "wide-field-eye",
+      "family": "senses",
+      "prereq": [
+        "simple-eye"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "wild-start (mosskip)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "hunter-eye",
+      "family": "senses",
+      "prereq": [
+        "simple-eye"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "wild-start (needlejaw)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "stalk-eye",
+      "family": "senses",
+      "prereq": [
+        "simple-eye"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "compound-eye",
+      "family": "senses",
+      "prereq": [
+        "wide-field-eye"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "tracker-eye",
+      "family": "senses",
+      "prereq": [
+        "simple-eye"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "wild-start (mirelick)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "display-eye",
+      "family": "senses",
+      "prereq": [
+        "simple-eye"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "telescopic-eye",
+      "family": "senses",
+      "prereq": [
+        "hunter-eye"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "raptor-eye",
+      "family": "senses",
+      "prereq": [
+        "telescopic-eye"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 3 events)"
+      ],
+      "reached": true,
+      "minEvents": 3
+    },
+    {
+      "id": "panoramic-eye",
+      "family": "senses",
+      "prereq": [
+        "compound-eye"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 3 events)"
+      ],
+      "reached": true,
+      "minEvents": 3
+    },
+    {
+      "id": "sentinel-eye",
+      "family": "senses",
+      "prereq": [
+        "panoramic-eye"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 4 events)"
+      ],
+      "reached": true,
+      "minEvents": 4
+    },
+    {
+      "id": "eyespot",
+      "family": "senses",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "wild-start (rootling)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "armor-plate",
+      "family": "defense",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "trait-expression (hardened-mantle)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "wax-plates",
+      "family": "metabolism",
+      "prereq": [
+        "armor-plate"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "barb",
+      "family": "defense",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "trait-expression (barbed-limbs)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "claw",
+      "family": "offense",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "venom-gland",
+      "family": "offense",
+      "prereq": [
+        "tearing-jaw"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "storage-sac",
+      "family": "metabolism",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "trait-expression (water-sacs)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "silt-fin",
+      "family": "locomotion",
+      "prereq": [
+        "paddle-tail"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)",
+        "wild-start (rillsifter)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "filament-tuft",
+      "family": "metabolism",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "fur-mantle",
+      "family": "metabolism",
+      "prereq": [
+        "filament-tuft"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "feather-mantle",
+      "family": "metabolism",
+      "prereq": [
+        "filament-tuft"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "proto-wing",
+      "family": "locomotion",
+      "prereq": [
+        "feather-mantle"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 3 events)"
+      ],
+      "reached": true,
+      "minEvents": 3
+    },
+    {
+      "id": "flight-wing",
+      "family": "locomotion",
+      "prereq": [
+        "proto-wing"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 4 events)"
+      ],
+      "reached": true,
+      "minEvents": 4
+    },
+    {
+      "id": "heat-frill",
+      "family": "metabolism",
+      "prereq": [
+        "signal-crest"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "signal-crest",
+      "family": "social",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "trait-expression (alarm-pulse)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "paddle-tail",
+      "family": "locomotion",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "wild-start (rillsifter)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "horn-crest",
+      "family": "defense",
+      "prereq": [],
+      "exclusive": true,
+      "routes": [
+        "relic-only"
+      ],
+      "reached": true,
+      "minEvents": null
+    },
+    {
+      "id": "tusk-jaw",
+      "family": "feeding",
+      "prereq": [],
+      "exclusive": true,
+      "routes": [
+        "relic-only"
+      ],
+      "reached": true,
+      "minEvents": null
+    },
+    {
+      "id": "patagium",
+      "family": "locomotion",
+      "prereq": [
+        "climber-leg"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 3 events)"
+      ],
+      "reached": true,
+      "minEvents": 3
+    },
+    {
+      "id": "gliding-membrane",
+      "family": "locomotion",
+      "prereq": [],
+      "exclusive": true,
+      "routes": [
+        "relic-only"
+      ],
+      "reached": true,
+      "minEvents": null
+    },
+    {
+      "id": "luminous-tail",
+      "family": "social",
+      "prereq": [],
+      "exclusive": true,
+      "routes": [
+        "relic-only"
+      ],
+      "reached": true,
+      "minEvents": null
+    },
+    {
+      "id": "shell-back",
+      "family": "defense",
+      "prereq": [],
+      "exclusive": true,
+      "routes": [
+        "relic-only"
+      ],
+      "reached": true,
+      "minEvents": null
+    },
+    {
+      "id": "armored-hide",
+      "family": "defense",
+      "prereq": [],
+      "exclusive": true,
+      "routes": [
+        "relic-only"
+      ],
+      "reached": true,
+      "minEvents": null
+    },
+    {
+      "id": "glow-eye",
+      "family": "senses",
+      "prereq": [],
+      "exclusive": true,
+      "routes": [
+        "relic-only"
+      ],
+      "reached": true,
+      "minEvents": null
+    },
+    {
+      "id": "echo-crest",
+      "family": "senses",
+      "prereq": [],
+      "exclusive": true,
+      "routes": [
+        "relic-only"
+      ],
+      "reached": true,
+      "minEvents": null
+    },
+    {
+      "id": "balance-tail",
+      "family": "locomotion",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "wild-start (mosskip)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "club-tail",
+      "family": "locomotion",
+      "prereq": [
+        "balance-tail"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)",
+        "wild-start (podshell)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "spined-tail",
+      "family": "locomotion",
+      "prereq": [
+        "club-tail"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 3 events)"
+      ],
+      "reached": true,
+      "minEvents": 3
+    },
+    {
+      "id": "whip-tail",
+      "family": "locomotion",
+      "prereq": [
+        "balance-tail"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)",
+        "wild-start (needlejaw)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "prehensile-tail",
+      "family": "locomotion",
+      "prereq": [
+        "balance-tail"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "fat-tail",
+      "family": "locomotion",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "wild-start (mirelick)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "flag-tail",
+      "family": "locomotion",
+      "prereq": [
+        "balance-tail"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "sail-fin",
+      "family": "metabolism",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "spine-ridge",
+      "family": "defense",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "wild-start (needlejaw)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "water-hump",
+      "family": "metabolism",
+      "prereq": [
+        "sail-fin"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "display-frill",
+      "family": "social",
+      "prereq": [
+        "signal-crest"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "moss-back",
+      "family": "defense",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)",
+        "wild-start (mirelick)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "thorn-carapace",
+      "family": "defense",
+      "prereq": [
+        "armor-plate"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)",
+        "wild-start (podshell)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "sensory-quills",
+      "family": "senses",
+      "prereq": [
+        "spine-ridge"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "fat-pad",
+      "family": "metabolism",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "gill-slits",
+      "family": "locomotion",
+      "prereq": [
+        "storage-sac"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)",
+        "wild-start (rillsifter)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "salt-gland",
+      "family": "locomotion",
+      "prereq": [
+        "gill-slits"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 3 events)"
+      ],
+      "reached": true,
+      "minEvents": 3
+    },
+    {
+      "id": "scent-gland",
+      "family": "social",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "spine-cluster",
+      "family": "defense",
+      "prereq": [
+        "armor-plate"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "brood-pouch",
+      "family": "metabolism",
+      "prereq": [
+        "storage-sac"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "egg-chamber",
+      "family": "metabolism",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "live-womb",
+      "family": "metabolism",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "endothermic-core",
+      "family": "metabolism",
+      "prereq": [
+        "fur-mantle"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 3 events)"
+      ],
+      "reached": true,
+      "minEvents": 3
+    },
+    {
+      "id": "mammary-gland",
+      "family": "metabolism",
+      "prereq": [
+        "endothermic-core",
+        "live-womb"
+      ],
+      "exclusive": false,
+      "routes": [],
+      "reached": false,
+      "minEvents": null
+    },
+    {
+      "id": "hook-spur",
+      "family": "offense",
+      "prereq": [
+        "claw"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "dew-claw",
+      "family": "defense",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "heel-spike",
+      "family": "defense",
+      "prereq": [
+        "barb"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "sensory-bristle",
+      "family": "senses",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "grip-pad",
+      "family": "limbs",
+      "prereq": [],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 1 events)"
+      ],
+      "reached": true,
+      "minEvents": 1
+    },
+    {
+      "id": "hook-pad",
+      "family": "limbs",
+      "prereq": [
+        "grip-pad"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    },
+    {
+      "id": "kick-spur",
+      "family": "offense",
+      "prereq": [
+        "claw"
+      ],
+      "exclusive": false,
+      "routes": [
+        "natural-mutation (min 2 events)"
+      ],
+      "reached": true,
+      "minEvents": 2
+    }
+  ]
+}

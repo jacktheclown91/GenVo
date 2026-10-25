@@ -5,7 +5,9 @@ const STORAGE_KEY = 'genvo.playtest.diagnostics.v1';
 const OPT_IN_KEY = 'genvo.playtest.optin';
 
 export class PlaytestDiagnostics {
-  constructor({sim = null, enabled = true} = {}) {
+  // Opt-in only: nothing is recorded unless enable() was called (stored locally),
+  // or the page was opened with ?diagnostics=1. No network transmission exists.
+  constructor({sim = null, enabled = false} = {}) {
     this.sim = sim;
     this.enabled = this._checkOptIn(enabled);
     this.sessionStartTime = Date.now();
@@ -37,6 +39,9 @@ export class PlaytestDiagnostics {
   }
 
   _checkOptIn(defaultEnabled) {
+    try {
+      if (typeof location !== 'undefined' && new URLSearchParams(location.search).get('diagnostics') === '1') return true;
+    } catch {}
     if (typeof localStorage === 'undefined') return defaultEnabled;
     try {
       const stored = localStorage.getItem(OPT_IN_KEY);
