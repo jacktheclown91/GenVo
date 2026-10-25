@@ -1,4 +1,4 @@
-import {readoutScreenConstraints} from './readout-layout.js';
+import {readoutScreenConstraints,reserveReadout} from './readout-layout.js';
 import {flightWindReading} from '../lineage/flight-wind.js';
 import {chooseOverlayPlacement} from '../ui/overlay-placement.js';
 
@@ -15,7 +15,7 @@ export function drawFlightWind(ctx,sim,position,{renderer=null}={}){
  ctx.strokeStyle='#bbdce0';ctx.lineWidth=2;ctx.save();ctx.rotate(angle);
  ctx.beginPath();ctx.moveTo(-10,0);ctx.lineTo(10,0);ctx.lineTo(5,-4);ctx.moveTo(10,0);ctx.lineTo(5,4);ctx.stroke();ctx.restore();
  ctx.font='11px sans-serif';ctx.textAlign='left';ctx.textBaseline='middle';ctx.fillStyle='#e6f2e0';ctx.fillText('Wind '+wind.direction,18,0);
- ctx.restore();
+ ctx.restore();if(renderer)reserveReadout(renderer,label);
 }
 
 // Conservative screen-space clearance includes raised wings at normal gameplay zoom.

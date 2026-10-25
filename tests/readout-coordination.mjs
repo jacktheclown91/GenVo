@@ -1,0 +1,10 @@
+import assert from 'node:assert/strict';
+import {beginReadoutFrame,reserveReadout} from '../src/render/readout-layout.js';
+import {weatherReadoutPlacement} from '../src/render/weather-readout.js';
+import {refugeReadoutPlacement} from '../src/render/refuge-readout.js';
+import {flightWindLabelPlacement} from '../src/render/flight-wind.js';
+import {overlapArea} from '../src/ui/overlay-placement.js';
+const renderer={},viewport={left:0,top:0,right:390,bottom:844},position={x:80,y:680},constraints={protectedRects:[{left:30,top:630,right:130,bottom:730}],obstacles:[{left:0,top:734,right:390,bottom:844},{left:300,top:0,right:390,bottom:55}]};
+const weather=weatherReadoutPlacement({width:390,height:844,...constraints,model:{title:'Thunderstorm',detail:'Avoid exposed high ground · Cold spell · Mist',storm:true}}),oldRefuge=refugeReadoutPlacement(position,viewport,constraints);assert.ok(overlapArea(weather,oldRefuge)>0,'fixture reproduces independent label collision');
+beginReadoutFrame(renderer);reserveReadout(renderer,weather);const refuge=refugeReadoutPlacement(position,viewport,{...constraints,obstacles:[...constraints.obstacles,...renderer.readoutRects]});assert.equal(overlapArea(weather,refuge),0);reserveReadout(renderer,refuge);const wind=flightWindLabelPlacement(position,viewport,{...constraints,obstacles:[...constraints.obstacles,...renderer.readoutRects]});for(const r of renderer.readoutRects)assert.equal(overlapArea(wind,r),0);reserveReadout(renderer,wind);assert.equal(renderer.readoutRects.length,3);const frozen=renderer.readoutRects[0].left;weather.left=999;assert.equal(renderer.readoutRects[0].left,frozen,'reservation is an independent render-only rectangle');beginReadoutFrame(renderer);assert.deepEqual(renderer.readoutRects,[],'absent next-frame labels leave no stale obstacles');
+console.log('Canvas readout coordination PASS: collision reproduced, weather/refuge/wind clearance, copied bounds and next-frame clearing.');

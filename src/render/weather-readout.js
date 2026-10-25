@@ -2,7 +2,7 @@ import {THUNDERSTORMS,thunderstormAt} from '../ecology/thunderstorms.js';
 import {thermalWeatherReading} from '../ecology/thermal-weather.js';
 import {atmosphereReadout} from './atmosphere.js';
 import {chooseOverlayPlacement} from '../ui/overlay-placement.js';
-import {readoutScreenConstraints} from './readout-layout.js';
+import {readoutScreenConstraints,reserveReadout} from './readout-layout.js';
 // One explanatory label above fog; atmospheric artwork stays in its weather layer.
 export function weatherReadoutModel(sim){
  const a=sim.player();if(!a||a.underground||(a.diveDepth||0)>.03)return null;
@@ -26,5 +26,5 @@ export function drawWeatherReadout(renderer){
  const box=weatherReadoutPlacement({width:renderer.w,height:renderer.h,protectedRects,obstacles,model,measureTitle,measureDetail}),x=Math.round(box.left),y=Math.round(box.top),accent=model.warm?'#e5b67c':'#abd2df';
  c.fillStyle='#17291ff2';c.fillRect(x,y,box.width,box.height);c.fillStyle=accent;c.fillRect(x,y,2,box.height);
  if(model.storm){if(box.width>120)for(const [xx,yy,w] of [[13,10,5],[11,13,5],[9,16,9],[14,19,3],[12,22,3]])c.fillRect(x+xx,y+yy,w,3)}else if(model.thermal){c.fillRect(x+12,y+9,2,15);c.fillRect(x+10,y+23,6,5);c.fillStyle='#edf0d4';c.fillRect(x+12,y+10,1,5)}else{for(let k=0;k<3;k++)c.fillRect(x+8+(k%2)*2,y+12+k*5,9-(k%2)*2,1)}
- const textX=x+(model.storm?(box.width<=120?10:20):25);c.textAlign='left';c.textBaseline='alphabetic';c.fillStyle=accent;c.font='bold 13px Georgia';for(const [i,line] of box.titleLines.entries())c.fillText(line,textX,y+15+i*14);c.fillStyle='#e5dfbd';c.font='11px sans-serif';for(const [i,line] of box.detailLines.entries())c.fillText(line,textX,y+16+box.titleLines.length*14+i*13);c.restore();
+ const textX=x+(model.storm?(box.width<=120?10:20):25);c.textAlign='left';c.textBaseline='alphabetic';c.fillStyle=accent;c.font='bold 13px Georgia';for(const [i,line] of box.titleLines.entries())c.fillText(line,textX,y+15+i*14);c.fillStyle='#e5dfbd';c.font='11px sans-serif';for(const [i,line] of box.detailLines.entries())c.fillText(line,textX,y+16+box.titleLines.length*14+i*13);c.restore();reserveReadout(renderer,{left:x,top:y,right:x+box.width,bottom:y+box.height});
 }

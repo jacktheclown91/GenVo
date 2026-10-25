@@ -33,6 +33,7 @@ import {drawWorldTraces} from './world-traces.js';
 import {glideGround} from '../lineage/gliding.js';
 import {drawFlightWind} from './flight-wind.js';
 import {drawRefugeReadout} from './refuge-readout.js';
+import {beginReadoutFrame} from './readout-layout.js';
 import {EncounterPresentation,applyEncounterPose} from './encounter-expression.js';
 import {EncounterReactionPresentation,applyEncounterReaction,reactionAttention,reactionShove,drawEncounterReactionMarks,applyDefenseReaction,defenseShove,drawDefenseMarks} from './encounter-reactions.js';
 import {canHunt} from '../ecology/functional-diet.js';
@@ -178,7 +179,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // Weather and interaction cues remain above creatures; ground decoration does not.
     if((!this.lowDetail||this.sim.visibilityRules===VISIBILITY.policy||this.sim.thermalRules===THERMAL_WEATHER.policy)&&!this.sim.player()?.underground)this.drawWeatherOverlay();
     drawSensoryFog(this,{tile,cols,rows,startX,startY});
-    drawWeatherReadout(this);drawRefugeReadout(this);
+    beginReadoutFrame(this);drawWeatherReadout(this);drawRefugeReadout(this);
     this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId),{renderer:this});this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.processTerrainRefreshQueue();}
 
 
