@@ -6,6 +6,22 @@ import {canOccupy} from '../lineage/lifestyle.js';
 import {isWaterDweller} from '../lineage/aquatic.js';
 import {selectResidentStart} from './resident-start.js';
 
+// Creator-requested matching first-pair appearance. This is initial content,
+// never a cosmetic sprite override or a mutation of an ongoing organism.
+function matchFounderAppearance(first,second){
+ for(const key of ['body','motion','senses','temperament'])second.genes[key]=first.genes[key];
+ second.pigmentGenome=first.pigmentGenome?structuredClone(first.pigmentGenome):null;
+ second.founderAppearance={schema:1,sourceId:first.id,source:'creator-matching-start'};
+}
+export function matchStartingFounderAppearance(sim){
+ if(sim.tickCount!==0||sim.day!==1||sim.creatureStart?.kind==='existing-resident')return false;
+ const first=sim.player(),second=sim.animals.find(a=>a.id===sim.starterMateId&&a.alive);
+ if(!first||!second||first===second||first.parentIds?.length||second.parentIds?.length||first.species!==second.species||first.bodyPlan?.id!==second.bodyPlan?.id)return false;
+ matchFounderAppearance(first,second);
+ const record=sim.lineage.records.get(second.id);if(record){for(const key of ['body','motion','senses','temperament'])record.genes[key]=second.genes[key];record.pigmentGenome=second.pigmentGenome?structuredClone(second.pigmentGenome):null;record.founderAppearance=structuredClone(second.founderAppearance)}
+ return true;
+}
+
 // Only prepare within an independent creation candidate. It is not installed
 // or saved while the creator edits; cancellation discards that whole fork.
 export function prepareAuthoredFounders(sim){
@@ -15,6 +31,7 @@ export function prepareAuthoredFounders(sim){
  sim.nextId=nextId;
  const members=[sim.spawnAnimal('genvo'),sim.spawnAnimal('genvo')];
  members[1].sex=members[0].sex==='F'?'M':'F';
+ matchFounderAppearance(members[0],members[1]);
  const s=SPECIES[members[0].species];
  members[0].age=s.maturity;
  members[0].energy=s.maxEnergy*.92;

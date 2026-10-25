@@ -1,0 +1,61 @@
+
+$ node tests/tutorial-start-targets.mjs
+Tutorial starting pair PASS: actual matching appearance, independent organisms/reproduction, unchanged RNG/stocks/wildlife, saved continuation and no retrospective matching.
+
+$ node tests/tutorial-target-presentation.mjs
+Tutorial target presentation PASS: Food/Water/Mate labels, body clearance, above-fog ordering and read-only state.
+
+$ node tests/mandatory-tutorial.mjs
+Mandatory simplified tutorial test suite: PASS
+
+$ node tests/tutorial-diet-guide.mjs
+Carnivore tutorial guidance uses actual carrion without crashing or consuming RNG PASS
+
+$ node tests/authored-founders.mjs
+Authored founders: legal precursor trace, explicit sandbox, shared biology/compatibility, external resource receipts, source isolation, exact save and regional provenance PASS
+
+$ node tests/physical-starter-presets.mjs
+jump: guided precursor plan, supported ecology, real action, unchanged habitat and save PASS
+burrow: guided precursor plan, supported ecology, real action, unchanged habitat and save PASS
+flight: guided precursor plan, supported ecology, real action, unchanged habitat and save PASS
+dive: guided precursor plan, supported ecology, real action, unchanged habitat and save PASS
+Physical starter menu builds: FOUR actual biology starts PASS
+
+$ node tests/world-swap-render.mjs
+world swap render caches ok
+
+$ node tests/readout-coordination.mjs
+Canvas readout coordination PASS: collision reproduced, weather/refuge/wind clearance, copied bounds and next-frame clearing.
+
+$ node tests/information-input.mjs
+Information input boundary PASS: native panel navigation/typing, retained pointer barriers and world shortcuts.
+
+$ node tests/ui-art-direction.mjs
+UI art-direction checks: PASS
+
+$ node tests/public-export.mjs
+public-export: exact reachable modules and runtime assets only PASS
+
+$ node tools/canonical-source-audit.mjs
+{
+  "schema": "genvo8.canonical-audit/1",
+  "status": "PASS",
+  "entrypoint": "src/main.js",
+  "totalSourceModules": 425,
+  "runtimeReachableModules": 417,
+  "runtimeDependencyFiles": 430,
+  "toolOrTestModules": [
+    "src/lineage/phenotype-resolver.js",
+    "src/lineage/swimming-review.js",
+    "src/organisms/tissue-construction.js",
+    "src/organisms/tissue-ledger.js",
+    "src/persistence/fauna-page-checkpoint.js",
+    "src/render/authored-draft-compiler.js",
+    "src/render/fauna.js",
+    "src/ui/food-choice-view.js"
+  ],
+  "registeredParts": 97,
+  "proceduralSpriteIds": 97,
+  "identicalSourceCopies": [],
+  "errors": []
+}

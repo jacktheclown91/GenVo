@@ -1,0 +1,18 @@
+/* Keep the encounter's next action at hand without adding gameplay controls. */
+@media(max-width:600px),(max-height:420px){
+ #interactionDock .courtship-tools{position:sticky;bottom:0;display:flex;flex-wrap:nowrap;gap:4px;min-height:44px;overflow-x:auto;overscroll-behavior-x:contain;background:#102219;border-top:1px solid #879268;z-index:1;padding:3px 0;scrollbar-width:thin}
+ #interactionDock .courtship-tools button{flex:none;min-height:40px}
+ #interactionDock .courtship-tools button:first-child{order:-2}
+ #interactionDock .courtship-tools button:last-child{order:-1}
+}
+@media(max-height:420px) and (min-width:480px){
+ #interactionDock:has(.courtship-tray:not([hidden])){left:10px;right:10px;width:auto;max-width:none;transform:none}
+ #interactionDock:has(.courtship-tray:not([hidden])) .dock-header{position:fixed;box-sizing:border-box;right:10px;top:110px;width:204px;height:38px;min-height:0;margin:0;padding:5px 40px 4px 8px;border:1px solid #879268;background:#102219;display:block;overflow:hidden}
+ #interactionDock:has(.courtship-tray:not([hidden])) .dock-header>strong{font:11px/1.2 Georgia,serif}
+ #interactionDock:has(.courtship-tray:not([hidden])) .dock-header .dock-clear{position:absolute;right:2px;top:2px}
+ #interactionDock .courtship-tray{position:fixed;box-sizing:border-box;right:10px;top:148px;width:204px;max-height:calc(100vh - 236px);grid-template-columns:90px minmax(0,1fr);padding:5px;border:1px solid #879268;border-top:0;background:#102219;gap:4px 6px;z-index:1}
+ #interactionDock .courtship-portraits{padding-right:3px;gap:2px}
+ #interactionDock .courtship-portraits canvas{width:38px;height:34px}
+ #interactionDock .courtship-portraits figcaption{font-size:9px}
+ #interactionDock .courtship-cards{flex-wrap:wrap}
+}

@@ -24,6 +24,7 @@ import {chooseResidentStart} from './ui/resident-start.js';
 import {chooseAuthoredFounder} from './ui/founder-start.js';
 import {installPhysicalStarter,physicalStarterIds,PHYSICAL_STARTERS} from './ui/physical-starter-presets.js';
 import {selectResidentStart} from './persistence/resident-start.js';
+import {matchStartingFounderAppearance} from './persistence/authored-founders.js';
 import {loadNativePartCatalog,nativeArtStatus} from './render/runtime-part-art.js';
 import {Simulation} from './sim/simulation.js';
 import {Renderer,TERRAIN_POOL} from './render/renderer.js';
@@ -213,6 +214,7 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
     const authored=await chooseAuthoredFounder(next,creature);if(!authored)return false;
   }
   if(creature.startsWith('starter-'))installPhysicalStarter(next,creature.slice('starter-'.length));
+  if(start==='new'&&creature==='recorded')matchStartingFounderAppearance(next);
   let adoptedSlot=null;
   if(movementRules==='current')adoptedSlot=await saveManager.storeMovementContinuation(next,sourceSnapshot,{name,source:start==='import'?'import:'+scenarioFile.name:start});
   else await saveManager.allocateWorld(name);

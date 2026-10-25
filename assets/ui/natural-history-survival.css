@@ -259,3 +259,6 @@
  #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack [data-channel=action]{order:-2}
  #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack .notice-lane{padding:5px 8px;font-size:11px}
 }
+
+/* Title/creation menus never present a gameplay lesson from their backdrop. */
+#app:has(#frontEnd:not([hidden])) #welcome,#app:has(#frontEnd:not([hidden])) #tutorialComplete,#app:has(#frontEnd:not([hidden])) #tutorial{visibility:hidden}

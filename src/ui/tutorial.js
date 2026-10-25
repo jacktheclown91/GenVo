@@ -1,3 +1,4 @@
+import {visibleTutorialResource} from './tutorial-targets.js';
 import {bestFreshwaterFood} from '../ecology/freshwater-food.js';
 import {firstLegacyProgress} from '../gameplay/legacy-milestones.js';
 import {NotificationCenter} from './notification-center.js';
@@ -87,6 +88,9 @@ export class TutorialController{
     this.briefingNext?.addEventListener('click',()=>this.nextBriefing());
     this.transitionContinue?.addEventListener('click',()=>this.continueTransition());
     this.setSimulation(sim,{fresh:true});
+    // The initial simulation is only the title backdrop. New World/Continue
+    // explicitly install the playable world's tutorial after this constructor.
+    if(this.welcome)this.welcome.hidden=true;if(this.completeModal)this.completeModal.hidden=true;if(this.tutorial)this.tutorial.hidden=true;
   }
   setSimulation(sim,{fresh=false,resume=false}={}){
     this.sim=sim;let restoredStage=resume&&sim.uiTutorialStage?sim.uiTutorialStage:null;if(LEGACY_OPENING_STAGES.has(restoredStage))restoredStage='goals';this.stage=restoredStage||'welcome';this.sim.uiTutorialStage=this.stage;this.startPos=null;this.briefingIndex=0;this.lastActiveId=sim.playerId;this.lastHandoffCount=sim.lineage?.handoffs?.length||0;this.establishmentShown=!!sim.lineage?.establishmentAnnounced;this.resumeChoice=false;
@@ -141,20 +145,22 @@ export class TutorialController{
   renderStepFood(p){
     const fed=this.historyHas('first-meal:')||(p.lastMeal&&p.lastMeal.tick>=this.stepStartTick);
     if(fed){this.showToast("✓ Nice! You've eaten.",3000,'success','action');this.advance('step-water');return}
-    const f=this.findFood(p,28);if(f)this.renderer.guideTarget={x:f.x,y:f.y,label:'Food'};else this.renderer.guideTarget=null;
+    const f=visibleTutorialResource(this.sim,this.renderer,p,'food')||(!this.renderer.camera?this.findFood(p,28):null);if(f)this.renderer.guideTarget={...f,label:'Food'};else this.renderer.guideTarget=null;
+    if(!f){this.render('STEP 1/3 — FIND FOOD','Look around for food. Walk or turn until an edible plant comes into view and gets a Food marker.',{step:'1/3',compact:false});return}
     this.render('STEP 1/3 — FIND FOOD',"You're hungry! Find something edible. Click the highlighted food and choose Eat, or move close and press E.",{step:'1/3',compact:false});
   }
   renderStepWater(p){
     const watered=this.drankInStepWater||(!this.stepStartDrink&&this.historyHas('first-drink'))||(this.sim.lastPlayerAction?.type==='drink'&&this.sim.lastPlayerAction.tick>=this.stepStartTick);
     if(watered){this.showToast("✓ You're hydrated!",3000,'success','action');this.advance('step-mate');return}
-    const w=this.sim.world.nearestDrinkable(p.x,p.y,28);if(w)this.renderer.guideTarget={x:w.x,y:w.y,label:'Water'};else this.renderer.guideTarget=null;
+    const w=visibleTutorialResource(this.sim,this.renderer,p,'water')||(!this.renderer.camera?this.sim.world.nearestDrinkable(p.x,p.y,28):null);if(w)this.renderer.guideTarget={...w,label:'Water'};else this.renderer.guideTarget=null;
+    if(!w){this.render('STEP 2/3 — FIND WATER','Look around for freshwater. Walk along the bank until a Water marker appears.',{step:'2/3',compact:false});return}
     this.render('STEP 2/3 — FIND WATER','Every creature needs water. Click the highlighted freshwater source and choose Drink, or stand beside it and press Shift+E.',{step:'2/3',compact:false});
   }
   renderStepMate(p){
     const mated=!!p.lastMate||!!p.pregnant||this.sim.family.livingChildren(p).length>0;
     if(mated){this.showToast("✓ You've found a mate!",3000,'success','action');this.showCompleteModal();return}
-    this.sim.reproduction.refreshSelection();let mate=this.sim.reproduction.selectedMate();
-    if(!mate&&this.sim.starterMateId)mate=this.sim.animals.find(a=>a.id===this.sim.starterMateId&&a.alive);
+    this.sim.reproduction.refreshSelection();let mate=this.sim.starterMateId?this.sim.animals.find(a=>a.id===this.sim.starterMateId&&a.alive):null;
+    if(!mate)mate=this.sim.reproduction.selectedMate();
     if(!mate)mate=this.sim.animals.find(a=>a.alive&&a.species===p.species&&a.id!==p.id&&a.sex!==p.sex);
     if(mate)this.renderer.guideTarget={x:mate.x,y:mate.y,label:'Mate'};else this.renderer.guideTarget=null;
     this.render('STEP 3/3 — FIND A MATE',"Your journey doesn't end with you. Find the highlighted compatible creature. Click it and choose Court. Choose Approach, then Play. A partner may decline.",{step:'3/3',compact:false});

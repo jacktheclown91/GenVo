@@ -1,0 +1,197 @@
+diff --git a/assets/ui/natural-history-survival.css b/assets/ui/natural-history-survival.css
+index a5c74011..6441d51b 100644
+--- a/assets/ui/natural-history-survival.css
++++ b/assets/ui/natural-history-survival.css
+@@ -259,3 +259,6 @@
+  #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack [data-channel=action]{order:-2}
+  #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack .notice-lane{padding:5px 8px;font-size:11px}
+ }
++
++/* Title/creation menus never present a gameplay lesson from their backdrop. */
++#app:has(#frontEnd:not([hidden])) #welcome,#app:has(#frontEnd:not([hidden])) #tutorialComplete,#app:has(#frontEnd:not([hidden])) #tutorial{visibility:hidden}
+diff --git a/src/main.js b/src/main.js
+index 04e5e903..c216241f 100644
+--- a/src/main.js
++++ b/src/main.js
+@@ -24,6 +24,7 @@ import {chooseResidentStart} from './ui/resident-start.js';
+ import {chooseAuthoredFounder} from './ui/founder-start.js';
+ import {installPhysicalStarter,physicalStarterIds,PHYSICAL_STARTERS} from './ui/physical-starter-presets.js';
+ import {selectResidentStart} from './persistence/resident-start.js';
++import {matchStartingFounderAppearance} from './persistence/authored-founders.js';
+ import {loadNativePartCatalog,nativeArtStatus} from './render/runtime-part-art.js';
+ import {Simulation} from './sim/simulation.js';
+ import {Renderer,TERRAIN_POOL} from './render/renderer.js';
+@@ -213,6 +214,7 @@ async function createWorldFromMenu({name,seed:chosenSeed,geography='freshwater/1
+     const authored=await chooseAuthoredFounder(next,creature);if(!authored)return false;
+   }
+   if(creature.startsWith('starter-'))installPhysicalStarter(next,creature.slice('starter-'.length));
++  if(start==='new'&&creature==='recorded')matchStartingFounderAppearance(next);
+   let adoptedSlot=null;
+   if(movementRules==='current')adoptedSlot=await saveManager.storeMovementContinuation(next,sourceSnapshot,{name,source:start==='import'?'import:'+scenarioFile.name:start});
+   else await saveManager.allocateWorld(name);
+diff --git a/src/persistence/authored-founders.js b/src/persistence/authored-founders.js
+index f1ff011d..3c5f6965 100644
+--- a/src/persistence/authored-founders.js
++++ b/src/persistence/authored-founders.js
+@@ -6,6 +6,22 @@ import {canOccupy} from '../lineage/lifestyle.js';
+ import {isWaterDweller} from '../lineage/aquatic.js';
+ import {selectResidentStart} from './resident-start.js';
+ 
++// Creator-requested matching first-pair appearance. This is initial content,
++// never a cosmetic sprite override or a mutation of an ongoing organism.
++function matchFounderAppearance(first,second){
++ for(const key of ['body','motion','senses','temperament'])second.genes[key]=first.genes[key];
++ second.pigmentGenome=first.pigmentGenome?structuredClone(first.pigmentGenome):null;
++ second.founderAppearance={schema:1,sourceId:first.id,source:'creator-matching-start'};
++}
++export function matchStartingFounderAppearance(sim){
++ if(sim.tickCount!==0||sim.day!==1||sim.creatureStart?.kind==='existing-resident')return false;
++ const first=sim.player(),second=sim.animals.find(a=>a.id===sim.starterMateId&&a.alive);
++ if(!first||!second||first===second||first.parentIds?.length||second.parentIds?.length||first.species!==second.species||first.bodyPlan?.id!==second.bodyPlan?.id)return false;
++ matchFounderAppearance(first,second);
++ const record=sim.lineage.records.get(second.id);if(record){for(const key of ['body','motion','senses','temperament'])record.genes[key]=second.genes[key];record.pigmentGenome=second.pigmentGenome?structuredClone(second.pigmentGenome):null;record.founderAppearance=structuredClone(second.founderAppearance)}
++ return true;
++}
++
+ // Only prepare within an independent creation candidate. It is not installed
+ // or saved while the creator edits; cancellation discards that whole fork.
+ export function prepareAuthoredFounders(sim){
+@@ -15,6 +31,7 @@ export function prepareAuthoredFounders(sim){
+  sim.nextId=nextId;
+  const members=[sim.spawnAnimal('genvo'),sim.spawnAnimal('genvo')];
+  members[1].sex=members[0].sex==='F'?'M':'F';
++ matchFounderAppearance(members[0],members[1]);
+  const s=SPECIES[members[0].species];
+  members[0].age=s.maturity;
+  members[0].energy=s.maxEnergy*.92;
+diff --git a/src/render/renderer.js b/src/render/renderer.js
+index 13a0a7cf..b6ef3e8d 100644
+--- a/src/render/renderer.js
++++ b/src/render/renderer.js
+@@ -34,7 +34,8 @@ import {glideGround} from '../lineage/gliding.js';
+ import {drawFlightWind} from './flight-wind.js';
+ import {drawRefugeReadout} from './refuge-readout.js';
+ import {drawCaveProgress} from './cave-progress-readout.js';
+-import {beginReadoutFrame} from './readout-layout.js';
++import {chooseOverlayPlacement} from '../ui/overlay-placement.js';
++import {beginReadoutFrame,readoutScreenConstraints,reserveReadout} from './readout-layout.js';
+ import {EncounterPresentation,applyEncounterPose} from './encounter-expression.js';
+ import {EncounterReactionPresentation,applyEncounterReaction,reactionAttention,reactionShove,drawEncounterReactionMarks,applyDefenseReaction,defenseShove,drawDefenseMarks} from './encounter-reactions.js';
+ import {canHunt} from '../ecology/functional-diet.js';
+@@ -152,7 +153,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
+     if(this.sim.cognition?.showOverlay)this.drawMemoryOverlay(tile);
+     if(this.sim.territory?.showOverlay)this.drawTerritoryOverlay(tile);
+     if(this.sim.migration?.showOverlay)this.drawMigrationOverlay(tile);
+-    if(this.guideTarget)this.drawGuide(tile);
++    if(this.guideTarget&&!this.sim.uiTutorialStage?.startsWith('step-'))this.drawGuide(tile);
+     {const clipped=clipToSensed(this,tile);this.drawStalkerDens(tile);if(clipped)this.ctx.restore()}
+     this.drawShelters(tile);
+     this.drawFamilyGuidance(tile);
+@@ -180,7 +181,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
+     // Weather and interaction cues remain above creatures; ground decoration does not.
+     if((!this.lowDetail||this.sim.visibilityRules===VISIBILITY.policy||this.sim.thermalRules===THERMAL_WEATHER.policy)&&!this.sim.player()?.underground)this.drawWeatherOverlay();
+     drawSensoryFog(this,{tile,cols,rows,startX,startY});
+-    beginReadoutFrame(this);drawWeatherReadout(this);drawRefugeReadout(this);drawCaveProgress(this);
++    beginReadoutFrame(this);if(this.guideTarget&&this.sim.uiTutorialStage?.startsWith('step-'))this.drawGuide(tile);drawWeatherReadout(this);drawRefugeReadout(this);drawCaveProgress(this);
+     this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId),{renderer:this});this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.processTerrainRefreshQueue();}
+ 
+ 
+@@ -259,7 +260,14 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
+     const px=v=>Math.round((v-this.camera.x)*tile+this.w/2),py=v=>Math.round((v-this.camera.y)*tile+this.h/2),ax=px(p.x),ay=py(p.y),tx=px(t.x),ty=py(t.y);
+     c.save();c.strokeStyle='rgba(239,211,120,.72)';c.lineWidth=2;c.setLineDash([5,5]);c.beginPath();c.moveTo(ax,ay);c.lineTo(tx,ty);c.stroke();c.setLineDash([]);
+     const pulse=8+Math.sin(performance.now()/180)*2;c.strokeStyle='rgba(245,225,150,.95)';c.beginPath();c.arc(tx,ty,pulse,0,Math.PI*2);c.stroke();
+-    c.fillStyle='rgba(245,225,150,.92)';c.fillRect(tx-2,ty-2,4,4);c.restore();
++    c.fillStyle='rgba(245,225,150,.92)';c.fillRect(tx-2,ty-2,4,4);
++    if(this.sim.uiTutorialStage?.startsWith('step-')){
++      const water=t.label==='Water',ink=water?'#a7e7ed':'#f4dc85',r=Math.max(13,Math.round(tile*.6)),x=Math.round(tx),y=Math.round(ty);
++      c.strokeStyle='#07120c';c.lineWidth=5;c.strokeRect(x-r,y-r,r*2,r*2);c.strokeStyle=ink;c.lineWidth=2;c.strokeRect(x-r,y-r,r*2,r*2);
++      const text=t.label||'Target';c.font='bold 13px Verdana,sans-serif';const width=Math.ceil(c.measureText(text).width)+18,constraints=readoutScreenConstraints(this),placed=chooseOverlayPlacement({width,height:23,viewport:{left:0,top:0,right:this.w,bottom:this.h},preferred:{left:x-width/2,top:y-r-27},protectedRects:[...constraints.protectedRects,{left:x-r,top:y-r,right:x+r,bottom:y+r}],obstacles:constraints.obstacles}),left=placed.left,top=placed.top;reserveReadout(this,placed);
++      c.fillStyle='#102017';c.fillRect(Math.round(left),Math.round(top),width,23);c.strokeStyle=ink;c.lineWidth=1;c.strokeRect(Math.round(left)+.5,Math.round(top)+.5,width-1,22);c.fillStyle=ink;c.textAlign='center';c.textBaseline='middle';c.fillText(text,Math.round(left+width/2),Math.round(top+12));
++    }
++    c.restore();
+   }
+ 
+   drawMigrationOverlay(tile){
+diff --git a/src/ui/tutorial-targets.js b/src/ui/tutorial-targets.js
+new file mode 100644
+index 00000000..585e494e
+--- /dev/null
++++ b/src/ui/tutorial-targets.js
+@@ -0,0 +1,31 @@
++// Read-only coaching targets use the same drawn plants, sight and access rules
++// as ordinary world interactions. Never mark the player's own body as a resource.
++import {CFG} from '../sim/config.js';
++import {groundDiet} from '../ecology/functional-diet.js';
++import {visuallyObservable} from '../ecology/atmospheric-visibility.js';
++import {approachGoal,worldResourceAt} from './world-resource-target.js';
++const cache=new WeakMap();
++function clickedResource(sim,renderer,x,y){const b=renderer.canvas?.getBoundingClientRect();if(!b)return null;const tile=CFG.tileSize*renderer.zoom,sx=renderer.w/2+(x-renderer.camera.x)*tile,sy=renderer.h/2+(y-renderer.camera.y)*tile;return worldResourceAt(sim,renderer,b.left+sx*b.width/renderer.w,b.top+sy*b.height/renderer.h)}
++export function visibleTutorialResource(sim,renderer,actor,kind){
++ if(!actor||!renderer?.camera||!renderer.visiblePlantTargets)return null;
++ const w=sim.world,key=[actor.id,Math.floor(actor.x),Math.floor(actor.y),actor.dir,kind,renderer.w,renderer.h,renderer.zoom].join('|'),prior=cache.get(renderer),now=performance.now();
++ if(prior?.world===w&&prior.key===key&&now<prior.until){const t=prior.target,tile=CFG.tileSize*renderer.zoom,sx=t?renderer.w/2+(t.x-renderer.camera.x)*tile:0,sy=t?renderer.h/2+(t.y-renderer.camera.y)*tile:0;if(!t||clickedResource(sim,renderer,t.x,t.y)?.kind===t.resource.kind&&visuallyObservable(sim,actor,{x:t.x,y:t.y,underground:!!actor.underground})&&![...(renderer.screenPos?.values()||[])].some(p=>Math.hypot(sx-p.x,sy-p.y)<42))return t;}
++ const tile=CFG.tileSize*renderer.zoom,diet=groundDiet(actor),bodies=renderer.screenBoundsWorld===w?[...(renderer.screenBounds?.values()||[])]:[],points=[...(renderer.screenPos?.values()||[])];
++ let best=null,bestScore=Infinity;
++ for(let dy=-8;dy<=8;dy++)for(let dx=-8;dx<=8;dx++){
++  const x=Math.floor(actor.x)+dx,y=Math.floor(actor.y)+dy;if(x<0||y<0||x>=w.n||y>=w.n)continue;const i=w.idx(x,y);
++  const candidates=kind==='water'?(w.water[i]&&w.isDrinkable(x+.5,y+.5)?[{kind:'water',i,x:x+.5,y:y+.5}]:[]):Object.keys(diet).filter(food=>diet[food]>0&&w.plants[food]?.[i]>.02).map(food=>renderer.plantTargetWorld===w?renderer.visiblePlantTargets.get(i+'|'+food):null).filter(Boolean).map(p=>({kind:'plant',...p}));
++  if(kind==='food'&&diet.carrion>0&&w.carrion[i]>.08)candidates.push({kind:'corpse',i,food:'carrion',x:x+.5,y:y+.5});
++  for(const resource of candidates){const hx=resource.hitX??resource.x,hy=resource.hitY??resource.y;if(!visuallyObservable(sim,actor,{x:hx,y:hy,underground:!!actor.underground}))continue;
++   const sx=renderer.w/2+(hx-renderer.camera.x)*tile,sy=renderer.h/2+(hy-renderer.camera.y)*tile;
++   if(sx<32||sy<42||sx>renderer.w-32||sy>renderer.h-80)continue;
++   if(bodies.some(body=>sx>body.left-20&&sx<body.right+20&&sy>body.top-20&&sy<body.bottom+20)||points.some(p=>Math.hypot(sx-p.x,sy-p.y)<42))continue;
++   const goal=kind==='water'?approachGoal(sim,resource):resource;if(!goal||!sim.canReach(actor,goal.x,goal.y))continue;
++   const distance=Math.hypot(hx-actor.x,hy-actor.y);if(distance<bestScore){const hit=clickedResource(sim,renderer,hx,hy);if(hit?.kind!==resource.kind||kind==='food'&&!(diet[hit.food]>0))continue;let score=distance;
++    if(kind==='food'){const probe=Object.assign(Object.create(Object.getPrototypeOf(actor)),actor,{x:hit.x,y:hit.y}),meals=sim.foraging.options(probe,{index:hit.i,kind:hit.food});if(!meals.some(m=>m.handling.enabled))continue;if(!meals.some(m=>m.handling.enabled&&m.handling.energyCost===0))score+=16;}
++    if(score<bestScore){bestScore=score;best={x:hx,y:hy,resource:hit};}}
++
++  }
++ }
++ cache.set(renderer,{world:w,key,target:best,until:now+250});return best;
++}
+diff --git a/src/ui/tutorial.js b/src/ui/tutorial.js
+index c930e167..ce90d39b 100644
+--- a/src/ui/tutorial.js
++++ b/src/ui/tutorial.js
+@@ -1,3 +1,4 @@
++import {visibleTutorialResource} from './tutorial-targets.js';
+ import {bestFreshwaterFood} from '../ecology/freshwater-food.js';
+ import {firstLegacyProgress} from '../gameplay/legacy-milestones.js';
+ import {NotificationCenter} from './notification-center.js';
+@@ -87,6 +88,9 @@ export class TutorialController{
+     this.briefingNext?.addEventListener('click',()=>this.nextBriefing());
+     this.transitionContinue?.addEventListener('click',()=>this.continueTransition());
+     this.setSimulation(sim,{fresh:true});
++    // The initial simulation is only the title backdrop. New World/Continue
++    // explicitly install the playable world's tutorial after this constructor.
++    if(this.welcome)this.welcome.hidden=true;if(this.completeModal)this.completeModal.hidden=true;if(this.tutorial)this.tutorial.hidden=true;
+   }
+   setSimulation(sim,{fresh=false,resume=false}={}){
+     this.sim=sim;let restoredStage=resume&&sim.uiTutorialStage?sim.uiTutorialStage:null;if(LEGACY_OPENING_STAGES.has(restoredStage))restoredStage='goals';this.stage=restoredStage||'welcome';this.sim.uiTutorialStage=this.stage;this.startPos=null;this.briefingIndex=0;this.lastActiveId=sim.playerId;this.lastHandoffCount=sim.lineage?.handoffs?.length||0;this.establishmentShown=!!sim.lineage?.establishmentAnnounced;this.resumeChoice=false;
+@@ -141,20 +145,22 @@ export class TutorialController{
+   renderStepFood(p){
+     const fed=this.historyHas('first-meal:')||(p.lastMeal&&p.lastMeal.tick>=this.stepStartTick);
+     if(fed){this.showToast("✓ Nice! You've eaten.",3000,'success','action');this.advance('step-water');return}
+-    const f=this.findFood(p,28);if(f)this.renderer.guideTarget={x:f.x,y:f.y,label:'Food'};else this.renderer.guideTarget=null;
++    const f=visibleTutorialResource(this.sim,this.renderer,p,'food')||(!this.renderer.camera?this.findFood(p,28):null);if(f)this.renderer.guideTarget={...f,label:'Food'};else this.renderer.guideTarget=null;
++    if(!f){this.render('STEP 1/3 — FIND FOOD','Look around for food. Walk or turn until an edible plant comes into view and gets a Food marker.',{step:'1/3',compact:false});return}
+     this.render('STEP 1/3 — FIND FOOD',"You're hungry! Find something edible. Click the highlighted food and choose Eat, or move close and press E.",{step:'1/3',compact:false});
+   }
+   renderStepWater(p){
+     const watered=this.drankInStepWater||(!this.stepStartDrink&&this.historyHas('first-drink'))||(this.sim.lastPlayerAction?.type==='drink'&&this.sim.lastPlayerAction.tick>=this.stepStartTick);
+     if(watered){this.showToast("✓ You're hydrated!",3000,'success','action');this.advance('step-mate');return}
+-    const w=this.sim.world.nearestDrinkable(p.x,p.y,28);if(w)this.renderer.guideTarget={x:w.x,y:w.y,label:'Water'};else this.renderer.guideTarget=null;
++    const w=visibleTutorialResource(this.sim,this.renderer,p,'water')||(!this.renderer.camera?this.sim.world.nearestDrinkable(p.x,p.y,28):null);if(w)this.renderer.guideTarget={...w,label:'Water'};else this.renderer.guideTarget=null;
++    if(!w){this.render('STEP 2/3 — FIND WATER','Look around for freshwater. Walk along the bank until a Water marker appears.',{step:'2/3',compact:false});return}
+     this.render('STEP 2/3 — FIND WATER','Every creature needs water. Click the highlighted freshwater source and choose Drink, or stand beside it and press Shift+E.',{step:'2/3',compact:false});
+   }
+   renderStepMate(p){
+     const mated=!!p.lastMate||!!p.pregnant||this.sim.family.livingChildren(p).length>0;
+     if(mated){this.showToast("✓ You've found a mate!",3000,'success','action');this.showCompleteModal();return}
+-    this.sim.reproduction.refreshSelection();let mate=this.sim.reproduction.selectedMate();
+-    if(!mate&&this.sim.starterMateId)mate=this.sim.animals.find(a=>a.id===this.sim.starterMateId&&a.alive);
++    this.sim.reproduction.refreshSelection();let mate=this.sim.starterMateId?this.sim.animals.find(a=>a.id===this.sim.starterMateId&&a.alive):null;
++    if(!mate)mate=this.sim.reproduction.selectedMate();
+     if(!mate)mate=this.sim.animals.find(a=>a.alive&&a.species===p.species&&a.id!==p.id&&a.sex!==p.sex);
+     if(mate)this.renderer.guideTarget={x:mate.x,y:mate.y,label:'Mate'};else this.renderer.guideTarget=null;
+     this.render('STEP 3/3 — FIND A MATE',"Your journey doesn't end with you. Find the highlighted compatible creature. Click it and choose Court. Choose Approach, then Play. A partner may decline.",{step:'3/3',compact:false});

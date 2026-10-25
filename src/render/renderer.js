@@ -34,7 +34,8 @@ import {glideGround} from '../lineage/gliding.js';
 import {drawFlightWind} from './flight-wind.js';
 import {drawRefugeReadout} from './refuge-readout.js';
 import {drawCaveProgress} from './cave-progress-readout.js';
-import {beginReadoutFrame} from './readout-layout.js';
+import {chooseOverlayPlacement} from '../ui/overlay-placement.js';
+import {beginReadoutFrame,readoutScreenConstraints,reserveReadout} from './readout-layout.js';
 import {EncounterPresentation,applyEncounterPose} from './encounter-expression.js';
 import {EncounterReactionPresentation,applyEncounterReaction,reactionAttention,reactionShove,drawEncounterReactionMarks,applyDefenseReaction,defenseShove,drawDefenseMarks} from './encounter-reactions.js';
 import {canHunt} from '../ecology/functional-diet.js';
@@ -152,7 +153,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     if(this.sim.cognition?.showOverlay)this.drawMemoryOverlay(tile);
     if(this.sim.territory?.showOverlay)this.drawTerritoryOverlay(tile);
     if(this.sim.migration?.showOverlay)this.drawMigrationOverlay(tile);
-    if(this.guideTarget)this.drawGuide(tile);
+    if(this.guideTarget&&!this.sim.uiTutorialStage?.startsWith('step-'))this.drawGuide(tile);
     {const clipped=clipToSensed(this,tile);this.drawStalkerDens(tile);if(clipped)this.ctx.restore()}
     this.drawShelters(tile);
     this.drawFamilyGuidance(tile);
@@ -180,7 +181,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // Weather and interaction cues remain above creatures; ground decoration does not.
     if((!this.lowDetail||this.sim.visibilityRules===VISIBILITY.policy||this.sim.thermalRules===THERMAL_WEATHER.policy)&&!this.sim.player()?.underground)this.drawWeatherOverlay();
     drawSensoryFog(this,{tile,cols,rows,startX,startY});
-    beginReadoutFrame(this);drawWeatherReadout(this);drawRefugeReadout(this);drawCaveProgress(this);
+    beginReadoutFrame(this);if(this.guideTarget&&this.sim.uiTutorialStage?.startsWith('step-'))this.drawGuide(tile);drawWeatherReadout(this);drawRefugeReadout(this);drawCaveProgress(this);
     this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId),{renderer:this});this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.processTerrainRefreshQueue();}
 
 
@@ -259,7 +260,14 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const px=v=>Math.round((v-this.camera.x)*tile+this.w/2),py=v=>Math.round((v-this.camera.y)*tile+this.h/2),ax=px(p.x),ay=py(p.y),tx=px(t.x),ty=py(t.y);
     c.save();c.strokeStyle='rgba(239,211,120,.72)';c.lineWidth=2;c.setLineDash([5,5]);c.beginPath();c.moveTo(ax,ay);c.lineTo(tx,ty);c.stroke();c.setLineDash([]);
     const pulse=8+Math.sin(performance.now()/180)*2;c.strokeStyle='rgba(245,225,150,.95)';c.beginPath();c.arc(tx,ty,pulse,0,Math.PI*2);c.stroke();
-    c.fillStyle='rgba(245,225,150,.92)';c.fillRect(tx-2,ty-2,4,4);c.restore();
+    c.fillStyle='rgba(245,225,150,.92)';c.fillRect(tx-2,ty-2,4,4);
+    if(this.sim.uiTutorialStage?.startsWith('step-')){
+      const water=t.label==='Water',ink=water?'#a7e7ed':'#f4dc85',r=Math.max(13,Math.round(tile*.6)),x=Math.round(tx),y=Math.round(ty);
+      c.strokeStyle='#07120c';c.lineWidth=5;c.strokeRect(x-r,y-r,r*2,r*2);c.strokeStyle=ink;c.lineWidth=2;c.strokeRect(x-r,y-r,r*2,r*2);
+      const text=t.label||'Target';c.font='bold 13px Verdana,sans-serif';const width=Math.ceil(c.measureText(text).width)+18,constraints=readoutScreenConstraints(this),placed=chooseOverlayPlacement({width,height:23,viewport:{left:0,top:0,right:this.w,bottom:this.h},preferred:{left:x-width/2,top:y-r-27},protectedRects:[...constraints.protectedRects,{left:x-r,top:y-r,right:x+r,bottom:y+r}],obstacles:constraints.obstacles}),left=placed.left,top=placed.top;reserveReadout(this,placed);
+      c.fillStyle='#102017';c.fillRect(Math.round(left),Math.round(top),width,23);c.strokeStyle=ink;c.lineWidth=1;c.strokeRect(Math.round(left)+.5,Math.round(top)+.5,width-1,22);c.fillStyle=ink;c.textAlign='center';c.textBaseline='middle';c.fillText(text,Math.round(left+width/2),Math.round(top+12));
+    }
+    c.restore();
   }
 
   drawMigrationOverlay(tile){
