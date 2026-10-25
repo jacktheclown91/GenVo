@@ -1,0 +1,9 @@
+# Onboarding presentation handoff
+
+Adds only root-ID CSS in natural-history-survival.css: existing natural-history surface/type/borders,44px minimum buttons, bounded scroll containers, no text shadows and modal layer40 above background save/utility UI. Mandatory tutorial markup, wording, stage semantics, prerequisites and controller remain in concurrent owner files. These CSS selectors depend on that new markup; this is presentation integration prepared against the shared draft, not standalone implementation of a new tutorial in committed HEAD.
+
+Native public New World welcome reviewed at1024x768,800x600,568x320,320x568. Baseline save message crossed the card; corrected layer/surface clears it. Final native Let us begin click at short height hides welcome and enters actual step-food without world-input blocking. No simulation state authored. Real food/water/mate completion is not claimed.
+
+Completion modal separately tested as explicitly authored static production DOM/CSS fixture with main module removed. Four sizes fit and native click reaches fixture listener. It is not a successful tutorial or biological action. Short welcome/completion frames inspected. Review harness has a continue-review file synchronization step for same paused welcome captures, not a user approval requirement.
+
+Mandatory-tutorial contract, information-input and canonical-source-audit passed on shared draft. UI-art-direction still fails on concurrent welcome-card markup; no test weakening or owner file edits. Export succeeded before final text-shadow-only adjustment; no exact final export/package certification claimed. Earlier review ZIP predates this pass. Owner files index/main/tutorial/styles/check-playable and mandatory tutorial test excluded from this commit. Creator/GPU acceptance and full v1 remain open.

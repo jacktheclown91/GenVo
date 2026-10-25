@@ -1,0 +1,19 @@
+diff --git a/assets/ui/natural-history-survival.css b/assets/ui/natural-history-survival.css
+index 9c887799..6f7e36bc 100644
+--- a/assets/ui/natural-history-survival.css
++++ b/assets/ui/natural-history-survival.css
+@@ -187,3 +187,14 @@
+  #stageUtilities #quickMenu{background:#102219}
+  #notificationStack:has([data-channel=critical]:not([hidden]),#saveStatus.error:not([hidden])){z-index:32}
+ }
++
++/* Welcome and completion share the established natural-history reading surface. */
++#welcome,#tutorialComplete{z-index:40;background:#06110be6}
++#welcome>div,#tutorialComplete>div{box-sizing:border-box;width:min(440px,calc(100% - 24px));max-height:calc(100% - 24px);overflow:auto;overscroll-behavior:contain;border:1px solid #879268;border-radius:2px;padding:20px 22px;background:#102017;color:#d9dec6;box-shadow:none;text-shadow:none;font:13px/1.5 Verdana,sans-serif;scrollbar-width:thin;scrollbar-color:#a5ad7a #102017}
++#welcome h2,#tutorialComplete h2{font:normal 27px/1.15 Georgia,serif;color:#eee3bd;letter-spacing:0}
++#welcome .welcome-controls{color:#d1d9bd}
++#welcome .welcome-controls li{align-items:baseline}
++#welcome .tutorial-btn,#tutorialComplete .tutorial-btn{min-height:44px;border:1px solid #b0a46b;border-radius:2px;background:#394625;color:#f2df9d;box-shadow:none;filter:none;font:700 12px/1.5 Verdana,sans-serif;padding:9px 16px}
++#welcome button:focus-visible,#tutorialComplete button:focus-visible{outline:2px solid #e8d487;outline-offset:2px}
++
++#welcome *,#tutorialComplete *{text-shadow:none}
