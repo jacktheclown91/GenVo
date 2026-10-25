@@ -1,0 +1,303 @@
+{
+  "scope": "Native public New World welcome screen, viewport review and real dismissal. No authored simulation state. Completion modal not exercised.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "final": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "card": {
+        "x": 720,
+        "y": 313.921875,
+        "width": 480,
+        "height": 452.140625,
+        "top": 313.921875,
+        "right": 1200,
+        "bottom": 766.0625,
+        "left": 720
+      },
+      "button": {
+        "x": 743,
+        "y": 701.0625,
+        "width": 434,
+        "height": 44,
+        "top": 701.0625,
+        "right": 1177,
+        "bottom": 745.0625,
+        "left": 743
+      },
+      "scrollHeight": 450,
+      "clientHeight": 450,
+      "paused": true,
+      "stage": "welcome"
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "card": {
+        "x": 443,
+        "y": 157.921875,
+        "width": 480,
+        "height": 452.140625,
+        "top": 157.921875,
+        "right": 923,
+        "bottom": 610.0625,
+        "left": 443
+      },
+      "button": {
+        "x": 466,
+        "y": 545.0625,
+        "width": 434,
+        "height": 44,
+        "top": 545.0625,
+        "right": 900,
+        "bottom": 589.0625,
+        "left": 466
+      },
+      "scrollHeight": 450,
+      "clientHeight": 450,
+      "paused": true,
+      "stage": "welcome"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "card": {
+        "x": 272,
+        "y": 157.921875,
+        "width": 480,
+        "height": 452.140625,
+        "top": 157.921875,
+        "right": 752,
+        "bottom": 610.0625,
+        "left": 272
+      },
+      "button": {
+        "x": 295,
+        "y": 545.0625,
+        "width": 434,
+        "height": 44,
+        "top": 545.0625,
+        "right": 729,
+        "bottom": 589.0625,
+        "left": 295
+      },
+      "scrollHeight": 450,
+      "clientHeight": 450,
+      "paused": true,
+      "stage": "welcome"
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "card": {
+        "x": 160,
+        "y": 73.921875,
+        "width": 480,
+        "height": 452.140625,
+        "top": 73.921875,
+        "right": 640,
+        "bottom": 526.0625,
+        "left": 160
+      },
+      "button": {
+        "x": 183,
+        "y": 461.0625,
+        "width": 434,
+        "height": 44,
+        "top": 461.0625,
+        "right": 617,
+        "bottom": 505.0625,
+        "left": 183
+      },
+      "scrollHeight": 450,
+      "clientHeight": 450,
+      "paused": true,
+      "stage": "welcome"
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "card": {
+        "x": 14,
+        "y": 23.4375,
+        "width": 540,
+        "height": 273.125,
+        "top": 23.4375,
+        "right": 554,
+        "bottom": 296.5625,
+        "left": 14
+      },
+      "button": {
+        "x": 29,
+        "y": 241.5625,
+        "width": 510,
+        "height": 44,
+        "top": 241.5625,
+        "right": 539,
+        "bottom": 285.5625,
+        "left": 29
+      },
+      "scrollHeight": 271,
+      "clientHeight": 271,
+      "paused": true,
+      "stage": "welcome"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "card": {
+        "x": 12,
+        "y": 13.109375,
+        "width": 296,
+        "height": 541.78125,
+        "top": 13.109375,
+        "right": 308,
+        "bottom": 554.890625,
+        "left": 12
+      },
+      "button": {
+        "x": 35,
+        "y": 489.890625,
+        "width": 250,
+        "height": 44,
+        "top": 489.890625,
+        "right": 285,
+        "bottom": 533.890625,
+        "left": 35
+      },
+      "scrollHeight": 540,
+      "clientHeight": 540,
+      "paused": true,
+      "stage": "welcome"
+    }
+  ],
+  "dismissed": {
+    "blocked": false,
+    "stage": "step-food",
+    "paused": false
+  },
+  "food": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "rect": {
+        "x": 1550,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 1910,
+        "bottom": 162.5625,
+        "left": 1550
+      },
+      "title": "STEP 1/3 — FIND FOOD",
+      "stage": "step-food",
+      "player": {
+        "x": 960,
+        "y": 540
+      }
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "rect": {
+        "x": 996,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 1356,
+        "bottom": 162.5625,
+        "left": 996
+      },
+      "title": "STEP 1/3 — FIND FOOD",
+      "stage": "step-food",
+      "player": {
+        "x": 683,
+        "y": 384
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "rect": {
+        "x": 654,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 1014,
+        "bottom": 162.5625,
+        "left": 654
+      },
+      "title": "STEP 1/3 — FIND FOOD",
+      "stage": "step-food",
+      "player": {
+        "x": 512,
+        "y": 384
+      }
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "rect": {
+        "x": 430,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 790,
+        "bottom": 162.5625,
+        "left": 430
+      },
+      "title": "STEP 1/3 — FIND FOOD",
+      "stage": "step-food",
+      "player": {
+        "x": 400,
+        "y": 300
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "rect": {
+        "x": 354,
+        "y": 64,
+        "width": 204,
+        "height": 142.9375,
+        "top": 64,
+        "right": 558,
+        "bottom": 206.9375,
+        "left": 354
+      },
+      "title": "STEP 1/3 — FIND FOOD",
+      "stage": "step-food",
+      "player": {
+        "x": 284,
+        "y": 160
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "rect": {
+        "x": 10,
+        "y": 64,
+        "width": 300,
+        "height": 98.5625,
+        "top": 64,
+        "right": 310,
+        "bottom": 162.5625,
+        "left": 10
+      },
+      "title": "STEP 1/3 — FIND FOOD",
+      "stage": "step-food",
+      "player": {
+        "x": 160,
+        "y": 284
+      }
+    }
+  ]
+}

@@ -197,15 +197,26 @@
     <!-- Mandatory interactive onboarding tutorial -->
     <section id="welcome" class="welcome" hidden aria-modal="true" role="dialog" aria-live="polite">
       <div class="onboarding-page">
+        <p class="onboarding-kicker">A LITTLE LIFE. A BIG WORLD.</p>
         <h2>WELCOME TO GENVO</h2>
         <p class="welcome-sub">You're the creature with the gold ring!</p>
-        <ul class="welcome-controls">
-          <li><span class="control-glyph">🖱️</span> <span>Mouse — Move, select, and interact.</span></li>
-          <li><strong>E</strong> — Interact with most things</li>
-          <li><strong>SPACE</strong> — Attack</li>
-          <li><strong>SHIFT</strong> — Sprint</li>
-          <li><strong>WASD</strong> — Move</li>
-        </ul>
+        <ol class="onboarding-trail" aria-label="Your first three steps">
+          <li><img src="assets/ui/seed.png" alt="" /><span><small>1</small> Find food</span></li>
+          <li><img src="assets/ui/water.png" alt="" /><span><small>2</small> Find water</span></li>
+          <li><img src="assets/ui/family.png" alt="" /><span><small>3</small> Find a mate</span></li>
+        </ol>
+        <p class="onboarding-first"><strong>Start with a little snack.</strong><br />Follow the gold trail. Click the food, then choose Eat.</p>
+        <p class="onboarding-mouse">Mouse — Move, select, and interact.</p>
+        <details class="onboarding-keys">
+          <summary>Prefer a keyboard? See the controls</summary>
+          <ul class="welcome-controls">
+            <li><strong>WASD</strong> — Move</li>
+            <li><strong>E</strong> — Interact with most things</li>
+            <li><strong>SHIFT</strong> — Sprint</li>
+            <li><strong>SPACE</strong> — Attack</li>
+          </ul>
+        </details>
+        <p class="onboarding-pause">The world is paused while you read.</p>
         <div class="welcome-actions">
           <button id="startGame" type="button" class="tutorial-btn">LET'S BEGIN</button>
         </div>
@@ -214,6 +225,8 @@
 
     <section id="tutorialComplete" class="tutorial-modal" hidden aria-modal="true" role="dialog" aria-live="polite">
       <div class="onboarding-page">
+        <div class="onboarding-flourish" aria-hidden="true"><img src="assets/ui/seed.png" alt="" /><img src="assets/ui/water.png" alt="" /><img src="assets/ui/family.png" alt="" /></div>
+        <p class="onboarding-kicker">YOUR FIRST LITTLE STEPS</p>
         <h2>YOU'RE READY!</h2>
         <p class="complete-summary">You've eaten, drunk, and found a mate.</p>
         <p class="complete-motto">Survive. Evolve. Leave a Legacy.</p>

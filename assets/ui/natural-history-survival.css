@@ -190,7 +190,7 @@
 
 /* Welcome and completion share the established natural-history reading surface. */
 #welcome,#tutorialComplete{z-index:40;background:#06110be6}
-#welcome>div,#tutorialComplete>div{box-sizing:border-box;width:min(440px,calc(100% - 24px));max-height:calc(100% - 24px);overflow:auto;overscroll-behavior:contain;border:1px solid #879268;border-radius:2px;padding:20px 22px;background:#102017;color:#d9dec6;box-shadow:none;text-shadow:none;font:13px/1.5 Verdana,sans-serif;scrollbar-width:thin;scrollbar-color:#a5ad7a #102017}
+#welcome>div,#tutorialComplete>div{box-sizing:border-box;width:min(480px,calc(100% - 24px));max-height:calc(100% - 24px);overflow:auto;overscroll-behavior:contain;border:1px solid #879268;border-radius:2px;padding:20px 22px;background:#102017;color:#d9dec6;box-shadow:none;text-shadow:none;font:13px/1.5 Verdana,sans-serif;scrollbar-width:thin;scrollbar-color:#a5ad7a #102017}
 #welcome h2,#tutorialComplete h2{font:normal 27px/1.15 Georgia,serif;color:#eee3bd;letter-spacing:0}
 #welcome .welcome-controls{color:#d1d9bd}
 #welcome .welcome-controls li{align-items:baseline}
@@ -200,14 +200,54 @@
 #welcome *,#tutorialComplete *{text-shadow:none}
 
 /* Mandatory step headings already contain their step number. */
-#tutorial:not(.compact)[data-guide-title^="STEP "]{box-sizing:border-box;display:block;left:auto;right:10px;top:64px;transform:none;width:min(360px,calc(100% - 20px));min-width:0;padding:8px 10px;background:#102017f5;border:1px solid #879268;border-radius:2px;box-shadow:none;filter:none;text-shadow:none;clip-path:none}
-#tutorial:not(.compact)[data-guide-title^="STEP "] .objective-step,#tutorial:not(.compact)[data-guide-title^="STEP "]:after{display:none}
-#tutorial:not(.compact)[data-guide-title^="STEP "] strong{font:normal 15px/1.2 Georgia,serif;letter-spacing:0;color:#eee3bd}
+#tutorial:not(.compact)[data-guide-title^="STEP "]{box-sizing:border-box;display:block;left:auto;right:10px;top:64px;transform:none;width:min(360px,calc(100% - 20px));min-width:0;padding:12px 14px;background:#102017fa;border:1px solid #c1ad69;border-left:4px solid #e4c56d;border-radius:2px;box-shadow:none;filter:none;text-shadow:none;clip-path:none}
+#tutorial:not(.compact)[data-guide-title^="STEP "] .objective-step{display:block;float:left;width:32px;height:36px;margin:0 10px 4px 0;font-size:0;background:url("seed.png") center/32px 32px no-repeat;image-rendering:pixelated}
+#tutorial:not(.compact)[data-guide-title^="STEP 2"] .objective-step{background-image:url("water.png")}
+#tutorial:not(.compact)[data-guide-title^="STEP 3"] .objective-step{background-image:url("family.png")}
+#tutorial:not(.compact)[data-guide-title^="STEP "]:after{display:none}
+#tutorial:not(.compact)[data-guide-title^="STEP "] strong{font:700 16px/1.25 Georgia,serif;letter-spacing:0;color:#f2dfa1}
 #tutorial:not(.compact)[data-guide-title^="STEP "] span{font:12px/1.35 Verdana,sans-serif;margin-top:4px;color:#d1d9bd}
-@media(max-height:420px) and (min-width:480px){#tutorial:not(.compact)[data-guide-title^="STEP "]{width:204px}}
+@media(max-height:420px) and (min-width:480px){#tutorial:not(.compact)[data-guide-title^="STEP "]{width:204px;padding:8px 10px}#tutorial:not(.compact)[data-guide-title^="STEP "] .objective-step{width:24px;height:28px;background-size:24px 24px;margin-right:6px}}
 
 /* Spacing for the native onboarding pages; surface ownership stays above. */
 #welcome h2{margin:0 0 6px}
 #welcome .welcome-sub{margin:0 0 16px;font-size:14px;color:#dfc46f;font-weight:600}
 #tutorialComplete>div{text-align:center}
 #tutorialComplete h2{margin:0 0 10px}
+
+/* A short, illustrated field lesson. Decorative icons are existing native art. */
+#welcome .onboarding-kicker,#tutorialComplete .onboarding-kicker{margin:0 0 8px;color:#b6c095;font:700 10px/1.4 Verdana,sans-serif;letter-spacing:1.5px}
+#welcome .onboarding-trail{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));padding:12px 0;margin:12px 0 16px;border-top:1px solid #506343;border-bottom:1px solid #506343;gap:8px}
+#welcome .onboarding-trail li{display:flex;flex-direction:column;align-items:center;gap:5px;color:#e1ddbc;font:700 12px/1.4 Verdana,sans-serif;text-align:center}
+#welcome .onboarding-trail img,#tutorialComplete .onboarding-flourish img{width:40px;height:40px;image-rendering:pixelated;object-fit:contain}
+#welcome .onboarding-trail small{display:inline;margin:0 3px 0 0;color:#b2bd8c;font:normal 11px Verdana,sans-serif}
+#welcome .onboarding-first{margin:0 0 12px;line-height:1.6;color:#d5ddc2}
+#welcome .onboarding-first strong{font:normal 20px/1.3 Georgia,serif;color:#f1dfaa}
+#welcome .onboarding-mouse{margin:0 0 10px;color:#dedab8;font-size:12px}
+#welcome .onboarding-keys{border-top:1px solid #43563c;padding-top:8px;color:#bfc9ac}
+#welcome .onboarding-keys summary{cursor:pointer;min-height:32px;font-size:12px;align-content:center}
+#welcome .welcome-controls{margin:8px 0 4px;gap:5px;font-size:12px}
+#welcome .onboarding-pause{margin:12px 0 0;font-size:11px;color:#aebc9d}
+#welcome .welcome-actions{margin-top:10px}
+#welcome .tutorial-btn{width:100%}
+#tutorialComplete .onboarding-flourish{display:flex;justify-content:center;gap:22px;margin-bottom:12px}
+@media(max-height:420px) and (min-width:480px){
+ #welcome>div{width:min(540px,calc(100% - 24px));padding:10px 14px;display:grid;grid-template-columns:1fr 1fr;column-gap:16px}
+ #welcome .onboarding-kicker,#welcome h2,#welcome .welcome-sub,#welcome .onboarding-trail{grid-column:1}
+ #welcome .onboarding-first{grid-column:2;grid-row:1/4;margin:0;align-self:center}
+ #welcome .onboarding-mouse{grid-column:2;grid-row:4;margin:0}
+ #welcome .onboarding-keys,#welcome .onboarding-pause,#welcome .welcome-actions{grid-column:1/-1}
+ #welcome .onboarding-kicker{font-size:9px;letter-spacing:.8px;margin-bottom:4px}
+ #welcome h2{font-size:18px;white-space:nowrap;margin-bottom:5px}
+ #welcome .welcome-sub{font-size:11px;line-height:1.35}
+ #welcome .onboarding-trail{gap:3px;padding:5px 0;margin-top:5px}
+ #welcome .onboarding-trail li{font-size:10px;gap:1px;white-space:nowrap}
+ #welcome .onboarding-trail img{width:28px;height:28px}
+ #welcome .onboarding-first{font-size:12px;line-height:1.4}
+ #welcome .onboarding-first strong{font-size:18px}
+ #welcome .onboarding-mouse{font-size:11px;line-height:1.35}
+ #welcome .onboarding-keys{padding-top:3px;margin-top:5px}
+ #welcome .onboarding-keys summary{min-height:24px;font-size:11px}
+ #welcome .onboarding-pause{font-size:10px;margin-top:4px}
+ #welcome .welcome-actions{margin-top:6px}
+}
