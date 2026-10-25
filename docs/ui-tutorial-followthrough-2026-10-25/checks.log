@@ -1,0 +1,51 @@
+
+$ node tests/tutorial-overlay-followthrough.mjs
+Tutorial overlay follow-through PASS: stale wheel dismissal, same-stage retention and dynamic lesson obstacle clearance.
+
+$ node tests/notification-lane.mjs
+notification lane checks: PASS
+
+$ node tests/mandatory-tutorial.mjs
+Mandatory simplified tutorial test suite: PASS
+
+$ node tests/overlay-placement.mjs
+Overlay placement PASS: player/target avoidance and complete bounds at desktop, laptop and 800x600 edge/centre cases.
+
+$ node tests/ui-art-direction.mjs
+UI art-direction checks: PASS
+
+$ node tests/information-input.mjs
+Information input boundary PASS: native panel navigation/typing, retained pointer barriers and world shortcuts.
+
+$ node tests/context-guidance.mjs
+contextual icon guidance checks: PASS
+
+$ node tests/contextual-interactions.mjs
+Four dietary anatomies, read-only queries, exact-target/no-fallback, ambiguity, stale feeding descriptors, keyed collection and attack fallback PASS
+
+$ node tests/public-export.mjs
+public-export: exact reachable modules and runtime assets only PASS
+
+$ node tools/canonical-source-audit.mjs
+{
+  "schema": "genvo8.canonical-audit/1",
+  "status": "PASS",
+  "entrypoint": "src/main.js",
+  "totalSourceModules": 424,
+  "runtimeReachableModules": 416,
+  "runtimeDependencyFiles": 429,
+  "toolOrTestModules": [
+    "src/lineage/phenotype-resolver.js",
+    "src/lineage/swimming-review.js",
+    "src/organisms/tissue-construction.js",
+    "src/organisms/tissue-ledger.js",
+    "src/persistence/fauna-page-checkpoint.js",
+    "src/render/authored-draft-compiler.js",
+    "src/render/fauna.js",
+    "src/ui/food-choice-view.js"
+  ],
+  "registeredParts": 97,
+  "proceduralSpriteIds": 97,
+  "identicalSourceCopies": [],
+  "errors": []
+}

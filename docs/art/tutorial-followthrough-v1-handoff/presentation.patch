@@ -1,0 +1,87 @@
+diff --git a/assets/ui/natural-history-survival.css b/assets/ui/natural-history-survival.css
+index f4b8f6f8..a5c74011 100644
+--- a/assets/ui/natural-history-survival.css
++++ b/assets/ui/natural-history-survival.css
+@@ -207,7 +207,7 @@
+ #tutorial:not(.compact)[data-guide-title^="STEP "]:after{display:none}
+ #tutorial:not(.compact)[data-guide-title^="STEP "] strong{font:700 16px/1.25 Georgia,serif;letter-spacing:0;color:#f2dfa1}
+ #tutorial:not(.compact)[data-guide-title^="STEP "] span{font:12px/1.35 Verdana,sans-serif;margin-top:4px;color:#d1d9bd}
+-@media(max-height:420px) and (min-width:480px){#tutorial:not(.compact)[data-guide-title^="STEP "]{width:204px;padding:8px 10px}#tutorial:not(.compact)[data-guide-title^="STEP "] .objective-step{width:24px;height:28px;background-size:24px 24px;margin-right:6px}}
++@media(max-height:420px) and (min-width:480px){#tutorial:not(.compact)[data-guide-title^="STEP "]{top:10px;left:10px;right:auto;width:calc(100% - 96px);padding:8px 10px}#tutorial:not(.compact)[data-guide-title^="STEP "] .objective-step{width:24px;height:28px;background-size:24px 24px;margin-right:6px}}
+ 
+ /* Spacing for the native onboarding pages; surface ownership stays above. */
+ #welcome h2{margin:0 0 6px}
+@@ -251,3 +251,11 @@
+  #welcome .onboarding-pause{font-size:10px;margin-top:4px}
+  #welcome .welcome-actions{margin-top:6px}
+ }
++
++@media(max-width:650px),(max-height:420px){
++ #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack{display:flex;flex-direction:column;width:min(230px,calc(100vw - 20px));max-height:40px;overflow-y:auto;overscroll-behavior:contain;pointer-events:auto;scrollbar-width:thin;scrollbar-color:#b7bc8a #102219}
++ #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack>*{flex:none}
++ #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack [data-channel=critical]{order:-3}
++ #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack [data-channel=action]{order:-2}
++ #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack .notice-lane{padding:5px 8px;font-size:11px}
++}
+diff --git a/src/ui/context-radial.js b/src/ui/context-radial.js
+index 4642186e..17a6d663 100644
+--- a/src/ui/context-radial.js
++++ b/src/ui/context-radial.js
+@@ -5,7 +5,7 @@ const actionIdentity=a=>a.key||a.id||a.label;
+ export class ContextRadial{
+  constructor({getSim,getActions,blocked,braceInput,renderer,getAnchor}){Object.assign(this,{getSim,getActions,blocked,braceInput,renderer,getAnchor});this.el=document.createElement('nav');this.el.className='context-radial';this.el.hidden=true;this.el.setAttribute('aria-label','Target quick actions');document.querySelector('#app').append(this.el);this.label=document.createElement('strong');this.label.className='radial-caption';this.help=document.createElement('p');this.help.className='radial-explanation';this.help.setAttribute('role','status');this.help.hidden=true;this.el.append(this.help);this.el.append(this.label);document.addEventListener('pointerdown',e=>{if(!this.el.contains(e.target)&&e.target.tagName!=='CANVAS')this.close(!e.target.closest('#interactionDock'))});document.addEventListener('pointermove',e=>this.pointerMoved(e));}
+  close(release=true){if(release)this.braceInput?.release();this.el.hidden=true;this.world=null;this.explanationKey=null;document.querySelector('.dock-action-reason')?.remove()}
+- show(x,y,label,keepPage=false){const focusKey=keepPage&&this.el.contains(document.activeElement)?document.activeElement.dataset.actionKey:null,explanationKey=keepPage?this.explanationKey:null;if(!keepPage){this.page=0;this.pointerEntered=false;}this.targetPoint={x,y};this.close();this.world=this.getSim();this.actor=this.world.player();this.label.textContent=label;this.help.hidden=true;this.el.style.left=x+'px';this.el.style.top=y+'px';this.footprint=null;for(const b of this.el.querySelectorAll('button'))b.remove();
++ show(x,y,label,keepPage=false){const focusKey=keepPage&&this.el.contains(document.activeElement)?document.activeElement.dataset.actionKey:null,explanationKey=keepPage?this.explanationKey:null;if(!keepPage){this.page=0;this.pointerEntered=false;}this.targetPoint={x,y};this.close();this.world=this.getSim();this.tutorialStage=this.world.uiTutorialStage;this.actor=this.world.player();this.label.textContent=label;this.help.hidden=true;this.el.style.left=x+'px';this.el.style.top=y+'px';this.footprint=null;for(const b of this.el.querySelectorAll('button'))b.remove();
+  this.signature=JSON.stringify(this.getActions().map(a=>[a.key,a.label,a.enabled,a.reason,a.state]));const all=this.getActions().filter(a=>a.label!=='Back'),pages=Math.ceil(all.length/5);this.page=Math.min(this.page||0,Math.max(0,pages-1));const actions=all.length>6?[...all.slice(this.page*5,this.page*5+5),{label:'More',enabled:true,reason:'More interaction choices',invoke:()=>{this.page=(this.page+1)%pages;this.show(x,y,label,true)}}]:all;actions.forEach((a,i)=>{const b=document.createElement('button');b.type='button';b.dataset.actionKey=actionIdentity(a);b.textContent=a.label;appendActionIcon(b,this.actor,a.label);appendActionSymbol(b,a.label);b.title=a.reason||a.label;b.setAttribute('aria-label',a.label);if(a.reason)b.setAttribute('aria-description',a.reason);b.dataset.actionState=a.state||(a.enabled?'available':'unavailable');const explain=()=>{const current=this.getActions().find(v=>a.key?v.key===a.key:v.label===a.label);this.explanationKey=actionIdentity(a);this.explain(current?.reason||a.label);};b.onmouseenter=explain;b.onfocus=explain;b.setAttribute('aria-disabled',String(!a.enabled));const angle=-Math.PI/2+i*Math.PI*2/actions.length;b.style.left=(Math.cos(angle)*70)+'px';b.style.top=(Math.sin(angle)*70)+'px';b.onclick=()=>{if(this.blocked()||this.world!==this.getSim()||this.actor!==this.getSim().player()){this.close();return}const current=a.label==='More'?a:this.getActions().find(v=>a.key?v.key===a.key:v.label===a.label);if(!current?.enabled){this.explanationKey=actionIdentity(a);this.explain(current?.reason||'No longer available');return}current.invoke();this.signature=null};if(a.label==='Hold Brace'){b.setAttribute('aria-pressed','false');this.braceInput?.bind(b)}this.el.append(b)});this.el.hidden=false;this.layout(true);if(explanationKey){const current=this.getActions().find(a=>actionIdentity(a)===explanationKey);if(current){this.explanationKey=explanationKey;this.explain(current.reason||current.label)}}if(focusKey){const focused=[...this.el.querySelectorAll('button')].find(b=>b.dataset.actionKey===focusKey);focused?.focus({preventScroll:true})}
+  }
+  pointerMoved(e){
+@@ -22,9 +22,10 @@ export class ContextRadial{
+   if(this.el.hidden)return;const x=parseFloat(this.el.style.left)||0,y=parseFloat(this.el.style.top)||0;
+   if(!this.footprint){const boxes=[...this.el.children].filter(e=>!e.hidden).map(e=>e.getBoundingClientRect()).filter(r=>r.width&&r.height);if(!boxes.length)return;const left=Math.min(...boxes.map(r=>r.left)),top=Math.min(...boxes.map(r=>r.top)),right=Math.max(...boxes.map(r=>r.right)),bottom=Math.max(...boxes.map(r=>r.bottom));this.footprint={left:left-x,top:top-y,width:right-left,height:bottom-top};}
+   const f=this.footprint,current={left:x+f.left,top:y+f.top,right:x+f.left+f.width,bottom:y+f.top+f.height},protectedRects=gameplayProtectedRects(this.renderer),dock=document.querySelector('#interactionDock')?.getBoundingClientRect(),viewport={left:0,top:0,right:innerWidth,bottom:Math.min(innerHeight,dock?.top||innerHeight)-8};
+-  if(!force&&current.left>=10&&current.top>=10&&current.right<=viewport.right-10&&current.bottom<=viewport.bottom-10&&!protectedRects.some(r=>overlapArea(current,r)))return;
+-  const anchor=this.getAnchor?.()||this.targetPoint,preferred={left:anchor.x+(anchor.x<innerWidth/2?160:-160)+f.left,top:anchor.y+f.top},obstacles=[...document.querySelectorAll('#stageUtilities>button,#stageUtilities #quickMenu:not([hidden]),#tutorial:not([hidden])')].map(e=>e.getBoundingClientRect());
++  const obstacles=[...document.querySelectorAll('#stageUtilities>button,#stageUtilities #quickMenu:not([hidden]),#tutorial:not([hidden])')].map(e=>e.getBoundingClientRect());
++  if(!force&&current.left>=10&&current.top>=10&&current.right<=viewport.right-10&&current.bottom<=viewport.bottom-10&&![...protectedRects,...obstacles].some(r=>overlapArea(current,r)))return;
++  const anchor=this.getAnchor?.()||this.targetPoint,preferred={left:anchor.x+(anchor.x<innerWidth/2?160:-160)+f.left,top:anchor.y+f.top};
+   const placed=chooseOverlayPlacement({width:f.width,height:f.height,viewport,preferred,previous:current,protectedRects,obstacles});this.el.style.left=(placed.left-f.left)+'px';this.el.style.top=(placed.top-f.top)+'px';
+  }
+- update(){if(this.braceInput?.read()){this.layout();return}if(!this.el.hidden&&this.world===this.getSim()&&this.actor===this.getSim().player()&&!this.blocked()){const key=JSON.stringify(this.getActions().map(a=>[a.key,a.label,a.enabled,a.reason,a.state]));if(key!==this.signature)this.show(this.targetPoint.x,this.targetPoint.y,this.label.textContent,true)}if(!this.el.hidden&&(this.world!==this.getSim()||this.actor!==this.getSim().player()||this.blocked()))this.close();this.layout()}
++ update(){if(!this.el.hidden&&this.world===this.getSim()&&this.tutorialStage!==this.world.uiTutorialStage){this.close();return}if(this.braceInput?.read()){this.layout();return}if(!this.el.hidden&&this.world===this.getSim()&&this.actor===this.getSim().player()&&!this.blocked()){const key=JSON.stringify(this.getActions().map(a=>[a.key,a.label,a.enabled,a.reason,a.state]));if(key!==this.signature)this.show(this.targetPoint.x,this.targetPoint.y,this.label.textContent,true)}if(!this.el.hidden&&(this.world!==this.getSim()||this.actor!==this.getSim().player()||this.blocked()))this.close();this.layout()}
+ }
+diff --git a/src/ui/notification-center.js b/src/ui/notification-center.js
+index 41c7bb2d..aa8d47fa 100644
+--- a/src/ui/notification-center.js
++++ b/src/ui/notification-center.js
+@@ -9,14 +9,14 @@ export class NotificationCenter{
+  post(text,ms,tone,channel='action'){if(channel==='action'){const lane=this.lanes.get(channel);clearTimeout(lane.timer);lane.active=false}if(this.lanes.get(channel)?.active&&this.lanes.get(channel).el.textContent===text)return;this.queue.post(channel,{text,ms,tone});this.advance(channel)}
+  advance(channel){const lane=this.lanes.get(channel);if(lane.active)return;const notice=this.queue.take(channel);if(!notice){lane.el.hidden=true;return}lane.active=true;lane.el.textContent=notice.text;lane.el.dataset.tone=notice.tone;lane.el.hidden=false;this.layout(true);lane.timer=setTimeout(()=>{lane.active=false;lane.el.hidden=true;this.advance(channel);this.layout(true)},notice.ms)}
+  clear(){for(const [channel,lane] of this.lanes){clearTimeout(lane.timer);lane.active=false;lane.el.hidden=true;this.queue.channels.get(channel).length=0}this.root.hidden=true;this.clearRail()}
+- clearRail(){this.setScrollable(false);const app=this.root.parentElement;if(app?.hasAttribute('data-notice-rail')){delete app.dataset.noticeRail;app.style.removeProperty('--notice-rail-top')}}
++ clearRail(){this.setScrollable(!this.root.hidden&&this.root.scrollHeight>this.root.clientHeight);const app=this.root.parentElement;if(app?.hasAttribute('data-notice-rail')){delete app.dataset.noticeRail;app.style.removeProperty('--notice-rail-top')}}
+  setScrollable(on){const root=this.root;if(on&&!root.hasAttribute('data-notice-scroll')){root.dataset.noticeScroll='';root.tabIndex=0;root.setAttribute('aria-description','Use arrow keys or Page Up and Page Down to scroll world feedback. Escape closes the information panel.')}else if(!on&&root.hasAttribute('data-notice-scroll')){delete root.dataset.noticeScroll;root.removeAttribute('tabindex');root.removeAttribute('aria-description')}}
+  layout(force=false){const root=this.root;if(![...this.lanes.values()].some(l=>!l.el.hidden)&&!root.querySelector('#processingCapacity:not([hidden]),#saveStatus:not([hidden])')){root.hidden=true;this.clearRail();return}root.hidden=false;
+  const app=root.parentElement,widePanel=innerWidth<=650&&[...document.querySelectorAll('.readable-panel:not([hidden]),.knowledge-panel:not([hidden]),#fieldGuide:not([hidden])')].some(el=>{const r=el.getBoundingClientRect();return r.width>innerWidth*.75&&r.height>0&&getComputedStyle(el).visibility!=='hidden'});
+  if(widePanel){if(!app.hasAttribute('data-notice-rail'))app.dataset.noticeRail='';root.style.left='8px';root.style.top='8px';const top=Math.ceil(root.getBoundingClientRect().bottom+8)+'px';if(app.style.getPropertyValue('--notice-rail-top')!==top)app.style.setProperty('--notice-rail-top',top);this.setScrollable(root.scrollHeight>root.clientHeight);return}
+- this.clearRail();const protectedRects=gameplayProtectedRects(this.renderer),current=root.getBoundingClientRect();if(!force&&performance.now()-(this.lastLayout||0)<120&&!protectedRects.some(r=>overlapArea(current,r)))return;this.lastLayout=performance.now();
++ this.clearRail();const protectedRects=gameplayProtectedRects(this.renderer),lesson=document.querySelector('#tutorial:not([hidden])[data-guide-title^="STEP "]');if(lesson)protectedRects.push(lesson.getBoundingClientRect());const current=root.getBoundingClientRect();if(!force&&performance.now()-(this.lastLayout||0)<120&&!protectedRects.some(r=>overlapArea(current,r)))return;this.lastLayout=performance.now();
+  const obstacles=[...document.querySelectorAll('.context-radial:not([hidden])>*:not([hidden]),#stageUtilities>button,#stageUtilities #quickMenu:not([hidden]),#tutorial:not([hidden]),.knowledge-panel:not([hidden]),.journal-page,#interactionDock:not([hidden])')].map(e=>e.getBoundingClientRect());
+  const bounds=root.getBoundingClientRect(),dock=document.querySelector('#interactionDock')?.getBoundingClientRect(),viewport={left:0,top:0,right:innerWidth,bottom:Math.max(bounds.height+20,Math.min(innerHeight,dock?.top||innerHeight)-8)};
+- const placed=chooseOverlayPlacement({width:bounds.width,height:bounds.height,viewport,preferred:{left:10,top:10},previous:{left:current.left,top:current.top},protectedRects,obstacles});root.style.left=placed.left+'px';root.style.top=placed.top+'px';
++ const placed=chooseOverlayPlacement({width:bounds.width,height:bounds.height,viewport,preferred:{left:10,top:10},previous:{left:current.left,top:current.top},protectedRects,obstacles});root.style.left=placed.left+'px';root.style.top=placed.top+'px';this.setScrollable(root.scrollHeight>root.clientHeight);
+  }
+ }
+diff --git a/src/ui/tutorial.js b/src/ui/tutorial.js
+index 62f2654b..c930e167 100644
+--- a/src/ui/tutorial.js
++++ b/src/ui/tutorial.js
+@@ -157,7 +157,7 @@ export class TutorialController{
+     if(!mate&&this.sim.starterMateId)mate=this.sim.animals.find(a=>a.id===this.sim.starterMateId&&a.alive);
+     if(!mate)mate=this.sim.animals.find(a=>a.alive&&a.species===p.species&&a.id!==p.id&&a.sex!==p.sex);
+     if(mate)this.renderer.guideTarget={x:mate.x,y:mate.y,label:'Mate'};else this.renderer.guideTarget=null;
+-    this.render('STEP 3/3 — FIND A MATE',"Your journey doesn't end with you. Find the highlighted compatible creature. Click it and choose Court.",{step:'3/3',compact:false});
++    this.render('STEP 3/3 — FIND A MATE',"Your journey doesn't end with you. Find the highlighted compatible creature. Click it and choose Court. Choose Approach, then Play. A partner may decline.",{step:'3/3',compact:false});
+   }
+   update(force=false){
+     if(this.worldInputBlocked())return;

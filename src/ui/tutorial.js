@@ -157,7 +157,7 @@ export class TutorialController{
     if(!mate&&this.sim.starterMateId)mate=this.sim.animals.find(a=>a.id===this.sim.starterMateId&&a.alive);
     if(!mate)mate=this.sim.animals.find(a=>a.alive&&a.species===p.species&&a.id!==p.id&&a.sex!==p.sex);
     if(mate)this.renderer.guideTarget={x:mate.x,y:mate.y,label:'Mate'};else this.renderer.guideTarget=null;
-    this.render('STEP 3/3 — FIND A MATE',"Your journey doesn't end with you. Find the highlighted compatible creature. Click it and choose Court.",{step:'3/3',compact:false});
+    this.render('STEP 3/3 — FIND A MATE',"Your journey doesn't end with you. Find the highlighted compatible creature. Click it and choose Court. Choose Approach, then Play. A partner may decline.",{step:'3/3',compact:false});
   }
   update(force=false){
     if(this.worldInputBlocked())return;

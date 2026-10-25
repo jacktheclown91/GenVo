@@ -207,7 +207,7 @@
 #tutorial:not(.compact)[data-guide-title^="STEP "]:after{display:none}
 #tutorial:not(.compact)[data-guide-title^="STEP "] strong{font:700 16px/1.25 Georgia,serif;letter-spacing:0;color:#f2dfa1}
 #tutorial:not(.compact)[data-guide-title^="STEP "] span{font:12px/1.35 Verdana,sans-serif;margin-top:4px;color:#d1d9bd}
-@media(max-height:420px) and (min-width:480px){#tutorial:not(.compact)[data-guide-title^="STEP "]{width:204px;padding:8px 10px}#tutorial:not(.compact)[data-guide-title^="STEP "] .objective-step{width:24px;height:28px;background-size:24px 24px;margin-right:6px}}
+@media(max-height:420px) and (min-width:480px){#tutorial:not(.compact)[data-guide-title^="STEP "]{top:10px;left:10px;right:auto;width:calc(100% - 96px);padding:8px 10px}#tutorial:not(.compact)[data-guide-title^="STEP "] .objective-step{width:24px;height:28px;background-size:24px 24px;margin-right:6px}}
 
 /* Spacing for the native onboarding pages; surface ownership stays above. */
 #welcome h2{margin:0 0 6px}
@@ -250,4 +250,12 @@
  #welcome .onboarding-keys summary{min-height:24px;font-size:11px}
  #welcome .onboarding-pause{font-size:10px;margin-top:4px}
  #welcome .welcome-actions{margin-top:6px}
+}
+
+@media(max-width:650px),(max-height:420px){
+ #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack{display:flex;flex-direction:column;width:min(230px,calc(100vw - 20px));max-height:40px;overflow-y:auto;overscroll-behavior:contain;pointer-events:auto;scrollbar-width:thin;scrollbar-color:#b7bc8a #102219}
+ #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack>*{flex:none}
+ #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack [data-channel=critical]{order:-3}
+ #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack [data-channel=action]{order:-2}
+ #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack .notice-lane{padding:5px 8px;font-size:11px}
 }

@@ -217,3 +217,7 @@ Integration follow-up: the current shared-worktree playable gate completed with 
 ## October25 bounded creator behavior-recognition review
 
 A two-minute native1x AUTO observation of the genuine bundled Day31 ecosystem continued toDay49 under its historical clock policy, without authored biology or developer panels. The creator directly answered **Clearly recognizable** when asked whether different creatures purposes were recognizable from movement/expression without logs. The [artifact, native evidence and attributable creator response](living-creature-review-2026-10-25/README.md) bind that response to the video hash. This accepts the behavior-recognition target for that clip only; complete action/anatomy/context coverage, listening, GPU performance, full v1 and release acceptance remain separate and open.
+
+## October 25 tutorial follow-through
+
+The illustrated welcome and mandatory lessons now have genuine native food/water/mouse-Court/Approach/Play/completion evidence. Stale target wheels and notification overlaps were reproduced and repaired; six-size water/mate layouts, native feedback scrolling, actual mating, completion pause and Continue pass. [Source-bound receipts and rejected drafts](ui-tutorial-followthrough-2026-10-25/README.md) distinguish this from exhaustive anatomy/danger coverage, GPU performance and creator/full-v1 acceptance.
