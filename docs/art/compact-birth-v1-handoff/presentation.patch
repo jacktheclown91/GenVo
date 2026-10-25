@@ -1,0 +1,13 @@
+diff --git a/assets/ui/natural-history-young.css b/assets/ui/natural-history-young.css
+index c767e43f..b1a54854 100644
+--- a/assets/ui/natural-history-young.css
++++ b/assets/ui/natural-history-young.css
+@@ -34,3 +34,8 @@
+ 
+ #youngSummary .birth-capacity-host{flex:0 0 auto}
+ #youngSummary .birth-capacity-host #processingCapacity{position:static!important;inset:auto!important;transform:none!important;max-width:none!important;width:auto!important;box-sizing:border-box;margin:0 0 10px;padding:8px 10px!important;font:11px/1.5 Verdana,sans-serif!important;border-radius:2px!important}
++
++/* A short viewport needs one reading surface, not a tiny nested slit. */
++@media(max-height:420px){#youngSummary .legacy-card{display:block;overflow:auto}#youngSummary .birth-scroll{overflow:visible;padding-right:0}#youngSummary .legacy-actions{position:static}}
++
++#youngSummary{z-index:40}
