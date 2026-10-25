@@ -1,0 +1,5 @@
+/* Preserve the generation scene while keeping short-height content reachable. */
+#transition{z-index:40}
+@media(max-height:420px){
+ #transition .transition-stage{box-sizing:border-box;min-height:0;max-height:calc(100% - 24px);overflow:auto;overscroll-behavior:contain;align-content:start;padding:12px;scrollbar-width:thin;scrollbar-color:#a5ad7a #102017}
+}

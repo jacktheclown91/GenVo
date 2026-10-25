@@ -1,0 +1,35 @@
+[0.1s] Opening exported build for Journey 1 & Journey 2 
+[5.4s] Opening cards completed {"cardsCount":1}
+[6.8s] Manual WASD movement verified at 1x {"manualMoveDist":1.82}
+[20.9s] Manual courtship result {"conception":{"day":1,"pregnantId":110,"attempts":0},"attempts":0}
+[25.1s] Journey 1 (1x manual + AUTO evaluation) complete {"count":890,"medianMs":16.7,"p95Ms":33.4,"p99Ms":50.1,"maxMs":200.1,"over100Ms":2,"over250Ms":0}
+[25.2s] Advancing through Journey 2 (Conception -> Birth -> YoungSummary -> Care -> Winter -> G2 Maturity) in native browser loop 
+[25.2s] Journey 2 progression {"day":1,"season":"SPRING","speed":1,"auto":true,"alive":true,"children":0,"oldestAge":0,"heirs":0}
+[40.2s] Journey 2 progression {"day":3,"season":"SPRING","speed":4,"auto":true,"alive":true,"children":0,"oldestAge":0,"heirs":0}
+[56.3s] Journey 2 progression {"day":5,"season":"SPRING","speed":4,"auto":true,"alive":true,"children":0,"oldestAge":0,"heirs":0}
+[71.3s] Journey 2 progression {"day":7,"season":"SPRING","speed":4,"auto":true,"alive":true,"children":0,"oldestAge":0,"heirs":0}
+[87.4s] Journey 2 progression {"day":9,"season":"SUMMER","speed":4,"auto":true,"alive":true,"children":0,"oldestAge":0,"heirs":0}
+[102.5s] Journey 2 progression {"day":11,"season":"SUMMER","speed":4,"auto":true,"alive":true,"children":0,"oldestAge":0,"heirs":0}
+[117.6s] Journey 2 progression {"day":13,"season":"SUMMER","speed":4,"auto":true,"alive":true,"children":0,"oldestAge":0,"heirs":0}
+[132.8s] Journey 2 progression {"day":15,"season":"SUMMER","speed":4,"auto":true,"alive":true,"children":0,"oldestAge":0,"heirs":0}
+[142.5s] Your First Young modal (#youngSummary) opened! {"day":17,"childrenCount":4}
+[148.2s] Journey 2 progression {"day":17,"season":"AUTUMN","speed":4,"auto":true,"alive":true,"children":4,"oldestAge":0,"heirs":0}
+[163.4s] Journey 2 progression {"day":19,"season":"AUTUMN","speed":4,"auto":true,"alive":true,"children":4,"oldestAge":2,"heirs":0}
+[178.6s] Journey 2 progression {"day":21,"season":"AUTUMN","speed":4,"auto":true,"alive":true,"children":4,"oldestAge":4,"heirs":0}
+[193.9s] Journey 2 progression {"day":23,"season":"AUTUMN","speed":4,"auto":true,"alive":true,"children":4,"oldestAge":6,"heirs":0}
+[207.1s] Winter snowpack underfoot; testing Shift+KeyE winter snow hydration {"day":25}
+[210.8s] Journey 2 progression {"day":25,"season":"WINTER","speed":1,"auto":true,"alive":true,"children":4,"oldestAge":8,"heirs":0}
+[226.3s] Journey 2 progression {"day":27,"season":"WINTER","speed":4,"auto":true,"alive":true,"children":4,"oldestAge":10,"heirs":0}
+[241.5s] Journey 2 progression {"day":29,"season":"WINTER","speed":4,"auto":true,"alive":true,"children":4,"oldestAge":12,"heirs":0}
+[256.9s] Journey 2 progression {"day":31,"season":"WINTER","speed":4,"auto":true,"alive":true,"children":4,"oldestAge":14,"heirs":0}
+[272.1s] Journey 2 progression {"day":33,"season":"SPRING","speed":4,"auto":true,"alive":true,"children":4,"oldestAge":16,"heirs":0}
+[287.2s] Journey 2 progression {"day":35,"season":"SPRING","speed":4,"auto":true,"alive":true,"children":4,"oldestAge":18,"heirs":0}
+[302.4s] Journey 2 progression {"day":37,"season":"SPRING","speed":4,"auto":true,"alive":true,"children":4,"oldestAge":20,"heirs":0}
+[317.6s] Journey 2 progression {"day":39,"season":"SPRING","speed":4,"auto":true,"alive":true,"children":4,"oldestAge":22,"heirs":0}
+[332.7s] Journey 2 progression {"day":41,"season":"SUMMER","speed":4,"auto":true,"alive":true,"children":4,"oldestAge":24,"heirs":0}
+[348.8s] Journey 2 progression {"day":43,"season":"SUMMER","speed":4,"auto":true,"alive":true,"children":4,"oldestAge":26,"heirs":0}
+[363.8s] Journey 2 progression {"day":45,"season":"SUMMER","speed":4,"auto":true,"alive":true,"children":4,"oldestAge":28,"heirs":0}
+[367.8s] [BROWSER CONSOLE] [SIM-DEATH] Creature #199 (gen 2, age 17.0) died on Day 45 (SUMMER) at (20.3, 16.0) cause: predation E=20.8 H=22.1 HP=-19.9 
+[377s] G2 heir reached maturity and is eligible for voluntary handoff! {"day":47,"season":"SUMMER","speed":4,"paused":false,"auto":true,"playerId":109,"alive":true,"energy":88.5,"hydration":78,"pregnant":false,"childrenCount":3,"oldestChildAge":30,"heirsCount":1,"youngSummaryOpen":false,"creatureLabOpen":false,"transitionOpen":false,"legacyOpen":false,"snowUnderfoot":true}
+[380.1s] Generation 2 reveal modal captured {"title":"Generation 2 begins","chips":[]}
+[460s] First Legacy summary modal captured {"title":"Your Legacy Begins"}
