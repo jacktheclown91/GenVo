@@ -3,3 +3,8 @@
 @media(max-height:420px){
  #transition .transition-stage{box-sizing:border-box;min-height:0;max-height:calc(100% - 24px);overflow:auto;overscroll-behavior:contain;align-content:start;padding:12px;scrollbar-width:thin;scrollbar-color:#a5ad7a #102017}
 }
+
+#legacySummary{z-index:40}
+#legacySummary .legacy-card{border-radius:2px;text-shadow:none;font:13px/1.5 Verdana,sans-serif;color:#d9dec6;background:#102017;border-color:#879268}
+#legacySummary h2{font-family:Georgia,serif;color:#eee3bd}
+#legacySummary .legacy-actions button{border-radius:2px;min-height:44px;filter:none}

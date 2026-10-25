@@ -1,0 +1,74 @@
+{
+  "scope": "Authored isolated milestone fixture using production LegacySummary and interactionDock components; layout and dismissal only, not live succession.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "layouts": [
+    {
+      "width": 1024,
+      "height": 768,
+      "card": {
+        "x": 192,
+        "y": 170.03125,
+        "width": 640,
+        "height": 427.9375,
+        "top": 170.03125,
+        "right": 832,
+        "bottom": 597.96875,
+        "left": 192
+      },
+      "modalZ": 30,
+      "menuZ": 28
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "card": {
+        "x": 16,
+        "y": 16,
+        "width": 536,
+        "height": 288,
+        "top": 16,
+        "right": 552,
+        "bottom": 304,
+        "left": 16
+      },
+      "modalZ": 30,
+      "menuZ": 31
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "card": {
+        "x": 16,
+        "y": 16,
+        "width": 288,
+        "height": 536,
+        "top": 16,
+        "right": 304,
+        "bottom": 552,
+        "left": 16
+      },
+      "modalZ": 30,
+      "menuZ": 31
+    }
+  ],
+  "scrolled": {
+    "top": 156,
+    "button": {
+      "x": 145.34375,
+      "y": 241.125,
+      "width": 179.625,
+      "height": 39,
+      "top": 241.125,
+      "right": 324.96875,
+      "bottom": 280.125,
+      "left": 145.34375
+    }
+  },
+  "closed": {
+    "hidden": true,
+    "open": false,
+    "paused": false
+  }
+}
