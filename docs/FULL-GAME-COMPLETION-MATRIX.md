@@ -221,3 +221,5 @@ A two-minute native1x AUTO observation of the genuine bundled Day31 ecosystem co
 ## October 25 tutorial follow-through
 
 The illustrated welcome and mandatory lessons now have genuine native food/water/mouse-Court/Approach/Play/completion evidence. Stale target wheels and notification overlaps were reproduced and repaired; six-size water/mate layouts, native feedback scrolling, actual mating, completion pause and Continue pass. [Source-bound receipts and rejected drafts](ui-tutorial-followthrough-2026-10-25/README.md) distinguish this from exhaustive anatomy/danger coverage, GPU performance and creator/full-v1 acceptance.
+
+Tutorial follow-through integration: all 113 playable checks passed on b370b778 with source hashes matching the native mouse walkthrough. The linked tutorial evidence retains the full log and separates automated integration from observed gameplay and remaining creator/full-v1 acceptance.

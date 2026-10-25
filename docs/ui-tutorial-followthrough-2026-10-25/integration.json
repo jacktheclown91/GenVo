@@ -1,0 +1,16 @@
+{
+  "schema": "genvo.tutorial-integration/1",
+  "source": "b370b77880444d3775049f4b5291ef0662b64ab5",
+  "gate": "node tools/check-playable.mjs",
+  "exitCode": 0,
+  "passed": 113,
+  "worktreeCleanAtCompletion": true,
+  "runtimeFilesMatchBrowserReceipt": true,
+  "note": "Gate began with the exact runtime bytes subsequently committed at this source. No runtime edits occurred during the run.",
+  "logSha256": "2e0a2792751e0a57fbb00a8b316982ad8d0a26033ad891f5873824acbaa8560a",
+  "limits": [
+    "Automated integration is separate from the native mouse tutorial and screenshot observations",
+    "No creator artistic acceptance inferred",
+    "No full v1, GPU or canonical migration acceptance"
+  ]
+}
