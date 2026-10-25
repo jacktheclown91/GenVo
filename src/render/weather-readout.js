@@ -15,7 +15,7 @@ export function wrapWeatherText(text,maxWidth,measure){
  const lines=[];let line='';for(const word of String(text).split(/\s+/)){const next=line?line+' '+word:word;if(line&&measure(next)>maxWidth){lines.push(line);line=word}else line=next}if(line)lines.push(line);return lines;
 }
 export function weatherReadoutPlacement({width,height,protectedRects=[],obstacles=[],model=null,measureTitle=t=>t.length*7,measureDetail=t=>t.length*6}){
- const widths=width<=480?[250,120]:[250],candidates=widths.map(requested=>{const labelWidth=Math.min(requested,Math.max(1,width-20)),gutter=model?.storm?(labelWidth<=120?20:30):35,titleLines=model?wrapWeatherText(model.title,labelWidth-gutter,measureTitle):[],detailLines=model?wrapWeatherText(model.detail,labelWidth-gutter,measureDetail):[],labelHeight=model?14*titleLines.length+13*Math.max(0,detailLines.length-1)+24:38;
+ const widths=width<=480||height<=420?[250,120]:[250],candidates=widths.map(requested=>{const labelWidth=Math.min(requested,Math.max(1,width-20)),gutter=model?.storm?(labelWidth<=120?20:30):35,titleLines=model?wrapWeatherText(model.title,labelWidth-gutter,measureTitle):[],detailLines=model?wrapWeatherText(model.detail,labelWidth-gutter,measureDetail):[],labelHeight=model?14*titleLines.length+13*Math.max(0,detailLines.length-1)+24:38;
  return{...chooseOverlayPlacement({width:labelWidth,height:labelHeight,viewport:{left:0,top:0,right:width,bottom:height},preferred:{left:12,top:height-212},protectedRects,obstacles,gap:10}),titleLines,detailLines};});
  candidates.sort((a,b)=>a.score[0]-b.score[0]||a.score[1]-b.score[1]||b.width-a.width||a.score[2]-b.score[2]);return candidates[0];
 }

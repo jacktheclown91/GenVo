@@ -161,3 +161,18 @@
 #notificationStack #saveStatus[hidden]{display:none!important}
 
 #notificationStack #saveStatus.error{border-color:#bd8c72;border-left-width:3px;background:#31271f;color:#f1c8aa}
+
+/* Short landscape windows reserve the world for the creature. */
+@media(max-height:420px) and (min-width:480px){
+ #interactionDock,#interactionDock.is-compact{grid-template-columns:minmax(0,1fr);padding:5px 7px;gap:4px}
+ #interactionDock .dock-player,#interactionDock.is-compact .dock-player{display:flex;flex-direction:row;align-items:center;gap:6px;padding:0}
+ #interactionDock .dock-player>canvas,#interactionDock.is-compact .dock-player>canvas{width:24px;height:22px;flex:none}
+ #interactionDock .dock-player>strong{flex:0 1 100px;min-width:0;max-width:100px;font-size:10px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+ #interactionDock .dock-player #hud{flex:1 1 auto;min-width:180px;width:auto}
+ #interactionDock #hud .needs{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+ #interactionDock #hud .need{height:18px}
+ #interactionDock .dock-location{flex:none;margin:0}
+ #interactionDock .creature-stage-resources{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;scrollbar-color:#a7b68a #14261a;padding-bottom:4px}
+ #interactionDock .creature-stage-resources button{flex:none;min-height:36px}
+ #interactionDock .creature-stage-resources kbd{display:none}
+}

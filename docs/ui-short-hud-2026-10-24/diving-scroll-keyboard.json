@@ -1,0 +1,66 @@
+{
+  "scope": "Public guided Shore swimmer start, manual movement into perceived water and actual dive. No authored depth, air or natural ancestry.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "initial": {
+    "x": 125.5,
+    "y": 61.5,
+    "water": 0,
+    "status": {
+      "enabled": false,
+      "reason": "Enter water with enough depth to submerge."
+    }
+  },
+  "waterTarget": {
+    "kind": "water",
+    "i": 8061,
+    "x": 125.5,
+    "y": 62.5,
+    "label": "Water",
+    "d": 24
+  },
+  "after": {
+    "depth": 0.16000000298023223,
+    "status": {
+      "enabled": true,
+      "reason": "Rise through the real water column to breathe at the surface.",
+      "surfacing": true
+    },
+    "body": {
+      "left": 466,
+      "top": 339.27999997138977,
+      "right": 558,
+      "bottom": 431.27999997138977,
+      "width": 92,
+      "height": 92
+    }
+  },
+  "hud": "Surface 0.16 · Air 97%\nPgDn",
+  "short": {
+    "body": {
+      "left": 238,
+      "top": 115.27999997138977,
+      "right": 330,
+      "bottom": 207.27999997138977,
+      "width": 92,
+      "height": 92
+    },
+    "dock": {
+      "x": 8,
+      "y": 219,
+      "width": 552,
+      "height": 93,
+      "top": 219,
+      "right": 560,
+      "bottom": 312,
+      "left": 8
+    },
+    "scrollWidth": 644,
+    "clientWidth": 536,
+    "commands": 19,
+    "scrolled": 108,
+    "lastEnabled": "family-travel",
+    "focused": "family-travel"
+  }
+}
