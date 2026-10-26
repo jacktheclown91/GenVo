@@ -1,7 +1,5 @@
 // Review-server prototype only. Not imported by the game or public export.
-function groundPaintHash(x,y,salt){let n=(Math.imul(x,374761393)+Math.imul(y,668265263)+Math.imul(salt,1442695041))>>>0;n=Math.imul(n^(n>>>13),1274126177)>>>0;return((n^(n>>>16))>>>0)/4294967295}
-function groundGrainSample(world,x,y,k){const ax=Math.floor(x+(world.regionOrigin?.x||0)),ay=Math.floor(y+(world.regionOrigin?.y||0)),seed=world.seedHash||0;return{x:Math.floor(groundPaintHash(ax+k*3,ay,1453^seed)*32),y:Math.floor(groundPaintHash(ay+k*5,ax,1459^seed)*32),light:groundPaintHash(ax*31+k,ay*17-k,1451^seed)>.55}}
-function groundMicroSample(world,x,y,k){const ax=Math.floor(x+(world.regionOrigin?.x||0)),ay=Math.floor(y+(world.regionOrigin?.y||0)),seed=world.seedHash||0,h=groundPaintHash(ax+k*17,ay-k*13,(79+k)^seed);return{draw:h<.34,light:h<.17,x:2+Math.floor(groundPaintHash(ax,ay,(83+k)^seed)*12),y:2+Math.floor(groundPaintHash(ay,ax,(89+k)^seed)*12)}}
+const {groundPaintHash,groundGrainSample,groundMicroSample}=require('../src/render/ground-paint.js');
 function prototypeRenderer(source){
  const replace=(old,next)=>{if(source.split(old).length!==2)throw Error('Expected one exact ground paint witness');source=source.replace(old,next)};
  replace("for(let k=0;k<14;k++){const g=hash2(x*31+k,y*17-k,1451),gx=Math.floor(hash2(x+k*3,y,1453)*32),gy=Math.floor(hash2(y+k*5,x,1459)*32);c.fillStyle=g>.55?'rgba(214,226,150,.10)':'rgba(14,34,20,.14)';c.fillRect(px+gx*u/2,py+gy*u/2,u/2,u/2)}", "for(let k=0;k<14;k++){const g=groundGrainSample(this.sim.world,x,y,k);c.fillStyle=g.light?'rgba(214,226,150,.10)':'rgba(14,34,20,.14)';c.fillRect(px+g.x*u/2,py+g.y*u/2,u/2,u/2)}");

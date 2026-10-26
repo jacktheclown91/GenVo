@@ -1,3 +1,4 @@
+import {groundGrainSample,groundMicroSample} from './ground-paint.js';
 import {courtshipCameraTarget} from './courtship-camera.js';
 import {drawTutorialGuide} from './tutorial-guide-art.js';
 import {drawNestArt,drawEggArt} from './clutch-art.js';
@@ -599,7 +600,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     c.save();c.globalAlpha*=hierarchy.microAlpha;
     if(m>.54&&patch>.42){c.fillStyle='rgba(31,67,45,.22)';c.fillRect(px+(micro>.5?1:7)*u,py+(9+Math.floor(patch*3))*u,(5+Math.floor(micro*4))*u,2*u)}
     if(f<.38&&patch>.54){c.fillStyle='rgba(112,88,52,.25)';c.fillRect(px+(3+Math.floor(micro*8))*u,py+(2+Math.floor(hash2(x,y,71)*8))*u,(2+Math.floor(patch*3))*u,(1+Math.floor(micro*2))*u)}
-    for(let k=0;k<2;k++){const h=hash2(x+k*17,y-k*13,79+k);if(h<.34){c.fillStyle=h<.17?'rgba(197,194,126,.16)':'rgba(24,53,36,.20)';c.fillRect(px+(2+Math.floor(hash2(x,y,83+k)*12))*u,py+(2+Math.floor(hash2(y,x,89+k)*12))*u,u,u)}}
+    for(let k=0;k<2;k++){const g=groundMicroSample(w,x,y,k);if(g.draw){c.fillStyle=g.light?'rgba(197,194,126,.16)':'rgba(24,53,36,.20)';c.fillRect(px+g.x*u,py+g.y*u,u,u)}}
     this.drawWorldComposition(px,py,u,x,y);c.restore();
     this.drawOrganicHabitat(px,py,u,x,y);
     c.save();c.globalAlpha*=hierarchy.accentAlpha;
@@ -633,7 +634,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
       const w=this.sim.world,season=this.sim.season,f=w.fertility[i],m=w.moisture[i],patch=hash2(x>>1,y>>1,53),micro=hash2(x,y,67);
       this.drawOrganicLandBase(0,0,1,x,y,season,hash,identity);
       tc.save();tc.globalAlpha*=hierarchy.microAlpha;
-      for(let k=0;k<2;k++){const h=hash2(x+k*17,y-k*13,79+k);if(h<.34){tc.fillStyle=h<.17?'rgba(197,194,126,.16)':'rgba(24,53,36,.20)';tc.fillRect(2+Math.floor(hash2(x,y,83+k)*12),2+Math.floor(hash2(y,x,89+k)*12),1,1)}}
+      for(let k=0;k<2;k++){const g=groundMicroSample(w,x,y,k);if(g.draw){tc.fillStyle=g.light?'rgba(197,194,126,.16)':'rgba(24,53,36,.20)';tc.fillRect(g.x,g.y,1,1)}}
       this.drawWorldComposition(0,0,1,x,y);tc.restore();
       this.drawOrganicHabitat(0,0,1,x,y);
       tc.save();tc.globalAlpha*=hierarchy.accentAlpha;
@@ -702,7 +703,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
       c.fillStyle=color;c.fillRect(px+cx*step*u,py+cy*step*u,step*u+.2,step*u+.2);
     }
     // v1.41.0: fine ground grain, one art pixel each, so open ground reads as 32-pixel texture.
-    for(let k=0;k<14;k++){const g=hash2(x*31+k,y*17-k,1451),gx=Math.floor(hash2(x+k*3,y,1453)*32),gy=Math.floor(hash2(y+k*5,x,1459)*32);c.fillStyle=g>.55?'rgba(214,226,150,.10)':'rgba(14,34,20,.14)';c.fillRect(px+gx*u/2,py+gy*u/2,u/2,u/2)}
+    for(let k=0;k<14;k++){const g=groundGrainSample(this.sim.world,x,y,k);c.fillStyle=g.light?'rgba(214,226,150,.10)':'rgba(14,34,20,.14)';c.fillRect(px+g.x*u/2,py+g.y*u/2,u/2,u/2)}
   }
 
   shoreLandColor(x,y,season,hash){
