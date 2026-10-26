@@ -126,7 +126,7 @@ import {beginPageFaunaTick,visitLivingFaunaByPage,completePageFaunaTick} from '.
 import {WEATHER_PATTERNS,createWeatherState,advanceWeatherTo,validWeatherState} from '../ecology/weather.js';
 import {startDisplay,displayStatus} from '../gameplay/threat-display.js';
 import {STRANGER_RESPONSES,strangerResponse} from '../ecology/stranger-response.js';
-import {DAY_CLOCK,applyDayClock,bioFactor} from './day-clock.js';
+import {DAY_CLOCK,applyDayClock,bioFactor,clockScopedSteps} from './day-clock.js';
 import {noteAmbientMove,ambientSpent} from '../ecology/ambient-allowance.js';
 import {METABOLISM,METABOLISM_REFERENCE_BODY,metabolismActive,basalScale,starvationDamage,thirstDamage,conditionSpeed,waterSeekShare,topUpHere,sipFor} from '../ecology/metabolism-policy.js';
 
@@ -366,7 +366,12 @@ export class Simulation{
   // The tick body. It pauses only between phases and inside the daily vegetation
   // work; a pause reads and writes nothing. A phase method overridden on the
   // instance (observers, profilers) is called whole so the wrapper sees it.
-  *updateSteps(input=null,{externalPlayerControl=false,populationModel=false}={}){applyDayClock(this);
+  *updateSteps(input=null,{externalPlayerControl=false,populationModel=false}={}){
+    return yield* clockScopedSteps(this,this.orderedTickSteps(input,{externalPlayerControl,populationModel}));
+  }
+  // Internal ordered body; public updateSteps guards each resume with this
+  // world's clock. Keep every existing phase, yield and RNG operation in order.
+  *orderedTickSteps(input=null,{externalPlayerControl=false,populationModel=false}={}){applyDayClock(this);
     if(this.paused)return;
     // The active region opens its borders to resident neighbours each tick.
     if(this.regionalDispersalRules&&this.planetaryTravel)setDispersalContext(this,dispersalContextFor(this,regionKey(this.world.regionOrigin),this.tickCount));

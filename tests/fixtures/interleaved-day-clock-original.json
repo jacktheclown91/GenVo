@@ -1,0 +1,242 @@
+{
+  "schema": 1,
+  "originalCommit": "01458fe9ddb82e27dd91615b56cd7e5c0b11eb9b",
+  "originalFingerprint": "7a0aa4649f3ccfd471da8294e956f4fef4f63d3022e781947f3ed73991597369",
+  "scope": "Independent original-source controls before any clock correction; exact per-engine graphs, never corrected interleaving outcomes.",
+  "engines": {
+    "22": {
+      "node": "v22.23.4",
+      "observations": [
+        {
+          "label": "empty/legacy/0",
+          "tick": 0,
+          "day": 1,
+          "rng": 3912300345,
+          "sha256": "905b397565b9bdc21ec4a5f5b148316ca6c8cba617cb77a61b5544206ed4be43"
+        },
+        {
+          "label": "empty/legacy/6",
+          "tick": 6,
+          "day": 1,
+          "rng": 1448898862,
+          "sha256": "76886e2f91e99770d3332e035a7375035e917b67654e0520cd74680ff52606cf"
+        },
+        {
+          "label": "empty/legacy/48",
+          "tick": 48,
+          "day": 2,
+          "rng": 1384957665,
+          "sha256": "8dc0f840b71c98d61aa761aebdc7633b7d4dcd478030d243a4948da535d5c76d"
+        },
+        {
+          "label": "empty/legacy/120",
+          "tick": 120,
+          "day": 3,
+          "rng": 1888910941,
+          "sha256": "6eff3be4150c176c3a9bc2e08a44bbcc485c9856f54161694b5c9b046b478e00"
+        },
+        {
+          "label": "empty/legacy/240",
+          "tick": 240,
+          "day": 6,
+          "rng": 4160488833,
+          "sha256": "86f4be85671dcf6baf2df08a2cabd0a895bce3eeddd4ac6c037cb04ea259c5a0"
+        },
+        {
+          "label": "empty/modern/0",
+          "tick": 0,
+          "day": 1,
+          "rng": 1265062061,
+          "sha256": "756b001d27bd801607c319ab23494586253254b1f77510bf8217c88a05288377"
+        },
+        {
+          "label": "empty/modern/6",
+          "tick": 6,
+          "day": 1,
+          "rng": 3096627874,
+          "sha256": "900ad56269e5ed26b6268e93436a9d0f4d7e1260a816e4f40bd0b877e8763dab"
+        },
+        {
+          "label": "empty/modern/48",
+          "tick": 48,
+          "day": 1,
+          "rng": 3032686677,
+          "sha256": "bfa8e2a05e59083234ac2e27c8ac19b7e07ef6f8721562af787446ef76524025"
+        },
+        {
+          "label": "empty/modern/120",
+          "tick": 120,
+          "day": 1,
+          "rng": 3536639953,
+          "sha256": "a01a80bafdaeaa1ccb3b1cb8612dde7ca27840a7751f86e4e4858b3c3ab79431"
+        },
+        {
+          "label": "empty/modern/240",
+          "tick": 240,
+          "day": 2,
+          "rng": 1513250549,
+          "sha256": "6f6c7bebbf62a3b299d9da6cf27cbf9cfe9d6ff6b602fdc58ebca4fa9294da83"
+        },
+        {
+          "label": "animals/legacy/0",
+          "tick": 0,
+          "day": 1,
+          "rng": 1898815364,
+          "sha256": "2784679d3d0930536bc5a220e25b5def9265b66b01a4ff8c4624dcea3b02f5c9"
+        },
+        {
+          "label": "animals/legacy/6",
+          "tick": 6,
+          "day": 1,
+          "rng": 995664904,
+          "sha256": "5e09ee1b8d31090773b0b14d60149c6034b6958f88219f6d730836155020fbfe"
+        },
+        {
+          "label": "animals/legacy/48",
+          "tick": 48,
+          "day": 2,
+          "rng": 512144339,
+          "sha256": "6337f91918d6fdf4543880d9415e290d728ebb57d6e3feb7cf4d8f579274803c"
+        },
+        {
+          "label": "animals/modern/0",
+          "tick": 0,
+          "day": 1,
+          "rng": 614964833,
+          "sha256": "e63f9389da17ffb0c167394478decbb90331b116cc522d71d32e54b35ca15c86"
+        },
+        {
+          "label": "animals/modern/6",
+          "tick": 6,
+          "day": 1,
+          "rng": 1241570919,
+          "sha256": "cfa02777c684baa704b81415d2255f1b620d40bd0de2d2bdbea619086b7ad5ae"
+        },
+        {
+          "label": "animals/modern/48",
+          "tick": 48,
+          "day": 1,
+          "rng": 4118458007,
+          "sha256": "56f6fee5c8f332d489c81eba9d45871da981c480b617f1719a945ae401007f9f"
+        }
+      ]
+    },
+    "24": {
+      "node": "v24.14.0",
+      "observations": [
+        {
+          "label": "empty/legacy/0",
+          "tick": 0,
+          "day": 1,
+          "rng": 3912300345,
+          "sha256": "905b397565b9bdc21ec4a5f5b148316ca6c8cba617cb77a61b5544206ed4be43"
+        },
+        {
+          "label": "empty/legacy/6",
+          "tick": 6,
+          "day": 1,
+          "rng": 1448898862,
+          "sha256": "76886e2f91e99770d3332e035a7375035e917b67654e0520cd74680ff52606cf"
+        },
+        {
+          "label": "empty/legacy/48",
+          "tick": 48,
+          "day": 2,
+          "rng": 1384957665,
+          "sha256": "8dc0f840b71c98d61aa761aebdc7633b7d4dcd478030d243a4948da535d5c76d"
+        },
+        {
+          "label": "empty/legacy/120",
+          "tick": 120,
+          "day": 3,
+          "rng": 1888910941,
+          "sha256": "6eff3be4150c176c3a9bc2e08a44bbcc485c9856f54161694b5c9b046b478e00"
+        },
+        {
+          "label": "empty/legacy/240",
+          "tick": 240,
+          "day": 6,
+          "rng": 4160488833,
+          "sha256": "86f4be85671dcf6baf2df08a2cabd0a895bce3eeddd4ac6c037cb04ea259c5a0"
+        },
+        {
+          "label": "empty/modern/0",
+          "tick": 0,
+          "day": 1,
+          "rng": 1265062061,
+          "sha256": "756b001d27bd801607c319ab23494586253254b1f77510bf8217c88a05288377"
+        },
+        {
+          "label": "empty/modern/6",
+          "tick": 6,
+          "day": 1,
+          "rng": 3096627874,
+          "sha256": "900ad56269e5ed26b6268e93436a9d0f4d7e1260a816e4f40bd0b877e8763dab"
+        },
+        {
+          "label": "empty/modern/48",
+          "tick": 48,
+          "day": 1,
+          "rng": 3032686677,
+          "sha256": "bfa8e2a05e59083234ac2e27c8ac19b7e07ef6f8721562af787446ef76524025"
+        },
+        {
+          "label": "empty/modern/120",
+          "tick": 120,
+          "day": 1,
+          "rng": 3536639953,
+          "sha256": "a01a80bafdaeaa1ccb3b1cb8612dde7ca27840a7751f86e4e4858b3c3ab79431"
+        },
+        {
+          "label": "empty/modern/240",
+          "tick": 240,
+          "day": 2,
+          "rng": 1513250549,
+          "sha256": "6f6c7bebbf62a3b299d9da6cf27cbf9cfe9d6ff6b602fdc58ebca4fa9294da83"
+        },
+        {
+          "label": "animals/legacy/0",
+          "tick": 0,
+          "day": 1,
+          "rng": 1898815364,
+          "sha256": "2784679d3d0930536bc5a220e25b5def9265b66b01a4ff8c4624dcea3b02f5c9"
+        },
+        {
+          "label": "animals/legacy/6",
+          "tick": 6,
+          "day": 1,
+          "rng": 995664904,
+          "sha256": "088b2c74eaffedb4f0d233d6f873667efb0b7fd7b05076bed687092a655e638a"
+        },
+        {
+          "label": "animals/legacy/48",
+          "tick": 48,
+          "day": 2,
+          "rng": 512144339,
+          "sha256": "032674c797f0f25cfd1be9c396ff553b45ebff8ffba9773ba36a3a7a3ef269bc"
+        },
+        {
+          "label": "animals/modern/0",
+          "tick": 0,
+          "day": 1,
+          "rng": 614964833,
+          "sha256": "e63f9389da17ffb0c167394478decbb90331b116cc522d71d32e54b35ca15c86"
+        },
+        {
+          "label": "animals/modern/6",
+          "tick": 6,
+          "day": 1,
+          "rng": 1241570919,
+          "sha256": "b0ca08349f9a74cce1cc63997645498a009b9ab9cacd84783d8611bc4affe019"
+        },
+        {
+          "label": "animals/modern/48",
+          "tick": 48,
+          "day": 1,
+          "rng": 4118458007,
+          "sha256": "2d2d388569e95808554685adfe648768dad9d4e3d66ab79603b8f12992e7c551"
+        }
+      ]
+    }
+  }
+}

@@ -79,6 +79,135 @@
       "gameplaySourceUnchangedFrom": "f12b8cc111ae126655294954862696f5b2ecd48d",
       "completeGateChecks": 118,
       "remoteAcceptanceAtCapture": "Pending new exact-head CI"
+    },
+    "C": {
+      "scope": "Existing day-clock execution context and owner-specific regional budget; no full CFG conversion.",
+      "originalSourceCommit": "01458fe9ddb82e27dd91615b56cd7e5c0b11eb9b",
+      "originalRuntimeFingerprint": "7a0aa4649f3ccfd471da8294e956f4fef4f63d3022e781947f3ed73991597369",
+      "originalControls": "tests/fixtures/interleaved-day-clock-original.json",
+      "correctedSourceRecording": "REJECTED; fixture SHA256 unchanged",
+      "preFixPublicApiEvidence": {
+        "scope": "Controlled timing diagnosis through actual beginTick/continueTick and snapshot-flush APIs; no biological authority edits.",
+        "results": [
+          {
+            "modern": false,
+            "completion": "resume",
+            "paused": true,
+            "control": {
+              "tick": 48,
+              "day": 2,
+              "rng": 4019693575
+            },
+            "interleaved": {
+              "tick": 48,
+              "day": 1,
+              "rng": 4019693575
+            },
+            "pending": false
+          },
+          {
+            "modern": false,
+            "completion": "save",
+            "paused": true,
+            "control": {
+              "tick": 48,
+              "day": 2,
+              "rng": 4019693575
+            },
+            "interleaved": {
+              "tick": 48,
+              "day": 1,
+              "rng": 4019693575
+            },
+            "pending": false
+          },
+          {
+            "modern": true,
+            "completion": "resume",
+            "paused": true,
+            "control": {
+              "tick": 48,
+              "day": 1,
+              "rng": 3394491652
+            },
+            "interleaved": {
+              "tick": 48,
+              "day": 2,
+              "rng": 3394491652
+            },
+            "pending": false
+          },
+          {
+            "modern": true,
+            "completion": "save",
+            "paused": true,
+            "control": {
+              "tick": 48,
+              "day": 1,
+              "rng": 3394491652
+            },
+            "interleaved": {
+              "tick": 48,
+              "day": 2,
+              "rng": 3394491652
+            },
+            "pending": false
+          }
+        ]
+      },
+      "preFixBackgroundBudgetEvidence": {
+        "scope": "Actual archived planetary owners, controlled border placement and zero debt; budget validation only, no staged animals/resources.",
+        "results": [
+          {
+            "modern": false,
+            "maxTicks": 48,
+            "accepted": true
+          },
+          {
+            "modern": false,
+            "maxTicks": 49,
+            "accepted": true
+          },
+          {
+            "modern": true,
+            "maxTicks": 240,
+            "accepted": false,
+            "message": "Unbounded remote biological work."
+          },
+          {
+            "modern": true,
+            "maxTicks": 241,
+            "accepted": false,
+            "message": "Unbounded remote biological work."
+          }
+        ]
+      },
+      "mechanical": {
+        "originalCommit": "01458fe9ddb82e27dd91615b56cd7e5c0b11eb9b",
+        "orderedTickBodyByteIdentical": true,
+        "newExecutionBoundary": "clockScopedSteps before each next/return/throw",
+        "newSavePolicy": false
+      },
+      "exactOriginalControlsNode22": "PASS",
+      "exactOriginalControlsNode24": "PASS",
+      "interleavedWholeSlicedDirectSaveRestore": "PASS",
+      "frameStepperPaidControlsEachPolicy": 384,
+      "frameStepperEcologyTicksEachPolicy": 48,
+      "realArchivedBiologyCompleteStateParity": "PASS both policies",
+      "iteratorReturnThrowCleanup": "PASS both policies",
+      "existingChecks": [
+        "modernization-baseline Node22/24",
+        "day-clock",
+        "sliced-ticks",
+        "e18-offscreen-biology",
+        "architecture",
+        "canonical-source-audit",
+        "public-export",
+        "119-check partition contract Node22/24"
+      ],
+      "completeGateChecks": 119,
+      "remoteAcceptanceAtCapture": "Pending new exact-head CI",
+      "configurationHazardsRemaining": "Global compatibility view and direct out-of-context subsystem calls; broad per-instance settings isolation is not claimed."
     }
   },
   "remaining": [
@@ -97,6 +226,21 @@
       "url": "https://github.com/jacktheclown91/GenVo/actions/runs/40378519553",
       "status": "Success",
       "workersCompleted": 2
+    },
+    {
+      "stage": "B",
+      "type": "remote-acceptance",
+      "sourceCommit": "01458fe9ddb82e27dd91615b56cd7e5c0b11eb9b",
+      "url": "https://github.com/jacktheclown91/GenVo/actions/runs/40380946318",
+      "status": "Success",
+      "workersCompleted": 2,
+      "completeGateChecks": 118
     }
+  ],
+  "currentRequiredStages": [
+    "D: measured mature-world optimization",
+    "E: natural multigenerational investigation",
+    "verified separate release candidate",
+    "final source/CI/compatibility/handoff audit"
   ]
 }

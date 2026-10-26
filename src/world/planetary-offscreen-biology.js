@@ -4,6 +4,7 @@
 // silently accelerated by a UI call; remote work is bounded by the active
 // life stride and return trips refuse excessive time debt.
 import {CFG} from '../sim/config.js';
+import {dayTicksFor} from '../sim/day-clock.js';
 import {markRegionalOwnerDirty} from './regional-revision.js';
 import {takeWarmRegion,warmCandidate,keepWarmRegion} from './regional-warm-cache.js';
 import {dispersalContextFor,setDispersalContext,deliverEmigrants,takeEmigrants} from './planetary-dispersal.js';
@@ -17,7 +18,8 @@ export const OFFSCREEN_BIOLOGY=Object.freeze({
  schema:1,ticksPerPass:CFG.lifeStride,regionsPerPass:1,
  // No population ceiling: a regional population is bounded only by its real
  // ecology. Replay work grows with it and is scheduled, never culled.
- // One world day, read live: the day length is a per-world policy (sim/day-clock.js).
+ // Legacy inspection view of the currently activated world. Replay validation
+ // below reads the archived owner's policy directly, never this shared view.
  get maxEntryTicks(){return CFG.dayTicks}
 });
 const safe=n=>Number.isSafeInteger(n)&&n>=0;
@@ -82,7 +84,8 @@ export function highId(sim){
 export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass,warm=false,dispersal=null}={}){
  const active={tickCount};
  if(!Number.isSafeInteger(reservedNextId)||reservedNextId<1)throw Error('Invalid reserved regional identity watermark.');
- if(!safe(maxTicks)||maxTicks>OFFSCREEN_BIOLOGY.maxEntryTicks)
+ // Another simulation may currently own CFG; this archive owns its work bound.
+ if(!safe(maxTicks)||maxTicks>dayTicksFor(session?.snapshot?.core))
   throw Error('Unbounded remote biological work.');
  // Distant regions under regional-demography/1 run the same kernel and
  // ledgers; only per-individual behavior is replaced by the population model.

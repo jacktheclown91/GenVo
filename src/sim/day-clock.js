@@ -13,10 +13,34 @@ import {CFG} from './config.js';
 export const DAY_CLOCK=Object.freeze({policy:'day-clock/30s',secondsPerDay:30,bioStepsPerDay:8});
 export const LEGACY_DAY_TICKS=48;
 export function dayTicksFor(sim){return sim?.dayClockRules===DAY_CLOCK.policy?DAY_CLOCK.secondsPerDay*CFG.simHz:LEGACY_DAY_TICKS}
-// CFG.dayTicks and CFG.bioStride are shared by every module; the simulation being advanced sets them.
+// CFG.dayTicks and CFG.bioStride are shared compatibility views; the simulation
+// being advanced or resumed activates its own recorded policy.
 export function applyDayClock(sim){
  const ticks=dayTicksFor(sim);if(CFG.dayTicks===ticks)return ticks;
  CFG.dayTicks=ticks;CFG.bioStride=ticks/DAY_CLOCK.bioStepsPerDay;return ticks;
+}
+// CFG remains the compatibility view for existing modules. A yielded tick can
+// resume after another world changed that view, so every iterator operation
+// must reactivate its actual owner's saved policy, including abrupt cleanup.
+// This owns execution context, not a second clock or a new biological rule.
+export function clockScopedSteps(sim, steps) {
+  return {
+    next(value) {
+      applyDayClock(sim);
+      return steps.next(value);
+    },
+    return(value) {
+      applyDayClock(sim);
+      return steps.return(value);
+    },
+    throw(error) {
+      applyDayClock(sim);
+      return steps.throw(error);
+    },
+    [Symbol.iterator]() {
+      return this;
+    }
+  };
 }
 // Share of a day's biological change that one decision-time update carries (1 on recorded worlds).
 export function bioFactor(){return CFG.lifeStride/CFG.bioStride}

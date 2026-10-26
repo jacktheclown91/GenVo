@@ -14,6 +14,7 @@ const syntax=[
   'tests/save-concurrent-requests.mjs'
 ];
 const runtime=[
+  'tests/interleaved-day-clock.mjs',
   'tests/care-expression.mjs',
   'tests/spatial-index.mjs',
   'tests/reproductive-similarity.mjs',

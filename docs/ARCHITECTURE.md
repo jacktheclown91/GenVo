@@ -5,6 +5,7 @@
 ## Entry points and orchestration
 
 - `src/main.js` is the browser game entry. It starts the native UI, input, current Simulation, renderer, saving, user selection and source-built scenarios. The optional Creature Lab remains a separate authoring tool.
+- `src/sim/day-clock.js` retains recorded 6/30-second policies and the shared compatibility view. clockScopedSteps reactivates the actual owner before each tick-iterator operation; Simulation retains the byte-identical ordered biological body. Regional replay validates work bounds against the archived core policy. Direct out-of-context subsystem calls remain a future isolation boundary.
 - `src/sim/frame-stepper.js` admits ordered control steps and simulation ticks under a frame-work budget. One simulation step remains atomic. A slow botanical operation is **not** solved merely by lowering simulation frequency.
 - `src/sim/planetary-work-queue.js` admits at most one destination, border, residency or far-biology background operation per animation frame. Async operations hold admission until settlement; world replacement clears queued work. Canonical tick and publication owners remain unchanged.
 - `src/render/regional-scene.js` promotes native neighbouring terrain and retains an archived departing view during canonical border transfer. It keeps the existing canvas visible, invalidates actor/interaction state and adds no biology owner. Same-world geology uses revision-aware bounded terrain refresh; ordinary unrelated loads still clear caches.

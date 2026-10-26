@@ -20,7 +20,7 @@ All tasks start from live main, preserve unrelated work, and update the continua
 - Invariants: bucket/property identities, RNG untouched, stable neighbor order and callback semantics.
 - Acceptance: original deterministic signatures unchanged; no hidden duplicate index or changed save fields; CI green.
 
-## 3. Repair funded nursing fixture (implemented; 118-check exact-head CI pending)
+## 3. Repair funded nursing fixture (completed at 01458fe9; 118-check CI 40380946318 passed)
 
 - Goal/files: `tests/care-expression.mjs`; consult `docs/art/final-visual-integration-handoff/NURSING-PRECONDITION-DIAGNOSIS.md` and existing care/mammalian modules.
 - Reuse: legitimate paid birth and canonical `family.tend`; retain actual resource transfer assertions.
@@ -29,14 +29,14 @@ All tasks start from live main, preserve unrelated work, and update the continua
 - Invariants: zero-water mothers cannot fund milk; nursing debits conserved reserves; no biology changes to satisfy fixture.
 - Acceptance: previously failing positive fixture passes for a valid reason and zero-water regression passes; explain setup versus natural observation.
 
-## 4. Document and test interleaved day-clock policy (GitHub + Actions)
+## 4. Protect interleaved day-clock execution (implemented; 119-check exact-head CI pending)
 
 - Goal/files: `src/sim/day-clock.js`, config and a dedicated regression test; initially change tests/documentation only.
 - Reuse: `applyDayClock`, `dayTicksFor`, versioned save policies and existing clock tests.
-- Implementation: observe legacy/new-policy worlds interleaved at constructor/update/restore boundaries; record current global mutation and exact resulting state. Propose per-simulation ownership separately after coverage.
+- Implementation: original-source Node 22/24 controls and failing public resume/save/background probes preceded correction. clockScopedSteps now guards each iterator operation, while regional budget validation reads the archived core policy. The original ordered biological body is unchanged. Full CFG conversion remains separate work.
 - Tests: day-clock, sliced ticks, baseline and restore parity.
 - Invariants: no silent clock migration, new policy, changed global defaults or save format.
-- Acceptance: reproducible current behavior documented, not a sweeping config rewrite.
+- Acceptance: exact original isolated outcomes, real alternating/sliced/saved/restored worlds, actual FrameStepper movement and foreground/background parity pass. Verify the latest exact-head 119-check CI before remote acceptance; do not claim universal per-instance settings isolation.
 
 ## Later: renderer and save subsystem boundaries (local browser needed)
 

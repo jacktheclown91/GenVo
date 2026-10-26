@@ -18,11 +18,29 @@ The original positive `care-expression` fixture now obtains maternal water throu
 
 The original post-birth zero-water state still refuses milk. Eight separate controlled variants cover zero water, protected water/energy reserve floors, the wrong lactation bond, weaning, egg offspring, absent mammary anatomy and a dead caregiver. Refusal preserves both parties' reserves and feeding records. Existing snapshot/paint parity, expiry, separation, ownership, combat precedence, real egg/hatching and 256 native care-pose checks remain. Node 22/24 care contracts and the existing mammalian-care contract pass; no `src/` bytes changed from Stage A.
 
-The repaired care contract is now included in the full gate, bringing it to 118 checks with matching partition coverage. Exact-head complete CI acceptance is pending for this new test/tooling checkpoint.
+The repaired care contract is now included in the full gate, bringing it to 118 checks with matching partition coverage. Exact-head complete [118-check CI passed](https://github.com/jacktheclown91/GenVo/actions/runs/40380946318) for nursing checkpoint `01458fe9ddb82e27dd91615b56cd7e5c0b11eb9b`.
+
+## C. Interleaved simulation clock protection
+
+Tests preceded source changes. Original controls were captured from untouched `01458fe9` on Node 22 and 24, with the complete runtime fingerprint locked in the capture command. Corrected source is refused as a recording input; the original fixture remains unchanged. Exact independent snapshots cover empty worlds through ticks 0/6/48/120/240 and populated AUTO worlds through 0/6/48.
+
+Two defects were demonstrated and corrected inside the existing authorities:
+
+| Controlled case | Original isolated behavior | Broken interleaving | Corrected behavior |
+| --- | --- | --- | --- |
+| Legacy tick 48, resume or save flush | Day 2 | Day 1 | Day 2 |
+| Modern tick 48, resume or save flush | Day 1 | Day 2 | Day 1 |
+| Legacy archive, 49-tick budget while modern policy is current | Reject beyond 48 | Accepted | Rejected |
+| Modern archive, 240-tick budget while legacy policy is current | Permit its recorded day | Rejected | Permitted |
+
+`clockScopedSteps` activates the actual Simulation's recorded policy before each iterator next/return/throw. Public `updateSteps` remains a generator and delegates the byte-identical ordered tick body. No phase, yield, equation, RNG operation, policy version or saved field is added to that body. Background budget validation now uses `dayTicksFor` on the archived core, rather than an unrelated world's global view. Actual background replay still uses the existing canonical kernel and publication/identity/conservation checks.
+
+Node 22/24 regressions pass: independent/alternating updates, save and restore under the other clock, resumed continuation, every-yield slicing, direct iterators, pending-save flushing, real archived-region budgets and complete foreground/background state parity. Real FrameStepper admission exercises 384 paid-movement control steps and 48 ecology ticks per policy, matching isolated complete state. Iterator input/error/cancellation cleanup is covered. Existing original modernization goldens, day-clock daily physiology, sliced ticks, E18 conserved biology, architecture, source audit and public export pass. The full gate now has 119 checks; new exact-head CI acceptance remains pending.
+
+**Ownership limits:** CFG remains a shared compatibility view of the last activated world. Static sim/control rates and life stride remain intentionally shared. The old `OFFSCREEN_BIOLOGY.maxEntryTicks` inspection getter remains compatible, but runtime validation no longer treats it as the archive's authority. Ad hoc subsystem calls outside guarded execution may still depend on the active context; complete per-world ownership of every mutable configuration/registry is future work. This is the demonstrated-defect correction and tested execution interface, not a sweeping configuration conversion.
 
 ## Remaining stages
 
-- **C — Configuration:** test independent, alternating, saved/restored and background execution for modern and historical clocks. An initial actual-simulation probe demonstrates a resume defect: a modern tick paused before a legacy-world update advances day at tick 48 instead of tick 240. Isolated modern execution correctly remains on day 1. The RNG state is equal in this minimal case. This is a diagnosis, not yet a corrected or broadly isolated configuration architecture.
 - **D — Performance:** profile genuine day-30/day-100 checkpoints and multi-region work, including biology, transfers, saves, browser frame/long-task behavior, retained memory and backlog. Measure and implement at least one proven redundant-work bottleneck; preserve equations, ordering, RNG and exact continuation. Not yet performed in this pass.
 - **E — Natural evolution:** run multigenerational natural experiments and observe actual mating, conceptions, births, juvenile survival, genetic/anatomical variation, geography, branching/gene flow, specialization, extinction and recognized species. No spawned special animals, edited reserves, teleportation, forced mutations or species quota. Prior controlled courtship and short field trials do not satisfy this stage.
 
