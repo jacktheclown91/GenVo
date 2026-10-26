@@ -1,0 +1,9 @@
+# Actual public flight and burrow review
+
+Export source e54154844d136db250052f07acfcdfb1650a4927; Chromium at 1366 by 768; seed PLANET-RELEASE-1. Public authored capability presets, native New World/Begin/Start and action inputs. No position, physiology, weather or completion flags were assigned. These are explicitly guided authored founders, not evolved ancestors.
+
+Flight: native 6 takes off, held D steers 2.115 tiles, and native 6 lands on actual dry ground. Actual takeoff costs six energy and subsequent flight consumes more. Inspected screenshots show raised flight posture, wings, ground shadow, Land control and return to the grounded body. No page errors. This is one manual flight, not proof of AUTO, every anatomy, water crossing, wind extremes, or creator acceptance. Native simulation ran during observations; screenshots and receipts are not atomic tick/frame pairs. Tutorial food progression also advanced during this run; no manual eating or tutorial completion is claimed here.
+
+Burrow: public creation stayed on the New World form. The screenshot shows the legitimate no-viable-habitat refusal below Begin World, clipped at the lower viewport edge. The strict harness timed out waiting for Start; this is retained as a failed observation, not a successful underground review. Antigravity should evaluate the named preset's real habitat availability; presentation must not add suitable ground or force excavation. Interface follow-up: keep the creation error visible when it appears. No input retries, soil injection or alternate-seed result substitutes for this failure.
+
+Tool: tools/review-public-capability.cjs takes export root, a new output directory and flight or burrow. No runtime source changed; no integration-gate rerun or ZIP replacement is claimed. Full visual/action acceptance remains open.

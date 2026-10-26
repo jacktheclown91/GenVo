@@ -1,0 +1,86 @@
+{
+  "root": "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-torpor-frozen-web-v9yync_j\\web",
+  "kind": "flight",
+  "scope": "Actual public authored capability preset; native controls, no staged state.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "before": {
+    "tick": 6,
+    "x": 47.5,
+    "y": 65.5,
+    "energy": 114.08,
+    "exertion": 100,
+    "body": {
+      "left": 637,
+      "top": 338,
+      "right": 729,
+      "bottom": 430,
+      "width": 92,
+      "height": 92
+    },
+    "last": null
+  },
+  "takeoff": {
+    "tick": 9,
+    "x": 47.5,
+    "y": 65.5,
+    "airborne": true,
+    "energy": 108.08,
+    "exertion": 100,
+    "body": {
+      "left": 637,
+      "top": 320,
+      "right": 729,
+      "bottom": 412,
+      "width": 92,
+      "height": 92
+    },
+    "last": {
+      "type": "takeoff",
+      "actorId": 197,
+      "tick": 8
+    }
+  },
+  "moving": {
+    "tick": 16,
+    "x": 49.61547859145839,
+    "y": 65.5,
+    "airborne": true,
+    "energy": 107.5693282284016,
+    "exertion": 100,
+    "body": {
+      "left": 638,
+      "top": 320,
+      "right": 730,
+      "bottom": 412,
+      "width": 92,
+      "height": 92
+    },
+    "last": {
+      "type": "takeoff",
+      "actorId": 197,
+      "tick": 8
+    }
+  },
+  "landed": {
+    "tick": 18,
+    "x": 49.61547859145839,
+    "y": 65.5,
+    "airborne": false,
+    "energy": 107.5693282284016,
+    "exertion": 100,
+    "body": {
+      "left": 637,
+      "top": 338,
+      "right": 729,
+      "bottom": 430,
+      "width": 92,
+      "height": 92
+    },
+    "last": {
+      "type": "landing",
+      "actorId": 197,
+      "tick": 17
+    }
+  }
+}
