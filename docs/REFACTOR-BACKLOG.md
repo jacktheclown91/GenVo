@@ -11,7 +11,7 @@ All tasks start from live main, preserve unrelated work, and update the continua
 - Invariants: same instances/back-references, property insertion order, RNG, resources, save shape, deferred initialization, tick order. If SCC membership changes by inserting the composition module into the existing simulation SCC, review and record only that exact graph addition; no new cycle family.
 - Acceptance: readable composition module, materially smaller constructor/import hub, identical pre-refactor signatures, all checks pass, main CI green. No browser visual acceptance claim needed for unchanged runtime behavior.
 
-## 2. Isolate spatial bucket indexing (implemented and 117-check local gate passed; exact-head CI pending)
+## 2. Isolate spatial bucket indexing (completed at f12b8cc1; local gate and exact-head CI 40378519553 passed)
 
 - Goal/files: extract `rebuildSpatial` and `forEachNearby` mechanics from Simulation into `src/sim/spatial-index.js`, retaining public method wrappers.
 - Reuse: current bucket arrays, world size, bucket size and existing nearby consumers.
@@ -20,7 +20,7 @@ All tasks start from live main, preserve unrelated work, and update the continua
 - Invariants: bucket/property identities, RNG untouched, stable neighbor order and callback semantics.
 - Acceptance: original deterministic signatures unchanged; no hidden duplicate index or changed save fields; CI green.
 
-## 3. Repair funded nursing fixture (GitHub + Actions)
+## 3. Repair funded nursing fixture (implemented; 118-check exact-head CI pending)
 
 - Goal/files: `tests/care-expression.mjs`; consult `docs/art/final-visual-integration-handoff/NURSING-PRECONDITION-DIAGNOSIS.md` and existing care/mammalian modules.
 - Reuse: legitimate paid birth and canonical `family.tend`; retain actual resource transfer assertions.

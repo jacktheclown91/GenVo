@@ -1,11 +1,19 @@
 import assert from 'node:assert/strict';
 import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES} from '../src/organisms/species.js';
+import {CFG} from '../src/sim/config.js';
+import {MAMMAL,canLactate,milkEligible,transferMilk} from '../src/ecology/mammalian-care.js';
 import {makePlan,validatePlan} from '../src/lineage/body-plan.js';
 import {founderPlan} from '../src/lineage/body-inheritance.js';
 import {careVisualAction} from '../src/render/care-expression.js';
 import {visualActionFromIntent,behaviorVisualState} from '../src/render/behavior.js';
 import {createSimulationSnapshot} from '../src/persistence/save-manager.js';
+function assertMilkDenied(parent,child,label){
+  const reserves=animal=>({energy:animal.energy,water:animal.hydration,meals:animal.milkMeals,total:animal.milkTotal,lastMilkTick:animal.lastMilkTick});
+  const before=[reserves(parent),reserves(child)];
+  assert.equal(transferMilk(parent,child,{maximum:2}).ok,false,label);
+  assert.deepEqual([reserves(parent),reserves(child)],before,'Refused milk cannot transfer reserves or fabricate feeding records');
+}
 const sim=new Simulation('CARE-RECEIPTS-20261022',{player:true}),mother=sim.player(),father=sim.animals.find(a=>a.species==='genvo'&&a.id!==mother.id);
 const nodes=founderPlan().nodes.map(n=>({partId:!n.parent?'soft-torso':n.partId,parent:n.parent,socket:n.socket}));
 const plan=makePlan([...nodes,{partId:'fur-mantle',parent:'root',socket:'dorsal'},{partId:'live-womb',parent:'root',socket:'flank.left'},{partId:'endothermic-core',parent:'root',socket:'flank.right'},{partId:'mammary-gland',parent:'root',socket:'flank.right'}]);assert.ok(validatePlan(plan).ok);
@@ -14,13 +22,52 @@ mother.sex='F';father.sex='M';father.x=mother.x+.4;father.y=mother.y;sim.rebuild
 assert.ok(sim.tryMate(mother,father),'A staged pair must actually conceive through the unchanged authority');
 const children=sim.giveBirth(mother);assert.ok(children.length);const child=children[0];child.x=mother.x+.3;child.y=mother.y;child.intent='idle';child.energy=1;mother.intent='idle';
 assert.equal(careVisualAction(sim,mother),null,'Anatomy and offspring alone cannot claim nursing');
-const energy=mother.energy,water=mother.hydration,fed=sim.family.tend(mother,child);assert.ok(fed.ok&&fed.type==='nursing');assert.ok(mother.energy<energy&&mother.hydration<water&&child.energy>1);
+assert.ok(canLactate(mother)&&milkEligible(mother,child),'Real live birth establishes the eligible maternal bond');
+assert.ok(mother.hydration<=SPECIES.genvo.maxHydration*MAMMAL.parentWaterReserve,'Paid birth leaves this fixture below the milk-water floor');
+assertMilkDenied(mother,child,'The original unfunded post-birth fixture must refuse milk');
+// Fund the staged positive case through ordinary accessible drinking, never a
+// reserve assignment or a lowered maternal threshold. This remains a controlled
+// care/presentation fixture, not a natural survival acceptance run.
+let drinks=0;
+while(mother.hydration<SPECIES.genvo.maxHydration*MAMMAL.parentWaterReserve+2*MAMMAL.waterPerMilk){
+  const beforeDrink=mother.hydration;
+  assert.ok(sim.playerDrink().ok,'The birth parent must actually drink at accessible water');
+  assert.ok(mother.hydration>beforeDrink);
+  assert.ok(++drinks<=4,'The fixture must obtain sufficient water through bounded real actions');
+}
+assert.ok(mother.energy>SPECIES.genvo.maxEnergy*MAMMAL.parentEnergyReserve+2*MAMMAL.conversionEnergy);
+assert.equal(visualActionFromIntent(sim,mother),'drink','A fresh drinking receipt retains its presentation precedence');
+// As in the expiry checks below, advance only this unit fixture's presentation
+// clock. No biological update, new resource or natural elapsed-time claim.
+sim.tickCount+=CFG.simHz*2;
+const energy=mother.energy,water=mother.hydration,childEnergy=child.energy,childWater=child.hydration;
+const fed=sim.family.tend(mother,child);assert.ok(fed.ok&&fed.type==='nursing');assert.ok(fed.fed>0);
+assert.equal(fed.fed,2,'The fully funded fixture receives the ordinary tend operation maximum');
+assert.equal(mother.energy,energy-fed.fed*MAMMAL.conversionEnergy,'Actual maternal food pays milk conversion');
+assert.equal(mother.hydration,water-fed.fed*MAMMAL.waterPerMilk,'Actual maternal water funds milk');
+assert.equal(child.energy,childEnergy+fed.fed,'The child receives the recorded milk energy');
+assert.equal(child.hydration,Math.min(SPECIES.genvo.maxHydration,childWater+fed.fed*MAMMAL.waterPerMilk));
+assert.ok(energy-mother.energy>child.energy-childEnergy,'Milk manufacture loses energy instead of creating food');
 assert.equal(visualActionFromIntent(sim,mother),'nurse');assert.equal(visualActionFromIntent(sim,child),'suckle');
 const before=structuredClone(createSimulationSnapshot(sim,{savedAt:'care-proof'}));for(let i=0;i<100;i++){careVisualAction(sim,mother);careVisualAction(sim,child);behaviorVisualState({bodyPlan:mother.bodyPlan,action:'nurse',phase:i%8});}assert.deepEqual(createSimulationSnapshot(sim,{savedAt:'care-proof'}),before,'Presentation changes canonical state');
 assert.equal(careVisualAction(sim,mother,{moving:true}),null);mother.bracing=true;assert.equal(careVisualAction(sim,mother),null);mother.bracing=false;mother.intent='escape';assert.equal(visualActionFromIntent(sim,mother),'flee');mother.intent='idle';
 child.x+=5;assert.equal(careVisualAction(sim,mother),null,'Separated infants cannot replay nursing');child.x-=5;const time=sim.tickCount;sim.tickCount+=20;assert.equal(careVisualAction(sim,mother),null,'Care expires');sim.tickCount=time;
 const old=child.lactationParentId;child.lactationParentId=father.id+10000;assert.equal(careVisualAction(sim,child),null,'A stale owner cannot nurse');child.lactationParentId=old;
 console.log('Care receipts PASS: actual conception, funded birth and paid milk transfer; matching parent/child poses, immutable complete snapshot, expiry, separation, actor ownership, movement and combat precedence.');
+// Separate controlled refusal cases retain otherwise valid anatomy and lineage.
+// Copies change only the prerequisite under test; the canonical family is intact.
+assertMilkDenied({...mother,hydration:0},{...child},'Zero maternal water cannot fund nursing');
+assertMilkDenied({...mother,hydration:SPECIES.genvo.maxHydration*MAMMAL.parentWaterReserve},{...child},'The maternal water reserve is not milk stock');
+assertMilkDenied({...mother,energy:SPECIES.genvo.maxEnergy*MAMMAL.parentEnergyReserve},{...child},'The maternal energy reserve is not milk stock');
+assertMilkDenied({...mother},{...child,lactationParentId:father.id},'A co-parent is not the recorded lactation parent');
+assertMilkDenied({...mother},{...child,age:SPECIES.genvo.maturity*MAMMAL.weaningFraction},'Weaned offspring cannot claim milk');
+assertMilkDenied({...mother},{...child,hatchedFromEggId:777},'An egg hatchling cannot claim a live-birth milk bond');
+const noMilkPlan=makePlan(plan.nodes.filter(n=>n.partId!=='mammary-gland').map(n=>({partId:n.partId,parent:n.parent,socket:n.socket})));
+assert.ok(validatePlan(noMilkPlan).ok);
+assert.equal(canLactate({...mother,bodyPlan:noMilkPlan}),false);
+assertMilkDenied({...mother,bodyPlan:noMilkPlan},{...child},'Missing mammary anatomy cannot provide milk');
+assertMilkDenied({...mother,alive:false},{...child},'A dead parent cannot provide biological care');
+console.log('Nursing prerequisites PASS: ordinary drinking funds the positive case; low water/energy, lineage, weaning, eggs and missing/lost care anatomy refuse without resource transfers.');
 // A separate real egg operation: no presentation event or egg stock is invented.
 const eggs=new Simulation('CARE-EGG-RECEIPTS-20261022',{player:true}),layer=eggs.player(),partner=eggs.animals.find(a=>a.species==='genvo'&&a.id!==layer.id);
 const eggPlan=makePlan([...founderPlan().nodes.map(n=>({partId:n.partId,parent:n.parent,socket:n.socket})),{partId:'egg-chamber',parent:'root',socket:'flank.left'}]);assert.ok(validatePlan(eggPlan).ok);

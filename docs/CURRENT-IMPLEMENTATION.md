@@ -4,7 +4,7 @@ Reviewed October 20, 2026. Governing intent: [current design](../design/CURRENT-
 
 ## Next engineering development pass, October 26
 
-Spatial bucket rebuild/query mechanics now have a borrowed-state module with compatible Simulation wrappers, frozen original-loop comparisons and unchanged Node 22/24 snapshot goldens. All 117 local integration checks pass; new exact-head remote acceptance is pending. Nursing coverage, the demonstrated interleaved-clock defect, mature-world optimization and natural multigenerational evidence remain required stages. See [the current pass record](ENGINEERING-DEVELOPMENT-2026-10-26.md). The stable ZIP and published submission remain intact.
+Spatial bucket rebuild/query mechanics now have a borrowed-state module with compatible Simulation wrappers, frozen original-loop comparisons and unchanged Node 22/24 snapshot goldens. Stage A passed all 117 local checks and exact-head CI at `f12b8cc1`. The nursing fixture now uses actual drinking, verifies paid milk transfer and independent biological refusals, and retains all presentation assertions; Node 22/24 targeted checks pass with no gameplay source edits. Its new 118-check CI is pending. The demonstrated interleaved-clock defect, mature-world optimization and natural multigenerational evidence remain required stages. See [the current pass record](ENGINEERING-DEVELOPMENT-2026-10-26.md). The stable ZIP and published submission remain intact.
 
 ## Reproductive similarity, October 26
 

@@ -42,6 +42,43 @@
         "tests/fixtures/spatial-index-original.mjs": "6ecde02849ca5b3f86a2a47a077cefe6f5825e39"
       },
       "remoteAcceptance": "Pending exact-head CI; never inferred from prior commit"
+    },
+    "B": {
+      "scope": "Repair care-expression fixture and add physiological refusal coverage; no gameplay source changes.",
+      "funding": "Ordinary accessible playerDrink actions; no maternal reserve assignment.",
+      "timing": "Controlled presentation clock expiry, not natural elapsed-world observation.",
+      "actualMilkTransfer": {
+        "energy": 2,
+        "maternalEnergyCost": 2.92,
+        "maternalWaterCost": 0.74,
+        "assertions": "Actual parent/child fields, reported amount and energy conversion loss"
+      },
+      "negativeVariants": [
+        "original unfunded post-birth water",
+        "zero water",
+        "protected water reserve",
+        "protected energy reserve",
+        "wrong lactation parent",
+        "weaned offspring",
+        "egg offspring",
+        "missing mammary gland",
+        "dead caregiver"
+      ],
+      "refusalPreservesResourcesAndFeedingRecords": true,
+      "existingCarePoseAssembliesRetained": 256,
+      "targetedNode22": [
+        "care-expression",
+        "e10-mammal-cold",
+        "playable-check-plan"
+      ],
+      "targetedNode24": [
+        "care-expression",
+        "e10-mammal-cold",
+        "playable-check-plan"
+      ],
+      "gameplaySourceUnchangedFrom": "f12b8cc111ae126655294954862696f5b2ecd48d",
+      "completeGateChecks": 118,
+      "remoteAcceptanceAtCapture": "Pending new exact-head CI"
     }
   },
   "remaining": [
@@ -51,5 +88,15 @@
     "E: multigenerational natural investigation",
     "separate verified release candidate and final GitHub handoff"
   ],
-  "creatorAcceptance": false
+  "creatorAcceptance": false,
+  "events": [
+    {
+      "stage": "A",
+      "type": "remote-acceptance",
+      "sourceCommit": "f12b8cc111ae126655294954862696f5b2ecd48d",
+      "url": "https://github.com/jacktheclown91/GenVo/actions/runs/40378519553",
+      "status": "Success",
+      "workersCompleted": 2
+    }
+  ]
 }
