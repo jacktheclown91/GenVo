@@ -39,3 +39,13 @@ Readability still needs a current-export body/background matrix for dark ground,
 Next: finish and freeze the torpor candidate proof, coordinate the concrete owner interfaces (movement/selection progression, temperature consistency, successful sip and nursing precondition), then review the current exported capability presets through real manual/AUTO actions. No biological authority, saved-world policy or progress-completion flag is supplied by presentation.
 
 Frozen torpor checkpoint follow-up: e5415484 passes113 integration and seven focused checks in a clean checkout, plus the actual exported staged72-cell comparison and full ordinary tutorial. The exported real warm-refusal request leaves torpor=false. This does not close successful public sleeping-action review or the separate nursing failure; see art-refinement-torpor-v1-2026-10-25/integration.json. No named ZIP replacement was made.
+
+## Subsequent actual-export observations
+
+- public-jump-review-2026-10-25: public guided Spring jumper, native Enter, actual paid launch/arc/dry landing, inspected frames. One body/action, not every direction or AUTO jump.
+- public-capability-review-2026-10-25: public Winged flier, native takeoff/manual steering/landing, inspected raised and grounded posture. Ground burrower on the same named seed legitimately refuses creation for lack of viable habitat; underground animation remains unobserved. No soil or position was staged.
+- public-dive-review-2026-10-25: public Shore swimmer, native paid walking into perceived adjacent water, actual submergence and Surface return, visible depth/air, inspected desktop/short frames and native scroll/Tab. Deep food/gills/AUTO dive remain separate.
+- public-locomotion-review-2026-10-25: two public bodies, actual walk/Shift sprint/reverse/turn and confirmed native AUTO. Both move and advance existing renderer gait. Selected frames inspected, native videos retained; full video/creator motion acceptance and extreme anatomy/background coverage remain open.
+- ui-menu-error-2026-10-25: creation refusal's zero-height flex item corrected; real error visible on first failure and recoverable with Back in a normal export at all five creator sizes. Underlying habitat availability unchanged. Initial113 gate passes; a clean committed-source rerun is underway.
+
+The review gaps above still stand unless explicitly narrowed by these bounded observations. Pregnancy body progression has no demonstrated implementation beyond the small progress meter; it must read the real family progress and reproductive mode, preserve anatomy/mounts/contact, and receive a native maternal comparison before integration. No forced pregnancy or derived biological outcome belongs in presentation.
