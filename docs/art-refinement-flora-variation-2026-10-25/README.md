@@ -9,3 +9,5 @@ The final actual-vegetation.png was captured before native P opened the pause me
 Focused flora-variation, overhead-flora-art, tutorial-target-presentation and flora-landmarks checks pass. The new regression proves the baseline orientation loss, full-range deterministic hashing, negative coordinates, bounded anchors for ten shapes and each shore side. Full integration of this isolated candidate and the preceding pregnancy surface remains pending. No ZIP replacement or itch upload.
 
 The renderer's separate hash has the same half-range defect and remains unchanged here. Remaining ground-tile repetition and whole-world visual acceptance need a separate terrain/water/continuity review. This does not make every cell a different species or create new food for visual variety.
+
+Integration follow-up: the unchanged combined art runtime e1331e34 passes all114 playable checks with exit0; the original log is ../art-refinement-gestation-surface-2026-10-25/playable-e1331e34.log. This does not install or validate the subsequent HTTP-only ground prototype.
