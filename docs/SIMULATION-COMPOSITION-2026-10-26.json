@@ -1,0 +1,62 @@
+{
+  "schema": "genvo.simulation-composition/1",
+  "referenceCommit": "49fd7672206d6d553967df219e0f17f92ea01c6d",
+  "originalSimulationSha256": "4a69c92d99417e876614fc44330f2001a07eb1cf6b31a2ae875aaf6ed3de572d",
+  "controllerCount": 47,
+  "mechanicalParity": {
+    "status": "PASS",
+    "referenceCommit": "49fd7672206d6d553967df219e0f17f92ea01c6d",
+    "allPostConstructorMethodsByteIdentical": true,
+    "remainingConstructorTokensIdentical": true,
+    "orderedControllerCallsAndArgumentsIdentical": true,
+    "controllerCount": 47
+  },
+  "before": {
+    "bytes": 150026,
+    "uniqueDirectDependencies": 164,
+    "longestLine": 8205
+  },
+  "after": {
+    "file": "src/sim/simulation.js",
+    "bytes": 145367,
+    "dependencies": 121,
+    "longestLine": 3466
+  },
+  "checks": {
+    "playable": {
+      "passed": 115,
+      "exitCode": 0
+    },
+    "controllerComposition": "PASS",
+    "slicedTicks": "PASS",
+    "worldRestoreGenerationParity": "PASS",
+    "sourceAudit": "PASS",
+    "publicExport": "PASS",
+    "architectureAdversarial": "PASS",
+    "architectureBoundaries": "PASS",
+    "frozenBaselineNode22_23_4": "PASS",
+    "frozenBaselineNode24_14_0": "PASS",
+    "frozenBaselineNode24_22_1": "PASS",
+    "node22OriginalVersusExtractedCompleteGraphPreimages": {
+      "identical": 8,
+      "total": 8
+    },
+    "originalNode24GoldenValuesUnchanged": true
+  },
+  "existingCycleSizes": [
+    2,
+    38,
+    7
+  ],
+  "runtimeSourceChanges": [
+    "src/sim/simulation.js",
+    "src/sim/controller-composition.js"
+  ],
+  "preservedReleaseSha256": "37832ff5b16b668c7cc8bb9a439b94555c458859c4b5d085baf8d70c068a310d",
+  "knownLimits": [
+    "Cross-V8-major last-bit arithmetic differences predate extraction; compare exact supported-engine variants, no tolerances",
+    "New native browser or creator acceptance not claimed for unchanged behavior",
+    "Final exact-head Linux CI result must be checked separately"
+  ],
+  "nextGitHubTask": "Backlog task 2: spatial bucket helpers with ordered query and early-exit parity"
+}

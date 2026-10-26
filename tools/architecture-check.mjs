@@ -36,5 +36,5 @@ if (process.argv.includes('--record')) fs.writeFileSync(baselinePath, JSON.strin
 const baseline = JSON.parse(fs.readFileSync(baselinePath, 'utf8'));
 const allowed = new Set(baseline.cycles.map(c => JSON.stringify(c)));
 const errors = [...missing.map(item => `Missing: ${item}`), ...cycles.filter(c => !allowed.has(JSON.stringify(c))).map(c => `New or expanded cycle: ${c.join(', ')}`), ...presentationImports.filter(item => !baseline.presentationImports.includes(item)).map(item => `New biological presentation dependency: ${item}`)];
-console.log(JSON.stringify({status: errors.length ? 'FAIL' : 'PASS', sourceModules: all.length, cycles, presentationImports, largest, errors}, null, 2));
+console.log(JSON.stringify({status: errors.length ? 'FAIL' : 'PASS', sourceModules: all.length, cycles, presentationImports, largest, ...(process.argv.includes('--graph') ? {dependencies: Object.fromEntries(graph)} : {}), errors}, null, 2));
 if (errors.length) process.exitCode = 1;

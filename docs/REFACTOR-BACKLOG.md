@@ -2,7 +2,7 @@
 
 All tasks start from live main, preserve unrelated work, and update the continuation handoff. Run the complete playable gate and canonical export/audit before integration. Do not regenerate deterministic expectations for a mechanical refactor.
 
-## 1. Extract ordered controller composition (next; GitHub + Actions)
+## 1. Extract ordered controller composition (implemented; 115 local checks passed, exact-head CI required)
 
 - Goal/files: move the contiguous `this.lineage = new LineageTracker(this)` through `this.wildlifeRhythm = new WildlifeRhythmController(this)` constructor segment from `src/sim/simulation.js` to `src/sim/controller-composition.js`.
 - Reuse: existing controller classes; no replacement controllers, service locator, dynamic imports or new engine.
@@ -11,7 +11,7 @@ All tasks start from live main, preserve unrelated work, and update the continua
 - Invariants: same instances/back-references, property insertion order, RNG, resources, save shape, deferred initialization, tick order. If SCC membership changes by inserting the composition module into the existing simulation SCC, review and record only that exact graph addition; no new cycle family.
 - Acceptance: readable composition module, materially smaller constructor/import hub, identical pre-refactor signatures, all checks pass, main CI green. No browser visual acceptance claim needed for unchanged runtime behavior.
 
-## 2. Isolate spatial bucket indexing (GitHub + Actions)
+## 2. Isolate spatial bucket indexing (next; GitHub + Actions)
 
 - Goal/files: extract `rebuildSpatial` and `forEachNearby` mechanics from Simulation into `src/sim/spatial-index.js`, retaining public method wrappers.
 - Reuse: current bucket arrays, world size, bucket size and existing nearby consumers.

@@ -1,5 +1,6 @@
 // Frozen complete snapshot signatures captured before simulation modernization.
-// Recording is an explicit developer operation; ordinary CI never updates expectations.
+// Golden variants come from the untouched reference commit, never the refactor.
+// Different V8 majors have existing last-bit arithmetic differences; compare exactly within each supported engine.
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {createHash} from 'node:crypto';
@@ -43,6 +44,15 @@ for (const generator of ['freshwater/1', 'planetary/1']) {
   }
   observed.push({generator, checkpoints});
 }
-if (process.argv.includes('--record')) fs.writeFileSync(fixture, JSON.stringify(observed, null, 2) + '\n');
-assert.deepEqual(observed, JSON.parse(fs.readFileSync(fixture, 'utf8')), 'full snapshots preserve pre-refactor world, organisms, resources, policies and RNG');
+const baseline = JSON.parse(fs.readFileSync(fixture, 'utf8'));
+const engine = process.versions.node.split('.')[0];
+assert.ok(baseline.engines[engine], 'Use supported Node 22 or 24; establish any new engine baseline from the untouched reference source');
+assert.ok(!process.argv.includes('--record'), 'Frozen reference expectations cannot be regenerated from the current implementation');
+try {
+  assert.deepEqual(observed, baseline.engines[engine], 'full snapshots preserve pre-refactor world, organisms, resources, policies and RNG exactly within this engine');
+} catch (error) {
+  // Public check annotations retain a concise diagnostic even when job logs need auth.
+  if (process.env.GITHUB_ACTIONS) console.error('::error::Modernization Node ' + engine + ' snapshot mismatch: ' + JSON.stringify(observed));
+  throw error;
+}
 console.log('Modernization baseline: complete snapshots and restored continuation PASS');

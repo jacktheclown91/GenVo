@@ -1,52 +1,110 @@
-[
-  {
-    "generator": "freshwater/1",
-    "checkpoints": [
+{
+  "schema": "genvo.engine-specific-snapshot-baseline/1",
+  "sourceCommit": "49fd7672206d6d553967df219e0f17f92ea01c6d",
+  "engines": {
+    "22": [
       {
-        "tick": 0,
-        "sha256": "03175df21a9e5ea76e09ada60cc99e78245f752267902c93dfc35584837e7a25",
-        "rng": 1029491071
+        "generator": "freshwater/1",
+        "checkpoints": [
+          {
+            "tick": 0,
+            "sha256": "03175df21a9e5ea76e09ada60cc99e78245f752267902c93dfc35584837e7a25",
+            "rng": 1029491071
+          },
+          {
+            "tick": 6,
+            "sha256": "3c912e49c50240f503ee23d5721ea68669f8f0c69971a6ab5045f5ad94e5b5a7",
+            "rng": 298766099
+          },
+          {
+            "tick": 48,
+            "sha256": "ec13eeb37611a57fabd1546fac54c20cb7d042ab6413f0e6b74a00558954b1f3",
+            "rng": 1272897904
+          },
+          {
+            "tick": 96,
+            "sha256": "8e2da0a39efd61d5095b291ad804cc369e3d72bf97ce71e3429d367ae4d1c7c9",
+            "rng": 2548510949
+          }
+        ]
       },
       {
-        "tick": 6,
-        "sha256": "578bf3cc586f54238d39e1d06dcf9fe5aadd3e0f71b6b85b3eaf5948fda78993",
-        "rng": 298766099
-      },
-      {
-        "tick": 48,
-        "sha256": "b3bcf65640e7d69d954955cafea13036be7e20d8b1dee0a6cfa2dcf04b390b7f",
-        "rng": 1272897904
-      },
-      {
-        "tick": 96,
-        "sha256": "9b2660b759be9e4adf7648c290f0570391188cc3f414804309684511285041be",
-        "rng": 2548510949
+        "generator": "planetary/1",
+        "checkpoints": [
+          {
+            "tick": 0,
+            "sha256": "df31d55ee0df878722124dc925912432b4b5ea02af502646a33d122fcb787c53",
+            "rng": 3541681151
+          },
+          {
+            "tick": 6,
+            "sha256": "346a93b903e947462ec408d85a0f95af3e181fec882140328aa00036c6e77fad",
+            "rng": 1230650999
+          },
+          {
+            "tick": 48,
+            "sha256": "651e1b67a7be790dad94736a541aeef801512eab99166f2dbbc9ba426551fed8",
+            "rng": 704088725
+          },
+          {
+            "tick": 96,
+            "sha256": "b6681b6cea77408a1c5da4a48c84f155b526214273dc01a43adfdf092c76305a",
+            "rng": 3318082654
+          }
+        ]
       }
-    ]
-  },
-  {
-    "generator": "planetary/1",
-    "checkpoints": [
+    ],
+    "24": [
       {
-        "tick": 0,
-        "sha256": "df31d55ee0df878722124dc925912432b4b5ea02af502646a33d122fcb787c53",
-        "rng": 3541681151
+        "generator": "freshwater/1",
+        "checkpoints": [
+          {
+            "tick": 0,
+            "sha256": "03175df21a9e5ea76e09ada60cc99e78245f752267902c93dfc35584837e7a25",
+            "rng": 1029491071
+          },
+          {
+            "tick": 6,
+            "sha256": "578bf3cc586f54238d39e1d06dcf9fe5aadd3e0f71b6b85b3eaf5948fda78993",
+            "rng": 298766099
+          },
+          {
+            "tick": 48,
+            "sha256": "b3bcf65640e7d69d954955cafea13036be7e20d8b1dee0a6cfa2dcf04b390b7f",
+            "rng": 1272897904
+          },
+          {
+            "tick": 96,
+            "sha256": "9b2660b759be9e4adf7648c290f0570391188cc3f414804309684511285041be",
+            "rng": 2548510949
+          }
+        ]
       },
       {
-        "tick": 6,
-        "sha256": "6b17b1779df331581357fe45697aca084341c5ebd4b62331099bd4c945130c73",
-        "rng": 1230650999
-      },
-      {
-        "tick": 48,
-        "sha256": "1b8845c7e6d36cc3524ae036b84152b2822e165b53ec1c6bbbfdb9e826fcfa1d",
-        "rng": 704088725
-      },
-      {
-        "tick": 96,
-        "sha256": "a7c2051f31aaf55ffd3e6aab09e16c55399f296723321fe822a8588ee93ee064",
-        "rng": 3318082654
+        "generator": "planetary/1",
+        "checkpoints": [
+          {
+            "tick": 0,
+            "sha256": "df31d55ee0df878722124dc925912432b4b5ea02af502646a33d122fcb787c53",
+            "rng": 3541681151
+          },
+          {
+            "tick": 6,
+            "sha256": "6b17b1779df331581357fe45697aca084341c5ebd4b62331099bd4c945130c73",
+            "rng": 1230650999
+          },
+          {
+            "tick": 48,
+            "sha256": "1b8845c7e6d36cc3524ae036b84152b2822e165b53ec1c6bbbfdb9e826fcfa1d",
+            "rng": 704088725
+          },
+          {
+            "tick": 96,
+            "sha256": "a7c2051f31aaf55ffd3e6aab09e16c55399f296723321fe822a8588ee93ee064",
+            "rng": 3318082654
+          }
+        ]
       }
     ]
   }
-]
+}

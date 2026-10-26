@@ -2,6 +2,10 @@
 
 Reviewed October 20, 2026. Governing intent: [current design](../design/CURRENT-DESIGN.md) and the creator's full Creature-stage directive. Code ownership: [implementation authorities](../design/governance/implementation-authorities.json). Full scope and remaining gaps: [completion matrix](FULL-GAME-COMPLETION-MATRIX.md). Earlier checkpoint prose is [historical evidence](history/IMPLEMENTATION-before-live-refresh-2026-10-19.md), not current instructions.
 
+## Engineering modernization, October 26
+
+Ordered construction of 47 existing domain controllers now lives in `src/sim/controller-composition.js`. Simulation retains world/policy/bootstrap and every tick phase; all post-constructor methods remain byte-identical to the reference checkpoint. Direct dependencies fall from 164 to 121. The post-extraction local gate passes 115 checks, with strict original-source Node 22/24 snapshot variants, actual controller/restore contracts and source/export parity. Existing cross-engine last-bit arithmetic differences are documented, not rounded away. See [Git continuation](GIT-CONTINUATION-HANDOFF.md) and [scoped evidence](SIMULATION-COMPOSITION-2026-10-26.json); exact-head remote CI and native/creator acceptance remain distinct. The verified pre-modernization ZIP is preserved and the published itch release is untouched.
+
 ## First-generation gameplay integration & genuine browser acceptance, October 24
 
 Complete first-generation gameplay journey verified in the exported web game (`tools/verify-genuine-gameplay-journeys.mjs`) using the native browser event loop (`requestAnimationFrame`), with zero direct simulation updates, zero creature teleportation, zero resource injection, and discoverable native UI controls.

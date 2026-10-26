@@ -1,3 +1,4 @@
+import {initializeControllers} from './controller-composition.js';
 import {REGIONAL_FRONTIER,physicalFrontier,frontierStep} from '../world/regional-frontier.js';
 import {HABITAT_HAZARDS,createHabitatHazards,advanceHabitatHazards} from '../ecology/habitat-hazards.js';
 import {WILDFIRE,createWildfire,advanceWildfire,fireEscapeDecision,igniteWildfire,fireDanger} from '../ecology/wildfire.js';
@@ -65,31 +66,13 @@ import {MARINE_FOOD,initializeMarineFood,advanceMarineFood} from '../ecology/mar
 import {regionKey} from '../world/planet-regions.js';
 import {LIFE_HISTORY,breedingEnergyGate} from '../ecology/breeding-calibration.js';
 import {bodyMass,bodyMassFraction,basalResourceCosts,ANATOMICAL_MASS,LEGACY_MASS} from '../organisms/body-mass.js';
-import {LineageTracker} from '../lineage/lineage.js';
-import {ReproductionController} from '../reproduction/reproduction.js';
-import {FamilyController} from '../family/family.js';
-import {FamilyDirectiveController} from '../family/directives.js';
-import {FamilyExpansionController} from '../family/expansion.js';
-import {FamilySustainabilityController} from '../family/sustainability.js';
-import {CognitionController} from '../cognition/cognition.js';
-import {TerritoryController} from '../cognition/territory.js';
-import {ShelterController} from '../habitat/shelter.js';
-import {MigrationController} from '../ecology/migration.js';
-import {RegionalEcologyController} from '../ecology/regions.js';
-import {CarryingPressureController} from '../ecology/carrying.js';
-import {RecoveryController} from '../ecology/recovery.js';
 import {paternalInheritance} from '../ecology/gestation.js';
 import {conceptionFunding,birthFunding} from '../ecology/birth-investment.js';
 import {reproductiveMode,conceptionMode,eggSiteQuality,INCUBATION_DAYS,DUAL_ENERGY_UPKEEP,DUAL_WATER_UPKEEP} from '../reproduction/reproductive-anatomy.js';
 import {constructNest,nestForEgg,nestIncubationQuality,advanceNests,chooseCareNest,careForNest,edibleEggTarget,eatEgg} from '../reproduction/egg-ecology.js';
 import {committedFoodTarget} from '../ecology/food-commitment.js';
 import {preyBodyMass,remainingPreyBiomass,consumePreyBiomass,regrowPreyBiomass} from '../ecology/prey-biomass.js';
-import {SelectionPressureController} from '../lineage/pressure.js';
-import {EnvironmentalHistoryController} from '../ecology/history.js';
-import {PlantDispersalController} from '../ecology/dispersal.js';
-import {DiseaseController} from '../ecology/disease.js';
-import {SocialController} from '../cognition/social.js';
-import {EvolutionController,inheritedAdaptations,adaptationEffects,hasAdaptation} from '../lineage/evolution.js';
+import {inheritedAdaptations,adaptationEffects,hasAdaptation} from '../lineage/evolution.js';
 import {canSwim,canOccupy,canReach,movementProfile} from '../lineage/lifestyle.js';
 import {THERMAL_WEATHER,createThermalWeather,advanceThermalWeather} from '../ecology/thermal-weather.js';
 import {VISIBILITY,atmosphericSight,visuallyObservable} from '../ecology/atmospheric-visibility.js';
@@ -104,19 +87,8 @@ import {JUMP,jumpAvailability,launchJump,stepJump} from '../lineage/jumping.js';
 import {GLIDING,canTreeClimb,glidingAvailability,launchGlide,endGlide,stepGlide} from '../lineage/gliding.js';
 import {flightAvailability,landingAvailability,toggleFlight,takeoff,land,advanceFlight} from '../lineage/flight.js';
 import {roostAvailability,perch,descend,checkCanopyHold,canopyFeedingPosition,canopySupport} from '../ecology/canopy-site.js';
-import {LineageSpecializationController} from '../lineage/specialization.js';
-import {BehavioralTendencyController} from '../lineage/behavioral-tendency.js';
-import {LineageDivergenceController} from '../lineage/divergence.js';
-import {GenerationProgressionController} from '../lineage/generation-progression.js';
-import {PredatorEncounterController} from '../gameplay/predator-encounter.js';
-import {StalkerTerritoryController} from '../gameplay/stalker-territory.js';
-import {ExertionController} from '../gameplay/exertion.js';
-import {HabitController} from '../cognition/habits.js';
-import {EvolutionBudgetController} from '../lineage/evolution-budget.js';
-import {EvolutionEditorController} from '../lineage/evolution-editor.js';
-import {PartAbilityController,partEffectFactors} from '../lineage/part-abilities.js';
+import {partEffectFactors} from '../lineage/part-abilities.js';
 import {giveFounderBody,inheritBody} from '../lineage/body-inheritance.js';
-import {DiscoveryController} from '../gameplay/discovery.js';
 import {wildTraits,isWildSpecies} from '../organisms/wild-bodies.js';
 import {isWaterDweller,waterFoodRate,nearestWater,roamWater,hasGills,AQUATIC,hasSaltGland} from '../lineage/aquatic.js';
 const FACE_V=[[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];
@@ -125,15 +97,8 @@ import {inheritLineageGenes,inheritLineageAnatomy} from '../lineage/heredity.js'
 import {expressedAdaptations} from '../lineage/evolution.js';
 import {GENE_KEYS} from '../organisms/species.js';
 import {ADAPTATIONS} from '../lineage/evolution.js';
-import {PlayerCombatController} from '../gameplay/player-combat.js';
-import {ForagingController} from '../gameplay/foraging.js';
-import {WeatherExposureController} from '../gameplay/weather-exposure.js';
-import {FamilyWeatherController} from '../gameplay/family-weather.js';
-import {IllnessRecoveryController} from '../gameplay/illness-recovery.js';
-import {FamilyIllnessController} from '../gameplay/family-illness.js';
 import {needsRecoveryForage} from '../lineage/engineer-recovery-foraging.js';
-import {InjuryRecoveryController} from '../gameplay/injury-recovery.js';
-import {ActivityBudgetController,ACTIVITY_REVIEW,atInteractionTarget} from '../ecology/activity.js';
+import {ACTIVITY_REVIEW,atInteractionTarget} from '../ecology/activity.js';
 import {HEALING_REVIEW,healingStep} from '../ecology/healing-review.js';
 import {PREDATION_PARITY} from '../gameplay/predation-parity.js';
 import {REFUGE_PARITY,refugeAgainst,coverHides,refugeTarget,still} from '../ecology/refuges.js';
@@ -153,14 +118,6 @@ import {MOVEMENT_PARITY} from '../ecology/movement-parity.js';
 const NO_INTERACTION=()=>{};
 // Render-time cache of "no living player" per actor list (never saved; see Simulation.player).
 const PLAYER_MISS=new WeakMap();
-import {WildlifeRhythmController} from '../ecology/wildlife-rhythm.js';
-import {PopulationCenterEcologyController} from '../ecology/population-centers.js';
-import {PopulationPressureMemoryController} from '../ecology/population-memory.js';
-import {ProtoSpeciationController} from '../lineage/proto-speciation.js';
-import {SpeciationController} from '../lineage/speciation.js';
-import {EvolutionaryTreeController} from '../lineage/evolution-tree.js';
-import {SpeciesCoexistenceController} from '../ecology/species-coexistence.js';
-import {SpeciesLifestyleController} from '../lineage/species-lifestyle.js';
 import {SOIL_WATER,advanceSoilDay} from '../ecology/soil-water.js';
 import {beginPageVegetationDay,visitLandByWorldPageSteps,completePageVegetationDay} from '../world/page-vegetation-work.js';
 import {drain} from './resumable.js';
@@ -177,7 +134,156 @@ const DIRS=[[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];
 // instance so it never enters saves, copies or travel.
 const pendingTicks=new WeakMap();
 export class Simulation{
-  constructor(seed='GENVO8-0001',{player=true,bootstrap=true,worldGenerator=undefined,massRules=ANATOMICAL_MASS,planetOrigin={x:0,y:0},reuseGeneratedBase=false,restoreOnlyWorld=false,regionalReplayPolicy:replayPolicy=REGIONAL_REPLAY.synchronized,deferDispersalInitialization=false,naturalCaves=true,stratumSenses=true,localAssortment=true,habitatHazards=true,fireWeather=true,stormWeather=true,strangerResponses=true,dayClock=false,metabolism=false,foodProperties=false,tissueWater=false,winterWater=false,escapeLanding=false,tissueEnergy=false,perennialRegrowth=false,surfaceIce=worldGenerator==='planetary/1',regionalFounding=worldGenerator==='planetary/1',regionalDemography=worldGenerator==='planetary/1',regionalResidency=worldGenerator==='planetary/1',planetDescriptor=null,evolvedLibrary=worldGenerator==='planetary/1',regionalDispersal=worldGenerator==='planetary/1',marineFood=worldGenerator==='planetary/1',anatomicalVision=worldGenerator==='planetary/1',aquaticForaging=worldGenerator==='planetary/1',seedViability=worldGenerator==='planetary/1',breedingSupport=worldGenerator==='planetary/1',plantLifecycle=false,regionalFrontier=false}={}){if(regionalFrontier)this.regionalFrontierRules=REGIONAL_FRONTIER.policy;if(marineFood)this.marineFoodRules=MARINE_FOOD.policy;if(regionalDispersal)this.regionalDispersalRules=REGIONAL_DISPERSAL.policy;if(anatomicalVision)this.visionRules=VISION.policy;if(aquaticForaging)this.aquaticForagingRules=AQUATIC_FORAGING.policy;if(seedViability)this.seedViabilityRules=SEED_VIABILITY.policy;if(breedingSupport)this.breedingSupportRules=BREEDING_SUPPORT.policy;if(plantLifecycle)this.plantLifecycleRules=PLANT_LIFECYCLE.policy;if(evolvedLibrary)this.evolvedLibraryRules=EVOLVED_LIBRARY.policy;if(regionalResidency)this.regionalResidencyRules=REGIONAL_RESIDENCY.policy;if(regionalFounding)this.regionalFoundingRules=REGIONAL_FOUNDING.policy;if(regionalDemography)this.regionalDemographyRules=REGIONAL_DEMOGRAPHY.policy;if(massRules!==ANATOMICAL_MASS&&massRules!==LEGACY_MASS)throw Error('Unknown world mass rules: '+massRules);this.massRules=massRules;if(localAssortment)this.mateAssortmentRules=LOCAL_ASSORTMENT;if(habitatHazards){this.habitatHazardRules=HABITAT_HAZARDS.policy;this.habitatHazards=createHabitatHazards();}if(fireWeather){this.fireRules=WILDFIRE.policy;this.wildfire=createWildfire();}if(stormWeather){this.thunderRules=THUNDERSTORMS.policy;this.thunderstorms=createThunderstorms()}if(strangerResponses)this.strangerRules=STRANGER_RESPONSES.policy;if(dayClock)this.dayClockRules=DAY_CLOCK.policy;if(metabolism)this.metabolismRules=metabolism==='fasting-1'?METABOLISM_REFERENCE_BODY:METABOLISM.policy;if(foodProperties)this.foodRules=FOOD_PROPERTIES.policy;if(tissueWater)this.tissueWaterRules=TISSUE_WATER.policy;if(winterWater)this.winterWaterRules=WINTER_WATER.policy;if(escapeLanding)this.escapeLandingRules=ESCAPE_LANDING.policy;if(tissueEnergy)this.tissueEnergyRules=TISSUE_ENERGY.policy;if(perennialRegrowth)this.perennialRegrowthRules=PERENNIAL_REGROWTH.policy;applyDayClock(this);if(stratumSenses){this.stratumSenseRules=STRATUM_SENSES.policy;this.vibrationRules=GROUND_VIBRATIONS.policy;}if(surfaceIce)this.surfaceIceRules=SURFACE_ICE.policy;this.thermalRefugeRules=THERMAL_REFUGE.policy;this.thermalRules=THERMAL_WEATHER.policy;this.thermalPattern=createThermalWeather(seed);this.visibilityRules=VISIBILITY.policy;this.sensoryFogEnabled=true;if(naturalCaves)this.caveRules=CAVES.policy;this.burrowingRules=BURROWING.policy;this.climbingRules=CLIMBING.policy;this.divingRules=DIVING.policy;this.jumpingRules=JUMP.policy;this.glidingRules=GLIDING.policy;this.diggingRules=DIGGING_RULES.finite;this.carcassRules=CARCASS_RULES.finite;this.seed=seed;this.ecologyRules={...ECOLOGY_RULES};this.ecologyRuleMigrations=[];this.birthRules={...BIRTH_RULES};this.birthRuleMigrations=[];this.rng=new RNG(seed);this.world=reuseGeneratedBase?worldForRestore(seed,{generator:worldGenerator,planetOrigin,restoreOnly:restoreOnlyWorld,frontierRules:this.regionalFrontierRules}):new World(seed,{generator:worldGenerator,planetOrigin,planetDescriptor,frontierRules:this.regionalFrontierRules});this.world.sim=this;if(this.perennialRegrowthRules)this.world.perennialRegrowthRules=this.perennialRegrowthRules;if(surfaceIce)initializeSurfaceIce(this.world);initializeDivingWorld(this.world);if(this.marineFoodRules&&!this.world.marineFood)initializeMarineFood(this.world);this.world.subsurface=emptySubsurface();if(naturalCaves)initializeCaves(this.world,{generate:!reuseGeneratedBase});this.planetaryRegions=this.world.planet?new PlanetRegionAtlas(this.world,origin=>new World(this.seed,{generator:'planetary/1',planetOrigin:origin,planetDescriptor:this.world.planet.descriptor,frontierRules:this.regionalFrontierRules})):null;this.offscreenBiologyEnabled=!!this.planetaryRegions;if(this.planetaryRegions){this.regionalReplayPolicy=replayPolicy;regionalReplayPolicy(this)}this.animals=[];this.eggs=[];this.nextEggId=1;this.nests=[];this.nextNestId=1;this.nextId=1;this.tickCount=0;this.day=1;this.year=1;this.seasonIndex=0;this.phase=0;this.paused=false;this.playerId=null;this.playerEnabled=player;this.stats={births:0,deaths:0,byCause:{},extinctions:[]};this.spawnCenters={};this.spatialBucketSize=8;this.spatialCols=Math.ceil(CFG.worldSize/this.spatialBucketSize);this.spatial=Array.from({length:this.spatialCols*this.spatialCols},()=>[]);this.lineage=new LineageTracker(this);this.reproduction=new ReproductionController(this);this.family=new FamilyController(this);this.expansion=new FamilyExpansionController(this);this.familyDirectives=new FamilyDirectiveController(this);this.cognition=new CognitionController(this);this.habits=new HabitController(this);this.evolutionBudget=new EvolutionBudgetController(this);this.evolutionEditor=new EvolutionEditorController(this);this.partAbilities=new PartAbilityController(this);this.discovery=new DiscoveryController(this);this.territory=new TerritoryController(this);this.shelter=new ShelterController(this);this.migration=new MigrationController(this);this.regionalEcology=new RegionalEcologyController(this);this.recovery=new RecoveryController(this);this.carrying=new CarryingPressureController(this);this.pressure=new SelectionPressureController(this);this.history=new EnvironmentalHistoryController(this);this.sustainability=new FamilySustainabilityController(this);this.populationEcology=new PopulationCenterEcologyController(this);this.populationMemory=new PopulationPressureMemoryController(this);this.protoSpeciation=new ProtoSpeciationController(this);this.evolutionTree=new EvolutionaryTreeController(this);this.speciesCoexistence=new SpeciesCoexistenceController(this);this.speciesLifestyle=new SpeciesLifestyleController(this);this.speciation=new SpeciationController(this);this.dispersal=new PlantDispersalController(this,{initialize:!deferDispersalInitialization});this.disease=new DiseaseController(this);this.social=new SocialController(this);this.evolution=new EvolutionController(this);this.specialization=new LineageSpecializationController(this);this.tendency=new BehavioralTendencyController(this);this.divergence=new LineageDivergenceController(this);this.generationProgress=new GenerationProgressionController(this);this.predator=new PredatorEncounterController(this);this.exertion=new ExertionController(this);this.playerCombat=new PlayerCombatController(this);this.stalkerTerritory=new StalkerTerritoryController(this);this.foraging=new ForagingController(this);this.exposure=new WeatherExposureController(this);this.familyWeather=new FamilyWeatherController(this);this.illness=new IllnessRecoveryController(this);this.familyIllness=new FamilyIllnessController(this);this.injury=new InjuryRecoveryController(this);this.activity=new ActivityBudgetController(this);this.wildlifeRhythm=new WildlifeRhythmController(this);this.openingGraceUntilDay=20;this.openingGraceEnded=false;this.playerAutonomy=false;this.familyControlExplained=false;this.lastPlayerAction=null;this.lastPlayerDamage=null;this.lastDefenseReceipt=null;if(bootstrap){this.spawnInitial();this.prepareStarterMate();this.rebuildSpatial();this.regionalEcology.resetPageResidency();this.reproduction.refreshSelection();}}
+  constructor(seed='GENVO8-0001',{
+    player=true,
+    bootstrap=true,
+    worldGenerator=undefined,
+    massRules=ANATOMICAL_MASS,
+    planetOrigin={x:0,y:0},
+    reuseGeneratedBase=false,
+    restoreOnlyWorld=false,
+    regionalReplayPolicy:replayPolicy=REGIONAL_REPLAY.synchronized,
+    deferDispersalInitialization=false,
+    naturalCaves=true,
+    stratumSenses=true,
+    localAssortment=true,
+    habitatHazards=true,
+    fireWeather=true,
+    stormWeather=true,
+    strangerResponses=true,
+    dayClock=false,
+    metabolism=false,
+    foodProperties=false,
+    tissueWater=false,
+    winterWater=false,
+    escapeLanding=false,
+    tissueEnergy=false,
+    perennialRegrowth=false,
+    surfaceIce=worldGenerator==='planetary/1',
+    regionalFounding=worldGenerator==='planetary/1',
+    regionalDemography=worldGenerator==='planetary/1',
+    regionalResidency=worldGenerator==='planetary/1',
+    planetDescriptor=null,
+    evolvedLibrary=worldGenerator==='planetary/1',
+    regionalDispersal=worldGenerator==='planetary/1',
+    marineFood=worldGenerator==='planetary/1',
+    anatomicalVision=worldGenerator==='planetary/1',
+    aquaticForaging=worldGenerator==='planetary/1',
+    seedViability=worldGenerator==='planetary/1',
+    breedingSupport=worldGenerator==='planetary/1',
+    plantLifecycle=false,
+    regionalFrontier=false
+  }={}){
+    if(regionalFrontier)this.regionalFrontierRules=REGIONAL_FRONTIER.policy;
+    if(marineFood)this.marineFoodRules=MARINE_FOOD.policy;
+    if(regionalDispersal)this.regionalDispersalRules=REGIONAL_DISPERSAL.policy;
+    if(anatomicalVision)this.visionRules=VISION.policy;
+    if(aquaticForaging)this.aquaticForagingRules=AQUATIC_FORAGING.policy;
+    if(seedViability)this.seedViabilityRules=SEED_VIABILITY.policy;
+    if(breedingSupport)this.breedingSupportRules=BREEDING_SUPPORT.policy;
+    if(plantLifecycle)this.plantLifecycleRules=PLANT_LIFECYCLE.policy;
+    if(evolvedLibrary)this.evolvedLibraryRules=EVOLVED_LIBRARY.policy;
+    if(regionalResidency)this.regionalResidencyRules=REGIONAL_RESIDENCY.policy;
+    if(regionalFounding)this.regionalFoundingRules=REGIONAL_FOUNDING.policy;
+    if(regionalDemography)this.regionalDemographyRules=REGIONAL_DEMOGRAPHY.policy;
+    if(massRules!==ANATOMICAL_MASS&&massRules!==LEGACY_MASS)throw Error('Unknown world mass rules: '+massRules);
+    this.massRules=massRules;
+    if(localAssortment)this.mateAssortmentRules=LOCAL_ASSORTMENT;
+    if(habitatHazards){
+      this.habitatHazardRules=HABITAT_HAZARDS.policy;
+      this.habitatHazards=createHabitatHazards();
+    }
+    if(fireWeather){
+      this.fireRules=WILDFIRE.policy;
+      this.wildfire=createWildfire();
+    }
+    if(stormWeather){
+      this.thunderRules=THUNDERSTORMS.policy;
+      this.thunderstorms=createThunderstorms()
+    }
+    if(strangerResponses)this.strangerRules=STRANGER_RESPONSES.policy;
+    if(dayClock)this.dayClockRules=DAY_CLOCK.policy;
+    if(metabolism)this.metabolismRules=metabolism==='fasting-1'?METABOLISM_REFERENCE_BODY:METABOLISM.policy;
+    if(foodProperties)this.foodRules=FOOD_PROPERTIES.policy;
+    if(tissueWater)this.tissueWaterRules=TISSUE_WATER.policy;
+    if(winterWater)this.winterWaterRules=WINTER_WATER.policy;
+    if(escapeLanding)this.escapeLandingRules=ESCAPE_LANDING.policy;
+    if(tissueEnergy)this.tissueEnergyRules=TISSUE_ENERGY.policy;
+    if(perennialRegrowth)this.perennialRegrowthRules=PERENNIAL_REGROWTH.policy;
+    applyDayClock(this);
+    if(stratumSenses){
+      this.stratumSenseRules=STRATUM_SENSES.policy;
+      this.vibrationRules=GROUND_VIBRATIONS.policy;
+    }
+    if(surfaceIce)this.surfaceIceRules=SURFACE_ICE.policy;
+    this.thermalRefugeRules=THERMAL_REFUGE.policy;
+    this.thermalRules=THERMAL_WEATHER.policy;
+    this.thermalPattern=createThermalWeather(seed);
+    this.visibilityRules=VISIBILITY.policy;
+    this.sensoryFogEnabled=true;
+    if(naturalCaves)this.caveRules=CAVES.policy;
+    this.burrowingRules=BURROWING.policy;
+    this.climbingRules=CLIMBING.policy;
+    this.divingRules=DIVING.policy;
+    this.jumpingRules=JUMP.policy;
+    this.glidingRules=GLIDING.policy;
+    this.diggingRules=DIGGING_RULES.finite;
+    this.carcassRules=CARCASS_RULES.finite;
+    this.seed=seed;
+    this.ecologyRules={...ECOLOGY_RULES};
+    this.ecologyRuleMigrations=[];
+    this.birthRules={...BIRTH_RULES};
+    this.birthRuleMigrations=[];
+    this.rng=new RNG(seed);
+    this.world=reuseGeneratedBase?worldForRestore(seed,{generator:worldGenerator,planetOrigin,restoreOnly:restoreOnlyWorld,frontierRules:this.regionalFrontierRules}):new World(seed,{generator:worldGenerator,planetOrigin,planetDescriptor,frontierRules:this.regionalFrontierRules});
+    this.world.sim=this;
+    if(this.perennialRegrowthRules)this.world.perennialRegrowthRules=this.perennialRegrowthRules;
+    if(surfaceIce)initializeSurfaceIce(this.world);
+    initializeDivingWorld(this.world);
+    if(this.marineFoodRules&&!this.world.marineFood)initializeMarineFood(this.world);
+    this.world.subsurface=emptySubsurface();
+    if(naturalCaves)initializeCaves(this.world,{generate:!reuseGeneratedBase});
+    this.planetaryRegions=this.world.planet?new PlanetRegionAtlas(this.world,origin=>new World(this.seed,{generator:'planetary/1',planetOrigin:origin,planetDescriptor:this.world.planet.descriptor,frontierRules:this.regionalFrontierRules})):null;
+    this.offscreenBiologyEnabled=!!this.planetaryRegions;
+    if(this.planetaryRegions){
+      this.regionalReplayPolicy=replayPolicy;
+      regionalReplayPolicy(this)
+    }
+    this.animals=[];
+    this.eggs=[];
+    this.nextEggId=1;
+    this.nests=[];
+    this.nextNestId=1;
+    this.nextId=1;
+    this.tickCount=0;
+    this.day=1;
+    this.year=1;
+    this.seasonIndex=0;
+    this.phase=0;
+    this.paused=false;
+    this.playerId=null;
+    this.playerEnabled=player;
+    this.stats={births:0,deaths:0,byCause:{},extinctions:[]};
+    this.spawnCenters={};
+    this.spatialBucketSize=8;
+    this.spatialCols=Math.ceil(CFG.worldSize/this.spatialBucketSize);
+    this.spatial=Array.from({length:this.spatialCols*this.spatialCols},()=>[]);
+    initializeControllers(this, {deferDispersalInitialization});
+    this.openingGraceUntilDay=20;
+    this.openingGraceEnded=false;
+    this.playerAutonomy=false;
+    this.familyControlExplained=false;
+    this.lastPlayerAction=null;
+    this.lastPlayerDamage=null;
+    this.lastDefenseReceipt=null;
+    if(bootstrap){
+      this.spawnInitial();
+      this.prepareStarterMate();
+      this.rebuildSpatial();
+      this.regionalEcology.resetPageResidency();
+      this.reproduction.refreshSelection();
+    }
+  }
   get season(){return CFG.seasons[this.seasonIndex]}
   spawnInitial(){
     const kinds=Object.keys(CFG.initial).filter(k=>SPECIES[k]);
