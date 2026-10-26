@@ -1,0 +1,9 @@
+// Frozen original gamete implementation from 8723b98535c5e554235cb798a2788836f6780f5b.
+// No runtime imports: this is an independent comparison oracle, not live biology.
+export const originalBotanicalBlob="594072d3f370876f1f2b976e894e4fa69365a86f";
+export const BOTANICAL_LOCI=Object.freeze(['cue','receptor','selfMarker','selfCompatible','anther','stigma','ovule','embryo']);
+const traitKeys=['growth','waterNeed','nutrition','seedAllocation','coatAllocation'];
+export function botanicalHash(value){const text=String(value);let h=2166136261;for(let i=0;i<text.length;i++)h=Math.imul(h^text.charCodeAt(i),16777619);return h>>>0}
+function inheritanceHash(value){let h=botanicalHash(value);h^=h>>>16;h=Math.imul(h,0x7feb352d);h^=h>>>15;h=Math.imul(h,0x846ca68b);return(h^(h>>>16))>>>0}
+export function freezeBotanical(v){if(v&&typeof v==='object'&&!Object.isFrozen(v)){for(const x of Object.values(v))freezeBotanical(x);Object.freeze(v)}return v}
+export function originalBotanicalGamete(genome,seed,{mutate=false}={}){const b=genome.botanical||genome,haploid={};for(const k of BOTANICAL_LOCI)haploid[k]=b[k][inheritanceHash(seed+'|'+k)&1];const traits=genome.traitAlleles||Object.fromEntries(traitKeys.map(k=>[k,[genome.traits?.[k],genome.traits?.[k]]]));const traitGamete=genome.traits?Object.fromEntries(traitKeys.map(k=>[k,traits[k][inheritanceHash(seed+'|trait|'+k)&1]])):null;let mutation=null;if(mutate){const k=BOTANICAL_LOCI[botanicalHash(seed+'|mutation-locus')%BOTANICAL_LOCI.length];mutation={locus:k,before:haploid[k]};if(k==='cue'||k==='receptor')haploid[k]^=1<<(botanicalHash(seed+'|binding-site')%8);else if(k==='selfMarker'){const encoded=/^si:(\d+)$/.exec(haploid[k]),identity=encoded?Number(encoded[1]):botanicalHash(haploid[k])%256;haploid[k]='si:'+(identity^(1<<(botanicalHash(seed+'|recognition-site')%8)))}else haploid[k]=!haploid[k];mutation.after=haploid[k]}return freezeBotanical({botanical:haploid,traits:traitGamete,mutation})}

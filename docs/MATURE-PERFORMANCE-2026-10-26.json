@@ -1,0 +1,600 @@
+{
+  "schema": "genvo.mature-performance-evidence/1",
+  "baselineCommit": "8723b98535c5e554235cb798a2788836f6780f5b",
+  "candidate": "uncommitted botanicalGamete redundant pure-hash removal",
+  "integrationAcceptance": "Pending exact-head 121-check CI",
+  "simulation": [
+    {
+      "checkpoint": "day30",
+      "version": "baseline",
+      "sourceFingerprint": "4013eac4ccfe10cca09324db332561937d471343baad747c51bc9216f0f1112a",
+      "inputSha256": "6706d1f3f2896f6eb66ca1cac1006a445732bed2a851658ac80b41dc71414210",
+      "completeStateSha256": "505ac3af6e5a93d456b49bb315e99d12c4c5fecd44b4d70196b687d9ff41a302",
+      "ticksPerRun": 96,
+      "runs": 3,
+      "medianAcrossRuns": {
+        "totalTickMs": 2828.1123000000016,
+        "medianMs": 1.0657000000001062,
+        "p95Ms": 42.44990000000007,
+        "p99Ms": 1112.9389,
+        "worstTickMs": 1112.9389,
+        "captureMs": 259.53949999999986
+      },
+      "allocationSample": {
+        "estimatedBytes": 2055804008,
+        "retainedAfterTicks": 282236032,
+        "evidence": {
+          "file": "reports/engineering-D-allocation-day30-baseline.json",
+          "sha256": "38e3318aedc6449e606cbf5b1d6fef9aed1eb38916bf57cb3484c17e63e4759b"
+        }
+      },
+      "evidence": [
+        {
+          "file": "reports/engineering-D-v2-day30-baseline-0.json",
+          "sha256": "7447c386ad7e6a03cc3a6bb93b5680cc895f65739f0aa9a1d7a30aaeec3c8b33"
+        },
+        {
+          "file": "reports/engineering-D-v2-day30-baseline-1.json",
+          "sha256": "ef6ccb01c28d431db978b6ebb7b63475255d37d6fd829e32f75e2200c0718f51"
+        },
+        {
+          "file": "reports/engineering-D-v2-day30-baseline-2.json",
+          "sha256": "9d2b019b903c1e44bfc7467c08a9a7fb0bd0a69767442b0a61485fef086d0f1a"
+        }
+      ]
+    },
+    {
+      "checkpoint": "day30",
+      "version": "candidate",
+      "sourceFingerprint": "04232f4c83754f48857a6eae2c60f581bee37f901f7e6659d91371a58bafd320",
+      "inputSha256": "6706d1f3f2896f6eb66ca1cac1006a445732bed2a851658ac80b41dc71414210",
+      "completeStateSha256": "505ac3af6e5a93d456b49bb315e99d12c4c5fecd44b4d70196b687d9ff41a302",
+      "ticksPerRun": 96,
+      "runs": 3,
+      "medianAcrossRuns": {
+        "totalTickMs": 2718.7761000000028,
+        "medianMs": 1.132300000000214,
+        "p95Ms": 47.61130000000003,
+        "p99Ms": 1040.2631000000001,
+        "worstTickMs": 1040.2631000000001,
+        "captureMs": 272.20490000000063
+      },
+      "allocationSample": {
+        "estimatedBytes": 1979908608,
+        "retainedAfterTicks": 282070152,
+        "evidence": {
+          "file": "reports/engineering-D-allocation-day30-candidate.json",
+          "sha256": "b5606e6ad6d20e4fe1d4394f3fe9d36109b2b33f18a91351bfd942cc9ee92a97"
+        }
+      },
+      "evidence": [
+        {
+          "file": "reports/engineering-D-v2-day30-candidate-0.json",
+          "sha256": "2073ba351c70c3de62647fc95e7607b82fc4a7c7f5954877f97350fee86fcb83"
+        },
+        {
+          "file": "reports/engineering-D-v2-day30-candidate-1.json",
+          "sha256": "d913f12893ae96bcf5fe992e2d74810fe951252bc717d7c0385f297d40bb36cb"
+        },
+        {
+          "file": "reports/engineering-D-v2-day30-candidate-2.json",
+          "sha256": "5f757f6c2f14f307702cbfac11927540c67363e4a2b036cf564ec671aa06b705"
+        }
+      ]
+    },
+    {
+      "checkpoint": "day100",
+      "version": "baseline",
+      "sourceFingerprint": "4013eac4ccfe10cca09324db332561937d471343baad747c51bc9216f0f1112a",
+      "inputSha256": "c95c8909e8ab3adeddf03a14dadf0ad3936bfc4948295c642349dc4d7e7f53d6",
+      "completeStateSha256": "21a04431a3d9cf308c927fa2b2ce686e4b0202b03e82e655843697b3f4d713cc",
+      "ticksPerRun": 96,
+      "runs": 3,
+      "medianAcrossRuns": {
+        "totalTickMs": 3857.1649000000007,
+        "medianMs": 1.657600000000457,
+        "p95Ms": 69.01050000000032,
+        "p99Ms": 1320.5105000000003,
+        "worstTickMs": 1320.5105000000003,
+        "captureMs": 1127.2276999999995
+      },
+      "allocationSample": {
+        "estimatedBytes": 2579765992,
+        "retainedAfterTicks": 720588128,
+        "evidence": {
+          "file": "reports/engineering-D-allocation-day100-baseline.json",
+          "sha256": "36aa48ecbef917c90f95e1c06dfa1b886c8ef79aa88bad2842cfc74c7f9e5996"
+        }
+      },
+      "evidence": [
+        {
+          "file": "reports/engineering-D-v2-day100-baseline-0.json",
+          "sha256": "b0cac200f8eb6124b92900cb8ae82cb9107a00aa9a5b2311cefef19d03607ec5"
+        },
+        {
+          "file": "reports/engineering-D-v2-day100-baseline-1.json",
+          "sha256": "f45e569aeae54efb8815b676be7cbcb59c75e79bc871cca4042c58662f13895a"
+        },
+        {
+          "file": "reports/engineering-D-v2-day100-baseline-2.json",
+          "sha256": "457ba64767d5df8dc0a80a29d9006665037b3e56ab9d20d50e01f4407eecaa8d"
+        }
+      ]
+    },
+    {
+      "checkpoint": "day100",
+      "version": "candidate",
+      "sourceFingerprint": "04232f4c83754f48857a6eae2c60f581bee37f901f7e6659d91371a58bafd320",
+      "inputSha256": "c95c8909e8ab3adeddf03a14dadf0ad3936bfc4948295c642349dc4d7e7f53d6",
+      "completeStateSha256": "21a04431a3d9cf308c927fa2b2ce686e4b0202b03e82e655843697b3f4d713cc",
+      "ticksPerRun": 96,
+      "runs": 3,
+      "medianAcrossRuns": {
+        "totalTickMs": 3663.892100000001,
+        "medianMs": 1.6484000000000378,
+        "p95Ms": 69.51959999999963,
+        "p99Ms": 1254.6272,
+        "worstTickMs": 1254.6272,
+        "captureMs": 1101.0127000000011
+      },
+      "allocationSample": {
+        "estimatedBytes": 2510912112,
+        "retainedAfterTicks": 720449360,
+        "evidence": {
+          "file": "reports/engineering-D-allocation-day100-candidate.json",
+          "sha256": "87d6a3477185e43f91d6843d7f0447257b2073a9daadc5833c7eeaa165715720"
+        }
+      },
+      "evidence": [
+        {
+          "file": "reports/engineering-D-v2-day100-candidate-0.json",
+          "sha256": "da45d851fd082aa67feaf6588caba1cf29c35bf57db724fa40fce7951a088f01"
+        },
+        {
+          "file": "reports/engineering-D-v2-day100-candidate-1.json",
+          "sha256": "6a5389030b2d4609f3e0d702f2bab2d1f6a194d29bc0af95f3e93fdd6ca9e90b"
+        },
+        {
+          "file": "reports/engineering-D-v2-day100-candidate-2.json",
+          "sha256": "82590e6d897fed24ad431848ac16813817f249a4d1e734385d60e5ad84fbf343"
+        }
+      ]
+    }
+  ],
+  "browser": [
+    {
+      "checkpoint": "day30",
+      "version": "baseline",
+      "scope": "headless Chromium native browser loop; not creator/GPU acceptance",
+      "frameMs": {
+        "count": 5431,
+        "median": 33.299999999995634,
+        "p95": 50.09999999997672,
+        "p99": 100,
+        "worst": 1183.2999999999884
+      },
+      "longTasksPerMinute": 114.67086692148249,
+      "elapsedMs": 184179.30000007153,
+      "start": {
+        "tick": 1452,
+        "day": 31,
+        "live": 214,
+        "auto": true,
+        "paused": false,
+        "blocked": false,
+        "stage": "step-water",
+        "player": true
+      },
+      "end": {
+        "tick": 2728,
+        "day": 57,
+        "live": 248,
+        "auto": true,
+        "paused": false,
+        "blocked": false,
+        "stage": "done",
+        "player": true
+      },
+      "dismissals": [
+        {
+          "elapsed": 135,
+          "action": "native Raise them; no inherited choice altered"
+        },
+        {
+          "elapsed": 145,
+          "action": "native tutorial continue"
+        }
+      ],
+      "save": {
+        "ms": 1228.7999999523163,
+        "saved": true
+      },
+      "heapBefore": 128644928,
+      "heapAfter": 256406688,
+      "evidence": {
+        "file": "reports/engineering-D-browser-continuous-day30-baseline.json",
+        "sha256": "121cce6f7901f7b0effa98a992cb24a7b9d93b933ef274f3c67baa1a365a8676"
+      }
+    },
+    {
+      "checkpoint": "day30",
+      "version": "candidate",
+      "scope": "headless Chromium native browser loop; not creator/GPU acceptance",
+      "frameMs": {
+        "count": 5401,
+        "median": 33.29999999999927,
+        "p95": 50,
+        "p99": 100,
+        "worst": 1149.8999999999942
+      },
+      "longTasksPerMinute": 117.78057033857627,
+      "elapsedMs": 183901.29999995232,
+      "start": {
+        "tick": 1451,
+        "day": 31,
+        "live": 214,
+        "auto": true,
+        "paused": false,
+        "blocked": false,
+        "stage": "step-water",
+        "player": true
+      },
+      "end": {
+        "tick": 2728,
+        "day": 57,
+        "live": 248,
+        "auto": true,
+        "paused": false,
+        "blocked": false,
+        "stage": "done",
+        "player": true
+      },
+      "dismissals": [
+        {
+          "elapsed": 135,
+          "action": "native Raise them; no inherited choice altered"
+        },
+        {
+          "elapsed": 145,
+          "action": "native tutorial continue"
+        }
+      ],
+      "save": {
+        "ms": 1214,
+        "saved": true
+      },
+      "heapBefore": 128319100,
+      "heapAfter": 256341388,
+      "evidence": {
+        "file": "reports/engineering-D-browser-continuous-day30-candidate.json",
+        "sha256": "531db5e88d5e6f77402a2da1dc6a4cb8e5b24cd19bec12d11534dd099f327e13"
+      }
+    },
+    {
+      "checkpoint": "day100",
+      "version": "baseline",
+      "scope": "headless Chromium native browser loop; not creator/GPU acceptance",
+      "frameMs": {
+        "count": 3284,
+        "median": 50,
+        "p95": 66.79999999999927,
+        "p99": 183.40000000000873,
+        "worst": 2083.2000000000116
+      },
+      "longTasksPerMinute": 387.63031401534585,
+      "elapsedMs": 190232.79999995232,
+      "start": {
+        "tick": 4818,
+        "day": 101,
+        "live": 292,
+        "auto": true,
+        "paused": false,
+        "blocked": false,
+        "stage": "step-water",
+        "player": true
+      },
+      "end": {
+        "tick": 6096,
+        "day": 127,
+        "live": 291,
+        "auto": true,
+        "paused": false,
+        "blocked": false,
+        "stage": "step-water",
+        "player": true
+      },
+      "dismissals": [],
+      "save": {
+        "ms": 2571.3000000715256,
+        "saved": true
+      },
+      "heapBefore": 339456880,
+      "heapAfter": 454239760,
+      "evidence": {
+        "file": "reports/engineering-D-browser-day100-baseline.json",
+        "sha256": "bf54eaf04252a94097685d2edd1db3e75c6df2612272c928875ac7e6bb67f5d8"
+      }
+    },
+    {
+      "checkpoint": "day100",
+      "version": "candidate",
+      "scope": "headless Chromium native browser loop; not creator/GPU acceptance",
+      "frameMs": {
+        "count": 3288,
+        "median": 50,
+        "p95": 66.79999999998836,
+        "p99": 183.39999999999418,
+        "worst": 2149.7999999999884
+      },
+      "longTasksPerMinute": 378.4128186805169,
+      "elapsedMs": 185828.79999995232,
+      "start": {
+        "tick": 4818,
+        "day": 101,
+        "live": 292,
+        "auto": true,
+        "paused": false,
+        "blocked": false,
+        "stage": "step-water",
+        "player": true
+      },
+      "end": {
+        "tick": 6077,
+        "day": 127,
+        "live": 291,
+        "auto": true,
+        "paused": false,
+        "blocked": false,
+        "stage": "step-water",
+        "player": true
+      },
+      "dismissals": [],
+      "save": {
+        "ms": 2507.600000023842,
+        "saved": true
+      },
+      "heapBefore": 339321988,
+      "heapAfter": 451347312,
+      "evidence": {
+        "file": "reports/engineering-D-browser-day100-candidate.json",
+        "sha256": "98d561b99f32286ead7911efeeefdbba1be71299c363fbe34272fc4cef1c8229"
+      }
+    }
+  ],
+  "regions": [
+    {
+      "checkpoint": "day30",
+      "version": "baseline",
+      "scope": "Controlled legal border placement only; no age, reserve, anatomy, policy or resource edits. Not natural evolution acceptance.",
+      "sourceFingerprint": "4013eac4ccfe10cca09324db332561937d471343baad747c51bc9216f0f1112a",
+      "completeStateSha256": "56491d8befd731e0f8467573dec772f1b125818030531cf83c0c1ebb94c892da",
+      "transfers": [
+        {
+          "ms": 321.33759999999984,
+          "to": {
+            "x": 128,
+            "y": 0
+          },
+          "archives": 1,
+          "traveler": 109
+        },
+        {
+          "ms": 127.20589999999993,
+          "to": {
+            "x": 256,
+            "y": 0
+          },
+          "archives": 2,
+          "traveler": 109
+        }
+      ],
+      "tickMs": {
+        "count": 96,
+        "total": 17511.610300000015,
+        "median": 0.9927999999999884,
+        "p95": 897.9737999999998,
+        "p99": 2458.5944,
+        "worst": 2458.5944
+      },
+      "maxSampledDebt": 6,
+      "finalBacklog": {
+        "tick": 1536,
+        "regions": [
+          {
+            "key": "0,0",
+            "mode": "canonical-ticks/1",
+            "tick": 1530,
+            "debt": 6
+          },
+          {
+            "key": "128,0",
+            "mode": "canonical-ticks/1",
+            "tick": 1530,
+            "debt": 6
+          }
+        ]
+      },
+      "evidence": {
+        "file": "reports/engineering-D-regions-day30-baseline.json",
+        "sha256": "2a2e40d28c4d5f86402ee201faeb92c88948b21488bdfa4e1638e21e21610b84"
+      }
+    },
+    {
+      "checkpoint": "day30",
+      "version": "candidate",
+      "scope": "Controlled legal border placement only; no age, reserve, anatomy, policy or resource edits. Not natural evolution acceptance.",
+      "sourceFingerprint": "04232f4c83754f48857a6eae2c60f581bee37f901f7e6659d91371a58bafd320",
+      "completeStateSha256": "56491d8befd731e0f8467573dec772f1b125818030531cf83c0c1ebb94c892da",
+      "transfers": [
+        {
+          "ms": 394.6877999999997,
+          "to": {
+            "x": 128,
+            "y": 0
+          },
+          "archives": 1,
+          "traveler": 109
+        },
+        {
+          "ms": 132.98869999999988,
+          "to": {
+            "x": 256,
+            "y": 0
+          },
+          "archives": 2,
+          "traveler": 109
+        }
+      ],
+      "tickMs": {
+        "count": 96,
+        "total": 17601.798799999986,
+        "median": 1.0156999999999243,
+        "p95": 856.4620000000014,
+        "p99": 2476.5895000000005,
+        "worst": 2476.5895000000005
+      },
+      "maxSampledDebt": 6,
+      "finalBacklog": {
+        "tick": 1536,
+        "regions": [
+          {
+            "key": "0,0",
+            "mode": "canonical-ticks/1",
+            "tick": 1530,
+            "debt": 6
+          },
+          {
+            "key": "128,0",
+            "mode": "canonical-ticks/1",
+            "tick": 1530,
+            "debt": 6
+          }
+        ]
+      },
+      "evidence": {
+        "file": "reports/engineering-D-regions-day30-candidate.json",
+        "sha256": "b2b8d8705552815a1e9c21aa5f77c16b0d34f5b8f7632c4a00690752bec23b50"
+      }
+    },
+    {
+      "checkpoint": "day100",
+      "version": "baseline",
+      "scope": "Controlled legal border placement only; no age, reserve, anatomy, policy or resource edits. Not natural evolution acceptance.",
+      "sourceFingerprint": "4013eac4ccfe10cca09324db332561937d471343baad747c51bc9216f0f1112a",
+      "completeStateSha256": "03986e143f676793b8399247c1ec43327f7f3f00a19a03fbae347428dc606c62",
+      "transfers": [
+        {
+          "ms": 1462.2372000000005,
+          "to": {
+            "x": 128,
+            "y": 0
+          },
+          "archives": 1,
+          "traveler": 109
+        },
+        {
+          "ms": 135.05269999999928,
+          "to": {
+            "x": 256,
+            "y": 0
+          },
+          "archives": 2,
+          "traveler": 109
+        }
+      ],
+      "tickMs": {
+        "count": 96,
+        "total": 47406.15209999999,
+        "median": 1.2948000000033062,
+        "p95": 2760.1570999999967,
+        "p99": 5645.6990000000005,
+        "worst": 5645.6990000000005
+      },
+      "maxSampledDebt": 6,
+      "finalBacklog": {
+        "tick": 4896,
+        "regions": [
+          {
+            "key": "0,0",
+            "mode": "canonical-ticks/1",
+            "tick": 4890,
+            "debt": 6
+          },
+          {
+            "key": "128,0",
+            "mode": "canonical-ticks/1",
+            "tick": 4890,
+            "debt": 6
+          }
+        ]
+      },
+      "evidence": {
+        "file": "reports/engineering-D-regions-day100-baseline.json",
+        "sha256": "fbb31ac45c1df9810e923bdf2729bd6ee884f6841a264182289bbbb09b41b527"
+      }
+    },
+    {
+      "checkpoint": "day100",
+      "version": "candidate",
+      "scope": "Controlled legal border placement only; no age, reserve, anatomy, policy or resource edits. Not natural evolution acceptance.",
+      "sourceFingerprint": "04232f4c83754f48857a6eae2c60f581bee37f901f7e6659d91371a58bafd320",
+      "completeStateSha256": "03986e143f676793b8399247c1ec43327f7f3f00a19a03fbae347428dc606c62",
+      "transfers": [
+        {
+          "ms": 1447.2062000000005,
+          "to": {
+            "x": 128,
+            "y": 0
+          },
+          "archives": 1,
+          "traveler": 109
+        },
+        {
+          "ms": 134.47159999999985,
+          "to": {
+            "x": 256,
+            "y": 0
+          },
+          "archives": 2,
+          "traveler": 109
+        }
+      ],
+      "tickMs": {
+        "count": 96,
+        "total": 47275.941499999986,
+        "median": 1.2586000000010245,
+        "p95": 2710.334999999999,
+        "p99": 5728.4326,
+        "worst": 5728.4326
+      },
+      "maxSampledDebt": 6,
+      "finalBacklog": {
+        "tick": 4896,
+        "regions": [
+          {
+            "key": "0,0",
+            "mode": "canonical-ticks/1",
+            "tick": 4890,
+            "debt": 6
+          },
+          {
+            "key": "128,0",
+            "mode": "canonical-ticks/1",
+            "tick": 4890,
+            "debt": 6
+          }
+        ]
+      },
+      "evidence": {
+        "file": "reports/engineering-D-regions-day100-candidate.json",
+        "sha256": "0858440c16c9776391c4d6dac793abdb7d4c1717cd43b9f9b980d3e3698ee339"
+      }
+    }
+  ],
+  "limits": [
+    "Browser observations show no consistent responsiveness improvement.",
+    "Regional single paired samples show no consistent speed gain.",
+    "Finite-horizon heap growth is not leak proof.",
+    "Natural evolution acceptance remains a separate required stage."
+  ]
+}

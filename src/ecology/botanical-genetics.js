@@ -22,7 +22,34 @@ export function botanicalStructure(b,part){return !!b?.[part]?.some(Boolean)}
 export function validBotanicalGamete(g,parent=null){const seen=g&&validGametes.get(g);if(seen?.has(parent||ORPHAN))return true;const ok=checkBotanicalGamete(g,parent);
  if(ok&&Object.isFrozen(g)&&Object.isFrozen(g.botanical)&&Object.isFrozen(g.traits)&&(!parent||Object.isFrozen(parent)&&Object.isFrozen(parent.botanical))){let s=seen;if(!s){s=new WeakSet();validGametes.set(g,s)}s.add(parent||ORPHAN)}return ok}
 function checkBotanicalGamete(g,parent){if(!g?.botanical||Object.keys(g.botanical).length!==BOTANICAL_LOCI.length||!BOTANICAL_LOCI.every(k=>{const v=g.botanical[k];return k==='cue'||k==='receptor'?Number.isInteger(v)&&v>=0&&v<=255:k==='selfMarker'?typeof v==='string'&&v.startsWith('si:')&&v.length<=200:typeof v==='boolean'}))return false;if(!g.traits||Object.keys(g.traits).length!==traitKeys.length)return false;if(parent){if(!validBotanicalGenome(parent.botanical))return false;const m=g.mutation;if(m&&(!BOTANICAL_LOCI.includes(m.locus)||!parent.botanical[m.locus].includes(m.before)||m.after!==g.botanical[m.locus]))return false;for(const k of BOTANICAL_LOCI)if(m?.locus!==k&&!parent.botanical[k].includes(g.botanical[k]))return false;for(const k of traitKeys)if(!(parent.traitAlleles?.[k]||[parent.traits?.[k]]).includes(g.traits[k]))return false;}const producers=Object.values(PLANTS).filter(p=>p.dispersal);return traitKeys.every(k=>{const v=g.traits[k],min=k==='seedAllocation'?.08:k==='coatAllocation'?0:Math.min(...producers.map(p=>p[k])),max=k==='seedAllocation'?.36:k==='coatAllocation'?.40:Math.max(...producers.map(p=>p[k]));return Number.isFinite(v)&&v>=min&&v<=max})&&g.traits.seedAllocation+g.traits.coatAllocation<1}
-export function botanicalGamete(genome,seed,{mutate=false}={}){const b=genome.botanical||genome,haploid={};for(const k of BOTANICAL_LOCI)haploid[k]=b[k][inheritanceHash(seed+'|'+k)&1];const traits=genome.traitAlleles||Object.fromEntries(traitKeys.map(k=>[k,[genome.traits?.[k],genome.traits?.[k]]]));const traitGamete=genome.traits?Object.fromEntries(traitKeys.map(k=>[k,traits[k][inheritanceHash(seed+'|trait|'+k)&1]])):null;let mutation=null;if(mutate){const k=BOTANICAL_LOCI[botanicalHash(seed+'|mutation-locus')%BOTANICAL_LOCI.length];mutation={locus:k,before:haploid[k]};if(k==='cue'||k==='receptor')haploid[k]^=1<<(botanicalHash(seed+'|binding-site')%8);else if(k==='selfMarker'){const encoded=/^si:(\d+)$/.exec(haploid[k]),identity=encoded?Number(encoded[1]):botanicalHash(haploid[k])%256;haploid[k]='si:'+(identity^(1<<(botanicalHash(seed+'|recognition-site')%8)))}else haploid[k]=!haploid[k];mutation.after=haploid[k]}return freezeBotanical({botanical:haploid,traits:traitGamete,mutation})}
+// Indistinguishable copies need no deterministic segregation hash. Object.is
+// preserves signed-zero distinctions; heterozygotes and mutation keep the exact
+// original seed keys and operations. This removes work, not genetic variation.
+export function botanicalGamete(genome,seed,{mutate=false}={}) {
+  const b=genome.botanical||genome, haploid={};
+  for (const k of BOTANICAL_LOCI) {
+    const pair=b[k];
+    haploid[k]=Object.is(pair[0],pair[1]) ? pair[0] : pair[inheritanceHash(seed+'|'+k)&1];
+  }
+  const traits=genome.traitAlleles||Object.fromEntries(traitKeys.map(k=>[k,[genome.traits?.[k],genome.traits?.[k]]]));
+  const traitGamete=genome.traits ? Object.fromEntries(traitKeys.map(k=>{
+    const pair=traits[k];
+    return [k,Object.is(pair[0],pair[1]) ? pair[0] : pair[inheritanceHash(seed+'|trait|'+k)&1]];
+  })) : null;
+  let mutation=null;
+  if (mutate) {
+    const k=BOTANICAL_LOCI[botanicalHash(seed+'|mutation-locus')%BOTANICAL_LOCI.length];
+    mutation={locus:k,before:haploid[k]};
+    if (k==='cue'||k==='receptor') haploid[k]^=1<<(botanicalHash(seed+'|binding-site')%8);
+    else if (k==='selfMarker') {
+      const encoded=/^si:(\d+)$/.exec(haploid[k]);
+      const identity=encoded ? Number(encoded[1]) : botanicalHash(haploid[k])%256;
+      haploid[k]='si:'+(identity^(1<<(botanicalHash(seed+'|recognition-site')%8)));
+    } else haploid[k]=!haploid[k];
+    mutation.after=haploid[k];
+  }
+  return freezeBotanical({botanical:haploid,traits:traitGamete,mutation});
+}
 export function recognizeBotanicalPollen(recipient,pollen,{selfing=false}={}){const b=recipient.botanical||recipient,g=pollen.botanical||pollen;if(!validBotanicalGenome(b))return{accepted:false,stage:'recognition',reason:'Invalid receptive genotype.'};if(!b.receptor.includes(g.cue))return{accepted:false,stage:'recognition',reason:'The inherited receptor does not recognize this pollen signal.'};if(!b.selfCompatible.some(Boolean)&&(selfing||b.selfMarker.includes(g.selfMarker)))return{accepted:false,stage:'recognition',reason:'Inherited self-incompatibility rejects this pollen identity.'};return{accepted:true,stage:'recognition',reason:'The inherited pollen signal is recognized.'}}
 export function botanicalSeedViability(genome){const b=genome.botanical||genome;return validBotanicalGenome(b)&&b.embryo.some(Boolean)?{viable:true,reason:'An inherited embryo-development copy is functional.'}:{viable:false,reason:'No inherited embryo-development copy is functional.'}}
 export function botanicalHomozygosity(genome){const b=genome.botanical||genome,pairs=[...BOTANICAL_LOCI.map(k=>b[k]),...Object.values(genome.traitAlleles||{})];return pairs.filter(p=>p[0]===p[1]).length/pairs.length}

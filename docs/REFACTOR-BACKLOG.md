@@ -29,18 +29,26 @@ All tasks start from live main, preserve unrelated work, and update the continua
 - Invariants: zero-water mothers cannot fund milk; nursing debits conserved reserves; no biology changes to satisfy fixture.
 - Acceptance: previously failing positive fixture passes for a valid reason and zero-water regression passes; explain setup versus natural observation.
 
-## 4. Protect interleaved day-clock execution (implemented; 119-check exact-head CI pending)
+## 4. Protect interleaved day-clock execution (completed at 8723b985; 119-check CI 40385691926 passed)
 
 - Goal/files: `src/sim/day-clock.js`, config and a dedicated regression test; initially change tests/documentation only.
 - Reuse: `applyDayClock`, `dayTicksFor`, versioned save policies and existing clock tests.
 - Implementation: original-source Node 22/24 controls and failing public resume/save/background probes preceded correction. clockScopedSteps now guards each iterator operation, while regional budget validation reads the archived core policy. The original ordered biological body is unchanged. Full CFG conversion remains separate work.
 - Tests: day-clock, sliced ticks, baseline and restore parity.
 - Invariants: no silent clock migration, new policy, changed global defaults or save format.
-- Acceptance: exact original isolated outcomes, real alternating/sliced/saved/restored worlds, actual FrameStepper movement and foreground/background parity pass. Verify the latest exact-head 119-check CI before remote acceptance; do not claim universal per-instance settings isolation.
+- Acceptance: exact original isolated outcomes, real alternating/sliced/saved/restored worlds, actual FrameStepper movement and foreground/background parity pass. Exact-head 119-check CI 40385691926 passed; do not claim universal per-instance settings isolation.
 
 ## Later: renderer and save subsystem boundaries (local browser needed)
 
 Choose one coherent painter or snapshot subsystem only after inspecting actual callers. Preserve historical migration branches, native pixel output, cache invalidation, complete snapshot reference semantics and public export parity. Require same-state extracted browser proof for visual/input changes and mature-world profiling for performance claims. Existing slow work must not be hidden by larger budgets. Deferred ground-art candidate requires its own full validation before any integration.
+
+Specific next candidates, after the current D/E pass and release verification:
+
+- `simulation.js`: habitat-centre selection and initial placement helpers (`pickHabitatCenter`, `spawnInitial`). First freeze constructor/world/animal insertion order and all RNG draws against original snapshots. Keep bootstrap policy and founder preparation under Simulation; do not combine this extraction with demographic changes.
+- `renderer.js`: the coherent world-cache reset boundary. Inventory every affected cache, preparation promise and regional promotion caller before extracting a helper; same-world terrain refresh and full-world replacement have different obligations. Require identical same-state native frames and cache lifecycle tests.
+- `main.js`: speed-button display and native speed command binding (`syncSpeedButton`, `changeSpeed`). Borrow the existing ObserverController and HUD callbacks; do not create another pacing owner or move biological work into UI handlers.
+- `save-manager.js`: typed world snapshot adapters (`snapshotWorld`, `restoreTyped`, `restoreOwnedTyped`). Preserve alias/owned-buffer semantics, historical migrations and complete restore/continuation results. Keep transaction capture/publication ordering in SaveManager; adapter extraction is not a format migration.
+- `tutorial.js`: opening briefing content and card rendering (`OPENING_BRIEFINGS`, `showBriefing`). Retain stage transitions, pause/input ownership and persisted tutorial policy in the controller; test new-world versus restored-world entry and native keyboard/mouse behavior.
 
 ## Current development sequence
 
