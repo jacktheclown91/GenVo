@@ -13,7 +13,8 @@ export function floraAnchor(shape,x,y){
 
 export function floraVisualAnchor(shape,x,y,isWater=()=>false){
  const {jx,jy}=floraAnchor(shape,x,y),cx=shape==='reed'?(isWater(x-1,y)?4:isWater(x+1,y)?10:8):8,cy=shape==='reed'?(isWater(x,y-1)?4:isWater(x,y+1)?12:8):8;
- return{jx,jy,cx,cy,x:cx+jx,y:cy+jy};
+ const hitX=Math.max(.5,Math.min(15.5,cx+jx)),hitY=Math.max(.5,Math.min(15.5,cy+jy));
+ return{jx:hitX-cx,jy:hitY-cy,cx,cy,x:hitX,y:hitY};
 }
 export function drawFloraPlant(ctx,{shape,color,amount,px,py,u,x,y,kind,seedAllocation=.2,coatAllocation=.25,reproduction=null,season='SPRING',isWater=()=>false,visualAnchor=null}){
   if(!(amount>0))return;
@@ -214,7 +215,7 @@ function drawSeedPods(c,{x,y,u,density,body,light,shade,seed,amount,season,coatA
   }
 }
 
-function hash2(x,y,salt=0){let n=(x*374761393+y*668265263+salt*1442695041)>>>0;n=(n^(n>>13))*1274126177>>>0;return((n^(n>>16))>>>0)/4294967295}
+function hash2(x,y,salt=0){let n=(Math.imul(x,374761393)+Math.imul(y,668265263)+Math.imul(salt,1442695041))>>>0;n=Math.imul(n^(n>>>13),1274126177)>>>0;return((n^(n>>>16))>>>0)/4294967295}
 function seasonalBase(hex,season,kind){const shifts=season==='SPRING'?[5,4,5]:season==='SUMMER'?[-5,1,0]:season==='AUTUMN'?[-20,-5,1]:[7,-14,4];let [h,s,l]=rgbToHsl(...hexRgb(hex));if(kind==='marshroot'&&season==='WINTER'){h=48;s=24;l=46}else if(kind==='bramble'&&season==='AUTUMN'){h-=8;s-=3;l+=1}else if(kind==='thistlepod'&&(season==='SUMMER'||season==='AUTUMN')){h=58;s=35;l=45}return `hsl(${(h+shifts[0]+360)%360} ${Math.max(14,Math.min(84,s+shifts[1]))}% ${Math.max(22,Math.min(76,l+shifts[2]))}%)`}
 function hexRgb(hex){const n=parseInt(hex.replace('#',''),16);return[((n>>16)&255)/255,((n>>8)&255)/255,(n&255)/255]}
 function tintHex(color,hueShift=0,lightShift=0){let h,s,l;if(color.startsWith('hsl(')){const m=color.match(/hsl\(([-.\d]+)\s+([-.\d]+)%\s+([-.\d]+)%\)/);if(m){h=+m[1];s=+m[2];l=+m[3]}}if(h==null){[h,s,l]=rgbToHsl(...hexRgb(color))}return `hsl(${(h+hueShift+360)%360} ${Math.max(18,Math.min(86,s))}% ${Math.max(24,Math.min(78,l+lightShift))}%)`}
