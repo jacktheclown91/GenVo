@@ -21,3 +21,8 @@ jobs:
           node-version: '22'
       - name: Focused local-play contract
         run: node tools/check-playable.mjs
+      - name: Architecture boundaries and pre-refactor deterministic baseline
+        run: |
+          node tests/architecture-check.mjs
+          node tools/architecture-check.mjs
+          node tests/modernization-baseline.mjs

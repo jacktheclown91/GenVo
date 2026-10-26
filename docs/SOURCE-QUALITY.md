@@ -1,0 +1,11 @@
+# Incremental source quality
+
+Keep the native ES-module runtime and existing Node test scripts. No package manifest or build system is required for this pass.
+
+For changed modules: use two-space indentation, readable statement boundaries, explicit responsibility comments and named intermediate values where useful. Preserve surrounding line endings. Format only newly extracted modules or deliberately edited functions; never combine repository-wide formatting with behavior changes. Run `node --check` on each changed JS/MJS file and `git diff --check` (on Windows, `git -c core.whitespace=cr-at-eol diff --check`).
+
+Prettier is useful for isolated new modules, but a repository-wide invocation would obscure mechanical parity and clash with concurrent dense source. ESLint/unused-binding analysis requires a parser/configuration and a reviewed existing-warning baseline; defer adoption to a dedicated tooling change rather than adding unverified dependencies. No claim of complete lint or unused-code coverage is made. An optional future formatter/linter must pin its version, check only opted-in files, preserve browser globals and avoid automatic broad rewrites.
+
+Reuse `tools/source-graph.mjs` for import reachability and missing-file checks. `tools/architecture-check.mjs` adds strongly connected components and simulation-to-presentation boundary regression checks; `canonical-source-audit.mjs` classifies non-runtime modules. Unreachable from the game is NOT unused: tests, exporters and historical comparisons may import it. Review callers and Git inventory before deleting any module.
+
+Architecture fixture recording (`--record`) is an explicit reviewed baseline change, never a CI repair. Read the full diff and justify each graph change. Frozen simulation fixtures must not be regenerated merely because refactoring fails. A changed signature requires investigation against the original commit; preserve legitimate outcomes, RNG, resource accounting, order and compatibility.

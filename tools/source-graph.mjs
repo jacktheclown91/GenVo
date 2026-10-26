@@ -3,7 +3,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const importPattern=/(?:\bimport\s*(?:\([^)]*\)|[^;]*?\bfrom\s*)|\bexport\s+[^;]*?\bfrom\s*)['"]([^'"]+)['"]/g;
+const importPattern=/\b(?:import|export)\s+(?:[^;'"']*?\bfrom\s*)?['"]([^'"]+)['"]|\bimport\s*\(\s*['"]([^'"]+)['"]\s*\)/g;
 export function sourceGraph(root,{entry='src/main.js'}={}){
  const exists=rel=>fs.existsSync(path.join(root,rel));
  function files(dir){return fs.readdirSync(path.join(root,dir),{withFileTypes:true}).flatMap(e=>e.isDirectory()?files(`${dir}/${e.name}`):e.isFile()&&e.name.endsWith('.js')?[`${dir}/${e.name}`]:[]).sort()}
@@ -11,7 +11,7 @@ export function sourceGraph(root,{entry='src/main.js'}={}){
  for(const source of all){
   const deps=[];const code=fs.readFileSync(path.join(root,source),'utf8');
   for(const match of code.matchAll(importPattern)){
-   const spec=match[1];if(!spec.startsWith('.'))continue;
+   const spec=match[1]??match[2];if(!spec.startsWith('.'))continue;
    const resolved=path.posix.normalize(path.posix.join(path.posix.dirname(source),spec));
    if(!exists(resolved))missing.push(`${source} -> ${spec}`);
    else deps.push(resolved);
