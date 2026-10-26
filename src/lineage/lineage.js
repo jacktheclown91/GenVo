@@ -199,7 +199,11 @@ export class LineageTracker{
     }
     for(const animal of this.sim.animals)if(animal.player)animal.player=false;
     dead.player=false;
-    if(!heir){this.sim.playerId=null;this.activeId=null;this.selectedHeirId=null;return false}
+    if(!heir){
+      this.sim.playerId=null;this.activeId=null;this.selectedHeirId=null;
+      this.sim.reproduction?.onActiveChanged();
+      return false;
+    }
     heir.player=true;
     this.sim.playerId=heir.id;
     this.activeId=heir.id;

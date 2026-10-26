@@ -3,12 +3,12 @@ import {spawnSync} from 'node:child_process';
 import {playablePlan} from '../tools/check-playable.mjs';
 
 const all=playablePlan(),key=check=>`${check.mode}:${check.item}`;
-assert.equal(all.length,121,'Retain all 119 prior checks plus exact gamete and performance-signature contracts');
+assert.equal(all.length,122,'Retain all 121 prior checks plus extinct-lineage save continuation');
 assert.equal(new Set(all.map(key)).size,all.length,'No duplicated manifest entries');
 assert.equal(all[0].item,'src/main.js');
 assert.equal(all.at(-1).item,'tests/living-planet-extended.mjs');
 assert.ok(all.some(check=>check.item==='tests/reproductive-similarity.mjs'));
-for(const item of ['tests/botanical-gamete-parity.mjs','tests/snapshot-signature.mjs','tests/interleaved-day-clock.mjs','tests/care-expression.mjs','tests/spatial-index.mjs'])assert.ok(all.some(check=>check.item===item));
+for(const item of ['tests/extinct-lineage-save.mjs','tests/botanical-gamete-parity.mjs','tests/snapshot-signature.mjs','tests/interleaved-day-clock.mjs','tests/care-expression.mjs','tests/spatial-index.mjs'])assert.ok(all.some(check=>check.item===item));
 for(const count of [1,2,3,5,all.length]){
   const union=[];
   for(let index=1;index<=count;index++){
@@ -31,4 +31,4 @@ for(const args of [['--shard=0/2'],['--unknown'],['--shard=1/2','--shard=2/2'],[
   const result=spawnSync(process.execPath,['tools/check-playable.mjs',...args],{encoding:'utf8'});
   assert.notEqual(result.status,0,'Invalid selection fails closed');
 }
-console.log('Playable CI plan PASS: all 121 checks exactly once, ordered, disjoint shards, actual CLI selection and invalid inputs.');
+console.log('Playable CI plan PASS: all 122 checks exactly once, ordered, disjoint shards, actual CLI selection and invalid inputs.');

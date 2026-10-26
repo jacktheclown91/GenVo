@@ -50,6 +50,10 @@ Specific next candidates, after the current D/E pass and release verification:
 - `save-manager.js`: typed world snapshot adapters (`snapshotWorld`, `restoreTyped`, `restoreOwnedTyped`). Preserve alias/owned-buffer semantics, historical migrations and complete restore/continuation results. Keep transaction capture/publication ordering in SaveManager; adapter extraction is not a format migration.
 - `tutorial.js`: opening briefing content and card rendering (`OPENING_BRIEFINGS`, `showBriefing`). Retain stage transitions, pause/input ownership and persisted tutorial policy in the controller; test new-world versus restored-world entry and native keyboard/mouse behavior.
 
+## Natural field save correction (implemented; 122-check CI pending)
+
+The first 320-day original-policy field exposed a stale selected mate after total controlled-lineage extinction and later death of that mate. `LineageTracker.handleActiveDeath` now calls the existing reproduction cleanup when there is no heir. The focused test failed on the old code and passes Node 22/24 with no RNG changes, both clocks, exact restore/continuation and historical living-target compatibility. Original modernization and interleaved-clock controls remain unchanged. Four paired 320-day runs and exact-head CI are required before final field acceptance. See NATURAL-EVOLUTION-2026-10-26.md. The verified source-3503dd62 extracted RC remains preserved but predates this correction; create a new named RC after CI.
+
 ## Current development sequence
 
 The October 26 next-pass directive requires spatial extraction, funded nursing coverage, interleaved clock protection, actual mature-world profiling with an equivalent-behavior optimization, and natural multigenerational investigation in that order. See docs/ENGINEERING-DEVELOPMENT-2026-10-26.md for current evidence and missing acceptance. Complete and verify a Git checkpoint between major stages; do not stop after only the easiest extraction.

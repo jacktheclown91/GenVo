@@ -14,6 +14,7 @@ const syntax=[
   'tests/save-concurrent-requests.mjs'
 ];
 const runtime=[
+  'tests/extinct-lineage-save.mjs',
   'tests/botanical-gamete-parity.mjs',
   'tests/snapshot-signature.mjs',
   'tests/interleaved-day-clock.mjs',

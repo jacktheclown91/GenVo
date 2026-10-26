@@ -1,6 +1,6 @@
 # Mature-world performance investigation — in progress
 
-Baseline source: `8723b98535c5e554235cb798a2788836f6780f5b`, whose 119-check exact-head CI [40385691926](https://github.com/jacktheclown91/GenVo/actions/runs/40385691926) succeeded. The performance checkpoint has targeted automated and real browser evidence below; full 121-check exact-head CI remains pending. Creator acceptance is not claimed.
+Baseline source: `8723b98535c5e554235cb798a2788836f6780f5b`, whose 119-check exact-head CI [40385691926](https://github.com/jacktheclown91/GenVo/actions/runs/40385691926) succeeded. Performance checkpoint 3503dd628c6e074344883fda0fa29b382a0bc68d passed the complete 121-check exact-head CI [40400067101](https://github.com/jacktheclown91/GenVo/actions/runs/40400067101), including both partitions and the required summary. Targeted automated and real browser evidence is below. Creator acceptance is not claimed.
 
 ## Implemented candidate
 
@@ -63,4 +63,4 @@ After 96 actual ticks in the third region, both archives advanced with maximum s
 
 These single paired samples demonstrate no consistent regional speed gain. Regional replay/capture remains an expensive follow-up; no budget is enlarged and no ecology is omitted to conceal it. Earlier phase/CPU profiles include perception and decision phases separately from vegetation. Raw regional receipts and full snapshots are under ignored `reports/engineering-D-regions-*`; reproduce with `tools/measure-mature-regions.mjs`.
 
-Still required: targeted integration and complete exact-head CI; a coherent checkpoint and current handoff. Natural multigenerational investigation and a separately named, extracted release candidate remain later stages of the engineering assignment. The published release and stable ZIP are preserved.
+Stage D implementation, measured parity and exact-head full integration are complete. Natural multigenerational investigation and a separately named, extracted release candidate remain later stages of the engineering assignment. The published release and stable ZIP are preserved.

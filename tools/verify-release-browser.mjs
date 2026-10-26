@@ -16,15 +16,29 @@ await new Promise(r=>server.listen(0,'127.0.0.1',r));const origin='http://127.0.
 const browser=await pw.chromium.launch({headless:true,args:['--autoplay-policy=user-gesture-required']});const report={root,checks:{}};const errors=[],consoleErrors=[],failed=[];
 const shot=(page,name)=>page.screenshot({path:path.join(output,name+'.png')});
 const ok=(name,value)=>{report.checks[name]=value;console.log('PASS',name,JSON.stringify(value).slice(0,220))};
+let page;
+async function beginNativeOpening(){
+ for(let step=0;step<16;step++){
+  const stage=await page.evaluate(()=>window.__GENVO8__.tutorial.stage);
+  if(!['welcome','briefing'].includes(stage))return;
+  if(await page.locator('#startGame').isVisible())await page.locator('#startGame').click();
+  else await page.keyboard.press('Enter');
+  await page.waitForTimeout(350);
+ }
+ throw Error('Opening cards did not finish through native controls');
+}
 try{
- const context=await browser.newContext({viewport:{width:1280,height:720}});const page=await context.newPage();
+ const context=await browser.newContext({viewport:{width:1280,height:720}});page=await context.newPage();
  page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')consoleErrors.push(m.text())});page.on('requestfailed',r=>failed.push(r.url()));
  await page.goto(origin);await page.waitForFunction(()=>!!window.__GENVO8__?.saveManager,{},{timeout:60000});await page.waitForTimeout(800);await shot(page,'01-home');
  const options=await page.evaluate(()=>[...document.querySelectorAll('#newWorldCreature option')].map(o=>o.value));
  await page.locator('.menu-view[data-screen="home"] [data-screen-target="new"]').click();await page.locator('#newWorldSeed').fill('PLANET-RELEASE-1');await page.locator('#newWorldName').fill('Release check');
  await page.locator('#newWorldCreature').selectOption('starter-jump');await shot(page,'02-new-world');
  await page.locator('.menu-view[data-screen="new"] [data-action="create"]').click();
- await page.waitForFunction(()=>document.querySelector('#frontEnd')?.hidden&&!!window.__GENVO8__.sim.climate,{},{timeout:90000});await page.evaluate(()=>window.__GENVO8__.renderer.sceneReady());await page.waitForTimeout(1500);
+ // Climate is produced by the first biological tick; the welcome deliberately
+ // blocks that tick. Enter gameplay through its native cards before awaiting it.
+ await page.waitForFunction(()=>document.querySelector('#frontEnd')?.hidden&&!!window.__GENVO8__.sim.player(),{},{timeout:90000});
+ await beginNativeOpening();await page.evaluate(()=>window.__GENVO8__.renderer.sceneReady());await page.waitForTimeout(1500);
  const start=await page.evaluate(()=>{const s=window.__GENVO8__.sim,p=s.player();return{generator:s.world.generator,species:p.species,parts:[...new Set(p.bodyPlan.nodes.map(n=>n.partId))],stage:window.__GENVO8__.tutorial.stage,day:s.day,animals:s.animals.filter(a=>a.alive).length}});
  assert.equal(start.generator,'planetary/1');assert.ok(start.parts.some(p=>/spring/.test(p)),'the Spring jumper start has spring legs');
  ok('newWorld',{startingCreatureOptions:options,chosen:'starter-jump',...start});await shot(page,'03-opening');
@@ -60,7 +74,7 @@ try{
  const saved=await page.evaluate(()=>{const s=window.__GENVO8__.sim,p=s.player();return{tick:s.tickCount,day:s.day,player:p.id,x:+p.x.toFixed(3),parts:p.bodyPlan.nodes.length,animals:s.animals.filter(a=>a.alive).length,slot:window.__GENVO8__.saveManager.activeSlotId}});
  await page.reload();await page.waitForFunction(()=>!!window.__GENVO8__?.saveManager,{},{timeout:60000});await page.waitForTimeout(800);
  const cont=page.locator('.menu-view[data-screen="home"] [data-action="continue"]');assert.ok(await cont.isVisible(),'Continue is offered after reload');await cont.click();
- await page.waitForFunction(()=>document.querySelector('#frontEnd')?.hidden&&!!window.__GENVO8__.sim.climate,{},{timeout:90000});await page.waitForTimeout(1200);
+ await page.waitForFunction(()=>document.querySelector('#frontEnd')?.hidden&&!!window.__GENVO8__.sim.player(),{},{timeout:90000});await beginNativeOpening();await page.waitForTimeout(1200);
  const loaded=await page.evaluate(()=>{const s=window.__GENVO8__.sim,p=s.player();return{tick:s.tickCount,day:s.day,player:p.id,x:+p.x.toFixed(3),parts:p.bodyPlan.nodes.length,animals:s.animals.filter(a=>a.alive).length}});
  assert.equal(loaded.player,saved.player);assert.equal(loaded.parts,saved.parts);assert.ok(loaded.tick>=saved.tick&&loaded.tick-saved.tick<48*2,'continues from the saved tick');
  ok('saveContinue',{saved,loaded});await shot(page,'08-continued');
@@ -71,5 +85,12 @@ try{
  ok('layouts',layouts);
  report.missingResources=[...new Set(missing)].filter(u=>!/favicon/.test(u));report.failedRequests=failed;report.pageErrors=errors;report.consoleErrors=consoleErrors;
  assert.deepEqual(report.missingResources,[],'no missing resources');assert.deepEqual(errors,[],'no page errors');
-}finally{fs.writeFileSync(path.join(output,'report.json'),JSON.stringify(report,null,1));await browser.close();server.close()}
+}catch(error){
+ report.failure=error.stack;
+ if(page){
+  report.failureState=await page.evaluate(()=>({frontEndHidden:document.querySelector('#frontEnd')?.hidden,stage:window.__GENVO8__?.tutorial.stage,paused:window.__GENVO8__?.sim.paused})).catch(()=>null);
+  await shot(page,'failure').catch(()=>{});
+ }
+ throw error;
+}finally{report.pageErrors=errors;report.consoleErrors=consoleErrors;report.failedRequests=failed;report.missingResources=[...new Set(missing)].filter(u=>!/favicon/.test(u));fs.writeFileSync(path.join(output,'report.json'),JSON.stringify(report,null,1));await browser.close();server.close()}
 console.log('Release browser PASS:',JSON.stringify({missing:report.missingResources,pageErrors:report.pageErrors.length,consoleErrors:report.consoleErrors.length}));
