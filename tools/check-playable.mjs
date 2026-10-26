@@ -124,12 +124,27 @@ const runtime=[
   'tests/natural-multigen-acceptance.mjs',
   'tests/living-planet-extended.mjs'
 ];
-let passed=0;
-for(const [mode,items] of [['syntax',syntax],['playable',runtime]]){
-  for(const item of items){
+// Partition only the ordered execution plan; each test still runs in its own
+// process under the original 240-second budget. No simulation state is shared.
+export function playablePlan(shard=null){
+  const plan=[...syntax.map(item=>({mode:'syntax',item})),...runtime.map(item=>({mode:'playable',item}))];
+  if(shard===null)return plan;
+  const match=/^([1-9]\d*)\/([1-9]\d*)$/.exec(shard);
+  if(!match)throw Error('Expected --shard=index/count with one-based positive integers.');
+  const index=Number(match[1]),count=Number(match[2]);
+  if(!Number.isSafeInteger(index)||!Number.isSafeInteger(count)||index>count||count>plan.length)throw Error('Invalid playable shard range.');
+  return plan.filter((_,position)=>position%count===index-1);
+}
+function run(args){
+  const shards=args.filter(arg=>arg.startsWith('--shard='));
+  if(shards.length>1||args.filter(arg=>arg==='--list').length>1||args.some(arg=>arg!=='--list'&&!arg.startsWith('--shard=')))throw Error('Usage: check-playable.mjs [--shard=index/count] [--list]');
+  const shard=shards.length?shards[0].slice('--shard='.length):null,plan=playablePlan(shard);
+  if(args.includes('--list')){console.log(JSON.stringify(plan));return;}
+  let passed=0;
+  for(const {mode,item} of plan){
     console.log(`\n[GenVo ${mode}] ${item}`);
-    const args=mode==='syntax'?['--check',item]:[item];
-    const result=spawnSync(process.execPath,args,{cwd:root,stdio:'inherit',timeout:240000});
+    const command=mode==='syntax'?['--check',item]:[item];
+    const result=spawnSync(process.execPath,command,{cwd:root,stdio:'inherit',timeout:240000});
     if(result.error||result.status!==0){
       console.error(`\nGenVo playable check failed at ${item}: ${result.error?.message||'exit '+result.status}`);
       console.error('Do not mark this commit as a stable playable release.');
@@ -138,6 +153,8 @@ for(const [mode,items] of [['syntax',syntax],['playable',runtime]]){
     }
     passed++;
   }
-  if(process.exitCode)break;
+  if(!process.exitCode)console.log(`\nGenVo playable checkpoint${shard?' shard '+shard:''}: ${passed} focused checks passed. Browser acceptance is still required.`);
 }
-if(!process.exitCode)console.log(`\nGenVo playable checkpoint: ${passed} focused checks passed. Browser acceptance is still required.`);
+if(process.argv[1]&&resolve(process.argv[1])===fileURLToPath(import.meta.url)){
+  try{run(process.argv.slice(2));}catch(error){console.error(error.message);process.exitCode=1;}
+}

@@ -11,9 +11,13 @@ concurrency:
   group: playable-checkpoint-${{ github.ref_name }}
   cancel-in-progress: true
 jobs:
-  everyday-play:
+  playable-shards:
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -24,5 +28,16 @@ jobs:
           node tests/architecture-check.mjs
           node tools/architecture-check.mjs
           node tests/modernization-baseline.mjs
+          node tests/playable-check-plan.mjs
       - name: Focused local-play contract
-        run: node tools/check-playable.mjs
+        run: node tools/check-playable.mjs --shard=${{ matrix.shard }}/2
+  everyday-play:
+    if: ${{ always() }}
+    needs: playable-shards
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Require every unchanged check partition
+        env:
+          SHARDS_RESULT: ${{ needs.playable-shards.result }}
+        run: test "$SHARDS_RESULT" = success

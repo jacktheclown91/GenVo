@@ -1,0 +1,20 @@
+{
+  "scope": "CI execution follow-up only; biological source remains ab76f4dc.",
+  "cancelledRun": "https://github.com/jacktheclown91/GenVo/actions/runs/40360653977",
+  "cancelledHead": "ab76f4dcc057a5d69957481aace0b14f3cdac8ff",
+  "job": 121704851532,
+  "publicAnnotation": "The job has exceeded the maximum execution time of 25m0s",
+  "authenticatedLogsAvailable": false,
+  "lastExecutingTest": "NOT PROVEN: line annotation alone is insufficient",
+  "checksRetained": 116,
+  "checkManifestPrefixSha256": "7b1769b40173a8b26939d57af13d5be170399375a5eab614b65280ee2168d164",
+  "oldAndNewManifestPrefixByteIdentical": true,
+  "perCheckTimeoutMs": 240000,
+  "perWorkerTimeoutMinutes": 25,
+  "workers": 2,
+  "aggregateRequiresAllWorkers": true,
+  "localNode22PartitionAndCLIContracts": "PASS",
+  "localNode24PartitionAndCLIContracts": "PASS",
+  "originalFullLocal116Gate": "PASS; retained ab76f4dc playable-gate.log",
+  "executionChange": "Two independent checkouts execute disjoint ordered partitions concurrently; more workers, same checks and per-check/per-job ceilings. The unsharded local command remains all 116."
+}

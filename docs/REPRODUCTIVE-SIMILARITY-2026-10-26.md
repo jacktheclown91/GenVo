@@ -65,6 +65,12 @@ An earlier foundation summary incorrectly listed the worktree source audit as PA
 
 The frozen source passes all 116 local integration checks, strict historical Node 22 snapshot/continuation checks, targeted Node 22 balance checks, canonical source audit, architecture and public export checks. The final exported tutorial completes genuine food, water and paid mating with zero page errors. `verification.json` records source Git blobs and scopes; `playable-gate.log` retains the actual full run. Browser observation and creator acceptance remain separate.
 
+## Remote CI execution follow-up
+
+Source checkpoint `ab76f4dc` passed the complete local 116-check run, but GitHub run [40360653977](https://github.com/jacktheclown91/GenVo/actions/runs/40360653977) was cancelled at the existing overall 25-minute job limit. Its architecture and historical baseline stages passed. The public annotation proves the overall timeout; authenticated job logs were unavailable, so the exact final executing test is not claimed.
+
+The CI follow-up partitions the unchanged ordered check manifest across two isolated workers. This increases worker concurrency, not the biological limits or the per-test/per-worker ceilings: each check retains 240 seconds and each worker retains 25 minutes. The original `everyday-play` status now requires both workers to succeed. No existing test is removed, shortened or skipped. The default local command still runs all 116 sequentially. Node 22/24 contracts prove disjointness, complete coverage, stable relative order, actual CLI selection and rejection of invalid inputs. The original manifest/import prefix is byte-identical; the receipt records its hash. Biological source and measurements remain those of `ab76f4dc`. Query the latest commit's exact run for terminal remote acceptance.
+
 ## Reproduce and continue
 
 - `node tests/reproductive-similarity.mjs`
