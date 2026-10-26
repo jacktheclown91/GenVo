@@ -8,6 +8,7 @@ import {gestationFullness,gestationSurfaceSize} from '../src/render/gestation-su
 import {visualLifeState} from '../src/render/life.js';
 import {genvoVisualPose} from '../src/render/genvo.js';
 import {assemblyFor} from '../src/render/creature-assembler.js';
+import {makePlan,validatePlan} from '../src/lineage/body-plan.js';
 
 const saved=openScenarioSnapshot(JSON.parse(zlib.gunzipSync(fs.readFileSync(new URL('../assets/scenarios/established-valley-d30.json.gz',import.meta.url))))),sim=restoreSimulationSnapshot(saved),mother=sim.animals.find(a=>a.id===117),ordinary=sim.animals.find(a=>a.alive&&a.species==='genvo'&&!a.pregnant);
 assert.equal(mother.pregnant.mode,'live');assert.ok(ordinary);
@@ -17,6 +18,15 @@ for(let dir=0;dir<8;dir++)for(const moving of [false,true]){
  const options={id:mother.id,dir,frame:3,moving,action:moving?'walk':'idle',legSlots:assemblyFor(mother).legSlots,life};
  const baseline=genvoVisualPose({...options,life:{...life,gestation:0}}),candidate=genvoVisualPose(options);
  assert.deepEqual(candidate,baseline,'Painted fullness cannot alter the inherited rig, sockets, posture or contacts');
+}
+// Explicit anatomical preview fixtures; these are not invented lived pregnancies.
+for(const root of ['soft-torso','reinforced-torso','small-torso','sleek-torso','light-torso','stout-torso','barrel-torso','dome-torso','long-torso']){
+ const plan=makePlan(mother.bodyPlan.nodes.map(n=>({partId:n.parent?n.partId:root,parent:n.parent,socket:n.socket})));assert.ok(validatePlan(plan).ok,root);
+ const preview={...mother,bodyPlan:plan};
+ for(const action of ['idle','walk','flee','swim','jump','land','fly','climb','eat','drink','nurse','rest'])for(let dir=0;dir<8;dir++){
+  const options={id:mother.id,dir,frame:3,moving:['walk','flee','swim'].includes(action),action,legSlots:assemblyFor(preview).legSlots,life};
+  assert.deepEqual(genvoVisualPose(options),genvoVisualPose({...options,life:{...life,gestation:0}}),root+' '+action+' changed canonical support geometry');
+ }
 }
 let previous=1;
 for(let step=0;step<=16;step++){

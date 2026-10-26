@@ -1,0 +1,1172 @@
+{
+  "root": "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-gestation-surface-20261025",
+  "scope": "Actual public authored capability preset; native controls, no staged state.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "segments": [
+    {
+      "name": "walk",
+      "before": {
+        "tick": 1441,
+        "x": 107.03201362904983,
+        "y": 23.924364985479308,
+        "dir": 5,
+        "anim": 6,
+        "intent": "idle",
+        "pregnancy": {
+          "remaining": 7,
+          "total": 16,
+          "progress": 0.5625
+        },
+        "energy": 91.23769842781547,
+        "exertion": 100,
+        "autonomy": false,
+        "gait": 6,
+        "heading": {
+          "x": 0,
+          "y": 0
+        },
+        "body": {
+          "left": 637,
+          "top": 338,
+          "right": 729,
+          "bottom": 430,
+          "width": 92,
+          "height": 92
+        }
+      },
+      "samples": [
+        {
+          "tick": 1442,
+          "x": 107.03201362904983,
+          "y": 24.226271954693562,
+          "dir": 4,
+          "anim": 7.125,
+          "intent": "player",
+          "pregnancy": {
+            "remaining": 7,
+            "total": 16,
+            "progress": 0.5625
+          },
+          "energy": 91.20534266204359,
+          "exertion": 100,
+          "autonomy": false,
+          "gait": 5.728670422928639,
+          "heading": {
+            "x": 0,
+            "y": 1
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1446,
+          "x": 107.03201362904983,
+          "y": 25.09840882548186,
+          "dir": 4,
+          "anim": 2.375,
+          "intent": "player",
+          "pregnancy": {
+            "remaining": 7,
+            "total": 16,
+            "progress": 0.5625
+          },
+          "energy": 91.11186904125412,
+          "exertion": 100,
+          "autonomy": false,
+          "gait": 3.5564183090246324,
+          "heading": {
+            "x": 0,
+            "y": 1
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1455,
+          "x": 107.03201362904983,
+          "y": 27.580035534101206,
+          "dir": 4,
+          "anim": 3.625,
+          "intent": "player",
+          "pregnancy": {
+            "remaining": 7,
+            "total": 16,
+            "progress": 0.5625
+          },
+          "energy": 90.69827285400834,
+          "exertion": 100,
+          "autonomy": false,
+          "gait": 0.20172341065948807,
+          "heading": {
+            "x": 0,
+            "y": 1
+          },
+          "body": {
+            "left": 637,
+            "top": 339,
+            "right": 729,
+            "bottom": 431,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1461,
+          "x": 107.03201362904983,
+          "y": 29.323308801053358,
+          "dir": 4,
+          "anim": 2.125,
+          "intent": "player",
+          "pregnancy": {
+            "remaining": 7,
+            "total": 16,
+            "progress": 0.5625
+          },
+          "energy": 90.43697616424592,
+          "exertion": 100,
+          "autonomy": false,
+          "gait": 3.174342030736991,
+          "heading": {
+            "x": 0,
+            "y": 1
+          },
+          "body": {
+            "left": 637,
+            "top": 339,
+            "right": 729,
+            "bottom": 431,
+            "width": 92,
+            "height": 92
+          }
+        }
+      ],
+      "after": {
+        "tick": 1467,
+        "x": 107.03201362904983,
+        "y": 30.831482676946546,
+        "dir": 4,
+        "anim": 7.75,
+        "intent": "player",
+        "pregnancy": {
+          "remaining": 7,
+          "total": 16,
+          "progress": 0.5625
+        },
+        "energy": 90.20043113186468,
+        "exertion": 100,
+        "autonomy": false,
+        "gait": 0.0058871875396757645,
+        "heading": {
+          "x": 0,
+          "y": 1
+        },
+        "body": {
+          "left": 637,
+          "top": 339,
+          "right": 729,
+          "bottom": 431,
+          "width": 92,
+          "height": 92
+        }
+      },
+      "distance": 6.9071176914672385,
+      "gaitValues": [
+        5.728670422928639,
+        3.5564183090246324,
+        0.20172341065948807,
+        3.174342030736991
+      ]
+    },
+    {
+      "name": "sprint",
+      "before": {
+        "tick": 1467,
+        "x": 107.03201362904983,
+        "y": 30.96553110988304,
+        "dir": 4,
+        "anim": 0.25,
+        "intent": "player",
+        "pregnancy": {
+          "remaining": 7,
+          "total": 16,
+          "progress": 0.5625
+        },
+        "energy": 90.18604559260997,
+        "exertion": 100,
+        "autonomy": false,
+        "gait": 3.509202249812276,
+        "heading": {
+          "x": 0,
+          "y": 1
+        },
+        "body": {
+          "left": 637,
+          "top": 339,
+          "right": 729,
+          "bottom": 431,
+          "width": 92,
+          "height": 92
+        }
+      },
+      "samples": [
+        {
+          "tick": 1470,
+          "x": 107.03201362904983,
+          "y": 31.75626378015002,
+          "dir": 4,
+          "anim": 2.375,
+          "intent": "player",
+          "pregnancy": {
+            "remaining": 7,
+            "total": 16,
+            "progress": 0.5625
+          },
+          "energy": 90.10116462782617,
+          "exertion": 95.875,
+          "autonomy": false,
+          "gait": 7.1824924523433165,
+          "heading": {
+            "x": 0,
+            "y": 1
+          },
+          "body": {
+            "left": 637,
+            "top": 339,
+            "right": 729,
+            "bottom": 431,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1475,
+          "x": 107.03201362904983,
+          "y": 34.092560833924644,
+          "dir": 4,
+          "anim": 0,
+          "intent": "player",
+          "pregnancy": {
+            "remaining": 7,
+            "total": 16,
+            "progress": 0.5625
+          },
+          "energy": 89.7751949156291,
+          "exertion": 80.40625,
+          "autonomy": false,
+          "gait": 0.4757420880252923,
+          "heading": {
+            "x": 0,
+            "y": 1
+          },
+          "body": {
+            "left": 637,
+            "top": 339,
+            "right": 729,
+            "bottom": 431,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1482,
+          "x": 107.03201362904983,
+          "y": 36.73881559561599,
+          "dir": 4,
+          "anim": 6.375,
+          "intent": "player",
+          "pregnancy": {
+            "remaining": 7,
+            "total": 16,
+            "progress": 0.5625
+          },
+          "energy": 89.41534508687694,
+          "exertion": 62.875,
+          "autonomy": false,
+          "gait": 1.546541847606198,
+          "heading": {
+            "x": 0,
+            "y": 1
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1488,
+          "x": 107.03201362904983,
+          "y": 39.22775178319678,
+          "dir": 4,
+          "anim": 4.375,
+          "intent": "player",
+          "pregnancy": {
+            "remaining": 7,
+            "total": 16,
+            "progress": 0.5625
+          },
+          "energy": 89.07176267167168,
+          "exertion": 46.375,
+          "autonomy": false,
+          "gait": 6.31584570821423,
+          "heading": {
+            "x": 0,
+            "y": 1
+          },
+          "body": {
+            "left": 637,
+            "top": 339,
+            "right": 729,
+            "bottom": 431,
+            "width": 92,
+            "height": 92
+          }
+        }
+      ],
+      "after": {
+        "tick": 1488,
+        "x": 107.03201362904983,
+        "y": 39.22775178319678,
+        "dir": 4,
+        "anim": 4.375,
+        "intent": "player",
+        "pregnancy": {
+          "remaining": 7,
+          "total": 16,
+          "progress": 0.5625
+        },
+        "energy": 89.07176267167168,
+        "exertion": 46.375,
+        "autonomy": false,
+        "gait": 6.31584570821423,
+        "heading": {
+          "x": 0,
+          "y": 1
+        },
+        "body": {
+          "left": 637,
+          "top": 338,
+          "right": 729,
+          "bottom": 430,
+          "width": 92,
+          "height": 92
+        }
+      },
+      "distance": 8.262220673313738,
+      "gaitValues": [
+        7.1824924523433165,
+        0.4757420880252923,
+        1.546541847606198,
+        6.31584570821423
+      ]
+    },
+    {
+      "name": "reverse",
+      "before": {
+        "tick": 1488,
+        "x": 107.03201362904983,
+        "y": 39.22775178319678,
+        "dir": 4,
+        "anim": 4.375,
+        "intent": "player",
+        "pregnancy": {
+          "remaining": 7,
+          "total": 16,
+          "progress": 0.5625
+        },
+        "energy": 89.07176267167168,
+        "exertion": 46.375,
+        "autonomy": false,
+        "gait": 6.31584570821423,
+        "heading": {
+          "x": 0,
+          "y": 1
+        },
+        "body": {
+          "left": 637,
+          "top": 338,
+          "right": 729,
+          "bottom": 430,
+          "width": 92,
+          "height": 92
+        }
+      },
+      "samples": [
+        {
+          "tick": 1488,
+          "x": 107.03201362904983,
+          "y": 39.22775178319678,
+          "dir": 4,
+          "anim": 4.375,
+          "intent": "player",
+          "pregnancy": {
+            "remaining": 7,
+            "total": 16,
+            "progress": 0.5625
+          },
+          "energy": 89.07176267167168,
+          "exertion": 46.375,
+          "autonomy": false,
+          "gait": 6.31584570821423,
+          "heading": {
+            "x": 0,
+            "y": 1
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1488,
+          "x": 107.03201362904983,
+          "y": 39.22775178319678,
+          "dir": 4,
+          "anim": 4.375,
+          "intent": "player",
+          "pregnancy": {
+            "remaining": 7,
+            "total": 16,
+            "progress": 0.5625
+          },
+          "energy": 89.07176267167168,
+          "exertion": 46.375,
+          "autonomy": false,
+          "gait": 6.31584570821423,
+          "heading": {
+            "x": 0,
+            "y": 1
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1488,
+          "x": 107.03201362904983,
+          "y": 39.22775178319678,
+          "dir": 4,
+          "anim": 4.375,
+          "intent": "player",
+          "pregnancy": {
+            "remaining": 7,
+            "total": 16,
+            "progress": 0.5625
+          },
+          "energy": 89.07176267167168,
+          "exertion": 46.375,
+          "autonomy": false,
+          "gait": 6.31584570821423,
+          "heading": {
+            "x": 0,
+            "y": 1
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1494,
+          "x": 107.03201362904983,
+          "y": 37.64521243193171,
+          "dir": 0,
+          "anim": 2.375,
+          "intent": "player",
+          "pregnancy": {
+            "remaining": 6,
+            "total": 16,
+            "progress": 0.625
+          },
+          "energy": 88.82071260341695,
+          "exertion": 51.375,
+          "autonomy": false,
+          "gait": 6.910687994184068,
+          "heading": {
+            "x": 0,
+            "y": -1
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        }
+      ],
+      "after": {
+        "tick": 1506,
+        "x": 107.03201362904983,
+        "y": 34.47899344784844,
+        "dir": 0,
+        "anim": 6.375,
+        "intent": "player",
+        "pregnancy": {
+          "remaining": 6,
+          "total": 16,
+          "progress": 0.625
+        },
+        "energy": 88.31725127871616,
+        "exertion": 81.375,
+        "autonomy": false,
+        "gait": 4.568554328664476,
+        "heading": {
+          "x": 0,
+          "y": -1
+        },
+        "body": {
+          "left": 637,
+          "top": 336,
+          "right": 729,
+          "bottom": 428,
+          "width": 92,
+          "height": 92
+        }
+      },
+      "distance": 4.748758335348342,
+      "gaitValues": [
+        6.31584570821423,
+        6.910687994184068
+      ]
+    },
+    {
+      "name": "turn",
+      "before": {
+        "tick": 1506,
+        "x": 107.03201362904983,
+        "y": 34.47899344784844,
+        "dir": 0,
+        "anim": 6.375,
+        "intent": "player",
+        "pregnancy": {
+          "remaining": 6,
+          "total": 16,
+          "progress": 0.625
+        },
+        "energy": 88.31725127871616,
+        "exertion": 81.375,
+        "autonomy": false,
+        "gait": 4.568554328664476,
+        "heading": {
+          "x": 0,
+          "y": -1
+        },
+        "body": {
+          "left": 637,
+          "top": 338,
+          "right": 729,
+          "bottom": 430,
+          "width": 92,
+          "height": 92
+        }
+      },
+      "samples": [
+        {
+          "tick": 1512,
+          "x": 106.20608420078754,
+          "y": 33.91817550159671,
+          "dir": 6,
+          "anim": 3.625,
+          "intent": "player",
+          "pregnancy": {
+            "remaining": 6,
+            "total": 16,
+            "progress": 0.625
+          },
+          "energy": 88.00374396753624,
+          "exertion": 97.78125,
+          "autonomy": false,
+          "gait": 7.582512761785345,
+          "heading": {
+            "x": -0.8945838963076271,
+            "y": 0.4469000475129363
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1528,
+          "x": 101.8157938540114,
+          "y": 33.91817550159671,
+          "dir": 6,
+          "anim": 4.25,
+          "intent": "player",
+          "pregnancy": {
+            "remaining": 6,
+            "total": 16,
+            "progress": 0.625
+          },
+          "energy": 87.35542344949368,
+          "exertion": 100,
+          "autonomy": false,
+          "gait": 2.7495876109744035,
+          "heading": {
+            "x": -1,
+            "y": 0
+          },
+          "body": {
+            "left": 636,
+            "top": 338,
+            "right": 728,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1533,
+          "x": 100.46676899292014,
+          "y": 33.91817550159671,
+          "dir": 6,
+          "anim": 1.375,
+          "intent": "player",
+          "pregnancy": {
+            "remaining": 6,
+            "total": 16,
+            "progress": 0.625
+          },
+          "energy": 87.12120379475476,
+          "exertion": 100,
+          "autonomy": false,
+          "gait": 4.315020242562879,
+          "heading": {
+            "x": -1,
+            "y": 0
+          },
+          "body": {
+            "left": 636,
+            "top": 338,
+            "right": 728,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1536,
+          "x": 99.90818906402713,
+          "y": 33.91817550159671,
+          "dir": 6,
+          "anim": 3.5,
+          "intent": "player",
+          "pregnancy": {
+            "remaining": 6,
+            "total": 16,
+            "progress": 0.625
+          },
+          "energy": 87.05963417268698,
+          "exertion": 100,
+          "autonomy": false,
+          "gait": 1.9432993541100103,
+          "heading": {
+            "x": -1,
+            "y": 0
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        }
+      ],
+      "after": {
+        "tick": 1536,
+        "x": 99.90818906402713,
+        "y": 33.91817550159671,
+        "dir": 6,
+        "anim": 3.5,
+        "intent": "player",
+        "pregnancy": {
+          "remaining": 6,
+          "total": 16,
+          "progress": 0.625
+        },
+        "energy": 87.05963417268698,
+        "exertion": 100,
+        "autonomy": false,
+        "gait": 1.9432993541100103,
+        "heading": {
+          "x": -1,
+          "y": 0
+        },
+        "body": {
+          "left": 637,
+          "top": 338,
+          "right": 729,
+          "bottom": 430,
+          "width": 92,
+          "height": 92
+        }
+      },
+      "distance": 7.145865462073778,
+      "gaitValues": [
+        7.582512761785345,
+        2.7495876109744035,
+        4.315020242562879,
+        1.9432993541100103
+      ]
+    },
+    {
+      "name": "auto",
+      "before": {
+        "tick": 1570,
+        "x": 102.5162399844338,
+        "y": 37.25495556582233,
+        "dir": 3,
+        "anim": 7,
+        "intent": "explore",
+        "pregnancy": {
+          "remaining": 5,
+          "total": 16,
+          "progress": 0.6875
+        },
+        "energy": 90.46275984977854,
+        "exertion": 100,
+        "autonomy": true,
+        "gait": 2.5595401256971115,
+        "heading": {
+          "x": 0.707106781186526,
+          "y": 0.707106781186569
+        },
+        "body": {
+          "left": 638,
+          "top": 339,
+          "right": 730,
+          "bottom": 431,
+          "width": 92,
+          "height": 92
+        }
+      },
+      "samples": [
+        {
+          "tick": 1572,
+          "x": 102.69966153850316,
+          "y": 37.43837711989169,
+          "dir": 3,
+          "anim": 0,
+          "intent": "explore",
+          "pregnancy": {
+            "remaining": 5,
+            "total": 16,
+            "progress": 0.6875
+          },
+          "energy": 90.43366911249963,
+          "exertion": 100,
+          "autonomy": true,
+          "gait": 4.647446835554227,
+          "heading": {
+            "x": 0.7071067811865719,
+            "y": 0.707106781186523
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1578,
+          "x": 103.98584118764133,
+          "y": 38.724556769029846,
+          "dir": 3,
+          "anim": 7,
+          "intent": "explore",
+          "pregnancy": {
+            "remaining": 5,
+            "total": 16,
+            "progress": 0.6875
+          },
+          "energy": 90.1282273972535,
+          "exertion": 100,
+          "autonomy": true,
+          "gait": 2.878872403190485,
+          "heading": {
+            "x": 0.7071067811865716,
+            "y": 0.7071067811865234
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1581,
+          "x": 104.53783278283457,
+          "y": 39.27654836422309,
+          "dir": 3,
+          "anim": 2,
+          "intent": "explore",
+          "pregnancy": {
+            "remaining": 5,
+            "total": 16,
+            "progress": 0.6875
+          },
+          "energy": 90.0410342397732,
+          "exertion": 100,
+          "autonomy": true,
+          "gait": 4.155320093825104,
+          "heading": {
+            "x": 0.7071067811865848,
+            "y": 0.7071067811865103
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1582,
+          "x": 104.72184220259066,
+          "y": 39.46055778397918,
+          "dir": 3,
+          "anim": 3,
+          "intent": "explore",
+          "pregnancy": {
+            "remaining": 5,
+            "total": 16,
+            "progress": 0.6875
+          },
+          "energy": 90.01197042742051,
+          "exertion": 100,
+          "autonomy": true,
+          "gait": 4.4067422727903,
+          "heading": {
+            "x": 0.7071067811865475,
+            "y": 0.7071067811865475
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1584,
+          "x": 104.90585109018508,
+          "y": 39.6445666715736,
+          "dir": 3,
+          "anim": 4,
+          "intent": "explore",
+          "pregnancy": {
+            "remaining": 5,
+            "total": 16,
+            "progress": 0.6875
+          },
+          "energy": 89.98290661506782,
+          "exertion": 100,
+          "autonomy": true,
+          "gait": 1.1719229147100485,
+          "heading": {
+            "x": 0.7071067811865056,
+            "y": 0.7071067811865895
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1584,
+          "x": 104.90585109018508,
+          "y": 39.6445666715736,
+          "dir": 3,
+          "anim": 4,
+          "intent": "explore",
+          "pregnancy": {
+            "remaining": 5,
+            "total": 16,
+            "progress": 0.6875
+          },
+          "energy": 89.98290661506782,
+          "exertion": 100,
+          "autonomy": true,
+          "gait": 1.1719229147100485,
+          "heading": {
+            "x": 0.7071067811865056,
+            "y": 0.7071067811865895
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1584,
+          "x": 104.90585109018508,
+          "y": 39.6445666715736,
+          "dir": 3,
+          "anim": 4,
+          "intent": "explore",
+          "pregnancy": {
+            "remaining": 5,
+            "total": 16,
+            "progress": 0.6875
+          },
+          "energy": 89.98290661506782,
+          "exertion": 100,
+          "autonomy": true,
+          "gait": 1.1719229147100485,
+          "heading": {
+            "x": 0.7071067811865056,
+            "y": 0.7071067811865895
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1584,
+          "x": 104.90585109018508,
+          "y": 39.6445666715736,
+          "dir": 3,
+          "anim": 4,
+          "intent": "explore",
+          "pregnancy": {
+            "remaining": 5,
+            "total": 16,
+            "progress": 0.6875
+          },
+          "energy": 89.98290661506782,
+          "exertion": 100,
+          "autonomy": true,
+          "gait": 1.1719229147100485,
+          "heading": {
+            "x": 0.7071067811865056,
+            "y": 0.7071067811865895
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1584,
+          "x": 105.1010337474829,
+          "y": 39.83974932887143,
+          "dir": 3,
+          "anim": 5,
+          "intent": "explore",
+          "pregnancy": {
+            "remaining": 5,
+            "total": 16,
+            "progress": 0.6875
+          },
+          "energy": 89.95449745832013,
+          "exertion": 100,
+          "autonomy": true,
+          "gait": 1.1719229147100485,
+          "heading": {
+            "x": 0.7071067811865056,
+            "y": 0.7071067811865895
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1590,
+          "x": 106.07706679518107,
+          "y": 40.815782376569594,
+          "dir": 3,
+          "anim": 2,
+          "intent": "explore",
+          "pregnancy": {
+            "remaining": 4,
+            "total": 16,
+            "progress": 0.75
+          },
+          "energy": 89.76160034300516,
+          "exertion": 100,
+          "autonomy": true,
+          "gait": 1.7160513649553053,
+          "heading": {
+            "x": 0.7071067811865397,
+            "y": 0.7071067811865553
+          },
+          "body": {
+            "left": 638,
+            "top": 339,
+            "right": 730,
+            "bottom": 431,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1602,
+          "x": 107.05316564928461,
+          "y": 41.791881230673106,
+          "dir": 3,
+          "anim": 7,
+          "intent": "explore",
+          "pregnancy": {
+            "remaining": 4,
+            "total": 16,
+            "progress": 0.75
+          },
+          "energy": 89.23969664609349,
+          "exertion": 100,
+          "autonomy": true,
+          "gait": 2.2655578805228185,
+          "heading": {
+            "x": -0.7071067811868333,
+            "y": -0.7071067811862618
+          },
+          "body": {
+            "left": 637,
+            "top": 338,
+            "right": 729,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        },
+        {
+          "tick": 1613,
+          "x": 106.63142286598035,
+          "y": 41.43914602758833,
+          "dir": 7,
+          "anim": 5,
+          "intent": "feed",
+          "pregnancy": {
+            "remaining": 4,
+            "total": 16,
+            "progress": 0.75
+          },
+          "energy": 93.3309870457892,
+          "exertion": 100,
+          "autonomy": true,
+          "gait": 7.597822246885681,
+          "heading": {
+            "x": -0.820968989625094,
+            "y": -0.5709727822531935
+          },
+          "body": {
+            "left": 636,
+            "top": 338,
+            "right": 728,
+            "bottom": 430,
+            "width": 92,
+            "height": 92
+          }
+        }
+      ],
+      "after": {
+        "tick": 1614,
+        "x": 106.63142286598035,
+        "y": 41.43914602758833,
+        "dir": 7,
+        "anim": 5,
+        "intent": "feed",
+        "pregnancy": {
+          "remaining": 4,
+          "total": 16,
+          "progress": 0.75
+        },
+        "energy": 93.3309870457892,
+        "exertion": 100,
+        "autonomy": true,
+        "gait": 1.5803649849962618,
+        "heading": {
+          "x": -0.8209689896250835,
+          "y": -0.5709727822532079
+        },
+        "body": {
+          "left": 637,
+          "top": 338,
+          "right": 729,
+          "bottom": 430,
+          "width": 92,
+          "height": 92
+        }
+      },
+      "distance": 5.868746030363507,
+      "gaitValues": [
+        4.647446835554227,
+        2.878872403190485,
+        4.155320093825104,
+        4.4067422727903,
+        1.1719229147100485,
+        1.7160513649553053,
+        2.2655578805228185,
+        7.597822246885681
+      ]
+    }
+  ]
+}
