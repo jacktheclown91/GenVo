@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {HUD_SEGMENTS,segmentedLevel,needTone,vitalModel,compactFamilyLabel,contextTone} from '../src/ui/presentation.js';
+import {HUD_SEGMENTS,segmentedLevel,needTone,vitalModel,compactFamilyLabel,contextTone,gestationLabel} from '../src/ui/presentation.js';
 
 assert.equal(HUD_SEGMENTS,8,'HUD keeps the Rule-of-8 visual grammar');
 assert.deepEqual(segmentedLevel(1),{value:1,filled:8,count:8});
@@ -18,3 +18,7 @@ assert.equal(contextTone('E · Drink water'),'action');
 assert.equal(contextTone('DANGER · Stalker east'),'danger');
 assert.equal(contextTone('WATER LOW · follow the cyan cue'),'need');
 console.log('UI presentation checks: PASS');
+
+assert.equal(gestationLabel({progress:0},'live'),'Pregnant 0%','Conception must be visible before the first gestation day');
+assert.equal(gestationLabel({progress:.42},'egg'),'Eggs 42%','Developing eggs must not be labelled live pregnancy');
+assert.equal(gestationLabel(null,'live'),'','No inferred conception');

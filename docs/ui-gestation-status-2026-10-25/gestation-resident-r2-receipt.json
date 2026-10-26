@@ -1,0 +1,328 @@
+{
+  "root": "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-gestation-status-final-20261025",
+  "scope": "Actual public authored capability preset; native controls, no staged state.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "actor": {
+    "id": 117,
+    "species": "genvo",
+    "seed": "GENVO-VALLEY-REPLAY-30",
+    "day": 31,
+    "pregnancy": {
+      "fatherId": 72,
+      "paternalInheritance": {
+        "alive": false,
+        "player": false,
+        "id": 72,
+        "species": "rootling",
+        "sex": "M",
+        "generation": 1,
+        "parentIds": [],
+        "grandparentIds": [],
+        "genes": {
+          "body": 1.010049027344212,
+          "motion": 0.9667477475944907,
+          "metabolism": 0.9367499744985253,
+          "digestion": 0.9771450473461301,
+          "senses": 0.958528576977551,
+          "climate": 0.9962084440980107,
+          "immunity": 1.060164951486513,
+          "temperament": 0.9227189242839814
+        },
+        "pigmentGenome": {
+          "schema": "genvo.pigment-genome/1",
+          "hue": 13,
+          "chroma": 3,
+          "tone": 1,
+          "marking": 0,
+          "density": 3,
+          "accent": 7
+        },
+        "reproductiveGenome": {
+          "schema": 1,
+          "loci": {
+            "gamete": [
+              1.04366,
+              1.02455
+            ],
+            "development": [
+              0.95553,
+              0.95553
+            ]
+          },
+          "origin": "founding-lineage",
+          "lineage": "rootling"
+        },
+        "matePreferences": {
+          "weights": {
+            "size": 0.39539,
+            "strength": 0.10847,
+            "ornament": 0.51615,
+            "display": 0.39299,
+            "behavior": 0.42808
+          },
+          "selectivity": 0.47245,
+          "ritualTastes": {
+            "dance": 0.34802,
+            "call": 0.88808,
+            "flare": -0.87354,
+            "scent": 0.69547,
+            "gesture": 0.30206
+          },
+          "tempo": -0.81853,
+          "similarity": -0.23197
+        },
+        "adaptations": [],
+        "massPolicy": "relative-anatomical-load/1",
+        "bodyPlan": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "stout-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/eye.left",
+              "partId": "eyespot",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/eye.right",
+              "partId": "eyespot",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "digging-forelimb",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "digging-forelimb",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            },
+            {
+              "id": "root/mouth",
+              "partId": "nibbler-mouth",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "mouth"
+            },
+            {
+              "id": "root/tail",
+              "partId": "fat-tail",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "tail"
+            }
+          ],
+          "id": "bp0-da142946"
+        },
+        "lineage": false,
+        "x": 94.87241393885233,
+        "y": 34.300575771385304
+      },
+      "maternalInheritance": {
+        "alive": false,
+        "player": false,
+        "id": 117,
+        "species": "genvo",
+        "sex": "F",
+        "generation": 1,
+        "parentIds": [],
+        "grandparentIds": [],
+        "genes": {
+          "body": 1.0169532673899084,
+          "motion": 1.0480404669418932,
+          "metabolism": 1.0460749727208167,
+          "digestion": 1.069597206125036,
+          "senses": 0.9475338451564312,
+          "climate": 1.0976765772793442,
+          "immunity": 0.9612729833927006,
+          "temperament": 1.0228286153636874
+        },
+        "pigmentGenome": {
+          "schema": "genvo.pigment-genome/1",
+          "hue": 4,
+          "chroma": 0,
+          "tone": 2,
+          "marking": 1,
+          "density": 2,
+          "accent": 0
+        },
+        "reproductiveGenome": {
+          "schema": 1,
+          "loci": {
+            "gamete": [
+              1.04027,
+              1.04622
+            ],
+            "development": [
+              0.95059,
+              0.95059
+            ]
+          },
+          "origin": "founding-lineage",
+          "lineage": "genvo"
+        },
+        "matePreferences": {
+          "weights": {
+            "size": 0.44383,
+            "strength": -0.13075,
+            "ornament": 0.32364,
+            "display": -0.53717,
+            "behavior": 0.39201
+          },
+          "selectivity": 0.47904,
+          "ritualTastes": {
+            "dance": -0.79959,
+            "call": -0.52726,
+            "flare": 0.48283,
+            "scent": -0.99959,
+            "gesture": -0.52982
+          },
+          "tempo": 0.17918,
+          "similarity": -0.54348
+        },
+        "adaptations": [],
+        "massPolicy": "relative-anatomical-load/1",
+        "anatomy": {
+          "armor": 0,
+          "barbs": 0,
+          "glands": 0,
+          "spring": 0,
+          "waterBody": 0,
+          "gut": 0,
+          "repair": 0,
+          "signal": 0,
+          "rally": 0,
+          "skin": 0,
+          "jaw": 0,
+          "forelimb": 0,
+          "waterStorage": 0,
+          "webbing": 0
+        },
+        "legacyWaterPhysiology": [],
+        "bodyPlan": {
+          "schema": "genvo8.bodyplan/0",
+          "registryVersion": 0,
+          "nodes": [
+            {
+              "id": "root",
+              "partId": "small-torso",
+              "partVersion": 1,
+              "parent": null,
+              "socket": null
+            },
+            {
+              "id": "root/eye.left",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.left"
+            },
+            {
+              "id": "root/eye.right",
+              "partId": "simple-eye",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "eye.right"
+            },
+            {
+              "id": "root/limb.1",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.1"
+            },
+            {
+              "id": "root/limb.3",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.3"
+            },
+            {
+              "id": "root/limb.5",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.5"
+            },
+            {
+              "id": "root/limb.7",
+              "partId": "walking-leg",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "limb.7"
+            },
+            {
+              "id": "root/mouth",
+              "partId": "grazing-mouth",
+              "partVersion": 1,
+              "parent": "root",
+              "socket": "mouth"
+            }
+          ],
+          "id": "bp0-4134709b"
+        },
+        "lineage": false,
+        "x": 95.10512776097421,
+        "y": 33.53512942432184
+      },
+      "days": 7,
+      "totalDays": 16,
+      "startedDay": 22,
+      "startedYear": 1,
+      "mode": "live",
+      "dualAtConception": false,
+      "compatibilityAtConception": {
+        "enabled": true,
+        "reason": "",
+        "gameteMatch": 0.9806517857142859,
+        "fertilityA": 1,
+        "fertilityB": 1,
+        "conceptionChance": 0.9806517857142859,
+        "model": "provisional-diploid-loci/1"
+      },
+      "plannedLitterSize": 3,
+      "birthCost": 51,
+      "reserveInvestment": 23.97,
+      "dualCostPaid": null
+    },
+    "progress": {
+      "remaining": 7,
+      "total": 16,
+      "progress": 0.5625
+    }
+  },
+  "layouts": [],
+  "failure": "The expression evaluated to a falsy value:\n\n  assert.ok(row.bottom-row.top>0&&row.right-row.left>0)\n",
+  "visibleText": "1/3\nSTEP 1/3 — FIND FOOD\nYou're hungry! Find something edible. Click the highlighted food and choose Eat, or move close and press E.\nField guide (Y): your creature notes the bodies of wild creatures. Parts it has seen are cheaper when your line evolves.\nSaved\nMenu\nGenvo Kinwalker\nWinter\nDay 7\nY1\n· Pregnant 56%\nHealth\nEnergy\nWater\nBreath\nLocation\nInteract\nE\nEat\nDrink\nShift+E\nRest\nAttack\nSpace\nBrace\nJ\nGroup travel\nOff"
+}

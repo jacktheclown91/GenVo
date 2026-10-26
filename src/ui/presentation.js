@@ -38,3 +38,9 @@ export function contextTone(text=''){
   if(t.startsWith('WINDED'))return'need';
   return'info';
 }
+
+// Progress is supplied by the canonical family authority, including conception at zero.
+export function gestationLabel(progress,mode){
+  if(!progress||!Number.isFinite(progress.progress))return'';
+  return `${mode==='egg'?'Eggs':'Pregnant'} ${Math.round(clamp01(progress.progress)*100)}%`;
+}

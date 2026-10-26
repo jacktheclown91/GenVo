@@ -17,7 +17,7 @@ import {developmentFor} from '../family/family.js';
 import {nearestThreat,directionWord} from './readability.js';
 import {dominantTraits,founderShift,compareGenes,traitListText,strongestTraitText,visualChangeText} from '../lineage/adaptation.js';
 import {playerMoodLabel} from '../render/life.js';
-import {vitalModel,compactFamilyLabel,contextTone} from './presentation.js';
+import {vitalModel,compactFamilyLabel,contextTone,gestationLabel} from './presentation.js';
 import {hasAdaptation,ADAPTATIONS} from '../lineage/evolution.js';
 import {tasteText} from '../reproduction/mate-preferences.js';
 import {parentalAdaptationText} from './parental-adaptations.js';
@@ -35,10 +35,12 @@ export function updateHUD(sim,{renderer=null,mateOpen=false,mindOpen=false,terri
   if(capacityMessage&&!capacityNotice){capacityNotice=document.createElement('div');capacityNotice.id='processingCapacity';capacityNotice.setAttribute('role','status');(document.querySelector('#notificationStack')||document.querySelector('#app'))?.appendChild(capacityNotice)}
   if(capacityNotice)renderProcessingNotice(capacityNotice,capacity,capacityMessage);
   const p=sim.player(),counts=sim.population(),day=((sim.day-1)%CFG.seasonDays)+1;
-  if(clock)clock.innerHTML=`<span class="season-mark">${titleCase(sim.season)}</span><strong>Day ${day}</strong><span>Y${sim.year}</span>${sim.paused?'<em>Paused</em>':''}`;
+  const gestation=p?gestationLabel(sim.family.pregnancyProgress(p),p.pregnant?.mode):'';
+  const clockMarkup=`<span class="season-mark">${titleCase(sim.season)}</span><strong>Day ${day}</strong><span>Y${sim.year}</span>${sim.paused?'<em>Paused</em>':''}${gestation?`<span class="gestation-mark"> · ${gestation}</span>`:''}`;
+  if(clock&&clock.innerHTML!==clockMarkup)clock.innerHTML=clockMarkup;
   if(p){
     const spec=SPECIES[p.species],dev=developmentFor(p),preg=sim.family.pregnancyProgress(p),children=sim.family.livingChildren(p),safe=sim.isOpeningProtected?.(p);
-    const familyCount=children.length,laidEggs=(sim.eggs||[]).filter(e=>e.motherId===p.id).length,familyTitle=preg?.progress>0?`${p.pregnant?.mode==='egg'?'Egg development':'Pregnancy'} ${Math.round(preg.progress*100)}%`:laidEggs?`${laidEggs} incubating egg${laidEggs===1?'':'s'}`:familyCount?`${familyCount} living child${familyCount===1?'':'ren'}`:'';
+    const familyCount=children.length,laidEggs=(sim.eggs||[]).filter(e=>e.motherId===p.id).length,familyTitle=preg?gestationLabel(preg,p.pregnant?.mode):laidEggs?`${laidEggs} incubating egg${laidEggs===1?'':'s'}`:familyCount?`${familyCount} living child${familyCount===1?'':'ren'}`:'';
     const control=sim.familyControlStatus?.()||{count:1,index:0,autonomy:false},controlTitle=control.count>1?`Tab switches family · ${control.index+1}/${control.count}`:(control.autonomy?'Automation on':'');
     const health=vitalModel('health','Health',p.health/100,Math.round(p.health));
     const energy=vitalModel('energy','Energy',p.energy/spec.maxEnergy,Math.round(p.energy/spec.maxEnergy*100));
@@ -46,7 +48,7 @@ export function updateHUD(sim,{renderer=null,mateOpen=false,mindOpen=false,terri
     const markup=`<div class="lineage-head">
         <div class="lineage-sigil" aria-label="Generation ${p.generation}"><span>G</span><b>${p.generation}</b></div>
         <div class="lineage-copy"><strong>${dev.stage}</strong>${hudDoingLine(sim,p)||hudHabitLine(sim,p)}</div>
-        ${controlTitle?`<div class="control-chip ${control.autonomy?'auto':''}" title="${controlTitle}">${control.autonomy?'AUTO':`TAB ${control.index+1}/${control.count}`}</div>`:familyTitle?`<div class="family-chip" title="${familyTitle}"><b>${preg?.progress>0?'•':familyCount}</b></div>`:''}
+        ${controlTitle?`<div class="control-chip ${control.autonomy?'auto':''}" title="${controlTitle}">${control.autonomy?'AUTO':`TAB ${control.index+1}/${control.count}`}</div>`:familyTitle?`<div class="family-chip" title="${familyTitle}"><b>${preg?'•':familyCount}</b></div>`:''}
       </div>
       <div class="needs" aria-label="Survival needs">${compactVital(health)}${compactVital(energy)}${compactVital(water)}${breathVital(sim,p)}</div>
       ${priorityHudAlert(sim,p,safe)}`;
@@ -399,7 +401,7 @@ function updateMate(el,sim,open){
   const display=active.courtshipPerformance?.partnerId===selected.id?active.courtshipPerformance:null;
   const performanceLine=display?`\nRITUAL: ${(display.sequence||['approach']).join(' → ')} · energy ${display.energySpent.toFixed(2)}`:'';
   const contestLine=active.lastCourtshipCompetition?.partnerId===selected.id?`\nLast contest: #${active.lastCourtshipCompetition.winnerId} favored by this mate`:'';
-  const selectedPreg=sim.family.pregnancyProgress(selected),pregLine=selectedPreg?`\nPregnancy ${Math.round(selectedPreg.progress*100)}%` : '';
+  const selectedPreg=sim.family.pregnancyProgress(selected),pregLine=selectedPreg?`\n${gestationLabel(selectedPreg,selected.pregnant?.mode)}` : '';
   const bodyComparison=comparePhysicalBuilds(active,selected);
   const anatomyLine=samePhysicalBuild(active,selected)?'Matching physical builds · mating offers next-generation editor':'Different physical builds · young can inherit a mixture · editor waits for a matching pair';
   const anatomyDetail=bodyComparison?bodyComparison.exact?'All mounted parts and sockets match':`${bodyComparison.matched}/${bodyComparison.total} mounted positions match · ${bodyComparison.different} differ\n${bodyComparison.differences.slice(0,5).map(d=>`  ${d.location}: yours ${d.first} / mate ${d.second}`).join('\n')}${bodyComparison.different>5?'\n  …more differences':''}`:'Body-plan comparison unavailable';
