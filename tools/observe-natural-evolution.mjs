@@ -33,6 +33,7 @@ const verify=process.argv.includes('--verify-observer');
 const verifyTicks=Number(process.argv.find(arg=>arg.startsWith('--verify-ticks='))?.split('=')[1]||96);
 assert.ok(Number.isSafeInteger(verifyTicks)&&verifyTicks>0&&verifyTicks<=76800);
 const options={player:true,worldGenerator:'planetary/1',regionalFrontier:true,
+  autonomousPopulations:process.argv.includes('--autonomous-populations'),
   courtshipSimilarity:mode==='balanced',dayClock:true,metabolism:true,foodProperties:true,
   tissueWater:true,winterWater:true,escapeLanding:true,tissueEnergy:true,perennialRegrowth:true};
 const sim=new Simulation(seed,options);
@@ -115,6 +116,10 @@ function census(){
     taxa:[...sim.evolutionTree.nodes.values()].map(node=>({id:node.id,status:node.status,formedDay:node.formedDay,endedDay:node.endedDay,recognitions:node.recognitions})),
     pressureHistories:[...sim.populationMemory.histories.entries()].map(([key,value])=>[key,structuredClone(value)]),
     populationCenters:structuredClone(sim.generationProgress.populationCenters),
+    naturalPopulations:[...(sim.populationMemory.natural?.records.values()||[])].map(record=>structuredClone({
+      ...record,members:[...record.members],memberIds:[...record.memberIds],everMembers:[...record.everMembers],
+      recruits:[...record.recruits],litters:[...record.litters]})),
+    naturalPopulationEvents:structuredClone(sim.populationMemory.natural?.events||[]),
     seconds:(performance.now()-started)/1000,memory:process.memoryUsage()};
 }
 function checkpoint(status='running'){
@@ -134,7 +139,7 @@ try{
       const row=census();checkEcologicalIntegrity(sim,initialPopulation);
       if((sim.day-1)%10===0||sim.day>days){
         receipt.samples.push(row);checkpoint();
-        console.log(JSON.stringify({seed,mode,day:sim.day,tick:sim.tickCount,live:row.live,lineage:row.lineage,maxDepth:row.maxAncestryDepth,births:sim.stats.births,conceptions:mating.conceptions,seconds:row.seconds,heap:row.memory.heapUsed}));
+        console.log(JSON.stringify({seed,mode,day:sim.day,tick:sim.tickCount,live:row.live,lineage:row.lineage,maxDepth:row.maxAncestryDepth,births:sim.stats.births,conceptions:mating.conceptions,naturalEstablished:row.naturalPopulations.filter(p=>p.establishedDay!==null).length,seconds:row.seconds,heap:row.memory.heapUsed}));
       }
       await yieldTurn();
     }

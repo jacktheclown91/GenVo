@@ -2,6 +2,10 @@
 
 All tasks start from live main, preserve unrelated work, and update the continuation handoff. Run the complete playable gate and canonical export/audit before integration. Do not regenerate deterministic expectations for a mechanical refactor.
 
+## Active autonomous-evolution boundaries
+
+The new demographic observation helper is borrowed by `PopulationPressureMemoryController`; it is not a replacement evolution controller or completion of the later cleanup stage. Keep establishment evidence separate from player G3 achievements and species recognition. Complete recognition integration and regional continuity through existing authorities, then profile the major stalls before choosing the single bounded cleanup. Current implementation/evidence: [autonomous evolution](AUTONOMOUS-EVOLUTION-2026-10-26.md).
+
 ## 1. Extract ordered controller composition (completed at 5bc4ea27; retain as acceptance record)
 
 - Goal/files: move the contiguous `this.lineage = new LineageTracker(this)` through `this.wildlifeRhythm = new WildlifeRhythmController(this)` constructor segment from `src/sim/simulation.js` to `src/sim/controller-composition.js`.

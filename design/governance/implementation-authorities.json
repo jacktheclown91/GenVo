@@ -21,6 +21,13 @@
       "consumers": ["src/lineage/lineage.js", "src/ui/tutorial.js", "src/ui/legacy-summary.js", "src/main.js", "src/persistence/save-manager.js"],
       "contract": "docs/FIRST-LEGACY-2026-10-22.md"
     },
+    "autonomousPopulationFounding": {
+      "authority": "src/ecology/population-memory.js",
+      "helpers": ["src/ecology/autonomous-founding.js"],
+      "consumers": ["src/lineage/lineage.js", "src/sim/simulation.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js"],
+      "contract": "docs/AUTONOMOUS-EVOLUTION-2026-10-26.md",
+      "note": "Versioned demographic observation of actual residence, maintenance and paid surviving recruitment. No player ownership, resources, mating or species identity authority is introduced. Natural acceptance remains under verification."
+    },
     "breedingSupport": {
       "authority": "src/ecology/breeding-support.js",
       "consumers": ["src/ecology/carrying.js", "src/sim/simulation.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js"],

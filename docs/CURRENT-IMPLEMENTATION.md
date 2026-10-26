@@ -2,6 +2,10 @@
 
 Reviewed October 20, 2026. Governing intent: [current design](../design/CURRENT-DESIGN.md) and the creator's full Creature-stage directive. Code ownership: [implementation authorities](../design/governance/implementation-authorities.json). Full scope and remaining gaps: [completion matrix](FULL-GAME-COMPLETION-MATRIX.md). Earlier checkpoint prose is [historical evidence](history/IMPLEMENTATION-before-live-refresh-2026-10-19.md), not current instructions.
 
+## Autonomous evolution development — active, October 26
+
+A population-memory extension now observes wildlife occupancy, paid recruitment and maintenance support without player objectives. Controlled founding, split, merger, extinction/replacement and save-policy contracts pass; natural establishment remains unproven. Two 320-day ordinary-world trials completed with 180 births and exact save continuation but zero establishment; that negative evidence is retained. All 123 local checks and current-source new/historical browser continuation checks pass; exact-head remote CI is pending. Recognition integration, regional biological continuity, major-stall correction and final release verification remain outstanding. See [active implementation and evidence](AUTONOMOUS-EVOLUTION-2026-10-26.md).
+
 ## Next engineering development pass, October 26
 
 Stages A–E now have implemented, measured checkpoints. Spatial indexing, funded nursing coverage and clock guards pass original parity/contracts. Source-3503dd62 botanical redundant-work removal improves repeated mature Node tick totals by about 4–5% with complete state/RNG parity; browser and regional responsiveness show no consistent gain and retain major stalls. Four 320-day natural worlds completed 307,200 ticks with actual conceptions, births, juvenile outcomes, inherited variation and collapses. Their first strict save failure led to the no-heir mate-selection cleanup; runtime 1cbd46e82badb02d2c8e37bddefea1649da21b9e passed exact-head 122-check CI 40405119717.

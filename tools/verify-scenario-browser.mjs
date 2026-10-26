@@ -154,13 +154,14 @@ try{
  await page.keyboard.press('Escape');
  await page.locator('.menu-view[data-screen="pause"] [data-action="save"]').click();
  await page.waitForFunction(()=>document.querySelector('#menuMessage')?.textContent==='World saved.',{}, {timeout:120000});
- const expectedReload=await page.evaluate(()=>{const s=window.__GENVO8__.sim;return{seed:s.seed,day:s.day,tick:s.tickCount,rng:s.rng.state,playerId:s.playerId,marinePolicy:s.marineFoodRules??null,marineFields:!!s.world.marineFood,population:s.animals.filter(a=>a.alive).length}});
+ const expectedReload=await page.evaluate(()=>{const s=window.__GENVO8__.sim;return{seed:s.seed,day:s.day,tick:s.tickCount,rng:s.rng.state,playerId:s.playerId,autonomousPolicy:s.autonomousPopulationRules??null,marinePolicy:s.marineFoodRules??null,marineFields:!!s.world.marineFood,population:s.animals.filter(a=>a.alive).length}});
  await page.reload({waitUntil:'domcontentloaded'});
  await page.waitForFunction(()=>!!window.__GENVO8__?.saveManager);
  await page.locator('.menu-view[data-screen="home"] [data-action="continue"]').click();
  await page.waitForFunction(id=>window.__GENVO8__?.sim?.playerId===id&&document.querySelector('#frontEnd')?.hidden,report.playerId,{timeout:120000});
  await page.evaluate(()=>window.__GENVO8__.renderer.sceneReady());
- browserReload=await page.evaluate(()=>{const s=window.__GENVO8__.sim;return{seed:s.seed,day:s.day,tick:s.tickCount,rng:s.rng.state,playerId:s.playerId,marinePolicy:s.marineFoodRules??null,marineFields:!!s.world.marineFood,population:s.animals.filter(a=>a.alive).length,mode:s.creatureStart?.mode??null,receipts:s.authoredIntroductions?.length??0,airborne:!!s.player()?.airborne}});
+ browserReload=await page.evaluate(()=>{const s=window.__GENVO8__.sim;return{seed:s.seed,day:s.day,tick:s.tickCount,rng:s.rng.state,playerId:s.playerId,autonomousPolicy:s.autonomousPopulationRules??null,marinePolicy:s.marineFoodRules??null,marineFields:!!s.world.marineFood,population:s.animals.filter(a=>a.alive).length,mode:s.creatureStart?.mode??null,receipts:s.authoredIntroductions?.length??0,airborne:!!s.player()?.airborne}});
+ if(process.argv.includes('--historical-populations'))assert.equal(browserReload.autonomousPolicy,null,'Historical scenario does not adopt new founding rules');
  for(const key of Object.keys(expectedReload))assert.deepEqual(browserReload[key],expectedReload[key],'native Continue preserves '+key);
  if(founderMode){assert.equal(browserReload.mode,founderMode);assert.ok(browserReload.receipts>0)}
  if(founderMode==='sandbox')assert.ok(browserReload.airborne,'authored wings and midflight state survive actual browser reload');

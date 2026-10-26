@@ -1,3 +1,4 @@
+import {AUTONOMOUS_POPULATIONS} from '../ecology/autonomous-founding.js';
 import {rebuildSpatialIndex,forEachSpatialNeighbor} from './spatial-index.js';
 import {initializeControllers} from './controller-composition.js';
 import {REGIONAL_FRONTIER,physicalFrontier,frontierStep} from '../world/regional-frontier.js';
@@ -149,6 +150,7 @@ export class Simulation{
     stratumSenses=true,
     localAssortment=true,
     courtshipSimilarity=false,
+    autonomousPopulations=false,
     habitatHazards=true,
     fireWeather=true,
     stormWeather=true,
@@ -205,6 +207,7 @@ export class Simulation{
       this.thunderstorms=createThunderstorms()
     }
     if(strangerResponses)this.strangerRules=STRANGER_RESPONSES.policy;
+    if(autonomousPopulations)this.autonomousPopulationRules=AUTONOMOUS_POPULATIONS.policy;
     if(dayClock)this.dayClockRules=DAY_CLOCK.policy;
     if(metabolism)this.metabolismRules=metabolism==='fasting-1'?METABOLISM_REFERENCE_BODY:METABOLISM.policy;
     if(foodProperties)this.foodRules=FOOD_PROPERTIES.policy;
@@ -896,7 +899,7 @@ export class Simulation{
     advanceNests(this);
   }
 
-  kill(a,cause){if(!a.alive)return;this.migration?.states?.delete?.(a.id);this.regionalEcology.noteDeath(a,cause);this.discovery?.onDeath?.(a);a.alive=false;a.health=0;const wasPlayer=a.player,s=SPECIES[a.species],i=this.world.idx(a.x,a.y);if(a.carryingFood){returnCarriedMaterial(this,a,a.carryingFood);a.carryingFood=null}this.world.carrion[i]+=remainingPreyBiomass(a);depositCarcassWater(this,a,i,remainingPreyBiomass(a));this.world.organicResources.totals.carcassImported+=remainingPreyBiomass(a);this.history.noteDeath(a);this.dispersal.onDeath(a);this.disease.onDeath(a);this.stats.deaths++;this.stats.byCause[cause]=(this.stats.byCause[cause]||0)+1;this.cognition.onDeath(a,cause);const wasActiveLineage=a.id===this.lineage?.activeId;this.lineage.registerDeath(a,cause);if(wasActiveLineage)this.lineage.handleActiveDeath(a);else if(wasPlayer)this.restoreFamilyControlAfterDeath(a)}
+  kill(a,cause){if(!a.alive)return;this.migration?.states?.delete?.(a.id);this.regionalEcology.noteDeath(a,cause);this.populationMemory?.noteDeath?.(a,cause);this.discovery?.onDeath?.(a);a.alive=false;a.health=0;const wasPlayer=a.player,s=SPECIES[a.species],i=this.world.idx(a.x,a.y);if(a.carryingFood){returnCarriedMaterial(this,a,a.carryingFood);a.carryingFood=null}this.world.carrion[i]+=remainingPreyBiomass(a);depositCarcassWater(this,a,i,remainingPreyBiomass(a));this.world.organicResources.totals.carcassImported+=remainingPreyBiomass(a);this.history.noteDeath(a);this.dispersal.onDeath(a);this.disease.onDeath(a);this.stats.deaths++;this.stats.byCause[cause]=(this.stats.byCause[cause]||0)+1;this.cognition.onDeath(a,cause);const wasActiveLineage=a.id===this.lineage?.activeId;this.lineage.registerDeath(a,cause);if(wasActiveLineage)this.lineage.handleActiveDeath(a);else if(wasPlayer)this.restoreFamilyControlAfterDeath(a)}
   advanceDay(){this.habits?.advanceDay?.();this.evolutionBudget?.advanceDay?.();this.tendency?.advanceDay?.();this.populationEcology?.advanceDay?.();this.populationMemory?.advanceDay?.();this.speciesLifestyle?.advanceDay?.();this.speciesCoexistence?.advanceDay?.();this.speciation?.advanceDay?.();this.shelter.advanceDay();this.day++;if(this.evolvedLibraryRules)observeEvolvedConfigurations(this);for(const a of this.animals)if(a.alive)advanceAgeDay(a,this.stats,tissueEnergy(this,a));if((this.day-1)%CFG.seasonDays===0){this.seasonIndex=(this.seasonIndex+1)%4;if(this.seasonIndex===0)this.year++}}
 
   bestPrey(a,radius,{allowNonHunter=false}={}){

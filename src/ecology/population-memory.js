@@ -1,6 +1,8 @@
+import {initializeAutonomousFounding,advanceAutonomousFounding,naturalPopulations,naturalPopulationFor,recordPopulationBirth,recordPopulationDeath} from './autonomous-founding.js';
 import {CFG} from '../sim/config.js';
 import {SPECIES} from '../organisms/species.js';
 import {ENVIRONMENT_PRESSURES} from '../lineage/pressure.js';
+import {BREEDING_SUPPORT,breedingSupport} from './breeding-support.js';
 
 const clamp01=v=>Math.max(0,Math.min(1,Number(v)||0));
 // Same vocabulary as per-creature lifetime pressure (lineage/pressure.js).
@@ -12,7 +14,7 @@ const LABELS=Object.fromEntries(PRESSURES.map(p=>[p.id,p.label]));
 // established G3 population center, plus where individual lineage members spend
 // their days. v1.12 can consume this history when populations begin diverging.
 export class PopulationPressureMemoryController{
-  constructor(sim){this.sim=sim;this.histories=new Map();this.residence=new Map();this.lastDay=0;this.notice=null;this.noticed=new Set()}
+  constructor(sim){this.sim=sim;this.histories=new Map();this.residence=new Map();this.lastDay=0;this.notice=null;this.noticed=new Set();initializeAutonomousFounding(this)}
   primaryAnchor(){
     const shelter=(this.sim.shelter?.activeShelters?.()||[]).filter(s=>s.kind!=='satellite').sort((a,b)=>(a.constructedDay??0)-(b.constructedDay??0)||a.id-b.id)[0];
     if(shelter)return{key:'home',id:'home',kind:'home',label:'Home Range',x:shelter.x,y:shelter.y,primary:true,shelterId:shelter.id};
@@ -24,6 +26,7 @@ export class PopulationPressureMemoryController{
   populations(){
     const out=[],home=this.primaryAnchor();if(home)out.push(home);
     for(const center of this.sim.generationProgress?.centers?.()||[])out.push({...center,key:`center:${center.id}`,primary:false});
+    out.push(...naturalPopulations(this));
     return out;
   }
   populationByKey(key){return this.populations().find(p=>p.key===key)||null}
@@ -55,11 +58,13 @@ export class PopulationPressureMemoryController{
     return this.sim.generationProgress?.populationAssignment?.(animal,form)||null;
   }
   populationForAnimal(animal,pops=this.populations()){
-    if(!animal?.alive||animal.species!=='genvo'||!animal.lineage||!pops.length)return null;
-    const assigned=this.assignedCenter(animal);if(assigned){const found=pops.find(p=>p.id===assigned.id&&!p.primary);if(found)return found}
-    const secondaries=pops.filter(p=>!p.primary),nearest=secondaries.map(p=>({p,d:Math.hypot(animal.x-p.x,animal.y-p.y)})).sort((a,b)=>a.d-b.d)[0];
+    const natural=naturalPopulationFor(this,animal);if(natural)return natural;
+    const legacyPops=pops.filter(p=>p.kind!=='autonomous');
+    if(!animal?.alive||animal.species!=='genvo'||!animal.lineage||!legacyPops.length)return null;
+    const assigned=this.assignedCenter(animal);if(assigned){const found=legacyPops.find(p=>p.id===assigned.id&&!p.primary);if(found)return found}
+    const secondaries=legacyPops.filter(p=>!p.primary),nearest=secondaries.map(p=>({p,d:Math.hypot(animal.x-p.x,animal.y-p.y)})).sort((a,b)=>a.d-b.d)[0];
     if(nearest&&nearest.d<=Math.max(5.5,this.sim.territory.cellSize*.9))return nearest.p;
-    return pops.find(p=>p.primary)||pops[0];
+    return legacyPops.find(p=>p.primary)||legacyPops[0];
   }
   noteResidence(animal,pop){
     if(!animal||!pop)return;let r=this.residence.get(animal.id);if(!r){r={days:{},lastKey:null,lastDay:0};this.residence.set(animal.id,r)}
@@ -72,13 +77,25 @@ export class PopulationPressureMemoryController{
     return{key,days,total,share:total?days/total:0,population:pop,label:pop?.label||key,lastKey:r.lastKey};
   }
   advanceDay(){
-    if(this.lastDay===this.sim.day)return;this.lastDay=this.sim.day;const pops=this.populations();if(!pops.length)return;
+    if(this.lastDay===this.sim.day)return;this.lastDay=this.sim.day;
+    advanceAutonomousFounding(this,{maturityFor:a=>SPECIES[a.species].maturity,supportsMaintenance:a=>this.supportsMaintenance(a)});
+    const pops=this.populations();if(!pops.length)return;
     for(const pop of pops){
+      if(pop.kind==='autonomous'&&!pop.memberIds.size)continue;
       const a=this.assessment(pop);if(!a)continue;const h=this.ensure(pop);h.days++;h.lastDay=this.sim.day;h.lastAssessment=a;h.last={...a.pressure};
       for(const def of PRESSURES){const value=a.pressure[def.id]||0;h.exposure[def.id]=(h.exposure[def.id]||0)+value;h.peak[def.id]=Math.max(h.peak[def.id]||0,value);h.recent[def.id]=(h.recent[def.id]||0)*.76+value*.24}
     }
     for(const a of this.sim.animals){if(!a.alive||!a.lineage||a.species!=='genvo')continue;const pop=this.populationForAnimal(a,pops);if(pop)this.noteResidence(a,pop)}
     this.maybeNotice();
+  }
+  noteBirth(child,parents){recordPopulationBirth(this,child,parents)}
+  noteDeath(animal,cause){recordPopulationDeath(this,animal,cause)}
+  supportsMaintenance(animal){
+    // Establishment observes maintenance, not spare capacity for another brood.
+    // No cross-body survey memo: different inherited mouths need different food.
+    const state=this.sim.carrying.breedingState(animal);
+    const support=state.support||breedingSupport(this.sim,animal,this.sim.carrying.surveyAt(animal),state.competitors);
+    return support.share>=support.need/BREEDING_SUPPORT.reproductiveMargin;
   }
   profile(keyOrPop){
     const key=typeof keyOrPop==='string'?keyOrPop:keyOrPop?.key,h=this.histories.get(key);if(!h)return null;

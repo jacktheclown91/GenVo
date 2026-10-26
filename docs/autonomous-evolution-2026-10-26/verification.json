@@ -1,0 +1,35 @@
+{
+  "scope": "Stage A local mechanism checkpoint; natural founding unproven. All 123 checks completed. Routing correction and strengthened founding tests followed the initial manifest test and were rerun separately on Node 22/24; exact-head CI must validate the entire final checkpoint.",
+  "sourceBlobs": {
+    "src/ecology/autonomous-founding.js": "f48e53a77a274f10c5bafc2489386a35bfab92a7",
+    "src/ecology/population-memory.js": "8ea6636e5a777fa9659340e176bb8a70a8e203ca",
+    "src/lineage/lineage.js": "dfec3888ac2c53648a727778e6c788c66cf6631c",
+    "src/main.js": "b433130fb8f2c172608fc3ec41c20011e7050dd8",
+    "src/persistence/save-manager.js": "4b63bccbc6004ca82d7cf3b4a1ab53f65f8a3b1b",
+    "src/sim/simulation.js": "98042e0be67685df14ef4ecd4f234156941c399a",
+    "src/world/planetary-travel.js": "5be5d1bbd0e992222843c89faef24297283fce2c",
+    "tests/autonomous-population-founding.mjs": "4d1dd3135a739d99b0fcf12f16d547b5f8c96bb7",
+    "tools/check-playable.mjs": "2f3b4c542a7c3094c302ff4746f6718ab29b3e32",
+    "tools/observe-natural-evolution.mjs": "03b0edde58a3be1d3a060806cd41f1e6f18a49cb"
+  },
+  "integrationLogSha256": "5736c01db4f096caad8b1281618e59d49abd6e4b0e65b74925aafa3a161c8663",
+  "targeted": [
+    "autonomous-population-founding Node22/24",
+    "modernization-baseline Node22/24",
+    "interleaved-day-clock",
+    "sliced-ticks",
+    "planetary-preparation",
+    "reproductive-similarity",
+    "architecture-check",
+    "canonical-source-audit after sprite exporter",
+    "public-export"
+  ],
+  "naturalScope": "Five retained trials, including two 320-day seeds. No establishment in either long run; terminal snapshots and original raw receipts preserved externally.",
+  "browserScope": "Current-source controlled UI smoke, not natural founding or mature performance acceptance.",
+  "remaining": [
+    "Exact-head GitHub CI",
+    "Natural establishment acceptance",
+    "Stages B-F",
+    "Separate updated RC and extracted-package verification"
+  ]
+}

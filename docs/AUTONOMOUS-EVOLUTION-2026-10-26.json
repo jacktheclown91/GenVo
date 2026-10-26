@@ -1,0 +1,153 @@
+{
+  "scope": "Completed ordinary-world outcomes; no establishment or species acceptance claimed. Original runtime hashes retained; subsequent legacy-routing correction is not represented as part of these frozen trials.",
+  "runs": [
+    {
+      "file": "autonomous-A-natural-120.json",
+      "sha256": "9e4a2ed6532e47a4f1625fdcd346e49263661b3b555c93704f915591e8054f39",
+      "bytes": 8167004,
+      "runtimeFingerprint": "388bf63259aac83e6a69dffd77815ec015d7fdf7441fe9e3492910a9711b238e",
+      "status": "complete",
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "seed": "POPULATION-FOUNDING-PROBE-0",
+      "days": 120,
+      "tick": 28800,
+      "day": 121,
+      "living": 135,
+      "births": 36,
+      "conceptions": 28,
+      "ancestryDepth": 3,
+      "everEstablished": 0,
+      "demographicRecords": 361
+    },
+    {
+      "file": "autonomous-A-natural-coherent-120.json",
+      "sha256": "612de7ee42d1398dac9c434309ced83240ff7d075b7cf759f69595cbfdd2ede9",
+      "bytes": 20680907,
+      "runtimeFingerprint": "ca87e6889523f604475c00a883b8dcabf35abcb81ff858d930c31c921aec89c2",
+      "status": "complete",
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "seed": "POPULATION-FOUNDING-PROBE-0",
+      "days": 120,
+      "tick": 28800,
+      "day": 121,
+      "living": 135,
+      "births": 36,
+      "conceptions": 28,
+      "ancestryDepth": 3,
+      "everEstablished": 0,
+      "demographicRecords": 418
+    },
+    {
+      "file": "autonomous-A-natural-maintenance-120.json",
+      "sha256": "75e4c915e8137c0c1177145e2de0dc0aed1674cea950b48c28f296ea656c9a14",
+      "bytes": 26122973,
+      "runtimeFingerprint": "31326443c17c9b98e44feac081310731cbe3b719b45c5136f5116b09f7692b80",
+      "status": "complete",
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "seed": "POPULATION-FOUNDING-PROBE-0",
+      "days": 120,
+      "tick": 28800,
+      "day": 121,
+      "living": 135,
+      "births": 36,
+      "conceptions": 28,
+      "ancestryDepth": 3,
+      "everEstablished": 0,
+      "demographicRecords": 418
+    },
+    {
+      "file": "autonomous-A-natural-maintenance-320-seed0.json",
+      "sha256": "51952d1773b63fa7c8bb1f07fa00bafa959239c244f68b783135b5bfea810bf8",
+      "bytes": 158621580,
+      "runtimeFingerprint": "31326443c17c9b98e44feac081310731cbe3b719b45c5136f5116b09f7692b80",
+      "status": "complete",
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "seed": "POPULATION-FOUNDING-PROBE-0",
+      "days": 320,
+      "tick": 76800,
+      "day": 321,
+      "living": 104,
+      "births": 86,
+      "conceptions": 60,
+      "ancestryDepth": 5,
+      "everEstablished": 0,
+      "demographicRecords": 1023
+    },
+    {
+      "file": "autonomous-A-natural-maintenance-320-seed1.json",
+      "sha256": "6e3bbf5e586320789894364dbd9e7816bc66360049bda4d78144c46b08f58e88",
+      "bytes": 146458012,
+      "runtimeFingerprint": "31326443c17c9b98e44feac081310731cbe3b719b45c5136f5116b09f7692b80",
+      "status": "complete",
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "seed": "POPULATION-FOUNDING-PROBE-1",
+      "days": 320,
+      "tick": 76800,
+      "day": 321,
+      "living": 118,
+      "births": 94,
+      "conceptions": 66,
+      "ancestryDepth": 6,
+      "everEstablished": 0,
+      "demographicRecords": 900
+    }
+  ],
+  "preservedEvidence": {
+    "path": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\evidence\\GenVo-autonomous-founding-20261026\\stage-A-field-receipts.zip",
+    "bytes": 47853595,
+    "sha256": "ac20e4e6e7ced28f9c58aa413bcadd33a71bd08dd904432a98d2312b043f6878",
+    "entries": [
+      {
+        "file": "autonomous-A-natural-120.json",
+        "bytes": 8167004,
+        "sha256": "9e4a2ed6532e47a4f1625fdcd346e49263661b3b555c93704f915591e8054f39"
+      },
+      {
+        "file": "autonomous-A-natural-120.json.snapshot.v8",
+        "bytes": 33605211,
+        "sha256": "53fb8c3e273047a223d3d692aaa86a5e93559302f172ed538b36ea20a2ce9075"
+      },
+      {
+        "file": "autonomous-A-natural-coherent-120.json",
+        "bytes": 20680907,
+        "sha256": "612de7ee42d1398dac9c434309ced83240ff7d075b7cf759f69595cbfdd2ede9"
+      },
+      {
+        "file": "autonomous-A-natural-coherent-120.json.snapshot.v8",
+        "bytes": 34010096,
+        "sha256": "339bc52eda20a696f43bf424e61b32e09737351e116c47a7f13e551be8facc74"
+      },
+      {
+        "file": "autonomous-A-natural-maintenance-120.json",
+        "bytes": 26122973,
+        "sha256": "75e4c915e8137c0c1177145e2de0dc0aed1674cea950b48c28f296ea656c9a14"
+      },
+      {
+        "file": "autonomous-A-natural-maintenance-120.json.snapshot.v8",
+        "bytes": 34308551,
+        "sha256": "fc2a76bbb07e5d2316915c2fb7ddfe6b60c4d0fd92b24fb19526acc98184c1c9"
+      },
+      {
+        "file": "autonomous-A-natural-maintenance-320-seed0.json",
+        "bytes": 158621580,
+        "sha256": "51952d1773b63fa7c8bb1f07fa00bafa959239c244f68b783135b5bfea810bf8"
+      },
+      {
+        "file": "autonomous-A-natural-maintenance-320-seed0.json.snapshot.v8",
+        "bytes": 36585981,
+        "sha256": "0596e4349c2f42674a205fab31c6b31e9ae6bc2643eaf0cce838936530c63534"
+      },
+      {
+        "file": "autonomous-A-natural-maintenance-320-seed1.json",
+        "bytes": 146458012,
+        "sha256": "6e3bbf5e586320789894364dbd9e7816bc66360049bda4d78144c46b08f58e88"
+      },
+      {
+        "file": "autonomous-A-natural-maintenance-320-seed1.json.snapshot.v8",
+        "bytes": 42081823,
+        "sha256": "f0439c00a0261e6beb9eaf89c3bcadc5c4a8e477aaa4a65b2a1573bccb281881"
+      }
+    ],
+    "verification": "All entries CRC and exact SHA256 match original raw receipts and full terminal snapshots."
+  }
+}

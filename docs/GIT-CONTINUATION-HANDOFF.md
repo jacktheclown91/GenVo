@@ -1,5 +1,9 @@
 # Git continuation handoff — October 26, 2026
 
+## Active autonomous-evolution pass — Stage A mechanism checkpoint
+
+Population memory now has an opt-in demographic ledger and a leaf helper; the active contract is [autonomous evolution](AUTONOMOUS-EVOLUTION-2026-10-26.md). Controlled founding, split, merger, extinction/replacement, canonical save continuation and regional preparation pass on Node 22/24. The first three 120-day probes all completed with zero establishment, retained as negative evidence. Two ordinary 320-day seeds completed with zero establishment, 180 births and exact restored continuation. Their raw receipts and full snapshots are preserved in an independently verified external archive recorded by the contract. A subsequent reproduced player-fallback ownership bug is corrected and passes on Node 22/24. The 123-check local gate completed; strengthened founding and original snapshot contracts separately pass on Node 22/24 after the ownership correction. Current-source new/historical browser continuation checks pass without browser errors. Exact-head GitHub CI remains pending; no natural-founding acceptance or release is claimed. Stages B–F and the complete active creator directive remain outstanding. Preserve this work rather than reverting it to the older verified checkpoint.
+
 ## Current engineering development pass — implemented and measured
 
 Current verified runtime checkpoint: `1cbd46e82badb02d2c8e37bddefea1649da21b9e`, canonical `main`. The final measurement/handoff commit may follow this runtime checkpoint; inspect HEAD, remote divergence and its exact Actions result before continuing. This document cannot contain its own commit hash. No later analysis artifact should be mistaken for a different game runtime.
