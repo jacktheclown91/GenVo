@@ -1,0 +1,17 @@
+{
+  "scope": "Review-server ground-paint prototype on actual recorded world; native selection/pause; terrain-only before/after/before and canonical graph parity. No runtime source edited.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "comparison": {
+    "changedChannels": 19654,
+    "baselineRestored": true,
+    "stateParity": true,
+    "seed": "GENVO8-PLAYABLE-TEST",
+    "day": 1,
+    "origin": {
+      "x": 65,
+      "y": 67
+    },
+    "scope": "Native land paint only; actual stored water cells marked uniformly; no vegetation/fog/creatures or hydrology change."
+  }
+}

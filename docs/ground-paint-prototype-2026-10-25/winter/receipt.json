@@ -1,0 +1,17 @@
+{
+  "scope": "Review-server ground-paint prototype on actual recorded world; native selection/pause; terrain-only before/after/before and canonical graph parity. No runtime source edited.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "comparison": {
+    "changedChannels": 25077,
+    "baselineRestored": true,
+    "stateParity": true,
+    "seed": "GENVO-VALLEY-REPLAY-30",
+    "day": 31,
+    "origin": {
+      "x": 97,
+      "y": 17
+    },
+    "scope": "Native land paint only; actual stored water cells marked uniformly; no vegetation/fog/creatures or hydrology change."
+  }
+}
