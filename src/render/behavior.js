@@ -78,7 +78,11 @@ export function behaviorVisualState({bodyPlan=null,id=0,action='idle',phase=0,mo
     Object.assign(state,{feelerSweep:.22,relaxed:true,attention:'ambient'});
   }
 
-  if(social?.alarm){state.eyeWide=true;state.feelerForward=Math.max(state.feelerForward,1.15);state.stanceSpread=Math.max(state.stanceSpread,.55);state.attention='threat'}
+  if(life.dormant&&action==='rest'&&!moving){
+    Object.assign(state,{dormant:true,phase:0,wave:0,beat:.5,bodyDrop:.45,headDrop:.35,compress:.12,feelerForward:.55,feelerPin:.65,eyeNarrow:true,guardPlanted:true});
+  }
+
+  if(social?.alarm&&!state.dormant){state.eyeWide=true;state.feelerForward=Math.max(state.feelerForward,1.15);state.stanceSpread=Math.max(state.stanceSpread,.55);state.attention='threat'}
   // Authoritative wound severity grades the favoured side: a sore creature barely
   // spares a leg, a badly wounded one carries it and hitches on every stride.
   const wound=life?.injured?({sore:.42,wounded:.7,severe:1}[life.injuryLevel]??.62):0;

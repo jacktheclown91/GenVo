@@ -1015,7 +1015,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // Brace receipts, stalled charges, carried wounds and retreats read from combat state.
     const reaction=(this.reactions||=new EncounterReactionPresentation()).sample(this.sim,a,this.encounters?.time||0),defense=this.reactions.sampleDefense(this.sim,a,this.encounters?.time||0),reactionAt=reactionAttention(reaction);if(reactionAt&&!encounter.attention&&!a.player)encounter.attention=reactionAt;
     // Each animal's own threat stage (watching, backing away) from staged perception.
-    const fright=reaction||a.player?null:reactionExpression(this.sim,a,{moving,time:this.encounters?.time||0});if(fright?.attention&&!encounter.attention)encounter.attention=fright.attention;
+    const fright=reaction||a.player||a.torpor&&!moving&&action==='rest'?null:reactionExpression(this.sim,a,{moving,time:this.encounters?.time||0});if(fright?.attention&&!encounter.attention)encounter.attention=fright.attention;
     const frame=Math.floor(phase)&7,gait=cycle8(GAIT,phase),alert=!!social?.alarm;
     // v1.59.0: cached creatures animate in quarter frames while moving (32 poses a stride), so their
     // bodies move smoothly instead of jumping between eight whole poses; idle creatures use whole frames.
@@ -1030,7 +1030,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     else if(committedAim)drawDir=vectorDir(committedAim.aimX-a.x,committedAim.aimY-a.y,a.dir);
     else if(feeding?.attention&&!moving&&!social?.alarm)drawDir=vectorDir(feeding.attention.x-a.x,feeding.attention.y-a.y,a.dir);
     // Idle animals visually acknowledge companions or a threat; actual movement direction remains simulation-owned.
-    else if(!moving&&!a.player&&social?.size>=2){
+    else if(!moving&&!a.player&&!a.torpor&&social?.size>=2){
       if(alert&&Number.isFinite(social.threatX))drawDir=vectorDir(social.threatX-a.x,social.threatY-a.y,a.dir);
       else if(dev.stage==='newborn'||dev.stage==='juvenile'){
         if(Number.isFinite(social.caregiverX))drawDir=vectorDir(social.caregiverX-a.x,social.caregiverY-a.y,a.dir);
@@ -1047,7 +1047,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const carriage=(a.airborne||alert||['drink','eat','hunt'].includes(action))?null:locomotionOffsets(locomotionStyle(a),{phase,moving,action,baseBob:bob,propulsion:action==='swim'?(movementProfile(a,this.sim.world).speed||0)/.66:1});
     const visualGrowth=a.player?dev.growth:Math.round(dev.growth*32)/32;ph.bodyScale*=visualGrowth;ph.limbScale*=.72+.28*visualGrowth;ph.sensoryScale*=.78+.22*visualGrowth;if(dev.maturity<.55){ph.stripe=false;ph.spot=false}
     const inWater=liquidContact(this.sim.world,a);if(a.airborne)action=a.aerialMode==='jump'?'jump':a.aerialMode==='glide'?'glide':'fly';else if(a.jumpLanding&&this.sim.tickCount-a.jumpLanding.tick>=0&&this.sim.tickCount-a.jumpLanding.tick<3)action='land';else if(inWater&&(this.sim.canSwim?.(a)||a.iceImmersion)&&!['eat','drink','crack'].includes(action))action='swim';
-    const life=visualLifeState(this.sim,a,{frame,moving,action,development:dev,social,timeSeconds:this.encounters?.time});life.growth=visualGrowth;if(a.torpor){life.breath*=.28;life.settle=Math.max(life.settle,.72)}if(!a.player){life.breath=Math.round(life.breath*8)/8;life.settle=Math.round(life.settle*8)/8;}
+    const life=visualLifeState(this.sim,a,{frame,moving,action,development:dev,social,timeSeconds:this.encounters?.time});life.growth=visualGrowth;if(!a.player){life.breath=Math.round(life.breath*8)/8;life.settle=Math.round(life.settle*8)/8;}
     const behavior=behaviorVisualState({bodyPlan:a.bodyPlan,id:a.id,action,phase,moving,life,social});
     // Body and joints yield above support; contact shadows/toes stay on the ground.
     if(carriage){behavior.bodyRise+=carriage.rise;behavior.bodySway=(behavior.bodySway||0)+carriage.sway;behavior.torsoTwist=carriage.twist;behavior.dorsalRoll=carriage.roll;behavior.bodyLean=(behavior.bodyLean||0)+carriage.lean}
@@ -1056,11 +1056,11 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     applyBirthSettlement(behavior,birth,{feeding:!!feeding});
     applyEncounterPose(behavior,encounter);applyEncounterReaction(behavior,reaction);applyDefenseReaction(behavior,defense);applyReactionPose(behavior,fright);
     const attackTarget=a.player&&a.attackAction?.targetId!==undefined?this.sim.animals.find(t=>t.id===a.attackAction.targetId&&t.alive):null;
-    const looking=attentionTarget(a,{social,encounter,feeding,committedAim,attackTarget,action});
-    behavior.headTurn=(this.headAttention||=new HeadAttentionPresentation()).sample(this.sim,a,looking,drawDir,this.encounters?.time||0);
+    const looking=life.dormant?null:attentionTarget(a,{social,encounter,feeding,committedAim,attackTarget,action});
+    behavior.headTurn=(this.headAttention||=new HeadAttentionPresentation()).sample(this.sim,a,looking,drawDir,this.encounters?.time||0);if(life.dormant)behavior.headTurn=0;
     const combatStatus=a.player?this.sim.playerCombat?.status?.(a):null,winded=a.player?!!this.sim.exertion?.isWinded?.(a):false;if(combatStatus)applyPlayerCombatPose(behavior,combatStatus,winded,a);
     const impact=this.sim.lastPlayerCombatImpact?.targetId===a.id&&this.sim.tickCount-this.sim.lastPlayerCombatImpact.tick<=2?this.sim.lastPlayerCombatImpact:null;
-    const pose={reactionStage:fright?.stage||null,growth:visualGrowth,encounter,social,alert,sharedAlert:!!social?.sharedAlarm,dependent:dev.stage==='newborn'||dev.stage==='juvenile',stage:dev.stage,dir:drawDir,action,life,behavior,hidden:!!a.hidden,carry:a.carryingFood||null,combatImpact:impact,partExpression:this.partExpressions.sample(this.sim,a,action)};
+    const pose={reactionStage:fright?.stage||null,growth:visualGrowth,encounter,social,alert:alert&&!life.dormant,sharedAlert:!!social?.sharedAlarm,dependent:dev.stage==='newborn'||dev.stage==='juvenile',stage:dev.stage,dir:drawDir,action,life,behavior,hidden:!!a.hidden,carry:a.carryingFood||null,combatImpact:impact,partExpression:this.partExpressions.sample(this.sim,a,action)};
     const contact=environmentContactFor(this.sim.world,a,{action,phase,moving});
     this.drawPredatorChargeTell(a,tile,px,py);
     let recoilX=0,recoilY=0;if(impact&&impact.kind!=='miss'){const p=this.sim.player(),dx=a.x-(p?.x??a.x),dy=a.y-(p?.y??a.y),len=Math.hypot(dx,dy)||1,k=(3-Math.max(0,this.sim.tickCount-impact.tick))*.32;recoilX=dx/len*k;recoilY=dy/len*k}
@@ -1077,7 +1077,8 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // Record the actual translated sprite surface for DOM obstruction avoidance,
     // including aerial/climbing/depth offsets; UI does not reimplement those rules.
     if(a.player||a.id===this.overlayTargetId){const t=c.getTransform?.();if(t){const radius=Math.ceil(44*scale/2)+2,rx=radius*(Math.abs(t.a)+Math.abs(t.c)),ry=radius*(Math.abs(t.b)+Math.abs(t.d));this.screenBounds.set(a.id,{left:t.e-rx,top:t.f-ry,right:t.e+rx,bottom:t.f+ry,width:rx*2,height:ry*2});}}
-    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:a.player?phase:cachePhase,moving,palette,pose,cacheKey:a.player||feeding||birth||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,cachePhase,moving,pose,life)});
+    const drawPhase=life.dormant?0:a.player?phase:cachePhase;
+    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:drawPhase,moving,palette,pose,cacheKey:a.player||feeding||birth||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,drawPhase,moving,pose,life)});
     if(a.pollenCargo?.mass>0){pixel(c,-3,-3,1,1,scale,'#dfba5b');pixel(c,2,-4,1,1,scale,'#e9d37d');pixel(c,4,-1,1,1,scale,'#cda64e')}
     this.drawLifeEffects(a,scale,frame,pose,palette);
 
@@ -1157,7 +1158,7 @@ function vectorDir(dx,dy,fallback=0){if(Math.abs(dx)<.001&&Math.abs(dy)<.001)ret
 function hash2(x,y,salt=0){let n=(x*374761393+y*668265263+salt*1442695041)>>>0;n=(n^(n>>13))*1274126177>>>0;return((n^(n>>16))>>>0)/4294967295}
 // v1.57.0: what a creature's finished sprite depends on, so a pose seen before is one canvas copy.
 // The active creature is never cached (its pose reacts continuously to input and combat).
-function spriteKey(a,pal,dir,phase,moving,pose,life){return a.id+'|'+(a.bodyPlan?.id||'')+'|'+pal.body+'|'+dir+'|'+(Math.round(phase*4)&31)+'|'+(moving?1:0)+'|'+pose.action+'|'+pose.stage+'|'+(pose.alert?1:0)+(pose.dependent?1:0)+(pose.hidden?1:0)+(life?.hurt?1:0)+(life?.exhausted?1:0)+(life?.sick?1:0)+(life?.blink?1:0)+(pose.carry?1:0)+'|growth'+(pose.growth??1)+'|breath'+(life?.breath??0)+'|settle'+(life?.settle??0)+':'+((life?.settleIndex??0)%Math.max(1,a.bodyPlan?.nodes.filter(n=>n.socket?.startsWith('limb.')).length||8))+'|'+(a.genVersion||0)+(pose.reactionStage?'|r'+pose.reactionStage+(pose.behavior?.headTurn??0):'')}
+function spriteKey(a,pal,dir,phase,moving,pose,life){return a.id+'|'+(a.bodyPlan?.id||'')+'|'+pal.body+'|'+dir+'|'+(Math.round(phase*4)&31)+'|'+(moving?1:0)+'|'+pose.action+'|'+pose.stage+'|'+(pose.alert?1:0)+(pose.dependent?1:0)+(pose.hidden?1:0)+(life?.hurt?1:0)+(life?.exhausted?1:0)+(life?.sick?1:0)+(life?.blink?1:0)+(pose.carry?1:0)+'|dormant'+(life?.dormant?1:0)+'|growth'+(pose.growth??1)+'|breath'+(life?.breath??0)+'|settle'+(life?.settle??0)+':'+((life?.settleIndex??0)%Math.max(1,a.bodyPlan?.nodes.filter(n=>n.socket?.startsWith('limb.')).length||8))+'|'+(a.genVersion||0)+(pose.reactionStage?'|r'+pose.reactionStage+(pose.behavior?.headTurn??0):'')}
 function smoothNoise2(x,y,cell=8,salt=0){
   const gx=Math.floor(x/cell),gy=Math.floor(y/cell),fx=(x-gx*cell)/cell,fy=(y-gy*cell)/cell;
   const sx=fx*fx*(3-2*fx),sy=fy*fy*(3-2*fy),a=hash2(gx,gy,salt),b=hash2(gx+1,gy,salt),c=hash2(gx,gy+1,salt),d=hash2(gx+1,gy+1,salt);
