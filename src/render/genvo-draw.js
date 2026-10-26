@@ -1,4 +1,5 @@
 import {flankInstanceOffset} from './flank-placement.js';
+import {gestationSurfaceSize} from './gestation-surface.js';
 import {pixel,pixelLine,snap,ART_DETAIL} from './pixel-art.js';
 import {nativeArtStatus,artForPart} from './runtime-part-art.js';
 // Shared GenVo8 body drawing. Presentation-only and reusable by gameplay and lineage portraits.
@@ -217,7 +218,7 @@ function drawGenvoBody(c0,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pa
   // Native torso art (nine distinct 32px anatomical silhouettes). Preserve the original
   // procedural mantle for unsupplied parts, contexts without canvas, and tool/test fallbacks.
   // A torso draws beneath near legs, head, and mounted appendages, sharing the existing socket rig.
-  const expansion=Math.max(0,Math.min(1,life.breath||0)),surfaceW=bodyW*(1+expansion*.018),surfaceH=bodyH*(1+expansion*(life.strained?.065:.04));
+  const expansion=Math.max(0,Math.min(1,life.breath||0)),surface=gestationSurfaceSize(bodyW,bodyH,life.gestation),surfaceW=surface.width*(1+expansion*.018),surfaceH=surface.height*(1+expansion*(life.strained?.065:.04));
   const torsoArt=authoredParts?.[asm.torso]||artForPart(asm.torso);
   const hasNativeTorso=typeof c.drawImage==='function'&&!!torsoArt?.drawTorso?.(c,{
     x:bx*s,y:by*s,width:surfaceW*s,height:surfaceH*s,facing:K.authoredFacing,

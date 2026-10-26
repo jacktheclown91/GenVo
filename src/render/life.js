@@ -1,5 +1,6 @@
 import {SPECIES} from '../organisms/species.js';
 import {COLD_BEHAVIOR} from '../ecology/cold-wildlife.js';
+import {gestationFullness} from './gestation-surface.js';
 
 const BREATH=[0,0,1,1,1,0,0,-1];
 const STEP=[-1,0,1,2,1,0,-1,-2];
@@ -27,7 +28,8 @@ export function visualLifeState(sim,a,{frame=0,moving=false,action='idle',develo
   const lean=action==='flee'?2:action==='stalk'||action==='hunt'?1:action==='court'?-1:0;
   const gaze=action==='eat'||action==='drink'?1:action==='flee'||social?.alarm?2:0;
   const legWave=STEP[frame&7];
-  return {growth:development?.growth??1,energy,hydration,health,exhausted,thirsty,hurt,injured,injuryLevel:injured?injury.level:'none',sick,recovering,strained,dependent,dormant,blink,breath,settle,settleIndex,lean,gaze,legWave};
+  const gestation=gestationFullness(sim,a);
+  return {growth:development?.growth??1,energy,hydration,health,exhausted,thirsty,hurt,injured,injuryLevel:injured?injury.level:'none',sick,recovering,strained,dependent,dormant,blink,breath,settle,settleIndex,lean,gaze,legWave,...(gestation>0?{gestation}:{})};
 }
 
 export function playerMoodLabel(sim,a){
