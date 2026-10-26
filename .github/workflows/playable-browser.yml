@@ -22,6 +22,11 @@ jobs:
         run: |
           npm install --no-save --no-package-lock playwright@latest
           npx playwright install --with-deps chromium
+      - name: Regenerate ignored sprite references and audit canonical source
+        run: |
+          node tools/export_sprite_sheets.cjs
+          node tools/canonical-source-audit.mjs
+          node tests/public-export.mjs
       - name: Boot real game and verify actual browser saves
         run: node tools/verify-save-coherence-browser.mjs docs/test-runs/playable-browser-ci
       - name: Launch a fresh world and verify native anatomy render

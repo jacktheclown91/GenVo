@@ -3,7 +3,7 @@ import {Simulation} from '../src/sim/simulation.js';
 import {SPECIES,phenotypeFor} from '../src/organisms/species.js';
 import {setForm,setProto,formReading,protoReading,migrateLegacyReadings} from '../src/lineage/readings.js';
 
-const sim=new Simulation('GENVO8-SPECIATION-THRESHOLD',{player:true}),memory=sim.populationMemory,speciation=sim.speciation;
+const sim=new Simulation('GENVO8-SPECIATION-THRESHOLD',{player:true,courtshipSimilarity:process.argv.includes('--balanced')}),memory=sim.populationMemory,speciation=sim.speciation;
 const founder=sim.player(),starter=sim.animals.find(a=>a.alive&&a.species==='genvo'&&a.id!==founder.id);assert.ok(founder&&starter);
 
 // Give population memory stable, separated anchors without inventing pressure inside the speciation controller.

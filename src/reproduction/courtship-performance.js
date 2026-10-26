@@ -1,3 +1,4 @@
+import {partnerAvailability,COURTSHIP_READINESS} from './partner-encounters.js';
 // Single canonical courtship authority. Body parts grant actions; individuals
 // learn sequences through their own attempts and by observing nearby success.
 // Attractive timing / matching rituals affect *soft* mate choice, not hard
@@ -7,9 +8,9 @@ import {SPECIES} from '../organisms/species.js';
 import {RNG} from '../core/rng.js';
 import {PARTS} from '../lineage/part-registry.js';
 import {planPartCounts} from '../lineage/part-abilities.js';
-import {matePreferencesFor,individualMateChoice,expressedMateTraits,LOCAL_ASSORTMENT} from './mate-preferences.js';
+import {matePreferencesFor,individualMateChoice,expressedMateTraits,LOCAL_ASSORTMENT,COURTSHIP_SIMILARITY,courtshipSimilarityAdvantage} from './mate-preferences.js';
 
-export const COURTSHIP_PERFORMANCE=Object.freeze({radius:.9,contestRadius:1.2,beats:3,minHealth:55,baseCost:.24,signalCost:.28});
+export const COURTSHIP_PERFORMANCE=Object.freeze({radius:.9,contestRadius:1.2,beats:3,minHealth:COURTSHIP_READINESS.minHealth,baseCost:.24,signalCost:.28});
 export const COURTSHIP_MOVES=Object.freeze(['dance','call','flare','scent','gesture']);
 const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 const clamp=(lo,hi,v)=>Math.max(lo,Math.min(hi,v));
@@ -113,10 +114,13 @@ export function performedMateChoice(sim,actor,target){
   const appeal=ritualAppeal(sim,target,actor,performance);
   const options={assortment:sim.mateAssortmentRules===LOCAL_ASSORTMENT};
   const tastes=[individualMateChoice(actor,target,sim.seed,options),individualMateChoice(target,actor,sim.seed,options)];
+  const resemblanceEligible=sim.courtshipSimilarityRules===COURTSHIP_SIMILARITY.policy&&partnerAvailability(sim,actor,target,COURTSHIP_READINESS).available;
   const chances=tastes.map((choice,i)=>{
     const soft=clamp(.08,.92,.39+choice.score*.80);
     const bonus=i===1?appeal*(competing?.28:.08)-rivalPenalty:0;
-    return clamp(.055,.94,soft+bonus);
+    const resemblance=resemblanceEligible
+      ?courtshipSimilarityAdvantage(i===0?actor:target,i===0?target:actor,sim.seed,{sameTaxon:sim.evolutionTree?.sameTaxon(actor,target)??false}):0;
+    return clamp(.055,.94,soft+bonus+resemblance);
   });
   const index=performance.attempt;
   const draws=tastes.map((_,i)=>new RNG(`${sim.seed}:courtship-reception:${actor.id}:${target.id}:${index}:${i}`).next());

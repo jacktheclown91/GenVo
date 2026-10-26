@@ -1,0 +1,41 @@
+{
+  "scope": "Local final source verification; automated and genuine browser observations, not creator acceptance or long-term population equilibrium proof.",
+  "baseCommit": "e58f800c4be39e76aefee9a8eb4034e9be3c843e",
+  "sourceGitBlobs": {
+    ".github/workflows/playable-browser.yml": "90af51877af1aa3dc650563277fa9ee7dc5fdc96",
+    "src/main.js": "6a7b68773dc3c5728e171cfdea71b5df9a791d6a",
+    "src/persistence/save-manager.js": "ce1b030b29c585f33297b3cabe494c9a3cf9ea34",
+    "src/reproduction/courtship-performance.js": "e38835e42696ff321464ca7cd4ff1a8fa74adf7e",
+    "src/reproduction/mate-preferences.js": "cc5afa2917b44757941847967f74b1ea6437a427",
+    "src/reproduction/partner-encounters.js": "03dcee848be9dfb07e1ef9df5bc903d050c0a1bc",
+    "src/sim/simulation.js": "3712e1fd48d4a9ad3b4c517ac48156d9768dfadb",
+    "src/world/planetary-travel.js": "374b741987c055e15cccfc7a2513ebaab71c6eb2",
+    "tests/reproductive-similarity.mjs": "b3ab1fc149a5fc1bf054a7492752fae24d7e2877",
+    "tests/speciation-threshold.mjs": "8e7a2f904d2c8002980e2665ab4223a783a89e07",
+    "tools/check-playable.mjs": "725b7c382afc7b537c049555e811523c4e6e4e1b",
+    "tools/measure-reproductive-similarity-ecology.mjs": "98f44cb613cf6ad252ec3f4774cb3f9a978976fc",
+    "tools/measure-reproductive-similarity.mjs": "9f4ba06982e5202ca4b8d220c5e0cf91ad1292be",
+    "tools/review-tutorial-direction.cjs": "315a73f73ef9e8294013a94d55bf236e1666e616"
+  },
+  "checks": {
+    "playableGate": {
+      "status": "PASS",
+      "checks": 116,
+      "perCheckTimeoutMs": 240000
+    },
+    "node22ReproductiveSimilarity": "PASS",
+    "node22HistoricalExactBaseline": "PASS",
+    "canonicalSourceAudit": "PASS",
+    "publicExport": "PASS",
+    "architecture": "PASS",
+    "nativeExportedTutorial": "PASS",
+    "pageErrors": 0,
+    "holdoutTrialsEachPolicy": 491520,
+    "fieldWorlds": 8,
+    "fieldDaysEach": 24,
+    "exactFieldRestoredContinuation": true
+  },
+  "creatorAcceptance": false,
+  "stableZipReplaced": false,
+  "itchPublished": false
+}

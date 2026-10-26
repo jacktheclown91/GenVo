@@ -1,0 +1,519 @@
+{
+  "schema": "genvo.similarity-field-observation/1",
+  "requestedDays": 24,
+  "seeds": 4,
+  "scope": "Actual untouched starting ecosystems and AUTO, no reserve/animal/trait injection. Canonical callbacks observed externally. Finite horizon, not speciation incidence or equilibrium proof.",
+  "rows": [
+    {
+      "seed": "SIMILARITY-FIELD-0",
+      "balanced": false,
+      "daysObserved": 24,
+      "stoppedOnPlayerDeath": false,
+      "tick": 5760,
+      "rng": 2647340613,
+      "population": {
+        "mosskip": 63,
+        "rootling": 32,
+        "needlejaw": 8,
+        "rillsifter": 17,
+        "mirelick": 18,
+        "podshell": 18,
+        "bankjaw": 0,
+        "genvo": 24
+      },
+      "stats": {
+        "births": 0,
+        "deaths": 11,
+        "byCause": {
+          "predation": 6,
+          "starvation": 5
+        },
+        "extinctions": [],
+        "threatStages": {
+          "vigilance": 6737,
+          "alarm": 295,
+          "flight": 1372,
+          "wary": 71
+        },
+        "tissueWater": {
+          "fromPrey": 2239.8906435924523,
+          "carcassDeposited": 822.426137406013,
+          "fromCarrion": 81.15933147671589,
+          "dried": 697.0253366123652,
+          "overflowLost": 1199.4714616855604
+        },
+        "healingEnergy": 1121.0831899443008,
+        "preyRisk": {
+          "biteBacks": 9,
+          "damage": 208.49104607788792,
+          "sameSpecies": 9
+        },
+        "growthEnergy": 3839.802935780623,
+        "winterWater": {
+          "snowWater": 226.012632945673,
+          "snowMeltEnergy": 6.780378988370187,
+          "iceAttempts": 0,
+          "iceBreaks": 0
+        },
+        "growthDelays": 16
+      },
+      "observations": {
+        "completedDisplays": 2,
+        "mutuallyAcceptedDisplays": 1,
+        "conceptions": 1,
+        "crossTaxonConceptions": 0,
+        "appearanceDistanceSum": 0.125
+      },
+      "recognizedTaxa": 0,
+      "exactContinuation": true
+    },
+    {
+      "seed": "SIMILARITY-FIELD-1",
+      "balanced": false,
+      "daysObserved": 24,
+      "stoppedOnPlayerDeath": false,
+      "tick": 5760,
+      "rng": 506487205,
+      "population": {
+        "mosskip": 65,
+        "rootling": 10,
+        "needlejaw": 10,
+        "rillsifter": 16,
+        "mirelick": 17,
+        "podshell": 18,
+        "bankjaw": 0,
+        "genvo": 24
+      },
+      "stats": {
+        "births": 2,
+        "deaths": 38,
+        "byCause": {
+          "predation": 5,
+          "health": 21,
+          "starvation": 11,
+          "dehydration": 1
+        },
+        "extinctions": [],
+        "threatStages": {
+          "vigilance": 8355,
+          "alarm": 371,
+          "flight": 1537,
+          "wary": 78
+        },
+        "tissueWater": {
+          "fromPrey": 2306.19726693788,
+          "carcassDeposited": 2219.6985411535097,
+          "fromCarrion": 74.96323847884646,
+          "dried": 1963.9972771118382,
+          "overflowLost": 1322.653081942041
+        },
+        "healingEnergy": 1105.5616685679302,
+        "growthEnergy": 3600.722273030348,
+        "preyRisk": {
+          "biteBacks": 7,
+          "damage": 134.663201391227,
+          "sameSpecies": 5
+        },
+        "winterWater": {
+          "snowWater": 6025.395090680127,
+          "snowMeltEnergy": 180.7618527204036,
+          "iceAttempts": 0,
+          "iceBreaks": 0
+        },
+        "growthDelays": 26
+      },
+      "observations": {
+        "completedDisplays": 21,
+        "mutuallyAcceptedDisplays": 3,
+        "conceptions": 3,
+        "crossTaxonConceptions": 0,
+        "appearanceDistanceSum": 1.3434250348920584
+      },
+      "recognizedTaxa": 0,
+      "exactContinuation": true
+    },
+    {
+      "seed": "SIMILARITY-FIELD-2",
+      "balanced": false,
+      "daysObserved": 24,
+      "stoppedOnPlayerDeath": false,
+      "tick": 5760,
+      "rng": 33218521,
+      "population": {
+        "mosskip": 62,
+        "rootling": 10,
+        "needlejaw": 8,
+        "rillsifter": 14,
+        "mirelick": 19,
+        "podshell": 18,
+        "bankjaw": 0,
+        "genvo": 21
+      },
+      "stats": {
+        "births": 0,
+        "deaths": 43,
+        "byCause": {
+          "health": 25,
+          "predation": 7,
+          "starvation": 11
+        },
+        "extinctions": [],
+        "threatStages": {
+          "vigilance": 9337,
+          "alarm": 1159,
+          "flight": 1985,
+          "wary": 168
+        },
+        "tissueWater": {
+          "fromPrey": 1867.722535794012,
+          "carcassDeposited": 2404.1238397174084,
+          "fromCarrion": 119.94317340822002,
+          "dried": 2192.0430306568014,
+          "overflowLost": 1041.7536409184052
+        },
+        "healingEnergy": 840.0737080236595,
+        "growthEnergy": 3494.2484739196952,
+        "preyRisk": {
+          "biteBacks": 9,
+          "damage": 200.54389351539191,
+          "sameSpecies": 9
+        },
+        "growthDelays": 27,
+        "winterWater": {
+          "snowWater": 1294.3694754182764,
+          "snowMeltEnergy": 38.83108426254829,
+          "iceAttempts": 0,
+          "iceBreaks": 0
+        }
+      },
+      "observations": {
+        "completedDisplays": 1,
+        "mutuallyAcceptedDisplays": 1,
+        "conceptions": 1,
+        "crossTaxonConceptions": 0,
+        "appearanceDistanceSum": 0.024999999999999998
+      },
+      "recognizedTaxa": 0,
+      "exactContinuation": true
+    },
+    {
+      "seed": "SIMILARITY-FIELD-3",
+      "balanced": false,
+      "daysObserved": 24,
+      "stoppedOnPlayerDeath": false,
+      "tick": 5760,
+      "rng": 1437198894,
+      "population": {
+        "mosskip": 64,
+        "rootling": 31,
+        "needlejaw": 11,
+        "rillsifter": 16,
+        "mirelick": 19,
+        "podshell": 18,
+        "bankjaw": 0,
+        "genvo": 23
+      },
+      "stats": {
+        "births": 0,
+        "deaths": 14,
+        "byCause": {
+          "predation": 4,
+          "starvation": 10
+        },
+        "extinctions": [],
+        "threatStages": {
+          "vigilance": 9719,
+          "alarm": 428,
+          "flight": 2157,
+          "wary": 135
+        },
+        "tissueWater": {
+          "fromPrey": 2688.535439580382,
+          "carcassDeposited": 1211.2553094620425,
+          "fromCarrion": 67.26568772428342,
+          "dried": 1031.5017168801278,
+          "overflowLost": 1352.8974149342996
+        },
+        "healingEnergy": 1291.4125663711754,
+        "winterWater": {
+          "snowWater": 480.5465790057923,
+          "snowMeltEnergy": 14.416397370173769,
+          "iceAttempts": 0,
+          "iceBreaks": 0
+        },
+        "growthEnergy": 3494.9243988362027,
+        "growthDelays": 36,
+        "preyRisk": {
+          "biteBacks": 3,
+          "damage": 66.83616294055398,
+          "sameSpecies": 3
+        }
+      },
+      "observations": {
+        "completedDisplays": 10,
+        "mutuallyAcceptedDisplays": 2,
+        "conceptions": 2,
+        "crossTaxonConceptions": 0,
+        "appearanceDistanceSum": 0.3
+      },
+      "recognizedTaxa": 0,
+      "exactContinuation": true
+    },
+    {
+      "seed": "SIMILARITY-FIELD-0",
+      "balanced": true,
+      "daysObserved": 24,
+      "stoppedOnPlayerDeath": false,
+      "tick": 5760,
+      "rng": 1076870226,
+      "population": {
+        "mosskip": 63,
+        "rootling": 32,
+        "needlejaw": 10,
+        "rillsifter": 13,
+        "mirelick": 17,
+        "podshell": 18,
+        "bankjaw": 0,
+        "genvo": 24
+      },
+      "stats": {
+        "births": 0,
+        "deaths": 14,
+        "byCause": {
+          "predation": 5,
+          "starvation": 9
+        },
+        "extinctions": [],
+        "threatStages": {
+          "vigilance": 7204,
+          "alarm": 322,
+          "flight": 1553,
+          "wary": 81
+        },
+        "tissueWater": {
+          "fromPrey": 2447.10187222419,
+          "carcassDeposited": 1133.6262583571206,
+          "fromCarrion": 34.54352602116812,
+          "dried": 1016.9605422358727,
+          "overflowLost": 1257.809736059469
+        },
+        "healingEnergy": 1237.8044135208631,
+        "preyRisk": {
+          "biteBacks": 7,
+          "damage": 154.00971713875344,
+          "sameSpecies": 7
+        },
+        "growthEnergy": 3865.133108059504,
+        "winterWater": {
+          "snowWater": 227.5792637025023,
+          "snowMeltEnergy": 6.827377911075065,
+          "iceAttempts": 0,
+          "iceBreaks": 0
+        },
+        "growthDelays": 14
+      },
+      "observations": {
+        "completedDisplays": 1,
+        "mutuallyAcceptedDisplays": 1,
+        "conceptions": 1,
+        "crossTaxonConceptions": 0,
+        "appearanceDistanceSum": 0.09999999999999999
+      },
+      "recognizedTaxa": 0,
+      "exactContinuation": true
+    },
+    {
+      "seed": "SIMILARITY-FIELD-1",
+      "balanced": true,
+      "daysObserved": 24,
+      "stoppedOnPlayerDeath": false,
+      "tick": 5760,
+      "rng": 2507702709,
+      "population": {
+        "mosskip": 61,
+        "rootling": 10,
+        "needlejaw": 9,
+        "rillsifter": 18,
+        "mirelick": 17,
+        "podshell": 18,
+        "bankjaw": 0,
+        "genvo": 23
+      },
+      "stats": {
+        "births": 1,
+        "deaths": 41,
+        "byCause": {
+          "predation": 7,
+          "health": 23,
+          "starvation": 8,
+          "drowning": 1,
+          "dehydration": 2
+        },
+        "extinctions": [],
+        "threatStages": {
+          "vigilance": 7678,
+          "alarm": 539,
+          "flight": 1412,
+          "wary": 56
+        },
+        "tissueWater": {
+          "fromPrey": 2074.0487066661212,
+          "carcassDeposited": 2186.275030079522,
+          "fromCarrion": 78.55007200649858,
+          "dried": 2070.64539339194,
+          "overflowLost": 1127.4453890911614
+        },
+        "healingEnergy": 903.6305806390791,
+        "growthEnergy": 3593.3475213451857,
+        "preyRisk": {
+          "biteBacks": 3,
+          "damage": 42.66320139122701,
+          "sameSpecies": 1
+        },
+        "winterWater": {
+          "snowWater": 5797.387226233403,
+          "snowMeltEnergy": 173.92161678700245,
+          "iceAttempts": 0,
+          "iceBreaks": 0
+        },
+        "growthDelays": 23
+      },
+      "observations": {
+        "completedDisplays": 6,
+        "mutuallyAcceptedDisplays": 2,
+        "conceptions": 2,
+        "crossTaxonConceptions": 0,
+        "appearanceDistanceSum": 0.783081755542647
+      },
+      "recognizedTaxa": 0,
+      "exactContinuation": true
+    },
+    {
+      "seed": "SIMILARITY-FIELD-2",
+      "balanced": true,
+      "daysObserved": 24,
+      "stoppedOnPlayerDeath": false,
+      "tick": 5760,
+      "rng": 33218521,
+      "population": {
+        "mosskip": 62,
+        "rootling": 10,
+        "needlejaw": 8,
+        "rillsifter": 14,
+        "mirelick": 19,
+        "podshell": 18,
+        "bankjaw": 0,
+        "genvo": 21
+      },
+      "stats": {
+        "births": 0,
+        "deaths": 43,
+        "byCause": {
+          "health": 25,
+          "predation": 7,
+          "starvation": 11
+        },
+        "extinctions": [],
+        "threatStages": {
+          "vigilance": 9337,
+          "alarm": 1159,
+          "flight": 1985,
+          "wary": 168
+        },
+        "tissueWater": {
+          "fromPrey": 1867.722535794012,
+          "carcassDeposited": 2404.1238397174084,
+          "fromCarrion": 119.94317340822002,
+          "dried": 2192.0430306568014,
+          "overflowLost": 1041.7536409184052
+        },
+        "healingEnergy": 840.0737080236595,
+        "growthEnergy": 3494.2484739196952,
+        "preyRisk": {
+          "biteBacks": 9,
+          "damage": 200.54389351539191,
+          "sameSpecies": 9
+        },
+        "growthDelays": 27,
+        "winterWater": {
+          "snowWater": 1294.3694754182764,
+          "snowMeltEnergy": 38.83108426254829,
+          "iceAttempts": 0,
+          "iceBreaks": 0
+        }
+      },
+      "observations": {
+        "completedDisplays": 1,
+        "mutuallyAcceptedDisplays": 1,
+        "conceptions": 1,
+        "crossTaxonConceptions": 0,
+        "appearanceDistanceSum": 0.024999999999999998
+      },
+      "recognizedTaxa": 0,
+      "exactContinuation": true
+    },
+    {
+      "seed": "SIMILARITY-FIELD-3",
+      "balanced": true,
+      "daysObserved": 24,
+      "stoppedOnPlayerDeath": false,
+      "tick": 5760,
+      "rng": 1557334559,
+      "population": {
+        "mosskip": 62,
+        "rootling": 31,
+        "needlejaw": 12,
+        "rillsifter": 17,
+        "mirelick": 19,
+        "podshell": 18,
+        "bankjaw": 0,
+        "genvo": 23
+      },
+      "stats": {
+        "births": 0,
+        "deaths": 14,
+        "byCause": {
+          "predation": 5,
+          "starvation": 9
+        },
+        "extinctions": [],
+        "threatStages": {
+          "vigilance": 10669,
+          "alarm": 353,
+          "flight": 2119,
+          "wary": 116
+        },
+        "tissueWater": {
+          "fromPrey": 2670.0515842516224,
+          "carcassDeposited": 1170.1804522307561,
+          "fromCarrion": 58.88532283628797,
+          "dried": 1089.8365334533155,
+          "overflowLost": 1358.276641834107
+        },
+        "healingEnergy": 1291.3828382087306,
+        "winterWater": {
+          "snowWater": 480.5465790057923,
+          "snowMeltEnergy": 14.416397370173769,
+          "iceAttempts": 0,
+          "iceBreaks": 0
+        },
+        "growthEnergy": 3510.271137523944,
+        "growthDelays": 38,
+        "preyRisk": {
+          "biteBacks": 2,
+          "damage": 48,
+          "sameSpecies": 2
+        }
+      },
+      "observations": {
+        "completedDisplays": 2,
+        "mutuallyAcceptedDisplays": 1,
+        "conceptions": 1,
+        "crossTaxonConceptions": 0,
+        "appearanceDistanceSum": 0.19999999999999998
+      },
+      "recognizedTaxa": 0,
+      "exactContinuation": true
+    }
+  ]
+}

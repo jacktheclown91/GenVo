@@ -84,7 +84,7 @@ let seed=new URLSearchParams(location.search).get('seed')||'GENVO8-8FOLD';
 // keep the recorded 6-second day and resting costs.
 const dayParam=new URLSearchParams(globalThis.location?.search||'').get('day');
 const DAY_CLOCK_OPT_IN=dayParam!=='legacy'&&dayParam!=='6';
-const SURVIVAL_OPT_IN={dayClock:DAY_CLOCK_OPT_IN,metabolism:DAY_CLOCK_OPT_IN,foodProperties:DAY_CLOCK_OPT_IN,tissueWater:DAY_CLOCK_OPT_IN,winterWater:DAY_CLOCK_OPT_IN,escapeLanding:DAY_CLOCK_OPT_IN,tissueEnergy:DAY_CLOCK_OPT_IN,perennialRegrowth:DAY_CLOCK_OPT_IN};
+const SURVIVAL_OPT_IN={courtshipSimilarity:true,dayClock:DAY_CLOCK_OPT_IN,metabolism:DAY_CLOCK_OPT_IN,foodProperties:DAY_CLOCK_OPT_IN,tissueWater:DAY_CLOCK_OPT_IN,winterWater:DAY_CLOCK_OPT_IN,escapeLanding:DAY_CLOCK_OPT_IN,tissueEnergy:DAY_CLOCK_OPT_IN,perennialRegrowth:DAY_CLOCK_OPT_IN};
 let sim=new Simulation(seed,{player:true,reuseGeneratedBase:true,...SURVIVAL_OPT_IN});
 const canvas=document.querySelector('#game'),renderer=new Renderer(canvas,sim),keys={},pauseNotice=document.querySelector('#pauseNotice');
 renderer.zoom=cameraZoom();

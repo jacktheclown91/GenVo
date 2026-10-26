@@ -1,0 +1,4199 @@
+{
+  "schema": "genvo.reproductive-similarity-measurement/1",
+  "seedCount": 16,
+  "seedStart": 0,
+  "balanced": false,
+  "pairedDrawsAcrossProfilesAndAnatomies": true,
+  "attemptsPerPair": 64,
+  "anatomyCombinations": [
+    "walking-leg",
+    "runner-leg",
+    "webbed-leg"
+  ],
+  "scope": "Actual funded performCourtship and performedMateChoice under controlled favorable conditions. Reception only; no conception or long-horizon ecology claim. Independent founder identities and reproductive genomes are retained.",
+  "results": [
+    {
+      "profile": "founder",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 585,
+      "meanAppearanceDistance": 0,
+      "probabilitySum": 641.9277909512801,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 30
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 45
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 24
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 15
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 21
+        }
+      },
+      "rate": 0.1904296875,
+      "expectedRate": 0.2089608694502865
+    },
+    {
+      "profile": "inherited",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 651,
+      "meanAppearanceDistance": 0,
+      "probabilitySum": 682.9269125333689,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 54
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 45
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 24
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 57
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 48
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 45
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 33
+        }
+      },
+      "rate": 0.2119140625,
+      "expectedRate": 0.22230693767362267
+    },
+    {
+      "profile": "similar",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 1101,
+      "meanAppearanceDistance": 0,
+      "probabilitySum": 1151.0951430775078,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 84
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 60
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 84
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 93
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 66
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 75
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 60
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 66
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 45
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 69
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 54
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 75
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 63
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 84
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 66
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 57
+        }
+      },
+      "rate": 0.3583984375,
+      "expectedRate": 0.3747054502205429
+    },
+    {
+      "profile": "unusual",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 102,
+      "meanAppearanceDistance": 0,
+      "probabilitySum": 116.43939789700849,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 6
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 15
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 12
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 9
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 9
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 0
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 9
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 6
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 6
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 12
+        }
+      },
+      "rate": 0.033203125,
+      "expectedRate": 0.037903449836265785
+    },
+    {
+      "profile": "selective",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 561,
+      "meanAppearanceDistance": 0,
+      "probabilitySum": 638.1544562986261,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 27
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 54
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 27
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 15
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 21
+        }
+      },
+      "rate": 0.1826171875,
+      "expectedRate": 0.20773257040970902
+    },
+    {
+      "profile": "founder",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 588,
+      "meanAppearanceDistance": 0.02500000000000011,
+      "probabilitySum": 634.3713707808115,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 24
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 15
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 21
+        }
+      },
+      "rate": 0.19140625,
+      "expectedRate": 0.20650109725937874
+    },
+    {
+      "profile": "inherited",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 645,
+      "meanAppearanceDistance": 0.02500000000000011,
+      "probabilitySum": 672.4147161125253,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 48
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 54
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 45
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 24
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 57
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 48
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 33
+        }
+      },
+      "rate": 0.2099609375,
+      "expectedRate": 0.218884998734546
+    },
+    {
+      "profile": "similar",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1056,
+      "meanAppearanceDistance": 0.02500000000000011,
+      "probabilitySum": 1112.0984512091345,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 84
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 57
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 84
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 84
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 63
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 75
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 48
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 66
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 45
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 66
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 69
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 60
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 84
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 66
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 54
+        }
+      },
+      "rate": 0.34375,
+      "expectedRate": 0.3620112145863068
+    },
+    {
+      "profile": "unusual",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 114,
+      "meanAppearanceDistance": 0.02500000000000011,
+      "probabilitySum": 129.17549328765008,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 9
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 6
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 12
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 9
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 9
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 0
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 9
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 6
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 6
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 12
+        }
+      },
+      "rate": 0.037109375,
+      "expectedRate": 0.04204931422124026
+    },
+    {
+      "profile": "selective",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 558,
+      "meanAppearanceDistance": 0.02500000000000011,
+      "probabilitySum": 630.5797470191116,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 27
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 54
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 27
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 15
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 21
+        }
+      },
+      "rate": 0.181640625,
+      "expectedRate": 0.2052668447327837
+    },
+    {
+      "profile": "founder",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 534,
+      "meanAppearanceDistance": 0.29115878492905556,
+      "probabilitySum": 558.8259601595729,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 48
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 12
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 24
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 27
+        }
+      },
+      "rate": 0.173828125,
+      "expectedRate": 0.1819094922394443
+    },
+    {
+      "profile": "inherited",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 537,
+      "meanAppearanceDistance": 0.29115878492905556,
+      "probabilitySum": 565.6219640627647,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 15
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 27
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 33
+        }
+      },
+      "rate": 0.1748046875,
+      "expectedRate": 0.1841217330933479
+    },
+    {
+      "profile": "similar",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 683,
+      "meanAppearanceDistance": 0.29115878492905556,
+      "probabilitySum": 740.7423898917258,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 50
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 57
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 54
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 23
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 45
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 29
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 48
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 56
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 48
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 33
+        }
+      },
+      "rate": 0.22233072916666666,
+      "expectedRate": 0.2411270800428795
+    },
+    {
+      "profile": "unusual",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 276,
+      "meanAppearanceDistance": 0.29115878492905556,
+      "probabilitySum": 308.1050737236268,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 30
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 15
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 12
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 9
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 12
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 24
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 18
+        }
+      },
+      "rate": 0.08984375,
+      "expectedRate": 0.1002946203527431
+    },
+    {
+      "profile": "selective",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 546,
+      "meanAppearanceDistance": 0.29115878492905556,
+      "probabilitySum": 584.2104389560058,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 54
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 15
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 27
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 24
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 48
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 24
+        }
+      },
+      "rate": 0.177734375,
+      "expectedRate": 0.19017266893099147
+    },
+    {
+      "profile": "founder",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 500,
+      "meanAppearanceDistance": 0.4661587849290667,
+      "probabilitySum": 512.4590200751461,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 48
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 38
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 27
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 12
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 24
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 33
+        }
+      },
+      "rate": 0.16276041666666666,
+      "expectedRate": 0.16681608726404495
+    },
+    {
+      "profile": "inherited",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 468,
+      "meanAppearanceDistance": 0.4661587849290667,
+      "probabilitySum": 500.7558715074048,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 30
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 12
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 30
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 24
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 33
+        }
+      },
+      "rate": 0.15234375,
+      "expectedRate": 0.16300646858964998
+    },
+    {
+      "profile": "similar",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 524,
+      "meanAppearanceDistance": 0.4661587849290667,
+      "probabilitySum": 538.885114176782,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 48
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 45
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 14
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 54
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 24
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 33
+        }
+      },
+      "rate": 0.17057291666666666,
+      "expectedRate": 0.17541833143775457
+    },
+    {
+      "profile": "unusual",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 463,
+      "meanAppearanceDistance": 0.4661587849290667,
+      "probabilitySum": 468.7184997080808,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 30
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 25
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 24
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 15
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 12
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 30
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 24
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 30
+        }
+      },
+      "rate": 0.15071614583333334,
+      "expectedRate": 0.15257763662372423
+    },
+    {
+      "profile": "selective",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 551,
+      "meanAppearanceDistance": 0.4661587849290667,
+      "probabilitySum": 594.7006872920318,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 27
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 54
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 45
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 27
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 15
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 23
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 30
+        }
+      },
+      "rate": 0.17936197916666666,
+      "expectedRate": 0.19358746331120827
+    }
+  ],
+  "projectedCandidates": [
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "founder",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 1854,
+      "probabilitySum": 1926.6550838491562,
+      "rate": 0.603515625,
+      "expectedRate": 0.6271663684404806
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "founder",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 1854,
+      "probabilitySum": 1926.6550838491562,
+      "rate": 0.603515625,
+      "expectedRate": 0.6271663684404806
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "founder",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 1854,
+      "probabilitySum": 1926.6550838491562,
+      "rate": 0.603515625,
+      "expectedRate": 0.6271663684404806
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "founder",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 1974,
+      "probabilitySum": 2032.4780450076619,
+      "rate": 0.642578125,
+      "expectedRate": 0.6616139469425982
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "founder",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 1974,
+      "probabilitySum": 2032.4780450076619,
+      "rate": 0.642578125,
+      "expectedRate": 0.6616139469425982
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "founder",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 1974,
+      "probabilitySum": 2032.4780450076619,
+      "rate": 0.642578125,
+      "expectedRate": 0.6616139469425982
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "founder",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2061,
+      "probabilitySum": 2124.8922731131156,
+      "rate": 0.6708984375,
+      "expectedRate": 0.6916967034873424
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "founder",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2061,
+      "probabilitySum": 2124.8922731131156,
+      "rate": 0.6708984375,
+      "expectedRate": 0.6916967034873424
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "founder",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2061,
+      "probabilitySum": 2124.8922731131156,
+      "rate": 0.6708984375,
+      "expectedRate": 0.6916967034873424
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "founder",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2142,
+      "probabilitySum": 2208.7864093301578,
+      "rate": 0.697265625,
+      "expectedRate": 0.719005992620494
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "founder",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2142,
+      "probabilitySum": 2208.7864093301578,
+      "rate": 0.697265625,
+      "expectedRate": 0.719005992620494
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "founder",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2142,
+      "probabilitySum": 2208.7864093301578,
+      "rate": 0.697265625,
+      "expectedRate": 0.719005992620494
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "inherited",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2025,
+      "probabilitySum": 2121.932478112764,
+      "rate": 0.6591796875,
+      "expectedRate": 0.690733228552332
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "inherited",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2025,
+      "probabilitySum": 2121.932478112764,
+      "rate": 0.6591796875,
+      "expectedRate": 0.690733228552332
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "inherited",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2025,
+      "probabilitySum": 2121.932478112764,
+      "rate": 0.6591796875,
+      "expectedRate": 0.690733228552332
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "inherited",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2214,
+      "probabilitySum": 2245.395847123406,
+      "rate": 0.720703125,
+      "expectedRate": 0.730923127318817
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "inherited",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2214,
+      "probabilitySum": 2245.395847123406,
+      "rate": 0.720703125,
+      "expectedRate": 0.730923127318817
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "inherited",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2214,
+      "probabilitySum": 2245.395847123406,
+      "rate": 0.720703125,
+      "expectedRate": 0.730923127318817
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "inherited",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2310,
+      "probabilitySum": 2365.5451279939084,
+      "rate": 0.751953125,
+      "expectedRate": 0.7700342213521837
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "inherited",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2310,
+      "probabilitySum": 2365.5451279939084,
+      "rate": 0.751953125,
+      "expectedRate": 0.7700342213521837
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "inherited",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2310,
+      "probabilitySum": 2365.5451279939084,
+      "rate": 0.751953125,
+      "expectedRate": 0.7700342213521837
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "inherited",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2436,
+      "probabilitySum": 2472.445408372985,
+      "rate": 0.79296875,
+      "expectedRate": 0.8048324897047477
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "inherited",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2436,
+      "probabilitySum": 2472.445408372985,
+      "rate": 0.79296875,
+      "expectedRate": 0.8048324897047477
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "inherited",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2436,
+      "probabilitySum": 2472.445408372985,
+      "rate": 0.79296875,
+      "expectedRate": 0.8048324897047477
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "similar",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "similar",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "similar",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "similar",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "similar",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "similar",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "similar",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "similar",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "similar",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "similar",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "similar",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "similar",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "unusual",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 102,
+      "probabilitySum": 116.43939789700849,
+      "rate": 0.033203125,
+      "expectedRate": 0.037903449836265785
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "unusual",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 102,
+      "probabilitySum": 116.43939789700849,
+      "rate": 0.033203125,
+      "expectedRate": 0.037903449836265785
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "unusual",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 102,
+      "probabilitySum": 116.43939789700849,
+      "rate": 0.033203125,
+      "expectedRate": 0.037903449836265785
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "unusual",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 102,
+      "probabilitySum": 116.43939789700849,
+      "rate": 0.033203125,
+      "expectedRate": 0.037903449836265785
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "unusual",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 102,
+      "probabilitySum": 116.43939789700849,
+      "rate": 0.033203125,
+      "expectedRate": 0.037903449836265785
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "unusual",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 102,
+      "probabilitySum": 116.43939789700849,
+      "rate": 0.033203125,
+      "expectedRate": 0.037903449836265785
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "unusual",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 102,
+      "probabilitySum": 116.43939789700849,
+      "rate": 0.033203125,
+      "expectedRate": 0.037903449836265785
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "unusual",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 102,
+      "probabilitySum": 116.43939789700849,
+      "rate": 0.033203125,
+      "expectedRate": 0.037903449836265785
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "unusual",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 102,
+      "probabilitySum": 116.43939789700849,
+      "rate": 0.033203125,
+      "expectedRate": 0.037903449836265785
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "unusual",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 102,
+      "probabilitySum": 116.43939789700849,
+      "rate": 0.033203125,
+      "expectedRate": 0.037903449836265785
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "unusual",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 102,
+      "probabilitySum": 116.43939789700849,
+      "rate": 0.033203125,
+      "expectedRate": 0.037903449836265785
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "unusual",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 102,
+      "probabilitySum": 116.43939789700849,
+      "rate": 0.033203125,
+      "expectedRate": 0.037903449836265785
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "selective",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 1872,
+      "probabilitySum": 1922.8739191744269,
+      "rate": 0.609375,
+      "expectedRate": 0.6259355205645921
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "selective",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 1872,
+      "probabilitySum": 1922.8739191744269,
+      "rate": 0.609375,
+      "expectedRate": 0.6259355205645921
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "selective",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 1872,
+      "probabilitySum": 1922.8739191744269,
+      "rate": 0.609375,
+      "expectedRate": 0.6259355205645921
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "selective",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 1968,
+      "probabilitySum": 2023.0050316251843,
+      "rate": 0.640625,
+      "expectedRate": 0.6585302837321564
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "selective",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 1968,
+      "probabilitySum": 2023.0050316251843,
+      "rate": 0.640625,
+      "expectedRate": 0.6585302837321564
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "selective",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 1968,
+      "probabilitySum": 2023.0050316251843,
+      "rate": 0.640625,
+      "expectedRate": 0.6585302837321564
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "selective",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2052,
+      "probabilitySum": 2114.36232997834,
+      "rate": 0.66796875,
+      "expectedRate": 0.6882689876231575
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "selective",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2052,
+      "probabilitySum": 2114.36232997834,
+      "rate": 0.66796875,
+      "expectedRate": 0.6882689876231575
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "selective",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2052,
+      "probabilitySum": 2114.36232997834,
+      "rate": 0.66796875,
+      "expectedRate": 0.6882689876231575
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "selective",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2139,
+      "probabilitySum": 2195.254892866967,
+      "rate": 0.6962890625,
+      "expectedRate": 0.7146012021051326
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "selective",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2139,
+      "probabilitySum": 2195.254892866967,
+      "rate": 0.6962890625,
+      "expectedRate": 0.7146012021051326
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "selective",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2139,
+      "probabilitySum": 2195.254892866967,
+      "rate": 0.6962890625,
+      "expectedRate": 0.7146012021051326
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "founder",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1803,
+      "probabilitySum": 1871.3099788944132,
+      "rate": 0.5869140625,
+      "expectedRate": 0.6091503837546918
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "founder",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1788,
+      "probabilitySum": 1855.874483647188,
+      "rate": 0.58203125,
+      "expectedRate": 0.6041258084789024
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "founder",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1749,
+      "probabilitySum": 1824.931030563625,
+      "rate": 0.5693359375,
+      "expectedRate": 0.59405306984493
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "founder",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1917,
+      "probabilitySum": 1980.7973440539574,
+      "rate": 0.6240234375,
+      "expectedRate": 0.6447908021008976
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "founder",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1899,
+      "probabilitySum": 1965.2538421023664,
+      "rate": 0.6181640625,
+      "expectedRate": 0.6397310683926974
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "founder",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1857,
+      "probabilitySum": 1931.6284202292154,
+      "rate": 0.6044921875,
+      "expectedRate": 0.6287852930433644
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "founder",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2010,
+      "probabilitySum": 2075.4606805424396,
+      "rate": 0.654296875,
+      "expectedRate": 0.675605690280742
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "founder",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1998,
+      "probabilitySum": 2060.656983528736,
+      "rate": 0.650390625,
+      "expectedRate": 0.6707867784924271
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "founder",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1968,
+      "probabilitySum": 2031.3953255743531,
+      "rate": 0.640625,
+      "expectedRate": 0.6612614992104014
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "founder",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2097,
+      "probabilitySum": 2162.957220212824,
+      "rate": 0.6826171875,
+      "expectedRate": 0.7040876367880285
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "founder",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2088,
+      "probabilitySum": 2147.9746242958277,
+      "rate": 0.6796875,
+      "expectedRate": 0.6992104896796314
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "founder",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2058,
+      "probabilitySum": 2117.747317276316,
+      "rate": 0.669921875,
+      "expectedRate": 0.6893708715092175
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "inherited",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1944,
+      "probabilitySum": 2056.147888605723,
+      "rate": 0.6328125,
+      "expectedRate": 0.6693189741555088
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "inherited",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1932,
+      "probabilitySum": 2037.4276851168906,
+      "rate": 0.62890625,
+      "expectedRate": 0.6632251579156545
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "inherited",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1905,
+      "probabilitySum": 2000.960867459863,
+      "rate": 0.6201171875,
+      "expectedRate": 0.6513544490429242
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "inherited",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2121,
+      "probabilitySum": 2177.46746490516,
+      "rate": 0.6904296875,
+      "expectedRate": 0.7088110237321484
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "inherited",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2082,
+      "probabilitySum": 2159.300167402357,
+      "rate": 0.677734375,
+      "expectedRate": 0.7028971899096215
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "inherited",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2028,
+      "probabilitySum": 2123.907173733468,
+      "rate": 0.66015625,
+      "expectedRate": 0.6913760331163633
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "inherited",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2250,
+      "probabilitySum": 2297.3544083435745,
+      "rate": 0.732421875,
+      "expectedRate": 0.7478367214660073
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "inherited",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2235,
+      "probabilitySum": 2277.748639109412,
+      "rate": 0.7275390625,
+      "expectedRate": 0.7414546351267618
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "inherited",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2205,
+      "probabilitySum": 2238.2530283123997,
+      "rate": 0.7177734375,
+      "expectedRate": 0.7285979909871093
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "inherited",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2346,
+      "probabilitySum": 2409.026322440005,
+      "rate": 0.763671875,
+      "expectedRate": 0.7841882560026058
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "inherited",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2325,
+      "probabilitySum": 2390.1579820277184,
+      "rate": 0.7568359375,
+      "expectedRate": 0.7780462181079812
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "inherited",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2295,
+      "probabilitySum": 2350.735683472762,
+      "rate": 0.7470703125,
+      "expectedRate": 0.7652134386304564
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "similar",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "similar",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "similar",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "similar",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "similar",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "similar",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "similar",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "similar",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "similar",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "similar",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "similar",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "similar",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2676,
+      "probabilitySum": 2714.419199999958,
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "unusual",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 114,
+      "probabilitySum": 129.17549328765008,
+      "rate": 0.037109375,
+      "expectedRate": 0.04204931422124026
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "unusual",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 114,
+      "probabilitySum": 129.17549328765008,
+      "rate": 0.037109375,
+      "expectedRate": 0.04204931422124026
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "unusual",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 114,
+      "probabilitySum": 129.17549328765008,
+      "rate": 0.037109375,
+      "expectedRate": 0.04204931422124026
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "unusual",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 114,
+      "probabilitySum": 129.17549328765008,
+      "rate": 0.037109375,
+      "expectedRate": 0.04204931422124026
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "unusual",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 114,
+      "probabilitySum": 129.17549328765008,
+      "rate": 0.037109375,
+      "expectedRate": 0.04204931422124026
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "unusual",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 114,
+      "probabilitySum": 129.17549328765008,
+      "rate": 0.037109375,
+      "expectedRate": 0.04204931422124026
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "unusual",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 114,
+      "probabilitySum": 129.17549328765008,
+      "rate": 0.037109375,
+      "expectedRate": 0.04204931422124026
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "unusual",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 114,
+      "probabilitySum": 129.17549328765008,
+      "rate": 0.037109375,
+      "expectedRate": 0.04204931422124026
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "unusual",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 114,
+      "probabilitySum": 129.17549328765008,
+      "rate": 0.037109375,
+      "expectedRate": 0.04204931422124026
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "unusual",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 114,
+      "probabilitySum": 129.17549328765008,
+      "rate": 0.037109375,
+      "expectedRate": 0.04204931422124026
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "unusual",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 114,
+      "probabilitySum": 129.17549328765008,
+      "rate": 0.037109375,
+      "expectedRate": 0.04204931422124026
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "unusual",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 114,
+      "probabilitySum": 129.17549328765008,
+      "rate": 0.037109375,
+      "expectedRate": 0.04204931422124026
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "selective",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1791,
+      "probabilitySum": 1870.601533250941,
+      "rate": 0.5830078125,
+      "expectedRate": 0.6089197699384573
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "selective",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1782,
+      "probabilitySum": 1854.2050115048817,
+      "rate": 0.580078125,
+      "expectedRate": 0.603582360515912
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "selective",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1722,
+      "probabilitySum": 1821.838767456722,
+      "rate": 0.560546875,
+      "expectedRate": 0.593046473781485
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "selective",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1920,
+      "probabilitySum": 1973.4932466075552,
+      "rate": 0.625,
+      "expectedRate": 0.6424131662133968
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "selective",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1905,
+      "probabilitySum": 1958.19732619024,
+      "rate": 0.6201171875,
+      "expectedRate": 0.637434025452552
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "selective",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1878,
+      "probabilitySum": 1928.3212262635266,
+      "rate": 0.611328125,
+      "expectedRate": 0.6277087325076584
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "selective",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2004,
+      "probabilitySum": 2065.929900688894,
+      "rate": 0.65234375,
+      "expectedRate": 0.6725032228804994
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "selective",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2004,
+      "probabilitySum": 2051.129623775931,
+      "rate": 0.65234375,
+      "expectedRate": 0.6676854244062276
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "selective",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 1965,
+      "probabilitySum": 2022.0393542268973,
+      "rate": 0.6396484375,
+      "expectedRate": 0.6582159356207348
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "selective",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2079,
+      "probabilitySum": 2150.7443113768136,
+      "rate": 0.6767578125,
+      "expectedRate": 0.7001120805263065
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "selective",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2070,
+      "probabilitySum": 2136.481299042294,
+      "rate": 0.673828125,
+      "expectedRate": 0.69546917286533
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "selective",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2049,
+      "probabilitySum": 2107.5564736365322,
+      "rate": 0.6669921875,
+      "expectedRate": 0.6860535395952253
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "founder",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1131,
+      "probabilitySum": 1227.0153112238604,
+      "rate": 0.3681640625,
+      "expectedRate": 0.3994190466223504
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "founder",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1021,
+      "probabilitySum": 1104.111914997517,
+      "rate": 0.3323567708333333,
+      "expectedRate": 0.35941143066325426
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "founder",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 870,
+      "probabilitySum": 926.3550357182844,
+      "rate": 0.283203125,
+      "expectedRate": 0.3015478631895457
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "founder",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1207,
+      "probabilitySum": 1299.3077965914042,
+      "rate": 0.3929036458333333,
+      "expectedRate": 0.42295175670293106
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "founder",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1073,
+      "probabilitySum": 1161.7530081366945,
+      "rate": 0.3492838541666667,
+      "expectedRate": 0.37817480733616354
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "founder",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 904,
+      "probabilitySum": 963.6699283565617,
+      "rate": 0.2942708333333333,
+      "expectedRate": 0.3136946381369016
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "founder",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1267,
+      "probabilitySum": 1373.671219971959,
+      "rate": 0.4124348958333333,
+      "expectedRate": 0.4471586002512888
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "founder",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1130,
+      "probabilitySum": 1220.862109008902,
+      "rate": 0.3678385416666667,
+      "expectedRate": 0.39741605110966866
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "founder",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 946,
+      "probabilitySum": 1001.7224925696726,
+      "rate": 0.3079427083333333,
+      "expectedRate": 0.32608154055002364
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "founder",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1336,
+      "probabilitySum": 1450.1055813656083,
+      "rate": 0.4348958333333333,
+      "expectedRate": 0.4720395772674506
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "founder",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1189,
+      "probabilitySum": 1281.4392176141741,
+      "rate": 0.3870442708333333,
+      "expectedRate": 0.41713516198378064
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "founder",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 974,
+      "probabilitySum": 1040.5127283575578,
+      "rate": 0.3170572916666667,
+      "expectedRate": 0.3387085704288925
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "inherited",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1219,
+      "probabilitySum": 1293.4395186845718,
+      "rate": 0.3968098958333333,
+      "expectedRate": 0.4210415099884674
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "inherited",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1098,
+      "probabilitySum": 1158.6098791075597,
+      "rate": 0.357421875,
+      "expectedRate": 0.3771516533553254
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "inherited",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 886,
+      "probabilitySum": 964.2156972605919,
+      "rate": 0.2884114583333333,
+      "expectedRate": 0.31387229728534893
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "inherited",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1300,
+      "probabilitySum": 1372.8839390311157,
+      "rate": 0.4231770833333333,
+      "expectedRate": 0.446902323903358
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "inherited",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1156,
+      "probabilitySum": 1221.8058658819143,
+      "rate": 0.3763020833333333,
+      "expectedRate": 0.39772326363343563
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "inherited",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 937,
+      "probabilitySum": 1004.9553525030403,
+      "rate": 0.3050130208333333,
+      "expectedRate": 0.32713390380958346
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "inherited",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1355,
+      "probabilitySum": 1454.698967592826,
+      "rate": 0.4410807291666667,
+      "expectedRate": 0.47353482017995635
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "inherited",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1211,
+      "probabilitySum": 1286.6822849869125,
+      "rate": 0.3942057291666667,
+      "expectedRate": 0.41884188964417723
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "inherited",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 983,
+      "probabilitySum": 1046.5394223461567,
+      "rate": 0.3199869791666667,
+      "expectedRate": 0.3406703848783062
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "inherited",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1432,
+      "probabilitySum": 1538.884604369692,
+      "rate": 0.4661458333333333,
+      "expectedRate": 0.5009389988182591
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "inherited",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1272,
+      "probabilitySum": 1353.2391364224623,
+      "rate": 0.4140625,
+      "expectedRate": 0.44050753138752025
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "inherited",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1033,
+      "probabilitySum": 1088.967906789945,
+      "rate": 0.3362630208333333,
+      "expectedRate": 0.35448174049151854
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "similar",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1983,
+      "probabilitySum": 2051.349183632374,
+      "rate": 0.6455078125,
+      "expectedRate": 0.6677568957136635
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "similar",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1750,
+      "probabilitySum": 1800.6683452815537,
+      "rate": 0.5696614583333334,
+      "expectedRate": 0.5861550603130058
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "similar",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1355,
+      "probabilitySum": 1444.241706068147,
+      "rate": 0.4410807291666667,
+      "expectedRate": 0.4701307636940583
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "similar",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 2143,
+      "probabilitySum": 2200.1739144190774,
+      "rate": 0.6975911458333334,
+      "expectedRate": 0.7162024460999601
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "similar",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1853,
+      "probabilitySum": 1917.8508218995983,
+      "rate": 0.6031901041666666,
+      "expectedRate": 0.6243003977537754
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "similar",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1433,
+      "probabilitySum": 1518.3835903954846,
+      "rate": 0.4664713541666667,
+      "expectedRate": 0.4942654916651968
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "similar",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 2323,
+      "probabilitySum": 2354.212787346806,
+      "rate": 0.7561848958333334,
+      "expectedRate": 0.7663453083811218
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "similar",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1967,
+      "probabilitySum": 2038.729401894845,
+      "rate": 0.6402994791666666,
+      "expectedRate": 0.6636488938459782
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "similar",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1512,
+      "probabilitySum": 1594.382760851185,
+      "rate": 0.4921875,
+      "expectedRate": 0.5190048049645785
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "similar",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 2489,
+      "probabilitySum": 2513.1835387113265,
+      "rate": 0.8102213541666666,
+      "expectedRate": 0.8180935998409266
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "similar",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 2108,
+      "probabilitySum": 2163.3040852673307,
+      "rate": 0.6861979166666666,
+      "expectedRate": 0.7042005485896259
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "similar",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1588,
+      "probabilitySum": 1672.239217435208,
+      "rate": 0.5169270833333334,
+      "expectedRate": 0.5443487035921901
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "unusual",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 276,
+      "probabilitySum": 308.1050737236268,
+      "rate": 0.08984375,
+      "expectedRate": 0.1002946203527431
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "unusual",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 276,
+      "probabilitySum": 308.1050737236268,
+      "rate": 0.08984375,
+      "expectedRate": 0.1002946203527431
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "unusual",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 276,
+      "probabilitySum": 308.1050737236268,
+      "rate": 0.08984375,
+      "expectedRate": 0.1002946203527431
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "unusual",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 276,
+      "probabilitySum": 308.1050737236268,
+      "rate": 0.08984375,
+      "expectedRate": 0.1002946203527431
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "unusual",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 276,
+      "probabilitySum": 308.1050737236268,
+      "rate": 0.08984375,
+      "expectedRate": 0.1002946203527431
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "unusual",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 276,
+      "probabilitySum": 308.1050737236268,
+      "rate": 0.08984375,
+      "expectedRate": 0.1002946203527431
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "unusual",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 276,
+      "probabilitySum": 308.1050737236268,
+      "rate": 0.08984375,
+      "expectedRate": 0.1002946203527431
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "unusual",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 276,
+      "probabilitySum": 308.1050737236268,
+      "rate": 0.08984375,
+      "expectedRate": 0.1002946203527431
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "unusual",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 276,
+      "probabilitySum": 308.1050737236268,
+      "rate": 0.08984375,
+      "expectedRate": 0.1002946203527431
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "unusual",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 276,
+      "probabilitySum": 308.1050737236268,
+      "rate": 0.08984375,
+      "expectedRate": 0.1002946203527431
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "unusual",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 276,
+      "probabilitySum": 308.1050737236268,
+      "rate": 0.08984375,
+      "expectedRate": 0.1002946203527431
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "unusual",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 276,
+      "probabilitySum": 308.1050737236268,
+      "rate": 0.08984375,
+      "expectedRate": 0.1002946203527431
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "selective",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1174,
+      "probabilitySum": 1264.0224174096368,
+      "rate": 0.3821614583333333,
+      "expectedRate": 0.4114656306671995
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "selective",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1052,
+      "probabilitySum": 1139.2818563501949,
+      "rate": 0.3424479166666667,
+      "expectedRate": 0.3708599792806624
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "selective",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 893,
+      "probabilitySum": 958.6759846042868,
+      "rate": 0.2906901041666667,
+      "expectedRate": 0.3120690054050413
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "selective",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1224,
+      "probabilitySum": 1337.3526373654724,
+      "rate": 0.3984375,
+      "expectedRate": 0.43533614497573975
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "selective",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1105,
+      "probabilitySum": 1197.7966515032772,
+      "rate": 0.3597005208333333,
+      "expectedRate": 0.389907764161223
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "selective",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 927,
+      "probabilitySum": 996.6102049291197,
+      "rate": 0.3017578125,
+      "expectedRate": 0.32441738441703116
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "selective",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1297,
+      "probabilitySum": 1412.7537953343644,
+      "rate": 0.4222005208333333,
+      "expectedRate": 0.4598807927520718
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "selective",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1167,
+      "probabilitySum": 1257.7794543894572,
+      "rate": 0.3798828125,
+      "expectedRate": 0.4094334161424014
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "selective",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 951,
+      "probabilitySum": 1035.2820968287951,
+      "rate": 0.3095703125,
+      "expectedRate": 0.3370058908947901
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "selective",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1370,
+      "probabilitySum": 1490.225891316347,
+      "rate": 0.4459635416666667,
+      "expectedRate": 0.48509957399620673
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "selective",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1214,
+      "probabilitySum": 1319.2302650086701,
+      "rate": 0.3951822916666667,
+      "expectedRate": 0.4294369352241765
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "selective",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 999,
+      "probabilitySum": 1074.691660303227,
+      "rate": 0.3251953125,
+      "expectedRate": 0.3498345248382901
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "founder",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 839,
+      "probabilitySum": 905.2542762518427,
+      "rate": 0.2731119791666667,
+      "expectedRate": 0.2946791263840634
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "founder",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 718,
+      "probabilitySum": 788.5374660122563,
+      "rate": 0.23372395833333334,
+      "expectedRate": 0.2566853730508647
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "founder",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 603,
+      "probabilitySum": 652.4755887579796,
+      "rate": 0.1962890625,
+      "expectedRate": 0.21239439738215482
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "founder",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 881,
+      "probabilitySum": 945.7215768793575,
+      "rate": 0.2867838541666667,
+      "expectedRate": 0.3078520758070825
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "founder",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 752,
+      "probabilitySum": 816.0682357985,
+      "rate": 0.24479166666666666,
+      "expectedRate": 0.2656472121739909
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "founder",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 610,
+      "probabilitySum": 665.7982104284679,
+      "rate": 0.19856770833333334,
+      "expectedRate": 0.21673118829051688
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "founder",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 935,
+      "probabilitySum": 987.0735161317339,
+      "rate": 0.3043619791666667,
+      "expectedRate": 0.32131299353246545
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "founder",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 774,
+      "probabilitySum": 844.0712856735751,
+      "rate": 0.251953125,
+      "expectedRate": 0.27476278830520023
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "founder",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 620,
+      "probabilitySum": 679.2554455946535,
+      "rate": 0.20182291666666666,
+      "expectedRate": 0.22111179869617625
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "founder",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 963,
+      "probabilitySum": 1029.3100940090137,
+      "rate": 0.3134765625,
+      "expectedRate": 0.3350618795602258
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "founder",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 810,
+      "probabilitySum": 872.5466156374832,
+      "rate": 0.263671875,
+      "expectedRate": 0.28403210144449326
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "founder",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 642,
+      "probabilitySum": 692.847294256553,
+      "rate": 0.208984375,
+      "expectedRate": 0.22553622859913836
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "inherited",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 843,
+      "probabilitySum": 919.7936444534744,
+      "rate": 0.2744140625,
+      "expectedRate": 0.29941199363719867
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "inherited",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 725,
+      "probabilitySum": 794.4286610652487,
+      "rate": 0.23600260416666666,
+      "expectedRate": 0.25860307977384395
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "inherited",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 624,
+      "probabilitySum": 649.0989169770751,
+      "rate": 0.203125,
+      "expectedRate": 0.21129522037014162
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "inherited",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 892,
+      "probabilitySum": 963.3848851679277,
+      "rate": 0.2903645833333333,
+      "expectedRate": 0.3136018506406015
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "inherited",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 740,
+      "probabilitySum": 823.9472294667121,
+      "rate": 0.24088541666666666,
+      "expectedRate": 0.26821198875869534
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "inherited",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 632,
+      "probabilitySum": 663.2837955387278,
+      "rate": 0.20572916666666666,
+      "expectedRate": 0.21591269386026293
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "inherited",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 953,
+      "probabilitySum": 1007.9887740535719,
+      "rate": 0.3102213541666667,
+      "expectedRate": 0.3281213457205638
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "inherited",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 772,
+      "probabilitySum": 854.0064181336749,
+      "rate": 0.2513020833333333,
+      "expectedRate": 0.27799688090288893
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "inherited",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 639,
+      "probabilitySum": 677.6227665245959,
+      "rate": 0.2080078125,
+      "expectedRate": 0.22058032764472524
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "inherited",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 1009,
+      "probabilitySum": 1053.605311110419,
+      "rate": 0.3284505208333333,
+      "expectedRate": 0.34297047887708954
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "inherited",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 801,
+      "probabilitySum": 884.6062270661143,
+      "rate": 0.2607421875,
+      "expectedRate": 0.28795775620641745
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "inherited",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 643,
+      "probabilitySum": 692.1158299346345,
+      "rate": 0.20930989583333334,
+      "expectedRate": 0.22529812172351382
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "similar",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 1200,
+      "probabilitySum": 1226.1628497620034,
+      "rate": 0.390625,
+      "expectedRate": 0.39914155265690215
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "similar",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 962,
+      "probabilitySum": 1013.5575337071529,
+      "rate": 0.3131510416666667,
+      "expectedRate": 0.32993409300363047
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "similar",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 713,
+      "probabilitySum": 773.7374317541468,
+      "rate": 0.23209635416666666,
+      "expectedRate": 0.251867653565803
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "similar",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 1258,
+      "probabilitySum": 1301.113555482505,
+      "rate": 0.4095052083333333,
+      "expectedRate": 0.42353956884196126
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "similar",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 1012,
+      "probabilitySum": 1063.1924600226127,
+      "rate": 0.3294270833333333,
+      "expectedRate": 0.34609129558027757
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "similar",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 739,
+      "probabilitySum": 796.7738348173123,
+      "rate": 0.24055989583333334,
+      "expectedRate": 0.25936648268792717
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "similar",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 1309,
+      "probabilitySum": 1378.291576315569,
+      "rate": 0.4261067708333333,
+      "expectedRate": 0.44866262249855765
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "similar",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 1076,
+      "probabilitySum": 1114.0164781882481,
+      "rate": 0.3502604166666667,
+      "expectedRate": 0.3626355723269037
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "similar",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 760,
+      "probabilitySum": 820.1491634766162,
+      "rate": 0.24739583333333334,
+      "expectedRate": 0.26697563915254435
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "similar",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 1375,
+      "probabilitySum": 1457.696912261028,
+      "rate": 0.4475911458333333,
+      "expectedRate": 0.4745107136266367
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "similar",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 1136,
+      "probabilitySum": 1166.029588204027,
+      "rate": 0.3697916666666667,
+      "expectedRate": 0.3795669232434984
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "similar",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 787,
+      "probabilitySum": 843.863417732135,
+      "rate": 0.2561848958333333,
+      "expectedRate": 0.27469512295967935
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "unusual",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 463,
+      "probabilitySum": 468.7184997080808,
+      "rate": 0.15071614583333334,
+      "expectedRate": 0.15257763662372423
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "unusual",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 463,
+      "probabilitySum": 468.7184997080808,
+      "rate": 0.15071614583333334,
+      "expectedRate": 0.15257763662372423
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "unusual",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 463,
+      "probabilitySum": 468.7184997080808,
+      "rate": 0.15071614583333334,
+      "expectedRate": 0.15257763662372423
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "unusual",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 463,
+      "probabilitySum": 468.7184997080808,
+      "rate": 0.15071614583333334,
+      "expectedRate": 0.15257763662372423
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "unusual",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 463,
+      "probabilitySum": 468.7184997080808,
+      "rate": 0.15071614583333334,
+      "expectedRate": 0.15257763662372423
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "unusual",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 463,
+      "probabilitySum": 468.7184997080808,
+      "rate": 0.15071614583333334,
+      "expectedRate": 0.15257763662372423
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "unusual",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 463,
+      "probabilitySum": 468.7184997080808,
+      "rate": 0.15071614583333334,
+      "expectedRate": 0.15257763662372423
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "unusual",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 463,
+      "probabilitySum": 468.7184997080808,
+      "rate": 0.15071614583333334,
+      "expectedRate": 0.15257763662372423
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "unusual",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 463,
+      "probabilitySum": 468.7184997080808,
+      "rate": 0.15071614583333334,
+      "expectedRate": 0.15257763662372423
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "unusual",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 463,
+      "probabilitySum": 468.7184997080808,
+      "rate": 0.15071614583333334,
+      "expectedRate": 0.15257763662372423
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "unusual",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 463,
+      "probabilitySum": 468.7184997080808,
+      "rate": 0.15071614583333334,
+      "expectedRate": 0.15257763662372423
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "unusual",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 463,
+      "probabilitySum": 468.7184997080808,
+      "rate": 0.15071614583333334,
+      "expectedRate": 0.15257763662372423
+    },
+    {
+      "strength": 0.55,
+      "power": 1.5,
+      "profile": "selective",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 928,
+      "probabilitySum": 1013.2445977932497,
+      "rate": 0.3020833333333333,
+      "expectedRate": 0.3298322258441568
+    },
+    {
+      "strength": 0.55,
+      "power": 2,
+      "profile": "selective",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 822,
+      "probabilitySum": 889.5924386915216,
+      "rate": 0.267578125,
+      "expectedRate": 0.28958087196989635
+    },
+    {
+      "strength": 0.55,
+      "power": 3,
+      "profile": "selective",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 696,
+      "probabilitySum": 744.7609079199224,
+      "rate": 0.2265625,
+      "expectedRate": 0.24243519138018307
+    },
+    {
+      "strength": 0.6,
+      "power": 1.5,
+      "profile": "selective",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 960,
+      "probabilitySum": 1056.010885414031,
+      "rate": 0.3125,
+      "expectedRate": 0.34375354342904657
+    },
+    {
+      "strength": 0.6,
+      "power": 2,
+      "profile": "selective",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 845,
+      "probabilitySum": 918.8029678940669,
+      "rate": 0.2750651041666667,
+      "expectedRate": 0.2990895077780166
+    },
+    {
+      "strength": 0.6,
+      "power": 3,
+      "profile": "selective",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 710,
+      "probabilitySum": 758.9802842283408,
+      "rate": 0.23111979166666666,
+      "expectedRate": 0.24706389460557968
+    },
+    {
+      "strength": 0.65,
+      "power": 1.5,
+      "profile": "selective",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 1025,
+      "probabilitySum": 1099.6618116596683,
+      "rate": 0.3336588541666667,
+      "expectedRate": 0.35796282931629825
+    },
+    {
+      "strength": 0.65,
+      "power": 2,
+      "profile": "selective",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 872,
+      "probabilitySum": 948.485777185411,
+      "rate": 0.2838541666666667,
+      "expectedRate": 0.3087518805942093
+    },
+    {
+      "strength": 0.65,
+      "power": 3,
+      "profile": "selective",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 723,
+      "probabilitySum": 773.3342740324889,
+      "rate": 0.2353515625,
+      "expectedRate": 0.25173641732828417
+    },
+    {
+      "strength": 0.7,
+      "power": 1.5,
+      "profile": "selective",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 1064,
+      "probabilitySum": 1144.1973765302043,
+      "rate": 0.3463541666666667,
+      "expectedRate": 0.3724600835059259
+    },
+    {
+      "strength": 0.7,
+      "power": 2,
+      "profile": "selective",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 903,
+      "probabilitySum": 978.6408665656179,
+      "rate": 0.2939453125,
+      "expectedRate": 0.31856799041849543
+    },
+    {
+      "strength": 0.7,
+      "power": 3,
+      "profile": "selective",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 729,
+      "probabilitySum": 787.8228773323216,
+      "rate": 0.2373046875,
+      "expectedRate": 0.2564527595482818
+    }
+  ],
+  "projectionScope": "Tool-only hypothesis using original reception draws; final runtime outcomes must be measured independently."
+}

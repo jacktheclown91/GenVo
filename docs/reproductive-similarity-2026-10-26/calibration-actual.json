@@ -1,0 +1,1558 @@
+{
+  "schema": "genvo.reproductive-similarity-measurement/1",
+  "seedCount": 16,
+  "seedStart": 0,
+  "balanced": true,
+  "pairedDrawsAcrossProfilesAndAnatomies": true,
+  "attemptsPerPair": 64,
+  "anatomyCombinations": [
+    "walking-leg",
+    "runner-leg",
+    "webbed-leg"
+  ],
+  "scope": "Actual funded performCourtship and performedMateChoice under controlled favorable conditions. Reception only; no conception or long-horizon ecology claim. Independent founder identities and reproductive genomes are retained.",
+  "results": [
+    {
+      "profile": "founder",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2142,
+      "meanAppearanceDistance": 0,
+      "probabilitySum": 2208.7864093301578,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 144
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 156
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 117
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 147
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 144
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 96
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 159
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 162
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 105
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 111
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 165
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 171
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 153
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 117
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 117
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 78
+        }
+      },
+      "rate": 0.697265625,
+      "expectedRate": 0.719005992620494
+    },
+    {
+      "profile": "inherited",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2436,
+      "meanAppearanceDistance": 0,
+      "probabilitySum": 2472.445408372985,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 165
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 156
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 141
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 162
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 144
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 165
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 132
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 171
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 159
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 147
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 165
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 171
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 153
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 120
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 147
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 138
+        }
+      },
+      "rate": 0.79296875,
+      "expectedRate": 0.8048324897047477
+    },
+    {
+      "profile": "similar",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2676,
+      "meanAppearanceDistance": 0,
+      "probabilitySum": 2714.419199999958,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 168
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 177
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 165
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 177
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 165
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 171
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 159
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 177
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 159
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 159
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 165
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 171
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 153
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 168
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 168
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 174
+        }
+      },
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "profile": "unusual",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 102,
+      "meanAppearanceDistance": 0,
+      "probabilitySum": 116.43939789700849,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 6
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 15
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 12
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 9
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 9
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 0
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 9
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 6
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 6
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 12
+        }
+      },
+      "rate": 0.033203125,
+      "expectedRate": 0.037903449836265785
+    },
+    {
+      "profile": "selective",
+      "distance": "identical",
+      "trials": 3072,
+      "successes": 2139,
+      "meanAppearanceDistance": 0,
+      "probabilitySum": 2195.254892866967,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 144
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 159
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 117
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 150
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 159
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 96
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 159
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 147
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 114
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 105
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 165
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 171
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 153
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 117
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 114
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 69
+        }
+      },
+      "rate": 0.6962890625,
+      "expectedRate": 0.7146012021051326
+    },
+    {
+      "profile": "founder",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2088,
+      "meanAppearanceDistance": 0.02500000000000011,
+      "probabilitySum": 2147.9746242958277,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 144
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 156
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 117
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 141
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 138
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 96
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 159
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 147
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 96
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 105
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 165
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 171
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 153
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 114
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 114
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 72
+        }
+      },
+      "rate": 0.6796875,
+      "expectedRate": 0.6992104896796314
+    },
+    {
+      "profile": "inherited",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2325,
+      "meanAppearanceDistance": 0.02500000000000011,
+      "probabilitySum": 2390.1579820277184,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 156
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 156
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 138
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 153
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 126
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 153
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 108
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 165
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 156
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 147
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 159
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 171
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 153
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 114
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 141
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 129
+        }
+      },
+      "rate": 0.7568359375,
+      "expectedRate": 0.7780462181079812
+    },
+    {
+      "profile": "similar",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2676,
+      "meanAppearanceDistance": 0.02500000000000011,
+      "probabilitySum": 2714.419199999958,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 168
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 177
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 165
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 177
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 165
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 171
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 159
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 177
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 159
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 159
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 165
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 171
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 153
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 168
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 168
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 174
+        }
+      },
+      "rate": 0.87109375,
+      "expectedRate": 0.8835999999999863
+    },
+    {
+      "profile": "unusual",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 114,
+      "meanAppearanceDistance": 0.02500000000000011,
+      "probabilitySum": 129.17549328765008,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 9
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 6
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 12
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 9
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 9
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 0
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 9
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 6
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 6
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 12
+        }
+      },
+      "rate": 0.037109375,
+      "expectedRate": 0.04204931422124026
+    },
+    {
+      "profile": "selective",
+      "distance": "near",
+      "trials": 3072,
+      "successes": 2070,
+      "meanAppearanceDistance": 0.02500000000000011,
+      "probabilitySum": 2136.481299042294,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 132
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 156
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 114
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 150
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 141
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 96
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 159
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 141
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 102
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 102
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 165
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 171
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 153
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 111
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 114
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 63
+        }
+      },
+      "rate": 0.673828125,
+      "expectedRate": 0.69546917286533
+    },
+    {
+      "profile": "founder",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1189,
+      "meanAppearanceDistance": 0.29115878492905556,
+      "probabilitySum": 1281.4392176141741,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 84
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 74
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 78
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 108
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 75
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 75
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 80
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 69
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 66
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 69
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 105
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 81
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 84
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 63
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 36
+        }
+      },
+      "rate": 0.3870442708333333,
+      "expectedRate": 0.41713516198378064
+    },
+    {
+      "profile": "inherited",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1272,
+      "meanAppearanceDistance": 0.29115878492905556,
+      "probabilitySum": 1353.2391364224623,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 105
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 65
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 93
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 108
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 75
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 81
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 63
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 69
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 57
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 80
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 60
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 114
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 93
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 75
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 69
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 65
+        }
+      },
+      "rate": 0.4140625,
+      "expectedRate": 0.44050753138752025
+    },
+    {
+      "profile": "similar",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 2108,
+      "meanAppearanceDistance": 0.29115878492905556,
+      "probabilitySum": 2163.3040852673307,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 138
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 123
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 144
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 144
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 135
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 126
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 107
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 154
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 126
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 113
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 128
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 146
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 105
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 149
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 144
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 126
+        }
+      },
+      "rate": 0.6861979166666666,
+      "expectedRate": 0.7042005485896259
+    },
+    {
+      "profile": "unusual",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 276,
+      "meanAppearanceDistance": 0.29115878492905556,
+      "probabilitySum": 308.1050737236268,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 3
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 30
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 15
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 12
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 9
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 12
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 24
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 18
+        }
+      },
+      "rate": 0.08984375,
+      "expectedRate": 0.1002946203527431
+    },
+    {
+      "profile": "selective",
+      "distance": "different",
+      "trials": 3072,
+      "successes": 1214,
+      "meanAppearanceDistance": 0.29115878492905556,
+      "probabilitySum": 1319.2302650086701,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 78
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 84
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 72
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 120
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 78
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 75
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 81
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 66
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 63
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 75
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 111
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 83
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 81
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 63
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 33
+        }
+      },
+      "rate": 0.3951822916666667,
+      "expectedRate": 0.4294369352241765
+    },
+    {
+      "profile": "founder",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 810,
+      "meanAppearanceDistance": 0.4661587849290667,
+      "probabilitySum": 872.5466156374832,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 54
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 54
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 45
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 78
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 59
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 48
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 39
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 27
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 45
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 47
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 63
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 48
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 68
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 33
+        }
+      },
+      "rate": 0.263671875,
+      "expectedRate": 0.28403210144449326
+    },
+    {
+      "profile": "inherited",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 801,
+      "meanAppearanceDistance": 0.4661587849290667,
+      "probabilitySum": 884.6062270661143,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 63
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 45
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 48
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 54
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 48
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 57
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 44
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 32
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 66
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 57
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 59
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 42
+        }
+      },
+      "rate": 0.2607421875,
+      "expectedRate": 0.28795775620641745
+    },
+    {
+      "profile": "similar",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 1136,
+      "meanAppearanceDistance": 0.4661587849290667,
+      "probabilitySum": 1166.029588204027,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 78
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 71
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 84
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 96
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 65
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 81
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 63
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 65
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 66
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 59
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 75
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 63
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 104
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 67
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 63
+        }
+      },
+      "rate": 0.3697916666666667,
+      "expectedRate": 0.3795669232434984
+    },
+    {
+      "profile": "unusual",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 463,
+      "meanAppearanceDistance": 0.4661587849290667,
+      "probabilitySum": 468.7184997080808,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 30
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 25
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 42
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 33
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 24
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 15
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 12
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 30
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 21
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 18
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 51
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 24
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 30
+        }
+      },
+      "rate": 0.15071614583333334,
+      "expectedRate": 0.15257763662372423
+    },
+    {
+      "profile": "selective",
+      "distance": "divergent",
+      "trials": 3072,
+      "successes": 903,
+      "meanAppearanceDistance": 0.4661587849290667,
+      "probabilitySum": 978.6408665656179,
+      "costPaid": 1062.7645440000165,
+      "bySeed": {
+        "REPRODUCTIVE-SIMILARITY-0": {
+          "trials": 192,
+          "successes": 60
+        },
+        "REPRODUCTIVE-SIMILARITY-1": {
+          "trials": 192,
+          "successes": 54
+        },
+        "REPRODUCTIVE-SIMILARITY-2": {
+          "trials": 192,
+          "successes": 48
+        },
+        "REPRODUCTIVE-SIMILARITY-3": {
+          "trials": 192,
+          "successes": 96
+        },
+        "REPRODUCTIVE-SIMILARITY-4": {
+          "trials": 192,
+          "successes": 63
+        },
+        "REPRODUCTIVE-SIMILARITY-5": {
+          "trials": 192,
+          "successes": 62
+        },
+        "REPRODUCTIVE-SIMILARITY-6": {
+          "trials": 192,
+          "successes": 59
+        },
+        "REPRODUCTIVE-SIMILARITY-7": {
+          "trials": 192,
+          "successes": 45
+        },
+        "REPRODUCTIVE-SIMILARITY-8": {
+          "trials": 192,
+          "successes": 36
+        },
+        "REPRODUCTIVE-SIMILARITY-9": {
+          "trials": 192,
+          "successes": 54
+        },
+        "REPRODUCTIVE-SIMILARITY-10": {
+          "trials": 192,
+          "successes": 54
+        },
+        "REPRODUCTIVE-SIMILARITY-11": {
+          "trials": 192,
+          "successes": 66
+        },
+        "REPRODUCTIVE-SIMILARITY-12": {
+          "trials": 192,
+          "successes": 56
+        },
+        "REPRODUCTIVE-SIMILARITY-13": {
+          "trials": 192,
+          "successes": 63
+        },
+        "REPRODUCTIVE-SIMILARITY-14": {
+          "trials": 192,
+          "successes": 54
+        },
+        "REPRODUCTIVE-SIMILARITY-15": {
+          "trials": 192,
+          "successes": 33
+        }
+      },
+      "rate": 0.2939453125,
+      "expectedRate": 0.31856799041849543
+    }
+  ],
+  "projectedCandidates": [],
+  "projectionScope": "Tool-only hypothesis using original reception draws; final runtime outcomes must be measured independently."
+}

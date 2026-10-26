@@ -1,0 +1,255 @@
+{
+  "baselineCommit": "e58f800c4be39e76aefee9a8eb4034e9be3c843e",
+  "policy": "reproductive-similarity/1",
+  "strength": 0.7,
+  "distancePower": 2,
+  "seeds": 64,
+  "seedRange": [
+    100,
+    163
+  ],
+  "pairedDraws": true,
+  "ciScope": "4000 deterministic bootstrap samples over 64 world-seed blocks; three anatomies and profiles share reception draw keys, so individual trials are not all independent.",
+  "results": [
+    {
+      "profile": "founder",
+      "distance": "identical",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.200439453125,
+      "afterRate": 0.720947265625,
+      "seedClusterBootstrap95": [
+        0.6890869140625,
+        0.7515869140625
+      ],
+      "meanAppearanceDistance": 0
+    },
+    {
+      "profile": "inherited",
+      "distance": "identical",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.2005615234375,
+      "afterRate": 0.745849609375,
+      "seedClusterBootstrap95": [
+        0.716064453125,
+        0.7744140625
+      ],
+      "meanAppearanceDistance": 0
+    },
+    {
+      "profile": "similar",
+      "distance": "identical",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.355224609375,
+      "afterRate": 0.875244140625,
+      "seedClusterBootstrap95": [
+        0.867431640625,
+        0.8829345703125
+      ],
+      "meanAppearanceDistance": 0
+    },
+    {
+      "profile": "unusual",
+      "distance": "identical",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.0338134765625,
+      "afterRate": 0.0338134765625,
+      "seedClusterBootstrap95": [
+        0.0303955078125,
+        0.0374755859375
+      ],
+      "meanAppearanceDistance": 0
+    },
+    {
+      "profile": "selective",
+      "distance": "identical",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.1966552734375,
+      "afterRate": 0.7130126953125,
+      "seedClusterBootstrap95": [
+        0.6802978515625,
+        0.7451171875
+      ],
+      "meanAppearanceDistance": 0
+    },
+    {
+      "profile": "founder",
+      "distance": "near",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.197265625,
+      "afterRate": 0.6986083984375,
+      "seedClusterBootstrap95": [
+        0.667236328125,
+        0.72900390625
+      ],
+      "meanAppearanceDistance": 0.024999999999988406
+    },
+    {
+      "profile": "inherited",
+      "distance": "near",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.19775390625,
+      "afterRate": 0.7208251953125,
+      "seedClusterBootstrap95": [
+        0.689697265625,
+        0.7515869140625
+      ],
+      "meanAppearanceDistance": 0.024999999999988406
+    },
+    {
+      "profile": "similar",
+      "distance": "near",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.3404541015625,
+      "afterRate": 0.875244140625,
+      "seedClusterBootstrap95": [
+        0.867431640625,
+        0.8829345703125
+      ],
+      "meanAppearanceDistance": 0.024999999999988406
+    },
+    {
+      "profile": "unusual",
+      "distance": "near",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.0384521484375,
+      "afterRate": 0.0384521484375,
+      "seedClusterBootstrap95": [
+        0.034912109375,
+        0.0421142578125
+      ],
+      "meanAppearanceDistance": 0.024999999999988406
+    },
+    {
+      "profile": "selective",
+      "distance": "near",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.1929931640625,
+      "afterRate": 0.6900634765625,
+      "seedClusterBootstrap95": [
+        0.656494140625,
+        0.723388671875
+      ],
+      "meanAppearanceDistance": 0.024999999999988406
+    },
+    {
+      "profile": "founder",
+      "distance": "different",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.1700439453125,
+      "afterRate": 0.4021402994791667,
+      "seedClusterBootstrap95": [
+        0.3859456380208333,
+        0.4190673828125
+      ],
+      "meanAppearanceDistance": 0.29115878492921593
+    },
+    {
+      "profile": "inherited",
+      "distance": "different",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.17085774739583334,
+      "afterRate": 0.4012044270833333,
+      "seedClusterBootstrap95": [
+        0.3850911458333333,
+        0.4175211588541667
+      ],
+      "meanAppearanceDistance": 0.29115878492921593
+    },
+    {
+      "profile": "similar",
+      "distance": "different",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.22578938802083334,
+      "afterRate": 0.6761474609375,
+      "seedClusterBootstrap95": [
+        0.6643880208333334,
+        0.6875
+      ],
+      "meanAppearanceDistance": 0.29115878492921593
+    },
+    {
+      "profile": "unusual",
+      "distance": "different",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.09004720052083333,
+      "afterRate": 0.09004720052083333,
+      "seedClusterBootstrap95": [
+        0.085205078125,
+        0.09476725260416667
+      ],
+      "meanAppearanceDistance": 0.29115878492921593
+    },
+    {
+      "profile": "selective",
+      "distance": "different",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.17586263020833334,
+      "afterRate": 0.4100341796875,
+      "seedClusterBootstrap95": [
+        0.3907063802083333,
+        0.4302978515625
+      ],
+      "meanAppearanceDistance": 0.29115878492921593
+    },
+    {
+      "profile": "founder",
+      "distance": "divergent",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.15388997395833334,
+      "afterRate": 0.26611328125,
+      "seedClusterBootstrap95": [
+        0.2547607421875,
+        0.278076171875
+      ],
+      "meanAppearanceDistance": 0.46615878492901475
+    },
+    {
+      "profile": "inherited",
+      "distance": "divergent",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.15751139322916666,
+      "afterRate": 0.2719319661458333,
+      "seedClusterBootstrap95": [
+        0.2599690755208333,
+        0.28466796875
+      ],
+      "meanAppearanceDistance": 0.46615878492901475
+    },
+    {
+      "profile": "similar",
+      "distance": "divergent",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.1619873046875,
+      "afterRate": 0.3592529296875,
+      "seedClusterBootstrap95": [
+        0.3466796875,
+        0.3719075520833333
+      ],
+      "meanAppearanceDistance": 0.46615878492901475
+    },
+    {
+      "profile": "unusual",
+      "distance": "divergent",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.13981119791666666,
+      "afterRate": 0.13981119791666666,
+      "seedClusterBootstrap95": [
+        0.13301595052083334,
+        0.14644368489583334
+      ],
+      "meanAppearanceDistance": 0.46615878492901475
+    },
+    {
+      "profile": "selective",
+      "distance": "divergent",
+      "trialsEachMode": 24576,
+      "beforeRate": 0.1767578125,
+      "afterRate": 0.296142578125,
+      "seedClusterBootstrap95": [
+        0.2844645182291667,
+        0.307861328125
+      ],
+      "meanAppearanceDistance": 0.46615878492901475
+    }
+  ]
+}

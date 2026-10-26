@@ -5,9 +5,12 @@ import {breedingEnergyGate} from '../ecology/breeding-calibration.js';
 // evaluates whether two physically present adults can pursue each other;
 // tryMate remains the final authority for reproduction and carrying capacity.
 import {SPECIES} from '../organisms/species.js';
-import {hasPart} from '../lineage/part-abilities.js';
+import {hasPart,partEffectFactors} from '../lineage/part-abilities.js';
 
 export const PARTNER_ENCOUNTER=Object.freeze({responseRadius:3.5,minResponseDrive:.60,minHydration:.65,minHealth:65});
+// Ordinary displays retain their established health and anatomy-derived energy gates.
+// A positive water reserve is required; the colony profile above remains unchanged.
+export const COURTSHIP_READINESS=Object.freeze({minHealth:55,minHydration:0});
 
 export function engineeringCourtshipSpecies(a){
   return !!a&&!a.player&&!a.lineage&&SPECIES[a.species]?.social?.mode==='colony'&&hasPart(a,'digging-forelimb');
@@ -15,15 +18,22 @@ export function engineeringCourtshipSpecies(a){
 
 // Reason codes are stable enough for tests and eventual player-facing behavior
 // explanations. Assess current state rather than treating it as inherited genes.
-export function partnerAvailability(sim,a,b){
+export function partnerAvailability(sim,a,b,readiness=PARTNER_ENCOUNTER){
   if(!a?.alive||!b?.alive||a.id===b.id)return {available:false,reason:'absent'};
   if(!reproductiveCompatibility(a,b).enabled||a.sex===b.sex)return {available:false,reason:'incompatible'};
   const species=SPECIES[a.species],partnerSpec=SPECIES[b.species];
   if(!species||!partnerSpec||a.age<species.maturity||b.age<partnerSpec.maturity)return {available:false,reason:'immature'};
   if(a.pregnant||b.pregnant||a.reproCooldown>0||b.reproCooldown>0)return {available:false,reason:'occupied'};
-  if(a.infected||b.infected||a.health<PARTNER_ENCOUNTER.minHealth||b.health<PARTNER_ENCOUNTER.minHealth)return {available:false,reason:'unwell'};
-  if(a.energy/species.maxEnergy <= breedingEnergyGate(a.species)||b.energy/partnerSpec.maxEnergy <= breedingEnergyGate(b.species)||
-     a.hydration/species.maxHydration<PARTNER_ENCOUNTER.minHydration||b.hydration/partnerSpec.maxHydration<PARTNER_ENCOUNTER.minHydration)return {available:false,reason:'survival-priority'};
+  // Colony physiology follows anatomy/species, never who currently controls it.
+  const colonyAnatomy=animal=>SPECIES[animal.species]?.social?.mode==='colony'&&hasPart(animal,'digging-forelimb');
+  const ordinaryCourtship=readiness===COURTSHIP_READINESS&&!colonyAnatomy(a)&&!colonyAnatomy(b);
+  const profile=ordinaryCourtship?COURTSHIP_READINESS:PARTNER_ENCOUNTER;
+  if(a.infected||b.infected||a.health<profile.minHealth||b.health<profile.minHealth)return {available:false,reason:'unwell'};
+  const energyReady=(animal,spec)=>ordinaryCourtship
+    ?animal.energy/spec.maxEnergy >= (partEffectFactors(animal)?.courtship??.62)
+    :animal.energy/spec.maxEnergy > breedingEnergyGate(animal.species);
+  if(!energyReady(a,species)||!energyReady(b,partnerSpec)||!(a.hydration>0)||!(b.hydration>0)||
+     a.hydration/species.maxHydration<profile.minHydration||b.hydration/partnerSpec.maxHydration<profile.minHydration)return {available:false,reason:'survival-priority'};
   const kin=sim.recovery.kinship(a,b);
   if(kin!=='none'&&!(kin==='sibling'&&sim.recovery.mayRelaxSibling(a)))return {available:false,reason:'kinship'};
   return {available:true,reason:'available'};

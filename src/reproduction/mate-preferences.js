@@ -13,6 +13,18 @@ import {pigmentExpression} from '../organisms/pigmentation.js';
 export const PREFERENCE_AXES=Object.freeze(['size','strength','ornament','display','behavior']);
 export const RITUAL_ACTIONS=Object.freeze(['dance','call','flare','scent','gesture']);
 export const LOCAL_ASSORTMENT='local-visual-assortment/1';
+// Versioned reception adjustment; existing choice, inheritance and hard gates remain owners.
+export const COURTSHIP_SIMILARITY=Object.freeze({policy:'reproductive-similarity/1',strength:.70,distancePower:2});
+export function courtshipSimilarityAdvantage(chooser,candidate,seed,{sameTaxon=false}={}){
+  if(!SIMILARITY_PREFERENCE.enabled)return 0;
+  const allele=clamp(-1,1,matePreferencesFor(seed,chooser).similarity??0);
+  const resemblance=1-appearanceDistance(chooser,candidate,{assortment:true});
+  // Contrast-preferring alleles retain their full existing signal; strongest contrast
+  // receives no resemblance reward. No hidden state, compatibility gate or RNG draw.
+  const preferenceWeight=(1+allele)/2;
+  const perception=Math.min(1,perceptionOf(chooser));
+  return (COURTSHIP_SIMILARITY.strength+(sameTaxon?SAME_TAXON_AFFINITY:0))*preferenceWeight*perception*resemblance**COURTSHIP_SIMILARITY.distancePower;
+}
 const LIMIT=1;
 const clamp=(lo,hi,x)=>Math.max(lo,Math.min(hi,Number.isFinite(x)?x:0));
 const phenotypeClamp=x=>clamp(-1,1,x);

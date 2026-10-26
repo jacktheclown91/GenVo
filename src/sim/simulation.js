@@ -32,7 +32,7 @@ import {contextualInteractions,executeInteraction} from '../gameplay/interaction
 import {isFeedingIntent} from '../ecology/feeding-intents.js';
 import {rememberBreedingSite,breedingSiteDecision} from '../ecology/breeding-sites.js';
 import {engineeringCourtshipSpecies,partnerAvailability,respondingPartner,localReceptivePartner} from '../reproduction/partner-encounters.js';
-import {founderMatePreferences,inheritMatePreferences,reciprocalMateChoice,compareMateOptions,SAME_TAXON_AFFINITY,LOCAL_ASSORTMENT} from '../reproduction/mate-preferences.js';
+import {founderMatePreferences,inheritMatePreferences,reciprocalMateChoice,compareMateOptions,SAME_TAXON_AFFINITY,LOCAL_ASSORTMENT,COURTSHIP_SIMILARITY} from '../reproduction/mate-preferences.js';
 import {COURTSHIP_PERFORMANCE,performCourtship,activeCourtship,performedMateChoice,learnCourtshipOutcome} from '../reproduction/courtship-performance.js';
 import {CFG,PLANTS} from './config.js';
 import {RNG} from '../core/rng.js';
@@ -147,6 +147,7 @@ export class Simulation{
     naturalCaves=true,
     stratumSenses=true,
     localAssortment=true,
+    courtshipSimilarity=false,
     habitatHazards=true,
     fireWeather=true,
     stormWeather=true,
@@ -189,6 +190,7 @@ export class Simulation{
     if(massRules!==ANATOMICAL_MASS&&massRules!==LEGACY_MASS)throw Error('Unknown world mass rules: '+massRules);
     this.massRules=massRules;
     if(localAssortment)this.mateAssortmentRules=LOCAL_ASSORTMENT;
+    if(courtshipSimilarity){if(!localAssortment)throw Error('Reproductive similarity requires local appearance assortment.');this.courtshipSimilarityRules=COURTSHIP_SIMILARITY.policy;}
     if(habitatHazards){
       this.habitatHazardRules=HABITAT_HAZARDS.policy;
       this.habitatHazards=createHabitatHazards();
@@ -727,7 +729,8 @@ export class Simulation{
     // player's own lineage and the founding partner approach it unasked.
     const playerMayReceive=b=>!this.isManualPlayer(b)||this.reproduction.courtTargetId===a.id||!!a.lineage||a.id===this.starterMateId;
     const baseMate=b=>b.alive&&SPECIES[b.species]&&playerMayReceive(b)&&trophicallyMateable(a,b)&&reproductiveCompatibility(a,b).enabled&&b.sex!==a.sex&&b.age>SPECIES[b.species].maturity&&
-      b.reproCooldown<=0&&(!engineeringCourtshipSpecies(a)||!b.pregnant)&&supported(b);
+      b.reproCooldown<=0&&(!engineeringCourtshipSpecies(a)||!b.pregnant)&&supported(b)&&
+      (this.courtshipSimilarityRules!==COURTSHIP_SIMILARITY.policy||this.canMatePair(a,b,{ready:true}));
     const unrelated=b=>baseMate(b)&&this.recovery.kinship(a,b)==='none';
     const nearRadius=this.recovery.mateRadius(a.species)*a.genes.senses;
     const farRadius=this.recovery.mateRadius(a.species,{far:true})*a.genes.senses;

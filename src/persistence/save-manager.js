@@ -16,7 +16,7 @@ import {restoreTissueEnergy} from '../ecology/tissue-energy.js';
 import {restorePerennialRegrowth} from '../ecology/perennial-regrowth.js';
 import {restoreStratumSenseRules,adoptStratumSenseRules} from '../ecology/stratum-sense-rules.js';
 import {GROUND_VIBRATIONS} from '../ecology/stratum-senses.js';
-import {LOCAL_ASSORTMENT} from '../reproduction/mate-preferences.js';
+import {LOCAL_ASSORTMENT,COURTSHIP_SIMILARITY} from '../reproduction/mate-preferences.js';
 import {validateIceImmersion} from '../lineage/ice-locomotion.js';
 import {restoreSurfaceIceRules,validateIceWorld,adoptSurfaceIceRules} from '../world/surface-ice-rules.js';
 import {restoreThermalRefugeRules,adoptThermalRefugeRules} from '../ecology/thermal-refuge-rules.js';
@@ -412,6 +412,9 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   if(!Object.hasOwn(snapshot.core||{},'mateAssortmentRules'))delete sim.mateAssortmentRules;
   else if(sim.mateAssortmentRules!==LOCAL_ASSORTMENT)throw Error('Unknown saved mate assortment policy.');
   for(const session of sim.planetaryTravel?.sessions||[])if(session.snapshot.core.mateAssortmentRules!==sim.mateAssortmentRules)throw Error('Inconsistent regional mate assortment policy.');
+  if(!Object.hasOwn(snapshot.core||{},'courtshipSimilarityRules'))delete sim.courtshipSimilarityRules;
+  else if(sim.courtshipSimilarityRules!==COURTSHIP_SIMILARITY.policy||sim.mateAssortmentRules!==LOCAL_ASSORTMENT)throw Error('Unknown or inconsistent saved reproductive similarity policy.');
+  for(const session of sim.planetaryTravel?.sessions||[])if(session.snapshot.core.courtshipSimilarityRules!==sim.courtshipSimilarityRules)throw Error('Inconsistent regional reproductive similarity policy.');
   restoreCaveRules(sim,snapshot.core||{});
   restoreBurrowingRules(sim,snapshot.core||{});
   restoreClimbingRules(sim,snapshot.core||{});
