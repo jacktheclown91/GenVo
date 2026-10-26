@@ -2,7 +2,7 @@
 
 All tasks start from live main, preserve unrelated work, and update the continuation handoff. Run the complete playable gate and canonical export/audit before integration. Do not regenerate deterministic expectations for a mechanical refactor.
 
-## 1. Extract ordered controller composition (implemented; 115 local checks passed, exact-head CI required)
+## 1. Extract ordered controller composition (completed at 5bc4ea27; retain as acceptance record)
 
 - Goal/files: move the contiguous `this.lineage = new LineageTracker(this)` through `this.wildlifeRhythm = new WildlifeRhythmController(this)` constructor segment from `src/sim/simulation.js` to `src/sim/controller-composition.js`.
 - Reuse: existing controller classes; no replacement controllers, service locator, dynamic imports or new engine.
