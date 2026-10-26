@@ -1,9 +1,9 @@
 // tools/profile-extended-play.mjs
 // Real-browser extended play performance profiling across four core scenarios:
-// Scenario A: Fresh primitive planetary world (normal gameplay & movement)
+// Scenario A: Fresh primitive planetary world (genuine gameplay & movement)
 // Scenario B: Mature Day 30+ planetary world (high populations, winter ecology)
-// Scenario C: Planetary traversal (regional border crossing & return continuity)
-// Scenario D: Continued lineage (Gen 2 successor gameplay & diagnostics audit)
+// Scenario C: Planetary traversal (controlled diagnostic fixture: position set to boundary seam to measure crossing cost & return continuity)
+// Scenario D: Continued lineage (controlled diagnostic fixture: accelerated maturation fixture to measure Gen 2 successor gameplay & diagnostics audit)
 
 import fs from 'node:fs';
 import path from 'node:path';
@@ -152,8 +152,8 @@ try {
   };
   console.log('Scenario A Results:', JSON.stringify(report.scenarios.scenarioA_freshPrimitive, null, 2));
 
-  // --- SCENARIO D: Continued Lineage & Succession ---
-  console.log('\n--- PROFILING SCENARIO D: Continued Lineage & Gen 2 Succession ---');
+  // --- SCENARIO D: Continued Lineage & Succession (Controlled Diagnostic Fixture) ---
+  console.log('\n--- PROFILING SCENARIO D: Continued Lineage & Gen 2 Succession (Controlled Diagnostic Fixture) ---');
   const successionResult = await page.evaluate(async () => {
     const s = window.__GENVO8__.sim;
     const founder = s.player();
@@ -337,8 +337,8 @@ try {
   };
   console.log('Scenario B Results:', JSON.stringify(report.scenarios.scenarioB_matureDay30, null, 2));
 
-  // --- SCENARIO C: Planetary Traversal ---
-  console.log('\n--- PROFILING SCENARIO C: Planetary Traversal & Seam Crossing ---');
+  // --- SCENARIO C: Planetary Traversal (Controlled Diagnostic Fixture) ---
+  console.log('\n--- PROFILING SCENARIO C: Planetary Traversal & Seam Crossing (Controlled Diagnostic Fixture) ---');
   // Cross to region 128, 0 using planetaryTravel
   const traversalResult = await page.evaluate(async () => {
     const g = window.__GENVO8__;

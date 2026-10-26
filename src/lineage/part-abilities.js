@@ -100,11 +100,13 @@ export const WAVE1_TEXT=Object.freeze({
   'barrel-torso':{gain:'Holds water, drinks less often · ten leg slots, four eyes, two back slots',cost:'Slower sprint, heavy.'},
   'dome-torso':{gain:'Shell halves hits from behind, less damage overall · two back slots',cost:'Slow sprint, more food.'},
   'long-torso':{gain:'Twelve leg slots, four eyes, three flank and two back slots · carries more',cost:'More food.'},
+  'walking-leg':{gain:'Basic land locomotion: walking, sprinting, and courtship movement',cost:'Carries standard mass and baseline upkeep.'},
   'spring-leg':{gain:'Two spring legs can launch a real jump arc in new worlds · Jump / Enter',cost:'Body load limits lift. Launch costs food and breath; hard terrain or water landings can injure.'},
   'runner-leg':{gain:'Faster on land',cost:'Weaker brace.'},
   'sturdy-leg':{gain:'Stronger brace against charges',cost:'A little slower.'},
   'webbed-leg':{gain:'Swims across rivers and open water (brings Water Sacs with it)',cost:'A little slower on land; swimming is slow and tiring.'},
   'padded-leg':{gain:'Quiet steps: sprinting is not heard and Stalkers see you later (two or more)',cost:'Slightly slower sprint.'},
+  'grazing-mouth':{gain:'Starter plant grazing, biting, and vocal calls',cost:'Baseline plant-foraging mouth without specialized food bonuses.'},
   'beak-mouth':{gain:'Much better on seed pods',cost:'Slightly worse on other plants.'},
   'kernel-beak':{gain:'Cracks hard seed pods for food; crushed seeds cannot grow',cost:'Poor at soft plants; extra energy upkeep.'},
   'filter-mouth':{gain:'Feeds while drinking at the water\'s edge',cost:'Gets a little less from plants.'},
@@ -112,6 +114,7 @@ export const WAVE1_TEXT=Object.freeze({
   'nibbler-mouth':{gain:'Very cheap to run',cost:'Gets less from plants.'},
   'sucker-mouth':{gain:'Much better on carrion',cost:'Gets a little less from plants.'},
   'gape-mouth':{gain:'Hunts land more often, more food from prey',cost:'More food upkeep.'},
+  'simple-eye':{gain:'Basic focal vision for detecting food, water, and immediate threats',cost:'Narrower field of view and standard visual range.'},
   'hunter-eye':{gain:'Hunts and pounces land more often',cost:'Narrower view: threats noticed a little later.'},
   'stalk-eye':{gain:'Finds food farther away, through plant cover',cost:'More food upkeep.'},
   'compound-eye':{gain:'Spots threats farther and from behind',cost:'More food upkeep.'},
@@ -214,7 +217,10 @@ export const WAVE2_TEXT=Object.freeze({
   'hook-pad':{gain:'A pair of hooks gives uphill grip on existing slopes',cost:'Needs grip-pad ancestry, food upkeep and at least two supporting grips.'},
   'heat-frill':{gain:'Radiates heat in hot weather, reducing heat-related food loss',cost:'Needs signal-crest ancestry; increases cold exposure and food upkeep.'},
   'wax-plates':{gain:'Reduces water use on dry soil. Also repels rain from inherited fur or feathers in modern planetary worlds.',cost:'Needs armor-plate ancestry; wax retains heat and adds food upkeep.'},
-  'arid-pad':{gain:'Two or more wide pads improve dry-ground travel and reduce its energy cost',cost:'Needs padded-leg ancestry; wide pads are slower and tiring on soaked ground.'}
+  'arid-pad':{gain:'Two or more wide pads improve dry-ground travel and reduce its energy cost',cost:'Needs padded-leg ancestry; wide pads are slower and tiring on soaked ground.'},
+  'head-base':{gain:'Structural head foundation carrying the mouth and eye sockets',cost:'Neutral structural mount; provides no independent actions.'},
+  'egg-chamber':{gain:'Enables oviparous egg laying in drought-resistant nests across dry ground',cost:'Consumes a vital flank socket and requires nest preparation.'},
+  'live-womb':{gain:'Enables viviparous live birth with direct parental retention through gestation',cost:'High metabolic upkeep, postpartum cooldown, and consumes a flank socket.'}
 });
 // Combined wave 2 modifiers for a plan's part counts.
 function wave2Mods(c){

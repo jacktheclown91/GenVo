@@ -119,6 +119,7 @@ const runtime=[
   'tests/input-responsiveness.mjs',
   'tests/mandatory-tutorial.mjs',
   'tests/multigenerational-lineage.mjs',
+  'tests/natural-multigen-acceptance.mjs',
   'tests/living-planet-extended.mjs'
 ];
 let passed=0;
