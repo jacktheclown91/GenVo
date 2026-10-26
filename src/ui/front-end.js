@@ -25,7 +25,12 @@ export class FrontEnd{
     this.syncSettings();this.show('home');
   }
   get isOpen(){return this.open}
-  setMessage(text='',error=false){this.messageEl.textContent=text;this.messageEl.classList.toggle('error',error)}
+  setMessage(text='',error=false){
+    this.messageEl.textContent=text;this.messageEl.classList.toggle('error',error);
+    // A failed action may add this status below a long, already-scrolled form.
+    // Reveal the real error without taking focus away from its recovery controls.
+    if(error&&text)this.messageEl.scrollIntoView?.({block:'nearest',inline:'nearest',behavior:'instant'});
+  }
   async show(screen){
     if(!this.el.querySelector(`.menu-view[data-screen="${screen}"]`))return;
     if(screen!==this.screen&&screen!=='home'&&screen!=='pause')this.previous=this.screen;
