@@ -1,0 +1,5 @@
+// Frozen original method bodies from efe6aad77301463115b407146e6e8af47a764fdc.
+// Preserve as the pre-extraction oracle; never record from the new helpers.
+export const originalSimulationBlob="3712e1fd48d4a9ad3b4c517ac48156d9768dfadb";
+export function originalRebuildSpatial(){for(const bucket of this.spatial)bucket.length=0;for(const a of this.animals){if(!a.alive)continue;const bx=Math.max(0,Math.min(this.spatialCols-1,Math.floor(a.x/this.spatialBucketSize))),by=Math.max(0,Math.min(this.spatialCols-1,Math.floor(a.y/this.spatialBucketSize)));this.spatial[by*this.spatialCols+bx].push(a)}}
+export function originalForEachNearby(a,radius,fn){const bs=this.spatialBucketSize,c=this.spatialCols,minX=Math.max(0,Math.floor((a.x-radius)/bs)),maxX=Math.min(c-1,Math.floor((a.x+radius)/bs)),minY=Math.max(0,Math.floor((a.y-radius)/bs)),maxY=Math.min(c-1,Math.floor((a.y+radius)/bs));for(let by=minY;by<=maxY;by++)for(let bx=minX;bx<=maxX;bx++){const bucket=this.spatial[by*c+bx];for(const b of bucket)if(fn(b)===false)return false}return true}

@@ -2,6 +2,10 @@
 
 Reviewed October 20, 2026. Governing intent: [current design](../design/CURRENT-DESIGN.md) and the creator's full Creature-stage directive. Code ownership: [implementation authorities](../design/governance/implementation-authorities.json). Full scope and remaining gaps: [completion matrix](FULL-GAME-COMPLETION-MATRIX.md). Earlier checkpoint prose is [historical evidence](history/IMPLEMENTATION-before-live-refresh-2026-10-19.md), not current instructions.
 
+## Next engineering development pass, October 26
+
+Spatial bucket rebuild/query mechanics now have a borrowed-state module with compatible Simulation wrappers, frozen original-loop comparisons and unchanged Node 22/24 snapshot goldens. All 117 local integration checks pass; new exact-head remote acceptance is pending. Nursing coverage, the demonstrated interleaved-clock defect, mature-world optimization and natural multigenerational evidence remain required stages. See [the current pass record](ENGINEERING-DEVELOPMENT-2026-10-26.md). The stable ZIP and published submission remain intact.
+
 ## Reproductive similarity, October 26
 
 New UI worlds record bounded reciprocal resemblance reception through the existing preference/courtship authorities. Holdout near-identical founder/inherited cohorts accept about 70%/72% of funded favorable-condition displays, with meaningful divergent gene flow and unchanged strongest-contrast outcomes. Historical Continue retains its recorded rules. Source, observations, actual cross-taxon offspring, limitations and audit-prerequisite correction are in [the measured report](REPRODUCTIVE-SIMILARITY-2026-10-26.md). No population target or speciation threshold changed.

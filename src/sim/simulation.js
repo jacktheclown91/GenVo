@@ -1,3 +1,4 @@
+import {rebuildSpatialIndex,forEachSpatialNeighbor} from './spatial-index.js';
 import {initializeControllers} from './controller-composition.js';
 import {REGIONAL_FRONTIER,physicalFrontier,frontierStep} from '../world/regional-frontier.js';
 import {HABITAT_HAZARDS,createHabitatHazards,advanceHabitatHazards} from '../ecology/habitat-hazards.js';
@@ -513,8 +514,8 @@ export class Simulation{
   *phaseVegetationSteps({once=false}={}){if(once&&!beginPageVegetationDay(this))return;advanceFreshwater(this.world);advanceMarineFood(this.world);advancePlantInputs(this);const w=this.world,temp=this.climate.temp,season=this.season,dispersal=this.dispersal,entries=Object.entries(PLANTS).filter(([kind])=>kind!=='rotcap').map(([kind,p])=>({kind,p,d:p.dispersal,plants:w.plants[kind],bank:w.seedBank?.[kind]||null,seasonBoost:kind==='bramble'&&season==='AUTUMN'?1.012:kind==='thistlepod'&&season==='SUMMER'?1.007:1}));dispersal.advanceDay();yield;const pageCounts=yield* visitLandByWorldPageSteps(w,i=>{const m=w.moisture[i],f=w.fertility[i],scar=this.history.scarAt(i);growLandProducers(this,i,entries,{m,f,temp:w.environment?w.temperature[i]:temp,scar,grow});advanceFungi(this,i);});yield;yield* dispersal.advanceBotanicalReproductionSteps();yield;this.partAbilities.advanceSoilDay();this.history.advanceDay();if(once)completePageVegetationDay(this,pageCounts)}
   phasePerception(){drain(this.phasePerceptionSteps())}
   *phasePerceptionSteps(){this.rebuildSpatial();this.regionalEcology.observe();this.carrying.observe();this.cognition.observe();yield;this.foraging.observeNearby(this.player());this.territory.observe();this.stalkerTerritory.observe();yield;yield* this.migration.observeSteps();yield;this.social.observe();this.pressure.observe()}
-  rebuildSpatial(){for(const bucket of this.spatial)bucket.length=0;for(const a of this.animals){if(!a.alive)continue;const bx=Math.max(0,Math.min(this.spatialCols-1,Math.floor(a.x/this.spatialBucketSize))),by=Math.max(0,Math.min(this.spatialCols-1,Math.floor(a.y/this.spatialBucketSize)));this.spatial[by*this.spatialCols+bx].push(a)}}
-  forEachNearby(a,radius,fn){const bs=this.spatialBucketSize,c=this.spatialCols,minX=Math.max(0,Math.floor((a.x-radius)/bs)),maxX=Math.min(c-1,Math.floor((a.x+radius)/bs)),minY=Math.max(0,Math.floor((a.y-radius)/bs)),maxY=Math.min(c-1,Math.floor((a.y+radius)/bs));for(let by=minY;by<=maxY;by++)for(let bx=minX;bx<=maxX;bx++){const bucket=this.spatial[by*c+bx];for(const b of bucket)if(fn(b)===false)return false}return true}
+  rebuildSpatial(){return rebuildSpatialIndex(this)}
+  forEachNearby(a,radius,fn){return forEachSpatialNeighbor(this,a,radius,fn)}
   isPredatorTo(pred,prey){
     if(!pred?.alive||!prey?.alive||pred.id===prey.id||!sameDepth(pred,prey,this.world))return false;
     return preyPreference(pred,prey)>0;

@@ -1,0 +1,55 @@
+{
+  "schema": "genvo.engineering-development/1",
+  "baseCommit": "efe6aad77301463115b407146e6e8af47a764fdc",
+  "stableZipSha256": "37832ff5b16b668c7cc8bb9a439b94555c458859c4b5d085baf8d70c068a310d",
+  "stages": {
+    "A": {
+      "scope": "Spatial rebuild/query extraction; Simulation retains public wrappers, geometry, buckets and all other method bytes.",
+      "mechanical": {
+        "referenceCommit": "efe6aad77301463115b407146e6e8af47a764fdc",
+        "originalSimulationBlob": "3712e1fd48d4a9ad3b4c517ac48156d9768dfadb",
+        "onlyTwoMethodsAndImportChanged": true,
+        "bucketConstructionUnchanged": true,
+        "originalOracle": "tests/fixtures/spatial-index-original.mjs",
+        "goldenExpectationsRegenerated": false
+      },
+      "localFullGate": {
+        "status": "PASS",
+        "checks": 117,
+        "sha256": "cdd90e6f7e5ade82046e7d2a0eaf017433423af573d2f8ce7fb402e60487a887",
+        "perCheckTimeoutMs": 240000
+      },
+      "focusedNode22": [
+        "spatial-index",
+        "modernization-baseline",
+        "playable-check-plan"
+      ],
+      "focusedNode24": [
+        "spatial-index",
+        "modernization-baseline",
+        "playable-check-plan",
+        "sensory-perception",
+        "public-export"
+      ],
+      "architecture": "PASS; no cycle/boundary baseline changes",
+      "canonicalSourceAudit": "PASS",
+      "goldenExpectationsRegenerated": false,
+      "newSavedState": false,
+      "sourceGitBlobs": {
+        "src/sim/simulation.js": "7722dade5219bf129daaa37b1816032af070b823",
+        "src/sim/spatial-index.js": "51a7a835179cef07ca2b8312452e29f55c49c70b",
+        "tests/spatial-index.mjs": "0ad6ae5fec26e09a1b075dc312b1ba9e816313a7",
+        "tests/fixtures/spatial-index-original.mjs": "6ecde02849ca5b3f86a2a47a077cefe6f5825e39"
+      },
+      "remoteAcceptance": "Pending exact-head CI; never inferred from prior commit"
+    }
+  },
+  "remaining": [
+    "B: nursing fixture/physiological coverage",
+    "C: interleaved clock protection",
+    "D: mature-world profile and equivalent-behavior optimization",
+    "E: multigenerational natural investigation",
+    "separate verified release candidate and final GitHub handoff"
+  ],
+  "creatorAcceptance": false
+}

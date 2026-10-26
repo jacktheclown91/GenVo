@@ -1,5 +1,13 @@
 # Git continuation handoff — October 26, 2026
 
+## Current engineering development pass
+
+The new creator-directed A-E implementation pass starts from `efe6aad77301463115b407146e6e8af47a764fdc` (exact-head CI 40365902457 succeeded). The spatial extraction is implemented with a frozen original-method oracle and unchanged Node 22/24 snapshot goldens; the complete local 117-check integration gate passed; its new exact-head CI remains pending. See [the pass record](ENGINEERING-DEVELOPMENT-2026-10-26.md). Nursing, configuration, mature profiling/optimization and natural multigenerational investigation remain required stages, not optional follow-ups. A read-only configuration probe already demonstrates a modern tick incorrectly advancing day after interleaving with a legacy instance; no clock correction has been applied yet.
+
+The historical entries below describe earlier bounded checkpoints; their old gate counts and next-task statements do not mark this new pass complete. Preserve the original release ZIP and deferred experimental branches.
+
+## Earlier modernization checkpoints
+
 Repository: `jacktheclown91/GenVo`, canonical branch `main`. Audited implementation checkpoint: **`5bc4ea27010d13a83d65f916e8c062f74fcd4265`**, pushed to GitHub main. Handoff-only commits may follow; inspect the live main SHA and its exact Actions result before continuing. Last verified remote foundation checkpoint: `49fd7672206d6d553967df219e0f17f92ea01c6d`. Its exact-head Actions run 40283559281 passed all 114 playable checks but failed the new cross-engine golden assertion; the repair below retains strict comparison using untouched-source engine variants. Always inspect the live branch and Actions before editing; this document cannot contain its own commit hash. Creator authorized Codex as temporary engineering lead after Antigravity credits ran out. Preserve biological owners and historical contracts; the older visual-only division is historical for this work.
 
 ## Preserved release

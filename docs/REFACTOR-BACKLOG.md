@@ -11,7 +11,7 @@ All tasks start from live main, preserve unrelated work, and update the continua
 - Invariants: same instances/back-references, property insertion order, RNG, resources, save shape, deferred initialization, tick order. If SCC membership changes by inserting the composition module into the existing simulation SCC, review and record only that exact graph addition; no new cycle family.
 - Acceptance: readable composition module, materially smaller constructor/import hub, identical pre-refactor signatures, all checks pass, main CI green. No browser visual acceptance claim needed for unchanged runtime behavior.
 
-## 2. Isolate spatial bucket indexing (next; GitHub + Actions)
+## 2. Isolate spatial bucket indexing (implemented and 117-check local gate passed; exact-head CI pending)
 
 - Goal/files: extract `rebuildSpatial` and `forEachNearby` mechanics from Simulation into `src/sim/spatial-index.js`, retaining public method wrappers.
 - Reuse: current bucket arrays, world size, bucket size and existing nearby consumers.
@@ -41,3 +41,7 @@ All tasks start from live main, preserve unrelated work, and update the continua
 ## Later: renderer and save subsystem boundaries (local browser needed)
 
 Choose one coherent painter or snapshot subsystem only after inspecting actual callers. Preserve historical migration branches, native pixel output, cache invalidation, complete snapshot reference semantics and public export parity. Require same-state extracted browser proof for visual/input changes and mature-world profiling for performance claims. Existing slow work must not be hidden by larger budgets. Deferred ground-art candidate requires its own full validation before any integration.
+
+## Current development sequence
+
+The October 26 next-pass directive requires spatial extraction, funded nursing coverage, interleaved clock protection, actual mature-world profiling with an equivalent-behavior optimization, and natural multigenerational investigation in that order. See docs/ENGINEERING-DEVELOPMENT-2026-10-26.md for current evidence and missing acceptance. Complete and verify a Git checkpoint between major stages; do not stop after only the easiest extraction.
