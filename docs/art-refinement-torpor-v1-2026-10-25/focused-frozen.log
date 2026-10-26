@@ -1,0 +1,14 @@
+node tests/life-render.mjs
+life-render presentation checks: PASS
+node tests/behavior-readability.mjs
+behavior readability checks: PASS
+node tests/render-cache.mjs
+renderer cache contracts: PASS
+node tests/motion-render.mjs
+render motion bridge checks: PASS
+node tests/e12-cold-wildlife.mjs
+E12 torpor: real fat phenotype, paid cold metabolism, no movement, cold/predation cost, autonomous sleep, cold-route migration, save/load, player wake PASS
+node tests/torpor-presentation.mjs
+Torpor presentation PASS: canonical-entry fixture, exact ordinary-life parity, eight facings/0-12 limbs, planted contacts, interruptions/wake and full graph/RNG parity.
+node tests/head-attention.mjs
+48 mounted/implicit head-facing-turn cases; authoritative target selection, bounded easing, pause/neutral return, NPC quantization and immutable body records PASS

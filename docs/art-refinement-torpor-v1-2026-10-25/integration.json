@@ -1,0 +1,16 @@
+{
+  "source": "e54154844d136db250052f07acfcdfb1650a4927",
+  "gate": "node tools/check-playable.mjs",
+  "passed": 113,
+  "exitCode": 0,
+  "logSha256": "2e0a2792751e0a57fbb00a8b316982ad8d0a26033ad891f5873824acbaa8560a",
+  "frozenFocusedChecks": 7,
+  "separateKnownFailure": {
+    "test": "tests/care-expression.mjs",
+    "stage": "canonical nursing precondition",
+    "result": "ordinary care, no milk transfer"
+  },
+  "combinedConcurrentGameplayWorkIncluded": false,
+  "publicSuccessfulTorporObserved": false,
+  "creatorAcceptance": false
+}

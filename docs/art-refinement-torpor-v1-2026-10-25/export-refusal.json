@@ -1,0 +1,114 @@
+{
+  "scope": "Public sandbox founder design with a fat tail, then actual manual torpor if canonical conditions permit. Authored founder, not naturally evolved ancestry. No direct body/reserve/weather/position/action edits.",
+  "errors": [],
+  "creatorAcceptance": false,
+  "coldSite": {
+    "site": null,
+    "minimum": 0.43592387437820435,
+    "worldSize": 128
+  },
+  "before": {
+    "seed": "GENVO-VALLEY-REPLAY-30",
+    "day": 31,
+    "tick": 1445,
+    "paused": false,
+    "climate": {
+      "temp": 0.2717157287525381,
+      "rain": 0.3348597912530849,
+      "weatherFactor": 1.2879222740503264
+    },
+    "id": 227,
+    "torpor": false,
+    "x": 49.5,
+    "y": 75.5,
+    "energy": 114.08,
+    "hydration": 102.60000000000001,
+    "temp": 0.43762171268463135,
+    "seasonalLocalTemperature": 0.2586121896284069,
+    "status": {
+      "enabled": false,
+      "reason": "The local ground is too warm for cold-season torpor."
+    },
+    "body": [
+      "small-torso",
+      "simple-eye",
+      "simple-eye",
+      "walking-leg",
+      "walking-leg",
+      "walking-leg",
+      "walking-leg",
+      "grazing-mouth",
+      "fat-tail"
+    ],
+    "intro": {
+      "schema": 1,
+      "kind": "authored-founder",
+      "actorId": 227,
+      "previousPlayerId": 109,
+      "priorFounderId": 109,
+      "day": 31,
+      "tick": 1440,
+      "generation": 1,
+      "parentIds": [],
+      "mode": "sandbox",
+      "actorIds": [
+        227,
+        228
+      ],
+      "introductionIndex": 0
+    }
+  },
+  "observedTorpor": false,
+  "refused": {
+    "seed": "GENVO-VALLEY-REPLAY-30",
+    "day": 31,
+    "tick": 1452,
+    "paused": false,
+    "climate": {
+      "temp": 0.26,
+      "rain": 0.33485979125308496,
+      "weatherFactor": 1.2879222740503267
+    },
+    "id": 227,
+    "torpor": false,
+    "x": 49.5,
+    "y": 75.5,
+    "energy": 113.918021304921,
+    "hydration": 102.49849552000002,
+    "temp": 0.43762171268463135,
+    "seasonalLocalTemperature": 0.2468964608758688,
+    "status": {
+      "enabled": false,
+      "reason": "The local ground is too warm for cold-season torpor."
+    },
+    "body": [
+      "small-torso",
+      "simple-eye",
+      "simple-eye",
+      "walking-leg",
+      "walking-leg",
+      "walking-leg",
+      "walking-leg",
+      "grazing-mouth",
+      "fat-tail"
+    ],
+    "intro": {
+      "schema": 1,
+      "kind": "authored-founder",
+      "actorId": 227,
+      "previousPlayerId": 109,
+      "priorFounderId": 109,
+      "day": 31,
+      "tick": 1440,
+      "generation": 1,
+      "parentIds": [],
+      "mode": "sandbox",
+      "actorIds": [
+        227,
+        228
+      ],
+      "introductionIndex": 0
+    },
+    "feedback": "× The local ground is too warm for cold-season torpor."
+  }
+}
