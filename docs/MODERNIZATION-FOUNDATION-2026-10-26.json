@@ -1,0 +1,37 @@
+{
+  "schema": "genvo.modernization-foundation/1",
+  "baselineCommit": "c9d8a77894d591d77831e3b26805472cfe4f227b",
+  "foundationCommit": "649c97f973955a2897a73390ded42a8cd49097e4",
+  "runtimeChanges": false,
+  "checks": {
+    "playable": {
+      "passed": 114,
+      "exitCode": 0
+    },
+    "architectureAdversarial": "PASS",
+    "architectureBoundaries": "PASS",
+    "frozenSnapshotsAndRestore": "PASS",
+    "reproduction": "PASS",
+    "conceptionParentalInheritance": "PASS",
+    "canonicalSourceAudit": "PASS",
+    "publicExport": "PASS"
+  },
+  "sourceModules": 428,
+  "existingCycleSizes": [
+    2,
+    38,
+    7
+  ],
+  "biologicalPresentationImports": 0,
+  "releaseCI": {
+    "run": 40280305782,
+    "head": "c9d8a77894d591d77831e3b26805472cfe4f227b",
+    "conclusion": "success"
+  },
+  "limits": [
+    "Node 24.14.0 local; Node 22 CI requires exact new-head confirmation",
+    "Finite deterministic samples supplement domain tests",
+    "No new browser or creator acceptance claimed",
+    "Simulation extraction remains next task"
+  ]
+}

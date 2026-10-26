@@ -18,6 +18,8 @@ Global state: `CFG`, registry/policy review objects and class/module caches. `ap
 
 ## Foundation and protected baseline
 
+Foundation implementation commit: `649c97f973955a2897a73390ded42a8cd49097e4`. Full local integration completed: 114/114 checks, exit 0; architecture adversarial tests, live dependency gate, frozen snapshots, reproduction, parental inheritance, source audit and public export all passed. These checks establish engineering regression evidence, not new browser/creator acceptance.
+
 `tests/modernization-baseline.mjs` freezes complete structured snapshot graph signatures at ticks 0/6/48/96 in actual freshwater and planetary worlds, with AUTO decisions and exact save/restore plus six-step continuation at tick 48. Circular organism references, typed-array types and reference identity are encoded deterministically. Fixtures were captured BEFORE runtime refactoring, at c9d8a778. These finite samples supplement domain contracts; they do not prove every reproductive or regional event happened.
 
 Use `tests/reproduction.mjs`, `tests/conception-parental-inheritance.mjs`, `tests/tissue-water.mjs`, `tests/tissue-energy.mjs`, `tests/regional-synchronized-replay.mjs`, `tests/regional-multi-hop-biology.mjs`, `tests/sliced-ticks.mjs` and persistence tests in addition to this baseline. No population targets, enabled-policy changes or relaxed budgets are permitted. Historical fixture modules imported by tests/tools, original artwork, migrations, scenario assets and hash manifests, retained source references and old receipts must remain. Audit imports before deletion. Public packaging uses the Git inventory and canonical exporter, never recursive docs copying.
@@ -31,7 +33,7 @@ Use `tests/reproduction.mjs`, `tests/conception-parental-inheritance.mjs`, `test
 - `node tools/canonical-source-audit.mjs` and `node tests/public-export.mjs`.
 - `node tests/sliced-ticks.mjs`, `node tests/world-restore-generation-parity.mjs`, `node tests/save-persistence.mjs` for simulation extraction.
 
-Main's `playable-checkpoint.yml` runs the complete playable gate plus the new architecture/baseline checks on Node 22, Ubuntu. The separate browser workflow is manual or consolidation-branch-triggered, not automatic on main. Local Node used for foundation: 24.14.0; CI must verify Node 22. At last observation release checkpoint Actions run 40280305782 was still running; never infer green from a push. Query current Actions for the exact new head.
+Main's `playable-checkpoint.yml` runs the complete playable gate plus the new architecture/baseline checks on Node 22, Ubuntu. The separate browser workflow is manual or consolidation-branch-triggered, not automatic on main. Local Node used for foundation: 24.14.0; CI must verify Node 22. Release checkpoint Actions run [40280305782](https://github.com/jacktheclown91/GenVo/actions/runs/40280305782) completed successfully on c9d8a778 (October 26). Foundation changes require their own exact-head CI result; never infer green from a push. Query current Actions for the exact new head.
 
 ## Quality and remaining work
 
