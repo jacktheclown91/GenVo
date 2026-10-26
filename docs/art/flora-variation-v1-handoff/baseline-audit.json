@@ -1,0 +1,50 @@
+{
+  "scope": "Read-only deterministic placement model audit; not game resource quantities or a visual verdict.",
+  "rows": [
+    {
+      "shape": "tuft",
+      "cells": 16384,
+      "minX": -1,
+      "maxX": 11,
+      "minY": -1,
+      "maxY": 11,
+      "anchorOutsideOwnCell": 576
+    },
+    {
+      "shape": "shrub",
+      "cells": 16384,
+      "minX": -0.5,
+      "maxX": 11,
+      "minY": -0.5,
+      "maxY": 11,
+      "anchorOutsideOwnCell": 123
+    },
+    {
+      "shape": "tree",
+      "cells": 16384,
+      "minX": -0.5,
+      "maxX": 11,
+      "minY": -0.5,
+      "maxY": 11,
+      "anchorOutsideOwnCell": 142
+    },
+    {
+      "shape": "pod",
+      "cells": 16384,
+      "minX": -0.5,
+      "maxX": 11,
+      "minY": -0.5,
+      "maxY": 11,
+      "anchorOutsideOwnCell": 110
+    },
+    {
+      "shape": "reed",
+      "cells": 16384,
+      "minX": 3.5,
+      "maxX": 9.5,
+      "minY": 3.5,
+      "maxY": 9.5,
+      "anchorOutsideOwnCell": 0
+    }
+  ]
+}
