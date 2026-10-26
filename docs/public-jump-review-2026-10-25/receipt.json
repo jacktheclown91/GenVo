@@ -1,0 +1,111 @@
+{
+  "root": "C:\\Users\\jackt\\AppData\\Local\\Temp\\genvo-torpor-frozen-web-v9yync_j\\web",
+  "scope": "Actual public authored spring-jumper start; native Enter launch and landing, no staged state.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "before": {
+    "tick": 6,
+    "x": 47.5,
+    "y": 65.5,
+    "energy": 114.08,
+    "exertion": 100,
+    "body": {
+      "left": 637,
+      "top": 338,
+      "right": 729,
+      "bottom": 430,
+      "width": 92,
+      "height": 92
+    },
+    "last": null
+  },
+  "launch": {
+    "tick": 9,
+    "x": 47.5,
+    "y": 65.84501964434739,
+    "airborne": true,
+    "mode": "jump",
+    "jump": {
+      "schema": 1,
+      "altitude": 1.1757808908380896,
+      "verticalVelocity": 3.5333049730400488,
+      "vx": 2.7041740997952155e-16,
+      "vy": 4.4162514476467285,
+      "elapsed": 0.078125,
+      "purpose": "travel"
+    },
+    "energy": 108.048,
+    "exertion": 88,
+    "body": {
+      "left": 637,
+      "top": 335.28820180892944,
+      "right": 729,
+      "bottom": 427.28820180892944,
+      "width": 92,
+      "height": 92
+    },
+    "last": {
+      "type": "jump",
+      "actorId": 197,
+      "tick": 8
+    }
+  },
+  "arc": {
+    "tick": 11,
+    "x": 47.5,
+    "y": 67.29410215060642,
+    "airborne": true,
+    "mode": "jump",
+    "jump": {
+      "schema": 1,
+      "altitude": 1.7968165069918547,
+      "verticalVelocity": 0.25205497304004876,
+      "vx": 2.7041740997952155e-16,
+      "vy": 4.4162514476467285,
+      "elapsed": 0.40625,
+      "purpose": "travel"
+    },
+    "energy": 108.048,
+    "exertion": 88,
+    "body": {
+      "left": 637,
+      "top": 326.61633491516113,
+      "right": 729,
+      "bottom": 418.61633491516113,
+      "width": 92,
+      "height": 92
+    },
+    "last": {
+      "type": "jump",
+      "actorId": 197,
+      "tick": 8
+    }
+  },
+  "landing": {
+    "tick": 15,
+    "x": 47.5,
+    "y": 69.33870159715657,
+    "airborne": false,
+    "landing": {
+      "tick": 15,
+      "impact": 4.377662041012044,
+      "water": false,
+      "damage": 0
+    },
+    "energy": 108.048,
+    "exertion": 99.25,
+    "body": {
+      "left": 637,
+      "top": 340,
+      "right": 729,
+      "bottom": 432,
+      "width": 92,
+      "height": 92
+    },
+    "last": {
+      "type": "jump",
+      "actorId": 197,
+      "tick": 8
+    }
+  }
+}
