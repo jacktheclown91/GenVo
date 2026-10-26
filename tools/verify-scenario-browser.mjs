@@ -39,7 +39,7 @@ await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));
 const browser=await playwright.chromium.launch({headless:true});
 try{
  const page=await browser.newPage({viewport:{width:1100,height:760}});
- const errors=[];
+ const errors=[],missingAssets=[];page.on('response',response=>{if(response.status()>=400&&!response.url().endsWith('/favicon.ico'))missingAssets.push({url:response.url(),status:response.status()})});
  page.on('pageerror',error=>errors.push(error.message));
  page.on('console',m=>{if(m.type()==='error')errors.push('console: '+m.text());});
  await page.goto('http://127.0.0.1:'+server.address().port+'/index.html',{waitUntil:'domcontentloaded'});
@@ -148,6 +148,7 @@ try{
   await page.waitForFunction(()=>window.__GENVO8__.sim.player()?.airborne);
   await page.screenshot({path:path.join(output,'authored-wing-flight.png')});
  }
+ if(await page.locator('#startGame').isVisible()){await page.locator('#startGame').click();await page.waitForFunction(()=>!window.__GENVO8__.tutorial.worldInputBlocked());}
  // Every advanced-world path must survive actual native Save and Continue,
  // including recorded historical worlds rather than only authored founders.
  await page.keyboard.press('Escape');
@@ -164,8 +165,8 @@ try{
  if(founderMode){assert.equal(browserReload.mode,founderMode);assert.ok(browserReload.receipts>0)}
  if(founderMode==='sandbox')assert.ok(browserReload.airborne,'authored wings and midflight state survive actual browser reload');
  await page.screenshot({path:path.join(output,founderMode?'authored-world-restored.png':'advanced-world-restored.png')});
- assert.deepEqual(errors,[],'browser encountered a fatal gameplay script error');
- fs.writeFileSync(path.join(output,'report.json'),JSON.stringify({ok:true,servedRoot:root,residentMode,founderMode,cancelPreservedSlots,browserReload,...report,errors},null,2));
+ assert.deepEqual(errors,[],'browser encountered a fatal gameplay script error');assert.deepEqual(missingAssets,[],'No requested runtime asset may be missing');
+ fs.writeFileSync(path.join(output,'report.json'),JSON.stringify({ok:true,servedRoot:root,residentMode,founderMode,cancelPreservedSlots,browserReload,missingAssets,...report,errors},null,2));
  console.log('Bundled '+scenario.label+' '+(founderMode?'authored '+founderMode+' founder':residentMode?'existing resident':'recorded lineage')+' start and saved browser fork PASS',JSON.stringify({seed:report.seed,day:report.day,playerId:report.playerId,storedPlayerId:report.storedPlayerId,kind:report.creatureStart?.kind||'recorded',introduced:report.authoredIntroductions?.at(-1)?.actors?.length||0,sceneShown:report.sceneShown,storedPresent:report.storedPresent}));
 }finally{
  await browser.close();
