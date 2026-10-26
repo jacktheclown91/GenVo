@@ -1,0 +1,15 @@
+{
+  "source": "e54154844d136db250052f07acfcdfb1650a4927",
+  "command": "tests/care-expression.mjs with one diagnostic print before the original unchanged assertion",
+  "exitCode": 1,
+  "canonicalResult": {
+    "ok": true,
+    "type": "care",
+    "fed": 0,
+    "shared": 0,
+    "fromShelter": 0,
+    "message": "Tended G2 newborn \u00b7 checked and reassured."
+  },
+  "rawLogSha256": "7df22915d0815a33801e6cce2c50da0e4660a198802072fc2159caf49456cdf6",
+  "interpretation": "Ordinary care succeeded, no milk transfer; the positive nursing presentation precondition was not met. No visual assertion was bypassed."
+}
