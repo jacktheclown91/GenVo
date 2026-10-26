@@ -596,5 +596,22 @@
     "Regional single paired samples show no consistent speed gain.",
     "Finite-horizon heap growth is not leak proof.",
     "Natural evolution acceptance remains a separate required stage."
+  ],
+  "verificationEvents": [
+    {
+      "type": "exact-head-full-integration",
+      "sourceCommit": "3503dd628c6e074344883fda0fa29b382a0bc68d",
+      "run": 40400067101,
+      "status": "Success",
+      "checks": 121
+    },
+    {
+      "type": "later-no-heir-selection-correction",
+      "sourceCommit": "1cbd46e82badb02d2c8e37bddefea1649da21b9e",
+      "run": 40405119717,
+      "status": "Success",
+      "checks": 122,
+      "scope": "Recorded performance comparisons remain source-3503dd62; this later cleanup changes no measured mature tick body."
+    }
   ]
 }

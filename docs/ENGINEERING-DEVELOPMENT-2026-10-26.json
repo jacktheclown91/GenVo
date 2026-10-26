@@ -253,12 +253,44 @@
       "status": "Success",
       "workersCompleted": 2,
       "completeGateChecks": 121
+    },
+    {
+      "stage": "E",
+      "type": "remote-acceptance",
+      "sourceCommit": "1cbd46e82badb02d2c8e37bddefea1649da21b9e",
+      "url": "https://github.com/jacktheclown91/GenVo/actions/runs/40405119717",
+      "status": "Success",
+      "workersCompleted": 2,
+      "completeGateChecks": 122
+    },
+    {
+      "stage": "E",
+      "type": "natural-field-observation",
+      "sourceCommit": "1cbd46e82badb02d2c8e37bddefea1649da21b9e",
+      "worlds": 4,
+      "daysPerWorld": 320,
+      "totalCanonicalTicks": 307200,
+      "fullStateContinuation": "all four pass",
+      "summary": "docs/NATURAL-EVOLUTION-2026-10-26.json",
+      "originalVerbatimReceipts": "docs/NATURAL-EVOLUTION-2026-10-26-field-receipts.json.gz",
+      "unestablished": [
+        "naturally recognized stable species",
+        "causal geographic adaptation",
+        "universal advanced-anatomy reachability"
+      ]
+    },
+    {
+      "type": "separate-release-candidate",
+      "sourceCommit": "1cbd46e82badb02d2c8e37bddefea1649da21b9e",
+      "zipSha256": "1ee554ecae936b9101a8440852ac608584d86fb3bcb2cd66d5413547ad99d301",
+      "extractedBrowser": "native controls and both genuine advanced starts with Save/reload/Continue pass",
+      "extraction": "safe paths, complete CRC and every export byte equal",
+      "evidence": "docs/HTML5-RC-2026-10-26-1cbd46e8/verification.json",
+      "stableReleasePreserved": true,
+      "itchUploaded": false
     }
   ],
   "currentRequiredStages": [
-    "D: measured mature-world optimization",
-    "E: natural multigenerational investigation",
-    "verified separate release candidate",
-    "final source/CI/compatibility/handoff audit"
+    "Confirm final report/handoff commit exact-head 122-check CI; runtime, all four fields and the separate extracted RC are verified."
   ]
 }

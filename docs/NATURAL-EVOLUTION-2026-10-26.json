@@ -1,0 +1,3266 @@
+{
+  "schema": "genvo.natural-evolution-summary/1",
+  "partial": false,
+  "worlds": [
+    {
+      "seed": "SIMILARITY-LONG-0",
+      "mode": "original",
+      "runtimeFingerprint": "4e55b85a494562001417f872acf44a959b341189d5ea0f289ae1c5f594c862a9",
+      "observerSha256": "a411dc018ea84422c2b357ad684e1029d9281691df2a829116c879ecdd208f08",
+      "days": 320,
+      "ticks": 76800,
+      "initialLive": 192,
+      "finalLive": 79,
+      "births": 62,
+      "deaths": 175,
+      "conceptions": 39,
+      "completedDisplays": 269,
+      "mutuallyAcceptedDisplays": 49,
+      "combinedDisplayAcceptanceRate": 0.1821561338289963,
+      "distanceBins": [
+        {
+          "attempts": 121,
+          "accepted": 21,
+          "conceptions": 17,
+          "crossTaxon": 0
+        },
+        {
+          "attempts": 80,
+          "accepted": 19,
+          "conceptions": 16,
+          "crossTaxon": 0
+        },
+        {
+          "attempts": 56,
+          "accepted": 8,
+          "conceptions": 5,
+          "crossTaxon": 0
+        },
+        {
+          "attempts": 12,
+          "accepted": 1,
+          "conceptions": 1,
+          "crossTaxon": 0
+        },
+        {
+          "attempts": 0,
+          "accepted": 0,
+          "conceptions": 0,
+          "crossTaxon": 0
+        }
+      ],
+      "preferenceGroups": {
+        "at-least-one-contrast-allele": {
+          "attempts": 114,
+          "accepted": 17,
+          "conceptions": 14
+        },
+        "other-inherited-profiles": {
+          "attempts": 155,
+          "accepted": 32,
+          "conceptions": 25
+        }
+      },
+      "foundingLabelCombinations": {
+        "genvo × rootling": {
+          "attempts": 9,
+          "accepted": 1,
+          "conceptions": 1
+        },
+        "rootling × rootling": {
+          "attempts": 2,
+          "accepted": 1,
+          "conceptions": 1
+        },
+        "mosskip × rootling": {
+          "attempts": 12,
+          "accepted": 2,
+          "conceptions": 0
+        },
+        "mosskip × mosskip": {
+          "attempts": 198,
+          "accepted": 35,
+          "conceptions": 30
+        },
+        "mirelick × mosskip": {
+          "attempts": 12,
+          "accepted": 1,
+          "conceptions": 1
+        },
+        "genvo × mosskip": {
+          "attempts": 32,
+          "accepted": 7,
+          "conceptions": 5
+        },
+        "genvo × genvo": {
+          "attempts": 3,
+          "accepted": 1,
+          "conceptions": 0
+        },
+        "genvo × mirelick": {
+          "attempts": 1,
+          "accepted": 1,
+          "conceptions": 1
+        }
+      },
+      "foundingLabelCrossConceptions": 8,
+      "unresolvedParentConceptions": 0,
+      "parentLabelScope": "Founding labels reconstructed from retained canonical animals, deaths and births; distinct from the existing recognized evolutionary taxon.",
+      "bySpecies": {
+        "mosskip": {
+          "births": 48,
+          "aliveAtHorizon": 30,
+          "recordedDeaths": 18,
+          "survivedToMaturity": 43,
+          "juvenileDeaths": 1,
+          "unresolvedOrDeparted": 0,
+          "maximumAncestryDepth": 4,
+          "bodyPlans": {
+            "bp0-225474e8": 30,
+            "bp0-2ca6a18c": 1,
+            "bp0-31191169": 2,
+            "bp0-f75f285c": 1,
+            "bp0-6b267698": 2,
+            "bp0-74e582f9": 2,
+            "bp0-cdee384b": 1,
+            "bp0-cdfe6180": 1,
+            "bp0-76407061": 1,
+            "bp0-e321d450": 1,
+            "bp0-4134709b": 1,
+            "bp0-c61809e6": 1,
+            "bp0-19ed71d6": 1,
+            "bp0-7e7991f3": 1,
+            "bp0-0e94bc68": 1,
+            "bp0-713cdbdf": 1
+          }
+        },
+        "genvo": {
+          "births": 14,
+          "aliveAtHorizon": 6,
+          "recordedDeaths": 8,
+          "survivedToMaturity": 10,
+          "juvenileDeaths": 0,
+          "unresolvedOrDeparted": 0,
+          "maximumAncestryDepth": 3,
+          "bodyPlans": {
+            "bp0-cafc8137": 1,
+            "bp0-a3fe6347": 1,
+            "bp0-0e94bc68": 2,
+            "bp0-fe79a550": 2,
+            "bp0-4af78d0e": 1,
+            "bp0-33434e38": 3,
+            "bp0-4ad3ac20": 1,
+            "bp0-646744f3": 2,
+            "bp0-f75f285c": 1
+          }
+        }
+      },
+      "rangeBySpecies": {
+        "mosskip": {
+          "initial": 64,
+          "min": 46,
+          "max": 78,
+          "final": 46
+        },
+        "rootling": {
+          "initial": 32,
+          "min": 0,
+          "max": 32,
+          "final": 0
+        },
+        "needlejaw": {
+          "initial": 12,
+          "min": 0,
+          "max": 12,
+          "final": 0
+        },
+        "genvo": {
+          "initial": 24,
+          "min": 13,
+          "max": 25,
+          "final": 13
+        },
+        "rillsifter": {
+          "initial": 18,
+          "min": 0,
+          "max": 18,
+          "final": 0
+        },
+        "mirelick": {
+          "initial": 20,
+          "min": 7,
+          "max": 20,
+          "final": 7
+        },
+        "podshell": {
+          "initial": 18,
+          "min": 13,
+          "max": 18,
+          "final": 13
+        },
+        "bankjaw": {
+          "initial": 4,
+          "min": 0,
+          "max": 4,
+          "final": 0
+        }
+      },
+      "ancestralPlanRetention": {
+        "mosskip": {
+          "living": 46,
+          "matchingFoundingPlan": 32,
+          "livingPlans": {
+            "bp0-225474e8": 32,
+            "bp0-f735b5b7": 1,
+            "bp0-2ca6a18c": 1,
+            "bp0-31191169": 2,
+            "bp0-6b267698": 1,
+            "bp0-74e582f9": 2,
+            "bp0-cdee384b": 1,
+            "bp0-cdfe6180": 1,
+            "bp0-e321d450": 1,
+            "bp0-19ed71d6": 1,
+            "bp0-7e7991f3": 1,
+            "bp0-0e94bc68": 1,
+            "bp0-713cdbdf": 1
+          }
+        },
+        "genvo": {
+          "living": 13,
+          "matchingFoundingPlan": 7,
+          "livingPlans": {
+            "bp0-4134709b": 7,
+            "bp0-cafc8137": 1,
+            "bp0-0e94bc68": 2,
+            "bp0-646744f3": 2,
+            "bp0-f75f285c": 1
+          }
+        },
+        "mirelick": {
+          "living": 7,
+          "matchingFoundingPlan": 7,
+          "livingPlans": {
+            "bp0-362000f9": 7
+          }
+        },
+        "podshell": {
+          "living": 13,
+          "matchingFoundingPlan": 13,
+          "livingPlans": {
+            "bp0-f2c1ac4e": 13
+          }
+        }
+      },
+      "maximumObservedAncestryDepth": 4,
+      "lineage": {
+        "initial": 1,
+        "final": 0,
+        "births": 0,
+        "deaths": [
+          {
+            "id": 109,
+            "species": "genvo",
+            "lineage": true,
+            "day": 72,
+            "age": 103,
+            "energy": 116.81683337675784,
+            "hydration": 0,
+            "health": -10,
+            "cause": "dehydration"
+          }
+        ],
+        "novelPartIds": []
+      },
+      "novelBirthBodyPlans": [
+        "bp0-2ca6a18c",
+        "bp0-31191169",
+        "bp0-f75f285c",
+        "bp0-6b267698",
+        "bp0-74e582f9",
+        "bp0-cdee384b",
+        "bp0-cdfe6180",
+        "bp0-76407061",
+        "bp0-e321d450",
+        "bp0-cafc8137",
+        "bp0-a3fe6347",
+        "bp0-0e94bc68",
+        "bp0-fe79a550",
+        "bp0-4af78d0e",
+        "bp0-33434e38",
+        "bp0-c61809e6",
+        "bp0-19ed71d6",
+        "bp0-7e7991f3",
+        "bp0-4ad3ac20",
+        "bp0-646744f3",
+        "bp0-713cdbdf"
+      ],
+      "finalBodyPlans": {
+        "bp0-225474e8": 32,
+        "bp0-f735b5b7": 1,
+        "bp0-4134709b": 7,
+        "bp0-362000f9": 7,
+        "bp0-f2c1ac4e": 13,
+        "bp0-2ca6a18c": 1,
+        "bp0-31191169": 2,
+        "bp0-6b267698": 1,
+        "bp0-74e582f9": 2,
+        "bp0-cdee384b": 1,
+        "bp0-cdfe6180": 1,
+        "bp0-e321d450": 1,
+        "bp0-cafc8137": 1,
+        "bp0-0e94bc68": 3,
+        "bp0-19ed71d6": 1,
+        "bp0-7e7991f3": 1,
+        "bp0-646744f3": 2,
+        "bp0-f75f285c": 1,
+        "bp0-713cdbdf": 1
+      },
+      "novelBodyExamples": [
+        {
+          "plan": "bp0-2ca6a18c",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "sturdy-leg",
+            "spring-leg",
+            "spring-leg",
+            "sturdy-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 75
+        },
+        {
+          "plan": "bp0-31191169",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "prehensile-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 94
+        },
+        {
+          "plan": "bp0-f75f285c",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "compound-eye",
+            "compound-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 117
+        },
+        {
+          "plan": "bp0-6b267698",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "digging-forelimb",
+            "digging-forelimb",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 136
+        },
+        {
+          "plan": "bp0-74e582f9",
+          "species": "mosskip",
+          "parts": [
+            "stout-torso",
+            "tracker-eye",
+            "tracker-eye",
+            "walking-leg",
+            "padded-leg",
+            "padded-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 144
+        },
+        {
+          "plan": "bp0-cdee384b",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "moss-back",
+            "tracker-eye",
+            "tracker-eye",
+            "padded-leg",
+            "spring-leg",
+            "spring-leg",
+            "padded-leg",
+            "sucker-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 144
+        },
+        {
+          "plan": "bp0-cdfe6180",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "club-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 181
+        },
+        {
+          "plan": "bp0-76407061",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "tearing-jaw",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 186
+        },
+        {
+          "plan": "bp0-e321d450",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "sturdy-leg",
+            "sturdy-leg",
+            "sturdy-leg",
+            "sturdy-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 3,
+          "bornDay": 192
+        },
+        {
+          "plan": "bp0-cafc8137",
+          "species": "genvo",
+          "parts": [
+            "small-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 202
+        },
+        {
+          "plan": "bp0-a3fe6347",
+          "species": "genvo",
+          "parts": [
+            "small-torso",
+            "simple-eye",
+            "simple-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 202
+        },
+        {
+          "plan": "bp0-0e94bc68",
+          "species": "genvo",
+          "parts": [
+            "light-torso",
+            "simple-eye",
+            "simple-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 202
+        },
+        {
+          "plan": "bp0-fe79a550",
+          "species": "genvo",
+          "parts": [
+            "light-torso",
+            "simple-eye",
+            "simple-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 202
+        },
+        {
+          "plan": "bp0-4af78d0e",
+          "species": "genvo",
+          "parts": [
+            "light-torso",
+            "eyespot",
+            "eyespot",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 218
+        },
+        {
+          "plan": "bp0-33434e38",
+          "species": "genvo",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "grazing-mouth"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 218
+        },
+        {
+          "plan": "bp0-c61809e6",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "simple-eye",
+            "simple-eye",
+            "walking-leg",
+            "runner-leg",
+            "runner-leg",
+            "walking-leg",
+            "grazing-mouth"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 222
+        },
+        {
+          "plan": "bp0-19ed71d6",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "sensory-bristle",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "sensory-bristle",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 3,
+          "bornDay": 238
+        },
+        {
+          "plan": "bp0-7e7991f3",
+          "species": "mosskip",
+          "parts": [
+            "stout-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 3,
+          "bornDay": 239
+        },
+        {
+          "plan": "bp0-4ad3ac20",
+          "species": "genvo",
+          "parts": [
+            "light-torso",
+            "simple-eye",
+            "simple-eye",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 243
+        },
+        {
+          "plan": "bp0-646744f3",
+          "species": "genvo",
+          "parts": [
+            "small-torso",
+            "compound-eye",
+            "compound-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth"
+          ],
+          "ancestryDepth": 3,
+          "bornDay": 293
+        },
+        {
+          "plan": "bp0-713cdbdf",
+          "species": "mosskip",
+          "parts": [
+            "stout-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "arid-pad",
+            "arid-pad",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 4,
+          "bornDay": 318
+        }
+      ],
+      "recognizedTaxa": [],
+      "actualCrossTaxonConceptions": 0,
+      "populationCenters": [],
+      "speciationStates": [],
+      "inheritedGeneMoments": {
+        "mosskip": {
+          "initial": {
+            "body": {
+              "count": 64,
+              "mean": 0.9963343896939478,
+              "variance": 0.004870071167985768
+            },
+            "motion": {
+              "count": 64,
+              "mean": 1.0174192283651793,
+              "variance": 0.0026970844845191078
+            },
+            "metabolism": {
+              "count": 64,
+              "mean": 0.985737089630129,
+              "variance": 0.0026216275227297636
+            },
+            "digestion": {
+              "count": 64,
+              "mean": 0.9972797116322909,
+              "variance": 0.003352918124862936
+            },
+            "senses": {
+              "count": 64,
+              "mean": 1.0066248987437576,
+              "variance": 0.0034955705653749725
+            },
+            "climate": {
+              "count": 64,
+              "mean": 0.9932338629274455,
+              "variance": 0.004203373949284828
+            },
+            "immunity": {
+              "count": 64,
+              "mean": 0.9983941534497718,
+              "variance": 0.0031315260788269406
+            },
+            "temperament": {
+              "count": 64,
+              "mean": 0.992790678543679,
+              "variance": 0.0035321700080442886
+            }
+          },
+          "final": {
+            "body": {
+              "count": 46,
+              "mean": 0.9939549215890193,
+              "variance": 0.004656959410098582
+            },
+            "motion": {
+              "count": 46,
+              "mean": 1.0261169788856825,
+              "variance": 0.001974372780457312
+            },
+            "metabolism": {
+              "count": 46,
+              "mean": 0.9719622662265361,
+              "variance": 0.002869529204461263
+            },
+            "digestion": {
+              "count": 46,
+              "mean": 1.0017852088368224,
+              "variance": 0.0019253894256641146
+            },
+            "senses": {
+              "count": 46,
+              "mean": 1.0028228338167713,
+              "variance": 0.0024265307188520158
+            },
+            "climate": {
+              "count": 46,
+              "mean": 0.9960669278482948,
+              "variance": 0.0037191097258643113
+            },
+            "immunity": {
+              "count": 46,
+              "mean": 0.982159923800353,
+              "variance": 0.0021495932355006797
+            },
+            "temperament": {
+              "count": 46,
+              "mean": 0.9829905146320227,
+              "variance": 0.003701531176214745
+            }
+          }
+        },
+        "genvo": {
+          "initial": {
+            "body": {
+              "count": 24,
+              "mean": 0.9851825955149253,
+              "variance": 0.0021173636938601748
+            },
+            "motion": {
+              "count": 24,
+              "mean": 0.9864856356638484,
+              "variance": 0.003761336496450718
+            },
+            "metabolism": {
+              "count": 24,
+              "mean": 1.0048106851968137,
+              "variance": 0.003162242101938384
+            },
+            "digestion": {
+              "count": 24,
+              "mean": 1.009774973949728,
+              "variance": 0.0030037963826490266
+            },
+            "senses": {
+              "count": 24,
+              "mean": 1.0046726258044751,
+              "variance": 0.0037612312170880458
+            },
+            "climate": {
+              "count": 24,
+              "mean": 0.9948979482035308,
+              "variance": 0.003988038709071828
+            },
+            "immunity": {
+              "count": 24,
+              "mean": 0.9866046705962314,
+              "variance": 0.0033505528074651014
+            },
+            "temperament": {
+              "count": 24,
+              "mean": 1.0001367040812814,
+              "variance": 0.0030093847515881844
+            }
+          },
+          "final": {
+            "body": {
+              "count": 13,
+              "mean": 0.9812191978421534,
+              "variance": 0.001668562708331156
+            },
+            "motion": {
+              "count": 13,
+              "mean": 0.9790013047322432,
+              "variance": 0.0024175898417629904
+            },
+            "metabolism": {
+              "count": 13,
+              "mean": 1.0097335425401788,
+              "variance": 0.0036282432287746413
+            },
+            "digestion": {
+              "count": 13,
+              "mean": 1.0022907076794636,
+              "variance": 0.002692632118476812
+            },
+            "senses": {
+              "count": 13,
+              "mean": 0.9831181342156982,
+              "variance": 0.003731008758926735
+            },
+            "climate": {
+              "count": 13,
+              "mean": 0.9699135363572757,
+              "variance": 0.004006991572994001
+            },
+            "immunity": {
+              "count": 13,
+              "mean": 1.0148474359744863,
+              "variance": 0.001647628868976847
+            },
+            "temperament": {
+              "count": 13,
+              "mean": 1.03399024440473,
+              "variance": 0.0013748644099065288
+            }
+          }
+        }
+      },
+      "finalRng": 526164501,
+      "completeStateSha256": "1bb734a90d6574f078541e6b9b7174864fbbc2bcfd26563683bb87697cfe614d",
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "evidence": {
+        "file": "reports/engineering-E-fixed-long-0-original.json",
+        "sha256": "a22d95b0027840f8350618a2ac9b5875de9149166b1231915ffe99b46d689368",
+        "snapshot": "reports/engineering-E-fixed-long-0-original.json.snapshot.v8"
+      }
+    },
+    {
+      "seed": "SIMILARITY-LONG-0",
+      "mode": "balanced",
+      "runtimeFingerprint": "4e55b85a494562001417f872acf44a959b341189d5ea0f289ae1c5f594c862a9",
+      "observerSha256": "a411dc018ea84422c2b357ad684e1029d9281691df2a829116c879ecdd208f08",
+      "days": 320,
+      "ticks": 76800,
+      "initialLive": 192,
+      "finalLive": 77,
+      "births": 76,
+      "deaths": 191,
+      "conceptions": 53,
+      "completedDisplays": 116,
+      "mutuallyAcceptedDisplays": 58,
+      "combinedDisplayAcceptanceRate": 0.5,
+      "distanceBins": [
+        {
+          "attempts": 39,
+          "accepted": 25,
+          "conceptions": 25,
+          "crossTaxon": 0
+        },
+        {
+          "attempts": 44,
+          "accepted": 24,
+          "conceptions": 21,
+          "crossTaxon": 0
+        },
+        {
+          "attempts": 22,
+          "accepted": 7,
+          "conceptions": 5,
+          "crossTaxon": 0
+        },
+        {
+          "attempts": 11,
+          "accepted": 2,
+          "conceptions": 2,
+          "crossTaxon": 0
+        },
+        {
+          "attempts": 0,
+          "accepted": 0,
+          "conceptions": 0,
+          "crossTaxon": 0
+        }
+      ],
+      "preferenceGroups": {
+        "at-least-one-contrast-allele": {
+          "attempts": 44,
+          "accepted": 17,
+          "conceptions": 15
+        },
+        "other-inherited-profiles": {
+          "attempts": 72,
+          "accepted": 41,
+          "conceptions": 38
+        }
+      },
+      "foundingLabelCombinations": {
+        "genvo × rootling": {
+          "attempts": 2,
+          "accepted": 1,
+          "conceptions": 1
+        },
+        "rootling × rootling": {
+          "attempts": 2,
+          "accepted": 1,
+          "conceptions": 1
+        },
+        "mosskip × mosskip": {
+          "attempts": 78,
+          "accepted": 46,
+          "conceptions": 43
+        },
+        "mosskip × rootling": {
+          "attempts": 9,
+          "accepted": 1,
+          "conceptions": 1
+        },
+        "mirelick × mosskip": {
+          "attempts": 9,
+          "accepted": 3,
+          "conceptions": 3
+        },
+        "genvo × mirelick": {
+          "attempts": 2,
+          "accepted": 1,
+          "conceptions": 1
+        },
+        "genvo × mosskip": {
+          "attempts": 13,
+          "accepted": 4,
+          "conceptions": 2
+        },
+        "mirelick × mirelick": {
+          "attempts": 1,
+          "accepted": 1,
+          "conceptions": 1
+        }
+      },
+      "foundingLabelCrossConceptions": 8,
+      "unresolvedParentConceptions": 0,
+      "parentLabelScope": "Founding labels reconstructed from retained canonical animals, deaths and births; distinct from the existing recognized evolutionary taxon.",
+      "bySpecies": {
+        "mosskip": {
+          "births": 63,
+          "aliveAtHorizon": 32,
+          "recordedDeaths": 31,
+          "survivedToMaturity": 59,
+          "juvenileDeaths": 3,
+          "unresolvedOrDeparted": 0,
+          "maximumAncestryDepth": 5,
+          "bodyPlans": {
+            "bp0-225474e8": 37,
+            "bp0-6b267698": 1,
+            "bp0-5dfb061a": 1,
+            "bp0-8663e3ca": 3,
+            "bp0-ce21918f": 1,
+            "bp0-62b0c68a": 1,
+            "bp0-c034cee8": 1,
+            "bp0-0e94bc68": 1,
+            "bp0-ebd764c2": 2,
+            "bp0-8722e69c": 2,
+            "bp0-4b86a002": 2,
+            "bp0-02566798": 1,
+            "bp0-f75f285c": 1,
+            "bp0-1230cc18": 2,
+            "bp0-d7527e36": 1,
+            "bp0-73df89a2": 1,
+            "bp0-19ed71d6": 1,
+            "bp0-4af78d0e": 1,
+            "bp0-c466fda2": 1,
+            "bp0-ba33dc46": 1,
+            "bp0-f4c28504": 1
+          }
+        },
+        "rootling": {
+          "births": 3,
+          "aliveAtHorizon": 0,
+          "recordedDeaths": 3,
+          "survivedToMaturity": 3,
+          "juvenileDeaths": 0,
+          "unresolvedOrDeparted": 0,
+          "maximumAncestryDepth": 2,
+          "bodyPlans": {
+            "bp0-da142946": 1,
+            "bp0-88c85ce9": 1,
+            "bp0-8bf7ddca": 1
+          }
+        },
+        "genvo": {
+          "births": 6,
+          "aliveAtHorizon": 3,
+          "recordedDeaths": 3,
+          "survivedToMaturity": 6,
+          "juvenileDeaths": 0,
+          "unresolvedOrDeparted": 0,
+          "maximumAncestryDepth": 2,
+          "bodyPlans": {
+            "bp0-14b7d82d": 1,
+            "bp0-abc0dc8e": 1,
+            "bp0-4134709b": 1,
+            "bp0-9d40f8ed": 1,
+            "bp0-0e94bc68": 1,
+            "bp0-33434e38": 1
+          }
+        },
+        "mirelick": {
+          "births": 4,
+          "aliveAtHorizon": 3,
+          "recordedDeaths": 1,
+          "survivedToMaturity": 2,
+          "juvenileDeaths": 0,
+          "unresolvedOrDeparted": 0,
+          "maximumAncestryDepth": 2,
+          "bodyPlans": {
+            "bp0-562e7e84": 1,
+            "bp0-d64e2eea": 1,
+            "bp0-362000f9": 1,
+            "bp0-1a552378": 1
+          }
+        }
+      },
+      "rangeBySpecies": {
+        "mosskip": {
+          "initial": 64,
+          "min": 47,
+          "max": 92,
+          "final": 47
+        },
+        "rootling": {
+          "initial": 32,
+          "min": 0,
+          "max": 32,
+          "final": 0
+        },
+        "needlejaw": {
+          "initial": 12,
+          "min": 0,
+          "max": 12,
+          "final": 0
+        },
+        "genvo": {
+          "initial": 24,
+          "min": 13,
+          "max": 24,
+          "final": 13
+        },
+        "rillsifter": {
+          "initial": 18,
+          "min": 0,
+          "max": 18,
+          "final": 0
+        },
+        "mirelick": {
+          "initial": 20,
+          "min": 5,
+          "max": 20,
+          "final": 5
+        },
+        "podshell": {
+          "initial": 18,
+          "min": 12,
+          "max": 18,
+          "final": 12
+        },
+        "bankjaw": {
+          "initial": 4,
+          "min": 0,
+          "max": 4,
+          "final": 0
+        }
+      },
+      "ancestralPlanRetention": {
+        "mosskip": {
+          "living": 47,
+          "matchingFoundingPlan": 33,
+          "livingPlans": {
+            "bp0-225474e8": 33,
+            "bp0-f735b5b7": 1,
+            "bp0-8663e3ca": 2,
+            "bp0-8722e69c": 2,
+            "bp0-4b86a002": 2,
+            "bp0-f75f285c": 1,
+            "bp0-73df89a2": 1,
+            "bp0-19ed71d6": 1,
+            "bp0-ebd764c2": 1,
+            "bp0-4af78d0e": 1,
+            "bp0-c466fda2": 1,
+            "bp0-f4c28504": 1
+          }
+        },
+        "genvo": {
+          "living": 13,
+          "matchingFoundingPlan": 11,
+          "livingPlans": {
+            "bp0-4134709b": 11,
+            "bp0-abc0dc8e": 1,
+            "bp0-0e94bc68": 1
+          }
+        },
+        "mirelick": {
+          "living": 5,
+          "matchingFoundingPlan": 3,
+          "livingPlans": {
+            "bp0-362000f9": 3,
+            "bp0-562e7e84": 1,
+            "bp0-1a552378": 1
+          }
+        },
+        "podshell": {
+          "living": 12,
+          "matchingFoundingPlan": 12,
+          "livingPlans": {
+            "bp0-f2c1ac4e": 12
+          }
+        }
+      },
+      "maximumObservedAncestryDepth": 5,
+      "lineage": {
+        "initial": 1,
+        "final": 0,
+        "births": 0,
+        "deaths": [
+          {
+            "id": 109,
+            "species": "genvo",
+            "lineage": true,
+            "day": 35,
+            "age": 66,
+            "energy": 84.6528978999452,
+            "hydration": 0,
+            "health": -8.746117831672443,
+            "cause": "dehydration"
+          }
+        ],
+        "novelPartIds": []
+      },
+      "novelBirthBodyPlans": [
+        "bp0-6b267698",
+        "bp0-5dfb061a",
+        "bp0-8663e3ca",
+        "bp0-ce21918f",
+        "bp0-62b0c68a",
+        "bp0-88c85ce9",
+        "bp0-8bf7ddca",
+        "bp0-c034cee8",
+        "bp0-0e94bc68",
+        "bp0-14b7d82d",
+        "bp0-abc0dc8e",
+        "bp0-ebd764c2",
+        "bp0-8722e69c",
+        "bp0-4b86a002",
+        "bp0-02566798",
+        "bp0-f75f285c",
+        "bp0-1230cc18",
+        "bp0-d7527e36",
+        "bp0-73df89a2",
+        "bp0-19ed71d6",
+        "bp0-562e7e84",
+        "bp0-4af78d0e",
+        "bp0-c466fda2",
+        "bp0-ba33dc46",
+        "bp0-9d40f8ed",
+        "bp0-33434e38",
+        "bp0-d64e2eea",
+        "bp0-f4c28504",
+        "bp0-1a552378"
+      ],
+      "finalBodyPlans": {
+        "bp0-225474e8": 33,
+        "bp0-f735b5b7": 1,
+        "bp0-4134709b": 11,
+        "bp0-362000f9": 3,
+        "bp0-f2c1ac4e": 12,
+        "bp0-8663e3ca": 2,
+        "bp0-abc0dc8e": 1,
+        "bp0-8722e69c": 2,
+        "bp0-4b86a002": 2,
+        "bp0-f75f285c": 1,
+        "bp0-73df89a2": 1,
+        "bp0-19ed71d6": 1,
+        "bp0-ebd764c2": 1,
+        "bp0-562e7e84": 1,
+        "bp0-4af78d0e": 1,
+        "bp0-c466fda2": 1,
+        "bp0-0e94bc68": 1,
+        "bp0-f4c28504": 1,
+        "bp0-1a552378": 1
+      },
+      "novelBodyExamples": [
+        {
+          "plan": "bp0-6b267698",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "digging-forelimb",
+            "digging-forelimb",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 49
+        },
+        {
+          "plan": "bp0-5dfb061a",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "claw",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "claw",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 49
+        },
+        {
+          "plan": "bp0-8663e3ca",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "whip-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 53
+        },
+        {
+          "plan": "bp0-ce21918f",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "beak-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 53
+        },
+        {
+          "plan": "bp0-62b0c68a",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "moss-back",
+            "wide-field-eye",
+            "wide-field-eye",
+            "padded-leg",
+            "spring-leg",
+            "spring-leg",
+            "padded-leg",
+            "sucker-mouth",
+            "fat-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 55
+        },
+        {
+          "plan": "bp0-88c85ce9",
+          "species": "rootling",
+          "parts": [
+            "light-torso",
+            "eyespot",
+            "eyespot",
+            "runner-leg",
+            "walking-leg",
+            "walking-leg",
+            "runner-leg",
+            "grazing-mouth",
+            "fat-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 57
+        },
+        {
+          "plan": "bp0-8bf7ddca",
+          "species": "rootling",
+          "parts": [
+            "stout-torso",
+            "eyespot",
+            "eyespot",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "nibbler-mouth",
+            "fat-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 57
+        },
+        {
+          "plan": "bp0-c034cee8",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "spring-leg",
+            "spring-leg",
+            "spring-leg",
+            "spring-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 61
+        },
+        {
+          "plan": "bp0-0e94bc68",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "simple-eye",
+            "simple-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 73
+        },
+        {
+          "plan": "bp0-14b7d82d",
+          "species": "genvo",
+          "parts": [
+            "small-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 76
+        },
+        {
+          "plan": "bp0-abc0dc8e",
+          "species": "genvo",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "sensory-bristle",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "sensory-bristle",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 76
+        },
+        {
+          "plan": "bp0-ebd764c2",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "filter-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 3,
+          "bornDay": 85
+        },
+        {
+          "plan": "bp0-8722e69c",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "grasper",
+            "spring-leg",
+            "spring-leg",
+            "grasper",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 106
+        },
+        {
+          "plan": "bp0-4b86a002",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "barb",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "barb",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 3,
+          "bornDay": 112
+        },
+        {
+          "plan": "bp0-02566798",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "nibbler-mouth",
+            "whip-tail"
+          ],
+          "ancestryDepth": 3,
+          "bornDay": 115
+        },
+        {
+          "plan": "bp0-f75f285c",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "compound-eye",
+            "compound-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 3,
+          "bornDay": 135
+        },
+        {
+          "plan": "bp0-1230cc18",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "webbed-leg",
+            "webbed-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 139
+        },
+        {
+          "plan": "bp0-d7527e36",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "padded-leg",
+            "padded-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 178
+        },
+        {
+          "plan": "bp0-73df89a2",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "padded-leg",
+            "spring-leg",
+            "spring-leg",
+            "padded-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 178
+        },
+        {
+          "plan": "bp0-19ed71d6",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "sensory-bristle",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "sensory-bristle",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 3,
+          "bornDay": 183
+        },
+        {
+          "plan": "bp0-562e7e84",
+          "species": "mirelick",
+          "parts": [
+            "light-torso",
+            "moss-back",
+            "wide-field-eye",
+            "wide-field-eye",
+            "padded-leg",
+            "spring-leg",
+            "spring-leg",
+            "padded-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 189
+        },
+        {
+          "plan": "bp0-4af78d0e",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "eyespot",
+            "eyespot",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 3,
+          "bornDay": 195
+        },
+        {
+          "plan": "bp0-c466fda2",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "grasper",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 3,
+          "bornDay": 195
+        },
+        {
+          "plan": "bp0-ba33dc46",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "armor-plate",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 4,
+          "bornDay": 196
+        },
+        {
+          "plan": "bp0-9d40f8ed",
+          "species": "genvo",
+          "parts": [
+            "light-torso",
+            "simple-eye",
+            "simple-eye",
+            "scent-gland",
+            "scent-gland",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 211
+        },
+        {
+          "plan": "bp0-33434e38",
+          "species": "genvo",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "grazing-mouth"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 211
+        },
+        {
+          "plan": "bp0-d64e2eea",
+          "species": "mirelick",
+          "parts": [
+            "stout-torso",
+            "tracker-eye",
+            "tracker-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "sucker-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 263
+        },
+        {
+          "plan": "bp0-f4c28504",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "runner-leg",
+            "runner-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "whip-tail"
+          ],
+          "ancestryDepth": 5,
+          "bornDay": 282
+        },
+        {
+          "plan": "bp0-1a552378",
+          "species": "mirelick",
+          "parts": [
+            "stout-torso",
+            "moss-back",
+            "tracker-eye",
+            "tracker-eye",
+            "padded-leg",
+            "padded-leg",
+            "padded-leg",
+            "padded-leg",
+            "grazing-mouth",
+            "fat-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 306
+        }
+      ],
+      "recognizedTaxa": [],
+      "actualCrossTaxonConceptions": 0,
+      "populationCenters": [],
+      "speciationStates": [],
+      "inheritedGeneMoments": {
+        "mosskip": {
+          "initial": {
+            "body": {
+              "count": 64,
+              "mean": 0.9963343896939478,
+              "variance": 0.004870071167985768
+            },
+            "motion": {
+              "count": 64,
+              "mean": 1.0174192283651793,
+              "variance": 0.0026970844845191078
+            },
+            "metabolism": {
+              "count": 64,
+              "mean": 0.985737089630129,
+              "variance": 0.0026216275227297636
+            },
+            "digestion": {
+              "count": 64,
+              "mean": 0.9972797116322909,
+              "variance": 0.003352918124862936
+            },
+            "senses": {
+              "count": 64,
+              "mean": 1.0066248987437576,
+              "variance": 0.0034955705653749725
+            },
+            "climate": {
+              "count": 64,
+              "mean": 0.9932338629274455,
+              "variance": 0.004203373949284828
+            },
+            "immunity": {
+              "count": 64,
+              "mean": 0.9983941534497718,
+              "variance": 0.0031315260788269406
+            },
+            "temperament": {
+              "count": 64,
+              "mean": 0.992790678543679,
+              "variance": 0.0035321700080442886
+            }
+          },
+          "final": {
+            "body": {
+              "count": 47,
+              "mean": 0.9901809093353725,
+              "variance": 0.004503561870687567
+            },
+            "motion": {
+              "count": 47,
+              "mean": 1.0233795417472447,
+              "variance": 0.0019886809542162265
+            },
+            "metabolism": {
+              "count": 47,
+              "mean": 0.981324559944739,
+              "variance": 0.0023578058471329655
+            },
+            "digestion": {
+              "count": 47,
+              "mean": 0.9838547723275973,
+              "variance": 0.0031729293077751297
+            },
+            "senses": {
+              "count": 47,
+              "mean": 1.0152687364417774,
+              "variance": 0.002170311705583128
+            },
+            "climate": {
+              "count": 47,
+              "mean": 0.9990326453314542,
+              "variance": 0.0033232112249530488
+            },
+            "immunity": {
+              "count": 47,
+              "mean": 1.0040083241673547,
+              "variance": 0.002279746821983286
+            },
+            "temperament": {
+              "count": 47,
+              "mean": 0.9888435351932109,
+              "variance": 0.0026187878087546856
+            }
+          }
+        },
+        "rootling": {
+          "initial": {
+            "body": {
+              "count": 32,
+              "mean": 0.9912436099359185,
+              "variance": 0.003072393772122761
+            },
+            "motion": {
+              "count": 32,
+              "mean": 0.9864470342945424,
+              "variance": 0.003592106865080824
+            },
+            "metabolism": {
+              "count": 32,
+              "mean": 0.9852997117457564,
+              "variance": 0.00320255544268111
+            },
+            "digestion": {
+              "count": 32,
+              "mean": 0.9896244419724101,
+              "variance": 0.0026943141548665395
+            },
+            "senses": {
+              "count": 32,
+              "mean": 1.0089278858882609,
+              "variance": 0.0020524224286755377
+            },
+            "climate": {
+              "count": 32,
+              "mean": 1.0002380749952864,
+              "variance": 0.002733480477180583
+            },
+            "immunity": {
+              "count": 32,
+              "mean": 1.003828734430135,
+              "variance": 0.0030355293472075218
+            },
+            "temperament": {
+              "count": 32,
+              "mean": 0.992891477329249,
+              "variance": 0.003580919254457915
+            }
+          },
+          "final": {}
+        },
+        "genvo": {
+          "initial": {
+            "body": {
+              "count": 24,
+              "mean": 0.9851825955149253,
+              "variance": 0.0021173636938601748
+            },
+            "motion": {
+              "count": 24,
+              "mean": 0.9864856356638484,
+              "variance": 0.003761336496450718
+            },
+            "metabolism": {
+              "count": 24,
+              "mean": 1.0048106851968137,
+              "variance": 0.003162242101938384
+            },
+            "digestion": {
+              "count": 24,
+              "mean": 1.009774973949728,
+              "variance": 0.0030037963826490266
+            },
+            "senses": {
+              "count": 24,
+              "mean": 1.0046726258044751,
+              "variance": 0.0037612312170880458
+            },
+            "climate": {
+              "count": 24,
+              "mean": 0.9948979482035308,
+              "variance": 0.003988038709071828
+            },
+            "immunity": {
+              "count": 24,
+              "mean": 0.9866046705962314,
+              "variance": 0.0033505528074651014
+            },
+            "temperament": {
+              "count": 24,
+              "mean": 1.0001367040812814,
+              "variance": 0.0030093847515881844
+            }
+          },
+          "final": {
+            "body": {
+              "count": 13,
+              "mean": 0.9804960390134867,
+              "variance": 0.0027636254125895654
+            },
+            "motion": {
+              "count": 13,
+              "mean": 0.9758119653806239,
+              "variance": 0.0033719808052317113
+            },
+            "metabolism": {
+              "count": 13,
+              "mean": 0.9977479617698956,
+              "variance": 0.002257032876837428
+            },
+            "digestion": {
+              "count": 13,
+              "mean": 1.0173981744102778,
+              "variance": 0.0033940595106154436
+            },
+            "senses": {
+              "count": 13,
+              "mean": 0.9961443441463366,
+              "variance": 0.0036371746356405055
+            },
+            "climate": {
+              "count": 13,
+              "mean": 1.003266879511205,
+              "variance": 0.0037173191232737768
+            },
+            "immunity": {
+              "count": 13,
+              "mean": 0.9930235387752064,
+              "variance": 0.004502255519943099
+            },
+            "temperament": {
+              "count": 13,
+              "mean": 0.9843077191517536,
+              "variance": 0.004516186592366744
+            }
+          }
+        },
+        "mirelick": {
+          "initial": {
+            "body": {
+              "count": 20,
+              "mean": 0.968801172366366,
+              "variance": 0.0023360767938145344
+            },
+            "motion": {
+              "count": 20,
+              "mean": 0.997033090100158,
+              "variance": 0.003996167268612516
+            },
+            "metabolism": {
+              "count": 20,
+              "mean": 1.0197392882942222,
+              "variance": 0.0021369961229209533
+            },
+            "digestion": {
+              "count": 20,
+              "mean": 0.9847534683882259,
+              "variance": 0.0030666328038608803
+            },
+            "senses": {
+              "count": 20,
+              "mean": 1.016031436685007,
+              "variance": 0.0026230404118352535
+            },
+            "climate": {
+              "count": 20,
+              "mean": 0.985294625046663,
+              "variance": 0.0032578822949381747
+            },
+            "immunity": {
+              "count": 20,
+              "mean": 0.9995684589212761,
+              "variance": 0.002363358773018742
+            },
+            "temperament": {
+              "count": 20,
+              "mean": 1.004570398987271,
+              "variance": 0.0015975168426067832
+            }
+          },
+          "final": {
+            "body": {
+              "count": 5,
+              "mean": 0.9723766675459243,
+              "variance": 0.00010077005960573704
+            },
+            "motion": {
+              "count": 5,
+              "mean": 0.9821284409412799,
+              "variance": 0.004270844895015502
+            },
+            "metabolism": {
+              "count": 5,
+              "mean": 1.020992594225872,
+              "variance": 0.0009815943502153868
+            },
+            "digestion": {
+              "count": 5,
+              "mean": 0.9517610413940591,
+              "variance": 0.004646410884075691
+            },
+            "senses": {
+              "count": 5,
+              "mean": 1.0354668854642213,
+              "variance": 0.0015858153772494443
+            },
+            "climate": {
+              "count": 5,
+              "mean": 1.0458223208519417,
+              "variance": 0.002300884025474348
+            },
+            "immunity": {
+              "count": 5,
+              "mean": 1.0016927654955443,
+              "variance": 0.0004491563661543907
+            },
+            "temperament": {
+              "count": 5,
+              "mean": 1.0400930582246086,
+              "variance": 0.000574581447091882
+            }
+          }
+        }
+      },
+      "finalRng": 145365679,
+      "completeStateSha256": "1534cd60ef3e72da5fd7fb139aa29fced15e5e0aa56afeecf2d9d43946549159",
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "evidence": {
+        "file": "reports/engineering-E-fixed-long-0-balanced.json",
+        "sha256": "5ae228e2af067ac26bacab947fd9f3f01a3edf1b66b1323a07c1c9053b654b4a",
+        "snapshot": "reports/engineering-E-fixed-long-0-balanced.json.snapshot.v8"
+      }
+    },
+    {
+      "seed": "SIMILARITY-LONG-1",
+      "mode": "original",
+      "runtimeFingerprint": "4e55b85a494562001417f872acf44a959b341189d5ea0f289ae1c5f594c862a9",
+      "observerSha256": "a411dc018ea84422c2b357ad684e1029d9281691df2a829116c879ecdd208f08",
+      "days": 320,
+      "ticks": 76800,
+      "initialLive": 193,
+      "finalLive": 1,
+      "births": 24,
+      "deaths": 216,
+      "conceptions": 19,
+      "completedDisplays": 139,
+      "mutuallyAcceptedDisplays": 19,
+      "combinedDisplayAcceptanceRate": 0.1366906474820144,
+      "distanceBins": [
+        {
+          "attempts": 32,
+          "accepted": 8,
+          "conceptions": 8,
+          "crossTaxon": 0
+        },
+        {
+          "attempts": 46,
+          "accepted": 7,
+          "conceptions": 7,
+          "crossTaxon": 0
+        },
+        {
+          "attempts": 49,
+          "accepted": 2,
+          "conceptions": 2,
+          "crossTaxon": 0
+        },
+        {
+          "attempts": 12,
+          "accepted": 2,
+          "conceptions": 2,
+          "crossTaxon": 0
+        },
+        {
+          "attempts": 0,
+          "accepted": 0,
+          "conceptions": 0,
+          "crossTaxon": 0
+        }
+      ],
+      "preferenceGroups": {
+        "at-least-one-contrast-allele": {
+          "attempts": 81,
+          "accepted": 10,
+          "conceptions": 10
+        },
+        "other-inherited-profiles": {
+          "attempts": 58,
+          "accepted": 9,
+          "conceptions": 9
+        }
+      },
+      "foundingLabelCombinations": {
+        "mosskip × rootling": {
+          "attempts": 37,
+          "accepted": 2,
+          "conceptions": 2
+        },
+        "mosskip × mosskip": {
+          "attempts": 50,
+          "accepted": 12,
+          "conceptions": 12
+        },
+        "genvo × mosskip": {
+          "attempts": 27,
+          "accepted": 2,
+          "conceptions": 2
+        },
+        "genvo × rootling": {
+          "attempts": 13,
+          "accepted": 1,
+          "conceptions": 1
+        },
+        "mirelick × mosskip": {
+          "attempts": 3,
+          "accepted": 1,
+          "conceptions": 1
+        },
+        "genvo × mirelick": {
+          "attempts": 5,
+          "accepted": 0,
+          "conceptions": 0
+        },
+        "mirelick × mirelick": {
+          "attempts": 4,
+          "accepted": 1,
+          "conceptions": 1
+        }
+      },
+      "foundingLabelCrossConceptions": 6,
+      "unresolvedParentConceptions": 0,
+      "parentLabelScope": "Founding labels reconstructed from retained canonical animals, deaths and births; distinct from the existing recognized evolutionary taxon.",
+      "bySpecies": {
+        "mosskip": {
+          "births": 18,
+          "aliveAtHorizon": 0,
+          "recordedDeaths": 18,
+          "survivedToMaturity": 14,
+          "juvenileDeaths": 4,
+          "unresolvedOrDeparted": 0,
+          "maximumAncestryDepth": 2,
+          "bodyPlans": {
+            "bp0-279ed7e2": 1,
+            "bp0-225474e8": 9,
+            "bp0-d9c0d40b": 1,
+            "bp0-73df89a2": 1,
+            "bp0-ba33dc46": 1,
+            "bp0-cafc8137": 2,
+            "bp0-d7527e36": 1,
+            "bp0-8722e69c": 1,
+            "bp0-0e94bc68": 1
+          }
+        },
+        "rootling": {
+          "births": 3,
+          "aliveAtHorizon": 0,
+          "recordedDeaths": 3,
+          "survivedToMaturity": 2,
+          "juvenileDeaths": 1,
+          "unresolvedOrDeparted": 0,
+          "maximumAncestryDepth": 2,
+          "bodyPlans": {
+            "bp0-5272140b": 1,
+            "bp0-da285d91": 1,
+            "bp0-cfbc89be": 1
+          }
+        },
+        "mirelick": {
+          "births": 3,
+          "aliveAtHorizon": 0,
+          "recordedDeaths": 3,
+          "survivedToMaturity": 1,
+          "juvenileDeaths": 2,
+          "unresolvedOrDeparted": 0,
+          "maximumAncestryDepth": 2,
+          "bodyPlans": {
+            "bp0-126bdd1a": 1,
+            "bp0-457585a4": 1,
+            "bp0-362000f9": 1
+          }
+        }
+      },
+      "rangeBySpecies": {
+        "mosskip": {
+          "initial": 64,
+          "min": 1,
+          "max": 69,
+          "final": 1
+        },
+        "rootling": {
+          "initial": 32,
+          "min": 0,
+          "max": 32,
+          "final": 0
+        },
+        "needlejaw": {
+          "initial": 12,
+          "min": 0,
+          "max": 12,
+          "final": 0
+        },
+        "genvo": {
+          "initial": 24,
+          "min": 0,
+          "max": 24,
+          "final": 0
+        },
+        "rillsifter": {
+          "initial": 18,
+          "min": 0,
+          "max": 18,
+          "final": 0
+        },
+        "mirelick": {
+          "initial": 20,
+          "min": 0,
+          "max": 20,
+          "final": 0
+        },
+        "podshell": {
+          "initial": 18,
+          "min": 0,
+          "max": 18,
+          "final": 0
+        },
+        "bankjaw": {
+          "initial": 5,
+          "min": 0,
+          "max": 5,
+          "final": 0
+        }
+      },
+      "ancestralPlanRetention": {
+        "mosskip": {
+          "living": 1,
+          "matchingFoundingPlan": 0,
+          "livingPlans": {
+            "bp0-f735b5b7": 1
+          }
+        }
+      },
+      "maximumObservedAncestryDepth": 2,
+      "lineage": {
+        "initial": 1,
+        "final": 0,
+        "births": 0,
+        "deaths": [
+          {
+            "id": 109,
+            "species": "genvo",
+            "lineage": true,
+            "day": 94,
+            "age": 125,
+            "energy": 96.18854605749651,
+            "hydration": 45.44772916560656,
+            "health": 0,
+            "cause": "wildfire"
+          }
+        ],
+        "novelPartIds": []
+      },
+      "novelBirthBodyPlans": [
+        "bp0-279ed7e2",
+        "bp0-d9c0d40b",
+        "bp0-73df89a2",
+        "bp0-ba33dc46",
+        "bp0-5272140b",
+        "bp0-da285d91",
+        "bp0-cafc8137",
+        "bp0-126bdd1a",
+        "bp0-457585a4",
+        "bp0-d7527e36",
+        "bp0-cfbc89be",
+        "bp0-8722e69c",
+        "bp0-0e94bc68"
+      ],
+      "finalBodyPlans": {
+        "bp0-f735b5b7": 1
+      },
+      "novelBodyExamples": [
+        {
+          "plan": "bp0-279ed7e2",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "moss-back",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 37
+        },
+        {
+          "plan": "bp0-d9c0d40b",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "storage-sac",
+            "storage-sac",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 37
+        },
+        {
+          "plan": "bp0-73df89a2",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "padded-leg",
+            "spring-leg",
+            "spring-leg",
+            "padded-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 51
+        },
+        {
+          "plan": "bp0-ba33dc46",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "armor-plate",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 51
+        },
+        {
+          "plan": "bp0-5272140b",
+          "species": "rootling",
+          "parts": [
+            "light-torso",
+            "eyespot",
+            "eyespot",
+            "digging-forelimb",
+            "walking-leg",
+            "walking-leg",
+            "digging-forelimb",
+            "grazing-mouth",
+            "fat-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 55
+        },
+        {
+          "plan": "bp0-da285d91",
+          "species": "rootling",
+          "parts": [
+            "stout-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "sensory-bristle",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 55
+        },
+        {
+          "plan": "bp0-cafc8137",
+          "species": "mosskip",
+          "parts": [
+            "small-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 60
+        },
+        {
+          "plan": "bp0-126bdd1a",
+          "species": "mirelick",
+          "parts": [
+            "stout-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "fat-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 64
+        },
+        {
+          "plan": "bp0-457585a4",
+          "species": "mirelick",
+          "parts": [
+            "stout-torso",
+            "moss-back",
+            "wide-field-eye",
+            "wide-field-eye",
+            "spring-leg",
+            "spring-leg",
+            "spring-leg",
+            "spring-leg",
+            "grazing-mouth",
+            "fat-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 64
+        },
+        {
+          "plan": "bp0-d7527e36",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "padded-leg",
+            "padded-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 84
+        },
+        {
+          "plan": "bp0-cfbc89be",
+          "species": "rootling",
+          "parts": [
+            "small-torso",
+            "eyespot",
+            "eyespot",
+            "spring-leg",
+            "walking-leg",
+            "walking-leg",
+            "spring-leg",
+            "grazing-mouth",
+            "fat-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 92
+        },
+        {
+          "plan": "bp0-8722e69c",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "grasper",
+            "spring-leg",
+            "spring-leg",
+            "grasper",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 96
+        },
+        {
+          "plan": "bp0-0e94bc68",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "simple-eye",
+            "simple-eye",
+            "walking-leg",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 123
+        }
+      ],
+      "recognizedTaxa": [],
+      "actualCrossTaxonConceptions": 0,
+      "populationCenters": [],
+      "speciationStates": [],
+      "inheritedGeneMoments": {
+        "mosskip": {
+          "initial": {
+            "body": {
+              "count": 64,
+              "mean": 0.9962085963728896,
+              "variance": 0.003020952414259148
+            },
+            "motion": {
+              "count": 64,
+              "mean": 0.9925581831339514,
+              "variance": 0.003380443414131018
+            },
+            "metabolism": {
+              "count": 64,
+              "mean": 1.007742614104063,
+              "variance": 0.003147457172664847
+            },
+            "digestion": {
+              "count": 64,
+              "mean": 1.001866854767286,
+              "variance": 0.0034912783373035605
+            },
+            "senses": {
+              "count": 64,
+              "mean": 0.9944899722017,
+              "variance": 0.0033889046631999653
+            },
+            "climate": {
+              "count": 64,
+              "mean": 0.9974113947624572,
+              "variance": 0.0032737274029321917
+            },
+            "immunity": {
+              "count": 64,
+              "mean": 1.0049105147481898,
+              "variance": 0.002956870602493389
+            },
+            "temperament": {
+              "count": 64,
+              "mean": 0.9949652501891252,
+              "variance": 0.0034589808817201417
+            }
+          },
+          "final": {
+            "body": {
+              "count": 1,
+              "mean": 0.9164617702364922,
+              "variance": 0
+            },
+            "motion": {
+              "count": 1,
+              "mean": 1.0755924076307566,
+              "variance": 0
+            },
+            "metabolism": {
+              "count": 1,
+              "mean": 1.0804783703759313,
+              "variance": 0
+            },
+            "digestion": {
+              "count": 1,
+              "mean": 1.0852904686238618,
+              "variance": 0
+            },
+            "senses": {
+              "count": 1,
+              "mean": 0.9413004819303752,
+              "variance": 0
+            },
+            "climate": {
+              "count": 1,
+              "mean": 0.9305346751119942,
+              "variance": 0
+            },
+            "immunity": {
+              "count": 1,
+              "mean": 1.084613908454776,
+              "variance": 0
+            },
+            "temperament": {
+              "count": 1,
+              "mean": 1.001459294324741,
+              "variance": 0
+            }
+          }
+        },
+        "rootling": {
+          "initial": {
+            "body": {
+              "count": 32,
+              "mean": 1.007101274933666,
+              "variance": 0.003481130975597768
+            },
+            "motion": {
+              "count": 32,
+              "mean": 1.000672655343078,
+              "variance": 0.0032601623949648495
+            },
+            "metabolism": {
+              "count": 32,
+              "mean": 0.9846017801959535,
+              "variance": 0.0025348125389431653
+            },
+            "digestion": {
+              "count": 32,
+              "mean": 1.0159802899055648,
+              "variance": 0.0027038667276471084
+            },
+            "senses": {
+              "count": 32,
+              "mean": 0.9774416414991721,
+              "variance": 0.0026931666544898203
+            },
+            "climate": {
+              "count": 32,
+              "mean": 1.019910131049983,
+              "variance": 0.0028583018539181104
+            },
+            "immunity": {
+              "count": 32,
+              "mean": 0.9886325590516207,
+              "variance": 0.002921825740284878
+            },
+            "temperament": {
+              "count": 32,
+              "mean": 1.013216322408698,
+              "variance": 0.004415259964585472
+            }
+          },
+          "final": {}
+        },
+        "mirelick": {
+          "initial": {
+            "body": {
+              "count": 20,
+              "mean": 0.9942146625742316,
+              "variance": 0.0034764683770275306
+            },
+            "motion": {
+              "count": 20,
+              "mean": 0.9880241527594628,
+              "variance": 0.0030470295610357523
+            },
+            "metabolism": {
+              "count": 20,
+              "mean": 1.0186323437653484,
+              "variance": 0.0019140011392380085
+            },
+            "digestion": {
+              "count": 20,
+              "mean": 0.9898280055983925,
+              "variance": 0.0042989469172606265
+            },
+            "senses": {
+              "count": 20,
+              "mean": 1.0008552405820228,
+              "variance": 0.004319865187906391
+            },
+            "climate": {
+              "count": 20,
+              "mean": 1.0137750206794591,
+              "variance": 0.0024252643936133467
+            },
+            "immunity": {
+              "count": 20,
+              "mean": 1.0063962249853649,
+              "variance": 0.0031277621502516784
+            },
+            "temperament": {
+              "count": 20,
+              "mean": 0.9949663082673214,
+              "variance": 0.0048372177395422655
+            }
+          },
+          "final": {}
+        }
+      },
+      "finalRng": 13036175,
+      "completeStateSha256": "304a2e23ab89a40cdd29d358977e1bca224b1bad0d097ff2311f0146e3b08c63",
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "evidence": {
+        "file": "reports/engineering-E-fixed-long-1-original.json",
+        "sha256": "d646f5714db92e5c0c21bb77a127550ebf789d3bd79e44041e7ef7b1520c635b",
+        "snapshot": "reports/engineering-E-fixed-long-1-original.json.snapshot.v8"
+      }
+    },
+    {
+      "seed": "SIMILARITY-LONG-1",
+      "mode": "balanced",
+      "runtimeFingerprint": "4e55b85a494562001417f872acf44a959b341189d5ea0f289ae1c5f594c862a9",
+      "observerSha256": "a411dc018ea84422c2b357ad684e1029d9281691df2a829116c879ecdd208f08",
+      "days": 320,
+      "ticks": 76800,
+      "initialLive": 193,
+      "finalLive": 4,
+      "births": 26,
+      "deaths": 215,
+      "conceptions": 19,
+      "completedDisplays": 39,
+      "mutuallyAcceptedDisplays": 21,
+      "combinedDisplayAcceptanceRate": 0.5384615384615384,
+      "distanceBins": [
+        {
+          "attempts": 6,
+          "accepted": 5,
+          "conceptions": 5,
+          "crossTaxon": 0
+        },
+        {
+          "attempts": 16,
+          "accepted": 9,
+          "conceptions": 9,
+          "crossTaxon": 0
+        },
+        {
+          "attempts": 17,
+          "accepted": 7,
+          "conceptions": 5,
+          "crossTaxon": 0
+        },
+        {
+          "attempts": 0,
+          "accepted": 0,
+          "conceptions": 0,
+          "crossTaxon": 0
+        },
+        {
+          "attempts": 0,
+          "accepted": 0,
+          "conceptions": 0,
+          "crossTaxon": 0
+        }
+      ],
+      "preferenceGroups": {
+        "at-least-one-contrast-allele": {
+          "attempts": 24,
+          "accepted": 13,
+          "conceptions": 12
+        },
+        "other-inherited-profiles": {
+          "attempts": 15,
+          "accepted": 8,
+          "conceptions": 7
+        }
+      },
+      "foundingLabelCombinations": {
+        "mosskip × rootling": {
+          "attempts": 5,
+          "accepted": 2,
+          "conceptions": 1
+        },
+        "mosskip × mosskip": {
+          "attempts": 19,
+          "accepted": 13,
+          "conceptions": 13
+        },
+        "genvo × rootling": {
+          "attempts": 6,
+          "accepted": 3,
+          "conceptions": 3
+        },
+        "genvo × mosskip": {
+          "attempts": 6,
+          "accepted": 2,
+          "conceptions": 1
+        },
+        "rootling × rootling": {
+          "attempts": 3,
+          "accepted": 1,
+          "conceptions": 1
+        }
+      },
+      "foundingLabelCrossConceptions": 5,
+      "unresolvedParentConceptions": 0,
+      "parentLabelScope": "Founding labels reconstructed from retained canonical animals, deaths and births; distinct from the existing recognized evolutionary taxon.",
+      "bySpecies": {
+        "mosskip": {
+          "births": 19,
+          "aliveAtHorizon": 3,
+          "recordedDeaths": 16,
+          "survivedToMaturity": 17,
+          "juvenileDeaths": 2,
+          "unresolvedOrDeparted": 0,
+          "maximumAncestryDepth": 3,
+          "bodyPlans": {
+            "bp0-225474e8": 15,
+            "bp0-575cc05e": 1,
+            "bp0-4072119c": 1,
+            "bp0-5dfb061a": 1,
+            "bp0-1235ecb8": 1
+          }
+        },
+        "rootling": {
+          "births": 7,
+          "aliveAtHorizon": 0,
+          "recordedDeaths": 7,
+          "survivedToMaturity": 2,
+          "juvenileDeaths": 5,
+          "unresolvedOrDeparted": 0,
+          "maximumAncestryDepth": 2,
+          "bodyPlans": {
+            "bp0-fb2a33f2": 1,
+            "bp0-efbae7db": 1,
+            "bp0-8b17744d": 1,
+            "bp0-da142946": 1,
+            "bp0-7f722c58": 1,
+            "bp0-0fe6055d": 1,
+            "bp0-c60f3506": 1
+          }
+        }
+      },
+      "rangeBySpecies": {
+        "mosskip": {
+          "initial": 64,
+          "min": 3,
+          "max": 71,
+          "final": 3
+        },
+        "rootling": {
+          "initial": 32,
+          "min": 0,
+          "max": 32,
+          "final": 0
+        },
+        "needlejaw": {
+          "initial": 12,
+          "min": 0,
+          "max": 12,
+          "final": 0
+        },
+        "genvo": {
+          "initial": 24,
+          "min": 0,
+          "max": 24,
+          "final": 0
+        },
+        "rillsifter": {
+          "initial": 18,
+          "min": 0,
+          "max": 18,
+          "final": 0
+        },
+        "mirelick": {
+          "initial": 20,
+          "min": 1,
+          "max": 20,
+          "final": 1
+        },
+        "podshell": {
+          "initial": 18,
+          "min": 0,
+          "max": 18,
+          "final": 0
+        },
+        "bankjaw": {
+          "initial": 5,
+          "min": 0,
+          "max": 5,
+          "final": 0
+        }
+      },
+      "ancestralPlanRetention": {
+        "mirelick": {
+          "living": 1,
+          "matchingFoundingPlan": 1,
+          "livingPlans": {
+            "bp0-362000f9": 1
+          }
+        },
+        "mosskip": {
+          "living": 3,
+          "matchingFoundingPlan": 1,
+          "livingPlans": {
+            "bp0-9f3d706d": 1,
+            "bp0-225474e8": 1,
+            "bp0-1235ecb8": 1
+          }
+        }
+      },
+      "maximumObservedAncestryDepth": 3,
+      "lineage": {
+        "initial": 1,
+        "final": 0,
+        "births": 0,
+        "deaths": [
+          {
+            "id": 109,
+            "species": "genvo",
+            "lineage": true,
+            "day": 94,
+            "age": 125,
+            "energy": 108.59339505850835,
+            "hydration": 72.55738052619957,
+            "health": 0,
+            "cause": "wildfire"
+          }
+        ],
+        "novelPartIds": []
+      },
+      "novelBirthBodyPlans": [
+        "bp0-575cc05e",
+        "bp0-4072119c",
+        "bp0-fb2a33f2",
+        "bp0-efbae7db",
+        "bp0-8b17744d",
+        "bp0-7f722c58",
+        "bp0-0fe6055d",
+        "bp0-c60f3506",
+        "bp0-5dfb061a",
+        "bp0-1235ecb8"
+      ],
+      "finalBodyPlans": {
+        "bp0-362000f9": 1,
+        "bp0-9f3d706d": 1,
+        "bp0-225474e8": 1,
+        "bp0-1235ecb8": 1
+      },
+      "novelBodyExamples": [
+        {
+          "plan": "bp0-575cc05e",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "runner-leg",
+            "runner-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 45
+        },
+        {
+          "plan": "bp0-4072119c",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "sturdy-leg",
+            "sturdy-leg",
+            "walking-leg",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 54
+        },
+        {
+          "plan": "bp0-fb2a33f2",
+          "species": "rootling",
+          "parts": [
+            "small-torso",
+            "simple-eye",
+            "simple-eye",
+            "scent-gland",
+            "scent-gland",
+            "digging-forelimb",
+            "walking-leg",
+            "walking-leg",
+            "digging-forelimb",
+            "grazing-mouth"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 54
+        },
+        {
+          "plan": "bp0-efbae7db",
+          "species": "rootling",
+          "parts": [
+            "stout-torso",
+            "eyespot",
+            "eyespot",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "grazing-mouth"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 54
+        },
+        {
+          "plan": "bp0-8b17744d",
+          "species": "rootling",
+          "parts": [
+            "stout-torso",
+            "head-base",
+            "wide-field-eye",
+            "wide-field-eye",
+            "nibbler-mouth",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 65
+        },
+        {
+          "plan": "bp0-7f722c58",
+          "species": "rootling",
+          "parts": [
+            "stout-torso",
+            "simple-eye",
+            "simple-eye",
+            "spring-leg",
+            "walking-leg",
+            "walking-leg",
+            "spring-leg",
+            "nibbler-mouth",
+            "fat-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 79
+        },
+        {
+          "plan": "bp0-0fe6055d",
+          "species": "rootling",
+          "parts": [
+            "stout-torso",
+            "eyespot",
+            "eyespot",
+            "sturdy-leg",
+            "walking-leg",
+            "walking-leg",
+            "sturdy-leg",
+            "nibbler-mouth"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 79
+        },
+        {
+          "plan": "bp0-c60f3506",
+          "species": "rootling",
+          "parts": [
+            "small-torso",
+            "simple-eye",
+            "simple-eye",
+            "digging-forelimb",
+            "walking-leg",
+            "walking-leg",
+            "digging-forelimb",
+            "nibbler-mouth",
+            "fat-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 79
+        },
+        {
+          "plan": "bp0-5dfb061a",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "wide-field-eye",
+            "wide-field-eye",
+            "walking-leg",
+            "claw",
+            "spring-leg",
+            "spring-leg",
+            "walking-leg",
+            "claw",
+            "grazing-mouth",
+            "balance-tail"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 82
+        },
+        {
+          "plan": "bp0-1235ecb8",
+          "species": "mosskip",
+          "parts": [
+            "light-torso",
+            "simple-eye",
+            "simple-eye",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "walking-leg",
+            "grazing-mouth"
+          ],
+          "ancestryDepth": 2,
+          "bornDay": 114
+        }
+      ],
+      "recognizedTaxa": [],
+      "actualCrossTaxonConceptions": 0,
+      "populationCenters": [],
+      "speciationStates": [],
+      "inheritedGeneMoments": {
+        "mosskip": {
+          "initial": {
+            "body": {
+              "count": 64,
+              "mean": 0.9962085963728896,
+              "variance": 0.003020952414259148
+            },
+            "motion": {
+              "count": 64,
+              "mean": 0.9925581831339514,
+              "variance": 0.003380443414131018
+            },
+            "metabolism": {
+              "count": 64,
+              "mean": 1.007742614104063,
+              "variance": 0.003147457172664847
+            },
+            "digestion": {
+              "count": 64,
+              "mean": 1.001866854767286,
+              "variance": 0.0034912783373035605
+            },
+            "senses": {
+              "count": 64,
+              "mean": 0.9944899722017,
+              "variance": 0.0033889046631999653
+            },
+            "climate": {
+              "count": 64,
+              "mean": 0.9974113947624572,
+              "variance": 0.0032737274029321917
+            },
+            "immunity": {
+              "count": 64,
+              "mean": 1.0049105147481898,
+              "variance": 0.002956870602493389
+            },
+            "temperament": {
+              "count": 64,
+              "mean": 0.9949652501891252,
+              "variance": 0.0034589808817201417
+            }
+          },
+          "final": {
+            "body": {
+              "count": 3,
+              "mean": 1.0680127704264188,
+              "variance": 0.002030611369063129
+            },
+            "motion": {
+              "count": 3,
+              "mean": 1.0462078354568822,
+              "variance": 0.004720881038897451
+            },
+            "metabolism": {
+              "count": 3,
+              "mean": 1.010785746658752,
+              "variance": 0.0015612599796246407
+            },
+            "digestion": {
+              "count": 3,
+              "mean": 0.9496444039779707,
+              "variance": 0.00017209304187548735
+            },
+            "senses": {
+              "count": 3,
+              "mean": 1.018521039351327,
+              "variance": 0.0007210035404345838
+            },
+            "climate": {
+              "count": 3,
+              "mean": 0.9616932114188828,
+              "variance": 0.0010145027523901229
+            },
+            "immunity": {
+              "count": 3,
+              "mean": 0.978489443130604,
+              "variance": 0.0002316942308152603
+            },
+            "temperament": {
+              "count": 3,
+              "mean": 1.0203620681488554,
+              "variance": 0.001349580536993411
+            }
+          }
+        },
+        "rootling": {
+          "initial": {
+            "body": {
+              "count": 32,
+              "mean": 1.007101274933666,
+              "variance": 0.003481130975597768
+            },
+            "motion": {
+              "count": 32,
+              "mean": 1.000672655343078,
+              "variance": 0.0032601623949648495
+            },
+            "metabolism": {
+              "count": 32,
+              "mean": 0.9846017801959535,
+              "variance": 0.0025348125389431653
+            },
+            "digestion": {
+              "count": 32,
+              "mean": 1.0159802899055648,
+              "variance": 0.0027038667276471084
+            },
+            "senses": {
+              "count": 32,
+              "mean": 0.9774416414991721,
+              "variance": 0.0026931666544898203
+            },
+            "climate": {
+              "count": 32,
+              "mean": 1.019910131049983,
+              "variance": 0.0028583018539181104
+            },
+            "immunity": {
+              "count": 32,
+              "mean": 0.9886325590516207,
+              "variance": 0.002921825740284878
+            },
+            "temperament": {
+              "count": 32,
+              "mean": 1.013216322408698,
+              "variance": 0.004415259964585472
+            }
+          },
+          "final": {}
+        }
+      },
+      "finalRng": 117078434,
+      "completeStateSha256": "b604fb79b1d3638e4baee5fde636528f22c2c86d4faddf677b45a97fea96f36e",
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "evidence": {
+        "file": "reports/engineering-E-fixed-long-1-balanced.json",
+        "sha256": "f311fa60ae5e86474cf58e9885cfc00231302c8b93da19956648c450131d01cb",
+        "snapshot": "reports/engineering-E-fixed-long-1-balanced.json.snapshot.v8"
+      }
+    }
+  ],
+  "interpretationLimits": [
+    "Natural courtship mixes physiological states and inherited preferences; its rate is not the favorable-condition acceptance target.",
+    "Anatomical plan novelty is distinct from an evolutionarily recognized species.",
+    "Geographic gene associations are observations, not proof that environmental pressure caused adaptation.",
+    "Two paired seeds and 320 days do not establish equilibrium or rule out rare evolutionary routes."
+  ],
+  "rawReceiptBundle": {
+    "file": "docs/NATURAL-EVOLUTION-2026-10-26-field-receipts.json.gz",
+    "sha256": "4be598b2ecc32dd44f331a99bc301d534119e63fee6766fe29a23bafab40d0c2",
+    "bytes": 1389110,
+    "verbatimOriginalSha256Checks": "pass"
+  }
+}

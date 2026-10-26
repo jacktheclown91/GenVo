@@ -1,0 +1,292 @@
+{
+  "schema": "genvo.html5-release-candidate/1",
+  "sourceCommit": "1cbd46e82badb02d2c8e37bddefea1649da21b9e",
+  "exactHeadCI": {
+    "url": "https://github.com/jacktheclown91/GenVo/actions/runs/40405119717",
+    "status": "Success",
+    "checks": 122,
+    "workers": 2
+  },
+  "package": {
+    "schema": "genvo.itch-preview-package/1",
+    "game_zip": "GenVo-web-RC-1cbd46e8.zip",
+    "file_count": 849,
+    "unpacked_bytes": 78681858,
+    "largest_file_bytes": 43240065,
+    "archive_bytes": 55516615,
+    "archive_sha256": "1ee554ecae936b9101a8440852ac608584d86fb3bcb2cd66d5413547ad99d301",
+    "scenario_ids": [
+      "established-valley-d30",
+      "mature-valley-d100"
+    ],
+    "source_commit": "1cbd46e82badb02d2c8e37bddefea1649da21b9e",
+    "human_approval": false
+  },
+  "extraction": {
+    "schema": "genvo.release-candidate-extraction/1",
+    "sourceCommit": "1cbd46e82badb02d2c8e37bddefea1649da21b9e",
+    "zipSha256": "1ee554ecae936b9101a8440852ac608584d86fb3bcb2cd66d5413547ad99d301",
+    "entries": 849,
+    "rootIndex": true,
+    "crc": "pass",
+    "uniqueSafePaths": true,
+    "extractedExportByteParity": "all files equal",
+    "stableZipPreserved": true,
+    "browserAcceptance": "pending",
+    "itchUpload": false
+  },
+  "currentBrowserVerification": "PASS in independent extracted build",
+  "controls": {
+    "root": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\releases\\GenVo-RC-20261026-1cbd46e8\\extracted",
+    "checks": {
+      "newWorld": {
+        "startingCreatureOptions": [
+          "recorded",
+          "resident",
+          "guided",
+          "sandbox",
+          "starter-jump",
+          "starter-burrow",
+          "starter-flight",
+          "starter-dive"
+        ],
+        "chosen": "starter-jump",
+        "generator": "planetary/1",
+        "species": "genvo",
+        "parts": [
+          "small-torso",
+          "simple-eye",
+          "spring-leg",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "stage": "step-food",
+        "day": 1,
+        "animals": 194
+      },
+      "keyboardMovement": {
+        "tilesPerKey": {
+          "KeyD": 2.13,
+          "KeyS": 2.12,
+          "KeyA": 2.16,
+          "KeyW": 2.09
+        }
+      },
+      "audio": {
+        "unlocked": true,
+        "context": "running",
+        "muted": false
+      },
+      "drink": {
+        "before": 40,
+        "after": 65.1,
+        "firstDrink": true,
+        "staged": "creature placed on drinkable ground"
+      },
+      "eat": {
+        "kind": "sunmoss",
+        "before": 40,
+        "after": 45.3,
+        "firstMeal": true,
+        "staged": "creature placed beside food"
+      },
+      "framePacing20s": {
+        "frames": 1116,
+        "median": 16.7,
+        "p95": 33.3,
+        "max": 50.1,
+        "over100": 0
+      },
+      "saveContinue": {
+        "saved": {
+          "tick": 235,
+          "day": 1,
+          "player": 197,
+          "x": 55.004,
+          "parts": 8,
+          "animals": 194,
+          "slot": "world-f46bca92-5af3-45a7-b71e-d43c690b9c85"
+        },
+        "loaded": {
+          "tick": 238,
+          "day": 1,
+          "player": 197,
+          "x": 55.004,
+          "parts": 8,
+          "animals": 194
+        }
+      },
+      "layouts": {
+        "960x600": {
+          "overflowX": false,
+          "overflowY": false,
+          "canvas": [
+            960,
+            600
+          ],
+          "view": [
+            960,
+            600
+          ]
+        },
+        "1280x720": {
+          "overflowX": false,
+          "overflowY": false,
+          "canvas": [
+            1280,
+            720
+          ],
+          "view": [
+            1280,
+            720
+          ]
+        },
+        "1920x1080": {
+          "overflowX": false,
+          "overflowY": false,
+          "canvas": [
+            1920,
+            1080
+          ],
+          "view": [
+            1920,
+            1080
+          ]
+        },
+        "800x500": {
+          "overflowX": false,
+          "overflowY": false,
+          "canvas": [
+            800,
+            500
+          ],
+          "view": [
+            800,
+            500
+          ]
+        }
+      }
+    },
+    "missingResources": [],
+    "failedRequests": [],
+    "pageErrors": [],
+    "consoleErrors": []
+  },
+  "advancedStarts": {
+    "established": {
+      "ok": true,
+      "servedRoot": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\releases\\GenVo-RC-20261026-1cbd46e8\\extracted",
+      "residentMode": false,
+      "founderMode": null,
+      "cancelPreservedSlots": null,
+      "browserReload": {
+        "seed": "GENVO-VALLEY-REPLAY-30",
+        "day": 31,
+        "tick": 1441,
+        "rng": 1987768365,
+        "playerId": 109,
+        "marinePolicy": null,
+        "marineFields": false,
+        "population": 215,
+        "mode": null,
+        "receipts": 0,
+        "airborne": false
+      },
+      "missingAssets": [],
+      "seed": "GENVO-VALLEY-REPLAY-30",
+      "day": 31,
+      "tickCount": 1440,
+      "year": 1,
+      "liveAnimals": 215,
+      "playerAlive": true,
+      "playerId": 109,
+      "storedPlayerId": 109,
+      "playerSpecies": "genvo",
+      "creatureStart": null,
+      "authoredIntroductions": null,
+      "playerParts": [
+        "small-torso",
+        "simple-eye",
+        "simple-eye",
+        "walking-leg",
+        "walking-leg",
+        "walking-leg",
+        "walking-leg",
+        "grazing-mouth"
+      ],
+      "worldGenerator": "planetary/1",
+      "sourceDay": 31,
+      "sourceSeed": "GENVO-VALLEY-REPLAY-30",
+      "storedPresent": true,
+      "lastSavedTick": 1440,
+      "saveBusy": false,
+      "sceneShown": true,
+      "scenePending": false,
+      "saveStatus": "Saved",
+      "newSlot": "world-99e8063c-88bd-4315-8eed-b0c8c6908666",
+      "screenClosed": true,
+      "originalHistoryRetained": true,
+      "errors": []
+    },
+    "mature": {
+      "ok": true,
+      "servedRoot": "C:\\Users\\jackt\\Desktop\\Games\\game jam october\\releases\\GenVo-RC-20261026-1cbd46e8\\extracted",
+      "residentMode": false,
+      "founderMode": null,
+      "cancelPreservedSlots": null,
+      "browserReload": {
+        "seed": "GENVO-VALLEY-REPLAY-30",
+        "day": 101,
+        "tick": 4802,
+        "rng": 447658049,
+        "playerId": 109,
+        "marinePolicy": null,
+        "marineFields": false,
+        "population": 292,
+        "mode": null,
+        "receipts": 0,
+        "airborne": false
+      },
+      "missingAssets": [],
+      "seed": "GENVO-VALLEY-REPLAY-30",
+      "day": 101,
+      "tickCount": 4800,
+      "year": 4,
+      "liveAnimals": 292,
+      "playerAlive": true,
+      "playerId": 109,
+      "storedPlayerId": 109,
+      "playerSpecies": "genvo",
+      "creatureStart": null,
+      "authoredIntroductions": null,
+      "playerParts": [
+        "small-torso",
+        "simple-eye",
+        "simple-eye",
+        "walking-leg",
+        "walking-leg",
+        "walking-leg",
+        "walking-leg",
+        "grazing-mouth"
+      ],
+      "worldGenerator": "planetary/1",
+      "sourceDay": 101,
+      "sourceSeed": "GENVO-VALLEY-REPLAY-30",
+      "storedPresent": true,
+      "lastSavedTick": 4800,
+      "saveBusy": false,
+      "sceneShown": true,
+      "scenePending": false,
+      "saveStatus": "Saved",
+      "newSlot": "world-c0a2b55d-a397-47d0-9ea7-b7dba00ab0b9",
+      "screenClosed": true,
+      "originalHistoryRetained": true,
+      "errors": []
+    }
+  },
+  "scope": "Chromium observation; controls fixture stages legal positions and lowers initial energy/hydration solely to verify eating/drinking. Not natural ecology or mature performance evidence. Native opening cards used; no runtime ZIP patch.",
+  "stableZipSha256": "37832ff5b16b668c7cc8bb9a439b94555c458859c4b5d085baf8d70c068a310d",
+  "itchUpload": false,
+  "creatorAcceptance": false,
+  "naturalEvolutionStage": "Four prospective worlds still being completed; separate evidence report."
+}
