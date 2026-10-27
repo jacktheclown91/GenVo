@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 10
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -27,7 +27,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          test "$(git rev-parse HEAD^)" = "$RUNTIME_SHA"
+          git merge-base --is-ancestor "$RUNTIME_SHA" HEAD
           test "$(git diff --name-only "$RUNTIME_SHA" HEAD)" = ".github/workflows/itch-web-98b276b2.yml"
       - name: Validate and export the canonical browser game
         shell: bash
