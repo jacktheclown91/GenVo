@@ -1,5 +1,9 @@
 # Refactor backlog — executable GitHub tasks
 
+## Current creator priority: ecological motivation
+
+Ordinary native opening through Day 4 identifies uncommunicated thermal costs and part-name-only birth explanations. Focused read-only environmental and inherited-capability feedback passes the 133-check local gate, Node 22/24 targeted checks and native Day 4 Save/Continue observation; exact-head CI is pending; no biome or inheritance rule changed. See [audit, evidence and remaining work](ECOLOGICAL-MOTIVATION-2026-10-27.md). Preserve the verified tutorial and the isolated autonomous fields, including their strict stale-selection failure.
+
 ## Current biological work: prospective autonomous recognition
 
 The tutorial priority is verified and committed. Canonical development now contains the opt-in `autonomous-evolution/1` mechanism through the existing population memory, proto, speciation and evolutionary-tree authorities. Controlled wildlife recognition, stable identity, renewed gene flow, extinction and actual paid unowned births/save continuation pass focused checks. The policy remains off in the UI pending regional acceptance; ordinary long-run recognition and the major performance correction remain unproven. See [the current mechanism and evidence boundaries](AUTONOMOUS-RECOGNITION-2026-10-27.md). Preserve the older managed checkout and its original Stage B foundation; it has been copied forward without discarding the tutorial work.

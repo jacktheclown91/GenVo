@@ -26,7 +26,7 @@ Five new maintained checks cover policy/observations, inherited physical evidenc
 
 A separate controlled four-founder world stages adult positions/reserves and establishment only. The original mating authority actually accepts the fixed unrelated pair and pays conception. After 576 normal ticks, gestation produces two unowned children. Pregnancy, birth and twelve-tick continuation compare exactly through the canonical save path. A separately labelled recognition-persistence fixture checks an actual full world, tree identities, no resource/RNG award and refusal of invented saved identities.
 
-Node 22 and 24 pass these focused contracts. The uninstrumented historical modernization snapshot and original policy-1/2 complete 5,760-tick worlds including actual births pass on Node 24. The complete 132-check local integration gate passes. Exact-commit CI remains pending.
+Node 22 and 24 pass these focused contracts. The uninstrumented historical modernization snapshot and original policy-1/2 complete 5,760-tick worlds including actual births pass on Node 24. The complete 132-check local integration gate passes. Exact-commit GitHub CI 40502858485 passed for 8ed38ebf41209e62c4640e866bcb283783265074, including both workers and required summary.
 
 The extended passive observer matched complete uninstrumented controls at 96 and 5,760 ticks with the new policy. The latter includes six mating calls, two conceptions and one actual birth. This is observer fidelity evidence, not a prospective long-run emergence trial. Original receipts and full V8 snapshots remain in reports/autonomous-B-observer-*.
 

@@ -1,0 +1,1004 @@
+{
+  "scope": "Ordinary founder conditions; genuine tutorial actions followed by manual exploration. No teleports, stock edits, body changes or forced encounters.",
+  "externalUsabilityAcceptance": false,
+  "tutorialCompleted": {
+    "stage": "step-complete",
+    "paused": true,
+    "lastMate": 110,
+    "day": 4
+  },
+  "audit": {
+    "scope": "Ordinary founder conditions; genuine tutorial actions followed by manual exploration. No teleports, stock edits, body changes or forced encounters.",
+    "samples": [
+      {
+        "label": "After earned home and native lesson",
+        "day": 4,
+        "tick": 794,
+        "id": 109,
+        "x": 69.46553434811297,
+        "y": 61.58548954561006,
+        "energy": 67.66033084038283,
+        "hydration": 49.7541480770246,
+        "health": 100,
+        "parts": [
+          "small-torso",
+          "simple-eye",
+          "simple-eye",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "movement": {
+          "allowed": true,
+          "swimming": false,
+          "swimmer": false,
+          "speed": 0.8846088742014777,
+          "energy": 1.1807555393406284,
+          "sprint": 1,
+          "grade": 0.00021457483122189203,
+          "grip": 0
+        },
+        "thermal": {
+          "thermal": 0.011393203696717326,
+          "extraEnergy": 0,
+          "temperature": 0.35079631209373474,
+          "load": 0.011393203696717326
+        },
+        "feeding": {
+          "mouth": "grazing-mouth",
+          "forage": {
+            "sunmoss": 1,
+            "bramble": 0.75,
+            "marshroot": 0.4,
+            "rotcap": 0.08,
+            "woodspire": 0.04,
+            "thistlepod": 0.6,
+            "dunebulb": 0.75,
+            "dustsage": 0.6,
+            "frostlichen": 1,
+            "snowberry": 0.75
+          },
+          "hunter": false,
+          "carrion": false,
+          "seedCarrier": true,
+          "filterFeeder": false
+        },
+        "water": false,
+        "moisture": 0.5752326846122742,
+        "temperature": 0.35079631209373474,
+        "home": {
+          "x": 69.1751402467721,
+          "y": 62.02177309258557
+        },
+        "pressures": [
+          {
+            "kind": "scarcity",
+            "label": "Food shortage",
+            "severity": 0.82,
+            "effect": "your food-use traits cost more here",
+            "tone": "hurt",
+            "detail": "Food nearby 0% \u00c2\u00b7 energy 55%",
+            "genes": [
+              "digestion",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "cold",
+            "label": "Cold",
+            "severity": 0.6449802739918234,
+            "effect": "your climate trait is close to neutral",
+            "tone": "neutral",
+            "detail": "Local 35 \u00c2\u00b7 comfort 55",
+            "genes": [
+              "climate",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "dryness",
+            "label": "Low water",
+            "severity": 0.25805020999072414,
+            "effect": "shorter stride makes water harder to reach",
+            "tone": "hurt",
+            "detail": "Water 44% \u00c2\u00b7 nearest bank 2.7 tiles",
+            "genes": [
+              "motion"
+            ]
+          }
+        ],
+        "visible": [
+          {
+            "id": 110,
+            "species": "genvo",
+            "parts": [
+              "small-torso",
+              "simple-eye",
+              "simple-eye",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "grazing-mouth"
+            ]
+          },
+          {
+            "id": 113,
+            "species": "genvo",
+            "parts": [
+              "small-torso",
+              "simple-eye",
+              "simple-eye",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "grazing-mouth"
+            ]
+          },
+          {
+            "id": 138,
+            "species": "rillsifter",
+            "parts": [
+              "light-torso",
+              "silt-fin",
+              "wide-field-eye",
+              "wide-field-eye",
+              "gill-slits",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "reed-sieve-mouth",
+              "paddle-tail"
+            ]
+          },
+          {
+            "id": 140,
+            "species": "rillsifter",
+            "parts": [
+              "light-torso",
+              "silt-fin",
+              "wide-field-eye",
+              "wide-field-eye",
+              "gill-slits",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "reed-sieve-mouth",
+              "paddle-tail"
+            ]
+          },
+          {
+            "id": 146,
+            "species": "rillsifter",
+            "parts": [
+              "light-torso",
+              "silt-fin",
+              "wide-field-eye",
+              "wide-field-eye",
+              "gill-slits",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "reed-sieve-mouth",
+              "paddle-tail"
+            ]
+          },
+          {
+            "id": 148,
+            "species": "rillsifter",
+            "parts": [
+              "light-torso",
+              "silt-fin",
+              "wide-field-eye",
+              "wide-field-eye",
+              "gill-slits",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "reed-sieve-mouth",
+              "paddle-tail"
+            ]
+          }
+        ],
+        "found": [
+          21
+        ],
+        "seenParts": [
+          "light-torso",
+          "silt-fin",
+          "wide-field-eye",
+          "gill-slits",
+          "webbed-leg",
+          "reed-sieve-mouth",
+          "paddle-tail",
+          "small-torso",
+          "simple-eye",
+          "walking-leg",
+          "grazing-mouth",
+          "sleek-torso",
+          "spine-ridge",
+          "hunter-eye",
+          "runner-leg",
+          "tearing-jaw",
+          "whip-tail"
+        ],
+        "story": {
+          "day": 4,
+          "seen": {
+            "genvo": 1
+          }
+        }
+      },
+      {
+        "label": "Manual KeyD",
+        "day": 4,
+        "tick": 810,
+        "id": 109,
+        "x": 72.74832026795545,
+        "y": 61.58548954561006,
+        "energy": 66.16630058071672,
+        "hydration": 45.11767233991023,
+        "health": 100,
+        "parts": [
+          "small-torso",
+          "simple-eye",
+          "simple-eye",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "movement": {
+          "allowed": true,
+          "swimming": false,
+          "swimmer": false,
+          "speed": 0.883165313812282,
+          "energy": 1.1829204299810883,
+          "sprint": 1,
+          "grade": 7.133844395745825e-05,
+          "grip": 0
+        },
+        "thermal": {
+          "thermal": 0.02355205466598273,
+          "extraEnergy": 0,
+          "temperature": 0.35077425837516785,
+          "load": 0.02355205466598273
+        },
+        "feeding": {
+          "mouth": "grazing-mouth",
+          "forage": {
+            "sunmoss": 1,
+            "bramble": 0.75,
+            "marshroot": 0.4,
+            "rotcap": 0.08,
+            "woodspire": 0.04,
+            "thistlepod": 0.6,
+            "dunebulb": 0.75,
+            "dustsage": 0.6,
+            "frostlichen": 1,
+            "snowberry": 0.75
+          },
+          "hunter": false,
+          "carrion": false,
+          "seedCarrier": true,
+          "filterFeeder": false
+        },
+        "water": false,
+        "moisture": 0.5330308079719543,
+        "temperature": 0.35077425837516785,
+        "home": {
+          "x": 69.1751402467721,
+          "y": 62.02177309258557
+        },
+        "pressures": [
+          {
+            "kind": "scarcity",
+            "label": "Food shortage",
+            "severity": 0.82,
+            "effect": "your food-use traits cost more here",
+            "tone": "hurt",
+            "detail": "Food nearby 0% \u00c2\u00b7 energy 53%",
+            "genes": [
+              "digestion",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "cold",
+            "label": "Cold",
+            "severity": 0.645068488866091,
+            "effect": "your climate trait is close to neutral",
+            "tone": "neutral",
+            "detail": "Local 35 \u00c2\u00b7 comfort 55",
+            "genes": [
+              "climate",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "dryness",
+            "label": "Low water",
+            "severity": 0.36870960415621357,
+            "effect": "shorter stride makes water harder to reach",
+            "tone": "hurt",
+            "detail": "Water 40% \u00c2\u00b7 nearest bank 5.6 tiles",
+            "genes": [
+              "motion"
+            ]
+          }
+        ],
+        "visible": [
+          {
+            "id": 111,
+            "species": "genvo",
+            "parts": [
+              "small-torso",
+              "simple-eye",
+              "simple-eye",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "grazing-mouth"
+            ]
+          }
+        ],
+        "found": [
+          21
+        ],
+        "seenParts": [
+          "light-torso",
+          "silt-fin",
+          "wide-field-eye",
+          "gill-slits",
+          "webbed-leg",
+          "reed-sieve-mouth",
+          "paddle-tail",
+          "small-torso",
+          "simple-eye",
+          "walking-leg",
+          "grazing-mouth",
+          "sleek-torso",
+          "spine-ridge",
+          "hunter-eye",
+          "runner-leg",
+          "tearing-jaw",
+          "whip-tail"
+        ],
+        "story": {
+          "day": 4,
+          "seen": {
+            "genvo": 1
+          }
+        }
+      },
+      {
+        "label": "Manual KeyS",
+        "day": 4,
+        "tick": 826,
+        "id": 109,
+        "x": 72.74832026795545,
+        "y": 64.87541394137558,
+        "energy": 65.75242593191871,
+        "hydration": 45.11767233991023,
+        "health": 100,
+        "parts": [
+          "small-torso",
+          "simple-eye",
+          "simple-eye",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "movement": {
+          "allowed": true,
+          "swimming": false,
+          "swimmer": false,
+          "speed": 0.8831114210447922,
+          "energy": 1.1830337216076272,
+          "sprint": 1,
+          "grade": 0.0001136879389131984,
+          "grip": 0
+        },
+        "thermal": {
+          "thermal": 0.023549594186246404,
+          "extraEnergy": 0,
+          "temperature": 0.3507947623729706,
+          "load": 0.023549594186246404
+        },
+        "feeding": {
+          "mouth": "grazing-mouth",
+          "forage": {
+            "sunmoss": 1,
+            "bramble": 0.75,
+            "marshroot": 0.4,
+            "rotcap": 0.08,
+            "woodspire": 0.04,
+            "thistlepod": 0.6,
+            "dunebulb": 0.75,
+            "dustsage": 0.6,
+            "frostlichen": 1,
+            "snowberry": 0.75
+          },
+          "hunter": false,
+          "carrion": false,
+          "seedCarrier": true,
+          "filterFeeder": false
+        },
+        "water": false,
+        "moisture": 0.5703281164169312,
+        "temperature": 0.3507947623729706,
+        "home": {
+          "x": 69.1751402467721,
+          "y": 62.02177309258557
+        },
+        "pressures": [
+          {
+            "kind": "scarcity",
+            "label": "Food shortage",
+            "severity": 0.82,
+            "effect": "your food-use traits cost more here",
+            "tone": "hurt",
+            "detail": "Food nearby 0% \u00c2\u00b7 energy 53%",
+            "genes": [
+              "digestion",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "cold",
+            "label": "Cold",
+            "severity": 0.6449864728748801,
+            "effect": "your climate trait is close to neutral",
+            "tone": "neutral",
+            "detail": "Local 35 \u00c2\u00b7 comfort 55",
+            "genes": [
+              "climate",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "dryness",
+            "label": "Low water",
+            "severity": 0.32996981254345453,
+            "effect": "shorter stride makes water harder to reach",
+            "tone": "hurt",
+            "detail": "Water 40% \u00c2\u00b7 nearest bank 3.5 tiles",
+            "genes": [
+              "motion"
+            ]
+          }
+        ],
+        "visible": [
+          {
+            "id": 110,
+            "species": "genvo",
+            "parts": [
+              "small-torso",
+              "simple-eye",
+              "simple-eye",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "grazing-mouth"
+            ]
+          },
+          {
+            "id": 111,
+            "species": "genvo",
+            "parts": [
+              "small-torso",
+              "simple-eye",
+              "simple-eye",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "grazing-mouth"
+            ]
+          },
+          {
+            "id": 133,
+            "species": "rillsifter",
+            "parts": [
+              "light-torso",
+              "silt-fin",
+              "wide-field-eye",
+              "wide-field-eye",
+              "gill-slits",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "reed-sieve-mouth",
+              "paddle-tail"
+            ]
+          },
+          {
+            "id": 138,
+            "species": "rillsifter",
+            "parts": [
+              "light-torso",
+              "silt-fin",
+              "wide-field-eye",
+              "wide-field-eye",
+              "gill-slits",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "reed-sieve-mouth",
+              "paddle-tail"
+            ]
+          },
+          {
+            "id": 139,
+            "species": "rillsifter",
+            "parts": [
+              "light-torso",
+              "silt-fin",
+              "wide-field-eye",
+              "wide-field-eye",
+              "gill-slits",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "reed-sieve-mouth",
+              "paddle-tail"
+            ]
+          },
+          {
+            "id": 140,
+            "species": "rillsifter",
+            "parts": [
+              "light-torso",
+              "silt-fin",
+              "wide-field-eye",
+              "wide-field-eye",
+              "gill-slits",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "reed-sieve-mouth",
+              "paddle-tail"
+            ]
+          },
+          {
+            "id": 148,
+            "species": "rillsifter",
+            "parts": [
+              "light-torso",
+              "silt-fin",
+              "wide-field-eye",
+              "wide-field-eye",
+              "gill-slits",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "reed-sieve-mouth",
+              "paddle-tail"
+            ]
+          }
+        ],
+        "found": [
+          21
+        ],
+        "seenParts": [
+          "light-torso",
+          "silt-fin",
+          "wide-field-eye",
+          "gill-slits",
+          "webbed-leg",
+          "reed-sieve-mouth",
+          "paddle-tail",
+          "small-torso",
+          "simple-eye",
+          "walking-leg",
+          "grazing-mouth",
+          "sleek-torso",
+          "spine-ridge",
+          "hunter-eye",
+          "runner-leg",
+          "tearing-jaw",
+          "whip-tail"
+        ],
+        "story": {
+          "day": 4,
+          "seen": {
+            "genvo": 1
+          }
+        }
+      },
+      {
+        "label": "Manual KeyA",
+        "day": 4,
+        "tick": 847,
+        "id": 109,
+        "x": 69.45566195059826,
+        "y": 64.87541394137558,
+        "energy": 64.25403923447257,
+        "hydration": 40.48119660279586,
+        "health": 100,
+        "parts": [
+          "small-torso",
+          "simple-eye",
+          "simple-eye",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "movement": {
+          "allowed": true,
+          "swimming": false,
+          "swimmer": false,
+          "speed": 0.884061816693842,
+          "energy": 1.1816058564495788,
+          "sprint": 1,
+          "grade": 0.0002040640618634626,
+          "grip": 0
+        },
+        "thermal": {
+          "thermal": 0.02354692270606757,
+          "extraEnergy": 0,
+          "temperature": 0.3508170247077942,
+          "load": 0.02354692270606757
+        },
+        "feeding": {
+          "mouth": "grazing-mouth",
+          "forage": {
+            "sunmoss": 1,
+            "bramble": 0.75,
+            "marshroot": 0.4,
+            "rotcap": 0.08,
+            "woodspire": 0.04,
+            "thistlepod": 0.6,
+            "dunebulb": 0.75,
+            "dustsage": 0.6,
+            "frostlichen": 1,
+            "snowberry": 0.75
+          },
+          "hunter": false,
+          "carrion": false,
+          "seedCarrier": true,
+          "filterFeeder": false
+        },
+        "water": false,
+        "moisture": 0.6218564510345459,
+        "temperature": 0.3508170247077942,
+        "home": {
+          "x": 69.1751402467721,
+          "y": 62.02177309258557
+        },
+        "pressures": [
+          {
+            "kind": "scarcity",
+            "label": "Food shortage",
+            "severity": 0.82,
+            "effect": "your food-use traits cost more here",
+            "tone": "hurt",
+            "detail": "Food nearby 0% \u00c2\u00b7 energy 52%",
+            "genes": [
+              "digestion",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "cold",
+            "label": "Cold",
+            "severity": 0.6448974235355857,
+            "effect": "your climate trait is close to neutral",
+            "tone": "neutral",
+            "detail": "Local 35 \u00c2\u00b7 comfort 55",
+            "genes": [
+              "climate",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "dryness",
+            "label": "Low water",
+            "severity": 0.3468651208684146,
+            "effect": "shorter stride makes water harder to reach",
+            "tone": "hurt",
+            "detail": "Water 36% \u00c2\u00b7 nearest bank 1.1 tiles",
+            "genes": [
+              "motion"
+            ]
+          }
+        ],
+        "visible": [
+          {
+            "id": 110,
+            "species": "genvo",
+            "parts": [
+              "small-torso",
+              "simple-eye",
+              "simple-eye",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "grazing-mouth"
+            ]
+          },
+          {
+            "id": 133,
+            "species": "rillsifter",
+            "parts": [
+              "light-torso",
+              "silt-fin",
+              "wide-field-eye",
+              "wide-field-eye",
+              "gill-slits",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "reed-sieve-mouth",
+              "paddle-tail"
+            ]
+          },
+          {
+            "id": 138,
+            "species": "rillsifter",
+            "parts": [
+              "light-torso",
+              "silt-fin",
+              "wide-field-eye",
+              "wide-field-eye",
+              "gill-slits",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "reed-sieve-mouth",
+              "paddle-tail"
+            ]
+          },
+          {
+            "id": 139,
+            "species": "rillsifter",
+            "parts": [
+              "light-torso",
+              "silt-fin",
+              "wide-field-eye",
+              "wide-field-eye",
+              "gill-slits",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "reed-sieve-mouth",
+              "paddle-tail"
+            ]
+          },
+          {
+            "id": 140,
+            "species": "rillsifter",
+            "parts": [
+              "light-torso",
+              "silt-fin",
+              "wide-field-eye",
+              "wide-field-eye",
+              "gill-slits",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "reed-sieve-mouth",
+              "paddle-tail"
+            ]
+          },
+          {
+            "id": 146,
+            "species": "rillsifter",
+            "parts": [
+              "light-torso",
+              "silt-fin",
+              "wide-field-eye",
+              "wide-field-eye",
+              "gill-slits",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "reed-sieve-mouth",
+              "paddle-tail"
+            ]
+          },
+          {
+            "id": 148,
+            "species": "rillsifter",
+            "parts": [
+              "light-torso",
+              "silt-fin",
+              "wide-field-eye",
+              "wide-field-eye",
+              "gill-slits",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "webbed-leg",
+              "reed-sieve-mouth",
+              "paddle-tail"
+            ]
+          }
+        ],
+        "found": [
+          21
+        ],
+        "seenParts": [
+          "light-torso",
+          "silt-fin",
+          "wide-field-eye",
+          "gill-slits",
+          "webbed-leg",
+          "reed-sieve-mouth",
+          "paddle-tail",
+          "small-torso",
+          "simple-eye",
+          "walking-leg",
+          "grazing-mouth",
+          "sleek-torso",
+          "spine-ridge",
+          "hunter-eye",
+          "runner-leg",
+          "tearing-jaw",
+          "whip-tail"
+        ],
+        "story": {
+          "day": 4,
+          "seen": {
+            "genvo": 1
+          }
+        }
+      },
+      {
+        "label": "Manual KeyW",
+        "day": 4,
+        "tick": 868,
+        "id": 109,
+        "x": 69.45566195059826,
+        "y": 61.532007246732334,
+        "energy": 63.83725241236457,
+        "hydration": 40.48119660279586,
+        "health": 100,
+        "parts": [
+          "small-torso",
+          "simple-eye",
+          "simple-eye",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "movement": {
+          "allowed": true,
+          "swimming": false,
+          "swimmer": false,
+          "speed": 0.8846067899325146,
+          "energy": 1.1807594333625455,
+          "sprint": 1,
+          "grade": 0.00021551779800255133,
+          "grip": 0
+        },
+        "thermal": {
+          "thermal": 0.011393203696717326,
+          "extraEnergy": 0,
+          "temperature": 0.35079631209373474,
+          "load": 0.011393203696717326
+        },
+        "feeding": {
+          "mouth": "grazing-mouth",
+          "forage": {
+            "sunmoss": 1,
+            "bramble": 0.75,
+            "marshroot": 0.4,
+            "rotcap": 0.08,
+            "woodspire": 0.04,
+            "thistlepod": 0.6,
+            "dunebulb": 0.75,
+            "dustsage": 0.6,
+            "frostlichen": 1,
+            "snowberry": 0.75
+          },
+          "hunter": false,
+          "carrion": false,
+          "seedCarrier": true,
+          "filterFeeder": false
+        },
+        "water": false,
+        "moisture": 0.5752326846122742,
+        "temperature": 0.35079631209373474,
+        "home": {
+          "x": 69.1751402467721,
+          "y": 62.02177309258557
+        },
+        "pressures": [
+          {
+            "kind": "scarcity",
+            "label": "Food shortage",
+            "severity": 0.82,
+            "effect": "your food-use traits cost more here",
+            "tone": "hurt",
+            "detail": "Food nearby 0% \u00c2\u00b7 energy 51%",
+            "genes": [
+              "digestion",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "cold",
+            "label": "Cold",
+            "severity": 0.6449802739918234,
+            "effect": "your climate trait is close to neutral",
+            "tone": "neutral",
+            "detail": "Local 35 \u00c2\u00b7 comfort 55",
+            "genes": [
+              "climate",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "dryness",
+            "label": "Low water",
+            "severity": 0.3765522515958041,
+            "effect": "shorter stride makes water harder to reach",
+            "tone": "hurt",
+            "detail": "Water 36% \u00c2\u00b7 nearest bank 2.8 tiles",
+            "genes": [
+              "motion"
+            ]
+          }
+        ],
+        "visible": [],
+        "found": [
+          21
+        ],
+        "seenParts": [
+          "light-torso",
+          "silt-fin",
+          "wide-field-eye",
+          "gill-slits",
+          "webbed-leg",
+          "reed-sieve-mouth",
+          "paddle-tail",
+          "small-torso",
+          "simple-eye",
+          "walking-leg",
+          "grazing-mouth",
+          "sleek-torso",
+          "spine-ridge",
+          "hunter-eye",
+          "runner-leg",
+          "tearing-jaw",
+          "whip-tail"
+        ],
+        "story": {
+          "day": 4,
+          "seen": {
+            "genvo": 1
+          }
+        }
+      }
+    ]
+  },
+  "pageErrors": []
+}

@@ -1,0 +1,712 @@
+{
+  "scope": "Ordinary founder conditions; genuine tutorial actions followed by manual exploration. No teleports, stock edits, body changes or forced encounters.",
+  "failure": null,
+  "errors": [],
+  "tutorialCompleted": {
+    "stage": "step-complete",
+    "paused": true,
+    "lastMate": 110,
+    "day": 4
+  },
+  "beforeReload": {
+    "stage": "done",
+    "rules": "survival-home/1",
+    "site": {
+      "x": 69.5,
+      "y": 55.5,
+      "region": {
+        "x": 0,
+        "y": 0
+      },
+      "seed": "GENVO8-PLAYABLE-TEST",
+      "markedTick": 288
+    },
+    "defense": {
+      "braced": true
+    }
+  },
+  "afterReload": {
+    "stage": "done",
+    "rules": "survival-home/1",
+    "site": {
+      "x": 69.5,
+      "y": 55.5,
+      "region": {
+        "x": 0,
+        "y": 0
+      },
+      "seed": "GENVO8-PLAYABLE-TEST",
+      "markedTick": 288
+    },
+    "defense": {
+      "braced": true
+    }
+  },
+  "audit": {
+    "scope": "Ordinary founder conditions; genuine tutorial actions followed by manual exploration. No teleports, stock edits, body changes or forced encounters.",
+    "samples": [
+      {
+        "label": "After earned home and native lesson",
+        "day": 4,
+        "tick": 754,
+        "id": 109,
+        "x": 69.4953630600205,
+        "y": 55.15846290011514,
+        "energy": 70.13836848928322,
+        "hydration": 43.20288393094647,
+        "health": 100,
+        "parts": [
+          "small-torso",
+          "simple-eye",
+          "simple-eye",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "movement": {
+          "allowed": true,
+          "swimming": false,
+          "swimmer": false,
+          "speed": 0.8860416131924695,
+          "energy": 1.1785282034229585,
+          "sprint": 1,
+          "grade": 0.00024235155652885254,
+          "grip": 0
+        },
+        "thermal": {
+          "thermal": 0.011395542932023113,
+          "extraEnergy": 0,
+          "temperature": 0.3507560193538666,
+          "load": 0.011395542932023113
+        },
+        "feeding": {
+          "mouth": "grazing-mouth",
+          "forage": {
+            "sunmoss": 1,
+            "bramble": 0.75,
+            "marshroot": 0.4,
+            "rotcap": 0.08,
+            "woodspire": 0.04,
+            "thistlepod": 0.6,
+            "dunebulb": 0.75,
+            "dustsage": 0.6,
+            "frostlichen": 1,
+            "snowberry": 0.75
+          },
+          "hunter": false,
+          "carrion": false,
+          "seedCarrier": true,
+          "filterFeeder": false
+        },
+        "water": false,
+        "moisture": 0.511808454990387,
+        "temperature": 0.3507560193538666,
+        "home": {
+          "x": 69.50373574518285,
+          "y": 57.56104182970402
+        },
+        "pressures": [
+          {
+            "kind": "scarcity",
+            "label": "Food shortage",
+            "severity": 0.82,
+            "effect": "your food-use traits cost more here",
+            "tone": "hurt",
+            "detail": "Food nearby 0% \u00c2\u00b7 energy 57%",
+            "genes": [
+              "digestion",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "cold",
+            "label": "Cold",
+            "severity": 0.6451414449512961,
+            "effect": "your climate trait is close to neutral",
+            "tone": "neutral",
+            "detail": "Local 35 \u00c2\u00b7 comfort 55",
+            "genes": [
+              "climate",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "dryness",
+            "label": "Low water",
+            "severity": 0.4244603582509062,
+            "effect": "shorter stride makes water harder to reach",
+            "tone": "hurt",
+            "detail": "Water 38% \u00c2\u00b7 nearest bank 7.3 tiles",
+            "genes": [
+              "motion"
+            ]
+          }
+        ],
+        "visible": [
+          {
+            "id": 110,
+            "species": "genvo",
+            "parts": [
+              "small-torso",
+              "simple-eye",
+              "simple-eye",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "grazing-mouth"
+            ]
+          },
+          {
+            "id": 113,
+            "species": "genvo",
+            "parts": [
+              "small-torso",
+              "simple-eye",
+              "simple-eye",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "grazing-mouth"
+            ]
+          }
+        ],
+        "found": [],
+        "seenParts": [
+          "light-torso",
+          "silt-fin",
+          "wide-field-eye",
+          "gill-slits",
+          "webbed-leg",
+          "reed-sieve-mouth",
+          "paddle-tail",
+          "small-torso",
+          "simple-eye",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "story": {
+          "day": 4,
+          "seen": {}
+        },
+        "hud": "Shelter is cutting the current weather exposure."
+      },
+      {
+        "label": "Manual KeyD",
+        "day": 4,
+        "tick": 769,
+        "id": 109,
+        "x": 72.80986693106948,
+        "y": 55.15846290011514,
+        "energy": 69.72510137195935,
+        "hydration": 43.20288393094647,
+        "health": 100,
+        "parts": [
+          "small-torso",
+          "simple-eye",
+          "simple-eye",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "movement": {
+          "allowed": true,
+          "swimming": false,
+          "swimmer": false,
+          "speed": 0.8836074878357254,
+          "energy": 1.1821772947492997,
+          "sprint": 1,
+          "grade": -2.2795463645142178e-05,
+          "grip": 0
+        },
+        "thermal": {
+          "thermal": 0.023556832574307927,
+          "extraEnergy": 0,
+          "temperature": 0.3507344424724579,
+          "load": 0.023556832574307927
+        },
+        "feeding": {
+          "mouth": "grazing-mouth",
+          "forage": {
+            "sunmoss": 1,
+            "bramble": 0.75,
+            "marshroot": 0.4,
+            "rotcap": 0.08,
+            "woodspire": 0.04,
+            "thistlepod": 0.6,
+            "dunebulb": 0.75,
+            "dustsage": 0.6,
+            "frostlichen": 1,
+            "snowberry": 0.75
+          },
+          "hunter": false,
+          "carrion": false,
+          "seedCarrier": true,
+          "filterFeeder": false
+        },
+        "water": false,
+        "moisture": 0.48154401779174805,
+        "temperature": 0.3507344424724579,
+        "home": {
+          "x": 69.50373574518285,
+          "y": 57.56104182970402
+        },
+        "pressures": [
+          {
+            "kind": "scarcity",
+            "label": "Food shortage",
+            "severity": 0.82,
+            "effect": "your food-use traits cost more here",
+            "tone": "hurt",
+            "detail": "Food nearby 0% \u00c2\u00b7 energy 56%",
+            "genes": [
+              "digestion",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "cold",
+            "label": "Cold",
+            "severity": 0.6452277524769309,
+            "effect": "your climate trait is close to neutral",
+            "tone": "neutral",
+            "detail": "Local 35 \u00c2\u00b7 comfort 55",
+            "genes": [
+              "climate",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "dryness",
+            "label": "Low water",
+            "severity": 0.4674397091546514,
+            "effect": "shorter stride makes water harder to reach",
+            "tone": "hurt",
+            "detail": "Water 38% \u00c2\u00b7 nearest bank 9.7 tiles",
+            "genes": [
+              "motion"
+            ]
+          }
+        ],
+        "visible": [],
+        "found": [],
+        "seenParts": [
+          "light-torso",
+          "silt-fin",
+          "wide-field-eye",
+          "gill-slits",
+          "webbed-leg",
+          "reed-sieve-mouth",
+          "paddle-tail",
+          "small-torso",
+          "simple-eye",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "story": {
+          "day": 4,
+          "seen": {}
+        },
+        "hud": "Cold is adding to your energy use. Shelter or warmer ground can help."
+      },
+      {
+        "label": "Manual KeyS",
+        "day": 4,
+        "tick": 784,
+        "id": 109,
+        "x": 72.80986693106948,
+        "y": 58.42256184939329,
+        "energy": 68.2309693797665,
+        "hydration": 38.5664081938321,
+        "health": 100,
+        "parts": [
+          "small-torso",
+          "simple-eye",
+          "simple-eye",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "movement": {
+          "allowed": true,
+          "swimming": false,
+          "swimmer": false,
+          "speed": 0.8833523623241532,
+          "energy": 1.1825955949394074,
+          "sprint": 1,
+          "grade": 2.4458233108592964e-05,
+          "grip": 0
+        },
+        "thermal": {
+          "thermal": 0.02355464746803046,
+          "extraEnergy": 0,
+          "temperature": 0.35075265169143677,
+          "load": 0.02355464746803046
+        },
+        "feeding": {
+          "mouth": "grazing-mouth",
+          "forage": {
+            "sunmoss": 1,
+            "bramble": 0.75,
+            "marshroot": 0.4,
+            "rotcap": 0.08,
+            "woodspire": 0.04,
+            "thistlepod": 0.6,
+            "dunebulb": 0.75,
+            "dustsage": 0.6,
+            "frostlichen": 1,
+            "snowberry": 0.75
+          },
+          "hunter": false,
+          "carrion": false,
+          "seedCarrier": true,
+          "filterFeeder": false
+        },
+        "water": false,
+        "moisture": 0.5021331906318665,
+        "temperature": 0.35075265169143677,
+        "home": {
+          "x": 69.50373574518285,
+          "y": 57.56104182970402
+        },
+        "pressures": [
+          {
+            "kind": "scarcity",
+            "label": "Food shortage",
+            "severity": 0.82,
+            "effect": "your food-use traits cost more here",
+            "tone": "hurt",
+            "detail": "Food nearby 0% \u00c2\u00b7 energy 55%",
+            "genes": [
+              "digestion",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "cold",
+            "label": "Cold",
+            "severity": 0.6451549156010153,
+            "effect": "your climate trait is close to neutral",
+            "tone": "neutral",
+            "detail": "Local 35 \u00c2\u00b7 comfort 55",
+            "genes": [
+              "climate",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "dryness",
+            "label": "Low water",
+            "severity": 0.48404003229363307,
+            "effect": "shorter stride makes water harder to reach",
+            "tone": "hurt",
+            "detail": "Water 34% \u00c2\u00b7 nearest bank 7.3 tiles",
+            "genes": [
+              "motion"
+            ]
+          }
+        ],
+        "visible": [
+          {
+            "id": 113,
+            "species": "genvo",
+            "parts": [
+              "small-torso",
+              "simple-eye",
+              "simple-eye",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "grazing-mouth"
+            ]
+          }
+        ],
+        "found": [],
+        "seenParts": [
+          "light-torso",
+          "silt-fin",
+          "wide-field-eye",
+          "gill-slits",
+          "webbed-leg",
+          "reed-sieve-mouth",
+          "paddle-tail",
+          "small-torso",
+          "simple-eye",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "story": {
+          "day": 4,
+          "seen": {}
+        },
+        "hud": "Cold is adding to your energy use. Shelter or warmer ground can help."
+      },
+      {
+        "label": "Manual KeyA",
+        "day": 4,
+        "tick": 799,
+        "id": 109,
+        "x": 69.51360700728604,
+        "y": 58.42256184939329,
+        "energy": 67.81723430973841,
+        "hydration": 38.5664081938321,
+        "health": 100,
+        "parts": [
+          "small-torso",
+          "simple-eye",
+          "simple-eye",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "movement": {
+          "allowed": true,
+          "swimming": false,
+          "swimmer": false,
+          "speed": 0.8852665245800585,
+          "energy": 1.1797337122247602,
+          "sprint": 1,
+          "grade": 0.0002280242858212489,
+          "grip": 0
+        },
+        "thermal": {
+          "thermal": 0.02355201532691718,
+          "extraEnergy": 0,
+          "temperature": 0.3507745862007141,
+          "load": 0.02355201532691718
+        },
+        "feeding": {
+          "mouth": "grazing-mouth",
+          "forage": {
+            "sunmoss": 1,
+            "bramble": 0.75,
+            "marshroot": 0.4,
+            "rotcap": 0.08,
+            "woodspire": 0.04,
+            "thistlepod": 0.6,
+            "dunebulb": 0.75,
+            "dustsage": 0.6,
+            "frostlichen": 1,
+            "snowberry": 0.75
+          },
+          "hunter": false,
+          "carrion": false,
+          "seedCarrier": true,
+          "filterFeeder": false
+        },
+        "water": false,
+        "moisture": 0.5401104092597961,
+        "temperature": 0.3507745862007141,
+        "home": {
+          "x": 69.50373574518285,
+          "y": 57.56104182970402
+        },
+        "pressures": [
+          {
+            "kind": "scarcity",
+            "label": "Food shortage",
+            "severity": 0.82,
+            "effect": "your food-use traits cost more here",
+            "tone": "hurt",
+            "detail": "Food nearby 0% \u00c2\u00b7 energy 55%",
+            "genes": [
+              "digestion",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "cold",
+            "label": "Cold",
+            "severity": 0.645067177563906,
+            "effect": "your climate trait is close to neutral",
+            "tone": "neutral",
+            "detail": "Local 35 \u00c2\u00b7 comfort 55",
+            "genes": [
+              "climate",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "dryness",
+            "label": "Low water",
+            "severity": 0.4424193429090144,
+            "effect": "shorter stride makes water harder to reach",
+            "tone": "hurt",
+            "detail": "Water 34% \u00c2\u00b7 nearest bank 5.1 tiles",
+            "genes": [
+              "motion"
+            ]
+          }
+        ],
+        "visible": [
+          {
+            "id": 113,
+            "species": "genvo",
+            "parts": [
+              "small-torso",
+              "simple-eye",
+              "simple-eye",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "walking-leg",
+              "grazing-mouth"
+            ]
+          }
+        ],
+        "found": [],
+        "seenParts": [
+          "light-torso",
+          "silt-fin",
+          "wide-field-eye",
+          "gill-slits",
+          "webbed-leg",
+          "reed-sieve-mouth",
+          "paddle-tail",
+          "small-torso",
+          "simple-eye",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "story": {
+          "day": 4,
+          "seen": {}
+        },
+        "hud": "Cold is adding to your energy use. Shelter or warmer ground can help."
+      },
+      {
+        "label": "Manual KeyW",
+        "day": 4,
+        "tick": 815,
+        "id": 109,
+        "x": 69.51360700728604,
+        "y": 55.0855245638966,
+        "energy": 66.33801790517018,
+        "hydration": 33.92993245671774,
+        "health": 100,
+        "parts": [
+          "small-torso",
+          "simple-eye",
+          "simple-eye",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "movement": {
+          "allowed": true,
+          "swimming": false,
+          "swimmer": false,
+          "speed": 0.8860450909279654,
+          "energy": 1.1785217289627716,
+          "sprint": 1,
+          "grade": 0.00024078060145305002,
+          "grip": 0
+        },
+        "thermal": {
+          "thermal": 0.011395542932023113,
+          "extraEnergy": 0,
+          "temperature": 0.3507560193538666,
+          "load": 0.011395542932023113
+        },
+        "feeding": {
+          "mouth": "grazing-mouth",
+          "forage": {
+            "sunmoss": 1,
+            "bramble": 0.75,
+            "marshroot": 0.4,
+            "rotcap": 0.08,
+            "woodspire": 0.04,
+            "thistlepod": 0.6,
+            "dunebulb": 0.75,
+            "dustsage": 0.6,
+            "frostlichen": 1,
+            "snowberry": 0.75
+          },
+          "hunter": false,
+          "carrion": false,
+          "seedCarrier": true,
+          "filterFeeder": false
+        },
+        "water": false,
+        "moisture": 0.511808454990387,
+        "temperature": 0.3507560193538666,
+        "home": {
+          "x": 69.50373574518285,
+          "y": 57.56104182970402
+        },
+        "pressures": [
+          {
+            "kind": "scarcity",
+            "label": "Food shortage",
+            "severity": 0.82,
+            "effect": "your food-use traits cost more here",
+            "tone": "hurt",
+            "detail": "Food nearby 0% \u00c2\u00b7 energy 53%",
+            "genes": [
+              "digestion",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "cold",
+            "label": "Cold",
+            "severity": 0.6451414449512961,
+            "effect": "your climate trait is close to neutral",
+            "tone": "neutral",
+            "detail": "Local 35 \u00c2\u00b7 comfort 55",
+            "genes": [
+              "climate",
+              "metabolism"
+            ]
+          },
+          {
+            "kind": "dryness",
+            "label": "Low water",
+            "severity": 0.543602597165685,
+            "effect": "shorter stride makes water harder to reach",
+            "tone": "hurt",
+            "detail": "Water 30% \u00c2\u00b7 nearest bank 7.4 tiles",
+            "genes": [
+              "motion"
+            ]
+          }
+        ],
+        "visible": [],
+        "found": [],
+        "seenParts": [
+          "light-torso",
+          "silt-fin",
+          "wide-field-eye",
+          "gill-slits",
+          "webbed-leg",
+          "reed-sieve-mouth",
+          "paddle-tail",
+          "small-torso",
+          "simple-eye",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "story": {
+          "day": 4,
+          "seen": {}
+        },
+        "hud": "Cold is adding to your energy use. Shelter or warmer ground can help."
+      }
+    ],
+    "notices": [
+      "Cold is adding to your energy use. Shelter or warmer ground can help."
+    ]
+  }
+}

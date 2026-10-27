@@ -1,3 +1,4 @@
+import {thermalSiteDemand} from '../ecology/thermal-refuge.js';
 import {canHunt} from '../ecology/functional-diet.js';
 import {hasAdaptation} from '../lineage/evolution.js';
 import {CFG} from '../sim/config.js';
@@ -19,6 +20,7 @@ export class EffectFeedbackController{
     this.denWasInside=false;
     this.lastIllnessMode='none';
     this.lastProtoDay=-Infinity;
+    this.lastClimateNotice={};
     this.lastProtoThreatTick=-Infinity;
   }
   observe(){
@@ -78,6 +80,20 @@ export class EffectFeedbackController{
     const den=sim.stalkerTerritory?.playerStatus?.(p);
     if(den?.known&&den.inside&&!this.denWasInside){this.denWasInside=true;this.lastKnownDenId=den.siteId;return{message:'Known Stalker territory: even a well-fed owner may defend this ground.',tone:'warn',kind:'territory'}}
     if(!den?.inside)this.denWasInside=false;
+    // Salience is a presentation threshold, not a new physiological rule.
+    // Use the same demand reader as actual thermal refuge decisions; no
+    // unseen resource/organism scan, hypothetical trait or extra RNG draw.
+    if(!sim.paused&&(!sim.uiTutorialRules||sim.uiTutorialStage==='done')&&p.bodyPlan&&p.genes&&sim.world?.temperature&&sim.world?.moisture){
+      const demand=thermalSiteDemand(sim,p);
+      const kind=demand.temperature<.55*p.genes.climate?'cold':'heat';
+      if(demand.load>.018&&sim.day-(this.lastClimateNotice[kind]??-Infinity)>=6){
+        this.lastClimateNotice[kind]=sim.day;
+        return {kind:'environment',tone:'safe',message:kind==='cold'
+          ?'Cold is adding to your energy use. Shelter or warmer ground can help.'
+          :'Heat is adding to your energy use. Look for cooler ground or cover.'};
+      }
+    }
+
     return null;
   }
 }

@@ -1,3 +1,4 @@
+import {inheritedCapabilityChanges} from './inherited-capabilities.js';
 import {createConceptionPlate,mountBirthCapacity} from '../../assets/ui/birth-comparison.js';
 import {SPECIES} from '../organisms/species.js';
 import {ADAPTATIONS} from '../lineage/evolution.js';
@@ -54,11 +55,11 @@ export function buildYoungSummary(sim,parent,children,{first=false}={}){
    const t=ALL_PART_TEXT[p];
    return t?.gain?`${name(p)} (${t.gain})`:null;
   }).filter(Boolean);
-  return{id:c.id,sex:c.sex==='F'?'female':c.sex==='M'?'male':'',from,lost,lostInDevelopment:lost.filter(x=>removed.has(x)&&!guidedParts.has(x)),guided,guidedBy,guidedParts:[...guidedParts],advantages,traits:compareGenes(c.genes,parent.genes,{limit:3}).map(t=>t.phrase),bornWith:(c.bornWith||[]).map(id=>ADAPTATIONS[id]?.name||name(id)),
+  return{id:c.id,sex:c.sex==='F'?'female':c.sex==='M'?'male':'',from,lost,lostInDevelopment:lost.filter(x=>removed.has(x)&&!guidedParts.has(x)),guided,guidedBy,guidedParts:[...guidedParts],advantages,capabilities:inheritedCapabilityChanges(sim,parent,c),traits:compareGenes(c.genes,parent.genes,{limit:3}).map(t=>t.phrase),bornWith:(c.bornWith||[]).map(id=>ADAPTATIONS[id]?.name||name(id)),
    mutated:!!(c.bodyVariation?.accepted&&c.bodyVariation?.attempted&&(c.bodyVariation.targets?.length||c.bodyVariation.removed?.length||c.bodyVariation.moved?.length)),
    dependent:!!sim.family?.isDependent?.(c),stage:learning?.label||'newborn'}});
- const lines=y=>[y.from.you.length?'From you: '+list(y.from.you):'',y.from.mate.length?'From its other parent: '+list(y.from.mate):'',y.from.both.length?'Both of you carried: '+list(y.from.both):'',
-  y.from.new.length?'New in this body: '+list(y.from.new):'',y.advantages?.length?'Novel advantages: '+y.advantages.join(' · '):'',y.lostInDevelopment.length?'Lost in development: '+list(y.lostInDevelopment):'',
+ const lines=y=>[y.capabilities?.length?'Different possibilities: '+y.capabilities.join(' · '):'',y.from.you.length?'From you: '+list(y.from.you):'',y.from.mate.length?'From its other parent: '+list(y.from.mate):'',y.from.both.length?'Both of you carried: '+list(y.from.both):'',
+  y.from.new.length?'New in this body: '+list(y.from.new):'',y.lostInDevelopment.length?'Lost in development: '+list(y.lostInDevelopment):'',
   y.guided.length?y.guidedBy+': '+y.guided.join(', '):'',
   y.lost.filter(x=>!y.lostInDevelopment.includes(x)&&!y.guidedParts.includes(x)).length?'Not inherited from you: '+list(y.lost.filter(x=>!y.lostInDevelopment.includes(x)&&!y.guidedParts.includes(x))):'',
   y.traits.length?'Compared with you: '+y.traits.join(', '):'',y.bornWith.length?'Born with: '+y.bornWith.join(', '):''].filter(Boolean);
