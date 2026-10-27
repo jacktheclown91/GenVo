@@ -2,7 +2,7 @@
 
 ## Current creator priority: ecological motivation
 
-Wildlife follow-up: actual visible activities now appear in the existing selected-creature heading, with complete perception/privacy checks and compact body clearance. All 135 local checks, Node 22/24 targeted contracts and healthy native Save/Continue plus a fresh tutorial regression pass. Final commit/CI is pending; the full objective remains active. The next biological task is the independently reproduced dead-selected-mate save mismatch.
+Wildlife follow-up: actual visible activities now appear in the existing selected-creature heading, with complete perception/privacy checks and compact body clearance. All 135 local checks, Node 22/24 targeted contracts and healthy native Save/Continue plus a fresh tutorial regression pass. Exact-commit CI 40525997407 passes for b6a1ba7a; the full objective remains active. The dead-selected-mate lifecycle correction now passes a strict 320-day replay with complete original biology/RNG equality except the invalid selection; all 135 maintained local checks and focused Node 22/24 controls pass. Its own commit/CI follows; regional ancestry continuity/default activation and the major-stall correction remain unfinished. See [the correction and remaining regional work](DEAD-SELECTED-MATE-SAVE-2026-10-27.md).
 
 Follow-up: four actual paid-birth profiles and retained Field Guide comparisons pass focused Node 22/24 and native browser checks. A real short-landscape birth-card overflow is fixed, and inherited tradeoffs lead the details. The expanded 134-check local gate and exact-head CI 40510893102 pass for c379bf8b.
 

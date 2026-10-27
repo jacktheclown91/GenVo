@@ -1,0 +1,101 @@
+{
+  "scope": "Diagnostic CPU sample attribution on an actual Day 321 field snapshot. Concurrent validation workloads: not a performance benchmark or before/after claim.",
+  "input": "reports/autonomous-B-field-source-20261027/reports/field-0.json.snapshot.v8",
+  "start": {
+    "tick": 76800,
+    "day": 321,
+    "living": 97,
+    "rng": 3298746819,
+    "signature": "5e63856da295a4bec979b504c5a65a1e6dd7fecc2bc72e52ca3ce5bdb9b96dc1"
+  },
+  "end": {
+    "tick": 78000,
+    "day": 326,
+    "living": 95,
+    "rng": 2332085040,
+    "signature": "0f3464eb60a13cad47ae6d656af4aed040884c4d8e2ddbea3123b34c6dd85fc5"
+  },
+  "ticks": 1200,
+  "top": [
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/carrying.js#surveyAt:24",
+      "sampleShare": 0.05929758539357859
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/dispersal.js#cropYield:51",
+      "sampleShare": 0.04500597141613718
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/sim/simulation.js#phaseMovement:634",
+      "sampleShare": 0.03242912256528693
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/sim/simulation.js#orderedTickSteps:382",
+      "sampleShare": 0.030277677463535848
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/sim/simulation.js#juicyFood:468",
+      "sampleShare": 0.02811522806873493
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/botanical-reproduction.js#advanceBotanicalReproductionSteps:83",
+      "sampleShare": 0.022781849307422598
+    },
+    {
+      "frame": "#(garbage collector):0",
+      "sampleShare": 0.020280594659299152
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/world/world.js#idx:60",
+      "sampleShare": 0.019458552806375127
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/world/subsurface.js#refreshPassages:38",
+      "sampleShare": 0.019204713392658463
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/world/world.js#buildHydrology:97",
+      "sampleShare": 0.017607397932272173
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/plant-resources.js#growLandProducers:55",
+      "sampleShare": 0.017419478466344375
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/sim/simulation.js#waterRoute:442",
+      "sampleShare": 0.01678567351087843
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/sim/simulation.js#phaseDecisionSteps:538",
+      "sampleShare": 0.01673414379246242
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/lineage/lifestyle.js#canReach:30",
+      "sampleShare": 0.015764390467446498
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/botanical-genetics.js#identity:60",
+      "sampleShare": 0.014750090917680798
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/organisms/body-mass.js#adultBodyMass:20",
+      "sampleShare": 0.013905934668147026
+    },
+    {
+      "frame": "node:inspector#post:115",
+      "sampleShare": 0.013124418240589186
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/activity.js#isUrgent:25",
+      "sampleShare": 0.012599174868480181
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/gameplay/discovery.js#:57",
+      "sampleShare": 0.012425222389884853
+    },
+    {
+      "frame": "file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/src/ecology/botanical-genetics.js#botanicalFloraGenome:61",
+      "sampleShare": 0.011940292822121846
+    }
+  ]
+}

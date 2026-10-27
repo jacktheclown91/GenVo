@@ -1,0 +1,16 @@
+{
+  "scope": "Controlled death of an actually selected mate with the original player alive. Normal death authority; no resource or reproduction threshold edit.",
+  "before": {
+    "actor": 109,
+    "selected": 116,
+    "rng": 3736568527
+  },
+  "after": {
+    "actorAlive": true,
+    "selected": 116,
+    "rng": 3736568527
+  },
+  "restoredSelection": null,
+  "status": "strict-save-mismatch",
+  "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  {\n    animals: [\n      {\n        adaptations: [],\n        age: 5.599993246141821,\n...\n        ritualQueue: [],\n+       selectedMateId: null\n-       selectedMateId: 116\n      },\n      shelter: {\n        nextId: 1,\n        nextProjectId: 1,\n        projects: [],\n"
+}

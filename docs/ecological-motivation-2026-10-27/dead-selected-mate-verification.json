@@ -1,0 +1,27 @@
+{
+  "scope": "Selected-mate death lifecycle correction; automated evidence only, no new visual or release acceptance.",
+  "node24": "v24.14.0",
+  "node22": "v22.23.4",
+  "maintainedGate": {
+    "command": "node tools/check-playable.mjs",
+    "exitCode": 0,
+    "checks": 135,
+    "log": "reports/dead-selected-mate-playable.log",
+    "budgetsUnchanged": true
+  },
+  "focused": [
+    "extinct-lineage-save on Node 22 and 24, alive-player and actorless cases, exact restoration and six ticks",
+    "modernization-baseline on Node 22 and 24, original frozen fixtures",
+    "autonomous-policy-compatibility on Node 22 and 24, original policy 1/2 complete 5760-tick birth-containing worlds",
+    "Node 22 reproduction and conception-parental-inheritance",
+    "architecture-check, canonical-source-audit, public-export, syntax and Windows whitespace"
+  ],
+  "fieldComparison": "dead-selected-mate-field-comparison.json",
+  "priorWildlifeExactCI": "wildlife-exact-ci.json",
+  "ownExactCI": "pending after source checkpoint commit",
+  "remaining": [
+    "Regional tree aggregation and signed-coordinate candidate ID collision",
+    "Natural species recognition not observed; preserve gates and zero outcomes",
+    "Major browser/regional stall correction, initial download audit and independent final HTML5 candidate"
+  ]
+}

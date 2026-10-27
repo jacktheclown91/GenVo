@@ -1,0 +1,27 @@
+# Selected-mate death and strict save continuity
+
+A living player could retain a dead selected mate ID indefinitely. The existing restore authority removes dead IDs, so a newly saved world differed from itself after restoration. The retained 320-day seed `POPULATION-FOUNDING-PROBE-1` exposed this as selectedMateId 117 versus null; the player 109 was alive and animal 117 was no longer retained.
+
+The correction stays in the existing ReproductionController: Simulation.kill notifies it after marking an animal dead, and it clears only a matching selection. It does not select a new mate, interrupt performances early, spend RNG, alter resources, change reproductive acceptance or revise historical save rules. Succession and courtship retain their existing execution authorities.
+
+The maintained extinct-lineage save regression now also covers an alive player losing their selected mate under original and modern clocks, full death-state equality against an otherwise identical control except for that selection, duplicate notifications, unrelated death preserving choice, and complete restoration plus six continued ticks. Historical selected-reference loading assertions remain intact. Focused Node 22 and 24 checks and the original modernization baselines pass; Node 22 original policy-1/2 5,760-tick birth-containing controls pass unchanged. The complete maintained 135-check gate passes, including original policy-1/2 controls on Node 24, reproductive inheritance, tutorial and extended regional/multigeneration acceptance. Architecture, canonical source audit, public export and Windows-aware whitespace checks pass. No check or budget was removed or weakened. Exact-head CI for this correction follows its coherent commit.
+
+## Corrected 320-day field
+
+The immutable corrected source contains 1,141 hash-verified files, differing from the retained original experiment only in the two death-lifecycle modules. The original seed-1 failure remains untouched. The replay reaches tick 76,800 / Day 321 with 147 living creatures, 111 births, ancestry depth six and three established autonomous populations. The complete final snapshot equals the original final snapshot exactly after normalizing only selectedMateId 117 to null. All organism, resource, RNG, ancestry and historical state is unchanged. Strict restoration and six continued canonical ticks now pass. No descendant species is recognized in either outcome; the missing recognition gates remain evidence, not a balancing target. [Strict field comparison](ecological-motivation-2026-10-27/dead-selected-mate-field-comparison.json), [original minimal failure](ecological-motivation-2026-10-27/dead-selected-mate-original-probe.json).
+
+The prior wildlife checkpoint b6a1ba7a independently passed exact-commit [CI 40525997407](https://github.com/jacktheclown91/GenVo/actions/runs/40525997407), including both workers and required summary. This is separate from CI for the present lifecycle correction.
+
+## Separate unresolved regional finding
+
+A controlled placement at a physically approved border uses normal crossing and destination founding. After travel, 70 of 71 living animals in the destination lack membership in their recorded founding roots. `transferGlobals` replaces the destination tree with the source tree, losing the new destination memberships. Restoration still succeeds, demonstrating why save-only checks are insufficient. This probe is not natural migration acceptance. [Retained regional diagnostic](ecological-motivation-2026-10-27/regional-ancestry-gap.json).
+
+A second read-only candidate-key probe finds that `natural:-128,0:1` and `natural:128,0:1` receive the same candidate taxon ID because punctuation stripping removes the coordinate sign. It creates no recognition and leaves the complete state unchanged; this is a proven ID-construction collision, not an observed natural species collision. Correct regional identity construction through the existing speciation authority while retaining recorded historical branch IDs. [Candidate-key diagnostic](ecological-motivation-2026-10-27/regional-taxon-id-collision.json).
+
+Regional tree aggregation, genuine archived births and migrant genealogy, planet-wide living/extinction evidence and strict continuation still need implementation and acceptance before enabling autonomous recognition by default. Keep the existing evolutionary-tree and speciation authorities; do not create another registry or lower recognition thresholds.
+
+## Performance boundary
+
+A diagnostic CPU sample from the actual Day 321 seed-0 field advances 1,200 canonical ticks through Day 326. Leading sampled self-time sites include carrying surveyAt, dispersal cropYield, movement and botanical reproduction. Concurrent validation workloads invalidate elapsed-time comparisons. This is a profiling lead, not evidence that the major browser/regional stalls are corrected. [Diagnostic profile summary](ecological-motivation-2026-10-27/mature-update-diagnostic-profile.json).
+
+No native visual acceptance, external usability acceptance, default-policy activation or release publication is inferred from this lifecycle correction. The verified tutorial and earlier failed field receipt remain retained.

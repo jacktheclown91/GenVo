@@ -1,0 +1,438 @@
+{
+  "schema": "genvo.dead-selected-mate-field/1",
+  "scope": "Complete original 320-day field replay with only death-selection cleanup; no ecological settings, stocks, thresholds or animals staged.",
+  "seed": "POPULATION-FOUNDING-PROBE-1",
+  "node": "v24.14.0",
+  "originalStatus": "failed",
+  "originalFailure": "AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:\n+ actual - expected\n... Skipped lines\n\n  {\n    animals: [\n      {\n        adaptations: [],\n        age: 333.65757400006987,\n...\n        ritualQueue: [],\n+       selectedMateId: null\n-       selectedMateId: 117\n      },\n      shelter: {\n        nextId: 2,\n        nextProjectId: 1,\n        projects: [],\n\n    at file:///C:/Users/jackt/Desktop/Games/game%20jam%20october/genvo-toolkit/reports/autonomous-B-field-source-20261027/tools/observe-natural-evolution.mjs:171:12",
+  "correctedStatus": "complete",
+  "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+  "sourceFiles": 1141,
+  "changedSourceFiles": [
+    "src/reproduction/reproduction.js",
+    "src/sim/simulation.js"
+  ],
+  "selectionBefore": 117,
+  "selectionAfter": null,
+  "completeNormalizedSnapshotEqual": true,
+  "correctedSignature": "a92ec1155a2b3303644ee6d085facb80a338399da9e149bd79bac071857b79fd",
+  "final": {
+    "tick": 76800,
+    "day": 321,
+    "living": 147,
+    "births": 111,
+    "maxAncestryDepth": 6,
+    "recognizedStates": [
+      {
+        "populationKey": "natural:0,0:1",
+        "populationLabel": "Regional mosskip source 1",
+        "recognized": false,
+        "branch": null,
+        "progress": 0.6657292340012928,
+        "qualifyingDays": 0,
+        "weakDays": 0,
+        "lastEvaluationDay": 320,
+        "lastSnapshot": {
+          "day": 320,
+          "progress": 0.6657292340012928,
+          "historyDays": 287,
+          "separation": 0,
+          "distance": 66.34902386257285,
+          "cohort": 48,
+          "traitId": "anatomy:walking-leg:loss",
+          "traitLabel": "Walking leg reduction",
+          "traitDepth": 3,
+          "traitShare": 0.14583333333333334,
+          "traitStrength": 0.5046428571428571,
+          "localBirths": 3,
+          "crossBirths": 1,
+          "geneFlow": 0.25,
+          "isolation": 0.75,
+          "qualified": false,
+          "gates": {
+            "history": true,
+            "ecology": false,
+            "distance": true,
+            "cohort": true,
+            "trait": false,
+            "localPressure": false,
+            "reproduction": false,
+            "isolation": true
+          },
+          "unknownBirths": 0,
+          "knownGeneFlow": 0.25,
+          "referencePopulationKey": null
+        },
+        "recognizedDay": null,
+        "recognizedGeneration": null
+      },
+      {
+        "populationKey": "natural:0,0:2",
+        "populationLabel": "Regional mosskip source 2",
+        "recognized": false,
+        "branch": null,
+        "progress": 0.6049049489171576,
+        "qualifyingDays": 0,
+        "weakDays": 0,
+        "lastEvaluationDay": 320,
+        "lastSnapshot": {
+          "day": 320,
+          "progress": 0.6049049489171576,
+          "historyDays": 275,
+          "separation": 0,
+          "distance": 66.34902386257285,
+          "cohort": 53,
+          "traitId": "anatomy:balance-tail:gain",
+          "traitLabel": "Balance tail specialization",
+          "traitDepth": 2,
+          "traitShare": 0.09433962264150944,
+          "traitStrength": 0.4,
+          "localBirths": 5,
+          "crossBirths": 1,
+          "geneFlow": 0.16666666666666666,
+          "isolation": 0.8333333333333334,
+          "qualified": false,
+          "gates": {
+            "history": true,
+            "ecology": false,
+            "distance": true,
+            "cohort": true,
+            "trait": false,
+            "localPressure": false,
+            "reproduction": true,
+            "isolation": true
+          },
+          "unknownBirths": 0,
+          "knownGeneFlow": 0.16666666666666666,
+          "referencePopulationKey": null
+        },
+        "recognizedDay": null,
+        "recognizedGeneration": null
+      },
+      {
+        "populationKey": "natural:0,0:7",
+        "populationLabel": "Regional genvo source 7",
+        "recognized": false,
+        "branch": null,
+        "progress": 0.4187731386260798,
+        "qualifyingDays": 0,
+        "weakDays": 0,
+        "lastEvaluationDay": 320,
+        "lastSnapshot": {
+          "day": 320,
+          "progress": 0.4187731386260798,
+          "historyDays": 98,
+          "separation": 0,
+          "distance": 50.22443686377606,
+          "cohort": 11,
+          "traitId": "anatomy:spring-leg:loss",
+          "traitLabel": "Spring leg reduction",
+          "traitDepth": 3,
+          "traitShare": 0.18181818181818182,
+          "traitStrength": 0.25,
+          "localBirths": 0,
+          "crossBirths": 0,
+          "geneFlow": 1,
+          "isolation": 0,
+          "qualified": false,
+          "gates": {
+            "history": true,
+            "ecology": false,
+            "distance": true,
+            "cohort": true,
+            "trait": false,
+            "localPressure": false,
+            "reproduction": false,
+            "isolation": false
+          },
+          "unknownBirths": 0,
+          "knownGeneFlow": 0,
+          "referencePopulationKey": null
+        },
+        "recognizedDay": null,
+        "recognizedGeneration": null
+      }
+    ],
+    "observedTaxonomy": [
+      {
+        "id": "genvo8-root",
+        "label": "GenVo",
+        "parentId": null,
+        "parentLabel": null,
+        "depth": 0,
+        "originPopulationKey": null,
+        "originPopulationLabel": "Observed founding ancestry",
+        "traitId": null,
+        "pressure": null,
+        "formedDay": 1,
+        "formedGeneration": 1,
+        "status": "living",
+        "endedDay": null,
+        "endedReason": null,
+        "recognitions": 0,
+        "kind": "founding",
+        "species": "genvo",
+        "living": 20,
+        "historicalMembers": 34,
+        "populations": [
+          {
+            "key": "home",
+            "label": "Home Range"
+          },
+          {
+            "key": "natural:0,0:7",
+            "label": "Regional genvo source 7"
+          },
+          {
+            "key": "natural:0,0:126",
+            "label": "natural:0,0:126"
+          }
+        ]
+      },
+      {
+        "id": "founding:mosskip",
+        "label": "Hopper",
+        "parentId": null,
+        "parentLabel": null,
+        "depth": 0,
+        "originPopulationKey": null,
+        "originPopulationLabel": "Observed founding ancestry",
+        "traitId": null,
+        "pressure": null,
+        "formedDay": 1,
+        "formedGeneration": 1,
+        "status": "living",
+        "endedDay": null,
+        "endedReason": null,
+        "recognitions": 0,
+        "kind": "founding",
+        "species": "mosskip",
+        "living": 103,
+        "historicalMembers": 163,
+        "populations": [
+          {
+            "key": "natural:0,0:1",
+            "label": "Regional mosskip source 1"
+          },
+          {
+            "key": "natural:0,0:2",
+            "label": "Regional mosskip source 2"
+          }
+        ]
+      },
+      {
+        "id": "founding:mirelick",
+        "label": "Mirelick",
+        "parentId": null,
+        "parentLabel": null,
+        "depth": 0,
+        "originPopulationKey": null,
+        "originPopulationLabel": "Observed founding ancestry",
+        "traitId": null,
+        "pressure": null,
+        "formedDay": 1,
+        "formedGeneration": 1,
+        "status": "living",
+        "endedDay": null,
+        "endedReason": null,
+        "recognitions": 0,
+        "kind": "founding",
+        "species": "mirelick",
+        "living": 10,
+        "historicalMembers": 22,
+        "populations": [
+          {
+            "key": "natural:0,0:397",
+            "label": "natural:0,0:397"
+          },
+          {
+            "key": "natural:0,0:277",
+            "label": "natural:0,0:277"
+          },
+          {
+            "key": "natural:0,0:206",
+            "label": "natural:0,0:206"
+          },
+          {
+            "key": "natural:0,0:488",
+            "label": "natural:0,0:488"
+          },
+          {
+            "key": "natural:0,0:470",
+            "label": "natural:0,0:470"
+          },
+          {
+            "key": "natural:0,0:63",
+            "label": "natural:0,0:63"
+          },
+          {
+            "key": "natural:0,0:156",
+            "label": "natural:0,0:156"
+          },
+          {
+            "key": "natural:0,0:415",
+            "label": "natural:0,0:415"
+          }
+        ]
+      },
+      {
+        "id": "founding:podshell",
+        "label": "Podshell",
+        "parentId": null,
+        "parentLabel": null,
+        "depth": 0,
+        "originPopulationKey": null,
+        "originPopulationLabel": "Observed founding ancestry",
+        "traitId": null,
+        "pressure": null,
+        "formedDay": 1,
+        "formedGeneration": 1,
+        "status": "living",
+        "endedDay": null,
+        "endedReason": null,
+        "recognitions": 0,
+        "kind": "founding",
+        "species": "podshell",
+        "living": 14,
+        "historicalMembers": 18,
+        "populations": [
+          {
+            "key": "natural:0,0:284",
+            "label": "natural:0,0:284"
+          },
+          {
+            "key": "natural:0,0:254",
+            "label": "natural:0,0:254"
+          },
+          {
+            "key": "natural:0,0:237",
+            "label": "natural:0,0:237"
+          },
+          {
+            "key": "natural:0,0:106",
+            "label": "natural:0,0:106"
+          },
+          {
+            "key": "natural:0,0:454",
+            "label": "natural:0,0:454"
+          },
+          {
+            "key": "natural:0,0:437",
+            "label": "natural:0,0:437"
+          },
+          {
+            "key": "natural:0,0:214",
+            "label": "natural:0,0:214"
+          },
+          {
+            "key": "natural:0,0:269",
+            "label": "natural:0,0:269"
+          },
+          {
+            "key": "natural:0,0:355",
+            "label": "natural:0,0:355"
+          },
+          {
+            "key": "natural:0,0:268",
+            "label": "natural:0,0:268"
+          }
+        ]
+      },
+      {
+        "id": "founding:bankjaw",
+        "label": "Bankjaw",
+        "parentId": null,
+        "parentLabel": null,
+        "depth": 0,
+        "originPopulationKey": null,
+        "originPopulationLabel": "Observed founding ancestry",
+        "traitId": null,
+        "pressure": null,
+        "formedDay": 1,
+        "formedGeneration": 1,
+        "status": "extinct",
+        "endedDay": null,
+        "endedReason": null,
+        "recognitions": 0,
+        "kind": "founding",
+        "species": "bankjaw",
+        "living": 0,
+        "historicalMembers": 8,
+        "populations": []
+      },
+      {
+        "id": "founding:rootling",
+        "label": "Digger",
+        "parentId": null,
+        "parentLabel": null,
+        "depth": 0,
+        "originPopulationKey": null,
+        "originPopulationLabel": "Observed founding ancestry",
+        "traitId": null,
+        "pressure": null,
+        "formedDay": 1,
+        "formedGeneration": 1,
+        "status": "extinct",
+        "endedDay": null,
+        "endedReason": null,
+        "recognitions": 0,
+        "kind": "founding",
+        "species": "rootling",
+        "living": 0,
+        "historicalMembers": 32,
+        "populations": []
+      },
+      {
+        "id": "founding:rillsifter",
+        "label": "Rillsifter",
+        "parentId": null,
+        "parentLabel": null,
+        "depth": 0,
+        "originPopulationKey": null,
+        "originPopulationLabel": "Observed founding ancestry",
+        "traitId": null,
+        "pressure": null,
+        "formedDay": 1,
+        "formedGeneration": 1,
+        "status": "extinct",
+        "endedDay": null,
+        "endedReason": null,
+        "recognitions": 0,
+        "kind": "founding",
+        "species": "rillsifter",
+        "living": 0,
+        "historicalMembers": 18,
+        "populations": []
+      },
+      {
+        "id": "founding:needlejaw",
+        "label": "Stalker",
+        "parentId": null,
+        "parentLabel": null,
+        "depth": 0,
+        "originPopulationKey": null,
+        "originPopulationLabel": "Observed founding ancestry",
+        "traitId": null,
+        "pressure": null,
+        "formedDay": 1,
+        "formedGeneration": 1,
+        "status": "extinct",
+        "endedDay": null,
+        "endedReason": null,
+        "recognitions": 0,
+        "kind": "founding",
+        "species": "needlejaw",
+        "living": 0,
+        "historicalMembers": 12,
+        "populations": []
+      }
+    ],
+    "establishedNaturalPopulations": 3
+  },
+  "rawOriginal": "reports/autonomous-B-field-source-20261027/reports/field-1.json",
+  "rawCorrected": "reports/autonomous-E-dead-selection-source-20261027/reports/field-1-corrected.json",
+  "limitations": [
+    "Single long seed replay; natural recognized descendant species remain an observed outcome, not a quota.",
+    "Concurrent test workloads make elapsed timings unsuitable for performance comparison."
+  ]
+}

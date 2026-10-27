@@ -130,6 +130,11 @@ export class ReproductionController{
       this.refreshSelection();
     }
   }
+  onAnimalDeath(animal){
+    // Death invalidates this UI selection without choosing another partner.
+    // Courtship interruption and succession retain their existing authorities.
+    if(this.selectedMateId===animal.id)this.selectedMateId=null;
+  }
   onActiveChanged(){
     this.selectedMateId=null;
     this.courtTargetId=null;

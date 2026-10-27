@@ -42,4 +42,45 @@ for(const modern of [false,true]){
   const historicalRestore=restoreSimulationSnapshot(historical);
   assert.equal(historicalRestore.reproduction.selectedMateId,selected.id);
 }
+// The player can also remain alive when their selected mate dies. Compare the
+// real death with an otherwise identical control, retaining all corpse/resource
+// effects and biological RNG; only the invalid selection is corrected.
+for(const modern of [false,true]){
+  const sim=new Simulation('DEAD-SELECTED-MATE-SAVE-PROBE',{
+    player:true,worldGenerator:'planetary/1',dayClock:modern,metabolism:modern,
+  });
+  const actor=sim.player(),mate=sim.reproduction.selectedMate();
+  assert.ok(actor?.alive&&mate?.alive);
+  const control=restoreSimulationSnapshot(snapshot(sim));
+  control.reproduction.onAnimalDeath=()=>{};
+  const rng=sim.rng.state;
+  sim.kill(mate,'controlled-selected-mate-death');
+  control.kill(control.animals.find(a=>a.id===mate.id),'controlled-selected-mate-death');
+  assert.equal(actor.alive,true);
+  assert.equal(sim.playerId,actor.id);
+  assert.equal(sim.reproduction.selectedMateId,null);
+  assert.equal(sim.rng.state,rng);
+  const corrected=snapshot(sim),oldDeath=snapshot(control);
+  assert.equal(oldDeath.controllers.reproduction.selectedMateId,mate.id);
+  oldDeath.controllers.reproduction.selectedMateId=null;
+  assert.deepEqual(corrected,oldDeath,'All real death consequences are unchanged');
+  sim.reproduction.onAnimalDeath(mate);
+  assert.deepEqual(snapshot(sim),corrected,'Repeated death notification is inert');
+  const restored=restoreSimulationSnapshot(structuredClone(corrected));
+  assert.deepEqual(snapshot(restored),corrected);
+  for(let tick=0;tick<6;tick++){sim.update(null);restored.update(null)}
+  assert.deepEqual(snapshot(restored),snapshot(sim),'Live-player ecology continues exactly');
+
+  const other=new Simulation('DEAD-SELECTED-MATE-SAVE-PROBE',{
+    player:true,worldGenerator:'planetary/1',dayClock:modern,metabolism:modern,
+  });
+  const selectedId=other.reproduction.selectedMateId;
+  const unselected=other.animals.find(a=>a.alive&&a.id!==selectedId&&a.id!==other.playerId);
+  assert.ok(unselected);
+  other.kill(unselected,'controlled-unselected-death');
+  assert.equal(other.reproduction.selectedMateId,selectedId,'Unrelated death preserves choice');
+  const unchanged=snapshot(other);
+  other.reproduction.onAnimalDeath(unselected);
+  assert.deepEqual(snapshot(other),unchanged);
+}
 console.log('Extinct-lineage save PASS: real death cleanup, no RNG, original/modern clocks, complete restore and continued ecology, historical stale-selection compatibility.');
