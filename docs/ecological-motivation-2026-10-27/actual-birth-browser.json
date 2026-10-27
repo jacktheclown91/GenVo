@@ -1,0 +1,141 @@
+{
+  "scope": "Controlled authored parental coat difference and initial adult placement/reserves; real paid conception, 3830 canonical prior gestation ticks, then native resident selection and actual browser birth. No child trait or birth event injection.",
+  "status": "pass",
+  "errors": [],
+  "missing": [],
+  "imported": {
+    "day": 16,
+    "tick": 3830,
+    "player": 1,
+    "pregnant": true
+  },
+  "birth": {
+    "day": 17,
+    "tick": 3845,
+    "highlights": [
+      {
+        "text": "Compared with your cover: less heat loss in dry cold; more heat strain in dry heat.",
+        "ids": [
+          3,
+          4
+        ]
+      }
+    ],
+    "children": [
+      {
+        "id": 3,
+        "parentIds": [
+          1,
+          2
+        ],
+        "parts": [
+          "small-torso",
+          "fur-mantle",
+          "simple-eye",
+          "simple-eye",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "hasInheritanceReceipt": true
+      },
+      {
+        "id": 4,
+        "parentIds": [
+          1,
+          2
+        ],
+        "parts": [
+          "small-torso",
+          "fur-mantle",
+          "simple-eye",
+          "simple-eye",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "hasInheritanceReceipt": true
+      },
+      {
+        "id": 5,
+        "parentIds": [
+          1,
+          2
+        ],
+        "parts": [
+          "small-torso",
+          "simple-eye",
+          "simple-eye",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "walking-leg",
+          "grazing-mouth"
+        ],
+        "hasInheritanceReceipt": true
+      },
+      {
+        "id": 6,
+        "parentIds": [
+          1,
+          2
+        ],
+        "parts": [
+          "small-torso",
+          "simple-eye",
+          "simple-eye",
+          "sturdy-leg",
+          "walking-leg",
+          "walking-leg",
+          "sturdy-leg",
+          "grazing-mouth"
+        ],
+        "hasInheritanceReceipt": true
+      }
+    ]
+  },
+  "layouts": [
+    {
+      "size": {
+        "width": 1280,
+        "height": 720
+      },
+      "button": {
+        "x": 1051.625,
+        "y": 643,
+        "width": 113.375,
+        "height": 44
+      }
+    },
+    {
+      "size": {
+        "width": 320,
+        "height": 568
+      },
+      "button": {
+        "x": 183.625,
+        "y": 501,
+        "width": 113.375,
+        "height": 44
+      }
+    },
+    {
+      "size": {
+        "width": 568,
+        "height": 320
+      },
+      "button": {
+        "x": 429.625,
+        "y": 261,
+        "width": 113.375,
+        "height": 44
+      }
+    }
+  ],
+  "savedStateEqual": true,
+  "savedBirthShown": true
+}

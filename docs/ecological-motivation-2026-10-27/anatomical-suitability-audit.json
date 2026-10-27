@@ -1,0 +1,998 @@
+{
+  "scope": "Controlled equal-gene adult anatomy comparisons through existing readers, on real unedited ordinary planetary geometry. Thermal probes are explicitly hypothetical equal dry temperatures, not recorded field weather. No resources, movement, genes or world fields changed.",
+  "worlds": [
+    {
+      "seed": "GENVO8-PLAYABLE-TEST",
+      "steep": {
+        "grade": 0.7994441986083984,
+        "speed": 0.33348779415005897,
+        "energy": 3.7980546951293945,
+        "routeCost": 3.7980546951293945,
+        "from": {
+          "x": 35.5,
+          "y": 17.5
+        },
+        "to": {
+          "x": 36.5,
+          "y": 17.5
+        }
+      },
+      "water": {
+        "x": 11.5,
+        "y": 2.5
+      },
+      "bodies": [
+        {
+          "name": "founder",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 1,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.33348779415005897,
+            "energy": 3.7980546951293945,
+            "sprint": 1,
+            "grade": 0.7994441986083984,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 8.650018424913288,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "runner",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 1.0999999999999996,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.36683657356506477,
+            "energy": 3.7980546951293945,
+            "sprint": 1,
+            "grade": 0.7994441986083984,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 8.650018424913288,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "climber",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.96,
+            "energy": 1.035,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 4
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.3654803800308562,
+            "energy": 3.5913373791527357,
+            "sprint": 1,
+            "grade": 0.7994441986083984,
+            "grip": 4
+          },
+          "treeClimbingAnatomy": true,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 8.650018424913288,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "swimmer",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": true,
+            "speed": 0.9016,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": true,
+            "speed": 0.30067259520569317,
+            "energy": 3.7980546951293945,
+            "sprint": 1,
+            "grade": 0.7994441986083984,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": true,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 8.650018424913288,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "fur",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 1,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.33348779415005897,
+            "energy": 3.7980546951293945,
+            "sprint": 1,
+            "grade": 0.7994441986083984,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.02016,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.0372,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 8.650018424913288,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "jaw",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 1,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.33348779415005897,
+            "energy": 3.7980546951293945,
+            "sprint": 1,
+            "grade": 0.7994441986083984,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 0,
+            "thistlepod": 0,
+            "carrion": 0.9
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 8.650018424913288,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "eyes",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 1,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.33348779415005897,
+            "energy": 3.7980546951293945,
+            "sprint": 1,
+            "grade": 0.7994441986083984,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 25.950055274739864,
+            "fieldOfView": 130,
+            "eyeHeight": 0.35
+          }
+        }
+      ]
+    },
+    {
+      "seed": "ECOLOGICAL-FIT-1",
+      "steep": {
+        "grade": 0.7996888160705566,
+        "speed": 0.33341979573515923,
+        "energy": 3.7989108562469482,
+        "routeCost": 3.7989108562469482,
+        "from": {
+          "x": 71.5,
+          "y": 62.5
+        },
+        "to": {
+          "x": 72.5,
+          "y": 62.5
+        }
+      },
+      "water": {
+        "x": 62.5,
+        "y": 2.5
+      },
+      "bodies": [
+        {
+          "name": "founder",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 1,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.33341979573515923,
+            "energy": 3.7989108562469482,
+            "sprint": 1,
+            "grade": 0.7996888160705566,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 7.551666171103716,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "runner",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 1.0999999999999996,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.36676177530867504,
+            "energy": 3.7989108562469482,
+            "sprint": 1,
+            "grade": 0.7996888160705566,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 7.551666171103716,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "climber",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.96,
+            "energy": 1.035,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 4
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.36541564553987155,
+            "energy": 3.592087119734735,
+            "sprint": 1,
+            "grade": 0.7996888160705566,
+            "grip": 4
+          },
+          "treeClimbingAnatomy": true,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 7.551666171103716,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "swimmer",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": true,
+            "speed": 0.9016,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": true,
+            "speed": 0.30061128783481955,
+            "energy": 3.7989108562469482,
+            "sprint": 1,
+            "grade": 0.7996888160705566,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": true,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 7.551666171103716,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "fur",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 1,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.33341979573515923,
+            "energy": 3.7989108562469482,
+            "sprint": 1,
+            "grade": 0.7996888160705566,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.02016,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.0372,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 7.551666171103716,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "jaw",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 1,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.33341979573515923,
+            "energy": 3.7989108562469482,
+            "sprint": 1,
+            "grade": 0.7996888160705566,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 0,
+            "thistlepod": 0,
+            "carrion": 0.9
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 7.551666171103716,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "eyes",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 1,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.33341979573515923,
+            "energy": 3.7989108562469482,
+            "sprint": 1,
+            "grade": 0.7996888160705566,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 22.65499851331115,
+            "fieldOfView": 130,
+            "eyeHeight": 0.35
+          }
+        }
+      ]
+    },
+    {
+      "seed": "ECOLOGICAL-FIT-2",
+      "steep": {
+        "grade": 0.0014120638370513916,
+        "speed": 0.9964822585959334,
+        "energy": 1.0049422234296799,
+        "routeCost": 1.0049422234296799,
+        "from": {
+          "x": 59.5,
+          "y": 117.5
+        },
+        "to": {
+          "x": 58.5,
+          "y": 117.5
+        }
+      },
+      "water": {
+        "x": 12.5,
+        "y": 2.5
+      },
+      "bodies": [
+        {
+          "name": "founder",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 1,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.9964822585959334,
+            "energy": 1.0049422234296799,
+            "sprint": 1,
+            "grade": 0.0014120638370513916,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 7.917875159531832,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "runner",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 1.0999999999999996,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 1.0961304844555264,
+            "energy": 1.0049422234296799,
+            "sprint": 1,
+            "grade": 0.0014120638370513916,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 7.917875159531832,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "climber",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.96,
+            "energy": 1.035,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 4
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.9966511101833285,
+            "energy": 1.0048400627510266,
+            "sprint": 1,
+            "grade": 0.0014120638370513916,
+            "grip": 4
+          },
+          "treeClimbingAnatomy": true,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 7.917875159531832,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "swimmer",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": true,
+            "speed": 0.9016,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": true,
+            "speed": 0.8984284043500935,
+            "energy": 1.0049422234296799,
+            "sprint": 1,
+            "grade": 0.0014120638370513916,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": true,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 7.917875159531832,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "fur",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 1,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.9964822585959334,
+            "energy": 1.0049422234296799,
+            "sprint": 1,
+            "grade": 0.0014120638370513916,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.02016,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.0372,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 7.917875159531832,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "jaw",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 1,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.9964822585959334,
+            "energy": 1.0049422234296799,
+            "sprint": 1,
+            "grade": 0.0014120638370513916,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 0,
+            "thistlepod": 0,
+            "carrion": 0.9
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 7.917875159531832,
+            "fieldOfView": 221,
+            "eyeHeight": 0.35
+          }
+        },
+        {
+          "name": "eyes",
+          "flat": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 1,
+            "energy": 1,
+            "sprint": 1,
+            "grade": 0,
+            "grip": 0
+          },
+          "uphill": {
+            "allowed": true,
+            "swimming": false,
+            "swimmer": false,
+            "speed": 0.9964822585959334,
+            "energy": 1.0049422234296799,
+            "sprint": 1,
+            "grade": 0.0014120638370513916,
+            "grip": 0
+          },
+          "treeClimbingAnatomy": false,
+          "openWater": false,
+          "cold": {
+            "thermal": 0.042,
+            "extraEnergy": 0
+          },
+          "heat": {
+            "thermal": 0.03,
+            "extraEnergy": 0
+          },
+          "plantFoods": {
+            "sunmoss": 1,
+            "thistlepod": 0.6,
+            "carrion": 0
+          },
+          "sight": {
+            "eyes": 2,
+            "range": 23.753625478595495,
+            "fieldOfView": 130,
+            "eyeHeight": 0.35
+          }
+        }
+      ]
+    }
+  ]
+}

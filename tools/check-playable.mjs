@@ -108,6 +108,7 @@ const runtime=[
   'tests/view-modes.mjs',
   'tests/young-summary.mjs',
   'tests/ecological-capability-feedback.mjs',
+  'tests/paid-capability-feedback.mjs',
   'tests/world-story.mjs',
   'tests/threat-display.mjs',
   'tests/reaction-expression.mjs',

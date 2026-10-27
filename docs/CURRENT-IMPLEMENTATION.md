@@ -2,7 +2,9 @@
 
 ## Current creator priority: ecological motivation
 
-Ordinary native opening through Day 4 identifies uncommunicated thermal costs and part-name-only birth explanations. Focused read-only environmental and inherited-capability feedback passes the 133-check local gate, Node 22/24 targeted checks and native Day 4 Save/Continue observation; exact-head CI is pending; no biome or inheritance rule changed. See [audit, evidence and remaining work](ECOLOGICAL-MOTIVATION-2026-10-27.md). Preserve the verified tutorial and the isolated autonomous fields, including their strict stale-selection failure.
+Follow-up: four actual paid-birth profiles and retained Field Guide comparisons pass focused Node 22/24 and native browser checks. A real short-landscape birth-card overflow is fixed, and inherited tradeoffs lead the details. The expanded 134-check local gate passes; final checkpoint/CI remains pending.
+
+Ordinary native opening through Day 4 identifies uncommunicated thermal costs and part-name-only birth explanations. Focused read-only environmental and inherited-capability feedback passes the 133-check local gate, Node 22/24 targeted checks and native Day 4 Save/Continue observation; exact-head CI 40506149583 passed for b979feab; no biome or inheritance rule changed. See [audit, evidence and remaining work](ECOLOGICAL-MOTIVATION-2026-10-27.md). Preserve the verified tutorial and the isolated autonomous fields, including their strict stale-selection failure.
 
 ## Current biological work: prospective autonomous recognition
 

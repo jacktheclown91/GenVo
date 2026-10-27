@@ -1,3 +1,4 @@
+import {canTreeClimb} from '../lineage/gliding.js';
 import {canSwim} from '../lineage/lifestyle.js';
 import {JUMP,hasJumpingAnatomy} from '../lineage/jumping.js';
 import {groundDiet} from '../ecology/functional-diet.js';
@@ -9,7 +10,7 @@ import {PLANTS} from '../sim/config.js';
 
 // Presentation only: compare existing biological readers, never select traits or
 // grant abilities. These are body potential; growth and execution gates still apply.
-export function inheritedCapabilityChanges(sim,parent,child){
+export function inheritedCapabilityChanges(sim,parent,child,{eyeAnatomyOnly=false}={}){
   if(!parent?.bodyPlan||!child?.bodyPlan)return [];
   const changes=[];
   if(canSwim(parent)!==canSwim(child))changes.push(canSwim(child)
@@ -19,6 +20,9 @@ export function inheritedCapabilityChanges(sim,parent,child){
     changes.push(hasJumpingAnatomy(child)
       ?'Has the paired legs for jumping. Growth, reserves and safe landings still matter.'
       :'Lacks the paired legs needed for your jump.');
+  if(canTreeClimb(sim,parent)!==canTreeClimb(sim,child))changes.push(canTreeClimb(sim,child)
+    ?'Has paired climbing legs for supported trees. Food energy and tree condition still matter.'
+    :'Lacks the paired legs for your supported tree climbing.');
   const mine=groundDiet(parent),theirs=groundDiet(child);
   const newFoods=Object.keys(theirs).filter(id=>theirs[id]>0&&!(mine[id]>0));
   const lostFoods=Object.keys(mine).filter(id=>mine[id]>0&&!(theirs[id]>0));
@@ -36,10 +40,13 @@ export function inheritedCapabilityChanges(sim,parent,child){
     changes.push('Compared with your cover: '+lines.join('; ')+'.');
   }
   if(visionEnabled(sim)){
-    const before=visionProfile(parent),after=visionProfile(child);
+    // A retained sighting establishes eye structure, not a measured hidden
+    // sensory allele. Compare optics at equal sensitivity for Field Guide use.
+    const eyeBody=a=>eyeAnatomyOnly?{...a,genes:{...a.genes,senses:1}}:a;
+    const before=visionProfile(eyeBody(parent)),after=visionProfile(eyeBody(child));
     if(Math.abs(after.range-before.range)>.5)changes.push(after.range>before.range
-      ?'Its eyes can see farther in clear conditions. Fog and terrain still limit sight.'
-      :'Its eyes have a shorter clear-weather reach than yours.');
+      ?(eyeAnatomyOnly?'Longer-range eye anatomy; weather and individual traits affect sight.':'Its eyes can see farther in clear conditions. Fog and terrain still limit sight.')
+      :(eyeAnatomyOnly?'Shorter-range eye anatomy; weather and individual traits affect sight.':'Its eyes have a shorter clear-weather reach than yours.'));
     if(Math.abs(after.fieldOfView-before.fieldOfView)>15)changes.push(after.fieldOfView>before.fieldOfView
       ?'Its eyes cover more directions around the body.'
       :'Its eyes cover fewer directions: facing matters more.');
@@ -53,4 +60,9 @@ export function inheritedCapabilityChanges(sim,parent,child){
     :after==='dual'?'Its reproductive anatomy supports eggs or live birth, with upkeep for both.'
     :'Its reproductive anatomy uses live birth.');
   return changes;
+}
+
+// The same read-only comparison also describes a retained Field Guide body.
+export function bodyCapabilityDifferences(sim,before,observed){
+  return inheritedCapabilityChanges(sim,before,observed,{eyeAnatomyOnly:true});
 }

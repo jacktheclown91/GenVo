@@ -63,7 +63,12 @@ export function buildYoungSummary(sim,parent,children,{first=false}={}){
   y.guided.length?y.guidedBy+': '+y.guided.join(', '):'',
   y.lost.filter(x=>!y.lostInDevelopment.includes(x)&&!y.guidedParts.includes(x)).length?'Not inherited from you: '+list(y.lost.filter(x=>!y.lostInDevelopment.includes(x)&&!y.guidedParts.includes(x))):'',
   y.traits.length?'Compared with you: '+y.traits.join(', '):'',y.bornWith.length?'Born with: '+y.bornWith.join(', '):''].filter(Boolean);
- return{first,title:first?'Your First Young':'New Young',kicker:'GENERATION '+((parent.generation||1)+1)+' · INHERITANCE',
+  // Summarize real sibling differences before the detailed parent/part plates.
+  const highlights=new Map();
+  for(const child of young)for(const text of child.capabilities){
+    const ids=highlights.get(text)||[];ids.push(child.id);highlights.set(text,ids);
+  }
+ return{highlights:[...highlights].map(([text,ids])=>({text,ids})),first,title:first?'Your First Young':'New Young',kicker:'GENERATION '+((parent.generation||1)+1)+' · INHERITANCE',
   lead:`${children.length===1?'One young was':children.length+' young were'} born to you${mate?' and #'+mate.id:''}. Each body is a real mixture of its parents'.`,
   young:young.map(y=>({...y,lines:lines(y)})),
   knowledge:'Bodies are inherited. Knowledge is not: young that stay near you learn water, food, shelter and danger from what they see you do.',
@@ -108,7 +113,17 @@ export class YoungSummary{
   const knowledge=document.createElement('p');knowledge.className='legacy-note';knowledge.textContent=model.knowledge;
   const stakes=document.createElement('p');stakes.className='legacy-note';stakes.textContent=model.stakes;
   const actions=document.createElement('div');actions.className='legacy-actions';const b=document.createElement('button');b.type='button';b.dataset.young='continue';b.className='primary';b.textContent='Raise them';actions.append(b);
-  const content=document.createElement('div');content.className='birth-scroll';content.append(comparison.element,grid,knowledge,stakes);card.append(kicker,h,lead,content,actions);this.el.append(card);this.el.hidden=false;this.restoreCapacity=mountBirthCapacity(card);b.focus?.();
+  const content=document.createElement('div');content.className='birth-scroll';
+  if(model.highlights?.length){
+   const opportunities=document.createElement('section');opportunities.className='birth-opportunities';
+   const title=document.createElement('h3');title.textContent='Different possibilities';
+   const list=document.createElement('ul');
+   for(const change of model.highlights.slice(0,3)){
+    const item=document.createElement('li');item.textContent=change.ids.length+' of '+model.young.length+' young: '+change.text;list.append(item);
+   }
+   opportunities.append(title,list);content.append(opportunities);
+  }
+  content.append(comparison.element,grid,knowledge,stakes);card.append(kicker,h,lead,content,actions);this.el.append(card);this.el.hidden=false;this.restoreCapacity=mountBirthCapacity(card);b.focus?.();
  }
  close(){if(!this.open)return;this.restoreCapacity?.();this.restoreCapacity=null;const sim=this.getSim();if(sim)sim.paused=this.wasPaused;this.open=false;this.el.hidden=true}
 }
