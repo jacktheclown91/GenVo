@@ -1,0 +1,115 @@
+name: GenVo itch.io HTML5 ZIP - verified 6d4964ba
+on:
+  push:
+    branches:
+      - release/itch-web-6d4964ba
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: genvo-itch-web-6d4964ba
+  cancel-in-progress: false
+jobs:
+  package-and-verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      RUNTIME_SHA: 6d4964ba206aa3bacea2de3399fa2e21068f7573
+      ZIP_NAME: GenVo-web-6d4964ba.zip
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Assert exact game source (only packaging workflow differs)
+        shell: bash
+        run: |
+          set -euo pipefail
+          git merge-base --is-ancestor "$RUNTIME_SHA" HEAD
+          test "$(git diff --name-only "$RUNTIME_SHA" HEAD)" = ".github/workflows/itch-web-6d4964ba.yml"
+      - name: Install real Chromium for extracted-release verification
+        shell: bash
+        run: |
+          npm install --no-save --no-package-lock playwright@latest
+          npx playwright install --with-deps chromium
+      - name: Test new survival-home interactions and tutorial guards
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tests/home-ground-actions.mjs
+          node tests/survival-threat-guide.mjs
+          node tests/mandatory-tutorial.mjs
+      - name: Validate and export the canonical browser game
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/export_sprite_sheets.cjs
+          node tools/canonical-source-audit.mjs
+          node tests/public-export.mjs
+          node tools/export-public.mjs "$RUNNER_TEMP/genvo-export"
+      - name: Package the actual itch.io ZIP
+        shell: bash
+        run: |
+          set -euo pipefail
+          env GITHUB_SHA="$RUNTIME_SHA" python3 tools/package-itch-preview.py "$RUNNER_TEMP/genvo-export" "$RUNNER_TEMP/$ZIP_NAME" "$RUNNER_TEMP/GenVo-web-6d4964ba-report.json"
+      - name: Independently extract and validate every packaged byte
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import hashlib,json,os,pathlib,zipfile
+          source=pathlib.Path(os.environ['RUNNER_TEMP'])/'genvo-export'
+          archive=pathlib.Path(os.environ['RUNNER_TEMP'])/os.environ['ZIP_NAME']
+          output=pathlib.Path(os.environ['RUNNER_TEMP'])/'genvo-extracted'
+          output.mkdir()
+          expected={p.relative_to(source).as_posix():p for p in source.rglob('*') if p.is_file()}
+          with zipfile.ZipFile(archive) as z:
+              names=z.namelist()
+              assert len(names)==len(set(names)),'Duplicate ZIP member'
+              assert z.testzip() is None,'Archive failed CRC'
+              assert set(names)==set(expected),'ZIP differs from canonical export'
+              for name in names:
+                  relative=pathlib.PurePosixPath(name)
+                  assert not relative.is_absolute() and '..' not in relative.parts,'Unsafe ZIP path'
+                  data=z.read(name)
+                  assert hashlib.sha256(data).digest()==hashlib.sha256(expected[name].read_bytes()).digest(),f'Incorrect export byte: {name}'
+              z.extractall(output)
+          assert (output/'index.html').is_file(),'Missing root index.html'
+          report=json.loads((pathlib.Path(os.environ['RUNNER_TEMP'])/'GenVo-web-6d4964ba-report.json').read_text())
+          assert report['archive_sha256']==hashlib.sha256(archive.read_bytes()).hexdigest()
+          assert report['source_commit']==os.environ['RUNTIME_SHA']
+          print(f"Verified {len(names)} exact exported members, CRC, full SHA, safe paths, extracted root")
+          PY
+      - name: Verify extracted game controls and saves in Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/verify-release-browser.mjs "$RUNNER_TEMP/genvo-extracted" "$RUNNER_TEMP/verified-release-browser" --autonomous-populations
+      - name: Upload itch-ready game ZIP and integrity report
+        uses: actions/upload-artifact@v4
+        with:
+          name: GenVo-web-6d4964ba-itch-ready
+          path: |
+            ${{ runner.temp }}/GenVo-web-6d4964ba.zip
+            ${{ runner.temp }}/GenVo-web-6d4964ba-report.json
+          compression-level: 0
+          if-no-files-found: error
+          retention-days: 30
+      - name: Supplemental guided-mating Chromium check (independent of package integrity)
+        continue-on-error: true
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/review-tutorial-direction.cjs "$RUNNER_TEMP/verified-mating-browser" --coach
+      - name: Preserve browser acceptance receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: GenVo-web-6d4964ba-browser-evidence
+          path: |
+            ${{ runner.temp }}/verified-release-browser/
+            ${{ runner.temp }}/verified-mating-browser/
+          if-no-files-found: ignore
+          retention-days: 14
