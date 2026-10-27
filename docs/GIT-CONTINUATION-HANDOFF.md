@@ -1,5 +1,7 @@
 # Git continuation handoff — October 26, 2026
 
+Verified game checkpoint `6d4964ba` passed exact-commit [GitHub CI 40473490609](https://github.com/jacktheclown91/GenVo/actions/runs/40473490609), both workers and the required summary. The independently extracted HTML5 candidate `GenVo-web-RC-6d4964ba.zip` passed the full native tutorial and Save/Continue, controlled construction checks, additional-anatomy release smoke and inspected compact layouts. [Release verification receipt](survival-home-2026-10-27/release-verification.json) records its SHA-256 and separate delivery folder. The final handoff is documentation-only; stable itch was not replaced.
+
 ## Survival tutorial and ground home actions — October 27
 
 The creator's current priority extends fresh onboarding through an earned home and a safe Brace lesson. Actual ground/snow wheels expose planning, paid selected-site shelter building and legitimately unlocked satellite nests through existing authorities; historical progress, AUTO and right-click family guidance are retained. Contextual perceived-threat guidance never advances the lesson or creates an encounter. See [implementation and verification boundaries](SURVIVAL-HOME-TUTORIAL-2026-10-27.md). Stable itch remains unchanged; a separate verified HTML5 candidate is required.

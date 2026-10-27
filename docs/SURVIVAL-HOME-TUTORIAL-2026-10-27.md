@@ -1,5 +1,7 @@
 # Survival tutorial and contextual homes — October 27, 2026
 
+Verified game checkpoint `6d4964ba` passed exact-commit [GitHub CI 40473490609](https://github.com/jacktheclown91/GenVo/actions/runs/40473490609), both workers and the required summary. The independently extracted HTML5 candidate `GenVo-web-RC-6d4964ba.zip` passed the full native tutorial and Save/Continue, controlled construction checks, additional-anatomy release smoke and inspected compact layouts. [Release verification receipt](survival-home-2026-10-27/release-verification.json) records its SHA-256 and separate delivery folder. The final handoff is documentation-only; stable itch was not replaced.
+
 ## Implementation
 
 Fresh worlds use optional presentation policy `survival-home/1`: Eat, Drink, Mate, Home, then a safe held-Brace interaction. The mating coach still uses actual Court, Approach, Play and reciprocal outcomes. Historical saves without this presentation policy retain their three-step sequence, completed stages and ordinary continuation. Optional home/defense metadata survives canonical saves and regional handoff. The title backdrop does not start the playable lesson.
