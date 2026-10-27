@@ -2,7 +2,11 @@
 
 ## Current creator priority: ecological motivation
 
-Wildlife follow-up: actual visible activities now appear in the existing selected-creature heading, with complete perception/privacy checks and compact body clearance. All 135 local checks, Node 22/24 targeted contracts and healthy native Save/Continue plus a fresh tutorial regression pass. Exact-commit CI 40525997407 passes for b6a1ba7a; the full objective remains active. The dead-selected-mate lifecycle correction now passes a strict 320-day replay with complete original biology/RNG equality except the invalid selection; all 135 maintained local checks and focused Node 22/24 controls pass. Its own commit/CI follows; regional ancestry continuity/default activation and the major-stall correction remain unfinished. See [the correction and remaining regional work](DEAD-SELECTED-MATE-SAVE-2026-10-27.md).
+Wildlife checkpoint b6a1ba7a passed 135 local checks, focused Node 22/24 contracts, exact-commit CI 40525997407 and loaded native compact-layout/activity/Save/Continue plus fresh tutorial proof. The full ecological-motivation objective remains active.
+
+Save correction b9a1b556 passed exact-commit CI 40530056211 and the strict 320-day replay: all original biology, RNG, resources and history match except clearing the invalid selected-mate ID. The original failure remains retained. See [the lifecycle correction](DEAD-SELECTED-MATE-SAVE-2026-10-27.md).
+
+The signed-region taxon candidate ID correction now passes all 136 maintained local checks, focused Node 22/24 identity/recognition contracts, original complete-state controls and source/export audits. Its own commit/CI follows. Regional ancestry continuity/default activation and the major-stall correction remain unfinished. The next concrete defect is a canonical recognized migrant whose destination lacks its authoritative tree node and cannot restore. See [the identity correction and retained migrant failure](REGIONAL-TAXON-IDENTITY-2026-10-27.md).
 
 Follow-up: four actual paid-birth profiles and retained Field Guide comparisons pass focused Node 22/24 and native browser checks. A real short-landscape birth-card overflow is fixed, and inherited tradeoffs lead the details. The expanded 134-check local gate and exact-head CI 40510893102 pass for c379bf8b.
 

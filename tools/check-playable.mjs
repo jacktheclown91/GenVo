@@ -19,6 +19,7 @@ const runtime=[
   'tests/inherited-anatomy-evidence.mjs',
   'tests/population-birth-evidence.mjs',
   'tests/autonomous-recognition.mjs',
+  'tests/regional-taxon-identity.mjs',
   'tests/autonomous-paid-inheritance.mjs',
   'tests/autonomous-policy-compatibility.mjs',
   'tests/extinct-lineage-save.mjs',

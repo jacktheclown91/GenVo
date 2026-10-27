@@ -3,7 +3,7 @@ import {spawnSync} from 'node:child_process';
 import {playablePlan} from '../tools/check-playable.mjs';
 
 const all=playablePlan(),key=check=>`${check.mode}:${check.item}`;
-assert.equal(all.length,135,'Retain all 134 prior checks plus visible creature activity');
+assert.equal(all.length,136,'Retain all 135 prior checks plus signed regional taxon identity');
 assert.equal(new Set(all.map(key)).size,all.length,'No duplicated manifest entries');
 assert.equal(all[0].item,'src/main.js');
 assert.equal(all.at(-1).item,'tests/living-planet-extended.mjs');
@@ -34,4 +34,4 @@ for(const args of [['--shard=0/2'],['--unknown'],['--shard=1/2','--shard=2/2'],[
   const result=spawnSync(process.execPath,['tools/check-playable.mjs',...args],{encoding:'utf8'});
   assert.notEqual(result.status,0,'Invalid selection fails closed');
 }
-console.log('Playable CI plan PASS: all 135 checks exactly once, ordered, disjoint shards, actual CLI selection and invalid inputs.');
+console.log('Playable CI plan PASS: all 136 checks exactly once, ordered, disjoint shards, actual CLI selection and invalid inputs.');

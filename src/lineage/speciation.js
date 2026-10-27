@@ -106,8 +106,18 @@ export class SpeciationController{
       ...(autonomousEvolutionEnabled(this.sim)?{gates:{...e.gates},unknownBirths:e.flow.unknown,
         knownGeneFlow:e.flow.knownRatio,referencePopulationKey:e.diff?.peer?.key||null}:{})};
   }
+  branchIdFor(pop,trait){
+    const legacyId=`${pop.key.replace(/[^a-z0-9]+/gi,'-')}:${trait.id}`;
+    if(!autonomousEvolutionEnabled(this.sim))return legacyId;
+    // Existing saved taxa retain their recorded identity and naming history.
+    for(const node of this.sim.evolutionTree?.nodes?.values?.()||[]){
+      if(node.originPopulationKey===pop.key&&node.traitId===trait.id)return node.id;
+    }
+    // Encode both components without discarding signed regional coordinates.
+    return `autonomous:${encodeURIComponent(pop.key)}:${encodeURIComponent(trait.id)}`;
+  }
   branchFor(pop,trait,evidence=null){
-    const id=`${pop.key.replace(/[^a-z0-9]+/gi,'-')}:${trait.id}`;
+    const id=this.branchIdFor(pop,trait);
     const tree=this.sim.evolutionTree,parent=tree?.parentForPopulation?.(pop,evidence?.cohort||[])||null;
     const existing=tree?.node?.(id)||null;
     // An extinct/rejoined branch retains its original name when recognized again;

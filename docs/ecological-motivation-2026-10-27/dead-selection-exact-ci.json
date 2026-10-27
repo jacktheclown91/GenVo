@@ -1,0 +1,29 @@
+{
+  "scope": "Public exact-commit Actions API; both workers and required summary pass. Follow-up to the original source-checkpoint verification receipt, which remains unchanged.",
+  "head": "b9a1b5568a2ff39e9002c2ee703193da58198fed",
+  "url": "https://github.com/jacktheclown91/GenVo/actions/runs/40530056211",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "id": 122280075925,
+      "name": "playable-shards (1)",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-10-27T15:34:43Z"
+    },
+    {
+      "id": 122280076378,
+      "name": "playable-shards (2)",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-10-27T15:36:39Z"
+    },
+    {
+      "id": 122289449523,
+      "name": "everyday-play",
+      "status": "completed",
+      "conclusion": "success",
+      "completed_at": "2026-10-27T15:36:45Z"
+    }
+  ]
+}

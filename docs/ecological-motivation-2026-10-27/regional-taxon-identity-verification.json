@@ -1,0 +1,21 @@
+{
+  "scope": "Regional candidate taxon identity correction, not global regional ancestry acceptance or natural species emergence.",
+  "maintainedGate": {
+    "command": "node tools/check-playable.mjs",
+    "checks": 136,
+    "exitCode": 0,
+    "log": "reports/regional-taxon-identity-playable.log",
+    "priorChecksAndBudgetsRetained": true
+  },
+  "focused": [
+    "regional-taxon-identity on Node 22 and 24: twelve combinations, purity, recorded historical IDs/names, exact save and six ticks",
+    "autonomous-recognition on Node 22 and 24: original gates, stability, gene flow and extinction",
+    "taxon-name-generator, speciation-threshold, evolutionary-tree, playable-check-plan",
+    "original modernization baselines and original policy-1/2 complete 5760-tick birth-containing worlds on Node 22 and 24",
+    "architecture, canonical source audit, public export, syntax, Windows whitespace"
+  ],
+  "priorSource": "b9a1b5568a2ff39e9002c2ee703193da58198fed",
+  "priorExactCI": "dead-selection-exact-ci.json",
+  "ownExactCI": "pending after commit",
+  "remaining": "Global tree aggregation, recognized-migrant history transfer, archived births/ancestry, planetary living/extinction census and default activation remain unproven."
+}
