@@ -29,6 +29,11 @@ jobs:
           set -euo pipefail
           git merge-base --is-ancestor "$RUNTIME_SHA" HEAD
           test "$(git diff --name-only "$RUNTIME_SHA" HEAD)" = ".github/workflows/itch-web-98b276b2.yml"
+      - name: Install real Chromium for extracted-release verification
+        shell: bash
+        run: |
+          npm install --no-save --no-package-lock playwright@latest
+          npx playwright install --with-deps chromium
       - name: Validate and export the canonical browser game
         shell: bash
         run: |
@@ -70,11 +75,6 @@ jobs:
           assert report['source_commit']==os.environ['RUNTIME_SHA']
           print(f"Verified {len(names)} exact exported members, CRC, full SHA, safe paths, extracted root")
           PY
-      - name: Install real Chromium for extracted-release verification
-        shell: bash
-        run: |
-          npm install --no-save --no-package-lock playwright@latest
-          npx playwright install --with-deps chromium
       - name: Verify extracted game controls and saves in Chromium
         shell: bash
         run: |
