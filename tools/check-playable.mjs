@@ -128,6 +128,7 @@ const runtime=[
   'tests/movement-input-buffer.mjs',
   'tests/input-responsiveness.mjs',
   'tests/mandatory-tutorial.mjs',
+  'tests/mating-tutorial-guide.mjs',
   'tests/multigenerational-lineage.mjs',
   'tests/natural-multigen-acceptance.mjs',
   'tests/living-planet-extended.mjs'

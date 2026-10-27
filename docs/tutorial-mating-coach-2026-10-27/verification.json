@@ -1,0 +1,46 @@
+{
+  "scope": "UI mating-coach checkpoint. The 125-check integration run preceded the final retention/duplicate-announcement guards; focused courtship/controller tests and final native browser control-retention checks pass afterwards. Exact-head remote CI pending commit. No external usability acceptance.",
+  "checks": {
+    "localGate": [
+      63,
+      62
+    ],
+    "coachTests": "Node22/24 PASS",
+    "nativeAcceptance": "PASS",
+    "nativePaidRefusalRetry": "Actual seven paid/cancelled rehearsals, real refusal, retry, Play node retained; PASS",
+    "unavailable": "Separately labelled controlled presentation probe, restored actor",
+    "paintParity": "Full existing snapshot graph codec including cycles; 24 presentation-only draws preserve exact graph",
+    "architecture": "PASS",
+    "sourceAudit": "PASS after required sprite export",
+    "publicExport": "PASS",
+    "nativeCurrent": "Final source/CSS ordinary acceptance, actual inset controls in bounds, exact Play DOM retention, no-ready-partner probe PASS"
+  },
+  "files": {
+    "approach.png": "5359ea11e6709f5fe1bc4d7687fec91ed9d2f1baa26f3493d69a84d7c6fcf90f",
+    "architecture.json": "6685b969b2bcadfec11a234b16aa274266fb8f5c245dd69abc72a4e74213d632",
+    "browser-archive.json": "95285d51c18429b337467c5e19d18ab20c512a81d69bb9ddf37630bfe2de0c59",
+    "browser-observations.json": "12d94b94c37256832a0ef514b5fe308589ca1e930f9628e143ccd98f5ec8ca09",
+    "completion.png": "7f843b4ac5a458f9536e53fd4bc41d636ee88159045483e8d123f774b67403bf",
+    "court.png": "d975915c431595444cf49417e9d5944924cd5654e029312afadc6c4a240b5b90",
+    "gate-shard1.log": "495421247dc76be9cc789bffa99f02b0167b7790e9a8e70a360b537a265f9c00",
+    "gate-shard2.log": "75c906fcef4add8b37e7098c1d663c6d4c5133eeca6e25e6af0e36f31b26473c",
+    "play.png": "8d59334a5a700210d269405cd8ec0218fd390858e6765e31f07a3a07cc3a7f35",
+    "portrait.png": "4b2442967ed8ac858898ce81b797fdbf2554158d155fe592057afa6b3dbd244d",
+    "prior-checkpoint-ci.json": "20195d152d248c9ed26436fb825602e4745c84551e68cf77b7920ce9f04bb651",
+    "refusal.png": "977afd5ad2b68c79776be85a9a372031df8f7ff2b8a52c42e2ab103819b7a420",
+    "source-audit.json": "9ef94ef0db063596e519a27f057cee25c456f4afeec001440005a42ce3caaf4a",
+    "stable-controls-archive.json": "97b0050c740944f5364364ac6c9ab408a74b9ebdc1bc70bf203fcc340ce4df8d",
+    "unavailable.png": "d3e92881833bd7b74458e4021237ddb72a929b192773fcff7151b9af614aa85d"
+  },
+  "sourceSha256": {
+    "src/ui/mating-tutorial-guide.js": "e0040b59f3a3d01444beac77c55d32f477ff5724336f28513e45b0cf80c99d72",
+    "src/ui/tutorial.js": "755e251a519bf963476f266a7971dbcdcc9c8c564fdcd2dec8c301f00cecc144",
+    "src/ui/courtship-tray.js": "bc4115d3926ae6e144ee53bd615fa58d6c3f0595b875647480dd3f55a066f39f",
+    "src/ui/context-radial.js": "c57e473c6db62ac55c707f8a5397e8392d5bed4fbdb26707bf5c4d8b03ad086c",
+    "src/ui/creature-context-tray.js": "a3e04202c9dd638ab14dede65d3e9ec2ba2ee2ec7fbfd9f3ecb8118fc0bac222",
+    "styles.css": "69473a8886e32b83b9485492de93ba29aa70952e606ec721707c765031dc7dd3",
+    "index.html": "93a590310f4bb7012807d245f0a06ed5754c331f20e57bc50e5ac21685536fce",
+    "tools/review-tutorial-direction.cjs": "0fab3628aca9e6f4645075579173dabafb56f3bd19c7915e3964cc71002e1acd",
+    ".github/workflows/playable-browser.yml": "adb74ae6b3accab32c37b8c0e38e5c29d3d71082d986ce58402d2fe3a4022fc4"
+  }
+}

@@ -1,3 +1,4 @@
+import {MatingTutorialGuide} from './mating-tutorial-guide.js';
 import {visibleTutorialResource} from './tutorial-targets.js';
 import {bestFreshwaterFood} from '../ecology/freshwater-food.js';
 import {firstLegacyProgress} from '../gameplay/legacy-milestones.js';
@@ -93,7 +94,7 @@ export class TutorialController{
     if(this.welcome)this.welcome.hidden=true;if(this.completeModal)this.completeModal.hidden=true;if(this.tutorial)this.tutorial.hidden=true;
   }
   setSimulation(sim,{fresh=false,resume=false}={}){
-    this.sim=sim;let restoredStage=resume&&sim.uiTutorialStage?sim.uiTutorialStage:null;if(LEGACY_OPENING_STAGES.has(restoredStage))restoredStage='goals';this.stage=restoredStage||'welcome';this.sim.uiTutorialStage=this.stage;this.startPos=null;this.briefingIndex=0;this.lastActiveId=sim.playerId;this.lastHandoffCount=sim.lineage?.handoffs?.length||0;this.establishmentShown=!!sim.lineage?.establishmentAnnounced;this.resumeChoice=false;
+    this.mateGuide?.reset();this.mateCueKey=null;this.sim=sim;let restoredStage=resume&&sim.uiTutorialStage?sim.uiTutorialStage:null;if(LEGACY_OPENING_STAGES.has(restoredStage))restoredStage='goals';this.stage=restoredStage||'welcome';this.sim.uiTutorialStage=this.stage;this.startPos=null;this.briefingIndex=0;this.lastActiveId=sim.playerId;this.lastHandoffCount=sim.lineage?.handoffs?.length||0;this.establishmentShown=!!sim.lineage?.establishmentAnnounced;this.resumeChoice=false;
     this.drankInStepWater=false;this.stepStartTick=sim.tickCount;this.stepStartMeal=this.historyHas('first-meal:');this.stepStartDrink=this.historyHas('first-drink');
     if(this.welcome)this.welcome.hidden=this.stage!=='welcome';
     if(this.completeModal)this.completeModal.hidden=this.stage!=='step-complete';
@@ -109,7 +110,7 @@ export class TutorialController{
     if(skip){this.stage='done';this.sim.uiTutorialStage=this.stage;if(this.welcome)this.welcome.hidden=true;if(this.completeModal)this.completeModal.hidden=true;if(this.briefing)this.briefing.hidden=true;this.sim.paused=false;this.sim.endOpeningGrace?.('tutorial skipped');this.showToast('Tutorial skipped · survival is live.',3000,'warn');return}
     this.stage='step-food';this.sim.uiTutorialStage='step-food';if(this.welcome)this.welcome.hidden=true;if(this.completeModal)this.completeModal.hidden=true;if(this.briefing)this.briefing.hidden=true;this.sim.paused=false;this.startPos=this.sim.player()?{x:this.sim.player().x,y:this.sim.player().y}:null;this.stepStartTick=this.sim.tickCount;this.stepStartMeal=this.historyHas('first-meal:');this.stepStartDrink=this.historyHas('first-drink');this.drankInStepWater=false;this.renderer.guideTarget=null;this.update(true);
   }
-  showCompleteModal(){this.stage='step-complete';this.sim.uiTutorialStage='step-complete';this.renderer.guideTarget=null;if(this.welcome)this.welcome.hidden=true;if(this.completeModal)this.completeModal.hidden=false;this.sim.paused=true}
+  showCompleteModal(){this.mateGuide?.clear();this.stage='step-complete';this.sim.uiTutorialStage='step-complete';this.renderer.guideTarget=null;if(this.welcome)this.welcome.hidden=true;if(this.completeModal)this.completeModal.hidden=false;this.sim.paused=true}
   continueComplete(){if(this.completeModal)this.completeModal.hidden=true;this.stage='done';this.sim.uiTutorialStage='done';this.renderer.guideTarget=null;this.sim.paused=false;this.sim.endOpeningGrace?.('tutorial complete');this.update(true)}
   showBriefing(){
     if(!this.briefing)return this.finishBriefing();const card=OPENING_BRIEFINGS[this.briefingIndex];if(!card)return this.finishBriefing();
@@ -159,15 +160,17 @@ export class TutorialController{
   renderStepMate(p){
     const mated=!!p.lastMate||!!p.pregnant||this.sim.family.livingChildren(p).length>0;
     if(mated){this.showToast("✓ You've found a mate!",3000,'success','action');this.showCompleteModal();return}
-    this.sim.reproduction.refreshSelection();let mate=this.sim.creatureStart?.kind!=='existing-resident'&&this.sim.starterMateId?this.sim.animals.find(a=>a.id===this.sim.starterMateId&&a.alive&&a.id!==p.id&&a.species===p.species&&a.sex!==p.sex):null;
-    if(!mate)mate=this.sim.reproduction.selectedMate();
-    if(!mate)mate=this.sim.animals.find(a=>a.alive&&a.species===p.species&&a.id!==p.id&&a.sex!==p.sex);
-    if(mate)this.renderer.guideTarget={x:mate.x,y:mate.y,label:'Mate'};else this.renderer.guideTarget=null;
-    this.render('STEP 3/3 — FIND A MATE',"Your journey doesn't end with you. Find the highlighted compatible creature. Click it and choose Court. Choose Approach, then Play. A partner may decline.",{step:'3/3',compact:false});
+    this.mateGuide??=new MatingTutorialGuide();
+    const cue=this.mateGuide.read(this.sim);
+    this.renderer.guideTarget=cue.mate?{id:cue.mate.id,x:cue.mate.x,y:cue.mate.y,label:'Mate'}:null;
+    const key=JSON.stringify([cue.step,cue.title,cue.text]);
+    if(key!==this.mateCueKey){this.render('STEP 3/3 — '+cue.title.toUpperCase(),cue.text,{step:'3/3',compact:false});this.mateCueKey=key}
+    if(this.tutorial?.dataset)this.tutorial.dataset.mateStep=cue.step;
   }
   update(force=false){
+    if(this.stage!=='step-mate'||this.worldInputBlocked()){this.mateGuide?.clear();this.mateCueKey=null;if(this.tutorial?.dataset)delete this.tutorial.dataset.mateStep}
     if(this.worldInputBlocked())return;
-    const p=this.sim.player();this.detectHandoff();const milestone=this.sim.generationProgress?.takeNotice?.();if(milestone)this.showToast(milestone.text,5200,milestone.tone||'success','progress');const lostKnowledge=this.sim.cognition?.takeKnowledgeNotice?.();if(lostKnowledge)this.showToast(lostKnowledge.text,5200,lostKnowledge.tone||'warn');const fear=this.sim.cognition?.takeFearNotice?.();if(fear)this.showToast(fear.text,4200,fear.tone||'warn');const designed=this.sim.evolutionEditor?.takeNotice?.();if(designed)this.showToast(designed.text,4200,designed.tone||'success','progress');const found=!designed&&this.sim.discovery?.takeNotice?.();if(found)this.showDiscovery(found);const autoHome=this.sim.autoHomeNotice;if(autoHome){this.sim.autoHomeNotice=null;this.showToast(autoHome.text,5200,autoHome.tone||'warn')}
+    const p=this.sim.player();if(!p?.alive)this.mateGuide?.clear();this.detectHandoff();const milestone=this.sim.generationProgress?.takeNotice?.();if(milestone)this.showToast(milestone.text,5200,milestone.tone||'success','progress');const lostKnowledge=this.sim.cognition?.takeKnowledgeNotice?.();if(lostKnowledge)this.showToast(lostKnowledge.text,5200,lostKnowledge.tone||'warn');const fear=this.sim.cognition?.takeFearNotice?.();if(fear)this.showToast(fear.text,4200,fear.tone||'warn');const designed=this.sim.evolutionEditor?.takeNotice?.();if(designed)this.showToast(designed.text,4200,designed.tone||'success','progress');const found=!designed&&this.sim.discovery?.takeNotice?.();if(found)this.showDiscovery(found);const autoHome=this.sim.autoHomeNotice;if(autoHome){this.sim.autoHomeNotice=null;this.showToast(autoHome.text,5200,autoHome.tone||'warn')}
     if(!p){this.renderer.guideTarget=null;this.render('Your family line ended.','Press R to start again.');if(!this.lineageEndedShown&&this.sim.lineage?.founderId){this.lineageEndedShown=true;this.showTransition('The family line ended','No grown descendant survived to take over. Press R to start a new run.','Close',true)}return}
     this.noteEnergyBalance(p);
     if(this.stage==='step-food'){this.renderStepFood(p);return}

@@ -35,6 +35,8 @@ jobs:
         run: node tools/verify-scenario-browser.mjs docs/test-runs/scenario-browser-ci
       - name: Start genuine continued Day 100 ecosystem in real Chromium
         run: node tools/verify-scenario-browser.mjs docs/test-runs/scenario-day100-browser-ci mature-valley-d100
+      - name: Follow the real mating tutorial controls
+        run: node tools/review-tutorial-direction.cjs docs/test-runs/mating-coach-ci --coach
       - name: Preserve browser receipts
         if: always()
         uses: actions/upload-artifact@v4
@@ -45,4 +47,5 @@ jobs:
             docs/test-runs/e4-browser-review/
             docs/test-runs/scenario-browser-ci/
             docs/test-runs/scenario-day100-browser-ci/
+            docs/test-runs/mating-coach-ci/
           if-no-files-found: ignore

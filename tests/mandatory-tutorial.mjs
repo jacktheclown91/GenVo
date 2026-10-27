@@ -135,13 +135,17 @@ function createMockController(sim){
   assert.equal(c.stage,'step-mate','advances to step-mate');
   assert.equal(sim.uiTutorialStage,'step-mate');
 
-  // Verify Step 3 UI
-  assert.equal(c.shown.title,'STEP 3/3 — FIND A MATE');
-  assert.match(c.shown.body,/Your journey doesn't end with you\./);
-  assert.match(c.shown.body,/Find the highlighted compatible creature\. Click it and choose Court\./);
+  // This fixture advanced directly while paused. Do not falsely mark an
+  // unavailable partner; explain the actual blocking state first.
+  assert.equal(c.shown.title,'STEP 3/3 — NO READY PARTNER NEARBY');
+  assert.match(c.shown.body,/Resume the world/);
+  assert.equal(c.renderer.guideTarget,null);
+  sim.paused=false;c.update(true);
+  assert.equal(c.shown.title,'STEP 3/3 — MEET A POSSIBLE MATE');
+  assert.match(c.shown.body,/Click the creature marked Mate/);
   assert.equal(c.shown.opts.step,'3/3');
   assert.equal(c.shown.opts.compact,false);
-  assert.ok(c.renderer.guideTarget,'mate guide target is set');
+  assert.ok(c.renderer.guideTarget,'only a currently available mate receives a marker');
   assert.equal(c.renderer.guideTarget.label,'Mate');
 }
 
@@ -215,7 +219,8 @@ function createMockController(sim){
   const c3=createMockController(snap3);
   c3.setSimulation(snap3,{resume:true});
   assert.equal(c3.stage,'step-mate','resuming world stays at step-mate');
-  assert.equal(c3.shown.title,'STEP 3/3 — FIND A MATE');
+  assert.match(c3.shown.title,/^STEP 3\/3 — /);
+  assert.ok(c3.tutorial.dataset.mateStep,'resumed lesson derives its next cue from current availability');
 
   // Verify save at done
   c.advance('done');

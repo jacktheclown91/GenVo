@@ -1,0 +1,487 @@
+{
+  "scope": "Derived excerpts only. Verbatim complete receipts and all frames remain in verified external archives; earlier failed observations remain failed. No external usability acceptance.",
+  "runs": {
+    "current": {
+      "rawReceipt": "reports/mating-coach-final-sparkle/receipt.json",
+      "rawSha256": "d2e9f87134d69c2442ef1faac262bf6a7b9cd9291dc7589f0d244908d0c4778c",
+      "seed": "GENVO8-PLAYABLE-TEST",
+      "scope": "Public mandatory tutorial: native food/water/courtship and canonical stage progression. --coach adds a separately labelled, restored unhealthy-actor presentation probe.",
+      "creatorAcceptance": false,
+      "coachCues": [
+        {
+          "step": "mate",
+          "text": "Click the creature marked Mate. We will take the next little step together.",
+          "buttonStyle": null,
+          "guide": {
+            "id": 110,
+            "x": 69.48735084629983,
+            "y": 55.19157020716656,
+            "label": "Mate"
+          },
+          "viewport": [
+            1024,
+            768
+          ]
+        },
+        {
+          "step": "court",
+          "text": "Click the glowing Court button to open their courtship controls.",
+          "button": "Court",
+          "targetId": "110",
+          "buttonBounds": {
+            "x": 937.5625,
+            "y": 385.0546875,
+            "width": 76,
+            "height": 54.296875,
+            "top": 385.0546875,
+            "right": 1013.5625,
+            "bottom": 439.3515625,
+            "left": 937.5625
+          },
+          "buttonStyle": {
+            "outline": "rgb(255, 230, 160) solid 3px",
+            "background": "rgb(81, 99, 58)"
+          },
+          "guide": {
+            "id": 110,
+            "x": 69.28006938921972,
+            "y": 55.043512023537915,
+            "label": "Mate"
+          },
+          "viewport": [
+            1024,
+            768
+          ]
+        },
+        {
+          "step": "approach",
+          "text": "Click the glowing Approach button. It adds a simple hello to your sequence.",
+          "button": "Approach",
+          "targetId": "110",
+          "buttonBounds": {
+            "x": 356,
+            "y": 135,
+            "width": 90,
+            "height": 44,
+            "top": 135,
+            "right": 446,
+            "bottom": 179,
+            "left": 356
+          },
+          "buttonStyle": {
+            "outline": "rgb(255, 230, 160) solid 3px",
+            "background": "rgb(81, 99, 58)"
+          },
+          "guide": {
+            "id": 110,
+            "x": 69.48551811397971,
+            "y": 55.19026111265221,
+            "label": "Mate"
+          },
+          "viewport": [
+            568,
+            320
+          ]
+        },
+        {
+          "step": "play",
+          "text": "Click the glowing Play button to begin. Your creature pays the display cost.",
+          "button": "Play",
+          "targetId": "110",
+          "buttonBounds": {
+            "x": 452,
+            "y": 135,
+            "width": 104,
+            "height": 44,
+            "top": 135,
+            "right": 556,
+            "bottom": 179,
+            "left": 452
+          },
+          "buttonStyle": {
+            "outline": "rgb(255, 230, 160) solid 3px",
+            "background": "rgb(81, 99, 58)"
+          },
+          "guide": {
+            "id": 110,
+            "x": 69.27833847417224,
+            "y": 55.042275655646854,
+            "label": "Mate"
+          },
+          "viewport": [
+            568,
+            320
+          ]
+        }
+      ],
+      "playControlStability": {
+        "connected": true,
+        "enabled": true,
+        "text": "Play"
+      },
+      "paidRehearsals": null,
+      "actualRefusal": null,
+      "acceptanceText": "You've eaten, drunk, and found a mate. Both creatures accepted the pairing.",
+      "completed": {
+        "stage": "step-complete",
+        "paused": true,
+        "lastMate": 110,
+        "day": 1
+      },
+      "continued": {
+        "stage": "done",
+        "paused": false,
+        "blocked": false
+      },
+      "cameraRestored": true,
+      "unavailableProbe": {
+        "scope": "Controlled unhealthy-actor presentation probe, not a natural outcome",
+        "text": "Nearby option: One creature is recovering from reproduction. Allow recovery, or look for another partner.",
+        "guide": null,
+        "highlightCount": 0
+      },
+      "paintParity": {
+        "equal": true,
+        "snapshotBytes": 11910801,
+        "fixtureDraws": 24,
+        "scope": "Paused genuine world; synthetic offscreen presentation inputs only, no creature or resource edits"
+      },
+      "errors": [],
+      "failure": null
+    },
+    "paidRefusal": {
+      "rawReceipt": "reports/mating-coach-retained-buttons/receipt.json",
+      "rawSha256": "715cd22a2dc8a73741c48ca0b5f86c56f5aee288dcbc1cae55503df6450a2aeb",
+      "seed": "GENVO8-PLAYABLE-TEST",
+      "scope": "Public mandatory tutorial: native food/water/courtship and canonical stage progression. --coach adds a separately labelled, restored unhealthy-actor presentation probe.",
+      "creatorAcceptance": false,
+      "coachCues": [
+        {
+          "step": "mate",
+          "text": "Click the creature marked Mate. We will take the next little step together.",
+          "buttonStyle": null,
+          "guide": {
+            "id": 110,
+            "x": 69.27956030496628,
+            "y": 55.04314839192831,
+            "label": "Mate"
+          },
+          "viewport": [
+            1024,
+            768
+          ]
+        },
+        {
+          "step": "court",
+          "text": "Click the glowing Court button to open their courtship controls.",
+          "button": "Court",
+          "targetId": "110",
+          "buttonBounds": {
+            "x": 343.5625,
+            "y": 141.1328125,
+            "width": 76,
+            "height": 74.484375,
+            "top": 141.1328125,
+            "right": 419.5625,
+            "bottom": 215.6171875,
+            "left": 343.5625
+          },
+          "buttonStyle": {
+            "outline": "rgb(255, 230, 160) solid 3px",
+            "background": "rgb(81, 99, 58)"
+          },
+          "guide": {
+            "id": 110,
+            "x": 69.48653630981212,
+            "y": 55.19098839538964,
+            "label": "Mate"
+          },
+          "viewport": [
+            1024,
+            768
+          ]
+        },
+        {
+          "step": "approach",
+          "text": "Click the glowing Approach button. It adds a simple hello to your sequence.",
+          "button": "Approach",
+          "targetId": "110",
+          "buttonBounds": {
+            "x": 356,
+            "y": 135,
+            "width": 90,
+            "height": 44,
+            "top": 135,
+            "right": 446,
+            "bottom": 179,
+            "left": 356
+          },
+          "buttonStyle": {
+            "outline": "rgb(255, 230, 160) solid 3px",
+            "background": "rgb(81, 99, 58)"
+          },
+          "guide": {
+            "id": 110,
+            "x": 69.27732025101533,
+            "y": 55.041548353391924,
+            "label": "Mate"
+          },
+          "viewport": [
+            568,
+            320
+          ]
+        },
+        {
+          "step": "play",
+          "text": "Click the glowing Play button to begin. Your creature pays the display cost.",
+          "button": "Play",
+          "targetId": "110",
+          "buttonBounds": {
+            "x": 452,
+            "y": 135,
+            "width": 104,
+            "height": 44,
+            "top": 135,
+            "right": 556,
+            "bottom": 179,
+            "left": 452
+          },
+          "buttonStyle": {
+            "outline": "rgb(255, 230, 160) solid 3px",
+            "background": "rgb(81, 99, 58)"
+          },
+          "guide": {
+            "id": 110,
+            "x": 69.48439806619398,
+            "y": 55.18946107851952,
+            "label": "Mate"
+          },
+          "viewport": [
+            568,
+            320
+          ]
+        },
+        {
+          "step": "mate",
+          "text": "Your creature held back: it is not drawn to this partner. Click the creature marked Mate. We will take the next little step together.",
+          "buttonStyle": null,
+          "guide": {
+            "id": 110,
+            "x": 64.36115614901131,
+            "y": 54.43578644253076,
+            "label": "Mate"
+          },
+          "viewport": [
+            568,
+            320
+          ]
+        },
+        {
+          "step": "court",
+          "text": "Your creature held back: it is not drawn to this partner. Click the glowing Court button to open their courtship controls.",
+          "button": "Court",
+          "targetId": "110",
+          "buttonBounds": {
+            "x": 481.5625,
+            "y": 48.2734375,
+            "width": 76,
+            "height": 74.484375,
+            "top": 48.2734375,
+            "right": 557.5625,
+            "bottom": 122.7578125,
+            "left": 481.5625
+          },
+          "buttonStyle": {
+            "outline": "rgb(255, 230, 160) solid 3px",
+            "background": "rgb(81, 99, 58)"
+          },
+          "guide": {
+            "id": 110,
+            "x": 64.36115614901131,
+            "y": 54.43578644253076,
+            "label": "Mate"
+          },
+          "viewport": [
+            568,
+            320
+          ]
+        },
+        {
+          "step": "approach",
+          "text": "Your creature held back: it is not drawn to this partner. Click the glowing Approach button. It adds a simple hello to your sequence.",
+          "button": "Approach",
+          "targetId": "110",
+          "buttonBounds": {
+            "x": 356,
+            "y": 135,
+            "width": 90,
+            "height": 44,
+            "top": 135,
+            "right": 446,
+            "bottom": 179,
+            "left": 356
+          },
+          "buttonStyle": {
+            "outline": "rgb(255, 230, 160) solid 3px",
+            "background": "rgb(81, 99, 58)"
+          },
+          "guide": {
+            "id": 110,
+            "x": 64.11690351668123,
+            "y": 54.45399955110712,
+            "label": "Mate"
+          },
+          "viewport": [
+            568,
+            320
+          ]
+        },
+        {
+          "step": "play",
+          "text": "Your creature held back: it is not drawn to this partner. Click the glowing Play button to begin. Your creature pays the display cost.",
+          "button": "Play",
+          "targetId": "110",
+          "buttonBounds": {
+            "x": 452,
+            "y": 135,
+            "width": 104,
+            "height": 44,
+            "top": 135,
+            "right": 556,
+            "bottom": 179,
+            "left": 452
+          },
+          "buttonStyle": {
+            "outline": "rgb(255, 230, 160) solid 3px",
+            "background": "rgb(81, 99, 58)"
+          },
+          "guide": {
+            "id": 110,
+            "x": 64.11690351668123,
+            "y": 54.45399955110712,
+            "label": "Mate"
+          },
+          "viewport": [
+            568,
+            320
+          ]
+        }
+      ],
+      "playControlStability": {
+        "connected": true,
+        "enabled": true,
+        "text": "Play"
+      },
+      "paidRehearsals": [
+        {
+          "attempt": 0,
+          "paid": 0.34595200000000004,
+          "energy": 106.80307769479089
+        },
+        {
+          "attempt": 1,
+          "paid": 0.34595200000000004,
+          "energy": 106.45712569479089
+        },
+        {
+          "attempt": 2,
+          "paid": 0.34595200000000004,
+          "energy": 105.02091214284489
+        },
+        {
+          "attempt": 3,
+          "paid": 0.34595200000000004,
+          "energy": 103.06326295761217
+        },
+        {
+          "attempt": 4,
+          "paid": 0.34595200000000004,
+          "energy": 101.62951802766531
+        },
+        {
+          "attempt": 5,
+          "paid": 0.34595200000000004,
+          "energy": 100.1951095039215
+        },
+        {
+          "attempt": 6,
+          "paid": 0.34595200000000004,
+          "energy": 98.76003738638072
+        }
+      ],
+      "actualRefusal": {
+        "record": {
+          "tick": 396,
+          "reason": "first-declines",
+          "day": 2,
+          "declinerId": 109,
+          "taste": null,
+          "count": 1,
+          "otherId": 110
+        },
+        "text": "Your creature held back: it is not drawn to this partner. Click the creature marked Mate. We will take the next little step together."
+      },
+      "acceptanceText": "You've eaten, drunk, and found a mate. Both creatures accepted the pairing.",
+      "completed": {
+        "stage": "step-complete",
+        "paused": true,
+        "lastMate": 110,
+        "day": 2
+      },
+      "continued": {
+        "stage": "done",
+        "paused": false,
+        "blocked": false
+      },
+      "cameraRestored": true,
+      "unavailableProbe": {
+        "scope": "Controlled unhealthy-actor presentation probe, not a natural outcome",
+        "text": "Nearby option: One creature is recovering from reproduction. Allow recovery, or look for another partner.",
+        "guide": null,
+        "highlightCount": 0
+      },
+      "paintParity": {
+        "equal": true,
+        "snapshotBytes": 13373788,
+        "fixtureDraws": 24,
+        "scope": "Paused genuine world; synthetic offscreen presentation inputs only, no creature or resource edits"
+      },
+      "errors": [],
+      "failure": null,
+      "coachCueCount": 36,
+      "excerptScope": "First and last four cues; intermediate repeated cues remain in the raw archived receipt."
+    }
+  },
+  "unsuccessfulObservations": [
+    {
+      "rawReceipt": "reports/mating-coach-final/receipt.json",
+      "rawSha256": "34ff10b0d0b1eb4963438f11e448e0d6275a84a4bcf6f48ea27b6717f384dd62",
+      "status": "failed",
+      "failure": "The lesson needs a real highlighted compatible mate"
+    },
+    {
+      "rawReceipt": "reports/mating-coach-id-cues/receipt.json",
+      "rawSha256": "2862a69404933f7acb252626ef3f0bac50b8a7061dd312b535d5098938b5e45e",
+      "status": "failed",
+      "failure": "page.evaluate: TypeError: Converting circular structure to JSON\n    --> starting at object with constructor 'Object'\n    |     property 'target' -> object with constructor 'Object'\n    |     property 'target' -> object with constructor 'Object'\n    --- property 'threat' closes the circle\n    at JSON.stringify (<anonymous>)\n    at snapshot (eval at evaluate (:311:30), <anonymous>:1:201)\n    at eval (eval at evaluate (:311:30), <anonymous>:1:317)\n    at async <anonymous>:337:30"
+    },
+    {
+      "rawReceipt": "reports/mating-coach-refusal/receipt.json",
+      "rawSha256": "66dc2310385a56f5507ef3eaa0073be40fffb270e6ab22cfe9a6a2f5e2e672dd",
+      "status": "failed",
+      "failure": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "rawReceipt": "reports/mating-coach-paid-refusal/receipt.json",
+      "rawSha256": "9e80a8ea4403c7d5bf268b646b0b049a2c9f6a44be9bbbae66cedd694d1a19ed",
+      "status": "failed",
+      "failure": "page.waitForFunction: Timeout 5000ms exceeded."
+    },
+    {
+      "rawReceipt": "reports/mating-coach-final-controls/receipt.json",
+      "rawSha256": "bec4cb97a14f983325bc8dff495c221391f7400154e49b71029f26ecc9fc9d44",
+      "status": "failed",
+      "failure": "locator.click: Timeout 1000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('.courtship-tray .courtship-tools button').filter({ hasText: /^Play$/ })\u001b[22m\n\u001b[2m    - locator resolved to <button title=\"Play\" type=\"button\" data-target-id=\"110\" class=\"tutorial-next\" data-tutorial-cue=\"play\" data-tutorial-action=\"play\" aria-describedby=\"tutorial\">Play</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m  - element was detached from the DOM, retrying\u001b[22m\n\u001b[2m    - locator resolved to <button title=\"Play\" type=\"button\" data-target-id=\"110\" class=\"tutorial-next\" data-tutorial-cue=\"play\" data-tutorial-action=\"play\" aria-describedby=\"tutorial\">Play</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is not stable\u001b[22m\n\u001b[2m  - retrying click action\u001b[22m\n\u001b[2m    2 \u00c3\u2014 waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element was detached from the DOM, retrying\u001b[22m\n\u001b[2m      - locator resolved to <button title=\"Play\" type=\"button\" data-target-id=\"110\" class=\"tutorial-next\" data-tutorial-cue=\"play\" data-tutorial-action=\"play\" aria-describedby=\"tutorial\">Play</button>\u001b[22m\n\u001b[2m    - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m  - element was detached from the DOM, retrying\u001b[22m\n"
+    }
+  ]
+}
