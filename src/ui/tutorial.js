@@ -1,3 +1,6 @@
+import {TutorialControlCue} from './tutorial-control-cue.js';
+import {SurvivalThreatGuide} from './survival-threat-guide.js';
+import {HomeTutorialGuide,earnedTutorialHome} from './home-tutorial-guide.js';
 import {MatingTutorialGuide} from './mating-tutorial-guide.js';
 import {visibleTutorialResource} from './tutorial-targets.js';
 import {bestFreshwaterFood} from '../ecology/freshwater-food.js';
@@ -94,14 +97,35 @@ export class TutorialController{
     if(this.welcome)this.welcome.hidden=true;if(this.completeModal)this.completeModal.hidden=true;if(this.tutorial)this.tutorial.hidden=true;
   }
   setSimulation(sim,{fresh=false,resume=false}={}){
-    this.mateGuide?.reset();this.mateCueKey=null;this.sim=sim;let restoredStage=resume&&sim.uiTutorialStage?sim.uiTutorialStage:null;if(LEGACY_OPENING_STAGES.has(restoredStage))restoredStage='goals';this.stage=restoredStage||'welcome';this.sim.uiTutorialStage=this.stage;this.startPos=null;this.briefingIndex=0;this.lastActiveId=sim.playerId;this.lastHandoffCount=sim.lineage?.handoffs?.length||0;this.establishmentShown=!!sim.lineage?.establishmentAnnounced;this.resumeChoice=false;
+    this.resourceCue?.clear();this.mateGuide?.reset();this.homeGuide?.reset();this.threatGuide?.reset();this.threatCueKey=null;this.mateCueKey=null;this.homeCueKey=null;this.sim=sim;if(fresh&&!resume)this.sim.uiTutorialRules='survival-home/1';let restoredStage=resume&&sim.uiTutorialStage?sim.uiTutorialStage:null;if(LEGACY_OPENING_STAGES.has(restoredStage))restoredStage='goals';this.stage=restoredStage||'welcome';this.sim.uiTutorialStage=this.stage;this.startPos=null;this.briefingIndex=0;this.lastActiveId=sim.playerId;this.lastHandoffCount=sim.lineage?.handoffs?.length||0;this.establishmentShown=!!sim.lineage?.establishmentAnnounced;this.resumeChoice=false;
     this.drankInStepWater=false;this.stepStartTick=sim.tickCount;this.stepStartMeal=this.historyHas('first-meal:');this.stepStartDrink=this.historyHas('first-drink');
     if(this.welcome)this.welcome.hidden=this.stage!=='welcome';
     if(this.completeModal)this.completeModal.hidden=this.stage!=='step-complete';
     if(this.briefing)this.briefing.hidden=true;if(this.transition)this.transition.hidden=true;this.transitionWasPaused=false;this.lineageEndedShown=false;
-    if(this.stage==='welcome'||this.stage==='step-complete')sim.paused=true;
+    if(this.stage==='welcome'||this.stage==='step-complete'){sim.paused=true;if(this.stage==='step-complete')this.showCompleteModal()}
     else if(fresh)sim.paused=false;
     this.renderer.guideTarget=null;this.update(true);
+  }
+  extendedSurvivalTutorial(){return this.sim.uiTutorialRules==='survival-home/1'}
+  tutorialSteps(){return this.extendedSurvivalTutorial()?4:3}
+  enterHomeTutorial(){
+    if(!this.sim.uiTutorialHome){const p=this.sim.player();this.sim.uiTutorialHome={enteredTick:this.sim.tickCount,preexisting:!!p&&earnedTutorialHome(this.sim,p).earned}}
+    this.advance('step-home');
+  }
+  renderStepHome(p){
+    this.homeGuide??=new HomeTutorialGuide();
+    const goal=this.homeGuide.read(this.sim);
+    if(goal.complete){
+      if(this.sim.uiTutorialDefense?.braced||p.bracing){this.showCompleteModal();return}
+      const lesson=this.homeGuide.showBrace(this.sim);
+      this.render('STEP 4/4 - TRY A LITTLE BRACE',lesson.text,{step:'4/4',compact:false});
+      if(this.tutorial?.dataset)this.tutorial.dataset.homeStep='brace';
+      this.renderer.guideTarget=null;return;
+    }
+    this.renderer.guideTarget=goal.site?{x:goal.site.x,y:goal.site.y,label:goal.label||'Home site'}:null;
+    const key=JSON.stringify([goal.step,goal.title,goal.text]);
+    if(this.homeCueKey!==key){this.render('STEP 4/4 - '+goal.title.toUpperCase(),goal.text,{step:'4/4',compact:false});this.homeCueKey=key}
+    if(this.tutorial?.dataset)this.tutorial.dataset.homeStep=goal.step;
   }
   setResumeChoice(active){this.resumeChoice=!!active}
   showWelcome(){this.stage='welcome';this.sim.uiTutorialStage='welcome';if(this.welcome)this.welcome.hidden=false;if(this.completeModal)this.completeModal.hidden=true;if(this.briefing)this.briefing.hidden=true;this.sim.paused=true;this.update(true)}
@@ -110,7 +134,16 @@ export class TutorialController{
     if(skip){this.stage='done';this.sim.uiTutorialStage=this.stage;if(this.welcome)this.welcome.hidden=true;if(this.completeModal)this.completeModal.hidden=true;if(this.briefing)this.briefing.hidden=true;this.sim.paused=false;this.sim.endOpeningGrace?.('tutorial skipped');this.showToast('Tutorial skipped · survival is live.',3000,'warn');return}
     this.stage='step-food';this.sim.uiTutorialStage='step-food';if(this.welcome)this.welcome.hidden=true;if(this.completeModal)this.completeModal.hidden=true;if(this.briefing)this.briefing.hidden=true;this.sim.paused=false;this.startPos=this.sim.player()?{x:this.sim.player().x,y:this.sim.player().y}:null;this.stepStartTick=this.sim.tickCount;this.stepStartMeal=this.historyHas('first-meal:');this.stepStartDrink=this.historyHas('first-drink');this.drankInStepWater=false;this.renderer.guideTarget=null;this.update(true);
   }
-  showCompleteModal(){this.mateGuide?.clear();this.stage='step-complete';this.sim.uiTutorialStage='step-complete';this.renderer.guideTarget=null;if(this.welcome)this.welcome.hidden=true;if(this.completeModal)this.completeModal.hidden=false;this.sim.paused=true}
+  showCompleteModal(){this.mateGuide?.clear();this.homeGuide?.clear();this.stage='step-complete';this.sim.uiTutorialStage='step-complete';this.renderer.guideTarget=null;if(this.welcome)this.welcome.hidden=true;if(this.completeModal)this.completeModal.hidden=false;if(this.extendedSurvivalTutorial()){
+      const summary=this.completeModal?.querySelector?.('.complete-summary');
+      if(summary)summary.textContent='You have eaten, drunk, found a mate and earned a home. Both creatures accepted the pairing.';
+      const motto=this.completeModal?.querySelector?.('.complete-motto');if(motto)motto.textContent='A home is a foundation for your next generation.';
+      const tail=this.completeModal?.querySelector?.('.complete-tail');if(tail)tail.textContent='WASD + Shift sprints using breath. Attack (Space) needs a reachable target and can provoke predators. Facing and holding Brace (J) reduces frontal damage.';
+    }else{
+      const summary=this.completeModal?.querySelector?.('.complete-summary');if(summary)summary.textContent="You've eaten, drunk, and found a mate. Both creatures accepted the pairing.";
+      const motto=this.completeModal?.querySelector?.('.complete-motto');if(motto)motto.textContent='Survive. Evolve. Leave a Legacy.';
+      const tail=this.completeModal?.querySelector?.('.complete-tail');if(tail)tail.textContent='The rest of your story is yours to discover.';
+    }this.sim.paused=true}
   continueComplete(){if(this.completeModal)this.completeModal.hidden=true;this.stage='done';this.sim.uiTutorialStage='done';this.renderer.guideTarget=null;this.sim.paused=false;this.sim.endOpeningGrace?.('tutorial complete');this.update(true)}
   showBriefing(){
     if(!this.briefing)return this.finishBriefing();const card=OPENING_BRIEFINGS[this.briefingIndex];if(!card)return this.finishBriefing();
@@ -131,7 +164,14 @@ export class TutorialController{
     else if(this.stage==='step-water'){if(result.type==='drink'||result.action==='drink'||/drank/i.test(result.message||'')){this.drankInStepWater=true;this.showToast("✓ You're hydrated!",3000,'success','action');this.advance('step-mate');return}}
     if(this.stage==='goals')this.update(true)
   }
-  onShelterAction(result){if(!result)return;const message=result.ok?(result.action==='build'?'Shelter built.':result.action==='repair'?'Shelter repaired.':result.action==='reinforce'?'Shelter reinforced.':result.action==='cache'?'Food stored.':'Done.'):(result.reason||'That cannot be done here.');this.showToast(`${result.ok?'✓':'×'} ${message}`,result.ok?1900:1700,result.ok?'success':'warn','action');if(result.ok&&result.action==='build'&&this.stage==='goals')this.sim.endOpeningGrace?.('first shelter built');if(result.ok)this.update(true)}
+  confirmProtectedAction(action){
+    if(!this.sim.isOpeningProtected?.(this.sim.player()))return true;
+    const key=this.sim.playerId+':'+action,now=performance.now();
+    if(this.protectedConfirmation?.key===key&&now<this.protectedConfirmation.until){this.protectedConfirmation=null;return true}
+    this.protectedConfirmation={key,until:now+6000};
+    this.showToast('This will end your protected opening. Repeat to '+action+'.',5500,'warn','action');return false;
+  }
+  onShelterAction(result){if(!result)return;const message=result.ok?(result.action==='build'?'Shelter built.':result.action==='repair'?'Shelter repaired.':result.action==='reinforce'?'Shelter reinforced.':result.action==='cache'?'Food stored.':'Done.'):(result.reason||'That cannot be done here.');this.showToast(`${result.ok?'✓':'×'} ${message}`,result.ok?1900:1700,result.ok?'success':'warn','action');if(result.ok&&result.action==='build')this.sim.endOpeningGrace?.('first shelter built');if(result.ok)this.update(true)}
   advance(stage){
     this.stage=stage;this.sim.uiTutorialStage=this.stage;
     if(this.welcome)this.welcome.hidden=true;
@@ -143,39 +183,61 @@ export class TutorialController{
   // 24-entry recent history. A first drink recorded once used to scroll out of that history and
   // untick the opening goal for good, because a second drink is never recorded again.
   historyHas(typePrefix){const p=this.sim.player(),state=p?this.sim.cognition.state(p):null;if(!state)return false;const match=k=>k===typePrefix||String(k).startsWith(typePrefix);if(state.seen)for(const k of state.seen)if(match(k))return true;return !!state.history?.some(h=>match(h.type))}
+  highlightResource(action){
+    this.resourceCue??=new TutorialControlCue();
+    const button=this.resourceCue.query('[data-tutorial-action="'+action+'"]').find(b=>!b.disabled&&b.getAttribute('aria-disabled')!=='true');
+    this.resourceCue.setCue(button,action);
+  }
   renderStepFood(p){
+    this.highlightResource('eat');
     const fed=this.historyHas('first-meal:')||(p.lastMeal&&p.lastMeal.tick>=this.stepStartTick);
     if(fed){this.showToast("✓ Nice! You've eaten.",3000,'success','action');this.advance('step-water');return}
     const f=visibleTutorialResource(this.sim,this.renderer,p,'food')||(!this.renderer.camera?this.findFood(p,28):null);if(f)this.renderer.guideTarget={...f,label:'Food'};else this.renderer.guideTarget=null;
-    if(!f){this.render('STEP 1/3 — FIND FOOD','Look around for food. Walk or turn until food this body can eat comes into view and gets a Food marker.',{step:'1/3',compact:false});return}
-    this.render('STEP 1/3 — FIND FOOD',"You're hungry! Find something edible. Click the highlighted food and choose Eat, or move close and press E.",{step:'1/3',compact:false});
+    if(!f){this.render('STEP 1/'+this.tutorialSteps()+' — FIND FOOD','Look around for food. Walk or turn until food this body can eat comes into view and gets a Food marker.',{step:'1/'+this.tutorialSteps(),compact:false});return}
+    this.render('STEP 1/'+this.tutorialSteps()+' — FIND FOOD',"You're hungry! Find something edible. Click the highlighted food and choose Eat, or move close and press E.",{step:'1/'+this.tutorialSteps(),compact:false});
   }
   renderStepWater(p){
+    this.highlightResource('drink');
     const watered=this.drankInStepWater||(!this.stepStartDrink&&this.historyHas('first-drink'))||(this.sim.lastPlayerAction?.type==='drink'&&this.sim.lastPlayerAction.tick>=this.stepStartTick);
     if(watered){this.showToast("✓ You're hydrated!",3000,'success','action');this.advance('step-mate');return}
     const w=visibleTutorialResource(this.sim,this.renderer,p,'water')||(!this.renderer.camera?this.sim.world.nearestDrinkable(p.x,p.y,28):null);if(w)this.renderer.guideTarget={...w,label:'Water'};else this.renderer.guideTarget=null;
-    if(!w){this.render('STEP 2/3 — FIND WATER','Look around for freshwater. Walk along the bank until a Water marker appears.',{step:'2/3',compact:false});return}
-    this.render('STEP 2/3 — FIND WATER','Every creature needs water. Click the highlighted freshwater source and choose Drink, or stand beside it and press Shift+E.',{step:'2/3',compact:false});
+    if(!w){this.render('STEP 2/'+this.tutorialSteps()+' — FIND WATER','Look around for freshwater. Walk along the bank until a Water marker appears.',{step:'2/'+this.tutorialSteps(),compact:false});return}
+    this.render('STEP 2/'+this.tutorialSteps()+' — FIND WATER','Every creature needs water. Click the highlighted freshwater source and choose Drink, or stand beside it and press Shift+E.',{step:'2/'+this.tutorialSteps(),compact:false});
   }
   renderStepMate(p){
     const mated=!!p.lastMate||!!p.pregnant||this.sim.family.livingChildren(p).length>0;
-    if(mated){this.showToast("✓ You've found a mate!",3000,'success','action');this.showCompleteModal();return}
+    if(mated){this.showToast("✓ You've found a mate!",3000,'success','action');if(this.extendedSurvivalTutorial())this.enterHomeTutorial();else this.showCompleteModal();return}
     this.mateGuide??=new MatingTutorialGuide();
     const cue=this.mateGuide.read(this.sim);
     this.renderer.guideTarget=cue.mate?{id:cue.mate.id,x:cue.mate.x,y:cue.mate.y,label:'Mate'}:null;
     const key=JSON.stringify([cue.step,cue.title,cue.text]);
-    if(key!==this.mateCueKey){this.render('STEP 3/3 — '+cue.title.toUpperCase(),cue.text,{step:'3/3',compact:false});this.mateCueKey=key}
+    if(key!==this.mateCueKey){this.render('STEP 3/'+this.tutorialSteps()+' — '+cue.title.toUpperCase(),cue.text,{step:'3/'+this.tutorialSteps(),compact:false});this.mateCueKey=key}
     if(this.tutorial?.dataset)this.tutorial.dataset.mateStep=cue.step;
   }
   update(force=false){
+    if(!['step-food','step-water'].includes(this.stage)||this.worldInputBlocked())this.resourceCue?.clear();
     if(this.stage!=='step-mate'||this.worldInputBlocked()){this.mateGuide?.clear();this.mateCueKey=null;if(this.tutorial?.dataset)delete this.tutorial.dataset.mateStep}
-    if(this.worldInputBlocked())return;
+    if(this.stage!=='step-home'||this.worldInputBlocked()){this.homeGuide?.clear();this.homeCueKey=null;if(this.tutorial?.dataset)delete this.tutorial.dataset.homeStep}
+    if(this.worldInputBlocked()){this.threatGuide?.clear();return;}
     const p=this.sim.player();if(!p?.alive)this.mateGuide?.clear();this.detectHandoff();const milestone=this.sim.generationProgress?.takeNotice?.();if(milestone)this.showToast(milestone.text,5200,milestone.tone||'success','progress');const lostKnowledge=this.sim.cognition?.takeKnowledgeNotice?.();if(lostKnowledge)this.showToast(lostKnowledge.text,5200,lostKnowledge.tone||'warn');const fear=this.sim.cognition?.takeFearNotice?.();if(fear)this.showToast(fear.text,4200,fear.tone||'warn');const designed=this.sim.evolutionEditor?.takeNotice?.();if(designed)this.showToast(designed.text,4200,designed.tone||'success','progress');const found=!designed&&this.sim.discovery?.takeNotice?.();if(found)this.showDiscovery(found);const autoHome=this.sim.autoHomeNotice;if(autoHome){this.sim.autoHomeNotice=null;this.showToast(autoHome.text,5200,autoHome.tone||'warn')}
     if(!p){this.renderer.guideTarget=null;this.render('Your family line ended.','Press R to start again.');if(!this.lineageEndedShown&&this.sim.lineage?.founderId){this.lineageEndedShown=true;this.showTransition('The family line ended','No grown descendant survived to take over. Press R to start a new run.','Close',true)}return}
+    if(this.extendedSurvivalTutorial()&&p.bracing){this.sim.uiTutorialDefense??={};this.sim.uiTutorialDefense.braced=true}
     this.noteEnergyBalance(p);
+    this.threatGuide??=new SurvivalThreatGuide();
+    const threat=this.threatGuide.read(this.sim);
+    if(threat){
+      if(this.tutorial?.dataset)this.tutorial.dataset.survivalThreat='true';
+      this.resourceCue?.clear();this.mateGuide?.clear();this.homeGuide?.clear();this.mateCueKey=null;this.homeCueKey=null;
+      this.renderer.guideTarget=null;
+      const key=threat.title+threat.text;
+      if(key!==this.threatCueKey)this.render(threat.title,threat.text,{compact:false});
+      this.threatCueKey=key;return;
+    }
+    this.threatCueKey=null;if(this.tutorial?.dataset)delete this.tutorial.dataset.survivalThreat;
     if(this.stage==='step-food'){this.renderStepFood(p);return}
     if(this.stage==='step-water'){this.renderStepWater(p);return}
     if(this.stage==='step-mate'){this.renderStepMate(p);return}
+    if(this.stage==='step-home'){this.renderStepHome(p);return}
     if(this.stage==='step-complete'||this.stage==='welcome')return;
     if(this.stage==='goals'){if(this.renderOpeningGoals(p))return}
     this.renderer.guideTarget=null;this.renderDynamicGoal(p);
@@ -291,15 +353,9 @@ export class TutorialController{
     this.render(p.lastMate?'Prepare Generation 2':'Find a mate',p.lastMate?'Stay alive together. The next generation begins with a child.':'Explore until a mate is nearby. M inspects, C courts.',{compact:true});
   }
   renderPredatorAlert(p){
-    const threat=this.sim.predator?.playerStatus?.(p);if(!threat)return false;
-    const d=Math.max(0,threat.distance).toFixed(1),pack=threat.threatCount>1?`${threat.threatCount} Stalkers · `:'';
-    if(threat.phase==='charge'){this.render(threat.threatCount>1?'ONE STALKER COMMITTED':'STALKER COMMITTED',`${pack}~${d} away · cross the marked lane or hold J facing it · the others will pressure rather than charge together`,{compact:true});return true}
-    if(threat.phase==='windup'){const tell=threat.style==='rusher'?'short tell: sidestep now':threat.style==='wary'?'long tell: counterbite or break the angle':'it waited until close: cross its marked line';this.render(threat.threatCount>1?'One Stalker commits':'Stalker coiling to strike',`${pack}~${d} away · ${tell} · or hold J facing it · Space counterbite if close`,{compact:true});return true}
-    if(threat.phase==='recover'){const outcome=threat.outcome==='braced'?'your brace stopped it dead':threat.outcome==='countered'?'your counter broke its attack':threat.outcome==='hit'?'it is resetting after the bite':threat.outcome==='evaded'||threat.outcome==='contact-miss'?'it overran the attack':'it is overextended';this.render('Stalker overextended',`${pack}${outcome} · Space opening bite if close · two clean wounds drive it off · or slip away`,{compact:true});return true}
-    if(threat.phase==='stalk'&&threat.pursuit==='search'){this.render('The Stalker lost sight of you',`${pack}it is checking where it last saw you · stay quiet in dense plants or slip away · sprinting gives you away`,{compact:true});return true}
-    if(threat.phase==='stalk'&&threat.pursuit==='chase'){const tired=threat.stamina<.35?' · it is tiring':'';this.render('Stalker giving chase',`${pack}~${d} away · it is faster than your walk, slower than your sprint${tired} · dense plants break its sight`,{compact:true});return true}
-    if(threat.phase==='stalk'&&threat.distance<5.8){const title=threat.threatCount>1?'Stalkers closing in':threat.style==='ambusher'?'Stalker circling nearby':threat.style==='rusher'?'Stalker bearing down':'Stalker testing your distance';const tip=threat.threatCount>1?'they are spreading around you; only one commits a charge at a time':threat.style==='ambusher'?'watch the flank; V can break sight if camouflage evolved':threat.style==='rusher'?'make room before its early commitment':`a clean wound can make this hunter retreat`;this.render(title,`${pack}~${d} away · ${tip}`,{compact:true});return true}
-    return false;
+    this.threatGuide??=new SurvivalThreatGuide();
+    const threat=this.threatGuide.read(this.sim);if(!threat)return false;
+    this.render(threat.title,threat.text,{compact:false});return true;
   }
   renderStalkerDenWarning(p){
     const territory=this.sim.stalkerTerritory,near=territory?.knownStatus?.(p,3.2);

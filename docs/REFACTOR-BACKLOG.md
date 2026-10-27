@@ -1,5 +1,9 @@
 # Refactor backlog — executable GitHub tasks
 
+## Current creator priority: survival tutorial and home controls
+
+Finish and verify [the survival/home interaction pass](SURVIVAL-HOME-TUTORIAL-2026-10-27.md) before resuming autonomous recognition work. Keep its optional presentation progress separate from biological policies. Stage B work in the older managed checkout is preserved, not reverted or silently merged.
+
 All tasks start from live main, preserve unrelated work, and update the continuation handoff. Run the complete playable gate and canonical export/audit before integration. Do not regenerate deterministic expectations for a mechanical refactor.
 
 ## Active autonomous-evolution boundaries

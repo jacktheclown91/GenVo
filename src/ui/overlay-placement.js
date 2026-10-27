@@ -11,10 +11,10 @@ export function chooseOverlayPlacement({width,height,viewport,preferred,previous
 export function canvasClientPoint(renderer,point){
  if(!point)return null;const r=renderer.canvas.getBoundingClientRect();return{x:r.left+point.x*r.width/renderer.w,y:r.top+point.y*r.height/renderer.h};
 }
-export function gameplayProtectedRects(renderer){
+export function gameplayProtectedRects(renderer,{selectionPadding=null}={}){
  const result=[];if(!renderer)return result;
  const r=renderer.canvas.getBoundingClientRect(),world=renderer.sim?.world;
  let selected=false;if(renderer.screenBoundsWorld===world){for(const id of new Set([renderer.sim.playerId,renderer.overlayTargetId])){const body=renderer.screenBounds?.get(id);if(body){const x=r.width/renderer.w,y=r.height/renderer.h;result.push(rect(r.left+body.left*x-14,r.top+body.top*y-14,body.width*x+28,body.height*y+28));if(id===renderer.overlayTargetId)selected=true}}}
- const ring=document.querySelector('.creature-selection-ring:not([hidden])');if(ring&&!selected){const b=ring.getBoundingClientRect(),padding=22*renderer.zoom+16;if(b.width&&b.height)result.push(rect(b.left-padding,b.top-padding,b.width+padding*2,b.height+padding*2))}
+ const ring=document.querySelector('.creature-selection-ring:not([hidden])');if(ring&&!selected){const b=ring.getBoundingClientRect(),padding=selectionPadding??22*renderer.zoom+16;if(b.width&&b.height)result.push(rect(b.left-padding,b.top-padding,b.width+padding*2,b.height+padding*2))}
  return result;
 }

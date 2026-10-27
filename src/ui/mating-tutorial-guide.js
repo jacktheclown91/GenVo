@@ -1,3 +1,4 @@
+import {TutorialControlCue} from './tutorial-control-cue.js';
 import {courtshipObservation} from './courtship-observation.js';
 
 // Presentation only. Eligibility, costs, consent and outcomes stay with the
@@ -39,19 +40,12 @@ export function matingTutorialState(sim,ui={}){
  return{step:'mate',mate,title:'Meet a possible mate',text:'Click the creature marked Mate. We will take the next little step together.'};
 }
 
-const visible=element=>!!element&&!element.closest?.('[hidden]')&&
- (!element.getClientRects||element.getClientRects().length>0);
-export class MatingTutorialGuide{
- constructor(root=globalThis.document){this.root=root;this.highlighted=new Set()}
- clear(){for(const element of this.highlighted){element.classList.remove('tutorial-next');delete element.dataset.tutorialCue;
-  const ids=(element.getAttribute('aria-describedby')||'').split(/\s+/).filter(id=>id&&id!=='tutorial');
-  if(ids.length)element.setAttribute('aria-describedby',ids.join(' '));else element.removeAttribute('aria-describedby');
- }this.highlighted.clear()}
+export class MatingTutorialGuide extends TutorialControlCue{
  reset(){this.clear();this.actor=null;this.outcome=null;this.wasBusy=false;this.baseline=null}
  read(sim){
   const actor=sim.player();if(this.actor!==actor){this.reset();this.actor=actor;this.refusal=actor?.lastCourtshipRefusal;this.failure=actor?.lastCourtshipFailure}
   if(!actor?.alive){this.clear();return matingTutorialState(sim)}
-  const query=selector=>[...(this.root?.querySelectorAll?.(selector)||[])].filter(visible);
+  const query=selector=>this.query(selector);
   const tray=query('.courtship-tray')[0],court=query('[data-tutorial-action="court"]')[0];
   const ui={courtOpen:!!tray,courtTargetId:tray?Number(tray.dataset.targetId):null,
    contextTargetId:court?Number(court.dataset.targetId):null};
@@ -72,11 +66,7 @@ export class MatingTutorialGuide{
    const element=candidates.find(e=>e.closest('.context-radial'))||candidates[0];
    next=element;
   }
-  if(!next||!this.highlighted.has(next)){
-   this.clear();
-   if(next){next.classList.add('tutorial-next');next.dataset.tutorialCue=state.action;
-    next.setAttribute('aria-describedby',[next.getAttribute('aria-describedby'),'tutorial'].filter(Boolean).join(' '));this.highlighted.add(next)}
-  }
+  this.setCue(next,state.action);
   return state;
  }
 }

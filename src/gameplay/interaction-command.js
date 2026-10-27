@@ -1,3 +1,4 @@
+import {homeInteractions,executeHomeInteraction} from './home-interactions.js';
 import {submerged} from '../lineage/diving.js';
 import {FLORA_TISSUES} from '../ecology/flora-genotype.js';
 import {PLANTS} from '../sim/config.js';
@@ -31,7 +32,7 @@ export function contextualInteractions(sim,target=null){
   const options=[...new Map(candidates.map(t=>[targetKey(t),t])).values()].sort((p,q)=>Math.hypot(p.x-a.x,p.y-a.y)-Math.hypot(q.x-a.x,q.y-a.y)||(targetKey(p)<targetKey(q)?-1:targetKey(p)>targetKey(q)?1:0)).flatMap(t=>contextualInteractions(sim,t)).filter(o=>o.enabled&&o.id!=='inspect')
    // A meal can be reached both as a forage target and through its water cell; one action id is one choice.
    .filter((o,k,all)=>all.findIndex(x=>x.id===o.id)===k);
-  if(sim.partAbilities.digAvailability(a).enabled&&!sim.nearestPlayerCombatTarget(a,1.9))options.push(...contextualInteractions(sim,{kind:'ground',x:a.x,y:a.y,i:sim.world.idx(a.x,a.y)}));
+  if(sim.partAbilities.digAvailability(a).enabled&&!sim.nearestPlayerCombatTarget(a,1.9))options.push(...contextualInteractions(sim,{kind:'ground',ambient:true,x:a.x,y:a.y,i:sim.world.idx(a.x,a.y)}));
   return options;
  }
  let options=[];
@@ -40,6 +41,7 @@ export function contextualInteractions(sim,target=null){
  else if(target.kind==='water'||target.kind==='drinkable-ground'||target.kind==='snow'){
   const label=target.kind==='snow'?(target.winterTarget?.snow?'Eat snow':'Break ice'):'Drink';
   const status=target.kind==='water'||target.kind==='snow'?sim.resourceAction('drink',target):{...sim.resourceAvailability('drink'),state:sim.world.isDrinkable(target.x,target.y)&&Math.hypot(target.x-a.x,target.y-a.y)<=1.5?'available':'unavailable'};status.enabled=!!status.enabled&&status.state!=='unavailable';options.push(info('drink',label,target,status));
+  if(target.kind==='snow')options.push(...homeInteractions(sim,target).map(option=>info(option.id,option.label,option.target,option)));
   if(target.kind==='water')for(const kind of Object.keys(FRESHWATER_FOOD)){if(!(freshwaterField(sim.world,kind)?.[target.i]>.01))continue;const food={...target,kind:'food',food:kind,label:foodLabel(kind)};const edible=sim.resourceAction('eat',food);if(edible.state!=='unavailable')options.push(info('eat:'+kind+':'+target.i,'Eat '+foodLabel(kind),food,edible))}
  }
  else if(target.kind==='nest'||target.kind==='egg'){
@@ -50,7 +52,7 @@ export function contextualInteractions(sim,target=null){
  else if(target.kind==='den'){const den=sim.stalkerTerritory.activeSites().find(d=>d.id===target.id);options=[info('den-inspect','Inspect scrape',target,!den?{enabled:false,reason:'That scrape is gone.'}:Math.hypot(den.x-a.x,den.y-a.y)<=1.9?{enabled:true,reason:'Read the actual signs at this scrape.'}:{enabled:false,state:'approachable',reason:'Approach this scrape first.'})]}
  else if(target.kind==='site'){const site=sim.discovery.sites.find(s=>s.id===target.id&&!s.gone);options=[info(site?.kind==='relic'?'collect-relic':'collect-material','Collect',target,sim.discovery.collectionAvailability(a,target.id))]}
  else if(target.kind==='shelter'){const status=sim.shelter.maintenanceAvailability(a,target.id);options=[info('maintain',status.label||'Maintain',target,status)];if(!target.ambient){const cache=sim.shelter.cacheAvailability?.(a,target.id);if(cache&&(cache.enabled||cache.state==='approachable'))options.push(info('cache-food','Store food',target,cache));const eatStored=sim.shelter.eatStoredAvailability?.(a,target.id);if(eatStored&&(eatStored.enabled||eatStored.state==='approachable'))options.push(info('eat-cache','Eat stored food',target,eatStored));}else if(!target.hasGroundFood){const eatStored=sim.shelter.eatStoredAvailability?.(a,target.id);if(eatStored?.enabled)options.push(info('eat-cache','Eat stored food',target,eatStored));}}
- else if(target.kind==='ground'){const here=sim.world.idx(a.x,a.y)===target.i,probe=here?a:Object.assign(Object.create(Object.getPrototypeOf(a)),a,{x:target.x,y:target.y}),status=sim.partAbilities.digAvailability(probe);options=[info('dig','Dig roots',target,here||!status.enabled?status:{enabled:false,state:'approachable',reason:'Approach this ground before digging.'})]}
+ else if(target.kind==='ground'){const here=sim.world.idx(a.x,a.y)===target.i,probe=here?a:Object.assign(Object.create(Object.getPrototypeOf(a)),a,{x:target.x,y:target.y}),status=sim.partAbilities.digAvailability(probe);options=[info('dig','Dig roots',target,here||!status.enabled?status:{enabled:false,state:'approachable',reason:'Approach this ground before digging.'}),...homeInteractions(sim,target).map(option=>info(option.id,option.label,option.target,option))]}
  else if(target.kind==='creature'){
   const child=sim.animals.find(v=>v.id===target.id&&v.alive);if(child){const status=sim.family.tendAvailability(a,child),care=sim.family.careStatus(child,a);if(child.parentIds?.includes(a.id)&&care)options.push(info('care',status.label||'Tend',target,status));
    const sick=sim.familyIllness?.sickCareTarget?.(a,{radius:1.8});if(sick?.child.id===child.id)options.push(info('illness-care','Check young',target,{enabled:true,reason:'Check your sick young using the existing caregiver action.'}));
@@ -68,7 +70,8 @@ export function executeInteraction(sim,target=null,actionId=null){
  const option=actionId===null?available[0]:options.find(o=>o.id===actionId);
  if(!option?.enabled)return{ok:false,type:'interact',state:option?.state||options[0]?.state||'unavailable',message:option?.reason||options[0]?.reason||(target?'No valid interaction with this target.':sim.nearestPlayerCombatTarget(sim.player(),1.9)?'No world interaction nearby. Space attacks; hold J to brace.':'No usable object nearby.')};
  const a=sim.player(),t=option.target;let result;
- if(option.id==='cave')result=sim.playerCave(t.cave);
+ if(['mark-home-site','build-shelter','establish-home-nest'].includes(option.id))result=executeHomeInteraction(sim,a,t,option.id);
+ else if(option.id==='cave')result=sim.playerCave(t.cave);
  else if(option.id==='feed-canopy')result=sim.playerCanopyFeed();
  else if(option.id.startsWith('eat:')){const status=sim.resourceAction('eat',t);result=status.enabled?sim.playerEat(status.meal):{ok:false,type:'eat',message:status.reason}}
  else if(option.id==='drink')result=sim.playerDrink(t.kind==='water'||t.kind==='cave-water'||t.kind==='snow'?t:null);

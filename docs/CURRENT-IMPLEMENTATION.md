@@ -1,8 +1,12 @@
 # Current implementation and acceptance
 
+## Survival tutorial and ground home actions — October 27
+
+The creator's current priority extends fresh onboarding through an earned home and a safe Brace lesson. Actual ground/snow wheels expose planning, paid selected-site shelter building and legitimately unlocked satellite nests through existing authorities; historical progress, AUTO and right-click family guidance are retained. Contextual perceived-threat guidance never advances the lesson or creates an encounter. See [implementation and verification boundaries](SURVIVAL-HOME-TUTORIAL-2026-10-27.md). Stable itch remains unchanged; a separate verified HTML5 candidate is required.
+
 ## Mating tutorial usability priority — October 27
 
-The creator prioritized the first reported external mating-usability issue. The tutorial now derives one cue at a time from actual controls and canonical availability: mate marker, Court, Approach, Play, then the observed response. All 125 local checks, Node 22/24 coach tests, real native acceptance and paid refusal/retry, narrow-window screenshots, architecture, audit and export pass. No biological authority changed; new-player comprehension remains unaccepted pending a fresh unassisted retry. See [implementation, evidence and shared-UI handoff](TUTORIAL-MATING-COACH-2026-10-27.md). Exact-head CI for this new checkpoint is pending. The autonomous-evolution goal remains active; population checkpoint c4be59e4 passed exact-head CI 40450087429.
+The creator prioritized the first reported external mating-usability issue. The tutorial now derives one cue at a time from actual controls and canonical availability: mate marker, Court, Approach, Play, then the observed response. All 125 local checks, Node 22/24 coach tests, real native acceptance and paid refusal/retry, narrow-window screenshots, architecture, audit and export pass. No biological authority changed; new-player comprehension remains unaccepted pending a fresh unassisted retry. See [implementation, evidence and shared-UI handoff](TUTORIAL-MATING-COACH-2026-10-27.md). Mating checkpoint 98b276b2 passed exact-head CI 40454846016, including both workers and the required summary. The autonomous-evolution goal remains active; population checkpoint c4be59e4 passed exact-head CI 40450087429.
 
 Reviewed October 20, 2026. Governing intent: [current design](../design/CURRENT-DESIGN.md) and the creator's full Creature-stage directive. Code ownership: [implementation authorities](../design/governance/implementation-authorities.json). Full scope and remaining gaps: [completion matrix](FULL-GAME-COMPLETION-MATRIX.md). Earlier checkpoint prose is [historical evidence](history/IMPLEMENTATION-before-live-refresh-2026-10-19.md), not current instructions.
 

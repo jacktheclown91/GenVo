@@ -76,10 +76,10 @@ function createMockController(sim){
   assert.equal(c.worldInputBlocked(),false,'world input is active for gameplay');
 
   // Verify Step 1 UI
-  assert.equal(c.shown.title,'STEP 1/3 — FIND FOOD');
+  assert.equal(c.shown.title,'STEP 1/4 — FIND FOOD');
   assert.match(c.shown.body,/You're hungry! Find something edible\./);
   assert.match(c.shown.body,/Click the highlighted food and choose Eat, or move close and press E\./);
-  assert.equal(c.shown.opts.step,'1/3');
+  assert.equal(c.shown.opts.step,'1/4');
   assert.equal(c.shown.opts.compact,false,'step instructions are clearly readable and not collapsed');
   assert.ok(c.renderer.guideTarget,'food guide target is set for player');
   assert.equal(c.renderer.guideTarget.label,'Food');
@@ -107,10 +107,10 @@ function createMockController(sim){
   assert.equal(sim.uiTutorialStage,'step-water');
 
   // Verify Step 2 UI
-  assert.equal(c.shown.title,'STEP 2/3 — FIND WATER');
+  assert.equal(c.shown.title,'STEP 2/4 — FIND WATER');
   assert.match(c.shown.body,/Every creature needs water\./);
   assert.match(c.shown.body,/Click the highlighted freshwater source and choose Drink, or stand beside it and press Shift\+E\./);
-  assert.equal(c.shown.opts.step,'2/3');
+  assert.equal(c.shown.opts.step,'2/4');
   assert.equal(c.shown.opts.compact,false);
   assert.ok(c.renderer.guideTarget,'water guide target is set');
   assert.equal(c.renderer.guideTarget.label,'Water');
@@ -137,13 +137,13 @@ function createMockController(sim){
 
   // This fixture advanced directly while paused. Do not falsely mark an
   // unavailable partner; explain the actual blocking state first.
-  assert.equal(c.shown.title,'STEP 3/3 — NO READY PARTNER NEARBY');
+  assert.equal(c.shown.title,'STEP 3/4 — NO READY PARTNER NEARBY');
   assert.match(c.shown.body,/Resume the world/);
   assert.equal(c.renderer.guideTarget,null);
   sim.paused=false;c.update(true);
-  assert.equal(c.shown.title,'STEP 3/3 — MEET A POSSIBLE MATE');
+  assert.equal(c.shown.title,'STEP 3/4 — MEET A POSSIBLE MATE');
   assert.match(c.shown.body,/Click the creature marked Mate/);
-  assert.equal(c.shown.opts.step,'3/3');
+  assert.equal(c.shown.opts.step,'3/4');
   assert.equal(c.shown.opts.compact,false);
   assert.ok(c.renderer.guideTarget,'only a currently available mate receives a marker');
   assert.equal(c.renderer.guideTarget.label,'Mate');
@@ -165,6 +165,12 @@ function createMockController(sim){
   mate.lastMate=p.id;
   c.update(true);
 
+  assert.equal(c.stage,'step-home','new worlds teach home after mating');
+  assert.equal(sim.uiTutorialHome.preexisting,false);
+  // Controlled earned residence fixture; this is not natural field evidence.
+  const territory=sim.territory.state(p);territory.established=true;territory.home={x:p.x,y:p.y};territory.radius=8;
+  assert.equal(sim.territory.markHomeSite(p,{kind:'ground',x:p.x,y:p.y}).ok,true);
+  sim.uiTutorialDefense={braced:true};c.update(true);
   // Verifies success toast & completion modal
   assert.ok(c.toasts.some(t=>t.msg==="✓ You've found a mate!"),"shows exact '✓ You\\'ve found a mate!' success message");
   assert.equal(c.stage,'step-complete','advances to step-complete');
@@ -185,7 +191,7 @@ function createMockController(sim){
 
   // Dynamic contextual guidance now active
   c.update(true);
-  assert.notEqual(c.shown.title,'STEP 3/3 — FIND A MATE');
+  assert.notEqual(c.shown.title,'STEP 3/4 — FIND A MATE');
 }
 
 // --- 6. Save and Resume Persistence Across Steps ---
@@ -201,7 +207,7 @@ function createMockController(sim){
   const c1=createMockController(snap1);
   c1.setSimulation(snap1,{resume:true});
   assert.equal(c1.stage,'step-food','resuming world stays at step-food');
-  assert.equal(c1.shown.title,'STEP 1/3 — FIND FOOD');
+  assert.equal(c1.shown.title,'STEP 1/4 — FIND FOOD');
 
   // Verify save at step-water
   c.advance('step-water');
@@ -210,7 +216,7 @@ function createMockController(sim){
   const c2=createMockController(snap2);
   c2.setSimulation(snap2,{resume:true});
   assert.equal(c2.stage,'step-water','resuming world stays at step-water');
-  assert.equal(c2.shown.title,'STEP 2/3 — FIND WATER');
+  assert.equal(c2.shown.title,'STEP 2/4 — FIND WATER');
 
   // Verify save at step-mate
   c.advance('step-mate');
@@ -219,7 +225,7 @@ function createMockController(sim){
   const c3=createMockController(snap3);
   c3.setSimulation(snap3,{resume:true});
   assert.equal(c3.stage,'step-mate','resuming world stays at step-mate');
-  assert.match(c3.shown.title,/^STEP 3\/3 — /);
+  assert.match(c3.shown.title,/^STEP 3\/4 — /);
   assert.ok(c3.tutorial.dataset.mateStep,'resumed lesson derives its next cue from current availability');
 
   // Verify save at done
@@ -251,4 +257,12 @@ function createMockController(sim){
   assert.ok(Math.hypot(mate.x-p.x,mate.y-p.y)<=20,'starter mate within accessible distance');
 }
 
+{
+  const sim=new Simulation('LEGACY-TUTORIAL-COMPATIBILITY',{player:true});
+  sim.uiTutorialStage='step-mate';sim.player().lastMate=sim.starterMateId;
+  const c=createMockController(sim);c.setSimulation(sim,{resume:true});
+  assert.equal(sim.uiTutorialRules,undefined);assert.equal(c.stage,'step-complete');
+  c.continueComplete();const restored=restoreSimulationSnapshot(structuredClone(createSimulationSnapshot(sim)));
+  const d=createMockController(restored);d.setSimulation(restored,{resume:true});assert.equal(d.stage,'done');
+}
 console.log('Mandatory simplified tutorial test suite: PASS');

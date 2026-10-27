@@ -8,3 +8,9 @@ p.start(goal,()=>completed++,{ready:()=>true});s.paused=true;p.read({});s.paused
 p.start(goal,()=>completed++,{ready:()=>true});p.read({left:true});assert.equal(completed,2,'manual input wins over ready action');
 let interruption;p.start(goal,()=>completed++,{onInterrupted:message=>interruption=message});s.canOccupy=()=>false;p.read({});assert.match(interruption,/no longer walkable/);assert.equal(p.path,null);assert.equal(completed,2,'blocked navigation never executes the action');
 console.log('Read-only route availability, execution parity, authoritative early reach, pause and manual-cancel safety PASS');
+
+s.canOccupy=()=>true;let valid=true;
+p.start(goal,()=>completed++,{validate:()=>({enabled:valid,reason:'Plant material was used before arrival.'}),onInterrupted:message=>interruption=message});
+valid=false;p.read({});assert.equal(completed,2);assert.match(interruption,/material/);assert.equal(p.path,null);assert.equal(p.validate,null);
+p.start(goal,()=>completed++,{validate:()=>({enabled:true}),onInterrupted:message=>interruption=message});
+p.read({left:true});assert.equal(completed,2);assert.match(interruption,/cancelled by movement/);

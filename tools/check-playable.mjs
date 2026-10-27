@@ -129,6 +129,8 @@ const runtime=[
   'tests/input-responsiveness.mjs',
   'tests/mandatory-tutorial.mjs',
   'tests/mating-tutorial-guide.mjs',
+  'tests/home-ground-actions.mjs',
+  'tests/survival-threat-guide.mjs',
   'tests/multigenerational-lineage.mjs',
   'tests/natural-multigen-acceptance.mjs',
   'tests/living-planet-extended.mjs'

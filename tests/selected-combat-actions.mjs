@@ -8,3 +8,10 @@ assert.equal(combatActions(sim,chosen.id)[0].invoke().ok,true);assert.equal(p.at
 p.attackAction=null;assert.equal(combatActions(sim,chosen.id)[0].invoke().ok,true);chosen.x=p.x+10;sim.playerCombat.resolveAttack(p,p.attackAction);assert.deepEqual(hits,[chosen.id],'escaping selected target cannot redirect impact to nearer creature');
 p.attackAction=null;assert.equal(combatActions(sim,chosen.id)[0].enabled,false);assert.equal(combatActions(sim,other.id)[0].enabled,true);
 console.log('Selected-target attack binding, escape revalidation and no implicit target substitution PASS');
+
+// Protected historical openings receive a pre-action warning from the UI adapter.
+p.attackAction=null;sim.isOpeningProtected=()=>true;
+const before=p.breath,warning=combatActions(sim,other.id)[0].invoke();
+assert.equal(warning.ok,false);assert.match(warning.message,/ends your protected opening.*Repeat/);
+assert.equal(p.attackAction,null);assert.equal(p.breath,before);
+assert.equal(combatActions(sim,other.id)[0].invoke().ok,true,'Explicit repeat performs the ordinary paid attack');

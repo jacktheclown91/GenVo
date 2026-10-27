@@ -1,3 +1,4 @@
+import {visuallyObservable} from '../ecology/atmospheric-visibility.js';
 import {weightedHomeRange} from './learned-range.js';
 import {CFG} from '../sim/config.js';
 import {SPECIES} from '../organisms/species.js';
@@ -20,6 +21,35 @@ export class TerritoryController{
     return state;
   }
   state(animal){return this.states.get(animal?.id)||this.ensure(animal)}
+  homeSiteAvailability(animal,target){
+    const fail=(reason,reasonCode='unavailable')=>({enabled:false,reason,reasonCode});
+    if(!this.enabled(animal)||!animal.alive)return fail('Only your living family can mark a home site.');
+    if(animal.airborne||animal.perched||animal.underground||animal.burrowWork||animal.caveTransit||(animal.diveDepth||0)>.03)return fail('Return to the surface before choosing a ground home.');
+    const w=this.sim.world,origin=w.regionOrigin||{x:0,y:0};
+    if(!target||!Number.isFinite(target.x)||!Number.isFinite(target.y)||
+       target.x<0||target.y<0||target.x>=w.n||target.y>=w.n||!w.isPlayable(target.x,target.y))return fail('Choose ground inside the current region.');
+    if(target.homeSeed!==undefined&&target.homeSeed!==this.sim.seed||target.homeRegion&&
+       (target.homeRegion.x!==origin.x||target.homeRegion.y!==origin.y))return fail('That home site belongs to another region.');
+    const i=w.idx(target.x,target.y);
+    if(w.water[i]||!this.sim.canOccupy(animal,target.x,target.y))return fail('Choose walkable dry ground for a home.');
+    if(!this.sim.canReach(animal,target.x,target.y))return fail('Your creature cannot reach this ground.');
+    if(!visuallyObservable(this.sim,animal,{x:target.x,y:target.y,underground:false}))return fail('Look toward the site and bring it into view first.','out-of-sight');
+    return{enabled:true,reason:'Plan a home here. Familiarity must still be earned by living in the area.',
+      x:target.x,y:target.y,i,homeSeed:this.sim.seed,homeRegion:{...origin}};
+  }
+  markHomeSite(animal,target){
+    const status=this.homeSiteAvailability(animal,target);if(!status.enabled)return{ok:false,reason:status.reason};
+    const state=this.state(animal);
+    state.homeSite={x:status.x,y:status.y,region:{...status.homeRegion},seed:this.sim.seed,markedTick:this.sim.tickCount};
+    return{ok:true,action:'mark-home-site',site:{...state.homeSite,region:{...state.homeSite.region}},
+      message:'Home site marked. Live nearby to learn this ground; marking gives no shelter or territory.'};
+  }
+  homeSiteFor(animal){
+    const site=this.states.get(animal?.id)?.homeSite,origin=this.sim.world.regionOrigin||{x:0,y:0};
+    if(!site||site.seed!==this.sim.seed||site.region?.x!==origin.x||site.region?.y!==origin.y||
+       !Number.isFinite(site.x)||!Number.isFinite(site.y))return null;
+    return{...site,region:{...site.region}};
+  }
   observe(){
     for(const animal of this.sim.animals){
       if(!this.enabled(animal)||!animal.alive)continue;

@@ -182,6 +182,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     // Weather and interaction cues remain above creatures; ground decoration does not.
     if((!this.lowDetail||this.sim.visibilityRules===VISIBILITY.policy||this.sim.thermalRules===THERMAL_WEATHER.policy)&&!this.sim.player()?.underground)this.drawWeatherOverlay();
     drawSensoryFog(this,{tile,cols,rows,startX,startY});
+    this.drawHomeSite(tile);
     beginReadoutFrame(this);if(this.guideTarget&&this.sim.uiTutorialStage?.startsWith('step-'))this.drawGuide(tile);drawWeatherReadout(this);drawRefugeReadout(this);drawCaveProgress(this);
     this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId),{renderer:this});this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.processTerrainRefreshQueue();}
 
@@ -256,6 +257,17 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     c.restore();
   }
 
+  drawHomeSite(tile){
+    const actor=this.sim.player(),site=actor&&this.sim.territory.homeSiteFor(actor);
+    if(!site)return;
+    const x=Math.round((site.x-this.camera.x)*tile+this.w/2),y=Math.round((site.y-this.camera.y)*tile+this.h/2);
+    if(x<0||y<0||x>this.w||y>this.h)return;
+    const body=this.screenBounds?.get(actor.id);
+    if(body&&x>body.left-12&&x<body.right+12&&y>body.top-12&&y<body.bottom+12)return;
+    const c=this.ctx;c.save();c.strokeStyle='#f1d68c';c.fillStyle='rgba(39,48,29,.75)';c.lineWidth=2;
+    c.beginPath();c.moveTo(x-9,y);c.lineTo(x,y-8);c.lineTo(x+9,y);c.lineTo(x+9,y+8);c.lineTo(x-9,y+8);c.closePath();c.fill();c.stroke();
+    c.restore();
+  }
   drawGuide(tile){
     const p=this.sim.player(),t=this.guideTarget;if(!p||!t)return;const c=this.ctx;
     const px=v=>Math.round((v-this.camera.x)*tile+this.w/2),py=v=>Math.round((v-this.camera.y)*tile+this.h/2),ax=px(p.x),ay=py(p.y),tx=px(t.x),ty=py(t.y);

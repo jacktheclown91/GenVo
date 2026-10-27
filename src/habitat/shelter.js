@@ -90,7 +90,7 @@ export class ShelterController{
     return this.activeShelters().find(s=>s.pairKey===pairKey)||null;
   }
   broodShelterEligible(animal){return !!(this.enabled(animal)&&(animal.generation||1)>=2&&animal.lastMate)}
-  canBuildHere(animal){
+  canBuildHere(animal,{readOnly=false}={}){
     if(!this.enabled(animal))return{ok:false,reason:'Only your family can build a shelter.'};
     const active=this.activeShelters().filter(s=>this.familyCanUse(animal,s)),nearby=this.nearest(animal,{radius:2.5,familyOnly:true});
     if(nearby)return{ok:false,reason:'A shelter is already here.',shelter:nearby};
@@ -101,7 +101,7 @@ export class ShelterController{
       const capacity=Math.max(1,this.sim.expansion?.shelterCapacity?.()||1);if(active.length>=capacity)return{ok:false,reason:`Your family can currently sustain ${capacity} shelter${capacity===1?'':'s'}.`};
       const close=active.find(s=>Math.hypot(s.x-animal.x,s.y-animal.y)<7.5);if(close)return{ok:false,reason:'Move farther from the old shelter to establish a second home.',shelter:close};
     }
-    const state=this.sim.territory.state(animal),pairFounding=broodEligible&&active.length>0;
+    const state=readOnly?this.sim.territory.states.get(animal.id):this.sim.territory.state(animal),pairFounding=broodEligible&&active.length>0;
     if(!pairFounding){
       if(!state?.established||!state.home)return{ok:false,reason:'Spend more time in this area before building.'};
       const d=Math.hypot(animal.x-state.home.x,animal.y-state.home.y);
@@ -115,6 +115,21 @@ export class ShelterController{
     if(material<materialNeed)return{ok:false,reason:`Not enough plant material nearby (${material.toFixed(2)}/${materialNeed.toFixed(2)}).`};
     const spec=SPECIES[animal.species];if(animal.energy<spec.maxEnergy*.52)return{ok:false,reason:'You need at least 52% energy to build.'};
     return{ok:true,reason:pairFounding?'Ready to establish a new brood home.':'Ready.',material,materialNeed,kind:pairFounding?'brood':'family',pairKey:pairFounding?pairKey:null};
+  }
+  canBuildAt(animal,target,{requirePresence=false}={}){
+    const access=this.sim.territory.homeSiteAvailability(animal,target);
+    if(!access.enabled)return{ok:false,reason:access.reason};
+    if(requirePresence&&Math.hypot(animal.x-target.x,animal.y-target.y)>.35)
+      return{ok:false,reason:'Move closer to the selected site before building.'};
+    // Existing construction rules inspect the chosen coordinates while the
+    // real animal remains in place. No teleport, materials or familiarity grant.
+    const probe=Object.assign(Object.create(Object.getPrototypeOf(animal)),animal,{x:target.x,y:target.y});
+    return this.canBuildHere(probe,{readOnly:true});
+  }
+  constructAt(animal,target){
+    const check=this.canBuildAt(animal,target,{requirePresence:true});
+    if(!check.ok)return check;
+    return this.finishConstruction(animal,target,check);
   }
   maintenanceAvailability(animal,id){
     if(animal?.underground||animal?.burrowWork||animal?.caveTransit||(animal?.diveDepth||0)>.03)return{enabled:false,state:'unavailable',reason:'Surface before maintaining a shelter.'};
@@ -155,8 +170,11 @@ export class ShelterController{
       return{ok:false,reason:'The shelter is already sound and weather-tight.',shelter:nearby};
     }
     const check=this.canBuildHere(animal);if(!check.ok)return check;
-    const taken=this.consumeMaterials(animal.x,animal.y,check.materialNeed||1.15,2.2);
-    const burrow=this.sim.speciesLifestyle?.lifestyleFor?.(animal)?.id==='burrower',shelter={id:this.nextId++,ownerId:animal.id,x:animal.x,y:animal.y,integrity:100,weatherSeal:burrow ? .88 : .78,foodStore:0,capacity:burrow ? 32 : 28,kind:check.kind==='brood'?'brood':'family',pairKey:check.pairKey||null,foundingGeneration:animal.generation||1,denStyle:burrow?'burrow':null,constructedDay:this.sim.day,constructedYear:this.sim.year,lastUsedTick:this.sim.tickCount};
+    return this.finishConstruction(animal,animal,check);
+  }
+  finishConstruction(animal,site,check){
+    const taken=this.consumeMaterials(site.x,site.y,check.materialNeed||1.15,2.2);
+    const burrow=this.sim.speciesLifestyle?.lifestyleFor?.(animal)?.id==='burrower',shelter={id:this.nextId++,ownerId:animal.id,x:site.x,y:site.y,integrity:100,weatherSeal:burrow ? .88 : .78,foodStore:0,capacity:burrow ? 32 : 28,kind:check.kind==='brood'?'brood':'family',pairKey:check.pairKey||null,foundingGeneration:animal.generation||1,denStyle:burrow?'burrow':null,constructedDay:this.sim.day,constructedYear:this.sim.year,lastUsedTick:this.sim.tickCount};
     this.shelters.push(shelter);animal.energy=Math.max(0,animal.energy-7.5);
     if(shelter.kind==='brood'){
       const mate=this.sim.animals.find(a=>a.id===animal.lastMate)||null;animal.broodShelterId=shelter.id;if(mate)mate.broodShelterId=shelter.id;

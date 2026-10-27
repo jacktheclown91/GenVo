@@ -1,0 +1,5290 @@
+{
+  "scope": "Public mandatory tutorial: native food/water/courtship and canonical stage progression. --coach adds a separately labelled, restored unhealthy-actor presentation probe.",
+  "creatorAcceptance": false,
+  "errors": [],
+  "panels": [],
+  "reproductiveSimilarityPolicy": "reproductive-similarity/1",
+  "layouts": [
+    {
+      "width": 1024,
+      "height": 768,
+      "card": {
+        "x": 654,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 1014,
+        "bottom": 162.5625,
+        "left": 654
+      },
+      "body": {
+        "left": 466,
+        "top": 338,
+        "right": 558,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "card": {
+        "x": 10,
+        "y": 10,
+        "width": 472,
+        "height": 74.375,
+        "top": 10,
+        "right": 482,
+        "bottom": 84.375,
+        "left": 10
+      },
+      "body": {
+        "left": 238,
+        "top": 114,
+        "right": 330,
+        "bottom": 206,
+        "width": 92,
+        "height": 92
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "card": {
+        "x": 10,
+        "y": 64,
+        "width": 300,
+        "height": 98.5625,
+        "top": 64,
+        "right": 310,
+        "bottom": 162.5625,
+        "left": 10
+      },
+      "body": {
+        "left": 114,
+        "top": 238,
+        "right": 206,
+        "bottom": 330,
+        "width": 92,
+        "height": 92
+      }
+    }
+  ],
+  "interactions": [
+    {
+      "kind": "plant",
+      "target": {
+        "x": 514,
+        "y": 388,
+        "label": "Reeds",
+        "food": "marshroot",
+        "distance": 4.47213595499958
+      },
+      "actions": [
+        "Approach",
+        "Eat Reeds",
+        "Inspect"
+      ],
+      "before": {
+        "stage": "step-food",
+        "hydration": 102.60000000000001,
+        "energy": 114.08
+      },
+      "after": {
+        "stage": "step-water",
+        "hydration": 111.60000000000001,
+        "energy": 116.94336094345012,
+        "lastAction": {
+          "type": "eat",
+          "actorId": 109,
+          "kind": "marshroot",
+          "tissue": null,
+          "processingCost": 0,
+          "energyGain": 2.863360943450118,
+          "waterGain": 9,
+          "tick": 14
+        }
+      }
+    },
+    {
+      "kind": "water",
+      "target": {
+        "x": 478,
+        "y": 406,
+        "label": "Water",
+        "food": null,
+        "distance": 40.496913462633174
+      },
+      "actions": [
+        "Approach",
+        "Drink",
+        "Eat Algae / biofilm",
+        "Eat Duckweed",
+        "Inspect"
+      ],
+      "before": {
+        "stage": "step-water",
+        "hydration": 107.08241583769367,
+        "energy": 115.85666946548386
+      },
+      "after": {
+        "stage": "step-mate",
+        "hydration": 114,
+        "energy": 115.85666946548386,
+        "lastAction": {
+          "type": "drink",
+          "actorId": 109,
+          "tick": 46
+        }
+      }
+    }
+  ],
+  "feedbackScroll": [
+    {
+      "stage": "step-water",
+      "top": 35,
+      "client": 40,
+      "total": 75
+    },
+    {
+      "stage": "step-mate",
+      "top": 34,
+      "client": 40,
+      "total": 74
+    }
+  ],
+  "step-water": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "stage": "step-water",
+      "title": "STEP 2/4 — FIND WATER",
+      "card": {
+        "x": 1550,
+        "y": 64,
+        "width": 360,
+        "height": 82.375,
+        "top": 64,
+        "right": 1910,
+        "bottom": 146.375,
+        "left": 1550
+      },
+      "body": {
+        "left": 914,
+        "top": 494,
+        "right": 1006,
+        "bottom": 586,
+        "width": 92,
+        "height": 92
+      },
+      "target": null,
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 123.78125,
+        "top": 10,
+        "right": 270,
+        "bottom": 133.78125,
+        "left": 10
+      }
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "stage": "step-water",
+      "title": "STEP 2/4 — FIND WATER",
+      "card": {
+        "x": 996,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 1356,
+        "bottom": 162.5625,
+        "left": 996
+      },
+      "body": {
+        "left": 637,
+        "top": 338,
+        "right": 729,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 74.5,
+        "y": 74.5,
+        "resource": {
+          "kind": "water",
+          "i": 9546,
+          "x": 74.5,
+          "y": 74.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 91.390625,
+        "top": 10,
+        "right": 270,
+        "bottom": 101.390625,
+        "left": 10
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "stage": "step-water",
+      "title": "STEP 2/4 — FIND WATER",
+      "card": {
+        "x": 654,
+        "y": 64,
+        "width": 360,
+        "height": 98.5625,
+        "top": 64,
+        "right": 1014,
+        "bottom": 162.5625,
+        "left": 654
+      },
+      "body": {
+        "left": 466,
+        "top": 338,
+        "right": 558,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 74.5,
+        "y": 74.5,
+        "resource": {
+          "kind": "water",
+          "i": 9546,
+          "x": 74.5,
+          "y": 74.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 91.390625,
+        "top": 10,
+        "right": 270,
+        "bottom": 101.390625,
+        "left": 10
+      }
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "stage": "step-water",
+      "title": "STEP 2/4 — FIND WATER",
+      "card": {
+        "x": 430,
+        "y": 64,
+        "width": 360,
+        "height": 82.375,
+        "top": 64,
+        "right": 790,
+        "bottom": 146.375,
+        "left": 430
+      },
+      "body": {
+        "left": 354,
+        "top": 254,
+        "right": 446,
+        "bottom": 346,
+        "width": 92,
+        "height": 92
+      },
+      "target": null,
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 91.390625,
+        "top": 10,
+        "right": 270,
+        "bottom": 101.390625,
+        "left": 10
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "stage": "step-water",
+      "title": "STEP 2/4 — FIND WATER",
+      "card": {
+        "x": 10,
+        "y": 10,
+        "width": 472,
+        "height": 74.375,
+        "top": 10,
+        "right": 482,
+        "bottom": 84.375,
+        "left": 10
+      },
+      "body": {
+        "left": 238,
+        "top": 114,
+        "right": 330,
+        "bottom": 206,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 74.5,
+        "y": 74.5,
+        "resource": {
+          "kind": "water",
+          "i": 9546,
+          "x": 74.5,
+          "y": 74.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 94.375,
+        "width": 230,
+        "height": 40,
+        "top": 94.375,
+        "right": 240,
+        "bottom": 134.375,
+        "left": 10
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "stage": "step-water",
+      "title": "STEP 2/4 — FIND WATER",
+      "card": {
+        "x": 10,
+        "y": 64,
+        "width": 300,
+        "height": 114.75,
+        "top": 64,
+        "right": 310,
+        "bottom": 178.75,
+        "left": 10
+      },
+      "body": {
+        "left": 114,
+        "top": 238,
+        "right": 206,
+        "bottom": 330,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "x": 74.5,
+        "y": 74.5,
+        "resource": {
+          "kind": "water",
+          "i": 9546,
+          "x": 74.5,
+          "y": 74.5,
+          "label": "Water"
+        },
+        "label": "Water"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 230,
+        "height": 40,
+        "top": 10,
+        "right": 240,
+        "bottom": 50,
+        "left": 10
+      }
+    }
+  ],
+  "step-mate": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "stage": "step-mate",
+      "title": "STEP 3/4 — MEET A POSSIBLE MATE",
+      "card": {
+        "x": 1550,
+        "y": 64,
+        "width": 360,
+        "height": 102.375,
+        "top": 64,
+        "right": 1910,
+        "bottom": 166.375,
+        "left": 1550
+      },
+      "body": {
+        "left": 914,
+        "top": 494,
+        "right": 1006,
+        "bottom": 586,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "id": 110,
+        "x": 69.28393820059092,
+        "y": 55.04627546023163,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 124.984375,
+        "top": 10,
+        "right": 270,
+        "bottom": 134.984375,
+        "left": 10
+      }
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "stage": "step-mate",
+      "title": "STEP 3/4 — MEET A POSSIBLE MATE",
+      "card": {
+        "x": 996,
+        "y": 64,
+        "width": 360,
+        "height": 102.375,
+        "top": 64,
+        "right": 1356,
+        "bottom": 166.375,
+        "left": 996
+      },
+      "body": {
+        "left": 637,
+        "top": 338,
+        "right": 729,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "id": 110,
+        "x": 69.4908124262813,
+        "y": 55.194042764296256,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 124.984375,
+        "top": 10,
+        "right": 270,
+        "bottom": 134.984375,
+        "left": 10
+      }
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "stage": "step-mate",
+      "title": "STEP 3/4 — MEET A POSSIBLE MATE",
+      "card": {
+        "x": 654,
+        "y": 64,
+        "width": 360,
+        "height": 102.375,
+        "top": 64,
+        "right": 1014,
+        "bottom": 166.375,
+        "left": 654
+      },
+      "body": {
+        "left": 466,
+        "top": 338,
+        "right": 558,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "id": 110,
+        "x": 69.28342916958202,
+        "y": 55.04591186665383,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 124.984375,
+        "top": 10,
+        "right": 270,
+        "bottom": 134.984375,
+        "left": 10
+      }
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "stage": "step-mate",
+      "title": "STEP 3/4 — MEET A POSSIBLE MATE",
+      "card": {
+        "x": 430,
+        "y": 64,
+        "width": 360,
+        "height": 102.375,
+        "top": 64,
+        "right": 790,
+        "bottom": 166.375,
+        "left": 430
+      },
+      "body": {
+        "left": 354,
+        "top": 254,
+        "right": 446,
+        "bottom": 346,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "id": 110,
+        "x": 69.28322555521692,
+        "y": 55.04576642782161,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 260,
+        "height": 124.984375,
+        "top": 10,
+        "right": 270,
+        "bottom": 134.984375,
+        "left": 10
+      }
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "stage": "step-mate",
+      "title": "STEP 3/4 — MEET A POSSIBLE MATE",
+      "card": {
+        "x": 10,
+        "y": 10,
+        "width": 472,
+        "height": 74.375,
+        "top": 10,
+        "right": 482,
+        "bottom": 84.375,
+        "left": 10
+      },
+      "body": {
+        "left": 238,
+        "top": 114,
+        "right": 330,
+        "bottom": 206,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "id": 110,
+        "x": 69.49020158276511,
+        "y": 55.19360644749898,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 328,
+        "y": 102.0625,
+        "width": 230,
+        "height": 40,
+        "top": 102.0625,
+        "right": 558,
+        "bottom": 142.0625,
+        "left": 328
+      }
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "stage": "step-mate",
+      "title": "STEP 3/4 — MEET A POSSIBLE MATE",
+      "card": {
+        "x": 10,
+        "y": 64,
+        "width": 300,
+        "height": 102.375,
+        "top": 64,
+        "right": 310,
+        "bottom": 166.375,
+        "left": 10
+      },
+      "body": {
+        "left": 114,
+        "top": 238,
+        "right": 206,
+        "bottom": 330,
+        "width": 92,
+        "height": 92
+      },
+      "target": {
+        "id": 110,
+        "x": 69.48999796601792,
+        "y": 55.19346100696528,
+        "label": "Mate"
+      },
+      "notice": {
+        "x": 10,
+        "y": 10,
+        "width": 230,
+        "height": 40,
+        "top": 10,
+        "right": 240,
+        "bottom": 50,
+        "left": 10
+      }
+    }
+  ],
+  "courtship": [
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": null,
+      "courtship": false,
+      "alive": true,
+      "lastMate": null,
+      "feedback": "✓ You're hydrated!",
+      "lessonText": "Click the creature marked Mate. We will take the next little step together."
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": null,
+      "courtship": true,
+      "alive": true,
+      "lastMate": null,
+      "feedback": "✓ You're hydrated!",
+      "lessonText": "Click the glowing Approach button. It adds a simple hello to your sequence."
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "courtship": true,
+      "alive": true,
+      "lastMate": null,
+      "feedback": "✓ You're hydrated!",
+      "lessonText": "Your creature is approaching. Watch what happens next."
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "courtship": true,
+      "alive": true,
+      "lastMate": null,
+      "feedback": "✓ You're hydrated!",
+      "lessonText": "Your creature is approaching. Watch what happens next."
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "courtship": true,
+      "alive": true,
+      "lastMate": null,
+      "feedback": "✓ You're hydrated!",
+      "lessonText": "Your creature is approaching. Watch what happens next."
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "courtship": true,
+      "alive": true,
+      "lastMate": null,
+      "feedback": "✓ You're hydrated!",
+      "lessonText": "Your creature is approaching. Watch what happens next."
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "courtship": true,
+      "alive": true,
+      "lastMate": null,
+      "feedback": "✓ You're hydrated!",
+      "lessonText": "Your creature is approaching. Watch what happens next."
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "courtship": true,
+      "alive": true,
+      "lastMate": null,
+      "feedback": "✓ You're hydrated!",
+      "lessonText": "Watch their response. Either creature may decline."
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "courtship": true,
+      "alive": true,
+      "lastMate": null,
+      "feedback": "✓ You're hydrated!",
+      "lessonText": "Watch their response. Either creature may decline."
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "courtship": true,
+      "alive": true,
+      "lastMate": null,
+      "feedback": "✓ You're hydrated!",
+      "lessonText": "Watch their response. Either creature may decline."
+    },
+    {
+      "stage": "step-mate",
+      "complete": false,
+      "editor": false,
+      "courtTarget": 110,
+      "courtship": true,
+      "alive": true,
+      "lastMate": null,
+      "feedback": "✓ You're hydrated!",
+      "lessonText": "Watch their response. Either creature may decline."
+    },
+    {
+      "stage": "step-home",
+      "complete": false,
+      "editor": true,
+      "courtTarget": null,
+      "courtship": false,
+      "alive": true,
+      "lastMate": 110,
+      "feedback": "✓ You've found a mate!",
+      "lessonText": "Click an empty patch of dry ground to open its wheel. Choose Mark Home Site or an available Build Shelter action."
+    },
+    {
+      "stage": "step-home",
+      "complete": false,
+      "editor": false,
+      "courtTarget": null,
+      "courtship": false,
+      "alive": true,
+      "lastMate": 110,
+      "feedback": "Design cancelled · the litter inherits normally · nothing was spent",
+      "lessonText": "Click an empty patch of dry ground to open its wheel. Choose Mark Home Site or an available Build Shelter action."
+    }
+  ],
+  "coachCues": [
+    {
+      "step": "mate",
+      "text": "Click the creature marked Mate. We will take the next little step together.",
+      "buttonStyle": null,
+      "guide": {
+        "id": 110,
+        "x": 69.48663812785396,
+        "y": 55.191061122562395,
+        "label": "Mate"
+      },
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "step": "court",
+      "text": "Click the glowing Court button to open their courtship controls.",
+      "button": "Court",
+      "targetId": "110",
+      "buttonBounds": {
+        "x": 343.5625,
+        "y": 157.2265625,
+        "width": 76,
+        "height": 54.296875,
+        "top": 157.2265625,
+        "right": 419.5625,
+        "bottom": 211.5234375,
+        "left": 343.5625
+      },
+      "buttonStyle": {
+        "outline": "rgb(255, 230, 160) solid 3px",
+        "background": "rgb(81, 99, 58)"
+      },
+      "guide": {
+        "id": 110,
+        "x": 69.27935666930314,
+        "y": 55.043002937883216,
+        "label": "Mate"
+      },
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "step": "approach",
+      "text": "Click the glowing Approach button. It adds a simple hello to your sequence.",
+      "button": "Approach",
+      "targetId": "110",
+      "buttonBounds": {
+        "x": 356,
+        "y": 135,
+        "width": 90,
+        "height": 44,
+        "top": 135,
+        "right": 446,
+        "bottom": 179,
+        "left": 356
+      },
+      "buttonStyle": {
+        "outline": "rgb(255, 230, 160) solid 3px",
+        "background": "rgb(81, 99, 58)"
+      },
+      "guide": {
+        "id": 110,
+        "x": 69.27752389788883,
+        "y": 55.041693815444425,
+        "label": "Mate"
+      },
+      "viewport": [
+        568,
+        320
+      ]
+    },
+    {
+      "step": "play",
+      "text": "Click the glowing Play button to begin. Your creature pays the display cost.",
+      "button": "Play",
+      "targetId": "110",
+      "buttonBounds": {
+        "x": 452,
+        "y": 135,
+        "width": 104,
+        "height": 44,
+        "top": 135,
+        "right": 556,
+        "bottom": 179,
+        "left": 452
+      },
+      "buttonStyle": {
+        "outline": "rgb(255, 230, 160) solid 3px",
+        "background": "rgb(81, 99, 58)"
+      },
+      "guide": {
+        "id": 110,
+        "x": 69.48460171376833,
+        "y": 55.18960654107262,
+        "label": "Mate"
+      },
+      "viewport": [
+        568,
+        320
+      ]
+    }
+  ],
+  "homeClickAttempts": [
+    {
+      "x": 512,
+      "y": 206
+    },
+    {
+      "x": 496,
+      "y": 368,
+      "target": {
+        "kind": "ground",
+        "i": 7108,
+        "x": 68.5,
+        "y": 55.5,
+        "label": "Open ground"
+      },
+      "score": 1.4142135623730951,
+      "action": "mark-home-site"
+    }
+  ],
+  "courtClicks": [
+    {
+      "id": 110,
+      "x": 511,
+      "y": 204,
+      "dx": 0.1414079514678548,
+      "dy": -5.471139221111883
+    }
+  ],
+  "encounter": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "dock": {
+        "x": 560,
+        "y": 807,
+        "width": 800,
+        "height": 265,
+        "top": 807,
+        "right": 1360,
+        "bottom": 1072,
+        "left": 560
+      },
+      "tray": {
+        "x": 827,
+        "y": 848,
+        "width": 522,
+        "height": 147,
+        "top": 848,
+        "right": 1349,
+        "bottom": 995,
+        "left": 827
+      },
+      "client": 147,
+      "scroll": 147,
+      "body": {
+        "left": 914,
+        "top": 494,
+        "right": 1006,
+        "bottom": 586,
+        "width": 92,
+        "height": 92
+      },
+      "readouts": [
+        {
+          "left": 931,
+          "top": 314,
+          "right": 985,
+          "bottom": 337
+        },
+        {
+          "left": 936,
+          "top": 338,
+          "right": 980,
+          "bottom": 382
+        },
+        {
+          "left": 12,
+          "top": 868,
+          "right": 262,
+          "bottom": 906
+        }
+      ],
+      "cue": {
+        "text": "Mate",
+        "args": [
+          940,
+          326
+        ]
+      },
+      "lesson": {
+        "x": 1550,
+        "y": 64,
+        "width": 360,
+        "height": 102.375,
+        "top": 64,
+        "right": 1910,
+        "bottom": 166.375,
+        "left": 1550
+      },
+      "utilities": [
+        {
+          "x": 1843.546875,
+          "y": 10,
+          "width": 66.453125,
+          "height": 44,
+          "top": 10,
+          "right": 1910,
+          "bottom": 54,
+          "left": 1843.546875
+        }
+      ],
+      "header": {
+        "x": 827,
+        "y": 813,
+        "width": 522,
+        "height": 32,
+        "top": 813,
+        "right": 1349,
+        "bottom": 845,
+        "left": 827
+      },
+      "buttons": [
+        {
+          "text": "Approach",
+          "disabled": false,
+          "rect": {
+            "x": 1008,
+            "y": 852,
+            "width": 69.90625,
+            "height": 40,
+            "top": 852,
+            "right": 1077.90625,
+            "bottom": 892,
+            "left": 1008
+          }
+        },
+        {
+          "text": "Dance",
+          "disabled": false,
+          "rect": {
+            "x": 1082.90625,
+            "y": 852,
+            "width": 79.328125,
+            "height": 40,
+            "top": 852,
+            "right": 1162.234375,
+            "bottom": 892,
+            "left": 1082.90625
+          }
+        },
+        {
+          "text": "Call",
+          "disabled": false,
+          "rect": {
+            "x": 1167.234375,
+            "y": 852,
+            "width": 65.328125,
+            "height": 40,
+            "top": 852,
+            "right": 1232.5625,
+            "bottom": 892,
+            "left": 1167.234375
+          }
+        },
+        {
+          "text": "Play",
+          "disabled": true,
+          "rect": {
+            "x": 828,
+            "y": 955,
+            "width": 44.6875,
+            "height": 36,
+            "top": 955,
+            "right": 872.6875,
+            "bottom": 991,
+            "left": 828
+          }
+        },
+        {
+          "text": "Undo",
+          "disabled": true,
+          "rect": {
+            "x": 877.6875,
+            "y": 955,
+            "width": 50.546875,
+            "height": 36,
+            "top": 955,
+            "right": 928.234375,
+            "bottom": 991,
+            "left": 877.6875
+          }
+        },
+        {
+          "text": "Clear",
+          "disabled": true,
+          "rect": {
+            "x": 933.234375,
+            "y": 955,
+            "width": 50.5625,
+            "height": 36,
+            "top": 955,
+            "right": 983.796875,
+            "bottom": 991,
+            "left": 933.234375
+          }
+        },
+        {
+          "text": "Observe",
+          "disabled": false,
+          "rect": {
+            "x": 988.796875,
+            "y": 955,
+            "width": 67.46875,
+            "height": 36,
+            "top": 955,
+            "right": 1056.265625,
+            "bottom": 991,
+            "left": 988.796875
+          }
+        },
+        {
+          "text": "Details",
+          "disabled": false,
+          "rect": {
+            "x": 1061.265625,
+            "y": 955,
+            "width": 59.75,
+            "height": 36,
+            "top": 955,
+            "right": 1121.015625,
+            "bottom": 991,
+            "left": 1061.265625
+          }
+        },
+        {
+          "text": "Back Off",
+          "disabled": false,
+          "rect": {
+            "x": 1126.015625,
+            "y": 955,
+            "width": 68.65625,
+            "height": 36,
+            "top": 955,
+            "right": 1194.671875,
+            "bottom": 991,
+            "left": 1126.015625
+          }
+        }
+      ]
+    },
+    {
+      "width": 1366,
+      "height": 768,
+      "dock": {
+        "x": 283,
+        "y": 495,
+        "width": 800,
+        "height": 265,
+        "top": 495,
+        "right": 1083,
+        "bottom": 760,
+        "left": 283
+      },
+      "tray": {
+        "x": 550,
+        "y": 536,
+        "width": 522,
+        "height": 147,
+        "top": 536,
+        "right": 1072,
+        "bottom": 683,
+        "left": 550
+      },
+      "client": 147,
+      "scroll": 147,
+      "body": {
+        "left": 637,
+        "top": 338,
+        "right": 729,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "readouts": [
+        {
+          "left": 654,
+          "top": 158,
+          "right": 708,
+          "bottom": 181
+        },
+        {
+          "left": 659,
+          "top": 182,
+          "right": 703,
+          "bottom": 226
+        },
+        {
+          "left": 12,
+          "top": 556,
+          "right": 262,
+          "bottom": 594
+        }
+      ],
+      "cue": {
+        "text": "Mate",
+        "args": [
+          663,
+          170
+        ]
+      },
+      "lesson": {
+        "x": 996,
+        "y": 64,
+        "width": 360,
+        "height": 102.375,
+        "top": 64,
+        "right": 1356,
+        "bottom": 166.375,
+        "left": 996
+      },
+      "utilities": [
+        {
+          "x": 1289.546875,
+          "y": 10,
+          "width": 66.453125,
+          "height": 44,
+          "top": 10,
+          "right": 1356,
+          "bottom": 54,
+          "left": 1289.546875
+        }
+      ],
+      "header": {
+        "x": 550,
+        "y": 501,
+        "width": 522,
+        "height": 32,
+        "top": 501,
+        "right": 1072,
+        "bottom": 533,
+        "left": 550
+      },
+      "buttons": [
+        {
+          "text": "Approach",
+          "disabled": false,
+          "rect": {
+            "x": 731,
+            "y": 540,
+            "width": 69.90625,
+            "height": 40,
+            "top": 540,
+            "right": 800.90625,
+            "bottom": 580,
+            "left": 731
+          }
+        },
+        {
+          "text": "Dance",
+          "disabled": false,
+          "rect": {
+            "x": 805.90625,
+            "y": 540,
+            "width": 79.328125,
+            "height": 40,
+            "top": 540,
+            "right": 885.234375,
+            "bottom": 580,
+            "left": 805.90625
+          }
+        },
+        {
+          "text": "Call",
+          "disabled": false,
+          "rect": {
+            "x": 890.234375,
+            "y": 540,
+            "width": 65.328125,
+            "height": 40,
+            "top": 540,
+            "right": 955.5625,
+            "bottom": 580,
+            "left": 890.234375
+          }
+        },
+        {
+          "text": "Play",
+          "disabled": true,
+          "rect": {
+            "x": 551,
+            "y": 643,
+            "width": 44.6875,
+            "height": 36,
+            "top": 643,
+            "right": 595.6875,
+            "bottom": 679,
+            "left": 551
+          }
+        },
+        {
+          "text": "Undo",
+          "disabled": true,
+          "rect": {
+            "x": 600.6875,
+            "y": 643,
+            "width": 50.546875,
+            "height": 36,
+            "top": 643,
+            "right": 651.234375,
+            "bottom": 679,
+            "left": 600.6875
+          }
+        },
+        {
+          "text": "Clear",
+          "disabled": true,
+          "rect": {
+            "x": 656.234375,
+            "y": 643,
+            "width": 50.5625,
+            "height": 36,
+            "top": 643,
+            "right": 706.796875,
+            "bottom": 679,
+            "left": 656.234375
+          }
+        },
+        {
+          "text": "Observe",
+          "disabled": false,
+          "rect": {
+            "x": 711.796875,
+            "y": 643,
+            "width": 67.46875,
+            "height": 36,
+            "top": 643,
+            "right": 779.265625,
+            "bottom": 679,
+            "left": 711.796875
+          }
+        },
+        {
+          "text": "Details",
+          "disabled": false,
+          "rect": {
+            "x": 784.265625,
+            "y": 643,
+            "width": 59.75,
+            "height": 36,
+            "top": 643,
+            "right": 844.015625,
+            "bottom": 679,
+            "left": 784.265625
+          }
+        },
+        {
+          "text": "Back Off",
+          "disabled": false,
+          "rect": {
+            "x": 849.015625,
+            "y": 643,
+            "width": 68.65625,
+            "height": 36,
+            "top": 643,
+            "right": 917.671875,
+            "bottom": 679,
+            "left": 849.015625
+          }
+        }
+      ]
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "dock": {
+        "x": 112,
+        "y": 495,
+        "width": 800,
+        "height": 265,
+        "top": 495,
+        "right": 912,
+        "bottom": 760,
+        "left": 112
+      },
+      "tray": {
+        "x": 379,
+        "y": 536,
+        "width": 522,
+        "height": 147,
+        "top": 536,
+        "right": 901,
+        "bottom": 683,
+        "left": 379
+      },
+      "client": 147,
+      "scroll": 147,
+      "body": {
+        "left": 466,
+        "top": 338,
+        "right": 558,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "readouts": [
+        {
+          "left": 489,
+          "top": 163,
+          "right": 543,
+          "bottom": 186
+        },
+        {
+          "left": 494,
+          "top": 187,
+          "right": 538,
+          "bottom": 231
+        },
+        {
+          "left": 12,
+          "top": 454,
+          "right": 262,
+          "bottom": 492
+        }
+      ],
+      "cue": {
+        "text": "Mate",
+        "args": [
+          498,
+          175
+        ]
+      },
+      "lesson": {
+        "x": 654,
+        "y": 64,
+        "width": 360,
+        "height": 102.375,
+        "top": 64,
+        "right": 1014,
+        "bottom": 166.375,
+        "left": 654
+      },
+      "utilities": [
+        {
+          "x": 947.546875,
+          "y": 10,
+          "width": 66.453125,
+          "height": 44,
+          "top": 10,
+          "right": 1014,
+          "bottom": 54,
+          "left": 947.546875
+        }
+      ],
+      "header": {
+        "x": 379,
+        "y": 501,
+        "width": 522,
+        "height": 32,
+        "top": 501,
+        "right": 901,
+        "bottom": 533,
+        "left": 379
+      },
+      "buttons": [
+        {
+          "text": "Approach",
+          "disabled": false,
+          "rect": {
+            "x": 560,
+            "y": 540,
+            "width": 69.90625,
+            "height": 40,
+            "top": 540,
+            "right": 629.90625,
+            "bottom": 580,
+            "left": 560
+          }
+        },
+        {
+          "text": "Dance",
+          "disabled": false,
+          "rect": {
+            "x": 634.90625,
+            "y": 540,
+            "width": 79.328125,
+            "height": 40,
+            "top": 540,
+            "right": 714.234375,
+            "bottom": 580,
+            "left": 634.90625
+          }
+        },
+        {
+          "text": "Call",
+          "disabled": false,
+          "rect": {
+            "x": 719.234375,
+            "y": 540,
+            "width": 65.328125,
+            "height": 40,
+            "top": 540,
+            "right": 784.5625,
+            "bottom": 580,
+            "left": 719.234375
+          }
+        },
+        {
+          "text": "Play",
+          "disabled": true,
+          "rect": {
+            "x": 380,
+            "y": 643,
+            "width": 44.6875,
+            "height": 36,
+            "top": 643,
+            "right": 424.6875,
+            "bottom": 679,
+            "left": 380
+          }
+        },
+        {
+          "text": "Undo",
+          "disabled": true,
+          "rect": {
+            "x": 429.6875,
+            "y": 643,
+            "width": 50.546875,
+            "height": 36,
+            "top": 643,
+            "right": 480.234375,
+            "bottom": 679,
+            "left": 429.6875
+          }
+        },
+        {
+          "text": "Clear",
+          "disabled": true,
+          "rect": {
+            "x": 485.234375,
+            "y": 643,
+            "width": 50.5625,
+            "height": 36,
+            "top": 643,
+            "right": 535.796875,
+            "bottom": 679,
+            "left": 485.234375
+          }
+        },
+        {
+          "text": "Observe",
+          "disabled": false,
+          "rect": {
+            "x": 540.796875,
+            "y": 643,
+            "width": 67.46875,
+            "height": 36,
+            "top": 643,
+            "right": 608.265625,
+            "bottom": 679,
+            "left": 540.796875
+          }
+        },
+        {
+          "text": "Details",
+          "disabled": false,
+          "rect": {
+            "x": 613.265625,
+            "y": 643,
+            "width": 59.75,
+            "height": 36,
+            "top": 643,
+            "right": 673.015625,
+            "bottom": 679,
+            "left": 613.265625
+          }
+        },
+        {
+          "text": "Back Off",
+          "disabled": false,
+          "rect": {
+            "x": 678.015625,
+            "y": 643,
+            "width": 68.65625,
+            "height": 36,
+            "top": 643,
+            "right": 746.671875,
+            "bottom": 679,
+            "left": 678.015625
+          }
+        }
+      ]
+    },
+    {
+      "width": 800,
+      "height": 600,
+      "dock": {
+        "x": 8,
+        "y": 374,
+        "width": 784,
+        "height": 218,
+        "top": 374,
+        "right": 792,
+        "bottom": 592,
+        "left": 8
+      },
+      "tray": {
+        "x": 275,
+        "y": 415,
+        "width": 506,
+        "height": 100,
+        "top": 415,
+        "right": 781,
+        "bottom": 515,
+        "left": 275
+      },
+      "client": 100,
+      "scroll": 147,
+      "body": {
+        "left": 354,
+        "top": 254,
+        "right": 446,
+        "bottom": 346,
+        "width": 92,
+        "height": 92
+      },
+      "readouts": [
+        {
+          "left": 371,
+          "top": 74,
+          "right": 425,
+          "bottom": 97
+        },
+        {
+          "left": 376,
+          "top": 98,
+          "right": 420,
+          "bottom": 142
+        },
+        {
+          "left": 12,
+          "top": 332,
+          "right": 262,
+          "bottom": 370
+        }
+      ],
+      "cue": {
+        "text": "Mate",
+        "args": [
+          380,
+          86
+        ]
+      },
+      "lesson": {
+        "x": 430,
+        "y": 64,
+        "width": 360,
+        "height": 102.375,
+        "top": 64,
+        "right": 790,
+        "bottom": 166.375,
+        "left": 430
+      },
+      "utilities": [
+        {
+          "x": 723.546875,
+          "y": 10,
+          "width": 66.453125,
+          "height": 44,
+          "top": 10,
+          "right": 790,
+          "bottom": 54,
+          "left": 723.546875
+        }
+      ],
+      "header": {
+        "x": 275,
+        "y": 380,
+        "width": 506,
+        "height": 32,
+        "top": 380,
+        "right": 781,
+        "bottom": 412,
+        "left": 275
+      },
+      "buttons": [
+        {
+          "text": "Approach",
+          "disabled": false,
+          "rect": {
+            "x": 456,
+            "y": 419,
+            "width": 69.90625,
+            "height": 40,
+            "top": 419,
+            "right": 525.90625,
+            "bottom": 459,
+            "left": 456
+          }
+        },
+        {
+          "text": "Dance",
+          "disabled": false,
+          "rect": {
+            "x": 530.90625,
+            "y": 419,
+            "width": 79.328125,
+            "height": 40,
+            "top": 419,
+            "right": 610.234375,
+            "bottom": 459,
+            "left": 530.90625
+          }
+        },
+        {
+          "text": "Call",
+          "disabled": false,
+          "rect": {
+            "x": 615.234375,
+            "y": 419,
+            "width": 65.328125,
+            "height": 40,
+            "top": 419,
+            "right": 680.5625,
+            "bottom": 459,
+            "left": 615.234375
+          }
+        },
+        {
+          "text": "Play",
+          "disabled": true,
+          "rect": {
+            "x": 276,
+            "y": 522,
+            "width": 44.6875,
+            "height": 36,
+            "top": 522,
+            "right": 320.6875,
+            "bottom": 558,
+            "left": 276
+          }
+        },
+        {
+          "text": "Undo",
+          "disabled": true,
+          "rect": {
+            "x": 325.6875,
+            "y": 522,
+            "width": 50.546875,
+            "height": 36,
+            "top": 522,
+            "right": 376.234375,
+            "bottom": 558,
+            "left": 325.6875
+          }
+        },
+        {
+          "text": "Clear",
+          "disabled": true,
+          "rect": {
+            "x": 381.234375,
+            "y": 522,
+            "width": 50.5625,
+            "height": 36,
+            "top": 522,
+            "right": 431.796875,
+            "bottom": 558,
+            "left": 381.234375
+          }
+        },
+        {
+          "text": "Observe",
+          "disabled": false,
+          "rect": {
+            "x": 436.796875,
+            "y": 522,
+            "width": 67.46875,
+            "height": 36,
+            "top": 522,
+            "right": 504.265625,
+            "bottom": 558,
+            "left": 436.796875
+          }
+        },
+        {
+          "text": "Details",
+          "disabled": false,
+          "rect": {
+            "x": 509.265625,
+            "y": 522,
+            "width": 59.75,
+            "height": 36,
+            "top": 522,
+            "right": 569.015625,
+            "bottom": 558,
+            "left": 509.265625
+          }
+        },
+        {
+          "text": "Back Off",
+          "disabled": false,
+          "rect": {
+            "x": 574.015625,
+            "y": 522,
+            "width": 68.65625,
+            "height": 36,
+            "top": 522,
+            "right": 642.671875,
+            "bottom": 558,
+            "left": 574.015625
+          }
+        }
+      ]
+    },
+    {
+      "width": 568,
+      "height": 320,
+      "dock": {
+        "x": 10,
+        "y": 226,
+        "width": 548,
+        "height": 86,
+        "top": 226,
+        "right": 558,
+        "bottom": 312,
+        "left": 10
+      },
+      "tray": {
+        "x": 354,
+        "y": 134,
+        "width": 204,
+        "height": 92,
+        "top": 134,
+        "right": 558,
+        "bottom": 226,
+        "left": 354
+      },
+      "client": 91,
+      "scroll": 217,
+      "body": {
+        "left": 238,
+        "top": 114,
+        "right": 330,
+        "bottom": 206,
+        "width": 92,
+        "height": 92
+      },
+      "readouts": [
+        {
+          "left": 116,
+          "top": 196,
+          "right": 214,
+          "bottom": 219
+        },
+        {
+          "left": 260,
+          "top": -42,
+          "right": 304,
+          "bottom": 2
+        },
+        {
+          "left": 12,
+          "top": 108,
+          "right": 132,
+          "bottom": 159
+        }
+      ],
+      "cue": {
+        "text": "To Mate",
+        "args": [
+          125,
+          208
+        ]
+      },
+      "lesson": {
+        "x": 10,
+        "y": 10,
+        "width": 472,
+        "height": 74.375,
+        "top": 10,
+        "right": 482,
+        "bottom": 84.375,
+        "left": 10
+      },
+      "utilities": [
+        {
+          "x": 491.546875,
+          "y": 10,
+          "width": 66.453125,
+          "height": 44,
+          "top": 10,
+          "right": 558,
+          "bottom": 54,
+          "left": 491.546875
+        }
+      ],
+      "header": {
+        "x": 354,
+        "y": 102,
+        "width": 204,
+        "height": 32,
+        "top": 102,
+        "right": 558,
+        "bottom": 134,
+        "left": 354
+      },
+      "buttons": [
+        {
+          "text": "Approach",
+          "disabled": false,
+          "rect": {
+            "x": 356,
+            "y": 135,
+            "width": 90,
+            "height": 44,
+            "top": 135,
+            "right": 446,
+            "bottom": 179,
+            "left": 356
+          }
+        },
+        {
+          "text": "Dance",
+          "disabled": false,
+          "rect": {
+            "x": 356,
+            "y": 179,
+            "width": 90,
+            "height": 44,
+            "top": 179,
+            "right": 446,
+            "bottom": 223,
+            "left": 356
+          }
+        },
+        {
+          "text": "Call",
+          "disabled": false,
+          "rect": {
+            "x": 356,
+            "y": 223,
+            "width": 90,
+            "height": 44,
+            "top": 223,
+            "right": 446,
+            "bottom": 267,
+            "left": 356
+          }
+        },
+        {
+          "text": "Play",
+          "disabled": true,
+          "rect": {
+            "x": 452,
+            "y": 135,
+            "width": 104,
+            "height": 44,
+            "top": 135,
+            "right": 556,
+            "bottom": 179,
+            "left": 452
+          }
+        },
+        {
+          "text": "Undo",
+          "disabled": true,
+          "rect": {
+            "x": 452,
+            "y": 223,
+            "width": 104,
+            "height": 44,
+            "top": 223,
+            "right": 556,
+            "bottom": 267,
+            "left": 452
+          }
+        },
+        {
+          "text": "Clear",
+          "disabled": true,
+          "rect": {
+            "x": 452,
+            "y": 267,
+            "width": 104,
+            "height": 44,
+            "top": 267,
+            "right": 556,
+            "bottom": 311,
+            "left": 452
+          }
+        },
+        {
+          "text": "Observe",
+          "disabled": false,
+          "rect": {
+            "x": 452,
+            "y": 311,
+            "width": 104,
+            "height": 44,
+            "top": 311,
+            "right": 556,
+            "bottom": 355,
+            "left": 452
+          }
+        },
+        {
+          "text": "Details",
+          "disabled": false,
+          "rect": {
+            "x": 452,
+            "y": 355,
+            "width": 104,
+            "height": 44,
+            "top": 355,
+            "right": 556,
+            "bottom": 399,
+            "left": 452
+          }
+        },
+        {
+          "text": "Back Off",
+          "disabled": false,
+          "rect": {
+            "x": 452,
+            "y": 179,
+            "width": 104,
+            "height": 44,
+            "top": 179,
+            "right": 556,
+            "bottom": 223,
+            "left": 452
+          }
+        }
+      ]
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "dock": {
+        "x": 8,
+        "y": 447,
+        "width": 304,
+        "height": 113,
+        "top": 447,
+        "right": 312,
+        "bottom": 560,
+        "left": 8
+      },
+      "tray": {
+        "x": 166,
+        "y": 226,
+        "width": 144,
+        "height": 214,
+        "top": 226,
+        "right": 310,
+        "bottom": 440,
+        "left": 166
+      },
+      "client": 213,
+      "scroll": 366,
+      "body": {
+        "left": 33,
+        "top": 238,
+        "right": 125,
+        "bottom": 330,
+        "width": 92,
+        "height": 92
+      },
+      "readouts": [
+        {
+          "left": 30,
+          "top": 354,
+          "right": 128,
+          "bottom": 377
+        },
+        {
+          "left": 55,
+          "top": 82,
+          "right": 99,
+          "bottom": 126
+        },
+        {
+          "left": 12,
+          "top": 386,
+          "right": 132,
+          "bottom": 437
+        }
+      ],
+      "cue": {
+        "text": "To Mate",
+        "args": [
+          39,
+          366
+        ]
+      },
+      "lesson": {
+        "x": 10,
+        "y": 64,
+        "width": 300,
+        "height": 102.375,
+        "top": 64,
+        "right": 310,
+        "bottom": 166.375,
+        "left": 10
+      },
+      "utilities": [
+        {
+          "x": 243.546875,
+          "y": 10,
+          "width": 66.453125,
+          "height": 44,
+          "top": 10,
+          "right": 310,
+          "bottom": 54,
+          "left": 243.546875
+        }
+      ],
+      "header": {
+        "x": 166,
+        "y": 188,
+        "width": 144,
+        "height": 38,
+        "top": 188,
+        "right": 310,
+        "bottom": 226,
+        "left": 166
+      },
+      "buttons": [
+        {
+          "text": "Approach",
+          "disabled": false,
+          "rect": {
+            "x": 172,
+            "y": 231,
+            "width": 65.90625,
+            "height": 44,
+            "top": 231,
+            "right": 237.90625,
+            "bottom": 275,
+            "left": 172
+          }
+        },
+        {
+          "text": "Dance",
+          "disabled": false,
+          "rect": {
+            "x": 172,
+            "y": 280,
+            "width": 71.328125,
+            "height": 44,
+            "top": 280,
+            "right": 243.328125,
+            "bottom": 324,
+            "left": 172
+          }
+        },
+        {
+          "text": "Call",
+          "disabled": false,
+          "rect": {
+            "x": 172,
+            "y": 329,
+            "width": 57.328125,
+            "height": 44,
+            "top": 329,
+            "right": 229.328125,
+            "bottom": 373,
+            "left": 172
+          }
+        },
+        {
+          "text": "Play",
+          "disabled": true,
+          "rect": {
+            "x": 172,
+            "y": 379,
+            "width": 42.6875,
+            "height": 44,
+            "top": 379,
+            "right": 214.6875,
+            "bottom": 423,
+            "left": 172
+          }
+        },
+        {
+          "text": "Undo",
+          "disabled": true,
+          "rect": {
+            "x": 289.34375,
+            "y": 379,
+            "width": 48.546875,
+            "height": 44,
+            "top": 379,
+            "right": 337.890625,
+            "bottom": 423,
+            "left": 289.34375
+          }
+        },
+        {
+          "text": "Clear",
+          "disabled": true,
+          "rect": {
+            "x": 341.890625,
+            "y": 379,
+            "width": 48.5625,
+            "height": 44,
+            "top": 379,
+            "right": 390.453125,
+            "bottom": 423,
+            "left": 341.890625
+          }
+        },
+        {
+          "text": "Observe",
+          "disabled": false,
+          "rect": {
+            "x": 394.453125,
+            "y": 379,
+            "width": 65.46875,
+            "height": 44,
+            "top": 379,
+            "right": 459.921875,
+            "bottom": 423,
+            "left": 394.453125
+          }
+        },
+        {
+          "text": "Details",
+          "disabled": false,
+          "rect": {
+            "x": 463.921875,
+            "y": 379,
+            "width": 57.75,
+            "height": 44,
+            "top": 379,
+            "right": 521.671875,
+            "bottom": 423,
+            "left": 463.921875
+          }
+        },
+        {
+          "text": "Back Off",
+          "disabled": false,
+          "rect": {
+            "x": 218.6875,
+            "y": 379,
+            "width": 66.65625,
+            "height": 44,
+            "top": 379,
+            "right": 285.34375,
+            "bottom": 423,
+            "left": 218.6875
+          }
+        }
+      ]
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "dock": {
+        "x": 8,
+        "y": 723,
+        "width": 374,
+        "height": 113,
+        "top": 723,
+        "right": 382,
+        "bottom": 836,
+        "left": 8
+      },
+      "tray": {
+        "x": 204.5,
+        "y": 226,
+        "width": 175.5,
+        "height": 302.125,
+        "top": 226,
+        "right": 380,
+        "bottom": 528.125,
+        "left": 204.5
+      },
+      "client": 301,
+      "scroll": 301,
+      "body": {
+        "left": 52,
+        "top": 376,
+        "right": 144,
+        "bottom": 468,
+        "width": 92,
+        "height": 92
+      },
+      "readouts": [
+        {
+          "left": 69,
+          "top": 196,
+          "right": 123,
+          "bottom": 219
+        },
+        {
+          "left": 74,
+          "top": 220,
+          "right": 118,
+          "bottom": 264
+        },
+        {
+          "left": 12,
+          "top": 632,
+          "right": 262,
+          "bottom": 670
+        }
+      ],
+      "cue": {
+        "text": "Mate",
+        "args": [
+          78,
+          208
+        ]
+      },
+      "lesson": {
+        "x": 20,
+        "y": 64,
+        "width": 360,
+        "height": 102.375,
+        "top": 64,
+        "right": 380,
+        "bottom": 166.375,
+        "left": 20
+      },
+      "utilities": [
+        {
+          "x": 313.546875,
+          "y": 10,
+          "width": 66.453125,
+          "height": 44,
+          "top": 10,
+          "right": 380,
+          "bottom": 54,
+          "left": 313.546875
+        }
+      ],
+      "header": {
+        "x": 204.5,
+        "y": 188,
+        "width": 175.5,
+        "height": 38,
+        "top": 188,
+        "right": 380,
+        "bottom": 226,
+        "left": 204.5
+      },
+      "buttons": [
+        {
+          "text": "Approach",
+          "disabled": false,
+          "rect": {
+            "x": 210.5,
+            "y": 231,
+            "width": 65.90625,
+            "height": 44,
+            "top": 231,
+            "right": 276.40625,
+            "bottom": 275,
+            "left": 210.5
+          }
+        },
+        {
+          "text": "Dance",
+          "disabled": false,
+          "rect": {
+            "x": 281.40625,
+            "y": 231,
+            "width": 71.328125,
+            "height": 44,
+            "top": 231,
+            "right": 352.734375,
+            "bottom": 275,
+            "left": 281.40625
+          }
+        },
+        {
+          "text": "Call",
+          "disabled": false,
+          "rect": {
+            "x": 210.5,
+            "y": 280,
+            "width": 57.328125,
+            "height": 44,
+            "top": 280,
+            "right": 267.828125,
+            "bottom": 324,
+            "left": 210.5
+          }
+        },
+        {
+          "text": "Play",
+          "disabled": true,
+          "rect": {
+            "x": 210.5,
+            "y": 330,
+            "width": 42.6875,
+            "height": 44,
+            "top": 330,
+            "right": 253.1875,
+            "bottom": 374,
+            "left": 210.5
+          }
+        },
+        {
+          "text": "Undo",
+          "disabled": true,
+          "rect": {
+            "x": 327.84375,
+            "y": 330,
+            "width": 48.546875,
+            "height": 44,
+            "top": 330,
+            "right": 376.390625,
+            "bottom": 374,
+            "left": 327.84375
+          }
+        },
+        {
+          "text": "Clear",
+          "disabled": true,
+          "rect": {
+            "x": 380.390625,
+            "y": 330,
+            "width": 48.5625,
+            "height": 44,
+            "top": 330,
+            "right": 428.953125,
+            "bottom": 374,
+            "left": 380.390625
+          }
+        },
+        {
+          "text": "Observe",
+          "disabled": false,
+          "rect": {
+            "x": 432.953125,
+            "y": 330,
+            "width": 65.46875,
+            "height": 44,
+            "top": 330,
+            "right": 498.421875,
+            "bottom": 374,
+            "left": 432.953125
+          }
+        },
+        {
+          "text": "Details",
+          "disabled": false,
+          "rect": {
+            "x": 502.421875,
+            "y": 330,
+            "width": 57.75,
+            "height": 44,
+            "top": 330,
+            "right": 560.171875,
+            "bottom": 374,
+            "left": 502.421875
+          }
+        },
+        {
+          "text": "Back Off",
+          "disabled": false,
+          "rect": {
+            "x": 257.1875,
+            "y": 330,
+            "width": 66.65625,
+            "height": 44,
+            "top": 330,
+            "right": 323.84375,
+            "bottom": 374,
+            "left": 257.1875
+          }
+        }
+      ]
+    },
+    {
+      "width": 600,
+      "height": 450,
+      "dock": {
+        "x": 8,
+        "y": 329,
+        "width": 584,
+        "height": 113,
+        "top": 329,
+        "right": 592,
+        "bottom": 442,
+        "left": 8
+      },
+      "tray": {
+        "x": 410,
+        "y": 226,
+        "width": 180,
+        "height": 96,
+        "top": 226,
+        "right": 590,
+        "bottom": 322,
+        "left": 410
+      },
+      "client": 95,
+      "scroll": 208,
+      "body": {
+        "left": 155,
+        "top": 179,
+        "right": 247,
+        "bottom": 271,
+        "width": 92,
+        "height": 92
+      },
+      "readouts": [
+        {
+          "left": 119,
+          "top": 10,
+          "right": 173,
+          "bottom": 33
+        },
+        {
+          "left": 183,
+          "top": 28,
+          "right": 227,
+          "bottom": 72
+        },
+        {
+          "left": 12,
+          "top": 287,
+          "right": 262,
+          "bottom": 325
+        }
+      ],
+      "cue": {
+        "text": "Mate",
+        "args": [
+          128,
+          22
+        ]
+      },
+      "lesson": {
+        "x": 230,
+        "y": 64,
+        "width": 360,
+        "height": 102.375,
+        "top": 64,
+        "right": 590,
+        "bottom": 166.375,
+        "left": 230
+      },
+      "utilities": [
+        {
+          "x": 523.546875,
+          "y": 10,
+          "width": 66.453125,
+          "height": 44,
+          "top": 10,
+          "right": 590,
+          "bottom": 54,
+          "left": 523.546875
+        }
+      ],
+      "header": {
+        "x": 410,
+        "y": 188,
+        "width": 180,
+        "height": 38,
+        "top": 188,
+        "right": 590,
+        "bottom": 226,
+        "left": 410
+      },
+      "buttons": [
+        {
+          "text": "Approach",
+          "disabled": false,
+          "rect": {
+            "x": 412,
+            "y": 227,
+            "width": 86,
+            "height": 44,
+            "top": 227,
+            "right": 498,
+            "bottom": 271,
+            "left": 412
+          }
+        },
+        {
+          "text": "Dance",
+          "disabled": false,
+          "rect": {
+            "x": 412,
+            "y": 271,
+            "width": 86,
+            "height": 44,
+            "top": 271,
+            "right": 498,
+            "bottom": 315,
+            "left": 412
+          }
+        },
+        {
+          "text": "Call",
+          "disabled": false,
+          "rect": {
+            "x": 412,
+            "y": 315,
+            "width": 86,
+            "height": 44,
+            "top": 315,
+            "right": 498,
+            "bottom": 359,
+            "left": 412
+          }
+        },
+        {
+          "text": "Play",
+          "disabled": true,
+          "rect": {
+            "x": 502,
+            "y": 227,
+            "width": 86,
+            "height": 44,
+            "top": 227,
+            "right": 588,
+            "bottom": 271,
+            "left": 502
+          }
+        },
+        {
+          "text": "Undo",
+          "disabled": true,
+          "rect": {
+            "x": 502,
+            "y": 315,
+            "width": 86,
+            "height": 44,
+            "top": 315,
+            "right": 588,
+            "bottom": 359,
+            "left": 502
+          }
+        },
+        {
+          "text": "Clear",
+          "disabled": true,
+          "rect": {
+            "x": 502,
+            "y": 359,
+            "width": 86,
+            "height": 44,
+            "top": 359,
+            "right": 588,
+            "bottom": 403,
+            "left": 502
+          }
+        },
+        {
+          "text": "Observe",
+          "disabled": false,
+          "rect": {
+            "x": 502,
+            "y": 403,
+            "width": 86,
+            "height": 44,
+            "top": 403,
+            "right": 588,
+            "bottom": 447,
+            "left": 502
+          }
+        },
+        {
+          "text": "Details",
+          "disabled": false,
+          "rect": {
+            "x": 502,
+            "y": 447,
+            "width": 86,
+            "height": 44,
+            "top": 447,
+            "right": 588,
+            "bottom": 491,
+            "left": 502
+          }
+        },
+        {
+          "text": "Back Off",
+          "disabled": false,
+          "rect": {
+            "x": 502,
+            "y": 271,
+            "width": 86,
+            "height": 44,
+            "top": 271,
+            "right": 588,
+            "bottom": 315,
+            "left": 502
+          }
+        }
+      ]
+    }
+  ],
+  "encounterToolScroll": {
+    "top": 176,
+    "client": 88,
+    "total": 264,
+    "horizontalOverflow": false
+  },
+  "playControlStability": {
+    "connected": true,
+    "enabled": true,
+    "text": "Play"
+  },
+  "playClicks": 1,
+  "playViewport": {
+    "width": 568,
+    "height": 320
+  },
+  "home": [
+    {
+      "stage": "step-home",
+      "lesson": "select-ground",
+      "day": 1,
+      "alive": true,
+      "home": null,
+      "established": false,
+      "planned": null,
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 2,
+      "alive": true,
+      "home": {
+        "x": 70.92103705005329,
+        "y": 65.05812110122584
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 3,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "settle",
+      "day": 4,
+      "alive": true,
+      "home": {
+        "x": 69.4714196363045,
+        "y": 58.577827005485844
+      },
+      "established": false,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-home",
+      "lesson": "brace",
+      "day": 4,
+      "alive": true,
+      "home": {
+        "x": 68.97926363802604,
+        "y": 56.3777184943863
+      },
+      "established": true,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    },
+    {
+      "stage": "step-complete",
+      "day": 4,
+      "alive": true,
+      "home": {
+        "x": 68.97926363802604,
+        "y": 56.3777184943863
+      },
+      "established": true,
+      "planned": {
+        "x": 68.5,
+        "y": 55.5,
+        "region": {
+          "x": 0,
+          "y": 0
+        },
+        "seed": "GENVO8-PLAYABLE-TEST",
+        "markedTick": 249
+      },
+      "shelters": 0
+    }
+  ],
+  "homeGroundChoice": {
+    "x": 496,
+    "y": 368,
+    "target": {
+      "kind": "ground",
+      "i": 7108,
+      "x": 68.5,
+      "y": 55.5,
+      "label": "Open ground"
+    },
+    "score": 1.4142135623730951,
+    "action": "mark-home-site"
+  },
+  "homeLayouts": [
+    {
+      "viewport": [
+        320,
+        568
+      ],
+      "body": {
+        "left": 114,
+        "top": 238,
+        "right": 206,
+        "bottom": 330,
+        "width": 92,
+        "height": 92
+      },
+      "card": {
+        "x": 10,
+        "y": 64,
+        "width": 300,
+        "height": 102.375,
+        "top": 64,
+        "right": 310,
+        "bottom": 166.375,
+        "left": 10
+      },
+      "buttons": [
+        {
+          "label": "Move here",
+          "rect": {
+            "x": 10,
+            "y": 349,
+            "width": 72,
+            "height": 76,
+            "top": 349,
+            "right": 82,
+            "bottom": 425,
+            "left": 10
+          }
+        },
+        {
+          "label": "Dig roots",
+          "rect": {
+            "x": 86,
+            "y": 349,
+            "width": 72,
+            "height": 76,
+            "top": 349,
+            "right": 158,
+            "bottom": 425,
+            "left": 86
+          }
+        },
+        {
+          "label": "Mark Home Site",
+          "rect": {
+            "x": 162,
+            "y": 349,
+            "width": 72,
+            "height": 76,
+            "top": 349,
+            "right": 234,
+            "bottom": 425,
+            "left": 162
+          }
+        },
+        {
+          "label": "Inspect",
+          "rect": {
+            "x": 238,
+            "y": 349,
+            "width": 72,
+            "height": 76,
+            "top": 349,
+            "right": 310,
+            "bottom": 425,
+            "left": 238
+          }
+        }
+      ]
+    },
+    {
+      "viewport": [
+        568,
+        320
+      ],
+      "body": {
+        "left": 238,
+        "top": 114,
+        "right": 330,
+        "bottom": 206,
+        "width": 92,
+        "height": 92
+      },
+      "card": {
+        "x": 10,
+        "y": 10,
+        "width": 300,
+        "height": 94.375,
+        "top": 10,
+        "right": 310,
+        "bottom": 104.375,
+        "left": 10
+      },
+      "buttons": [
+        {
+          "label": "Move here",
+          "rect": {
+            "x": 338,
+            "y": 14,
+            "width": 52,
+            "height": 76,
+            "top": 14,
+            "right": 390,
+            "bottom": 90,
+            "left": 338
+          }
+        },
+        {
+          "label": "Dig roots",
+          "rect": {
+            "x": 394,
+            "y": 14,
+            "width": 52,
+            "height": 76,
+            "top": 14,
+            "right": 446,
+            "bottom": 90,
+            "left": 394
+          }
+        },
+        {
+          "label": "Mark Home Site",
+          "rect": {
+            "x": 450,
+            "y": 14,
+            "width": 52,
+            "height": 76,
+            "top": 14,
+            "right": 502,
+            "bottom": 90,
+            "left": 450
+          }
+        },
+        {
+          "label": "Inspect",
+          "rect": {
+            "x": 506,
+            "y": 14,
+            "width": 52,
+            "height": 76,
+            "top": 14,
+            "right": 558,
+            "bottom": 90,
+            "left": 506
+          }
+        }
+      ]
+    },
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "body": {
+        "left": 466,
+        "top": 338,
+        "right": 558,
+        "bottom": 430,
+        "width": 92,
+        "height": 92
+      },
+      "card": {
+        "x": 654,
+        "y": 64,
+        "width": 360,
+        "height": 82.375,
+        "top": 64,
+        "right": 1014,
+        "bottom": 146.375,
+        "left": 654
+      },
+      "buttons": [
+        {
+          "label": "Move here",
+          "rect": {
+            "x": 652,
+            "y": 270.09375,
+            "width": 76,
+            "height": 66.59375,
+            "top": 270.09375,
+            "right": 728,
+            "bottom": 336.6875,
+            "left": 652
+          }
+        },
+        {
+          "label": "Dig roots",
+          "rect": {
+            "x": 722,
+            "y": 340.09375,
+            "width": 76,
+            "height": 66.59375,
+            "top": 340.09375,
+            "right": 798,
+            "bottom": 406.6875,
+            "left": 722
+          }
+        },
+        {
+          "label": "Mark Home Site",
+          "rect": {
+            "x": 652,
+            "y": 402.9453125,
+            "width": 76,
+            "height": 80.890625,
+            "top": 402.9453125,
+            "right": 728,
+            "bottom": 483.8359375,
+            "left": 652
+          }
+        },
+        {
+          "label": "Inspect",
+          "rect": {
+            "x": 582,
+            "y": 347.2421875,
+            "width": 76,
+            "height": 52.296875,
+            "top": 347.2421875,
+            "right": 658,
+            "bottom": 399.5390625,
+            "left": 582
+          }
+        }
+      ]
+    }
+  ],
+  "observedThreats": [
+    {
+      "dx": -1,
+      "dy": -1,
+      "id": 106,
+      "attack": false,
+      "pursuit": false,
+      "text": "Keep your distance. Attack (Space) needs a reachable target, costs breath and can provoke it."
+    },
+    {
+      "dx": -1,
+      "dy": -1,
+      "id": 106,
+      "phase": "charge",
+      "attack": true,
+      "pursuit": true,
+      "text": "Hold Brace (J) while facing it. Guard uses breath and only reduces frontal damage; moving out of its path may be safer."
+    },
+    {
+      "dx": -1,
+      "dy": -1,
+      "id": 106,
+      "phase": "recover",
+      "attack": true,
+      "pursuit": false,
+      "text": "Stay fed and watered here while your familiarity grows through real residence. Marking alone gives no territory."
+    },
+    {
+      "dx": -1,
+      "dy": -1,
+      "id": 106,
+      "phase": "windup",
+      "attack": true,
+      "pursuit": true,
+      "text": "Hold Brace (J) while facing it. Guard uses breath and only reduces frontal damage; moving out of its path may be safer."
+    },
+    {
+      "dx": 1,
+      "dy": -1,
+      "id": 106,
+      "attack": false,
+      "pursuit": false,
+      "text": "Stay fed and watered here while your familiarity grows through real residence. Marking alone gives no territory."
+    }
+  ],
+  "homeDrinks": 4,
+  "mouseBrace": true,
+  "homeCompletedNaturally": true,
+  "acceptanceText": "You have eaten, drunk, found a mate and earned a home. Both creatures accepted the pairing.",
+  "completed": {
+    "stage": "step-complete",
+    "paused": true,
+    "lastMate": 110,
+    "day": 4
+  },
+  "paintParity": {
+    "equal": true,
+    "snapshotBytes": 14553339,
+    "fixtureDraws": 24,
+    "scope": "Paused genuine world; synthetic offscreen presentation inputs only, no creature or resource edits"
+  },
+  "continued": {
+    "stage": "done",
+    "paused": false,
+    "blocked": false
+  },
+  "cameraRestored": true,
+  "keyboardBrace": true,
+  "beforeReload": {
+    "stage": "done",
+    "rules": "survival-home/1",
+    "site": {
+      "x": 68.5,
+      "y": 55.5,
+      "region": {
+        "x": 0,
+        "y": 0
+      },
+      "seed": "GENVO8-PLAYABLE-TEST",
+      "markedTick": 249
+    },
+    "defense": {
+      "braced": true
+    }
+  },
+  "afterReload": {
+    "stage": "done",
+    "rules": "survival-home/1",
+    "site": {
+      "x": 68.5,
+      "y": 55.5,
+      "region": {
+        "x": 0,
+        "y": 0
+      },
+      "seed": "GENVO8-PLAYABLE-TEST",
+      "markedTick": 249
+    },
+    "defense": {
+      "braced": true
+    }
+  },
+  "unavailableProbe": {
+    "scope": "Controlled unhealthy-actor presentation probe, not a natural outcome",
+    "text": "Nearby option: One creature is recovering from reproduction. Allow recovery, or look for another partner.",
+    "guide": null,
+    "highlightCount": 0
+  }
+}

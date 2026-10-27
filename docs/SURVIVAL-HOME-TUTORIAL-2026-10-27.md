@@ -1,0 +1,33 @@
+# Survival tutorial and contextual homes — October 27, 2026
+
+## Implementation
+
+Fresh worlds use optional presentation policy `survival-home/1`: Eat, Drink, Mate, Home, then a safe held-Brace interaction. The mating coach still uses actual Court, Approach, Play and reciprocal outcomes. Historical saves without this presentation policy retain their three-step sequence, completed stages and ordinary continuation. Optional home/defense metadata survives canonical saves and regional handoff. The title backdrop does not start the playable lesson.
+
+Left-clicking ordinary empty ground opens the existing wheel. Snow on otherwise valid dry ground retains its water action and also exposes appropriate home actions; lake water remains unsuitable. Mark Home Site records only an intention in existing territory memory. Actual visits still earn the original familiar range. A planned site outside that earned core is explained and the learned centre is highlighted. A small persistent house outline marks the intention without painting ownership or granting any resource.
+
+Build Shelter reuses ShelterController's original requirements and paid construction tail. Its preview evaluates the selected coordinates without moving the actor or lazily creating territory. Real movement brings the actor within 0.35 tiles; execution revalidates the same site, region, perception, terrain, earned core, separation, materials and energy. Construction consumes the original plant stock and 7.5 energy, with no teleport or free structure. The N shortcut retains current-position construction and maintenance. Later Establish Nest uses the existing satellite expansion project and worker payments, not reproductive egg nests.
+
+Pending ground actions cancel with a reason on manual movement, changed actor/world, interruption or a newly invalid requirement. Selecting a remembered site does not grant remote live resource information. Mouse results close the duplicate resource panel; the ground intention remains visible. Compact home wheels use a short shelf, retain Attack/Brace and Clear selection, and avoid the instruction and controlled body. A ground selection receives ground-sized layout padding; animal body protection remains unchanged. Actual available controls receive the existing accessible gold cue and reduced-motion styling.
+
+The threat coach reads actual observable animals through the existing vision and predation checks. Known hunters or animals actually hunting may be identified; a quiet receptive omnivorous mate is not marked merely because it could eat meat. Real pursuit and windup take temporary priority without changing tutorial progression. Quiet sightings expire and do not repeat indefinitely. The body text remains visible: WASD + Shift costs breath and offers no guaranteed escape; Attack requires a reachable target, costs breath and may provoke; facing and holding Brace/J reduces frontal damage rather than negating all damage. No encounter, kill or injury is required for completion.
+
+Opening protection is queried rather than assumed. Its historical availability is normally disabled by current physiological parity. When it really applies, ground Build warns before construction, N requires an explicit repeated protected build, and the common UI attack adapter warns before a repeated attack. Actual protection-ending authorities and AUTO construction remain in place. J now takes manual control just as mouse Brace does.
+
+## Evidence boundaries
+
+The complete 127-check playable gate passed, retaining all 125 earlier checks and adding selected-site home and survival-guide contracts. Subsequent presentation corrections rerun their targeted checks. Exact-head CI and final candidate verification are delivery gates, not inferred from this local result.
+
+Controlled Node/browser fixtures explicitly stage residence, actor placement, low energy, material depletion and family identity. They verify no free territory/resources, exact paid selected-site placement, rejection, physical approach/cancellation, existing-home recognition, historical continuation, AUTO/held-input takeover and right-click family delegation. Staged fixtures are not ordinary-world emergence or natural tutorial completion.
+
+Native browser receipts separately follow New World through actual food, water, reciprocal courtship, selected ground, real residence or paid building, Brace, completion and Save/Continue. Preserve all failed attempts as well as successful receipts: earlier runs include genuine predator deaths, transient moving courtship targets, an actual snow-ground discoverability failure, and narrow-screen instruction overlap. No biological rule or threshold was changed to remove these consequences. A script failure is distinguished from product failure in each receipt.
+
+[Native full-flow receipt](survival-home-2026-10-27/native-receipt.json) records actual Day 4 completion, mouse/keyboard Brace and real Save/Continue equality, with no page errors. This run earned residence without a shelter. It also encountered a genuine Stalker and used real defensive/escape inputs. [Controlled browser receipt](survival-home-2026-10-27/controlled-receipt.json) separately verifies paid selected-site construction, insufficient energy/materials, water rejection, remote approach cancellation, AUTO/keyboard takeover, right-click family delegation, and the corrected short completion card. No family fixture is claimed to have been naturally raised.
+
+Inspected frames: [portrait home wheel](survival-home-2026-10-27/home-portrait.png), [landscape wheel](survival-home-2026-10-27/home-landscape.png), [actually perceived Stalker](survival-home-2026-10-27/perceived-stalker.png), [short completion](survival-home-2026-10-27/completion-landscape.png), and [paid selected-site shelter](survival-home-2026-10-27/paid-selected-site.png). Raw reports remain outside the source package under reports. Browser automation and inspected images do not establish unassisted novice usability acceptance. A fresh external player retry remains necessary.
+
+## Handoff
+
+Presentation owns no territory, construction, predator, mating or defensive authority. Keep the existing controllers and their resource/RNG semantics. Do not replace the stable itch ZIP or upload itch automatically. Deliver a separately named HTML5 candidate only after independent extraction/browser verification.
+
+The autonomous-evolution objective remains separate and active. Its uncommitted Stage B foundation was deliberately preserved in the older torpor-presentation-proof checkout; this tutorial pass does not merge or complete it. Continue from the engineering handoff after the onboarding priority.

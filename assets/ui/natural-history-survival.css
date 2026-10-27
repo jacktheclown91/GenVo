@@ -200,14 +200,14 @@
 #welcome *,#tutorialComplete *{text-shadow:none}
 
 /* Mandatory step headings already contain their step number. */
-#tutorial:not(.compact)[data-guide-title^="STEP "]{box-sizing:border-box;display:block;left:auto;right:10px;top:64px;transform:none;width:min(360px,calc(100% - 20px));min-width:0;padding:12px 14px;background:#102017fa;border:1px solid #c1ad69;border-left:4px solid #e4c56d;border-radius:2px;box-shadow:none;filter:none;text-shadow:none;clip-path:none}
-#tutorial:not(.compact)[data-guide-title^="STEP "] .objective-step{display:block;float:left;width:32px;height:36px;margin:0 10px 4px 0;font-size:0;background:url("seed.png") center/32px 32px no-repeat;image-rendering:pixelated}
+#tutorial:not(.compact):is([data-guide-title^="STEP "],[data-survival-threat]){box-sizing:border-box;display:block;left:auto;right:10px;top:64px;transform:none;width:min(360px,calc(100% - 20px));min-width:0;padding:12px 14px;background:#102017fa;border:1px solid #c1ad69;border-left:4px solid #e4c56d;border-radius:2px;box-shadow:none;filter:none;text-shadow:none;clip-path:none}
+#tutorial:not(.compact):is([data-guide-title^="STEP "],[data-survival-threat]) .objective-step{display:block;float:left;width:32px;height:36px;margin:0 10px 4px 0;font-size:0;background:url("seed.png") center/32px 32px no-repeat;image-rendering:pixelated}
 #tutorial:not(.compact)[data-guide-title^="STEP 2"] .objective-step{background-image:url("water.png")}
 #tutorial:not(.compact)[data-guide-title^="STEP 3"] .objective-step{background-image:url("family.png")}
-#tutorial:not(.compact)[data-guide-title^="STEP "]:after{display:none}
-#tutorial:not(.compact)[data-guide-title^="STEP "] strong{font:700 16px/1.25 Georgia,serif;letter-spacing:0;color:#f2dfa1}
-#tutorial:not(.compact)[data-guide-title^="STEP "] span{font:12px/1.35 Verdana,sans-serif;margin-top:4px;color:#d1d9bd}
-@media(max-height:420px) and (min-width:480px){#tutorial:not(.compact)[data-guide-title^="STEP "]{top:10px;left:10px;right:auto;width:calc(100% - 96px);padding:8px 10px}#tutorial:not(.compact)[data-guide-title^="STEP "] .objective-step{width:24px;height:28px;background-size:24px 24px;margin-right:6px}}
+#tutorial:not(.compact):is([data-guide-title^="STEP "],[data-survival-threat]):after{display:none}
+#tutorial:not(.compact):is([data-guide-title^="STEP "],[data-survival-threat]) strong{font:700 16px/1.25 Georgia,serif;letter-spacing:0;color:#f2dfa1}
+#tutorial:not(.compact):is([data-guide-title^="STEP "],[data-survival-threat]) span{font:12px/1.35 Verdana,sans-serif;margin-top:4px;color:#d1d9bd}
+@media(max-height:420px) and (min-width:480px){#tutorial:not(.compact):is([data-guide-title^="STEP "],[data-survival-threat]){top:10px;left:10px;right:auto;width:calc(100% - 96px);padding:8px 10px}#tutorial:not(.compact):is([data-guide-title^="STEP "],[data-survival-threat]) .objective-step{width:24px;height:28px;background-size:24px 24px;margin-right:6px}}
 
 /* Spacing for the native onboarding pages; surface ownership stays above. */
 #welcome h2{margin:0 0 6px}
@@ -253,11 +253,11 @@
 }
 
 @media(max-width:650px),(max-height:420px){
- #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack{display:flex;flex-direction:column;width:min(230px,calc(100vw - 20px));max-height:40px;overflow-y:auto;overscroll-behavior:contain;pointer-events:auto;scrollbar-width:thin;scrollbar-color:#b7bc8a #102219}
- #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack>*{flex:none}
- #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack [data-channel=critical]{order:-3}
- #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack [data-channel=action]{order:-2}
- #app:has(#tutorial:not([hidden])[data-guide-title^="STEP "]) #notificationStack .notice-lane{padding:5px 8px;font-size:11px}
+ #app:has(#tutorial:not([hidden]):is([data-guide-title^="STEP "],[data-survival-threat])) #notificationStack{display:flex;flex-direction:column;width:min(230px,calc(100vw - 20px));max-height:40px;overflow-y:auto;overscroll-behavior:contain;pointer-events:auto;scrollbar-width:thin;scrollbar-color:#b7bc8a #102219}
+ #app:has(#tutorial:not([hidden]):is([data-guide-title^="STEP "],[data-survival-threat])) #notificationStack>*{flex:none}
+ #app:has(#tutorial:not([hidden]):is([data-guide-title^="STEP "],[data-survival-threat])) #notificationStack [data-channel=critical]{order:-3}
+ #app:has(#tutorial:not([hidden]):is([data-guide-title^="STEP "],[data-survival-threat])) #notificationStack [data-channel=action]{order:-2}
+ #app:has(#tutorial:not([hidden]):is([data-guide-title^="STEP "],[data-survival-threat])) #notificationStack .notice-lane{padding:5px 8px;font-size:11px}
 }
 
 /* Title/creation menus never present a gameplay lesson from their backdrop. */
@@ -312,4 +312,64 @@
  #interactionDock .courtship-portraits{grid-column:1/-1;grid-row:2}
  #interactionDock .courtship-sequence{grid-column:1/-1;grid-row:3}
  #interactionDock .courtship-tray>p{grid-column:1/-1}
+}
+
+/* Home controls share the radial's native actions, with a low compact shelf.
+   Suppress the duplicate resource summary while that shelf is open. */
+@media (max-width: 600px), (max-height: 420px) {
+  body:has(.context-radial[data-home-actions="true"]:not([hidden])) #interactionDock .dock-context,
+  body:has(.context-radial[data-home-actions="true"]:not([hidden])) #interactionDock .dock-resource-summary {
+    display: none;
+  }
+  .context-radial[data-home-actions="true"]:not([hidden]) {
+    display: grid;
+    grid-template-columns: repeat(var(--home-action-count), minmax(0, 1fr));
+    gap: 4px;
+    width: min(300px, calc(100vw - 20px));
+    height: auto;
+  }
+  .context-radial[data-home-actions="true"] .radial-caption,
+  .context-radial[data-home-actions="true"] .radial-explanation { display: none; }
+  .context-radial[data-home-actions="true"] button {
+    position: static;
+    width: auto;
+    height: 76px;
+    min-width: 0;
+    min-height: 76px;
+    margin: 0;
+    padding: 4px;
+    font-size: 10.5px;
+    line-height: 12px;
+  }
+}
+@media (max-height: 420px) {
+  .context-radial[data-home-actions="true"]:not([hidden]) { width: 220px; }
+  #tutorial:not(.compact)[data-home-step] { width: min(300px, calc(100vw - 250px)); }
+}
+
+#tutorial[data-survival-threat] { border-left-color: #dc956c; }
+
+@media (max-width: 600px), (max-height: 420px) {
+  body:has(.context-radial[data-home-actions="true"]:not([hidden])) #interactionDock .creature-stage-resources button:not([data-command="brace"]):not([data-command="attack"]),
+  body:has(.context-radial[data-home-actions="true"]:not([hidden])) #interactionDock .dock-header > :not(.dock-clear) { display: none; }
+  body:has(.context-radial[data-home-actions="true"]:not([hidden])) #interactionDock .creature-stage-resources { padding-right: 48px; }
+  body:has(.context-radial[data-home-actions="true"]:not([hidden])) #interactionDock .dock-header {
+    position: absolute; right: 7px; bottom: 7px; width: 44px; min-height: 0; padding: 0;
+  }
+  body:has(.context-radial[data-home-actions="true"]:not([hidden])) #interactionDock .dock-clear {
+    width: 44px; height: 44px; min-height: 44px; padding: 0;
+  }
+}
+
+@media (max-height: 420px) {
+  #tutorialComplete .onboarding-page { max-height: calc(100dvh - 16px); overflow-y: auto; padding: 12px 16px; }
+  #tutorialComplete .onboarding-flourish { margin: 0 0 6px; }
+  #tutorialComplete .onboarding-flourish img { width: 20px; height: 20px; }
+  #tutorialComplete .onboarding-kicker { margin: 0 0 4px; font-size: 9px; }
+  #tutorialComplete h2 { margin: 0 0 6px; font-size: 24px; }
+  #tutorialComplete .complete-summary { margin: 0 0 6px; font-size: 13px; line-height: 1.3; }
+  #tutorialComplete .complete-motto { margin: 4px 0; font-size: 14px; }
+  #tutorialComplete .complete-tail { margin: 6px 0; font-size: 11px; line-height: 1.3; }
+  #tutorialComplete .tutorial-actions { margin-top: 8px; }
+  #tutorialComplete .tutorial-btn { min-height: 44px; padding: 8px; }
 }

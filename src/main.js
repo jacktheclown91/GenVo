@@ -96,7 +96,7 @@ let pointerApproach=null;
 const movementInputBuffer=new MovementInputBuffer({controlHz:CFG.controlHz});
 const MOVE_CODES=new Set(['KeyW','KeyA','KeyS','KeyD','ArrowUp','ArrowDown','ArrowLeft','ArrowRight','ShiftLeft','ShiftRight','KeyJ']);
 const WORLD_ACTION_CODES=new Set(['PageDown','PageUp','Enter','Space','KeyE','KeyQ','KeyN','KeyF','KeyX','KeyV','KeyZ','KeyC','KeyG','KeyH','Digit1','Digit2','Digit3','Digit4','Digit5','Digit0','Digit6','Digit7','Digit8','Digit9','Semicolon']);
-const MANUAL_TAKEOVER_CODES=new Set(['PageDown','PageUp','Enter','Space','KeyE','KeyQ','KeyN','KeyF','KeyX','KeyV','KeyZ','KeyC','KeyG','Digit0','Digit6','Digit7','Digit8','Digit9','Semicolon']);
+const MANUAL_TAKEOVER_CODES=new Set(['KeyJ','PageDown','PageUp','Enter','Space','KeyE','KeyQ','KeyN','KeyF','KeyX','KeyV','KeyZ','KeyC','KeyG','Digit0','Digit6','Digit7','Digit8','Digit9','Semicolon']);
 function clearMovementKeys(){pointerApproach?.cancel();braceInput?.release();sim.playerCombat?.releaseBrace(sim.player());movementInputBuffer.clear();for(const code of MOVE_CODES)keys[code]=false}
 function takeManualControl(){if(!sim.playerAutonomy)return false;sim.setPlayerAutonomy(false);tutorial?.showToast?.('Manual control',900,'safe');return true}
 function setManualPause(value){if(tutorial.worldInputBlocked?.())return false;manualPause=!!value;sim.paused=manualPause;clearMovementKeys();if(pauseNotice)pauseNotice.hidden=!manualPause;audio.note('confirm');return true}
@@ -357,7 +357,7 @@ addEventListener('keydown',e=>{
   // P and Escape are handled by the authored pause navigator above.
   if(sim.paused&&WORLD_ACTION_CODES.has(e.code)){e.preventDefault();if(manualPause)tutorial.showToast('Paused · press P to resume.',1200,'safe');return}
   if(sim.paused&&MOVE_CODES.has(e.code)){e.preventDefault();return}
-  if(MOVE_CODES.has(e.code)){sim.discovery.cancelTraceFollow();pointerApproach?.cancel();keys[e.code]=true;movementInputBuffer.onKeyDown(e.code,e.timeStamp||performance.now());}if(e.code==='KeyJ'&&!e.repeat&&courtshipTray.isOpen){sim.reproduction.cancelCourtship();courtshipTray.close()}
+  if(MOVE_CODES.has(e.code)){sim.discovery.cancelTraceFollow();if(pointerApproach?.validate)pointerApproach.interrupt('Home approach cancelled by movement.');else pointerApproach?.cancel();keys[e.code]=true;movementInputBuffer.onKeyDown(e.code,e.timeStamp||performance.now());}if(e.code==='KeyJ'&&!e.repeat&&courtshipTray.isOpen){sim.reproduction.cancelCourtship();courtshipTray.close()}
   if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();
   // Space is the dedicated attack: a short wind-up, then the strike resolves on its own.
   if(e.code==='Space'&&!e.repeat){if(document.activeElement?.tagName==='BUTTON')document.activeElement.blur();contextTray.attack({pounce:!!(keys.ShiftLeft||keys.ShiftRight)})}
@@ -382,7 +382,7 @@ addEventListener('keydown',e=>{
   if(e.code==='Digit7'&&!e.repeat){const r=sim.playerToggleRoost();tutorial.onInteraction(r);audio.noteResult(r)}
   if(e.code==='Digit8'&&!e.repeat){const r=sim.playerToggleTorpor();tutorial.onInteraction(r);audio.noteResult(r)}
   if(e.code==='Digit9'&&!e.repeat){e.preventDefault();travelPlanetaryRegion();return}
-  if(e.code==='KeyN'&&!e.repeat){const r=sim.shelter.constructOrRepair(sim.player());tutorial.onShelterAction?.(r);audio.noteResult(r)}
+  if(e.code==='KeyN'&&!e.repeat){if(sim.shelter.canBuildHere(sim.player()).ok&&!tutorial.confirmProtectedAction('build a shelter'))return;const r=sim.shelter.constructOrRepair(sim.player());tutorial.onShelterAction?.(r);audio.noteResult(r)}
   if(e.code==='KeyF'&&!e.repeat){const r=sim.shelter.cacheNearbyFood(sim.player());tutorial.onShelterAction?.(r);audio.noteResult(r)}
   if(e.code==='KeyX'&&!e.repeat){const r=sim.playerAlarm();tutorial.onInteraction(r);audio.noteResult(r)}
   if(e.code==='KeyV'&&!e.repeat){if(mateOpen){const r=sim.reproduction.cycleBroodStrategy();tutorial.showToast(r.ok?`Brood strategy: ${r.strategy}`:r.reason,1800,r.ok?'safe':'warn');audio.note(r.ok?'confirm':'deny')}else{const r=sim.playerHide();tutorial.onInteraction(r);audio.noteResult(r)}}
@@ -507,7 +507,8 @@ const contextTray=new CreatureContextTray({canvas,renderer,braceInput,getSim:()=
  onClear:()=>{sim.discovery.cancelTraceFollow();pointerApproach?.cancel();sim.reproduction.cancelCourtship();courtshipTray.close()},
  canUseFamilyGuidance:(creature,resource)=>leadershipWheel.available()&&(!resource||resource.kind==='ground')&&(!creature||sim.controllableFamily().some(a=>a.id===creature.id)),
  onApproachAvailability:target=>pointerApproach.availability(approachGoal(sim,target)),
- onApproach:(target,onArrival,{quiet=false,ready=null,onInterrupted=null}={})=>{const goal=approachGoal(sim,target);if(!goal)return;takeManualControl();clearMovementKeys();sim.reproduction.cancelCourtship();courtshipTray.close();applyObserverResult(observer.onManualInput());const result=pointerApproach.start(goal,onArrival,{ready,onInterrupted});if(!quiet){tutorial.onInteraction(result);audio.noteResult(result)}},
+ onApproach:(target,onArrival,{quiet=false,ready=null,onInterrupted=null,validate=null}={})=>{const goal=approachGoal(sim,target);if(!goal)return;takeManualControl();clearMovementKeys();sim.reproduction.cancelCourtship();courtshipTray.close();applyObserverResult(observer.onManualInput());const result=pointerApproach.start(goal,onArrival,{ready,onInterrupted,validate});if(!quiet){tutorial.onInteraction(result);audio.noteResult(result)}return result},
+ onCancelApproach:message=>pointerApproach?.interrupt(message),
  onFamilyTravel:toggleFamilyPassage,
  onRest:()=>{sim.discovery.cancelTraceFollow();pointerApproach?.cancel();if(sim.paused||sim.playerCombat.attackActive(sim.player()))return;takeManualControl();clearMovementKeys();sim.reproduction.cancelCourtship();courtshipTray.close();const a=sim.player();if(a){a.intent='idle';a.target=null;tutorial.showToast('Resting · regain breath while still. Move to resume.',1800,'safe');audio.note('confirm')}},stageBlocked:()=>tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||fieldGuide.open||journal.open||guideOpen||helpOpen||mindOpen||territoryOpen||shelterOpen||migrationOpen||ecologyOpen||mateOpen||succession.open||leadershipWheel.commandMode,
  onMode:mode=>{if(mode==='combat'&&courtshipTray.isOpen){const id=courtshipTray.targetId;sim.reproduction.cancelCourtship();courtshipTray.close();contextTray.targetId=id;contextTray.world=sim}},blocked:()=>tutorial.worldInputBlocked?.()||frontEnd.isOpen||editor.open||fieldGuide.open||journal.open||guideOpen||helpOpen||mindOpen||territoryOpen||shelterOpen||migrationOpen||ecologyOpen||mateOpen||courtshipTray.isOpen||succession.open||leadershipWheel.commandMode,
