@@ -18,6 +18,8 @@ jobs:
       ZIP_NAME: GenVo-web-98b276b2.zip
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
