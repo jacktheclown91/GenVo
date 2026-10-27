@@ -1,0 +1,48 @@
+{
+  "scope": "Fresh normal New World through native tutorial controls; existing optional synthetic guide-art draws remain presentation-only and preserve the full snapshot. No creature/resource injection.",
+  "failure": null,
+  "homeCompletedNaturally": true,
+  "completed": {
+    "stage": "step-complete",
+    "paused": true,
+    "lastMate": 110,
+    "day": 4
+  },
+  "beforeReload": {
+    "stage": "done",
+    "rules": "survival-home/1",
+    "site": {
+      "x": 68.5,
+      "y": 55.5,
+      "region": {
+        "x": 0,
+        "y": 0
+      },
+      "seed": "GENVO8-PLAYABLE-TEST",
+      "markedTick": 250
+    },
+    "defense": {
+      "braced": true
+    }
+  },
+  "afterReload": {
+    "stage": "done",
+    "rules": "survival-home/1",
+    "site": {
+      "x": 68.5,
+      "y": 55.5,
+      "region": {
+        "x": 0,
+        "y": 0
+      },
+      "seed": "GENVO8-PLAYABLE-TEST",
+      "markedTick": 250
+    },
+    "defense": {
+      "braced": true
+    }
+  },
+  "mouseBrace": true,
+  "keyboardBrace": true,
+  "pageErrors": []
+}

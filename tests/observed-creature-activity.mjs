@@ -1,0 +1,43 @@
+import assert from 'node:assert/strict';
+import {Simulation} from '../src/sim/simulation.js';
+import {observedCreatureActivity} from '../src/ui/observed-creature-activity.js';
+import {createSimulationSnapshot} from '../src/persistence/save-manager.js';
+const sim=new Simulation('OBSERVABLE-WILDLIFE-ACTIVITY',{player:true,worldGenerator:'planetary/1'});
+const p=sim.player(),target=sim.animals.find(a=>a.alive&&a.id!==p.id);
+// Controlled visible decisions test presentation, not fabricated natural behavior.
+target.x=p.x+.5;target.y=p.y;target.underground=p.underground;target.diveDepth=p.diveDepth;
+const snap=()=>structuredClone(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'observed-activity'}));
+function check(intent,state,expected){
+  target.intent=intent;target.stranger=state;
+  const before=snap();
+  for(let i=0;i<3;i++)assert.equal(observedCreatureActivity(sim,p,target),expected);
+  assert.deepEqual(snap(),before,'Reading a visible activity preserves the complete canonical state');
+}
+const investigating={id:p.id,mode:'investigate',untilTick:sim.tickCount+10};
+check('stranger-investigate',investigating,'Approaching to investigate you');
+check('stranger-watch',investigating,'Watching you');
+check('stranger-watch',{...investigating,untilTick:sim.tickCount},null);
+check('stranger-watch',{...investigating,id:p.id+100000},null);
+check('stranger-posture',{...investigating,mode:'posture'},'Standing its ground');
+check('stranger-avoid',{...investigating,mode:'avoid'},'Keeping its distance');
+check('stranger-avoid',{...investigating,mode:'done',untilTick:sim.tickCount,cooldownUntil:sim.tickCount+10},'Keeping its distance');
+check('ground-probe',{...investigating,mode:'done',cooldownUntil:sim.tickCount+100},'Probing for food');
+check('feed',null,'Foraging');check('scent-watch',null,'Watching nearby');check('shadow-patrol',null,'Patrolling');
+check('drink',null,'Seeking water');check('wary',null,'Backing away cautiously');
+check('flee',null,'Fleeing');check('rest',null,'Resting nearby');check('unknown-future-state',null,null);
+assert.equal(observedCreatureActivity(sim,null,target),null);
+assert.equal(observedCreatureActivity(sim,{...p,alive:false},target),null);
+assert.equal(observedCreatureActivity(sim,p,{...target,alive:false}),null);
+assert.equal(observedCreatureActivity(sim,p,p),null);
+assert.equal(observedCreatureActivity(sim,p,{...target,torpor:{},intent:'drink'}),'In deep winter torpor','Visible physical torpor takes precedence over a stale goal');
+assert.equal(observedCreatureActivity(sim,p,{...target,x:p.x+1000,y:p.y+1000,intent:'stranger-watch',stranger:investigating}),null,'An unseen animal cannot disclose its current behavior');
+sim.sensoryFogEnabled=true;
+assert.equal(observedCreatureActivity(sim,p,{...target,underground:!p.underground,intent:'stranger-watch',stranger:investigating}),null,'An unseen other layer cannot disclose behavior');
+const privateTarget={...target,intent:'ground-probe'};
+for(const key of ['matePreferences','appeal','energy','hydration','target'])Object.defineProperty(privateTarget,key,{get(){throw Error('Do not inspect hidden '+key)}});
+assert.equal(observedCreatureActivity(sim,p,privateTarget),'Probing for food');
+target.intent='mate';target.courtshipPerformance={partnerId:p.id,startedAt:sim.tickCount,endsAt:sim.tickCount+8,sequence:['approach']};
+const before=snap();assert.equal(observedCreatureActivity(sim,p,target),'Performing a courtship display');assert.deepEqual(snap(),before);
+target.courtshipPerformance.endsAt=sim.tickCount-1;const stale=snap();
+assert.equal(observedCreatureActivity(sim,p,target),null);assert.deepEqual(snap(),stale,'Stale performance is never cleaned up by presentation');
+console.log('Observed activity PASS: real decision captions, actual visual boundary, expiry, returning to foraging, no hidden needs/preferences, no extra alerts and exact full-state purity.');

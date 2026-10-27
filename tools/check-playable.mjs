@@ -113,6 +113,7 @@ const runtime=[
   'tests/threat-display.mjs',
   'tests/reaction-expression.mjs',
   'tests/stranger-response.mjs',
+  'tests/observed-creature-activity.mjs',
   'tests/landform-uniform-mask.mjs',
   'tests/day-clock.mjs',
   'tests/metabolism-policy.mjs',
