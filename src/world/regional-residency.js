@@ -1,7 +1,7 @@
 import {CFG} from '../sim/config.js';
 import {POPULATION_MODE} from './regional-replay-order.js';
 import {planetRegionOrigin,regionKey,PLANET_REGION_SIZE} from './planet-regions.js';
-import {regionalIdentity,validateRegionalIdentity} from './regional-identities.js';
+import {regionalIdentity,validateRegionalIdentity,sameRegionalIdentity} from './regional-identities.js';
 import {markRegionalOwnerDirty} from './regional-revision.js';
 import {forgetWarmRegion} from './regional-warm-cache.js';
 
@@ -80,7 +80,7 @@ export function unloadRegion(sim,session,entry){
  const travel=sim.planetaryTravel,i=travel.sessions.indexOf(session);
  if(!residencyEnabled(sim)||i<0||!session.parked)throw Error('Unload requires a parked resident region.');
  const life=regionalIdentity(session.snapshot,{mode:session.biologicalMode??null});
- if(entry?.key!==session.key||JSON.stringify(entry.life)!==JSON.stringify(life))throw Error('Committed regional record does not match the resident region.');
+ if(entry?.key!==session.key||!sameRegionalIdentity(entry.life,life))throw Error('Committed regional record does not match the resident region.');
  const stub={kind:'session',key:entry.key,origin:{x:entry.origin.x,y:entry.origin.y},id:entry.id,capture:entry.capture,life:structuredClone(entry.life),unloaded:true,...(entry.storage?{storage:entry.storage}:{})};
  validateUnloadedEntry(stub);
  travel.sessions.splice(i,1);forgetWarmRegion(session);travel.unloaded=[...unloadedRegions(sim),stub];
@@ -93,7 +93,10 @@ export function reloadRegion(sim,entry,payload){
  if(i<0)throw Error('Region is not unloaded in this simulation.');
  if(payload?.key!==entry.key||payload.biologicalMode!==POPULATION_MODE)throw Error('Loaded regional record does not belong to this entry.');
  const life=regionalIdentity(payload.snapshot,{mode:payload.biologicalMode});
- if(JSON.stringify(life)!==JSON.stringify(entry.life))throw Error('Loaded regional record does not match its directory entry.');
+ if(!sameRegionalIdentity(entry.life,life))throw Error('Loaded regional record does not match its directory entry.');
+ if(sim.autonomousEvolutionRules!==payload.snapshot.core.autonomousEvolutionRules)
+  throw Error('Inconsistent regional autonomous evolution policy.');
+ sim.evolutionTree?.mergeRecordedHistory?.(payload.snapshot.controllers?.evolutionTree);
  const session={...payload};delete session.parked;
  travel.unloaded=list.filter(e=>e!==entry);if(!travel.unloaded.length)delete travel.unloaded;
  travel.sessions.push(session);markRegionalOwnerDirty(session);

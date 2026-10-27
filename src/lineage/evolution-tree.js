@@ -1,19 +1,34 @@
-import {autonomousEvolutionEnabled} from './autonomous-evolution.js';
+import {autonomousEvolutionEnabled,regionalEvolutionEnabled} from './autonomous-evolution.js';
+import {mergeEvolutionaryTreeHistory,evolutionaryHistoryForBodies} from './evolution-tree-history.js';
 import {SPECIES} from '../organisms/species.js';
+import {recordedPlanetaryTaxonCensus} from './evolution-tree-census.js';
+import {ROOT_TAXON_ID,foundingRootId,recordedBranchFor,recordedTaxonFor} from './evolution-tree-identity.js';
 // Persistent evolutionary-tree authority. Speciation decides whether a boundary is
 // currently recognized; this controller preserves branch ancestry and history even
 // when a young boundary later rejoins or a descendant taxon goes extinct.
 
-export const ROOT_TAXON_ID='genvo8-root';
+export {ROOT_TAXON_ID} from './evolution-tree-identity.js';
 
-const statusRank={living:0,ancestral:1,rejoined:2,extinct:3};
+const statusRank={living:0,ancestral:1,rejoined:2,extinct:3,unknown:4};
 
 export class EvolutionaryTreeController{
   constructor(sim){
     this.sim=sim;this.nodes=new Map();this.events=[];
     this.nodes.set(ROOT_TAXON_ID,{id:ROOT_TAXON_ID,label:'GenVo',parentId:null,parentLabel:null,depth:0,originPopulationKey:'home',originPopulationLabel:'Home Range',traitId:null,pressure:null,formedDay:1,formedGeneration:1,status:'living',endedDay:null,endedReason:null,recognitions:0,memberIds:new Set()});
   }
-  foundingRootId(species){return species==='genvo'?ROOT_TAXON_ID:'founding:'+species}
+  recordedHistory(){
+    if(!regionalEvolutionEnabled(this.sim))return null;
+    return structuredClone({nodes:this.nodes,events:this.events});
+  }
+  recordedHistoryFor(bodies){
+    return regionalEvolutionEnabled(this.sim)?evolutionaryHistoryForBodies(this,bodies):null;
+  }
+  mergeRecordedHistory(history){
+    if(history&&regionalEvolutionEnabled(this.sim))
+      Object.assign(this,mergeEvolutionaryTreeHistory(this,history));
+    return this;
+  }
+  foundingRootId(species){return foundingRootId(species)}
   observeBiologicalAncestry(animal,parents=[]){
     if(!autonomousEvolutionEnabled(this.sim)||!animal?.alive)return;
     const id=this.foundingRootId(animal.species);let root=this.nodes.get(id);
@@ -55,9 +70,21 @@ export class EvolutionaryTreeController{
   root(){return this.nodes.get(ROOT_TAXON_ID)}
   node(id){return this.nodes.get(id)||null}
   currentBranchFor(animal){
-    const raw=animal?.speciesBranch;if(!raw?.id)return null;if(autonomousEvolutionEnabled(this.sim)){const node=this.nodes.get(raw.id);return node?.status==='living'&&node.memberIds.has(animal.id)?raw:null;}const state=this.sim.speciation?.stateFor?.(raw.populationKey);return state?.recognized&&state.branch?.id===raw.id?raw:null;
+    const raw=animal?.speciesBranch;if(!raw?.id)return null;
+    if(regionalEvolutionEnabled(this.sim))return recordedBranchFor(this.nodes,animal);
+    if(autonomousEvolutionEnabled(this.sim)){
+      const node=this.nodes.get(raw.id);
+      return node?.status==='living'&&node.memberIds.has(animal.id)?raw:null;
+    }
+    const state=this.sim.speciation?.stateFor?.(raw.populationKey);
+    return state?.recognized&&state.branch?.id===raw.id?raw:null;
   }
-  taxonFor(animal){return this.currentBranchFor(animal)?.id||(autonomousEvolutionEnabled(this.sim)?animal?.evolutionaryAncestry?.rootId||this.foundingRootId(animal?.species||'genvo'):ROOT_TAXON_ID)}
+  taxonFor(animal){
+    if(regionalEvolutionEnabled(this.sim))return recordedTaxonFor(this.nodes,animal);
+    const id=this.currentBranchFor(animal)?.id;if(id)return id;
+    return autonomousEvolutionEnabled(this.sim)?
+      animal?.evolutionaryAncestry?.rootId||this.foundingRootId(animal?.species||'genvo'):ROOT_TAXON_ID;
+  }
   taxonLabel(animal){return this.currentBranchFor(animal)?.label||(autonomousEvolutionEnabled(this.sim)?this.nodes.get(this.taxonFor(animal))?.label||SPECIES[animal?.species]?.label||'Unknown ancestry':'GenVo')}
   sameTaxon(a,b){return !!a&&!!b&&this.taxonFor(a)===this.taxonFor(b)}
   activeTaxon(){const animal=this.sim.player?.();if(!animal)return null;const id=this.taxonFor(animal),node=this.nodes.get(id)||this.root();return{id,label:node?.label||this.taxonLabel(animal),node,animal}}
@@ -95,10 +122,17 @@ export class EvolutionaryTreeController{
     const rec=this.sim.lineage?.records?.get?.(animal.id);if(rec){rec.speciesBranch={...branch};rec.speciesBranchHistory=history.map(h=>({...h}))}
   }
   onBoundaryEnded(branch,reason,{extinct=false}={}){
-    if(!branch?.id)return null;const node=this.nodes.get(branch.id);if(!node)return null;node.status=extinct?'extinct':'rejoined';node.endedDay=this.sim.day;node.endedReason=reason;this.events.push({type:node.status,day:this.sim.day,generation:this.sim.lineage?.highestGeneration||1,branchId:node.id,reason});return node;
+    if(!branch?.id)return null;
+    const node=this.nodes.get(branch.id);if(!node)return null;
+    node.status=extinct?'extinct':'rejoined';node.endedDay=this.sim.day;node.endedReason=reason;
+    this.events.push({type:node.status,day:this.sim.day,generation:this.sim.lineage?.highestGeneration||1,
+      branchId:node.id,reason,...(regionalEvolutionEnabled(this.sim)?
+        {scope:'population-boundary',populationKey:branch.populationKey||node.originPopulationKey}:{})});
+    return node;
   }
   historicalBranchIds(record){return new Set((record?.speciesBranchHistory||[]).map(h=>h.id).filter(Boolean))}
   livingCounts(){
+    if(regionalEvolutionEnabled(this.sim))return recordedPlanetaryTaxonCensus(this.sim,this.nodes,{activePopulation:a=>this.sim.populationMemory?.affinityFor?.(a)}).rows;
     const rows=new Map([...this.nodes.keys()].map(id=>[id,{living:0,populations:new Map()}]));
     for(const a of this.sim.animals){if(!a.alive||!autonomousEvolutionEnabled(this.sim)&&(!a.lineage||a.species!=='genvo'))continue;const current=this.currentBranchFor(a),id=autonomousEvolutionEnabled(this.sim)?this.taxonFor(a):current?.id||ROOT_TAXON_ID,row=rows.get(id)||{living:0,populations:new Map()};row.living++;const affinity=this.sim.populationMemory?.affinityFor?.(a),key=affinity?.key||'home',label=affinity?.label||'Home Range';row.populations.set(key,label);rows.set(id,row)}
     return rows;
@@ -107,7 +141,8 @@ export class EvolutionaryTreeController{
     const counts=new Map([...this.nodes.keys()].map(id=>[id,0]));if(autonomousEvolutionEnabled(this.sim))return new Map([...this.nodes.values()].map(node=>[node.id,node.memberIds.size]));for(const rec of this.sim.lineage?.records?.values?.()||[]){for(const id of this.historicalBranchIds(rec))counts.set(id,(counts.get(id)||0)+1)}return counts;
   }
   snapshot(){
-    const living=this.livingCounts(),historical=this.historicalCounts();
+    const census=regionalEvolutionEnabled(this.sim)?recordedPlanetaryTaxonCensus(this.sim,this.nodes,{activePopulation:a=>this.sim.populationMemory?.affinityFor?.(a)}):null;
+    const living=census?.rows||this.livingCounts(),historical=this.historicalCounts();
     const autonomous=autonomousEvolutionEnabled(this.sim);
     const descendantLiving=[...living.entries()].some(([id,row])=>id!==ROOT_TAXON_ID&&row.living>0);
     const hasLivingDescendant=id=>[...living].some(([child,row])=>{
@@ -124,10 +159,17 @@ export class EvolutionaryTreeController{
       if(autonomous&&node.id===ROOT_TAXON_ID&&!node.kind&&!node.memberIds.size)continue;
       const row=living.get(node.id)||{living:0,populations:new Map()},history=historical.get(node.id)||0;
       let status=node.status;
-      if(autonomous&&!node.parentId)status=row.living>0?'living':hasLivingDescendant(node.id)?'ancestral':'extinct';
+      if(census){
+        if(row.living>0)status='living';
+        else if(!census.complete)status='unknown';
+        else if(!node.parentId)status=hasLivingDescendant(node.id)?'ancestral':'extinct';
+        else if(node.status==='living')status=hasLivingDescendant(node.id)?'ancestral':'extinct';
+      }
+      else if(autonomous&&!node.parentId)status=row.living>0?'living':hasLivingDescendant(node.id)?'ancestral':'extinct';
       else if(node.id===ROOT_TAXON_ID)status=row.living>0?'living':descendantLiving?'ancestral':'extinct';
       else if(node.status==='living'&&row.living===0)status='extinct';
       out.push({...node,memberIds:undefined,living:row.living,historicalMembers:history,
+        ...(census?{censusComplete:census.complete,unresolvedLiving:census.unresolvedLiving,regions:[...(row.regions?.values()||[])]}:{}),
         populations:[...row.populations.entries()].map(([key,label])=>({key,label})),status});
     }
     return out.sort((a,b)=>a.depth-b.depth||statusRank[a.status]-statusRank[b.status]||a.formedDay-b.formedDay||a.label.localeCompare(b.label));
@@ -150,7 +192,7 @@ export class EvolutionaryTreeController{
   nodePath(node){const path=[];let cur=node,seen=new Set();while(cur&&!seen.has(cur.id)){seen.add(cur.id);path.push(cur);cur=cur.parentId?this.nodes.get(cur.parentId):null}return path.reverse()}
   treeLines(){
     const snapshot=this.snapshot(),byId=new Map(snapshot.map(n=>[n.id,n])),children=new Map();for(const node of snapshot){if(!node.parentId)continue;const arr=children.get(node.parentId)||[];arr.push(node);children.set(node.parentId,arr)}for(const arr of children.values())arr.sort((a,b)=>a.formedDay-b.formedDay||a.label.localeCompare(b.label));
-    const line=(node,depth)=>{const prefix=depth?'  '.repeat(Math.max(0,depth-1))+'└ ':'',state=node.status.toUpperCase(),pops=node.populations.length?` · ${node.populations.map(p=>p.label).join(', ')}`:'',history=node.id!==ROOT_TAXON_ID&&node.historicalMembers?` · historical ${node.historicalMembers}`:'';return`${prefix}${node.label} · ${state} · living ${node.living}${pops}${history}`};
+    const line=(node,depth)=>{const prefix=depth?'  '.repeat(Math.max(0,depth-1))+'└ ':'',state=node.status.toUpperCase(),pops=node.populations.length?` · ${node.populations.map(p=>p.label).join(', ')}`:'',history=node.id!==ROOT_TAXON_ID&&node.historicalMembers?` · historical ${node.historicalMembers}`:'';return`${prefix}${node.label} · ${state} · living ${node.living}${pops}${history}${node.censusComplete===false?' · last recorded':''}`};
     const out=[],walk=(node,depth=0)=>{out.push(line(node,depth));for(const child of children.get(node.id)||[])walk(child,depth+1)};const root=byId.get(ROOT_TAXON_ID);if(root)walk(root);if(autonomousEvolutionEnabled(this.sim))for(const node of snapshot)if(!node.parentId&&node.id!==ROOT_TAXON_ID)walk(node);for(const node of snapshot)if(!out.some(v=>v.includes(node.label)))out.push(line(node,node.depth||0));return out;
   }
   summaryLine(){const snap=this.snapshot(),living=snap.filter(n=>n.living>0).length,historical=snap.filter(n=>autonomousEvolutionEnabled(this.sim)?!!n.parentId:n.id!==ROOT_TAXON_ID).length,extinct=snap.filter(n=>n.status==='extinct'&&n.id!==ROOT_TAXON_ID).length,rejoined=snap.filter(n=>n.status==='rejoined').length;return`Evolutionary tree ${living} living taxa · ${historical} descendant branch${historical===1?'':'es'}${extinct?` · ${extinct} extinct`:''}${rejoined?` · ${rejoined} rejoined`:''}`}

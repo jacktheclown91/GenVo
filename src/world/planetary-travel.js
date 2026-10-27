@@ -156,6 +156,7 @@ function strippedRegionSnapshot(sim,ids){
  return checkpoint;
 }
 function transferGlobals(from,to){
+ const regionalHistory=to.evolutionTree?.recordedHistory?.();
  // Lineage progression/evolution budgets apply to a traveler globally, while
  // feeding, territory, nest, soil and all local fauna controllers remain local.
  // These six traveler-global controllers do not require a full World or
@@ -173,6 +174,7 @@ function transferGlobals(from,to){
   Object.assign(controller,structuredClone(owned));
   controller.sim=to;
  }
+ to.evolutionTree?.mergeRecordedHistory?.(regionalHistory);
 }
 export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
  const status=planetaryTravelAvailability(sim);

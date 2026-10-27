@@ -59,7 +59,7 @@ f.converge();
 for(let day=0;day<6;day++){sim.day++;sim.speciation.evaluatePopulation(local)}
 assert.equal(sim.speciation.stateFor(local.key).recognized,true,'Ecological stability alone never forces the anatomy to keep evolving');
 for(let n=0;n<4;n++){
-  const child=f.body(local,'arid-pad',cohort.slice(0,2));
+  const child=f.body(local,'arid-pad',[cohort[0],f.parents[0]]);
   sim.speciation.noteBirth(child,[],[f.conceived(cohort[0]),f.conceived(f.parents[0])]);
 }
 assert.equal(sim.speciation.geneFlowFor(local.key).ratio,.5);
@@ -73,4 +73,25 @@ for(const a of extinct.sim.animals)if(a.speciesBranch?.id===extinctId)a.alive=fa
 extinct.sim.day++;extinct.sim.speciation.evaluatePopulation(extinct.local);
 assert.equal(extinct.sim.evolutionTree.node(extinctId).status,'extinct');
 assert.equal(extinct.sim.lineage.records.size,0);
+// A still-unmixed carrier in another actual population is not erased when
+// the origin's recorded mixed births rejoin that local boundary.
+const separate=fixture(),foreign=separate.sim;
+foreign.speciation.evaluatePopulation(separate.local);foreign.day++;
+foreign.speciation.evaluatePopulation(separate.local);
+const retained=foreign.speciation.stateFor(separate.local.key).branch;
+const migrant=separate.body(separate.source,'arid-pad',separate.cohort.slice(0,2));
+foreign.protoSpeciation.onBirth(migrant,separate.cohort.slice(0,2));
+migrant.speciesBranch={...retained};foreign.evolutionTree.onIdentityAssigned(migrant,retained);
+separate.source.memberIds.add(migrant.id);
+for(let n=0;n<4;n++){
+  const parents=[separate.cohort[0],separate.parents[0]];
+  const child=separate.body(separate.local,'arid-pad',parents);
+  foreign.speciation.noteBirth(child,[],parents.map(separate.conceived));
+}
+for(let day=0;day<2;day++){foreign.day++;foreign.speciation.evaluatePopulation(separate.local)}
+assert.equal(foreign.speciation.stateFor(separate.local.key).recognized,false);
+assert.ok(separate.cohort.every(a=>!a.speciesBranch),'Actual origin cohort still rejoins');
+assert.equal(foreign.evolutionTree.taxonFor(migrant),retained.id,'A separate unmixed carrier keeps its existing identity');
+assert.equal(foreign.speciation.identityFor(migrant).id,retained.id);
+assert.equal(foreign.evolutionTree.snapshot().find(n=>n.id===retained.id).status,'living');
 console.log('Controlled autonomous recognition PASS: unchanged gates without G3/player flags, actual anatomy history, related ancestry/reference, stable identity, renewed compatible flow and retained extinction. Natural emergence remains unproven.');

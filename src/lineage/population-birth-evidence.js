@@ -1,4 +1,4 @@
-import {autonomousEvolutionEnabled} from './autonomous-evolution.js';
+import {autonomousEvolutionEnabled,regionalEvolutionEnabled} from './autonomous-evolution.js';
 import {naturalPopulationFor,regionalPopulationFor} from '../ecology/autonomous-founding.js';
 import {candidateContainsKey} from '../ecology/founding-candidate-contact.js';
 
@@ -18,11 +18,13 @@ export function conceptionPopulationEvidence(sim,parent){
 export function noteEvolutionaryBirth(controller,child,parents){
   const sim=controller.sim;
   if(!child?.alive||controller.births.some(event=>event.childId===child.id))return null;
-  const pop=controller.childPopulation(child);if(!pop)return null;
+  const pop=controller.childPopulation(child);
   // Unknown conception provenance cannot be upgraded to local-only breeding
   // from a parent's later birthplace, death location or ancestral origin key.
+  if(!pop&&!regionalEvolutionEnabled(sim))return null;
   const witnesses=parents.map(parent=>parent?.evolutionaryPopulationAtConception||null);
   if(witnesses.some(w=>w&&w.rules!=='conception-population/1'))throw Error('Unknown conception population evidence.');
+  if(!pop){controller.assignIdentity(child,null);return null;}
   const parentKeys=witnesses.map(w=>w?.key||null),sourceKeys=witnesses.map(w=>w?.sourceKey||null);
   const sourceKey=pop.scope==='regional-source'?pop.key:pop.sourcePopulationKey||null;
   const involvedKeys=[...new Set([pop.key,sourceKey,...parentKeys,...sourceKeys].filter(Boolean))];

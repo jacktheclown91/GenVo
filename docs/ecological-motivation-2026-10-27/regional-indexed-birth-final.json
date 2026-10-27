@@ -1,0 +1,39 @@
+{
+  "rules": "autonomous-evolution/2",
+  "preBirthTicks": 2880,
+  "births": 2,
+  "motherId": 1,
+  "fatherId": 2,
+  "branchId": "autonomous:natural%3A0%2C0%3A1:dryland-skin",
+  "parentEnergyBefore": 176,
+  "parentEnergyAfter": 160.95999999999998,
+  "replay": {
+    "ticks": 6,
+    "emigrants": 0,
+    "remaining": 0,
+    "key": "128,0",
+    "births": 2,
+    "deaths": 0,
+    "fullDays": 1,
+    "organisms": 3,
+    "written": 2,
+    "retained": 0,
+    "capture": "locked@62983458-93b4-43f2-998d-bfafa1d5916b",
+    "decodedRegions": 1
+  },
+  "reads": [
+    "world-regional-evolution-birth-proof|session|128,0",
+    "world-regional-evolution-birth-proof|active|0,0"
+  ],
+  "writes": [
+    "world-regional-evolution-birth-proof|session|128,0|locked@62983458-93b4-43f2-998d-bfafa1d5916b",
+    "world-regional-evolution-birth-proof|active|0,0|locked@62983458-93b4-43f2-998d-bfafa1d5916b"
+  ],
+  "peakLeases": 1,
+  "aborted": true,
+  "completeGraphExact": true,
+  "continuedTicks": 6,
+  "setup": "Controlled initial adult placement, reserves, sex, inherited phenotype and prior classification. Canonical paid conception, migration and complete gestation; no forced recognition or evolutionary outcome.",
+  "scope": "Headless Chromium with real IndexedDB. Persistence evidence; not native player journey or external usability acceptance.",
+  "errors": []
+}

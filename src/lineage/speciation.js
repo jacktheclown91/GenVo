@@ -1,4 +1,4 @@
-import {autonomousEvolutionEnabled} from './autonomous-evolution.js';
+import {autonomousEvolutionEnabled,regionalEvolutionEnabled} from './autonomous-evolution.js';
 import {noteEvolutionaryBirth,evolutionaryGeneFlow,trimEvolutionaryBirths} from './population-birth-evidence.js';
 // Population-level species recognition. v1.14 consumes only prospective evidence:
 // recorded local ecology, reinforced proto-traits, residence and recent gene flow.
@@ -6,6 +6,7 @@ import {noteEvolutionaryBirth,evolutionaryGeneFlow,trimEvolutionaryBirths} from 
 // existing ecology/render authorities without duplicating an engine species.
 
 import {SPECIES} from '../organisms/species.js';
+import {candidateContainsKey} from '../ecology/founding-candidate-contact.js';
 import {protoTraitMeta} from './proto-speciation.js';
 import {generateTaxonName,taxonNameExplanation} from './taxon-name-generator.js';
 
@@ -19,6 +20,7 @@ export class SpeciationController{
   childPopulation(child){return this.sim.protoSpeciation?.sourcePopulationFor?.(child)||null}
   traitFor(animal){return this.sim.protoSpeciation?.traitFor?.(animal)||null}
   identityFor(animal){
+    if(regionalEvolutionEnabled(this.sim)){const branch=this.sim.evolutionTree?.currentBranchFor?.(animal);return branch?{...branch}:null;}
     const raw=animal?.speciesBranch;if(!raw?.id)return null;const state=this.states.get(raw.populationKey);if(!state?.recognized||state.branch?.id!==raw.id)return null;return{...raw};
   }
   stateFor(key){return this.states.get(key)||null}
@@ -134,10 +136,62 @@ export class SpeciationController{
     this.notice={message:`Species split recognized · ${branch.label} has persisted at ${branch.populationLabel}.`,tone:'success'};return branch;
   }
   collapse(state,reason='renewed gene flow',{extinct=false}={}){
-    if(!state?.recognized)return false;const branch=state.branch,id=branch?.id,label=branch?.label||'Species branch';this.sim.evolutionTree?.onBoundaryEnded?.(branch,reason,{extinct});for(const a of this.sim.animals)if(a.alive&&a.speciesBranch?.id===id){delete a.speciesBranch;const rec=this.sim.lineage?.records?.get?.(a.id);if(rec)rec.speciesBranch=null;}state.recognized=false;state.branch=null;state.qualifyingDays=0;state.weakDays=0;state.recognizedDay=null;state.recognizedGeneration=null;this.notice={message:extinct?`${label} is extinct · its branch remains in lineage history.`:`${label} boundary rejoined · ${reason} is restoring gene flow.`,tone:extinct?'warn':'warn'};return true;
+    if(!state?.recognized)return false;
+    const branch=state.branch,id=branch?.id,label=branch?.label||'Species branch';
+    this.sim.evolutionTree?.onBoundaryEnded?.(branch,reason,{extinct});
+    const regional=regionalEvolutionEnabled(this.sim);
+    const pop=regional?this.populationByKey(state.populationKey):null;
+    for(const animal of this.sim.animals){
+      if(!animal.alive||animal.speciesBranch?.id!==id)continue;
+      const belongs=!regional||(pop?.kind==='autonomous'?
+        pop.memberIds.has(animal.id):pop&&this.affinityKey(animal)===pop.key);
+      if(!belongs)continue;
+      delete animal.speciesBranch;
+      const record=this.sim.lineage?.records?.get?.(animal.id);if(record)record.speciesBranch=null;
+    }
+    state.recognized=false;state.branch=null;state.qualifyingDays=0;state.weakDays=0;
+    state.recognizedDay=null;state.recognizedGeneration=null;
+    const message=extinct?
+      `${label} ${regional?'local population is no longer present':'is extinct'} · its branch remains in lineage history.`:
+      `${label} boundary rejoined · ${reason} is restoring gene flow.`;
+    this.notice={message,tone:'warn'};
+    return true;
+  }
+  inheritedIdentityFor(animal,pop){
+    if(!regionalEvolutionEnabled(this.sim))return null;
+    const parents=animal?.evolutionaryAncestry?.parentTaxonIds;
+    if(parents?.length!==2||parents[0]!==parents[1])return null;
+    const node=this.sim.evolutionTree?.node?.(parents[0]);
+    if(!node?.parentId)return null;
+    const originState=this.states.get(node.originPopulationKey);
+    if(originState&&!originState.recognized&&pop){
+      const origin=this.populationByKey(node.originPopulationKey);
+      if(candidateContainsKey(pop,node.originPopulationKey)||pop.sourcePopulationKey===node.originPopulationKey||
+         origin?.mergedInto===pop.key)return null;
+    }
+    // This is the same recorded taxon, not a new recognition or a new name.
+    // The ordinary inherited-phenotype threshold is still checked below.
+    return {id:node.id,label:node.label,nameOrigin:node.nameOrigin||null,
+      populationKey:node.originPopulationKey,populationLabel:node.originPopulationLabel,
+      traitId:node.traitId,pressure:node.pressure,parentId:node.parentId,
+      parentLabel:node.parentLabel,treeDepth:node.depth,recognizedDay:node.formedDay,
+      recognizedGeneration:node.formedGeneration};
   }
   assignIdentity(animal,pop=this.childPopulation(animal)){
-    if(!animal||!pop)return null;const state=this.states.get(pop.key);if(!state?.recognized||!state.branch)return null;const trait=autonomousEvolutionEnabled(this.sim)?this.sim.protoSpeciation.traitsFor(animal).find(t=>t.id===state.branch.traitId):this.traitFor(animal);if(!trait||trait.id!==state.branch.traitId||trait.strength<.24)return null;animal.speciesBranch={...state.branch};this.sim.evolutionTree?.onIdentityAssigned?.(animal,state.branch);return animal.speciesBranch;
+    if(!animal)return null;
+    const state=pop&&this.states.get(pop.key),branches=[];
+    if(state?.recognized&&state.branch)branches.push(state.branch);
+    const inherited=this.inheritedIdentityFor(animal,pop);
+    if(inherited)branches.push(inherited);
+    for(const branch of branches){
+      const trait=autonomousEvolutionEnabled(this.sim)?
+        this.sim.protoSpeciation.traitsFor(animal).find(t=>t.id===branch.traitId):this.traitFor(animal);
+      if(!trait||trait.id!==branch.traitId||trait.strength<.24)continue;
+      animal.speciesBranch={...branch};
+      this.sim.evolutionTree?.onIdentityAssigned?.(animal,branch);
+      return animal.speciesBranch;
+    }
+    return null;
   }
   evaluatePopulation(pop){
     const e=this.evidenceFor(pop);if(!e)return null;const state=e.state;if(state.lastEvaluationDay===this.sim.day)return e;state.lastEvaluationDay=this.sim.day;

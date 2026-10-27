@@ -1,3 +1,5 @@
+import {mergeEvolutionaryTreeHistory} from '../lineage/evolution-tree-history.js';
+import {regionalEvolutionEnabled} from '../lineage/autonomous-evolution.js';
 // E18: incremental offscreen organism ecology. Each step is an ORIGINAL
 // Simulation.update tick, never synthetic population or food growth.
 // Region snapshots remain the single organism/resource owner. No world is
@@ -160,10 +162,16 @@ export function advanceRemoteBiology(active,session,{maxTicks=OFFSCREEN_BIOLOGY.
  if(!staged.candidate)return staged.result;
  const nextSessions=active.planetaryTravel.sessions.map(s=>s===session?staged.candidate:s);
  validatePlanetAnimalOwnership(active.animals,{schema:1,nextId:Math.max(reservedNextId,staged.nextId),sessions:nextSessions});
+ let treeUpdate=null;
+ if(regionalEvolutionEnabled(active)){
+  if(!regionalEvolutionEnabled(staged.candidate.snapshot.core))throw Error('Inconsistent regional autonomous evolution policy.');
+  treeUpdate=mergeEvolutionaryTreeHistory(active.evolutionTree,staged.candidate.snapshot.controllers.evolutionTree);
+ }
  // Publish only after the shared staged tick/material/ownership checks pass.
  // Emigrants reach their destinations before the source publishes: a failed
  // delivery throws with nothing published.
  deliverEmigrants(active,dispersal,staged.emigrants);
+ if(treeUpdate)Object.assign(active.evolutionTree,treeUpdate);
  markRegionalOwnerDirty(session);Object.assign(session,staged.candidate);
  if(staged.warmSim)keepWarmRegion(session,staged.warmSim);
  active.nextId=Math.max(active.nextId,staged.nextId);

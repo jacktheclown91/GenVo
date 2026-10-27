@@ -1,5 +1,7 @@
 # Regional taxon candidate identity
 
+Follow-up: published `aea8ba3d` passed exact-head CI 40555130966 (both workers and required summary). The original regional failures below are retained diagnostic history; the prospective `/2` implementation now passes their corrected transport/restore cases, paid archived births and actual IndexedDB checks. See [regional history and remaining acceptance](REGIONAL-EVOLUTION-HISTORY-2026-10-27.md).
+
 The existing punctuation-stripped candidate ID maps population keys `natural:-128,0:1` and `natural:128,0:1` to the same branch. This is a controlled candidate-construction failure, not evidence that either naturally formed a species. [Original diagnostic](ecological-motivation-2026-10-27/regional-taxon-id-collision.json).
 
 For opted-in autonomous-evolution/1 worlds, SpeciationController now encodes each complete population key and trait ID as separate components. Signs and separators survive. Before constructing a new ID, the same controller checks the existing evolutionary tree for a recorded node with that exact population key and trait. Recorded IDs and names remain stable, including rejoined/extinct history and historically formatted IDs. A different population cannot borrow an old colliding node. Worlds without the policy retain their existing ID construction exactly.

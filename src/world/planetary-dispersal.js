@@ -1,3 +1,5 @@
+import {mergeEvolutionaryTreeHistory,evolutionaryHistoryForBodies} from '../lineage/evolution-tree-history.js';
+import {regionalEvolutionEnabled} from '../lineage/autonomous-evolution.js';
 import {CFG} from '../sim/config.js';
 import {planetRegionOrigin,regionKey,neighboringRegion,compactRegionalTravelerPositions} from './planet-regions.js';
 import {canSwim} from '../lineage/lifestyle.js';
@@ -57,26 +59,64 @@ export function dispersalContextFor(active,sourceKey,sourceTick){
 // source by that source's own step; every one is delivered or the step throws
 // before anything is published.
 export function deliverEmigrants(active,context,emigrants){
- if(!emigrants?.length)return[];if(!context)throw Error('Emigrants left a region without an open border.');
- const plans=emigrants.map(e=>{const r=context.receivers[e.direction],p=r&&placeArrival(r.water,e.direction,e.from.x,e.from.y,e.animal);if(!p)throw Error('Emigrant has no arrival position in '+(r?.key||e.direction)+'.');return{e,r,p}});
- const delivered=[];
- for(const {e,r,p} of plans){
-  const a=structuredClone(e.animal);
-  Object.assign(a,{x:p.x,y:p.y,target:null,intent:'explore',navigationRoute:null,pursuitEngaged:false,hidden:false,movedTick:undefined});delete a.movedTick;
-  a.dispersalHistory=[...(a.dispersalHistory||[]),{from:context.sourceKey,to:r.key,day:e.day,tick:e.tick}].slice(-REGIONAL_DISPERSAL.historyLength);
-  if(r.kind==='active'){
-   if(active.animals.some(b=>b.id===a.id))throw Error('Immigrant identity already present.');
-   active.animals.push(a);active.stats.immigrants=(active.stats.immigrants||0)+1;
-  }else{
-   const snap=r.session.snapshot;if(snap.animals.some(b=>b.id===a.id))throw Error('Immigrant identity already present.');
-   markRegionalOwnerDirty(r.session);snap.animals.push(a);snap.core.stats={...snap.core.stats,immigrants:(snap.core.stats?.immigrants||0)+1};
-   if(r.session.biologicalLedger)r.session.biologicalLedger={...r.session.biologicalLedger,lastPopulation:snap.animals.length,immigrants:(r.session.biologicalLedger.immigrants||0)+1};
+  if(!emigrants?.length)return[];
+  if(!context)throw Error('Emigrants left a region without an open border.');
+  const plans=emigrants.map(e=>{
+    const r=context.receivers[e.direction];
+    const p=r&&placeArrival(r.water,e.direction,e.from.x,e.from.y,e.animal);
+    if(!p)throw Error('Emigrant has no arrival position in '+(r?.key||e.direction)+'.');
+    const animal=structuredClone(e.animal);
+    Object.assign(animal,{x:p.x,y:p.y,target:null,intent:'explore',navigationRoute:null,
+      pursuitEngaged:false,hidden:false});delete animal.movedTick;
+    animal.dispersalHistory=[...(animal.dispersalHistory||[]),
+      {from:context.sourceKey,to:r.key,day:e.day,tick:e.tick}].slice(-REGIONAL_DISPERSAL.historyLength);
+    return {e,r,animal};
+  });
+  const receivers=new Map();
+  for(const plan of plans){
+    const {r,e,animal}=plan,owner=r.kind==='active'?active:r.session;
+    let staged=receivers.get(owner);
+    if(!staged){
+      const animals=r.kind==='active'?active.animals:r.session.snapshot.animals;
+      staged={ids:new Set(animals.map(a=>a.id)),bodies:[],histories:new Set(),tree:null,
+        target:regionalEvolutionEnabled(active)?(r.kind==='active'?active.evolutionTree:r.session.snapshot.controllers?.evolutionTree):null};
+      receivers.set(owner,staged);
+    }
+    if(e.evolutionaryHistory&&!regionalEvolutionEnabled(active))
+      throw Error('Inconsistent regional autonomous evolution policy.');
+    if(regionalEvolutionEnabled(active)&&r.kind!=='active'&&!regionalEvolutionEnabled(r.session.snapshot.core))
+      throw Error('Inconsistent regional autonomous evolution policy.');
+    if(staged.ids.has(animal.id))throw Error('Immigrant identity already present.');
+    staged.ids.add(animal.id);staged.bodies.push(animal);
+    if(regionalEvolutionEnabled(active)&&e.evolutionaryHistory&&!staged.histories.has(e.evolutionaryHistory)){
+      staged.tree=mergeEvolutionaryTreeHistory(staged.tree||staged.target,e.evolutionaryHistory);
+      staged.histories.add(e.evolutionaryHistory);
+    }
   }
-  delivered.push({id:a.id,from:context.sourceKey,to:r.key,day:e.day,tick:e.tick});
- }
- if(delivered.some(d=>d.to===regionKey(active.world.regionOrigin))){active.rebuildSpatial();active.regionalEcology?.resetPageResidency?.()}
- const log=active.planetaryTravel;if(log)log.dispersalLog=[...(log.dispersalLog||[]),...delivered].slice(-REGIONAL_DISPERSAL.logLength);
- return delivered;
+  if(regionalEvolutionEnabled(active))for(const staged of receivers.values())
+    evolutionaryHistoryForBodies(staged.tree||staged.target,staged.bodies);
+  // All positions, clones, identities and recorded ancestry are checked before
+  // publishing any receiver. No ancestor is inferred from a species label.
+  for(const staged of receivers.values())if(staged.tree)Object.assign(staged.target,staged.tree);
+  const delivered=[];
+  for(const {e,r,animal:a} of plans){
+    if(r.kind==='active'){
+      active.animals.push(a);active.stats.immigrants=(active.stats.immigrants||0)+1;
+    }else{
+      const snap=r.session.snapshot;
+      markRegionalOwnerDirty(r.session);snap.animals.push(a);
+      snap.core.stats={...snap.core.stats,immigrants:(snap.core.stats?.immigrants||0)+1};
+      if(r.session.biologicalLedger)r.session.biologicalLedger={...r.session.biologicalLedger,
+        lastPopulation:snap.animals.length,immigrants:(r.session.biologicalLedger.immigrants||0)+1};
+    }
+    delivered.push({id:a.id,from:context.sourceKey,to:r.key,day:e.day,tick:e.tick});
+  }
+  if(delivered.some(d=>d.to===regionKey(active.world.regionOrigin))){
+    active.rebuildSpatial();active.regionalEcology?.resetPageResidency?.();
+  }
+  const log=active.planetaryTravel;
+  if(log)log.dispersalLog=[...(log.dispersalLog||[]),...delivered].slice(-REGIONAL_DISPERSAL.logLength);
+  return delivered;
 }
 // Transient, never saved: the context holds functions over live regions.
 export function setDispersalContext(sim,context){Object.defineProperty(sim,'regionalDispersalContext',{value:context||null,writable:true,configurable:true,enumerable:false})}
@@ -104,6 +144,8 @@ export function nearestOpenExit(sim,animal,radius){
 // End of a step: detach the queued emigrants from the population.
 export function takeEmigrants(sim){
  const pending=sim.pendingEmigrants;if(!pending?.length)return[];
+ const history=sim.evolutionTree?.recordedHistoryFor?.(pending.map(event=>event.animal));
+ if(history)for(const event of pending)event.evolutionaryHistory=history;
  const leaving=new Set(pending.map(e=>e.animal));compactRegionalTravelerPositions(sim,a=>leaving.has(a));sim.animals=sim.animals.filter(a=>!leaving.has(a));delete sim.pendingEmigrants;
  sim.stats.emigrants=(sim.stats.emigrants||0)+pending.length;sim.migration?.states?.forEach?.((_,id)=>{if([...leaving].some(a=>a.id===id))sim.migration.states.delete(id)});
  sim.rebuildSpatial();sim.regionalEcology?.resetPageResidency?.();

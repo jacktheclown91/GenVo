@@ -1,3 +1,5 @@
+import {mergeEvolutionaryTreeHistory} from '../lineage/evolution-tree-history.js';
+import {regionalEvolutionEnabled} from '../lineage/autonomous-evolution.js';
 // Bounded decoded-page ownership over one committed checkpoint. No simulation,
 // clock advancement or regeneration lives here; persisted records remain owned
 // by the checkpoint even after a decoded lease is released.
@@ -52,10 +54,18 @@ export class RegionalCheckpointReader{
    let remote=await this.#acquire('session',due.key),staged=stageRemoteBiology(remote.payload,{tickCount:previous.core.tickCount,reservedNextId:index.nextId});
    if(!staged.candidate||!staged.result.ticks)throw Error('Due persisted replay made no progress.');
    const result=staged.result,nextId=staged.nextId;
+   // The directory intentionally carries no biological policy. Read the
+   // policy from its actual remote owner, then compare the actual active page
+   // before publishing either. A manifest lookup silently skipped /2 history.
+   const evolutionRules=staged.candidate.snapshot.core.autonomousEvolutionRules;
+   const recordedEvolution=regionalEvolutionEnabled(staged.candidate.snapshot.core)?staged.candidate.snapshot.controllers.evolutionTree:null;
    await writer.stage('session',staged.candidate);staged=null;remote.release();remote=null;
    let active=await this.#acquire('active',index.active.key),payload=active.payload;
+   if(payload.core.autonomousEvolutionRules!==evolutionRules)throw Error('Inconsistent regional autonomous evolution policy.');
    payload.core.nextId=Math.max(payload.core.nextId,nextId);
    payload.core.planetaryTravel.nextId=Math.max(payload.core.planetaryTravel.nextId,payload.core.nextId);
+   if(recordedEvolution)Object.assign(payload.controllers.evolutionTree,
+    mergeEvolutionaryTreeHistory(payload.controllers.evolutionTree,recordedEvolution));
    await writer.stage('active',payload);payload=null;active.release();active=null;
    if(this.#closed)throw Error('Regional reader closed before replay publication.');
    const committed=await writer.publish();

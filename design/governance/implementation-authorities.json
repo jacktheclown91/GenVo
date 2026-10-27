@@ -25,7 +25,7 @@
       "authority": "src/lineage/speciation.js",
       "inheritedEvidence": "src/lineage/proto-speciation.js",
       "ancestry": "src/lineage/evolution-tree.js",
-      "helpers": ["src/lineage/autonomous-evolution.js", "src/lineage/inherited-anatomy-evidence.js", "src/lineage/population-birth-evidence.js", "src/lineage/autonomous-evolution-state.js"],
+      "helpers": ["src/lineage/autonomous-evolution.js", "src/lineage/inherited-anatomy-evidence.js", "src/lineage/population-birth-evidence.js", "src/lineage/autonomous-evolution-state.js", "src/lineage/evolution-tree-history.js", "src/lineage/evolution-tree-identity.js", "src/lineage/evolution-tree-census.js"],
       "consumers": ["src/lineage/lineage.js", "src/ecology/gestation.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js"],
       "contract": "docs/AUTONOMOUS-RECOGNITION-2026-10-27.md",
       "note": "Explicit prospective policy; actual inherited parts and conception witnesses feed the existing unchanged recognition gates. No new resources, allele choices, player ownership, reproductive barrier or competing species registry. Ordinary-field and regional acceptance remain separate."

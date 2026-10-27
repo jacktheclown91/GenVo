@@ -1,0 +1,166 @@
+{
+  "scope": "Three fresh headless Chromium contexts on uncompressed loopback HTTP. Actual native New World controls and art readiness. No WAN/itch timing claim and no mature scenario selection.",
+  "sourceHead": "aea8ba3dbc70f5cbf1ad956bfc6dae39cde3153f",
+  "uncommittedRegionalHistoryCandidate": true,
+  "rawReceiptSha256": "25823a133293d587d1b6c300f4e52e07538ff76696f02c76b8f06682334f8f60",
+  "samples": [
+    {
+      "sample": 0,
+      "errors": [],
+      "menu": {
+        "readyMs": 1901.5,
+        "requests": 484,
+        "resourceTransferBytes": 4343156,
+        "decodedResourceBytes": 4197956,
+        "scenarioRequests": []
+      },
+      "gameplay": {
+        "readyMs": 3743.0999999046326,
+        "requests": 582,
+        "resourceTransferBytes": 11129633,
+        "decodedResourceBytes": 10955033,
+        "scenarioRequests": [
+          {
+            "path": "/assets/scenarios/catalog.json",
+            "transfer": 1595,
+            "encoded": 1295,
+            "decoded": 1295,
+            "duration": 12.200000047683716
+          }
+        ]
+      }
+    },
+    {
+      "sample": 1,
+      "errors": [],
+      "menu": {
+        "readyMs": 1910,
+        "requests": 482,
+        "resourceTransferBytes": 4196031,
+        "decodedResourceBytes": 4051431,
+        "scenarioRequests": []
+      },
+      "gameplay": {
+        "readyMs": 3851.0999999046326,
+        "requests": 583,
+        "resourceTransferBytes": 11196640,
+        "decodedResourceBytes": 11021740,
+        "scenarioRequests": [
+          {
+            "path": "/assets/scenarios/catalog.json",
+            "transfer": 1595,
+            "encoded": 1295,
+            "decoded": 1295,
+            "duration": 7.099999904632568
+          }
+        ]
+      }
+    },
+    {
+      "sample": 2,
+      "errors": [],
+      "menu": {
+        "readyMs": 1731.5999999046326,
+        "requests": 484,
+        "resourceTransferBytes": 4343156,
+        "decodedResourceBytes": 4197956,
+        "scenarioRequests": []
+      },
+      "gameplay": {
+        "readyMs": 3560.2000000476837,
+        "requests": 582,
+        "resourceTransferBytes": 11129633,
+        "decodedResourceBytes": 10955033,
+        "scenarioRequests": [
+          {
+            "path": "/assets/scenarios/catalog.json",
+            "transfer": 1595,
+            "encoded": 1295,
+            "decoded": 1295,
+            "duration": 5.700000047683716
+          }
+        ]
+      }
+    }
+  ],
+  "gitBackedAssets": {
+    "files": 815,
+    "bytes": 142657874,
+    "optionalScenarioFiles": [
+      {
+        "path": "assets/scenarios/established-valley-d30.json.gz",
+        "bytes": 14283414
+      },
+      {
+        "path": "assets/scenarios/mature-valley-d100.json.gz",
+        "bytes": 43240065
+      }
+    ],
+    "optionalScenarioBytes": 57523479,
+    "largest": [
+      {
+        "path": "assets/scenarios/mature-valley-d100.json.gz",
+        "bytes": 43240065
+      },
+      {
+        "path": "assets/scenarios/established-valley-d30.json.gz",
+        "bytes": 14283414
+      },
+      {
+        "path": "assets/art/production-review/riparian-bank-v1/sediment-master.png",
+        "bytes": 1850724
+      },
+      {
+        "path": "assets/art/production-review/defensive-shell-v1/shell-master.png",
+        "bytes": 1703083
+      },
+      {
+        "path": "assets/art/production-review/powered-wing-v1/wing-master.png",
+        "bytes": 1497325
+      },
+      {
+        "path": "assets/art/production-review/cloud-shade-v1/master.png",
+        "bytes": 1481722
+      },
+      {
+        "path": "assets/art/production-review/overhead-habitats-v1/substrate-master.png",
+        "bytes": 1380885
+      },
+      {
+        "path": "assets/art/production-review/ice-surfaces-v1/ice-master.png",
+        "bytes": 1357542
+      },
+      {
+        "path": "assets/art/production-review/overhead-displays-v1/display-frill-master.png",
+        "bytes": 1296599
+      },
+      {
+        "path": "assets/art/production-review/head-rejected-directions.png",
+        "bytes": 1287767
+      },
+      {
+        "path": "assets/art/production-review/cave-surfaces-v1/limestone-master.png",
+        "bytes": 1287210
+      },
+      {
+        "path": "assets/art/production-review/storage-anatomy-v1/sac-master.png",
+        "bytes": 1282835
+      },
+      {
+        "path": "assets/art/production-review/sensory-dorsal-v1/echo-master.png",
+        "bytes": 1271854
+      },
+      {
+        "path": "assets/art/production-review/biome-substrates-v1/dry-earth-master.png",
+        "bytes": 1267499
+      },
+      {
+        "path": "assets/art/production-review/biome-substrates-v1/highland-rock-master.png",
+        "bytes": 1266615
+      }
+    ]
+  },
+  "conclusion": "Ordinary New World requested no advanced compressed checkpoint in all three fresh contexts. ZIP scenario size is not evidence of an initial game network download. Retain advanced scenarios and original art/audio; no packaging change is justified by this measurement alone.",
+  "resourceTimingBuffer": 10000,
+  "retainedToolingFailure": "The earlier 250-entry receipt hit the browser default timing buffer and is incomplete; retained as diagnostic only. This receipt uses fresh contexts and an expanded buffer before navigation."
+}

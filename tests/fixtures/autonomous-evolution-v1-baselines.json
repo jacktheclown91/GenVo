@@ -1,0 +1,62 @@
+{
+  "schema": "genvo.autonomous-evolution-v1-baseline/1",
+  "scope": "Frozen only from untouched published aea8ba3d, hash-verified Git source. Never regenerate from the candidate implementation. Exact per-engine complete world and continued signatures.",
+  "profiles": [
+    {
+      "sourceCommit": "aea8ba3dbc70f5cbf1ad956bfc6dae39cde3153f",
+      "sourceManifestSha256": "29693c5380f3244b3b5ad832abc2ab137ed2e272d9c4fdffde8f6ffe662c7915",
+      "node": "v22.23.4",
+      "nodeMajor": 22,
+      "seed": "SIMILARITY-FIELD-1",
+      "options": {
+        "player": true,
+        "worldGenerator": "planetary/1",
+        "regionalFrontier": true,
+        "autonomousPopulations": true,
+        "autonomousEvolution": "autonomous-evolution/1",
+        "courtshipSimilarity": true,
+        "dayClock": true,
+        "metabolism": true,
+        "foodProperties": true,
+        "tissueWater": true,
+        "winterWater": true,
+        "escapeLanding": true,
+        "tissueEnergy": true,
+        "perennialRegrowth": true
+      },
+      "ticks": 5760,
+      "births": 1,
+      "signature": "0b8e238e272a24b69f37069d1e805e59d2d075d402d4914d337a399215a41da1",
+      "continuedSignature": "e24b85b7a7e2918b4b8ac05fd5473a3e88d74cb02b6248cb3516303b811d41f3",
+      "scope": "Untouched published Git source, original explicit autonomous-evolution/1. Ordinary constructor and native AUTO, complete world including actual births/RNG/resources/history, exact restoration and six ticks. Not recorded from the correction."
+    },
+    {
+      "sourceCommit": "aea8ba3dbc70f5cbf1ad956bfc6dae39cde3153f",
+      "sourceManifestSha256": "29693c5380f3244b3b5ad832abc2ab137ed2e272d9c4fdffde8f6ffe662c7915",
+      "node": "v24.14.0",
+      "nodeMajor": 24,
+      "seed": "SIMILARITY-FIELD-1",
+      "options": {
+        "player": true,
+        "worldGenerator": "planetary/1",
+        "regionalFrontier": true,
+        "autonomousPopulations": true,
+        "autonomousEvolution": "autonomous-evolution/1",
+        "courtshipSimilarity": true,
+        "dayClock": true,
+        "metabolism": true,
+        "foodProperties": true,
+        "tissueWater": true,
+        "winterWater": true,
+        "escapeLanding": true,
+        "tissueEnergy": true,
+        "perennialRegrowth": true
+      },
+      "ticks": 5760,
+      "births": 1,
+      "signature": "52f078d23fd3aab3e9acaea5716f6d32af5171088deb80bd771aa387cfc8fa7a",
+      "continuedSignature": "825cd1aec97d4ffc4e971204d44d6bf41bfca6b4868d6a7e211b6adfaf12ffb5",
+      "scope": "Untouched published Git source, original explicit autonomous-evolution/1. Ordinary constructor and native AUTO, complete world including actual births/RNG/resources/history, exact restoration and six ticks. Not recorded from the correction."
+    }
+  ]
+}
