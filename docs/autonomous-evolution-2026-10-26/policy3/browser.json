@@ -1,0 +1,140 @@
+{
+ "root": "C:\\Users\\jackt\\.codex\\worktrees\\torpor-presentation-proof\\genvo-toolkit",
+ "checks": {
+  "newWorld": {
+   "startingCreatureOptions": [
+    "recorded",
+    "resident",
+    "guided",
+    "sandbox",
+    "starter-jump",
+    "starter-burrow",
+    "starter-flight",
+    "starter-dive"
+   ],
+   "chosen": "starter-jump",
+   "generator": "planetary/1",
+   "species": "genvo",
+   "parts": [
+    "small-torso",
+    "simple-eye",
+    "spring-leg",
+    "walking-leg",
+    "grazing-mouth"
+   ],
+   "stage": "step-food",
+   "populationPolicy": "autonomous-populations/3",
+   "naturalState": true,
+   "day": 1,
+   "animals": 194
+  },
+  "keyboardMovement": {
+   "tilesPerKey": {
+    "KeyD": 2.16,
+    "KeyS": 2.12,
+    "KeyA": 1.87,
+    "KeyW": 2.02
+   }
+  },
+  "audio": {
+   "unlocked": true,
+   "context": "running",
+   "muted": false
+  },
+  "drink": {
+   "before": 40,
+   "after": 65.1,
+   "firstDrink": true,
+   "staged": "creature placed on drinkable ground"
+  },
+  "eat": {
+   "kind": "sunmoss",
+   "before": 40,
+   "after": 45.3,
+   "firstMeal": true,
+   "staged": "creature placed beside food"
+  },
+  "framePacing20s": {
+   "frames": 656,
+   "median": 33.3,
+   "p95": 50,
+   "max": 66.7,
+   "over100": 0
+  },
+  "saveContinue": {
+   "saved": {
+    "populationPolicy": "autonomous-populations/3",
+    "tick": 239,
+    "day": 1,
+    "player": 197,
+    "x": 55.002,
+    "parts": 8,
+    "animals": 194,
+    "slot": "world-4838be4c-a113-45fc-b491-57bdd2e6e17f"
+   },
+   "loaded": {
+    "populationPolicy": "autonomous-populations/3",
+    "tick": 246,
+    "day": 2,
+    "player": 197,
+    "x": 55.002,
+    "parts": 8,
+    "animals": 194
+   }
+  },
+  "layouts": {
+   "960x600": {
+    "overflowX": false,
+    "overflowY": false,
+    "canvas": [
+     960,
+     600
+    ],
+    "view": [
+     960,
+     600
+    ]
+   },
+   "1280x720": {
+    "overflowX": false,
+    "overflowY": false,
+    "canvas": [
+     1280,
+     720
+    ],
+    "view": [
+     1280,
+     720
+    ]
+   },
+   "1920x1080": {
+    "overflowX": false,
+    "overflowY": false,
+    "canvas": [
+     1920,
+     1080
+    ],
+    "view": [
+     1920,
+     1080
+    ]
+   },
+   "800x500": {
+    "overflowX": false,
+    "overflowY": false,
+    "canvas": [
+     800,
+     500
+    ],
+    "view": [
+     800,
+     500
+    ]
+   }
+  }
+ },
+ "missingResources": [],
+ "failedRequests": [],
+ "pageErrors": [],
+ "consoleErrors": []
+}

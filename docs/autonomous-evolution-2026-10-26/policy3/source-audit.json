@@ -1,0 +1,22 @@
+{
+  "schema": "genvo8.canonical-audit/1",
+  "status": "PASS",
+  "entrypoint": "src/main.js",
+  "totalSourceModules": 435,
+  "runtimeReachableModules": 427,
+  "runtimeDependencyFiles": 440,
+  "toolOrTestModules": [
+    "src/lineage/phenotype-resolver.js",
+    "src/lineage/swimming-review.js",
+    "src/organisms/tissue-construction.js",
+    "src/organisms/tissue-ledger.js",
+    "src/persistence/fauna-page-checkpoint.js",
+    "src/render/authored-draft-compiler.js",
+    "src/render/fauna.js",
+    "src/ui/food-choice-view.js"
+  ],
+  "registeredParts": 97,
+  "proceduralSpriteIds": 97,
+  "identicalSourceCopies": [],
+  "errors": []
+}

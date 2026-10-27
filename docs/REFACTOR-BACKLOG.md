@@ -6,6 +6,8 @@ All tasks start from live main, preserve unrelated work, and update the continua
 
 The new demographic observation helper is borrowed by `PopulationPressureMemoryController`; it is not a replacement evolution controller or completion of the later cleanup stage. Keep establishment evidence separate from player G3 achievements and species recognition. Complete recognition integration and regional continuity through existing authorities, then profile the major stalls before choosing the single bounded cleanup. Current implementation/evidence: [autonomous evolution](AUTONOMOUS-EVOLUTION-2026-10-26.md).
 
+Current founding work shares the original pure learned-range geometry with territorial memory and keeps residence, candidate contact and regional census as helpers borrowed by population memory. This is scoped mechanism support, not the optional Stage F extraction. Frozen policy-1/2 complete-state fixtures protect historical semantics; do not regenerate them to fit a new grouping rule.
+
 ## 1. Extract ordered controller composition (completed at 5bc4ea27; retain as acceptance record)
 
 - Goal/files: move the contiguous `this.lineage = new LineageTracker(this)` through `this.wildlifeRhythm = new WildlifeRhythmController(this)` constructor segment from `src/sim/simulation.js` to `src/sim/controller-composition.js`.

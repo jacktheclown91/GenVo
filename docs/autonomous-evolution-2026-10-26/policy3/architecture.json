@@ -1,0 +1,135 @@
+{
+  "status": "PASS",
+  "sourceModules": 435,
+  "cycles": [
+    [
+      "src/ecology/canopy-site.js",
+      "src/lineage/gliding.js"
+    ],
+    [
+      "src/ecology/flora-genotype.js",
+      "src/ecology/freshwater-food.js",
+      "src/ecology/functional-diet.js",
+      "src/ecology/mammalian-care.js",
+      "src/ecology/metabolism-policy.js",
+      "src/ecology/organic-resource-cycle.js",
+      "src/ecology/plant-resources.js",
+      "src/ecology/soil-water.js",
+      "src/ecology/tissue-energy.js",
+      "src/ecology/young-climate.js",
+      "src/family/family.js",
+      "src/family/learned-resource-target.js",
+      "src/lineage/aquatic.js",
+      "src/lineage/body-plan.js",
+      "src/lineage/burrowing.js",
+      "src/lineage/cave-traversal.js",
+      "src/lineage/coat-moisture.js",
+      "src/lineage/diving.js",
+      "src/lineage/evolution.js",
+      "src/lineage/head-plan.js",
+      "src/lineage/ice-locomotion.js",
+      "src/lineage/part-abilities.js",
+      "src/lineage/readings.js",
+      "src/lineage/seasonal-coat.js",
+      "src/organisms/body-mass.js",
+      "src/organisms/species.js",
+      "src/organisms/tissue-structure.js",
+      "src/organisms/wild-bodies.js",
+      "src/reproduction/reproductive-anatomy.js",
+      "src/world/environment.js",
+      "src/world/planetary-boundary-water.js",
+      "src/world/planetary-channel-topology.js",
+      "src/world/planetary-internal-water.js",
+      "src/world/planetary-runoff.js",
+      "src/world/planetary-seam-groundwater.js",
+      "src/world/planetary-seam-runoff.js",
+      "src/world/planetary-wetbed-sediment.js",
+      "src/world/surface-ice.js"
+    ],
+    [
+      "src/persistence/regional-reader.js",
+      "src/persistence/save-manager.js",
+      "src/sim/simulation.js",
+      "src/world/planetary-demography.js",
+      "src/world/planetary-offscreen-biology.js",
+      "src/world/planetary-offscreen-environment.js",
+      "src/world/planetary-seam-salt.js"
+    ]
+  ],
+  "presentationImports": [],
+  "largest": [
+    {
+      "file": "src/sim/simulation.js",
+      "bytes": 145845,
+      "dependencies": 123,
+      "longestLine": 3466
+    },
+    {
+      "file": "src/render/renderer.js",
+      "bytes": 123695,
+      "dependencies": 77,
+      "longestLine": 2154
+    },
+    {
+      "file": "src/ui/tutorial.js",
+      "bytes": 63158,
+      "dependencies": 14,
+      "longestLine": 2747
+    },
+    {
+      "file": "src/persistence/save-manager.js",
+      "bytes": 61217,
+      "dependencies": 86,
+      "longestLine": 632
+    },
+    {
+      "file": "src/main.js",
+      "bytes": 59435,
+      "dependencies": 74,
+      "longestLine": 2561
+    },
+    {
+      "file": "src/ui/inspector.js",
+      "bytes": 58581,
+      "dependencies": 22,
+      "longestLine": 2124
+    },
+    {
+      "file": "src/ui/creature-editor.js",
+      "bytes": 48281,
+      "dependencies": 18,
+      "longestLine": 1959
+    },
+    {
+      "file": "src/render/part-sprites.js",
+      "bytes": 42966,
+      "dependencies": 4,
+      "longestLine": 571
+    },
+    {
+      "file": "src/render/genvo-draw.js",
+      "bytes": 41223,
+      "dependencies": 11,
+      "longestLine": 648
+    },
+    {
+      "file": "src/family/family.js",
+      "bytes": 36675,
+      "dependencies": 7,
+      "longestLine": 478
+    },
+    {
+      "file": "src/lineage/part-abilities.js",
+      "bytes": 35416,
+      "dependencies": 7,
+      "longestLine": 338
+    },
+    {
+      "file": "src/ui/creature-context-tray.js",
+      "bytes": 33905,
+      "dependencies": 19,
+      "longestLine": 4491
+    }
+  ],
+  "errors": []
+}

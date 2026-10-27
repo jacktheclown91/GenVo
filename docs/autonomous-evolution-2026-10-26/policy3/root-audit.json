@@ -1,0 +1,69 @@
+[
+  {
+    "seed": "POPULATION-FOUNDING-PROBE-0",
+    "day": 61,
+    "tick": 14400,
+    "populations": [
+      {
+        "key": "natural:0,0:2",
+        "species": "mosskip",
+        "establishedDay": 46,
+        "status": "established",
+        "members": 37,
+        "playerLineage": 0,
+        "registeredTaxa": [
+          "genvo8-root"
+        ],
+        "litters": 5,
+        "recruits": 7,
+        "allMembersReachAnchor": true
+      }
+    ],
+    "connectivity": [],
+    "continuation": "Complete snapshot and six-tick restored continuation equal"
+  },
+  {
+    "seed": "POPULATION-FOUNDING-PROBE-1",
+    "day": 61,
+    "tick": 14400,
+    "populations": [
+      {
+        "key": "natural:0,0:1",
+        "species": "mosskip",
+        "establishedDay": 34,
+        "status": "established",
+        "members": 23,
+        "playerLineage": 0,
+        "registeredTaxa": [
+          "genvo8-root"
+        ],
+        "litters": 4,
+        "recruits": 5,
+        "allMembersReachAnchor": true
+      },
+      {
+        "key": "natural:0,0:2",
+        "species": "mosskip",
+        "establishedDay": 46,
+        "status": "established",
+        "members": 42,
+        "playerLineage": 0,
+        "registeredTaxa": [
+          "genvo8-root"
+        ],
+        "litters": 6,
+        "recruits": 9,
+        "allMembersReachAnchor": true
+      }
+    ],
+    "connectivity": [
+      {
+        "first": "natural:0,0:1",
+        "second": "natural:0,0:2",
+        "firstToSecond": false,
+        "secondToFirst": false
+      }
+    ],
+    "continuation": "Complete snapshot and six-tick restored continuation equal"
+  }
+]

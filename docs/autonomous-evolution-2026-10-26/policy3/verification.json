@@ -1,0 +1,32 @@
+{
+  "scope": "Current uncommitted regional-source checkpoint. Exact-head remote CI remains pending. No release candidate.",
+  "checks": {
+    "playableShards": [
+      62,
+      62
+    ],
+    "strengthenedFounding": "Node22/24 PASS",
+    "historicalPolicyBaselines": "Node22/24 frozen policies1/2 PASS",
+    "architecture": "PASS",
+    "sourceAudit": "PASS after sprite exporter",
+    "publicExport": "PASS",
+    "browser": "Native new-world input, food/water, visible Save/Continue, layouts, no page/console errors",
+    "naturalFields": "2x320 days, full save plus six-tick restored continuation"
+  },
+  "files": {
+    "architecture.json": "6571118069701eb4efc041613bd9a7562b8e86a60a94f174244e53e9f8c46846",
+    "browser.json": "918f2a869da428fa27806a0f6544fe6ceb82caaecf974ad140c24765f2de5332",
+    "continued.png": "f545a66d9f47e0f9866828ab3e47410a9c5f9b8fddd4982458ac235529ac8660",
+    "field-320-archive.json": "abd0c44761fc7260470ca02379ec09cf1b85423c6c00ba42d3656b8fe845e556",
+    "field-archive.json": "e307103a456f77f67c3baad780df163ec2e45a464a484b53cbc15cebe07c5969",
+    "field-summary.json": "83b92c5c149f9cafee870f2bc9983ac08c521f0f2286ac25ef26910455650bd3",
+    "founding-node22.log": "c8bdcbb5506030055166ba2aea1caade09ffb6de85249b89a5108b8429320954",
+    "gate-shard1.log": "5238eb929299fe2044d2523084a37dca0c01d6b5e867a485ab3ffa19dcf24044",
+    "gate-shard2.log": "6ff8dba6dac8d4d84ab98a034cbd929694e04326232a3782babe24a6f718c767",
+    "physical-parity.json": "eac8c343c57ab1677736d867800d6d1a2186d8d9644aca65e6c23d3e28dfb7bb",
+    "public-export.log": "74e2493cc3a138a602665357a34dde499ea8f07294ee1affa773eca846cb58e5",
+    "root-audit-320.json": "11a7f0e9164ba222c97fd0aa365edd1287d1d77b4700ba7d6db2ca6a1f1990e6",
+    "root-audit.json": "48e45b1e50bd811f5d29c08106c0460dfa61f1caea5f36b266d0b95a800ac578",
+    "source-audit.json": "d7b4fe34c473e4e188615b9e237f0ba28219b3cde2232f3664f3dfc55eb57908"
+  }
+}

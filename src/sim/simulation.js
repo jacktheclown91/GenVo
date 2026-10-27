@@ -1,4 +1,4 @@
-import {AUTONOMOUS_POPULATIONS} from '../ecology/autonomous-founding.js';
+import {autonomousPopulationPolicy} from '../ecology/autonomous-founding.js';
 import {rebuildSpatialIndex,forEachSpatialNeighbor} from './spatial-index.js';
 import {initializeControllers} from './controller-composition.js';
 import {REGIONAL_FRONTIER,physicalFrontier,frontierStep} from '../world/regional-frontier.js';
@@ -207,7 +207,7 @@ export class Simulation{
       this.thunderstorms=createThunderstorms()
     }
     if(strangerResponses)this.strangerRules=STRANGER_RESPONSES.policy;
-    if(autonomousPopulations)this.autonomousPopulationRules=AUTONOMOUS_POPULATIONS.policy;
+    if(autonomousPopulations)this.autonomousPopulationRules=autonomousPopulationPolicy(autonomousPopulations);
     if(dayClock)this.dayClockRules=DAY_CLOCK.policy;
     if(metabolism)this.metabolismRules=metabolism==='fasting-1'?METABOLISM_REFERENCE_BODY:METABOLISM.policy;
     if(foodProperties)this.foodRules=FOOD_PROPERTIES.policy;
@@ -521,7 +521,7 @@ export class Simulation{
   // Resumable form: pauses between stages, every 16 land rows and inside botanical reproduction.
   *phaseVegetationSteps({once=false}={}){if(once&&!beginPageVegetationDay(this))return;advanceFreshwater(this.world);advanceMarineFood(this.world);advancePlantInputs(this);const w=this.world,temp=this.climate.temp,season=this.season,dispersal=this.dispersal,entries=Object.entries(PLANTS).filter(([kind])=>kind!=='rotcap').map(([kind,p])=>({kind,p,d:p.dispersal,plants:w.plants[kind],bank:w.seedBank?.[kind]||null,seasonBoost:kind==='bramble'&&season==='AUTUMN'?1.012:kind==='thistlepod'&&season==='SUMMER'?1.007:1}));dispersal.advanceDay();yield;const pageCounts=yield* visitLandByWorldPageSteps(w,i=>{const m=w.moisture[i],f=w.fertility[i],scar=this.history.scarAt(i);growLandProducers(this,i,entries,{m,f,temp:w.environment?w.temperature[i]:temp,scar,grow});advanceFungi(this,i);});yield;yield* dispersal.advanceBotanicalReproductionSteps();yield;this.partAbilities.advanceSoilDay();this.history.advanceDay();if(once)completePageVegetationDay(this,pageCounts)}
   phasePerception(){drain(this.phasePerceptionSteps())}
-  *phasePerceptionSteps(){this.rebuildSpatial();this.regionalEcology.observe();this.carrying.observe();this.cognition.observe();yield;this.foraging.observeNearby(this.player());this.territory.observe();this.stalkerTerritory.observe();yield;yield* this.migration.observeSteps();yield;this.social.observe();this.pressure.observe()}
+  *phasePerceptionSteps(){this.rebuildSpatial();this.regionalEcology.observe();this.carrying.observe();this.cognition.observe();yield;this.foraging.observeNearby(this.player());this.territory.observe();this.populationMemory.observeResidence();this.stalkerTerritory.observe();yield;yield* this.migration.observeSteps();yield;this.social.observe();this.pressure.observe()}
   rebuildSpatial(){return rebuildSpatialIndex(this)}
   forEachNearby(a,radius,fn){return forEachSpatialNeighbor(this,a,radius,fn)}
   isPredatorTo(pred,prey){

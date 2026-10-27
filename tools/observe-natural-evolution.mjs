@@ -15,6 +15,7 @@ import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persist
 import {snapshotSignature} from './snapshot-signature.mjs';
 import {checkEcologicalIntegrity} from './ecological-integrity.mjs';
 import {sourceGraph} from './source-graph.mjs';
+import {installFoundingObservation} from './founding-observation.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 function runtimeFingerprint(){
@@ -33,7 +34,7 @@ const verify=process.argv.includes('--verify-observer');
 const verifyTicks=Number(process.argv.find(arg=>arg.startsWith('--verify-ticks='))?.split('=')[1]||96);
 assert.ok(Number.isSafeInteger(verifyTicks)&&verifyTicks>0&&verifyTicks<=76800);
 const options={player:true,worldGenerator:'planetary/1',regionalFrontier:true,
-  autonomousPopulations:process.argv.includes('--autonomous-populations'),
+  autonomousPopulations:process.argv.find(arg=>arg.startsWith('--autonomous-policy='))?.slice('--autonomous-policy='.length)??(process.argv.includes('--autonomous-populations-v1')?'autonomous-populations/1':process.argv.includes('--autonomous-populations')),
   courtshipSimilarity:mode==='balanced',dayClock:true,metabolism:true,foodProperties:true,
   tissueWater:true,winterWater:true,escapeLanding:true,tissueEnergy:true,perennialRegrowth:true};
 const sim=new Simulation(seed,options);
@@ -46,6 +47,10 @@ const receipt={schema:'genvo.natural-evolution/1',seed,mode,requestedDays:days,v
   runtimeFingerprint:initialRuntime,observerSha256:createHash('sha256').update(fs.readFileSync(fileURLToPath(import.meta.url))).digest('hex'),
   scope:'Normal new-game constructor and native AUTO; canonical updates only. No injected organisms, stock edits, teleportation, forced traits, scripted isolation or speciation targets. Normal constructor founder/mate preparation is retained identically in both policies.',
   options,samples:[],mating,births:[],deaths:[],status:'running'};
+const foundingObservation=installFoundingObservation(sim);
+receipt.foundingDiagnostics=foundingObservation.diagnostics;
+receipt.autonomousPopulationPolicy=sim.autonomousPopulationRules??null;
+receipt.foundingObserverSha256=createHash('sha256').update(fs.readFileSync(new URL('./founding-observation.mjs',import.meta.url))).digest('hex');
 const originalMate=sim.tryMate,originalBirth=sim.family.registerBirth,originalKill=sim.kill;
 sim.tryMate=function(a,b){
   const previousAttempt=a.lastReproductiveAttempt,previousRefusal=a.lastCourtshipRefusal;
@@ -126,7 +131,7 @@ function checkpoint(status='running'){
   receipt.status=status;receipt.mating=mating;receipt.births=[...births.values()];
   fs.writeFileSync(out,JSON.stringify(receipt,null,2)+'\n');
 }
-function removeObservers(){delete sim.tryMate;delete sim.kill;delete sim.family.registerBirth}
+function removeObservers(){delete sim.tryMate;delete sim.kill;delete sim.family.registerBirth;foundingObservation.remove()}
 try{
   receipt.samples.push(census());checkpoint();
   const endTick=verify?sim.tickCount+verifyTicks:Infinity;
@@ -139,7 +144,7 @@ try{
       const row=census();checkEcologicalIntegrity(sim,initialPopulation);
       if((sim.day-1)%10===0||sim.day>days){
         receipt.samples.push(row);checkpoint();
-        console.log(JSON.stringify({seed,mode,day:sim.day,tick:sim.tickCount,live:row.live,lineage:row.lineage,maxDepth:row.maxAncestryDepth,births:sim.stats.births,conceptions:mating.conceptions,naturalEstablished:row.naturalPopulations.filter(p=>p.establishedDay!==null).length,seconds:row.seconds,heap:row.memory.heapUsed}));
+        console.log(JSON.stringify({seed,mode,day:sim.day,tick:sim.tickCount,live:row.live,lineage:row.lineage,maxDepth:row.maxAncestryDepth,births:sim.stats.births,conceptions:mating.conceptions,naturalEstablished:row.naturalPopulations.filter(p=>p.establishedDay!==null).length,naturalRegionalSources:row.naturalPopulations.filter(p=>p.establishedDay!==null&&p.scope==='regional-source').length,naturalLocalCommunities:row.naturalPopulations.filter(p=>p.establishedDay!==null&&p.scope!=='regional-source').length,seconds:row.seconds,heap:row.memory.heapUsed}));
       }
       await yieldTurn();
     }

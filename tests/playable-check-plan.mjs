@@ -3,12 +3,13 @@ import {spawnSync} from 'node:child_process';
 import {playablePlan} from '../tools/check-playable.mjs';
 
 const all=playablePlan(),key=check=>`${check.mode}:${check.item}`;
-assert.equal(all.length,123,'Retain all 122 prior checks plus autonomous founding evidence and persistence');
+assert.equal(all.length,124,'Retain all 123 prior checks plus original autonomous-v1 compatibility');
 assert.equal(new Set(all.map(key)).size,all.length,'No duplicated manifest entries');
 assert.equal(all[0].item,'src/main.js');
 assert.equal(all.at(-1).item,'tests/living-planet-extended.mjs');
 assert.ok(all.some(check=>check.item==='tests/reproductive-similarity.mjs'));
 assert.ok(all.some(check=>check.item==='tests/autonomous-population-founding.mjs'));
+assert.ok(all.some(check=>check.item==='tests/autonomous-policy-compatibility.mjs'));
 for(const item of ['tests/extinct-lineage-save.mjs','tests/botanical-gamete-parity.mjs','tests/snapshot-signature.mjs','tests/interleaved-day-clock.mjs','tests/care-expression.mjs','tests/spatial-index.mjs'])assert.ok(all.some(check=>check.item===item));
 for(const count of [1,2,3,5,all.length]){
   const union=[];
@@ -32,4 +33,4 @@ for(const args of [['--shard=0/2'],['--unknown'],['--shard=1/2','--shard=2/2'],[
   const result=spawnSync(process.execPath,['tools/check-playable.mjs',...args],{encoding:'utf8'});
   assert.notEqual(result.status,0,'Invalid selection fails closed');
 }
-console.log('Playable CI plan PASS: all 123 checks exactly once, ordered, disjoint shards, actual CLI selection and invalid inputs.');
+console.log('Playable CI plan PASS: all 124 checks exactly once, ordered, disjoint shards, actual CLI selection and invalid inputs.');

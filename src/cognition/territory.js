@@ -1,3 +1,4 @@
+import {weightedHomeRange} from './learned-range.js';
 import {CFG} from '../sim/config.js';
 import {SPECIES} from '../organisms/species.js';
 
@@ -59,10 +60,9 @@ export class TerritoryController{
     }
     const total=cells.reduce((n,v)=>n+v.weight,0);state.totalFamiliarity=total;
     if(!cells.length){state.home=null;state.radius=0;return state}
-    let x=0,y=0;for(const v of cells){x+=v.cell.x*v.weight;y+=v.cell.y*v.weight}x/=total;y/=total;
-    let variance=0;for(const v of cells){const d=Math.hypot(v.cell.x-x,v.cell.y-y);variance+=d*d*v.weight}variance/=total;
+    const {x,y,radius}=weightedHomeRange(cells,total);
     const wasEstablished=state.established;
-    state.home={x,y};state.radius=clamp(5,18,5+Math.sqrt(variance)*.72);state.established=total>=2.5;
+    state.home={x,y};state.radius=radius;state.established=total>=2.5;
     if(state.established&&!wasEstablished)this.sim.cognition.recordOnce(animal,'home-established','Settled into a home range',{x,y,radius:state.radius});
     return state;
   }

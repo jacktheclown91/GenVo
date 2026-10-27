@@ -1,0 +1,174 @@
+[
+  {
+    "seed": "POPULATION-FOUNDING-PROBE-0",
+    "day": 321,
+    "tick": 76800,
+    "populations": [
+      {
+        "key": "natural:0,0:1",
+        "species": "mosskip",
+        "establishedDay": 65,
+        "status": "established",
+        "members": 38,
+        "playerLineage": 0,
+        "registeredTaxa": [
+          "genvo8-root"
+        ],
+        "litters": 27,
+        "recruits": 39,
+        "allMembersReachAnchor": true
+      },
+      {
+        "key": "natural:0,0:2",
+        "species": "mosskip",
+        "establishedDay": 46,
+        "status": "established",
+        "members": 18,
+        "playerLineage": 0,
+        "registeredTaxa": [
+          "genvo8-root"
+        ],
+        "litters": 22,
+        "recruits": 27,
+        "allMembersReachAnchor": true
+      },
+      {
+        "key": "natural:0,0:8",
+        "species": "genvo",
+        "establishedDay": 176,
+        "status": "established",
+        "members": 8,
+        "playerLineage": 0,
+        "registeredTaxa": [
+          "genvo8-root"
+        ],
+        "litters": 2,
+        "recruits": 7,
+        "allMembersReachAnchor": true
+      }
+    ],
+    "connectivity": [
+      {
+        "first": "natural:0,0:1",
+        "second": "natural:0,0:2",
+        "firstToSecond": true,
+        "secondToFirst": true
+      },
+      {
+        "first": "natural:0,0:1",
+        "second": "natural:0,0:8",
+        "firstToSecond": true,
+        "secondToFirst": true
+      },
+      {
+        "first": "natural:0,0:2",
+        "second": "natural:0,0:8",
+        "firstToSecond": true,
+        "secondToFirst": true
+      }
+    ],
+    "continuation": "Complete snapshot and six-tick restored continuation equal"
+  },
+  {
+    "seed": "POPULATION-FOUNDING-PROBE-1",
+    "day": 321,
+    "tick": 76800,
+    "populations": [
+      {
+        "key": "natural:0,0:1",
+        "species": "mosskip",
+        "establishedDay": 34,
+        "status": "established",
+        "members": 28,
+        "playerLineage": 0,
+        "registeredTaxa": [
+          "genvo8-root"
+        ],
+        "litters": 26,
+        "recruits": 35,
+        "allMembersReachAnchor": true
+      },
+      {
+        "key": "natural:0,0:2",
+        "species": "mosskip",
+        "establishedDay": 46,
+        "status": "established",
+        "members": 41,
+        "playerLineage": 0,
+        "registeredTaxa": [
+          "genvo8-root"
+        ],
+        "litters": 26,
+        "recruits": 37,
+        "allMembersReachAnchor": true
+      },
+      {
+        "key": "natural:0,0:7",
+        "species": "genvo",
+        "establishedDay": 157,
+        "status": "established",
+        "members": 13,
+        "playerLineage": 0,
+        "registeredTaxa": [
+          "genvo8-root"
+        ],
+        "litters": 3,
+        "recruits": 9,
+        "allMembersReachAnchor": true
+      },
+      {
+        "key": "natural:0,0:146",
+        "species": "genvo",
+        "establishedDay": 228,
+        "status": "established",
+        "members": 10,
+        "playerLineage": 0,
+        "registeredTaxa": [
+          "genvo8-root"
+        ],
+        "litters": 3,
+        "recruits": 8,
+        "allMembersReachAnchor": true
+      }
+    ],
+    "connectivity": [
+      {
+        "first": "natural:0,0:1",
+        "second": "natural:0,0:2",
+        "firstToSecond": true,
+        "secondToFirst": true
+      },
+      {
+        "first": "natural:0,0:1",
+        "second": "natural:0,0:7",
+        "firstToSecond": true,
+        "secondToFirst": true
+      },
+      {
+        "first": "natural:0,0:1",
+        "second": "natural:0,0:146",
+        "firstToSecond": true,
+        "secondToFirst": true
+      },
+      {
+        "first": "natural:0,0:2",
+        "second": "natural:0,0:7",
+        "firstToSecond": true,
+        "secondToFirst": true
+      },
+      {
+        "first": "natural:0,0:2",
+        "second": "natural:0,0:146",
+        "firstToSecond": true,
+        "secondToFirst": true
+      },
+      {
+        "first": "natural:0,0:7",
+        "second": "natural:0,0:146",
+        "firstToSecond": true,
+        "secondToFirst": true
+      }
+    ],
+    "continuation": "Complete snapshot and six-tick restored continuation equal"
+  }
+]

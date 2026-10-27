@@ -1,4 +1,3 @@
-import {AUTONOMOUS_POPULATIONS} from '../ecology/autonomous-founding.js';
 import {COURTSHIP_SIMILARITY} from '../reproduction/mate-preferences.js';
 import {physicalFrontier,continuousSoloFrontier,frontierDistance,nearestFrontier} from './regional-frontier.js';
 import {DAY_CLOCK} from '../sim/day-clock.js';
@@ -38,7 +37,7 @@ export function planetaryPreparationKey(sim,origin){return JSON.stringify([sim.s
 export function preparePlanetaryDestination(sim,origin){
  const planet=sim.world.planet;if(!planet)throw Error('Planetary preparation requires a planetary source.');
  for(const x of [origin.x-1,origin.x+SIZE+1])for(const y of [origin.y-1,origin.y+SIZE+1])planet.localToGeo(x,y);
- const destination=new Simulation(sim.seed,{player:false,bootstrap:false,autonomousPopulations:sim.autonomousPopulationRules===AUTONOMOUS_POPULATIONS.policy,dayClock:sim.dayClockRules===DAY_CLOCK.policy,metabolism:!!sim.metabolismRules,foodProperties:!!sim.foodRules,tissueWater:!!sim.tissueWaterRules,winterWater:!!sim.winterWaterRules,escapeLanding:!!sim.escapeLandingRules,tissueEnergy:!!sim.tissueEnergyRules,perennialRegrowth:!!sim.perennialRegrowthRules,worldGenerator:'planetary/1',planetOrigin:origin,planetDescriptor:planet.descriptor,marineFood:sim.marineFoodRules===MARINE_FOOD.policy,regionalFrontier:physicalFrontier(sim.world),massRules:sim.massRules,localAssortment:sim.mateAssortmentRules!==undefined,courtshipSimilarity:sim.courtshipSimilarityRules===COURTSHIP_SIMILARITY.policy,naturalCaves:!!sim.caveRules,surfaceIce:sim.surfaceIceRules===SURFACE_ICE.policy});
+ const destination=new Simulation(sim.seed,{player:false,bootstrap:false,autonomousPopulations:sim.autonomousPopulationRules??false,dayClock:sim.dayClockRules===DAY_CLOCK.policy,metabolism:!!sim.metabolismRules,foodProperties:!!sim.foodRules,tissueWater:!!sim.tissueWaterRules,winterWater:!!sim.winterWaterRules,escapeLanding:!!sim.escapeLandingRules,tissueEnergy:!!sim.tissueEnergyRules,perennialRegrowth:!!sim.perennialRegrowthRules,worldGenerator:'planetary/1',planetOrigin:origin,planetDescriptor:planet.descriptor,marineFood:sim.marineFoodRules===MARINE_FOOD.policy,regionalFrontier:physicalFrontier(sim.world),massRules:sim.massRules,localAssortment:sim.mateAssortmentRules!==undefined,courtshipSimilarity:sim.courtshipSimilarityRules===COURTSHIP_SIMILARITY.policy,naturalCaves:!!sim.caveRules,surfaceIce:sim.surfaceIceRules===SURFACE_ICE.policy});
  Object.defineProperty(destination,'preparedPlanetaryKey',{value:planetaryPreparationKey(sim,origin)});return destination;
 }
 const dirs=[

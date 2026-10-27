@@ -1,0 +1,327 @@
+{
+  "scope": "Completed fields only. Earlier negative prototypes are not reinterpreted using the new regional scope.",
+  "trials": [
+    {
+      "file": "reports/autonomous-A2-cohort-120-seed0.json",
+      "sha256": "3d8f710e344420133497299664dec5d0f55fb4d15e0a7c1ce0374550fb613c72",
+      "seed": "POPULATION-FOUNDING-PROBE-0",
+      "days": 120,
+      "runtimeFingerprint": "37c041dabdb9fee078f24ae0480be4b488de921cf9d37c17b4b6144ccf661d22",
+      "observerSha256": "3dc4dfc2e719d25dbedcea0eb5bae6c4c53515c6c5c006d762a00e968dcfee25",
+      "living": 135,
+      "births": 36,
+      "maxAncestryDepth": 3,
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "observerParity": null,
+      "populations": []
+    },
+    {
+      "file": "reports/autonomous-A2-cohort-120-seed1.json",
+      "sha256": "fd457de206eafddc4cf69a4c6ed376c59ece9c85bb2f8b08d1fa726c4b2313ab",
+      "seed": "POPULATION-FOUNDING-PROBE-1",
+      "days": 120,
+      "runtimeFingerprint": "37c041dabdb9fee078f24ae0480be4b488de921cf9d37c17b4b6144ccf661d22",
+      "observerSha256": "3dc4dfc2e719d25dbedcea0eb5bae6c4c53515c6c5c006d762a00e968dcfee25",
+      "living": 139,
+      "births": 40,
+      "maxAncestryDepth": 3,
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "observerParity": null,
+      "populations": []
+    },
+    {
+      "file": "reports/autonomous-A2-cohort-320-seed0.json",
+      "sha256": "fd8f6f1142354426e5689bd505344d4c310979271dba9e1fae2963af9aa514b6",
+      "seed": "POPULATION-FOUNDING-PROBE-0",
+      "days": 320,
+      "runtimeFingerprint": "37c041dabdb9fee078f24ae0480be4b488de921cf9d37c17b4b6144ccf661d22",
+      "observerSha256": "3dc4dfc2e719d25dbedcea0eb5bae6c4c53515c6c5c006d762a00e968dcfee25",
+      "living": 104,
+      "births": 86,
+      "maxAncestryDepth": 5,
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "observerParity": null,
+      "populations": []
+    },
+    {
+      "file": "reports/autonomous-A2-cohort-320-seed1.json",
+      "sha256": "065200da43ee8cd13d4f418bfa5bb85d1cef98846fc2a00d18b68a2d23834876",
+      "seed": "POPULATION-FOUNDING-PROBE-1",
+      "days": 320,
+      "runtimeFingerprint": "37c041dabdb9fee078f24ae0480be4b488de921cf9d37c17b4b6144ccf661d22",
+      "observerSha256": "3dc4dfc2e719d25dbedcea0eb5bae6c4c53515c6c5c006d762a00e968dcfee25",
+      "living": 118,
+      "births": 94,
+      "maxAncestryDepth": 6,
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "observerParity": null,
+      "populations": []
+    },
+    {
+      "file": "reports/autonomous-A2-natural-120-seed0.json",
+      "sha256": "3e2f2fd1010ba15ab1d077be50329677647005abae669d68f0e8defefbf16e7c",
+      "seed": "POPULATION-FOUNDING-PROBE-0",
+      "days": 120,
+      "runtimeFingerprint": "cc07abd658cf50df9e1e0da1d885404a98ed5fac7e32db52ab7eb03229919a45",
+      "observerSha256": "3dc4dfc2e719d25dbedcea0eb5bae6c4c53515c6c5c006d762a00e968dcfee25",
+      "living": 135,
+      "births": 36,
+      "maxAncestryDepth": 3,
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "observerParity": null,
+      "populations": []
+    },
+    {
+      "file": "reports/autonomous-A2-natural-120-seed1.json",
+      "sha256": "5c2fd7e292d809404d5d4ea4544b2acb67c3cc5b4488bfb0f9021a253ade1fc9",
+      "seed": "POPULATION-FOUNDING-PROBE-1",
+      "days": 120,
+      "runtimeFingerprint": "cc07abd658cf50df9e1e0da1d885404a98ed5fac7e32db52ab7eb03229919a45",
+      "observerSha256": "3dc4dfc2e719d25dbedcea0eb5bae6c4c53515c6c5c006d762a00e968dcfee25",
+      "living": 139,
+      "births": 40,
+      "maxAncestryDepth": 3,
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "observerParity": null,
+      "populations": []
+    },
+    {
+      "file": "reports/autonomous-A2-residence-120-seed0.json",
+      "sha256": "58696ab32f29c5272f4b14fee363a93a4fb07ba8fc00b5da868c8bbe54ff21c3",
+      "seed": "POPULATION-FOUNDING-PROBE-0",
+      "days": 120,
+      "runtimeFingerprint": "9ef0f6a212db729596f290083bee3a60eacbd1b30b14976c8e40c7412166106b",
+      "observerSha256": "3dc4dfc2e719d25dbedcea0eb5bae6c4c53515c6c5c006d762a00e968dcfee25",
+      "living": 135,
+      "births": 36,
+      "maxAncestryDepth": 3,
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "observerParity": null,
+      "populations": []
+    },
+    {
+      "file": "reports/autonomous-A2-residence-120-seed1.json",
+      "sha256": "9ed440ed58a0c97292daca45f6b5d41877fcd45bdf21e2917a059ac1728e860d",
+      "seed": "POPULATION-FOUNDING-PROBE-1",
+      "days": 120,
+      "runtimeFingerprint": "9ef0f6a212db729596f290083bee3a60eacbd1b30b14976c8e40c7412166106b",
+      "observerSha256": "3dc4dfc2e719d25dbedcea0eb5bae6c4c53515c6c5c006d762a00e968dcfee25",
+      "living": 139,
+      "births": 40,
+      "maxAncestryDepth": 3,
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "observerParity": null,
+      "populations": []
+    },
+    {
+      "file": "reports/autonomous-A2-v2-node22-golden.json",
+      "sha256": "a066e9a57267950c9d40fe4f6f420dcb4d16c59b7e886ac826aaf80b4bd84476",
+      "seed": "SIMILARITY-FIELD-1",
+      "days": 24,
+      "runtimeFingerprint": "37c041dabdb9fee078f24ae0480be4b488de921cf9d37c17b4b6144ccf661d22",
+      "observerSha256": "3dc4dfc2e719d25dbedcea0eb5bae6c4c53515c6c5c006d762a00e968dcfee25",
+      "living": 156,
+      "births": 1,
+      "maxAncestryDepth": 2,
+      "saveContinuation": null,
+      "observerParity": {
+        "scope": "Complete original/control snapshot equal",
+        "ticks": 5760,
+        "calls": 6,
+        "conceptions": 2,
+        "births": 1
+      },
+      "populations": []
+    },
+    {
+      "file": "reports/autonomous-A2-v2-node24-golden.json",
+      "sha256": "0dea22a9b62ab097e8c1e9fd07038880d0c1b0023a3497611ba138e0dfacd658",
+      "seed": "SIMILARITY-FIELD-1",
+      "days": 24,
+      "runtimeFingerprint": "37c041dabdb9fee078f24ae0480be4b488de921cf9d37c17b4b6144ccf661d22",
+      "observerSha256": "3dc4dfc2e719d25dbedcea0eb5bae6c4c53515c6c5c006d762a00e968dcfee25",
+      "living": 156,
+      "births": 1,
+      "maxAncestryDepth": 2,
+      "saveContinuation": null,
+      "observerParity": {
+        "scope": "Complete original/control snapshot equal",
+        "ticks": 5760,
+        "calls": 6,
+        "conceptions": 2,
+        "births": 1
+      },
+      "populations": []
+    },
+    {
+      "file": "reports/autonomous-A3-regional-60-seed0.json",
+      "sha256": "fc507e3de7bed393dc8597827766404329249d73edfc83b678401231deea0b87",
+      "seed": "POPULATION-FOUNDING-PROBE-0",
+      "days": 60,
+      "runtimeFingerprint": "7c4383eac4b4213f77a1c1a0a8eb6d253675224e3b489484876d437190dc0eb5",
+      "observerSha256": "61b3ee4c4076334285bcbc03e6420c5797d8f94f3a5b22c2dfcb8632fa4364c7",
+      "living": 136,
+      "births": 9,
+      "maxAncestryDepth": 2,
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "observerParity": null,
+      "populations": [
+        {
+          "key": "natural:0,0:2",
+          "scope": "regional-source",
+          "species": "mosskip",
+          "status": "established",
+          "establishedDay": 46,
+          "endedDay": null,
+          "parentPopulationKeys": []
+        }
+      ]
+    },
+    {
+      "file": "reports/autonomous-A3-regional-60-seed1.json",
+      "sha256": "67d7c5499761a32c96c5c4ad5da8407ed90c88e3f55636c1eb3b026a50430eb7",
+      "seed": "POPULATION-FOUNDING-PROBE-1",
+      "days": 60,
+      "runtimeFingerprint": "7c4383eac4b4213f77a1c1a0a8eb6d253675224e3b489484876d437190dc0eb5",
+      "observerSha256": "61b3ee4c4076334285bcbc03e6420c5797d8f94f3a5b22c2dfcb8632fa4364c7",
+      "living": 129,
+      "births": 20,
+      "maxAncestryDepth": 2,
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "observerParity": null,
+      "populations": [
+        {
+          "key": "natural:0,0:1",
+          "scope": "regional-source",
+          "species": "mosskip",
+          "status": "established",
+          "establishedDay": 34,
+          "endedDay": null,
+          "parentPopulationKeys": [
+            "natural:0,0:7"
+          ]
+        },
+        {
+          "key": "natural:0,0:2",
+          "scope": "regional-source",
+          "species": "mosskip",
+          "status": "established",
+          "establishedDay": 46,
+          "endedDay": null,
+          "parentPopulationKeys": [
+            "natural:0,0:1"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "reports/autonomous-A3-regional-320-seed0.json",
+      "sha256": "12ea32fa2ffc00e2cab1e7d12419ca4c41a6c4237ef155995db915f1182d9b21",
+      "seed": "POPULATION-FOUNDING-PROBE-0",
+      "days": 320,
+      "runtimeFingerprint": "7c4383eac4b4213f77a1c1a0a8eb6d253675224e3b489484876d437190dc0eb5",
+      "observerSha256": "61b3ee4c4076334285bcbc03e6420c5797d8f94f3a5b22c2dfcb8632fa4364c7",
+      "living": 104,
+      "births": 86,
+      "conceptions": 60,
+      "maxAncestryDepth": 5,
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "populations": [
+        {
+          "key": "natural:0,0:1",
+          "scope": "regional-source",
+          "species": "mosskip",
+          "status": "established",
+          "establishedDay": 65,
+          "endedDay": null,
+          "parentPopulationKeys": [
+            "natural:0,0:2"
+          ]
+        },
+        {
+          "key": "natural:0,0:2",
+          "scope": "regional-source",
+          "species": "mosskip",
+          "status": "established",
+          "establishedDay": 46,
+          "endedDay": null,
+          "parentPopulationKeys": []
+        },
+        {
+          "key": "natural:0,0:8",
+          "scope": "regional-source",
+          "species": "genvo",
+          "status": "established",
+          "establishedDay": 176,
+          "endedDay": null,
+          "parentPopulationKeys": [
+            "natural:0,0:204",
+            "natural:0,0:10"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "reports/autonomous-A3-regional-320-seed1.json",
+      "sha256": "1328af524d16e79f6e8568ec9be9ad47004af0364d69a018de5a91bc181a66b1",
+      "seed": "POPULATION-FOUNDING-PROBE-1",
+      "days": 320,
+      "runtimeFingerprint": "7c4383eac4b4213f77a1c1a0a8eb6d253675224e3b489484876d437190dc0eb5",
+      "observerSha256": "61b3ee4c4076334285bcbc03e6420c5797d8f94f3a5b22c2dfcb8632fa4364c7",
+      "living": 118,
+      "births": 94,
+      "conceptions": 66,
+      "maxAncestryDepth": 6,
+      "saveContinuation": "Complete snapshot and six-tick restored continuation equal",
+      "populations": [
+        {
+          "key": "natural:0,0:1",
+          "scope": "regional-source",
+          "species": "mosskip",
+          "status": "established",
+          "establishedDay": 34,
+          "endedDay": null,
+          "parentPopulationKeys": [
+            "natural:0,0:7"
+          ]
+        },
+        {
+          "key": "natural:0,0:2",
+          "scope": "regional-source",
+          "species": "mosskip",
+          "status": "established",
+          "establishedDay": 46,
+          "endedDay": null,
+          "parentPopulationKeys": [
+            "natural:0,0:1"
+          ]
+        },
+        {
+          "key": "natural:0,0:7",
+          "scope": "regional-source",
+          "species": "genvo",
+          "status": "established",
+          "establishedDay": 157,
+          "endedDay": null,
+          "parentPopulationKeys": [
+            "natural:0,0:146",
+            "natural:0,0:2",
+            "natural:0,0:1"
+          ]
+        },
+        {
+          "key": "natural:0,0:146",
+          "scope": "regional-source",
+          "species": "genvo",
+          "status": "established",
+          "establishedDay": 228,
+          "endedDay": null,
+          "parentPopulationKeys": [
+            "natural:0,0:7",
+            "natural:0,0:2"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import {initializeAutonomousFounding,advanceAutonomousFounding,naturalPopulations,naturalPopulationFor,recordPopulationBirth,recordPopulationDeath} from './autonomous-founding.js';
+import {observeAutonomousResidence,initializeAutonomousFounding,advanceAutonomousFounding,naturalPopulations,naturalPopulationFor,recordPopulationBirth,recordPopulationDeath} from './autonomous-founding.js';
 import {CFG} from '../sim/config.js';
 import {SPECIES} from '../organisms/species.js';
 import {ENVIRONMENT_PRESSURES} from '../lineage/pressure.js';
@@ -58,13 +58,15 @@ export class PopulationPressureMemoryController{
     return this.sim.generationProgress?.populationAssignment?.(animal,form)||null;
   }
   populationForAnimal(animal,pops=this.populations()){
-    const natural=naturalPopulationFor(this,animal);if(natural)return natural;
+    const natural=naturalPopulationFor(this,animal);
+    const regional=natural?.scope==='regional-source';
+    if(natural&&!regional)return natural;
     const legacyPops=pops.filter(p=>p.kind!=='autonomous');
-    if(!animal?.alive||animal.species!=='genvo'||!animal.lineage||!legacyPops.length)return null;
+    if(!animal?.alive||animal.species!=='genvo'||!animal.lineage||!legacyPops.length)return natural||null;
     const assigned=this.assignedCenter(animal);if(assigned){const found=legacyPops.find(p=>p.id===assigned.id&&!p.primary);if(found)return found}
     const secondaries=legacyPops.filter(p=>!p.primary),nearest=secondaries.map(p=>({p,d:Math.hypot(animal.x-p.x,animal.y-p.y)})).sort((a,b)=>a.d-b.d)[0];
     if(nearest&&nearest.d<=Math.max(5.5,this.sim.territory.cellSize*.9))return nearest.p;
-    return legacyPops.find(p=>p.primary)||legacyPops[0];
+    return natural||legacyPops.find(p=>p.primary)||legacyPops[0];
   }
   noteResidence(animal,pop){
     if(!animal||!pop)return;let r=this.residence.get(animal.id);if(!r){r={days:{},lastKey:null,lastDay:0};this.residence.set(animal.id,r)}
@@ -76,6 +78,7 @@ export class PopulationPressureMemoryController{
     const [key,days]=ranked[0],total=ranked.reduce((n,[,v])=>n+v,0),pop=this.populationByKey(key);
     return{key,days,total,share:total?days/total:0,population:pop,label:pop?.label||key,lastKey:r.lastKey};
   }
+  observeResidence(){observeAutonomousResidence(this)}
   advanceDay(){
     if(this.lastDay===this.sim.day)return;this.lastDay=this.sim.day;
     advanceAutonomousFounding(this,{maturityFor:a=>SPECIES[a.species].maturity,supportsMaintenance:a=>this.supportsMaintenance(a)});

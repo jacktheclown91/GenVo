@@ -1,3 +1,4 @@
+import {AUTONOMOUS_POPULATIONS} from '../ecology/autonomous-founding.js';
 import {chooseParentalReading} from './parental-reading.js';
 // Inherited population differences. Parental legacy determinants pass without
 // pressure-ranked origin, reinforcement or weakening. Population pressure is
@@ -35,7 +36,7 @@ export class ProtoSpeciationController{
     for(const peer of peers){const theirs=Object.fromEntries(peer.profile.axes.map(a=>[a.id,a.mean]));const deltas=profile.axes.map(a=>({id:a.id,label:a.label,mine:a.mean,other:theirs[a.id]||0,delta:a.mean-(theirs[a.id]||0),magnitude:Math.abs(a.mean-(theirs[a.id]||0))})).sort((a,b)=>b.magnitude-a.magnitude||a.id.localeCompare(b.id));const score=deltas.reduce((n,d)=>n+d.magnitude,0)/Math.max(1,deltas.length);if(!best||score>best.score)best={key,profile,peer:peer.population,peerProfile:peer.profile,score,deltas}}
     if(!best||best.score<.12)return null;const positive=best.deltas.filter(d=>d.delta>=.18&&d.mine>=.28&&PROTO_TRAITS[d.id]).sort((a,b)=>b.delta-a.delta||b.mine-a.mine||a.id.localeCompare(b.id));if(!positive.length)return null;return{...best,dominant:positive[0],positive};
   }
-  sourcePopulationFor(child){if(!child)return null;const pops=this.populations();if(!pops.length)return null;const secondaries=pops.filter(p=>!p.primary).map(p=>({p,d:Math.hypot(child.x-p.x,child.y-p.y)})).sort((a,b)=>a.d-b.d||String(a.p.key).localeCompare(String(b.p.key)));const nearest=secondaries[0],radius=Math.max(5.5,(this.sim.territory?.cellSize||6)*.9);if(nearest&&nearest.d<=radius)return nearest.p;return pops.find(p=>p.primary)||pops[0]}
+  sourcePopulationFor(child){if(!child)return null;if(this.sim.autonomousPopulationRules===AUTONOMOUS_POPULATIONS.policy)return this.sim.populationMemory?.populationForAnimal?.(child)||null;const pops=this.populations();if(!pops.length)return null;const secondaries=pops.filter(p=>!p.primary).map(p=>({p,d:Math.hypot(child.x-p.x,child.y-p.y)})).sort((a,b)=>a.d-b.d||String(a.p.key).localeCompare(String(b.p.key)));const nearest=secondaries[0],radius=Math.max(5.5,(this.sim.territory?.cellSize||6)*.9);if(nearest&&nearest.d<=radius)return nearest.p;return pops.find(p=>p.primary)||pops[0]}
   candidateFor(child,parents=[]){
     if(!child)return null;
     const eligible=parents.filter(p=>this.traitFor(p));
