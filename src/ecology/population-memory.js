@@ -1,3 +1,5 @@
+import {autonomousEvolutionEnabled} from '../lineage/autonomous-evolution.js';
+import {observePopulationEcology} from './population-observation.js';
 import {observeAutonomousResidence,initializeAutonomousFounding,advanceAutonomousFounding,naturalPopulations,naturalPopulationFor,recordPopulationBirth,recordPopulationDeath} from './autonomous-founding.js';
 import {CFG} from '../sim/config.js';
 import {SPECIES} from '../organisms/species.js';
@@ -40,6 +42,7 @@ export class PopulationPressureMemoryController{
   }
   assessment(pop){
     if(!pop)return null;
+    if(autonomousEvolutionEnabled(this.sim)&&pop.kind==='autonomous')return observePopulationEcology(this,pop);
     const center=pop.primary?null:pop;
     const eco=center?this.sim.populationEcology?.centerState?.(center,{force:true}):this.sim.populationEcology?.siteAssessment?.(pop,{force:true});
     if(!eco)return null;

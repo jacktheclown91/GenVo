@@ -1,5 +1,9 @@
 # Current implementation and acceptance
 
+## Current biological work: prospective autonomous recognition
+
+The tutorial priority is verified and committed. Canonical development now contains the opt-in `autonomous-evolution/1` mechanism through the existing population memory, proto, speciation and evolutionary-tree authorities. Controlled wildlife recognition, stable identity, renewed gene flow, extinction and actual paid unowned births/save continuation pass focused checks. The policy remains off in the UI pending regional acceptance; ordinary long-run recognition and the major performance correction remain unproven. See [the current mechanism and evidence boundaries](AUTONOMOUS-RECOGNITION-2026-10-27.md). Preserve the older managed checkout and its original Stage B foundation; it has been copied forward without discarding the tutorial work.
+
 Verified game checkpoint `6d4964ba` passed exact-commit [GitHub CI 40473490609](https://github.com/jacktheclown91/GenVo/actions/runs/40473490609), both workers and the required summary. The independently extracted HTML5 candidate `GenVo-web-RC-6d4964ba.zip` passed the full native tutorial and Save/Continue, controlled construction checks, additional-anatomy release smoke and inspected compact layouts. [Release verification receipt](survival-home-2026-10-27/release-verification.json) records its SHA-256 and separate delivery folder. The final handoff is documentation-only; stable itch was not replaced.
 
 ## Survival tutorial and ground home actions — October 27

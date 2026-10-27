@@ -37,7 +37,7 @@ export class FamilyDirectiveController{
   setByIndex(index){const ids=['auto','follow','forage','home','scout'];const id=ids[index];return id?this.set(id):false}
   taxonId(animal){return this.sim.evolutionTree?.taxonFor?.(animal)||ROOT_TAXON_ID}
   activeTaxon(){const p=this.sim.player?.();return p?{id:this.taxonId(p),label:this.sim.evolutionTree?.taxonLabel?.(p)||'GenVo8'}:{id:ROOT_TAXON_ID,label:'GenVo8'}}
-  multipleTaxa(){return (this.sim.evolutionTree?.livingTaxa?.().length||0)>1}
+  multipleTaxa(){return (this.sim.evolutionTree?.leadershipTaxa?.()||this.sim.evolutionTree?.livingTaxa?.()||[]).length>1}
   effectiveScope(){return this.multipleTaxa()?this.scope:'lineage'}
   scopeMeta(){const active=this.activeTaxon(),scope=this.effectiveScope();return{scope,taxonId:active.id,label:scope==='taxon'?active.label:'Whole lineage',multipleTaxa:this.multipleTaxa()}}
   setScope(scope='taxon'){if(!['taxon','lineage'].includes(scope))return false;this.scope=scope;return true}

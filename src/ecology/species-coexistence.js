@@ -14,7 +14,7 @@ const TRAIT_PREF={
 // consequences of multiple related taxa sharing the same landscape.
 export class SpeciesCoexistenceController{
   constructor(sim){this.sim=sim;this.cacheSegment=-1;this.cache=new Map();this.notice=null;this.lastDay=0}
-  livingTaxa(){return this.sim.evolutionTree?.livingTaxa?.()||[]}
+  livingTaxa(){return this.sim.evolutionTree?.leadershipTaxa?.()||this.sim.evolutionTree?.livingTaxa?.()||[]}
   multipleTaxa(){return this.livingTaxa().length>1}
   node(taxonId){return this.sim.evolutionTree?.node?.(taxonId)||this.sim.evolutionTree?.root?.()||null}
   members(taxonId,{adultsOnly=false}={}){

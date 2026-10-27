@@ -1,3 +1,5 @@
+import {validateAutonomousEvolutionState} from '../lineage/autonomous-evolution-state.js';
+import {validateAutonomousEvolutionPolicy} from '../lineage/autonomous-evolution.js';
 import {validateAutonomousPopulationPolicy,validateAutonomousFoundingState} from '../ecology/autonomous-founding.js';
 import {REGIONAL_FRONTIER,validateFrontierRules} from '../world/regional-frontier.js';
 import {REGION_STORE,readRegionalCheckpoint,commitRegionalCheckpoint,commitRegionalUpdate,commitRegionalJournal,deleteRegionalCheckpoint,inspectRegionalStorage,recoverRegionalStages} from './regional-records.js';
@@ -399,6 +401,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   const sim=new Simulation(snapshot.seed,{player:snapshot.core?.playerEnabled!==false,bootstrap:false,worldGenerator:snapshot.world?.generator==='planetary/1'?'planetary/1':undefined,planetOrigin,marineFood:snapshot.core?.marineFoodRules===MARINE_FOOD.policy,regionalFrontier:snapshot.core?.regionalFrontierRules===REGIONAL_FRONTIER.policy,reuseGeneratedBase:true,restoreOnlyWorld:!regenerateWorld&&completeWorldForDirectRestore(snapshot),deferDispersalInitialization:!!snapshot.controllers?.dispersal});
   Object.assign(sim,snapshot.core||{});
   validateAutonomousPopulationPolicy(sim);
+  validateAutonomousEvolutionPolicy(sim);
   if(!Object.hasOwn(snapshot.core||{},'regionalReplayPolicy'))delete sim.regionalReplayPolicy;
   regionalReplayPolicy(sim);
   restoreSurfaceIceRules(sim,snapshot.core||{});
@@ -515,6 +518,7 @@ export function restoreSimulationSnapshot(snapshot,{regenerateWorld=false,[OWNED
   for(const egg of snapshot.core?.eggs||[])for(const key of ['maternalInheritance','paternalInheritance'])restoreGenome(egg[key]);
   restoreControllers(sim,snapshot.controllers);
   validateAutonomousFoundingState(sim.populationMemory);
+  validateAutonomousEvolutionState(sim);
   // Observational page identities cannot create or replace an organism on load.
   // Old snapshots may lack this field; do not invent historical crossings.
   validatePageResidency(sim.regionalEcology.pageTransit,sim.world);

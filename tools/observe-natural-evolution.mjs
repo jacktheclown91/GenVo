@@ -35,6 +35,7 @@ const verifyTicks=Number(process.argv.find(arg=>arg.startsWith('--verify-ticks='
 assert.ok(Number.isSafeInteger(verifyTicks)&&verifyTicks>0&&verifyTicks<=76800);
 const options={player:true,worldGenerator:'planetary/1',regionalFrontier:true,
   autonomousPopulations:process.argv.find(arg=>arg.startsWith('--autonomous-policy='))?.slice('--autonomous-policy='.length)??(process.argv.includes('--autonomous-populations-v1')?'autonomous-populations/1':process.argv.includes('--autonomous-populations')),
+  autonomousEvolution:process.argv.includes('--autonomous-evolution'),
   courtshipSimilarity:mode==='balanced',dayClock:true,metabolism:true,foodProperties:true,
   tissueWater:true,winterWater:true,escapeLanding:true,tissueEnergy:true,perennialRegrowth:true};
 const sim=new Simulation(seed,options);
@@ -50,6 +51,7 @@ const receipt={schema:'genvo.natural-evolution/1',seed,mode,requestedDays:days,v
 const foundingObservation=installFoundingObservation(sim);
 receipt.foundingDiagnostics=foundingObservation.diagnostics;
 receipt.autonomousPopulationPolicy=sim.autonomousPopulationRules??null;
+receipt.autonomousEvolutionPolicy=sim.autonomousEvolutionRules??null;
 receipt.foundingObserverSha256=createHash('sha256').update(fs.readFileSync(new URL('./founding-observation.mjs',import.meta.url))).digest('hex');
 const originalMate=sim.tryMate,originalBirth=sim.family.registerBirth,originalKill=sim.kill;
 sim.tryMate=function(a,b){
@@ -95,7 +97,7 @@ sim.kill=function(animal,cause){
 
 function census(){
   const living=sim.animals.filter(a=>a.alive),population={},bodyPlans={},parts={},geography={};
-  const lineageParts={},lineageBodyPlans={};
+  const lineageParts={},lineageBodyPlans={},physicalReadings=new Map();
   let maxAncestryDepth=1,lineage=0;
   for(const a of living){
     population[a.species]=(population[a.species]||0)+1;
@@ -112,11 +114,16 @@ function census(){
     for(const [name,value] of Object.entries(a.genes))if(Number.isFinite(value)){
       const gene=g.genes[name]??={sum:0,sumSquares:0,count:0};gene.sum+=value;gene.sumSquares+=value*value;gene.count++;
     }
+    if(sim.autonomousEvolutionRules)for(const trait of sim.protoSpeciation.traitsFor(a)){
+      const key=a.species+'|'+trait.id,row=physicalReadings.get(key)||{species:a.species,id:trait.id,reading:trait.reading||'legacy',count:0,maxDepth:0,totalStrength:0};
+      row.count++;row.maxDepth=Math.max(row.maxDepth,trait.lineageDepth);row.totalStrength+=trait.strength;physicalReadings.set(key,row);
+    }
     const child=births.get(a.id);
     if(child&&child.maturedDay===null&&a.age>=SPECIES[a.species].maturity)child.maturedDay=sim.day;
   }
   return{tick:sim.tickCount,day:sim.day,year:sim.year,live:living.length,lineage,maxAncestryDepth,population,bodyPlans,parts,lineageBodyPlans,lineageParts,geography,
     births:sim.stats.births,deaths:sim.stats.deaths,causes:{...sim.stats.byCause},
+    ...(sim.autonomousEvolutionRules?{inheritedAnatomy:[...physicalReadings.values()],observedTaxonomy:sim.evolutionTree.snapshot()}:{}),
     recognizedStates:[...sim.speciation.states.values()].map(state=>structuredClone(state)),
     taxa:[...sim.evolutionTree.nodes.values()].map(node=>({id:node.id,status:node.status,formedDay:node.formedDay,endedDay:node.endedDay,recognitions:node.recognitions})),
     pressureHistories:[...sim.populationMemory.histories.entries()].map(([key,value])=>[key,structuredClone(value)]),

@@ -15,6 +15,11 @@ const syntax=[
 ];
 const runtime=[
   'tests/autonomous-population-founding.mjs',
+  'tests/autonomous-evolution-policy.mjs',
+  'tests/inherited-anatomy-evidence.mjs',
+  'tests/population-birth-evidence.mjs',
+  'tests/autonomous-recognition.mjs',
+  'tests/autonomous-paid-inheritance.mjs',
   'tests/autonomous-policy-compatibility.mjs',
   'tests/extinct-lineage-save.mjs',
   'tests/botanical-gamete-parity.mjs',

@@ -1,5 +1,9 @@
 # Autonomous evolution — active implementation, October 26
 
+## Current biological work: prospective autonomous recognition
+
+The tutorial priority is verified and committed. Canonical development now contains the opt-in `autonomous-evolution/1` mechanism through the existing population memory, proto, speciation and evolutionary-tree authorities. Controlled wildlife recognition, stable identity, renewed gene flow, extinction and actual paid unowned births/save continuation pass focused checks. The policy remains off in the UI pending regional acceptance; ordinary long-run recognition and the major performance correction remain unproven. See [the current mechanism and evidence boundaries](AUTONOMOUS-RECOGNITION-2026-10-27.md). Preserve the older managed checkout and its original Stage B foundation; it has been copied forward without discarding the tutorial work.
+
 This pass continues from verified main `b5a47491`. It does not replace the previous engineering receipts or the stable itch ZIP. Stage A has a locally verified mechanism checkpoint; natural establishment remains unproven and stages B–F remain outstanding. No natural species or full-goal completion is claimed.
 
 ## Stage A implementation

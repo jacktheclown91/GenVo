@@ -21,9 +21,18 @@
       "consumers": ["src/lineage/lineage.js", "src/ui/tutorial.js", "src/ui/legacy-summary.js", "src/main.js", "src/persistence/save-manager.js"],
       "contract": "docs/FIRST-LEGACY-2026-10-22.md"
     },
+    "autonomousEvolutionRecognition": {
+      "authority": "src/lineage/speciation.js",
+      "inheritedEvidence": "src/lineage/proto-speciation.js",
+      "ancestry": "src/lineage/evolution-tree.js",
+      "helpers": ["src/lineage/autonomous-evolution.js", "src/lineage/inherited-anatomy-evidence.js", "src/lineage/population-birth-evidence.js", "src/lineage/autonomous-evolution-state.js"],
+      "consumers": ["src/lineage/lineage.js", "src/ecology/gestation.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js"],
+      "contract": "docs/AUTONOMOUS-RECOGNITION-2026-10-27.md",
+      "note": "Explicit prospective policy; actual inherited parts and conception witnesses feed the existing unchanged recognition gates. No new resources, allele choices, player ownership, reproductive barrier or competing species registry. Ordinary-field and regional acceptance remain separate."
+    },
     "autonomousPopulationFounding": {
       "authority": "src/ecology/population-memory.js",
-      "helpers": ["src/ecology/autonomous-founding.js", "src/ecology/population-residence.js", "src/ecology/founding-candidate-contact.js", "src/ecology/regional-population-census.js", "src/cognition/learned-range.js"],
+      "helpers": ["src/ecology/autonomous-founding.js", "src/ecology/population-residence.js", "src/ecology/founding-candidate-contact.js", "src/ecology/regional-population-census.js", "src/cognition/learned-range.js", "src/ecology/population-observation.js"],
       "consumers": ["src/lineage/lineage.js", "src/sim/simulation.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js"],
       "contract": "docs/AUTONOMOUS-EVOLUTION-2026-10-26.md",
       "note": "Versioned demographic observation of actual residence, maintenance and paid surviving recruitment. No player ownership, resources, mating or species identity authority is introduced. Natural acceptance remains under verification."

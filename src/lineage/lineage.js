@@ -1,3 +1,4 @@
+import {autonomousEvolutionEnabled} from './autonomous-evolution.js';
 import {SPECIES} from '../organisms/species.js';
 import {recordLegacyHandoff} from '../gameplay/legacy-milestones.js';
 import {CFG} from '../sim/config.js';
@@ -68,7 +69,8 @@ export class LineageTracker{
     child.lineage=entry?parents.some(p=>p&&(this.sim.animals.find(a=>a.id===p.id)?.lineage??(p.id===entry.actorId||entry.actorIds?.includes(p.id)||this.isDescendant(p.id,entry.actorId)))):parents.some(p=>p?.lineage);
     this.sim.populationMemory?.noteBirth?.(child,parents);
     this.sim.divergence?.onBirth?.(child,conceptionParents);this.sim.protoSpeciation?.onBirth?.(child,conceptionParents);
-    if(child.lineage){this.sim.speciation?.noteBirth?.(child,parents);const record=this.register(child,parents.map(p=>p.id));
+    if(autonomousEvolutionEnabled(this.sim)||child.lineage)this.sim.speciation?.noteBirth?.(child,parents,conceptionParents);
+    if(child.lineage){const record=this.register(child,parents.map(p=>p.id));
       // Birth-time evidence from actual gestational parent snapshots (not their own
       // historical birth records). Never alters the live recombination pipeline.
       if(record){record.parentBodyPlans=(conceptionParents||[]).map(p=>p?.bodyPlan?serializePlan(p.bodyPlan):null);record.parentPhenotypes=(conceptionParents||[]).map(p=>p?{id:p.id,genes:{...p.genes},pigmentGenome:p.pigmentGenome?structuredClone(p.pigmentGenome):null,adaptations:[...(p.adaptations||[])],anatomy:{...(p.anatomy||{})},ecoLifestyle:p.ecoLifestyle?structuredClone(p.ecoLifestyle):null}:null);}}

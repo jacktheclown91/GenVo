@@ -1,8 +1,12 @@
 # Refactor backlog — executable GitHub tasks
 
-## Current creator priority: survival tutorial and home controls
+## Current biological work: prospective autonomous recognition
 
-Finish and verify [the survival/home interaction pass](SURVIVAL-HOME-TUTORIAL-2026-10-27.md) before resuming autonomous recognition work. Keep its optional presentation progress separate from biological policies. Stage B work in the older managed checkout is preserved, not reverted or silently merged.
+The tutorial priority is verified and committed. Canonical development now contains the opt-in `autonomous-evolution/1` mechanism through the existing population memory, proto, speciation and evolutionary-tree authorities. Controlled wildlife recognition, stable identity, renewed gene flow, extinction and actual paid unowned births/save continuation pass focused checks. The policy remains off in the UI pending regional acceptance; ordinary long-run recognition and the major performance correction remain unproven. See [the current mechanism and evidence boundaries](AUTONOMOUS-RECOGNITION-2026-10-27.md). Preserve the older managed checkout and its original Stage B foundation; it has been copied forward without discarding the tutorial work.
+
+## Completed tutorial priority: survival and home controls
+
+The [survival/home interaction pass](SURVIVAL-HOME-TUTORIAL-2026-10-27.md) is verified and committed; autonomous recognition work has resumed. Keep its optional presentation progress separate from biological policies. Stage B work in the older managed checkout is preserved, not reverted or silently merged.
 
 All tasks start from live main, preserve unrelated work, and update the continuation handoff. Run the complete playable gate and canonical export/audit before integration. Do not regenerate deterministic expectations for a mechanical refactor.
 
