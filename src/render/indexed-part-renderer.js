@@ -105,9 +105,9 @@ export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
  return Object.freeze({partId:asset.partId,checksum:asset.checksum,rig,expressionScale:asset.expressionScale||'pulse',frameAt(options){return select(options)?.frame||null},
  drawTorso(ctx,options){return drawSurface(ctx,'torso',options)},
  drawHead(ctx,options){return drawSurface(ctx,'head',options)},
- drawDorsal(ctx,{x=0,y=0,scale=1,headingRadians=0,deployment=0,extent=1,pigment=null,state='idle',facing=2,timeMs=0,frameIndex=null}={}){
+ drawDorsal(ctx,{x=0,y=0,scale=1,headingRadians=0,deployment=0,extent=1,sweepRadians=0,pigment=null,state='idle',facing=2,timeMs=0,frameIndex=null}={}){
   if(rig?.kind!=='dorsal-display')return false;
-  if(![x,y,scale,headingRadians,deployment,extent].every(Number.isFinite)||scale<=0)throw Error('Invalid dorsal surface transform');
+  if(![x,y,scale,headingRadians,deployment,extent,sweepRadians].every(Number.isFinite)||scale<=0)throw Error('Invalid dorsal surface transform');
   // Each selected native frame supplies its own tissue. Only transverse panels
   // fold; the root and world-forward length never grow with an encounter pulse.
   const chosen=select({state,facing,timeMs,frameIndex})||select({state:'idle',facing,timeMs,frameIndex});if(!chosen)return false;
@@ -116,7 +116,7 @@ export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
    ctx.imageSmoothingEnabled=false;ctx.translate(x,y);ctx.rotate(headingRadians);ctx.scale(scale*displayScale,scale*displayScale);
    for(let i=0;i<2;i++){
     const hingeY=i===0?rig.rootRect[1]:rig.rootRect[1]+rig.rootRect[3];
-    ctx.save();try{ctx.translate(0,hingeY-pivot[1]);ctx.scale(1,fold);ctx.translate(0,pivot[1]-hingeY);ctx.rotate(-(chosen.frame.facing-2)*Math.PI/4);ctx.drawImage(entry.dorsalPaint[i],-pivot[0],-pivot[1]);}finally{ctx.restore()}
+    ctx.save();try{ctx.translate(0,hingeY-pivot[1]);if(sweepRadians)ctx.rotate((i===0?-1:1)*Math.max(-.35,Math.min(.35,sweepRadians)));ctx.scale(1,fold);ctx.translate(0,pivot[1]-hingeY);ctx.rotate(-(chosen.frame.facing-2)*Math.PI/4);ctx.drawImage(entry.dorsalPaint[i],-pivot[0],-pivot[1]);}finally{ctx.restore()}
    }
    ctx.rotate(-(chosen.frame.facing-2)*Math.PI/4);ctx.drawImage(entry.dorsalPaint[2],-pivot[0],-pivot[1]);
   }finally{ctx.restore()}return true;

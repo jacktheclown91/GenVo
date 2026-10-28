@@ -1,0 +1,31 @@
+{
+  "rows": [
+    {
+      "enabled": false,
+      "medianMs": 3.300000000745058,
+      "p95Ms": 3.899999998509884,
+      "samples": 30,
+      "visibleCreatures": 2
+    },
+    {
+      "enabled": true,
+      "medianMs": 3.5,
+      "p95Ms": 4.400000002235174,
+      "samples": 30,
+      "visibleCreatures": 2
+    },
+    {
+      "enabled": false,
+      "medianMs": 3.600000001490116,
+      "p95Ms": 4.300000000745058,
+      "samples": 30,
+      "visibleCreatures": 2
+    }
+  ],
+  "stateExact": true,
+  "snapshotDifference": null,
+  "frozenBefore": "{\"landing\":false,\"phase\":5.464545454525151,\"wingFrame\":0,\"glideSpread\":0,\"flightSpread\":0.6641717936666405,\"wingSweep\":-0.20083064506883316,\"aerialTuck\":1,\"bodyRise\":0.12055371509402653,\"bodyDrop\":0,\"bodyLean\":0.22}",
+  "frozenAfter": "{\"landing\":false,\"phase\":5.464545454525151,\"wingFrame\":0,\"glideSpread\":0,\"flightSpread\":0.6641717936666405,\"wingSweep\":-0.20083064506883316,\"aerialTuck\":1,\"bodyRise\":0.12055371509402653,\"bodyDrop\":0,\"bodyLean\":0.22}",
+  "pauseExact": true,
+  "scope": "Matched paused young-world direct renderer CPU composition while the real player is airborne. Preceding no-aerial-helper path / new path / preceding path. Not FPS or mature-population acceptance."
+}

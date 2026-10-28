@@ -83,6 +83,13 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
       const stroke=swimmingLimb({phase:frame,moving,partId:slotList[n].partId,front,side,root,radial:{x:dx,y:dy},forward:{x:fx,y:fy},perp,limbScale,reachScale});
       legs.push({index:k,slot,root,...stroke,front,side});continue;
     }
+    if(slotList&&b.aerialTuck>0){
+      const tuck=Math.max(0,Math.min(1,b.aerialTuck)),fold=limbScale*reachScale;
+      const tuckedFoot={x:root.x-fx*1.3*fold+perp.x*side*.65*fold,y:root.y-fy*1.3*fold+perp.y*side*.65*fold};
+      const tuckedKnee={x:root.x+fx*.8*fold+perp.x*side*.8*fold,y:root.y+fy*.8*fold+perp.y*side*.8*fold};
+      const blend=(a,z)=>({x:a.x+(z.x-a.x)*tuck,y:a.y+(z.y-a.y)*tuck});
+      legs.push({index:k,slot,root,knee:blend(knee,tuckedKnee),foot:blend(foot,tuckedFoot),lift:Math.max(lift,tuck*1.6),liftAmount:Math.max(liftAmount,tuck*.8),planted:false,front,side});continue;
+    }
     legs.push(slotList?{index:k,slot,root,knee,foot,lift,liftAmount,...(striking&&attackLift>0?{aboveBody:true}:{}),planted:action==='jump'||action==='climb'?false:moving?step.planted&&(!striking||attackLift===0):(!striking||attackLift===0)&&liftAmount<.34,front,side}:{index:k,root,knee,foot,lift,liftAmount,planted:action==='jump'||action==='climb'?false:liftAmount<.34,front,side});
   }
   if(loadTransfer){

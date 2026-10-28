@@ -247,8 +247,8 @@ Object.assign(DRAW,{
   'horn-crest'(c,k){const b=backTop(k),h={x:b.x+k.fx*1.6,y:b.y};pixelLine(c,h.x,h.y,h.x+k.fx*.6,h.y-3,k.s,'#f1e8cf');pixelLine(c,h.x+k.fx*.6,h.y-3,h.x+k.fx*1.6,h.y-3.8,k.s,'#f1e8cf',.5);pixel(c,h.x,h.y-.5,1,1,k.s,'#c9a86a')},
   'tusk-jaw'(c,k){const m=along(k,k.face.mouthForward+.6);for(const sg of [-1,1]){const r={x:m.x+k.perp.x*sg*1.2,y:m.y+k.perp.y*sg*1.2},e={x:r.x+k.fx*2.4+k.perp.x*sg*.6,y:r.y+k.fy*2.4+k.perp.y*sg*.6-.8};pixelLine(c,r.x,r.y,e.x,e.y,k.s,'#f6eeda');pixel(c,e.x,e.y,.5,.5,k.s,'#ffffff')}},
   // Gliding membrane: a thin golden skin flap stretched out from the flank.
-  'patagium'(c,k){const f=flankAt(k),spread=k.behavior?.glideSpread?5:1.5;pixelLine(c,f.x+k.fx*3,f.y+k.fy*3,f.x+k.perp.x*k.sign*spread,f.y+k.perp.y*k.sign*spread,k.s,'#a3c1ba',2);pixelLine(c,f.x+k.perp.x*k.sign*spread,f.y+k.perp.y*k.sign*spread,f.x-k.fx*3,f.y-k.fy*3,k.s,'#476e73',1)},
-  'gliding-membrane'(c,k){const f=flankAt(k),o={x:f.x+k.perp.x*k.sign*2.2,y:f.y+k.perp.y*k.sign*2.2},a={x:f.x+k.fx*1.6,y:f.y+k.fy*1.6},b={x:f.x-k.fx*2,y:f.y-k.fy*2};pixel(c,(f.x+o.x)/2-.5,(f.y+o.y)/2-.5,1.5,1.5,k.s,'rgba(246,220,138,.55)');pixelLine(c,a.x,a.y,o.x,o.y,k.s,'#f6dc8a',.5);pixelLine(c,o.x,o.y,b.x,b.y,k.s,'#c9a24a',.5)},
+  'patagium'(c,k){const f=flankAt(k),spread=1.5+3.5*Math.max(0,Math.min(1,Number(k.behavior?.glideSpread)||0));pixelLine(c,f.x+k.fx*3,f.y+k.fy*3,f.x+k.perp.x*k.sign*spread,f.y+k.perp.y*k.sign*spread,k.s,'#a3c1ba',2);pixelLine(c,f.x+k.perp.x*k.sign*spread,f.y+k.perp.y*k.sign*spread,f.x-k.fx*3,f.y-k.fy*3,k.s,'#476e73',1)},
+  'gliding-membrane'(c,k){const f=flankAt(k),spread=1+1.2*Math.max(0,Math.min(1,Number(k.behavior?.glideSpread)||0)),o={x:f.x+k.perp.x*k.sign*spread,y:f.y+k.perp.y*k.sign*spread},a={x:f.x+k.fx*1.6,y:f.y+k.fy*1.6},b={x:f.x-k.fx*2,y:f.y-k.fy*2};pixel(c,(f.x+o.x)/2-.5,(f.y+o.y)/2-.5,1.5,1.5,k.s,'rgba(246,220,138,.55)');pixelLine(c,a.x,a.y,o.x,o.y,k.s,'#f6dc8a',.5);pixelLine(c,o.x,o.y,b.x,b.y,k.s,'#c9a24a',.5)},
   // Luminous tail: a slim tail ending in a glowing bulb with a soft halo.
   'luminous-tail'(c,k){const t=tailEnd(k,6);pixelLine(c,t.r.x,t.r.y,t.x,t.y,k.s,k.p.shade,.5);pixel(c,t.x-1,t.y-1,2.5,2.5,k.s,'rgba(255,240,150,.35)');pixel(c,t.x-.5,t.y-.5,1.5,1.5,k.s,'#fff3a0');pixel(c,t.x-.5,t.y-.5,.5,.5,k.s,'#ffffff')},
   // Shell back: a ridge of pale crystal shards with white tips.
@@ -317,7 +317,7 @@ export function drawLimb(c,partId,k){
     foot:{x:k.foot.x*k.s,y:k.foot.y*k.s},scale:k.s,
     // The geometry is paired across the body; its asymmetric tissue must be too.
     mirrorTransverse:(k.leg?.side||0)<0,
-    footForward:!k.leg?.aboveBody&&!['swim','climb','dig','fly','glide','jump'].includes(k.authoredState)?{x:k.fx??1,y:k.fy??0}:null,
+    footForward:!k.leg?.aboveBody&&!k.behavior?.aerialTuck&&!['swim','climb','dig','fly','glide','jump'].includes(k.authoredState)?{x:k.fx??1,y:k.fy??0}:null,
     facing:k.authoredFacing??0,state:k.authoredState||'idle',timeMs:k.authoredTimeMs??0,pigment:k.nativePigment,
     // Ground contact and water feathering select each mounted foot independently.
     frameIndex:k.leg?.swimFeather!=null?(k.leg.swimFeather>.25?1:0):k.leg?.planted==null?(k.leg?.liftAmount>=.34?1:0):(k.leg.planted?0:1)
@@ -356,7 +356,7 @@ export function artMount(partId,k){
    const at=authored(side<0?'flank.left':'flank.right');
    const radius=ellipseRadius(k.perp.x,k.perp.y);
    return {x:at?.x??x0+k.perp.x*side*radius*.86,y:at?.y??y0+k.perp.y*side*radius*.86,
-     scale:['patagium','gliding-membrane'].includes(partId)?(k.behavior?.glideSpread?.55:.23):.25,mirrorX:side<0};
+     scale:['patagium','gliding-membrane'].includes(partId)?(.23+.32*Math.max(0,Math.min(1,Number(k.behavior?.glideSpread)||0))):.25,mirrorX:side<0};
  }
  if(sockets.includes('dorsal')){
    const at=authored('dorsal');
@@ -378,7 +378,7 @@ export function artMount(partId,k){
 export function drawPart(c,partId,k){
  const authored=k.authoredParts?.[partId]||artForPart(partId);
  if(authored?.rig?.kind==='dorsal-display'&&typeof c.drawImage==='function'){
-  const at=artMount(partId,k);if(at&&authored.drawDorsal(c,{x:at.x*k.s,y:at.y*k.s,scale:k.s*(partId==='flight-wing'?.64:.31)*(k.nativeBodyScale??1),headingRadians:Math.atan2(k.fy,k.fx),deployment:partId==='flight-wing'?(Number(k.behavior?.flightSpread??k.behavior?.crestSpread)||0):partDef(partId)?.actionCapabilities.includes('flare')?(Number(k.behavior?.crestSpread)||0):0,extent:expressionExtent(k,partId),pigment:k.nativePigment,state:k.authoredState||'idle',facing:k.authoredFacing??2,timeMs:k.authoredTimeMs??0,frameIndex:k.authoredFrameIndex??null}))return true;
+  const at=artMount(partId,k);if(at&&authored.drawDorsal(c,{x:at.x*k.s,y:at.y*k.s,scale:k.s*(partId==='flight-wing'?.64:.31)*(k.nativeBodyScale??1),headingRadians:Math.atan2(k.fy,k.fx),sweepRadians:partId==='flight-wing'?(Number(k.behavior?.wingSweep)||0):0,deployment:partId==='flight-wing'?(Number(k.behavior?.flightSpread??k.behavior?.crestSpread)||0):partDef(partId)?.actionCapabilities.includes('flare')?(Number(k.behavior?.crestSpread)||0):0,extent:expressionExtent(k,partId),pigment:k.nativePigment,state:k.authoredState||'idle',facing:k.authoredFacing??2,timeMs:k.authoredTimeMs??0,frameIndex:partId==='flight-wing'&&Number.isInteger(k.behavior?.wingFrame)?k.behavior.wingFrame:(k.authoredFrameIndex??null)}))return true;
  }
  if(authored&&!authored.rig&&typeof c.drawImage==='function'){
   const mount=artMount(partId,k),anchor=mount?{x:mount.x,y:mount.y}:(k.eye||k.mouth||(PART_SPRITES[partId]?.layer==='face'&&k.face?{x:k.bx+k.fx*k.face.mouthForward,y:k.by+k.fy*k.face.mouthForward}:null));
@@ -386,7 +386,7 @@ export function drawPart(c,partId,k){
    const faceFactor=k.eye?.x!==undefined?.55:k.mouth?.x!==undefined?.72:PART_SPRITES[partId]?.layer==='face'?.7:1;
    const scale=k.s*(mount?.scale??(faceFactor/2));
    const args={x:anchor.x*k.s,y:anchor.y*k.s,scale,pigment:k.nativePigment,
-    rotation:mount?.rotation||0,mirrorX:false,state:k.authoredState||'idle',facing:k.authoredFacing??0,timeMs:k.authoredTimeMs??0,frameIndex:k.authoredFrameIndex??null};
+    rotation:mount?.rotation||0,mirrorX:false,state:k.authoredState||'idle',facing:k.authoredFacing??0,timeMs:k.authoredTimeMs??0,frameIndex:['patagium','gliding-membrane'].includes(partId)&&Number.isFinite(k.behavior?.glideSpread)?0:(k.authoredFrameIndex??null)};
    const rotation=(mount?.rotation||0)+(Number(k.faceTurn)||0),paired=!!mount?.mirrorX;let painted=false;c.save();try{if(rotation||paired){c.translate(args.x,args.y);if(rotation)c.rotate(rotation);if(paired){const axis=Math.atan2(k.fy||0,k.fx||0);c.rotate(axis);c.scale(1,-1);c.rotate(-axis)}args.x=0;args.y=0}if(k.mouth&&k.behavior?.mouthPulse&&authored.expressionScale!=='fixed')args.scale*=1+Math.max(0,k.behavior.mouthPulse)*.12;painted=authored.draw(c,args)||(args.state!=='idle'&&authored.draw(c,{...args,state:'idle'}));}finally{c.restore()}if(painted)return true;
   }
  }

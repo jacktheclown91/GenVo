@@ -1,3 +1,4 @@
+import {AerialPresentation,applyAerialPose} from './aerial-presentation.js';
 import {GroundContactTracker} from './ground-contacts.js';
 import {courtshipCameraTarget} from './courtship-camera.js';
 import {drawTutorialGuide} from './tutorial-guide-art.js';
@@ -185,7 +186,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     drawSensoryFog(this,{tile,cols,rows,startX,startY});
     this.drawHomeSite(tile);
     beginReadoutFrame(this);if(this.guideTarget&&this.sim.uiTutorialStage?.startsWith('step-'))this.drawGuide(tile);drawWeatherReadout(this);drawRefugeReadout(this);drawCaveProgress(this);
-    this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId),{renderer:this});this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.groundContacts?.prune(this.renderNow);this.processTerrainRefreshQueue();}
+    this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId),{renderer:this});this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.groundContacts?.prune(this.renderNow);this.aerialPresentation?.prune(this.encounters?.time||0);this.processTerrainRefreshQueue();}
 
 
   // v1.33.5: which relatives are carrying out your Family Command (solid gold pip) and which
@@ -1064,6 +1065,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const visualGrowth=a.player?dev.growth:Math.round(dev.growth*32)/32;ph.bodyScale*=visualGrowth;ph.limbScale*=.72+.28*visualGrowth;ph.sensoryScale*=.78+.22*visualGrowth;if(dev.maturity<.55){ph.stripe=false;ph.spot=false}
     const life=visualLifeState(this.sim,a,{frame,moving,action,development:dev,social,timeSeconds:this.encounters?.time});life.growth=visualGrowth;if(!a.player){life.breath=Math.round(life.breath*8)/8;life.settle=Math.round(life.settle*8)/8;}
     const behavior=behaviorVisualState({bodyPlan:a.bodyPlan,id:a.id,action,phase,moving,life,social});
+    const aerial=(this.aerialPresentation||=new AerialPresentation()).sample(this.sim,a,this.encounters?.time||0);applyAerialPose(behavior,aerial);
     // Body and joints yield above support; contact shadows/toes stay on the ground.
     if(carriage){behavior.bodyRise+=carriage.rise;behavior.bodySway=(behavior.bodySway||0)+carriage.sway;behavior.torsoTwist=carriage.twist;behavior.dorsalRoll=carriage.roll;behavior.bodyLean=(behavior.bodyLean||0)+carriage.lean}
     const birth=(this.birthSettlement||=new BirthSettlementPresentation()).sample(this.sim,a,this.encounters?.time||0,{moving,blocked:!!social?.alarm||!!reaction||!!defense||!!fright||!!encounter.move||!!encounter.impact||!!encounter.outcome||!['idle','rest','move','social','forage','eat','crack'].includes(action)});
@@ -1098,9 +1100,9 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
       id:a.id,world:this.sim.world,anatomy:(a.bodyPlan?.id||'')+'|'+(a.genVersion||0)+'|'+visualGrowth,
       x:this.camera.x+((spriteTransform?.e??px)-this.w/2)/tile,y:this.camera.y+((spriteTransform?.f??py)-this.h/2)/tile,
       dir:drawDir,now:this.renderNow,moving,paused:!!this.sim.paused,action,
-      eligible:!!a.bodyPlan&&!a.airborne&&!a.perched&&!a.climb&&!a.caveTransit&&!a.burrowWork&&!(a.diveDepth>.03)&&!reaction&&!defense&&!impact&&!encounter.move&&!feeding&&!birth&&!combatStatus?.attackPhase&&!combatStatus?.bracing&&!a.playerHunt&&!a.hidden
+      eligible:!!a.bodyPlan&&!aerial?.landing&&!a.airborne&&!a.perched&&!a.climb&&!a.caveTransit&&!a.burrowWork&&!(a.diveDepth>.03)&&!reaction&&!defense&&!impact&&!encounter.move&&!feeding&&!birth&&!combatStatus?.attackPhase&&!combatStatus?.bracing&&!a.playerHunt&&!a.hidden
     });
-    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:drawPhase,moving,palette,pose,groundContactFrame,cacheKey:a.player||feeding||birth||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,drawPhase,moving,pose,life)});
+    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:drawPhase,moving,palette,pose,groundContactFrame,authoredTimeMs:aerial?aerial.phase*125:0,cacheKey:(aerial&&!this.sim.paused)||a.player||feeding||birth||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,drawPhase,moving,pose,life)+(aerial?'|air'+JSON.stringify(aerial):'')});
     if(a.pollenCargo?.mass>0){pixel(c,-3,-3,1,1,scale,'#dfba5b');pixel(c,2,-4,1,1,scale,'#e9d37d');pixel(c,4,-1,1,1,scale,'#cda64e')}
     this.drawLifeEffects(a,scale,frame,pose,palette);
 
