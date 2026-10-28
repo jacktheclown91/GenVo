@@ -20,13 +20,13 @@ export class AudioDirector{
     this.nextMusicTime=0;this.musicStep=0;this.lastScene=AUDIO_SCENES.CALM;
     this.lastFireAudioTick=-1;this.fireAudioState=null;this.thunderAudio=new WeakMap();this.courtshipAudio=new WeakMap();this.lastActionTick=-1;this.lastDamageTick=-1;this.lastLineageRecords=sim?.lineage?.records?.size||0;this.lastHandoffs=sim?.lineage?.handoffs?.length||0;
     this.moveClock=0;this.movementAudio=null;this.sceneClock=0;this.currentScene=musicSceneFor(sim);
-    this.wildlifeClock=1.4;this.stalkerClock=.45;this.lastThreatId=null;this.lastThreatBand=0;this.lastMixDanger=0;this.handoffDuckUntil=0;
+    this.wildlifeClock=1.4;this.stalkerClock=.45;this.lastThreatId=null;this.lastThreatBand=0;this.lastMixDanger=0;this.handoffDuckUntil=0;this.foregroundDuckUntil=0;
     this.seed=hashString(sim?.seed||'GENVO8-AUDIO')||1;this.lastInteractiveAudioAt=0;
     this.loadPrefs();
   }
   setSimulation(sim){
     this.movementAudio=null;this.moveClock=0;
-    this.sim=sim;this.courtshipAudio=new WeakMap();this.lastActionTick=-1;this.lastDamageTick=-1;this.lastLineageRecords=sim?.lineage?.records?.size||0;this.lastHandoffs=sim?.lineage?.handoffs?.length||0;this.musicStep=0;this.nextMusicTime=this.ctx?.currentTime||0;this.seed=hashString(sim?.seed||'GENVO8-AUDIO')||1;this.lastInteractiveAudioAt=0;this.currentScene=musicSceneFor(sim);this.wildlifeClock=1.2;this.stalkerClock=.35;this.lastThreatId=null;this.lastThreatBand=0;this.lastMixDanger=0;this.handoffDuckUntil=0;
+    this.sim=sim;this.courtshipAudio=new WeakMap();this.lastActionTick=-1;this.lastDamageTick=-1;this.lastLineageRecords=sim?.lineage?.records?.size||0;this.lastHandoffs=sim?.lineage?.handoffs?.length||0;this.musicStep=0;this.nextMusicTime=this.ctx?.currentTime||0;this.seed=hashString(sim?.seed||'GENVO8-AUDIO')||1;this.lastInteractiveAudioAt=0;this.currentScene=musicSceneFor(sim);this.wildlifeClock=1.2;this.stalkerClock=.35;this.lastThreatId=null;this.lastThreatBand=0;this.lastMixDanger=0;this.handoffDuckUntil=0;this.foregroundDuckUntil=0;
     if(this.ctx)this.updateMix(this.currentScene);
   }
   loadPrefs(){try{const raw=localStorage.getItem('genvo8-audio');if(!raw)return;const p=JSON.parse(raw);if(typeof p.enabled==='boolean')this.enabled=p.enabled;if(Number.isFinite(p.master))this.masterLevel=clamp(p.master)}catch{}}
@@ -125,9 +125,10 @@ export class AudioDirector{
   }
   updateMix(scene){
     if(!this.ctx||!this.master)return;const t=this.ctx.currentTime,danger=scene.danger||0,duck=t<this.handoffDuckUntil?.56:1;
-    const musicTarget=this.musicLevel*(scene.scene===AUDIO_SCENES.DANGER?1.08:scene.scene===AUDIO_SCENES.HIDDEN?.72:1)*duck;
-    const ambTarget=this.ambienceLevel*(scene.scene===AUDIO_SCENES.DANGER?.58:scene.scene===AUDIO_SCENES.HIDDEN?.48:1)*(t<this.handoffDuckUntil?.72:1);
-    this.musicBus.gain.setTargetAtTime(musicTarget,t,t<this.handoffDuckUntil?.16:.62);this.ambienceBus.gain.setTargetAtTime(ambTarget,t,t<this.handoffDuckUntil?.20:.72);
+    const foreground=t<this.foregroundDuckUntil;
+    const musicTarget=(foreground?.70:1)*this.musicLevel*(scene.scene===AUDIO_SCENES.DANGER?1.08:scene.scene===AUDIO_SCENES.HIDDEN?.72:1)*duck;
+    const ambTarget=(foreground?.78:1)*this.ambienceLevel*(scene.scene===AUDIO_SCENES.DANGER?.58:scene.scene===AUDIO_SCENES.HIDDEN?.48:1)*(t<this.handoffDuckUntil?.72:1);
+    this.musicBus.gain.setTargetAtTime(musicTarget,t,foreground||t<this.handoffDuckUntil?.045:.62);this.ambienceBus.gain.setTargetAtTime(ambTarget,t,foreground||t<this.handoffDuckUntil?.06:.72);
     if(this.ambienceSource){
       const authoredAmbience=['field','wet','water-edge','rain'].some(id=>this.authoredLoops.has(id));
       this.ambienceSource.filter.frequency.setTargetAtTime(scene.scene===AUDIO_SCENES.HIDDEN?520:scene.scene===AUDIO_SCENES.DANGER?650:900,t,.5);
@@ -193,16 +194,23 @@ export class AudioDirector{
     for(const a of sim.animals||[]){if(!a.alive||a.id===p.id||a.id===scene.threatId||!creatureVoiceProfile(a))continue;if(sim.world?.sameLand&&!sim.world.sameLand(p.x,p.y,a.x,a.y))continue;const d=Math.hypot(a.x-p.x,a.y-p.y);if(d<2||d>14)continue;candidates.push({a,d})}
     candidates.sort((a,b)=>a.d-b.d);if(!candidates.length)return;const pool=candidates.slice(0,Math.min(7,candidates.length)),pick=pool[Math.floor(this.rand()*pool.length)];this.playSpeciesVoice(pick.a,{volume:.22+.16*(1-pick.d/14)});
   }
+  foregroundCue(seconds=.65){
+    if(!this.unlocked||!this.enabled||!this.ctx)return;
+    // Audio-clock envelope only; no simulation events or saved state are created.
+    this.foregroundDuckUntil=Math.max(this.foregroundDuckUntil,this.ctx.currentTime+clamp(seconds,.25,2));
+    this.updateMix(this.currentScene||musicSceneFor(this.sim));
+  }
   playSpeciesVoice(animal,{stalkerTell=false,volume=.3}={}){
+    if(!this.unlocked||!this.enabled||!this.ctx)return false;
     const voice=creatureVoiceProfile(animal);if(!voice)return false;const rate=voice.rate*(.97+this.rand()*.06);
     if(this.playSample(voice.sample,{x:animal.x,y:animal.y,radius:stalkerTell?12:15,volume,rate}))return true;
-    const dest=this.spatialDestination(animal.x,animal.y,{radius:stalkerTell?12:15,volume});if(!dest)return false;const t=this.ctx.currentTime+.005;
+    const dest=this.spatialDestination(animal.x,animal.y,{radius:stalkerTell?12:15,volume});if(!dest)return false;this.foregroundCue(.65);const t=this.ctx.currentTime+.005;
     if(voice.rough){this.noise(t,.18,.12,1200*rate,dest);this.tone(170*rate,92*rate,t,.24,.08,'sawtooth',dest)}
     else if(voice.bright){this.tone(1100*rate,1850*rate,t,.13,.08,'sine',dest);this.tone(1500*rate,2200*rate,t+.16,.09,.05,'sine',dest)}
     else{this.tone(voice.sample==='digger'?135*rate:430*rate,voice.sample==='digger'?90*rate:620*rate,t,.22,.08,'triangle',dest);this.noise(t,.16,.04,420*rate,dest)}return true;
   }
   pollCourtshipAudio(){
-    const sim=this.sim,p=sim.player?.();if(!p||sim.paused)return;
+    const sim=this.sim,p=sim.player?.();if(!p||sim.paused||!this.unlocked||!this.enabled||!this.ctx)return;
     for(const a of sim.animals||[]){const state=a.courtshipPerformance;if(!a.alive||a.intent!=='mate'||!state||sim.tickCount>state.endsAt||Math.hypot(a.x-p.x,a.y-p.y)>10)continue;const partner=sim.animals.find(b=>b.id===state.partnerId&&b.alive);if(!partner||Math.hypot(a.x-partner.x,a.y-partner.y)>COURTSHIP_PERFORMANCE.contestRadius||sim.world?.sameLand&&!sim.world.sameLand(a.x,a.y,p.x,p.y))continue;
       const move=currentCourtshipMove(sim,a);if(move!=='approach'&&!availableCourtshipMoves(a).includes(move))continue;const step=Math.floor(Math.max(0,sim.tickCount-state.startedAt)/(COURTSHIP_PERFORMANCE.beats*CFG.lifeStride)),key=state.startedAt+':'+state.attempt+':'+step;
       if(this.courtshipAudio.get(a)===key)continue;this.courtshipAudio.set(a,key);
@@ -239,6 +247,7 @@ export class AudioDirector{
   }
   playCue(name,data={}){
     if(!this.unlocked||!this.enabled||!this.ctx)return;const t=this.ctx.currentTime+.005;
+    if(!['move','sprint','confirm','deny','fire-crackle'].includes(name))this.foregroundCue(name==='thunder'?1.3:.65);
     const foodSamples={'eat-moss':'food-moss','eat-berries':'food-berries','eat-reeds':'food-reeds','eat-mushroom':'food-mushroom','eat-seed':'food-seed','eat-carrion':'food-carrion'};
     if(foodSamples[name]){if(this.playSample(foodSamples[name],{volume:name==='eat-carrion'?.62:.54,rate:.96+this.rand()*.08}))return;name='eat'}
     switch(name){
@@ -272,6 +281,7 @@ export class AudioDirector{
   playSample(id,{x=null,y=null,radius=14,volume=1,rate=1,bus='sfx',when=null}={}){
     if(!this.unlocked||!this.enabled||!this.ctx)return false;const buffer=this.assetBuffers.get(id);if(!buffer)return false;let destination=bus==='music'?this.musicBus:bus==='ambience'?this.ambienceBus:this.sfxBus;
     if(Number.isFinite(x)&&Number.isFinite(y)){destination=this.spatialDestination(x,y,{radius,volume});if(!destination)return false;volume=1}
+    if(bus==='sfx')this.foregroundCue(Math.min(1.2,buffer.duration||.65));
     const src=this.ctx.createBufferSource(),gain=this.ctx.createGain();src.buffer=buffer;if(src.playbackRate)src.playbackRate.value=clamp(rate,.65,1.5);gain.gain.value=Math.max(.0001,volume);src.connect(gain);gain.connect(destination);if(Number.isFinite(when))src.start(Math.max(this.ctx.currentTime,when));else src.start();return true;
   }
   spatialDestination(x,y,{radius=14,volume=1}={}){
