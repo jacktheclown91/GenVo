@@ -5,7 +5,7 @@
 // a second one returns west. Afterwards both regions are resident and advance in
 // synchronized strides with regional dispersal open. No organisms, stocks,
 // traits, positions of wildlife, thresholds or targets are touched.
-// Usage: node --max-old-space-size=8192 tools/observe-regional-evolution-field.mjs OUTPUT.json SEED DAYS [--policy=autonomous-evolution/3] [--snapshot-days=120,160] [--itinerary=out-back|stay-east]
+// Usage: node --max-old-space-size=8192 tools/observe-regional-evolution-field.mjs OUTPUT.json SEED DAYS [--policy=autonomous-evolution/3] [--snapshot-days=120,160] [--itinerary=out-back|stay-east] [--founding=regional-founding-templates/2]
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
@@ -25,11 +25,12 @@ const root=fileURLToPath(new URL('../',import.meta.url)),{reachable,missing}=sou
 const hash=createHash('sha256');for(const file of [...reachable].filter(f=>f.startsWith('src/')).sort())hash.update(file).update(fs.readFileSync(path.join(root,file)));
 const options={player:true,worldGenerator:'planetary/1',regionalFrontier:true,autonomousPopulations:true,
   autonomousEvolution:process.argv.find(arg=>arg.startsWith('--policy='))?.slice('--policy='.length)||true,
+  regionalFounding:process.argv.find(arg=>arg.startsWith('--founding='))?.slice('--founding='.length)||true,
   courtshipSimilarity:true,dayClock:true,metabolism:true,foodProperties:true,tissueWater:true,winterWater:true,escapeLanding:true,tissueEnergy:true,perennialRegrowth:true};
 let sim=new Simulation(seed,options);sim.setPlayerAutonomy(true);
 const receipt={schema:'genvo.regional-evolution-field/1',seed,requestedDays:days,node:process.version,runtimeFingerprint:hash.digest('hex'),options,
   scope:'Normal constructor and native AUTO; canonical updates only. Declared itinerary: the player takes manual control for one controlled east crossing on day 1 and one west return on day 2 (placement at an approved frontier only), returning to AUTO after each. Wildlife, resources, traits, thresholds and recognition are never touched. Natural-field evidence, not creator acceptance.',
-  policies:{populations:sim.autonomousPopulationRules,evolution:sim.autonomousEvolutionRules},itinerary:[],samples:[],status:'running',started:new Date().toISOString()};
+  policies:{populations:sim.autonomousPopulationRules,evolution:sim.autonomousEvolutionRules,founding:sim.regionalFoundingRules},itinerary:[],samples:[],status:'running',started:new Date().toISOString()};
 const save=()=>fs.writeFileSync(out+'.partial',JSON.stringify(receipt));
 function cross(direction){
   // As a player does: take manual control to cross, then hand back to AUTO.

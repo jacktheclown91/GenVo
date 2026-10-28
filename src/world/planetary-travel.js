@@ -6,7 +6,7 @@ import {POPULATION_MODE} from './regional-replay-order.js';
 import {MARINE_FOOD} from '../ecology/marine-food.js';
 import {clearWarmRegions} from './regional-warm-cache.js';
 import {PLANET_PROJECTIONS} from './planet-geography.js';
-import {REGIONAL_FOUNDING,foundRegionalPopulations} from '../ecology/regional-founding.js';
+import {regionalFoundingPolicy,foundRegionalPopulations} from '../ecology/regional-founding.js';
 import {assignRegionalBiologyModes} from './planetary-demography.js';
 import {REGIONAL_RESIDENCY,residencyEnabled,crossingResidency} from './regional-residency.js';
 // E15: explicit, gated, on-foot planetary frontier traversal.
@@ -207,7 +207,7 @@ export function crossPlanetaryBorder(sim,{preparedDestination=null}={}){
   dest.rng=new RNG(sim.seed+'|regional-fauna|'+destinationKey);
   dest.nextId=nextId+1;
   // Only ONCE for a newly entered region; archived regions never re-found.
-  if(sim.regionalFoundingRules===REGIONAL_FOUNDING.policy)foundRegionalPopulations(dest,{region:destinationKey});
+  if(regionalFoundingPolicy(sim.regionalFoundingRules))foundRegionalPopulations(dest,{region:destinationKey,policy:sim.regionalFoundingRules});
   else dest.spawnInitial();
   dest.regionalEcology.resetPageResidency();
  }

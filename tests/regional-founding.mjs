@@ -30,7 +30,7 @@ const regions=[{x:128,y:0},{x:-25600,y:12800},{x:12800,y:0}].map(origin=>{
 });
 const seen=new Set();
 for(const {s,key,receipt} of regions){
- assert.equal(receipt.policy,REGIONAL_FOUNDING.policy);
+ assert.equal(receipt.policy,REGIONAL_FOUNDING.legacy);
  assert.ok(receipt.introduced.length>=2,key+' founds several viable groups');
  for(const g of receipt.introduced){
   seen.add(g.template);
@@ -43,7 +43,7 @@ for(const {s,key,receipt} of regions){
   const t=foundingTemplate(g.template);
   for(const a of members){
    assert.equal(a.species,t.carrier);assert.equal(a.generation,1);assert.deepEqual(a.parentIds,[]);
-   assert.deepEqual(a.foundingOrigin,{schema:1,policy:REGIONAL_FOUNDING.policy,template:t.id,region:key,day:s.day,tick:s.tickCount});
+   assert.deepEqual(a.foundingOrigin,{schema:1,policy:REGIONAL_FOUNDING.legacy,template:t.id,region:key,day:s.day,tick:s.tickCount});
    assert.equal(mouthOf(a),t.placements.find(p=>p.socket==='mouth').partId,'mounted anatomy is the template body');
    assert.equal(canHunt(a),!!t.predator);
    assert.equal(!!s.world.water[s.world.idx(a.x,a.y)],t.habitat.medium==='water','placed in its medium');
@@ -60,7 +60,7 @@ for(const {s,key,receipt} of regions){
  assert.deepEqual(again.animals.map(a=>[a.id,a.x,a.y,a.bodyPlan.id]),s.animals.map(a=>[a.id,a.x,a.y,a.bodyPlan.id]));
  // Exact save/restore with validated provenance; a forged founder is rejected.
  const snap=structuredClone(createSimulationSnapshot(s,{savedAt:'fixed',reason:'founding'})),back=restoreSimulationSnapshot(structuredClone(snap));
- assert.deepEqual(back.regionalFounding,s.regionalFounding);assert.equal(back.regionalFoundingRules,REGIONAL_FOUNDING.policy);
+ assert.deepEqual(back.regionalFounding,s.regionalFounding);assert.equal(back.regionalFoundingRules,REGIONAL_FOUNDING.legacy);
  const forged=structuredClone(snap);forged.animals.find(a=>a.foundingOrigin&&a.alive).foundingOrigin.template='frost-stalker';
  assert.throws(()=>restoreSimulationSnapshot(forged),/founding receipt|provenance/);
 }
@@ -69,9 +69,9 @@ assert.ok(seen.size>=6,'regions draw on different templates: '+[...seen].join(',
 // One day of ordinary simulation runs over a founded region without special cases.
 {const s=regions[0].s;for(let i=0;i<CFG.dayTicks;i++)s.update();assert.ok(s.animals.some(a=>a.alive))}
 
-// Real crossing uses the policy; a historical save without it keeps classic founding.
+// Default worlds record /1 (new games opt into /2 by name); real crossing uses it; a historical save without it keeps classic founding.
 const home=new Simulation('PLANET-B0-A',{player:true,worldGenerator:'planetary/1'}),p=home.player();
-assert.equal(home.regionalFoundingRules,REGIONAL_FOUNDING.policy);
+assert.equal(home.regionalFoundingRules,REGIONAL_FOUNDING.legacy);
 assert.equal(home.regionalFounding,undefined,'the home valley keeps its established founding');
 p.energy=SPECIES[p.species].maxEnergy*.94;p.hydration=SPECIES[p.species].maxHydration*.95;
 let ok=null;for(let y=8.5;y<118.5;y++){p.x=125.2;p.y=y;home.rebuildSpatial();if(planetaryTravelAvailability(home).enabled){ok=true;break}}
@@ -79,7 +79,7 @@ assert.ok(ok);
 const legacyCore=structuredClone(createSimulationSnapshot(home,{savedAt:'fixed',reason:'legacy'}));delete legacyCore.core.regionalFoundingRules;
 const crossed=crossPlanetaryBorder(home);assert.equal(crossed.ok,true,crossed.message);
 const east=crossed.simulation;
-assert.equal(east.regionalFounding?.region,'128,0');assert.equal(east.regionalFoundingRules,REGIONAL_FOUNDING.policy);
+assert.equal(east.regionalFounding?.region,'128,0');assert.equal(east.regionalFoundingRules,REGIONAL_FOUNDING.legacy);
 assert.ok(east.animals.some(a=>a.foundingOrigin),'new region is founded from templates');
 assert.ok(east.animals.filter(a=>a.foundingOrigin).every(a=>a.parentIds.length===0&&a.generation===1),'no fabricated ancestry');
 const legacy=restoreSimulationSnapshot(legacyCore);assert.equal(legacy.regionalFoundingRules,undefined);

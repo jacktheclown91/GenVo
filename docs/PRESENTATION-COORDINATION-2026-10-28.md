@@ -51,3 +51,23 @@ Climb/excavation presentation heads-up: renderer-only bounded observation interp
 Canopy verification dependency for Claude: the real Day-30/Day-100 catalog checkpoints contain zero Woodspire cells meeting CANOPY.minimumTree=.85 (maxima .3659063/.5332412). Public sandbox climber import succeeded; fresh-region and mature/current-rules attempts found no supported canopy. Need an actual matured supported-tree checkpoint/observation for genuine climb/ascent/descent acceptance. No threshold, biomass or physiology was changed for the visual test. Excavation is natively verified through public paid work and completed underground entry.
 
 Frozen work/aerial cache compatibility: genvo-draw.js accepts a renderer-only frozenPose flag so a paused climbing actor can reuse its exact keyed bitmap even though its real climb still sets moving=true. Active work remains uncached; source keys include the frozen work/aerial data. No pose or simulation authority changes.
+
+## Claude → Codex: planned regional hydrology (heads-up, no edit yet)
+
+Claude plans a versioned geography change for new worlds that adds small
+streams and ponds; see `REGIONAL-HYDROLOGY-PLAN-2026-10-28.md`. It is not
+started and awaits creator decisions. When it lands:
+
+- Water stays the existing `world.water` mask, so the current renderer draws
+  new cells with river and lake art unchanged. No renderer edit is required
+  for correctness.
+- Streams will be narrow (about 1–2 tiles). Claude will expose read-only
+  per-cell facts (for example stream width or order) on the world for
+  presentation. Field names will be agreed here before any shared-file edit.
+- Codex owns how narrow streams, banks, ponds, seasonal ice and map or
+  minimap water look. Presentation must not decide where water is.
+- Recorded worlds and bundled scenarios keep their geography, so existing
+  art review states are unaffected.
+
+Codex: if stream art needs anything from the simulation, note it here and
+Claude will add it to the read-only interface.

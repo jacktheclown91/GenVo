@@ -26,6 +26,7 @@ import {selectResidentStart} from './persistence/resident-start.js';
 import {matchStartingFounderAppearance} from './persistence/authored-founders.js';
 import {loadNativePartCatalog,nativeArtStatus} from './render/runtime-part-art.js';
 import {Simulation} from './sim/simulation.js';
+import {REGIONAL_FOUNDING} from './ecology/regional-founding.js';
 import {Renderer,TERRAIN_POOL} from './render/renderer.js';
 import {GAIT_REVIEW} from './render/genvo.js';
 import {BREEDING_REVIEW,LIFE_HISTORY} from './ecology/breeding-calibration.js';
@@ -83,7 +84,7 @@ let seed=new URLSearchParams(location.search).get('seed')||'GENVO8-8FOLD';
 // keep the recorded 6-second day and resting costs.
 const dayParam=new URLSearchParams(globalThis.location?.search||'').get('day');
 const DAY_CLOCK_OPT_IN=dayParam!=='legacy'&&dayParam!=='6';
-const SURVIVAL_OPT_IN={autonomousPopulations:true,courtshipSimilarity:true,dayClock:DAY_CLOCK_OPT_IN,metabolism:DAY_CLOCK_OPT_IN,foodProperties:DAY_CLOCK_OPT_IN,tissueWater:DAY_CLOCK_OPT_IN,winterWater:DAY_CLOCK_OPT_IN,escapeLanding:DAY_CLOCK_OPT_IN,tissueEnergy:DAY_CLOCK_OPT_IN,perennialRegrowth:DAY_CLOCK_OPT_IN};
+const SURVIVAL_OPT_IN={autonomousPopulations:true,courtshipSimilarity:true,regionalFounding:REGIONAL_FOUNDING.policy,dayClock:DAY_CLOCK_OPT_IN,metabolism:DAY_CLOCK_OPT_IN,foodProperties:DAY_CLOCK_OPT_IN,tissueWater:DAY_CLOCK_OPT_IN,winterWater:DAY_CLOCK_OPT_IN,escapeLanding:DAY_CLOCK_OPT_IN,tissueEnergy:DAY_CLOCK_OPT_IN,perennialRegrowth:DAY_CLOCK_OPT_IN};
 let sim=new Simulation(seed,{player:true,reuseGeneratedBase:true,...SURVIVAL_OPT_IN});
 const canvas=document.querySelector('#game'),renderer=new Renderer(canvas,sim),keys={},pauseNotice=document.querySelector('#pauseNotice');
 renderer.zoom=cameraZoom();

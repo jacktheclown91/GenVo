@@ -55,7 +55,7 @@ import {canHunt,preyPreference,plantPreference,groundDiet,weakBiteAttempt,WEAK_B
 import {amphibiousForager,shoreHabitatCenter} from '../ecology/ecology-review.js';
 import {advanceAgeDay,preyAppraisal} from '../ecology/juvenile-biology.js';
 import {resourceInformedFounding} from '../ecology/resource-founding.js';
-import {REGIONAL_FOUNDING} from '../ecology/regional-founding.js';
+import {REGIONAL_FOUNDING,regionalFoundingPolicy} from '../ecology/regional-founding.js';
 import {phaseRegionalDemography} from '../ecology/regional-demography.js';
 import {REGIONAL_DEMOGRAPHY,advanceDemographicRegions} from '../world/planetary-demography.js';
 import {REGIONAL_RESIDENCY} from '../world/regional-residency.js';
@@ -191,7 +191,9 @@ export class Simulation{
     if(plantLifecycle)this.plantLifecycleRules=PLANT_LIFECYCLE.policy;
     if(evolvedLibrary)this.evolvedLibraryRules=EVOLVED_LIBRARY.policy;
     if(regionalResidency)this.regionalResidencyRules=REGIONAL_RESIDENCY.policy;
-    if(regionalFounding)this.regionalFoundingRules=REGIONAL_FOUNDING.policy;
+    // Planetary worlds found new regions; `true` keeps the recorded /1 default, and new
+    // games opt into a later policy by name (main.js). Other generators never found.
+    if(regionalFounding&&worldGenerator==='planetary/1'){const policy=regionalFounding===true?REGIONAL_FOUNDING.legacy:regionalFounding;if(!regionalFoundingPolicy(policy))throw Error('Unknown regional founding policy.');this.regionalFoundingRules=policy}
     if(regionalDemography)this.regionalDemographyRules=REGIONAL_DEMOGRAPHY.policy;
     if(massRules!==ANATOMICAL_MASS&&massRules!==LEGACY_MASS)throw Error('Unknown world mass rules: '+massRules);
     this.massRules=massRules;

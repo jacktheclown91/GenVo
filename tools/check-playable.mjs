@@ -97,6 +97,7 @@ const runtime=[
   'tests/regional-dirty.mjs',
   'tests/overlay-placement.mjs',
   'tests/regional-founding.mjs',
+  'tests/regional-founding-water.mjs',
   'tests/regional-demography.mjs',
   'tests/regional-residency.mjs',
   'tests/border-terrain.mjs',
