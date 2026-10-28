@@ -80,9 +80,21 @@ try{
   await page.waitForFunction(r=>window.__artStudy.worldResolution===r,resolution);
   await game.evaluate(()=>window.__GENVO8__.renderer.render());
   const info=await game.evaluate(()=>({zoom:window.__GENVO8__.renderer.zoom,art:window.__GENVO8__.nativeArtStatus(),animals:window.__GENVO8__.sim.animals.length}));
+  const rendering=await game.evaluate(async()=>{
+   const renderer=window.__GENVO8__.renderer,samples=[];
+   for(let i=0;i<36;i++){
+    await new Promise(resolve=>requestAnimationFrame(resolve));
+    const start=performance.now();renderer.render();
+    if(i>=6)samples.push(performance.now()-start);
+   }
+   samples.sort((a,b)=>a-b);
+   return{samples:samples.length,medianMs:samples[15],p95Ms:samples[28],visibleCreatures:renderer.screenPos?.size||0,
+    scope:'Direct full-world renderer CPU composition in this fixed paused young-world camera; not end-to-end FPS or mature-population acceptance.'};
+  });
+
   await page.locator('#game').screenshot({path:path.join(out,'world-'+resolution+(world.length===3?'-restored':'')+'.png')});
   if(before!==await snapshot())throw Error('Art preview changed canonical world state');
-  world.push({resolution,...info,stateExact:true});
+  world.push({resolution,...info,rendering,stateExact:true});
  }
  await page.locator('#observe').click();
  if(await page.locator('#specimen').inputValue()!=='4')throw Error('Observed creature import failed');
