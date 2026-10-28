@@ -23,3 +23,5 @@ Next shared styling edit: compact Help, Population and Home Range windows in
 viewports, retaining normal wide-screen layouts, phone layouts, independent
 scroll owners and explicit expanded views. No camera, command or simulation
 logic changes are planned. This note precedes the styling edit.
+
+Next bounded presentation edit: src/render/motion.js separates position interpolation from canonical animation-frame interpolation. Tick/frame-only updates will not restart an in-progress step. No renderer structure, movement authority, anatomy, save or simulation file changes. Focused regression checks cover continuous travel, turns and stationary endpoints.

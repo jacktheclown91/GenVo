@@ -56,3 +56,23 @@ assert.ok(liftedLeg.liftAmount>plantedLeg.liftAmount,'GenVo gait exposes a conti
 assert.ok(Math.hypot(liftedLeg.foot.x,liftedLeg.foot.y)<Math.hypot(plantedLeg.foot.x,plantedLeg.foot.y),'raised GenVo foot folds inward instead of disappearing');
 
 console.log('render motion bridge checks: PASS');
+
+// Frame-only refreshes during a real step cannot restart the position bridge.
+for(const hz of [8,32,64]){
+ const duration=1000/hz,walker={id:70,x:0,y:0,anim:0};
+ const motion=new VisualMotionTracker();motion.sample(walker,0,0,{hz,response:'linear'});
+ walker.x=1;walker.anim=1;motion.sample(walker,1,duration,{hz,response:'linear'});
+ walker.anim=2;
+ const half=motion.sample(walker,2,duration*1.5,{hz,response:'linear'});
+ const end=motion.sample(walker,3,duration*2,{hz,response:'linear'});
+ assert.equal(half.x,.5,'action articulation must not interrupt grounded travel');
+ assert.equal(end.x,1,'tick-only refresh must reach the real endpoint on time');
+ assert.equal(end.moving,false,'stationary endpoint does not keep walking');
+ assert.equal(end.headingX,1,'heading remains tied to actual displacement');
+ assert.equal(end.gaitPhase,4,'grounded gait advances exactly with distance');
+ assert.deepEqual(walker,{id:70,x:1,y:0,anim:2},'canonical movement and frame remain unchanged');
+ walker.y=1;motion.sample(walker,4,duration*3,{hz,response:'linear'});
+ const turn=motion.sample(walker,4,duration*4,{hz,response:'linear'});
+ assert.equal(turn.headingX,0);assert.equal(turn.headingY,1,'turn follows the next real travel segment');
+}
+console.log('Independent position/articulation clocks: 8/32/64 Hz travel, stop and turn PASS');
