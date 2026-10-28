@@ -5,6 +5,7 @@
 // had. Anything outside plain objects, arrays, Maps, Sets and unshared typed
 // arrays falls back to structuredClone of the whole snapshot. `owned` lists
 // subtrees the capture itself just built and nothing else holds; they pass through.
+import {drain} from '../sim/resumable.js';
 const deepFrozen=new WeakSet();
 // A frozen cycle is never shared, so no object is cached on an unproven assumption.
 function isDeepFrozen(v,visiting=new Set()){
@@ -20,7 +21,10 @@ function isDeepFrozen(v,visiting=new Set()){
  visiting.delete(v);deepFrozen.add(v);return true;
 }
 const UNSUPPORTED=Symbol('unsupported');
-export function independentSnapshotCopy(snapshot,{owned=[]}={}){
+export function independentSnapshotCopy(snapshot,options){return drain(independentSnapshotCopySteps(snapshot,options))}
+// Resumable form: pauses between the snapshot's top-level parts, its controllers
+// and their fields, sharing one alias memo, for a caller whose source stays unchanged.
+export function* independentSnapshotCopySteps(snapshot,{owned=[]}={}){
  const memo=new Map(),buffers=new Set();
  for(const o of owned)if(o&&typeof o==='object')memo.set(o,o);
  function copy(v){
@@ -36,13 +40,20 @@ export function independentSnapshotCopy(snapshot,{owned=[]}={}){
   if(proto===Map.prototype){const out=new Map();memo.set(v,out);for(const [k,x] of v)out.set(copy(k),copy(x));return out}
   if(proto===Set.prototype){const out=new Set();memo.set(v,out);for(const x of v)out.add(copy(x));return out}
   if(proto!==Object.prototype)throw UNSUPPORTED;
+  return drain(copyObject(v,0));
+ }
+ // A plain object's own enumerable data properties, in order; `pauses` levels
+ // below this one yield after each property.
+ function* copyObject(v,pauses){
   const out={};memo.set(v,out);
   for(const key of Object.keys(v)){
    const d=Object.getOwnPropertyDescriptor(v,key);if(!('value' in d))throw UNSUPPORTED;
-   const x=copy(d.value);
+   const item=d.value,x=pauses>0&&isPlainCopyable(item)?yield* copyObject(item,pauses-1):copy(item);
    if(key==='__proto__')Object.defineProperty(out,key,{value:x,enumerable:true,writable:true,configurable:true});else out[key]=x;
+   if(pauses>0)yield;
   }
   return out;
  }
- try{return copy(snapshot)}catch(error){if(error===UNSUPPORTED)return structuredClone(snapshot);throw error}
+ const isPlainCopyable=v=>v!==null&&typeof v==='object'&&!memo.has(v)&&Object.getPrototypeOf(v)===Object.prototype&&!(Object.isFrozen(v)&&isDeepFrozen(v));
+ try{return isPlainCopyable(snapshot)?yield* copyObject(snapshot,3):copy(snapshot)}catch(error){if(error===UNSUPPORTED)return structuredClone(snapshot);throw error}
 }

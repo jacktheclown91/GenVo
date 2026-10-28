@@ -6,6 +6,7 @@ import {regionalEvolutionEnabled} from '../lineage/autonomous-evolution.js';
 // silently accelerated by a UI call; remote work is bounded by the active
 // life stride and return trips refuse excessive time debt.
 import {CFG} from '../sim/config.js';
+import {drain} from '../sim/resumable.js';
 import {dayTicksFor} from '../sim/day-clock.js';
 import {markRegionalOwnerDirty} from './regional-revision.js';
 import {takeWarmRegion,warmCandidate,keepWarmRegion} from './regional-warm-cache.js';
@@ -13,7 +14,8 @@ import {dispersalContextFor,setDispersalContext,deliverEmigrants,takeEmigrants} 
 import {REGIONAL_REPLAY,regionalBiologyOrder,POPULATION_MODE} from './regional-replay-order.js';
 export {REGIONAL_REPLAY,POPULATION_MODE} from './regional-replay-order.js';
 import {createSimulationSnapshot,restoreDetachedSimulationSnapshot} from '../persistence/save-manager.js';
-import {independentSnapshotCopy} from '../persistence/snapshot-copy.js';
+import {independentSnapshotCopySteps} from '../persistence/snapshot-copy.js';
+import {packFloraSeedColumnsSteps} from '../persistence/flora-seed-codec.js';
 import {OFFSCREEN_ENVIRONMENT,validateRemoteEnvironmentalLedger} from './planetary-offscreen-environment.js';
 import {validatePlanetAnimalOwnership} from './planet-regions.js';
 
@@ -83,8 +85,11 @@ export function highId(sim){
  return Math.max(highest+1,sim.planetaryTravel?.nextId||1);
 }
 // A transactional offscreen stride: if canonical simulation or conservation
-// fails, no archived organism or plant/food array is changed.
-export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass,warm=false,dispersal=null}={}){
+// fails, no archived organism or plant/food array is changed. The resumable
+// form pauses inside and between the region's own ticks; the archived region
+// is exclusively owned until publication, so every pause reads and writes nothing.
+export function stageRemoteBiology(session,options){return drain(stageRemoteBiologySteps(session,options))}
+export function* stageRemoteBiologySteps(session,{tickCount,reservedNextId,maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass,warm=false,dispersal=null}={}){
  const active={tickCount};
  if(!Number.isSafeInteger(reservedNextId)||reservedNextId<1)throw Error('Invalid reserved regional identity watermark.');
  // Another simulation may currently own CFG; this archive owns its work bound.
@@ -118,7 +123,7 @@ export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OF
  setDispersalContext(temp,dispersal);
  for(let tick=0;tick<steps;tick++){
   const beforeDay=temp.day;
-  temp.update(null,{externalPlayerControl:true,populationModel});
+  yield* temp.updateSteps(null,{externalPlayerControl:true,populationModel});yield;
   // regional-dispersal/1: animals that crossed an open border leave this owner.
   if(dispersal)emigrants.push(...takeEmigrants(temp));
   if(temp.day!==beforeDay){
@@ -141,8 +146,11 @@ export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OF
  // of one selected field and discard its corresponding conservation account.
  // A Simulation kept warm continues after publication, so its checkpoint is
  // an independent deep copy; otherwise the restored region is discarded.
- const copy=keep?publishWarmCopy(createSimulationSnapshot(temp,{reason:session.snapshot.reason,savedAt:session.snapshot.savedAt})):createSimulationSnapshot(temp,{
-  reason:session.snapshot.reason,savedAt:session.snapshot.savedAt,
+ // The seed table is packed resumably first from the same unchanged bank, with
+ // the same ownership option the capture itself would use.
+ const seeds=temp.dispersal?.floraState?.seeds,seedTable=seeds?yield* packFloraSeedColumnsSteps(seeds,{ownedMetadata:!keep}):null;yield;
+ const copy=keep?yield* publishWarmCopySteps(createSimulationSnapshot(temp,{reason:session.snapshot.reason,savedAt:session.snapshot.savedAt,seedTable})):createSimulationSnapshot(temp,{
+  reason:session.snapshot.reason,savedAt:session.snapshot.savedAt,seedTable,
   // The restored region is exclusively owned and discarded after publication.
   // Transfer immutable checkpoint metadata instead of cloning all cohort
   // arrays/objects yet again. Ordinary saves retain protective deep copies.
@@ -160,9 +168,10 @@ export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OF
 }
 // The packed seed table was just built by this capture with copied metadata;
 // only the rest of the checkpoint needs separating from the warm Simulation.
-function publishWarmCopy(captured){return independentSnapshotCopy(captured,{owned:[captured.controllers?.dispersal?.floraState?.seeds]})}
-export function advanceRemoteBiology(active,session,{maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass}={}){
- const dispersal=dispersalContextFor(active,session.key,session.snapshot.core.tickCount),reservedNextId=highId(active),staged=stageRemoteBiology(session,{tickCount:active.tickCount,reservedNextId,maxTicks,warm:true,dispersal});
+function* publishWarmCopySteps(captured){yield;return yield* independentSnapshotCopySteps(captured,{owned:[captured.controllers?.dispersal?.floraState?.seeds]})}
+export function advanceRemoteBiology(active,session,options){return drain(advanceRemoteBiologySteps(active,session,options))}
+export function* advanceRemoteBiologySteps(active,session,{maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass}={}){
+ const dispersal=dispersalContextFor(active,session.key,session.snapshot.core.tickCount),reservedNextId=highId(active),staged=yield* stageRemoteBiologySteps(session,{tickCount:active.tickCount,reservedNextId,maxTicks,warm:true,dispersal});
  if(!staged.candidate)return staged.result;
  const nextSessions=active.planetaryTravel.sessions.map(s=>s===session?staged.candidate:s);
  validatePlanetAnimalOwnership(active.animals,{schema:1,nextId:Math.max(reservedNextId,staged.nextId),sessions:nextSessions});
@@ -206,8 +215,9 @@ export function pendingRegionalBiology(sim){
 }
 // One transaction per caller admission. Browser callers yield after each job;
 // direct simulation callers complete the same ordered jobs before their next tick.
-export function prepareRegionalBiology(sim){
+export function prepareRegionalBiology(sim){return drain(prepareRegionalBiologySteps(sim))}
+export function* prepareRegionalBiologySteps(sim){
  const due=pendingRegionalBiology(sim);
  if(!due.length)return null;
- return advanceRemoteBiology(sim,due[0],{maxTicks:OFFSCREEN_BIOLOGY.ticksPerPass});
+ return yield* advanceRemoteBiologySteps(sim,due[0],{maxTicks:OFFSCREEN_BIOLOGY.ticksPerPass});
 }

@@ -42,7 +42,13 @@ try{
   const g=window.__GENVO8__;g.sim.paused=true;window.stopReplaySampling();
   const {createSimulationSnapshot,restoreSimulationSnapshot}=await import('/src/persistence/save-manager.js');
   const saved=createSimulationSnapshot(g.sim,{savedAt:'fixed',reason:'browser-replay'});await g.saveManager.saveNow('browser-replay-final');const actual=await g.saveManager.loadSnapshot(),restored=restoreSimulationSnapshot(structuredClone(actual));
-  const compare=s=>JSON.stringify(createSimulationSnapshot(s,{savedAt:'fixed',reason:'browser-replay'}),(_,v)=>ArrayBuffer.isView(v)?Array.from(v):v);
+  // Snapshots contain reference cycles (animal targets). Like the original JSON
+  // comparison this is alias-insensitive; only an object reached again inside
+  // itself becomes a cycle marker, and Maps/Sets/arrays keep their order. Plain
+  // object fields compare by key: a restored Simulation assigns its own fields
+  // in a different order from a constructed one (pre-existing, not a value change).
+  const canonical=(v,path)=>{if(ArrayBuffer.isView(v))return{$view:v.constructor.name,values:Array.from(v)};if(!v||typeof v!=='object')return v===undefined?{$undefined:true}:Number.isNaN(v)?{$nan:true}:Object.is(v,-0)?{$negzero:true}:v;if(path.has(v))return{$cycle:true};path.add(v);let out;if(v instanceof Map)out={$map:[...v].map(([k,x])=>[canonical(k,path),canonical(x,path)])};else if(v instanceof Set)out={$set:[...v].map(x=>canonical(x,path))};else if(Array.isArray(v))out=v.map(x=>canonical(x,path));else{out={};for(const k of Object.keys(v).sort())out[k]=canonical(v[k],path)}path.delete(v);return out};
+  const compare=s=>JSON.stringify(canonical(createSimulationSnapshot(s,{savedAt:'fixed',reason:'browser-replay'}),new Set()));
   const rows=window.replayFrames,held=[];for(let i=1;i<rows.length;i++)if(rows[i].tick===rows[i-1].tick&&rows[i].remote.some((v,j)=>v>rows[i-1].remote[j]))held.push(i);
   return{scope:'Actual main game loop and IndexedDB; controlled frontier placement, founded organisms, one active day, not human acceptance or mature planetary performance',policy:g.sim.regionalReplayPolicy,tick:g.sim.tickCount,remote:g.sim.planetaryTravel.sessions.map(r=>({key:r.key,tick:r.snapshot.core.tickCount,debt:g.sim.tickCount-r.snapshot.core.tickCount,mode:r.biologicalMode})),frames:rows,heldLocalFramesWithRemoteProgress:held.length,roundTripExact:compare(restored)===compare(g.sim),maxFrameGap:Math.max(...rows.slice(1).map((r,i)=>r.now-rows[i].now)),warningObserved:rows.some(r=>r.noticeVisible&&r.notice.includes('Local time waits'))};
  });
