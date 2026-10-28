@@ -6,6 +6,8 @@ The [resolution prototype](ART-RESOLUTION-STUDY-2026-10-28.md) adds real optiona
 
 The creator has approved refining 64px gameplay candidates and 128px Lab close-ups, keeping native32 stable until demonstrated improvement. The [refined modular material batch](ART-MATERIAL-BATCH-2026-10-28.md) is integrated into the real Lab through a resolution-selective verified loader; gameplay remains native32 by default. Continue coherent-batch refinement and native artistic evaluation, not a catalog-wide redraw. The [support-carriage pass](SUPPORT-LOAD-PRESENTATION-2026-10-28.md) is now implemented and natively observed with the actual64 batch. The [persistent ground-contact pass](GROUND-CONTACTS-2026-10-28.md) now holds final painted stance coordinates through travel and eight-facing turns, eases body starts/stops, and visibly recovers feet. The [swimming pass](SWIMMING-PRESENTATION-2026-10-28.md) now adds anatomy-dependent power/recovery strokes, neutral stopped paddles and continuous tail sweep; real water state selects carriage before offsets are computed. Flying/gliding/climbing/burrowing, further anatomy/action expression and broader native artistic evaluation remain open.
 
+The creator-reported [limb orientation correction](PART-MIRRORING-2026-10-28.md) fixes tissue handedness and forward-facing distal feet in the shared game/Lab renderer, with exact joint/contact coordinates and specialized actions retained. Native Lab resolution controls and all eight headings were checked. Flight/gliding remains next.
+
 The material below records the earlier bounded passes and their original package labels; it is not the current initiative's completion checklist.
 
 ---

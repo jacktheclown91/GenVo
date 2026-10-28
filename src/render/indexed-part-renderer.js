@@ -57,7 +57,18 @@ export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
  const displayScale=asset.displayScale??1;
  const pivot=[...asset.rootAnchorPx],limits=asset.rootJoint?{...asset.rootJoint}:null;
  const rig=asset.rig||null;
- function drawBone(ctx,entry,section,start,end,scale,sharedWidth=null){
+ // The distal paint belongs to a foot, not to the shin's pointing direction.
+ // Partition the existing horizontal tissue once; preserve original source art.
+ const footSections=(()=>{
+  const lower=rig?.kind==='two-bone'?rig.lower:null;
+  if(!lower||lower.start[1]!==lower.end[1]||lower.end[0]<=lower.start[0])return null;
+  const [x,y,w,h]=lower.rect,split=Math.round(lower.start[0]+(lower.end[0]-lower.start[0])*.76);
+  const overlap=Math.max(1,asset.width/32),axis=[split,lower.end[1]];
+  return{shin:{rect:[x,y,Math.min(w,split+overlap-x),h],start:lower.start,end:axis},
+   toe:{rect:[split-overlap,y,x+w-split+overlap,h],start:axis,end:lower.end}};
+ })();
+
+ function drawBone(ctx,entry,section,start,end,scale,sharedWidth=null,mirrorTransverse=false){
   const [x0,y0]=section.start,[x1,y1]=section.end,dx=x1-x0,dy=y1-y0;
   const distance=Math.hypot(end.x-start.x,end.y-start.y);if(distance<.01)return;
   const sourceLength=Math.hypot(dx,dy),originalAngle=Math.atan2(dy,dx);
@@ -72,16 +83,16 @@ export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
   ctx.save();try{
    ctx.imageSmoothingEnabled=false;
    ctx.translate(start.x,start.y);ctx.rotate(Math.atan2(end.y-start.y,end.x-start.x)-originalAngle);
-   ctx.scale(pixelsPerArtUnit,widthScale);
+   ctx.scale(pixelsPerArtUnit,mirrorTransverse?-widthScale:widthScale);
    ctx.drawImage(entry.canvas,sx,sy,sw,sh,(sx-x0),(sy-y0),sw,sh);
   }finally{ctx.restore()}
  }
 
  function select({state='idle',facing=0,timeMs=0,frameIndex=null}={}){if(!Number.isFinite(timeMs)||timeMs<0)throw Error('Invalid animation time');const frames=sequences.get(state+':'+facing);if(!frames)return null;if(frameIndex!==null){if(!Number.isInteger(frameIndex)||frameIndex<0)throw Error('Invalid animation frame index');return frames.find(e=>e.frame.index===frameIndex)||null}const total=frames.reduce((sum,e)=>sum+e.frame.durationMs,0);let elapsed=timeMs%total;for(const entry of frames){if(elapsed<entry.frame.durationMs)return entry;elapsed-=entry.frame.durationMs}return frames[frames.length-1]}
- function drawInsertion(ctx,entry,surface,position,angle,width){
+ function drawInsertion(ctx,entry,surface,position,angle,width,mirrorTransverse=false){
   if(!surface||!(width>0))return;
   const {rect:[sx,sy,sw,sh],anchor:[ax,ay]}=surface;
-  ctx.save();try{ctx.imageSmoothingEnabled=false;ctx.translate(position.x,position.y);ctx.rotate(angle);ctx.scale(width,width);
+  ctx.save();try{ctx.imageSmoothingEnabled=false;ctx.translate(position.x,position.y);ctx.rotate(angle);ctx.scale(width,mirrorTransverse?-width:width);
    ctx.drawImage(entry.canvas,sx,sy,sw,sh,sx-ax,sy-ay,sw,sh);
   }finally{ctx.restore()}
  }
@@ -110,21 +121,30 @@ export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
    ctx.rotate(-(chosen.frame.facing-2)*Math.PI/4);ctx.drawImage(entry.dorsalPaint[2],-pivot[0],-pivot[1]);
   }finally{ctx.restore()}return true;
  },
- drawLimb(ctx,{root,knee,foot,scale=1,state='idle',facing=0,timeMs=0,pigment=null,frameIndex=null}={}){
+ drawLimb(ctx,{root,knee,foot,scale=1,mirrorTransverse=false,footForward=null,state='idle',facing=0,timeMs=0,pigment=null,frameIndex=null}={}){
   if(rig?.kind!=='two-bone'||!root||!knee||!foot)return false;
   const chosen=select({state,facing,timeMs,frameIndex})||select({state:'idle',facing,timeMs,frameIndex});if(!chosen)return false;const entry=tinted(chosen,pigment);
   // A flexed shin may be much shorter on screen than the thigh. Its tissue
   // keeps the same transverse scale at the joint instead of collapsing to a wire.
   const sharedWidth=Math.min(scale*displayScale*.20,Math.max(segmentDensity(rig.upper,root,knee),segmentDensity(rig.lower,knee,foot))*1.8);
-  drawBone(ctx,entry,rig.upper,root,knee,scale,sharedWidth);drawBone(ctx,entry,rig.lower,knee,foot,scale,sharedWidth);
+  drawBone(ctx,entry,rig.upper,root,knee,scale,sharedWidth,mirrorTransverse);
+  const forwardLength=footForward?Math.hypot(footForward.x,footForward.y):0;
+  if(footSections&&forwardLength>0){
+   // Keep the contact exactly where the pose placed it. Only the small distal
+   // tissue turns forward; hips/knees and the remaining shin keep their rig.
+   const toeLength=Math.min(scale*.9,Math.hypot(foot.x-knee.x,foot.y-knee.y)*.28);
+   const ankle={x:foot.x-footForward.x/forwardLength*toeLength,y:foot.y-footForward.y/forwardLength*toeLength};
+   drawBone(ctx,entry,footSections.shin,knee,ankle,scale,sharedWidth,mirrorTransverse);
+   drawBone(ctx,entry,footSections.toe,ankle,foot,scale,sharedWidth,mirrorTransverse);
+  }else drawBone(ctx,entry,rig.lower,knee,foot,scale,sharedWidth,mirrorTransverse);
   // One native shaded insertion bridges the two projections at the actual knee.
   // It is sampled from this limb's current frame/pigment, never a generic circle.
   // Isotropic tissue width prevents a folded/foreshortened bone from opening a seam.
   const upperAngle=Math.atan2(knee.y-root.y,knee.x-root.x);
   // An optional native hip insertion keeps its painted volume when the thigh is
   // foreshortened. It belongs to this actual mounted limb and shares its pigment.
-  drawInsertion(ctx,entry,rig.hipSurface,root,upperAngle,sharedWidth);
-  drawInsertion(ctx,entry,rig.jointSurface,knee,upperAngle,sharedWidth);
+  drawInsertion(ctx,entry,rig.hipSurface,root,upperAngle,sharedWidth,mirrorTransverse);
+  drawInsertion(ctx,entry,rig.jointSurface,knee,upperAngle,sharedWidth,mirrorTransverse);
   return true;
  },
  draw(ctx,{x=0,y=0,scale=1,pigment=null,mirrorX=false,...options}={}){if(![x,y,scale].every(Number.isFinite)||scale<=0)throw Error('Invalid part transform');const chosen=select(options);if(!chosen)return false;const entry=tinted(chosen,pigment);let angle=entry.frame.jointDegrees??0;if(limits)angle=Math.max(limits.minDegrees,Math.min(limits.maxDegrees,angle));ctx.save();try{ctx.imageSmoothingEnabled=false;ctx.translate(x,y);ctx.scale(scale*displayScale*(mirrorX?-1:1),scale*displayScale);ctx.rotate(angle*Math.PI/180);ctx.drawImage(entry.canvas,-pivot[0],-pivot[1]);}finally{ctx.restore()}return true}});
