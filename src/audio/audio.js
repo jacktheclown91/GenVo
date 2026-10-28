@@ -16,15 +16,16 @@ export class AudioDirector{
     this.noiseBuffer=null;this.ambienceSource=null;
     this.assetBuffers=new Map();this.authoredLoops=new Map();this.assetLoadPromise=null;this.authoredReady=false;this.deferredInitPromise=null;this.deferredInitTimer=null;
     this.enabled=true;this.unlocked=false;
-    this.masterLevel=.72;this.musicLevel=.30;this.sfxLevel=.68;this.ambienceLevel=.32;
+    this.masterLevel=.72;this.musicLevel=.34;this.sfxLevel=.68;this.ambienceLevel=.42;
     this.nextMusicTime=0;this.musicStep=0;this.lastScene=AUDIO_SCENES.CALM;
     this.lastFireAudioTick=-1;this.fireAudioState=null;this.thunderAudio=new WeakMap();this.courtshipAudio=new WeakMap();this.lastActionTick=-1;this.lastDamageTick=-1;this.lastLineageRecords=sim?.lineage?.records?.size||0;this.lastHandoffs=sim?.lineage?.handoffs?.length||0;
-    this.moveClock=0;this.sceneClock=0;this.currentScene=musicSceneFor(sim);
+    this.moveClock=0;this.movementAudio=null;this.sceneClock=0;this.currentScene=musicSceneFor(sim);
     this.wildlifeClock=1.4;this.stalkerClock=.45;this.lastThreatId=null;this.lastThreatBand=0;this.lastMixDanger=0;this.handoffDuckUntil=0;
     this.seed=hashString(sim?.seed||'GENVO8-AUDIO')||1;this.lastInteractiveAudioAt=0;
     this.loadPrefs();
   }
   setSimulation(sim){
+    this.movementAudio=null;this.moveClock=0;
     this.sim=sim;this.courtshipAudio=new WeakMap();this.lastActionTick=-1;this.lastDamageTick=-1;this.lastLineageRecords=sim?.lineage?.records?.size||0;this.lastHandoffs=sim?.lineage?.handoffs?.length||0;this.musicStep=0;this.nextMusicTime=this.ctx?.currentTime||0;this.seed=hashString(sim?.seed||'GENVO8-AUDIO')||1;this.lastInteractiveAudioAt=0;this.currentScene=musicSceneFor(sim);this.wildlifeClock=1.2;this.stalkerClock=.35;this.lastThreatId=null;this.lastThreatBand=0;this.lastMixDanger=0;this.handoffDuckUntil=0;
     if(this.ctx)this.updateMix(this.currentScene);
   }
@@ -101,8 +102,8 @@ export class AudioDirector{
     if(!this.ctx||!scene)return;const wet=clamp(scene.wetness||0),water=clamp(scene.waterEdge||0),danger=clamp(scene.danger||0),rising=danger>this.lastMixDanger+.025;
     this.setLoopGain('rain',.48*Math.sqrt(clamp(scene.rain||0)),.75);
     this.setLoopGain('field',.30+.34*(1-wet)*(1-water*.34),1.05);this.setLoopGain('wet',.05+.52*wet*(1-water*.18),1.05);this.setLoopGain('water-edge',.0001+.54*water,water>0.3?.65:1.25);
-    const stage=themeStageForGeneration(scene.generation||1),lineage=scene.scene===AUDIO_SCENES.ENDED?.12:scene.scene===AUDIO_SCENES.DANGER?.25:scene.scene===AUDIO_SCENES.HIDDEN?.28:.40;
-    const themeGain=(.07+stage*.055)*(scene.scene===AUDIO_SCENES.DANGER?.58:scene.scene===AUDIO_SCENES.HIDDEN?.72:1)*(scene.shelter?1.08:1);
+    const stage=themeStageForGeneration(scene.generation||1),lineage=scene.scene===AUDIO_SCENES.ENDED?.12:scene.scene===AUDIO_SCENES.DANGER?.25:scene.scene===AUDIO_SCENES.HIDDEN?.28:.46;
+    const themeGain=(.14+stage*.06)*(scene.scene===AUDIO_SCENES.DANGER?.58:scene.scene===AUDIO_SCENES.HIDDEN?.72:1)*(scene.shelter?1.08:1);
     this.setLoopGain('lineage',lineage,1.2);this.setLoopGain('theme',themeGain,1.15);this.setLoopGain('shelter',scene.shelter?.58*(1-danger*.58):.0001,scene.shelter?1.0:1.55);this.setLoopGain('danger',Math.max(.0001,danger*.62),rising?.34:1.35);this.lastMixDanger=danger;
   }
   makeNoiseBuffer(seconds=2){
@@ -110,7 +111,7 @@ export class AudioDirector{
     for(let i=0;i<data.length;i++){x=(x*1664525+1013904223)>>>0;data[i]=((x/4294967296)*2-1)*.72}return buf;
   }
   startAmbience(){
-    if(!this.ctx||!this.noiseBuffer)return;const src=this.ctx.createBufferSource(),filter=this.ctx.createBiquadFilter(),gain=this.ctx.createGain();src.buffer=this.noiseBuffer;src.loop=true;filter.type='lowpass';filter.frequency.value=900;filter.Q.value=.25;gain.gain.value=.32;src.connect(filter);filter.connect(gain);gain.connect(this.ambienceBus);src.start();this.ambienceSource={src,filter,gain};
+    if(!this.ctx||!this.noiseBuffer)return;const src=this.ctx.createBufferSource(),filter=this.ctx.createBiquadFilter(),gain=this.ctx.createGain();src.buffer=this.noiseBuffer;src.loop=true;filter.type='lowpass';filter.frequency.value=900;filter.Q.value=.25;gain.gain.value=0;gain.gain.setTargetAtTime(.32,this.ctx.currentTime,.6);src.connect(filter);filter.connect(gain);gain.connect(this.ambienceBus);src.start();this.ambienceSource={src,filter,gain};
   }
   toggleMute(){this.enabled=!this.enabled;this.savePrefs();if(this.master&&this.ctx){const t=this.ctx.currentTime;this.master.gain.cancelScheduledValues(t);this.master.gain.setTargetAtTime(this.enabled?this.masterLevel:0,t,.035)}return this.enabled}
   noteResult(result){this.markInteractiveAudio();const cue=cueForResult(result);if(cue)this.playCue(cue,result)}
@@ -127,7 +128,13 @@ export class AudioDirector{
     const musicTarget=this.musicLevel*(scene.scene===AUDIO_SCENES.DANGER?1.08:scene.scene===AUDIO_SCENES.HIDDEN?.72:1)*duck;
     const ambTarget=this.ambienceLevel*(scene.scene===AUDIO_SCENES.DANGER?.58:scene.scene===AUDIO_SCENES.HIDDEN?.48:1)*(t<this.handoffDuckUntil?.72:1);
     this.musicBus.gain.setTargetAtTime(musicTarget,t,t<this.handoffDuckUntil?.16:.62);this.ambienceBus.gain.setTargetAtTime(ambTarget,t,t<this.handoffDuckUntil?.20:.72);
-    if(this.ambienceSource){this.ambienceSource.filter.frequency.setTargetAtTime(scene.scene===AUDIO_SCENES.HIDDEN?520:scene.scene===AUDIO_SCENES.DANGER?650:900,t,.5);this.ambienceSource.gain.gain.setTargetAtTime(.28+.18*(1-danger),t,.7)}
+    if(this.ambienceSource){
+      const authoredAmbience=['field','wet','water-edge','rain'].some(id=>this.authoredLoops.has(id));
+      this.ambienceSource.filter.frequency.setTargetAtTime(scene.scene===AUDIO_SCENES.HIDDEN?520:scene.scene===AUDIO_SCENES.DANGER?650:900,t,.5);
+      // Keep a quiet fallback while downloading; let actual authored habitats
+      // replace the generic hiss instead of permanently masking their details.
+      this.ambienceSource.gain.gain.setTargetAtTime(authoredAmbience?.018:.28+.18*(1-danger),t,.85);
+    }
     this.updateAuthoredMix(scene);this.lastScene=scene.scene;
   }
   pollSimulationEvents(){
@@ -152,8 +159,22 @@ export class AudioDirector{
     const oldest=state.events[0]?.id||0;for(const id of seen)if(id<oldest)seen.delete(id);
   }
   updateMovement(dt,input){
-    const p=this.sim.player?.();if(!p||p.hidden||p.airborne||p.perched||(p.diveDepth||0)>.03||this.sim.paused)return;const moving=!!(input.up||input.down||input.left||input.right);if(!moving){this.moveClock=0;return}
-    this.markInteractiveAudio();this.moveClock+=dt;const interval=input.sprint?.29:.46;if(this.moveClock>=interval){this.moveClock%=interval;this.playCue(input.sprint?'sprint':'move',{quiet:true})}
+    const p=this.sim.player?.();
+    if(!p||p.hidden||p.airborne||p.perched||(p.diveDepth||0)>.03||this.sim.paused){
+      this.movementAudio=null;this.moveClock=0;return;
+    }
+    const previous=this.movementAudio;
+    this.movementAudio={id:p.id,world:this.sim.world,x:p.x,y:p.y};
+    if(!previous||previous.id!==p.id||previous.world!==this.sim.world){this.moveClock=0;return}
+    const distance=Math.hypot(p.x-previous.x,p.y-previous.y);
+    // Read actual displacement for keys, click navigation and AUTO alike.
+    // Region changes/teleports cannot replay a burst of imaginary footsteps.
+    if(!Number.isFinite(distance)||distance>2){this.moveClock=0;return}
+    if(distance<1e-6)return;
+    this.markInteractiveAudio();
+    this.moveClock+=distance;
+    const sprint=!!input.sprint||p.intent==='flee',spacing=sprint?.65:.5;
+    if(this.moveClock>=spacing){this.moveClock%=spacing;this.playCue(sprint?'sprint':'move',{quiet:true})}
   }
   updateWildlife(dt){
     const sim=this.sim,p=sim.player?.();if(!p||sim.paused)return;

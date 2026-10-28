@@ -1,5 +1,12 @@
 # GenVo session entry
 
+Current creator assignment (October 28): Codex owns visual identity, artwork,
+animation, environmental presentation, interface and audio. Claude owns
+simulation, gameplay, persistence, performance, integration and comprehensive
+testing. This supersedes the temporary October 26 engineering-lead arrangement
+retained below as provenance. Coordinate shared files before structural edits;
+presentation reads real state and must not become a biological authority.
+
 Read README.md, design/CURRENT-DESIGN.md, docs/CURRENT-IMPLEMENTATION.md and design/governance/implementation-authorities.json before changing mechanisms. Inspect git status, branch, log and remote divergence first: other branches may contain newer work. Preserve concurrent work and explicit save migrations.
 
 Current code and versioned contracts establish implementation; current design establishes intent. Historical proposals, old milestone reports and branch-local work goals provide provenance, not automatic instructions or current acceptance. See docs/history/README.md.

@@ -1,0 +1,189 @@
+{
+  "scope": "Actual ordinary New World native WebAudio captures; not external listener acceptance. Mono 22050 Hz previews are linear-resampled without normalization. Original stereo 192 kHz captures and complete receipts remain in reports.",
+  "sourceBase": "629ad29a91fdfceb1de7770596c27c5069ac4d49",
+  "rawBefore": "reports/audio-presentation-before-629ad29a/receipt.json",
+  "rawAfter": "reports/audio-presentation-after-629ad29a/receipt.json",
+  "creatorAcceptance": false,
+  "cases": [
+    {
+      "seed": "AUDIO-RAIN-3",
+      "beforeMetric": {
+        "seconds": 8.16,
+        "rate": 192000,
+        "channels": 2,
+        "peak": 0.09064461290836334,
+        "rms": 0.017141580663910333
+      },
+      "afterMetric": {
+        "seconds": 8.128,
+        "rate": 192000,
+        "channels": 2,
+        "peak": 0.1155337244272232,
+        "rms": 0.02111369050634884
+      },
+      "rmsChangeDB": 1.8102656895680012,
+      "canonicalStateExact": true,
+      "clock": "day-clock/30s",
+      "actualAir": {
+        "rain": 0.413905322577351,
+        "temperature": 0.40820381161298397,
+        "wind": {
+          "east": 0.618181026712047,
+          "south": 0.46232715327962726,
+          "strength": 0.7719418232265981
+        },
+        "fog": 0.17595523430691054,
+        "snow": 0,
+        "liquid": 0.17523895781130927,
+        "extinction": 0.02900038121833818
+      },
+      "liquidRain": 0.17523895781130927,
+      "rainStemGain": 0.20066723227500916,
+      "loadedAssets": 33,
+      "loadedLoops": 8
+    },
+    {
+      "seed": "GENVO8-TEST-A",
+      "beforeMetric": {
+        "seconds": 8.128,
+        "rate": 192000,
+        "channels": 2,
+        "peak": 0.07661982625722885,
+        "rms": 0.01515221376975456
+      },
+      "afterMetric": {
+        "seconds": 8.149333333333333,
+        "rate": 192000,
+        "channels": 2,
+        "peak": 0.08940614014863968,
+        "rms": 0.01885913245864388
+      },
+      "rmsChangeDB": 1.9009124405887654,
+      "canonicalStateExact": true,
+      "clock": "day-clock/30s",
+      "actualAir": {
+        "rain": 0,
+        "temperature": 0.4744112491607666,
+        "wind": {
+          "east": -0.7199405726244947,
+          "south": -0.46880271087057024,
+          "strength": 0.859121882988951
+        },
+        "fog": 0.08287674448338124,
+        "snow": 0,
+        "liquid": 0,
+        "extinction": 0.009945209338005748
+      },
+      "liquidRain": 0,
+      "rainStemGain": 0.00010045761882793158,
+      "loadedAssets": 33,
+      "loadedLoops": 8
+    },
+    {
+      "seed": "AUDIO-RAIN-4",
+      "beforeMetric": {
+        "seconds": 8.149333333333333,
+        "rate": 192000,
+        "channels": 2,
+        "peak": 0.08019670844078064,
+        "rms": 0.01665039323545307
+      },
+      "afterMetric": {
+        "seconds": 8.16,
+        "rate": 192000,
+        "channels": 2,
+        "peak": 0.1041489765048027,
+        "rms": 0.02044174755180026
+      },
+      "rmsChangeDB": 1.7818705165423678,
+      "canonicalStateExact": true,
+      "clock": "day-clock/30s",
+      "actualAir": {
+        "rain": 0,
+        "temperature": 0.37525445222854614,
+        "wind": {
+          "east": 0.1597642265034343,
+          "south": 0.7292504153449352,
+          "strength": 0.7465458970157167
+        },
+        "fog": 0.20568755515828752,
+        "snow": 0,
+        "liquid": 0,
+        "extinction": 0.0246825066189945
+      },
+      "liquidRain": 0,
+      "rainStemGain": 0.00010013096471084282,
+      "loadedAssets": 33,
+      "loadedLoops": 8
+    }
+  ],
+  "decoders": [
+    {
+      "stem": "field-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "field-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "wet-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "wet-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "water-edge-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "water-edge-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "rain-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "rain-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    }
+  ],
+  "mute": {
+    "enabled": false,
+    "gain": 0
+  },
+  "unmute": {
+    "enabled": true,
+    "gain": 0.7200000286102295,
+    "masterLevel": 0.72
+  },
+  "errors": [],
+  "misses": []
+}
