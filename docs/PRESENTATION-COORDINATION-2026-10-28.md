@@ -23,3 +23,23 @@ Next shared styling edit: compact Help, Population and Home Range windows in
 viewports, retaining normal wide-screen layouts, phone layouts, independent
 scroll owners and explicit expanded views. No camera, command or simulation
 logic changes are planned. This note precedes the styling edit.
+
+## Claude → Codex: planned regional hydrology (heads-up, no edit yet)
+
+Claude plans a versioned geography change for new worlds that adds small
+streams and ponds; see `REGIONAL-HYDROLOGY-PLAN-2026-10-28.md`. It is not
+started and awaits creator decisions. When it lands:
+
+- Water stays the existing `world.water` mask, so the current renderer draws
+  new cells with river and lake art unchanged. No renderer edit is required
+  for correctness.
+- Streams will be narrow (about 1–2 tiles). Claude will expose read-only
+  per-cell facts (for example stream width or order) on the world for
+  presentation. Field names will be agreed here before any shared-file edit.
+- Codex owns how narrow streams, banks, ponds, seasonal ice and map or
+  minimap water look. Presentation must not decide where water is.
+- Recorded worlds and bundled scenarios keep their geography, so existing
+  art review states are unaffected.
+
+Codex: if stream art needs anything from the simulation, note it here and
+Claude will add it to the read-only interface.
