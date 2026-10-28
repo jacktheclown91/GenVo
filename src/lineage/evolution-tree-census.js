@@ -1,9 +1,9 @@
-import {AUTONOMOUS_EVOLUTION,regionalEvolutionEnabled} from './autonomous-evolution.js';
+import {regionalEvolutionEnabled,regionalEvolutionPolicy} from './autonomous-evolution.js';
 import {recordedBranchFor,recordedTaxonFor} from './evolution-tree-identity.js';
 
 const integer=value=>Number.isSafeInteger(value)&&value>=0;
 export function validateRecordedTaxonCensus(census,{tick,living}){
-  if(census?.schema!==1||census.rules!==AUTONOMOUS_EVOLUTION.policy||census.tick!==tick||!Array.isArray(census.counts))
+  if(census?.schema!==1||!regionalEvolutionPolicy(census.rules)||census.tick!==tick||!Array.isArray(census.counts))
     throw Error('Invalid recorded regional taxon census.');
   let total=0,previous=null;
   for(const row of census.counts){
@@ -29,7 +29,7 @@ export function recordedRegionalTaxonCensus(snapshot){
     counts.set(id,(counts.get(id)||0)+1);living++;
   }
   const rows=[...counts].sort(([a],[b])=>a<b?-1:a>b?1:0).map(([id,count])=>({id,living:count}));
-  return validateRecordedTaxonCensus({schema:1,rules:AUTONOMOUS_EVOLUTION.policy,
+  return validateRecordedTaxonCensus({schema:1,rules:snapshot.core.autonomousEvolutionRules,
     tick:snapshot.core.tickCount,counts:rows},{tick:snapshot.core.tickCount,living});
 }
 

@@ -1,0 +1,42 @@
+{
+  "schema": "genvo.regional-pressure-observations-verification/1",
+  "parent": "8e724f72319ed91f17e2a3dabb21cb676e23b985",
+  "scope": "Preparatory experimental /3 pressure observations, not global reference integration or natural emergence. Normal new-world default remains off.",
+  "localGate": {
+    "checks": 142,
+    "result": "pass",
+    "logSha256": "6d7705ac7ffea60f21f8607649b296b07850204c475435544b27bf4f4e93bb2e",
+    "finalHardening": "Final owner-calendar validation and genuine daily observation/save test rerun on Node 22 and 24 after additional corruption guards."
+  },
+  "checks": [
+    "Node 22 and 24 frozen published evolution /1 complete-state controls",
+    "Node 22 and 24 frozen published evolution /2 complete-state controls",
+    "Node 22 and 24 unflagged modernization baseline and restored continuation",
+    "Node 22 and 24 final regional-pressure-observations test",
+    "Architecture boundary and checker contracts",
+    "Canonical source audit",
+    "Public export reachability",
+    "Git-backed source-package inventory",
+    "Expanded maintained plan and CRLF-aware staged diff check"
+  ],
+  "sourceSha256": {
+    "src/ecology/population-profile.js": "07b28f73b3229742615f8099544f46463cfa4864eb43b5bb6c2f6e63af642e09",
+    "src/ecology/population-memory.js": "d11fbe2be50df61c75934e9f24c2c3f23b2da7ce58cf66caf75fe6f3df4ca025",
+    "src/lineage/autonomous-evolution.js": "3450a15b8a1ea31014a93279e812cd2b8589b70e760eb5c149a01e4a28a10920",
+    "src/lineage/autonomous-evolution-state.js": "4a640eb3292b064e90066589f5d79c28b4a97fbcbe8c8bfca2fa4176dcfaacc6",
+    "src/lineage/evolution-tree-census.js": "6858f2ec66afc431e3da50294701b97e52ba0352694e0c0cd4c7c6c4e9ad5e87",
+    "tests/regional-pressure-observations.mjs": "b54e07d974125736338c9b2e6f43423e2be141919a0ca34f34384ef9723765d2",
+    "tests/autonomous-evolution-v2-compatibility.mjs": "a78dc6c4ac110b1b8e4a2aa9f11c8fe31931ed78254cd4658d52e530069c82e4",
+    "tests/fixtures/autonomous-evolution-v2-baselines.json": "902a7c7e7a4fa362b3820e7097f2256eae15c4657a58cdb5801826ec45a5ca58",
+    "tools/check-playable.mjs": "ae6b24d7720f5ed5a304ac8de170bd698a61e63919910433f041a09a82fbde12"
+  },
+  "exactHeadCI": "Pending coherent commit and push; do not treat prior snow-window CI as this source acceptance.",
+  "remaining": [
+    "Global actual related-population references",
+    "Bounded persisted owner-page reads",
+    "Aligned biological-day consumers",
+    "Natural final-source fields across seeds and anatomy",
+    "Explicit future recognition versioning; no silent /3 change",
+    "Final extracted release and hosted loading review"
+  ]
+}

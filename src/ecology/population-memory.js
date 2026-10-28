@@ -1,4 +1,5 @@
-import {autonomousEvolutionEnabled} from '../lineage/autonomous-evolution.js';
+import {autonomousEvolutionEnabled,regionalReferenceEvolutionEnabled} from '../lineage/autonomous-evolution.js';
+import {pressureHistoryProfile,recordRegionalPressureObservation,regionalPressureObservation} from './population-profile.js';
 import {observePopulationEcology} from './population-observation.js';
 import {observeAutonomousResidence,initializeAutonomousFounding,advanceAutonomousFounding,naturalPopulations,naturalPopulationFor,recordPopulationBirth,recordPopulationDeath} from './autonomous-founding.js';
 import {CFG} from '../sim/config.js';
@@ -90,6 +91,7 @@ export class PopulationPressureMemoryController{
       if(pop.kind==='autonomous'&&!pop.memberIds.size)continue;
       const a=this.assessment(pop);if(!a)continue;const h=this.ensure(pop);h.days++;h.lastDay=this.sim.day;h.lastAssessment=a;h.last={...a.pressure};
       for(const def of PRESSURES){const value=a.pressure[def.id]||0;h.exposure[def.id]=(h.exposure[def.id]||0)+value;h.peak[def.id]=Math.max(h.peak[def.id]||0,value);h.recent[def.id]=(h.recent[def.id]||0)*.76+value*.24}
+      if(regionalReferenceEvolutionEnabled(this.sim))recordRegionalPressureObservation(h);
     }
     for(const a of this.sim.animals){if(!a.alive||!a.lineage||a.species!=='genvo')continue;const pop=this.populationForAnimal(a,pops);if(pop)this.noteResidence(a,pop)}
     this.maybeNotice();
@@ -105,9 +107,9 @@ export class PopulationPressureMemoryController{
   }
   profile(keyOrPop){
     const key=typeof keyOrPop==='string'?keyOrPop:keyOrPop?.key,h=this.histories.get(key);if(!h)return null;
-    const axes=PRESSURES.map(def=>({id:def.id,label:def.label,mean:h.days?clamp01((h.exposure[def.id]||0)/h.days):0,recent:clamp01(h.recent[def.id]||0),peak:clamp01(h.peak[def.id]||0)})).sort((a,b)=>b.mean-a.mean||a.id.localeCompare(b.id));
-    return{...h,axes,dominant:axes[0]||null,secondary:axes[1]||null};
+    return pressureHistoryProfile(h);
   }
+  observation(key,day){return regionalPressureObservation(this.histories.get(key),day)}
   snapshots(){return this.populations().map(pop=>({population:pop,profile:this.profile(pop)})).filter(x=>x.profile)}
   divergence(){
     const home=this.profile('home');if(!home||home.days<3)return[];const homeBy=Object.fromEntries(home.axes.map(a=>[a.id,a.mean])),out=[];

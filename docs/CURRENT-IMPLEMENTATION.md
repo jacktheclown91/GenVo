@@ -1,5 +1,8 @@
 # Current implementation and acceptance
 
+Prospective regional pressure observations now have a bounded actual-day buffer and strict save validation behind experimental `/3`. Published `/1` and `/2` retain explicit policies; the new frozen `/2` complete-state controls pass on Node 22 and 24. Global related-population reference reads and natural recognition remain unfinished, and the normal new-world default remains off. See [preparatory checkpoint and exact next work](REGIONAL-PRESSURE-OBSERVATIONS-2026-10-28.md). The preceding snow correction passed exact-head CI 40695500569.
+
+
 A focused snow-window cache correction now preserves the visible intersection before adding newly exposed tiles. Native original/candidate/original-return/repeat observations show frame p99 about 213/67/213/67 ms, with identical snow pixels and a completely unchanged canonical graph during read-only painting. Node 22/24 targeted and original deterministic controls, source/architecture and export checks pass; the full 140-check gate passes and this correction's own exact-head CI follows its coherent commit. Other spikes and full ecological acceptance remain open. See [measured correction and limits](MATURE-SNOW-WINDOW-2026-10-28.md).
 
 

@@ -1,0 +1,62 @@
+{
+  "schema": "genvo.autonomous-evolution-v2-baseline/1",
+  "scope": "Frozen only from untouched published 04c9a415 Git blobs, hash-verified before any reference integration. Never regenerate from a candidate implementation.",
+  "profiles": [
+    {
+      "sourceCommit": "04c9a41524667481b0ae625d892abc5abcf29770",
+      "sourceManifestSha256": "a5ed8ade78e7643f87cc7c13069e50057d5a55f3976511f1fd08c1af6f974ff8",
+      "node": "v22.23.4",
+      "nodeMajor": 22,
+      "seed": "SIMILARITY-FIELD-1",
+      "options": {
+        "player": true,
+        "worldGenerator": "planetary/1",
+        "regionalFrontier": true,
+        "autonomousPopulations": true,
+        "autonomousEvolution": "autonomous-evolution/2",
+        "courtshipSimilarity": true,
+        "dayClock": true,
+        "metabolism": true,
+        "foodProperties": true,
+        "tissueWater": true,
+        "winterWater": true,
+        "escapeLanding": true,
+        "tissueEnergy": true,
+        "perennialRegrowth": true
+      },
+      "ticks": 5760,
+      "births": 1,
+      "signature": "2d64951d7947bf5fd88a64aabd1dda17533fa0b43c9d5f835ccf1bf5b3b99ba6",
+      "continuedSignature": "c5375adac168e76f466134ed51c751c1f566e0fbf7035002086991fc1e245a2d",
+      "scope": "Untouched published Git source, original explicit autonomous-evolution/2. Ordinary constructor and native AUTO, complete world including actual births/RNG/resources/history, exact restoration and six ticks. Not recorded from the correction."
+    },
+    {
+      "sourceCommit": "04c9a41524667481b0ae625d892abc5abcf29770",
+      "sourceManifestSha256": "a5ed8ade78e7643f87cc7c13069e50057d5a55f3976511f1fd08c1af6f974ff8",
+      "node": "v24.14.0",
+      "nodeMajor": 24,
+      "seed": "SIMILARITY-FIELD-1",
+      "options": {
+        "player": true,
+        "worldGenerator": "planetary/1",
+        "regionalFrontier": true,
+        "autonomousPopulations": true,
+        "autonomousEvolution": "autonomous-evolution/2",
+        "courtshipSimilarity": true,
+        "dayClock": true,
+        "metabolism": true,
+        "foodProperties": true,
+        "tissueWater": true,
+        "winterWater": true,
+        "escapeLanding": true,
+        "tissueEnergy": true,
+        "perennialRegrowth": true
+      },
+      "ticks": 5760,
+      "births": 1,
+      "signature": "0b35026e14072bcecd1a881afece1bb1a8169f74e4cdb48b683ed2cb2990ac57",
+      "continuedSignature": "203bc6ec2654ac14426392ee11b8a7eecee79e301a3090f920f830c13137c83e",
+      "scope": "Untouched published Git source, original explicit autonomous-evolution/2. Ordinary constructor and native AUTO, complete world including actual births/RNG/resources/history, exact restoration and six ticks. Not recorded from the correction."
+    }
+  ]
+}

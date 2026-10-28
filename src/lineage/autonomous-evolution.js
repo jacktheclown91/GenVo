@@ -2,10 +2,12 @@ import {AUTONOMOUS_POPULATIONS} from '../ecology/autonomous-founding.js';
 
 // Prospective recognition policy. Founding records, reproduction, ancestry and
 // the existing evolutionary tree retain their separate canonical ownership.
-export const AUTONOMOUS_EVOLUTION=Object.freeze({policy:'autonomous-evolution/2',legacy:'autonomous-evolution/1'});
-const supportedPolicy=policy=>policy===AUTONOMOUS_EVOLUTION.policy||policy===AUTONOMOUS_EVOLUTION.legacy;
+export const AUTONOMOUS_EVOLUTION=Object.freeze({policy:'autonomous-evolution/3',regional:'autonomous-evolution/2',legacy:'autonomous-evolution/1'});
+const supportedPolicy=policy=>policy===AUTONOMOUS_EVOLUTION.policy||policy===AUTONOMOUS_EVOLUTION.regional||policy===AUTONOMOUS_EVOLUTION.legacy;
 export const autonomousEvolutionEnabled=sim=>supportedPolicy(sim?.autonomousEvolutionRules);
-export const regionalEvolutionEnabled=sim=>sim?.autonomousEvolutionRules===AUTONOMOUS_EVOLUTION.policy;
+export const regionalEvolutionPolicy=policy=>policy===AUTONOMOUS_EVOLUTION.policy||policy===AUTONOMOUS_EVOLUTION.regional;
+export const regionalEvolutionEnabled=sim=>regionalEvolutionPolicy(sim?.autonomousEvolutionRules);
+export const regionalReferenceEvolutionEnabled=sim=>sim?.autonomousEvolutionRules===AUTONOMOUS_EVOLUTION.policy;
 export function autonomousEvolutionPolicy(value){
   if(!value)return undefined;
   const policy=value===true?AUTONOMOUS_EVOLUTION.policy:value;

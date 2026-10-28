@@ -3,13 +3,15 @@ import {spawnSync} from 'node:child_process';
 import {playablePlan} from '../tools/check-playable.mjs';
 
 const all=playablePlan(),key=check=>`${check.mode}:${check.item}`;
-assert.equal(all.length,140,'Retain all 136 prior checks plus historical /1 and regional /2 continuity');
+assert.equal(all.length,142,'Retain all 140 prior checks plus frozen /2 compatibility and regional observations');
 assert.equal(new Set(all.map(key)).size,all.length,'No duplicated manifest entries');
 assert.equal(all[0].item,'src/main.js');
 assert.equal(all.at(-1).item,'tests/living-planet-extended.mjs');
 assert.ok(all.some(check=>check.item==='tests/reproductive-similarity.mjs'));
 assert.ok(all.some(check=>check.item==='tests/autonomous-population-founding.mjs'));
 assert.ok(all.some(check=>check.item==='tests/autonomous-policy-compatibility.mjs'));
+assert.ok(all.some(check=>check.item==='tests/autonomous-evolution-v2-compatibility.mjs'));
+assert.ok(all.some(check=>check.item==='tests/regional-pressure-observations.mjs'));
 assert.ok(all.some(check=>check.item==='tests/mating-tutorial-guide.mjs'));
 for(const item of ['tests/extinct-lineage-save.mjs','tests/botanical-gamete-parity.mjs','tests/snapshot-signature.mjs','tests/interleaved-day-clock.mjs','tests/care-expression.mjs','tests/spatial-index.mjs'])assert.ok(all.some(check=>check.item===item));
 for(const count of [1,2,3,5,all.length]){
@@ -34,4 +36,4 @@ for(const args of [['--shard=0/2'],['--unknown'],['--shard=1/2','--shard=2/2'],[
   const result=spawnSync(process.execPath,['tools/check-playable.mjs',...args],{encoding:'utf8'});
   assert.notEqual(result.status,0,'Invalid selection fails closed');
 }
-console.log('Playable CI plan PASS: all 140 checks exactly once, ordered, disjoint shards, actual CLI selection and invalid inputs.');
+console.log('Playable CI plan PASS: all 142 checks exactly once, ordered, disjoint shards, actual CLI selection and invalid inputs.');

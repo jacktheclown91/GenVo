@@ -32,7 +32,7 @@
     },
     "autonomousPopulationFounding": {
       "authority": "src/ecology/population-memory.js",
-      "helpers": ["src/ecology/autonomous-founding.js", "src/ecology/population-residence.js", "src/ecology/founding-candidate-contact.js", "src/ecology/regional-population-census.js", "src/cognition/learned-range.js", "src/ecology/population-observation.js"],
+      "helpers": ["src/ecology/autonomous-founding.js", "src/ecology/population-residence.js", "src/ecology/founding-candidate-contact.js", "src/ecology/regional-population-census.js", "src/cognition/learned-range.js", "src/ecology/population-observation.js", "src/ecology/population-profile.js"],
       "consumers": ["src/lineage/lineage.js", "src/sim/simulation.js", "src/persistence/save-manager.js", "src/world/planetary-travel.js"],
       "contract": "docs/AUTONOMOUS-EVOLUTION-2026-10-26.md",
       "note": "Versioned demographic observation of actual residence, maintenance and paid surviving recruitment. No player ownership, resources, mating or species identity authority is introduced. Natural acceptance remains under verification."

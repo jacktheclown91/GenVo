@@ -1,4 +1,5 @@
-import {autonomousEvolutionEnabled} from './autonomous-evolution.js';
+import {autonomousEvolutionEnabled,regionalReferenceEvolutionEnabled} from './autonomous-evolution.js';
+import {validateRegionalPressureObservations} from '../ecology/population-profile.js';
 import {INHERITED_PARTS,physicalTraitMeta} from './inherited-anatomy-evidence.js';
 import {partDef} from './part-registry.js';
 
@@ -46,6 +47,8 @@ function validateBody(animal,nodes){
 }
 export function validateAutonomousEvolutionState(sim){
   if(!autonomousEvolutionEnabled(sim))return;
+  if(regionalReferenceEvolutionEnabled(sim))
+    for(const history of sim.populationMemory.histories.values())validateRegionalPressureObservations(history);
   const nodes=sim.evolutionTree.nodes;
   if(!(nodes instanceof Map))throw Error('Invalid saved evolutionary tree.');
   for(const node of nodes.values()){
