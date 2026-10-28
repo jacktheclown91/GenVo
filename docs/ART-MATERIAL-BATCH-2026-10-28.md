@@ -1,0 +1,25 @@
+# Refined modular materials and real Lab integration
+
+Creator direction: refine **64px gameplay candidates and 128px Lab/inspection artwork**, retain stable32, and do not globally switch gameplay art without clear visual improvement. The complete [major presentation plan](../design/PRESENTATION-EVOLUTION-2026-10-28.md) remains active.
+
+## Implementation
+
+A sibling `assets/art/production-candidate-v1/` catalog contains 30 variants for a coherent 15-part assembly batch. Fourteen variants now use newly generated tissue/material pixels: fur, feather mantle, shell, head and three leg builds at both resolutions. The other eight anatomical parts retain the code-authored studies. Native32 sources and the original catalog are unchanged.
+
+Five built-in image_gen masters and the exact [prompt set](../assets/art/production-candidate-v1/source/prompts.json) are retained in the project. Compiled assets use existing five-tone inherited skin ramps, protected colors, pivots, torso/head bounds, limb sections and insertions. Runner/sturdy tissue widths differ, but their actual reach and movement remain authoritative. Sources are preserved byte-for-byte and hashed. Mechanical registration and palette indexing produce the native rasters; generated atlas cells were not assumed to provide accurate directions. A canonical north surface is consistently transformed into all eight facings; leg tissue remains in its two registered bone rows. Rigid shell tissue is not deformed into fictitious breathing animation. No new biological structures, functionality or events were introduced.
+
+`src/render/part-art-variants.js` loads only the requested resolution, verifies real compiled pixel/rig identity and returns an independent part map. It never installs itself as gameplay's default artwork. The existing renderer and bounded tint-cache byte policy are reused.
+
+The **actual Creature Lab** now offers Native32 / Detailed64 / Close-up128 in its assembly workspace. Parts, actions, facings, anatomy reference, fitting and artist edits continue through the canonical assembly. Artist overrides remain above candidate art; clearing an override restores the selected material batch. Late loads cannot replace a newer selection, and failed loads retain the previous artwork. No body plan or exported draft is rewritten. The workshop additionally compares the refined batch with the first study and previews it in a real world.
+
+## Evidence and limits
+
+The [world receipt](art-material-batch-2026-10-28/world-receipt.json) covers four legal bodies at four camera scales and all three resolutions. Candidate/restored native32 world snapshots are exactly equal. [Fur](art-material-batch-2026-10-28/fur-comparison.png), [feathers](art-material-batch-2026-10-28/feather-comparison.png), [shell](art-material-batch-2026-10-28/shell-comparison.png) and [normal zoom](art-material-batch-2026-10-28/normal-zoom-comparison.png) were inspected. Earlier thin-ring coat compilation discarded too much tissue; that draft was corrected before this checkpoint, and its local evidence remains in reports.
+
+The [Lab receipt](art-material-batch-2026-10-28/lab-receipt.json) verifies real controls for all materials/resolutions, eight facings, exact plan identity, actual artist compilation/override priority, native restoration and 1440/1024/800px windows. [Actual Lab fur](art-material-batch-2026-10-28/lab-fur-128.png), feather and shell previews and the medium-window layout were inspected. These are genuine modular assemblies, not fixed demonstration creatures.
+
+In the sampled paused young-world view with three visible creatures, 30-sample full-render medians were 8.2 / 8.3 / 5.8 ms for 32/64/128, and 6.3 ms after native restoration. P95 values were 11.4 / 11.5 / 7.6 / 7.9 ms. Short sequential samples and cache warming do not establish a speed ranking or mature-crowd FPS. Decoded frame raster storage remains 3.75 MiB for the optional64 batch and 15 MiB for optional128, before tints/JS overhead; selection loads only the chosen resolution in the Lab. Indexed gzip data totals 392,596 bytes; project-only source masters add provenance storage, not ordinary gameplay downloads.
+
+Focused checks pass: part-art-variants, indexed-part-art/renderer, native-catalog-loading, art-resolution-study, native-lab-hidden-pixels, gait-coordination, syntax, whitespace, architecture and canonical source audit. The new loader rejects tampered pixels even when the claimed checksum is left unchanged. Source pivots, palettes, unclipped facings and original native identities are checked. No comprehensive ecology or integration gate was substituted for Claude's work.
+
+This is an integrated **production candidate**, not creator acceptance of all artistic details or completion of the full catalog. Eyes/mouths/torso/tail still need further artistic refinement; wings and specialized anatomy are not yet upgraded. Broader inherited bodies, material motion, populated scenes and creator artistic review remain necessary before any global gameplay switch. Next: support/load transfer and grounded movement transitions, followed by the remaining locomotion and master-plan packages.

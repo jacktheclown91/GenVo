@@ -4,6 +4,8 @@ The creator's [October 28 major visual/audio objective](../design/PRESENTATION-E
 
 The [resolution prototype](ART-RESOLUTION-STUDY-2026-10-28.md) adds real optional 64/128 modular assets, a working comparison workshop and native evidence. Default gameplay remains native32 pending creator review. The [first anatomy-dependent gait pass](ANATOMICAL-GAIT-COORDINATION-2026-10-28.md) is implemented and natively observed; subsequent full locomotion, behavior, environments, soundscapes, voices, interface and independent audio settings remain open. Claude retains simulation, persistence, performance engineering and comprehensive integration ownership.
 
+The creator has approved refining 64px gameplay candidates and 128px Lab close-ups, keeping native32 stable until demonstrated improvement. The [refined modular material batch](ART-MATERIAL-BATCH-2026-10-28.md) is integrated into the real Lab through a resolution-selective verified loader; gameplay remains native32 by default. Continue coherent-batch refinement and native artistic evaluation, not a catalog-wide redraw. Support-based body motion and grounded transitions are the next locomotion implementation.
+
 The material below records the earlier bounded passes and their original package labels; it is not the current initiative's completion checklist.
 
 ---

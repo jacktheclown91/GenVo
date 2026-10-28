@@ -41,7 +41,8 @@ try{
  await page.waitForFunction(()=>window.__artStudy?.ready,{},{timeout:60000});
  await page.evaluate(()=>window.__artStudy.freeze());
  const atlases=await page.evaluate(()=>window.__artStudy.exportAtlases());
- const artFolder=path.join(root,'assets/art/experiments/resolution-v1');
+ const isCandidate=await page.evaluate(()=>window.__artStudy.catalog.schema==='genvo.part-art-variants/1');
+ const artFolder=path.join(root,isCandidate?'assets/art/production-candidate-v1':'assets/art/experiments/resolution-v1');
  for(const atlas of atlases)fs.writeFileSync(path.join(artFolder,atlas.file),Buffer.from(atlas.data.split(',')[1],'base64'));
 
  const comparisons=[];

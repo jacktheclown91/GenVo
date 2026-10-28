@@ -1,0 +1,424 @@
+{
+  "schema": "genvo.part-art-variants/1",
+  "version": 1,
+  "status": "production-candidate-creator-review",
+  "native32Fallback": true,
+  "author": "Built-in image_gen masters plus canonical indexed compilation; other first-batch anatomy retains the original code-authored studies.",
+  "generation": "Source atlases are preserved unmodified. Canonical north pose zero is registered once and rasterized at all eight facings; rigid shell uses one pose to avoid breathing rigid plates. No claim that generated atlas cells accurately depict all directions.",
+  "parts": [
+    {
+      "partId": "small-torso",
+      "resolution": 64,
+      "path": "./small-torso-64.indexed.json.gz",
+      "checksum": "0d1704fd6dadc81525474a97317b43969bb8aae2e02cf2ba5968f76b8fcdbb82",
+      "bytes": 4258,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "e12f5dcf3310a7d249d06796e44e216afebebdabba2d9081ff03a0b953deba15",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "soft-torso",
+      "resolution": 64,
+      "path": "./soft-torso-64.indexed.json.gz",
+      "checksum": "90ee3ca2382acec1146743a326ab790d0d72e22695d0b9462732da3b3fdcf3d4",
+      "bytes": 4253,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "e046130912c651ca85fdecad3846f0167da4ab1e98b10dd0523578918f177ea6",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "dome-torso",
+      "resolution": 64,
+      "path": "./dome-torso-64.indexed.json.gz",
+      "checksum": "ee7f01844f04d99a0f3b1baceb11d3906d907ef4e80dbe597357a565374b99c2",
+      "bytes": 4257,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "0ae565cd528d88dd123776f4262f76ff79dcfc73907720c3403aea12c0b319f3",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "head-base",
+      "resolution": 64,
+      "path": "./head-base-64.indexed.json.gz",
+      "checksum": "c4de74fdccaae1004de7f353db15c7c3c9caa255dc20128a0c175593e2f0491a",
+      "bytes": 6640,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "3775fdfcb6a582d7abb1c833f82e45f1e0c09385a539e4aacf642bb6c6aa5b18",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/head-base-master.png",
+        "sha256": "592fa7304a22bf0b18414b3d8522281dcb9afb21e4b7d500f2882ba89a9cb66a",
+        "width": 1254,
+        "registration": "Single canonical north surface, registered to existing head bounds"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "walking-leg",
+      "resolution": 64,
+      "path": "./walking-leg-64.indexed.json.gz",
+      "checksum": "3b7976277f070f8ab9e8bd7e517e792db3805cce5f648f069d2d31f5123b63f5",
+      "bytes": 3475,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "630c35e5e6a5ee7805c7dc1b9c3a3618fce449a917b99c48302699e51b78d5f5",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/walking-leg-master.png",
+        "sha256": "93b8308e5506c650767810e7dc6c168bcbc45f4e7de2561879b0092daee2a8fd",
+        "width": 1254,
+        "registration": "Two registered tissue rows, canonical bone anchors preserved"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "runner-leg",
+      "resolution": 64,
+      "path": "./runner-leg-64.indexed.json.gz",
+      "checksum": "096707ffdbbb61634b2a3fa811d5593e91f2c17476339585233f4faca1e9b6e7",
+      "bytes": 2897,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "4b6634358054bab82fdb58215f4c53a952588b6be734d019b10674a3dc4bdb4a",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/walking-leg-master.png",
+        "sha256": "93b8308e5506c650767810e7dc6c168bcbc45f4e7de2561879b0092daee2a8fd",
+        "width": 1254,
+        "registration": "Two registered tissue rows, canonical bone anchors preserved"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "sturdy-leg",
+      "resolution": 64,
+      "path": "./sturdy-leg-64.indexed.json.gz",
+      "checksum": "59a48002a82a43a74481e3bbfd7e479fb26bfdd5d7ed5120f3e9f9b513ecfb60",
+      "bytes": 4238,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "22e362fe8d9ae72c945e08ab4479945e845fd299b941c86839f247773a18ab56",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/walking-leg-master.png",
+        "sha256": "93b8308e5506c650767810e7dc6c168bcbc45f4e7de2561879b0092daee2a8fd",
+        "width": 1254,
+        "registration": "Two registered tissue rows, canonical bone anchors preserved"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "simple-eye",
+      "resolution": 64,
+      "path": "./simple-eye-64.indexed.json.gz",
+      "checksum": "9897d46b12fccc5b61244412f21f11514acf7890a247d1ea7595c84f4bfe47e3",
+      "bytes": 3194,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "5372fe80f35cb7c7699f502192d77a1c400262d823460732f9acd53654b3ed81",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "compound-eye",
+      "resolution": 64,
+      "path": "./compound-eye-64.indexed.json.gz",
+      "checksum": "61bc3324b5234579e9a05aaa50d0702b59ce8dffbb84632c601416754a5806be",
+      "bytes": 3442,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "5e6cbc955c0f1de820093da7ab517afc3b28ebead92c244e1dae05e706c95cfa",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "grazing-mouth",
+      "resolution": 64,
+      "path": "./grazing-mouth-64.indexed.json.gz",
+      "checksum": "282b4d4fbb1893aa7aa542fbca1eb44426bfad552e3333e29ee55716990cb549",
+      "bytes": 2280,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "8ab5418e37abbbe4c81b0ea7becb7b78947dd75952e0f4cfbf25e9414178a330",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "beak-mouth",
+      "resolution": 64,
+      "path": "./beak-mouth-64.indexed.json.gz",
+      "checksum": "ea6b628a68c2dfc2a8aa9bc489c1a169d683b6b4e436bdb8cb30ee2c5eb07832",
+      "bytes": 2714,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "e414e3d7448c66dac13340f869e50f271de187524dc59a73ca12827a508d6222",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "fur-mantle",
+      "resolution": 64,
+      "path": "./fur-mantle-64.indexed.json.gz",
+      "checksum": "00637d24067f8ec7793fe25de01769d66388b7e8e3b30065c6cd6f8a40f6a3d7",
+      "bytes": 8099,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "f0940305c30ddd896fa47db9495b90e2d58f105d61cd0aa9af915d2e862149d5",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/fur-mantle-master.png",
+        "sha256": "502f5428cc938a0430d8efb3b18bd94836b5fd7508c1d2d0fa12c02bb97742a5",
+        "width": 1254,
+        "registration": "Canonical north atlas cell zero, registered to existing dorsal pivot"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "feather-mantle",
+      "resolution": 64,
+      "path": "./feather-mantle-64.indexed.json.gz",
+      "checksum": "45c1fe15d093ffe5870eb1d1d71ea968ca654f1af2ec5b842712a6b7ef23afbf",
+      "bytes": 8061,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "92a52d71ca62abfa4aaa60929ecac9e2d88fce9803e7c8dd9895c1ab6c64968b",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/feather-mantle-master.png",
+        "sha256": "31f9c126a161eddd7bcad75988ec19e45707dc799f0b04aeaa2b86c4d7347568",
+        "width": 1254,
+        "registration": "Canonical north atlas cell zero, registered to existing dorsal pivot"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "shell-back",
+      "resolution": 64,
+      "path": "./shell-back-64.indexed.json.gz",
+      "checksum": "b17928ddc5f448c2bec19e86734612462a3f03eebc7f2b60b4ec90cc6eb438e1",
+      "bytes": 8286,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "4c6f6b49e2a478672f351ebcadaddb5570d7de6b851861dfdb8ee4710a6943e4",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/shell-back-master.png",
+        "sha256": "dcd82a9ed32fac2c631430b9529211f2006040362fdeefe956c6136000f3c81b",
+        "width": 1254,
+        "registration": "Canonical north atlas cell zero, registered to existing dorsal pivot"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "balance-tail",
+      "resolution": 64,
+      "path": "./balance-tail-64.indexed.json.gz",
+      "checksum": "8e88c716084b915de12ac907a2843dd31d2fd25d501e52b0a2f40ae8f2465ef2",
+      "bytes": 2681,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "8a4d4b0256bdb2f90b76067bd1a450d035656b78e1ae87bfb1bbd732f066c0ab",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "small-torso",
+      "resolution": 128,
+      "path": "./small-torso-128.indexed.json.gz",
+      "checksum": "838d13d777c1cb50dc84f782811e78ac557ad8d885d403a9cdc44895c1931905",
+      "bytes": 14063,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "e12f5dcf3310a7d249d06796e44e216afebebdabba2d9081ff03a0b953deba15",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "soft-torso",
+      "resolution": 128,
+      "path": "./soft-torso-128.indexed.json.gz",
+      "checksum": "c21a4fb111c71393b807d2d3d9a5bc8be50438d70504c767d1d3f3464598f891",
+      "bytes": 14061,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "e046130912c651ca85fdecad3846f0167da4ab1e98b10dd0523578918f177ea6",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "dome-torso",
+      "resolution": 128,
+      "path": "./dome-torso-128.indexed.json.gz",
+      "checksum": "ed49ff0cd70117507c770799eb03d27fa56a702b252f738f85ca9d2d56c0f63b",
+      "bytes": 14064,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "0ae565cd528d88dd123776f4262f76ff79dcfc73907720c3403aea12c0b319f3",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "head-base",
+      "resolution": 128,
+      "path": "./head-base-128.indexed.json.gz",
+      "checksum": "416afb53f69615d4868da46138db965b5af29e2313148a9e90f8fb4c901f59a4",
+      "bytes": 28876,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "3775fdfcb6a582d7abb1c833f82e45f1e0c09385a539e4aacf642bb6c6aa5b18",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/head-base-master.png",
+        "sha256": "592fa7304a22bf0b18414b3d8522281dcb9afb21e4b7d500f2882ba89a9cb66a",
+        "width": 1254,
+        "registration": "Single canonical north surface, registered to existing head bounds"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "walking-leg",
+      "resolution": 128,
+      "path": "./walking-leg-128.indexed.json.gz",
+      "checksum": "0b2358eac310e32a35c167c13ce90d53d2c92e369d5d01fca5d24c8e8580c384",
+      "bytes": 31449,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "630c35e5e6a5ee7805c7dc1b9c3a3618fce449a917b99c48302699e51b78d5f5",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/walking-leg-master.png",
+        "sha256": "93b8308e5506c650767810e7dc6c168bcbc45f4e7de2561879b0092daee2a8fd",
+        "width": 1254,
+        "registration": "Two registered tissue rows, canonical bone anchors preserved"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "runner-leg",
+      "resolution": 128,
+      "path": "./runner-leg-128.indexed.json.gz",
+      "checksum": "a7ce30080c316eaa9bbc3f0c0a2c6aa6cb9d7ad1e5d5cee3647c831cad4a1eee",
+      "bytes": 24215,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "4b6634358054bab82fdb58215f4c53a952588b6be734d019b10674a3dc4bdb4a",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/walking-leg-master.png",
+        "sha256": "93b8308e5506c650767810e7dc6c168bcbc45f4e7de2561879b0092daee2a8fd",
+        "width": 1254,
+        "registration": "Two registered tissue rows, canonical bone anchors preserved"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "sturdy-leg",
+      "resolution": 128,
+      "path": "./sturdy-leg-128.indexed.json.gz",
+      "checksum": "003bc48a788d8379e165adc5a6d5eafbffb1c191cf42dc7583bb8dd9edb1320c",
+      "bytes": 37416,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "22e362fe8d9ae72c945e08ab4479945e845fd299b941c86839f247773a18ab56",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/walking-leg-master.png",
+        "sha256": "93b8308e5506c650767810e7dc6c168bcbc45f4e7de2561879b0092daee2a8fd",
+        "width": 1254,
+        "registration": "Two registered tissue rows, canonical bone anchors preserved"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "simple-eye",
+      "resolution": 128,
+      "path": "./simple-eye-128.indexed.json.gz",
+      "checksum": "cf73b0d16f0f378061cccaf34d3cb9ef5cfee74a65231ed1833f99c8ddfcfd7b",
+      "bytes": 9091,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "5372fe80f35cb7c7699f502192d77a1c400262d823460732f9acd53654b3ed81",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "compound-eye",
+      "resolution": 128,
+      "path": "./compound-eye-128.indexed.json.gz",
+      "checksum": "888591f2ca3cdfe28ea21c55dffc156dd70159681eca8e9750b42eee1f8bac02",
+      "bytes": 11521,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "5e6cbc955c0f1de820093da7ab517afc3b28ebead92c244e1dae05e706c95cfa",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "grazing-mouth",
+      "resolution": 128,
+      "path": "./grazing-mouth-128.indexed.json.gz",
+      "checksum": "1c61afd4effeac257a56d58f117c021c042d489f89b8df9a3f9c71f315e64519",
+      "bytes": 6058,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "8ab5418e37abbbe4c81b0ea7becb7b78947dd75952e0f4cfbf25e9414178a330",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "beak-mouth",
+      "resolution": 128,
+      "path": "./beak-mouth-128.indexed.json.gz",
+      "checksum": "b871ba44d433d5b84c2d2cfeeb4ab6dca5a0f04e8140204e57fb85beba0f7356",
+      "bytes": 7070,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "e414e3d7448c66dac13340f869e50f271de187524dc59a73ca12827a508d6222",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "fur-mantle",
+      "resolution": 128,
+      "path": "./fur-mantle-128.indexed.json.gz",
+      "checksum": "a158d668eb974d7e3a22c1777aaee8ddb88f70dccf1ab16912edf9bc815fe5b0",
+      "bytes": 38993,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "f0940305c30ddd896fa47db9495b90e2d58f105d61cd0aa9af915d2e862149d5",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/fur-mantle-master.png",
+        "sha256": "502f5428cc938a0430d8efb3b18bd94836b5fd7508c1d2d0fa12c02bb97742a5",
+        "width": 1254,
+        "registration": "Canonical north atlas cell zero, registered to existing dorsal pivot"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "feather-mantle",
+      "resolution": 128,
+      "path": "./feather-mantle-128.indexed.json.gz",
+      "checksum": "e206010fe01e19a79902f9c5a1a376a11bedf3b23d76f548e78aa7f160b11399",
+      "bytes": 38285,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "92a52d71ca62abfa4aaa60929ecac9e2d88fce9803e7c8dd9895c1ab6c64968b",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/feather-mantle-master.png",
+        "sha256": "31f9c126a161eddd7bcad75988ec19e45707dc799f0b04aeaa2b86c4d7347568",
+        "width": 1254,
+        "registration": "Canonical north atlas cell zero, registered to existing dorsal pivot"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "shell-back",
+      "resolution": 128,
+      "path": "./shell-back-128.indexed.json.gz",
+      "checksum": "75a737b92cd754a9eb1db5c1f062343e1c67b2b10a683c01940a52743edef08f",
+      "bytes": 41849,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "4c6f6b49e2a478672f351ebcadaddb5570d7de6b851861dfdb8ee4710a6943e4",
+      "kind": "imagegen-indexed",
+      "master": {
+        "path": "./source/shell-back-master.png",
+        "sha256": "dcd82a9ed32fac2c631430b9529211f2006040362fdeefe956c6136000f3c81b",
+        "width": 1254,
+        "registration": "Canonical north atlas cell zero, registered to existing dorsal pivot"
+      },
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    },
+    {
+      "partId": "balance-tail",
+      "resolution": 128,
+      "path": "./balance-tail-128.indexed.json.gz",
+      "checksum": "b5cecd04be888aac5d65c629f8c53324f060854630c10ac94f189801712d9645",
+      "bytes": 6810,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "8a4d4b0256bdb2f90b76067bd1a450d035656b78e1ae87bfb1bbd732f066c0ab",
+      "kind": "code-authored-indexed",
+      "coordinatePolicy": "Existing 32-unit pivot, registered physical display scale; no world-size change."
+    }
+  ]
+}

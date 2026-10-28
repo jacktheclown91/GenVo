@@ -5,14 +5,15 @@ import {serializePlan,deserializePlan} from '../../src/lineage/body-plan.js';
 import {GENE_KEYS,phenotypeFor} from '../../src/organisms/species.js';
 import {drawGenvoSprite,genvoAnchors} from '../../src/render/genvo-draw.js';
 import {starterPlan,attachPart,removePart,checked} from './assembly-model.js';
+import {loadPartArtVariant} from '../../src/render/part-art-variants.js';
 import {loadNativePartCatalog} from '../../src/render/runtime-part-art.js';
 import {planProtectionInPlay} from '../../src/lineage/protection-reading.js';
 await loadNativePartCatalog();
-let authoredParts={},artRevision=0;
-window.addEventListener('genvo8-lab-authored-renderer',event=>{authoredParts={...authoredParts,[event.detail.partId]:event.detail};artRevision++;boundsCache.clear();showAuthoredBindings();renderPreview();message('Authored artwork installed for '+event.detail.partId+' in this preview.')});
+let authoredParts={},artistParts={},variantParts={},artRevision=0;
+window.addEventListener('genvo8-lab-authored-renderer',event=>{artistParts={...artistParts,[event.detail.partId]:event.detail};authoredParts={...variantParts,...artistParts};artRevision++;boundsCache.clear();showAuthoredBindings();renderPreview();message('Authored artwork installed for '+event.detail.partId+' in this preview.')});
 const $=id=>document.getElementById(id);
-function showAuthoredBindings(){$('authoredBindings').textContent=Object.keys(authoredParts).length?'Preview artwork: '+Object.keys(authoredParts).join(', '):'Preview artwork: installed native catalog';$('clearAuthored').disabled=!Object.keys(authoredParts).length}
-$('clearAuthored').onclick=()=>{authoredParts={};artRevision++;boundsCache.clear();showAuthoredBindings();renderPreview();message('Authored preview artwork removed; body plan unchanged.')};
+function showAuthoredBindings(){$('authoredBindings').textContent=Object.keys(artistParts).length?'Artist overrides: '+Object.keys(artistParts).join(', '):Object.keys(variantParts).length?'Detailed modular artwork · '+Object.keys(variantParts).length+' parts · native32 fallback':'Preview artwork: installed native catalog';$('clearAuthored').disabled=!Object.keys(artistParts).length}
+$('clearAuthored').onclick=()=>{artistParts={};authoredParts={...variantParts};artRevision++;boundsCache.clear();showAuthoredBindings();renderPreview();message('Authored preview artwork removed; body plan unchanged.')};
 $('showAssemblyGuides').onchange=renderPreview;
 showAuthoredBindings();let plan=starterPlan(),undo=[],redo=[],anchors=[],frame=0,playing=false,lastFrame=0,animationHandle=null,view={zoom:1,scale:10,cx:192,cy:192},reference=null;const boundsCache=new Map();
 function commit(next){undo.push(plan);if(undo.length>100)undo.shift();redo=[];plan=next;refresh()}
@@ -38,6 +39,30 @@ function renderPreview(){const action=$('previewAction').value,dir=Number($('pre
 }
 const stage=document.createElement('div');stage.className='lab-body-stage';const board=$('creaturePreview').closest('.artboard');board.dataset.label='Current anatomy';board.before(stage);stage.append(board);const toolbar=document.createElement('div');toolbar.className='lab-view-tools';stage.after(toolbar);
 for(const [label,fn] of [['Fit creature',()=>{view.zoom=1}],['Zoom in',()=>{view.zoom=Math.min(2.5,view.zoom*1.2)}],['Zoom out',()=>{view.zoom=Math.max(.5,view.zoom/1.2)}],['Pin reference',()=>{reference=structuredClone(plan);$('assemblyComparison').hidden=false;queueMicrotask(sizeStage)}],['Clear reference',()=>{reference=null;$('assemblyComparison').hidden=true;queueMicrotask(sizeStage)}],['Expand preview',()=>{document.body.classList.toggle('lab-preview-expanded')}]] ){const button=document.createElement('button');button.textContent=label;button.type='button';button.onclick=()=>{fn();if(label==='Expand preview'){const expanded=document.body.classList.contains('lab-preview-expanded');button.textContent=expanded?'Restore preview':'Expand preview';button.setAttribute('aria-pressed',String(expanded))}renderPreview()};toolbar.append(button)}
+// Resolution changes affect this assembled preview only. In-progress artist
+// paint remains the top layer, and no part/body-plan/export is rewritten.
+const artControl=document.createElement('label');artControl.textContent='Artwork ';
+const artSelect=document.createElement('select');artSelect.id='assemblyArtResolution';
+for(const [value,label] of [['32','Native 32 · stable'],['64','Detailed 64 · candidate'],['128','Close-up 128 · candidate']]){
+ const option=document.createElement('option');option.value=value;option.textContent=label;artSelect.append(option);
+}
+artControl.append(artSelect);toolbar.prepend(artControl);
+const artStatus=document.createElement('span');artStatus.id='assemblyArtStatus';artStatus.setAttribute('role','status');artStatus.textContent='Native32 stable artwork';artControl.append(artStatus);
+const variantLoads=new Map();let variantTicket=0,activeArtResolution=32;
+artSelect.onchange=async()=>{
+ const ticket=++variantTicket,resolution=Number(artSelect.value);
+ try{
+  let next={};
+  if(resolution!==32){
+   artStatus.textContent='Loading detailed artwork…';
+   if(!variantLoads.has(resolution))variantLoads.set(resolution,loadPartArtVariant(new URL('../../assets/art/production-candidate-v1/catalog.json',import.meta.url),{resolution}).catch(error=>{variantLoads.delete(resolution);throw error;}));
+   const result=await variantLoads.get(resolution);next=Object.fromEntries(result.parts);
+  }
+  if(ticket!==variantTicket)return;
+  activeArtResolution=resolution;variantParts=next;authoredParts={...variantParts,...artistParts};artRevision++;boundsCache.clear();showAuthoredBindings();renderPreview();
+  artStatus.textContent=resolution===32?'Native32 stable artwork':resolution+'px modular candidate · same physical anatomy';
+ }catch(error){if(ticket===variantTicket){artStatus.textContent=error.message;artSelect.value=String(activeArtResolution);}}
+};
 const viewStatus=document.createElement('p');viewStatus.id='assemblyViewStatus';toolbar.after(viewStatus);const comparison=document.createElement('figure');comparison.id='assemblyComparison';comparison.hidden=true;comparison.innerHTML='<figcaption>Pinned anatomy reference · same scale and motion</figcaption><canvas id="referencePreview" width="384" height="384" aria-label="Pinned whole-creature anatomy reference"></canvas><p id="assemblyComparisonLabel"></p>';stage.append(comparison);const sizeStage=()=>{const columns=reference?2:1,size=Math.max(80,Math.min(stage.clientHeight-34,stage.clientWidth/columns-12));stage.style.setProperty('--lab-specimen-size',size+'px')};new ResizeObserver(sizeStage).observe(stage);
 const attachSelected=anchor=>{try{commit(attachPart(plan,anchor.parent,anchor.socket,$('attachmentPart').value));message('Mounted '+$('attachmentPart').value.replaceAll('-',' ')+' · Undo is available.')}catch(e){message('Rejected: '+e.message)}};
 
@@ -52,7 +77,7 @@ function drawConnectionGuides(){
 $('assemblyGuides').onclick=e=>{const rect=$('creaturePreview').getBoundingClientRect(),x=(e.clientX-rect.left)*384/rect.width,y=(e.clientY-rect.top)*384/rect.height,compatible=anchors.filter(a=>PARTS[$('attachmentPart').value]?.compatibleSocketTypes.includes(a.type)),nearest=compatible.map(a=>({a,d:Math.hypot(view.cx+a.x*view.scale-x,view.cy+a.y*view.scale-y)*rect.width/384})).sort((a,b)=>a.d-b.d)[0];if(nearest&&nearest.d<=22){$('attachmentSocket').value=JSON.stringify([nearest.a.parent,nearest.a.socket]);attachSelected(nearest.a)}};
 $('attachmentSocket').onchange=drawConnectionGuides;$('attachmentPart').onchange=drawConnectionGuides;
 new ResizeObserver(()=>{if(anchors.length)drawConnectionGuides()}).observe($('creaturePreview'));
-window.__GENVO_LAB_ASSEMBLY__={get plan(){return plan},get view(){return view},get anchors(){return anchors},get reference(){return reference}};
+window.__GENVO_LAB_ASSEMBLY__={get plan(){return plan},get view(){return view},get anchors(){return anchors},get reference(){return reference},get artResolution(){return Number(artSelect.value)}};
 $('assemblyRoot').value='small-torso';$('assemblyRoot').onchange=()=>{try{commit(starterPlan($('assemblyRoot').value))}catch(e){message(e.message)}};
 $('attach').onclick=()=>{try{const [parent,socket]=JSON.parse($('attachmentSocket').value);commit(attachPart(plan,parent,socket,$('attachmentPart').value))}catch(e){message('Rejected: '+e.message)}};
 $('assemblyUndo').onclick=()=>{if(undo.length){redo.push(plan);plan=undo.pop();refresh()}};$('assemblyRedo').onclick=()=>{if(redo.length){undo.push(plan);plan=redo.pop();refresh()}};

@@ -54,9 +54,19 @@ $('observe').onclick=()=>{
   specimens.push(copy);const option=document.createElement('option');option.value=specimens.length-1;option.textContent=copy.name;$('specimen').append(option);$('specimen').value=option.value;render();
 };
 window.__artStudy={specimens,measurements:null,worldResolution:32,render,freeze:()=>{freeze=true;phase=2;render();}};
-try{
-  await loadNativePartCatalog();study=await loadStudy();for(const resolution of [64,128])partSets.set(resolution,Object.fromEntries(study.variants.get(resolution)));ready=true;
-  $('status').textContent='Ready · 15 optional high-detail parts at each resolution · 32px fallback for the rest · original sources preserved';
+const seriesLoads=new Map();let seriesTicket=0;
+async function loadSeries(){
+ const series=$('series').value,ticket=++seriesTicket;ready=false;$('status').textContent='Preparing detailed modular artwork…';
+ try{
+  if(!seriesLoads.has(series))seriesLoads.set(series,loadStudy(series).catch(error=>{seriesLoads.delete(series);throw error;}));
+  const next=await seriesLoads.get(series);if(ticket!==seriesTicket)return;
+  study=next;partSets.clear();for(const resolution of [64,128])partSets.set(resolution,Object.fromEntries(study.variants.get(resolution)));ready=true;
+  $('status').textContent=(series==='candidate'?'Refined fur, feather and shell materials':'First procedural study')+' · 15 modular parts per resolution · native32 fallback · creator acceptance pending';
   window.__artStudy.exportAtlases=study.exportAtlases;window.__artStudy.ready=true;window.__artStudy.catalog=study.catalog;render();
+ }catch(error){$('status').textContent='Artwork unavailable: '+error.message;throw error;}
+}
+$('series').onchange=()=>{window.__artStudy.ready=false;loadSeries();};
+try{
+  await loadNativePartCatalog();await loadSeries();
   requestAnimationFrame(function tick(now){if(last&&!freeze&&$('walk').checked)phase=(phase+Math.min(.05,(now-last)/1000)*5)%8;last=now;if(!freeze){const sheets=now-lastSheet>125;render(sheets);if(sheets)lastSheet=now;}requestAnimationFrame(tick);});
 }catch(error){$('status').textContent='Study unavailable: '+error.message;throw error;}

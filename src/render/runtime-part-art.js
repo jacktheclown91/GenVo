@@ -1,3 +1,4 @@
+export {loadPartArtVariant} from './part-art-variants.js';
 // GenVo native pixel-art bridge. Art-only; the biological part registry remains authoritative.
 // The authoring catalog is verified and converted by the single indexed-art codec.
 import {prepareIndexedPartRenderer} from './indexed-part-renderer.js';
