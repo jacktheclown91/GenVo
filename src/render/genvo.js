@@ -1,3 +1,4 @@
+import {coordinatedGaitOffsets} from './gait-coordination.js';
 import {articulatedKnee} from './limb-articulation.js';
 // GenVo8-specific presentation geometry. Read-only: no simulation state is mutated and no RNG is consumed.
 const DIR8=[{x:0,y:-1},{x:1,y:-1},{x:1,y:0},{x:1,y:1},{x:0,y:1},{x:-1,y:1},{x:-1,y:0},{x:-1,y:-1}];
@@ -35,12 +36,13 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
   // Designed bodies (wave 1) pass their own leg slots: angles in sixteenths of a turn relative to
   // the facing, with a reach factor per leg type. Without them the eight radial legs are unchanged.
   const slotList=Array.isArray(legSlots)?legSlots:null,count=slotList?slotList.length:8,travel=slotList&&moving?gaitTravelFor(limbScale,slotList):null;
+  const coordinated=slotList&&moving&&action!=='swim'&&!Number.isFinite(b.displayPhase)?coordinatedGaitOffsets(slotList):null;
   for(let n=0;n<count;n++){
     let k=n,dx,dy,reachScale=1,slot=null,gait=null;
     if(slotList){const L=slotList[n],raw=L.slot*Math.PI/8,ang=splayAngle(raw);slot=L.slot;reachScale=L.reach||1;gait=L.gait||null;k=(L.slot>>1)+(L.slot&1);dx=fx*Math.cos(ang)+perp.x*Math.sin(ang);dy=fy*Math.cos(ang)+perp.y*Math.sin(ang)}
     else{const raw=DIR8[k],mag=Math.hypot(raw.x,raw.y)||1;dx=raw.x/mag;dy=raw.y/mag}
     const front=dx*fx+dy*fy,side=dx*perp.x+dy*perp.y;
-    const phase=(Number.isFinite(b.displayPhase)?b.displayPhase:frame)+(slotList?((Math.round(Math.abs(side)*3)+Math.round(front*2)+(side<0?4:0))%8):((k&1)?4:0)+((k>>1)&1));
+    const phase=(Number.isFinite(b.displayPhase)?b.displayPhase:frame)+(coordinated?coordinated[n]:slotList?((Math.round(Math.abs(side)*3)+Math.round(front*2)+(side<0?4:0))%8):((k&1)?4:0)+((k>>1)&1));
     // v1.59.0: each leg type moves its own way: stride scales the swing, lift how high the foot rises.
     const step=organicFootfall(phase,travel,moving?(gait?.stride??1):1);
     const stride=(moving?step.stride:(Number(b.displayStride)||0)?step.stride*b.displayStride:0);
