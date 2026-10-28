@@ -1,0 +1,684 @@
+{
+  "status": "PASS",
+  "mouth": "nibbler-mouth",
+  "samples": 57,
+  "modes": [
+    "nibble"
+  ],
+  "stages": [
+    "reach",
+    "process",
+    "settle"
+  ],
+  "rows": [
+    {
+      "tick": 13,
+      "time": 1.5435999999865893,
+      "mode": "nibble",
+      "stage": "reach",
+      "progress": 0,
+      "mouthShape": {
+        "forward": 1,
+        "width": 1
+      }
+    },
+    {
+      "tick": 14,
+      "time": 1.5637999999821188,
+      "mode": "nibble",
+      "stage": "reach",
+      "progress": 0.019238095233837686,
+      "mouthShape": {
+        "forward": 1,
+        "width": 1
+      }
+    },
+    {
+      "tick": 14,
+      "time": 1.583399999983609,
+      "mode": "nibble",
+      "stage": "reach",
+      "progress": 0.03790476190192359,
+      "mouthShape": {
+        "forward": 1,
+        "width": 1
+      }
+    },
+    {
+      "tick": 14,
+      "time": 1.596899999983609,
+      "mode": "nibble",
+      "stage": "reach",
+      "progress": 0.050761904759066515,
+      "mouthShape": {
+        "forward": 1,
+        "width": 1
+      }
+    },
+    {
+      "tick": 14,
+      "time": 1.6114999999850992,
+      "mode": "nibble",
+      "stage": "reach",
+      "progress": 0.06466666666524755,
+      "mouthShape": {
+        "forward": 1,
+        "width": 1
+      }
+    },
+    {
+      "tick": 15,
+      "time": 1.627399999983609,
+      "mode": "nibble",
+      "stage": "reach",
+      "progress": 0.07980952380668553,
+      "mouthShape": {
+        "forward": 1,
+        "width": 1
+      }
+    },
+    {
+      "tick": 15,
+      "time": 1.6405999999865892,
+      "mode": "nibble",
+      "stage": "reach",
+      "progress": 0.09238095238095236,
+      "mouthShape": {
+        "forward": 1,
+        "width": 1
+      }
+    },
+    {
+      "tick": 15,
+      "time": 1.6561999999880794,
+      "mode": "nibble",
+      "stage": "reach",
+      "progress": 0.10723809523951444,
+      "mouthShape": {
+        "forward": 1,
+        "width": 1
+      }
+    },
+    {
+      "tick": 15,
+      "time": 1.673799999982119,
+      "mode": "nibble",
+      "stage": "reach",
+      "progress": 0.12399999999574254,
+      "mouthShape": {
+        "forward": 1.0004007035736615,
+        "width": 0.9987177485642829
+      }
+    },
+    {
+      "tick": 15,
+      "time": 1.6896999999880793,
+      "mode": "nibble",
+      "stage": "reach",
+      "progress": 0.1391428571442762,
+      "mouthShape": {
+        "forward": 1.0012482278096142,
+        "width": 0.9960056710092342
+      }
+    },
+    {
+      "tick": 15,
+      "time": 1.706999999985099,
+      "mode": "nibble",
+      "stage": "reach",
+      "progress": 0.15561904761762843,
+      "mouthShape": {
+        "forward": 1.0010236581838872,
+        "width": 0.9967242938115611
+      }
+    },
+    {
+      "tick": 15,
+      "time": 1.7232999999821188,
+      "mode": "nibble",
+      "stage": "reach",
+      "progress": 0.17114285713859956,
+      "mouthShape": {
+        "forward": 1.0002970847753057,
+        "width": 0.9990493287190216
+      }
+    },
+    {
+      "tick": 15,
+      "time": 1.739899999983609,
+      "mode": "nibble",
+      "stage": "reach",
+      "progress": 0.1869523809495425,
+      "mouthShape": {
+        "forward": 1.0000394977281808,
+        "width": 0.9998736072698212
+      }
+    },
+    {
+      "tick": 16,
+      "time": 1.7597999999821188,
+      "mode": "nibble",
+      "stage": "reach",
+      "progress": 0.2059047619005043,
+      "mouthShape": {
+        "forward": 1.001727191016025,
+        "width": 0.9944729887487203
+      }
+    },
+    {
+      "tick": 16,
+      "time": 1.7791999999880792,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.22438095238237138,
+      "mouthShape": {
+        "forward": 1.006120132709333,
+        "width": 0.9804155753301343
+      }
+    },
+    {
+      "tick": 16,
+      "time": 1.791899999983609,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.23647619047335205,
+      "mouthShape": {
+        "forward": 1.010157231229794,
+        "width": 0.9674968600646593
+      }
+    },
+    {
+      "tick": 16,
+      "time": 1.8062999999821188,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.2501904761862186,
+      "mouthShape": {
+        "forward": 1.0150641168832883,
+        "width": 0.951794825973477
+      }
+    },
+    {
+      "tick": 16,
+      "time": 1.8233999999836088,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.2664761904733519,
+      "mouthShape": {
+        "forward": 1.0199393108476793,
+        "width": 0.9361942052874264
+      }
+    },
+    {
+      "tick": 16,
+      "time": 1.8407999999821187,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.2830476190433614,
+      "mouthShape": {
+        "forward": 1.0221871431521028,
+        "width": 0.9290011419132708
+      }
+    },
+    {
+      "tick": 16,
+      "time": 1.856399999983609,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.2979047619019235,
+      "mouthShape": {
+        "forward": 1.0210044001818788,
+        "width": 0.932785919417988
+      }
+    },
+    {
+      "tick": 17,
+      "time": 1.8762999999821188,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.3168571428528853,
+      "mouthShape": {
+        "forward": 1.0140635485516614,
+        "width": 0.9549966446346838
+      }
+    },
+    {
+      "tick": 17,
+      "time": 1.8915999999865891,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.3314285714285713,
+      "mouthShape": {
+        "forward": 1.0079276673834334,
+        "width": 0.9746314643730131
+      }
+    },
+    {
+      "tick": 17,
+      "time": 1.9064999999850991,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.3456190476176284,
+      "mouthShape": {
+        "forward": 1.0030163816649316,
+        "width": 0.9903475786722192
+      }
+    },
+    {
+      "tick": 17,
+      "time": 1.924999999985099,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.363238095236676,
+      "mouthShape": {
+        "forward": 1.0000689148537492,
+        "width": 0.999779472468003
+      }
+    },
+    {
+      "tick": 17,
+      "time": 1.939999999985099,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.3775238095223902,
+      "mouthShape": {
+        "forward": 1.0009151773121885,
+        "width": 0.9970714326009967
+      }
+    },
+    {
+      "tick": 17,
+      "time": 1.956599999986589,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.39333333333333315,
+      "mouthShape": {
+        "forward": 1.0050010293731113,
+        "width": 0.9839967060060437
+      }
+    },
+    {
+      "tick": 17,
+      "time": 1.973699999988079,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.4096190476204665,
+      "mouthShape": {
+        "forward": 1.0114425486310081,
+        "width": 0.9633838443807741
+      }
+    },
+    {
+      "tick": 17,
+      "time": 1.9894999999850989,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.4246666666652472,
+      "mouthShape": {
+        "forward": 1.0177282534347893,
+        "width": 0.9432695890086737
+      }
+    },
+    {
+      "tick": 18,
+      "time": 2.032099999986589,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.4652380952380952,
+      "mouthShape": {
+        "forward": 1.024603373543992,
+        "width": 0.9212692046592258
+      }
+    },
+    {
+      "tick": 18,
+      "time": 2.058599999986589,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.49047619047619034,
+      "mouthShape": {
+        "forward": 1.0179639470831368,
+        "width": 0.9425153693339626
+      }
+    },
+    {
+      "tick": 18,
+      "time": 2.0695999999865893,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.5009523809523809,
+      "mouthShape": {
+        "forward": 1.0136607147410146,
+        "width": 0.9562857128287534
+      }
+    },
+    {
+      "tick": 18,
+      "time": 2.081099999986589,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.5119047619047618,
+      "mouthShape": {
+        "forward": 1.0090126111745097,
+        "width": 0.971159644241569
+      }
+    },
+    {
+      "tick": 18,
+      "time": 2.091699999988079,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.522000000001419,
+      "mouthShape": {
+        "forward": 1.0051450616294708,
+        "width": 0.9835358027856935
+      }
+    },
+    {
+      "tick": 18,
+      "time": 2.106399999983609,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.5359999999971616,
+      "mouthShape": {
+        "forward": 1.001307330478817,
+        "width": 0.9958165424677856
+      }
+    },
+    {
+      "tick": 19,
+      "time": 2.125999999985099,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.5546666666652473,
+      "mouthShape": {
+        "forward": 1.0001995999935274,
+        "width": 0.9993612800207126
+      }
+    },
+    {
+      "tick": 19,
+      "time": 2.1399999999850987,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.5679999999985804,
+      "mouthShape": {
+        "forward": 1.0024467046021535,
+        "width": 0.9921705452731092
+      }
+    },
+    {
+      "tick": 19,
+      "time": 2.1568999999836085,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.5840952380923993,
+      "mouthShape": {
+        "forward": 1.007837166906837,
+        "width": 0.9749210658981223
+      }
+    },
+    {
+      "tick": 19,
+      "time": 2.1727999999821184,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.5992380952338372,
+      "mouthShape": {
+        "forward": 1.0142099312581325,
+        "width": 0.9545282199739762
+      }
+    },
+    {
+      "tick": 19,
+      "time": 2.189499999985099,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.6151428571414377,
+      "mouthShape": {
+        "forward": 1.0203876456689334,
+        "width": 0.9347595338594133
+      }
+    },
+    {
+      "tick": 19,
+      "time": 2.2068999999836088,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.6317142857114472,
+      "mouthShape": {
+        "forward": 1.0243676540536644,
+        "width": 0.9220235070282736
+      }
+    },
+    {
+      "tick": 19,
+      "time": 2.223499999985099,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.6475238095223903,
+      "mouthShape": {
+        "forward": 1.0246906802506075,
+        "width": 0.9209898231980559
+      }
+    },
+    {
+      "tick": 19,
+      "time": 2.239399999983609,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.6626666666638282,
+      "mouthShape": {
+        "forward": 1.021710422828339,
+        "width": 0.9305266469493154
+      }
+    },
+    {
+      "tick": 20,
+      "time": 2.259199999988079,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.6815238095252285,
+      "mouthShape": {
+        "forward": 1.0146308858011515,
+        "width": 0.9531811654363154
+      }
+    },
+    {
+      "tick": 20,
+      "time": 2.273199999988079,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.6948571428585616,
+      "mouthShape": {
+        "forward": 1.0083435179241445,
+        "width": 0.973300742642738
+      }
+    },
+    {
+      "tick": 20,
+      "time": 2.289599999986589,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.7104761904761903,
+      "mouthShape": {
+        "forward": 1.0028501052759056,
+        "width": 0.9908796631171025
+      }
+    },
+    {
+      "tick": 20,
+      "time": 2.307399999983609,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.727428571425733,
+      "mouthShape": {
+        "forward": 1.0001445462500869,
+        "width": 0.999537451999722
+      }
+    },
+    {
+      "tick": 20,
+      "time": 2.3235999999865893,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.7428571428571429,
+      "mouthShape": {
+        "forward": 1.0004983952055935,
+        "width": 0.9984051353421008
+      }
+    },
+    {
+      "tick": 20,
+      "time": 2.3399999999850993,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.7584761904747714,
+      "mouthShape": {
+        "forward": 1.0026000909867112,
+        "width": 0.9916797088425239
+      }
+    },
+    {
+      "tick": 20,
+      "time": 2.3574999999850994,
+      "mode": "nibble",
+      "stage": "process",
+      "progress": 0.7751428571414382,
+      "mouthShape": {
+        "forward": 1.0052381126354013,
+        "width": 0.9832380395667156
+      }
+    },
+    {
+      "tick": 21,
+      "time": 2.3759999999850994,
+      "mode": "nibble",
+      "stage": "settle",
+      "progress": 0.7927619047604858,
+      "mouthShape": {
+        "forward": 1.0068795904551953,
+        "width": 0.9779853105433755
+      }
+    },
+    {
+      "tick": 21,
+      "time": 2.395499999985099,
+      "mode": "nibble",
+      "stage": "settle",
+      "progress": 0.8113333333319143,
+      "mouthShape": {
+        "forward": 1.0064365241142637,
+        "width": 0.9794031228343566
+      }
+    },
+    {
+      "tick": 21,
+      "time": 2.409799999982119,
+      "mode": "nibble",
+      "stage": "settle",
+      "progress": 0.8249523809481234,
+      "mouthShape": {
+        "forward": 1.0048668612302207,
+        "width": 0.9844260440632936
+      }
+    },
+    {
+      "tick": 21,
+      "time": 2.422799999982119,
+      "mode": "nibble",
+      "stage": "settle",
+      "progress": 0.8373333333290758,
+      "mouthShape": {
+        "forward": 1.0029904955537077,
+        "width": 0.9904304142281356
+      }
+    },
+    {
+      "tick": 21,
+      "time": 2.439999999985099,
+      "mode": "nibble",
+      "stage": "settle",
+      "progress": 0.8537142857128663,
+      "mouthShape": {
+        "forward": 1.0006674289510749,
+        "width": 0.9978642273565606
+      }
+    },
+    {
+      "tick": 21,
+      "time": 2.457499999985099,
+      "mode": "nibble",
+      "stage": "settle",
+      "progress": 0.8703809523795331,
+      "mouthShape": {
+        "forward": 1,
+        "width": 1
+      }
+    },
+    {
+      "tick": 21,
+      "time": 2.473199999988079,
+      "mode": "nibble",
+      "stage": "settle",
+      "progress": 0.8853333333347523,
+      "mouthShape": {
+        "forward": 1,
+        "width": 1
+      }
+    },
+    {
+      "tick": 21,
+      "time": 2.490199999988079,
+      "mode": "nibble",
+      "stage": "settle",
+      "progress": 0.9015238095252284,
+      "mouthShape": {
+        "forward": 1,
+        "width": 1
+      }
+    }
+  ],
+  "action": {
+    "type": "eat",
+    "actorId": 197,
+    "kind": "bramble",
+    "tissue": "crop",
+    "processingCost": 0,
+    "producerGenomeId": "flora4-4a02209f-a450ece",
+    "energyGain": 6.078613375846629,
+    "waterGain": 4.00000002497535,
+    "tick": 13
+  },
+  "receipt": {
+    "actorId": 197,
+    "tick": 13,
+    "removed": 0.16,
+    "edible": 0.12800000079921128,
+    "tissue": "crop",
+    "viableSeeds": 0.03199999920078875,
+    "destroyedSeeds": 0
+  },
+  "bodyPlan": "bp0-44bcde9d",
+  "parts": [
+    "small-torso",
+    "simple-eye",
+    "simple-eye",
+    "walking-leg",
+    "walking-leg",
+    "walking-leg",
+    "walking-leg",
+    "nibbler-mouth"
+  ],
+  "readOnly": {
+    "stateExact": true
+  },
+  "artProof": {
+    "resolution": 64,
+    "parts": 15,
+    "stateExact": true
+  },
+  "errors": [],
+  "scope": "Public New World sandbox authored mouth import, ordinary E on actual available food, actual successful receipts and running presentation. No living actor, position, food, reserves or meal injection. Other feeding styles are separate evidence.",
+  "creatorAcceptance": false
+}

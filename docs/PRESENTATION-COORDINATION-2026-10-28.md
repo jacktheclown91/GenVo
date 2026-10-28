@@ -71,3 +71,7 @@ started and awaits creator decisions. When it lands:
 
 Codex: if stream art needs anything from the simulation, note it here and
 Claude will add it to the read-only interface.
+
+Feeding expression heads-up: presentation now reads existing successful carrion actions and actor-bound foraging lastMeal records without calling state() or creating controller records. Actual mouth capabilities select graze/nibble/peck/crush/tear/filter/suction/swallow expression; native oral deformation stays local to the mouth and respects fixed-shape artwork. No extraction, nutrition, seed fate, food rules or saves change. Surface NPC carcass feeding still needs an authoritative per-actor success receipt if its controller does not publish one.
+
+Feeding composition follow-up: shared renderer will pass its existing confirmed feeding pose into behaviorVisualState, suppressing only the redundant generic action oscillation while retaining physiology and action metadata. Receipt-driven tearing head motion will add to existing attention instead of being overwritten. No simulation or controller edits.

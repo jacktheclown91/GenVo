@@ -1065,7 +1065,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const carriage=(a.airborne||a.perched||a.climb||a.burrowWork||alert||['drink','eat','hunt'].includes(action))?null:locomotionOffsets(locomotionStyle(a),{phase,moving,action,baseBob:bob,propulsion:action==='swim'?(movementProfile(a,this.sim.world).speed||0)/.66:1});
     const visualGrowth=a.player?dev.growth:Math.round(dev.growth*32)/32;ph.bodyScale*=visualGrowth;ph.limbScale*=.72+.28*visualGrowth;ph.sensoryScale*=.78+.22*visualGrowth;if(dev.maturity<.55){ph.stripe=false;ph.spot=false}
     const life=visualLifeState(this.sim,a,{frame,moving,action,development:dev,social,timeSeconds:this.encounters?.time});life.growth=visualGrowth;if(!a.player){life.breath=Math.round(life.breath*8)/8;life.settle=Math.round(life.settle*8)/8;}
-    const behavior=behaviorVisualState({bodyPlan:a.bodyPlan,id:a.id,action,phase,moving,life,social});
+    const behavior=behaviorVisualState({bodyPlan:a.bodyPlan,id:a.id,action,phase,moving,life,social,feeding});
     const workMotion=(this.workMotion||=new WorkMotionPresentation()).sample(this.sim,a,this.encounters?.time||0);applyWorkMotion(behavior,workMotion);
     const aerial=(this.aerialPresentation||=new AerialPresentation()).sample(this.sim,a,this.encounters?.time||0);applyAerialPose(behavior,aerial);
     // Body and joints yield above support; contact shadows/toes stay on the ground.
@@ -1076,7 +1076,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     applyEncounterPose(behavior,encounter);applyEncounterReaction(behavior,reaction);applyDefenseReaction(behavior,defense);applyReactionPose(behavior,fright);
     const attackTarget=a.player&&a.attackAction?.targetId!==undefined?this.sim.animals.find(t=>t.id===a.attackAction.targetId&&t.alive):null;
     const looking=life.dormant?null:attentionTarget(a,{social,encounter,feeding,committedAim,attackTarget,action});
-    behavior.headTurn=(this.headAttention||=new HeadAttentionPresentation()).sample(this.sim,a,looking,drawDir,this.encounters?.time||0);if(life.dormant)behavior.headTurn=0;
+    behavior.headTurn=(behavior.headTurn||0)+(this.headAttention||=new HeadAttentionPresentation()).sample(this.sim,a,looking,drawDir,this.encounters?.time||0);if(life.dormant)behavior.headTurn=0;
     const combatStatus=a.player?this.sim.playerCombat?.status?.(a):null,winded=a.player?!!this.sim.exertion?.isWinded?.(a):false;if(combatStatus)applyPlayerCombatPose(behavior,combatStatus,winded,a);
     const impact=this.sim.lastPlayerCombatImpact?.targetId===a.id&&this.sim.tickCount-this.sim.lastPlayerCombatImpact.tick<=2?this.sim.lastPlayerCombatImpact:null;
     const pose={reactionStage:fright?.stage||null,growth:visualGrowth,encounter,social,alert:alert&&!life.dormant,sharedAlert:!!social?.sharedAlarm,dependent:dev.stage==='newborn'||dev.stage==='juvenile',stage:dev.stage,dir:drawDir,action,life,behavior,hidden:!!a.hidden,carry:a.carryingFood||null,combatImpact:impact,partExpression:this.partExpressions.sample(this.sim,a,action)};

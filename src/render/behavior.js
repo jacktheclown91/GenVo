@@ -4,7 +4,7 @@ import {CFG} from '../sim/config.js';
 import {careVisualAction} from './care-expression.js';
 const TAU=Math.PI*2;
 
-export function behaviorVisualState({bodyPlan=null,id=0,action='idle',phase=0,moving=false,life={},social=null}={}){
+export function behaviorVisualState({bodyPlan=null,id=0,action='idle',phase=0,moving=false,life={},social=null,feeding=null}={}){
   phase=wrap8(phase);
   const wave=Math.sin(phase/8*TAU),beat=(1+Math.sin((phase+.75)/8*TAU))/2;
   const state={
@@ -16,7 +16,11 @@ export function behaviorVisualState({bodyPlan=null,id=0,action='idle',phase=0,mo
     attention:'forward',groundEmphasis:0,relaxed:false
   };
 
-  if(action==='flee'){
+  // A confirmed meal owns intake timing; physiology below still applies.
+  const fundedFeeding=!!feeding&&!social?.alarm;
+  if(fundedFeeding){
+    state.attention='ground';state.groundEmphasis=.45;
+  }else if(action==='flee'){
     Object.assign(state,{bodyLean:1.15,bodyDrop:.15,stanceSpread:.85,compress:.16,feelerForward:.56,feelerPin:.9,eyeWide:true,attention:'threat',groundEmphasis:.8});
   }else if(action==='stalk'||action==='hunt'){
     Object.assign(state,{bodyLean:.65,bodyDrop:.8,stanceSpread:.5,compress:.1,feelerForward:1.32,eyeNarrow:action==='stalk',mouthPulse:action==='hunt'?beat:0,attention:'target',groundEmphasis:.55});
@@ -99,7 +103,7 @@ export function behaviorVisualState({bodyPlan=null,id=0,action='idle',phase=0,mo
   if(parts.has('spring-leg')){state.stanceSpread*=.82;if(action==='flee')state.bodyRise+=.28}
   if(parts.has('digging-forelimb')&&(action==='dig'||action==='forage')){state.headDrop+=.32;state.groundEmphasis=Math.max(state.groundEmphasis,.85)}
   if(parts.has('webbed-leg')&&action==='swim'){state.bodyDrop+=.18+wave*.16;state.stanceSpread+=.18}
-  if(parts.has('sucker-mouth')&&(action==='forage'||action==='eat'))state.headDrop+=.25+beat*.12;
+  if(!fundedFeeding&&parts.has('sucker-mouth')&&(action==='forage'||action==='eat'))state.headDrop+=.25+beat*.12;
   if(parts.has('hunter-eye')&&(action==='stalk'||action==='hunt')){state.feelerSweep=0;state.bodyDrop+=action==='stalk'?.25:0}
 
   return state;

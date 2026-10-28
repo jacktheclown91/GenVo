@@ -43,3 +43,5 @@ checks while developing; leave comprehensive integration to Claude. Shared
 renderer/UI heads-ups are in `PRESENTATION-COORDINATION-2026-10-28.md`.
 Do not create biological events for audio/animation, alter movement to improve
 appearance, remove original human art, or publish an itch release automatically.
+
+October 28 continuation: anatomy-specific receipt-driven feeding is now implemented; see `FEEDING-ANATOMY-PRESENTATION-2026-10-28.md` for runtime changes, native observations, measured composition cost and open live-event coverage. Preserve the unfinished broader A-I initiative in `design/PRESENTATION-EVOLUTION-2026-10-28.md`; this bounded pass does not replace that scope. Next: live carnivore/filter/suction observation where real events permit, then remaining action expression and coherent modular-art batches.
