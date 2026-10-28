@@ -1,0 +1,24 @@
+diff --git a/styles.css b/styles.css
+index f8a8b27d..220107fe 100644
+--- a/styles.css
++++ b/styles.css
+@@ -614,3 +614,19 @@ button.tutorial-next::after{content:'';position:absolute;right:5px;top:5px;width
+ #tutorial[data-mate-step] .objective-step{color:#ffe9ad}
+ @keyframes tutorial-next-glow{50%{box-shadow:inset 0 0 0 3px #ffe6a0,0 0 22px #f5cf6988}}
+ @media(prefers-reduced-motion:reduce){button.tutorial-next{animation:none}}
++
++/* Compact reference windows leave the creature and nearby action visible.
++   Expanded information and phone sheets retain their existing layouts. */
++@media (min-width:760px) and (max-width:1120px){
++  :is(#help,#populations,#territory):not(.knowledge-expanded){
++    min-width:0;
++    width:calc(50vw - 72px);
++    max-width:calc(50vw - 72px);
++  }
++  :is(#populations,#territory):not(.knowledge-expanded) > .panel-head > small{
++    display:none;
++  }
++  #populations:not(.knowledge-expanded) .panel-summary > div:first-child{
++    grid-column:1 / -1;
++  }
++}

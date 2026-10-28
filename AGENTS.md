@@ -6,6 +6,8 @@ simulation, gameplay, persistence, performance, integration and comprehensive
 testing. This supersedes the temporary October 26 engineering-lead arrangement
 retained below as provenance. Coordinate shared files before structural edits;
 presentation reads real state and must not become a biological authority.
+The current Codex presentation handoff is
+`docs/PRESENTATION-CONTINUATION-2026-10-28.md`.
 
 Read README.md, design/CURRENT-DESIGN.md, docs/CURRENT-IMPLEMENTATION.md and design/governance/implementation-authorities.json before changing mechanisms. Inspect git status, branch, log and remote divergence first: other branches may contain newer work. Preserve concurrent work and explicit save migrations.
 
