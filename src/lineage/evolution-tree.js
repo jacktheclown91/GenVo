@@ -1,4 +1,5 @@
-import {autonomousEvolutionEnabled,regionalEvolutionEnabled} from './autonomous-evolution.js';
+import {autonomousEvolutionEnabled,regionalEvolutionEnabled,crossRegionalReferenceEnabled} from './autonomous-evolution.js';
+import {foreignPopulationKey,foreignReference} from './regional-reference.js';
 import {mergeEvolutionaryTreeHistory,evolutionaryHistoryForBodies} from './evolution-tree-history.js';
 import {SPECIES} from '../organisms/species.js';
 import {recordedPlanetaryTaxonCensus} from './evolution-tree-census.js';
@@ -47,23 +48,35 @@ export class EvolutionaryTreeController{
         observedDay:this.sim.day};
     }
   }
+  // Under /4 a recorded key signed for another region resolves to that region's
+  // actual population; when its evidence is unavailable the reference is unknown
+  // rather than a local stand-in. Keys of this region behave exactly as before.
   referenceForAutonomousPopulation(pop,cohort=[]){
-    const populations=this.sim.populationMemory?.populations?.()||[];
+    const populations=this.sim.populationMemory?.populations?.()||[],cross=crossRegionalReferenceEnabled(this.sim);
+    const UNKNOWN=Symbol('unknown'),resolve=key=>{
+      const local=populations.find(p=>p.key!==pop.key&&p.key===key);if(local)return local;
+      return cross&&key!==pop.key&&foreignPopulationKey(this.sim,key)?foreignReference(this.sim,key)||UNKNOWN:null;
+    };
     const state=this.sim.speciation?.stateFor?.(pop.key);
     const recognized=state?.branch&&this.nodes.get(state.branch.id);
     let ancestor=recognized?.parentId?this.nodes.get(recognized.parentId):this.parentForPopulation(pop,cohort);
     const seen=new Set();
     while(ancestor&&!seen.has(ancestor.id)){
       seen.add(ancestor.id);
-      const reference=populations.find(p=>p.key!==pop.key&&p.key===ancestor.originPopulationKey);
-      if(reference)return reference;
+      const reference=resolve(ancestor.originPopulationKey);
+      if(reference)return reference===UNKNOWN?null:reference;
       ancestor=ancestor.parentId?this.nodes.get(ancestor.parentId):null;
     }
-    const source=populations.find(p=>p.key!==pop.key&&p.key===pop.sourcePopulationKey);
-    if(source)return source;
+    const source=resolve(pop.sourcePopulationKey);
+    if(source)return source===UNKNOWN?null:source;
     const species=pop.species||cohort[0]?.species||'genvo';
     const related=populations.filter(p=>p.key!==pop.key&&(p.species||'genvo')===species);
     const recorded=related.filter(p=>pop.parentPopulationKeys?.includes(p.key));
+    if(cross){
+      const foreign=(pop.parentPopulationKeys||[]).filter(key=>key!==pop.key&&foreignPopulationKey(this.sim,key));
+      recorded.push(...foreign.map(key=>foreignReference(this.sim,key)).filter(p=>p&&(p.species||'genvo')===species));
+      if(!recorded.length&&foreign.length)return null;
+    }
     return(recorded.length?recorded:related).sort((a,b)=>
       Math.hypot(a.x-pop.x,a.y-pop.y)-Math.hypot(b.x-pop.x,b.y-pop.y)||a.key.localeCompare(b.key))[0]||null;
   }
