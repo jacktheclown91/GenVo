@@ -1,3 +1,4 @@
+import {swimmingLimb} from './swimming-limbs.js';
 import {supportPosture} from './support-load.js';
 import {coordinatedGaitOffsets} from './gait-coordination.js';
 import {articulatedKnee} from './limb-articulation.js';
@@ -78,6 +79,10 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
     if(slotList){const rx=bodyW/2,ry=bodyH/2,edge=1/Math.sqrt((dx/rx)**2+(dy/ry)**2),extra=Math.max(0,edge-Math.min(rx,ry));if(extra)for(const pt of [root,knee,foot]){pt.x+=dx*extra;pt.y+=dy*extra}const need=edge+3*Math.max(.8,limbScale),along=moving?footReach+extra:foot.x*dx+foot.y*dy;if(along<need&&action!=='jump'){const shift=need-along;foot.x+=dx*shift;foot.y+=dy*shift;knee.x+=dx*shift*.6;knee.y+=dy*shift*.6}}
     if(slotList)knee=articulatedKnee({root,foot,forward:{x:fx,y:fy},perp,side,liftAmount});
     knee.y-=.9+liftAmount*.6;if(liftAmount>0){foot.x+=(knee.x-foot.x)*liftAmount*.4;foot.y+=(knee.y-foot.y)*liftAmount*.4}else foot.y+=.35;
+    if(slotList&&action==='swim'){
+      const stroke=swimmingLimb({phase:frame,moving,partId:slotList[n].partId,front,side,root,radial:{x:dx,y:dy},forward:{x:fx,y:fy},perp,limbScale,reachScale});
+      legs.push({index:k,slot,root,...stroke,front,side});continue;
+    }
     legs.push(slotList?{index:k,slot,root,knee,foot,lift,liftAmount,...(striking&&attackLift>0?{aboveBody:true}:{}),planted:action==='jump'||action==='climb'?false:moving?step.planted&&(!striking||attackLift===0):(!striking||attackLift===0)&&liftAmount<.34,front,side}:{index:k,root,knee,foot,lift,liftAmount,planted:action==='jump'||action==='climb'?false:liftAmount<.34,front,side});
   }
   if(loadTransfer){

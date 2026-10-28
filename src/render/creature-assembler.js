@@ -42,7 +42,7 @@ export function layoutFromPlan(plan,{explicit=false}={}){
   // Old plans keep their default head without rewriting graph IDs or saves.
   out.implicitHead=!out.head&&plan.headMode!=='torso'&&Object.keys(out.faceNodes).length>0;
   if(explicit){
-    out.legSlots=Object.keys(out.slotLegs).map(Number).sort((a,b)=>a-b).map(slot=>Object.freeze({slot,reach:LEG_REACH[out.slotLegs[slot]]||1,gait:LEG_GAIT[out.slotLegs[slot]]||LEG_GAIT['walking-leg']}));
+    out.legSlots=Object.keys(out.slotLegs).map(Number).sort((a,b)=>a-b).map(slot=>Object.freeze({slot,partId:out.slotLegs[slot],reach:LEG_REACH[out.slotLegs[slot]]||1,gait:LEG_GAIT[out.slotLegs[slot]]||LEG_GAIT['walking-leg']}));
     out.shape=BODY_SHAPES[out.torso]||BODY_SHAPES['soft-torso'];
   }
   return Object.freeze(out);

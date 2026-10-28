@@ -40,8 +40,16 @@ for(const legs of [null,[2,6,10,14].map(slot=>({slot,reach:1,gait:{step:1,stride
   const options={legSlots:legs,dir,frame,action,moving:false};
   assert.deepEqual(genvoVisualPose(options),beforePose(options),'static/action poses retain exact historical geometry');
  }
- for(const options of [{legSlots:legs,dir,frame,moving:true,action:'swim'},
-   {legSlots:legs,dir,frame,moving:true,behavior:{displayPhase:frame}}])assert.deepEqual(genvoVisualPose(options),beforePose(options),'swim and explicit display retain exact geometry');
+ const display={legSlots:legs,dir,frame,moving:true,behavior:{displayPhase:frame}};
+ assert.deepEqual(genvoVisualPose(display),beforePose(display),'explicit display retains exact geometry');
+ const swim={legSlots:legs,dir,frame,moving:true,action:'swim'},now=genvoVisualPose(swim),prior=beforePose(swim);
+ if(legs===null)assert.deepEqual(now,prior,'legacy swimming stays exact');
+ else{
+  // Swimming geometry is intentionally replaced by water strokes. Retain the
+  // frozen reference for every other field; do not regenerate that fixture.
+  assert.deepEqual({...now,legs:prior.legs},prior,'water strokes change only mounted limbs');
+  assert.ok(now.legs.every(l=>!l.planted&&Number.isFinite(l.swimFeather)),'water strokes never claim a ground support');
+ }
  if(legs===null){const o={dir,frame,moving:true};assert.deepEqual(genvoVisualPose(o),beforePose(o),'historical legacy radial renderer unchanged');}
 }
-console.log('Frozen-reference parity PASS: static, action, display, swimming and legacy poses remain exact.');
+console.log('Frozen-reference parity PASS: static, action, display and legacy poses remain exact; mounted swimming changes only limbs.');

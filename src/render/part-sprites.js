@@ -142,7 +142,7 @@ const DRAW={
   'reinforced-torso'(c,k){for(let i=0;i<3;i++){const rx=k.bx-k.fx*(i*1.6-.6)-1,ry=k.by-k.fy*(i*1.6-.6)-Math.max(2,k.bodyH*.32);pixel(c,snap(rx),snap(ry),3,1,k.s,'#2b3f66');pixel(c,snap(rx),snap(ry-1),2,1,k.s,k.p.light)}},
   // Paddle tail: a broad blade behind the body that sweeps with the gait frame.
   // Paddle tail: a dark-outlined stalk ending in a wide teal blade with pale edges, sweeping with the gait.
-  'paddle-tail'(c,k){const sweep=((k.frameInt%4)-1.5)*.45,rx=k.bx-k.fx*(k.bodyW*.46),ry=k.by-k.fy*(k.bodyH*.46)+1,tx=rx-k.fx*3.6+k.perp.x*sweep,ty=ry-k.fy*3.6+k.perp.y*sweep;pixelLine(c,rx,ry,tx,ty,k.s,'#2b3f66');for(let w=-2;w<=2;w++){const bx=tx-k.fx*.8+k.perp.x*w,by=ty-k.fy*.8+k.perp.y*w;pixel(c,snap(bx),snap(by),1,1,k.s,Math.abs(w)===2?'#cfeef0':'#3f9aa6');pixel(c,snap(bx-k.fx),snap(by-k.fy),1,1,k.s,Math.abs(w)===2?'#cfeef0':'#2f7f8c')}}
+  'paddle-tail'(c,k){const sweep=k.authoredState==='swim'?(Number(k.behavior?.tailSweep)||0):((k.frameInt%4)-1.5)*.45,rx=k.bx-k.fx*(k.bodyW*.46),ry=k.by-k.fy*(k.bodyH*.46)+1,tx=rx-k.fx*3.6+k.perp.x*sweep,ty=ry-k.fy*3.6+k.perp.y*sweep;pixelLine(c,rx,ry,tx,ty,k.s,'#2b3f66');for(let w=-2;w<=2;w++){const bx=tx-k.fx*.8+k.perp.x*w,by=ty-k.fy*.8+k.perp.y*w;pixel(c,snap(bx),snap(by),1,1,k.s,Math.abs(w)===2?'#cfeef0':'#3f9aa6');pixel(c,snap(bx-k.fx),snap(by-k.fy),1,1,k.s,Math.abs(w)===2?'#cfeef0':'#2f7f8c')}}
 };
 // Wave 1 components. Shapes read at gameplay zoom: each body class has its own outline cue.
 const along=(k,t)=>({x:k.bx+k.fx*t,y:k.by+k.fy*t});
@@ -203,7 +203,7 @@ Object.assign(DRAW,{
 
 // Wave 2 components (tails, backs, flanks, spurs), drawn on the 32-pixel grid.
 const tailRoot=k=>k.L?.tail?{x:k.L.tail.x,y:k.L.tail.y+1}:({x:k.bx-k.fx*(k.bodyW*.46),y:k.by-k.fy*(k.bodyH*.46)+1});
-const tailSweep=k=>((k.frameInt%4)-1.5)*.4+(Number(k.behavior?.tailSweep)||0);
+const tailSweep=k=>k.authoredState==='swim'?(Number(k.behavior?.tailSweep)||0):((k.frameInt%4)-1.5)*.4+(Number(k.behavior?.tailSweep)||0);
 // A cowed retreat tucks the tail in toward the body; the root stays anatomically fixed.
 const tailTuck=k=>Math.max(0,Math.min(1,Number(k.behavior?.tailTuck)||0));
 const tailEnd=(k,len)=>{const r=tailRoot(k),w=tailSweep(k);len*=1-.5*tailTuck(k);return{r,x:r.x-k.fx*len+k.perp.x*w,y:r.y-k.fy*len+k.perp.y*w}};
@@ -316,8 +316,8 @@ export function drawLimb(c,partId,k){
     root:{x:k.root.x*k.s,y:k.root.y*k.s},knee:{x:k.knee.x*k.s,y:k.knee.y*k.s},
     foot:{x:k.foot.x*k.s,y:k.foot.y*k.s},scale:k.s,
     facing:k.authoredFacing??0,state:k.authoredState||'idle',timeMs:k.authoredTimeMs??0,pigment:k.nativePigment,
-    // Contact paint follows each individual foot, rather than blinking in unison.
-    frameIndex:k.leg?.planted==null?(k.leg?.liftAmount>=.34?1:0):(k.leg.planted?0:1)
+    // Ground contact and water feathering select each mounted foot independently.
+    frameIndex:k.leg?.swimFeather!=null?(k.leg.swimFeather>.25?1:0):k.leg?.planted==null?(k.leg?.liftAmount>=.34?1:0):(k.leg.planted?0:1)
   }))return true;
   (LIMB_ART[partId]||standardLimb)(c,k);return false
 }

@@ -29,6 +29,7 @@ export function behaviorVisualState({bodyPlan=null,id=0,action='idle',phase=0,mo
   }else if(action==='fly'){
     Object.assign(state,{flightSpread:.8+.2*beat,bodyLean:.2,stanceSpread:.1,groundEmphasis:0});
   }else if(action==='swim'){
+    state.tailSweep=moving?Math.sin(phase/8*TAU)*1.45:0;
     Object.assign(state,{bodyDrop:.42,stanceSpread:1.18,compress:.18,feelerForward:.92,feelerPin:.18,eyeWide:false,attention:'forward',groundEmphasis:0});
   }else if(action==='seek-water'){
     Object.assign(state,{bodyLean:.3,bodyDrop:.55,headDrop:.85,feelerForward:1.36,feelerSweep:.35,attention:'ground'});
