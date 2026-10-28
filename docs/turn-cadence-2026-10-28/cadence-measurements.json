@@ -1,0 +1,29 @@
+{
+  "scope": "Controlled render timestamps; same 70ms facing cadence, no biological clock changes.",
+  "rows": [
+    {
+      "fps": 24,
+      "beforeArrivalMs": 333.3333333333333,
+      "afterArrivalMs": 291.6666666666667,
+      "nominalFourBeatMs": 280
+    },
+    {
+      "fps": 30,
+      "beforeArrivalMs": 400,
+      "afterArrivalMs": 300,
+      "nominalFourBeatMs": 280
+    },
+    {
+      "fps": 60,
+      "beforeArrivalMs": 333.3333333333333,
+      "afterArrivalMs": 283.3333333333333,
+      "nominalFourBeatMs": 280
+    },
+    {
+      "fps": 120,
+      "beforeArrivalMs": 300,
+      "afterArrivalMs": 283.3333333333333,
+      "nominalFourBeatMs": 280
+    }
+  ]
+}

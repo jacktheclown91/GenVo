@@ -1109,9 +1109,23 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     if(a.infected){pixel(c,-6,-7,1,2,scale,'rgba(219,121,177,.78)');pixel(c,5,-7,1,2,scale,'rgba(219,121,177,.62)')}c.restore();
   }
   easedDir(id,target){
-    const m=this.turnState||(this.turnState=new Map()),now=this.renderNow,st=m.get(id);if(!st){m.set(id,{d:target,t:now});return target}
-    if(st.d!==target&&now-st.t>=70){const diff=((target-st.d+12)%8)-4;st.d=(st.d+(diff>0?1:diff<0?-1:1)+8)%8;st.t=now}else if(st.d===target)st.t=Math.max(st.t,now-70);
-    if(m.size>1200)for(const k of m.keys()){m.delete(k);if(m.size<=900)break}return st.d;
+    const states=this.turnState||(this.turnState=new Map()),now=this.renderNow;
+    const state=states.get(id);
+    if(!state){states.set(id,{d:target,t:now});return target}
+    if(state.d!==target){
+      const difference=((target-state.d+12)%8)-4;
+      const steps=Math.min(Math.abs(difference),Math.floor(Math.max(0,now-state.t)/70));
+      if(steps){
+        state.d=(state.d+Math.sign(difference)*steps+8)%8;
+        // Retain the partial beat; assigning now here makes every turn slower
+        // at lower/irregular frame rates. Only the drawn facing is affected.
+        state.t+=steps*70;
+      }
+    }else state.t=Math.max(state.t,now-70);
+    if(states.size>1200)for(const key of states.keys()){
+      states.delete(key);if(states.size<=900)break;
+    }
+    return state.d;
   }
   actionPose(a,moving=false){return visualActionFromIntent(this.sim,a,{moving})}
   drawPredatorChargeTell(a,tile,px,py){
