@@ -1,3 +1,4 @@
+import {supportPosture} from './support-load.js';
 import {coordinatedGaitOffsets} from './gait-coordination.js';
 import {articulatedKnee} from './limb-articulation.js';
 // GenVo8-specific presentation geometry. Read-only: no simulation state is mutated and no RNG is consumed.
@@ -33,6 +34,8 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
   };
   const stretch=flee?1.12:hunt?1.07:(moving&&Math.abs(moveSquash)>0?1.03:1);
   const legs=[];
+  const loadTransfer=Array.isArray(legSlots)&&moving&&!Number.isFinite(b.displayPhase)&&!b.noLoadTransfer&&['idle','move','flee','forage','seek-water','prowl','rest'].includes(action);
+  let supportWeight=0,supportSide=0,supportFore=0,sturdyLegs=0;
   // Designed bodies (wave 1) pass their own leg slots: angles in sixteenths of a turn relative to
   // the facing, with a reach factor per leg type. Without them the eight radial legs are unchanged.
   const slotList=Array.isArray(legSlots)?legSlots:null,count=slotList?slotList.length:8,travel=slotList&&moving?gaitTravelFor(limbScale,slotList):null;
@@ -48,6 +51,11 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
     const stride=(moving?step.stride:(Number(b.displayStride)||0)?step.stride*b.displayStride:0);
     const settling=!moving&&!b.guardPlanted&&count>1&&n===((life.settleIndex||0)%count)?(life.settle||0)*.8:0;
     const striking=slotList&&b.attackLimbSlots?.includes(slot),attackLift=striking?(Number(b.attackLimbLift)||0):0;
+    if(loadTransfer){
+      const load=striking&&attackLift>0?0:step.supportLoad;
+      supportWeight+=load;supportSide+=side*load;supportFore+=front*load;
+      if((gait?.step??1)<.85)sturdyLegs++;
+    }
     const digLift=action==='dig'&&front>.2?Math.max(0,Math.sin((frame+(k&1)*4)*Math.PI/4))*2:0;
     const lift=(moving?step.lift*(gait?gait.lift:1):(Number(b.displayLift)||0)*step.lift+(front>.25?(Number(b.forelegLift)||0):0)+settling)+attackLift+digLift,liftAmount=Math.max(0,Math.min(1,lift/2));
     let reach=(6.7+(Math.abs(side)>.45?.75:.35))*limbScale*(dependent?.9:1)*(elder?.91:1);
@@ -71,6 +79,13 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
     if(slotList)knee=articulatedKnee({root,foot,forward:{x:fx,y:fy},perp,side,liftAmount});
     knee.y-=.9+liftAmount*.6;if(liftAmount>0){foot.x+=(knee.x-foot.x)*liftAmount*.4;foot.y+=(knee.y-foot.y)*liftAmount*.4}else foot.y+=.35;
     legs.push(slotList?{index:k,slot,root,knee,foot,lift,liftAmount,...(striking&&attackLift>0?{aboveBody:true}:{}),planted:action==='jump'||action==='climb'?false:moving?step.planted&&(!striking||attackLift===0):(!striking||attackLift===0)&&liftAmount<.34,front,side}:{index:k,root,knee,foot,lift,liftAmount,planted:action==='jump'||action==='climb'?false:liftAmount<.34,front,side});
+  }
+  if(loadTransfer){
+    const posture=supportPosture({weight:supportWeight,side:supportSide,fore:supportFore,limbs:count,sturdy:sturdyLegs/count,bodyScale});
+    // Only the torso and its hips/neck follow load. Contact coordinates are not
+    // translated; drawGenvoBody already lets hips ride above planted feet.
+    bodyOffset.x+=perp.x*posture.side+fx*posture.fore;
+    bodyOffset.y+=perp.y*posture.side+fy*posture.fore+posture.sink;
   }
   const sensory=Math.max(.8,Number(sensoryScale)||1);
   const eyes=Math.max(.78,Number(eyeScale)||1),feelers=Math.max(.78,Number(feelerScale)||1);
@@ -114,8 +129,9 @@ export const GAIT_REVIEW={strideScale:1};
 export function gaitTravelFor(limbScale=1,legSlots=null){return Math.max(2.6,4.6*limbScale)*strideLengthFor(legSlots)*GAIT_REVIEW.strideScale}
 export function organicFootfall(phase,travel=null,recovery=1){
  const p=((Number(phase)+7)%8+8)%8,span=Number.isFinite(travel)?travel*5/8:2.9;
- if(p<3){const t=p/3,e=t*t*(3-2*t),style=recovery===1?0:(recovery-1)*span*.3*Math.sin(Math.PI*t)*Math.sin(Math.PI*2*t);return{stride:-span/2+span*e+style,lift:2*Math.sin(Math.PI*t),planted:false}}
- return{stride:span/2-span*(p-3)/5,lift:0,planted:true};
+ if(p<3){const t=p/3,e=t*t*(3-2*t),style=recovery===1?0:(recovery-1)*span*.3*Math.sin(Math.PI*t)*Math.sin(Math.PI*2*t);return{stride:-span/2+span*e+style,lift:2*Math.sin(Math.PI*t),planted:false,supportLoad:0}}
+ const supportProgress=(p-3)/5,supportLoad=Math.sin(Math.PI*supportProgress)**2;
+ return{stride:span/2-span*(p-3)/5,lift:0,planted:true,supportLoad};
 }
 function cycle(values,phase){phase=((Number(phase)%8)+8)%8;const a=Math.floor(phase),b=(a+1)&7,t=phase-a;return values[a]+(values[b]-values[a])*t}
 
