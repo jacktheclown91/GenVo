@@ -1,0 +1,143 @@
+{
+  "scope": "Four actual visible-Chromium native-loop observations from the same real mature input. CPU-profiler/timing overhead applies. Original-return and candidate use matching timer instrumentation; only snow module response changes. Native frame pacing and logical ticks can vary; not an end-state equality, GPU completion, device-wide or hosted-network claim.",
+  "runs": [
+    {
+      "label": "original-diagnostic",
+      "rawReceipt": "reports\\mature-native-render-stage-attribution-04c9a415-20261028\\receipt.json",
+      "rawReceiptSha256": "212039709ee31ecf1daf100fe11acf9e162941526115f60509b53bad0a9366c7",
+      "inputSha256": "c95bb9f5c9577b377b108444735cb3f9e8ef8f10479b96112df9f45ef279fad1",
+      "initial": {
+        "tick": 76800,
+        "day": 321,
+        "rng": 796587876,
+        "living": 147,
+        "player": 109,
+        "rules": "autonomous-evolution/1",
+        "autonomy": true
+      },
+      "browserMode": "visible Chromium",
+      "elapsedMs": 61179,
+      "tickAdvance": 444,
+      "frameMs": {
+        "p50": 26.699999999999818,
+        "p95": 53.400000000001455,
+        "p99": 213.40000000000146,
+        "max": 613.6000000000004
+      },
+      "snowPaintMs": 13924.400000006659,
+      "maxSnowPaintMs": 208.70000000018626,
+      "maxRenderMs": 328.5999999998603,
+      "longTasks": 120,
+      "longTasksOver250ms": 2,
+      "effectiveRuntimeSourceSha256": null,
+      "referenceSnowRoute": false,
+      "errors": []
+    },
+    {
+      "label": "candidate",
+      "rawReceipt": "reports\\mature-native-snow-window-candidate-20261028\\receipt.json",
+      "rawReceiptSha256": "2b503e21ea6710757d6ffa4c1ad76328bdb4e8c856b57a30c43bf79f243cd322",
+      "inputSha256": "c95bb9f5c9577b377b108444735cb3f9e8ef8f10479b96112df9f45ef279fad1",
+      "initial": {
+        "tick": 76800,
+        "day": 321,
+        "rng": 796587876,
+        "living": 147,
+        "player": 109,
+        "rules": "autonomous-evolution/1",
+        "autonomy": true
+      },
+      "browserMode": "visible Chromium",
+      "elapsedMs": 61236.700000000186,
+      "tickAdvance": 477,
+      "frameMs": {
+        "p50": 26.69999999999709,
+        "p95": 53.30000000000291,
+        "p99": 66.70000000000073,
+        "max": 613.5
+      },
+      "snowPaintMs": 8572.600000000559,
+      "maxSnowPaintMs": 23,
+      "maxRenderMs": 343.10000000009313,
+      "longTasks": 89,
+      "longTasksOver250ms": 2,
+      "effectiveRuntimeSourceSha256": {
+        "src/render/renderer.js": "4f5d95b65498e992ea8ac8013137b379349210d64fe100d8bbbda328f03556d1",
+        "src/render/snow-ground-art.js": "3cf68f84b9a67d9c2fb36119c7956344ab3de9e1a82c084f3caa49b3f65590ac"
+      },
+      "referenceSnowRoute": false,
+      "errors": []
+    },
+    {
+      "label": "original-return",
+      "rawReceipt": "reports\\mature-native-snow-reference-return-20261028\\receipt.json",
+      "rawReceiptSha256": "58bc14fdea1f1103d1a6a925b2cee7ca82fc812bbd3901dc527a19de074c3e38",
+      "inputSha256": "c95bb9f5c9577b377b108444735cb3f9e8ef8f10479b96112df9f45ef279fad1",
+      "initial": {
+        "tick": 76800,
+        "day": 321,
+        "rng": 796587876,
+        "living": 147,
+        "player": 109,
+        "rules": "autonomous-evolution/1",
+        "autonomy": true
+      },
+      "browserMode": "visible Chromium",
+      "elapsedMs": 60969.299999999814,
+      "tickAdvance": 439,
+      "frameMs": {
+        "p50": 26.69999999999709,
+        "p95": 53.400000000001455,
+        "p99": 213.40000000000146,
+        "max": 520.2000000000007
+      },
+      "snowPaintMs": 14713.000000004657,
+      "maxSnowPaintMs": 480.90000000037253,
+      "maxRenderMs": 507.8000000002794,
+      "longTasks": 109,
+      "longTasksOver250ms": 3,
+      "effectiveRuntimeSourceSha256": {
+        "src/render/renderer.js": "4f5d95b65498e992ea8ac8013137b379349210d64fe100d8bbbda328f03556d1",
+        "src/render/snow-ground-art.js": "a8927ff46e8bad5e8f6f7be8cf2a8de05e5380adc7aaef6de25cdd441eeb2971"
+      },
+      "referenceSnowRoute": true,
+      "errors": []
+    },
+    {
+      "label": "candidate-repeat",
+      "rawReceipt": "reports\\mature-native-snow-window-repeat-20261028\\receipt.json",
+      "rawReceiptSha256": "f9e0f690aa534e4104fe2a60236bd7cffa98e02b0fa1922449d9cd4757d38115",
+      "inputSha256": "c95bb9f5c9577b377b108444735cb3f9e8ef8f10479b96112df9f45ef279fad1",
+      "initial": {
+        "tick": 76800,
+        "day": 321,
+        "rng": 796587876,
+        "living": 147,
+        "player": 109,
+        "rules": "autonomous-evolution/1",
+        "autonomy": true
+      },
+      "browserMode": "visible Chromium",
+      "elapsedMs": 61140.39999999991,
+      "tickAdvance": 476,
+      "frameMs": {
+        "p50": 26.69999999999709,
+        "p95": 53.29999999999927,
+        "p99": 66.70000000000073,
+        "max": 600.3000000000002
+      },
+      "snowPaintMs": 8484.799999996088,
+      "maxSnowPaintMs": 22.799999999813735,
+      "maxRenderMs": 291.10000000009313,
+      "longTasks": 71,
+      "longTasksOver250ms": 2,
+      "effectiveRuntimeSourceSha256": {
+        "src/render/renderer.js": "4f5d95b65498e992ea8ac8013137b379349210d64fe100d8bbbda328f03556d1",
+        "src/render/snow-ground-art.js": "3cf68f84b9a67d9c2fb36119c7956344ab3de9e1a82c084f3caa49b3f65590ac"
+      },
+      "referenceSnowRoute": false,
+      "errors": []
+    }
+  ],
+  "remainingLimits": "Other frame/render spikes remain. A bounded cache-correctness improvement and repeated snow-paint stall correction, not complete performance or ecological-goal acceptance."
+}

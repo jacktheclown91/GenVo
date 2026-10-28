@@ -1,0 +1,20 @@
+{
+  "scope": "Current recap of retained negative tooling diagnostics, not rewritten historical receipts.",
+  "failures": [
+    {
+      "path": "reports\\snow-window-pixel-review-20261028\\failure.txt",
+      "sha256": "9381d6df2f14b49e6b9b1ef18e01b7d37aef0930d26ffa6d905939d7b2680d14",
+      "reason": "Pause-menu harness admission failed; no pixel or performance acceptance."
+    },
+    {
+      "path": "reports\\snow-window-pixel-review-20261028-2\\failure.txt",
+      "sha256": "badd44610f9902fc1684e2f3f089f1dbec5844a69259e131136bc78b8d9b526e",
+      "reason": "Unwarranted improvement assertion on a rightward wide scan; pixel checks were not relaxed in the corrected proof."
+    },
+    {
+      "path": "reports\\snow-window-pixel-review-20261028-3\\failure.txt",
+      "sha256": "05e336e6fe7640e6c211c2f742e149be31a0de9dbd44e5bebc2662e1607c3e88",
+      "reason": "The dense rightward scan was already efficient in the original LRU. Final proof requires improvement on the reverse leftward return."
+    }
+  ]
+}

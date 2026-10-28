@@ -14,7 +14,35 @@ const release=entry=>{if(entry?.canvas)entry.canvas.width=entry.canvas.height=0}
 function store(world){let s=worlds.get(world);if(!s){s={entries:new Map(),capacity:1024,builds:0};worlds.set(world,s)}return s}
 // The native texture working set is bounded by the actual visible local window.
 // Keep one active World's artwork, without retaining that World through a strong owner.
-export function beginSnowWindow(world,capacity){const previous=activeOwner?.deref();if(previous!==world){if(previous){const old=worlds.get(previous);if(old)for(const entry of old.entries.values())release(entry);worlds.delete(previous)}activeOwner=new WeakRef(world)}const s=store(world);s.capacity=Math.max(0,Math.min(world.n*world.n,Math.ceil(Number.isFinite(capacity)?capacity:0)));while(s.entries.size>s.capacity){const key=s.entries.keys().next().value;release(s.entries.get(key));s.entries.delete(key)}}
+export function beginSnowWindow(world,capacity,window=null){
+  if(window&&(!['x0','y0','x1','y1'].every(key=>Number.isInteger(window[key]))||
+     window.x0<0||window.y0<0||window.x1>world.n||window.y1>world.n||
+     window.x1<window.x0||window.y1<window.y0))throw Error('Invalid snow artwork window.');
+  const previous=activeOwner?.deref();
+  if(previous!==world){
+    if(previous){
+      const old=worlds.get(previous);
+      if(old)for(const entry of old.entries.values())release(entry);
+      worlds.delete(previous);
+    }
+    activeOwner=new WeakRef(world);
+  }
+  const state=store(world);
+  // Prune before adding the new strip. With a window-sized LRU, inserting a
+  // newly visible cell can otherwise evict the next still-visible cell, then
+  // cascade through the entire row-major scan on every camera movement.
+  if(window)for(const [key,entry] of state.entries){
+    const x=key%world.n,y=Math.floor(key/world.n);
+    if(x<window.x0||x>=window.x1||y<window.y0||y>=window.y1){
+      release(entry);state.entries.delete(key);
+    }
+  }
+  state.capacity=Math.max(0,Math.min(world.n*world.n,Math.ceil(Number.isFinite(capacity)?capacity:0)));
+  while(state.entries.size>state.capacity){
+    const key=state.entries.keys().next().value;
+    release(state.entries.get(key));state.entries.delete(key);
+  }
+}
 // Read-only diagnostics for developer review tools; no World or texture references escape.
 export function snowGroundArtStats(world){const s=worlds.get(world);return s?{entries:s.entries.size,capacity:s.capacity,builds:s.builds}:{entries:0,capacity:0,builds:0}}
 function cached(world,x,y,cover,waterMask){const state=store(world),entries=state.entries,key=y*world.n+x;let entry=entries.get(key);if(entry&&entry.cover===cover&&entry.waterMask===waterMask){entries.delete(key);entries.set(key,entry);return entry}state.builds++;

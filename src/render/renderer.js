@@ -405,10 +405,12 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
   }
   drawSnowWindow(tile,startX,startY,cols,rows){
     const w=this.sim.world,depth=w.soilWater?.snowpack;
-    beginSnowWindow(w,depth?Math.max(0,Math.min(w.n,startX+cols)-Math.max(0,startX))*Math.max(0,Math.min(w.n,startY+rows)-Math.max(0,startY)):0);
+    const x0=Math.max(0,Math.min(w.n,startX)),y0=Math.max(0,Math.min(w.n,startY));
+    const x1=Math.max(x0,Math.min(w.n,startX+cols)),y1=Math.max(y0,Math.min(w.n,startY+rows));
+    beginSnowWindow(w,depth?(x1-x0)*(y1-y0):0,{x0,y0,x1,y1});
     if(!depth)return;const c=this.ctx;let drawn=0;
-    for(let y=Math.max(0,startY);y<Math.min(w.n,startY+rows);y++)
-      for(let x=Math.max(0,startX);x<Math.min(w.n,startX+cols);x++){
+    for(let y=y0;y<y1;y++)
+      for(let x=x0;x<x1;x++){
         const i=y*w.n+x;if(w.water[i]||depth[i]<.012)continue;
         const px=Math.round((x-this.camera.x)*tile+this.w/2),py=Math.round((y-this.camera.y)*tile+this.h/2);
         if(drawSnowGround(c,{world:w,x,y,px,py,tile,waterMask:this.visualWaterMask?.(x,y)}))drawn++;
