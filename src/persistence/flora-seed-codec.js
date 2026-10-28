@@ -1,5 +1,6 @@
 // Lossless persistence representation only. Live ecological Maps remain authoritative.
 // Float64 quantities retain every positive rare cohort; dictionaries encode repetition.
+import {drain} from '../sim/resumable.js';
 function fingerprint(v){if(v===undefined)return'u';if(v===null)return'n';if(typeof v==='string')return's'+JSON.stringify(v);if(typeof v==='boolean')return'b'+Number(v);if(typeof v==='number'){if(!Number.isFinite(v))throw Error('Invalid seed metadata number.');return'd'+(Object.is(v,-0)?'-0':v)}if(Array.isArray(v))return'a'+JSON.stringify(v.map(fingerprint));if(v&&Object.getPrototypeOf(v)===Object.prototype)return'o'+JSON.stringify(Object.entries(v).map(([k,x])=>[k,fingerprint(x)]));throw Error('Unsupported seed metadata.');}
 // Primitive metadata is immutable. Arrays/objects remain independently cloned.
 function copyMetadata(value){
@@ -152,7 +153,9 @@ function encodeTyped(col,i,v,ownedMetadata){
  if(array==='string'){(col.refs||=new Uint32Array(col.n))[i]=col.flatRefs.length;(col.lengths||=new Uint32Array(col.n))[i]=v.length;for(const x of v)col.flatRefs.push(stringRef(col,x));col.tags[i]=TAG.strings;return}
  (col.refs||=new Uint32Array(col.n))[i]=intern(col.dictionary,v,ownedMetadata);col.tags[i]=TAG.other;
 }
-export function packFloraSeedColumns(seeds,{ownedMetadata=false}={}){const kinds={};for(const [kind,cells] of Object.entries(seeds)){if(!(cells instanceof Map))throw Error('Invalid live seed bank.');let totalRows=0;for(const rows of cells.values())if(rows instanceof Map)totalRows+=rows.size;
+export function packFloraSeedColumns(seeds,options){return drain(packFloraSeedColumnsSteps(seeds,options))}
+// Resumable for a caller that exclusively owns the bank until packing ends.
+export function* packFloraSeedColumnsSteps(seeds,{ownedMetadata=false}={}){const kinds={};let sinceYield=0;for(const [kind,cells] of Object.entries(seeds)){if(!(cells instanceof Map))throw Error('Invalid live seed bank.');let totalRows=0;for(const rows of cells.values())if(rows instanceof Map)totalRows+=rows.size;
  const cellIds=[],offsets=[0],ids=dictionary(),orders=dictionary(),rowIds=new Uint32Array(totalRows),amounts=new Float64Array(totalRows),rowOrders=new Uint32Array(totalRows),columns=new Map();let n=0,lastKeys=null,lastOrder=-1,lastCols=null;const orderColumns=new Map();
  // Columns in each field order's key order (null for amount), resolved once per order.
  const columnsFor=(orderIdx,keys)=>{let cols=orderColumns.get(orderIdx);if(!cols){cols=keys.map(field=>{if(field==='amount')return null;let col=columns.get(field);if(!col){col=typedColumn(field,totalRows);columns.set(field,col)}return col});orderColumns.set(orderIdx,cols)}return cols};
@@ -160,7 +163,7 @@ export function packFloraSeedColumns(seeds,{ownedMetadata=false}={}){const kinds
   for(const [id,r] of rows){if(typeof id!=='string'||!Number.isFinite(r.amount)||r.amount<0)throw Error('Invalid seed quantity.');const keys=Object.keys(r);rowIds[n]=intern(ids,id);amounts[n]=r.amount;
    let orderIdx=lastOrder;if(!lastKeys||lastKeys.length!==keys.length){orderIdx=internOrder(orders,keys);lastKeys=keys;lastOrder=orderIdx;lastCols=columnsFor(orderIdx,keys)}else{for(let k=0;k<keys.length;k++)if(keys[k]!==lastKeys[k]){orderIdx=internOrder(orders,keys);lastKeys=keys;lastOrder=orderIdx;lastCols=columnsFor(orderIdx,keys);break}}rowOrders[n]=orderIdx;
    for(let k=0;k<keys.length;k++){const col=lastCols[k];if(col)encodeTyped(col,n,r[keys[k]],ownedMetadata)}n++}
-  offsets.push(n)}
+  offsets.push(n);if((sinceYield+=rows.size)>=4096){sinceYield=0;yield}}
  const fit=a=>!a||a.length===n?a:a.slice(0,n);
  kinds[kind]={cells:Int32Array.from(cellIds),offsets:Uint32Array.from(offsets),genomes:ids.values,genomeIndices:fit(rowIds),amounts:fit(amounts),orders:orders.values,orderIndices:fit(rowOrders),
   columns:[...columns.values()].map(c=>({field:c.field,tags:fit(c.tags),numbers:fit(c.numbers),refs:fit(c.refs),lengths:fit(c.lengths),flatNumbers:Float64Array.from(c.flatNumbers),flatRefs:Uint32Array.from(c.flatRefs),strings:c.strings,values:c.dictionary.values}))};}

@@ -43,7 +43,7 @@ import {RNG} from '../core/rng.js';
 import {World,worldForRestore} from '../world/world.js';
 import {PlanetRegionAtlas,compactRegionalTravelerPositions} from '../world/planet-regions.js';
 import {advanceOffscreenEnvironments} from '../world/planetary-offscreen-environment.js';
-import {advanceOffscreenBiology,REGIONAL_REPLAY,regionalReplayPolicy,pendingRegionalBiology,prepareRegionalBiology} from '../world/planetary-offscreen-biology.js';
+import {advanceOffscreenBiology,REGIONAL_REPLAY,regionalReplayPolicy,pendingRegionalBiology,prepareRegionalBiology,prepareRegionalBiologySteps} from '../world/planetary-offscreen-biology.js';
 import {reconcilePlanetarySaltSeams} from '../world/planetary-seam-salt.js';
 import {landRouteTarget,planLandDetour} from '../world/land-route.js';
 import {escapeDestination} from '../world/escape-route.js';
@@ -136,7 +136,7 @@ import {METABOLISM,METABOLISM_REFERENCE_BODY,metabolismActive,basalScale,starvat
 const DIRS=[[0,-1],[1,-1],[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1]];
 // A tick the browser is running across frames (see beginTick). Kept outside the
 // instance so it never enters saves, copies or travel.
-const pendingTicks=new WeakMap();
+const pendingTicks=new WeakMap(),pendingRegionalJobs=new WeakMap();
 export class Simulation{
   constructor(seed='GENVO8-0001',{
     player=true,
@@ -369,8 +369,22 @@ export class Simulation{
   // in progress nothing else may read for decisions or write the world.
   beginTick(input=null,options={},deadline=-Infinity){this.finishTick();pendingTicks.set(this,this.updateSteps(input,options));return this.continueTick(deadline)}
   continueTick(deadline=Infinity){const steps=pendingTicks.get(this);if(!steps)return true;let r;try{do r=steps.next();while(!r.done&&performance.now()<deadline)}catch(error){pendingTicks.delete(this);throw error}if(r.done)pendingTicks.delete(this);return r.done}
-  finishTick(){if(pendingTicks.has(this))this.continueTick(Infinity)}
-  get tickInProgress(){return pendingTicks.has(this)}
+  finishTick(){if(pendingRegionalJobs.has(this))this.stepRegionalBiology(Infinity);if(pendingTicks.has(this))this.continueTick(Infinity)}
+  get tickInProgress(){return pendingTicks.has(this)||pendingRegionalJobs.has(this)}
+  get regionalJobPending(){return pendingRegionalJobs.has(this)}
+  // Browser pacing for synchronized regional replay: the archived-region job the
+  // next tick would run first may instead run across frames before it, as one
+  // job per admission did before. While it is pending the world counts as mid-tick.
+  // Each resume restores the CFG clock view its pause left; between frames this
+  // world's own clock is active. Returns whether a job ran or remains pending.
+  stepRegionalBiology(deadline=Infinity){
+    let job=pendingRegionalJobs.get(this);
+    if(!job){if(pendingTicks.has(this)||!pendingRegionalBiology(this).length)return false;job={steps:prepareRegionalBiologySteps(this),clock:null};pendingRegionalJobs.set(this,job)}
+    let r;try{do{if(job.clock){CFG.dayTicks=job.clock.dayTicks;CFG.bioStride=job.clock.bioStride}r=job.steps.next();job.clock={dayTicks:CFG.dayTicks,bioStride:CFG.bioStride}}while(!r.done&&performance.now()<deadline)}
+    catch(error){pendingRegionalJobs.delete(this);throw error}
+    if(r.done)pendingRegionalJobs.delete(this);else applyDayClock(this);
+    return true;
+  }
   // The tick body. It pauses only between phases and inside the daily vegetation
   // work; a pause reads and writes nothing. A phase method overridden on the
   // instance (observers, profilers) is called whole so the wrapper sees it.

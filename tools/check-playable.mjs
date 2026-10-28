@@ -137,6 +137,7 @@ const runtime=[
   'tests/perennial-regrowth.mjs',
   'tests/regional-multi-hop-biology.mjs',
   'tests/regional-synchronized-replay.mjs',
+  'tests/regional-job-slicing.mjs',
   'tests/aquatic.mjs',
   'tests/save-storage.mjs',
   'tests/menu-world-slots.mjs',

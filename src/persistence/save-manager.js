@@ -234,9 +234,9 @@ function restoreWorld(world,state,{initializeMissingFreshwater=false,adoptOwnedW
   }else delete world.soilWater;
 }
 
-function snapshotControllers(sim,{ownedRegionalSeedMetadata=false}={}){
+function snapshotControllers(sim,{ownedRegionalSeedMetadata=false,seedTable=null}={}){
   const out={};
-  for(const key of CONTROLLER_KEYS){out[key]=ownState(sim[key],{skip:key==='familyIllness'?['sim','_familyTick','_familySize','_familyPlayer','_familyCache']:['sim']});if(key==='dispersal'&&out[key].floraState?.seeds)out[key].floraState={...out[key].floraState,seeds:packFloraSeedColumns(out[key].floraState.seeds,{ownedMetadata:ownedRegionalSeedMetadata})};}
+  for(const key of CONTROLLER_KEYS){out[key]=ownState(sim[key],{skip:key==='familyIllness'?['sim','_familyTick','_familySize','_familyPlayer','_familyCache']:['sim']});if(key==='dispersal'&&out[key].floraState?.seeds)out[key].floraState={...out[key].floraState,seeds:seedTable||packFloraSeedColumns(out[key].floraState.seeds,{ownedMetadata:ownedRegionalSeedMetadata})};}
   return out;
 }
 
@@ -278,7 +278,9 @@ export function saveMetadata(sim,{savedAt=new Date().toISOString(),reason='autos
   };
 }
 
-export function createSimulationSnapshot(sim,{reason='autosave',savedAt=new Date().toISOString(),regionalDeparture=false,ownedRegionalSeedMetadata=false}={}){
+// `seedTable` is the packed /2 table a caller already built from this sim's
+// unchanged seed bank with the same ownership option (a resumable regional job).
+export function createSimulationSnapshot(sim,{reason='autosave',savedAt=new Date().toISOString(),regionalDeparture=false,ownedRegionalSeedMetadata=false,seedTable=null}={}){
   // A tick running across frames completes first, exactly as the atomic tick
   // would have, so no save, travel copy or residency write sees half a tick.
   sim.finishTick?.();
@@ -305,7 +307,7 @@ export function createSimulationSnapshot(sim,{reason='autosave',savedAt=new Date
     // the active biome or inventing stock when a save is resumed.
     ...(!regionalDeparture&&sim.planetaryRegions&&sim.planetaryRegions.entries().some(e=>e.world!==sim.world&&!sim.planetaryTravel?.sessions?.some(s=>s.key===e.key))?{regionalWorlds:sim.planetaryRegions.entries().filter(e=>e.world!==sim.world&&!sim.planetaryTravel?.sessions?.some(s=>s.key===e.key)).map(e=>({origin:planetRegionOrigin(e.origin),world:snapshotWorld(e.world)}))}:{}),
     animals:sim.animals,
-    controllers:snapshotControllers(sim,{ownedRegionalSeedMetadata}),
+    controllers:snapshotControllers(sim,{ownedRegionalSeedMetadata,seedTable}),
     meta:saveMetadata(sim,{savedAt,reason})
   };
 }
@@ -622,7 +624,8 @@ export class SaveManager{
   async maintainRegionalResidency(sim){
     if(!this.available||!residencyEnabled(sim)||this.residencyBusy||sim!==this.getSim?.())return null;
     this.residencyBusy=true;
-    const slot=this.activeSlotId,live=()=>this.getSim?.()===sim&&this.activeSlotId===slot;
+    // A tick or archived-region job that began during an await owns the sessions.
+    const slot=this.activeSlotId,live=()=>this.getSim?.()===sim&&this.activeSlotId===slot&&!sim.tickInProgress;
     try{
       if(this.activeSave)await this.activeSave;
       if(!live())return null;

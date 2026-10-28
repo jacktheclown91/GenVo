@@ -4,7 +4,6 @@ import {preparePlanetarySeams,cancelPlanetarySeams} from './world/planetary-seam
 import {PlanetaryPreparation} from './world/planetary-preparation.js';
 import {advanceNextDemographicRegion} from './world/planetary-demography.js';
 import {clearWarmRegions} from './world/regional-warm-cache.js';
-import {prepareRegionalBiology} from './world/planetary-offscreen-biology.js';
 import {ecologyRuleMigrationMessage} from './ecology/rule-policy.js';
 import {birthRuleMigrationMessage} from './lineage/birth-rules.js';
 import {FrameStepper} from './sim/frame-stepper.js';
@@ -443,7 +442,11 @@ function frame(now){
   const frameWorkStart=performance.now();
   const dt=Math.max(0,Math.min(.1,(now-last)/1000));last=now;
   const controls=input(false);
-  const processing=frameStepper.advance(dt,observer.speed,hz=>sim.playerControlStep(input(true),hz),deadline=>sim.beginTick(input(false),{externalPlayerControl:true},deadline),{paused:sim.paused||!renderer.sceneShown,beforeStep:()=>!prepareRegionalBiology(sim)&&!preparePlanetarySeams(sim),
+  // An archived-region job runs across frames like a sliced tick: once started it
+  // always completes first, even while paused, and admits nothing else that frame.
+  const regionalJob=sim.regionalJobPending,regionalDeadline=frameWorkStart+frameStepper.sliceMs;
+  if(regionalJob){sim.stepRegionalBiology(regionalDeadline);if(!sim.tickInProgress)heldInput.replay()}
+  const processing=frameStepper.advance(dt,observer.speed,hz=>sim.playerControlStep(input(true),hz),deadline=>sim.beginTick(input(false),{externalPlayerControl:true},deadline),{paused:sim.paused||!renderer.sceneShown,beforeStep:()=>!regionalJob&&!sim.stepRegionalBiology(regionalDeadline)&&!preparePlanetarySeams(sim),
     resume:deadline=>{const done=sim.continueTick(deadline);if(done)heldInput.replay();return done}});
   // While a tick runs across frames only the scene is drawn: no travel, regional
   // work, tutorial, editor, notices or HUD reads that act on a half-advanced world.
