@@ -117,7 +117,7 @@ function keepSprite(ck,src,n,sx=0,sy=0){SPRITE_STATS.lastSide=n;
 export function drawGenvoSprite(c,opts={}){
   const s=opts.scale||1,n=Math.ceil(44*s/2)*2;
   const S=typeof c?.drawImage==='function'?scratchFor(n):null;if(!S)return drawGenvoBody(c,opts);
-  const artRevision=nativeArtStatus().revision;const ck=opts.cacheKey&&!opts.authoredParts&&!(SPRITE_CACHE.skipMoving&&opts.moving)?opts.cacheKey+'|coat'+(Number.isFinite(opts.animal?.coatDensity)?Math.round(opts.animal.coatDensity*8):-1)+'|art'+artRevision+'|'+s+'|look'+(opts.pose?.behavior?.headTurn||0)+'|'+'|'+JSON.stringify(opts.pose?.partExpression||null):null;if(ck){const hit=spriteCache.get(ck);if(hit?.img){SPRITE_STATS.hits++;c.drawImage(hit.img,-n/2,-n/2);return}if(hit)SPRITE_STATS.pending++;else{SPRITE_STATS.misses++;if(SPRITE_STATS.sample&&SPRITE_STATS.sample.length<4000)SPRITE_STATS.sample.push(ck)}}else SPRITE_STATS.uncached++;
+  const artRevision=nativeArtStatus().revision,contactCache=opts.groundContactFrame?.cacheToken;const ck=opts.cacheKey&&!opts.authoredParts&&(!opts.groundContactFrame||contactCache)&&!(SPRITE_CACHE.skipMoving&&opts.moving&&!contactCache)?opts.cacheKey+'|coat'+(Number.isFinite(opts.animal?.coatDensity)?Math.round(opts.animal.coatDensity*8):-1)+'|art'+artRevision+'|'+s+'|look'+(opts.pose?.behavior?.headTurn||0)+'|'+'|'+JSON.stringify(opts.pose?.partExpression||null)+(contactCache?'|contact'+contactCache:''):null;if(ck){const hit=spriteCache.get(ck);if(hit?.img){SPRITE_STATS.hits++;c.drawImage(hit.img,-n/2,-n/2);return}if(hit)SPRITE_STATS.pending++;else{SPRITE_STATS.misses++;if(SPRITE_STATS.sample&&SPRITE_STATS.sample.length<4000)SPRITE_STATS.sample.push(ck)}}else SPRITE_STATS.uncached++;
   const size=S.n,h=size/2,o=Math.max(1,Math.round(s/ART_DETAIL));
   if(batch.active&&!(MODULAR_HEAD.enabled&&ck)){let slot=stagingSlot(size),body=slot&&!slot.B?poolBody(S):null;
     if(!slot||(!slot.B&&!body)){batch.stats.overflowFlushes++;batch.flush();slot=stagingSlot(size);body=slot&&!slot.B?poolBody(S):null}
@@ -174,9 +174,16 @@ export function genvoAnchors({animal:a,phenotype:ph,frame=0,pose={}}={}){
 // that ignores drawing (to compute the same positions) and draws only head, mouth and eyes. ?modularHead=1.
 export const MODULAR_HEAD={enabled:false};
 const NULL_CTX=new Proxy({},{get:(t,k)=>k==='getTransform'?()=>new DOMMatrix():typeof k==='string'&&k!=='canvas'?()=>{}:undefined,set:()=>true});
-function drawGenvoBody(c0,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,palette:p,pose={},authoredParts,authoredTimeMs=0,layer='all'}={}){let c=layer==='head'?NULL_CTX:c0;
+function drawGenvoBody(c0,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,palette:p,pose={},authoredParts,authoredTimeMs=0,groundContactFrame=null,layer='all'}={}){let c=layer==='head'?NULL_CTX:c0;
   const asm=assemblyFor(a),[shapeW,shapeH]=shapeScales(asm.shape,pose.dir??a.dir??0);
   const frameInt=Math.floor(frame)&7,life=pose.life||{},profile=genvoVisualPose({id:a.id,dir:pose.dir??a.dir,frame,moving,action:pose.action||'idle',legSlots:asm.legSlots,bodyScale:ph.bodyScale,bodyWidthScale:(ph.bodyWidthScale||1)*shapeW,bodyHeightScale:(ph.bodyHeightScale||1)*shapeH,limbScale:ph.limbScale,sensoryScale:ph.sensoryScale,eyeScale:ph.eyeScale,feelerScale:ph.feelerScale,temperamentScale:ph.temperamentScale,dependent:!!pose.dependent,alert:!!pose.alert,stage:pose.stage||'adult',life,behavior:pose.behavior||{}});
+  let neutralProfile=null,neutralSockets=null;
+  if(groundContactFrame?.needsRestPose){
+    const [neutralW,neutralH]=shapeScales(asm.shape,groundContactFrame.seedDir??pose.dir??a.dir);
+    neutralProfile=genvoVisualPose({dir:groundContactFrame.seedDir??pose.dir??a.dir,frame:0,moving:false,action:'idle',legSlots:asm.legSlots,bodyScale:ph.bodyScale,bodyWidthScale:(ph.bodyWidthScale||1)*neutralW,bodyHeightScale:(ph.bodyHeightScale||1)*neutralH,limbScale:ph.limbScale,temperamentScale:ph.temperamentScale,dependent:!!pose.dependent,stage:pose.stage||'adult',life});
+    if(asm.explicit)neutralSockets=socketPoints(asm.torso,bodyFrame({fx:neutralProfile.v.x,fy:neutralProfile.v.y,perp:neutralProfile.perp,bx:neutralProfile.bodyOffset.x,by:neutralProfile.bodyOffset.y,bodyW:neutralProfile.bodyW,bodyH:neutralProfile.bodyH}));
+  }
+  if(groundContactFrame)profile.bodyOffset=groundContactFrame.carriage(profile.bodyOffset,neutralProfile?.bodyOffset);
   const {v,perp,bodyW,bodyH,bodyOffset,legs,flee,drink,court,hunt}=profile,fx=v.x,fy=v.y,bx=bodyOffset.x,by=bodyOffset.y;
   const L=asm.explicit?socketPoints(asm.torso,bodyFrame({fx,fy,perp,bx,by,bodyW,bodyH})):null;
   const head=headPose(asm,profile,L,{frame,behavior:pose.behavior,life}),faceMounts=facialMounts(asm,head,L);
@@ -202,7 +209,18 @@ function drawGenvoBody(c0,{animal:a,phenotype:ph,scale:s,frame=0,moving=false,pa
     if(twist){const end=leg.front>.25?1:leg.front<-.25?-1:0;if(end){const hx=perp.x*twist*end,hy=perp.y*twist*end;root={x:root.x+hx,y:root.y+hy};knee={x:knee.x+hx*.5,y:knee.y+hy*.5}}}
     // v1.54.0: an authored body puts the hip where it says; the leg keeps its own shape and stride.
     {const hip=leg.slot!=null&&L?.[limbOfSlot(leg.slot)];if(hip){const dx=hip.x-root.x,dy=hip.y-root.y;root={x:hip.x,y:hip.y};knee={x:knee.x+dx,y:knee.y+dy};foot={x:foot.x+dx,y:foot.y+dy}}}
-    const rel=relativeLegIndex(leg),legPart=leg.slot!=null?asm.slotLegs[leg.slot]:asm.legs[rel],spurPart=leg.slot!=null?asm.slotSpurs[leg.slot]:asm.spurs[rel],LK={...K,leg,root,knee,foot,size:a?.anatomy?.spring};
+    let drawnLeg=leg;
+    if(groundContactFrame){
+      let restFoot=foot;
+      const neutral=neutralProfile?.legs.find(l=>(l.slot??l.index)===(leg.slot??leg.index));
+      if(neutral){
+        restFoot={...neutral.foot};const hip=neutral.slot!=null&&neutralSockets?.[limbOfSlot(neutral.slot)];
+        if(hip){restFoot.x+=hip.x-neutral.root.x-neutralProfile.bodyOffset.x;restFoot.y+=hip.y-neutral.root.y-neutralProfile.bodyOffset.y;}
+      }
+      const resolved=groundContactFrame.resolve(leg,{root,knee,foot,restFoot});
+      root=resolved.root;knee=resolved.knee;foot=resolved.foot;drawnLeg=resolved.leg;
+    }
+    const rel=relativeLegIndex(leg),legPart=leg.slot!=null?asm.slotLegs[leg.slot]:asm.legs[rel],spurPart=leg.slot!=null?asm.slotSpurs[leg.slot]:asm.spurs[rel],LK={...K,leg:drawnLeg,root,knee,foot,size:a?.anatomy?.spring};
     const nativeLimb=drawLimb(c,legPart||'walking-leg',LK);
     if(spurPart)drawPart(c,spurPart,LK);
     if(!asm.explicit&&ph.adaptations?.webbedLimbs&&Math.abs(leg.side)>.34){const toeX=snap(foot.x),toeY=snap(foot.y),sign=Math.sign(leg.side)||1;pixel(c,toeX+sign,toeY,2,1,s,p.light)}
