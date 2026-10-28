@@ -23,8 +23,12 @@ import {renewableFood,founderDailyNeed,FOUNDING_RANGE} from './resource-founding
 // present decides whether they persist. Once founded, ordinary Simulation
 // rules own every individual. Previously visited regions are restored from
 // their archives and never pass through here again.
+// /2 also requires drinking water: a land template is founded only at sites
+// with open fresh water reachable on foot within the founding range. Juicy
+// food and snow are seasonal; in waterless regions they kept /1 founders alive
+// for about 35-45 days only. Recorded /1 worlds keep their founding exactly.
 export const REGIONAL_FOUNDING=Object.freeze({
- policy:'regional-founding-templates/1',
+ policy:'regional-founding-templates/2',legacy:'regional-founding-templates/1',
  maxPrimary:6,maxScavengers:2,maxPredators:2,maxPerMouth:2,
  minSuitableCells:96,probeSites:6,siteSamples:24,placementTries:40,shoreRange:3,jitter:.35
 });
@@ -82,7 +86,10 @@ function supportAt(sim,a,point,baseNeed=founderDailyNeed(a.species,a)){
  const at={...a,x:point.x,y:point.y},need=baseNeed*(1+Math.max(0,thermalSiteDemand(sim,a,point.x,point.y).load));
  return{food:renewableFood(sim,at),need};
 }
-function rankRole(sim,profile,rng,kind,absent){
+export const regionalFoundingPolicy=value=>value===REGIONAL_FOUNDING.policy||value===REGIONAL_FOUNDING.legacy;
+// Steps over walkable land from the site to a drinkable fresh-water shore.
+const drinkingWaterInReach=(w,point)=>(w.waterDistance?.[w.idx(point.x,point.y)]??Infinity)<=FOUNDING_RANGE;
+function rankRole(sim,profile,rng,kind,absent,policy){
  const rows=[];
  for(const t of catalogFor(sim)){
   if(role(t)!==kind)continue;
@@ -93,6 +100,11 @@ function rankRole(sim,profile,rng,kind,absent){
    const baseNeed=founderDailyNeed(probe.species,probe);
    return samples.map(p=>({...p,...supportAt(sim,probe,p,baseNeed)}));
   });
+  if(policy===REGIONAL_FOUNDING.policy&&t.habitat.medium!=='water'){
+   const watered=measured.filter(m=>drinkingWaterInReach(profile.world,m));
+   if(!watered.length){absent.push({template:t.id,reason:'no drinking water within reach'});continue}
+   measured.splice(0,measured.length,...watered);
+  }
   measured.sort((a,b)=>b.food/b.need-a.food/a.need||a.y-b.y||a.x-b.x);
   const best=measured.slice(0,REGIONAL_FOUNDING.probeSites),ratio=best.reduce((s,m)=>s+m.food/m.need,0)/best.length;
   const share=cells.length/total;
@@ -122,13 +134,13 @@ function place(sim,a,site,rng,waterRequired){
  return false;
 }
 const balanceSexes=group=>{if(group.length>=2&&group.every(a=>a.sex===group[0].sex))group[group.length-1].sex=group[0].sex==='F'?'M':'F'};
-function foundGroup(sim,row,rng,origin){
+function foundGroup(sim,row,rng,origin,policy){
  const t=row.template,sites=pickSites(row);if(!sites.length)return{absent:'no measured founding site'};
  const want=Math.round(t.group[0]+(t.group[1]-t.group[0])*clamp(row.share*4,0,1)),members=[];
  for(let k=0;k<want;k++){
   const site=sites[k%sites.length],a=sim.spawnAnimal(t.carrier,site.x,site.y);bodyFor(a,variantPlan(t,rng));
   if(!place(sim,a,site,rng,isWaterDweller(a))){sim.animals.splice(sim.animals.indexOf(a),1);continue}
-  a.foundingOrigin={schema:1,policy:REGIONAL_FOUNDING.policy,template:t.id,region:origin,day:sim.day,tick:sim.tickCount,...(t.library?{library:t.library}:{})};
+  a.foundingOrigin={schema:1,policy,template:t.id,region:origin,day:sim.day,tick:sim.tickCount,...(t.library?{library:t.library}:{})};
   members.push(a);
  }
  balanceSexes(members);
@@ -149,21 +161,22 @@ function foundGroup(sim,row,rng,origin){
 // supplying genes, pigments and mate preferences through spawnAnimal; template
 // ranking and placement use a separate regional stream, so an unexplored
 // continent is founded identically whenever it is first reached.
-export function foundRegionalPopulations(sim,{region}){
+export function foundRegionalPopulations(sim,{region,policy=REGIONAL_FOUNDING.legacy}){
+ if(!regionalFoundingPolicy(policy))throw Error('Unknown regional founding policy.');
  if(sim.regionalFounding)throw Error('Region '+region+' already has a founding receipt; visited ecosystems are never regenerated.');
  if(sim.animals.some(a=>!a.player))throw Error('Regional founding requires an unpopulated region.');
  const rng=new RNG(sim.seed+'|regional-founding|'+region),profile=regionalHabitatProfile(sim.world),absent=[],introduced=[];
  const limits={primary:REGIONAL_FOUNDING.maxPrimary,scavenger:REGIONAL_FOUNDING.maxScavengers,predator:REGIONAL_FOUNDING.maxPredators};
  for(const kind of ['primary','scavenger','predator']){
   let count=0;
-  for(const r of rankRole(sim,profile,rng,kind,absent)){
+  for(const r of rankRole(sim,profile,rng,kind,absent,policy)){
    if(count>=limits[kind]){absent.push({template:r.template.id,reason:'regional '+kind+' founding slots filled'});continue}
    if(introduced.filter(g=>mouthPart(templateIn(sim,g.template))===mouthPart(r.template)).length>=REGIONAL_FOUNDING.maxPerMouth){absent.push({template:r.template.id,reason:'feeding niche already founded twice'});continue}
-   const out=foundGroup(sim,r,rng,region);
+   const out=foundGroup(sim,r,rng,region,policy);
    if(out.absent)absent.push({template:r.template.id,reason:out.absent,...(out.summary?{measured:out.summary}:{})});else{introduced.push(out.summary);count++}
   }
  }
- sim.regionalFounding={schema:1,policy:REGIONAL_FOUNDING.policy,catalog:FOUNDING_TEMPLATES_VERSION,...(sim.foundingLibrary?.length?{library:sim.foundingLibrary.map(e=>e.id)}:{}),source:'deterministic-regional-founding',region,day:sim.day,tick:sim.tickCount,
+ sim.regionalFounding={schema:1,policy,catalog:FOUNDING_TEMPLATES_VERSION,...(sim.foundingLibrary?.length?{library:sim.foundingLibrary.map(e=>e.id)}:{}),source:'deterministic-regional-founding',region,day:sim.day,tick:sim.tickCount,
   profile:{landCells:profile.landCells,waterCells:profile.waterCells,meanTemperature:+profile.meanTemperature.toFixed(4),meanMoisture:+profile.meanMoisture.toFixed(4)},
   introduced,absent};
  // Trimmed founders were registered at birth; rebuild residency from survivors.
@@ -175,11 +188,11 @@ export function foundRegionalPopulations(sim,{region}){
 // of the region that introduced it, when this simulation owns that region.
 export function validateRegionalFounding(sim,region){
  const r=sim.regionalFounding;
- for(const a of sim.animals){const o=a.foundingOrigin;if(o!==undefined&&(o?.schema!==1||o.policy!==REGIONAL_FOUNDING.policy||!templateIn(sim,o.template)||typeof o.region!=='string'||a.parentIds?.length))throw Error('Invalid regional founder provenance.')}
+ for(const a of sim.animals){const o=a.foundingOrigin;if(o!==undefined&&(o?.schema!==1||!regionalFoundingPolicy(o.policy)||!templateIn(sim,o.template)||typeof o.region!=='string'||a.parentIds?.length))throw Error('Invalid regional founder provenance.')}
  const marked=sim.animals.filter(a=>a.foundingOrigin?.region===region);
  if(r===undefined){if(marked.length)throw Error('Founded creatures lack a regional founding receipt.');return}
  if(r.region!==region)throw Error('Regional founding receipt belongs to another region.');
- if(r?.schema!==1||r.policy!==REGIONAL_FOUNDING.policy||!FOUNDING_TEMPLATE_VERSIONS.includes(r.catalog)||
+ if(r?.schema!==1||!regionalFoundingPolicy(r.policy)||!FOUNDING_TEMPLATE_VERSIONS.includes(r.catalog)||
   !Number.isSafeInteger(r.day)||r.day<1||!Number.isSafeInteger(r.tick)||r.tick<0||!Array.isArray(r.introduced)||!Array.isArray(r.absent))
   throw Error('Invalid regional founding receipt.');
  const ids=new Map();
@@ -188,5 +201,5 @@ export function validateRegionalFounding(sim,region){
   if(!t||g.carrier!==t.carrier||!Array.isArray(g.ids)||g.ids.length!==g.supportable||g.supportable<2||g.supportable>g.configured)throw Error('Invalid regional founding group.');
   for(const id of g.ids){if(!Number.isSafeInteger(id)||ids.has(id))throw Error('Duplicate regional founder identity.');ids.set(id,g.template)}
  }
- for(const a of marked)if(ids.get(a.id)!==a.foundingOrigin.template)throw Error('Founder disagrees with its regional founding receipt.');
+ for(const a of marked)if(ids.get(a.id)!==a.foundingOrigin.template||a.foundingOrigin.policy!==r.policy)throw Error('Founder disagrees with its regional founding receipt.');
 }
