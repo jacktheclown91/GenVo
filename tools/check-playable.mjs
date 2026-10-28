@@ -18,6 +18,7 @@ const runtime=[
   'tests/autonomous-evolution-policy.mjs',
   'tests/autonomous-evolution-v1-compatibility.mjs',
   'tests/autonomous-evolution-v2-compatibility.mjs',
+  'tests/autonomous-evolution-v3-compatibility.mjs',
   'tests/regional-pressure-observations.mjs',
   'tests/inherited-anatomy-evidence.mjs',
   'tests/population-birth-evidence.mjs',
