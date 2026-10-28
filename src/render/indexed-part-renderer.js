@@ -33,7 +33,11 @@ export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
  // Inherited skin coloration is derived from the creature's phenotype at draw time.
  // The compiled/source RGB sheets remain untouched. Cache only displayed frames, never
  // 16 frame canvases for every animal or every palette variant.
- const tintCache=new Map(),MAX_TINTED_FRAMES=256;
+ // Preserve the native32 byte budget as art resolution rises. The current-frame
+ // protection still applies; high detail cannot silently multiply tint residency.
+ const pixelRatio=asset.width*asset.height/(32*32);
+ const tintCache=new Map(),MAX_TINTED_FRAMES=Math.max(16,Math.floor(256/pixelRatio));
+ const tintHardMax=Math.max(16,Math.floor(TINT_HARD_MAX/pixelRatio));
  function tinted(entry,pigment){
   if(!pigment||!asset.regions.some(r=>r.id==='skin'&&!r.protected))return entry;
   const key=entry.frame.key+'|'+pigment.map(c=>c.join(',')).join(';');
@@ -43,7 +47,7 @@ export function prepareIndexedPartRenderer(asset,{palette={},createCanvas}={}){
   // (long embedder GC pauses). putImageData overwrites every pixel, so recycled output is identical.
   let canvas=null,ctx=null;
   if(tintCache.size>=MAX_TINTED_FRAMES){const oldKey=tintCache.keys().next().value,old=tintCache.get(oldKey);
-    if(old.usedFrame!==tintFrame||tintCache.size>=TINT_HARD_MAX){tintCache.delete(oldKey);if(!old.dorsalPaint&&old.ctx&&old.usedFrame!==tintFrame){canvas=old.canvas;ctx=old.ctx}}}
+    if(old.usedFrame!==tintFrame||tintCache.size>=tintHardMax){tintCache.delete(oldKey);if(!old.dorsalPaint&&old.ctx&&old.usedFrame!==tintFrame){canvas=old.canvas;ctx=old.ctx}}}
   if(!canvas){canvas=factory();canvas.width=asset.width;canvas.height=asset.height;ctx=canvas.getContext('2d')}
   const data=ctx.createImageData(asset.width,asset.height);
   data.data.set(recolorIndexedFrame(asset,entry.frame.key,{skin:pigment}));ctx.putImageData(data,0,0);

@@ -6,7 +6,7 @@ const byte=v=>Number.isInteger(v)&&v>=0&&v<=255;
 // Decoders supply unpremultiplied native RGBA. Never infer, quantize or erase
 // transparent RGB: source identity includes hidden pixels as well as alpha.
 export function indexSourceRgbaFrame(frame,regions,width=32,height=32){
-  if(width!==32||height!==32)fail('source frame requires native 32x32 pixels');
+  if(![32,64,128].includes(width)||height!==width)fail('source frame requires native 32, 64 or 128 square pixels');
   const rgba=Array.from(frame.rgba||[]);
   if(rgba.length!==width*height*4||!rgba.every(byte))fail('invalid source RGBA');
   if(!Array.isArray(regions)||!regions.length)fail('missing source pigment regions');
@@ -42,7 +42,8 @@ export async function compileIndexedPart(spec){
   if(!PARTS[spec.partId])fail('part ID is absent from the biological registry');
   const {width=32,height=32,version,rootAnchorPx,regions,frames}=spec;
   if(!Number.isInteger(version)||version<1)fail('invalid version');
-  if(width!==32||height!==32)fail('this codec slice requires native 32x32 parts');
+  if(![32,64,128].includes(width)||height!==width)fail('native art requires 32, 64 or 128 square pixels');
+  if(width!==32&&!(spec.displayScale>0))fail('higher-resolution art requires explicit display scale');
   if(!Array.isArray(rootAnchorPx)||rootAnchorPx.length!==2||!rootAnchorPx.every(Number.isFinite))fail('invalid native anchor');
   if(!Array.isArray(regions)||!regions.length||!Array.isArray(frames)||!frames.length)fail('missing regions or frames');
   const regionIds=new Set(),entries=[],compiledRegions=regions.map(region=>{
@@ -58,11 +59,11 @@ export async function compileIndexedPart(spec){
   const rig=spec.rig;
   if(rig!==undefined){
     if(rig.kind==='torso'||rig.kind==='head'){
-      if(!Array.isArray(rig.bodyBoundsPx)||rig.bodyBoundsPx.length!==2||!rig.bodyBoundsPx.every(v=>Number.isFinite(v)&&v>=8&&v<=32))fail('invalid torso native bounds');
+      if(!Array.isArray(rig.bodyBoundsPx)||rig.bodyBoundsPx.length!==2||!rig.bodyBoundsPx.every(v=>Number.isFinite(v)&&v>=8&&v<=width))fail('invalid torso native bounds');
     }else if(rig.kind==='dorsal-display'){
       if(!Array.isArray(rig.panels)||rig.panels.length!==2)fail('dorsal rig requires two panels');
       const rects=[rig.rootRect,...(rig.panels||[])];
-      if(rects.length!==3||!rects.every(r=>Array.isArray(r)&&r.length===4&&r.every(Number.isInteger)&&r[0]>=0&&r[1]>=0&&r[2]>0&&r[3]>0&&r[0]+r[2]<=32&&r[1]+r[3]<=32))fail('invalid dorsal panel rectangles');
+      if(rects.length!==3||!rects.every(r=>Array.isArray(r)&&r.length===4&&r.every(Number.isInteger)&&r[0]>=0&&r[1]>=0&&r[2]>0&&r[3]>0&&r[0]+r[2]<=width&&r[1]+r[3]<=height))fail('invalid dorsal panel rectangles');
       const [root,upper,lower]=rects;
       if(root[0]!==upper[0]||root[0]!==lower[0]||root[2]!==upper[2]||root[2]!==lower[2]||upper[1]+upper[3]!==root[1]||root[1]+root[3]!==lower[1])fail('dorsal panels must meet fixed root');
       if(rootAnchorPx[0]<root[0]||rootAnchorPx[0]>=root[0]+root[2]||rootAnchorPx[1]<root[1]||rootAnchorPx[1]>=root[1]+root[3])fail('dorsal anchor outside fixed root');
@@ -70,7 +71,7 @@ export async function compileIndexedPart(spec){
     }else if(rig.kind==='two-bone'){
       for(const segment of ['upper','lower']){
         const item=rig[segment],rect=item?.rect,start=item?.start,end=item?.end;
-        if(!Array.isArray(rect)||rect.length!==4||!rect.every(Number.isInteger)||rect.some(n=>n<0)||rect[2]<1||rect[3]<1||rect[0]+rect[2]>32||rect[1]+rect[3]>32)fail('invalid limb section rectangle');
+        if(!Array.isArray(rect)||rect.length!==4||!rect.every(Number.isInteger)||rect.some(n=>n<0)||rect[2]<1||rect[3]<1||rect[0]+rect[2]>width||rect[1]+rect[3]>height)fail('invalid limb section rectangle');
         if(![start,end].every(p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite)&&p[0]>=rect[0]&&p[0]<rect[0]+rect[2]&&p[1]>=rect[1]&&p[1]<rect[1]+rect[3]))fail('limb anchor outside section');
         if(Math.hypot(end[0]-start[0],end[1]-start[1])<2)fail('limb anchors overlap');
       }

@@ -1,3 +1,13 @@
+# Current major presentation continuation
+
+The creator's [October 28 major visual/audio objective](../design/PRESENTATION-EVOLUTION-2026-10-28.md) now governs the full A-I initiative and dependency order. Read it before continuing. The full goal remains active.
+
+The [resolution prototype](ART-RESOLUTION-STUDY-2026-10-28.md) adds real optional 64/128 modular assets, a working comparison workshop and native evidence. Default gameplay remains native32 pending creator review. The next independent implementation is anatomy-dependent gait coordination; subsequent full locomotion, behavior, environments, soundscapes, voices, interface and independent audio settings remain open. Claude retains simulation, persistence, performance engineering and comprehensive integration ownership.
+
+The material below records the earlier bounded passes and their original package labels; it is not the current initiative's completion checklist.
+
+---
+
 # Codex presentation continuation
 
 Current creator objective: visual identity, native creature artwork, animation,

@@ -1,0 +1,278 @@
+{
+  "schema": "genvo.art-resolution-study/1",
+  "status": "experimental-creator-review",
+  "author": "Original code-authored pixel studies, AI-assisted; no external expressive assets.",
+  "coordinateSpace": "32 art units; display scale and all rig anchors preserve the existing physical footprint.",
+  "parts": [
+    {
+      "partId": "small-torso",
+      "resolution": 64,
+      "path": "./small-torso-64.indexed.json.gz",
+      "checksum": "0d1704fd6dadc81525474a97317b43969bb8aae2e02cf2ba5968f76b8fcdbb82",
+      "bytes": 4258,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "e12f5dcf3310a7d249d06796e44e216afebebdabba2d9081ff03a0b953deba15"
+    },
+    {
+      "partId": "soft-torso",
+      "resolution": 64,
+      "path": "./soft-torso-64.indexed.json.gz",
+      "checksum": "90ee3ca2382acec1146743a326ab790d0d72e22695d0b9462732da3b3fdcf3d4",
+      "bytes": 4253,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "e046130912c651ca85fdecad3846f0167da4ab1e98b10dd0523578918f177ea6"
+    },
+    {
+      "partId": "dome-torso",
+      "resolution": 64,
+      "path": "./dome-torso-64.indexed.json.gz",
+      "checksum": "ee7f01844f04d99a0f3b1baceb11d3906d907ef4e80dbe597357a565374b99c2",
+      "bytes": 4257,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "0ae565cd528d88dd123776f4262f76ff79dcfc73907720c3403aea12c0b319f3"
+    },
+    {
+      "partId": "head-base",
+      "resolution": 64,
+      "path": "./head-base-64.indexed.json.gz",
+      "checksum": "9ac6f3498dcff4d1fe8030de674a994fd889f791eac41eff1dcce789e07e9c67",
+      "bytes": 4564,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "3775fdfcb6a582d7abb1c833f82e45f1e0c09385a539e4aacf642bb6c6aa5b18"
+    },
+    {
+      "partId": "walking-leg",
+      "resolution": 64,
+      "path": "./walking-leg-64.indexed.json.gz",
+      "checksum": "ea829487af2dc2b6930cdd8ee45c6b203b9486c275e220feb24fb65b5a491359",
+      "bytes": 2644,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "630c35e5e6a5ee7805c7dc1b9c3a3618fce449a917b99c48302699e51b78d5f5"
+    },
+    {
+      "partId": "runner-leg",
+      "resolution": 64,
+      "path": "./runner-leg-64.indexed.json.gz",
+      "checksum": "8e96bc0759de7668fafbba62ceed2ed20cd3696ef0b7ed960ac8f03e39a46306",
+      "bytes": 2252,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "4b6634358054bab82fdb58215f4c53a952588b6be734d019b10674a3dc4bdb4a"
+    },
+    {
+      "partId": "sturdy-leg",
+      "resolution": 64,
+      "path": "./sturdy-leg-64.indexed.json.gz",
+      "checksum": "ee9c1a1dc8cb31da822834a7fe2e1bc2cdaa1f4b6176b2cce29a0711fbbc5a0c",
+      "bytes": 2680,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "22e362fe8d9ae72c945e08ab4479945e845fd299b941c86839f247773a18ab56"
+    },
+    {
+      "partId": "simple-eye",
+      "resolution": 64,
+      "path": "./simple-eye-64.indexed.json.gz",
+      "checksum": "9897d46b12fccc5b61244412f21f11514acf7890a247d1ea7595c84f4bfe47e3",
+      "bytes": 3194,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "5372fe80f35cb7c7699f502192d77a1c400262d823460732f9acd53654b3ed81"
+    },
+    {
+      "partId": "compound-eye",
+      "resolution": 64,
+      "path": "./compound-eye-64.indexed.json.gz",
+      "checksum": "61bc3324b5234579e9a05aaa50d0702b59ce8dffbb84632c601416754a5806be",
+      "bytes": 3442,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "5e6cbc955c0f1de820093da7ab517afc3b28ebead92c244e1dae05e706c95cfa"
+    },
+    {
+      "partId": "grazing-mouth",
+      "resolution": 64,
+      "path": "./grazing-mouth-64.indexed.json.gz",
+      "checksum": "282b4d4fbb1893aa7aa542fbca1eb44426bfad552e3333e29ee55716990cb549",
+      "bytes": 2280,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "8ab5418e37abbbe4c81b0ea7becb7b78947dd75952e0f4cfbf25e9414178a330"
+    },
+    {
+      "partId": "beak-mouth",
+      "resolution": 64,
+      "path": "./beak-mouth-64.indexed.json.gz",
+      "checksum": "ea6b628a68c2dfc2a8aa9bc489c1a169d683b6b4e436bdb8cb30ee2c5eb07832",
+      "bytes": 2714,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "e414e3d7448c66dac13340f869e50f271de187524dc59a73ca12827a508d6222"
+    },
+    {
+      "partId": "fur-mantle",
+      "resolution": 64,
+      "path": "./fur-mantle-64.indexed.json.gz",
+      "checksum": "1cb8940cf313d1a0afc954e1cb74e1afe459b8521bc777fd58397e2a48a3abd7",
+      "bytes": 5491,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "f0940305c30ddd896fa47db9495b90e2d58f105d61cd0aa9af915d2e862149d5"
+    },
+    {
+      "partId": "feather-mantle",
+      "resolution": 64,
+      "path": "./feather-mantle-64.indexed.json.gz",
+      "checksum": "a1269addf614e17fad9283b9bc630e53fb06c56c1d608b48f40bfd045bf15d9b",
+      "bytes": 6071,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "92a52d71ca62abfa4aaa60929ecac9e2d88fce9803e7c8dd9895c1ab6c64968b"
+    },
+    {
+      "partId": "shell-back",
+      "resolution": 64,
+      "path": "./shell-back-64.indexed.json.gz",
+      "checksum": "caad78d909808c944af7c86f41fbaba2a3f003bbee3f61a06b33b5fac21e9fcb",
+      "bytes": 5398,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "4c6f6b49e2a478672f351ebcadaddb5570d7de6b851861dfdb8ee4710a6943e4"
+    },
+    {
+      "partId": "balance-tail",
+      "resolution": 64,
+      "path": "./balance-tail-64.indexed.json.gz",
+      "checksum": "8e88c716084b915de12ac907a2843dd31d2fd25d501e52b0a2f40ae8f2465ef2",
+      "bytes": 2681,
+      "decodedRgbaBytes": 262144,
+      "sourceChecksum": "8a4d4b0256bdb2f90b76067bd1a450d035656b78e1ae87bfb1bbd732f066c0ab"
+    },
+    {
+      "partId": "small-torso",
+      "resolution": 128,
+      "path": "./small-torso-128.indexed.json.gz",
+      "checksum": "838d13d777c1cb50dc84f782811e78ac557ad8d885d403a9cdc44895c1931905",
+      "bytes": 14063,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "e12f5dcf3310a7d249d06796e44e216afebebdabba2d9081ff03a0b953deba15"
+    },
+    {
+      "partId": "soft-torso",
+      "resolution": 128,
+      "path": "./soft-torso-128.indexed.json.gz",
+      "checksum": "c21a4fb111c71393b807d2d3d9a5bc8be50438d70504c767d1d3f3464598f891",
+      "bytes": 14061,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "e046130912c651ca85fdecad3846f0167da4ab1e98b10dd0523578918f177ea6"
+    },
+    {
+      "partId": "dome-torso",
+      "resolution": 128,
+      "path": "./dome-torso-128.indexed.json.gz",
+      "checksum": "ed49ff0cd70117507c770799eb03d27fa56a702b252f738f85ca9d2d56c0f63b",
+      "bytes": 14064,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "0ae565cd528d88dd123776f4262f76ff79dcfc73907720c3403aea12c0b319f3"
+    },
+    {
+      "partId": "head-base",
+      "resolution": 128,
+      "path": "./head-base-128.indexed.json.gz",
+      "checksum": "be80124ac125384f84d5053ee30fa38ef55918cc74082020ad691a394f019913",
+      "bytes": 15057,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "3775fdfcb6a582d7abb1c833f82e45f1e0c09385a539e4aacf642bb6c6aa5b18"
+    },
+    {
+      "partId": "walking-leg",
+      "resolution": 128,
+      "path": "./walking-leg-128.indexed.json.gz",
+      "checksum": "c2300e3838926f7e16307742120d1935deefef2980630437f916964c6da48f90",
+      "bytes": 7386,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "630c35e5e6a5ee7805c7dc1b9c3a3618fce449a917b99c48302699e51b78d5f5"
+    },
+    {
+      "partId": "runner-leg",
+      "resolution": 128,
+      "path": "./runner-leg-128.indexed.json.gz",
+      "checksum": "0fbcf624159b3142223817195ca4a7a70c7a453d7b010f7f8a1fd644ca85a9a0",
+      "bytes": 6219,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "4b6634358054bab82fdb58215f4c53a952588b6be734d019b10674a3dc4bdb4a"
+    },
+    {
+      "partId": "sturdy-leg",
+      "resolution": 128,
+      "path": "./sturdy-leg-128.indexed.json.gz",
+      "checksum": "ab9a15a101a80cd53270f678a2632d3931761b7677a5c120d490cbf397bdf1cf",
+      "bytes": 8530,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "22e362fe8d9ae72c945e08ab4479945e845fd299b941c86839f247773a18ab56"
+    },
+    {
+      "partId": "simple-eye",
+      "resolution": 128,
+      "path": "./simple-eye-128.indexed.json.gz",
+      "checksum": "cf73b0d16f0f378061cccaf34d3cb9ef5cfee74a65231ed1833f99c8ddfcfd7b",
+      "bytes": 9091,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "5372fe80f35cb7c7699f502192d77a1c400262d823460732f9acd53654b3ed81"
+    },
+    {
+      "partId": "compound-eye",
+      "resolution": 128,
+      "path": "./compound-eye-128.indexed.json.gz",
+      "checksum": "888591f2ca3cdfe28ea21c55dffc156dd70159681eca8e9750b42eee1f8bac02",
+      "bytes": 11521,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "5e6cbc955c0f1de820093da7ab517afc3b28ebead92c244e1dae05e706c95cfa"
+    },
+    {
+      "partId": "grazing-mouth",
+      "resolution": 128,
+      "path": "./grazing-mouth-128.indexed.json.gz",
+      "checksum": "1c61afd4effeac257a56d58f117c021c042d489f89b8df9a3f9c71f315e64519",
+      "bytes": 6058,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "8ab5418e37abbbe4c81b0ea7becb7b78947dd75952e0f4cfbf25e9414178a330"
+    },
+    {
+      "partId": "beak-mouth",
+      "resolution": 128,
+      "path": "./beak-mouth-128.indexed.json.gz",
+      "checksum": "b871ba44d433d5b84c2d2cfeeb4ab6dca5a0f04e8140204e57fb85beba0f7356",
+      "bytes": 7070,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "e414e3d7448c66dac13340f869e50f271de187524dc59a73ca12827a508d6222"
+    },
+    {
+      "partId": "fur-mantle",
+      "resolution": 128,
+      "path": "./fur-mantle-128.indexed.json.gz",
+      "checksum": "7129a95030be9c32a8bfa10d8951345156bcf64146cac1de3396274e4881f117",
+      "bytes": 20069,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "f0940305c30ddd896fa47db9495b90e2d58f105d61cd0aa9af915d2e862149d5"
+    },
+    {
+      "partId": "feather-mantle",
+      "resolution": 128,
+      "path": "./feather-mantle-128.indexed.json.gz",
+      "checksum": "02870527c41cd4c5956f2092a987ceb2942f6f0f02d9be343ec039dec6ab8239",
+      "bytes": 23612,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "92a52d71ca62abfa4aaa60929ecac9e2d88fce9803e7c8dd9895c1ab6c64968b"
+    },
+    {
+      "partId": "shell-back",
+      "resolution": 128,
+      "path": "./shell-back-128.indexed.json.gz",
+      "checksum": "6ed44b5732b7dd62992ffa033d912377e2de57d4f66759c190dc2986753e17a8",
+      "bytes": 20306,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "4c6f6b49e2a478672f351ebcadaddb5570d7de6b851861dfdb8ee4710a6943e4"
+    },
+    {
+      "partId": "balance-tail",
+      "resolution": 128,
+      "path": "./balance-tail-128.indexed.json.gz",
+      "checksum": "b5cecd04be888aac5d65c629f8c53324f060854630c10ac94f189801712d9645",
+      "bytes": 6810,
+      "decodedRgbaBytes": 1048576,
+      "sourceChecksum": "8a4d4b0256bdb2f90b76067bd1a450d035656b78e1ae87bfb1bbd732f066c0ab"
+    }
+  ]
+}

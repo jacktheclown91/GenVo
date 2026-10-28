@@ -25,3 +25,7 @@ scroll owners and explicit expanded views. No camera, command or simulation
 logic changes are planned. This note precedes the styling edit.
 
 Next bounded presentation edit: src/render/motion.js separates position interpolation from canonical animation-frame interpolation. Tick/frame-only updates will not restart an in-progress step. No renderer structure, movement authority, anatomy, save or simulation file changes. Focused regression checks cover continuous travel, turns and stationary endpoints.
+
+Resolution prototype heads-up: extend indexed-art codec validation to explicit 32/64/128 square art and add a reversible, nonpersistent art-preview overlay in runtime-part-art.js. Comparison tools supply optional high-detail renderers; default catalog and gameplay resolution remain 32. No simulation, physical geometry, main loop, save, performance policy or shared renderer structure changes. Creator review precedes any global art-resolution change.
+
+Anatomical locomotion pass: genvo.js will read a renderer-only gait-coordination module keyed by the existing mounted leg-slot array. Bipeds alternate; quadrupeds use diagonal pairs; numerous bilateral limbs use a traveling bank wave; irregular layouts retain independent recovery turns. Existing stride travel and toe retraction remain unchanged. Static/courtship/swim/legacy poses retain their phase convention. No shared simulation, renderer loop, movement authority or save edits.

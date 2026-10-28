@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GenVo · Artwork field studies</title><link rel="stylesheet" href="study.css"></head>
+<body>
+<header><div><p class="eyebrow">GENVO · PRESENTATION WORKSHOP</p><h1>One anatomy. Three pixel studies.</h1><p>Compare the same modular body at the same physical size. Higher-detail artwork is experimental; ordinary gameplay retains its native 32px parts.</p></div><a href="/tools/creature-lab/" class="link">Creature Lab ↗</a></header>
+<main>
+<section class="controls" aria-label="Comparison controls">
+<label>Specimen<select id="specimen"></select></label>
+<label>View<select id="scale"><option value="2">Gameplay · 2×</option><option value="4">Close gameplay · 4×</option><option value="7" selected>Lab preview · 7×</option><option value="10">Inspection · 10×</option></select></label>
+<label>Facing<select id="facing"><option value="0">North</option><option value="1">North-east</option><option value="2" selected>East</option><option value="3">South-east</option><option value="4">South</option><option value="5">South-west</option><option value="6">West</option><option value="7">North-west</option></select></label>
+<label>Development<select id="growth"><option value="1">Adult proportions</option><option value="0.55">Juvenile scale study</option></select></label>
+<label>Pigment<select id="pigment"><option value="0">Inherited reference</option><option value="100">Warm ochre study</option><option value="220">Violet study</option></select></label>
+<label class="check"><input id="walk" type="checkbox" checked> Walking</label>
+<button id="freeze">Freeze frame</button><button id="measure">Measure composition</button>
+</section>
+<p id="status" role="status">Preparing native artwork…</p>
+<div id="cards" class="cards"></div>
+<details><summary>Study scope and measurements</summary><p>Fixtures use legal registered body plans, not naturally evolved ancestry. Juvenile and pigment controls are display studies, not save edits. Unfinished parts fall back to their current 32px artwork. Timings measure sprite composition in this browser, not full-game frame rate or integration acceptance.</p><pre id="metrics">Select Measure composition for matched body, camera scale and gait samples.</pre></details>
+<section class="world"><div class="world-head"><div><p class="eyebrow">ACTUAL PLAYABLE WORLD</p><h2>Try the artwork in its habitat</h2><p>Start a world using its normal controls, then preview a study. This changes artwork only.</p></div><div><button data-world="32">Native 32</button><button data-world="64">Study 64</button><button data-world="128">Study 128</button><button id="observe">Compare observed player</button></div></div><iframe id="game" src="/" title="Playable GenVo with optional artwork preview" loading="lazy"></iframe><p id="world-status" role="status">Native 32px gameplay. No experimental artwork selected.</p></section>
+</main><footer>Original modular pixel studies · Creator review pending · No biological or save changes</footer>
+<script type="module" src="study.mjs"></script></body></html>

@@ -3,9 +3,16 @@
 import {prepareIndexedPartRenderer} from './indexed-part-renderer.js';
 
 let installed=new Map();
+let preview=null;
 let latestLoad=0;
 const states={status:'not loaded',installed:0,revision:0,errors:[]};
-export function artForPart(id){return installed.get(id)||null}
+export function artForPart(id){return preview?.get(id)||installed.get(id)||null}
+// Explicit review tools may opt into a reversible artwork overlay. Never saved or
+// enabled by a body plan, URL, catalog load or ordinary gameplay.
+export function setPartArtPreview(parts=null){
+ if(parts!==null&&!(parts instanceof Map))throw Error('Art preview requires a part map');
+ preview=parts;states.revision++;
+}
 export function nativeArtStatus(){return {...states,errors:[...states.errors]}}
 // Numeric read for display-loop cache invalidation without allocating status snapshots.
 export function nativeArtRevision(){return states.revision}
