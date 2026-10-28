@@ -4,6 +4,7 @@ import {Simulation} from '../src/sim/simulation.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 import {regionalIdentity} from '../src/world/regional-identities.js';
 import {snapshotSignature} from '../tools/snapshot-signature.mjs';
+import {withCanonicalSeedTables} from '../tools/canonical-seed-tables.mjs';
 import {recordControlledBranch} from './helpers/regional-evolution-world.mjs';
 
 const fixtures=JSON.parse(fs.readFileSync(new URL('./fixtures/autonomous-evolution-v2-baselines.json',import.meta.url)));
@@ -12,8 +13,8 @@ assert.ok(baseline,'An untouched published /2 reference is required for this eng
 assert.equal(baseline.sourceCommit,'04c9a41524667481b0ae625d892abc5abcf29770');
 assert.equal(baseline.options.autonomousEvolution,'autonomous-evolution/2');
 const sim=new Simulation(baseline.seed,baseline.options);sim.setPlayerAutonomy(true);
-const snapshot=s=>structuredClone(createSimulationSnapshot(s,
-  {savedAt:'fixed',reason:'autonomous-evolution-v2-compatibility'}));
+const snapshot=s=>withCanonicalSeedTables(structuredClone(createSimulationSnapshot(s,
+  {savedAt:'fixed',reason:'autonomous-evolution-v2-compatibility'})));
 while(sim.tickCount<baseline.ticks)sim.update(null);
 const saved=snapshot(sim);
 assert.equal(sim.stats.births,baseline.births);assert.ok(sim.stats.births>0);

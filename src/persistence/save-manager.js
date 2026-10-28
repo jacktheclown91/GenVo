@@ -33,7 +33,7 @@ import {PlanetGeography} from '../world/planet-geography.js';
 import {planetRegionOrigin,regionKey,validatePlanetaryTravelState,validatePlanetAnimalOwnership} from '../world/planet-regions.js';
 import {World} from '../world/world.js';
 import {restoreBirthRules} from '../lineage/birth-rules.js';
-import {packFloraSeedBanks,unpackFloraSeedBanks} from './flora-seed-codec.js';
+import {SEED_COLUMNS_2,packFloraSeedColumns,unpackFloraSeedBanks} from './flora-seed-codec.js';
 import {initializeOrganicResources,validateOrganicResources,validateCarriedMaterial} from '../ecology/organic-resource-cycle.js';
 import {initializePlantResources,validatePlantResources} from '../ecology/plant-resources.js';
 import {ancestralReproductiveGenome,validReproductiveGenome} from '../reproduction/reproductive-compatibility.js';
@@ -236,7 +236,7 @@ function restoreWorld(world,state,{initializeMissingFreshwater=false,adoptOwnedW
 
 function snapshotControllers(sim,{ownedRegionalSeedMetadata=false}={}){
   const out={};
-  for(const key of CONTROLLER_KEYS){out[key]=ownState(sim[key],{skip:key==='familyIllness'?['sim','_familyTick','_familySize','_familyPlayer','_familyCache']:['sim']});if(key==='dispersal'&&out[key].floraState?.seeds)out[key].floraState={...out[key].floraState,seeds:packFloraSeedBanks(out[key].floraState.seeds,{ownedMetadata:ownedRegionalSeedMetadata})};}
+  for(const key of CONTROLLER_KEYS){out[key]=ownState(sim[key],{skip:key==='familyIllness'?['sim','_familyTick','_familySize','_familyPlayer','_familyCache']:['sim']});if(key==='dispersal'&&out[key].floraState?.seeds)out[key].floraState={...out[key].floraState,seeds:packFloraSeedColumns(out[key].floraState.seeds,{ownedMetadata:ownedRegionalSeedMetadata})};}
   return out;
 }
 
@@ -368,7 +368,7 @@ function migratePressureKinds(pressure){
 // The codec creates independent rows/metadata; all other snapshot state is cloned.
 export function restoreDetachedSimulationSnapshot(snapshot){
  const packed=snapshot?.controllers?.dispersal?.floraState?.seeds;
- if(snapshot?.schema!==SAVE_SCHEMA||packed?.codec!=='genvo.flora-seed-columns/1')return restoreSimulationSnapshot(structuredClone(snapshot));
+ if(snapshot?.schema!==SAVE_SCHEMA||packed?.codec!=='genvo.flora-seed-columns/1'&&packed?.codec!==SEED_COLUMNS_2)return restoreSimulationSnapshot(structuredClone(snapshot));
  const detached=structuredClone({...snapshot,controllers:{...snapshot.controllers,dispersal:{...snapshot.controllers.dispersal,floraState:{...snapshot.controllers.dispersal.floraState,seeds:null}}}});
  detached.controllers.dispersal.floraState.seeds=packed;
  return restoreSimulationSnapshot(detached,{[OWNED_DETACHED_BUFFERS]:true});

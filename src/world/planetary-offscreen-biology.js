@@ -13,6 +13,7 @@ import {dispersalContextFor,setDispersalContext,deliverEmigrants,takeEmigrants} 
 import {REGIONAL_REPLAY,regionalBiologyOrder,POPULATION_MODE} from './regional-replay-order.js';
 export {REGIONAL_REPLAY,POPULATION_MODE} from './regional-replay-order.js';
 import {createSimulationSnapshot,restoreDetachedSimulationSnapshot} from '../persistence/save-manager.js';
+import {independentSnapshotCopy} from '../persistence/snapshot-copy.js';
 import {OFFSCREEN_ENVIRONMENT,validateRemoteEnvironmentalLedger} from './planetary-offscreen-environment.js';
 import {validatePlanetAnimalOwnership} from './planet-regions.js';
 
@@ -140,7 +141,7 @@ export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OF
  // of one selected field and discard its corresponding conservation account.
  // A Simulation kept warm continues after publication, so its checkpoint is
  // an independent deep copy; otherwise the restored region is discarded.
- const copy=keep?structuredClone(createSimulationSnapshot(temp,{reason:session.snapshot.reason,savedAt:session.snapshot.savedAt})):createSimulationSnapshot(temp,{
+ const copy=keep?publishWarmCopy(createSimulationSnapshot(temp,{reason:session.snapshot.reason,savedAt:session.snapshot.savedAt})):createSimulationSnapshot(temp,{
   reason:session.snapshot.reason,savedAt:session.snapshot.savedAt,
   // The restored region is exclusively owned and discarded after publication.
   // Transfer immutable checkpoint metadata instead of cloning all cohort
@@ -157,6 +158,9 @@ export function stageRemoteBiology(session,{tickCount,reservedNextId,maxTicks=OF
   births:(temp.stats.births||0)-atBirths,deaths:(temp.stats.deaths||0)-atDeaths,
   fullDays:temp.day-initialDay,organisms:temp.animals.length}};
 }
+// The packed seed table was just built by this capture with copied metadata;
+// only the rest of the checkpoint needs separating from the warm Simulation.
+function publishWarmCopy(captured){return independentSnapshotCopy(captured,{owned:[captured.controllers?.dispersal?.floraState?.seeds]})}
 export function advanceRemoteBiology(active,session,{maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass}={}){
  const dispersal=dispersalContextFor(active,session.key,session.snapshot.core.tickCount),reservedNextId=highId(active),staged=stageRemoteBiology(session,{tickCount:active.tickCount,reservedNextId,maxTicks,warm:true,dispersal});
  if(!staged.candidate)return staged.result;

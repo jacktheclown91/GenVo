@@ -8,6 +8,7 @@ import {CFG} from '../src/sim/config.js';
 import {FrameStepper} from '../src/sim/frame-stepper.js';
 import {DAY_CLOCK, applyDayClock, dayTicksFor} from '../src/sim/day-clock.js';
 import {createSimulationSnapshot, restoreSimulationSnapshot, restoreDetachedSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {withCanonicalSeedTables} from '../tools/canonical-seed-tables.mjs';
 import {planetaryTravelAvailability, crossPlanetaryBorder} from '../src/world/planetary-travel.js';
 import {stageRemoteBiology, highId} from '../src/world/planetary-offscreen-biology.js';
 
@@ -34,7 +35,7 @@ function runtimeFingerprint() {
   return hash.digest('hex');
 }
 if (record) assert.equal(runtimeFingerprint(), originalFingerprint, 'Never record isolated expectations from corrected/refactored runtime; use the exact original checkout');
-const snapshot = sim => structuredClone(createSimulationSnapshot(sim, {savedAt: 'fixed', reason: 'interleaved-day-clock'}));
+const snapshot = sim => withCanonicalSeedTables(structuredClone(createSimulationSnapshot(sim, {savedAt: 'fixed', reason: 'interleaved-day-clock'})));
 // Same complete graph encoding as the protected modernization baseline, including
 // aliases, cycles, maps, sets and typed-array types. No numeric tolerance.
 function digest(value) {

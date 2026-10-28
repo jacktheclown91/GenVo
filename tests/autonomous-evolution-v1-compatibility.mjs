@@ -4,6 +4,7 @@ import {Simulation} from '../src/sim/simulation.js';
 import {createSimulationSnapshot,restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
 import {regionalIdentity} from '../src/world/regional-identities.js';
 import {snapshotSignature} from '../tools/snapshot-signature.mjs';
+import {withCanonicalSeedTables} from '../tools/canonical-seed-tables.mjs';
 import {recordControlledBranch} from './helpers/regional-evolution-world.mjs';
 const fixtures=JSON.parse(fs.readFileSync(new URL('./fixtures/autonomous-evolution-v1-baselines.json',import.meta.url)));
 const baseline=fixtures.profiles.find(row=>row.nodeMajor===Number(process.versions.node.split('.')[0]));
@@ -11,7 +12,7 @@ assert.ok(baseline,'A frozen untouched /1 baseline is required for this engine')
 assert.equal(baseline.sourceCommit,'aea8ba3dbc70f5cbf1ad956bfc6dae39cde3153f');
 assert.equal(baseline.options.autonomousEvolution,'autonomous-evolution/1');
 const sim=new Simulation(baseline.seed,baseline.options);sim.setPlayerAutonomy(true);
-const snapshot=s=>structuredClone(createSimulationSnapshot(s,{savedAt:'fixed',reason:'autonomous-evolution-v1-compatibility'}));
+const snapshot=s=>withCanonicalSeedTables(structuredClone(createSimulationSnapshot(s,{savedAt:'fixed',reason:'autonomous-evolution-v1-compatibility'})));
 while(sim.tickCount<baseline.ticks)sim.update(null);
 const saved=snapshot(sim);
 assert.equal(sim.stats.births,baseline.births);

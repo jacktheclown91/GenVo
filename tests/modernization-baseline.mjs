@@ -6,8 +6,9 @@ import fs from 'node:fs';
 import {createHash} from 'node:crypto';
 import {Simulation} from '../src/sim/simulation.js';
 import {createSimulationSnapshot, restoreSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {withCanonicalSeedTables} from '../tools/canonical-seed-tables.mjs';
 const fixture = new URL('./fixtures/modernization-baseline.json', import.meta.url);
-const snapshot = sim => structuredClone(createSimulationSnapshot(sim, {savedAt: 'fixed', reason: 'modernization-baseline'}));
+const snapshot = sim => withCanonicalSeedTables(structuredClone(createSimulationSnapshot(sim, {savedAt: 'fixed', reason: 'modernization-baseline'})));
 function digest(value) {
   const seen = new Map();
   function encode(item) {
