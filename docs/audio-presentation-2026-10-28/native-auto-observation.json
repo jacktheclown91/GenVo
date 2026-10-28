@@ -1,0 +1,109 @@
+{
+  "scope": "Ordinary public New World and Menu > Auto, no organism/weather/topology edits. Current renderer observation, not an animation improvement acceptance.",
+  "player": {
+    "frames": 1443,
+    "travelling": 174,
+    "drawnWalkingWhileTravelling": 155,
+    "stillFramesWhileTravelling": 21,
+    "maxStep": 0.1134,
+    "medianStep": 0.0402,
+    "p95Step": 0.0711,
+    "walkingShare": 0.891,
+    "stillShare": 0.121,
+    "mode": "auto",
+    "creature": "recorded",
+    "errors": []
+  },
+  "npcSamples": 16699,
+  "observedNPCs": 32,
+  "actualMovementCues": [
+    {
+      "name": "move",
+      "t": 5166,
+      "x": 61.5,
+      "y": 52.087334015460314
+    },
+    {
+      "name": "move",
+      "t": 5416.4000000003725,
+      "x": 61.5,
+      "y": 52.674659225190936
+    },
+    {
+      "name": "move",
+      "t": 5667.10000000149,
+      "x": 61.5,
+      "y": 53.26196366236701
+    },
+    {
+      "name": "move",
+      "t": 5937.60000000149,
+      "x": 61.20574006860357,
+      "y": 52.75269188754582
+    },
+    {
+      "name": "move",
+      "t": 6057.10000000149,
+      "x": 61.05860898095551,
+      "y": 52.498054058391475
+    },
+    {
+      "name": "move",
+      "t": 6299.5,
+      "x": 60.76434264938126,
+      "y": 51.98877120686712
+    },
+    {
+      "name": "move",
+      "t": 6423.4000000003725,
+      "x": 60.617208556923934,
+      "y": 51.73412817732907
+    },
+    {
+      "name": "move",
+      "t": 6664.9000000003725,
+      "x": 60.32293730381326,
+      "y": 51.22483680816666
+    },
+    {
+      "name": "move",
+      "t": 6914.700000001118,
+      "x": 60.02866300738446,
+      "y": 50.715540171973785
+    },
+    {
+      "name": "move",
+      "t": 7165.10000000149,
+      "x": 59.734385885854685,
+      "y": 50.20623864641598
+    },
+    {
+      "name": "move",
+      "t": 7320,
+      "x": 59.58724644389829,
+      "y": 49.95158635857057
+    },
+    {
+      "name": "move",
+      "t": 7548.200000001118,
+      "x": 59.29296680483151,
+      "y": 49.44228047594475
+    },
+    {
+      "name": "move",
+      "t": 7799.10000000149,
+      "x": 58.99868527897707,
+      "y": 48.93297132788046
+    },
+    {
+      "name": "move",
+      "t": 7917.9000000003725,
+      "x": 58.85154429985022,
+      "y": 48.67831637967447
+    }
+  ],
+  "sourceAudioSha256": "1f4627d1b744f882ded7c3be2cffb721341be8c71a9508de741c21b1617805f6",
+  "sourceBase": "629ad29a91fdfceb1de7770596c27c5069ac4d49",
+  "rawVideo": "reports/audio-autonomous-native-20261028-5/auto-recorded.webm",
+  "limitations": "Existing half-second travelling-window metric includes starts/stops; do not label its still-frame ratio a proven animation defect."
+}
