@@ -1,5 +1,7 @@
 # Current implementation and acceptance
 
+Mature-world save stalls are reduced. Wildlife-only births and deaths now persist in the routine 45-second autosave window, while player-lineage changes still save promptly, and duplicate queued saves no longer run. The daily flora genome collection yields between seed cells. Complete-state parity holds against untouched `8e724f72` on Day 30 and Day 100. In a native Day 101 run, frames over 1 s fall from 12 to 3, and p99 falls from 217 to 100 ms. The full 143-check local gate passes. Each remaining save still blocks for about 3 s, caused by the dispersal snapshot shape; regional replay shares that cost. See [save cadence and prune slicing](SAVE-CADENCE-AND-PRUNE-SLICING-2026-10-28.md).
+
 Prospective regional pressure observations now have a bounded actual-day buffer and strict save validation behind experimental `/3`. Published `/1` and `/2` retain explicit policies; the new frozen `/2` complete-state controls pass on Node 22 and 24. Global related-population reference reads and natural recognition remain unfinished, and the normal new-world default remains off. See [preparatory checkpoint and exact next work](REGIONAL-PRESSURE-OBSERVATIONS-2026-10-28.md). The preceding snow correction passed exact-head CI 40695500569.
 
 

@@ -30,7 +30,7 @@ Performance-only correction to two measured sources of long browser stalls in ma
 
 The remaining frames over 1 s coincide with the three saves themselves (about 2.0–2.3 s each). Median (50 ms) and p95 (83 ms) are unchanged. No page errors occurred, AUTO stayed active, and the world was never paused or blocked. Raw receipts are retained outside the repository in the session scratchpad; the table above is their complete summary.
 
-- **Integration:** the full local playable gate passes 141 of 141 checks. That is the prior 140 plus `save-milestone-cadence`, with no budget or assertion changed. Node 22/24 modernization baselines and sliced ticks pass, as do the architecture gate and its adversarial test, the canonical source audit (after regenerating sprite references) and the public export. Exact-head CI has not run, because this branch is not pushed.
+- **Integration:** the first local run of the full playable gate passed 141 of 141 checks: the prior 140 plus `save-milestone-cadence`, with no budget or assertion changed. After rebasing onto Codex's `/3` regional-pressure checkpoint `629ad29a`, the combined head passes 143 of 143. Node 22/24 modernization baselines and sliced ticks pass, as do the architecture gate and its adversarial test, the canonical source audit (after regenerating sprite references) and the public export. Exact-head CI has not run, because this branch is not pushed.
 
 ## Remaining
 
