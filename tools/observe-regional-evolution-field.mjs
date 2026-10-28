@@ -5,7 +5,7 @@
 // a second one returns west. Afterwards both regions are resident and advance in
 // synchronized strides with regional dispersal open. No organisms, stocks,
 // traits, positions of wildlife, thresholds or targets are touched.
-// Usage: node --max-old-space-size=8192 tools/observe-regional-evolution-field.mjs OUTPUT.json SEED DAYS [--policy=autonomous-evolution/3] [--snapshot-days=120,160]
+// Usage: node --max-old-space-size=8192 tools/observe-regional-evolution-field.mjs OUTPUT.json SEED DAYS [--policy=autonomous-evolution/3] [--snapshot-days=120,160] [--itinerary=out-back|stay-east]
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
@@ -61,7 +61,7 @@ function sample(){
       if(e.referencePopulationKey&&foreignPopulationKey(probe,e.referencePopulationKey))foreign++;
       for(const [g,ok] of Object.entries(e.gates||{}))gates[g]=(gates[g]||0)+(ok?1:0)}
     const nodes=[...(r.tree?.nodes?.values?.()||[])],formed=(r.tree?.events||[]).filter(e=>e.type==='formed'||e.type==='re-recognized').length;
-    return{key:r.key,mode:r.mode,tick:r.tick,day:r.day,animals:r.animals,births:r.stats.births||0,deaths:r.stats.deaths||0,emigrants:r.emigrants??null,
+    return{key:r.key,mode:r.mode,tick:r.tick,day:r.day,animals:r.animals,births:r.stats.births||0,deaths:r.stats.deaths||0,deathCauses:{...(r.stats.byCause||{})},emigrants:r.emigrants??null,
       candidates:records.filter(x=>x.establishedDay===null&&!['extinct','abandoned','merged'].includes(x.status)).length,established:established.length,
       establishedKeys:established.map(x=>({key:x.key,members:x.memberIds?.size??0,parents:x.parentPopulationKeys||[],source:x.sourcePopulationKey??null})),
       evaluated:states.length,qualified,foreignReferences:foreign,bestProgress:+best.toFixed(4),gatePasses:gates,
@@ -75,7 +75,9 @@ function sample(){
 const started=performance.now();
 const runDay=()=>{const day=sim.day;while(sim.day===day){const before=sim.tickCount;sim.update(null);if(sim.tickCount===before)throw Error(`Canonical update stopped at tick ${before} (paused ${sim.paused}).`)}};
 try{
-  runDay();cross('east');runDay();cross('west');
+  const itinerary=process.argv.find(arg=>arg.startsWith('--itinerary='))?.slice(12)||'out-back';
+  assert.ok(['out-back','stay-east'].includes(itinerary));receipt.itineraryPlan=itinerary;
+  runDay();cross('east');runDay();if(itinerary==='out-back')cross('west');
   receipt.regionsAfterItinerary=regionsOf(sim).map(r=>({key:r.key,mode:r.mode,animals:r.animals}));
   const snapshotDays=new Set((process.argv.find(arg=>arg.startsWith('--snapshot-days='))?.slice(16)||'').split(',').filter(Boolean).map(Number));
   while(sim.day<=days){runDay();sample();if(snapshotDays.has(sim.day))fs.writeFileSync(`${out}.day${sim.day}.v8`,serialize(createSimulationSnapshot(sim,{savedAt:'fixed',reason:'regional-evolution-field'})));if(sim.day%10===0){save();console.log(JSON.stringify({day:sim.day,elapsedMin:Math.round((performance.now()-started)/60000),regions:receipt.samples.at(-1).regions.map(r=>[r.key,r.animals,r.established,r.evaluated,r.foreignReferences,r.recognized])}))}}
