@@ -29,6 +29,8 @@ This plan implements the creator's brief "GENVO v1: Complete Development, Surviv
 
 Per the brief, both agents work on one canonical `main`. Neither overwrites or reverts the other's work, and neither force-pushes.
 
+**October 28 restoration.** From October 26 to 28 the creator temporarily made Codex lead engineer (see `docs/GIT-CONTINUATION-HANDOFF.md`). On October 28 the creator restored the split below: Claude resumes simulation, gameplay systems, biological evolution, ecology, persistence, performance, testing, release validation and integration; Codex returns to visual and audio development. Codex's engineering checkpoints remain the verified baseline. `src/audio/audio.js` joins the shared files below.
+
 | Claude | Codex |
 |---|---|
 | Simulation, physiology, ecology, reproduction, inheritance, pacing (the day clock), autonomy, persistence and saves | Visual identity, interface styling and layout, icons |
@@ -37,7 +39,7 @@ Per the brief, both agents work on one canonical `main`. Neither overwrites or r
 | Performance engineering; test organisation; automated and browser verification | Audio assets and sound design |
 | Clean-repository migration; release build validation | Screenshots and release presentation material |
 
-**Shared files** need a heads-up, ideally in a commit message or a note in this file, before structural edits: `src/render/renderer.js`, `src/main.js`, `index.html`, `styles.css`, `src/ui/front-end.js`, `src/ui/creature-editor.js`.
+**Shared files** need a heads-up, ideally in a commit message or a note in this file, before structural edits: `src/render/renderer.js`, `src/main.js`, `src/audio/audio.js`, `index.html`, `styles.css`, `src/ui/front-end.js`, `src/ui/creature-editor.js`.
 
 - **Rule:** presentation reads authoritative state and never becomes a second biological authority.
 - **Claude** exposes state and stable events: reaction stages, feeding receipts, combat and courtship records, threat-display verdicts, world-story beats.

@@ -1,5 +1,7 @@
 # Git continuation handoff — October 26, 2026
 
+**Ownership, October 28:** the creator returned simulation, gameplay, evolution, ecology, persistence, performance, testing and integration to Claude, and visual/audio development to Codex. This document records Codex's October 26–28 engineering lead pass and remains the verified starting point. See the ownership table in [the v1 plan](../design/GENVO-V1-PLAN-2026-10-23.md).
+
 Prospective regional pressure observations now have a bounded actual-day buffer and strict save validation behind experimental `/3`. Published `/1` and `/2` retain explicit policies; the new frozen `/2` complete-state controls pass on Node 22 and 24. Global related-population reference reads and natural recognition remain unfinished, and the normal new-world default remains off. See [preparatory checkpoint and exact next work](REGIONAL-PRESSURE-OBSERVATIONS-2026-10-28.md). The preceding snow correction passed exact-head CI 40695500569.
 
 
