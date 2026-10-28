@@ -1,5 +1,7 @@
 # Current implementation and acceptance
 
+Four natural 320-day two-region fields (two seeds, `/4` and `/3`) completed with exact restore and continuation, and produced no recognitions. In seed 1, real dispersal created cross-region ancestry, which `/4` resolved and aligned correctly. Recognition was blocked by biology: the inherited-trait gate never passed, and the pressure contrast measured 0.115 against the 0.12 threshold. Neighbour regions declined sharply, which needs its own investigation. See [the field findings](REGIONAL-EVOLUTION-FIELDS-2026-10-28.md).
+
 Prospective `autonomous-evolution/4` (opt-in, default off) resolves a population's recorded related population when it lives in another region. That population's own evidence is compared on a commonly observed day, and separation is measured across the actual border. Unavailable evidence stays unknown rather than being replaced by a local stand-in, and `/1`–`/3` stay exact against frozen untouched-source references. Natural cross-region recognition is not yet demonstrated. See [cross-region references](CROSS-REGION-REFERENCE-2026-10-28.md).
 
 Archived-region jobs now run across frames like sliced ticks, in the same order, with identical complete state. In a native Day 100 browser run with two regions, frames over 1 s fall from 12 to 6, p99 from 867 to 200 ms and the worst frame from 4.1 to 1.9 s. Each region's first restore (about 2.2 s) is still atomic, and regional throughput stays below real time. The 148-check gate passes. See [resumable regional jobs](RESUMABLE-REGIONAL-JOBS-2026-10-28.md).

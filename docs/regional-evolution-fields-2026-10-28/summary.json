@@ -1,0 +1,462 @@
+[
+ {
+  "file": "C:/Users/jackt/AppData/Local/Temp/claude/C--Users-jackt-Desktop-Games-game-jam-october-genvo-toolkit/128eada8-947c-4f62-8f8b-7e5df1a6b4d5/scratchpad/fields-20261028-1413/v4-seed0.json",
+  "seed": "POPULATION-FOUNDING-PROBE-0",
+  "policy": "autonomous-evolution/4",
+  "status": "completed",
+  "days": 321,
+  "elapsedMin": 61,
+  "restoreExact": true,
+  "continuationExact": true,
+  "itinerary": [
+   {
+    "day": 2,
+    "tick": 240,
+    "direction": "east",
+    "from": "0,0",
+    "to": "128,0",
+    "placement": {
+     "x": 128,
+     "y": 8.5
+    }
+   },
+   {
+    "day": 3,
+    "tick": 480,
+    "direction": "west",
+    "from": "128,0",
+    "to": "0,0",
+    "placement": {
+     "x": 0,
+     "y": 8.5
+    }
+   }
+  ],
+  "final": [
+   {
+    "key": "0,0",
+    "mode": "active",
+    "animals": 58,
+    "births": 81,
+    "deaths": 164,
+    "emigrants": null,
+    "established": 3,
+    "treeNodes": 8,
+    "recognitionEvents": 0
+   },
+   {
+    "key": "128,0",
+    "mode": "canonical-ticks/1",
+    "animals": 11,
+    "births": 13,
+    "deaths": 121,
+    "emigrants": 13,
+    "established": 1,
+    "treeNodes": 8,
+    "recognitionEvents": 0
+   }
+  ],
+  "regions": [
+   {
+    "key": "0,0",
+    "mode": "active",
+    "evaluations": 701,
+    "foreignEvaluations": 0,
+    "qualifiedEvaluations": 0,
+    "bestProgress": 0.7325,
+    "firstEstablishedDay": 42,
+    "maxEstablished": 3,
+    "maxEvaluated": 3,
+    "recognized": 0,
+    "referenceKinds": {
+     "none": 691,
+     "local": 10,
+     "foreign": 0
+    },
+    "gateRates": {
+     "history": 0.961,
+     "ecology": 0,
+     "distance": 0.913,
+     "cohort": 0.904,
+     "trait": 0,
+     "localPressure": 0.014,
+     "reproduction": 0.301,
+     "isolation": 0.418
+    }
+   },
+   {
+    "key": "128,0",
+    "mode": "canonical-ticks/1",
+    "evaluations": 289,
+    "foreignEvaluations": 0,
+    "qualifiedEvaluations": 0,
+    "bestProgress": 0.5755,
+    "firstEstablishedDay": 33,
+    "maxEstablished": 1,
+    "maxEvaluated": 1,
+    "recognized": 0,
+    "referenceKinds": {
+     "none": 289,
+     "local": 0,
+     "foreign": 0
+    },
+    "gateRates": {
+     "history": 0.969,
+     "ecology": 0,
+     "distance": 0,
+     "cohort": 0.893,
+     "trait": 0,
+     "localPressure": 0,
+     "reproduction": 0.17,
+     "isolation": 0.315
+    }
+   }
+  ],
+  "failure": null
+ },
+ {
+  "file": "C:/Users/jackt/AppData/Local/Temp/claude/C--Users-jackt-Desktop-Games-game-jam-october-genvo-toolkit/128eada8-947c-4f62-8f8b-7e5df1a6b4d5/scratchpad/fields-20261028-1413/v3-seed0.json",
+  "seed": "POPULATION-FOUNDING-PROBE-0",
+  "policy": "autonomous-evolution/3",
+  "status": "completed",
+  "days": 321,
+  "elapsedMin": 61,
+  "restoreExact": true,
+  "continuationExact": true,
+  "itinerary": [
+   {
+    "day": 2,
+    "tick": 240,
+    "direction": "east",
+    "from": "0,0",
+    "to": "128,0",
+    "placement": {
+     "x": 128,
+     "y": 8.5
+    }
+   },
+   {
+    "day": 3,
+    "tick": 480,
+    "direction": "west",
+    "from": "128,0",
+    "to": "0,0",
+    "placement": {
+     "x": 0,
+     "y": 8.5
+    }
+   }
+  ],
+  "final": [
+   {
+    "key": "0,0",
+    "mode": "active",
+    "animals": 58,
+    "births": 81,
+    "deaths": 164,
+    "emigrants": null,
+    "established": 3,
+    "treeNodes": 8,
+    "recognitionEvents": 0
+   },
+   {
+    "key": "128,0",
+    "mode": "canonical-ticks/1",
+    "animals": 11,
+    "births": 13,
+    "deaths": 121,
+    "emigrants": 13,
+    "established": 1,
+    "treeNodes": 8,
+    "recognitionEvents": 0
+   }
+  ],
+  "regions": [
+   {
+    "key": "0,0",
+    "mode": "active",
+    "evaluations": 701,
+    "foreignEvaluations": 0,
+    "qualifiedEvaluations": 0,
+    "bestProgress": 0.7325,
+    "firstEstablishedDay": 42,
+    "maxEstablished": 3,
+    "maxEvaluated": 3,
+    "recognized": 0,
+    "referenceKinds": {
+     "none": 691,
+     "local": 10,
+     "foreign": 0
+    },
+    "gateRates": {
+     "history": 0.961,
+     "ecology": 0,
+     "distance": 0.913,
+     "cohort": 0.904,
+     "trait": 0,
+     "localPressure": 0.014,
+     "reproduction": 0.301,
+     "isolation": 0.418
+    }
+   },
+   {
+    "key": "128,0",
+    "mode": "canonical-ticks/1",
+    "evaluations": 289,
+    "foreignEvaluations": 0,
+    "qualifiedEvaluations": 0,
+    "bestProgress": 0.5755,
+    "firstEstablishedDay": 33,
+    "maxEstablished": 1,
+    "maxEvaluated": 1,
+    "recognized": 0,
+    "referenceKinds": {
+     "none": 289,
+     "local": 0,
+     "foreign": 0
+    },
+    "gateRates": {
+     "history": 0.969,
+     "ecology": 0,
+     "distance": 0,
+     "cohort": 0.893,
+     "trait": 0,
+     "localPressure": 0,
+     "reproduction": 0.17,
+     "isolation": 0.315
+    }
+   }
+  ],
+  "failure": null
+ },
+ {
+  "file": "C:/Users/jackt/AppData/Local/Temp/claude/C--Users-jackt-Desktop-Games-game-jam-october-genvo-toolkit/128eada8-947c-4f62-8f8b-7e5df1a6b4d5/scratchpad/fields-20261028-1413/v4-seed1.json",
+  "seed": "POPULATION-FOUNDING-PROBE-1",
+  "policy": "autonomous-evolution/4",
+  "status": "completed",
+  "days": 321,
+  "elapsedMin": 57,
+  "restoreExact": true,
+  "continuationExact": true,
+  "itinerary": [
+   {
+    "day": 2,
+    "tick": 240,
+    "direction": "east",
+    "from": "0,0",
+    "to": "128,0",
+    "placement": {
+     "x": 128,
+     "y": 8.5
+    }
+   },
+   {
+    "day": 3,
+    "tick": 480,
+    "direction": "west",
+    "from": "128,0",
+    "to": "0,0",
+    "placement": {
+     "x": 0,
+     "y": 8.5
+    }
+   }
+  ],
+  "final": [
+   {
+    "key": "0,0",
+    "mode": "active",
+    "animals": 82,
+    "births": 118,
+    "deaths": 158,
+    "emigrants": null,
+    "established": 4,
+    "treeNodes": 8,
+    "recognitionEvents": 0
+   },
+   {
+    "key": "128,0",
+    "mode": "canonical-ticks/1",
+    "animals": 1,
+    "births": 19,
+    "deaths": 143,
+    "emigrants": 29,
+    "established": 0,
+    "treeNodes": 8,
+    "recognitionEvents": 0
+   }
+  ],
+  "regions": [
+   {
+    "key": "0,0",
+    "mode": "active",
+    "evaluations": 894,
+    "foreignEvaluations": 0,
+    "qualifiedEvaluations": 0,
+    "bestProgress": 0.679,
+    "firstEstablishedDay": 32,
+    "maxEstablished": 4,
+    "maxEvaluated": 4,
+    "recognized": 0,
+    "referenceKinds": {
+     "none": 797,
+     "local": 97,
+     "foreign": 0
+    },
+    "gateRates": {
+     "history": 0.96,
+     "ecology": 0.017,
+     "distance": 0.913,
+     "cohort": 0.935,
+     "trait": 0,
+     "localPressure": 0.056,
+     "reproduction": 0.515,
+     "isolation": 0.261
+    }
+   },
+   {
+    "key": "128,0",
+    "mode": "canonical-ticks/1",
+    "evaluations": 338,
+    "foreignEvaluations": 0,
+    "qualifiedEvaluations": 0,
+    "bestProgress": 0.7338,
+    "firstEstablishedDay": 36,
+    "maxEstablished": 2,
+    "maxEvaluated": 2,
+    "recognized": 0,
+    "referenceKinds": {
+     "none": 338,
+     "local": 0,
+     "foreign": 0
+    },
+    "gateRates": {
+     "history": 0.947,
+     "ecology": 0,
+     "distance": 1,
+     "cohort": 0.512,
+     "trait": 0,
+     "localPressure": 0,
+     "reproduction": 0.139,
+     "isolation": 0.331
+    }
+   }
+  ],
+  "failure": null
+ },
+ {
+  "file": "C:/Users/jackt/AppData/Local/Temp/claude/C--Users-jackt-Desktop-Games-game-jam-october-genvo-toolkit/128eada8-947c-4f62-8f8b-7e5df1a6b4d5/scratchpad/fields-20261028-1413/v3-seed1.json",
+  "seed": "POPULATION-FOUNDING-PROBE-1",
+  "policy": "autonomous-evolution/3",
+  "status": "completed",
+  "days": 321,
+  "elapsedMin": 57,
+  "restoreExact": true,
+  "continuationExact": true,
+  "itinerary": [
+   {
+    "day": 2,
+    "tick": 240,
+    "direction": "east",
+    "from": "0,0",
+    "to": "128,0",
+    "placement": {
+     "x": 128,
+     "y": 8.5
+    }
+   },
+   {
+    "day": 3,
+    "tick": 480,
+    "direction": "west",
+    "from": "128,0",
+    "to": "0,0",
+    "placement": {
+     "x": 0,
+     "y": 8.5
+    }
+   }
+  ],
+  "final": [
+   {
+    "key": "0,0",
+    "mode": "active",
+    "animals": 82,
+    "births": 118,
+    "deaths": 158,
+    "emigrants": null,
+    "established": 4,
+    "treeNodes": 8,
+    "recognitionEvents": 0
+   },
+   {
+    "key": "128,0",
+    "mode": "canonical-ticks/1",
+    "animals": 1,
+    "births": 19,
+    "deaths": 143,
+    "emigrants": 29,
+    "established": 0,
+    "treeNodes": 8,
+    "recognitionEvents": 0
+   }
+  ],
+  "regions": [
+   {
+    "key": "0,0",
+    "mode": "active",
+    "evaluations": 894,
+    "foreignEvaluations": 0,
+    "qualifiedEvaluations": 0,
+    "bestProgress": 0.679,
+    "firstEstablishedDay": 32,
+    "maxEstablished": 4,
+    "maxEvaluated": 4,
+    "recognized": 0,
+    "referenceKinds": {
+     "none": 797,
+     "local": 97,
+     "foreign": 0
+    },
+    "gateRates": {
+     "history": 0.96,
+     "ecology": 0.017,
+     "distance": 0.913,
+     "cohort": 0.935,
+     "trait": 0,
+     "localPressure": 0.056,
+     "reproduction": 0.515,
+     "isolation": 0.261
+    }
+   },
+   {
+    "key": "128,0",
+    "mode": "canonical-ticks/1",
+    "evaluations": 338,
+    "foreignEvaluations": 0,
+    "qualifiedEvaluations": 0,
+    "bestProgress": 0.6338,
+    "firstEstablishedDay": 36,
+    "maxEstablished": 2,
+    "maxEvaluated": 2,
+    "recognized": 0,
+    "referenceKinds": {
+     "none": 338,
+     "local": 0,
+     "foreign": 0
+    },
+    "gateRates": {
+     "history": 0.947,
+     "ecology": 0,
+     "distance": 0,
+     "cohort": 0.512,
+     "trait": 0,
+     "localPressure": 0,
+     "reproduction": 0.139,
+     "isolation": 0.331
+    }
+   }
+  ],
+  "failure": null
+ }
+]
