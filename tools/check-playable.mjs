@@ -87,6 +87,8 @@ const runtime=[
   'tests/save-milestone-cadence.mjs',
   'tests/flora-seed-columns-2.mjs',
   'tests/snapshot-copy.mjs',
+  'tests/audio-movement-presentation.mjs',
+  'tests/turn-cadence-presentation.mjs',
   'tests/save-persistence.mjs',
   'tests/bundled-scenario-restore.mjs',
   'tests/regional-records.mjs',
