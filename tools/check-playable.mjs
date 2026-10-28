@@ -84,6 +84,7 @@ const runtime=[
   'tests/camera-bounds.mjs',
   'tests/save-concurrent-requests.mjs',
   'tests/save-async-coherence.mjs',
+  'tests/save-milestone-cadence.mjs',
   'tests/save-persistence.mjs',
   'tests/bundled-scenario-restore.mjs',
   'tests/regional-records.mjs',

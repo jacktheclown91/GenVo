@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';import fs from 'node:fs';import {createHash} from 'node:crypto';
-import {pruneUnusedFloraGenomes} from '../src/ecology/flora-genome-lifetime.js';
+import {pruneUnusedFloraGenomes,pruneUnusedFloraGenomesSteps} from '../src/ecology/flora-genome-lifetime.js';
 import {founderFloraGenome} from '../src/ecology/flora-genotype.js';
 const source=fs.readFileSync(new URL('../docs/performance/flora-genome-lifetime-before-2026-10-21.txt',import.meta.url),'utf8');
 assert.equal(createHash('sha256').update(source).digest('hex'),'f09e87f5b78f3c9a448e9eee87d5551fe1bc92c016c9119013707126a3eca264','preserved original collection source');
@@ -15,4 +15,8 @@ assert.equal(actual.floraState.seeds.bramble.get(3).size,1);assert.equal(actual.
 for(const id of ids)assert.ok(actual.floraState.genomes.has(id),'retain referenced genotype '+id);
 for(const id of ['zero','negative','unused'])assert.equal(actual.floraState.genomes.has(id),false);
 assert.equal(pruneUnusedFloraGenomes(actual).removed,0,'repeated collection is stable');
-console.log('Flora genome lifetime PASS: reference parity, positive rare cohorts, parents, reproductive stocks, history and carried provenance, zero removal without iterator skips.');
+// Resumable collection: many seed cells force yields; stepped and original results and graphs match.
+const many=structuredClone(fixture);many.floraState.seeds.bramble=new Map(Array.from({length:3000},(_,c)=>[c,new Map([['rare',{amount:c%3?1e-9:0}],['zero',{amount:0}]])]));
+const steppedState=structuredClone(many),originalState=structuredClone(many),steps=pruneUnusedFloraGenomesSteps(steppedState);let r,yields=0;while(!(r=steps.next()).done)yields++;
+assert.ok(yields>=2,'large seed banks yield between cells');assert.deepEqual(r.value,before(originalState));assert.deepEqual(steppedState,originalState,'stepped collection mutates identically');
+console.log('Flora genome lifetime PASS: reference parity, positive rare cohorts, parents, reproductive stocks, history and carried provenance, zero removal without iterator skips, resumable slices.');

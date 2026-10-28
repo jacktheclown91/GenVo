@@ -554,7 +554,7 @@ export class SaveManager{
     this.idleHandle=null;
     this.lastSavedAt=0;
     this.lastSavedTick=-1;
-    this.lastObservedSignature='';
+    this.lastObservedSignature='';this.lastObservedLineage='';
     this.available=typeof indexedDB!=='undefined';
     this.activeSlotId=this.restoreActiveSlot();this.worldNames=new Map();
   }
@@ -691,12 +691,14 @@ export class SaveManager{
     // Live play loads the resident neighbourhood; unloaded regions stay on disk.
     const snapshot=await readRegionalCheckpoint(await this.db(),id,{residentOnly:true});
     if(!snapshot)return null;
-    const sim=restoreSimulationSnapshot(snapshot);this.setActiveSlot(id);this.worldNames.set(id,snapshot.meta?.worldName||'');this.lastSavedAt=Date.now();this.lastSavedTick=sim.tickCount;this.lastObservedSignature=this.signature(sim);return sim;
+    const sim=restoreSimulationSnapshot(snapshot);this.setActiveSlot(id);this.worldNames.set(id,snapshot.meta?.worldName||'');this.lastSavedAt=Date.now();this.lastSavedTick=sim.tickCount;this.lastObservedSignature=this.signature(sim);this.lastObservedLineage=this.lineageSignature(sim);return sim;
   }
   schedule(reason='autosave',delay=900){
     if(!this.available)return;
     this.pendingReason=reason;
     if(this.pendingTimer)clearTimeout(this.pendingTimer);
+    // A newer request replaces one already waiting for idle time; it never runs twice.
+    if(this.idleHandle){if(typeof cancelIdleCallback==='function')cancelIdleCallback(this.idleHandle);else clearTimeout(this.idleHandle);this.idleHandle=null}
     this.pendingTimer=setTimeout(()=>{
       this.pendingTimer=null;
       const run=()=>{this.idleHandle=null;if(this.getSim?.()?.tickInProgress){this.schedule(this.pendingReason||reason,120);return}const nextReason=this.pendingReason||reason;this.pendingReason=null;this.saveNow(nextReason).catch(()=>{})};
@@ -710,13 +712,28 @@ export class SaveManager{
       sim.generationProgress?.completed?.length||0,sim.lineage?.highestGeneration||1
     ].join('|');
   }
+  // The player's own lineage and works. Wildlife births and deaths change only
+  // signature(): they remain unsaved events, persisted by the routine autosave
+  // window instead of a prompt save (a mature world saves for seconds).
+  lineageSignature(sim){
+    return[
+      sim.shelter?.shelters?.length||0,sim.lineage?.handoffs?.length||0,sim.evolutionTree?.events?.length||0,
+      sim.generationProgress?.completed?.length||0,sim.lineage?.highestGeneration||1,
+      sim.lineage?.records?.size||0,sim.lineage?.livingCount?.()||0
+    ].join('|');
+  }
   observe({eligible=true}={}){
     if(!eligible||!this.available||this.busy)return;
     const sim=this.getSim?.();if(!sim?.player?.())return;
     const now=Date.now(),sig=this.signature(sim);
-    if(!this.lastObservedSignature){this.lastObservedSignature=sig;if(!this.lastSavedAt)this.schedule('lineage-start',2200);return}
-    if(sig!==this.lastObservedSignature){this.lastObservedSignature=sig;this.schedule('lineage-milestone',900)}
-    if(now-this.lastSavedAt>=this.autosaveMs&&sim.tickCount!==this.lastSavedTick)this.schedule('autosave',700);
+    if(!this.lastObservedSignature){this.lastObservedSignature=sig;this.lastObservedLineage=this.lineageSignature(sim);if(!this.lastSavedAt)this.schedule('lineage-start',2200);return}
+    if(sig!==this.lastObservedSignature){
+      const lineage=this.lineageSignature(sim),prompt=lineage!==this.lastObservedLineage;
+      this.lastObservedSignature=sig;this.lastObservedLineage=lineage;
+      if(prompt)this.schedule('lineage-milestone',900);
+      else if(!this.pendingTimer&&!this.idleHandle)this.schedule('lineage-milestone',Math.max(900,this.lastSavedAt+this.autosaveMs-now));
+    }
+    if(now-this.lastSavedAt>=this.autosaveMs&&sim.tickCount!==this.lastSavedTick&&!this.pendingTimer&&!this.idleHandle)this.schedule('autosave',700);
   }
   async saveNow(reason='manual'){
     if(!this.available)return null;
@@ -742,7 +759,7 @@ export class SaveManager{
       const indexed=sim.world.generator==='planetary/1',previous=indexed?await readRegionalCheckpoint(db,slotId,{manifestOnly:true}):null;
       // Capture and enqueue transport in one turn: nested state may still be live.
       const ticket=indexed?this.regionalJournal.capture(sim,slotId,previous):null;
-      const capturedSignature=this.signature(sim),snapshot=ticket?.incremental||ticket?.plan?createActiveRegionalSnapshot(sim,{reason}):createSimulationSnapshot(sim,{reason});
+      const capturedSignature=this.signature(sim),capturedLineage=this.lineageSignature(sim),snapshot=ticket?.incremental||ticket?.plan?createActiveRegionalSnapshot(sim,{reason}):createSimulationSnapshot(sim,{reason});
       snapshot.meta.key=slotId;
       snapshot.meta.worldName=worldName;
       if(indexed){
@@ -764,7 +781,7 @@ export class SaveManager{
       metadataStore.put(snapshot.meta,slotId);
       saveStore.put(snapshot,slotId);
       await transactionDone(tx);}
-      this.lastSavedAt=Date.now();this.lastSavedTick=snapshot.core.tickCount;this.lastObservedSignature=capturedSignature;
+      this.lastSavedAt=Date.now();this.lastSavedTick=snapshot.core.tickCount;this.lastObservedSignature=capturedSignature;this.lastObservedLineage=capturedLineage;
       this.status('saved','Saved',snapshot.meta);
       this.recordEvolvedRegistrations(sim).catch(error=>console.warn('Evolutionary library update failed',error));
       return snapshot.meta;
@@ -817,7 +834,7 @@ export class SaveManager{
   }
   resetObservation(sim=this.getSim?.()){
     this.regionalJournal.clear();
-    this.lastObservedSignature=sim?this.signature(sim):'';
+    this.lastObservedSignature=sim?this.signature(sim):'';this.lastObservedLineage=sim?this.lineageSignature(sim):'';
     this.lastSavedTick=-1;
   }
 }

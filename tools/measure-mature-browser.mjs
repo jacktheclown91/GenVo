@@ -57,7 +57,10 @@ try{
   receipt.memoryBefore=await cdp.send('Performance.getMetrics');
   await page.evaluate(()=>{
     const state=()=>{const g=window.__GENVO8__,s=g.sim;return{tick:s.tickCount,day:s.day,live:s.animals.filter(a=>a.alive).length,auto:s.playerAutonomy,paused:s.paused,blocked:g.tutorial.worldInputBlocked(),stage:g.tutorial.stage,player:!!s.player()}};
-    const p=window.__matureProfile={frames:[],longTasks:[],samples:[state()],start:performance.now(),running:true};
+    const p=window.__matureProfile={frames:[],longTasks:[],samples:[state()],saves:[],start:performance.now(),running:true};
+    // Observe routine saves only: the wrapper times the unchanged method.
+    const manager=window.__GENVO8__.saveManager,saveNow=manager.saveNow.bind(manager);
+    manager.saveNow=async reason=>{const begin=performance.now();try{return await saveNow(reason)}finally{if(p.running)p.saves.push({reason,start:begin-p.start,ms:performance.now()-begin})}};
     let previous;
     const frame=now=>{if(!p.running)return;if(previous!==undefined)p.frames.push(now-previous);previous=now;requestAnimationFrame(frame)};
     requestAnimationFrame(frame);
@@ -76,14 +79,16 @@ try{
       await page.locator('#youngSummary [data-young="continue"]').click();
     }
   }
-  receipt.profile=await page.evaluate(()=>{const p=window.__matureProfile;p.running=false;clearInterval(p.timer);p.observer.disconnect();return{frames:p.frames,longTasks:p.longTasks,samples:p.samples,elapsedMs:performance.now()-p.start}});
+  receipt.profile=await page.evaluate(()=>{const p=window.__matureProfile;p.running=false;clearInterval(p.timer);p.observer.disconnect();return{frames:p.frames,longTasks:p.longTasks,samples:p.samples,saves:p.saves,elapsedMs:performance.now()-p.start}});
   const sorted=receipt.profile.frames.slice().sort((a,b)=>a-b),at=q=>sorted[Math.min(sorted.length-1,Math.ceil(q*sorted.length)-1)]??null;
   receipt.frameMs={count:sorted.length,median:at(.5),p95:at(.95),p99:at(.99),worst:at(1)};
   receipt.longTasksPerMinute=receipt.profile.longTasks.length*60000/receipt.profile.elapsedMs;
+  receipt.framesOver={ms250:sorted.filter(ms=>ms>250).length,ms1000:sorted.filter(ms=>ms>1000).length};
+  receipt.routineSaves={count:receipt.profile.saves.length,reasons:receipt.profile.saves.map(s=>s.reason),totalMs:receipt.profile.saves.reduce((a,s)=>a+s.ms,0)};
   await page.screenshot({path:out+'.png'});
   receipt.save=await page.evaluate(async()=>{const begin=performance.now();const result=await window.__GENVO8__.saveManager.saveNow('performance-observation');return{ms:performance.now()-begin,saved:!!result}});
   await cdp.send('HeapProfiler.collectGarbage');
   receipt.memoryAfter=await cdp.send('Performance.getMetrics');
-  console.log(JSON.stringify({scenario,frameMs:receipt.frameMs,save:receipt.save,first:receipt.profile.samples[0],last:receipt.profile.samples.at(-1)}));
+  console.log(JSON.stringify({scenario,frameMs:receipt.frameMs,framesOver:receipt.framesOver,routineSaves:receipt.routineSaves,longTasksPerMinute:receipt.longTasksPerMinute,save:receipt.save,first:receipt.profile.samples[0],last:receipt.profile.samples.at(-1)}));
 }catch(error){receipt.failure=error.stack;throw error}
 finally{fs.writeFileSync(out,JSON.stringify(receipt,null,2));await browser?.close();await new Promise(resolve=>server.close(resolve))}
