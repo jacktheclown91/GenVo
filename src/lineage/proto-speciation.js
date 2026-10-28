@@ -1,4 +1,5 @@
 import {autonomousEvolutionEnabled} from './autonomous-evolution.js';
+import {alignedPressureProfiles} from './regional-reference.js';
 import {inheritedPhysicalReadings,recordInheritedPhysicalEvidence,physicalTraitMeta,INHERITED_PARTS} from './inherited-anatomy-evidence.js';
 import {AUTONOMOUS_POPULATIONS} from '../ecology/autonomous-founding.js';
 import {chooseParentalReading} from './parental-reading.js';
@@ -40,8 +41,8 @@ export class ProtoSpeciationController{
   }
   populations(){return this.sim.populationMemory?.populations?.()||[]}
   differentialFor(key){
-    const memory=this.sim.populationMemory,profile=memory?.profile?.(key);if(!profile||profile.days<5)return null;
-    let peers=memory.snapshots?.().filter(x=>x.population.key!==key&&x.profile?.days>=5)||[];if(autonomousEvolutionEnabled(this.sim)){const pop=memory.populationByKey(key);if(!pop)return null;const cohort=this.sim.speciation?.cohortFor(pop)||[],reference=this.sim.evolutionTree.referencePopulationFor(pop,cohort);peers=peers.filter(peer=>peer.population.key===reference?.key);}if(!peers.length)return null;let best=null;
+    const memory=this.sim.populationMemory;let profile=memory?.profile?.(key);if(!profile||profile.days<5)return null;
+    let peers=memory.snapshots?.().filter(x=>x.population.key!==key&&x.profile?.days>=5)||[];if(autonomousEvolutionEnabled(this.sim)){const pop=memory.populationByKey(key);if(!pop)return null;const cohort=this.sim.speciation?.cohortFor(pop)||[],reference=this.sim.evolutionTree.referencePopulationFor(pop,cohort);if(reference?.remote){const aligned=alignedPressureProfiles(memory.histories.get(key),reference.history);if(!aligned||aligned.mine.days<5||aligned.theirs.days<5)return null;profile=aligned.mine;peers=[{population:reference,profile:aligned.theirs}]}else peers=peers.filter(peer=>peer.population.key===reference?.key);}if(!peers.length)return null;let best=null;
     for(const peer of peers){const theirs=Object.fromEntries(peer.profile.axes.map(a=>[a.id,a.mean]));const deltas=profile.axes.map(a=>({id:a.id,label:a.label,mine:a.mean,other:theirs[a.id]||0,delta:a.mean-(theirs[a.id]||0),magnitude:Math.abs(a.mean-(theirs[a.id]||0))})).sort((a,b)=>b.magnitude-a.magnitude||a.id.localeCompare(b.id));const score=deltas.reduce((n,d)=>n+d.magnitude,0)/Math.max(1,deltas.length);if(!best||score>best.score)best={key,profile,peer:peer.population,peerProfile:peer.profile,score,deltas}}
     if(!best||best.score<.12)return null;const positive=best.deltas.filter(d=>d.delta>=.18&&d.mine>=.28&&PROTO_TRAITS[d.id]).sort((a,b)=>b.delta-a.delta||b.mine-a.mine||a.id.localeCompare(b.id));if(!positive.length)return null;return{...best,dominant:positive[0],positive};
   }

@@ -1,5 +1,6 @@
 import {mergeEvolutionaryTreeHistory} from '../lineage/evolution-tree-history.js';
-import {regionalEvolutionEnabled} from '../lineage/autonomous-evolution.js';
+import {regionalEvolutionEnabled,crossRegionalReferenceEnabled} from '../lineage/autonomous-evolution.js';
+import {regionalReferenceContextFor,setRegionalReferenceContext} from '../lineage/regional-reference.js';
 // E18: incremental offscreen organism ecology. Each step is an ORIGINAL
 // Simulation.update tick, never synthetic population or food growth.
 // Region snapshots remain the single organism/resource owner. No world is
@@ -89,7 +90,7 @@ export function highId(sim){
 // form pauses inside and between the region's own ticks; the archived region
 // is exclusively owned until publication, so every pause reads and writes nothing.
 export function stageRemoteBiology(session,options){return drain(stageRemoteBiologySteps(session,options))}
-export function* stageRemoteBiologySteps(session,{tickCount,reservedNextId,maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass,warm=false,dispersal=null}={}){
+export function* stageRemoteBiologySteps(session,{tickCount,reservedNextId,maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass,warm=false,dispersal=null,reference=null}={}){
  const active={tickCount};
  if(!Number.isSafeInteger(reservedNextId)||reservedNextId<1)throw Error('Invalid reserved regional identity watermark.');
  // Another simulation may currently own CFG; this archive owns its work bound.
@@ -120,7 +121,7 @@ export function* stageRemoteBiologySteps(session,{tickCount,reservedNextId,maxTi
     lastPopulation:temp.animals.length};
  const physical=environmentalLedger(session,temp.day);
  const atBirths=temp.stats.births||0,atDeaths=temp.stats.deaths||0,emigrants=[];
- setDispersalContext(temp,dispersal);
+ setDispersalContext(temp,dispersal);setRegionalReferenceContext(temp,reference);
  for(let tick=0;tick<steps;tick++){
   const beforeDay=temp.day;
   yield* temp.updateSteps(null,{externalPlayerControl:true,populationModel});yield;
@@ -141,7 +142,7 @@ export function* stageRemoteBiologySteps(session,{tickCount,reservedNextId,maxTi
  ledger.deaths+=Math.max(0,(temp.stats.deaths||0)-atDeaths);
  ledger.lastPopulation=temp.animals.length;
  if(emigrants.length)ledger.emigrants=(ledger.emigrants||0)+emigrants.length;
- setDispersalContext(temp,null);
+ setDispersalContext(temp,null);setRegionalReferenceContext(temp,null);
  // The snapshot builder owns food/seed/soil/genomes; never synthesize a copy
  // of one selected field and discard its corresponding conservation account.
  // A Simulation kept warm continues after publication, so its checkpoint is
@@ -171,7 +172,9 @@ export function* stageRemoteBiologySteps(session,{tickCount,reservedNextId,maxTi
 function* publishWarmCopySteps(captured){yield;return yield* independentSnapshotCopySteps(captured,{owned:[captured.controllers?.dispersal?.floraState?.seeds]})}
 export function advanceRemoteBiology(active,session,options){return drain(advanceRemoteBiologySteps(active,session,options))}
 export function* advanceRemoteBiologySteps(active,session,{maxTicks=OFFSCREEN_BIOLOGY.ticksPerPass}={}){
- const dispersal=dispersalContextFor(active,session.key,session.snapshot.core.tickCount),reservedNextId=highId(active),staged=yield* stageRemoteBiologySteps(session,{tickCount:active.tickCount,reservedNextId,maxTicks,warm:true,dispersal});
+ const dispersal=dispersalContextFor(active,session.key,session.snapshot.core.tickCount),reservedNextId=highId(active),staged=yield* stageRemoteBiologySteps(session,{tickCount:active.tickCount,reservedNextId,maxTicks,warm:true,dispersal,
+  // /4: the same read-only population evidence the active world reads.
+  reference:crossRegionalReferenceEnabled(active)?regionalReferenceContextFor(active,session.key):null});
  if(!staged.candidate)return staged.result;
  const nextSessions=active.planetaryTravel.sessions.map(s=>s===session?staged.candidate:s);
  validatePlanetAnimalOwnership(active.animals,{schema:1,nextId:Math.max(reservedNextId,staged.nextId),sessions:nextSessions});
