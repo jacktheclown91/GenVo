@@ -1,3 +1,4 @@
+import {WorkMotionPresentation,applyWorkMotion,CLIMB_PIXEL_HEIGHT} from './work-motion.js';
 import {AerialPresentation,applyAerialPose} from './aerial-presentation.js';
 import {GroundContactTracker} from './ground-contacts.js';
 import {courtshipCameraTarget} from './courtship-camera.js';
@@ -186,7 +187,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     drawSensoryFog(this,{tile,cols,rows,startX,startY});
     this.drawHomeSite(tile);
     beginReadoutFrame(this);if(this.guideTarget&&this.sim.uiTutorialStage?.startsWith('step-'))this.drawGuide(tile);drawWeatherReadout(this);drawRefugeReadout(this);drawCaveProgress(this);
-    this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId),{renderer:this});this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.groundContacts?.prune(this.renderNow);this.aerialPresentation?.prune(this.encounters?.time||0);this.processTerrainRefreshQueue();}
+    this.drawPlayerAnchor(tile);if(!this.sim.player()?.underground){drawFlightWind(this.ctx,this.sim,this.screenPos?.get(this.sim.playerId),{renderer:this});this.drawRelativeMarks(tile);this.drawReadabilityCues(tile)}this.motion.prune(this.sim.tickCount);this.groundContacts?.prune(this.renderNow);this.aerialPresentation?.prune(this.encounters?.time||0);this.workMotion?.prune(this.encounters?.time||0);this.processTerrainRefreshQueue();}
 
 
   // v1.33.5: which relatives are carrying out your Family Command (solid gold pip) and which
@@ -1061,10 +1062,11 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const inWater=liquidContact(this.sim.world,a);if(a.airborne)action=a.aerialMode==='jump'?'jump':a.aerialMode==='glide'?'glide':'fly';else if(a.jumpLanding&&this.sim.tickCount-a.jumpLanding.tick>=0&&this.sim.tickCount-a.jumpLanding.tick<3)action='land';else if(inWater&&(this.sim.canSwim?.(a)||a.iceImmersion)&&!['eat','drink','crack'].includes(action))action='swim';
     const bob=(a.airborne||alert||['drink','eat','hunt'].includes(action))?0:(moving?cycle8(BODY_BOB,phase):0);
     // Whole-body carriage from mounted legs and build; a plain walker keeps exactly the shared bob.
-    const carriage=(a.airborne||alert||['drink','eat','hunt'].includes(action))?null:locomotionOffsets(locomotionStyle(a),{phase,moving,action,baseBob:bob,propulsion:action==='swim'?(movementProfile(a,this.sim.world).speed||0)/.66:1});
+    const carriage=(a.airborne||a.perched||a.climb||a.burrowWork||alert||['drink','eat','hunt'].includes(action))?null:locomotionOffsets(locomotionStyle(a),{phase,moving,action,baseBob:bob,propulsion:action==='swim'?(movementProfile(a,this.sim.world).speed||0)/.66:1});
     const visualGrowth=a.player?dev.growth:Math.round(dev.growth*32)/32;ph.bodyScale*=visualGrowth;ph.limbScale*=.72+.28*visualGrowth;ph.sensoryScale*=.78+.22*visualGrowth;if(dev.maturity<.55){ph.stripe=false;ph.spot=false}
     const life=visualLifeState(this.sim,a,{frame,moving,action,development:dev,social,timeSeconds:this.encounters?.time});life.growth=visualGrowth;if(!a.player){life.breath=Math.round(life.breath*8)/8;life.settle=Math.round(life.settle*8)/8;}
     const behavior=behaviorVisualState({bodyPlan:a.bodyPlan,id:a.id,action,phase,moving,life,social});
+    const workMotion=(this.workMotion||=new WorkMotionPresentation()).sample(this.sim,a,this.encounters?.time||0);applyWorkMotion(behavior,workMotion);
     const aerial=(this.aerialPresentation||=new AerialPresentation()).sample(this.sim,a,this.encounters?.time||0);applyAerialPose(behavior,aerial);
     // Body and joints yield above support; contact shadows/toes stay on the ground.
     if(carriage){behavior.bodyRise+=carriage.rise;behavior.bodySway=(behavior.bodySway||0)+carriage.sway;behavior.torsoTwist=carriage.twist;behavior.dorsalRoll=carriage.roll;behavior.bodyLean=(behavior.bodyLean||0)+carriage.lean}
@@ -1086,7 +1088,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     if(!a.underground&&!a.airborne&&!a.perched&&!(a.diveDepth>.03))drawGroundContact(c,{contact,scale,bodyScale:ph.bodyScale,dir:drawDir});
     if(!a.underground&&!a.airborne&&!a.perched)drawActivityGround(c,{bodyPlan:a.bodyPlan,id:a.id,frame:phase,moving,action,scale,dir:drawDir});
     const depthShadow=creatureShadowFor(this.sim.world,a,this.habitatField,{bodyScale:ph.bodyScale+(life.exhausted?.08:0),moving,dir:drawDir});drawCreatureDepthShadow(c,{shadow:depthShadow,scale,hurt:life.hurt});
-    if(a.airborne||a.perched){c.save();c.globalAlpha*=.22;c.fillStyle='#23303d';c.beginPath();c.ellipse(0,2*scale,6*scale,3*scale,0,0,Math.PI*2);c.fill();c.restore();c.translate(0,(a.climb?-a.climb.height*7/3:a.aerialMode==='jump'?-Math.max(0,Math.min(16,(a.jump.altitude-glideGround(this.sim.world,a.x,a.y))*7)):a.aerialMode==='glide'?-Math.max(1,Math.min(14,(a.glideAltitude-glideGround(this.sim.world,a.x,a.y))*3)):a.airborne?-9:-7)*scale)}
+    if(a.airborne||a.perched){c.save();c.globalAlpha*=.22;c.fillStyle='#23303d';c.beginPath();c.ellipse(0,2*scale,6*scale,3*scale,0,0,Math.PI*2);c.fill();c.restore();c.translate(0,(a.climb?-(workMotion?.height??a.climb.height)*CLIMB_PIXEL_HEIGHT:a.aerialMode==='jump'?-Math.max(0,Math.min(16,(a.jump.altitude-glideGround(this.sim.world,a.x,a.y))*7)):a.aerialMode==='glide'?-Math.max(1,Math.min(14,(a.glideAltitude-glideGround(this.sim.world,a.x,a.y))*3)):a.airborne?-9:-7)*scale)}
     const palette=creaturePalette(ph);
     if(a.hidden)c.globalAlpha*=.58;
     if(a.caveTransit){const progress=Math.min(1,a.caveTransit.elapsed/CAVES.transitionSeconds),depth=a.caveTransit.entering?progress:1-progress;c.translate(0,depth*5*scale);c.globalAlpha*=1-depth*.55}
@@ -1102,7 +1104,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
       dir:drawDir,now:this.renderNow,moving,paused:!!this.sim.paused,action,
       eligible:!!a.bodyPlan&&!aerial?.landing&&!a.airborne&&!a.perched&&!a.climb&&!a.caveTransit&&!a.burrowWork&&!(a.diveDepth>.03)&&!reaction&&!defense&&!impact&&!encounter.move&&!feeding&&!birth&&!combatStatus?.attackPhase&&!combatStatus?.bracing&&!a.playerHunt&&!a.hidden
     });
-    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:drawPhase,moving,palette,pose,groundContactFrame,authoredTimeMs:aerial?aerial.phase*125:0,cacheKey:(aerial&&!this.sim.paused)||a.player||feeding||birth||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,drawPhase,moving,pose,life)+(aerial?'|air'+JSON.stringify(aerial):'')});
+    drawGenvoSprite(c,{animal:a,phenotype:ph,scale,frame:drawPhase,moving,palette,pose,groundContactFrame,frozenPose:!!this.sim.paused&&!!(aerial||workMotion),authoredTimeMs:aerial?aerial.phase*125:0,cacheKey:((aerial||(workMotion&&workMotion.kind!=='perch'))&&!this.sim.paused)||a.player||feeding||birth||action==='crack'||encounter.move||encounter.crestSpread>0||encounter.impact||encounter.outcome||reaction||defense?null:spriteKey(a,palette,drawDir,drawPhase,moving,pose,life)+(aerial?'|air'+JSON.stringify(aerial):'')+(workMotion?'|work'+JSON.stringify(workMotion):'')});
     if(a.pollenCargo?.mass>0){pixel(c,-3,-3,1,1,scale,'#dfba5b');pixel(c,2,-4,1,1,scale,'#e9d37d');pixel(c,4,-1,1,1,scale,'#cda64e')}
     this.drawLifeEffects(a,scale,frame,pose,palette);
 

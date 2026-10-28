@@ -1,3 +1,4 @@
+import {climbingLimb,diggingLimb,climbingGripOffsets} from './work-limbs.js';
 import {swimmingLimb} from './swimming-limbs.js';
 import {supportPosture} from './support-load.js';
 import {coordinatedGaitOffsets} from './gait-coordination.js';
@@ -14,6 +15,7 @@ const IDLE_TWITCH=[0,0,.35,0,0,-.25,0,.18];
 export function splayAngle(a){const t=((a%(2*Math.PI))+2*Math.PI)%(2*Math.PI),side=t<Math.PI?1:-1,u=side>0?t:2*Math.PI-t;if(u<.01||Math.abs(u-Math.PI)<.01)return a;const w=Math.PI/2+(u-Math.PI/2)*.72;return side>0?w:2*Math.PI-w}
 export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',bodyScale=1,bodyWidthScale=1,bodyHeightScale=1,limbScale=1,sensoryScale=1,eyeScale=1,feelerScale=1,temperamentScale=1,dependent=false,alert=false,stage='adult',life={},behavior={},legSlots=null}={}){
   if(['glide','jump','land'].includes(action)){moving=false;frame=0}
+  if(Number.isFinite(behavior?.excavationElapsed)){moving=false;frame=0}
   frame=((Number(frame)%8)+8)%8;const frameInt=Math.floor(frame);dir&=7;
   const v=DIR8[dir],vmag=Math.hypot(v.x,v.y)||1,fx=v.x/vmag,fy=v.y/vmag,perp={x:-fy,y:fx};
   const flee=action==='flee',eat=action==='eat',drink=action==='drink',court=action==='court',hunt=action==='hunt'||action==='stalk';
@@ -41,6 +43,7 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
   // the facing, with a reach factor per leg type. Without them the eight radial legs are unchanged.
   const slotList=Array.isArray(legSlots)?legSlots:null,count=slotList?slotList.length:8,travel=slotList&&moving?gaitTravelFor(limbScale,slotList):null;
   const coordinated=slotList&&moving&&action!=='swim'&&!Number.isFinite(b.displayPhase)?coordinatedGaitOffsets(slotList):null;
+  const gripOffsets=slotList&&Number.isFinite(b.climbHeight)&&!b.climbHold?climbingGripOffsets(slotList):null;
   for(let n=0;n<count;n++){
     let k=n,dx,dy,reachScale=1,slot=null,gait=null;
     if(slotList){const L=slotList[n],raw=L.slot*Math.PI/8,ang=splayAngle(raw);slot=L.slot;reachScale=L.reach||1;gait=L.gait||null;k=(L.slot>>1)+(L.slot&1);dx=fx*Math.cos(ang)+perp.x*Math.sin(ang);dy=fy*Math.cos(ang)+perp.y*Math.sin(ang)}
@@ -57,7 +60,7 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
       supportWeight+=load;supportSide+=side*load;supportFore+=front*load;
       if((gait?.step??1)<.85)sturdyLegs++;
     }
-    const digLift=action==='dig'&&front>.2?Math.max(0,Math.sin((frame+(k&1)*4)*Math.PI/4))*2:0;
+    const digLift=action==='dig'&&!Number.isFinite(b.excavationElapsed)&&front>.2?Math.max(0,Math.sin((frame+(k&1)*4)*Math.PI/4))*2:0;
     const lift=(moving?step.lift*(gait?gait.lift:1):(Number(b.displayLift)||0)*step.lift+(front>.25?(Number(b.forelegLift)||0):0)+settling)+attackLift+digLift,liftAmount=Math.max(0,Math.min(1,lift/2));
     let reach=(6.7+(Math.abs(side)>.45?.75:.35))*limbScale*(dependent?.9:1)*(elder?.91:1);
     if(alert)reach+=.65;if(flee)reach+=front<-.2?1.35:.35;if(court&&front>.4)reach+=.95;if((eat||drink)&&front>.35)reach-=.8;if(depleted)reach-=.3;
@@ -79,6 +82,11 @@ export function genvoVisualPose({id=0,dir=0,frame=0,moving=false,action='idle',b
     if(slotList){const rx=bodyW/2,ry=bodyH/2,edge=1/Math.sqrt((dx/rx)**2+(dy/ry)**2),extra=Math.max(0,edge-Math.min(rx,ry));if(extra)for(const pt of [root,knee,foot]){pt.x+=dx*extra;pt.y+=dy*extra}const need=edge+3*Math.max(.8,limbScale),along=moving?footReach+extra:foot.x*dx+foot.y*dy;if(along<need&&action!=='jump'){const shift=need-along;foot.x+=dx*shift;foot.y+=dy*shift;knee.x+=dx*shift*.6;knee.y+=dy*shift*.6}}
     if(slotList)knee=articulatedKnee({root,foot,forward:{x:fx,y:fy},perp,side,liftAmount});
     knee.y-=.9+liftAmount*.6;if(liftAmount>0){foot.x+=(knee.x-foot.x)*liftAmount*.4;foot.y+=(knee.y-foot.y)*liftAmount*.4}else foot.y+=.35;
+    if(slotList&&(Number.isFinite(b.climbHeight)||Number.isFinite(b.excavationElapsed))){
+      const options={root,radial:{x:dx,y:dy},forward:{x:fx,y:fy},perp,front,side,limbScale,reachScale};
+      const work=Number.isFinite(b.climbHeight)?climbingLimb({...options,height:b.climbHeight,holding:!!b.climbHold,phaseOffset:gripOffsets?.[n]}):diggingLimb({...options,elapsed:b.excavationElapsed,partId:slotList[n].partId,neutralFoot:foot});
+      legs.push({index:k,slot,root,...work,front,side});continue;
+    }
     if(slotList&&action==='swim'){
       const stroke=swimmingLimb({phase:frame,moving,partId:slotList[n].partId,front,side,root,radial:{x:dx,y:dy},forward:{x:fx,y:fy},perp,limbScale,reachScale});
       legs.push({index:k,slot,root,...stroke,front,side});continue;

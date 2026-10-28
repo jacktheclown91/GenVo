@@ -317,7 +317,7 @@ export function drawLimb(c,partId,k){
     foot:{x:k.foot.x*k.s,y:k.foot.y*k.s},scale:k.s,
     // The geometry is paired across the body; its asymmetric tissue must be too.
     mirrorTransverse:(k.leg?.side||0)<0,
-    footForward:!k.leg?.aboveBody&&!k.behavior?.aerialTuck&&!['swim','climb','dig','fly','glide','jump'].includes(k.authoredState)?{x:k.fx??1,y:k.fy??0}:null,
+    footForward:!k.leg?.aboveBody&&!k.behavior?.aerialTuck&&!Number.isFinite(k.behavior?.climbHeight)&&!['swim','climb','dig','fly','glide','jump'].includes(k.authoredState)?{x:k.fx??1,y:k.fy??0}:null,
     facing:k.authoredFacing??0,state:k.authoredState||'idle',timeMs:k.authoredTimeMs??0,pigment:k.nativePigment,
     // Ground contact and water feathering select each mounted foot independently.
     frameIndex:k.leg?.swimFeather!=null?(k.leg.swimFeather>.25?1:0):k.leg?.planted==null?(k.leg?.liftAmount>=.34?1:0):(k.leg.planted?0:1)

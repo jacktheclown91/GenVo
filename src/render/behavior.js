@@ -65,6 +65,8 @@ export function behaviorVisualState({bodyPlan=null,id=0,action='idle',phase=0,mo
     Object.assign(state,{bodyDrop:.05,feelerForward:1.05,feelerSweep:.3,relaxed:true,attention:'companion'});
   }else if(action==='listen'){
     Object.assign(state,{bodyRise:.28,stanceSpread:.16,feelerForward:1.22,feelerSweep:.08,eyeWide:beat>.56,attention:'ambient',groundEmphasis:.16});
+  }else if(action==='climb'){
+    Object.assign(state,{bodyLean:.12,headReach:.25,stanceSpread:.05,feelerForward:.92,attention:'ambient',groundEmphasis:0});
   }else if(action==='dig'){
     Object.assign(state,{bodyDrop:.72,headDrop:.92,stanceSpread:.38,compress:.12,feelerForward:.82,feelerSweep:.22,attention:'ground',groundEmphasis:.9});
   }else if(action==='scan'){
