@@ -1,3 +1,4 @@
+import {drawUnderwaterView,submergedActorOpacity,showDiveSurfaceCue} from './underwater-presentation.js';
 import {WetSurfaceArt} from './wet-surface-art.js';
 import {SwimMotionPresentation,applySwimMotion} from './swim-motion.js';
 import {aridVisualState} from './arid-presentation.js';
@@ -191,6 +192,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
      else{for(const entry of actors)draw(entry);fs.creaturePrep=performance.now()-t0;fs.creatureCompose=0}}
     // Weather and interaction cues remain above creatures; ground decoration does not.
     if((!this.lowDetail||this.sim.visibilityRules===VISIBILITY.policy||this.sim.thermalRules===THERMAL_WEATHER.policy)&&!this.sim.player()?.underground)this.drawWeatherOverlay();
+    drawUnderwaterView(this);
     drawSensoryFog(this,{tile,cols,rows,startX,startY});
     this.drawHomeSite(tile);
     beginReadoutFrame(this);if(this.guideTarget&&this.sim.uiTutorialStage?.startsWith('step-'))this.drawGuide(tile);drawWeatherReadout(this);drawRefugeReadout(this);drawCaveProgress(this);
@@ -1102,7 +1104,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     const palette=creaturePalette(ph);
     if(a.hidden)c.globalAlpha*=.58;
     if(a.caveTransit){const progress=Math.min(1,a.caveTransit.elapsed/CAVES.transitionSeconds),depth=a.caveTransit.entering?progress:1-progress;c.translate(0,depth*5*worldScale);c.globalAlpha*=1-depth*.55}
-    if((a.diveDepth||0)>.03){c.globalAlpha*=.55;c.translate(0,Math.min(4,a.diveDepth*4)*worldScale)}
+    if((a.diveDepth||0)>.03){c.globalAlpha*=submergedActorOpacity(this.sim.player(),a);c.translate(0,Math.min(4,a.diveDepth*4)*worldScale)}
     // Record the actual translated sprite surface for DOM obstruction avoidance,
     // including aerial/climbing/depth offsets; UI does not reimplement those rules.
     if(a.player||a.id===this.overlayTargetId){const t=c.getTransform?.();if(t){const radius=Math.ceil(44*scale/2)+2,rx=radius*(Math.abs(t.a)+Math.abs(t.c)),ry=radius*(Math.abs(t.b)+Math.abs(t.d));this.screenBounds.set(a.id,{left:t.e-rx,top:t.f-ry,right:t.e+rx,bottom:t.f+ry,width:rx*2,height:ry*2});}}
@@ -1120,7 +1122,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
 
     if(a.caveTransit&&!a.player){c.globalAlpha=1;c.fillStyle='#d4ddc6';c.font='bold 11px sans-serif';c.textAlign='center';c.fillText((a.caveTransit.entering?'Descending ':'Surfacing ')+Math.round(a.caveTransit.elapsed/CAVES.transitionSeconds*100)+'%',0,-12*scale)}
     if(a.climb&&!a.player){c.fillStyle='#e4d4a8';c.font='bold 11px sans-serif';c.textAlign='center';c.fillText('Climb '+a.climb.height.toFixed(1),0,-10*scale)}
-    if((a.diveDepth||0)>.03){c.globalAlpha=1;c.strokeStyle='#8acbd2';c.lineWidth=Math.max(1,scale*.35);c.beginPath();c.ellipse(0,-3*scale,7*scale,3*scale,0,0,Math.PI*2);c.stroke();c.fillStyle='#c5f1eb';c.font='bold 11px sans-serif';c.textAlign='center';if(!a.player)c.fillText('↓ '+a.diveDepth.toFixed(2),0,-9*scale)}
+    if(showDiveSurfaceCue(this.sim.player(),a)){c.globalAlpha=1;c.strokeStyle='#8acbd2';c.lineWidth=Math.max(1,scale*.35);c.beginPath();c.ellipse(0,-3*scale,7*scale,3*scale,0,0,Math.PI*2);c.stroke();c.fillStyle='#c5f1eb';c.font='bold 11px sans-serif';c.textAlign='center';if(!a.player)c.fillText('↓ '+a.diveDepth.toFixed(2),0,-9*scale)}
     if(combatStatus)drawPlayerCombatFeedback(c,{animal:a,status:combatStatus,winded,scale,now:this.renderNow,dir:drawDir});else if(a.playerHunt)drawStalkerPursuitFeedback(c,{animal:a,scale,now:this.renderNow});
     drawEncounterReactionMarks(c,{reaction,animal:a,scale,dir:drawDir});drawDefenseMarks(c,{reaction:defense,animal:a,scale,dir:drawDir});
     if(!a.underground&&!a.airborne&&!a.perched&&!(a.diveDepth>.03))drawForegroundContact(c,{contact,scale,bodyScale:ph.bodyScale,isPlayer:!!a.player});

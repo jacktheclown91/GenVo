@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "start": {
+    "x": 83.5,
+    "y": 41.5,
+    "column": 0.75,
+    "policy": "depth-respiration/1"
+  },
+  "reading": {
+    "view": {
+      "depth": 0.5250000000000002,
+      "covered": false,
+      "strength": 0.6187500000000002
+    },
+    "depth": 0.5250000000000002,
+    "air": 22.25
+  },
+  "timings": [
+    {
+      "old": true,
+      "samples": 16,
+      "medianMs": 6.299999997019768,
+      "p95Ms": 39.100000001490116
+    },
+    {
+      "old": false,
+      "samples": 16,
+      "medianMs": 4.399999998509884,
+      "p95Ms": 37.70000000298023
+    }
+  ],
+  "stateExact": true,
+  "errors": [],
+  "creatorAcceptance": false,
+  "scope": "Public founder import and public dive/deepen/surface controls; actor position explicitly staged in actual generated water. Matched paused native gameplay, no natural wildlife claim. Timings are local CPU observations, not full performance acceptance."
+}
