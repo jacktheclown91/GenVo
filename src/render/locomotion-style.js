@@ -1,32 +1,60 @@
 import {PARTS} from '../lineage/part-registry.js';
 import {founderPlan} from '../lineage/body-inheritance.js';
-// Renderer-only whole-body carriage while moving, read from the mounted anatomy itself:
-// which leg types carry the body and how much registered part mass it carries. Species
-// labels, speed, energy and simulation state are not read or changed. Part mass here is the
-// registry's informational mass (also reported by resolvePhenotype); it has no physical effect.
+import {ANATOMICAL_MASS,bodyMass,REFERENCE_MASS} from '../organisms/body-mass.js';
+// Renderer-only carriage reads mounted leg types and the current canonical mass.
+// Historical worlds retain the preceding registry-based presentation exactly.
 const TAU=Math.PI*2;
 const cache=new Map();
+const physicalStyles=new WeakMap();
 let founderMass=null;
 const planMass=plan=>plan.nodes.reduce((s,n)=>s+(PARTS[n.partId]?.mass||0),0);
 const clamp01=v=>Math.max(0,Math.min(1,v));
 
-// PROVISIONAL visual build weight. This is the single input locomotion expression takes from
-// "how much body" a creature carries. Today it reads the part registry's informational mass
-// (reported by resolvePhenotype, applied to no physics). It is NOT the tissue volume/density
-// model, whose coefficients await creator approval. When physical mass is adopted, replace
-// this function's body with that authority and keep the 0..1 'relative' contract.
+function legacyBuildWeight(plan){
+  founderMass??=planMass(founderPlan());
+  return {relative:clamp01((planMass(plan)/founderMass-1)/.8),source:'registry-informational-mass (provisional)'};
+}
+
+// Cube-root compression maps actual relative game-unit mass into bounded visual
+// carriage. It is an artistic response, not a new force or a tissue calibration.
 export function visualBuildWeight(animal){
- const plan=animal?.bodyPlan;if(!plan?.nodes)return{relative:0,source:'none'};
- founderMass??=planMass(founderPlan());
- return{relative:clamp01((planMass(plan)/founderMass-1)/.8),source:'registry-informational-mass (provisional)'};
+  const plan=animal?.bodyPlan;
+  if(!plan?.nodes)return {relative:0,source:'none'};
+  if(animal.massPolicy!==ANATOMICAL_MASS)return legacyBuildWeight(plan);
+  const mass=bodyMass(animal);
+  return {relative:clamp01((Math.cbrt(mass/REFERENCE_MASS)-1)/.8),mass,source:ANATOMICAL_MASS};
 }
 
 export function locomotionStyle(animal){
+  const base=anatomicalStyle(animal);
+  if(!base||animal.massPolicy!==ANATOMICAL_MASS)return base;
+  const weight=visualBuildWeight(animal);
+  const hit=physicalStyles.get(animal);
+  if(hit?.base===base&&hit.mass===weight.mass)return hit.style;
+  const heavy=clamp01(weight.relative+base.sturdy*.35);
+  const style=Object.freeze({...base,heavy,
+    bob:Math.max(.25,1+heavy*1.6-base.runner*.6),
+    thud:heavy,twist:heavy*1.6+base.webbed*2,roll:heavy*.9+base.webbed*.7,
+    lean:base.runner*.55-heavy*.15});
+  // One current derived style per actual animal; growth cannot fill a global
+  // cache with thousands of obsolete mass snapshots.
+  physicalStyles.set(animal,{base,mass:weight.mass,style});
+  return style;
+}
+
+// Native sprite cache precision only. Biology and the live carriage query remain
+// continuous; this matches the existing quantized autonomous pose cache.
+export function locomotionCacheToken(animal){
+  if(animal?.massPolicy!==ANATOMICAL_MASS)return '';
+  return '|mass-carriage'+Math.round(locomotionStyle(animal).heavy*64);
+}
+
+function anatomicalStyle(animal){
  const plan=animal?.bodyPlan;if(!plan?.id)return null;
  let hit=cache.get(plan.id);if(hit)return hit;
  const legs=plan.nodes.filter(n=>/^root\/limb\.\d+$/.test(n.id)).map(n=>n.partId),share=id=>legs.length?legs.filter(x=>x===id).length/legs.length:0;
  const runner=share('runner-leg'),spring=share('spring-leg'),webbed=share('webbed-leg'),sturdy=share('sturdy-leg');
- const heavy=clamp01(visualBuildWeight(animal).relative+sturdy*.35);
+ const heavy=clamp01(legacyBuildWeight(plan).relative+sturdy*.35);
  hit=Object.freeze({runner,spring,webbed,sturdy,heavy,
   bob:Math.max(.25,1+heavy*1.6-runner*.6),          // vertical travel per footfall
   thud:heavy,                                       // weight settles hard onto each stance
