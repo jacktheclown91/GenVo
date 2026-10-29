@@ -1,3 +1,4 @@
+import {groundMoistureReading,conditionSeasonalGround,drawParchedGround} from './parched-ground.js';
 import {drawSeasonalGroundMarks} from './seasonal-ground-art.js';
 import {visualCompositionAt} from './composition.js';
 import {visualHabitatAt} from './habitat.js';
@@ -64,9 +65,10 @@ export function seasonalGroundProfile(season,identity){
   return {kind:'winter',shoots:0,litter:.06,frost:clamp01(wet*.35+(identity?.composition?.openness||0)*.16),dry:.08};
 }
 
-export function drawSeasonalGround(ctx,{world,habitatField,season,px,py,u,x,y,identity=null}){
+export function drawSeasonalGround(ctx,{world,habitatField,season,px,py,u,x,y,identity=null,climate=null}){
   drawNativeSubstrate(ctx,{world,px,py,u,x,y});
-  const id=identity||habitatIdentityAt(world,x,y,habitatField),profile=seasonalGroundProfile(season,id);
+  const id=identity||habitatIdentityAt(world,x,y,habitatField),reading=groundMoistureReading(world,world.idx(x,y),{climate}),profile=conditionSeasonalGround(seasonalGroundProfile(season,id),reading);
+  drawParchedGround(ctx,{world,reading,px,py,u,x,y});
   drawSeasonalGroundMarks(ctx,{world,profile,px,py,u,x,y});return id;
 }
 

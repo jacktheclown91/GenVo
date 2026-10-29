@@ -624,7 +624,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     this.drawOrganicHabitat(px,py,u,x,y);
     c.save();c.globalAlpha*=hierarchy.accentAlpha;
     this.drawGroundComposition(px,py,u,i,x,y);
-    drawSeasonalGround(c,{world:w,habitatField:this.habitatField,season,px,py,u,x,y,identity});
+    drawSeasonalGround(c,{world:w,climate:this.sim.climate,habitatField:this.habitatField,season,px,py,u,x,y,identity});
     this.drawHabitatRelief(px,py,u,i,x,y);
     drawHabitatClusterAccents(c,{world:w,habitatField:this.habitatField,px,py,u,i,x,y});c.restore();
     drawRiparianDepth(c,{world:w,isWater:(tx,ty)=>this.isWater(tx,ty),px,py,u,i,x,y,depth:this.visualWaterMask(x,y).depth});
@@ -658,7 +658,7 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
       this.drawOrganicHabitat(0,0,1,x,y);
       tc.save();tc.globalAlpha*=hierarchy.accentAlpha;
       this.drawGroundComposition(0,0,1,i,x,y);
-      drawSeasonalGround(tc,{world:w,habitatField:this.habitatField,season,px:0,py:0,u:1,x,y,identity});
+      drawSeasonalGround(tc,{world:w,climate:this.sim.climate,habitatField:this.habitatField,season,px:0,py:0,u:1,x,y,identity});
       this.drawHabitatRelief(0,0,1,i,x,y);
       drawHabitatClusterAccents(tc,{world:w,habitatField:this.habitatField,px:0,py:0,u:1,i,x,y});tc.restore();
       drawRiparianDepth(tc,{world:w,isWater:(tx,ty)=>this.isWater(tx,ty),px:0,py:0,u:1,i,x,y,depth:this.visualWaterMask(x,y).depth});
