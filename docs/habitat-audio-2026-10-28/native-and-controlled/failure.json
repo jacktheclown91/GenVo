@@ -1,0 +1,335 @@
+{
+  "cases": [
+    {
+      "seed": "AUDIO-RAIN-3",
+      "state": {
+        "day": 1,
+        "tick": 47,
+        "air": {
+          "rain": 0.413905322577351,
+          "temperature": 0.40820381161298397,
+          "wind": {
+            "east": 0.618181026712047,
+            "south": 0.46232715327962726,
+            "strength": 0.7719418232265981
+          },
+          "fog": 0.17595523430691054,
+          "snow": 0,
+          "liquid": 0.17523895781130927,
+          "extinction": 0.02900038121833818
+        },
+        "stateParity": true,
+        "clock": "day-clock/30s",
+        "buffers": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger",
+          "branch-stealth",
+          "branch-offense",
+          "branch-social",
+          "branch-utility",
+          "genvo-call",
+          "genvo-hurt",
+          "genvo-alarm",
+          "genvo-rally",
+          "genvo-court",
+          "genvo-birth",
+          "hopper",
+          "digger",
+          "stalker",
+          "stalker-stalk",
+          "stalker-charge",
+          "stalker-lunge",
+          "food-moss",
+          "food-berries",
+          "food-reeds",
+          "food-mushroom",
+          "food-seed",
+          "food-carrion",
+          "shelter-build",
+          "shelter-repair",
+          "shelter-store"
+        ],
+        "loops": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger"
+        ],
+        "habitat": {
+          "kind": "wetland",
+          "water": 0.717157287525381,
+          "waterPan": 0.2,
+          "saline": 0,
+          "wind": 0.6484440994685167,
+          "moisture": 0.7523385882377625,
+          "temperature": 0.40820381161298397,
+          "elevation": 0.05405817925930023,
+          "canopy": 0
+        },
+        "textureNodes": 4,
+        "textureBufferShared": true
+      },
+      "metric": {
+        "seconds": 8.277333333333333,
+        "rate": 192000,
+        "channels": 2,
+        "peak": 0.08054276555776596,
+        "rms": 0.012538972298106308
+      },
+      "sceneRain": 0.17523895781130927,
+      "rainGain": 0.20066723227500916
+    },
+    {
+      "seed": "GENVO8-TEST-A",
+      "state": {
+        "day": 1,
+        "tick": 6,
+        "air": {
+          "rain": 0.16383935171269196,
+          "temperature": 0.24870222626776622,
+          "wind": {
+            "east": -0.7199405726244947,
+            "south": -0.46880271087057024,
+            "strength": 0.859121882988951
+          },
+          "fog": 0.18879738955318845,
+          "snow": 0,
+          "liquid": 0,
+          "extinction": 0.022655686746382613
+        },
+        "stateParity": true,
+        "clock": "day-clock/30s",
+        "buffers": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger",
+          "branch-stealth",
+          "branch-offense",
+          "branch-social",
+          "branch-utility",
+          "genvo-call",
+          "genvo-hurt",
+          "genvo-alarm",
+          "genvo-rally",
+          "genvo-court",
+          "genvo-birth",
+          "hopper",
+          "digger",
+          "stalker",
+          "stalker-stalk",
+          "stalker-charge",
+          "stalker-lunge",
+          "food-moss",
+          "food-berries",
+          "food-reeds",
+          "food-mushroom",
+          "food-seed",
+          "food-carrion",
+          "shelter-build",
+          "shelter-repair",
+          "shelter-store"
+        ],
+        "loops": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger"
+        ],
+        "habitat": {
+          "kind": "unclassified",
+          "water": 0.8,
+          "waterPan": 0.2,
+          "saline": 0,
+          "wind": 0.5739828765765865,
+          "moisture": 0.6931685209274292,
+          "temperature": 0.4744112491607666,
+          "elevation": 0.042947255074977875,
+          "canopy": 0.2885172516107559
+        },
+        "textureNodes": 4,
+        "textureBufferShared": true
+      },
+      "metric": {
+        "seconds": 8.234666666666667,
+        "rate": 192000,
+        "channels": 2,
+        "peak": 0.06562436372041702,
+        "rms": 0.012557254300995111
+      },
+      "sceneRain": 0,
+      "rainGain": 0
+    },
+    {
+      "seed": "AUDIO-RAIN-4",
+      "state": {
+        "day": 1,
+        "tick": 6,
+        "air": {
+          "rain": 0.6909595977849291,
+          "temperature": 0.20799590497439902,
+          "wind": {
+            "east": 0.1597642265034343,
+            "south": 0.7292504153449352,
+            "strength": 0.7465458970157167
+          },
+          "fog": 0.2994589820678557,
+          "snow": 0.6014763042845063,
+          "liquid": 0,
+          "extinction": 0.08706056371232572
+        },
+        "stateParity": true,
+        "clock": "day-clock/30s",
+        "buffers": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger",
+          "branch-stealth",
+          "branch-offense",
+          "branch-social",
+          "branch-utility",
+          "genvo-call",
+          "genvo-hurt",
+          "genvo-alarm",
+          "genvo-rally",
+          "genvo-court",
+          "genvo-birth",
+          "hopper",
+          "digger",
+          "stalker",
+          "stalker-stalk",
+          "stalker-charge",
+          "stalker-lunge",
+          "food-moss",
+          "food-berries",
+          "food-reeds",
+          "food-mushroom",
+          "food-seed",
+          "food-carrion",
+          "shelter-build",
+          "shelter-repair",
+          "shelter-store"
+        ],
+        "loops": [
+          "field",
+          "rain",
+          "wet",
+          "water-edge",
+          "lineage",
+          "theme",
+          "shelter",
+          "danger"
+        ],
+        "habitat": {
+          "kind": "unclassified",
+          "water": 0.8,
+          "waterPan": 0.2,
+          "saline": 0,
+          "wind": 0.5069250528833311,
+          "moisture": 0.7532297968864441,
+          "temperature": 0.37525445222854614,
+          "elevation": 0.35901322960853577,
+          "canopy": 0.3002343699336052
+        },
+        "textureNodes": 4,
+        "textureBufferShared": true
+      },
+      "metric": {
+        "seconds": 8.245333333333333,
+        "rate": 192000,
+        "channels": 2,
+        "peak": 0.0658944770693779,
+        "rms": 0.01135121003610227
+      },
+      "sceneRain": 0,
+      "rainGain": 0
+    }
+  ],
+  "errors": [],
+  "misses": [],
+  "creatorAcceptance": false,
+  "scope": "Same exported app, three ordinary seeded New Worlds, public onboarding/Return controls, native 1x clock. Zero-output diagnostic tap records the existing master bus; no sound/event/organism/weather fields are injected.",
+  "decoders": [
+    {
+      "stem": "field-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "field-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "wet-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "wet-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "water-edge-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "water-edge-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "rain-loop",
+      "extension": "ogg",
+      "seconds": 12,
+      "channels": 1,
+      "rate": 192000
+    },
+    {
+      "stem": "rain-loop",
+      "extension": "m4a",
+      "seconds": 11.999953125,
+      "channels": 1,
+      "rate": 192000
+    }
+  ],
+  "palettes": [],
+  "failure": "page.evaluate: Error: Private palette rendering changed the live snapshot\n    at eval (eval at evaluate (:311:30), <anonymous>:3:71)\n    at async <anonymous>:337:30"
+}

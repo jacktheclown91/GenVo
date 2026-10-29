@@ -2,6 +2,8 @@ import {audibleWildfire} from '../ecology/wildfire.js';
 import {audibleThunder} from '../ecology/thunderstorms.js';
 import {AUDIO_SCENES,activeStrategyBranch,cueForResult,handoffTheme,musicPattern,musicSceneFor,semitone,stalkerDangerBand,themeStageForGeneration} from './model.js';
 import {AUTHORED_AUDIO} from './assets.js';
+import {habitatMixTargets} from './habitat.js';
+import {HabitatTextures} from './habitat-textures.js';
 import {creatureVoiceProfile} from './creature-voice.js';
 import {currentCourtshipMove,COURTSHIP_PERFORMANCE,availableCourtshipMoves} from '../reproduction/courtship-performance.js';
 import {CFG} from '../sim/config.js';
@@ -13,7 +15,7 @@ export class AudioDirector{
     this.sim=sim;
     this.ctx=null;
     this.master=null;this.musicBus=null;this.sfxBus=null;this.ambienceBus=null;
-    this.noiseBuffer=null;this.ambienceSource=null;
+    this.noiseBuffer=null;this.ambienceSource=null;this.habitatTextures=null;this.ambienceFilter=null;
     this.assetBuffers=new Map();this.authoredLoops=new Map();this.assetLoadPromise=null;this.authoredReady=false;this.deferredInitPromise=null;this.deferredInitTimer=null;
     this.enabled=true;this.unlocked=false;
     this.masterLevel=.72;this.musicLevel=.34;this.sfxLevel=.68;this.ambienceLevel=.42;
@@ -56,7 +58,7 @@ export class AudioDirector{
   buildGraph(){
     const c=this.ctx;
     this.master=c.createGain();this.musicBus=c.createGain();this.sfxBus=c.createGain();this.ambienceBus=c.createGain();
-    this.musicBus.connect(this.master);this.sfxBus.connect(this.master);this.ambienceBus.connect(this.master);this.master.connect(c.destination);
+    this.musicBus.connect(this.master);this.sfxBus.connect(this.master);this.ambienceFilter=c.createBiquadFilter();this.ambienceFilter.type='lowpass';this.ambienceFilter.frequency.value=18000;this.ambienceFilter.Q.value=.5;this.ambienceBus.connect(this.ambienceFilter);this.ambienceFilter.connect(this.master);this.master.connect(c.destination);
     this.master.gain.value=this.enabled?this.masterLevel:0;this.musicBus.gain.value=this.musicLevel;this.sfxBus.gain.value=this.sfxLevel;this.ambienceBus.gain.value=this.ambienceLevel;
   }
   async loadAssetPack(){
@@ -93,15 +95,16 @@ export class AudioDirector{
     if(!this.ctx)return;
     for(const [id,def] of Object.entries(AUTHORED_AUDIO)){
       if(def.kind!=='loop'||this.authoredLoops.has(id)||!this.assetBuffers.has(id))continue;
-      const src=this.ctx.createBufferSource(),gain=this.ctx.createGain();src.buffer=this.assetBuffers.get(id);src.loop=true;if(def.seconds&&src.buffer.duration>def.seconds+.001){src.loopStart=0;src.loopEnd=def.seconds}gain.gain.value=0;src.connect(gain);gain.connect(def.bus==='ambience'?this.ambienceBus:this.musicBus);src.start();this.authoredLoops.set(id,{src,gain,def});
+      const src=this.ctx.createBufferSource(),gain=this.ctx.createGain();src.buffer=this.assetBuffers.get(id);src.loop=true;if(def.seconds&&src.buffer.duration>def.seconds+.001){src.loopStart=0;src.loopEnd=def.seconds}gain.gain.value=0;src.connect(gain);let panner=null;if(id==='water-edge'&&typeof this.ctx.createStereoPanner==='function'){panner=this.ctx.createStereoPanner();gain.connect(panner);panner.connect(this.ambienceBus)}else gain.connect(def.bus==='ambience'?this.ambienceBus:this.musicBus);src.start();this.authoredLoops.set(id,{src,gain,def,panner});
     }
     this.updateAuthoredMix(this.currentScene||musicSceneFor(this.sim));
   }
-  setLoopGain(id,value,time=.7){const loop=this.authoredLoops.get(id);if(!loop||!this.ctx)return;loop.gain.gain.setTargetAtTime(Math.max(.0001,value),this.ctx.currentTime,time)}
+  setLoopGain(id,value,time=.7){const loop=this.authoredLoops.get(id);if(!loop||!this.ctx)return;loop.gain.gain.setTargetAtTime(Math.max(0,value),this.ctx.currentTime,time)}
   updateAuthoredMix(scene){
-    if(!this.ctx||!scene)return;const wet=clamp(scene.wetness||0),water=clamp(scene.waterEdge||0),danger=clamp(scene.danger||0),rising=danger>this.lastMixDanger+.025;
-    this.setLoopGain('rain',.48*Math.sqrt(clamp(scene.rain||0)),.75);
-    this.setLoopGain('field',.30+.34*(1-wet)*(1-water*.34),1.05);this.setLoopGain('wet',.05+.52*wet*(1-water*.18),1.05);this.setLoopGain('water-edge',.0001+.54*water,water>0.3?.65:1.25);
+    if(!this.ctx||!scene)return;const water=clamp(scene.waterEdge||0),danger=clamp(scene.danger||0),rising=danger>this.lastMixDanger+.025;
+    const targets=habitatMixTargets(scene);
+    this.setLoopGain('rain',targets.rain,.75);this.setLoopGain('field',targets.field,1.05);this.setLoopGain('wet',targets.wet,1.05);this.setLoopGain('water-edge',targets['water-edge'],water>0.3?.65:1.25);
+    this.authoredLoops?.get('water-edge')?.panner?.pan.setTargetAtTime(targets.waterPan,this.ctx.currentTime,.6);this.authoredLoops?.get('water-edge')?.src.playbackRate.setTargetAtTime(targets.waterRate,this.ctx.currentTime,.8);this.habitatTextures?.update(targets);this.ambienceFilter?.frequency.setTargetAtTime(targets.filterHz,this.ctx.currentTime,.5);
     const stage=themeStageForGeneration(scene.generation||1),lineage=scene.scene===AUDIO_SCENES.ENDED?.12:scene.scene===AUDIO_SCENES.DANGER?.25:scene.scene===AUDIO_SCENES.HIDDEN?.28:.46;
     const themeGain=(.14+stage*.06)*(scene.scene===AUDIO_SCENES.DANGER?.58:scene.scene===AUDIO_SCENES.HIDDEN?.72:1)*(scene.shelter?1.08:1);
     this.setLoopGain('lineage',lineage,1.2);this.setLoopGain('theme',themeGain,1.15);this.setLoopGain('shelter',scene.shelter?.58*(1-danger*.58):.0001,scene.shelter?1.0:1.55);this.setLoopGain('danger',Math.max(.0001,danger*.62),rising?.34:1.35);this.lastMixDanger=danger;
@@ -111,7 +114,7 @@ export class AudioDirector{
     for(let i=0;i<data.length;i++){x=(x*1664525+1013904223)>>>0;data[i]=((x/4294967296)*2-1)*.72}return buf;
   }
   startAmbience(){
-    if(!this.ctx||!this.noiseBuffer)return;const src=this.ctx.createBufferSource(),filter=this.ctx.createBiquadFilter(),gain=this.ctx.createGain();src.buffer=this.noiseBuffer;src.loop=true;filter.type='lowpass';filter.frequency.value=900;filter.Q.value=.25;gain.gain.value=0;gain.gain.setTargetAtTime(.32,this.ctx.currentTime,.6);src.connect(filter);filter.connect(gain);gain.connect(this.ambienceBus);src.start();this.ambienceSource={src,filter,gain};
+    if(!this.ctx||!this.noiseBuffer)return;const src=this.ctx.createBufferSource(),filter=this.ctx.createBiquadFilter(),gain=this.ctx.createGain();src.buffer=this.noiseBuffer;src.loop=true;filter.type='lowpass';filter.frequency.value=900;filter.Q.value=.25;gain.gain.value=0;gain.gain.setTargetAtTime(.32,this.ctx.currentTime,.6);src.connect(filter);filter.connect(gain);gain.connect(this.ambienceBus);src.start();this.ambienceSource={src,filter,gain};if(!this.habitatTextures)this.habitatTextures=new HabitatTextures(this.ctx,this.noiseBuffer,this.ambienceBus);
   }
   toggleMute(){this.enabled=!this.enabled;this.savePrefs();if(this.master&&this.ctx){const t=this.ctx.currentTime;this.master.gain.cancelScheduledValues(t);this.master.gain.setTargetAtTime(this.enabled?this.masterLevel:0,t,.035)}return this.enabled}
   noteResult(result){this.markInteractiveAudio();const cue=cueForResult(result);if(cue)this.playCue(cue,result)}
@@ -134,7 +137,7 @@ export class AudioDirector{
       this.ambienceSource.filter.frequency.setTargetAtTime(scene.scene===AUDIO_SCENES.HIDDEN?520:scene.scene===AUDIO_SCENES.DANGER?650:900,t,.5);
       // Keep a quiet fallback while downloading; let actual authored habitats
       // replace the generic hiss instead of permanently masking their details.
-      this.ambienceSource.gain.gain.setTargetAtTime(authoredAmbience?.018:.28+.18*(1-danger),t,.85);
+      const outdoors=!['cave','burrow','submerged','silent'].includes(scene.habitat?.kind);this.ambienceSource.gain.gain.setTargetAtTime(outdoors?(authoredAmbience?.018:.28+.18*(1-danger)):0,t,.85);
     }
     this.updateAuthoredMix(scene);this.lastScene=scene.scene;
   }
