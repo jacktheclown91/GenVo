@@ -31,8 +31,8 @@ export class AudioDirector{
     this.sim=sim;this.courtshipAudio=new WeakMap();this.lastActionTick=-1;this.lastDamageTick=-1;this.lastLineageRecords=sim?.lineage?.records?.size||0;this.lastHandoffs=sim?.lineage?.handoffs?.length||0;this.musicStep=0;this.nextMusicTime=this.ctx?.currentTime||0;this.seed=hashString(sim?.seed||'GENVO8-AUDIO')||1;this.lastInteractiveAudioAt=0;this.currentScene=musicSceneFor(sim);this.wildlifeClock=1.2;this.stalkerClock=.35;this.lastThreatId=null;this.lastThreatBand=0;this.lastMixDanger=0;this.handoffDuckUntil=0;this.foregroundDuckUntil=0;
     if(this.ctx)this.updateMix(this.currentScene);
   }
-  loadPrefs(){try{const raw=localStorage.getItem('genvo8-audio');if(!raw)return;const p=JSON.parse(raw);if(typeof p.enabled==='boolean')this.enabled=p.enabled;if(Number.isFinite(p.master))this.masterLevel=clamp(p.master)}catch{}}
-  savePrefs(){try{localStorage.setItem('genvo8-audio',JSON.stringify({enabled:this.enabled,master:this.masterLevel}))}catch{}}
+  loadPrefs(){try{const raw=localStorage.getItem('genvo8-audio');if(!raw)return;const p=JSON.parse(raw);if(typeof p.enabled==='boolean')this.enabled=p.enabled;for(const channel of ['master','music','ambience','sfx'])if(Number.isFinite(p[channel]))this[channel+'Level']=clamp(p[channel])}catch{}}
+  savePrefs(){try{localStorage.setItem('genvo8-audio',JSON.stringify({enabled:this.enabled,master:this.masterLevel,music:this.musicLevel,ambience:this.ambienceLevel,sfx:this.sfxLevel}))}catch{}}
   async unlock(){
     if(!this.ctx){const AC=globalThis.AudioContext||globalThis.webkitAudioContext;if(!AC)return false;this.ctx=new AC();this.buildGraph()}
     if(this.ctx.state==='suspended')try{await this.ctx.resume()}catch{}
@@ -115,6 +115,15 @@ export class AudioDirector{
   }
   startAmbience(){
     if(!this.ctx||!this.noiseBuffer)return;const src=this.ctx.createBufferSource(),filter=this.ctx.createBiquadFilter(),gain=this.ctx.createGain();src.buffer=this.noiseBuffer;src.loop=true;filter.type='lowpass';filter.frequency.value=900;filter.Q.value=.25;gain.gain.value=0;gain.gain.setTargetAtTime(.32,this.ctx.currentTime,.6);src.connect(filter);filter.connect(gain);gain.connect(this.ambienceBus);src.start();this.ambienceSource={src,filter,gain};if(!this.habitatTextures)this.habitatTextures=new HabitatTextures(this.ctx,this.noiseBuffer,this.ambienceBus);
+  }
+  setVolume(channel,value){
+    if(!['master','music','ambience','sfx'].includes(channel)||!Number.isFinite(value))return false;
+    this[channel+'Level']=clamp(value);this.savePrefs();
+    if(this.ctx&&this.master){const t=this.ctx.currentTime;
+      if(channel==='master'){this.master.gain.cancelScheduledValues(t);this.master.gain.setTargetAtTime(this.enabled?this.masterLevel:0,t,.03)}
+      else if(channel==='sfx')this.sfxBus.gain.setTargetAtTime(this.sfxLevel,t,.03);
+      else this.updateMix(this.currentScene);
+    }return true;
   }
   toggleMute(){this.enabled=!this.enabled;this.savePrefs();if(this.master&&this.ctx){const t=this.ctx.currentTime;this.master.gain.cancelScheduledValues(t);this.master.gain.setTargetAtTime(this.enabled?this.masterLevel:0,t,.035)}return this.enabled}
   noteResult(result){this.markInteractiveAudio();const cue=cueForResult(result);if(cue)this.playCue(cue,result)}
