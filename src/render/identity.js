@@ -1,3 +1,4 @@
+import {drawDampSoil} from './wet-surface-art.js';
 import {groundMoistureReading,conditionSeasonalGround,drawParchedGround} from './parched-ground.js';
 import {drawSeasonalGroundMarks} from './seasonal-ground-art.js';
 import {visualCompositionAt} from './composition.js';
@@ -69,6 +70,7 @@ export function drawSeasonalGround(ctx,{world,habitatField,season,px,py,u,x,y,id
   drawNativeSubstrate(ctx,{world,px,py,u,x,y});
   const id=identity||habitatIdentityAt(world,x,y,habitatField),reading=groundMoistureReading(world,world.idx(x,y),{climate}),profile=conditionSeasonalGround(seasonalGroundProfile(season,id),reading);
   drawParchedGround(ctx,{world,reading,px,py,u,x,y});
+  drawDampSoil(ctx,{world,reading,px,py,u,x,y});
   drawSeasonalGroundMarks(ctx,{world,profile,px,py,u,x,y});return id;
 }
 

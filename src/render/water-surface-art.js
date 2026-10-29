@@ -1,3 +1,4 @@
+import {exposedSurfaceKind} from './wet-surface-art.js';
 // Sparse native-32 water glints. Geometry crosses tile ownership; never a flow/biology authority.
 import {surfaceIceCovered} from '../world/surface-ice.js';
 const PIXELS=32,SPACING=47,MAX_TILES=1024,cacheByWorld=new WeakMap();
@@ -15,6 +16,6 @@ export function waterRippleTile(world,x,y,mask){
  const result=Object.freeze(marks);if(cache.size>=MAX_TILES)cache.delete(cache.keys().next().value);cache.set(key,{mask,marks:result});return result;
 }
 export function drawWaterSurfaceMarks(ctx,{world,x,y,mask,px,py,u,seconds=0}){
- if(mask.empty||surfaceIceCovered(world.environment,world.idx(x,y)))return;const marks=waterRippleTile(world,x,y,mask);if(!marks.length)return;const alpha=ctx.globalAlpha;ctx.save();ctx.fillStyle='#71b3b8';
+ if(mask.empty||surfaceIceCovered(world.environment,world.idx(x,y)))return;const i=world.idx(x,y);if(world.water&&world.water[i]&&exposedSurfaceKind(world,i)!=='water')return;const marks=waterRippleTile(world,x,y,mask);if(!marks.length)return;const alpha=ctx.globalAlpha;ctx.save();ctx.fillStyle='#71b3b8';
  for(const mark of marks){const beat=.5+.5*Math.sin(seconds*1.35+mark.phase);ctx.globalAlpha=alpha*(.09+.16*beat*beat);for(const [rx,ry,w,h]of mark.rects)ctx.fillRect(px+rx*u,py+ry*u,w*u,h*u)}ctx.restore();
 }

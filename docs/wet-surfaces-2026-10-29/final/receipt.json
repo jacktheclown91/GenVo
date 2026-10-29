@@ -1,0 +1,62 @@
+{
+  "errors": [],
+  "creatorAcceptance": false,
+  "result": {
+    "counts": [
+      {
+        "old": true,
+        "impacts": 0
+      },
+      {
+        "old": false,
+        "impacts": 2
+      }
+    ],
+    "timings": [
+      {
+        "label": "before",
+        "medianMs": 21.5,
+        "p95Ms": 40.599999997764826,
+        "samples": 18
+      },
+      {
+        "label": "current",
+        "medianMs": 22.799999997019768,
+        "p95Ms": 36.20000000298023,
+        "samples": 18
+      }
+    ],
+    "rainy": 162,
+    "films": 535,
+    "damp": 14,
+    "best": {
+      "i": 6061,
+      "x": 45,
+      "y": 47,
+      "weather": {
+        "rain": 0.3684887479531264,
+        "temperature": 0.5554067203400289,
+        "wind": {
+          "east": -0.03195003537690544,
+          "south": 0.6720799988890557,
+          "strength": 0.6728390072426677
+        },
+        "fog": 0.14896988262984365,
+        "snow": 0,
+        "liquid": 0.10536730454327142,
+        "extinction": 0.02261791462002845
+      }
+    },
+    "survey": {
+      "x0": 37,
+      "y0": 39,
+      "width": 16,
+      "height": 16
+    },
+    "stateExact": true,
+    "day": 101,
+    "seed": "GENVO-VALLEY-REPLAY-30",
+    "scope": "Actual recorded mature world and public New World; same-state native gameplay and terrain survey with real water/soil/rain inventories. Survey keeps the actual World and does not relocate animals or alter climate/resources. No natural film claim when films=0."
+  },
+  "status": "PASS"
+}

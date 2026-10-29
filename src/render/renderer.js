@@ -1,3 +1,4 @@
+import {WetSurfaceArt} from './wet-surface-art.js';
 import {SwimMotionPresentation,applySwimMotion} from './swim-motion.js';
 import {aridVisualState} from './arid-presentation.js';
 import {InertiaExpression,applyInertiaExpression} from './inertia-expression.js';
@@ -144,8 +145,9 @@ this.canvas.width=Math.floor(w*dpr);this.canvas.height=Math.floor(h*dpr);this.ca
     prepareSensoryFog(this,{tile,cols,rows,startX,startY});
     this.drawTerrainChunks(tile,startX,startY,cols,rows);this.queueTerrainWarmRing(startX,startY,cols,rows);
     if(this.sim.world.planet)(this.borderTerrain||=new BorderTerrain(Renderer)).draw(this,tile,startX,startY,cols,rows);
+    (this.wetSurfaceArt||=new WetSurfaceArt()).begin(this.sim,{seconds:this.sim.tickCount/CFG.simHz,lowDetail:this.lowDetail});
     this.groundPassOnly=true;try{
-    const focus=this.sim.player();for(let sy=0;sy<rows;sy++)for(let sx=0;sx<cols;sx++){const wx=startX+sx,wy=startY+sy;if(wx<0||wy<0||wx>=CFG.worldSize||wy>=CFG.worldSize)continue;const i=this.sim.world.pages?this.sim.world.pages.indexAt(wx,wy):this.sim.world.idx(wx,wy),px=Math.round((wx-this.camera.x)*tile+this.w/2),py=Math.round((wy-this.camera.y)*tile+this.h/2),nearFocus=!!focus&&Math.hypot((wx+.5)-focus.x,(wy+.5)-focus.y)<3.55;if(nearFocus)this.drawTile(px,py,tile,i,wx,wy);else this.drawTileDynamic(px,py,tile,i,wx,wy)}
+    const focus=this.sim.player();for(let sy=0;sy<rows;sy++)for(let sx=0;sx<cols;sx++){const wx=startX+sx,wy=startY+sy;if(wx<0||wy<0||wx>=CFG.worldSize||wy>=CFG.worldSize)continue;const i=this.sim.world.pages?this.sim.world.pages.indexAt(wx,wy):this.sim.world.idx(wx,wy),px=Math.round((wx-this.camera.x)*tile+this.w/2),py=Math.round((wy-this.camera.y)*tile+this.h/2),nearFocus=!!focus&&Math.hypot((wx+.5)-focus.x,(wy+.5)-focus.y)<3.55;if(nearFocus)this.drawTile(px,py,tile,i,wx,wy);else this.drawTileDynamic(px,py,tile,i,wx,wy);if(this.sim.world.water[i]||(this.sim.world.environment?.overland?.[i]||0)>1e-5)this.wetSurfaceArt.drawTile(this.ctx,this.sim,{i,x:wx,y:wy,mask:this.visualWaterMask(wx,wy),px,py,u:this.zoom})}
     }finally{this.groundPassOnly=false}
     // Multi-tile habitat scenes summarize real ecology (water, biomass, use history) without creating game state.
     const sceneEpoch=Math.floor(this.sim.tickCount/Math.max(1,CFG.simHz)),sceneKey=`${startX},${startY},${cols},${rows},${sceneEpoch}`;if(sceneKey!==this.habitatScenesKey){this.habitatScenes=collectHabitatScenes(this.sim,this.habitatField,{startX,startY,cols,rows,block:8});this.habitatScenesKey=sceneKey}

@@ -1,0 +1,25 @@
+const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),assert=require('node:assert/strict');
+const {chromium}=require(path.join(process.env.USERPROFILE,'.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright'));
+(async()=>{
+ const root=process.cwd(),out=path.resolve(process.argv[2]||'docs/wet-surfaces-2026-10-29/controlled');if(fs.existsSync(out))throw Error('Use a fresh directory');fs.mkdirSync(out,{recursive:true});
+ const server=http.createServer((req,res)=>{const u=new URL(req.url,'http://local');if(u.pathname==='/fixture.html'){res.setHeader('Content-Type','text/html');return res.end('<!doctype html><body style="background:#172d23;color:#e7dcba;font:16px system-ui"><p>Controlled surface-art layers — not a natural weather observation</p>')}
+  const f=path.resolve(root,'.'+decodeURIComponent(u.pathname));if(!f.startsWith(root+path.sep))return res.writeHead(403).end();fs.readFile(f,(e,b)=>{if(e)return res.writeHead(404).end();res.setHeader('Content-Type',({'.js':'text/javascript','.mjs':'text/javascript','.json':'application/json'})[path.extname(f)]||'application/octet-stream');res.end(b)})});
+ await new Promise(r=>server.listen(0,'127.0.0.1',r));const browser=await chromium.launch();
+ try{
+  const page=await browser.newPage({viewport:{width:1280,height:720}}),errors=[];page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:'+server.address().port+'/fixture.html');
+  const result=await page.evaluate(async()=>{
+   const {WetSurfaceArt,drawDampSoil}=await import('/src/render/wet-surface-art.js'),{groundMoistureReading}=await import('/src/render/parched-ground.js'),n=8,len=n*n;
+   const canvas=document.createElement('canvas');canvas.width=960;canvas.height=640;document.body.append(canvas);const c=canvas.getContext('2d'),cases=[],create=document.createElement.bind(document);let allocations=0;document.createElement=function(tag,...args){if(tag==='canvas')allocations++;return create(tag,...args)};
+   try{for(const [column,row,name,water,film,rain,temp,moisture] of [[0,0,'Dry soil',false,0,0,.8,.03],[1,0,'Damp soil',false,0,0,.8,.55],[2,0,'Stored warm film',false,.03,0,.8,.4],[0,1,'Spent film',false,0,0,.8,.4],[1,1,'Rain on liquid water',true,0,1,.8,.4],[2,1,'Cold film: no liquid sheen',false,.03,0,.1,.4]]){
+    const world={n,len,seedHash:973,idx:(x,y)=>Math.floor(y)*n+Math.floor(x),water:new Uint8Array(len).fill(+water),moisture:new Float32Array(len).fill(moisture),temperature:new Float32Array(len).fill(temp),soilWater:{fieldCapacity:new Float32Array(len).fill(.55),snowpack:new Float64Array(len)},plants:{},environment:{volume:new Float64Array(len).fill(water?1:0),overland:new Float64Array(len).fill(film),rainScale:new Float32Array(len).fill(1),temperatureOffset:new Float32Array(len)}},sim={world,day:1,tickCount:8,climate:{temp,rain}},mask=new Uint8Array(1024).fill(+water);mask.full=water;mask.empty=!water;
+    const x0=column*320,y0=row*320;c.fillStyle='#172d23';c.fillRect(x0,y0,320,320);c.fillStyle='#e8dbb6';c.font='14px system-ui';c.fillText(name,x0+8,y0+20);c.fillStyle=water?'#315c69':'#80774d';c.fillRect(x0+8,y0+32,256,256);
+    const art=new WetSurfaceArt();art.begin(sim,{seconds:2});for(let y=0;y<n;y++)for(let x=0;x<n;x++){const i=world.idx(x,y),reading=groundMoistureReading(world,i,{climate:sim.climate}),args={world,reading,px:x0+8+x*32,py:y0+32+y*32,u:2,x,y};drawDampSoil(c,args);art.drawTile(c,sim,{i,x,y,mask,px:args.px,py:args.py,u:2})}cases.push({name,water,film,rain,temp,moisture,impacts:art.maxImpacts-art.remaining});
+   }
+   const after=allocations;const world={n,len,seedHash:973,idx:(x,y)=>Math.floor(y)*n+Math.floor(x),water:new Uint8Array(len).fill(1),moisture:new Float32Array(len).fill(.8),temperature:new Float32Array(len).fill(.8),environment:{volume:new Float64Array(len).fill(1),rainScale:new Float32Array(len).fill(1),temperatureOffset:new Float32Array(len)}},sim={world,day:1,tickCount:8,climate:{temp:.8,rain:1}},mask=new Uint8Array(1024).fill(1);mask.full=true;mask.empty=false;const art=new WetSurfaceArt();
+   for(let frame=0;frame<30;frame++){art.begin(sim,{seconds:frame/8});art.drawTile(c,sim,{i:0,x:0,y:0,mask,px:900,py:600,u:2})}
+   return{png:canvas.toDataURL(),cases,stampCanvases:after,extraCanvasAllocations:allocations-after};
+   }finally{document.createElement=create}
+  });
+  assert.equal(result.stampCanvases,9);assert.equal(result.extraCanvasAllocations,0);assert.deepEqual(errors,[]);fs.writeFileSync(path.join(out,'controlled-layers.png'),Buffer.from(result.png.split(',')[1],'base64'));delete result.png;fs.writeFileSync(path.join(out,'receipt.json'),JSON.stringify({status:'PASS',scope:'Explicit controlled surface-art layers using canonical weather/store readers and native painter. Never entered a Simulation and not natural habitat evidence.',...result,errors,creatorAcceptance:false},null,2));console.log(JSON.stringify(result));
+ }finally{await browser.close();await new Promise(r=>server.close(r))}
+})().catch(e=>{console.error(e);process.exitCode=1});

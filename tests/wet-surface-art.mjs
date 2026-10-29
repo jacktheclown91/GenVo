@@ -1,0 +1,29 @@
+import assert from 'node:assert/strict';
+import {WetSurfaceArt,exposedSurfaceKind,drawDampSoil} from '../src/render/wet-surface-art.js';
+import {drawWaterSurfaceMarks} from '../src/render/water-surface-art.js';
+import {SURFACE_ICE} from '../src/world/surface-ice.js';
+import {Simulation} from '../src/sim/simulation.js';
+import {createSimulationSnapshot} from '../src/persistence/save-manager.js';
+import {encodeSnapshotGraph} from '../src/persistence/scenario-codec.js';
+const n=16,len=n*n,world={n,len,seedHash:973,idx:(x,y)=>Math.floor(y)*n+Math.floor(x),water:new Uint8Array(len).fill(1),temperature:new Float32Array(len).fill(.8),moisture:new Float32Array(len).fill(.8),environment:{volume:new Float64Array(len).fill(1),overland:new Float64Array(len),rainScale:new Float32Array(len).fill(1),temperatureOffset:new Float32Array(len)}};
+const sim={world,day:1,tickCount:8,climate:{temp:.8,rain:1}},full=new Uint8Array(1024).fill(1);full.full=true;full.empty=false;
+const empty=new Uint8Array(1024);empty.empty=true;empty.full=false;
+const record=()=>({globalAlpha:.7,fillStyle:'old',stack:[],ops:[],save(){this.stack.push([this.globalAlpha,this.fillStyle])},restore(){[this.globalAlpha,this.fillStyle]=this.stack.pop()},fillRect(...r){this.ops.push({rect:r,color:this.fillStyle,alpha:this.globalAlpha})}});
+const art=new WetSurfaceArt({maxTiles:32,maxImpacts:3}),draw=(renderer=art,mask=full)=>{const c=record();renderer.begin(sim,{seconds:2});for(let y=0;y<n;y++)for(let x=0;x<n;x++)renderer.drawTile(c,sim,{i:world.idx(x,y),x,y,mask,px:0,py:0,u:2});assert.equal(c.globalAlpha,.7);assert.equal(c.fillStyle,'old');return c.ops};
+const wet=draw();assert.ok(wet.length>0&&wet.length<=24);assert.equal(art.remaining,0);assert.ok(art.entries.size<=32);assert.deepEqual(draw(),wet,'pause-stable water impacts reuse actual weather and clock');
+const half=full.slice();half.full=false;half.empty=false;for(let i=0;i<half.length;i++)if(i%3===0)half[i]=0;
+for(const op of draw(new WetSurfaceArt({maxImpacts:64}),half)){assert.ok(op.rect.every(Number.isInteger));const [x,y,w,h]=op.rect;assert.ok(x>=0&&y>=0&&x+w<=32&&y+h<=32);assert.equal(half[y*32+x],1,'every impact pixel remains on actual visual liquid');}
+sim.climate.rain=0;assert.deepEqual(draw(),[],'clear conditions do not manufacture raindrop impacts, even within the same tick');
+world.water.fill(0);world.environment.overland.fill(.03);const film=draw(new WetSurfaceArt(),empty);assert.ok(film.length>0);assert.ok(film.every(op=>!op.color.includes('216,206')),'land films are earth-toned, not open-water pools');
+world.soilWater={snowpack:new Float64Array(len).fill(.34)};assert.deepEqual(draw(new WetSurfaceArt(),empty),[],'full owned snow cover hides film sheen');delete world.soilWater;
+world.environment.overland.fill(0);assert.deepEqual(draw(new WetSurfaceArt(),empty),[],'spent film inventory removes the live sheen immediately');
+world.environment.overland.fill(.03);sim.climate.temp=.1;assert.deepEqual(draw(new WetSurfaceArt(),empty),[],'cold mixed-phase ground never receives liquid film sheen');
+sim.climate.temp=.8;world.water.fill(1);world.environment.volume.fill(0);assert.equal(exposedSurfaceKind(world,0),null);assert.deepEqual(draw(),[],'depleted open-water inventory has no impacts');const glint=record();drawWaterSurfaceMarks(glint,{world,x:0,y:0,mask:full,px:0,py:0,u:2,seconds:2});assert.equal(glint.ops.length,0,'depleted water also loses the preceding glint layer');
+world.environment.volume.fill(1);world.environment.icePolicy=SURFACE_ICE.policy;world.environment.ice=new Float64Array(len).fill(.1);world.environment.iceBroken=new Uint8Array(len);sim.climate.rain=1;assert.deepEqual(draw(),[],'coherent actual ice blocks rain-on-liquid impacts');world.environment.iceBroken.fill(1);assert.ok(draw().length>0,'canonical broken ice exposes its remaining liquid');
+const soil=record(),reading={available:1,snow:0,cover:0};assert.ok(drawDampSoil(soil,{world,reading,px:0,py:0,u:2,x:4,y:5}));assert.ok(soil.ops.every(op=>op.rect.every(Number.isInteger)));const none=record();assert.equal(drawDampSoil(none,{world,reading:{...reading,available:.2},px:0,py:0,u:2,x:4,y:5}),false);assert.equal(none.ops.length,0);
+// Regional ownership changes must not reseed the same absolute rain mark.
+const alias={...world,regionOrigin:{x:1,y:1}},aliasSim={...sim,world:alias};let matched=false;
+for(let t=0;t<8&&!matched;t+=.1){const a=record(),b=record(),first=new WetSurfaceArt(),second=new WetSurfaceArt();first.begin(sim,{seconds:t});second.begin(aliasSim,{seconds:t});first.drawTile(a,sim,{i:world.idx(5,5),x:5,y:5,mask:full,px:0,py:0,u:2});second.drawTile(b,aliasSim,{i:alias.idx(4,4),x:4,y:4,mask:full,px:0,py:0,u:2});if(a.ops.length){assert.deepEqual(b.ops,a.ops);matched=true}}assert.equal(matched,true);
+for(const observer of [{underground:true},{diveDepth:.2}]){const hidden={...sim,player:()=>observer},layer=new WetSurfaceArt(),c=record();layer.begin(hidden,{seconds:2});assert.equal(layer.drawTile(c,hidden,{i:0,x:0,y:0,mask:full,px:0,py:0,u:2}),false);assert.equal(c.ops.length,0,'surface rain never paints into an underground or submerged view')}
+const real=new Simulation('WET-PAINT-READS',{player:true,worldGenerator:'planetary/1'}),snapshot=()=>JSON.stringify(encodeSnapshotGraph(createSimulationSnapshot(real,{savedAt:'wet-art'}))),before=snapshot(),painter=new WetSurfaceArt();painter.begin(real,{seconds:2});for(let i=0;i<real.world.len;i+=17){const x=i%real.world.n,y=Math.floor(i/real.world.n);painter.drawTile(record(),real,{i,x,y,mask:full,px:0,py:0,u:2})}assert.equal(snapshot(),before,'all live surface reads and paint preserve the complete canonical graph');
+console.log('Wet surface art PASS: bounded native impacts, actual liquid rain, clear/zero-stock/ice/snow exclusions, immediate film depletion, mask clipping, pause identity, canvas restoration, bounded cache and full biological parity.');
